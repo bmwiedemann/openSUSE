@@ -1,4 +1,270 @@
 -------------------------------------------------------------------
+Wed Jan 13 13:49:34 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Remove deprecated warning that breaks minion execution when "server_id_use_crc" opts is missing
+
+- Added:
+  * remove-deprecated-warning-that-breaks-miniion-execut.patch
+
+-------------------------------------------------------------------
+Wed Jan 13 10:13:13 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Revert wrong zypper patch to support vendorchanges flags on pkg.install
+
+- Added:
+  * revert-add-patch-support-for-allow-vendor-change-opt.patch
+
+-------------------------------------------------------------------
+Tue Jan 12 12:09:35 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Force zyppnotify to prefer Packages.db than Packages if it exists
+- Allow vendor change option with zypper
+- Add pkg.services_need_restart
+- Fix for file.check_perms to work with numeric uid/gid
+
+- Added:
+  * force-zyppnotify-to-prefer-packages.db-than-packages.patch
+  * fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
+  * add-patch-support-for-allow-vendor-change-option-wit.patch
+  * add-pkg.services_need_restart-302.patch
+
+-------------------------------------------------------------------
+Tue Jan 12 10:31:02 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- virt: more network support
+  Add more network and PCI/USB host devices passthrough support
+  to virt module and states
+
+- Added:
+  * open-suse-3002.2-virt-network-311.patch
+
+-------------------------------------------------------------------
+Tue Jan 12 09:55:36 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Bigvm backports
+  virt consoles, CPU tuning and topology, and memory tuning.
+
+- Added:
+  * open-suse-3002.2-bigvm-310.patch
+
+-------------------------------------------------------------------
+Mon Jan 11 16:11:22 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix pkg states when DEB package has "all" arch
+
+- Added:
+  * fix-aptpkg.normalize_name-when-package-arch-is-all.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 12:49:42 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not force beacons configuration to be a list.
+  Revert https://github.com/saltstack/salt/pull/58655
+
+- Added:
+  * revert-fixing-a-use-case-when-multiple-inotify-beaco.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 10:15:08 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Drop wrong virt capabilities code after rebasing patches
+
+- Added:
+  * drop-wrong-virt-capabilities-code-after-rebasing-pat.patch
+
+-------------------------------------------------------------------
+Fri Dec 18 12:13:49 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update to Salt release version 3002.2
+- See release notes: https://docs.saltstack.com/en/latest/topics/releases/3002.2.html
+
+- Modified:
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * let-salt-ssh-use-platform-python-binary-in-rhel8-191.patch
+  * fix-__mount_device-wrapper-254.patch
+  * opensuse-3000.2-virt-backports-236-257.patch
+  * fixes-cve-2018-15750-cve-2018-15751.patch
+  * strip-trailing-from-repo.uri-when-comparing-repos-in.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * support-config-non-root-permission-issues-fixes-u-50.patch
+  * support-for-btrfs-and-xfs-in-parted-and-mkfs.patch
+  * fix-batch_async-obsolete-test.patch
+  * early-feature-support-config.patch
+  * changed-imports-to-vendored-tornado.patch
+  * avoid-excessive-syslogging-by-watchdog-cronjob-58.patch
+  * add-hold-unhold-functions.patch
+  * do-not-crash-when-there-are-ipv6-established-connect.patch
+  * add-docker-logout-237.patch
+  * add-saltssh-multi-version-support-across-python-inte.patch
+  * fix-a-test-and-some-variable-names-229.patch
+  * implement-network.fqdns-module-function-bsc-1134860-.patch
+  * debian-info_installed-compatibility-50453.patch
+  * fix-bsc-1065792.patch
+  * use-current-ioloop-for-the-localclient-instance-of-b.patch
+  * restore-default-behaviour-of-pkg-list-return.patch
+  * virt-adding-kernel-boot-parameters-to-libvirt-xml-55.patch
+  * use-threadpool-from-multiprocessing.pool-to-avoid-le.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * info_installed-works-without-status-attr-now.patch
+  * bsc-1176024-fix-file-directory-user-and-group-owners.patch
+  * opensuse-3000.3-spacewalk-runner-parse-command-250.patch
+  * fix-aptpkg-systemd-call-bsc-1143301.patch
+  * fix-memory-leak-produced-by-batch-async-find_jobs-me.patch
+  * ansiblegate-take-care-of-failed-skipped-and-unreacha.patch
+  * calculate-fqdns-in-parallel-to-avoid-blockings-bsc-1.patch
+  * add-cpe_name-for-osversion-grain-parsing-u-49946.patch
+  * python3.8-compatibility-pr-s-235.patch
+  * backport-virt-patches-from-3001-256.patch
+  * do-not-break-repo-files-with-multiple-line-values-on.patch
+  * enable-passing-a-unix_socket-for-mysql-returners-bsc.patch
+  * accumulated-changes-required-for-yomi-165.patch
+  * support-transactional-systems-microos-271.patch
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+  * remove-vendored-backports-abc-from-requirements.patch
+  * fall-back-to-pymysql.patch
+  * xen-disk-fixes-264.patch
+  * fix-for-temp-folder-definition-in-loader-unit-test.patch
+  * batch.py-avoid-exception-when-minion-does-not-respon.patch
+  * move-server_id-deprecation-warning-to-reduce-log-spa.patch
+  * avoid-traceback-when-http.query-request-cannot-be-pe.patch
+  * fixed-bug-lvm-has-no-parttion-type.-the-scipt-later-.patch
+  * fix-zypper-pkg.list_pkgs-expectation-and-dpkg-mockin.patch
+  * grains-master-can-read-grains.patch
+  * remove-arch-from-name-when-pkg.list_pkgs-is-called-w.patch
+  * fix-wrong-test_mod_del_repo_multiline_values-test-af.patch
+  * accumulated-changes-from-yomi-167.patch
+  * allow-passing-kwargs-to-pkg.list_downloaded-bsc-1140.patch
+  * loosen-azure-sdk-dependencies-in-azurearm-cloud-driv.patch
+  * add-astra-linux-common-edition-to-the-os-family-list.patch
+  * fix-async-batch-race-conditions.patch
+  * batch-async-catch-exceptions-and-safety-unregister-a.patch
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * drop-wrong-mock-from-chroot-unit-test.patch
+  * fix-for-suse-expanded-support-detection.patch
+  * fix-novendorchange-option-284.patch
+  * fix-virt.update-with-cpu-defined-263.patch
+  * add-batch_presence_ping_timeout-and-batch_presence_p.patch
+  * fix-git_pillar-merging-across-multiple-__env__-repos.patch
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+  * fix-unit-tests-for-batch-async-after-refactor.patch
+  * add-new-custom-suse-capability-for-saltutil-state-mo.patch
+  * prevent-test_mod_del_repo_multiline_values-to-fail.patch
+  * x509-fixes-111.patch
+  * adds-explicit-type-cast-for-port.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * remove-msgpack-1.0.0-requirement-in-the-installed-me.patch
+  * switch-firewalld-state-to-use-change_interface.patch
+  * option-to-en-disable-force-refresh-in-zypper-215.patch
+  * fix-async-batch-multiple-done-events.patch
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * don-t-call-zypper-with-more-than-one-no-refresh.patch
+  * transactional_update-unify-with-chroot.call.patch
+  * fix-ipv6-scope-bsc-1108557.patch
+  * temporary-fix-extend-the-whitelist-of-allowed-comman.patch
+  * opensuse-3000-libvirt-engine-fixes-251.patch
+  * fix-grains.test_core-unit-test-277.patch
+  * pkgrepo-support-python-2.7-function-call-295.patch
+  * prevent-import-errors-when-running-test_btrfs-unit-t.patch
+  * do-not-make-ansiblegate-to-crash-on-python3-minions.patch
+  * fix-issue-2068-test.patch
+  * ensure-virt.update-stop_on_reboot-is-updated-with-it.patch
+  * remove-deprecated-usage-of-no_mock-and-no_mock_reaso.patch
+  * read-repo-info-without-using-interpolation-bsc-11356.patch
+  * fix-zypper.list_pkgs-to-be-aligned-with-pkg-state.patch
+  * fixing-streamclosed-issue.patch
+  * virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+  * loop-fix-variable-names-for-until_no_eval.patch
+  * improve-batch_async-to-release-consumed-memory-bsc-1.patch
+  * prevent-systemd-run-description-issue-when-running-a.patch
+  * integration-of-msi-authentication-with-azurearm-clou.patch
+  * add-all_versions-parameter-to-include-all-installed-.patch
+  * sanitize-grains-loaded-from-roster_grains.json.patch
+  * fix-failing-unit-tests-for-batch-async.patch
+  * reintroducing-reverted-changes.patch
+  * fix-for-log-checking-in-x509-test.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * opensuse-3000-virt-defined-states-222.patch
+  * add-virt.all_capabilities.patch
+  * prevent-logging-deadlock-on-salt-api-subprocesses-bs.patch
+  * fix-cve-2020-25592-and-add-tests-bsc-1178319.patch
+  * fix-unit-test-for-grains-core.patch
+  * async-batch-implementation.patch
+  * apply-patch-from-upstream-to-support-python-3.8.patch
+  * remove-unnecessary-yield-causing-badyielderror-bsc-1.patch
+  * re-adding-function-to-test-for-root.patch
+  * zypperpkg-filter-patterns-that-start-with-dot-244.patch
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+  * add-multi-file-support-and-globbing-to-the-filetree-.patch
+  * fix-the-removed-six.itermitems-and-six.-_type-262.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * make-profiles-a-package.patch
+  * return-the-expected-powerpc-os-arch-bsc-1117995.patch
+  * batch_async-avoid-using-fnmatch-to-match-event-217.patch
+  * do-not-raise-streamclosederror-traceback-but-only-lo.patch
+  * provide-the-missing-features-required-for-yomi-yet-o.patch
+  * make-aptpkg.list_repos-compatible-on-enabled-disable.patch
+  * backport-a-few-virt-prs-272.patch
+  * add-supportconfig-module-for-remote-calls-and-saltss.patch
+  * run-salt-api-as-user-salt-bsc-1064520.patch
+  * path-replace-functools.wraps-with-six.wraps-bsc-1177.patch
+  * get-os_arch-also-without-rpm-package-installed.patch
+  * invalidate-file-list-cache-when-cache-file-modified-.patch
+  * xfs-do-not-fails-if-type-is-not-present.patch
+  * prevent-ansiblegate-unit-tests-to-fail-on-ubuntu.patch
+
+- Removed:
+  * do-not-report-patches-as-installed-when-not-all-the-.patch
+  * add-pkg.services_need_restart-302.patch
+  * removes-unresolved-merge-conflict-in-yumpkg-module.patch
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+  * force-zyppnotify-to-prefer-packages.db-than-packages.patch
+  * decide-if-the-source-should-be-actually-skipped.patch
+  * make-lazyloader.__init__-call-to-_refresh_file_mappi.patch
+  * avoid-has_docker-true-if-import-messes-with-salt.uti.patch
+  * fix-for-bsc-1102248-psutil-is-broken-and-so-process-.patch
+  * set-passphrase-for-salt-ssh-keys-to-empty-string-293.patch
+  * fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
+  * add-patch-support-for-allow-vendor-change-option-wit.patch
+  * opensuse-3000.3-bigvm-backports-303.patch
+  * msgpack-support-versions-1.0.0.patch
+  * fix-typo-on-msgpack-version-when-sanitizing-msgpack-.patch
+  * use-full-option-name-instead-of-undocumented-abbrevi.patch
+  * add-missing-_utils-at-loader-grains_func.patch
+  * loader-invalidate-the-import-cachefor-extra-modules.patch
+  * fix-for-return-value-ret-vs-return-in-batch-mode.patch
+  * make-salt.ext.tornado.gen-to-use-salt.ext.backports_.patch
+
+-------------------------------------------------------------------
+Thu Dec 10 10:47:12 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Force zyppnotify to prefer Packages.db than Packages if it exists
+- Allow vendor change option with zypper
+
+- Added:
+  * add-patch-support-for-allow-vendor-change-option-wit.patch
+  * force-zyppnotify-to-prefer-packages.db-than-packages.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 14:56:28 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Add pkg.services_need_restart
+-  Bigvm backports:
+   virt consoles, CPU tuning and topology, and memory tuning.
+-  Fix for file.check_perms to work with numeric uid/gid
+
+- Added:
+  * add-pkg.services_need_restart-302.patch
+  * fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
+  * opensuse-3000.3-bigvm-backports-303.patch
+
+-------------------------------------------------------------------
+Fri Nov 27 10:47:14 UTC 2020 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Change 'Requires(pre)' to 'Requires' for salt-minion package (bsc#1083110)
+
+-------------------------------------------------------------------
 Mon Nov 16 09:48:45 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix syntax error on pkgrepo state with Python 2.7

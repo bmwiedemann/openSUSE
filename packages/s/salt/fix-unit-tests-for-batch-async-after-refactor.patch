@@ -1,21 +1,21 @@
-From e9f2af1256a52d58a7c8e6dd0122eb6d5cc47dd3 Mon Sep 17 00:00:00 2001
+From 09a871c197be4933475ee4582755d9b0cb5a700e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 4 Mar 2020 10:13:43 +0000
 Subject: [PATCH] Fix unit tests for batch async after refactor
 
 ---
- tests/unit/cli/test_batch_async.py | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
+ tests/unit/cli/test_batch_async.py | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
-index f1d36a81fb..e1ce60859b 100644
+index b04965268a..dcee9a87bd 100644
 --- a/tests/unit/cli/test_batch_async.py
 +++ b/tests/unit/cli/test_batch_async.py
-@@ -126,9 +126,10 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
-         self.batch.timedout_minions = {'bar'}
+@@ -120,9 +120,10 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+         self.batch.timedout_minions = {"bar"}
          self.batch.event = MagicMock()
-         self.batch.metadata = {'mykey': 'myvalue'}
+         self.batch.metadata = {"mykey": "myvalue"}
 +        old_event = self.batch.event
          self.batch.end_batch()
          self.assertEqual(
@@ -23,8 +23,8 @@ index f1d36a81fb..e1ce60859b 100644
 +            old_event.fire_event.call_args[0],
              (
                  {
-                     'available_minions': set(['foo', 'bar']),
-@@ -146,6 +147,21 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+                     "available_minions": {"foo", "bar"},
+@@ -140,6 +141,23 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
          event = MagicMock()
          batch.event = event
          batch.__del__()
@@ -36,17 +36,19 @@ index f1d36a81fb..e1ce60859b 100644
 +        batch = BatchAsync(MagicMock(), MagicMock(), MagicMock())
 +        event = MagicMock()
 +        batch.event = event
-+        batch.patterns = { ('salt/job/1234/ret/*', 'find_job_return'), ('salt/job/4321/ret/*', 'find_job_return') }
++        batch.patterns = {
++            ("salt/job/1234/ret/*", "find_job_return"),
++            ("salt/job/4321/ret/*", "find_job_return"),
++        }
 +        batch.close_safe()
 +        self.assertEqual(batch.local, None)
 +        self.assertEqual(batch.event, None)
 +        self.assertEqual(batch.ioloop, None)
-+        self.assertEqual(
-+            len(event.unsubscribe.mock_calls), 2)
-         self.assertEqual(
-             len(event.remove_event_handler.mock_calls), 1)
++        self.assertEqual(len(event.unsubscribe.mock_calls), 2)
+         self.assertEqual(len(event.remove_event_handler.mock_calls), 1)
  
+     @tornado.testing.gen_test
 -- 
-2.23.0
+2.29.2
 
 

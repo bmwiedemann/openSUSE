@@ -1,4 +1,4 @@
-From a6792f951f8090d8326de049eb48bb4a11291e06 Mon Sep 17 00:00:00 2001
+From 4a63d9226a426f4734ff6906b33da36671c4e4e4 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 20 Mar 2020 13:58:54 +0100
 Subject: [PATCH] Re-adding function to test for root
@@ -8,11 +8,11 @@ Subject: [PATCH] Re-adding function to test for root
  1 file changed, 5 insertions(+)
 
 diff --git a/tests/unit/modules/test_rpm_lowpkg.py b/tests/unit/modules/test_rpm_lowpkg.py
-index 54b81f6972..b6cbd9e5cb 100644
+index b41e8daf17..ec9ecd40cb 100644
 --- a/tests/unit/modules/test_rpm_lowpkg.py
 +++ b/tests/unit/modules/test_rpm_lowpkg.py
-@@ -18,6 +18,11 @@ from tests.support.mock import (
- import salt.modules.rpm_lowpkg as rpm
+@@ -14,6 +14,11 @@ def _called_with_root(mock):
+     return cmd.startswith("rpm --root /")
  
  
 +def _called_with_root(mock):
@@ -21,9 +21,9 @@ index 54b81f6972..b6cbd9e5cb 100644
 +
 +
  class RpmTestCase(TestCase, LoaderModuleMockMixin):
-     '''
+     """
      Test cases for salt.modules.rpm
 -- 
-2.16.4
+2.29.2
 
 

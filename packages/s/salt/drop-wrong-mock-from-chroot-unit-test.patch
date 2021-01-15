@@ -1,4 +1,4 @@
-From e2c3b1cb72b796fe12f94af64baa2e64cbe5db0b Mon Sep 17 00:00:00 2001
+From 3dc61b426cee5c40976ee25a0357fd07244a630b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Tue, 13 Oct 2020 12:02:00 +0100
@@ -9,11 +9,11 @@ Subject: [PATCH] Drop wrong mock from chroot unit test
  1 file changed, 1 deletion(-)
 
 diff --git a/tests/unit/modules/test_chroot.py b/tests/unit/modules/test_chroot.py
-index 62808ed680..045d56c5b0 100644
+index 196e3ad27f..a0f3f8e6af 100644
 --- a/tests/unit/modules/test_chroot.py
 +++ b/tests/unit/modules/test_chroot.py
-@@ -83,7 +83,6 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
-         self.assertTrue(chroot.create('/chroot'))
+@@ -71,7 +71,6 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
+         self.assertTrue(chroot.create("/chroot"))
          makedirs.assert_called()
  
 -    @patch("salt.modules.chroot.exist")
@@ -21,6 +21,6 @@ index 62808ed680..045d56c5b0 100644
      def test_in_chroot(self, fopen):
          """
 -- 
-2.28.0
+2.29.2
 
 

@@ -1,4 +1,4 @@
-From f2b465f41575a8a28d4762f9647ea30df6a64637 Mon Sep 17 00:00:00 2001
+From 210846eb33734a453b99ffb5ac9ef3f59dd0d742 Mon Sep 17 00:00:00 2001
 From: Matei Albu <malbu@suse.de>
 Date: Fri, 15 Feb 2019 14:34:13 +0100
 Subject: [PATCH] Strip trailing "/" from repo.uri when comparing repos
@@ -10,19 +10,19 @@ Subject: [PATCH] Strip trailing "/" from repo.uri when comparing repos
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index a5b039fc79..bafad40efe 100644
+index c47ee852f4..658a16da4c 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -2365,7 +2365,7 @@ def mod_repo(repo, saltenv='base', **kwargs):
-         # and the resulting source line.  The idea here is to ensure
-         # we are not returning bogus data because the source line
+@@ -2429,7 +2429,7 @@ def mod_repo(repo, saltenv="base", **kwargs):
          # has already been modified on a previous run.
--        repo_matches = source.type == repo_type and source.uri == repo_uri and source.dist == repo_dist
-+        repo_matches = source.type == repo_type and source.uri.rstrip('/') == repo_uri.rstrip('/') and source.dist == repo_dist
+         repo_matches = (
+             source.type == repo_type
+-            and source.uri == repo_uri
++            and source.uri.rstrip("/") == repo_uri.rstrip("/")
+             and source.dist == repo_dist
+         )
          kw_matches = source.dist == kw_dist and source.type == kw_type
- 
-         if repo_matches or kw_matches:
 -- 
-2.16.4
+2.29.2
 
 

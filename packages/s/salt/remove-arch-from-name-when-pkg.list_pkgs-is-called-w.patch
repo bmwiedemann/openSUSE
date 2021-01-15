@@ -1,9 +1,9 @@
-From dcaf5a98cfb4e4fd874dd0ec17630d8b7650f5f9 Mon Sep 17 00:00:00 2001
+From 06482f99ed8bad5ffe5fb67182fd3aea166b8a1a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 19 Nov 2018 11:46:26 +0000
-Subject: [PATCH] Remove arch from name when pkg.list_pkgs is called with
- 'attr' (bsc#1114029)
+Subject: [PATCH] Remove arch from name when pkg.list_pkgs is called
+ with 'attr' (bsc#1114029)
 
 Add unit tests for pkg_resource.format_pkg_list
 
@@ -37,229 +37,161 @@ Remove unnecessary lambda
 
 Return None instead empty string for arch and release in pkg.list_pkgs
 ---
- salt/modules/aptpkg.py                  |  4 +--
- salt/modules/pkg_resource.py            | 13 ++++-----
- salt/modules/yumpkg.py                  |  4 +--
- salt/modules/zypperpkg.py               |  4 +--
- tests/unit/modules/test_pkg_resource.py |  2 +-
- tests/unit/modules/test_yumpkg.py       | 51 ++-------------------------------
- tests/unit/modules/test_zypperpkg.py    |  4 +--
- 7 files changed, 18 insertions(+), 64 deletions(-)
+ tests/unit/modules/test_zypperpkg.py | 49 +++++++++-------------------
+ 1 file changed, 16 insertions(+), 33 deletions(-)
 
-diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 3b0d8423db..345b8422d9 100644
---- a/salt/modules/aptpkg.py
-+++ b/salt/modules/aptpkg.py
-@@ -206,7 +206,7 @@ def normalize_name(name):
-     return name
- 
- 
--def parse_arch(name):
-+def parse_arch_from_name(name):
-     '''
-     Parse name and architecture from the specified package name.
- 
-@@ -214,7 +214,7 @@ def parse_arch(name):
- 
-     .. code-block:: bash
- 
--        salt '*' pkg.parse_arch zsh:amd64
-+        salt '*' pkg.parse_arch_from_name zsh:amd64
-     '''
-     try:
-         _name, _arch = name.rsplit(PKG_ARCH_SEPARATOR, 1)
-diff --git a/salt/modules/pkg_resource.py b/salt/modules/pkg_resource.py
-index 8fa3a074fa..0c872f1805 100644
---- a/salt/modules/pkg_resource.py
-+++ b/salt/modules/pkg_resource.py
-@@ -312,18 +312,17 @@ def format_pkg_list(packages, versions_as_list, attr):
-     ret = copy.deepcopy(packages)
-     if attr:
-         ret_attr = {}
--        requested_attr = {'epoch', 'version', 'release', 'arch', 'install_date', 'install_date_time_t'}
-+        requested_attr = set(['epoch', 'version', 'release', 'arch',
-+                              'install_date', 'install_date_time_t'])
- 
-         if attr != 'all':
-             requested_attr &= set(attr + ['version'] + ['arch'])
- 
-         for name in ret:
--            if 'pkg.parse_arch' in __salt__:
--                _parse_arch = __salt__['pkg.parse_arch'](name)
--            else:
--                _parse_arch = {'name': name, 'arch': None}
--            _name = _parse_arch['name']
--            _arch = _parse_arch['arch']
-+            _parse_arch_from_name = __salt__.get('pkg.parse_arch_from_name', lambda pkgname: {'name': pkgname, 'arch': None})
-+            name_arch_d = _parse_arch_from_name(name)
-+            _name = name_arch_d['name']
-+            _arch = name_arch_d['arch']
- 
-             versions = []
-             pkgname = None
-diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index c89d321a1b..b1257d0de0 100644
---- a/salt/modules/yumpkg.py
-+++ b/salt/modules/yumpkg.py
-@@ -442,7 +442,7 @@ def normalize_name(name):
-     return name
- 
- 
--def parse_arch(name):
-+def parse_arch_from_name(name):
-     '''
-     Parse name and architecture from the specified package name.
- 
-@@ -450,7 +450,7 @@ def parse_arch(name):
- 
-     .. code-block:: bash
- 
--        salt '*' pkg.parse_arch zsh.x86_64
-+        salt '*' pkg.parse_arch_from_name zsh.x86_64
-     '''
-     _name, _arch = None, None
-     try:
-diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 08a9c2ed4d..04a6a6872d 100644
---- a/salt/modules/zypperpkg.py
-+++ b/salt/modules/zypperpkg.py
-@@ -593,7 +593,7 @@ def info_available(*names, **kwargs):
-     return ret
- 
- 
--def parse_arch(name):
-+def parse_arch_from_name(name):
-     '''
-     Parse name and architecture from the specified package name.
- 
-@@ -601,7 +601,7 @@ def parse_arch(name):
- 
-     .. code-block:: bash
- 
--        salt '*' pkg.parse_arch zsh.x86_64
-+        salt '*' pkg.parse_arch_from_name zsh.x86_64
-     '''
-     _name, _arch = None, None
-     try:
-diff --git a/tests/unit/modules/test_pkg_resource.py b/tests/unit/modules/test_pkg_resource.py
-index 6bb647082c..d5ccb2a7a2 100644
---- a/tests/unit/modules/test_pkg_resource.py
-+++ b/tests/unit/modules/test_pkg_resource.py
-@@ -236,7 +236,7 @@ class PkgresTestCase(TestCase, LoaderModuleMockMixin):
-                 }
-             ]
-         }
--        with patch.dict(pkg_resource.__salt__, {'pkg.parse_arch': NAME_ARCH_MAPPING.get}):
-+        with patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': NAME_ARCH_MAPPING.get}):
-             if six.PY3:
-                 self.assertCountEqual(pkg_resource.format_pkg_list(packages, False, attr=['epoch', 'release']), expected_pkg_list)
-             else:
-diff --git a/tests/unit/modules/test_yumpkg.py b/tests/unit/modules/test_yumpkg.py
-index 5e652b7e53..9fbe3d051e 100644
---- a/tests/unit/modules/test_yumpkg.py
-+++ b/tests/unit/modules/test_yumpkg.py
-@@ -107,7 +107,7 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
-              patch.dict(yumpkg.__salt__, {'pkg_resource.add_pkg': _add_data}), \
-              patch.dict(yumpkg.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
-              patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}), \
--             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch': yumpkg.parse_arch}):
-+             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': yumpkg.parse_arch_from_name}):
-             pkgs = yumpkg.list_pkgs(versions_as_list=True)
-             for pkg_name, pkg_version in {
-                 'python-urlgrabber': '3.10-8.el7',
-@@ -155,7 +155,7 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
-              patch.dict(yumpkg.__salt__, {'pkg_resource.add_pkg': _add_data}), \
-              patch.dict(yumpkg.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
-              patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}), \
--             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch': yumpkg.parse_arch}):
-+             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': yumpkg.parse_arch_from_name}):
-             pkgs = yumpkg.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
-             for pkg_name, pkg_attr in {
-                 'python-urlgrabber': {
-@@ -273,7 +273,7 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
-              patch.dict(yumpkg.__salt__, {'pkg_resource.add_pkg': _add_data}), \
-              patch.dict(yumpkg.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
-              patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}), \
--             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch': yumpkg.parse_arch}):
-+             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': yumpkg.parse_arch_from_name}):
-             pkgs = yumpkg.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
-             expected_pkg_list = {
-                 'glibc': [
-@@ -315,51 +315,6 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
-                 else:
-                     self.assertItemsEqual(pkginfo, expected_pkg_list[pkgname])
- 
--    def test_list_patches(self):
--        '''
--        Test patches listing.
--
--        :return:
--        '''
--        yum_out = [
--            'i my-fake-patch-not-installed-1234 recommended    spacewalk-usix-2.7.5.2-2.2.noarch',
--            '  my-fake-patch-not-installed-1234 recommended    spacewalksd-5.0.26.2-21.2.x86_64',
--            'i my-fake-patch-not-installed-1234 recommended    suseRegisterInfo-3.1.1-18.2.x86_64',
--            'i my-fake-patch-installed-1234 recommended        my-package-one-1.1-0.1.x86_64',
--            'i my-fake-patch-installed-1234 recommended        my-package-two-1.1-0.1.x86_64',
--        ]
--
--        expected_patches = {
--            'my-fake-patch-not-installed-1234': {
--                'installed': False,
--                'summary': [
--                    'spacewalk-usix-2.7.5.2-2.2.noarch',
--                    'spacewalksd-5.0.26.2-21.2.x86_64',
--                    'suseRegisterInfo-3.1.1-18.2.x86_64',
--                ]
--            },
--            'my-fake-patch-installed-1234': {
--                'installed': True,
--                'summary': [
--                    'my-package-one-1.1-0.1.x86_64',
--                    'my-package-two-1.1-0.1.x86_64',
--                ]
--            }
--        }
--
--        with patch.dict(yumpkg.__grains__, {'osarch': 'x86_64'}), \
--             patch.dict(yumpkg.__salt__, {'cmd.run_stdout': MagicMock(return_value=os.linesep.join(yum_out))}):
--            patches = yumpkg.list_patches()
--            self.assertFalse(patches['my-fake-patch-not-installed-1234']['installed'])
--            self.assertTrue(len(patches['my-fake-patch-not-installed-1234']['summary']) == 3)
--            for _patch in expected_patches['my-fake-patch-not-installed-1234']['summary']:
--                self.assertTrue(_patch in patches['my-fake-patch-not-installed-1234']['summary'])
--
--            self.assertTrue(patches['my-fake-patch-installed-1234']['installed'])
--            self.assertTrue(len(patches['my-fake-patch-installed-1234']['summary']) == 2)
--            for _patch in expected_patches['my-fake-patch-installed-1234']['summary']:
--                self.assertTrue(_patch in patches['my-fake-patch-installed-1234']['summary'])
--
-     def test_latest_version_with_options(self):
-         with patch.object(yumpkg, 'list_pkgs', MagicMock(return_value={})):
- 
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 78414ca4ac..b3162f10cd 100644
+index 36261285cb..7bff7065c6 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -607,7 +607,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
-              patch.dict(zypper.__salt__, {'pkg_resource.add_pkg': _add_data}), \
-              patch.dict(zypper.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
-              patch.dict(zypper.__salt__, {'pkg_resource.stringify': MagicMock()}), \
--             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch': zypper.parse_arch}):
-+             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': zypper.parse_arch_from_name}):
-             pkgs = zypper.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
-             self.assertFalse(pkgs.get('gpg-pubkey', False))
-             for pkg_name, pkg_attr in {
-@@ -698,7 +698,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
-              patch.dict(zypper.__salt__, {'pkg_resource.add_pkg': _add_data}), \
-              patch.dict(zypper.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
-              patch.dict(zypper.__salt__, {'pkg_resource.stringify': MagicMock()}), \
--             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch': zypper.parse_arch}):
-+             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': zypper.parse_arch_from_name}):
-             pkgs = zypper.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
-             expected_pkg_list = {
-                 'glibc': [
+@@ -1,33 +1,24 @@
+-# -*- coding: utf-8 -*-
+ """
+     :codeauthor: Bo Maryniuk <bo@suse.de>
+ """
+ 
+-# Import Python Libs
+-from __future__ import absolute_import
+ 
+ import os
+ from xml.dom import minidom
+ 
+ import salt.modules.pkg_resource as pkg_resource
+ import salt.modules.zypperpkg as zypper
+-
+-# Import Salt libs
+ import salt.utils.files
+ import salt.utils.pkg
+ from salt.exceptions import CommandExecutionError
+ from salt.ext import six
+-
+-# Import 3rd-party libs
+ from salt.ext.six.moves import configparser
+-
+-# Import Salt Testing Libs
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, Mock, call, patch
+ from tests.support.unit import TestCase
+ 
+ 
+-class ZyppCallMock(object):
++class ZyppCallMock:
+     def __init__(self, return_value=None):
+         self.__return_value = return_value
+ 
+@@ -124,7 +115,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+         :return:
+         """
+ 
+-        class RunSniffer(object):
++        class RunSniffer:
+             def __init__(self, stdout=None, stderr=None, retcode=None):
+                 self.calls = list()
+                 self._stdout = stdout or ""
+@@ -237,7 +228,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+         ):
+             with self.assertRaisesRegex(
+                 CommandExecutionError,
+-                "^Zypper command failure: Some handled zypper internal error{0}Another zypper internal error$".format(
++                "^Zypper command failure: Some handled zypper internal error{}Another zypper internal error$".format(
+                     os.linesep
+                 ),
+             ):
+@@ -316,7 +307,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                     "--no-refresh",
+                     "--disable-repositories",
+                     "products",
+-                    u"-i",
++                    "-i",
+                 ],
+                 env={"ZYPP_READONLY_HACK": "1"},
+                 output_loglevel="trace",
+@@ -338,14 +329,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                     "eol_t",
+                     "registerrelease",
+                 ]:
+-                    if six.PY3:
+-                        self.assertCountEqual(
+-                            test_data[kwd], [prod.get(kwd) for prod in products]
+-                        )
+-                    else:
+-                        self.assertEqual(
+-                            test_data[kwd], sorted([prod.get(kwd) for prod in products])
+-                        )
++                    self.assertCountEqual(
++                        test_data[kwd], [prod.get(kwd) for prod in products]
++                    )
+                 cmd_run_all.assert_has_calls([mock_call])
+ 
+     def test_refresh_db(self):
+@@ -797,7 +783,7 @@ Use 'zypper repos' to get the list of defined repositories.
+ Repository 'DUMMY' not found by its alias, number, or URI.
+ """
+ 
+-        class FailingZypperDummy(object):
++        class FailingZypperDummy:
+             def __init__(self):
+                 self.stdout = zypper_out
+                 self.stderr = ""
+@@ -1083,10 +1069,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+                 ],
+             }
+             for pkgname, pkginfo in pkgs.items():
+-                if six.PY3:
+-                    self.assertCountEqual(pkginfo, expected_pkg_list[pkgname])
+-                else:
+-                    self.assertItemsEqual(pkginfo, expected_pkg_list[pkgname])
++                self.assertCountEqual(pkginfo, expected_pkg_list[pkgname])
+ 
+     def test_list_patches(self):
+         """
+@@ -1446,7 +1429,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+         :return:
+         """
+ 
+-        class ListPackages(object):
++        class ListPackages:
+             def __init__(self):
+                 self._packages = ["vim", "pico"]
+                 self._pkgs = {
+@@ -1884,7 +1867,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+         """
+         _zpr = MagicMock()
+         _zpr.nolock.xml.call = MagicMock(return_value=minidom.parseString(xmldoc))
+-        assert isinstance(zypper.Wildcard(_zpr)("libzypp", "*.1"), six.string_types)
++        assert isinstance(zypper.Wildcard(_zpr)("libzypp", "*.1"), str)
+ 
+     def test_wildcard_to_query_condition_preservation(self):
+         """
+@@ -1904,14 +1887,14 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+ 
+         for op in zypper.Wildcard.Z_OP:
+             assert zypper.Wildcard(_zpr)(
+-                "libzypp", "{0}*.1".format(op)
+-            ) == "{0}17.2.6-27.9.1".format(op)
++                "libzypp", "{}*.1".format(op)
++            ) == "{}17.2.6-27.9.1".format(op)
+ 
+         # Auto-fix feature: moves operator from end to front
+         for op in zypper.Wildcard.Z_OP:
+             assert zypper.Wildcard(_zpr)(
+-                "libzypp", "16*{0}".format(op)
+-            ) == "{0}16.2.5-25.1".format(op)
++                "libzypp", "16*{}".format(op)
++            ) == "{}16.2.5-25.1".format(op)
+ 
+     def test_wildcard_to_query_unsupported_operators(self):
+         """
+@@ -1930,7 +1913,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+         _zpr.nolock.xml.call = MagicMock(return_value=minidom.parseString(xmldoc))
+         with self.assertRaises(CommandExecutionError):
+             for op in [">>", "==", "<<", "+"]:
+-                zypper.Wildcard(_zpr)("libzypp", "{0}*.1".format(op))
++                zypper.Wildcard(_zpr)("libzypp", "{}*.1".format(op))
+ 
+     @patch("salt.modules.zypperpkg._get_visible_patterns")
+     def test__get_installed_patterns(self, get_visible_patterns):
 -- 
-2.16.4
+2.29.2
 
 

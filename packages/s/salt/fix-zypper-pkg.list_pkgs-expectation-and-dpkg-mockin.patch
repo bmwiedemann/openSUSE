@@ -1,43 +1,53 @@
-From eb51734ad93b1fa0c6bc8fde861fdabfe3e0d6b0 Mon Sep 17 00:00:00 2001
+From 81f38c8cb16634b2c86b3e1e7c745870f90771d0 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 13 Jun 2019 17:48:55 +0200
 Subject: [PATCH] Fix zypper pkg.list_pkgs expectation and dpkg mocking
 
 ---
- tests/unit/modules/test_dpkg_lowpkg.py | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ tests/unit/modules/test_dpkg_lowpkg.py | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
 
 diff --git a/tests/unit/modules/test_dpkg_lowpkg.py b/tests/unit/modules/test_dpkg_lowpkg.py
-index a0b3346f9d..bc564f080a 100644
+index 160bbcd5b1..dadbc30dfa 100644
 --- a/tests/unit/modules/test_dpkg_lowpkg.py
 +++ b/tests/unit/modules/test_dpkg_lowpkg.py
-@@ -125,9 +125,9 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
-         with patch.dict(dpkg.__salt__, {'cmd.run_all': mock}):
-             self.assertEqual(dpkg.file_dict('httpd'), 'Error:  error')
+@@ -308,9 +308,14 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
+                         dpkg.bin_pkg_info("package.deb")["name"], "package_name"
+                     )
  
--    @patch('salt.modules.dpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
--    @patch('salt.modules.dpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
--    @patch('salt.modules.dpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
-+    @patch('salt.modules.dpkg_lowpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
-+    @patch('salt.modules.dpkg_lowpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
-+    @patch('salt.modules.dpkg_lowpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
+-    @patch("salt.modules.dpkg._get_pkg_ds_avail", MagicMock(return_value=dselect_pkg))
+-    @patch("salt.modules.dpkg._get_pkg_info", MagicMock(return_value=pkgs_info))
+-    @patch("salt.modules.dpkg._get_pkg_license", MagicMock(return_value="BSD v3"))
++    @patch(
++        "salt.modules.dpkg_lowpkg._get_pkg_ds_avail",
++        MagicMock(return_value=dselect_pkg),
++    )
++    @patch("salt.modules.dpkg_lowpkg._get_pkg_info", MagicMock(return_value=pkgs_info))
++    @patch(
++        "salt.modules.dpkg_lowpkg._get_pkg_license", MagicMock(return_value="BSD v3")
++    )
      def test_info(self):
-         '''
+         """
          Test info
-@@ -152,9 +152,9 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
-         assert pkg_data['maintainer'] == 'Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>'
-         assert pkg_data['license'] == 'BSD v3'
+@@ -359,9 +364,14 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
+         )
+         assert pkg_data["license"] == "BSD v3"
  
--    @patch('salt.modules.dpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
--    @patch('salt.modules.dpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
--    @patch('salt.modules.dpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
-+    @patch('salt.modules.dpkg_lowpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
-+    @patch('salt.modules.dpkg_lowpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
-+    @patch('salt.modules.dpkg_lowpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
+-    @patch("salt.modules.dpkg._get_pkg_ds_avail", MagicMock(return_value=dselect_pkg))
+-    @patch("salt.modules.dpkg._get_pkg_info", MagicMock(return_value=pkgs_info))
+-    @patch("salt.modules.dpkg._get_pkg_license", MagicMock(return_value="BSD v3"))
++    @patch(
++        "salt.modules.dpkg_lowpkg._get_pkg_ds_avail",
++        MagicMock(return_value=dselect_pkg),
++    )
++    @patch("salt.modules.dpkg_lowpkg._get_pkg_info", MagicMock(return_value=pkgs_info))
++    @patch(
++        "salt.modules.dpkg_lowpkg._get_pkg_license", MagicMock(return_value="BSD v3")
++    )
      def test_info_attr(self):
-         '''
+         """
          Test info with 'attr' parameter
 -- 
-2.16.4
+2.29.2
 
 

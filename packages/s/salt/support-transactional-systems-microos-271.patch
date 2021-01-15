@@ -1,4 +1,4 @@
-From 479ec4e978d81da75e45e2ead3193ca96e075753 Mon Sep 17 00:00:00 2001
+From aa0d6604a7c6e2a25e88679ec64855723e6cabbf Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Mon, 5 Oct 2020 16:32:44 +0200
 Subject: [PATCH] Support transactional systems (MicroOS) (#271)
@@ -38,16 +38,16 @@ Closes #58519
  .../modules/all/salt.modules.rebootmgr.rst    |    5 +
  .../all/salt.modules.transactional_update.rst |    5 +
  salt/executors/transactional_update.py        |  126 ++
- salt/grains/extra.py                          |   29 +
- salt/modules/chroot.py                        |   39 +-
+ salt/grains/extra.py                          |   42 +-
+ salt/modules/chroot.py                        |   46 +-
  salt/modules/rebootmgr.py                     |  357 +++++
- salt/modules/systemd_service.py               |   22 +-
+ salt/modules/systemd_service.py               |   21 +-
  salt/modules/transactional_update.py          | 1270 +++++++++++++++++
- salt/utils/systemd.py                         |   22 +
- tests/unit/modules/test_chroot.py             |   15 +
- tests/unit/modules/test_rebootmgr.py          |  304 ++++
- .../unit/modules/test_transactional_update.py |  683 +++++++++
- 16 files changed, 2882 insertions(+), 5 deletions(-)
+ salt/utils/systemd.py                         |   27 +-
+ tests/unit/modules/test_chroot.py             |   18 +-
+ tests/unit/modules/test_rebootmgr.py          |  302 ++++
+ .../unit/modules/test_transactional_update.py |  681 +++++++++
+ 16 files changed, 2880 insertions(+), 30 deletions(-)
  create mode 100644 changelog/58519.added
  create mode 100644 doc/ref/executors/all/salt.executors.transactional_update.rst
  create mode 100644 doc/ref/modules/all/salt.modules.rebootmgr.rst
@@ -88,10 +88,10 @@ index 0000000000..17f00b2d27
 +    :members:
 +
 diff --git a/doc/ref/modules/all/index.rst b/doc/ref/modules/all/index.rst
-index 8e1bf2ecf1..ec5f4b9cd9 100644
+index 9fea7af07f..f6780e1694 100644
 --- a/doc/ref/modules/all/index.rst
 +++ b/doc/ref/modules/all/index.rst
-@@ -371,6 +371,7 @@ execution modules
+@@ -394,6 +394,7 @@ execution modules
      rbac_solaris
      rbenv
      rdp
@@ -99,7 +99,7 @@ index 8e1bf2ecf1..ec5f4b9cd9 100644
      redismod
      reg
      rest_pkg
-@@ -457,6 +458,7 @@ execution modules
+@@ -480,6 +481,7 @@ execution modules
      tls
      tomcat
      trafficserver
@@ -262,21 +262,22 @@ index 0000000000..ef7d92bc05
 +
 +    return result
 diff --git a/salt/grains/extra.py b/salt/grains/extra.py
-index b30ab0091f..6a26aece77 100644
+index 0eec27e628..d25faac3b7 100644
 --- a/salt/grains/extra.py
 +++ b/salt/grains/extra.py
-@@ -3,14 +3,18 @@
- from __future__ import absolute_import, print_function, unicode_literals
- 
- # Import python libs
+@@ -1,16 +1,11 @@
+-# -*- coding: utf-8 -*-
+-
+-from __future__ import absolute_import, print_function, unicode_literals
+-
+-# Import third party libs
 +import glob
-+import logging
+ import logging
+-
+-# Import python libs
  import os
  
- # Import third party libs
- import logging
- 
- # Import salt libs
+-# Import salt libs
 +import salt.utils
  import salt.utils.data
  import salt.utils.files
@@ -284,9 +285,16 @@ index b30ab0091f..6a26aece77 100644
  import salt.utils.platform
  import salt.utils.yaml
  
-@@ -83,3 +87,28 @@ def suse_backported_capabilities():
-         '__suse_reserved_pkg_patches_support': True,
-         '__suse_reserved_saltutil_states_support': True
+@@ -70,7 +65,32 @@ def config():
+ 
+ def suse_backported_capabilities():
+     return {
+-        '__suse_reserved_pkg_all_versions_support': True,
+-        '__suse_reserved_pkg_patches_support': True,
+-        '__suse_reserved_saltutil_states_support': True
++        "__suse_reserved_pkg_all_versions_support": True,
++        "__suse_reserved_pkg_patches_support": True,
++        "__suse_reserved_saltutil_states_support": True,
      }
 +
 +
@@ -314,18 +322,31 @@ index b30ab0091f..6a26aece77 100644
 +    """Determine if the system in transactional."""
 +    return {"transactional": bool(salt.utils.path.which("transactional-update"))}
 diff --git a/salt/modules/chroot.py b/salt/modules/chroot.py
-index bc089ebf18..5e890b5c35 100644
+index 6512a70f88..1e2948607e 100644
 --- a/salt/modules/chroot.py
 +++ b/salt/modules/chroot.py
-@@ -21,6 +21,7 @@ import salt.defaults.exitcodes
+@@ -1,12 +1,9 @@
+-# -*- coding: utf-8 -*-
+-
+ """
+ :maintainer:    Alberto Planas <aplanas@suse.com>
+ :maturity:      new
+ :depends:       None
+ :platform:      Linux
+ """
+-from __future__ import absolute_import, print_function, unicode_literals
+ 
+ import copy
+ import logging
+@@ -21,6 +18,7 @@ import salt.defaults.exitcodes
  import salt.exceptions
  import salt.ext.six as six
  import salt.utils.args
 +import salt.utils.files
  
+ __func_alias__ = {"apply_": "apply"}
  
- __func_alias__ = {
-@@ -82,6 +83,38 @@ def create(root):
+@@ -79,6 +77,38 @@ def create(root):
      return True
  
  
@@ -362,10 +383,10 @@ index bc089ebf18..5e890b5c35 100644
 +
 +
  def call(root, function, *args, **kwargs):
-     '''
+     """
      Executes a Salt function inside a chroot environment.
-@@ -121,7 +154,7 @@ def call(root, function, *args, **kwargs):
-         so_mods=__salt__['config.option']('thin_so_mods', '')
+@@ -116,7 +146,7 @@ def call(root, function, *args, **kwargs):
+         so_mods=__salt__["config.option"]("thin_so_mods", ""),
      )
      # Some bug in Salt is preventing us to use `archive.tar` here. A
 -    # AsyncZeroMQReqChannel is not closed at the end os the salt-call,
@@ -373,24 +394,39 @@ index bc089ebf18..5e890b5c35 100644
      # and makes the client never exit.
      #
      # stdout = __salt__['archive.tar']('xzf', thin_path, dest=thin_dest_path)
-@@ -198,7 +231,7 @@ def apply_(root, mods=None, **kwargs):
+@@ -194,7 +224,7 @@ def apply_(root, mods=None, **kwargs):
  
  def _create_and_execute_salt_state(root, chunks, file_refs, test, hash_type):
-     '''
+     """
 -    Create the salt_stage tarball, and execute in the chroot
 +    Create the salt_state tarball, and execute in the chroot
-     '''
+     """
      # Create the tar containing the state pkg and relevant files.
      salt.client.ssh.wrapper.state._cleanup_slsmod_low_data(chunks)
-@@ -210,7 +243,7 @@ def _create_and_execute_salt_state(root, chunks, file_refs, test, hash_type):
+@@ -206,7 +236,7 @@ def _create_and_execute_salt_state(root, chunks, file_refs, test, hash_type):
      ret = None
  
      # Create a temporary directory inside the chroot where we can move
 -    # the salt_stage.tgz
 +    # the salt_state.tgz
      salt_state_path = tempfile.mkdtemp(dir=root)
-     salt_state_path = os.path.join(salt_state_path, 'salt_state.tgz')
-     salt_state_path_in_chroot = salt_state_path.replace(root, '', 1)
+     salt_state_path = os.path.join(salt_state_path, "salt_state.tgz")
+     salt_state_path_in_chroot = salt_state_path.replace(root, "", 1)
+@@ -270,12 +300,12 @@ def sls(root, mods, saltenv="base", test=None, exclude=None, **kwargs):
+         opts, pillar, __salt__, salt.fileclient.get_file_client(__opts__)
+     )
+ 
+-    if isinstance(mods, six.string_types):
++    if isinstance(mods, str):
+         mods = mods.split(",")
+ 
+     high_data, errors = st_.render_highstate({saltenv: mods})
+     if exclude:
+-        if isinstance(exclude, six.string_types):
++        if isinstance(exclude, str):
+             exclude = exclude.split(",")
+         if "__exclude__" in high_data:
+             high_data["__exclude__"].extend(exclude)
 diff --git a/salt/modules/rebootmgr.py b/salt/modules/rebootmgr.py
 new file mode 100644
 index 0000000000..96133c754b
@@ -755,15 +791,14 @@ index 0000000000..96133c754b
 +
 +    return _cmd(cmd)
 diff --git a/salt/modules/systemd_service.py b/salt/modules/systemd_service.py
-index e39962f9ac..a684ec0778 100644
+index 03e7268cd4..49e5bd813f 100644
 --- a/salt/modules/systemd_service.py
 +++ b/salt/modules/systemd_service.py
-@@ -56,8 +56,10 @@ def __virtual__():
-     '''
+@@ -64,7 +64,10 @@ def __virtual__():
+     """
      Only work on systems that have been booted with systemd
-     '''
--    if __grains__['kernel'] == 'Linux' \
--       and salt.utils.systemd.booted(__context__):
+     """
+-    if __grains__.get("kernel") == "Linux" and salt.utils.systemd.booted(__context__):
 +    is_linux = __grains__.get("kernel") == "Linux"
 +    is_booted = salt.utils.systemd.booted(__context__)
 +    is_offline = salt.utils.systemd.offline(__context__)
@@ -771,8 +806,8 @@ index e39962f9ac..a684ec0778 100644
          return __virtualname__
      return (
          False,
-@@ -1419,3 +1421,19 @@ def firstboot(locale=None, locale_message=None, keymap=None,
-             'systemd-firstboot error: {}'.format(out['stderr']))
+@@ -1447,3 +1450,19 @@ def firstboot(
+         raise CommandExecutionError("systemd-firstboot error: {}".format(out["stderr"]))
  
      return True
 +
@@ -2068,18 +2103,30 @@ index 0000000000..9b14557e07
 +        chunks, file_refs, test, hash_type, activate_transaction
 +    )
 diff --git a/salt/utils/systemd.py b/salt/utils/systemd.py
-index 060bc1e3fb..674b6d419f 100644
+index e830d36ed4..4d902bc920 100644
 --- a/salt/utils/systemd.py
 +++ b/salt/utils/systemd.py
-@@ -11,6 +11,7 @@ import subprocess
+@@ -1,18 +1,14 @@
+-# -*- coding: utf-8 -*-
+ """
+ Contains systemd related help files
+ """
+-# import python libs
+-from __future__ import absolute_import, print_function, unicode_literals
  
- # Import Salt libs
- from salt.exceptions import SaltInvocationError
+ import logging
+ import os
+ import re
+ import subprocess
+ 
 +import salt.utils.path
  import salt.utils.stringutils
+-
+-# Import Salt libs
+ from salt.exceptions import SaltInvocationError
  
  log = logging.getLogger(__name__)
-@@ -47,6 +48,27 @@ def booted(context=None):
+@@ -49,6 +45,27 @@ def booted(context=None):
      return ret
  
  
@@ -2105,24 +2152,37 @@ index 060bc1e3fb..674b6d419f 100644
 +
 +
  def version(context=None):
-     '''
+     """
      Attempts to run systemctl --version. Returns None if unable to determine
 diff --git a/tests/unit/modules/test_chroot.py b/tests/unit/modules/test_chroot.py
-index de3041e98f..62808ed680 100644
+index 76811df46e..196e3ad27f 100644
 --- a/tests/unit/modules/test_chroot.py
 +++ b/tests/unit/modules/test_chroot.py
-@@ -31,6 +31,9 @@ from __future__ import absolute_import, print_function, unicode_literals
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #
+ # Author: Alberto Planas <aplanas@suse.com>
+ #
+@@ -26,16 +25,13 @@
+ :platform:      Linux
+ """
+ 
+-# Import Python Libs
+-from __future__ import absolute_import, print_function, unicode_literals
+ 
  import sys
  
- # Import Salt Testing Libs
 +import salt.modules.chroot as chroot
-+import salt.utils.platform
-+from salt.exceptions import CommandExecutionError
+ import salt.modules.chroot as chroot
+ import salt.utils.platform
+ from salt.exceptions import CommandExecutionError
+-
+-# Import Salt Testing Libs
  from tests.support.mixins import LoaderModuleMockMixin
- from tests.support.unit import skipIf, TestCase
  from tests.support.mock import MagicMock, patch
-@@ -80,6 +83,18 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
-         self.assertTrue(chroot.create('/chroot'))
+ from tests.support.unit import TestCase, skipIf
+@@ -75,6 +71,18 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
+         self.assertTrue(chroot.create("/chroot"))
          makedirs.assert_called()
  
 +    @patch("salt.modules.chroot.exist")
@@ -2137,20 +2197,18 @@ index de3041e98f..62808ed680 100644
 +            fopen.read = MagicMock(side_effect=(root_mountinfo, self_mountinfo))
 +            self.assertEqual(chroot.in_chroot(), result)
 +
-     @patch('salt.modules.chroot.exist')
+     @patch("salt.modules.chroot.exist")
      def test_call_fails_input_validation(self, exist):
-         '''
+         """
 diff --git a/tests/unit/modules/test_rebootmgr.py b/tests/unit/modules/test_rebootmgr.py
 new file mode 100644
-index 0000000000..4cf573997c
+index 0000000000..a84dec2c1c
 --- /dev/null
 +++ b/tests/unit/modules/test_rebootmgr.py
-@@ -0,0 +1,304 @@
+@@ -0,0 +1,302 @@
 +import pytest
 +import salt.modules.rebootmgr as rebootmgr
 +from salt.exceptions import CommandExecutionError
-+
-+# Import Salt Testing Libs
 +from tests.support.mixins import LoaderModuleMockMixin
 +from tests.support.mock import MagicMock, patch
 +from tests.support.unit import TestCase
@@ -2452,18 +2510,16 @@ index 0000000000..4cf573997c
 +            )
 diff --git a/tests/unit/modules/test_transactional_update.py b/tests/unit/modules/test_transactional_update.py
 new file mode 100644
-index 0000000000..b42734a53d
+index 0000000000..08a704c212
 --- /dev/null
 +++ b/tests/unit/modules/test_transactional_update.py
-@@ -0,0 +1,683 @@
+@@ -0,0 +1,681 @@
 +import sys
 +
 +import pytest
 +import salt.modules.transactional_update as tu
 +import salt.utils.platform
 +from salt.exceptions import CommandExecutionError
-+
-+# Import Salt Testing Libs
 +from tests.support.mixins import LoaderModuleMockMixin
 +from tests.support.mock import MagicMock, patch
 +from tests.support.unit import TestCase, skipIf
@@ -3140,6 +3196,6 @@ index 0000000000..b42734a53d
 +            assert tu.single("pkg.installed", name="emacs") == "result"
 +            _create_and_execute_salt_state.assert_called_once()
 -- 
-2.28.0
+2.29.2
 
 

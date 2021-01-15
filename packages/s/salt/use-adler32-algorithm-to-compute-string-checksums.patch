@@ -1,4 +1,4 @@
-From a8e3defcb484296e18343c6447649fe508ab2644 Mon Sep 17 00:00:00 2001
+From 267868c148619be1eb89bcfa9c1184fa809fce2d Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Sat, 28 Jul 2018 22:59:04 +0200
 Subject: [PATCH] Use Adler32 algorithm to compute string checksums
@@ -15,130 +15,121 @@ Choose CRC method, default to faster but less reliable "adler32", if crc is in u
 
 Add warning for Sodium.
 ---
- salt/config/__init__.py |  7 ++++++-
- salt/grains/core.py     | 53 ++++++++++++++++++++++++++++++++-----------------
- 2 files changed, 41 insertions(+), 19 deletions(-)
+ salt/config/__init__.py |  4 +++
+ salt/grains/core.py     | 56 ++++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 56 insertions(+), 4 deletions(-)
 
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index 70b34ec949..0ebe1181dd 100644
+index 8b498ab9e2..6d30fca072 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -1190,6 +1190,10 @@ VALID_OPTS = immutabletypes.freeze({
-     # Allow raw_shell option when using the ssh
-     # client via the Salt API
-     'netapi_allow_raw_shell': bool,
-+
-+    # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
-+    # Possible values are: False, adler32, crc32
-+    'server_id_use_crc': (bool, six.string_types),
- })
+@@ -945,6 +945,9 @@ VALID_OPTS = immutabletypes.freeze(
+         "disabled_requisites": (str, list),
+         # Feature flag config
+         "features": dict,
++        # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
++        # Possible values are: False, adler32, crc32
++        "server_id_use_crc": (bool, str),
+     }
+ )
  
- # default configurations
-@@ -1480,7 +1484,8 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze({
-     'minion_sign_messages': False,
-     'discovery': False,
-     'schedule': {},
--    'ssh_merge_pillar': True
-+    'ssh_merge_pillar': True,
-+    'server_id_use_crc': False,
- })
+@@ -1243,6 +1246,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
+         "schedule": {},
+         "ssh_merge_pillar": True,
+         "disabled_requisites": [],
++        "server_id_use_crc": False,
+     }
+ )
  
- DEFAULT_MASTER_OPTS = immutabletypes.freeze({
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 2851809472..9c1b5d930e 100644
+index 00bd0565bf..5535584d1b 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -20,6 +20,7 @@ import platform
- import logging
- import locale
+@@ -20,6 +20,7 @@ import socket
+ import sys
+ import time
  import uuid
 +import zlib
  from errno import EACCES, EPERM
- import datetime
- import warnings
-@@ -62,6 +63,7 @@ import salt.utils.path
+ 
+ import distro
+@@ -39,6 +40,7 @@ import salt.utils.path
  import salt.utils.pkg.rpm
  import salt.utils.platform
  import salt.utils.stringutils
 +import salt.utils.versions
- from salt.ext import six
  from salt.ext.six.moves import range
+ from salt.utils.network import _get_interfaces
  
-@@ -2792,40 +2794,55 @@ def _hw_data(osdata):
+@@ -2935,6 +2937,36 @@ def _hw_data(osdata):
      return grains
  
  
--def get_server_id():
 +def _get_hash_by_shell():
-     '''
--    Provides an integer based on the FQDN of a machine.
--    Useful as server-id in MySQL replication or anywhere else you'll need an ID
--    like this.
++    """
 +    Shell-out Python 3 for compute reliable hash
 +    :return:
-     '''
--    # Provides:
--    #   server_id
--
--    if salt.utils.platform.is_proxy():
--        return {}
-     id_ = __opts__.get('id', '')
-     id_hash = None
-     py_ver = sys.version_info[:2]
-     if py_ver >= (3, 3):
-         # Python 3.3 enabled hash randomization, so we need to shell out to get
-         # a reliable hash.
--        id_hash = __salt__['cmd.run'](
--            [sys.executable, '-c', 'print(hash("{0}"))'.format(id_)],
--            env={'PYTHONHASHSEED': '0'}
--        )
-+        id_hash = __salt__['cmd.run']([sys.executable, '-c', 'print(hash("{0}"))'.format(id_)],
-+                                      env={'PYTHONHASHSEED': '0'})
-         try:
-             id_hash = int(id_hash)
-         except (TypeError, ValueError):
--            log.debug(
--                'Failed to hash the ID to get the server_id grain. Result of '
--                'hash command: %s', id_hash
--            )
-+            log.debug('Failed to hash the ID to get the server_id grain. Result of hash command: %s', id_hash)
-             id_hash = None
-     if id_hash is None:
-         # Python < 3.3 or error encountered above
-         id_hash = hash(id_)
- 
--    return {'server_id': abs(id_hash % (2 ** 31))}
++    """
++    id_ = __opts__.get("id", "")
++    id_hash = None
++    py_ver = sys.version_info[:2]
++    if py_ver >= (3, 3):
++        # Python 3.3 enabled hash randomization, so we need to shell out to get
++        # a reliable hash.
++        id_hash = __salt__["cmd.run"](
++            [sys.executable, "-c", 'print(hash("{}"))'.format(id_)],
++            env={"PYTHONHASHSEED": "0"},
++        )
++        try:
++            id_hash = int(id_hash)
++        except (TypeError, ValueError):
++            log.debug(
++                "Failed to hash the ID to get the server_id grain. Result of hash command: %s",
++                id_hash,
++            )
++            id_hash = None
++    if id_hash is None:
++        # Python < 3.3 or error encountered above
++        id_hash = hash(id_)
++
 +    return abs(id_hash % (2 ** 31))
 +
 +
-+def get_server_id():
-+    '''
-+    Provides an integer based on the FQDN of a machine.
-+    Useful as server-id in MySQL replication or anywhere else you'll need an ID
-+    like this.
-+    '''
-+    # Provides:
-+    #   server_id
-+
-+    if salt.utils.platform.is_proxy():
+ def get_server_id():
+     """
+     Provides an integer based on the FQDN of a machine.
+@@ -2945,10 +2977,26 @@ def get_server_id():
+     #   server_id
+ 
+     if salt.utils.platform.is_proxy():
+-        return {}
+-    id_ = __opts__.get("id", "")
+-    hash_ = int(hashlib.sha256(id_.encode()).hexdigest(), 16)
+-    return {"server_id": abs(hash_ % (2 ** 31))}
 +        server_id = {}
 +    else:
-+        use_crc = __opts__.get('server_id_use_crc')
++        use_crc = __opts__.get("server_id_use_crc")
 +        if bool(use_crc):
-+            id_hash = getattr(zlib, use_crc, zlib.adler32)(__opts__.get('id', '').encode()) & 0xffffffff
++            id_hash = (
++                getattr(zlib, use_crc, zlib.adler32)(__opts__.get("id", "").encode())
++                & 0xFFFFFFFF
++            )
 +        else:
-+            salt.utils.versions.warn_until('Sodium', 'This server_id is computed nor by Adler32 neither by CRC32. '
-+                                                     'Please use "server_id_use_crc" option and define algorithm you'
-+                                                     'prefer (default "Adler32"). The server_id will be computed with'
-+                                                     'Adler32 by default.')
++            salt.utils.versions.warn_until(
++                "Sodium",
++                "This server_id is computed nor by Adler32 neither by CRC32. "
++                'Please use "server_id_use_crc" option and define algorithm you'
++                'prefer (default "Adler32"). The server_id will be computed with'
++                "Adler32 by default.",
++            )
 +            id_hash = _get_hash_by_shell()
-+        server_id = {'server_id': id_hash}
++        server_id = {"server_id": id_hash}
 +
 +    return server_id
  
  
  def get_master():
 -- 
-2.16.4
+2.29.2
 
 

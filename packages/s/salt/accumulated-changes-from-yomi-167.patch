@@ -1,4 +1,4 @@
-From 951d2a385a40c5322155f952e08430e8402bfbde Mon Sep 17 00:00:00 2001
+From 828650500159fd7040d2fa76b2fc4d2b627f7065 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Tue, 22 Oct 2019 11:02:33 +0200
 Subject: [PATCH] Accumulated changes from Yomi (#167)
@@ -17,190 +17,207 @@ This patch ignore this kind of issue during the grains creation.
 
 (cherry picked from commit b865491b74679140f7a71c5ba50d482db47b600f)
 ---
- salt/grains/core.py                  |  4 +++
- salt/modules/zypperpkg.py            | 30 +++++++++++-----
- tests/unit/grains/test_core.py       | 68 ++++++++++++++++++++++++++++++++++++
- tests/unit/modules/test_zypperpkg.py | 26 ++++++++++++++
- 4 files changed, 119 insertions(+), 9 deletions(-)
+ salt/grains/core.py                  |  6 +--
+ salt/modules/zypperpkg.py            | 22 ----------
+ tests/unit/grains/test_core.py       | 64 +++++++++++++++++++++++++++-
+ tests/unit/modules/test_zypperpkg.py | 38 +++++++++++++++++
+ 4 files changed, 103 insertions(+), 27 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 77ae99590f..68c43482d3 100644
+index 0dc1d97f97..a2983e388b 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -997,6 +997,10 @@ def _virtual(osdata):
-                         grains['virtual'] = 'gce'
-                     elif 'BHYVE' in output:
-                         grains['virtual'] = 'bhyve'
-+            except UnicodeDecodeError:
-+                # Some firmwares provide non-valid 'product_name'
-+                # files, ignore them
+@@ -1046,7 +1046,7 @@ def _virtual(osdata):
+         if os.path.isfile("/sys/devices/virtual/dmi/id/product_name"):
+             try:
+                 with salt.utils.files.fopen(
+-                    "/sys/devices/virtual/dmi/id/product_name", "rb"
++                    "/sys/devices/virtual/dmi/id/product_name", "r"
+                 ) as fhr:
+                     output = salt.utils.stringutils.to_unicode(
+                         fhr.read(), errors="replace"
+@@ -1066,9 +1066,7 @@ def _virtual(osdata):
+             except UnicodeDecodeError:
+                 # Some firmwares provide non-valid 'product_name'
+                 # files, ignore them
+-                log.debug(
+-                    "The content in /sys/devices/virtual/dmi/id/product_name is not valid"
+-                )
 +                pass
-             except IOError:
+             except OSError:
                  pass
-     elif osdata['kernel'] == 'FreeBSD':
+     elif osdata["kernel"] == "FreeBSD":
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index f7158e0810..5f3b6d6855 100644
+index 2daec0f380..b5621174a4 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -863,23 +863,35 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
-             _ret[pkgname] = sorted(ret[pkgname], key=lambda d: d['version'])
+@@ -958,28 +958,6 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
+                         }
+                     ]
  
-         for include in includes:
-+            if include == 'product':
-+                products = list_products(all=False, root=root)
-+                for product in products:
-+                    extended_name = '{}:{}'.format(include, product['name'])
-+                    _ret[extended_name] = [{
-+                        'epoch': product['epoch'],
-+                        'version': product['version'],
-+                        'release': product['release'],
-+                        'arch': product['arch'],
-+                        'install_date': None,
-+                        'install_date_time_t': None,
-+                    }]
-             if include in ('pattern', 'patch'):
-                 if include == 'pattern':
+-        for include in includes:
+-            if include in ("pattern", "patch"):
+-                if include == "pattern":
 -                    pkgs = list_installed_patterns(root=root)
-+                    elements = list_installed_patterns(root=root)
-                 elif include == 'patch':
+-                elif include == "patch":
 -                    pkgs = list_installed_patches(root=root)
-+                    elements = list_installed_patches(root=root)
-                 else:
+-                else:
 -                    pkgs = []
 -                for pkg in pkgs:
--                    pkg_extended_name = '{}:{}'.format(include, pkg)
--                    info = info_available(pkg_extended_name,
-+                    elements = []
-+                for element in elements:
-+                    extended_name = '{}:{}'.format(include, element)
-+                    info = info_available(extended_name,
-                                           refresh=False,
-                                           root=root)
--                    _ret[pkg_extended_name] = [{
-+                    _ret[extended_name] = [{
-                         'epoch': None,
--                        'version': info[pkg]['version'],
-+                        'version': info[element]['version'],
-                         'release': None,
--                        'arch': info[pkg]['arch'],
-+                        'arch': info[element]['arch'],
-                         'install_date': None,
-                         'install_date_time_t': None,
-                     }]
+-                    pkg_extended_name = "{}:{}".format(include, pkg)
+-                    info = info_available(pkg_extended_name, refresh=False, root=root)
+-                    _ret[pkg_extended_name] = [
+-                        {
+-                            "epoch": None,
+-                            "version": info[pkg]["version"],
+-                            "release": None,
+-                            "arch": info[pkg]["arch"],
+-                            "install_date": None,
+-                            "install_date_time_t": None,
+-                        }
+-                    ]
+-
+         __context__[contextkey] = _ret
+ 
+     return __salt__["pkg_resource.format_pkg_list"](
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index e722bfab5b..33d6a9507f 100644
+index a5ceeb8317..0dc3423646 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -1559,3 +1559,71 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-             assert len(info) == 2
-         assert all([x is not None for x in info])
-         assert all([isinstance(x, int) for x in info])
-+
-+    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+@@ -2047,13 +2047,74 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+             result = core.path()
+         assert result == {"path": path, "systempath": comps}, result
+ 
++    @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
++    @patch("os.path.exists")
++    @patch("salt.utils.platform.is_proxy")
 +    def test_kernelparams_return(self):
 +        expectations = [
-+            ('BOOT_IMAGE=/vmlinuz-3.10.0-693.2.2.el7.x86_64',
-+             {'kernelparams': [('BOOT_IMAGE', '/vmlinuz-3.10.0-693.2.2.el7.x86_64')]}),
-+            ('root=/dev/mapper/centos_daemon-root',
-+             {'kernelparams': [('root', '/dev/mapper/centos_daemon-root')]}),
-+            ('rhgb quiet ro',
-+             {'kernelparams': [('rhgb', None), ('quiet', None), ('ro', None)]}),
-+            ('param="value1"',
-+             {'kernelparams': [('param', 'value1')]}),
-+            ('param="value1 value2 value3"',
-+             {'kernelparams': [('param', 'value1 value2 value3')]}),
-+            ('param="value1 value2 value3" LANG="pl" ro',
-+             {'kernelparams': [('param', 'value1 value2 value3'), ('LANG', 'pl'), ('ro', None)]}),
-+            ('ipv6.disable=1',
-+             {'kernelparams': [('ipv6.disable', '1')]}),
-+            ('param="value1:value2:value3"',
-+             {'kernelparams': [('param', 'value1:value2:value3')]}),
-+            ('param="value1,value2,value3"',
-+             {'kernelparams': [('param', 'value1,value2,value3')]}),
-+            ('param="value1" param="value2" param="value3"',
-+             {'kernelparams': [('param', 'value1'), ('param', 'value2'), ('param', 'value3')]}),
++            (
++                "BOOT_IMAGE=/vmlinuz-3.10.0-693.2.2.el7.x86_64",
++                {
++                    "kernelparams": [
++                        ("BOOT_IMAGE", "/vmlinuz-3.10.0-693.2.2.el7.x86_64")
++                    ]
++                },
++            ),
++            (
++                "root=/dev/mapper/centos_daemon-root",
++                {"kernelparams": [("root", "/dev/mapper/centos_daemon-root")]},
++            ),
++            (
++                "rhgb quiet ro",
++                {"kernelparams": [("rhgb", None), ("quiet", None), ("ro", None)]},
++            ),
++            ('param="value1"', {"kernelparams": [("param", "value1")]}),
++            (
++                'param="value1 value2 value3"',
++                {"kernelparams": [("param", "value1 value2 value3")]},
++            ),
++            (
++                'param="value1 value2 value3" LANG="pl" ro',
++                {
++                    "kernelparams": [
++                        ("param", "value1 value2 value3"),
++                        ("LANG", "pl"),
++                        ("ro", None),
++                    ]
++                },
++            ),
++            ("ipv6.disable=1", {"kernelparams": [("ipv6.disable", "1")]}),
++            (
++                'param="value1:value2:value3"',
++                {"kernelparams": [("param", "value1:value2:value3")]},
++            ),
++            (
++                'param="value1,value2,value3"',
++                {"kernelparams": [("param", "value1,value2,value3")]},
++            ),
++            (
++                'param="value1" param="value2" param="value3"',
++                {
++                    "kernelparams": [
++                        ("param", "value1"),
++                        ("param", "value2"),
++                        ("param", "value3"),
++                    ]
++                },
++            ),
 +        ]
 +
 +        for cmdline, expectation in expectations:
-+            with patch('salt.utils.files.fopen', mock_open(read_data=cmdline)):
++            with patch("salt.utils.files.fopen", mock_open(read_data=cmdline)):
 +                self.assertEqual(core.kernelparams(), expectation)
 +
-+    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
-+    @patch('os.path.exists')
-+    @patch('salt.utils.platform.is_proxy')
-+    def test__hw_data_linux_empty(self, is_proxy, exists):
-+        is_proxy.return_value = False
-+        exists.return_value = True
-+        with patch('salt.utils.files.fopen', mock_open(read_data='')):
-+            self.assertEqual(core._hw_data({'kernel': 'Linux'}), {
-+                'biosreleasedate': '',
-+                'biosversion': '',
-+                'manufacturer': '',
-+                'productname': '',
-+                'serialnumber': '',
-+                'uuid': ''
-+            })
-+
-+    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
-+    @skipIf(six.PY2, 'UnicodeDecodeError is throw in Python 3')
-+    @patch('os.path.exists')
-+    @patch('salt.utils.platform.is_proxy')
-+    def test__hw_data_linux_unicode_error(self, is_proxy, exists):
-+        def _fopen(*args):
-+            class _File(object):
-+                def __enter__(self):
-+                    return self
-+
-+                def __exit__(self, *args):
-+                    pass
-+
-+                def read(self):
-+                    raise UnicodeDecodeError('enconding', b'', 1, 2, 'reason')
-+
-+            return _File()
-+
-+        is_proxy.return_value = False
-+        exists.return_value = True
-+        with patch('salt.utils.files.fopen', _fopen):
-+            self.assertEqual(core._hw_data({'kernel': 'Linux'}), {})
+     @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
+     @patch("os.path.exists")
+     @patch("salt.utils.platform.is_proxy")
+     def test__hw_data_linux_empty(self, is_proxy, exists):
+         is_proxy.return_value = False
+         exists.return_value = True
+-        with patch("salt.utils.files.fopen", mock_open(read_data=b"")):
++        with patch("salt.utils.files.fopen", mock_open(read_data="")):
+             self.assertEqual(
+                 core._hw_data({"kernel": "Linux"}),
+                 {
+@@ -2067,6 +2128,7 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+             )
+ 
+     @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
++    @skipIf(six.PY2, "UnicodeDecodeError is throw in Python 3")
+     @patch("os.path.exists")
+     @patch("salt.utils.platform.is_proxy")
+     def test__hw_data_linux_unicode_error(self, is_proxy, exists):
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 6102043384..76937cc358 100644
+index 5d4e7766b6..1b62122e0e 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -944,6 +944,32 @@ Repository 'DUMMY' not found by its alias, number, or URI.
-                 with self.assertRaisesRegex(CommandExecutionError, '^Advisory id "SUSE-PATCH-XXX" not found$'):
-                     zypper.install(advisory_ids=['SUSE-PATCH-XXX'])
+@@ -1424,6 +1424,44 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+                     ret, {"product:openSUSE": {"old": "15.2", "new": "15.3"}}
+                 )
  
-+    @patch('salt.modules.zypperpkg._systemd_scope',
-+           MagicMock(return_value=False))
-+    @patch('salt.modules.zypperpkg.list_products',
-+           MagicMock(return_value={'openSUSE': {'installed': False, 'summary': 'test'}}))
-+    @patch('salt.modules.zypperpkg.list_pkgs', MagicMock(side_effect=[{"product:openSUSE": "15.2"},
-+                                                                      {"product:openSUSE": "15.3"}]))
++    @patch("salt.modules.zypperpkg._systemd_scope", MagicMock(return_value=False))
++    @patch(
++        "salt.modules.zypperpkg.list_products",
++        MagicMock(return_value={"openSUSE": {"installed": False, "summary": "test"}}),
++    )
++    @patch(
++        "salt.modules.zypperpkg.list_pkgs",
++        MagicMock(
++            side_effect=[{"product:openSUSE": "15.2"}, {"product:openSUSE": "15.3"}]
++        ),
++    )
 +    def test_install_product_ok(self):
-+        '''
++        """
 +        Test successfully product installation.
-+        '''
-+        with patch.dict(zypper.__salt__,
-+                        {
-+                            'pkg_resource.parse_targets': MagicMock(
-+                                return_value=(['product:openSUSE'], None))
-+                        }):
-+            with patch('salt.modules.zypperpkg.__zypper__.noraise.call', MagicMock()) as zypper_mock:
-+                ret = zypper.install('product:openSUSE', includes=['product'])
-+                zypper_mock.assert_called_once_with(
-+                    '--no-refresh',
-+                    'install',
-+                    '--auto-agree-with-licenses',
-+                    '--name',
-+                    'product:openSUSE'
++        """
++        with patch.dict(
++            zypper.__salt__,
++            {
++                "pkg_resource.parse_targets": MagicMock(
++                    return_value=(["product:openSUSE"], None)
 +                )
-+                self.assertDictEqual(ret, {"product:openSUSE": {"old": "15.2", "new": "15.3"}})
++            },
++        ):
++            with patch(
++                "salt.modules.zypperpkg.__zypper__.noraise.call", MagicMock()
++            ) as zypper_mock:
++                ret = zypper.install("product:openSUSE", includes=["product"])
++                zypper_mock.assert_called_once_with(
++                    "--no-refresh",
++                    "install",
++                    "--auto-agree-with-licenses",
++                    "--name",
++                    "product:openSUSE",
++                )
++                self.assertDictEqual(
++                    ret, {"product:openSUSE": {"old": "15.2", "new": "15.3"}}
++                )
 +
      def test_remove_purge(self):
-         '''
+         """
          Test package removal
 -- 
-2.16.4
+2.29.2
 
 

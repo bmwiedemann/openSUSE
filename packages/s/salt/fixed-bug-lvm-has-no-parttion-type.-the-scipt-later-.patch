@@ -1,4 +1,4 @@
-From 3df8359421f60140fd335d95c3c06de0bfd6ac4f Mon Sep 17 00:00:00 2001
+From 17ad05e3cbb3718ca12cef20600be81aa5d42d33 Mon Sep 17 00:00:00 2001
 From: tyl0re <andreas@vogler.name>
 Date: Wed, 17 Jul 2019 10:13:09 +0200
 Subject: [PATCH] Fixed Bug LVM has no Parttion Type. the Scipt Later
@@ -11,23 +11,41 @@ Subject: [PATCH] Fixed Bug LVM has no Parttion Type. the Scipt Later
 
 So the check on not defined fs_type is missing
 ---
- salt/modules/parted_partition.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ salt/modules/parted_partition.py | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
 
 diff --git a/salt/modules/parted_partition.py b/salt/modules/parted_partition.py
-index 9441fec49fd1833da590b3f65637e8e92b287d1c..7d08a7b315c990e7a87c9c77fd6550a6174b7160 100644
+index 015d4cbc29..bb34cd58b4 100644
 --- a/salt/modules/parted_partition.py
 +++ b/salt/modules/parted_partition.py
-@@ -515,7 +515,7 @@ def mkpartfs(device, part_type, fs_type, start, end):
-             'Invalid part_type passed to partition.mkpartfs'
-         )
+@@ -552,10 +552,23 @@ def mkpartfs(device, part_type, fs_type=None, start=None, end=None):
  
--    if not _is_fstype(fs_type):
+     .. code-block:: bash
+ 
+-        salt '*' partition.mkpartfs /dev/sda primary fs_type=fat32 start=0 end=639
+-        salt '*' partition.mkpartfs /dev/sda primary start=0 end=639
++        salt '*' partition.mkpartfs /dev/sda logical ext2 440 670
+     """
+-    out = mkpart(device, part_type, fs_type, start, end)
++    _validate_device(device)
++
++    if part_type not in {"primary", "logical", "extended"}:
++        raise CommandExecutionError("Invalid part_type passed to partition.mkpartfs")
++
 +    if fs_type and not _is_fstype(fs_type):
-         raise CommandExecutionError(
-             'Invalid fs_type passed to partition.mkpartfs'
-         )
++        raise CommandExecutionError("Invalid fs_type passed to partition.mkpartfs")
++
++    _validate_partition_boundary(start)
++    _validate_partition_boundary(end)
++
++    cmd = "parted -m -s -- {} mkpart {} {} {} {}".format(
++        device, part_type, fs_type, start, end
++    )
++    out = __salt__["cmd.run"](cmd).splitlines()
+     return out
+ 
+ 
 -- 
-2.23.0
+2.29.2
 
 

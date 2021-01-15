@@ -1,18 +1,18 @@
-From c820b9e652474b4866fe099a709b52fe3b715ce9 Mon Sep 17 00:00:00 2001
+From 9cb1618a66e691d2cc53edcf64f475e829e701a5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 27 Nov 2019 15:41:57 +0000
 Subject: [PATCH] Prevent test_mod_del_repo_multiline_values to fail
 
 ---
- tests/integration/modules/test_pkg.py | 20 ++++++++++++++------
- 1 file changed, 14 insertions(+), 6 deletions(-)
+ tests/integration/modules/test_pkg.py | 28 +++++++++++++++++++++------
+ 1 file changed, 22 insertions(+), 6 deletions(-)
 
 diff --git a/tests/integration/modules/test_pkg.py b/tests/integration/modules/test_pkg.py
-index 61748f9477..6f3767bfbd 100644
+index e32013800d..3ece73074b 100644
 --- a/tests/integration/modules/test_pkg.py
 +++ b/tests/integration/modules/test_pkg.py
-@@ -167,17 +167,24 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+@@ -179,17 +179,30 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
                      enabled=enabled,
                      failovermethod=failovermethod,
                  )
@@ -22,36 +22,44 @@ index 61748f9477..6f3767bfbd 100644
 -                repo_info = ret[next(iter(ret))]
 +                repo_info = {repo: ret}
                  self.assertIn(repo, repo_info)
--                self.assertEqual(repo_info[repo]['baseurl'], my_baseurl)
-+                if os_grain == 'SUSE':
-+                    self.assertEqual(repo_info[repo]['baseurl'], expected_get_repo_baseurl_zypp)
+-                self.assertEqual(repo_info[repo]["baseurl"], my_baseurl)
++                if os_grain == "SUSE":
++                    self.assertEqual(
++                        repo_info[repo]["baseurl"], expected_get_repo_baseurl_zypp
++                    )
 +                else:
-+                    self.assertEqual(repo_info[repo]['baseurl'], my_baseurl)
-                 ret = self.run_function('pkg.get_repo', [repo])
--                self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
-+                if os_grain == 'SUSE':
-+                    self.assertEqual(repo_info[repo]['baseurl'], expected_get_repo_baseurl_zypp)
++                    self.assertEqual(repo_info[repo]["baseurl"], my_baseurl)
+                 ret = self.run_function("pkg.get_repo", [repo])
+-                self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
++                if os_grain == "SUSE":
++                    self.assertEqual(
++                        repo_info[repo]["baseurl"], expected_get_repo_baseurl_zypp
++                    )
 +                else:
-+                    self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
-                 self.run_function('pkg.mod_repo', [repo])
-                 ret = self.run_function('pkg.get_repo', [repo])
--                self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
-+                if os_grain == 'SUSE':
-+                    self.assertEqual(repo_info[repo]['baseurl'], expected_get_repo_baseurl_zypp)
++                    self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
+                 self.run_function("pkg.mod_repo", [repo])
+                 ret = self.run_function("pkg.get_repo", [repo])
+-                self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
++                if os_grain == "SUSE":
++                    self.assertEqual(
++                        repo_info[repo]["baseurl"], expected_get_repo_baseurl_zypp
++                    )
 +                else:
-+                    self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
++                    self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
          finally:
              if repo is not None:
-                 self.run_function('pkg.del_repo', [repo])
-@@ -191,6 +198,7 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
-         try:
-             if os_grain in ['CentOS', 'RedHat', 'SUSE']:
-                 my_baseurl = 'http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/'
-+                expected_get_repo_baseurl_zypp = 'http://my.fake.repo/foo/bar/%0A%20http://my.fake.repo.alt/foo/bar/'
-                 expected_get_repo_baseurl = 'http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/'
-                 major_release = int(
-                     self.run_function(
+                 self.run_function("pkg.del_repo", [repo])
+@@ -205,6 +218,9 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+                 my_baseurl = (
+                     "http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/"
+                 )
++                expected_get_repo_baseurl_zypp = (
++                    "http://my.fake.repo/foo/bar/%0A%20http://my.fake.repo.alt/foo/bar/"
++                )
+                 expected_get_repo_baseurl = (
+                     "http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/"
+                 )
 -- 
-2.16.4
+2.29.2
 
 

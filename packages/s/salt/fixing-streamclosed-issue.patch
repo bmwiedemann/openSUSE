@@ -1,4 +1,4 @@
-From 9a5f007a5baa4ba1d28b0e6708bac8b134e4891c Mon Sep 17 00:00:00 2001
+From 82d1cadff4fa6248a9d891a3c228fc415207d8d6 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Mihai=20Dinc=C4=83?= <dincamihai@users.noreply.github.com>
 Date: Tue, 26 Nov 2019 18:26:31 +0100
 Subject: [PATCH] Fixing StreamClosed issue
@@ -8,18 +8,18 @@ Subject: [PATCH] Fixing StreamClosed issue
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
-index 754c257b36..c4545e3ebc 100644
+index f3d92b88f1..8d2601e636 100644
 --- a/salt/cli/batch_async.py
 +++ b/salt/cli/batch_async.py
-@@ -221,7 +221,6 @@ class BatchAsync(object):
-                 "metadata": self.metadata
+@@ -232,7 +232,6 @@ class BatchAsync:
+                 "metadata": self.metadata,
              }
-             self.event.fire_event(data, "salt/batch/{0}/done".format(self.batch_jid))
+             self.event.fire_event(data, "salt/batch/{}/done".format(self.batch_jid))
 -            self.event.remove_event_handler(self.__event_handler)
              for (pattern, label) in self.patterns:
                  if label in ["ping_return", "batch_run"]:
-                     self.event.unsubscribe(pattern, match_type='glob')
-@@ -265,6 +264,7 @@ class BatchAsync(object):
+                     self.event.unsubscribe(pattern, match_type="glob")
+@@ -277,6 +276,7 @@ class BatchAsync:
  
      def __del__(self):
          self.local = None
@@ -28,6 +28,6 @@ index 754c257b36..c4545e3ebc 100644
          self.ioloop = None
          gc.collect()
 -- 
-2.16.4
+2.29.2
 
 

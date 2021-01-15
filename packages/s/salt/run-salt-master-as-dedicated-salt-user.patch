@@ -1,4 +1,4 @@
-From 497acb852b0d4519984d981dfefdc0848c3e4159 Mon Sep 17 00:00:00 2001
+From 88f40fff3b81edaa55f37949f56c67112ca2dcad Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Wed, 20 Jan 2016 11:01:06 +0100
 Subject: [PATCH] Run salt master as dedicated salt user
@@ -10,7 +10,7 @@ Subject: [PATCH] Run salt master as dedicated salt user
  2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/conf/master b/conf/master
-index ce2e26872a..22a4a7bdb4 100644
+index 41a62f2f34..943c5b5846 100644
 --- a/conf/master
 +++ b/conf/master
 @@ -25,7 +25,8 @@
@@ -24,7 +24,7 @@ index ce2e26872a..22a4a7bdb4 100644
  # Tell the master to also use salt-ssh when running commands against minions.
  #enable_ssh_minions: False
 diff --git a/pkg/salt-common.logrotate b/pkg/salt-common.logrotate
-index 3cd002308e..0d99d1b801 100644
+index a0306ff370..97d158db18 100644
 --- a/pkg/salt-common.logrotate
 +++ b/pkg/salt-common.logrotate
 @@ -1,4 +1,5 @@
@@ -42,6 +42,6 @@ index 3cd002308e..0d99d1b801 100644
  	missingok
  	rotate 7
 -- 
-2.16.4
+2.29.2
 
 

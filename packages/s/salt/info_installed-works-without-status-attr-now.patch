@@ -1,4 +1,4 @@
-From 8275c229fcca0e43513ea680e48cbf6263247b41 Mon Sep 17 00:00:00 2001
+From 0ef6eed4f5e120a584843c33272066ba477feb3f Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <brejoc@gmail.com>
 Date: Tue, 19 May 2020 10:34:35 +0200
 Subject: [PATCH] info_installed works without status attr now
@@ -8,39 +8,39 @@ detect if a package was installed or not. Now info_installed adds the
 'status' for the 'lowpkg.info' request again.
 ---
  salt/modules/aptpkg.py            |  9 +++++++++
- tests/unit/modules/test_aptpkg.py | 17 +++++++++++++++++
- 2 files changed, 26 insertions(+)
+ tests/unit/modules/test_aptpkg.py | 20 ++++++++++++++++++++
+ 2 files changed, 29 insertions(+)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 2835d32263..765d69aff2 100644
+index db0480b45d..e4a9872aad 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -2867,6 +2867,15 @@ def info_installed(*names, **kwargs):
-     failhard = kwargs.pop('failhard', True)
-     kwargs.pop('errors', None)                # Only for compatibility with RPM
-     attr = kwargs.pop('attr', None)           # Package attributes to return
+@@ -2923,6 +2923,15 @@ def info_installed(*names, **kwargs):
+     failhard = kwargs.pop("failhard", True)
+     kwargs.pop("errors", None)  # Only for compatibility with RPM
+     attr = kwargs.pop("attr", None)  # Package attributes to return
 +
 +    # status is needed to see if a package is installed. So we have to add it,
 +    # even if it's excluded via attr parameter. Otherwise all packages are
 +    # returned.
 +    if attr:
-+        attr_list = set(attr.split(','))
-+        attr_list.add('status')
-+        attr = ','.join(attr_list)
++        attr_list = set(attr.split(","))
++        attr_list.add("status")
++        attr = ",".join(attr_list)
 +
-     all_versions = kwargs.pop('all_versions', False)  # This is for backward compatible structure only
- 
-     if kwargs:
+     all_versions = kwargs.pop(
+         "all_versions", False
+     )  # This is for backward compatible structure only
 diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
-index ba1d874e69..b0193aeaf7 100644
+index 3c9744e224..51dfce29eb 100644
 --- a/tests/unit/modules/test_aptpkg.py
 +++ b/tests/unit/modules/test_aptpkg.py
-@@ -257,6 +257,23 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
-         self.assertEqual(aptpkg.info_installed('wget'), installed)
+@@ -297,6 +297,26 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+         self.assertEqual(aptpkg.info_installed("wget"), installed)
          self.assertEqual(len(aptpkg.info_installed()), 1)
  
 +    def test_info_installed_attr_without_status(self):
-+        '''
++        """
 +        Test info_installed 'attr' for inclusion of 'status' attribute.
 +
 +        Since info_installed should only return installed packages, we need to
@@ -49,17 +49,20 @@ index ba1d874e69..b0193aeaf7 100644
 +        to check if the package is installed and would return everything.
 +
 +        :return:
-+        '''
-+        with patch('salt.modules.aptpkg.__salt__', {'lowpkg.info': MagicMock(return_value=LOWPKG_INFO)}) as wget_lowpkg:
-+            ret = aptpkg.info_installed('wget', attr='version')
-+            calls = wget_lowpkg['lowpkg.info'].call_args_list.pop()
-+            self.assertIn('status', calls.kwargs['attr'])
-+            self.assertIn('version', calls.kwargs['attr'])
++        """
++        with patch(
++            "salt.modules.aptpkg.__salt__",
++            {"lowpkg.info": MagicMock(return_value=LOWPKG_INFO)},
++        ) as wget_lowpkg:
++            ret = aptpkg.info_installed("wget", attr="version")
++            calls = wget_lowpkg["lowpkg.info"].call_args_list.pop()
++            self.assertIn("status", calls.kwargs["attr"])
++            self.assertIn("version", calls.kwargs["attr"])
 +
-     @patch('salt.modules.aptpkg.__salt__', {'lowpkg.info': MagicMock(return_value=LOWPKG_INFO)})
-     def test_info_installed_attr(self):
-         '''
+     @patch(
+         "salt.modules.aptpkg.__salt__",
+         {"lowpkg.info": MagicMock(return_value=LOWPKG_INFO)},
 -- 
-2.27.0
+2.29.2
 
 

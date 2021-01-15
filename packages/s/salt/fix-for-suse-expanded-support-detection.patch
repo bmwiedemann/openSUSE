@@ -1,4 +1,4 @@
-From 16d656744d2e7d915757d6f2ae26b57ad8230b0b Mon Sep 17 00:00:00 2001
+From 369a732537937dd6865152a87f04777539b27fcd Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Thu, 6 Sep 2018 17:15:18 +0200
 Subject: [PATCH] Fix for SUSE Expanded Support detection
@@ -14,26 +14,26 @@ This change also adds a check for redhat-release and then marks the
  1 file changed, 9 insertions(+)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 9b244def9c..2851809472 100644
+index 436c058eb6..00bd0565bf 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -1892,6 +1892,15 @@ def os_data():
-                     log.trace('Parsing distrib info from /etc/centos-release')
+@@ -1990,6 +1990,15 @@ def os_data():
+                     log.trace("Parsing distrib info from /etc/centos-release")
                      # CentOS Linux
-                     grains['lsb_distrib_id'] = 'CentOS'
+                     grains["lsb_distrib_id"] = "CentOS"
 +                    # Maybe CentOS Linux; could also be SUSE Expanded Support.
 +                    # SUSE ES has both, centos-release and redhat-release.
-+                    if os.path.isfile('/etc/redhat-release'):
-+                        with salt.utils.files.fopen('/etc/redhat-release') as ifile:
++                    if os.path.isfile("/etc/redhat-release"):
++                        with salt.utils.files.fopen("/etc/redhat-release") as ifile:
 +                            for line in ifile:
 +                                if "red hat enterprise linux server" in line.lower():
 +                                    # This is a SUSE Expanded Support Rhel installation
-+                                    grains['lsb_distrib_id'] = 'RedHat'
++                                    grains["lsb_distrib_id"] = "RedHat"
 +                                    break
-                     with salt.utils.files.fopen('/etc/centos-release') as ifile:
+                     with salt.utils.files.fopen("/etc/centos-release") as ifile:
                          for line in ifile:
                              # Need to pull out the version and codename
 -- 
-2.16.4
+2.29.2
 
 

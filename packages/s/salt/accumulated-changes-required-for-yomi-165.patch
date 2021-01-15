@@ -1,4 +1,4 @@
-From 9f29577b75cac1e79ec7c30a5dff0dff0ab9da3a Mon Sep 17 00:00:00 2001
+From 7d35fdba84b6e1b62a3abc71e518366a35efb662 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Tue, 30 Jul 2019 11:23:12 +0200
 Subject: [PATCH] Accumulated changes required for Yomi (#165)
@@ -58,143 +58,60 @@ so the cached data will be separated too.
 
 (cherry picked from commit 9c54bb3e8c93ba21fc583bdefbcadbe53cbcd7b5)
 ---
- salt/modules/cmdmod.py               | 12 +++++++++---
- salt/modules/zypperpkg.py            | 13 ++++++++++---
- tests/unit/modules/test_cmdmod.py    | 16 ++++++++++++++++
- tests/unit/modules/test_zypperpkg.py | 21 +++++++++++++++++++++
- 4 files changed, 56 insertions(+), 6 deletions(-)
+ salt/modules/zypperpkg.py            |  1 -
+ tests/unit/modules/test_zypperpkg.py | 22 +++++++++++++++++++++-
+ 2 files changed, 21 insertions(+), 2 deletions(-)
 
-diff --git a/salt/modules/cmdmod.py b/salt/modules/cmdmod.py
-index eed7656a6d..0d2f720bbb 100644
---- a/salt/modules/cmdmod.py
-+++ b/salt/modules/cmdmod.py
-@@ -3094,13 +3094,19 @@ def run_chroot(root,
- 
-     if isinstance(cmd, (list, tuple)):
-         cmd = ' '.join([six.text_type(i) for i in cmd])
--    cmd = 'chroot {0} {1} -c {2}'.format(root, sh_, _cmd_quote(cmd))
-+
-+    # If runas and group are provided, we expect that the user lives
-+    # inside the chroot, not outside.
-+    if runas:
-+        userspec = '--userspec {}:{}'.format(runas, group if group else '')
-+    else:
-+        userspec = ''
-+
-+    cmd = 'chroot {} {} {} -c {}'.format(userspec, root, sh_, _cmd_quote(cmd))
- 
-     run_func = __context__.pop('cmd.run_chroot.func', run_all)
- 
-     ret = run_func(cmd,
--                   runas=runas,
--                   group=group,
-                    cwd=cwd,
-                    stdin=stdin,
-                    shell=shell,
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 3760b525e7..8179cd8c1d 100644
+index c996935bff..b099f3e5d7 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -449,8 +449,14 @@ def _clean_cache():
-     '''
-     Clean cached results
-     '''
-+    keys = []
-     for cache_name in ['pkg.list_pkgs', 'pkg.list_provides']:
--        __context__.pop(cache_name, None)
-+        for contextkey in __context__:
-+            if contextkey.startswith(cache_name):
-+                keys.append(contextkey)
-+
-+    for key in keys:
-+        __context__.pop(key, None)
- 
- 
- def list_upgrades(refresh=True, root=None, **kwargs):
-@@ -811,9 +817,10 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
- 
-     includes = includes if includes else []
- 
--    contextkey = 'pkg.list_pkgs'
-+    # Results can be different if a different root or a different
-+    # inclusion types are passed
-+    contextkey = 'pkg.list_pkgs_{}_{}'.format(root, includes)
+@@ -879,7 +879,6 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
+     # inclusion types are passed
+     contextkey = "pkg.list_pkgs_{}_{}".format(root, includes)
  
 -    # TODO(aplanas): this cached value depends on the parameters
      if contextkey not in __context__:
          ret = {}
-         cmd = ['rpm']
-diff --git a/tests/unit/modules/test_cmdmod.py b/tests/unit/modules/test_cmdmod.py
-index f8fba59294..8d763435f8 100644
---- a/tests/unit/modules/test_cmdmod.py
-+++ b/tests/unit/modules/test_cmdmod.py
-@@ -371,6 +371,22 @@ class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
-         else:
-             raise RuntimeError
- 
-+    @skipIf(salt.utils.platform.is_windows(), 'Do not run on Windows')
-+    @skipIf(salt.utils.platform.is_darwin(), 'Do not run on MacOS')
-+    def test_run_cwd_in_combination_with_runas(self):
-+        '''
-+        cmd.run executes command in the cwd directory
-+        when the runas parameter is specified
-+        '''
-+        cmd = 'pwd'
-+        cwd = '/tmp'
-+        runas = os.getlogin()
-+
-+        with patch.dict(cmdmod.__grains__, {'os': 'Darwin',
-+                                            'os_family': 'Solaris'}):
-+            stdout = cmdmod._run(cmd, cwd=cwd, runas=runas).get('stdout')
-+        self.assertEqual(stdout, cwd)
-+
-     def test_run_all_binary_replace(self):
-         '''
-         Test for failed decoding of binary data, for instance when doing
+         cmd = ["rpm"]
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 12c22bfcb2..6102043384 100644
+index 032785395e..5d4e7766b6 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -571,6 +571,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
-              patch.dict(zypper.__salt__, {'pkg_resource.stringify': MagicMock()}):
-             pkgs = zypper.list_pkgs(versions_as_list=True)
-             self.assertFalse(pkgs.get('gpg-pubkey', False))
-+            self.assertTrue('pkg.list_pkgs_None_[]' in zypper.__context__)
-             for pkg_name, pkg_version in {
-                 'jakarta-commons-discovery': ['0.4-129.686'],
-                 'yast2-ftp-server': ['3.1.8-8.1'],
-@@ -613,6 +614,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
-              patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': zypper.parse_arch_from_name}):
-             pkgs = zypper.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
-             self.assertFalse(pkgs.get('gpg-pubkey', False))
-+            self.assertTrue('pkg.list_pkgs_None_[]' in zypper.__context__)
-             for pkg_name, pkg_attr in {
-                 'jakarta-commons-discovery': [{
-                     'version': '0.4',
-@@ -1456,3 +1458,22 @@ pattern() = package-c'''),
-                 'summary': 'description b',
-             },
+@@ -912,7 +912,8 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+         ), patch.dict(
+             zypper.__salt__, {"pkg_resource.stringify": MagicMock()}
+         ), patch.dict(
+-            pkg_resource.__salt__, {"pkg.parse_arch": zypper.parse_arch}
++            pkg_resource.__salt__,
++            {"pkg.parse_arch_from_name": zypper.parse_arch_from_name},
+         ):
+             pkgs = zypper.list_pkgs(
+                 attr=["epoch", "release", "arch", "install_date_time_t"]
+@@ -1950,3 +1951,22 @@ pattern() = package-c"""
+             "package-a": {"installed": True, "summary": "description a",},
+             "package-b": {"installed": False, "summary": "description b",},
          }
 +
 +    def test__clean_cache_empty(self):
-+        '''Test that an empty cached can be cleaned'''
++        """Test that an empty cached can be cleaned"""
 +        context = {}
 +        with patch.dict(zypper.__context__, context):
 +            zypper._clean_cache()
 +            assert context == {}
 +
 +    def test__clean_cache_filled(self):
-+        '''Test that a filled cached can be cleaned'''
++        """Test that a filled cached can be cleaned"""
 +        context = {
-+            'pkg.list_pkgs_/mnt_[]': None,
-+            'pkg.list_pkgs_/mnt_[patterns]': None,
-+            'pkg.list_provides': None,
-+            'pkg.other_data': None,
++            "pkg.list_pkgs_/mnt_[]": None,
++            "pkg.list_pkgs_/mnt_[patterns]": None,
++            "pkg.list_provides": None,
++            "pkg.other_data": None,
 +        }
 +        with patch.dict(zypper.__context__, context):
 +            zypper._clean_cache()
-+            self.assertEqual(zypper.__context__, {'pkg.other_data': None})
++            self.assertEqual(zypper.__context__, {"pkg.other_data": None})
 -- 
-2.16.4
+2.29.2
 
 

@@ -1,4 +1,4 @@
-From 49780d409630fe18293a077e767aabfd183ff823 Mon Sep 17 00:00:00 2001
+From 5a83801b7733f09c35a7ff0abb5aa32d4c857e4b Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Tue, 3 Dec 2019 11:22:42 +0100
 Subject: [PATCH] Fix batch_async obsolete test
@@ -8,26 +8,25 @@ Subject: [PATCH] Fix batch_async obsolete test
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
-index 12dfe543bc..f1d36a81fb 100644
+index c18b42be57..b04965268a 100644
 --- a/tests/unit/cli/test_batch_async.py
 +++ b/tests/unit/cli/test_batch_async.py
-@@ -140,8 +140,14 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
-                 "salt/batch/1235/done"
-             )
+@@ -134,7 +134,13 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+                 "salt/batch/1235/done",
+             ),
          )
+-        self.assertEqual(len(self.batch.event.remove_event_handler.mock_calls), 1)
 +
 +    def test_batch__del__(self):
 +        batch = BatchAsync(MagicMock(), MagicMock(), MagicMock())
 +        event = MagicMock()
 +        batch.event = event
 +        batch.__del__()
-         self.assertEqual(
--            len(self.batch.event.remove_event_handler.mock_calls), 1)
-+            len(event.remove_event_handler.mock_calls), 1)
++        self.assertEqual(len(event.remove_event_handler.mock_calls), 1)
  
      @tornado.testing.gen_test
      def test_batch_next(self):
 -- 
-2.16.4
+2.29.2
 
 

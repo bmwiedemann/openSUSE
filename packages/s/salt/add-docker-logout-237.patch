@@ -1,4 +1,4 @@
-From 9e6bd24b07cd2424c3805777b07b9ea84adff416 Mon Sep 17 00:00:00 2001
+From 355e1e29e8f3286eeb13bc2d05089c096c9e01e3 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Mon, 18 May 2020 16:39:27 +0200
 Subject: [PATCH] Add docker logout (#237)
@@ -13,10 +13,10 @@ interpreted as a list of docker registries to log out of.
  2 files changed, 139 insertions(+)
 
 diff --git a/salt/modules/dockermod.py b/salt/modules/dockermod.py
-index 28a2107cec..119e9eb170 100644
+index 934038c927..176b4db926 100644
 --- a/salt/modules/dockermod.py
 +++ b/salt/modules/dockermod.py
-@@ -1481,6 +1481,86 @@ def login(*registries):
+@@ -1586,6 +1586,86 @@ def logout(*registries):
      return ret
  
  
@@ -102,44 +102,15 @@ index 28a2107cec..119e9eb170 100644
 +
  # Functions for information gathering
  def depends(name):
-     '''
+     """
 diff --git a/tests/unit/modules/test_dockermod.py b/tests/unit/modules/test_dockermod.py
-index 191bfc123f..8f4ead2867 100644
+index 34e2e9c610..48526acb71 100644
 --- a/tests/unit/modules/test_dockermod.py
 +++ b/tests/unit/modules/test_dockermod.py
-@@ -164,6 +164,65 @@ class DockerTestCase(TestCase, LoaderModuleMockMixin):
-                     self.assertIn('retcode', ret)
-                     self.assertNotEqual(ret['retcode'], 0)
+@@ -199,6 +199,65 @@ class DockerTestCase(TestCase, LoaderModuleMockMixin):
+                     output_loglevel="quiet",
+                 )
  
-+    def test_logout_calls_docker_cli_logout_single(self):
-+        client = Mock()
-+        get_client_mock = MagicMock(return_value=client)
-+        ref_out = {"stdout": "", "stderr": "", "retcode": 0}
-+        registry_auth_data = {
-+            "portus.example.com:5000": {
-+                "username": "admin",
-+                "password": "linux12345",
-+                "email": "tux@example.com",
-+            }
-+        }
-+        docker_mock = MagicMock(return_value=ref_out)
-+        with patch.object(docker_mod, "_get_client", get_client_mock):
-+            dunder_salt = {
-+                "config.get": MagicMock(return_value=registry_auth_data),
-+                "cmd.run_all": docker_mock,
-+                "config.option": MagicMock(return_value={}),
-+            }
-+            with patch.dict(docker_mod.__salt__, dunder_salt):
-+                ret = docker_mod.logout("portus.example.com:5000")
-+                assert "retcode" in ret
-+                assert ret["retcode"] == 0
-+                docker_mock.assert_called_with(
-+                    ["docker", "logout", "portus.example.com:5000"],
-+                    python_shell=False,
-+                    output_loglevel="quiet",
-+                )
-+
-+
 +    def test_logout_calls_docker_cli_logout_all(self):
 +        client = Mock()
 +        get_client_mock = MagicMock(return_value=client)
@@ -170,10 +141,39 @@ index 191bfc123f..8f4ead2867 100644
 +                assert ret["retcode"] == 0
 +                assert docker_mock.call_count == 2
 +
-     def test_ps_with_host_true(self):
-         '''
-         Check that docker.ps called with host is ``True``,
++    def test_logout_calls_docker_cli_logout_single(self):
++        client = Mock()
++        get_client_mock = MagicMock(return_value=client)
++        ref_out = {"stdout": "", "stderr": "", "retcode": 0}
++        registry_auth_data = {
++            "portus.example.com:5000": {
++                "username": "admin",
++                "password": "linux12345",
++                "email": "tux@example.com",
++            }
++        }
++        docker_mock = MagicMock(return_value=ref_out)
++        with patch.object(docker_mod, "_get_client", get_client_mock):
++            dunder_salt = {
++                "config.get": MagicMock(return_value=registry_auth_data),
++                "cmd.run_all": docker_mock,
++                "config.option": MagicMock(return_value={}),
++            }
++            with patch.dict(docker_mod.__salt__, dunder_salt):
++                ret = docker_mod.logout("portus.example.com:5000")
++                assert "retcode" in ret
++                assert ret["retcode"] == 0
++                docker_mock.assert_called_with(
++                    ["docker", "logout", "portus.example.com:5000"],
++                    python_shell=False,
++                    output_loglevel="quiet",
++                )
++
++
+     def test_logout_calls_docker_cli_logout_all(self):
+         client = Mock()
+         get_client_mock = MagicMock(return_value=client)
 -- 
-2.26.2
+2.29.2
 
 

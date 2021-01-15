@@ -1,4 +1,4 @@
-From f45df684fe68a93a7003aca2189479b0d0240305 Mon Sep 17 00:00:00 2001
+From acee2074e9fe4da2731e61a554639e773c04e43a Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
 Date: Mon, 5 Oct 2020 16:49:59 +0200
 Subject: [PATCH] Backport a few virt PRs (#272)
@@ -39,13 +39,13 @@ Co-authored-by: gqlo <escita@pm.me>
 ---
  changelog/57639.added                    |   1 +
  changelog/58589.added                    |   1 +
- salt/modules/virt.py                     | 303 +++++++++++++++++++--
- salt/states/virt.py                      |  73 +++++-
+ salt/modules/virt.py                     | 284 ++++++++++++++++++--
+ salt/states/virt.py                      |  71 ++++-
  salt/templates/virt/libvirt_domain.jinja |  30 ++-
- salt/utils/xmlutil.py                    |   4 +-
- tests/unit/modules/test_virt.py          | 320 ++++++++++++++++++++++-
- tests/unit/states/test_virt.py           |  19 +-
- 8 files changed, 704 insertions(+), 47 deletions(-)
+ salt/utils/xmlutil.py                    |   2 +-
+ tests/unit/modules/test_virt.py          | 318 ++++++++++++++++++++++-
+ tests/unit/states/test_virt.py           |  14 +-
+ 8 files changed, 687 insertions(+), 34 deletions(-)
  create mode 100644 changelog/57639.added
  create mode 100644 changelog/58589.added
 
@@ -64,10 +64,10 @@ index 0000000000..5960555ec6
 @@ -0,0 +1 @@
 +Allow handling special first boot definition on virtual machine
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index 34643787f9..87ab7ca12d 100644
+index e306bc0679..8e2180608a 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
-@@ -71,13 +71,57 @@ The calls not using the libvirt connection setup are:
+@@ -71,6 +71,50 @@ The calls not using the libvirt connection setup are:
  - `libvirt URI format <http://libvirt.org/uri.html#URI_config>`_
  - `libvirt authentication configuration <http://libvirt.org/auth.html#Auth_client_config>`_
  
@@ -118,26 +118,7 @@ index 34643787f9..87ab7ca12d 100644
  """
  # Special Thanks to Michael Dehann, many of the concepts, and a few structures
  # of his in the virt func module have been used
- 
--# Import python libs
- 
- import base64
-+import collections
- import copy
- import datetime
- import logging
-@@ -89,10 +133,8 @@ import subprocess
- import sys
- import time
- 
--# Import third party libs
- import jinja2.exceptions
- 
--# Import salt libs
- import salt.utils.data
- import salt.utils.files
- import salt.utils.json
-@@ -725,6 +767,39 @@ def _disk_from_pool(conn, pool, pool_xml, volume_name):
+@@ -719,6 +763,39 @@ def _disk_from_pool(conn, pool, pool_xml, volume_name):
      return disk_context
  
  
@@ -145,7 +126,7 @@ index 34643787f9..87ab7ca12d 100644
 +    """
 +    Handle the unit conversion, return the value in bytes
 +    """
-+    m = re.match(r"(?P<value>[0-9.]*)\s*(?P<unit>.*)$", six.text_type(s).strip())
++    m = re.match(r"(?P<value>[0-9.]*)\s*(?P<unit>.*)$", str(s).strip())
 +    value = m.group("value")
 +    # default unit
 +    unit = m.group("unit").lower() or def_unit
@@ -177,7 +158,7 @@ index 34643787f9..87ab7ca12d 100644
  def _gen_xml(
      conn,
      name,
-@@ -738,18 +813,32 @@ def _gen_xml(
+@@ -732,18 +809,32 @@ def _gen_xml(
      graphics=None,
      boot=None,
      boot_dev=None,
@@ -191,28 +172,28 @@ index 34643787f9..87ab7ca12d 100644
      context = {
          "hypervisor": hypervisor,
          "name": name,
-         "cpu": six.text_type(cpu),
--        "mem": six.text_type(mem),
+         "cpu": str(cpu),
+-        "mem": str(mem),
 +        "on_reboot": "destroy" if stop_on_reboot else "restart",
      }
 +
 +    context["mem"] = nesthash()
 +    if isinstance(mem, int):
 +        mem = int(mem) * 1024  # MB
-+        context["mem"]["boot"] = six.text_type(mem)
-+        context["mem"]["current"] = six.text_type(mem)
++        context["mem"]["boot"] = str(mem)
++        context["mem"]["current"] = str(mem)
 +    elif isinstance(mem, dict):
-+        for tag, val in six.iteritems(mem):
++        for tag, val in mem.items():
 +            if val:
 +                if tag == "slots":
 +                    context["mem"]["slots"] = "{}='{}'".format(tag, val)
 +                else:
-+                    context["mem"][tag] = six.text_type(int(_handle_unit(val) / 1024))
++                    context["mem"][tag] = str(int(_handle_unit(val) / 1024))
 +
      if hypervisor in ["qemu", "kvm"]:
          context["controller_model"] = False
      elif hypervisor == "vmware":
-@@ -869,7 +958,6 @@ def _gen_xml(
+@@ -863,7 +954,6 @@ def _gen_xml(
      except jinja2.exceptions.TemplateNotFound:
          log.error("Could not load template %s", fn_)
          return ""
@@ -220,7 +201,7 @@ index 34643787f9..87ab7ca12d 100644
      return template.render(**context)
  
  
-@@ -1668,6 +1756,7 @@ def init(
+@@ -1662,6 +1752,7 @@ def init(
      arch=None,
      boot=None,
      boot_dev=None,
@@ -228,7 +209,7 @@ index 34643787f9..87ab7ca12d 100644
      **kwargs
  ):
      """
-@@ -1675,7 +1764,28 @@ def init(
+@@ -1669,7 +1760,28 @@ def init(
  
      :param name: name of the virtual machine to create
      :param cpu: Number of virtual CPUs to assign to the virtual machine
@@ -258,7 +239,7 @@ index 34643787f9..87ab7ca12d 100644
      :param nic: NIC profile to use (Default: ``'default'``).
                  The profile interfaces can be customized / extended with the interfaces parameter.
                  If set to ``None``, no profile will be used.
-@@ -1732,6 +1842,15 @@ def init(
+@@ -1726,6 +1838,15 @@ def init(
      :param password: password to connect with, overriding defaults
  
                       .. versionadded:: 2019.2.0
@@ -274,7 +255,7 @@ index 34643787f9..87ab7ca12d 100644
      :param boot:
          Specifies kernel, initial ramdisk and kernel command line parameters for the virtual machine.
          This is an optional parameter, all of the keys are optional within the dictionary. The structure of
-@@ -1788,6 +1907,36 @@ def init(
+@@ -1782,6 +1903,36 @@ def init(
  
         .. versionadded:: sodium
  
@@ -311,7 +292,7 @@ index 34643787f9..87ab7ca12d 100644
      .. _init-nic-def:
  
      .. rubric:: Network Interfaces Definitions
-@@ -2082,6 +2231,7 @@ def init(
+@@ -2076,6 +2227,7 @@ def init(
              graphics,
              boot,
              boot_dev,
@@ -319,7 +300,7 @@ index 34643787f9..87ab7ca12d 100644
              **kwargs
          )
          log.debug("New virtual machine definition: %s", vm_xml)
-@@ -2311,6 +2461,7 @@ def update(
+@@ -2305,6 +2457,7 @@ def update(
      boot=None,
      test=False,
      boot_dev=None,
@@ -327,33 +308,25 @@ index 34643787f9..87ab7ca12d 100644
      **kwargs
  ):
      """
-@@ -2318,7 +2469,24 @@ def update(
+@@ -2312,7 +2465,7 @@ def update(
  
      :param name: Name of the domain to update
      :param cpu: Number of virtual CPUs to assign to the virtual machine
--    :param mem: Amount of memory to allocate to the virtual machine in MiB.
+-    :param mem: Amount of memory to allocate to the virtual machine in MiB. Since 3002, a dictionary can be used to
 +    :param mem: Amount of memory to allocate to the virtual machine in MiB. Since Magnesium, a dictionary can be used to
-+        contain detailed configuration which support memory allocation or tuning. Supported parameters are ``boot``,
-+        ``current``, ``max``, ``slots``, ``hard_limit``, ``soft_limit``, ``swap_hard_limit`` and ``min_guarantee``. The
-+        structure of the dictionary is documented in  :ref:`init-mem-def`. Both decimal and binary base are supported.
-+        Detail unit specification is documented  in :ref:`virt-units`. Please note that the value for ``slots`` must be
-+        an integer.
-+
-+        To remove any parameters, pass a None object, for instance: 'soft_limit': ``None``. Please note  that ``None``
-+        is mapped to ``null`` in sls file, pass ``null`` in sls file instead.
-+
-+        .. code-block:: yaml
-+
-+            - mem:
-+                hard_limit: null
-+                soft_limit: null
-+
+         contain detailed configuration which support memory allocation or tuning. Supported parameters are ``boot``,
+         ``current``, ``max``, ``slots``, ``hard_limit``, ``soft_limit``, ``swap_hard_limit`` and ``min_guarantee``. The
+         structure of the dictionary is documented in  :ref:`init-mem-def`. Both decimal and binary base are supported.
+@@ -2328,7 +2481,7 @@ def update(
+                 hard_limit: null
+                 soft_limit: null
+ 
+-        .. versionchanged:: 3002
 +        .. versionchanged:: Magnesium
-+
+ 
      :param disk_profile: disk profile to use
      :param disks:
-         Disk definitions as documented in the :func:`init` function.
-@@ -2375,6 +2543,14 @@ def update(
+@@ -2386,6 +2539,14 @@ def update(
  
          .. versionadded:: Magnesium
  
@@ -368,7 +341,7 @@ index 34643787f9..87ab7ca12d 100644
      :param test: run in dry-run mode if set to True
  
          .. versionadded:: sodium
-@@ -2438,6 +2614,8 @@ def update(
+@@ -2449,6 +2610,8 @@ def update(
              desc.find(".//os/type").get("arch"),
              graphics,
              boot,
@@ -377,13 +350,13 @@ index 34643787f9..87ab7ca12d 100644
              **kwargs
          )
      )
-@@ -2458,12 +2636,26 @@ def update(
+@@ -2469,12 +2632,26 @@ def update(
      def _set_nvram(node, value):
          node.set("template", value)
  
 -    def _set_with_mib_unit(node, value):
 +    def _set_with_byte_unit(node, value):
-         node.text = six.text_type(value)
+         node.text = str(value)
 -        node.set("unit", "MiB")
 +        node.set("unit", "bytes")
 +
@@ -406,7 +379,7 @@ index 34643787f9..87ab7ca12d 100644
          {"path": "boot:kernel", "xpath": "os/kernel"},
          {"path": "boot:initrd", "xpath": "os/initrd"},
          {"path": "boot:cmdline", "xpath": "os/cmdline"},
-@@ -2473,14 +2665,72 @@ def update(
+@@ -2484,14 +2661,72 @@ def update(
          {
              "path": "mem",
              "xpath": "memory",
@@ -483,7 +456,7 @@ index 34643787f9..87ab7ca12d 100644
          },
          {
              "path": "boot_dev:{dev}",
-@@ -2566,13 +2816,24 @@ def update(
+@@ -2577,13 +2812,24 @@ def update(
                      }
                  )
              if mem:
@@ -516,24 +489,10 @@ index 34643787f9..87ab7ca12d 100644
              # Look for removable device source changes
              new_disks = []
 diff --git a/salt/states/virt.py b/salt/states/virt.py
-index 1a0c889d58..740f6c5746 100644
+index df7ebb63e6..20ea1c25f1 100644
 --- a/salt/states/virt.py
 +++ b/salt/states/virt.py
-@@ -11,13 +11,11 @@ for the generation and signing of certificates for systems running libvirt:
-       virt.keys
- """
- 
--# Import Python libs
- 
- import fnmatch
- import logging
- import os
- 
--# Import Salt libs
- import salt.utils.args
- import salt.utils.files
- import salt.utils.stringutils
-@@ -290,6 +288,8 @@ def defined(
+@@ -289,6 +289,8 @@ def defined(
      boot=None,
      update=True,
      boot_dev=None,
@@ -542,7 +501,7 @@ index 1a0c889d58..740f6c5746 100644
  ):
      """
      Starts an existing guest, or defines and starts a new VM with specified arguments.
-@@ -298,7 +298,28 @@ def defined(
+@@ -297,7 +299,28 @@ def defined(
  
      :param name: name of the virtual machine to run
      :param cpu: number of CPUs for the virtual machine to create
@@ -572,7 +531,7 @@ index 1a0c889d58..740f6c5746 100644
      :param vm_type: force virtual machine type for the new VM. The default value is taken from
          the host capabilities. This could be useful for example to use ``'qemu'`` type instead
          of the ``'kvm'`` one.
-@@ -358,6 +379,20 @@ def defined(
+@@ -357,6 +380,20 @@ def defined(
  
          .. versionadded:: Magnesium
  
@@ -593,7 +552,7 @@ index 1a0c889d58..740f6c5746 100644
      .. rubric:: Example States
  
      Make sure a virtual machine called ``domain_name`` is defined:
-@@ -415,13 +450,14 @@ def defined(
+@@ -414,13 +451,14 @@ def defined(
                      nic_profile=nic_profile,
                      interfaces=interfaces,
                      graphics=graphics,
@@ -609,7 +568,7 @@ index 1a0c889d58..740f6c5746 100644
                  )
              ret["changes"][name] = status
              if not status.get("definition"):
-@@ -457,6 +493,7 @@ def defined(
+@@ -456,6 +494,7 @@ def defined(
                      boot=boot,
                      start=False,
                      boot_dev=boot_dev,
@@ -617,7 +576,7 @@ index 1a0c889d58..740f6c5746 100644
                  )
              ret["changes"][name] = {"definition": True}
              ret["comment"] = "Domain {} defined".format(name)
-@@ -490,6 +527,7 @@ def running(
+@@ -489,6 +528,7 @@ def running(
      arch=None,
      boot=None,
      boot_dev=None,
@@ -625,7 +584,7 @@ index 1a0c889d58..740f6c5746 100644
  ):
      """
      Starts an existing guest, or defines and starts a new VM with specified arguments.
-@@ -498,7 +536,23 @@ def running(
+@@ -497,7 +537,23 @@ def running(
  
      :param name: name of the virtual machine to run
      :param cpu: number of CPUs for the virtual machine to create
@@ -650,7 +609,7 @@ index 1a0c889d58..740f6c5746 100644
      :param vm_type: force virtual machine type for the new VM. The default value is taken from
          the host capabilities. This could be useful for example to use ``'qemu'`` type instead
          of the ``'kvm'`` one.
-@@ -609,6 +663,14 @@ def running(
+@@ -608,6 +664,14 @@ def running(
  
          .. versionadded:: Magnesium
  
@@ -665,7 +624,7 @@ index 1a0c889d58..740f6c5746 100644
      .. rubric:: Example States
  
      Make sure an already-defined virtual machine called ``domain_name`` is running:
-@@ -677,6 +739,7 @@ def running(
+@@ -676,6 +740,7 @@ def running(
          boot=boot,
          update=update,
          boot_dev=boot_dev,
@@ -722,60 +681,31 @@ index 18728a75b5..fb4c9f40d0 100644
                  {% for disk in disks %}
                  <disk type='{{ disk.type }}' device='{{ disk.device }}'>
 diff --git a/salt/utils/xmlutil.py b/salt/utils/xmlutil.py
-index 68191bc528..6c32f22ad4 100644
+index 111ca155d4..d25f5c8da5 100644
 --- a/salt/utils/xmlutil.py
 +++ b/salt/utils/xmlutil.py
-@@ -2,12 +2,10 @@
- Various XML utilities
- """
- 
--# Import Python libs
- import re
- import string  # pylint: disable=deprecated-module
- from xml.etree import ElementTree
- 
--# Import salt libs
- import salt.utils.data
- from salt.ext import six
- 
-@@ -301,7 +299,7 @@ def change_xml(doc, data, mapping):
+@@ -299,7 +299,7 @@ def change_xml(doc, data, mapping):
                  if convert_fn:
                      new_value = convert_fn(new_value)
  
 -                if current_value != new_value:
-+                if six.text_type(current_value) != six.text_type(new_value):
++                if str(current_value) != str(new_value):
                      set_fn(node, new_value)
                      need_update = True
              else:
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 6e61544a1f..ca5e80d2d2 100644
+index e214e406e2..fba821ea53 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
-@@ -4,7 +4,6 @@ virt execution module unit tests
+@@ -21,7 +21,6 @@ from salt.ext import six
  
- # pylint: disable=3rd-party-module-not-gated
- 
--# Import python libs
- 
- import datetime
- import os
-@@ -16,7 +15,6 @@ import salt.modules.config as config
- import salt.modules.virt as virt
- import salt.syspaths
- 
--# Import salt libs
- import salt.utils.yaml
- from salt._compat import ElementTree as ET
- from salt.exceptions import CommandExecutionError, SaltInvocationError
-@@ -24,7 +22,6 @@ from salt.exceptions import CommandExecutionError, SaltInvocationError
  # pylint: disable=import-error
  from salt.ext.six.moves import range  # pylint: disable=redefined-builtin
- 
--# Import Salt Testing libs
+-from tests.support.helpers import dedent
  from tests.support.mixins import LoaderModuleMockMixin
  from tests.support.mock import MagicMock, patch
  from tests.support.unit import TestCase
-@@ -1859,6 +1856,25 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1856,6 +1855,25 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
              virt.update("my_vm"),
          )
  
@@ -801,7 +731,7 @@ index 6e61544a1f..ca5e80d2d2 100644
          # Same parameters passed than in default virt.defined state case
          self.assertEqual(
              {
-@@ -2004,6 +2020,50 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2001,6 +2019,50 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
          with self.assertRaises(SaltInvocationError):
              virt.update("my_vm", boot={"efi": "Not a boolean value"})
  
@@ -852,7 +782,7 @@ index 6e61544a1f..ca5e80d2d2 100644
          # Update memory case
          setmem_mock = MagicMock(return_value=0)
          domain_mock.setMemoryFlags = setmem_mock
-@@ -2018,10 +2078,43 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2015,10 +2077,43 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
              virt.update("my_vm", mem=2048),
          )
          setxml = ET.fromstring(define_mock.call_args[0][0])
@@ -898,7 +828,7 @@ index 6e61544a1f..ca5e80d2d2 100644
          # Update disks case
          devattach_mock = MagicMock(return_value=0)
          devdetach_mock = MagicMock(return_value=0)
-@@ -2536,7 +2629,6 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2533,7 +2628,6 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
          """
          Test virt.update() with existing boot parameters.
          """
@@ -906,7 +836,7 @@ index 6e61544a1f..ca5e80d2d2 100644
          xml_boot = """
              <domain type='kvm' id='8'>
                <name>vm_with_boot_param</name>
-@@ -2594,9 +2686,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2591,9 +2685,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
                  </video>
                </devices>
              </domain>
@@ -917,7 +847,7 @@ index 6e61544a1f..ca5e80d2d2 100644
          domain_mock_boot = self.set_mock_vm("vm_with_boot_param", xml_boot)
          domain_mock_boot.OSType = MagicMock(return_value="hvm")
          define_mock_boot = MagicMock(return_value=True)
-@@ -2697,6 +2787,218 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2694,6 +2786,218 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
          self.assertEqual(setxml.find("os").find("loader"), None)
          self.assertEqual(setxml.find("os").find("nvram"), None)
  
@@ -1137,32 +1067,18 @@ index 6e61544a1f..ca5e80d2d2 100644
          """
          Test virt._nic_profile with mixed dictionaries and lists as input.
 diff --git a/tests/unit/states/test_virt.py b/tests/unit/states/test_virt.py
-index f03159334b..1923ae5c0f 100644
+index 8fe892f607..1923ae5c0f 100644
 --- a/tests/unit/states/test_virt.py
 +++ b/tests/unit/states/test_virt.py
-@@ -1,21 +1,15 @@
- """
-     :codeauthor: Jayesh Kariya <jayeshk@saltstack.com>
- """
--# Import Python libs
- 
- import shutil
- import tempfile
- 
--# Import Salt Libs
+@@ -8,7 +8,6 @@ import tempfile
  import salt.states.virt as virt
  import salt.utils.files
  from salt.exceptions import CommandExecutionError, SaltInvocationError
--
--# Import 3rd-party libs
+-from salt.ext import six
  from tests.support.mixins import LoaderModuleMockMixin
  from tests.support.mock import MagicMock, mock_open, patch
--
--# Import Salt Testing Libs
  from tests.support.runtests import RUNTIME_VARS
- from tests.support.unit import TestCase
- 
-@@ -351,6 +345,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -346,6 +345,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          install=False,
                          pub_key="/path/to/key.pub",
                          priv_key="/path/to/key",
@@ -1170,7 +1086,7 @@ index f03159334b..1923ae5c0f 100644
                          connection="someconnection",
                          username="libvirtuser",
                          password="supersecret",
-@@ -376,6 +371,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -371,6 +371,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      start=False,
                      pub_key="/path/to/key.pub",
                      priv_key="/path/to/key",
@@ -1178,7 +1094,7 @@ index f03159334b..1923ae5c0f 100644
                      connection="someconnection",
                      username="libvirtuser",
                      password="supersecret",
-@@ -489,6 +485,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -484,6 +485,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      password=None,
                      boot=None,
                      test=False,
@@ -1186,7 +1102,7 @@ index f03159334b..1923ae5c0f 100644
                  )
  
              # Failed definition update case
-@@ -559,6 +556,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -554,6 +556,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          install=False,
                          pub_key="/path/to/key.pub",
                          priv_key="/path/to/key",
@@ -1194,7 +1110,7 @@ index f03159334b..1923ae5c0f 100644
                          connection="someconnection",
                          username="libvirtuser",
                          password="supersecret",
-@@ -601,6 +599,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -596,6 +599,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      boot=None,
                      test=True,
                      boot_dev=None,
@@ -1202,7 +1118,7 @@ index f03159334b..1923ae5c0f 100644
                  )
  
              # No changes case
-@@ -636,6 +635,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -631,6 +635,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      boot=None,
                      test=True,
                      boot_dev=None,
@@ -1210,7 +1126,7 @@ index f03159334b..1923ae5c0f 100644
                  )
  
      def test_running(self):
-@@ -713,6 +713,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -708,6 +713,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      pub_key=None,
                      priv_key=None,
                      boot_dev=None,
@@ -1218,7 +1134,7 @@ index f03159334b..1923ae5c0f 100644
                      connection=None,
                      username=None,
                      password=None,
-@@ -775,6 +776,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -770,6 +776,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          pub_key="/path/to/key.pub",
                          priv_key="/path/to/key",
                          boot_dev="network hd",
@@ -1226,7 +1142,7 @@ index f03159334b..1923ae5c0f 100644
                          connection="someconnection",
                          username="libvirtuser",
                          password="supersecret",
-@@ -800,6 +802,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -795,6 +802,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      pub_key="/path/to/key.pub",
                      priv_key="/path/to/key",
                      boot_dev="network hd",
@@ -1234,7 +1150,7 @@ index f03159334b..1923ae5c0f 100644
                      connection="someconnection",
                      username="libvirtuser",
                      password="supersecret",
-@@ -945,6 +948,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -940,6 +948,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      boot=None,
                      test=False,
                      boot_dev=None,
@@ -1242,7 +1158,7 @@ index f03159334b..1923ae5c0f 100644
                  )
  
              # Failed definition update case
-@@ -1018,6 +1022,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1013,6 +1022,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          install=False,
                          pub_key="/path/to/key.pub",
                          priv_key="/path/to/key",
@@ -1250,7 +1166,7 @@ index f03159334b..1923ae5c0f 100644
                          connection="someconnection",
                          username="libvirtuser",
                          password="supersecret",
-@@ -1064,6 +1069,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1059,6 +1069,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      boot=None,
                      test=True,
                      boot_dev=None,
@@ -1258,7 +1174,7 @@ index f03159334b..1923ae5c0f 100644
                  )
                  start_mock.assert_not_called()
  
-@@ -1101,6 +1107,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1096,6 +1107,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                      boot=None,
                      test=True,
                      boot_dev=None,
@@ -1267,6 +1183,6 @@ index f03159334b..1923ae5c0f 100644
  
      def test_stopped(self):
 -- 
-2.28.0
+2.29.2
 
 

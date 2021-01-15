@@ -1,34 +1,35 @@
-From 383cb53b9936b8ff1d8707c74daf5001add2dd20 Mon Sep 17 00:00:00 2001
+From c7041ad87261ae9c41f02f38ba0dbe1bab197f15 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Wed, 4 Nov 2020 16:34:47 +0100
 Subject: [PATCH] transactional_update: unify with chroot.call
 
 Return for both .call() "retcode" when fail
 ---
- salt/modules/chroot.py                          |  5 +++--
+ salt/modules/chroot.py                          |  8 ++++++--
  salt/modules/transactional_update.py            |  4 ++--
- tests/unit/modules/test_chroot.py               |  6 ++++--
+ tests/unit/modules/test_chroot.py               | 12 +++++++++---
  tests/unit/modules/test_transactional_update.py | 12 ++++++++++--
- 4 files changed, 19 insertions(+), 8 deletions(-)
+ 4 files changed, 27 insertions(+), 9 deletions(-)
 
 diff --git a/salt/modules/chroot.py b/salt/modules/chroot.py
-index 5e890b5c35..fbec3ea788 100644
+index 1e2948607e..fda5b0c63c 100644
 --- a/salt/modules/chroot.py
 +++ b/salt/modules/chroot.py
-@@ -192,10 +192,11 @@ def call(root, function, *args, **kwargs):
-             if isinstance(local, dict) and 'retcode' in local:
-                 __context__['retcode'] = local['retcode']
-             return local.get('return', data)
+@@ -188,8 +188,12 @@ def call(root, function, *args, **kwargs):
+             if isinstance(local, dict) and "retcode" in local:
+                 __context__["retcode"] = local["retcode"]
+             return local.get("return", data)
 -        except (KeyError, ValueError):
+-            return {"result": False, "comment": "Can't parse container command output"}
 +        except ValueError:
-             return {
-                 'result': False,
--                'comment': "Can't parse container command output"
-+                'retcode': ret['retcode'],
-+                'comment': {'stdout': ret['stdout'], 'stderr': ret['stderr']},
-             }
++            return {
++                "result": False,
++                "retcode": ret["retcode"],
++                "comment": {"stdout": ret["stdout"], "stderr": ret["stderr"]},
++            }
      finally:
-         __utils__['files.rm_rf'](thin_dest_path)
+         __utils__["files.rm_rf"](thin_dest_path)
+ 
 diff --git a/salt/modules/transactional_update.py b/salt/modules/transactional_update.py
 index 9b14557e07..7bbdb697b8 100644
 --- a/salt/modules/transactional_update.py
@@ -45,40 +46,43 @@ index 9b14557e07..7bbdb697b8 100644
          __utils__["files.rm_rf"](thin_dest_path)
  
 diff --git a/tests/unit/modules/test_chroot.py b/tests/unit/modules/test_chroot.py
-index 045d56c5b0..eb7b8cb4aa 100644
+index a0f3f8e6af..7d3724e0c4 100644
 --- a/tests/unit/modules/test_chroot.py
 +++ b/tests/unit/modules/test_chroot.py
-@@ -145,13 +145,14 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
+@@ -133,19 +133,25 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
          utils_mock = {
-             'thin.gen_thin': MagicMock(return_value='/salt-thin.tgz'),
-             'files.rm_rf': MagicMock(),
--            'json.find_json': MagicMock(return_value={'return': {}})
-+            'json.find_json': MagicMock(side_effect=ValueError())
+             "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
+             "files.rm_rf": MagicMock(),
+-            "json.find_json": MagicMock(return_value={"return": {}}),
++            "json.find_json": MagicMock(side_effect=ValueError()),
          }
          salt_mock = {
-             'cmd.run': MagicMock(return_value=''),
-             'config.option': MagicMock(),
-             'cmd.run_chroot': MagicMock(return_value={
-                 'retcode': 1,
-+                'stdout': '',
-                 'stderr': 'Error',
-             }),
+             "cmd.run": MagicMock(return_value=""),
+             "config.option": MagicMock(),
+-            "cmd.run_chroot": MagicMock(return_value={"retcode": 1, "stderr": "Error"}),
++            "cmd.run_chroot": MagicMock(
++                return_value={"retcode": 1, "stdout": "", "stderr": "Error",}
++            ),
          }
-@@ -159,7 +160,8 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
-                 patch.dict(chroot.__salt__, salt_mock):
-             self.assertEqual(chroot.call('/chroot', 'test.ping'), {
-                 'result': False,
--                'comment': "Can't parse container command output"
-+                'retcode': 1,
-+                'comment': {'stdout': '', 'stderr': 'Error'},
-             })
-             utils_mock['thin.gen_thin'].assert_called_once()
-             salt_mock['config.option'].assert_called()
+         with patch.dict(chroot.__utils__, utils_mock), patch.dict(
+             chroot.__salt__, salt_mock
+         ):
+             self.assertEqual(
+                 chroot.call("/chroot", "test.ping"),
+-                {"result": False, "comment": "Can't parse container command output"},
++                {
++                    "result": False,
++                    "retcode": 1,
++                    "comment": {"stdout": "", "stderr": "Error"},
++                },
+             )
+             utils_mock["thin.gen_thin"].assert_called_once()
+             salt_mock["config.option"].assert_called()
 diff --git a/tests/unit/modules/test_transactional_update.py b/tests/unit/modules/test_transactional_update.py
-index b42734a53d..4616e0968f 100644
+index 08a704c212..19e477d02f 100644
 --- a/tests/unit/modules/test_transactional_update.py
 +++ b/tests/unit/modules/test_transactional_update.py
-@@ -372,7 +372,11 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
+@@ -370,7 +370,11 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
          with patch.dict(tu.__utils__, utils_mock), patch.dict(
              tu.__opts__, opts_mock
          ), patch.dict(tu.__salt__, salt_mock):
@@ -91,7 +95,7 @@ index b42734a53d..4616e0968f 100644
  
              utils_mock["thin.gen_thin"].assert_called_once()
              salt_mock["config.option"].assert_called()
-@@ -424,7 +428,11 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
+@@ -422,7 +426,11 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
          with patch.dict(tu.__utils__, utils_mock), patch.dict(
              tu.__opts__, opts_mock
          ), patch.dict(tu.__salt__, salt_mock):
@@ -105,6 +109,6 @@ index b42734a53d..4616e0968f 100644
              utils_mock["thin.gen_thin"].assert_called_once()
              salt_mock["config.option"].assert_called()
 -- 
-2.29.1
+2.29.2
 
 

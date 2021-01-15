@@ -1,46 +1,55 @@
-From 376a7d2eeb6b3b215fac9322f1baee4497bdb339 Mon Sep 17 00:00:00 2001
+From 66f6c2540a151487b26c89a2bb66199d6c65c18d Mon Sep 17 00:00:00 2001
 From: Marcelo Chiaradia <mchiaradia@suse.com>
 Date: Thu, 4 Apr 2019 13:57:38 +0200
 Subject: [PATCH] Add 'batch_presence_ping_timeout' and
  'batch_presence_ping_gather_job_timeout' parameters for synchronous batching
 
 ---
- salt/cli/batch.py | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ salt/cli/batch.py | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/salt/cli/batch.py b/salt/cli/batch.py
-index 36e66da1af..67f03c8a45 100644
+index 527cffdeb7..2bc5444aef 100644
 --- a/salt/cli/batch.py
 +++ b/salt/cli/batch.py
-@@ -83,6 +83,9 @@ def batch_get_opts(
+@@ -77,6 +77,13 @@ def batch_get_opts(
          if key not in opts:
              opts[key] = val
  
-+    opts['batch_presence_ping_timeout'] = kwargs.get('batch_presence_ping_timeout', opts['timeout'])
-+    opts['batch_presence_ping_gather_job_timeout'] = kwargs.get('batch_presence_ping_gather_job_timeout', opts['gather_job_timeout'])
++    opts["batch_presence_ping_timeout"] = kwargs.get(
++        "batch_presence_ping_timeout", opts["timeout"]
++    )
++    opts["batch_presence_ping_gather_job_timeout"] = kwargs.get(
++        "batch_presence_ping_gather_job_timeout", opts["gather_job_timeout"]
++    )
 +
      return opts
  
  
-@@ -119,7 +122,7 @@ class Batch(object):
-         args = [self.opts['tgt'],
-                 'test.ping',
-                 [],
--                self.opts['timeout'],
-+                self.opts.get('batch_presence_ping_timeout', self.opts['timeout']),
-                 ]
+@@ -115,7 +122,7 @@ class Batch:
+             self.opts["tgt"],
+             "test.ping",
+             [],
+-            self.opts["timeout"],
++            self.opts.get("batch_presence_ping_timeout", self.opts["timeout"]),
+         ]
  
-         selected_target_option = self.opts.get('selected_target_option', None)
-@@ -130,7 +133,7 @@ class Batch(object):
+         selected_target_option = self.opts.get("selected_target_option", None)
+@@ -126,7 +133,12 @@ class Batch:
  
-         self.pub_kwargs['yield_pub_data'] = True
-         ping_gen = self.local.cmd_iter(*args,
--                                       gather_job_timeout=self.opts['gather_job_timeout'],
-+                                       gather_job_timeout=self.opts.get('batch_presence_ping_gather_job_timeout', self.opts['gather_job_timeout']),
-                                        **self.pub_kwargs)
+         self.pub_kwargs["yield_pub_data"] = True
+         ping_gen = self.local.cmd_iter(
+-            *args, gather_job_timeout=self.opts["gather_job_timeout"], **self.pub_kwargs
++            *args,
++            gather_job_timeout=self.opts.get(
++                "batch_presence_ping_gather_job_timeout",
++                self.opts["gather_job_timeout"],
++            ),
++            **self.pub_kwargs
+         )
  
          # Broadcast to targets
 -- 
-2.16.4
+2.29.2
 
 

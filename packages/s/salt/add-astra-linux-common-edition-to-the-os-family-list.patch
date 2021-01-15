@@ -1,4 +1,4 @@
-From acf0b24353d831dcc2c5b292f99480938f5ecd93 Mon Sep 17 00:00:00 2001
+From d5569023c64a3fcec57a7aa6823ee94e8be91b3d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julio=20Gonz=C3=A1lez=20Gil?=
  <juliogonzalez@users.noreply.github.com>
 Date: Wed, 12 Feb 2020 10:05:45 +0100
@@ -11,49 +11,49 @@ Subject: [PATCH] Add Astra Linux Common Edition to the OS Family list
  2 files changed, 21 insertions(+)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 20950988d9..f410985198 100644
+index 5dff6ecfd4..5634327623 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -1523,6 +1523,7 @@ _OS_FAMILY_MAP = {
-     'Funtoo': 'Gentoo',
-     'AIX': 'AIX',
-     'TurnKey': 'Debian',
-+    'AstraLinuxCE': 'Debian',
+@@ -1618,6 +1618,7 @@ _OS_FAMILY_MAP = {
+     "Funtoo": "Gentoo",
+     "AIX": "AIX",
+     "TurnKey": "Debian",
++    "AstraLinuxCE": "Debian",
  }
  
  # Matches any possible format:
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index b4ed9379e5..c276dee9f3 100644
+index 85d434dd9d..196dbcf83d 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -605,6 +605,26 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -728,6 +728,26 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
          }
          self._run_os_grains_tests("ubuntu-17.10", _os_release_map, expectation)
  
-+    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
++    @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
 +    def test_astralinuxce_2_os_grains(self):
-+        '''
++        """
 +        Test if OS grains are parsed correctly in Astra Linux CE 2.12.22 "orel"
-+        '''
++        """
 +        _os_release_map = {
-+            'linux_distribution': ('AstraLinuxCE', '2.12.22', 'orel'),
++            "linux_distribution": ("AstraLinuxCE", "2.12.22", "orel"),
 +        }
 +        expectation = {
-+            'os': 'AstraLinuxCE',
-+            'os_family': 'Debian',
-+            'oscodename': 'orel',
-+            'osfullname': 'AstraLinuxCE',
-+            'osrelease': '2.12.22',
-+            'osrelease_info': (2, 12, 22),
-+            'osmajorrelease': 2,
-+            'osfinger': 'AstraLinuxCE-2',
++            "os": "AstraLinuxCE",
++            "os_family": "Debian",
++            "oscodename": "orel",
++            "osfullname": "AstraLinuxCE",
++            "osrelease": "2.12.22",
++            "osrelease_info": (2, 12, 22),
++            "osmajorrelease": 2,
++            "osfinger": "AstraLinuxCE-2",
 +        }
 +        self._run_os_grains_tests("astralinuxce-2.12.22", _os_release_map, expectation)
 +
-     @skipIf(not salt.utils.platform.is_windows(), 'System is not Windows')
+     @skipIf(not salt.utils.platform.is_windows(), "System is not Windows")
      def test_windows_platform_data(self):
-         '''
+         """
 -- 
-2.16.4
+2.29.2
 
 

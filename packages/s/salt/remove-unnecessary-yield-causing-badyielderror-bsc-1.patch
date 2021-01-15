@@ -1,4 +1,4 @@
-From bec0a06a069404c5043b1c59e3fe7cce2df177d3 Mon Sep 17 00:00:00 2001
+From a46471fcc26775f924599a5ef27e9716987739e4 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Wed, 30 Oct 2019 10:19:12 +0100
 Subject: [PATCH] Remove unnecessary yield causing BadYieldError
@@ -9,18 +9,18 @@ Subject: [PATCH] Remove unnecessary yield causing BadYieldError
  1 file changed, 2 deletions(-)
 
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
-index 6d0dca1da5..754c257b36 100644
+index b2d04f9d4d..f3d92b88f1 100644
 --- a/salt/cli/batch_async.py
 +++ b/salt/cli/batch_async.py
-@@ -227,7 +227,6 @@ class BatchAsync(object):
-                     self.event.unsubscribe(pattern, match_type='glob')
+@@ -238,7 +238,6 @@ class BatchAsync:
+                     self.event.unsubscribe(pattern, match_type="glob")
              del self
              gc.collect()
 -        yield
  
      @tornado.gen.coroutine
      def schedule_next(self):
-@@ -263,7 +262,6 @@ class BatchAsync(object):
+@@ -275,7 +274,6 @@ class BatchAsync:
          else:
              yield self.end_batch()
          gc.collect()
@@ -29,6 +29,6 @@ index 6d0dca1da5..754c257b36 100644
      def __del__(self):
          self.local = None
 -- 
-2.16.4
+2.29.2
 
 

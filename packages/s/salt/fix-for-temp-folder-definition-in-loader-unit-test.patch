@@ -1,4 +1,4 @@
-From dd01a0fc594f024eee2267bed2f698f5a6c729bf Mon Sep 17 00:00:00 2001
+From 33766e59bd53fac2c75e6ccfa1f363e2f7b1b65f Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Mon, 16 Mar 2020 15:25:42 +0100
 Subject: [PATCH] Fix for temp folder definition in loader unit test
@@ -8,13 +8,13 @@ Subject: [PATCH] Fix for temp folder definition in loader unit test
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/tests/unit/test_loader.py b/tests/unit/test_loader.py
-index fe11cd0681..7e369f2c3b 100644
+index 863e2182b9..5b23ad83e3 100644
 --- a/tests/unit/test_loader.py
 +++ b/tests/unit/test_loader.py
-@@ -152,12 +152,12 @@ class LazyLoaderUtilsTest(TestCase):
+@@ -240,12 +240,12 @@ class LazyLoaderUtilsTest(TestCase):
      def setUpClass(cls):
          cls.opts = salt.config.minion_config(None)
-         cls.opts['grains'] = salt.loader.grains(cls.opts)
+         cls.opts["grains"] = salt.loader.grains(cls.opts)
 -        if not os.path.isdir(TMP):
 -            os.makedirs(TMP)
 +        if not os.path.isdir(RUNTIME_VARS.TMP):
@@ -24,19 +24,19 @@ index fe11cd0681..7e369f2c3b 100644
          # Setup the module
 -        self.module_dir = tempfile.mkdtemp(dir=TMP)
 +        self.module_dir = tempfile.mkdtemp(dir=RUNTIME_VARS.TMP)
-         self.module_file = os.path.join(self.module_dir,
-                                         '{}.py'.format(self.module_name))
-         with salt.utils.files.fopen(self.module_file, 'w') as fh:
-@@ -165,7 +165,7 @@ class LazyLoaderUtilsTest(TestCase):
+         self.module_file = os.path.join(
+             self.module_dir, "{}.py".format(self.module_name)
+         )
+@@ -254,7 +254,7 @@ class LazyLoaderUtilsTest(TestCase):
              fh.flush()
              os.fsync(fh.fileno())
  
 -        self.utils_dir = tempfile.mkdtemp(dir=TMP)
 +        self.utils_dir = tempfile.mkdtemp(dir=RUNTIME_VARS.TMP)
-         self.utils_file = os.path.join(self.utils_dir,
-                                        '{}.py'.format(self.utils_name))
-         with salt.utils.files.fopen(self.utils_file, 'w') as fh:
+         self.utils_file = os.path.join(self.utils_dir, "{}.py".format(self.utils_name))
+         with salt.utils.files.fopen(self.utils_file, "w") as fh:
+             fh.write(salt.utils.stringutils.to_str(loader_template_utils))
 -- 
-2.16.4
+2.29.2
 
 

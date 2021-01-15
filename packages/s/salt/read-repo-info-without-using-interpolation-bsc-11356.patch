@@ -1,27 +1,29 @@
-From b502d73be38aeb509a6c5324cdc9bb94d7220c0a Mon Sep 17 00:00:00 2001
+From c3a058842344dacd01b0a0c55483c22b35f449e8 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 7 Nov 2019 15:11:49 +0100
 Subject: [PATCH] Read repo info without using interpolation
  (bsc#1135656)
 
 ---
- salt/modules/zypperpkg.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ salt/modules/zypperpkg.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 5f3b6d6855..0c15214e5e 100644
+index b5621174a4..c3342ab6d1 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -1045,7 +1045,7 @@ def _get_repo_info(alias, repos_cfg=None, root=None):
+@@ -1111,7 +1111,9 @@ def _get_repo_info(alias, repos_cfg=None, root=None):
      Get one repo meta-data.
-     '''
+     """
      try:
 -        meta = dict((repos_cfg or _get_configured_repos(root=root)).items(alias))
-+        meta = dict((repos_cfg or _get_configured_repos(root=root)).items(alias, raw=True))
-         meta['alias'] = alias
-         for key, val in six.iteritems(meta):
-             if val in ['0', '1']:
++        meta = dict(
++            (repos_cfg or _get_configured_repos(root=root)).items(alias, raw=True)
++        )
+         meta["alias"] = alias
+         for key, val in meta.items():
+             if val in ["0", "1"]:
 -- 
-2.16.4
+2.29.2
 
 

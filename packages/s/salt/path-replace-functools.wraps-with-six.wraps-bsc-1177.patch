@@ -1,4 +1,4 @@
-From 9707eab7452a94e64f77ece707c31c37e43e47f2 Mon Sep 17 00:00:00 2001
+From 8959cee470dc2080fab6b9559ca71b9c24c57f0d Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Tue, 20 Oct 2020 13:13:24 +0200
 Subject: [PATCH] path: replace functools.wraps with six.wraps
@@ -14,11 +14,11 @@ This patch uses six.wraps, that add this extra attribute.
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/salt/utils/decorators/path.py b/salt/utils/decorators/path.py
-index 8ee7fb1d11..a763c92d22 100644
+index 3682d0fb23..6763560122 100644
 --- a/salt/utils/decorators/path.py
 +++ b/salt/utils/decorators/path.py
 @@ -4,11 +4,10 @@ Decorators for salt.utils.path
- '''
+ """
  from __future__ import absolute_import, print_function, unicode_literals
  
 -import functools
@@ -30,18 +30,18 @@ index 8ee7fb1d11..a763c92d22 100644
  
  
  def which(exe):
-@@ -16,7 +15,7 @@ def which(exe):
-     Decorator wrapper for salt.utils.path.which
-     '''
+@@ -17,7 +16,7 @@ def which(exe):
+     """
+ 
      def wrapper(function):
 -        @functools.wraps(function)
 +        @salt.ext.six.wraps(function)
          def wrapped(*args, **kwargs):
              if salt.utils.path.which(exe) is None:
                  raise CommandNotFoundError(
-@@ -34,7 +33,7 @@ def which_bin(exes):
-     Decorator wrapper for salt.utils.path.which_bin
-     '''
+@@ -36,7 +35,7 @@ def which_bin(exes):
+     """
+ 
      def wrapper(function):
 -        @functools.wraps(function)
 +        @salt.ext.six.wraps(function)
@@ -49,6 +49,6 @@ index 8ee7fb1d11..a763c92d22 100644
              if salt.utils.path.which_bin(exes) is None:
                  raise CommandNotFoundError(
 -- 
-2.28.0
+2.29.2
 
 

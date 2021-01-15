@@ -1,4 +1,4 @@
-From c1f5e6332bf025394b81868bf1edc6ae44944a7c Mon Sep 17 00:00:00 2001
+From 421988aea296ced1f8c63cfa4b517b25eedfb00c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Tue, 29 Jan 2019 09:44:03 +0100
 Subject: [PATCH] Don't call zypper with more than one --no-refresh
@@ -11,32 +11,32 @@ passed twice. Make sure we won't hit this.
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 04a6a6872d..37428cf67c 100644
+index 6fa6e3e0a1..dfaaf420a1 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -282,7 +282,7 @@ class _Zypper(object):
+@@ -300,7 +300,7 @@ class _Zypper:
          self.__called = True
          if self.__xml:
-             self.__cmd.append('--xmlout')
+             self.__cmd.append("--xmlout")
 -        if not self.__refresh:
-+        if not self.__refresh and '--no-refresh' not in args:
-             self.__cmd.append('--no-refresh')
- 
-         self.__cmd.extend(args)
++        if not self.__refresh and "--no-refresh" not in args:
+             self.__cmd.append("--no-refresh")
+         if self.__root:
+             self.__cmd.extend(["--root", self.__root])
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index b3162f10cd..956902eab3 100644
+index 7bff7065c6..b07f9a3af7 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -135,7 +135,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
-             self.assertEqual(zypper.__zypper__.call('foo'), stdout_xml_snippet)
+@@ -136,7 +136,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+             self.assertEqual(zypper.__zypper__.call("foo"), stdout_xml_snippet)
              self.assertEqual(len(sniffer.calls), 1)
  
--            zypper.__zypper__.call('bar')
-+            zypper.__zypper__.call('--no-refresh', 'bar')
+-            zypper.__zypper__.call("bar")
++            zypper.__zypper__.call("--no-refresh", "bar")
              self.assertEqual(len(sniffer.calls), 2)
-             self.assertEqual(sniffer.calls[0]['args'][0], ['zypper', '--non-interactive', '--no-refresh', 'foo'])
-             self.assertEqual(sniffer.calls[1]['args'][0], ['zypper', '--non-interactive', '--no-refresh', 'bar'])
+             self.assertEqual(
+                 sniffer.calls[0]["args"][0],
 -- 
-2.16.4
+2.29.2
 
 

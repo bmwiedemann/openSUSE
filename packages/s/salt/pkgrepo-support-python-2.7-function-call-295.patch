@@ -1,4 +1,4 @@
-From a487f19e6a0ed6b4b7e987e5b6d90852050eb2d9 Mon Sep 17 00:00:00 2001
+From 4a733724bd1af4f91ac575bfd0bc6fa0ac8e7831 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Mon, 16 Nov 2020 10:37:29 +0100
 Subject: [PATCH] pkgrepo: support Python 2.7 function call (#295)
@@ -8,10 +8,10 @@ Subject: [PATCH] pkgrepo: support Python 2.7 function call (#295)
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/states/pkgrepo.py b/salt/states/pkgrepo.py
-index 6c42d17d32..504f1425c7 100644
+index d734bb9de9..852fc015b6 100644
 --- a/salt/states/pkgrepo.py
 +++ b/salt/states/pkgrepo.py
-@@ -818,7 +818,7 @@ def migrated(name, keys=True, drop=False, method=None, **kwargs):
+@@ -853,7 +853,7 @@ def migrated(name, keys=True, drop=False, method=None, **kwargs):
          if method == "copy":
              _copy_repository_to(name)
          else:
@@ -21,6 +21,6 @@ index 6c42d17d32..504f1425c7 100644
          __salt__["pkg.del_repo"](repo, root=name)
  
 -- 
-2.28.0
+2.29.2
 
 

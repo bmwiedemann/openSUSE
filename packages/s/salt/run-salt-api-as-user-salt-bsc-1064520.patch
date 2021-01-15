@@ -1,4 +1,4 @@
-From 4e9b3808b5a27fcdc857b26d73e0f6716243ca92 Mon Sep 17 00:00:00 2001
+From cdecbbdf5db3f1cb6b603916fecd80738f5fae9a Mon Sep 17 00:00:00 2001
 From: Christian Lanig <clanig@suse.com>
 Date: Mon, 27 Nov 2017 13:10:26 +0100
 Subject: [PATCH] Run salt-api as user salt (bsc#1064520)
@@ -20,6 +20,6 @@ index 7ca582dfb4..bf513e4dbd 100644
  ExecStart=/usr/bin/salt-api
  TimeoutStopSec=3
 -- 
-2.16.4
+2.29.2
 
 

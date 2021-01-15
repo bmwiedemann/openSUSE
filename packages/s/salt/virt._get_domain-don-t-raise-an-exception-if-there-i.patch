@@ -1,4 +1,4 @@
-From ef376e2d9a8360367a9a214d8f50d56889f3a664 Mon Sep 17 00:00:00 2001
+From 3cb366a1f777a9c8ee1a1c679c65d67fe5b89db0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Tue, 17 Mar 2020 11:01:48 +0100
 Subject: [PATCH] virt._get_domain: don't raise an exception if there
@@ -7,73 +7,173 @@ Subject: [PATCH] virt._get_domain: don't raise an exception if there
 Raising an exception if there is no VM in _get_domain makes sense if
 looking for some VMs, but not when listing all VMs.
 ---
- salt/modules/virt.py            |  2 +-
- tests/unit/modules/test_virt.py | 41 +++++++++++++++++++++++++++++++++
- 2 files changed, 42 insertions(+), 1 deletion(-)
+ tests/unit/modules/test_virt.py | 155 --------------------------------
+ 1 file changed, 155 deletions(-)
 
-diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index f0820e882524e1ebaae335e0a72940d6ff85c1b2..c8e046a47ae76b50651871fe1d149590d5d1e930 100644
---- a/salt/modules/virt.py
-+++ b/salt/modules/virt.py
-@@ -268,7 +268,7 @@ def _get_domain(conn, *vms, **kwargs):
-         for id_ in conn.listDefinedDomains():
-             all_vms.append(id_)
- 
--    if not all_vms:
-+    if vms and not all_vms:
-         raise CommandExecutionError('No virtual machines found.')
- 
-     if vms:
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 8690154662f41c8d9699fba62fcda6d83208a7d7..3e9bd5ef49dfddc019f9b4da1b505d81018e7eed 100644
+index db6ba007b7..a5c876e27d 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
-@@ -3639,3 +3639,44 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
-                 }
-             },
-             [backend for backend in backends if backend['name'] == 'netfs'][0]['options'])
-+
-+    def test_get_domain(self):
-+        '''
-+        Test the virt._get_domain function
-+        '''
-+        # Tests with no VM
-+        self.mock_conn.listDomainsID.return_value = []
-+        self.mock_conn.listDefinedDomains.return_value = []
-+        self.assertEqual([], virt._get_domain(self.mock_conn))
-+        self.assertRaisesRegex(CommandExecutionError, 'No virtual machines found.',
-+                               virt._get_domain, self.mock_conn, 'vm2')
-+
-+        # Test with active and inactive VMs
-+        self.mock_conn.listDomainsID.return_value = [1]
-+
-+        def create_mock_vm(idx):
-+            mock_vm = MagicMock()
-+            mock_vm.name.return_value = 'vm{0}'.format(idx)
-+            return mock_vm
-+
-+        mock_vms = [create_mock_vm(idx) for idx in range(3)]
-+        self.mock_conn.lookupByID.return_value = mock_vms[0]
-+        self.mock_conn.listDefinedDomains.return_value = ['vm1', 'vm2']
-+
-+        self.mock_conn.lookupByName.side_effect = mock_vms
-+        self.assertEqual(mock_vms, virt._get_domain(self.mock_conn))
-+
-+        self.mock_conn.lookupByName.side_effect = None
-+        self.mock_conn.lookupByName.return_value = mock_vms[0]
-+        self.assertEqual(mock_vms[0], virt._get_domain(self.mock_conn, inactive=False))
-+
-+        self.mock_conn.lookupByName.return_value = None
-+        self.mock_conn.lookupByName.side_effect = [mock_vms[1], mock_vms[2]]
-+        self.assertEqual([mock_vms[1], mock_vms[2]], virt._get_domain(self.mock_conn, active=False))
-+
-+        self.mock_conn.reset_mock()
-+        self.mock_conn.lookupByName.return_value = None
-+        self.mock_conn.lookupByName.side_effect = [mock_vms[1], mock_vms[2]]
-+        self.assertEqual([mock_vms[1], mock_vms[2]], virt._get_domain(self.mock_conn, 'vm1', 'vm2'))
-+        self.assertRaisesRegex(CommandExecutionError, 'The VM "vm2" is not present',
-+                               virt._get_domain, self.mock_conn, 'vm2', inactive=False)
+@@ -4898,158 +4898,3 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+             "vm2",
+             inactive=False,
+         )
+-
+-    def test_volume_define(self):
+-        """
+-        Test virt.volume_define function
+-        """
+-        # Normal test case
+-        pool_mock = MagicMock()
+-        pool_mock.XMLDesc.return_value = "<pool type='dir'></pool>"
+-        self.mock_conn.storagePoolLookupByName.return_value = pool_mock
+-
+-        self.assertTrue(
+-            virt.volume_define(
+-                "testpool",
+-                "myvm_system.qcow2",
+-                8192,
+-                allocation=4096,
+-                format="qcow2",
+-                type="file",
+-            )
+-        )
+-
+-        expected_xml = (
+-            "<volume type='file'>\n"
+-            "  <name>myvm_system.qcow2</name>\n"
+-            "  <source>\n"
+-            "  </source>\n"
+-            "  <capacity unit='KiB'>8388608</capacity>\n"
+-            "  <allocation unit='KiB'>4194304</allocation>\n"
+-            "  <target>\n"
+-            "    <format type='qcow2'/>\n"
+-            "  </target>\n"
+-            "</volume>"
+-        )
+-
+-        pool_mock.createXML.assert_called_once_with(expected_xml, 0)
+-
+-        # backing store test case
+-        pool_mock.reset_mock()
+-        self.assertTrue(
+-            virt.volume_define(
+-                "testpool",
+-                "myvm_system.qcow2",
+-                8192,
+-                allocation=4096,
+-                format="qcow2",
+-                type="file",
+-                backing_store={"path": "/path/to/base.raw", "format": "raw"},
+-            )
+-        )
+-
+-        expected_xml = (
+-            "<volume type='file'>\n"
+-            "  <name>myvm_system.qcow2</name>\n"
+-            "  <source>\n"
+-            "  </source>\n"
+-            "  <capacity unit='KiB'>8388608</capacity>\n"
+-            "  <allocation unit='KiB'>4194304</allocation>\n"
+-            "  <target>\n"
+-            "    <format type='qcow2'/>\n"
+-            "  </target>\n"
+-            "  <backingStore>\n"
+-            "    <path>/path/to/base.raw</path>\n"
+-            "    <format type='raw'/>\n"
+-            "  </backingStore>\n"
+-            "</volume>"
+-        )
+-
+-        pool_mock.createXML.assert_called_once_with(expected_xml, 0)
+-
+-        # logical pool test case
+-        pool_mock.reset_mock()
+-        pool_mock.XMLDesc.return_value = "<pool type='logical'></pool>"
+-        self.mock_conn.storagePoolLookupByName.return_value = pool_mock
+-
+-        self.assertTrue(
+-            virt.volume_define(
+-                "testVG",
+-                "myvm_system",
+-                8192,
+-                backing_store={"path": "/dev/testVG/base"},
+-            )
+-        )
+-
+-        expected_xml = (
+-            "<volume>\n"
+-            "  <name>myvm_system</name>\n"
+-            "  <source>\n"
+-            "  </source>\n"
+-            "  <capacity unit='KiB'>8388608</capacity>\n"
+-            "  <allocation unit='KiB'>8388608</allocation>\n"
+-            "  <target>\n"
+-            "  </target>\n"
+-            "  <backingStore>\n"
+-            "    <path>/dev/testVG/base</path>\n"
+-            "  </backingStore>\n"
+-            "</volume>"
+-        )
+-
+-        pool_mock.createXML.assert_called_once_with(expected_xml, 0)
+-
+-    def test_volume_upload(self):
+-        """
+-        Test virt.volume_upload function
+-        """
+-        pool_mock = MagicMock()
+-        vol_mock = MagicMock()
+-        pool_mock.storageVolLookupByName.return_value = vol_mock
+-        self.mock_conn.storagePoolLookupByName.return_value = pool_mock
+-        stream_mock = MagicMock()
+-        self.mock_conn.newStream.return_value = stream_mock
+-
+-        open_mock = MagicMock()
+-        close_mock = MagicMock()
+-        with patch.dict(
+-            os.__dict__, {"open": open_mock, "close": close_mock}
+-        ):  # pylint: disable=no-member
+-            # Normal case
+-            self.assertTrue(virt.volume_upload("pool0", "vol1.qcow2", "/path/to/file"))
+-            stream_mock.sendAll.assert_called_once()
+-            stream_mock.finish.assert_called_once()
+-            self.mock_conn.close.assert_called_once()
+-            vol_mock.upload.assert_called_once_with(stream_mock, 0, 0, 0)
+-
+-            # Sparse upload case
+-            stream_mock.sendAll.reset_mock()
+-            vol_mock.upload.reset_mock()
+-            self.assertTrue(
+-                virt.volume_upload(
+-                    "pool0",
+-                    "vol1.qcow2",
+-                    "/path/to/file",
+-                    offset=123,
+-                    length=456,
+-                    sparse=True,
+-                )
+-            )
+-            stream_mock.sendAll.assert_not_called()
+-            stream_mock.sparseSendAll.assert_called_once()
+-            vol_mock.upload.assert_called_once_with(
+-                stream_mock,
+-                123,
+-                456,
+-                self.mock_libvirt.VIR_STORAGE_VOL_UPLOAD_SPARSE_STREAM,
+-            )
+-
+-            # Upload unsupported case
+-            vol_mock.upload.side_effect = self.mock_libvirt.libvirtError("Unsupported")
+-            self.assertRaisesRegex(
+-                CommandExecutionError,
+-                "Unsupported",
+-                virt.volume_upload,
+-                "pool0",
+-                "vol1.qcow2",
+-                "/path/to/file",
+-            )
 -- 
-2.23.0
+2.29.2
 
 

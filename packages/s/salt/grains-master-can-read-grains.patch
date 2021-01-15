@@ -1,4 +1,4 @@
-From 0b6106815b708bc4cf25b4a02ebc8b7ebf299b39 Mon Sep 17 00:00:00 2001
+From d9618fed8ff241c6f127f08ec59fea9c8b8e12a6 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Tue, 27 Oct 2020 13:16:37 +0100
 Subject: [PATCH] grains: master can read grains
@@ -8,10 +8,10 @@ Subject: [PATCH] grains: master can read grains
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/salt/grains/extra.py b/salt/grains/extra.py
-index 6a26aece77..f80061ff4e 100644
+index d25faac3b7..7729a5c0a5 100644
 --- a/salt/grains/extra.py
 +++ b/salt/grains/extra.py
-@@ -94,8 +94,14 @@ def __secure_boot():
+@@ -76,8 +76,14 @@ def __secure_boot():
      enabled = False
      sboot = glob.glob("/sys/firmware/efi/vars/SecureBoot-*/data")
      if len(sboot) == 1:
@@ -29,6 +29,6 @@ index 6a26aece77..f80061ff4e 100644
  
  
 -- 
-2.29.1
+2.29.2
 
 

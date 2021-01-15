@@ -1,4 +1,4 @@
-From 98f3bd70aaa145b88e8bd4b947b578435e2b1e57 Mon Sep 17 00:00:00 2001
+From e987664551debb9affce8ce5a70593ef0750dcd5 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Wed, 14 Nov 2018 17:36:23 +0100
 Subject: [PATCH] Get os_arch also without RPM package installed
@@ -17,29 +17,31 @@ Add UT for OS arch detection when no CPU arch or machine can be determined
 
 Remove unsupported testcase
 ---
- tests/unit/utils/test_pkg.py | 48 ++++++++------------------------------------
- 1 file changed, 8 insertions(+), 40 deletions(-)
+ tests/unit/utils/test_pkg.py | 53 ++++++------------------------------
+ 1 file changed, 8 insertions(+), 45 deletions(-)
 
 diff --git a/tests/unit/utils/test_pkg.py b/tests/unit/utils/test_pkg.py
-index e8b19bef14..361e0bf92f 100644
+index b4a67b8e57..404b01b12b 100644
 --- a/tests/unit/utils/test_pkg.py
 +++ b/tests/unit/utils/test_pkg.py
-@@ -2,51 +2,19 @@
- 
- from __future__ import absolute_import, unicode_literals, print_function
- 
--from tests.support.unit import TestCase
--from tests.support.mock import MagicMock, patch
-+from tests.support.unit import TestCase, skipIf
-+from tests.support.mock import Mock, MagicMock, patch, NO_MOCK, NO_MOCK_REASON
+@@ -1,53 +1,16 @@
+-# -*- coding: utf-8 -*-
+-
+-from __future__ import absolute_import, print_function, unicode_literals
+-
  import salt.utils.pkg
  from salt.utils.pkg import rpm
- 
+-from tests.support.mock import MagicMock, patch
+-from tests.support.unit import TestCase
 -
++from tests.support.mock import NO_MOCK, NO_MOCK_REASON, MagicMock, Mock, patch
++from tests.support.unit import TestCase, skipIf
+ 
 -class PkgUtilsTestCase(TestCase):
--    '''
+-    """
 -    TestCase for salt.utils.pkg module
--    '''
+-    """
+-
 -    test_parameters = [
 -        ("16.0.0.49153-0+f1", "", "16.0.0.49153-0+f1"),
 -        ("> 15.0.0", ">", "15.0.0"),
@@ -62,13 +64,13 @@ index e8b19bef14..361e0bf92f 100644
 -        ("<=>15.0.0", "<=>", "15.0.0"),
 -        ("<>15.0.0", "<>", "15.0.0"),
 -        ("=15.0.0", "=", "15.0.0"),
--        ("", "", "")
+-        ("", "", ""),
 -    ]
 -
 -    def test_split_comparison(self):
--        '''
+-        """
 -        Tests salt.utils.pkg.split_comparison
--        '''
+-        """
 -        for test_parameter in self.test_parameters:
 -            oper, verstr = salt.utils.pkg.split_comparison(test_parameter[0])
 -            self.assertEqual(test_parameter[1], oper)
@@ -80,11 +82,11 @@ index e8b19bef14..361e0bf92f 100644
  
  
 +@skipIf(NO_MOCK, NO_MOCK_REASON)
-+@skipIf(pytest is None, 'PyTest is missing')
++@skipIf(pytest is None, "PyTest is missing")
  class PkgRPMTestCase(TestCase):
-     '''
+     """
      Test case for pkg.rpm utils
 -- 
-2.16.4
+2.29.2
 
 

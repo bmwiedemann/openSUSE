@@ -1,4 +1,4 @@
-From 2670f83fd1309fbf9fdc98f15f9a6e6a3ecc038d Mon Sep 17 00:00:00 2001
+From 239e897776b889105cfd6f54092100c86f52ce21 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Tue, 24 Mar 2020 17:46:23 +0100
 Subject: [PATCH] loop: fix variable names for until_no_eval
@@ -8,12 +8,12 @@ Subject: [PATCH] loop: fix variable names for until_no_eval
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/salt/states/loop.py b/salt/states/loop.py
-index 726c8c80165803f3b2d98bf7a197013c53f3ebc8..b631e6c8f62416c04b458a595dc31393987eb904 100644
+index de37b7d60c..533166c5dc 100644
 --- a/salt/states/loop.py
 +++ b/salt/states/loop.py
-@@ -185,10 +185,10 @@ def until_no_eval(
-                           ''.format(name, expected))
-     if ret['comment']:
+@@ -182,10 +182,10 @@ def until_no_eval(
+         )
+     if ret["comment"]:
          return ret
 -    if not m_args:
 -        m_args = []
@@ -27,6 +27,6 @@ index 726c8c80165803f3b2d98bf7a197013c53f3ebc8..b631e6c8f62416c04b458a595dc31393
      if init_wait:
          time.sleep(init_wait)
 -- 
-2.23.0
+2.29.2
 
 

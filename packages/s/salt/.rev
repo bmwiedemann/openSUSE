@@ -1630,4 +1630,41 @@ let build start it or we will get libvirt errors.
   * fix-for-bsc-1102248-psutil-is-broken-and-so-process-.patch</comment>
     <requestid>850470</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>3fab80c32c60c0e1d2da34a6538151ff</srcmd5>
+    <version>3002.2</version>
+    <time>1610736308</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated warning that breaks minion execution when &quot;server_id_use_crc&quot; opts is missing
+- Added:
+  * remove-deprecated-warning-that-breaks-miniion-execut.patch
+
+- Revert wrong zypper patch to support vendorchanges flags on pkg.install
+- Added:
+  * revert-add-patch-support-for-allow-vendor-change-opt.patch
+
+- Force zyppnotify to prefer Packages.db than Packages if it exists
+- Allow vendor change option with zypper
+- Add pkg.services_need_restart
+- Fix for file.check_perms to work with numeric uid/gid
+- Added:
+  * force-zyppnotify-to-prefer-packages.db-than-packages.patch
+  * fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
+  * add-patch-support-for-allow-vendor-change-option-wit.patch
+  * add-pkg.services_need_restart-302.patch
+
+- virt: more network support
+  Add more network and PCI/USB host devices passthrough support
+  to virt module and states
+- Added:
+  * open-suse-3002.2-virt-network-311.patch
+
+- Bigvm backports
+  virt consoles, CPU tuning and topology, and memory tuning.
+- Added:
+  * open-suse-3002.2-bigvm-310.patch
+
+- Fix pkg states when DEB package has &quot;all&quot; arch</comment>
+    <requestid>862930</requestid>
+  </revision>
 </revisionlist>

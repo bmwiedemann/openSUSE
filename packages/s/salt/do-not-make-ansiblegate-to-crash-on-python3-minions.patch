@@ -1,4 +1,4 @@
-From 235cca81be2f64ed3feb48ed42bfa3f9196bff39 Mon Sep 17 00:00:00 2001
+From 5d465a5b392efa1b4df7870161b32e0125efa4af Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 28 Jun 2019 15:17:56 +0100
@@ -10,77 +10,315 @@ Move MockTimedProc implementation to tests.support.mock
 
 Add unit test for ansible caller
 ---
- salt/modules/ansiblegate.py            | 14 +++++++++---
- tests/support/mock.py                  | 31 +++++++++++++++++++++++++
- tests/unit/modules/test_ansiblegate.py | 41 ++++++++++++++++++++++++++++++++++
- tests/unit/modules/test_cmdmod.py      | 35 ++---------------------------
- 4 files changed, 85 insertions(+), 36 deletions(-)
+ salt/modules/ansiblegate.py            |   7 +-
+ tests/support/mock.py                  | 128 +++++++++-------
+ tests/unit/modules/test_ansiblegate.py | 201 +++++++++++++++++++++++++
+ tests/unit/modules/test_cmdmod.py      |   1 +
+ 4 files changed, 280 insertions(+), 57 deletions(-)
+ create mode 100644 tests/unit/modules/test_ansiblegate.py
 
 diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
-index 6b903c2b94..8e28fcafa3 100644
+index 0279a26017..5d4b986ec2 100644
 --- a/salt/modules/ansiblegate.py
 +++ b/salt/modules/ansiblegate.py
-@@ -147,6 +147,10 @@ class AnsibleModuleCaller(object):
+@@ -160,6 +160,7 @@ class AnsibleModuleCaller:
          :param kwargs: keywords to the module
          :return:
-         '''
-+        if six.PY3:
-+            python_exec = 'python3'
-+        else:
-+            python_exec = 'python'
+         """
++        python_exec = "python3"
  
          module = self._resolver.load_module(module)
-         if not hasattr(module, 'main'):
-@@ -162,9 +166,13 @@ class AnsibleModuleCaller(object):
-             ["echo", "{0}".format(js_args)],
-             stdout=subprocess.PIPE, timeout=self.timeout)
+         if not hasattr(module, "main"):
+@@ -182,9 +183,9 @@ class AnsibleModuleCaller:
+             timeout=self.timeout,
+         )
          proc_out.run()
-+        if six.PY3:
-+            proc_out_stdout = proc_out.stdout.decode()
-+        else:
-+            proc_out_stdout = proc_out.stdout
+-        proc_out_stdout = salt.utils.stringutils.to_str(proc_out.stdout)
++        proc_out_stdout = proc_out.stdout.decode()
          proc_exc = salt.utils.timed_subprocess.TimedProc(
--            ['python', module.__file__],
--            stdin=proc_out.stdout, stdout=subprocess.PIPE, timeout=self.timeout)
+-            [sys.executable, module.__file__],
 +            [python_exec, module.__file__],
-+            stdin=proc_out_stdout, stdout=subprocess.PIPE, timeout=self.timeout)
-         proc_exc.run()
- 
-         try:
-@@ -263,7 +271,7 @@ def help(module=None, *args):
-             description = doc.get('description') or ''
-             del doc['description']
-             ret['Description'] = description
--        ret['Available sections on module "{}"'.format(module.__name__.replace('ansible.modules.', ''))] = doc.keys()
-+        ret['Available sections on module "{}"'.format(module.__name__.replace('ansible.modules.', ''))] = [i for i in doc.keys()]
+             stdin=proc_out_stdout,
+             stdout=subprocess.PIPE,
+             timeout=self.timeout,
+@@ -298,7 +299,7 @@ def help(module=None, *args):
+             'Available sections on module "{}"'.format(
+                 module.__name__.replace("ansible.modules.", "")
+             )
+-        ] = list(doc)
++        ] = [i for i in doc.keys()]
      else:
          for arg in args:
              info = doc.get(arg)
 diff --git a/tests/support/mock.py b/tests/support/mock.py
-index 805a60377c..67ecb4838a 100644
+index 7ef02e0701..87d052c399 100644
 --- a/tests/support/mock.py
 +++ b/tests/support/mock.py
-@@ -461,6 +461,37 @@ class MockOpen(object):
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+     :codeauthor: Pedro Algarvio (pedro@algarvio.me)
+ 
+@@ -14,7 +13,6 @@
+ """
+ # pylint: disable=unused-import,function-redefined,blacklisted-module,blacklisted-external-module
+ 
+-from __future__ import absolute_import
+ 
+ import collections
+ import copy
+@@ -42,8 +40,6 @@ from mock import (
+     patch,
+     sentinel,
+ )
+-
+-# Import salt libs
+ from salt.ext import six
+ 
+ # pylint: disable=no-name-in-module,no-member
+@@ -57,7 +53,7 @@ if sys.version_info < (3, 6) and __mock_version < (2,):
+     raise ImportError("Please install mock>=2.0.0")
+ 
+ 
+-class MockFH(object):
++class MockFH:
+     def __init__(self, filename, read_data, *args, **kwargs):
+         self.filename = filename
+         self.read_data = read_data
+@@ -89,7 +85,7 @@ class MockFH(object):
+         """
+         # Newline will always be a bytestring on PY2 because mock_open will have
+         # normalized it to one.
+-        newline = b"\n" if isinstance(read_data, six.binary_type) else "\n"
++        newline = b"\n" if isinstance(read_data, bytes) else "\n"
+ 
+         read_data = [line + newline for line in read_data.split(newline)]
+ 
+@@ -103,8 +99,7 @@ class MockFH(object):
+             # newline that we added in the list comprehension.
+             read_data[-1] = read_data[-1][:-1]
+ 
+-        for line in read_data:
+-            yield line
++        yield from read_data
+ 
+     @property
+     def write_calls(self):
+@@ -126,18 +121,18 @@ class MockFH(object):
+     def __check_read_data(self):
+         if not self.__read_data_ok:
+             if self.binary_mode:
+-                if not isinstance(self.read_data, six.binary_type):
++                if not isinstance(self.read_data, bytes):
+                     raise TypeError(
+-                        "{0} opened in binary mode, expected read_data to be "
+-                        "bytes, not {1}".format(
++                        "{} opened in binary mode, expected read_data to be "
++                        "bytes, not {}".format(
+                             self.filename, type(self.read_data).__name__
+                         )
+                     )
+             else:
+                 if not isinstance(self.read_data, str):
+                     raise TypeError(
+-                        "{0} opened in non-binary mode, expected read_data to "
+-                        "be str, not {1}".format(
++                        "{} opened in non-binary mode, expected read_data to "
++                        "be str, not {}".format(
+                             self.filename, type(self.read_data).__name__
+                         )
+                     )
+@@ -147,8 +142,8 @@ class MockFH(object):
+     def _read(self, size=0):
+         self.__check_read_data()
+         if not self.read_mode:
+-            raise IOError("File not open for reading")
+-        if not isinstance(size, six.integer_types) or size < 0:
++            raise OSError("File not open for reading")
++        if not isinstance(size, int) or size < 0:
+             raise TypeError("a positive integer is required")
+ 
+         joined = self.empty_string.join(self.read_data_iter)
+@@ -169,7 +164,7 @@ class MockFH(object):
+         # TODO: Implement "size" argument
+         self.__check_read_data()
+         if not self.read_mode:
+-            raise IOError("File not open for reading")
++            raise OSError("File not open for reading")
+         ret = list(self.read_data_iter)
+         self.__loc += sum(len(x) for x in ret)
+         return ret
+@@ -178,7 +173,7 @@ class MockFH(object):
+         # TODO: Implement "size" argument
+         self.__check_read_data()
+         if not self.read_mode:
+-            raise IOError("File not open for reading")
++            raise OSError("File not open for reading")
+         try:
+             ret = next(self.read_data_iter)
+             self.__loc += len(ret)
+@@ -189,7 +184,7 @@ class MockFH(object):
+     def __iter__(self):
+         self.__check_read_data()
+         if not self.read_mode:
+-            raise IOError("File not open for reading")
++            raise OSError("File not open for reading")
+         while True:
+             try:
+                 ret = next(self.read_data_iter)
+@@ -200,30 +195,22 @@ class MockFH(object):
+ 
+     def _write(self, content):
+         if not self.write_mode:
+-            raise IOError("File not open for writing")
+-        if six.PY2:
+-            if isinstance(content, six.text_type):
+-                # encoding intentionally not specified to force a
+-                # UnicodeEncodeError when non-ascii unicode type is passed
+-                content.encode()
+-        else:
+-            content_type = type(content)
+-            if self.binary_mode and content_type is not bytes:
+-                raise TypeError(
+-                    "a bytes-like object is required, not '{0}'".format(
+-                        content_type.__name__
+-                    )
+-                )
+-            elif not self.binary_mode and content_type is not str:
+-                raise TypeError(
+-                    "write() argument must be str, not {0}".format(
+-                        content_type.__name__
+-                    )
++            raise OSError("File not open for writing")
++        content_type = type(content)
++        if self.binary_mode and content_type is not bytes:
++            raise TypeError(
++                "a bytes-like object is required, not '{}'".format(
++                    content_type.__name__
+                 )
++            )
++        elif not self.binary_mode and content_type is not str:
++            raise TypeError(
++                "write() argument must be str, not {}".format(content_type.__name__)
++            )
+ 
+     def _writelines(self, lines):
+         if not self.write_mode:
+-            raise IOError("File not open for writing")
++            raise OSError("File not open for writing")
+         for line in lines:
+             self._write(line)
+ 
+@@ -234,26 +221,24 @@ class MockFH(object):
+         pass
+ 
+ 
+-class MockCall(object):
++class MockCall:
+     def __init__(self, *args, **kwargs):
+         self.args = args
+         self.kwargs = kwargs
+ 
+     def __repr__(self):
+         # future lint: disable=blacklisted-function
+-        ret = str("MockCall(")
++        ret = "MockCall("
+         for arg in self.args:
+-            ret += repr(arg) + str(", ")
++            ret += repr(arg) + ", "
+         if not self.kwargs:
+             if self.args:
+                 # Remove trailing ', '
+                 ret = ret[:-2]
+         else:
+-            for key, val in six.iteritems(self.kwargs):
+-                ret += str("{0}={1}").format(
+-                    salt.utils.stringutils.to_str(key), repr(val)
+-                )
+-        ret += str(")")
++            for key, val in self.kwargs.items():
++                ret += "{}={}".format(salt.utils.stringutils.to_str(key), repr(val))
++        ret += ")"
+         return ret
+         # future lint: enable=blacklisted-function
+ 
+@@ -264,7 +249,7 @@ class MockCall(object):
+         return self.args == other.args and self.kwargs == other.kwargs
+ 
+ 
+-class MockOpen(object):
++class MockOpen:
+     r'''
+     This class can be used to mock the use of ``open()``.
+ 
+@@ -379,7 +364,7 @@ class MockOpen(object):
+             # .__class__() used here to preserve the dict class in the event that
+             # an OrderedDict was used.
+             new_read_data = read_data.__class__()
+-            for key, val in six.iteritems(read_data):
++            for key, val in read_data.items():
+                 try:
+                     val = salt.utils.data.decode(val, to_str=True)
+                 except TypeError:
+@@ -424,7 +409,7 @@ class MockOpen(object):
+             except IndexError:
+                 # We've run out of file contents, abort!
+                 raise RuntimeError(
+-                    "File matching expression '{0}' opened more times than "
++                    "File matching expression '{}' opened more times than "
+                     "expected".format(matched_pattern)
+                 )
+ 
+@@ -443,7 +428,7 @@ class MockOpen(object):
+         except KeyError:
+             # No matching glob in read_data, treat this as a file that does
+             # not exist and raise the appropriate exception.
+-            raise IOError(errno.ENOENT, "No such file or directory", name)
++            raise OSError(errno.ENOENT, "No such file or directory", name)
+ 
+     def write_calls(self, path=None):
+         """
+@@ -451,7 +436,7 @@ class MockOpen(object):
+         the results to files matching a given pattern.
+         """
+         ret = []
+-        for filename, handles in six.iteritems(self.filehandles):
++        for filename, handles in self.filehandles.items():
+             if path is None or fnmatch.fnmatch(filename, path):
+                 for fh_ in handles:
+                     ret.extend(fh_.write_calls)
+@@ -463,19 +448,54 @@ class MockOpen(object):
+         narrow the results to files matching a given pattern.
+         """
+         ret = []
+-        for filename, handles in six.iteritems(self.filehandles):
++        for filename, handles in self.filehandles.items():
+             if path is None or fnmatch.fnmatch(filename, path):
+                 for fh_ in handles:
                      ret.extend(fh_.writelines_calls)
          return ret
  
-+class MockTimedProc(object):
-+    '''
+ 
+-class MockTimedProc(object):
++class MockTimedProc:
++    """
 +    Class used as a stand-in for salt.utils.timed_subprocess.TimedProc
-+    '''
-+    class _Process(object):
-+        '''
++    """
++
++    class _Process:
++        """
 +        Used to provide a dummy "process" attribute
-+        '''
++        """
++
 +        def __init__(self, returncode=0, pid=12345):
 +            self.returncode = returncode
 +            self.pid = pid
 +
 +    def __init__(self, stdout=None, stderr=None, returncode=0, pid=12345):
 +        if stdout is not None and not isinstance(stdout, bytes):
-+            raise TypeError('Must pass stdout to MockTimedProc as bytes')
++            raise TypeError("Must pass stdout to MockTimedProc as bytes")
 +        if stderr is not None and not isinstance(stderr, bytes):
-+            raise TypeError('Must pass stderr to MockTimedProc as bytes')
++            raise TypeError("Must pass stderr to MockTimedProc as bytes")
 +        self._stdout = stdout
 +        self._stderr = stderr
 +        self.process = self._Process(returncode=returncode, pid=pid)
@@ -95,124 +333,238 @@ index 805a60377c..67ecb4838a 100644
 +    @property
 +    def stderr(self):
 +        return self._stderr
++
++
++class MockTimedProc:
+     """
+     Class used as a stand-in for salt.utils.timed_subprocess.TimedProc
+     """
  
- # reimplement mock_open to support multiple filehandles
- mock_open = MockOpen
+-    class _Process(object):
++    class _Process:
+         """
+         Used to provide a dummy "process" attribute
+         """
 diff --git a/tests/unit/modules/test_ansiblegate.py b/tests/unit/modules/test_ansiblegate.py
-index 5613a0e79b..b7b43efda4 100644
---- a/tests/unit/modules/test_ansiblegate.py
+new file mode 100644
+index 0000000000..61aad44b5c
+--- /dev/null
 +++ b/tests/unit/modules/test_ansiblegate.py
-@@ -29,11 +29,13 @@ from tests.support.unit import TestCase, skipIf
- from tests.support.mock import (
-     patch,
-     MagicMock,
-+    MockTimedProc,
- )
- 
- import salt.modules.ansiblegate as ansible
- import salt.utils.platform
- from salt.exceptions import LoaderError
+@@ -0,0 +1,201 @@
++#
++# Author: Bo Maryniuk <bo@suse.de>
++#
++# Copyright 2017 SUSE LLC
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++# http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++import os
++
++import salt.modules.ansiblegate as ansible
++import salt.utils.platform
++from salt.exceptions import LoaderError
 +from salt.ext import six
- 
- 
- @skipIf(NO_PYTEST, False)
-@@ -134,3 +136,42 @@ description:
-         '''
-         with patch('salt.modules.ansiblegate.ansible', None):
-             assert ansible.__virtual__() == 'ansible'
++from tests.support.mixins import LoaderModuleMockMixin
++from tests.support.mock import MagicMock, MockTimedProc, patch
++from tests.support.unit import TestCase, skipIf
++
++try:
++    import pytest
++except ImportError as import_error:
++    pytest = None
++NO_PYTEST = not bool(pytest)
++
++
++@skipIf(NO_PYTEST, False)
++@skipIf(salt.utils.platform.is_windows(), "Not supported on Windows")
++class AnsiblegateTestCase(TestCase, LoaderModuleMockMixin):
++    def setUp(self):
++        self.resolver = ansible.AnsibleModuleResolver({})
++        self.resolver._modules_map = {
++            "one.two.three": os.sep + os.path.join("one", "two", "three.py"),
++            "four.five.six": os.sep + os.path.join("four", "five", "six.py"),
++            "three.six.one": os.sep + os.path.join("three", "six", "one.py"),
++        }
++
++    def tearDown(self):
++        self.resolver = None
++
++    def setup_loader_modules(self):
++        return {ansible: {}}
++
++    def test_ansible_module_help(self):
++        """
++        Test help extraction from the module
++        :return:
++        """
++
++        class Module:
++            """
++            An ansible module mock.
++            """
++
++            __name__ = "foo"
++            DOCUMENTATION = """
++---
++one:
++   text here
++---
++two:
++   text here
++description:
++   describe the second part
++        """
++
++        with patch.object(ansible, "_resolver", self.resolver), patch.object(
++            ansible._resolver, "load_module", MagicMock(return_value=Module())
++        ):
++            ret = ansible.help("dummy")
++            assert sorted(
++                ret.get('Available sections on module "{}"'.format(Module().__name__))
++            ) == ["one", "two"]
++            assert ret.get("Description") == "describe the second part"
++
++    def test_module_resolver_modlist(self):
++        """
++        Test Ansible resolver modules list.
++        :return:
++        """
++        assert self.resolver.get_modules_list() == [
++            "four.five.six",
++            "one.two.three",
++            "three.six.one",
++        ]
++        for ptr in ["five", "fi", "ve"]:
++            assert self.resolver.get_modules_list(ptr) == ["four.five.six"]
++        for ptr in ["si", "ix", "six"]:
++            assert self.resolver.get_modules_list(ptr) == [
++                "four.five.six",
++                "three.six.one",
++            ]
++        assert self.resolver.get_modules_list("one") == [
++            "one.two.three",
++            "three.six.one",
++        ]
++        assert self.resolver.get_modules_list("one.two") == ["one.two.three"]
++        assert self.resolver.get_modules_list("four") == ["four.five.six"]
++
++    def test_resolver_module_loader_failure(self):
++        """
++        Test Ansible module loader.
++        :return:
++        """
++        mod = "four.five.six"
++        with pytest.raises(ImportError) as import_error:
++            self.resolver.load_module(mod)
++
++        mod = "i.even.do.not.exist.at.all"
++        with pytest.raises(LoaderError) as loader_error:
++            self.resolver.load_module(mod)
++
++    def test_resolver_module_loader(self):
++        """
++        Test Ansible module loader.
++        :return:
++        """
++        with patch("salt.modules.ansiblegate.importlib", MagicMock()), patch(
++            "salt.modules.ansiblegate.importlib.import_module", lambda x: x
++        ):
++            assert (
++                self.resolver.load_module("four.five.six")
++                == "ansible.modules.four.five.six"
++            )
++
++    def test_resolver_module_loader_import_failure(self):
++        """
++        Test Ansible module loader failure.
++        :return:
++        """
++        with patch("salt.modules.ansiblegate.importlib", MagicMock()), patch(
++            "salt.modules.ansiblegate.importlib.import_module", lambda x: x
++        ):
++            with pytest.raises(LoaderError) as loader_error:
++                self.resolver.load_module("something.strange")
++
++    def test_virtual_function(self):
++        """
++        Test Ansible module __virtual__ when ansible is not installed on the minion.
++        :return:
++        """
++        with patch("salt.modules.ansiblegate.ansible", None):
++            assert ansible.__virtual__() == "ansible"
 +
 +    def test_ansible_module_call(self):
-+        '''
++        """
 +        Test Ansible module call from ansible gate module
 +
 +        :return:
-+        '''
++        """
 +
-+        class Module(object):
-+            '''
++        class Module:
++            """
 +            An ansible module mock.
-+            '''
-+            __name__ = 'one.two.three'
-+            __file__ = 'foofile'
++            """
++
++            __name__ = "one.two.three"
++            __file__ = "foofile"
 +
 +            def main():
 +                pass
 +
 +        ANSIBLE_MODULE_ARGS = '{"ANSIBLE_MODULE_ARGS": ["arg_1", {"kwarg1": "foobar"}]}'
 +
-+        proc = MagicMock(side_effect=[
-+            MockTimedProc(
-+                stdout=ANSIBLE_MODULE_ARGS.encode(),
-+                stderr=None),
-+            MockTimedProc(stdout='{"completed": true}'.encode(), stderr=None)
-+        ])
++        proc = MagicMock(
++            side_effect=[
++                MockTimedProc(stdout=ANSIBLE_MODULE_ARGS.encode(), stderr=None),
++                MockTimedProc(stdout=b'{"completed": true}', stderr=None),
++            ]
++        )
 +
-+        with patch.object(ansible, '_resolver', self.resolver), \
-+            patch.object(ansible._resolver, 'load_module', MagicMock(return_value=Module())):
++        with patch.object(ansible, "_resolver", self.resolver), patch.object(
++            ansible._resolver, "load_module", MagicMock(return_value=Module())
++        ):
 +            _ansible_module_caller = ansible.AnsibleModuleCaller(ansible._resolver)
-+            with patch('salt.utils.timed_subprocess.TimedProc', proc):
-+                ret = _ansible_module_caller.call("one.two.three", "arg_1", kwarg1="foobar")
-+                if six.PY3:
-+                    proc.assert_any_call(['echo', '{"ANSIBLE_MODULE_ARGS": {"kwarg1": "foobar", "_raw_params": "arg_1"}}'], stdout=-1, timeout=1200)
-+                    proc.assert_any_call(['python3', 'foofile'], stdin=ANSIBLE_MODULE_ARGS, stdout=-1, timeout=1200)
-+                else:
-+                    proc.assert_any_call(['echo', '{"ANSIBLE_MODULE_ARGS": {"_raw_params": "arg_1", "kwarg1": "foobar"}}'], stdout=-1, timeout=1200)
-+                    proc.assert_any_call(['python', 'foofile'], stdin=ANSIBLE_MODULE_ARGS, stdout=-1, timeout=1200)
++            with patch("salt.utils.timed_subprocess.TimedProc", proc):
++                ret = _ansible_module_caller.call(
++                    "one.two.three", "arg_1", kwarg1="foobar"
++                )
++                proc.assert_any_call(
++                    [
++                        "echo",
++                        '{"ANSIBLE_MODULE_ARGS": {"kwarg1": "foobar", "_raw_params": "arg_1"}}',
++                    ],
++                    stdout=-1,
++                    timeout=1200,
++                )
++                proc.assert_any_call(
++                    ["python3", "foofile"],
++                    stdin=ANSIBLE_MODULE_ARGS,
++                    stdout=-1,
++                    timeout=1200,
++                )
 +                assert ret == {"completed": True, "timeout": 1200}
 diff --git a/tests/unit/modules/test_cmdmod.py b/tests/unit/modules/test_cmdmod.py
-index 8170a56b4e..f8fba59294 100644
+index 15b97f8568..f3348bc379 100644
 --- a/tests/unit/modules/test_cmdmod.py
 +++ b/tests/unit/modules/test_cmdmod.py
-@@ -26,6 +26,7 @@ from tests.support.helpers import TstSuiteLoggingHandler
- from tests.support.mock import (
-     mock_open,
-     Mock,
-+    MockTimedProc,
-     MagicMock,
-     patch
- )
-@@ -36,39 +37,7 @@ MOCK_SHELL_FILE = '# List of acceptable shells\n' \
-                   '/bin/bash\n'
+@@ -24,6 +24,7 @@ DEFAULT_SHELL = "foo/bar"
+ MOCK_SHELL_FILE = "# List of acceptable shells\n" "\n" "/bin/bash\n"
  
  
--class MockTimedProc(object):
--    '''
--    Class used as a stand-in for salt.utils.timed_subprocess.TimedProc
--    '''
--    class _Process(object):
--        '''
--        Used to provide a dummy "process" attribute
--        '''
--        def __init__(self, returncode=0, pid=12345):
--            self.returncode = returncode
--            self.pid = pid
--
--    def __init__(self, stdout=None, stderr=None, returncode=0, pid=12345):
--        if stdout is not None and not isinstance(stdout, bytes):
--            raise TypeError('Must pass stdout to MockTimedProc as bytes')
--        if stderr is not None and not isinstance(stderr, bytes):
--            raise TypeError('Must pass stderr to MockTimedProc as bytes')
--        self._stdout = stdout
--        self._stderr = stderr
--        self.process = self._Process(returncode=returncode, pid=pid)
--
--    def run(self):
--        pass
--
--    @property
--    def stdout(self):
--        return self._stdout
--
--    @property
--    def stderr(self):
--        return self._stderr
--
--
 +@skipIf(NO_MOCK, NO_MOCK_REASON)
  class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
-     '''
+     """
      Unit tests for the salt.modules.cmdmod module
 -- 
-2.16.4
+2.29.2
 
 

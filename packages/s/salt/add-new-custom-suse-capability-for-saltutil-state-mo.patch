@@ -1,4 +1,4 @@
-From ad1323b4f83fa8f2954c0a965f4acaf91575a59b Mon Sep 17 00:00:00 2001
+From 70d13dcc62286d5195bbf28b53aae61616cc0f8f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 26 Mar 2020 13:08:16 +0000
@@ -10,10 +10,10 @@ Subject: [PATCH] Add new custom SUSE capability for saltutil state
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/salt/grains/extra.py b/salt/grains/extra.py
-index 1082b05dba7830ee53078cff86b5183b5eea2829..b30ab0091fee7cda8f74b861e9e9f95f8ad85b39 100644
+index ddc22293ea..0eec27e628 100644
 --- a/salt/grains/extra.py
 +++ b/salt/grains/extra.py
-@@ -80,5 +80,6 @@ def config():
+@@ -71,5 +71,6 @@ def config():
  def suse_backported_capabilities():
      return {
          '__suse_reserved_pkg_all_versions_support': True,
@@ -22,6 +22,6 @@ index 1082b05dba7830ee53078cff86b5183b5eea2829..b30ab0091fee7cda8f74b861e9e9f95f
 +        '__suse_reserved_saltutil_states_support': True
      }
 -- 
-2.23.0
+2.29.2
 
 

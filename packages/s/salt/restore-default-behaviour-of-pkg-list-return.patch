@@ -1,4 +1,4 @@
-From 8f9478ffba672767e77b9b263f279e0379ab1ed1 Mon Sep 17 00:00:00 2001
+From 67e8afba4c33e65470dae3e39908868620f3ed11 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 30 Aug 2019 14:20:06 +0200
 Subject: [PATCH] Restore default behaviour of pkg list return
@@ -9,34 +9,37 @@ is now parameter to also return patches if that is needed.
 
 Co-authored-by: Mihai Dinca <mdinca@suse.de>
 ---
- salt/modules/zypperpkg.py | 32 +++++++++++++++++++++++---------
- 1 file changed, 23 insertions(+), 9 deletions(-)
+ salt/modules/zypperpkg.py | 38 ++++++++++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 12 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 8179cd8c1d..f7158e0810 100644
+index b099f3e5d7..2daec0f380 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -1304,8 +1304,10 @@ def refresh_db(root=None):
+@@ -1422,10 +1422,10 @@ def refresh_db(force=None, root=None):
      return ret
  
  
 -def _find_types(pkgs):
+-    """
+-    Form a package names list, find prefixes of packages types.
+-    """
 +def _detect_includes(pkgs, inclusion_detection):
-     '''Form a package names list, find prefixes of packages types.'''
++    """Form a package names list, find prefixes of packages types."""
 +    if not inclusion_detection:
 +        return None
-     return sorted({pkg.split(':', 1)[0] for pkg in pkgs
-                    if len(pkg.split(':', 1)) == 2})
+     return sorted({pkg.split(":", 1)[0] for pkg in pkgs if len(pkg.split(":", 1)) == 2})
  
-@@ -1321,6 +1323,7 @@ def install(name=None,
-             ignore_repo_failure=False,
-             no_recommends=False,
-             root=None,
-+            inclusion_detection=False,
-             **kwargs):
-     '''
-     .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
-@@ -1435,6 +1438,9 @@ def install(name=None,
+ 
+@@ -1441,6 +1441,7 @@ def install(
+     ignore_repo_failure=False,
+     no_recommends=False,
+     root=None,
++    inclusion_detection=False,
+     **kwargs
+ ):
+     """
+@@ -1556,6 +1557,9 @@ def install(
  
          .. versionadded:: 2018.3.0
  
@@ -46,26 +49,26 @@ index 8179cd8c1d..f7158e0810 100644
  
      Returns a dict containing the new package names and versions::
  
-@@ -1500,7 +1506,8 @@ def install(name=None,
+@@ -1626,7 +1630,8 @@ def install(
  
      diff_attr = kwargs.get("diff_attr")
  
 -    includes = _find_types(targets)
 +    includes = _detect_includes(targets, inclusion_detection)
 +
-     old = list_pkgs(attr=diff_attr, root=root, includes=includes) if not downloadonly else list_downloaded(root)
- 
-     downgrades = []
-@@ -1692,7 +1699,7 @@ def upgrade(refresh=True,
+     old = (
+         list_pkgs(attr=diff_attr, root=root, includes=includes)
+         if not downloadonly
+@@ -1850,7 +1855,7 @@ def upgrade(
      return ret
  
  
 -def _uninstall(name=None, pkgs=None, root=None):
 +def _uninstall(inclusion_detection, name=None, pkgs=None, root=None):
-     '''
+     """
      Remove and purge do identical things but with different Zypper commands,
      this function performs the common logic.
-@@ -1702,7 +1709,7 @@ def _uninstall(name=None, pkgs=None, root=None):
+@@ -1860,7 +1865,7 @@ def _uninstall(name=None, pkgs=None, root=None):
      except MinionError as exc:
          raise CommandExecutionError(exc)
  
@@ -74,16 +77,16 @@ index 8179cd8c1d..f7158e0810 100644
      old = list_pkgs(root=root, includes=includes)
      targets = []
      for target in pkg_params:
-@@ -1761,7 +1768,7 @@ def normalize_name(name):
-     return name
+@@ -1923,7 +1928,7 @@ def normalize_name(name):
  
  
--def remove(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-argument
-+def remove(name=None, pkgs=None, root=None, inclusion_detection=False, **kwargs):  # pylint: disable=unused-argument
-     '''
+ def remove(
+-    name=None, pkgs=None, root=None, **kwargs
++    name=None, pkgs=None, root=None, inclusion_detection=False, **kwargs
+ ):  # pylint: disable=unused-argument
+     """
      .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
-         On minions running systemd>=205, `systemd-run(1)`_ is now used to
-@@ -1792,8 +1799,11 @@ def remove(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused
+@@ -1955,8 +1960,11 @@ def remove(
      root
          Operate on a different root directory.
  
@@ -96,20 +99,22 @@ index 8179cd8c1d..f7158e0810 100644
  
      Returns a dict containing the changes.
  
-@@ -1805,10 +1815,10 @@ def remove(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused
+@@ -1968,10 +1976,12 @@ def remove(
          salt '*' pkg.remove <package1>,<package2>,<package3>
          salt '*' pkg.remove pkgs='["foo", "bar"]'
-     '''
+     """
 -    return _uninstall(name=name, pkgs=pkgs, root=root)
 +    return _uninstall(inclusion_detection, name=name, pkgs=pkgs, root=root)
  
  
 -def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-argument
-+def purge(name=None, pkgs=None, root=None, inclusion_detection=False, **kwargs):  # pylint: disable=unused-argument
-     '''
++def purge(
++    name=None, pkgs=None, root=None, inclusion_detection=False, **kwargs
++):  # pylint: disable=unused-argument
+     """
      .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
          On minions running systemd>=205, `systemd-run(1)`_ is now used to
-@@ -1840,6 +1850,10 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
+@@ -2003,6 +2013,10 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
      root
          Operate on a different root directory.
  
@@ -120,16 +125,16 @@ index 8179cd8c1d..f7158e0810 100644
      .. versionadded:: 0.16.0
  
  
-@@ -1853,7 +1867,7 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
+@@ -2016,7 +2030,7 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
          salt '*' pkg.purge <package1>,<package2>,<package3>
          salt '*' pkg.purge pkgs='["foo", "bar"]'
-     '''
+     """
 -    return _uninstall(name=name, pkgs=pkgs, root=root)
 +    return _uninstall(inclusion_detection, name=name, pkgs=pkgs, root=root)
  
  
  def list_locks(root=None):
 -- 
-2.16.4
+2.29.2
 
 

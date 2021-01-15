@@ -1,7 +1,8 @@
-From c9538180f4dd8875ab57dfa3f51ff59608d2481b Mon Sep 17 00:00:00 2001
+From 6381be1a6e6d863f85dd33c82b9b949b552a7e49 Mon Sep 17 00:00:00 2001
 From: Joachim Gleissner <jgleissner@suse.com>
 Date: Tue, 18 Sep 2018 15:07:13 +0200
-Subject: [PATCH] loosen azure sdk dependencies in azurearm cloud driver
+Subject: [PATCH] loosen azure sdk dependencies in azurearm cloud
+ driver
 
 Remove dependency to azure-cli, which is not used at all.
 Use azure-storage-sdk as fallback if multiapi version is not available.
@@ -12,22 +13,22 @@ remove unused import from azurearm driver
  1 file changed, 6 insertions(+)
 
 diff --git a/salt/cloud/clouds/azurearm.py b/salt/cloud/clouds/azurearm.py
-index 2c1fa04ae8..d5757c6d28 100644
+index 8b9254cecb..0e92a56156 100644
 --- a/salt/cloud/clouds/azurearm.py
 +++ b/salt/cloud/clouds/azurearm.py
-@@ -104,6 +104,7 @@ import time
- 
- # Salt libs
- from salt.ext import six
+@@ -98,6 +98,7 @@ import importlib
+ import logging
+ import os
+ import os.path
 +import pkgutil
- import salt.cache
- import salt.config as config
- import salt.loader
-@@ -126,6 +127,11 @@ try:
-     import azure.mgmt.network.models as network_models
+ import pprint
+ import string
+ import time
+@@ -129,6 +130,11 @@ try:
      from azure.storage.blob.blockblobservice import BlockBlobService
      from msrestazure.azure_exceptions import CloudError
-+    if pkgutil.find_loader('azure.multiapi'):
+ 
++    if pkgutil.find_loader("azure.multiapi"):
 +        # use multiapi version if available
 +        from azure.multiapi.storage.v2016_05_31 import CloudStorageAccount
 +    else:
@@ -36,6 +37,6 @@ index 2c1fa04ae8..d5757c6d28 100644
  except ImportError:
      pass
 -- 
-2.16.4
+2.29.2
 
 

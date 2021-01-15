@@ -1,4 +1,4 @@
-From bfdd7f946d56d799e89b33f7e3b72426732b0195 Mon Sep 17 00:00:00 2001
+From db77ad3e24daf3bc014dc3d85a49aa1bb33ae1ae Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Wed, 9 Jan 2019 16:08:19 +0100
 Subject: [PATCH] Fix issue #2068 test
@@ -13,19 +13,19 @@ Minor update: more correct is-dict check.
  1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/salt/state.py b/salt/state.py
-index bc5277554e..2fa5f64ca5 100644
+index b1bce4e0cd..cc6db7e1b2 100644
 --- a/salt/state.py
 +++ b/salt/state.py
-@@ -25,6 +25,7 @@ import traceback
- import re
- import time
- import random
-+import collections
+@@ -12,6 +12,7 @@ The data sent to the state calls is as follows:
+ """
  
- # Import salt libs
- import salt.loader
-@@ -2896,16 +2897,18 @@ class State(object):
-         '''
+ 
++import collections
+ import copy
+ import datetime
+ import fnmatch
+@@ -3206,16 +3207,18 @@ class State:
+         """
          for chunk in high:
              state = high[chunk]
 +            if not isinstance(state, collections.Mapping):
@@ -35,18 +35,18 @@ index bc5277554e..2fa5f64ca5 100644
 +                if not isinstance(state[state_ref], list):
 +                    continue
                  for argset in state[state_ref]:
-                     if isinstance(argset, six.string_types):
+                     if isinstance(argset, str):
                          needs_default = False
                          break
                  if needs_default:
 -                    order = state[state_ref].pop(-1)
--                    state[state_ref].append('__call__')
+-                    state[state_ref].append("__call__")
 -                    state[state_ref].append(order)
-+                    state[state_ref].insert(-1, '__call__')
++                    state[state_ref].insert(-1, "__call__")
  
      def call_high(self, high, orchestration_jid=None):
-         '''
+         """
 -- 
-2.16.4
+2.29.2
 
 

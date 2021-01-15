@@ -1,0 +1,404 @@
+From c79f4a8619ff1275b2ec4400c1fb27d24c22a7eb Mon Sep 17 00:00:00 2001
+From: Alexander Graul <mail@agraul.de>
+Date: Tue, 8 Dec 2020 15:35:49 +0100
+Subject: [PATCH] Add pkg.services_need_restart (#302)
+
+* Add utils.systemd.pid_to_service function
+
+This function translates a given PID to the systemd service name in case
+the process belongs to a running service. It uses DBUS for the
+translation if DBUS is available, falling back to parsing
+``systemctl status -o json'' output.
+
+* Add zypperpkg.services_need_restart
+
+pkg.services_need_restart returns a list of system services that were
+affected by package manager operations such as updates, downgrades or
+reinstallations without having been restarted. This might cause issues,
+e.g. in the case a shared object was loaded by a process and then
+replaced by the package manager.
+
+(cherry picked from commit b950fcdbd6cc8cb08e1413a0ed05e0ae21717cea)
+
+* Add aptpkg.services_need_restart
+
+pkg.services_need_restart returns a list of system services that were
+affected by package manager operations such as updates, downgrades or
+reinstallations without having been restarted. This might cause issues,
+e.g. in the case a shared object was loaded by a process and then
+replaced by the package manager.
+
+Requires checkrestart, which is part of the debian-goodies package and
+available from official Ubuntu and Debian repositories.
+
+(cherry picked from commit b981f6ecb1a551b98c5cebab4975fc09c6a55a22)
+
+* Add yumpkg.services_need_restart
+
+pkg.services_need_restart returns a list of system services that were
+affected by package manager operations such as updates, downgrades or
+reinstallations without having been restarted. This might cause issues,
+e.g. in the case a shared object was loaded by a process and then
+replaced by the package manager.
+
+Requires dnf with the needs-restarting plugin, which is part of
+dnf-plugins-core and installed by default on RHEL/CentOS/Fedora.
+Also requires systemd for the mapping between PIDs and systemd services.
+
+(cherry picked from commit 5e2be1095729c9f73394e852b82749950957e6fb)
+
+* Add changelog entry for issue #58261
+
+(cherry picked from commit 148877ed8ff7a47132c1186274739e648f7acf1c)
+
+* Simplify dnf needs-restarting output parsing
+
+Co-authored-by: Wayne Werner <waynejwerner@gmail.com>
+(cherry picked from commit beb5d60f3cc64b880ec25ca188f8a73f6ec493dd)
+---
+ changelog/58261.added                |  1 +
+ salt/modules/aptpkg.py               | 42 ++++++++++++++++-
+ salt/modules/yumpkg.py               | 36 +++++++++++++++
+ salt/modules/zypperpkg.py            | 25 ++++++++++
+ salt/utils/systemd.py                | 69 ++++++++++++++++++++++++++++
+ tests/unit/modules/test_aptpkg.py    | 22 ++++++++-
+ tests/unit/modules/test_yumpkg.py    | 32 ++++++++++++-
+ tests/unit/modules/test_zypperpkg.py | 14 ++++++
+ 8 files changed, 238 insertions(+), 3 deletions(-)
+ create mode 100644 changelog/58261.added
+
+diff --git a/changelog/58261.added b/changelog/58261.added
+new file mode 100644
+index 0000000000..537a43e80d
+--- /dev/null
++++ b/changelog/58261.added
+@@ -0,0 +1 @@
++Added ``pkg.services_need_restart`` which lists system services that should be restarted after package management operations.
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 03e99af733..a0e0cc30c1 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -38,7 +38,12 @@ import salt.utils.stringutils
+ import salt.utils.systemd
+ import salt.utils.versions
+ import salt.utils.yaml
+-from salt.exceptions import CommandExecutionError, MinionError, SaltInvocationError
++from salt.exceptions import (
++    CommandExecutionError,
++    CommandNotFoundError,
++    MinionError,
++    SaltInvocationError,
++)
+ from salt.modules.cmdmod import _parse_env
+ 
+ log = logging.getLogger(__name__)
+@@ -3029,3 +3034,38 @@ def list_downloaded(root=None, **kwargs):
+                 ).isoformat(),
+             }
+     return ret
++
++
++def services_need_restart(**kwargs):
++    """
++    .. versionadded:: NEXT
++
++    List services that use files which have been changed by the
++    package manager. It might be needed to restart them.
++
++    Requires checkrestart from the debian-goodies package.
++
++    CLI Examples:
++
++    .. code-block:: bash
++
++        salt '*' pkg.services_need_restart
++    """
++    if not salt.utils.path.which_bin(["checkrestart"]):
++        raise CommandNotFoundError(
++            "'checkrestart' is needed. It is part of the 'debian-goodies' "
++            "package which can be installed from official repositories."
++        )
++
++    cmd = ["checkrestart", "--machine"]
++    services = set()
++
++    cr_output = __salt__["cmd.run_stdout"](cmd, python_shell=False)
++    for line in cr_output.split("\n"):
++        if not line.startswith("SERVICE:"):
++            continue
++        end_of_name = line.find(",")
++        service = line[8:end_of_name]  # skip "SERVICE:"
++        services.add(service)
++
++    return list(services)
+diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
+index dd843f985b..df174e737d 100644
+--- a/salt/modules/yumpkg.py
++++ b/salt/modules/yumpkg.py
+@@ -3434,3 +3434,39 @@ def del_repo_key(keyid, root=None, **kwargs):
+ 
+     """
+     return __salt__["lowpkg.remove_gpg_key"](keyid, root)
++
++
++def services_need_restart(**kwargs):
++    """
++    .. versionadded:: NEXT
++
++    List services that use files which have been changed by the
++    package manager. It might be needed to restart them.
++
++    Requires systemd.
++
++    CLI Examples:
++
++    .. code-block:: bash
++
++        salt '*' pkg.services_need_restart
++    """
++    if _yum() != "dnf":
++        raise CommandExecutionError("dnf is required to list outdated services.")
++    if not salt.utils.systemd.booted(__context__):
++        raise CommandExecutionError("systemd is required to list outdated services.")
++
++    cmd = ["dnf", "--quiet", "needs-restarting"]
++    dnf_output = __salt__["cmd.run_stdout"](cmd, python_shell=False)
++    if not dnf_output:
++        return []
++
++    services = set()
++    for line in dnf_output.split("\n"):
++        pid, has_delim, _ = line.partition(":")
++        if has_delim:
++            service = salt.utils.systemd.pid_to_service(pid.strip())
++            if service:
++                services.add(service)
++
++    return list(services)
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index 5e13c68708..6f22994bf0 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -3092,3 +3092,28 @@ def del_repo_key(keyid, root=None, **kwargs):
+ 
+     """
+     return __salt__["lowpkg.remove_gpg_key"](keyid, root)
++
++
++def services_need_restart(root=None, **kwargs):
++    """
++    .. versionadded:: NEXT
++
++    List services that use files which have been changed by the
++    package manager. It might be needed to restart them.
++
++    root
++        operate on a different root directory.
++
++    CLI Examples:
++
++    .. code-block:: bash
++
++        salt '*' pkg.services_need_restart
++
++    """
++    cmd = ["ps", "-sss"]
++
++    zypper_output = __zypper__(root=root).nolock.call(*cmd)
++    services = zypper_output.split()
++
++    return services
+diff --git a/salt/utils/systemd.py b/salt/utils/systemd.py
+index 4d902bc920..f42d0421f8 100644
+--- a/salt/utils/systemd.py
++++ b/salt/utils/systemd.py
+@@ -11,6 +11,12 @@ import salt.utils.path
+ import salt.utils.stringutils
+ from salt.exceptions import SaltInvocationError
+ 
++try:
++    import dbus
++except ImportError:
++    dbus = None
++
++
+ log = logging.getLogger(__name__)
+ 
+ 
+@@ -114,3 +120,66 @@ def has_scope(context=None):
+     if _sd_version is None:
+         return False
+     return _sd_version >= 205
++
++
++def pid_to_service(pid):
++    """
++    Check if a PID belongs to a systemd service and return its name.
++    Return None if the PID does not belong to a service.
++
++    Uses DBUS if available.
++    """
++    if dbus:
++        return _pid_to_service_dbus(pid)
++    else:
++        return _pid_to_service_systemctl(pid)
++
++
++def _pid_to_service_systemctl(pid):
++    systemd_cmd = ["systemctl", "--output", "json", "status", str(pid)]
++    try:
++        systemd_output = subprocess.run(
++            systemd_cmd, check=True, text=True, capture_output=True
++        )
++        status_json = salt.utils.json.find_json(systemd_output.stdout)
++    except (ValueError, subprocess.CalledProcessError):
++        return None
++
++    name = status_json.get("_SYSTEMD_UNIT")
++    if name and name.endswith(".service"):
++        return _strip_suffix(name)
++    else:
++        return None
++
++
++def _pid_to_service_dbus(pid):
++    """
++    Use DBUS to check if a PID belongs to a running systemd service and return the service name if it does.
++    """
++    bus = dbus.SystemBus()
++    systemd_object = bus.get_object(
++        "org.freedesktop.systemd1", "/org/freedesktop/systemd1"
++    )
++    systemd = dbus.Interface(systemd_object, "org.freedesktop.systemd1.Manager")
++    try:
++        service_path = systemd.GetUnitByPID(pid)
++        service_object = bus.get_object("org.freedesktop.systemd1", service_path)
++        service_props = dbus.Interface(
++            service_object, "org.freedesktop.DBus.Properties"
++        )
++        service_name = service_props.Get("org.freedesktop.systemd1.Unit", "Id")
++        name = str(service_name)
++
++        if name and name.endswith(".service"):
++            return _strip_suffix(name)
++        else:
++            return None
++    except dbus.DBusException:
++        return None
++
++
++def _strip_suffix(service_name):
++    """
++    Strip ".service" suffix from a given service name.
++    """
++    return service_name[:-8]
+diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
+index eb3f9e2da7..1d4d2f7fdc 100644
+--- a/tests/unit/modules/test_aptpkg.py
++++ b/tests/unit/modules/test_aptpkg.py
+@@ -13,7 +13,6 @@ import textwrap
+ import pytest
+ import salt.modules.aptpkg as aptpkg
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+-from salt.ext import six
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, Mock, call, patch
+ from tests.support.unit import TestCase, skipIf
+@@ -1001,3 +1000,24 @@ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
+                 # We should attempt to call the cmd 5 times
+                 self.assertEqual(cmd_mock.call_count, 5)
+                 cmd_mock.has_calls(expected_calls)
++
++    @patch("salt.utils.path.which_bin", Mock(return_value="/usr/sbin/checkrestart"))
++    def test_services_need_restart(self):
++        """
++        Test that checkrestart output is parsed correctly
++        """
++        cr_output = """
++PROCESSES: 24
++PROGRAMS: 17
++PACKAGES: 8
++SERVICE:rsyslog,385,/usr/sbin/rsyslogd
++SERVICE:cups-daemon,390,/usr/sbin/cupsd
++       """
++
++        with patch.dict(
++            aptpkg.__salt__, {"cmd.run_stdout": Mock(return_value=cr_output)}
++        ):
++            assert sorted(aptpkg.services_need_restart()) == [
++                "cups-daemon",
++                "rsyslog",
++            ]
+diff --git a/tests/unit/modules/test_yumpkg.py b/tests/unit/modules/test_yumpkg.py
+index e65a1f8b8b..b97e82d307 100644
+--- a/tests/unit/modules/test_yumpkg.py
++++ b/tests/unit/modules/test_yumpkg.py
+@@ -7,7 +7,7 @@ import salt.modules.yumpkg as yumpkg
+ import salt.utils.platform
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ from tests.support.mixins import LoaderModuleMockMixin
+-from tests.support.mock import MagicMock, Mock, mock_open, patch
++from tests.support.mock import MagicMock, Mock, call, mock_open, patch
+ from tests.support.unit import TestCase, skipIf
+ 
+ try:
+@@ -1745,3 +1745,33 @@ class YumUtilsTestCase(TestCase, LoaderModuleMockMixin):
+                 python_shell=True,
+                 username="Darth Vader",
+             )
++
++    @skipIf(not salt.utils.systemd.booted(), "Requires systemd")
++    @patch("salt.modules.yumpkg._yum", Mock(return_value="dnf"))
++    def test_services_need_restart(self):
++        """
++        Test that dnf needs-restarting output is parsed and
++        salt.utils.systemd.pid_to_service is called as expected.
++        """
++        expected = ["firewalld", "salt-minion"]
++
++        dnf_mock = Mock(
++            return_value="123 : /usr/bin/firewalld\n456 : /usr/bin/salt-minion\n"
++        )
++        systemd_mock = Mock(side_effect=["firewalld", "salt-minion"])
++        with patch.dict(yumpkg.__salt__, {"cmd.run_stdout": dnf_mock}), patch(
++            "salt.utils.systemd.pid_to_service", systemd_mock
++        ):
++            assert sorted(yumpkg.services_need_restart()) == expected
++            systemd_mock.assert_has_calls([call("123"), call("456")])
++
++    @patch("salt.modules.yumpkg._yum", Mock(return_value="dnf"))
++    def test_services_need_restart_requires_systemd(self):
++        """Test that yumpkg.services_need_restart raises an error if systemd is unavailable."""
++        with patch("salt.utils.systemd.booted", Mock(return_value=False)):
++            pytest.raises(CommandExecutionError, yumpkg.services_need_restart)
++
++    @patch("salt.modules.yumpkg._yum", Mock(return_value="yum"))
++    def test_services_need_restart_requires_dnf(self):
++        """Test that yumpkg.services_need_restart raises an error if DNF is unavailable."""
++        pytest.raises(CommandExecutionError, yumpkg.services_need_restart)
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 018c1ffbca..9c4a224c55 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -2213,3 +2213,17 @@ pattern() = package-c"""
+         with patch.dict(zypper.__salt__, salt_mock):
+             self.assertTrue(zypper.del_repo_key(keyid="keyid", root="/mnt"))
+             salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
++
++    def test_services_need_restart(self):
++        """
++        Test that zypper ps is used correctly to list services that need to
++        be restarted.
++        """
++        expected = ["salt-minion", "firewalld"]
++        zypper_output = "salt-minion\nfirewalld"
++        zypper_mock = Mock()
++        zypper_mock(root=None).nolock.call = Mock(return_value=zypper_output)
++
++        with patch("salt.modules.zypperpkg.__zypper__", zypper_mock):
++            assert zypper.services_need_restart() == expected
++            zypper_mock(root=None).nolock.call.assert_called_with("ps", "-sss")
+-- 
+2.29.2
+
+

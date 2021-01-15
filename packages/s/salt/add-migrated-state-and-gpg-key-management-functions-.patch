@@ -1,4 +1,4 @@
-From 5254ec34316a0924edb4856f84e6092fafe479fa Mon Sep 17 00:00:00 2001
+From 57cab2d4e282f8b1d17610e6b4a0e772494bfcb1 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Tue, 20 Oct 2020 11:43:09 +0200
 Subject: [PATCH] Add "migrated" state and GPG key management functions
@@ -20,17 +20,16 @@ same virtual package, based on the counterpart from rpm_lowpkg API.
 ---
  changelog/58782.added                 |   1 +
  salt/modules/aptpkg.py                |   7 +-
- salt/modules/rpm_lowpkg.py            | 151 ++++++++
+ salt/modules/rpm_lowpkg.py            | 151 +++++++++
  salt/modules/yumpkg.py                |  88 +++++
- salt/modules/zypperpkg.py             |  90 ++++-
- salt/states/pkgrepo.py                | 208 ++++++++++
- tests/unit/modules/test_rpm_lowpkg.py | 215 +++++++++++
- tests/unit/modules/test_yumpkg.py     |  43 ++-
- tests/unit/modules/test_zypperpkg.py  |  40 +-
- tests/unit/states/test_pkgrepo.py     | 527 ++++++++++++++++++++++++++
- 10 files changed, 1363 insertions(+), 7 deletions(-)
+ salt/modules/zypperpkg.py             |  88 +++++
+ salt/states/pkgrepo.py                | 207 ++++++++++++
+ tests/unit/modules/test_rpm_lowpkg.py | 236 ++++++++++++-
+ tests/unit/modules/test_yumpkg.py     |  41 ++-
+ tests/unit/modules/test_zypperpkg.py  |  40 ++-
+ tests/unit/states/test_pkgrepo.py     | 468 +++++++++++++++++++++++++-
+ 10 files changed, 1301 insertions(+), 26 deletions(-)
  create mode 100644 changelog/58782.added
- create mode 100644 tests/unit/states/test_pkgrepo.py
 
 diff --git a/changelog/58782.added b/changelog/58782.added
 new file mode 100644
@@ -41,43 +40,43 @@ index 0000000000..f9e69f64f2
 +Add GPG key functions in "lowpkg" and a "migrated" function in the "pkgrepo" state for repository and GPG key migration.
 \ No newline at end of file
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 765d69aff2..28b8597ef5 100644
+index e4a9872aad..e001d2f11c 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -1878,7 +1878,7 @@ def _convert_if_int(value):
+@@ -1908,7 +1908,7 @@ def _convert_if_int(value):
      return value
  
  
 -def get_repo_keys():
 +def get_repo_keys(**kwargs):
-     '''
+     """
      .. versionadded:: 2017.7.0
  
-@@ -1950,7 +1950,9 @@ def get_repo_keys():
+@@ -1990,7 +1990,9 @@ def get_repo_keys():
      return ret
  
  
--def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv='base'):
+-def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv="base"):
 +def add_repo_key(
-+    path=None, text=None, keyserver=None, keyid=None, saltenv='base', **kwargs
++    path=None, text=None, keyserver=None, keyid=None, saltenv="base", **kwargs
 +):
-     '''
+     """
      .. versionadded:: 2017.7.0
  
-@@ -1976,7 +1978,6 @@ def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv='base
+@@ -2016,7 +2018,6 @@ def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv="base
          salt '*' pkg.add_repo_key keyserver='keyserver.example' keyid='0000AAAA'
-     '''
-     cmd = ['apt-key']
+     """
+     cmd = ["apt-key"]
 -    kwargs = {}
  
      current_repo_keys = get_repo_keys()
  
 diff --git a/salt/modules/rpm_lowpkg.py b/salt/modules/rpm_lowpkg.py
-index c8a87276b2..fee0221a7c 100644
+index 393b0f453a..57f336bacf 100644
 --- a/salt/modules/rpm_lowpkg.py
 +++ b/salt/modules/rpm_lowpkg.py
-@@ -823,3 +823,154 @@ def checksum(*paths, **kwargs):
-                                                         python_shell=False))
+@@ -835,3 +835,154 @@ def checksum(*paths, **kwargs):
+         )
  
      return ret
 +
@@ -232,12 +231,12 @@ index c8a87276b2..fee0221a7c 100644
 +    cmd.extend(["-e", key])
 +    return __salt__["cmd.retcode"](cmd) == 0
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index 04ab240cd4..85a2dbd857 100644
+index c58b3e4c70..dd843f985b 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -3271,3 +3271,91 @@ def list_installed_patches(**kwargs):
+@@ -3346,3 +3346,91 @@ def list_installed_patches(**kwargs):
          salt '*' pkg.list_installed_patches
-     '''
+     """
      return _get_patches(installed_only=True)
 +
 +
@@ -328,19 +327,10 @@ index 04ab240cd4..85a2dbd857 100644
 +    """
 +    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index d84a6af6e0..fab7736701 100644
+index d06c265202..5e13c68708 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -1270,7 +1270,7 @@ def mod_repo(repo, **kwargs):
-         cmd_opt.append("--priority={0}".format(kwargs.get('priority', DEFAULT_PRIORITY)))
- 
-     if 'humanname' in kwargs:
--        cmd_opt.append("--name='{0}'".format(kwargs.get('humanname')))
-+        cmd_opt.extend(["--name", kwargs.get("humanname")])
- 
-     if kwargs.get('gpgautoimport') is True:
-         global_cmd_opt.append('--gpg-auto-import-keys')
-@@ -2879,3 +2879,91 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
+@@ -3004,3 +3004,91 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
          else:
              ret.append(name)
      return ret
@@ -433,27 +423,19 @@ index d84a6af6e0..fab7736701 100644
 +    """
 +    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
 diff --git a/salt/states/pkgrepo.py b/salt/states/pkgrepo.py
-index c39e857580..6c42d17d32 100644
+index 70cb7a1c7e..d734bb9de9 100644
 --- a/salt/states/pkgrepo.py
 +++ b/salt/states/pkgrepo.py
-@@ -84,6 +84,7 @@ package managers are APT, DNF, YUM and Zypper. Here is some example SLS:
+@@ -93,6 +93,7 @@ package managers are APT, DNF, YUM and Zypper. Here is some example SLS:
+ """
  
- # Import Python libs
- from __future__ import absolute_import, print_function, unicode_literals
+ 
 +import os
  import sys
  
- # Import salt libs
-@@ -96,6 +97,7 @@ import salt.utils.pkg.rpm
- 
- # Import 3rd-party libs
- from salt.ext import six
-+import salt.utils.versions
- 
- 
- def __virtual__():
-@@ -643,3 +645,209 @@ def absent(name, **kwargs):
-         ret['comment'] = 'Failed to remove repo {0}'.format(name)
+ import salt.utils.data
+@@ -679,3 +680,209 @@ def absent(name, **kwargs):
+         ret["comment"] = "Failed to remove repo {}".format(name)
  
      return ret
 +
@@ -663,21 +645,49 @@ index c39e857580..6c42d17d32 100644
 +
 +    return ret
 diff --git a/tests/unit/modules/test_rpm_lowpkg.py b/tests/unit/modules/test_rpm_lowpkg.py
-index b6cbd9e5cb..ff3678fde5 100644
+index ec9ecd40cb..84020263ea 100644
 --- a/tests/unit/modules/test_rpm_lowpkg.py
 +++ b/tests/unit/modules/test_rpm_lowpkg.py
-@@ -5,6 +5,7 @@
+@@ -2,6 +2,7 @@
+     :codeauthor: Jayesh Kariya <jayeshk@saltstack.com>
+ """
  
- # Import Python Libs
- from __future__ import absolute_import
 +import datetime
  
- # Import Salt Testing Libs
+ import salt.modules.rpm_lowpkg as rpm
  from tests.support.mixins import LoaderModuleMockMixin
-@@ -205,3 +206,217 @@ class RpmTestCase(TestCase, LoaderModuleMockMixin):
-         with patch('salt.modules.rpm_lowpkg.rpm.labelCompare', MagicMock(return_value=0)), \
-                 patch('salt.modules.rpm_lowpkg.HAS_RPM', False):
-             self.assertEqual(-1, rpm.version_cmp('1', '2'))  # mock returns -1, a python implementation was called
+@@ -15,8 +16,8 @@ def _called_with_root(mock):
+ 
+ 
+ def _called_with_root(mock):
+-    cmd = ' '.join(mock.call_args[0][0])
+-    return cmd.startswith('rpm --root /')
++    cmd = " ".join(mock.call_args[0][0])
++    return cmd.startswith("rpm --root /")
+ 
+ 
+ class RpmTestCase(TestCase, LoaderModuleMockMixin):
+@@ -263,14 +264,223 @@ class RpmTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         :return:
+         """
+-        self.assertEqual(-1, rpm.version_cmp("1", "2"))
+-        self.assertEqual(mock_version_cmp.called, True)
+-        self.assertEqual(mock_log.warning.called, True)
+-        self.assertEqual(
+-            mock_log.warning.mock_calls[0][1][0],
+-            "Please install a package that provides rpm.labelCompare for more accurate version comparisons.",
+-        )
+-        self.assertEqual(
+-            mock_log.warning.mock_calls[1][1][0],
+-            "Falling back on salt.utils.versions.version_cmp() for version comparisons",
+-        )
++        with patch(
++            "salt.modules.rpm_lowpkg.rpm.labelCompare", MagicMock(return_value=0)
++        ), patch("salt.modules.rpm_lowpkg.HAS_RPM", False):
++            self.assertEqual(
++                -1, rpm.version_cmp("1", "2")
++            )  # mock returns -1, a python implementation was called
 +
 +    def test_list_gpg_keys_no_info(self):
 +        """
@@ -893,39 +903,31 @@ index b6cbd9e5cb..ff3678fde5 100644
 +            self.assertTrue(rpm.remove_gpg_key("gpg-pubkey-1"))
 +            self.assertFalse(_called_with_root(mock))
 diff --git a/tests/unit/modules/test_yumpkg.py b/tests/unit/modules/test_yumpkg.py
-index 9fbe3d051e..dfe00a7181 100644
+index 4784160d25..e65a1f8b8b 100644
 --- a/tests/unit/modules/test_yumpkg.py
 +++ b/tests/unit/modules/test_yumpkg.py
-@@ -10,15 +10,17 @@ from tests.support.unit import TestCase, skipIf
- from tests.support.mock import (
-     Mock,
-     MagicMock,
-+    mock_open,
-     patch,
- )
- 
- # Import Salt libs
+@@ -5,9 +5,9 @@ import salt.modules.pkg_resource as pkg_resource
+ import salt.modules.rpm_lowpkg as rpm
+ import salt.modules.yumpkg as yumpkg
+ import salt.utils.platform
 -from salt.exceptions import CommandExecutionError
 +from salt.exceptions import CommandExecutionError, SaltInvocationError
- import salt.modules.rpm_lowpkg as rpm
- from salt.ext import six
- import salt.modules.yumpkg as yumpkg
- import salt.modules.pkg_resource as pkg_resource
-+import salt.utils.platform
+ from tests.support.mixins import LoaderModuleMockMixin
+-from tests.support.mock import MagicMock, Mock, patch
++from tests.support.mock import MagicMock, Mock, mock_open, patch
+ from tests.support.unit import TestCase, skipIf
  
  try:
-     import pytest
-@@ -799,8 +801,45 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
-             with pytest.raises(CommandExecutionError):
-                 yumpkg._get_yum_config()
+@@ -1630,6 +1630,43 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+             ret = yumpkg.get_repo(repo, **kwargs)
+         assert ret == expected, ret
  
 +    def test_get_repo_keys(self):
 +        salt_mock = {"lowpkg.list_gpg_keys": MagicMock(return_value=True)}
 +        with patch.dict(yumpkg.__salt__, salt_mock):
 +            self.assertTrue(yumpkg.get_repo_keys(info=True, root="/mnt"))
 +            salt_mock["lowpkg.list_gpg_keys"].assert_called_once_with(True, "/mnt")
- 
--@skipIf(pytest is None, 'PyTest is missing')
++
 +    def test_add_repo_key_fail(self):
 +        with self.assertRaises(SaltInvocationError):
 +            yumpkg.add_repo_key()
@@ -957,25 +959,23 @@ index 9fbe3d051e..dfe00a7181 100644
 +            self.assertTrue(yumpkg.del_repo_key(keyid="keyid", root="/mnt"))
 +            salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
 +
-+
-+@skipIf(pytest is None, "PyTest is missing")
+ 
+ @skipIf(pytest is None, "PyTest is missing")
  class YumUtilsTestCase(TestCase, LoaderModuleMockMixin):
-     '''
-     Yum/Dnf utils tests.
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 8cc84485b5..1f2a7dc4b2 100644
+index eaa4d9a76a..018c1ffbca 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -22,7 +22,7 @@ from tests.support.mock import (
- import salt.utils.files
+@@ -10,7 +10,7 @@ import salt.modules.pkg_resource as pkg_resource
  import salt.modules.zypperpkg as zypper
- import salt.modules.pkg_resource as pkg_resource
+ import salt.utils.files
+ import salt.utils.pkg
 -from salt.exceptions import CommandExecutionError
 +from salt.exceptions import CommandExecutionError, SaltInvocationError
- 
- # Import 3rd-party libs
+ from salt.ext import six
  from salt.ext.six.moves import configparser
-@@ -1728,3 +1728,41 @@ pattern() = package-c"""
+ from tests.support.mixins import LoaderModuleMockMixin
+@@ -2175,3 +2175,41 @@ pattern() = package-c"""
                  python_shell=False,
                  env={"ZYPP_READONLY_HACK": "1"},
              )
@@ -1018,79 +1018,33 @@ index 8cc84485b5..1f2a7dc4b2 100644
 +            self.assertTrue(zypper.del_repo_key(keyid="keyid", root="/mnt"))
 +            salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
 diff --git a/tests/unit/states/test_pkgrepo.py b/tests/unit/states/test_pkgrepo.py
-new file mode 100644
-index 0000000000..9d8d88abd9
---- /dev/null
+index b2be5b4da1..135e545220 100644
+--- a/tests/unit/states/test_pkgrepo.py
 +++ b/tests/unit/states/test_pkgrepo.py
-@@ -0,0 +1,527 @@
-+"""
-+    :codeauthor: Tyler Johnson <tjohnson@saltstack.com>
-+"""
-+import salt.states.pkgrepo as pkgrepo
+@@ -1,17 +1,12 @@
+-# -*- coding: utf-8 -*-
+ """
+     :codeauthor: Tyler Johnson <tjohnson@saltstack.com>
+ """
+-# Import Python libs
+-from __future__ import absolute_import
+ 
+-# Import Salt Libs
+ import salt.states.pkgrepo as pkgrepo
+-
+-# Import Salt Testing Libs
 +import salt.utils.platform
-+from tests.support.mixins import LoaderModuleMockMixin
-+from tests.support.mock import MagicMock, patch
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, patch
+-from tests.support.unit import TestCase
 +from tests.support.unit import TestCase, skipIf
-+
-+
-+class PkgrepoTestCase(TestCase, LoaderModuleMockMixin):
-+    """
-+    Test cases for salt.states.pkgrepo
-+    """
-+
-+    def setup_loader_modules(self):
-+        return {
-+            pkgrepo: {
-+                "__opts__": {"test": True},
-+                "__grains__": {"os": "", "os_family": ""},
-+            }
-+        }
-+
-+    def test_new_key_url(self):
-+        """
-+        Test when only the key_url is changed that a change is triggered
-+        """
-+        kwargs = {
-+            "name": "deb http://mock/ sid main",
-+            "disabled": False,
-+        }
-+        key_url = "http://mock/changed_gpg.key"
-+
-+        with patch.dict(
-+            pkgrepo.__salt__, {"pkg.get_repo": MagicMock(return_value=kwargs)}
-+        ):
-+            ret = pkgrepo.managed(key_url=key_url, **kwargs)
-+            self.assertDictEqual(
-+                {"key_url": {"old": None, "new": key_url}}, ret["changes"]
-+            )
-+
-+    def test_update_key_url(self):
-+        """
-+        Test when only the key_url is changed that a change is triggered
-+        """
-+        kwargs = {
-+            "name": "deb http://mock/ sid main",
-+            "gpgcheck": 1,
-+            "disabled": False,
-+            "key_url": "http://mock/gpg.key",
-+        }
-+        changed_kwargs = kwargs.copy()
-+        changed_kwargs["key_url"] = "http://mock/gpg2.key"
-+
-+        with patch.dict(
-+            pkgrepo.__salt__, {"pkg.get_repo": MagicMock(return_value=kwargs)}
-+        ):
-+            ret = pkgrepo.managed(**changed_kwargs)
-+            self.assertIn("key_url", ret["changes"], "Expected a change to key_url")
-+            self.assertDictEqual(
-+                {
-+                    "key_url": {
-+                        "old": kwargs["key_url"],
-+                        "new": changed_kwargs["key_url"],
-+                    }
-+                },
-+                ret["changes"],
-+            )
+ 
+ 
+ class PkgrepoTestCase(TestCase, LoaderModuleMockMixin):
+@@ -72,3 +67,462 @@ class PkgrepoTestCase(TestCase, LoaderModuleMockMixin):
+                 },
+                 ret["changes"],
+             )
 +
 +    def test__normalize_repo_suse(self):
 +        repo = {
@@ -1551,6 +1505,6 @@ index 0000000000..9d8d88abd9
 +                },
 +            )
 -- 
-2.29.1
+2.29.2
 
 

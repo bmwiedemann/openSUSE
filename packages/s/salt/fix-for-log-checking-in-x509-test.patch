@@ -1,4 +1,4 @@
-From e0ca0d0d2a62f18e2712223e130af5faa8e0fe05 Mon Sep 17 00:00:00 2001
+From b4f54187ae7d231250f72244ffd874cc2c846150 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Thu, 28 Nov 2019 15:23:36 +0100
 Subject: [PATCH] Fix for log checking in x509 test
@@ -9,10 +9,10 @@ We are logging in debug and not in trace mode here.
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/tests/unit/modules/test_x509.py b/tests/unit/modules/test_x509.py
-index 624a927bec..976af634c7 100644
+index 40aea12272..e7503395eb 100644
 --- a/tests/unit/modules/test_x509.py
 +++ b/tests/unit/modules/test_x509.py
-@@ -68,9 +68,9 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
+@@ -127,9 +127,9 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
  
          subj = FakeSubject()
          x509._parse_subject(subj)
@@ -23,9 +23,9 @@ index 624a927bec..976af634c7 100644
 +        assert x509.log.debug.call_args[0][1] == list(subj.nid.keys())[0]
 +        assert isinstance(x509.log.debug.call_args[0][2], TypeError)
  
-     @skipIf(not HAS_M2CRYPTO, 'Skipping, M2Crypto is unavailble')
+     @skipIf(not HAS_M2CRYPTO, "Skipping, M2Crypto is unavailable")
      def test_get_pem_entry(self):
 -- 
-2.16.4
+2.29.2
 
 

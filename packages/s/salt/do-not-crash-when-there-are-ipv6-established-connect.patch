@@ -1,4 +1,4 @@
-From bfee3a7c47786bb860663de97fca26725101f1d0 Mon Sep 17 00:00:00 2001
+From 998136ffd4c8442e0c3a7030af3d8196abec6be1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Tue, 7 May 2019 15:33:51 +0100
@@ -11,24 +11,24 @@ Add unit test for '_netlink_tool_remote_on'
  1 file changed, 5 insertions(+)
 
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index 2ae2e213b7..307cab885f 100644
+index dd7fceb91a..d253ded3ab 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -1442,8 +1442,13 @@ def _netlink_tool_remote_on(port, which_end):
-         elif 'ESTAB' not in line:
+@@ -1623,8 +1623,13 @@ def _netlink_tool_remote_on(port, which_end):
+         elif "ESTAB" not in line:
              continue
          chunks = line.split()
-+        local_host, local_port = chunks[3].rsplit(':', 1)
-         remote_host, remote_port = chunks[4].rsplit(':', 1)
++        local_host, local_port = chunks[3].rsplit(":", 1)
+         remote_host, remote_port = chunks[4].rsplit(":", 1)
  
-+        if which_end == 'remote_port' and int(remote_port) != port:
++        if which_end == "remote_port" and int(remote_port) != port:
 +            continue
-+        if which_end == 'local_port' and int(local_port) != port:
++        if which_end == "local_port" and int(local_port) != port:
 +            continue
          remotes.add(remote_host.strip("[]"))
  
      if valid is False:
 -- 
-2.23.0
+2.29.2
 
 

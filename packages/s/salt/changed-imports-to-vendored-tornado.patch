@@ -1,38 +1,36 @@
-From 0cf1a655aa9353b22ae011e492a33aa52d780f83 Mon Sep 17 00:00:00 2001
+From 5db9ccdb4f557cdbff670b18c45e55124e29c57c Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Tue, 10 Mar 2020 14:02:17 +0100
 Subject: [PATCH] Changed imports to vendored Tornado
 
 ---
- salt/cli/batch_async.py            | 26 ++++++++++++------------
+ salt/cli/batch_async.py            | 25 ++++++++++++-----------
  salt/master.py                     |  2 +-
- salt/transport/ipc.py              |  4 ++--
  tests/unit/cli/test_batch_async.py | 32 +++++++++++++++---------------
- 4 files changed, 32 insertions(+), 32 deletions(-)
+ 3 files changed, 30 insertions(+), 29 deletions(-)
 
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
-index b8f272ed67..08eeb34f1c 100644
+index 3dc04826d1..09aa85258b 100644
 --- a/salt/cli/batch_async.py
 +++ b/salt/cli/batch_async.py
-@@ -6,7 +6,7 @@ Execute a job on the targeted minions by using a moving window of fixed size `ba
- # Import python libs
- from __future__ import absolute_import, print_function, unicode_literals
- import gc
--import tornado
-+import salt.ext.tornado
+@@ -8,6 +8,7 @@ import gc
+ import logging
  
- # Import salt libs
  import salt.client
-@@ -50,7 +50,7 @@ class BatchAsync(object):
-          }
-     '''
++import salt.ext.tornado
+ import tornado
+ from salt.cli.batch import batch_get_eauth, batch_get_opts, get_bnum
+ 
+@@ -46,7 +47,7 @@ class BatchAsync:
+     """
+ 
      def __init__(self, parent_opts, jid_gen, clear_load):
 -        ioloop = tornado.ioloop.IOLoop.current()
 +        ioloop = salt.ext.tornado.ioloop.IOLoop.current()
-         self.local = salt.client.get_local_client(parent_opts['conf_file'], io_loop=ioloop)
-         if 'gather_job_timeout' in clear_load['kwargs']:
-             clear_load['gather_job_timeout'] = clear_load['kwargs'].pop('gather_job_timeout')
-@@ -152,7 +152,7 @@ class BatchAsync(object):
+         self.local = salt.client.get_local_client(
+             parent_opts["conf_file"], io_loop=ioloop
+         )
+@@ -161,7 +162,7 @@ class BatchAsync:
                  self.find_job_returned = self.find_job_returned.difference(running)
                  self.event.io_loop.spawn_callback(self.find_job, running)
  
@@ -40,18 +38,18 @@ index b8f272ed67..08eeb34f1c 100644
 +    @salt.ext.tornado.gen.coroutine
      def find_job(self, minions):
          if self.event:
-             not_done = minions.difference(self.done_minions).difference(self.timedout_minions)
-@@ -170,7 +170,7 @@ class BatchAsync(object):
-                         gather_job_timeout=self.opts['gather_job_timeout'],
+             not_done = minions.difference(self.done_minions).difference(
+@@ -182,7 +183,7 @@ class BatchAsync:
                          jid=jid,
-                         **self.eauth)
--                    yield tornado.gen.sleep(self.opts['gather_job_timeout'])
-+                    yield salt.ext.tornado.gen.sleep(self.opts['gather_job_timeout'])
+                         **self.eauth
+                     )
+-                    yield tornado.gen.sleep(self.opts["gather_job_timeout"])
++                    yield salt.ext.tornado.gen.sleep(self.opts["gather_job_timeout"])
                      if self.event:
                          self.event.io_loop.spawn_callback(
-                             self.check_find_job,
-@@ -180,7 +180,7 @@ class BatchAsync(object):
-                 log.error("Exception occured handling batch async: {}. Aborting execution.".format(ex))
+                             self.check_find_job, not_done, jid
+@@ -195,7 +196,7 @@ class BatchAsync:
+                 )
                  self.close_safe()
  
 -    @tornado.gen.coroutine
@@ -59,12 +57,14 @@ index b8f272ed67..08eeb34f1c 100644
      def start(self):
          if self.event:
              self.__set_event_handler()
-@@ -198,11 +198,11 @@ class BatchAsync(object):
-                 **self.eauth)
-             self.targeted_minions = set(ping_return['minions'])
-             #start batching even if not all minions respond to ping
--            yield tornado.gen.sleep(self.batch_presence_ping_timeout or self.opts['gather_job_timeout'])
-+            yield salt.ext.tornado.gen.sleep(self.batch_presence_ping_timeout or self.opts['gather_job_timeout'])
+@@ -213,13 +214,13 @@ class BatchAsync:
+             )
+             self.targeted_minions = set(ping_return["minions"])
+             # start batching even if not all minions respond to ping
+-            yield tornado.gen.sleep(
++            yield salt.ext.tornado.gen.sleep(
+                 self.batch_presence_ping_timeout or self.opts["gather_job_timeout"]
+             )
              if self.event:
                  self.event.io_loop.spawn_callback(self.start_batch)
  
@@ -73,16 +73,16 @@ index b8f272ed67..08eeb34f1c 100644
      def start_batch(self):
          if not self.initialized:
              self.batch_size = get_bnum(self.opts, self.minions, True)
-@@ -216,7 +216,7 @@ class BatchAsync(object):
+@@ -235,7 +236,7 @@ class BatchAsync:
              if self.event:
                  self.event.io_loop.spawn_callback(self.run_next)
  
 -    @tornado.gen.coroutine
 +    @salt.ext.tornado.gen.coroutine
      def end_batch(self):
-         left = self.minions.symmetric_difference(self.done_minions.union(self.timedout_minions))
-         if not left and not self.ended:
-@@ -232,7 +232,7 @@ class BatchAsync(object):
+         left = self.minions.symmetric_difference(
+             self.done_minions.union(self.timedout_minions)
+@@ -253,7 +254,7 @@ class BatchAsync:
  
              # release to the IOLoop to allow the event to be published
              # before closing batch async execution
@@ -91,9 +91,9 @@ index b8f272ed67..08eeb34f1c 100644
              self.close_safe()
  
      def close_safe(self):
-@@ -245,16 +245,16 @@ class BatchAsync(object):
-        del self
-        gc.collect()
+@@ -266,16 +267,16 @@ class BatchAsync:
+         del self
+         gc.collect()
  
 -    @tornado.gen.coroutine
 +    @salt.ext.tornado.gen.coroutine
@@ -111,66 +111,44 @@ index b8f272ed67..08eeb34f1c 100644
      def run_next(self):
          self.scheduled = False
          next_batch = self._get_next()
-@@ -272,7 +272,7 @@ class BatchAsync(object):
-                     jid=self.batch_jid,
-                     metadata=self.metadata)
+@@ -294,7 +295,7 @@ class BatchAsync:
+                     metadata=self.metadata,
+                 )
  
--                yield tornado.gen.sleep(self.opts['timeout'])
-+                yield salt.ext.tornado.gen.sleep(self.opts['timeout'])
+-                yield tornado.gen.sleep(self.opts["timeout"])
++                yield salt.ext.tornado.gen.sleep(self.opts["timeout"])
  
                  # The batch can be done already at this point, which means no self.event
                  if self.event:
 diff --git a/salt/master.py b/salt/master.py
-index 3abf7ae60b..3a9d12999d 100644
+index 7a99af357a..ab85c7f5c6 100644
 --- a/salt/master.py
 +++ b/salt/master.py
-@@ -2049,7 +2049,7 @@ class ClearFuncs(object):
+@@ -2237,7 +2237,7 @@ class ClearFuncs(TransportMethods):
              functools.partial(self._prep_jid, clear_load, {}),
-             batch_load
+             batch_load,
          )
 -        ioloop = tornado.ioloop.IOLoop.current()
 +        ioloop = salt.ext.tornado.ioloop.IOLoop.current()
          ioloop.add_callback(batch.start)
  
          return {
-diff --git a/salt/transport/ipc.py b/salt/transport/ipc.py
-index d2b295a633..33ee3d4182 100644
---- a/salt/transport/ipc.py
-+++ b/salt/transport/ipc.py
-@@ -697,7 +697,7 @@ class IPCMessageSubscriber(IPCClient):
-         for callback in self.callbacks:
-             self.io_loop.spawn_callback(callback, raw)
- 
--    @tornado.gen.coroutine
-+    @salt.ext.tornado.gen.coroutine
-     def read_async(self):
-         '''
-         Asynchronously read messages and invoke a callback when they are ready.
-@@ -712,7 +712,7 @@ class IPCMessageSubscriber(IPCClient):
-                 yield salt.ext.tornado.gen.sleep(1)
-             except Exception as exc:  # pylint: disable=broad-except
-                 log.error('Exception occurred while Subscriber connecting: %s', exc)
--                yield tornado.gen.sleep(1)
-+                yield salt.ext.tornado.gen.sleep(1)
-         yield self._read(None, self.__run_callbacks)
- 
-     def close(self):
 diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
-index e1ce60859b..635dc689a8 100644
+index dcee9a87bd..82a712b15b 100644
 --- a/tests/unit/cli/test_batch_async.py
 +++ b/tests/unit/cli/test_batch_async.py
-@@ -5,8 +5,8 @@ from __future__ import absolute_import
- # Import Salt Libs
- from salt.cli.batch_async import BatchAsync
- 
+@@ -1,8 +1,8 @@
 -import tornado
--from tornado.testing import AsyncTestCase
 +import salt.ext.tornado
+ from salt.cli.batch_async import BatchAsync
 +from salt.ext.tornado.testing import AsyncTestCase
- from tests.support.unit import skipIf, TestCase
- from tests.support.mock import MagicMock, patch, NO_MOCK, NO_MOCK_REASON
+ from tests.support.mock import NO_MOCK, NO_MOCK_REASON, MagicMock, patch
+ from tests.support.unit import TestCase, skipIf
+-from tornado.testing import AsyncTestCase
  
-@@ -59,10 +59,10 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+ 
+ @skipIf(NO_MOCK, NO_MOCK_REASON)
+@@ -52,10 +52,10 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
          self.batch.start_batch()
          self.assertEqual(self.batch.batch_size, 2)
  
@@ -180,12 +158,12 @@ index e1ce60859b..635dc689a8 100644
          self.batch.event = MagicMock()
 -        future = tornado.gen.Future()
 +        future = salt.ext.tornado.gen.Future()
-         future.set_result({'minions': ['foo', 'bar']})
+         future.set_result({"minions": ["foo", "bar"]})
          self.batch.local.run_job_async.return_value = future
          ret = self.batch.start()
-@@ -78,10 +78,10 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+@@ -71,10 +71,10 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
          # assert targeted_minions == all minions matched by tgt
-         self.assertEqual(self.batch.targeted_minions, set(['foo', 'bar']))
+         self.assertEqual(self.batch.targeted_minions, {"foo", "bar"})
  
 -    @tornado.testing.gen_test
 +    @salt.ext.tornado.testing.gen_test
@@ -193,11 +171,11 @@ index e1ce60859b..635dc689a8 100644
          self.batch.event = MagicMock()
 -        future = tornado.gen.Future()
 +        future = salt.ext.tornado.gen.Future()
-         future.set_result({'minions': ['foo', 'bar']})
+         future.set_result({"minions": ["foo", "bar"]})
          self.batch.local.run_job_async.return_value = future
          self.batch.batch_presence_ping_timeout = None
-@@ -109,7 +109,7 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
-             )
+@@ -103,7 +103,7 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+             ),
          )
  
 -    @tornado.testing.gen_test
@@ -205,26 +183,26 @@ index e1ce60859b..635dc689a8 100644
      def test_start_batch_calls_next(self):
          self.batch.run_next = MagicMock(return_value=MagicMock())
          self.batch.event = MagicMock()
-@@ -165,14 +165,14 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
-         self.assertEqual(
-             len(event.remove_event_handler.mock_calls), 1)
+@@ -160,14 +160,14 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+         self.assertEqual(len(event.unsubscribe.mock_calls), 2)
+         self.assertEqual(len(event.remove_event_handler.mock_calls), 1)
  
 -    @tornado.testing.gen_test
 +    @salt.ext.tornado.testing.gen_test
      def test_batch_next(self):
          self.batch.event = MagicMock()
-         self.batch.opts['fun'] = 'my.fun'
-         self.batch.opts['arg'] = []
-         self.batch._get_next = MagicMock(return_value={'foo', 'bar'})
+         self.batch.opts["fun"] = "my.fun"
+         self.batch.opts["arg"] = []
+         self.batch._get_next = MagicMock(return_value={"foo", "bar"})
          self.batch.batch_size = 2
 -        future = tornado.gen.Future()
 +        future = salt.ext.tornado.gen.Future()
-         future.set_result({'minions': ['foo', 'bar']})
+         future.set_result({"minions": ["foo", "bar"]})
          self.batch.local.run_job_async.return_value = future
          self.batch.run_next()
-@@ -284,38 +284,38 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+@@ -290,38 +290,38 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
          self.batch._BatchAsync__event_handler(MagicMock())
-         self.assertEqual(self.batch.find_job_returned, {'foo'})
+         self.assertEqual(self.batch.find_job_returned, {"foo"})
  
 -    @tornado.testing.gen_test
 +    @salt.ext.tornado.testing.gen_test
@@ -242,33 +220,33 @@ index e1ce60859b..635dc689a8 100644
 +        future = salt.ext.tornado.gen.Future()
          future.set_result({})
          self.batch.local.run_job_async.return_value = future
-         self.batch.minions = set(['foo', 'bar'])
+         self.batch.minions = {"foo", "bar"}
          self.batch.jid_gen = MagicMock(return_value="1234")
 -        tornado.gen.sleep = MagicMock(return_value=future)
 +        salt.ext.tornado.gen.sleep = MagicMock(return_value=future)
-         self.batch.find_job({'foo', 'bar'})
+         self.batch.find_job({"foo", "bar"})
          self.assertEqual(
              self.batch.event.io_loop.spawn_callback.call_args[0],
-             (self.batch.check_find_job, {'foo', 'bar'}, "1234")
+             (self.batch.check_find_job, {"foo", "bar"}, "1234"),
          )
  
 -    @tornado.testing.gen_test
 +    @salt.ext.tornado.testing.gen_test
      def test_batch_find_job_with_done_minions(self):
-         self.batch.done_minions = {'bar'}
+         self.batch.done_minions = {"bar"}
          self.batch.event = MagicMock()
 -        future = tornado.gen.Future()
 +        future = salt.ext.tornado.gen.Future()
          future.set_result({})
          self.batch.local.run_job_async.return_value = future
-         self.batch.minions = set(['foo', 'bar'])
+         self.batch.minions = {"foo", "bar"}
          self.batch.jid_gen = MagicMock(return_value="1234")
 -        tornado.gen.sleep = MagicMock(return_value=future)
 +        salt.ext.tornado.gen.sleep = MagicMock(return_value=future)
-         self.batch.find_job({'foo', 'bar'})
+         self.batch.find_job({"foo", "bar"})
          self.assertEqual(
              self.batch.event.io_loop.spawn_callback.call_args[0],
 -- 
-2.23.0
+2.29.2
 
 

@@ -1,26 +1,27 @@
-From bd20cd2655a1141fe9ea892e974e40988c3fb83c Mon Sep 17 00:00:00 2001
+From 31fedcb3173f73fbffc3b053bc64c94a7b608118 Mon Sep 17 00:00:00 2001
 From: Silvio Moioli <smoioli@suse.de>
 Date: Mon, 2 Mar 2020 11:23:59 +0100
-Subject: [PATCH] batch_async: avoid using fnmatch to match event (#217)
+Subject: [PATCH] batch_async: avoid using fnmatch to match event
+ (#217)
 
 ---
  salt/cli/batch_async.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
-index c4545e3ebc..da069b64bd 100644
+index 8d2601e636..1e2ac5b0d3 100644
 --- a/salt/cli/batch_async.py
 +++ b/salt/cli/batch_async.py
-@@ -106,7 +106,7 @@ class BatchAsync(object):
+@@ -109,7 +109,7 @@ class BatchAsync:
              return
          mtag, data = self.event.unpack(raw, self.event.serial)
          for (pattern, op) in self.patterns:
 -            if fnmatch.fnmatch(mtag, pattern):
 +            if mtag.startswith(pattern[:-1]):
-                 minion = data['id']
-                 if op == 'ping_return':
+                 minion = data["id"]
+                 if op == "ping_return":
                      self.minions.add(minion)
 -- 
-2.23.0
+2.29.2
 
 

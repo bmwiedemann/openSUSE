@@ -39,7 +39,7 @@ EOF
 }
 
 function quilt_setup() {
-    quilt setup salt.spec
+    quilt setup -v salt.spec
     cd $1
     quilt push -a
 }
@@ -81,14 +81,14 @@ START=$(pwd)
 V_ENV="sphinx_doc_gen"
 V_TMP=$(mktemp -d)
 
-for f in "salt.spec" "salt*tar.gz"; do
+for f in "salt.spec" "v*tar.gz" "*"; do
     cp -v $f $V_TMP
 done
 
 cd $V_TMP;
 build_virtenv $V_ENV $2;
 
-SRC_DIR="salt-$(cat salt.spec | grep ^Version: | cut -d: -f2 | sed -e 's/[[:blank:]]//g')";
+SRC_DIR="salt-$(cat salt.spec | grep ^Version: | cut -d: -f2 | sed -e 's/[[:blank:]]//g')-suse";
 quilt_setup $SRC_DIR
 build_docs doc $V_TMP
 

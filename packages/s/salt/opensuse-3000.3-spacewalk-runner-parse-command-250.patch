@@ -1,4 +1,4 @@
-From a7e1630d638a7e605a2372e923c0942c655480cd Mon Sep 17 00:00:00 2001
+From 140c237f7ffefe61258e9ab3c26d04bd1e8df78a Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 3 Jul 2020 14:08:03 +0200
 Subject: [PATCH] openSUSE-3000.3 spacewalk runner parse command (#250)
@@ -20,9 +20,8 @@ Co-authored-by: Alexander Graul <agraul@suse.com>
 Co-authored-by: Wayne Werner <wwerner@saltstack.com>
 ---
  changelog/57442.fixed                |  1 +
- salt/runners/spacewalk.py            |  6 +++-
  tests/unit/runners/test_spacewalk.py | 50 ++++++++++++++++++++++++++++
- 3 files changed, 56 insertions(+), 1 deletion(-)
+ 2 files changed, 51 insertions(+)
  create mode 100644 changelog/57442.fixed
  create mode 100644 tests/unit/runners/test_spacewalk.py
 
@@ -33,23 +32,6 @@ index 0000000000..81f394880f
 +++ b/changelog/57442.fixed
 @@ -0,0 +1 @@
 +Accept nested namespaces in spacewalk.api runner function.
-diff --git a/salt/runners/spacewalk.py b/salt/runners/spacewalk.py
-index 07ca9bd711..df4e568a28 100644
---- a/salt/runners/spacewalk.py
-+++ b/salt/runners/spacewalk.py
-@@ -172,7 +172,11 @@ def api(server, command, *args, **kwargs):
-         log.error(err_msg)
-         return {call: err_msg}
- 
--    namespace, method = command.split('.')
-+    namespace, _, method = command.rpartition(".")
-+    if not namespace:
-+        return {
-+            call: "Error: command must use the following format: 'namespace.method'"
-+        }
-     endpoint = getattr(getattr(client, namespace), method)
- 
-     try:
 diff --git a/tests/unit/runners/test_spacewalk.py b/tests/unit/runners/test_spacewalk.py
 new file mode 100644
 index 0000000000..5b64069cc9
@@ -107,6 +89,6 @@ index 0000000000..5b64069cc9
 +                    ]
 +                )
 -- 
-2.27.0
+2.29.2
 
 

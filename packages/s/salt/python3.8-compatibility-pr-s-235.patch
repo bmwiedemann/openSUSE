@@ -1,4 +1,4 @@
-From 1721978eb0644c90a834493449ee27e1e4de03e1 Mon Sep 17 00:00:00 2001
+From c205f1b0d091866408ee1eae324260480a1b70b4 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 8 May 2020 15:56:35 +0200
 Subject: [PATCH] Python3.8 compatibility PR's (#235)
@@ -138,46 +138,25 @@ Signed-off-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
 Co-authored-by: Pedro Algarvio <pedro@algarvio.me>
 Co-authored-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
 ---
- .ci/kitchen-archlts-py3                     |   2 +-
- .pre-commit-config.yaml                     | 228 ++++++++++++++++++++
- noxfile.py                                  |   4 +-
- pkg/windows/req.txt                         |   2 +-
- pkg/windows/req_testing.txt                 |  12 --
- pkg/windows/req_win.txt                     |   2 +-
- requirements/pytest.txt                     |   2 +-
- requirements/static/py3.5/darwin.txt        |   2 +-
- requirements/static/py3.5/linux.txt         |   2 +-
- requirements/static/py3.5/windows.txt       |   6 +-
- requirements/static/py3.6/darwin.txt        |   2 +-
- requirements/static/py3.6/linux.txt         |   2 +-
- requirements/static/py3.6/windows.txt       |   6 +-
- requirements/static/py3.7/darwin.txt        |   2 +-
- requirements/static/py3.7/linux.txt         |   2 +-
- requirements/static/py3.7/windows.txt       |   5 +-
- requirements/static/py3.8/cloud.txt         | 115 ++++++++++
- requirements/static/py3.8/darwin-crypto.txt |   8 +
- requirements/static/py3.8/darwin.txt        | 123 +++++++++++
- requirements/static/py3.8/docs.txt          |  30 +++
- requirements/static/py3.8/lint.txt          |  16 ++
- requirements/static/py3.8/linux-crypto.txt  |   8 +
- requirements/static/py3.8/linux.txt         | 119 ++++++++++
- requirements/static/py3.9/cloud.txt         | 115 ++++++++++
- requirements/static/py3.9/darwin-crypto.txt |   8 +
- requirements/static/py3.9/darwin.txt        | 123 +++++++++++
- requirements/static/py3.9/docs.txt          |  30 +++
- requirements/static/py3.9/lint.txt          |  16 ++
- requirements/static/py3.9/linux-crypto.txt  |   8 +
- requirements/static/py3.9/linux.txt         | 119 ++++++++++
- salt/client/mixins.py                       |  61 +++---
- salt/ext/tornado/httputil.py                |   9 +-
- salt/grains/core.py                         |  28 ++-
- salt/renderers/stateconf.py                 |   4 +-
- salt/utils/args.py                          |  14 +-
- salt/utils/decorators/path.py               |  13 +-
- salt/utils/jinja.py                         |  24 ++-
- salt/utils/oset.py                          |   4 +-
- 38 files changed, 1193 insertions(+), 83 deletions(-)
- delete mode 100644 pkg/windows/req_testing.txt
+ requirements/static/py3.8/cloud.txt         | 115 ++++++++++++++++++
+ requirements/static/py3.8/darwin-crypto.txt |   8 ++
+ requirements/static/py3.8/darwin.txt        | 123 ++++++++++++++++++++
+ requirements/static/py3.8/docs.txt          |  30 +++++
+ requirements/static/py3.8/lint.txt          |  16 +++
+ requirements/static/py3.8/linux-crypto.txt  |   8 ++
+ requirements/static/py3.8/linux.txt         | 119 +++++++++++++++++++
+ requirements/static/py3.9/cloud.txt         | 115 ++++++++++++++++++
+ requirements/static/py3.9/darwin-crypto.txt |   8 ++
+ requirements/static/py3.9/darwin.txt        | 123 ++++++++++++++++++++
+ requirements/static/py3.9/docs.txt          |  30 +++++
+ requirements/static/py3.9/lint.txt          |  16 +++
+ requirements/static/py3.9/linux-crypto.txt  |   8 ++
+ requirements/static/py3.9/linux.txt         | 119 +++++++++++++++++++
+ salt/ext/tornado/httputil.py                |  38 +++---
+ salt/utils/args.py                          |  60 ++++------
+ salt/utils/jinja.py                         |   7 ++
+ salt/utils/oset.py                          |   2 +
+ 18 files changed, 893 insertions(+), 52 deletions(-)
  create mode 100644 requirements/static/py3.8/cloud.txt
  create mode 100644 requirements/static/py3.8/darwin-crypto.txt
  create mode 100644 requirements/static/py3.8/darwin.txt
@@ -193,501 +172,6 @@ Co-authored-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
  create mode 100644 requirements/static/py3.9/linux-crypto.txt
  create mode 100644 requirements/static/py3.9/linux.txt
 
-diff --git a/.ci/kitchen-archlts-py3 b/.ci/kitchen-archlts-py3
-index f529c5e36c..b360a350a6 100644
---- a/.ci/kitchen-archlts-py3
-+++ b/.ci/kitchen-archlts-py3
-@@ -8,7 +8,7 @@ runTestSuite(
-     golden_images_branch: 'master',
-     jenkins_slave_label: 'kitchen-slave',
-     nox_env_name: 'runtests-zeromq',
--    nox_passthrough_opts: '-n integration.modules.test_pkg',
-+    nox_passthrough_opts: '',
-     python_version: 'py3',
-     testrun_timeout: 6,
-     use_spot_instances: true)
-diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
-index c4de5c154c..9b704b1426 100644
---- a/.pre-commit-config.yaml
-+++ b/.pre-commit-config.yaml
-@@ -416,6 +416,234 @@ repos:
-           - --py-version=3.7
-           - --platform=linux
- 
-+      - id: pip-tools-compile
-+        alias: compile-linux-py3.8-zmq-requirements
-+        name: Linux Py3.8 ZeroMQ Requirements
-+        files: ^requirements/((base|zeromq|pytest)\.txt|static/linux\.in)$
-+        exclude: ^requirements/static/(centos-6|amzn-2018\.03|lint|cloud|docs|darwin|windows)\.in$
-+        args:
-+          - -v
-+          - --py-version=3.8
-+          - --platform=linux
-+          - --include=requirements/base.txt
-+          - --include=requirements/zeromq.txt
-+          - --include=requirements/pytest.txt
-+
-+      - id: pip-tools-compile
-+        alias: compile-darwin-py3.8-zmq-requirements
-+        name: Darwin Py3.8 ZeroMQ Requirements
-+        files: ^(pkg/osx/(req|req_ext)\.txt|requirements/((base|zeromq|pytest)\.txt|static/darwin\.in))$
-+        args:
-+          - -v
-+          - --py-version=3.8
-+          - --platform=darwin
-+          - --include=pkg/osx/req.txt
-+          - --include=pkg/osx/req_ext.txt
-+          - --include=requirements/base.txt
-+          - --include=requirements/zeromq.txt
-+          - --include=requirements/pytest.txt
-+          - --passthrough-line-from-input=^pyobjc(.*)$
-+
-+# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
-+#      - id: pip-tools-compile
-+#        alias: compile-windows-py3.8-zmq-requirements
-+#        name: Windows Py3.8 ZeroMQ Requirements
-+#        files: ^(pkg/windows/(req|req_win)\.txt|requirements/((base|zeromq|pytest)\.txt|static/windows\.in))$
-+#        args:
-+#          - -v
-+#          - --py-version=3.8
-+#          - --platform=windows
-+#          - --include=pkg/windows/req.txt
-+#          - --include=pkg/windows/req_win.txt
-+#          - --include=requirements/base.txt
-+#          - --include=requirements/zeromq.txt
-+#          - --include=requirements/pytest.txt
-+
-+      - id: pip-tools-compile
-+        alias: compile-cloud-py3.8-requirements
-+        name: Cloud Py3.8 Requirements
-+        files: ^requirements/(static/cloud\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.8
-+
-+      - id: pip-tools-compile
-+        alias: compile-doc-requirements
-+        name: Docs Py3.8 Requirements
-+        files: ^requirements/((base|zeromq|pytest)\.txt|static/docs\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.8
-+          - --platform=linux
-+
-+      - id: pip-tools-compile
-+        alias: compile-linux-crypto-py3.8-requirements
-+        name: Linux Py3.8 Crypto Requirements
-+        files: ^requirements/(crypto\.txt|static/crypto\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.8
-+          - --platform=linux
-+          - --out-prefix=linux
-+
-+      - id: pip-tools-compile
-+        alias: compile-darwin-crypto-py3.8-requirements
-+        name: Darwin Py3.8 Crypto Requirements
-+        files: ^requirements/(crypto\.txt|static/crypto\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.8
-+          - --platform=darwin
-+          - --out-prefix=darwin
-+
-+# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
-+#      - id: pip-tools-compile
-+#        alias: compile-windows-crypto-py3.8-requirements
-+#        name: Windows Py3.8 Crypto Requirements
-+#        files: ^requirements/(crypto\.txt|static/crypto\.in)$
-+#        args:
-+#          - -v
-+#          - --py-version=3.8
-+#          - --platform=windows
-+#          - --out-prefix=windows
-+
-+      - id: pip-tools-compile
-+        alias: compile-lint-py3.8-requirements
-+        name: Lint Py3.8 Requirements
-+        files: ^requirements/static/lint\.in$
-+        args:
-+          - -v
-+          - --py-version=3.8
-+          - --platform=linux
-+
-+
-+      - id: pip-tools-compile
-+        alias: compile-linux-py3.9-zmq-requirements
-+        name: Linux Py3.9 ZeroMQ Requirements
-+        files: ^requirements/((base|zeromq|pytest)\.txt|static/linux\.in)$
-+        exclude: ^requirements/static/(centos-6|amzn-2018\.03|lint|cloud|docs|darwin|windows)\.in$
-+        args:
-+          - -v
-+          - --py-version=3.9
-+          - --platform=linux
-+          - --include=requirements/base.txt
-+          - --include=requirements/zeromq.txt
-+          - --include=requirements/pytest.txt
-+
-+      - id: pip-tools-compile
-+        alias: compile-darwin-py3.9-zmq-requirements
-+        name: Darwin Py3.9 ZeroMQ Requirements
-+        files: ^(pkg/osx/(req|req_ext)\.txt|requirements/((base|zeromq|pytest)\.txt|static/darwin\.in))$
-+        args:
-+          - -v
-+          - --py-version=3.9
-+          - --platform=darwin
-+          - --include=pkg/osx/req.txt
-+          - --include=pkg/osx/req_ext.txt
-+          - --include=requirements/base.txt
-+          - --include=requirements/zeromq.txt
-+          - --include=requirements/pytest.txt
-+          - --passthrough-line-from-input=^pyobjc(.*)$
-+
-+# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
-+#      - id: pip-tools-compile
-+#        alias: compile-windows-py3.9-zmq-requirements
-+#        name: Windows Py3.9 ZeroMQ Requirements
-+#        files: ^(pkg/windows/(req|req_win)\.txt|requirements/((base|zeromq|pytest)\.txt|static/windows\.in))$
-+#        args:
-+#          - -v
-+#          - --py-version=3.9
-+#          - --platform=windows
-+#          - --include=pkg/windows/req.txt
-+#          - --include=pkg/windows/req_win.txt
-+#          - --include=requirements/base.txt
-+#          - --include=requirements/zeromq.txt
-+#          - --include=requirements/pytest.txt
-+
-+      - id: pip-tools-compile
-+        alias: compile-cloud-py3.9-requirements
-+        name: Cloud Py3.9 Requirements
-+        files: ^requirements/(static/cloud\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.9
-+
-+      - id: pip-tools-compile
-+        alias: compile-doc-requirements
-+        name: Docs Py3.9 Requirements
-+        files: ^requirements/((base|zeromq|pytest)\.txt|static/docs\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.9
-+          - --platform=linux
-+
-+      - id: pip-tools-compile
-+        alias: compile-linux-crypto-py3.9-requirements
-+        name: Linux Py3.9 Crypto Requirements
-+        files: ^requirements/(crypto\.txt|static/crypto\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.9
-+          - --platform=linux
-+          - --out-prefix=linux
-+
-+      - id: pip-tools-compile
-+        alias: compile-darwin-crypto-py3.9-requirements
-+        name: Darwin Py3.9 Crypto Requirements
-+        files: ^requirements/(crypto\.txt|static/crypto\.in)$
-+        args:
-+          - -v
-+          - --py-version=3.9
-+          - --platform=darwin
-+          - --out-prefix=darwin
-+
-+# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
-+#      - id: pip-tools-compile
-+#        alias: compile-windows-crypto-py3.9-requirements
-+#        name: Windows Py3.9 Crypto Requirements
-+#        files: ^requirements/(crypto\.txt|static/crypto\.in)$
-+#        args:
-+#          - -v
-+#          - --py-version=3.9
-+#          - --platform=windows
-+#          - --out-prefix=windows
-+
-+      - id: pip-tools-compile
-+        alias: compile-lint-py3.9-requirements
-+        name: Lint Py3.9 Requirements
-+        files: ^requirements/static/lint\.in$
-+        args:
-+          - -v
-+          - --py-version=3.9
-+          - --platform=linux
-+
-+  - repo: https://github.com/timothycrosley/isort
-+    rev: "1e78a9acf3110e1f9721feb591f89a451fc9876a"
-+    hooks:
-+      - id: isort
-+        additional_dependencies: ['toml']
-+        # This tells pre-commit not to pass files to isort.
-+        # This should be kept in sync with pyproject.toml
-+        exclude: >
-+            (?x)^(
-+                templates/.*|
-+                salt/ext/.*|
-+                tests/kitchen/.*
-+            )$
-+
-+  - repo: https://github.com/psf/black
-+    rev: stable
-+    hooks:
-+      - id: black
-+        # This tells pre-commit not to pass files to black.
-+        # This should be kept in sync with pyproject.toml
-+        exclude: >
-+            (?x)^(
-+                templates/.*|
-+                salt/ext/.*|
-+                tests/kitchen/.*
-+            )$
-+
- 
-   - repo: https://github.com/saltstack/salt-nox-pre-commit
-     rev: master
-diff --git a/noxfile.py b/noxfile.py
-index 355a069d92..65b013eb04 100644
---- a/noxfile.py
-+++ b/noxfile.py
-@@ -39,7 +39,7 @@ SITECUSTOMIZE_DIR = os.path.join(REPO_ROOT, 'tests', 'support', 'coverage')
- IS_DARWIN = sys.platform.lower().startswith('darwin')
- IS_WINDOWS = sys.platform.lower().startswith('win')
- # Python versions to run against
--_PYTHON_VERSIONS = ('2', '2.7', '3', '3.4', '3.5', '3.6', '3.7')
-+_PYTHON_VERSIONS = ("2", "2.7", "3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9")
- 
- # Nox options
- #  Reuse existing virtualenvs
-@@ -167,7 +167,7 @@ def _install_system_packages(session):
-         '{id}-{version_parts[major]}'.format(**distro)
-     ]
-     version_info = _get_session_python_version_info(session)
--    py_version_keys = [
-+    py_version_keys = +SITECUSTOMIZE_DIR[
-         '{}'.format(*version_info),
-         '{}.{}'.format(*version_info)
-     ]
-diff --git a/pkg/windows/req.txt b/pkg/windows/req.txt
-index 8b443e1717..3f2c1628d2 100644
---- a/pkg/windows/req.txt
-+++ b/pkg/windows/req.txt
-@@ -1,6 +1,6 @@
- -r req_win.txt
- backports-abc==0.5; python_version < '3.0'
--backports.ssl-match-hostname==3.7.0.1
-+backports.ssl-match-hostname==3.7.0.1; python_version < '3.7'
- certifi
- cffi==1.12.2
- CherryPy==17.4.1
-diff --git a/pkg/windows/req_testing.txt b/pkg/windows/req_testing.txt
-deleted file mode 100644
-index 7682a98c0c..0000000000
---- a/pkg/windows/req_testing.txt
-+++ /dev/null
-@@ -1,12 +0,0 @@
--mock
--boto
--boto3
--moto
--SaltPyLint>=v2017.6.22
--apache-libcloud
--virtualenv
--
--# Needed for archive, which is gated for Redhat
--# rarfile
--# Needed for keystone
--# python-keystoneclient
-diff --git a/pkg/windows/req_win.txt b/pkg/windows/req_win.txt
-index 7f279af526..8887884a87 100644
---- a/pkg/windows/req_win.txt
-+++ b/pkg/windows/req_win.txt
-@@ -1,2 +1,2 @@
--pywin32==224
-+pywin32==227
- WMI==1.4.9
-diff --git a/requirements/pytest.txt b/requirements/pytest.txt
-index 45aa4dc085..52dd16fc09 100644
---- a/requirements/pytest.txt
-+++ b/requirements/pytest.txt
-@@ -1,7 +1,7 @@
- mock >= 3.0.0
- # PyTest
- pytest >=4.6.6,<4.7   # PyTest 4.6.x are the last Py2 and Py3 releases
--pytest-salt >= 2019.12.27
-+pytest-salt >= 2020.1.27
- pytest-tempdir >= 2019.10.12
- pytest-helpers-namespace >= 2019.1.8
- pytest-salt-runtests-bridge >= 2019.7.10
-diff --git a/requirements/static/py3.5/darwin.txt b/requirements/static/py3.5/darwin.txt
-index ac04286204..d01d1c93ff 100644
---- a/requirements/static/py3.5/darwin.txt
-+++ b/requirements/static/py3.5/darwin.txt
-@@ -88,7 +88,7 @@ pyparsing==2.4.5          # via packaging
- pyserial==3.4             # via junos-eznc
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0
-diff --git a/requirements/static/py3.5/linux.txt b/requirements/static/py3.5/linux.txt
-index c3611cfbcc..9309059b6c 100644
---- a/requirements/static/py3.5/linux.txt
-+++ b/requirements/static/py3.5/linux.txt
-@@ -85,7 +85,7 @@ pyparsing==2.4.5          # via packaging
- pyserial==3.4             # via junos-eznc
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
-diff --git a/requirements/static/py3.5/windows.txt b/requirements/static/py3.5/windows.txt
-index 3c07a12f23..7918945e00 100644
---- a/requirements/static/py3.5/windows.txt
-+++ b/requirements/static/py3.5/windows.txt
-@@ -10,7 +10,7 @@ atomicwrites==1.3.0       # via pytest
- attrs==19.1.0             # via pytest
- aws-xray-sdk==0.95        # via moto
- backports.functools-lru-cache==1.5  # via cheroot
--backports.ssl-match-hostname==3.7.0.1
-+backports.ssl-match-hostname==3.7.0.1 ; python_version < "3.7"
- boto3==1.9.132
- boto==2.49.0
- botocore==1.12.132        # via boto3, moto, s3transfer
-@@ -78,7 +78,7 @@ pyopenssl==19.0.0
- pyparsing==2.4.5          # via packaging
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0
-@@ -88,7 +88,7 @@ python-jose==2.0.2        # via moto
- pythonnet==2.3.0
- pytz==2019.1              # via moto, tempora
- pyvmomi==6.7.1.2018.12
--pywin32==224
-+pywin32==227
- pyyaml==5.1.2
- pyzmq==18.0.1 ; python_version != "3.4"
- requests==2.21.0
-diff --git a/requirements/static/py3.6/darwin.txt b/requirements/static/py3.6/darwin.txt
-index a6dd0a120b..2dc822beb8 100644
---- a/requirements/static/py3.6/darwin.txt
-+++ b/requirements/static/py3.6/darwin.txt
-@@ -87,7 +87,7 @@ pyparsing==2.4.5          # via packaging
- pyserial==3.4             # via junos-eznc
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0
-diff --git a/requirements/static/py3.6/linux.txt b/requirements/static/py3.6/linux.txt
-index 247bdc6e2b..e5eead5572 100644
---- a/requirements/static/py3.6/linux.txt
-+++ b/requirements/static/py3.6/linux.txt
-@@ -84,7 +84,7 @@ pyparsing==2.4.5          # via packaging
- pyserial==3.4             # via junos-eznc
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
-diff --git a/requirements/static/py3.6/windows.txt b/requirements/static/py3.6/windows.txt
-index 1c9b6903c6..83896f9d3f 100644
---- a/requirements/static/py3.6/windows.txt
-+++ b/requirements/static/py3.6/windows.txt
-@@ -10,7 +10,7 @@ atomicwrites==1.3.0       # via pytest
- attrs==19.1.0             # via pytest
- aws-xray-sdk==0.95        # via moto
- backports.functools-lru-cache==1.5  # via cheroot
--backports.ssl-match-hostname==3.7.0.1
-+backports.ssl-match-hostname==3.7.0.1 ; python_version < "3.7"
- boto3==1.9.132
- boto==2.49.0
- botocore==1.12.132        # via boto3, moto, s3transfer
-@@ -77,7 +77,7 @@ pyopenssl==19.0.0
- pyparsing==2.4.5          # via packaging
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0
-@@ -87,7 +87,7 @@ python-jose==2.0.2        # via moto
- pythonnet==2.3.0
- pytz==2019.1              # via moto, tempora
- pyvmomi==6.7.1.2018.12
--pywin32==224
-+pywin32==227
- pyyaml==5.1.2
- pyzmq==18.0.1 ; python_version != "3.4"
- requests==2.21.0
-diff --git a/requirements/static/py3.7/darwin.txt b/requirements/static/py3.7/darwin.txt
-index 935b110db2..616563d7b6 100644
---- a/requirements/static/py3.7/darwin.txt
-+++ b/requirements/static/py3.7/darwin.txt
-@@ -86,7 +86,7 @@ pyparsing==2.4.5          # via packaging
- pyserial==3.4             # via junos-eznc
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0
-diff --git a/requirements/static/py3.7/linux.txt b/requirements/static/py3.7/linux.txt
-index 17e9bc785a..92eedc94d5 100644
---- a/requirements/static/py3.7/linux.txt
-+++ b/requirements/static/py3.7/linux.txt
-@@ -84,7 +84,7 @@ pyparsing==2.4.5          # via packaging
- pyserial==3.4             # via junos-eznc
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
-diff --git a/requirements/static/py3.7/windows.txt b/requirements/static/py3.7/windows.txt
-index 06c36960b3..d6499eaacd 100644
---- a/requirements/static/py3.7/windows.txt
-+++ b/requirements/static/py3.7/windows.txt
-@@ -10,7 +10,6 @@ atomicwrites==1.3.0       # via pytest
- attrs==19.1.0             # via pytest
- aws-xray-sdk==0.95        # via moto
- backports.functools-lru-cache==1.5  # via cheroot
--backports.ssl-match-hostname==3.7.0.1
- boto3==1.9.132
- boto==2.49.0
- botocore==1.12.132        # via boto3, moto, s3transfer
-@@ -77,7 +76,7 @@ pyopenssl==19.0.0
- pyparsing==2.4.5          # via packaging
- pytest-helpers-namespace==2019.1.8
- pytest-salt-runtests-bridge==2019.7.10
--pytest-salt==2019.12.27
-+pytest-salt==2020.1.27
- pytest-tempdir==2019.10.12
- pytest==4.6.6
- python-dateutil==2.8.0
-@@ -87,7 +86,7 @@ python-jose==2.0.2        # via moto
- pythonnet==2.3.0
- pytz==2019.1              # via moto, tempora
- pyvmomi==6.7.1.2018.12
--pywin32==224
-+pywin32==227
- pyyaml==5.1.2
- pyzmq==18.0.1 ; python_version != "3.4"
- requests==2.21.0
 diff --git a/requirements/static/py3.8/cloud.txt b/requirements/static/py3.8/cloud.txt
 new file mode 100644
 index 0000000000..ab03f2b2f3
@@ -1610,103 +1094,21 @@ index 0000000000..b7eb8320de
 +wrapt==1.11.1             # via aws-xray-sdk
 +xmltodict==0.12.0         # via moto
 +zc.lockfile==1.4          # via cherrypy
-diff --git a/salt/client/mixins.py b/salt/client/mixins.py
-index 131aa1e3de..8ca8c7fbf6 100644
---- a/salt/client/mixins.py
-+++ b/salt/client/mixins.py
-@@ -4,7 +4,9 @@ A collection of mixins useful for the various *Client interfaces
- '''
- 
- # Import Python libs
--from __future__ import absolute_import, print_function, with_statement, unicode_literals
-+from __future__ import absolute_import, print_function, unicode_literals, with_statement
-+
-+import copy as pycopy
- import fnmatch
- import signal
- import logging
-@@ -34,31 +36,40 @@ from salt.ext import six
- 
- # Import 3rd-party libs
- import salt.ext.tornado.stack_context
-+try:
-+    from collections.abc import Mapping, MutableMapping
-+except ImportError:
-+    # pylint: disable=no-name-in-module
-+    from collections import Mapping, MutableMapping
-+
- 
- log = logging.getLogger(__name__)
- 
--CLIENT_INTERNAL_KEYWORDS = frozenset([
--    'client',
--    'cmd',
--    'eauth',
--    'fun',
--    'kwarg',
--    'match',
--    'token',
--    '__jid__',
--    '__tag__',
--    '__user__',
--    'username',
--    'password',
--    'full_return',
--    'print_event'
--])
--
--
--class ClientFuncsDict(collections.MutableMapping):
--    '''
-+CLIENT_INTERNAL_KEYWORDS = frozenset(
-+    [
-+        "client",
-+        "cmd",
-+        "eauth",
-+        "fun",
-+        "kwarg",
-+        "match",
-+        "token",
-+        "__jid__",
-+        "__tag__",
-+        "__user__",
-+        "username",
-+        "password",
-+        "full_return",
-+        "print_event",
-+    ]
-+)
-+
-+
-+class ClientFuncsDict(MutableMapping):
-+    """
-     Class to make a read-only dict for accessing runner funcs "directly"
--    '''
-+    """
-+
-     def __init__(self, client):
-         self.client = client
- 
-@@ -141,9 +152,9 @@ class SyncClientMixin(object):
-                                                       crypt='clear',
-                                                       usage='master_call') as channel:
-             ret = channel.send(load)
--            if isinstance(ret, collections.Mapping):
--                if 'error' in ret:
--                    salt.utils.error.raise_error(**ret['error'])
-+            if isinstance(ret, Mapping):
-+                if "error" in ret:
-+                    salt.utils.error.raise_error(**ret["error"])
-             return ret
- 
-     def cmd_sync(self, low, timeout=None, full_return=False):
 diff --git a/salt/ext/tornado/httputil.py b/salt/ext/tornado/httputil.py
-index d49733481a..c5b9c242d5 100644
+index c7a5ac7c3c..35ed279143 100644
 --- a/salt/ext/tornado/httputil.py
 +++ b/salt/ext/tornado/httputil.py
-@@ -36,6 +36,13 @@ from salt.ext.tornado.escape import native_str, parse_qs_bytes, utf8
+@@ -21,7 +21,6 @@ via `tornado.web.RequestHandler.request`.
+ """
+ # pylint: skip-file
+ 
+-from __future__ import absolute_import, division, print_function
+ 
+ import calendar
+ import collections
+@@ -37,6 +36,13 @@ from salt.ext.tornado.escape import native_str, parse_qs_bytes, utf8
  from salt.ext.tornado.log import gen_log
- from salt.ext.tornado.util import ObjectDict, PY3
+ from salt.ext.tornado.util import PY3, ObjectDict
  
 +try:
 +    from collections.abc import MutableMapping
@@ -1718,183 +1120,193 @@ index d49733481a..c5b9c242d5 100644
  if PY3:
      import http.cookies as Cookie
      from http.client import responses
-@@ -104,7 +111,7 @@ class _NormalizedHeaderCache(dict):
- _normalized_headers = _NormalizedHeaderCache(1000)
+@@ -87,7 +93,7 @@ class _NormalizedHeaderCache(dict):
+     """
+ 
+     def __init__(self, size):
+-        super(_NormalizedHeaderCache, self).__init__()
++        super().__init__()
+         self.size = size
+         self.queue = collections.deque()
+ 
+@@ -244,13 +250,13 @@ class HTTPHeaders(MutableMapping):
+     def __str__(self):
+         lines = []
+         for name, value in self.get_all():
+-            lines.append("%s: %s\n" % (name, value))
++            lines.append("{}: {}\n".format(name, value))
+         return "".join(lines)
+ 
+     __unicode__ = __str__
  
  
--class HTTPHeaders(collections.MutableMapping):
-+class HTTPHeaders(MutableMapping):
-     """A dictionary that maintains ``Http-Header-Case`` for all keys.
+-class HTTPServerRequest(object):
++class HTTPServerRequest:
+     """A single HTTP request.
  
-     Supports multiple values per key via a pair of new methods,
-diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 358b66fdb0..38290d034a 100644
---- a/salt/grains/core.py
-+++ b/salt/grains/core.py
-@@ -47,13 +47,29 @@ try:
-     # Extend the default list of supported distros. This will be used for the
-     # /etc/DISTRO-release checking that is part of linux_distribution()
-     from platform import _supported_dists
--    _supported_dists += ('arch', 'mageia', 'meego', 'vmware', 'bluewhite64',
--                         'slamd64', 'ovs', 'system', 'mint', 'oracle', 'void')
-+
-+    _supported_dists += (
-+        "arch",
-+        "mageia",
-+        "meego",
-+        "vmware",
-+        "bluewhite64",
-+        "slamd64",
-+        "ovs",
-+        "system",
-+        "mint",
-+        "oracle",
-+        "void",
-+    )
+     All attributes are type `str` unless otherwise noted.
+@@ -485,8 +491,8 @@ class HTTPServerRequest(object):
  
-     def linux_distribution(**kwargs):
-         with warnings.catch_warnings():
-             warnings.simplefilter("ignore")
--            return _deprecated_linux_distribution(supported_dists=_supported_dists, **kwargs)
-+            return _deprecated_linux_distribution(
-+                supported_dists=_supported_dists, **kwargs
-+            )
-+
-+
- except ImportError:
-     from distro import linux_distribution
+     def __repr__(self):
+         attrs = ("protocol", "host", "method", "uri", "version", "remote_ip")
+-        args = ", ".join(["%s=%r" % (n, getattr(self, n)) for n in attrs])
+-        return "%s(%s, headers=%s)" % (
++        args = ", ".join(["{}={!r}".format(n, getattr(self, n)) for n in attrs])
++        return "{}({}, headers={})".format(
+             self.__class__.__name__,
+             args,
+             dict(self.headers),
+@@ -512,7 +518,7 @@ class HTTPOutputError(Exception):
+     pass
  
-@@ -1974,9 +1990,9 @@ def os_data():
-             'Getting OS name, release, and codename from '
-             'platform.linux_distribution()'
+ 
+-class HTTPServerConnectionDelegate(object):
++class HTTPServerConnectionDelegate:
+     """Implement this interface to handle requests from `.HTTPServer`.
+ 
+     .. versionadded:: 4.0
+@@ -539,7 +545,7 @@ class HTTPServerConnectionDelegate(object):
+         pass
+ 
+ 
+-class HTTPMessageDelegate(object):
++class HTTPMessageDelegate:
+     """Implement this interface to handle an HTTP request or response.
+ 
+     .. versionadded:: 4.0
+@@ -580,7 +586,7 @@ class HTTPMessageDelegate(object):
+         pass
+ 
+ 
+-class HTTPConnection(object):
++class HTTPConnection:
+     """Applications use this interface to write their responses.
+ 
+     .. versionadded:: 4.0
+@@ -640,7 +646,7 @@ def url_concat(url, args):
+         parsed_query = parse_qsl(parsed_url.query, keep_blank_values=True)
+         parsed_query.extend(args)
+     else:
+-        err = "'args' parameter should be dict, list or tuple. Not {0}".format(
++        err = "'args' parameter should be dict, list or tuple. Not {}".format(
+             type(args)
          )
--        (osname, osrelease, oscodename) = \
--            [x.strip('"').strip("'") for x in
--             linux_distribution()]
-+        (osname, osrelease, oscodename) = [
-+            x.strip('"').strip("'") for x in linux_distribution()
-+        ]
-         # Try to assign these three names based on the lsb info, they tend to
-         # be more accurate than what python gets from /etc/DISTRO-release.
-         # It's worth noting that Ubuntu has patched their Python distribution
-diff --git a/salt/renderers/stateconf.py b/salt/renderers/stateconf.py
-index 5c8a8322ed..97308087f5 100644
---- a/salt/renderers/stateconf.py
-+++ b/salt/renderers/stateconf.py
-@@ -223,9 +223,9 @@ def render(input, saltenv='base', sls='', argline='', **kws):
-         if STATE_CONF:
-             tmplctx = STATE_CONF.copy()
-             if tmplctx:
--                prefix = sls + '::'
-+                prefix = sls + "::"
-                 tmplctx = {
--                    k[len(prefix):] if k.startswith(prefix) else k: v
-+                    k[len(prefix) :] if k.startswith(prefix) else k: v
-                     for k, v in six.iteritems(tmplctx)
-                 }
+         raise TypeError(err)
+@@ -733,7 +739,7 @@ def _get_content_range(start, end, total):
+     """
+     start = start or 0
+     end = (end or total) - 1
+-    return "bytes %s-%s/%s" % (start, end, total)
++    return "bytes {}-{}/{}".format(start, end, total)
+ 
+ 
+ def _int_or_none(val):
+@@ -950,7 +956,7 @@ def _encode_header(key, pdict):
+             out.append(k)
          else:
+             # TODO: quote if necessary.
+-            out.append("%s=%s" % (k, v))
++            out.append("{}={}".format(k, v))
+     return "; ".join(out)
+ 
+ 
+@@ -1044,13 +1050,13 @@ def parse_cookie(cookie):
+     .. versionadded:: 4.4.2
+     """
+     cookiedict = {}
+-    for chunk in cookie.split(str(";")):
+-        if str("=") in chunk:
+-            key, val = chunk.split(str("="), 1)
++    for chunk in cookie.split(";"):
++        if "=" in chunk:
++            key, val = chunk.split("=", 1)
+         else:
+             # Assume an empty name per
+             # https://bugzilla.mozilla.org/show_bug.cgi?id=169091
+-            key, val = str(""), chunk
++            key, val = "", chunk
+         key, val = key.strip(), val.strip()
+         if key or val:
+             # unquote using Python's algorithm.
 diff --git a/salt/utils/args.py b/salt/utils/args.py
-index 666a502498..f7961cf012 100644
+index 102402500c..e43c527015 100644
 --- a/salt/utils/args.py
 +++ b/salt/utils/args.py
-@@ -238,8 +238,13 @@ if six.PY3:
+@@ -263,43 +263,31 @@ def get_function_argspec(func, is_class_method=None):
+     if hasattr(func, "__wrapped__"):
+         func = func.__wrapped__
  
+-    if is_class_method is True:
+-        aspec = _getargspec(func)
+-        del aspec.args[0]  # self
+-    elif inspect.isfunction(func):
+-        aspec = _getargspec(func)
+-    elif inspect.ismethod(func):
+-        aspec = _getargspec(func)
+-        del aspec.args[0]  # self
+-    elif isinstance(func, object):
+-        aspec = _getargspec(func.__call__)
+-        del aspec.args[0]  # self
++    try:
++        sig = inspect.signature(func)
++    except TypeError:
++        raise TypeError("Cannot inspect argument list for '{}'".format(func))
+     else:
+-        try:
+-            sig = inspect.signature(func)
+-        except TypeError:
+-            raise TypeError("Cannot inspect argument list for '{}'".format(func))
+-        else:
+-            # argspec-related functions are deprecated in Python 3 in favor of
+-            # the new inspect.Signature class, and will be removed at some
+-            # point in the Python 3 lifecycle. So, build a namedtuple which
+-            # looks like the result of a Python 2 argspec.
+-            _ArgSpec = namedtuple("ArgSpec", "args varargs keywords defaults")
+-            args = []
+-            defaults = []
+-            varargs = keywords = None
+-            for param in sig.parameters.values():
+-                if param.kind == param.POSITIONAL_OR_KEYWORD:
+-                    args.append(param.name)
+-                    if param.default is not inspect._empty:
+-                        defaults.append(param.default)
+-                elif param.kind == param.VAR_POSITIONAL:
+-                    varargs = param.name
+-                elif param.kind == param.VAR_KEYWORD:
+-                    keywords = param.name
+-            if is_class_method:
+-                del args[0]
+-            aspec = _ArgSpec(args, varargs, keywords, tuple(defaults) or None)
++        # argspec-related functions are deprecated in Python 3 in favor of
++        # the new inspect.Signature class, and will be removed at some
++        # point in the Python 3 lifecycle. So, build a namedtuple which
++        # looks like the result of a Python 2 argspec.
++        _ArgSpec = namedtuple("ArgSpec", "args varargs keywords defaults")
++        args = []
++        defaults = []
++        varargs = keywords = None
++        for param in sig.parameters.values():
++            if param.kind == param.POSITIONAL_OR_KEYWORD:
++                args.append(param.name)
++                if param.default is not inspect._empty:
++                    defaults.append(param.default)
++            elif param.kind == param.VAR_POSITIONAL:
++                varargs = param.name
++            elif param.kind == param.VAR_KEYWORD:
++                keywords = param.name
++        if is_class_method:
++            del args[0]
++        aspec = _ArgSpec(args, varargs, keywords, tuple(defaults) or None)
  
- def get_function_argspec(func, is_class_method=None):
--    '''
--    A small wrapper around getargspec that also supports callable classes
-+    """
-+    A small wrapper around getargspec that also supports callable classes and wrapped functions
-+
-+    If the given function is a wrapper around another function (i.e. has a
-+    ``__wrapped__`` attribute), return the functions specification of the underlying
-+    function.
-+
-     :param is_class_method: Pass True if you are sure that the function being passed
-                             is a class method. The reason for this is that on Python 3
-                             ``inspect.ismethod`` only returns ``True`` for bound methods,
-@@ -247,10 +252,13 @@ def get_function_argspec(func, is_class_method=None):
-                             methods. So, on Python 3, in case of a class method, you'd
-                             need the class to which the function belongs to be instantiated
-                             and this is not always wanted.
--    '''
-+    """
-     if not callable(func):
-         raise TypeError('{0} is not a callable'.format(func))
+     return aspec
  
-+    if hasattr(func, "__wrapped__"):
-+        func = func.__wrapped__
-+
-     if six.PY2:
-         if is_class_method is True:
-             aspec = inspect.getargspec(func)
-diff --git a/salt/utils/decorators/path.py b/salt/utils/decorators/path.py
-index 4adacf0e4e..8ee7fb1d11 100644
---- a/salt/utils/decorators/path.py
-+++ b/salt/utils/decorators/path.py
-@@ -4,10 +4,11 @@ Decorators for salt.utils.path
- '''
- from __future__ import absolute_import, print_function, unicode_literals
- 
-+import functools
-+
- # Import Salt libs
- import salt.utils.path
- from salt.exceptions import CommandNotFoundError
--from salt.utils.decorators.signature import identical_signature_wrapper
- 
- 
- def which(exe):
-@@ -15,13 +16,16 @@ def which(exe):
-     Decorator wrapper for salt.utils.path.which
-     '''
-     def wrapper(function):
-+        @functools.wraps(function)
-         def wrapped(*args, **kwargs):
-             if salt.utils.path.which(exe) is None:
-                 raise CommandNotFoundError(
-                     'The \'{0}\' binary was not found in $PATH.'.format(exe)
-                 )
-             return function(*args, **kwargs)
--        return identical_signature_wrapper(function, wrapped)
-+
-+        return wrapped
-+
-     return wrapper
- 
- 
-@@ -30,6 +34,7 @@ def which_bin(exes):
-     Decorator wrapper for salt.utils.path.which_bin
-     '''
-     def wrapper(function):
-+        @functools.wraps(function)
-         def wrapped(*args, **kwargs):
-             if salt.utils.path.which_bin(exes) is None:
-                 raise CommandNotFoundError(
-@@ -39,5 +44,7 @@ def which_bin(exes):
-                     )
-                 )
-             return function(*args, **kwargs)
--        return identical_signature_wrapper(function, wrapped)
-+
-+        return wrapped
-+
-     return wrapper
 diff --git a/salt/utils/jinja.py b/salt/utils/jinja.py
-index 6e4261e68e..31ce179808 100644
+index c5a30ba04e..997d4b1697 100644
 --- a/salt/utils/jinja.py
 +++ b/salt/utils/jinja.py
-@@ -6,7 +6,6 @@ Jinja loading utils to enable a more powerful backend for jinja templates
- # Import python libs
- from __future__ import absolute_import, unicode_literals
- import atexit
--import collections
- import logging
- import os.path
- import pipes
-@@ -37,6 +36,13 @@ import salt.utils.yaml
- from salt.utils.decorators.jinja import jinja_filter, jinja_test, jinja_global
+@@ -34,6 +34,13 @@ from salt.utils.decorators.jinja import jinja_filter, jinja_global, jinja_test
  from salt.utils.odict import OrderedDict
+ from salt.utils.versions import LooseVersion
  
 +try:
 +    from collections.abc import Hashable
@@ -1905,82 +1317,15 @@ index 6e4261e68e..31ce179808 100644
 +
  log = logging.getLogger(__name__)
  
- __all__ = [
-@@ -329,7 +335,7 @@ def to_bool(val):
-         return val.lower() in ('yes', '1', 'true')
-     if isinstance(val, six.integer_types):
-         return val > 0
--    if not isinstance(val, collections.Hashable):
-+    if not isinstance(val, Hashable):
-         return len(val) > 0
-     return False
- 
-@@ -500,7 +506,7 @@ def unique(values):
-         ['a', 'b', 'c']
-     '''
-     ret = None
--    if isinstance(values, collections.Hashable):
-+    if isinstance(values, Hashable):
-         ret = set(values)
-     else:
-         ret = []
-@@ -564,8 +570,8 @@ def lst_avg(lst):
- 
-         2.5
-     '''
--    if not isinstance(lst, collections.Hashable):
--        return float(sum(lst)/len(lst))
-+    if not isinstance(lst, Hashable):
-+        return float(sum(lst) / len(lst))
-     return float(lst)
- 
- 
-@@ -585,7 +591,7 @@ def union(lst1, lst2):
- 
-         [1, 2, 3, 4, 6]
-     '''
--    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
-+    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
-         return set(lst1) | set(lst2)
-     return unique(lst1 + lst2)
- 
-@@ -606,7 +612,7 @@ def intersect(lst1, lst2):
- 
-         [2, 4]
-     '''
--    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
-+    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
-         return set(lst1) & set(lst2)
-     return unique([ele for ele in lst1 if ele in lst2])
- 
-@@ -627,7 +633,7 @@ def difference(lst1, lst2):
- 
-         [1, 3, 6]
-     '''
--    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
-+    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
-         return set(lst1) - set(lst2)
-     return unique([ele for ele in lst1 if ele not in lst2])
- 
-@@ -648,7 +654,7 @@ def symmetric_difference(lst1, lst2):
- 
-         [1, 3]
-     '''
--    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
-+    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
-         return set(lst1) ^ set(lst2)
-     return unique([ele for ele in union(lst1, lst2) if ele not in intersect(lst1, lst2)])
- 
+ __all__ = ["SaltCacheLoader", "SerializerExtension"]
 diff --git a/salt/utils/oset.py b/salt/utils/oset.py
-index cd4e88be40..aa0d2a3af5 100644
+index 31a6a4acca..84c262e15f 100644
 --- a/salt/utils/oset.py
 +++ b/salt/utils/oset.py
-@@ -21,10 +21,12 @@ Rob Speer's changes are as follows:
+@@ -20,9 +20,11 @@ Rob Speer's changes are as follows:
      - added a __getstate__ and __setstate__ so it can be pickled
      - added __getitem__
- '''
--from __future__ import absolute_import, unicode_literals, print_function
-+from __future__ import absolute_import, print_function, unicode_literals
+ """
 +
  try:
      from collections.abc import MutableSet
@@ -1990,6 +1335,6 @@ index cd4e88be40..aa0d2a3af5 100644
  
  SLICE_ALL = slice(None)
 -- 
-2.26.1
+2.29.2
 
 

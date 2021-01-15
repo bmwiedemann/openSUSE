@@ -1,4 +1,4 @@
-From 2182f2cbc835fee8a95101ce0c722d582b7456aa Mon Sep 17 00:00:00 2001
+From 12d67e0cfa54399f3a0b6ae0d4faa09793fa2b0f Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Wed, 1 Apr 2020 16:13:23 +0200
 Subject: [PATCH] Adds explicit type cast for port
@@ -12,22 +12,22 @@ The type casting to int solves this issue.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index d6543ff160..def997f3dc 100644
+index 25b2d06758..1705a5809d 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -1457,9 +1457,9 @@ def _netlink_tool_remote_on(port, which_end):
-         local_host, local_port = chunks[3].rsplit(':', 1)
-         remote_host, remote_port = chunks[4].rsplit(':', 1)
+@@ -1626,9 +1626,9 @@ def _netlink_tool_remote_on(port, which_end):
+         local_host, local_port = chunks[3].rsplit(":", 1)
+         remote_host, remote_port = chunks[4].rsplit(":", 1)
  
--        if which_end == 'remote_port' and int(remote_port) != port:
-+        if which_end == 'remote_port' and int(remote_port) != int(port):
+-        if which_end == "remote_port" and int(remote_port) != port:
++        if which_end == "remote_port" and int(remote_port) != int(port):
              continue
--        if which_end == 'local_port' and int(local_port) != port:
-+        if which_end == 'local_port' and int(local_port) != int(port):
+-        if which_end == "local_port" and int(local_port) != port:
++        if which_end == "local_port" and int(local_port) != int(port):
              continue
          remotes.add(remote_host.strip("[]"))
  
 -- 
-2.16.4
+2.29.2
 
 

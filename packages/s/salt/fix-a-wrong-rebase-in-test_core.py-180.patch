@@ -1,4 +1,4 @@
-From 67830ea17ae1e87a6bffca2a9542788c200d7dd9 Mon Sep 17 00:00:00 2001
+From 3d5f3cff6b43d7aba35063e970d016401bb82921 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Fri, 25 Oct 2019 15:43:16 +0200
 Subject: [PATCH] Fix a wrong rebase in test_core.py (#180)
@@ -17,89 +17,128 @@ This patch ignore this kind of issue during the grains creation.
 
 (cherry picked from commit bd0213bae00b737b24795bec3c030ebfe476e0d8)
 ---
- salt/grains/core.py            |  4 ++--
- tests/unit/grains/test_core.py | 45 ------------------------------------------
- 2 files changed, 2 insertions(+), 47 deletions(-)
+ salt/grains/core.py            |  8 +++-
+ tests/unit/grains/test_core.py | 80 ----------------------------------
+ 2 files changed, 6 insertions(+), 82 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 68c43482d3..20950988d9 100644
+index a2983e388b..5dff6ecfd4 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -1000,7 +1000,7 @@ def _virtual(osdata):
+@@ -1066,7 +1066,9 @@ def _virtual(osdata):
              except UnicodeDecodeError:
                  # Some firmwares provide non-valid 'product_name'
                  # files, ignore them
 -                pass
-+                log.debug('The content in /sys/devices/virtual/dmi/id/product_name is not valid')
-             except IOError:
++                log.debug(
++                    "The content in /sys/devices/virtual/dmi/id/product_name is not valid"
++                )
+             except OSError:
                  pass
-     elif osdata['kernel'] == 'FreeBSD':
-@@ -2568,7 +2568,7 @@ def _hw_data(osdata):
+     elif osdata["kernel"] == "FreeBSD":
+@@ -2716,7 +2718,9 @@ def _hw_data(osdata):
                  except UnicodeDecodeError:
                      # Some firmwares provide non-valid 'product_name'
                      # files, ignore them
 -                    pass
-+                    log.debug('The content in /sys/devices/virtual/dmi/id/product_name is not valid')
-                 except (IOError, OSError) as err:
++                    log.debug(
++                        "The content in /sys/devices/virtual/dmi/id/product_name is not valid"
++                    )
+                 except OSError as err:
                      # PermissionError is new to Python 3, but corresponds to the EACESS and
                      # EPERM error numbers. Use those instead here for PY2 compatibility.
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index 33d6a9507f..7fa2436e58 100644
+index 0dc3423646..85d434dd9d 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -1560,51 +1560,6 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-         assert all([x is not None for x in info])
-         assert all([isinstance(x, int) for x in info])
+@@ -2047,86 +2047,6 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+             result = core.path()
+         assert result == {"path": path, "systempath": comps}, result
  
--    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+-    @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
+-    @patch("os.path.exists")
+-    @patch("salt.utils.platform.is_proxy")
 -    def test_kernelparams_return(self):
 -        expectations = [
--            ('BOOT_IMAGE=/vmlinuz-3.10.0-693.2.2.el7.x86_64',
--             {'kernelparams': [('BOOT_IMAGE', '/vmlinuz-3.10.0-693.2.2.el7.x86_64')]}),
--            ('root=/dev/mapper/centos_daemon-root',
--             {'kernelparams': [('root', '/dev/mapper/centos_daemon-root')]}),
--            ('rhgb quiet ro',
--             {'kernelparams': [('rhgb', None), ('quiet', None), ('ro', None)]}),
--            ('param="value1"',
--             {'kernelparams': [('param', 'value1')]}),
--            ('param="value1 value2 value3"',
--             {'kernelparams': [('param', 'value1 value2 value3')]}),
--            ('param="value1 value2 value3" LANG="pl" ro',
--             {'kernelparams': [('param', 'value1 value2 value3'), ('LANG', 'pl'), ('ro', None)]}),
--            ('ipv6.disable=1',
--             {'kernelparams': [('ipv6.disable', '1')]}),
--            ('param="value1:value2:value3"',
--             {'kernelparams': [('param', 'value1:value2:value3')]}),
--            ('param="value1,value2,value3"',
--             {'kernelparams': [('param', 'value1,value2,value3')]}),
--            ('param="value1" param="value2" param="value3"',
--             {'kernelparams': [('param', 'value1'), ('param', 'value2'), ('param', 'value3')]}),
+-            (
+-                "BOOT_IMAGE=/vmlinuz-3.10.0-693.2.2.el7.x86_64",
+-                {
+-                    "kernelparams": [
+-                        ("BOOT_IMAGE", "/vmlinuz-3.10.0-693.2.2.el7.x86_64")
+-                    ]
+-                },
+-            ),
+-            (
+-                "root=/dev/mapper/centos_daemon-root",
+-                {"kernelparams": [("root", "/dev/mapper/centos_daemon-root")]},
+-            ),
+-            (
+-                "rhgb quiet ro",
+-                {"kernelparams": [("rhgb", None), ("quiet", None), ("ro", None)]},
+-            ),
+-            ('param="value1"', {"kernelparams": [("param", "value1")]}),
+-            (
+-                'param="value1 value2 value3"',
+-                {"kernelparams": [("param", "value1 value2 value3")]},
+-            ),
+-            (
+-                'param="value1 value2 value3" LANG="pl" ro',
+-                {
+-                    "kernelparams": [
+-                        ("param", "value1 value2 value3"),
+-                        ("LANG", "pl"),
+-                        ("ro", None),
+-                    ]
+-                },
+-            ),
+-            ("ipv6.disable=1", {"kernelparams": [("ipv6.disable", "1")]}),
+-            (
+-                'param="value1:value2:value3"',
+-                {"kernelparams": [("param", "value1:value2:value3")]},
+-            ),
+-            (
+-                'param="value1,value2,value3"',
+-                {"kernelparams": [("param", "value1,value2,value3")]},
+-            ),
+-            (
+-                'param="value1" param="value2" param="value3"',
+-                {
+-                    "kernelparams": [
+-                        ("param", "value1"),
+-                        ("param", "value2"),
+-                        ("param", "value3"),
+-                    ]
+-                },
+-            ),
 -        ]
 -
 -        for cmdline, expectation in expectations:
--            with patch('salt.utils.files.fopen', mock_open(read_data=cmdline)):
+-            with patch("salt.utils.files.fopen", mock_open(read_data=cmdline)):
 -                self.assertEqual(core.kernelparams(), expectation)
 -
--    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
--    @patch('os.path.exists')
--    @patch('salt.utils.platform.is_proxy')
+-    @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
+-    @patch("os.path.exists")
+-    @patch("salt.utils.platform.is_proxy")
 -    def test__hw_data_linux_empty(self, is_proxy, exists):
 -        is_proxy.return_value = False
 -        exists.return_value = True
--        with patch('salt.utils.files.fopen', mock_open(read_data='')):
--            self.assertEqual(core._hw_data({'kernel': 'Linux'}), {
--                'biosreleasedate': '',
--                'biosversion': '',
--                'manufacturer': '',
--                'productname': '',
--                'serialnumber': '',
--                'uuid': ''
--            })
+-        with patch("salt.utils.files.fopen", mock_open(read_data="")):
+-            self.assertEqual(
+-                core._hw_data({"kernel": "Linux"}),
+-                {
+-                    "biosreleasedate": "",
+-                    "biosversion": "",
+-                    "manufacturer": "",
+-                    "productname": "",
+-                    "serialnumber": "",
+-                    "uuid": "",
+-                },
+-            )
 -
-     @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
-     @skipIf(six.PY2, 'UnicodeDecodeError is throw in Python 3')
-     @patch('os.path.exists')
+     @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
+     @skipIf(six.PY2, "UnicodeDecodeError is throw in Python 3")
+     @patch("os.path.exists")
 -- 
-2.16.4
+2.29.2
 
 

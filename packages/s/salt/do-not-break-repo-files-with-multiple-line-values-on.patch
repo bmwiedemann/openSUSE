@@ -1,4 +1,4 @@
-From f81a5b92d691c1d511a814f9344104dd37466bc3 Mon Sep 17 00:00:00 2001
+From e986ed8fc0d5da74374d9ded82e10c16fc984ca8 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 29 May 2019 11:03:16 +0100
@@ -6,42 +6,45 @@ Subject: [PATCH] Do not break repo files with multiple line values on
  yumpkg (bsc#1135360)
 
 ---
- tests/integration/modules/test_pkg.py | 48 +++++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+ tests/integration/modules/test_pkg.py | 51 +++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
 diff --git a/tests/integration/modules/test_pkg.py b/tests/integration/modules/test_pkg.py
-index e8374db2c0..61748f9477 100644
+index 7a720523da..e32013800d 100644
 --- a/tests/integration/modules/test_pkg.py
 +++ b/tests/integration/modules/test_pkg.py
-@@ -182,6 +182,54 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+@@ -194,6 +194,57 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
              if repo is not None:
-                 self.run_function('pkg.del_repo', [repo])
+                 self.run_function("pkg.del_repo", [repo])
  
 +    def test_mod_del_repo_multiline_values(self):
-+        '''
++        """
 +        test modifying and deleting a software repository defined with multiline values
-+        '''
-+        os_grain = self.run_function('grains.item', ['os'])['os']
++        """
++        os_grain = self.run_function("grains.item", ["os"])["os"]
 +        repo = None
 +        try:
-+            if os_grain in ['CentOS', 'RedHat', 'SUSE']:
-+                my_baseurl = 'http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/'
-+                expected_get_repo_baseurl = 'http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/'
-+                major_release = int(
-+                    self.run_function(
-+                        'grains.item',
-+                        ['osmajorrelease']
-+                    )['osmajorrelease']
++            if os_grain in ["CentOS", "RedHat", "SUSE"]:
++                my_baseurl = (
++                    "http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/"
 +                )
-+                repo = 'fakerepo'
-+                name = 'Fake repo for RHEL/CentOS/SUSE'
++                expected_get_repo_baseurl = (
++                    "http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/"
++                )
++                major_release = int(
++                    self.run_function("grains.item", ["osmajorrelease"])[
++                        "osmajorrelease"
++                    ]
++                )
++                repo = "fakerepo"
++                name = "Fake repo for RHEL/CentOS/SUSE"
 +                baseurl = my_baseurl
-+                gpgkey = 'https://my.fake.repo/foo/bar/MY-GPG-KEY.pub'
-+                failovermethod = 'priority'
++                gpgkey = "https://my.fake.repo/foo/bar/MY-GPG-KEY.pub"
++                failovermethod = "priority"
 +                gpgcheck = 1
 +                enabled = 1
 +                ret = self.run_function(
-+                    'pkg.mod_repo',
++                    "pkg.mod_repo",
 +                    [repo],
 +                    name=name,
 +                    baseurl=baseurl,
@@ -55,20 +58,20 @@ index e8374db2c0..61748f9477 100644
 +                self.assertNotEqual(ret, {})
 +                repo_info = ret[next(iter(ret))]
 +                self.assertIn(repo, repo_info)
-+                self.assertEqual(repo_info[repo]['baseurl'], my_baseurl)
-+                ret = self.run_function('pkg.get_repo', [repo])
-+                self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
-+                self.run_function('pkg.mod_repo', [repo])
-+                ret = self.run_function('pkg.get_repo', [repo])
-+                self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
++                self.assertEqual(repo_info[repo]["baseurl"], my_baseurl)
++                ret = self.run_function("pkg.get_repo", [repo])
++                self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
++                self.run_function("pkg.mod_repo", [repo])
++                ret = self.run_function("pkg.get_repo", [repo])
++                self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
 +        finally:
 +            if repo is not None:
-+                self.run_function('pkg.del_repo', [repo])
++                self.run_function("pkg.del_repo", [repo])
 +
-     @requires_salt_modules('pkg.owner')
+     @requires_salt_modules("pkg.owner")
      def test_owner(self):
-         '''
+         """
 -- 
-2.16.4
+2.29.2
 
 

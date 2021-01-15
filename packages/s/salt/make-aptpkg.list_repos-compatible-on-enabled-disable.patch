@@ -1,26 +1,34 @@
-From 93f69a227b7f8c3d4625c0699ab3923d4a0b3127 Mon Sep 17 00:00:00 2001
+From 7d507f8f5879a1de3e707fdb5cadd618a150123f Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 16 Nov 2018 10:54:12 +0100
 Subject: [PATCH] Make aptpkg.list_repos compatible on enabled/disabled
  output
 
 ---
- salt/modules/aptpkg.py | 1 +
- 1 file changed, 1 insertion(+)
+ salt/modules/aptpkg.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index b5503f0b10..8f4d95a195 100644
+index 1e2866b47b..70e173806a 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -1641,6 +1641,7 @@ def list_repos():
-         repo['file'] = source.file
-         repo['comps'] = getattr(source, 'comps', [])
-         repo['disabled'] = source.disabled
-+        repo['enabled'] = not repo['disabled']  # This is for compatibility with the other modules
-         repo['dist'] = source.dist
-         repo['type'] = source.type
-         repo['uri'] = source.uri.rstrip('/')
+@@ -1681,10 +1681,13 @@ def list_repos(**kwargs):
+         repo["file"] = source.file
+         repo["comps"] = getattr(source, "comps", [])
+         repo["disabled"] = source.disabled
++        repo["enabled"] = not repo[
++            "disabled"
++        ]  # This is for compatibility with the other modules
+         repo["dist"] = source.dist
+         repo["type"] = source.type
+-        repo["uri"] = source.uri
+-        repo["line"] = source.line.strip()
++        repo["uri"] = source.uri.rstrip("/")
++        repo["line"] = salt.utils.pkg.deb.strip_uri(source.line.strip())
+         repo["architectures"] = getattr(source, "architectures", [])
+         repos.setdefault(source.uri, []).append(repo)
+     return repos
 -- 
-2.16.4
+2.29.2
 
 

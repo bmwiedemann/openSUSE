@@ -1,4 +1,4 @@
-From da91692b5a6cc0b895fa2a1a3a6d0c21d9913ebf Mon Sep 17 00:00:00 2001
+From ac6a77b6c617e28a092398a16dd550d5ef70d7ea Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Wed, 25 Mar 2020 15:18:51 +0100
 Subject: [PATCH] Reintroducing reverted changes
@@ -11,21 +11,21 @@ https://github.com/openSUSE/salt/commit/d0ef24d113bdaaa29f180031b5da384cffe08c64
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
-index 2224aba9a1..ba1d874e69 100644
+index 77d8b84896..3c9744e224 100644
 --- a/tests/unit/modules/test_aptpkg.py
 +++ b/tests/unit/modules/test_aptpkg.py
-@@ -253,7 +253,9 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
-             if installed['wget'].get(names[name], False):
-                 installed['wget'][name] = installed['wget'].pop(names[name])
+@@ -293,7 +293,9 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+             if installed["wget"].get(names[name], False):
+                 installed["wget"][name] = installed["wget"].pop(names[name])
  
--        assert aptpkg.info_installed('wget') == installed
-+        del installed['wget']['status']
-+        self.assertEqual(aptpkg.info_installed('wget'), installed)
+-        assert aptpkg.info_installed("wget") == installed
++        del installed["wget"]["status"]
++        self.assertEqual(aptpkg.info_installed("wget"), installed)
 +        self.assertEqual(len(aptpkg.info_installed()), 1)
  
-     @patch('salt.modules.aptpkg.__salt__', {'lowpkg.info': MagicMock(return_value=LOWPKG_INFO)})
-     def test_info_installed_attr(self):
+     @patch(
+         "salt.modules.aptpkg.__salt__",
 -- 
-2.16.4
+2.29.2
 
 

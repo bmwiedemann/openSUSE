@@ -1,4 +1,4 @@
-From 068eecfba4b2a14b334ff17a295d4005d17491f3 Mon Sep 17 00:00:00 2001
+From 36f4465d22f8cdf05be20ba72756757f5725e509 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 20 Nov 2018 16:06:31 +0100
 Subject: [PATCH] Debian info_installed compatibility (#50453)
@@ -49,17 +49,17 @@ Adjust architecture getter according to the lowpkg info
 
 Fix wrong Git merge: missing function signature
 ---
- salt/modules/aptpkg.py                 |  20 ++++-
- salt/modules/dpkg_lowpkg.py            |  93 +++++++++++++++++---
- tests/unit/modules/test_aptpkg.py      | 153 +++++++++++++++++++++------------
- tests/unit/modules/test_dpkg_lowpkg.py | 127 ++++++++++++++-------------
- 4 files changed, 263 insertions(+), 130 deletions(-)
+ salt/modules/aptpkg.py                 |  24 ++-
+ salt/modules/dpkg_lowpkg.py            | 110 ++++++++++--
+ tests/unit/modules/test_aptpkg.py      | 235 ++++++++++++++++++-------
+ tests/unit/modules/test_dpkg_lowpkg.py | 189 +++++++++++---------
+ 4 files changed, 396 insertions(+), 162 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 8f4d95a195..4ec9158476 100644
+index 70e173806a..bf90d0614f 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -2825,6 +2825,15 @@ def info_installed(*names, **kwargs):
+@@ -2902,6 +2902,15 @@ def info_installed(*names, **kwargs):
  
          .. versionadded:: 2016.11.3
  
@@ -75,24 +75,28 @@ index 8f4d95a195..4ec9158476 100644
      CLI example:
  
      .. code-block:: bash
-@@ -2835,11 +2844,15 @@ def info_installed(*names, **kwargs):
-     '''
+@@ -2912,11 +2921,19 @@ def info_installed(*names, **kwargs):
+     """
      kwargs = salt.utils.args.clean_kwargs(**kwargs)
-     failhard = kwargs.pop('failhard', True)
-+    kwargs.pop('errors', None)                # Only for compatibility with RPM
-+    attr = kwargs.pop('attr', None)           # Package attributes to return
-+    all_versions = kwargs.pop('all_versions', False)  # This is for backward compatible structure only
+     failhard = kwargs.pop("failhard", True)
++    kwargs.pop("errors", None)  # Only for compatibility with RPM
++    attr = kwargs.pop("attr", None)  # Package attributes to return
++    all_versions = kwargs.pop(
++        "all_versions", False
++    )  # This is for backward compatible structure only
 +
      if kwargs:
          salt.utils.args.invalid_kwargs(kwargs)
  
      ret = dict()
--    for pkg_name, pkg_nfo in __salt__['lowpkg.info'](*names, failhard=failhard).items():
-+    for pkg_name, pkg_nfo in __salt__['lowpkg.info'](*names, failhard=failhard, attr=attr).items():
+-    for pkg_name, pkg_nfo in __salt__["lowpkg.info"](*names, failhard=failhard).items():
++    for pkg_name, pkg_nfo in __salt__["lowpkg.info"](
++        *names, failhard=failhard, attr=attr
++    ).items():
          t_nfo = dict()
-         if pkg_nfo.get('status', 'ii')[1] != 'i':
-             continue    # return only packages that are really installed
-@@ -2860,7 +2873,10 @@ def info_installed(*names, **kwargs):
+         if pkg_nfo.get("status", "ii")[1] != "i":
+             continue  # return only packages that are really installed
+@@ -2937,7 +2954,10 @@ def info_installed(*names, **kwargs):
              else:
                  t_nfo[key] = value
  
@@ -105,38 +109,58 @@ index 8f4d95a195..4ec9158476 100644
      return ret
  
 diff --git a/salt/modules/dpkg_lowpkg.py b/salt/modules/dpkg_lowpkg.py
-index 4ac8efd2f2..b78e844830 100644
+index d569e04995..7447637774 100644
 --- a/salt/modules/dpkg_lowpkg.py
 +++ b/salt/modules/dpkg_lowpkg.py
-@@ -252,6 +252,38 @@ def file_dict(*packages):
-     return {'errors': errors, 'packages': ret}
+@@ -2,13 +2,11 @@
+ Support for DEB packages
+ """
+ 
+-# Import python libs
+ import datetime
+ import logging
+ import os
+ import re
+ 
+-# Import salt libs
+ import salt.utils.args
+ import salt.utils.data
+ import salt.utils.files
+@@ -236,6 +234,44 @@ def file_dict(*packages, **kwargs):
+     return {"errors": errors, "packages": ret}
  
  
 +def _get_pkg_build_time(name):
-+    '''
++    """
 +    Get package build time, if possible.
 +
 +    :param name:
 +    :return:
-+    '''
++    """
 +    iso_time = iso_time_t = None
-+    changelog_dir = os.path.join('/usr/share/doc', name)
++    changelog_dir = os.path.join("/usr/share/doc", name)
 +    if os.path.exists(changelog_dir):
 +        for fname in os.listdir(changelog_dir):
 +            try:
 +                iso_time_t = int(os.path.getmtime(os.path.join(changelog_dir, fname)))
-+                iso_time = datetime.datetime.utcfromtimestamp(iso_time_t).isoformat() + 'Z'
++                iso_time = (
++                    datetime.datetime.utcfromtimestamp(iso_time_t).isoformat() + "Z"
++                )
 +                break
 +            except OSError:
 +                pass
 +
 +    # Packager doesn't care about Debian standards, therefore Plan B: brute-force it.
 +    if not iso_time:
-+        for pkg_f_path in __salt__['cmd.run']('dpkg-query -L {}'.format(name)).splitlines():
-+            if 'changelog' in pkg_f_path.lower() and os.path.exists(pkg_f_path):
++        for pkg_f_path in __salt__["cmd.run"](
++            "dpkg-query -L {}".format(name)
++        ).splitlines():
++            if "changelog" in pkg_f_path.lower() and os.path.exists(pkg_f_path):
 +                try:
 +                    iso_time_t = int(os.path.getmtime(pkg_f_path))
-+                    iso_time = datetime.datetime.utcfromtimestamp(iso_time_t).isoformat() + 'Z'
++                    iso_time = (
++                        datetime.datetime.utcfromtimestamp(iso_time_t).isoformat() + "Z"
++                    )
 +                    break
 +                except OSError:
 +                    pass
@@ -145,67 +169,76 @@ index 4ac8efd2f2..b78e844830 100644
 +
 +
  def _get_pkg_info(*packages, **kwargs):
-     '''
+     """
      Return list of package information. If 'packages' parameter is empty,
-@@ -274,7 +306,7 @@ def _get_pkg_info(*packages, **kwargs):
-     ret = []
-     cmd = "dpkg-query -W -f='package:" + bin_var + "\\n" \
-           "revision:${binary:Revision}\\n" \
--          "architecture:${Architecture}\\n" \
-+          "arch:${Architecture}\\n" \
-           "maintainer:${Maintainer}\\n" \
-           "summary:${Summary}\\n" \
-           "source:${source:Package}\\n" \
-@@ -308,9 +340,14 @@ def _get_pkg_info(*packages, **kwargs):
+@@ -259,7 +295,7 @@ def _get_pkg_info(*packages, **kwargs):
+     cmd = (
+         "dpkg-query -W -f='package:" + bin_var + "\\n"
+         "revision:${binary:Revision}\\n"
+-        "architecture:${Architecture}\\n"
++        "arch:${Architecture}\\n"
+         "maintainer:${Maintainer}\\n"
+         "summary:${Summary}\\n"
+         "source:${source:Package}\\n"
+@@ -298,9 +334,16 @@ def _get_pkg_info(*packages, **kwargs):
              key, value = pkg_info_line.split(":", 1)
              if value:
                  pkg_data[key] = value
--            install_date = _get_pkg_install_time(pkg_data.get('package'))
+-            install_date = _get_pkg_install_time(pkg_data.get("package"))
 -            if install_date:
--                pkg_data['install_date'] = install_date
-+        install_date, install_date_t = _get_pkg_install_time(pkg_data.get('package'), pkg_data.get('arch'))
+-                pkg_data["install_date"] = install_date
++        install_date, install_date_t = _get_pkg_install_time(
++            pkg_data.get("package"), pkg_data.get("arch")
++        )
 +        if install_date:
-+            pkg_data['install_date'] = install_date
-+            pkg_data['install_date_time_t'] = install_date_t  # Unix ticks
-+        build_date, build_date_t = _get_pkg_build_time(pkg_data.get('package'))
++            pkg_data["install_date"] = install_date
++            pkg_data["install_date_time_t"] = install_date_t  # Unix ticks
++        build_date, build_date_t = _get_pkg_build_time(pkg_data.get("package"))
 +        if build_date:
-+            pkg_data['build_date'] = build_date
-+            pkg_data['build_date_time_t'] = build_date_t
-         pkg_data['description'] = pkg_descr.split(":", 1)[-1]
++            pkg_data["build_date"] = build_date
++            pkg_data["build_date_time_t"] = build_date_t
+         pkg_data["description"] = pkg_descr.split(":", 1)[-1]
          ret.append(pkg_data)
  
-@@ -336,19 +373,32 @@ def _get_pkg_license(pkg):
+@@ -326,24 +369,34 @@ def _get_pkg_license(pkg):
      return ", ".join(sorted(licenses))
  
  
 -def _get_pkg_install_time(pkg):
 +def _get_pkg_install_time(pkg, arch):
-     '''
+     """
      Return package install time, based on the /var/lib/dpkg/info/<package>.list
  
      :return:
-     '''
+     """
 -    iso_time = None
 +    iso_time = iso_time_t = None
-+    loc_root = '/var/lib/dpkg/info'
++    loc_root = "/var/lib/dpkg/info"
      if pkg is not None:
--        location = "/var/lib/dpkg/info/{0}.list".format(pkg)
+-        location = "/var/lib/dpkg/info/{}.list".format(pkg)
 -        if os.path.exists(location):
--            iso_time = datetime.datetime.utcfromtimestamp(int(os.path.getmtime(location))).isoformat() + "Z"
+-            iso_time = (
+-                datetime.datetime.utcfromtimestamp(
+-                    int(os.path.getmtime(location))
+-                ).isoformat()
+-                + "Z"
+-            )
 +        locations = []
-+        if arch is not None and arch != 'all':
-+            locations.append(os.path.join(loc_root, '{0}:{1}.list'.format(pkg, arch)))
-+
-+        locations.append(os.path.join(loc_root, '{0}.list'.format(pkg)))
++        if arch is not None and arch != "all":
++            locations.append(os.path.join(loc_root, "{}:{}.list".format(pkg, arch)))
+ 
+-    return iso_time
++        locations.append(os.path.join(loc_root, "{}.list".format(pkg)))
 +        for location in locations:
 +            try:
 +                iso_time_t = int(os.path.getmtime(location))
-+                iso_time = datetime.datetime.utcfromtimestamp(iso_time_t).isoformat() + 'Z'
++                iso_time = (
++                    datetime.datetime.utcfromtimestamp(iso_time_t).isoformat() + "Z"
++                )
 +                break
 +            except OSError:
 +                pass
- 
--    return iso_time
++
 +        if iso_time is None:
 +            log.debug('Unable to get package installation time for package "%s".', pkg)
 +
@@ -213,7 +246,7 @@ index 4ac8efd2f2..b78e844830 100644
  
  
  def _get_pkg_ds_avail():
-@@ -398,6 +448,15 @@ def info(*packages, **kwargs):
+@@ -393,6 +446,15 @@ def info(*packages, **kwargs):
  
          .. versionadded:: 2016.11.3
  
@@ -229,25 +262,25 @@ index 4ac8efd2f2..b78e844830 100644
      CLI example:
  
      .. code-block:: bash
-@@ -412,6 +471,10 @@ def info(*packages, **kwargs):
+@@ -407,6 +469,10 @@ def info(*packages, **kwargs):
  
      kwargs = salt.utils.args.clean_kwargs(**kwargs)
-     failhard = kwargs.pop('failhard', True)
-+    attr = kwargs.pop('attr', None) or None
+     failhard = kwargs.pop("failhard", True)
++    attr = kwargs.pop("attr", None) or None
 +    if attr:
-+        attr = attr.split(',')
++        attr = attr.split(",")
 +
      if kwargs:
          salt.utils.args.invalid_kwargs(kwargs)
  
-@@ -431,6 +494,14 @@ def info(*packages, **kwargs):
-         lic = _get_pkg_license(pkg['package'])
+@@ -434,6 +500,14 @@ def info(*packages, **kwargs):
+         lic = _get_pkg_license(pkg["package"])
          if lic:
-             pkg['license'] = lic
--        ret[pkg['package']] = pkg
+             pkg["license"] = lic
+-        ret[pkg["package"]] = pkg
 +
 +        # Remove keys that aren't in attrs
-+        pkg_name = pkg['package']
++        pkg_name = pkg["package"]
 +        if attr:
 +            for k in list(pkg.keys())[:]:
 +                if k not in attr:
@@ -257,400 +290,558 @@ index 4ac8efd2f2..b78e844830 100644
  
      return ret
 diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
-index e1b6602df5..10e960f090 100644
+index a7b7a34166..77d8b84896 100644
 --- a/tests/unit/modules/test_aptpkg.py
 +++ b/tests/unit/modules/test_aptpkg.py
-@@ -20,6 +20,8 @@ from tests.support.mock import Mock, MagicMock, patch
- from salt.ext import six
- from salt.exceptions import CommandExecutionError, SaltInvocationError
+@@ -13,6 +13,7 @@ import textwrap
+ import pytest
  import salt.modules.aptpkg as aptpkg
-+import pytest
-+import textwrap
- 
- try:
-     import pytest
-@@ -166,51 +168,39 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
++from salt.ext import six
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, Mock, call, patch
+ from tests.support.unit import TestCase, skipIf
+@@ -182,49 +183,54 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
      def setup_loader_modules(self):
-         return {aptpkg: {}}
+         return {aptpkg: {"__grains__": {}}}
  
-+    @patch('salt.modules.aptpkg.__salt__',
-+           {'pkg_resource.version': MagicMock(return_value=LOWPKG_INFO['wget']['version'])})
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {
++            "pkg_resource.version": MagicMock(
++                return_value=LOWPKG_INFO["wget"]["version"]
++            )
++        },
++    )
      def test_version(self):
-         '''
+         """
          Test - Returns a string representing the package version or an empty string if
          not installed.
-         '''
--        version = LOWPKG_INFO['wget']['version']
+         """
+-        version = LOWPKG_INFO["wget"]["version"]
 -        mock = MagicMock(return_value=version)
--        with patch.dict(aptpkg.__salt__, {'pkg_resource.version': mock}):
--            self.assertEqual(aptpkg.version(*['wget']), version)
-+        assert aptpkg.version(*['wget']) == aptpkg.__salt__['pkg_resource.version']()
+-        with patch.dict(aptpkg.__salt__, {"pkg_resource.version": mock}):
+-            self.assertEqual(aptpkg.version(*["wget"]), version)
++        assert aptpkg.version(*["wget"]) == aptpkg.__salt__["pkg_resource.version"]()
  
-+    @patch('salt.modules.aptpkg.latest_version', MagicMock(return_value=''))
++    @patch("salt.modules.aptpkg.latest_version", MagicMock(return_value=""))
      def test_upgrade_available(self):
-         '''
+         """
          Test - Check whether or not an upgrade is available for a given package.
-         '''
--        with patch('salt.modules.aptpkg.latest_version',
--                   MagicMock(return_value='')):
--            self.assertFalse(aptpkg.upgrade_available('wget'))
-+        assert not aptpkg.upgrade_available('wget')
+         """
+-        with patch("salt.modules.aptpkg.latest_version", MagicMock(return_value="")):
+-            self.assertFalse(aptpkg.upgrade_available("wget"))
++        assert not aptpkg.upgrade_available("wget")
  
-+    @patch('salt.modules.aptpkg.get_repo_keys', MagicMock(return_value=REPO_KEYS))
-+    @patch('salt.modules.aptpkg.__salt__', {'cmd.run_all': MagicMock(return_value={'retcode': 0, 'stdout': 'OK'})})
++    @patch("salt.modules.aptpkg.get_repo_keys", MagicMock(return_value=REPO_KEYS))
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": "OK"})},
++    )
      def test_add_repo_key(self):
-         '''
+         """
          Test - Add a repo key.
-         '''
--        with patch('salt.modules.aptpkg.get_repo_keys',
--                   MagicMock(return_value=REPO_KEYS)):
--            mock = MagicMock(return_value={
--                'retcode': 0,
--                'stdout': 'OK'
--            })
--            with patch.dict(aptpkg.__salt__, {'cmd.run_all': mock}):
--                self.assertTrue(aptpkg.add_repo_key(keyserver='keyserver.ubuntu.com',
--                                                    keyid='FBB75451'))
-+        assert aptpkg.add_repo_key(keyserver='keyserver.ubuntu.com', keyid='FBB75451')
+         """
+-        with patch(
+-            "salt.modules.aptpkg.get_repo_keys", MagicMock(return_value=REPO_KEYS)
+-        ):
+-            mock = MagicMock(return_value={"retcode": 0, "stdout": "OK"})
+-            with patch.dict(aptpkg.__salt__, {"cmd.run_all": mock}):
+-                self.assertTrue(
+-                    aptpkg.add_repo_key(
+-                        keyserver="keyserver.ubuntu.com", keyid="FBB75451"
+-                    )
+-                )
++        assert aptpkg.add_repo_key(keyserver="keyserver.ubuntu.com", keyid="FBB75451")
  
-+    @patch('salt.modules.aptpkg.get_repo_keys', MagicMock(return_value=REPO_KEYS))
-+    @patch('salt.modules.aptpkg.__salt__', {'cmd.run_all': MagicMock(return_value={'retcode': 0, 'stdout': 'OK'})})
++    @patch("salt.modules.aptpkg.get_repo_keys", MagicMock(return_value=REPO_KEYS))
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": "OK"})},
++    )
      def test_add_repo_key_failed(self):
-         '''
+         """
          Test - Add a repo key using incomplete input data.
-         '''
--        with patch('salt.modules.aptpkg.get_repo_keys',
--                   MagicMock(return_value=REPO_KEYS)):
--            kwargs = {'keyserver': 'keyserver.ubuntu.com'}
--            mock = MagicMock(return_value={
--                'retcode': 0,
--                'stdout': 'OK'
--            })
--            with patch.dict(aptpkg.__salt__, {'cmd.run_all': mock}):
+         """
+-        with patch(
+-            "salt.modules.aptpkg.get_repo_keys", MagicMock(return_value=REPO_KEYS)
+-        ):
+-            kwargs = {"keyserver": "keyserver.ubuntu.com"}
+-            mock = MagicMock(return_value={"retcode": 0, "stdout": "OK"})
+-            with patch.dict(aptpkg.__salt__, {"cmd.run_all": mock}):
 -                self.assertRaises(SaltInvocationError, aptpkg.add_repo_key, **kwargs)
 +        with pytest.raises(SaltInvocationError) as ex:
-+            aptpkg.add_repo_key(keyserver='keyserver.ubuntu.com')
-+        assert ' No keyid or keyid too short for keyserver: keyserver.ubuntu.com' in str(ex)
++            aptpkg.add_repo_key(keyserver="keyserver.ubuntu.com")
++        assert (
++            " No keyid or keyid too short for keyserver: keyserver.ubuntu.com"
++            in str(ex)
++        )
  
      def test_get_repo_keys(self):
-         '''
-@@ -223,35 +213,31 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
-         with patch.dict(aptpkg.__salt__, {'cmd.run_all': mock}):
+         """
+@@ -234,35 +240,48 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+         with patch.dict(aptpkg.__salt__, {"cmd.run_all": mock}):
              self.assertEqual(aptpkg.get_repo_keys(), REPO_KEYS)
  
-+    @patch('salt.modules.aptpkg.__salt__', {'lowpkg.file_dict': MagicMock(return_value=LOWPKG_FILES)})
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"lowpkg.file_dict": MagicMock(return_value=LOWPKG_FILES)},
++    )
      def test_file_dict(self):
-         '''
+         """
          Test - List the files that belong to a package, grouped by package.
-         '''
+         """
 -        mock = MagicMock(return_value=LOWPKG_FILES)
--        with patch.dict(aptpkg.__salt__, {'lowpkg.file_dict': mock}):
--            self.assertEqual(aptpkg.file_dict('wget'), LOWPKG_FILES)
-+        assert aptpkg.file_dict('wget') == LOWPKG_FILES
+-        with patch.dict(aptpkg.__salt__, {"lowpkg.file_dict": mock}):
+-            self.assertEqual(aptpkg.file_dict("wget"), LOWPKG_FILES)
++        assert aptpkg.file_dict("wget") == LOWPKG_FILES
  
-+    @patch('salt.modules.aptpkg.__salt__', {
-+        'lowpkg.file_list': MagicMock(return_value={'errors': LOWPKG_FILES['errors'],
-+                                                    'files': LOWPKG_FILES['packages']['wget']})})
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {
++            "lowpkg.file_list": MagicMock(
++                return_value={
++                    "errors": LOWPKG_FILES["errors"],
++                    "files": LOWPKG_FILES["packages"]["wget"],
++                }
++            )
++        },
++    )
      def test_file_list(self):
-         '''
+         """
 -        Test - List the files that belong to a package.
 +        Test 'file_list' function, which is just an alias to the lowpkg 'file_list'
 +
-         '''
+         """
 -        files = {
--            'errors': LOWPKG_FILES['errors'],
--            'files': LOWPKG_FILES['packages']['wget'],
+-            "errors": LOWPKG_FILES["errors"],
+-            "files": LOWPKG_FILES["packages"]["wget"],
 -        }
 -        mock = MagicMock(return_value=files)
--        with patch.dict(aptpkg.__salt__, {'lowpkg.file_list': mock}):
--            self.assertEqual(aptpkg.file_list('wget'), files)
-+        assert aptpkg.file_list('wget') == aptpkg.__salt__['lowpkg.file_list']()
+-        with patch.dict(aptpkg.__salt__, {"lowpkg.file_list": mock}):
+-            self.assertEqual(aptpkg.file_list("wget"), files)
++        assert aptpkg.file_list("wget") == aptpkg.__salt__["lowpkg.file_list"]()
  
-+    @patch('salt.modules.aptpkg.__salt__', {'cmd.run_stdout': MagicMock(return_value='wget\t\t\t\t\t\tinstall')})
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"cmd.run_stdout": MagicMock(return_value="wget\t\t\t\t\t\tinstall")},
++    )
      def test_get_selections(self):
-         '''
+         """
          Test - View package state from the dpkg database.
-         '''
--        selections = {'install': ['wget']}
--        mock = MagicMock(return_value='wget\t\t\t\t\t\tinstall')
--        with patch.dict(aptpkg.__salt__, {'cmd.run_stdout': mock}):
--            self.assertEqual(aptpkg.get_selections('wget'), selections)
-+        assert aptpkg.get_selections('wget') == {'install': ['wget']}
+         """
+-        selections = {"install": ["wget"]}
+-        mock = MagicMock(return_value="wget\t\t\t\t\t\tinstall")
+-        with patch.dict(aptpkg.__salt__, {"cmd.run_stdout": mock}):
+-            self.assertEqual(aptpkg.get_selections("wget"), selections)
++        assert aptpkg.get_selections("wget") == {"install": ["wget"]}
  
-+    @patch('salt.modules.aptpkg.__salt__', {'lowpkg.info': MagicMock(return_value=LOWPKG_INFO)})
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"lowpkg.info": MagicMock(return_value=LOWPKG_INFO)},
++    )
      def test_info_installed(self):
-         '''
+         """
          Test - Return the information of the named package(s) installed on the system.
-@@ -267,21 +253,72 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
-             if installed['wget'].get(names[name], False):
-                 installed['wget'][name] = installed['wget'].pop(names[name])
+@@ -274,21 +293,101 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+             if installed["wget"].get(names[name], False):
+                 installed["wget"][name] = installed["wget"].pop(names[name])
  
 -        mock = MagicMock(return_value=LOWPKG_INFO)
--        with patch.dict(aptpkg.__salt__, {'lowpkg.info': mock}):
--            del installed['wget']['status']
--            self.assertEqual(aptpkg.info_installed('wget'), installed)
+-        with patch.dict(aptpkg.__salt__, {"lowpkg.info": mock}):
+-            del installed["wget"]["status"]
+-            self.assertEqual(aptpkg.info_installed("wget"), installed)
 -            self.assertEqual(len(aptpkg.info_installed()), 1)
-+        assert aptpkg.info_installed('wget') == installed
-+
-+    @patch('salt.modules.aptpkg.__salt__', {'lowpkg.info': MagicMock(return_value=LOWPKG_INFO)})
++        assert aptpkg.info_installed("wget") == installed
+ 
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"lowpkg.info": MagicMock(return_value=LOWPKG_INFO)},
++    )
 +    def test_info_installed_attr(self):
-+        '''
++        """
 +        Test info_installed 'attr'.
 +        This doesn't test 'attr' behaviour per se, since the underlying function is in dpkg.
 +        The test should simply not raise exceptions for invalid parameter.
 +
 +        :return:
-+        '''
-+        ret = aptpkg.info_installed('emacs', attr='foo,bar')
++        """
++        ret = aptpkg.info_installed("emacs", attr="foo,bar")
 +        assert isinstance(ret, dict)
-+        assert 'wget' in ret
-+        assert isinstance(ret['wget'], dict)
++        assert "wget" in ret
++        assert isinstance(ret["wget"], dict)
 +
-+        wget_pkg = ret['wget']
-+        expected_pkg = {'url': 'http://www.gnu.org/software/wget/',
-+                        'packager': 'Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>', 'name': 'wget',
-+                        'install_date': '2016-08-30T22:20:15Z', 'description': 'retrieves files from the web',
-+                        'version': '1.15-1ubuntu1.14.04.2', 'architecture': 'amd64', 'group': 'web', 'source': 'wget'}
++        wget_pkg = ret["wget"]
++        expected_pkg = {
++            "url": "http://www.gnu.org/software/wget/",
++            "packager": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
++            "name": "wget",
++            "install_date": "2016-08-30T22:20:15Z",
++            "description": "retrieves files from the web",
++            "version": "1.15-1ubuntu1.14.04.2",
++            "architecture": "amd64",
++            "group": "web",
++            "source": "wget",
++        }
 +        for k in wget_pkg:
 +            assert k in expected_pkg
 +            assert wget_pkg[k] == expected_pkg[k]
 +
-+    @patch('salt.modules.aptpkg.__salt__', {'lowpkg.info': MagicMock(return_value=LOWPKG_INFO)})
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"lowpkg.info": MagicMock(return_value=LOWPKG_INFO)},
++    )
 +    def test_info_installed_all_versions(self):
-+        '''
++        """
 +        Test info_installed 'all_versions'.
 +        Since Debian won't return same name packages with the different names,
 +        this should just return different structure, backward compatible with
 +        the RPM equivalents.
 +
 +        :return:
-+        '''
++        """
 +        print()
-+        ret = aptpkg.info_installed('emacs', all_versions=True)
++        ret = aptpkg.info_installed("emacs", all_versions=True)
 +        assert isinstance(ret, dict)
-+        assert 'wget' in ret
-+        assert isinstance(ret['wget'], list)
++        assert "wget" in ret
++        assert isinstance(ret["wget"], list)
 +
-+        pkgs = ret['wget']
++        pkgs = ret["wget"]
 +
 +        assert len(pkgs) == 1
 +        assert isinstance(pkgs[0], dict)
 +
 +        wget_pkg = pkgs[0]
-+        expected_pkg = {'url': 'http://www.gnu.org/software/wget/',
-+                        'packager': 'Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>', 'name': 'wget',
-+                        'install_date': '2016-08-30T22:20:15Z', 'description': 'retrieves files from the web',
-+                        'version': '1.15-1ubuntu1.14.04.2', 'architecture': 'amd64', 'group': 'web', 'source': 'wget'}
++        expected_pkg = {
++            "url": "http://www.gnu.org/software/wget/",
++            "packager": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
++            "name": "wget",
++            "install_date": "2016-08-30T22:20:15Z",
++            "description": "retrieves files from the web",
++            "version": "1.15-1ubuntu1.14.04.2",
++            "architecture": "amd64",
++            "group": "web",
++            "source": "wget",
++        }
 +        for k in wget_pkg:
 +            assert k in expected_pkg
 +            assert wget_pkg[k] == expected_pkg[k]
- 
-+    @patch('salt.modules.aptpkg.__salt__', {'cmd.run_stdout': MagicMock(return_value='wget: /usr/bin/wget')})
++
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {"cmd.run_stdout": MagicMock(return_value="wget: /usr/bin/wget")},
++    )
      def test_owner(self):
-         '''
+         """
          Test - Return the name of the package that owns the file.
-         '''
--        paths = ['/usr/bin/wget']
--        mock = MagicMock(return_value='wget: /usr/bin/wget')
--        with patch.dict(aptpkg.__salt__, {'cmd.run_stdout': mock}):
--            self.assertEqual(aptpkg.owner(*paths), 'wget')
-+        assert aptpkg.owner('/usr/bin/wget') == 'wget'
+         """
+-        paths = ["/usr/bin/wget"]
+-        mock = MagicMock(return_value="wget: /usr/bin/wget")
+-        with patch.dict(aptpkg.__salt__, {"cmd.run_stdout": mock}):
+-            self.assertEqual(aptpkg.owner(*paths), "wget")
++        assert aptpkg.owner("/usr/bin/wget") == "wget"
  
-+    @patch('salt.utils.pkg.clear_rtag', MagicMock())
-+    @patch('salt.modules.aptpkg.__salt__', {'cmd.run_all': MagicMock(return_value={'retcode': 0,
-+                                                                                   'stdout': APT_Q_UPDATE}),
-+                                            'config.get': MagicMock(return_value=False)})
++    @patch("salt.utils.pkg.clear_rtag", MagicMock())
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {
++            "cmd.run_all": MagicMock(
++                return_value={"retcode": 0, "stdout": APT_Q_UPDATE}
++            ),
++            "config.get": MagicMock(return_value=False),
++        },
++    )
      def test_refresh_db(self):
-         '''
+         """
          Test - Updates the APT database to latest packages based upon repositories.
-@@ -301,6 +338,10 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
-             with patch.dict(aptpkg.__salt__, {'cmd.run_all': mock, 'config.get': MagicMock(return_value=False)}):
+@@ -308,6 +407,16 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+             ):
                  self.assertEqual(aptpkg.refresh_db(), refresh_db)
  
-+    @patch('salt.utils.pkg.clear_rtag', MagicMock())
-+    @patch('salt.modules.aptpkg.__salt__', {'cmd.run_all': MagicMock(return_value={'retcode': 0,
-+                                                                                   'stdout': APT_Q_UPDATE_ERROR}),
-+                                            'config.get': MagicMock(return_value=False)})
++    @patch("salt.utils.pkg.clear_rtag", MagicMock())
++    @patch(
++        "salt.modules.aptpkg.__salt__",
++        {
++            "cmd.run_all": MagicMock(
++                return_value={"retcode": 0, "stdout": APT_Q_UPDATE_ERROR}
++            ),
++            "config.get": MagicMock(return_value=False),
++        },
++    )
      def test_refresh_db_failed(self):
-         '''
+         """
          Test - Update the APT database using unreachable repositories.
-@@ -332,22 +373,24 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+@@ -340,29 +449,33 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
                  assert aptpkg.autoremove(list_only=True) == []
                  assert aptpkg.autoremove(list_only=True, purge=True) == []
  
-+    @patch('salt.modules.aptpkg._uninstall', MagicMock(return_value=UNINSTALL))
+-    def test_install(self):
+-        """
+-        Test - Install packages.
+-        """
+-        with patch("salt.modules.aptpkg.install", MagicMock(return_value=INSTALL)):
+-            self.assertEqual(aptpkg.install(name="tmux"), INSTALL)
+-            kwargs = {"force_conf_new": True}
+-            self.assertEqual(aptpkg.install(name="tmux", **kwargs), INSTALL)
+-
++    @patch("salt.modules.aptpkg._uninstall", MagicMock(return_value=UNINSTALL))
      def test_remove(self):
-         '''
+         """
          Test - Remove packages.
-         '''
--        with patch('salt.modules.aptpkg._uninstall',
--                   MagicMock(return_value=UNINSTALL)):
--            self.assertEqual(aptpkg.remove(name='tmux'), UNINSTALL)
-+        assert aptpkg.remove(name='tmux') == UNINSTALL
+         """
+-        with patch("salt.modules.aptpkg._uninstall", MagicMock(return_value=UNINSTALL)):
+-            self.assertEqual(aptpkg.remove(name="tmux"), UNINSTALL)
++        assert aptpkg.remove(name="tmux") == UNINSTALL
  
-+    @patch('salt.modules.aptpkg._uninstall', MagicMock(return_value=UNINSTALL))
++    @patch("salt.modules.aptpkg._uninstall", MagicMock(return_value=UNINSTALL))
      def test_purge(self):
-         '''
+         """
          Test - Remove packages along with all configuration files.
-         '''
--        with patch('salt.modules.aptpkg._uninstall',
--                   MagicMock(return_value=UNINSTALL)):
--            self.assertEqual(aptpkg.purge(name='tmux'), UNINSTALL)
-+        assert aptpkg.purge(name='tmux') == UNINSTALL
- 
-+    @patch('salt.utils.pkg.clear_rtag', MagicMock())
-+    @patch('salt.modules.aptpkg.list_pkgs', MagicMock(return_value=UNINSTALL))
-+    @patch.multiple(aptpkg, **{'__salt__': {'config.get': MagicMock(return_value=True),
-+                                            'cmd.run_all': MagicMock(return_value={'retcode': 0, 'stdout': UPGRADE})}})
+         """
+-        with patch("salt.modules.aptpkg._uninstall", MagicMock(return_value=UNINSTALL)):
+-            self.assertEqual(aptpkg.purge(name="tmux"), UNINSTALL)
+-
++        assert aptpkg.purge(name="tmux") == UNINSTALL
++
++    @patch("salt.utils.pkg.clear_rtag", MagicMock())
++    @patch("salt.modules.aptpkg.list_pkgs", MagicMock(return_value=UNINSTALL))
++    @patch.multiple(
++        aptpkg,
++        **{
++            "__salt__": {
++                "config.get": MagicMock(return_value=True),
++                "cmd.run_all": MagicMock(
++                    return_value={"retcode": 0, "stdout": UPGRADE}
++                ),
++            }
++        }
++    )
      def test_upgrade(self):
-         '''
+         """
          Test - Upgrades all packages.
 diff --git a/tests/unit/modules/test_dpkg_lowpkg.py b/tests/unit/modules/test_dpkg_lowpkg.py
-index 6c07a75417..a0b3346f9d 100644
+index 071c0f0742..160bbcd5b1 100644
 --- a/tests/unit/modules/test_dpkg_lowpkg.py
 +++ b/tests/unit/modules/test_dpkg_lowpkg.py
-@@ -23,6 +23,30 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
-     '''
-     Test cases for salt.modules.dpkg
-     '''
+@@ -1,18 +1,12 @@
+-# -*- coding: utf-8 -*-
+ """
+     :codeauthor: Jayesh Kariya <jayeshk@saltstack.com>
+ """
+ 
+-# Import Python libs
+-from __future__ import absolute_import, print_function, unicode_literals
+ 
+ import logging
+ import os
+ 
+-# Import Salt Libs
+ import salt.modules.dpkg_lowpkg as dpkg
+-
+-# Import Salt Testing Libs
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, patch
+ from tests.support.unit import TestCase
+@@ -65,6 +59,51 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
+         package = cmd[2]
+         return DPKG_L_OUTPUT[package]
+ 
 +    dselect_pkg = {
-+        'emacs': {'priority': 'optional', 'filename': 'pool/main/e/emacs-defaults/emacs_46.1_all.deb',
-+                  'description': 'GNU Emacs editor (metapackage)', 'md5sum': '766eb2cee55ba0122dac64c4cea04445',
-+                  'sha256': 'd172289b9a1608820eddad85c7ffc15f346a6e755c3120de0f64739c4bbc44ce',
-+                  'description-md5': '21fb7da111336097a2378959f6d6e6a8',
-+                  'bugs': 'https://bugs.launchpad.net/springfield/+filebug',
-+                  'depends': 'emacs24 | emacs24-lucid | emacs24-nox', 'origin': 'Simpsons', 'version': '46.1',
-+                  'task': 'ubuntu-usb, edubuntu-usb', 'original-maintainer': 'Homer Simpson <homer@springfield.org>',
-+                  'package': 'emacs', 'architecture': 'all', 'size': '1692',
-+                  'sha1': '9271bcec53c1f7373902b1e594d9fc0359616407', 'source': 'emacs-defaults',
-+                  'maintainer': 'Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>', 'supported': '9m',
-+                  'section': 'editors', 'installed-size': '25'}
++        "emacs": {
++            "priority": "optional",
++            "filename": "pool/main/e/emacs-defaults/emacs_46.1_all.deb",
++            "description": "GNU Emacs editor (metapackage)",
++            "md5sum": "766eb2cee55ba0122dac64c4cea04445",
++            "sha256": "d172289b9a1608820eddad85c7ffc15f346a6e755c3120de0f64739c4bbc44ce",
++            "description-md5": "21fb7da111336097a2378959f6d6e6a8",
++            "bugs": "https://bugs.launchpad.net/springfield/+filebug",
++            "depends": "emacs24 | emacs24-lucid | emacs24-nox",
++            "origin": "Simpsons",
++            "version": "46.1",
++            "task": "ubuntu-usb, edubuntu-usb",
++            "original-maintainer": "Homer Simpson <homer@springfield.org>",
++            "package": "emacs",
++            "architecture": "all",
++            "size": "1692",
++            "sha1": "9271bcec53c1f7373902b1e594d9fc0359616407",
++            "source": "emacs-defaults",
++            "maintainer": "Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>",
++            "supported": "9m",
++            "section": "editors",
++            "installed-size": "25",
++        }
 +    }
 +
 +    pkgs_info = [
-+        {'version': '46.1', 'arch': 'all', 'build_date': '2014-08-07T16:51:48Z', 'install_date_time_t': 1481745778,
-+         'section': 'editors', 'description': 'GNU Emacs editor (metapackage)\n GNU Emacs is the extensible '
-+                                              'self-documenting text editor.\n This is a metapackage that will always '
-+                                              'depend on the latest\n recommended Emacs release.\n',
-+         'package': 'emacs', 'source': 'emacs-defaults',
-+         'maintainer': 'Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>',
-+         'build_date_time_t': 1407430308, 'installed_size': '25', 'install_date': '2016-12-14T20:02:58Z'}
++        {
++            "version": "46.1",
++            "arch": "all",
++            "build_date": "2014-08-07T16:51:48Z",
++            "install_date_time_t": 1481745778,
++            "section": "editors",
++            "description": "GNU Emacs editor (metapackage)\n GNU Emacs is the extensible "
++            "self-documenting text editor.\n This is a metapackage that will always "
++            "depend on the latest\n recommended Emacs release.\n",
++            "package": "emacs",
++            "source": "emacs-defaults",
++            "maintainer": "Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>",
++            "build_date_time_t": 1407430308,
++            "installed_size": "25",
++            "install_date": "2016-12-14T20:02:58Z",
++        }
 +    ]
 +
      def setup_loader_modules(self):
          return {dpkg: {}}
  
-@@ -101,68 +125,47 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
-         with patch.dict(dpkg.__salt__, {'cmd.run_all': mock}):
-             self.assertEqual(dpkg.file_dict('httpd'), 'Error:  error')
+@@ -269,83 +308,71 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
+                         dpkg.bin_pkg_info("package.deb")["name"], "package_name"
+                     )
  
-+    @patch('salt.modules.dpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
-+    @patch('salt.modules.dpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
-+    @patch('salt.modules.dpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
++    @patch("salt.modules.dpkg._get_pkg_ds_avail", MagicMock(return_value=dselect_pkg))
++    @patch("salt.modules.dpkg._get_pkg_info", MagicMock(return_value=pkgs_info))
++    @patch("salt.modules.dpkg._get_pkg_license", MagicMock(return_value="BSD v3"))
      def test_info(self):
-         '''
+         """
 -        Test package info
 +        Test info
 +        :return:
-         '''
--        mock = MagicMock(return_value={'retcode': 0,
--                                       'stderr': '',
--                                       'stdout':
--                                           os.linesep.join([
--                                               'package:bash',
--                                               'revision:',
--                                               'architecture:amd64',
--                                               'maintainer:Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>',
--                                               'summary:',
--                                               'source:bash',
--                                               'version:4.4.18-2ubuntu1',
--                                               'section:shells',
--                                               'installed_size:1588',
--                                               'size:',
--                                               'MD5:',
--                                               'SHA1:',
--                                               'SHA256:',
--                                               'origin:',
--                                               'homepage:http://tiswww.case.edu/php/chet/bash/bashtop.html',
--                                               'status:ii ',
--                                               '======',
--                                               'description:GNU Bourne Again SHell',
--                                               ' Bash is an sh-compatible command language interpreter that executes',
--                                               ' commands read from the standard input or from a file.  Bash also',
--                                               ' incorporates useful features from the Korn and C shells (ksh and csh).',
--                                               ' .',
--                                               ' Bash is ultimately intended to be a conformant implementation of the',
--                                               ' IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).',
--                                               ' .',
--                                               ' The Programmable Completion Code, by Ian Macdonald, is now found in',
--                                               ' the bash-completion package.',
--                                               '------'
--                                               ])})
--
--        with patch.dict(dpkg.__salt__, {'cmd.run_all': mock}), \
--             patch.dict(dpkg.__grains__, {'os': 'Ubuntu', 'osrelease_info': (18, 4)}), \
--             patch('salt.utils.path.which', MagicMock(return_value=False)), \
--             patch('os.path.exists', MagicMock(return_value=False)),\
--             patch('os.path.getmtime', MagicMock(return_value=1560199259.0)):
--            self.assertDictEqual(dpkg.info('bash'),
--                                 {'bash': {'architecture': 'amd64',
--                                           'description': os.linesep.join([
--                                               'GNU Bourne Again SHell',
--                                               ' Bash is an sh-compatible command language interpreter that executes',
--                                               ' commands read from the standard input or from a file.  Bash also',
--                                               ' incorporates useful features from the Korn and C shells (ksh and csh).',
--                                               ' .',
--                                               ' Bash is ultimately intended to be a conformant implementation of the',
--                                               ' IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).',
--                                               ' .',
--                                               ' The Programmable Completion Code, by Ian Macdonald, is now found in',
--                                               ' the bash-completion package.' + os.linesep
--                                           ]),
--                                           'homepage': 'http://tiswww.case.edu/php/chet/bash/bashtop.html',
--                                           'maintainer': 'Ubuntu Developers '
--                                                         '<ubuntu-devel-discuss@lists.ubuntu.com>',
--                                           'package': 'bash',
--                                           'section': 'shells',
--                                           'source': 'bash',
--                                           'status': 'ii',
--                                           'version': '4.4.18-2ubuntu1'}})
-+        ret = dpkg.info('emacs')
+         """
+-        mock = MagicMock(
+-            return_value={
+-                "retcode": 0,
+-                "stderr": "",
+-                "stdout": os.linesep.join(
+-                    [
+-                        "package:bash",
+-                        "revision:",
+-                        "architecture:amd64",
+-                        "maintainer:Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
+-                        "summary:",
+-                        "source:bash",
+-                        "version:4.4.18-2ubuntu1",
+-                        "section:shells",
+-                        "installed_size:1588",
+-                        "size:",
+-                        "MD5:",
+-                        "SHA1:",
+-                        "SHA256:",
+-                        "origin:",
+-                        "homepage:http://tiswww.case.edu/php/chet/bash/bashtop.html",
+-                        "status:ii ",
+-                        "======",
+-                        "description:GNU Bourne Again SHell",
+-                        " Bash is an sh-compatible command language interpreter that executes",
+-                        " commands read from the standard input or from a file.  Bash also",
+-                        " incorporates useful features from the Korn and C shells (ksh and csh).",
+-                        " .",
+-                        " Bash is ultimately intended to be a conformant implementation of the",
+-                        " IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).",
+-                        " .",
+-                        " The Programmable Completion Code, by Ian Macdonald, is now found in",
+-                        " the bash-completion package.",
+-                        "------",
+-                    ]
+-                ),
+-            }
++        ret = dpkg.info("emacs")
 +
 +        assert isinstance(ret, dict)
 +        assert len(ret.keys()) == 1
-+        assert 'emacs' in ret
++        assert "emacs" in ret
 +
-+        pkg_data = ret['emacs']
++        pkg_data = ret["emacs"]
 +
 +        assert isinstance(pkg_data, dict)
-+        for pkg_section in ['section', 'architecture', 'original-maintainer', 'maintainer', 'package', 'installed-size',
-+                            'build_date_time_t', 'sha256', 'origin', 'build_date', 'size', 'source', 'version',
-+                            'install_date_time_t', 'license', 'priority', 'description', 'md5sum', 'supported',
-+                            'filename', 'sha1', 'install_date', 'arch']:
++        for pkg_section in [
++            "section",
++            "architecture",
++            "original-maintainer",
++            "maintainer",
++            "package",
++            "installed-size",
++            "build_date_time_t",
++            "sha256",
++            "origin",
++            "build_date",
++            "size",
++            "source",
++            "version",
++            "install_date_time_t",
++            "license",
++            "priority",
++            "description",
++            "md5sum",
++            "supported",
++            "filename",
++            "sha1",
++            "install_date",
++            "arch",
++        ]:
 +            assert pkg_section in pkg_data
 +
-+        assert pkg_data['section'] == 'editors'
-+        assert pkg_data['maintainer'] == 'Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>'
-+        assert pkg_data['license'] == 'BSD v3'
-+
-+    @patch('salt.modules.dpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
-+    @patch('salt.modules.dpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
-+    @patch('salt.modules.dpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
++        assert pkg_data["section"] == "editors"
++        assert (
++            pkg_data["maintainer"]
++            == "Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>"
+         )
++        assert pkg_data["license"] == "BSD v3"
+ 
+-        with patch.dict(dpkg.__salt__, {"cmd.run_all": mock}), patch.dict(
+-            dpkg.__grains__, {"os": "Ubuntu", "osrelease_info": (18, 4)}
+-        ), patch("salt.utils.path.which", MagicMock(return_value=False)), patch(
+-            "os.path.exists", MagicMock(return_value=False)
+-        ), patch(
+-            "os.path.getmtime", MagicMock(return_value=1560199259.0)
+-        ):
+-            self.assertDictEqual(
+-                dpkg.info("bash"),
+-                {
+-                    "bash": {
+-                        "architecture": "amd64",
+-                        "description": os.linesep.join(
+-                            [
+-                                "GNU Bourne Again SHell",
+-                                " Bash is an sh-compatible command language interpreter that executes",
+-                                " commands read from the standard input or from a file.  Bash also",
+-                                " incorporates useful features from the Korn and C shells (ksh and csh).",
+-                                " .",
+-                                " Bash is ultimately intended to be a conformant implementation of the",
+-                                " IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).",
+-                                " .",
+-                                " The Programmable Completion Code, by Ian Macdonald, is now found in",
+-                                " the bash-completion package." + os.linesep,
+-                            ]
+-                        ),
+-                        "homepage": "http://tiswww.case.edu/php/chet/bash/bashtop.html",
+-                        "maintainer": "Ubuntu Developers "
+-                        "<ubuntu-devel-discuss@lists.ubuntu.com>",
+-                        "package": "bash",
+-                        "section": "shells",
+-                        "source": "bash",
+-                        "status": "ii",
+-                        "version": "4.4.18-2ubuntu1",
+-                    }
+-                },
+-            )
++    @patch("salt.modules.dpkg._get_pkg_ds_avail", MagicMock(return_value=dselect_pkg))
++    @patch("salt.modules.dpkg._get_pkg_info", MagicMock(return_value=pkgs_info))
++    @patch("salt.modules.dpkg._get_pkg_license", MagicMock(return_value="BSD v3"))
 +    def test_info_attr(self):
-+        '''
++        """
 +        Test info with 'attr' parameter
 +        :return:
-+        '''
-+        ret = dpkg.info('emacs', attr='arch,license,version')
++        """
++        ret = dpkg.info("emacs", attr="arch,license,version")
 +        assert isinstance(ret, dict)
-+        assert 'emacs' in ret
-+        for attr in ['arch', 'license', 'version']:
-+            assert attr in ret['emacs']
++        assert "emacs" in ret
++        for attr in ["arch", "license", "version"]:
++            assert attr in ret["emacs"]
 +
-+        assert ret['emacs']['arch'] == 'all'
-+        assert ret['emacs']['license'] == 'BSD v3'
-+        assert ret['emacs']['version'] == '46.1'
++        assert ret["emacs"]["arch"] == "all"
++        assert ret["emacs"]["license"] == "BSD v3"
++        assert ret["emacs"]["version"] == "46.1"
 -- 
-2.16.4
+2.29.2
 
 

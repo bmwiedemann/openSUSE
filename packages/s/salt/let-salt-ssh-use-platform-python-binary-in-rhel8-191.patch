@@ -1,4 +1,4 @@
-From 2b5903d2429607a3f46d648520e24c357a56aea6 Mon Sep 17 00:00:00 2001
+From a6e490d8cede6e66bb5f22f314e1ec4e898dfa3c Mon Sep 17 00:00:00 2001
 From: Can Bulut Bayburt <1103552+cbbayburt@users.noreply.github.com>
 Date: Wed, 4 Dec 2019 15:59:46 +0100
 Subject: [PATCH] Let salt-ssh use 'platform-python' binary in RHEL8
@@ -14,7 +14,7 @@ creating the sh shim.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index 1373274739..d9e91b0f50 100644
+index 287d0b8c4c..ef9eb0c07e 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
 @@ -147,7 +147,7 @@ elif [ "$SUDO" ] && [ -n "$SUDO_USER" ]
@@ -27,6 +27,6 @@ index 1373274739..d9e91b0f50 100644
  do
      if command -v "$py_cmd" >/dev/null 2>&1 && "$py_cmd" -c "import sys; sys.exit(not (sys.version_info >= (2, 6)));"
 -- 
-2.16.4
+2.29.2
 
 

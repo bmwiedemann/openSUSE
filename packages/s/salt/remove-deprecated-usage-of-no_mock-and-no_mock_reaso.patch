@@ -1,4 +1,4 @@
-From 25b4e3ea983b2606b2fb3d3c0e42f9840208bf84 Mon Sep 17 00:00:00 2001
+From ccdef0b979c575d93e82088049ef81262320ed74 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 11 Mar 2020 16:14:16 +0000
@@ -7,215 +7,109 @@ Subject: [PATCH] Remove deprecated usage of NO_MOCK and NO_MOCK_REASON
 ---
  tests/integration/pillar/test_git_pillar.py | 1 -
  tests/unit/cli/test_batch_async.py          | 3 +--
- tests/unit/cli/test_support.py              | 6 +-----
  tests/unit/modules/test_cmdmod.py           | 1 -
- tests/unit/modules/test_kubeadm.py          | 5 +----
- tests/unit/modules/test_saltsupport.py      | 4 +---
- tests/unit/modules/test_xfs.py              | 3 ---
- tests/unit/states/test_btrfs.py             | 3 ---
- tests/unit/utils/test_pkg.py                | 3 +--
- 9 files changed, 5 insertions(+), 24 deletions(-)
+ tests/unit/modules/test_kubeadm.py          | 3 +--
+ tests/unit/modules/test_xfs.py              | 2 +-
+ tests/unit/states/test_btrfs.py             | 1 -
+ tests/unit/utils/test_pkg.py                | 1 -
+ 7 files changed, 3 insertions(+), 9 deletions(-)
 
 diff --git a/tests/integration/pillar/test_git_pillar.py b/tests/integration/pillar/test_git_pillar.py
-index d417a7ebc3..9218f28d15 100644
+index 979dfebb94..987c5c5de3 100644
 --- a/tests/integration/pillar/test_git_pillar.py
 +++ b/tests/integration/pillar/test_git_pillar.py
-@@ -1383,7 +1383,6 @@ class TestPygit2SSH(GitPillarSSHTestBase):
+@@ -1601,7 +1601,6 @@ class TestPygit2SSH(GitPillarSSHTestBase):
          )
  
  
 -@skipIf(NO_MOCK, NO_MOCK_REASON)
- @skipIf(_windows_or_mac(), 'minion is windows or mac')
+ @skipIf(_windows_or_mac(), "minion is windows or mac")
  @skip_if_not_root
- @skipIf(not HAS_PYGIT2, 'pygit2 >= {0} and libgit2 >= {1} required'.format(PYGIT2_MINVER, LIBGIT2_MINVER))
+ @skipIf(
 diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
-index 635dc689a8..0c66550d5b 100644
+index 82a712b15b..c0b708de76 100644
 --- a/tests/unit/cli/test_batch_async.py
 +++ b/tests/unit/cli/test_batch_async.py
-@@ -8,10 +8,9 @@ from salt.cli.batch_async import BatchAsync
+@@ -1,11 +1,10 @@
  import salt.ext.tornado
+ from salt.cli.batch_async import BatchAsync
  from salt.ext.tornado.testing import AsyncTestCase
- from tests.support.unit import skipIf, TestCase
--from tests.support.mock import MagicMock, patch, NO_MOCK, NO_MOCK_REASON
+-from tests.support.mock import NO_MOCK, NO_MOCK_REASON, MagicMock, patch
 +from tests.support.mock import MagicMock, patch
+ from tests.support.unit import TestCase, skipIf
  
  
 -@skipIf(NO_MOCK, NO_MOCK_REASON)
  class AsyncBatchTestCase(AsyncTestCase, TestCase):
- 
      def setUp(self):
-diff --git a/tests/unit/cli/test_support.py b/tests/unit/cli/test_support.py
-index 85ea957d79..8d8c1cb11f 100644
---- a/tests/unit/cli/test_support.py
-+++ b/tests/unit/cli/test_support.py
-@@ -6,7 +6,7 @@
- from __future__ import absolute_import, print_function, unicode_literals
- 
- from tests.support.unit import skipIf, TestCase
--from tests.support.mock import MagicMock, patch, NO_MOCK, NO_MOCK_REASON
-+from tests.support.mock import MagicMock, patch
- 
- from salt.cli.support.console import IndentOutput
- from salt.cli.support.collector import SupportDataCollector, SaltSupport
-@@ -26,7 +26,6 @@ except ImportError:
- 
- 
- @skipIf(not bool(pytest), 'Pytest needs to be installed')
--@skipIf(NO_MOCK, NO_MOCK_REASON)
- class SaltSupportIndentOutputTestCase(TestCase):
-     '''
-     Unit Tests for the salt-support indent output.
-@@ -90,7 +89,6 @@ class SaltSupportIndentOutputTestCase(TestCase):
- 
- 
- @skipIf(not bool(pytest), 'Pytest needs to be installed')
--@skipIf(NO_MOCK, NO_MOCK_REASON)
- class SaltSupportCollectorTestCase(TestCase):
-     '''
-     Collector tests.
-@@ -211,7 +209,6 @@ class SaltSupportCollectorTestCase(TestCase):
- 
- 
- @skipIf(not bool(pytest), 'Pytest needs to be installed')
--@skipIf(NO_MOCK, NO_MOCK_REASON)
- class SaltSupportRunnerTestCase(TestCase):
-     '''
-     Test runner class.
-@@ -404,7 +401,6 @@ class SaltSupportRunnerTestCase(TestCase):
- 
- 
- @skipIf(not bool(pytest), 'Pytest needs to be installed')
--@skipIf(NO_MOCK, NO_MOCK_REASON)
- class ProfileIntegrityTestCase(TestCase):
-     '''
-     Default profile integrity
+         self.io_loop = self.get_new_ioloop()
 diff --git a/tests/unit/modules/test_cmdmod.py b/tests/unit/modules/test_cmdmod.py
-index 8d763435f8..3d13fb9290 100644
+index f3348bc379..15b97f8568 100644
 --- a/tests/unit/modules/test_cmdmod.py
 +++ b/tests/unit/modules/test_cmdmod.py
-@@ -37,7 +37,6 @@ MOCK_SHELL_FILE = '# List of acceptable shells\n' \
-                   '/bin/bash\n'
+@@ -24,7 +24,6 @@ DEFAULT_SHELL = "foo/bar"
+ MOCK_SHELL_FILE = "# List of acceptable shells\n" "\n" "/bin/bash\n"
  
  
 -@skipIf(NO_MOCK, NO_MOCK_REASON)
  class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
-     '''
+     """
      Unit tests for the salt.modules.cmdmod module
 diff --git a/tests/unit/modules/test_kubeadm.py b/tests/unit/modules/test_kubeadm.py
-index a58f54f118..f17ba4ad64 100644
+index 91e4a9e68e..4940dbebb4 100644
 --- a/tests/unit/modules/test_kubeadm.py
 +++ b/tests/unit/modules/test_kubeadm.py
-@@ -29,16 +29,13 @@ from tests.support.mixins import LoaderModuleMockMixin
- from tests.support.unit import TestCase, skipIf
- from tests.support.mock import (
-     MagicMock,
--    patch,
--    NO_MOCK,
--    NO_MOCK_REASON
-+    patch
- )
- 
+@@ -24,11 +24,10 @@ import pytest
  import salt.modules.kubeadm as kubeadm
  from salt.exceptions import CommandExecutionError
+ from tests.support.mixins import LoaderModuleMockMixin
+-from tests.support.mock import NO_MOCK, NO_MOCK_REASON, MagicMock, patch
++from tests.support.mock import MagicMock, patch
+ from tests.support.unit import TestCase, skipIf
  
  
 -@skipIf(NO_MOCK, NO_MOCK_REASON)
  class KubeAdmTestCase(TestCase, LoaderModuleMockMixin):
-     '''
+     """
      Test cases for salt.modules.kubeadm
-diff --git a/tests/unit/modules/test_saltsupport.py b/tests/unit/modules/test_saltsupport.py
-index 7bd652a90e..75616ba949 100644
---- a/tests/unit/modules/test_saltsupport.py
-+++ b/tests/unit/modules/test_saltsupport.py
-@@ -9,7 +9,7 @@ from __future__ import absolute_import, print_function, unicode_literals
- # Import Salt Testing Libs
- from tests.support.mixins import LoaderModuleMockMixin
- from tests.support.unit import TestCase, skipIf
--from tests.support.mock import patch, MagicMock, NO_MOCK, NO_MOCK_REASON
-+from tests.support.mock import patch, MagicMock
- from salt.modules import saltsupport
- import salt.exceptions
- import datetime
-@@ -21,7 +21,6 @@ except ImportError:
- 
- 
- @skipIf(not bool(pytest), 'Pytest required')
--@skipIf(NO_MOCK, NO_MOCK_REASON)
- class SaltSupportModuleTestCase(TestCase, LoaderModuleMockMixin):
-     '''
-     Test cases for salt.modules.support::SaltSupportModule
-@@ -289,7 +288,6 @@ professor: Farnsworth
- 
- 
- @skipIf(not bool(pytest), 'Pytest required')
--@skipIf(NO_MOCK, NO_MOCK_REASON)
- class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
-     '''
-     Test cases for salt.modules.support::LogCollector
 diff --git a/tests/unit/modules/test_xfs.py b/tests/unit/modules/test_xfs.py
-index 4b423d69d1..d680c4e317 100644
+index 778aff793d..28783260d0 100644
 --- a/tests/unit/modules/test_xfs.py
 +++ b/tests/unit/modules/test_xfs.py
-@@ -8,8 +8,6 @@ import textwrap
- from tests.support.mixins import LoaderModuleMockMixin
- from tests.support.unit import skipIf, TestCase
- from tests.support.mock import (
--    NO_MOCK,
--    NO_MOCK_REASON,
-     MagicMock,
-     patch)
- 
-@@ -17,7 +15,6 @@ from tests.support.mock import (
+@@ -3,7 +3,7 @@ import textwrap
  import salt.modules.xfs as xfs
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, patch
+-from tests.support.unit import TestCase
++from tests.support.unit import TestCase, skipIf
  
  
--@skipIf(NO_MOCK, NO_MOCK_REASON)
- @patch('salt.modules.xfs._get_mounts', MagicMock(return_value={}))
- class XFSTestCase(TestCase, LoaderModuleMockMixin):
-     '''
+ @patch("salt.modules.xfs._get_mounts", MagicMock(return_value={}))
 diff --git a/tests/unit/states/test_btrfs.py b/tests/unit/states/test_btrfs.py
-index 3f45ed94f9..c68f6279dc 100644
+index 74e44641b8..b8f70bccfe 100644
 --- a/tests/unit/states/test_btrfs.py
 +++ b/tests/unit/states/test_btrfs.py
-@@ -32,8 +32,6 @@ from tests.support.mixins import LoaderModuleMockMixin
- from tests.support.unit import skipIf, TestCase
- from tests.support.mock import (
-     MagicMock,
--    NO_MOCK,
--    NO_MOCK_REASON,
-     patch,
- )
- 
-@@ -43,7 +41,6 @@ import salt.states.btrfs as btrfs
- import pytest
+@@ -32,7 +32,6 @@ from tests.support.mock import NO_MOCK, NO_MOCK_REASON, MagicMock, patch
+ from tests.support.unit import TestCase, skipIf
  
  
 -@skipIf(NO_MOCK, NO_MOCK_REASON)
  class BtrfsTestCase(TestCase, LoaderModuleMockMixin):
-     '''
+     """
      Test cases for salt.states.btrfs
 diff --git a/tests/unit/utils/test_pkg.py b/tests/unit/utils/test_pkg.py
-index 361e0bf92f..38c0cb8f84 100644
+index 404b01b12b..794b851df2 100644
 --- a/tests/unit/utils/test_pkg.py
 +++ b/tests/unit/utils/test_pkg.py
-@@ -3,7 +3,7 @@
- from __future__ import absolute_import, unicode_literals, print_function
- 
- from tests.support.unit import TestCase, skipIf
--from tests.support.mock import Mock, MagicMock, patch, NO_MOCK, NO_MOCK_REASON
-+from tests.support.mock import Mock, MagicMock, patch
- import salt.utils.pkg
- from salt.utils.pkg import rpm
- 
-@@ -13,7 +13,6 @@ except ImportError:
+@@ -9,7 +9,6 @@ except ImportError:
      pytest = None
  
  
 -@skipIf(NO_MOCK, NO_MOCK_REASON)
- @skipIf(pytest is None, 'PyTest is missing')
+ @skipIf(pytest is None, "PyTest is missing")
  class PkgRPMTestCase(TestCase):
-     '''
+     """
 -- 
-2.23.0
+2.29.2
 
 

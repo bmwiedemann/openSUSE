@@ -1,26 +1,26 @@
-From 3bbb31815bb3c6eacedb8891f6bf4ece8098deca Mon Sep 17 00:00:00 2001
+From 2c16fd0b7e6c3c7e4464cb502a37de63159cedcb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 27 Apr 2020 16:37:38 +0100
 Subject: [PATCH] Remove vendored 'backports-abc' from requirements
 
 ---
- requirements/base.txt | 1 -
- 1 file changed, 1 deletion(-)
+ requirements/base.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/requirements/base.txt b/requirements/base.txt
-index 922aec4c754178fd5c317ed636a0ebe487fcb25d..8adf76a2a045f4fca8695c584fedcfc913f54db2 100644
+index 8390d492d7..ffe4bc98f1 100644
 --- a/requirements/base.txt
 +++ b/requirements/base.txt
-@@ -4,7 +4,6 @@ PyYAML
+@@ -4,3 +4,7 @@ PyYAML
  MarkupSafe
  requests>=1.0.0
- # Requirements for Tornado 4.5.3 (vendored as salt.ext.tornado)
--backports-abc==0.5; python_version < '3.0'
- singledispatch==3.4.0.3; python_version < '3.4'
- # Required by Tornado to handle threads stuff.
- futures>=2.0; python_version < '3.0'
+ distro>=1.5
++# Requirements for Tornado 4.5.3 (vendored as salt.ext.tornado)
++singledispatch==3.4.0.3; python_version < '3.4'
++# Required by Tornado to handle threads stuff.
++futures>=2.0; python_version < '3.0'
 -- 
-2.23.0
+2.29.2
 
 

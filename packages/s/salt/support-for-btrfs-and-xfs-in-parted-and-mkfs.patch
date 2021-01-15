@@ -1,56 +1,75 @@
-From 570b45e5a1f1786fe0f449a038f8f8a19b6b9ce2 Mon Sep 17 00:00:00 2001
+From be69780e4cb3047e8024fb87fdf2e15f049db154 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 10 Jan 2020 17:18:14 +0100
 Subject: [PATCH] Support for Btrfs and XFS in parted and mkfs
 
 ---
- salt/modules/parted_partition.py            |  4 ++--
- tests/unit/modules/test_parted_partition.py | 16 ++++++++++++++++
- 2 files changed, 18 insertions(+), 2 deletions(-)
+ salt/modules/parted_partition.py            | 8 ++------
+ tests/unit/modules/test_parted_partition.py | 5 -----
+ 2 files changed, 2 insertions(+), 11 deletions(-)
 
 diff --git a/salt/modules/parted_partition.py b/salt/modules/parted_partition.py
-index c991530aba..9441fec49f 100644
+index 9f321a822c..015d4cbc29 100644
 --- a/salt/modules/parted_partition.py
 +++ b/salt/modules/parted_partition.py
-@@ -390,8 +390,8 @@ def _is_fstype(fs_type):
+@@ -16,14 +16,11 @@ reference the man page for ``sfdisk(8)``.
+ """
+ 
+ import logging
+-
+-# Import python libs
+ import os
+ import re
+ import stat
+ import string
+ 
+-# Import Salt libs
+ import salt.utils.path
+ import salt.utils.platform
+ from salt.exceptions import CommandExecutionError
+@@ -412,12 +409,11 @@ def _is_fstype(fs_type):
      :param fs_type: file system type
      :return: True if fs_type is supported in this module, False otherwise
-     '''
--    return fs_type in set(['ext2', 'ext3', 'ext4', 'fat32', 'fat16', 'linux-swap', 'reiserfs',
--                           'hfs', 'hfs+', 'hfsx', 'NTFS', 'ntfs', 'ufs'])
-+    return fs_type in set(['btrfs', 'ext2', 'ext3', 'ext4', 'fat32', 'fat16', 'linux-swap', 'reiserfs',
-+                           'hfs', 'hfs+', 'hfsx', 'NTFS', 'ntfs', 'ufs', 'xfs'])
+     """
+-    return fs_type in (
++    return fs_type in {
+         "btrfs",
+         "ext2",
+         "ext3",
+         "ext4",
+-        "fat",
+         "fat32",
+         "fat16",
+         "linux-swap",
+@@ -429,7 +425,7 @@ def _is_fstype(fs_type):
+         "ntfs",
+         "ufs",
+         "xfs",
+-    )
++    }
  
  
  def mkfs(device, fs_type):
 diff --git a/tests/unit/modules/test_parted_partition.py b/tests/unit/modules/test_parted_partition.py
-index aad2829867..571e30292b 100644
+index 3fff6acee8..073d29ba38 100644
 --- a/tests/unit/modules/test_parted_partition.py
 +++ b/tests/unit/modules/test_parted_partition.py
-@@ -376,6 +376,22 @@ class PartedTestCase(TestCase, LoaderModuleMockMixin):
-             }
-             self.assertEqual(output, expected)
+@@ -6,14 +6,9 @@
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ """
  
-+    def test_btrfs_fstypes(self):
-+        '''Tests if we see btrfs as valid fs type'''
-+        with patch('salt.modules.parted_partition._validate_device', MagicMock()):
-+            try:
-+                parted.mkfs('/dev/foo', 'btrfs')
-+            except CommandExecutionError:
-+                self.fail("Btrfs is not in the supported fstypes")
-+
-+    def test_xfs_fstypes(self):
-+        '''Tests if we see xfs as valid fs type'''
-+        with patch('salt.modules.parted_partition._validate_device', MagicMock()):
-+            try:
-+                parted.mkfs('/dev/foo', 'xfs')
-+            except CommandExecutionError:
-+                self.fail("XFS is not in the supported fstypes")
-+
-     def test_disk_set(self):
-         with patch('salt.modules.parted_partition._validate_device', MagicMock()):
-             self.cmdrun.return_value = ''
+-# Import Python libs
+ 
+ import salt.modules.parted_partition as parted
+-
+-# Import Salt libs
+ from salt.exceptions import CommandExecutionError
+-
+-# Import Salt Testing libs
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, patch
+ from tests.support.unit import TestCase
 -- 
-2.16.4
+2.29.2
 
 

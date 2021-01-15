@@ -1,4 +1,4 @@
-From f8ccfae9908d6a1001d68a1b8e5e8cee495b5aef Mon Sep 17 00:00:00 2001
+From 7bc4876fae850062b06bf4e3c5a56310addf52d3 Mon Sep 17 00:00:00 2001
 From: Larry Dewey <ldewey@suse.com>
 Date: Tue, 7 Jan 2020 02:48:11 -0700
 Subject: [PATCH] virt: adding kernel boot parameters to libvirt xml
@@ -17,26 +17,31 @@ Signed-off-by: Larry Dewey <ldewey@suse.com>
 
 Signed-off-by: Larry Dewey <ldewey@suse.com>
 ---
- salt/states/virt.py | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ salt/states/virt.py | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/salt/states/virt.py b/salt/states/virt.py
-index 500509fcc0..55a9ad2616 100644
+index 486aeb21b3..200c79d35c 100644
 --- a/salt/states/virt.py
 +++ b/salt/states/virt.py
-@@ -367,6 +367,23 @@ def running(name,
+@@ -617,13 +617,22 @@ def running(
  
          .. versionadded:: 3000
  
+-    :param boot_dev:
+-        Space separated list of devices to boot from sorted by decreasing priority.
+-        Values can be ``hd``, ``fd``, ``cdrom`` or ``network``.
 +    :param boot:
 +        Specifies kernel for the virtual machine, as well as boot parameters
 +        for the virtual machine. This is an optionl parameter, and all of the
 +        keys are optional within the dictionary. If a remote path is provided
 +        to kernel or initrd, salt will handle the downloading of the specified
 +        remote fild, and will modify the XML accordingly.
-+
+ 
+-        By default, the value will ``"hd"``.
 +        .. code-block:: python
-+
+ 
+-        .. versionadded:: 3002
 +            {
 +                'kernel': '/root/f8-i386-vmlinuz',
 +                'initrd': '/root/f8-i386-initrd',
@@ -44,11 +49,10 @@ index 500509fcc0..55a9ad2616 100644
 +            }
 +
 +        .. versionadded:: 3000
-+
+ 
      .. rubric:: Example States
  
-     Make sure an already-defined virtual machine called ``domain_name`` is running:
 -- 
-2.16.4
+2.29.2
 
 

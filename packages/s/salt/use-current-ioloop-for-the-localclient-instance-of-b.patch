@@ -1,4 +1,4 @@
-From 1ab46d5f9ed435021aa8eeb40ada984f42c8e93d Mon Sep 17 00:00:00 2001
+From 1558a1b092e56da005a26bc381238a3304904622 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 3 Oct 2019 15:19:02 +0100
@@ -6,23 +6,25 @@ Subject: [PATCH] Use current IOLoop for the LocalClient instance of
  BatchAsync (bsc#1137642)
 
 ---
- salt/cli/batch_async.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ salt/cli/batch_async.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
-index 2bb50459c8..f9e736f804 100644
+index 0a0b8f5f83..89405ba917 100644
 --- a/salt/cli/batch_async.py
 +++ b/salt/cli/batch_async.py
-@@ -52,7 +52,7 @@ class BatchAsync(object):
-     '''
+@@ -47,7 +47,9 @@ class BatchAsync:
+ 
      def __init__(self, parent_opts, jid_gen, clear_load):
          ioloop = tornado.ioloop.IOLoop.current()
--        self.local = salt.client.get_local_client(parent_opts['conf_file'])
-+        self.local = salt.client.get_local_client(parent_opts['conf_file'], io_loop=ioloop)
-         if 'gather_job_timeout' in clear_load['kwargs']:
-             clear_load['gather_job_timeout'] = clear_load['kwargs'].pop('gather_job_timeout')
-         else:
-@@ -266,6 +266,7 @@ class BatchAsync(object):
+-        self.local = salt.client.get_local_client(parent_opts["conf_file"])
++        self.local = salt.client.get_local_client(
++            parent_opts["conf_file"], io_loop=ioloop
++        )
+         if "gather_job_timeout" in clear_load["kwargs"]:
+             clear_load["gather_job_timeout"] = clear_load["kwargs"].pop(
+                 "gather_job_timeout"
+@@ -276,6 +278,7 @@ class BatchAsync:
          yield
  
      def __del__(self):
@@ -31,6 +33,6 @@ index 2bb50459c8..f9e736f804 100644
          self.ioloop = None
          gc.collect()
 -- 
-2.16.4
+2.29.2
 
 

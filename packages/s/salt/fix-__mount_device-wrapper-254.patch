@@ -1,4 +1,4 @@
-From 7ad2d6067400f55dc7b70745216fab20620f35fd Mon Sep 17 00:00:00 2001
+From 1e00e2b72321b5312efb7b8b426a037c8db72b79 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Wed, 29 Jul 2020 16:11:47 +0200
 Subject: [PATCH] Fix __mount_device wrapper (#254)
@@ -17,9 +17,9 @@ Fix #58012
 (cherry picked from commit 2089645e2478751dc795127cfd14d0385c2e0899)
 ---
  changelog/58012.fixed           |  1 +
- salt/states/btrfs.py            |  6 +++---
+ salt/states/btrfs.py            |  4 ++--
  tests/unit/states/test_btrfs.py | 27 +++++++++++++++++++++++++++
- 3 files changed, 31 insertions(+), 3 deletions(-)
+ 3 files changed, 30 insertions(+), 2 deletions(-)
  create mode 100644 changelog/58012.fixed
 
 diff --git a/changelog/58012.fixed b/changelog/58012.fixed
@@ -31,27 +31,25 @@ index 0000000000..13a1ef747d
 +Fix btrfs state decorator, that produces exceptions when creating subvolumes.
 \ No newline at end of file
 diff --git a/salt/states/btrfs.py b/salt/states/btrfs.py
-index af78c8ae00..d0d6095c46 100644
+index 1374bbffb4..62a3553758 100644
 --- a/salt/states/btrfs.py
 +++ b/salt/states/btrfs.py
-@@ -103,9 +103,9 @@ def __mount_device(action):
-     '''
+@@ -103,8 +103,8 @@ def __mount_device(action):
+ 
      @functools.wraps(action)
      def wrapper(*args, **kwargs):
--        name = kwargs['name']
--        device = kwargs['device']
--        use_default = kwargs.get('use_default', False)
+-        name = kwargs["name"]
+-        device = kwargs["device"]
 +        name = kwargs.get("name", args[0] if args else None)
 +        device = kwargs.get("device", args[1] if len(args) > 1 else None)
-+        use_default = kwargs.get("use_default", False)
+         use_default = kwargs.get("use_default", False)
  
          ret = {
-             'name': name,
 diff --git a/tests/unit/states/test_btrfs.py b/tests/unit/states/test_btrfs.py
-index c68f6279dc..c722630aef 100644
+index b8f70bccfe..dceb971aa1 100644
 --- a/tests/unit/states/test_btrfs.py
 +++ b/tests/unit/states/test_btrfs.py
-@@ -245,6 +245,33 @@ class BtrfsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -231,6 +231,33 @@ class BtrfsTestCase(TestCase, LoaderModuleMockMixin):
              mount.assert_called_once()
              umount.assert_called_once()
  
@@ -82,10 +80,10 @@ index c68f6279dc..c722630aef 100644
 +            mount.assert_called_once()
 +            umount.assert_called_once()
 +
-     @patch('salt.states.btrfs._umount')
-     @patch('salt.states.btrfs._mount')
+     @patch("salt.states.btrfs._umount")
+     @patch("salt.states.btrfs._mount")
      def test_subvolume_created_exists_test(self, mount, umount):
 -- 
-2.27.0
+2.29.2
 
 

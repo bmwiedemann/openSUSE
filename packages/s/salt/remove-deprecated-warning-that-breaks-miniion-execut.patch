@@ -1,0 +1,43 @@
+From 73e357d7eee19a73cade22becb30d9689cae27ba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 13 Jan 2021 13:38:32 +0000
+Subject: [PATCH] Remove deprecated warning that breaks miniion
+ execution when "server_id_use_crc" opts are missing
+
+---
+ salt/minion.py | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/salt/minion.py b/salt/minion.py
+index 4d271c6d08..4da665a130 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -82,7 +82,6 @@ from salt.utils.event import tagify
+ from salt.utils.network import parse_host_port
+ from salt.utils.odict import OrderedDict
+ from salt.utils.process import ProcessManager, SignalHandlingProcess, default_signals
+-from salt.utils.versions import warn_until
+ from salt.utils.zeromq import ZMQ_VERSION_INFO, ZMQDefaultLoop, install_zmq, zmq
+ 
+ HAS_PSUTIL = False
+@@ -1097,15 +1096,6 @@ class MinionManager(MinionBase):
+         ):
+             masters = [masters]
+ 
+-        if not self.opts.get("server_id_use_crc"):
+-            warn_until(
+-                "Sodium",
+-                "This server_id is computed nor by Adler32 neither by CRC32. "
+-                'Please use "server_id_use_crc" option and define algorithm you'
+-                'prefer (default "Adler32"). The server_id will be computed with'
+-                "Adler32 by default.",
+-            )
+-
+         beacons_leader = True
+         for master in masters:
+             s_opts = copy.deepcopy(self.opts)
+-- 
+2.29.2
+
+

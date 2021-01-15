@@ -1,4 +1,4 @@
-From 29316e1e73972d7c30a7b125a27198fefc6b2fd7 Mon Sep 17 00:00:00 2001
+From c363b97dcddc9cb16102e5bfb9f3a9f40892704a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 30 Sep 2019 12:06:08 +0100
@@ -7,36 +7,37 @@ Subject: [PATCH] Prevent systemd-run description issue when running
 
 ---
  salt/modules/aptpkg.py            | 2 +-
- tests/unit/modules/test_aptpkg.py | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ tests/unit/modules/test_aptpkg.py | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index bafad40efe..2835d32263 100644
+index 658a16da4c..db0480b45d 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -168,7 +168,7 @@ def _call_apt(args, scope=True, **kwargs):
-     '''
-     cmd = []
-     if scope and salt.utils.systemd.has_scope(__context__) and __salt__['config.get']('systemd.scope', True):
--        cmd.extend(['systemd-run', '--scope', '--description "{0}"'.format(__name__)])
-+        cmd.extend(['systemd-run', '--scope', '--description', '"{0}"'.format(__name__)])
+@@ -160,7 +160,7 @@ def _call_apt(args, scope=True, **kwargs):
+         and salt.utils.systemd.has_scope(__context__)
+         and __salt__["config.get"]("systemd.scope", True)
+     ):
+-        cmd.extend(["systemd-run", "--scope", '--description "{}"'.format(__name__)])
++        cmd.extend(["systemd-run", "--scope", "--description", '"{}"'.format(__name__)])
      cmd.extend(args)
  
-     params = {'output_loglevel': 'trace',
+     params = {
 diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
-index 88eed062c4..2224aba9a1 100644
+index c3769a7df1..77d8b84896 100644
 --- a/tests/unit/modules/test_aptpkg.py
 +++ b/tests/unit/modules/test_aptpkg.py
-@@ -645,7 +645,7 @@ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
-         with patch.dict(aptpkg.__salt__, {'cmd.run_all': MagicMock(), 'config.get': MagicMock(return_value=True)}):
-             aptpkg._call_apt(['apt-get', 'purge', 'vim'])  # pylint: disable=W0106
-             aptpkg.__salt__['cmd.run_all'].assert_called_once_with(
--                ['systemd-run', '--scope', '--description "salt.modules.aptpkg"', 'apt-get', 'purge', 'vim'], env={},
-+                ['systemd-run', '--scope', '--description', '"salt.modules.aptpkg"', 'apt-get', 'purge', 'vim'], env={},
-                 output_loglevel='trace', python_shell=False)
- 
-     def test_call_apt_with_kwargs(self):
+@@ -896,7 +896,8 @@ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
+                 [
+                     "systemd-run",
+                     "--scope",
+-                    '--description "salt.modules.aptpkg"',
++                    "--description",
++                    '"salt.modules.aptpkg"',
+                     "apt-get",
+                     "purge",
+                     "vim",
 -- 
-2.16.4
+2.29.2
 
 

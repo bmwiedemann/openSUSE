@@ -1,4 +1,4 @@
-From e57dd3c2ae655422f0f6939825154ce5827d43c4 Mon Sep 17 00:00:00 2001
+From 713ccfdc5c6733495d3ce7f26a8cfeddb8e9e9c4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 21 Jun 2018 11:57:57 +0100
@@ -9,10 +9,10 @@ Subject: [PATCH] Add custom SUSE capabilities as Grains
  1 file changed, 7 insertions(+)
 
 diff --git a/salt/grains/extra.py b/salt/grains/extra.py
-index 9ce644b766..1082b05dba 100644
+index 2fdbe6526a..ddc22293ea 100644
 --- a/salt/grains/extra.py
 +++ b/salt/grains/extra.py
-@@ -75,3 +75,10 @@ def config():
+@@ -66,3 +66,10 @@ def config():
                  log.warning("Bad syntax in grains file! Skipping.")
                  return {}
      return {}
@@ -24,6 +24,6 @@ index 9ce644b766..1082b05dba 100644
 +        '__suse_reserved_pkg_patches_support': True
 +    }
 -- 
-2.16.4
+2.29.2
 
 

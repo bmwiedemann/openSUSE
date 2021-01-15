@@ -1,4 +1,4 @@
-From 07f5a1d984b5a86c24620503f5e373ea0f11484a Mon Sep 17 00:00:00 2001
+From d9362f10681a2dfdb057939eee1ffae3a35d4a8d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 12 Apr 2019 16:47:03 +0100
@@ -7,54 +7,81 @@ Subject: [PATCH] Calculate FQDNs in parallel to avoid blockings
 
 Fix pylint issue
 ---
- salt/grains/core.py | 31 ++++++++++++++++++++++++++-----
- 1 file changed, 26 insertions(+), 5 deletions(-)
+ salt/grains/core.py | 55 +++++++++++++++++++++++++++++++++------------
+ 1 file changed, 41 insertions(+), 14 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 309e4c9c4a..4600f055dd 100644
+index 006878f806..883e3ebe09 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -20,12 +20,15 @@ import platform
- import logging
- import locale
+@@ -20,8 +20,10 @@ import socket
+ import sys
+ import time
  import uuid
-+import time
++import warnings
  import zlib
  from errno import EACCES, EPERM
- import datetime
- import warnings
- import time
- 
 +from multiprocessing.dummy import Pool as ThreadPool
+ 
+ import distro
+ import salt.exceptions
+@@ -44,6 +46,14 @@ import salt.utils.versions
+ from salt.ext.six.moves import range
+ from salt.utils.network import _get_interfaces
+ 
++# pylint: disable=import-error
++try:
++    import dateutil.tz
 +
- # pylint: disable=import-error
- try:
-     import dateutil.tz
-@@ -2275,13 +2278,10 @@ def fqdns():
++    _DATEUTIL_TZ = True
++except ImportError:
++    _DATEUTIL_TZ = False
++
+ 
+ # rewrite distro.linux_distribution to allow best=True kwarg in version(), needed to get the minor version numbers in CentOS
+ def _linux_distribution():
+@@ -2402,22 +2412,12 @@ def fqdns():
      grains = {}
      fqdns = set()
  
--    addresses = salt.utils.network.ip_addrs(include_loopback=False, interface_data=_get_interfaces())
--    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False, interface_data=_get_interfaces()))
--    err_message = 'Exception during resolving address: %s'
+-    addresses = salt.utils.network.ip_addrs(
+-        include_loopback=False, interface_data=_get_interfaces()
+-    )
+-    addresses.extend(
+-        salt.utils.network.ip_addrs6(
+-            include_loopback=False, interface_data=_get_interfaces()
+-        )
+-    )
+-    err_message = "Exception during resolving address: %s"
 -    for ip in addresses:
 +    def _lookup_fqdn(ip):
          try:
              name, aliaslist, addresslist = socket.gethostbyaddr(ip)
--            fqdns.update([socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)])
-+            return [socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)]
+-            fqdns.update(
+-                [socket.getfqdn(name)]
+-                + [als for als in aliaslist if salt.utils.network.is_fqdn(als)]
+-            )
++            return [socket.getfqdn(name)] + [
++                als for als in aliaslist if salt.utils.network.is_fqdn(als)
++            ]
          except socket.herror as err:
              if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
                  # No FQDN for this IP address, so we don't need to know this all the time.
-@@ -2291,6 +2291,27 @@ def fqdns():
-         except (socket.error, socket.gaierror, socket.timeout) as err:
+@@ -2427,6 +2427,33 @@ def fqdns():
+         except (OSError, socket.gaierror, socket.timeout) as err:
              log.error(err_message, ip, err)
  
 +    start = time.time()
 +
-+    addresses = salt.utils.network.ip_addrs(include_loopback=False, interface_data=_get_interfaces())
-+    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False, interface_data=_get_interfaces()))
-+    err_message = 'Exception during resolving address: %s'
++    addresses = salt.utils.network.ip_addrs(
++        include_loopback=False, interface_data=_get_interfaces()
++    )
++    addresses.extend(
++        salt.utils.network.ip_addrs6(
++            include_loopback=False, interface_data=_get_interfaces()
++        )
++    )
++    err_message = "Exception during resolving address: %s"
 +
 +    # Create a ThreadPool to process the underlying calls to 'socket.gethostbyaddr' in parallel.
 +    # This avoid blocking the execution when the "fqdn" is not defined for certains IP addresses, which was causing
@@ -69,12 +96,12 @@ index 309e4c9c4a..4600f055dd 100644
 +            fqdns.update(item)
 +
 +    elapsed = time.time() - start
-+    log.debug('Elapsed time getting FQDNs: {} seconds'.format(elapsed))
++    log.debug("Elapsed time getting FQDNs: {} seconds".format(elapsed))
 +
      return {"fqdns": sorted(list(fqdns))}
  
  
 -- 
-2.16.4
+2.29.2
 
 

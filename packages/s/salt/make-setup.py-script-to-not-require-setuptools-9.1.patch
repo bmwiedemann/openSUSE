@@ -1,4 +1,4 @@
-From b73d7f73bebcde2936a55245471fbcb383778b6d Mon Sep 17 00:00:00 2001
+From 64c2735b64a074acc1ef05a82f9fcf342426f87e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 25 Mar 2020 13:09:52 +0000
@@ -9,17 +9,17 @@ Subject: [PATCH] Make setup.py script to not require setuptools > 9.1
  1 file changed, 8 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index e852080e4b..033ccee8c3 100755
+index 39a66fefba..d9c3d6e303 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -727,14 +727,6 @@ class Install(install):
+@@ -805,14 +805,6 @@ class Install(install):
          install.finalize_options(self)
  
      def run(self):
--        if LooseVersion(setuptools.__version__) < LooseVersion('9.1'):
+-        if LooseVersion(setuptools.__version__) < LooseVersion("9.1"):
 -            sys.stderr.write(
--                '\n\nInstalling Salt requires setuptools >= 9.1\n'
--                'Available setuptools version is {}\n\n'.format(setuptools.__version__)
+-                "\n\nInstalling Salt requires setuptools >= 9.1\n"
+-                "Available setuptools version is {}\n\n".format(setuptools.__version__)
 -            )
 -            sys.stderr.flush()
 -            sys.exit(1)
@@ -28,6 +28,6 @@ index e852080e4b..033ccee8c3 100755
          # _version.py in the build command
          self.distribution.running_salt_install = True
 -- 
-2.16.4
+2.29.2
 
 

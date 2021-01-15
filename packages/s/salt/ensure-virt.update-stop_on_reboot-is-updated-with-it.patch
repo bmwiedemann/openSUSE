@@ -1,4 +1,4 @@
-From 173444cecc1e7b4867570f1f8764db1b7f82061e Mon Sep 17 00:00:00 2001
+From 1cea7d065d8da7c713af8136162c21187d5186f5 Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
 Date: Wed, 14 Oct 2020 12:39:16 +0200
 Subject: [PATCH] Ensure virt.update stop_on_reboot is updated with its
@@ -14,22 +14,22 @@ this value.
  2 files changed, 3 insertions(+)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index 87ab7ca12d..9bc7bc6093 100644
+index 8e2180608a..e3960a5a90 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
-@@ -2742,6 +2742,7 @@ def update(
+@@ -2738,6 +2738,7 @@ def update(
      ]
  
-     data = {k: v for k, v in six.iteritems(locals()) if bool(v)}
+     data = {k: v for k, v in locals().items() if bool(v)}
 +    data["stop_on_reboot"] = stop_on_reboot
      if boot_dev:
          data["boot_dev"] = {i + 1: dev for i, dev in enumerate(boot_dev.split())}
-     need_update = salt.utils.xmlutil.change_xml(
+     need_update = (
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index ca5e80d2d2..fbc03cf7a6 100644
+index fba821ea53..83152eda6e 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
-@@ -1778,6 +1778,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1777,6 +1777,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
                <memory unit='KiB'>1048576</memory>
                <currentMemory unit='KiB'>1048576</currentMemory>
                <vcpu placement='auto'>1</vcpu>
@@ -37,7 +37,7 @@ index ca5e80d2d2..fbc03cf7a6 100644
                <os>
                  <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
                  <boot dev="hd"/>
-@@ -2350,6 +2351,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2349,6 +2350,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
                <memory unit='KiB'>1048576</memory>
                <currentMemory unit='KiB'>1048576</currentMemory>
                <vcpu placement='auto'>1</vcpu>
@@ -46,6 +46,6 @@ index ca5e80d2d2..fbc03cf7a6 100644
                  <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
                </os>
 -- 
-2.28.0
+2.29.2
 
 
