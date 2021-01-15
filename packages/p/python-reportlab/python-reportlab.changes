@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 11 12:31:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.5.59
+  * Allow variant corners in Canvas.roundRect
+  * Allow tables to have rounded corners
+- Update to 3.5.58
+  * added ddfStyle to Label
+  * allowed for embedded(and ordinary)Hyphenation to pre-empt splitting when embeddedHyphenation>=2
+  * fix extension escapePDF so it can handle unicode
+  * fix poundsign in Ean5BarcodeWidget
+  * Table can use __styledWrap__ for sizing
+  * test fixes so 3.9 and 2.7 produce same pdf
+- Update to 3.5.57
+  * added .github action wheel.yml
+  * micro change to userguide doc
+
+-------------------------------------------------------------------
 Wed Dec  9 15:56:35 UTC 2020 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.5.56

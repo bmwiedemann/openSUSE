@@ -1,7 +1,7 @@
 #
 # spec file for package python-reportlab
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-reportlab
-Version:        3.5.56
+Version:        3.5.59
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
