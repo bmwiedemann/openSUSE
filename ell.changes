@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 10 13:48:39 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- Update to release 0.36
+  * Fix issue with strict netlink attribute validation.
+  * Fix issue with DUID generation for DHCPv6.
+  * Add support for Address Conflict Detection.
+  * Add support for PKCS#12 algorithms handling.
+  * Add support for PKCS#12 key derivation algorithm.
+  * Add support for RC2 and ARC4 cipher suites.
+
+-------------------------------------------------------------------
 Wed Dec 23 18:35:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.35
