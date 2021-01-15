@@ -1,7 +1,7 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Luajit not available on all platforms
+%ifarch %{arm} %{ix86} x86_64
+%bcond_without luajit
+%else
+%bcond_with luajit
+%endif
+%if %{with luajit}
+%define luaver 5.1
+%define luaver_nopoint 51
+%else
+%define luaver 5.4
+%define luaver_nopoint 54
+%endif
+
+%define luv_min_ver 1.30.0
 
 Name:           neovim
 Version:        0.4.4
@@ -35,6 +51,8 @@ Patch1:         neovim-0.1.7-bitop.patch
 # PATCH-FIX-SLE libuv-compat.patch sr#793088 gh#neovim/neovim#12108 mcepl@suse.com
 # works around too old version of libuv on Leap 15.*
 Patch2:         libuv-compat.patch
+# PATCH-FIx-UPSTREAM https://github.com/neovim/neovim/pull/12820
+Patch3:         neovim-0.4.4-findlua54.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -50,12 +68,29 @@ BuildRequires:  libtool
 BuildRequires:  libuv-devel
 BuildRequires:  libvterm-devel >= 0.1
 BuildRequires:  lua-macros
+
+%if %{with luajit}
+# luajit implements version 5.1 of the lua language spec, so it needs the
+# compat versions of libs.
 BuildRequires:  lua51-LPeg
 BuildRequires:  lua51-bit32
 BuildRequires:  lua51-luarocks
-BuildRequires:  lua51-luv-devel
+BuildRequires:  lua51-luv-devel >= %{luv_min_ver}
 BuildRequires:  lua51-mpack
 BuildRequires:  luajit-devel
+Requires:       lua51-bit32
+Requires:       lua51-luv >= %{luv_min_ver}
+%else
+BuildRequires:  lua%{luaver_nopoint}-devel
+BuildRequires:  lua%{luaver_nopoint}-lpeg
+BuildRequires:  lua%{luaver_nopoint}-luarocks
+BuildRequires:  lua%{luaver_nopoint}-luv-devel >= %{luv_min_ver}
+BuildRequires:  lua%{luaver_nopoint}-mpack
+Requires:       lua%{luaver_nopoint}-luv >= %{luv_min_ver}
+# built-in bit32 removed in Lua 5.4
+BuildRequires:  lua%{luaver_nopoint}-compat-5.3
+Requires:       lua%{luaver_nopoint}-compat-5.3
+%endif
 BuildRequires:  make
 BuildRequires:  msgpack-devel
 BuildRequires:  pkgconfig
@@ -65,11 +100,10 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 Requires:       gperf
 Requires:       libvterm0 >= 0.1
-Requires:       lua51-bit32
-Requires:       lua51-luv
 Requires:       python3-neovim
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
+# XSel provides access to the system clipboard
 Recommends:     xsel
 %if 0%{?suse_version} < 1330
 BuildRequires:  hicolor-icon-theme
@@ -98,6 +132,7 @@ parts of Vim, without compromise, and more.
 %if 0%{?suse_version} == 1500
 %patch2 -p1
 %endif
+%patch3 -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
@@ -114,9 +149,10 @@ pushd build
 export CFLAGS="%{optflags} -fcommon"
 export CXXFLAGS="%{optflags} -fcommon"
 %{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-%ifarch aarch64 ppc64
-       -DPREFER_LUA=ON \
-%endif
+       -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
+       -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
+       -DLIBLUV_INCLUDE_DIR=%{_includedir}/lua-%{luaver} \
+       -DLIBLUV_LIBRARY=%{_libdir}/lua/%{luaver}/luv.so \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF \
        -DCMAKE_COLOR_MAKEFILE=OFF \
