@@ -305,4 +305,60 @@
   * Fix exception causes in cmd.py</comment>
     <requestid>828143</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>46d5d663e692b6b91bee6803645daeaa</srcmd5>
+    <version>3.1.12.1610074031.f653af66</version>
+    <time>1610736335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.12.1610074031.f653af66:
+  * fix flake
+  * fix tests the fast way
+  * First attempt to fix failing test of #1103
+- Update to version 3.1.12.1609914640.3dd71d3e:
+  * prepare release
+  * Fix handle_diff_line for -z option.
+  * try fixing up test fixtures and implementation
+  * Add '-z' on top of '--raw' to avoid path name mangling
+  * fix universal_newlines TypeError
+  * docs: fix simple typo, repostory -&gt; repository
+  * Added ability to define git environment in submodule add/update methods
+  * change decode type and add replace flag
+  * bump patch level
+  * Fix default actor name handling
+  * bump patch level
+  * Get system user id in a lazy manner
+  * Keep flake happy
+  * Do not break convention when updating sys.path
+  * Bump patch level
+  * rename sublist to subset
+  * Rename get_ignored to ignored and fix the documentation
+  * Find paths ignored in .gitignore
+  * Add venv to gitignore
+  * git/repo/base.py: is_dirty(): Fix pathspec handling
+  * Fix typo
+  * Update release verification instructions as suggested in #1055
+  * Adjust signature key - please read if you verify installs/packages
+  * bump patch level
+  * Ensure that detached HEAD does not raise when comparing branch name.
+  * Reformat code to remove unnecessary indentation
+  * Remove name as not necessary to track down authors.
+  * update contribution guidelines to be a little less concise and more polite
+  * Add missing blank line
+  * Add missing rules to match hierarchy path
+  * Update AUTHOR to respect to contributing guidelines.
+  * Add unit tests
+  * Fix logic to properly compare glob pattern to value
+  * Add method to retrieve all possible paths to include
+  * Add reference to repository to config.
+  * Update check method to find all includes
+  * Add Regex to match content of &quot;includeIf&quot; section
+  * inform about Gitoxide
+  * add myself to authors
+  * accept datetime instances as dates
+  * Ensure only fully matching symrefs are deleted
+  * Fixed all warnings in documentation and updated Makefile to treat warnings as errors.
+  * Added nose to test-requirements
+</comment>
+    <requestid>863126</requestid>
+  </revision>
 </revisionlist>

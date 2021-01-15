@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Jan 14 14:19:01 UTC 2021 - mmachova@suse.com
+
+- Update to version 3.1.12.1610074031.f653af66:
+  * fix flake
+  * fix tests the fast way
+  * First attempt to fix failing test of #1103
+
+-------------------------------------------------------------------
+Sun Jan 10 17:13:24 UTC 2021 - mliska@suse.cz
+
+- Update to version 3.1.12.1609914640.3dd71d3e:
+  * prepare release
+  * Fix handle_diff_line for -z option.
+  * try fixing up test fixtures and implementation
+  * Add '-z' on top of '--raw' to avoid path name mangling
+  * fix universal_newlines TypeError
+  * docs: fix simple typo, repostory -> repository
+  * Added ability to define git environment in submodule add/update methods
+  * change decode type and add replace flag
+  * bump patch level
+  * Fix default actor name handling
+  * bump patch level
+  * Get system user id in a lazy manner
+  * Keep flake happy
+  * Do not break convention when updating sys.path
+  * Bump patch level
+  * rename sublist to subset
+  * Rename get_ignored to ignored and fix the documentation
+  * Find paths ignored in .gitignore
+  * Add venv to gitignore
+  * git/repo/base.py: is_dirty(): Fix pathspec handling
+  * Fix typo
+  * Update release verification instructions as suggested in #1055
+  * Adjust signature key - please read if you verify installs/packages
+  * bump patch level
+  * Ensure that detached HEAD does not raise when comparing branch name.
+  * Reformat code to remove unnecessary indentation
+  * Remove name as not necessary to track down authors.
+  * update contribution guidelines to be a little less concise and more polite
+  * Add missing blank line
+  * Add missing rules to match hierarchy path
+  * Update AUTHOR to respect to contributing guidelines.
+  * Add unit tests
+  * Fix logic to properly compare glob pattern to value
+  * Add method to retrieve all possible paths to include
+  * Add reference to repository to config.
+  * Update check method to find all includes
+  * Add Regex to match content of "includeIf" section
+  * inform about Gitoxide
+  * add myself to authors
+  * accept datetime instances as dates
+  * Ensure only fully matching symrefs are deleted
+  * Fixed all warnings in documentation and updated Makefile to treat warnings as errors.
+  * Added nose to test-requirements
+
+-------------------------------------------------------------------
 Thu Aug 20 10:32:30 UTC 2020 - mimi.vx@gmail.com
 
 - Update to version 3.1.7.1594621338.176838a3:

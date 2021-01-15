@@ -1,7 +1,7 @@
 #
 # spec file for package python-GitPython
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-GitPython
-Version:        3.1.7.1594621338.176838a3
+Version:        3.1.12.1610074031.f653af66
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause

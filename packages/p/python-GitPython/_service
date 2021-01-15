@@ -1,12 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionprefix">3.1.7</param>
+    <param name="versionprefix">3.1.12</param>
     <param name="url">git://github.com/gitpython-developers/GitPython</param>
     <param name="scm">git</param>
     <param name="package-meta">yes</param>
     <param name="changesgenerate">enable</param>
     <param name="submodules">enable</param>
-    <param name="revision">refs/tags/3.1.7</param>
+    <param name="revision">f653af66e4c9461579ec44db50e113facf61e2d3</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>
