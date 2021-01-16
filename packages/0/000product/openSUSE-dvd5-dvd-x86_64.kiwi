@@ -3783,14 +3783,16 @@
       <repopackage name="phononsettings"/>
       <repopackage name="phononsettings-lang"/>
       <repopackage name="php7"/>
+      <repopackage name="php7-cli"/>
       <repopackage name="php7-ctype"/>
       <repopackage name="php7-dom"/>
-      <repopackage name="php7-gd" arch="x86_64"/>
-      <repopackage name="php7-gettext" arch="x86_64"/>
+      <repopackage name="php7-gd"/>
+      <repopackage name="php7-gettext"/>
       <repopackage name="php7-iconv"/>
       <repopackage name="php7-json"/>
-      <repopackage name="php7-mbstring" arch="x86_64"/>
-      <repopackage name="php7-mysql" arch="x86_64"/>
+      <repopackage name="php7-mbstring"/>
+      <repopackage name="php7-mysql"/>
+      <repopackage name="php7-openssl"/>
       <repopackage name="php7-pdo"/>
       <repopackage name="php7-sqlite"/>
       <repopackage name="php7-tokenizer"/>
@@ -3946,216 +3948,208 @@
       <repopackage name="python-rpm-macros"/>
       <repopackage name="python-xml"/>
       <repopackage name="python2-pycairo"/>
-      <repopackage name="python3-aiosmtpd"/>
-      <repopackage name="python3-alembic"/>
       <repopackage name="python3-apparmor"/>
-      <repopackage name="python3-appdirs"/>
-      <repopackage name="python3-argcomplete" arch="x86_64"/>
-      <repopackage name="python3-argon2-cffi"/>
-      <repopackage name="python3-argparse-manpage" arch="x86_64"/>
-      <repopackage name="python3-asn1crypto"/>
-      <repopackage name="python3-async_generator"/>
-      <repopackage name="python3-atpublic"/>
-      <repopackage name="python3-atspi"/>
-      <repopackage name="python3-attrs"/>
       <repopackage name="python3-audit" arch="x86_64"/>
-      <repopackage name="python3-authheaders"/>
-      <repopackage name="python3-authres"/>
-      <repopackage name="python3-Automat"/>
-      <repopackage name="python3-Babel"/>
-      <repopackage name="python3-bcrypt"/>
-      <repopackage name="python3-Beaker"/>
       <repopackage name="python3-bind"/>
       <repopackage name="python3-brlapi" arch="x86_64"/>
-      <repopackage name="python3-brotlipy"/>
-      <repopackage name="python3-cached-property"/>
-      <repopackage name="python3-certifi"/>
-      <repopackage name="python3-cffi"/>
-      <repopackage name="python3-chardet"/>
-      <repopackage name="python3-click"/>
-      <repopackage name="python3-cmdln" arch="x86_64"/>
-      <repopackage name="python3-configobj" arch="x86_64"/>
-      <repopackage name="python3-constantly"/>
-      <repopackage name="python3-contextvars"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
-      <repopackage name="python3-cryptography"/>
-      <repopackage name="python3-cssselect"/>
       <repopackage name="python3-cupshelpers"/>
-      <repopackage name="python3-Cycler"/>
-      <repopackage name="python3-dbus-python"/>
-      <repopackage name="python3-decorator"/>
-      <repopackage name="python3-distro"/>
-      <repopackage name="python3-dkimpy"/>
-      <repopackage name="python3-dnspython"/>
-      <repopackage name="python3-dulwich" arch="x86_64"/>
-      <repopackage name="python3-ecdsa"/>
       <repopackage name="python3-falcon"/>
-      <repopackage name="python3-fastimport" arch="x86_64"/>
       <repopackage name="python3-firewall"/>
-      <repopackage name="python3-flufl.bounce"/>
-      <repopackage name="python3-flufl.i18n"/>
-      <repopackage name="python3-flufl.lock"/>
-      <repopackage name="python3-fluidity-sm"/>
-      <repopackage name="python3-future" arch="x86_64"/>
       <repopackage name="python3-gedit"/>
-      <repopackage name="python3-gevent"/>
-      <repopackage name="python3-geventhttpclient" arch="x86_64"/>
-      <repopackage name="python3-gmpy"/>
-      <repopackage name="python3-gmpy2"/>
-      <repopackage name="python3-gobject"/>
-      <repopackage name="python3-gobject-cairo"/>
-      <repopackage name="python3-gobject-Gdk"/>
-      <repopackage name="python3-gpg" arch="x86_64"/>
-      <repopackage name="python3-greenlet"/>
-      <repopackage name="python3-gssapi"/>
       <repopackage name="python3-gst"/>
-      <repopackage name="python3-gunicorn"/>
-      <repopackage name="python3-h2"/>
-      <repopackage name="python3-hpack"/>
-      <repopackage name="python3-hyperframe"/>
-      <repopackage name="python3-hyperlink"/>
-      <repopackage name="python3-idna"/>
-      <repopackage name="python3-immutables"/>
-      <repopackage name="python3-importlib-metadata"/>
-      <repopackage name="python3-importlib-resources"/>
-      <repopackage name="python3-incremental"/>
-      <repopackage name="python3-invoke"/>
-      <repopackage name="python3-ipaddr"/>
-      <repopackage name="python3-jedi" arch="x86_64"/>
-      <repopackage name="python3-Jinja2"/>
-      <repopackage name="python3-kiwisolver"/>
-      <repopackage name="python3-lazr.config"/>
-      <repopackage name="python3-lazr.delegates"/>
-      <repopackage name="python3-ldap" arch="x86_64"/>
       <repopackage name="python3-ldb"/>
-      <repopackage name="python3-lexicon"/>
       <repopackage name="python3-libguestfs" arch="x86_64"/>
-      <repopackage name="python3-libvirt-python"/>
-      <repopackage name="python3-libxml2"/>
-      <repopackage name="python3-linux-procfs" arch="x86_64"/>
       <repopackage name="python3-louis" arch="x86_64"/>
-      <repopackage name="python3-lxml"/>
-      <repopackage name="python3-M2Crypto"/>
       <repopackage name="python3-mailman"/>
-      <repopackage name="python3-Mako"/>
-      <repopackage name="python3-MarkupSafe"/>
       <repopackage name="python3-matplotlib"/>
       <repopackage name="python3-matplotlib-cairo"/>
       <repopackage name="python3-matplotlib-gtk3"/>
-      <repopackage name="python3-more-itertools"/>
-      <repopackage name="python3-msgpack"/>
-      <repopackage name="python3-mysqlclient"/>
-      <repopackage name="python3-netaddr"/>
-      <repopackage name="python3-netifaces"/>
       <repopackage name="python3-networkx" arch="x86_64"/>
       <repopackage name="python3-nftables"/>
-      <repopackage name="python3-notify2"/>
-      <repopackage name="python3-numpy"/>
-      <repopackage name="python3-olefile"/>
-      <repopackage name="python3-ordered-set"/>
-      <repopackage name="python3-outcome"/>
-      <repopackage name="python3-packaging"/>
-      <repopackage name="python3-paramiko"/>
-      <repopackage name="python3-parso" arch="x86_64"/>
+      <repopackage name="python3-numpy" arch="x86_64"/>
+      <repopackage name="python3-paramiko" arch="x86_64"/>
       <repopackage name="python3-passlib"/>
-      <repopackage name="python3-patiencediff" arch="x86_64"/>
-      <repopackage name="python3-pexpect"/>
-      <repopackage name="python3-Pillow"/>
-      <repopackage name="python3-ply"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
-      <repopackage name="python3-protobuf"/>
-      <repopackage name="python3-psutil"/>
-      <repopackage name="python3-ptyprocess"/>
-      <repopackage name="python3-publicsuffix2"/>
-      <repopackage name="python3-py"/>
-      <repopackage name="python3-pyasn1"/>
-      <repopackage name="python3-pyasn1-modules"/>
       <repopackage name="python3-pybind11" arch="x86_64"/>
-      <repopackage name="python3-pycairo"/>
-      <repopackage name="python3-pycares"/>
-      <repopackage name="python3-pycparser"/>
-      <repopackage name="python3-pycryptodome"/>
-      <repopackage name="python3-pycups"/>
-      <repopackage name="python3-pycurl"/>
-      <repopackage name="python3-pydot" arch="x86_64"/>
-      <repopackage name="python3-pygit2"/>
-      <repopackage name="python3-Pygments" arch="x86_64"/>
-      <repopackage name="python3-pygraphviz" arch="x86_64"/>
-      <repopackage name="python3-PyHamcrest"/>
-      <repopackage name="python3-pylibmc"/>
-      <repopackage name="python3-pymongo"/>
-      <repopackage name="python3-PyNaCl"/>
-      <repopackage name="python3-pyOpenSSL"/>
-      <repopackage name="python3-pyparsing"/>
-      <repopackage name="python3-pyserial"/>
-      <repopackage name="python3-pysmbc" arch="x86_64"/>
-      <repopackage name="python3-PySocks"/>
-      <repopackage name="python3-python-dateutil"/>
-      <repopackage name="python3-python-editor"/>
-      <repopackage name="python3-python-memcached"/>
-      <repopackage name="python3-python-mimeparse"/>
       <repopackage name="python3-python-xlib"/>
-      <repopackage name="python3-pytz"/>
       <repopackage name="python3-pyudev" arch="x86_64"/>
-      <repopackage name="python3-PyYAML"/>
       <repopackage name="python3-pyzmq"/>
-      <repopackage name="python3-qt5"/>
-      <repopackage name="python3-qt5-sip"/>
-      <repopackage name="python3-redis"/>
-      <repopackage name="python3-reportlab"/>
-      <repopackage name="python3-requests"/>
-      <repopackage name="python3-requests-toolbelt"/>
-      <repopackage name="python3-rpm"/>
       <repopackage name="python3-salt"/>
       <repopackage name="python3-scipy" arch="x86_64"/>
-      <repopackage name="python3-scour"/>
       <repopackage name="python3-scrypt"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
-      <repopackage name="python3-semanage" arch="x86_64"/>
-      <repopackage name="python3-service_identity"/>
       <repopackage name="python3-setools" arch="x86_64"/>
-      <repopackage name="python3-setproctitle" arch="x86_64"/>
-      <repopackage name="python3-setuptools"/>
-      <repopackage name="python3-simplejson"/>
-      <repopackage name="python3-six"/>
-      <repopackage name="python3-slip"/>
-      <repopackage name="python3-slip-dbus"/>
       <repopackage name="python3-smbios"/>
       <repopackage name="python3-smbios-utils"/>
-      <repopackage name="python3-sniffio"/>
       <repopackage name="python3-solv"/>
-      <repopackage name="python3-sortedcontainers"/>
       <repopackage name="python3-speechd" arch="x86_64"/>
-      <repopackage name="python3-SQLAlchemy"/>
       <repopackage name="python3-talloc"/>
       <repopackage name="python3-tdb"/>
       <repopackage name="python3-tevent"/>
-      <repopackage name="python3-tornado6"/>
-      <repopackage name="python3-trio"/>
-      <repopackage name="python3-Twisted"/>
-      <repopackage name="python3-typing_extensions"/>
-      <repopackage name="python3-urllib3"/>
-      <repopackage name="python3-urwid"/>
       <repopackage name="python3-virt-bootstrap" arch="x86_64"/>
-      <repopackage name="python3-xdg" arch="x86_64"/>
-      <repopackage name="python3-zipp"/>
-      <repopackage name="python3-zope.component"/>
-      <repopackage name="python3-zope.configuration"/>
-      <repopackage name="python3-zope.deferredimport"/>
-      <repopackage name="python3-zope.deprecation"/>
-      <repopackage name="python3-zope.event"/>
-      <repopackage name="python3-zope.hookable"/>
-      <repopackage name="python3-zope.i18nmessageid"/>
-      <repopackage name="python3-zope.interface"/>
-      <repopackage name="python3-zope.proxy"/>
-      <repopackage name="python3-zope.schema"/>
-      <repopackage name="python3-zypp-plugin"/>
       <repopackage name="python38"/>
+      <repopackage name="python38-aiosmtpd"/>
+      <repopackage name="python38-alembic"/>
+      <repopackage name="python38-appdirs"/>
+      <repopackage name="python38-argcomplete" arch="x86_64"/>
+      <repopackage name="python38-argon2-cffi"/>
+      <repopackage name="python38-argparse-manpage" arch="x86_64"/>
+      <repopackage name="python38-asn1crypto"/>
+      <repopackage name="python38-async_generator"/>
+      <repopackage name="python38-atpublic"/>
+      <repopackage name="python38-atspi"/>
+      <repopackage name="python38-attrs"/>
+      <repopackage name="python38-authheaders"/>
+      <repopackage name="python38-authres"/>
+      <repopackage name="python38-Babel"/>
       <repopackage name="python38-base"/>
+      <repopackage name="python38-bcrypt"/>
+      <repopackage name="python38-Beaker"/>
+      <repopackage name="python38-brotlipy"/>
+      <repopackage name="python38-cached-property"/>
+      <repopackage name="python38-certifi"/>
+      <repopackage name="python38-cffi"/>
+      <repopackage name="python38-chardet"/>
+      <repopackage name="python38-click"/>
+      <repopackage name="python38-cmdln" arch="x86_64"/>
+      <repopackage name="python38-configobj" arch="x86_64"/>
+      <repopackage name="python38-contextvars"/>
+      <repopackage name="python38-cryptography"/>
+      <repopackage name="python38-cssselect"/>
       <repopackage name="python38-curses"/>
+      <repopackage name="python38-Cycler"/>
       <repopackage name="python38-dbm"/>
+      <repopackage name="python38-dbus-python"/>
+      <repopackage name="python38-decorator"/>
+      <repopackage name="python38-distro"/>
+      <repopackage name="python38-dkimpy"/>
+      <repopackage name="python38-dnspython"/>
       <repopackage name="python38-doc" arch="x86_64"/>
+      <repopackage name="python38-dulwich" arch="x86_64"/>
+      <repopackage name="python38-ecdsa"/>
+      <repopackage name="python38-fastimport" arch="x86_64"/>
+      <repopackage name="python38-flufl.bounce"/>
+      <repopackage name="python38-flufl.i18n"/>
+      <repopackage name="python38-flufl.lock"/>
+      <repopackage name="python38-fluidity-sm"/>
+      <repopackage name="python38-future" arch="x86_64"/>
+      <repopackage name="python38-gevent"/>
+      <repopackage name="python38-geventhttpclient" arch="x86_64"/>
+      <repopackage name="python38-gmpy"/>
+      <repopackage name="python38-gmpy2"/>
+      <repopackage name="python38-gobject"/>
+      <repopackage name="python38-gobject-cairo"/>
+      <repopackage name="python38-gobject-Gdk"/>
+      <repopackage name="python38-gpg" arch="x86_64"/>
+      <repopackage name="python38-greenlet"/>
+      <repopackage name="python38-gssapi"/>
+      <repopackage name="python38-gunicorn"/>
+      <repopackage name="python38-idna"/>
+      <repopackage name="python38-immutables"/>
+      <repopackage name="python38-importlib-metadata"/>
+      <repopackage name="python38-importlib-resources"/>
+      <repopackage name="python38-invoke"/>
+      <repopackage name="python38-ipaddr"/>
+      <repopackage name="python38-jedi" arch="x86_64"/>
+      <repopackage name="python38-Jinja2"/>
+      <repopackage name="python38-kiwisolver"/>
+      <repopackage name="python38-lazr.config"/>
+      <repopackage name="python38-lazr.delegates"/>
+      <repopackage name="python38-ldap" arch="x86_64"/>
+      <repopackage name="python38-lexicon"/>
+      <repopackage name="python38-libvirt-python"/>
+      <repopackage name="python38-libxml2"/>
+      <repopackage name="python38-linux-procfs" arch="x86_64"/>
+      <repopackage name="python38-lxml"/>
+      <repopackage name="python38-M2Crypto"/>
+      <repopackage name="python38-Mako"/>
+      <repopackage name="python38-MarkupSafe"/>
+      <repopackage name="python38-more-itertools"/>
+      <repopackage name="python38-msgpack"/>
+      <repopackage name="python38-mysqlclient"/>
+      <repopackage name="python38-netaddr"/>
+      <repopackage name="python38-netifaces"/>
+      <repopackage name="python38-notify2"/>
+      <repopackage name="python38-olefile"/>
+      <repopackage name="python38-ordered-set"/>
+      <repopackage name="python38-outcome"/>
+      <repopackage name="python38-packaging"/>
+      <repopackage name="python38-parso" arch="x86_64"/>
+      <repopackage name="python38-patiencediff" arch="x86_64"/>
+      <repopackage name="python38-pexpect"/>
+      <repopackage name="python38-Pillow"/>
+      <repopackage name="python38-pip"/>
+      <repopackage name="python38-ply"/>
+      <repopackage name="python38-protobuf"/>
+      <repopackage name="python38-psutil"/>
+      <repopackage name="python38-ptyprocess"/>
+      <repopackage name="python38-publicsuffix2"/>
+      <repopackage name="python38-py"/>
+      <repopackage name="python38-pyasn1"/>
+      <repopackage name="python38-pyasn1-modules"/>
+      <repopackage name="python38-pycairo"/>
+      <repopackage name="python38-pycares"/>
+      <repopackage name="python38-pycparser"/>
+      <repopackage name="python38-pycryptodome"/>
+      <repopackage name="python38-pycups"/>
+      <repopackage name="python38-pycurl"/>
+      <repopackage name="python38-pydot" arch="x86_64"/>
+      <repopackage name="python38-pygit2"/>
+      <repopackage name="python38-Pygments" arch="x86_64"/>
+      <repopackage name="python38-pygraphviz" arch="x86_64"/>
+      <repopackage name="python38-pylibmc"/>
+      <repopackage name="python38-pymongo"/>
+      <repopackage name="python38-PyNaCl"/>
+      <repopackage name="python38-pyOpenSSL"/>
+      <repopackage name="python38-pyparsing"/>
+      <repopackage name="python38-pyserial"/>
+      <repopackage name="python38-pysmbc" arch="x86_64"/>
+      <repopackage name="python38-PySocks"/>
+      <repopackage name="python38-python-dateutil"/>
+      <repopackage name="python38-python-editor"/>
+      <repopackage name="python38-python-memcached"/>
+      <repopackage name="python38-python-mimeparse"/>
+      <repopackage name="python38-pytz"/>
+      <repopackage name="python38-PyYAML"/>
+      <repopackage name="python38-qt5"/>
+      <repopackage name="python38-qt5-sip"/>
+      <repopackage name="python38-redis"/>
+      <repopackage name="python38-reportlab"/>
+      <repopackage name="python38-requests"/>
+      <repopackage name="python38-requests-toolbelt"/>
+      <repopackage name="python38-rpm"/>
+      <repopackage name="python38-scour"/>
+      <repopackage name="python38-semanage" arch="x86_64"/>
+      <repopackage name="python38-service_identity"/>
+      <repopackage name="python38-setproctitle" arch="x86_64"/>
+      <repopackage name="python38-setuptools"/>
+      <repopackage name="python38-simplejson"/>
+      <repopackage name="python38-six"/>
+      <repopackage name="python38-slip"/>
+      <repopackage name="python38-slip-dbus"/>
+      <repopackage name="python38-sniffio"/>
+      <repopackage name="python38-sortedcontainers"/>
+      <repopackage name="python38-SQLAlchemy"/>
       <repopackage name="python38-tk" arch="x86_64"/>
+      <repopackage name="python38-tornado6"/>
+      <repopackage name="python38-trio"/>
+      <repopackage name="python38-typing_extensions"/>
+      <repopackage name="python38-urllib3"/>
+      <repopackage name="python38-urwid"/>
+      <repopackage name="python38-xdg" arch="x86_64"/>
+      <repopackage name="python38-zipp"/>
+      <repopackage name="python38-zope.component"/>
+      <repopackage name="python38-zope.configuration"/>
+      <repopackage name="python38-zope.deferredimport"/>
+      <repopackage name="python38-zope.deprecation"/>
+      <repopackage name="python38-zope.event"/>
+      <repopackage name="python38-zope.hookable"/>
+      <repopackage name="python38-zope.i18nmessageid"/>
+      <repopackage name="python38-zope.interface"/>
+      <repopackage name="python38-zope.proxy"/>
+      <repopackage name="python38-zope.schema"/>
+      <repopackage name="python38-zypp-plugin"/>
       <repopackage name="qalculate-data"/>
       <repopackage name="qemu"/>
       <repopackage name="qemu-arm"/>
