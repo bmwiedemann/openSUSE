@@ -57,4 +57,11 @@
     <comment></comment>
     <requestid>862132</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1687013b09b237826eff1f49781f859a</srcmd5>
+    <version>4.3.3</version>
+    <time>1610801736</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 4.x, compatible with python36; unblockrngs</comment>
+  </revision>
 </revisionlist>
