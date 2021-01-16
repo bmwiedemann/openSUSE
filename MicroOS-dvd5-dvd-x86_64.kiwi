@@ -1299,62 +1299,62 @@
       <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="python-rpm-macros" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>
-      <repopackage name="python3-appdirs" arch="x86_64"/>
-      <repopackage name="python3-asn1crypto" arch="x86_64"/>
-      <repopackage name="python3-attrs" arch="x86_64"/>
       <repopackage name="python3-audit" arch="x86_64"/>
-      <repopackage name="python3-Babel" arch="x86_64"/>
-      <repopackage name="python3-blinker" arch="x86_64"/>
-      <repopackage name="python3-certifi" arch="x86_64"/>
-      <repopackage name="python3-cffi" arch="x86_64"/>
-      <repopackage name="python3-chardet" arch="x86_64"/>
-      <repopackage name="python3-cmdln" arch="x86_64"/>
-      <repopackage name="python3-configobj" arch="x86_64"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
-      <repopackage name="python3-cryptography" arch="x86_64"/>
-      <repopackage name="python3-dbus-python" arch="x86_64"/>
-      <repopackage name="python3-decorator" arch="x86_64"/>
-      <repopackage name="python3-ecdsa" arch="x86_64"/>
-      <repopackage name="python3-gobject" arch="x86_64"/>
-      <repopackage name="python3-gobject-cairo" arch="x86_64"/>
-      <repopackage name="python3-gobject-Gdk" arch="x86_64"/>
-      <repopackage name="python3-idna" arch="x86_64"/>
-      <repopackage name="python3-importlib-metadata" arch="x86_64"/>
-      <repopackage name="python3-Jinja2" arch="x86_64"/>
-      <repopackage name="python3-jsonpatch" arch="x86_64"/>
-      <repopackage name="python3-jsonpointer" arch="x86_64"/>
       <repopackage name="python3-jsonschema" arch="x86_64"/>
       <repopackage name="python3-ldb" arch="x86_64"/>
-      <repopackage name="python3-MarkupSafe" arch="x86_64"/>
-      <repopackage name="python3-more-itertools" arch="x86_64"/>
       <repopackage name="python3-networkx" arch="x86_64"/>
-      <repopackage name="python3-notify2" arch="x86_64"/>
-      <repopackage name="python3-oauthlib" arch="x86_64"/>
-      <repopackage name="python3-ordered-set" arch="x86_64"/>
-      <repopackage name="python3-packaging" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
-      <repopackage name="python3-psutil" arch="x86_64"/>
-      <repopackage name="python3-py" arch="x86_64"/>
-      <repopackage name="python3-pyasn1" arch="x86_64"/>
-      <repopackage name="python3-pycparser" arch="x86_64"/>
-      <repopackage name="python3-PyJWT" arch="x86_64"/>
-      <repopackage name="python3-pyOpenSSL" arch="x86_64"/>
-      <repopackage name="python3-pyparsing" arch="x86_64"/>
       <repopackage name="python3-pyrsistent" arch="x86_64"/>
-      <repopackage name="python3-pyserial" arch="x86_64"/>
-      <repopackage name="python3-pytz" arch="x86_64"/>
-      <repopackage name="python3-PyYAML" arch="x86_64"/>
-      <repopackage name="python3-requests" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
-      <repopackage name="python3-semanage" arch="x86_64"/>
       <repopackage name="python3-setools" arch="x86_64"/>
-      <repopackage name="python3-setuptools" arch="x86_64"/>
-      <repopackage name="python3-six" arch="x86_64"/>
       <repopackage name="python3-talloc" arch="x86_64"/>
-      <repopackage name="python3-urllib3" arch="x86_64"/>
-      <repopackage name="python3-zipp" arch="x86_64"/>
       <repopackage name="python38" arch="x86_64"/>
+      <repopackage name="python38-appdirs" arch="x86_64"/>
+      <repopackage name="python38-asn1crypto" arch="x86_64"/>
+      <repopackage name="python38-attrs" arch="x86_64"/>
+      <repopackage name="python38-Babel" arch="x86_64"/>
       <repopackage name="python38-base" arch="x86_64"/>
+      <repopackage name="python38-blinker" arch="x86_64"/>
+      <repopackage name="python38-certifi" arch="x86_64"/>
+      <repopackage name="python38-cffi" arch="x86_64"/>
+      <repopackage name="python38-chardet" arch="x86_64"/>
+      <repopackage name="python38-cmdln" arch="x86_64"/>
+      <repopackage name="python38-configobj" arch="x86_64"/>
+      <repopackage name="python38-cryptography" arch="x86_64"/>
+      <repopackage name="python38-dbus-python" arch="x86_64"/>
+      <repopackage name="python38-decorator" arch="x86_64"/>
+      <repopackage name="python38-ecdsa" arch="x86_64"/>
+      <repopackage name="python38-gobject" arch="x86_64"/>
+      <repopackage name="python38-gobject-cairo" arch="x86_64"/>
+      <repopackage name="python38-gobject-Gdk" arch="x86_64"/>
+      <repopackage name="python38-idna" arch="x86_64"/>
+      <repopackage name="python38-importlib-metadata" arch="x86_64"/>
+      <repopackage name="python38-Jinja2" arch="x86_64"/>
+      <repopackage name="python38-jsonpatch" arch="x86_64"/>
+      <repopackage name="python38-jsonpointer" arch="x86_64"/>
+      <repopackage name="python38-MarkupSafe" arch="x86_64"/>
+      <repopackage name="python38-more-itertools" arch="x86_64"/>
+      <repopackage name="python38-notify2" arch="x86_64"/>
+      <repopackage name="python38-oauthlib" arch="x86_64"/>
+      <repopackage name="python38-ordered-set" arch="x86_64"/>
+      <repopackage name="python38-packaging" arch="x86_64"/>
+      <repopackage name="python38-psutil" arch="x86_64"/>
+      <repopackage name="python38-py" arch="x86_64"/>
+      <repopackage name="python38-pyasn1" arch="x86_64"/>
+      <repopackage name="python38-pycparser" arch="x86_64"/>
+      <repopackage name="python38-PyJWT" arch="x86_64"/>
+      <repopackage name="python38-pyOpenSSL" arch="x86_64"/>
+      <repopackage name="python38-pyparsing" arch="x86_64"/>
+      <repopackage name="python38-pyserial" arch="x86_64"/>
+      <repopackage name="python38-pytz" arch="x86_64"/>
+      <repopackage name="python38-PyYAML" arch="x86_64"/>
+      <repopackage name="python38-requests" arch="x86_64"/>
+      <repopackage name="python38-semanage" arch="x86_64"/>
+      <repopackage name="python38-setuptools" arch="x86_64"/>
+      <repopackage name="python38-six" arch="x86_64"/>
+      <repopackage name="python38-urllib3" arch="x86_64"/>
+      <repopackage name="python38-zipp" arch="x86_64"/>
       <repopackage name="qqc2-desktop-style" arch="x86_64"/>
       <repopackage name="read-only-root-fs" arch="x86_64"/>
       <repopackage name="rebootmgr" arch="x86_64"/>
