@@ -1088,4 +1088,12 @@
     <user>dimstar_suse</user>
     <comment>Drop cypress firmware</comment>
   </revision>
+  <revision rev="135" vrev="135">
+    <srcmd5>985f649c6e5f4985cdacbca80cab50bb</srcmd5>
+    <version>unknown</version>
+    <time>1610879141</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop joe from the RescueCD: we have vim-small, and one text
+ editor is enough (no space left).</comment>
+  </revision>
 </revisionlist>

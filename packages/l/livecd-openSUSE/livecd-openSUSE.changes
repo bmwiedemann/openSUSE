@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 17 10:25:00 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop joe from the RescueCD: we have vim-small, and one text
+ editor is enough (no space left).
+
+-------------------------------------------------------------------
 Wed Jan 13 13:42:35 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - No longer remove adwaita-icon-theme on x11 Rescue CD: xfce 4.16's
