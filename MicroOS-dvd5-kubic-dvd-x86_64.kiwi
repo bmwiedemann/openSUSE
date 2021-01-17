@@ -526,11 +526,8 @@
       <repopackage name="python3-ceph-argparse" arch="x86_64"/>
       <repopackage name="python3-ceph-common" arch="x86_64"/>
       <repopackage name="python3-cephfs" arch="x86_64"/>
-      <repopackage name="python3-jsonschema" arch="x86_64"/>
       <repopackage name="python3-networkx" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
-      <repopackage name="python3-pyrsistent" arch="x86_64"/>
-      <repopackage name="python3-pyzmq" arch="x86_64"/>
       <repopackage name="python3-rados" arch="x86_64"/>
       <repopackage name="python3-rbd" arch="x86_64"/>
       <repopackage name="python3-rgw" arch="x86_64"/>
@@ -559,6 +556,7 @@
       <repopackage name="python38-Jinja2" arch="x86_64"/>
       <repopackage name="python38-jsonpatch" arch="x86_64"/>
       <repopackage name="python38-jsonpointer" arch="x86_64"/>
+      <repopackage name="python38-jsonschema" arch="x86_64"/>
       <repopackage name="python38-M2Crypto" arch="x86_64"/>
       <repopackage name="python38-MarkupSafe" arch="x86_64"/>
       <repopackage name="python38-more-itertools" arch="x86_64"/>
@@ -575,9 +573,11 @@
       <repopackage name="python38-PyJWT" arch="x86_64"/>
       <repopackage name="python38-pyOpenSSL" arch="x86_64"/>
       <repopackage name="python38-pyparsing" arch="x86_64"/>
+      <repopackage name="python38-pyrsistent" arch="x86_64"/>
       <repopackage name="python38-pyserial" arch="x86_64"/>
       <repopackage name="python38-pytz" arch="x86_64"/>
       <repopackage name="python38-PyYAML" arch="x86_64"/>
+      <repopackage name="python38-pyzmq" arch="x86_64"/>
       <repopackage name="python38-requests" arch="x86_64"/>
       <repopackage name="python38-rpm" arch="x86_64"/>
       <repopackage name="python38-semanage" arch="x86_64"/>
