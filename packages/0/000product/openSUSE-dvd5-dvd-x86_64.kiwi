@@ -3954,7 +3954,6 @@
       <repopackage name="python3-brlapi" arch="x86_64"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
       <repopackage name="python3-cupshelpers"/>
-      <repopackage name="python3-falcon"/>
       <repopackage name="python3-firewall"/>
       <repopackage name="python3-gedit"/>
       <repopackage name="python3-gst"/>
@@ -3962,19 +3961,10 @@
       <repopackage name="python3-libguestfs" arch="x86_64"/>
       <repopackage name="python3-louis" arch="x86_64"/>
       <repopackage name="python3-mailman"/>
-      <repopackage name="python3-matplotlib"/>
-      <repopackage name="python3-matplotlib-cairo"/>
-      <repopackage name="python3-matplotlib-gtk3"/>
       <repopackage name="python3-networkx" arch="x86_64"/>
       <repopackage name="python3-nftables"/>
-      <repopackage name="python3-numpy" arch="x86_64"/>
-      <repopackage name="python3-paramiko" arch="x86_64"/>
       <repopackage name="python3-passlib"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
-      <repopackage name="python3-pybind11" arch="x86_64"/>
-      <repopackage name="python3-python-xlib"/>
-      <repopackage name="python3-pyudev" arch="x86_64"/>
-      <repopackage name="python3-pyzmq"/>
       <repopackage name="python3-salt"/>
       <repopackage name="python3-scipy" arch="x86_64"/>
       <repopackage name="python3-scrypt"/>
@@ -4002,6 +3992,7 @@
       <repopackage name="python38-attrs"/>
       <repopackage name="python38-authheaders"/>
       <repopackage name="python38-authres"/>
+      <repopackage name="python38-Automat"/>
       <repopackage name="python38-Babel"/>
       <repopackage name="python38-base"/>
       <repopackage name="python38-bcrypt"/>
@@ -4014,6 +4005,7 @@
       <repopackage name="python38-click"/>
       <repopackage name="python38-cmdln" arch="x86_64"/>
       <repopackage name="python38-configobj" arch="x86_64"/>
+      <repopackage name="python38-constantly"/>
       <repopackage name="python38-contextvars"/>
       <repopackage name="python38-cryptography"/>
       <repopackage name="python38-cssselect"/>
@@ -4028,6 +4020,7 @@
       <repopackage name="python38-doc" arch="x86_64"/>
       <repopackage name="python38-dulwich" arch="x86_64"/>
       <repopackage name="python38-ecdsa"/>
+      <repopackage name="python38-falcon"/>
       <repopackage name="python38-fastimport" arch="x86_64"/>
       <repopackage name="python38-flufl.bounce"/>
       <repopackage name="python38-flufl.i18n"/>
@@ -4045,10 +4038,15 @@
       <repopackage name="python38-greenlet"/>
       <repopackage name="python38-gssapi"/>
       <repopackage name="python38-gunicorn"/>
+      <repopackage name="python38-h2"/>
+      <repopackage name="python38-hpack"/>
+      <repopackage name="python38-hyperframe"/>
+      <repopackage name="python38-hyperlink"/>
       <repopackage name="python38-idna"/>
       <repopackage name="python38-immutables"/>
       <repopackage name="python38-importlib-metadata"/>
       <repopackage name="python38-importlib-resources"/>
+      <repopackage name="python38-incremental"/>
       <repopackage name="python38-invoke"/>
       <repopackage name="python38-ipaddr"/>
       <repopackage name="python38-jedi" arch="x86_64"/>
@@ -4065,16 +4063,21 @@
       <repopackage name="python38-M2Crypto"/>
       <repopackage name="python38-Mako"/>
       <repopackage name="python38-MarkupSafe"/>
+      <repopackage name="python38-matplotlib"/>
+      <repopackage name="python38-matplotlib-cairo"/>
+      <repopackage name="python38-matplotlib-gtk3"/>
       <repopackage name="python38-more-itertools"/>
       <repopackage name="python38-msgpack"/>
       <repopackage name="python38-mysqlclient"/>
       <repopackage name="python38-netaddr"/>
       <repopackage name="python38-netifaces"/>
       <repopackage name="python38-notify2"/>
+      <repopackage name="python38-numpy"/>
       <repopackage name="python38-olefile"/>
       <repopackage name="python38-ordered-set"/>
       <repopackage name="python38-outcome"/>
       <repopackage name="python38-packaging"/>
+      <repopackage name="python38-paramiko"/>
       <repopackage name="python38-parso" arch="x86_64"/>
       <repopackage name="python38-patiencediff" arch="x86_64"/>
       <repopackage name="python38-pexpect"/>
@@ -4088,6 +4091,7 @@
       <repopackage name="python38-py"/>
       <repopackage name="python38-pyasn1"/>
       <repopackage name="python38-pyasn1-modules"/>
+      <repopackage name="python38-pybind11" arch="x86_64"/>
       <repopackage name="python38-pycairo"/>
       <repopackage name="python38-pycares"/>
       <repopackage name="python38-pycparser"/>
@@ -4098,6 +4102,7 @@
       <repopackage name="python38-pygit2"/>
       <repopackage name="python38-Pygments" arch="x86_64"/>
       <repopackage name="python38-pygraphviz" arch="x86_64"/>
+      <repopackage name="python38-PyHamcrest"/>
       <repopackage name="python38-pylibmc"/>
       <repopackage name="python38-pymongo"/>
       <repopackage name="python38-PyNaCl"/>
@@ -4110,8 +4115,11 @@
       <repopackage name="python38-python-editor"/>
       <repopackage name="python38-python-memcached"/>
       <repopackage name="python38-python-mimeparse"/>
+      <repopackage name="python38-python-xlib"/>
       <repopackage name="python38-pytz"/>
+      <repopackage name="python38-pyudev" arch="x86_64"/>
       <repopackage name="python38-PyYAML"/>
+      <repopackage name="python38-pyzmq"/>
       <repopackage name="python38-qt5"/>
       <repopackage name="python38-qt5-sip"/>
       <repopackage name="python38-redis"/>
@@ -4134,6 +4142,7 @@
       <repopackage name="python38-tk" arch="x86_64"/>
       <repopackage name="python38-tornado6"/>
       <repopackage name="python38-trio"/>
+      <repopackage name="python38-Twisted"/>
       <repopackage name="python38-typing_extensions"/>
       <repopackage name="python38-urllib3"/>
       <repopackage name="python38-urwid"/>
