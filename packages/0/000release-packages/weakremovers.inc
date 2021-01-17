@@ -68,6 +68,9 @@ Provides: weakremover(ruby2.5-rubygem-net-ssh-5.0)
 Provides: weakremover(ruby2.5-rubygem-net-ssh-doc-5.0)
 %endif
 # 15.1:update
+Provides: weakremover(gnu10-compilers-hpc)
+Provides: weakremover(gnu10-compilers-hpc-devel)
+Provides: weakremover(gnu10-compilers-hpc-macros-devel)
 Provides: weakremover(gnu9-compilers-hpc)
 Provides: weakremover(gnu9-compilers-hpc-devel)
 Provides: weakremover(gnu9-compilers-hpc-macros-devel)
