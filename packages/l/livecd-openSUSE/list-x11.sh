@@ -20,6 +20,7 @@ buildignore nano-lang
 buildignore zenity-lang
 buildignore gsettings-desktop-schema-lang
 buildignore gvfs-lang
+buildignore libstorage-ng-lang
 buildignore joe
 buildignore libgphoto2-6-lang
 buildignore alsa

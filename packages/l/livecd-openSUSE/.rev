@@ -1096,4 +1096,12 @@
     <comment>- Drop joe from the RescueCD: we have vim-small, and one text
  editor is enough (no space left).</comment>
   </revision>
+  <revision rev="136" vrev="136">
+    <srcmd5>ffb6eb2285c03caa4284cdbaa05b7f5f</srcmd5>
+    <version>unknown</version>
+    <time>1610882219</time>
+    <user>dimstar_suse</user>
+    <comment>  editor is enough (no space left).
+- Drop libstorage-ng-lang: no spaceleft on the rescue CD.</comment>
+  </revision>
 </revisionlist>
