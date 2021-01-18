@@ -1,0 +1,26 @@
+From 68a33a736305a4ec20bd41b19311782e4d5616b1 Mon Sep 17 00:00:00 2001
+From: Simon Schmeisser <s.schmeisser@gmx.net>
+Date: Fri, 10 Apr 2020 21:04:22 +0200
+Subject: [PATCH] add riscv64 as 64bit architecture
+
+patch by Manuel A. Fernandez Montecelo in Debian
+---
+ OgreMain/include/OgrePlatform.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/OgreMain/include/OgrePlatform.h b/OgreMain/include/OgrePlatform.h
+index 50e396eba..00653899a 100644
+--- a/OgreMain/include/OgrePlatform.h
++++ b/OgreMain/include/OgrePlatform.h
+@@ -160,7 +160,7 @@ namespace Ogre {
+ #endif
+ 
+     /* Find the arch type */
+-#if defined(__x86_64__) || defined(_M_X64) || defined(__powerpc64__) || defined(__alpha__) || defined(__ia64__) || defined(__s390__) || defined(__s390x__) || defined(__arm64__) || defined(__aarch64__) || defined(__mips64) || defined(__mips64_)
++#if defined(__x86_64__) || defined(_M_X64) || defined(_M_AMD64) || defined(_M_ARM64) || defined(__powerpc64__) || defined(__alpha__) || defined(__ia64__) || defined(__s390__) || defined(__s390x__) || defined(__arm64__) || defined(__aarch64__) || defined(__mips64) || defined(__mips64_) || (defined(__riscv) && (__riscv_xlen == 64))
+ #   define OGRE_ARCH_TYPE OGRE_ARCHITECTURE_64
+ #else
+ #   define OGRE_ARCH_TYPE OGRE_ARCHITECTURE_32
+-- 
+2.30.0
+

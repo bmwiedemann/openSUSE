@@ -1,7 +1,7 @@
 #
 # spec file for package ogre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch3:         ogre-1.9.0-longlongconstants.patch
 Patch4:         fix-template-function.patch
 # Patch-FIX-UPSTREAM fix-aarch64-detection.patch
 Patch5:         fix-aarch64-detection.patch
+# PATCH-FIX-UPSTREAM add riscv64 as 64bit architecture
+Patch6:         riscv64-architecture.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -396,6 +398,7 @@ This package contains the documentation for OGRE.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 # Be sure we use system tinyxml
 rm Tools/XMLConverter/src/tiny*
 rm Tools/XMLConverter/include/tiny*

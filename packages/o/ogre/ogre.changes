@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 11 17:19:19 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-architecture.patch: add riscv64 as 64bit architecture
+
+-------------------------------------------------------------------
 Fri Jul 24 15:22:30 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with default min 4GB disk
