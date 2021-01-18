@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 10 15:40:46 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- Update to version 1.11:
+  * Add support for ACD client for static configuration.
+  * Add support for intelligent scan of all frequencies.
+  * Add support for DHCP v6 configuration.
+  * Add support for DHCP server operation with AP mode.
+  * Add support for IP allocation during the 4-Way Handshake.
+  * Add support for P2P Group-owner handling.
+
+-------------------------------------------------------------------
 Wed Sep 30 05:13:08 UTC 2020 - Ava Lon <minava@t-online.de>
 
 - Update to version 1.9:

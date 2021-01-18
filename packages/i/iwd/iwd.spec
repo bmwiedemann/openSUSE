@@ -1,7 +1,7 @@
 #
 # spec file for package iwd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iwd
-Version:        1.9
+Version:        1.11
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later
@@ -28,12 +28,12 @@ Source1:        https://kernel.org/pub/linux/network/wireless/%{name}-%{version}
 Source2:        %{name}.keyring
 # Disable openssl as we have disabled the tests on obs
 # needed for the tests to generate certificates
-#BuildRequires:  openssl
+BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ell) >= 0.33
+BuildRequires:  pkgconfig(ell) >= 0.36
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
@@ -59,7 +59,8 @@ features provided by the Linux kernel.
 mkdir -p %{buildroot}%{_sbindir}/
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
 
-# Disable tests as they fail on the obs, but works on a checkout
+# Disable tests as they fail on the obs and inside a container, but work on a
+# checkout
 #%%check
 #%%make_build check
 
@@ -93,6 +94,7 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 %{_mandir}/man1/iwmon.1%{?ext_man}
 %{_mandir}/man5/iwd.config.5%{?ext_man}
 %{_mandir}/man5/iwd.network.5%{?ext_man}
+%{_mandir}/man5/iwd.ap.5%{?ext_man}
 %{_mandir}/man7/iwd.debug.7%{?ext_man}
 %{_mandir}/man8/iwd.8%{?ext_man}
 
