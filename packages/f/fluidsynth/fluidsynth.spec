@@ -1,7 +1,7 @@
 #
 # spec file for package fluidsynth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   2
 Name:           fluidsynth
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later

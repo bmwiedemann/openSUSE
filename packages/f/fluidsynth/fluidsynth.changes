@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  9 11:37:13 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 2.1.6
+  * SoundFonts may never be unloaded correctly, if
+    * polyphony is ever exceeded, or
+    * voices are still playing while their SoundFont is being unloaded.
+  * fix a heap-based use-after-free
+
+-------------------------------------------------------------------
 Mon Oct 19 11:05:56 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
