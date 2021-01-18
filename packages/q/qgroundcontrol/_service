@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">git://github.com/mavlink/qgroundcontrol.git</param>
     <param name="scm">git</param>
-    <param name="revision">v4.0.11</param>
-    <param name="version">4.0.11</param>
+    <param name="revision">v4.1.0</param>
+    <param name="version">4.1.0</param>
     <param name="exclude">lib</param>
 <!-- not working atm 
     <param name="exclude">mavlink</param>

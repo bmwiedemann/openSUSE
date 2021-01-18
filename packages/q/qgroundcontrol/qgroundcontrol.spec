@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           qgroundcontrol
-Version:        4.0.11
+Version:        4.1.0
 Release:        0
 Summary:        An operator control unit / ground control software for micro air vehicles
 License:        GPL-3.0-only
@@ -59,17 +59,16 @@ BuildRequires:  pkgconfig(Qt5Qwt6)
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  SDL2-devel
+BuildRequires:  fdupes
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig(libudev)
-# is not building atm
-#BuildRequires:  libxbee3-devel
-BuildRequires:  fdupes
 
 #qml deps
+Requires:       libqt5-qtcharts-imports
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 
@@ -94,13 +93,12 @@ make %{?_smp_mflags}
 cd build
 mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_datadir}/%{name}/
-cp -R release/flightgear %{buildroot}/%{_datadir}/%{name}/
-install -p -m 755 release/QGroundControl %{buildroot}/%{_bindir}/
+#cp -R release/flightgear %{buildroot}/%{_datadir}/%{name}/
+install -p -m 755 staging/QGroundControl %{buildroot}/%{_bindir}/
 mkdir -p %{buildroot}/usr/share/{applications,pixmaps}
-install -p -m 0644 ../deploy/qgroundcontrol.desktop %{buildroot}/usr/share/applications/
-install -p -m 0644 ../resources/icons/qgroundcontrol.png %{buildroot}/usr/share/pixmaps/
-sed -i -e 's/^Categories=.*/Categories=Development;Building;/' %{buildroot}/usr/share/applications/qgroundcontrol.desktop
-sed -i -e 's,^Exec=.*,Exec=QGroundControl,' %{buildroot}/usr/share/applications/qgroundcontrol.desktop
+install -p -m 0644 staging/qgroundcontrol.desktop %{buildroot}/usr/share/applications/
+install -p -m 0644 staging/qgroundcontrol.png %{buildroot}/usr/share/pixmaps/
+sed -i -e 's/^Categories=.*/Categories=System;HardwareSettings;/' %{buildroot}/usr/share/applications/qgroundcontrol.desktop
 %fdupes %{buildroot}%{_prefix}
 
 %files
