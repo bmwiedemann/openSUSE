@@ -1,0 +1,5 @@
+<package name="SILLY" project="openSUSE:Factory">
+  <title>Simply Image Loading LibrarY</title>
+  <description>SILLY means Simple Image Loading LibrarY. The aim of this library is to provide a simple library for loading image in the context of CEGUI. The library supports only the most common image format. The project was initially launch in order to provide an MIT based replacement of DevIL with less image format supported and focused on loading image only.</description>
+  <devel project="games" package="SILLY"/>
+</package>

@@ -1,0 +1,12 @@
+diff -Naur SILLY-0.1.0.orig/src/loaders/SILLYPNGImageLoader.cpp SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp
+--- SILLY-0.1.0.orig/src/loaders/SILLYPNGImageLoader.cpp	2006-06-19 00:42:12.000000000 +0200
++++ SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp	2013-04-15 15:29:20.559060117 +0200
+@@ -41,6 +41,8 @@
+ 
+ #include "loaders/SILLYPNGImageContext.h" 
+ #include <png.h>
++#include <string.h>
++
+ // Start section of namespace SILLY
+ namespace SILLY
+ {
