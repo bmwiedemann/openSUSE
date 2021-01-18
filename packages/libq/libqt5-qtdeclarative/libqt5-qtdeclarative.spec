@@ -75,6 +75,7 @@ Summary:        Qt 5 Declarative Library
 Group:          Development/Libraries/X11
 # Used by QtQuick.LocalStorage
 Requires:       libQt5Sql5-sqlite
+Requires:       (qml-autoreqprov if rpm-build)
 
 %description -n %{libname}
 Qt is a set of libraries for developing applications.
