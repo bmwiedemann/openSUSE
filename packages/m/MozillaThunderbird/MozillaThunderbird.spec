@@ -1,7 +1,7 @@
 #
 # spec file for package MozillaThunderbird
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #               2006-2020 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.6.0
-%define orig_version   78.6.0
+%define mainver        %major.6.1
+%define orig_version   78.6.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -477,6 +477,7 @@ xvfb-run --server-args="-screen 0 1920x1080x24" \
 
 # build additional locales
 %if %localize
+mkdir -p %{buildroot}%{progdir}/extensions/
 truncate -s 0 %{_tmppath}/translations.{common,other}
 # langpack-build can not be done in parallel easily (see https://bugzilla.mozilla.org/show_bug.cgi?id=1660943)
 # Therefore, we have to have a separate obj-dir for each language
@@ -495,6 +496,7 @@ ac_add_options --disable-updater
 ac_add_options --enable-official-branding
 EOF
 mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
+
 sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/mail/locales/shipped-locales \
     | xargs -n 1 %{?jobs:-P %jobs} -I {} /bin/sh -c '
         locale=$1
@@ -504,7 +506,7 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
         # nsinstall is needed for langpack-build. It is already built by `./mach build`, but building it again is very fast
         ./mach build config/nsinstall langpack-$locale
         cp -rL ../obj_$locale/dist/xpi-stage/locale-$locale \
-          $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org
+           $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org
         rm -rf $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org/defaults
         rm -rf $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org/hyphenation
         # Build systems like to run out of disc-space, so we delete the build-dir here (we copied already all relevant files)

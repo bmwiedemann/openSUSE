@@ -3456,4 +3456,16 @@ I cannot test locally unfortunately.
     Memory safety bugs fixed in Thunderbird 78.6</comment>
     <requestid>856497</requestid>
   </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>c50e43c871c314101679c86d28bc3a76</srcmd5>
+    <version>78.6.1</version>
+    <time>1610965600</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.6.1
+  MFSA 2021-02 (bsc#1180623)
+  * CVE-2020-16044 (bmo#1683964)
+    Use-after-free write when handling a malicious COOKIE-ECHO SCTP
+    chunk</comment>
+    <requestid>862980</requestid>
+  </revision>
 </revisionlist>

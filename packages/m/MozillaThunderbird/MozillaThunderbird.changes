@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 11 16:35:00 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.6.1
+  MFSA 2021-02 (bsc#1180623)
+  * CVE-2020-16044 (bmo#1683964)
+    Use-after-free write when handling a malicious COOKIE-ECHO SCTP
+    chunk
+
+-------------------------------------------------------------------
 Sat Dec 12 10:25:08 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.6.0
