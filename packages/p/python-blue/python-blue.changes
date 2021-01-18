@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jan 18 08:23:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.5.2:
+  - fixed building of documentation (gh#grantjenks/blue#26)
+
+-------------------------------------------------------------------
+Sun Jan 17 22:49:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for blue 0.5.1
