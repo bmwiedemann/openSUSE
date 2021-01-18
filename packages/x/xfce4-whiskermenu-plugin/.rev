@@ -89,4 +89,364 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860893</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c718e0517d4ddbdeda8ca32ae692ea17</srcmd5>
+    <version>2.5.2</version>
+    <time>1610965827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.2
+  * Do not reparent launched programs.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#32)
+  * Translation updates
+- Update to version 2.5.1
+  - Fix not always using new action icons. 
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#33)
+  - Obsoletes action-icons.patch 
+- Added backport patch action-icons.patch to make sure to use the 
+  correct action icons.
+- Update to version 2.5.0
+  - Add option to show all applications by default. (Issue #4)
+  - Rearrange sidebar buttons to match default category. (Issue #9)
+  - Show panel button title as tooltip in icon-only mode. (Issue #12)
+  - Always sort top-level categories.
+  - Vertically center contents of header.
+  - Use new Xfce action icons.
+  - Use new desktop ids for default programs.
+  - Rewrite to hide menu on focus out.
+  - Refactor code to use new Xfce functions.
+  - Refactor building translations. 
+- Update to version 2.4.6
+  * Fix crash during grab check. (gxo#19)
+  * Fix background incorrect without compositing. 
+- Update to 2.4.5
+  * Fix saving plugin title with overridden default text (bxo#16822)
+  * Fix extra key press to select search items (gxo#8)
+  * Fix icon view skipping first item when pressing arrow key
+  * Fix incorrect signal name
+  * Fix nonfunctional grab check
+  * Translation updates
+- Update to 2.4.4
+  * Fixed search delay. (bxo#16731)
+  * Translation updates
+- Update to 2.4.3
+  * Fix loading incorrect icons for some applications. (bxo#16461)
+  * Translation updates
+- Update to 2.4.2
+  * Fix crash when selecting desktop action. (bxo#16445)
+  * Translation updates
+- Update to 2.4.1
+  * Fix narrow iconview columns.
+  * Fix bad hyphenation by increasing iconview column width.
+  * Translation updates
+- Update to 2.4.0
+  * Add option to show as icons. (bxo#15675)
+  * Add hiding menu items. (bxo#14816)
+  * Add searching keywords of menu items. (bxo#15047)
+  * Add tooltip to profile picture for editing profile. (bxo#15501)
+  * Adjust wording of switch user command. (bxo#15398)
+  * Add icons to context menu.
+  * New default layout.
+  * Make panel button square only if single row and title hidden.
+  * Rearrange settings dialog.
+  * Redesign session confirmation dialogs.
+  * Refactor code.
+  * Rewrite menu load to match GarconGtkMenu.
+  * Switch categories with keyboard focus if hover enabled.
+  * Use custom icon renderer.
+  * Use link time optimization if available.
+  * Increase C++ version.
+  * Translation updates
+- Update to 2.3.5
+  * Fix saving unchanged plugin title. (bxo#15403)
+  * Fix sidebar scrollbar covering buttons. (bxo#14730)
+  * Fix categories remaining scrolled when hidden.
+  * Fix incorrect alignment of commands next to search.
+  * Fix incorrect fallback value for menu opacity.
+  * Fix incorrect check when setting command.
+  * Update documentation URL. (bxo#16183)
+- Update to 2.3.4
+  * Fix building against xfce4-panel 4.15.0
+  * Translation updates
+- Compact description. Ensure neutrality of description.
+- Update to 2.3.3
+  * Removed workaround for garcon that did not always fix crash.
+  * Translation updates
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added conditional to prevent build failure with cmake and Leap 15.0
+- update to 2.3.2
+  * Fix editing menu items containting a single quote. (bxo#15091)
+  * Fix displaying empty tooltips. (bxo#15137)
+  * Translation updates: Dutch, Galician, Spanish, Swedish, Ukrainian.
+- update to 2.3.1
+  * Fix crash when reload is required.
+  * Translation updates
+- drop obsolete macros
+- update to 2.3.0:
+  * Fix sidebar wider than iconless categories.
+  * Add buttons for individual logout commands. (bxo#14639)
+  * Add option to stay visible when focus is lost. (bxo#12240)
+  * Always allow positioning commands next to search.
+  * Improve preferences spacing. (bxo#14683)
+  * Translation updates
+- update to 2.2.1:
+  * Fix category button staying active when dragged. (bxo#14419)
+  * Fix regression of non-square panel image support. (bxo#14506)
+  * Fix redundant hiding of menu.
+  * Fix sidebar buttons retaining incorrect width.
+  * Fix commands not following sidebar.
+  * Translation updates
+- update to 2.2.0:
+  * Fix panel icon size not following theme.
+  * Disable opacity option when non-composited.
+  * Rename option for including favorites in recent.
+  * Load applications in a thread. (bxo#12903)
+  * Slide out search results.
+  * Require GTK+ version 3.22.
+  * Translation updates
+- packaging: remove icon_theme_cache_{post,postun} macros, package
+  does not build for pre-Leap-15 anyway and today they are no-ops.
+- update to 2.1.7:
+  * Fix memory leak when recreating window.
+  * Use HTTPS for plugin website.
+  * Fix losing search focus. (bxo#14209)
+  * Fix crash when last search action is deleted.
+  * Fix menu shown in alt-tab.
+  * Translation updates
+- update to 2.1.5:
+  - Fix class/struct typo. (bxo#14001)
+  - Translation updates
+- update to 2.1.4:
+  - Fix excessive padding on panel button. (bxo#13611)
+  - Fix blurry category buttons with high DPI.
+  - Fix blurry profile picture with high DPI.
+  - Fix panel icon too big with high DPI. (bxo#13893)
+  - Translation updates
+- update to 2.1.3:
+  - Fixed desktop action incorrectly parsing escaped k
+  - Translation updates
+- update to 2.1.2:
+  - Fixed category names checkbox incorrectly enabled when opening
+    dialog
+  - Fixed category names turning off at login. (bug #13422)
+  - Fixed memory leak when editing launcher (2.1.1)
+  - Translation updates
+- update to 2.1.0:
+  - Add editing launchers from context menu (bxo#13290)
+  - Add support for desktop actions (bxo#11787)
+  - Add option to hide category names (bxo#12895)
+  - Load applications immediately
+  - Translation updates
+- update to 2.0.3:
+  - translation updates
+- update to 2.0.2:
+  - port to GTK3
+- Update to 1.6.1.
+  * Translation updates: Asturian, Basque, Catalan (Valencian),
+    Chinese (China), Kazakh, Lithuanian, Polish, Russian, Turkish,
+    Ukrainian.
+- Update to 1.6.0.
+  * Add keyboard navigation for categories.
+  * Add tooltips for program descriptions.
+  * Add web search action.
+  * Hide recent items when maximum is set to zero.
+  * Prevent memory leak when changing element text.
+  * Search favorites and recent first.
+  * Switch to icon names from GtkStock.
+  * Translation updates: Bulgarian, Catalan, Chinese (Taiwan),
+    Czech, Dutch, German, French, Hebrew, Hungarian, Lithuanian,
+    Polish, Slovak, Slovenian, Serbian, Spanish.
+- Update to 1.5.3.
+  * Fix stuck button highlight.
+  * Fix losing categories.
+  * Fix warning about infinite recursion.
+  * Translation updates: Basque, Dutch, Hebrew, Icelandic.
+- Update to 1.5.2.
+  * Fix modifier keys resetting focus to search entry.
+  * Fix limited input length for search actions.
+  * Fix menu shrinking unnecessarily.
+  * Fix minimum window size.
+  * Translation updates: Chinese (China), Hungarian, Korean,
+    Lithuanian, Romanian.
+- Correct the source URL.
+- No more the ChangeLog file in the source (removed from %doc).
+- Update to 1.5.1.
+  * Fix window being draggable.
+  * Fix not searching descriptions.
+  * Translation updates: Asturian, Bulgarian, Chinese
+    (China), Chinese (Taiwan), Croatian, Czech, Danish, Dutch,
+    French, Finnish,German, Indonesian, Japanese, Kazakh,
+    Lithuanian, Malay, Nepali, Norwegian Bokmål, Persian, Polish,
+    Portuguese, Russian, Serbian, Slovak, Slovenian, Spanish,
+    Swedish, Turkish.
+- Update to 1.5.0.
+  * Fix search activation to allow input methods.
+  * Fix broken menu when closed by window manager.
+  * Fix unnecessary assignment to NULL.
+  * Fix possible null pointer dereference.
+  * Add option to set background opacity.
+  * Add command to edit profile.
+  * Add profile picture.
+  * Add customizable limit for recently used.
+  * Add support for non-square panel button icon.
+  * Add items of Xfce settings manager to allow searching.
+  * Expand subcategories when activated.
+  * Load default settings from XDG location.
+  * Make launchers executable when they are added to desktop.
+  * Rearrange options in configuration dialog.
+  * Refactor list page code.
+  * Rename option for including favorites in recently used.
+  * Rename option to use single panel row.
+  * Rename button to match default menu applet.
+  * Use a single instance of the garcon menu.
+  * Translation updates: Bulgarian, Catalan, Dutch, French, German,
+    Hebrew, Italian, Japanese, Lithuanian, Polish, Portuguese,
+    Slovak, Slovenian, Spanish, Swedish, Turkish, Chinese (Taiwan).
+- Update to 1.4.3.
+  * Fix hang at launch by removing load thread.
+  * Fix not saving sorted favorites.
+  * Translation updates: French, Hungarian, Russian, Slovak.
+- Use %cmake and %cmake_install macros.
+- Update to 1.4.2.
+  * Fix panel button border not shown when pressed.
+  * Fix commands were editable when disabled.
+  * Fix incorrectly disabled checkbox for commands position.
+  * Fix commands next to search when not next to panel button.
+  * Translation updates: French, Hebrew, Serbian.
+- Update to 1.4.1.
+  * Fix crash with invalid utf8 encoding.
+  * Fix not searching descriptions unless shown.
+  * Fix not using secure connection to Wikipedia.
+  * Translation updates: Asturian, Basque, Dutch, Finnish, French,
+    Greek, Indonesian, Kazakh, Lithuanian, Nepali, Persian, Polish,
+    Romanian, Spanish, Swedish, Turkish, Ukrainian, Uzbek.
+- Update to 1.4.0.
+  * Add option to switch position of categories and launchers.
+  * Add waiting for grabs.
+  * Allows modifier as shortcut.
+  * Add padding to username.
+  * Add single panel row option.
+  * Add about entry to context menu.
+  * Load applications immediately.
+  * Recognize keypad enter as return for searching.
+  * Set menu window type hint to DIALOG.
+  * Translation updates: Bulgarian, Catalan, Chinese (Taiwan),
+    Czech, Dutch, French, German, Hebrew, Italian, Japanese, Malay,
+    Norwegian Bokmål, Polish, Portuguese, Russian, Slovak, Spanish,
+    Swedish.
+- Update to 1.3.2.
+  * Fix crash when rearranging favorites.
+  * Fix menu flashing when panel button is pressed rapidly.
+  * Fix unable to click command buttons when focus follows mouse.
+  * Fix panel button icon alignment in deskbar mode.
+  * Translation updates: Arabic, Asturian, Chinese (Taiwan),
+    Croatian, Czech, Danish, Finnish, Latvian, Nepali, Norwegian
+    Bokmål, Portuguese (Brazil), Slovenian, Vietnamese.
+- Drop
+  xfce4-whiskermenu-plugin-1.3.1-fix_crash_while_dragging.patch
+  (fixed upstream).
+- Add
+  xfce4-whiskermenu-plugin-1.3.1-fix_crash_while_dragging.patch:
+  fixed crash when accessing null launcher in assert
+  (gh#gottcode/xfce4-whiskermenu-plugin/issues/#77).
+- Update to 1.3.1.
+  * Fix crash when menu items are changed.
+  * Fixes to the button layout.
+  * Translation updates: German, French, Nepali, Polish, Spanish,
+    Uzbek, Vietnamese.
+- Update to 1.3.0.
+  * Fix menu artifacts when switching categories.
+  * Fix undefined behavior in slots.
+  * Add command to launch menu editor.
+  * Add command to switch users.
+  * Add hiding commands.
+  * Add browsing for commands.
+  * Add hiding category and launcher icons.
+  * Add loading default settings from a file.
+  * Add search actions.
+  * Add running arbitrary programs in PATH.
+  * Add dragging launchers to panel or desktop.
+  * Add support for custom menu files.
+  * Defer loading applications until window is shown.
+  * Merge configuration dialog tabs.
+  * Rearrange source files to match standard layout of Xfce
+    plugins.
+  * Reduce unnecessary reloading of applications.
+  * Rewrite search model code.
+  * Use a single row in Xfce 4.10 panel.
+  * Use empty file for saving settings.
+  * Translation updates: Asturian, Brazilian Portuguese, Bulgarian,
+    Catalan, Chinese (Taiwan), Dutch, German, Hebrew, Hungarian,
+    Italian, Japanese, Kazakh, Nepali, Norwegian Bokmål, Persian,
+    Polish, Portuguese, Romanian, Russian, Serbian,
+    Serbian (Latin), Slovak, Spanish, Turkish, Ukrainian.
+- Update to 1.2.2.
+  * Fix incorrect fetching of panel orientation in Xfce 4.10.
+  * Fix menu item icons colored by selection background.
+  * Fix unable to set custom commands with parameters.
+  * Translation updates: Arabic, German, Spanish, Ukrainian.
+- Update to 1.2.1.
+  * Fix incorrect comparison for checking icon sizes.
+  * Add window title to allow identifying menu window.
+  * Add tips to README for popup script and compiz workaround.
+  * Improve build system files.
+  * Translation updates: Asturian, Catalan, Chinese (Taiwan),
+    Czech, German, Estonian, French, Hungarian, Indonesian,
+    Persian, Russian, Spanish, Turkish.
+- Update to 1.2.0.
+  * Fix popup script to show correct version information.
+  * Fix memory leak when reloading applications.
+  * Fix favorites and recent deleted when menu failed to load.
+  * Add option to load menu hierarchy.
+  * Add option to not include favorites in recently used.
+  * Add options to set custom commands.
+  * Add option to show recently used by default.
+  * Add option to position search entry next to panel button.
+  * Add option to position command buttons next to search entry.
+  * Add manual page for popup script.
+  * Use tabs for configuration dialog layout.
+  * Translation updates: Brazilian Portuguese, Bulgarian, Catalan,
+    Croatian, Danish, Dutch, Finnish, French, German, Greek,
+    Hebrew, Italian, Japanese, Norwegian Bokmål, Polish,
+    Portuguese, Romanian, Russian, Serbian (Latin), Slovak,
+    Spanish.
+- Update to 1.1.1.
+  * Add name to main widget to allow styling.
+  * Build system improvements.
+  * Translation updates: Arabic, Catalan, French, Indonesian,
+    Japanese, Russian, Spanish.
+- Drop xfce4-whiskermenu-plugin-1.1.0-russian.patch (fixed
+  upstream).
+- Add xfce4-whiskermenu-plugin-1.1.0-russian.patch: update Russian
+  translation (submitted to Transifex).
+- Update to 1.1.0.
+  * Fix hang at launch when there are too many recent items.
+  * Fix focus selection not properly reset when switching
+    categories.
+  * Fix menu not hiding when configuration dialog is clicked.
+  * Fix context menu disabling detection of clicks outside menu.
+  * Fix filter applied when button is deselected.
+  * Fix not showing items with duplicate text.
+  * Add external command to popup menu.
+  * Add option to show label with or instead of icon.
+  * Add option to switch categories by hovering.
+  * Add choosing icon sizes of launchers and categories.
+  * Add scrolling to sidebar.
+  * Add menu action to clear recently used.
+  * Add menu actions to sort favorites alphabetically.
+  * Add icons to context menu.
+  * New search algorithm.
+  * Refactor category code.
+  * Show launcher name in context menu.
+  * Build system improvements.
+  * Reduce C++ version.
+  * Translation updates: Brazilian Portuguese, Bulgarian, Danish,
+    Dutch, German, Greek, Hebrew, Kazakh, Hungarian, Indonesian,
+    Italian, Norwegian Bokmål, Polish, Portuguese, Romanian,
+    Slovak, Swedish, Turkish, Vietnamese.
+- Initial package created - 1.0.3.
+</comment>
+    <requestid>863980</requestid>
+  </revision>
 </revisionlist>
