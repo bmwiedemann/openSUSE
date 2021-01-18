@@ -433,6 +433,8 @@ Prefer: tensorflow
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
 Prefer: -python3-sip4 -python3-sip4-devel
+Prefer: -python36-sip4 -python36-sip4-devel
+Prefer: -python38-sip4 -python38-sip4-devel
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
 Prefer: python3-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit
@@ -453,6 +455,8 @@ Prefer: php8:php8-cli
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
 Prefer: python3-vsts
+Prefer: python36-vsts
+Prefer: python38-vsts
 
 # for symbol syslog (syslogd is best as it has the least dependencies)
 Prefer: syslogd
@@ -470,7 +474,7 @@ Prefer: nodejs10 nodejs10-devel npm10
 Prefer: libpulse0-32bit libsane1-32bit
 
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
-Prefer: vtk-java vtk-tcl python3-vtk
+Prefer: vtk-java vtk-tcl python3-vtk python36-vtk python38-vtk
 Prefer: eclipse-swt
 
 # wine comes in various flavors by now, we pick the unflavored ones
@@ -922,6 +926,8 @@ Prefer: python3-pytest python38-pytest python36-pytest
 
 # There is python3-Django and python3-Django1 - as usual, we favor the unversioned one
 Prefer: -python3-Django1
+Prefer: -python36-Django1
+Prefer: -python38-Django1
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
@@ -1234,7 +1240,7 @@ Ignore: texlive-filesystem:cron
 Ignore: xinit:xterm
 Ignore: xdm:xterm
 Ignore: gnome-control-center:gnome-themes-accessibility
-
+Ignore: libgio-2_0-0:dbus-launch
 
 Ignore: man:groff-full
 Ignore: git-core:rsync
