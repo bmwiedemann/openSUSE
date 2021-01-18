@@ -16,7 +16,6 @@
 #
 
 
-%define apache_serverroot %(%{_sbindir}/apxs2 -q datadir 2>/dev/null || %{_sbindir}/apxs -q PREFIX)
 %define CGIPATH		%{apache_serverroot}/cgi-bin
 %define HTMLPATH	%{apache_serverroot}/htdocs
 %define MODELPATH	%{_libexecdir}/ups/driver
@@ -60,7 +59,7 @@ Patch11:        openssl-1_1.patch
 Patch12:        nut-upssched.patch
 Patch13:        reproducible.patch
 Patch14:        nutscanner-ftbfs.patch
-BuildRequires:  apache2-devel
+BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  avahi-devel
 BuildRequires:  fdupes
