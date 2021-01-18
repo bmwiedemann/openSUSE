@@ -60,11 +60,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version git-62beb979b4e43c361db54fbf3084f876fd2c11da
+%define upstream_version git-43ef1f2a5d80aa1c3f5b4831ada8e776ac0c7d13
 
 Name:           openafs
 
-Version:        1.8.6.1
+Version:        1.8.7
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -114,11 +114,6 @@ Source99:       openafs.changes
 Patch3:         dir_layout.patch
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         openafs-1.8.x.ncurses6.patch
-# PATCH-SUSE-SPECIFIC make KMP work again 
-Patch5:         add_arch_to_linux_kernel_make.patch
-# PATCH-SUSE-SPECIFIC make KMP work on aarch64 
-Patch6:         remove-get_ds-usage.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #
 #	GENERAL BuildRequires and Requires
@@ -331,8 +326,6 @@ done
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 ./regen.sh
 
@@ -937,6 +930,7 @@ fi
 %{_sbindir}/voldump
 %{_sbindir}/volinfo
 %{_sbindir}/volscan
+%{_sbindir}/rxstat_*
 %_unitdir/openafs-server.service
 %{_sbindir}/rcopenafs-server
 /%{_fillupdir}/sysconfig.openafs-server
