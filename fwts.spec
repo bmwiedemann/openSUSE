@@ -1,7 +1,7 @@
 #
 # spec file for package fwts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source0:        https://fwts.ubuntu.com/release/%{name}-V%{version}.tar.gz
 Patch1:         fwts-no-compiletime.patch
 # PATCH-FIX-OPENSUSE fwts-fix-non-acpi.patch
 Patch2:         fwts-fix-non-acpi.patch
+# PATCH-FIX-UPSTREAM acpi-pmtt-fix-infinite-loops-when-length-is-incorrectly-zero.diff
+Patch3:         acpi-pmtt-fix-infinite-loops-when-length-is-incorrectly-zero.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
