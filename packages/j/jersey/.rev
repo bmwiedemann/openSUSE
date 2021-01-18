@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>823090</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c48d3a304643259c1fa759f75e090fb6</srcmd5>
+    <version>2.28</version>
+    <time>1610965679</time>
+    <user>dimstar_suse</user>
+    <comment>Distribute the bom artifact too</comment>
+    <requestid>863249</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package jersey
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -253,7 +253,6 @@ rm media/multipart/src/test/java/org/glassfish/jersey/media/multipart/internal/M
 
 # Additional modules to disable when jp_minimal is activated
 %if %{with jp_minimal}
-%pom_disable_module bom
 %pom_disable_module containers
 %pom_disable_module security
 %pom_disable_module json-jettison media
