@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 17 16:46:17 UTC 2021 - Zoltan Balogh <zbalogh@suse.com>
+
+- Change the default repository to oss instead of repo-oss
+
+-------------------------------------------------------------------
 Mon Jan  4 15:59:59 UTC 2021 - Zoltan Balogh <zbalogh@suse.com>
 
 - Added python3-requests to the dependencies
