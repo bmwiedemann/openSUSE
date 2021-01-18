@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 18 00:46:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.16.1
+  * Fix a regression with pixel_to_world for output frames with one
+    axis. [#342]
+- Skip python36 because python36-astropy is not available.
+
+-------------------------------------------------------------------
 Sat Dec 19 00:24:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.16.0

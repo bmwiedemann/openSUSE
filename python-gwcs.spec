@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwcs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# Astropy dropped Python 3.6 
+# But gwcs still supports it, so keep the -base, requirement below for potential Leap backports
+%define skip_python36 1
 Name:           python-gwcs
 Version:        0.16.0
 Release:        0
