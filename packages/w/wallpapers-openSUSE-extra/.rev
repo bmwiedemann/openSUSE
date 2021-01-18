@@ -7,4 +7,12 @@
     <comment>Submission to factory as per https://lists.opensuse.org/opensuse-factory/2018-03/msg00204.html</comment>
     <requestid>596389</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c2bcb3f0df3d92cc3601546d17a5bc16</srcmd5>
+    <version>15</version>
+    <time>1610965724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863669</requestid>
+  </revision>
 </revisionlist>
