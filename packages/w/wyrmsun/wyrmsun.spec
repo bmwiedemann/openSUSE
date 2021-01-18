@@ -17,14 +17,13 @@
 
 
 Name:           wyrmsun
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Strategy game based on history, mythology and fiction
 License:        GPL-2.0-only AND CC-BY-SA-3.0
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmsun/archive/v%{version}/Wyrmsun-%{version}.tar.gz
-Patch0:         wyrmsun-dont-search-for-a-compiler.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -42,7 +41,6 @@ and iron. And perhaps one day they will meet one another, beyond the stars...
 
 %prep
 %setup -q -n Wyrmsun-%{version}
-%patch0 -p1
 
 %build
 %cmake

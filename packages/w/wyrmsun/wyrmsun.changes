@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 17 21:46:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.2
+  * Added firewyrm green-scaled variation
+- Drop patch:
+  * wyrmsun-dont-search-for-a-compiler.patch (included upstream)
+
+-------------------------------------------------------------------
 Sun Jan 10 11:54:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.1
