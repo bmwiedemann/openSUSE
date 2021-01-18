@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 15 21:06:07 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- The happy coincidence that python flavors and their interpreter
+  names have the same name is no longer true.
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Thu Dec 10 08:36:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.2:

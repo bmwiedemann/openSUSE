@@ -55,7 +55,7 @@ written in Python.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
-for py_var in %{pythons}; do
+%{python_expand py_var=$python
   mkdir ../$py_var
   cp -rp * ../$py_var
   pushd ../$py_var
@@ -64,14 +64,14 @@ for py_var in %{pythons}; do
     %{nil}
   %meson_build
   popd
-done
+}
 
 %install
-for py_var in %{pythons}; do
+%{python_expand py_var=$python
   pushd ../$py_var
   %meson_install
   popd
-done
+}
 
 %files %{python_files}
 %license COPYING
