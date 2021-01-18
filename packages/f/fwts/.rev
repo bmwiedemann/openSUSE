@@ -599,4 +599,13 @@
   * See provided changelog for detailed list of changes</comment>
     <requestid>856824</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>bafc93706483324fe0b52ae1b0d18e6e</srcmd5>
+    <version>20.12.00</version>
+    <time>1610979725</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fixing bsc#1178442 bsc#1177992
+  * acpi-pmtt-fix-infinite-loops-when-length-is-incorrectly-zero.diff</comment>
+    <requestid>864074</requestid>
+  </revision>
 </revisionlist>
