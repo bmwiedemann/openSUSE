@@ -2,11 +2,11 @@
  alpine/Makefile.am |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: alpine-2.22/alpine/Makefile.am
+Index: alpine-2.24/alpine/Makefile.am
 ===================================================================
---- alpine-2.22.orig/alpine/Makefile.am
-+++ alpine-2.22/alpine/Makefile.am
-@@ -50,5 +50,5 @@ AM_LDFLAGS = `cat @top_srcdir@/c-client/
+--- alpine-2.24.orig/alpine/Makefile.am
++++ alpine-2.24/alpine/Makefile.am
+@@ -50,6 +50,6 @@ AM_LDFLAGS = `cat @top_srcdir@/c-client/
  CLEANFILES = date.c
  
  date.c:
@@ -14,3 +14,4 @@ Index: alpine-2.22/alpine/Makefile.am
 -	echo "char hoststamp[]="\"$(ALPINE_HOSTSTAMP)\"";" >> date.c
 +	echo "char datestamp[]="\"today\"";" > date.c
 +	echo "char hoststamp[]="\"sand\"";" >> date.c
+ 	echo "char configoptions[]="\"`../config.status --config`\"";" >> date.c

@@ -406,4 +406,12 @@
     <comment>- Update to release 2.23.2</comment>
     <requestid>839297</requestid>
   </revision>
+  <revision rev="50" vrev="20">
+    <srcmd5>54bd40a8a8498ef26b826db55c307655</srcmd5>
+    <version>unknown</version>
+    <time>1610965692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.24</comment>
+    <requestid>863398</requestid>
+  </revision>
 </revisionlist>

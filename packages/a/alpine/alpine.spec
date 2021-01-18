@@ -1,7 +1,7 @@
 #
 # spec file for package alpine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           alpine
 # For debugging only:
 %define		build_vanilla		0
-Version:        2.23.2
+Version:        2.24
 Release:        0
 Summary:        Mail User Agent
 License:        Apache-2.0
@@ -27,10 +27,10 @@ Group:          Productivity/Networking/Email/Clients
 URL:            http://alpine.x10host.com/alpine/
 #Git-Clone:     https://repo.or.cz/alpine.git
 
-#Source:         http://alpine.x10host.com/alpine/release/src/%name-%version.tar.xz
-Source:         %name-%version.tar.xz
-Source1:        %name.png
-Source2:        %name.desktop
+Source:         http://alpine.x10host.com/alpine/release/src/alpine-%version.tar.xz
+Source2:        http://alpine.x10host.com/alpine/release/src/sig/alpine-%version.tar.xz.sig
+Source3:        %name.png
+Source4:        %name.desktop
 Source9:        UPDATING.txt
 Patch2:         make-use-of-strncat-safer.diff
 Patch3:         operation-may-be-undefined-warning.diff
@@ -208,8 +208,8 @@ perl -i -pe 's{(define SYSTYPE) "LNX"}{$1 "'"$tag"'"}g' include/config.h
 # When called as alpinef, alpine uses function keys instead of Control keys:
 #
 ln %{buildroot}/%{_bindir}/alpine %{buildroot}/%{_bindir}/alpinef
-install -D -m644 %{SOURCE1} %{buildroot}/%{_datadir}/pixmaps/%name.png
-install -D -m644 %{SOURCE2} %{buildroot}/%{_datadir}/applications/%name.desktop
+install -D -m644 %{SOURCE3} %{buildroot}/%{_datadir}/pixmaps/%name.png
+install -D -m644 %{SOURCE4} %{buildroot}/%{_datadir}/applications/%name.desktop
 %suse_update_desktop_file %name
 :
 ln -sf		 alpine			%{buildroot}/%{_bindir}/pine

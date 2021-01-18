@@ -1,10 +1,9 @@
-Index: alpine-2.23.2/alpine/arg.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/arg.c
---- alpine-2.23.2/alpine/arg.c
-*************** static char args_err_non_abs_pwdcertdir[
-*** 68,73 ****
---- 68,74 ----
+diff -rc alpine-2.24/alpine/arg.c alpine-2.24.fancy/alpine/arg.c
+*** alpine-2.24/alpine/arg.c	2020-10-10 00:24:28.212554806 -0600
+--- alpine-2.24.fancy/alpine/arg.c	2020-10-10 00:26:49.208148014 -0600
+***************
+*** 70,75 ****
+--- 70,76 ----
   #endif /* SMIME inside PASSFILE */
   #endif
   static char args_err_missing_sort[] =		N_("missing argument for option \"-sort\"");
@@ -12,9 +11,9 @@ Index: alpine-2.23.2/alpine/arg.c
   static char args_err_missing_flag_arg[] =	N_("missing argument for flag \"%c\"");
   static char args_err_missing_flag_num[] =	N_("Non numeric argument for flag \"%c\"");
   static char args_err_missing_debug_num[] =	N_("Non numeric argument for \"%s\"");
-*************** N_(" -k \t\tKeys - Force use of function
-*** 116,121 ****
---- 117,123 ----
+***************
+*** 118,123 ****
+--- 119,125 ----
   N_(" -z \t\tSuspend - allow use of ^Z suspension"),
   N_(" -r \t\tRestricted - can only send mail to oneself"),
   N_(" -sort <sort>\tSort - Specify sort order of folder:"),
@@ -22,9 +21,9 @@ Index: alpine-2.23.2/alpine/arg.c
   N_("\t\t\tarrival, subject, threaded, orderedsubject, date,"),
   N_("\t\t\tfrom, size, score, to, cc, /reverse"),
   N_(" -i\t\tIndex - Go directly to index, bypassing main menu"),
-*************** pine_args(struct pine *pine_state, int a
-*** 217,222 ****
---- 219,225 ----
+***************
+*** 280,285 ****
+--- 282,288 ----
       char *cmd_list            = NULL;
       char *debug_str           = NULL;
       char *sort                = NULL;
@@ -32,9 +31,9 @@ Index: alpine-2.23.2/alpine/arg.c
       char *pinerc_file         = NULL;
       char *lc		      = NULL;
       XOAUTH2_INFO_S x;
-*************** Loop: while(--ac > 0)
-*** 440,445 ****
---- 443,459 ----
+***************
+*** 503,508 ****
+--- 506,522 ----
   
   		  goto Loop;
   	      }
@@ -52,11 +51,10 @@ Index: alpine-2.23.2/alpine/arg.c
   	      else if(strcmp(*av, "url") == 0){
   		  if(args->action == aaFolder && !args->data.folder){
   		      args->action = aaURL;
-Index: alpine-2.23.2/alpine/confscroll.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/confscroll.c
---- alpine-2.23.2/alpine/confscroll.c
-*************** char    *yesno_pretty_value(struct pine
+diff -rc alpine-2.24/alpine/confscroll.c alpine-2.24.fancy/alpine/confscroll.c
+*** alpine-2.24/alpine/confscroll.c	2020-10-10 00:24:28.216554908 -0600
+--- alpine-2.24.fancy/alpine/confscroll.c	2020-10-10 00:26:49.212148118 -0600
+***************
 *** 140,146 ****
   char    *radio_pretty_value(struct pine *, CONF_S *);
   char    *sigfile_pretty_value(struct pine *, CONF_S *);
@@ -73,7 +71,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
   int      longest_feature_name(void);
   COLOR_PAIR *sample_color(struct pine *, struct variable *);
   COLOR_PAIR *sampleexc_color(struct pine *, struct variable *);
-*************** set_radio_pretty_vals(struct pine *ps, C
+***************
 *** 288,294 ****
       CONF_S *ctmp;
   
@@ -91,8 +89,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
           standard_radio_var(ps, (*cl)->var) ||
   	(*cl)->var == startup_ptr)))
         return;
-*************** radiobutton_tool(struct pine *ps, int cm
-*** 2960,2966 ****
+***************
+*** 2958,2964 ****
   	    }
   
   	    set_current_val((*cl)->var, TRUE, TRUE);
@@ -100,7 +98,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
   		ps->def_sort     = def_sort;
   		ps->def_sort_rev = def_sort_rev;
   	    }
---- 2961,2967 ----
+--- 2959,2965 ----
   	    }
   
   	    set_current_val((*cl)->var, TRUE, TRUE);
@@ -108,9 +106,9 @@ Index: alpine-2.23.2/alpine/confscroll.c
   		ps->def_sort     = def_sort;
   		ps->def_sort_rev = def_sort_rev;
   	    }
-*************** radiobutton_tool(struct pine *ps, int cm
-*** 2969,2974 ****
---- 2970,3006 ----
+***************
+*** 2967,2972 ****
+--- 2968,3004 ----
   	    ps->mangled_body = 1;	/* BUG: redraw it all for now? */
   	    rv = 1;
   	}
@@ -148,8 +146,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	else
   	  q_status_message(SM_ORDER | SM_DING, 3, 6,
   			   "Programmer botch!  Unknown radiobutton type.");
-*************** pretty_value(struct pine *ps, CONF_S *cl
-*** 3832,3838 ****
+***************
+*** 3830,3836 ****
       else if(standard_radio_var(ps, v) || v == startup_ptr)
         return(radio_pretty_value(ps, cl));
       else if(v == &ps->vars[V_SORT_KEY])
@@ -157,7 +155,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
       else if(v == &ps->vars[V_SIGNATURE_FILE])
         return(sigfile_pretty_value(ps, cl));
       else if(v == &ps->vars[V_USE_ONLY_DOMAIN_NAME])
---- 3864,3872 ----
+--- 3862,3870 ----
       else if(standard_radio_var(ps, v) || v == startup_ptr)
         return(radio_pretty_value(ps, cl));
       else if(v == &ps->vars[V_SORT_KEY])
@@ -167,8 +165,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
       else if(v == &ps->vars[V_SIGNATURE_FILE])
         return(sigfile_pretty_value(ps, cl));
       else if(v == &ps->vars[V_USE_ONLY_DOMAIN_NAME])
-*************** color_pretty_value(struct pine *ps, CONF
-*** 4363,4376 ****
+***************
+*** 4361,4374 ****
   
   
   char *
@@ -183,7 +181,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
   {
       char  tmp[6*MAXPATH];
       char *pvalnorm, *pvalexc, *pval;
---- 4397,4410 ----
+--- 4395,4408 ----
   
   
   char *
@@ -198,8 +196,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
   {
       char  tmp[6*MAXPATH];
       char *pvalnorm, *pvalexc, *pval;
-*************** generalized_sort_pretty_value(struct pin
-*** 4420,4426 ****
+***************
+*** 4418,4424 ****
       }
       else if(fixed){
   	pval = v->fixed_val.p;
@@ -207,7 +205,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	is_the_one = (var_sort_rev == line_sort_rev && var_sort == line_sort);
   
   	utf8_snprintf(tmp, sizeof(tmp), "(%c)  %s%-*w%*s%s",
---- 4454,4460 ----
+--- 4452,4458 ----
       }
       else if(fixed){
   	pval = v->fixed_val.p;
@@ -215,8 +213,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	is_the_one = (var_sort_rev == line_sort_rev && var_sort == line_sort);
   
   	utf8_snprintf(tmp, sizeof(tmp), "(%c)  %s%-*w%*s%s",
-*************** generalized_sort_pretty_value(struct pin
-*** 4431,4439 ****
+***************
+*** 4429,4437 ****
   		is_the_one ? "   (value is fixed)" : "");
       }
       else if(is_set_for_this_level){
@@ -226,7 +224,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	the_exc_one = (editing_normal_which_isnt_except && pvalexc &&
   		       exc_sort_rev == line_sort_rev && exc_sort == line_sort);
   	utf8_snprintf(tmp, sizeof(tmp), "(%c)  %s%-*w%*s%s",
---- 4465,4473 ----
+--- 4463,4471 ----
   		is_the_one ? "   (value is fixed)" : "");
       }
       else if(is_set_for_this_level){
@@ -236,8 +234,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	the_exc_one = (editing_normal_which_isnt_except && pvalexc &&
   		       exc_sort_rev == line_sort_rev && exc_sort == line_sort);
   	utf8_snprintf(tmp, sizeof(tmp), "(%c)  %s%-*w%*s%s",
-*************** generalized_sort_pretty_value(struct pin
-*** 4451,4457 ****
+***************
+*** 4449,4455 ****
       }
       else{
   	if(pvalexc){
@@ -245,7 +243,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	    is_the_one = (exc_sort_rev == line_sort_rev &&
   			  exc_sort == line_sort);
   	    utf8_snprintf(tmp, sizeof(tmp), "( )  %s%-*w%*s%s",
---- 4485,4491 ----
+--- 4483,4489 ----
       }
       else{
   	if(pvalexc){
@@ -253,8 +251,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	    is_the_one = (exc_sort_rev == line_sort_rev &&
   			  exc_sort == line_sort);
   	    utf8_snprintf(tmp, sizeof(tmp), "( )  %s%-*w%*s%s",
-*************** generalized_sort_pretty_value(struct pin
-*** 4462,4468 ****
+***************
+*** 4460,4466 ****
   	}
   	else{
   	    pval = v->current_val.p;
@@ -262,7 +260,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	    is_the_one = ((pval || default_ok) &&
   			  var_sort_rev == line_sort_rev &&
   			  var_sort == line_sort);
---- 4496,4502 ----
+--- 4494,4500 ----
   	}
   	else{
   	    pval = v->current_val.p;
@@ -270,8 +268,8 @@ Index: alpine-2.23.2/alpine/confscroll.c
   	    is_the_one = ((pval || default_ok) &&
   			  var_sort_rev == line_sort_rev &&
   			  var_sort == line_sort);
-*************** fix_side_effects(struct pine *ps, struct
-*** 5621,5629 ****
+***************
+*** 5616,5624 ****
       else if(revert && var == &ps->vars[V_SORT_KEY]){
   	int def_sort_rev;
   
@@ -281,7 +279,7 @@ Index: alpine-2.23.2/alpine/confscroll.c
       else if(var == &ps->vars[V_THREAD_MORE_CHAR] ||
               var == &ps->vars[V_THREAD_EXP_CHAR] ||
               var == &ps->vars[V_THREAD_LASTREPLY_CHAR]){
---- 5655,5669 ----
+--- 5650,5664 ----
       else if(revert && var == &ps->vars[V_SORT_KEY]){
   	int def_sort_rev;
   
@@ -297,11 +295,10 @@ Index: alpine-2.23.2/alpine/confscroll.c
       else if(var == &ps->vars[V_THREAD_MORE_CHAR] ||
               var == &ps->vars[V_THREAD_EXP_CHAR] ||
               var == &ps->vars[V_THREAD_LASTREPLY_CHAR]){
-Index: alpine-2.23.2/alpine/confscroll.h
-===================================================================
-*** alpine-2.23.2.orig/alpine/confscroll.h
---- alpine-2.23.2/alpine/confscroll.h
-*************** int	 checkbox_tool(struct pine *, int, C
+diff -rc alpine-2.24/alpine/confscroll.h alpine-2.24.fancy/alpine/confscroll.h
+*** alpine-2.24/alpine/confscroll.h	2020-10-10 00:24:28.208554703 -0600
+--- alpine-2.24.fancy/alpine/confscroll.h	2020-10-10 00:26:49.212148118 -0600
+***************
 *** 97,103 ****
   int	 radiobutton_tool(struct pine *, int, CONF_S **, unsigned);
   int	 yesno_tool(struct pine *, int, CONF_S **, unsigned);
@@ -318,11 +315,10 @@ Index: alpine-2.23.2/alpine/confscroll.h
   int	 exclude_config_var(struct pine *, struct variable *, int);
   int      config_exit_cmd(unsigned);
   int	 simple_exit_cmd(unsigned);
-Index: alpine-2.23.2/alpine/keymenu.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/keymenu.c
---- alpine-2.23.2/alpine/keymenu.c
-*************** struct key index_keys[] =
+diff -rc alpine-2.24/alpine/keymenu.c alpine-2.24.fancy/alpine/keymenu.c
+*** alpine-2.24/alpine/keymenu.c	2020-10-10 00:24:28.216554908 -0600
+--- alpine-2.24.fancy/alpine/keymenu.c	2020-10-10 00:26:49.212148118 -0600
+***************
 *** 679,688 ****
   	RCOMPOSE_MENU,
   	HOMEKEY_MENU,
@@ -360,7 +356,7 @@ Index: alpine-2.23.2/alpine/keymenu.c
   	{"@", N_("Quota"), {MC_QUOTA,1,{'@'}}, KS_NONE},
   	NULL_MENU};
   INST_KEY_MENU(index_keymenu, index_keys);
-*************** struct key thread_keys[] =
+***************
 *** 757,765 ****
   	RCOMPOSE_MENU,
   	HOMEKEY_MENU,
@@ -394,7 +390,7 @@ Index: alpine-2.23.2/alpine/keymenu.c
   	NULL_MENU};
   INST_KEY_MENU(thread_keymenu, thread_keys);
   
-*************** struct key view_keys[] =
+***************
 *** 927,933 ****
   	NULL_MENU,
   	NULL_MENU,
@@ -424,49 +420,35 @@ Index: alpine-2.23.2/alpine/keymenu.c
   INST_KEY_MENU(view_keymenu, view_keys);
   
   
-Index: alpine-2.23.2/alpine/keymenu.h
-===================================================================
-*** alpine-2.23.2.orig/alpine/keymenu.h
---- alpine-2.23.2/alpine/keymenu.h
-*************** struct key_menu {
-*** 217,225 ****
-  #define MC_ADDHEADER	804
-  #define MC_XOAUTH2	805
-  #define MC_EXTERNAL	806
-! #define MC_XSADD	807
-! #define MC_XSDELETE	808
-! #define MC_XSHELP	809
+diff -rc alpine-2.24/alpine/keymenu.h alpine-2.24.fancy/alpine/keymenu.h
+*** alpine-2.24/alpine/keymenu.h	2020-10-10 00:24:28.216554908 -0600
+--- alpine-2.24.fancy/alpine/keymenu.h	2020-10-10 00:26:49.212148118 -0600
+***************
+*** 220,225 ****
+--- 220,238 ----
+  #define MC_XSADD	807
+  #define MC_XSDELETE	808
+  #define MC_XSHELP	809
++ #define MC_DELTHREAD	810
++ #define MC_UNDTHREAD	811
++ #define MC_SELTHREAD	812
++ #define MC_SSUTHREAD	813
++ #define MC_DSUTHREAD	814
++ #define MC_USUTHREAD	815
++ #define MC_SORTHREAD	816
++ #define MC_NEXTHREAD	817
++ #define MC_KOLAPSE	818
++ #define MC_EXPTHREAD	819
++ #define MC_PRETHREAD	820
++ #define MC_CTHREAD	821
++ #define MC_OTHREAD	822
   
   /* Commands for S/MIME screens */
   #define MC_TRUST	900
---- 217,238 ----
-  #define MC_ADDHEADER	804
-  #define MC_XOAUTH2	805
-  #define MC_EXTERNAL	806
-! #define MC_DELTHREAD	807
-! #define MC_UNDTHREAD	808
-! #define MC_SELTHREAD	809
-! #define MC_SSUTHREAD	810
-! #define MC_DSUTHREAD	811
-! #define MC_USUTHREAD	812
-! #define MC_SORTHREAD	813
-! #define MC_NEXTHREAD	814
-! #define MC_KOLAPSE	815
-! #define MC_EXPTHREAD	816
-! #define MC_PRETHREAD	817
-! #define MC_CTHREAD	818
-! #define MC_OTHREAD	819
-! #define MC_XSADD	820
-! #define MC_XSDELETE	821
-! #define MC_XSHELP	822
-  
-  /* Commands for S/MIME screens */
-  #define MC_TRUST	900
-Index: alpine-2.23.2/alpine/mailcmd.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/mailcmd.c
---- alpine-2.23.2/alpine/mailcmd.c
-*************** int	  select_by_thread(MAILSTREAM *, MSG
+diff -rc alpine-2.24/alpine/mailcmd.c alpine-2.24.fancy/alpine/mailcmd.c
+*** alpine-2.24/alpine/mailcmd.c	2020-10-10 00:24:28.212554806 -0600
+--- alpine-2.24.fancy/alpine/mailcmd.c	2020-10-10 00:26:49.224148423 -0600
+***************
 *** 114,120 ****
   char     *choose_a_rule(int);
   int	  select_by_keyword(MAILSTREAM *, SEARCHSET **);
@@ -483,7 +465,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
   int       print_index(struct pine *, MSGNO_S *, int);
   
   /*
-*************** get_out:
+***************
 *** 1435,1441 ****
   	if(any_messages(msgmap, NULL, NULL)){
   	    if(any_lflagged(msgmap, MN_SLCT) > 0L){
@@ -500,7 +482,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
   		    if(F_ON(F_AUTO_UNSELECT, state)){
   			agg_select_all(stream, msgmap, NULL, 0);
   			unzoom_index(state, stream, msgmap);
-*************** get_out:
+***************
 *** 1453,1475 ****
   
             /*-------- Sort command -------*/
@@ -561,7 +543,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
   	    }
   
   	    state->mangled_footer = 1;
-*************** cmd_expunge(struct pine *state, MAILSTRE
+***************
 *** 3314,3319 ****
 --- 3326,3335 ----
   		if(SORT_IS_THREADED(msgmap))
@@ -574,7 +556,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
   		state->mangled_body = 1;
   		state->mangled_header = 1;
   		q_status_message2(SM_ORDER, 0, 4,
-*************** cmd_expunge(struct pine *state, MAILSTRE
+***************
 *** 3415,3420 ****
 --- 3431,3439 ----
   	 */
@@ -586,7 +568,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
       }
       else{
   	if(del_count){
-*************** select_by_current(struct pine *state, MS
+***************
 *** 7324,7330 ****
   	 * Maybe it makes sense to zoom after a select but not after a colon
   	 * command even though they are very similar.
@@ -603,7 +585,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
       }
       else{
   	if((all_selected =
-*************** select_by_current(struct pine *state, MS
+***************
 *** 7380,7386 ****
     ----*/
   int
@@ -620,7 +602,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
   {
       int i = 8,			/* number of static entries in sel_opts3 */
           rv = 0,
-*************** apply_command(struct pine *state, MAILST
+***************
 *** 7547,7555 ****
   	collapse_or_expand(state, stream, msgmap,
   			   F_ON(F_SLASH_COLL_ENTIRE, ps_global)
@@ -651,7 +633,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
         case ':' :
   	select_thread_stmp(state, stream, msgmap);
   	break;
-*************** Args: state -- pine state pointer
+***************
 *** 9595,9604 ****
         Returns 0 if it was cancelled, 1 otherwise.
     ----*/
@@ -674,7 +656,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
       int       deefault = 'a', retval = 1;
       HelpType  help;
       ESCKEY_S  sorts[14];
-*************** select_sort(struct pine *state, int ql,
+***************
 *** 9631,9647 ****
         strncpy(prompt, _("Choose type of sort, or 'R' to reverse current sort : "),
   	      sizeof(prompt));
@@ -720,7 +702,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
       }
   
       sorts[i].ch     = 'r';
-*************** select_sort(struct pine *state, int ql,
+***************
 *** 9665,9672 ****
   	state->mangled_body = 1;		/* signal screen's changed */
   	if(s == 'r')
@@ -748,7 +730,7 @@ Index: alpine-2.23.2/alpine/mailcmd.c
   
   	if(F_ON(F_SHOW_SORT, ps_global))
   	  ps_global->mangled_header = 1;
-*************** flag_submenu(mc)
+***************
 *** 10050,10052 ****
 --- 10097,10474 ----
   }
@@ -1129,11 +1111,10 @@ Index: alpine-2.23.2/alpine/mailcmd.c
 +        expand_thread(state, stream, msgmap, 0);
 + }
 + 
-Index: alpine-2.23.2/alpine/mailcmd.h
-===================================================================
-*** alpine-2.23.2.orig/alpine/mailcmd.h
---- alpine-2.23.2/alpine/mailcmd.h
-*************** char	   *broach_folder(int, int, int *,
+diff -rc alpine-2.24/alpine/mailcmd.h alpine-2.24.fancy/alpine/mailcmd.h
+*** alpine-2.24/alpine/mailcmd.h	2020-10-10 00:24:28.208554703 -0600
+--- alpine-2.24.fancy/alpine/mailcmd.h	2020-10-10 00:26:49.240148831 -0600
+***************
 *** 90,96 ****
   int	    ask_mailbox_reopen(struct pine *, int *);
   void	    visit_folder(struct pine *, char *, CONTEXT_S *, MAILSTREAM *, unsigned long);
@@ -1150,7 +1131,7 @@ Index: alpine-2.23.2/alpine/mailcmd.h
   char      **choose_list_of_keywords(void);
   char       *choose_a_charset(int);
   char      **choose_list_of_charsets(void);
-*************** int	    any_selected_callback(int, long)
+***************
 *** 108,113 ****
   int	    flag_callback(int, long);
   MPopup	   *flag_submenu(MESSAGECACHE *);
@@ -1174,11 +1155,10 @@ Index: alpine-2.23.2/alpine/mailcmd.h
 ! int           expand_this_thread(struct pine *, MAILSTREAM *, MSGNO_S *, int, int);
   
   #endif /* PINE_MAILCMD_INCLUDED */
-Index: alpine-2.23.2/alpine/mailindx.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/mailindx.c
---- alpine-2.23.2/alpine/mailindx.c
-*************** index_lister(struct pine *state, CONTEXT
+diff -rc alpine-2.24/alpine/mailindx.c alpine-2.24.fancy/alpine/mailindx.c
+*** alpine-2.24/alpine/mailindx.c	2020-10-10 00:24:28.212554806 -0600
+--- alpine-2.24.fancy/alpine/mailindx.c	2020-10-10 00:26:49.248149033 -0600
+***************
 *** 564,569 ****
 --- 564,570 ----
   
@@ -1188,7 +1168,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   	    (void) process_cmd(state, stream, msgmap, MC_PREVITEM,
   			       (style == MsgIndex
   				|| style == MultiMsgIndex
-*************** index_lister(struct pine *state, CONTEXT
+***************
 *** 581,586 ****
 --- 582,588 ----
   
@@ -1198,7 +1178,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   	    /*
   	     * Special Page framing handling here.  If we
   	     * did something that should scroll-by-a-line, frame
-*************** view_a_thread:
+***************
 *** 798,803 ****
 --- 800,806 ----
   
@@ -1208,7 +1188,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   	    if(any_lflagged(msgmap, MN_SLCT)){
   		PINETHRD_S *thrd, *topthrd;
   		for(i = 1L; i > 0L && i <= mn_get_total(msgmap);){
-*************** view_a_thread:
+***************
 *** 863,869 ****
   			      && mp.col == id.plus_col
   			      && style != ThreadIndex){
@@ -1225,7 +1205,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   			  }
   			  else if (mp.doubleclick){
   			      if(mp.button == M_BUTTON_LEFT){
-*************** view_a_thread:
+***************
 *** 972,980 ****
   
   
@@ -1342,7 +1322,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
             case MC_DELETE :
             case MC_UNDELETE :
             case MC_REPLY :
-*************** view_a_thread:
+***************
 *** 995,1007 ****
   		  if(rawno)
   		    thrd = fetch_thread(stream, rawno);
@@ -1370,7 +1350,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   		  /* increment current */
   		  if(cmd == MC_DELETE){
   		      advance_cur_after_delete(state, stream, msgmap,
-*************** top_ent_calc(MAILSTREAM *stream, MSGNO_S
+***************
 *** 2692,2697 ****
 --- 2790,2796 ----
   		      n = mn_raw2m(msgs, thrd->rawno);
@@ -1380,7 +1360,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   			if(!msgline_hidden(stream, msgs, n, 0)
   			   && (++m % lines_per_page) == 1L)
   			  t = n;
-*************** top_ent_calc(MAILSTREAM *stream, MSGNO_S
+***************
 *** 2760,2770 ****
   
   	    /* n is the end of this thread */
@@ -1406,7 +1386,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   		else
   		  thrd = NULL;
   	    }
-*************** warn_other_cmds(void)
+***************
 *** 2872,2878 ****
   
   void
@@ -1423,7 +1403,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   {
       PINETHRD_S   *thrd = NULL;
       unsigned long rawno, save_branch;
-*************** thread_command(struct pine *state, MAILS
+***************
 *** 2921,2927 ****
         cancel_busy_cue(0);
   
@@ -1440,7 +1420,7 @@ Index: alpine-2.23.2/alpine/mailindx.c
   
       /* restore the original flags */
       copy_lflags(stream, msgmap, MN_STMP, MN_SLCT);
-*************** index_sort_callback(set, order)
+***************
 *** 3438,3444 ****
       if(set){
   	sort_folder(ps_global->mail_stream, ps_global->msgmap,
@@ -1457,11 +1437,10 @@ Index: alpine-2.23.2/alpine/mailindx.c
   	mswin_beginupdate();
   	update_titlebar_message();
   	update_titlebar_status();
-Index: alpine-2.23.2/alpine/mailindx.h
-===================================================================
-*** alpine-2.23.2.orig/alpine/mailindx.h
---- alpine-2.23.2/alpine/mailindx.h
-*************** int		 truncate_subj_and_from_strings(voi
+diff -rc alpine-2.24/alpine/mailindx.h alpine-2.24.fancy/alpine/mailindx.h
+*** alpine-2.24/alpine/mailindx.h	2020-10-10 00:24:28.212554806 -0600
+--- alpine-2.24.fancy/alpine/mailindx.h	2020-10-10 00:26:49.256149239 -0600
+***************
 *** 103,109 ****
   void		 paint_index_hline(MAILSTREAM *, long, ICE_S *);
   void		 setup_index_state(int);
@@ -1478,13 +1457,12 @@ Index: alpine-2.23.2/alpine/mailindx.h
   COLOR_PAIR      *apply_rev_color(COLOR_PAIR *, int);
   #ifdef	_WINDOWS
   int		 index_sort_callback(int, long);
-Index: alpine-2.23.2/alpine/mailview.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/mailview.c
---- alpine-2.23.2/alpine/mailview.c
-*************** scrolltool(SCROLL_S *sparms)
-*** 3495,3500 ****
---- 3495,3546 ----
+diff -rc alpine-2.24/alpine/mailview.c alpine-2.24.fancy/alpine/mailview.c
+*** alpine-2.24/alpine/mailview.c	2020-10-10 00:24:28.216554908 -0600
+--- alpine-2.24.fancy/alpine/mailview.c	2020-10-10 00:26:49.264149441 -0600
+***************
+*** 3496,3501 ****
+--- 3496,3547 ----
   	    print_to_printer(sparms);
   	    break;
   
@@ -1537,11 +1515,10 @@ Index: alpine-2.23.2/alpine/mailview.c
   
   	    /* ------- First handle on Line ------ */
   	  case MC_GOTOBOL :
-Index: alpine-2.23.2/alpine/roleconf.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/roleconf.c
---- alpine-2.23.2/alpine/roleconf.c
-*************** role_config_edit_screen(struct pine *ps,
+diff -rc alpine-2.24/alpine/roleconf.c alpine-2.24.fancy/alpine/roleconf.c
+*** alpine-2.24/alpine/roleconf.c	2020-10-10 00:24:28.212554806 -0600
+--- alpine-2.24.fancy/alpine/roleconf.c	2020-10-10 00:26:49.268149545 -0600
+***************
 *** 4478,4488 ****
   	ctmp->tool		  = role_sort_tool;
   	ctmp->valoffset	    	  = rindent;
@@ -1566,7 +1543,7 @@ Index: alpine-2.23.2/alpine/roleconf.c
   
   	/* allow user to set their default sort order */
   	new_confline(&ctmp)->var = &sort_act_var;
-*************** role_config_edit_screen(struct pine *ps,
+***************
 *** 4492,4498 ****
   	ctmp->tool	      = role_sort_tool;
   	ctmp->valoffset	      = rindent;
@@ -1583,7 +1560,7 @@ Index: alpine-2.23.2/alpine/roleconf.c
   
   	for(j = 0; j < 2; j++){
   	    for(i = 0; ps->sort_types[i] != EndofList; i++){
-*************** role_config_edit_screen(struct pine *ps,
+***************
 *** 4504,4510 ****
   		ctmp->valoffset	      = rindent;
   		ctmp->varmem	      = i + (j * EndofList);
@@ -1600,7 +1577,7 @@ Index: alpine-2.23.2/alpine/roleconf.c
   	    }
   	}
   
-*************** role_config_edit_screen(struct pine *ps,
+***************
 *** 5437,5443 ****
   	  (*result)->patgrp->stat_boy = PAT_STAT_EITHER;
   
@@ -1617,11 +1594,10 @@ Index: alpine-2.23.2/alpine/roleconf.c
   	    (*result)->action->sort_is_set = 1;
   	    (*result)->action->sortorder = def_sort;
   	    (*result)->action->revsort = (def_sort_rev ? 1 : 0);
-Index: alpine-2.23.2/alpine/setup.c
-===================================================================
-*** alpine-2.23.2.orig/alpine/setup.c
---- alpine-2.23.2/alpine/setup.c
-*************** option_screen(struct pine *ps, int edit_
+diff -rc alpine-2.24/alpine/setup.c alpine-2.24.fancy/alpine/setup.c
+*** alpine-2.24/alpine/setup.c	2020-10-10 00:24:28.208554703 -0600
+--- alpine-2.24.fancy/alpine/setup.c	2020-10-10 00:26:49.272149646 -0600
+***************
 *** 262,268 ****
   	    ctmpa->flags             |= CF_NOSELECT;
   	    ctmpa->value = cpystr("---  ----------------------");
@@ -1638,7 +1614,7 @@ Index: alpine-2.23.2/alpine/setup.c
   
   	    for(j = 0; j < 2; j++){
   		for(i = 0; ps->sort_types[i] != EndofList; i++){
-*************** option_screen(struct pine *ps, int edit_
+***************
 *** 277,282 ****
 --- 277,331 ----
   		}
@@ -1696,7 +1672,7 @@ Index: alpine-2.23.2/alpine/setup.c
   	else if(vtmp == &ps->vars[V_USE_ONLY_DOMAIN_NAME]){ /* yesno case */
   	    ctmpa->keymenu = &config_yesno_keymenu;
   	    ctmpa->tool	   = yesno_tool;
-*************** option_screen(struct pine *ps, int edit_
+***************
 *** 469,474 ****
 --- 518,532 ----
   	}
@@ -1714,11 +1690,10 @@ Index: alpine-2.23.2/alpine/setup.c
       treat_color_vars_as_text = 0;
       free_saved_config(ps, &vsave, expose_hidden_config);
   #ifdef _WINDOWS
-Index: alpine-2.23.2/pith/conf.c
-===================================================================
-*** alpine-2.23.2.orig/pith/conf.c
---- alpine-2.23.2/pith/conf.c
-*************** CONF_TXT_T cf_text_fcc_name_rule[] =	"De
+diff -rc alpine-2.24/pith/conf.c alpine-2.24.fancy/pith/conf.c
+*** alpine-2.24/pith/conf.c	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/conf.c	2020-10-10 00:26:49.280149850 -0600
+***************
 *** 207,212 ****
 --- 207,214 ----
   
@@ -1729,9 +1704,9 @@ Index: alpine-2.23.2/pith/conf.c
   CONF_TXT_T cf_text_addrbook_sort_rule[] =	"Sets presentation order of address book entries. Choices: dont-sort,\n# fullname-with-lists-last, fullname, nickname-with-lists-last, nickname\n# Default: \"fullname-with-lists-last\".";
   
   CONF_TXT_T cf_text_folder_sort_rule[] =	"Sets presentation order of folder list entries. Choices: alphabetical,\n# alpha-with-dirs-last, alpha-with-dirs-first.\n# Default: \"alpha-with-directories-last\".";
-*************** static struct variable variables[] = {
-*** 541,546 ****
---- 543,550 ----
+***************
+*** 543,548 ****
+--- 545,552 ----
   	NULL,			cf_text_fcc_name_rule},
   {"sort-key",				0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
   	NULL,			cf_text_sort_key},
@@ -1740,7 +1715,7 @@ Index: alpine-2.23.2/pith/conf.c
   {"addrbook-sort-rule",			0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
   	"Address Book Sort Rule",	cf_text_addrbook_sort_rule},
   {"folder-sort-rule",			0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
-*************** init_vars(struct pine *ps, void (*cmds_f
+***************
 *** 1613,1619 ****
       register struct variable *vars = ps->vars;
       int		 obs_header_in_reply = 0,     /* the obs_ variables are to       */
@@ -1757,9 +1732,9 @@ Index: alpine-2.23.2/pith/conf.c
       long         rvl;
       PINERC_S    *fixedprc = NULL;
       FeatureLevel obs_feature_level;
-*************** init_vars(struct pine *ps, void (*cmds_f
-*** 1641,1646 ****
---- 1645,1651 ----
+***************
+*** 1639,1644 ****
+--- 1643,1649 ----
       GLO_FEATURE_LEVEL		= cpystr("sappling");
       GLO_OLD_STYLE_REPLY		= cpystr(DF_OLD_STYLE_REPLY);
       GLO_SORT_KEY		= cpystr(DF_SORT_KEY);
@@ -1767,8 +1742,8 @@ Index: alpine-2.23.2/pith/conf.c
       GLO_SAVED_MSG_NAME_RULE	= cpystr(DF_SAVED_MSG_NAME_RULE);
       GLO_FCC_RULE		= cpystr(DF_FCC_RULE);
       GLO_AB_SORT_RULE		= cpystr(DF_AB_SORT_RULE);
-*************** init_vars(struct pine *ps, void (*cmds_f
-*** 2594,2600 ****
+***************
+*** 2640,2646 ****
       set_current_val(&vars[V_ARCHIVED_FOLDERS], TRUE, TRUE);
       set_current_val(&vars[V_INCOMING_FOLDERS], TRUE, TRUE);
       set_current_val(&vars[V_SORT_KEY], TRUE, TRUE);
@@ -1776,7 +1751,7 @@ Index: alpine-2.23.2/pith/conf.c
   	snprintf(tmp_20k_buf, SIZEOF_20KBUF, "Sort type \"%.200s\" is invalid", VAR_SORT_KEY);
   	init_error(ps, SM_ORDER | SM_DING, 3, 5, tmp_20k_buf);
   	ps->def_sort = SortArrival;
---- 2599,2605 ----
+--- 2645,2651 ----
       set_current_val(&vars[V_ARCHIVED_FOLDERS], TRUE, TRUE);
       set_current_val(&vars[V_INCOMING_FOLDERS], TRUE, TRUE);
       set_current_val(&vars[V_SORT_KEY], TRUE, TRUE);
@@ -1784,9 +1759,9 @@ Index: alpine-2.23.2/pith/conf.c
   	snprintf(tmp_20k_buf, SIZEOF_20KBUF, "Sort type \"%.200s\" is invalid", VAR_SORT_KEY);
   	init_error(ps, SM_ORDER | SM_DING, 3, 5, tmp_20k_buf);
   	ps->def_sort = SortArrival;
-*************** init_vars(struct pine *ps, void (*cmds_f
-*** 2603,2608 ****
---- 2608,2624 ----
+***************
+*** 2649,2654 ****
+--- 2654,2670 ----
       else
         ps->def_sort_rev = def_sort_rev;
   
@@ -1804,9 +1779,9 @@ Index: alpine-2.23.2/pith/conf.c
       cur_rule_value(&vars[V_SAVED_MSG_NAME_RULE], TRUE, TRUE);
       {NAMEVAL_S *v; int i;
       for(i = 0; (v = save_msg_rules(i)); i++)
-*************** feature_list(int index)
-*** 3028,3033 ****
---- 3044,3051 ----
+***************
+*** 3074,3079 ****
+--- 3090,3097 ----
   	 F_COLOR_LINE_IMPORTANT, h_config_color_thrd_import, PREF_INDX, 0},
   	{"thread-sorts-by-arrival", "Thread Sorts by Arrival",
   	 F_THREAD_SORTS_BY_ARRIVAL, h_config_thread_sorts_by_arrival, PREF_INDX, 0},
@@ -1815,9 +1790,9 @@ Index: alpine-2.23.2/pith/conf.c
   
   /* Viewer prefs */
   	{"enable-msg-view-addresses", "Enable Message View Address Links",
-*************** config_help(int var, int feature)
-*** 7792,7797 ****
---- 7810,7817 ----
+***************
+*** 7868,7873 ****
+--- 7886,7893 ----
   	return(h_config_fcc_rule);
         case V_SORT_KEY :
   	return(h_config_sort_key);
@@ -1826,13 +1801,12 @@ Index: alpine-2.23.2/pith/conf.c
         case V_AB_SORT_RULE :
   	return(h_config_ab_sort_rule);
         case V_FLD_SORT_RULE :
-Index: alpine-2.23.2/pith/conf.h
-===================================================================
-*** alpine-2.23.2.orig/pith/conf.h
---- alpine-2.23.2/pith/conf.h
+diff -rc alpine-2.24/pith/conf.h alpine-2.24.fancy/pith/conf.h
+*** alpine-2.24/pith/conf.h	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/conf.h	2020-10-10 00:26:49.280149850 -0600
 ***************
-*** 150,155 ****
---- 150,158 ----
+*** 154,159 ****
+--- 154,162 ----
   #define VAR_SORT_KEY		     vars[V_SORT_KEY].current_val.p
   #define GLO_SORT_KEY		     vars[V_SORT_KEY].global_val.p
   #define COM_SORT_KEY		     vars[V_SORT_KEY].cmdline_val.p
@@ -1842,11 +1816,10 @@ Index: alpine-2.23.2/pith/conf.h
   #define VAR_AB_SORT_RULE	     vars[V_AB_SORT_RULE].current_val.p
   #define GLO_AB_SORT_RULE	     vars[V_AB_SORT_RULE].global_val.p
   #define VAR_FLD_SORT_RULE	     vars[V_FLD_SORT_RULE].current_val.p
-Index: alpine-2.23.2/pith/conftype.h
-===================================================================
-*** alpine-2.23.2.orig/pith/conftype.h
---- alpine-2.23.2/pith/conftype.h
-*************** typedef	enum {    V_PERSONAL_NAME = 0
+diff -rc alpine-2.24/pith/conftype.h alpine-2.24.fancy/pith/conftype.h
+*** alpine-2.24/pith/conftype.h	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/conftype.h	2020-10-10 00:26:49.280149850 -0600
+***************
 *** 59,64 ****
 --- 59,65 ----
   		, V_SAVED_MSG_NAME_RULE
@@ -1856,9 +1829,9 @@ Index: alpine-2.23.2/pith/conftype.h
   		, V_AB_SORT_RULE
   		, V_FLD_SORT_RULE
   		, V_GOTO_DEFAULT_RULE
-*************** typedef enum {
-*** 529,534 ****
---- 530,536 ----
+***************
+*** 526,531 ****
+--- 527,533 ----
   	F_QUELL_TIMEZONE,
   	F_QUELL_USERAGENT,
   	F_COLOR_LINE_IMPORTANT,
@@ -1866,20 +1839,19 @@ Index: alpine-2.23.2/pith/conftype.h
   	F_SLASH_COLL_ENTIRE,
   	F_ENABLE_FULL_HDR_AND_TEXT,
   	F_QUELL_FULL_HDR_RESET,
-*************** typedef struct smime_stuff {
-*** 794,798 ****
---- 796,801 ----
+***************
+*** 791,795 ****
+--- 793,798 ----
   
   /* exported prototypes */
   
 + #define DF_THREAD_SORT_KEY  "thread"
   
   #endif /* PITH_CONFTYPE_INCLUDED */
-Index: alpine-2.23.2/pith/flag.c
-===================================================================
-*** alpine-2.23.2.orig/pith/flag.c
---- alpine-2.23.2/pith/flag.c
-*************** set_lflag(MAILSTREAM *stream, MSGNO_S *m
+diff -rc alpine-2.24/pith/flag.c alpine-2.24.fancy/pith/flag.c
+*** alpine-2.24/pith/flag.c	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/flag.c	2020-10-10 00:26:49.284149951 -0600
+***************
 *** 594,607 ****
   
   	was_invisible = (pelt->hidden || pelt->colhid) ? 1 : 0;
@@ -1912,11 +1884,10 @@ Index: alpine-2.23.2/pith/flag.c
   	    }
   
   	    if(topthrd){
-Index: alpine-2.23.2/pith/indxtype.h
-===================================================================
-*** alpine-2.23.2.orig/pith/indxtype.h
---- alpine-2.23.2/pith/indxtype.h
-*************** typedef enum {iNothing, iStatus, iFStatu
+diff -rc alpine-2.24/pith/indxtype.h alpine-2.24.fancy/pith/indxtype.h
+*** alpine-2.24/pith/indxtype.h	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/indxtype.h	2020-10-10 00:26:49.292150156 -0600
+***************
 *** 78,84 ****
   	      iKey, iKeyInit,
   	      iPrefDate, iPrefTime, iPrefDateTime,
@@ -1933,11 +1904,10 @@ Index: alpine-2.23.2/pith/indxtype.h
   	      iNewsAndTo, iToAndNews, iNewsAndRecips, iRecipsAndNews,
   	      iFromTo, iFromToNotNews, iFrom, iTo, iSender, iCc, iNews, iRecips,
   	      iCurNews, iArrow,
-Index: alpine-2.23.2/pith/mailindx.c
-===================================================================
-*** alpine-2.23.2.orig/pith/mailindx.c
---- alpine-2.23.2/pith/mailindx.c
-*************** init_index_format(char *format, INDEX_CO
+diff -rc alpine-2.24/pith/mailindx.c alpine-2.24.fancy/pith/mailindx.c
+*** alpine-2.24/pith/mailindx.c	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/mailindx.c	2020-10-10 00:26:49.300150359 -0600
+***************
 *** 229,234 ****
 --- 229,235 ----
   	      case iSTime:
@@ -1947,7 +1917,7 @@ Index: alpine-2.23.2/pith/mailindx.c
   	      case iPrioAlpha:
   		(*answer)[column].req_width = 7;
   		break;
-*************** static INDEX_PARSE_T itokens[] = {
+***************
 *** 456,461 ****
 --- 457,463 ----
       {"FROMORTONOTNEWS",	iFromToNotNews,	FOR_INDEX},
@@ -1957,7 +1927,7 @@ Index: alpine-2.23.2/pith/mailindx.c
       {"SIZENARROW",	iSizeNarrow,	FOR_INDEX},
       {"KSIZE",		iKSize,		FOR_INDEX},
       {"SUBJECT",		iSubject,	FOR_INDEX|FOR_REPLY_INTRO|FOR_TEMPLATE},
-*************** static IndexColType fixed_ctypes[] = {
+***************
 *** 954,960 ****
       iSDateTimeS1, iSDateTimeS2, iSDateTimeS3, iSDateTimeS4,
       iSDateTimeIso24, iSDateTimeIsoS24,
@@ -1974,7 +1944,7 @@ Index: alpine-2.23.2/pith/mailindx.c
       iPrio, iPrioBang, iPrioAlpha, iInit,
       iAtt, iTime24, iTime12, iTimezone, iMonAbb, iYear, iYear2Digit,
       iDay2Digit, iMon2Digit, iDayOfWeekAbb, iScore, iMonLong, iDayOfWeek
-*************** setup_index_header_widths(MAILSTREAM *st
+***************
 *** 1147,1152 ****
 --- 1149,1155 ----
   		  case iTime12:
@@ -1984,7 +1954,7 @@ Index: alpine-2.23.2/pith/mailindx.c
   		    cdesc->actual_length = 7;
   		    cdesc->adjustment = Right;
   		    break;
-*************** setup_index_header_widths(MAILSTREAM *st
+***************
 *** 1241,1247 ****
   	cdesc->ctype != iNothing;
   	cdesc++)
@@ -2001,7 +1971,7 @@ Index: alpine-2.23.2/pith/mailindx.c
   	 cdesc->ctype == iSizeComma || cdesc->ctype == iDescripSize){
   	  if(cdesc->actual_length == 0){
   	      if((fix=cdesc->width) > 0){ /* had this reserved */
-*************** build_header_work(struct pine *state, MA
+***************
 *** 1627,1636 ****
   
   		/* find next thread which is visible */
@@ -2026,7 +1996,7 @@ Index: alpine-2.23.2/pith/mailindx.c
   		    else
   		      thrd = NULL;
   		} while(thrd
-*************** format_index_index_line(INDEXDATA_S *ida
+***************
 *** 2042,2054 ****
        */
       ice = copy_ice(ice);
@@ -2052,7 +2022,7 @@ Index: alpine-2.23.2/pith/mailindx.c
   
       /* calculate contents of the required fields */
       for(cdesc = ps_global->index_disp_format; cdesc->ctype != iNothing; cdesc++)
-*************** format_index_index_line(INDEXDATA_S *ida
+***************
 *** 2550,2556 ****
 --- 2552,2581 ----
   
@@ -2085,7 +2055,7 @@ Index: alpine-2.23.2/pith/mailindx.c
   		/* 0 ... 9999 */
   		if((l = fetch_size(idata)) < 10*1000L)
   		  snprintf(str, sizeof(str), "(%lu)", l);
-*************** subj_str(INDEXDATA_S *idata, char *str,
+***************
 *** 5582,5591 ****
   
   	if(pith_opt_condense_thread_cue)
@@ -2106,7 +2076,7 @@ Index: alpine-2.23.2/pith/mailindx.c
   
   	/*
   	 * width is < available strsize and
-*************** from_str(IndexColType ctype, INDEXDATA_S
+***************
 *** 6211,6221 ****
   	border = str + width;
   	if(pith_opt_condense_thread_cue)
@@ -2128,11 +2098,10 @@ Index: alpine-2.23.2/pith/mailindx.c
   	fptr = str;
   
   	if(thd)
-Index: alpine-2.23.2/pith/pattern.c
-===================================================================
-*** alpine-2.23.2.orig/pith/pattern.c
---- alpine-2.23.2/pith/pattern.c
-*************** parse_action_slash(char *str, ACTION_S *
+diff -rc alpine-2.24/pith/pattern.c alpine-2.24.fancy/pith/pattern.c
+*** alpine-2.24/pith/pattern.c	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/pattern.c	2020-10-10 00:26:49.308150564 -0600
+***************
 *** 1756,1762 ****
   	    SortOrder def_sort;
   	    int       def_sort_rev;
@@ -2149,13 +2118,12 @@ Index: alpine-2.23.2/pith/pattern.c
   		action->sort_is_set = 1;
   		action->sortorder = def_sort;
   		action->revsort   = (def_sort_rev ? 1 : 0);
-Index: alpine-2.23.2/pith/pine.hlp
-===================================================================
-*** alpine-2.23.2.orig/pith/pine.hlp
---- alpine-2.23.2/pith/pine.hlp
-*************** There are also additional details on
-*** 4839,4844 ****
---- 4839,4845 ----
+diff -rc alpine-2.24/pith/pine.hlp alpine-2.24.fancy/pith/pine.hlp
+*** alpine-2.24/pith/pine.hlp	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/pine.hlp	2020-10-10 00:26:49.316150767 -0600
+***************
+*** 5006,5011 ****
+--- 5006,5012 ----
   <li><a href="h_config_signature_file">OPTION: <!--#echo var="VAR_signature-file"--></a>
   <li><a href="h_config_smtp_server">OPTION: <!--#echo var="VAR_smtp-server"--></a>
   <li><a href="h_config_sort_key">OPTION: <!--#echo var="VAR_sort-key"--></a>
@@ -2163,9 +2131,9 @@ Index: alpine-2.23.2/pith/pine.hlp
   <li><a href="h_config_speller">OPTION: <!--#echo var="VAR_speller"--></a>
   <li><a href="h_config_aspell_dictionary">OPTION: <!--#echo var="VAR_aspell-dictionary-list"--></a>
   <li><a href="h_config_sshcmd">OPTION: <!--#echo var="VAR_ssh-command"--></a>
-*************** the names of the carbon copy addresses o
-*** 6780,6785 ****
---- 6781,6943 ----
+***************
+*** 6947,6952 ****
+--- 6948,7110 ----
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
@@ -2329,9 +2297,9 @@ Index: alpine-2.23.2/pith/pine.hlp
   ======= h_index_cmd_whereis =======
   <HTML>
   <HEAD>
-*************** The progression of sizes used looks like
-*** 20325,20330 ****
---- 20483,20496 ----
+***************
+*** 20526,20531 ****
+--- 20684,20697 ----
   <P>
   </DD>
   
@@ -2346,9 +2314,9 @@ Index: alpine-2.23.2/pith/pine.hlp
   <DT>SIZENARROW</DT>
   <DD>
   This token represents the total size, in bytes, of the message.
-*************** command, then it will not be re-sorted u
-*** 23948,23953 ****
---- 24114,24158 ----
+***************
+*** 24214,24219 ****
+--- 24380,24424 ----
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
@@ -2394,9 +2362,9 @@ Index: alpine-2.23.2/pith/pine.hlp
   ====== h_config_other_startup =====
   <HTML>
   <HEAD>
-*************** Reply Use, Forward Use, and Compose Use.
-*** 32059,32064 ****
---- 32264,32286 ----
+***************
+*** 32288,32293 ****
+--- 32493,32515 ----
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
@@ -2420,11 +2388,10 @@ Index: alpine-2.23.2/pith/pine.hlp
   ====== h_config_news_cross_deletes =====
   <HTML>
   <HEAD>
-Index: alpine-2.23.2/pith/sort.c
-===================================================================
-*** alpine-2.23.2.orig/pith/sort.c
---- alpine-2.23.2/pith/sort.c
-*************** Args: msgmap --
+diff -rc alpine-2.24/pith/sort.c alpine-2.24.fancy/pith/sort.c
+*** alpine-2.24/pith/sort.c	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/sort.c	2020-10-10 00:26:49.316150767 -0600
+***************
 *** 91,97 ****
     ----*/
   void
@@ -2441,7 +2408,7 @@ Index: alpine-2.23.2/pith/sort.c
   {
       long	   raw_current, i, j;
       unsigned long *sort = NULL;
-*************** sort_folder(MAILSTREAM *stream, MSGNO_S
+***************
 *** 101,106 ****
 --- 101,115 ----
       int	           current_rev;
@@ -2459,7 +2426,7 @@ Index: alpine-2.23.2/pith/sort.c
       dprint((2, "Sorting by %s%s\n",
   	       sort_name(new_sort), new_rev ? "/reverse" : ""));
   
-*************** percent_sorted(void)
+***************
 *** 530,549 ****
    * argument also means arrival/reverse.
    */
@@ -2502,7 +2469,7 @@ Index: alpine-2.23.2/pith/sort.c
   	*def_sort_rev = 1;
           return(0);
       }
-*************** decode_sort(char *sort_spec, SortOrder *
+***************
 *** 572,578 ****
       if(ps_global->sort_types[x] == EndofList)
         return(-1);
@@ -2519,7 +2486,7 @@ Index: alpine-2.23.2/pith/sort.c
       *def_sort_rev = reverse;
       return(0);
   }
-*************** reset_sort_order(unsigned int flags)
+***************
 *** 689,695 ****
   
       /* set default order */
@@ -2538,7 +2505,7 @@ Index: alpine-2.23.2/pith/sort.c
   
       if(ps_global->mail_stream && nonempty_patterns(rflags, &pstate)){
   	for(pat = first_pattern(&pstate); pat; pat = next_pattern(&pstate)){
-*************** reset_sort_order(unsigned int flags)
+***************
 *** 702,710 ****
   	   && pat->action->sort_is_set){
   	    the_sort_order = pat->action->sortorder;
@@ -2565,10 +2532,9 @@ Index: alpine-2.23.2/pith/sort.c
       sort_folder(ps_global->mail_stream, ps_global->msgmap,
 ! 		the_sort_order, sort_is_rev, flags, 1);
   }
-Index: alpine-2.23.2/pith/sort.h
-===================================================================
-*** alpine-2.23.2.orig/pith/sort.h
---- alpine-2.23.2/pith/sort.h
+diff -rc alpine-2.24/pith/sort.h alpine-2.24.fancy/pith/sort.h
+*** alpine-2.24/pith/sort.h	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/sort.h	2020-10-10 00:26:49.316150767 -0600
 ***************
 *** 23,29 ****
   
@@ -2586,7 +2552,7 @@ Index: alpine-2.23.2/pith/sort.h
   
   struct global_sort_data {
       MSGNO_S *msgmap;
-*************** extern struct global_sort_data g_sort;
+***************
 *** 42,49 ****
   
   /* exported prototypes */
@@ -2605,11 +2571,10 @@ Index: alpine-2.23.2/pith/sort.h
   void	 reset_sort_order(unsigned);
   
   
-Index: alpine-2.23.2/pith/state.c
-===================================================================
-*** alpine-2.23.2.orig/pith/state.c
---- alpine-2.23.2/pith/state.c
-*************** new_pine_struct(void)
+diff -rc alpine-2.24/pith/state.c alpine-2.24.fancy/pith/state.c
+*** alpine-2.24/pith/state.c	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/state.c	2020-10-10 00:26:49.324150972 -0600
+***************
 *** 75,80 ****
 --- 75,81 ----
   
@@ -2619,13 +2584,12 @@ Index: alpine-2.23.2/pith/state.c
       p->def_sort        = SortArrival;
       p->sort_types[0]   = SortSubject;
       p->sort_types[1]   = SortArrival;
-Index: alpine-2.23.2/pith/state.h
-===================================================================
-*** alpine-2.23.2.orig/pith/state.h
---- alpine-2.23.2/pith/state.h
-*************** struct pine {
-*** 148,153 ****
---- 148,155 ----
+diff -rc alpine-2.24/pith/state.h alpine-2.24.fancy/pith/state.h
+*** alpine-2.24/pith/state.h	2020-10-10 00:24:28.208554703 -0600
+--- alpine-2.24.fancy/pith/state.h	2020-10-10 00:26:49.324150972 -0600
+***************
+*** 149,154 ****
+--- 149,156 ----
       unsigned     unseen_in_view:1;
       unsigned     start_in_context:1;	/* start fldr_scrn in current cntxt */
       unsigned     def_sort_rev:1;	/* true if reverse sort is default  */ 
@@ -2634,9 +2598,9 @@ Index: alpine-2.23.2/pith/state.h
       unsigned     restricted:1;
   
       unsigned     tcptimeout:1;		/* a tcp timeout is in progress  */
-*************** struct pine {
-*** 311,316 ****
---- 313,321 ----
+***************
+*** 312,317 ****
+--- 314,322 ----
       EditWhich	 ew_for_srch_take;
   
       SortOrder    def_sort,	/* Default sort type */
@@ -2646,11 +2610,10 @@ Index: alpine-2.23.2/pith/state.h
   		 sort_types[22];
   
       int          last_expire_year, last_expire_month;
-Index: alpine-2.23.2/pith/thread.c
-===================================================================
-*** alpine-2.23.2.orig/pith/thread.c
---- alpine-2.23.2/pith/thread.c
-*************** static char rcsid[] = "$Id: thread.c 942
+diff -rc alpine-2.24/pith/thread.c alpine-2.24.fancy/pith/thread.c
+*** alpine-2.24/pith/thread.c	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/thread.c	2020-10-10 00:26:49.324150972 -0600
+***************
 *** 30,41 ****
   #include "../pith/mailcmd.h"
   #include "../pith/ablookup.h"
@@ -2683,7 +2646,7 @@ Index: alpine-2.23.2/pith/thread.c
   void		   make_thrdflags_consistent(MAILSTREAM *, MSGNO_S *, PINETHRD_S *, int);
   THREADNODE	  *collapse_threadnode_tree(THREADNODE *);
   THREADNODE	  *collapse_threadnode_tree_sorted(THREADNODE *);
-*************** THREADNODE	  *sort_threads_and_collapse(
+***************
 *** 43,48 ****
 --- 49,55 ----
   THREADNODE        *insert_tree_in_place(THREADNODE *, THREADNODE *);
@@ -2693,7 +2656,7 @@ Index: alpine-2.23.2/pith/thread.c
   
   
   PINETHRD_S *
-*************** void
+***************
 *** 95,114 ****
   set_flags_for_thread(MAILSTREAM *stream, MSGNO_S *msgmap, int f, PINETHRD_S *thrd, int v)
   {
@@ -2738,7 +2701,7 @@ Index: alpine-2.23.2/pith/thread.c
   	if(bthrd)
   	  set_flags_for_thread(stream, msgmap, f, bthrd, v);
       }
-*************** erase_threading_info(MAILSTREAM *stream,
+***************
 *** 122,128 ****
       MESSAGECACHE *mc;
       PINELT_S     *peltp;
@@ -2755,7 +2718,7 @@ Index: alpine-2.23.2/pith/thread.c
         return;
       
       ps_global->view_skipped_index = 0;
-*************** sort_thread_callback(MAILSTREAM *stream,
+***************
 *** 155,161 ****
       PINETHRD_S   *thrd = NULL;
       unsigned long msgno, rawno;
@@ -2772,7 +2735,7 @@ Index: alpine-2.23.2/pith/thread.c
       char         *dup_chk = NULL;
   
   
-*************** sort_thread_callback(MAILSTREAM *stream,
+***************
 *** 168,177 ****
        * way. If the dummy node is at the top-level, then its children are
        * promoted to the top-level as separate threads.
@@ -2796,7 +2759,7 @@ Index: alpine-2.23.2/pith/thread.c
   
       /* dup_chk is like sort with an origin of 1 */
       dup_chk = (char *) fs_get((mn_get_nmsgs(g_sort.msgmap)+1) * sizeof(char));
-*************** sort_thread_callback(MAILSTREAM *stream,
+***************
 *** 182,188 ****
       (void) sort_thread_flatten(collapsed_tree, stream,
   			       &g_sort.msgmap->sort[1],
@@ -2813,7 +2776,7 @@ Index: alpine-2.23.2/pith/thread.c
   
       /* reset the inverse array */
       msgno_reset_isort(g_sort.msgmap);
-*************** sort_thread_callback(MAILSTREAM *stream,
+***************
 *** 340,351 ****
   	else{
   	    thrd = fetch_head_thread(stream);
@@ -2842,7 +2805,7 @@ Index: alpine-2.23.2/pith/thread.c
   
   		if(thrd->next){
   		    PINETHRD_S *nthrd;
-*************** sort_thread_callback(MAILSTREAM *stream,
+***************
 *** 359,367 ****
   							  MN_COLL));
   		}
@@ -2864,7 +2827,7 @@ Index: alpine-2.23.2/pith/thread.c
   		  thrd = NULL;
   	    }
   	}
-*************** make_thrdflags_consistent(MAILSTREAM *st
+***************
 *** 412,418 ****
   			  int a_parent_is_collapsed)
   {
@@ -2881,7 +2844,7 @@ Index: alpine-2.23.2/pith/thread.c
   
       if(!thrd)
         return;
-*************** make_thrdflags_consistent(MAILSTREAM *st
+***************
 *** 430,437 ****
   	  set_lflag(stream, msgmap, msgno, MN_CHID, 0);
       }
@@ -2900,7 +2863,7 @@ Index: alpine-2.23.2/pith/thread.c
   	if(nthrd)
   	  make_thrdflags_consistent(stream, msgmap, nthrd,
   				    a_parent_is_collapsed
-*************** make_thrdflags_consistent(MAILSTREAM *st
+***************
 *** 440,447 ****
   						  MN_COLL));
       }
@@ -2919,7 +2882,7 @@ Index: alpine-2.23.2/pith/thread.c
   	if(bthrd)
   	  make_thrdflags_consistent(stream, msgmap, bthrd,
   				    a_parent_is_collapsed);
-*************** calculate_visible_threads(MAILSTREAM *st
+***************
 *** 488,496 ****
   long *
   sort_thread_flatten(THREADNODE *node, MAILSTREAM *stream,
@@ -2941,7 +2904,7 @@ Index: alpine-2.23.2/pith/thread.c
   
       if(node){
   	if(node->num > 0L && node->num <= maxno){		/* holes happen */
-*************** sort_thread_flatten(THREADNODE *node, MA
+***************
 *** 498,503 ****
 --- 512,520 ----
   		*entry = node->num;
@@ -2953,7 +2916,7 @@ Index: alpine-2.23.2/pith/thread.c
   		/*
   		 * Build a richer threading structure that will help us paint
   		 * and operate on threads and subthreads.
-*************** sort_thread_flatten(THREADNODE *node, MA
+***************
 *** 506,525 ****
   		if(newthrd){
   		  entry++;
@@ -3027,7 +2990,7 @@ Index: alpine-2.23.2/pith/thread.c
       }
   
       return(entry);
-*************** msgno_thread_info(MAILSTREAM *stream, lo
+***************
 *** 788,794 ****
    */
   void
@@ -3044,7 +3007,7 @@ Index: alpine-2.23.2/pith/thread.c
   {
       int           collapsed, adjust_current = 0;
       PINETHRD_S   *thrd = NULL, *nthrd;
-*************** collapse_or_expand(struct pine *state, M
+***************
 *** 841,847 ****
       if(!thrd)
         return;
@@ -3061,7 +3024,7 @@ Index: alpine-2.23.2/pith/thread.c
   
       if(collapsed){
   	msgno = mn_raw2m(msgmap, thrd->rawno);
-*************** collapse_or_expand(struct pine *state, M
+***************
 *** 859,871 ****
   	msgno = mn_raw2m(msgmap, thrd->rawno);
   	if(msgno > 0L && msgno <= mn_get_total(msgmap)){
@@ -3090,7 +3053,7 @@ Index: alpine-2.23.2/pith/thread.c
         q_status_message(SM_ORDER, 0, 1,
   		       _("No thread to collapse or expand on this line"));
       
-*************** count_flags_in_thread(MAILSTREAM *stream
+***************
 *** 952,969 ****
       unsigned long count = 0;
       PINETHRD_S *nthrd, *bthrd;
@@ -3130,7 +3093,7 @@ Index: alpine-2.23.2/pith/thread.c
   	if(bthrd)
   	  count += count_flags_in_thread(stream, bthrd, flags);
       }
-*************** int
+***************
 *** 1051,1070 ****
   mark_msgs_in_thread(MAILSTREAM *stream, PINETHRD_S *thrd, MSGNO_S *msgmap)
   {
@@ -3174,7 +3137,7 @@ Index: alpine-2.23.2/pith/thread.c
   	if(bthrd)
   	  count += mark_msgs_in_thread(stream, bthrd, msgmap);
       }
-*************** set_thread_lflags(MAILSTREAM *stream, PI
+***************
 *** 1098,1104 ****
                         		/* flags to set or clear */
                     		/* set or clear? */
@@ -3191,7 +3154,7 @@ Index: alpine-2.23.2/pith/thread.c
       PINETHRD_S *nthrd, *bthrd;
   
       if(!thrd || !stream || thrd->rawno < 1L || thrd->rawno > stream->nmsgs)
-*************** set_thread_lflags(MAILSTREAM *stream, PI
+***************
 *** 1122,1135 ****
       if(msgno > 0L && flags == MN_CHID2 && v == 1)
         clear_index_cache_ent(stream, msgno, 0);
@@ -3222,7 +3185,7 @@ Index: alpine-2.23.2/pith/thread.c
   	if(bthrd)
   	  set_thread_lflags(stream, bthrd, msgmap, flags, v);
       }
-*************** to_us_symbol_for_thread(MAILSTREAM *stre
+***************
 *** 1218,1236 ****
       char        to_us = ' ';
       char        branch_to_us = ' ';
@@ -3264,7 +3227,7 @@ Index: alpine-2.23.2/pith/thread.c
   	bthrd = fetch_thread(stream, thrd->branch);
   	if(bthrd)
   	  branch_to_us = to_us_symbol_for_thread(stream, bthrd, consider_flagged);
-*************** to_us_symbol_for_thread(MAILSTREAM *stre
+***************
 *** 1280,1286 ****
   		  break;
   	      }
@@ -3281,7 +3244,7 @@ Index: alpine-2.23.2/pith/thread.c
   	      to_us = '+';
   
   	    if(to_us == ' ' && F_ON(F_MARK_FOR_CC,ps_global))
-*************** set_thread_subtree(MAILSTREAM *stream, P
+***************
 *** 1328,1334 ****
   
       set_lflag(stream, msgmap, msgno, flags, v);
@@ -3299,7 +3262,7 @@ Index: alpine-2.23.2/pith/thread.c
   	nthrd = fetch_thread(stream, thrd->next);
   	if(nthrd)
   	  set_thread_subtree(stream, nthrd, msgmap, v, flags);
-*************** view_thread(struct pine *state, MAILSTRE
+***************
 *** 1368,1375 ****
       if(rawno)
         thrd = fetch_thread(stream, rawno);
@@ -3318,7 +3281,7 @@ Index: alpine-2.23.2/pith/thread.c
       
       if(!thrd)
         return 0;
-*************** unview_thread(struct pine *state, MAILST
+***************
 *** 1433,1439 ****
         thrd = fetch_thread(stream, rawno);
       
@@ -3335,7 +3298,7 @@ Index: alpine-2.23.2/pith/thread.c
       
       if(!topthrd)
         return 0;
-*************** void
+***************
 *** 1539,1544 ****
 --- 1591,1597 ----
   set_search_bit_for_thread(MAILSTREAM *stream, PINETHRD_S *thrd, SEARCHSET **msgset)
@@ -3345,7 +3308,7 @@ Index: alpine-2.23.2/pith/thread.c
   
       if(!(stream && thrd))
         return;
-*************** set_search_bit_for_thread(MAILSTREAM *st
+***************
 *** 1547,1561 ****
          && (!(msgset && *msgset) || in_searchset(*msgset, thrd->rawno)))
         mm_searched(stream, thrd->rawno);
@@ -3985,11 +3948,10 @@ Index: alpine-2.23.2/pith/thread.c
 + 	  || sort == SortSize;
 + }
 + 
-Index: alpine-2.23.2/pith/thread.h
-===================================================================
-*** alpine-2.23.2.orig/pith/thread.h
---- alpine-2.23.2/pith/thread.h
-*************** typedef struct pine_thrd {
+diff -rc alpine-2.24/pith/thread.h alpine-2.24.fancy/pith/thread.h
+*** alpine-2.24/pith/thread.h	2020-10-10 00:24:28.204554602 -0600
+--- alpine-2.24.fancy/pith/thread.h	2020-10-10 00:26:49.328151074 -0600
+***************
 *** 38,43 ****
 --- 38,44 ----
       unsigned long nextthd;	/* next thread, only tops have this	*/
@@ -3999,7 +3961,7 @@ Index: alpine-2.23.2/pith/thread.h
       unsigned long head;		/* head of the whole thread list	*/
   } PINETHRD_S;
   
-*************** void	      erase_threading_info(MAILSTRE
+***************
 *** 93,99 ****
   void	      sort_thread_callback(MAILSTREAM *, THREADNODE *);
   void	      collapse_threads(MAILSTREAM *, MSGNO_S *, PINETHRD_S *);
@@ -4016,7 +3978,7 @@ Index: alpine-2.23.2/pith/thread.h
   void	      select_thread_stmp(struct pine *, MAILSTREAM *, MSGNO_S *);
   unsigned long count_flags_in_thread(MAILSTREAM *, PINETHRD_S *, long);
   unsigned long count_lflags_in_thread(MAILSTREAM *, PINETHRD_S *, MSGNO_S *, int);
-*************** int	      view_thread(struct pine *, MAI
+***************
 *** 107,112 ****
   int	      unview_thread(struct pine *, MAILSTREAM *, MSGNO_S *);
   PINETHRD_S   *find_thread_by_number(MAILSTREAM *, MSGNO_S *, long, PINETHRD_S *);
@@ -4049,11 +4011,10 @@ Index: alpine-2.23.2/pith/thread.h
 ! int	      allowed_thread_key(SortOrder sort);
   
   #endif /* PITH_THREAD_INCLUDED */
-Index: alpine-2.23.2/web/src/alpined.d/alpined.c
-===================================================================
-*** alpine-2.23.2.orig/web/src/alpined.d/alpined.c
---- alpine-2.23.2/web/src/alpined.d/alpined.c
-*************** PEConfigCmd(ClientData clientData, Tcl_I
+diff -rc alpine-2.24/web/src/alpined.d/alpined.c alpine-2.24.fancy/web/src/alpined.d/alpined.c
+*** alpine-2.24/web/src/alpined.d/alpined.c	2020-10-10 00:24:28.248555724 -0600
+--- alpine-2.24.fancy/web/src/alpined.d/alpined.c	2020-10-10 00:26:49.336151277 -0600
+***************
 *** 2755,2761 ****
   			      init_save_defaults();
   			      break;
@@ -4070,7 +4031,7 @@ Index: alpine-2.23.2/web/src/alpined.d/alpined.c
   			      break;
   			    case V_VIEW_HDR_COLORS :
   			      set_custom_spec_colors(wps_global);
-*************** PEMailboxCmd(ClientData clientData, Tcl_
+***************
 *** 6331,6337 ****
   				      && mn_get_revsort(sp_msgmap(wps_global->mail_stream)) == reversed))
   				sort_folder(wps_global->mail_stream, sp_msgmap(wps_global->mail_stream),
