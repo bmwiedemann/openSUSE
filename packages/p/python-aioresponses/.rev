@@ -79,4 +79,20 @@
     <comment></comment>
     <requestid>844824</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae7512cd8abc5950f4acd4c82ae44dbc</srcmd5>
+    <version>0.7.1</version>
+    <time>1610977147</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unused patch pr_174.patch
+
+- Update to v0.7.1 
+  * Fix compatibility with aiohttp 3.7
+  * remove asynctest from compat.py
+  * Python 3.9 compatibility
+- drop pr_174.patch merged upstream
+- fix python version requirement, require asynctest for python36
+  again</comment>
+    <requestid>864006</requestid>
+  </revision>
 </revisionlist>

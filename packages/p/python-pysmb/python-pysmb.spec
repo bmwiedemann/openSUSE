@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  unzip
 Requires:       python-pyasn1
 BuildArch:      noarch
 # SECTION test requirements
+# nose packages still imported despite pytest
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest}
@@ -59,8 +60,11 @@ sed -Ei "1{/^#!\/usr\/bin\/python/d}" %{buildroot}%{$python_sitelib}/smb/utils/s
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Run only the tests that can work without network (and only from the right pythoni2/3 dir)
-%python_expand %pytest $python -k 'not SMB and not test_broadcast'
+%{python_expand # Run only the tests that can work without network (and only from the right python[2,3] dir)
+# (the trick here is that $python_ is expanded early by the pytest and python_expand macros, not by the shell)
+ $python_testdir=${python_flavor:0:7}
+}
+%pytest ${$python_testdir} -k 'not SMB and not test_broadcast'
 
 %files %{python_files}
 %doc CHANGELOG README.txt

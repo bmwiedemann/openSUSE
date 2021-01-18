@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>707414</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ec0b09048d9eb5641680f06e612effcc</srcmd5>
+    <version>1.4.15</version>
+    <time>1610977151</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1180994, CVE-2020-26217, bsc#1180146, CVE-2020-26258 and bsc#1180145, CVE-2020-26259</comment>
+    <requestid>864027</requestid>
+  </revision>
 </revisionlist>

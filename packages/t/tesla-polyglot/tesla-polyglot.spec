@@ -30,6 +30,7 @@ Source0:        https://github.com/takari/polyglot-maven/archive/polyglot-%{vers
 Patch0:         polyglot-snakeyaml-1.25.patch
 Patch1:         pomless-tycho.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-beanutils:commons-beanutils)
 BuildRequires:  mvn(org.apache.maven:maven-core)
@@ -229,10 +230,13 @@ rm polyglot-yaml/src/test/java/org/sonatype/maven/polyglot/yaml/SnakeYamlModelRe
 %if %{without bootstrap}
 	-s \
 %endif
-	-f -- -Dproject.build.sourceEncoding=UTF-8 \
+	-f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8
+	-Dmaven.compiler.release=8 \
 %endif
+	-Dproject.build.sourceEncoding=UTF-8 \
+	-Dmaven.compiler.source=8 -Dmaven.compiler.target=8 \
+	-Dsource=8
 
 %install
 %mvn_install

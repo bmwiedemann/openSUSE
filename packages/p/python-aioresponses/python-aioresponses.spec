@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioresponses
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioresponses
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Python module for mocking out requests made by ClientSession from aiohttp
 License:        MIT
 URL:            https://github.com/pnuckowski/aioresponses
 Source:         https://files.pythonhosted.org/packages/source/a/aioresponses/aioresponses-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pr_174.patch gh#pnuckowski/aioresponses#174
-Patch0:         pr_174.patch
 BuildRequires:  %{python_module aiohttp >= 2.0.0}
-BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module ddt >= 1.1.0}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytest >= 3.8.1}
@@ -37,6 +34,8 @@ BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module yarl}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python3-asynctest if python3-base < 3.8)
+BuildRequires:  (python36-asynctest if python36-base)
 Requires:       python-aiohttp >= 2.0.0
 BuildArch:      noarch
 %python_subpackages
@@ -47,7 +46,6 @@ from the aiohttp package.
 
 %prep
 %setup -q -n aioresponses-%{version}
-%patch0 -p1
 
 %build
 export LC_ALL=en_US.UTF-8

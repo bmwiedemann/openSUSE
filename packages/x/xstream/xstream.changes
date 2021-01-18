@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 18 10:14:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.15
+  * fixes bsc#1180146, CVE-2020-26258 and bsc#1180145,
+    CVE-2020-26259
+
+-------------------------------------------------------------------
+Mon Jan 18 09:58:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.14
+  * fixes bsc#1180994, CVE-2020-26217
+- Remove patches:
+  * 0001-Prevent-deserialization-of-void.patch
+  * xstream-1.4.9-javadoc.patch
+    + integrated in upstream sources
+
+-------------------------------------------------------------------
 Tue Jun  4 08:18:44 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
-- Initial packaging of jettison 1.4.9
+- Initial packaging of xstream 1.4.9

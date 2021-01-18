@@ -1,0 +1,63 @@
+--- itextpdf-5.5.13.2/itext/src/main/java/com/itextpdf/text/pdf/PdfPublicKeySecurityHandler.java	2020-08-26 14:17:48.000000000 +0200
++++ itextpdf-5.5.13.2/itext/src/main/java/com/itextpdf/text/pdf/PdfPublicKeySecurityHandler.java	2021-01-11 16:56:48.548289080 +0100
+@@ -102,11 +102,11 @@
+ import javax.crypto.SecretKey;
+ 
+ import org.bouncycastle.asn1.ASN1InputStream;
++import org.bouncycastle.asn1.ASN1OutputStream;
+ import org.bouncycastle.asn1.ASN1Primitive;
+ import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+ import org.bouncycastle.asn1.ASN1Set;
+ import org.bouncycastle.asn1.DEROctetString;
+-import org.bouncycastle.asn1.DEROutputStream;
+ import org.bouncycastle.asn1.DERSet;
+ import org.bouncycastle.asn1.cms.ContentInfo;
+ import org.bouncycastle.asn1.cms.EncryptedContentInfo;
+@@ -194,7 +194,7 @@
+ 
+         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+ 
+-        DEROutputStream k = new DEROutputStream(baos);
++        ASN1OutputStream k = new ASN1OutputStream(baos);
+ 
+         k.writeObject(obj);
+ 
+--- itextpdf-5.5.13.2/itext/src/main/java/com/itextpdf/text/pdf/security/PdfPKCS7.java	2020-08-26 14:17:48.000000000 +0200
++++ itextpdf-5.5.13.2/itext/src/main/java/com/itextpdf/text/pdf/security/PdfPKCS7.java	2021-01-11 17:25:12.954678589 +0100
+@@ -806,7 +806,7 @@
+             // Add the digestAlgorithm
+             v = new ASN1EncodableVector();
+             v.add(new ASN1ObjectIdentifier(digestAlgorithmOid));
+-            v.add(new DERNull());
++            v.add(DERNull.INSTANCE);
+             signerinfo.add(new DERSequence(v));
+ 
+             // add the authenticated attribute if present
+@@ -816,7 +816,7 @@
+             // Add the digestEncryptionAlgorithm
+             v = new ASN1EncodableVector();
+             v.add(new ASN1ObjectIdentifier(digestEncryptionAlgorithmOid));
+-            v.add(new DERNull());
++            v.add(DERNull.INSTANCE);
+             signerinfo.add(new DERSequence(v));
+ 
+             // Add the digest
+--- itextpdf-5.5.13.2/itext/src/main/java/com/itextpdf/text/pdf/security/SignaturePolicyInfo.java	2020-08-26 14:17:48.000000000 +0200
++++ itextpdf-5.5.13.2/itext/src/main/java/com/itextpdf/text/pdf/security/SignaturePolicyInfo.java	2021-01-11 17:00:06.005489701 +0100
+@@ -45,7 +45,6 @@
+ import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+ import com.itextpdf.text.pdf.codec.Base64;
+ import org.bouncycastle.asn1.DERIA5String;
+-import org.bouncycastle.asn1.DERObjectIdentifier;
+ import org.bouncycastle.asn1.DEROctetString;
+ import org.bouncycastle.asn1.esf.*;
+ import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+@@ -118,7 +117,7 @@
+         }
+         SigPolicyQualifiers qualifiers = new SigPolicyQualifiers(new SigPolicyQualifierInfo[] {spqi});
+ 
+-        signaturePolicyIdentifier = new SignaturePolicyIdentifier(new SignaturePolicyId(DERObjectIdentifier.getInstance(new DERObjectIdentifier(this.policyIdentifier.replace("urn:oid:", ""))),
++        signaturePolicyIdentifier = new SignaturePolicyIdentifier(new SignaturePolicyId(ASN1ObjectIdentifier.getInstance(new ASN1ObjectIdentifier(this.policyIdentifier.replace("urn:oid:", ""))),
+                 new OtherHashAlgAndValue(new AlgorithmIdentifier(new ASN1ObjectIdentifier(algId)), new DEROctetString(this.policyHash)), qualifiers));
+ 
+         return signaturePolicyIdentifier;

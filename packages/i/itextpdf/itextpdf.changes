@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 11 16:28:16 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.5.13.2
+- Removed patch:
+  * itextpdf-5.5.13.1-bouncycastle.patch
+    + Integrated upstream
+- Added patch:
+  * itextpdf-5.5.13.2-bouncycastle.patch
+    + fix build with bouncycastle 1.68
+
+-------------------------------------------------------------------
 Wed Jul  8 12:46:23 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of itextpdf 5.5.13.1

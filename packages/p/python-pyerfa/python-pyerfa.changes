@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 15 18:11:42 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Use bundled ERFA in Leap
+- skip python2 for leap: upstream dropped python2 support, no
+  pytest doctestplus for python2
+
+-------------------------------------------------------------------
 Fri Nov 20 22:50:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 1.7.1.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-slycot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 %define eggversion 0.4.0
 Name:           python-slycot
 Version:        0.4.0.0
@@ -51,20 +52,18 @@ Slycot is a wrapper for the SLICOT control and systems library.
 
 %build
 export CFLAGS="%{optflags}"
-# link against the generic BLAS/LAPACK binaries
-# let update-alternatives choose the vendor at runtime,
-# even when openblas-devel is pulled in by numpy
-export BLA_VENDOR="Generic"
-%python_build --generator "Unix Makefiles"
+# openblas-devel is pulled in by numpy-devel, but we link against the
+# generic BLAS/LAPACK binaries so that update-alternatives can choose
+# the implementation for runtime.
+%python_build --generator "Unix Makefiles" -DBLA_VENDOR="Generic"
 
 %install
+# scikit-build installs into sitelib instead of platlib
 %python_expand %{$python_install} --install-lib %{$python_sitearch} --generator "Unix Makefiles"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 export LANG="en_US.UTF-8"
-# avoid leading empty path entry introduced by %%pytest_arch
-export PYTHONPATH=/nonexistent
 %ifarch ppc64 ppc64le
   %define skiptest -k "not (test_tb05ad_ or test_sg03ad_ex)"
 %endif
@@ -74,6 +73,6 @@ export PYTHONPATH=/nonexistent
 %doc README.rst
 %license COPYING
 %{python_sitearch}/slycot
-%{python_sitearch}/slycot-%{eggversion}-py*.egg-info
+%{python_sitearch}/slycot-%{eggversion}*-info
 
 %changelog

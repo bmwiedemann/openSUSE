@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,12 @@
 
 %define binaries fitsdiff fitsheader fitscheck fitsinfo fits2bitmap samp_hub showtable volint wcslint
 
+%if 0%{suse_version} <= 1500
+# Use the bundled libraries for Leap 15.X, because the versions in the repos are too old
+%bcond_with systemlibs
+%else
 %bcond_without systemlibs
+%endif
 %if %{with systemlibs}
 %define unbundle_libs export ASTROPY_USE_SYSTEM_CFITSIO=1 \
                       export ASTROPY_USE_SYSTEM_EXPAT=1 \
@@ -51,7 +56,7 @@ Source100:      python-astropy-rpmlintrc
 # https://docs.astropy.org/en/v4.1/install.html#requirements
 BuildRequires:  %{python_module Cython >= 0.21}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module numpy-devel >= 1.17}
 BuildRequires:  %{python_module pyerfa}
@@ -61,9 +66,9 @@ BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.7
 Requires:       python-dbm
 Requires:       python-numpy >= 1.17
+Requires:       python-pyerfa
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     libxml2-tools
@@ -86,7 +91,6 @@ Conflicts:      perl-Data-ShowTable
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(wcslib) >= 7
-Requires:       python-pyerfa
 %endif
 %if %{with test}
 # SECTION Optional requirements

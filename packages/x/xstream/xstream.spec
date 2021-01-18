@@ -1,7 +1,7 @@
 #
 # spec file for package xstream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,40 +19,34 @@
 
 %bcond_with  hibernate
 Name:           xstream
-Version:        1.4.9
+Version:        1.4.15
 Release:        0
 Summary:        Java XML serialization library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            http://x-stream.github.io/
-Source0:        http://repo1.maven.org/maven2/com/thoughtworks/%{name}/%{name}-distribution/%{version}/%{name}-distribution-%{version}-src.zip
-# Fixes deserialization of void
-# https://bugzilla.redhat.com/show_bug.cgi?id=1441542
-# backport of https://github.com/x-stream/xstream/commit/b3570be2f39234e61f99f9a20640756ea71b1b40
-Patch0:         0001-Prevent-deserialization-of-void.patch
-Patch1:         xstream-1.4.9-javadoc.patch
+URL:            https://x-stream.github.io/
+Source0:        https://repo1.maven.org/maven2/com/thoughtworks/%{name}/%{name}-distribution/%{version}/%{name}-distribution-%{version}-src.zip
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(cglib:cglib)
 BuildRequires:  mvn(dom4j:dom4j)
-BuildRequires:  mvn(javassist:javassist)
 BuildRequires:  mvn(joda-time:joda-time)
-BuildRequires:  mvn(net.sf.kxml:kxml2)
 BuildRequires:  mvn(net.sf.kxml:kxml2-min)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.codehaus.jettison:jettison)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.codehaus.woodstox:woodstox-core-asl)
 BuildRequires:  mvn(org.jdom:jdom)
 BuildRequires:  mvn(org.jdom:jdom2)
-BuildRequires:  mvn(org.slf4j:slf4j-simple)
 BuildRequires:  mvn(stax:stax)
 BuildRequires:  mvn(stax:stax-api)
 BuildRequires:  mvn(xom:xom)
 BuildRequires:  mvn(xpp3:xpp3)
 BuildRequires:  mvn(xpp3:xpp3_min)
-BuildRequires:  unzip
 BuildArch:      noarch
 %if %{with hibernate}
 BuildRequires:  mvn(org.hibernate:hibernate-core)
@@ -89,6 +83,7 @@ Group:          Documentation/HTML
 %if %{with hibernate}
 %package        hibernate
 Summary:        The hibernate module for %{name}
+Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
 
 %description    hibernate
@@ -97,6 +92,7 @@ This package contains the hibernate module for %{name}.
 
 %package        benchmark
 Summary:        The benchmark module for %{name}
+Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
 
 %description    benchmark
@@ -104,6 +100,7 @@ This package contains the benchmark module for %{name}.
 
 %package parent
 Summary:        Parent POM for %{name}
+Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
 
 %description parent
@@ -114,11 +111,6 @@ Parent POM for %{name}.
 find . -name "*.class" -print -delete
 find . -name "*.jar" -print -delete
 
-%patch0 -p1
-%patch1 -p1
-
-# Remove org.apache.maven.wagon:wagon-webdav
-%pom_xpath_remove "pom:project/pom:build/pom:extensions"
 # Require org.codehaus.xsite:xsite-maven-plugin
 %pom_disable_module xstream-distribution
 
@@ -128,7 +120,6 @@ find . -name "*.jar" -print -delete
 %pom_disable_module xstream-jmh
 
 %pom_remove_plugin :xsite-maven-plugin
-%pom_remove_plugin :jxr-maven-plugin
 # Unwanted
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-dependency-plugin
@@ -146,6 +137,7 @@ find . -name "*.jar" -print -delete
 
 # provided by JDK
 %pom_remove_dep javax.activation:activation xstream
+%pom_remove_dep javax.xml.bind:jaxb-api xstream
 
 %pom_xpath_set "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'cglib' ]/pom:artifactId" cglib xstream-hibernate
 %pom_xpath_inject "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'junit' ]" "<scope>test</scope>" xstream-hibernate
@@ -164,7 +156,8 @@ find . -name "*.jar" -print -delete
 
 %build
 # test skipped for unavailable test deps (com.megginson.sax:xml-writer)
-%{mvn_build} -f -s -- -Dsource=1.6
+%{mvn_build} -f -s -- \
+	-Dversion.java.source=8 -Dversion.java.target=8
 
 %install
 %mvn_install

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 18 08:31:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove unused patch pr_174.patch
+
+-------------------------------------------------------------------
+Sun Jan 17 22:29:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v0.7.1 
+  * Fix compatibility with aiohttp 3.7
+  * remove asynctest from compat.py
+  * Python 3.9 compatibility
+- drop pr_174.patch merged upstream
+- fix python version requirement, require asynctest for python36
+  again
+
+-------------------------------------------------------------------
 Wed Oct 28 14:43:39 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove no longer necessary aioresponses-replace-asynctest.patch

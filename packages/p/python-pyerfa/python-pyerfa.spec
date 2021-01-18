@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyerfa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{suse_version} <= 1500
+# use the bundled ERFA in Leap <=15.X, because the system provided one is too old
+%bcond_with systemlibs
+%else
+%bcond_without systemlibs
+%endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define erfaversion 1.7.1
+# upstream dropped python2 support, no pytest doctestplus for python2
+%define skip_python2 1
 Name:           python-pyerfa
 Version:        1.7.1.1
 Release:        0
@@ -35,7 +42,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+%if %{with systemlibs}
 BuildRequires:  pkgconfig(erfa) >= %{erfaversion}
+%endif
 Requires:       python-numpy >= 1.16
 %python_subpackages
 
@@ -51,14 +60,20 @@ context of Astropy project, into a standalone package.
 
 %prep
 %setup -q -n pyerfa-%{version}
+%if %{with systemlibs}
 rm -rf liberfa/
+%endif
 
 %build
+%if %{with systemlibs}
 export PYERFA_USE_SYSTEM_LIBERFA=1
+%endif
 %python_build
 
 %install
+%if %{with systemlibs}
 export PYERFA_USE_SYSTEM_LIBERFA=1
+%endif
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 

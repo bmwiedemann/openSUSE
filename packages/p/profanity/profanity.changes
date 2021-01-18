@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 18 10:26:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Fix Factory build:
+  * Create correct symlinks
+  * Use update-alternatives correctly
+  * Use clearer style
+
+-------------------------------------------------------------------
+Mon Jan 18 09:36:57 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- boo#1180739: Fix typo in themes:
+  * Add profanity-0.10.0-theme-typo.patch
+
+-------------------------------------------------------------------
 Sat Jan  9 07:16:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.0:

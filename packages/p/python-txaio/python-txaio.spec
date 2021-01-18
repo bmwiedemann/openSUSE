@@ -1,7 +1,7 @@
 #
 # spec file for package python-txaio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,31 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-txaio
-Version:        20.4.1
+Version:        20.12.1
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/crossbario/txaio
 Source:         https://files.pythonhosted.org/packages/source/t/txaio/txaio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove-mock.patch gh#crossbario/txaio#169
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-devel
-BuildRequires:  python3-testsuite
-Requires:       python-six
 Recommends:     python-Twisted >= 20.3.0
 Recommends:     python-zope.interface >= 3.6
 BuildArch:      noarch
-%ifpython2
-Requires:       python-future
-Recommends:     python-trollius
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module Twisted >= 20.3.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module zope.interface >= 3.6}
 # /SECTION
 %python_subpackages
 
@@ -67,6 +62,7 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/txaio
+%{python_sitelib}/txaio-%{version}*-info
 
 %changelog

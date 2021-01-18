@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 18 00:21:11 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- update to 20.12.1
+  * new: CI/CD migrated to GitHub Actions
+  * new: support Python 3.9 (CI / testing added)
+  * new: minimum Python version is now 3.6 
+- add remove-mock.patch gh#crossbario/txaio#169
+
+-------------------------------------------------------------------
 Mon Apr  6 09:20:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 20.4.1

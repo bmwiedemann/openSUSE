@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
 Source1:        profanity-rpmlintrc
+# FIX-UPSTREAM - mvetter@suse.com - boo#1180739
+Patch0:         profanity-0.10.0-theme-typo.patch
 BuildRequires:  glib2-devel >= 2.62
 BuildRequires:  gtk2-devel
 BuildRequires:  libcurl-devel
@@ -81,6 +83,7 @@ Including:
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i -e "s/python-config/python3-config/g" configure
 
 %build
@@ -102,7 +105,7 @@ export CFLAGS="%{optflags} -fcommon"
 %make_install
 rm %{buildroot}%{_libdir}/libprofanity.la
 
-mv %{buildroot}%{_bindir}/profanity{,-standard}
+mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity-standard
 
 make clean
 
@@ -122,12 +125,11 @@ make %{?_smp_mflags}
 %make_install
 rm %{buildroot}%{_libdir}/libprofanity.la
 
-mv %{buildroot}%{_bindir}/profanity{,-mini}
+mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity-mini
 
 # u-a handling
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-ln -s profanity %{buildroot}%{_sysconfdir}/alternatives/profanity
-ln -s profanity %{buildroot}%{_bindir}/profanity
+ln -s -f %{_sysconfdir}/alternatives/profanity %{buildroot}%{_bindir}/profanity
 
 %files
 %{_mandir}/man1/profanity.1%{?ext_man}
@@ -144,32 +146,32 @@ ln -s profanity %{buildroot}%{_bindir}/profanity
 
 %files mini
 %ghost %{_sysconfdir}/alternatives/profanity
-%ghost %{_bindir}/profanity
+%{_bindir}/profanity
 %{_bindir}/profanity-mini
 
 %files standard
 %ghost %{_sysconfdir}/alternatives/profanity
-%ghost %{_bindir}/profanity
+%{_bindir}/profanity
 %{_bindir}/profanity-standard
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
 %post mini
 %{_sbindir}/update-alternatives --install \
     %{_bindir}/profanity profanity %{_bindir}/profanity-mini 10
 
-%preun mini
-if [ "$1" = 0 ] ; then
+%postun mini
+if [ ! -f %{_bindir}/profanity-mini ] ; then
   %{_sbindir}/update-alternatives --remove profanity %{_bindir}/profanity-mini
 fi
 
 %post standard
 %{_sbindir}/update-alternatives --install \
     %{_bindir}/profanity profanity %{_bindir}/profanity-standard 20
-/sbin/ldconfig
 
-%preun standard
-if [ "$1" = 0 ] ; then
+%postun standard
+if [ ! -f %{_bindir}/profanity-standard ] ; then
   %{_sbindir}/update-alternatives --remove profanity %{_bindir}/profanity-standard
 fi
 

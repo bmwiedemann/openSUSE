@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 18 01:35:19 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 because of SciPy 1.6.0
+
+-------------------------------------------------------------------
+Thu Jul  2 11:19:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove pytest_arch PYTHONPATH workaround, fixed in python-rpm-macros
+
+-------------------------------------------------------------------
 Tue Jun 30 09:36:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove the ppc workaround and skip the failing test entirely.

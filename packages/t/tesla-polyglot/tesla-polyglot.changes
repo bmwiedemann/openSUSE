@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 18 07:30:44 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Require jdk >= 1.8 for building
+- Build always with source/target level 8, since the code contains
+  constructs that are 8+ only
+
+-------------------------------------------------------------------
 Thu Dec 10 11:25:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 0.4.5

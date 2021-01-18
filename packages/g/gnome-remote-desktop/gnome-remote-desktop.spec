@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-remote-desktop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,47 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global systemd_unit gnome-remote-desktop.service
 
+%define freerdp_version 2.2.0
+
 Name:           gnome-remote-desktop
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
 Group:          System/Management
-URL:            https://gitlab.gnome.org/jadahl/gnome-remote-desktop
+URL:            https://gitlab.gnome.org/GNOME/gnome-remote-desktop
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM Avoid race condition on disconnect glgo#GNOME/gnome-remote-desktop#43
+Patch0:         0001-vnc-Drop-frames-if-client-is-gone.patch
+# PATCH-FEATURE-UPSTREAM Adds encryption support (requires patched LibVNCServer)
+Patch1:         gnutls-anontls.patch
+# PATCH-FIX-UPSTREAM Copy using the right destination stride glgo#GNOME/gnome-remote-desktop!21
+Patch2:         0001-vnc-Copy-pixels-using-the-right-destination-stride.patch
 
 BuildRequires:  meson >= 0.36.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(freerdp2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libvncserver) >= 0.9.10
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(winpr2) >= %{freerdp_version}
 %{?systemd_requires}
 
-Requires:       pipewire >= 0.1.3
+Requires:       pipewire >= 0.3.0
 
 %description
 GNOME Remote Desktop is a remote desktop and screen sharing service for the

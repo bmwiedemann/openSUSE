@@ -1,7 +1,7 @@
 #
 # spec file for package itextpdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           itextpdf
-Version:        5.5.13.1
+Version:        5.5.13.2
 Release:        0
 Summary:        A Free Java-PDF library
 License:        AGPL-3.0-only
 Group:          Development/Libraries/Java
 URL:            https://itextpdf.com
 Source0:        https://github.com/itext/%{name}/archive/%{version}.tar.gz
-Patch0:         itextpdf-5.5.13.1-bouncycastle.patch
+Patch0:         itextpdf-5.5.13.2-bouncycastle.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.itextpdf:itext-parent:pom:)
@@ -33,8 +33,7 @@ BuildRequires:  mvn(org.apache.commons:commons-imaging)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.santuario:xmlsec)
 BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk15on)
-BuildRequires:  mvn(org.bouncycastle:bcprov-jdk15on)
-BuildRequires:  mvn(org.codehaus.mojo:buildnumber-maven-plugin)
+BuildRequires:  mvn(org.bouncycastle:bcprov-jdk15to18)
 BuildArch:      noarch
 
 %description
@@ -54,7 +53,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 
 # Both need git access during the build
@@ -62,7 +61,7 @@ This package contains the API documentation for %{name}.
 %pom_remove_plugin -r :buildnumber-maven-plugin
 
 %build
-%mvn_build -f
+%{mvn_build} -f
 
 %install
 %mvn_install

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 15 18:01:11 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Make sure that the python >= 3.7 requirement is checked on
+  build time and let rpm do the rest.
+- Use bundled libraries on Leap 15.X
+
+-------------------------------------------------------------------
 Fri Jan  1 19:03:47 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Increase the hypothesis test deadline
