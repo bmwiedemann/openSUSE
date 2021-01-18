@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 12 21:07:52 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.2.0.
+  * Deprecate functions that allowed non-Unicode encoding. In 
+    particular, Dictionary::imbue() and Dictionary::imbue_utf8().
+  * Completely remove dependency on Boost. The CLI tools were 
+    refactored to use ICU directly.
+
+-------------------------------------------------------------------
 Thu Nov 26 08:42:53 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.1.0.

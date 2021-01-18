@@ -74,4 +74,17 @@ Drop redundant (autodetected) pkgconfig require.</comment>
 </comment>
     <requestid>850930</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d53ee0f0de9b1a5c598a48bcd68daa6</srcmd5>
+    <version>4.2.0</version>
+    <time>1610965567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0.
+  * Deprecate functions that allowed non-Unicode encoding. In 
+    particular, Dictionary::imbue() and Dictionary::imbue_utf8().
+  * Completely remove dependency on Boost. The CLI tools were 
+    refactored to use ICU directly.
+</comment>
+    <requestid>862717</requestid>
+  </revision>
 </revisionlist>

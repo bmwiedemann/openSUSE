@@ -1,7 +1,7 @@
 #
 # spec file for package nuspell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sonum   4
 %define libname libnuspell
 Name:           nuspell
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  Catch2-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_locale-devel
 BuildRequires:  libicu-devel
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:ronn)
 Requires:       hunspell
@@ -107,7 +106,7 @@ popd
 %files -n %{libname}%{sonum}
 %doc README.md CHANGELOG.md AUTHORS
 %license COPYING.LESSER COPYING
-%{_libdir}/%{libname}.so.%{sonum}.1.0
+%{_libdir}/%{libname}.so.%{version}
 %exclude %{_datadir}/doc/nuspell/README.md
 
 %files devel
