@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 14 16:07:35 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 6.0 release, highlevel changes:
+  - Core modules in PE format.
+  - Vulkan backend for WineD3D.
+  - DirectShow and Media Foundation support.
+  - Text console redesign.
+- update staging to 6.0 release
+
+-------------------------------------------------------------------
 Sat Jan  9 11:37:37 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 6.0rc6 development release

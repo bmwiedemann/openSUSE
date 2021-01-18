@@ -3828,4 +3828,17 @@
 - update staging to 6.0rc6 release</comment>
     <requestid>861885</requestid>
   </revision>
+  <revision rev="330" vrev="1">
+    <srcmd5>a52616a9b6d6d58445c509379e36dff8</srcmd5>
+    <version>6.0</version>
+    <time>1610965760</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 6.0 release, highlevel changes:
+  - Core modules in PE format.
+  - Vulkan backend for WineD3D.
+  - DirectShow and Media Foundation support.
+  - Text console redesign.
+- update staging to 6.0 release</comment>
+    <requestid>863819</requestid>
+  </revision>
 </revisionlist>
