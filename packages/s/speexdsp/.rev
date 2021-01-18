@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>727578</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>56100a1a3040fa5938d7511501c68b6f</srcmd5>
+    <version>1.2.0</version>
+    <time>1610965637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies and update spec file</comment>
+    <requestid>863045</requestid>
+  </revision>
 </revisionlist>

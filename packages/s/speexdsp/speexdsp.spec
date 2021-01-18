@@ -1,7 +1,7 @@
 #
 # spec file for package speexdsp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define package_version 1.2.0
 %define sover   1
 %define libname lib%{name}%{sover}
 Name:           speexdsp
@@ -26,14 +25,10 @@ Summary:        Patent free speech codec
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://www.speex.org/
-
 #Git-Clone:     https://github.com/xiph/speexdsp
-Source0:        https://downloads.xiph.org/releases/speex/%{name}-%{package_version}.tar.gz
+Source0:        https://downloads.xiph.org/releases/speex/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ogg)
 Conflicts:      speex <= 1.1.999_1.2rc1
 
@@ -64,21 +59,20 @@ This package contains the files needed to compile programs that use the
 SpeeX library.
 
 %prep
-%autosetup -p1 -n %{name}-%{package_version}
+%autosetup
 
 %build
-autoreconf -fiv
 # Disable NEON since it doesn't check for availability of the NEON
 # extension at runtime
 %configure \
   --disable-static \
   --disable-neon
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 # remove unneeded *.la files
-rm -f %{buildroot}/%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
