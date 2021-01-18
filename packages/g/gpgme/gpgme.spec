@@ -1,7 +1,7 @@
 #
 # spec file for package gpgme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 %{!?python_module:%define python_module() python-%{**} python3-{**}}
 Name:           gpgme%{psuffix}
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -50,11 +50,9 @@ BuildRequires:  libgpg-error-devel >= 1.36
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 %if %{with python2} || %{with python3}
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
+BuildRequires:  python-rpm-macros
 %endif
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
@@ -67,7 +65,6 @@ BuildRequires:  pkgconfig(Qt5Test)
 %define python_sitearch %python3_sitearch
 %define python_files() -n python3-%{**}
 %endif
-
 
 %description
 GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
@@ -262,11 +259,6 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %postun -n libgpgme11 -p /sbin/ldconfig
 %post -n libgpgmepp6 -p /sbin/ldconfig
 %postun -n libgpgmepp6 -p /sbin/ldconfig
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/gpgme.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/gpgme.info%{ext_info}
 %endif
 
 %if !%{with qt}

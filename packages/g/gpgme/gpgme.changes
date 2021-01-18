@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 12 22:35:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- gpgme 1.15.1:
+  * Fix a bug in the secret key export
+  * Make listing of signatures work if only secret keys are listed
+  * qt: Avoid empty "rem@gnupg.org" signature notations
+  * python: Fix key_export functions
+- remove deprecated texinfo macros
+
+-------------------------------------------------------------------
 Sat Dec  5 19:09:59 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Use python-rpm-macros to provide python3X-gpg for all present 
