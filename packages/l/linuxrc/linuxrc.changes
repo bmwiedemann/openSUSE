@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jan 13 16:35:16 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#239
+- fix detection of config file type (XML vs. plain text) bsc#1179936
+- 7.0.24
+
+--------------------------------------------------------------------
 Thu Jan 7 12:58:48 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#237
