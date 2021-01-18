@@ -1,7 +1,7 @@
 #
 # spec file for package net-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,7 @@ for tool in iptunnel ipmaddr; do
   help2man -s8 "%{buildroot}%{_sbindir}/${tool}" --no-discard-stderr >"${t}"
 done
 # generate bin/sbin compat symlinks
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}/bin
 for i in ether-wake nameif plipconfig slattach arp ipmaddr iptunnel; do
@@ -95,19 +96,22 @@ done
 for i in netstat ifconfig route; do
 ln -s %{_bindir}/$i %{buildroot}/bin/$i
 done
+%endif
 %find_lang %{name} --all-name
 
 %files
 %license COPYING
 %doc README ABOUT-NLS
 %{_sbindir}/ether-wake
-/sbin/ether-wake
 %{_sbindir}/nameif
-/sbin/nameif
 %{_sbindir}/plipconfig
-/sbin/plipconfig
 %{_sbindir}/slattach
+%if !0%{?usrmerged}
+/sbin/ether-wake
+/sbin/nameif
+/sbin/plipconfig
 /sbin/slattach
+%endif
 %{_mandir}/de/man5/ethers.5%{?ext_man}
 %{_mandir}/de/man8/plipconfig.8%{?ext_man}
 %{_mandir}/de/man8/slattach.8%{?ext_man}
@@ -122,18 +126,20 @@ done
 
 %files deprecated
 %license COPYING
-%{_bindir}/netstat
-/bin/netstat
-%{_sbindir}/arp
-/sbin/arp
 %{_bindir}/ifconfig
-/bin/ifconfig
-%{_sbindir}/ipmaddr
-/sbin/ipmaddr
-%{_sbindir}/iptunnel
-/sbin/iptunnel
+%{_bindir}/netstat
 %{_bindir}/route
+%if !0%{?usrmerged}
+/bin/ifconfig
+/bin/netstat
 /bin/route
+/sbin/arp
+/sbin/ipmaddr
+/sbin/iptunnel
+%endif
+%{_sbindir}/arp
+%{_sbindir}/ipmaddr
+%{_sbindir}/iptunnel
 %{_mandir}/de/man8/arp.8%{?ext_man}
 %{_mandir}/de/man8/ifconfig.8%{?ext_man}
 %{_mandir}/de/man8/netstat.8%{?ext_man}
