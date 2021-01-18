@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  9 14:46:13 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.2.2:
+ - Fixed
+  - Build error with latest bcprov
+  - Crash when flattening forms
+  - Proper error message with missing passwords
+ - Changed
+  - Better handling of long and non-ASCII form options
+  - Report more annotation types
+
+-------------------------------------------------------------------
 Mon Dec 28 14:07:38 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Pass arguments to pdftk individually quoted (replaced $* with
