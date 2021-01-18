@@ -1018,4 +1018,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1607958242</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="141" vrev="139">
+    <srcmd5>aba33b4386fb477ebcbeff4e1dd4a045</srcmd5>
+    <version>unknown</version>
+    <time>1610965639</time>
+    <user>dimstar_suse</user>
+    <comment>Add &quot;suse-release&quot; Provides for MicroOS-release (for rpm-repos-openSUSE to work with it)</comment>
+    <requestid>863062</requestid>
+  </revision>
 </revisionlist>

@@ -34,6 +34,9 @@ Suggests:       openSUSE-build-key
 Conflicts:      distribution-release
 Conflicts:      kernel < 4.4
 Provides:       distribution-release
+# MicroOS is a SUSE Linux type distribution
+Provides:       suse-release = %{version}-%{release}
+Provides:       suse-release-oss = %{version}-%{release}
 # MicroOS-release replaces Tumbleweed-Kubic-release
 Provides:       openSUSE-Tumbleweed-Kubic-release
 Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
