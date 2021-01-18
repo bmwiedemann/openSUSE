@@ -4,15 +4,7 @@ set -euo pipefail
 # packaging helper to workaround:
 # https://github.com/rust-lang/cargo/issues/7058
 
-wd="/tmp/revendor"
-
-if [[ -d "$wd" ]]; then
-	echo -n "Removing previous ws ($wd)... "
-	rm -fr $wd
-	echo "done"
-fi
-
-mkdir -p $wd
+wd="$(mktemp -d /tmp/revendor.XXXXXXXXXX)"
 
 # take what we need into the build
 cp vendor*xz $wd

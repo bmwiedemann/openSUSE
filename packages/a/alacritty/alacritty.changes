@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 16 20:44:50 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- Make use of mktemp in revendor_source.sh script so we don't have a
+  predictable working directory (boo#1180782)
+
+-------------------------------------------------------------------
 Mon Jan 11 11:01:09 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Fix build on riscv64
