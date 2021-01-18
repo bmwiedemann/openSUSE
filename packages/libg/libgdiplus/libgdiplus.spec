@@ -1,7 +1,7 @@
 #
 # spec file for package libgdiplus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 0
 Name:           libgdiplus
-Version:        6.0.4
+Version:        6.0.5
 Release:        0
 Summary:        Open Source Implementation of the GDI+ API
 License:        (LGPL-2.1-or-later OR MPL-1.1) AND MIT
@@ -66,12 +66,12 @@ sed -i 's/-Wall/-Wall %{optflags}/' src/Makefile.am
 
 %build
 autoreconf -fiv
-%configure
+%configure --disable-static
 %make_build
 
 %install
 %make_install
-rm -rf %{buildroot}%{_libdir}/%{name}.{a,la}
+rm %{buildroot}%{_libdir}/%{name}.la
 
 #%check
 #%make_build check
