@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 13 13:12:54 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
 Mon Oct 14 14:45:15 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

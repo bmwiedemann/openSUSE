@@ -1,7 +1,7 @@
 #
 # spec file for package python-testresources
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/t/testresources/t
 Patch0:         testresources-flaky-tests.patch
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  fdupes
@@ -51,7 +52,7 @@ of resources by test cases.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license BSD Apache-2.0 COPYING

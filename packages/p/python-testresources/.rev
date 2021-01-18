@@ -90,4 +90,12 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743998</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>a4abf4e110ba694563b44c5474057aef</srcmd5>
+    <version>2.0.1</version>
+    <time>1610965587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862898</requestid>
+  </revision>
 </revisionlist>
