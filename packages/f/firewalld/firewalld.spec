@@ -55,6 +55,7 @@ Requires:       iptables
 Requires:       logrotate
 Requires:       nftables
 Requires:       python3-firewall = %{version}
+Requires:       python3-gobject
 Requires:       python3-nftables
 Requires:       sysconfig
 Requires(post): %fillup_prereq

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 14 09:52:26 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Add dependency for firewall-offline-cmd (bsc#1180883)
+
+-------------------------------------------------------------------
 Mon Nov  9 09:15:55 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Remove the patch which enforces usage of iptables instead of

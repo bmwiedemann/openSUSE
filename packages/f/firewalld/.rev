@@ -1045,4 +1045,12 @@ This is a bug fix only release.
     * fix(policy): zone interface/source changes should affect all using zone</comment>
     <requestid>853450</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>fe989a003ac32ab4de765a3b535b55a4</srcmd5>
+    <version>0.9.1</version>
+    <time>1610965650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863088</requestid>
+  </revision>
 </revisionlist>
