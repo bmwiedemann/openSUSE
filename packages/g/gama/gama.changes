@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 15 16:57:04 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU gama 2.13:
+  * Command line programs gama-local, gama-local-yaml2gkf and
+    gama-local-gkf2yaml can now read input data from standard
+    input
+  * New exlicit parameter --input-xml in gama-local
+  * Fixed implicit model for distance stddev (gama-local
+    adjustment model)
+  * Fixed new attribute angular in documentation
+
+-------------------------------------------------------------------
 Fri Dec 25 08:54:06 UTC 2020 - Wang Jun <jgwang@suse.de>
 
 - Update to version 2.12

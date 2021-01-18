@@ -1,7 +1,7 @@
 #
 # spec file for package gama
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gama
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -35,8 +35,6 @@ BuildRequires:  pkgconfig(expat) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
 # for xmllint
 Requires:       libxml2-tools
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description
 GNU Gama is a project dedicated to adjustment of geodetic networks. It is intended for use with traditional geodetic surveyings which are still used and needed in special measurements (e.g., underground or high precision engineering measurements) where the Global Positioning System (GPS) cannot be used.
@@ -54,12 +52,6 @@ chmod -v a-x COPYING ChangeLog* README NEWS TODO AUTHORS
 
 %install
 %make_install
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
 %license COPYING
