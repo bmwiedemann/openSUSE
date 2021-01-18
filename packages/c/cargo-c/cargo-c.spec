@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           cargo-c
-Version:        0.6.15
+Version:        0.7.0
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
@@ -75,5 +75,6 @@ rm -rf %{buildroot}%{_datadir}/cargo/registry
 %{_bindir}/cargo-capi
 %{_bindir}/cargo-cbuild
 %{_bindir}/cargo-cinstall
+%{_bindir}/cargo-ctest
 
 %changelog
