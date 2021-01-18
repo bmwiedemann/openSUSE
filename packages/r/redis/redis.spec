@@ -1,7 +1,7 @@
 #
 # spec file for package redis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        6.0.9
+Version:        6.0.10
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
 URL:            https://redis.io
-Source0:        http://download.redis.io/releases/redis-%{version}.tar.gz
+Source0:        https://download.redis.io/releases/redis-%{version}.tar.gz
 Source1:        %{name}.logrotate
 Source2:        %{name}.target
 Source3:        %{name}@.service
