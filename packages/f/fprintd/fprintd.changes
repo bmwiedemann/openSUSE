@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 15 19:42:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.90.9
+  * Fix multiple daemon lockup issues (#97)
+  * Fix print garbage collection to not delete used prints
+  * pam: Use the device with the most prints
+
+-------------------------------------------------------------------
 Sat Dec 12 21:51:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.90.8

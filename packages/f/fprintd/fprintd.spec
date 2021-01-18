@@ -1,7 +1,7 @@
 #
 # spec file for package fprintd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define gitlabhash 7d22a2b5b9d323638bb213aefb8627d897c8e482
+%define gitlabhash da60bddb3e5be024c6c1958437cb13e0ce0ffac8
 
 Name:           fprintd
-Version:        1.90.8
+Version:        1.90.9
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
