@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 14 13:40:54 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: removed warning for too small EFI system partition.
+- Proposal: reuse pre-existing EFI partition even if it's small
+- Related to bsc#1177358, bsc#1170625 and bsc#1119318.
+- 4.3.37
+
+-------------------------------------------------------------------
+Tue Jan 12 12:59:07 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Added API methods to get the preferred name to reference a block
+  device or its filesystem (jsc#SLE-17081, also related to
+  bsc#1177926 and bsc#1169874).
+- 4.3.36
+
+-------------------------------------------------------------------
 Tue Dec 22 13:09:47 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Partitioner: do not allow to modify the path of Btrfs subvolumes
