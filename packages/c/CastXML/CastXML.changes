@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 15 23:10:56 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.2:
+  * test: Fix expected output on 32-bit architectures
+    (i686/armv7hl).
+- Changes from version 0.4.1:
+  * schema: allow 'mangled' attributes to be empty.
+  * test: Tell Git to use LF newlines for test inputs.
+  * test: Make Function-Argument-default-ns output more
+    predictable.
+  * Output: Generate Enumeration underlying integer type.
+
+-------------------------------------------------------------------
 Wed Jan 13 12:24:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.0:
