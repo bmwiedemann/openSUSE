@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 15 00:41:52 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Use %cmake_build rather then %make_jobs
+
+-------------------------------------------------------------------
 Sat Jul  4 11:29:00 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - QPainter.patch applied for build error in TW (gcc10)

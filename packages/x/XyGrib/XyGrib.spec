@@ -70,7 +70,7 @@ cp %{S:1} %{S:2} .
 %cmake \
     -DCMAKE_INSTALL_PREFIX=%{_datadir}/openGribs \
 	-DCMAKE_CXX_FLAGS="%{optflags} -DNO_UPDATE=1 -DOPENSUSE=1"
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
