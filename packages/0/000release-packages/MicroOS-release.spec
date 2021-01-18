@@ -17,7 +17,7 @@
 
 
 Name:           MicroOS-release
-Version:        20210115
+Version:        20210118
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -34,6 +34,9 @@ Suggests:       openSUSE-build-key
 Conflicts:      distribution-release
 Conflicts:      kernel < 4.4
 Provides:       distribution-release
+# MicroOS is a SUSE Linux type distribution
+Provides:       suse-release = %{version}-%{release}
+Provides:       suse-release-oss = %{version}-%{release}
 # MicroOS-release replaces Tumbleweed-Kubic-release
 Provides:       openSUSE-Tumbleweed-Kubic-release
 Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
@@ -173,9 +176,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = MicroOS
-Provides:       product(MicroOS) = 20210115-0
+Provides:       product(MicroOS) = 20210118-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20210115
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20210118
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(MicroOS)
@@ -191,7 +194,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(MicroOS) = 20210115-0
+Provides:       product_flavor(MicroOS) = 20210118-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -207,7 +210,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(kubic-dvd)
-Provides:       product_flavor(MicroOS) = 20210115-0
+Provides:       product_flavor(MicroOS) = 20210118-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description kubic-dvd
@@ -223,7 +226,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(MicroOS) = 20210115-0
+Provides:       product_flavor(MicroOS) = 20210118-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -239,7 +242,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-kubic)
-Provides:       product_flavor(MicroOS) = 20210115-0
+Provides:       product_flavor(MicroOS) = 20210118-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance-kubic
@@ -298,11 +301,11 @@ cat >$RPM_BUILD_ROOT/etc/products.d/MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>MicroOS</name>
-  <version>20210115</version>
+  <version>20210118</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:microos:20210115</cpeid>
+  <cpeid>cpe:/o:opensuse:microos:20210118</cpeid>
   <productline>MicroOS</productline>
   <register>
     <pool>
