@@ -155,4 +155,16 @@
 </comment>
     <requestid>845320</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0bf3e37ec58e9088d5d612b936240ddf</srcmd5>
+    <version>0.10.0</version>
+    <time>1610965759</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.10.0
+  * Added
+    - Microsoft Teams installer
+    - Warning for personal repository
+</comment>
+    <requestid>863812</requestid>
+  </revision>
 </revisionlist>
