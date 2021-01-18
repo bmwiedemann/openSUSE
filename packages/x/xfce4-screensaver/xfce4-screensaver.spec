@@ -112,7 +112,7 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/applications/screensavers/xfce-popsquares.desktop
 %{_datadir}/dbus-1/services/org.xfce.ScreenSaver.service
 %{_datadir}/desktop-directories/xfce4-screensaver.directory
-%{_libexecdir}/*
+%{_libexecdir}/xfce4-screensaver-*
 %{_libexecdir}/xfce4-screensaver/*
 %{_mandir}/man1/xfce4-screensaver-command.1%{?ext_man}
 %{_mandir}/man1/xfce4-screensaver-preferences.1%{?ext_man}

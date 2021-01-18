@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 15 16:01:26 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Unbreak Leap build.
+    * Make "%(_libexecdir}" file list more explicit, thus avoiding
+    '/usr/lib/debug' being picked up on Leap, where libexec is '/usr/lib'.
+
+-------------------------------------------------------------------
 Sun Jan  3 19:51:24 UTC 2021 - Vinzenz Vietzke <vinz@vinzv.de>
 
 - Update to version 4.16.0
