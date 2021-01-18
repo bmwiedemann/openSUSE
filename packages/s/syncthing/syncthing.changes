@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 17 23:55:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Invalid names are allowed and "auto accepted" in folder root path on Windows
+  * Sometimes indexes for some folders aren't sent after starting Syncthing
+  * [Untrusted] Remove Unexpected Items leaves things behind
+  * Wrong theme on selection
+  * Quic spamming address resolving
+  * Deleted locally changed items still shown as locally changed
+  * Allow specifying remote expected web UI port which would generate a href somewhere
+  * Ignore fsync errors when saving ignore files 
+
+-------------------------------------------------------------------
 Tue Dec  1 14:58:51 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.12.0
