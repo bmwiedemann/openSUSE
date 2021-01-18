@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 17 20:27:55 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.10.17:
+  * Fix year calculation for the last day of a leap year.
+  * Fix wrong linking of Apple Frameworks on MacOS.
+  * Define __STDC_FORMAT_MACROS when it hasn't been defined to
+    avoid duplicate define error.
+  * Delete apparently broken .vcxprojs and .pfxes.
+  * Removed defunct email contact information from the readme.
+
+-------------------------------------------------------------------
 Mon Jan  4 11:02:30 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - cpprest-2.10.9-disable-test-extract_floating_point.patch: Only disable

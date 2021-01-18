@@ -19,21 +19,23 @@
 %define major 2
 %define minor 10
 Name:           cpprest
-Version:        2.10.16
+Version:        2.10.17
 Release:        0
 Summary:        C++ REST library
-License:        MIT AND BSD-3-Clause AND Zlib
 # main: MIT (license.txt)
 # Websocket++: BSD-3-Clause (ThirdPartyNotices.txt)
 # base64/base64.hpp: Zlib (ThirdPartyNotices.txt)
 # sha1/sha1.hpp: BSD-3-Clause (ThirdPartyNotices.txt)
 # common/md5.hpp: Zlib (ThirdPartyNotices.txt)
 # utf8_validation.hpp: MIT (ThirdPartyNotices.txt)
+License:        MIT AND BSD-3-Clause AND Zlib
 URL:            https://github.com/Microsoft/cpprestsdk
-Source:         https://github.com/Microsoft/cpprestsdk/archive/v%{version}/cpprestsdk-%{version}.tar.gz
-# https://github.com/Microsoft/cpprestsdk/issues/576
+Source:         https://github.com/Microsoft/cpprestsdk/archive/%{version}/cpprestsdk-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/Microsoft/cpprestsdk/issues/576
 Patch1:         cpprest-2.10.9-disable-test-extract_floating_point.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/microsoft/cpprestsdk/pull/1557
 Patch2:         base64.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/microsoft/cpprestsdk/pull/1558
 Patch3:         filestream.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
