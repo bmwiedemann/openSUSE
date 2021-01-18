@@ -17,7 +17,7 @@
 
 
 Name:           wyrmgus
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Game engine for Wyrmsun
 License:        GPL-2.0-only
