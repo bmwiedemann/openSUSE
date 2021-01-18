@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Jan 13 21:46:16 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Add workaround build fail due issue in dwz by deleting 
+  libdeflate-gunzip and replace with symlink libdeflate-gzip to 
+  fix dwz break with hardlink.
+  boo#1180984
+
+-------------------------------------------------------------------
+Wed Jan 13 12:11:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Quantify the description's supposed "fast" claims
+- Adhere to shared library packaging guide and split tools off
+  into subpackage.
+
+-------------------------------------------------------------------
+Wed Jan 13 08:07:49 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Initial package release.
