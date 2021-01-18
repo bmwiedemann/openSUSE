@@ -49,7 +49,7 @@ BuildRequires:  unzip
 BuildRequires:  upx
 BuildRequires:  zpaq
 BuildRequires:  zstd
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150100
 BuildRequires:  p7zip-full
 Requires:       p7zip-full
 %else
