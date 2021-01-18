@@ -1,7 +1,7 @@
 #
 # spec file for package python-transaction
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-transaction
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Transaction management for Python
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/transaction
 Source:         https://files.pythonhosted.org/packages/source/t/transaction/transaction-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
@@ -57,7 +58,7 @@ rm -rf transaction.egg-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

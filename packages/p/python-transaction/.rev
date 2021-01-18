@@ -191,4 +191,12 @@
     <comment>- Do not be quiet on test run</comment>
     <requestid>800020</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9a6112ad158fecd780706404fcb54759</srcmd5>
+    <version>3.0.1</version>
+    <time>1610965589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862914</requestid>
+  </revision>
 </revisionlist>
