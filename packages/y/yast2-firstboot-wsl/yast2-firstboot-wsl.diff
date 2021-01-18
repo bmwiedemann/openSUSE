@@ -44,21 +44,20 @@ Index: yast2-firstboot-wsl/firstboot-wsl.xml
                      <name>firstboot_timezone</name>
                  </module>
                  <module>
-@@ -155,6 +156,13 @@
-                     <enable_next>no</enable_next>
+@@ -148,6 +149,12 @@
+                     <enabled config:type="boolean">false</enabled>
+                     <proposal>firstboot_hardware</proposal>
                  </module>
-                 <module>
++                 <module>
 +                    <label>Finish WSL Setup</label>
 +                    <name>firstboot_write_wsl</name>
 +                    <enable_back>no</enable_back>
 +                    <enable_next>no</enable_next>
 +                </module>
-+
-+                <module>
+                 <module>
                      <label>Finish Setup</label>
-                     <name>inst_congratulate</name>
-                     <enable_back>no</enable_back>
-@@ -165,10 +173,10 @@
+                     <name>firstboot_write</name>
+@@ -163,10 +170,10 @@
          </workflow>
      </workflows>
      <texts>

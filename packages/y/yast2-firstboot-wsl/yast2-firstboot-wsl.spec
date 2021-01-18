@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-firstboot-wsl
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Source0:        firstboot_write_wsl.rb
 Source1:        firstboot-transform.xsl
 Source10:       welcome.txt
 Patch0:         yast2-firstboot-wsl.diff
-Url:            https://build.opensuse.org/project/show/Virtualization:WSL
+URL:            https://build.opensuse.org/project/show/Virtualization:WSL
 BuildRequires:  xsltproc
 BuildRequires:  yast2-firstboot
 

@@ -15,4 +15,12 @@
     <comment>- refresh patch after yast2-firstboot changes</comment>
     <requestid>768561</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>313f5d5064cf52df9fbcf43d4af3cf25</srcmd5>
+    <version>1</version>
+    <time>1610965694</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh patch after yast2-firstboot changes (forwarded request 863262 from jfkw)</comment>
+    <requestid>863399</requestid>
+  </revision>
 </revisionlist>
