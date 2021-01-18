@@ -318,4 +318,12 @@ Fixes bnc#745619 (forwarded request 108469 from plater)</comment>
     on the wiki as well:</comment>
     <requestid>827114</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cd8fad5baeaf56f48f898bf0c2aeceb4</srcmd5>
+    <version>20.12</version>
+    <time>1610965826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863955</requestid>
+  </revision>
 </revisionlist>

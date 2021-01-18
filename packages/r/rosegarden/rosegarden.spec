@@ -1,7 +1,7 @@
 #
 # spec file for package rosegarden
 #
-# Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           rosegarden
-Version:        20.06
+Version:        20.12
 Release:        0
-License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
-Url:            http://www.rosegardenmusic.com/
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
+URL:            https://www.rosegardenmusic.com/
 Source0:        https://sourceforge.net/projects/rosegarden/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.xpm
 Source2:        %{name}.1
@@ -29,7 +30,6 @@ Source2:        %{name}.1
 Patch1:         rosegarden-10.10-filepaths.patch
 # PATCH-FIX-OPENSUSE ledest@gmail.com fix bashisms in scripts
 Patch2:         rosegarden-14.02-fix-bashisms.patch
-Patch3:         rosegarden-include-QPainterPath.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  dssi-devel
@@ -41,33 +41,31 @@ BuildRequires:  ladspa-devel
 BuildRequires:  libjack-devel
 BuildRequires:  liblo-devel
 BuildRequires:  liblrdf-devel
-BuildRequires: pkgconfig(Qt5Core)
-BuildRequires: pkgconfig(Qt5Gui)
-BuildRequires: pkgconfig(Qt5Network)
-BuildRequires: pkgconfig(Qt5PrintSupport)
-BuildRequires: pkgconfig(Qt5Widgets)
-BuildRequires: pkgconfig(Qt5Xml)
-BuildRequires: pkgconfig(Qt5Test)
-BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  lilypond-fonts-common >= 2.20
 BuildRequires:  lirc-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 #BuildRequires:  pkgconfig(libxml++-2.6)
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       dssi
-Requires:       xsynth-dssi
+Requires:       jack
 Requires:       ladspa
 Requires:       ladspa-swh-plugins
 Requires:       lilypond-fonts-common >= 2.20
-Requires:       jack
-Recommends:     qsynth
+Requires:       xsynth-dssi
 Recommends:     fluidsynth-dssi
-Icon:           rosegarden.xpm
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Recommends:     qsynth
 
 %description
 Rosegarden is a well-rounded audio and MIDI sequencer,
@@ -83,8 +81,8 @@ home recording environments.
 
 # When we build svn we need to execute bootstrap.sh
 #sh bootstrap.sh
-for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
-for i in `grep -rl "/usr/bin/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "%{_bindir}/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 %build
 #export DEBUG_LADSPA
@@ -98,7 +96,7 @@ export CXXFLAGS="$CFLAGS"
        -DCMAKE_INSTALL_LOCALEDIR:PATH=%{_datadir}/locale/
 
 #make svnheader
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{name}/scripts
@@ -129,7 +127,6 @@ install -D -m 0644 "%{SOURCE2}" "%{buildroot}%{_mandir}/man1/"
 %fdupes -s %{buildroot}%{_datadir}/
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING
 %dir %{_datadir}/metainfo
