@@ -1,7 +1,7 @@
 #
 # spec file for package libavif
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %bcond_without aom
 
-%define lib_name libavif7
+%define lib_name libavif9
 
 Name:           libavif
-Version:        0.8.2
+Version:        0.8.4
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -35,8 +35,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
 BuildRequires:  nasm
 BuildRequires:  pkgconfig(dav1d)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(rav1e)
+BuildRequires:  pkgconfig(zlib)
 
 %if %{with aom}
 BuildRequires:  pkgconfig(aom) >= 2.0.0
@@ -75,6 +77,13 @@ https://aomediacodec.github.io/av1-avif/
 
 This package holds the shared library for libavif.
 
+%package     -n gdk-pixbuf-loader-libavif
+Summary:        AVIF image loader for GTK+ applications
+Group:          Development/Libraries/C and C++
+
+%description -n gdk-pixbuf-loader-libavif
+A pixbuf-loader plugin to load AVIF images in GTK+ applications.
+
 %package devel
 Requires:       %{lib_name} = %{version}-%{release}
 #
@@ -99,9 +108,10 @@ This package holds the development files for libavif.
  %if %{with aom}
  -DAVIF_CODEC_AOM:BOOL=ON \
  %endif
- -DAVIF_BUILD_APPS:BOOL=ON           \
- -DAVIF_BUILD_EXAMPLES:BOOL=ON
-make %{?_smp_mflags}
+ -DAVIF_BUILD_APPS:BOOL=ON \
+ -DAVIF_BUILD_EXAMPLES:BOOL=ON \
+ -DAVIF_BUILD_GDK_PIXBUF=ON
+%cmake_build
 
 %install
 %cmake_install
@@ -125,5 +135,8 @@ make %{?_smp_mflags}
 %license LICENSE
 %{_bindir}/avifdec
 %{_bindir}/avifenc
+
+%files -n gdk-pixbuf-loader-libavif
+%{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader-avif.so
 
 %changelog

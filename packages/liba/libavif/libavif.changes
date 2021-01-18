@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 13 13:30:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build the gdk-pixbuf module: Add pkgconfig(gdk-pixbuf-2.0)
+  BuildRequires and pass DAVIF_BUILD_GDK_PIXBUF=ON to cmake.
+  Package the resulting loader in a new sub package.
+- Use cmake_build macro.
+
+-------------------------------------------------------------------
+Wed Dec  9 15:59:14 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.8.4
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.8.4/CHANGELOG.md
+    for a complete changelog.
+
+-------------------------------------------------------------------
 Thu Oct 15 08:17:41 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.8.2
