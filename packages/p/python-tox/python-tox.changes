@@ -1,9 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 17 20:03:10 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update requirements
+- Fix the test suite failure introduced by the switch to
+  coinstallable python3 flavors: must be called with plain python
+  name for sys.executable to not detect the minor version as
+  binary extension (python3.8 --> magic.8)
+
+-------------------------------------------------------------------
 Wed Jan 13 16:19:45 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove build dependency on pytest-cov
 - Re-enable test_create_KeyboardInterrupt and spinner tests
-- Update to v0.21.1
+- Update to v3.21.1
   * Fix regression that broke using install_command in config
     replacements
   * Fix regression parsing posargs default containing colon
