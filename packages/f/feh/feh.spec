@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        X11 image viewer
 License:        MIT AND LGPL-2.0-or-later
@@ -26,6 +26,7 @@ Source:         https://feh.finalrewind.org/%{name}-%{version}.tar.bz2
 Source1:        https://feh.finalrewind.org/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        jpegexiforient.c
+Source99:       feh-rpmlintrc
 # PATCH-FIX-OPENSUSE feh-makefile_optflags.patch https://github.com/derf/feh/issues/71 pascal.bleser@opensuse.org -- pass OPTFLAGS to make instead of hard-coded -O2 -g
 Patch1:         feh-makefile_optflags.patch
 # PATCH-FIX-UPSTREAM feh-fix_pointer_arithmetics.patch https://github.com/derf/feh/issues/69 pascal.bleser@opensuse.org -- fix compiler warnings on casting pointers as ints
@@ -41,6 +42,8 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xt)
 Requires:       imlib2-loaders
+# Needs only the binaries from it. (boo#1080592)
+Requires:       libjpeg-turbo
 Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
 Requires(postun): desktop-file-utils

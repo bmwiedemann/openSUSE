@@ -438,4 +438,14 @@
     <comment></comment>
     <requestid>860825</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>12cae51b17f2a92617b0b86d8cf66c52</srcmd5>
+    <version>3.6.2</version>
+    <time>1610965704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.2:
+- manually require libjpeg-turbo for jpegtran. fixes --edit (boo#1080592)
+</comment>
+    <requestid>863711</requestid>
+  </revision>
 </revisionlist>
