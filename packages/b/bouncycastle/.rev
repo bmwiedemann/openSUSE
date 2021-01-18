@@ -256,4 +256,12 @@ view</comment>
     <comment></comment>
     <requestid>857871</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3f0d1a9e57363c3a54b1557df83a9da3</srcmd5>
+    <version>1.68</version>
+    <time>1610965578</time>
+    <user>dimstar_suse</user>
+    <comment>1.67 -&gt; 1.68</comment>
+    <requestid>862835</requestid>
+  </revision>
 </revisionlist>

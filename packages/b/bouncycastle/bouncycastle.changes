@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan 13 09:44:54 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 1.68
+  * Defects Fixed:
+    - Some BigIntegers utility methods would fail for
+      BigInteger.ZERO. This has been fixed.
+    - PGPUtil.isKeyRing() was not detecting secret sub-keys in its
+      input. This has been fixed.
+    - The ASN.1 class, ArchiveTimeStamp was insisting on a value
+      for the optional reducedHashTree field. This has been fixed.
+    - BCJSSE: Lock against multiple writers - a possible
+      synchronization issue has been removed.
+  * Additional Features and Functionality
+    - BCJSSE: Added support for system property
+      com.sun.net.ssl.requireCloseNotify. Note that we are using a
+      default value of 'true'.
+    - BCJSSE: 'TLSv1.3' is now a supported protocol for both client
+      and server. For this release it is only enabled by default for
+      the 'TLSv1.3' SSLContext, but can be explicitly enabled using
+      'setEnabledProtocols' on an SSLSocket or SSLEngine, or via
+      SSLParameters.
+    - BCJSSE: Session resumption is now also supported for servers
+      in TLS 1.2 and earlier. For this release it is disabled by
+      default, and can be enabled by setting the boolean system
+      property org.bouncycastle.jsse.server.enableSessionResumption
+      to 'true'.
+    - The provider RSA-PSS signature names that follow the JCA
+      naming convention.
+    - FIPS mode for the BCJSSE now enforces namedCurves for any
+      presented certificates.
+    - PGPSignatureSubpacketGenerator now supports editing of a
+      pre-existing sub-packet list.
+
+-------------------------------------------------------------------
 Mon Dec 21 10:54:33 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Version update to 1.67 [bsc#1180215, CVE-2020-28052]
@@ -100,7 +134,7 @@ Tue Jul 28 18:50:39 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
   * NOTES:
     - The qTESLA update breaks compatibility with previous versions.
       Private keys now include a hash of the public key at the end,
-      and signatures are no longer interoperable with previous versions. 
+      and signatures are no longer interoperable with previous versions.
 
 -------------------------------------------------------------------
 Wed Apr 29 09:28:03 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>

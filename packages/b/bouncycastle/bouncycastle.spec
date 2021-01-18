@@ -1,7 +1,7 @@
 #
 # spec file for package bouncycastle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global ver  1.67
-%global shortver 167
-%global gittag r1rv67
+%global ver  1.68
+%global shortver 168
+%global gittag r1rv68
 %global archivever jdk15on-%{shortver}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
@@ -140,7 +140,7 @@ install -dm 0755 %{buildroot}%{_mavenpomdir}
 for bc in bcprov bcpkix bcpg bcmail bctls ; do
   install -pm 0644 build/artifacts/jdk1.5/jars/$bc-%{archivever}.jar %{buildroot}%{_javadir}/$bc.jar
   install -pm 0644 %{_sourcedir}/$bc-jdk15on-%{version}.pom %{buildroot}%{_mavenpomdir}/$bc.pom
-  %add_maven_depmap $bc.pom $bc.jar -a "org.bouncycastle:$bc-jdk16,org.bouncycastle:$bc-jdk15" -f $bc
+  %add_maven_depmap $bc.pom $bc.jar -a "org.bouncycastle:$bc-jdk16,org.bouncycastle:$bc-jdk15,org.bouncycastle:$bc-jdk15to18" -f $bc
 done
 
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
