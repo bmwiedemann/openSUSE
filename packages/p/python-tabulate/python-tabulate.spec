@@ -1,7 +1,7 @@
 #
 # spec file for package python-tabulate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://bitbucket.org/astanin/python-tabulate
 Source:         https://files.pythonhosted.org/packages/source/t/tabulate/tabulate-%{version}.tar.gz
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}
 BuildRequires:  fdupes
@@ -63,7 +64,7 @@ The main use cases of the library are:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative tabulate
