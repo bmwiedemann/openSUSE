@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-wsi
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        0.7
+Version:        1.0
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/whole-slide-imaging/OrthancWSI-%{version}.tar.gz
@@ -35,6 +35,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
+BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_program_options-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
@@ -51,8 +52,8 @@ BuildRequires:  tcpd-devel
 # Check was missing - end
 BuildRequires:  openjpeg2-devel
 BuildRequires:  openssl-devel
-BuildRequires:  orthanc-framework-devel
-BuildRequires:  orthanc-framework-source
+BuildRequires:  orthanc-devel
+BuildRequires:  orthanc-source
 BuildRequires:  unzip
 
 Requires:       orthanc
@@ -83,8 +84,8 @@ cd Applications
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
        -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
-       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
-       -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
+       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/OrthancFramework/Sources \
+       -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/ 
 
 %cmake_build %{?_smp_mflags}
 
@@ -96,7 +97,7 @@ cd ../../ViewerPlugin
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
        -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
-       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
+       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/OrthancFramework/Sources \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
 
 %cmake_build %{?_smp_mflags}

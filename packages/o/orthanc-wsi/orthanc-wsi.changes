@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 14 11:01:26 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.0
+* orthanc-framework package removed
+* Viewer can display DICOM pyramids whose tile sizes vary across levels
+* Allow images without "Per frame functional groups sequence" tag (0x5200,0x9230)
+* Better handling of PhotometricInterpretation in viewer
+* Fix colorspace of TIFF containing JPEG with RGB photometric interpretation (not YCbCr)
+* Don't display the thumbnail/overview instances in the Web viewer
+* Fix issue #145 (support of Concatenation UID)
+* Support of dynamic linking against the system-wide Orthanc framework library
+* Upgraded dependencies for static builds (notably on Windows):
+  - libtiff, from 4.0.6 to 4.2.0
+  - openjpeg, from 2.1 to 2.4.0
+
+-------------------------------------------------------------------
 Thu Oct 22 09:07:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - switch to orthanc-framework (static orthanc version)
