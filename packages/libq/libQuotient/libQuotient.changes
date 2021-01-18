@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 16 15:40:44 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Actually disable e2ee
+
+-------------------------------------------------------------------
+Fri Jan 15 16:17:38 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.4:
+  * Several fixes around homeserver resolution.
+
+-------------------------------------------------------------------
 Sun Jan  3 19:29:38 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Add a build conditional for E2EE and disable it by default, as

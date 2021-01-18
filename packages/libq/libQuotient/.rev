@@ -7,4 +7,12 @@
     <comment>Dependency of a soon-to-be-packaged KDE software, neochat</comment>
     <requestid>860270</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a58d3a4967dc42ae100e500930433d5</srcmd5>
+    <version>0.6.4</version>
+    <time>1610965728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863702</requestid>
+  </revision>
 </revisionlist>
