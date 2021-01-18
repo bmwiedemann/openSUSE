@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Thu Jan 14 17:08:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of glassfishbuild-maven-plugin 3.2.26
+- Added patch:
+  * glassfishbuild-maven-plugin-3.2.26-maven-resolver-3.5.0.patch
+    + fix build with maven-resolver 3.5.0

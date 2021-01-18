@@ -1,0 +1,22 @@
+--- glassfishbuild-maven-plugin-3.2.26/src/main/java/org/glassfish/build/utils/MavenModelResolver.java	2018-08-16 20:47:52.000000000 +0200
++++ glassfishbuild-maven-plugin-3.2.26/src/main/java/org/glassfish/build/utils/MavenModelResolver.java	2021-01-14 17:35:26.649684877 +0100
+@@ -47,6 +47,7 @@
+ 
+ import org.apache.maven.model.Parent;
+ import org.apache.maven.model.Repository;
++import org.apache.maven.model.Dependency;
+ import org.apache.maven.model.building.FileModelSource;
+ import org.apache.maven.model.building.ModelSource;
+ import org.apache.maven.model.resolution.InvalidRepositoryException;
+@@ -178,4 +179,11 @@
+         return resolveModel(parent.getGroupId(), parent.getArtifactId(),
+                 parent.getVersion());
+     }
++
++    public ModelSource resolveModel(final Dependency dependency)
++            throws UnresolvableModelException {
++
++        return resolveModel(dependency.getGroupId(), dependency.getArtifactId(),
++                dependency.getVersion());
++    }
+ }
