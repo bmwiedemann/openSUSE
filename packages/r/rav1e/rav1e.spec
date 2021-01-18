@@ -1,7 +1,7 @@
 #
 # spec file for package rav1e
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rav1e
-Version:        0.3.4
+Version:        0.4.0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
@@ -95,6 +95,9 @@ root = '%{buildroot}%{_prefix}'
 verbose = true
 EOF
 %{__rm} -f Cargo.lock
+
+# Disable rav1e_js
+sed -i 's/"rav1e_js", //' Cargo.toml
 
 %build
 %cargo_build

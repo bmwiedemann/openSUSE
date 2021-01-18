@@ -57,4 +57,14 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
 </comment>
     <requestid>833256</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e92f5289915fc153c1df3c1eff5e720d</srcmd5>
+    <version>0.4.0</version>
+    <time>1610965598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0
+  * https://github.com/xiph/rav1e/releases/tag/v0.4.0
+</comment>
+    <requestid>862970</requestid>
+  </revision>
 </revisionlist>
