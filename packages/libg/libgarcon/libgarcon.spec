@@ -1,7 +1,7 @@
 #
 # spec file for package libgarcon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname libgarcon-1-0
 Name:           libgarcon
-Version:        0.8.0
+Version:        4.16.1
 Release:        0
 Summary:        Library Implementing the freedesktop.org Desktop Menu Specification
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.xfce.org/dev/garcon
-Source:         https://archive.xfce.org/src/xfce/garcon/0.8/garcon-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/garcon/4.16/garcon-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE libgarcon-x-suse-unimportant-support.patch gber@opensuse.org -- Hide desktop files marked with X-SuSE-Unimportant
 Patch0:         libgarcon-x-suse-unimportant-support.patch
 BuildRequires:  fdupes
