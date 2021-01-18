@@ -1,7 +1,7 @@
 #
 # spec file for package netease-cloud-music-gtk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           netease-cloud-music-gtk
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器
 License:        GPL-3.0-or-later
