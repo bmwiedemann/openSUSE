@@ -7,4 +7,12 @@
     <comment>Required for new version of python-Fanficfare.</comment>
     <requestid>858557</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c317ed7c850e0f24eb101f33b4b16a63</srcmd5>
+    <version>1.2.52</version>
+    <time>1610965732</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>863725</requestid>
+  </revision>
 </revisionlist>

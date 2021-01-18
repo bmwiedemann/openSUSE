@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudscraper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cloudscraper
-Version:        1.2.50
+Version:        1.2.52
 Release:        0
 Summary:        A Python module to bypass Cloudflare's anti-bot page
 License:        MIT
 URL:            https://github.com/venomous/cloudscraper
 Source0:        https://files.pythonhosted.org/packages/source/c/cloudscraper/cloudscraper-%{version}.tar.gz
 Source1:        cloudscraper-tests.tar.xz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Js2Py}
 BuildRequires:  %{python_module pyparsing >= 2.4.7}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.2}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module Js2Py}
 BuildRequires:  nodejs10
 # /SECTION
 BuildRequires:  fdupes
