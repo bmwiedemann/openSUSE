@@ -1,7 +1,7 @@
 #
 # spec file for package sleuthkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,22 @@
 
 
 %define sosuffix 19
-
 Name:           sleuthkit
-Version:        4.10.0
+Version:        4.10.1
 Release:        0
 Summary:        Tools for file system and volume forensic analysis
 License:        CPL-1.0 AND IPL-1.0 AND GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://www.sleuthkit.org/
+URL:            https://www.sleuthkit.org/
 Source0:        https://github.com/%{name}/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  libtool
-
 # libewf - Newer versions are plain BSD (older are BSD with advertising)
 BuildRequires:  libewf-devel = 0~20140811
-
+BuildRequires:  libopenssl-devel
+BuildRequires:  zlib-devel
 Requires:       file
-Requires:       libtsk%sosuffix = %{version}
+Requires:       libtsk%{sosuffix} = %{version}
 Requires:       mac-robber
 # fiwalk has been incorporated into sleuthkit.  Last standalone version was 0.6.16
 Provides:       fiwalk = %{version}
@@ -48,19 +44,19 @@ allow you to investigate a computer. The current focus of the tools is the
 file and volume systems and TSK supports FAT, Ext2/3, NTFS, UFS,
 and ISO 9660 file systems
 
-%package        -n libtsk%sosuffix
+%package        -n libtsk%{sosuffix}
 Summary:        Library for file system and volume forensic analysis
 Group:          System/Libraries
 
-%description    -n libtsk%sosuffix
-The libtsk%sosuffix package contains library for %{name}.
+%description    -n libtsk%{sosuffix}
+The libtsk%{sosuffix} package contains library for %{name}.
 
 The name of the library was changed from libtsk3 to libtsk
 
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Other
-Requires:       libtsk%sosuffix = %{version}
+Requires:       libtsk%{sosuffix} = %{version}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -85,7 +81,7 @@ sed -i.rpath 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 # export CXXFLAGS="%%{optflags}"
 export LDFLAGS="-avoid-version -module"
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %if 0%{?sles_version}
@@ -93,16 +89,14 @@ make install DESTDIR=%{buildroot} INSTALL="install -p"
 %else
 %make_install INSTALL="install -p"
 %endif
-find %{buildroot} -name '*.la' -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_datadir}/sleuthkit
 cp --archive bindings %{buildroot}/%{_datadir}/sleuthkit/bindings
 
-%post -n libtsk%sosuffix -p /sbin/ldconfig
-
-%postun -n libtsk%sosuffix -p /sbin/ldconfig
+%post -n libtsk%{sosuffix} -p /sbin/ldconfig
+%postun -n libtsk%{sosuffix} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %doc ChangeLog.txt NEWS.txt README.md licenses/*
 # License is CPL 1.0 exept for some files.
 %{_bindir}/blkcalc
@@ -141,32 +135,32 @@ cp --archive bindings %{buildroot}/%{_datadir}/sleuthkit/bindings
 ## This file is GPLv2+
 %{_bindir}/srch_strings
 #
-%{_mandir}/man1/blkcalc.1*
-%{_mandir}/man1/blkcat.1*
-%{_mandir}/man1/blkls.1*
-%{_mandir}/man1/blkstat.1*
+%{_mandir}/man1/blkcalc.1%{?ext_man}
+%{_mandir}/man1/blkcat.1%{?ext_man}
+%{_mandir}/man1/blkls.1%{?ext_man}
+%{_mandir}/man1/blkstat.1%{?ext_man}
 #{_mandir}/man1/disk_sreset.1*
 #{_mandir}/man1/disk_stat.1*
-%{_mandir}/man1/fcat.1*
-%{_mandir}/man1/ffind.1*
-%{_mandir}/man1/fls.1*
-%{_mandir}/man1/fsstat.1*
-%{_mandir}/man1/hfind.1*
-%{_mandir}/man1/icat.1*
-%{_mandir}/man1/ifind.1*
-%{_mandir}/man1/ils.1*
-%{_mandir}/man1/img_cat.1*
-%{_mandir}/man1/img_stat.1*
-%{_mandir}/man1/istat.1*
-%{_mandir}/man1/jcat.1*
-%{_mandir}/man1/jls.1*
-%{_mandir}/man1/mactime.1*
-%{_mandir}/man1/mmcat.1*
-%{_mandir}/man1/mmls.1*
-%{_mandir}/man1/mmstat.1*
-%{_mandir}/man1/sigfind.1*
-%{_mandir}/man1/sorter.1*
-%{_mandir}/man1/usnjls.1.gz
+%{_mandir}/man1/fcat.1%{?ext_man}
+%{_mandir}/man1/ffind.1%{?ext_man}
+%{_mandir}/man1/fls.1%{?ext_man}
+%{_mandir}/man1/fsstat.1%{?ext_man}
+%{_mandir}/man1/hfind.1%{?ext_man}
+%{_mandir}/man1/icat.1%{?ext_man}
+%{_mandir}/man1/ifind.1%{?ext_man}
+%{_mandir}/man1/ils.1%{?ext_man}
+%{_mandir}/man1/img_cat.1%{?ext_man}
+%{_mandir}/man1/img_stat.1%{?ext_man}
+%{_mandir}/man1/istat.1%{?ext_man}
+%{_mandir}/man1/jcat.1%{?ext_man}
+%{_mandir}/man1/jls.1%{?ext_man}
+%{_mandir}/man1/mactime.1%{?ext_man}
+%{_mandir}/man1/mmcat.1%{?ext_man}
+%{_mandir}/man1/mmls.1%{?ext_man}
+%{_mandir}/man1/mmstat.1%{?ext_man}
+%{_mandir}/man1/sigfind.1%{?ext_man}
+%{_mandir}/man1/sorter.1%{?ext_man}
+%{_mandir}/man1/usnjls.1%{?ext_man}
 %dir %{_datadir}/tsk
 %{_datadir}/tsk/sorter/
 
@@ -174,18 +168,16 @@ cp --archive bindings %{buildroot}/%{_datadir}/sleuthkit/bindings
 %{_bindir}/tsk_gettimes
 %{_bindir}/tsk_loaddb
 %{_bindir}/tsk_recover
-%{_mandir}/man1/tsk_comparedir.1.gz
-%{_mandir}/man1/tsk_gettimes.1.gz
-%{_mandir}/man1/tsk_loaddb.1.gz
-%{_mandir}/man1/tsk_recover.1.gz
+%{_mandir}/man1/tsk_comparedir.1%{?ext_man}
+%{_mandir}/man1/tsk_gettimes.1%{?ext_man}
+%{_mandir}/man1/tsk_loaddb.1%{?ext_man}
+%{_mandir}/man1/tsk_recover.1%{?ext_man}
 
-%files -n libtsk%sosuffix
-%defattr(-,root,root,-)
+%files -n libtsk%{sosuffix}
 # CPL and IBM
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root,-)
 # CPL and IBM
 %{_includedir}/tsk/
 %{_libdir}/*.so

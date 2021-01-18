@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 17 23:45:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.1:
+  * Changed Windows build to use Nuget for libewf, libvmdk, libvhdi.
+  * Fixed compiler warnings
+  * Clarrified licenses and added Apache license to distribution
+  * Improved error handling for out of memory issues
+  * Rejistry++ memory leak fixes
+- spec-cleaner
+
+-------------------------------------------------------------------
 Wed Dec 16 03:47:42 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Update spec file to call for libewf version 0~20140811
