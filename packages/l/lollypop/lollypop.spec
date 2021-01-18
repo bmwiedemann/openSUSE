@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.4.9
+Version:        1.4.12
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later

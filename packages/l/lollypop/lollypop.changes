@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan 17 19:51:31 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.12:
+  * Fix a crash on init due to missing secret.
+  * Fix a crash on album widget reveal (glgo#World/lollypop#2679).
+  * Fix a playback issue (glgo#World/lollypop#2683).
+  * Fix content not being reloaded after resizing window
+    (glgo#World/lollypop#2673).
+  * Fix album artwork removal (glgo#World/lollypop#2680).
+
+-------------------------------------------------------------------
+Sun Jan 17 12:25:41 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.11:
+  * Fix an issue with blacklisted songs (glgo#Wolrd/lollypop#2676).
+  * Fix an issue with loved songs (glgo#World/lollypop#2677).
+
+-------------------------------------------------------------------
+Sat Jan 16 14:26:58 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.10:
+  * Fix crash when clicking "Play all" button for entire library
+    (glgo#World/lollypop#2674)
+  * Rework ReplayGain defaults (glgo#World/lollypop#2564).
+
+-------------------------------------------------------------------
 Sun Jan 10 21:36:45 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.9:

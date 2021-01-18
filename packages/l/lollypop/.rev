@@ -1539,4 +1539,27 @@
     (glgo#World/lollypop#2663).</comment>
     <requestid>862155</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>694d28df7e3ee2f9d911a9065e01947d</srcmd5>
+    <version>1.4.12</version>
+    <time>1610965722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.12:
+  * Fix a crash on init due to missing secret.
+  * Fix a crash on album widget reveal (glgo#World/lollypop#2679).
+  * Fix a playback issue (glgo#World/lollypop#2683).
+  * Fix content not being reloaded after resizing window
+    (glgo#World/lollypop#2673).
+  * Fix album artwork removal (glgo#World/lollypop#2680).
+
+- Update to version 1.4.11:
+  * Fix an issue with blacklisted songs (glgo#Wolrd/lollypop#2676).
+  * Fix an issue with loved songs (glgo#World/lollypop#2677).
+
+- Update to version 1.4.10:
+  * Fix crash when clicking &quot;Play all&quot; button for entire library
+    (glgo#World/lollypop#2674)
+  * Rework ReplayGain defaults (glgo#World/lollypop#2564).</comment>
+    <requestid>863904</requestid>
+  </revision>
 </revisionlist>
