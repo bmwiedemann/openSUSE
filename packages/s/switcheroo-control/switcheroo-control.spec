@@ -1,7 +1,7 @@
 #
 # spec file for package switcheroo-control
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           switcheroo-control
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        D-Bus service to check the availability of dual-GPU
 License:        GPL-3.0-only
@@ -26,13 +26,18 @@ URL:            https://gitlab.freedesktop.org/hadess/switcheroo-control
 Source0:        https://gitlab.freedesktop.org/hadess/switcheroo-control/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(udev)
 %{?systemd_requires}
+# SECTION For tests
+BuildRequires:  %{python_module dbus-python}
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(umockdev-1.0)
+# /SECTION
 
 %description
 switcheroo-control is a D-Bus service to check the availability of dual-GPU.
@@ -59,6 +64,9 @@ This package contains the documentation for %{name}.
 %install
 %meson_install
 
+%check
+%meson_test
+
 %pre
 %service_add_pre switcheroo-control.service
 
@@ -74,7 +82,6 @@ This package contains the documentation for %{name}.
 %udev_hwdb_update
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/switcherooctl
@@ -88,7 +95,6 @@ This package contains the documentation for %{name}.
 %config %{_sysconfdir}/dbus-1/system.d/net.hadess.SwitcherooControl.conf
 
 %files doc
-%defattr(-,root,root)
 %doc %{_datadir}/gtk-doc/html/%{name}/
 
 %changelog
