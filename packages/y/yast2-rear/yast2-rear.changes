@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 17:23:26 UTC 2021 - aabdallah@suse.com
+
+- Don't show a warning anymore for vfat partitions, as versions
+  1.18 and higher of rear support them (bsc#1180599)
+
+-------------------------------------------------------------------
 Tue Dec 31 13:59:56 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Mark properly log widget label for translation (bsc#1083674)
