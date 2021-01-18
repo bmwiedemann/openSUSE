@@ -1,0 +1,24 @@
+From 7e040b3961a5c2dfcc132396747277809192e507 Mon Sep 17 00:00:00 2001
+From: "Shane F. Carr" <shane.carr@wustl.edu>
+Date: Sat, 4 Jul 2020 20:31:39 -0500
+Subject: [PATCH] Fix syntax error in nsdgt.m
+
+---
+ nonstatgab/nsdgt.m | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ltfat/inst/nonstatgab/nsdgt.m b/ltfat/inst/nonstatgab/nsdgt.m
+index 887597fc..519f7c31 100644
+--- a/ltfat/inst/nonstatgab/nsdgt.m
++++ b/ltfat/inst/nonstatgab/nsdgt.m
+@@ -124,8 +124,8 @@
+         col = ceil(Lg/M(ii));
+         
+         temp = zeros(col*M(ii),W,assert_classname(f,g{1}));
+-        temp([end-floor(Lg/2)+1:end,1:ceil(Lg/2)],:) = bsxfun(@ ...
+-                                                          times,f(win_range,:),g{ii}(idx));
++        temp([end-floor(Lg/2)+1:end,1:ceil(Lg/2)],:) = bsxfun(@times, ...
++                                                          f(win_range,:),g{ii}(idx));
+         
+         temp = reshape(temp,M(ii),col,W);
+         X = squeeze(fft(sum(temp,2)));

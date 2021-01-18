@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ltfat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 # Release 2.4.0 currently missing on octave-forge
 # Source0:      https://downloads.sourceforge.net/octave/%%{octpkg}-%%{version}.tar.gz
 Source0:        https://github.com/ltfat/ltfat/releases/download/2.4.0/ltfat-2.4.0-of.tar.gz
+# PATCH-FIX-UPSTREAM ltfat-nsdgt_m-syntax-error.patch gh#ltfat/ltfat#115 badshah400@gmail.com -- Fix syntax error in nsdgt.m to build against octave >= 6; patch taken from upstream git commit
+Patch0:         ltfat-nsdgt_m-syntax-error.patch
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-threads-devel
@@ -48,7 +50,7 @@ and routines for manipulating coefficients.
 This is part of the Octave-Forge project.
 
 %prep
-%setup -q -c %{name}-%{version}
+%autosetup -p1 -c %{name}-%{version}
 
 # REMOVE PREBUILT JAR
 find ./ -name "*.jar" -delete -print

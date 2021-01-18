@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  9 11:48:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ltfat-nsdgt_m-syntax-error.patch: Fix syntax error in
+  nsdgt.m to build against octave >= 6; patch taken from upstream
+  git commit and rebased to apply with -p1 (gh#ltfat/ltfat#115).
+
+-------------------------------------------------------------------
 Tue Feb 25 19:52:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.4.0:
