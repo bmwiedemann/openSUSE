@@ -22161,7 +22161,6 @@ unsorted:
   - python3-pykickstart 
   - python3-pylineclip 
   - python3-pymod2pkg 
-  - python3-pymol 
   - python3-pynest2d 
   - python3-pyodbc 
   - python3-pypandoc: [i586] 
@@ -23983,6 +23982,7 @@ unsorted:
   - python36-pymetar 
   - python36-pymilter 
   - python36-pymisp 
+  - python36-pymol 
   - python36-pymongo 
   - python36-pympv 
   - python36-pymssql 
@@ -26267,6 +26267,7 @@ unsorted:
   - python38-pymetar 
   - python38-pymilter 
   - python38-pymisp 
+  - python38-pymol 
   - python38-pympv 
   - python38-pymssql 
   - python38-pynamodb 
