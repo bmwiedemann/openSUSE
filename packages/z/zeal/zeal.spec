@@ -61,7 +61,7 @@ Zeal is an offline API documentation browser inspired by Dash
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
