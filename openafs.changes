@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 16 23:01:13 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to HEAD of git branch openafs-stable-1_8_x 
+  * fix critical bug described in
+    https://lists.openafs.org/pipermail/openafs-info/2021-January/043026.html 
+  * remove remove-get_ds-usage.patch
+  * remove add_arch_to_linux_kernel_make.patch
+
+-------------------------------------------------------------------
 Mon Jan 11 10:01:15 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - cleanup spec-file
