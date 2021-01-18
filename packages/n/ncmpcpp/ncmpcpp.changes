@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec 26 23:29:17 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 0.9.1
+- update url to org repo
+- remove upstreamed fix_gcc10_error.patch
+
+-------------------------------------------------------------------
+Tue Nov 17 00:15:32 UTC 2020 - kujiu-obs@kujiu.org
+
+- Fix build error with gcc 10
+  * Patch according to this commit : https://github.com/ncmpcpp/ncmpcpp/commit/399e0f47008b487df3505476c959b4f42d8bc1b1
+
+-------------------------------------------------------------------
 Wed Apr 11 21:06:27 UTC 2018 - avindra@opensuse.org
 
 - Update to 0.8.2

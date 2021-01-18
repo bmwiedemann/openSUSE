@@ -40,4 +40,14 @@
 </comment>
     <requestid>595793</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>817c71c12680a6a871767c71b82f3be4</srcmd5>
+    <version>0.9.1</version>
+    <time>1610979727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1
+- update url to org repo
+- gcc 10 compat fixed</comment>
+    <requestid>864069</requestid>
+  </revision>
 </revisionlist>
