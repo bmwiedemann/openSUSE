@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 15 16:24:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020.12
+  libbladeRF
+  * Added packet mode format BLADERF_FORMAT_PACKET_META.
+    libbladeRF is able to exchange variable length packets with
+    the HDL if packet mode is enabled
+  * Added RFIC parameters for burst waveforms
+  * Ability to query backend for handle and lock FX3
+  * Variable length packet support for PACKET_META mode
+  bladeRF-cli:
+  * Indicate presence of packet cores in FPGA
+  Python
+  * Update for libbladeRF v2.4.0
+- Drop patches (integrated upstream):
+  * 0001-libbladeRF-unambiguous-flash_arch-macro-name.patch
+  * 0002-libbladeRF-define-bladerf2_state_to_string-as-extern.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 20:25:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add patches to fix gcc10 compile errors:
