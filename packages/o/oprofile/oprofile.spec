@@ -1,7 +1,7 @@
 #
 # spec file for package oprofile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           oprofile
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        System-Wide Profiler for Linux Systems
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,9 +30,6 @@ Source4:        jvmpi.h
 Source5:        README-BEFORE-ADDING-PATCHES
 Patch1:         %{name}-no-libjvm-version.patch
 Patch2:         %{name}-pfm-ppc.patch
-Patch3:         %{name}-handle-empty-event-name-spec-gracefully-for-ppc.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         %{name}-handle-binutils-2_34.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -106,7 +103,6 @@ from supported virtual machines.
 mkdir -p java/include
 # copy files necessary to build Java agent libraries
 # libjvmpi_oprofile.so and libjvmti_oprofile.so
-# %S:4 is rpm speak for Source4 (jvmpi.h)
 ln -s %{_libdir}/jvm/java/include/* java/include
 test -f java/include/jvmpi.h || ln -s %{SOURCE4} java/include
 

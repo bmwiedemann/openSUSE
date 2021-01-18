@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 16 18:21:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * New/updated Processor Support
+    * Marvell (Cavium) ThunderX2
+    * Hygon Dhyana CPU
+  * Bugfixes
+    * Does not build with binutils-gdb master.
+    * ocount leaves orphan process on error 
+- remove oprofile-handle-empty-event-name-spec-gracefully-for-ppc.patch,
+  oprofile-handle-binutils-2_34.patch: upstream
+
+-------------------------------------------------------------------
 Tue Oct 13 10:06:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Do not suppress error text output from useradd.
