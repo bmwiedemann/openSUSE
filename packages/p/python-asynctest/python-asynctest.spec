@@ -1,7 +1,7 @@
 #
 # spec file for package python-asynctest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python38 1
 Name:           python-asynctest
 Version:        0.13.0
 Release:        0
@@ -26,7 +27,7 @@ License:        Apache-2.0
 URL:            https://github.com/Martiusweb/asynctest/
 Source:         https://files.pythonhosted.org/packages/source/a/asynctest/asynctest-%{version}.tar.gz
 Patch0:         asynctest-skip-permstest.patch
-Patch1:         py38.patch
+BuildRequires:  %{python_module base < 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,14 +51,13 @@ testing asyncio libraries.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests failing with py3.8 https://github.com/Martiusweb/asynctest/issues/132
 # test_basic - it is not supposed to be launched by pytest
-# test_patch and test_create_autospec - fail since 3.8 upstream knows https://github.com/Martiusweb/asynctest/issues/132
-%pytest -k 'not (test_basic or test_create_autospec_on_coroutine_and_using_assert_methods or test_awaited_from_autospec_mock or test_patch_coroutine_with_multiple_scopes or test_multiple_patches_on_coroutine or test_patch_coroutine_only_when_running or Test_patch or Test_create_autospec)'
+%pytest -k "not (test_basic)"
 
 %files %{python_files}
 %license LICENSE.md
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/asynctest
+%{python_sitelib}/asynctest-%{version}*-info
 
 %changelog

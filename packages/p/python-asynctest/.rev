@@ -34,4 +34,12 @@
     <comment>- Disable more known failures with python 3.8 and asyncmock</comment>
     <requestid>825706</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5af995d654f524a180d1d52490069125</srcmd5>
+    <version>0.13.0</version>
+    <time>1610965815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863928</requestid>
+  </revision>
 </revisionlist>
