@@ -1,18 +1,14 @@
----
- src/pstree.c |   37 ++++++++++++++++++++++++++++++-------
- 1 file changed, 30 insertions(+), 7 deletions(-)
-
---- src/pstree.c
-+++ src/pstree.c	2017-06-20 14:24:15.670691071 +0000
-@@ -70,6 +70,7 @@ extern const char *__progname;
+--- src/pstree.c.orig	2019-11-12 11:23:38.000000000 +0100
++++ src/pstree.c	2020-12-31 10:43:59.650348130 +0100
+@@ -71,6 +71,7 @@
  #define UTF_HD        "\342\224\254"        /* U+252C, Horizontal and down */
  
  #define VT_BEG        "\033(0\017"        /* use graphic chars */
-+#define VT_LEN	     4
++#define VT_LEN      4
  #define VT_END        "\033(B"        /* back to normal char set */
  #define VT_V        "x"                /* see UTF definitions above */
  #define VT_VR        "t"
-@@ -450,6 +451,27 @@ static void out_scontext(security_contex
+@@ -470,6 +471,27 @@
      out_string("'");
  }
  
@@ -40,7 +36,7 @@
  static void out_newline(void)
  {
      if (last_char && cur_x == output_width)
-@@ -662,11 +684,12 @@ dump_tree(PROC * current, int level, int
+@@ -705,11 +727,12 @@
          for (lvl = 0; lvl < level; lvl++) {
              for (i = width[lvl] + 1; i; i--)
                  out_char(' ');
@@ -49,16 +45,16 @@
 -                       1 ? last ? sym->last_2 : sym->branch_2 : more[lvl +
 -                                                                     1] ?
 -                       sym->vert_2 : sym->empty_2);
-+            /*
-+             * Replace all three symbol-drawing calls with calls to out_sym()
-+             * to handle VT100 line drawing sequences if VT100 mode is active:
-+             */
-+            out_sym(lvl == level - 1 ? last ? sym->last_2 : sym->branch_2 :
-+                    more[lvl + 1] ? sym->vert_2 : sym->empty_2);
++                /*
++                * Replace all three symbol-drawing calls with calls to out_sym()
++                * to handle VT100 line drawing sequences if VT100 mode is active:
++                */
++                out_sym(lvl == level - 1 ? last ? sym->last_2 : sym->branch_2 :
++                more[lvl + 1] ? sym->vert_2 : sym->empty_2);
          }
+ 
      if (rep < 2)
-         add = 0;
-@@ -773,7 +796,7 @@ dump_tree(PROC * current, int level, int
+@@ -819,7 +842,7 @@
      }
      width[level] = comm_len + cur_x - offset + add;
      if (cur_x >= output_width && trunc) {
@@ -67,7 +63,7 @@
          out_string("+");
          out_newline();
          return;
-@@ -797,7 +820,7 @@ dump_tree(PROC * current, int level, int
+@@ -843,7 +866,7 @@
                  }
          }
          if (first) {

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan 14 15:48:53 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Now with 23.3 peekfd is build even for aarch64 
+
+-------------------------------------------------------------------
+Thu Jan 14 11:58:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Rework 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  and split off the patch psmisc-v23.3-selinux.patch 
+- Rework 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+- New patch psmisc-v23.3-selinux.patch
+- Rename patch psmisc-v23.2.dif which is now psmisc-v23.3.dif
+
+-------------------------------------------------------------------
+Thu Dec 31 09:40:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 23.3:
+  * killall: check also truncated 16 char comm names Debian
+  * fuser: Return early if have nulls
+  * peekfd: Add support for ARM64
+  * pstree: Add color by age
+  * fuser: Use larger inode sizes
+- Rebase 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+- Rebase 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+- Rebase psmisc-22.21-pstree.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 10:18:52 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
