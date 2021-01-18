@@ -51,12 +51,11 @@ job and personal life. You will never forget anything anymore.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
