@@ -1,0 +1,1491 @@
+From 546151b4e15fd45901f38172435cd9aa63893727 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Thu, 14 Jun 2018 12:21:37 +0200
+Subject: [PATCH 1/6] vnc: Add anonymous TLS encryption support
+
+Add support for encrypting the VNC connection using anonymous TLS. In
+effect this means that the channel is encrypted using TLS but that no
+authentication of the peers are done. This means the connection is still
+vulnerable to man-in-the-middle attacks where an attacker proxies the
+VNC connection.
+---
+ meson.build                                   |   1 +
+ src/grd-enums.h                               |   6 +
+ src/grd-session-vnc.c                         |  98 +++-
+ src/grd-session-vnc.h                         |  15 +
+ src/grd-settings.c                            |  28 ++
+ src/grd-settings.h                            |   2 +
+ src/grd-vnc-server.c                          |  45 ++
+ src/grd-vnc-tls.c                             | 444 ++++++++++++++++++
+ src/grd-vnc-tls.h                             |  28 ++
+ src/meson.build                               |   5 +-
+ ...nome.desktop.remote-desktop.gschema.xml.in |  10 +
+ 11 files changed, 666 insertions(+), 16 deletions(-)
+ create mode 100644 src/grd-vnc-tls.c
+ create mode 100644 src/grd-vnc-tls.h
+
+diff --git a/meson.build b/meson.build
+index af423a4..813c97f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -20,6 +20,7 @@ libvncclient_dep = dependency('libvncclient')
+ libsecret_dep = dependency('libsecret-1')
+ libnotify_dep = dependency('libnotify')
+ winpr_dep = dependency('winpr2', version: freerdp_req)
++gnutls_dep = dependency('gnutls')
+ 
+ cdata = configuration_data()
+ cdata.set_quoted('GETTEXT_PACKAGE', 'gnome-remote-desktop')
+diff --git a/src/grd-enums.h b/src/grd-enums.h
+index ffab821..4333863 100644
+--- a/src/grd-enums.h
++++ b/src/grd-enums.h
+@@ -27,4 +27,10 @@ typedef enum
+   GRD_VNC_AUTH_METHOD_PASSWORD
+ } GrdVncAuthMethod;
+ 
++typedef enum
++{
++  GRD_VNC_ENCRYPTION_NONE = 1 << 0,
++  GRD_VNC_ENCRYPTION_TLS_ANON = 1 << 1,
++} GrdVncEncryption;
++
+ #endif /* GRD_ENUMS_H */
+diff --git a/src/grd-session-vnc.c b/src/grd-session-vnc.c
+index a06d34d..d014315 100644
+--- a/src/grd-session-vnc.c
++++ b/src/grd-session-vnc.c
+@@ -44,7 +44,9 @@ struct _GrdSessionVnc
+ {
+   GrdSession parent;
+ 
++  GrdVncServer *vnc_server;
+   GSocketConnection *connection;
++  GList *socket_grabs;
+   GSource *source;
+   rfbScreenInfoPtr rfb_screen;
+   rfbClientPtr rfb_client;
+@@ -518,12 +520,30 @@ check_rfb_password (rfbClientPtr  rfb_client,
+     }
+ }
+ 
++int
++grd_session_vnc_get_fd (GrdSessionVnc *session_vnc)
++{
++  return session_vnc->rfb_screen->inetdSock;
++}
++
+ int
+ grd_session_vnc_get_framebuffer_stride (GrdSessionVnc *session_vnc)
+ {
+   return session_vnc->rfb_screen->paddedWidthInBytes;
+ }
+ 
++rfbClientPtr
++grd_session_vnc_get_rfb_client (GrdSessionVnc *session_vnc)
++{
++  return session_vnc->rfb_client;
++}
++
++GrdVncServer *
++grd_session_vnc_get_vnc_server (GrdSessionVnc *session_vnc)
++{
++  return session_vnc->vnc_server;
++}
++
+ static void
+ init_vnc_session (GrdSessionVnc *session_vnc)
+ {
+@@ -564,33 +584,74 @@ init_vnc_session (GrdSessionVnc *session_vnc)
+   rfbProcessEvents (rfb_screen, 0);
+ }
+ 
++void
++grd_session_vnc_grab_socket (GrdSessionVnc        *session_vnc,
++                             GrdVncSocketGrabFunc  grab_func)
++{
++  session_vnc->socket_grabs = g_list_prepend (session_vnc->socket_grabs,
++                                              grab_func);
++}
++
++void
++grd_session_vnc_ungrab_socket (GrdSessionVnc        *session_vnc,
++                               GrdVncSocketGrabFunc  grab_func)
++{
++  session_vnc->socket_grabs = g_list_remove (session_vnc->socket_grabs,
++                                             grab_func);
++}
++
++static gboolean
++vnc_socket_grab_func (GrdSessionVnc  *session_vnc,
++                      GError        **error)
++{
++  if (rfbIsActive (session_vnc->rfb_screen))
++    {
++      rfbProcessEvents (session_vnc->rfb_screen, 0);
++
++      if (session_vnc->pending_framebuffer_resize &&
++          session_vnc->rfb_client->preferredEncoding != -1)
++        {
++          resize_vnc_framebuffer (session_vnc,
++                                  session_vnc->pending_framebuffer_width,
++                                  session_vnc->pending_framebuffer_height);
++          session_vnc->pending_framebuffer_resize = FALSE;
++        }
++    }
++
++  return TRUE;
++}
++
+ static gboolean
+ handle_socket_data (GSocket *socket,
+                     GIOCondition condition,
+                     gpointer user_data)
+ {
+-  GrdSessionVnc *session_vnc = user_data;
++  GrdSessionVnc *session_vnc = GRD_SESSION_VNC (user_data);
++  GrdSession *session = GRD_SESSION (session_vnc);
+ 
+-  if (condition & G_IO_IN)
++  if (condition & (G_IO_ERR | G_IO_HUP))
++    {
++      g_warning ("Client disconnected");
++
++      grd_session_stop (session);
++    }
++  else if (condition & G_IO_IN)
+     {
+-      if (rfbIsActive (session_vnc->rfb_screen))
++      GrdVncSocketGrabFunc grab_func;
++      g_autoptr (GError) error = NULL;
++
++      grab_func = g_list_first (session_vnc->socket_grabs)->data;
++      if (!grab_func (session_vnc, &error))
+         {
+-          rfbProcessEvents (session_vnc->rfb_screen, 0);
++          g_warning ("Error when reading socket: %s", error->message);
+ 
+-          if (session_vnc->pending_framebuffer_resize &&
+-              session_vnc->rfb_client->preferredEncoding != -1)
+-            {
+-              resize_vnc_framebuffer (session_vnc,
+-                                      session_vnc->pending_framebuffer_width,
+-                                      session_vnc->pending_framebuffer_height);
+-              session_vnc->pending_framebuffer_resize = FALSE;
+-            }
++          grd_session_stop (session);
+         }
+     }
+   else
+     {
+-      g_debug ("Unhandled socket condition %d\n", condition);
+-      return G_SOURCE_REMOVE;
++      g_warning ("Unhandled socket condition %d\n", condition);
++      g_assert_not_reached ();
+     }
+ 
+   return G_SOURCE_CONTINUE;
+@@ -603,7 +664,10 @@ grd_session_vnc_attach_source (GrdSessionVnc *session_vnc)
+ 
+   socket = g_socket_connection_get_socket (session_vnc->connection);
+   session_vnc->source = g_socket_create_source (socket,
+-                                                G_IO_IN | G_IO_PRI,
++                                                (G_IO_IN |
++                                                 G_IO_PRI |
++                                                 G_IO_ERR |
++                                                 G_IO_HUP),
+                                                 NULL);
+   g_source_set_callback (session_vnc->source,
+                          (GSourceFunc) handle_socket_data,
+@@ -629,8 +693,10 @@ grd_session_vnc_new (GrdVncServer      *vnc_server,
+                               "context", context,
+                               NULL);
+ 
++  session_vnc->vnc_server = vnc_server;
+   session_vnc->connection = g_object_ref (connection);
+ 
++  grd_session_vnc_grab_socket (session_vnc, vnc_socket_grab_func);
+   grd_session_vnc_attach_source (session_vnc);
+ 
+   init_vnc_session (session_vnc);
+@@ -645,6 +711,8 @@ grd_session_vnc_dispose (GObject *object)
+ 
+   g_assert (!session_vnc->rfb_screen);
+ 
++  g_clear_pointer (&session_vnc->socket_grabs, g_list_free);
++
+   g_clear_pointer (&session_vnc->pressed_keys, g_hash_table_unref);
+ 
+   G_OBJECT_CLASS (grd_session_vnc_parent_class)->dispose (object);
+diff --git a/src/grd-session-vnc.h b/src/grd-session-vnc.h
+index 07678c8..bba3d56 100644
+--- a/src/grd-session-vnc.h
++++ b/src/grd-session-vnc.h
+@@ -36,6 +36,9 @@ G_DECLARE_FINAL_TYPE (GrdSessionVnc,
+                       GRD, SESSION_VNC,
+                       GrdSession);
+ 
++typedef gboolean (* GrdVncSocketGrabFunc) (GrdSessionVnc  *session_vnc,
++                                           GError        **error);
++
+ GrdSessionVnc *grd_session_vnc_new (GrdVncServer      *vnc_server,
+                                     GSocketConnection *connection);
+ 
+@@ -55,8 +58,20 @@ void grd_session_vnc_move_cursor (GrdSessionVnc *session_vnc,
+                                   int            x,
+                                   int            y);
+ 
++int grd_session_vnc_get_fd (GrdSessionVnc *session_vnc);
++
+ int grd_session_vnc_get_framebuffer_stride (GrdSessionVnc *session_vnc);
+ 
+ gboolean grd_session_vnc_is_client_gone (GrdSessionVnc *session_vnc);
+ 
++rfbClientPtr grd_session_vnc_get_rfb_client (GrdSessionVnc *session_vnc);
++
++void grd_session_vnc_grab_socket (GrdSessionVnc        *session_vnc,
++                                  GrdVncSocketGrabFunc  grab_func);
++
++void grd_session_vnc_ungrab_socket (GrdSessionVnc        *session_vnc,
++                                    GrdVncSocketGrabFunc  grab_func);
++
++GrdVncServer * grd_session_vnc_get_vnc_server (GrdSessionVnc *session_vnc);
++
+ #endif /* GRD_SESSION_VNC_H */
+diff --git a/src/grd-settings.c b/src/grd-settings.c
+index 3af87be..f37f2da 100644
+--- a/src/grd-settings.c
++++ b/src/grd-settings.c
+@@ -60,6 +60,7 @@ struct _GrdSettings
+     gboolean view_only;
+     GrdVncAuthMethod auth_method;
+     int port;
++    GrdVncEncryption encryption;
+   } vnc;
+ };
+ 
+@@ -232,6 +233,12 @@ grd_settings_get_vnc_auth_method (GrdSettings *settings)
+     return settings->vnc.auth_method;
+ }
+ 
++GrdVncEncryption
++grd_settings_get_vnc_encryption (GrdSettings *settings)
++{
++  return settings->vnc.encryption;
++}
++
+ static void
+ update_rdp_tls_cert (GrdSettings *settings)
+ {
+@@ -267,6 +274,13 @@ update_vnc_auth_method (GrdSettings *settings)
+                                                    "auth-method");
+ }
+ 
++static void
++update_vnc_encryption (GrdSettings *settings)
++{
++  settings->vnc.encryption = g_settings_get_flags (settings->vnc.settings,
++                                                   "encryption");
++}
++
+ static void
+ on_rdp_settings_changed (GSettings   *rdp_settings,
+                          const char  *key,
+@@ -304,6 +318,11 @@ on_vnc_settings_changed (GSettings   *vnc_settings,
+       update_vnc_auth_method (settings);
+       g_signal_emit (settings, signals[VNC_AUTH_METHOD_CHANGED], 0);
+     }
++  else if (strcmp (key, "encryption") == 0)
++    {
++      update_vnc_encryption (settings);
++      g_signal_emit (settings, signals[VNC_ENCRYPTION_CHANGED], 0);
++    }
+ }
+ 
+ static void
+@@ -335,6 +354,8 @@ grd_settings_init (GrdSettings *settings)
+ 
+   settings->rdp.port = GRD_RDP_SERVER_PORT;
+   settings->vnc.port = GRD_VNC_SERVER_PORT;
++
++  update_vnc_encryption (settings);
+ }
+ 
+ static void
+@@ -379,4 +400,11 @@ grd_settings_class_init (GrdSettingsClass *klass)
+                   0,
+                   NULL, NULL, NULL,
+                   G_TYPE_NONE, 0);
++  signals[VNC_ENCRYPTION_CHANGED] =
++    g_signal_new ("vnc-encryption-changed",
++                  G_TYPE_FROM_CLASS (klass),
++                  G_SIGNAL_RUN_LAST,
++                  0,
++                  NULL, NULL, NULL,
++                  G_TYPE_NONE, 0);
+ }
+diff --git a/src/grd-settings.h b/src/grd-settings.h
+index e12e47e..b940fdb 100644
+--- a/src/grd-settings.h
++++ b/src/grd-settings.h
+@@ -64,4 +64,6 @@ gboolean grd_settings_get_vnc_view_only (GrdSettings *settings);
+ 
+ GrdVncAuthMethod grd_settings_get_vnc_auth_method (GrdSettings *settings);
+ 
++GrdVncEncryption grd_settings_get_vnc_encryption (GrdSettings *settings);
++
+ #endif /* GRD_SETTINGS_H */
+diff --git a/src/grd-vnc-server.c b/src/grd-vnc-server.c
+index a6d95cb..f9c68db 100644
+--- a/src/grd-vnc-server.c
++++ b/src/grd-vnc-server.c
+@@ -24,11 +24,13 @@
+ 
+ #include "grd-vnc-server.h"
+ 
++#include <rfb/rfb.h>
+ #include <gio/gio.h>
+ #include <rfb/rfb.h>
+ 
+ #include "grd-context.h"
+ #include "grd-session-vnc.h"
++#include "grd-vnc-tls.h"
+ 
+ 
+ enum
+@@ -130,6 +132,43 @@ on_incoming (GSocketService    *service,
+   return TRUE;
+ }
+ 
++static void
++sync_encryption_settings (GrdVncServer *vnc_server)
++{
++  GrdSettings *settings = grd_context_get_settings (vnc_server->context);
++  rfbSecurityHandler *tls_security_handler;
++  GrdVncEncryption encryption;
++
++  tls_security_handler = grd_vnc_tls_get_security_handler ();
++  encryption = grd_settings_get_vnc_encryption (settings);
++
++  if (encryption == (GRD_VNC_ENCRYPTION_NONE | GRD_VNC_ENCRYPTION_TLS_ANON))
++    {
++      rfbRegisterSecurityHandler (tls_security_handler);
++      rfbUnregisterChannelSecurityHandler (tls_security_handler);
++    }
++  else if (encryption == GRD_VNC_ENCRYPTION_NONE)
++    {
++      rfbUnregisterSecurityHandler (tls_security_handler);
++      rfbUnregisterChannelSecurityHandler (tls_security_handler);
++    }
++  else
++    {
++      if (encryption != GRD_VNC_ENCRYPTION_TLS_ANON)
++        g_warning ("Invalid VNC encryption setting, falling back to TLS-ANON");
++
++      rfbRegisterChannelSecurityHandler (tls_security_handler);
++      rfbUnregisterSecurityHandler (tls_security_handler);
++    }
++}
++
++static void
++on_vnc_encryption_changed (GrdSettings  *settings,
++                           GrdVncServer *vnc_server)
++{
++  sync_encryption_settings (vnc_server);
++}
++
+ gboolean
+ grd_vnc_server_start (GrdVncServer  *vnc_server,
+                       GError       **error)
+@@ -220,12 +259,18 @@ static void
+ grd_vnc_server_constructed (GObject *object)
+ {
+   GrdVncServer *vnc_server = GRD_VNC_SERVER (object);
++  GrdSettings *settings = grd_context_get_settings (vnc_server->context);
+ 
+   if (grd_context_get_debug_flags (vnc_server->context) & GRD_DEBUG_VNC)
+     rfbLogEnable (1);
+   else
+     rfbLogEnable (0);
+ 
++  g_signal_connect (settings, "vnc-encryption-changed",
++                    G_CALLBACK (on_vnc_encryption_changed),
++                    vnc_server);
++  sync_encryption_settings (vnc_server);
++
+   G_OBJECT_CLASS (grd_vnc_server_parent_class)->constructed (object);
+ }
+ 
+diff --git a/src/grd-vnc-tls.c b/src/grd-vnc-tls.c
+new file mode 100644
+index 0000000..ec4758e
+--- /dev/null
++++ b/src/grd-vnc-tls.c
+@@ -0,0 +1,444 @@
++/*
++ * Copyright (C) 2018 Red Hat Inc.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ */
++
++#include "grd-vnc-tls.h"
++
++#include <errno.h>
++#include <glib.h>
++#include <gnutls/gnutls.h>
++#include <rfb/rfb.h>
++
++#include "grd-session-vnc.h"
++#include "grd-vnc-server.h"
++
++typedef struct _GrdVncTlsContext
++{
++  gnutls_anon_server_credentials_t anon_credentials;
++  gnutls_dh_params_t dh_params;
++} GrdVncTlsContext;
++
++typedef enum _GrdTlsHandshakeState
++{
++  GRD_TLS_HANDSHAKE_STATE_INIT,
++  GRD_TLS_HANDSHAKE_STATE_DURING,
++  GRD_TLS_HANDSHAKE_STATE_FINISHED
++} GrdTlsHandshakeState;
++
++typedef struct _GrdVncTlsSession
++{
++  GrdVncTlsContext *tls_context;
++
++  int fd;
++
++  gnutls_session_t tls_session;
++  GrdTlsHandshakeState handshake_state;
++
++  char *peek_buffer;
++  int peek_buffer_size;
++  int peek_buffer_len;
++} GrdVncTlsSession;
++
++static gboolean
++tls_handshake_grab_func (GrdSessionVnc  *session_vnc,
++                         GError        **error);
++
++static GrdVncTlsContext *
++grd_vnc_tls_context_new (void)
++{
++  GrdVncTlsContext *tls_context;
++  const unsigned int dh_bits = 1024;
++
++  tls_context = g_new0 (GrdVncTlsContext, 1);
++
++  gnutls_global_init ();
++
++  gnutls_anon_allocate_server_credentials (&tls_context->anon_credentials);
++
++  gnutls_dh_params_init (&tls_context->dh_params);
++  gnutls_dh_params_generate2 (tls_context->dh_params, dh_bits);
++
++  gnutls_anon_set_server_dh_params (tls_context->anon_credentials,
++                                    tls_context->dh_params);
++
++  return tls_context;
++}
++
++static void
++grd_vnc_tls_context_free (GrdVncTlsContext *tls_context)
++{
++  gnutls_dh_params_deinit (tls_context->dh_params);
++  gnutls_anon_free_server_credentials (tls_context->anon_credentials);
++  gnutls_global_deinit ();
++}
++
++GrdVncTlsContext *
++ensure_tls_context (GrdVncServer *vnc_server)
++{
++  GrdVncTlsContext *tls_context;
++
++  tls_context = g_object_get_data (G_OBJECT (vnc_server), "vnc-tls-context");
++  if (!tls_context)
++    {
++      tls_context = grd_vnc_tls_context_new ();
++      g_object_set_data_full (G_OBJECT (vnc_server), "vnc-tls-context",
++                              tls_context,
++                              (GDestroyNotify) grd_vnc_tls_context_free);
++    }
++
++  return tls_context;
++}
++
++static gboolean
++perform_anon_tls_handshake (GrdVncTlsSession  *tls_session,
++                            GError           **error)
++{
++  GrdVncTlsContext *tls_context = tls_session->tls_context;
++  const char kx_priority[] = "NORMAL:+ANON-DH";
++  int ret;
++
++  gnutls_init (&tls_session->tls_session, GNUTLS_SERVER | GNUTLS_NO_SIGNAL);
++
++  gnutls_set_default_priority (tls_session->tls_session);
++  gnutls_priority_set_direct (tls_session->tls_session, kx_priority, NULL);
++
++  gnutls_credentials_set (tls_session->tls_session,
++                          GNUTLS_CRD_ANON,
++                          tls_context->anon_credentials);
++  gnutls_transport_set_ptr (tls_session->tls_session,
++                            GINT_TO_POINTER (tls_session->fd));
++
++  ret = gnutls_handshake (tls_session->tls_session);
++  if (ret != GNUTLS_E_SUCCESS && !gnutls_error_is_fatal (ret))
++    {
++      tls_session->handshake_state = GRD_TLS_HANDSHAKE_STATE_DURING;
++      return TRUE;
++    }
++
++  if (ret != GNUTLS_E_SUCCESS)
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                   "%s", gnutls_strerror (ret));
++      gnutls_deinit (tls_session->tls_session);
++      tls_session->tls_session = NULL;
++      return FALSE;
++    }
++
++  tls_session->handshake_state = GRD_TLS_HANDSHAKE_STATE_FINISHED;
++  return TRUE;
++}
++
++static gboolean
++continue_tls_handshake (GrdVncTlsSession  *tls_session,
++                        GError           **error)
++{
++  int ret;
++
++  ret = gnutls_handshake (tls_session->tls_session);
++  if (ret != GNUTLS_E_SUCCESS && !gnutls_error_is_fatal (ret))
++    return TRUE;
++
++  if (ret != GNUTLS_E_SUCCESS)
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                   "%s", gnutls_strerror (ret));
++      gnutls_deinit (tls_session->tls_session);
++      tls_session->tls_session = NULL;
++      return FALSE;
++    }
++
++  tls_session->handshake_state = GRD_TLS_HANDSHAKE_STATE_FINISHED;
++  return TRUE;
++}
++
++static void
++grd_vnc_tls_session_free (GrdVncTlsSession *tls_session)
++{
++  g_clear_pointer (&tls_session->peek_buffer, g_free);
++  g_clear_pointer (&tls_session->tls_session, gnutls_deinit);
++  g_free (tls_session);
++}
++
++static GrdVncTlsSession *
++grd_vnc_tls_session_from_vnc_session (GrdSessionVnc *session_vnc)
++{
++  return g_object_get_data (G_OBJECT (session_vnc), "vnc-tls-session");
++}
++
++static int
++do_read (GrdVncTlsSession *tls_session,
++         char             *buf,
++         int               len)
++{
++  do
++    {
++      int ret;
++
++      ret = gnutls_record_recv (tls_session->tls_session, buf, len);
++      if (ret == GNUTLS_E_AGAIN ||
++          ret == GNUTLS_E_INTERRUPTED)
++        {
++          continue;
++        }
++      else if (ret < 0)
++        {
++          g_debug ("gnutls_record_recv failed: %s", gnutls_strerror (ret));
++          errno = EIO;
++          return -1;
++        }
++      else
++        {
++          return ret;
++        }
++    }
++  while (TRUE);
++}
++
++static int
++grd_vnc_tls_read_from_socket (rfbClientPtr  rfb_client,
++                              char         *buf,
++                              int           len)
++{
++  GrdSessionVnc *session_vnc = rfb_client->screen->screenData;
++  GrdVncTlsSession *tls_session =
++    grd_vnc_tls_session_from_vnc_session (session_vnc);
++  int to_read = len;
++  int len_read = 0;
++
++  if (to_read < tls_session->peek_buffer_len)
++    {
++      memcpy (buf, tls_session->peek_buffer, to_read);
++      memmove (buf,
++               tls_session->peek_buffer + to_read,
++               tls_session->peek_buffer_len - to_read);
++      len_read = to_read;
++      to_read = 0;
++    }
++  else
++    {
++      memcpy (buf,
++              tls_session->peek_buffer,
++              tls_session->peek_buffer_len);
++      to_read -= tls_session->peek_buffer_len;
++      len_read = tls_session->peek_buffer_len;
++
++      g_clear_pointer (&tls_session->peek_buffer,
++                       g_free);
++      tls_session->peek_buffer_len = 0;
++      tls_session->peek_buffer_size = 0;
++    }
++
++  if (to_read > 0)
++    {
++      int ret;
++
++      ret = do_read (tls_session, buf + len_read, to_read);
++      if (ret == -1)
++        return -1;
++
++      len_read += ret;
++    }
++
++  return len_read;
++}
++
++static int
++grd_vnc_tls_peek_at_socket (rfbClientPtr  rfb_client,
++                            char         *buf,
++                            int           len)
++{
++  GrdSessionVnc *session_vnc = rfb_client->screen->screenData;
++  GrdVncTlsSession *tls_session =
++    grd_vnc_tls_session_from_vnc_session (session_vnc);
++  int peekable_len;
++
++  if (tls_session->peek_buffer_len < len)
++    {
++      int ret;
++
++      if (len > tls_session->peek_buffer_size)
++        {
++          tls_session->peek_buffer = g_renew (char,
++                                              tls_session->peek_buffer,
++                                              len);
++          tls_session->peek_buffer_size = len;
++        }
++
++      ret = do_read (tls_session,
++                     tls_session->peek_buffer + tls_session->peek_buffer_len,
++                     len - tls_session->peek_buffer_len);
++      if (ret == -1)
++        return -1;
++
++      tls_session->peek_buffer_len += ret;
++    }
++
++  peekable_len = MIN (len, tls_session->peek_buffer_len);
++  memcpy (buf, tls_session->peek_buffer, peekable_len);
++
++  return peekable_len;
++}
++
++static rfbBool
++grd_vnc_tls_has_pending_on_socket (rfbClientPtr rfb_client)
++{
++  GrdSessionVnc *session_vnc = rfb_client->screen->screenData;
++  GrdVncTlsSession *tls_session =
++    grd_vnc_tls_session_from_vnc_session (session_vnc);
++
++  if (tls_session->peek_buffer_len > 0)
++    return TRUE;
++
++  if (gnutls_record_check_pending (tls_session->tls_session) > 0)
++    return TRUE;
++
++  return FALSE;
++}
++
++static int
++grd_vnc_tls_write_to_socket (rfbClientPtr  rfb_client,
++                             const char   *buf,
++                             int           len)
++{
++  GrdSessionVnc *session_vnc = rfb_client->screen->screenData;
++  GrdVncTlsSession *tls_session =
++    grd_vnc_tls_session_from_vnc_session (session_vnc);
++
++  do
++    {
++      int ret;
++
++      ret = gnutls_record_send (tls_session->tls_session, buf, len);
++      if (ret == GNUTLS_E_AGAIN ||
++          ret == GNUTLS_E_INTERRUPTED)
++        {
++          continue;
++        }
++      else if (ret < 0)
++        {
++          g_debug ("gnutls_record_send failed: %s", gnutls_strerror (ret));
++          errno = EIO;
++          return -1;
++        }
++      else
++        {
++          return ret;
++        }
++    }
++  while (TRUE);
++}
++
++static gboolean
++perform_handshake (GrdSessionVnc  *session_vnc,
++                   GError        **error)
++{
++  GrdVncTlsSession *tls_session =
++    grd_vnc_tls_session_from_vnc_session (session_vnc);
++
++  switch (tls_session->handshake_state)
++    {
++    case GRD_TLS_HANDSHAKE_STATE_INIT:
++      if (!perform_anon_tls_handshake (tls_session, error))
++        return FALSE;
++      break;
++    case GRD_TLS_HANDSHAKE_STATE_DURING:
++      if (!continue_tls_handshake (tls_session, error))
++        return FALSE;
++      break;
++    case GRD_TLS_HANDSHAKE_STATE_FINISHED:
++      break;
++    }
++
++  switch (tls_session->handshake_state)
++    {
++    case GRD_TLS_HANDSHAKE_STATE_INIT:
++      break;
++    case GRD_TLS_HANDSHAKE_STATE_DURING:
++      break;
++    case GRD_TLS_HANDSHAKE_STATE_FINISHED:
++      grd_session_vnc_ungrab_socket (session_vnc, tls_handshake_grab_func);
++      rfbSendSecurityTypeList (grd_session_vnc_get_rfb_client (session_vnc),
++                               RFB_SECURITY_TAG_CHANNEL);
++      break;
++    }
++
++  return TRUE;
++}
++
++static gboolean
++tls_handshake_grab_func (GrdSessionVnc  *session_vnc,
++                         GError        **error)
++{
++  g_autoptr (GError) handshake_error = NULL;
++
++  if (!perform_handshake (session_vnc, &handshake_error))
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                   "TLS handshake failed: %s", handshake_error->message);
++      return FALSE;
++    }
++
++  return TRUE;
++}
++
++static void
++rfb_tls_security_handler (rfbClientPtr rfb_client)
++{
++  GrdSessionVnc *session_vnc = rfb_client->screen->screenData;
++  GrdVncTlsSession *tls_session;
++  g_autoptr(GError) error = NULL;
++
++  tls_session = grd_vnc_tls_session_from_vnc_session (session_vnc);
++  if (!tls_session)
++    {
++      GrdVncServer *vnc_server = grd_session_vnc_get_vnc_server (session_vnc);
++
++      tls_session = g_new0 (GrdVncTlsSession, 1);
++      tls_session->fd = grd_session_vnc_get_fd (session_vnc);
++      tls_session->tls_context = ensure_tls_context (vnc_server);
++      g_object_set_data_full (G_OBJECT (session_vnc), "vnc-tls-session",
++                              tls_session,
++                              (GDestroyNotify) grd_vnc_tls_session_free);
++
++      rfb_client->readFromSocket = grd_vnc_tls_read_from_socket;
++      rfb_client->peekAtSocket = grd_vnc_tls_peek_at_socket;
++      rfb_client->hasPendingOnSocket = grd_vnc_tls_has_pending_on_socket;
++      rfb_client->writeToSocket = grd_vnc_tls_write_to_socket;
++
++      grd_session_vnc_grab_socket (session_vnc, tls_handshake_grab_func);
++    }
++
++  if (!perform_handshake (session_vnc, &error))
++    {
++      g_warning ("TLS handshake failed: %s", error->message);
++      rfbCloseClient (rfb_client);
++    }
++}
++
++static rfbSecurityHandler anon_tls_security_handler = {
++  .type = rfbTLS,
++  .handler = rfb_tls_security_handler,
++  .securityTags = RFB_SECURITY_TAG_CHANNEL,
++};
++
++rfbSecurityHandler *
++grd_vnc_tls_get_security_handler (void)
++{
++  return &anon_tls_security_handler;
++}
+diff --git a/src/grd-vnc-tls.h b/src/grd-vnc-tls.h
+new file mode 100644
+index 0000000..135ef8c
+--- /dev/null
++++ b/src/grd-vnc-tls.h
+@@ -0,0 +1,28 @@
++/*
++ * Copyright (C) 2018 Red Hat Inc.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ */
++
++#ifndef GRD_VNC_TLS_H
++#define GRD_VNC_TLS_H
++
++#include <rfb/rfb.h>
++
++rfbSecurityHandler * grd_vnc_tls_get_security_handler (void);
++
++#endif /* GRD_VNC_TLS_H */
+diff --git a/src/meson.build b/src/meson.build
+index 1b6425d..17579b1 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -33,6 +33,8 @@ daemon_sources = files([
+   'grd-vnc-pipewire-stream.h',
+   'grd-vnc-server.c',
+   'grd-vnc-server.h',
++  'grd-vnc-tls.c',
++  'grd-vnc-tls.h',
+ ])
+ 
+ gen_daemon_sources = []
+@@ -66,7 +68,8 @@ executable('gnome-remote-desktop-daemon',
+                           libvncserver_dep,
+                           libsecret_dep,
+                           libnotify_dep,
+-                          winpr_dep],
++                          winpr_dep,
++                          gnutls_dep],
+            include_directories: [configinc],
+            install: true,
+            install_dir: libexecdir)
+diff --git a/src/org.gnome.desktop.remote-desktop.gschema.xml.in b/src/org.gnome.desktop.remote-desktop.gschema.xml.in
+index 4b6e593..0086d99 100644
+--- a/src/org.gnome.desktop.remote-desktop.gschema.xml.in
++++ b/src/org.gnome.desktop.remote-desktop.gschema.xml.in
+@@ -49,5 +49,15 @@
+ 	 * password - by requiring the remote client to provide a known password
+       </description>
+     </key>
++    <key name='encryption' flags='org.gnome.desktop.remote-desktop.GrdVncEncryption'>
++      <default>['tls-anon']</default>
++      <summary>Allowed encryption method to use</summary>
++      <description>
++	Allowed encryption methods. Includes the following:
++
++	 * none     - no encryption
++	 * tls-anon - anonymous (unauthenticated) TLS
++      </description>
++    </key>
+   </schema>
+ </schemalist>
+-- 
+2.26.2
+
+
+From 2e46518f421fd8704770bb6742accfacba3570aa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 27 Nov 2019 11:02:09 +0100
+Subject: [PATCH 2/6] session-vnc: Add paused/resumed signals
+
+Paused is when the socket sourec is detached, and resumed when attached.
+Meant to be used by the TLS channel security to a attach/detach
+out-of-socket source.
+---
+ src/grd-session-vnc.c | 72 ++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 65 insertions(+), 7 deletions(-)
+
+diff --git a/src/grd-session-vnc.c b/src/grd-session-vnc.c
+index d014315..7edd407 100644
+--- a/src/grd-session-vnc.c
++++ b/src/grd-session-vnc.c
+@@ -40,14 +40,27 @@
+ #define BGRX_SAMPLES_PER_PIXEL 3
+ #define BGRX_BYTES_PER_PIXEL 4
+ 
++enum
++{
++  PAUSED,
++  RESUMED,
++
++  N_SIGNALS
++};
++
++static guint signals[N_SIGNALS];
++
+ struct _GrdSessionVnc
+ {
+   GrdSession parent;
+ 
+   GrdVncServer *vnc_server;
+   GSocketConnection *connection;
++
+   GList *socket_grabs;
+   GSource *source;
++  gboolean is_paused;
++
+   rfbScreenInfoPtr rfb_screen;
+   rfbClientPtr rfb_client;
+ 
+@@ -73,7 +86,7 @@ struct _GrdSessionVnc
+ G_DEFINE_TYPE (GrdSessionVnc, grd_session_vnc, GRD_TYPE_SESSION);
+ 
+ static void
+-grd_session_vnc_detach_source (GrdSessionVnc *session_vnc);
++grd_session_vnc_pause (GrdSessionVnc *session_vnc);
+ 
+ static gboolean
+ close_session_idle (gpointer user_data);
+@@ -224,7 +237,8 @@ handle_client_gone (rfbClientPtr rfb_client)
+ 
+   g_debug ("VNC client gone");
+ 
+-  grd_session_vnc_detach_source (session_vnc);
++  grd_session_vnc_pause (session_vnc);
++
+   maybe_queue_close_session_idle (session_vnc);
+   session_vnc->rfb_client = NULL;
+ }
+@@ -293,7 +307,7 @@ handle_new_client (rfbClientPtr rfb_client)
+                               session_vnc->prompt_cancellable,
+                               prompt_response_callback,
+                               session_vnc);
+-      grd_session_vnc_detach_source (session_vnc);
++      grd_session_vnc_pause (session_vnc);
+       return RFB_CLIENT_ON_HOLD;
+     case GRD_VNC_AUTH_METHOD_PASSWORD:
+       session_vnc->rfb_screen->passwordCheck = check_rfb_password;
+@@ -511,7 +525,7 @@ check_rfb_password (rfbClientPtr  rfb_client,
+   if (memcmp (challenge_encrypted, response_encrypted, len) == 0)
+     {
+       grd_session_start (GRD_SESSION (session_vnc));
+-      grd_session_vnc_detach_source (session_vnc);
++      grd_session_vnc_pause (session_vnc);
+       return TRUE;
+     }
+   else
+@@ -681,6 +695,36 @@ grd_session_vnc_detach_source (GrdSessionVnc *session_vnc)
+   g_clear_pointer (&session_vnc->source, g_source_destroy);
+ }
+ 
++gboolean
++grd_session_vnc_is_paused (GrdSessionVnc *session_vnc)
++{
++  return session_vnc->is_paused;
++}
++
++static void
++grd_session_vnc_pause (GrdSessionVnc *session_vnc)
++{
++  if (grd_session_vnc_is_paused (session_vnc))
++    return;
++
++  session_vnc->is_paused = TRUE;
++
++  grd_session_vnc_detach_source (session_vnc);
++  g_signal_emit (session_vnc, signals[PAUSED], 0);
++}
++
++static void
++grd_session_vnc_resume (GrdSessionVnc *session_vnc)
++{
++  if (!grd_session_vnc_is_paused (session_vnc))
++    return;
++
++  session_vnc->is_paused = FALSE;
++
++  grd_session_vnc_attach_source (session_vnc);
++  g_signal_emit (session_vnc, signals[RESUMED], 0);
++}
++
+ GrdSessionVnc *
+ grd_session_vnc_new (GrdVncServer      *vnc_server,
+                      GSocketConnection *connection)
+@@ -698,6 +742,7 @@ grd_session_vnc_new (GrdVncServer      *vnc_server,
+ 
+   grd_session_vnc_grab_socket (session_vnc, vnc_socket_grab_func);
+   grd_session_vnc_attach_source (session_vnc);
++  session_vnc->is_paused = FALSE;
+ 
+   init_vnc_session (session_vnc);
+ 
+@@ -727,7 +772,7 @@ grd_session_vnc_stop (GrdSession *session)
+ 
+   g_clear_object (&session_vnc->pipewire_stream);
+ 
+-  grd_session_vnc_detach_source (session_vnc);
++  grd_session_vnc_pause (session_vnc);
+ 
+   g_clear_object (&session_vnc->connection);
+   g_clear_pointer (&session_vnc->rfb_screen->frameBuffer, g_free);
+@@ -783,8 +828,8 @@ grd_session_vnc_stream_ready (GrdSession *session,
+                     G_CALLBACK (on_pipewire_stream_closed),
+                     session_vnc);
+ 
+-  if (!session_vnc->source)
+-    grd_session_vnc_attach_source (session_vnc);
++  if (grd_session_vnc_is_paused (session_vnc))
++    grd_session_vnc_resume (session_vnc);
+ }
+ 
+ static void
+@@ -803,4 +848,17 @@ grd_session_vnc_class_init (GrdSessionVncClass *klass)
+ 
+   session_class->stop = grd_session_vnc_stop;
+   session_class->stream_ready = grd_session_vnc_stream_ready;
++
++  signals[PAUSED] = g_signal_new ("paused",
++                                  G_TYPE_FROM_CLASS (klass),
++                                  G_SIGNAL_RUN_LAST,
++                                  0,
++                                  NULL, NULL, NULL,
++                                  G_TYPE_NONE, 0);
++  signals[RESUMED] = g_signal_new ("resumed",
++                                   G_TYPE_FROM_CLASS (klass),
++                                   G_SIGNAL_RUN_LAST,
++                                   0,
++                                   NULL, NULL, NULL,
++                                   G_TYPE_NONE, 0);
+ }
+-- 
+2.26.2
+
+
+From b59c36ccf73939d32ccf5ab4eb47460a9fe415f3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 27 Nov 2019 11:03:46 +0100
+Subject: [PATCH 3/6] session-vnc: Add grd_session_vnc_dispatch() helper
+
+To be used by the TLS channel security to dispatch when there is data
+available that is not visible to the socket source.
+---
+ src/grd-session-vnc.c | 26 ++++++++++++++++----------
+ src/grd-session-vnc.h |  2 ++
+ 2 files changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/src/grd-session-vnc.c b/src/grd-session-vnc.c
+index 7edd407..29c94a1 100644
+--- a/src/grd-session-vnc.c
++++ b/src/grd-session-vnc.c
+@@ -635,6 +635,21 @@ vnc_socket_grab_func (GrdSessionVnc  *session_vnc,
+   return TRUE;
+ }
+ 
++void
++grd_session_vnc_dispatch (GrdSessionVnc *session_vnc)
++{
++  GrdVncSocketGrabFunc grab_func;
++  g_autoptr (GError) error = NULL;
++
++  grab_func = g_list_first (session_vnc->socket_grabs)->data;
++  if (!grab_func (session_vnc, &error))
++    {
++      g_warning ("Error when reading socket: %s", error->message);
++
++      grd_session_stop (GRD_SESSION (session_vnc));
++    }
++}
++
+ static gboolean
+ handle_socket_data (GSocket *socket,
+                     GIOCondition condition,
+@@ -651,16 +666,7 @@ handle_socket_data (GSocket *socket,
+     }
+   else if (condition & G_IO_IN)
+     {
+-      GrdVncSocketGrabFunc grab_func;
+-      g_autoptr (GError) error = NULL;
+-
+-      grab_func = g_list_first (session_vnc->socket_grabs)->data;
+-      if (!grab_func (session_vnc, &error))
+-        {
+-          g_warning ("Error when reading socket: %s", error->message);
+-
+-          grd_session_stop (session);
+-        }
++      grd_session_vnc_dispatch (session_vnc);
+     }
+   else
+     {
+diff --git a/src/grd-session-vnc.h b/src/grd-session-vnc.h
+index bba3d56..58f635c 100644
+--- a/src/grd-session-vnc.h
++++ b/src/grd-session-vnc.h
+@@ -72,6 +72,8 @@ void grd_session_vnc_grab_socket (GrdSessionVnc        *session_vnc,
+ void grd_session_vnc_ungrab_socket (GrdSessionVnc        *session_vnc,
+                                     GrdVncSocketGrabFunc  grab_func);
+ 
++void grd_session_vnc_dispatch (GrdSessionVnc *session_vnc);
++
+ GrdVncServer * grd_session_vnc_get_vnc_server (GrdSessionVnc *session_vnc);
+ 
+ #endif /* GRD_SESSION_VNC_H */
+-- 
+2.26.2
+
+
+From 966b2ddbd1c03c9e20dc66e5ea9a2dfb39ba4bfa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 27 Nov 2019 11:05:13 +0100
+Subject: [PATCH 4/6] vnc/tls: Add some logging
+
+Uses the log utility from libvncserver as it is related to the RFB
+protocol rather than the session itself.
+---
+ src/grd-vnc-tls.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/grd-vnc-tls.c b/src/grd-vnc-tls.c
+index ec4758e..ac6c35f 100644
+--- a/src/grd-vnc-tls.c
++++ b/src/grd-vnc-tls.c
+@@ -67,6 +67,7 @@ grd_vnc_tls_context_new (void)
+ 
+   tls_context = g_new0 (GrdVncTlsContext, 1);
+ 
++  rfbLog ("TLS: Initializing gnutls context\n");
+   gnutls_global_init ();
+ 
+   gnutls_anon_allocate_server_credentials (&tls_context->anon_credentials);
+@@ -127,6 +128,7 @@ perform_anon_tls_handshake (GrdVncTlsSession  *tls_session,
+   ret = gnutls_handshake (tls_session->tls_session);
+   if (ret != GNUTLS_E_SUCCESS && !gnutls_error_is_fatal (ret))
+     {
++      rfbLog ("TLS: More handshake pending\n");
+       tls_session->handshake_state = GRD_TLS_HANDSHAKE_STATE_DURING;
+       return TRUE;
+     }
+@@ -140,6 +142,8 @@ perform_anon_tls_handshake (GrdVncTlsSession  *tls_session,
+       return FALSE;
+     }
+ 
++  rfbLog ("TLS: Handshake finished");
++
+   tls_session->handshake_state = GRD_TLS_HANDSHAKE_STATE_FINISHED;
+   return TRUE;
+ }
+@@ -373,6 +377,7 @@ perform_handshake (GrdSessionVnc  *session_vnc,
+       break;
+     case GRD_TLS_HANDSHAKE_STATE_FINISHED:
+       grd_session_vnc_ungrab_socket (session_vnc, tls_handshake_grab_func);
++      rfbLog ("TLS: Sending post-channel security security list\n");
+       rfbSendSecurityTypeList (grd_session_vnc_get_rfb_client (session_vnc),
+                                RFB_SECURITY_TAG_CHANNEL);
+       break;
+@@ -387,6 +392,7 @@ tls_handshake_grab_func (GrdSessionVnc  *session_vnc,
+ {
+   g_autoptr (GError) handshake_error = NULL;
+ 
++  rfbLog ("TLS: Continuing handshake\n");
+   if (!perform_handshake (session_vnc, &handshake_error))
+     {
+       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+@@ -404,6 +410,8 @@ rfb_tls_security_handler (rfbClientPtr rfb_client)
+   GrdVncTlsSession *tls_session;
+   g_autoptr(GError) error = NULL;
+ 
++  rfbLog ("TLS: Setting up rfbClient for gnutls encrypted traffic\n");
++
+   tls_session = grd_vnc_tls_session_from_vnc_session (session_vnc);
+   if (!tls_session)
+     {
+@@ -424,6 +432,7 @@ rfb_tls_security_handler (rfbClientPtr rfb_client)
+       grd_session_vnc_grab_socket (session_vnc, tls_handshake_grab_func);
+     }
+ 
++  rfbLog ("TLS: Performing handshake\n");
+   if (!perform_handshake (session_vnc, &error))
+     {
+       g_warning ("TLS handshake failed: %s", error->message);
+-- 
+2.26.2
+
+
+From e01d27dc9911f4d7ecfd232c7e389f4dabfd87de Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 27 Nov 2019 11:07:40 +0100
+Subject: [PATCH 5/6] vnc/tls: Dispatch also when data is pending outside of
+ the socket
+
+gnutls may have data available in its buffers, and we have our own peek
+buffer temporarly storing data later to be processed. This would missed
+by the socket source, as it wouldn't get any notification about it from
+epoll(). Deal with this by adding a custom source that dispatches as
+long as there is data to read in those buffers.
+---
+ src/grd-session-vnc.h |  2 +
+ src/grd-vnc-tls.c     | 90 ++++++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 86 insertions(+), 6 deletions(-)
+
+diff --git a/src/grd-session-vnc.h b/src/grd-session-vnc.h
+index 58f635c..0d01ad3 100644
+--- a/src/grd-session-vnc.h
++++ b/src/grd-session-vnc.h
+@@ -72,6 +72,8 @@ void grd_session_vnc_grab_socket (GrdSessionVnc        *session_vnc,
+ void grd_session_vnc_ungrab_socket (GrdSessionVnc        *session_vnc,
+                                     GrdVncSocketGrabFunc  grab_func);
+ 
++gboolean grd_session_vnc_is_paused (GrdSessionVnc *session_vnc);
++
+ void grd_session_vnc_dispatch (GrdSessionVnc *session_vnc);
+ 
+ GrdVncServer * grd_session_vnc_get_vnc_server (GrdSessionVnc *session_vnc);
+diff --git a/src/grd-vnc-tls.c b/src/grd-vnc-tls.c
+index ac6c35f..312b6b9 100644
+--- a/src/grd-vnc-tls.c
++++ b/src/grd-vnc-tls.c
+@@ -41,6 +41,12 @@ typedef enum _GrdTlsHandshakeState
+   GRD_TLS_HANDSHAKE_STATE_FINISHED
+ } GrdTlsHandshakeState;
+ 
++typedef struct _PeekBufferSource
++{
++  GSource parent;
++  GrdSessionVnc *session_vnc;
++} PeekBufferSource;
++
+ typedef struct _GrdVncTlsSession
+ {
+   GrdVncTlsContext *tls_context;
+@@ -53,6 +59,8 @@ typedef struct _GrdVncTlsSession
+   char *peek_buffer;
+   int peek_buffer_size;
+   int peek_buffer_len;
++
++  GSource *peek_buffer_source;
+ } GrdVncTlsSession;
+ 
+ static gboolean
+@@ -299,13 +307,9 @@ grd_vnc_tls_peek_at_socket (rfbClientPtr  rfb_client,
+   return peekable_len;
+ }
+ 
+-static rfbBool
+-grd_vnc_tls_has_pending_on_socket (rfbClientPtr rfb_client)
++static gboolean
++grd_vnc_tls_session_has_pending_data (GrdVncTlsSession *tls_session)
+ {
+-  GrdSessionVnc *session_vnc = rfb_client->screen->screenData;
+-  GrdVncTlsSession *tls_session =
+-    grd_vnc_tls_session_from_vnc_session (session_vnc);
+-
+   if (tls_session->peek_buffer_len > 0)
+     return TRUE;
+ 
+@@ -315,6 +319,16 @@ grd_vnc_tls_has_pending_on_socket (rfbClientPtr rfb_client)
+   return FALSE;
+ }
+ 
++static rfbBool
++grd_vnc_tls_has_pending_on_socket (rfbClientPtr rfb_client)
++{
++  GrdSessionVnc *session_vnc = rfb_client->screen->screenData;
++  GrdVncTlsSession *tls_session =
++    grd_vnc_tls_session_from_vnc_session (session_vnc);
++
++  return grd_vnc_tls_session_has_pending_data (tls_session);
++}
++
+ static int
+ grd_vnc_tls_write_to_socket (rfbClientPtr  rfb_client,
+                              const char   *buf,
+@@ -403,6 +417,62 @@ tls_handshake_grab_func (GrdSessionVnc  *session_vnc,
+   return TRUE;
+ }
+ 
++static gboolean
++peek_buffer_source_prepare (GSource *source,
++                            int     *timeout)
++{
++  PeekBufferSource *psource = (PeekBufferSource *) source;
++  GrdSessionVnc *session_vnc = psource->session_vnc;
++  GrdVncTlsSession *tls_session =
++    grd_vnc_tls_session_from_vnc_session (session_vnc);
++
++  return grd_vnc_tls_session_has_pending_data (tls_session);
++}
++
++static gboolean
++peek_buffer_source_dispatch (GSource     *source,
++                             GSourceFunc  callback,
++                             gpointer     user_data)
++{
++  PeekBufferSource *psource = (PeekBufferSource *) source;
++  GrdSessionVnc *session_vnc = psource->session_vnc;
++
++  grd_session_vnc_dispatch (session_vnc);
++
++  return G_SOURCE_CONTINUE;
++}
++
++static GSourceFuncs peek_buffer_source_funcs = {
++  .prepare = peek_buffer_source_prepare,
++  .dispatch = peek_buffer_source_dispatch,
++};
++
++static void
++attach_peek_buffer_source (GrdSessionVnc *session_vnc)
++{
++  GrdVncTlsSession *tls_session;
++
++  tls_session = grd_vnc_tls_session_from_vnc_session (session_vnc);
++  tls_session->peek_buffer_source = g_source_new (&peek_buffer_source_funcs,
++                                                  sizeof (PeekBufferSource));
++  ((PeekBufferSource *) tls_session->peek_buffer_source)->session_vnc =
++    session_vnc;
++  g_source_set_priority (tls_session->peek_buffer_source,
++                         G_PRIORITY_DEFAULT + 1);
++
++  g_source_attach (tls_session->peek_buffer_source, NULL);
++}
++
++static void
++detach_peek_buffer_source (GrdSessionVnc *session_vnc)
++{
++  GrdVncTlsSession *tls_session;
++
++  tls_session = grd_vnc_tls_session_from_vnc_session (session_vnc);
++
++  g_clear_pointer (&tls_session->peek_buffer_source, g_source_destroy);
++}
++
+ static void
+ rfb_tls_security_handler (rfbClientPtr rfb_client)
+ {
+@@ -429,6 +499,14 @@ rfb_tls_security_handler (rfbClientPtr rfb_client)
+       rfb_client->hasPendingOnSocket = grd_vnc_tls_has_pending_on_socket;
+       rfb_client->writeToSocket = grd_vnc_tls_write_to_socket;
+ 
++      if (!grd_session_vnc_is_paused (session_vnc))
++        attach_peek_buffer_source (session_vnc);
++
++      g_signal_connect (session_vnc, "paused",
++                        G_CALLBACK (detach_peek_buffer_source), NULL);
++      g_signal_connect (session_vnc, "resumed",
++                        G_CALLBACK (attach_peek_buffer_source), NULL);
++
+       grd_session_vnc_grab_socket (session_vnc, tls_handshake_grab_func);
+     }
+ 
+-- 
+2.26.2
+
+
+From 682f3b4a8e985f00a00e761a086a15cb5e2b9b04 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 27 Nov 2019 16:48:00 +0100
+Subject: [PATCH 6/6] session-vnc: Set our own password handling function up
+ front
+
+libvncserver decides whether to register a auth security handler
+depending on whether the password data is set or not. When we use the
+prompt auth method, we don't want to ask for password, so set the
+password data to NULL.
+
+Also, to be a bit more in control of the password mechanism, always set
+the password function up front, instead of just when the client uses the
+password prompt.
+---
+ src/grd-session-vnc.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/src/grd-session-vnc.c b/src/grd-session-vnc.c
+index 29c94a1..ebe1540 100644
+--- a/src/grd-session-vnc.c
++++ b/src/grd-session-vnc.c
+@@ -91,11 +91,6 @@ grd_session_vnc_pause (GrdSessionVnc *session_vnc);
+ static gboolean
+ close_session_idle (gpointer user_data);
+ 
+-static rfbBool
+-check_rfb_password (rfbClientPtr  rfb_client,
+-                    const char   *response_encrypted,
+-                    int           len);
+-
+ static void
+ swap_uint8 (uint8_t *a,
+             uint8_t *b)
+@@ -310,7 +305,6 @@ handle_new_client (rfbClientPtr rfb_client)
+       grd_session_vnc_pause (session_vnc);
+       return RFB_CLIENT_ON_HOLD;
+     case GRD_VNC_AUTH_METHOD_PASSWORD:
+-      session_vnc->rfb_screen->passwordCheck = check_rfb_password;
+       /*
+        * authPasswdData needs to be non NULL in libvncserver to trigger
+        * password authentication.
+@@ -594,6 +588,8 @@ init_vnc_session (GrdSessionVnc *session_vnc)
+   rfb_screen->frameBuffer = g_malloc0 (screen_width * screen_height * 4);
+   memset (rfb_screen->frameBuffer, 0x1f, screen_width * screen_height * 4);
+ 
++  rfb_screen->passwordCheck = check_rfb_password;
++
+   rfbInitServer (rfb_screen);
+   rfbProcessEvents (rfb_screen, 0);
+ }
+-- 
+2.26.2
+
