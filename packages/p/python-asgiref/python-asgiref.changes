@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 14 04:31:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.3.1
+  * Updated StatelessServer to use ASGI v3 single-callable applications.
+  * sync_to_async now defaults to thread-sensitive mode being on
+  * async_to_sync now works inside of forked processes
+  * WsgiToAsgi now correctly clamps its response body when Content-Length
+    is set 
+
+-------------------------------------------------------------------
 Wed Jul  1 04:59:38 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.10:

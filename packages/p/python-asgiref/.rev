@@ -20,4 +20,17 @@
   * contextvars are now persisted through AsyncToSync</comment>
     <requestid>817963</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f69f540db85057989b2c4c942d29f98a</srcmd5>
+    <version>3.3.1</version>
+    <time>1610965633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.1
+  * Updated StatelessServer to use ASGI v3 single-callable applications.
+  * sync_to_async now defaults to thread-sensitive mode being on
+  * async_to_sync now works inside of forked processes
+  * WsgiToAsgi now correctly clamps its response body when Content-Length
+    is set</comment>
+    <requestid>863007</requestid>
+  </revision>
 </revisionlist>
