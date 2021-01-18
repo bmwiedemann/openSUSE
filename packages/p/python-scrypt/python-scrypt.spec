@@ -1,7 +1,7 @@
 #
 # spec file for package python-scrypt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,16 @@ Version:        0.8.17
 Release:        0
 Summary:        Bindings for scrypt
 License:        BSD-2-Clause
-URL:            https://bitbucket.org/mhallin/py-scrypt
+URL:            https://github.com/holgern/py-scrypt
 Source0:        https://files.pythonhosted.org/packages/source/s/scrypt/scrypt-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(openssl)
-# SECTION test requires
-BuildRequires:  %{python_module pytest}
-# /SECTION
 %python_subpackages
 
 %description
@@ -41,6 +39,8 @@ Bindings for the scrypt key derivation function library.
 
 %prep
 %setup -q -n scrypt-%{version}
+dos2unix -R README.rst scrypt/*.py
+sed -i '1{/^#!/ d}' scrypt/*.py
 
 %build
 %python_build
@@ -50,7 +50,7 @@ Bindings for the scrypt key derivation function library.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -mpytest
+%pyunittest_arch discover -s scrypt/tests -v
 
 %files %{python_files}
 %doc README.rst

@@ -43,4 +43,12 @@
   * Add additional test vector from RFC</comment>
     <requestid>852368</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9660fd66e48c4b6d35ef618d3a9e3d71</srcmd5>
+    <version>0.8.17</version>
+    <time>1610965787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863922</requestid>
+  </revision>
 </revisionlist>
