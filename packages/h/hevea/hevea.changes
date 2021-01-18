@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 17 20:11:12 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.35.
+  * Some optimisation in text output (replace ' '+ '\n' by '\n').
+  * Correct bug in text mode on bad combination of indentation and
+    underlining.
+
+-------------------------------------------------------------------
 Sun Mar 29 21:20:12 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2.34.
