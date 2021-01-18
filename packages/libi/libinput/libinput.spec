@@ -1,7 +1,7 @@
 #
 # spec file for package libinput
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,7 +115,7 @@ configuration options and configuration defaults.
 %package -n %pname-debug-gui
 Summary:        Graphical libinput debug tool
 Group:          Hardware/Other
-Requires:       libinput-tools = %version-%release
+Requires:       libinput-tools = %version
 
 %description -n %pname-debug-gui
 This tool allows graphical libinput debugging. It visualizes

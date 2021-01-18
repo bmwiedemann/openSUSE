@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 14 08:29:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Limit the dep libinput-debug-gui -> libinput-tools only to
+  %{version}, not %{version}-%{release}. As they are not built in
+  the same run, the rebuild counters are not guaranteed to match
+  forever.
+
+-------------------------------------------------------------------
 Fri Nov 27 02:12:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.16.4
-  * Fix the termination of the readlink result                                                                        
-  * udev: update rules to handle bind/unbind events                                                                   
+  * Fix the termination of the readlink result
+  * udev: update rules to handle bind/unbind events
 
 -------------------------------------------------------------------
 Tue Nov  3 10:15:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
