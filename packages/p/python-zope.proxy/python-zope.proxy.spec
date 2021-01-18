@@ -44,9 +44,7 @@ Requires:       python-zope.interface
 BuildRequires:  %{python_module zope.security}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
-%ifpython3
-Conflicts:      python3-zope-proxy < %{version}
-%endif
+Conflicts:      python-zope-proxy < %{version}
 %python_subpackages
 
 %description
@@ -59,10 +57,8 @@ etc.) for which the proxy is responsible.
 Summary:        Generic Transparent Proxies
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-%ifpython3
-Provides:       python3-zope-proxy = %{version}
-Obsoletes:      python3-zope-proxy < %{version}
-%endif
+Provides:       python-zope-proxy = %{version}
+Obsoletes:      python-zope-proxy < %{version}
 
 %description    devel
 This package contains the files needed for binding the %{name} C module.

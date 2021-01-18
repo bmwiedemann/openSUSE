@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 13 01:05:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Let the python-rpm-macros automatically figure out the correct
+  provides and obsoletes for the flavor
+
+-------------------------------------------------------------------
 Tue Mar 24 14:33:07 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.3.5
