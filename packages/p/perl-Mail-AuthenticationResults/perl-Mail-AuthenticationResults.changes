@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 13 03:07:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20210112
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+
+  2.20210112 2021-01-12 22:10:28+00:00 UTC
+    - Switch to a purely numeric version string
+
+-------------------------------------------------------------------
 Thu Oct 15 14:35:17 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Created
