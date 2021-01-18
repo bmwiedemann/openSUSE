@@ -1,7 +1,7 @@
 #
 # spec file for package wireshark
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ URL:            https://www.wireshark.org/
 Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
 Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.asc
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
+Patch10:        wireshark-0001-dumpcap-permission-denied.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glib2-devel >= 2.32
@@ -169,6 +170,7 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut 
 
 %setup -q
 sed -i 's/^Icon=wireshark.png$/Icon=wireshark/' wireshark*.desktop
+%patch10 -p1
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/'

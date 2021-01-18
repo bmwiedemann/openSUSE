@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 13 09:32:30 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- provide helpful error message if user doesn't have permissions to run dumpcap  (bsc#1180102)
+  add wireshark-0001-dumpcap-permission-denied.patch
+
+-------------------------------------------------------------------
 Sat Dec 19 04:24:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.4.2
