@@ -1,7 +1,7 @@
 #
 # spec file for package python-sgmllib3k
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,17 @@ Name:           python-sgmllib3k
 Version:        1.0.0
 Release:        0
 Summary:        Python 3 port of sgmllib
-License:        Python-2.0 and BSD-3-Clause
+License:        Python-2.0 AND BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/hsoft/sgmllib
 Source:         https://files.pythonhosted.org/packages/source/s/sgmllib3k/sgmllib3k-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/hsoft/sgmllib/master/LICENSE
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python2-devel
-BuildRequires:  python3-testsuite
-BuildRequires:  python3-tools
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# as a source for the tests!
+BuildRequires:  python2-devel
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,7 +59,7 @@ sed -i 's/test_read_chunks/_test_read_chunks/' test_sgmllib.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest test_sgmllib
 
 %files %{python_files}
 %doc README
