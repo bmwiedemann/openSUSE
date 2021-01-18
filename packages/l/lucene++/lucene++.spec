@@ -1,7 +1,7 @@
 #
 # spec file for package lucene++
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,20 @@
 
 
 Name:           lucene++
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 Summary:        A high-performance, full-featured text search engine written in C++
 License:        Apache-2.0 OR LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/luceneplusplus/LucenePlusPlus
-Source:         https://github.com/luceneplusplus/LucenePlusPlus/archive/rel_%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         0001-Fix-compilation-with-Boost-1.58.patch
-BuildRequires:  cmake >= 2.8.6
+Source:         https://github.com/luceneplusplus/LucenePlusPlus/archive/rel_%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-contrib-soname.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/161
+Patch0:         lucene++-3.0.8-fix-contrib-soname.patch
+# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-pc-libdir.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/162
+Patch1:         lucene++-3.0.8-fix-pc-libdir.patch
+# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-cmake-issues.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/163
+Patch2:         lucene++-3.0.8-fix-cmake-issues.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
@@ -56,16 +61,28 @@ Requires:       liblucene++0 = %{version}
 Development files for lucene++, a high-performance, full-featured text search engine written in C++
 
 %prep
-%setup -q -n LucenePlusPlus-rel_%{version}
-%patch1 -p1
+%autosetup -p1 -n LucenePlusPlus-rel_%{version}
 
 %build
 %cmake
-%make_build lucene++
-%make_build lucene++-contrib
+%make_build lucene++ lucene++-contrib
 
 %install
 %cmake_install
+# These gtest files are not meant to be installed
+rm -r %{buildroot}%{_includedir}/g{mock,test}
+rm -r %{buildroot}%{_libdir}/cmake/GTest
+rm %{buildroot}%{_libdir}/libg{mock,test}*.so
+rm %{buildroot}%{_libdir}/pkgconfig/g{mock,test}*.pc
+
+%check
+# Exclude known failing test on ix86 (https://github.com/luceneplusplus/LucenePlusPlus/issues/98)
+%ifarch %{ix86}
+%define test_filter -Boolean2Test.testRandomQueries
+%endif
+# Tweak path to allow lucene++-tester to find liblucene++ and libgtest
+export LD_LIBRARY_PATH="$PWD/build/src/core:$PWD/build/src/contrib:$PWD/build/lib"
+build/src/test/lucene++-tester %{?test_filter:--gtest_filter=%{test_filter}}
 
 %post -n liblucene++0 -p /sbin/ldconfig
 %postun -n liblucene++0 -p /sbin/ldconfig
@@ -79,6 +96,8 @@ Development files for lucene++, a high-performance, full-featured text search en
 %files devel
 %license COPYING APACHE.license GPL.license LGPL.license
 %{_includedir}/lucene++/
+%{_libdir}/cmake/liblucene++/
+%{_libdir}/cmake/liblucene++-contrib/
 %{_libdir}/liblucene++.so
 %{_libdir}/liblucene++-contrib.so
 %{_libdir}/pkgconfig/liblucene++.pc

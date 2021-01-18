@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 16 16:43:36 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 3.0.8:
+  * No changelog provided.
+- Remove 0001-Fix-compilation-with-Boost-1.58.patch: Merged
+  upstream.
+- Add some patches from upstream, mainly build system fixes:
+  * lucene++-3.0.8-fix-contrib-soname.patch
+  * lucene++-3.0.8-fix-pc-libdir.patch
+  * lucene++-3.0.8-fix-cmake-issues.patch
+- Require CMake >= 3.5 to build.
+- Run test suite on build.
+- Add new cmake files to list of installed files.
+
+-------------------------------------------------------------------
 Sat Dec 26 18:09:24 UTC 2020 - antoine.belvire@opensuse.org
 
 - Add some build dependencies (used to be implicitly pulled):
