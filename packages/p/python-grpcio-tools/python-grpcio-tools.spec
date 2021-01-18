@@ -1,7 +1,7 @@
 #
 # spec file for package python-grpcio-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 
 Name:           python-grpcio-tools
-Version:        1.33.2
+Version:        1.34.1
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
@@ -37,6 +37,7 @@ Requires:       python-protobuf >= 3.5.0.post1
 # SECTION test requirements
 BuildRequires:  %{python_module grpcio >= %{version}}
 BuildRequires:  %{python_module protobuf >= 3.5.0.post1}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -57,7 +58,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
