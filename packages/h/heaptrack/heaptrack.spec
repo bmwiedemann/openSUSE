@@ -1,7 +1,7 @@
 #
 # spec file for package heaptrack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,7 @@ A Qt5/KF5 based GUI for Heaptrack.
 sed -i"" '/add_subdirectory(tests)/d' CMakeLists.txt
 
 %build
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
 extra_opts="-DLIB_SUFFIX=64"
 %endif
 

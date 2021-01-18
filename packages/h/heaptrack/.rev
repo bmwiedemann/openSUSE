@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>832527</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9c60513ab8d127606d2eb29f566367b1</srcmd5>
+    <version>1.2.0</version>
+    <time>1610965763</time>
+    <user>dimstar_suse</user>
+    <comment>- Add quotes to text comparison to fix build with rpm 4.16.</comment>
+    <requestid>863815</requestid>
+  </revision>
 </revisionlist>
