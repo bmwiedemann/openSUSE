@@ -1,7 +1,7 @@
 #
 # spec file for package pdftk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Franz Sirl (fsirl)
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pdftk
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        A handy tool for manipulating PDF
 License:        GPL-2.0-or-later
