@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 11 08:50:11 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1180079-amd-sev-es-mitigation.patch to mitigate the
+  potential AMD SEV-ES security issues (bsc#1180079)
+- Add the json descriptor for xen-hvm (bsc#1180050)
+
+-------------------------------------------------------------------
 Fri Nov 27 09:24:04 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to edk2-stable202011

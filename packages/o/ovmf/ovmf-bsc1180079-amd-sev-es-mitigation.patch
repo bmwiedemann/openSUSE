@@ -1,0 +1,3863 @@
+From 9e64e608c53fd2952f684e804d3bcb20c727a87d Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:11 -0600
+Subject: [PATCH 01/15] Ovmf/ResetVector: Simplify and consolidate the SEV
+ features checks
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+Simplify and consolidate the SEV and SEV-ES checks into a single routine.
+This new routine will use CPUID to check for the appropriate CPUID leaves
+and the required values, as well as read the non-interceptable SEV status
+MSR (0xc0010131) to check SEV and SEV-ES enablement.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <43a660624c32b5f6c2610bf42ee39101c21aff68.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit a91b700e385e7484ab7286b3ba7ea2efbd59480e)
+---
+ OvmfPkg/ResetVector/Ia32/PageTables64.asm | 75 ++++++++++++++---------
+ 1 file changed, 45 insertions(+), 30 deletions(-)
+
+diff --git a/OvmfPkg/ResetVector/Ia32/PageTables64.asm b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+index 7c72128a84d6..4032719c3075 100644
+--- a/OvmfPkg/ResetVector/Ia32/PageTables64.asm
++++ b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+@@ -3,6 +3,7 @@
+ ; Sets the CR3 register for 64-bit paging
+ ;
+ ; Copyright (c) 2008 - 2013, Intel Corporation. All rights reserved.<BR>
++; Copyright (c) 2017 - 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
+ ; SPDX-License-Identifier: BSD-2-Clause-Patent
+ ;
+ ;------------------------------------------------------------------------------
+@@ -62,18 +63,22 @@ BITS    32
+ %define CPUID_INSN_LEN              2
+ 
+ 
+-; Check if Secure Encrypted Virtualization (SEV) feature is enabled
++; Check if Secure Encrypted Virtualization (SEV) features are enabled.
++;
++; Register usage is tight in this routine, so multiple calls for the
++; same CPUID and MSR data are performed to keep things simple.
+ ;
+ ; Modified:  EAX, EBX, ECX, EDX, ESP
+ ;
+ ; If SEV is enabled then EAX will be at least 32.
+ ; If SEV is disabled then EAX will be zero.
+ ;
+-CheckSevFeature:
++CheckSevFeatures:
+     ; Set the first byte of the workarea to zero to communicate to the SEC
+     ; phase that SEV-ES is not enabled. If SEV-ES is enabled, the CPUID
+     ; instruction will trigger a #VC exception where the first byte of the
+-    ; workarea will be set to one.
++    ; workarea will be set to one or, if CPUID is not being intercepted,
++    ; the MSR check below will set the first byte of the workarea to one.
+     mov     byte[SEV_ES_WORK_AREA], 0
+ 
+     ;
+@@ -97,21 +102,41 @@ CheckSevFeature:
+     cmp       eax, 0x8000001f
+     jl        NoSev
+ 
+-    ; Check for memory encryption feature:
++    ; Check for SEV memory encryption feature:
+     ; CPUID  Fn8000_001F[EAX] - Bit 1
+     ;   CPUID raises a #VC exception if running as an SEV-ES guest
+-    mov       eax,  0x8000001f
++    mov       eax, 0x8000001f
+     cpuid
+     bt        eax, 1
+     jnc       NoSev
+ 
+-    ; Check if memory encryption is enabled
++    ; Check if SEV memory encryption is enabled
+     ;  MSR_0xC0010131 - Bit 0 (SEV enabled)
+     mov       ecx, 0xc0010131
+     rdmsr
+     bt        eax, 0
+     jnc       NoSev
+ 
++    ; Check for SEV-ES memory encryption feature:
++    ; CPUID  Fn8000_001F[EAX] - Bit 3
++    ;   CPUID raises a #VC exception if running as an SEV-ES guest
++    mov       eax, 0x8000001f
++    cpuid
++    bt        eax, 3
++    jnc       GetSevEncBit
++
++    ; Check if SEV-ES is enabled
++    ;  MSR_0xC0010131 - Bit 1 (SEV-ES enabled)
++    mov       ecx, 0xc0010131
++    rdmsr
++    bt        eax, 1
++    jnc       GetSevEncBit
++
++    ; Set the first byte of the workarea to one to communicate to the SEC
++    ; phase that SEV-ES is enabled.
++    mov       byte[SEV_ES_WORK_AREA], 1
++
++GetSevEncBit:
+     ; Get pte bit position to enable memory encryption
+     ; CPUID Fn8000_001F[EBX] - Bits 5:0
+     ;
+@@ -132,45 +157,35 @@ SevExit:
+     pop       eax
+     mov       esp, 0
+ 
+-    OneTimeCallRet CheckSevFeature
++    OneTimeCallRet CheckSevFeatures
+ 
+ ; Check if Secure Encrypted Virtualization - Encrypted State (SEV-ES) feature
+ ; is enabled.
+ ;
+-; Modified:  EAX, EBX, ECX
++; Modified:  EAX
+ ;
+ ; If SEV-ES is enabled then EAX will be non-zero.
+ ; If SEV-ES is disabled then EAX will be zero.
+ ;
+-CheckSevEsFeature:
++IsSevEsEnabled:
+     xor       eax, eax
+ 
+-    ; SEV-ES can't be enabled if SEV isn't, so first check the encryption
+-    ; mask.
+-    test      edx, edx
+-    jz        NoSevEs
++    ; During CheckSevFeatures, the SEV_ES_WORK_AREA was set to 1 if
++    ; SEV-ES is enabled.
++    cmp       byte[SEV_ES_WORK_AREA], 1
++    jne       SevEsDisabled
+ 
+-    ; Save current value of encryption mask
+-    mov       ebx, edx
++    mov       eax, 1
+ 
+-    ; Check if SEV-ES is enabled
+-    ;  MSR_0xC0010131 - Bit 1 (SEV-ES enabled)
+-    mov       ecx, 0xc0010131
+-    rdmsr
+-    and       eax, 2
+-
+-    ; Restore encryption mask
+-    mov       edx, ebx
+-
+-NoSevEs:
+-    OneTimeCallRet CheckSevEsFeature
++SevEsDisabled:
++    OneTimeCallRet IsSevEsEnabled
+ 
+ ;
+ ; Modified:  EAX, EBX, ECX, EDX
+ ;
+ SetCr3ForPageTables64:
+ 
+-    OneTimeCall   CheckSevFeature
++    OneTimeCall   CheckSevFeatures
+     xor     edx, edx
+     test    eax, eax
+     jz      SevNotActive
+@@ -229,7 +244,7 @@ pageTableEntriesLoop:
+     mov     [(ecx * 8 + PT_ADDR (0x2000 - 8)) + 4], edx
+     loop    pageTableEntriesLoop
+ 
+-    OneTimeCall   CheckSevEsFeature
++    OneTimeCall   IsSevEsEnabled
+     test    eax, eax
+     jz      SetCr3
+ 
+@@ -336,8 +351,8 @@ SevEsIdtVmmComm:
+     ; If we're here, then we are an SEV-ES guest and this
+     ; was triggered by a CPUID instruction
+     ;
+-    ; Set the first byte of the workarea to one to communicate to the SEC
+-    ; phase that SEV-ES is enabled.
++    ; Set the first byte of the workarea to one to communicate that
++    ; a #VC was taken.
+     mov     byte[SEV_ES_WORK_AREA], 1
+ 
+     pop     ecx                     ; Error code
+-- 
+2.29.2
+
+
+From e5bc6a23f6de8d7612d448ce7036d038f163d5e4 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:12 -0600
+Subject: [PATCH 02/15] OvmfPkg/Sec: Move SEV-ES SEC workarea definition to
+ common header file
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+In order to allow for the SEV-ES workarea to be used for other purposes
+and by other files, move the definition into the BaseMemEncryptSevLib
+header file, MemEncryptSevLib.h.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <07d66f3384bd54da97d540e89b9f3473a6d17231.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit b78de543d8a2caad5b981f4d6eebc38a365dc387)
+---
+ OvmfPkg/Include/Library/MemEncryptSevLib.h | 16 +++++++++++++++-
+ OvmfPkg/Sec/SecMain.c                      |  6 ++----
+ 2 files changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/OvmfPkg/Include/Library/MemEncryptSevLib.h b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+index fc70b0114354..a6d82dac7fac 100644
+--- a/OvmfPkg/Include/Library/MemEncryptSevLib.h
++++ b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+@@ -2,7 +2,7 @@
+ 
+   Define Secure Encrypted Virtualization (SEV) base library helper function
+ 
+-  Copyright (c) 2017, AMD Incorporated. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -13,6 +13,20 @@
+ 
+ #include <Base.h>
+ 
++//
++// Internal structure for holding SEV-ES information needed during SEC phase
++// and valid only during SEC phase and early PEI during platform
++// initialization.
++//
++// This structure is also used by assembler files:
++//   OvmfPkg/ResetVector/ResetVector.nasmb
++//   OvmfPkg/ResetVector/Ia32/PageTables64.asm
++// any changes must stay in sync with its usage.
++//
++typedef struct _SEC_SEV_ES_WORK_AREA {
++  UINT8    SevEsEnabled;
++} SEC_SEV_ES_WORK_AREA;
++
+ /**
+   Returns a boolean to indicate whether SEV-ES is enabled.
+ 
+diff --git a/OvmfPkg/Sec/SecMain.c b/OvmfPkg/Sec/SecMain.c
+index 63aca7020727..9db67e17b2aa 100644
+--- a/OvmfPkg/Sec/SecMain.c
++++ b/OvmfPkg/Sec/SecMain.c
+@@ -3,6 +3,7 @@
+ 
+   Copyright (c) 2008 - 2015, Intel Corporation. All rights reserved.<BR>
+   (C) Copyright 2016 Hewlett Packard Enterprise Development LP<BR>
++  Copyright (c) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -25,6 +26,7 @@
+ #include <Library/ExtractGuidedSectionLib.h>
+ #include <Library/LocalApicLib.h>
+ #include <Library/CpuExceptionHandlerLib.h>
++#include <Library/MemEncryptSevLib.h>
+ #include <Register/Amd/Ghcb.h>
+ #include <Register/Amd/Msr.h>
+ 
+@@ -37,10 +39,6 @@ typedef struct _SEC_IDT_TABLE {
+   IA32_IDT_GATE_DESCRIPTOR  IdtTable[SEC_IDT_ENTRY_COUNT];
+ } SEC_IDT_TABLE;
+ 
+-typedef struct _SEC_SEV_ES_WORK_AREA {
+-  UINT8  SevEsEnabled;
+-} SEC_SEV_ES_WORK_AREA;
+-
+ VOID
+ EFIAPI
+ SecStartupPhase2 (
+-- 
+2.29.2
+
+
+From 1c15574b199af66ce3d73f3a172ee0db3105c957 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:13 -0600
+Subject: [PATCH 03/15] OvmfPkg/ResetVector: Validate the encryption bit
+ position for SEV/SEV-ES
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+To help mitigate against ROP attacks, add some checks to validate the
+encryption bit position that is reported by the hypervisor.
+
+The first check is to ensure that the hypervisor reports a bit position
+above bit 31. After extracting the encryption bit position from the CPUID
+information, the code checks that the value is above 31. If the value is
+not above 31, then the bit position is not valid, so the code enters a
+HLT loop.
+
+The second check is specific to SEV-ES guests and is a two step process.
+The first step will obtain random data using RDRAND and store that data to
+memory before paging is enabled. When paging is not enabled, all writes to
+memory are encrypted. The random data is maintained in registers, which
+are protected. The second step is that, after enabling paging, the random
+data in memory is compared to the register contents. If they don't match,
+then the reported bit position is not valid, so the code enters a HLT
+loop.
+
+The third check is after switching to 64-bit long mode. Use the fact that
+instruction fetches are automatically decrypted, while a memory fetch is
+decrypted only if the encryption bit is set in the page table. By
+comparing the bytes of an instruction fetch against a memory read of that
+same instruction, the encryption bit position can be validated. If the
+compare is not equal, then SEV/SEV-ES is active but the reported bit
+position is not valid, so the code enters a HLT loop.
+
+To keep the changes local to the OvmfPkg, an OvmfPkg version of the
+Flat32ToFlat64.asm file has been created based on the UefiCpuPkg file
+UefiCpuPkg/ResetVector/Vtf0/Ia32/Flat32ToFlat64.asm.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <cb9c5ab23ab02096cd964ed64115046cc706ce67.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 7cb96c47a94ea310b151c36380ea8266d21aa12a)
+---
+ OvmfPkg/Include/Library/MemEncryptSevLib.h  |   4 +
+ OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm | 118 ++++++++++++++++++++
+ OvmfPkg/ResetVector/Ia32/PageTables64.asm   |  13 ++-
+ OvmfPkg/ResetVector/ResetVector.nasmb       |   4 +-
+ 4 files changed, 136 insertions(+), 3 deletions(-)
+ create mode 100644 OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm
+
+diff --git a/OvmfPkg/Include/Library/MemEncryptSevLib.h b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+index a6d82dac7fac..dc09c61e58bb 100644
+--- a/OvmfPkg/Include/Library/MemEncryptSevLib.h
++++ b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+@@ -21,10 +21,14 @@
+ // This structure is also used by assembler files:
+ //   OvmfPkg/ResetVector/ResetVector.nasmb
+ //   OvmfPkg/ResetVector/Ia32/PageTables64.asm
++//   OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm
+ // any changes must stay in sync with its usage.
+ //
+ typedef struct _SEC_SEV_ES_WORK_AREA {
+   UINT8    SevEsEnabled;
++  UINT8    Reserved1[7];
++
++  UINT64   RandomData;
+ } SEC_SEV_ES_WORK_AREA;
+ 
+ /**
+diff --git a/OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm b/OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm
+new file mode 100644
+index 000000000000..c6d0d898bcd1
+--- /dev/null
++++ b/OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm
+@@ -0,0 +1,118 @@
++;------------------------------------------------------------------------------
++; @file
++; Transition from 32 bit flat protected mode into 64 bit flat protected mode
++;
++; Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
++; Copyright (c) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
++; SPDX-License-Identifier: BSD-2-Clause-Patent
++;
++;------------------------------------------------------------------------------
++
++BITS    32
++
++;
++; Modified:  EAX, ECX, EDX
++;
++Transition32FlatTo64Flat:
++
++    OneTimeCall SetCr3ForPageTables64
++
++    mov     eax, cr4
++    bts     eax, 5                      ; enable PAE
++    mov     cr4, eax
++
++    mov     ecx, 0xc0000080
++    rdmsr
++    bts     eax, 8                      ; set LME
++    wrmsr
++
++    ;
++    ; SEV-ES mitigation check support
++    ;
++    xor     ebx, ebx
++
++    cmp     byte[SEV_ES_WORK_AREA], 0
++    jz      EnablePaging
++
++    ;
++    ; SEV-ES is active, perform a quick sanity check against the reported
++    ; encryption bit position. This is to help mitigate against attacks where
++    ; the hypervisor reports an incorrect encryption bit position.
++    ;
++    ; This is the first step in a two step process. Before paging is enabled
++    ; writes to memory are encrypted. Using the RDRAND instruction (available
++    ; on all SEV capable processors), write 64-bits of random data to the
++    ; SEV_ES_WORK_AREA and maintain the random data in registers (register
++    ; state is protected under SEV-ES). This will be used in the second step.
++    ;
++RdRand1:
++    rdrand  ecx
++    jnc     RdRand1
++    mov     dword[SEV_ES_WORK_AREA_RDRAND], ecx
++RdRand2:
++    rdrand  edx
++    jnc     RdRand2
++    mov     dword[SEV_ES_WORK_AREA_RDRAND + 4], edx
++
++    ;
++    ; Use EBX instead of the SEV_ES_WORK_AREA memory to determine whether to
++    ; perform the second step.
++    ;
++    mov     ebx, 1
++
++EnablePaging:
++    mov     eax, cr0
++    bts     eax, 31                     ; set PG
++    mov     cr0, eax                    ; enable paging
++
++    jmp     LINEAR_CODE64_SEL:ADDR_OF(jumpTo64BitAndLandHere)
++BITS    64
++jumpTo64BitAndLandHere:
++
++    ;
++    ; Check if the second step of the SEV-ES mitigation is to be performed.
++    ;
++    test    ebx, ebx
++    jz      InsnCompare
++
++    ;
++    ; SEV-ES is active, perform the second step of the encryption bit postion
++    ; mitigation check. The ECX and EDX register contain data from RDRAND that
++    ; was stored to memory in encrypted form. If the encryption bit position is
++    ; valid, the contents of ECX and EDX will match the memory location.
++    ;
++    cmp     dword[SEV_ES_WORK_AREA_RDRAND], ecx
++    jne     SevEncBitHlt
++    cmp     dword[SEV_ES_WORK_AREA_RDRAND + 4], edx
++    jne     SevEncBitHlt
++
++    ;
++    ; If SEV or SEV-ES is active, perform a quick sanity check against
++    ; the reported encryption bit position. This is to help mitigate
++    ; against attacks where the hypervisor reports an incorrect encryption
++    ; bit position. If SEV is not active, this check will always succeed.
++    ;
++    ; The cmp instruction compares the first four bytes of the cmp instruction
++    ; itself (which will be read decrypted if SEV or SEV-ES is active and the
++    ; encryption bit position is valid) against the immediate within the
++    ; instruction (an instruction fetch is always decrypted correctly by
++    ; hardware) based on RIP relative addressing.
++    ;
++InsnCompare:
++    cmp     dword[rel InsnCompare], 0xFFF63D81
++    je      GoodCompare
++
++    ;
++    ; The hypervisor provided an incorrect encryption bit position, do not
++    ; proceed.
++    ;
++SevEncBitHlt:
++    cli
++    hlt
++    jmp     SevEncBitHlt
++
++GoodCompare:
++    debugShowPostCode POSTCODE_64BIT_MODE
++
++    OneTimeCallRet Transition32FlatTo64Flat
++
+diff --git a/OvmfPkg/ResetVector/Ia32/PageTables64.asm b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+index 4032719c3075..ccc95ad4715d 100644
+--- a/OvmfPkg/ResetVector/Ia32/PageTables64.asm
++++ b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+@@ -140,9 +140,18 @@ GetSevEncBit:
+     ; Get pte bit position to enable memory encryption
+     ; CPUID Fn8000_001F[EBX] - Bits 5:0
+     ;
++    and       ebx, 0x3f
+     mov       eax, ebx
+-    and       eax, 0x3f
+-    jmp       SevExit
++
++    ; The encryption bit position is always above 31
++    sub       ebx, 32
++    jns       SevExit
++
++    ; Encryption bit was reported as 31 or below, enter a HLT loop
++SevEncBitLowHlt:
++    cli
++    hlt
++    jmp       SevEncBitLowHlt
+ 
+ NoSev:
+     xor       eax, eax
+diff --git a/OvmfPkg/ResetVector/ResetVector.nasmb b/OvmfPkg/ResetVector/ResetVector.nasmb
+index 4913b379a993..8895c5230da4 100644
+--- a/OvmfPkg/ResetVector/ResetVector.nasmb
++++ b/OvmfPkg/ResetVector/ResetVector.nasmb
+@@ -3,6 +3,7 @@
+ ; This file includes all other code files to assemble the reset vector code
+ ;
+ ; Copyright (c) 2008 - 2013, Intel Corporation. All rights reserved.<BR>
++; Copyright (c) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
+ ; SPDX-License-Identifier: BSD-2-Clause-Patent
+ ;
+ ;------------------------------------------------------------------------------
+@@ -67,13 +68,14 @@
+   %endif
+ 
+   %define PT_ADDR(Offset) (FixedPcdGet32 (PcdOvmfSecPageTablesBase) + (Offset))
+-%include "Ia32/Flat32ToFlat64.asm"
+ 
+   %define GHCB_PT_ADDR (FixedPcdGet32 (PcdOvmfSecGhcbPageTableBase))
+   %define GHCB_BASE (FixedPcdGet32 (PcdOvmfSecGhcbBase))
+   %define GHCB_SIZE (FixedPcdGet32 (PcdOvmfSecGhcbSize))
+   %define SEV_ES_WORK_AREA (FixedPcdGet32 (PcdSevEsWorkAreaBase))
++  %define SEV_ES_WORK_AREA_RDRAND (FixedPcdGet32 (PcdSevEsWorkAreaBase) + 8)
+   %define SEV_ES_VC_TOP_OF_STACK (FixedPcdGet32 (PcdOvmfSecPeiTempRamBase) + FixedPcdGet32 (PcdOvmfSecPeiTempRamSize))
++%include "Ia32/Flat32ToFlat64.asm"
+ %include "Ia32/PageTables64.asm"
+ %endif
+ 
+-- 
+2.29.2
+
+
+From 484b20f5e7c99911218d217121ce4481c1bd967e Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:14 -0600
+Subject: [PATCH 04/15] OvmfPkg/ResetVector: Perform a simple SEV-ES sanity
+ check
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+If a hypervisor incorrectly reports through CPUID that SEV-ES is not
+active, ensure that a #VC exception was not taken. If it is found that
+a #VC was taken, then the code enters a HLT loop.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <afa2030b95b852313b13982df82d472187e59b92.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit bd0c1c8e225b1274fc7e3f154811af40619e3f04)
+---
+ OvmfPkg/ResetVector/Ia32/PageTables64.asm | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/OvmfPkg/ResetVector/Ia32/PageTables64.asm b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+index ccc95ad4715d..a1771dfdec23 100644
+--- a/OvmfPkg/ResetVector/Ia32/PageTables64.asm
++++ b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+@@ -154,6 +154,22 @@ SevEncBitLowHlt:
+     jmp       SevEncBitLowHlt
+ 
+ NoSev:
++    ;
++    ; Perform an SEV-ES sanity check by seeing if a #VC exception occurred.
++    ;
++    cmp       byte[SEV_ES_WORK_AREA], 0
++    jz        NoSevPass
++
++    ;
++    ; A #VC was received, yet CPUID indicates no SEV-ES support, something
++    ; isn't right.
++    ;
++NoSevEsVcHlt:
++    cli
++    hlt
++    jmp       NoSevEsVcHlt
++
++NoSevPass:
+     xor       eax, eax
+ 
+ SevExit:
+-- 
+2.29.2
+
+
+From deb860cac8b42ec7cbed4d2b3db5e3094c308da5 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:15 -0600
+Subject: [PATCH 05/15] OvmfPkg/ResetVector: Save the encryption mask at boot
+ time
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+The early assembler code performs validation for some of the SEV-related
+information, specifically the encryption bit position. To avoid having to
+re-validate the encryption bit position as the system proceeds through its
+boot phases, save the validated encryption bit position in the SEV-ES work
+area for use by later phases.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <2609724859cf21f0c6d45bc323e94465dca4e621.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 3b32be7e7192654812eb35bd89255f2916b1f02a)
+---
+ OvmfPkg/Include/Library/MemEncryptSevLib.h |  2 ++
+ OvmfPkg/ResetVector/Ia32/PageTables64.asm  | 10 +++++++++-
+ OvmfPkg/ResetVector/ResetVector.nasmb      |  1 +
+ 3 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/OvmfPkg/Include/Library/MemEncryptSevLib.h b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+index dc09c61e58bb..a2c70aa550fe 100644
+--- a/OvmfPkg/Include/Library/MemEncryptSevLib.h
++++ b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+@@ -29,6 +29,8 @@ typedef struct _SEC_SEV_ES_WORK_AREA {
+   UINT8    Reserved1[7];
+ 
+   UINT64   RandomData;
++
++  UINT64   EncryptionMask;
+ } SEC_SEV_ES_WORK_AREA;
+ 
+ /**
+diff --git a/OvmfPkg/ResetVector/Ia32/PageTables64.asm b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+index a1771dfdec23..5fae8986d9da 100644
+--- a/OvmfPkg/ResetVector/Ia32/PageTables64.asm
++++ b/OvmfPkg/ResetVector/Ia32/PageTables64.asm
+@@ -145,7 +145,7 @@ GetSevEncBit:
+ 
+     ; The encryption bit position is always above 31
+     sub       ebx, 32
+-    jns       SevExit
++    jns       SevSaveMask
+ 
+     ; Encryption bit was reported as 31 or below, enter a HLT loop
+ SevEncBitLowHlt:
+@@ -153,6 +153,14 @@ SevEncBitLowHlt:
+     hlt
+     jmp       SevEncBitLowHlt
+ 
++SevSaveMask:
++    xor       edx, edx
++    bts       edx, ebx
++
++    mov       dword[SEV_ES_WORK_AREA_ENC_MASK], 0
++    mov       dword[SEV_ES_WORK_AREA_ENC_MASK + 4], edx
++    jmp       SevExit
++
+ NoSev:
+     ;
+     ; Perform an SEV-ES sanity check by seeing if a #VC exception occurred.
+diff --git a/OvmfPkg/ResetVector/ResetVector.nasmb b/OvmfPkg/ResetVector/ResetVector.nasmb
+index 8895c5230da4..ea02d06edb65 100644
+--- a/OvmfPkg/ResetVector/ResetVector.nasmb
++++ b/OvmfPkg/ResetVector/ResetVector.nasmb
+@@ -74,6 +74,7 @@
+   %define GHCB_SIZE (FixedPcdGet32 (PcdOvmfSecGhcbSize))
+   %define SEV_ES_WORK_AREA (FixedPcdGet32 (PcdSevEsWorkAreaBase))
+   %define SEV_ES_WORK_AREA_RDRAND (FixedPcdGet32 (PcdSevEsWorkAreaBase) + 8)
++  %define SEV_ES_WORK_AREA_ENC_MASK (FixedPcdGet32 (PcdSevEsWorkAreaBase) + 16)
+   %define SEV_ES_VC_TOP_OF_STACK (FixedPcdGet32 (PcdOvmfSecPeiTempRamBase) + FixedPcdGet32 (PcdOvmfSecPeiTempRamSize))
+ %include "Ia32/Flat32ToFlat64.asm"
+ %include "Ia32/PageTables64.asm"
+-- 
+2.29.2
+
+
+From 576fe3f6f0af64115155b64c5d030e0cdfc64c04 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:16 -0600
+Subject: [PATCH 06/15] OvmfPkg/MemEncryptSevLib: Add an interface to retrieve
+ the encryption mask
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+To ensure that we always use a validated encryption mask for an SEV-ES
+guest, create a new interface in the MemEncryptSevLib library to return
+the encryption mask. This can be used in place of the multiple locations
+where CPUID is used to retrieve the value (which would require validation
+again) and allows the validated mask to be returned.
+
+The PEI phase will use the value from the SEV-ES work area. Since the
+SEV-ES work area isn't valid in the DXE phase, the DXE phase will use the
+PcdPteMemoryEncryptionAddressOrMask PCD which is set during PEI.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Rebecca Cran <rebecca@bsdio.com>
+Cc: Peter Grehan <grehan@freebsd.org>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Cc: Julien Grall <julien@xen.org>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <e12044dc01b21e6fc2e9535760ddf3a38a142a71.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit b97dc4b92ba1cc9f351854aed1c35c636d2d3992)
+
+NOTE:
+Skip OvmfPkg/AmdSev/AmdSevX64.dsc
+---
+ OvmfPkg/Bhyve/BhyveX64.dsc                    |   4 +-
+ OvmfPkg/Include/Library/MemEncryptSevLib.h    |  12 ++
+ ...ryptSevLib.inf => DxeMemEncryptSevLib.inf} |  15 +-
+ .../DxeMemEncryptSevLibInternal.c             | 145 ++++++++++++++++
+ .../MemEncryptSevLibInternal.c                |  94 +----------
+ ...ryptSevLib.inf => PeiMemEncryptSevLib.inf} |  17 +-
+ .../PeiMemEncryptSevLibInternal.c             | 159 ++++++++++++++++++
+ OvmfPkg/OvmfPkgIa32.dsc                       |   4 +-
+ OvmfPkg/OvmfPkgIa32X64.dsc                    |   4 +-
+ OvmfPkg/OvmfPkgX64.dsc                        |   4 +-
+ OvmfPkg/OvmfXen.dsc                           |   3 +-
+ 11 files changed, 352 insertions(+), 109 deletions(-)
+ copy OvmfPkg/Library/BaseMemEncryptSevLib/{BaseMemEncryptSevLib.inf => DxeMemEncryptSevLib.inf} (68%)
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c
+ rename OvmfPkg/Library/BaseMemEncryptSevLib/{BaseMemEncryptSevLib.inf => PeiMemEncryptSevLib.inf} (67%)
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c
+
+diff --git a/OvmfPkg/Bhyve/BhyveX64.dsc b/OvmfPkg/Bhyve/BhyveX64.dsc
+index 0d7b03ced6ea..58484a7b013b 100644
+--- a/OvmfPkg/Bhyve/BhyveX64.dsc
++++ b/OvmfPkg/Bhyve/BhyveX64.dsc
+@@ -163,7 +163,7 @@ [LibraryClasses]
+   QemuFwCfgS3Lib|OvmfPkg/Library/QemuFwCfgS3Lib/BaseQemuFwCfgS3LibNull.inf
+   BhyveFwCtlLib|OvmfPkg/Library/BhyveFwCtlLib/BhyveFwCtlLib.inf
+   VirtioLib|OvmfPkg/Library/VirtioLib/VirtioLib.inf
+-  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+   LockBoxLib|OvmfPkg/Library/LockBoxLib/LockBoxBaseLib.inf
+ 
+   CustomizedDisplayLib|MdeModulePkg/Library/CustomizedDisplayLib/CustomizedDisplayLib.inf
+@@ -291,6 +291,8 @@ [LibraryClasses.common.PEIM]
+   Tpm2DeviceLib|SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpm.inf
+ !endif
+ 
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++
+ [LibraryClasses.common.DXE_CORE]
+   HobLib|MdePkg/Library/DxeCoreHobLib/DxeCoreHobLib.inf
+   DxeCoreEntryPoint|MdePkg/Library/DxeCoreEntryPoint/DxeCoreEntryPoint.inf
+diff --git a/OvmfPkg/Include/Library/MemEncryptSevLib.h b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+index a2c70aa550fe..872abe6725dc 100644
+--- a/OvmfPkg/Include/Library/MemEncryptSevLib.h
++++ b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+@@ -135,4 +135,16 @@ MemEncryptSevLocateInitialSmramSaveStateMapPages (
+   OUT UINTN *BaseAddress,
+   OUT UINTN *NumberOfPages
+   );
++
++/**
++  Returns the SEV encryption mask.
++
++  @return  The SEV pagetable encryption mask
++**/
++UINT64
++EFIAPI
++MemEncryptSevGetEncryptionMask (
++  VOID
++  );
++
+ #endif // _MEM_ENCRYPT_SEV_LIB_H_
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+similarity index 68%
+copy from OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
+copy to OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+index 7c44d0952815..837db0876184 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+@@ -1,7 +1,7 @@
+ ## @file
+ #  Library provides the helper functions for SEV guest
+ #
+-# Copyright (c) 2017 Advanced Micro Devices. All rights reserved.<BR>
++# Copyright (c) 2017 - 2020, Advanced Micro Devices. All rights reserved.<BR>
+ #
+ #  SPDX-License-Identifier: BSD-2-Clause-Patent
+ #
+@@ -10,11 +10,11 @@
+ 
+ [Defines]
+   INF_VERSION                    = 1.25
+-  BASE_NAME                      = MemEncryptSevLib
++  BASE_NAME                      = DxeMemEncryptSevLib
+   FILE_GUID                      = c1594631-3888-4be4-949f-9c630dbc842b
+   MODULE_TYPE                    = BASE
+   VERSION_STRING                 = 1.0
+-  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
++  LIBRARY_CLASS                  = MemEncryptSevLib|DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
+ 
+ #
+ # The following information is for reference only and not required by the build
+@@ -29,15 +29,17 @@ [Packages]
+   OvmfPkg/OvmfPkg.dec
+   UefiCpuPkg/UefiCpuPkg.dec
+ 
++[Sources]
++  DxeMemEncryptSevLibInternal.c
++  MemEncryptSevLibInternal.c
++
+ [Sources.X64]
+-  MemEncryptSevLibInternal.c
+   X64/MemEncryptSevLib.c
+   X64/VirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+   Ia32/MemEncryptSevLib.c
+-  MemEncryptSevLibInternal.c
+ 
+ [LibraryClasses]
+   BaseLib
+@@ -49,3 +51,6 @@ [LibraryClasses]
+ 
+ [FeaturePcd]
+   gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
++
++[Pcd]
++  gEfiMdeModulePkgTokenSpaceGuid.PcdPteMemoryEncryptionAddressOrMask
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c
+new file mode 100644
+index 000000000000..2816f859a0c4
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c
+@@ -0,0 +1,145 @@
++/** @file
++
++  Secure Encrypted Virtualization (SEV) library helper function
++
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/BaseLib.h>
++#include <Library/DebugLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Library/PcdLib.h>
++#include <Register/Amd/Cpuid.h>
++#include <Register/Amd/Msr.h>
++#include <Register/Cpuid.h>
++#include <Uefi/UefiBaseType.h>
++
++STATIC BOOLEAN mSevStatus = FALSE;
++STATIC BOOLEAN mSevEsStatus = FALSE;
++STATIC BOOLEAN mSevStatusChecked = FALSE;
++
++STATIC UINT64  mSevEncryptionMask = 0;
++STATIC BOOLEAN mSevEncryptionMaskSaved = FALSE;
++
++/**
++  Reads and sets the status of SEV features.
++
++  **/
++STATIC
++VOID
++EFIAPI
++InternalMemEncryptSevStatus (
++  VOID
++  )
++{
++  UINT32                            RegEax;
++  MSR_SEV_STATUS_REGISTER           Msr;
++  CPUID_MEMORY_ENCRYPTION_INFO_EAX  Eax;
++  BOOLEAN                           ReadSevMsr;
++  UINT64                            EncryptionMask;
++
++  ReadSevMsr = FALSE;
++
++  EncryptionMask = PcdGet64 (PcdPteMemoryEncryptionAddressOrMask);
++  if (EncryptionMask != 0) {
++    //
++    // The MSR has been read before, so it is safe to read it again and avoid
++    // having to validate the CPUID information.
++    //
++    ReadSevMsr = TRUE;
++  } else {
++    //
++    // Check if memory encryption leaf exist
++    //
++    AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
++    if (RegEax >= CPUID_MEMORY_ENCRYPTION_INFO) {
++      //
++      // CPUID Fn8000_001F[EAX] Bit 1 (Sev supported)
++      //
++      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, &Eax.Uint32, NULL, NULL, NULL);
++
++      if (Eax.Bits.SevBit) {
++        ReadSevMsr = TRUE;
++      }
++    }
++  }
++
++  if (ReadSevMsr) {
++    //
++    // Check MSR_0xC0010131 Bit 0 (Sev Enabled)
++    //
++    Msr.Uint32 = AsmReadMsr32 (MSR_SEV_STATUS);
++    if (Msr.Bits.SevBit) {
++      mSevStatus = TRUE;
++    }
++
++    //
++    // Check MSR_0xC0010131 Bit 1 (Sev-Es Enabled)
++    //
++    if (Msr.Bits.SevEsBit) {
++      mSevEsStatus = TRUE;
++    }
++  }
++
++  mSevStatusChecked = TRUE;
++}
++
++/**
++  Returns a boolean to indicate whether SEV-ES is enabled.
++
++  @retval TRUE           SEV-ES is enabled
++  @retval FALSE          SEV-ES is not enabled
++**/
++BOOLEAN
++EFIAPI
++MemEncryptSevEsIsEnabled (
++  VOID
++  )
++{
++  if (!mSevStatusChecked) {
++    InternalMemEncryptSevStatus ();
++  }
++
++  return mSevEsStatus;
++}
++
++/**
++  Returns a boolean to indicate whether SEV is enabled.
++
++  @retval TRUE           SEV is enabled
++  @retval FALSE          SEV is not enabled
++**/
++BOOLEAN
++EFIAPI
++MemEncryptSevIsEnabled (
++  VOID
++  )
++{
++  if (!mSevStatusChecked) {
++    InternalMemEncryptSevStatus ();
++  }
++
++  return mSevStatus;
++}
++
++/**
++  Returns the SEV encryption mask.
++
++  @return  The SEV pagtable encryption mask
++**/
++UINT64
++EFIAPI
++MemEncryptSevGetEncryptionMask (
++  VOID
++  )
++{
++  if (!mSevEncryptionMaskSaved) {
++    mSevEncryptionMask = PcdGet64 (PcdPteMemoryEncryptionAddressOrMask);
++    mSevEncryptionMaskSaved = TRUE;
++  }
++
++  return mSevEncryptionMask;
++}
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
+index 02b8eb225d81..b4a9f464e268 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
+@@ -2,7 +2,7 @@
+ 
+   Secure Encrypted Virtualization (SEV) library helper function
+ 
+-  Copyright (c) 2017, AMD Incorporated. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -12,102 +12,10 @@
+ #include <Library/DebugLib.h>
+ #include <Library/MemEncryptSevLib.h>
+ #include <Library/PcdLib.h>
+-#include <Register/Amd/Cpuid.h>
+-#include <Register/Amd/Msr.h>
+-#include <Register/Cpuid.h>
+ #include <Register/QemuSmramSaveStateMap.h>
+ #include <Register/SmramSaveStateMap.h>
+ #include <Uefi/UefiBaseType.h>
+ 
+-STATIC BOOLEAN mSevStatus = FALSE;
+-STATIC BOOLEAN mSevEsStatus = FALSE;
+-STATIC BOOLEAN mSevStatusChecked = FALSE;
+-
+-/**
+-  Reads and sets the status of SEV features.
+-
+-  **/
+-STATIC
+-VOID
+-EFIAPI
+-InternalMemEncryptSevStatus (
+-  VOID
+-  )
+-{
+-  UINT32                            RegEax;
+-  MSR_SEV_STATUS_REGISTER           Msr;
+-  CPUID_MEMORY_ENCRYPTION_INFO_EAX  Eax;
+-
+-  //
+-  // Check if memory encryption leaf exist
+-  //
+-  AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
+-  if (RegEax >= CPUID_MEMORY_ENCRYPTION_INFO) {
+-    //
+-    // CPUID Fn8000_001F[EAX] Bit 1 (Sev supported)
+-    //
+-    AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, &Eax.Uint32, NULL, NULL, NULL);
+-
+-    if (Eax.Bits.SevBit) {
+-      //
+-      // Check MSR_0xC0010131 Bit 0 (Sev Enabled)
+-      //
+-      Msr.Uint32 = AsmReadMsr32 (MSR_SEV_STATUS);
+-      if (Msr.Bits.SevBit) {
+-        mSevStatus = TRUE;
+-      }
+-
+-      //
+-      // Check MSR_0xC0010131 Bit 1 (Sev-Es Enabled)
+-      //
+-      if (Msr.Bits.SevEsBit) {
+-        mSevEsStatus = TRUE;
+-      }
+-    }
+-  }
+-
+-  mSevStatusChecked = TRUE;
+-}
+-
+-/**
+-  Returns a boolean to indicate whether SEV-ES is enabled.
+-
+-  @retval TRUE           SEV-ES is enabled
+-  @retval FALSE          SEV-ES is not enabled
+-**/
+-BOOLEAN
+-EFIAPI
+-MemEncryptSevEsIsEnabled (
+-  VOID
+-  )
+-{
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
+-
+-  return mSevEsStatus;
+-}
+-
+-/**
+-  Returns a boolean to indicate whether SEV is enabled.
+-
+-  @retval TRUE           SEV is enabled
+-  @retval FALSE          SEV is not enabled
+-**/
+-BOOLEAN
+-EFIAPI
+-MemEncryptSevIsEnabled (
+-  VOID
+-  )
+-{
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
+-
+-  return mSevStatus;
+-}
+-
+-
+ /**
+   Locate the page range that covers the initial (pre-SMBASE-relocation) SMRAM
+   Save State Map.
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+similarity index 67%
+rename from OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
+rename to OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+index 7c44d0952815..c3cd046cb630 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+@@ -1,7 +1,7 @@
+ ## @file
+ #  Library provides the helper functions for SEV guest
+ #
+-# Copyright (c) 2017 Advanced Micro Devices. All rights reserved.<BR>
++# Copyright (c) 2020 Advanced Micro Devices. All rights reserved.<BR>
+ #
+ #  SPDX-License-Identifier: BSD-2-Clause-Patent
+ #
+@@ -10,11 +10,11 @@
+ 
+ [Defines]
+   INF_VERSION                    = 1.25
+-  BASE_NAME                      = MemEncryptSevLib
+-  FILE_GUID                      = c1594631-3888-4be4-949f-9c630dbc842b
++  BASE_NAME                      = PeiMemEncryptSevLib
++  FILE_GUID                      = 15d9a694-3d2a-4184-9672-ba55c3070e07
+   MODULE_TYPE                    = BASE
+   VERSION_STRING                 = 1.0
+-  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
++  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM
+ 
+ #
+ # The following information is for reference only and not required by the build
+@@ -29,15 +29,17 @@ [Packages]
+   OvmfPkg/OvmfPkg.dec
+   UefiCpuPkg/UefiCpuPkg.dec
+ 
++[Sources]
++  MemEncryptSevLibInternal.c
++  PeiMemEncryptSevLibInternal.c
++
+ [Sources.X64]
+-  MemEncryptSevLibInternal.c
+   X64/MemEncryptSevLib.c
+   X64/VirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+   Ia32/MemEncryptSevLib.c
+-  MemEncryptSevLibInternal.c
+ 
+ [LibraryClasses]
+   BaseLib
+@@ -49,3 +51,6 @@ [LibraryClasses]
+ 
+ [FeaturePcd]
+   gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
++
++[FixedPcd]
++  gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c
+new file mode 100644
+index 000000000000..e2fd109d120f
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c
+@@ -0,0 +1,159 @@
++/** @file
++
++  Secure Encrypted Virtualization (SEV) library helper function
++
++  Copyright (c) 2020, AMD Incorporated. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/BaseLib.h>
++#include <Library/DebugLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Library/PcdLib.h>
++#include <Register/Amd/Cpuid.h>
++#include <Register/Amd/Msr.h>
++#include <Register/Cpuid.h>
++#include <Uefi/UefiBaseType.h>
++
++STATIC BOOLEAN mSevStatus = FALSE;
++STATIC BOOLEAN mSevEsStatus = FALSE;
++STATIC BOOLEAN mSevStatusChecked = FALSE;
++
++STATIC UINT64  mSevEncryptionMask = 0;
++STATIC BOOLEAN mSevEncryptionMaskSaved = FALSE;
++
++/**
++  Reads and sets the status of SEV features.
++
++  **/
++STATIC
++VOID
++EFIAPI
++InternalMemEncryptSevStatus (
++  VOID
++  )
++{
++  UINT32                            RegEax;
++  MSR_SEV_STATUS_REGISTER           Msr;
++  CPUID_MEMORY_ENCRYPTION_INFO_EAX  Eax;
++  BOOLEAN                           ReadSevMsr;
++  SEC_SEV_ES_WORK_AREA              *SevEsWorkArea;
++
++  ReadSevMsr = FALSE;
++
++  SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *) FixedPcdGet32 (PcdSevEsWorkAreaBase);
++  if (SevEsWorkArea != NULL && SevEsWorkArea->EncryptionMask != 0) {
++    //
++    // The MSR has been read before, so it is safe to read it again and avoid
++    // having to validate the CPUID information.
++    //
++    ReadSevMsr = TRUE;
++  } else {
++    //
++    // Check if memory encryption leaf exist
++    //
++    AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
++    if (RegEax >= CPUID_MEMORY_ENCRYPTION_INFO) {
++      //
++      // CPUID Fn8000_001F[EAX] Bit 1 (Sev supported)
++      //
++      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, &Eax.Uint32, NULL, NULL, NULL);
++
++      if (Eax.Bits.SevBit) {
++        ReadSevMsr = TRUE;
++      }
++    }
++  }
++
++  if (ReadSevMsr) {
++    //
++    // Check MSR_0xC0010131 Bit 0 (Sev Enabled)
++    //
++    Msr.Uint32 = AsmReadMsr32 (MSR_SEV_STATUS);
++    if (Msr.Bits.SevBit) {
++      mSevStatus = TRUE;
++    }
++
++    //
++    // Check MSR_0xC0010131 Bit 1 (Sev-Es Enabled)
++    //
++    if (Msr.Bits.SevEsBit) {
++      mSevEsStatus = TRUE;
++    }
++  }
++
++  mSevStatusChecked = TRUE;
++}
++
++/**
++  Returns a boolean to indicate whether SEV-ES is enabled.
++
++  @retval TRUE           SEV-ES is enabled
++  @retval FALSE          SEV-ES is not enabled
++**/
++BOOLEAN
++EFIAPI
++MemEncryptSevEsIsEnabled (
++  VOID
++  )
++{
++  if (!mSevStatusChecked) {
++    InternalMemEncryptSevStatus ();
++  }
++
++  return mSevEsStatus;
++}
++
++/**
++  Returns a boolean to indicate whether SEV is enabled.
++
++  @retval TRUE           SEV is enabled
++  @retval FALSE          SEV is not enabled
++**/
++BOOLEAN
++EFIAPI
++MemEncryptSevIsEnabled (
++  VOID
++  )
++{
++  if (!mSevStatusChecked) {
++    InternalMemEncryptSevStatus ();
++  }
++
++  return mSevStatus;
++}
++
++/**
++  Returns the SEV encryption mask.
++
++  @return  The SEV pagtable encryption mask
++**/
++UINT64
++EFIAPI
++MemEncryptSevGetEncryptionMask (
++  VOID
++  )
++{
++  if (!mSevEncryptionMaskSaved) {
++    SEC_SEV_ES_WORK_AREA  *SevEsWorkArea;
++
++    SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *) FixedPcdGet32 (PcdSevEsWorkAreaBase);
++    if (SevEsWorkArea != NULL) {
++      mSevEncryptionMask = SevEsWorkArea->EncryptionMask;
++    } else {
++      CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
++
++      //
++      // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
++      //
++      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
++      mSevEncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
++    }
++
++    mSevEncryptionMaskSaved = TRUE;
++  }
++
++  return mSevEncryptionMask;
++}
+diff --git a/OvmfPkg/OvmfPkgIa32.dsc b/OvmfPkg/OvmfPkgIa32.dsc
+index 8eede796a8bd..4e963d9e7500 100644
+--- a/OvmfPkg/OvmfPkgIa32.dsc
++++ b/OvmfPkg/OvmfPkgIa32.dsc
+@@ -169,7 +169,7 @@ [LibraryClasses]
+   QemuFwCfgSimpleParserLib|OvmfPkg/Library/QemuFwCfgSimpleParserLib/QemuFwCfgSimpleParserLib.inf
+   VirtioLib|OvmfPkg/Library/VirtioLib/VirtioLib.inf
+   LoadLinuxLib|OvmfPkg/Library/LoadLinuxLib/LoadLinuxLib.inf
+-  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+ !if $(SMM_REQUIRE) == FALSE
+   LockBoxLib|OvmfPkg/Library/LockBoxLib/LockBoxBaseLib.inf
+ !endif
+@@ -309,6 +309,8 @@ [LibraryClasses.common.PEIM]
+   Tpm2DeviceLib|SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpm.inf
+ !endif
+ 
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++
+ [LibraryClasses.common.DXE_CORE]
+   HobLib|MdePkg/Library/DxeCoreHobLib/DxeCoreHobLib.inf
+   DxeCoreEntryPoint|MdePkg/Library/DxeCoreEntryPoint/DxeCoreEntryPoint.inf
+diff --git a/OvmfPkg/OvmfPkgIa32X64.dsc b/OvmfPkg/OvmfPkgIa32X64.dsc
+index f9f82a48f4b9..35ac6ae58ff5 100644
+--- a/OvmfPkg/OvmfPkgIa32X64.dsc
++++ b/OvmfPkg/OvmfPkgIa32X64.dsc
+@@ -173,7 +173,7 @@ [LibraryClasses]
+   QemuFwCfgSimpleParserLib|OvmfPkg/Library/QemuFwCfgSimpleParserLib/QemuFwCfgSimpleParserLib.inf
+   VirtioLib|OvmfPkg/Library/VirtioLib/VirtioLib.inf
+   LoadLinuxLib|OvmfPkg/Library/LoadLinuxLib/LoadLinuxLib.inf
+-  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+ !if $(SMM_REQUIRE) == FALSE
+   LockBoxLib|OvmfPkg/Library/LockBoxLib/LockBoxBaseLib.inf
+ !endif
+@@ -313,6 +313,8 @@ [LibraryClasses.common.PEIM]
+   Tpm2DeviceLib|SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpm.inf
+ !endif
+ 
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++
+ [LibraryClasses.common.DXE_CORE]
+   HobLib|MdePkg/Library/DxeCoreHobLib/DxeCoreHobLib.inf
+   DxeCoreEntryPoint|MdePkg/Library/DxeCoreEntryPoint/DxeCoreEntryPoint.inf
+diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
+index e59ae05b73aa..59b664c63377 100644
+--- a/OvmfPkg/OvmfPkgX64.dsc
++++ b/OvmfPkg/OvmfPkgX64.dsc
+@@ -173,7 +173,7 @@ [LibraryClasses]
+   QemuFwCfgSimpleParserLib|OvmfPkg/Library/QemuFwCfgSimpleParserLib/QemuFwCfgSimpleParserLib.inf
+   VirtioLib|OvmfPkg/Library/VirtioLib/VirtioLib.inf
+   LoadLinuxLib|OvmfPkg/Library/LoadLinuxLib/LoadLinuxLib.inf
+-  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+ !if $(SMM_REQUIRE) == FALSE
+   LockBoxLib|OvmfPkg/Library/LockBoxLib/LockBoxBaseLib.inf
+ !endif
+@@ -313,6 +313,8 @@ [LibraryClasses.common.PEIM]
+   Tpm2DeviceLib|SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpm.inf
+ !endif
+ 
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++
+ [LibraryClasses.common.DXE_CORE]
+   HobLib|MdePkg/Library/DxeCoreHobLib/DxeCoreHobLib.inf
+   DxeCoreEntryPoint|MdePkg/Library/DxeCoreEntryPoint/DxeCoreEntryPoint.inf
+diff --git a/OvmfPkg/OvmfXen.dsc b/OvmfPkg/OvmfXen.dsc
+index 12b7a87ee877..c13388ba5a05 100644
+--- a/OvmfPkg/OvmfXen.dsc
++++ b/OvmfPkg/OvmfXen.dsc
+@@ -161,7 +161,7 @@ [LibraryClasses]
+   SerializeVariablesLib|OvmfPkg/Library/SerializeVariablesLib/SerializeVariablesLib.inf
+   QemuFwCfgLib|OvmfPkg/Library/QemuFwCfgLib/QemuFwCfgDxeLib.inf
+   QemuLoadImageLib|OvmfPkg/Library/GenericQemuLoadImageLib/GenericQemuLoadImageLib.inf
+-  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+   LockBoxLib|OvmfPkg/Library/LockBoxLib/LockBoxBaseLib.inf
+   CustomizedDisplayLib|MdeModulePkg/Library/CustomizedDisplayLib/CustomizedDisplayLib.inf
+   FrameBufferBltLib|MdeModulePkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+@@ -273,6 +273,7 @@ [LibraryClasses.common.PEIM]
+   QemuFwCfgS3Lib|OvmfPkg/Library/QemuFwCfgS3Lib/PeiQemuFwCfgS3LibFwCfg.inf
+   PcdLib|MdePkg/Library/PeiPcdLib/PeiPcdLib.inf
+   QemuFwCfgLib|OvmfPkg/Library/QemuFwCfgLib/QemuFwCfgPeiLib.inf
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+ 
+ [LibraryClasses.common.DXE_CORE]
+   HobLib|MdePkg/Library/DxeCoreHobLib/DxeCoreHobLib.inf
+-- 
+2.29.2
+
+
+From b598dc199cf7800f6684af2d0d08e37beb01732b Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:17 -0600
+Subject: [PATCH 07/15] OvmfPkg: Obtain SEV encryption mask with the new
+ MemEncryptSevLib API
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+The early assembler code performs validation for some of the SEV-related
+information, specifically the encryption bit position. The new
+MemEncryptSevGetEncryptionMask() interface provides access to this
+validated value.
+
+To ensure that we always use a validated encryption mask for an SEV-ES
+guest, update all locations that use CPUID to calculate the encryption
+mask to use the new interface.
+
+Also, clean up some call areas where extra masking was being performed
+and where a function call was being used instead of the local variable
+that was just set using the function.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Rebecca Cran <rebecca@bsdio.com>
+Cc: Peter Grehan <grehan@freebsd.org>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Cc: Julien Grall <julien@xen.org>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <9de678c0d66443c6cc33e004a4cac0a0223c2ebc.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 45388d046c3506bd49dca29aed8ec74756e6165c)
+---
+ OvmfPkg/Bhyve/PlatformPei/AmdSev.c                | 12 ++----------
+ .../BaseMemEncryptSevLib/X64/VirtualMemory.c      | 15 +++++----------
+ OvmfPkg/PlatformPei/AmdSev.c                      | 12 ++----------
+ OvmfPkg/XenPlatformPei/AmdSev.c                   | 12 ++----------
+ 4 files changed, 11 insertions(+), 40 deletions(-)
+
+diff --git a/OvmfPkg/Bhyve/PlatformPei/AmdSev.c b/OvmfPkg/Bhyve/PlatformPei/AmdSev.c
+index e484f4b311fe..e3ed78581c1b 100644
+--- a/OvmfPkg/Bhyve/PlatformPei/AmdSev.c
++++ b/OvmfPkg/Bhyve/PlatformPei/AmdSev.c
+@@ -1,7 +1,7 @@
+ /**@file
+   Initialize Secure Encrypted Virtualization (SEV) support
+ 
+-  Copyright (c) 2017, Advanced Micro Devices. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, Advanced Micro Devices. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -15,8 +15,6 @@
+ #include <Library/MemEncryptSevLib.h>
+ #include <Library/PcdLib.h>
+ #include <PiPei.h>
+-#include <Register/Amd/Cpuid.h>
+-#include <Register/Cpuid.h>
+ #include <Register/Intel/SmramSaveStateMap.h>
+ 
+ #include "Platform.h"
+@@ -32,7 +30,6 @@ AmdSevInitialize (
+   VOID
+   )
+ {
+-  CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
+   UINT64                            EncryptionMask;
+   RETURN_STATUS                     PcdStatus;
+ 
+@@ -43,15 +40,10 @@ AmdSevInitialize (
+     return;
+   }
+ 
+-  //
+-  // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
+-  //
+-  AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
+-  EncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
+-
+   //
+   // Set Memory Encryption Mask PCD
+   //
++  EncryptionMask = MemEncryptSevGetEncryptionMask ();
+   PcdStatus = PcdSet64S (PcdPteMemoryEncryptionAddressOrMask, EncryptionMask);
+   ASSERT_RETURN_ERROR (PcdStatus);
+ 
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+index 5e110c84ff81..6422bc53bd5d 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+@@ -3,7 +3,7 @@
+   Virtual Memory Management Services to set or clear the memory encryption bit
+ 
+   Copyright (c) 2006 - 2018, Intel Corporation. All rights reserved.<BR>
+-  Copyright (c) 2017, AMD Incorporated. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -12,6 +12,7 @@
+ **/
+ 
+ #include <Library/CpuLib.h>
++#include <Library/MemEncryptSevLib.h>
+ #include <Register/Amd/Cpuid.h>
+ #include <Register/Cpuid.h>
+ 
+@@ -39,17 +40,12 @@ GetMemEncryptionAddressMask (
+   )
+ {
+   UINT64                            EncryptionMask;
+-  CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
+ 
+   if (mAddressEncMaskChecked) {
+     return mAddressEncMask;
+   }
+ 
+-  //
+-  // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
+-  //
+-  AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
+-  EncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
++  EncryptionMask = MemEncryptSevGetEncryptionMask ();
+ 
+   mAddressEncMask = EncryptionMask & PAGING_1G_ADDRESS_MASK_64;
+   mAddressEncMaskChecked = TRUE;
+@@ -289,8 +285,7 @@ SetPageTablePoolReadOnly (
+   LevelSize[3] = SIZE_1GB;
+   LevelSize[4] = SIZE_512GB;
+ 
+-  AddressEncMask  = GetMemEncryptionAddressMask() &
+-                    PAGING_1G_ADDRESS_MASK_64;
++  AddressEncMask  = GetMemEncryptionAddressMask();
+   PageTable       = (UINT64 *)(UINTN)PageTableBase;
+   PoolUnitSize    = PAGE_TABLE_POOL_UNIT_SIZE;
+ 
+@@ -437,7 +432,7 @@ Split1GPageTo2M (
+ 
+   AddressEncMask = GetMemEncryptionAddressMask ();
+   ASSERT (PageDirectoryEntry != NULL);
+-  ASSERT (*PageEntry1G & GetMemEncryptionAddressMask ());
++  ASSERT (*PageEntry1G & AddressEncMask);
+   //
+   // Fill in 1G page entry.
+   //
+diff --git a/OvmfPkg/PlatformPei/AmdSev.c b/OvmfPkg/PlatformPei/AmdSev.c
+index 4a515a484720..954d53eba4e8 100644
+--- a/OvmfPkg/PlatformPei/AmdSev.c
++++ b/OvmfPkg/PlatformPei/AmdSev.c
+@@ -1,7 +1,7 @@
+ /**@file
+   Initialize Secure Encrypted Virtualization (SEV) support
+ 
+-  Copyright (c) 2017, Advanced Micro Devices. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, Advanced Micro Devices. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -17,9 +17,7 @@
+ #include <Library/MemoryAllocationLib.h>
+ #include <Library/PcdLib.h>
+ #include <PiPei.h>
+-#include <Register/Amd/Cpuid.h>
+ #include <Register/Amd/Msr.h>
+-#include <Register/Cpuid.h>
+ #include <Register/Intel/SmramSaveStateMap.h>
+ 
+ #include "Platform.h"
+@@ -116,7 +114,6 @@ AmdSevInitialize (
+   VOID
+   )
+ {
+-  CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
+   UINT64                            EncryptionMask;
+   RETURN_STATUS                     PcdStatus;
+ 
+@@ -127,15 +124,10 @@ AmdSevInitialize (
+     return;
+   }
+ 
+-  //
+-  // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
+-  //
+-  AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
+-  EncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
+-
+   //
+   // Set Memory Encryption Mask PCD
+   //
++  EncryptionMask = MemEncryptSevGetEncryptionMask ();
+   PcdStatus = PcdSet64S (PcdPteMemoryEncryptionAddressOrMask, EncryptionMask);
+   ASSERT_RETURN_ERROR (PcdStatus);
+ 
+diff --git a/OvmfPkg/XenPlatformPei/AmdSev.c b/OvmfPkg/XenPlatformPei/AmdSev.c
+index 7ebbb5cc1fd2..4ed448632ae2 100644
+--- a/OvmfPkg/XenPlatformPei/AmdSev.c
++++ b/OvmfPkg/XenPlatformPei/AmdSev.c
+@@ -1,7 +1,7 @@
+ /**@file
+   Initialize Secure Encrypted Virtualization (SEV) support
+ 
+-  Copyright (c) 2017, Advanced Micro Devices. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, Advanced Micro Devices. All rights reserved.<BR>
+   Copyright (c) 2019, Citrix Systems, Inc.
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+@@ -14,8 +14,6 @@
+ #include <Library/MemEncryptSevLib.h>
+ #include <Library/PcdLib.h>
+ #include <PiPei.h>
+-#include <Register/Amd/Cpuid.h>
+-#include <Register/Cpuid.h>
+ 
+ #include "Platform.h"
+ 
+@@ -30,7 +28,6 @@ AmdSevInitialize (
+   VOID
+   )
+ {
+-  CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
+   UINT64                            EncryptionMask;
+   RETURN_STATUS                     PcdStatus;
+ 
+@@ -41,15 +38,10 @@ AmdSevInitialize (
+     return;
+   }
+ 
+-  //
+-  // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
+-  //
+-  AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
+-  EncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
+-
+   //
+   // Set Memory Encryption Mask PCD
+   //
++  EncryptionMask = MemEncryptSevGetEncryptionMask ();
+   PcdStatus = PcdSet64S (PcdPteMemoryEncryptionAddressOrMask, EncryptionMask);
+   ASSERT_RETURN_ERROR (PcdStatus);
+ 
+-- 
+2.29.2
+
+
+From 1050b8f7ccfe754ceaae843f3c2e79a4e2c13e74 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:18 -0600
+Subject: [PATCH 08/15] OvmfPkg/AmdSevDxe: Clear encryption bit on PCIe
+ MMCONFIG range
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+The PCIe MMCONFIG range should be treated as an MMIO range. However,
+there is a comment in the code explaining why AddIoMemoryBaseSizeHob()
+is not called. The AmdSevDxe walks the GCD map looking for MemoryMappedIo
+or NonExistent type memory and will clear the encryption bit for these
+ranges.
+
+Since the MMCONFIG range does not have one of these types, the encryption
+bit is not cleared for this range. Add support to detect the presence of
+the MMCONFIG range and clear the encryption bit. This will be needed for
+follow-on support that will validate that MMIO is not being performed to
+an encrypted address range under SEV-ES.
+
+Even though the encryption bit was set for this range, this still worked
+under both SEV and SEV-ES because the address range is marked by the
+hypervisor as MMIO in the nested page tables:
+- For SEV, access to this address range triggers a nested page fault (NPF)
+  and the hardware supplies the guest physical address (GPA) in the VMCB's
+  EXITINFO2 field as part of the exit information. However, the encryption
+  bit is not set in the GPA, so the hypervisor can process the request
+  without any issues.
+- For SEV-ES, access to this address range triggers a #VC. Since OVMF runs
+  identity mapped (VA == PA), the virtual address is used to avoid the
+  lookup of the physical address. The virtual address does not have the
+  encryption bit set, so the hypervisor can process the request without
+  any issues.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <711ae2dcb6cb29e4c60862c18330cff627269b81.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 84cddd70820f35e8bd0f169078765548eab3d3ca)
+---
+ OvmfPkg/AmdSevDxe/AmdSevDxe.c   | 20 +++++++++++++++++++-
+ OvmfPkg/AmdSevDxe/AmdSevDxe.inf |  8 +++++++-
+ 2 files changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/OvmfPkg/AmdSevDxe/AmdSevDxe.c b/OvmfPkg/AmdSevDxe/AmdSevDxe.c
+index 595586617882..689bfb376d03 100644
+--- a/OvmfPkg/AmdSevDxe/AmdSevDxe.c
++++ b/OvmfPkg/AmdSevDxe/AmdSevDxe.c
+@@ -4,12 +4,13 @@
+   in APRIORI. It clears C-bit from MMIO and NonExistent Memory space when SEV
+   is enabled.
+ 
+-  Copyright (c) 2017, AMD Inc. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Inc. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+ **/
+ 
++#include <IndustryStandard/Q35MchIch9.h>
+ #include <Library/BaseLib.h>
+ #include <Library/BaseMemoryLib.h>
+ #include <Library/DebugLib.h>
+@@ -65,6 +66,23 @@ AmdSevDxeEntryPoint (
+     FreePool (AllDescMap);
+   }
+ 
++  //
++  // If PCI Express is enabled, the MMCONFIG area has been reserved, rather
++  // than marked as MMIO, and so the C-bit won't be cleared by the above walk
++  // through the GCD map. Check for the MMCONFIG area and clear the C-bit for
++  // the range.
++  //
++  if (PcdGet16 (PcdOvmfHostBridgePciDevId) == INTEL_Q35_MCH_DEVICE_ID) {
++    Status = MemEncryptSevClearPageEncMask (
++               0,
++               FixedPcdGet64 (PcdPciExpressBaseAddress),
++               EFI_SIZE_TO_PAGES (SIZE_256MB),
++               FALSE
++               );
++
++    ASSERT_EFI_ERROR (Status);
++  }
++
+   //
+   // When SMM is enabled, clear the C-bit from SMM Saved State Area
+   //
+diff --git a/OvmfPkg/AmdSevDxe/AmdSevDxe.inf b/OvmfPkg/AmdSevDxe/AmdSevDxe.inf
+index dd9ecc789a20..0676fcc5b6a4 100644
+--- a/OvmfPkg/AmdSevDxe/AmdSevDxe.inf
++++ b/OvmfPkg/AmdSevDxe/AmdSevDxe.inf
+@@ -2,7 +2,7 @@
+ #
+ #  Driver clears the encryption attribute from MMIO regions when SEV is enabled
+ #
+-#  Copyright (c) 2017, AMD Inc. All rights reserved.<BR>
++#  Copyright (c) 2017 - 2020, AMD Inc. All rights reserved.<BR>
+ #
+ #  SPDX-License-Identifier: BSD-2-Clause-Patent
+ #
+@@ -39,3 +39,9 @@ [Depex]
+ 
+ [FeaturePcd]
+   gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
++
++[FixedPcd]
++  gEfiMdePkgTokenSpaceGuid.PcdPciExpressBaseAddress
++
++[Pcd]
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfHostBridgePciDevId
+-- 
+2.29.2
+
+
+From 7b816a1c8a929a5acf988620ba152caba1f19c2b Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:19 -0600
+Subject: [PATCH 09/15] OvmfPkg/VmgExitLib: Check for an explicit DR7 cached
+ value
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+Check the DR7 cached indicator against a specific value. This makes it
+harder for a hypervisor to just write random data into that field in an
+attempt to use an invalid DR7 value.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <65157c1155a9c058c43678400dfc0b486e327a3e.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 31f5ebd6db0805cdcafb1312a91b60d14ff1ac24)
+---
+ OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+index 1671db3a01b1..5149ab2bc989 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+@@ -128,10 +128,13 @@ UINT64
+ 
+ //
+ // Per-CPU data mapping structure
++//   Use UINT32 for cached indicators and compare to a specific value
++//   so that the hypervisor can't indicate a value is cached by just
++//   writing random data to that area.
+ //
+ typedef struct {
+-  BOOLEAN  Dr7Cached;
+-  UINT64   Dr7;
++  UINT32  Dr7Cached;
++  UINT64  Dr7;
+ } SEV_ES_PER_CPU_DATA;
+ 
+ 
+@@ -1489,7 +1492,7 @@ Dr7WriteExit (
+   }
+ 
+   SevEsData->Dr7 = *Register;
+-  SevEsData->Dr7Cached = TRUE;
++  SevEsData->Dr7Cached = 1;
+ 
+   return 0;
+ }
+@@ -1533,7 +1536,7 @@ Dr7ReadExit (
+   // If there is a cached valued for DR7, return that. Otherwise return the
+   // DR7 standard reset value of 0x400 (no debug breakpoints set).
+   //
+-  *Register = (SevEsData->Dr7Cached) ? SevEsData->Dr7 : 0x400;
++  *Register = (SevEsData->Dr7Cached == 1) ? SevEsData->Dr7 : 0x400;
+ 
+   return 0;
+ }
+-- 
+2.29.2
+
+
+From e90643a404f24a5a7f5475ecc12a6dc3dd6f4cc0 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:20 -0600
+Subject: [PATCH 10/15] OvmfPkg/MemEncryptSevLib: Coding style fixes in prep
+ for SEC library
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+Creating an SEC version of the library requires renaming an existing file
+which will result in the existing code failing ECC. Prior to renaming the
+existing file, fix the coding style to avoid the ECC failure.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <f765d867da4a703e0a0db35e26515a911482fd40.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 60b195d257ebf263cfd0d198ee2c4f84fd36f14c)
+---
+ .../Library/BaseMemEncryptSevLib/X64/VirtualMemory.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+index 6422bc53bd5d..3a5bab657bd7 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+@@ -192,7 +192,8 @@ Split2MPageTo4K (
+ {
+   PHYSICAL_ADDRESS                  PhysicalAddress4K;
+   UINTN                             IndexOfPageTableEntries;
+-  PAGE_TABLE_4K_ENTRY               *PageTableEntry, *PageTableEntry1;
++  PAGE_TABLE_4K_ENTRY               *PageTableEntry;
++  PAGE_TABLE_4K_ENTRY               *PageTableEntry1;
+   UINT64                            AddressEncMask;
+ 
+   PageTableEntry = AllocatePageTableMemory(1);
+@@ -472,7 +473,7 @@ Split1GPageTo2M (
+ /**
+   Set or Clear the memory encryption bit
+ 
+-  @param[in]      PagetablePoint        Page table entry pointer (PTE).
++  @param[in, out] PageTablePointer      Page table entry pointer (PTE).
+   @param[in]      Mode                  Set or Clear encryption bit
+ 
+ **/
+@@ -562,7 +563,6 @@ EnableReadOnlyPageWriteProtect (
+   @retval RETURN_UNSUPPORTED          Setting the memory encyrption attribute
+                                       is not supported
+ **/
+-
+ STATIC
+ RETURN_STATUS
+ EFIAPI
+@@ -635,7 +635,7 @@ SetMemoryEncDec (
+ 
+   Status = EFI_SUCCESS;
+ 
+-  while (Length)
++  while (Length != 0)
+   {
+     //
+     // If Cr3BaseAddress is not specified then read the current CR3
+@@ -683,7 +683,7 @@ SetMemoryEncDec (
+       // Valid 1GB page
+       // If we have at least 1GB to go, we can just update this entry
+       //
+-      if (!(PhysicalAddress & (BIT30 - 1)) && Length >= BIT30) {
++      if ((PhysicalAddress & (BIT30 - 1)) == 0 && Length >= BIT30) {
+         SetOrClearCBit(&PageDirectory1GEntry->Uint64, Mode);
+         DEBUG ((
+           DEBUG_VERBOSE,
+@@ -744,7 +744,7 @@ SetMemoryEncDec (
+         // Valid 2MB page
+         // If we have at least 2MB left to go, we can just update this entry
+         //
+-        if (!(PhysicalAddress & (BIT21-1)) && Length >= BIT21) {
++        if ((PhysicalAddress & (BIT21-1)) == 0 && Length >= BIT21) {
+           SetOrClearCBit (&PageDirectory2MEntry->Uint64, Mode);
+           PhysicalAddress += BIT21;
+           Length -= BIT21;
+-- 
+2.29.2
+
+
+From 66e1f734e7ff699aaba73749c7c2db56606ecda0 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:21 -0600
+Subject: [PATCH 11/15] OvmfPkg/MemEncryptSevLib: Make the MemEncryptSevLib
+ available for SEC
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+In preparation for a new interface to be added to the MemEncryptSevLib
+library that will be used in SEC, create an SEC version of the library.
+
+This requires the creation of SEC specific files.
+
+Some of the current MemEncryptSevLib functions perform memory allocations
+which cannot be performed in SEC, so these interfaces will return an error
+during SEC. Also, the current MemEncryptSevLib library uses some static
+variables to optimize access to variables, which cannot be used in SEC.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <bc7fa76cc23784ab3f37356b6c10dfec61942c38.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit a746ca5b47fdffd9c675f2cbf321a1c36ccc9356)
+---
+ .../DxeMemEncryptSevLib.inf                   |   4 +-
+ ...nal.c => PeiDxeMemEncryptSevLibInternal.c} |   0
+ .../PeiMemEncryptSevLib.inf                   |   4 +-
+ ...ryptSevLib.inf => SecMemEncryptSevLib.inf} |  16 +-
+ .../SecMemEncryptSevLibInternal.c             | 155 ++++++++++++++++++
+ ...{VirtualMemory.c => PeiDxeVirtualMemory.c} |   0
+ .../X64/SecVirtualMemory.c                    |  80 +++++++++
+ 7 files changed, 244 insertions(+), 15 deletions(-)
+ rename OvmfPkg/Library/BaseMemEncryptSevLib/{MemEncryptSevLibInternal.c => PeiDxeMemEncryptSevLibInternal.c} (100%)
+ copy OvmfPkg/Library/BaseMemEncryptSevLib/{PeiMemEncryptSevLib.inf => SecMemEncryptSevLib.inf} (65%)
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
+ rename OvmfPkg/Library/BaseMemEncryptSevLib/X64/{VirtualMemory.c => PeiDxeVirtualMemory.c} (100%)
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
+
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+index 837db0876184..4480e4cc7c89 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+@@ -31,11 +31,11 @@ [Packages]
+ 
+ [Sources]
+   DxeMemEncryptSevLibInternal.c
+-  MemEncryptSevLibInternal.c
++  PeiDxeMemEncryptSevLibInternal.c
+ 
+ [Sources.X64]
+   X64/MemEncryptSevLib.c
+-  X64/VirtualMemory.c
++  X64/PeiDxeVirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c
+similarity index 100%
+rename from OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
+rename to OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+index c3cd046cb630..0697f1dab502 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+@@ -30,12 +30,12 @@ [Packages]
+   UefiCpuPkg/UefiCpuPkg.dec
+ 
+ [Sources]
+-  MemEncryptSevLibInternal.c
++  PeiDxeMemEncryptSevLibInternal.c
+   PeiMemEncryptSevLibInternal.c
+ 
+ [Sources.X64]
+   X64/MemEncryptSevLib.c
+-  X64/VirtualMemory.c
++  X64/PeiDxeVirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+similarity index 65%
+copy from OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+copy to OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+index c3cd046cb630..7cd0111fe47b 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+@@ -10,11 +10,11 @@
+ 
+ [Defines]
+   INF_VERSION                    = 1.25
+-  BASE_NAME                      = PeiMemEncryptSevLib
+-  FILE_GUID                      = 15d9a694-3d2a-4184-9672-ba55c3070e07
++  BASE_NAME                      = SecMemEncryptSevLib
++  FILE_GUID                      = 046388b4-430e-4e61-88f6-51ea21db2632
+   MODULE_TYPE                    = BASE
+   VERSION_STRING                 = 1.0
+-  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM
++  LIBRARY_CLASS                  = MemEncryptSevLib|SEC
+ 
+ #
+ # The following information is for reference only and not required by the build
+@@ -30,12 +30,11 @@ [Packages]
+   UefiCpuPkg/UefiCpuPkg.dec
+ 
+ [Sources]
+-  MemEncryptSevLibInternal.c
+-  PeiMemEncryptSevLibInternal.c
++  SecMemEncryptSevLibInternal.c
+ 
+ [Sources.X64]
+   X64/MemEncryptSevLib.c
+-  X64/VirtualMemory.c
++  X64/SecVirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+@@ -43,14 +42,9 @@ [Sources.IA32]
+ 
+ [LibraryClasses]
+   BaseLib
+-  CacheMaintenanceLib
+   CpuLib
+   DebugLib
+-  MemoryAllocationLib
+   PcdLib
+ 
+-[FeaturePcd]
+-  gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
+-
+ [FixedPcd]
+   gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
+new file mode 100644
+index 000000000000..56d8f3f3183f
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
+@@ -0,0 +1,155 @@
++/** @file
++
++  Secure Encrypted Virtualization (SEV) library helper function
++
++  Copyright (c) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/BaseLib.h>
++#include <Library/DebugLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Library/PcdLib.h>
++#include <Register/Amd/Cpuid.h>
++#include <Register/Amd/Msr.h>
++#include <Register/Cpuid.h>
++#include <Uefi/UefiBaseType.h>
++
++/**
++  Reads and sets the status of SEV features.
++
++  **/
++STATIC
++UINT32
++EFIAPI
++InternalMemEncryptSevStatus (
++  VOID
++  )
++{
++  UINT32                            RegEax;
++  CPUID_MEMORY_ENCRYPTION_INFO_EAX  Eax;
++  BOOLEAN                           ReadSevMsr;
++  SEC_SEV_ES_WORK_AREA              *SevEsWorkArea;
++
++  ReadSevMsr = FALSE;
++
++  SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *) FixedPcdGet32 (PcdSevEsWorkAreaBase);
++  if (SevEsWorkArea != NULL && SevEsWorkArea->EncryptionMask != 0) {
++    //
++    // The MSR has been read before, so it is safe to read it again and avoid
++    // having to validate the CPUID information.
++    //
++    ReadSevMsr = TRUE;
++  } else {
++    //
++    // Check if memory encryption leaf exist
++    //
++    AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
++    if (RegEax >= CPUID_MEMORY_ENCRYPTION_INFO) {
++      //
++      // CPUID Fn8000_001F[EAX] Bit 1 (Sev supported)
++      //
++      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, &Eax.Uint32, NULL, NULL, NULL);
++
++      if (Eax.Bits.SevBit) {
++        ReadSevMsr = TRUE;
++      }
++    }
++  }
++
++  return ReadSevMsr ? AsmReadMsr32 (MSR_SEV_STATUS) : 0;
++}
++
++/**
++  Returns a boolean to indicate whether SEV-ES is enabled.
++
++  @retval TRUE           SEV-ES is enabled
++  @retval FALSE          SEV-ES is not enabled
++**/
++BOOLEAN
++EFIAPI
++MemEncryptSevEsIsEnabled (
++  VOID
++  )
++{
++  MSR_SEV_STATUS_REGISTER           Msr;
++
++  Msr.Uint32 = InternalMemEncryptSevStatus ();
++
++  return Msr.Bits.SevEsBit ? TRUE : FALSE;
++}
++
++/**
++  Returns a boolean to indicate whether SEV is enabled.
++
++  @retval TRUE           SEV is enabled
++  @retval FALSE          SEV is not enabled
++**/
++BOOLEAN
++EFIAPI
++MemEncryptSevIsEnabled (
++  VOID
++  )
++{
++  MSR_SEV_STATUS_REGISTER           Msr;
++
++  Msr.Uint32 = InternalMemEncryptSevStatus ();
++
++  return Msr.Bits.SevBit ? TRUE : FALSE;
++}
++
++/**
++  Returns the SEV encryption mask.
++
++  @return  The SEV pagtable encryption mask
++**/
++UINT64
++EFIAPI
++MemEncryptSevGetEncryptionMask (
++  VOID
++  )
++{
++  CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
++  SEC_SEV_ES_WORK_AREA              *SevEsWorkArea;
++  UINT64                            EncryptionMask;
++
++  SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *) FixedPcdGet32 (PcdSevEsWorkAreaBase);
++  if (SevEsWorkArea != NULL) {
++    EncryptionMask = SevEsWorkArea->EncryptionMask;
++  } else {
++    //
++    // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
++    //
++    AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
++    EncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
++  }
++
++  return EncryptionMask;
++}
++
++/**
++  Locate the page range that covers the initial (pre-SMBASE-relocation) SMRAM
++  Save State Map.
++
++  @param[out] BaseAddress     The base address of the lowest-address page that
++                              covers the initial SMRAM Save State Map.
++
++  @param[out] NumberOfPages   The number of pages in the page range that covers
++                              the initial SMRAM Save State Map.
++
++  @retval RETURN_SUCCESS      BaseAddress and NumberOfPages have been set on
++                              output.
++
++  @retval RETURN_UNSUPPORTED  SMM is unavailable.
++**/
++RETURN_STATUS
++EFIAPI
++MemEncryptSevLocateInitialSmramSaveStateMapPages (
++  OUT UINTN *BaseAddress,
++  OUT UINTN *NumberOfPages
++  )
++{
++  return RETURN_UNSUPPORTED;
++}
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
+similarity index 100%
+rename from OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+rename to OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
+new file mode 100644
+index 000000000000..5c337ea0b820
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
+@@ -0,0 +1,80 @@
++/** @file
++
++  Virtual Memory Management Services to set or clear the memory encryption bit
++
++  Copyright (c) 2020, AMD Incorporated. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/CpuLib.h>
++#include <Library/MemEncryptSevLib.h>
++
++#include "VirtualMemory.h"
++
++/**
++  This function clears memory encryption bit for the memory region specified by
++  PhysicalAddress and Length from the current page table context.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  PhysicalAddress         The physical address that is the start
++                                      address of a memory region.
++  @param[in]  Length                  The length of memory region
++  @param[in]  Flush                   Flush the caches before applying the
++                                      encryption mask
++
++  @retval RETURN_SUCCESS              The attributes were cleared for the
++                                      memory region.
++  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
++  @retval RETURN_UNSUPPORTED          Clearing the memory encyrption attribute
++                                      is not supported
++**/
++RETURN_STATUS
++EFIAPI
++InternalMemEncryptSevSetMemoryDecrypted (
++  IN  PHYSICAL_ADDRESS        Cr3BaseAddress,
++  IN  PHYSICAL_ADDRESS        PhysicalAddress,
++  IN  UINTN                   Length,
++  IN  BOOLEAN                 Flush
++  )
++{
++  //
++  // This function is not available during SEC.
++  //
++  return RETURN_UNSUPPORTED;
++}
++
++/**
++  This function sets memory encryption bit for the memory region specified by
++  PhysicalAddress and Length from the current page table context.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  PhysicalAddress         The physical address that is the start
++                                      address of a memory region.
++  @param[in]  Length                  The length of memory region
++  @param[in]  Flush                   Flush the caches before applying the
++                                      encryption mask
++
++  @retval RETURN_SUCCESS              The attributes were set for the memory
++                                      region.
++  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
++  @retval RETURN_UNSUPPORTED          Setting the memory encyrption attribute
++                                      is not supported
++**/
++RETURN_STATUS
++EFIAPI
++InternalMemEncryptSevSetMemoryEncrypted (
++  IN  PHYSICAL_ADDRESS        Cr3BaseAddress,
++  IN  PHYSICAL_ADDRESS        PhysicalAddress,
++  IN  UINTN                   Length,
++  IN  BOOLEAN                 Flush
++  )
++{
++  //
++  // This function is not available during SEC.
++  //
++  return RETURN_UNSUPPORTED;
++}
+-- 
+2.29.2
+
+
+From 631e7390bb074593b526ad88ece87e47dcd96c00 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:22 -0600
+Subject: [PATCH 12/15] OvmfPkg/MemEncryptSevLib: Address range encryption
+ state interface
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+Update the MemEncryptSevLib library to include an interface that can
+report the encryption state on a range of memory. The values will
+represent the range as being unencrypted, encrypted, a mix of unencrypted
+and encrypted, and error (e.g. ranges that aren't mapped).
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <0d98f4d42a2b67310c29bac7bcdcf1eda6835847.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit c330af0246ac9b1c37d17fc79881fc2dd96ec80c)
+---
+ OvmfPkg/Include/Library/MemEncryptSevLib.h    |  33 +++
+ .../DxeMemEncryptSevLib.inf                   |   1 +
+ .../Ia32/MemEncryptSevLib.c                   |  31 ++-
+ .../PeiMemEncryptSevLib.inf                   |   1 +
+ .../SecMemEncryptSevLib.inf                   |   1 +
+ .../X64/MemEncryptSevLib.c                    |  32 ++-
+ .../X64/PeiDxeVirtualMemory.c                 |  19 +-
+ .../X64/SecVirtualMemory.c                    |  20 ++
+ .../BaseMemEncryptSevLib/X64/VirtualMemory.c  | 207 ++++++++++++++++++
+ .../BaseMemEncryptSevLib/X64/VirtualMemory.h  |  35 ++-
+ 10 files changed, 368 insertions(+), 12 deletions(-)
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+
+diff --git a/OvmfPkg/Include/Library/MemEncryptSevLib.h b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+index 872abe6725dc..ec470b8d0363 100644
+--- a/OvmfPkg/Include/Library/MemEncryptSevLib.h
++++ b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+@@ -33,6 +33,16 @@ typedef struct _SEC_SEV_ES_WORK_AREA {
+   UINT64   EncryptionMask;
+ } SEC_SEV_ES_WORK_AREA;
+ 
++//
++// Memory encryption address range states.
++//
++typedef enum {
++  MemEncryptSevAddressRangeUnencrypted,
++  MemEncryptSevAddressRangeEncrypted,
++  MemEncryptSevAddressRangeMixed,
++  MemEncryptSevAddressRangeError,
++} MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE;
++
+ /**
+   Returns a boolean to indicate whether SEV-ES is enabled.
+ 
+@@ -147,4 +157,27 @@ MemEncryptSevGetEncryptionMask (
+   VOID
+   );
+ 
++/**
++  Returns the encryption state of the specified virtual address range.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  BaseAddress             Base address to check
++  @param[in]  Length                  Length of virtual address range
++
++  @retval MemEncryptSevAddressRangeUnencrypted  Address range is mapped
++                                                unencrypted
++  @retval MemEncryptSevAddressRangeEncrypted    Address range is mapped
++                                                encrypted
++  @retval MemEncryptSevAddressRangeMixed        Address range is mapped mixed
++  @retval MemEncryptSevAddressRangeError        Address range is not mapped
++**/
++MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE
++EFIAPI
++MemEncryptSevGetAddressRangeState (
++  IN PHYSICAL_ADDRESS         Cr3BaseAddress,
++  IN PHYSICAL_ADDRESS         BaseAddress,
++  IN UINTN                    Length
++  );
++
+ #endif // _MEM_ENCRYPT_SEV_LIB_H_
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+index 4480e4cc7c89..8e3b8ddd5a95 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+@@ -36,6 +36,7 @@ [Sources]
+ [Sources.X64]
+   X64/MemEncryptSevLib.c
+   X64/PeiDxeVirtualMemory.c
++  X64/VirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/Ia32/MemEncryptSevLib.c b/OvmfPkg/Library/BaseMemEncryptSevLib/Ia32/MemEncryptSevLib.c
+index b4f6e5738e6e..12a5bf495bd7 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/Ia32/MemEncryptSevLib.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/Ia32/MemEncryptSevLib.c
+@@ -2,7 +2,7 @@
+ 
+   Secure Encrypted Virtualization (SEV) library helper function
+ 
+-  Copyright (c) 2017, AMD Incorporated. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -82,3 +82,32 @@ MemEncryptSevSetPageEncMask (
+   //
+   return RETURN_UNSUPPORTED;
+ }
++
++/**
++  Returns the encryption state of the specified virtual address range.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  BaseAddress             Base address to check
++  @param[in]  Length                  Length of virtual address range
++
++  @retval MemEncryptSevAddressRangeUnencrypted  Address range is mapped
++                                                unencrypted
++  @retval MemEncryptSevAddressRangeEncrypted    Address range is mapped
++                                                encrypted
++  @retval MemEncryptSevAddressRangeMixed        Address range is mapped mixed
++  @retval MemEncryptSevAddressRangeError        Address range is not mapped
++**/
++MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE
++EFIAPI
++MemEncryptSevGetAddressRangeState (
++  IN PHYSICAL_ADDRESS         Cr3BaseAddress,
++  IN PHYSICAL_ADDRESS         BaseAddress,
++  IN UINTN                    Length
++  )
++{
++  //
++  // Memory is always encrypted in 32-bit mode
++  //
++  return MemEncryptSevAddressRangeEncrypted;
++}
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+index 0697f1dab502..03a78c32df28 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+@@ -36,6 +36,7 @@ [Sources]
+ [Sources.X64]
+   X64/MemEncryptSevLib.c
+   X64/PeiDxeVirtualMemory.c
++  X64/VirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+index 7cd0111fe47b..279c38bfbc2c 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+@@ -35,6 +35,7 @@ [Sources]
+ [Sources.X64]
+   X64/MemEncryptSevLib.c
+   X64/SecVirtualMemory.c
++  X64/VirtualMemory.c
+   X64/VirtualMemory.h
+ 
+ [Sources.IA32]
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/MemEncryptSevLib.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/MemEncryptSevLib.c
+index cf0921e21464..4fea6a6be0ac 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/MemEncryptSevLib.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/MemEncryptSevLib.c
+@@ -2,7 +2,7 @@
+ 
+   Secure Encrypted Virtualization (SEV) library helper function
+ 
+-  Copyright (c) 2017, AMD Incorporated. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -88,3 +88,33 @@ MemEncryptSevSetPageEncMask (
+            Flush
+            );
+ }
++
++/**
++  Returns the encryption state of the specified virtual address range.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  BaseAddress             Base address to check
++  @param[in]  Length                  Length of virtual address range
++
++  @retval MemEncryptSevAddressRangeUnencrypted  Address range is mapped
++                                                unencrypted
++  @retval MemEncryptSevAddressRangeEncrypted    Address range is mapped
++                                                encrypted
++  @retval MemEncryptSevAddressRangeMixed        Address range is mapped mixed
++  @retval MemEncryptSevAddressRangeError        Address range is not mapped
++**/
++MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE
++EFIAPI
++MemEncryptSevGetAddressRangeState (
++  IN PHYSICAL_ADDRESS         Cr3BaseAddress,
++  IN PHYSICAL_ADDRESS         BaseAddress,
++  IN UINTN                    Length
++  )
++{
++  return InternalMemEncryptSevGetAddressRangeState (
++           Cr3BaseAddress,
++           BaseAddress,
++           Length
++           );
++}
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
+index 3a5bab657bd7..d3455e812bd1 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
+@@ -28,14 +28,14 @@ typedef enum {
+ } MAP_RANGE_MODE;
+ 
+ /**
+-  Get the memory encryption mask
++  Return the pagetable memory encryption mask.
+ 
+-  @param[out]      EncryptionMask        contains the pte mask.
++  @return  The pagetable memory encryption mask.
+ 
+ **/
+-STATIC
+ UINT64
+-GetMemEncryptionAddressMask (
++EFIAPI
++InternalGetMemEncryptionAddressMask (
+   VOID
+   )
+ {
+@@ -200,7 +200,7 @@ Split2MPageTo4K (
+ 
+   PageTableEntry1 = PageTableEntry;
+ 
+-  AddressEncMask = GetMemEncryptionAddressMask ();
++  AddressEncMask = InternalGetMemEncryptionAddressMask ();
+ 
+   ASSERT (PageTableEntry != NULL);
+   ASSERT (*PageEntry2M & AddressEncMask);
+@@ -286,7 +286,7 @@ SetPageTablePoolReadOnly (
+   LevelSize[3] = SIZE_1GB;
+   LevelSize[4] = SIZE_512GB;
+ 
+-  AddressEncMask  = GetMemEncryptionAddressMask();
++  AddressEncMask  = InternalGetMemEncryptionAddressMask();
+   PageTable       = (UINT64 *)(UINTN)PageTableBase;
+   PoolUnitSize    = PAGE_TABLE_POOL_UNIT_SIZE;
+ 
+@@ -431,7 +431,7 @@ Split1GPageTo2M (
+ 
+   PageDirectoryEntry = AllocatePageTableMemory(1);
+ 
+-  AddressEncMask = GetMemEncryptionAddressMask ();
++  AddressEncMask = InternalGetMemEncryptionAddressMask ();
+   ASSERT (PageDirectoryEntry != NULL);
+   ASSERT (*PageEntry1G & AddressEncMask);
+   //
+@@ -485,7 +485,7 @@ SetOrClearCBit(
+ {
+   UINT64      AddressEncMask;
+ 
+-  AddressEncMask = GetMemEncryptionAddressMask ();
++  AddressEncMask = InternalGetMemEncryptionAddressMask ();
+ 
+   if (Mode == SetCBit) {
+     *PageTablePointer |= AddressEncMask;
+@@ -527,6 +527,7 @@ DisableReadOnlyPageWriteProtect (
+ /**
+  Enable Write Protect on pages marked as read-only.
+ **/
++STATIC
+ VOID
+ EnableReadOnlyPageWriteProtect (
+   VOID
+@@ -605,7 +606,7 @@ SetMemoryEncDec (
+   //
+   // Check if we have a valid memory encryption mask
+   //
+-  AddressEncMask = GetMemEncryptionAddressMask ();
++  AddressEncMask = InternalGetMemEncryptionAddressMask ();
+   if (!AddressEncMask) {
+     return RETURN_ACCESS_DENIED;
+   }
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
+index 5c337ea0b820..bca5e3febb1b 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
+@@ -13,6 +13,26 @@
+ 
+ #include "VirtualMemory.h"
+ 
++/**
++  Return the pagetable memory encryption mask.
++
++  @return  The pagetable memory encryption mask.
++
++**/
++UINT64
++EFIAPI
++InternalGetMemEncryptionAddressMask (
++  VOID
++  )
++{
++  UINT64                            EncryptionMask;
++
++  EncryptionMask = MemEncryptSevGetEncryptionMask ();
++  EncryptionMask &= PAGING_1G_ADDRESS_MASK_64;
++
++  return EncryptionMask;
++}
++
+ /**
+   This function clears memory encryption bit for the memory region specified by
+   PhysicalAddress and Length from the current page table context.
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+new file mode 100644
+index 000000000000..36aabcf556a7
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+@@ -0,0 +1,207 @@
++/** @file
++
++  Virtual Memory Management Services to test an address range encryption state
++
++  Copyright (c) 2020, AMD Incorporated. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/CpuLib.h>
++#include <Library/MemEncryptSevLib.h>
++
++#include "VirtualMemory.h"
++
++/**
++  Returns the (updated) address range state based upon the page table
++  entry.
++
++  @param[in]  CurrentState            The current address range state
++  @param[in]  PageDirectoryEntry      The page table entry to check
++  @param[in]  AddressEncMask          The encryption mask
++
++  @retval MemEncryptSevAddressRangeUnencrypted  Address range is mapped
++                                                unencrypted
++  @retval MemEncryptSevAddressRangeEncrypted    Address range is mapped
++                                                encrypted
++  @retval MemEncryptSevAddressRangeMixed        Address range is mapped mixed
++**/
++STATIC
++MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE
++UpdateAddressState (
++  IN MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE  CurrentState,
++  IN UINT64                               PageDirectoryEntry,
++  IN UINT64                               AddressEncMask
++  )
++{
++  if (CurrentState == MemEncryptSevAddressRangeEncrypted) {
++    if ((PageDirectoryEntry & AddressEncMask) == 0) {
++      CurrentState = MemEncryptSevAddressRangeMixed;
++    }
++  } else if (CurrentState == MemEncryptSevAddressRangeUnencrypted) {
++    if ((PageDirectoryEntry & AddressEncMask) != 0) {
++      CurrentState = MemEncryptSevAddressRangeMixed;
++    }
++  } else if (CurrentState == MemEncryptSevAddressRangeError) {
++    //
++    // First address check, set initial state
++    //
++    if ((PageDirectoryEntry & AddressEncMask) == 0) {
++      CurrentState = MemEncryptSevAddressRangeUnencrypted;
++    } else {
++      CurrentState = MemEncryptSevAddressRangeEncrypted;
++    }
++  }
++
++  return CurrentState;
++}
++
++/**
++  Returns the encryption state of the specified virtual address range.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  BaseAddress             Base address to check
++  @param[in]  Length                  Length of virtual address range
++
++  @retval MemEncryptSevAddressRangeUnencrypted  Address range is mapped
++                                                unencrypted
++  @retval MemEncryptSevAddressRangeEncrypted    Address range is mapped
++                                                encrypted
++  @retval MemEncryptSevAddressRangeMixed        Address range is mapped mixed
++  @retval MemEncryptSevAddressRangeError        Address range is not mapped
++**/
++MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE
++EFIAPI
++InternalMemEncryptSevGetAddressRangeState (
++  IN PHYSICAL_ADDRESS  Cr3BaseAddress,
++  IN PHYSICAL_ADDRESS  BaseAddress,
++  IN UINTN             Length
++  )
++{
++  PAGE_MAP_AND_DIRECTORY_POINTER       *PageMapLevel4Entry;
++  PAGE_MAP_AND_DIRECTORY_POINTER       *PageUpperDirectoryPointerEntry;
++  PAGE_MAP_AND_DIRECTORY_POINTER       *PageDirectoryPointerEntry;
++  PAGE_TABLE_1G_ENTRY                  *PageDirectory1GEntry;
++  PAGE_TABLE_ENTRY                     *PageDirectory2MEntry;
++  PAGE_TABLE_4K_ENTRY                  *PageTableEntry;
++  UINT64                               AddressEncMask;
++  UINT64                               PgTableMask;
++  PHYSICAL_ADDRESS                     Address;
++  PHYSICAL_ADDRESS                     AddressEnd;
++  MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE  State;
++
++  //
++  // If Cr3BaseAddress is not specified then read the current CR3
++  //
++  if (Cr3BaseAddress == 0) {
++    Cr3BaseAddress = AsmReadCr3();
++  }
++
++  AddressEncMask = MemEncryptSevGetEncryptionMask ();
++  AddressEncMask &= PAGING_1G_ADDRESS_MASK_64;
++
++  PgTableMask = AddressEncMask | EFI_PAGE_MASK;
++
++  State = MemEncryptSevAddressRangeError;
++
++  //
++  // Encryption is on a page basis, so start at the beginning of the
++  // virtual address page boundary and walk page-by-page.
++  //
++  Address = (PHYSICAL_ADDRESS) (UINTN) BaseAddress & ~EFI_PAGE_MASK;
++  AddressEnd = (PHYSICAL_ADDRESS)
++                 (UINTN) (BaseAddress + Length);
++
++  while (Address < AddressEnd) {
++    PageMapLevel4Entry = (VOID*) (Cr3BaseAddress & ~PgTableMask);
++    PageMapLevel4Entry += PML4_OFFSET (Address);
++    if (!PageMapLevel4Entry->Bits.Present) {
++      return MemEncryptSevAddressRangeError;
++    }
++
++    PageDirectory1GEntry = (VOID *) (
++                             (PageMapLevel4Entry->Bits.PageTableBaseAddress <<
++                              12) & ~PgTableMask
++                             );
++    PageDirectory1GEntry += PDP_OFFSET (Address);
++    if (!PageDirectory1GEntry->Bits.Present) {
++      return MemEncryptSevAddressRangeError;
++    }
++
++    //
++    // If the MustBe1 bit is not 1, it's not actually a 1GB entry
++    //
++    if (PageDirectory1GEntry->Bits.MustBe1) {
++      //
++      // Valid 1GB page
++      //
++      State = UpdateAddressState (
++                State,
++                PageDirectory1GEntry->Uint64,
++                AddressEncMask
++                );
++
++      Address += BIT30;
++      continue;
++    }
++
++    //
++    // Actually a PDP
++    //
++    PageUpperDirectoryPointerEntry =
++      (PAGE_MAP_AND_DIRECTORY_POINTER *) PageDirectory1GEntry;
++    PageDirectory2MEntry =
++      (VOID *) (
++        (PageUpperDirectoryPointerEntry->Bits.PageTableBaseAddress <<
++         12) & ~PgTableMask
++        );
++    PageDirectory2MEntry += PDE_OFFSET (Address);
++    if (!PageDirectory2MEntry->Bits.Present) {
++      return MemEncryptSevAddressRangeError;
++    }
++
++    //
++    // If the MustBe1 bit is not a 1, it's not a 2MB entry
++    //
++    if (PageDirectory2MEntry->Bits.MustBe1) {
++      //
++      // Valid 2MB page
++      //
++      State = UpdateAddressState (
++                State,
++                PageDirectory2MEntry->Uint64,
++                AddressEncMask
++                );
++
++      Address += BIT21;
++      continue;
++    }
++
++    //
++    // Actually a PMD
++    //
++    PageDirectoryPointerEntry =
++      (PAGE_MAP_AND_DIRECTORY_POINTER *)PageDirectory2MEntry;
++    PageTableEntry =
++      (VOID *)(
++        (PageDirectoryPointerEntry->Bits.PageTableBaseAddress <<
++         12) & ~PgTableMask
++        );
++    PageTableEntry += PTE_OFFSET (Address);
++    if (!PageTableEntry->Bits.Present) {
++      return MemEncryptSevAddressRangeError;
++    }
++
++    State = UpdateAddressState (
++              State,
++              PageTableEntry->Uint64,
++              AddressEncMask
++              );
++
++    Address += EFI_PAGE_SIZE;
++  }
++
++  return State;
++}
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.h b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.h
+index 26d26cd922a4..996f94f07ebb 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.h
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.h
+@@ -3,7 +3,7 @@
+   Virtual Memory Management Services to set or clear the memory encryption bit
+ 
+   Copyright (c) 2006 - 2016, Intel Corporation. All rights reserved.<BR>
+-  Copyright (c) 2017, AMD Incorporated. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -178,7 +178,17 @@ typedef struct {
+   UINTN           FreePages;
+ } PAGE_TABLE_POOL;
+ 
++/**
++  Return the pagetable memory encryption mask.
+ 
++  @return  The pagetable memory encryption mask.
++
++**/
++UINT64
++EFIAPI
++InternalGetMemEncryptionAddressMask (
++  VOID
++  );
+ 
+ /**
+   This function clears memory encryption bit for the memory region specified by
+@@ -234,4 +244,27 @@ InternalMemEncryptSevSetMemoryEncrypted (
+   IN  BOOLEAN                 Flush
+   );
+ 
++/**
++  Returns the encryption state of the specified virtual address range.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  BaseAddress             Base address to check
++  @param[in]  Length                  Length of virtual address range
++
++  @retval MemEncryptSevAddressRangeUnencrypted  Address range is mapped
++                                                unencrypted
++  @retval MemEncryptSevAddressRangeEncrypted    Address range is mapped
++                                                encrypted
++  @retval MemEncryptSevAddressRangeMixed        Address range is mapped mixed
++  @retval MemEncryptSevAddressRangeError        Address range is not mapped
++**/
++MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE
++EFIAPI
++InternalMemEncryptSevGetAddressRangeState (
++  IN PHYSICAL_ADDRESS         Cr3BaseAddress,
++  IN PHYSICAL_ADDRESS         BaseAddress,
++  IN UINTN                    Length
++  );
++
+ #endif
+-- 
+2.29.2
+
+
+From 540e713d8309f937bbdeebc2541715d7b1dbf8cc Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:23 -0600
+Subject: [PATCH 13/15] OvmfPkg/VmgExitLib: Support nested #VCs
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+In order to be able to issue messages or make interface calls that cause
+another #VC (e.g. GetLocalApicBaseAddress () issues RDMSR), add support
+for nested #VCs.
+
+In order to support nested #VCs, GHCB backup pages are required. If a #VC
+is received while currently processing a #VC, a backup of the current GHCB
+content is made. This allows the #VC handler to continue processing the
+new #VC. Upon completion of the new #VC, the GHCB is restored from the
+backup page. The #VC recursion level is tracked in the per-vCPU variable
+area.
+
+Support is added to handle up to one nested #VC (or two #VCs total). If
+a second nested #VC is encountered, an ASSERT will be issued and the vCPU
+will enter CpuDeadLoop ().
+
+For SEC, the GHCB backup pages are reserved in the OvmfPkgX64.fdf memory
+layout, with two new fixed PCDs to provide the address and size of the
+backup area.
+
+For PEI/DXE, the GHCB backup pages are allocated as boot services pages
+using the memory allocation library.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <ac2e8203fc41a351b43f60d68bdad6b57c4fb106.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 5667dc43d82396589d2fabd790e7f6a214386969)
+
+NOTE:
+Skip OvmfPkg/AmdSev/AmdSevX64.dsc and OvmfPkg/AmdSev/AmdSevX64.fdf
+---
+ OvmfPkg/Include/Library/MemEncryptSevLib.h    |  23 ++++
+ .../VmgExitLib/PeiDxeVmgExitVcHandler.c       | 103 +++++++++++++++++
+ .../{VmgExitLib.inf => SecVmgExitLib.inf}     |  13 ++-
+ .../Library/VmgExitLib/SecVmgExitVcHandler.c  | 109 ++++++++++++++++++
+ OvmfPkg/Library/VmgExitLib/VmgExitLib.inf     |   4 +-
+ OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c |  48 ++++----
+ OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.h |  53 +++++++++
+ OvmfPkg/OvmfPkg.dec                           |   2 +
+ OvmfPkg/OvmfPkgX64.dsc                        |   1 +
+ OvmfPkg/OvmfPkgX64.fdf                        |   3 +
+ OvmfPkg/PlatformPei/AmdSev.c                  |  38 +++++-
+ 11 files changed, 367 insertions(+), 30 deletions(-)
+ create mode 100644 OvmfPkg/Library/VmgExitLib/PeiDxeVmgExitVcHandler.c
+ copy OvmfPkg/Library/VmgExitLib/{VmgExitLib.inf => SecVmgExitLib.inf} (61%)
+ create mode 100644 OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c
+ create mode 100644 OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.h
+
+diff --git a/OvmfPkg/Include/Library/MemEncryptSevLib.h b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+index ec470b8d0363..99f15a7d1271 100644
+--- a/OvmfPkg/Include/Library/MemEncryptSevLib.h
++++ b/OvmfPkg/Include/Library/MemEncryptSevLib.h
+@@ -13,6 +13,29 @@
+ 
+ #include <Base.h>
+ 
++//
++// Define the maximum number of #VCs allowed (e.g. the level of nesting
++// that is allowed => 2 allows for 1 nested #VCs). I this value is changed,
++// be sure to increase the size of
++//   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupSize
++// in any FDF file using this PCD.
++//
++#define VMGEXIT_MAXIMUM_VC_COUNT   2
++
++//
++// Per-CPU data mapping structure
++//   Use UINT32 for cached indicators and compare to a specific value
++//   so that the hypervisor can't indicate a value is cached by just
++//   writing random data to that area.
++//
++typedef struct {
++  UINT32  Dr7Cached;
++  UINT64  Dr7;
++
++  UINTN   VcCount;
++  VOID    *GhcbBackupPages;
++} SEV_ES_PER_CPU_DATA;
++
+ //
+ // Internal structure for holding SEV-ES information needed during SEC phase
+ // and valid only during SEC phase and early PEI during platform
+diff --git a/OvmfPkg/Library/VmgExitLib/PeiDxeVmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/PeiDxeVmgExitVcHandler.c
+new file mode 100644
+index 000000000000..fb4942df37ca
+--- /dev/null
++++ b/OvmfPkg/Library/VmgExitLib/PeiDxeVmgExitVcHandler.c
+@@ -0,0 +1,103 @@
++/** @file
++  X64 #VC Exception Handler functon.
++
++  Copyright (C) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Base.h>
++#include <Uefi.h>
++#include <Library/BaseMemoryLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Library/VmgExitLib.h>
++#include <Register/Amd/Msr.h>
++
++#include "VmgExitVcHandler.h"
++
++/**
++  Handle a #VC exception.
++
++  Performs the necessary processing to handle a #VC exception.
++
++  @param[in, out]  ExceptionType  Pointer to an EFI_EXCEPTION_TYPE to be set
++                                  as value to use on error.
++  @param[in, out]  SystemContext  Pointer to EFI_SYSTEM_CONTEXT
++
++  @retval  EFI_SUCCESS            Exception handled
++  @retval  EFI_UNSUPPORTED        #VC not supported, (new) exception value to
++                                  propagate provided
++  @retval  EFI_PROTOCOL_ERROR     #VC handling failed, (new) exception value to
++                                  propagate provided
++
++**/
++EFI_STATUS
++EFIAPI
++VmgExitHandleVc (
++  IN OUT EFI_EXCEPTION_TYPE  *ExceptionType,
++  IN OUT EFI_SYSTEM_CONTEXT  SystemContext
++  )
++{
++  MSR_SEV_ES_GHCB_REGISTER  Msr;
++  GHCB                      *Ghcb;
++  GHCB                      *GhcbBackup;
++  EFI_STATUS                VcRet;
++  BOOLEAN                   InterruptState;
++  SEV_ES_PER_CPU_DATA       *SevEsData;
++
++  InterruptState = GetInterruptState ();
++  if (InterruptState) {
++    DisableInterrupts ();
++  }
++
++  Msr.GhcbPhysicalAddress = AsmReadMsr64 (MSR_SEV_ES_GHCB);
++  ASSERT (Msr.GhcbInfo.Function == 0);
++  ASSERT (Msr.Ghcb != 0);
++
++  Ghcb = Msr.Ghcb;
++  GhcbBackup = NULL;
++
++  SevEsData = (SEV_ES_PER_CPU_DATA *) (Ghcb + 1);
++  SevEsData->VcCount++;
++
++  //
++  // Check for maximum PEI/DXE #VC nesting.
++  //
++  if (SevEsData->VcCount > VMGEXIT_MAXIMUM_VC_COUNT) {
++    VmgExitIssueAssert (SevEsData);
++  } else if (SevEsData->VcCount > 1) {
++    //
++    // Nested #VC
++    //
++    if (SevEsData->GhcbBackupPages == NULL) {
++      VmgExitIssueAssert (SevEsData);
++    }
++
++    //
++    // Save the active GHCB to a backup page.
++    //   To access the correct backup page, increment the backup page pointer
++    //   based on the current VcCount.
++    //
++    GhcbBackup = (GHCB *) SevEsData->GhcbBackupPages;
++    GhcbBackup += (SevEsData->VcCount - 2);
++
++    CopyMem (GhcbBackup, Ghcb, sizeof (*Ghcb));
++  }
++
++  VcRet = InternalVmgExitHandleVc (Ghcb, ExceptionType, SystemContext);
++
++  if (GhcbBackup != NULL) {
++    //
++    // Restore the active GHCB from the backup page.
++    //
++    CopyMem (Ghcb, GhcbBackup, sizeof (*Ghcb));
++  }
++
++  SevEsData->VcCount--;
++
++  if (InterruptState) {
++    EnableInterrupts ();
++  }
++
++  return VcRet;
++}
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf b/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
+similarity index 61%
+copy from OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
+copy to OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
+index d003ac63173e..df14de3c21bc 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
++++ b/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
+@@ -8,11 +8,11 @@
+ 
+ [Defines]
+   INF_VERSION                    = 0x00010005
+-  BASE_NAME                      = VmgExitLib
+-  FILE_GUID                      = 0e923c25-13cd-430b-8714-ffe85652a97b
++  BASE_NAME                      = SecVmgExitLib
++  FILE_GUID                      = dafff819-f86c-4cff-a70e-83161e5bcf9a
+   MODULE_TYPE                    = BASE
+   VERSION_STRING                 = 1.0
+-  LIBRARY_CLASS                  = VmgExitLib
++  LIBRARY_CLASS                  = VmgExitLib|SEC
+ 
+ #
+ # The following information is for reference only and not required by the build tools.
+@@ -23,6 +23,8 @@ [Defines]
+ [Sources.common]
+   VmgExitLib.c
+   VmgExitVcHandler.c
++  VmgExitVcHandler.h
++  SecVmgExitVcHandler.c
+ 
+ [Packages]
+   MdePkg/MdePkg.dec
+@@ -33,4 +35,9 @@ [LibraryClasses]
+   BaseLib
+   BaseMemoryLib
+   DebugLib
++  PcdLib
++
++[FixedPcd]
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupBase
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupSize
+ 
+diff --git a/OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c
+new file mode 100644
+index 000000000000..85853d334b35
+--- /dev/null
++++ b/OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c
+@@ -0,0 +1,109 @@
++/** @file
++  X64 #VC Exception Handler functon.
++
++  Copyright (C) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Base.h>
++#include <Uefi.h>
++#include <Library/BaseMemoryLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Library/VmgExitLib.h>
++#include <Register/Amd/Msr.h>
++
++#include "VmgExitVcHandler.h"
++
++/**
++  Handle a #VC exception.
++
++  Performs the necessary processing to handle a #VC exception.
++
++  @param[in, out]  ExceptionType  Pointer to an EFI_EXCEPTION_TYPE to be set
++                                  as value to use on error.
++  @param[in, out]  SystemContext  Pointer to EFI_SYSTEM_CONTEXT
++
++  @retval  EFI_SUCCESS            Exception handled
++  @retval  EFI_UNSUPPORTED        #VC not supported, (new) exception value to
++                                  propagate provided
++  @retval  EFI_PROTOCOL_ERROR     #VC handling failed, (new) exception value to
++                                  propagate provided
++
++**/
++EFI_STATUS
++EFIAPI
++VmgExitHandleVc (
++  IN OUT EFI_EXCEPTION_TYPE  *ExceptionType,
++  IN OUT EFI_SYSTEM_CONTEXT  SystemContext
++  )
++{
++  MSR_SEV_ES_GHCB_REGISTER  Msr;
++  GHCB                      *Ghcb;
++  GHCB                      *GhcbBackup;
++  EFI_STATUS                VcRet;
++  BOOLEAN                   InterruptState;
++  SEV_ES_PER_CPU_DATA       *SevEsData;
++
++  InterruptState = GetInterruptState ();
++  if (InterruptState) {
++    DisableInterrupts ();
++  }
++
++  Msr.GhcbPhysicalAddress = AsmReadMsr64 (MSR_SEV_ES_GHCB);
++  ASSERT (Msr.GhcbInfo.Function == 0);
++  ASSERT (Msr.Ghcb != 0);
++
++  Ghcb = Msr.Ghcb;
++  GhcbBackup = NULL;
++
++  SevEsData = (SEV_ES_PER_CPU_DATA *) (Ghcb + 1);
++  SevEsData->VcCount++;
++
++  //
++  // Check for maximum SEC #VC nesting.
++  //
++  if (SevEsData->VcCount > VMGEXIT_MAXIMUM_VC_COUNT) {
++    VmgExitIssueAssert (SevEsData);
++  } else if (SevEsData->VcCount > 1) {
++    UINTN  GhcbBackupSize;
++
++    //
++    // Be sure that the proper amount of pages are allocated
++    //
++    GhcbBackupSize = (VMGEXIT_MAXIMUM_VC_COUNT - 1) * sizeof (*Ghcb);
++    if (GhcbBackupSize > FixedPcdGet32 (PcdOvmfSecGhcbBackupSize)) {
++      //
++      // Not enough SEC backup pages allocated.
++      //
++      VmgExitIssueAssert (SevEsData);
++    }
++
++    //
++    // Save the active GHCB to a backup page.
++    //   To access the correct backup page, increment the backup page pointer
++    //   based on the current VcCount.
++    //
++    GhcbBackup = (GHCB *) FixedPcdGet32 (PcdOvmfSecGhcbBackupBase);
++    GhcbBackup += (SevEsData->VcCount - 2);
++
++    CopyMem (GhcbBackup, Ghcb, sizeof (*Ghcb));
++  }
++
++  VcRet = InternalVmgExitHandleVc (Ghcb, ExceptionType, SystemContext);
++
++  if (GhcbBackup != NULL) {
++    //
++    // Restore the active GHCB from the backup page.
++    //
++    CopyMem (Ghcb, GhcbBackup, sizeof (*Ghcb));
++  }
++
++  SevEsData->VcCount--;
++
++  if (InterruptState) {
++    EnableInterrupts ();
++  }
++
++  return VcRet;
++}
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf b/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
+index d003ac63173e..b3c3e56ecff8 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
+@@ -12,7 +12,7 @@ [Defines]
+   FILE_GUID                      = 0e923c25-13cd-430b-8714-ffe85652a97b
+   MODULE_TYPE                    = BASE
+   VERSION_STRING                 = 1.0
+-  LIBRARY_CLASS                  = VmgExitLib
++  LIBRARY_CLASS                  = VmgExitLib|PEIM DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
+ 
+ #
+ # The following information is for reference only and not required by the build tools.
+@@ -23,6 +23,8 @@ [Defines]
+ [Sources.common]
+   VmgExitLib.c
+   VmgExitVcHandler.c
++  VmgExitVcHandler.h
++  PeiDxeVmgExitVcHandler.c
+ 
+ [Packages]
+   MdePkg/MdePkg.dec
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+index 5149ab2bc989..ce577e4677eb 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+@@ -9,11 +9,14 @@
+ #include <Base.h>
+ #include <Uefi.h>
+ #include <Library/BaseMemoryLib.h>
++#include <Library/MemEncryptSevLib.h>
+ #include <Library/VmgExitLib.h>
+ #include <Register/Amd/Msr.h>
+ #include <Register/Intel/Cpuid.h>
+ #include <IndustryStandard/InstructionParsing.h>
+ 
++#include "VmgExitVcHandler.h"
++
+ //
+ // Instruction execution mode definition
+ //
+@@ -126,18 +129,6 @@ UINT64
+   SEV_ES_INSTRUCTION_DATA  *InstructionData
+   );
+ 
+-//
+-// Per-CPU data mapping structure
+-//   Use UINT32 for cached indicators and compare to a specific value
+-//   so that the hypervisor can't indicate a value is cached by just
+-//   writing random data to that area.
+-//
+-typedef struct {
+-  UINT32  Dr7Cached;
+-  UINT64  Dr7;
+-} SEV_ES_PER_CPU_DATA;
+-
+-
+ /**
+   Return a pointer to the contents of the specified register.
+ 
+@@ -1546,6 +1537,7 @@ Dr7ReadExit (
+ 
+   Performs the necessary processing to handle a #VC exception.
+ 
++  @param[in, out]  Ghcb           Pointer to the GHCB
+   @param[in, out]  ExceptionType  Pointer to an EFI_EXCEPTION_TYPE to be set
+                                   as value to use on error.
+   @param[in, out]  SystemContext  Pointer to EFI_SYSTEM_CONTEXT
+@@ -1559,14 +1551,13 @@ Dr7ReadExit (
+ **/
+ EFI_STATUS
+ EFIAPI
+-VmgExitHandleVc (
++InternalVmgExitHandleVc (
++  IN OUT GHCB                *Ghcb,
+   IN OUT EFI_EXCEPTION_TYPE  *ExceptionType,
+   IN OUT EFI_SYSTEM_CONTEXT  SystemContext
+   )
+ {
+-  MSR_SEV_ES_GHCB_REGISTER  Msr;
+   EFI_SYSTEM_CONTEXT_X64    *Regs;
+-  GHCB                      *Ghcb;
+   NAE_EXIT                  NaeExit;
+   SEV_ES_INSTRUCTION_DATA   InstructionData;
+   UINT64                    ExitCode, Status;
+@@ -1575,12 +1566,7 @@ VmgExitHandleVc (
+ 
+   VcRet = EFI_SUCCESS;
+ 
+-  Msr.GhcbPhysicalAddress = AsmReadMsr64 (MSR_SEV_ES_GHCB);
+-  ASSERT (Msr.GhcbInfo.Function == 0);
+-  ASSERT (Msr.Ghcb != 0);
+-
+   Regs = SystemContext.SystemContextX64;
+-  Ghcb = Msr.Ghcb;
+ 
+   VmgInit (Ghcb, &InterruptState);
+ 
+@@ -1670,3 +1656,25 @@ VmgExitHandleVc (
+ 
+   return VcRet;
+ }
++
++/**
++  Routine to allow ASSERT from within #VC.
++
++  @param[in, out]  SevEsData  Pointer to the per-CPU data
++
++**/
++VOID
++EFIAPI
++VmgExitIssueAssert (
++  IN OUT SEV_ES_PER_CPU_DATA  *SevEsData
++  )
++{
++  //
++  // Progress will be halted, so set VcCount to allow for ASSERT output
++  // to be seen.
++  //
++  SevEsData->VcCount = 0;
++
++  ASSERT (FALSE);
++  CpuDeadLoop ();
++}
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.h b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.h
+new file mode 100644
+index 000000000000..3a37cb04f616
+--- /dev/null
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.h
+@@ -0,0 +1,53 @@
++/** @file
++  X64 #VC Exception Handler functon header file.
++
++  Copyright (C) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#ifndef __VMG_EXIT_VC_HANDLER_H__
++#define __VMG_EXIT_VC_HANDLER_H__
++
++#include <Base.h>
++#include <Uefi.h>
++#include <Library/VmgExitLib.h>
++
++/**
++  Handle a #VC exception.
++
++  Performs the necessary processing to handle a #VC exception.
++
++  @param[in, out]  Ghcb           Pointer to the GHCB
++  @param[in, out]  ExceptionType  Pointer to an EFI_EXCEPTION_TYPE to be set
++                                  as value to use on error.
++  @param[in, out]  SystemContext  Pointer to EFI_SYSTEM_CONTEXT
++
++  @retval  EFI_SUCCESS            Exception handled
++  @retval  EFI_UNSUPPORTED        #VC not supported, (new) exception value to
++                                  propagate provided
++  @retval  EFI_PROTOCOL_ERROR     #VC handling failed, (new) exception value to
++                                  propagate provided
++
++**/
++EFI_STATUS
++EFIAPI
++InternalVmgExitHandleVc (
++  IN OUT GHCB                *Ghcb,
++  IN OUT EFI_EXCEPTION_TYPE  *ExceptionType,
++  IN OUT EFI_SYSTEM_CONTEXT  SystemContext
++  );
++
++/**
++  Routine to allow ASSERT from within #VC.
++
++  @param[in, out]  SevEsData  Pointer to the per-CPU data
++
++**/
++VOID
++EFIAPI
++VmgExitIssueAssert (
++  IN OUT SEV_ES_PER_CPU_DATA  *SevEsData
++  );
++
++#endif
+diff --git a/OvmfPkg/OvmfPkg.dec b/OvmfPkg/OvmfPkg.dec
+index 6abde4fd9351..3ac4f1ce5565 100644
+--- a/OvmfPkg/OvmfPkg.dec
++++ b/OvmfPkg/OvmfPkg.dec
+@@ -302,6 +302,8 @@ [PcdsFixedAtBuild]
+   ## The base address of the SEC GHCB page used by SEV-ES.
+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBase|0|UINT32|0x40
+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbSize|0|UINT32|0x41
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupBase|0|UINT32|0x44
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupSize|0|UINT32|0x45
+ 
+ [PcdsDynamic, PcdsDynamicEx]
+   gUefiOvmfPkgTokenSpaceGuid.PcdEmuVariableEvent|0|UINT64|2
+diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
+index 59b664c63377..2f005850f4cc 100644
+--- a/OvmfPkg/OvmfPkgX64.dsc
++++ b/OvmfPkg/OvmfPkgX64.dsc
+@@ -264,6 +264,7 @@ [LibraryClasses.common.SEC]
+ !else
+   CpuExceptionHandlerLib|UefiCpuPkg/Library/CpuExceptionHandlerLib/SecPeiCpuExceptionHandlerLib.inf
+ !endif
++  VmgExitLib|OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
+ 
+ [LibraryClasses.common.PEI_CORE]
+   HobLib|MdePkg/Library/PeiHobLib/PeiHobLib.inf
+diff --git a/OvmfPkg/OvmfPkgX64.fdf b/OvmfPkg/OvmfPkgX64.fdf
+index 17ba9e177ac3..31fe58566bb5 100644
+--- a/OvmfPkg/OvmfPkgX64.fdf
++++ b/OvmfPkg/OvmfPkgX64.fdf
+@@ -85,6 +85,9 @@ [FD.MEMFD]
+ 0x00B000|0x001000
+ gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase|gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaSize
+ 
++0x00C000|0x001000
++gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupBase|gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupSize
++
+ 0x010000|0x010000
+ gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecPeiTempRamBase|gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecPeiTempRamSize
+ 
+diff --git a/OvmfPkg/PlatformPei/AmdSev.c b/OvmfPkg/PlatformPei/AmdSev.c
+index 954d53eba4e8..dddffdebda4b 100644
+--- a/OvmfPkg/PlatformPei/AmdSev.c
++++ b/OvmfPkg/PlatformPei/AmdSev.c
+@@ -33,12 +33,17 @@ AmdSevEsInitialize (
+   VOID
+   )
+ {
+-  VOID              *GhcbBase;
+-  PHYSICAL_ADDRESS  GhcbBasePa;
+-  UINTN             GhcbPageCount, PageCount;
+-  RETURN_STATUS     PcdStatus, DecryptStatus;
+-  IA32_DESCRIPTOR   Gdtr;
+-  VOID              *Gdt;
++  UINT8                *GhcbBase;
++  PHYSICAL_ADDRESS     GhcbBasePa;
++  UINTN                GhcbPageCount;
++  UINT8                *GhcbBackupBase;
++  UINT8                *GhcbBackupPages;
++  UINTN                GhcbBackupPageCount;
++  SEV_ES_PER_CPU_DATA  *SevEsData;
++  UINTN                PageCount;
++  RETURN_STATUS        PcdStatus, DecryptStatus;
++  IA32_DESCRIPTOR      Gdtr;
++  VOID                 *Gdt;
+ 
+   if (!MemEncryptSevEsIsEnabled ()) {
+     return;
+@@ -84,6 +89,27 @@ AmdSevEsInitialize (
+     "SEV-ES is enabled, %lu GHCB pages allocated starting at 0x%p\n",
+     (UINT64)GhcbPageCount, GhcbBase));
+ 
++  //
++  // Allocate #VC recursion backup pages. The number of backup pages needed is
++  // one less than the maximum VC count.
++  //
++  GhcbBackupPageCount = mMaxCpuCount * (VMGEXIT_MAXIMUM_VC_COUNT - 1);
++  GhcbBackupBase = AllocatePages (GhcbBackupPageCount);
++  ASSERT (GhcbBackupBase != NULL);
++
++  GhcbBackupPages = GhcbBackupBase;
++  for (PageCount = 1; PageCount < GhcbPageCount; PageCount += 2) {
++    SevEsData =
++      (SEV_ES_PER_CPU_DATA *)(GhcbBase + EFI_PAGES_TO_SIZE (PageCount));
++    SevEsData->GhcbBackupPages = GhcbBackupPages;
++
++    GhcbBackupPages += EFI_PAGE_SIZE * (VMGEXIT_MAXIMUM_VC_COUNT - 1);
++  }
++
++  DEBUG ((DEBUG_INFO,
++    "SEV-ES is enabled, %lu GHCB backup pages allocated starting at 0x%p\n",
++    (UINT64)GhcbBackupPageCount, GhcbBackupBase));
++
+   AsmWriteMsr64 (MSR_SEV_ES_GHCB, GhcbBasePa);
+ 
+   //
+-- 
+2.29.2
+
+
+From 028df385ac90f6892fcf688861b8fd642131ee15 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:24 -0600
+Subject: [PATCH 14/15] OvmfPkg/PlatformPei: Reserve GHCB backup pages if S3 is
+ supported
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+Protect the GHCB backup pages used by an SEV-ES guest when S3 is
+supported.
+
+Regarding the lifecycle of the GHCB backup pages:
+  PcdOvmfSecGhcbBackupBase
+
+(a) when and how it is initialized after first boot of the VM
+
+  If SEV-ES is enabled, the GHCB backup pages are initialized when a
+  nested #VC is received during the SEC phase
+  [OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c].
+
+(b) how it is protected from memory allocations during DXE
+
+  If S3 and SEV-ES are enabled, then InitializeRamRegions()
+  [OvmfPkg/PlatformPei/MemDetect.c] protects the ranges with an AcpiNVS
+  memory allocation HOB, in PEI.
+
+  If S3 is disabled, then these ranges are not protected. PEI switches to
+  the GHCB backup pages in permanent PEI memory and DXE will use these
+  PEI GHCB backup pages, so we don't have to preserve
+  PcdOvmfSecGhcbBackupBase.
+
+(c) how it is protected from the OS
+
+  If S3 is enabled, then (b) reserves it from the OS too.
+
+  If S3 is disabled, then the range needs no protection.
+
+(d) how it is accessed on the S3 resume path
+
+  It is rewritten same as in (a), which is fine because (b) reserved it.
+
+(e) how it is accessed on the warm reset path
+
+  It is rewritten same as in (a).
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Cc: Julien Grall <julien@xen.org>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <119102a3d14caa70d81aee334a2e0f3f925e1a60.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 362654246ae886e11287f44c6aaa53f17e1f2867)
+---
+ OvmfPkg/PlatformPei/MemDetect.c     | 5 +++++
+ OvmfPkg/PlatformPei/PlatformPei.inf | 2 ++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/OvmfPkg/PlatformPei/MemDetect.c b/OvmfPkg/PlatformPei/MemDetect.c
+index ffbbef891a11..c08aa2e45a53 100644
+--- a/OvmfPkg/PlatformPei/MemDetect.c
++++ b/OvmfPkg/PlatformPei/MemDetect.c
+@@ -888,6 +888,11 @@ InitializeRamRegions (
+         (UINT64)(UINTN) PcdGet32 (PcdOvmfSecGhcbSize),
+         EfiACPIMemoryNVS
+         );
++      BuildMemoryAllocationHob (
++        (EFI_PHYSICAL_ADDRESS)(UINTN) PcdGet32 (PcdOvmfSecGhcbBackupBase),
++        (UINT64)(UINTN) PcdGet32 (PcdOvmfSecGhcbBackupSize),
++        EfiACPIMemoryNVS
++        );
+     }
+ #endif
+   }
+diff --git a/OvmfPkg/PlatformPei/PlatformPei.inf b/OvmfPkg/PlatformPei/PlatformPei.inf
+index c53be2f4925c..6ef77ba7bb21 100644
+--- a/OvmfPkg/PlatformPei/PlatformPei.inf
++++ b/OvmfPkg/PlatformPei/PlatformPei.inf
+@@ -118,6 +118,8 @@ [FixedPcd]
+   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiReservedMemoryType
+   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesCode
+   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesData
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupBase
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupSize
+   gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
+   gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaSize
+ 
+-- 
+2.29.2
+
+
+From fff4b01f0d4c9bafa1edfbfdb216eef313b3a5b3 Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Thu, 7 Jan 2021 12:48:25 -0600
+Subject: [PATCH 15/15] OvfmPkg/VmgExitLib: Validate #VC MMIO is to
+ un-encrypted memory
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3108
+
+When SEV-ES is active, and MMIO operation will trigger a #VC and the
+VmgExitLib exception handler will process this MMIO operation.
+
+A malicious hypervisor could try to extract information from encrypted
+memory by setting a reserved bit in the guests nested page tables for
+a non-MMIO area. This can result in the encrypted data being copied into
+the GHCB shared buffer area and accessed by the hypervisor.
+
+Prevent this by ensuring that the MMIO source/destination is un-encrypted
+memory. For the APIC register space, access is allowed in general.
+
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <0cf28470ad5e694af45f7f0b35296628f819567d.1610045305.git.thomas.lendacky@amd.com>
+(cherry picked from commit 85b8eac59b8c5bd9c7eb9afdb64357ce1aa2e803)
+
+Skip OvmfPkg/AmdSev/AmdSevX64.dsc
+---
+ .../DxeMemEncryptSevLib.inf                   |  2 +-
+ OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf  |  2 +
+ OvmfPkg/Library/VmgExitLib/VmgExitLib.inf     |  2 +
+ OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c | 81 +++++++++++++++++++
+ OvmfPkg/OvmfPkgX64.dsc                        |  1 +
+ 5 files changed, 87 insertions(+), 1 deletion(-)
+
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+index 8e3b8ddd5a95..f2e162d68076 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+@@ -14,7 +14,7 @@ [Defines]
+   FILE_GUID                      = c1594631-3888-4be4-949f-9c630dbc842b
+   MODULE_TYPE                    = BASE
+   VERSION_STRING                 = 1.0
+-  LIBRARY_CLASS                  = MemEncryptSevLib|DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
++  LIBRARY_CLASS                  = MemEncryptSevLib|DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
+ 
+ #
+ # The following information is for reference only and not required by the build
+diff --git a/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf b/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
+index df14de3c21bc..e6f6ea7972fd 100644
+--- a/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
++++ b/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
+@@ -35,6 +35,8 @@ [LibraryClasses]
+   BaseLib
+   BaseMemoryLib
+   DebugLib
++  LocalApicLib
++  MemEncryptSevLib
+   PcdLib
+ 
+ [FixedPcd]
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf b/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
+index b3c3e56ecff8..c66c68726cdb 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
+@@ -35,4 +35,6 @@ [LibraryClasses]
+   BaseLib
+   BaseMemoryLib
+   DebugLib
++  LocalApicLib
++  MemEncryptSevLib
+ 
+diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+index ce577e4677eb..24259060fd65 100644
+--- a/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
++++ b/OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c
+@@ -9,6 +9,7 @@
+ #include <Base.h>
+ #include <Uefi.h>
+ #include <Library/BaseMemoryLib.h>
++#include <Library/LocalApicLib.h>
+ #include <Library/MemEncryptSevLib.h>
+ #include <Library/VmgExitLib.h>
+ #include <Register/Amd/Msr.h>
+@@ -595,6 +596,61 @@ UnsupportedExit (
+   return Status;
+ }
+ 
++/**
++  Validate that the MMIO memory access is not to encrypted memory.
++
++  Examine the pagetable entry for the memory specified. MMIO should not be
++  performed against encrypted memory. MMIO to the APIC page is always allowed.
++
++  @param[in] Ghcb           Pointer to the Guest-Hypervisor Communication Block
++  @param[in] MemoryAddress  Memory address to validate
++  @param[in] MemoryLength   Memory length to validate
++
++  @retval 0          Memory is not encrypted
++  @return            New exception value to propogate
++
++**/
++STATIC
++UINT64
++ValidateMmioMemory (
++  IN GHCB   *Ghcb,
++  IN UINTN  MemoryAddress,
++  IN UINTN  MemoryLength
++  )
++{
++  MEM_ENCRYPT_SEV_ADDRESS_RANGE_STATE  State;
++  GHCB_EVENT_INJECTION                 GpEvent;
++  UINTN                                Address;
++
++  //
++  // Allow APIC accesses (which will have the encryption bit set during
++  // SEC and PEI phases).
++  //
++  Address = MemoryAddress & ~(SIZE_4KB - 1);
++  if (Address == GetLocalApicBaseAddress ()) {
++    return 0;
++  }
++
++  State = MemEncryptSevGetAddressRangeState (
++            0,
++            MemoryAddress,
++            MemoryLength
++            );
++  if (State == MemEncryptSevAddressRangeUnencrypted) {
++    return 0;
++  }
++
++  //
++  // Any state other than unencrypted is an error, issue a #GP.
++  //
++  GpEvent.Uint64 = 0;
++  GpEvent.Elements.Vector = GP_EXCEPTION;
++  GpEvent.Elements.Type   = GHCB_EVENT_INJECTION_TYPE_EXCEPTION;
++  GpEvent.Elements.Valid  = 1;
++
++  return GpEvent.Uint64;
++}
++
+ /**
+   Handle an MMIO event.
+ 
+@@ -653,6 +709,11 @@ MmioExit (
+       return UnsupportedExit (Ghcb, Regs, InstructionData);
+     }
+ 
++    Status = ValidateMmioMemory (Ghcb, InstructionData->Ext.RmData, Bytes);
++    if (Status != 0) {
++      return Status;
++    }
++
+     ExitInfo1 = InstructionData->Ext.RmData;
+     ExitInfo2 = Bytes;
+     CopyMem (Ghcb->SharedBuffer, &InstructionData->Ext.RegData, Bytes);
+@@ -683,6 +744,11 @@ MmioExit (
+     InstructionData->ImmediateSize = Bytes;
+     InstructionData->End += Bytes;
+ 
++    Status = ValidateMmioMemory (Ghcb, InstructionData->Ext.RmData, Bytes);
++    if (Status != 0) {
++      return Status;
++    }
++
+     ExitInfo1 = InstructionData->Ext.RmData;
+     ExitInfo2 = Bytes;
+     CopyMem (Ghcb->SharedBuffer, InstructionData->Immediate, Bytes);
+@@ -717,6 +783,11 @@ MmioExit (
+       return UnsupportedExit (Ghcb, Regs, InstructionData);
+     }
+ 
++    Status = ValidateMmioMemory (Ghcb, InstructionData->Ext.RmData, Bytes);
++    if (Status != 0) {
++      return Status;
++    }
++
+     ExitInfo1 = InstructionData->Ext.RmData;
+     ExitInfo2 = Bytes;
+ 
+@@ -748,6 +819,11 @@ MmioExit (
+   case 0xB7:
+     Bytes = (Bytes != 0) ? Bytes : 2;
+ 
++    Status = ValidateMmioMemory (Ghcb, InstructionData->Ext.RmData, Bytes);
++    if (Status != 0) {
++      return Status;
++    }
++
+     ExitInfo1 = InstructionData->Ext.RmData;
+     ExitInfo2 = Bytes;
+ 
+@@ -774,6 +850,11 @@ MmioExit (
+   case 0xBF:
+     Bytes = (Bytes != 0) ? Bytes : 2;
+ 
++    Status = ValidateMmioMemory (Ghcb, InstructionData->Ext.RmData, Bytes);
++    if (Status != 0) {
++      return Status;
++    }
++
+     ExitInfo1 = InstructionData->Ext.RmData;
+     ExitInfo2 = Bytes;
+ 
+diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
+index 2f005850f4cc..255790f1b1c6 100644
+--- a/OvmfPkg/OvmfPkgX64.dsc
++++ b/OvmfPkg/OvmfPkgX64.dsc
+@@ -265,6 +265,7 @@ [LibraryClasses.common.SEC]
+   CpuExceptionHandlerLib|UefiCpuPkg/Library/CpuExceptionHandlerLib/SecPeiCpuExceptionHandlerLib.inf
+ !endif
+   VmgExitLib|OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
++  MemEncryptSevLib|OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+ 
+ [LibraryClasses.common.PEI_CORE]
+   HobLib|MdePkg/Library/PeiHobLib/PeiHobLib.inf
+-- 
+2.29.2
+
