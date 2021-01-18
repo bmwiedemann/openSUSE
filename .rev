@@ -1190,4 +1190,14 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>856427</requestid>
   </revision>
+  <revision rev="113" vrev="5">
+    <srcmd5>08c3066e1ef86e819d54734bfee3caf8</srcmd5>
+    <version>3.0.11.1</version>
+    <time>1610965665</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vlc-CVE-2020-26664.patch: mkv: Ensure we don't use an
+  EbmlDummy element for something it's not (CVE-2020-26664,
+  boo#1180755).</comment>
+    <requestid>863152</requestid>
+  </revision>
 </revisionlist>
