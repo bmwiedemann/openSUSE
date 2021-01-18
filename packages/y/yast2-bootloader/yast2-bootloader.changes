@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 12 13:23:46 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- The logic for calculating a device udev link is now delegated to
+  the yast2-storage-ng module (jsc#SLE-17081, also related to
+  bsc#1177926 and bsc#1169874).
+- 4.3.17
+
+-------------------------------------------------------------------
 Mon Nov 16 16:13:58 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Make wording in summary more consistent
