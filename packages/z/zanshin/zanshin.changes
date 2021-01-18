@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 00:37:49 UTC 2021 - Simon Lees <simonf.lees@suse.com>
+
+- %make_jobs to %cmake_build
+- use %autosetup
+
+-------------------------------------------------------------------
 Thu Jul 23 11:07:30 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patches to fix build with kontactinterface 20.08:
