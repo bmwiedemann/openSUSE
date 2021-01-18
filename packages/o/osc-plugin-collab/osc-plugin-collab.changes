@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Jan 15 19:51:43 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.104+9:
+  * upstream: Follow GNOME's new versioning scheme
+  * client: fix crash in case the parent version could not be identified
+
+-------------------------------------------------------------------
+Fri Jan 15 17:34:10 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.104+7:
+  * gnome-version: use rpm.labelCompare to compare version numbers
+  * gnome-versions: ignore ../ directory
+
+-------------------------------------------------------------------
+Fri Jan 15 14:59:04 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.104+5:
+  * gnome-versions: fix extraction of versions with new gdo UI
+
+-------------------------------------------------------------------
+Fri Jan 15 13:50:42 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.104+4:
+  * gnome-versions: sync up with latest download.gnome.org UI
+
+-------------------------------------------------------------------
+Mon Jul 13 13:03:22 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.104+3:
+  * gnome-updates: upstream no longer tracks a -stable.config
+  * gnome-versions: fix typo
+
+-------------------------------------------------------------------
+Mon Feb 24 15:13:21 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.104+1:
+  * Cleanup TMPDIR at the end of collecting GNOME versions
+
+-------------------------------------------------------------------
+Wed Feb 12 18:22:04 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.104:
+  * upstream-packages-match.txt: GTK+ was renamed to GTK
+
+-------------------------------------------------------------------
+Wed Feb 12 09:49:27 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.103+13:
+  * run-upstream: remove debug print
+  * No longer track legacy openSUSE releases < Leap 15.2
+  * Track GNOME:STABLE:3.34
+  * Add main runner
+  * Prepare for better pkg installation
+  * run-gnome-versions: adjust cache path in line with the rest of the tool
+  * run-updategit: not needed: this is now properly packaged
+  * Add gnome-upstream version tooling
+  * Convert upstream scripts to python3
+  * buildservice: use osc to download stuff
+  * Auto-convert obs-db to python3 by 2to3
+  * Update default configuration for openSUSE installation (based on package)
+
+-------------------------------------------------------------------
+Mon Feb 10 08:28:07 UTC 2020 - dimstar@opensuse.org
+
+- Switch to use _source service:
+  + We need the entire git tree, as newly we also produce server
+    packages. This is possibly less interesting for the masses, but
+    the openSUSE infrastructure will use this package.
+
+-------------------------------------------------------------------
 Sun Oct  6 17:35:09 UTC 2019 - vuntz@opensuse.org
 
 - Update to version 0.103:
