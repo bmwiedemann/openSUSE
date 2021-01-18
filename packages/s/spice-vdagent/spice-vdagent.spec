@@ -1,7 +1,7 @@
 #
 # spec file for package spice-vdagent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %bcond_with session_info_test
 
 Name:           spice-vdagent
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Agent for Spice guests
 License:        GPL-3.0-or-later
@@ -30,23 +30,6 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source1:        http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
-Patch1:         vdagentd-work-around-GLib-s-fork-issues.patch
-Patch2:         vdagentd-init-static-uinput-before-fork.patch
-Patch3:         systemd-login-Avoid-a-crash-on-container.patch
-Patch4:         vdagentd-Use-bool-for-agent_owns_clipboard-and-clien.patch
-Patch5:         vdagentd-Automatically-release-agent_data.patch
-Patch6:         vdagent-connection-Pass-err-to-g_credentials_get_uni.patch
-Patch7:         vdagentd-Better-check-for-vdagent_connection_get_pee.patch
-Patch8:         vdagentd-Avoid-calling-chmod.patch
-Patch9:         Avoids-unchecked-file-transfer-IDs-allocation-and-us.patch
-Patch10:        Avoids-uncontrolled-active_xfers-allocations.patch
-Patch11:        Avoids-unlimited-agent-connections.patch
-Patch12:        Avoids-user-session-hijacking.patch
-Patch13:        Better-check-for-sessions.patch
-Patch14:        vdagentd-Limit-number-of-agents-per-session-to-1.patch
-Patch15:        cleanup-active_xfers-when-the-client-disconnects.patch
-Patch16:        vdagentd-do-not-allow-to-use-an-already-used-file-xf.patch
-Patch17:        Add-a-test-for-session_info.patch
 
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
@@ -62,7 +45,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.50
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(spice-protocol) >= 0.14.1
+BuildRequires:  pkgconfig(spice-protocol) >= 0.14.3
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Supplements:    modalias(xorg-x11-server:virtio:d00000003v*)
@@ -82,25 +65,6 @@ Features:
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%if %{with session_info_test}
-%patch17 -p1
-%endif
 
 %build
 autoreconf
@@ -110,7 +74,9 @@ autoreconf
 make %{?_smp_mflags} V=2
 
 %check
+%if %{with session_info_test}
 make check V=2
+%endif
 
 %install
 make install DESTDIR=%{buildroot} V=2

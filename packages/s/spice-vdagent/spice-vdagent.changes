@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jan 15 16:51:11 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.21.0
+* Changes include:
+* Security fixes:
+  CVE-2020-25650, CVE-2020-25651, CVE-2020-25652, CVE-2020-25653
+* Fix shutdown issue due to incompatible thread/fork uses with GLib
+* Fix mouse pointer issues under Wayland
+* Fix a crash when running without dbus (e.g: within containers)
+* !9  - Introduce optional GTK4 support for monitor management
+* !13 - Enable copying files from client using webdav
+* Bump spice-protocol dependency to v0.14.3
+* Drop all patches, since they are in base tarball now:
+  Add-a-test-for-session_info.patch
+  Avoids-unchecked-file-transfer-IDs-allocation-and-us.patch
+  Avoids-uncontrolled-active_xfers-allocations.patch
+  Avoids-unlimited-agent-connections.patch
+  Avoids-user-session-hijacking.patch
+  Better-check-for-sessions.patch
+  cleanup-active_xfers-when-the-client-disconnects.patch
+  systemd-login-Avoid-a-crash-on-container.patch
+  vdagent-connection-Pass-err-to-g_credentials_get_uni.patch
+  vdagentd-Automatically-release-agent_data.patch
+  vdagentd-Avoid-calling-chmod.patch
+  vdagentd-Better-check-for-vdagent_connection_get_pee.patch
+  vdagentd-Limit-number-of-agents-per-session-to-1.patch
+  vdagentd-Use-bool-for-agent_owns_clipboard-and-clien.patch
+  vdagentd-do-not-allow-to-use-an-already-used-file-xf.patch
+  vdagentd-init-static-uinput-before-fork.patch
+  vdagentd-work-around-GLib-s-fork-issues.patch
+
+-------------------------------------------------------------------
 Mon Nov  2 23:11:32 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix multiple security issues as outlined in bsc#1173749
