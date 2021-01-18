@@ -1,7 +1,7 @@
 #
 # spec file for package qml-autoreqprov
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Automatic dependency generator for QML files and modules
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
-Url:            http://www.opensuse.org
+URL:            http://www.opensuse.org
 Source0:        LICENSE
 Source1:        qml.attr
 Source2:        qml.req
@@ -33,9 +33,9 @@ Requires:       jq
 Requires:       rpm
 BuildArch:      noarch
 Requires:       (libqt5-qtdeclarative-tools if libQtQuick5)
-Requires:       (qt6-declarative-tools if libQt6Qml6)
 Requires:       (qmlpluginexports-qt5 if libqt5-qtdeclarative-devel)
 Requires:       (qmlpluginexports-qt6 if qt6-qml-devel)
+Requires:       (qt6-declarative-tools if libQt6Qml6)
 
 %description
 Automatic dependency generator for QML files and modules.

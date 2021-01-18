@@ -72,7 +72,7 @@ while read file; do
 			elif [[ $location == /* ]]; then
 				location="${RPM_BUILD_ROOT:-}/$location/"
 			else
-				location="${dir}/$location}/"
+				location="${dir}/${location}/"
 			fi
 
 			plugins+=("${location}/${pluginname}")

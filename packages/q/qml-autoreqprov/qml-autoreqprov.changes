@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 15 15:40:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add a missing { to fix the relative plugin path case
+
+-------------------------------------------------------------------
 Fri Sep  8 18:19:17 UTC 2017 - fabian@ritter-vogt.de
 
 - Initial experiments
