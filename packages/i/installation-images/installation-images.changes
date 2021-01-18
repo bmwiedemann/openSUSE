@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Jan 14 09:53:52 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#441
+- Handle the rename of MicroOS to SLE Micro (bsc#1180918)
+- handle the change of the user-visible name of SUSE MicroOS to SLE
+  Micro
+- 16.29
+
+--------------------------------------------------------------------
 Tue Dec 15 10:53:25 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#440
