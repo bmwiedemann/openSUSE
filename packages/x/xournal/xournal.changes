@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 17 12:21:40 UTC 2021 - Yuchen Lin <mlin+factory@suse.de>
+
+- Fix build on Leap 15.3: new command line option from inkscape
+
+-------------------------------------------------------------------
 Wed Sep 30 11:03:21 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed build on Tumbleweed: New commandline options from inkscape
