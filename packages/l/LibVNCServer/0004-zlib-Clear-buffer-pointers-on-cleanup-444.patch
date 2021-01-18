@@ -1,0 +1,45 @@
+From 641610b961a732bb68f111536ebf8c42be20f05b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 16 Sep 2020 17:35:49 +0200
+Subject: [PATCH 4/4] zlib: Clear buffer pointers on cleanup (#444)
+
+The pointers to the buffers were freed, and the size fields were set to
+0, but the buffer pointers themsef was not set to NULL, when shutting
+down, meaning the next time used, NULL checks would not tell whether the
+pointer is valid. This caused crashes ending with
+
+  #0  0x00007ffff73729e5 in raise () from /lib64/libc.so.6
+  #1  0x00007ffff735b895 in abort () from /lib64/libc.so.6
+  #2  0x00007ffff73b6857 in __libc_message () from /lib64/libc.so.6
+  #3  0x00007ffff73bdd7c in malloc_printerr () from /lib64/libc.so.6
+  #4  0x00007ffff73c2f1a in realloc () from /lib64/libc.so.6
+  #5  0x00007ffff78b558e in rfbSendOneRectEncodingZlib (cl=0x4a4b80, x=0, y=0, w=800, h=40) at /home/jonas/Dev/gnome/libvncserver/libvncserver/zlib.c:106
+  #6  0x00007ffff78b5dec in rfbSendRectEncodingZlib (cl=0x4a4b80, x=0, y=0, w=800, h=600) at /home/jonas/Dev/gnome/libvncserver/libvncserver/zlib.c:308
+  #7  0x00007ffff7899453 in rfbSendFramebufferUpdate (cl=0x4a4b80, givenUpdateRegion=0x49ef70) at /home/jonas/Dev/gnome/libvncserver/libvncserver/rfbserver.c:3264
+  #8  0x00007ffff789079d in rfbUpdateClient (cl=0x4a4b80) at /home/jonas/Dev/gnome/libvncserver/libvncserver/main.c:1275
+  #9  0x00007ffff78905f5 in rfbProcessEvents (screen=0x4d5790, usec=0) at /home/jonas/Dev/gnome/libvncserver/libvncserver/main.c:1251
+---
+ libvncserver/zlib.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libvncserver/zlib.c b/libvncserver/zlib.c
+index d24d7d15..5c3a8236 100644
+--- a/libvncserver/zlib.c
++++ b/libvncserver/zlib.c
+@@ -64,11 +64,13 @@ void rfbZlibCleanup(rfbScreenInfoPtr screen)
+ {
+   if (zlibBeforeBufSize) {
+     free(zlibBeforeBuf);
++    zlibBeforeBuf = NULL;
+     zlibBeforeBufSize=0;
+   }
+   if (zlibAfterBufSize) {
+     zlibAfterBufSize=0;
+     free(zlibAfterBuf);
++    zlibAfterBuf = NULL;
+   }
+ }
+ 
+-- 
+2.28.0
+

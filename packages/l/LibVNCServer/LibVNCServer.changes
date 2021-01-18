@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  8 15:07:43 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add many patches needed for GNOME Remote desktop (already in
+  Fedora):
+  * TLS security type enablement patches gh#LibVNC/libvncserver!234 
+    - 0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch
+    - 0002-libvncserver-Add-channel-security-handlers.patch
+    - 0003-libvncserver-auth-don-t-keep-security-handlers-from-.patch
+  * Fix crash on all runs after the first gh#LibVNC/libvncserver!444 rh#1882718
+    - 0004-zlib-Clear-buffer-pointers-on-cleanup-444.patch
+  * Fix another crasher glgo#GNOME/gnome-remote-desktop#45 rh#1882718
+    - 0001-libvncserver-don-t-NULL-out-internal-of-the-default-.patch
+
+-------------------------------------------------------------------
 Tue Jun 30 06:48:57 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.9.13 [bsc#1173477]

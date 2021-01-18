@@ -1,7 +1,7 @@
 #
 # spec file for package LibVNCServer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,15 @@ Source0:        https://github.com/LibVNC/libvncserver/archive/%{name}-%{version
 Source1:        baselibs.conf
 #PATCH-FIX-OPENSUSE: redefine keysyms only if needed
 Patch0:         redef-keysym.patch
+#PATCH-FEATURE-UPSTREAM TLS security type enablement patches gh#LibVNC/libvncserver!234 
+Patch10:        0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch
+Patch11:        0002-libvncserver-Add-channel-security-handlers.patch
+# https://github.com/LibVNC/libvncserver/commit/87c52ee0551b7c4e76855d270d475b9e3039fe08
+Patch12:        0003-libvncserver-auth-don-t-keep-security-handlers-from-.patch
+# PATCH-FIX-UPSTREAM Fix crash on all runs after the first gh#LibVNC/libvncserver!444 rh#1882718
+Patch13:        0004-zlib-Clear-buffer-pointers-on-cleanup-444.patch
+# PATCH-FIX-UPSTREAM Fix another crasher glgo#GNOME/gnome-remote-desktop#45 rh#1882718
+Patch14:        0001-libvncserver-don-t-NULL-out-internal-of-the-default-.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
@@ -95,7 +104,8 @@ files for LibVNCServer.
 
 %prep
 %setup -q -n libvncserver-%{name}-%{version}
-%patch0 -p1
+%autopatch -p1
+
 # fix encoding
 for file in ChangeLog ; do
 mv ${file} ${file}.OLD && \

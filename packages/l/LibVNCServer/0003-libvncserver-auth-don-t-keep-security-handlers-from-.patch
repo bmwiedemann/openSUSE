@@ -1,0 +1,32 @@
+From 2a77dd86a97fa5f4735f678599cea839ba09009c Mon Sep 17 00:00:00 2001
+From: Christian Beier <info@christianbeier.net>
+Date: Sun, 9 Aug 2020 20:11:26 +0200
+Subject: [PATCH 3/4] libvncserver/auth: don't keep security handlers from
+ previous runs
+
+Whyohsoever security handlers are stored in a variable global to the
+application, not in the rfbScreen struct. This meant that security
+handlers registered once would stick around forever before this commit.
+---
+ libvncserver/auth.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libvncserver/auth.c b/libvncserver/auth.c
+index 55e0b3c9..fc74c800 100644
+--- a/libvncserver/auth.c
++++ b/libvncserver/auth.c
+@@ -264,9 +264,11 @@ rfbSendSecurityTypeList(rfbClientPtr cl,
+     primaryType = determinePrimarySecurityType(cl);
+     switch (primaryType) {
+     case rfbSecTypeNone:
++	rfbUnregisterSecurityHandler(&VncSecurityHandlerVncAuth);
+         rfbRegisterSecurityHandler(&VncSecurityHandlerNone);
+         break;
+     case rfbSecTypeVncAuth:
++	rfbUnregisterSecurityHandler(&VncSecurityHandlerNone);
+         rfbRegisterSecurityHandler(&VncSecurityHandlerVncAuth);
+         break;
+     }
+-- 
+2.28.0
+

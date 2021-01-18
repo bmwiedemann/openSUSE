@@ -1,0 +1,28 @@
+From d138cf90130b0e8d5062f136ecdbcaa85e734d5d Mon Sep 17 00:00:00 2001
+From: Christian Beier <info@christianbeier.net>
+Date: Mon, 20 Jul 2020 22:33:29 +0200
+Subject: [PATCH] libvncserver: don't NULL out internal of the default cursor
+
+...otherwise an rfbScreen created after rfbScreenCleanup() was called
+gets assigned an invalid cursor struct.
+---
+ libvncserver/main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libvncserver/main.c b/libvncserver/main.c
+index 9149fda3..a3a711e3 100644
+--- a/libvncserver/main.c
++++ b/libvncserver/main.c
+@@ -1110,7 +1110,8 @@ void rfbScreenCleanup(rfbScreenInfoPtr screen)
+   FREE_IF(underCursorBuffer);
+   TINI_MUTEX(screen->cursorMutex);
+ 
+-  rfbFreeCursor(screen->cursor);
++  if(screen->cursor != &myCursor)
++      rfbFreeCursor(screen->cursor);
+ 
+ #ifdef LIBVNCSERVER_HAVE_LIBZ
+   rfbZlibCleanup(screen);
+-- 
+2.28.0
+

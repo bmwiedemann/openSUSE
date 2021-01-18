@@ -418,4 +418,12 @@
     * Fixed VNC repeater/proxy functionality that was broken in 0.9.12.</comment>
     <requestid>817795</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>572a1959fc301ea19e41d0cdda1a0479</srcmd5>
+    <version>0.9.13</version>
+    <time>1610965573</time>
+    <user>dimstar_suse</user>
+    <comment>drop unwanted patch (forwarded request 862813 from fcrozat)</comment>
+    <requestid>862815</requestid>
+  </revision>
 </revisionlist>
