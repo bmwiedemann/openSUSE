@@ -1,7 +1,7 @@
 #
 # spec file for package sudo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           sudo
-Version:        1.9.4p2
+Version:        1.9.5p1
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
