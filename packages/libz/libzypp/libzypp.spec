@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %bcond_without mediabackend_tests
 
 Name:           libzypp
-Version:        17.25.5
+Version:        17.25.6
 Release:        0
 URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
@@ -73,12 +73,9 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel
 BuildRequires:  graphviz
+BuildRequires:  libproxy-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  yaml-cpp-devel
-%if 0%{?suse_version} != 1110
-# No libproxy on SLES
-BuildRequires:  libproxy-devel
-%endif
 
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  pkgconfig
@@ -240,9 +237,9 @@ cd build
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 unset EXTRA_CMAKE_OPTIONS
-# No libproxy on SLE11
-%if 0%{?suse_version} == 1110
-export EXTRA_CMAKE_OPTIONS="-DDISABLE_LIBPROXY=ON"
+
+%if 0%{?sle_version} == 150300
+export CXXFLAGS="$CXXFLAGS -DZYPPNEWSPPSWENPPYZ"
 %endif
 
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
