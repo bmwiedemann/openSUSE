@@ -1,7 +1,7 @@
 #
 # spec file for package kmod-testsuite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,11 +36,14 @@ Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
+Patch8:         no-stylesheet-download.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  kernel-default-devel
 BuildRequires:  libopenssl-devel >= 1.1.0
 BuildRequires:  libtool
+BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  xz
 BuildRequires:  pkgconfig(liblzma) >= 4.99

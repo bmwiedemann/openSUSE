@@ -1,0 +1,8 @@
+--- kmod-27/man/Makefile.am~	2018-01-31 18:10:59.569903733 +0100
++++ kmod-27/man/Makefile.am	2021-01-12 21:48:28.488571775 +0100
+@@ -22,4 +22,4 @@
+ 		--nonet \
+ 		--stringparam man.output.quietly 1 \
+ 		--param funcsynopsis.style "'ansi'" \
+-		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
++		/usr/share/xml/docbook/stylesheet/nwalsh5/current/manpages/docbook.xsl $<

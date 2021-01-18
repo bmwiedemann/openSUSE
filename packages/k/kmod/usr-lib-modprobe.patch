@@ -1,19 +1,58 @@
-From: Jan Engelhardt <jengelh@inai.de>
-Date: 2020-11-06 12:38:10.597281938 +0100
-References: https://bugzilla.suse.com/show_bug.cgi?id=1092648
----
- libkmod/libkmod.c |    1 +
- 1 file changed, 1 insertion(+)
+From 294bdb1b231e8076de37ed35afef64dd6be37755 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 12 Jan 2021 16:54:46 +0100
+Subject: [PATCH] modprobe.d: load from /usr/lib.
 
-Index: kmod-27/libkmod/libkmod.c
-===================================================================
---- kmod-27.orig/libkmod/libkmod.c
-+++ kmod-27/libkmod/libkmod.c
-@@ -64,6 +64,7 @@ static struct _index_files {
- static const char *default_config_paths[] = {
+There is an ongoing effort to limit use of files outside of /usr (or
+$prefix on general). Currently all modprobe.d paths are hardcoded to
+outside of $prefix. Teach kmod to load modprobe.d from $prefix/lib.
+
+Cc: Marcus Rückert <mrueckert@suse.com>
+Cc: Takashi Iwai <tiwai@suse.com>
+Cc: Dominique Leuenberger <dimstar@opensuse.org>
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ Makefile.am        | 1 +
+ libkmod/libkmod.c  | 1 +
+ man/modprobe.d.xml | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index b29e943a4d29..702a665f0334 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,6 +19,7 @@ AM_CPPFLAGS = \
+ 	-include $(top_builddir)/config.h \
+ 	-I$(top_srcdir) \
+ 	-DSYSCONFDIR=\""$(sysconfdir)"\" \
++	-DPREFIX=\""$(prefix)"\" \
+ 	${zlib_CFLAGS}
+ 
+ AM_CFLAGS = $(OUR_CFLAGS)
+diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
+index 43423d63a889..9399c6c902f8 100644
+--- a/libkmod/libkmod.c
++++ b/libkmod/libkmod.c
+@@ -65,6 +65,7 @@ static const char *default_config_paths[] = {
  	SYSCONFDIR "/modprobe.d",
  	"/run/modprobe.d",
-+	"/usr/lib/modprobe.d",
  	"/lib/modprobe.d",
++	PREFIX "/lib/modprobe.d",
  	NULL
  };
+ 
+diff --git a/man/modprobe.d.xml b/man/modprobe.d.xml
+index 211af8488abb..ae5a83986a52 100644
+--- a/man/modprobe.d.xml
++++ b/man/modprobe.d.xml
+@@ -40,6 +40,7 @@
+   </refnamediv>
+ 
+   <refsynopsisdiv>
++    <para><filename>/usr/lib/modprobe.d/*.conf</filename></para>
+     <para><filename>/lib/modprobe.d/*.conf</filename></para>
+     <para><filename>/etc/modprobe.d/*.conf</filename></para>
+     <para><filename>/run/modprobe.d/*.conf</filename></para>
+-- 
+2.26.2
+
