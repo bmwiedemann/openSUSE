@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 13 03:08:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.226
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.226 2021-01-12T09:38:15Z
+  	* Freshening the distro, Travis is gone, Github Actions are in.
+
+-------------------------------------------------------------------
 Mon Jul 10 06:33:55 UTC 2017 - coolo@suse.com
 
 - updated to 1.225
