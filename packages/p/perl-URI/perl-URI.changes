@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 15 03:10:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.06
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.06      2021-01-14 16:01:13Z
+      - Tidy import statements (GH#80) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Oct 22 03:25:26 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.05
