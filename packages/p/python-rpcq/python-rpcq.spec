@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpcq
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        The RPC framework and message specification for Rigetti QCS
 License:        Apache-2.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 16 07:47:21 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.7.0.
+  * Add mnio_connections section
+  * Import messages and core_messages in rpcq module init
+  * Allow None for optional bools
+  * Correctly report timeout in timeout error messages
+    Fix for breaking change in upstream cl-messagepack 
+
+
+-------------------------------------------------------------------
 Thu Nov 26 06:23:22 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 3.6.0.
