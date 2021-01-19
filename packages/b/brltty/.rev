@@ -498,4 +498,12 @@
 - Create a brltty user on install: now expected by service.</comment>
     <requestid>863078</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5e3004bf571b730bb895dd0625b3c3a8</srcmd5>
+    <version>6.2</version>
+    <time>1611068304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864007</requestid>
+  </revision>
 </revisionlist>

@@ -353,9 +353,14 @@ install -Dm0644 Autostart/AppStream/org.a11y.brltty.metainfo.xml \
 %fdupes -s %{buildroot}%{_mandir}
 %fdupes -s %{buildroot}
 
-# fix brp-tcl wrong location for Tcl files
-mkdir -p %{buildroot}%{tcl_sitearch}
-mv %{buildroot}%{_libdir}/brlapi-%{api_version} %{buildroot}%{tcl_sitearch}/
+  # fix brp-tcl wrong location for Tcl files - This was fixed in the TCL 8.6.11 package
+  mkdir -p %{buildroot}%{tcl_sitearch}
+%if %{pkg_vcmp tcl < 8.6.11}
+  mv %{buildroot}%{_libdir}/brlapi-%{api_version} %{buildroot}%{tcl_sitearch}/
+%else
+  # this move is possibly not needed at all anymore, but to keep the old layout, we do it
+  mv %{buildroot}%{_libdir}/tcl/brlapi-%{api_version} %{buildroot}%{tcl_sitearch}/
+%endif
 
 %pre -n %{soname}
 getent group brlapi >/dev/null || groupadd -r brlapi >/dev/null
