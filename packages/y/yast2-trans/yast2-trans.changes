@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Mon Jan 18 05:13:06 UTC 2021 - git@opensuse.org
+
+- Update to version 84.87.20210116.f5a95d2c8b:
+  * Translated using Weblate (Dutch)
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'tftp-server'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'slp'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rear'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update-configuration'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'oneclickinstall'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'journal'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'docker'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'configuration_management'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'cio'.
+  * New POT for text domain 'caasp'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'authserver'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'alternatives'.
+  * New POT for text domain 'add-on'.
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'tftp-server'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rear'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update-configuration'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'oneclickinstall'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'journal'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'docker'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'configuration_management'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'cio'.
+  * New POT for text domain 'caasp'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'authserver'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'alternatives'.
+  * New POT for text domain 'add-on'.
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Portuguese)
+  * Added translation using Weblate (Czech)
+  * New POT for text domain 'network'.
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+
+-------------------------------------------------------------------
 Mon Jan 11 13:22:25 UTC 2021 - git@opensuse.org
 
 - Update to version 84.87.20210109.77c13975e0:
