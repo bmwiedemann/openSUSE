@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 14 19:26:59 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Under some circumstances, shared folders are mounted as root. File
+  "debug_mountsf.patch" is added to allow recovery on affected systems.
+  Automounted volumes are not fixed by this patch; however, manual mounting
+  with the uid/gid options are correct. 
+
+-------------------------------------------------------------------
 Tue Dec 29 19:39:35 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix build for kernel 5.11 - File "fixes-for-5.11.patch" is added.

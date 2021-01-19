@@ -1,7 +1,7 @@
 #
 # spec file for package virtualbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -184,6 +184,7 @@ Patch139:       linux-5.10-address-space-fixes.patch
 Patch140:       linux-5.10-framebuffer-fixes.patch
 Patch141:       vb-6.1.16-modal-dialog-parent.patch
 Patch142:       fixes-for-5.11.patch
+Patch998:       debug_mountsf.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 
@@ -497,6 +498,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch141 -p1
 %patch142 -p1
 # make VB UI background colors look sane again
+%patch998 -p1
 %patch999 -p1
 
 ### Documents for virtualbox main package ###
