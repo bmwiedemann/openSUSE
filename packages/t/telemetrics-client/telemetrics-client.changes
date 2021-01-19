@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 08 13:29:58 UTC 2021 - rbrown@suse.com
+
+- Update to version 2.3.5+git20200224.c3b8d81:
+  * configure.ac: bump version
+  * fix first record missing from journal
+  * Don't try to start the klogscanner service inside a container
+  * configure.ac: bump version
+  * crash_probe.c: process_corefile: reset frame counter
+  * replace travis badge for github workflows
+  * random shift to hprobe timer
+  * pr comments and actions update
+  * update CI configuration
+  * fix potential leaks
+  * fixing memory leaks in tests
+  * valgrind check for tests
+  * Trigger verification on PR opening
+  * configure.ac: bump version
+  * telemctl.c: fix buffer overflow
+
+-------------------------------------------------------------------
 Wed Dec 18 11:59:21 UTC 2019 - kukuk@suse.de
 
 - Update to version 2.3.2+git20191217.8ca2993:

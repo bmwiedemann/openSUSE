@@ -1,7 +1,7 @@
 #
 # spec file for package telemetrics-client
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           telemetrics-client
-Version:        2.3.2+git20191217.8ca2993
+Version:        2.3.5+git20200224.c3b8d81
 Release:        0
 Summary:        Telemetrics solution
 License:        LGPL-2.1-or-later
