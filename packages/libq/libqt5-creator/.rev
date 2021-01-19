@@ -821,4 +821,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>857144</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>73d388c72c8def90f69cb8446a9b5646</srcmd5>
+    <version>4.14.0</version>
+    <time>1611068609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864293</requestid>
+  </revision>
 </revisionlist>

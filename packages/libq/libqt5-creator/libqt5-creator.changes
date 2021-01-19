@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 19 08:40:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to use GNUInstallDirs instead of using sed:
+  * cmake-build-use-gnuinstalldirs.patch
+
+-------------------------------------------------------------------
 Thu Dec 17 14:24:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.14.0:

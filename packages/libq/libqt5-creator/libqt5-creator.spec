@@ -19,6 +19,12 @@
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %global build_clang_backend 1
 %endif
+
+%global libexecdirname libexec
+%if "%{_libexecdir}" == "%{_prefix}/lib"
+%global libexecdirname lib
+%endif
+
 %define major_ver 4.14
 %define qt5_version 5.14.0
 %define tar_version 4.14.0
@@ -42,10 +48,11 @@ Source1:        %{name}-rpmlintrc
 Patch0:         0001-cmake-build-Don-t-install-highlighting-files-when-us.patch
 Patch1:         0001-Fix-compilation-of-ClangFormat-plugin-against-LLVM-w.patch
 Patch2:         0001-Fix-a-link-error-when-building-the-qmldesigner-plugi.patch
+Patch3:         cmake-build-use-gnuinstalldirs.patch
 # Patches 10-20 are openSUSE changes
-Patch10:         fix-application-output.patch
-Patch11:         0001-Disable-some-plugins.patch
-Patch12:         0001-Don-t-rely-on-clang-include-and-binary-copies.patch
+Patch10:        fix-application-output.patch
+Patch11:        0001-Disable-some-plugins.patch
+Patch12:        0001-Don-t-rely-on-clang-include-and-binary-copies.patch
 ##
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
@@ -133,16 +140,15 @@ rm -r src/shared/qbs
 %build
 %define _lto_cflags %{nil}
 
-%if "%{_lib}" == "lib64"
-sed -i 's#lib/#lib64/#g' cmake/QtCreatorAPIInternal.cmake
-%endif
-
 # Don't let the qt-creator build system strip debug info
 sed -i -e "/qtc_enable_separate_debug_info/d" cmake/QtCreatorAPI.cmake
 
+# It expects relative paths for CMAKE_INSTALL_LIB{,EXEC}DIR
 # https://bugreports.qt.io/browse/QTCREATORBUG-24357 suggests disabling
 # the clangpchmanagerbackend and clangrefactoringbackend builds
 %cmake \
+  -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+  -DCMAKE_INSTALL_LIBEXECDIR=%{libexecdirname} \
   -DCLANGTOOLING_LINK_CLANG_DYLIB=ON \
   -DBUILD_WITH_PCH=OFF \
   -DWITH_DOCS=ON \
