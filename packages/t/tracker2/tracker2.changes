@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 13 12:15:51 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add tracker2-Avoid-deletion-empty-rows.patch: libtracker-data:
+  Avoid deletion of empty rows in FTS table. Starting with SQLite
+  3.34.0, this turns into a consistency error. Ensure rows being
+  deleted have actually some content before proceeding to deletion,
+  and ensure we don't process individual properties one by one in
+  the course of a whole rdfs:Resource deletion.
+
+-------------------------------------------------------------------
 Mon Sep  7 16:06:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.3.6:

@@ -1,7 +1,7 @@
 #
-# spec file for package tracker
+# spec file for package tracker2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,8 @@ Source0:        https://download.gnome.org/sources/tracker/2.3/%{_name}-%{versio
 
 # PATCH-FIX-UPSTREAM tracker-ontology-upgrades.patch boo#1170587 dimstar@opensuse.org -- Fix ontology migration from very old tracker versions
 Patch1:         tracker-ontology-upgrades.patch
+# PATCH-FIX-UPSTREAM tracker2-Avoid-deletion-empty-rows.patch -- libtracker-data: Avoid deletion of empty rows in FTS table
+Patch2:         tracker2-Avoid-deletion-empty-rows.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
