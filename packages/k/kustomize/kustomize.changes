@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 18 02:38:07 UTC 2021 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to version 3.9.2
+  - Pin to api v0.7.2
+  - Pin to cmd/config v0.8.8
+  - Pin to kyaml v0.10.6 and cli-utils v0.22.4
+  - Move plugin lister to avoid import cycle.
+  - Unpin kyaml, cmd/config, api
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Wed Dec 30 01:43:55 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Update to verison 3.9.1

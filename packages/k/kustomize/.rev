@@ -109,4 +109,12 @@
 - Refresh vendor.tar.xz (forwarded request 859332 from jenting)</comment>
     <requestid>859402</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d6e3f0f5a29384d92a7d0de6c0e06304</srcmd5>
+    <version>3.9.2</version>
+    <time>1611068474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864114</requestid>
+  </revision>
 </revisionlist>
