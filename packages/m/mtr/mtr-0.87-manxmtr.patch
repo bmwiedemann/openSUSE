@@ -1,19 +1,17 @@
-diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
---- mtr-0.92.orig/xmtr.8	2017-07-03 13:46:24.869651206 +0200
-+++ mtr-0.92/xmtr.8	2017-07-03 13:47:36.725650110 +0200
-@@ -1,8 +1,8 @@
--.TH MTR 8 "0.87.203-0e5e" "mtr" "System Administration"
-+.TH MTR 8 "0.87.203-0e5e" "xmtr" "System Administration"
+Index: mtr-0.94/xmtr.8
+===================================================================
+--- mtr-0.94.orig/xmtr.8
++++ mtr-0.94/xmtr.8
+@@ -2,7 +2,7 @@
  .SH NAME
--mtr \- a network diagnostic tool
-+xmtr \- a network diagnostic tool
+ mtr \- a network diagnostic tool
  .SH SYNOPSIS
 -.B mtr
 +.B xmtr
  [\c
  .BR \-4 |\c
  .B \-6\c
-@@ -111,7 +111,7 @@
+@@ -114,7 +114,7 @@ mtr \- a network diagnostic tool
  ]
  .I HOSTNAME
  .SH DESCRIPTION
@@ -22,7 +20,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  combines the functionality of the 
  .B traceroute
  and 
-@@ -119,15 +119,15 @@
+@@ -122,15 +122,15 @@ and
  programs in a single network diagnostic tool.
  .PP
  As 
@@ -41,7 +39,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  to print the response percentage and response times of the internet
  route to 
  .BR HOSTNAME . 
-@@ -142,7 +142,7 @@
+@@ -145,7 +145,7 @@ and the percentage of packet loss.
  Print the summary of command line argument options.
  .TP
  .B \-v\fR, \fB\-\-version
@@ -50,7 +48,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  .TP
  .B \-4
  Use IPv4 only.
-@@ -155,11 +155,11 @@
+@@ -158,11 +158,11 @@ Reads the list of hostnames from the spe
  .TP
  .B \-r\fR, \fB\-\-report
  This option puts 
@@ -64,7 +62,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  will run for the number of cycles specified by the 
  .B \-c
  option, and then print statistics and exit.  
-@@ -167,30 +167,30 @@
+@@ -170,30 +170,30 @@ option, and then print statistics and ex
  \c
  This mode is useful for generating statistics about network quality.  
  Note that each running instance of 
@@ -101,7 +99,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  to use the curses based terminal
  interface (if available).
  In case the list of hops exceeds the 
-@@ -212,10 +212,10 @@
+@@ -215,10 +215,10 @@ information.
  .TP
  .B \-g\fR, \fB\-\-gtk
  Use this option to force
@@ -114,7 +112,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  was built for this to work.  See the GTK+ web page at 
  .UR http://\:www.\:gtk.\:org/
  .UE
-@@ -261,24 +261,24 @@
+@@ -264,27 +264,27 @@ MTR.0.86+git:16e39fc0;1435562787;OK;nic.
  .TP
  .B \-j\fR, \fB\-\-json
  Use this option to tell
@@ -122,6 +120,10 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
 +.B xmtr
  to use the JSON output format.  This format is better suited for
  automated processing of the measurement results.
+ Jansson library must have been available on the system when
+-.B mtr
++.B xmtr
+ was built for this to work.
  .TP
  .B \-p\fR, \fB\-\-split
  Use this option to set
@@ -143,7 +145,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  to display both the host names and numeric IP numbers.  In split mode
  this adds an extra field to the output.  In report mode, there is usually
  too little space to add the IPs, and they will be truncated.  Use the
-@@ -373,7 +373,7 @@
+@@ -379,7 +379,7 @@ Specifies value for type of service fiel
  .TP
  .B \-e\fR, \fB\-\-mpls
  Use this option to tell 
@@ -152,7 +154,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  to display information from ICMP extensions for MPLS (RFC 4950)
  that are encoded in the response packets.
  .TP
-@@ -425,7 +425,7 @@
+@@ -437,7 +437,7 @@ is 32 unsigned integer.  See
  .BR socket (7)
  for full description of this socket option.
  .SH ENVIRONMENT
@@ -161,7 +163,7 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  recognizes a few environment variables.
  .TP
  .B MTR_OPTIONS
-@@ -438,7 +438,7 @@
+@@ -450,7 +450,7 @@ are overridden by command-line options.
  Example:
  
  .BI MTR_OPTIONS ="-4\ -c\ 1"
@@ -170,7 +172,16 @@ diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
  .I \-6\ localhost
  
  would send one probe (because of
-@@ -470,7 +470,7 @@
+@@ -479,7 +479,7 @@ executable.
+ .B DISPLAY
+ Specifies an X11 server for the GTK+ frontend.
+ .SH INTERACTIVE CONTROL
+-.B mtr
++.B xmtr
+ can be controlled while it is running with the following keys:
+   ?|h     help
+   p       pause (SPACE to resume)
+@@ -504,7 +504,7 @@ can be controlled while it is running wi
  Some modern routers give a lower priority to ICMP ECHO packets than 
  to other network traffic.  Consequently, the reliability of these
  routers reported by 

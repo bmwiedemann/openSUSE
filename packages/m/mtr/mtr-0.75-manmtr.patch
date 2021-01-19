@@ -2,7 +2,7 @@ Index: mtr.8
 ===================================================================
 --- mtr.8.orig
 +++ mtr.8
-@@ -93,6 +93,14 @@ mtr \- a network diagnostic tool
+@@ -114,6 +114,14 @@ mtr \- a network diagnostic tool
  ]
  .I HOSTNAME
  .SH DESCRIPTION

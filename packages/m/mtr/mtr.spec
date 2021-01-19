@@ -1,7 +1,7 @@
 #
 # spec file for package mtr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           mtr
-Version:        0.92
+Version:        0.94
 Release:        0
 Summary:        Ping and Traceroute Network Diagnostic Tool
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-URL:            https://github.com/traviscross/mtr
-Source:         ftp://ftp.bitwizard.nl/mtr/%{name}-%{version}.tar.gz
+URL:            https://www.bitwizard.nl/mtr/
+Source:         https://www.bitwizard.nl/mtr/files/mtr-%{version}.tar.gz
 Source1:        xmtr.desktop
 Patch1:         mtr-0.75-manmtr.patch
 Patch2:         mtr-0.87-manxmtr.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -70,18 +70,17 @@ autoreconf -fvi
 %configure \
 	--disable-silent-rules \
 	--enable-ipv6 \
-	--enable-gtk2 \
 	--with-gtk \
 	--disable-gtktest
-make %{?_smp_mflags}
+%make_build
 mv mtr xmtr
-make distclean %{?_smp_mflags}
+%make_build distclean
 # console version
 %configure \
 	--disable-silent-rules \
 	--enable-ipv6 \
 	--without-gtk
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -100,18 +99,18 @@ install -Dm 644 img/mtr_icon.xpm %{buildroot}%{_datadir}/pixmaps/xmtr_icon.xpm
 %verify_permissions -e %{_sbindir}/mtr-packet
 
 %files
-%doc AUTHORS FORMATS NEWS README SECURITY TODO
+%doc AUTHORS NEWS SECURITY TODO
 %license COPYING
 %{_datadir}/bash-completion/completions/mtr
-%{_mandir}/man8/mtr-packet.8%{ext_man}
-%{_mandir}/man8/mtr.8%{ext_man}
+%{_mandir}/man8/mtr-packet.8%{?ext_man}
+%{_mandir}/man8/mtr.8%{?ext_man}
 %verify(not caps) %attr(755,root,root) %{_sbindir}/mtr-packet
 %attr(755,root,root) %{_sbindir}/mtr
 
 %files gtk
-%doc AUTHORS FORMATS NEWS README SECURITY TODO
+%doc AUTHORS NEWS SECURITY TODO
 %license COPYING
-%{_mandir}/man8/xmtr.8%{ext_man}
+%{_mandir}/man8/xmtr.8%{?ext_man}
 %attr(755,root,root) %{_sbindir}/xmtr
 %{_includedir}/X11/pixmaps
 %{_datadir}/applications/*
