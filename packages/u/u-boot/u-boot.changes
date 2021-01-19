@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 19 12:50:57 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+Fix USB in RPi4 and RPi400 (jsc@OPENSUSE-13 bsc#1180336)
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.10
+* Patches added:
+  0030-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
+  0031-pci-brcmstb-Cleanup-controller-stat.patch
+
+-------------------------------------------------------------------
+Mon Jan 18 10:43:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.10
+* Patches added:
+  0029-Revert-Fix-data-abort-caused-by-mis.patch - boo#1180728
+
+-------------------------------------------------------------------
 Thu Jan  7 19:53:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Rename sun50ia64 to sun50i_a64 and sun50ih6 to sun50i_h6 to

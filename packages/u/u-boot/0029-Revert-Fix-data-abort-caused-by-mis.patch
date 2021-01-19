@@ -1,0 +1,37 @@
+From 2b3131bde95b261cd67f99a520b16936a5f50ea2 Mon Sep 17 00:00:00 2001
+From: Marek Vasut <marex@denx.de>
+Date: Mon, 19 Oct 2020 23:40:26 +0200
+Subject: [PATCH] Revert "Fix data abort caused by mis-aligning FIT data"
+
+This reverts commit eb39d8ba5f0d1468b01b89a2a464d18612d3ea76.
+The commit breaks booting of fitImage by SPL, the system simply hangs.
+This is because on arm32, the fitImage and all of its content can be
+aligned to 4 bytes and U-Boot expects just that.
+
+Signed-off-by: Marek Vasut <marex@denx.de>
+Cc: Reuben Dowle <reuben.dowle@4rf.com>
+Cc: Tom Rini <trini@konsulko.com>
+Signed-off-by: Marek Vasut <marex@denx.de>
+---
+ common/spl/spl_fit.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/common/spl/spl_fit.c b/common/spl/spl_fit.c
+index a8bfd388b1..365104fe02 100644
+--- a/common/spl/spl_fit.c
++++ b/common/spl/spl_fit.c
+@@ -349,12 +349,9 @@ static int spl_fit_append_fdt(struct spl_image_info *spl_image,
+ 
+ 	/*
+ 	 * Use the address following the image as target address for the
+-	 * device tree. Load address is aligned to 8 bytes to match the required
+-	 * alignment specified for linux arm [1] and arm 64 [2] booting
+-	 * [1]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/arm/booting.rst#n126
+-	 * [2]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/arm64/booting.rst#n45
++	 * device tree.
+ 	 */
+-	image_info.load_addr = ALIGN(spl_image->load_addr + spl_image->size, 8);
++	image_info.load_addr = spl_image->load_addr + spl_image->size;
+ 
+ 	/* Figure out which device tree the board wants to use */
+ 	node = spl_fit_get_image_node(fit, images, FIT_FDT_PROP, index++);

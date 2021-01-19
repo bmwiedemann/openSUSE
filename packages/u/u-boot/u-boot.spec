@@ -243,6 +243,9 @@ Patch0025:      0025-mmc-Introduce-mmc_phys_to_bus-mmc_b.patch
 Patch0026:      0026-configs-rpi4-Enable-DM_DMA-across-a.patch
 Patch0027:      0027-video-arm-rpi-Add-brcm-bcm2711-hdmi.patch
 Patch0028:      0028-usb-xhci-xhci_bulk_tx-Don-t-BUG-whe.patch
+Patch0029:      0029-Revert-Fix-data-abort-caused-by-mis.patch
+Patch0030:      0030-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
+Patch0031:      0031-pci-brcmstb-Cleanup-controller-stat.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

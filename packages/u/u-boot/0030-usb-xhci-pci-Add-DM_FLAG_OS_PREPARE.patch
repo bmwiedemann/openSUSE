@@ -1,0 +1,27 @@
+From 3b24be6bc5ac356b99a4c0441c64b599acb35c13 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Thu, 14 Jan 2021 16:49:00 +0100
+Subject: [PATCH] usb: xhci-pci: Add DM_FLAG_OS_PREPARE flag
+
+The PCIe bus the controller is connected to might need to be removed
+prior the handover. Make sure xhci-pci is also removed so as to avoid
+unexpected timeouts or hangs.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ drivers/usb/host/xhci-pci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/usb/host/xhci-pci.c b/drivers/usb/host/xhci-pci.c
+index 9fb6d2f763..19f8fb4458 100644
+--- a/drivers/usb/host/xhci-pci.c
++++ b/drivers/usb/host/xhci-pci.c
+@@ -61,7 +61,7 @@ U_BOOT_DRIVER(xhci_pci) = {
+ 	.ops	= &xhci_usb_ops,
+ 	.platdata_auto_alloc_size = sizeof(struct usb_platdata),
+ 	.priv_auto_alloc_size = sizeof(struct xhci_ctrl),
+-	.flags	= DM_FLAG_ALLOC_PRIV_DMA,
++	.flags	= DM_FLAG_OS_PREPARE | DM_FLAG_ALLOC_PRIV_DMA,
+ };
+ 
+ static struct pci_device_id xhci_pci_supported[] = {

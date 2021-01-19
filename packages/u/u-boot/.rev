@@ -1627,4 +1627,12 @@ boundary checks.
     <comment></comment>
     <requestid>861460</requestid>
   </revision>
+  <revision rev="142" vrev="10">
+    <srcmd5>034e58c509e28d31eab61030be913d77</srcmd5>
+    <version>2020.10</version>
+    <time>1611068480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864331</requestid>
+  </revision>
 </revisionlist>
