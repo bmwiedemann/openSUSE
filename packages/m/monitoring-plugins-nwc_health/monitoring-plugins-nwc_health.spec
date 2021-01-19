@@ -1,8 +1,8 @@
 #
 # spec file for package monitoring-plugins-nwc_health
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2014-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2014-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define         realname check_nwc_health
 Name:           monitoring-plugins-nwc_health
-Version:        8.0
+Version:        8.1
 Release:        0
 Summary:        This plugin checks the health of network components and interfaces
 # https://github.com/lausser/check_nwc_health

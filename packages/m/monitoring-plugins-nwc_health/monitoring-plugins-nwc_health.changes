@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 19 08:05:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.1
+  * add Bluecat Address Manager
+
+-------------------------------------------------------------------
+Fri Jan 15 16:02:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.0.0.2
+  * bugfix in HOST-RESOURCE-MIB memory (Arista triggered)
+  * bugfix in CISCO-ENVMON-MIB, temperatures > 200
+- Update to version 8.0.0.1
+  * bugfix in arista bgp, mitigate admin down
+
+-------------------------------------------------------------------
 Wed Dec 23 22:36:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.0
