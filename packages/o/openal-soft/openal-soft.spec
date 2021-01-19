@@ -1,7 +1,7 @@
 #
 # spec file for package openal-soft
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openal-soft
-Version:        1.20.1
+Version:        1.21.0
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND MIT
@@ -161,6 +161,7 @@ install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 %{_bindir}/alsoft-config
 %{_bindir}/altonegen
 %{_bindir}/alrecord
+%{_bindir}/alloopback
 
 %files makemhr
 %{_bindir}/makemhr
