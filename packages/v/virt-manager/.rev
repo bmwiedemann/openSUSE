@@ -1726,4 +1726,12 @@
     <comment>Fix for bsc#1180062</comment>
     <requestid>860328</requestid>
   </revision>
+  <revision rev="219" vrev="5">
+    <srcmd5>2ded97a9f7d71cee20a3d8662a996e76</srcmd5>
+    <version>3.2.0</version>
+    <time>1611068324</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for bsc#1180047 and bsc#1180069</comment>
+    <requestid>863175</requestid>
+  </revision>
 </revisionlist>

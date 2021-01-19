@@ -66,6 +66,7 @@ Patch156:       virtman-dont-specify-gtksource-version.patch
 Patch157:       virtman-fix-restore-vm-menu-selection.patch
 Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
+Patch160:       virtman-show-no-firmware-for-xenpv.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -75,6 +76,7 @@ Patch175:       virtinst-keep-install-iso-attached.patch
 Patch176:       virtinst-dont-use-special-copy-cpu-features.patch
 Patch177:       virtinst-set-default-nic.patch
 Patch178:       virtinst-sap-detection.patch
+Patch179:       virtinst-smbios-unsupported-for-xenpv.patch
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -194,6 +196,7 @@ machine).
 %patch157 -p1
 %patch158 -p1
 %patch159 -p1
+%patch160 -p1
 %patch170 -p1
 %patch171 -p1
 %patch172 -p1
@@ -203,6 +206,7 @@ machine).
 %patch176 -p1
 %patch177 -p1
 %patch178 -p1
+%patch179 -p1
 
 %build
 %if %{default_hvs}
