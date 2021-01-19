@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 12 14:35:10 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Downgrade requires to recommends for vinagre/remmina.
+- Add recommends for gnome-remote-desktop for GNOME default
+  pattern.
+
+-------------------------------------------------------------------
 Thu Dec 10 16:31:13 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Add malcontent-control recommendation to the base pattern

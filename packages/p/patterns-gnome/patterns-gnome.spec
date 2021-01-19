@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,6 +138,7 @@ Recommends:     gnome-desktop
 Recommends:     gnome-disk-utility
 Recommends:     gnome-documents
 Recommends:     gnome-menus
+Recommends:     gnome-remote-desktop
 Recommends:     gpgme
 # #399801
 Recommends:     mousetweaks
@@ -163,9 +164,9 @@ Provides:       patterns-sled-Default
 Obsoletes:      patterns-sled-Default < %{version}
 %endif
 %if 0%{?is_opensuse}
-Requires:       vinagre
+Recommends:     vinagre
 %else
-Requires:       remmina
+Recommends:     remmina
 %endif
 %if !0%{?is_opensuse}
 Recommends:     gnome-initial-setup

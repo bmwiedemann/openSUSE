@@ -203,4 +203,14 @@
     <comment>- Add malcontent-control recommendation to the base pattern (forwarded request 854626 from hellcp)</comment>
     <requestid>854631</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>338e5efeb3abdae540bc807e00ab09dc</srcmd5>
+    <version>20201210</version>
+    <time>1611068313</time>
+    <user>dimstar_suse</user>
+    <comment>- Downgrade requires to recommends for vinagre/remmina.
+- Add recommends for gnome-remote-desktop for GNOME default
+  pattern. (forwarded request 863067 from fcrozat)</comment>
+    <requestid>863167</requestid>
+  </revision>
 </revisionlist>
