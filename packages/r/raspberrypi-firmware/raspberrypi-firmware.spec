@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware
-Version:        2020.12.15
+Version:        2021.01.15
 Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware

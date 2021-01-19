@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 15 13:04:33 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to c78f3ef4 (2021-01-15):
+  * firmware: isp: Fix handling of different YUV colour spaces
+  * firmware: poe_hat: Actually close the I2C handle
+  * Firmware: undo previous reverts
+  * firmware: Revert firmware: HAT/I2C updates
+  * firmware: firmware: MMAL/IL: Add support for the 16bpp Bayer/Grey raw 10/12/14 formats
+  * firmware: audioplus: Fix hang when switching destination
+    See: #1516
+  * firmware: HAT/I2C updates
+  * firmware: MMAL/IL: Add support for the 16bpp Bayer/Grey raw 10/12/14 format
+  * firmware: dmalib: Keep 40-bit DMA clear of L2 alias
+  * firmware: DSI interrupt fixes, and HDMI SM clock for deep colour
+
+-------------------------------------------------------------------
 Wed Dec 16 10:19:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 8a5549c (2020-12-15):
