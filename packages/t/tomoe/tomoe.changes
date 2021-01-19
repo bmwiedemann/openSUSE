@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 14 19:24:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add tomoe-0.6.0-fixes-set-parse-error.patch and
+  tomoe-0.6.0-strerror.patch: Fix build in current Factory.
+- Run spec-cleaner and modernize spec, drop conditional for ancient
+  version of openSUSE.
+
+-------------------------------------------------------------------
 Wed Feb 15 17:14:16 CET 2012 - tiwai@suse.de
 
 - replace invalid glib/*.h inclusion to fix the build on FACTORY
