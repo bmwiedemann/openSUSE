@@ -720,4 +720,15 @@
     <comment>harfbuzz 2.7.4 (forwarded request 858861 from AndreasStieger)</comment>
     <requestid>859195</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>7b5c12716fd80811ffa6d8f01d2a959f</srcmd5>
+    <version>2.7.4</version>
+    <time>1611068308</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable graphite2 support: TexLive relies on this to be
+  present:
+  + Pass -Dgraphite=enabled to meson.
+  + Add pkgconfig(graphite2) BuildRequires. (forwarded request 862868 from dimstar)</comment>
+    <requestid>863164</requestid>
+  </revision>
 </revisionlist>

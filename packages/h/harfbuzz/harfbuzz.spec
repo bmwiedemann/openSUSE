@@ -1,7 +1,7 @@
 #
 # spec file for package harfbuzz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-BuildRequires:  gcc-c++
+
+BuildRequires:  c++_compiler
+BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.28
 BuildRequires:  pkgconfig(cairo) >= 1.8.0
 BuildRequires:  pkgconfig(cairo-ft)
@@ -95,23 +97,20 @@ HarfBuzz is an OpenType text shaping engine.
 This package contains the development files.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--with-glib \
-	--with-freetype \
-	--with-cairo \
-	--with-icu \
-	--with-graphite2 \
-	--with-gobject=yes \
+%meson \
+	-Ddocs=disabled \
+	-Dgraphite=enabled \
 	%{nil}
-%make_build
+%meson_build
+
+%check
+%meson_test
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n libharfbuzz0 -p /sbin/ldconfig
 %postun -n libharfbuzz0 -p /sbin/ldconfig
@@ -147,8 +146,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %doc AUTHORS README THANKS
-%docdir %{_datadir}/gtk-doc
-%{_datadir}/gtk-doc/html/harfbuzz/
 %{_includedir}/harfbuzz/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/harfbuzz.pc
