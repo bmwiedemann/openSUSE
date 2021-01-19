@@ -1,7 +1,7 @@
 #
 # spec file for package gpg2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.2.25
+Version:        2.2.27
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -61,7 +61,6 @@ Requires:       libassuan0 >= 2.5.0
 Requires:       libgcrypt20 >= 1.8.0
 Requires:       libksba >= 1.3.5
 Requires:       pinentry
-Requires(post): %{install_info_prereq}
 Recommends:     dirmngr = %{version}
 Provides:       gnupg = %{version}
 Provides:       gpg = 1.4.9
@@ -165,10 +164,6 @@ install -m 755 tools/gpg-zip %{buildroot}/%{_bindir}
 
 %post
 %udev_rules_update
-%install_info --info-dir=%{_infodir} %{_infodir}/gnupg.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/gnupg.info.gz
 
 %files lang -f gnupg2.lang
 

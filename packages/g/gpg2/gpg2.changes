@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 12 22:45:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.2.27:
+   * gpgconf: Fix case with neither local nor global gpg.conf
+   * gpgconf: Fix description of two new options
+- includes changes from 2.2.26:
+  * gpg: New AKL method "ntds"
+  * gpg: Fix --trusted-key with fingerprint arg
+  * scd: Fix writing of ECC keys to an OpenPGP card
+  * scd: Make an USB error fix specific to SPR532 readers
+  * dirmngr: With new LDAP keyservers store the new attributes. 
+    Never store the useless pgpSignerID. Fix a long standing
+    bug storing some keys on an ldap server.
+  * dirmngr: Support the new Active Direcory LDAP schema for
+    keyservers
+  * dirmngr: Allow LDAP OpenPGP searches via fingerprint
+  * dirmngr: Do not block other threads during keyserver LDAP calls
+  * Support global configuration files
+  * Fix the iconv fallback handling to UTF-8
+
+-------------------------------------------------------------------
 Mon Nov 23 22:36:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.2.25:
