@@ -1,7 +1,7 @@
 #
 # spec file for package cmake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %endif
 %define shortversion 3.19
 Name:           cmake%{?psuffix}
-Version:        3.19.2
+Version:        3.19.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause

@@ -1632,4 +1632,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
 - remove 5556.patch (upstream)</comment>
     <requestid>856962</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>f6aaa9f8bf5f9f04821ddfdb287ce4e1</srcmd5>
+    <version>3.19.3</version>
+    <time>1611068420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863664</requestid>
+  </revision>
 </revisionlist>
