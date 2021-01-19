@@ -1,7 +1,7 @@
 #
 # spec file for package udftools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           udftools
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        UDF filesystem tools
 License:        GPL-2.0-or-later
@@ -58,6 +58,7 @@ rm -r %{buildroot}%{_datadir}/doc
 %{_sbindir}/mkfs.udf
 %{_sbindir}/mkudffs
 %{_sbindir}/pktsetup
+%{_sbindir}/pktcdvd-check
 %{_sbindir}/udflabel
 %{_mandir}/man1/cdrwtool.1%{?ext_man}
 %{_mandir}/man1/udfinfo.1%{?ext_man}
