@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 17 23:25:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.10.58:
+  * identify the convex hull and minimum bounding box attributes of an image
+    with the -define identify:convex-hull=true define.
+  * set the quality to 100 to produce lossless HEIC images (reference
+    https://github.com/ImageMagick/ImageMagick/pull/3116).
+  * properly identify SVG images (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3117).
+  * duplicate operator: inverse range parameter working again (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3113).
+  * Fix rounding error for CSS colors on i686 (reference
+    https://tracker.debian.org/pkg/imagemagick).
+  * additional checks to prevent integer overflow.
+  * Fix rounding error for CSS colors (reference
+    https://github.com/ImageMagick/ImageMagick6/issues/129).
+
+-------------------------------------------------------------------
 Mon Jan  4 10:28:57 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.0.10.55

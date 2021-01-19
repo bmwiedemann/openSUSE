@@ -2903,4 +2903,25 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   % ImageMagick-configuration-SUSE.patch (refreshed)</comment>
     <requestid>860130</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>1b36bf347f859f478a7e703e9ff12905</srcmd5>
+    <version>7.0.10.58</version>
+    <time>1611068460</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.10.58:
+  * identify the convex hull and minimum bounding box attributes of an image
+    with the -define identify:convex-hull=true define.
+  * set the quality to 100 to produce lossless HEIC images (reference
+    https://github.com/ImageMagick/ImageMagick/pull/3116).
+  * properly identify SVG images (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3117).
+  * duplicate operator: inverse range parameter working again (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3113).
+  * Fix rounding error for CSS colors on i686 (reference
+    https://tracker.debian.org/pkg/imagemagick).
+  * additional checks to prevent integer overflow.
+  * Fix rounding error for CSS colors (reference
+    https://github.com/ImageMagick/ImageMagick6/issues/129). (forwarded request 863931 from dirkmueller)</comment>
+    <requestid>864042</requestid>
+  </revision>
 </revisionlist>
