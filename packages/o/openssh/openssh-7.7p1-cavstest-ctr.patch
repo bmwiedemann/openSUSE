@@ -2,10 +2,10 @@
 # Parent  cc1022edba2c5eeb0facba08468f65afc2466b63
 CAVS test for OpenSSH's own CTR encryption mode implementation
 
-diff --git a/Makefile.in b/Makefile.in
-index d5c37b5..5d4fcd2 100644
---- a/Makefile.in
-+++ b/Makefile.in
+Index: openssh-8.4p1/Makefile.in
+===================================================================
+--- openssh-8.4p1.orig/Makefile.in
++++ openssh-8.4p1/Makefile.in
 @@ -25,6 +25,7 @@ SFTP_SERVER=$(libexecdir)/sftp-server
  SSH_KEYSIGN=$(libexecdir)/ssh-keysign
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
@@ -14,7 +14,7 @@ index d5c37b5..5d4fcd2 100644
  PRIVSEP_PATH=@PRIVSEP_PATH@
  SSH_PRIVSEP_USER=@SSH_PRIVSEP_USER@
  STRIP_OPT=@STRIP_OPT@
-@@ -70,6 +71,8 @@ MKDIR_P=@MKDIR_P@
+@@ -68,6 +69,8 @@ MKDIR_P=@MKDIR_P@
  
  TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
  
@@ -23,7 +23,7 @@ index d5c37b5..5d4fcd2 100644
  XMSS_OBJS=\
  	ssh-xmss.o \
  	sshkey-xmss.o \
-@@ -244,6 +247,10 @@ sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTPSERVER_OBJS)
+@@ -242,6 +245,10 @@ sftp-server$(EXEEXT): $(LIBCOMPAT) libss
  sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
  	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)
  
@@ -34,7 +34,7 @@ index d5c37b5..5d4fcd2 100644
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o
  	$(LD) -o $@ logintest.o $(LDFLAGS) loginrec.o -lopenbsd-compat -lssh $(LIBS)
-@@ -398,6 +405,7 @@ install-files:
+@@ -400,6 +407,7 @@ install-files:
  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-sk-helper$(EXEEXT) $(DESTDIR)$(SSH_SK_HELPER)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp$(EXEEXT) $(DESTDIR)$(bindir)/sftp$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp-server$(EXEEXT) $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
@@ -42,11 +42,10 @@ index d5c37b5..5d4fcd2 100644
  	$(INSTALL) -m 644 ssh.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh.1
  	$(INSTALL) -m 644 scp.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/scp.1
  	$(INSTALL) -m 644 ssh-add.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh-add.1
-diff --git a/cavstest-ctr.c b/cavstest-ctr.c
-new file mode 100644
-index 0000000..f81cb72
+Index: openssh-8.4p1/cavstest-ctr.c
+===================================================================
 --- /dev/null
-+++ b/cavstest-ctr.c
++++ openssh-8.4p1/cavstest-ctr.c
 @@ -0,0 +1,214 @@
 +/*
 + *
@@ -262,10 +261,10 @@ index 0000000..f81cb72
 +	printf("\n");
 +	return 0;
 +}
-diff --git a/cipher.c b/cipher.c
-index 2f5430b..599b54a 100644
---- a/cipher.c
-+++ b/cipher.c
+Index: openssh-8.4p1/cipher.c
+===================================================================
+--- openssh-8.4p1.orig/cipher.c
++++ openssh-8.4p1/cipher.c
 @@ -58,15 +58,6 @@
  #define EVP_CIPHER_CTX void
  #endif
@@ -282,10 +281,10 @@ index 2f5430b..599b54a 100644
  struct sshcipher {
  	char	*name;
  	u_int	block_size;
-diff --git a/cipher.h b/cipher.h
-index 1a591cd..10ccb28 100644
---- a/cipher.h
-+++ b/cipher.h
+Index: openssh-8.4p1/cipher.h
+===================================================================
+--- openssh-8.4p1.orig/cipher.h
++++ openssh-8.4p1/cipher.h
 @@ -48,7 +48,15 @@
  #define CIPHER_DECRYPT		0
  

@@ -5,11 +5,11 @@ UsePAM is used
 
 bnc#708678, FATE#312033
 
-Index: openssh-7.8p1/auth.c
+Index: openssh-8.4p1/auth.c
 ===================================================================
---- openssh-7.8p1.orig/auth.c
-+++ openssh-7.8p1/auth.c
-@@ -112,7 +112,7 @@ allowed_user(struct passwd * pw)
+--- openssh-8.4p1.orig/auth.c
++++ openssh-8.4p1/auth.c
+@@ -113,7 +113,7 @@ allowed_user(struct ssh *ssh, struct pas
  		return 0;
  
  #ifdef USE_SHADOW
@@ -18,7 +18,7 @@ Index: openssh-7.8p1/auth.c
  		spw = getspnam(pw->pw_name);
  #ifdef HAS_SHADOW_EXPIRE
  	if (!options.use_pam && spw != NULL && auth_shadow_acctexpired(spw))
-@@ -132,7 +132,7 @@ allowed_user(struct passwd * pw)
+@@ -133,7 +133,7 @@ allowed_user(struct ssh *ssh, struct pas
  #endif
  
  	/* check for locked account */
@@ -27,11 +27,11 @@ Index: openssh-7.8p1/auth.c
  		int locked = 0;
  
  #ifdef LOCKED_PASSWD_STRING
-Index: openssh-7.8p1/servconf.c
+Index: openssh-8.4p1/servconf.c
 ===================================================================
---- openssh-7.8p1.orig/servconf.c
-+++ openssh-7.8p1/servconf.c
-@@ -83,6 +83,7 @@ initialize_server_options(ServerOptions
+--- openssh-8.4p1.orig/servconf.c
++++ openssh-8.4p1/servconf.c
+@@ -92,6 +92,7 @@ initialize_server_options(ServerOptions
  
  	/* Portable-specific options */
  	options->use_pam = -1;
@@ -39,7 +39,7 @@ Index: openssh-7.8p1/servconf.c
  
  	/* Standard Options */
  	options->num_ports = 0;
-@@ -259,6 +260,8 @@ fill_default_server_options(ServerOption
+@@ -300,6 +301,8 @@ fill_default_server_options(ServerOption
  	/* Portable-specific options */
  	if (options->use_pam == -1)
  		options->use_pam = 0;
@@ -48,7 +48,7 @@ Index: openssh-7.8p1/servconf.c
  
  	/* Standard Options */
  	if (options->num_host_key_files == 0) {
-@@ -459,7 +462,7 @@ fill_default_server_options(ServerOption
+@@ -501,7 +504,7 @@ fill_default_server_options(ServerOption
  typedef enum {
  	sBadOption,		/* == unknown option */
  	/* Portable-specific options */
@@ -57,7 +57,7 @@ Index: openssh-7.8p1/servconf.c
  	/* Standard Options */
  	sPort, sHostKeyFile, sLoginGraceTime,
  	sPermitRootLogin, sLogFacility, sLogLevel,
-@@ -509,8 +512,10 @@ static struct {
+@@ -553,8 +556,10 @@ static struct {
  	/* Portable-specific options */
  #ifdef USE_PAM
  	{ "usepam", sUsePAM, SSHCFG_GLOBAL },
@@ -68,7 +68,7 @@ Index: openssh-7.8p1/servconf.c
  #endif
  	{ "pamauthenticationviakbdint", sDeprecated, SSHCFG_GLOBAL },
  	/* Standard Options */
-@@ -1250,6 +1255,9 @@ process_server_config_line(ServerOptions
+@@ -1318,6 +1323,9 @@ process_server_config_line_depth(ServerO
  	case sUsePAM:
  		intptr = &options->use_pam;
  		goto parse_flag;
@@ -78,11 +78,11 @@ Index: openssh-7.8p1/servconf.c
  
  	/* Standard Options */
  	case sBadOption:
-Index: openssh-7.8p1/servconf.h
+Index: openssh-8.4p1/servconf.h
 ===================================================================
---- openssh-7.8p1.orig/servconf.h
-+++ openssh-7.8p1/servconf.h
-@@ -181,6 +181,7 @@ typedef struct {
+--- openssh-8.4p1.orig/servconf.h
++++ openssh-8.4p1/servconf.h
+@@ -195,6 +195,7 @@ typedef struct {
  	char   *adm_forced_command;
  
  	int	use_pam;		/* Enable auth via PAM */
@@ -90,11 +90,11 @@ Index: openssh-7.8p1/servconf.h
  
  	int	permit_tun;
  
-Index: openssh-7.8p1/sshd_config.0
+Index: openssh-8.4p1/sshd_config.0
 ===================================================================
---- openssh-7.8p1.orig/sshd_config.0
-+++ openssh-7.8p1/sshd_config.0
-@@ -961,6 +961,14 @@ DESCRIPTION
+--- openssh-8.4p1.orig/sshd_config.0
++++ openssh-8.4p1/sshd_config.0
+@@ -1032,6 +1032,14 @@ DESCRIPTION
               If UsePAM is enabled, you will not be able to run sshd(8) as a
               non-root user.  The default is no.
  
@@ -109,11 +109,11 @@ Index: openssh-7.8p1/sshd_config.0
       VersionAddendum
               Optionally specifies additional text to append to the SSH
               protocol banner sent by the server upon connection.  The default
-Index: openssh-7.8p1/sshd_config.5
+Index: openssh-8.4p1/sshd_config.5
 ===================================================================
---- openssh-7.8p1.orig/sshd_config.5
-+++ openssh-7.8p1/sshd_config.5
-@@ -1613,6 +1613,18 @@ is enabled, you will not be able to run
+--- openssh-8.4p1.orig/sshd_config.5
++++ openssh-8.4p1/sshd_config.5
+@@ -1718,6 +1718,18 @@ is enabled, you will not be able to run
  as a non-root user.
  The default is
  .Cm no .

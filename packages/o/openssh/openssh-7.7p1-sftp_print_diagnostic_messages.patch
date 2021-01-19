@@ -2,11 +2,11 @@
 # Parent  60bdbe6dd8d6bc011883472363d56e1d97f68835
 Put back sftp client diagnostic messages in batch mode
 
-diff --git a/sftp.1 b/sftp.1
-index a305b37..6e802ec 100644
---- a/sftp.1
-+++ b/sftp.1
-@@ -282,6 +282,9 @@ Specifies the port to connect to on the remote host.
+Index: openssh-8.4p1/sftp.1
+===================================================================
+--- openssh-8.4p1.orig/sftp.1
++++ openssh-8.4p1/sftp.1
+@@ -287,6 +287,9 @@ Specifies the port to connect to on the
  .It Fl p
  Preserves modification times, access times, and modes from the
  original files transferred.
@@ -16,10 +16,10 @@ index a305b37..6e802ec 100644
  .It Fl q
  Quiet mode: disables the progress meter as well as warning and
  diagnostic messages from
-diff --git a/sftp.c b/sftp.c
-index 2799e4a..52b2c23 100644
---- a/sftp.c
-+++ b/sftp.c
+Index: openssh-8.4p1/sftp.c
+===================================================================
+--- openssh-8.4p1.orig/sftp.c
++++ openssh-8.4p1/sftp.c
 @@ -85,6 +85,9 @@ static volatile pid_t sshpid = -1;
  /* Suppress diagnositic messages */
  int quiet = 0;
@@ -30,15 +30,15 @@ index 2799e4a..52b2c23 100644
  /* This is set to 0 if the progressmeter is not desired. */
  int showprogress = 1;
  
-@@ -2409,7 +2412,7 @@ main(int argc, char **argv)
+@@ -2408,7 +2411,7 @@ main(int argc, char **argv)
  	infile = stdin;
  
  	while ((ch = getopt(argc, argv,
--	    "1246afhNpqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
-+	    "1246afhNpQqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
+-	    "1246AafhNpqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
++	    "1246AafhNpQqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
  		switch (ch) {
  		/* Passed through to ssh(1) */
- 		case '4':
+ 		case 'A':
 @@ -2426,6 +2429,9 @@ main(int argc, char **argv)
  			addargs(&args, "-%c", ch);
  			addargs(&args, "%s", optarg);
@@ -56,5 +56,5 @@ index 2799e4a..52b2c23 100644
 +	if (batchmode && loud)
 +		quiet = 0;
  
- 	if (!isatty(STDERR_FILENO))
- 		showprogress = 0;
+ 	/* Do this last because we want the user to be able to override it */
+ 	addargs(&args, "-oForwardAgent no");

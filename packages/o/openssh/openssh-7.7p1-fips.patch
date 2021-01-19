@@ -3,11 +3,11 @@
 FIPS 140-2 compliance. Perform selftests on start and use only FIPS approved
 algorithms.
 
-diff --git a/Makefile.in b/Makefile.in
-index 62cd072..d5c37b5 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -114,6 +114,8 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
+Index: openssh-8.4p1/Makefile.in
+===================================================================
+--- openssh-8.4p1.orig/Makefile.in
++++ openssh-8.4p1/Makefile.in
+@@ -112,6 +112,8 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
  
  SKOBJS=	ssh-sk-client.o
  
@@ -16,10 +16,10 @@ index 62cd072..d5c37b5 100644
  SSHOBJS= ssh.o readconf.o clientloop.o sshtty.o \
  	sshconnect.o sshconnect2.o mux.o $(SKOBJS)
  
-diff --git a/cipher-ctr.c b/cipher-ctr.c
-index 32771f2..b66f92f 100644
---- a/cipher-ctr.c
-+++ b/cipher-ctr.c
+Index: openssh-8.4p1/cipher-ctr.c
+===================================================================
+--- openssh-8.4p1.orig/cipher-ctr.c
++++ openssh-8.4p1/cipher-ctr.c
 @@ -27,6 +27,8 @@
  #include "xmalloc.h"
  #include "log.h"
@@ -38,10 +38,10 @@ index 32771f2..b66f92f 100644
  #endif
  	return (&aes_ctr);
  }
-diff --git a/cipher.c b/cipher.c
-index 8195199..2f5430b 100644
---- a/cipher.c
-+++ b/cipher.c
+Index: openssh-8.4p1/cipher.c
+===================================================================
+--- openssh-8.4p1.orig/cipher.c
++++ openssh-8.4p1/cipher.c
 @@ -51,6 +51,9 @@
  
  #include "openbsd-compat/openssl-compat.h"
@@ -61,7 +61,7 @@ index 8195199..2f5430b 100644
  #ifdef WITH_OPENSSL
  #ifndef OPENSSL_NO_DES
  	{ "3des-cbc",		8, 24, 0, 0, CFLAG_CBC, EVP_des_ede3_cbc },
-@@ -114,8 +117,52 @@ static const struct sshcipher ciphers[] = {
+@@ -114,8 +117,52 @@ static const struct sshcipher ciphers[]
  	{ NULL,			0, 0, 0, 0, 0, NULL }
  };
  
@@ -132,11 +132,10 @@ index 8195199..2f5430b 100644
  		if (strcmp(c->name, name) == 0)
  			return c;
  	return NULL;
-diff --git a/fips.c b/fips.c
-new file mode 100644
-index 0000000..23e3876
+Index: openssh-8.4p1/fips.c
+===================================================================
 --- /dev/null
-+++ b/fips.c
++++ openssh-8.4p1/fips.c
 @@ -0,0 +1,212 @@
 +/*
 + * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -350,11 +349,10 @@ index 0000000..23e3876
 +	return dgst;
 +}
 +
-diff --git a/fips.h b/fips.h
-new file mode 100644
-index 0000000..a115a61
+Index: openssh-8.4p1/fips.h
+===================================================================
 --- /dev/null
-+++ b/fips.h
++++ openssh-8.4p1/fips.h
 @@ -0,0 +1,44 @@
 +/*
 + * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -400,11 +398,11 @@ index 0000000..a115a61
 +
 +#endif
 +
-diff --git a/hmac.c b/hmac.c
-index 7b58801..5a92074 100644
---- a/hmac.c
-+++ b/hmac.c
-@@ -145,7 +145,7 @@ hmac_test(void *key, size_t klen, void *m, size_t mlen, u_char *e, size_t elen)
+Index: openssh-8.4p1/hmac.c
+===================================================================
+--- openssh-8.4p1.orig/hmac.c
++++ openssh-8.4p1/hmac.c
+@@ -145,7 +145,7 @@ hmac_test(void *key, size_t klen, void *
  	size_t			 i;
  	u_char			 digest[16];
  
@@ -413,11 +411,11 @@ index 7b58801..5a92074 100644
  		printf("ssh_hmac_start failed");
  	if (ssh_hmac_init(ctx, key, klen) < 0 ||
  	    ssh_hmac_update(ctx, m, mlen) < 0 ||
-diff --git a/kex.c b/kex.c
-index b09fbac..a5e4be7 100644
---- a/kex.c
-+++ b/kex.c
-@@ -63,6 +63,8 @@
+Index: openssh-8.4p1/kex.c
+===================================================================
+--- openssh-8.4p1.orig/kex.c
++++ openssh-8.4p1/kex.c
+@@ -62,6 +62,8 @@
  #include "sshbuf.h"
  #include "digest.h"
  
@@ -426,7 +424,7 @@ index b09fbac..a5e4be7 100644
  /* prototype */
  static int kex_choose_conf(struct ssh *);
  static int kex_input_newkeys(int, u_int32_t, struct ssh *);
-@@ -86,7 +88,7 @@ struct kexalg {
+@@ -85,7 +87,7 @@ struct kexalg {
  	int ec_nid;
  	int hash_alg;
  };
@@ -435,7 +433,7 @@ index b09fbac..a5e4be7 100644
  #ifdef WITH_OPENSSL
  	{ KEX_DH1, KEX_DH_GRP1_SHA1, 0, SSH_DIGEST_SHA1 },
  	{ KEX_DH14_SHA1, KEX_DH_GRP14_SHA1, 0, SSH_DIGEST_SHA1 },
-@@ -117,6 +119,47 @@ static const struct kexalg kexalgs[] = {
+@@ -116,6 +118,47 @@ static const struct kexalg kexalgs[] = {
  	{ NULL, 0, -1, -1},
  };
  
@@ -483,7 +481,7 @@ index b09fbac..a5e4be7 100644
  char *
  kex_alg_list(char sep)
  {
-@@ -124,7 +167,7 @@ kex_alg_list(char sep)
+@@ -123,7 +166,7 @@ kex_alg_list(char sep)
  	size_t nlen, rlen = 0;
  	const struct kexalg *k;
  
@@ -492,7 +490,7 @@ index b09fbac..a5e4be7 100644
  		if (ret != NULL)
  			ret[rlen++] = sep;
  		nlen = strlen(k->name);
-@@ -144,7 +187,7 @@ kex_alg_by_name(const char *name)
+@@ -143,7 +186,7 @@ kex_alg_by_name(const char *name)
  {
  	const struct kexalg *k;
  
@@ -501,7 +499,7 @@ index b09fbac..a5e4be7 100644
  		if (strcmp(k->name, name) == 0)
  			return k;
  	}
-@@ -164,7 +207,10 @@ kex_names_valid(const char *names)
+@@ -163,7 +206,10 @@ kex_names_valid(const char *names)
  	for ((p = strsep(&cp, ",")); p && *p != '\0';
  	    (p = strsep(&cp, ","))) {
  		if (kex_alg_by_name(p) == NULL) {
@@ -512,10 +510,10 @@ index b09fbac..a5e4be7 100644
  			free(s);
  			return 0;
  		}
-diff --git a/mac.c b/mac.c
-index f3dda66..90d71c8 100644
---- a/mac.c
-+++ b/mac.c
+Index: openssh-8.4p1/mac.c
+===================================================================
+--- openssh-8.4p1.orig/mac.c
++++ openssh-8.4p1/mac.c
 @@ -41,6 +41,9 @@
  
  #include "openbsd-compat/openssl-compat.h"
@@ -586,7 +584,7 @@ index f3dda66..90d71c8 100644
  		if (ret != NULL)
  			ret[rlen++] = sep;
  		nlen = strlen(m->name);
-@@ -126,7 +164,7 @@ mac_setup(struct sshmac *mac, char *name)
+@@ -126,7 +164,7 @@ mac_setup(struct sshmac *mac, char *name
  {
  	const struct macalg *m;
  
@@ -595,10 +593,10 @@ index f3dda66..90d71c8 100644
  		if (strcmp(name, m->name) != 0)
  			continue;
  		if (mac != NULL)
-diff --git a/readconf.c b/readconf.c
-index 26e80c5..595f053 100644
---- a/readconf.c
-+++ b/readconf.c
+Index: openssh-8.4p1/readconf.c
+===================================================================
+--- openssh-8.4p1.orig/readconf.c
++++ openssh-8.4p1/readconf.c
 @@ -68,6 +68,8 @@
  #include "myproposal.h"
  #include "digest.h"
@@ -608,7 +606,7 @@ index 26e80c5..595f053 100644
  /* Format of the configuration file:
  
     # Configuration data is parsed as follows:
-@@ -1908,6 +1910,23 @@ option_clear_or_none(const char *o)
+@@ -1949,6 +1951,23 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -632,7 +630,7 @@ index 26e80c5..595f053 100644
  /*
   * Initializes options to special values that indicate that they have not yet
   * been set.  Read_config_file will only set options with this value. Options
-@@ -2196,6 +2215,9 @@ fill_default_options(Options * options)
+@@ -2240,6 +2259,9 @@ fill_default_options(Options * options)
  		options->canonicalize_hostname = SSH_CANONICALISE_NO;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
@@ -642,7 +640,7 @@ index 26e80c5..595f053 100644
  #ifdef ENABLE_SK_INTERNAL
  	if (options->sk_provider == NULL)
  		options->sk_provider = xstrdup("internal");
-@@ -2229,6 +2251,7 @@ fill_default_options(Options * options)
+@@ -2273,6 +2295,7 @@ fill_default_options(Options * options)
  	ASSEMBLE(pubkey_key_types, def_key, all_key);
  	ASSEMBLE(ca_sign_algorithms, def_sig, all_sig);
  #undef ASSEMBLE
@@ -650,7 +648,7 @@ index 26e80c5..595f053 100644
  	free(all_cipher);
  	free(all_mac);
  	free(all_kex);
-@@ -2240,6 +2263,8 @@ fill_default_options(Options * options)
+@@ -2284,6 +2307,8 @@ fill_default_options(Options * options)
  	kex_default_pk_alg_filtered = def_key; /* save for later use */
  	free(def_sig);
  
@@ -659,11 +657,11 @@ index 26e80c5..595f053 100644
  #define CLEAR_ON_NONE(v) \
  	do { \
  		if (option_clear_or_none(v)) { \
-diff --git a/readconf.h b/readconf.h
-index e143a10..ef18d5c 100644
---- a/readconf.h
-+++ b/readconf.h
-@@ -199,6 +199,7 @@ typedef struct {
+Index: openssh-8.4p1/readconf.h
+===================================================================
+--- openssh-8.4p1.orig/readconf.h
++++ openssh-8.4p1/readconf.h
+@@ -200,6 +200,7 @@ typedef struct {
  #define SSH_STRICT_HOSTKEY_YES	2
  #define SSH_STRICT_HOSTKEY_ASK	3
  
@@ -671,11 +669,11 @@ index e143a10..ef18d5c 100644
  const char *kex_default_pk_alg(void);
  char	*ssh_connection_hash(const char *thishost, const char *host,
      const char *portstr, const char *user);
-diff --git a/servconf.c b/servconf.c
-index 6be7274..9a51bfb 100644
---- a/servconf.c
-+++ b/servconf.c
-@@ -69,6 +69,7 @@
+Index: openssh-8.4p1/servconf.c
+===================================================================
+--- openssh-8.4p1.orig/servconf.c
++++ openssh-8.4p1/servconf.c
+@@ -70,6 +70,7 @@
  #include "auth.h"
  #include "myproposal.h"
  #include "digest.h"
@@ -683,7 +681,7 @@ index 6be7274..9a51bfb 100644
  
  static void add_listen_addr(ServerOptions *, const char *,
      const char *, int);
-@@ -200,6 +201,23 @@ option_clear_or_none(const char *o)
+@@ -201,6 +202,23 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -707,7 +705,7 @@ index 6be7274..9a51bfb 100644
  static void
  assemble_algorithms(ServerOptions *o)
  {
-@@ -241,6 +259,8 @@ assemble_algorithms(ServerOptions *o)
+@@ -242,6 +260,8 @@ assemble_algorithms(ServerOptions *o)
  	free(def_kex);
  	free(def_key);
  	free(def_sig);
@@ -716,7 +714,7 @@ index 6be7274..9a51bfb 100644
  }
  
  static void
-@@ -453,6 +473,8 @@ fill_default_server_options(ServerOptions *options)
+@@ -454,6 +474,8 @@ fill_default_server_options(ServerOption
  		options->fwd_opts.streamlocal_bind_unlink = 0;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
@@ -725,10 +723,10 @@ index 6be7274..9a51bfb 100644
  	if (options->disable_forwarding == -1)
  		options->disable_forwarding = 0;
  	if (options->expose_userauth_info == -1)
-diff --git a/ssh-keygen.c b/ssh-keygen.c
-index 944faca..c1ecc54 100644
---- a/ssh-keygen.c
-+++ b/ssh-keygen.c
+Index: openssh-8.4p1/ssh-keygen.c
+===================================================================
+--- openssh-8.4p1.orig/ssh-keygen.c
++++ openssh-8.4p1/ssh-keygen.c
 @@ -66,6 +66,8 @@
  #include "ssh-sk.h"
  #include "sk-api.h" /* XXX for SSH_SK_USER_PRESENCE_REQD; remove */
@@ -738,7 +736,7 @@ index 944faca..c1ecc54 100644
  #ifdef WITH_OPENSSL
  # define DEFAULT_KEY_TYPE_NAME "rsa"
  #else
-@@ -1032,11 +1034,13 @@ do_fingerprint(struct passwd *pw)
+@@ -1036,11 +1038,13 @@ do_fingerprint(struct passwd *pw)
  static void
  do_gen_all_hostkeys(struct passwd *pw)
  {
@@ -754,7 +752,7 @@ index 944faca..c1ecc54 100644
  #ifdef WITH_OPENSSL
  		{ "rsa", "RSA" ,_PATH_HOST_RSA_KEY_FILE },
  		{ "dsa", "DSA", _PATH_HOST_DSA_KEY_FILE },
-@@ -1051,6 +1055,17 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1055,6 +1059,17 @@ do_gen_all_hostkeys(struct passwd *pw)
  		{ NULL, NULL, NULL }
  	};
  
@@ -772,7 +770,7 @@ index 944faca..c1ecc54 100644
  	u_int32_t bits = 0;
  	int first = 0;
  	struct stat st;
-@@ -1058,6 +1073,12 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1062,6 +1077,12 @@ do_gen_all_hostkeys(struct passwd *pw)
  	char comment[1024], *prv_tmp, *pub_tmp, *prv_file, *pub_file;
  	int i, type, fd, r;
  
@@ -785,7 +783,7 @@ index 944faca..c1ecc54 100644
  	for (i = 0; key_types[i].key_type; i++) {
  		public = private = NULL;
  		prv_tmp = pub_tmp = prv_file = pub_file = NULL;
-@@ -3532,6 +3553,15 @@ main(int argc, char **argv)
+@@ -3586,6 +3607,15 @@ main(int argc, char **argv)
  		key_type_name = DEFAULT_KEY_TYPE_NAME;
  
  	type = sshkey_type_from_name(key_type_name);
@@ -801,11 +799,11 @@ index 944faca..c1ecc54 100644
  	type_bits_valid(type, key_type_name, &bits);
  
  	if (!quiet)
-diff --git a/ssh_config.5 b/ssh_config.5
-index c45fb8d..55d4b5e 100644
---- a/ssh_config.5
-+++ b/ssh_config.5
-@@ -669,6 +669,8 @@ Valid options are:
+Index: openssh-8.4p1/ssh_config.5
+===================================================================
+--- openssh-8.4p1.orig/ssh_config.5
++++ openssh-8.4p1/ssh_config.5
+@@ -682,6 +682,8 @@ Valid options are:
  and
  .Cm sha256
  (the default).
@@ -814,11 +812,11 @@ index c45fb8d..55d4b5e 100644
  .It Cm ForwardAgent
  Specifies whether the connection to the authentication agent (if any)
  will be forwarded to the remote machine.
-diff --git a/sshd.c b/sshd.c
-index a24241c..e18078f 100644
---- a/sshd.c
-+++ b/sshd.c
-@@ -128,6 +128,8 @@
+Index: openssh-8.4p1/sshd.c
+===================================================================
+--- openssh-8.4p1.orig/sshd.c
++++ openssh-8.4p1/sshd.c
+@@ -124,6 +124,8 @@
  #include "ssherr.h"
  #include "sk-api.h"
  
@@ -827,10 +825,10 @@ index a24241c..e18078f 100644
  /* Re-exec fds */
  #define REEXEC_DEVCRYPTO_RESERVED_FD	(STDERR_FILENO + 1)
  #define REEXEC_STARTUP_PIPE_FD		(STDERR_FILENO + 2)
-diff --git a/sshd_config.5 b/sshd_config.5
-index 52552d2..35affe5 100644
---- a/sshd_config.5
-+++ b/sshd_config.5
+Index: openssh-8.4p1/sshd_config.5
+===================================================================
+--- openssh-8.4p1.orig/sshd_config.5
++++ openssh-8.4p1/sshd_config.5
 @@ -594,6 +594,8 @@ and
  .Cm sha256 .
  The default is

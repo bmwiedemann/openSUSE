@@ -1,14 +1,16 @@
---- original/sftp-server.8	2016-12-19 04:59:41.000000000 +0000
-+++ original/sftp-server.8	2017-11-23 08:47:01.267239186 +0000
-@@ -38,6 +38,7 @@ 
- .Op Fl P Ar blacklisted_requests
- .Op Fl p Ar whitelisted_requests
+Index: openssh-8.4p1/sftp-server.8
+===================================================================
+--- openssh-8.4p1.orig/sftp-server.8
++++ openssh-8.4p1/sftp-server.8
+@@ -38,6 +38,7 @@
+ .Op Fl P Ar denied_requests
+ .Op Fl p Ar allowed_requests
  .Op Fl u Ar umask
 +.Op Fl m Ar force_file_dir_perms
  .Ek
  .Nm
  .Fl Q Ar protocol_feature
-@@ -138,6 +139,10 @@ 
+@@ -138,6 +139,10 @@ Sets an explicit
  .Xr umask 2
  to be applied to newly-created files and directories, instead of the
  user's default mask.
@@ -19,9 +21,11 @@
  .El
  .Pp
  On some systems,
---- original/sftp-server.c	2016-12-19 04:59:41.000000000 +0000
-+++ original/sftp-server.c	2017-11-23 13:07:08.481765581 +0000
-@@ -65,6 +65,10 @@ 
+Index: openssh-8.4p1/sftp-server.c
+===================================================================
+--- openssh-8.4p1.orig/sftp-server.c
++++ openssh-8.4p1/sftp-server.c
+@@ -69,6 +69,10 @@ struct sshbuf *oqueue;
  /* Version of client */
  static u_int version;
  
@@ -32,7 +36,7 @@
  /* SSH2_FXP_INIT received */
  static int init_done;
  
-@@ -679,6 +683,7 @@ 
+@@ -687,6 +691,7 @@ process_open(u_int32_t id)
  	Attrib a;
  	char *name;
  	int r, handle, fd, flags, mode, status = SSH2_FX_FAILURE;
@@ -40,7 +44,7 @@
  
  	if ((r = sshbuf_get_cstring(iqueue, &name, NULL)) != 0 ||
  	    (r = sshbuf_get_u32(iqueue, &pflags)) != 0 || /* portable flags */
-@@ -688,6 +693,10 @@ 
+@@ -696,6 +701,10 @@ process_open(u_int32_t id)
  	debug3("request %u: open flags %d", id, pflags);
  	flags = flags_from_portable(pflags);
  	mode = (a.flags & SSH2_FILEXFER_ATTR_PERMISSIONS) ? a.perm : 0666;
@@ -51,7 +55,7 @@
  	logit("open \"%s\" flags %s mode 0%o",
  	    name, string_from_portable(pflags), mode);
  	if (readonly &&
-@@ -709,6 +718,8 @@ 
+@@ -717,6 +726,8 @@ process_open(u_int32_t id)
  			}
  		}
  	}
@@ -60,7 +64,7 @@
  	if (status != SSH2_FX_OK)
  		send_status(id, status);
  	free(name);
-@@ -1110,6 +1121,7 @@ 
+@@ -1131,6 +1142,7 @@ process_mkdir(u_int32_t id)
  	Attrib a;
  	char *name;
  	int r, mode, status = SSH2_FX_FAILURE;
@@ -68,7 +72,7 @@
  
  	if ((r = sshbuf_get_cstring(iqueue, &name, NULL)) != 0 ||
  	    (r = decode_attrib(iqueue, &a)) != 0)
-@@ -1117,9 +1129,16 @@ 
+@@ -1138,9 +1150,16 @@ process_mkdir(u_int32_t id)
  
  	mode = (a.flags & SSH2_FILEXFER_ATTR_PERMISSIONS) ?
  	    a.perm & 07777 : 0777;
@@ -85,16 +89,16 @@
  	status = (r == -1) ? errno_to_portable(errno) : SSH2_FX_OK;
  	send_status(id, status);
  	free(name);
-@@ -1490,7 +1509,7 @@ 
+@@ -1560,7 +1579,7 @@ sftp_server_usage(void)
  	fprintf(stderr,
  	    "usage: %s [-ehR] [-d start_directory] [-f log_facility] "
- 	    "[-l log_level]\n\t[-P blacklisted_requests] "
--	    "[-p whitelisted_requests] [-u umask]\n"
-+	    "[-p whitelisted_requests] [-u umask] [-m force_file_dir_perms]\n"
+ 	    "[-l log_level]\n\t[-P denied_requests] "
+-	    "[-p allowed_requests] [-u umask]\n"
++	    "[-p allowed_requests] [-u umask] [-m force_file_dir_perms]\n"
  	    "       %s -Q protocol_feature\n",
  	    __progname, __progname);
  	exit(1);
-@@ -1516,7 +1535,7 @@ 
+@@ -1588,7 +1607,7 @@ sftp_server_main(int argc, char **argv,
  	pw = pwcopy(user_pw);
  
  	while (!skipargs && (ch = getopt(argc, argv,
@@ -103,7 +107,7 @@
  		switch (ch) {
  		case 'Q':
  			if (strcasecmp(optarg, "requests") != 0) {
-@@ -1576,6 +1595,15 @@ 
+@@ -1650,6 +1669,15 @@ sftp_server_main(int argc, char **argv,
  				fatal("Invalid umask \"%s\"", optarg);
  			(void)umask((mode_t)mask);
  			break;

@@ -18,14 +18,14 @@
 
 %define _name openssh
 Name:           openssh-askpass-gnome
-Version:        8.3p1
+Version:        8.4p1
 Release:        0
 Summary:        A GNOME-Based Passphrase Dialog for OpenSSH
 License:        BSD-2-Clause
 Group:          Productivity/Networking/SSH
-URL:            http://www.openssh.com/
-Source:         http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz
-Source42:       http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz.asc
+URL:            https://www.openssh.com/
+Source:         https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz
+Source42:       https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz.asc
 Requires:       %{_name} = %{version}
 Supplements:    packageand(openssh-clients:libgtk-3-0)
 %if 0%{?suse_version} >= 1550

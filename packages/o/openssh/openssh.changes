@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Mon Jan 18 00:30:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.4p1:
+  Security
+  ========
+ * ssh-agent(1): restrict ssh-agent from signing web challenges for
+   FIDO/U2F keys.
+ * ssh-keygen(1): Enable FIDO 2.1 credProtect extension when generating
+   a FIDO resident key.
+ * ssh(1), ssh-keygen(1): support for FIDO keys that require a PIN for
+   each use. These keys may be generated using ssh-keygen using a new
+   "verify-required" option. When a PIN-required key is used, the user
+   will be prompted for a PIN to complete the signature operation.
+  New Features
+  ------------
+ * sshd(8): authorized_keys now supports a new "verify-required"
+   option to require FIDO signatures assert that the token verified
+   that the user was present before making the signature. The FIDO
+   protocol supports multiple methods for user-verification, but
+   currently OpenSSH only supports PIN verification.
+
+ * sshd(8), ssh-keygen(1): add support for verifying FIDO webauthn
+   signatures. Webauthn is a standard for using FIDO keys in web
+   browsers. These signatures are a slightly different format to plain
+   FIDO signatures and thus require explicit support.
+
+ * ssh(1): allow some keywords to expand shell-style ${ENV}
+   environment variables. The supported keywords are CertificateFile,
+   ControlPath, IdentityAgent and IdentityFile, plus LocalForward and
+   RemoteForward when used for Unix domain socket paths. bz#3140
+
+ * ssh(1), ssh-agent(1): allow some additional control over the use of
+   ssh-askpass via a new $SSH_ASKPASS_REQUIRE environment variable,
+   including forcibly enabling and disabling its use. bz#69
+
+ * ssh(1): allow ssh_config(5)'s AddKeysToAgent keyword accept a time
+   limit for keys in addition to its current flag options. Time-
+   limited keys will automatically be removed from ssh-agent after
+   their expiry time has passed.
+
+ * scp(1), sftp(1): allow the -A flag to explicitly enable agent
+   forwarding in scp and sftp. The default remains to not forward an
+   agent, even when ssh_config enables it.
+
+ * ssh(1): add a '%k' TOKEN that expands to the effective HostKey of
+   the destination. This allows, e.g., keeping host keys in individual
+   files using "UserKnownHostsFile ~/.ssh/known_hosts.d/%k". bz#1654
+
+ * ssh(1): add %-TOKEN, environment variable and tilde expansion to
+   the UserKnownHostsFile directive, allowing the path to be
+   completed by the configuration (e.g. bz#1654)
+
+ * ssh-keygen(1): allow "ssh-add -d -" to read keys to be deleted
+   from stdin. bz#3180
+
+ * sshd(8): improve logging for MaxStartups connection throttling.
+   sshd will now log when it starts and stops throttling and periodically
+   while in this state. bz#3055
+
+  Bugfixes
+  --------
+ * ssh(1), ssh-keygen(1): better support for multiple attached FIDO
+   tokens. In cases where OpenSSH cannot unambiguously determine which
+   token to direct a request to, the user is now required to select a
+   token by touching it. In cases of operations that require a PIN to
+   be verified, this avoids sending the wrong PIN to the wrong token
+   and incrementing the token's PIN failure counter (tokens
+   effectively erase their keys after too many PIN failures).
+ * sshd(8): fix Include before Match in sshd_config; bz#3122
+ * ssh(1): close stdin/out/error when forking after authentication
+   completes ("ssh -f ...") bz#3137
+ * ssh(1), sshd(8): limit the amount of channel input data buffered,
+   avoiding peers that advertise large windows but are slow to read
+   from causing high memory consumption.
+ * ssh-agent(1): handle multiple requests sent in a single write() to
+   the agent.
+ * sshd(8): allow sshd_config longer than 256k
+ * sshd(8): avoid spurious "Unable to load host key" message when sshd
+   load a private key but no public counterpart
+ * ssh(1): prefer the default hostkey algorithm list whenever we have
+   a hostkey that matches its best-preference algorithm.
+ * sshd(1): when ordering the hostkey algorithms to request from a
+   server, prefer certificate types if the known_hosts files contain a key
+   marked as a @cert-authority; bz#3157
+ * ssh(1): perform host key fingerprint comparisons for the "Are you
+   sure you want to continue connecting (yes/no/[fingerprint])?"
+   prompt with case sensitivity.
+ * sshd(8): ensure that address/masklen mismatches in sshd_config
+   yield fatal errors at daemon start time rather than later when
+   they are evaluated.
+ * ssh-keygen(1): ensure that certificate extensions are lexically
+   sorted. Previously if the user specified a custom extension then
+   the everything would be in order except the custom ones. bz#3198
+ * ssh(1): also compare username when checking for JumpHost loops.
+   bz#3057
+ * ssh-keygen(1): preserve group/world read permission on known_hosts
+   files across runs of "ssh-keygen -Rf /path". The old behaviour was
+   to remove all rights for group/other. bz#3146
+ * ssh-keygen(1): Mention the [-a rounds] flag in the ssh-keygen
+   manual page and usage().
+ * sshd(8): explicitly construct path to ~/.ssh/rc rather than
+   relying on it being relative to the current directory, so that it
+   can still be found if the shell startup changes its directory.
+   bz#3185
+ * sshd(8): when redirecting sshd's log output to a file, undo this
+   redirection after the session child process is forked(). Fixes
+   missing log messages when using this feature under some
+   circumstances.
+ * sshd(8): start ClientAliveInterval bookkeeping before first pass
+   through select() loop; fixed theoretical case where busy sshd may
+   ignore timeouts from client.
+ * ssh(1): only reset the ServerAliveInterval check when we receive
+   traffic from the server and ignore traffic from a port forwarding
+   client, preventing a client from keeping a connection alive when
+   it should be terminated. bz#2265
+ * ssh-keygen(1): avoid spurious error message when ssh-keygen
+   creates files outside ~/.ssh
+ * sftp-client(1): fix off-by-one error that caused sftp downloads to
+   make one more concurrent request that desired. This prevented using
+   sftp(1) in unpipelined request/response mode, which is useful when
+   debugging. bz#3054
+ * ssh(1), sshd(8): handle EINTR in waitfd() and timeout_connect()
+   helpers. bz#3071
+ * ssh(1), ssh-keygen(1): defer creation of ~/.ssh until we attempt to
+   write to it so we don't leave an empty .ssh directory when it's not
+   needed. bz#3156
+ * ssh(1), sshd(8): fix multiplier when parsing time specifications
+   when handling seconds after other units. bz#3171
+
+-------------------------------------------------------------------
 Fri Jan  8 01:37:02 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
 
 - Update openssh-8.1p1-audit.patch (bsc#1180501). This fixes

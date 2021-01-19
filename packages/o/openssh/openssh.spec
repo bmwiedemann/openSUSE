@@ -38,14 +38,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        8.3p1
+Version:        8.4p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
 Group:          Productivity/Networking/SSH
 URL:            https://www.openssh.com/
-Source0:        http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz
-Source1:        http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz.asc
+Source0:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz
+Source1:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz.asc
 Source2:        sshd.pamd
 Source3:        README.SUSE
 Source4:        README.kerberos
@@ -108,7 +108,7 @@ Patch40:        openssh-8.1p1-ed25519-use-openssl-rng.patch
 Patch41:        openssh-fips-ensure-approved-moduli.patch
 Patch42:        openssh-link-with-sk.patch
 BuildRequires:  audit-devel
-BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  groff
 BuildRequires:  libedit-devel
 BuildRequires:  libselinux-devel

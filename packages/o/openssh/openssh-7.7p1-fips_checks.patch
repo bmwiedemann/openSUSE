@@ -14,11 +14,10 @@
 # file is not found (or the hash matches), proceed in non-FIPS mode and abort
 # otherwise.
 
-diff --git a/fips-check.c b/fips-check.c
-new file mode 100644
-index 0000000..eceb031
+Index: openssh-8.4p1/fips-check.c
+===================================================================
 --- /dev/null
-+++ b/fips-check.c
++++ openssh-8.4p1/fips-check.c
 @@ -0,0 +1,34 @@
 +#include "includes.h"
 +#include <fcntl.h>
@@ -54,10 +53,10 @@ index 0000000..eceb031
 +    fips_ssh_init();
 +	return 0;
 +}
-diff --git a/fips.c b/fips.c
-index 23e3876..297ae99 100644
---- a/fips.c
-+++ b/fips.c
+Index: openssh-8.4p1/fips.c
+===================================================================
+--- openssh-8.4p1.orig/fips.c
++++ openssh-8.4p1/fips.c
 @@ -35,30 +35,293 @@
  #include "log.h"
  #include "xmalloc.h"
@@ -246,7 +245,9 @@ index 23e3876..297ae99 100644
  {
  	int fips_required = 0;
 -	char *env = getenv(SSH_FORCE_FIPS_ENV);
--
++	int fips_fd;
++	char fips_sys = 0;
+ 
 -	if (env) {
 -		errno = 0;
 -		fips_required = strtol(env, NULL, 10);
@@ -256,9 +257,6 @@ index 23e3876..297ae99 100644
 -			fips_required = 0;
 -		} else
 -			fips_required = 1;
-+	int fips_fd;
-+	char fips_sys = 0;
-+
 +	struct stat dummy;
 +	if (-1 == stat(FIPS_PROC_PATH, &dummy)) {
 +		switch (errno) {
@@ -364,10 +362,10 @@ index 23e3876..297ae99 100644
  int
  fips_mode(void)
  {
-diff --git a/fips.h b/fips.h
-index a115a61..3404684 100644
---- a/fips.h
-+++ b/fips.h
+Index: openssh-8.4p1/fips.h
+===================================================================
+--- openssh-8.4p1.orig/fips.h
++++ openssh-8.4p1/fips.h
 @@ -1,5 +1,5 @@
  /*
 - * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -404,15 +402,15 @@ index a115a61..3404684 100644
  int	 fips_mode(void);
  int	 fips_correct_dgst(int);
  int	 fips_dgst_min(void);
-@@ -41,4 +56,3 @@ enum fp_type	 fips_correct_fp_type(enum fp_type);
+@@ -41,4 +56,3 @@ enum fp_type	 fips_correct_fp_type(enum
  int	 fips_filter_crypto(char **, fips_filters);
  
  #endif
 -
-diff --git a/sftp-server.c b/sftp-server.c
-index 359204f..d6395fd 100644
---- a/sftp-server.c
-+++ b/sftp-server.c
+Index: openssh-8.4p1/sftp-server.c
+===================================================================
+--- openssh-8.4p1.orig/sftp-server.c
++++ openssh-8.4p1/sftp-server.c
 @@ -53,6 +53,8 @@
  
  char *sftp_realpath(const char *, char *); /* sftp-realpath.c */
@@ -422,7 +420,7 @@ index 359204f..d6395fd 100644
  /* Our verbosity */
  static LogLevel log_level = SYSLOG_LEVEL_ERROR;
  
-@@ -1576,6 +1578,9 @@ sftp_server_main(int argc, char **argv, struct passwd *user_pw)
+@@ -1577,6 +1579,9 @@ sftp_server_main(int argc, char **argv,
  	extern char *optarg;
  	extern char *__progname;
  
@@ -432,10 +430,10 @@ index 359204f..d6395fd 100644
  	__progname = ssh_get_progname(argv[0]);
  	log_init(__progname, log_level, log_facility, log_stderr);
  
-diff --git a/ssh.c b/ssh.c
-index 98b6ce7..dce28fd 100644
---- a/ssh.c
-+++ b/ssh.c
+Index: openssh-8.4p1/ssh.c
+===================================================================
+--- openssh-8.4p1.orig/ssh.c
++++ openssh-8.4p1/ssh.c
 @@ -113,6 +113,8 @@
  #include "ssh-pkcs11.h"
  #endif
@@ -445,9 +443,9 @@ index 98b6ce7..dce28fd 100644
  extern char *__progname;
  
  /* Saves a copy of argv for setproctitle emulation */
-@@ -630,6 +632,10 @@ main(int ac, char **av)
- 	struct addrinfo *addrs = NULL;
+@@ -658,6 +660,10 @@ main(int ac, char **av)
  	size_t n, len;
+ 	u_int j;
  
 +	/* initialize fips - can go before ssh_malloc_init(), since that is a
 +	 * OpenBSD-only thing (as of OpenSSH 7.6p1) */
@@ -456,11 +454,11 @@ index 98b6ce7..dce28fd 100644
  	/* Ensure that fds 0, 1 and 2 are open or directed to /dev/null */
  	sanitise_stdfd();
  
-diff --git a/sshd.c b/sshd.c
-index b2146a6..6092f0f 100644
---- a/sshd.c
-+++ b/sshd.c
-@@ -1505,6 +1505,10 @@ main(int ac, char **av)
+Index: openssh-8.4p1/sshd.c
+===================================================================
+--- openssh-8.4p1.orig/sshd.c
++++ openssh-8.4p1/sshd.c
+@@ -1545,6 +1545,10 @@ main(int ac, char **av)
  	Authctxt *authctxt;
  	struct connection_info *connection_info = NULL;
  
