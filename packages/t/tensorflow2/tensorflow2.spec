@@ -645,7 +645,7 @@ cd -
 ./configure
 
 %define bazelopts \\\
-  -c opt \\\
+  -s -c opt \\\
   --repository_cache=%{bz_cachdir} \\\
   --ignore_unsupported_sandboxing \\\
   --verbose_failures \\\
@@ -739,7 +739,9 @@ cd -
 %endif
 # install libtensorflow*.so
 #install -D bazel-bin/tensorflow/libtensorflow.so %{buildroot}%{package_libdir}/libtensorflow.so
+
 %fdupes -s %{buildroot}%{?hpc_prefix}  
+
 # install after fdupes
 cp -vd  \
   bazel-bin/tensorflow/libtensorflow_cc.so \
@@ -749,6 +751,11 @@ cp -vd  \
 
 %ifarch x86_64
 mv %{buildroot}/%{package_python_sitearch}/_solib_k8/_U_S_Sthird_Uparty_Smkl_Cmkl_Ulibs_Ulinux___Uexternal_Sllvm_Uopenmp/libiomp5.so %{buildroot}/%{package_libdir}/
+# Fix symlink
+pushd %{buildroot}%{package_python_sitearch}/tensorflow/include/external/llvm_openmp/
+rm libiomp5.so
+ln -s %{package_libdir}/libiomp5.so
+popd
 %endif
 
 find %{buildroot} -name \*.h -type f -exec chmod 644 {} +
