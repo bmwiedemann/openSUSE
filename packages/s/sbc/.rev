@@ -61,4 +61,12 @@
   * Add support for SSE primitives.</comment>
     <requestid>862163</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3e536bde1203755bba8777af212b62fb</srcmd5>
+    <version>1.5</version>
+    <time>1611068439</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-build-on-non-x86.patch: fix build on non-x86</comment>
+    <requestid>863886</requestid>
+  </revision>
 </revisionlist>

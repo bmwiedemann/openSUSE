@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 17 14:11:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add fix-build-on-non-x86.patch: fix build on non-x86 
+
+-------------------------------------------------------------------
 Mon Jan 11 01:03:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5:

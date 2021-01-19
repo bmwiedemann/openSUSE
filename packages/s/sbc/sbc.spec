@@ -28,6 +28,7 @@ Group:          Hardware/Mobile
 URL:            https://www.kernel.org/pub/linux/bluetooth
 Source:         https://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch1:         https://git.kernel.org/pub/scm/bluetooth/sbc.git/patch/?id=909a9bdf7ab143e1f0baaf9736baebd3cd79aacf#/fix-build-on-non-x86.patch
 BuildRequires:  libsndfile-devel
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -54,6 +55,7 @@ Development files for the SBC library
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
