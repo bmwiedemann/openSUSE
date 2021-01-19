@@ -1,7 +1,7 @@
 #
 # spec file for package python-matplotlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-# Not doing tests because they take too long
-# The tests also pull in dependencies of all backends done in pure python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -31,23 +29,22 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.3.0
+Version:        3.3.3
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
 URL:            https://matplotlib.org
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-%{version}.tar.gz
 Source1:        matplotlib-setup.cfg
-# Remove after next update
-Source2:        https://github.com/matplotlib/matplotlib/raw/b9470957c7f440084915a0b6573af3ee2235b941/lib/matplotlib/tests/baseline_images/test_axes/transparent_markers.pdf
 # Bundled version of freetype for testing purposes only
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
 Patch0:         no-builddir-freetype.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module kiwisolver >= 1.0.1}
-BuildRequires:  %{python_module numpy >= 1.7.1}
-BuildRequires:  %{python_module numpy-devel >= 1.7.1}
+BuildRequires:  %{python_module numpy >= 1.15}
+BuildRequires:  %{python_module numpy-devel >= 1.15}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing > 2.2.1}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
@@ -66,6 +63,7 @@ Requires:       python-pytz
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
+Recommends:     python-certifi
 Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION WebAgg dependencies
@@ -79,6 +77,8 @@ BuildRequires:  pkgconfig(tcl)
 # /SECTION
 %if %{with test}
 BuildRequires:  %{python_module Pillow >= 6.2}
+BuildRequires:  %{python_module cairo}
+BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
@@ -90,22 +90,9 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.7}
-# SECTION cairo dependencies
-BuildRequires:  %{python_module cairo}
-# /SECTION
-# SECTION GTK3 dependencies
-BuildRequires:  %{python_module gobject-Gdk}
-# /SECTION
-# SECTION Qt5 dependencies
 BuildRequires:  %{python_module qt5}
-BuildRequires:  pkgconfig(gtk+-3.0)
-# /SECTION
-# SECTION tk dependencies
 BuildRequires:  %{python_module tk}
-# /SECTION
-# SECTION Wx dependencies
 BuildRequires:  %{python_module wxPython >= 4}
-# /SECTION
 # SECTION latex dependencies
 BuildRequires:  ghostscript
 BuildRequires:  inkscape
@@ -123,7 +110,7 @@ BuildRequires:  tex(type1cm.sty)
 BuildRequires:  tex(ucs.sty)
 # /SECTION
 %endif
-Recommends:     (python-matplotlib-tk if tk)
+Recommends:     (%{python_flavor}-matplotlib-tk if tk)
 %python_subpackages
 
 %description
@@ -225,10 +212,9 @@ chmod -x lib/matplotlib/mpl-data/images/*.svg
 find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/env python||" {} \;
 find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/python||" {} \;
 cp %{SOURCE1} setup.cfg
+# The setup procedure wants certifi to download packages over https. Not applicable here.
+sed -i '/"certifi>=.*"/ d' setup.py
 %patch0 -p1
-
-# Fix test with ghostscript 9.53
-cp %{SOURCE2} lib/matplotlib/tests/baseline_images/test_axes/transparent_markers.pdf
 
 %build
 %if !%{with test}
@@ -238,13 +224,11 @@ cp %{SOURCE2} lib/matplotlib/tests/baseline_images/test_axes/transparent_markers
 %install
 %if !%{with test}
 %python_install
-%{python_expand %fdupes %{buildroot}%{$python_sitearch}
-$python -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/matplotlib/backends/qt_editor/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitearch}/matplotlib/backends/qt_editor/
-%fdupes %{buildroot}%{$python_sitearch}/matplotlib/backends/qt_editor/
-sed -i -e "s/install matplotlib from source/install the ${python_flavor}-matplotlib-testdata package/" \
-    %{buildroot}%{$python_sitearch}/matplotlib/tests/__init__.py
+%{python_expand sed -i -e "s/install matplotlib from source/install the $python-matplotlib-testdata package/" \
+                      %{buildroot}%{$python_sitearch}/matplotlib/tests/__init__.py
 }
+%{?python_compileall}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
 %if %{with test}
@@ -260,7 +244,14 @@ skip_tests+=" or (test_correct_key and Qt4Agg)"
 skip_tests+=" or (test_fig_close and Qt4Agg)"
 # timing tests on obs can fail unpredictably
 skip_tests+=" or test_invisible_Line_rendering"
-%pytest_arch --pyargs matplotlib.tests --pyargs mpl_toolkits.tests -n auto -k "not ( ${skip_tests:4} )"
+%{pytest_arch --pyargs matplotlib.tests \
+              --pyargs mpl_toolkits.tests \
+              -n auto \
+              -m "not network" \
+              -k "not ( ${skip_tests:4} or test_backend )"
+}
+# backend tests landing in the wrong xdist process may fail with an error. Test them without xdist.
+%pytest_arch --pyargs matplotlib.tests -k "test_backend and not ( ${skip_tests:4} )"
 %endif
 
 %if !%{with test}

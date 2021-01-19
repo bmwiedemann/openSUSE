@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Jan 14 20:19:32 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v3.3.3
+  This release contains several critical bug-fixes:
+  * Fix calls to Axis.grid with argument visible=True.
+  * Fix fully masked imshow.
+  * Fix inconsistent color mapping in scatter for 3D plots.
+  * Fix notebook/nbAgg figures when used with ipywidgets in the
+    same cell.
+  * Fix notebook/nbAgg/WebAgg on older (e.g., Firefox ESR)
+    browsers.
+  * Fix pcolormesh with datetime coordinates.
+  * Fix performance regression with datetimes.
+  * Fix singular ticks with small log ranges.
+  * Fix timers/animations on wx and notebook backends.
+  * Remove certifi as a hard runtime dependency.
+- Changelog for v3.3.2
+  This release contains several critical bug-fixes:
+  * fix Axis scale on twinned Axes
+  * fix auto-close of Figures in nbagg
+  * fix automatic title placement if Axes is off the Figure
+  * fix autoranging of log scales with barstacked histogram
+  * fix extra redraws when using Button or TextBox widgets
+  * fix imshow with LogNorm and large vmin/vmax ranges
+  * fix plotting Pandas DataFrame with string MultiIndex
+  * fix scatter with marker=''
+  * fix scatter3d color/linewidth re-projection
+  * fix state of mode buttons in TkAgg backends
+  * include license files in built distribution
+  * reduce Visual C++ runtime requirements on Windows
+- Changelog for v3.3.1
+  This release contains several critical bug-fixes:
+  * fix docstring import issues when running Python with optimization
+  * fix hist with categorical data, such as with Pandas
+  * fix install on BSD systems
+  * fix nbagg compatibility with Chrome 84+
+  * fix ordering of scatter marker size in 3D plots
+  * fix performance regression when plotting Paths
+  * fix reading from URL in imread
+  * fix several regressions with new date epoch handling
+  * fix some bad constrained and tight layout interactions with colorbars
+  * fix use of customized toolbars in TkAgg and WXAgg backends 
+- remove transparent_markers.pdf
+- fix rich rpm recommends
+- fix broken compilation of cache files
+
+-------------------------------------------------------------------
+Thu Jan 14 19:21:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Run backend tests without xdist. They fail when they end up
+  in the wrong process.
+
+-------------------------------------------------------------------
 Thu Oct 22 08:59:30 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Copy updated transparent_markers.pdf from upstream commit
