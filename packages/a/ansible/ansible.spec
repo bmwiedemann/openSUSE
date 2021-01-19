@@ -222,7 +222,7 @@ Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
 Name:           ansible
-Version:        2.9.16
+Version:        2.9.17
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
