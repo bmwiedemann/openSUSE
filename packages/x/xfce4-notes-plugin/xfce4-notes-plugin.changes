@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jan 19 09:13:28 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.9.0
+
+- Remove unused variable
+  - Update deprecated autotools macros
+  - Do not mark text with ':' after '://' as a link 
+    (gxo#panel-plugins/xfce4-notes-plugin#52)
+  - Add support for links with scheme other than HTTP 
+    (gxo#panel-plugins/xfce4-notes-plugin#52)
+  - Fix missing-prototypes
+  - Create README.md. Update configure.ac.in
+  - Add basic gitlab CI
+  - Fix "Disabled labels on context menu are dark yellow"
+  - Fix a few deprecation warnings
+  - Fix make distcheck
+  - Fix blinking image on panel
+  - Remove commented code
+  - Update build system
+  - Fix make distcheck
+  - Remove deprecated gtk stock usage
+  - Fix build system
+  - Continue the gtk3 port
+  - Update URLs from goodies.x.o to docs.x.o (bxo#16171)
+  - po: update POTFILES.in
+  - gtk3: update css style with required changes from 3.20
+  - gtk3: drop libunique leftover flags and code
+  - gtk3: Drop support for GTK+-2.0
+  - bump post release
+  - Translation Updates 
+
+-------------------------------------------------------------------
+Thu Jan  7 01:32:18 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed dependency requirements to GTK3
+
+-------------------------------------------------------------------
 Fri Aug 16 12:21:22 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
