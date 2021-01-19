@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 14 14:38:35 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Upgrade: Checking if a valid base product has been selected for
+  upgrade and if not asking the user to check the product entry
+  in the AY configuration file (bsc#1175876).
+- 4.3.65
+
+-------------------------------------------------------------------
 Mon Dec 14 10:16:55 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add support for Btrfs quotas (jsc#SLE-7742).
