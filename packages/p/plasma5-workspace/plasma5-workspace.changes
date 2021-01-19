@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 15 10:54:18 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with min 4GB disk space to avoid build failure
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

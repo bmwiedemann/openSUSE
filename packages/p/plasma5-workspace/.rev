@@ -1555,4 +1555,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
     <requestid>860652</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>36010f33027d7c2b4acfba15410d392e</srcmd5>
+    <version>5.20.5</version>
+    <time>1611068350</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _constraints with min 4GB disk space to avoid build failure (forwarded request 863323 from michel_mno)</comment>
+    <requestid>863326</requestid>
+  </revision>
 </revisionlist>
