@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20200820
+Version:        20210114
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -410,6 +410,22 @@ ocaml setup.ml -configure \\\
 	ulimit -s $((1024 * 64)) ; \
 %endif
 	echo '%%{version}' | tee VERSION ; \
+	for opam in *.opam \
+	do\
+		test -f "${opam}" || continue ; \
+		sed -i~ '\
+		/^version:/d\
+		' "${opam}" ; \
+		diff -u "$_"~ "$_" || : got version ; \
+	done ; \
+	if test -f 'dune-project' ; \
+	then \
+		sed -i~ '\
+		/^([[:blank:]]*version[[:blank:]]\\+/d\
+		/^([[:blank:]]*lang[[:blank:]]\\+dune[[:blank:]]/a (version %%{version})\
+		' 'dune-project'; \
+		diff -u "$_"~ "$_" || : got version ; \
+	fi ; \
 	dune_for_release= ; \
 	: dune_release_pkgs \
 	if test -n "${dune_release_pkgs}" ; \

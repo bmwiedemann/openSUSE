@@ -110,4 +110,14 @@ trim changes file</comment>
 - Enable native riscv64</comment>
     <requestid>828815</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fb8c765d357bed5a339eafbbf9d29868</srcmd5>
+    <version>20210114</version>
+    <time>1611068449</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust injection of version into findlib META files
+  A file VERSION is not handled anymore by dune since 1.11.
+  Remove version: from *.opam files, inject version into dune-project</comment>
+    <requestid>864001</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 14 14:14:14 UTC 2021 - ohering@suse.de
+
+- Adjust injection of version into findlib META files
+  A file VERSION is not handled anymore by dune since 1.11.
+  Remove version: from *.opam files, inject version into dune-project
+
+-------------------------------------------------------------------
 Thu Aug 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Package also *.v, for Coq
