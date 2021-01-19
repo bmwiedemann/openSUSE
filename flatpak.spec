@@ -32,7 +32,7 @@
 
 %define libname libflatpak0
 Name:           flatpak
-Version:        1.8.4
+Version:        1.10.0
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -176,6 +176,7 @@ mv %{buildroot}/%{_datadir}/polkit-1/rules.d/{,60-}org.freedesktop.Flatpak.rules
 
 %if !%{support_environment_generators}
 rm -Rf %{buildroot}%{_systemd_user_env_generator_dir}
+rm -Rf %{buildroot}%{_systemd_system_env_generator_dir}
 %endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
@@ -245,6 +246,7 @@ fi
 %if %{support_environment_generators}
 %dir %{_systemd_user_env_generator_dir}
 %{_systemd_user_env_generator_dir}/60-flatpak
+%{_systemd_system_env_generator_dir}/60-flatpak-system-only
 %else
 # Own dirs so we don't have to depend on gdm for building.
 %dir %{_datadir}/gdm/
