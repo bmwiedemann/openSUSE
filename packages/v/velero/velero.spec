@@ -1,7 +1,7 @@
 #
 # spec file for package velero
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 %define goipath github.com/vmware-tanzu/velero
-%define commit e115e5a191b1fdb5d379b62a35916115e77124a4
+%define commit 123109a3bcac11dbb6783d2758207bac0d0817cb
 %define gitstate clean
 
 Name:           velero
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0

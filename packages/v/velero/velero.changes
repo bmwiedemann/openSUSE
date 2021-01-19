@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 16 13:59:15 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.5.3:
+  * Add changelog for v1.5.3
+  * Increased limit for Velero pod to 512M.  Fixes #3234
+  * 🐛 BSLs with validation disabled should be validated at least once (#3084)
+  * Don't fail backup deletion if downloading tarball fails (#2993)
+  * 🐛 Do not run ItemAction plugins for unresolvable types for all types (#3059)
+  * 🐛 Use namespace and name to match PVB to Pod restore (#3051)
+  * Adding fix for restic init container index on restores. (#3011)
+  * v1.5.2 changelogs and cherry-picks (#3023)
+  * Add changelog and docs for v1.5 release (#2941)
+  * Spruce up release instructions and release scripts (#2931)
+
+-------------------------------------------------------------------
 Tue Nov 10 02:49:25 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Update to version v1.5.2
