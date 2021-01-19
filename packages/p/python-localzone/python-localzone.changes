@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 18 14:00:08 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.9.7
+  * Support dnspython 2.
+- Add localzone-dnspython-2.1.patch gh#ags-slc/localzone#3
+
+-------------------------------------------------------------------
 Wed Apr 15 09:17:57 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.9.6
