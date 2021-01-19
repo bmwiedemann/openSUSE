@@ -104,4 +104,12 @@
   the package to py3k-compatible syntax. (gh#fudge-py/fudge#11)</comment>
     <requestid>796348</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>71737bfc921a8e70a09381cf115696bb</srcmd5>
+    <version>1.1.1</version>
+    <time>1611068586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864231</requestid>
+  </revision>
 </revisionlist>

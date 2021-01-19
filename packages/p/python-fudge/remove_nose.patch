@@ -1,7 +1,4 @@
 ---
- fudge/__init__.py             |    5 
- fudge/inspector.py            |    3 
- fudge/patcher.py              |    7 
  fudge/tests/test_fudge.py     |  713 +++++++++++++++++++++---------------------
  fudge/tests/test_inspector.py |   93 ++---
  fudge/tests/test_patcher.py   |  416 ++++++++++++------------
@@ -2221,7 +2218,7 @@
          self.reg.remember_expected_call_order(exp_order)
 -        eq_(self.reg.get_expected_call_order().keys(), [self.fake])
 -        
-+        self.assertEqual(self.reg.get_expected_call_order().keys(), [self.fake])
++        self.assertEqual(list(self.reg.get_expected_call_order().keys()), [self.fake])
 +
          fudge.clear_expectations()
 -        
@@ -2292,76 +2289,6 @@
          thread.start_new_thread(registry, (1,))
          thread.start_new_thread(registry, (2,))
          thread.start_new_thread(registry, (3,))
---- a/fudge/__init__.py
-+++ b/fudge/__init__.py
-@@ -9,7 +9,10 @@ __version__ = '1.1.1'
- import os
- import re
- import sys
--import thread
-+try:
-+    import _thread as thread
-+except ImportError:
-+    import thread
- import warnings
- from fudge.exc import FakeDeclarationError
- from fudge.patcher import *
---- a/fudge/patcher.py
-+++ b/fudge/patcher.py
-@@ -9,6 +9,7 @@ __all__ = ['patch_object', 'with_patched
- 
- import sys
- 
-+import six
- import fudge
- from fudge.util import wraps
- 
-@@ -80,7 +81,7 @@ class patch(object):
-             except:
-                 etype, val, tb = sys.exc_info()
-                 self.__exit__(etype, val, tb)
--                raise etype, val, tb
-+                six.reraise(etype, val, tb)
-             else:
-                 self.__exit__(None, None, None)
-             return value
-@@ -239,7 +240,7 @@ def patch_object(obj, attr_name, patched
-         'clean'
-         
-     """
--    if isinstance(obj, (str, unicode)):
-+    if isinstance(obj, six.string_types):
-         obj_path = adjusted_path = obj
-         done = False
-         exc = None
-@@ -259,7 +260,7 @@ def patch_object(obj, attr_name, patched
-                     # We're at the top level module and it doesn't exist.
-                     # Raise the first exception since it will make more sense:
-                     etype, val, tb = exc
--                    raise etype, val, tb
-+                    six.reraise(etype, val, tb)
-                 if not adjusted_path.count('.'):
-                     at_top_level = True
-         for part in obj_path.split('.')[1:]:
---- a/fudge/inspector.py
-+++ b/fudge/inspector.py
-@@ -21,6 +21,7 @@ should end with the suffix ".jpg"
- 
- """
- import warnings
-+import six
- 
- from fudge.util import fmt_val, fmt_dict_vals
- 
-@@ -505,7 +506,7 @@ class Stringlike(ValueTest):
-         return self._make_argspec(fmt_val(self.part))
- 
-     def stringlike(self, value):
--        if isinstance(value, (str, unicode)):
-+        if isinstance(value, six.string_types):
-             return value
-         else:
-             return str(value)
 --- a/setup.py
 +++ b/setup.py
 @@ -51,7 +51,7 @@ email without actually sending email::

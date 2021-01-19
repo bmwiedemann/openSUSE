@@ -1,7 +1,7 @@
 #
 # spec file for package python-fudge
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,21 +23,20 @@ Release:        0
 Summary:        Module for replacing real objects with fakes (mocks, stubs, etc) while testing
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://farmdev.com/projects/fudge/
+URL:            https://github.com/fudge-py/fudge
 Source:         https://files.pythonhosted.org/packages/source/f/fudge/fudge-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#fudge-py/fudge#11 mcepl@suse.com
-# Remove the need of using nose and port to py3k
 Patch0:         remove_nose.patch
+BuildRequires:  %{python_module modernize}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Complete documentation is available at http://farmdev.com/projects/fudge/
-
 Fudge is a Python module for using fake objects (mocks and stubs) to test real ones.
 
 In readable Python code, you declare what methods are available on your fake and
@@ -51,6 +50,8 @@ with a traceback that points to the culprit.
 %setup -q -n fudge-%{version}
 %autopatch -p1
 
+python-modernize -w fudge/*.py
+
 %build
 %python_build
 
@@ -60,8 +61,8 @@ with a traceback that points to the culprit.
 
 %check
 # gh#fudge-py/fudge#11
-# Still unported tests
-%pytest -k 'not (test_decorator_on_def or test_expectations_are_always_cleared or test_expectations_are_always_cleared or test_global_clear_expectations)'
+# Two still unported tests
+%pytest -k 'not (test_decorator_on_def or test_expectations_are_always_cleared)'
 
 %files %{python_files}
 %license LICENSE.txt
