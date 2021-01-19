@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jan 08 13:17:09 UTC 2021 - rbrown@suse.com
+
+- Update to version 3.6:
+  * Remove obsolete 0001-build-Allow-to-define-VERSION-and-COMMIT-without-git.patch
+  * Remove obsolete multus-override-build-date.patch
+  * Update vendors
+  * Fix error handling on cmdDel
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * Add infinibandGUID runtime config to delegate netconf
+  * Struct updates
+  * build: Enable -mod build flag to be toggled via environment variable
+  * Add support for log rotation
+  * README typo for roll-YOUR-own
+  * Fix network status name/namespace to compliant with multi-net-spec
+  * Adds code of conduct
+  * Change the error handling for kubernetes client
+  * Add deviceid in clusterNetwork
+  * Simplify examples directory
+  * Introduce gopkg.in for go module
+  * Move pre-1.16 Kubernetes assets to a deprecated folder (to later remove)
+  * Simplify error message in case of delegating CNI error
+  * Adds development docs note regarding issue policy
+  * Sets the Kubernetes API calls timeout to 60 seconds
+  * Allows namespaceIsolation to allow pods in any namespace refer to the default namespace
+  * Skip docker push action if REPOSITORY_PASS is not set
+  * Add error message in case of unexpected situation
+  * Check Pod parameter against nil before calling Eventf
+  * Updates Dockerfile to golang 1.13 (specifying version)
+  * Fix pre 1.16 api version for CRDs
+
+-------------------------------------------------------------------
 Wed Jul  8 03:41:05 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add multus-override-build-date.patch to override build date (boo#1047218)

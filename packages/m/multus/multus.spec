@@ -1,7 +1,7 @@
 #
 # spec file for package multus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,15 @@
 %define commit f4431cd010bbf2d68444f5746ca9ff2eae30fc2a
 
 Name:           multus
-Version:        3.3
+Version:        3.6
 Release:        0
 Summary:        CNI plugin providing multiple interfaces in containers
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/intel/multus-cni
+URL:            https://github.com/intel/multus-cni
 Source:         %{name}-%{version}.tar.xz
-Patch0:         0001-build-Allow-to-define-VERSION-and-COMMIT-without-git.patch
-Patch1:         multus-override-build-date.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.8
+BuildRequires:  golang(API) >= 1.13
 
 %description
 Multus is a CNI plugin which provides multiple network interfaces in
