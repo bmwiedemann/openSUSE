@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 19 09:36:08 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Disable build for python36 because scipy.
+
+-------------------------------------------------------------------
 Sat Aug 22 07:04:12 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Clean up spec file. 
