@@ -45,4 +45,17 @@
     <comment>- Package generic fw_dynamic firmware (forwarded request 862651 from Andreas_Schwab)</comment>
     <requestid>862652</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f0f8aeb7d514bf32a7a5848d6d8a502f</srcmd5>
+    <version>0.9</version>
+    <time>1611068551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to opensbi 0.9
+  * Optimized trap handler for both RV32 and RV64
+  * Domain support for system-level partitioning
+  * Device tree based domain configuration
+  * SBI v0.3 SRST extension
+  * More detailed boot-time prints (forwarded request 864141 from Andreas_Schwab)</comment>
+    <requestid>864142</requestid>
+  </revision>
 </revisionlist>

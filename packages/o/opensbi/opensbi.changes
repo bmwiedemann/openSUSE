@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 18 16:07:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.9
+  * Optimized trap handler for both RV32 and RV64
+  * Domain support for system-level partitioning
+  * Device tree based domain configuration
+  * SBI v0.3 SRST extension
+  * More detailed boot-time prints
+
+-------------------------------------------------------------------
 Tue Jan 12 14:12:47 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Package generic fw_dynamic firmware
