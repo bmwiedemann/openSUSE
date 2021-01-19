@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  8 12:49:37 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Update to 1.11.5:
+  runtime: Security fixes included:
+    - Readonly bind-mounts are now mounted read-only on the host.
+      With this fix, mounts are protected at VM boundary not just
+      the guest kernel. If a container escape were to occur, one
+      would be able to write to a directory or file that was
+      mounted read-only.
+    - Certain annotations in kata can be used to execute
+      pre-exiting binaries. This could be used to execute arbitrary
+      binaries with the onus of validating these paths left to the
+      stack about Kata. In this release, we added appropriate
+      validations so that an admin can configure a list of file
+      system paths that can be used to filter annotations that
+      represent valid file names.
+
+-------------------------------------------------------------------
 Fri Jun 19 15:04:27 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 1.11.1:

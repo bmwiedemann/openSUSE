@@ -1,7 +1,7 @@
 #
 # spec file for package katacontainers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@
 %endif
 
 Name:           katacontainers
-Version:        1.11.1
+Version:        1.11.5
 Release:        0
 Summary:        Kata Containers OCI container runtime
 License:        Apache-2.0
