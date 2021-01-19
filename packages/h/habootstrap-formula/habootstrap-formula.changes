@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 19 08:32:50 UTC 2021 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Remove --no-overwrite-sshkey option from the formula
+
+-------------------------------------------------------------------
+Mon Jan 18 15:20:34 UTC 2021 - Aleksei Burlakov <aburlakov@suse.com>
+
+- qdevice support: it can be created when initializing a cluster
+
+-------------------------------------------------------------------
 Thu Oct 15 21:33:58 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version bump 0.3.11

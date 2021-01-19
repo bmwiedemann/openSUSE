@@ -20,7 +20,7 @@
 
 Name:           habootstrap-formula
 Group:          System/Packages
-Version:        0.3.11+git.1602831614.0f63599
+Version:        0.3.11+git.1611046122.d1bd8e6
 Release:        0
 Summary:        HA cluster (crmsh) deployment salt formula
 
