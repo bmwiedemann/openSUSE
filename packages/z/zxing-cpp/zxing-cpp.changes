@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 00:29:36 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Use %cmake_build instead of %make_jobs
+- Shouldn't need -DBUILD_SHARED_LIBRARY=ON
+
+-------------------------------------------------------------------
 Fri Oct 23 08:33:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add baselibs.conf

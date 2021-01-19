@@ -60,8 +60,8 @@ other applications.
 %autosetup -p1
 
 %build
-%cmake -DBUILD_SHARED_LIBRARY=ON
-%make_jobs
+%cmake
+%cmake_build
 
 %install
 %cmake_install
