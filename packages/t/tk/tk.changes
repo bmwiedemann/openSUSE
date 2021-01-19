@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  4 16:30:42 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Version 8.6.11:
+  * Fix TkKeyEvent platform variations
+  * ttk respect -cursor option
+  * MouseWheel for ttk::scrollbar
+  * fix fontconfig crash when no font installed
+  * fix tearoff menu redraw artifacts
+  * stop crash w/Noto Color Emoji font
+  * fix crash of angled text w/o Xft
+  * fix crash when active button is destroyed
+  * disfavor Master/Slave terminology
+  * many more bug fixes.
+
+-------------------------------------------------------------------
 Fri Nov 20 08:11:43 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Fix manpage symlink for wish8.6.

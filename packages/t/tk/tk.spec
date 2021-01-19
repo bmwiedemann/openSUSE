@@ -1,7 +1,7 @@
 #
 # spec file for package tk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ BuildRequires:  libXt-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcl-devel
 URL:            http://www.tcl.tk
-Version:        8.6.10
+Version:        8.6.11
 Release:        0
 %define         rrc %nil
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -45,7 +45,7 @@ Provides:       wish8.6
 Requires:       tcl >= %version
 Requires:       xhost
 PreReq:         /bin/rm
-Source0:        ftp://ftp.tcl.tk/pub/tcl/tcl8_6/%name%{version}%{rrc}-src.tar.gz
+Source0:        http://prdownloads.sourceforge.net/tcl/%name%{version}%{rrc}-src.tar.gz
 Source1:        tk-rpmlintrc
 Source2:        baselibs.conf
 Source3:        http://tkcon.cvs.sourceforge.net/tkcon/tkcon/tkcon.tcl
