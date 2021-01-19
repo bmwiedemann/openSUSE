@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 13 17:36:51 CET 2021 - tiwai@suse.de
+
+- Drop the outdated module-rescue-stream from gdm default config
+  (bsc#1180869)
+
+-------------------------------------------------------------------
 Thu Jan  7 17:38:01 CET 2021 - tiwai@suse.de
 
 - Fix copyright in the spec file for SLE submission
