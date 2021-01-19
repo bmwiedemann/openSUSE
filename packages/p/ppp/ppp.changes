@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 07:21:55 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+  * Removed obsolete constructs (creating dialout group via shadow).
+
+-------------------------------------------------------------------
 Fri Oct  9 11:15:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.16: error: bare words are no longer
@@ -971,4 +977,3 @@ Sat Nov  2 17:35:11 CET 1996 - florian@suse.de
 
 - add bug-fix
 - add ipx support
-

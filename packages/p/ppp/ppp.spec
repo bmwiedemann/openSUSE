@@ -77,12 +77,8 @@ BuildRequires:  libpcap-devel
 BuildRequires:  linux-atm-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
-%if 0%{?suse_version} >= 1330
 Requires:       group(%{_group})
 Requires(pre):  group(%{_group})
-%else
-Requires(pre):  shadow
-%endif
 
 %description
 The ppp package contains the PPP (Point-to-Point Protocol) daemon,
@@ -104,9 +100,9 @@ plugins for the pppd.
 %package modem
 Summary:        Automatic redial for any USB modem supported by the kernel
 Group:          System/Kernel
+Requires:       group(dialout)
 Requires:       ppp
 Requires:       udev
-Requires:       group(dialout)
 BuildArch:      noarch
 
 %description modem
@@ -151,7 +147,7 @@ sed -i '/#HAVE_LIBATM/s/#//' pppd/plugins/pppoatm/Makefile.linux
 %build
 export MY_CFLAGS="%{optflags} -fno-strict-aliasing -fPIC $SP"
 %configure
-make %{?_smp_mflags} CHAPMS=y CBCP=y HAS_SHADOW=y USE_PAM=y FILTER=y HAVE_INET6=y HAVE_LOGWTMP=y
+%make_build CHAPMS=y CBCP=y HAS_SHADOW=y USE_PAM=y FILTER=y HAVE_INET6=y HAVE_LOGWTMP=y
 
 %install
 make install DESTDIR=%{buildroot}%{_prefix}
@@ -176,13 +172,8 @@ install -Dm 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/ppp/chatscripts/modem.cha
 install -Dm 644 %{SOURCE15} %{buildroot}%{_unitdir}/modem@.service
 install -Dm 644 %{SOURCE16} %{buildroot}%{_udevrulesdir}/90-modem.rules
 
-%if 0%{?suse_version} < 1330
-%pre
-getent group %{_group} >/dev/null || %{_sbindir}/groupadd -r %{_group}
-%endif
-
 %files
-%attr(750, root, root) %dir %{_sysconfdir}/ppp
+%attr(0750,root,root) %dir %{_sysconfdir}/ppp
 %dir %{_sysconfdir}/ppp/peers
 %config(noreplace) %{_sysconfdir}/ppp/options
 %config(noreplace) %{_sysconfdir}/ppp/filters
@@ -192,7 +183,7 @@ getent group %{_group} >/dev/null || %{_sbindir}/groupadd -r %{_group}
 %config(noreplace) %{_sysconfdir}/pam.d/ppp
 %doc FAQ README* SETUP scripts PLUGINS
 %{_mandir}/man?/*.?%{ext_man}
-%attr (-, root, dialout) %{_sbindir}/pppd
+%attr(-,root,%{_group}) %{_sbindir}/pppd
 %{_sbindir}/chat
 %{_sbindir}/pppdump
 %{_sbindir}/pppstats
