@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 18 15:25:56 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Fix building with RPM 4.16 
+
+-------------------------------------------------------------------
+Fri Jan  8 12:52:56 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Update to 1.11.5:
+  agent:
+    * add grpc endpoint to retrieve oom events` 
+
+-------------------------------------------------------------------
 Fri Jun 19 15:01:38 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 1.11.1:

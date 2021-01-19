@@ -131,4 +131,16 @@
     <comment></comment>
     <requestid>816317</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a7d0d41866245ff1b19b190fffbd9d0b</srcmd5>
+    <version>1.11.5</version>
+    <time>1611068514</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with RPM 4.16 
+
+- Update to 1.11.5:
+  agent:
+    * add grpc endpoint to retrieve oom events`</comment>
+    <requestid>864110</requestid>
+  </revision>
 </revisionlist>
