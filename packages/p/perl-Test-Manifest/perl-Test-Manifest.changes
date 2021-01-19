@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 17 03:08:28 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.022
+   see /usr/share/doc/packages/perl-Test-Manifest/Changes
+
+  2.022 2021-01-16T13:29:49Z
+  	* freshen distro, remove Travis CI, add Github Actions
+  	* choroba fixed parallel testing (Github #4)
+
+-------------------------------------------------------------------
 Tue May  8 06:04:16 UTC 2018 - coolo@suse.com
 
 - updated to 2.021
