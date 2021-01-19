@@ -1,7 +1,7 @@
 #
 # spec file for package python-cangjie
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{1} python3-%{1}}
 %global src_name cangjie
 Name:           python-cangjie
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        A python wrapper to libcangjie
-License:        LGPL-3.0+
-Url:            http://cangjians.github.io/projects/pycangjie
+License:        LGPL-3.0-or-later
+URL:            http://cangjians.github.io/projects/pycangjie
 Source:         https://github.com/Cangjians/pycangjie/releases/download/v%{version}/%{src_name}-%{version}.tar.xz
-Patch0:         fix_core.pxd_not_found.patch
+Source99:       python-cangjie-rpmlintrc
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  libcangjie-data
 BuildRequires:  libcangjie-devel
 BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       libcangjie-data
 %python_subpackages
 
 %description
@@ -42,22 +43,34 @@ Python wrapper to libcangjie, the library implementing the Cangjie input method.
 
 %prep
 %setup -q -n %{src_name}-%{version}
-%patch0 -p1
+sed -i '/.\/configure/ d' autogen.sh
 
 %build
-./autogen.sh --prefix=%{_prefix}/
-make %{?_smp_mflags}
+./autogen.sh
+%define _configure ../configure
+%{python_expand #
+mkdir -p build
+pushd build
+%configure --prefix=%{_prefix}/ PYTHON=%{_bindir}/$python
+%make_build
+popd
+}
 
 %install
+%{python_expand #
+pushd build
 %make_install
+%fdupes -s %{buildroot}/%{$python_sitearch}
+popd
+}
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%fdupes -s %{buildroot}/%{_libdir}/
+# check
+%pyunittest_arch discover tests
 
 %files %{python_files}
 %defattr(-,root,root)
 %doc AUTHORS COPYING README.md docs/*
-%python3_only %{python_sitearch}/%{src_name}
-%python3_only %pycache_only %{python_sitearch}/%{src_name}/__pycache__
+%{python_sitearch}/%{src_name}
 
 %changelog

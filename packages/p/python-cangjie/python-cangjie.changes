@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 15 20:51:06 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v1.3 
+  * Fixed building with newer versions of Cython
+- drop fix_core.pxd_not_found.patch fixed upstream
+- Fix singlespec
+- Enable Tests
+- Actually requires libcangjie-data to work (data misnamed as lib
+  --> add python-cangjie-rpmlintrc)
+
+-------------------------------------------------------------------
 Wed Mar  1 08:07:30 UTC 2017 - wnereiz@eienteiland.org
 
 - fix_core.pxd_not_found.patch to fix Cython path problem 
