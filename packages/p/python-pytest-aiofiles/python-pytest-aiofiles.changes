@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 18 21:52:58 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- add patch remove-asynctest-py38.patch gh#buhman/pytest-aiofiles#4
+
+-------------------------------------------------------------------
 Thu Aug 20 07:23:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner

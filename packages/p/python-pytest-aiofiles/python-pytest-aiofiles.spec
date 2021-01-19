@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-aiofiles
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/buhman/pytest-aiofiles
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-aiofiles/pytest-aiofiles-%{version}.tar.gz
 # https://github.com/buhman/pytest-aiofiles/pull/3
 Source1:        LICENSE
+# PATCH-FIX-UPSTREAM remove-asynctest-py38.patch gh#buhman/pytest-aiofiles#4
+Patch0:         remove-asynctest-py38.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -36,9 +38,10 @@ Requires:       python-pyfakefs >= 3.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiofiles >= 0.3.1}
-BuildRequires:  %{python_module asynctest >= 0.10.0}
 BuildRequires:  %{python_module pyfakefs >= 3.1}
 BuildRequires:  %{python_module pytest-asyncio >= 0.5.0}
+BuildRequires:  (python3-asynctest >= 0.10.0 if python3-base < 3.8)
+BuildRequires:  (python36-asynctest >= 0.10.0 if python36)
 # /SECTION
 %python_subpackages
 
@@ -46,7 +49,7 @@ BuildRequires:  %{python_module pytest-asyncio >= 0.5.0}
 pytest fixtures for writing aiofiles tests with pyfakefs
 
 %prep
-%setup -q -n pytest-aiofiles-%{version}
+%autosetup -p1 -n pytest-aiofiles-%{version}
 cp %{SOURCE1} .
 
 %build
@@ -62,6 +65,7 @@ cp %{SOURCE1} .
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_aiofiles
+%{python_sitelib}/pytest_aiofiles-%{version}*-info
 
 %changelog
