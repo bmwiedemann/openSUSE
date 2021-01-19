@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 13 12:59:29 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Recompile python cache files after removal of components, include
+  cache files in correct subpackage
+- Fix supplements declarations, where possible. Disable for -gdk.
+
+-------------------------------------------------------------------
 Wed Jan 13 08:28:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Simplify the dependency exclusion from __init__.py to also match

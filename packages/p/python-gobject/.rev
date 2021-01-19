@@ -679,4 +679,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   subdirectories. (forwarded request 862855 from dimstar)</comment>
     <requestid>863093</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>27391eff0c9b434c4c0bc97636fa4a38</srcmd5>
+    <version>3.38.0</version>
+    <time>1611068465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864076</requestid>
+  </revision>
 </revisionlist>
