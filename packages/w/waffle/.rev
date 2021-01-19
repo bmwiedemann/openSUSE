@@ -57,4 +57,12 @@
   wayland-client requirement to v1.10</comment>
     <requestid>791026</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3582d37b92f4be69001d649721c2999f</srcmd5>
+    <version>1.6.1</version>
+    <time>1611068633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864304</requestid>
+  </revision>
 </revisionlist>

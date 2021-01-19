@@ -1,7 +1,7 @@
 #
 # spec file for package waffle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,19 @@ Release:        0
 Summary:        C library defering selection of GL API and window system until runtime
 License:        BSD-2-Clause
 Group:          Development/Libraries/X11
-URL:            http://people.freedesktop.org/~chadversary/waffle/index.html
+URL:            https://people.freedesktop.org/~chadversary/waffle/index.html
 Source0:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
 Source1:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(wayland-client) >= 1.10
+BuildRequires:  pkgconfig(wayland-egl) >= 9.1
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 
@@ -82,13 +83,13 @@ develop Waffle applications.
   -Dwaffle_has_x11_egl=1 \
   -Dwaffle_build_tests=1 \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/waffle-%{_majorVersion}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
 %check
-make check -C build
+%ctest
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -101,7 +102,7 @@ make check -C build
 %{_docdir}/waffle-%{_majorVersion}/release-notes/*.txt
 %{_docdir}/waffle-%{_majorVersion}/release-notes/waffle-1.6.*.md
 %{_bindir}/wflinfo
-/usr/share/bash-completion/completions/wflinfo
+%{_datadir}/bash-completion/completions/wflinfo
 
 %files -n %{libname}
 %{_libdir}/libwaffle-1.so.*

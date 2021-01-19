@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 19 11:37:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Use current cmake macros
+- Specify minimal build dependencies as required by upstream
+
+-------------------------------------------------------------------
 Thu Apr  2 11:34:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - bugfix release 1.6.1
