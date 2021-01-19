@@ -1,0 +1,11 @@
+[
+    {
+        "urls": [
+            "turn:coturn.example.net:443",
+            "turn:coturn.example.net:443?transport=tcp"
+        ],
+        "username": "galene",
+        "credential": "superconfidentialsharedsecret",
+        "credentialType": "hmac-sha1"
+    }
+]
