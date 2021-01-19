@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 18 20:21:31 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 3.1.1
+  * Fix issue with reporting of missing CSS files. (#388)
+    Thanks to @prakhargurunani for reporting and fixing!
+- Changelog for 3.1.0 
+  * Stop attaching test reruns to final test report entries (#374)
+    Thanks to @VladimirPodolyan for reporting and @gnikonorov for
+    the fix
+  * Allow for report duration formatting (#376)
+    Thanks to @brettnolan for reporting and @gnikonorov for the fix
+- Changelog for 3.0.0
+  * Respect --capture=no, --show-capture=no, and -s pytest flags
+    (#171) Thanks to @bigunyak for reporting and @gnikonorov for the
+    fix
+  * Make the Results table Links column sortable (#242)
+    Thanks to @vashirov for reporting and @gnikonorov for the fix
+  * Fix issue with missing image or video in extras. (#265 and
+    pytest-selenium#237)
+    Thanks to @p00j4 and @anothermattbrown for reporting and
+    @christiansandberg and @superdodd and @dhalperi for the fix
+  * Fix attribute name for compatibility with pytest-xdist 2. (#305)
+    Thanks to @Zac-HD for the fix
+  * Post process HTML generation to allow teardown to appear in the 
+    HTML output. (#131)
+    Thanks to @iwanb for reporting and @csm10495 for the fix 
+
+-------------------------------------------------------------------
 Mon Mar 23 09:08:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.1:

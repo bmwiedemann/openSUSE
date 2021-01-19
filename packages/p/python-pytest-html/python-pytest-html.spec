@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-html
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-html
-Version:        2.1.1
+Version:        3.1.1
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module pytest-xdist}
 %python_subpackages
 
 %description
-pytest plugin for generating HTML reports
+A plugin for pytest that generates a HTML report for test results.
 
 %prep
 %setup -q -n pytest-html-%{version}
@@ -57,13 +57,13 @@ pytest plugin for generating HTML reports
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_html
+%{python_sitelib}/pytest_html-%{version}*-info
 
 %changelog
