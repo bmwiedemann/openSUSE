@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -40,6 +40,8 @@ Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-NEEDS-REBASE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog (WAS: PATCH-FEATURE-OPENSUSE)
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+# PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
+Patch6:         gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -180,6 +182,9 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch2 -p1
 %patch4 -p1
 #patch5 -p1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%patch6 -p1
+%endif
 
 translation-update-upstream
 

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 14 18:22:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.3:
+  + Fix disappearing app grid.
+  + Fix screenshots of unredirected fullscreen windows on X11.
+  + Fix storing VPN secrets.
+  + Fix glitches in overview transitions.
+  + Improve login screen accessibility.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 11 03:23:44 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+           
+- Add gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
+  launch recommended input engines when Gnome-shell init in CJK
+  regions (jsc#SLE-16051, glgo#GNOME/gnome-shell!1563).
+
+-------------------------------------------------------------------
 Tue Dec 29 16:54:37 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-enable gnome-shell-private-connection.patch: it was rebased
