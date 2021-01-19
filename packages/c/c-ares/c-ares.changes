@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 16 15:05:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.1:
+    Travis: add iOS target built with CMake (#378)
+    Issue #377 suggested that CMake builds for iOS with c-ares were broken. This PR adds an automatic Travis build for iOS CMake.
+  - fix build
+    External projects were using non-public header ares_dns.h, make public again (#376)
+    It appears some outside projects were relying on macros in ares_dns.h, even
+    though it doesn't appear that header was ever meant to be public.  That said,
+    we don't want to break external integrators so we should distribute this header
+    again.
+  - note that so versioning has moved to configure.ac
+  - note about 1.17.1
+  - fix sed gone wrong
+    autotools cleanup (#372)
+    * buildconf: remove custom logic with autoreconf
+- remove missing_header.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Nov 21 23:16:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - add BR for pkg-config to get the provides in the devel package

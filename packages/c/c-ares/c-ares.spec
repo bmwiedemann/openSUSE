@@ -1,7 +1,7 @@
 #
 # spec file for package c-ares
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{pname}
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -56,7 +56,6 @@ Source6:        c-ares-config.cmake.in
 Source7:        ares_dns.h
 Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
-Patch2:         missing_header.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if %{with tests}
