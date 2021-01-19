@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 08:08:08 UTC 2021 - olaf@aepfle.de
+
+- Build with --without-gnutls-version-check
+
+-------------------------------------------------------------------
 Fri May 15 18:07:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.10:

@@ -115,6 +115,7 @@ Bash completion script for %{name}.
   --with-vpnc-script=%{_sysconfdir}/openconnect/vpnc-script \
   --with-gnutls \
   --without-openssl --without-openssl-version-check \
+  --without-gnutls-version-check \
   --with-lz4 \
   --with-libproxy \
   --with-stoken \
