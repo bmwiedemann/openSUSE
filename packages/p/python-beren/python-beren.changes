@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 19 04:37:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python_sitelib, rather than python3_sitelib when installing files. 
+
+-------------------------------------------------------------------
 Tue Sep  1 05:08:46 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.0:

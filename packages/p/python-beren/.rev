@@ -17,4 +17,12 @@
 - Update {Build,}Requires for apiron.</comment>
     <requestid>830941</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>55d0be8d5fb27fc61e264865b5ee387c</srcmd5>
+    <version>0.7.0</version>
+    <time>1611068581</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_sitelib, rather than python3_sitelib when installing files.</comment>
+    <requestid>864190</requestid>
+  </revision>
 </revisionlist>

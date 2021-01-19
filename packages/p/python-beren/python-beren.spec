@@ -1,7 +1,7 @@
 #
 # spec file for package python-beren
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -53,6 +53,6 @@ python-beren provides a REST client targeted at Orthanc REST API endpoints
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python3_sitelib}/*
+%{python_sitelib}/*
 
 %changelog
