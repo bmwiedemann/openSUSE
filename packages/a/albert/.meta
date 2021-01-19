@@ -1,6 +1,0 @@
-<package name="albert" project="openSUSE:Factory">
-  <title>Desktop agnostic launcher</title>
-  <description>Access everything with virtually zero effort.
-Run applications, open files or their paths, open bookmarks in your browser, search the web, calculate things and a lot more.</description>
-  <devel project="X11:Utilities" package="albert"/>
-</package>
