@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 16 11:40:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove C++ only flags from CFLAGS
+- Update chromium-gcc11.patch
+- Comply with new Google API key rules for Derivatives
+
+-------------------------------------------------------------------
 Thu Jan  7 08:59:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 87.0.4280.141 bsc#1180645

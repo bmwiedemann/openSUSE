@@ -535,20 +535,21 @@ export CXX=clang++
 %else
 # REDUCE DEBUG as it gets TOO large
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
-export CXXFLAGS="${ARCH_FLAGS} -fpermissive -Wno-return-type"
+export CXXFLAGS="${ARCH_FLAGS} -Wno-return-type"
 # extra flags to reduce warnings that aren't very useful
 export CXXFLAGS="${CXXFLAGS} -Wno-pedantic -Wno-unused-result -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable -Wno-deprecated-declarations"
 # ignore warnings for minor mistakes that are too common
 export CXXFLAGS="${CXXFLAGS} -Wno-return-type -Wno-parentheses -Wno-misleading-indentation"
 # ignore warnings that are not supported well until gcc 8
-export CXXFLAGS="${CXXFLAGS} -Wno-attributes -Wno-subobject-linkage"
+export CXXFLAGS="${CXXFLAGS} -Wno-attributes"
 # ignore warnings due to gcc bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=84055)
 export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
 # ingore new gcc 8 warnings that aren't yet handled upstream
-export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-class-memaccess -Wno-invalid-offsetof -Wno-packed-not-aligned"
+export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-packed-not-aligned"
 # for wayland
 export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
 export CFLAGS="${CXXFLAGS}"
+export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess -Wno-invalid-offsetof -fpermissive"
 export CC=gcc
 export CXX=g++
 export AR=ar
@@ -705,12 +706,7 @@ sed -i 's|aarch64-linux-gnu-||g' build/toolchain/linux/BUILD.gn
 # Note: these are for the openSUSE Chromium builds ONLY. For your own distribution,
 # please get your own set of keys.
 google_api_key="AIzaSyD1hTe85_a14kr1Ks8T3Ce75rvbR1_Dx7Q"
-google_default_client_id="4139804441.apps.googleusercontent.com"
-google_default_client_secret="KDTRKEZk2jwT_7CDpcmMA--P"
-
 myconf_gn+=" google_api_key=\"${google_api_key}\""
-myconf_gn+=" google_default_client_id=\"${google_default_client_id}\""
-myconf_gn+=" google_default_client_secret=\"${google_default_client_secret}\""
 
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016

@@ -3407,4 +3407,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   - CVE-2021-21116: Heap buffer overflow in audio (forwarded request 860986 from gmbr3)</comment>
     <requestid>860987</requestid>
   </revision>
+  <revision rev="280" vrev="2">
+    <srcmd5>a05f75a2ef86afc16c1008192d1d580c</srcmd5>
+    <version>87.0.4280.141</version>
+    <time>1611068388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863624</requestid>
+  </revision>
 </revisionlist>

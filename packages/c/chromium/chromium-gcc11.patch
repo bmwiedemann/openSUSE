@@ -137,3 +137,24 @@ index 657a3c96b..ad641a082 100644
  #include "components/bookmarks/browser/base_bookmark_model_observer.h"
  
  namespace bookmarks {
+diff -up chromium-87.0.4280.88/net/dns/dns_server_iterator.h.missing-cstddef chromium-87.0.4280.88/net/dns/dns_server_iterator.h
+--- chromium-87.0.4280.88/net/dns/dns_server_iterator.h.missing-cstddef	2020-12-15 15:35:38.935281593 -0500
++++ chromium-87.0.4280.88/net/dns/dns_server_iterator.h	2020-12-15 15:35:59.408368520 -0500
+@@ -5,6 +5,7 @@
+ #ifndef NET_DNS_DNS_SERVER_ITERATOR_H_
+ #define NET_DNS_DNS_SERVER_ITERATOR_H_
+ 
++#include <cstddef>
+ #include <vector>
+ 
+ #include "net/base/net_export.h"
+diff -up chromium-87.0.4280.88/components/federated_learning/floc_constants.cc.missing-limits chromium-87.0.4280.88/components/federated_learning/floc_constants.cc
+--- chromium-87.0.4280.88/components/federated_learning/floc_constants.cc.missing-limits	2020-12-16 13:51:38.675421401 -0500
++++ chromium-87.0.4280.88/components/federated_learning/floc_constants.cc	2020-12-16 13:51:50.625467423 -0500
+@@ -3,6 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include "components/federated_learning/floc_constants.h"
++#include <limits>
+ 
+ namespace federated_learning {
