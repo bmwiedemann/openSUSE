@@ -1,7 +1,7 @@
 #
 # spec file for package nano
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _version 5
 Name:           nano
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
