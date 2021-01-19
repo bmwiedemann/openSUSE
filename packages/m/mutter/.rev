@@ -1370,4 +1370,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Update to 3.38.2 (forwarded request 852918 from dimstar)</comment>
     <requestid>853060</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>b27b68128d86fa50f646456564479c69</srcmd5>
+    <version>3.38.3</version>
+    <time>1611068319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863171</requestid>
+  </revision>
 </revisionlist>

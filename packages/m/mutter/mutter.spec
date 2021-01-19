@@ -1,7 +1,7 @@
 #
 # spec file for package mutter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later

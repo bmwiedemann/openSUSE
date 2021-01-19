@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 14 18:23:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.3:
+  + xwayland: Set xrandr primary output,
+  + Disable CRTCs if there is no monitor,
+  + Fixed crashes,
+  + Misc. bug fixes,
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Dec  3 13:58:44 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.2:
