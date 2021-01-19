@@ -8,4 +8,21 @@
 resolve each other by name.</comment>
     <requestid>840059</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d43debcf9b28ec056df49c0e7caff4f3</srcmd5>
+    <version>1.1.1</version>
+    <time>1611068511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+  * Bump to v1.1.1
+  * use tabs not spaces
+  * Bump to v1.1
+  * pass aliases to dns masq
+  * Cirrus: Use images from automation_images
+  * correct fedora package name in documentation
+  * clarify where to report issues
+  * change references from libpod to podman
+</comment>
+    <requestid>861732</requestid>
+  </revision>
 </revisionlist>

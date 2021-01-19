@@ -1,6 +1,7 @@
+#
 # spec file for package cni-plugin-dnsname
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +17,7 @@
 
 
 Name:           cni-plugin-dnsname
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        CNI plugin to provide name resolution for containers
 License:        Apache-2.0

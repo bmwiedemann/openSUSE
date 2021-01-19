@@ -4,8 +4,9 @@
     <param name="scm">git</param>
     <param name="filename">dnsname</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">1.0.0</param>
-    <param name="revision">v1.0.0</param>
+    <param name="versionformat">1.1.1</param>
+    <param name="revision">v1.1.1</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
