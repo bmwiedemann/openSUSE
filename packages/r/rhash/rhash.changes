@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 18 00:02:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * look for config file at $HOME/.config/rhash/rhashrc
+  * supported --blake2s, --blake2b options for the BLAKE2 hash functions
+  * Bugfix: fix computing of EDON-R 512 by big data chunks
+  * support --no-detect-by-ext option
+  * speed up verification by detecting hash type from file extension
+  * Bugfix: correctly print long paths on Windows
+  * Bugfix: print correct '%{mtime}' when --file-list is specified
+  * Bugfix: only follow symbolic links when --follow is specified
+  * Bugfix: fix buffer overflow in GOST12
+
+-------------------------------------------------------------------
 Thu Aug 13 06:48:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.0:
