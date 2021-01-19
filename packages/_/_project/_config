@@ -24,7 +24,7 @@ BuildFlags: vmfsoptions:nodirindex
 #Prefer: -liblsan0-gcc7 -libmpx2-gcc7 -libubsan0-gcc7
 
 # Help with the switch to the gcc9 provided libs:
-Prefer: libasan5 libasan5-32bit libubsan1 libubsan1-32bit libgfortran5
+Prefer: libasan5 libasan5-32bit libasan6 libasan6-32bit libubsan1 libubsan1-32bit libgfortran5
 
 Patterntype: rpm-md ymp
 %if "%_repository" == "images"
