@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-cov
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/schlamar/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-cov/commit/25eed212085ce9a2d5383a6a4a2b360d0d514f89 Turns out there were some internal changes in the pytester plugin. 
+Patch0:         pytest62.patch
 BuildRequires:  %{python_module coverage >= 4.4}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
@@ -49,6 +51,7 @@ through pytest-cov or through coverage's config file.
 
 %prep
 %setup -q -n pytest-cov-%{version}
+%patch0 -p1
 
 %build
 %python_build
