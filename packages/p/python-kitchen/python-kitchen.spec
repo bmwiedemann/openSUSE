@@ -54,7 +54,7 @@ sed -i '1s/^#!.*//' kitchen2/kitchen/pycompat24/base64/_base64.py
 %check
 export LANG='en_US.UTF8'
 %{python_expand # run test
-%if $python == python2
+%if "$python" == "python2"
 pushd kitchen2
 %else
 pushd kitchen3

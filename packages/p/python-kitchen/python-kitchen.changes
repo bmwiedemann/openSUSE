@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 19 06:35:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix bare words in spec, no longer supported
+
+-------------------------------------------------------------------
 Wed Sep  9 12:53:34 UTC 2020 - pgajdos@suse.com
 
 - do not depend on nose
