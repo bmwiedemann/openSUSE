@@ -3,6 +3,7 @@ Description=DNSCrypt-proxy socket
 Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki/systemd
 # with openSUSE changes
 Documentation=file:/usr/share/doc/packages/dnscrypt-proxy/README.openSUSE
+PartOf=dnscrypt-proxy-resolvconf.service
 Before=nss-lookup.target
 Wants=nss-lookup.target
 

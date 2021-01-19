@@ -21,7 +21,7 @@
 %define config_dir  %{_sysconfdir}/%{name}
 %define home_dir    %{_localstatedir}/lib/%{name}
 %define log_dir     %{_localstatedir}/log/%{name}
-%define services    %{name}.socket %{name}.service
+%define services    %{name}.socket %{name}.service %{name}-resolvconf.service
 %define vlic_dir  vendored
 
 Name:           dnscrypt-proxy
@@ -34,16 +34,17 @@ URL:            https://dnscrypt.info/
 Source0:        https://codeload.github.com/DNSCrypt/%{name}/tar.gz/%{version}#/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}.socket
+Source3:        %{name}-resolvconf.service
 # File to use with sed to modify default configuration.
-Source3:        example-dnscrypt-proxy.toml.sed
+Source4:        example-dnscrypt-proxy.toml.sed
 # Find licenses of vendored packages.
-Source4:        find_licenses.sh
+Source5:        find_licenses.sh
 # Install licenses of vendored packages.
-Source5:        install_licenses.sh
+Source6:        install_licenses.sh
 # Some words
-Source6:        README.openSUSE
+Source7:        README.openSUSE
 # Example how to override socket unit
-Source7:        %{name}.socket.conf
+Source8:        %{name}.socket.conf
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
@@ -56,6 +57,8 @@ Requires:       bash
 Requires(pre):  shadow
 %{?systemd_requires}
 Recommends:     ca-certificates
+# needed for resolvconf support
+Suggests:       openresolv
 Provides:       dnscrypt = %{version}-%{release}
 Obsoletes:      dnscrypt < %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -68,13 +71,13 @@ such as DNSCrypt v2, DNS-over-HTTPS and Anonymized DNSCrypt.
 %setup -q -n %{name}-%{version}
 
 # Find licenses of vendored packages and prepare for installation
-bash %{SOURCE4} %{vlic_dir}
+bash %{SOURCE5} %{vlic_dir}
 
 # duplicate original config file
 cp ./%{name}/example-%{name}.toml ./%{name}.toml.default
 
 # Edit default port and file locations
-sed -i -f %{SOURCE3} ./%{name}.toml.default
+sed -i -f %{SOURCE4} ./%{name}.toml.default
 
 # duplicate edited config file
 cp ./%{name}.toml.default ./%{name}.toml
@@ -118,19 +121,21 @@ install -D -m 0640 ./%{name}/example-forwarding-rules.txt %{buildroot}/%{config_
 # Systemd
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.socket
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}-resolvconf.service
 
 # service link
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-resolvconf
 
 # Vendor Licenses
 install -d -m 0755 %{buildroot}%{_licensedir}/%{name}/%{vlic_dir}
-bash %{SOURCE5} %{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir}
+bash %{SOURCE6} %{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir}
 
 # Some hints. Improvements and feedback welcome!
-cp %{SOURCE6} README.openSUSE
+cp %{SOURCE7} README.openSUSE
 
 # Example drop-in.
-cp %{SOURCE7} %{name}.socket.conf
+cp %{SOURCE8} %{name}.socket.conf
 
 %pre
 # group and user
@@ -163,8 +168,10 @@ getent passwd %{user_group} >/dev/null || %{_sbindir}/useradd -r -g %{user_group
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/forwarding-rules.txt
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}
+%{_sbindir}/rc%{name}-resolvconf
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.socket
+%{_unitdir}/%{name}-resolvconf.service
 %{_datadir}/%{name}/
 %dir %attr(0750,root,%{user_group}) %{config_dir}
 %dir %attr(0750,%{user_group},%{user_group}) %{home_dir}

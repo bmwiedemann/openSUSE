@@ -1,6 +1,6 @@
 ***************************************************************************
 *                                                                         *
-*        README.openSUSE last edited by cunix for version 2.0.44          *
+*        README.openSUSE last edited by cunix for version 2.0.45          *
 *                                                                         *
 ***************************************************************************
 
@@ -43,7 +43,7 @@ example.
 
 C.
 Alternatively the unit dnscrypt-proxy.service can be used the same way as the
-socket unit described in A for starting and enabling.
+socket unit described in A. for starting and enabling.
 
 This will require you to set "listen_addresses" in file
 
@@ -56,18 +56,78 @@ ports < 1024.
 If dnscrypt-proxy should listen on these lower ports
 a) the socket unit should be used or
 b) the program has to be started directly by root or
-c) the user settings in the service unit have to be overridden
-   as described in B with files ending with ".conf"
+c) the user and group settings in the service unit have to be overridden
+   as described in B. with files ending with ".conf"
    in a to be created directory at
 
    /etc/systemd/system/dnscrypt-proxy.service.d
 
 
 D.
-The socket OR the service unit should be started/enabled - not both.
-If the socket unit is used, it will start the service unit when queries are sent
-to one of its configured addresses.
+To make applications aware of the local domain name resolver and
+to make the setups described above operational, you might have
+to add a line like for example
 
+nameserver 127.0.0.1
+
+to the file
+
+/etc/resolv.conf
+
+
+E.
+If dnscrypt-proxy should be started by socket activation as described
+in A. or B. and step D. should be automated, "resolvconf" can be utilized:
+
+- Package "openresolv" has to be installed.
+
+- Instead of the unit dnscrypt-proxy.socket or dnscrypt-proxy.service ,
+  the systemd unit dnscrypt-proxy-resolvconf.service has to be used.
+
+- The file /etc/resolv.conf will be edited temporarily.
+  Do not use this approach if this unintended.
+
+- You should be aware of and ready to deal with possible fallout taking this
+  not really tested route.
+  For example manual edits to /etc/resolv.conf will be lost if resolvconf is
+  in control of this file, the clean-up on shutdown might fail, custom
+  or invalid resolvconf configuration might prevent startup of dnscrypt-proxy
+  and possibly more, ...
+
+Make sure the other units are deactivated (as root):
+
+      $ systemctl stop dnscrypt-proxy.socket
+
+      $ systemctl disable dnscrypt-proxy.socket
+
+      $ systemctl stop dnscrypt-proxy.service
+
+      $ systemctl disable dnscrypt-proxy.service
+
+Now start, and if you don't want to restart manually after reboot,
+enable (as root):
+
+      $ systemctl start dnscrypt-proxy-resolvconf.service
+
+      $ systemctl enable dnscrypt-proxy-resolvconf.service
+
+This will not work as intended for a setup as described in C., where
+the "listen_addresses" is not configured through the socket unit.
+
+
+F.
+The socket OR one of the service unit should be started/enabled - not all
+and not two of them.
+
+If the socket unit is used, it will start the dnscrypt-proxy.service unit
+when queries are sent to one of its configured addresses.
+
+On the other hand dnscrypt-proxy-resolvconf.service can be made responsible for
+activating dnscrypt-proxy.socket.
+
+
+G.
 If using systemd, the PID should be available in file
+
 /run/dnscrypt-proxy/dnscrypt-proxy.pid
 

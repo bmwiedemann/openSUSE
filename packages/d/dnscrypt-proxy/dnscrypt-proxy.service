@@ -31,5 +31,4 @@ ProtectControlGroups=yes
 ProtectKernelModules=yes
 
 [Install]
-# Also=dnscrypt-proxy.socket
 WantedBy=multi-user.target

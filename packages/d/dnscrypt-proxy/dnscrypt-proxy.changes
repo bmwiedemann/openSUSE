@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  7 20:00:00 UTC 2021 - cunix@mail.de
+
+- Added optional resolvconf support via systemd unit.
+
+-------------------------------------------------------------------
 Mon Jan  4 20:00:00 UTC 2021 - cunix@mail.de
 
 - Minimum golang version now at 1.15
