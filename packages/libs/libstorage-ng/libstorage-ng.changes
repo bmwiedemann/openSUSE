@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Mon Jan 18 12:11:41 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#792
+- updated pot and po files
+- 4.3.82
+
+--------------------------------------------------------------------
+Mon Jan 18 11:35:57 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#791
+- handle tmpfs in compound actions
+- 4.3.81
+
+--------------------------------------------------------------------
 Fri Jan 8 09:20:13 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#789
