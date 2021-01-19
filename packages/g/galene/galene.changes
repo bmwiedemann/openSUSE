@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Jan 18 22:26:55 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- do not install non-functional /etc/galene/ice-servers.json
+
+-------------------------------------------------------------------
+Mon Jan 18 21:07:25 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added AppArmor profile
+
+-------------------------------------------------------------------
+Mon Jan 18 20:02:26 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added ice-servers.json example
+- fixed static/* files
+- added galene.service with hardening options
+- added /etc/sysconfig/galene
+- create directories for config, groups and recordings
+
+-------------------------------------------------------------------
+Mon Jan 18 10:15:38 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Fix usage of obs-service-go_modules with upstream version spelling
+  * Remove unused dependency on golang-packaging
+  * Fixes %install usage with static content directory 
+  * Remove duplicated generated changelog entries including manual
+    removal of upstream housekeeping commits e.g. update README, etc.
+  * Use %license macro with upstream file spelling LICENCE
+
+-------------------------------------------------------------------
+Sat Jan 16 01:54:42 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.2:
+  * Reduce ping timetout to 45 to 55s.
+  * Fix typos.
+  * Fix removal of stream.onremovetrack callback.
+  * Add missing semicolons.
+  * Call ondowntrack on each track.
+  * Add websocket handshake timeout.
+  * Optimise broadcast messages.
+
+-------------------------------------------------------------------
+Fri Jan 15 18:23:47 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- initial package of release 0.2
