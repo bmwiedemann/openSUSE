@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 16 15:27:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.4.32:
+  + Add support for JIT code generation in Universal Windows
+    Platform apps.
+  + Minor Meson build system fixes and improvements.
+
+-------------------------------------------------------------------
 Tue Jan  7 14:01:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.4.31:

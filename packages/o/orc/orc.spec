@@ -1,7 +1,7 @@
 #
 # spec file for package orc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,17 @@
 
 
 Name:           orc
-Version:        0.4.31
+Version:        0.4.32
 Release:        0
 Summary:        The Oil Runtime Compiler
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.freedesktop.org/gstreamer/orc
-
 Source:         https://gstreamer.freedesktop.org/src/orc/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
 BuildRequires:  gtk-doc >= 1.12
 BuildRequires:  meson >= 0.47.0
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 Provides:       %{name}-devel = %{version}
 

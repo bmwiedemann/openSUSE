@@ -334,4 +334,16 @@
     <comment></comment>
     <requestid>761683</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a3810a9812eab86a1d4235ed276e4776</srcmd5>
+    <version>0.4.32</version>
+    <time>1611068433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.32:
+  + Add support for JIT code generation in Universal Windows
+    Platform apps.
+  + Minor Meson build system fixes and improvements.
+</comment>
+    <requestid>863760</requestid>
+  </revision>
 </revisionlist>
