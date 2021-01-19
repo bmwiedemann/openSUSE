@@ -4,32 +4,32 @@
 <param name="url">https://github.com/containers/storage.git</param>
 <param name="scm">git</param>
 <param name="filename">storage</param>
-<param name="versionformat">1.20.2</param>
-<param name="revision">v1.20.2</param>
+<param name="versionformat">1.24.5</param>
+<param name="revision">v1.24.5</param>
 </service>
 
 <service name="tar_scm" mode="disabled">
 <param name="url">https://github.com/containers/image.git</param>
 <param name="scm">git</param>
 <param name="filename">image</param>
-<param name="versionformat">5.5.1</param>
-<param name="revision">v5.5.1</param>
+<param name="versionformat">5.9.0</param>
+<param name="revision">v5.9.0</param>
 </service>
 
 <service name="tar_scm" mode="disabled">
 <param name="url">https://github.com/containers/podman.git</param>
 <param name="scm">git</param>
 <param name="filename">podman</param>
-<param name="versionformat">2.0.3</param>
-<param name="revision">v2.0.3</param>
+<param name="versionformat">2.2.1</param>
+<param name="revision">v2.2.1</param>
 </service>
 
 <service name="tar_scm" mode="disabled">
 <param name="url">https://github.com/containers/common.git</param>
 <param name="scm">git</param>
 <param name="filename">common</param>
-<param name="versionformat">0.14.6</param>
-<param name="revision">v0.14.6</param>
+<param name="versionformat">0.33.0</param>
+<param name="revision">v0.33.0</param>
 </service>
 
 <service name="recompress" mode="disabled">

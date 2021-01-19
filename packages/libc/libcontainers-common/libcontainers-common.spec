@@ -17,19 +17,19 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.14.6
+%define commonver 0.33.0
 
 # podman - version from containers/podman
-%define podmanver 2.0.3
+%define podmanver 2.2.1
 
 # storagever - version from containers/storage
-%define storagever 1.20.2
+%define storagever 1.24.5
 
 # imagever - version from containers/image
-%define imagever 5.5.1
+%define imagever 5.9.0
 
 Name:           libcontainers-common
-Version:        20200727
+Version:        20210112
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0 AND GPL-3.0-or-later
@@ -110,8 +110,8 @@ install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.
 install -D -m 0644 %{SOURCE8} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE10}
 install -D -m 0644 %{SOURCE10} %{buildroot}/%{_datadir}/containers/containers.conf
-install -D -m 0644 podman-%{podmanver}/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
-install -D -m 0644 podman-%{podmanver}/seccomp.json %{buildroot}/%{_sysconfdir}/containers/seccomp.json
+install -D -m 0644 common-%{commonver}/pkg/seccomp/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
+install -D -m 0644 common-%{commonver}/pkg/seccomp/seccomp.json %{buildroot}/%{_sysconfdir}/containers/seccomp.json
 
 install -d %{buildroot}/%{_mandir}/man1
 install -d %{buildroot}/%{_mandir}/man5
