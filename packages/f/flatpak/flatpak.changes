@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jan 15 16:06:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + The major new feature in this series compared to 1.8 is the
+    support for the new repo format which should make updates
+    faster and download less data.
+  + The systemd generator snippets now call flatpak
+    --print-updated-env in place of a bunch of shell for better
+    login performance.
+  + The .profile snippets now disable GVfs when calling flatpak to
+    avoid spawning a gvfs daemon when logging in via ssh.
+  + Build fixes for GCC 11.
+  + Flatpak now finds the pulseaudio sockets better in uncommon
+    configurations.
+  + Sandboxes with network access it now also has access to the
+    systemd-resolved socket to do dns lookups.
+  + Flatpak supports unsetting env vars in the sandbox using
+    --unset-env, and --env=FOO= now sets FOO to the empty string
+    instead of unsetting it.
+  + Similarly the spawn portal has an option to unset an env var.
+  + The spawn portal now has an option to share the pid namespace
+    with the sub-sandbox.
+
+-------------------------------------------------------------------
+Fri Jan 15 16:02:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.5 (CVE-2021-21261):
+  + This is a security update that fixes a sandbox escape where a
+    malicious application can execute code outside the sandbox by
+    controlling the environment of the "flatpak run" command when
+    spawning a sub-sandbox.
+
+-------------------------------------------------------------------
 Thu Jan  7 20:28:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.4:
