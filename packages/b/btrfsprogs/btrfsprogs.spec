@@ -242,6 +242,7 @@ install -m 0755 btrfs-select-super %{buildroot}/%{_sbindir}
 install -m 0755 btrfs-image %{buildroot}/%{_sbindir}
 install -m 0755 btrfstune %{buildroot}/%{_sbindir}
 install -m 0755 btrfs-find-root %{buildroot}/%{_sbindir}
+%if !0%{?usrmerged}
 install -m 0755 -d %{buildroot}/sbin
 ln -s %{_sbindir}/btrfs %{buildroot}/sbin
 ln -s %{_sbindir}/btrfs-convert %{buildroot}/sbin
@@ -252,6 +253,7 @@ ln -s %{_sbindir}/btrfsck %{buildroot}/sbin
 ln -s %{_sbindir}/btrfs-find-root %{buildroot}/sbin
 ln -s %{_sbindir}/mkfs.btrfs %{buildroot}/sbin
 ln -s %{_sbindir}/fsck.btrfs %{buildroot}/sbin
+%endif
 %if 0%{?suse_version} < 1310
 install -d -m0755 %{buildroot}/lib/mkinitrd/scripts/
 install -m 0755 %{SOURCE1} %{buildroot}/lib/mkinitrd/scripts/
@@ -313,6 +315,7 @@ done
 %dir %{_dracutmodulesdir}/95suse-btrfs/
 %{_dracutmodulesdir}/95suse-btrfs/module-setup.sh
 %endif
+%if !0%{?usrmerged}
 /sbin/fsck.btrfs
 # mkinitrd utils
 /sbin/btrfs
@@ -321,6 +324,7 @@ done
 /sbin/btrfstune
 /sbin/btrfsck
 /sbin/mkfs.btrfs
+%endif
 %{_sbindir}/btrfs
 %{_sbindir}/btrfs-convert
 %{_sbindir}/btrfs-image
