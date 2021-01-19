@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jan 18 09:06:19 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Removed portaudio build dependency to prevent cycles
+
+-------------------------------------------------------------------
+Thu Jan 14 16:06:37 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.16
+  - Fix/revert a change in how meta-data definitions were exposed
+    (regression in 1.9.15)
+  - Remove jack-router Windows code from the repository
+- Changes from 0.9.15
+  - Automated builds for macOS and Windows
+    (see jackaudio/jack2-releases repository)
+  - Adapt wscript Windows build configuration to match old v1.9.11
+    installer
+  - Bump maximum default number of clients and ports
+    (now 256 clients and 2048 ports)
+  - Delete various macOS and Windows-related files from the source
+    code (no longer relevant)
+  - Mark JACK-Session as deprecated, please use NSM instead
+  - Remove unnecessary GPL include from LGPL code
+  - Split example-clients and tools, as done in JACK1 many years
+    ago (WIP)
+  - Write Windows registry key during installation, so 3rd parties
+    can find jackd.exe (as HKLM\Software\JACK\Location)
+  - jack_control: Fix handling of dbus bytes
+  - jack_control: Return a proper exit status on DBus exception
+  - jack_property: Fix possible crash with "-l" argument usage
+  - jack_wait: Add client name option -n/--name
+  - Fix compilation of documentation
+  - Fix compilation of mixed mode with meta-data enabled
+  - Fix compilation with mingw
+  - Fix client-side crash if initial meta-data DB setup fails
+  - Fix macOS semaphore usage, so it works again
+  - Several fixes for Windows
+  - Several minor fixes and grammar corrections
+
+-------------------------------------------------------------------
 Mon May  4 08:28:51 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Deleted af6c00ab09428e79.patch and replaced with more eloquently

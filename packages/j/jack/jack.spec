@@ -1,7 +1,7 @@
 #
 # spec file for package jack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define wdbus 1
 %define sonum 0
 Name:           jack
-Version:        1.9.14
+Version:        1.9.16
 Release:        0
 #to_be_filled_by_service
 Summary:        Jack-Audio Connection Kit
@@ -39,13 +39,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(alsa)
-#BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(celt) >= 0.5.0
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(eigen3) >= 3.1.2
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(libffado) >= 2.0.1.2040
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
@@ -169,7 +172,7 @@ mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 %files
 %defattr(-,root,root)
 %doc ChangeLog.rst README*
-%license windows/Setup/src/COPYING
+%license COPYING
 %{_mandir}/man1/*
 %{_bindir}/*
 %dir %{_libdir}/%{name}
