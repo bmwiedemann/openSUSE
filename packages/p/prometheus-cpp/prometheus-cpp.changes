@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Jan 08 13:24:18 UTC 2021 - rbrown@suse.com
+
+- Update to version 0.11.0:
+  * pull: Use internal base64 decoding function to avoid dependency (#417)
+  * pull: work-around missing winsock lib in civetweb
+  * build: Bump library interface due to changes Histogram class
+  * chore: use max_digits10 instead of magic number
+  * feat: allow selection of MSVC runtime library
+  * Fix insufficiently precise value rendering
+  * core: Add test for negative observed histogram value
+  * Use a gauge for the histogram sum
+  * core: allow logically negative gauge increments and decrements
+  * packaging: Add shlib generation.
+  * push: use curl 7.73.0
+  * ci: use latest bazel
+  * fix(cmake): Fix warning in CheckAtomic
+  * chore: Raise version to v0.10.0 due to changed public interface
+  * chore: Use Bazel 3.5.1
+  * chore: Use civetweb 1.13
+  * chore: Use curl 1.72.0
+  * chore: Use google-benchmark 1.5.2
+  * push: slightly refactor gateway
+  * formatting
+  * core: Explicitly link against libatomic when needed
+  * ci: require fixed bazel version
+  * Use mutex to protect http operation
+  * Fix coverage from forks (#391)
+  * Use indirection to avoid curl include
+  * Reuse curl handle
+  * Avoid race when registering a collectable
+  * chore(bazel): Use Google Benchmark 1.5.1
+  * Use header-only cppcodec lib and fix build
+  * Add support for HTTP Basic Auth on scraping endpoints
+  * Add base64 encoding/decoding dependency
+  * Extend existing exposer interface
+  * Add support for serving multiple paths
+  * ci: Use preinstalled Bazel
+  * chore(pull): refactor collection code into metrics_collector
+  * doc: Use README.md as mainpage
+  * ci: Fix documentation generation
+  * doc: Add brief instructions how to consume
+  * Add reason for setting CMAKE_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS
+  * CMake: Fix directory permissions on installation
+  * chore: use imported CMake curl target
+  * feat: Add project to test CMake export
+  * fix: Properly export civetweb object library
+  * chore: Use civetweb 1.12
+  * pull: Add support for https and client certificates
+  * ci: use vcpkg for external dependencies
+  * chore(push): Update curl to 7.69.1
+  * core: Skip serialization test if locale is not available
+  * fix(cmake): Explicitly initialize package version for older cmake
+  * feat(core): Expect working German locale
+  * Add cpack configuration and readme
+  * CMake: Add support for Debian and RPM package generation
+  * feat(pull): Add getter for listening ports
+  * chore: Use libcurl 7.68.0
+  * Include missing <ostream>
+  * Avoid copying the histogram metric buckets. (#331)
+  * Update Bazel build instructions (#326)
+  * Make Collect methods const (#323)
+  * Fix coverage
+  * Fix submodule checkout
+  * fix(github): Use macos-latest
+  * chore(dependencies): Update Google Benchmark and Test to latest release
+  * feat(core): Improve text_serializer.cc coverage
+  * fix(coverage): Use Ubuntu 16.04 for coverage
+  * fix(core): Properly serialize newlines in label values
+  * feat(core): Improve text_serializer.cc coverage
+  * feat(core): Improve family.cc coverage
+  * fix(ci): Also build with Bazel on Windows
+  * feat(coverage): Use GitHub Actions for code coverage
+  * chore(bazel): Move repositories.bzl to bazel subdir
+  * chore(curl): Use curl 7.66.0
+  * chore(bazel): curl must not expect stropts.h header on Linux
+  * chore(bazel): Use maybe function from bazel_tools
+
+-------------------------------------------------------------------
 Mon Nov  4 14:38:26 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Initial release
