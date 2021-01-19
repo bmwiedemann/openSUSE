@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 15 22:28:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9.8
+  * Complete support for matching ICMP header content fields.
+  * Added raw tcp option match support.
+  * Added ability to check for the presence of any tcp option.
+  * Support for rejecting traffic from the ingress chain.
+
+-------------------------------------------------------------------
 Tue Oct 27 12:08:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.9.7

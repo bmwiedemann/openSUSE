@@ -177,4 +177,12 @@
     <comment>- Update to release 0.9.7</comment>
     <requestid>844349</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9150a084b527991ce8ae1cfcd6cbfdb1</srcmd5>
+    <version>0.9.8</version>
+    <time>1611068384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.8</comment>
+    <requestid>863422</requestid>
+  </revision>
 </revisionlist>
