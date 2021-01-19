@@ -1,7 +1,7 @@
 #
 # spec file for package libnftnl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libnftnl
 %define lname	libnftnl11
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        Userspace library to access the nftables Netlink interface
 License:        GPL-2.0-or-later
