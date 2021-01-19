@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 18 12:40:18 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
+
+- Update to version 5.4.0
+  * CVE-2020-35738: Fixed an out-of-bounds write in WavpackPackSamples (bsc#1180414) 
+  * fixed: disable A32 asm code when building for Apple silicon
+  * fixed: issues with Adobe-style floating-point WAV files
+  * added: --normalize-floats option to wvunpack for correctly
+             exporting un-normalized floating-point files
+
+-------------------------------------------------------------------
 Fri Apr 17 14:37:14 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.3.0

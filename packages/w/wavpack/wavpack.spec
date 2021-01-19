@@ -1,7 +1,7 @@
 #
 # spec file for package wavpack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname  1
 Name:           wavpack
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Hybrid Lossless Audio Compression Format
 License:        BSD-3-Clause
