@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 15 12:11:32 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Proposal: fixed the logic to detect whether the partitioning has
+  changed since the previous execution (found by bsc#1180537).
+- 4.3.12
+
+-------------------------------------------------------------------
 Thu Nov 26 22:29:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - correct add-on spelling (jsc#SLE-14772)
