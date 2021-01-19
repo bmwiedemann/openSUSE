@@ -1,7 +1,7 @@
 #
 # spec file for package dosfstools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,22 @@
 
 
 Name:           dosfstools
-Version:        4.1
+Version:        4.1+git.1610658652.9443732
 Release:        0
 Summary:        Utilities for Making and Checking MS-DOS FAT File Systems on Linux
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/dosfstools/dosfstools
-Source:         https://github.com/dosfstools/dosfstools/releases/download/v%{version}/dosfstools-%{version}.tar.gz
-Source2:        https://github.com/dosfstools/dosfstools/releases/download/v%{version}/dosfstools-%{version}.tar.gz.sig
-Source3:        %{name}.keyring
-# xxd from vim is required for testsuite
+Source:         dosfstools-%{version}.tar.gz
+# Source:         https://github.com/dosfstools/dosfstools/releases/download/v%%{version}/dosfstools-%%{version}.tar.gz
+# Source2:        https://github.com/dosfstools/dosfstools/releases/download/v%%{version}/dosfstools-%%{version}.tar.gz.sig
+# Source3:        %%{name}.keyring
 BuildRequires:  pkgconfig
+# xxd from vim is required for testsuite
 BuildRequires:  vim
 BuildRequires:  pkgconfig(libudev)
+# for ./autogen.sh
+BuildRequires:  libtool
 Supplements:    filesystem(vfat)
 Provides:       dosfsck
 Provides:       mkdosfs
@@ -42,6 +45,7 @@ floppies.
 
 %prep
 %setup -q
+./autogen.sh
 
 %build
 %configure \

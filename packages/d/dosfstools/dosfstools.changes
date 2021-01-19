@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 15 06:13:07 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 4.1+git.1610658652.9443732 (bsc#1172863):
+  * testsuite: Add mkfs test for 600MB large 4K disk
+  * mkfs.fat: Do not show verbose messages not relevant to selected FAT size
+  * mkfs.fat: Fix text of verbose messages
+  * mkfs.fat: Fix limits for number of clusters
+  * mkfs.fat: Fix calculation of FAT32 cluster size on non 512 bytes sector disks
+  * mkfs.fat: Fix printing number of sectors
+  * mkfs.fat: Align total number of sectors to be multiple of sectors per track
+  * testsuite: Add referenceFAT32mbr test data to dist_check_DATA
+  * manpages: Escape dot in fsck.fat manpage at the beginning of the line
+  * fsck.fat: properly check for valid "." and ".." entries
+
+-------------------------------------------------------------------
 Tue Nov 10 10:57:30 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
