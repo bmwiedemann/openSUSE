@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 08 13:35:04 UTC 2021 - rbrown@suse.com
+
+- Update to version 0.0.1:
+  * resolve rules_go conflict (#43)
+  * repository: UDPA-WG -> xDS-WG, update to reflect usage. (#39)
+  * xdstp: migrate URL-scheme to xDS naming convention. (#40)
+  * xRFC: rename uRFC to xRFC. (#41)
+  * URIs: remove repeated id. (#38)
+  * udpa: update some working group logistics. (#37)
+  * udpa: enhance context_params documentation (#35)
+  * urfc: process and template for uRFCs. (#34)
+  * udpa: clarify URI fragment encoding of directives. (#30)
+  * udpa: add core proto definitions from xDS transport++ proposal. (#29)
+  * annotations: introduce security annotations. (#28)
+  * annotations: add UNKNOWN status to PackageVersionStatus. (#26)
+  * annotations: add a package version status annotation (#25)
+  * downgrade module requirement (#24)
+  * annotations: add WiP status annotations. (#22)
+
+-------------------------------------------------------------------
 Sun Feb  2 13:22:29 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Fix regex for correcting Python scripts shebang.

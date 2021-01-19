@@ -4,7 +4,9 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">udpa</param>
-    <param name="version">0.0.0+git28</param>
+    <param name="revision">v0.0.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
