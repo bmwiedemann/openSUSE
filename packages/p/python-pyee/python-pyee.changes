@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan 18 22:37:12 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 8.1.0
+  * Improved thread safety in base EventEmitter
+  * Documentation fix in ExecutorEventEmitter
+- Changelog for Version 8.0.1
+  * Update README to reflect new API
+- Changelog for Version 8.0.0
+  * Drop support for Python 2.7
+  * Remove CompatEventEmitter and rename BaseEventEmitter to
+    EventEmitter
+  * Create an alias for BaseEventEmitter with a deprecation warning
+- Changelog for Version 7.0.4
+  * setup_requires vs tests_require now correct
+  * tests_require updated to pass in tox
+  * 3.7 testing removed from tox
+  * 2.7 testing removed from Travis
+- Changelog for Version 7.0.3
+  * Tag license as MIT in setup.py
+  * Update requirements and environment to pip -e the package
+- Changelog for Version 7.0.2
+  * Support Python 3.8 by attempting to import TimeoutError from
+    asyncio.exceptions
+  * Add LICENSE to package manifest
+  * Add trio testing to tox
+  * Add Python 3.8 to tox
+  * Fix Python 2.7 in tox 
+- Clarify test requirements for different python versions
+- Drop python-pyee-import-asyncio.exceptions.patch merged upstream
+
+-------------------------------------------------------------------
 Thu Mar 26 14:04:57 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.1

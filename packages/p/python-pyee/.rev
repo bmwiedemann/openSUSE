@@ -56,4 +56,12 @@ Add missing BuildRequires</comment>
 - Add patch python-pyee-import-asyncio.exceptions.patch</comment>
     <requestid>789777</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7d3889421f888c77e7635f7aeccad002</srcmd5>
+    <version>8.1.0</version>
+    <time>1611068568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864168</requestid>
+  </revision>
 </revisionlist>
