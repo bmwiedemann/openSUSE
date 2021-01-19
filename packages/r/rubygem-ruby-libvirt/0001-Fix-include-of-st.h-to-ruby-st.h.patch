@@ -1,0 +1,43 @@
+From 9420b4a54a82c79033d0ab404b6cf04d3413f373 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dan.cermak@cgc-instruments.com>
+Date: Tue, 5 Jan 2021 10:54:12 +0100
+Subject: [PATCH] Fix include of st.h to ruby/st.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Dan Čermák <dan.cermak@cgc-instruments.com>
+---
+ ext/libvirt/common.c | 2 +-
+ ext/libvirt/domain.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ext/libvirt/common.c b/ext/libvirt/common.c
+index cf7dd93..ca92088 100644
+--- a/ext/libvirt/common.c
++++ b/ext/libvirt/common.c
+@@ -24,7 +24,7 @@
+ #endif
+ #include <stdio.h>
+ #include <ruby.h>
+-#include <st.h>
++#include <ruby/st.h>
+ #include <libvirt/libvirt.h>
+ #include <libvirt/virterror.h>
+ #include "common.h"
+diff --git a/ext/libvirt/domain.c b/ext/libvirt/domain.c
+index d665907..ecbbff6 100644
+--- a/ext/libvirt/domain.c
++++ b/ext/libvirt/domain.c
+@@ -23,7 +23,7 @@
+ #include <unistd.h>
+ #include <ruby.h>
+ /* we need to include st.h since ruby 1.8 needs it for RHash */
+-#include <st.h>
++#include <ruby/st.h>
+ #include <libvirt/libvirt.h>
+ #if HAVE_VIRDOMAINQEMUMONITORCOMMAND
+ #include <libvirt/libvirt-qemu.h>
+-- 
+2.29.2
+

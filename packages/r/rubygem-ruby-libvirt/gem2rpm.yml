@@ -1,4 +1,4 @@
-# ---
+---
 # ## used by gem2rpm
 # :summary: this is a custom summary
 # ## used by gem2rpm
@@ -7,7 +7,7 @@
 #
 #   it can be multiline
 # ## used by gem2rpm
-# :license: MIT or Ruby
+ :license: LGPL-2.1-or-later
 # ## used by gem2rpm and gem_packages
 # :version_suffix: -x_y
 # ## used by gem2rpm and gem_packages
@@ -18,13 +18,13 @@
  :preamble: |-
    BuildRequires:  libvirt
    BuildRequires:  libvirt-devel
-   BuildRequires:  pkg-config
+   BuildRequires:  pkgconfig
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
-# :patches:
-#   foo.patch: -p1
-#   bar.patch: 
+ :patches:
+   0001-Fix-include-of-st.h-to-ruby-st.h.patch: -p1
+#   bar.patch:
 # ## used by gem2rpm
  :sources:
    - rubygem-ruby-libvirt-rpmlintrc
