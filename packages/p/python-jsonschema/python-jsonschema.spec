@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-jsonschema
 Version:        3.2.0
 Release:        0
@@ -48,12 +48,6 @@ Requires:       python-six >= 1.11.0
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-functools32
-%endif
-%ifpython2
-Requires:       python-functools32
-%endif
 %python_subpackages
 
 %description
@@ -90,9 +84,7 @@ for Python (supporting 2.6+ including Python 3).
 %license COPYING
 %doc README.rst
 %python_alternative %{_bindir}/jsonschema
-%dir %{python_sitelib}/jsonschema
-%{python_sitelib}/jsonschema/*
-%dir %{python_sitelib}/jsonschema-%{version}-py*.egg-info
-%{python_sitelib}/jsonschema-%{version}-py*.egg-info
+%{python_sitelib}/jsonschema
+%{python_sitelib}/jsonschema-%{version}*-info
 
 %changelog

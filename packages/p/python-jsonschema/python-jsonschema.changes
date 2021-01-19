@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 13:12:18 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Disable python2 build as indirect build dependencies to
+  python2-cffi are not resolvable anymore
+
+-------------------------------------------------------------------
 Thu Mar 12 07:44:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with new webcolors:

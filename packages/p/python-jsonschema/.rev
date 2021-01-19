@@ -201,4 +201,12 @@
   * webcolors.patch</comment>
     <requestid>784158</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>15cb76f957d2aa824d36bdd2b7847210</srcmd5>
+    <version>3.2.0</version>
+    <time>1611068364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863348</requestid>
+  </revision>
 </revisionlist>
