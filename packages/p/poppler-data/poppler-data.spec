@@ -1,7 +1,7 @@
 #
 # spec file for package poppler-data
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           poppler-data
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        Encoding Files for use with libpoppler
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          System/Libraries
-Url:            https://poppler.freedesktop.org/
+URL:            https://poppler.freedesktop.org/
 Source:         https://poppler.freedesktop.org/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildArch:      noarch

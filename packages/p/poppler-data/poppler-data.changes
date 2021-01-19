@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  4 08:20:31 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.4.10 (no changelog)
+
+-------------------------------------------------------------------
 Mon Jul  9 23:39:51 UTC 2018 - luc14n0@linuxmail.org
 
 - Fall back to use `make %{?_smp_mflags}` instead of %make_build to
