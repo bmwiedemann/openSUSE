@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 16 09:04:29 UTC 2020 - Aleksei Burlakov <aburlakov@suse.com>
+
+- qdevice support: it can be created when initializing a cluster
+
+-------------------------------------------------------------------
 Thu Oct 15 07:14:20 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.3.11
