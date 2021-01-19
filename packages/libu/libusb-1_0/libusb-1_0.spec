@@ -1,7 +1,7 @@
 #
 # spec file for package libusb-1_0
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          System/Hardware
 URL:            http://libusb.info/
 Source:         https://github.com/libusb/libusb/releases/download/v%{version}/libusb-%{version}.tar.bz2
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-fix-descriptor-parsing.patch
 BuildRequires:  dos2unix
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libudev)
@@ -51,7 +53,7 @@ Requires:       libusb-1_0-0 = %{version}
 Libusb is a library that allows userspace access to USB devices.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 dos2unix NEWS
 
 %build

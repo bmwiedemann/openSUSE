@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 17 11:38:45 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0001-fix-descriptor-parsing.patch to fix detection of some devices.
+
+-------------------------------------------------------------------
 Thu Dec 10 19:18:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.24
