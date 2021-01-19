@@ -1,0 +1,50 @@
+[testsuite] Fix partial unit grepping in pr24468.sh
+
+I'm running into:
+...
+FAIL: src/testsuite/dwz.tests/pr24468.sh
+...
+
+In more detail, we find the following offsets for partial units:
+...
++ offsets='b
+6b
+da'
+...
+and then fail to find an import for the one at 6b:
+...
+++ grep -c 'DW_AT_import.*0x6b' READELF
+++ true
++ imports=0
++ '[' 0 -gt 0 ']'
+...
+
+But there's actually no partial unit at 6b, the grep matches on a
+DW_AT_import:
+...
+  <6b>  DW_AT_import  : <0xb>  [Abbrev Number: 17 (DW_TAG_partial_unit)]
+...
+
+Fix this by filtering out the DW_AT_import lines when grepping for partial
+units.
+
+2020-12-20  Tom de Vries  <tdevries@suse.de>
+
+	* testsuite/dwz.tests/pr24468.sh: Fix partial unit grepping.
+
+---
+ testsuite/dwz.tests/pr24468.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/testsuite/dwz.tests/pr24468.sh b/testsuite/dwz.tests/pr24468.sh
+index 4dac9a1..7990e83 100644
+--- a/testsuite/dwz.tests/pr24468.sh
++++ b/testsuite/dwz.tests/pr24468.sh
+@@ -8,6 +8,7 @@ dwz -m 3 1 2
+ readelf -wi 1 > READELF 2>/dev/null
+ 
+ offsets=$(grep '(DW_TAG_partial_unit' READELF \
++	      | grep -v "DW_AT_import" \
+ 	      | awk '{print $1}' \
+ 	      | sed 's/.*<//;s/>.*//')
+ for off in $offsets; do

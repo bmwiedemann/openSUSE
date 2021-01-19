@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  7 10:21:31 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix pr24468.sh test-case with newer readelf.
+  * dwz-testsuite-adjust-pr24468-sh-test-case-for-readelf-with-follow-links.patch
+  * dwz-testsuite-fix-partial-unit-grepping-in-pr24468-sh.patch
+
+-------------------------------------------------------------------
+Thu Jan  7 09:15:48 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Detect when devel-ignore-size.sh is unsupported [swo#27115].
+  * dwz-testsuite-detect-when-devel-ignore-size-sh-is-unsupported.patch
+
+-------------------------------------------------------------------
 Wed Aug  5 08:16:04 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix error: source 0 defined multiple times.

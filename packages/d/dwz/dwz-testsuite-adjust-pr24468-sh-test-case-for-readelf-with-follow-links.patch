@@ -1,0 +1,29 @@
+Adjust pr24468.sh test-case for readelf with =follow-links.
+
+Newer binutils readelf have =follow-links which is automatically
+enabled with -w. This shows not only the debuginfo of the main file
+but also that of the alt file referenced. This causes the pr24468.sh
+to see "too many" DW_TAG_partial_units (from both files) which then
+doesn't matches the number of DW_AT_imports. The fix is simply to
+use -wi instead of -w since we are only interested in the .debug_info
+DIEs anyway.
+
+	* testsuite/dwz.tests/pr24468.sh: Use readelf -wi.
+
+---
+ testsuite/dwz.tests/pr24468.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/testsuite/dwz.tests/pr24468.sh b/testsuite/dwz.tests/pr24468.sh
+index b03fdf9..4dac9a1 100644
+--- a/testsuite/dwz.tests/pr24468.sh
++++ b/testsuite/dwz.tests/pr24468.sh
+@@ -5,7 +5,7 @@ cp 1 2
+ 
+ dwz -m 3 1 2
+ 
+-readelf -w 1 > READELF 2>/dev/null
++readelf -wi 1 > READELF 2>/dev/null
+ 
+ offsets=$(grep '(DW_TAG_partial_unit' READELF \
+ 	      | awk '{print $1}' \

@@ -1,0 +1,39 @@
+[testsuite] Detect when devel-ignore-size.sh is unsupported
+
+In PR27115, a failure of devel-ignore-size.sh is reported.
+
+The test-case:
+- tries to transform an executable
+- checks that it didn't transform
+- retries using --devel-ignore-size
+- check that it did transform
+
+The reported failure is in the second step.
+
+Fix this by marking the test unsupported if the second step fails.
+
+2021-01-04  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/27115
+	* testsuite/dwz.tests/devel-ignore-size.sh: If exec is transformed
+	without --devel-ignore-size, mark unsupported.
+
+---
+ testsuite/dwz.tests/devel-ignore-size.sh | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/testsuite/dwz.tests/devel-ignore-size.sh b/testsuite/dwz.tests/devel-ignore-size.sh
+index 5134043..78d28a2 100644
+--- a/testsuite/dwz.tests/devel-ignore-size.sh
++++ b/testsuite/dwz.tests/devel-ignore-size.sh
+@@ -12,7 +12,9 @@ cnt=$(readelf -wi 1 \
+ 	    | grep '(DW_TAG_partial_unit' \
+ 	    | wc -l)
+ 
+-[ $cnt -eq 0 ]
++if [ $cnt -ne 0 ]; then
++    exit 77
++fi
+ 
+ cp $execs/min 1
+ 

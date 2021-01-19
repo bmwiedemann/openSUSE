@@ -1,7 +1,7 @@
 #
 # spec file for package dwz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,6 +85,9 @@ Patch3:         dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
 Patch4:         dwz-fix-refd-NULL-assertion-in-write_die.patch
 Patch5:         dwz-fix-reference-from-pu-to-cu.patch
 Patch6:         dwz-fix-segfault-in-die_cu.patch
+Patch7:         dwz-testsuite-detect-when-devel-ignore-size-sh-is-unsupported.patch
+Patch8:         dwz-testsuite-adjust-pr24468-sh-test-case-for-readelf-with-follow-links.patch
+Patch9:         dwz-testsuite-fix-partial-unit-grepping-in-pr24468-sh.patch
 
 %if %{build_main}
 %description
@@ -119,6 +122,9 @@ This package contains the testsuite results from DWZ.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
