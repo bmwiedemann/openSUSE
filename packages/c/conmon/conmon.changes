@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 12 08:10:52 UTC 2021 - sgrunert@suse.com
+
+- Update to version 2.0.22:
+  * added man page
+  * attach: always chdir
+  * conn_sock: Explicitly free a heap-allocated string
+  * refactor I/O and add SD_NOTIFY proxy support
+
+-------------------------------------------------------------------
 Mon Sep 21 07:06:04 UTC 2020 - dmueller@suse.com
 
 - Update to version 2.0.21:

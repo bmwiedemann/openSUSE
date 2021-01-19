@@ -1,7 +1,7 @@
 #
 # spec file for package conmon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           conmon
-Version:        2.0.21
+Version:        2.0.22
 Release:        0
 Summary:        An OCI container runtime monitor
 License:        Apache-2.0
@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/containers/conmon
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  glib2-devel
+BuildRequires:  golang(API) >= 1.15
 BuildRequires:  pkgconfig(libsystemd)
 
 %description
@@ -45,5 +46,6 @@ runc or crun) for a single container.
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_mandir}/man8/conmon*.8*
 
 %changelog
