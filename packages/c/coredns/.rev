@@ -156,4 +156,12 @@
   * auto go mod tidy</comment>
     <requestid>830852</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fcd7102f6275c27f6d8d11d6d801a58f</srcmd5>
+    <version>1.8.0</version>
+    <time>1611068490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861696</requestid>
+  </revision>
 </revisionlist>

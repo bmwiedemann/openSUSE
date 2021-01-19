@@ -1,4 +1,186 @@
 -------------------------------------------------------------------
+Fri Jan 08 12:19:37 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.8.0:
+  * release: up version to 1.8.0 (#4225)
+  * add default reviewers for circleci config (#4222)
+  * auto go mod tidy
+  * build(deps): bump github.com/miekg/dns from 1.1.33 to 1.1.34 (#4217)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.35.7 to 1.35.9 (#4213)
+  * build(deps): bump github.com/prometheus/client_golang (#4214)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.27.0 to 1.27.1 (#4212)
+  * auto make -f Makefile.doc
+  * plugin/autopath: slightly tweaks the docs (#4188)
+  * cache: do the msg copy right (#4207)
+  * reduce sleeps (#4205)
+  * Add #4171 in notes (#4204)
+  * notes: update with latest (#4203)
+  * deps: bump miekg/dns to new version (#4201)
+  * plugin/transfer: remove duplicate code (#4200)
+  * plugin/cache: fix removing OPT (#4190)
+  * notes: add dnstap PR (#4197)
+  * [plugin][trace] - Have a consistent spanName (#4171)
+  * auto make -f Makefile.doc
+  * plugin/dnstap: various cleanups (#4179)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#4195)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.35.2 to 1.35.7 (#4191)
+  * auto go mod tidy
+  * build(deps): bump github.com/cenkalti/backoff/v4 from 4.0.2 to 4.1.0 (#4192)
+  * build(deps): bump github.com/miekg/dns from 1.1.31 to 1.1.32 (#4193)
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4194)
+  * notes: more PR and clarify backwards incompat changes (#4185)
+  * core: fix crash with no plugins (#4184)
+  * fix alpn for http/2 upgrade when using DoH (#4182)
+  * auto go mod tidy
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.26.0 to 1.27.0 (#4177)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4176)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.32 to 1.35.2 (#4175)
+  * build(deps): bump github.com/dnstap/golang-dnstap from 0.2.1 to 0.2.2 (#4174)
+  * fix lameduck docs (#4169)
+  * More 1.8.0 notes updates: add latest merged PRs (#4168)
+  * dont return 200 during shutdown (#4167)
+  * plugins/auto: allow fallthrough if no zone match (#4166)
+  * update README examples to use transfer plugins (#4163)
+  * doh support: make no TLS config fatal (#4162)
+  * Add proto and remote tags to trace plugin (#4159)
+  * update 1.8.0 notes (#4156)
+  * plugin/cache: Fix filtering (#4148)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.22 to 1.34.32 (#4153)
+  * build(deps): bump k8s.io/client-go from 0.19.1 to 0.19.2 (#4150)
+  * build(deps): bump github.com/prometheus/common from 0.13.0 to 0.14.0 (#4149)
+  * Add notes for next 1.8.0 release (#4143)
+  * auto make -f Makefile.doc
+  * Cherry-pick: Implement notifies for transfer plugin (#3972) (#4142)
+  * auto go mod tidy
+  * For caddy v1 in our org (#4018)
+  * goreport card fixes (#4139)
+  * coredns: bump version to 1.7.1 (#4136)
+  * plugin/hosts: make hosts plugin cursive (#4131)
+  * cache: default to DNSSEC (#4085)
+  * notes: update 1.7.1 (#4128)
+  * auto go mod tidy
+  * bump prometheus with zipkin (#4109)
+  * plugin/forward: fix panic when `expire` is configured as 0s (#4115)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.18 to 1.34.22 (#4118)
+  * auto make -f Makefile.doc
+  * plugin/forward: add hit/miss metrics for connection cache (#4114)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.19.0 to 0.19.1 (#4120)
+  * auto go mod tidy
+  * build(deps): bump github.com/farsightsec/golang-framestream (#4117)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#4124)
+  * plugin/trace: fix struct allignment (#4112)
+  * plugin/forward: init ClientSessionCache in tls.Config (#4108)
+  * auto go mod tidy
+  * build(deps): bump github.com/dnstap/golang-dnstap from 0.2.0 to 0.2.1 (#4107)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.13 to 1.34.18 (#4105)
+  * Fix trailing whitespace (#4103)
+  * Fix some typos in comments. (#4100)
+  * clouddns,route53: fix lingering goroutines after restart (#4096)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.5 to 1.34.13 (#4092)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.8 to 0.19.0 (#4095)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4090)
+  * Update the 1.7.1 notes (#4086)
+  * auto make -f Makefile.doc
+  * Enable debug globally if enabled in any server config (#4007)
+  * cleanup tempfiles for erratic_autopath_test (#4080)
+  * fix misspell (#4081)
+  * Update README.md (#4068)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.0 to 1.34.5 (#4072)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.6 to 0.18.8 (#4074)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/api from 0.18.6 to 0.18.8 (#4073)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#4070)
+  * pkg/upstream: set edns0 and Do when required (#4055)
+  * Bump to golang 1.15 (#4064)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4052)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.25.0 to 1.26.0 (#4050)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.17 to 1.34.0 (#4054)
+  * auto make -f Makefile.doc
+  * plugin/etcd: update documention (#4049)
+  * auto make -f Makefile.doc
+  * plugin/template: Add client IP data (#4034)
+  * auto go mod tidy
+  * build(deps): bump github.com/miekg/dns from 1.1.30 to 1.1.31 (#4043)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.12 to 1.33.17 (#4041)
+  * backend: fix root zone usage (#4039)
+  * Fix wildcard records issue in rout53 plugin (#4038)
+  * 1.7.x note fixes (#4033)
+  * Update coredns-1.6.9.md (#4031)
+  * Update coredns-1.7.0.md (#4030)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.7 to 1.33.12 (#4027)
+  * Add initial notes for 1.7.1 (#4026)
+  * auto go mod tidy
+  * using promauto package to ensure all created metrics are properly registered (#4025)
+  * register HealthcheckBrokenCount (#4021)
+  * auto make -f Makefile.doc
+  * Disable debug mode for tracing - removes extra logging (#4016)
+  * ignore vendor when presubmit test (#3999)
+  * fix metric naming test (#4017)
+  * Manually update client-go to v0.18.6 (#4015)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.5 to 1.33.7 (#4011)
+  * build(deps): bump k8s.io/apimachinery from 0.18.5 to 0.18.6 (#4012)
+  * Improve gRPC Plugin when backend is not available (#3966)
+  * Add DCO requirement in Contributing guidelines (#4008)
+  * auto go mod tidy
+  * build(deps): bump github.com/miekg/dns from 1.1.29 to 1.1.30 (#4004)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.1 to 1.33.5 (#4003)
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4002)
+  * build(deps): bump google.golang.org/api from 0.28.0 to 0.29.0 (#4001)
+  * remove TestProxyClose (#4005)
+  * Minor grammatical fixes to release notes (#3998)
+  * Revert "Implement notifies for transfer plugin (#3972)" (#3995)
+  * Implement notifies for transfer plugin (#3972)
+  * auto go mod tidy
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.24.1 to 1.25.0 (#3991)
+  * build(deps): bump github.com/opentracing/opentracing-go (#3990)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.32.11 to 1.33.1 (#3992)
+  * Add timeouts for http server (#3920)
+  * Cleanup tempfiles (#3986)
+  * complete nsid plugin test case (#3981)
+  * complete transfer plugin  test case (#3967)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.4 to 0.18.5 (#3975)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.32.6 to 1.32.11 (#3976)
+  * auto go mod tidy
+  * build(deps): bump github.com/prometheus/client_golang (#3979)
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#3980)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/apimachinery from 0.18.4 to 0.18.5 (#3978)
+  * plugin/cache/forward: Clean up grammar/wording in forward & cache metrics descriptions. (#3971)
+  * plugin/forward: remove exp backoff stuff (#3970)
+  * format and add newline (#3969)
+  * auto make -f Makefile.doc
+  * completed metrics of cache and forward (#3962)
+  * add test case of remote ip (#3964)
+  * auto go mod tidy
+  * build(deps): bump google.golang.org/api from 0.26.0 to 0.28.0 (#3960)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.3 to 0.18.4 (#3956)
+  * build(deps): bump github.com/prometheus/client_golang (#3957)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.32.1 to 1.32.6 (#3961)
+  * Update dns64 plugin bugs list (#3955)
+
+-------------------------------------------------------------------
 Mon Aug 31 14:29:45 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.7.0:
