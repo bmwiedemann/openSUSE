@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 08 11:48:01 UTC 2021 - rbrown@suse.com
+
+- Update to version 2.0.1:
+  * Responding to feedback
+  * Fixes MAISTRA-1226: fix for ScopedEVP_MD_CTX used in UtilityImpl::verifySignature
+  * udpate
+  * switch mergify to rebase instead of merge
+  * Disabled commented-reviews-by
+  * Disable commit message lint: MAISTRA-667
+  * Update commit message lint to remove mergify message: MAISTRA-667
+  * Update commit message lint to include mergify: MAISTRA-667
+  * Enable commit message lint
+  * Add mergify.yml file
+
+-------------------------------------------------------------------
 Mon Jan  6 12:48:31 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Add bazel-rules-cc-source and bazel-rules-java-source as

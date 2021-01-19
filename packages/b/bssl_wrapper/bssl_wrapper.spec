@@ -1,7 +1,7 @@
 #
 # spec file for package bssl_wrapper
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define libname lib%{name}_lib%{sover}
 
 Name:           bssl_wrapper
-Version:        0.12.0
+Version:        2.0.1
 Release:        0
 Summary:        Library which translates BoringSSL calls to OpenSSL calls
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/Maistra/%{name}
+URL:            https://github.com/Maistra/%{name}
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bazel
 BuildRequires:  bazel-rules-cc-source
