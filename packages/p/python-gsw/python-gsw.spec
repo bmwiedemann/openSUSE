@@ -1,7 +1,7 @@
 #
 # spec file for package python-gsw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-# Note: this package is python3-only. There is a python2-compatible
-# version in the python2-gsw package.
-# Tests are not included in the source tarball
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gsw
@@ -31,7 +28,7 @@ Summary:        Gibbs Seawater Oceanographic Package of TEOS-10
 License:        MIT AND BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/TEOS-10/GSW-python
-# gh#TEOS-10/GSW-Python#39
+# gh#TEOS-10/GSW-Python#39 -- Tests are not included in the source tarball
 Source0:        https://github.com/TEOS-10/GSW-Python/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module numpy-devel}
@@ -62,15 +59,12 @@ export CFLAGS
 %python_install
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}}
 
-# gh#TEOS-10/GSW-Python#40
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{python_sitearch}
 %ifarch aarch64
-py.test-%{$python_bin_suffix} -v -k 'not test_check_function[cfcf72]'
-%else
-py.test-%{$python_bin_suffix} -v
+# gh#TEOS-10/GSW-Python#40 note that the failure moved from 72 to 68
+donttest+=" or (test_check_function and cfcf68)"
 %endif
-}
+%pytest_arch ${donttest:+-k "not (${donttest:4})"}
 
 %files %{python_files}
 %doc README.md

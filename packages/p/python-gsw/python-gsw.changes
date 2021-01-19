@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 17 23:33:01 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix macro expansion for pytest call
+
+-------------------------------------------------------------------
 Thu Nov 12 15:59:32 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - update to 3.4.0
