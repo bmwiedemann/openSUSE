@@ -190,4 +190,12 @@
     Fixed checks on oversampling factors. [#1086]</comment>
     <requestid>837400</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c2506e78f14cf795c00ebc6fefc77049</srcmd5>
+    <version>1.0.1</version>
+    <time>1611068550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864140</requestid>
+  </revision>
 </revisionlist>

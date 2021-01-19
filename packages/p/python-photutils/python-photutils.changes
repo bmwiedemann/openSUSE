@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 14:57:42 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Add photutils-ease-background2d-tests.patch -- ease precision
+  tolerance in background 2D tests gh#astropy/photutils#1145 
+
+-------------------------------------------------------------------
 Fri Sep 25 11:41:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 1.0.1

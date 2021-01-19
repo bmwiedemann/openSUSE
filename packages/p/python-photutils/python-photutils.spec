@@ -1,7 +1,7 @@
 #
 # spec file for package python-photutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-photutils
 Version:        1.0.1
 Release:        0
@@ -26,6 +27,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM photutils-ease-background2d-tests.patch -- work around gh#astropy/photutils#1145
+Patch0:         photutils-ease-background2d-tests.patch
 BuildRequires:  %{python_module Cython >= 0.29.14}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module extension-helpers}
@@ -56,7 +59,7 @@ Photutils is an affiliated package of Astropy to provide tools for detecting
 and performing photometry of astronomical sources.
 
 %prep
-%setup -q -n photutils-%{version}
+%autosetup -p1 -n photutils-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -68,7 +71,7 @@ export CFLAGS="%{optflags}"
 
 %check
 # do not import source dir without extensions
-cd .. 
+cd ..
 # Use astropy test suite logic. Calling pytest directly would require
 # duplicate in-place building of extensions.
 %{python_expand export PYTHONPATH="%{buildroot}%{$python_sitearch}"
