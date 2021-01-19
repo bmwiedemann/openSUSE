@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 08 13:31:54 UTC 2021 - rbrown@suse.com
+
+- Update to version 0.15.0:
+  * Feat: NuGet Scanner (#686)
+  * feat(cache): support Redis (#770)
+  * fix(redhat): skip module packages (#776)
+  * chore: migrate from master to main (#778)
+  * chore(circleci): remove gofmt (#777)
+  * chore(README): remove experimental (#775)
+  * NVD: Add timestamps. (#761)
+  * (fix): Make the table output less wide. (#763)
+  * Add gitHubToken to prevent rate limit problems (#769)
+  * Add helm chart to install trivy in server mode. (#751)
+  * chore(docs): add nix install (#762)
+  * HTML template (#567)
+  * feat: remove rpm dependency (#753)
+  * fix(vulnerability): make an empty severity UNKNOWN (#759)
+  * chore(README): add TRIVY_INSECURE (#760)
+  * feat(vulnerability): add primary URLs (#752)
+
+-------------------------------------------------------------------
 Thu Nov 26 15:23:00 UTC 2020 - dmueller@suse.com
 
 - Update to version 0.13.0:

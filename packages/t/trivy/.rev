@@ -64,4 +64,12 @@
 - remove 0001-Add-suse-sles-15.2-to-the-EOL-list-as-well.patch (merged)</comment>
     <requestid>851108</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da80bcc1993961330dfccc63f5e92dbe</srcmd5>
+    <version>0.15.0</version>
+    <time>1611068504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861707</requestid>
+  </revision>
 </revisionlist>
