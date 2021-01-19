@@ -361,4 +361,12 @@
     try /etc (boo#1173038)</comment>
     <requestid>823739</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>c485c9c46b894334086f610f604d6b67</srcmd5>
+    <version>1.4</version>
+    <time>1611068329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863182</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libvdpau
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,25 @@
 
 
 %if 0%{?suse_version} < 1550
-  %define _distconfdir /usr/etc
+  %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
-
 Name:           libvdpau
 Version:        1.4
 Release:        0
 Summary:        VDPAU wrapper and trace libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://www.freedesktop.org/wiki/Software/VDPAU/
+URL:            https://www.freedesktop.org/wiki/Software/VDPAU/
 Source:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/vdpauinfo-1.3/vdpauinfo-1.3.tar.bz2
 Source2:        README
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 Patch0:         n_UsrEtc.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/commit/c5a8e7c6c8b4b36a0e4c9a4369404519262a3256.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/commit/e82dc4bdbb0db3ffa8c78275902738eb63aa5ca8.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -87,7 +90,7 @@ Its usage is documented in the README.
 
 %prep
 %setup -q -b1
-%patch0 -p1
+%autopatch -p1
 
 %build
 %meson
@@ -112,11 +115,9 @@ popd
 cp %{_sourcedir}/README .
 
 %post -n libvdpau1 -p /sbin/ldconfig
-
 %postun -n libvdpau1 -p /sbin/ldconfig
 
 %files -n libvdpau1
-%defattr(-,root,root)
 %dir %{_libdir}/vdpau
 %dir %{_distconfdir}
 %{_bindir}/vdpauinfo
@@ -124,14 +125,12 @@ cp %{_sourcedir}/README .
 %{_distconfdir}/vdpau_wrapper.cfg
 
 %files -n libvdpau-devel
-%defattr(-,root,root)
 %dir %{_libdir}/vdpau
 %{_includedir}/vdpau
 %{_libdir}/libvdpau.so
 %{_libdir}/pkgconfig/vdpau.pc
 
 %files -n libvdpau_trace1
-%defattr(-,root,root)
 %doc README
 %{_libdir}/vdpau/libvdpau_trace.so.*
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 14 18:33:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add c5a8e7c6c8b4b36a0e4c9a4369404519262a3256.patch
+  e82dc4bdbb0db3ffa8c78275902738eb63aa5ca8.patch: upstream
+  patches to include tracing info for VP9 and HEVC
+
+-------------------------------------------------------------------
 Fri Jul 31 11:52:51 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_UsrEtc.patch
