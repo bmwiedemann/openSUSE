@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 16 21:39:13 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Move flaky tests to test_failok
+- Fix hpc for multiflavors (needs gh#openSUSE/hpc#3) 
+
+-------------------------------------------------------------------
 Fri Jan  8 09:51:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.19.5

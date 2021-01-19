@@ -207,9 +207,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %if %{with hpc}
 
-%define hpc_module_pname python${py_ver/.*/}-numpy
+%define hpc_module_pname ${python_flavor}-numpy
 %{python_expand # Don't package testsuite
-py_ver=%{$python_version}
+python_flavor=`cat _current_flavor`
 sitesearch_path=`$python -c "import sysconfig as s; print(s.get_paths(vars={'platbase':'%{hpc_prefix}','base':'%{hpc_prefix}'}).get('platlib'))"`
 rm -rf %{buildroot}${sitesearch_path}/numpy/{,core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
 %hpc_write_modules_files
@@ -254,16 +254,19 @@ EOF
 export PATH="%{buildroot}%{_bindir}:$PATH"
 mkdir testing
 pushd testing
+# flaky tests
+test_failok+=" or test_structured_object_indexing"
+test_failok+=" or test_structured_object_item_setting"
 # boo#1148173 gh#numpy/numpy#14438
 %ifarch ppc64 ppc64le
-test_failok="test_generalized_sq"
+test_failok+=" or test_generalized_sq"
 %endif
 %{python_expand # for all python3 flavors
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 testcall="pytest-%{$python_bin_suffix} -n auto %{buildroot}%{$python_sitearch}/numpy"
-[ -n "$test_failok" ] && ${testcall} -k "$test_failok" || true
-${testcall} ${test_failok:+-k "not ($test_failok)"}
+[ -n "$test_failok" ] && ${testcall} -k "${test_failok:4}" || true
+${testcall} ${test_failok:+-k "not (${test_failok:4})"}
 rm -Rf %{buildroot}%{$python_sitearch}/numpy/.pytest_cache
 }
 popd
@@ -292,6 +295,7 @@ popd
 %exclude %{python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
 %exclude %{python_sitearch}/numpy/f2py/src/
 %exclude %{python_sitearch}/numpy/core/lib/libnpymath.a
+%exclude %{python_sitearch}/numpy/random/lib/libnpyrandom.a
 %else
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 %{p_bindir}/f2py
@@ -303,12 +307,13 @@ popd
 %license %{p_python_sitearch}/numpy/LICENSE.txt
 %exclude %{p_python_sitearch}/numpy/core/include/
 %exclude %{p_python_sitearch}/numpy/core/lib/libnpymath.a
+%exclude %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
 %exclude %{p_python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
 %exclude %{p_python_sitearch}/numpy/f2py/src/
 %endif
 
 %if %{with hpc}
-%define hpc_module_pname python%(a=%{hpc_python_version}; echo -n ${a/.*/})-numpy
+%define hpc_module_pname %{python_flavor}-numpy
 %{hpc_modules_files}
 %{hpc_dirs}
 %dir %{hpc_bindir}
@@ -323,9 +328,11 @@ popd
 %{python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
 %{python_sitearch}/numpy/f2py/src/
 %{python_sitearch}/numpy/core/lib/libnpymath.a
+%{python_sitearch}/numpy/random/lib/libnpyrandom.a
 %else
 %{p_python_sitearch}/numpy/core/include/
 %{p_python_sitearch}/numpy/core/lib/libnpymath.a
+%{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
 %{p_python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
 %{p_python_sitearch}/numpy/f2py/src/
 %endif
