@@ -352,4 +352,12 @@
     <comment>Update to database version 20201015</comment>
     <requestid>844379</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>315b22af36cf15b1a30d953c43abbc3b</srcmd5>
+    <version>20201218</version>
+    <time>1611068327</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20201218</comment>
+    <requestid>863176</requestid>
+  </revision>
 </revisionlist>

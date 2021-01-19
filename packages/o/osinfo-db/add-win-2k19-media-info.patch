@@ -1,11 +1,11 @@
-Index: osinfo-db-20200804/os/microsoft.com/win-2k19.xml
+Index: osinfo-db-20201218/os/microsoft.com/win-2k19.xml
 ===================================================================
---- osinfo-db-20200804.orig/os/microsoft.com/win-2k19.xml
-+++ osinfo-db-20200804/os/microsoft.com/win-2k19.xml
-@@ -30,6 +30,22 @@
-     <derives-from id="http://microsoft.com/win/2k16"/>
+--- osinfo-db-20201218.orig/os/microsoft.com/win-2k19.xml
++++ osinfo-db-20201218/os/microsoft.com/win-2k19.xml
+@@ -31,6 +31,22 @@
      <upgrades id="http://microsoft.com/win/2k16"/>
-     <release-date>2018-10-02</release-date>
+     <release-date>2018-11-13</release-date>
+     <eol-date>2029-01-09</eol-date>
 +    <media arch="x86_64">
 +      <variant id="standard"/>
 +      <iso>
