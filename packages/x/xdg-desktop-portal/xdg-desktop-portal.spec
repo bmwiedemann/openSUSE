@@ -27,6 +27,7 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(flatpak)
 BuildRequires:  pkgconfig(fontconfig)
@@ -84,6 +85,12 @@ export LANG=C.UTF-8
 %make_install
 %find_lang %{name}
 
+%post
+%systemd_user_post %{name}.service xdg-document-portal.service xdg-permission-store.service
+
+%preun
+%systemd_user_preun %{name}.service xdg-document-portal.service xdg-permission-store.service
+
 %files
 %license COPYING
 %dir %{_datadir}/dbus-1
@@ -95,11 +102,11 @@ export LANG=C.UTF-8
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Documents.service
 %{_datadir}/doc/xdg-desktop-portal/
 %{_libexecdir}/xdg-desktop-portal
-%{_prefix}/lib/systemd/user/xdg-document-portal.service
-%{_prefix}/lib/systemd/user/xdg-permission-store.service
 %{_libexecdir}/xdg-document-portal
 %{_libexecdir}/xdg-permission-store
 %{_userunitdir}/xdg-desktop-portal.service
+%{_userunitdir}/xdg-document-portal.service
+%{_userunitdir}/xdg-permission-store.service
 
 %files devel
 %{_datadir}/pkgconfig/xdg-desktop-portal.pc

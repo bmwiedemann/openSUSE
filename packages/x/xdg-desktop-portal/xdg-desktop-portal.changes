@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 14 10:49:29 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure systemd rpm macros are called at install/uninstall times
+  for systemd user services.
+- Add BuildRequires on systemd-rpm-macros.
+
+-------------------------------------------------------------------
 Thu Jan  7 20:11:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.0:

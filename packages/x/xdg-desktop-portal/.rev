@@ -172,4 +172,14 @@
     <comment></comment>
     <requestid>861561</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2e3bb739d06fc3cf1363761a072d6049</srcmd5>
+    <version>1.8.0</version>
+    <time>1611068315</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure systemd rpm macros are called at install/uninstall times
+  for systemd user services.
+- Add BuildRequires on systemd-rpm-macros. (forwarded request 863082 from fcrozat)</comment>
+    <requestid>863168</requestid>
+  </revision>
 </revisionlist>
