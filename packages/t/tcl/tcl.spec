@@ -1,7 +1,7 @@
 #
 # spec file for package tcl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           tcl
 URL:            http://www.tcl.tk
-Version:        8.6.10
+Version:        8.6.11
 Release:        0
 %define         rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
@@ -37,7 +37,7 @@ Obsoletes:      tcl-64bit
 %endif
 #
 PreReq:         /bin/rm
-Source0:        ftp://ftp.tcl.tk/pub/tcl/tcl8_6/%{name}%{version}%{rrc}-src.tar.gz
+Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-src.tar.gz
 Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
@@ -83,17 +83,17 @@ the Tcl language itself.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%define scriptdir %_libdir/tcl
+export TCL_PACKAGE_PATH="%scriptdir %_datadir/tcl"
+export TCL_LIBRARY="%scriptdir/tcl%TCL_MINOR"
 cd unix
 autoconf
 %configure \
 	--enable-man-symlinks \
 	--enable-man-compression=gzip \
 	--without-tzdata
-%define scriptdir %_libdir/tcl
 make %{?_smp_mflags} \
-        PACKAGE_DIR=%_libdir/tcl \
-	TCL_LIBRARY="%scriptdir/tcl%TCL_MINOR" \
-	TCL_PACKAGE_PATH="%_libdir/tcl %_datadir/tcl"
+	PACKAGE_DIR="%scriptdir"
 
 %check
 cd unix
@@ -146,8 +146,7 @@ exit 0
 
 %install
 make -C unix install install-private-headers \
-	INSTALL_ROOT=%buildroot \
-	TCL_LIBRARY="%scriptdir/tcl%TCL_MINOR" 
+	INSTALL_ROOT=%buildroot
 rm -f %buildroot%scriptdir/tcl%TCL_MINOR/ldAix
 ln -sf tclsh%TCL_MINOR %buildroot%_prefix/bin/tclsh
 ln -sf tclsh.1.gz %buildroot%_mandir/man1/tclsh%TCL_MINOR.1.gz

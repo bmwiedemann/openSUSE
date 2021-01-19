@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 14 10:21:47 UTC 2021 - Reinhard Max <max@suse.com>
+
+- tclConfig.sh: Fix path names and avoid braces in TCL_PACKAGE_PATH
+- Set TCL_LIBRARY at configure time for better consistency.
+
+-------------------------------------------------------------------
+Mon Jan  4 13:54:08 UTC 2021 - Reinhard Max <max@suse.com>
+
+- New version: 8.6.11:
+  * Add tcltest::(Setup|Eval|Cleanup|)Test
+  * Update to Unicode-13
+  * Add 3 libtommath functions to stub table
+  * Many more bug fixes
+- Potentially incompatible changes:
+  * (bug)[ffeb20] [binary decode base64] ignore invalid chars
+  * (bug)[b8e82d] some -maxlen values break uuencode round trip
+  * (bug)[085913] Tcl_DStringAppendElement # quoting precision
+  * (bug)[81242a] revised documentation for Tcl_UtfAtIndex()
+  * (bug)[ed2980] Tcl_UtfToUniChar reads > TCL_UTF_MAX bytes
+  * (bug)[a1bd37] [clock scan] new ISO format (clock-34.(19-24))
+  * (bug)[501974] [clock scan] +time zone (clock-34.(53-68))
+  * (new) force -eofchar \032 when evaluating library scripts
+  * (new)[48898a] improve error message consistency
+  * (new) revised case of module names
+
+-------------------------------------------------------------------
 Fri Nov 20 08:23:18 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Add a manpage symlink for tclsh8.6.

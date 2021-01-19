@@ -613,4 +613,30 @@ sqlite3 patch I will submit in a moment.</comment>
     <comment>- Add a manpage symlink for tclsh8.6.</comment>
     <requestid>849577</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>9b4f07d2f8fe5b06025533597aef8ad6</srcmd5>
+    <version>8.6.11</version>
+    <time>1611068301</time>
+    <user>dimstar_suse</user>
+    <comment>- tclConfig.sh: Fix path names and avoid braces in TCL_PACKAGE_PATH
+- Set TCL_LIBRARY at configure time for better consistency.
+
+- New version: 8.6.11:
+  * Add tcltest::(Setup|Eval|Cleanup|)Test
+  * Update to Unicode-13
+  * Add 3 libtommath functions to stub table
+  * Many more bug fixes
+- Potentially incompatible changes:
+  * (bug)[ffeb20] [binary decode base64] ignore invalid chars
+  * (bug)[b8e82d] some -maxlen values break uuencode round trip
+  * (bug)[085913] Tcl_DStringAppendElement # quoting precision
+  * (bug)[81242a] revised documentation for Tcl_UtfAtIndex()
+  * (bug)[ed2980] Tcl_UtfToUniChar reads &gt; TCL_UTF_MAX bytes
+  * (bug)[a1bd37] [clock scan] new ISO format (clock-34.(19-24))
+  * (bug)[501974] [clock scan] +time zone (clock-34.(53-68))
+  * (new) force -eofchar \032 when evaluating library scripts
+  * (new)[48898a] improve error message consistency
+  * (new) revised case of module names</comment>
+    <requestid>863091</requestid>
+  </revision>
 </revisionlist>
