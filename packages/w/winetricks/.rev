@@ -80,4 +80,12 @@
   - lots of fixes (forwarded request 853504 from msmeissn)</comment>
     <requestid>854589</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d41c2b979d7f27872714155d461923fb</srcmd5>
+    <version>20201206</version>
+    <time>1611068540</time>
+    <user>dimstar_suse</user>
+    <comment>Add zenity installation recommendation for UI support (forwarded request 864122 from okurz)</comment>
+    <requestid>864125</requestid>
+  </revision>
 </revisionlist>
