@@ -396,4 +396,17 @@
   * sysdig-32bit.patch</comment>
     <requestid>838718</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>832694c0308701ba465b135159694fca</srcmd5>
+    <version>0.27.1</version>
+    <time>1611068533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.27.1:
+  * Support minimal build (no kubernetes, kernel module, eBPF, or container support): -DMINIMAL_BUILD=On
+  * Improve startup times on systems with lots of containers [#1676]
+  * Fix paths reported in *at events [#1680, #1695]
+  * Build fixes for eBPF with recent kernel [#1690]
+  * Fix Lua out of memory errors with large captures in Sysdig Inspect [#1694]</comment>
+    <requestid>864096</requestid>
+  </revision>
 </revisionlist>

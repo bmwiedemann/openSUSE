@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 18 14:11:51 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.27.1:
+  * Support minimal build (no kubernetes, kernel module, eBPF, or container support): -DMINIMAL_BUILD=On
+  * Improve startup times on systems with lots of containers [#1676]
+  * Fix paths reported in *at events [#1680, #1695]
+  * Build fixes for eBPF with recent kernel [#1690]
+  * Fix Lua out of memory errors with large captures in Sysdig Inspect [#1694]
+
+-------------------------------------------------------------------
 Wed Sep 30 08:57:27 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.27.0:
