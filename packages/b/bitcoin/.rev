@@ -347,4 +347,13 @@
     <comment></comment>
     <requestid>825248</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3392ba342b41f108381ef467d5255db1</srcmd5>
+    <version>0.21.0</version>
+    <time>1611068599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.0:
+  * For full details see release-notes-0.21.0.md</comment>
+    <requestid>864261</requestid>
+  </revision>
 </revisionlist>

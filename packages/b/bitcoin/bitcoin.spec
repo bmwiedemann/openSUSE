@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %define consensus 1
 %define is_base 1
 Name:           bitcoin
-Version:        0.20.1
+Version:        0.21.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
@@ -40,6 +40,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  java-devel
 BuildRequires:  lcov
+BuildRequires:  libboost_filesystem-devel >= 1.58.0
+BuildRequires:  libboost_program_options-devel >= 1.58.0
+BuildRequires:  libboost_system-devel >= 1.58.0
+BuildRequires:  libboost_test-devel >= 1.58.0
+BuildRequires:  libboost_thread-devel >= 1.58.0
 BuildRequires:  libdb-4_8-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libqt5-qtbase-devel
@@ -56,15 +61,6 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(python3)
 %{?systemd_requires}
-%if 0%{?suse_version} > 1315
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_test-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -169,7 +165,7 @@ several GB of space, slowly growing.
 This package provides automated tests for %{name}-qt5 and %{name}d.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
@@ -198,10 +194,10 @@ export LDFLAGS="-pie"
   --without-libs \
 %endif
   --disable-hardening
-make %{?_smp_mflags} V=1
+%make_build
 
 %check
-make %{?_smp_mflags} LC_ALL=C.UTF-8 check
+%make_build LC_ALL=C.UTF-8 check
 
 %install
 %make_install
