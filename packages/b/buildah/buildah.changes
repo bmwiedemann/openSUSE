@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 08 11:52:40 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.17.1:
+  * tag v1.17.1
+  * copier.Get(): ignore ENOTSUP/ENOSYS when listing xattrs
+  * copier: try to force loading of nsswitch modules before chroot()
+  * ADD: handle --chown on URLs
+  * imagebuildah: cache should take image format into account
+  * Update CI configuration for the release-1.17 branch
+
+-------------------------------------------------------------------
 Mon Nov 30 13:24:14 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added cni to requires as its needed for buildah to run 
