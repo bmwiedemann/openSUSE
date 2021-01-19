@@ -1,7 +1,7 @@
 #
 # spec file for package iptables
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iptables
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        GPL-2.0-only AND Artistic-2.0

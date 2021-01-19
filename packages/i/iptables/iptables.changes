@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 15 22:34:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.7
+  * iptables-nft:
+  * Improved performance when matching on IP/MAC address prefixes
+    if the prefix is byte-aligned. In ideal cases, this doubles
+    packet processing performance.
+  * Dump user-defined chains in lexical order. This way ruleset
+    dumps become stable and easily comparable.
+  * Avoid pointless table/chain creation. For instance,
+    `iptables-nft -L` no longer creates missing base-chains.
+
+-------------------------------------------------------------------
 Sun Nov  1 12:31:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.6
