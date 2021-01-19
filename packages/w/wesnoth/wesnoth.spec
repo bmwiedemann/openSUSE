@@ -1,7 +1,7 @@
 #
 # spec file for package wesnoth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define boost_min_version 1.56
 Name:           wesnoth
-Version:        1.15.8
+Version:        1.15.9
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        GPL-2.0-or-later AND EPL-1.0
 Group:          Amusements/Games/Strategy/Turn Based
-URL:            http://www.wesnoth.org
+URL:            https://www.wesnoth.org/
 Source:         https://github.com/wesnoth/wesnoth/archive/%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  dejavu
@@ -32,6 +32,7 @@ BuildRequires:  fribidi-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_chrono-devel >= %{boost_min_version}
+BuildRequires:  libboost_coroutine-devel >= %{boost_min_version}
 BuildRequires:  libboost_date_time-devel >= %{boost_min_version}
 BuildRequires:  libboost_filesystem-devel >= %{boost_min_version}
 BuildRequires:  libboost_iostreams-devel >= %{boost_min_version}
