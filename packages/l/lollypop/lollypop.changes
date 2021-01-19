@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 18 17:43:36 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.14:
+  * Fix an issue with HiDPI (glgo#World/lollypop#2665).
+- Changes from version 1.4.13:
+  * Fix a crash with per-track artwork (glgo#World/lollypop#2684).
+
+-------------------------------------------------------------------
 Sun Jan 17 19:51:31 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.12:
