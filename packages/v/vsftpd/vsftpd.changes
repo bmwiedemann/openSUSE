@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  3 11:20:20 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add seccomp-fixes.patch to allow getdents64 syscall in seccomp
+  sandbox, fixes bsc#1179553
+  Also in the same patch, fix the architecture offset from 4 to 5,
+  this change was documented in https://lore.kernel.org/patchwork/patch/554803/
+
+-------------------------------------------------------------------
 Fri Nov 13 09:49:06 AM UTC 2020 - psimons@suse.com
 
 - Apply "0001-Introduce-TLSv1.1-and-TLSv1.2-options.patch" and

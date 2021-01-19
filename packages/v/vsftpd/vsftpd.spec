@@ -87,6 +87,8 @@ Patch32:        vsftpd-support-dsa-only-setups.patch
 Patch33:        vsftpd-avoid-bogus-ssl-write.patch
 Patch34:        0001-Introduce-TLSv1.1-and-TLSv1.2-options.patch
 Patch35:        0001-When-handling-FEAT-command-check-ssl_tlsv1_1-and-ssl.patch
+# PATCH-FIX-UPSTREAM https://bugzilla.suse.com/show_bug.cgi?id=1179553
+Patch36:        seccomp-fixes.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  pam-devel
@@ -154,6 +156,7 @@ tests.
 %patch33 -p1
 %patch34 -p1
 %patch35 -p1
+%patch36 -p1
 
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP

@@ -1,0 +1,51 @@
+Index: vsftpd-3.0.3/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.3.orig/seccompsandbox.c
++++ vsftpd-3.0.3/seccompsandbox.c
+@@ -18,6 +18,7 @@
+ #include "utility.h"
+ 
+ #include <errno.h>
++#include <stdio.h>
+ 
+ #include <netinet/in.h>
+ #include <netinet/tcp.h>
+@@ -60,6 +61,7 @@
+ 
+ #define kMaxSyscalls 100
+ 
++//#define DEBUG_SIGSYS
+ #ifdef DEBUG_SIGSYS
+ 
+ #include <signal.h>
+@@ -68,7 +70,10 @@
+ void
+ handle_sigsys(int sig)
+ {
+-  (void) sig;
++  char str[21];
++  snprintf(str, 21, "Rejected syscall %d", sig);
++
++  die(str);
+ }
+ #endif
+ 
+@@ -443,6 +448,7 @@ seccomp_sandbox_setup_postlogin(const st
+   allow_nr(__NR_getcwd);
+   allow_nr(__NR_chdir);
+   allow_nr(__NR_getdents);
++  allow_nr(__NR_getdents64);
+   /* Misc */
+   allow_nr(__NR_umask);
+ 
+@@ -579,8 +585,8 @@ seccomp_sandbox_lockdown()
+   p_filter->code = BPF_LD+BPF_W+BPF_ABS;
+   p_filter->jt = 0;
+   p_filter->jf = 0;
+-  /* Offset 4 for syscall architecture. */
+-  p_filter->k = 4;
++  /* Offset 5 for syscall architecture. */
++  p_filter->k = 5;
+   p_filter++;
+   p_filter->code = BPF_JMP+BPF_JEQ+BPF_K;
+   p_filter->jt = 1;
