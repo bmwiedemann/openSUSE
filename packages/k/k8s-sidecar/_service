@@ -3,8 +3,8 @@
     <param name="url">https://github.com/kiwigrid/k8s-sidecar.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.1.75</param>
-    <param name="revision">0.1.75</param>
+    <param name="versionformat">0.1.144</param>
+    <param name="revision">0.1.144</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="disabled"/>

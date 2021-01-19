@@ -1,7 +1,7 @@
 #
 # spec file for package k8s-sidecar
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,18 @@
 
 %define import_path github.com/kiwigrid/k8s-sidecar
 
-Name:               k8s-sidecar
-Version:            0.1.75
-Release:            0
-Summary:            Collect kubernetes cluster configmaps and store it
-License:            MIT
-Group:              Development/Languages/Python
-URL:                https://github.com/kiwigrid/k8s-sidecar
-Source0:            %{name}-%{version}.tar.gz
-BuildArchitectures: noarch
-Requires:           python3
-Requires:           python3-kubernetes
-Requires:           python3-requests
+Name:           k8s-sidecar
+Version:        0.1.144
+Release:        0
+Summary:        Collect kubernetes cluster configmaps and store it
+License:        MIT
+Group:          Development/Languages/Python
+URL:            https://github.com/kiwigrid/k8s-sidecar
+Source0:        %{name}-%{version}.tar.gz
+BuildArch:      noarch
+Requires:       python3
+Requires:       python3-kubernetes
+Requires:       python3-requests
 
 %description
 Collect kubernetes cluster configmaps with a specified label and store the included files in an local folder.

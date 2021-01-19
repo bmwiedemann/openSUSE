@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 08 12:39:24 UTC 2021 - rbrown@suse.com
+
+- Update to version 0.1.144:
+  * Add support for configmaps with binary data (#96)
+  * #98: only perform request if files where changed (#100)
+  * update Kubernetes library to v12.0.0 (#97)
+  * Improve versioning and tagging releases (#95)
+  * add kubeconfig
+  * Update libs (#90)
+  * Fix custom SLEEP_TIME
+  * Add multi-arch builds with docker buildx (#86)
+
+-------------------------------------------------------------------
 Mon Jun 29 12:17:30 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add _service file 
