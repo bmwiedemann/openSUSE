@@ -679,4 +679,15 @@ Note this warning (not new), should we care?
     <comment></comment>
     <requestid>861559</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>13eb81eb33dbefc19a176d5d0c60dafb</srcmd5>
+    <version>1.4.5</version>
+    <time>1611068317</time>
+    <user>dimstar_suse</user>
+    <comment>- allow access to /usr/local/share/color in AppArmor profile (boo#1180898)
+
+
+Note: This was reported for Leap, therefore please consider to backport this profile update to Leap. (I'll leave the bugreport open.) (forwarded request 863083 from cboltz)</comment>
+    <requestid>863169</requestid>
+  </revision>
 </revisionlist>

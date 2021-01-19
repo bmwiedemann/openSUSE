@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 14 13:00:13 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- allow access to /usr/local/share/color in AppArmor profile (boo#1180898)
+
+-------------------------------------------------------------------
 Thu Jan  7 17:30:04 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.5:

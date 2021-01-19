@@ -37,6 +37,8 @@
   /usr/bin/spotread ix, # inherit colord profile, needed to support USB colorimeter not natively supported by colord
   /usr/lib/colord mr,
   /usr/local/share/mime/** r,
+  /usr/local/share/color/**/ r,
+  /usr/local/share/color/icc/** r,
   /usr/share/color/**/ r,
   /usr/share/color/icc/** r,
   /usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.Device.xml r,
