@@ -1,7 +1,7 @@
 #
 # spec file for package kdiagram
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdiagram
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Powerful libraries (KChart, KGantt) for creating business diagrams
 License:        GPL-2.0-or-later
@@ -27,11 +27,11 @@ URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
-BuildRequires:  libqt5-linguist-devel >= 5.6.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.6.0
-BuildRequires:  cmake(Qt5Svg) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  libqt5-linguist-devel >= 5.12.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.12.0
+BuildRequires:  cmake(Qt5Svg) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 
 %description
 %{summary}
@@ -63,10 +63,10 @@ Summary:        Development package for the KDiagram libraries
 Group:          System/Libraries/KDE
 Requires:       libKChart2 = %{version}
 Requires:       libKGantt2 = %{version}
-Requires:       cmake(Qt5Core) >= 5.6.0
-Requires:       cmake(Qt5PrintSupport) >= 5.6.0
-Requires:       cmake(Qt5Svg) >= 5.6.0
-Requires:       cmake(Qt5Widgets) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.12.0
+Requires:       cmake(Qt5PrintSupport) >= 5.12.0
+Requires:       cmake(Qt5Svg) >= 5.12.0
+Requires:       cmake(Qt5Widgets) >= 5.12.0
 
 %description devel
 Development package for the KDiagram libraries

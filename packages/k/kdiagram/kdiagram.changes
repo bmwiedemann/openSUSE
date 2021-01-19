@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 15 14:53:58 UTC 2021 - wbauer@tmo.at
+
+- Update to 2.8.0
+  * KGantt:
+    + Fix Bug 430452 - Printing with row labels on multiple pages
+      does not work well (kde#430452)
+    + Add support for single page printout
+    + Add support for printing on multiple pages, both horizontally
+      and vertical
+    + Make it possible to use a printer friendly palette to allow
+      for printing on white paper when using a dark theme
+      (kde#426240)
+    + Add 'zoom' of datetime header using mouse
+
+-------------------------------------------------------------------
 Tue Apr 21 07:24:44 UTC 2020 - wbauer@tmo.at
 
 - Update to 2.7.0
