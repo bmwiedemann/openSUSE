@@ -36,8 +36,7 @@ echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 #======================================
 # prepare for setting root pw, timezone
 #--------------------------------------
-echo ** "reset machine settings"
-sed -i 's/^root:[^:]*:/root:*:/' /etc/shadow
+echo "** reset machine settings"
 rm -f /etc/machine-id \
       /var/lib/zypp/AnonymousUniqueId \
       /var/lib/systemd/random-seed \
@@ -93,7 +92,7 @@ fi
 # Enable chrony if installed
 #-------------------------------------
 if [ -f /etc/chrony.conf ]; then
-	suseInsertService chronyd
+	systemctl enable chronyd
 fi
 
 # The %post script can't edit /etc/fstab sys due to https://github.com/OSInside/kiwi/issues/945
@@ -172,8 +171,3 @@ EOF
         chmod 0600 /home/vagrant/.ssh/authorized_keys
         chown -R vagrant /home/vagrant
 fi
-
-# Not compatible with set -e
-baseCleanMount || true
-
-exit 0

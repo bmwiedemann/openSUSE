@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- OBS-Profiles: @BUILD_FLAVOR@ -->
-<image schemaversion="6.7" name="openSUSE-MicroOS" displayname="openSUSE MicroOS">
+<image schemaversion="7.2" name="openSUSE-MicroOS" displayname="openSUSE MicroOS">
     <description type="system">
         <author>openSUSE Project</author>
         <contact>opensuse-factory@opensuse.org</contact>
@@ -133,8 +133,6 @@
             image="vmx"
             filesystem="btrfs"
             format="qcow2"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
             bootpartition="false"
@@ -145,6 +143,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -168,8 +167,6 @@
             image="vmx"
             filesystem="btrfs"
             format="qcow2"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
             bootpartition="false"
@@ -180,6 +177,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -202,8 +200,6 @@
             image="vmx"
             filesystem="btrfs"
             format="vmdk"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=vmware"
             bootpartition="false"
@@ -214,6 +210,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -238,8 +235,6 @@
             image="vmx"
             filesystem="btrfs"
             format="qcow2"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=openstack"
             bootpartition="false"
@@ -250,6 +245,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -273,9 +269,6 @@
             image="vmx"
             filesystem="btrfs"
             format="vhdx"
-            boottimeout="10"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
@@ -286,6 +279,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" timeout="10" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -310,8 +304,6 @@
             image="vmx"
             filesystem="btrfs"
             format="vdi"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=virtualbox"
             bootpartition="false"
@@ -322,6 +314,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -346,7 +339,6 @@
             initrd_system="dracut"
             filesystem="btrfs"
             fsmountoptions="noatime"
-            bootloader="grub2"
             firmware="efi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200n8 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
@@ -357,6 +349,7 @@
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
         >
+            <bootloader name="grub2" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -380,8 +373,6 @@
             initrd_system="dracut"
             filesystem="btrfs"
             fsmountoptions="noatime,compress=lzo"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="efi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200n8 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
@@ -392,6 +383,7 @@
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -415,8 +407,6 @@
             initrd_system="dracut"
             filesystem="btrfs"
             fsmountoptions="noatime,compress=lzo"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="efi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyAMA0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
@@ -427,6 +417,7 @@
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -450,7 +441,6 @@
             initrd_system="dracut"
             filesystem="btrfs"
             fsmountoptions="noatime,compress=lzo"
-            bootloader="grub2"
             firmware="efi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200n8 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
@@ -462,6 +452,7 @@
             btrfs_quota_groups="false"
             disk_start_sector="32768"
         >
+            <bootloader name="grub2"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -484,8 +475,6 @@
             image="vmx"
             filesystem="btrfs"
             format="vagrant"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
@@ -496,6 +485,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -520,8 +510,6 @@
             image="vmx"
             filesystem="btrfs"
             format="vagrant"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
@@ -532,6 +520,7 @@
             btrfs_quota_groups="true"
             spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -555,8 +544,6 @@
         <type
             image="oem"
             filesystem="btrfs"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
             firmware="uefi"
             initrd_system="dracut"
             installiso="true"
@@ -568,6 +555,7 @@
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
         >
+            <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>

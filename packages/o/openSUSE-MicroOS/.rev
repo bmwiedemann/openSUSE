@@ -384,4 +384,13 @@
     <comment></comment>
     <requestid>863060</requestid>
   </revision>
+  <revision rev="38" vrev="38">
+    <srcmd5>6cec108455dd5c0e4444cc0afac7c18a</srcmd5>
+    <version>16.0.0</version>
+    <time>1611163758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update kiwi schemaversion to 7.2
+- Some cleanup of config.sh</comment>
+    <requestid>865024</requestid>
+  </revision>
 </revisionlist>
