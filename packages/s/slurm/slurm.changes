@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Jan 20 10:13:23 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to 20.11.03
+- This release includes a major functional change to how job step launch is 
+  handled compared to the previous 20.11 releases. This affects srun as 
+  well as MPI stacks - such as Open MPI - which may use srun internally as 
+  part of the process launch.
+  One of the changes made in the Slurm 20.11 release was to the semantics 
+  for job steps launched through the 'srun' command. This also 
+  inadvertently impacts many MPI releases that use srun underneath their 
+  own mpiexec/mpirun command.
+  For 20.11.{0,1,2} releases, the default behavior for srun was changed  
+  such that each step was allocated exactly what was requested by the 
+  options given to srun, and did not have access to all resources assigned 
+  to the job on the node by default. This change was equivalent to Slurm 
+  setting the --exclusive option by default on all job steps. Job steps 
+  desiring all resources on the node needed to explicitly request them 
+  through the new '--whole' option.
+  In the 20.11.3 release, we have reverted to the 20.02 and older behavior 
+  of assigning all resources on a node to the job step by default.
+  This reversion is a major behavioral change which we would not generally 
+  do on a maintenance release, but is being done in the interest of 
+  restoring compatibility with the large number of existing Open MPI (and 
+  other MPI flavors) and job scripts that exist in production, and to 
+  remove what has proven to be a significant hurdle in moving to the new 
+  release.
+  Please note that one change to step launch remains - by default, in 
+  20.11 steps are no longer permitted to overlap on the resources they 
+  have been assigned. If that behavior is desired, all steps must 
+  explicitly opt-in through the newly added '--overlap' option.
+  Further details and a full explanation of the issue can be found at:
+  https://bugs.schedmd.com/show_bug.cgi?id=10383#c63
+- Other changes from 20.11.03
+  * Fix segfault when parsing bad "#SBATCH hetjob" directive.
+  * Allow countless gpu:<typenode GRES specifications in slurm.conf.
+  * PMIx - Don't set UCX_MEM_MMAP_RELOC for older version of UCX (pre 1.5).
+  * Don't green-light any GPU validation when core conversion fails.
+  * Allow updates to a reservation in the database that starts in the future.
+  * Better check/handling of primary key collision in reservation table.
+  * Improve reported error and logging in _build_node_list().
+  * Fix uninitialized variable in _rpc_file_bcast() which could lead to an
+    incorrect error return from sbcast / srun --bcast.
+  * mpi/cray_shasta - fix use-after-free on error in _multi_prog_parse().
+  * Cray - Handle setting correct prefix for cpuset cgroup with respects to
+    expected_usage_in_bytes.  This fixes Cray's OOM killer.
+  * mpi/pmix: Fix PMIx_Abort support.
+  * Don't reject jobs allocating more cores than tasks with MaxMemPerCPU.
+  * Fix false error message complaining about oversubscribe in cons_tres.
+  * scrontab - fix parsing of empty lines.
+  * Fix regression causing spank_process_option errors to be ignored.
+  * Avoid making multiple interactive steps.
+  * Fix corner case issues where step creation should fail.
+  * Fix job rejection when --gres is less than --gpus.
+  * Fix regression causing spank prolog/epilog not to be called unless the
+    spank plugin was loaded in slurmd context.
+  * Fix regression preventing SLURM_HINT=nomultithread from being used
+    to set defaults for salloc->srun, sbatch->srun sequence.
+  * Reject job credential if non-superuser sets the LAUNCH_NO_ALLOC flag.
+  * Make it so srun --no-allocate works again.
+  * jobacct_gather/linux - Don't count memory on tasks that have already
+    finished.
+  * Fix 19.05/20.02 batch steps talking with a 20.11 slurmctld.
+  * jobacct_gather/common - Do not process jobacct's with same taskid when
+    calling prec_extra.
+  * Cleanup all tracked jobacct tasks when extern step child process finishes.
+  * slurmrestd/dbv0.0.36 - Correct structure of dbv0.0.36_tres_list.
+  * Fix regression causing task/affinity and task/cgroup to be out of sync when
+    configured ThreadsPerCore is different than the physical threads per core.
+  * Fix situation when --gpus is given but not max nodes (-N1-1) in a job
+    allocation.
+  * Interactive step - ignore cpu bind and mem bind options, and do not set
+    the associated environment variables which lead to unexpected behavior
+    from srun commands launched within the interactive step.
+  * Handle exit code from pipe when using UCX with PMIx.
+
+-------------------------------------------------------------------
 Fri Jan  8 13:27:02 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix fallout introduced by:

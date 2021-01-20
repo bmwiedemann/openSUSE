@@ -700,4 +700,12 @@
   for older Leap/SLE versions. (forwarded request 861776 from eeich)</comment>
     <requestid>861777</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f3a8eb03e950efd3cdf616530a65a629</srcmd5>
+    <version>20.11.3</version>
+    <time>1611163755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865000</requestid>
+  </revision>
 </revisionlist>
