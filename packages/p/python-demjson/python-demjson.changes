@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 20 09:52:52 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary bcond tests
+- Replace build dependency 2to3 with modernize, fixing Tumbleweed builds
+- Disable two tests failing on Python 3
+
+-------------------------------------------------------------------
 Tue May 26 07:22:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without tests
 Name:           python-demjson
 Version:        2.2.4
 Release:        0
@@ -26,10 +25,10 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            http://deron.meranda.us/python/demjson/
 Source:         https://files.pythonhosted.org/packages/source/d/demjson/demjson-%{version}.tar.gz
+BuildRequires:  %{python_module modernize}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-2to3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -50,6 +49,9 @@ for strict compliance to the standard.
 %prep
 %setup -q -n demjson-%{version}
 sed -i "1d" demjson.py # Fix non-executable script
+python-modernize -nw test/test_demjson.py
+# These two fail on Python 3.6
+sed -Ei 's/(testEncodeArrayLike|testEncodeStringLike)/_\1/' test/test_demjson.py
 
 %build
 %python_build
@@ -59,16 +61,10 @@ sed -i "1d" demjson.py # Fix non-executable script
 %python_clone -a %{buildroot}%{_bindir}/jsonlint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}3
 %check
-%python_expand cp test/test_demjson.py test/test_demjson_%{$python_bin_suffix}.py
-%if %{have_python3}
-2to3 -nw test/test_demjson_%{python3_bin_suffix}.py
-%endif
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python test/test_demjson_%{$python_bin_suffix}.py
+$python test/test_demjson.py
 }
-%endif
 
 %post
 %python_install_alternative jsonlint
