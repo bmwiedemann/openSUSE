@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-type-equality
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@ Summary:        Data.Type.Equality compat package
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
 %description
 This library defines a propositional equality data type, shims
-'Data.Type.Equality" as well as possible for older GHCs (< 7.8).
+'Data.Type.Equality' as well as possible for older GHCs (< 7.8).
 
 ' data a :~: b where Refl :: a :~: a '
 
