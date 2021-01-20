@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 19 11:14:55 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.8:
+  * Fix a number of memory leak and locking issues detected by valgrind/helgrind.
+  * Improve performance of big playlist insert by rate-limiting events.
+  * Fix possible crash when started while mpd is not running.
+
+-------------------------------------------------------------------
 Thu Dec 31 14:38:34 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.7:
