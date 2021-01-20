@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Digest-CRC
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cpan_name Digest-CRC
 Name:           perl-Digest-CRC
-Version:        0.21
+Version:        0.22.2
 Release:        0
 #Upstream:  CRC algorithm code taken from "A PAINLESS GUIDE TO CRC ERROR DETECTION ALGORITHMS". the public domain.
-%define cpan_name Digest-CRC
 Summary:        Generic CRC functions
 License:        SUSE-Public-Domain
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Digest-CRC/
-Source0:        http://www.cpan.org/authors/id/O/OL/OLIMAUL/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/O/OL/OLIMAUL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -38,14 +36,14 @@ wrapper functions with the correct parameters for CRC-CCITT, CRC-16, CRC-32
 and CRC-64, as well as the CRC used in OpenPGP's ASCII-armored checksum.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-0.22
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -53,7 +51,6 @@ and CRC-64, as well as the CRC used in OpenPGP's ASCII-armored checksum.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
