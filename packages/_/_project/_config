@@ -1362,6 +1362,8 @@ Ignore: libqca2:gpg2
 Ignore: NetworkManager:wpa_supplicant
 Ignore: NetworkManager:dhcp-client
 Ignore: libgio-2_0-0:dbus-1-x11
+Ignore: libgio-2_0-0:dbus-1
+Prefer: libgio-2_0-0:dbus-1
 Ignore: weather-wallpaper:inkscape
 Ignore: libgamin-1-0:gamin-server
 Ignore: libfam0-gamin:gamin-server
