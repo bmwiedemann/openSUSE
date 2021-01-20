@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-half
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,23 @@
 %global pkg_name half
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3
+Version:        0.3.1
 Release:        0
 Summary:        Half-precision floating-point
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-test-framework-devel
+BuildRequires:  ghc-test-framework-quickcheck2-devel
 %endif
 
 %description
