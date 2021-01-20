@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 20 06:23:48 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.2.29
+  * Fixed latency computation error for FIR and FFT modes of the
+    filter.
+  * Optimize FIR and FFT equalizers to use fastconv_ routines
+    instead of FFT.
+  * Implemented SPM mode for Parameteric and Graphic Equalizer
+    plugin series.
+  * Fixed improper VST call handling for several calls.
+  * Several typo fixes in documentation
+    (contributed by Olivier Humbert).
+  * Fixed improper output MIDI event sorting for all plugins.
+  * Channels of spectrum analyzer are now synchronized.
+  * Fixed regression related to loading built-in file resources.
+  * Added extra button to hide/show equalizer section for Impulse
+    Responses and Impulse Reverb plugin series.
+  * Updated OBJ file parsing for support less strict file format.
+  * Fixed improper behaviour of File Open Dialog widget related 
+    to file name input.
+  * Art Delay plugin settings changed: by default multipliers are
+    now set to 1, BPM multiplier allows now to step with 
+    0.5 values allowing to set dotted notes.
+
+-------------------------------------------------------------------
 Tue Jan  5 15:15:37 UTC 2021 - pgajdos@suse.com
 
 - does not require php7-devel for build, php7 is enough
