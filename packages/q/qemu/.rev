@@ -2246,4 +2246,37 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
     <comment></comment>
     <requestid>860517</requestid>
   </revision>
+  <revision rev="191" vrev="3">
+    <srcmd5>5ac6c637d938d4caf85a2e672c8dea98</srcmd5>
+    <version>5.2.0</version>
+    <time>1611163372</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix qemu-testsuite issue where white space processing gets
+  handled differently under bash 5.1 (boo#1181054)
+  iotests-Fix-_send_qemu_cmd-with-bash-5.1.patch
+- Convert qemu-kvm from a script to a symlink. Using qemu-kvm to
+  invoke the QEMU emulator has been deprecated for some time,
+  but is still provided. It has as it's ancient origins a version
+  of QEMU which had KVM acceleration enabled by default, and then
+  recently, until now, it is a shell script which execs the QEMU
+  emulator, adding '-machine accel=kvm' to the beginning of the
+  list of command line options passed to the emulator.
+  This method collides with the now preferred method of specifying
+  acceleration options by using -accel. qemu-kvm is now changed to
+  simply be a symlink to the same QEMU binary which the prior
+  script exec'd. This new approach takes advantage of a built-in
+  QEMU feature where if QEMU is invoked using a program name ending
+  in 'kvm', KVM emulation is enabled. This approach is better in
+  that it is more compatible with any other command line option
+  that may be added for describing acceleration.
+  For those who have modified qemu-kvm to add additional command
+  line options, or take other actions in the context of the script
+  you will now need to create an alternate script &quot;emulator&quot; to
+  achieve the same result. Note that it's possible there may be
+  some very subtle behavioral difference in the switch from a
+  script to a symlink, but given that qemu-kvm is a deprecated
+  package, we're not going to worry about that.
+</comment>
+    <requestid>864182</requestid>
+  </revision>
 </revisionlist>

@@ -180,6 +180,7 @@ Patch00045:     Revert-roms-efirom-tests-uefi-test-tools.patch
 Patch00046:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
 Patch00047:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00048:     usb-Help-compiler-out-to-avoid-a-warning.patch
+Patch00049:     iotests-Fix-_send_qemu_cmd-with-bash-5.1.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -507,10 +508,10 @@ Obsoletes:      kvm < %{qemuver}
 %description kvm
 %{generic_qemu_description}
 
-This package simply provides a shell script wrapper for the QEMU program which
-does the actual machine emulation and virtualization for this architecture. The
-wrapper simply adds command-line parameters to ensure that the KVM accelerator
-is invoked. It provides no additional benefit, and is considered deprecated.
+This package provides a symlink to the main QEMU emulator used for KVM 
+virtualization. The symlink is named qemu-kvm, which causes the QEMU program 
+to enable the KVM accelerator, due to the name reference ending with 'kvm'. 
+This package is an artifact of the early origins of QEMU, and is deprecated.
 %endif
 
 %package lang
@@ -1037,6 +1038,7 @@ This package records qemu testsuite results and represents successful testing.
 %ifarch %arm %ix86
 %patch00048 -p1
 %endif
+%patch00049 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1643,22 +1645,14 @@ install -D -m 0644 %{SOURCE11} %{buildroot}%_docdir/qemu-ppc/supported.txt
 install -D -m 0644 %{SOURCE12} %{buildroot}%_docdir/qemu-x86/supported.txt
 install -D -m 0644 %{SOURCE13} %{buildroot}%_docdir/qemu-s390x/supported.txt
 %if %{legacy_qemu_kvm}
-cat > %{buildroot}%_bindir/qemu-kvm << 'EOF'
-#!/bin/sh
-
-%ifarch s390x
-exec %_bindir/qemu-system-s390x -machine accel=kvm "$@"
-%else
-exec %_bindir/qemu-system-x86_64 -machine accel=kvm "$@"
-%endif
-EOF
-chmod 755 %{buildroot}%_bindir/qemu-kvm
 install -D -m 0644 %{SOURCE5} %{buildroot}%_mandir/man1/qemu-kvm.1.gz
 install -d %{buildroot}%_docdir/qemu-kvm
 %ifarch s390x
+ln -s qemu-system-s390x %{buildroot}%_bindir/qemu-kvm
 ln -s ../qemu-s390x/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
 rst2html --exit-status=2 %{buildroot}%_docdir/qemu-s390x/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.html
 %else
+ln -s qemu-system-x86_64 %{buildroot}%_bindir/qemu-kvm
 ln -s ../qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
 rst2html --exit-status=2 %{buildroot}%_docdir/qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.html
 %endif
