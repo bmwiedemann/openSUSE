@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-logict
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name logict
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.0.3
+Version:        0.7.1.0
 Release:        0
 Summary:        A backtracking logic-programming monad
 License:        BSD-3-Clause
@@ -30,15 +30,15 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 %endif
 
 %description
-A continuation-based, backtracking, logic programming monad. An adaptation of
-the two-continuation implementation found in the paper "Backtracking,
-Interleaving, and Terminating Monad Transformers" available here:
-<http://okmij.org/ftp/papers/LogicT.pdf>.
+Adapted from the paper <http://okmij.org/ftp/papers/LogicT.pdf Backtracking,
+Interleaving, and Terminating Monad Transformers> by Oleg Kiselyov, Chung-chieh
+Shan, Daniel P. Friedman, Amr Sabry.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -72,6 +72,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc changelog.md
+%doc README.md changelog.md
 
 %changelog

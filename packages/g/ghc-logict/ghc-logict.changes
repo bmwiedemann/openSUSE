@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 18 09:08:22 UTC 2021 - psimons@suse.com
+
+- Update logict to version 0.7.1.0.
+  # 0.7.1.0
+
+  * Improve documentation.
+  * Relax superclasses of `MonadLogic` to `Monad` and `Alternative` instead of `MonadPlus`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
