@@ -464,7 +464,6 @@ unsorted:
   - alacritty-bash-completion 
   - alacritty-fish-completion 
   - alacritty-zsh-completion 
-  - albert 
   - aldusleaf-crimson-text-fonts 
   - alee-fonts 
   - alembic-devel 
@@ -3882,6 +3881,7 @@ unsorted:
   - galaxis 
   - galculator 
   - galculator-lang 
+  - galene 
   - gama 
   - gambas3 
   - gambas3-devel 
@@ -5802,7 +5802,7 @@ unsorted:
   - gnome-power-manager-lang: [i586] 
   - gnome-recipes 
   - gnome-recipes-lang 
-  - gnome-remote-desktop 
+  - gnome-remote-desktop: [i586] 
   - gnome-robots 
   - gnome-robots-lang 
   - gnome-screenshot: [i586] 
@@ -8313,6 +8313,8 @@ unsorted:
   - kqtquickcharts: [i586] 
   - kquickcharts: [i586] 
   - kquickcharts-devel 
+  - kquickimageeditor-devel 
+  - kquickimageeditor-imports 
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
@@ -13131,7 +13133,7 @@ unsorted:
   - libpoppler-qt5-1: [i586] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler105-32bit: [x86_64] 
+  - libpoppler106-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -17380,9 +17382,6 @@ unsorted:
   - nodejs10: [x86_64] 
   - nodejs10-devel 
   - nodejs10-docs 
-  - nodejs12: [x86_64] 
-  - nodejs12-devel: [x86_64] 
-  - nodejs12-docs: [x86_64] 
   - nodejs14-devel: [x86_64] 
   - nodejs14-docs: [x86_64] 
   - noisetorch 
@@ -17630,7 +17629,6 @@ unsorted:
   - npkg 
   - npm-default 
   - npm10: [x86_64] 
-  - npm12: [x86_64] 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -21411,7 +21409,6 @@ unsorted:
   - python3-PyLaTeX 
   - python3-PyMuPDF 
   - python3-PySDL2 
-  - python3-Pydap 
   - python3-QR-Code-generator 
   - python3-QtAwesome 
   - python3-Rivet 
@@ -21421,7 +21418,6 @@ unsorted:
   - python3-YODA 
   - python3-ZEO 
   - python3-ZODB 
-  - python3-adapt-parser 
   - python3-aexpect 
   - python3-agate 
   - python3-agate-dbf 
@@ -21649,7 +21645,6 @@ unsorted:
   - python3-barbicanclient 
   - python3-bashate 
   - python3-bcc 
-  - python3-beren 
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_75_0 
   - python3-botan 
@@ -21662,7 +21657,6 @@ unsorted:
   - python3-caffe-gnu-hpc 
   - python3-caffe_1_0-gnu-hpc 
   - python3-calmjs 
-  - python3-cangjie 
   - python3-capng 
   - python3-capstone 
   - python3-castellan 
@@ -21747,8 +21741,6 @@ unsorted:
   - python3-evemu 
   - python3-fastjet 
   - python3-featureflow: [i586] 
-  - python3-fedmsg 
-  - python3-fedmsg-tests 
   - python3-fife 
   - python3-fityk 
   - python3-flake8-comprehensions 
@@ -21788,7 +21780,6 @@ unsorted:
   - python3-gr-iqbal 
   - python3-graphene 
   - python3-graphene-django 
-  - python3-gsw 
   - python3-gv 
   - python3-gyp 
   - python3-h5netcdf 
@@ -21833,7 +21824,6 @@ unsorted:
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
-  - python3-kitchen 
   - python3-kiwi 
   - python3-kopano 
   - python3-labelImg 
@@ -21921,7 +21911,6 @@ unsorted:
   - python3-lldb8: [x86_64] 
   - python3-lldb9: [x86_64] 
   - python3-llfuse 
-  - python3-localzone 
   - python3-logreduce 
   - python3-loguru 
   - python3-louis: [i586] 
@@ -21945,8 +21934,6 @@ unsorted:
   - python3-mitmproxy 
   - python3-mizani 
   - python3-mlt 
-  - python3-moksha-common 
-  - python3-moksha-hub 
   - python3-monascaclient 
   - python3-monitoring-plugins-http_json 
   - python3-morecvutils 
@@ -22034,7 +22021,6 @@ unsorted:
   - python3-particle 
   - python3-pcp 
   - python3-pendulum 
-  - python3-photutils 
   - python3-piexif 
   - python3-pikepdf 
   - python3-pingparsing 
@@ -22066,7 +22052,6 @@ unsorted:
   - python3-pycxx-devel 
   - python3-pydenticon 
   - python3-pydle 
-  - python3-pyee 
   - python3-pyfg 
   - python3-pyfuse3 
   - python3-pyghmi 
@@ -22081,7 +22066,6 @@ unsorted:
   - python3-pynest2d 
   - python3-pyodbc 
   - python3-pypandoc: [i586] 
-  - python3-pyppeteer 
   - python3-pyproj 
   - python3-pyprompter 
   - python3-pyquil: [i586] 
@@ -22092,9 +22076,7 @@ unsorted:
   - python3-pyside2-examples 
   - python3-pysol-cards 
   - python3-pysvn 
-  - python3-pytest-aiofiles 
   - python3-pytest-cookies 
-  - python3-pytest-html 
   - python3-pytest-listener 
   - python3-pytest-parallel 
   - python3-pytest-pyramid-server 
@@ -22105,7 +22087,6 @@ unsorted:
   - python3-python-crontab 
   - python3-python-daemon 
   - python3-python-datamatrix: [i586] 
-  - python3-python-fedora 
   - python3-python-fileinspector 
   - python3-python-jenkins 
   - python3-python-pseudorandom: [i586] 
@@ -22119,7 +22100,6 @@ unsorted:
   - python3-raet 
   - python3-renderspec 
   - python3-reno 
-  - python3-requests-html 
   - python3-retry 
   - python3-rich 
   - python3-rise 
@@ -22141,7 +22121,7 @@ unsorted:
   - python3-setuptools-wheel 
   - python3-shaptools 
   - python3-sherpa: [x86_64] 
-  - python3-sidpy 
+  - python3-sidpy: [i586] 
   - python3-sievelib 
   - python3-sigal 
   - python3-smbus 
@@ -22177,7 +22157,6 @@ unsorted:
   - python3-swifter 
   - python3-talloc-32bit: [x86_64] 
   - python3-talloc-devel 
-  - python3-taskw 
   - python3-tdb-32bit: [x86_64] 
   - python3-testinfra 
   - python3-tevent-32bit: [x86_64] 
@@ -22376,6 +22355,7 @@ unsorted:
   - python36-PyWebDAV3-GNUHealth 
   - python36-PyX 
   - python36-PyYAML 
+  - python36-Pydap 
   - python36-Pygments 
   - python36-Pykka 
   - python36-Pympler 
@@ -22443,6 +22423,7 @@ unsorted:
   - python36-acoular 
   - python36-actdiag 
   - python36-adal 
+  - python36-adapt-parser 
   - python36-addict 
   - python36-aeidon 
   - python36-aenum 
@@ -22589,6 +22570,7 @@ unsorted:
   - python36-behave 
   - python36-bencode 
   - python36-beniget 
+  - python36-beren 
   - python36-betamax 
   - python36-betamax-matchers 
   - python36-bibtexparser 
@@ -22651,6 +22633,7 @@ unsorted:
   - python36-calmjs.parse 
   - python36-calmjs.types 
   - python36-calysto 
+  - python36-cangjie 
   - python36-canonicaljson 
   - python36-capturer 
   - python36-casacore 
@@ -23039,7 +23022,6 @@ unsorted:
   - python36-extras 
   - python36-extratools 
   - python36-ez_setup 
-  - python36-ezdxf 
   - python36-fabio 
   - python36-factory_boy 
   - python36-fake-useragent 
@@ -23048,7 +23030,6 @@ unsorted:
   - python36-fanficfare 
   - python36-fann2 
   - python36-fastTSNE 
-  - python36-fastcluster 
   - python36-fasteners 
   - python36-fastimport 
   - python36-fastnumbers 
@@ -23056,6 +23037,8 @@ unsorted:
   - python36-fastremap 
   - python36-fb-re2 
   - python36-featureflow: [x86_64] 
+  - python36-fedmsg 
+  - python36-fedmsg-tests 
   - python36-fedora-messaging 
   - python36-feedgen 
   - python36-feedgenerator 
@@ -23197,6 +23180,7 @@ unsorted:
   - python36-gspread 
   - python36-gssapi 
   - python36-gst 
+  - python36-gsw 
   - python36-guessit 
   - python36-gunicorn 
   - python36-guzzle_sphinx_theme 
@@ -23396,6 +23380,7 @@ unsorted:
   - python36-keyrings.alt 
   - python36-kismet-rest 
   - python36-kismetdb 
+  - python36-kitchen 
   - python36-kiwisolver 
   - python36-kmatch 
   - python36-kmod 
@@ -23454,6 +23439,7 @@ unsorted:
   - python36-lmdb 
   - python36-lmfit 
   - python36-lml 
+  - python36-localzone 
   - python36-locket 
   - python36-lockfile 
   - python36-logilab-common 
@@ -23520,6 +23506,8 @@ unsorted:
   - python36-model-bakery 
   - python36-modernize 
   - python36-mohawk 
+  - python36-moksha-common 
+  - python36-moksha-hub 
   - python36-mongoengine 
   - python36-monotonic 
   - python36-more-itertools 
@@ -23886,6 +23874,7 @@ unsorted:
   - python36-pydotplus 
   - python36-pydub 
   - python36-pyeapi 
+  - python36-pyee 
   - python36-pyelftools 
   - python36-pyemd 
   - python36-pyenchant 
@@ -23962,6 +23951,7 @@ unsorted:
   - python36-pypipegraph 
   - python36-pypiserver 
   - python36-pypng 
+  - python36-pyppeteer 
   - python36-pyprel 
   - python36-pyprimes 
   - python36-pypsexec 
@@ -24003,6 +23993,7 @@ unsorted:
   - python36-pyte 
   - python36-pytesseract 
   - python36-pytest 
+  - python36-pytest-aiofiles 
   - python36-pytest-aiohttp 
   - python36-pytest-arraydiff 
   - python36-pytest-astropy 
@@ -24038,6 +24029,7 @@ unsorted:
   - python36-pytest-freezegun 
   - python36-pytest-git 
   - python36-pytest-helpers-namespace 
+  - python36-pytest-html 
   - python36-pytest-httpbin 
   - python36-pytest-httpserver 
   - python36-pytest-instafail 
@@ -24105,6 +24097,7 @@ unsorted:
   - python36-python-dotenv 
   - python36-python-editor 
   - python36-python-engineio 
+  - python36-python-fedora 
   - python36-python-for-android 
   - python36-python-gammu 
   - python36-python-gflags 
@@ -24218,7 +24211,6 @@ unsorted:
   - python36-quantum-blackbird 
   - python36-queuelib 
   - python36-quicktions 
-  - python36-quimb: [x86_64] 
   - python36-radon 
   - python36-random2 
   - python36-rarfile 
@@ -24258,6 +24250,7 @@ unsorted:
   - python36-requests-futures 
   - python36-requests-gssapi 
   - python36-requests-hawk 
+  - python36-requests-html 
   - python36-requests-kerberos 
   - python36-requests-mock 
   - python36-requests-oauthlib 
@@ -24495,6 +24488,7 @@ unsorted:
   - python36-tap.py 
   - python36-targetcli-fb 
   - python36-tasklib 
+  - python36-taskw 
   - python36-tbb 
   - python36-tblib 
   - python36-technicolor 
@@ -24917,6 +24911,7 @@ unsorted:
   - python38-PyWebDAV3 
   - python38-PyWebDAV3-GNUHealth 
   - python38-PyX 
+  - python38-Pydap 
   - python38-Pygments: [i586] 
   - python38-Pykka 
   - python38-Pympler 
@@ -24982,6 +24977,7 @@ unsorted:
   - python38-acoular 
   - python38-actdiag 
   - python38-adal 
+  - python38-adapt-parser 
   - python38-addict 
   - python38-aeidon 
   - python38-aenum 
@@ -25116,6 +25112,7 @@ unsorted:
   - python38-behave 
   - python38-bencode 
   - python38-beniget 
+  - python38-beren 
   - python38-betamax 
   - python38-betamax-matchers 
   - python38-bibtexparser 
@@ -25176,6 +25173,7 @@ unsorted:
   - python38-calmjs.parse 
   - python38-calmjs.types 
   - python38-calysto 
+  - python38-cangjie 
   - python38-canonicaljson 
   - python38-capturer 
   - python38-casacore 
@@ -25563,6 +25561,8 @@ unsorted:
   - python38-fastremap 
   - python38-fb-re2 
   - python38-featureflow: [x86_64] 
+  - python38-fedmsg 
+  - python38-fedmsg-tests 
   - python38-fedora-messaging 
   - python38-feedgen 
   - python38-feedgenerator 
@@ -25691,6 +25691,7 @@ unsorted:
   - python38-grpcio-tools 
   - python38-gscholar 
   - python38-gspread 
+  - python38-gsw 
   - python38-guessit 
   - python38-guzzle_sphinx_theme 
   - python38-gvm-tools 
@@ -25881,6 +25882,7 @@ unsorted:
   - python38-keyrings.alt 
   - python38-kismet-rest 
   - python38-kismetdb 
+  - python38-kitchen 
   - python38-kmatch 
   - python38-kmod 
   - python38-knack 
@@ -25933,6 +25935,7 @@ unsorted:
   - python38-lmdb 
   - python38-lmfit 
   - python38-lml 
+  - python38-localzone 
   - python38-locket 
   - python38-lockfile 
   - python38-logilab-common 
@@ -25962,7 +25965,6 @@ unsorted:
   - python38-matplotlib-latex 
   - python38-matplotlib-qt5 
   - python38-matplotlib-testdata 
-  - python38-matplotlib-tk 
   - python38-matplotlib-web 
   - python38-matplotlib-wx 
   - python38-mautrix 
@@ -25995,6 +25997,8 @@ unsorted:
   - python38-model-bakery 
   - python38-modernize 
   - python38-mohawk 
+  - python38-moksha-common 
+  - python38-moksha-hub 
   - python38-mongoengine 
   - python38-monotonic 
   - python38-moto 
@@ -26195,6 +26199,7 @@ unsorted:
   - python38-pgmagick 
   - python38-phabricator 
   - python38-phonenumbers 
+  - python38-photutils 
   - python38-phply 
   - python38-phue 
   - python38-physt 
@@ -26331,6 +26336,7 @@ unsorted:
   - python38-pydotplus 
   - python38-pydub 
   - python38-pyeapi 
+  - python38-pyee 
   - python38-pyelftools 
   - python38-pyemd 
   - python38-pyenchant 
@@ -26403,6 +26409,7 @@ unsorted:
   - python38-pypipegraph 
   - python38-pypiserver 
   - python38-pypng 
+  - python38-pyppeteer 
   - python38-pyprel 
   - python38-pyprimes 
   - python38-pypsexec 
@@ -26443,6 +26450,7 @@ unsorted:
   - python38-pyte 
   - python38-pytesseract 
   - python38-pytest 
+  - python38-pytest-aiofiles 
   - python38-pytest-aiohttp 
   - python38-pytest-arraydiff 
   - python38-pytest-astropy 
@@ -26478,6 +26486,7 @@ unsorted:
   - python38-pytest-freezegun 
   - python38-pytest-git 
   - python38-pytest-helpers-namespace 
+  - python38-pytest-html 
   - python38-pytest-httpbin 
   - python38-pytest-httpserver 
   - python38-pytest-instafail 
@@ -26543,6 +26552,7 @@ unsorted:
   - python38-python-docs-theme 
   - python38-python-dotenv 
   - python38-python-engineio 
+  - python38-python-fedora 
   - python38-python-for-android 
   - python38-python-gammu 
   - python38-python-gflags 
@@ -26686,6 +26696,7 @@ unsorted:
   - python38-requests-futures 
   - python38-requests-gssapi 
   - python38-requests-hawk 
+  - python38-requests-html 
   - python38-requests-kerberos 
   - python38-requests-mock 
   - python38-requests-oauthlib 
@@ -26796,6 +26807,7 @@ unsorted:
   - python38-shodan 
   - python38-shortuuid 
   - python38-sidecar 
+  - python38-sidpy: [x86_64] 
   - python38-signedjson 
   - python38-simpleaudio 
   - python38-simplebayes 
@@ -26913,6 +26925,7 @@ unsorted:
   - python38-tap.py 
   - python38-targetcli-fb 
   - python38-tasklib 
+  - python38-taskw 
   - python38-tbb 
   - python38-tblib 
   - python38-technicolor 
@@ -26958,7 +26971,6 @@ unsorted:
   - python38-tinyrecord 
   - python38-tinyrpc 
   - python38-titlecase 
-  - python38-tk: [i586] 
   - python38-tkreadonly 
   - python38-tld 
   - python38-tldextract 
@@ -29570,6 +29582,8 @@ unsorted:
   - ruby3.0-rubygem-ruby-filemagic 
   - ruby3.0-rubygem-ruby-filemagic-doc 
   - ruby3.0-rubygem-ruby-filemagic-testsuite 
+  - ruby3.0-rubygem-ruby-libvirt 
+  - ruby3.0-rubygem-ruby-libvirt-doc 
   - ruby3.0-rubygem-ruby-openid 
   - ruby3.0-rubygem-ruby-openid-doc 
   - ruby3.0-rubygem-ruby-openid-testsuite 
@@ -40226,8 +40240,8 @@ unsorted:
   - xfce4-netload-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-netload-plugin-lang: [i586] 
   - xfce4-netspeed-plugin 
-  - xfce4-notes-plugin 
-  - xfce4-notes-plugin-lang 
+  - xfce4-notes-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-notes-plugin-lang: [i586] 
   - xfce4-notifyd: [i586] 
   - xfce4-notifyd-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-notifyd-branding-upstream 

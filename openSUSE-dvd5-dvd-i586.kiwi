@@ -1697,7 +1697,7 @@
       <repopackage name="libpng16-16"/>
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
-      <repopackage name="libpoppler105"/>
+      <repopackage name="libpoppler106"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportal0"/>
       <repopackage name="libportaudio2"/>
@@ -2846,6 +2846,7 @@
       <repopackage name="python38-matplotlib"/>
       <repopackage name="python38-matplotlib-cairo"/>
       <repopackage name="python38-matplotlib-gtk3"/>
+      <repopackage name="python38-matplotlib-tk"/>
       <repopackage name="python38-more-itertools"/>
       <repopackage name="python38-msgpack"/>
       <repopackage name="python38-mysqlclient"/>
@@ -2911,6 +2912,7 @@
       <repopackage name="python38-sniffio"/>
       <repopackage name="python38-sortedcontainers"/>
       <repopackage name="python38-SQLAlchemy"/>
+      <repopackage name="python38-tk"/>
       <repopackage name="python38-tornado6"/>
       <repopackage name="python38-trio"/>
       <repopackage name="python38-Twisted"/>
