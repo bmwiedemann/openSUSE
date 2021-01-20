@@ -7,4 +7,12 @@
     <comment>update haskell stack in openSUSE</comment>
     <requestid>857717</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1afd6ed88c6edd72e3dc72d36f382d59</srcmd5>
+    <version>1.6.0</version>
+    <time>1611163533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>863273</requestid>
+  </revision>
 </revisionlist>
