@@ -47,36 +47,44 @@ the the range of 10-200 times for encoding operations and in the range of
 
 %prep
 %setup -q -n python-cjson-%{version}
+cp jsontest.py jsontest2.py
 %if %{with python2}
-cp cjson.c cjson%{python2_bin_suffix}.c
-cp jsontest.py jsontest%{python2_bin_suffix}.py
+cp cjson.c cjson2.c
 %endif
 %patch0 -p1
-cp cjson.c cjson%{python3_bin_suffix}.c
+cp cjson.c cjson3.c
 
-cp jsontest.py jsontest%{python3_bin_suffix}.py
+cp jsontest.py jsontest3.py
 # Workaround dict order differences on Python 3.4
 if [ %{python3_bin_suffix} = '3.4' ]; then
-  sed -i 's/\(testWriteComplexArray\|testWriteSmallObject\)/_\1/' jsontest%{python3_bin_suffix}.py
+  sed -i 's/\(testWriteComplexArray\|testWriteSmallObject\)/_\1/' jsontest3.py
 fi
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%if %{with python2}
+%{python_expand #
 rm cjson.c
-ln -s cjson%{python2_bin_suffix}.c cjson.c
-%python2_build
-%endif
-rm cjson.c
-ln -s cjson%{python3_bin_suffix}.c cjson.c
-%python3_build
+if [ "$python" == "python2" ]; then
+  ln -s cjson2.c cjson.c
+else
+  ln -s cjson3.c cjson.c
+fi
+%{$python_build}
+}
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python jsontest%{$python_bin_suffix}.py
+%{python_expand # run test
+if [ "$python" == "python2" ]; then
+  python_major_ver=2
+else
+  python_major_ver=3
+fi
+PYTHONPATH=%{buildroot}%{$python_sitearch} $python jsontest${python_major_ver}.py -v
+}
 
 %files %{python_files}
 %doc ChangeLog README
