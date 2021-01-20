@@ -1,7 +1,7 @@
 #
 # spec file for package openldap2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 %define run_test_suite 0
-%define version_main 2.4.56
+%define version_main 2.4.57
 %define name_ppolicy_check_module ppolicy-check-password
 %define version_ppolicy_check_module 1.2
 %define ppolicy_docdir %{_docdir}/openldap-%{name_ppolicy_check_module}-%{version_ppolicy_check_module}

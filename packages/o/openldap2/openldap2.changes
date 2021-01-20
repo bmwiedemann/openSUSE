@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 18 20:31:58 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- updated to 2.4.57
+
+OpenLDAP 2.4.57 Release (2021/01/18)
+  Fixed ldapexop to use correct return code (ITS#9417)
+  Fixed slapd to remove asserts in UUIDNormalize (ITS#9391)
+  Fixed slapd to remove assert in csnValidate (ITS#9410)
+  Fixed slapd validity checks for issuerAndThisUpdateCheck (ITS#9411, ITS#9427)
+  Fixed slapd validity checks for serialNumberAndIssuerCheck (ITS#9404, ITS#9424)
+  Fixed slapd AVA sort with invalid RDN (ITS#9412)
+  Fixed slapd ldap_X509dn2bv to check for invalid BER after RDN count (ITS#9423, ITS#9425)
+  Fixed slapd saslauthz to remove asserts in validation (ITS#9406, ITS#9407)
+  Fixed slapd saslauthz to use slap_sl_free on normalized DN (ITS#9409)
+  Fixed slapd saslauthz SEGV in slap_parse_user (ITS#9413)
+  Fixed slapd modrdn memory leak (ITS#9420)
+  Fixed slapd double-free in vrfilter (ITS#9408)
+  Fixed slapd cancel operation to correctly terminate (ITS#9428)
+  Fixed slapd-ldap fix binds on retry with closed connection (ITS#9400)
+  Fixed slapo-syncprov to ignore duplicate sessionlog entries (ITS#9394)
+
+-------------------------------------------------------------------
 Thu Dec 17 03:51:47 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - added openldap2.keyring and source signature file
