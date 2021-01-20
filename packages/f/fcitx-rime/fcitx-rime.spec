@@ -39,8 +39,6 @@ BuildRequires:  librime-devel
 BuildRequires:  libyaml-cpp0_3
 %endif
 BuildRequires:  xz
-# explicitly requires brise (rime-data)
-Requires:       brise
 %{fcitx_requires}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 20 00:19:38 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Remove Requires: brise, since it has been deprecated upstream
+  and already recommended by librime
+
+-------------------------------------------------------------------
 Sat Dec  2 05:47:02 UTC 2017 - i@marguerite.su
 
 - update version 0.3.2
