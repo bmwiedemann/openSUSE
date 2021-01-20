@@ -1,7 +1,7 @@
 #
 # spec file for package calamares
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML import
+%global __requires_exclude qmlimport\\(calamares\\.slideshow.*
 
 %define _sover  3
 Name:           calamares
