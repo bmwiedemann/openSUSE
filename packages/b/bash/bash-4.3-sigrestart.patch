@@ -4,7 +4,7 @@
 
 --- sig.c
 +++ sig.c	2018-11-29 08:13:00.103944580 +0000
-@@ -761,6 +761,8 @@ set_signal_handler (sig, handler)
+@@ -788,6 +788,8 @@ set_signal_handler (sig, handler)
    if (sig == SIGCHLD)
      act.sa_flags |= SA_RESTART;		/* XXX */
  #endif
@@ -13,7 +13,7 @@
    /* Let's see if we can keep SIGWINCH from interrupting interruptible system
       calls, like open(2)/read(2)/write(2) */
  #if defined (SIGWINCH)
-@@ -771,6 +773,10 @@ set_signal_handler (sig, handler)
+@@ -798,6 +800,10 @@ set_signal_handler (sig, handler)
       it to be as close to SIG_IGN as possible. */
    if (sig == SIGTERM && handler == sigterm_sighandler)
      act.sa_flags |= SA_RESTART;		/* XXX */

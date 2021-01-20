@@ -12,7 +12,7 @@
  
  #include "../bashtypes.h"
  
-@@ -662,12 +663,20 @@ printf_builtin (list)
+@@ -661,12 +662,20 @@ printf_builtin (list)
  	    case 'A':
  #endif
  	      {

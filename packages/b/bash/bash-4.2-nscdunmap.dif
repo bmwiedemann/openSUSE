@@ -12,7 +12,7 @@
  #  include <unistd.h>
  #endif
  
-@@ -1800,6 +1801,28 @@ init_interactive_script ()
+@@ -1855,6 +1856,28 @@ init_interactive_script ()
  #endif
  }
  
@@ -41,7 +41,7 @@
  void
  get_current_user_info ()
  {
-@@ -1831,6 +1854,7 @@ get_current_user_info ()
+@@ -1886,6 +1909,7 @@ get_current_user_info ()
  #if defined (HAVE_GETPWENT)
        endpwent ();
  #endif

@@ -1602,4 +1602,40 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment></comment>
     <requestid>852327</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>7764b7ea80c6235d95cb1b3923a9163a</srcmd5>
+    <version>5.1.4</version>
+    <time>1611163369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final bash 5.1
+  * Which is mainly the last rc3 veresion
+- Add official patch bash51-001
+  There is a missing dependency on a constructed file, which can cause highly
+  parellel builds to fail.
+- Add official patch bash51-002
+  If there are no jobs, and the `-n' and `-p' options are both supplied to
+  `wait', bash can assign a value to the variable name specified with `-p'
+  instead of leaving it unset.
+- Add official patch bash51-003
+  Bash does not put a command substitution process that is started to perform an
+  expansion in a child process into the right process group where it can receive
+  keyboard-generated signals.
+- Add official patch bash51-004
+  If a key-value compound array assignment to an associative array is supplied
+  as an assignment statement argument to the `declare' command that declares the
+  array, the assignment doesn't perform the correct word expansions.
+  This patch makes key-value assignment and subscript assignment perform the
+  same expansions when they're supplied as an argument to `declare'.
+
+- Update to bash 5.1 rc3
+  * The `assoc_expand_once' option now affects the evaluation of the -v primary
+    to test and the [[ compound command.
+
+- Update to bash 5.1 rc2
+  * Process substitutions started from an interactive shell no longer have their
+    standard input implicitly redirected from /dev/null.
+  * Fixed an issue with setting the SIGINT trap handler in an interactive shell
+    when temporarily running $PROMPT_COMMAND non-interactively.</comment>
+    <requestid>862386</requestid>
+  </revision>
 </revisionlist>

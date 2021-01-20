@@ -1,7 +1,7 @@
 #
 # spec file for package bash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 
 Name:           bash
 %define         bextend	 %nil
-%define         bversion 5.0
-%define         bpatchlvl 18
+%define         bversion 5.1
+%define         bpatchlvl 4
 Version:        %{bversion}.%{bpatchlvl}
 Release:        0
 Summary:        The GNU Bourne-Again Shell
@@ -49,7 +49,6 @@ Source8:        baselibs.conf
 Source9:        bash-4.2-history-myown.dif.bz2
 Patch0:         bash-%{bversion}.dif
 Patch1:         bash-2.03-manual.patch
-Patch2:         bash-4.0-security.patch
 Patch3:         bash-4.3-2.4.4.patch
 Patch4:         bash-3.0-evalexp.patch
 Patch5:         bash-3.0-warn-locale.patch
@@ -82,7 +81,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  patchutils
 BuildRequires:  pkg-config
 # This has to be always the same version as included in the bash its self
-BuildRequires:  readline-devel == 8.0
+BuildRequires:  readline-devel == 8.1
 BuildRequires:  screen
 BuildRequires:  sed
 BuildRequires:  update-alternatives
@@ -229,7 +228,6 @@ for patch in ../bash-%{bversion}-patches/*; do
 done
 set -x
 %patch1  -p0 -b .manual
-%patch2  -p0 -b .security
 %patch3  -p0 -b .2.4.4
 %patch4  -p0 -b .evalexp
 %patch5  -p0 -b .warnlc

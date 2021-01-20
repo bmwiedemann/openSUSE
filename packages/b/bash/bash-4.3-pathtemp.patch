@@ -60,7 +60,7 @@
  static char *
  get_tmpdir (flags)
       int flags;
-@@ -186,7 +221,8 @@ sh_mktmpfd (nameroot, flags, namep)
+@@ -194,7 +229,8 @@ sh_mktmpfd (nameroot, flags, namep)
  {
    char *filename, *tdir, *lroot;
    int fd, tdlen;
@@ -70,7 +70,7 @@
    filename = (char *)xmalloc (PATH_MAX + 1);
    tdir = get_tmpdir (flags);
    tdlen = strlen (tdir);
-@@ -201,6 +237,10 @@ sh_mktmpfd (nameroot, flags, namep)
+@@ -217,6 +253,10 @@ sh_mktmpfd (nameroot, flags, namep)
        free (filename);
        filename = NULL;
      }
@@ -81,7 +81,7 @@
    if (namep)
      *namep = filename;
    return fd;
-@@ -219,6 +259,13 @@ sh_mktmpfd (nameroot, flags, namep)
+@@ -235,6 +275,13 @@ sh_mktmpfd (nameroot, flags, namep)
      }
    while (fd < 0 && errno == EEXIST);
  

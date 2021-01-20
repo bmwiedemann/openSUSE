@@ -12,7 +12,7 @@
  
  /* The current domain for textdomain(3). */
  static char *default_domain;
-@@ -339,11 +340,21 @@ get_locale_var (var)
+@@ -359,11 +360,21 @@ get_locale_var (var)
    if (locale == 0 || *locale == 0)
      locale = lang;
    if (locale == 0 || *locale == 0)

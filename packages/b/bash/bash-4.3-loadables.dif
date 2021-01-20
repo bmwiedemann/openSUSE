@@ -1,16 +1,16 @@
 ---
- examples/loadables/finfo.c   |    9 ++++-----
+ examples/loadables/finfo.c   |    3 +--
  examples/loadables/head.c    |    2 --
  examples/loadables/id.c      |    2 --
  examples/loadables/mkdir.c   |    2 +-
  examples/loadables/pathchk.c |    2 --
  examples/loadables/print.c   |    2 +-
  examples/loadables/tee.c     |    2 --
- 7 files changed, 6 insertions(+), 15 deletions(-)
+ 7 files changed, 3 insertions(+), 12 deletions(-)
 
 --- examples/loadables/finfo.c
 +++ examples/loadables/finfo.c	2018-09-20 08:07:43.739129083 +0000
-@@ -102,7 +102,7 @@ int	argc;
+@@ -108,7 +108,7 @@ int	argc;
  char	**argv;
  {
  	register int	i;
@@ -19,24 +19,7 @@
  
  	sh_optind = 0;	/* XXX */
  	prog = base_pathname(argv[0]);
-@@ -334,13 +334,13 @@ int	flags;
- 		else
- 			printf("%ld\n", st->st_ctime);
- 	} else if (flags & OPT_DEV)
--		printf("%d\n", st->st_dev);
-+		printf("%lu\n", (unsigned long)st->st_dev);
- 	else if (flags & OPT_INO)
- 		printf("%lu\n", (unsigned long)st->st_ino);
- 	else if (flags & OPT_FID)
--		printf("%d:%lu\n", st->st_dev, (unsigned long)st->st_ino);
-+		printf("%lu:%lu\n", (unsigned long)st->st_dev, (unsigned long)st->st_ino);
- 	else if (flags & OPT_NLINK)
--		printf("%d\n", st->st_nlink);
-+		printf("%lu\n", (unsigned long)st->st_nlink);
- 	else if (flags & OPT_LNKNAM) {
- #ifdef S_ISLNK
- 		b = xmalloc(4096);
-@@ -390,7 +390,6 @@ finfo_builtin(list)
+@@ -396,7 +396,6 @@ finfo_builtin(list)
  {
    int c, r;
    char **v;

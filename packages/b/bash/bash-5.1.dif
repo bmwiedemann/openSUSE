@@ -15,8 +15,8 @@
  13 files changed, 37 insertions(+), 21 deletions(-)
 
 --- Makefile.in
-+++ Makefile.in	2018-11-29 08:14:06.638693338 +0000
-@@ -456,7 +456,7 @@ SOURCES	 = $(CSOURCES) $(HSOURCES) $(BUI
++++ Makefile.in	2020-11-23 07:50:41.491908452 +0000
+@@ -457,7 +457,7 @@ SOURCES	 = $(CSOURCES) $(HSOURCES) $(BUI
  # headers in top-level source directory that get installed by install-headers
  INSTALLED_HEADERS = shell.h bashjmp.h command.h syntax.h general.h error.h \
  		    variables.h array.h assoc.h arrayfunc.h quit.h dispose_cmd.h \
@@ -26,7 +26,7 @@
  		    bashintl.h bashansi.h bashjmp.h alias.h hashlib.h \
  		    conftypes.h unwind_prot.h jobs.h siglist.h
 --- config-top.h
-+++ config-top.h	2018-11-29 08:14:06.638693338 +0000
++++ config-top.h	2020-11-23 07:52:34.257749719 +0000
 @@ -60,10 +60,14 @@
     due to EPIPE. */
  /* #define DONT_REPORT_BROKEN_PIPE_WRITE_ERRORS */
@@ -75,10 +75,10 @@
 -/* #define SSH_SOURCE_BASHRC */
 +#define SSH_SOURCE_BASHRC
  
- /* Define if you want the case-capitalizing operators (~[~]) and the
+ /* Define if you want the case-toggling operators (~[~]) and the
     `capcase' variable attribute (declare -c). */
 --- doc/Makefile.in
-+++ doc/Makefile.in	2018-11-29 08:14:06.638693338 +0000
++++ doc/Makefile.in	2020-11-23 07:50:41.491908452 +0000
 @@ -154,7 +154,7 @@ BASHREF_FILES = $(srcdir)/bashref.texi $
  #	$(RM) $@
  #	-${TEXI2PDF} $<
@@ -89,8 +89,8 @@
  everything: all pdf
  
 --- doc/bash.1
-+++ doc/bash.1	2018-11-29 08:14:06.638693338 +0000
-@@ -5443,8 +5443,8 @@ file (the \fIinputrc\fP file).
++++ doc/bash.1	2020-11-23 07:50:41.491908452 +0000
+@@ -5520,8 +5520,8 @@ file (the \fIinputrc\fP file).
  The name of this file is taken from the value of the
  .SM
  .B INPUTRC
@@ -98,10 +98,10 @@
 -.IR ~/.inputrc .
 +environment variable. If that variable is unset, readline will read both
 +.IR /etc/inputrc " and " ~/.inputrc .
+ If that file  does not exist or cannot be read, the ultimate default is
+ .IR /etc/inputrc .
  When a program which uses the readline library starts up, the
- initialization file is read, and the key bindings and variables
- are set.
-@@ -10922,6 +10922,9 @@ The individual login shell cleanup file,
+@@ -11241,6 +11241,9 @@ The individual login shell cleanup file,
  .TP
  .FN ~/.inputrc
  Individual \fIreadline\fP initialization file
@@ -112,7 +112,7 @@
  .SH AUTHORS
  Brian Fox, Free Software Foundation
 --- general.h
-+++ general.h	2018-11-29 08:14:06.638693338 +0000
++++ general.h	2020-11-23 07:50:41.491908452 +0000
 @@ -21,10 +21,13 @@
  #if !defined (_GENERAL_H_)
  #define _GENERAL_H_
@@ -128,8 +128,8 @@
  #if defined (HAVE_SYS_RESOURCE_H) && defined (RLIMTYPE)
  #  if defined (HAVE_SYS_TIME_H)
 --- parse.y
-+++ parse.y	2018-11-29 08:14:06.638693338 +0000
-@@ -1456,7 +1456,7 @@ input_file_descriptor ()
++++ parse.y	2020-11-23 07:50:41.491908452 +0000
+@@ -1458,7 +1458,7 @@ input_file_descriptor ()
  
  #if defined (READLINE)
  char *current_readline_prompt = (char *)NULL;
@@ -139,7 +139,7 @@
  
  static int
 --- shell.c
-+++ shell.c	2018-11-29 08:14:06.638693338 +0000
++++ shell.c	2020-11-23 07:50:41.491908452 +0000
 @@ -45,6 +45,7 @@
  #if defined (HAVE_UNISTD_H)
  #  include <sys/types.h>
@@ -148,7 +148,7 @@
  #endif
  
  #include "bashintl.h"
-@@ -497,7 +498,7 @@ main (argc, argv, env)
+@@ -503,7 +504,7 @@ main (argc, argv, env)
    if (dump_translatable_strings)
      read_but_dont_execute = 1;
  
@@ -157,18 +157,18 @@
      disable_priv_mode ();
  
    /* Need to get the argument to a -c option processed in the
-@@ -1294,6 +1295,9 @@ disable_priv_mode ()
+@@ -1310,6 +1311,9 @@ disable_priv_mode ()
  {
    int e;
  
 +  if (!current_user.user_name)
 +    get_current_user_info();
 +  initgroups (current_user.user_name, current_user.gid);
-   if (setuid (current_user.uid) < 0)
-     {
-       e = errno;
+ #if HAVE_SETRESUID
+   if (setresuid (current_user.uid, current_user.uid, current_user.uid) < 0)
+ #else
 --- support/man2html.c
-+++ support/man2html.c	2018-11-29 08:14:06.638693338 +0000
++++ support/man2html.c	2020-11-23 07:50:41.491908452 +0000
 @@ -78,6 +78,7 @@
  #include <time.h>
  #include <sys/time.h>
@@ -178,7 +178,7 @@
  #define NULL_TERMINATED(n) ((n) + 1)
  
 --- support/rlvers.sh
-+++ support/rlvers.sh	2018-11-29 08:14:06.638693338 +0000
++++ support/rlvers.sh	2020-11-23 07:50:41.495908376 +0000
 @@ -27,10 +27,10 @@ TDIR=$TMPDIR/rlvers
  
  # defaults
@@ -194,9 +194,9 @@
  # cannot rely on the presence of getopts
  while [ $# -gt 0 ]; do
 --- support/shobj-conf
-+++ support/shobj-conf	2018-11-29 08:14:06.642693263 +0000
++++ support/shobj-conf	2020-11-23 07:50:41.495908376 +0000
 @@ -126,10 +126,11 @@ sunos5*|solaris2*)
- linux*-*|gnu*-*|k*bsd*-gnu-*|freebsd*-gentoo)
+ linux*-*|gnu*-*|k*bsd*-gnu-*|freebsd*|dragonfly*)
  	SHOBJ_CFLAGS=-fPIC
  	SHOBJ_LD='${CC}'
 -	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'
@@ -208,10 +208,10 @@
 +	echo 'int main () { return 0; }' | gcc -ltinfo -o /dev/null -xc - > /dev/null 2>&1 && SHLIB_LIBS=-ltinfo || SHLIB_LIBS=-lncurses
  	;;
  
- freebsd2*)
+ # Darwin/MacOS X
 --- tests/glob.tests
-+++ tests/glob.tests	2018-11-29 08:14:06.642693263 +0000
-@@ -15,8 +15,8 @@ ${THIS_SH} ./glob3.sub
++++ tests/glob.tests	2020-11-23 07:50:41.495908376 +0000
+@@ -33,8 +33,8 @@ ${THIS_SH} ./glob9.sub
  
  MYDIR=$PWD	# save where we are
  
@@ -223,7 +223,7 @@
  rm -rf *
  
 --- tests/run-intl
-+++ tests/run-intl	2018-11-29 08:14:06.642693263 +0000
++++ tests/run-intl	2020-11-23 07:50:41.495908376 +0000
 @@ -5,4 +5,4 @@ echo "warning: some of these tests will
  echo "warning: locales installed on your system." >&2
  
@@ -231,7 +231,7 @@
 -diff $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
 +diff -w $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
 --- tests/run-read
-+++ tests/run-read	2018-11-29 08:14:06.642693263 +0000
++++ tests/run-read	2020-11-23 07:50:41.495908376 +0000
 @@ -1,4 +1,4 @@
  echo "warning: please do not consider output differing only in the amount of" >&2
  echo "warning: white space to be an error." >&2

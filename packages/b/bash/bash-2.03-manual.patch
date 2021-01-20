@@ -19,7 +19,7 @@
  .B \-D
  A list of all double-quoted strings preceded by \fB$\fP
  is printed on the standard output.
-@@ -7294,6 +7300,11 @@ Apply the following `\fBs\fP' modifier o
+@@ -7382,6 +7388,11 @@ Apply the following `\fBs\fP' modifier o
  .SH "SHELL BUILTIN COMMANDS"
  .\" start of bash_builtins
  .zZ
@@ -31,7 +31,7 @@
  .PP
  Unless otherwise noted, each builtin command documented in this
  section as accepting options preceded by
-@@ -10768,6 +10779,11 @@ process or job waited for.
+@@ -11081,6 +11092,11 @@ process or job waited for.
  .SH "RESTRICTED SHELL"
  .\" rbash.1
  .zY

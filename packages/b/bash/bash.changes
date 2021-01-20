@@ -1,12 +1,164 @@
 -------------------------------------------------------------------
+Mon Jan 11 12:00:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to final bash 5.1
+  * Which is mainly the last rc3 veresion
+- Add official patch bash51-001
+  There is a missing dependency on a constructed file, which can cause highly
+  parellel builds to fail.
+- Add official patch bash51-002
+  If there are no jobs, and the `-n' and `-p' options are both supplied to
+  `wait', bash can assign a value to the variable name specified with `-p'
+  instead of leaving it unset.
+- Add official patch bash51-003
+  Bash does not put a command substitution process that is started to perform an
+  expansion in a child process into the right process group where it can receive
+  keyboard-generated signals.
+- Add official patch bash51-004
+  If a key-value compound array assignment to an associative array is supplied
+  as an assignment statement argument to the `declare' command that declares the
+  array, the assignment doesn't perform the correct word expansions.
+
+  This patch makes key-value assignment and subscript assignment perform the
+  same expansions when they're supplied as an argument to `declare'.
+
+-------------------------------------------------------------------
+Mon Nov 23 08:28:20 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to bash 5.1 rc3
+  * The `assoc_expand_once' option now affects the evaluation of the -v primary
+    to test and the [[ compound command.
+
+-------------------------------------------------------------------
 Thu Nov 19 15:47:13 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - remove obsolete info macros
 
 -------------------------------------------------------------------
+Tue Nov 10 13:31:20 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to bash 5.1 rc2
+  * Process substitutions started from an interactive shell no longer have their
+    standard input implicitly redirected from /dev/null.
+  * Fixed an issue with setting the SIGINT trap handler in an interactive shell
+    when temporarily running $PROMPT_COMMAND non-interactively.
+
+-------------------------------------------------------------------
 Fri Oct 16 07:08:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Mon Oct 12 17:19:06 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to bash 5.1 rc1
+  * `bind -x' now supports different bindings for different editing modes and
+    keymaps.
+  * Bash attempts to optimize the number of times it forks when executing
+    commands in subshells and from `bash -c'.
+  * Here documents and here strings now use pipes for the expanded document if
+    it's smaller than the pipe buffer size, reverting to temporary files if it's
+    larger.
+  * There are new loadable builtins: mktemp, accept, mkfifo, csv, cut/lcut
+  * In posix mode, `trap -p' now displays signals whose disposition is SIG_DFL
+    and those that were SIG_IGN when the shell starts.
+  * The shell now expands the history number (e.g., in PS1) even if it is not
+    currently saving commands to the history list.
+  * `read -e' may now be used with arbitrary file descriptors (`read -u N').
+  * The `select' builtin now runs traps if its internal call to the read builtin
+    is interrupted by a signal.
+  * SRANDOM: a new variable that expands to a 32-bit random number that is not
+    produced by an LCRNG, and uses getrandom/getentropy, falling back to
+    /dev/urandom or arc4random if available. There is a fallback generator if
+    none of these are available.
+  * shell-transpose-words: a new bindable readline command that uses the same
+    definition of word as shell-forward-word, etc.
+  * The shell now adds default bindings for shell-forward-word,
+    shell-backward-word, shell-transpose-words, and shell-kill-word.
+  * Bash now allows ARGV0 appearing in the initial shell environment to set $0.
+  * If `unset' is executed without option arguments, bash tries to unset a shell
+    function if a name argument cannot be a shell variable name because it's not
+    an identifier.
+  * The `test -N' operator uses nanosecond timestamp granularity if it's
+    available.
+  * Bash posix mode now treats assignment statements preceding shell function
+    definitions the same as in its default mode, since POSIX has changed and
+    no longer requires those assignments to persist after the function returns
+    (POSIX interp 654).
+  * BASH_REMATCH is no longer readonly.
+  * wait: has a new -p VARNAME option, which stores the PID returned by `wait -n'
+    or `wait' without arguments.
+  * Sorting the results of pathname expansion now uses byte-by-byte comparisons
+    if two strings collate equally to impose a total order; the result of a
+    POSIX interpretation.
+  * Bash now allows SIGINT trap handlers to execute recursively.
+  * Bash now saves and restores state around setting and unsetting posix mode,
+    instead of having unsetting posix mode set a known state.
+  * Process substitution is now available in posix mode.
+  * READLINE_MARK: a new variable available while executing commands bound with
+    `bind -x', contains the value of the mark.
+  * Bash removes SIGCHLD from the set of blocked signals if it's blocked at shell
+    startup.
+  * `test -v N' can now test whether or not positional parameter N is set.
+  * `local' now honors the `-p' option to display all local variables at the
+    current context.
+  * The `@a' variable transformation now prints attributes for unset array
+    variables.
+  * The `@A' variable transformation now prints a declare command that sets a
+    variable's attributes if the variable has attributes but is unset.
+  * `declare' and `local' now have a -I option that inherits attributes and
+    value from a variable with the same name at a previous scope.
+  * When run from a -c command, `jobs' now reports the status of completed jobs.
+  * New `U', `u', and `L' parameter transformations to convert to uppercase,
+    convert first character to uppercase, and convert to lowercase,
+    respectively.
+  * PROMPT_COMMAND: can now be an  array variable, each element of which can
+    contain a command to be executed like a string PROMPT_COMMAND variable.
+  * `ulimit' has a -R option to report and set the RLIMIT_RTTIME resource.
+  * Associative arrays may be assigned using a list of key-value pairs within
+    a compound assignment. Compound assignments where the words are not of
+    the form [key]=value are assumed to be key-value assignments. A missing or
+    empty key is an error; a missing value is treated as NULL. Assignments may
+    not mix the two forms.
+  * New `K' parameter transformation to display associative arrays as key-
+    value pairs.
+  * Writing history to syslog now handles messages longer than the syslog max
+    length by writing multiple messages with a sequence number.
+  * SECONDS and RANDOM may now be assigned using arithmetic expressions, since
+    they are nominally integer variables. LINENO is not an integer variable.
+  * Bash temporarily suppresses the verbose option when running the DEBUG trap
+    while running a command from the `fc' builtin.
+  * `wait -n' now accepts a list of job specifications as arguments and will
+    wait for the first one in the list to change state.
+  * The associative array implementation can now dynamically increase the
+    size of the hash table based on insertion patterns.
+  * HISTFILE is now readonly in a restricted shell.
+  * The bash malloc now returns memory that is 16-byte aligned on 64-bit
+    systems.
+  * If the hash builtin is listing hashed filenames portably, don't print
+    anything if the table is empty.
+  * GLOBIGNORE now ignores `.' and `..' as a terminal pathname component.
+  * Bash attempts to optimize away forks in the last command in a function body
+    under appropriate circumstances.
+  * The globbing code now uses fnmatch(3) to check collation elements (if
+    available) even in cases without multibyte characters.
+  * The `fg' and `bg' builtins now return an error in a command substitution
+    when asked to restart a job inherited from the parent shell.
+  * The shell now attempts to unlink all FIFOs on exit, whether a consuming
+    process has finished with them or not.
+  * There is a new contributed loadable builtin: asort.
+- Remove patch bash-4.0-security.patch  as now solved upstream
+- Port and modify patches
+  * bash-2.03-manual.patch
+  * bash-3.2-printf.patch
+  * bash-4.0-setlocale.dif
+  * bash-4.1-completion.dif
+  * bash-4.2-nscdunmap.dif
+  * bash-4.3-2.4.4.patch
+  * bash-4.3-loadables.dif
+  * bash-4.3-pathtemp.patch
+  * bash-4.3-sigrestart.patch
+- Port and rename patch bash-5.0.dif which is now bash-5.1.dif
 
 -------------------------------------------------------------------
 Wed Sep 23 16:30:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
