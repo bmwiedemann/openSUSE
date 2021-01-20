@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:06:26 UTC 2021 - psimons@suse.com
+
+- Update hlint to version 3.2.6.
+  3.2.6, released 2020-12-30
+      Fixes to the release generation script
+
+-------------------------------------------------------------------
+Wed Dec 30 17:54:00 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.2.5.
+  3.2.5, released 2020-12-30
+      Fixes to the release generation script
+  3.2.4, released 2020-12-30
+      #1193, add warnings for redundant flip
+      #1183, allow matches where users specify unnecessary brackets
+      #1177, remove suggestions for fromMaybe False/fromMaybe True
+      #1176, suggest use of unzip
+      #1159, spot redundant brackets due to fixities, default ignored
+      #1172, suggest reusing fromLeft/fromRight
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
