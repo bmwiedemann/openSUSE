@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-wai
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name wai
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.2.2.1
+Version:        3.2.3
 Release:        0
 Summary:        Web Application Interface
 License:        MIT
@@ -31,7 +31,6 @@ BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-vault-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}

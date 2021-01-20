@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 19 09:01:12 UTC 2021 - psimons@suse.com
+
+- Update wai to version 3.2.3.
+  ## 3.2.3
+
+  * Add documentation recommending streaming request bodies. [#818](https://github.com/yesodweb/wai/pull/818)
+  * Add two functions, `consumeRequestBodyStrict` and `consumeRequestBodyLazy`,
+    that are synonyms for `strictRequestBody` and `lazyRequestBody`. [#818](https://github.com/yesodweb/wai/pull/818)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
