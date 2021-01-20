@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 20 13:30:15 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.7.0
+ see installed CHANGELOG.md
+
+  ## 1.7.0
+  
+  ### Changes
+  
+  * Allow gem installation on Ruby 3.0
+  
+    Pavel Lobashov
+  
+  * Allow TTC files to be read from IO object
+  
+    Tom de Grunt
+  
+
+-------------------------------------------------------------------
 Fri Sep  4 08:48:30 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Fix License (Ruby or GPL-2.0 or GPL-3.0)

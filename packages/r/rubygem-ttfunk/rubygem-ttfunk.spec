@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ttfunk
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,20 +24,19 @@
 #
 
 Name:           rubygem-ttfunk
-Version:        1.6.2.1
+Version:        1.7.0
 Release:        0
 %define mod_name ttfunk
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby => 2.4}
-BuildRequires:  %{ruby < 3}
+BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://prawnpdf.org
+BuildRequires:  ruby-macros >= 5
+URL:            https://prawnpdf.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        TrueType Font Metrics Parser
-License:        Ruby or GPL-2.0 or GPL-3.0
+License:        Ruby OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Languages/Ruby
 
 %description
