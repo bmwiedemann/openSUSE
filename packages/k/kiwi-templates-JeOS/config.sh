@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -41,8 +41,7 @@ echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 #======================================
 # prepare for setting root pw, timezone
 #--------------------------------------
-echo ** "reset machine settings"
-sed -i 's/^root:[^:]*:/root:*:/' /etc/shadow
+echo "** reset machine settings"
 rm -f /etc/machine-id \
       /var/lib/zypp/AnonymousUniqueId \
       /var/lib/systemd/random-seed \

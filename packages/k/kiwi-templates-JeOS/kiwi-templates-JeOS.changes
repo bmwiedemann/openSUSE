@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 19 13:05:39 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Drop /etc/shadow modification in config.sh, fixed in system-user-root
+  meanwhile
+- Fix bare *** in config.sh
+
+-------------------------------------------------------------------
 Wed Dec  2 14:28:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Include xen and qemu-guest packages for aarch64 too

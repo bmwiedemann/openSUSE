@@ -168,4 +168,14 @@
     <comment></comment>
     <requestid>852648</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>ab4c6718ddf8c8b76bf77abffd73cf61</srcmd5>
+    <version>84.87</version>
+    <time>1611163418</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop /etc/shadow modification in config.sh, fixed in system-user-root
+  meanwhile
+- Fix bare *** in config.sh</comment>
+    <requestid>864308</requestid>
+  </revision>
 </revisionlist>
