@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:48:32 UTC 2021 - psimons@suse.com
+
+- Update aeson to version 1.5.5.1.
+  ### 1.5.5.1
+  * Fix a bug in `FromJSON QuarterOfYear` instance.
+
+  ### 1.5.5.0
+  * Add instances for `Month`, `Quarter` and `QuarterOfYear` (from `time-1.11`), thanks to Oleg Grenrus.
+
+  * The aeson repository has been moved to the haskell github organization!
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -350,4 +350,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>update haskell stack in openSUS</comment>
     <requestid>857215</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2ac03cfab2fd7835970f63a8f3fb63c6</srcmd5>
+    <version>1.5.5.1</version>
+    <time>1611163453</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>862322</requestid>
+  </revision>
 </revisionlist>
