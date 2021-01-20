@@ -7,4 +7,12 @@
     <comment>update haskell stack in openSUS</comment>
     <requestid>857173</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>55149139347efe254c90eba68af3ac12</srcmd5>
+    <version>0.18.2</version>
+    <time>1611163576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update of haskell stack in oSUSE:Factory</comment>
+    <requestid>864463</requestid>
+  </revision>
 </revisionlist>
