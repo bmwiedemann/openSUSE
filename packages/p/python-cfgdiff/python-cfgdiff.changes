@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 04:37:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Also clone the cfgdiff.1 manual page as an alternative 
+
+-------------------------------------------------------------------
 Tue Nov 24 16:22:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add build dependency and recommends for python-reconfigure

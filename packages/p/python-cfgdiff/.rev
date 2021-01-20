@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>850613</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f72d7afa588451279ebaf86d416f938e</srcmd5>
+    <version>0.0.0+git.1487961889.dc4e96e</version>
+    <time>1611163654</time>
+    <user>dimstar_suse</user>
+    <comment>- Also clone the cfgdiff.1 manual page as an alternative</comment>
+    <requestid>864494</requestid>
+  </revision>
 </revisionlist>
