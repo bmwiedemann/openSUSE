@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>808517</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>afd21dfc234f2c0d816cf0dc9a3d7182</srcmd5>
+    <version>1.1.11</version>
+    <time>1611163661</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from python3_only to python_alternative for genfire script</comment>
+    <requestid>864503</requestid>
+  </revision>
 </revisionlist>

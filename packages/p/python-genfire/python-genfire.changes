@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 05:33:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch from python3_only to python_alternative for genfire script
+
+-------------------------------------------------------------------
 Sat May 23 02:18:34 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix python Requires tag. 

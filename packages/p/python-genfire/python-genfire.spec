@@ -1,7 +1,7 @@
 #
 # spec file for package python-genfire
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ Requires:       python-scipy >= 0.19.0
 Requires:       python-setuptools
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -60,13 +62,20 @@ oriented projection images
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/genfire
 
 %check
 # No test given
 
+%post
+%python_install_alternative genfire
+
+%postun
+%python_uninstall_alternative genfire
+
 %files %{python_files}
 %doc README.md
-%python3_only %{_bindir}/genfire
+%python_alternative %{_bindir}/genfire
 %{python_sitelib}/*
 
 %changelog
