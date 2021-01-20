@@ -21,13 +21,13 @@
 # Consider only updating the sources in lockstep.
 # 
 Name:           vulkan-headers
-Version:        1.2.162.0
+Version:        1.2.165
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Headers
-Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/sdk-%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/v%version.tar.gz
 BuildRequires:  cmake >= 2.8.11
 BuildArch:      noarch
 Requires:       pkgconfig(wayland-client)
@@ -45,7 +45,7 @@ This package contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%autosetup -n Vulkan-Headers-sdk-%version
+%autosetup -n Vulkan-Headers-%version
 
 %build
 %cmake \

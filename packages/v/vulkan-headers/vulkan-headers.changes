@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 29 12:32:48 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.165:
+  * loader: Properly check for elevated permissions 
+  * loader: Remove SEEK_END usage
+  * Rename LIB_SUFFIX to VULKAN_LIB_SUFFIX 
+  * build: Update known-good files for 1.2.165 header 
+
+-------------------------------------------------------------------
 Mon Dec 14 19:56:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.162.0 (sdk)
