@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-wai-extra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name wai-extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.4.1
+Version:        3.1.5
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
