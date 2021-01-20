@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 19 09:38:52 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.4.0
+  * Change salt-formulas-configuration requirement in SLE12 codestream
+  to a recommendation
+  (bsc#1177860)
+
+-------------------------------------------------------------------
 Tue Jan 19 08:32:50 UTC 2021 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Remove --no-overwrite-sshkey option from the formula
@@ -30,7 +38,7 @@ Thu Sep  3 06:37:50 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.3.9
   * Add lock mechanism to the cluster join process to avoid issues
-  when multiple nodes are joining in parallel 
+  when multiple nodes are joining in parallel
   (jsc#SLE-4047)
 
 -------------------------------------------------------------------
