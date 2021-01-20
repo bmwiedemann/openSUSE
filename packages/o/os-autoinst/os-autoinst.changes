@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 19 15:46:34 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1611071183.d4854e5a:
+  * tools/tidy: Use the perltidy version from the calling repo
+  * docker: Upgrade os-autoinst_dev image to Tumbleweed
+  * Fix 14-isotovideo.t by using Perl's qx()
+  * Use Mojolicious::Routes::Route::any instead of deprecated …::route
+  * Update Perl::Tidy to 20210111
+
+-------------------------------------------------------------------
 Wed Jan 13 04:22:57 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1610429804.fb1c49e4:
