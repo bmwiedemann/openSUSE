@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 19 07:46:43 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add patch to fix infinite loop in KWin on XServer exit:
+  * 0001-Let-QXcbConnection-getTimestamp-properly-exit-when-X.patch
+- Spec file cleanup, remove conditionals for Leap 42.x
+
+-------------------------------------------------------------------
 Tue Dec 29 11:48:35 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add patch to avoid excessive use of memory by lconvert:

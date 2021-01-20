@@ -25,15 +25,8 @@
 %global gles 0
 %endif
 
-%if 0%{?suse_version} >= 1330
 %global vulkan 1
 %bcond_without harfbuzz
-%else
-# Harfbuzz too old
-%bcond_with harfbuzz
-# Vulkan headers too old
-%global vulkan 0
-%endif
 
 Name:           libqt5-qtbase
 Version:        5.15.2
@@ -72,6 +65,8 @@ Patch24:        fix-fixqt4headers.patch
 # patches 1000-2000 and above from upstream 5.15 branch #
 # Merged: https://bugreports.qt.io/browse/QTBUG-87010
 Patch1000:      0001-Fix-allocated-memory-of-QByteArray.patch
+# Merged: https://bugreports.qt.io/browse/QTBUG-88435
+Patch1001:      0001-Let-QXcbConnection-getTimestamp-properly-exit-when-X.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
