@@ -1,8 +1,8 @@
 #
 # spec file for package notcurses
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,13 @@
 
 
 %global sover   2
+%ifarch %{ix86} %{arm}
+%bcond_with  pandoc
+%else
+%bcond_without  pandoc
+%endif
 Name:           notcurses
-Version:        2.0.10
+Version:        2.1.5
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -33,18 +38,20 @@ BuildRequires:  doctest-devel >= 2.3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libunistring-devel
-BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  python3-cffi
 BuildRequires:  python3-devel
-BuildRequires:  python3-pypandoc
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(libavcodec) >= 57.0
 BuildRequires:  pkgconfig(libavformat) >= 57.0
 BuildRequires:  pkgconfig(libavutil) >= 56.0
 BuildRequires:  pkgconfig(libswscale) >= 5.0
+BuildRequires:  pkgconfig(readline) >= 8.0
 BuildRequires:  pkgconfig(tinfo) >= 6.1
+%if %{with pandoc}
+BuildRequires:  python3-pypandoc
+%endif
 
 %description
 notcurses facilitates the creation of modern TUI programs, making
@@ -142,10 +149,15 @@ library.
 #sed -e '/^#!\//, 1d' -i python/src/notcurses/notcurses.py
 
 %build
-%cmake -DUSE_DOCTEST=OFF -DUSE_STATIC=OFF
+%cmake -DUSE_DOCTEST=OFF -DUSE_STATIC=OFF \
+%if %{with pandoc}
+     -DUSE_PANDOC=ON
+%else
+     -DUSE_PANDOC=OFF
+%endif
 %make_build
 cd ../python
-export CFLAGS="%optflags -I../include -L../build"
+export CFLAGS="%{optflags} -I../include -L../build"
 %python3_build
 
 %install
@@ -179,6 +191,7 @@ cd build
 %{_bindir}/notcurses-input
 %{_bindir}/notcurses-tetris
 %{_bindir}/notcurses-view
+%if %{with pandoc}
 %{_mandir}/man1/notcurses-demo.1%{?ext_man}
 %{_mandir}/man1/notcurses-input.1%{?ext_man}
 %{_mandir}/man1/notcurses-tester.1%{?ext_man}
@@ -186,6 +199,7 @@ cd build
 %{_mandir}/man1/notcurses-view.1%{?ext_man}
 %{_mandir}/man1/ncls.1%{?ext_man}
 %{_mandir}/man1/ncneofetch.1%{?ext_man}
+%endif
 %{_datadir}/notcurses/
 
 %files -n notcurses-devel
@@ -195,7 +209,9 @@ cd build
 %dir %{_libdir}/cmake/Notcurses
 %{_libdir}/cmake/Notcurses/NotcursesConfig.cmake
 %{_libdir}/cmake/Notcurses/NotcursesConfigVersion.cmake
+%if %{with pandoc}
 %{_mandir}/man3/*.3%{?ext_man}
+%endif
 
 %files -n notcurses++-devel
 %{_includedir}/ncpp

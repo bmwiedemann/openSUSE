@@ -55,4 +55,41 @@
     <comment></comment>
     <requestid>853714</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f4a69e58c65a7bb256aa623dcbf087f</srcmd5>
+    <version>2.1.5</version>
+    <time>1611163604</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build without pandoc on 32bit x86 and arm
+
+- Update to version 2.1.5
+  * Notcurses now depends on GNU Readline at build and runtime,
+    entirely for the benefit of direct mode, which now prepares
+    GNU Readline for safe use (unless the new
+    NCDIRECT_OPTIONS_NO_READLINE is used).  ncplane_putstr_yx(),
+    ncplane_putstr_stained(), and ncplane_putnstr_yx() now return
+    the number of columns output, as long documented (they were
+    mistakenly returning the number of bytes).
+  * cplane_abs_yx() has been added, returning the absolute
+    coordinates of the plane's origin (i.e. coordinates relative
+    to its pile).
+- Update to version 2.1.4
+  * Direct mode now supports NCDIRECT_OPTION_NO_QUIT_SIGHANDLERS,
+    and by default installs signal handlers similar to those of
+    fullscreen mode. They will attempt to reset the terminal, and
+    propagate the signal.
+  * Add channels_fg_palindex() and channels_bg_palindex().
+- Update to version 2.1.3
+  * ncdirect_styles_{set, on, off}() have been deprecated in favor
+    of ncdirect_{set, on, off}_styles(), to match ncplane_
+    equivalents.
+  * ncdirect_raster_frame() no longer requires blitter nor scale.
+  * ncdirect_{fg, bg}_{default, rgb}() have been deprecated in
+    favor of ncdirect_set_{fg, bg}_{default, rgb}(), to match
+    ncplane.
+- Update to version 2.1.2
+  * Add notcurses_linesigs_enable() and notcurses_linesigs_disable().
+  * Divide ncdirect_render_image() into component</comment>
+    <requestid>864405</requestid>
+  </revision>
 </revisionlist>
