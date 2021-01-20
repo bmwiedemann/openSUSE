@@ -1,7 +1,7 @@
 name:          reducers
 category:      Data, Math, Numerical, Semigroups
 version:       3.12.3
-x-revision: 1
+x-revision: 2
 license:       BSD3
 cabal-version: >= 1.6
 license-file:  LICENSE
@@ -37,7 +37,7 @@ library
     base                   >= 4        && < 5,
     array                  >= 0.3      && < 0.6,
     transformers           >= 0.2      && < 0.6,
-    bytestring             >= 0.9.1    && < 0.11,
+    bytestring             >= 0.9.1    && < 0.12,
     containers             >= 0.3      && < 0.7,
     fingertree             >= 0.1      && < 0.2,
     hashable               >= 1.1.2.1  && < 1.4,
