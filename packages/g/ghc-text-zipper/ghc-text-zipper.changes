@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:06:31 UTC 2021 - psimons@suse.com
+
+- Update text-zipper to version 0.11.
+  0.11
+  ----
+
+  API changes:
+   * Added `gotoBOF`, `gotoEOF`, `killToBOF`, and `killToEOF` functions
+     (thanks Itai Y. Efrat)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
