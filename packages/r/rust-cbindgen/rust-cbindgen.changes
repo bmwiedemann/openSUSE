@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 12 08:25:59 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.16.0
+   * Remove artificial restriction on lifetime parameters on enums
+   * Add an option for converting usize/isize into size_t/ptrdiff_t.
+   * Allow controlling the cargo profile used for expansion.
+   * Support wider range of expressions in enum discriminants
+   * Support generation of Cython bindings
+   * Fixed some issues with style=tag and recursive structs
+   * Default C style to Both (as specified in docs)
+   * Fix resolution of path dependencies from certain modules.
+   * Support inlined definitions for tuple variants with a single field in C
+
+-------------------------------------------------------------------
 Tue Oct 13 08:18:32 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to 0.15.0
