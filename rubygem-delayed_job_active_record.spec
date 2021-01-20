@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-delayed_job_active_record
-Version:        4.1.4
+Version:        4.1.5
 Release:        0
 %define mod_name delayed_job_active_record
 %define mod_full_name %{mod_name}-%{version}
