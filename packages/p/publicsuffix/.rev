@@ -745,4 +745,12 @@ Now with build cycle removed.</comment>
   * Del xenapponazure.com from Private (#1141)</comment>
     <requestid>859021</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>18061f5e07687f1f9e77050cab9b5a2f</srcmd5>
+    <version>20210108</version>
+    <time>1611163395</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>864226</requestid>
+  </revision>
 </revisionlist>

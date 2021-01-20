@@ -1,7 +1,7 @@
 #
 # spec file for package publicsuffix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 yaneti@declera.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           publicsuffix
-Version:        20201223
+Version:        20210108
 Release:        0
 Summary:        Cross-vendor public domain suffix database
 License:        MPL-2.0
@@ -45,7 +45,7 @@ psl-make-dafsa \
     public_suffix_list.dat public_suffix_list.dafsa
 
 %check
-make %{?_smp_mflags} test-syntax
+%make_build test-syntax
 
 %install
 install -m 644 -p -D public_suffix_list.dat \
