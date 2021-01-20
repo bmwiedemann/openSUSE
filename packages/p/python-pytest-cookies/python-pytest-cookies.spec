@@ -17,7 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%if %{?python3_version_nodots} == 38
+%define pythons python3 python38
+%else
+%define pythons python3
+%endif
 Name:           python-pytest-cookies
 Version:        0.5.1
 Release:        0
