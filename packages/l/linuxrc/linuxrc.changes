@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Tue Jan 19 10:15:46 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#241
+- fix writing out of menu item array bounds (bsc#1180792)
+- use best fitting module config entry
+- update module loaded state properly
+- ensure modules are actually loaded in every code path
+- fix buffer overflow triggered by very long module descriptions
+- 7.0.25
+
+--------------------------------------------------------------------
 Wed Jan 13 16:35:16 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#239
