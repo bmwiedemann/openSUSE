@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jan 16 19:01:46 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.3:
+  + Highlighted bugfixes:
+    - Fix ogg playback regression for ogg files that also have ID3
+      or APE tags
+    - compositor: fix artefacts and invalid memory access when
+      blending subsampled formats
+    - Exported mini object ref/unref/copy functions for use in
+      bindings such as gstreamer-sharp
+    - Add support for Apple silicon (M1) to cerbero package builder
+    - Ship RIST plugin in binary packages
+    - Various stability, performance and reliability improvements
+    - Memory leak fixes
+    - Build fixes
+  + gstreamer:
+    - gst: Add non-inline ref/unref/copy/replace methods for
+      various mini objects (buffer, bufferlist, caps, context,
+      event, memory, message, promise, query, sample, taglist, uri)
+      for use in bindings such as gstreamer-sharp.
+    - harness: don't use GST_DEBUG_OBJECT with GstHarness which is
+      not a GObject.
+
+-------------------------------------------------------------------
 Wed Dec 30 15:46:28 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Move gst-plugins-doc-cache-generator to devel subpackage
