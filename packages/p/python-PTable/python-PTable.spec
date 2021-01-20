@@ -43,17 +43,24 @@ sed -i '1{/^#!/d}' prettytable/prettytable.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ptable
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # No tests available in package, github has no tags
+
+%post
+%python_install_alternative ptable
+
+%postun
+%python_uninstall_alternative ptable
 
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license COPYING
 %dir %{python_sitelib}/prettytable/
 %dir %{python_sitelib}/prettytable/__pycache__/
-%python3_only %{_bindir}/ptable
+%python_alternative %{_bindir}/ptable
 %{python_sitelib}/PTable-%{version}-py%{python_version}.egg-info/
 %{python_sitelib}/prettytable/*.py
 %pycache_only %{python_sitelib}/prettytable/__pycache__/*.pyc

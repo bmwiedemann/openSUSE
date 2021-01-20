@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:09:31 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use python_alternative, fixing multi Python 3 builds
+
+-------------------------------------------------------------------
 Sat May  9 12:50:20 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Clean up spec file dependencies. 
