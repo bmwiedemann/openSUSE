@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-QuoteLike
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-PPIx-QuoteLike
-Version:        0.013
-Release:        0
 %define cpan_name PPIx-QuoteLike
+Name:           perl-PPIx-QuoteLike
+Version:        0.014
+Release:        0
 Summary:        Parse Perl string literals and string-literal-like things
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/W/WY/WYANT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build)
@@ -46,7 +44,7 @@ like string literals. Its real reason for being is to find interpolated
 variables for Perl::Critic policies and similar code.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -61,7 +59,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

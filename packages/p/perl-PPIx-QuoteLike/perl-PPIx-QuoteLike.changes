@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 15 03:07:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.014
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.014		2021-01-14	T. R. Wyant
+      Add Travis CI testing.
+
+      Use GitHub as bug tracker. R.I.P. rt.cpan.org.
+
+-------------------------------------------------------------------
 Sat Oct 10 03:08:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.013
