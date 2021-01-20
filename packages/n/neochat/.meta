@@ -1,0 +1,9 @@
+<package name="neochat" project="openSUSE:Factory">
+  <title>A chat client for Matrix, the decentralized communication protocol</title>
+  <description>Neochat is a client for Matrix, the decentralized communication protocol for instant
+messaging.
+
+</description>
+  <devel project="KDE:Extra" package="neochat"/>
+  <url>https://www.kde.org</url>
+</package>

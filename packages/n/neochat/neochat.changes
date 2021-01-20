@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sat Jan 16 10:14:57 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Adjust spec file to conform to the KDE team's guidelines
+
+-------------------------------------------------------------------
+Wed Jan 13 11:49:59 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.1
+  - NeoChat doesn't require a .well-know configuration in the
+    server to work.
+  - Edited messages won’t show up duplicated anymore.
+  - NeoChat now ask for consent to terms and conditions if required
+    instead of displaying nothing.
+  - Users avatar in the room list are now displayed correctly.
+  - Fix image saving
+  - Various graphic glitches have been fixed.
+- Switch source from invent.kde.org to download.kde.org, because in
+  git is not always the newest tar.
+- Add language subpackages.
+
+-------------------------------------------------------------------
+Mon Jan  4 14:16:53 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Add missing require libqt5-qtquickcontrols.
+
+-------------------------------------------------------------------
+Wed Dec 23 14:17:40 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Change from git version to version 1.0
+
+-------------------------------------------------------------------
+Mon Nov 23 15:12:10 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
