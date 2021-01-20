@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 16 19:31:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.3:
+  + assrender: fix mutex handling in certain flushing/error
+    situations
+  + dvbsuboverlay: Add support for dynamic resolution update
+  + dashsink: fix critical log of dynamic pipeline
+  + d3d11shader: Fix ID3DBlob object leak
+  + d3d11videosink: Prepare window once streaming started
+  + decklinkaudiosrc: Fix duration of the first audio frame after
+    each discont
+  + intervideosrc: fix negotiation of interlaced caps
+  + msdk:
+    - Needn't close mfx session when failed, fixes double free /
+      potential crash
+    - Check GstMsdkContext instead of mfxSession instance
+  + srt: fix locking when retrieving stats
+  + rtmp2src: fix leaks when connection is cancelled during startup
+    or connection fails
+
+-------------------------------------------------------------------
 Wed Dec 16 21:10:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop GPL-2.0-or-later from license tag, upstream moved to
