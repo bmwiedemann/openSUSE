@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-semigroupoids
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,16 @@
 
 
 %global pkg_name semigroupoids
-%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.3.4
+Version:        5.3.5
 Release:        0
 Summary:        Semigroupoids: Category sans id
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-bifunctors-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-contravariant-devel
@@ -42,9 +39,6 @@ BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-doctest-devel
-%endif
 
 %description
 Provides a wide array of (semi)groupoids and operations for working with them.
@@ -95,16 +89,12 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-
-%check
-%cabal_test
 
 %post devel
 %ghc_pkg_recache

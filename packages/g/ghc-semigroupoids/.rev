@@ -179,4 +179,12 @@ A 'Category' is any 'Semigroupoid' for which the Yoneda lemma holds.</comment>
     <comment>update haskell stack in openSUS</comment>
     <requestid>857549</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e649ac9ba8294c208fc09c87325f5a65</srcmd5>
+    <version>5.3.5</version>
+    <time>1611163482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>862329</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-profunctors
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name profunctors
 Name:           ghc-%{pkg_name}
-Version:        5.6
+Version:        5.6.1
 Release:        0
 Summary:        Profunctors
 License:        BSD-3-Clause

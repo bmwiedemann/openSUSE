@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:48:22 UTC 2021 - psimons@suse.com
+
+- Update semigroupoids to version 5.3.5.
+  5.3.5 [2020.12.31]
+  ------------------
+  * The build-type has been changed from `Custom` to `Simple`.
+    To achieve this, the `doctests` test suite has been removed in favor of using
+    [`cabal-docspec`](https://github.com/phadej/cabal-extras/tree/master/cabal-docspec)
+    to run the doctests.
+  * Explicitly mark modules as `Safe`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
