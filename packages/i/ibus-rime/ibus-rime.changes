@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 19 23:59:31 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to version 1.4.1~git20201204.bfabe67:
+  * Delete install.sh
+  * Delete install-static.sh
+  * build: Substitute paths in rime.xml
+  * build: Use CMake’s install manifest for uninstallation detection
+  * build: Move install logic to CMake
+  * docs(README.md): clarify license
+- Remove Requires: brise, since it has been deprecated upstream
+  and already recommended by librime
+
+-------------------------------------------------------------------
 Mon Nov  9 13:07:56 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Set Requires tag for brise, ibus-rime need it. (boo#1178582)

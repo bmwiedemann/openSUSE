@@ -17,7 +17,7 @@
 
 
 Name:           ibus-rime
-Version:        1.4.1~git20200712.33b2755
+Version:        1.4.1~git20201204.bfabe67
 Release:        0
 Summary:        Rime for Linux/IBus
 License:        GPL-3.0-or-later
@@ -37,7 +37,6 @@ BuildRequires:  libkyotocabinet-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  librime-devel >= 1.0
 BuildRequires:  opencc-devel
-Requires:       brise
 Requires:       rime
 
 %description
