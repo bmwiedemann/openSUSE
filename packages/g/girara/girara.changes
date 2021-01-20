@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 20 07:46:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.5
+  * Set RGBA visual
+  * Update translations
+  * Set meson warning_level 
+
+-------------------------------------------------------------------
 Tue Feb 11 06:57:43 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.4

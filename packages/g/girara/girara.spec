@@ -1,7 +1,7 @@
 #
 # spec file for package girara
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %define libname libgirara-gtk3
 %define so_ver  3
 Name:           girara
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
-URL:            http://pwmt.org/projects/girara
-Source0:        https://git.pwmt.org/pwmt/girara/-/archive/%{version}/%{name}-%{version}.tar.gz
-# Main homepage looks dead :(
-#Source0:        http://pwmt.org/projects/girara/download/%{name}-%{version}.tar.xz
+URL:            https://pwmt.org/projects/girara/
+Source0:        https://pwmt.org/projects/girara/download/girara-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  gettext
 BuildRequires:  libxml2-tools
