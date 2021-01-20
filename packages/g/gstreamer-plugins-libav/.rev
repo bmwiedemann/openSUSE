@@ -183,4 +183,12 @@
     <comment>Fix typo in option passed to meson during build.</comment>
     <requestid>859478</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c830fcc9df016016385cd2ad1dc5506d</srcmd5>
+    <version>1.18.3</version>
+    <time>1611163438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864321</requestid>
+  </revision>
 </revisionlist>
