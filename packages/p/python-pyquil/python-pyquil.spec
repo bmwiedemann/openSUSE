@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyquil
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define packagename pyquil
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyquil
-Version:        2.23.2
+Version:        2.27.0
 Release:        0
 Summary:        A Python library to generate Quantum Instruction Language (Quil) Programs
 License:        Apache-2.0
@@ -29,6 +30,7 @@ Source:         https://github.com/rigetti/pyquil/archive/v%{version}.tar.gz#/%{
 BuildRequires:  %{python_module antlr4-python3-runtime >= 4.7.2}
 BuildRequires:  %{python_module immutables}
 BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module lark-parser}
 BuildRequires:  %{python_module networkx >= 2.0.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
@@ -45,6 +47,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-antlr4-python3-runtime >= 4.7.2
 Requires:       python-immutables
 Requires:       python-ipython
+Requires:       python-lark-parser
 Requires:       python-networkx >= 2.0.0
 Requires:       python-numpy
 Requires:       python-requests

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jan 19 14:07:30 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Disable build for python36 because scipy dependency.
+- Update to version 2.27.0.
+  * Bump RPCQ dependency to 3.6.0.
+  * Tests can be run in parallel.
+  * Fix hanging test due to ZMQ bug.
+  * Fix unitary comparison in Quil compilation test .
+  * Fix parsing comments in Lark grammar.
+- Updates for version 2.26.0.
+  * Quil-T brings the dimension of time to your quantum programs!
+  * Quil-T is an extension of Quil which allows one to develop 
+    quantum programs at the level of pulses and waveforms and 
+    brings an unprecedented level of fine-grained control over 
+    the QPU.
+  * Unpacking bitstrings is significantly faster.
+  * Parsing is now performed using Lark rather than ANTLR, often 
+    allowing a 10x improvement in parsing large and complex 
+    programs.
+  * Gates now generally allow a "formal" qubit label as in 
+    DEFCIRCUIT, rather that requiring a numeric index.
+  * Program objects come with additional Quil-T related properties,
+    such as calibrations, waveforms, and frames.
+  * The AbstractCompiler classes come with tools for performing 
+    calibration of programs. Namely, get_calibration_program 
+    provides a program for calibrating against recent QPU settings. 
+    rewrite_arithmetic now converts phase angle from radians to 
+    revolutions.
+  * Readout is more permissive, and does not require the 
+    destination to be named "ro".
+  * The default value for QPU_COMPILER_URL has been updated to 
+    point to Rigetti's translation service. This changes allows one
+    to use the translation service to translate a Quil- program and
+    receive the binary payload without having a QPU reservation.
+- Updates for version 2.25.0.
+  * Timeout configuration has been revamped. get_qc now accepts a 
+    compiler_timeoutoption, and QVMCompiler and QPUCompiler provide
+    a set_timeout method, which shouldgreatly simplify the task of 
+    changing the default timeout. QVMCompiler also provides a 
+    quilc_client property so that it shares the same interface as 
+    QPUCompiler. Documentation has been updated to reflect these 
+    changes.
+- Updates for version 2.24.0.
+  * run_and_measure now only measures the qubits that are used in a 
+    program (rather than all qubits on the device) when the target
+    QAM is a QVM without noise. This prevents the QVM from 
+    exhausting memory when it tries to allocate for e.g. 32 qubits
+    when only e.g. 2 qubits are used in the program
+  * Include a py.typed so that libraries that depend on pyquil can 
+    validate their typing against it
+  * Fix Apache 2 license
+  * Removed warnings expected in normal workflows that cannot be 
+    avoided programmatically. This included the warning about 
+    passing native Quil to native_quil_to_executable. Documentation 
+    has been updated to clarify expected behavior.
+
+-------------------------------------------------------------------
 Tue Aug 18 08:09:19 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Initial package release.
