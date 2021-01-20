@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 19 14:27:15 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Catch exceptions during cloning, display an error popup
+  instead of crash (bsc#1181075)
+- 4.3.18
+
+-------------------------------------------------------------------
 Fri Dec 18 13:44:58 UTC 2020 - Stefan Schubert <schubi@suse.de>
 
 - Updating warning popup if the user has skipped the registration.
