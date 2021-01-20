@@ -1,0 +1,5 @@
+<package name="php8" project="openSUSE:Factory">
+  <title>php8</title>
+  <description>PHP8</description>
+  <devel project="devel:languages:php" package="php8"/>
+</package>

@@ -1,0 +1,40 @@
+Index: php-8.0.0/php.ini-production
+===================================================================
+--- php-8.0.0.orig/php.ini-production	2020-11-24 18:04:03.000000000 +0100
++++ php-8.0.0/php.ini-production	2021-01-07 10:13:37.934622775 +0100
+@@ -742,7 +742,7 @@ default_charset = "UTF-8"
+ ;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ ; UNIX: "/path1:/path2"
+-;include_path = ".:/php/includes"
++include_path = ".:/usr/share/php8:/usr/share/php/PEAR"
+ ;
+ ; Windows: "\path1;\path2"
+ ;include_path = ".;c:\php\includes"
+@@ -969,7 +969,7 @@ cli_server.color = On
+ [Date]
+ ; Defines the default timezone used by the date functions
+ ; http://php.net/date.timezone
+-;date.timezone =
++date.timezone = 'UTC'
+ 
+ ; http://php.net/date.default-latitude
+ ;date.default_latitude = 31.7667
+@@ -1154,7 +1154,7 @@ mysqli.max_persistent = -1
+ 
+ ; Allow or prevent persistent links.
+ ; http://php.net/mysqli.allow-persistent
+-mysqli.allow_persistent = On
++mysqli.allow_persistent = Off
+ 
+ ; Maximum number of links.  -1 means no limit.
+ ; http://php.net/mysqli.max-links
+@@ -1347,7 +1347,7 @@ session.save_handler = files
+ ; where MODE is the octal representation of the mode. Note that this
+ ; does not overwrite the process's umask.
+ ; http://php.net/session.save-path
+-;session.save_path = "/tmp"
++session.save_path = "/var/lib/php8"
+ 
+ ; Whether to use strict session mode.
+ ; Strict session mode does not accept an uninitialized session ID, and

@@ -1,0 +1,13 @@
+Index: php-8.0.0RC4/ext/standard/config.m4
+===================================================================
+--- php-8.0.0RC4.orig/ext/standard/config.m4	2020-11-10 11:57:27.000000000 +0100
++++ php-8.0.0RC4/ext/standard/config.m4	2020-11-15 09:13:55.955213068 +0100
+@@ -271,7 +271,7 @@ dnl
+ dnl If one of them is missing, use our own implementation, portable code is then possible
+ dnl
+ dnl TODO This is currently always enabled
+-if test "$ac_cv_crypt_blowfish" = "no" || test "$ac_cv_crypt_des" = "no" || test "$ac_cv_crypt_ext_des" = "no" || test "$ac_cv_crypt_md5" = "no" || test "$ac_cv_crypt_sha512" = "no" || test "$ac_cv_crypt_sha256" = "no" || test "$ac_cv_func_crypt_r" != "yes" || true; then
++if test "$ac_cv_crypt_blowfish" = "no" || test "$ac_cv_crypt_des" = "no" || test "$ac_cv_crypt_md5" = "no" || test "$ac_cv_crypt_sha512" = "no" || test "$ac_cv_crypt_sha256" = "no" || test "$ac_cv_func_crypt_r" != "yes"; then
+   AC_DEFINE_UNQUOTED(PHP_USE_PHP_CRYPT_R, 1, [Whether PHP has to use its own crypt_r for blowfish, des, ext des and md5])
+ 
+   PHP_ADD_SOURCES(PHP_EXT_DIR(standard), crypt_freesec.c crypt_blowfish.c crypt_sha512.c crypt_sha256.c php_crypt_r.c)
