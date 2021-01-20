@@ -1200,4 +1200,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
   boo#1180755).</comment>
     <requestid>863152</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>8655b2a88e6d9df3bf25e44d0cf622fa</srcmd5>
+    <version>3.0.12</version>
+    <time>1611163410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.12:</comment>
+    <requestid>864297</requestid>
+  </revision>
 </revisionlist>
