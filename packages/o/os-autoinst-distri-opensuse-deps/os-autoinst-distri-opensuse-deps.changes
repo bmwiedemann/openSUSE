@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 05:17:31 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency perl(DateTime)
+
+-------------------------------------------------------------------
 Thu Dec 17 01:36:26 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Removed dependency perl(constant)
