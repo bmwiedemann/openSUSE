@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 20 03:08:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.502
+   see /usr/share/doc/packages/perl-Mac-PropertyList/Changes
+
+  1.502 2021-01-19T10:17:29Z
+  	* freshen distro, dump Travis CI, add Github Actions
+
+-------------------------------------------------------------------
 Sun Oct  4 03:15:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.501
