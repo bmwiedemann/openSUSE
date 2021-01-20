@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 20 09:43:06 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.9.1
+  * Fix installation from pypi source tarball, broken in 1.8.1
+- from v1.9
+  * Drop USBPollerThread
+  * Deprecate libusb-lock-related USBContext API
+- from v1.8.1
+  * Embed libusb1 dll for easier deployment on Windows
+  * Cryptographically signed releases
+  * Use libusb_free_pollfds whenever available (libusb1>=1.0.20)
+  * Fix hotplug callback destruction at context teardown
+  * Drop remnants of python 2.6 support code
+- from v1.8
+  * Fix getExtra and libusb1.libusb_control_transfer_get_data
+  * Fix getMaxPower unit on SuperSpeed devices
+
+-------------------------------------------------------------------
 Wed May 15 21:54:23 UTC 2019 - Jonathan Harker <jharker@suse.com>
 
 - Upgrade to 1.7.1:

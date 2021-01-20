@@ -1,7 +1,7 @@
 #
 # spec file for package python-libusb1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libusb1
-Version:        1.7.1
+Version:        1.9.1
 Release:        0
 Summary:        Python wrapper for libusb-1.0
 # Relicensed from GPL to LGPLv2.1+ in May 2015
@@ -40,6 +40,8 @@ This is a pure python wrapper for libusb-1.0.
 
 %prep
 %setup -q -n libusb1-%{version}
+sed -i '/wheel/d' setup.py
+
 sed -i '1{/^#!/d}' examples/*.py
 chmod a-x examples/*.py
 
@@ -51,7 +53,7 @@ chmod a-x examples/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m usb1.testUSB1
+%python_exec -m usb1.testUSB1 -v
 
 %files %{python_files}
 %doc README.rst examples/
