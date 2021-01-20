@@ -185,4 +185,12 @@
     <comment>- Fix %%hpc_base during hpc_init to allow for changes to %%_prefix.</comment>
     <requestid>822639</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>c81404e1f9da742ac79f1eec45c94dca</srcmd5>
+    <version>0.5</version>
+    <time>1611163393</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand python_flavor to python executable. Thanks to Ben Greiner. (forwarded request 864148 from eeich)</comment>
+    <requestid>864149</requestid>
+  </revision>
 </revisionlist>

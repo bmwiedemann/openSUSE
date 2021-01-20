@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 18 17:20:57 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Expand python_flavor to python executable. Thanks to Ben Greiner.
+
+-------------------------------------------------------------------
 Thu Jul 23 17:42:34 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Fix %%hpc_base during hpc_init to allow for changes to %%_prefix.
