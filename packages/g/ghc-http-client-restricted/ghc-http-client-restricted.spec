@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-client-restricted
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name http-client-restricted
 Name:           ghc-%{pkg_name}
-Version:        0.0.3
+Version:        0.0.4
 Release:        0
 Summary:        Restricting the servers that http-client will use
 License:        MIT
@@ -59,7 +59,6 @@ development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver http-client '< 0.7' '< 1'
 
 %build
 %ghc_lib_build

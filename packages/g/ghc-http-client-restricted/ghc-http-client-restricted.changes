@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 13 15:28:49 UTC 2021 - psimons@suse.com
+
+- Update http-client-restricted to version 0.0.4.
+  http-client-restricted (0.0.4) unstable; urgency=medium
+
+    * Update to http-client 0.7.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 12 Jan 2021 13:37:00 -0400
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
