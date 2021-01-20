@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 17 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.73
+   see /usr/share/doc/packages/perl-ExtUtils-Manifest/Changes
+
+  1.73  2021-01-16
+    - Calculate absolute path to MANIFEST.SKIP (in $DEFAULT_MSKIP) at module
+      load time, where __FILE__ is guaranteed to valid.
+    - skip github and iCloud files
+
+-------------------------------------------------------------------
 Wed Mar 13 16:02:53 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.72
