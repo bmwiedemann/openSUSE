@@ -1775,7 +1775,7 @@
     <package name="libpng16-16" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpoppler105" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpoppler106" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2801,6 +2801,7 @@
     <package name="python38-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-matplotlib-cairo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-matplotlib-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-matplotlib-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-more-itertools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2860,6 +2861,7 @@
     <package name="python38-slip-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-sortedcontainers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python38-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-trio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -4027,7 +4029,7 @@
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
     <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
     <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
     <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
@@ -4305,6 +4307,7 @@
     <package name="gnome-photos-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-power-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-power-manager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gnome-remote-desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-screenshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-screenshot-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5020,7 +5023,7 @@
     <package name="libvirt-daemon-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libvirt-sandbox-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libvncclient1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libvncserver1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libvncserver1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisfile3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libwbclient0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5285,7 +5288,6 @@
     <package name="python38-scipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-setproctitle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="python38-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-xdg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-kvm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5518,6 +5520,8 @@
     <package name="xfce4-mpc-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-netload-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-netload-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="xfce4-notes-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="xfce4-notes-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-notifyd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-notifyd-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-notifyd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
