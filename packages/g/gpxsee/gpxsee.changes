@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 19 20:45:47 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.2
+  * Fixed crash on broken KMZ maps.
+  * Improved graph slider/path marker handling.
+  * Minor UI/UX enhancements.
+
+-------------------------------------------------------------------
+Sat Jan  2 11:05:30 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.1
+  * Fixed digital zoom on OS X.
+  * Fixed Qt6 Release build.
+  * Added support for ZIPed DEM files.
+  * Minor fixes.
+
+-------------------------------------------------------------------
 Mon Dec 28 23:33:36 CET 2020 - tumic@cbox.cz
 
 - Update to version 8.0

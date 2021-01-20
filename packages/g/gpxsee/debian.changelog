@@ -1,3 +1,20 @@
+gpxsee (8.2) stable; urgency=medium
+
+  * Fixed crash on broken KMZ maps.
+  * Improved graph slider/path marker handling.
+  * Minor UI/UX enhancements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 19 Jan 2021 20:55:37 +0100
+
+gpxsee (8.1) stable; urgency=low
+
+  * Fixed digital zoom on OS X.
+  * Fixed Qt6 Release build.
+  * Added support for ZIPed DEM files.
+  * Minor fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 02 Jan 2021 11:09:35 +0100
+
 gpxsee (8.0) stable; urgency=low
 
   * Added support for KMZ maps.
