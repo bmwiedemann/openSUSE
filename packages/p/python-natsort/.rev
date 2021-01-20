@@ -151,4 +151,13 @@
     <comment></comment>
     <requestid>850141</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f1fdfb1aa6a0cc37f06b3559508c7e79</srcmd5>
+    <version>7.1.0</version>
+    <time>1611163636</time>
+    <user>dimstar_suse</user>
+    <comment>- Set up alternatives correctly.
+</comment>
+    <requestid>864431</requestid>
+  </revision>
 </revisionlist>
