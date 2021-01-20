@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  8 08:28:09 UTC 2021 - psimons@suse.com
+
+- Update microlens-th to version 0.4.3.9.
+  # 0.4.3.9
+
+  * Port lens commit [66e199ee](https://github.com/ekmett/lens/commit/66e199ee07f1aaf589faa2a8c661f6a722679959), fixing lens issue [#945](https://github.com/ekmett/lens/pull/945) — "Make the TH machinery handle PolyKinds more robustly".
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

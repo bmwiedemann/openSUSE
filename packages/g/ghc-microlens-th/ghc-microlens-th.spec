@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-microlens-th
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name microlens-th
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.3.8
+Version:        0.4.3.9
 Release:        0
 Summary:        Automatic generation of record lenses for microlens
 License:        BSD-3-Clause
@@ -33,6 +33,9 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-th-abstraction-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-tagged-devel
+%endif
 
 %description
 This package lets you automatically generate lenses for data types; code was
