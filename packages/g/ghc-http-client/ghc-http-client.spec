@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name http-client
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        An HTTP client engine
 License:        MIT
@@ -27,6 +27,7 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-blaze-builder-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
@@ -36,7 +37,6 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-http-types-devel
-BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-mime-types-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-uri-devel

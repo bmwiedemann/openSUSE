@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 13 15:28:50 UTC 2021 - psimons@suse.com
+
+- Update http-client to version 0.7.4.
+  ## 0.7.4
+
+  * Depend on base64-bytestring instead of memory [#453](https://github.com/snoyberg/http-client/pull/453)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
