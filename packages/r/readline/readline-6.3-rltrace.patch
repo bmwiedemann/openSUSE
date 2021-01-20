@@ -7,7 +7,7 @@ temporary files from public location without O_EXCL (bcn#868822).
 
 --- lib/readline/util.c
 +++ lib/readline/util.c	2018-09-20 06:47:51.238715688 +0000
-@@ -487,10 +487,12 @@ _rl_trace (va_alist)
+@@ -488,10 +488,12 @@ _rl_trace (va_alist)
  
    if (_rl_tracefp == 0)
      _rl_tropen ();
@@ -21,7 +21,7 @@ temporary files from public location without O_EXCL (bcn#868822).
    va_end (args);
  }
  
-@@ -510,7 +512,7 @@ _rl_tropen (void)
+@@ -511,7 +513,7 @@ _rl_tropen (void)
  #endif
    snprintf (fnbuf, sizeof (fnbuf), "%s/rltrace.%ld", x, (long)getpid());
    unlink(fnbuf);
@@ -30,7 +30,7 @@ temporary files from public location without O_EXCL (bcn#868822).
    return _rl_tracefp != 0;
  }
  
-@@ -519,7 +521,8 @@ _rl_trclose (void)
+@@ -520,7 +522,8 @@ _rl_trclose (void)
  {
    int r;
  

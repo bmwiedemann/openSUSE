@@ -1,9 +1,99 @@
 -------------------------------------------------------------------
+Mon Jan 11 11:21:58 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to final readline-8.1
+  which is mainly rc3
+- Remove obsolate patches and the signatures
+  * readline80-001
+  * readline80-001.sig
+  * readline80-002
+  * readline80-002.sig
+  * readline80-003
+  * readline80-003.sig
+  * readline80-004
+  * readline80-004.sig
+- Port patches
+  * readline-5.2-conf.patch
+  * readline-6.2-metamode.patch
+  * readline-6.3-destdir.patch
+  * readline-6.3-input.dif
+  * readline-6.3-rltrace.patch
+  * readline-7.0-screen.patch
+- Port and rename patch readline-8.0.dif which is now readline-8.1.dif
+
+-------------------------------------------------------------------
+Mon Nov 23 07:57:15 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to readline-8.1-rc3 for testing 
+  * Fixed a bug that could cause point to be set beyond the end of the line
+    buffer when aborting an incremental search.
+
+-------------------------------------------------------------------
+Tue Nov 10 10:09:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to readline-8.1-rc2 for testing 
+  * Bracketed paste mode is enabled by default. There is a configure-time
+    option (--enable-bracketed-paste-default) to set the default to on or off.
+  * Terminals that are named "dumb" or unknown do not enable bracketed paste
+    by default.
+  * Ensure that disabling bracketed paste turns off highlighting the incremental
+    search string when the search is successful.
+- Remove patch readline-8.1-bracketed_paste_off.patch and use the
+  new build time configuration 
+
+-------------------------------------------------------------------
 Wed Oct 28 14:04:30 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - get rid of /lib hack and install readline in /usr. Bash is already there
   anyways (boo#1029961)
 - remove deprecated %install_info
+
+-------------------------------------------------------------------
+Fri Oct 16 11:59:55 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch readline-8.1-bracketed_paste_off.patch
+  simply to disable the new bracketed paste feature
+
+-------------------------------------------------------------------
+Mon Oct 12 17:12:10 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to readline-8.1-rc1 for testing 
+  * If a second consecutive completion attempt produces matches where the first
+    did not, treat it as a new completion attempt and insert a match as
+    appropriate.
+  * Bracketed paste mode works in more places: incremental search strings, vi
+    overstrike mode, character search, and reading numeric arguments.
+  * Readline automatically switches to horizontal scrolling if the terminal has
+    only one line.
+  * Unbinding all key sequences bound to a particular readline function now
+    descends into keymaps for multi-key sequences.
+  * rl-clear-display: new bindable command that clears the screen and, if
+    possible, the scrollback buffer (bound to emacs mode M-C-l by default).
+  * New active mark and face feature: when enabled, it will highlight the text
+    inserted by a bracketed paste (the `active region') and the text found by
+    incremental and non-incremental history searches. This is tied to bracketed
+    paste and can be disabled by turning off bracketed paste.
+  * Readline sets the mark in several additional commands.
+  * Bracketed paste mode is enabled by default (for now).
+  * Readline tries to take advantage of the more regular structure of UTF-8
+    characters to identify the beginning and end of characters when moving
+    through the line buffer.
+  * The bindable operate-and-get-next command (and its default bindings) are
+    now part of readline instead of a bash-specific addition.
+  * The signal cleanup code now blocks SIGINT while processing after a SIGINT.  
+- Remove old upstream patches
+  * readline80-001
+  * readline80-002
+  * readline80-003
+  * readline80-004
+- Port and rename patch readline-8.0.dif which is now readline-8.1.dif
+- Port patches
+  * readline-5.2-conf.patch
+  * readline-6.2-metamode.patch
+  * readline-6.3-destdir.patch
+  * readline-6.3-input.dif
+  * readline-6.3-rltrace.patch
+  * readline-7.0-screen.patch
 
 -------------------------------------------------------------------
 Thu Jul 16 19:13:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>

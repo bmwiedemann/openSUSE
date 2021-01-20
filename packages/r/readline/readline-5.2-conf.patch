@@ -5,8 +5,8 @@
  3 files changed, 47 insertions(+), 13 deletions(-)
 
 --- lib/readline/bind.c
-+++ lib/readline/bind.c	2018-11-29 08:33:08.921317296 +0000
-@@ -850,6 +850,9 @@ rl_function_of_keyseq_len (const char *k
++++ lib/readline/bind.c	2020-10-12 15:12:54.125334682 +0000
+@@ -883,6 +883,9 @@ rl_function_of_keyseq_len (const char *k
  /* The last key bindings file read. */
  static char *last_readline_init_file = (char *)NULL;
  
@@ -16,7 +16,7 @@
  /* The file we're currently reading key bindings from. */
  static const char *current_readline_init_file;
  static int current_readline_init_include_level;
-@@ -917,11 +920,14 @@ rl_re_read_init_file (int count, int ign
+@@ -950,11 +953,14 @@ rl_re_read_init_file (int count, int ign
    return r;
  }
  
@@ -32,7 +32,7 @@
       4. /etc/inputrc
     If the file existed and could be opened and read, 0 is returned,
     otherwise errno is returned. */
-@@ -930,18 +936,39 @@ rl_read_init_file (const char *filename)
+@@ -963,18 +969,39 @@ rl_read_init_file (const char *filename)
  {
    /* Default the filename. */
    if (filename == 0)
@@ -80,7 +80,7 @@
  #if defined (__MSDOS__)
    if (_rl_read_init_file (filename, 0) == 0)
      return 0;
-@@ -1681,7 +1708,14 @@ remove_trailing:
+@@ -1725,7 +1752,14 @@ rl_parse_and_bind (char *string)
  	  rl_macro_bind (seq, &funname[1], _rl_keymap);
  	}
        else
@@ -96,7 +96,7 @@
  
        xfree (seq);
        return 0;
-@@ -1850,7 +1884,6 @@ typedef int _rl_sv_func_t PARAMS((const
+@@ -1896,7 +1930,6 @@ typedef int _rl_sv_func_t PARAMS((const
  #define V_INT		2
  
  /* Forward declarations */
@@ -105,7 +105,7 @@
  static int sv_dispprefix PARAMS((const char *));
  static int sv_compquery PARAMS((const char *));
 --- lib/readline/doc/rluser.texi
-+++ lib/readline/doc/rluser.texi	2018-11-29 08:33:08.921317296 +0000
++++ lib/readline/doc/rluser.texi	2020-10-12 15:14:44.599242113 +0000
 @@ -349,7 +349,8 @@ file is taken from the value of the envi
  @end ifclear
  that variable is unset, the default is @file{~/.inputrc}.  If that
@@ -113,11 +113,11 @@
 -@file{/etc/inputrc}.
 +@file{/etc/inputrc}. If both @file{~/.inputrc} and @file{/etc/inputrc}
 +exist Readline will read first @file{/etc/inputrc} and then @file{~/.inputrc}.
- 
- When a program which uses the Readline library starts up, the
- init file is read, and the key bindings are set.
+ @ifset BashFeatures
+ The @w{@code{bind}} builtin command can also be used to set Readline
+ keybindings and variables.
 --- lib/readline/rlconf.h
-+++ lib/readline/rlconf.h	2018-11-29 08:33:08.921317296 +0000
++++ lib/readline/rlconf.h	2020-10-12 15:12:54.125334682 +0000
 @@ -37,7 +37,7 @@
  #define HANDLE_SIGNALS
  

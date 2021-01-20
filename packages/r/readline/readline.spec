@@ -1,7 +1,7 @@
 #
 # spec file for package readline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define rl_major 8
 Name:           readline
-Version:        8.0
+Version:        8.1
 Release:        0
 Summary:        The readline library
 License:        GPL-3.0-or-later
@@ -30,15 +30,7 @@ Source1:        ftp://ftp.gnu.org/gnu/readline/readline-%{version}.tar.gz.sig
 Source2:        baselibs.conf
 Source4:        https://tiswww.case.edu/php/chet/gpgkey.asc#/%{name}.keyring
 # signatures for official patches
-Source101:      ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-001.sig
-Source102:      ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-002.sig
-Source103:      ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-003.sig
-Source104:      ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-004.sig
 # official patches
-Patch101:       ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-001
-Patch102:       ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-002
-Patch103:       ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-003
-Patch104:       ftp://ftp.gnu.org/gnu/readline/readline-%{version}-patches/readline80-004
 # local patches
 Patch200:       readline-%{version}.dif
 Patch201:       readline-6.3-input.dif
@@ -109,10 +101,6 @@ as well as programming with the interface of the readline library.
 %prep
 %setup -q
 # official patches
-%patch101  -b .001
-%patch102  -b .002
-%patch103  -b .003
-%patch104  -b .004
 # local patches
 %patch201 -p2 -b .zerotty
 %patch202 -p2 -b .conf
@@ -201,6 +189,7 @@ export CC_FOR_BUILD CFLAGS_FOR_BUILD LDFLAGS_FOR_BUILD CFLAGS LDFLAGS CC
 	--enable-static			\
 	--enable-shared			\
 	--enable-multibyte		\
+	--disable-bracketed-paste-default \
 	--prefix=%{_prefix}		\
 	--with-curses			\
 	--mandir=%{_mandir}		\

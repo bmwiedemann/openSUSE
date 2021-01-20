@@ -10,7 +10,7 @@
  8 files changed, 27 insertions(+), 12 deletions(-)
 
 --- Makefile.in
-+++ Makefile.in	2018-09-20 06:52:00.770160356 +0000
++++ Makefile.in	2020-10-12 15:26:20.198100393 +0000
 @@ -251,10 +251,8 @@ uninstall-pc:
  maybe-uninstall-pc: uninstall-pc
  
@@ -32,8 +32,8 @@
  
  uninstall-doc:
 --- complete.c
-+++ complete.c	2018-09-20 06:51:00.535262270 +0000
-@@ -1133,7 +1133,7 @@ _rl_find_completion_word (int *fp, int *
++++ complete.c	2020-10-12 15:26:20.202100317 +0000
+@@ -1146,7 +1146,7 @@ _rl_find_completion_word (int *fp, int *
        /* We didn't find an unclosed quoted substring upon which to do
           completion, so use the word break characters to find the
           substring on which to complete. */
@@ -42,7 +42,7 @@
  	{
  	  scan = rl_line_buffer[rl_point];
  
-@@ -2182,7 +2182,7 @@ rl_completion_matches (const char *text,
+@@ -2214,7 +2214,7 @@ rl_completion_matches (const char *text,
    match_list = (char **)xmalloc ((match_list_size + 1) * sizeof (char *));
    match_list[1] = (char *)NULL;
  
@@ -51,7 +51,7 @@
      {
        if (RL_SIG_RECEIVED ())
  	{
-@@ -2254,7 +2254,7 @@ rl_username_completion_function (const c
+@@ -2286,7 +2286,7 @@ rl_username_completion_function (const c
      }
  
  #if defined (HAVE_GETPWENT)
@@ -61,7 +61,7 @@
        /* Null usernames should result in all users as possible completions. */
        if (namelen == 0 || (STREQN (username, entry->pw_name, namelen)))
 --- doc/Makefile.in
-+++ doc/Makefile.in	2018-09-20 06:51:00.535262270 +0000
++++ doc/Makefile.in	2020-10-12 15:26:20.202100317 +0000
 @@ -107,7 +107,7 @@ DIST_DOCS = $(DVIOBJ) $(PSOBJ) $(HTMLOBJ
  #	$(RM) $@
  #	-${TEXI2PDF} $<
@@ -72,7 +72,7 @@
  
  xdist: $(DIST_DOCS)
 --- doc/readline.3
-+++ doc/readline.3	2018-09-20 06:51:00.535262270 +0000
++++ doc/readline.3	2020-10-12 15:26:20.202100317 +0000
 @@ -119,6 +119,14 @@ environment variable.  If that variable
  .IR ~/.inputrc .
  If that file  does not exist or cannot be read, the ultimate default is
@@ -88,7 +88,7 @@
  When a program which uses the readline library starts up, the
  init file is read, and the key bindings and variables are set.
  There are only a few basic constructs allowed in the
-@@ -1505,6 +1513,9 @@ VI Command Mode functions
+@@ -1511,6 +1519,9 @@ VI Command Mode functions
  .TP
  .FN ~/.inputrc
  Individual \fBreadline\fP initialization file
@@ -99,7 +99,7 @@
  .SH AUTHORS
  Brian Fox, Free Software Foundation
 --- history.h
-+++ history.h	2018-09-20 06:51:00.535262270 +0000
++++ history.h	2020-10-12 15:26:20.202100317 +0000
 @@ -32,6 +32,7 @@ extern "C" {
  #  include "rlstdc.h"
  #  include "rltypedefs.h"
@@ -109,8 +109,8 @@
  #  include <readline/rltypedefs.h>
  #endif
 --- readline.c
-+++ readline.c	2018-09-20 06:51:00.535262270 +0000
-@@ -844,8 +844,11 @@ _rl_dispatch_subseq (register int key, K
++++ readline.c	2020-10-12 15:26:20.202100317 +0000
+@@ -879,8 +879,11 @@ _rl_dispatch_subseq (register int key, K
  	{
  	  /* Special case rl_do_lowercase_version (). */
  	  if (func == rl_do_lowercase_version)
@@ -125,7 +125,7 @@
  	  rl_executing_keymap = map;
  	  rl_executing_key = key;
 --- readline.h
-+++ readline.h	2018-09-20 06:51:00.535262270 +0000
++++ readline.h	2020-10-12 15:26:20.202100317 +0000
 @@ -32,6 +32,7 @@ extern "C" {
  #  include "keymaps.h"
  #  include "tilde.h"
@@ -134,7 +134,7 @@
  #  include <readline/rlstdc.h>
  #  include <readline/rltypedefs.h>
  #  include <readline/keymaps.h>
-@@ -477,7 +478,7 @@ extern char *rl_filename_completion_func
+@@ -487,7 +488,7 @@ extern char *rl_filename_completion_func
  
  extern int rl_completion_mode PARAMS((rl_command_func_t *));
  
@@ -144,9 +144,9 @@
  extern void free_undo_list PARAMS((void));
  extern int maybe_save_line PARAMS((void));
 --- support/shobj-conf
-+++ support/shobj-conf	2018-09-20 06:51:00.535262270 +0000
++++ support/shobj-conf	2020-10-12 15:28:41.255437276 +0000
 @@ -126,10 +126,11 @@ sunos5*|solaris2*)
- linux*-*|gnu*-*|k*bsd*-gnu-*|freebsd*-gentoo)
+ linux*-*|gnu*-*|k*bsd*-gnu-*|freebsd*|dragonfly*)
  	SHOBJ_CFLAGS=-fPIC
  	SHOBJ_LD='${CC}'
 -	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'
@@ -158,4 +158,4 @@
 +	echo 'int main () { return 0; }' | gcc -ltinfo -o /dev/null -xc - > /dev/null 2>&1 && SHLIB_LIBS=-ltinfo || SHLIB_LIBS=-lncurses
  	;;
  
- freebsd2*)
+ # Darwin/MacOS X

@@ -5,7 +5,7 @@
 
 --- lib/readline/input.c
 +++ lib/readline/input.c	2018-11-29 08:29:58.432878428 +0000
-@@ -501,6 +501,8 @@ rl_read_key (void)
+@@ -520,6 +520,8 @@ rl_read_key (void)
    return (c);
  }
  
@@ -14,7 +14,7 @@
  int
  rl_getc (FILE *stream)
  {
-@@ -542,7 +544,10 @@ rl_getc (FILE *stream)
+@@ -561,7 +563,10 @@ rl_getc (FILE *stream)
        /* If zero characters are returned, then the file that we are
  	 reading from is empty!  Return EOF in that case. */
        if (result == 0)
@@ -28,7 +28,7 @@
        if (errno == EINTR)
 --- lib/readline/readline.c
 +++ lib/readline/readline.c	2018-11-29 08:29:58.432878428 +0000
-@@ -525,6 +525,9 @@ _rl_internal_char_cleanup (void)
+@@ -538,6 +538,9 @@ _rl_internal_char_cleanup (void)
      _rl_erase_entire_line ();
  }
  
@@ -38,7 +38,7 @@
  STATIC_CALLBACK int
  #if defined (READLINE_CALLBACKS)
  readline_internal_char (void)
-@@ -573,6 +576,10 @@ readline_internal_charloop (void)
+@@ -586,6 +589,10 @@ readline_internal_charloop (void)
        c = rl_read_key ();
        RL_UNSETSTATE(RL_STATE_READCMD);
  

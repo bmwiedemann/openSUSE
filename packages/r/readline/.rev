@@ -121,4 +121,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853761</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f955feb3d6f28237f4eb913bd0570727</srcmd5>
+    <version>8.1</version>
+    <time>1611163363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final readline-8.1
+  which is mainly rc3
+- Remove obsolate patches and the signatures
+  * readline80-001
+  * readline80-001.sig
+  * readline80-002
+  * readline80-002.sig
+  * readline80-003
+  * readline80-003.sig
+  * readline80-004
+  * readline80-004.sig
+- Port patches
+  * readline-5.2-conf.patch
+  * readline-6.2-metamode.patch
+  * readline-6.3-destdir.patch
+  * readline-6.3-input.dif
+  * readline-6.3-rltrace.patch
+  * readline-7.0-screen.patch
+- Port and rename patch readline-8.0.dif which is now readline-8.1.dif
+
+- Update to readline-8.1-rc3 for testing 
+  * Fixed a bug that could cause point to be set beyond the end of the line
+    buffer when aborting an incremental search.
+
+- Update to readline-8.1-rc2 for testing 
+  * Bracketed paste mode is enabled by default. There is a configure-time
+    option (--enable-bracketed-paste-default) to set the default to on or off.
+  * Terminals that are named &quot;dumb&quot; or unknown do not enable bracketed paste
+    by default.
+  * Ensure that disabling bracketed paste turns off highlighting the incremental</comment>
+    <requestid>862370</requestid>
+  </revision>
 </revisionlist>
