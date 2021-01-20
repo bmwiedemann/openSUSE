@@ -1,8 +1,8 @@
 #
 # spec file for package growlight
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,13 @@
 #
 
 
+%ifarch %{ix86} %{arm}
+%bcond_with  pandoc
+%else
+%bcond_without  pandoc
+%endif
 Name:           growlight
-Version:        1.2.23
+Version:        1.2.27
 Release:        0
 Summary:        Disk manipulation and system setup tool
 License:        GPL-3.0-or-later
@@ -27,7 +32,9 @@ URL:            https://nick-black.com/dankwiki/index.php/Growlight
 Source:         https://github.com/dankamongmen/growlight/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+%if %{with pandoc}
 BuildRequires:  pandoc
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(blkid) >= 2.20.1
 BuildRequires:  pkgconfig(devmapper) >= 1.02.74
@@ -38,7 +45,7 @@ BuildRequires:  pkgconfig(libcryptsetup) >= 2.0.2
 BuildRequires:  pkgconfig(libpci) >= 3.1.9
 BuildRequires:  pkgconfig(libudev) >= 175
 BuildRequires:  pkgconfig(nettle) >= 3.5.1
-BuildRequires:  pkgconfig(notcurses) >= 2.0.5
+BuildRequires:  pkgconfig(notcurses) >= 2.1.5
 BuildRequires:  pkgconfig(pciaccess) >= 0.13.1
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(zlib) >= 1.2.11
@@ -65,7 +72,7 @@ are available.
 %setup -q
 
 %build
-%cmake -DUSE_LIBZFS=OFF
+%cmake -DUSE_LIBZFS=OFF -DUSE_PANDOC=%{with pandoc}
 %make_build
 
 %install
@@ -78,7 +85,9 @@ are available.
 %{_sbindir}/growlight-readline
 %dir %{_datadir}/growlight
 %{_datadir}/growlight/growlight.jpg
+%if %{with pandoc}
 %{_mandir}/man8/growlight-readline.8%{?ext_man}
 %{_mandir}/man8/growlight.8%{?ext_man}
+%endif
 
 %changelog

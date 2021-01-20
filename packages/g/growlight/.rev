@@ -55,4 +55,15 @@
     <comment></comment>
     <requestid>853713</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2ec30c835d0f974491ab109681e85e54</srcmd5>
+    <version>1.2.27</version>
+    <time>1611163608</time>
+    <user>dimstar_suse</user>
+    <comment>- build without pandoc on 32bit platforms 
+
+- Update to version 1.2.27
+  * Upstream does not provide a changelog</comment>
+    <requestid>864422</requestid>
+  </revision>
 </revisionlist>
