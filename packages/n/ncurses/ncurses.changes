@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 11 07:24:25 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210109
+  + fix errata in man/ncurses.3x from recent updates.
+  + improve quoting/escaping in configure script, uses some features of
+    autoconf 2.52.20210105
+- Add ncurses patch 20210102
+  + update man/curs_memleaks.3x, to include <term.h> which declares
+    exit_terminfo.
+  + clarify man/curs_terminfo.3x, to mention why the macro setterm is
+    defined in <curses.h>, and remove it from the list of prototypes
+    (prompted by patch by Graeme McCutcheon).
+  + amend man/curs_terminfo.3x, to note that <curses.h> is required
+    for certain functions, e.g., those using chtype or attr_t for
+    types, as well as mvcur (cf: 20201031).
+  + use parameter-names in prototypes in curs_sp_funcs.3x, for
+    consistency with other manpages.
+- Add ncurses patch 20201227
+  + update terminology entry to 1.8.1 -TD
+  + fix some compiler-warnings which gcc8 reports incorrectly.
+- Add ncurses patch 20201219
+  + suppress hyphenation in generated html for manpages, to address
+    regression in upgrade of groff 1.22.2 to 1.22.3.
+  + fix inconsistent sort-order in see-also sections of manpages (report
+    by Chris Bennett).
+- Port patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
+Mon Dec 14 09:53:35 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201212
+  + improve manual pages for form field-types.
+
+-------------------------------------------------------------------
 Mon Dec  7 07:53:25 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20201205

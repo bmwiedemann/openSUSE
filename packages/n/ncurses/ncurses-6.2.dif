@@ -21,7 +21,7 @@
  19 files changed, 249 insertions(+), 79 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2020-11-30 08:57:40.380788178 +0000
++++ aclocal.m4	2021-01-11 07:35:24.208330490 +0000
 @@ -639,7 +639,7 @@ AC_CHECK_SIZEOF(bool,,[
  AC_CACHE_CHECK(for type of bool, cf_cv_type_of_bool,[
  	rm -f cf_test.out
@@ -31,8 +31,8 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5550,12 +5550,15 @@ cat >>$cf_edit_man <<CF_EOF
- 		echo '? missing rename for '\$cf_source
+@@ -5562,12 +5562,15 @@ cat >>$cf_edit_man <<CF_EOF
+ 		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
 -	cf_target="\$cf_subdir\${section}/\${cf_target}"
@@ -46,19 +46,19 @@
 +CF_EOF
 +
 +cat >>$cf_edit_man <<CF_EOF
- 	sed	-f $cf_man_alias \\
+ 	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -5565,7 +5568,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5577,7 +5580,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
--		< \$i >\$TMP
-+		< \$i | sed -f $srcdir/edit_man.sed >\$TMP
+-		< "\$i" >\$TMP
++		< "\$i" | sed -f $srcdir/edit_man.sed >\$TMP
  CF_EOF
  fi
  
-@@ -5605,7 +5608,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5617,7 +5620,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,11 +67,11 @@
  CF_EOF
  fi
  
-@@ -5614,23 +5617,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5626,23 +5629,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
- 	if test \$form = format ; then
+ 	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
--		cf_target="\`echo \$cf_target|sed -e 's/\.[[1-9]]\+[[a-z]]*/.0/'\`"
+-		cf_target="\`echo \$cf_target|sed -e 's/\\.[[1-9]]\\+[[a-z]]*/.0/'\`"
 +		t="\`echo \$t|sed -e 's/\.[[1-9]]\+[[a-z]]*/.0/'\`"
  	fi
  CF_EOF
@@ -79,46 +79,46 @@
  esac
  
  cat >>$cf_edit_man <<CF_EOF
--	suffix=\`basename \$cf_target | sed -e 's%^[[^.]]*%%'\`
-+	suffix=\`basename \$t | sed -e 's%^[[^.]]*%%'\`
- 	if test \$verb = installing ; then
--		echo \$verb \$cf_target
--		\$INSTALL_DATA \$TMP \$cf_target
-+		echo \$verb \$t
-+		\$INSTALL_DATA \$TMP \$t
- 		test -d \$cf_subdir\${section} &&
+-	suffix=\`basename "\$cf_target" | sed -e 's%^[[^.]]*%%'\`
++	suffix=\`basename "\$t" | sed -e 's%^[[^.]]*%%'\`
+ 	if test "\$verb" = installing ; then
+-		echo "\$verb \$cf_target"
+-		\$INSTALL_DATA \$TMP "\$cf_target"
++		echo "\$verb \$t"
++		\$INSTALL_DATA \$TMP "\$t"
+ 		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
- 			cd \$cf_subdir\${section} && (
--				cf_source=\`echo \$cf_target |sed -e 's%^.*/\([[^/]][[^/]]*/[[^/]][[^/]]*$\)%\1%'\`
-+				cf_source=\`echo \$t |sed -e 's%^.*/\([[^/]][[^/]]*/[[^/]][[^/]]*$\)%\1%'\`
- 				test -n "$cf_so_strip" && cf_source=\`echo \$cf_source |sed -e 's%\.$cf_so_strip\$%%'\`
--				cf_target=\`basename \$cf_target\`
-+				t=\`basename \$t\`
+ 			cd "\$cf_subdir\${section}" && (
+-				cf_source=\`echo "\$cf_target" |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
++				cf_source=\`echo "\$t" |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
+ 				test -n "$cf_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_so_strip\$%%'\`
+-				cf_target=\`basename "\$cf_target"\`
++				t=\`basename "\$t"\`
  				for cf_alias in \$aliases
  				do
- 					if test \$section = 1 ; then
-@@ -5639,7 +5642,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 					if test "\$section" = 1 ; then
+@@ -5651,7 +5654,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
- 						if test -f \$cf_alias\${suffix} ; then
--							if ( cmp -s \$cf_target \$cf_alias\${suffix} )
-+							if ( cmp -s \$t \$cf_alias\${suffix} )
+ 						if test -f "\$cf_alias\${suffix}" ; then
+-							if ( cmp -s "\$cf_target" "\$cf_alias\${suffix}" )
++							if ( cmp -s "\$t" "\$cf_alias\${suffix}" )
  							then
  								continue
  							fi
-@@ -5649,18 +5652,18 @@ CF_EOF
+@@ -5661,18 +5664,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
--						$LN_S \$cf_target \$cf_alias\${suffix}
-+						$LN_S \$t \$cf_alias\${suffix}
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
  CF_EOF
  	;;
  (*)
  cat >>$cf_edit_man <<CF_EOF
- 						rm -f \$cf_alias\${suffix}
--						$LN_S \$cf_target \$cf_alias\${suffix}
-+						$LN_S \$t \$cf_alias\${suffix}
+ 						rm -f "\$cf_alias\${suffix}"
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
  CF_EOF
  	;;
  esac
@@ -128,20 +128,20 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5680,9 +5683,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5692,9 +5695,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
- 	elif test \$verb = removing ; then
--		test -f \$cf_target && (
--			echo \$verb \$cf_target
--			rm -f \$cf_target
-+		test -f \$t && (
-+			echo \$verb \$t
-+			rm -f \$t
+ 	elif test "\$verb" = removing ; then
+-		test -f "\$cf_target" && (
+-			echo "\$verb \$cf_target"
+-			rm -f "\$cf_target"
++		test -f "\$t" && (
++			echo "\$verb \$t"
++			rm -f "\$t"
  		)
- 		test -d \$cf_subdir\${section} &&
+ 		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -5702,6 +5705,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5714,6 +5717,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -150,8 +150,8 @@
  esac
  done
 --- configure
-+++ configure	2020-11-30 08:57:40.384788103 +0000
-@@ -5704,7 +5704,7 @@ echo $ECHO_N "checking for an rpath opti
++++ configure	2021-01-11 07:39:08.776005262 +0000
+@@ -5836,7 +5836,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -160,8 +160,8 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -14469,12 +14469,15 @@ cat >>$cf_edit_man <<CF_EOF
- 		echo '? missing rename for '\$cf_source
+@@ -14603,12 +14603,15 @@ cat >>$cf_edit_man <<CF_EOF
+ 		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
 -	cf_target="\$cf_subdir\${section}/\${cf_target}"
@@ -175,19 +175,19 @@
 +CF_EOF
 +
 +cat >>$cf_edit_man <<CF_EOF
- 	sed	-f $cf_man_alias \\
+ 	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -14484,7 +14487,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14618,7 +14621,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
--		< \$i >\$TMP
-+		< \$i | sed -f $srcdir/edit_man.sed >\$TMP
+-		< "\$i" >\$TMP
++		< "\$i" | sed -f $srcdir/edit_man.sed >\$TMP
  CF_EOF
  fi
  
-@@ -14524,7 +14527,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14658,7 +14661,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -196,58 +196,58 @@
  CF_EOF
  fi
  
-@@ -14533,23 +14536,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14667,23 +14670,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
- 	if test \$form = format ; then
+ 	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
--		cf_target="\`echo \$cf_target|sed -e 's/\.[1-9]\+[a-z]*/.0/'\`"
-+		t="\`echo \$t|sed -e 's/\.[1-9]\+[a-z]*/.0/'\`"
+-		cf_target="\`echo \$cf_target|sed -e 's/\\.[1-9]\\+[a-z]*/.0/'\`"
++		t="\`echo \$t|sed -e 's/\\.[1-9]\\+[a-z]*/.0/'\`"
  	fi
  CF_EOF
    ;;
  esac
  
  cat >>$cf_edit_man <<CF_EOF
--	suffix=\`basename \$cf_target | sed -e 's%^[^.]*%%'\`
-+	suffix=\`basename \$t | sed -e 's%^[^.]*%%'\`
- 	if test \$verb = installing ; then
--		echo \$verb \$cf_target
--		\$INSTALL_DATA \$TMP \$cf_target
-+		echo \$verb \$t
-+		\$INSTALL_DATA \$TMP \$t
- 		test -d \$cf_subdir\${section} &&
+-	suffix=\`basename "\$cf_target" | sed -e 's%^[^.]*%%'\`
++	suffix=\`basename "\$t" | sed -e 's%^[^.]*%%'\`
+ 	if test "\$verb" = installing ; then
+-		echo "\$verb \$cf_target"
+-		\$INSTALL_DATA \$TMP "\$cf_target"
++		echo "\$verb \$t"
++		\$INSTALL_DATA \$TMP "\$t"
+ 		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
- 			cd \$cf_subdir\${section} && (
--				cf_source=\`echo \$cf_target |sed -e 's%^.*/\([^/][^/]*/[^/][^/]*$\)%\1%'\`
-+				cf_source=\`echo \$t |sed -e 's%^.*/\([^/][^/]*/[^/][^/]*$\)%\1%'\`
- 				test -n "$cf_so_strip" && cf_source=\`echo \$cf_source |sed -e 's%\.$cf_so_strip\$%%'\`
--				cf_target=\`basename \$cf_target\`
-+				t=\`basename \$t\`
+ 			cd "\$cf_subdir\${section}" && (
+-				cf_source=\`echo "\$cf_target" |sed -e 's%^.*/\\([^/][^/]*/[^/][^/]*$\\)%\\1%'\`
++				cf_source=\`echo "\$t" |sed -e 's%^.*/\\([^/][^/]*/[^/][^/]*$\\)%\\1%'\`
+ 				test -n "$cf_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_so_strip\$%%'\`
+-				cf_target=\`basename "\$cf_target"\`
++				t=\`basename "\$t"\`
  				for cf_alias in \$aliases
  				do
- 					if test \$section = 1 ; then
-@@ -14558,7 +14561,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 					if test "\$section" = 1 ; then
+@@ -14692,7 +14695,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
- 						if test -f \$cf_alias\${suffix} ; then
--							if ( cmp -s \$cf_target \$cf_alias\${suffix} )
-+							if ( cmp -s \$t \$cf_alias\${suffix} )
+ 						if test -f "\$cf_alias\${suffix}" ; then
+-							if ( cmp -s "\$cf_target" "\$cf_alias\${suffix}" )
++							if ( cmp -s "\$t" "\$cf_alias\${suffix}" )
  							then
  								continue
  							fi
-@@ -14568,18 +14571,18 @@ CF_EOF
+@@ -14702,18 +14705,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
--						$LN_S \$cf_target \$cf_alias\${suffix}
-+						$LN_S \$t \$cf_alias\${suffix}
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
  CF_EOF
  	;;
  (*)
  cat >>$cf_edit_man <<CF_EOF
- 						rm -f \$cf_alias\${suffix}
--						$LN_S \$cf_target \$cf_alias\${suffix}
-+						$LN_S \$t \$cf_alias\${suffix}
+ 						rm -f "\$cf_alias\${suffix}"
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
  CF_EOF
  	;;
  esac
@@ -257,20 +257,20 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14599,9 +14602,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14733,9 +14736,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
- 	elif test \$verb = removing ; then
--		test -f \$cf_target && (
--			echo \$verb \$cf_target
--			rm -f \$cf_target
-+		test -f \$t && (
-+			echo \$verb \$t
-+			rm -f \$t
+ 	elif test "\$verb" = removing ; then
+-		test -f "\$cf_target" && (
+-			echo "\$verb \$cf_target"
+-			rm -f "\$cf_target"
++		test -f "\$t" && (
++			echo "\$verb \$t"
++			rm -f "\$t"
  		)
- 		test -d \$cf_subdir\${section} &&
+ 		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -14621,6 +14624,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14755,6 +14758,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -279,7 +279,7 @@
  esac
  done
 --- include/curses.h.in
-+++ include/curses.h.in	2020-11-30 08:57:40.384788103 +0000
++++ include/curses.h.in	2021-01-11 07:27:32.117420019 +0000
 @@ -186,6 +186,9 @@ typedef @cf_cv_typeof_chtype@ chtype;
  typedef @cf_cv_typeof_mmask_t@ mmask_t;
  #endif
@@ -291,7 +291,7 @@
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
 --- include/termcap.h.in
-+++ include/termcap.h.in	2020-11-30 08:57:40.384788103 +0000
++++ include/termcap.h.in	2021-01-11 07:27:32.117420019 +0000
 @@ -47,6 +47,8 @@ extern "C"
  {
  #endif /* __cplusplus */
@@ -302,7 +302,7 @@
  
  #undef  NCURSES_OSPEED 
 --- include/tic.h
-+++ include/tic.h	2020-11-30 08:57:40.384788103 +0000
++++ include/tic.h	2021-01-11 07:27:32.117420019 +0000
 @@ -237,12 +237,12 @@ struct user_table_entry
   */
  
@@ -319,7 +319,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames
-+++ man/man_db.renames	2020-11-30 08:57:40.384788103 +0000
++++ man/man_db.renames	2021-01-11 07:27:32.117420019 +0000
 @@ -164,6 +164,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -337,7 +337,7 @@
  #
  getty.1				getty.8
 --- man/ncurses.3x
-+++ man/ncurses.3x	2020-11-30 08:57:40.384788103 +0000
++++ man/ncurses.3x	2021-01-11 07:27:32.117420019 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fR(\*n) for further details.]
  .SS Datatypes
@@ -350,7 +350,7 @@
  called \fIwindows\fR, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2020-11-30 08:57:40.384788103 +0000
++++ misc/gen-pkgconfig.in	2021-01-11 07:27:32.117420019 +0000
 @@ -92,6 +92,9 @@ do
  	-specs*) # ignore linker specs-files which were used to build library
  		continue
@@ -391,7 +391,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2020-11-30 08:57:40.388788025 +0000
++++ misc/terminfo.src	2021-01-11 07:27:32.121419944 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -675,7 +675,7 @@
  	kc1=\E[8~, kc3=\E[6~, kent=\EOM, khlp=\E[28~, kmous=\E[M,
  	mc4=\E[4i, mc5=\E[5i, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O,
  	rmam=\E[?7l, rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=,
-@@ -7336,7 +7405,7 @@ pty|4bsd pseudo teletype,
+@@ -7360,7 +7429,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -684,7 +684,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, clear=\E[H\E[J, cr=\r,
-@@ -7349,6 +7418,13 @@ eterm|gnu emacs term.el terminal emulati
+@@ -7373,6 +7442,13 @@ eterm|gnu emacs term.el terminal emulati
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmso=\E[m, rmul=\E[m,
  	sgr0=\E[m, smcup=\E7\E[?47h, smir=\E[4h, smso=\E[7m,
  	smul=\E[4m,
@@ -698,7 +698,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -7477,7 +7553,7 @@ screen|VT 100/ANSI X3.64 virtual termina
+@@ -7501,7 +7577,7 @@ screen|VT 100/ANSI X3.64 virtual termina
  	dl=\E[%p1%dM, dl1=\E[M, ed=\E[J, el=\E[K, el1=\E[1K,
  	enacs=\E(B\E)0, flash=\Eg, home=\E[H, hpa=\E[%i%p1%dG,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, il=\E[%p1%dL, il1=\E[L,
@@ -707,7 +707,7 @@
  	kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA,
  	kdch1=\E[3~, kend=\E[4~, kf1=\EOP, kf10=\E[21~,
  	kf11=\E[23~, kf12=\E[24~, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
-@@ -7599,6 +7675,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
+@@ -7623,6 +7699,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
  	use=xterm+x11mouse, use=xterm-new,
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
@@ -721,7 +721,7 @@
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
  screen.xterm-r6|screen customized for X11R6 xterm,
-@@ -7686,7 +7769,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
+@@ -7710,7 +7793,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
  	dch=\E[%p1%dP, dch1=\E[P, dl=\E[%p1%dM, dl1=\E[M, ed=\E[J,
  	el=\E[K, ht=^I, hts=\EH, ich=\E[%p1%d@, ich1=, il=\E[%p1%dL,
@@ -730,7 +730,7 @@
  	kcuu1=\EA, kf0=\E~, kf1=\ES, kf2=\ET, kf3=\EU, kf4=\EV,
  	kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER, kf9=\E0I, khome=\EH,
  	nel=\r\n, rc=\E8, ri=\EM, rmir=\E[4l, rmso=\E[23m,
-@@ -9594,7 +9677,7 @@ hp700-wy|HP700/41 emulating wyse30,
+@@ -9618,7 +9701,7 @@ hp700-wy|HP700/41 emulating wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -739,7 +739,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -12825,6 +12908,7 @@ msk22714|mskermit22714|UCB MS-DOS Kermit
+@@ -12849,6 +12932,7 @@ msk22714|mskermit22714|UCB MS-DOS Kermit
  # at support for the VT320 itself.
  # Please send changes with explanations to bug-gnu-emacs@prep.ai.mit.edu.
  # (vt320-k3: I added <rmam>/<smam> based on the init string -- esr)
@@ -747,7 +747,7 @@
  vt320-k3|MS-Kermit 3.00's vt320 emulation,
  	am, eslok, hs, km, mir, msgr, xenl,
  	cols#80, it#8, lines#49, pb#9600, vt#3,
-@@ -12834,7 +12918,7 @@ vt320-k3|MS-Kermit 3.00's vt320 emulatio
+@@ -12858,7 +12942,7 @@ vt320-k3|MS-Kermit 3.00's vt320 emulatio
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
@@ -756,7 +756,7 @@
  	dsl=\E[0$~, ech=\E[%p1%dX, ed=\E[J, el=\E[K,
  	flash=\E[?5h$<100/>\E[?5l\E[?5h$<100/>\E[?5l\E[?5h$<100/>\E[
  	      ?5l,
-@@ -17246,7 +17330,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -17270,7 +17354,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, kcub1=\ED, kcud1=\EB,
  	kcuf1=\EC, kcuu1=\EA, nel=\r\n, tbc=\EH,
@@ -765,7 +765,7 @@
  	is2=\E S, rmacs=\E>B, rmcup=\E>B, rs2=\E S, s0ds=\E>B,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -17504,7 +17588,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -17528,7 +17612,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  	tbc=\E[3g, use=ecma+index,
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.
@@ -775,7 +775,7 @@
  	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
  ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
 --- ncurses/Makefile.in
-+++ ncurses/Makefile.in	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/Makefile.in	2021-01-11 07:27:32.121419944 +0000
 @@ -230,7 +230,7 @@ $(DESTDIR)$(libdir) :
  ../lib : ; mkdir $@
  
@@ -786,7 +786,7 @@
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/curses.priv.h
-+++ ncurses/curses.priv.h	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/curses.priv.h	2021-01-11 07:27:32.121419944 +0000
 @@ -2277,6 +2277,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
  extern NCURSES_EXPORT(char *) _nc_tracemouse (SCREEN *, MEVENT const *);
  extern NCURSES_EXPORT(char *) _nc_trace_mmask_t (SCREEN *, mmask_t);
@@ -797,7 +797,7 @@
  extern NCURSES_EXPORT(int) _nc_freewin (WINDOW *);
  extern NCURSES_EXPORT(int) _nc_getenv_num (const char *);
 --- ncurses/run_cmd.sh
-+++ ncurses/run_cmd.sh	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/run_cmd.sh	2021-01-11 07:27:32.121419944 +0000
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +
@@ -811,7 +811,7 @@
 +
 +exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/tinfo/MKfallback.sh	2021-01-11 07:27:32.121419944 +0000
 @@ -74,6 +74,12 @@ else
  	tmp_info=
  fi
@@ -844,7 +844,7 @@
  	done
  
 --- ncurses/tinfo/access.c
-+++ ncurses/tinfo/access.c	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/tinfo/access.c	2021-01-11 07:27:32.121419944 +0000
 @@ -31,6 +31,10 @@
   *  Author: Thomas E. Dickey                                                *
   ****************************************************************************/
@@ -888,7 +888,7 @@
  _nc_access(const char *path, int mode)
  {
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/tinfo/lib_setup.c	2021-01-11 07:27:32.121419944 +0000
 @@ -613,6 +613,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
      } else if ((value = tigetnum("U8")) >= 0) {
  	result = value;		/* use extension feature */
@@ -900,7 +900,7 @@
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
 --- ncurses/tinfo/read_entry.c
-+++ ncurses/tinfo/read_entry.c	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/tinfo/read_entry.c	2021-01-11 07:27:32.121419944 +0000
 @@ -552,6 +552,7 @@ _nc_read_file_entry(const char *const fi
      FILE *fp = 0;
      int code;
@@ -918,7 +918,7 @@
      return (code);
  }
 --- ncurses/tinfo/read_termcap.c
-+++ ncurses/tinfo/read_termcap.c	2020-11-30 08:57:40.388788025 +0000
++++ ncurses/tinfo/read_termcap.c	2021-01-11 07:27:32.121419944 +0000
 @@ -323,14 +323,18 @@ _nc_getent(
  	     */
  	    if (fd >= 0) {
@@ -965,7 +965,7 @@
      }
      if (copied != 0)
 --- progs/Makefile.in
-+++ progs/Makefile.in	2020-11-30 08:57:40.388788025 +0000
++++ progs/Makefile.in	2021-01-11 07:27:32.121419944 +0000
 @@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
  CFLAGS_DEBUG	= $(CCFLAGS) -DNCURSES_STATIC @CC_G_OPT@ -DTRACE
@@ -985,7 +985,7 @@
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
 --- test/test.priv.h
-+++ test/test.priv.h	2020-11-30 08:57:40.388788025 +0000
++++ test/test.priv.h	2021-01-11 07:27:32.121419944 +0000
 @@ -1024,12 +1024,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
