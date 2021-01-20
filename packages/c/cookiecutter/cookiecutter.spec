@@ -26,18 +26,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/cookiecutter
 Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
 Source1:        ccext.py
-BuildRequires:  git
+BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  python3-Jinja2 >= 2.7
 BuildRequires:  python3-binaryornot >= 0.2.0
 BuildRequires:  python3-click >= 7.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-future >= 0.15.2
 BuildRequires:  python3-jinja2-time >= 0.1.0
 BuildRequires:  python3-poyo >= 0.1.0
 BuildRequires:  python3-python-slugify
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-whichcraft >= 0.4.0
-Requires:       git
+Requires:       git-core
 Requires:       python3-Jinja2 >= 2.7
 Requires:       python3-binaryornot >= 0.2.0
 Requires:       python3-click >= 7.0
@@ -54,7 +54,6 @@ BuildArch:      noarch
 BuildRequires:  python3-chardet >= 2.0.0
 BuildRequires:  python3-freezegun
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-requests >= 2.18.0
 # /SECTION
@@ -85,6 +84,8 @@ This package contains the documentation for cookiecutter.
 %setup -q -n cookiecutter-%{version}
 sed -i "s/cookiecutter =/cookiecutter-%{py3_ver} =/" setup.py
 cp %{SOURCE1} docs
+# Remove pytest addopts:
+rm setup.cfg
 
 %build
 python3 setup.py build
@@ -98,6 +99,7 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/cookiecutter
 ln -sf %{_sysconfdir}/alternatives/cookiecutter %{buildroot}%{_bindir}/cookiecutter
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
 export LC_ALL=en_US.UTF-8
