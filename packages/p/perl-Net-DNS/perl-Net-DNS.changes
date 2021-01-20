@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 18 23:12:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.29
+  Include test number in summary of failed non-fatal tests.
+  Remove Net::DNS::SEC specific tests.
+  Fix faulty test plan in t/08-recurse.t.
+
+-------------------------------------------------------------------
 Sat Oct 24 03:07:47 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.28

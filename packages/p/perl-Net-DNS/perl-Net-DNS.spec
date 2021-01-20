@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Net-DNS
-Version:        1.28
-Release:        0
 %define cpan_name Net-DNS
+Name:           perl-Net-DNS
+Version:        1.29
+Release:        0
 Summary:        Perl Interface to the Domain Name System
 License:        MIT
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NL/NLNETLABS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.1
@@ -49,6 +47,7 @@ Requires:       perl(Scalar::Util) >= 1.25
 Requires:       perl(Time::Local) >= 1.19
 Recommends:     perl(Digest::BubbleBabble) >= 0.01
 Recommends:     perl(Net::LibIDN2) >= 1
+BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -64,10 +63,10 @@ RFC 1035 or DNS and BIND (Albitz & Liu) for details.
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make test
+%make_build test
 
 %install
 %perl_make_install
