@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 16 19:08:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.3:
+  + audiorate: Make buffer writable before changing its metadata
+  + compositor: fix blending of subsampled components
+  + decodebin3:
+    - When reconfiguring a slot make sure that the ghostpad is
+      unlinked
+    - Release selection lock when pushing EOS
+  + encodebasebin: Ensure that parsers are compatible with selected
+    encoders
+  + tagdemux: resize and trim buffer in place to fix interaction
+    with oggdemux
+  + videoaggregator: Pop out old buffers on timeout
+  + video-blend: fix blending 8-bit and 16-bit frames together
+  + appsrc: fix signal documentation
+  + gl: document some GL caps specifics
+  + libvisual: workaround clang compiler warning
+
+-------------------------------------------------------------------
 Wed Dec  9 17:43:28 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.2:
