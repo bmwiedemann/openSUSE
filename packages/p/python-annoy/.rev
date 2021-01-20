@@ -80,4 +80,12 @@
     <comment>- Skip one more test failing on 32bit</comment>
     <requestid>780852</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5ea81d45e92681acd8c93390b2c7ae10</srcmd5>
+    <version>1.17.0</version>
+    <time>1611163766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865041</requestid>
+  </revision>
 </revisionlist>

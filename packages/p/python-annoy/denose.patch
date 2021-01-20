@@ -1,0 +1,49 @@
+Index: annoy-1.17.0/test/accuracy_test.py
+===================================================================
+--- annoy-1.17.0.orig/test/accuracy_test.py
++++ annoy-1.17.0/test/accuracy_test.py
+@@ -24,7 +24,6 @@ try:
+ except ImportError:
+     from urllib.request import urlretrieve # Python 3
+ import gzip
+-from nose.plugins.attrib import attr
+ 
+ class AccuracyTest(unittest.TestCase):
+     def _get_index(self, dataset):
+Index: annoy-1.17.0/test/hamming_index_test.py
+===================================================================
+--- annoy-1.17.0.orig/test/hamming_index_test.py
++++ annoy-1.17.0/test/hamming_index_test.py
+@@ -12,11 +12,11 @@
+ # License for the specific language governing permissions and limitations under
+ # the License.
+ 
++import unittest
+ import numpy
+ import random
+ from common import TestCase
+ from annoy import AnnoyIndex
+-from nose.plugins.skip import SkipTest
+ 
+ 
+ class HammingIndexTest(TestCase):
+@@ -85,7 +85,7 @@ class HammingIndexTest(TestCase):
+         avg_dist = 1.0 * sum(dists) / len(dists)
+         self.assertLessEqual(avg_dist, 0.42)
+ 
+-    @SkipTest  # will fix later
++    @unittest.skip('will fix later')
+     def test_zero_vectors(self):
+         # Mentioned on the annoy-user list
+         bitstrings = [
+Index: annoy-1.17.0/setup.py
+===================================================================
+--- annoy-1.17.0.orig/setup.py
++++ annoy-1.17.0/setup.py
+@@ -84,6 +84,5 @@ setup(name='annoy',
+           'Programming Language :: Python :: 3.6',
+       ],
+       keywords='nns, approximate nearest neighbor search',
+-      setup_requires=['nose>=1.0'],
+       tests_require=['numpy', 'h5py']
+       )

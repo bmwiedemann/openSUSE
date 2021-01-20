@@ -3,11 +3,11 @@ Date: 2018-07-10
 
 https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
 
-Index: annoy-1.16.3/setup.py
+Index: annoy-1.17.0/setup.py
 ===================================================================
---- annoy-1.16.3.orig/setup.py
-+++ annoy-1.16.3/setup.py
-@@ -38,22 +38,6 @@ with codecs.open('README.rst', encoding=
+--- annoy-1.17.0.orig/setup.py
++++ annoy-1.17.0/setup.py
+@@ -39,17 +39,6 @@ with codecs.open('README.rst', encoding=
  extra_compile_args = ['-D_CRT_SECURE_NO_WARNINGS']
  extra_link_args = []
  
@@ -22,10 +22,17 @@ Index: annoy-1.16.3/setup.py
 -if os.name != 'nt':
 -    extra_compile_args += ['-O3', '-ffast-math', '-fno-associative-math']
 -
+ # Add multithreaded build flag for all platforms using Python 3 and
+ # for non-Windows Python 2 platforms
+ python_major_version = sys.version_info[0]
+@@ -59,11 +48,6 @@ if python_major_version == 3 or (python_
+     if os.name != 'nt':
+         extra_compile_args += ['-std=c++14']
+ 
 -# #349: something with OS X Mojave causes libstd not to be found
 -if platform.system() == 'Darwin':
--    extra_compile_args += ['-std=c++11', '-mmacosx-version-min=10.9']
--    extra_link_args += ['-stdlib=libc++', '-mmacosx-version-min=10.9']
+-    extra_compile_args += ['-mmacosx-version-min=10.12']
+-    extra_link_args += ['-stdlib=libc++', '-mmacosx-version-min=10.12']
 -
  # Manual configuration, you're on your own here.
  manual_compiler_args = os.environ.get('ANNOY_COMPILER_ARGS', None)

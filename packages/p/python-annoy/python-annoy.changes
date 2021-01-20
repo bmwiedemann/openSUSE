@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 20 15:12:43 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.17.0
+  * multithreaded building + misc more
+- Add denose.patch to get rid of nose
+
+-------------------------------------------------------------------
+Wed Jan 20 15:09:53 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip one test flaky on Python 3.6
+
+-------------------------------------------------------------------
 Mon Mar  2 08:39:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip one more test failing on 32bit
