@@ -55,4 +55,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>861604</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0eb194a9a167e71a540df0179719b1c2</srcmd5>
+    <version>1.20.3</version>
+    <time>1611163583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update of haskell stack in oSUSE:Factory</comment>
+    <requestid>864466</requestid>
+  </revision>
 </revisionlist>
