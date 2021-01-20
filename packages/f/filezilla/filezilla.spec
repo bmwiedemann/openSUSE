@@ -16,10 +16,10 @@
 #
 
 
-%define main_version 3.52.0
+%define main_version 3.52.2
 
 Name:           filezilla
-Version:        3.52.0.5
+Version:        3.52.2
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
