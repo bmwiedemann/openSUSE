@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 15 03:08:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.077
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.077		2021-01-14	T. R. Wyant
+      Add Travis CI testing.
+
+      Use GitHub as bug tracker. R.I.P. rt.cpan.org.
+
+-------------------------------------------------------------------
 Sun Nov 29 03:09:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.076
