@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 18 09:27:22 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1610961380.fc379403:
+  * Dev: unittest: unit test for bootstrap.Watchdog class
+  * Dev: behave: functional test for bootstrap.Watchdog class
+  * Fix: bootstrap: Use class Watchdog to simplify watchdog config(bsc#1154927, bsc#1178869)
+  * Dev: Polish the sbd feature.
+  * Dev: Replace -f with -c and run check when no parameter provide.
+  * Fix: Fix the yes option not working
+  * Fix: Remove useless import and show help when no input.
+  * Dev: Correct SBD device id inconsistenc during ASR
+
+-------------------------------------------------------------------
 Tue Jan 12 00:29:09 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1610410636.fef21a41:

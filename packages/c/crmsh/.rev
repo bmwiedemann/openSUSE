@@ -2169,4 +2169,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>862458</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>20adb7c25a738524e8a4cdd7ab607638</srcmd5>
+    <version>4.2.0+git.1610961380.fc379403</version>
+    <time>1611163642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864474</requestid>
+  </revision>
 </revisionlist>
