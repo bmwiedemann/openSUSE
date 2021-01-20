@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:06:55 UTC 2021 - psimons@suse.com
+
+- Update tdigest to version 0.2.1.1.
+  ## 0.2.1.1
+
+  - `build-type: Simple`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

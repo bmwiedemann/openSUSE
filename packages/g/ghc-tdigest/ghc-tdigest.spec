@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tdigest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,15 @@
 %global pkg_name tdigest
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.2.1.1
 Release:        0
 Summary:        On-line accumulation of rank-based statistics
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/5.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-binary-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-reducers-devel
 BuildRequires:  ghc-rpm-macros
@@ -39,7 +37,6 @@ BuildRequires:  ghc-vector-algorithms-devel
 BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
@@ -65,7 +62,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
