@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Wed Jan 13 13:13:51 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-16+31
+  * Fixes:
+    + JDK-8213032: program fails with LambdaConversionException at
+      execution time
+    + JDK-8245922: [macos] Taskbar.Feature.ICON_BADGE_NUMBER no
+      longer supported on MacOS
+    + JDK-8251377: [macos11] JTabbedPane selected tab text is barely
+      legible
+    + JDK-8253954: javac crash when compiling code with enhanced
+      switch expressions with option -Xjcov
+    + JDK-8256266: Binding variables don't correctly support
+      declaration annotations and the final modifier
+    + JDK-8257468: runtime/whitebox/TestWBDeflateIdleMonitors.java
+      fails with Monitor should be deflated.: expected true to equal
+      false
+    + JDK-8257906: JFR: RecordingStream leaks memory
+    + JDK-8258393: Shenandoah: "graph should be schedulable" assert
+      failure
+    + JDK-8258662: JDK 17ea: Crash compiling instanceof check
+      involving sealed interface
+    + JDK-8258703: Incorrect 512-bit vector registers restore on
+      x86_32
+    + JDK-8258916: javac/doclint reports broken HTML on multiline
+      mailto links
+    + JDK-8258941: Test specify the Classpath exception in the
+      header
+    + JDK-8258955: (bf) slice(int, int) on view buffers fails to
+      adjust index according to primitive size
+    + JDK-8258989: JVM is failed to inline in
+      jdk.internal.vm.vector.VectorSupport::convert
+    + JDK-8259027: NullPointerException in makeMappedSegment due to
+      NULL Unmapper when length of segment is 0
+    + JDK-8259213: Vector conversion with part > 0 is not getting
+      intrinsic implementation
+
+-------------------------------------------------------------------
+Wed Jan 13 13:10:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-16+30
+  * Fixes:
+    + JDK-8223607: --override-methods=summary ignores some signature
+      changes
+    + JDK-8225072: Add LuxTrust certificate that is expiring in
+      March 2021 to list of allowed but expired certs
+    + JDK-8258630: Add expiry exception for QuoVadis root
+      certificate
+    + JDK-8241353: NPE in ToolProvider.getSystemJavaCompiler
+    + JDK-8247994: Localize javadoc search
+    + JDK-8254023: A module declaration is not allowed to be a
+      target of an annotation that lacks an @Target meta-annotation
+    + JDK-8255763: C2: OSR miscompilation caused by invalid memory
+      instruction placement
+    + JDK-8255880: UI of Swing components is not redrawn after their
+      internal state changed
+    + JDK-8256693: getAnnotatedReceiverType parameterizes types too
+      eagerly
+    + JDK-8256843: [PPC64] runtime/logging/RedefineClasses.java
+      fails with assert: registers not saved on stack
+    + JDK-8257521: runtime/logging/MonitorInflationTest.java crashed
+      in MonitorList::unlink_deflated
+    + JDK-8257621: JFR StringPool misses cached items across
+      consecutive recordings
+    + JDK-8257636: Update usage of "type" terminology in
+      java.lang.Class and java.lang.reflect
+    + JDK-8257974: Regression 21% in DaCapo-lusearch-large after
+      JDK-8236926
+    + JDK-8257999: Parallel GC crash in
+      gc/parallel/TestDynShrinkHeap.java: new region is not in
+      covered_region
+    + JDK-8258002: Update "type" terminology in generated docs
+    + JDK-8258007: Add instrumentation to NativeLibraryTest
+    + JDK-8258134: assert(size == calc_size) failed: incorrect size
+      calculation on x86_32 with AVX512 machines
+    + JDK-8258225: compiler/c2/cr6340864/TestIntVect.java runs
+      faster in interpreter
+    + JDK-8258259: Unicode linebreak matching behavior is incorrect;
+      backout JDK-8235812
+    + JDK-8258293: tools/jpackage/share/RuntimePackageTest.java#id0
+      with RuntimePackageTest.testUsrInstallDir2
+    + JDK-8258338: Support deprecated records
+    + JDK-8258373: Update the text handling in the JPasswordField
+    + JDK-8258443: doclint should be service-loaded with system
+      class loader
+    + JDK-8258505: [TESTBUG] TestDivZeroWithSplitIf.java fails due
+      to missing UnlockDiagnosticVMOptions
+    + JDK-8258515: javac should issue an error if an annotation is
+      nested in a local class or interface
+    + JDK-8258647: TestCharVect2 is very slow
+    + JDK-8258687: Build broken on Windows after fix for JDK-8258134
+    + JDK-8258714: Shenandoah: Process references before evacuation
+      during degen
+    + JDK-8258790: C2: Crash on empty macro node list
+    + JDK-8258802: ProblemList TestJstatdDefaults.java,
+      TestJstatdRmiPort.java, and TestJstatdServer.java
+    + JDK-8258827: ProblemList Naming/DefaultRegistryPort.java and
+      Naming/legalRegistryNames/LegalRegistryNames.java on Windows
+    + JDK-8258832: ProblemList com/sun/jdi/AfterThreadDeathTest.java
+      on Linux-X64
+
+-------------------------------------------------------------------
+Wed Jan 13 12:59:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-16+29
+  * Fixes:
+    + JDK-8254350: CompletableFuture.get may swallow
+      InterruptedException
+    + JDK-8255381: com/sun/jdi/EATests.java should not suspend
+       graal threads
+    + JDK-8256641: CDS VM operations do not lock the heap
+    + JDK-8257596: Clarify trusted final fields for record classes
+    + JDK-8257598: Clarify what component values are used in
+      Record::equals
+    + JDK-8257637: Update usage of "type" terminology in
+      java.lang.annotation
+    + JDK-8257822: C2 crashes with SIGFPE due to a division that
+      floats above its zero check
+    + JDK-8257910: [JVMCI] Set exception_seen accordingly in the
+      runtime.
+    + JDK-8257919: [JVMCI] profiling info didn't change after
+      reprofile
+    + JDK-8258015: [JVMCI] JVMCI_lock shouldn't be held while
+      initializing box classes
+    + JDK-8258060: Update @jls tags for renamed/renumbered sections
+    + JDK-8258065: ProblemList JfrGTestAdaptiveSampling
+    + JDK-8258092: Link to early access platform documentation in
+      TestHtmlTableTags.java
+    + JDK-8258094: AIX build fails after 8257602
+    + JDK-8258111: Problemlist compiler/blackhole tests for -Xcomp
+      until JDK-8258101 is fixed
+    + JDK-8258140: Update @jls tags in java.base for
+      renamed/renumbered sections
+    + JDK-8258236: Segfault in ClassListParser::resolve_indy dumping
+      static AppCDS archive
+    + JDK-8258242: Type profile pollution occurs when memory
+      segments of different kinds are used
+    + JDK-8258380: [JVMCI] don't clear InstalledCode reference
+      when unloading JVMCI nmethods
+    + JDK-8258404: Restore stacktrace reuse after 8258094
+    + JDK-8258419: RSA cipher buffer cleanup
+    + JDK-8258427: Problem List some tests related to FileDialog
+      for MacOS
+
+-------------------------------------------------------------------
 Mon Dec 14 08:38:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-16+28

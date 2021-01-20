@@ -1,7 +1,7 @@
 #
 # spec file for package java-16-openjdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,10 +35,10 @@
 %global updatever       0
 %global patchver        0
 %global datever         2021-03-16
-%global buildver        28
+%global buildver        31
 %global openjdk_repo    jdk16
-%global openjdk_tag     jdk-16+28
-%global openjdk_dir     jdk16-jdk-16-28
+%global openjdk_tag     jdk-16+31
+%global openjdk_dir     jdk16-jdk-16-31
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
