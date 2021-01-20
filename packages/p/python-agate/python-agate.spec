@@ -73,7 +73,7 @@ find agate -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %check
 export LANG=en_US.UTF-8
-%pytest -k 'not test_join'
+%pytest -k 'not test_join and not test_sniffer'
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst

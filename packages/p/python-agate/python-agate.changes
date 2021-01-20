@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 00:58:20 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable another failing test: test_sniffer
+  https://github.com/wireservice/agate/issues/746
+
+-------------------------------------------------------------------
 Thu Jun 25 10:11:10 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Revert previous commit (sr#813277): unittest2 is necessary

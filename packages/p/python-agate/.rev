@@ -58,4 +58,12 @@
   for platforms with Python 2.7 (SLE-15 etc.).</comment>
     <requestid>817862</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>bdcdb17d830582dbc4a4b060d2d2a30a</srcmd5>
+    <version>1.6.1</version>
+    <time>1611163751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864996</requestid>
+  </revision>
 </revisionlist>
