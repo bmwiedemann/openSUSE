@@ -1,7 +1,7 @@
 #
 # spec file for package glslang
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-# lname needs a bump for every change in commit (_service)
-%define version_unconverted 10.15.3847
-%define lname libglslang10
+%define lname libglslang11
 
 Name:           glslang
-Version:        10.15.3847
+Version:        11.1.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -29,7 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
 
-Source:         %name-%version.tar.xz
+Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Patch1:         0001-build-set-SOVERSION-on-all-libraries.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
@@ -76,7 +74,7 @@ compressor's dictionary can find better cross module commonality.
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 # Trim -Wl,--no-undefined for now (https://github.com/KhronosGroup/glslang/issues/1484)
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -100,7 +98,7 @@ ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/*.so.10*
+%_libdir/*.so.11*
 
 %files devel
 %_bindir/gls*

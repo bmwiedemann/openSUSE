@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 18 16:51:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.1.0
+  * Add new SpirvToolsDisassemble API interface.
+  * SPV: Add NonUniform decorations for stores, for constructors
+    and for OpImages created during lowering.
+  * SPIRV: Add disassembly support for multiple literal strings.
+  * Add support for  GL_EXT_fragment_shading_rate,
+    GL_EXT_shader_image_int64.
+  * Updates for final Vulkan ray tracing extensions.
+  * Add ray query capability if acceleration structure or ray
+    query types declared.
+
+-------------------------------------------------------------------
 Tue Aug 18 15:06:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-set-SOVERSION-on-all-libraries.patch

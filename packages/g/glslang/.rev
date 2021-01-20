@@ -194,4 +194,12 @@
     <comment>- Add 0001-build-set-SOVERSION-on-all-libraries.patch</comment>
     <requestid>827649</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0fde500fba81d71dc5f2c9d2f39a9ef3</srcmd5>
+    <version>11.1.0</version>
+    <time>1611163387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.1.0</comment>
+    <requestid>864138</requestid>
+  </revision>
 </revisionlist>
