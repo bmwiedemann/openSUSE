@@ -1,19 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 19 13:39:12 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.6.0
+  * Change salt-formulas-configuration requirement in SLE12 codestream
+  to a recommendation
+  (bsc#1177860)
+
+-------------------------------------------------------------------
 Thu Dec  3 16:12:08 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Add requisites of netweaver installation to subsequent salt states 
+- Add requisites of netweaver installation to subsequent salt states
 
 -------------------------------------------------------------------
 Wed Dec  2 18:41:35 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Start the saptune systemd service 
+- Start the saptune systemd service
 
 -------------------------------------------------------------------
 Thu Nov 19 10:59:12 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Fix additional_dvds variable usage when salt uses python 2. The
   variable is filtered by 'tojson' option to avoid 'u' prefix in
-  lists 
+  lists
 
 -------------------------------------------------------------------
 Mon Oct 19 14:54:33 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
@@ -27,11 +35,11 @@ Thu Oct 15 07:21:21 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Update the db installation template to use correctly the schema
   names for S/4HANA
-  
+
 -------------------------------------------------------------------
 Wed Oct 14 23:40:20 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Update the default 'nw_extract_dir' SWPM media extraction location 
+- Update the default 'nw_extract_dir' SWPM media extraction location
 
 -------------------------------------------------------------------
 Wed Oct  7 19:58:03 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
