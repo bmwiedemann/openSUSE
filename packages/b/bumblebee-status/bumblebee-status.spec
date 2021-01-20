@@ -1,7 +1,7 @@
 #
 # spec file for package bumblebee-status
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           bumblebee-status
-Version:        2.0.5
+Version:        2.1.1
 Release:        0
 Summary:        Modular, theme-able status line generator for the i3 window manager
 License:        MIT
@@ -27,14 +27,16 @@ URL:            https://github.com/tobi-wan-kenobi/bumblebee-status
 Source0:        https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         use-python-3.patch
 Patch2:         import_fix.patch
+BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module Pillow-tk}
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module feedparser}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module i3ipc}
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netifaces}
-BuildRequires:  %{python_module Pillow-tk}
 BuildRequires:  %{python_module power}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pygit2}
@@ -244,7 +246,7 @@ Displays the number of docker containers running.
 Summary:        Widget to toggle dunst notifications
 Group:          System/Monitoring
 Requires:       %{name} = %{version}
-Requires:       dunst
+Requires:       dunst >= 1.5.0
 Supplements:    (%{name} and dunst)
 BuildArch:      noarch
 
@@ -652,7 +654,8 @@ ln -s %{_datadir}/%{name}/%{name} %{buildroot}%{_bindir}/%{name}
 #    * apt (debian)
 #    * arch-update and pacman (only usable on arch linux)
 #    * gpmdp (needs Google Play music player)
-rm bumblebee_status/modules/contrib/{apt,arch-update,gpmdp,pacman}.py
+rm bumblebee_status/modules/contrib/{apt,arch_update,arch-update,gpmdp,pacman,portage_status}.py
+rm tests/modules/contrib/test_{apt,arch-update,gpmdp,pacman,portage_status}.py
 
 # 3. copy files from source
 cp -a --parents %{name} themes/{,icons/}*.json %{buildroot}%{_datadir}/%{name}
@@ -662,7 +665,8 @@ cp -r . %{buildroot}%{_datadir}/%{name}/bumblebee/
 %check
 export LANG=en_US.UTF-8
 export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{name}/bumblebee/
-%pytest -rs
+# Speedtest is not available for python3.6
+%pytest -rs --ignore tests/modules/core/test_speedtest.py
 
 %files
 %license LICENSE
@@ -696,6 +700,7 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/core/test.py
 %{_datadir}/%{name}/bumblebee/modules/core/time.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/battery.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/battery_upower.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/battery-upower.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/bluetooth2.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/bluetooth.py
@@ -707,16 +712,20 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/contrib/hostname.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/http_status.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/kernel.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/messagereceiver.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/network_traffic.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/pomodoro.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/publicip.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/rofication.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/shell.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/shortcut.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/spaceapi.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/stock.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/system.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/thunderbird.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/timetz.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/todo.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/todo_org.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/traffic.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/uptime.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/weather.py
@@ -784,6 +793,7 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 
 %files module-dunst
 %{_datadir}/%{name}/bumblebee/modules/contrib/dunst.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/dunstctl.py
 
 %files module-git
 %{_datadir}/%{name}/bumblebee/modules/core/git.py
@@ -798,9 +808,11 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/contrib/layout.py
 
 %files module-layout-xkb
+%{_datadir}/%{name}/bumblebee/modules/core/layout_xkb.py
 %{_datadir}/%{name}/bumblebee/modules/core/layout-xkb.py
 
 %files module-layout-xkbswitch
+%{_datadir}/%{name}/bumblebee/modules/contrib/layout_xkbswitch.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/layout-xkbswitch.py
 
 %files module-libvirt

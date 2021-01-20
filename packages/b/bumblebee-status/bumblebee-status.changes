@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 18 13:15:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update use-python-3.patch
+- Update to v2.1.1
+- from v2.1.0
+  * Added messagereceiver, rofication, thunderbird, todo_org, dunstctl
+  * Added tests for modules
+
+-------------------------------------------------------------------
 Wed Dec  2 04:11:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate contrib module nvidia-prime
