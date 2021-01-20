@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  8 08:27:03 UTC 2021 - psimons@suse.com
+
+- Update hspec-core to version 2.7.6.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Jan  4 11:06:53 UTC 2021 - psimons@suse.com
+
+- Update hspec-core to version 2.7.5.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
