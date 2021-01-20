@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 19 18:11:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.3
+  New features:
+  * New languages: Azerbaijani, Estonian
+  Bug fixes:
+  * Unify global speed dialogs for normal/alternative speeds
+  * Increase maximum global speed limits ~2 GiB/s
+  * Save fastresume when setting torrent speed limits
+  * Group several torrent options into one dialog
+  * Capitalize locale names
+  * Improve content file/folder names handling
+  * Drop notification about move storage finished or failed
+  * Reload "missing files" torrent instead of re-checking
+  * Remember dialog sizes
+  * Improve detection of file extension string
+  WebUI:
+  * Don't call non-existent elements
+  * Update "Keep top-level folder" in WebUI options
+  Other:
+  * Use legacy 'data' directory only as a fallback
+  * Bump project requirement to C++17
+
+-------------------------------------------------------------------
 Mon Dec 28 08:12:32 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.2
