@@ -1,7 +1,7 @@
 #
 # spec file for package bibletime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-2014 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML import
+%global __requires_exclude qmlimport\\(BibleTime.*
 
 Name:           bibletime
 Version:        3.0
