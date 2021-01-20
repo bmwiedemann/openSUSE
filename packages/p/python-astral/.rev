@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>845823</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2f1b20e8b0a0fd840c000ed5ed2e4f34</srcmd5>
+    <version>2.2</version>
+    <time>1611163651</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire dataclasses if python36-base installed</comment>
+    <requestid>864493</requestid>
+  </revision>
 </revisionlist>

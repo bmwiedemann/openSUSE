@@ -1,7 +1,7 @@
 #
 # spec file for package python-astral
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,6 @@ Summary:        Calculations for the position of the sun and moon
 License:        Apache-2.0
 URL:            https://github.com/sffjunkie/astral
 Source:         https://files.pythonhosted.org/packages/source/a/astral/astral-%{version}.tar.gz
-%if 0%{?suse_version} <= 1500
-# Not required for Tumbleweed
-BuildRequires:  %{python_module dataclasses}
-%endif
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
@@ -36,6 +32,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python36-dataclasses if python36-base)
 Requires:       python-pytz
 Requires:       python-requests
 Recommends:     python-dataclasses

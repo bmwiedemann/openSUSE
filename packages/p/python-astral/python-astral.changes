@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 04:21:00 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequire dataclasses if python36-base installed 
+
+-------------------------------------------------------------------
 Tue Nov  3 16:31:08 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix %check on Leap 15.2
