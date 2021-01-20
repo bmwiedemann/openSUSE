@@ -81,4 +81,12 @@ Prefer: -waybar-branding-openSUSE
     <comment></comment>
     <requestid>849104</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a7086c4c00a81e03a7c4ae7789779a6a</srcmd5>
+    <version>0.13</version>
+    <time>1611163694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864611</requestid>
+  </revision>
 </revisionlist>

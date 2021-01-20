@@ -20,7 +20,7 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 License:        MIT
@@ -48,7 +48,6 @@ Requires:       jq
 Requires:       less
 Requires:       libqt5-qtwayland
 Requires:       mpv
-Requires:       pamixer
 Requires:       pipewire
 Requires:       qt5ct
 Requires:       sudo
@@ -58,7 +57,6 @@ Requires:       vifm
 Requires:       vim
 Requires:       waybar-branding-openSUSE
 Requires:       wget
-Requires:       wob
 Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-wlr
 Requires:       xdg-utils
@@ -91,8 +89,11 @@ Requires:       fontawesome-fonts
 Requires:       jq
 Requires:       patterns-sway-sway
 Requires:       pavucontrol
+Requires:       pamixer
+Requires:       wob
 Requires:       sway
 Requires:       wallpaper-branding-openSUSE
+Requires:       polkit-gnome
 Provides:       sway-branding = %{version}
 Conflicts:      otherproviders(sway-branding)
 Supplements:    packageand(sway:branding-openSUSE)
