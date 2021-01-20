@@ -75,6 +75,7 @@ URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE python-h5py-relax-dependency-versions.patch badshah400@gmail.com -- Build against newer version of numpy
 Patch0:         python-h5py-relax-dependency-versions.patch
+BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module Cython >= 0.23}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.12}
@@ -89,8 +90,8 @@ Requires:       hdf5%{?my_suffix}
 Requires:       python-numpy >= 1.12
 Requires:       python-six
 %requires_eq    libhdf5%{?my_suffix}
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module cached-property}
+%if %python_version_nodots < 38
+Requires:       python-cached-property
 %endif
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-devel
