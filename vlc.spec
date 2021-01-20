@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.11.1
+Version:        3.0.12
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,14 +51,10 @@ Patch1:         vlc-allow-deprecated-fribidi.patch
 Patch2:         vlc-lua-5.3.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch3:         fix-build-with-fdk-2.0.patch
-# PATCH-FIX-UPSTREAM vlc-CVE-2020-26664.patch CVE-2020-26664 dimstar@opensuse.org --  mkv: Ensure we don't use an EbmlDummy element for something it's not
-Patch4:         vlc-CVE-2020-26664.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
-# PATCH-FIX-UPSTREAM -- Fix building with Qt 5.15 by adding a missing include
-Patch104:       fix-missing-includes-with-qt-5.15.patch
 # Fix building against recent srt where SRTO_TSBPDDELAY is no longer defined
 Patch105:       vlc-srto_tsbpddelay.patch
 BuildRequires:  Mesa-devel
@@ -402,12 +398,10 @@ OpenCV based video filters and a face detection example.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%patch4 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch100 -p1
 %endif
 %patch103 -p1
-%patch104 -p1
 %patch105 -p1
 
 ### And LUA 5.3.1 has some more API changes
@@ -779,6 +773,7 @@ dd if=/dev/zero bs=1M count=1 of=%{buildroot}/%{_libdir}/vlc/plugins/plugins.dat
 %if 0%{?suse_version} < 1330 && ( 0%{?sle_version} < 120200 || 0%{?is_opensuse} < 1 )
 %{_libdir}/vlc/plugins/access/librdp_plugin.so
 %endif
+%{_libdir}/vlc/plugins/access/librist_plugin.so
 %{_libdir}/vlc/plugins/access/librtp_plugin.so
 %{_libdir}/vlc/plugins/access/libsatip_plugin.so
 %{_libdir}/vlc/plugins/access/libsdp_plugin.so
@@ -801,6 +796,7 @@ dd if=/dev/zero bs=1M count=1 of=%{buildroot}/%{_libdir}/vlc/plugins/plugins.dat
 %{_libdir}/vlc/plugins/access_output/libaccess_output_file_plugin.so
 %{_libdir}/vlc/plugins/access_output/libaccess_output_http_plugin.so
 %{_libdir}/vlc/plugins/access_output/libaccess_output_livehttp_plugin.so
+%{_libdir}/vlc/plugins/access_output/libaccess_output_rist_plugin.so
 %{_libdir}/vlc/plugins/access_output/libaccess_output_shout_plugin.so
 %if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 %{_libdir}/vlc/plugins/access_output/libaccess_output_srt_plugin.so
