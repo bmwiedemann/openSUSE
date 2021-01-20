@@ -1,9 +1,0 @@
-<package name="rubygem-liquid-3" project="openSUSE:Factory">
-  <title>Title of New Package</title>
-  <description>
-LONG DESCRIPTION
-HERE
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-liquid-3"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-</package>
