@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-postgresql-simple
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name postgresql-simple
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Mid-Level PostgreSQL client library
 License:        BSD-3-Clause
@@ -39,7 +39,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-time-compat-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-uuid-types-devel
 BuildRequires:  ghc-vector-devel
