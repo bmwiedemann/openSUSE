@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">drbd-formula</param>
-    <param name="versionformat">0.3.10+git.%ct.%h</param>
-    <param name="revision">484cfdd0b70ab3d505f1fb5e5e722e55dbb99545</param>
+    <param name="versionformat">0.4.0+git.%ct.%h</param>
+    <param name="revision">55c0dfd400f7aab50914a0a20fd61c37d99088d0</param>
   </service>
 
   <service name="recompress" mode="disabled">
