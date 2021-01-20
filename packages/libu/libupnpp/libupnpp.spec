@@ -1,7 +1,7 @@
 #
 # spec file for package libupnpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  9
 Name:           libupnpp
-Version:        0.20.0
+Version:        0.20.2
 Release:        0
 Summary:        Library providing a higher level C++ API over libnpupnp or libupnp
 License:        GPL-2.0-or-later
@@ -59,7 +59,7 @@ developing applications that use %{name}.
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*a" -delete -print
 
 %post -p /sbin/ldconfig -n %{name}%{so_ver}
 %postun -p /sbin/ldconfig -n %{name}%{so_ver}
