@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:06:21 UTC 2021 - psimons@suse.com
+
+- Update http-api-data to version 0.4.3.
+  0.4.3
+  -----
+
+  * Add `Quarter`, `QuarterOfYear` and `Month` instances
+  * Support `bytestring-0.11`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

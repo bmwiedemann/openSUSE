@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-api-data
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name http-api-data
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Converting to/from HTTP API data like URL pieces, headers and query parameters
 License:        BSD-2-Clause
@@ -46,7 +46,6 @@ ExcludeArch:    %{ix86}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
-BuildRequires:  ghc-nats-devel
 BuildRequires:  ghc-quickcheck-instances-devel
 %endif
 
