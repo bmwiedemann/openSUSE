@@ -146,4 +146,12 @@ languages.</comment>
     <comment>update haskell stack in openSUS</comment>
     <requestid>857364</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f91446301d3e167f25445da877ec2ea1</srcmd5>
+    <version>5.1.6</version>
+    <time>1611163465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>862325</requestid>
+  </revision>
 </revisionlist>

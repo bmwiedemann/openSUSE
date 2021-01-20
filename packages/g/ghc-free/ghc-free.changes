@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:05:47 UTC 2021 - psimons@suse.com
+
+- Update free to version 5.1.6.
+  5.1.6 [2020.12.31]
+  ------------------
+  * Explicitly mark modules as `Safe`.
+
+-------------------------------------------------------------------
+Sun Dec 27 17:28:57 UTC 2020 - psimons@suse.com
+
+- Update free to version 5.1.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
