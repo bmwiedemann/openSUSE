@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:06:21 UTC 2021 - psimons@suse.com
+
+- Update profunctors to version 5.6.1.
+  5.6.1 [2020.12.31]
+  ------------------
+  * Add `Functor` instances for `PastroSum`, `CopastroSum`, `Environment`,
+    `FreeMapping`, `Pastro`, `Copastro`, `FreeTraversing`, and `Coyoneda`.
+  * Explicitly mark modules as `Safe`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
