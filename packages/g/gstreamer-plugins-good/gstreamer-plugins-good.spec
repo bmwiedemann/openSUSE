@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-good
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define ENABLE_EXPERIMENTAL 1
 
 Name:           gstreamer-plugins-good
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
