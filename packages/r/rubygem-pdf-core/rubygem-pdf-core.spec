@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pdf-core
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,19 +24,19 @@
 #
 
 Name:           rubygem-pdf-core
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 %define mod_name pdf-core
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby >= 2.3}
+BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            http://prawn.majesticseacreature.com
+BuildRequires:  ruby-macros >= 5
+URL:            http://prawnpdf.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        PDF::Core is used by Prawn to render PDF documents
-License:        GPL-2.0 or GPL-3.0
+License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Languages/Ruby
 
 %description
