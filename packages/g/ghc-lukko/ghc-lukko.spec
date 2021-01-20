@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-lukko
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name lukko
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.2
+Version:        0.1.1.3
 Release:        0
 Summary:        File locking
 License:        GPL-2.0-or-later AND BSD-3-Clause

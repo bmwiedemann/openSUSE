@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  8 08:27:25 UTC 2021 - psimons@suse.com
+
+- Update lukko to version 0.1.1.3.
+  # 0.1.1.3
+
+  * Use `CApiFFI` to call varargs C functions.
+  * Define `let alignment` only when needed.
+
+  # 0.1.1.2
+
+  * Make Win32 code more idiomatic
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
