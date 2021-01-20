@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 19 17:04:53 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+* Update to 2020.1:
+  - Use Jedi for completion in the built-in shell
+  - Add vi keys for sidebar
+  - Clean up vi key handling, remove duplication
+  - add -m switch to run as module
+  - Require Py3.6
+  - Use h/l to collapse/open containers in var view
+  - feat: add reverse remote pudb
+* Fix dealing with alternatives.
+
+-------------------------------------------------------------------
 Tue Apr 28 07:28:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

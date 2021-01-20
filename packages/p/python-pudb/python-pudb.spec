@@ -1,7 +1,7 @@
 #
 # spec file for package python-pudb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 %define module_name pudb
 %define py_maj_ver %(c=%{python})
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-pudb
-Version:        2019.2
+Version:        2020.1
 Release:        0
 Summary:        A full-screen, console-based Python debugger
 License:        MIT
@@ -57,16 +57,9 @@ sed -i '1{\@^#! %{_bindir}/env python@d}' pudb/debugger.py
 
 %install
 %python_install
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-%if %{with python2}
-mv -v %{buildroot}%{_bindir}/%{upstream_name} \
-    %{buildroot}%{_bindir}/%{upstream_name}-%{python2_bin_suffix}
-%endif
-mv -v %{buildroot}%{_bindir}/%{upstream_name}3 \
-    %{buildroot}%{_bindir}/%{upstream_name}-%{python3_bin_suffix}
+mv -v %{buildroot}%{_bindir}/pudb{*,} || /bin/true
+%python_clone -a %{buildroot}%{_bindir}/pudb
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%prepare_alternative %{upstream_name}
 
 %pre
 # Since /usr/bin/pudb became ghosted to be used with
@@ -90,6 +83,6 @@ export LC_ALL=en_US.utf8
 %license LICENSE
 %{python_sitelib}/%{module_name}
 %{python_sitelib}/%{module_name}*.egg-info
-%python_alternative %{_bindir}/%{upstream_name}
+%python_alternative %{_bindir}/pudb
 
 %changelog
