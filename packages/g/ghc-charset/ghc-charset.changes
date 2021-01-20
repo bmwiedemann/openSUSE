@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 11 10:05:47 UTC 2021 - psimons@suse.com
+
+- Update charset to version 0.3.7.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
