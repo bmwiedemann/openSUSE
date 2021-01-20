@@ -79,4 +79,12 @@
     <comment>update haskell stack in openSUSE</comment>
     <requestid>857701</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3d35ec417ddff2a85ead9b4652527b24</srcmd5>
+    <version>8.20201129</version>
+    <time>1611163537</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>863274</requestid>
+  </revision>
 </revisionlist>

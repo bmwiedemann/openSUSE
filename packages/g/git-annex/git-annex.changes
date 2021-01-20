@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Dec 29 21:16:10 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20201129.
+  git-annex (8.20201129) upstream; urgency=medium
+
+    * New borg special remote. This is a new kind of remote, that examines
+      borg backups of git-annex repositories, learns what files have been
+      backed up, and can restore files from the backup and so on. As well
+      as backups, it can be useful for archival storage, since borg can
+      efficiently store many related versions of files.
+    * New config annex.stalldetection, remote.name.annex-stalldetection,
+      which can be used to deal with remotes that stall during transfers,
+      or are sometimes too slow to want to use.
+    * Support special remotes that are configured with importtree=yes but
+      without exporttree=yes.
+    * Fix bug that made the next download after an empty file from a ssh
+      or tor remote fail.
+    * Avoid spurious "verification of content failed" message when downloading
+      content from a ssh or tor remote fails due to the remote no longer
+      having a copy of the content.
+    * Fix bug that matched include= and exclude= in preferred/required content
+      expressions relative to the current directory, rather than the path
+      from the top of the repository.
+      (Reversion introduced in version 8.20201116.)
+    * Fix hang on shutdown of external special remote using ASYNC protocol
+      extension.
+      (Reversion introduced in version 8.20201007.)
+    * Guard against running in a repo where annex.uuid is set but
+      annex.version is not set, or vice-versa.
+    * Avoid autoinit when a repo does not have annex.version or annex.uuid
+      set, but has a git-annex objects directory, suggesting it was used
+      by git-annex before, and the git config may have been lost.
+    * importfeed: Avoid using youtube-dl when a feed does not contain an
+      enclosure, but only a link to an url which youtube-dl does not support.
+    * initremote: Prevent enabling encryption with exporttree=yes or
+      importtree=yes.
+    * Windows: include= and exclude= containing '/' will also match filenames
+      that are written using '\'. (And vice-versa, but it's better to use '/'
+      for portability.)
+    * Fix a bug that could prevent getting files from an importtree=yes
+      remote, because the imported tree was allowed to be garbage collected.
+    * stack.yaml: Updated to lts-16.27.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 29 Dec 2020 12:52:58 -0400
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
