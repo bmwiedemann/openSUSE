@@ -1,12 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 19 13:35:18 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.7.0
+  * Change salt-formulas-configuration requirement in SLE12 codestream
+  to a recommendation
+  (bsc#1177860)
+
+-------------------------------------------------------------------
 Wed Dec  2 17:48:05 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Start the saptune daemon service 
+- Start the saptune daemon service
 
 -------------------------------------------------------------------
 Tue Nov 24 04:08:55 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Add requisite of hana installation to subsequent salt states 
+- Add requisite of hana installation to subsequent salt states
 
 -------------------------------------------------------------------
 Wed Nov 11 04:25:03 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
@@ -16,29 +24,29 @@ Wed Nov 11 04:25:03 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 -------------------------------------------------------------------
 Mon Oct 19 14:48:50 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
-- Set the native fence mechanism usage for CSP as optional 
+- Set the native fence mechanism usage for CSP as optional
 
 -------------------------------------------------------------------
 Tue Oct 13 15:50:43 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version 0.6.2:
   * Update the package version after SUMA form update and extraction logic update
-  (jsc#SLE-4047) 
+  (jsc#SLE-4047)
 
 -------------------------------------------------------------------
 Sun Oct 11 04:21:32 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Fix the hana media extraction and installation logics when using exe archives 
+- Fix the hana media extraction and installation logics when using exe archives
 
 -------------------------------------------------------------------
 Thu Oct  8 02:34:37 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Update the SUMA hana form metadata, to show hana form under SAP deployment group 
+- Update the SUMA hana form metadata, to show hana form under SAP deployment group
 
 -------------------------------------------------------------------
 Sat Oct  3 04:59:38 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Update SUMA form.yml file and prevalidation state with latest changes in formula 
+- Update SUMA form.yml file and prevalidation state with latest changes in formula
 
 -------------------------------------------------------------------
 Thu Sep 24 20:23:13 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>

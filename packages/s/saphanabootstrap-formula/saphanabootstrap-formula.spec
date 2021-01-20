@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           saphanabootstrap-formula
-Version:        0.6.2+git.1607008189.3c9e871
+Version:        0.7.0+git.1611071677.5443549
 Release:        0
 Summary:        SAP HANA platform deployment formula
 License:        Apache-2.0
@@ -30,7 +30,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires:       habootstrap-formula
 Requires:       salt-shaptools
+%if 0%{?suse_version} < 1500
+Recommends:     salt-formulas-configuration
+%else
 Requires:       salt-formulas-configuration
+%endif
 Suggests:       prometheus-hanadb_exporter >= 0.7.0
 
 %define fname hana
@@ -42,6 +46,10 @@ SAP HANA deployment salt formula. This formula is capable to install
 SAP HANA nodes, enable system replication and configure SLE-HA cluster
 with the SAPHanaSR resource agent, using standalone salt or via SUSE Manager
 formulas with forms, available on SUSE Manager 4.0.
+
+In order to use the formula, salt must be available in the system. The package comes automatically
+in SLE15. To use it in SLE12, salt (and it sub-components) comes from the Advanced systems management
+module, which can be added running the `SUSEConnect -p sle-module-adv-systems-management/12/{{ arch }}`
 
 %prep
 %setup -q
