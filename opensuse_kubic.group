@@ -482,8 +482,6 @@
     <package name="patterns-microos-cloud" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="patterns-microos-cockpit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="patterns-microos-defaults" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
-    <!-- patterns-microos-desktop-gnome uninstallable: conflicting requests-->
-    <!-- patterns-microos-desktop-kde uninstallable: conflicting requests-->
     <package name="patterns-microos-hardware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="patterns-microos-ima_evm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
     <package name="patterns-microos-onlyDVD" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->

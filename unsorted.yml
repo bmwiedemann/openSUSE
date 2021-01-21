@@ -575,6 +575,8 @@ unsorted:
   - antic-devel 
   - antijingoist-opendyslexic-fonts 
   - antimicro 
+  - antimicrox 
+  - antimicrox-devel 
   - antlr 
   - antlr-bootstrap 
   - antlr-devel 
@@ -2811,6 +2813,8 @@ unsorted:
   - discover-lang: [i586] 
   - discover-notifier: [i586] 
   - diskimage-builder 
+  - diskmonitor 
+  - diskmonitor-lang 
   - diskscan 
   - disorderfs 
   - disruptor 
@@ -6084,6 +6088,7 @@ unsorted:
   - google-oauth-java-client-parent 
   - google-oauth-java-client-servlet 
   - google-osconfig-agent 
+  - google-poppins-fonts 
   - google-quiche-source 
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
@@ -6590,6 +6595,7 @@ unsorted:
   - harminv 
   - harminv-devel 
   - hartke-aurulentsans-fonts 
+  - haruna 
   - haserl 
   - hashalot 
   - hashcat 
@@ -9492,7 +9498,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
-  - libVkLayer_utils-1_2_162_1 
+  - libVkLayer_utils-1_2_165 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -12737,8 +12743,8 @@ unsorted:
   - libopenblas_serial-devel 
   - libopenblas_serial0 
   - libopencascade7 
-  - libopencsd0 
-  - libopencsd_c_api0 
+  - libopencsd1 
+  - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
   - libopencv4_5 
@@ -14517,7 +14523,7 @@ unsorted:
   - libusb3380-devel 
   - libusbauth-configparser-devel 
   - libusbauth-configparser1 
-  - libusbguard0 
+  - libusbguard1 
   - libusbgx-devel 
   - libusbgx-tools 
   - libusbgx2 
@@ -17858,6 +17864,8 @@ unsorted:
   - ocaml-uutf-devel 
   - ocaml-xml-light 
   - ocaml-xml-light-devel 
+  - ocaml-zarith 
+  - ocaml-zarith-devel 
   - ocamlify 
   - ocamlmod 
   - occt 
@@ -19110,6 +19118,7 @@ unsorted:
   - perl-CHI 
   - perl-CLASS 
   - perl-CPAN-Changes 
+  - perl-CPAN-Common-Index 
   - perl-CPAN-DistnameInfo 
   - perl-CPAN-Meta-Check 
   - perl-CPAN-Meta-Requirements 
@@ -19491,6 +19500,7 @@ unsorted:
   - perl-HTTP-Server-Simple 
   - perl-HTTP-Thin 
   - perl-HTTP-Tiny 
+  - perl-HTTP-Tinyish 
   - perl-HTTPS-Daemon 
   - perl-Hamlib 
   - perl-Hash-Merge 
@@ -19616,6 +19626,8 @@ unsorted:
   - perl-Math-Random-ISAAC 
   - perl-Math-Round 
   - perl-Memoize-ExpireLRU 
+  - perl-Menlo 
+  - perl-Menlo-Legacy 
   - perl-Meta-Builder 
   - perl-Method-Signatures 
   - perl-Method-Signatures-Simple 
@@ -20139,6 +20151,7 @@ unsorted:
   - perl-Throwable 
   - perl-Tie-Cache 
   - perl-Tie-Cycle 
+  - perl-Tie-Handle-Offset 
   - perl-Tie-Hash-DBD 
   - perl-Tie-Hash-Method 
   - perl-Tie-IxHash 
@@ -21442,7 +21455,6 @@ unsorted:
   - python3-Hamlib 
   - python3-HepMC 
   - python3-HyperKitty 
-  - python3-IMDbPY 
   - python3-Keras: [x86_64] 
   - python3-Keras-examples: [x86_64] 
   - python3-LHAPDF 
@@ -21450,7 +21462,6 @@ unsorted:
   - python3-Mathics 
   - python3-Nuitka 
   - python3-OpenImageIO 
-  - python3-Pint 
   - python3-Pweave 
   - python3-PyCBC 
   - python3-PyChromecast 
@@ -21713,7 +21724,6 @@ unsorted:
   - python3-certbot-dns-luadns 
   - python3-certbot-dns-nsone 
   - python3-certipy 
-  - python3-charset-normalizer 
   - python3-cilium-microscope 
   - python3-cinderclient 
   - python3-cirq: [x86_64] 
@@ -21775,7 +21785,6 @@ unsorted:
   - python3-efl 
   - python3-efl-doc 
   - python3-efl-examples 
-  - python3-eliot 
   - python3-emcee 
   - python3-enforce-pep8 
   - python3-espressomd 
@@ -21867,10 +21876,8 @@ unsorted:
   - python3-kiwi 
   - python3-kopano 
   - python3-labelImg 
-  - python3-lal: [x86_64] 
   - python3-lalapps: [x86_64] 
   - python3-lalburst: [x86_64] 
-  - python3-lalframe: [x86_64] 
   - python3-lalinference: [x86_64] 
   - python3-lalinspiral: [x86_64] 
   - python3-lalmetaio: [x86_64] 
@@ -21951,7 +21958,6 @@ unsorted:
   - python3-lldb9: [x86_64] 
   - python3-llfuse 
   - python3-logreduce 
-  - python3-loguru 
   - python3-louis: [i586] 
   - python3-lttngust 
   - python3-magic-wormhole 
@@ -22055,12 +22061,10 @@ unsorted:
   - python3-ovsdbapp 
   - python3-papermill 
   - python3-paraview 
-  - python3-particle 
   - python3-pcp 
   - python3-pendulum 
   - python3-piexif 
   - python3-pikepdf 
-  - python3-pingparsing 
   - python3-pip-test 
   - python3-pip-wheel 
   - python3-plist 
@@ -22080,12 +22084,10 @@ unsorted:
   - python3-prewikka 
   - python3-pwquality 
   - python3-pyIOSXR 
-  - python3-pyUSID 
+  - python3-pyUSID: [i586] 
   - python3-pyannotate 
   - python3-pycadf 
   - python3-pycsw 
-  - python3-pycxx 
-  - python3-pycxx-devel 
   - python3-pydenticon 
   - python3-pydle 
   - python3-pyfg 
@@ -22100,11 +22102,9 @@ unsorted:
   - python3-pylineclip 
   - python3-pymod2pkg 
   - python3-pynest2d 
-  - python3-pyodbc 
   - python3-pypandoc: [i586] 
   - python3-pyproj 
   - python3-pyprompter 
-  - python3-pysaml2 
   - python3-pysearpc 
   - python3-pyside2 
   - python3-pyside2-devel 
@@ -22181,7 +22181,6 @@ unsorted:
   - python3-stestr 
   - python3-stevedore 
   - python3-stp 
-  - python3-subprocrunner 
   - python3-sunpy 
   - python3-superpaper 
   - python3-susepubliccloudinfo 
@@ -22308,6 +22307,7 @@ unsorted:
   - python36-HTTPolice 
   - python36-HeapDict 
   - python36-IMAPClient 
+  - python36-IMDbPY 
   - python36-JPype1 
   - python36-Jinja2 
   - python36-Js2Py 
@@ -22471,6 +22471,7 @@ unsorted:
   - python36-agate-stats 
   - python36-aina 
   - python36-aiobotocore 
+  - python36-aiocontextvars 
   - python36-aiodns 
   - python36-aioeventlet 
   - python36-aiofiles 
@@ -22508,6 +22509,7 @@ unsorted:
   - python36-ansiwrap 
   - python36-antlr4-python3-runtime 
   - python36-anyjson 
+  - python36-anymarkup-core 
   - python36-apache-libcloud 
   - python36-apipkg 
   - python36-apiron 
@@ -22707,6 +22709,7 @@ unsorted:
   - python36-chai 
   - python36-chainmap 
   - python36-chardet 
+  - python36-charset-normalizer 
   - python36-chart-studio 
   - python36-chartify 
   - python36-check-manifest 
@@ -23030,6 +23033,7 @@ unsorted:
   - python36-elasticsearch 
   - python36-elasticsearch-dsl 
   - python36-elementpath 
+  - python36-eliot 
   - python36-email-reply-parser 
   - python36-email_validator 
   - python36-emoji 
@@ -23434,6 +23438,8 @@ unsorted:
   - python36-kwant: [x86_64] 
   - python36-l20n 
   - python36-labels 
+  - python36-lal: [x86_64] 
+  - python36-lalframe: [x86_64] 
   - python36-lancet-ioam 
   - python36-langdetect 
   - python36-langtable 
@@ -23487,8 +23493,10 @@ unsorted:
   - python36-locket 
   - python36-lockfile 
   - python36-logilab-common 
+  - python36-loguru 
   - python36-logutils 
   - python36-logzero 
+  - python36-lscsoft-glue 
   - python36-lupa 
   - python36-lws 
   - python36-lxml 
@@ -23728,6 +23736,7 @@ unsorted:
   - python36-parso 
   - python36-partd 
   - python36-parted 
+  - python36-particle 
   - python36-parver 
   - python36-pass_python_keyring 
   - python36-passa 
@@ -23776,6 +23785,7 @@ unsorted:
   - python36-pika 
   - python36-pika-pool 
   - python36-pilkit 
+  - python36-pingparsing 
   - python36-pip 
   - python36-pip-api 
   - python36-pip-licenses 
@@ -23908,6 +23918,8 @@ unsorted:
   - python36-pyct 
   - python36-pycups 
   - python36-pycurl 
+  - python36-pycxx 
+  - python36-pycxx-devel 
   - python36-pydantic 
   - python36-pydash 
   - python36-pydata-google-auth 
@@ -23985,6 +23997,7 @@ unsorted:
   - python36-pynxos 
   - python36-pyo 
   - python36-pyocr 
+  - python36-pyodbc 
   - python36-pyosf 
   - python36-pyotp 
   - python36-pyowm 
@@ -24015,6 +24028,7 @@ unsorted:
   - python36-pyroomacoustics 
   - python36-pyroute2 
   - python36-pyrsistent 
+  - python36-pysaml2 
   - python36-pyscard 
   - python36-pyscreenshot 
   - python36-pysendfile 
@@ -24515,6 +24529,7 @@ unsorted:
   - python36-structlog 
   - python36-subgrab 
   - python36-subliminal 
+  - python36-subprocrunner 
   - python36-subscene-api 
   - python36-subst 
   - python36-suds-jurko 
@@ -24887,6 +24902,7 @@ unsorted:
   - python38-HTTPolice 
   - python38-HeapDict 
   - python38-IMAPClient 
+  - python38-IMDbPY 
   - python38-JPype1 
   - python38-Js2Py 
   - python38-JsonWeb 
@@ -25074,6 +25090,7 @@ unsorted:
   - python38-ansiwrap 
   - python38-antlr4-python3-runtime 
   - python38-anyjson 
+  - python38-anymarkup-core 
   - python38-apache-libcloud 
   - python38-apipkg 
   - python38-apiron 
@@ -25258,6 +25275,7 @@ unsorted:
   - python38-cftime 
   - python38-chai 
   - python38-chainmap 
+  - python38-charset-normalizer 
   - python38-chart-studio 
   - python38-chartify 
   - python38-check-manifest 
@@ -25567,6 +25585,7 @@ unsorted:
   - python38-elasticsearch 
   - python38-elasticsearch-dsl 
   - python38-elementpath 
+  - python38-eliot 
   - python38-email-reply-parser 
   - python38-email_validator 
   - python38-emoji 
@@ -25949,6 +25968,8 @@ unsorted:
   - python38-kwant: [x86_64] 
   - python38-l20n 
   - python38-labels 
+  - python38-lal: [x86_64] 
+  - python38-lalframe: [x86_64] 
   - python38-lancet-ioam 
   - python38-langdetect 
   - python38-langtable 
@@ -25997,8 +26018,10 @@ unsorted:
   - python38-locket 
   - python38-lockfile 
   - python38-logilab-common 
+  - python38-loguru 
   - python38-logutils 
   - python38-logzero 
+  - python38-lscsoft-glue 
   - python38-lupa 
   - python38-lws 
   - python38-lxml-devel 
@@ -26221,6 +26244,7 @@ unsorted:
   - python38-parso: [i586] 
   - python38-partd 
   - python38-parted 
+  - python38-particle 
   - python38-parver 
   - python38-pass_python_keyring 
   - python38-passa 
@@ -26268,6 +26292,7 @@ unsorted:
   - python38-pika 
   - python38-pika-pool 
   - python38-pilkit 
+  - python38-pingparsing 
   - python38-pip-api 
   - python38-pip-licenses 
   - python38-pip-shims 
@@ -26361,6 +26386,7 @@ unsorted:
   - python38-pyRFC3339 
   - python38-pyRXP 
   - python38-pyScss 
+  - python38-pyUSID: [x86_64] 
   - python38-pyVows 
   - python38-pyacoustid 
   - python38-pyaes 
@@ -26384,6 +26410,8 @@ unsorted:
   - python38-pycountry 
   - python38-pycryptodomex 
   - python38-pyct 
+  - python38-pycxx 
+  - python38-pycxx-devel 
   - python38-pydantic 
   - python38-pydash 
   - python38-pydata-google-auth 
@@ -26419,6 +26447,7 @@ unsorted:
   - python38-pygraphviz: [i586] 
   - python38-pyhibp 
   - python38-pyinotify 
+  - python38-pyipp 
   - python38-pyjavaproperties 
   - python38-pyjokes 
   - python38-pyjsparser 
@@ -26458,6 +26487,7 @@ unsorted:
   - python38-pynxos 
   - python38-pyo 
   - python38-pyocr 
+  - python38-pyodbc 
   - python38-pyosf 
   - python38-pyotp 
   - python38-pyowm 
@@ -26488,6 +26518,7 @@ unsorted:
   - python38-pyroomacoustics 
   - python38-pyroute2 
   - python38-pyrsistent: [i586] 
+  - python38-pysaml2 
   - python38-pyscard 
   - python38-pyscreenshot 
   - python38-pysendfile 
@@ -26968,6 +26999,7 @@ unsorted:
   - python38-structlog 
   - python38-subgrab 
   - python38-subliminal 
+  - python38-subprocrunner 
   - python38-subscene-api 
   - python38-subst 
   - python38-suds-jurko 
@@ -28070,7 +28102,6 @@ unsorted:
   - ruby2.7-rubygem-bindex-doc 
   - ruby2.7-rubygem-bindex-testsuite 
   - ruby2.7-rubygem-binding_of_caller-doc 
-  - ruby2.7-rubygem-binding_of_caller-testsuite 
   - ruby2.7-rubygem-bootsnap-doc 
   - ruby2.7-rubygem-bootstrap-sass-doc 
   - ruby2.7-rubygem-bootstrap-sass-testsuite 
@@ -28104,6 +28135,8 @@ unsorted:
   - ruby2.7-rubygem-changelog_generator-doc 
   - ruby2.7-rubygem-changelog_generator-testsuite 
   - ruby2.7-rubygem-cheetah-doc 
+  - ruby2.7-rubygem-chef-utils-doc 
+  - ruby2.7-rubygem-chef-utils-testsuite 
   - ruby2.7-rubygem-childprocess-doc 
   - ruby2.7-rubygem-childprocess-doc-0_6 
   - ruby2.7-rubygem-childprocess-doc-2.0 
@@ -28147,7 +28180,6 @@ unsorted:
   - ruby2.7-rubygem-debase-ruby_core_source-doc 
   - ruby2.7-rubygem-debase-testsuite 
   - ruby2.7-rubygem-debug_inspector-doc 
-  - ruby2.7-rubygem-debug_inspector-testsuite 
   - ruby2.7-rubygem-debugger-linecache-doc 
   - ruby2.7-rubygem-debugger-linecache-testsuite 
   - ruby2.7-rubygem-deep_merge-doc 
@@ -28205,6 +28237,7 @@ unsorted:
   - ruby2.7-rubygem-fake_ftp-testsuite-0_1 
   - ruby2.7-rubygem-faraday-doc 
   - ruby2.7-rubygem-faraday-doc-0_12 
+  - ruby2.7-rubygem-faraday-net_http-doc 
   - ruby2.7-rubygem-faraday-testsuite 
   - ruby2.7-rubygem-faraday_middleware-doc 
   - ruby2.7-rubygem-faraday_middleware-multi_json-doc 
@@ -28266,7 +28299,6 @@ unsorted:
   - ruby2.7-rubygem-hashicorp-checkpoint-doc 
   - ruby2.7-rubygem-hashicorp-checkpoint-testsuite 
   - ruby2.7-rubygem-hashie-doc 
-  - ruby2.7-rubygem-hashie-testsuite 
   - ruby2.7-rubygem-highline-doc 
   - ruby2.7-rubygem-highline-doc-1_6 
   - ruby2.7-rubygem-highline-doc-1_7 
@@ -28307,7 +28339,6 @@ unsorted:
   - ruby2.7-rubygem-jaro_winkler-doc 
   - ruby2.7-rubygem-jbuilder-doc 
   - ruby2.7-rubygem-jbuilder-testsuite 
-  - ruby2.7-rubygem-jekyll 
   - ruby2.7-rubygem-jekyll-doc 
   - ruby2.7-rubygem-jekyll-sass-converter-doc 
   - ruby2.7-rubygem-jekyll-watch-doc 
@@ -28329,6 +28360,8 @@ unsorted:
   - ruby2.7-rubygem-kgio-doc 
   - ruby2.7-rubygem-kgio-testsuite 
   - ruby2.7-rubygem-kramdown-doc 
+  - ruby2.7-rubygem-kramdown-parser-gfm-doc 
+  - ruby2.7-rubygem-kramdown-parser-gfm-testsuite 
   - ruby2.7-rubygem-kramdown-testsuite 
   - ruby2.7-rubygem-launchy-doc 
   - ruby2.7-rubygem-launchy-testsuite 
@@ -28339,10 +28372,9 @@ unsorted:
   - ruby2.7-rubygem-libyui-rake-doc 
   - ruby2.7-rubygem-lightbox2-doc 
   - ruby2.7-rubygem-liquid-doc 
-  - ruby2.7-rubygem-liquid-doc-3 
+  - ruby2.7-rubygem-liquid-doc-4 
   - ruby2.7-rubygem-liquid-testsuite 
-  - ruby2.7-rubygem-liquid-testsuite-3 
-  - ruby2.7-rubygem-listen-doc 
+  - ruby2.7-rubygem-liquid-testsuite-4 
   - ruby2.7-rubygem-listen-doc-3_0 
   - ruby2.7-rubygem-listen-doc-3_1 
   - ruby2.7-rubygem-little-plugger-doc 
@@ -28384,6 +28416,7 @@ unsorted:
   - ruby2.7-rubygem-mini_portile2-testsuite 
   - ruby2.7-rubygem-mini_portile2-testsuite-2_3 
   - ruby2.7-rubygem-minitar-doc 
+  - ruby2.7-rubygem-minitar-testsuite 
   - ruby2.7-rubygem-mixlib-authentication-doc 
   - ruby2.7-rubygem-mixlib-cli-doc 
   - ruby2.7-rubygem-mixlib-config-doc 
@@ -28392,7 +28425,6 @@ unsorted:
   - ruby2.7-rubygem-mobileesp_converted-doc 
   - ruby2.7-rubygem-mobileesp_converted-testsuite 
   - ruby2.7-rubygem-mocha-doc 
-  - ruby2.7-rubygem-mocha-testsuite 
   - ruby2.7-rubygem-moneta-doc 
   - ruby2.7-rubygem-moneta-doc-0_7 
   - ruby2.7-rubygem-moneta-testsuite 
@@ -28437,10 +28469,12 @@ unsorted:
   - ruby2.7-rubygem-omniauth-doc 
   - ruby2.7-rubygem-omniauth-github-doc 
   - ruby2.7-rubygem-omniauth-github-testsuite 
+  - ruby2.7-rubygem-omniauth-gitlab 
   - ruby2.7-rubygem-omniauth-gitlab-doc 
   - ruby2.7-rubygem-omniauth-gitlab-testsuite 
   - ruby2.7-rubygem-omniauth-google-oauth2-doc 
   - ruby2.7-rubygem-omniauth-google-oauth2-testsuite 
+  - ruby2.7-rubygem-omniauth-oauth 
   - ruby2.7-rubygem-omniauth-oauth-doc 
   - ruby2.7-rubygem-omniauth-oauth-testsuite 
   - ruby2.7-rubygem-omniauth-oauth2-doc 
@@ -28467,6 +28501,7 @@ unsorted:
   - ruby2.7-rubygem-path_expander-testsuite 
   - ruby2.7-rubygem-pathutil-doc 
   - ruby2.7-rubygem-pdf-core-doc 
+  - ruby2.7-rubygem-pdf-reader 
   - ruby2.7-rubygem-pdf-reader-doc 
   - ruby2.7-rubygem-pg-doc 
   - ruby2.7-rubygem-pg-testsuite 
@@ -28477,6 +28512,14 @@ unsorted:
   - ruby2.7-rubygem-polyglot-doc 
   - ruby2.7-rubygem-prawn-core-doc 
   - ruby2.7-rubygem-prawn-core-testsuite 
+  - ruby2.7-rubygem-prawn-doc 
+  - ruby2.7-rubygem-prawn-icon-doc 
+  - ruby2.7-rubygem-prawn-icon-testsuite 
+  - ruby2.7-rubygem-prawn-svg-doc 
+  - ruby2.7-rubygem-prawn-svg-testsuite 
+  - ruby2.7-rubygem-prawn-table-doc 
+  - ruby2.7-rubygem-prawn-table-testsuite 
+  - ruby2.7-rubygem-prawn-testsuite 
   - ruby2.7-rubygem-pry-doc-testsuite 
   - ruby2.7-rubygem-pry_debug 
   - ruby2.7-rubygem-pry_debug-doc 
@@ -28618,6 +28661,7 @@ unsorted:
   - ruby2.7-rubygem-sdoc-testsuite 
   - ruby2.7-rubygem-securecompare-doc 
   - ruby2.7-rubygem-securecompare-testsuite 
+  - ruby2.7-rubygem-semantic_range-doc 
   - ruby2.7-rubygem-serverengine-doc 
   - ruby2.7-rubygem-serverengine-testsuite 
   - ruby2.7-rubygem-sexp_processor-doc 
@@ -28627,6 +28671,7 @@ unsorted:
   - ruby2.7-rubygem-simplecov-doc 
   - ruby2.7-rubygem-simplecov-html-doc 
   - ruby2.7-rubygem-simplecov-html-testsuite 
+  - ruby2.7-rubygem-simplecov_json_formatter-doc 
   - ruby2.7-rubygem-simpleidn-doc 
   - ruby2.7-rubygem-sinatra-doc 
   - ruby2.7-rubygem-slim-doc 
@@ -28662,6 +28707,7 @@ unsorted:
   - ruby2.7-rubygem-systemu-testsuite 
   - ruby2.7-rubygem-temple-doc 
   - ruby2.7-rubygem-temple-testsuite 
+  - ruby2.7-rubygem-terminal-table-doc 
   - ruby2.7-rubygem-text-doc 
   - ruby2.7-rubygem-text-hyphen-doc 
   - ruby2.7-rubygem-text-hyphen-testsuite 
@@ -28699,6 +28745,7 @@ unsorted:
   - ruby2.7-rubygem-unf_ext-doc 
   - ruby2.7-rubygem-unf_ext-testsuite 
   - ruby2.7-rubygem-unicode-display_width-doc 
+  - ruby2.7-rubygem-unicode-display_width-doc-1 
   - ruby2.7-rubygem-unicorn-doc 
   - ruby2.7-rubygem-unicorn-testsuite 
   - ruby2.7-rubygem-unicorn-worker-killer-doc 
@@ -28731,7 +28778,6 @@ unsorted:
   - ruby2.7-rubygem-winrm-doc-2_1 
   - ruby2.7-rubygem-winrm-elevated-doc 
   - ruby2.7-rubygem-winrm-fs-doc 
-  - ruby2.7-rubygem-xdg-doc 
   - ruby2.7-rubygem-xdg-doc-2 
   - ruby2.7-rubygem-xdg-testsuite-2 
   - ruby2.7-rubygem-xml-simple-doc 
@@ -28864,7 +28910,6 @@ unsorted:
   - ruby3.0-rubygem-bindex-testsuite 
   - ruby3.0-rubygem-binding_of_caller 
   - ruby3.0-rubygem-binding_of_caller-doc 
-  - ruby3.0-rubygem-binding_of_caller-testsuite 
   - ruby3.0-rubygem-bootsnap-doc 
   - ruby3.0-rubygem-bootstrap-sass 
   - ruby3.0-rubygem-bootstrap-sass-doc 
@@ -28918,6 +28963,9 @@ unsorted:
   - ruby3.0-rubygem-changelog_generator-testsuite 
   - ruby3.0-rubygem-cheetah 
   - ruby3.0-rubygem-cheetah-doc 
+  - ruby3.0-rubygem-chef-utils 
+  - ruby3.0-rubygem-chef-utils-doc 
+  - ruby3.0-rubygem-chef-utils-testsuite 
   - ruby3.0-rubygem-childprocess 
   - ruby3.0-rubygem-childprocess-0_6 
   - ruby3.0-rubygem-childprocess-2.0 
@@ -28962,6 +29010,9 @@ unsorted:
   - ruby3.0-rubygem-commander-doc 
   - ruby3.0-rubygem-commander-testsuite 
   - ruby3.0-rubygem-concurrent-ruby-doc 
+  - ruby3.0-rubygem-cool.io 
+  - ruby3.0-rubygem-cool.io-doc 
+  - ruby3.0-rubygem-cool.io-testsuite 
   - ruby3.0-rubygem-crack 
   - ruby3.0-rubygem-crack-doc 
   - ruby3.0-rubygem-crass-doc 
@@ -28971,9 +29022,10 @@ unsorted:
   - ruby3.0-rubygem-cssmin-doc 
   - ruby3.0-rubygem-daemons 
   - ruby3.0-rubygem-daemons-doc 
+  - ruby3.0-rubygem-debase-ruby_core_source 
+  - ruby3.0-rubygem-debase-ruby_core_source-doc 
   - ruby3.0-rubygem-debug_inspector 
   - ruby3.0-rubygem-debug_inspector-doc 
-  - ruby3.0-rubygem-debug_inspector-testsuite 
   - ruby3.0-rubygem-debugger-linecache 
   - ruby3.0-rubygem-debugger-linecache-doc 
   - ruby3.0-rubygem-debugger-linecache-testsuite 
@@ -29068,6 +29120,8 @@ unsorted:
   - ruby3.0-rubygem-faraday-0_12 
   - ruby3.0-rubygem-faraday-doc 
   - ruby3.0-rubygem-faraday-doc-0_12 
+  - ruby3.0-rubygem-faraday-net_http 
+  - ruby3.0-rubygem-faraday-net_http-doc 
   - ruby3.0-rubygem-faraday-testsuite 
   - ruby3.0-rubygem-faraday_middleware 
   - ruby3.0-rubygem-faraday_middleware-doc 
@@ -29163,7 +29217,6 @@ unsorted:
   - ruby3.0-rubygem-hashicorp-checkpoint-testsuite 
   - ruby3.0-rubygem-hashie 
   - ruby3.0-rubygem-hashie-doc 
-  - ruby3.0-rubygem-hashie-testsuite 
   - ruby3.0-rubygem-highline 
   - ruby3.0-rubygem-highline-1_6 
   - ruby3.0-rubygem-highline-1_7 
@@ -29262,6 +29315,9 @@ unsorted:
   - ruby3.0-rubygem-kgio-testsuite 
   - ruby3.0-rubygem-kramdown 
   - ruby3.0-rubygem-kramdown-doc 
+  - ruby3.0-rubygem-kramdown-parser-gfm 
+  - ruby3.0-rubygem-kramdown-parser-gfm-doc 
+  - ruby3.0-rubygem-kramdown-parser-gfm-testsuite 
   - ruby3.0-rubygem-kramdown-testsuite 
   - ruby3.0-rubygem-launchy 
   - ruby3.0-rubygem-launchy-doc 
@@ -29277,11 +29333,12 @@ unsorted:
   - ruby3.0-rubygem-lightbox2 
   - ruby3.0-rubygem-lightbox2-doc 
   - ruby3.0-rubygem-liquid 
-  - ruby3.0-rubygem-liquid-3 
+  - ruby3.0-rubygem-liquid-4 
   - ruby3.0-rubygem-liquid-doc 
-  - ruby3.0-rubygem-liquid-doc-3 
+  - ruby3.0-rubygem-liquid-doc-4 
   - ruby3.0-rubygem-liquid-testsuite 
-  - ruby3.0-rubygem-liquid-testsuite-3 
+  - ruby3.0-rubygem-liquid-testsuite-4 
+  - ruby3.0-rubygem-listen 
   - ruby3.0-rubygem-listen-doc-3_0 
   - ruby3.0-rubygem-little-plugger 
   - ruby3.0-rubygem-little-plugger-doc 
@@ -29340,6 +29397,7 @@ unsorted:
   - ruby3.0-rubygem-mini_portile2-testsuite-2_3 
   - ruby3.0-rubygem-minitar 
   - ruby3.0-rubygem-minitar-doc 
+  - ruby3.0-rubygem-minitar-testsuite 
   - ruby3.0-rubygem-mixlib-authentication 
   - ruby3.0-rubygem-mixlib-authentication-doc 
   - ruby3.0-rubygem-mixlib-cli 
@@ -29355,7 +29413,6 @@ unsorted:
   - ruby3.0-rubygem-mobileesp_converted-testsuite 
   - ruby3.0-rubygem-mocha 
   - ruby3.0-rubygem-mocha-doc 
-  - ruby3.0-rubygem-mocha-testsuite 
   - ruby3.0-rubygem-moneta 
   - ruby3.0-rubygem-moneta-0_7 
   - ruby3.0-rubygem-moneta-doc 
@@ -29488,9 +29545,21 @@ unsorted:
   - ruby3.0-rubygem-po_to_json-testsuite 
   - ruby3.0-rubygem-polyglot 
   - ruby3.0-rubygem-polyglot-doc 
+  - ruby3.0-rubygem-prawn 
   - ruby3.0-rubygem-prawn-core 
   - ruby3.0-rubygem-prawn-core-doc 
   - ruby3.0-rubygem-prawn-core-testsuite 
+  - ruby3.0-rubygem-prawn-doc 
+  - ruby3.0-rubygem-prawn-icon 
+  - ruby3.0-rubygem-prawn-icon-doc 
+  - ruby3.0-rubygem-prawn-icon-testsuite 
+  - ruby3.0-rubygem-prawn-svg 
+  - ruby3.0-rubygem-prawn-svg-doc 
+  - ruby3.0-rubygem-prawn-svg-testsuite 
+  - ruby3.0-rubygem-prawn-table 
+  - ruby3.0-rubygem-prawn-table-doc 
+  - ruby3.0-rubygem-prawn-table-testsuite 
+  - ruby3.0-rubygem-prawn-testsuite 
   - ruby3.0-rubygem-pry 
   - ruby3.0-rubygem-pry-doc 
   - ruby3.0-rubygem-pry-doc-testsuite 
@@ -29697,6 +29766,7 @@ unsorted:
   - ruby3.0-rubygem-securecompare 
   - ruby3.0-rubygem-securecompare-doc 
   - ruby3.0-rubygem-securecompare-testsuite 
+  - ruby3.0-rubygem-semantic_range-doc 
   - ruby3.0-rubygem-serverengine 
   - ruby3.0-rubygem-serverengine-doc 
   - ruby3.0-rubygem-serverengine-testsuite 
@@ -29712,6 +29782,8 @@ unsorted:
   - ruby3.0-rubygem-simplecov-html 
   - ruby3.0-rubygem-simplecov-html-doc 
   - ruby3.0-rubygem-simplecov-html-testsuite 
+  - ruby3.0-rubygem-simplecov_json_formatter 
+  - ruby3.0-rubygem-simplecov_json_formatter-doc 
   - ruby3.0-rubygem-simpleidn 
   - ruby3.0-rubygem-simpleidn-doc 
   - ruby3.0-rubygem-sinatra 
@@ -29753,6 +29825,8 @@ unsorted:
   - ruby3.0-rubygem-stomp 
   - ruby3.0-rubygem-stomp-doc 
   - ruby3.0-rubygem-stomp-testsuite 
+  - ruby3.0-rubygem-strptime 
+  - ruby3.0-rubygem-strptime-doc 
   - ruby3.0-rubygem-swd 
   - ruby3.0-rubygem-swd-doc 
   - ruby3.0-rubygem-swd-testsuite 
@@ -29762,6 +29836,8 @@ unsorted:
   - ruby3.0-rubygem-temple 
   - ruby3.0-rubygem-temple-doc 
   - ruby3.0-rubygem-temple-testsuite 
+  - ruby3.0-rubygem-terminal-table 
+  - ruby3.0-rubygem-terminal-table-doc 
   - ruby3.0-rubygem-text 
   - ruby3.0-rubygem-text-doc 
   - ruby3.0-rubygem-text-hyphen 
@@ -29817,7 +29893,9 @@ unsorted:
   - ruby3.0-rubygem-unf_ext-doc 
   - ruby3.0-rubygem-unf_ext-testsuite 
   - ruby3.0-rubygem-unicode-display_width 
+  - ruby3.0-rubygem-unicode-display_width-1 
   - ruby3.0-rubygem-unicode-display_width-doc 
+  - ruby3.0-rubygem-unicode-display_width-doc-1 
   - ruby3.0-rubygem-unicorn-worker-killer 
   - ruby3.0-rubygem-unicorn-worker-killer-doc 
   - ruby3.0-rubygem-url_safe_base64 
@@ -29868,7 +29946,9 @@ unsorted:
   - ruby3.0-rubygem-winrm-elevated-doc 
   - ruby3.0-rubygem-winrm-fs 
   - ruby3.0-rubygem-winrm-fs-doc 
+  - ruby3.0-rubygem-xdg 
   - ruby3.0-rubygem-xdg-2 
+  - ruby3.0-rubygem-xdg-doc 
   - ruby3.0-rubygem-xdg-doc-2 
   - ruby3.0-rubygem-xdg-testsuite-2 
   - ruby3.0-rubygem-xml-simple 
@@ -29877,34 +29957,14 @@ unsorted:
   - ruby3.0-rubygem-yajl-ruby-doc 
   - ruby3.0-rubygem-yajl-ruby-testsuite 
   - ruby3.0-rubygem-zeitwerk-doc 
-  - rubygem-builder-3_0 
-  - rubygem-builder-3_0-doc 
-  - rubygem-builder-3_0-testsuite 
-  - rubygem-cancan 
-  - rubygem-cancan-doc 
-  - rubygem-cancan-testsuite 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
-  - rubygem-gettext_activerecord 
-  - rubygem-gettext_activerecord-doc 
-  - rubygem-gettext_activerecord-testsuite 
   - rubygem-libguestfs: [x86_64] 
-  - rubygem-libwebsocket 
-  - rubygem-libwebsocket-doc 
-  - rubygem-libwebsocket-testsuite 
-  - rubygem-mail-2_4 
-  - rubygem-mail-2_4-doc 
   - rubygem-passenger-nginx 
   - rubygem-ruby-fcgi 
   - rubygem-ruby-fcgi-doc 
   - rubygem-ruby-fcgi-testsuite 
-  - rubygem-sexp_processor-3_2 
-  - rubygem-sexp_processor-3_2-doc 
-  - rubygem-sexp_processor-3_2-testsuite 
-  - rubygem-shoes 
-  - rubygem-shoes-doc 
-  - rubygem-shoes-testsuite 
   - runawk 
   - runawk-examples 
   - runc: [i586] 
@@ -30814,6 +30874,7 @@ unsorted:
   - svm-tools 
   - svn2git 
   - svxlink-server 
+  - swaks 
   - swappy 
   - swappy-lang 
   - sway 

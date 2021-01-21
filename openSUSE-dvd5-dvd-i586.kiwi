@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210120" schemaversion="4.1">
+<image name="OBS__openSUSE___20210121" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210120</productvar>
+      <productvar name="VERSION">20210121</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210120,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210121,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210120/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210121/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -51,6 +51,14 @@
       <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="i586"/>
     </metadata>
     <repopackages>
+      <repopackage name=" patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" arch="i586,i686"/>
+      <repopackage name=" patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" arch="i586,i686"/>
+      <repopackage name=" patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" arch="i586,i686"/>
+      <repopackage name=" patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" arch="i586,i686"/>
+      <repopackage name=" patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" arch="i586,i686"/>
+      <repopackage name=" patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" arch="i586,i686"/>
+      <repopackage name=" patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" arch="i586,i686"/>
+      <repopackage name=" patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" arch="i586,i686"/>
       <repopackage name="a2ps"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
@@ -3080,6 +3088,7 @@
       <repopackage name="ruby2.7-rubygem-cfa_grub2"/>
       <repopackage name="ruby2.7-rubygem-changelog_generator"/>
       <repopackage name="ruby2.7-rubygem-cheetah"/>
+      <repopackage name="ruby2.7-rubygem-chef-utils"/>
       <repopackage name="ruby2.7-rubygem-childprocess"/>
       <repopackage name="ruby2.7-rubygem-childprocess-0_6"/>
       <repopackage name="ruby2.7-rubygem-childprocess-2.0"/>
@@ -3146,6 +3155,7 @@
       <repopackage name="ruby2.7-rubygem-fake_ftp-0_1"/>
       <repopackage name="ruby2.7-rubygem-faraday"/>
       <repopackage name="ruby2.7-rubygem-faraday-0_12"/>
+      <repopackage name="ruby2.7-rubygem-faraday-net_http"/>
       <repopackage name="ruby2.7-rubygem-faraday_middleware"/>
       <repopackage name="ruby2.7-rubygem-faraday_middleware-multi_json"/>
       <repopackage name="ruby2.7-rubygem-fast_gettext"/>
@@ -3204,6 +3214,7 @@
       <repopackage name="ruby2.7-rubygem-ipaddress"/>
       <repopackage name="ruby2.7-rubygem-jaro_winkler"/>
       <repopackage name="ruby2.7-rubygem-jbuilder"/>
+      <repopackage name="ruby2.7-rubygem-jekyll"/>
       <repopackage name="ruby2.7-rubygem-jekyll-sass-converter"/>
       <repopackage name="ruby2.7-rubygem-jekyll-watch"/>
       <repopackage name="ruby2.7-rubygem-jmespath"/>
@@ -3219,13 +3230,14 @@
       <repopackage name="ruby2.7-rubygem-jwt-1_5"/>
       <repopackage name="ruby2.7-rubygem-kgio"/>
       <repopackage name="ruby2.7-rubygem-kramdown"/>
+      <repopackage name="ruby2.7-rubygem-kramdown-parser-gfm"/>
       <repopackage name="ruby2.7-rubygem-launchy"/>
       <repopackage name="ruby2.7-rubygem-levenshtein"/>
       <repopackage name="ruby2.7-rubygem-librarian"/>
       <repopackage name="ruby2.7-rubygem-libyui-rake"/>
       <repopackage name="ruby2.7-rubygem-lightbox2"/>
       <repopackage name="ruby2.7-rubygem-liquid"/>
-      <repopackage name="ruby2.7-rubygem-liquid-3"/>
+      <repopackage name="ruby2.7-rubygem-liquid-4"/>
       <repopackage name="ruby2.7-rubygem-listen"/>
       <repopackage name="ruby2.7-rubygem-listen-3_0"/>
       <repopackage name="ruby2.7-rubygem-listen-3_1"/>
@@ -3290,9 +3302,7 @@
       <repopackage name="ruby2.7-rubygem-oauth2"/>
       <repopackage name="ruby2.7-rubygem-omniauth"/>
       <repopackage name="ruby2.7-rubygem-omniauth-github"/>
-      <repopackage name="ruby2.7-rubygem-omniauth-gitlab"/>
       <repopackage name="ruby2.7-rubygem-omniauth-google-oauth2"/>
-      <repopackage name="ruby2.7-rubygem-omniauth-oauth"/>
       <repopackage name="ruby2.7-rubygem-omniauth-oauth2"/>
       <repopackage name="ruby2.7-rubygem-open4"/>
       <repopackage name="ruby2.7-rubygem-openid_connect"/>
@@ -3309,12 +3319,15 @@
       <repopackage name="ruby2.7-rubygem-path_expander"/>
       <repopackage name="ruby2.7-rubygem-pathutil"/>
       <repopackage name="ruby2.7-rubygem-pdf-core"/>
-      <repopackage name="ruby2.7-rubygem-pdf-reader"/>
       <repopackage name="ruby2.7-rubygem-pg"/>
       <repopackage name="ruby2.7-rubygem-pkg-config"/>
       <repopackage name="ruby2.7-rubygem-po_to_json"/>
       <repopackage name="ruby2.7-rubygem-polyglot"/>
+      <repopackage name="ruby2.7-rubygem-prawn"/>
       <repopackage name="ruby2.7-rubygem-prawn-core"/>
+      <repopackage name="ruby2.7-rubygem-prawn-icon"/>
+      <repopackage name="ruby2.7-rubygem-prawn-svg"/>
+      <repopackage name="ruby2.7-rubygem-prawn-table"/>
       <repopackage name="ruby2.7-rubygem-pry"/>
       <repopackage name="ruby2.7-rubygem-pry-doc"/>
       <repopackage name="ruby2.7-rubygem-public_suffix"/>
@@ -3407,12 +3420,14 @@
       <repopackage name="ruby2.7-rubygem-sassc-rails"/>
       <repopackage name="ruby2.7-rubygem-sdoc"/>
       <repopackage name="ruby2.7-rubygem-securecompare"/>
+      <repopackage name="ruby2.7-rubygem-semantic_range"/>
       <repopackage name="ruby2.7-rubygem-serverengine"/>
       <repopackage name="ruby2.7-rubygem-sexp_processor"/>
       <repopackage name="ruby2.7-rubygem-sigdump"/>
       <repopackage name="ruby2.7-rubygem-simple_oauth"/>
       <repopackage name="ruby2.7-rubygem-simplecov"/>
       <repopackage name="ruby2.7-rubygem-simplecov-html"/>
+      <repopackage name="ruby2.7-rubygem-simplecov_json_formatter"/>
       <repopackage name="ruby2.7-rubygem-simpleidn"/>
       <repopackage name="ruby2.7-rubygem-sinatra"/>
       <repopackage name="ruby2.7-rubygem-slim"/>
@@ -3435,6 +3450,7 @@
       <repopackage name="ruby2.7-rubygem-swd"/>
       <repopackage name="ruby2.7-rubygem-systemu"/>
       <repopackage name="ruby2.7-rubygem-temple"/>
+      <repopackage name="ruby2.7-rubygem-terminal-table"/>
       <repopackage name="ruby2.7-rubygem-text"/>
       <repopackage name="ruby2.7-rubygem-text-hyphen"/>
       <repopackage name="ruby2.7-rubygem-thor"/>
@@ -3460,6 +3476,7 @@
       <repopackage name="ruby2.7-rubygem-unf"/>
       <repopackage name="ruby2.7-rubygem-unf_ext"/>
       <repopackage name="ruby2.7-rubygem-unicode-display_width"/>
+      <repopackage name="ruby2.7-rubygem-unicode-display_width-1"/>
       <repopackage name="ruby2.7-rubygem-unicorn"/>
       <repopackage name="ruby2.7-rubygem-unicorn-worker-killer"/>
       <repopackage name="ruby2.7-rubygem-url_safe_base64"/>
@@ -3483,7 +3500,6 @@
       <repopackage name="ruby2.7-rubygem-winrm-2_1"/>
       <repopackage name="ruby2.7-rubygem-winrm-elevated"/>
       <repopackage name="ruby2.7-rubygem-winrm-fs"/>
-      <repopackage name="ruby2.7-rubygem-xdg"/>
       <repopackage name="ruby2.7-rubygem-xdg-2"/>
       <repopackage name="ruby2.7-rubygem-xml-simple"/>
       <repopackage name="ruby2.7-rubygem-xmlhash"/>
@@ -3524,6 +3540,7 @@
       <repopackage name="ruby3.0-rubygem-sass-rails"/>
       <repopackage name="ruby3.0-rubygem-sassc"/>
       <repopackage name="ruby3.0-rubygem-sassc-rails"/>
+      <repopackage name="ruby3.0-rubygem-semantic_range"/>
       <repopackage name="ruby3.0-rubygem-spring"/>
       <repopackage name="ruby3.0-rubygem-spring-watcher-listen"/>
       <repopackage name="ruby3.0-rubygem-sprockets"/>
