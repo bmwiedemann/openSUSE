@@ -48,4 +48,18 @@ currently pending in sr#443054</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>802360</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb6631689b420aefa48b4fa1ea9e0bfc</srcmd5>
+    <version>2.2.1</version>
+    <time>1611262592</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.2.1
+ see installed CHANGELOG.md
+  ### 2.2.1
+  
+  * Explicitly set mac's Terminal.app to 256 colors only, fixes #28
+  
+</comment>
+    <requestid>865242</requestid>
+  </revision>
 </revisionlist>
