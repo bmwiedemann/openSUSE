@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-phone-components
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# org.kde.phone.homescreen is internal, MeeGo.QOfono is optional and not packaged yet
+%global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|MeeGo\\.QOfono).*
 
 %define kf5_version 5.74.0
 
@@ -39,10 +42,10 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
-BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml)
@@ -51,19 +54,19 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.1.90
 # QML imports
-Requires:       kwin5
 Requires:       bluez-qt-imports
 Requires:       kactivities5-imports
 Requires:       kdeclarative-components
 Requires:       kirigami2
+Requires:       kwin5
+Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
 Requires:       milou5
 Requires:       plasma-nm5
-Requires:       plasma5-pa
 Requires:       plasma5-nano
+Requires:       plasma5-pa
 Requires:       plasma5-workspace >= %{_plasma5_bugfix}
-Requires:       libqt5-qtgraphicaleffects
 # TODO: import MeeGo.QOfono 0.2
 
 %description

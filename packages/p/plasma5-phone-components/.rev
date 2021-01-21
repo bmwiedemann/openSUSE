@@ -7,4 +7,12 @@
     <comment>Part of Plasma, for Mobile</comment>
     <requestid>860743</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c40f0871d45fe37f4ff2a57bfd17b9d4</srcmd5>
+    <version>5.20.5</version>
+    <time>1611262620</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov (forwarded request 865265 from Vogtinator)</comment>
+    <requestid>865278</requestid>
+  </revision>
 </revisionlist>
