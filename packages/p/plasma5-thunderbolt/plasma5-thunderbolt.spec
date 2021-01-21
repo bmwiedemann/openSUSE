@@ -16,6 +16,9 @@
 #
 
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(org\\.kde\\.bolt.*
+
 %define kf5_version 5.40.0
 %define qt5_version 5.10.0
 %bcond_without lang
