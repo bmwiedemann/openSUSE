@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:29:52 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.15.11
+ see installed NEWS.md
+
+  ## 2.15.11
+  
+  Fixes:
+  
+  - Added support for Ruby 3.0 (#111)
+  
+  Changes:
+  
+  - Dropped support for Ruby 2.3 and 2.4 (#112)
+  
+
+-------------------------------------------------------------------
 Wed Dec 30 04:07:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - limit to ruby 2.7 on TW

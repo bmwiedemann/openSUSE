@@ -166,4 +166,24 @@
     <comment>- limit to ruby 2.7 on TW</comment>
     <requestid>864612</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0f5623e74fdaaa43bf4048bb22c75e92</srcmd5>
+    <version>2.15.11</version>
+    <time>1611262526</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.15.11
+ see installed NEWS.md
+  ## 2.15.11
+  
+  Fixes:
+  
+  - Added support for Ruby 3.0 (#111)
+  
+  Changes:
+  
+  - Dropped support for Ruby 2.3 and 2.4 (#112)
+  
+</comment>
+    <requestid>865180</requestid>
+  </revision>
 </revisionlist>
