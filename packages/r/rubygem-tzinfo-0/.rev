@@ -163,4 +163,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838091</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4d01d7df749d927ec06ee5ba5fb8aab5</srcmd5>
+    <version>0.3.59</version>
+    <time>1611262571</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 0.3.59
+ see installed CHANGES
+  == Version 0.3.59 (tzdata v2020e) - 24-Dec-2020
+  
+  * Updated to tzdata version 2020e
+    (https://mm.icann.org/pipermail/tz-announce/2020-December/000063.html).
+  
+  
+  == Version 0.3.58 (tzdata v2020d) - 8-Nov-2020
+  
+  * Updated to tzdata version 2020d
+    (https://mm.icann.org/pipermail/tz-announce/2020-October/000062.html).
+  
+  
+</comment>
+    <requestid>865220</requestid>
+  </revision>
 </revisionlist>
