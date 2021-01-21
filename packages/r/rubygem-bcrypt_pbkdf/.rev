@@ -15,4 +15,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705977</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1a4890cc1df1879cc73491c4bd86ecbc</srcmd5>
+    <version>1.1.0</version>
+    <time>1611262512</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.1.0
+ see installed CHANGELOG.md
+</comment>
+    <requestid>865168</requestid>
+  </revision>
 </revisionlist>

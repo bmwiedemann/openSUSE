@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bcrypt_pbkdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bcrypt_pbkdf
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 %define mod_name bcrypt_pbkdf
 %define mod_full_name %{mod_name}-%{version}
@@ -33,16 +33,16 @@ BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/net-ssh/bcrypt_pbkdf-ruby
+URL:            https://github.com/net-ssh/bcrypt_pbkdf-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-bcrypt_pbkdf-rpmlintrc
 Source2:        gem2rpm.yml
-Summary:        OpenBSD's bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
+Summary:        OpenBSD's bcrypt_pbkdf (a variant of PBKDF2 with bcrypt-based PRF)
 License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-This gem implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based
+This gem implements bcrypt_pbkdf (a variant of PBKDF2 with bcrypt-based
 PRF).
 
 %prep
