@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:50:04 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.1.0
+ see installed CHANGELOG.md
+
+  ## [4.1.0] - 2020-02-01
+  
+  [4.1.0]: https://github.com/hashie/hashie/compare/v4.0.0...v4.1.0
+  
+  ### Added
+  
+  * [#499](https://github.com/hashie/hashie/pull/499): Add `Hashie::Extensions::Mash::PermissiveRespondTo` to make specific subclasses of Mash fully respond to messages for use with `SimpleDelegator` - [@michaelherold](https://github.com/michaelherold).
+  
+  ### Fixed
+  
+  * [#467](https://github.com/intridea/hashie/pull/467): Fixed `DeepMerge#deep_merge` mutating nested values within the receiver - [@michaelherold](https://github.com/michaelherold).
+  * [#505](https://github.com/hashie/hashie/pull/505): Ensure that `Hashie::Array`s are not deconverted within `Hashie::Mash`es to make `Mash#dig` work properly - [@michaelherold](https://github.com/michaelherold).
+  * [#507](https://github.com/hashie/hashie/pull/507): Suppress `Psych.safe_load` arg warn when using Psych 3.1.0+ - [@koic](https://github.com/koic).
+  * [#508](https://github.com/hashie/hashie/pull/508): Fixed `Mash.load` no longer uses Rails-only `#except` - [@bobbymcwho](https://github.com/bobbymcwho).
+  * [#508](https://github.com/hashie/hashie/pull/508): Fixed `Hashie::Extensions::DeepMerge` `#deep_merge` not correctly dup'ing sub-hashes if active_support hash extensions were not present - [@bobbymcwho](https://github.com/bobbymcwho).
+  * [#500](https://github.com/hashie/hashie/pull/500): Do not warn when setting Mash keys that look like underbang, bang, and query methods - [@michaelherold](https://github.com/michaelherold).
+  * [#510](https://github.com/hashie/hashie/pull/510): Ensure that `Hashie::Mash#compact` is only defined on Ruby version >= 2.4.0 - [@bobbymcwho](https://github.com/bobbymcwho).
+  * [#511](https://github.com/hashie/hashie/pull/511): Suppress keyword arguments warning for Ruby 2.7.0 - [@koic](https://github.com/koic).
+  * [#512](https://github.com/hashie/hashie/pull/512): Suppress an integer unification warning for using Ruby 2.4.0+ - [@koic](https://github.com/koic).
+  * [#513](https://github.com/hashie/hashie/pull/513): Suppress a Ruby's warning when using Ruby 2.6.0+ - [@koic](https://github.com/koic).
+  
+  ### Miscellaneous
+  
+  * [#981](https://github.com/hashie/hashie/pull/981): Exclude tests from the gem release to reduce installation size and improve installation speed - [@michaelherold](https://github.com/michaelherold).
+  * Your contribution here.
+  
+  ## [4.0.0] - 2019-10-30
+  
+  [4.0.0]: https://github.com/hashie/hashie/compare/v3.6.0...v4.0.0
+  
+  ### Added
+  
+  * [#323](https://github.com/hashie/hashie/pull/323): Added `Hashie::Extensions::Mash::DefineAccessors` - [@marshall-lee](https://github.com/marshall-lee).
+  * [#474](https://github.com/hashie/hashie/pull/474): Expose `YAML#safe_load` options in `Mash#load` - [@riouruma](https://github.com/riouruma), [@dblock](https://github.com/dblock).
+  * [#478](https://github.com/hashie/hashie/pull/478): Added optional array parameter to `Hashie::Mash.disable_warnings` - [@bobbymcwho](https://github.com/bobbymcwho).
+  * [#481](https://github.com/hashie/hashie/pull/481): Ruby 2.6 - Support `Hash#merge` and `#merge!` called with multiple Hashes/Mashes - [@bobbymcwho](https://github.com/bobbymcwho).
+  * [#488](https://github.com/hashie/hashie/pull/488): Added ability to create an anonymous `Hashie::Mash` subclass with key conflict errors silenced using `Hashie::Mash.quiet.new` - [@bobbymcwho](https://github.com/bobbymcwho).
+  
+  ### Changed
+  
+  * [#481](https://github.com/hashie/hashie/pull/481): Implement non-destructive standard Hash methods - [@bobbymcwho](https://github.com/bobbymcwho).
+  
+  ### Fixed
+  
+  * [#459](https://github.com/hashie/hashie/pull/459): Fixed a regression in `Mash.load` that disallowed aliases - [@arekt](https://github.com/arekt) and [@michaelherold](https://github.com/michaelherold).
+  * [#465](https://github.com/hashie/hashie/pull/465): Fixed `deep_update` to call any readers when a key exists - [@laertispappas](https://github.com/laertispappas).
+  * [#479](https://github.com/hashie/hashie/pull/479): Fixed an issue with `Hash#except` not returning a `Mash` in Rails 6 - [@bobbymcwho](https://github.com/bobbymcwho).
+  * [#489](https://github.com/hashie/hashie/pull/489): Updated the documentation to exlain the behavior of `Mash` and keyword arguments - [@Bhacaz](https://github.com/Bhacaz).
+  
+  ### Miscellaneous
+  
+  * [#465](https://github.com/hashie/hashie/pull/465): Clean up our RuboCop configuration and fix the outstanding line length violations. This involved some minor refactoring on `Hashie::Extensions::Coercion`, `Hashie::Extensions::Dash::IndifferentAccess`, `Hashie::Extensions::DeepLocate`, `Hashie::Extensions::Mash::SafeAssignment`, and `Hashie::Hash`, but none that were detectable via the test suite - [@michaelherold](https://github.com/michaelherold).
+  * [#482](https://github.com/hashie/hashie/pull/482): Update Travis configs to make jruby builds run on trusty dist. - [@BobbyMcWho](https://github.com/BobbyMcWho).
+
+-------------------------------------------------------------------
 Wed Sep  5 10:22:18 UTC 2018 - coolo@suse.com
 
 - updated to version 3.6.0
