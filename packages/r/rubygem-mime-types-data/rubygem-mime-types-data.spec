@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mime-types-data
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mime-types-data
-Version:        3.2020.0512
+Version:        3.2020.1104
 Release:        0
 %define mod_name mime-types-data
 %define mod_full_name %{mod_name}-%{version}

@@ -63,4 +63,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838049</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef6cb61213adbc20139ab70a746abf53</srcmd5>
+    <version>3.2020.1104</version>
+    <time>1611262554</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.2020.1104
+ see installed History.md
+</comment>
+    <requestid>865206</requestid>
+  </revision>
 </revisionlist>
