@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 16 20:00:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.3:
+  + rtsp-media: Only count senders when counting blocked streams
+  + rtsp-client: Only unref client watch context on finalize, to
+    avoid deadlock
+
+-------------------------------------------------------------------
 Thu Dec 10 08:41:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.2:

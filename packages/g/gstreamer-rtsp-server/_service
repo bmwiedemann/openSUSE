@@ -9,7 +9,7 @@
 <!--
     <param name="changesgenerate">enable</param>
 -->
-    <param name="revision">1.18.2</param>
+    <param name="revision">1.18.3</param>
     <param name="scm">git</param>
   </service>
   <service name="recompress" mode="disabled">
