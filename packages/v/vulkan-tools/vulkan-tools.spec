@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           vulkan-tools
-Version:        1.2.162.0
+Version:        1.2.165
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-Tools
 
-Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/sdk-%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/v%version.tar.gz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel
@@ -44,7 +44,7 @@ graphics applications such as games and interactive media.
 This package contains the Khronos official Vulkan tools and utilities.
 
 %prep
-%autosetup -p1 -n Vulkan-Tools-sdk-%version
+%autosetup -p1 -n Vulkan-Tools-%version
 
 %build
 mkdir -p glslang/bin
