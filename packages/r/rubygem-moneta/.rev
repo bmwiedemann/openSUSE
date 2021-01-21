@@ -89,4 +89,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838055</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c97d5fe3bbae0e3f6fcde95fe4441462</srcmd5>
+    <version>1.4.1</version>
+    <time>1611262559</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.4.1
+ see installed CHANGES
+  1.4.1
+  
+  * Adapters::Mongo - deprecate :db option, document :database option (#194)
+  * Adapters::Mongo - add retries to increment operation
+  
+</comment>
+    <requestid>865209</requestid>
+  </revision>
 </revisionlist>
