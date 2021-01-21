@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-Read
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           perl-Spreadsheet-Read
-Version:        0.80
+Version:        0.83
 Release:        0
 %define cpan_name Spreadsheet-Read
 Summary:        Read the data from a spreadsheet
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
-Patch1:         nonstdperlpath.patch
+Patch0:         nonstdperlpath.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -34,27 +34,25 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Data::Peek)
 BuildRequires:  perl(File::Temp) >= 0.22
 BuildRequires:  perl(IO::Scalar)
-BuildRequires:  perl(Spreadsheet::ParseExcel)
-BuildRequires:  perl(Spreadsheet::ParseXLSX) >= 0.24
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::NoWarnings)
-BuildRequires:  perl(Text::CSV_PP)
-BuildRequires:  perl(Text::CSV_XS)
 Requires:       perl(Data::Peek)
 Requires:       perl(File::Temp) >= 0.22
 Requires:       perl(IO::Scalar)
 Requires:       perl(Test::More) >= 0.88
 Requires:       perl(Test::NoWarnings)
-Recommends:     perl(Data::Peek) >= 0.47
-Recommends:     perl(File::Temp) >= 0.2304
+Recommends:     perl(Data::Peek) >= 0.50
+Recommends:     perl(File::Temp) >= 0.2311
 Recommends:     perl(IO::Scalar)
-Recommends:     perl(Test::More) >= 1.302086
-Recommends:     perl(Spreadsheet::ReadSXC)
-Recommends:     perl(Spreadsheet::ParseExcel)
-Recommends:     perl(Spreadsheet::ParseXLSX) >= 0.24
-Recommends:     perl(Text::CSV_XS)
-Recommends:     perl(Text::CSV_PP)
+Recommends:     perl(Test::More) >= 1.302183
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(Spreadsheet::ParseExcel) >= 0.34
+BuildRequires:  perl(Spreadsheet::ParseExcel::FmtDefault)
+BuildRequires:  perl(Spreadsheet::ParseXLSX) >= 0.24
+BuildRequires:  perl(Text::CSV_XS) >= 0.71
+Recommends:     perl(Spreadsheet::ReadSXC) >= 0.20
+# MANUAL END
 
 %description
 Spreadsheet::Read tries to transparently read *any* spreadsheet and return
@@ -73,17 +71,17 @@ For SquirrelCalc there is a very simplistic built-in parser
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
-%patch -P 1 -p1
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%patch0 -p1
 
 %build
-# Disable installation of examples to {_bindir}
+# disable installation of examples to {_bindir}
 export AUTOMATED_TESTING=1
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

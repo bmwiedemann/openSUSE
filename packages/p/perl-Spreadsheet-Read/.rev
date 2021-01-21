@@ -278,4 +278,41 @@
   Spreadsheet::ParseXLSX and Text::CSV_XS to run all tests</comment>
     <requestid>686436</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c2ed4ecccb4f7a2c9e7807a501e6c19e</srcmd5>
+    <version>0.83</version>
+    <time>1611262626</time>
+    <user>dimstar_suse</user>
+    <comment>- readd hack to suppress examples in %_bindir
+
+- Update patch nonstdperlpath.patch
+
+- updated to 0.83
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+  0.83	- 21 Dec 2020, H.Merijn Brand
+      * Require ParseODS 0.26
+      * Add ::parsers to get list of supported formats
+      * Add --list to xlscat and xls2csv
+      * Update xls2csv to be identical to xlsx2csv
+      * ::parses (&quot;&quot;) will return list of supported types
+      * Move installables from examples/ to scripts/
+      * Tested on FreeBSD-12.2-RELEASE with all supported backends
+      * Fix META issue for bugtracker
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+  0.82	- 26 Sep 2020, H.Merijn Brand
+      * Move pod tests to xt (and do not distribute)
+      * Fix some links in the docs
+      * Add &quot;.xlsm&quot; to known XLSX file extensions
+      * Spreadsheet::ReadSXC has a new maintainer (Corion)
+        - support file handles
+        - suggest version 0.24 (0.22 causes fails)
+      * First attempt in supporting Spreadsheet::ParseODS (alpha code)
+        - version 0.25 should now pass the limited tests
+        - thanks to Corion for making this happen!
+      * It's 2020
+      * Fallback to Pod::Text if nroff not available in tools</comment>
+    <requestid>865305</requestid>
+  </revision>
 </revisionlist>

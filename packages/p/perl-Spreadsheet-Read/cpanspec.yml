@@ -20,25 +20,18 @@ description: |-
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
-#preamble: |-
-# BuildRequires:  gcc-c++
-#post_prep: |-
-# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
-# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
-#post_build: |-
-# rm unused.files
-#post_install: |-
-# sed on %{name}.files
-#license: SUSE-NonFree
-#skip_noarch: 1
-#custom_build: |-
-#./Build build flags=%{?_smp_mflags} --myflag
-#custom_test: |-
-#startserver && make test
-#ignore_requires: Bizarre::Module
+patches:
+  # Patch to fix non-standard perl path in source
+  nonstdperlpath.patch: -p1
+preamble: |-
+  BuildRequires:  perl(Text::CSV_XS) >= 0.71
+  BuildRequires:  perl(Spreadsheet::ParseExcel) >= 0.34
+  BuildRequires:  perl(Spreadsheet::ParseExcel::FmtDefault)
+  BuildRequires:  perl(Spreadsheet::ParseXLSX) >= 0.24
+  Recommends:     perl(Spreadsheet::ReadSXC) >= 0.20
+custom_build: |-
+  # disable installation of examples to {_bindir}
+  export AUTOMATED_TESTING=1
+  perl Makefile.PL INSTALLDIRS=vendor
+  make %{?_smp_mflags}
 
-# Patch to fix non-standard perl path in source
-nonstdperlpath.patch: -p1

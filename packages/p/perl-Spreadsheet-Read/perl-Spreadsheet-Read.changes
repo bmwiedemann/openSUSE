@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Jan 21 09:21:20 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- readd hack to suppress examples in %_bindir
+
+-------------------------------------------------------------------
+Tue Dec 22 16:37:53 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Update patch nonstdperlpath.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 03:10:47 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.83
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.83	- 21 Dec 2020, H.Merijn Brand
+      * Require ParseODS 0.26
+      * Add ::parsers to get list of supported formats
+      * Add --list to xlscat and xls2csv
+      * Update xls2csv to be identical to xlsx2csv
+      * ::parses ("") will return list of supported types
+      * Move installables from examples/ to scripts/
+      * Tested on FreeBSD-12.2-RELEASE with all supported backends
+      * Fix META issue for bugtracker
+
+-------------------------------------------------------------------
+Sun Sep 27 03:16:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.82	- 26 Sep 2020, H.Merijn Brand
+      * Move pod tests to xt (and do not distribute)
+      * Fix some links in the docs
+      * Add ".xlsm" to known XLSX file extensions
+      * Spreadsheet::ReadSXC has a new maintainer (Corion)
+        - support file handles
+        - suggest version 0.24 (0.22 causes fails)
+      * First attempt in supporting Spreadsheet::ParseODS (alpha code)
+        - version 0.25 should now pass the limited tests
+        - thanks to Corion for making this happen!
+      * It's 2020
+      * Fallback to Pod::Text if nroff not available in tools
+      * Extended support for merged cells with merge option
+        - Added $sheet->merged_from ("C2")
+      * Add --no-nl[=x] to xlscat
+      * xlscat: Align-right more numerics on -L (was only positive integers)
+      * xlsx2csv -Z : generate a ZIP file with a CSV for every sheet
+      * Doc fix (issue#33)
+
+-------------------------------------------------------------------
+Fri Aug 30 10:20:26 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Add BuildRequires and Recommends because they are all optional
+  but the module wouldn't make sense if none of those are installed
+
+-------------------------------------------------------------------
+Thu Aug 29 17:47:23 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Add patch nonstdperlpath.patch to the right place in cpanspec.yml and
+  update spec
+
+-------------------------------------------------------------------
+Thu Aug 29 15:38:49 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.81
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.81	- 25 Aug 2019, H.Merijn Brand
+      * It's 2019
+      * Allow -c + --sep in xlscat
+      * Add --sep= to xls2csv for -A
+      * Add xlsx2csv to distribution (xlsx2csv has -A)
+      * Add -J s / --join str to xlsx2csv
+      * Add cpanfile
+      * Add explicit documentation about formatted vs unformatted
+      * Improve ->new behavior
+      * Auto-detect fallback for CSV now includes '|' for sep_char (PR#26)
+
+-------------------------------------------------------------------
 Tue Mar 19 08:46:55 UTC 2019 - lars@linux-schulserver.de - 0.80
 
 - update to 0.80
