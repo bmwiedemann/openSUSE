@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-editing-services
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        GStreamer Editing Services
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
