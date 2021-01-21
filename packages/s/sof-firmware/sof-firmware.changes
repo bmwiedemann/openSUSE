@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 21 10:00:26 CET 2021 - tiwai@suse.de
+
+- Update to version 1.6.1:
+  * Stable fix releases
+- Take the tarball from the github release
+- Keep dropping the broken JSL links; the firmware is still missing
+- Update supplements
+
+-------------------------------------------------------------------
+Mon Jan 18 10:52:41 CET 2021 - tiwai@suse.de
+
+- Add an ugly workaround for the upgrade error from the old 1.6-rc3
+  or older due to the rpm problem (bsc#1180287)
+
+-------------------------------------------------------------------
 Thu Dec 17 13:55:35 CET 2020 - tiwai@suse.de
 
 - Update to version 1.6 final:
