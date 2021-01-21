@@ -159,4 +159,32 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773777</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>80a303d1ce2f90acd556956fc05f58ff</srcmd5>
+    <version>1.4.14</version>
+    <time>1611262547</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.4.14
+ see installed CHANGELOG.md
+  ## v1.4.14
+  
+  * Fix compatibility with UMD modules #237 [Comment](https://github.com/railsware/js-routes/issues/237#issuecomment-752754679)
+  
+  ## v1.4.13
+  
+  * Improve compatibility with node environment #269.
+  * Change default file location configuration to Webpacker if both Webpacker and Sprockets are loaded
+  
+  ## v1.4.11
+  
+  * Use app/javascript/routes.js as a default file location if app/javascript directory exists
+  * Add `default` export for better experience when used as es6 module
+  
+  ## v1.4.10
+  
+  * Require engine only when sprockets is loaded #257.
+  
+</comment>
+    <requestid>865199</requestid>
+  </revision>
 </revisionlist>
