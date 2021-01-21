@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 20 07:35:40 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.7
+
+  * Fixed a regression with fallback logic: see issues #547, #546 and #542.
+
+-------------------------------------------------------------------
 Mon Aug 17 12:46:18 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.8.5
