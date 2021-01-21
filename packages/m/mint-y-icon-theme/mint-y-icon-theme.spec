@@ -1,7 +1,7 @@
 #
 # spec file for package mint-y-icon-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   Mint-Y
 Name:           mint-y-icon-theme
-Version:        1.4.8
+Version:        1.5.0
 Release:        0
 Summary:        Mint-Y icon theme
 License:        CC-BY-SA-4.0 AND GPL-3.0-or-later

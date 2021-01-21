@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 14 11:24:51 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.5.0.
+  * Postinst: Generate cache for Yellow themes
+- Updates for version 1.4.9.
+  * add drive-removable-media-symbolic (#279)
+  * Add drive-removable-media-usb icon (#278)
+
+-------------------------------------------------------------------
 Sat Dec 26 18:44:20 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.4.8.
