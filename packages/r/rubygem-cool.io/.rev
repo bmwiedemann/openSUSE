@@ -63,4 +63,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838025</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9837c4277f6aba37ecb9c4c6e89c1f5d</srcmd5>
+    <version>1.7.0</version>
+    <time>1611262524</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.7.0
+ see installed CHANGES.md
+  1.7.0
+  -----
+  
+  * Fix extension build failure for ruby3
+  
+</comment>
+    <requestid>865178</requestid>
+  </revision>
 </revisionlist>

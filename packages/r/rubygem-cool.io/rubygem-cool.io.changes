@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:29:20 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.7.0
+ see installed CHANGES.md
+
+  1.7.0
+  -----
+  
+  * Fix extension build failure for ruby3
+  
+
+-------------------------------------------------------------------
 Fri Sep 25 13:48:02 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.6.1
