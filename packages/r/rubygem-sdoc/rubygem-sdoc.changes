@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan 20 13:21:49 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.0.3
+ see installed CHANGELOG.md
+
+  2.0.3
+  =====
+  
+  * Use @options.title for the index
+  
+  2.0.2
+  =====
+  
+  * Remove accidental rack inclusion in gemspec
+  
+  2.0.1
+  =====
+  
+  * #142 Fix arrow icons for selected panel items
+  * #141 Always use only one metatag for keywords
+  * #140 Use h2 instead of h1 for banner header
+  
+  2.0.0
+  =====
+  
+  * #137 Replace frames based implementation with a css
+  * #132 Deprecate safe_level of ERB.new in Ruby 2.6
+  
+
+-------------------------------------------------------------------
 Wed Apr  8 12:45:53 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - updated to version 1.1.0
