@@ -1,7 +1,7 @@
 #
 # spec file for package libkdegames
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Patch1:         libkdegames-bnc793185.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Add-missing-module-identifier-to-qmldir.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -77,8 +79,7 @@ This package contains data which is required by the KDE games library.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 # bnc#793185
 rm -rf carddecks/svg-konqi-modern
