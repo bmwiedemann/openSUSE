@@ -1,7 +1,7 @@
 #
 # spec file for package praat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.1.26
+Version:        6.1.38
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -36,9 +36,13 @@ BuildRequires:  icns-utils
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(vorbisfile)
 
 %description
 Praat is an open-software tool for the analysis of speech in phonetics.
@@ -67,9 +71,11 @@ mkdir -p %{buildroot}/%{_bindir} \
 install -m 0755 %{name} %{buildroot}/%{_bindir}
 
 icns2png -x -d32 main/Praat.icns
-for s in 16 32 48 128; do
-  mkdir -pv %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
-  install -m 0644 Praat_${s}x${s}x32.png %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
+for s in 16 32 48 64 128 256 512; do
+   if [ -f Praat_${s}x${s}x32.png ]; then
+      mkdir -pv %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
+      install -m 0644 Praat_${s}x${s}x32.png %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
+   fi
 done
 
 # create .desktop file
