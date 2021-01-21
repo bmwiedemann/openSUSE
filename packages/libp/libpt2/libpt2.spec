@@ -50,6 +50,8 @@ Patch7:         missing-decls.patch
 Patch8:         libpt2-openssl11.patch
 Patch9:         reproducible.patch
 Patch10:        libpt2-gnu-make-4.3.patch
+# PATCH-FIX-UPSTREAM ptlib-2.10.11-signed_int_overflow.patch rh#1696458 fcrozat@suse.com -- fix overflow
+Patch11:	ptlib-2.10.11-signed_int_overflow.patch
 BuildRequires:  SDL-devel
 BuildRequires:  alsa-devel
 BuildRequires:  bison
@@ -191,6 +193,7 @@ This plugin enables pulseaudio support for %{name}.
 %if %{pkg_vcmp make >= 4.3}
 %patch10 -p1
 %endif
+%patch11 -p1
 
 %build
 export CXXFLAGS="%optflags -fvisibility-inlines-hidden"
