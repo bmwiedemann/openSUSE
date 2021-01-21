@@ -1,7 +1,7 @@
 #
 # spec file for package python-loguru
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  ((python3-aiocontextvars and python3-base < 3.7) or (python36-aiocontextvars and python36-base))
+%if 0%{?python_version_nodots} < 37
+Requires:       python-aiocontextvars
+%endif
 Recommends:     python-colorama
 BuildArch:      noarch
 
@@ -52,7 +56,11 @@ which dispatches log messages to configured handlers.
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+if [ $(getconf LONG_BIT) = 32 ]; then
+  # Threads have different references on 32-bit
+  donttest="(test_log_formatters and thread and not thread.name)"
+fi
+%pytest ${donttest:+ -k "not ($donttest)"}
 
 %files %{python_files}
 %license LICENSE

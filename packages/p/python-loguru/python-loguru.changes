@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 21 10:44:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Add runtime requirement for contextvars and the correct BR for
+  Leap
+- Skip failing tests on 32-bit
+
+-------------------------------------------------------------------
+Thu Jan 21 06:00:45 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequire python36-aiocontextvars if building under python 3.6 
+
+-------------------------------------------------------------------
 Sun Feb 16 09:14:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.1
