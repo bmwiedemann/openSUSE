@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Jan 20 13:12:49 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.0.3
+ see installed CHANGELOG.md
+
+  ## [2.0.3] - 2020-12-28 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - fixed error when scanning some unlikely and redundant but valid charset patterns
+    - e.g. `/[[.a-b.]]/`, `/[[=e=]]/`,
+  - fixed ancestry of some error classes related to syntax version lookup
+    - `NotImplementedError`, `InvalidVersionNameError`, `UnknownSyntaxNameError`
+    - they now correctly inherit from `Regexp::Syntax::SyntaxError` instead of Rubys `::SyntaxError`
+  
+  ## [2.0.2] - 2020-12-25 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - fixed `FrozenError` when calling `#to_s` on a frozen `Group::Passive`
+    * thanks to [Daniel Gollahon](https://github.com/dgollahon)
+  
+  ## [2.0.1] - 2020-12-20 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - fixed error when scanning some group names
+    * this affected names containing hyphens, digits or multibyte chars, e.g. `/(?<a1>a)/`
+    * thanks to [Daniel Gollahon](https://github.com/dgollahon) for the report
+  - fixed error when scanning hex escapes with just one hex digit
+    * e.g. `/\x0A/` was scanned correctly, but the equivalent `/\xA/` was not
+    * thanks to [Daniel Gollahon](https://github.com/dgollahon) for the report
+  
+  ## [2.0.0] - 2020-11-25 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Changed
+  
+  - some methods that used to return byte-based indices now return char-based indices
+    * the returned values have only changed for Regexps that contain multibyte chars
+    * this is only a breaking change if you used such methods directly AND relied on them pointing to bytes
+    * affected methods:
+    * `Regexp::Token` `#length`, `#offset`, `#te`, `#ts`
+    * `Regexp::Expression::Base` `#full_length`, `#offset`, `#starts_at`, `#te`, `#ts`
+    * thanks to [Akinori MUSHA](https://github.com/knu) for the report
+  - removed some deprecated methods/signatures
+    * these are rarely used and have been showing deprecation warnings for a long time
+    * `Regexp::Expression::Subexpression.new` with 3 arguments
+    * `Regexp::Expression::Root.new` without a token argument
+    * `Regexp::Expression.parsed`
+  
+  ### Added
+  
+  - `Regexp::Expression::Base#base_length`
+    * returns the character count of an expression body, ignoring any quantifier
+  - pragmatic, experimental support for chained quantifiers
+    * e.g.: `/^a{10}{4,6}$/` matches exactly 40, 50 or 60 `a`s
+    * successive quantifiers used to be silently dropped by the parser
+    * they are now wrapped with passive groups as if they were written `(?:a{10}){4,6}`
+    * thanks to [calfeld](https://github.com/calfeld) for reporting this a while back
+  
+  ### Fixed
+  
+  - incorrect encoding output for non-ascii comments
+    * this led to a crash when calling `#to_s` on parse results containing such comments
+    * thanks to [Michael Glass](https://github.com/michaelglass) for the report
+  - some crashes when scanning contrived patterns such as `'\😋'`
+  
+
+-------------------------------------------------------------------
 Tue Nov 10 21:43:06 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.8.2
