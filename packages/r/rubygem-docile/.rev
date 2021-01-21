@@ -78,4 +78,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>717291</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>777aabfcde3d0a9a5e7c7460d7e9f1ea</srcmd5>
+    <version>1.3.5</version>
+    <time>1611262530</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.3.5
+ see installed HISTORY.md
+</comment>
+    <requestid>865183</requestid>
+  </revision>
 </revisionlist>
