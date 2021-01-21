@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 20 07:34:44 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 10.2.0.0
+
+  * Added TypeScript definitions (by Dmitry Semigradsky).
+  * Fixed docs (by Florian Pellet).
+  * Update Can I Use data.
+  * Update postcss to 8.2.2
+
+-------------------------------------------------------------------
 Fri Dec 11 03:31:31 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 10.1.0.0
