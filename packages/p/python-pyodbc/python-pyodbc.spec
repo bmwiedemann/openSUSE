@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyodbc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,6 @@ even more.
 
 %prep
 %setup -q -n pyodbc-%{version}
-mv tests2 tests-%{python2_bin_suffix}
-mv tests3 tests-%{python3_bin_suffix}
 
 %build
 %python_build
@@ -54,8 +52,8 @@ mv tests3 tests-%{python3_bin_suffix}
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python tests-%{$python_bin_suffix}/sqlitetests.py -v "Driver=SQLITE3;Database=sqlite.db"
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} export TESTDIRSUFFIX=%{$python_bin_suffix}
+$python tests${TESTDIRSUFFIX::1}/sqlitetests.py -v "Driver=SQLITE3;Database=sqlite.db"
 }
 
 %files %{python_files}
