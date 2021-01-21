@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 18 15:42:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.165
+  * layers: Portability validation for CreateImage,
+    CreateImageView, CreateSampler.
+  * layers: Support VK_KHR_fragment_shading_rate.
+  * gpu: Add buffer out of bounds access validation.
+
+-------------------------------------------------------------------
 Wed Jan 13 09:08:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.162.1 (sdk)

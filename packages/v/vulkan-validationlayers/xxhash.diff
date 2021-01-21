@@ -10,10 +10,10 @@ xxhash as well, so that the ABI matches.
  layers/CMakeLists.txt |    6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
-Index: Vulkan-ValidationLayers-sdk-1.2.162.0/layers/CMakeLists.txt
+Index: Vulkan-ValidationLayers-1.2.165/layers/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-sdk-1.2.162.0.orig/layers/CMakeLists.txt
-+++ Vulkan-ValidationLayers-sdk-1.2.162.0/layers/CMakeLists.txt
+--- Vulkan-ValidationLayers-1.2.165.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers-1.2.165/layers/CMakeLists.txt
 @@ -61,8 +61,6 @@ if(BUILD_LAYER_SUPPORT_FILES)
          vk_layer_utils.h
          vk_layer_utils.cpp
@@ -23,21 +23,21 @@ Index: Vulkan-ValidationLayers-sdk-1.2.162.0/layers/CMakeLists.txt
          generated/vk_validation_error_messages.h
          generated/vk_layer_dispatch_table.h
          generated/vk_dispatch_table_helper.h
-@@ -195,7 +193,7 @@ set(CORE_VALIDATION_LIBRARY_FILES
-     shader_validation.cpp
-     shader_validation.h
+@@ -197,7 +195,7 @@ set(CORE_VALIDATION_LIBRARY_FILES
+     generated/spirv_validation_helper.cpp
      gpu_validation.cpp
+     generated/corechecks_optick_instrumentation.cpp
 -    xxhash.c)
 +)
  
  set(OBJECT_LIFETIMES_LIBRARY_FILES
      generated/object_tracker.cpp
-@@ -253,7 +251,7 @@ if(BUILD_LAYERS)
-     target_include_directories(VkLayer_khronos_validation PRIVATE ${GLSLANG_SPIRV_INCLUDE_DIR})
-     target_include_directories(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_INCLUDE_DIR})
-     target_include_directories(VkLayer_khronos_validation PRIVATE ${SPIRV_HEADERS_INCLUDE_DIR})
+@@ -297,7 +295,7 @@ if(BUILD_LAYERS)
+     if(INSTRUMENT_OPTICK)
+         target_include_directories(VkLayer_khronos_validation PRIVATE ${OPTICK_SOURCE_DIR})
+     endif()
 -    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES})
 +    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES} -lxxhash)
  
-     # Force generation of the PDB file for Release builds.
-     # Note that CMake reduces optimization levels for RelWithDebInfo builds.
+     # The output file needs Unix "/" separators or Windows "\" separators On top of that, Windows separators actually need to be doubled
+     # because the json format uses backslash escapes
