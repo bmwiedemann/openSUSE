@@ -242,4 +242,40 @@
     <comment>Update to 4.0.1</comment>
     <requestid>862667</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0908ec6c292cee1c023e11834006e083</srcmd5>
+    <version>4.0.2</version>
+    <time>1611262646</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.2:
+  + GtkAboutDialog:
+    - Set icon size for the logo.
+    - Fix initial focus to be the same as in GTK 3.
+  + GtkImage: Update icons on scale change.
+  + Wayland: Fix crashes with touch and tablet events.
+  + Windows:
+    - Fix surface and geometry computation.
+    - Remove layered window usage.
+  + MacOS: Support stylus devices.
+  + Themes:
+    - Adwaita: Remove edge highlights.
+    - Adwaita: Update image assets.
+    - Make Adwaita-dark available as standalone theme.
+    - Make HighContrastInverse the dark variant of HighContrast.
+  + Docs:
+    - Complete GtkAspectFrame docs.
+    - Clarify migration docs for widget signals.
+  + Inspector:
+    - Fix a critical with the recorder.
+    - Fix a crash with treeviews.
+    - Show overlay layout properties.
+    - Add a legend for the layout overlay.
+  + Build:
+    - Fix build with gcc 11.
+    - Support building without sassc.
+  + Updated translations.
+- Switch back to regular releases: with GTK 4 having a consumer
+  (GNOME 40) the focus is much more active on it now. (forwarded request 864285 from dimstar)</comment>
+    <requestid>865370</requestid>
+  </revision>
 </revisionlist>
