@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 14 10:23:03 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.0.6.
+  * 80xapp-gtk3-module.sh: Use GTK3_MODULES instead of GTK_MODULES.
+
+-------------------------------------------------------------------
 Sat Jan  2 20:09:00 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.0.5.
