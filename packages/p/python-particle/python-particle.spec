@@ -1,7 +1,7 @@
 #
 # spec file for package python-particle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,10 +39,8 @@ Recommends:     python-tabulate
 BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module hepunits}
-BuildRequires:  %{python_module pytest}
-%if 0%{?suse_version} <= 1500
 BuildRequires:  %{python_module importlib_resources}
-%endif
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
