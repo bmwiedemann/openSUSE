@@ -16,4 +16,17 @@
     <comment></comment>
     <requestid>717027</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3bbff7ffc13697ddd8e756cbc7701495</srcmd5>
+    <version>5.1.0</version>
+    <time>1611262593</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 5.1.0
+  no changelog found
+- limit to ruby 3.0 (as from upstream)
+
+- updated to version 4.1.0
+  no changelog found</comment>
+    <requestid>865267</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-xdg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,20 @@
 #
 
 Name:           rubygem-xdg
-Version:        3.0.1
+Version:        5.1.0
 Release:        0
 %define mod_name xdg
 %define mod_full_name %{mod_name}-%{version}
+# MANUAL
+%define rb_build_versions     ruby30
+%define rb_build_ruby_abis    ruby:3.0.0
+# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby < 3}
-BuildRequires:  %{ruby => 2.6}
+BuildRequires:  %{ruby < 4}
+BuildRequires:  %{ruby => 3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/bkuhlmann/xdg
+URL:            https://www.alchemists.io/projects/xdg
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Provides an implementation of the XDG Base Directory Specification
@@ -49,7 +53,6 @@ Provides an implementation of the XDG Base Directory Specification.
 
 %install
 %gem_install \
-  --doc-files="LICENSE.md README.md" \
   -f
 
 %gem_packages
