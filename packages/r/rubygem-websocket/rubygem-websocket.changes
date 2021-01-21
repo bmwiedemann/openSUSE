@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 20 13:34:45 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.2.9
+ see installed CHANGELOG.md
+
+  ## 1.2.9
+  
+  - avoid ruby -w warnings
+  
+
+-------------------------------------------------------------------
 Sun Nov 25 11:13:50 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - remove duplicated 1.2.7 entry

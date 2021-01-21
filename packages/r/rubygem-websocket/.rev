@@ -140,4 +140,18 @@
     <comment>- remove duplicated 1.2.7 entry</comment>
     <requestid>651616</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fc82d5d60b0034bf71aed761c6e0f442</srcmd5>
+    <version>1.2.9</version>
+    <time>1611262564</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.2.9
+ see installed CHANGELOG.md
+  ## 1.2.9
+  
+  - avoid ruby -w warnings
+  
+</comment>
+    <requestid>865215</requestid>
+  </revision>
 </revisionlist>
