@@ -1,7 +1,7 @@
 #
 # spec file for package OpenCSD
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,20 @@
 # Disable doc as graphviz does not include PNG support
 %bcond_with build_html_doc
 
-%define libnum  0
+%define libnum  1
 Name:           OpenCSD
-Version:        0.14.4
+Version:        1.0.0
 Release:        0
 Summary:        CoreSight Trace Decode library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Linaro/OpenCSD
 Source0:        https://github.com/Linaro/OpenCSD/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+%if %{with build_html_doc}
+BuildRequires:  doxygen
 BuildRequires:  graphviz
+%endif
 
 %description
 OpenCSD is an Arm CoreSight Trace Decode library.
@@ -70,8 +72,6 @@ OpenCSD is an Arm CoreSight Trace Decode library.
 %autosetup
 
 %build
-# Workaround - https://github.com/Linaro/OpenCSD/issues/33
-sed -i -e 's/-static//' decoder/tests/build/linux/trc_pkt_lister/makefile
 %make_build -C decoder/build/linux DISABLE_STATIC=1 \
 %if %{with build_html_doc}
 docs
@@ -79,6 +79,9 @@ docs
 
 %install
 %make_install -C decoder/build/linux DISABLE_STATIC=1 LIB_PATH=%{_lib}
+# Install man page
+mkdir -p %{buildroot}/usr/share/man/man1/
+%make_install -C decoder/build/linux DISABLE_STATIC=1 LIB_PATH=%{_lib} install_man
 
 %post	-n libopencsd%{libnum} -p /sbin/ldconfig
 %postun	-n libopencsd%{libnum} -p /sbin/ldconfig
@@ -108,5 +111,6 @@ docs
 %doc decoder/docs/html/*.html
 %endif
 %doc decoder/docs/*.md
+%_mandir/*/*
 
 %changelog
