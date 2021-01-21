@@ -18,7 +18,7 @@
 
 %define _version 4.0.0
 Name:           cinnamon
-Version:        4.8.5
+Version:        4.8.6
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 14 10:17:58 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.6.
+  * Remove executable from xapp-status applet files (#9820)
+  * messageTray.js: Remove call to nonexistant method.
+  * spices: Fix URL timestamp not being used
+  * cinnamon-file-dialog: Import GTK properly (#9843)
+
+
+-------------------------------------------------------------------
 Sat Jan  2 18:31:59 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.5.
