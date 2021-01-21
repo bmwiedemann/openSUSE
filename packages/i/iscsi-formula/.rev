@@ -7,4 +7,15 @@
     <comment>First submission of the salt iscsi-formula</comment>
     <requestid>826620</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>924b74c55d8db007d513e264e934b1d3</srcmd5>
+    <version>1.1.1</version>
+    <time>1611262609</time>
+    <user>dimstar_suse</user>
+    <comment>- Change salt-formulas-configuration requirement in SLE12 codestream
+  to a recommendation
+  (bsc#1177860)
+</comment>
+    <requestid>865172</requestid>
+  </revision>
 </revisionlist>
