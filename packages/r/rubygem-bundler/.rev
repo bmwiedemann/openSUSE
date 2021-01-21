@@ -529,4 +529,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773745</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8c3c7ec87fed07cf5f8f8127e832ea90</srcmd5>
+    <version>2.2.6</version>
+    <time>1611262518</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.2.6
+ see installed CHANGELOG.md
+</comment>
+    <requestid>865173</requestid>
+  </revision>
 </revisionlist>
