@@ -16,6 +16,8 @@
 #
 
 
+# Note PyPI 'pycxx' is a different package,
+# and this package is not 'cxx' or 'CXX' on PyPI
 %global modname pycxx
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
@@ -93,11 +95,7 @@ rm -r Doc/Python3 && mv Doc/Python2 Doc/Python
 
 %files %{python_files devel}
 %doc Doc/Python/
-%ifpython3
-%{_datadir}/python%{python3_bin_suffix}
-%else
-%{_datadir}/python%{python2_bin_suffix}
-%endif
+%{_datadir}/python%{python_bin_suffix}
 %{python_sysconfig_path include}
 
 %changelog

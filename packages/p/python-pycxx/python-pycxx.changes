@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 20 10:40:18 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add note that this package is not PyPI 'pycxx'
+- Fix Tumbleweed multi Python 3 builds
+
+-------------------------------------------------------------------
 Fri May 29 20:32:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Remove %python3_only constructs and replace them with other
