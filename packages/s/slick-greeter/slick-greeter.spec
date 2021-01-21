@@ -1,7 +1,7 @@
 #
 # spec file for package slick-greeter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   lightdm-slick-greeter
 Name:           slick-greeter
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        The slick-looking login screen application
 License:        GPL-3.0-only AND CC-BY-SA-3.0
