@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 20 07:33:13 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.5.11
+  * Add Anthy.GContext.set_logger()
+  * Added GTK_IM_MODULE=ibus
+  * Add shortlog
+  * Enabled tests on console
+  * Enable to link anthy-unicode
+  * Fixed a build error with a different srcdir
+  * Fixed deprecated g_type_class_add_private() (#9)
+  * Fixed some errors in the Makefile script
+  * input mode should be changed even if the mode is hidden
+  * Load $HOME/.XCompose file
+  * Prefer gettext over intltool (#11) (Martin Blanchard)
+  * Rename anthy.xml.in.in to anthy.inputMethod.xml.in.in
+  * Rename to default.inputMethod.xml to use ibus.its
+  * Replace appdata with metainfo (#10)
+  * Replaced AC_PROG_LIBTOOL with LT_INIT
+  * Set default input mode to Latin                                                                                           
+  * Set GTK_IM_MODULE in test-console.sh
+  * Updated emoji dictionary for emoji 12.0
+  * Update po files
+
+-------------------------------------------------------------------
 Tue Nov 10 12:32:15 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus-anthy.spec: add a depending to anthy, to avoid the 
