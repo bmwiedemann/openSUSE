@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 21 08:34:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- pwdutils was dropped long time ago
+- fix building (/etc/init.d does not exist)
+
+-------------------------------------------------------------------
 Wed Jan  6 19:06:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.16.14:

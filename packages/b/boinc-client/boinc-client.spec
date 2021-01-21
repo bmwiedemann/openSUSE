@@ -72,14 +72,13 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-BuildRequires:  pwdutils
 BuildRequires:  sqlite3-devel
 BuildRequires:  xorg-x11-libXmu-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xi)
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Requires:       ca-certificates-mozilla
 Recommends:     boinc-client-lang = %{version}
 Recommends:     logrotate
@@ -243,8 +242,6 @@ rm -f %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 # Install init and create symlink for rcboinc
 install -dm0755 %{buildroot}%{_sbindir}
 install -D -m0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{name}.service
-# And remove sysvinit script installed by boinc
-rm -r %{buildroot}/%{_initddir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 # Install template for sysconfig
 install -Dm0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
