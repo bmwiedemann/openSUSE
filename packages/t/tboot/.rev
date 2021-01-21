@@ -553,4 +553,41 @@
   context.</comment>
     <requestid>848115</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9710a8cab289c7665858cbae024dffc0</srcmd5>
+    <version>20200429_1.10.0</version>
+    <time>1611262466</time>
+    <user>dimstar_suse</user>
+    <comment>- release 1.10.0 ramifications:
+  - README is now README.md
+  - acminfo and parse_err now are called txt-acminfo and txt-parse_err
+  - lcptools are deprecated (tpm 1.2, TrouSerS dependency) and are no longer
+    packaged.
+  - no longer needs TrouSerS dependency due to deprecation
+
+- tboot-grub2-fix-menu-in-xen-host-server.patch: refreshed to match new
+  upstream version.
+- tboot-grub2-fix-xen-submenu-name.patch: refreshed to match new upstream
+  version.
+
+- update to new upstream release 1.10.0:
+  - Rename TXT related tools to have 'txt-' prefix
+  - Clarify license issues
+  - Fix issues reported by Coverity Scan
+  - Ensure txt-acminfo does not print false information if msr is not loaded
+  - Fix issue with multiboot(1) booting - infinite loop during boot
+  - Fix issue with TPM1.2 - invalid default policy
+  - Unmask NMI# after returning from SINIT
+  - Update GRUB scripts to use multiboot2 only
+  - Enable VGA logging for EFI platforms
+  - Add warning when using SHA1 as hashing algorithm
+  - Add Doxygen documentation
+  - Replace VMAC with Poly1305
+  - Validate TPM NV index attributes
+  - Move old lcptool to deprecated folder and exclude from build
+  - TrouSerS is not longer required to build
+  - lcptools-v2: meet requirements from MLE DG rev16
+  - lcptools-v2: Implement SM2 signing and SM2 signature verification</comment>
+    <requestid>864334</requestid>
+  </revision>
 </revisionlist>

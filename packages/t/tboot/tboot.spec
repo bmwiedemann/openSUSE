@@ -1,7 +1,7 @@
 #
 # spec file for package tboot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tboot
-%define ver 1.9.12
+%define ver 1.10.0
 Version:        20200429_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
@@ -32,7 +32,6 @@ Patch8:         tboot-grub2-refuse-secure-boot.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  openssl-devel
-BuildRequires:  trousers-devel
 BuildRequires:  zlib-devel
 
 %if 0%{?suse_version} > 1320
@@ -70,16 +69,10 @@ make debug=y install DISTDIR="%{buildroot}" MANPATH="%{buildroot}/%{_mandir}"
 
 %files
 %defattr(-,root,root,-)
-%doc README COPYING docs/* lcptools-v2/lcptools.txt lcptools/Linux_LCP_Tools_User_Manual.pdf
-%{_sbindir}/acminfo
-%{_sbindir}/lcp_readpol
-%{_sbindir}/lcp_writepol
-%{_sbindir}/parse_err
+%doc README.md COPYING docs/* lcptools-v2/lcptools.txt
+%{_sbindir}/txt-acminfo
+%{_sbindir}/txt-parse_err
 %{_sbindir}/tb_polgen
-%{_sbindir}/tpmnv_defindex
-%{_sbindir}/tpmnv_getcap
-%{_sbindir}/tpmnv_lock
-%{_sbindir}/tpmnv_relindex
 %{_sbindir}/txt-stat
 %{_sbindir}/lcp2_crtpol
 %{_sbindir}/lcp2_crtpolelt

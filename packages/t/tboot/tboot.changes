@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 19 14:35:38 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- release 1.10.0 ramifications:
+  - README is now README.md
+  - acminfo and parse_err now are called txt-acminfo and txt-parse_err
+  - lcptools are deprecated (tpm 1.2, TrouSerS dependency) and are no longer
+    packaged.
+  - no longer needs TrouSerS dependency due to deprecation
+
+-------------------------------------------------------------------
+Tue Jan 19 14:00:53 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- tboot-grub2-fix-menu-in-xen-host-server.patch: refreshed to match new
+  upstream version.
+- tboot-grub2-fix-xen-submenu-name.patch: refreshed to match new upstream
+  version.
+
+-------------------------------------------------------------------
+Tue Jan 19 13:35:07 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to new upstream release 1.10.0:
+  - Rename TXT related tools to have 'txt-' prefix
+  - Clarify license issues
+  - Fix issues reported by Coverity Scan
+  - Ensure txt-acminfo does not print false information if msr is not loaded
+  - Fix issue with multiboot(1) booting - infinite loop during boot
+  - Fix issue with TPM1.2 - invalid default policy
+  - Unmask NMI# after returning from SINIT
+  - Update GRUB scripts to use multiboot2 only
+  - Enable VGA logging for EFI platforms
+  - Add warning when using SHA1 as hashing algorithm
+  - Add Doxygen documentation
+  - Replace VMAC with Poly1305
+  - Validate TPM NV index attributes
+  - Move old lcptool to deprecated folder and exclude from build
+  - TrouSerS is not longer required to build
+  - lcptools-v2: meet requirements from MLE DG rev16
+  - lcptools-v2: Implement SM2 signing and SM2 signature verification
+  - lcptools-v2: Set aux_hash_alg_mask to 0 when policy version != 0x300
+
+-------------------------------------------------------------------
 Thu Nov 12 12:19:51 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add tboot-grub2-refuse-secure-boot.patch: don't generate tboot menu entries
