@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 14 10:26:24 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.8.3.
+  * Fix Save a Copy issue with Firefox (#448)
+
+-------------------------------------------------------------------
+Sat Jan  2 18:26:03 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.8.2.
+  * Fix scrolling regressions
+  * Add Right-to-Left support
+  * l10n: Update POT
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Thu Dec 17 19:27:58 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.8.1.

@@ -350,4 +350,12 @@
     <comment>- Fix version typo.</comment>
     <requestid>856894</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9b6a5a2a0a83adc6cf272b23279bc076</srcmd5>
+    <version>2.8.3</version>
+    <time>1611262665</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>865480</requestid>
+  </revision>
 </revisionlist>
