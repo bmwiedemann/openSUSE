@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-omniauth-github
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-omniauth-github
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 %define mod_name omniauth-github
 %define mod_full_name %{mod_name}-%{version}
