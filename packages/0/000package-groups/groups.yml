@@ -11,16 +11,19 @@ OUTPUT:
       recommends: true
   - opensuse_kubic:
       recommends: false
+      require_all: true
       includes:
         - opensuse_microos
         - opensuse_kubic
   - opensuse_microos:
       recommends: false
+      require_all: true
       includes:
         - opensuse_microos
+        - opensuse_microos_desktop
 
 dvd:
-  - kernel-default
+  - kernel-default: [required]
   - kernel-vanilla-base: [locked]
   - kernel-kvmsmall-base: [locked]
   - kernel-vanilla: [locked]
@@ -44,59 +47,59 @@ dvd:
   - grub2-i386-pc: [x86_64,i586]
   - grub2-arm64-efi: [aarch64]
   - shim: [x86_64,aarch64]
-  - patterns-gnome-gnome: [suggested]
-  - patterns-gnome-gnome_basis: [suggested]
-  - patterns-gnome-gnome_basis_opt: [suggested]
-  - patterns-gnome-gnome_games: [suggested]
-  - patterns-gnome-gnome_ide: [suggested]
-  - patterns-gnome-gnome_imaging: [suggested]
-  - patterns-gnome-gnome_internet: [suggested]
-  - patterns-gnome-gnome_multimedia: [suggested]
-  - patterns-gnome-gnome_office: [suggested]
-  - patterns-gnome-gnome_utilities: [suggested]
-  - patterns-gnome-gnome_yast: [suggested]
-  - patterns-desktop-imaging: [suggested]
-  - patterns-kde-kde: [suggested]
-  - patterns-kde-kde_edutainment: [suggested]
-  - patterns-kde-kde_games: [suggested]
-  - patterns-kde-kde_ide: [suggested]
-  - patterns-kde-kde_imaging: [suggested]
-  - patterns-kde-kde_internet: [suggested]
-  - patterns-kde-kde_multimedia: [suggested]
-  - patterns-kde-kde_office: [suggested]
-  - patterns-kde-kde_plasma: [suggested]
-  - patterns-kde-kde_utilities: [suggested]
-  - patterns-kde-kde_utilities_opt: [suggested]
-  - patterns-kde-kde_yast: [suggested]
-  - patterns-base-apparmor: [suggested]
-  - patterns-base-base: [suggested]
-  - patterns-base-console: [suggested]
-  - patterns-server-dhcp_dns_server: [suggested]
-  - patterns-server-directory_server: [suggested]
-  - patterns-base-enhanced_base: [suggested]
-  - patterns-server-file_server: [suggested]
-  - patterns-fonts-fonts: [suggested]
-  - patterns-games-games: [suggested]
-  - patterns-server-lamp_server: [suggested]
+  - patterns-gnome-gnome: [required,suggested]
+  - patterns-gnome-gnome_basis: [required,suggested]
+  - patterns-gnome-gnome_basis_opt: [required,suggested]
+  - patterns-gnome-gnome_games: [required,suggested]
+  - patterns-gnome-gnome_ide: [required,suggested]
+  - patterns-gnome-gnome_imaging: [required,suggested]
+  - patterns-gnome-gnome_internet: [required,suggested]
+  - patterns-gnome-gnome_multimedia: [required,suggested]
+  - patterns-gnome-gnome_office: [required,suggested]
+  - patterns-gnome-gnome_utilities: [required,suggested]
+  - patterns-gnome-gnome_yast: [required,suggested]
+  - patterns-desktop-imaging: [required,suggested]
+  - patterns-kde-kde: [required,suggested]
+  - patterns-kde-kde_edutainment: [required,suggested]
+  - patterns-kde-kde_games: [required,suggested]
+  - patterns-kde-kde_ide: [required,suggested]
+  - patterns-kde-kde_imaging: [required,suggested]
+  - patterns-kde-kde_internet: [required,suggested]
+  - patterns-kde-kde_multimedia: [required,suggested]
+  - patterns-kde-kde_office: [required,suggested]
+  - patterns-kde-kde_plasma: [required,suggested]
+  - patterns-kde-kde_utilities: [required,suggested]
+  - patterns-kde-kde_utilities_opt: [required,suggested]
+  - patterns-kde-kde_yast: [required,suggested]
+  - patterns-base-apparmor: [required,suggested]
+  - patterns-base-base: [required,suggested]
+  - patterns-base-console: [required,suggested]
+  - patterns-server-dhcp_dns_server: [required,suggested]
+  - patterns-server-directory_server: [required,suggested]
+  - patterns-base-enhanced_base: [required,suggested]
+  - patterns-server-file_server: [required,suggested]
+  - patterns-fonts-fonts: [required,suggested]
+  - patterns-games-games: [required,suggested]
+  - patterns-server-lamp_server: [required,suggested]
   - patterns-desktop-laptop: [suggested]
-  - patterns-server-mail_server: [suggested]
-  - patterns-desktop-multimedia: [suggested]
+  - patterns-server-mail_server: [required,suggested]
+  - patterns-desktop-multimedia: [required,suggested]
   - patterns-network-network_admin: [suggested]
-  - patterns-office-office: [suggested]
-  - patterns-server-printing: [suggested]
-  - patterns-media-rest_cd_core: [suggested]
-  - patterns-base-sw_management: [suggested]
-  - patterns-gnome-sw_management_gnome: [suggested]
-  - patterns-base-basic_desktop: [suggested]
-  - patterns-base-transactional_base: [suggested]
-  - patterns-base-x11: [suggested]
+  - patterns-office-office: [required,suggested]
+  - patterns-server-printing: [required,suggested]
+  - patterns-media-rest_cd_core: [required,suggested]
+  - patterns-base-sw_management: [required,suggested]
+  - patterns-gnome-sw_management_gnome: [required,suggested]
+  - patterns-base-basic_desktop: [required,suggested]
+  - patterns-base-transactional_base: [required,suggested]
+  - patterns-base-x11: [required,suggested]
   - patterns-xfce-xfce: [suggested]
   - patterns-xfce-xfce_basis: [suggested]
   - patterns-xfce-xfce_laptop: [suggested]
   - patterns-xfce-xfce_office: [suggested]
-  - patterns-yast-yast2_basis: [suggested]
-  - patterns-yast-yast2_install_wf: [suggested]
-  - patterns-yast-yast2_server: [suggested]
+  - patterns-yast-yast2_basis: [required,suggested]
+  - patterns-yast-yast2_install_wf: [required,suggested]
+  - patterns-yast-yast2_server: [required,suggested]
   - arabic-fonts
   - arphic-uming-fonts
   - cracklib-dict-full
@@ -160,9 +163,9 @@ dvd:
   - yast2-trans-zh_CN
   - yast2-trans-zh_TW
   - yast2-trans-zu
-  - patterns-server-kvm_server: [suggested]
-  - patterns-base-minimal_base: [suggested]
-  - patterns-yast-x11_yast: [suggested]
+  - patterns-server-kvm_server: [required,suggested]
+  - patterns-base-minimal_base: [required,suggested]
+  - patterns-yast-x11_yast: [required,suggested]
   - patterns-server-xen_server: [suggested]
   # bnc#431280 (Japanese fonts)
   - arphic-uming-fonts
@@ -379,8 +382,6 @@ opensuse_microos:
   - patterns-microos-sssd_ldap: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-ima_evm: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-cloud: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-microos-desktop-kde: [aarch64,ppc64le,x86_64]
-  - patterns-microos-desktop-gnome: [aarch64,ppc64le,x86_64]
   - patterns-microos-onlyDVD: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-alt_onlyDVD: [aarch64,ppc64le,s390x,x86_64]
   - patterns-containers-container_runtime: [aarch64,ppc64le,s390x,x86_64]
@@ -395,9 +396,11 @@ opensuse_microos:
   - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
   - kdump # needed by yast when the option to enable it is selected
 
+opensuse_microos_desktop:
+  - patterns-microos-desktop-kde: [aarch64,ppc64le,x86_64]
+  - patterns-microos-desktop-gnome: [aarch64,ppc64le,x86_64]
+
 opensuse_kubic:
-  - patterns-microos-desktop-kde: [locked]
-  - patterns-microos-desktop-gnome: [locked]
   - patterns-containers-kubeadm: [aarch64,ppc64le,s390x,x86_64]
   - patterns-containers-container_runtime_kubernetes: [aarch64,ppc64le,s390x,x86_64]
   - patterns-containers-container_runtime: [aarch64,ppc64le,s390x,x86_64]
