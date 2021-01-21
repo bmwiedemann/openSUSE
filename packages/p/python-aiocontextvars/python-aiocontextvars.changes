@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Jan 20 21:29:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Change conditional for pythons definition for Leap as it need to
+  be expanded by the serverside resolver, which does not have the
+  full python-rpm-macros.
+
+-------------------------------------------------------------------
+Sat Jan 16 18:21:52 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Submit as python 3.6 only package for Tumbleweed's new python36
+  flavor 
+
+-------------------------------------------------------------------
+Fri Jun  7 11:38:44 UTC 2019 - ecsos@opensuse.org
+
+- Change need version python-asyncio for tests, so it builds for
+  Tumbleweed.
+
+-------------------------------------------------------------------
+Sat May 25 16:07:32 UTC 2019 - ecsos@opensuse.org
+
+- initial version 0.2.2
