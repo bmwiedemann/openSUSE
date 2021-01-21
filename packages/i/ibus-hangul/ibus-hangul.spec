@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-hangul
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           ibus-hangul
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        The Hangul engine for IBus input platform
 License:        GPL-2.0-or-later
 Group:          System/I18n/Korean
 URL:            https://github.com/libhangul/ibus-hangul
-Source:         https://github.com/libhangul/ibus-hangul/archive/1.5.3/%{name}-%{version}.tar.gz
+Source:         https://github.com/libhangul/ibus-hangul/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libhangul)
 BuildRequires:  pkgconfig(python3)
