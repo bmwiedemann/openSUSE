@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-crack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-crack
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 %define mod_name crack
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/jnunemaker/crack
+URL:            https://github.com/jnunemaker/crack
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Really simple JSON and XML parsing, ripped from Merb and Rails
