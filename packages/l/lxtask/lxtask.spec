@@ -1,7 +1,7 @@
 #
 # spec file for package lxtask
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           lxtask
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        Lightweight Task Manager
 License:        GPL-2.0-only
 Group:          System/GUI/LXDE
-URL:            http://www.lxde.org/
-Source0:        https://sourceforge.net/projects/lxde/files/LXTask%20%28task%20manager%29/LXTask%200.1.x/%{name}-%{version}.tar.xz
+URL:            https://www.lxde.org/
+Source0:        https://downloads.sourceforge.net/project/lxde/LXTask%20%28task%20manager%29/LXTask%200.1.x/lxtask-%{version}.tar.xz
 BuildRequires:  docbook-utils
 BuildRequires:  fdupes
 BuildRequires:  gtk2-devel
@@ -41,7 +41,6 @@ This is the default LXDE task manager.
 %setup -q
 
 %build
-export CFLAGS="%optflags -fcommon"
 %configure
 %make_build
 
