@@ -315,4 +315,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838078</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>49a2692a3f67cb1bb32c23868dbba0b4</srcmd5>
+    <version>3.15.1</version>
+    <time>1611262583</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.15.1
+ see installed History.rdoc
+  === 3.15.1 / 2021-01-10
+  
+  * 1 bug fix:
+  
+    * Bumped ruby version to include &lt; 4 (trunk).
+  
+</comment>
+    <requestid>865230</requestid>
+  </revision>
 </revisionlist>
