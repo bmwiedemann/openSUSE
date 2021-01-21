@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 21 16:57:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2021.1.0
+  * Technical tab now includes camera model.
+  * Image list context menu now applies to all selected files.
+  * Fix hang when importing files from a folder.
+  * Can get thumbnails from more file types.
+  * Minor other fixes and improvements.
+- Replaced Photini-2020.12.1-desktop.patch with
+  Photini-2021.1.0-desktop.patch
+
+-------------------------------------------------------------------
 Sat Jan  2 13:07:54 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2020.12.1

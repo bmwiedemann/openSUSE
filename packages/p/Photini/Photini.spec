@@ -17,15 +17,15 @@
 
 
 Name:           Photini
-Version:        2020.12.1
+Version:        2021.1.0
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/jim-easterbrook/Photini
 Source0:        https://github.com/jim-easterbrook/Photini/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Photini-2020.12.1-desktop.patch fix desktop file -- aloisio@gmx.com
-Patch0:         Photini-2020.12.1-desktop.patch
+# PATCH-FIX-OPENSUSE Photini-2021.1.0-desktop.patch fix desktop file -- aloisio@gmx.com
+Patch0:         Photini-2021.1.0-desktop.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -82,7 +82,7 @@ rm -f %{buildroot}/%{python3_sitelib}/photini/data/linux/photini.desktop
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
 %{_bindir}/photini
-%{python3_sitelib}/%{name}-2020.12.0-py%{py3_ver}.egg-info
+%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
 %{python3_sitelib}/photini
 %{_datadir}/applications/photini.desktop
 %{_datadir}/icons/hicolor/*/apps/photini.png
