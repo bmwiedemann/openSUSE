@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan 20 23:41:54 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 6.5.1:
+  * Fix the parser to take into account both the xs and xsd namespace prefixes
+
+-------------------------------------------------------------------
+Wed Jan 20 20:12:26 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 6.5.0 - Security release
+  * Fix processing of invalid SAML XML documents - CVE-2021-21238
+  * Fix unspecified xmlsec1 key-type preference - CVE-2021-21239
+  * Add more tests regarding XSW attacks
+  * Add XML Schemas for SAML2 and common extensions
+  * Fix the XML parser to not break on ePTID AttributeValues
+  * Fix the initialization value of the return_addrs property of the StatusResponse object
+  * Fix SWAMID entity-category policy regarding eduPersonTargetedID
+  * data: use importlib to load package data (backwards compatibility through the importlib_resources package)
+  * docs: improve the documentation for the signing_algorithm and digest_algorithm options
+  * examples: fix the logging configuration of the example-IdP
+  * tests: allow tests to pass on 32bit systems by properly choosing dates in test XML documents
+  * tests: improvements on the generation of response and assertion objects
+  * tests: expand tests on python-3.9 and python-3.10-dev
+- added new build dependencies:
+  * python3-importlib-resources
+  * python3-xmlschema
+  * update-alternatives
+- removed obsolete avoid-too-large-dates.patch
+- replaced %python3_alternative by %python_alternative
+
+-------------------------------------------------------------------
 Wed Jan  6 10:49:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add avoid-too-large-dates.patch to avoid test failures on i586
