@@ -287,4 +287,37 @@ Note: the spec file has been regenerated with new gem2rpm. (forwarded request 12
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>802335</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>babc8eba8c84779dbefff26c83b43a04</srcmd5>
+    <version>3.3.7</version>
+    <time>1611262469</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.3.7
+ see installed news.md
+  ## 3.3.7: 2021-01-18 {#version-3-3-7}
+  
+  ### Improvements
+  
+    * msgmerge: Added `--no-report-warning` option.
+      [GitHub#81][Reported by Akim Demaille]
+  
+  ### Thanks
+  
+    * Akim Demaille
+  
+
+- update to 3.3.6
+  see installed news.md
+  ### Improvements
+    * erb: Added support for `-%&gt;`.
+      [GitHub#77][Reported by lremes]
+    * Removed ChangeLog.
+      [GitHub#76][Reported by Will Stephenson]
+    * Don't assume `RbConfig::CONFIG[&quot;datadir&quot;]` is available. For
+      example, TruffleRuby doesn't provide it.
+  ### Thanks
+    * lremes
+    * Will Stephenson</comment>
+    <requestid>864605</requestid>
+  </revision>
 </revisionlist>

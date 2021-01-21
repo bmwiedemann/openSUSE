@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jan 20 09:11:44 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.3.7
+ see installed news.md
+
+  ## 3.3.7: 2021-01-18 {#version-3-3-7}
+  
+  ### Improvements
+  
+    * msgmerge: Added `--no-report-warning` option.
+      [GitHub#81][Reported by Akim Demaille]
+  
+  ### Thanks
+  
+    * Akim Demaille
+  
+-------------------------------------------------------------------
+Mon Sep 21 12:33:01 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 3.3.6
+  see installed news.md
+
+  ### Improvements
+
+    * erb: Added support for `-%>`.
+      [GitHub#77][Reported by lremes]
+
+    * Removed ChangeLog.
+      [GitHub#76][Reported by Will Stephenson]
+
+    * Don't assume `RbConfig::CONFIG["datadir"]` is available. For
+      example, TruffleRuby doesn't provide it.
+
+  ### Thanks
+
+    * lremes
+
+    * Will Stephenson
+
+-------------------------------------------------------------------
 Thu May  7 20:45:20 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 3.3.5

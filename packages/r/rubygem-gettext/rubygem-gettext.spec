@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gettext
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gettext
-Version:        3.3.5
+Version:        3.3.7
 Release:        0
 %define mod_name gettext
 %define mod_full_name %{mod_name}-%{version}
@@ -55,6 +55,10 @@ So you can use GNU gettext tools for maintaining.
   --symlink-binaries \
   --doc-files="README.md" \
   -f
+# MANUAL
+echo "HALLO"
+rm -v %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/test/fixtures/gtk_builder_ui_definitions.ui~
+# /MANUAL
 
 %gem_packages
 
