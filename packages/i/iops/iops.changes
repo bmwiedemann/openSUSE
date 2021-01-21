@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 20 09:32:47 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.0+git.20200324:
+  * Be explicit about python2
+  * HTTPS upgrades, title added
+  * Dockerfile initial version.
+
+-------------------------------------------------------------------
 Thu Mar  8 11:35:28 UTC 2018 - mpluskal@suse.com
 
 - Update to version 0.0+git.20171210:

@@ -23,4 +23,15 @@
 - Update spec file using spec-cleaner</comment>
     <requestid>584399</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7c75c163bac4c0c58b0c82a5dc6a3769</srcmd5>
+    <version>0.0+git.20200324</version>
+    <time>1611262467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20200324:
+  * Be explicit about python2
+  * HTTPS upgrades, title added
+  * Dockerfile initial version.</comment>
+    <requestid>865288</requestid>
+  </revision>
 </revisionlist>

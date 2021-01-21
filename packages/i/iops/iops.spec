@@ -1,7 +1,7 @@
 #
 # spec file for package iops
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           iops
-Version:        0.0+git.20171210
+Version:        0.0+git.20200324
 Release:        0
 Summary:        Disk I/O Benchmark
 License:        ISC
 Group:          System/Benchmark
-URL:            http://benjamin-schweizer.de/measuring-disk-io-performance.html
+URL:            https://benjamin-schweizer.de/measuring-disk-io-performance.html
 Source0:        %{name}-%{version}.tar.xz
 BuildArch:      noarch
 
@@ -30,8 +30,8 @@ BuildArch:      noarch
 Benchmark script to measure disk I/O performance.
 
 %prep
-%setup -q
-sed -i 's|env python|python2|g' iops
+%autosetup
+sed -i 's|env python2|python3|g' iops
 
 %build
 
