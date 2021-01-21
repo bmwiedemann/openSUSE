@@ -1,7 +1,7 @@
 #
 # spec file for package python-eliot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,9 +43,13 @@ BuildRequires:  %{python_module yapf}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  ((python3-aiocontextvars and python3-base < 3.7) or (python36-aiocontextvars and python36-base))
 Requires:       python-boltons >= 19.0.1
 Requires:       python-pyrsistent >= 0.11.8
 Requires:       python-six
+%if 0%{?python_version_nodots} < 37
+Requires:       python-aiocontextvars
+%endif
 Requires:       python-zope.interface
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

@@ -66,4 +66,12 @@
     <comment>- Skip one more failing test as it is flaky on OBS</comment>
     <requestid>785248</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7c7ef99686f22937d1cc17c384660bee</srcmd5>
+    <version>1.12.0</version>
+    <time>1611262487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865261</requestid>
+  </revision>
 </revisionlist>
