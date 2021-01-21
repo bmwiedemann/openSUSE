@@ -1,7 +1,7 @@
 #
 # spec file for package sxhkd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           sxhkd
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Simple X hotkey daemon
 License:        BSD-2-Clause
@@ -38,8 +38,8 @@ sxhkd is a simple X hotkey daemon with a powerful and compact configuration synt
 %setup -q
 
 %build
-export CPPFLAGS="%{optflags} -fcommon"
-make %{?_smp_mflags} 
+export CPPFLAGS="%{optflags}"
+%make_build
 
 %install
 %make_install PREFIX=%{_prefix} DOCPREFIX=%{_docdir}/%{name}
@@ -51,6 +51,7 @@ install -D -p -m 644 %{SOURCE1} \
 %{_bindir}/sxhkd
 %{_mandir}/man1/sxhkd.1%{?ext_man}
 %{_docdir}/%{name}
+%dir %{_sysconfdir}/skel/.config/
 %{_sysconfdir}/skel/.config/sxhkd
 %config %{_sysconfdir}/skel/.config/sxhkd/sxhkdrc
 

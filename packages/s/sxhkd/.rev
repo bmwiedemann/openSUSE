@@ -31,4 +31,29 @@
     <comment></comment>
     <requestid>813463</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a21f729fa460d97068bf604b98aa74e6</srcmd5>
+    <version>0.6.2</version>
+    <time>1611262660</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.2:
+  * Make it build with GCC 10
+  * Use preferred X screen 
+  * Sequences can't be nested 
+- Bump to version 0.6.1
+- Fix gcc10 build, adding -fcommon to CPPFLAGS 
+- Update to 0.5.9
+  * discard non tail chain states when locked
+- includes 0.5.8
+  * write to status fifo when a chain begins / ends
+- cleanup with spec-cleaner
+- fix compilation with distribution rpm opt flags
+- refresh example config file
+- Update to 0.5.7
+    * No changelog provided
+- Add missing LICENSE to package
+- Move to pkgconfig
+</comment>
+    <requestid>865450</requestid>
+  </revision>
 </revisionlist>

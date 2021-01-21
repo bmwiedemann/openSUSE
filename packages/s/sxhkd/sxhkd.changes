@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 15 18:54:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * Make it build with GCC 10
+  * Use preferred X screen 
+  * Sequences can't be nested 
+
+-------------------------------------------------------------------
 Thu Jun 11 09:58:53 UTC 2020 - Florian Besser <fbesser@gmail.com>
 
 - Bump to version 0.6.1
@@ -30,4 +38,3 @@ Wed Oct  5 09:43:30 UTC 2016 - luke.nukem.jones@gmail.com
 Fri Jul 15 22:40:28 UTC 2016 - luke.nukem.jones@gmail.com
 
 - Move to pkgconfig
-
