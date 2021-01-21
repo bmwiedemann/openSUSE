@@ -304,4 +304,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838024</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ee588fdbfd9b4e2e39e2b8d5ad7f1c55</srcmd5>
+    <version>3.15.0</version>
+    <time>1611262520</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.15.0
+ see installed CHANGELOG.md
+</comment>
+    <requestid>865175</requestid>
+  </revision>
 </revisionlist>
