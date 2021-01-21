@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-settings-daemon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-settings-daemon
-Version:        4.8.2
+Version:        4.8.5
 Release:        0
 Summary:        The settings Daemon for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -118,6 +118,7 @@ This package contains development files for cinnamon-settings-daemon.
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-daemon.plugins.*.policy
 %{_datadir}/polkit-1/actions/org.cinnamon.settingsdaemon.datetimemechanism.policy
 %{_datadir}/dbus-1/system-services/org.cinnamon.SettingsDaemon.DateTimeMechanism.service
+%{_libdir}/cinnamon-settings-daemon
 
 %files devel
 %{_libdir}/pkgconfig/%{name}.pc

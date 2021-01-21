@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 14 11:37:20 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.5.
+  * do not delete programs and replace them with broken symlinks to
+    themselves
+- Updates for version 4.8.4. 
+  * plugins: Add symbolic links from the old to the new binary 
+    locations. (#320)
+  * meson: Always install binary links
+  * xdg autostart: Refer directly to the executable name
+
+-------------------------------------------------------------------
 Tue Dec  8 16:25:17 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.2.
