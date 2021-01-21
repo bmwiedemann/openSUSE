@@ -18,6 +18,7 @@
 
 %define packagename pyUSID
 %{?!python_module:%define python_module() python-%{**} python-%{**}}
+%define         skip_python36 1
 Name:           python-pyUSID
 Version:        0.0.9
 Release:        0

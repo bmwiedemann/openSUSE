@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 19:19:11 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Disable build for python36 because sidpy has no python36 build.
+
+-------------------------------------------------------------------
 Thu Dec 10 15:21:25 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Add fix_tests_h5py-3.0.patch to fix broken test from h5py 3.0.
