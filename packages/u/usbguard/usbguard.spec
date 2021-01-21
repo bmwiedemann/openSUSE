@@ -1,7 +1,7 @@
 #
 # spec file for package usbguard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %global _hardened_build 1
-%define lname libusbguard0
+%define lname libusbguard1
 Name:           usbguard
-Version:        0.7.8
+Version:        1.0.0
 Release:        0
 Summary:        A tool for implementing USB device usage policy
 ## Not installed
@@ -61,6 +61,7 @@ USB device attributes.
 %package -n %{lname}
 Summary:        Library for implementing USB device usage policy
 Group:          System/Libraries
+Obsoletes:      libusbguard0 < %{version}
 
 %description -n %{lname}
 The USBGuard software framework helps to protect your computer against rogue USB
@@ -142,8 +143,8 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 %pre
 %service_add_pre usbguard.service
 
-%post -n libusbguard0 -p /sbin/ldconfig
-%postun -n libusbguard0 -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
 %files
 %doc README.adoc CHANGELOG.md

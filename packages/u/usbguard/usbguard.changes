@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 13 16:05:00 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- update to 1.0.0
+  * Added openssl support
+  * Starting with libtool versioning
+  * Added interface for IPC permission query
+  * Introduced partial rule concept fo CLI
+  * Added WithConnectType for ldap rule
+  * Daemon does not apply the policy when "change" action event appears anymore
+  * IPCClientPrivate@disconnect is thread safe
+  * Enforced loading of files from .d/ direcory in alfabetical order
+  * Improved CLI behaviour to be consistent                                                                       
+  * Clarified rule's label documentation
+
+-------------------------------------------------------------------
 Fri Oct  2 15:12:06 UTC 2020 - pgajdos@suse.com
 
 - drop useless build dependency on aspell (aspell is going to be
