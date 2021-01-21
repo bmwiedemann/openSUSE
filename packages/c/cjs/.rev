@@ -132,4 +132,12 @@
 Thanks for the SR</comment>
     <requestid>859606</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3fa29842f572a8acfebe1c21702c4d86</srcmd5>
+    <version>4.8.2</version>
+    <time>1611262638</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>865362</requestid>
+  </revision>
 </revisionlist>

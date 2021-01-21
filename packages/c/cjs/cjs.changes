@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 14 10:53:44 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.2.
+  * Rebase on gjs 1.66.1.
+
+-------------------------------------------------------------------
 Thu Dec 31 12:17:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not add RPM dependencies for installed-tests: some tests there
