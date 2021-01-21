@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-strptime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,12 @@
 #
 
 Name:           rubygem-strptime
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 %define mod_name strptime
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel < 3}
-BuildRequires:  %{rubydevel => 2.0}
+BuildRequires:  %{rubydevel >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/nurse/strptime
