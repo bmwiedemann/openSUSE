@@ -7,4 +7,14 @@
     <comment>Submission of rubygem-ruby-progressbar as a dependency of rubocop.</comment>
     <requestid>735837</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>783011a6f8366491afec2faab5c942ff</srcmd5>
+    <version>1.11.0</version>
+    <time>1611262585</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.11.0
+  no changelog found
+</comment>
+    <requestid>865231</requestid>
+  </revision>
 </revisionlist>
