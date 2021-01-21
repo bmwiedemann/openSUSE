@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:46:37 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 5.2.1
+ see installed CHANGELOG.md
+
+  ## 5.2.1
+  
+  Released on November 30, 2020
+  ([diff](https://github.com/haml/haml/compare/v5.2.0...v5.2.1)).
+  
+  * Add in improved "multiline" support for attributes [#1043](https://github.com/haml/haml/issues/1043)
+  
+  ## 5.2
+  
+  Released on September 28, 2020
+  ([diff](https://github.com/haml/haml/compare/v5.1.2...v5.2.0)).
+  
+  * Fix crash in the attribute optimizer when `#inspect` is overridden in TrueClass / FalseClass [#972](https://github.com/haml/haml/issues/972)
+  * Do not HTML-escape templates that are declared to be plaintext [#1014](https://github.com/haml/haml/issues/1014) (Thanks [@cesarizu](https://github.com/cesarizu))
+  * Class names are no longer ordered alphabetically, and now follow a new specification as laid out in REFERENCE [#306](https://github.com/haml/haml/issues/306)
+  
+
+-------------------------------------------------------------------
 Mon Feb 10 14:49:06 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 5.1.2
