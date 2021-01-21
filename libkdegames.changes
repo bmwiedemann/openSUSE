@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 17:17:29 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to make qmldir compatible with qml-autoreprov:
+  * 0001-Add-missing-module-identifier-to-qmldir.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 12:27:01 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
