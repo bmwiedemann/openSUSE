@@ -301,4 +301,12 @@ various additional features.</comment>
     - Fix backend due to API swapping integers for strings (Nick Craig-Wood)</comment>
     <requestid>849567</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bce3bbef599bbc8bd4b6706ad714baf9</srcmd5>
+    <version>1.53.4</version>
+    <time>1611262671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865487</requestid>
+  </revision>
 </revisionlist>

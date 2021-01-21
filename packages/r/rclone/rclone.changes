@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jan 21 10:11:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.53.4:
+  * Bug Fixes
+    - accounting: Fix data race in Transferred() 
+    - build
+        + Stop tagged releases making a current beta
+    - fs: Parseduration: fixed tests to use UTC time 
+    - fshttp: Prevent overlap of HTTP headers in logs
+    - rc
+        + Fix core/command giving 500 internal error
+        + Add Copy method to rc.Params 
+        + Fix 500 error when marshalling errors from core/command 
+        + plugins: Create plugins files only if webui is enabled.
+    - serve http: Fix serving files of unknown length 
+    - serve sftp: Fix authentication on one connection blocking others
+  * Mount
+    - Add "." and ".." to directories to match cmount and expectations
+  * VFS
+    - Make cache dir absolute before using it to fix path too long errors 
+  * Chunker
+    - Improve detection of incompatible metadata 
+  * Google Cloud Storage
+    - Fix server side copy of large objects 
+  * Jottacloud
+    - Fix token renewer to fix long uploads
+    - Fix token refresh failed: is not a regular file error
+  * Pcloud
+    - Only use SHA1 hashes in EU region
+  * Sharefile
+    - Undo Fix backend due to API swapping integers for strings 
+  * WebDAV
+    - Fix Open Range requests to fix 4shared mount 
+    - Add "Depth: 0" to GET requests to fix bitrix 
+
+-------------------------------------------------------------------
 Fri Nov 20 08:40:29 UTC 2020 - İsmail Dönmez <idoenmez+factory@suse.de>
 
 - Update to version 1.53.3
