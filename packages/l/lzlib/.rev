@@ -91,4 +91,12 @@
     <comment>- Move to final release 1.11</comment>
     <requestid>672076</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ba406b81ec4c4e2a3cedc485b2451b5</srcmd5>
+    <version>1.12</version>
+    <time>1611262657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12:</comment>
+    <requestid>865411</requestid>
+  </revision>
 </revisionlist>

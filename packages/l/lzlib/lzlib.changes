@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 20 09:19:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Update to 1.12:
+  * see included NEWS
+  * The value of the version test macro 'LZ_API_VERSION' is now
+    defined as 1000 * major + minor. For version 1.12 it is 1012.
+  * The new function 'LZ_api_version', which returns the
+    LZ_API_VERSION of the library object code being used, has
+    been added to lzlib.
+  * Decompression speed has been slightly increased.
+  * The new option '--check-lib', which compares the version of
+    lzlib used to compile minilzip with the version actually
+    being used, has been added to minilzip.
+  * Minilzip now reports an error if a file name is empty (minilzip -t "").
+  * Option '-o, --output' now behaves like '-c, --stdout', but
+    sending the output unconditionally to a file instead of to
+    standard output. See the new description of '-o' in the
+    manual. This change is not backwards compatible.
+  * When using '-c' or '-o', minilzip now checks whether the
+    output is a terminal only once.
+  * The words 'decompressed' and 'compressed' have been replaced
+    with the shorter 'out' and 'in' in the verbose output of
+    minilzip when decompressing or testing.
+  * It has been documented in the manual that
+    'LZ_(de)compress_close' and 'LZ_(de)compress_errno' can be
+    called with a null argument.
+  * Bugfixes, documentation updates.
+
+-------------------------------------------------------------------
 Wed Feb  6 09:25:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Move to final release 1.11

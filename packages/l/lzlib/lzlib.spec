@@ -1,7 +1,7 @@
 #
 # spec file for package lzlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,15 @@
 #
 
 
-Name:           lzlib
-Version:        1.11
-Release:        0
 %define lname liblz1
-%define xversion 1.11
+Name:           lzlib
+Version:        1.12
+Release:        0
 Summary:        LZMA Compression and Decompression Library
 License:        BSD-2-Clause AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.nongnu.org/lzip/lzlib.html
-Source:         https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%xversion.tar.gz
+Source:         https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%version.tar.gz
 #Source2:        https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 PreReq:         %install_info_prereq
@@ -64,7 +63,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libcerror.
 
 %prep
-%autosetup -n %name-%xversion
+%autosetup
 
 %build
 # not autoconf!
@@ -76,7 +75,7 @@ pushd build/
 	--includedir="%_includedir" --infodir="%_infodir" --libdir="%_libdir" \
 	--mandir="%_mandir" --sysconfdir="%_sysconfdir" --enable-shared \
 	CC="%__cc" CFLAGS="%optflags" CXX="%__cxx" CXXFLAGS="%optflags"
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -88,7 +87,7 @@ rm -f "%buildroot/%_libdir"/*.a
 
 %check
 pushd build/
-make %{?_smp_mflags} check
+%make_build check
 popd
 
 %post   -n %lname -p /sbin/ldconfig
@@ -101,7 +100,8 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/%name.info%ext_info"
 
 %files -n %lname
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %_libdir/liblz.so.*
 
 %files devel
