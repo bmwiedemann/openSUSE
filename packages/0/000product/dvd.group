@@ -3029,6 +3029,7 @@
     <package name="ruby2.7-rubygem-cfa_grub2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-changelog_generator" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-cheetah" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ruby2.7-rubygem-chef-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-childprocess" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-childprocess-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-childprocess-2.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3095,6 +3096,7 @@
     <package name="ruby2.7-rubygem-fake_ftp-0_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-faraday" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-faraday-0_12" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-faraday-net_http" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-faraday_middleware" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-faraday_middleware-multi_json" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-fast_gettext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3153,6 +3155,7 @@
     <package name="ruby2.7-rubygem-ipaddress" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jaro_winkler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-jekyll" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jekyll-sass-converter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jekyll-watch" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-jmespath" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3168,13 +3171,14 @@
     <package name="ruby2.7-rubygem-jwt-1_5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-kgio" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-kramdown" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-kramdown-parser-gfm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-launchy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-levenshtein" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-librarian" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-libyui-rake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-lightbox2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-liquid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-liquid-3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-liquid-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-listen-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-listen-3_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3239,9 +3243,7 @@
     <package name="ruby2.7-rubygem-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-omniauth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-omniauth-github" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-omniauth-gitlab" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-omniauth-google-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-omniauth-oauth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-omniauth-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-open4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-openid_connect" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3258,12 +3260,15 @@
     <package name="ruby2.7-rubygem-path_expander" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pathutil" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pdf-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-pdf-reader" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pkg-config" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-po_to_json" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-polyglot" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-prawn" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-prawn-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-prawn-icon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-prawn-svg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-prawn-table" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pry" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pry-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-public_suffix" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3355,12 +3360,14 @@
     <package name="ruby2.7-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-sdoc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-securecompare" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-semantic_range" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-serverengine" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-sexp_processor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-sigdump" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-simple_oauth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-simplecov" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-simplecov-html" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-simplecov_json_formatter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-simpleidn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-sinatra" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-slim" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3383,6 +3390,7 @@
     <package name="ruby2.7-rubygem-swd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-systemu" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-temple" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-terminal-table" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-text" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-text-hyphen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-thor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3408,6 +3416,7 @@
     <package name="ruby2.7-rubygem-unf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-unf_ext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-unicode-display_width" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-unicode-display_width-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-unicorn" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-unicorn-worker-killer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-url_safe_base64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3431,7 +3440,6 @@
     <package name="ruby2.7-rubygem-winrm-2_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-winrm-elevated" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-winrm-fs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-xdg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-xdg-2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-xml-simple" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-xmlhash" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3472,6 +3480,7 @@
     <package name="ruby3.0-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-semantic_range" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4035,14 +4044,14 @@
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
-    <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
-    <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
-    <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
-    <!-- patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586-->
-    <!-- patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
-    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
-    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <package name=" patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" supportstatus="unsupported"/>
+    <package name=" patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" supportstatus="unsupported"/>
+    <package name=" patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" supportstatus="unsupported"/>
+    <package name=" patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" supportstatus="unsupported"/>
+    <package name=" patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" supportstatus="unsupported"/>
+    <package name=" patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" supportstatus="unsupported"/>
+    <package name=" patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" supportstatus="unsupported"/>
+    <package name=" patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" supportstatus="unsupported"/>
     <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
     <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
     <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
