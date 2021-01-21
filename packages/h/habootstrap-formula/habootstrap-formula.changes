@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
-Tue Jan 19 09:38:52 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+Wed Jan 20 08:28:05 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.4.0
   * Change salt-formulas-configuration requirement in SLE12 codestream
   to a recommendation
   (bsc#1177860)
+
+-------------------------------------------------------------------
+Tue Jan 19 09:38:52 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Remove lock states as this is done in crmsh now
+- Fix ssh keys management to run them once the first node is
+  initialized
 
 -------------------------------------------------------------------
 Tue Jan 19 08:32:50 UTC 2021 - Aleksei Burlakov <aburlakov@suse.com>
