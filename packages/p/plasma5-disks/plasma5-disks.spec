@@ -16,6 +16,9 @@
 #
 
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(SMART.*
+
 %define kf5_version 5.74.0
 %bcond_without lang
 
