@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Oct 22 21:57:13 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 20201014.0
+  https://www.jetmore.org/john/blog/2020/10/swaks-release-20201014-0-available/
+  https://www.jetmore.org/john/blog/2020/10/swaks-release-20201010-0-available/
+
+-------------------------------------------------------------------
+Thu Oct 22 21:56:10 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- require perl-Net-SSLeay to enable SSL support out of the box 
+
+-------------------------------------------------------------------
+Mon Sep 14 12:46:14 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 20190914.0
+  https://www.jetmore.org/john/blog/2019/10/swaks-release-20190914-0-available/
+
+-------------------------------------------------------------------
+Wed Sep 12 14:21:01 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package 20170101.0
