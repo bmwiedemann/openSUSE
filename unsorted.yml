@@ -701,6 +701,7 @@ unsorted:
   - apache2-mod_nss 
   - apache2-mod_perl 
   - apache2-mod_perl-devel 
+  - apache2-mod_php8 
   - apache2-mod_security2 
   - apache2-mod_uwsgi 
   - apache2-mod_wsgi 
@@ -11161,7 +11162,7 @@ unsorted:
   - libgloox18 
   - libgloox18-32bit: [x86_64] 
   - libglpk40 
-  - libglslang10 
+  - libglslang11 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -17160,6 +17161,8 @@ unsorted:
   - nemo-extension-terminal 
   - nemo-extensions-lang 
   - nemo-lang 
+  - neochat 
+  - neochat-lang 
   - neofetch 
   - neomutt 
   - neomutt-doc 
@@ -20355,9 +20358,11 @@ unsorted:
   - php7-bcmath 
   - php7-bz2 
   - php7-calendar 
+  - php7-ctype 
   - php7-curl 
   - php7-dba 
   - php7-devel 
+  - php7-dom 
   - php7-embed 
   - php7-enchant 
   - php7-exif 
@@ -20368,14 +20373,17 @@ unsorted:
   - php7-gmagick 
   - php7-gmp 
   - php7-ice 
+  - php7-iconv 
   - php7-imagick 
   - php7-intl 
+  - php7-json 
   - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
   - php7-memcached 
   - php7-odbc 
   - php7-opcache 
+  - php7-openssl 
   - php7-pcntl 
   - php7-pear 
   - php7-pecl 
@@ -20393,17 +20401,59 @@ unsorted:
   - php7-soap 
   - php7-sockets 
   - php7-sodium 
+  - php7-sqlite 
   - php7-sysvmsg 
   - php7-sysvsem 
   - php7-sysvshm 
   - php7-test 
   - php7-tidy 
+  - php7-tokenizer 
   - php7-uuid 
   - php7-xdebug 
+  - php7-xmlreader 
   - php7-xmlrpc 
+  - php7-xmlwriter 
   - php7-xsl 
   - php7-zip 
   - php7-zlib 
+  - php8-bcmath 
+  - php8-bz2 
+  - php8-calendar 
+  - php8-curl 
+  - php8-dba 
+  - php8-devel 
+  - php8-embed 
+  - php8-enchant 
+  - php8-exif 
+  - php8-fastcgi 
+  - php8-fileinfo 
+  - php8-fpm 
+  - php8-ftp 
+  - php8-gmp 
+  - php8-intl 
+  - php8-ldap 
+  - php8-odbc 
+  - php8-opcache 
+  - php8-pcntl 
+  - php8-pear 
+  - php8-pecl 
+  - php8-pgsql 
+  - php8-phar 
+  - php8-posix 
+  - php8-readline 
+  - php8-shmop 
+  - php8-snmp 
+  - php8-soap 
+  - php8-sockets 
+  - php8-sodium 
+  - php8-sysvmsg 
+  - php8-sysvsem 
+  - php8-sysvshm 
+  - php8-test 
+  - php8-tidy 
+  - php8-xsl 
+  - php8-zip 
+  - php8-zlib 
   - phpMyAdmin 
   - phpMyAdmin-apache 
   - phpMyAdmin-lang 
@@ -21418,15 +21468,10 @@ unsorted:
   - python3-ZEO 
   - python3-ZODB 
   - python3-aexpect 
-  - python3-agate 
-  - python3-agate-dbf 
-  - python3-agate-excel 
   - python3-agate-sql 
-  - python3-annoy 
   - python3-apns2 
   - python3-arf 
   - python3-arpack-ng: [x86_64] 
-  - python3-astral 
   - python3-asyncssh 
   - python3-audit: [i586] 
   - python3-automaton 
@@ -21682,7 +21727,6 @@ unsorted:
   - python3-congressclient 
   - python3-cotyledon 
   - python3-createrepo_c: [i586] 
-  - python3-croniter 
   - python3-csvkit 
   - python3-ctypeslib2 
   - python3-cu2qu 
@@ -21690,7 +21734,6 @@ unsorted:
   - python3-dbus-presage 
   - python3-debtcollector 
   - python3-deltarpm 
-  - python3-demjson 
   - python3-designateclient 
   - python3-dfVFS 
   - python3-distob: [x86_64] 
@@ -21891,7 +21934,6 @@ unsorted:
   - python3-libstoragemgmt-clibs 
   - python3-libtorrent-rasterbar 
   - python3-libtorrent-rasterbar-1 
-  - python3-libusb1 
   - python3-libvhdi 
   - python3-libvmdk 
   - python3-libvoikko 
@@ -22037,7 +22079,6 @@ unsorted:
   - python3-presage 
   - python3-presagemate 
   - python3-prewikka 
-  - python3-pudb 
   - python3-pwquality 
   - python3-pyIOSXR 
   - python3-pyUSID 
@@ -22064,7 +22105,6 @@ unsorted:
   - python3-pypandoc: [i586] 
   - python3-pyproj 
   - python3-pyprompter 
-  - python3-pyquil: [i586] 
   - python3-pysaml2 
   - python3-pysearpc 
   - python3-pyside2 
@@ -22079,7 +22119,6 @@ unsorted:
   - python3-pytest-server-fixtures 
   - python3-pytest-subtesthack 
   - python3-pytest-translations 
-  - python3-python-cjson 
   - python3-python-crontab 
   - python3-python-daemon 
   - python3-python-datamatrix: [i586] 
@@ -22119,7 +22158,6 @@ unsorted:
   - python3-sherpa: [x86_64] 
   - python3-sidpy: [i586] 
   - python3-sievelib 
-  - python3-sigal 
   - python3-smbus 
   - python3-snimpy 
   - python3-social-auth-app-django 
@@ -22298,6 +22336,7 @@ unsorted:
   - python36-MulticoreTSNE 
   - python36-OWSLib 
   - python36-PGet 
+  - python36-PTable 
   - python36-Parsley 
   - python36-Paste 
   - python36-PasteDeploy 
@@ -22425,6 +22464,9 @@ unsorted:
   - python36-aenum 
   - python36-afdko 
   - python36-affine 
+  - python36-agate 
+  - python36-agate-dbf 
+  - python36-agate-excel 
   - python36-agate-lookup 
   - python36-agate-remote 
   - python36-agate-stats 
@@ -22459,6 +22501,7 @@ unsorted:
   - python36-amqpstorm 
   - python36-ana 
   - python36-aniso8601 
+  - python36-annoy 
   - python36-ansel 
   - python36-ansi2html 
   - python36-ansicolor 
@@ -22490,6 +22533,7 @@ unsorted:
   - python36-aspy.yaml 
   - python36-asteval 
   - python36-astor 
+  - python36-astral 
   - python36-astroid 
   - python36-astropy-helpers 
   - python36-asttokens 
@@ -22656,6 +22700,7 @@ unsorted:
   - python36-certifi 
   - python36-certstream 
   - python36-cffi 
+  - python36-cfgdiff 
   - python36-cfgv 
   - python36-cfn-lint 
   - python36-cfscrape 
@@ -22753,6 +22798,7 @@ unsorted:
   - python36-crcmod 
   - python36-crochet 
   - python36-cron-descriptor 
+  - python36-croniter 
   - python36-crontab 
   - python36-crumbs 
   - python36-cryptography 
@@ -22813,6 +22859,7 @@ unsorted:
   - python36-defusedxml 
   - python36-delegator 
   - python36-delegator.py 
+  - python36-demjson 
   - python36-dennis 
   - python36-dephell 
   - python36-dephell-archive 
@@ -23116,6 +23163,7 @@ unsorted:
   - python36-gcsfs 
   - python36-gcsfs-fuse 
   - python36-ged4py 
+  - python36-genfire 
   - python36-genty 
   - python36-geographiclib 
   - python36-geoip2 
@@ -23419,6 +23467,7 @@ unsorted:
   - python36-librosa 
   - python36-librouteros 
   - python36-libsass 
+  - python36-libusb1 
   - python36-libvirt-python 
   - python36-libxml2 
   - python36-license-expression 
@@ -23539,6 +23588,7 @@ unsorted:
   - python36-mysql-connector-python 
   - python36-mysqlclient 
   - python36-nagiosplugin 
+  - python36-natsort 
   - python36-nautilus 
   - python36-nautilus-devel 
   - python36-nbclient 
@@ -23802,6 +23852,7 @@ unsorted:
   - python36-publicsuffix 
   - python36-publicsuffix2 
   - python36-publicsuffixlist 
+  - python36-pudb 
   - python36-pulsectl 
   - python36-pure-sasl 
   - python36-purl 
@@ -23955,7 +24006,6 @@ unsorted:
   - python36-pyqt-builder 
   - python36-pyqtgraph 
   - python36-pyquery 
-  - python36-pyquil: [x86_64] 
   - python36-pyrad 
   - python36-pyramid 
   - python36-pyramid-chameleon 
@@ -24083,6 +24133,7 @@ unsorted:
   - python36-python-barcode 
   - python36-python-bidi 
   - python36-python-box 
+  - python36-python-cjson 
   - python36-python-consul 
   - python36-python-coveralls 
   - python36-python-crfsuite 
@@ -24363,6 +24414,7 @@ unsorted:
   - python36-shodan 
   - python36-shortuuid 
   - python36-sidecar 
+  - python36-sigal 
   - python36-signedjson 
   - python36-simpleaudio 
   - python36-simplebayes 
@@ -24859,6 +24911,7 @@ unsorted:
   - python38-MulticoreTSNE 
   - python38-OWSLib 
   - python38-PGet 
+  - python38-PTable 
   - python38-Parsley 
   - python38-Paste 
   - python38-PasteDeploy 
@@ -24979,6 +25032,9 @@ unsorted:
   - python38-aenum 
   - python38-afdko 
   - python38-affine 
+  - python38-agate 
+  - python38-agate-dbf 
+  - python38-agate-excel 
   - python38-agate-lookup 
   - python38-agate-remote 
   - python38-agate-stats 
@@ -25011,6 +25067,7 @@ unsorted:
   - python38-amqpstorm 
   - python38-ana 
   - python38-aniso8601 
+  - python38-annoy 
   - python38-ansel 
   - python38-ansi2html 
   - python38-ansicolor 
@@ -25040,6 +25097,7 @@ unsorted:
   - python38-aspy.yaml 
   - python38-asteval 
   - python38-astor 
+  - python38-astral 
   - python38-astroid 
   - python38-astropy 
   - python38-astropy-helpers 
@@ -25194,6 +25252,7 @@ unsorted:
   - python38-certbot-dns-route53 
   - python38-certbot-nginx 
   - python38-certstream 
+  - python38-cfgdiff 
   - python38-cfgv 
   - python38-cfn-lint 
   - python38-cfscrape 
@@ -25287,6 +25346,7 @@ unsorted:
   - python38-crcmod 
   - python38-crochet 
   - python38-cron-descriptor 
+  - python38-croniter 
   - python38-crontab 
   - python38-crumbs 
   - python38-cryptography-vectors 
@@ -25340,6 +25400,7 @@ unsorted:
   - python38-defusedxml 
   - python38-delegator 
   - python38-delegator.py 
+  - python38-demjson 
   - python38-dennis 
   - python38-dephell 
   - python38-dephell-archive 
@@ -25636,6 +25697,7 @@ unsorted:
   - python38-gcsfs 
   - python38-gcsfs-fuse 
   - python38-ged4py 
+  - python38-genfire 
   - python38-genty 
   - python38-geographiclib 
   - python38-geoip2 
@@ -25917,6 +25979,7 @@ unsorted:
   - python38-librosa 
   - python38-librouteros 
   - python38-libsass 
+  - python38-libusb1 
   - python38-license-expression 
   - python38-ligo-segments 
   - python38-ligotimegps 
@@ -26027,6 +26090,7 @@ unsorted:
   - python38-mypy_extensions 
   - python38-mysql-connector-python 
   - python38-nagiosplugin 
+  - python38-natsort 
   - python38-nautilus 
   - python38-nautilus-devel 
   - python38-nbclient 
@@ -26274,6 +26338,7 @@ unsorted:
   - python38-ptr 
   - python38-publicsuffix 
   - python38-publicsuffixlist 
+  - python38-pudb 
   - python38-pulsectl 
   - python38-pure-sasl 
   - python38-purl 
@@ -26413,7 +26478,7 @@ unsorted:
   - python38-pyqt-builder 
   - python38-pyqtgraph 
   - python38-pyquery 
-  - python38-pyquil: [x86_64] 
+  - python38-pyquil 
   - python38-pyrad 
   - python38-pyramid 
   - python38-pyramid-chameleon 
@@ -26460,6 +26525,7 @@ unsorted:
   - python38-pytest-check-links 
   - python38-pytest-click 
   - python38-pytest-console-scripts 
+  - python38-pytest-cookies 
   - python38-pytest-cov 
   - python38-pytest-datadir 
   - python38-pytest-dependency 
@@ -26540,6 +26606,7 @@ unsorted:
   - python38-python-barcode 
   - python38-python-bidi 
   - python38-python-box 
+  - python38-python-cjson 
   - python38-python-consul 
   - python38-python-coveralls 
   - python38-python-crfsuite 
@@ -26804,6 +26871,7 @@ unsorted:
   - python38-shortuuid 
   - python38-sidecar 
   - python38-sidpy: [x86_64] 
+  - python38-sigal 
   - python38-signedjson 
   - python38-simpleaudio 
   - python38-simplebayes 
@@ -29728,6 +29796,8 @@ unsorted:
   - ruby3.0-rubygem-trollop 
   - ruby3.0-rubygem-trollop-doc 
   - ruby3.0-rubygem-trollop-testsuite 
+  - ruby3.0-rubygem-ttfunk 
+  - ruby3.0-rubygem-ttfunk-doc 
   - ruby3.0-rubygem-turbolinks-doc 
   - ruby3.0-rubygem-turbolinks-source-doc 
   - ruby3.0-rubygem-tzinfo 
