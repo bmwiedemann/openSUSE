@@ -87,4 +87,19 @@
     <comment></comment>
     <requestid>828673</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b7b354e64bf2d06d027f97a5d861330b</srcmd5>
+    <version>1.1.8</version>
+    <time>1611262523</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.1.8
+ see installed CHANGELOG.md
+  ## Release v1.1.8 (20 January 2021)
+  
+  * (#885) Fix race condition in TVar for stale reads 
+  * (#884) RubyThreadLocalVar: Do not iterate over hash which might conflict with new pair addition
+  
+</comment>
+    <requestid>865177</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:28:48 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.1.8
+ see installed CHANGELOG.md
+
+  ## Release v1.1.8 (20 January 2021)
+  
+  * (#885) Fix race condition in TVar for stale reads 
+  * (#884) RubyThreadLocalVar: Do not iterate over hash which might conflict with new pair addition
+  
+
+-------------------------------------------------------------------
 Sat Aug 22 12:55:44 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.1.7
