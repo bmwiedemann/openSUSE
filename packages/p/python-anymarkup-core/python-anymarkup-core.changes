@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Jan 20 16:02:14 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Suggests for optional dependencies
+- Remove unnecessary build dependency python-devel and tidy spec
+- Activate test suite
+
+-------------------------------------------------------------------
+Tue Dec  1 15:35:13 UTC 2020 - Marcus Schaefer <ms@suse.com>
+
+- version 0.8.1
+
+-------------------------------------------------------------------
+Tue Dec  1 15:07:21 UTC 2020 - Marcus Schaefer <ms@suse.com>
+
+- Initial submission for anymarkup core library jsc#SLE-16925
