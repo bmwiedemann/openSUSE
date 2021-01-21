@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Wed Jan 20 16:54:37 UTC 2021 - aloisio@gmx.com
+
+- Add haruna-0.5.0-Qt512_fix.patch
+
+-------------------------------------------------------------------
+Mon Jan 11 19:48:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.0
+  * Update about data
+  * Playback settings: remove unnecesary layout
+  * Refactor settings pages
+  * Add SettingsHeader component
+  * Settings: add option to toggle hardware decoding
+  * MpvObject: move code from eventHandler to connections
+  * Replace mpv_set_option_string with setProperty
+  * mpvopbject.cpp: use const container in tracks loop, clazy
+    range-loop
+  * qthelper: remove deprecated functions
+  * Emit signals when tracks change
+  * Refactor audio and subtitle tracks model into properties
+  * Remove unused code
+  * Add emit before dataChanged signal
+  * Settings: fix open config file and folder not working
+  * Settings: add help page for general settings
+  * Settings: check if the Breeze style is available,
+  * Settings: split useBreezeTheme in two settings,
+  * Save SkipChapters setting when changed from progress bar menu
+  * Add option to set file dialog location
+  * CMake: look for breeze, kirigami and qt5qml
+  * Fix breeze icon theme name
+  * Add option to use the breeze icon theme and GUI style
+  * Link against KIconThemes
+  * Fix video not playing when opened from playlist
+  * CMake: remove REQUIRED from find_package
+  * Use the new label component where appropriate
+  * Add custom label component
+
+-------------------------------------------------------------------
+Wed Dec  9 06:47:23 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.2
+  * Mouse Settings: use ListModel instead of array
+  * Fix mouse actions
+- Drop haruna-0.4.1-fix_mouse_actions.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Dec  8 14:42:45 UTC 2020 - aloisio@gmx.com
+
+- Add haruna-0.4.1-fix_mouse_actions.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 12:26:52 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.4.1
+  * Fix build on Qt 5.12
+  * Save last played file 
+  version 0.4.0:
+  * Change back to qmlRegisterSingletonType
+  * add some mimetypes and KDE file handlers (from mpv)
+  * Use KConfig to handle settings
+  * Fix crash when using the playPrevious action
+  * Settings: fix ComboBox delegate width
+  * Change back to Flickable for the help window 
+  * CMake: fix file paths
+  * Add license files for color scheme files
+  * CMake: fix target_include_directories paths
+  * CMake: add option to install color schemes
+  * CMake: use target_include_directories and update includes
+  * Rename Settings folder to settings
+  * CMake: use target_sources
+  * Playlist: highlight playing video
+  * Add option to switch between simple playlist items
+  * Add PlayListItemWithThumbnail component
+  * Add image provider for video thumbnails
+- Drop haruna-0.3.1-fix_crash_wih_Qt512.patch
+  and haruna-0.3.1-fix_version.patch (merged upstream)
+
+-------------------------------------------------------------------
+Fri Dec  4 17:10:39 UTC 2020 - aloisio@gmx.com
+
+- Add haruna-0.3.1-fix_crash_wih_Qt512.patch and
+  haruna-0.3.1-fix_version.patch
+
+-------------------------------------------------------------------
+Tue Dec  1 18:07:21 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.3.1
+  * Playlist: always hide horizontal scrollbar
+  * Add include for QPointer in application.cpp
+  * Fix includes in application.cpp 
+- Drop haruna-0.3.0-QPointer.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Dec  1 07:26:03 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.3.0
+  * Playlist: hide horizontal scrollbar
+  * Cleanup Application constructor
+  * Move code from main.cpp to application.cpp
+  * Move qml type registration, thread, about data and
+  * MPV: refactor loading file code
+  * MPV: make pause property writable
+  * Use ScrollView and TextArea for help pages
+  * Pass all metadata from worker to playlist model
+  * ProgressBar: Disable middle click when chapter markers are
+    hidden
+  * Add option to hide chapter markers
+  * Fix menu and header toggle actions breaking binding of
+    'visible' prop…
+  * Add help menu with about haruna action
+  * Add about action
+  * Use KAboutData setters for more clarity
+  * Remove feature_summary from src/CMakeLists.txt
+  * Upper case fusion style name
+  * Use mpv.command to load file from playlist
+  * Add setting to disable adding videos from same folder to
+    playlist
+  * Add clear method to playlist model
+  * Add playlistitem constructor and set its properties inside it
+  * Play next action jumps to first video if current video is
+  * Add setting to repeat playlist or stop after last video
+    finished
+  * Add watchPercentage property to mpv,
+- Add haruna-0.3.0-QPointer.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 10:16:02 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.2
+  * Fixed incompatibilities with Qt 5.12
+- Drop haruna-desktop.patch, haruna-qt512_1.patch and
+  haruna-qt512_2.patch
+
+-------------------------------------------------------------------
+Wed Oct 14 19:00:23 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v0.2.1)

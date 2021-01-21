@@ -1,0 +1,28 @@
+From 7911b658bb220589653e9e7549eacb4453f5b775 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?George=20Florea=20B=C4=83nu=C8=99?= <georgefb899@gmail.com>
+Date: Wed, 13 Jan 2021 02:19:22 +0200
+Subject: [PATCH] qthelper.h: fix build with Qt 5.12
+
+---
+ src/qthelper.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/qthelper.h b/src/qthelper.h
+index ebae47c..60456c4 100644
+--- a/src/qthelper.h
++++ b/src/qthelper.h
+@@ -160,12 +160,12 @@ struct node_builder {
+             list->num = qmap.size();
+             int n = 0;
+             for (auto it = qmap.constKeyValueBegin(); it != qmap.constKeyValueEnd(); ++it) {
+-                list->keys[n] = dup_qstring(it->first);
++                list->keys[n] = dup_qstring(it.operator*().first);
+                 if (!list->keys[n]) {
+                     free_node(dst);
+                     goto fail;
+                 }
+-                set(&list->values[n], it->second);
++                set(&list->values[n], it.operator*().second);
+                 ++n;
+             }
+         } else {
