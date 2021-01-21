@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 21 17:14:18 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Add 0001-use-after-free-fluidsynth.patch to prevent
+  fluidsynth >= 2.1.6 from crashing:
+  https://hg.libsdl.org/SDL_mixer/rev/b0afe341a91d
+
+-------------------------------------------------------------------
 Tue Sep 15 22:56:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Demote Recommends to Suggests.

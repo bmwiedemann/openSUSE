@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_mixer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            http://libsdl.org/projects/SDL_mixer/
 #Hg-Clone:	http://hg.libsdl.org/SDL_mixer/
 Source:         http://libsdl.org/projects/SDL_mixer/release/%name-%version.tar.gz
 Source1:        baselibs.conf
+Patch0:         0001-use-after-free-fluidsynth.patch
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(flac)
