@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-benchmark
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,22 +24,22 @@
 #
 
 Name:           rubygem-benchmark
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 %define mod_name benchmark
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/ruby/benchmark
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/ruby/benchmark
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 # MANUAL
-Patch0:  0001-Change-shebang-from-usr-bin-env-bash-to-usr-bin-bash.patch
+Patch0:         0001-Change-shebang-from-usr-bin-env-bash-to-usr-bin-bash.patch
 # /MANUAL
 Summary:        A performance benchmarking library
-License:        BSD-2-Clause
+License:        Ruby AND BSD-2-Clause
 Group:          Development/Languages/Ruby
 
 %description
@@ -60,7 +60,6 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
 # MANUAL
 find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml \) | xargs rm
 # /MANUAL
-
 
 %gem_packages
 
