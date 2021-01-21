@@ -1,0 +1,6 @@
+<package name="perl-Menlo" project="openSUSE:Factory">
+  <title>perl-Menlo - CPAN client</title>
+  <description>Menlo is a backend for _cpanm 2.0_, developed with the goal to replace cpanm internals with a set of modules that are more flexible, extensible and easier to use.
+</description>
+  <devel project="devel:languages:perl" package="perl-Menlo"/>
+</package>
