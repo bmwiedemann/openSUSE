@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sexp_processor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-sexp_processor
-Version:        4.15.1
+Version:        4.15.2
 Release:        0
 %define mod_name sexp_processor
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby < 3.1}
+BuildRequires:  %{ruby < 4}
 BuildRequires:  %{ruby >= 2.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
