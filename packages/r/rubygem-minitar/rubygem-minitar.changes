@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:07:34 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.9
+ see installed History.md
+
+  ## 0.9 / 2019-09-04
+  
+  *   jtappa added the ability to skip fsync with a new option to Minitar.unpack
+      and Minitar::Input#extract_entry. Provide `:fsync => false` as the last
+      parameter to enable. Merged from a modified version of PR [#37][].
+
+-------------------------------------------------------------------
+Mon Jan 14 13:46:03 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.8
+ see installed History.md
+
+  ## 0.8 / 2019-01-05
+  
+  *   inkstak resolved an issue introduced in the fix for [#31][] by allowing
+      spaces to be considered valid characters in strict octal handling. Octal
+      conversion ignores leading spaces. Merged from a slightly modified version
+      of PR [#35][].
+  
+  *   dearblue contributed PR [#32][] providing an explicit call to #bytesize for
+      strings that include multibyte characters. The PR has been modified to be
+      compatible with older versions of Ruby and extend tests.
+  
+  *   Akinori MUSHA (knu) contributed PR [#36][] that treats certain badly
+      encoded regular files (with names ending in `/`) as if they were
+      directories on decode.
+
+-------------------------------------------------------------------
+Thu Nov 22 05:21:32 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.7
+ see installed History.md
+
+  ## 0.7 / 2018-02-19
+  
+  *   Fixed issue [#28][] with a modified version of PR [#29][] covering the
+      security policy and position for Minitar. Thanks so much to ooooooo\_q for
+      the report and an initial patch. Additional information was added as
+      [#30][].
+  
+  *   dearblue contributed PR [#33][] providing a fix for Minitar::Reader when
+      the IO-like object does not have a `#pos` method.
+  
+  *   Kevin McDermott contributed PR [#34][] so that an InvalidTarStream is
+      raised if the tar header is not valid, preventing incorrect streaming of
+      files from a non-tarfile. This is a minor breaking change, so the version
+      has been bumped accordingly.
+  
+  *   Kazuyoshi Kato contributed PR [#26][] providing support for the GNU tar
+      long filename extension.
+  
+  *   Addressed a potential DOS with negative size fields in tar headers
+      ([#31][]). This has been handled in two ways: the size field in a tar
+      header is interpreted as a strict octal value and the Minitar reader will
+      raise an InvalidTarStream if the size ends up being negative anyway.
+
+-------------------------------------------------------------------
+Tue May 23 09:06:50 UTC 2017 - bgeuken@suse.com
+
+- Remove bsc_1021740.patch for CVE-2016-10173
+  This vulneribility has been fixed by upstream with v0.6.1:
+  https://github.com/halostatue/minitar/commit/30e62689b614938dc96b4f2cb8e033e72f650670 
+
+-------------------------------------------------------------------
+Tue Feb 14 05:36:26 UTC 2017 - coolo@suse.com
+
+- updated to version 0.6.1
+ ChangeLog removed upstream
+
+-------------------------------------------------------------------
 Fri Jan 27 17:40:36 UTC 2017 - jmassaguerpla@suse.com
 
 - fix CVE-2016-10173 (bsc#1021740): rubygem-minitar,

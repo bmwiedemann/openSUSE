@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-minitar
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,47 +24,39 @@
 #
 
 Name:           rubygem-minitar
-Version:        0.5.4
+Version:        0.9
 Release:        0
 %define mod_name minitar
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.8.2}
+BuildRequires:  %{ruby >= 1.8}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
-Url:            http://www.github.com/atoulme/minitar
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            https://github.com/halostatue/minitar/
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-# MANUAL
-Patch0:         bsc_1021740.patch
-# /MANUAL
-Summary:        Provides POSIX tarchive management from Ruby programs
+Summary:        The minitar library is a pure-Ruby library that provides the ability
 License:        Ruby
 Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
-Archive::Tar::Minitar is a pure-Ruby library and command-line utility that
-provides the ability to deal with POSIX tar(1) archive files. The
-implementation is based heavily on Mauricio Ferna'ndez's implementation in
-rpa-base, but has been reorganised to promote reuse in other projects. Antoine
-Toulme forked the original project on rubyforge to place it on github, under
-http://www.github.com/atoulme/minitar.
+The minitar library is a pure-Ruby library that provides the ability to deal
+with POSIX tar(1) archive files.
+This is release 0.9, adding a minor feature to Minitar.unpack and
+Minitar::Input#extract_entry that when <tt>:fsync => false</tt> is provided,
+fsync will be skipped.
+minitar (previously called Archive::Tar::Minitar) is based heavily on code
+originally written by Mauricio Julio Fernández Pradier for the rpa-base
+project.
 
 %prep
-%gem_unpack
-%patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{S:0}
-%gem_build
 
 %build
 
 %install
 %gem_install \
-  --symlink-binaries \
-  --doc-files="ChangeLog README" \
+  --doc-files="History.md Licence.md README.rdoc" \
   -f
 
 %gem_packages
