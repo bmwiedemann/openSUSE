@@ -237,4 +237,36 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838046</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0b924d8bb875991882fe88e49f1c502b</srcmd5>
+    <version>2.5.1</version>
+    <time>1611262548</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.5.1
+ see installed CHANGES.md
+  ## 2020-12-22 (2.5.1)
+  
+  * Restore the compatibility for constants of JSON class.
+  
+  ## 2020-12-22 (2.5.0)
+  
+  * Ready to Ractor-safe at Ruby 3.0.
+  
+  ## 2020-12-17 (2.4.1)
+  
+  * Restore version.rb with 2.4.1
+  
+  ## 2020-12-15 (2.4.0)
+  
+  * Implement a freeze: parser option #447
+  * Fix an issue with generate_pretty and empty objects in the Ruby and Java implementations #449
+  * Fix JSON.load_file doc #448
+  * Fix pure parser with unclosed arrays / objects #425
+  * bundle the LICENSE file in the gem #444
+  * Add an option to escape forward slash character #405
+  * RDoc for JSON #439 #446 #442 #434 #433 #430
+  
+</comment>
+    <requestid>865200</requestid>
+  </revision>
 </revisionlist>

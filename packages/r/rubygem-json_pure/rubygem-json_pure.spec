@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-json_pure
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json_pure
-Version:        2.3.1
+Version:        2.5.1
 Release:        0
 %define mod_name json_pure
 %define mod_full_name %{mod_name}-%{version}
