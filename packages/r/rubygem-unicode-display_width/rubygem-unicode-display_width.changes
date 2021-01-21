@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 20 13:32:28 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.0.0
+ see installed CHANGELOG.md
+
+  ## 2.0.0
+  
+  - Release 2.0.0
+  - Supports Ruby 3.0
+  
+  ## 2.0.0.pre2
+  
+  - Update 2.0 branch to Unicode 13
+  
+  ## 2.0.0.pre1
+  
+  Will be published as non-pre version on rubygems.org when Ruby 3.0 is released (December 2020)
+  
+  - Introduce new class-based API, which remembers your string-width configuration. See README for details.
+  - Remove auto-loading of string extension
+    - You can: `require "unicode/display_width/string_ext"` to continue to use the string extension
+    - The manual opt-out `require "unicode/display_width/no_string_ext"` is not needed anymore and will
+      issue a warning in the future
+  - Remove (already deprecated) String#display_size and String#display_width aliases
+  
+  Refactorings / Internal Changes:
+  
+  - Freeze string literals
+  - The Unicode::DisplayWidth now is class, instead of a module, this enables the new config-object API
+  
+
+-------------------------------------------------------------------
 Thu May  7 21:39:28 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 1.7.0
