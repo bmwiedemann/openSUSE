@@ -81,4 +81,20 @@
 </comment>
     <requestid>651608</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0faeb3bbe12223832ce081c898579dd9</srcmd5>
+    <version>4.2.0</version>
+    <time>1611262546</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 4.2.0
+  no changelog found
+updated to version 4.1.1
+  no changelog found
+- updated to version 4.0.0
+  no changelog found
+- updated to version 3.8.6
+  no changelog found
+</comment>
+    <requestid>865198</requestid>
+  </revision>
 </revisionlist>
