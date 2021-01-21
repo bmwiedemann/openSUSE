@@ -55,4 +55,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773848</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9b4c0271d71d796d6cd0450f54dbdd97</srcmd5>
+    <version>2.2.2</version>
+    <time>1611262581</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.2.2
+ see installed Changelog
+  2020-11-02 version 2.2.2:
+  
+  * Fix incomplete Windows support in spawn based multi worker
+  
+</comment>
+    <requestid>865228</requestid>
+  </revision>
 </revisionlist>
