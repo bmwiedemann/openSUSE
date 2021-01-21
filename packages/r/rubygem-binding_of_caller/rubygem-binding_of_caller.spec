@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-binding_of_caller
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,25 +24,30 @@
 #
 
 Name:           rubygem-binding_of_caller
-Version:        0.8.0
+Version:        1.0.0
 Release:        0
 %define mod_name binding_of_caller
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel}
+BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/banister/binding_of_caller
+URL:            https://github.com/banister/binding_of_caller
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-binding_of_caller-rpmlintrc
 Source2:        gem2rpm.yml
-Summary:        Retrieve the binding of a method's caller. Can also retrieve
+Summary:        Retrieve the binding of a method's caller, or further up the stack
 License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Retrieve the binding of a method's caller. Can also retrieve bindings even
-further up the stack.
+Provides the Binding#of_caller method.
+Using binding_of_caller we can grab bindings from higher up the call stack and
+evaluate code in that context.
+Allows access to bindings arbitrarily far up the call stack, not limited to
+just the immediate caller.
+Recommended for use only in debugging situations. Do not use this in
+production apps.
 
 %prep
 
@@ -52,7 +57,6 @@ further up the stack.
 %gem_install \
   --doc-files="HISTORY LICENSE README.md" \
   -f
-%gem_cleanup
 
 %gem_packages
 
