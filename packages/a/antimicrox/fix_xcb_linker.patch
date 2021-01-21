@@ -1,0 +1,11 @@
+diff -Nur antimicrox-3.1.4/CMakeLists.txt new/CMakeLists.txt
+--- antimicrox-3.1.4/CMakeLists.txt	2021-01-11 12:45:44.000000000 +0100
++++ new/CMakeLists.txt	2021-01-15 19:54:06.432525810 +0100
+@@ -456,6 +456,7 @@
+     if(WITH_X11)
+         LIST(APPEND X11_LIBS ${X11_X11_LIB})
+         LIST(APPEND X11_LIBS ${X11_Xi_LIB})
++        LIST(APPEND LIBS -lxcb)
+     endif(WITH_X11)
+ 
+     if(WITH_XTEST)

@@ -1,0 +1,12 @@
+diff -Nur antimicrox-3.1/src/aboutdialog.cpp new/src/aboutdialog.cpp
+--- antimicrox-3.1/src/aboutdialog.cpp	2020-09-09 17:47:09.000000000 +0200
++++ new/src/aboutdialog.cpp	2020-09-13 13:41:31.651883133 +0200
+@@ -60,7 +60,7 @@
+     QStringList finalInfoText = QStringList();
+ 
+     finalInfoText.append(tr("Program Version %1").arg(PadderCommon::programVersion));
+-    finalInfoText.append(tr("Program Compiled on %1 at %2").arg(__DATE__).arg(__TIME__));
++    // finalInfoText.append(tr("Program Compiled on %1 at %2").arg(__DATE__).arg(__TIME__));
+ 
+     QString sdlCompiledVersionNumber("%1.%2.%3");
+     QString sdlLinkedVersionNumber("%1.%2.%3");
