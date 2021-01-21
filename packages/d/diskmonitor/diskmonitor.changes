@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Jan 19 09:54:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace diskmonitor-installdirs.patch with
+  0001-Install-the-application-icon-in-the-right-directory.patch
+- Drop diskmonitor-desktop.patch
+
+-------------------------------------------------------------------
+Sun Aug 16 17:50:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.3.4
+  * Include Slovenian translation
+  * Document package installation
+  * Various fixes
+
+-------------------------------------------------------------------
+Mon May 27 11:44:55 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.3.3.
+  No changelog available
+
+-------------------------------------------------------------------
+Fri May 25 18:39:41 UTC 2018 - christophe@krop.fr
+
+- Update to 0.3.2.
+  * Fix compilation problem with KLocalizedString
+- Drop diskmonitor-underlinking.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sat Nov  5 18:19:37 UTC 2016 - asterios.dramis@gmail.com
+
+- Fix file list (add appdata.xml file) for Leap 42.2 and
+  openSUSE > 13.2. Added Source URL.
+
+-------------------------------------------------------------------
+Thu Dec 31 15:52:37 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Use cmake() for kf5 and qt5 BuildRequires.
+
+-------------------------------------------------------------------
+Wed Apr 08 10:22:27 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Initial package, version 0.3.1:
+  - Added patch diskmonitor-desktop.patch to fix categories in
+    desktop file and changed tag 'exec' to run diskmonitor as root
+    after prompting for the root password (required by udisks2).
+  - Added patch diskmonitor-installdirs.patch to fix install dirs.
+  - Added patch diskmonitor-underlinking.patch to link settings
+    against I18n.

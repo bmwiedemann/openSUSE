@@ -1,0 +1,24 @@
+From 121ffde065273508a63b34fe9633e324a245fdd3 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 19 Jan 2021 10:50:48 +0100
+Subject: [PATCH] Install the application icon in the right directory
+
+---
+ app/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/CMakeLists.txt b/app/CMakeLists.txt
+index 20afc5e..76ee819 100644
+--- a/app/CMakeLists.txt
++++ b/app/CMakeLists.txt
+@@ -35,6 +35,6 @@ target_link_libraries( diskmonitor
+ )
+ 
+ install(TARGETS diskmonitor ${INSTALL_TARGETS_DEFAULT_ARGS} )
+-install(FILES icon.svg RENAME diskmonitor.svg DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/" )
++install(FILES icon.svg RENAME diskmonitor.svg DESTINATION "${ICON_INSTALL_DIR}/hicolor/scalable/apps/" )
+ install(FILES diskmonitor.desktop DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications/" )
+ 
+-- 
+2.29.2
+

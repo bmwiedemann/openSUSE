@@ -1,0 +1,23 @@
+<package name="diskmonitor" project="openSUSE:Factory">
+  <title>Tools to monitor SMART devices and MDRaid health status</title>
+  <description>Tools to monitor SMART devices and MDRaid health status.
+Features a full application and a Plasma applet.
+
+Application:
+
+- Display S.M.A.R.T. attributes for harddrives supporting it.
+- Start and monitor progress of S.M.A.R.T. Short and Extended self test.
+- Display properties for MDRaid arrays.
+- Start and monitor progress of data scrubbing on MDRaid arrays.
+
+Applet:
+
+- Display basic health status for storage units.
+- Can be used on the desktop, on a panel or as a systray icon (see systray settings to activate).
+- Use KDE notification for health status change.
+- Highly configurable interface.
+
+</description>
+  <devel project="KDE:Extra" package="diskmonitor"/>
+  <url>https://github.com/papylhomme/diskmonitor</url>
+</package>
