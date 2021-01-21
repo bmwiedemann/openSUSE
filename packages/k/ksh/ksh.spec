@@ -1,7 +1,7 @@
 #
 # spec file for package ksh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  procps
 BuildRequires:  psmisc
-BuildRequires:  pwdutils
 BuildRequires:  zlib-devel
 %if %suse_version > 1020
 BuildRequires:  bind-libs
@@ -53,7 +52,7 @@ BuildRequires:  awk
 BuildRequires:  ed
 BuildRequires:  strace
 BuildRequires:  vim
-Url:            http://www.research.att.com/~gsf/download/
+URL:            http://www.research.att.com/~gsf/download/
 Requires(post): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
 Requires(postun): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
 %if %suse_version > 1120

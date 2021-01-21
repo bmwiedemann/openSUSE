@@ -1075,4 +1075,13 @@
     <comment>remove sys/sysctl.h include as it no longer exists in linux</comment>
     <requestid>848359</requestid>
   </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>a5514ec533613b019bd2ef8a4a9479b9</srcmd5>
+    <version>93vu</version>
+    <time>1611262663</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pwdutils buildrequires, it's not needed and pwdutils got
+  dropped many years ago (forwarded request 865455 from kukuk)</comment>
+    <requestid>865466</requestid>
+  </revision>
 </revisionlist>

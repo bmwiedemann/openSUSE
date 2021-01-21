@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 21 15:03:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- remove pwdutils buildrequires, it's not needed and pwdutils got
+  dropped many years ago
+
+-------------------------------------------------------------------
 Fri Nov 13 14:10:43 CET 2020 - mls@suse.de
 
 - remove sys/sysctl.h include as it no longer exists in linux
