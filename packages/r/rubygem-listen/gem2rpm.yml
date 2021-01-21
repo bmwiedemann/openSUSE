@@ -21,9 +21,11 @@
 # ## used by gem2rpm
 # :patches:
 #   foo.patch: -p1
-#   bar.patch: 
+#   bar.patch:
+# :post_patch:
+#   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
-:sources:
+# :sources:
 # - foo.desktop
 # - bar.desktop
 # :gem_install_args: '....'
@@ -54,7 +56,7 @@
 #   :filelist: |-
 #     /usr/bin/gem2rpm-opensuse
 # ## used by gem_packages
-# :custom:
+# :custom_pkgs:
 #   apache:
 #     :preamble: |-
 #       Requires: .....
@@ -67,4 +69,9 @@
 #       bar
 #     :post: |-
 #       /bin/echo foo
-#
+:disable_docs: true
+:preamble: |-
+    %if ! 0%{?suse_version} >= 1550
+    %define rb_build_versions     ruby26       ruby27
+    %define rb_build_ruby_abis    ruby:2.6.0   ruby:2.7.0
+    %endif

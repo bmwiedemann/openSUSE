@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-listen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,17 @@
 #
 
 Name:           rubygem-listen
-Version:        3.2.1
+Version:        3.4.1
 Release:        0
 %define mod_name listen
 %define mod_full_name %{mod_name}-%{version}
+# MANUAL
+%if ! 0%{?suse_version} >= 1550
+%define rb_build_versions     ruby26       ruby27
+%define rb_build_ruby_abis    ruby:2.6.0   ruby:2.7.0
+%endif
+# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby < 3}
-BuildRequires:  %{ruby => 2.2}
 BuildRequires:  %{ruby >= 2.2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -53,6 +57,7 @@ changes. Works everywhere!.
 
 %install
 %gem_install \
+  --no-rdoc --no-ri \
   --symlink-binaries \
   --doc-files="CHANGELOG.md LICENSE.txt README.md" \
   -f
