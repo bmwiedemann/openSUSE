@@ -7,4 +7,19 @@
     <comment>Dependency for rubygem-asciidoctor-pdf, which I'm planning to submit.</comment>
     <requestid>830100</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ec05845810d882da8c5649aae85b641</srcmd5>
+    <version>1.1.0</version>
+    <time>1611262511</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.1.0
+ see installed History.txt
+  === 1.1.0 / 2020-11-11
+  
+    * Make use of frozen_string_literal
+    * Update tests to use newer minitest syntax
+  
+</comment>
+    <requestid>865166</requestid>
+  </revision>
 </revisionlist>
