@@ -183,4 +183,60 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838080</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d708226318cc4cca7587cf5c1bb8a3dc</srcmd5>
+    <version>0.21.2</version>
+    <time>1611262577</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 0.21.2
+ see installed CHANGELOG.md
+  0.21.2 (2021-01-09)
+  ==========
+  
+  ## Bugfixes
+  * `maximum_coverage_drop` won't fail any more if `.last_run.json` is still in the old format. Thanks [@petertellgren](https://github.com/petertellgren)
+  * `maximum_coverage_drop` won't fail if an expectation is specified for a previous unrecorded criterion, it will just pass (there's nothing, so nothing to drop)
+  * fixed bug in `maximum_coverage_drop` calculation that could falsely report it had dropped for minimal differences
+  
+  0.21.1 (2021-01-04)
+  ==========
+  
+  ## Bugfixes
+  * `minimum_coverage_by_file` works again as expected (errored out before 😱)
+  
+  0.21.0 (2021-01-03)
+  ==========
+  
+  The &quot;Collate++&quot; release making it more viable for big CI setups by limiting memory consumption. Also includes some nice new additions for branch coverage settings.
+  
+  ## Enhancements
+  * Performance of `SimpleCov.collate` improved - it should both run faster and consume much less memory esp. when run with many files (memory consumption should not increase with number of files any more)
+  * Can now define the minimum_coverage_by_file, maximum_coverage_drop and refuse_coverage_drop by branch as well as line coverage. Thanks to [@jemmaissroff](https://github.com/jemmaissroff)
+  * Can set primary coverage to something other than line by setting `primary_coverage :branch` in SimpleCov Configuration. Thanks to [@jemmaissroff](https://github.com/jemmaissroff)
+  
+  ## Misc
+  * reduce gem size by splitting Changelog into `Changelog.md` and a pre 0.18 `Changelog.old.md`, the latter of which is not included in the gem
+  * The interface of `ResultMeger.merge_and_store` is changed to support the `collate` performance improvements mentioned above. It's not considered an official API, hence this is not in the breaking section. For people using it to merge results from different machines, it's recommended to migrate to [collate](https://github.com/simplecov-ruby/simplecov#merging-test-runs-under-different-execution-environments).
+  
+  0.20.0 (2020-11-29)
+  ==========
+  
+  The &quot;JSON formatter&quot; release. Starting now a JSON formatter is included by default in the release. This is mostly done for Code Climate reasons, you can find more details [in this issue](https://github.com/codeclimate/test-reporter/issues/413).
+  Shipping with so much by default is sub-optimal, we know. It's the long term plan to also provide `simplecov-core` without the HTML or JSON formatters for those who don't need them/for other formatters to rely on.
+  
+  ## Enhancements
+  * `simplecov_json_formatter` included by default ([docs](https://github.com/simplecov-ruby/simplecov#json-formatter)), this should enable the Code Climate test reporter to work again once it's updated
+  * invalidate internal cache after switching `SimpleCov.root`, should help with some bugs
+  
+  0.19.1 (2020-10-25)
+  ==========
+  
+  ## Bugfixes
+  
+  * No more warnings triggered by `enable_for_subprocesses`. Thanks to [@mame](https://github.com/mame)
+  * Avoid trying to patch `Process.fork` when it isn't available. Thanks to [@MSP-Greg](https://github.com/MSP-Greg)
+  
+</comment>
+    <requestid>865225</requestid>
+  </revision>
 </revisionlist>
