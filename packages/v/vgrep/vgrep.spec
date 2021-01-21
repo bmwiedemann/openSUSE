@@ -1,7 +1,7 @@
 #
 # spec file for package vgrep
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Project name when using go tooling.
 %define project github.com/vrothberg/vgrep
 Name:           vgrep
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Frontend for git-grep and grep
 License:        GPL-3.0-only
@@ -42,7 +42,7 @@ statistics of files and directory trees or showing the context lines before and
 after the matches.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 
@@ -64,6 +64,7 @@ install -D -m 0755 $HOME/go/src/%{project}/build/%{name} "%{buildroot}/%{_bindir
 %fdupes %{buildroot}/%{_prefix}
 
 %files
+%license LICENSE
 %{_bindir}/%{name}
 
 %changelog

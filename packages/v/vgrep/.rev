@@ -60,4 +60,19 @@
     <comment></comment>
     <requestid>831050</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fed830a747cae40cddcd4957267a8e69</srcmd5>
+    <version>2.5.1</version>
+    <time>1611262613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.1:
+  * vgrep [no grep args]: print matches
+  * Makefile: fix install targets
+- Changes for version 2.5.0:
+  * New vgrep(1) man page
+  * Support vgrep -{A,B,C}
+  * Goland support
+  * Smaller bug fixes</comment>
+    <requestid>865246</requestid>
+  </revision>
 </revisionlist>

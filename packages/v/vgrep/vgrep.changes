@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 21 08:02:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.1:
+  * vgrep [no grep args]: print matches
+  * Makefile: fix install targets
+- Changes for version 2.5.0:
+  * New vgrep(1) man page
+  * Support vgrep -{A,B,C}
+  * Goland support
+  * Smaller bug fixes
+
+-------------------------------------------------------------------
 Mon Aug 31 20:55:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.4.0:
