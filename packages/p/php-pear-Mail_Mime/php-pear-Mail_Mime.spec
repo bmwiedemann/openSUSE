@@ -1,7 +1,7 @@
 #
 # spec file for package php-pear-Mail_Mime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pear_name  Mail_Mime
 
 Name:           php-pear-Mail_Mime
-Version:        1.10.9
+Version:        1.10.10
 Release:        0
 Summary:        PHP classes to create MIME messages
 License:        BSD-3-Clause

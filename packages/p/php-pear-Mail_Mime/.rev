@@ -42,4 +42,16 @@
   * Added a workaround for an opcache bug on OpenSuse 15.1</comment>
     <requestid>817554</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc235b6a6408a4efb97ff2e50c498565</srcmd5>
+    <version>1.10.10</version>
+    <time>1611262610</time>
+    <user>dimstar_suse</user>
+    <comment>- new upstream release 1.10.10
+  * Compatibility fixes for PHP 5.2 and 5.3
+  * Corrected soft line breaks handling to be RFC compliant
+  * Corrected line breaks for lines ending in dots and length more
+    than 74</comment>
+    <requestid>865076</requestid>
+  </revision>
 </revisionlist>
