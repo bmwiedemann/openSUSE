@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Gtk3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,31 @@
 #
 
 
-Name:           perl-Gtk3
-Version:        0.037
-Release:        0
 %define cpan_name Gtk3
+Name:           perl-Gtk3
+Version:        0.038
+Release:        0
 Summary:        Perl interface to the 3.x series of the gtk+ toolkit
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Cairo::GObject) >= 1.000
 BuildRequires:  perl(Glib::Object::Introspection) >= 0.043
 BuildRequires:  perl(Test::Simple) >= 0.96
+Requires:       perl(Cairo::GObject) >= 1.000
+Requires:       perl(Glib::Object::Introspection) >= 0.043
+Requires:       perl(Test::Simple) >= 0.96
+%{perl_requires}
+# MANUAL BEGIN
 BuildRequires:  typelib(Gtk) = 3.0
 %if 0%{?sle_version} >= 150200 && 0%{?is_opensuse} || 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 BuildRequires:  typelib(GdkPixdata) = 2.0
 %endif
-Requires:       perl(Cairo::GObject) >= 1.000
-Requires:       perl(Glib::Object::Introspection) >= 0.043
-Requires:       perl(Test::Simple) >= 0.96
-BuildArch:      noarch
-%{perl_requires}
+# MANUAL END
 
 %description
 The 'Gtk3' module allows a Perl developer to use the gtk+ graphical user
@@ -57,11 +58,11 @@ displays the API reference documentation of all installed libraries
 organized in accordance with these principles.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
