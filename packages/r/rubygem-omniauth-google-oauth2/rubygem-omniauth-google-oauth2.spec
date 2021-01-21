@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-omniauth-google-oauth2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-omniauth-google-oauth2
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 %define mod_name omniauth-google-oauth2
 %define mod_full_name %{mod_name}-%{version}

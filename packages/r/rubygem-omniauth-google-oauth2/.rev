@@ -55,4 +55,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773827</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b72da7412edfcc45f9f1cdf910c2f5bc</srcmd5>
+    <version>0.8.1</version>
+    <time>1611262590</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 0.8.1
+ see installed CHANGELOG.md
+  ## 0.8.1 - 2020-12-12
+  
+  ### Added
+  - Support reading the access token from a json request body.
+  
+  ### Deprecated
+  - Nothing.
+  
+  ### Removed
+  - No longer verify the iat claim for JWT.
+  
+  ### Fixed
+  - A few minor issues with .rubocop.yml.
+  
+</comment>
+    <requestid>865240</requestid>
+  </revision>
 </revisionlist>
