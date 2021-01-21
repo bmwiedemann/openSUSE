@@ -1,7 +1,7 @@
 #
 # spec file for package python-IMDbPY
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy
 Requires:       python-lxml
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -58,21 +60,28 @@ copy of the whole database.
 %python_expand rm %{buildroot}/%{$python_sitelib}/imdb/locale/*.py
 %python_expand rm -rf %{buildroot}/%{$python_sitelib}/imdb/locale/__pycache__/
 %python_expand rm %{buildroot}/%{$python_sitelib}/imdb/locale/*.po
+%python_clone -a %{buildroot}%{_bindir}/imdbpy
+
+%post
+%python_install_alternative imdbpy
+
+%postun
+%python_uninstall_alternative imdbpy
 
 %files %{python_files}
 %doc README.rst docs/Changelog.rst
 %license docs/GPL.txt docs/LICENSE.txt
-%{_bindir}/imdbpy
+%python_alternative %{_bindir}/imdbpy
 %{python_sitelib}/IMDbPY-%{version}-py%{python_version}.egg-info
 %{python_sitelib}/imdb
-%lang(ar) %{python3_sitelib}/imdb/locale/ar/LC_MESSAGES/imdbpy.mo
-%lang(bg) %{python3_sitelib}/imdb/locale/bg/LC_MESSAGES/imdbpy.mo
-%lang(de) %{python3_sitelib}/imdb/locale/de/LC_MESSAGES/imdbpy.mo
-%lang(en) %{python3_sitelib}/imdb/locale/en/LC_MESSAGES/imdbpy.mo
-%lang(es) %{python3_sitelib}/imdb/locale/es/LC_MESSAGES/imdbpy.mo
-%lang(fr) %{python3_sitelib}/imdb/locale/fr/LC_MESSAGES/imdbpy.mo
-%lang(it) %{python3_sitelib}/imdb/locale/it/LC_MESSAGES/imdbpy.mo
-%lang(pt_BR) %{python3_sitelib}/imdb/locale/pt_BR/LC_MESSAGES/imdbpy.mo
-%lang(tr) %{python3_sitelib}/imdb/locale/tr/LC_MESSAGES/imdbpy.mo
+%lang(ar) %{python_sitelib}/imdb/locale/ar/LC_MESSAGES/imdbpy.mo
+%lang(bg) %{python_sitelib}/imdb/locale/bg/LC_MESSAGES/imdbpy.mo
+%lang(de) %{python_sitelib}/imdb/locale/de/LC_MESSAGES/imdbpy.mo
+%lang(en) %{python_sitelib}/imdb/locale/en/LC_MESSAGES/imdbpy.mo
+%lang(es) %{python_sitelib}/imdb/locale/es/LC_MESSAGES/imdbpy.mo
+%lang(fr) %{python_sitelib}/imdb/locale/fr/LC_MESSAGES/imdbpy.mo
+%lang(it) %{python_sitelib}/imdb/locale/it/LC_MESSAGES/imdbpy.mo
+%lang(pt_BR) %{python_sitelib}/imdb/locale/pt_BR/LC_MESSAGES/imdbpy.mo
+%lang(tr) %{python_sitelib}/imdb/locale/tr/LC_MESSAGES/imdbpy.mo
 
 %changelog

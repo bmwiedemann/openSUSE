@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>720173</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2b1b7b519d152a2e23a848af9fedfdaf</srcmd5>
+    <version>6.8</version>
+    <time>1611262495</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_alternative for imdbpy script, correct where we install the
+  language mo files from.</comment>
+    <requestid>865106</requestid>
+  </revision>
 </revisionlist>
