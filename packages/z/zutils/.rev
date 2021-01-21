@@ -66,4 +66,16 @@
     <comment></comment>
     <requestid>827493</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>495a3f55f0886c61e23a901f84521500</srcmd5>
+    <version>1.10</version>
+    <time>1611262625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10:
+  * zdiff.cc (set_fifonames): Encode pid in little endian order.
+  * zupdate.cc (zupdate_file): Fix a portability issue with Solaris 10.
+  * zutils.texi: Document that 'zgrep -L' fails with GNU grep 3.2 to 3.4.
+  * check.sh: Test empty input files with all tools except zupdate.</comment>
+    <requestid>865314</requestid>
+  </revision>
 </revisionlist>

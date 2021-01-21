@@ -1,7 +1,7 @@
 #
 # spec file for package zutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zutils
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Collection of utilities for dealing with compressed files
 License:        GPL-2.0-or-later
@@ -52,6 +52,9 @@ in those utilities supporting it.
 
 %install
 %make_install
+
+%check
+%make_build check
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
