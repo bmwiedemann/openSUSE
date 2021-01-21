@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rice
-Version:        2.2.0
+Version:        3.0.0
 Release:        0
 %define mod_name rice
 %define mod_full_name %{mod_name}-%{version}

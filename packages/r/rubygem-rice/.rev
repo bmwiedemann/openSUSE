@@ -48,4 +48,13 @@
 - Make build work with ruby2.7</comment>
     <requestid>805021</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>20f4151076c7e5717d3fb3f4ec6e0703</srcmd5>
+    <version>3.0.0</version>
+    <time>1611262494</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.0.0
+  no changelog found</comment>
+    <requestid>865104</requestid>
+  </revision>
 </revisionlist>
