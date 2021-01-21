@@ -274,4 +274,23 @@
     <comment></comment>
     <requestid>847735</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>44856ea9d29645b515a2b0046a84ceae</srcmd5>
+    <version>1.2.9</version>
+    <time>1611262570</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.2.9
+ see installed CHANGES.md
+  Version 1.2.9 - 16-Dec-2020
+  ---------------------------
+  
+  * Fixed an incorrect InvalidTimezoneIdentifier exception raised when loading a
+    zoneinfo file that includes rules specifying an additional transition to the
+    final defined offset (for example, Africa/Casablanca in version 2018e of the
+    Time Zone Database). #123.
+  
+  
+</comment>
+    <requestid>865219</requestid>
+  </revision>
 </revisionlist>

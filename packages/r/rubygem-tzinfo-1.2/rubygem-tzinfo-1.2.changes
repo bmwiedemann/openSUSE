@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 20 13:31:51 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.2.9
+ see installed CHANGES.md
+
+  Version 1.2.9 - 16-Dec-2020
+  ---------------------------
+  
+  * Fixed an incorrect InvalidTimezoneIdentifier exception raised when loading a
+    zoneinfo file that includes rules specifying an additional transition to the
+    final defined offset (for example, Africa/Casablanca in version 2018e of the
+    Time Zone Database). #123.
+  
+  
+
+-------------------------------------------------------------------
 Wed Nov 11 08:54:29 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.2.8
