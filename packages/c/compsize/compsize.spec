@@ -1,7 +1,7 @@
 #
 # spec file for package compsize
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           compsize
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Utility for measuring compression ratio of files on btrfs
 License:        GPL-2.0-or-later

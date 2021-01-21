@@ -19,4 +19,13 @@ Requested here: https://lists.opensuse.org/opensuse-factory/2018-10/msg00229.htm
   * No changelog provided.</comment>
     <requestid>680767</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>015a7fc9ced74f457c8bd0e0f09f50b6</srcmd5>
+    <version>1.4</version>
+    <time>1611262474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4:
+  * No changelog provided.</comment>
+    <requestid>865063</requestid>
+  </revision>
 </revisionlist>
