@@ -20,15 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-photutils
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM photutils-ease-background2d-tests.patch -- work around gh#astropy/photutils#1145
-Patch0:         photutils-ease-background2d-tests.patch
 BuildRequires:  %{python_module Cython >= 0.29.14}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module extension-helpers}
