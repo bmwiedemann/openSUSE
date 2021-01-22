@@ -95,4 +95,14 @@
     <comment></comment>
     <requestid>859109</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2b1652932334a47df7ea8e2e20c07047</srcmd5>
+    <version>0.8.4</version>
+    <time>1611348733</time>
+    <user>dimstar_suse</user>
+    <comment>------------------------------------------------------------------
+- Skip python36 because of scipy 1.6.0
+</comment>
+    <requestid>865527</requestid>
+  </revision>
 </revisionlist>

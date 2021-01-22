@@ -1,3 +1,8 @@
+------------------------------------------------------------------
+Thu Jan 21 23:09:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 because of scipy 1.6.0
+
 -------------------------------------------------------------------
 Mon Dec 28 20:31:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 

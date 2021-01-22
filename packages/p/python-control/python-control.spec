@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# SciPy 1.6.0 dropped Python 3.6 
+%define skip_python36 1
 Name:           python-control
 Version:        0.8.4
 Release:        0
