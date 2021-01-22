@@ -177,4 +177,23 @@
   * Remove ready directory which created in empty volumeMounter setUp func</comment>
     <requestid>860455</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e46590ebaec749d51abe65fa153eef00</srcmd5>
+    <version>1.19.7</version>
+    <time>1611348598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.7:
+  * use default unkown sock for kubeadm cmd if cri detect is not needed
+  * cherry-pick part of #97451: fix nodeport quota check failure during creating clusterip
+  * Release reserved GCE IP address after ensure completes.
+  * Ensure reproducible builds when build through docker
+  * Fix cadvisor machine metrics
+  * Create OWNERS for most of the API Priority and Fairness impl
+  * Fix bug in CPUManager with race on map acccess
+  * fix azure file secret not found issue
+  * fix: azure file latency issue for metadata-heavy workload
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.6
+  * Add more logging for Mount error</comment>
+    <requestid>865039</requestid>
+  </revision>
 </revisionlist>
