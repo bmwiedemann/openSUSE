@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 10:18:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.3
+  * Declarations with bit-field widths are now supported.
+
+-------------------------------------------------------------------
 Wed Jan 13 09:04:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.2
