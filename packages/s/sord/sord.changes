@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 19 22:16:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.8:
+  * Clean up code
+  * Fix potential undefined behavior
+  * Fix potentially incorrect search results
+  * Remove the need for a generated configuration header
+
+-------------------------------------------------------------------
 Wed Jan  6 12:46:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.6:

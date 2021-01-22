@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           sord
-Version:        0.16.6
+Version:        0.16.8
 Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
