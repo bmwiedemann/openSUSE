@@ -232,4 +232,13 @@
     <comment></comment>
     <requestid>837913</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>17a7f68fbb3878aa0ece5d7c28deb319</srcmd5>
+    <version>3.8.4</version>
+    <time>1611348718</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov
+</comment>
+    <requestid>865324</requestid>
+  </revision>
 </revisionlist>

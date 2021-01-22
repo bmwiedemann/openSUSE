@@ -1,7 +1,7 @@
 #
 # spec file for package kid3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,16 @@
 #
 
 
+# Internal QML imports
+%global __requires_exclude qmlimport\\(Kid3.*
+
 Name:           kid3
 Version:        3.8.4
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            https://kid3.kde.org/
+URL:            https://kid3.kde.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 BuildRequires:  hicolor-icon-theme
