@@ -3,8 +3,9 @@ Extra Tools for darktable
 You will find darktable specific extra programs/scripts under the tools
 directory.
 
-Use this these tools on your own risk. In case of any bugs of these
-tools please report them to the upstream darktable project.
+Use these tools on your own risk. In case of any bugs of these
+tools please report them to the upstream darktable project on github
+(https://github.com/darktable-org/darktable/issues).
 
 tools/create_control_svg.sh
 tools/purge_non_existing_images.sh

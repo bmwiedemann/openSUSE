@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 12:59:25 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Added libgmic to build dependencies on Debian/Ubuntu
+- Fixed typo in README.openSUSE
+
+-------------------------------------------------------------------
 Mon Jan  4 15:34:46 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Added d10c290fb3b47bbc8fd90d6d1d7935b900c1caf6.patch
