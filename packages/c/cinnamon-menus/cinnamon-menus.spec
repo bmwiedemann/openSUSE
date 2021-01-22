@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-menus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define soname  libcinnamon-menu-3
 %define sover   0
 Name:           cinnamon-menus
-Version:        4.8.1
+Version:        4.8.2
 Release:        0
 Summary:        A menu system for the Cinnamon Desktop
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/linuxmint/cinnamon-menus
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/linuxmint/cinnamon-menus/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
