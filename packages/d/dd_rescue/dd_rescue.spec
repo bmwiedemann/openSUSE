@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rescue
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%ifarch aarch64 %arm
+%ifarch aarch64 %{arm}
 # boo#1176219
 %define _lto_cflags %{nil}
 %endif
-
 Name:           dd_rescue
 Version:        1.99.8
 Release:        0
@@ -39,10 +38,9 @@ Patch4:         ddr_1998-testhole.diff
 Patch5:         ddr_1998-ossl11-warn.diff
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  lzo-devel
-%if 0%{?suse_version} >= 1200
 BuildRequires:  lzop
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python
 Requires:       bc
@@ -53,9 +51,6 @@ Recommends:     libfallocate0
 # ddrescue was last used in openSUSE 11.4 (version 1.14_0.0.6)
 Provides:       ddrescue = %{version}
 Obsoletes:      ddrescue < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  libopenssl-devel
 
 %description
 dd_rescue helps when nothing else can: your disk has crashed and you
@@ -137,7 +132,7 @@ autoconf
 %configure
 # avoid running dependency generation step
 touch .dep
-make RPM_OPT_FLAGS="%{optflags}" LIBDIR=%{_libdir} LIB=%{_lib} %{?_smp_mflags}
+%make_build RPM_OPT_FLAGS="%{optflags}" LIBDIR=%{_libdir} LIB=%{_lib}
 
 %install
 %make_install RPM_OPT_FLAGS="%{optflags}" INSTALLDIR=%{buildroot}/%{_bindir} LIB=%{_lib} LIBDIR=%{_libdir} \
@@ -149,10 +144,9 @@ ln -sf %{_bindir}/dd_rescue %{buildroot}/bin
 %endif
 
 %check
-make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fcommon" check
+%make_build RPM_OPT_FLAGS="%{optflags} -fcommon" check
 
 %files
-%defattr(-,root,root,-)
 %doc README.dd_rescue TODO
 %license COPYING
 %{_bindir}/dd_rescue
@@ -162,17 +156,15 @@ make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fcommon" check
 %{_libdir}/libddr_hash.so
 %{_libdir}/libddr_MD5.so
 %{_libdir}/libddr_null.so
-%{_mandir}/man1/dd_rescue.1%{ext_man}
+%{_mandir}/man1/dd_rescue.1%{?ext_man}
 
 %files crypt
-%defattr(-,root,root)
-%{_mandir}/man1/ddr_crypt.1%{ext_man}
+%{_mandir}/man1/ddr_crypt.1%{?ext_man}
 %{_libdir}/libddr_crypt.so
 
 %files lzo
-%defattr(-,root,root,-)
 %{_libdir}/libddr_lzo.so
-%{_mandir}/man1/ddr_lzo.1%{ext_man}
+%{_mandir}/man1/ddr_lzo.1%{?ext_man}
 %doc CRYPT_TODO PADDING
 
 %changelog
