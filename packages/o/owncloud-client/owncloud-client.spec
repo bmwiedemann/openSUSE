@@ -221,7 +221,7 @@ echo suse_version   0%{?suse_version}
   -DCMAKE_SKIP_RPATH=OFF \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
   -DLIB_SUFFIX=64 \
 %endif
 %if %{has_branding}
