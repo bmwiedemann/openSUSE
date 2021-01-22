@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 19:50:35 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Remove BuildRequires:php7-json (don't need in php7, but in php8 work in core).
+
+-------------------------------------------------------------------
 Thu Oct 22 07:21:48 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 5.3.2

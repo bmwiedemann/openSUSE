@@ -1,7 +1,7 @@
 #
 # spec file for package php7-redis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ URL:            https://pecl.php.net/package/%{pkg_name}
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        %{pkg_name}.ini
 BuildRequires:  %{php_name}-devel
-BuildRequires:  %{php_name}-json
 BuildRequires:  re2c
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
@@ -52,7 +51,7 @@ export CFLAGS="%{optflags} -fvisibility=hidden"
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/%{php_name}/conf.d
-install -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
+install -pm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
 
 %files
 %license COPYING
