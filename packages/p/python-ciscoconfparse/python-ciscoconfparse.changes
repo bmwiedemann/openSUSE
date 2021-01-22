@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan 22 15:01:09 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 1.5.24
+  * Fix Github Issue #178
+- Changes for 1.5.23
+  *  Prevent find_object_branches() from using None
+- Changes for 1.5.22
+  * Fix Github issue #186 (replace variables named input)
+- Changes for 1.5.21
+  * Fix Github issue #187
+- Changes for 1.5.20
+  * Fix Github issue #185
+- Changes for 1.5.19
+  * Add __ne__() support to IPv4Obj and IPv6Obj
+- Changes for 1.5.18
+  * Fix Github issue #180 - IPv4Obj() and IPv6Obj() cannot 
+    use logical compare ops with certain Python objects
+- Changes for 1.5.17
+  * Fix Python 2.7 packaging
+- Changes for 1.5.7
+  * Revise IPv4Obj & IPv6Obj __lt__(), __gt__(), and 
+    __contains__() methods (impacts sorting behavior); 
+    reformatted documentation to latest numpydoc format.  
+    Add version number as json data instead of raw text...
+- Add remove-mock.patch -- gh#mpenning/ciscoconfparse#194
+- Add test-lists.patch -- gh#mpenning/ciscoconfparse#195
+
+-------------------------------------------------------------------
 Sun Jun 28 09:41:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.6
