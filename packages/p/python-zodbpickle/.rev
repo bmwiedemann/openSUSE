@@ -44,4 +44,12 @@
     <comment></comment>
     <requestid>782902</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e3195dda468fad8622fb0c25c5d686e6</srcmd5>
+    <version>2.0.0</version>
+    <time>1611348736</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_module macro for BuildRequires on the testsuite module</comment>
+    <requestid>865548</requestid>
+  </revision>
 </revisionlist>

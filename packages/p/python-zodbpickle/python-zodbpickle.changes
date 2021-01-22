@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 05:49:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python_module macro for BuildRequires on the testsuite module 
+
+-------------------------------------------------------------------
 Mon Mar  9 10:35:56 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.0.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-zodbpickle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@ URL:            https://pypi.python.org/pypi/zodbpickle
 Source:         https://files.pythonhosted.org/packages/source/z/zodbpickle/zodbpickle-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-testsuite
 %python_subpackages
 
 %description
