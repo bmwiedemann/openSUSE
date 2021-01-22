@@ -179,4 +179,12 @@
   Based on a patch from Jonathan Kamens</comment>
     <requestid>862665</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d7dfb0551cf852ecd5c16f00b93a4afb</srcmd5>
+    <version>3.3.5</version>
+    <time>1611348746</time>
+    <user>dimstar_suse</user>
+    <comment>update to remind 3.3.5</comment>
+    <requestid>865666</requestid>
+  </revision>
 </revisionlist>
