@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jan 22 06:24:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-15.0.2+7 (January 2021 CPU,
+  bsc#1181239)
+  * Security fixes
+    + JDK-8247619: Improve Direct Buffering of Characters
+  * Other changes
+    + JDK-8197981: Missing return statement in
+      __sync_val_compare_and_swap_8
+    + JDK-8233624: Enhance JNI linkage
+    + JDK-8236196: Improve string pooling
+    + JDK-8236862: Enhance support of Proxy class
+    + JDK-8239105: Add exception for expiring Digicert root
+      certificates to VerifyCACerts test
+    + JDK-8247741: Test test/hotspot/jtreg/runtime/7162488/
+      /TestUnrecognizedVmOption.java fails when
+      -XX:+IgnoreUnrecognizedVMOptions is set
+    + JDK-8248411: [aarch64] Insufficient error handling when
+    CodeBuffer is exhausted
+    + JDK-8248596: [TESTBUG] compiler/loopopts/
+    /PartialPeelingUnswitch.java times out with Graal enabled
+    + JDK-8248667: Need support for building native libraries
+      located in the test/lib directory
+    + JDK-8248745: Add jarsigner and keytool tests for restricted
+    algorithms
+    + JDK-8249176: Update GlobalSignR6CA test certificates
+    + JDK-8249192: MonitorInfo stores raw oops across safepoints
+    + JDK-8249217: Unexpected StackOverflowError in "process reaper"
+      thread still happens
+    + JDK-8249781: AArch64: AOT compiled code crashes if C2
+      allocates r27
+    + JDK-8249927: Specify limits of jdk.serialProxyInterfaceLimit
+    + JDK-8250257: Bump release strings for JDK 15.0.2
+    + JDK-8250861: Crash in MinINode::Ideal(PhaseGVN*, bool)
+    + JDK-8251397: NPE on ClassValue.ClassValueMap.cacheArray
+    + JDK-8251859: sun/security/validator/
+      /PKIXValAndRevCheckTests.java fails
+    + JDK-8253019: Enhanced JPEG decoding
+    + JDK-8253191: C2: Masked byte comparisons with large masks
+      produce wrong result on x86
+    + JDK-8253375: OSX build fails with Xcode 12.0 (12A7209)
+    + JDK-8253566: clazz.isAssignableFrom will return false for
+      interface implementors
+    + JDK-8253756: C2 CompilerThread0 crash in Node::add_req(Node*)
+    + JDK-8253791: Issue with useAppleColor check in CSystemColors.m
+    + JDK-8253960: Memory leak in
+      Java_java_lang_ClassLoader_defineClass0()
+    + JDK-8254081: java/security/cert/PolicyNode/
+      /GetPolicyQualifiers.java fails due to an expired certificate
+    + JDK-8254166: Zero: return-type warning in
+      zeroInterpreter_zero.cpp
+    + JDK-8254319: Shenandoah: Interpreter native-LRB needs to
+      activate during HAS_FORWARDED
+    + JDK-8254320: Shenandoah: C2 native LRB should activate for
+      non-cset objects
+    + JDK-8254790: SIGSEGV in string_indexof_char and
+      stringL_indexof_char intrinsics
+    + JDK-8254854: [cgroups v1] Metric limits not properly detected
+      on some join controller combinations
+    + JDK-8254982: (tz) Upgrade time-zone data to tzdata2020c
+    + JDK-8255065: Zero: accessor_entry misses the IRIW case
+    + JDK-8255067: Restore Copyright line in file modified by
+      8253191
+    + JDK-8255226: (tz) Upgrade time-zone data to tzdata2020d
+    + JDK-8255599: Change jdk 15.0.2 milestone to fcs for build b04
+    + JDK-8255603: Memory/Performance regression after JDK-8210985
+    + JDK-8256051: nmethod_entry_barrier stub miscalculates xmm
+      spill size on x86_32
+    + JDK-8256427: Test com/sun/jndi/dns/ConfigTests/
+      /PortUnreachable.java does not work on AIX
+    + JDK-8256618: Zero: Linux x86_32 build still fails
+    + JDK-8257181: s390x builds are very noisy with gc-sections
+      messages
+    + JDK-8257641: Shenandoah: Query is_at_shenandoah_safepoint()
+      from control thread should return false
+    + JDK-8257701: Shenandoah: objArrayKlass metadata is not marked
+      with chunked arrays
+- Regenerated patch: missing-return.patch
+
+-------------------------------------------------------------------
 Wed Nov 25 17:39:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-15.0.1+9 (October 2020 CPU,

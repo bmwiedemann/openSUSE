@@ -15,4 +15,12 @@
     <comment>ZGC is built on supported archs by default</comment>
     <requestid>852046</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84b7d36ab22a963c7307b6df6b9c8b72</srcmd5>
+    <version>15.0.2.0</version>
+    <time>1611348737</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle January 2021 CPU</comment>
+    <requestid>865582</requestid>
+  </revision>
 </revisionlist>

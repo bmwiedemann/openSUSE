@@ -1,7 +1,7 @@
 #
 # spec file for package java-15-openjdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      15
 %global interimver      0
-%global updatever       1
+%global updatever       2
 %global patchver        0
-%global datever         2020-10-20
-%global buildver        9
+%global datever         2021-01-19
+%global buildver        7
 %global hg_project      jdk-updates
 %global hg_repository   jdk15u
-%global hg_revision     d9b7c0759310
+%global hg_revision     38912b2a5bcb
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -116,12 +116,12 @@
 %endif
 %global with_pulseaudio 1
 %bcond_with zero
+%bcond_with aot
 %if ! %{with zero}
 %ifarch x86_64 %{aarch64}
 %global _with_aot 1
 %endif
 %endif
-%bcond_with aot
 %if ! %{with zero}
 %global with_systemtap 1
 %else
@@ -149,7 +149,7 @@ Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
-URL:            http://openjdk.java.net/
+URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
 Source0:        http://hg.openjdk.java.net/%{hg_project}/%{hg_repository}/archive/%{hg_revision}.tar.bz2
 # Accessibility support
