@@ -1,7 +1,7 @@
 #
 # spec file for package go1.15
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,7 +135,7 @@
 %endif
 
 Name:           go1.15
-Version:        1.15.6
+Version:        1.15.7
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
