@@ -1,4 +1,26 @@
 --------------------------------------------------------------------
+Thu Jan 21 11:42:01 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#795
+- per default join all action messages for compound actions
+- 4.3.85
+
+--------------------------------------------------------------------
+Wed Jan 20 09:03:12 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#794
+- updated pot and po files
+- 4.3.84
+
+--------------------------------------------------------------------
+Wed Jan 20 08:41:00 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#793
+- make the btrfs subvolume the target device for qgroup compound
+  actions
+- 4.3.83
+
+--------------------------------------------------------------------
 Mon Jan 18 12:11:41 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#792
