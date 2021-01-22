@@ -1,7 +1,7 @@
 #
 # spec file for package git-remote-gcrypt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-remote-gcrypt
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Encrypted git repositories
 License:        GPL-2.0-or-later

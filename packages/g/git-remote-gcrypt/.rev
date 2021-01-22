@@ -53,4 +53,14 @@
   * Add git-config option to set rsync put flags.</comment>
     <requestid>774822</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cfbd7aa5f5aa29aeae9275880b0da5df</srcmd5>
+    <version>1.4</version>
+    <time>1611348754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Add gcrypt.require-explicit-force-push configuration key.
+  * Support rsync URIs like &quot;rsync://user@host/path&quot; (Closes: #980397).</comment>
+    <requestid>865877</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 22 09:17:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4:
+  * Add gcrypt.require-explicit-force-push configuration key.
+  * Support rsync URIs like "rsync://user@host/path" (Closes: #980397).
+
+-------------------------------------------------------------------
 Mon Feb 17 10:18:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3:
