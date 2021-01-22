@@ -1,7 +1,7 @@
 #
 # spec file for package Jamulus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,10 @@
 #
 
 
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
+
 %define tarball_version 3_6_2
 
 Name:           Jamulus
@@ -27,12 +31,23 @@ License:        GPL-2.0-or-later
 URL:            http://llcon.sourceforge.net/index.html
 Source0:        https://github.com/corrados/jamulus/archive/r%{tarball_version}.tar.gz#/jamulus-r%{tarball_version}.tar.gz
 Source1:        %{name}_icon.png
+Source10:       %{name}-public.service
+Source11:       %{name}-private.service
+Source12:       %{name}-newrec.service
+Source13:       %{name}-togglerec.service
+Source20:       %{name}.sysconfig
+Source21:       %{name}.firewalld
+Source90:       README.SUSE
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
+BuildRequires:  firewall-macros
+BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jack-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pwdutils
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -40,10 +55,14 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(opus)
 Requires:       jack
+Requires(pre):  shadow
+Requires(pre):  %fillup_prereq
+Requires(pre):  group(nogroup)
 Provides:       llcon = %{version}
 Obsoletes:      llcon < %{version}
 Provides:       jamulus = %{version}
 Obsoletes:      jamulus < %{version}
+%{?systemd_requires}
 
 %description
 The Jamulus software enables musicians to perform real-time jam sessions over
@@ -54,6 +73,7 @@ and sends the mix back to each client.
 %prep
 %autosetup -p1 -n jamulus-r%{tarball_version}
 install %{SOURCE1} .
+install -m644 %{SOURCE90} .
 
 %build
 %qmake5 CONFIG+=opus_shared_lib CONFIG+=disable_version_check
@@ -69,17 +89,76 @@ done
 install -Dm0644 %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png \
                 %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
-%suse_update_desktop_file -c %{name} %{name} "Internet Jam Session Software" %{name} %{name} "AudioVideo;Audio;Mixer;Qt"
-%suse_update_desktop_file -C "Jam Session" %{name}
+# sysconfig
+install -d -m0755 %{buildroot}%{_fillupdir}
+install -D -m0644 %{SOURCE20} %{buildroot}%{_fillupdir}/sysconfig.jamulus
+
+# firewalld
+install -D -m0644 %{SOURCE21} %{buildroot}%{_libexecdir}/firewalld/services/jamulus.xml
+
+# systemd/services
+install -D -m0644 %{SOURCE10} %{buildroot}%{_unitdir}/jamulus-public.service
+install -d -m0755 %{buildroot}%{_sbindir}
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcjamulus-public
+
+install -D -m0644 %{SOURCE11} %{buildroot}%{_unitdir}/jamulus-private.service
+install -d -m0755 %{buildroot}%{_sbindir}
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcjamulus-private
+
+install -D -m0644 %{SOURCE12} %{buildroot}%{_unitdir}/jamulus-newrec.service
+install -d -m0755 %{buildroot}%{_sbindir}
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcjamulus-newrec
+
+install -D -m0644 %{SOURCE13} %{buildroot}%{_unitdir}/jamulus-togglerec.service
+install -d -m0755 %{buildroot}%{_sbindir}
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcjamulus-togglerec
+
+# desktop file
+sed -i -e 's|$$TARGET|Jamulus|g' distributions/jamulus.desktop.in
+sed -i -e 's|Icon=jamulus|Icon=Jamulus|g' distributions/jamulus.desktop.in
+install -D -m 0644 distributions/jamulus.desktop.in %{buildroot}%{_datadir}/applications/%{name}.desktop
+%suse_update_desktop_file %{name}
 
 %fdupes %{buildroot}%{_datadir}
 
+%pre
+%service_add_pre jamulus-public.service jamulus-private.service jamulus-newrec.service jamulus-togglerec.service
+getent passwd jamulus >/dev/null || \
+	useradd -r -g nogroup -d /var/lib/empty -s /bin/false \
+	-c "Jamulus Server" jamulus
+
+%post
+%service_add_post jamulus-public.service jamulus-private.service jamulus-newrec.service jamulus-togglerec.service
+%{fillup_only -n jamulus}
+%firewalld_reload
+
+%preun
+%service_del_preun jamulus-public.service jamulus-private.service jamulus-newrec.service jamulus-togglerec.service
+
+%postun
+%service_del_postun jamulus-public.service jamulus-private.service jamulus-newrec.service jamulus-togglerec.service
+
 %files
-%doc README.md ChangeLog
+%doc README.md ChangeLog README.SUSE
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/pixmaps/%{name}.png
+# sysconfig
+%{_fillupdir}/sysconfig.jamulus
+# firewalld
+%config(noreplace) %{_libexecdir}/firewalld/services/jamulus.xml
+%dir %{_libexecdir}/firewalld
+%dir %{_libexecdir}/firewalld/services
+# systemd/services
+%{_unitdir}/jamulus-public.service
+%{_sbindir}/rcjamulus-public
+%{_unitdir}/jamulus-private.service
+%{_sbindir}/rcjamulus-private
+%{_unitdir}/jamulus-newrec.service
+%{_sbindir}/rcjamulus-newrec
+%{_unitdir}/jamulus-togglerec.service
+%{_sbindir}/rcjamulus-togglerec
 
 %changelog

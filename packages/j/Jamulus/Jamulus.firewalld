@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Jamulus (Private-Server)</short>
+  <description>Only need for running a Jamulus Private-Server. Not needed for running a Public-Server.</description>
+  <port protocol="udp" port="22124"/>
+</service>
+

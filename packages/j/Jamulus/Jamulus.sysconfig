@@ -1,0 +1,16 @@
+# central server
+# select only one central server and port from 4 possible genres.
+#################################################################
+# genre: Default
+############
+CENTRALSERVER="jamulusallgenres.fischvolk.de:22224"
+# genre: Rock
+#CENTRALSERVER="jamulusrock.fischvolk.de:22424"
+# genre: Jazz
+#CENTRALSERVER="jamulusjazz.fischvolk.de:22324"
+# genre: Klassik/Folklore/Chor
+#CENTRALSERVER="jamulusclassical.fischvolk.de:22524"
+# Your Server
+yourServername=""
+yourCity=""
+yourCountryID=""
