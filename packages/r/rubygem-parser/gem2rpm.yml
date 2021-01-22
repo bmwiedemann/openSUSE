@@ -34,8 +34,9 @@
 #   %endif
 # ## used by gem2rpm
 :post_install: |-
-  %fdupes %{buildroot}%{gem_base}
-  find %{buildroot}%{gem_base} \( -name .travis.yml -o -name .yardopts -o -name .gitkeep -o -name .gitignore -o -name run_rubocop_specs \) | xargs rm
+  for dir in $(ls %{buildroot}%{_libdir}/ruby/gems/); do
+       %fdupes %{buildroot}%{_libdir}/ruby/gems/$dir
+  done
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
+%define mod_name parser
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-parser
-Version:        2.7.1.5
+Version:        3.0.0.0
 Release:        0
-%define mod_name parser
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        A Ruby parser written in pure Ruby
+License:        MIT
+Group:          Development/Languages/Ruby
+URL:            https://github.com/whitequark/parser
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-URL:            https://github.com/whitequark/parser
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
-Summary:        A Ruby parser written in pure Ruby
-License:        MIT
-Group:          Development/Languages/Ruby
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         update-alternatives
 
 %description
@@ -51,11 +50,12 @@ A Ruby parser written in pure Ruby.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="CHANGELOG.md LICENSE.txt README.md" \
+  --doc-files="LICENSE.txt" \
   -f
 # MANUAL
-%fdupes %{buildroot}%{gem_base}
-find %{buildroot}%{gem_base} \( -name .travis.yml -o -name .yardopts -o -name .gitkeep -o -name .gitignore -o -name run_rubocop_specs \) | xargs rm
+for dir in $(ls %{buildroot}%{_libdir}/ruby/gems/); do
+     %fdupes %{buildroot}%{_libdir}/ruby/gems/$dir
+done
 # /MANUAL
 
 %gem_packages
