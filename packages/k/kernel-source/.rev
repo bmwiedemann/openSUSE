@@ -5343,4 +5343,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>fix nouveau CVE hole &amp; 5.10.7 &amp; 5.10.6 &amp; rpi2 support</comment>
     <requestid>862797</requestid>
   </revision>
+  <revision rev="573" vrev="1">
+    <srcmd5>8ccaa3093e33c63b32ce3007c8cda275</srcmd5>
+    <version>5.10.9</version>
+    <time>1611348575</time>
+    <user>dimstar_suse</user>
+    <comment>5.10.9 &amp; 5.10.8 &amp; rpi4 fixes</comment>
+    <requestid>864627</requestid>
+  </revision>
 </revisionlist>
