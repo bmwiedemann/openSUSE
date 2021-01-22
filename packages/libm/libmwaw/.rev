@@ -273,4 +273,12 @@
   - add a parser for QuarkXPress v1-2 files</comment>
     <requestid>815732</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>efd2845ecf774036193202965a1c269a</srcmd5>
+    <version>0.3.17</version>
+    <time>1611348581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864903</requestid>
+  </revision>
 </revisionlist>

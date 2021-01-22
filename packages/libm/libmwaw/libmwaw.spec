@@ -1,7 +1,7 @@
 #
 # spec file for package libmwaw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define libname libmwaw-0_3-3
 Name:           libmwaw
-Version:        0.3.16
+Version:        0.3.17
 Release:        0
 Summary:        Pre Mac OSX text file formats parser library
 License:        (LGPL-2.1-or-later OR MPL-2.0) AND GPL-2.0-or-later
 URL:            https://sourceforge.net/p/libmwaw/wiki/Home/
-Source:         http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
+Source:         https://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

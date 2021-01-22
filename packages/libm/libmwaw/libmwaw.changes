@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 18 21:24:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.17:
+  - add a parser for Jazz(Lotus) writer and spreasheet files
+    + the writer parser can only be called if the file still
+      contains its resource fork
+  - add a parser for Canvas 3 and 3.5 files
+  - AppleWorks parser: try to retrieve more Windows presentation
+  - add a parser for Drawing Table files
+  - add a parser for Canvas 2 files
+  - configure.ac: add an enable-asan option
+  - API: add new reserved enums in MWAWDocument.hxx
+       MWAW_T_RESERVED10..MWAW_T_RESERVED29
+    and add a new define in libmwaw.hxx
+       MWAW_INTERFACE_VERSION
+    to check if these enums are defined
+
+-------------------------------------------------------------------
 Thu Jun 18 11:29:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.16:
