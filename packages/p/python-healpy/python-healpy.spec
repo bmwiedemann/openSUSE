@@ -16,6 +16,9 @@
 #
 
 
+# Builds on astropy, which is python >= 3.7 on TW
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-healpy
 Version:        1.14.0
 Release:        0
@@ -41,6 +44,8 @@ Requires:       python-matplotlib
 Requires:       python-numpy >= 1.13
 Requires:       python-scipy
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # SECTION Additional test requirements
 # Symbol clashes with astropy < 4.0
 BuildRequires:  %{python_module astropy >= 4.0}
@@ -77,16 +82,24 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a  %{buildroot}%{_bindir}/healpy_get_wmap_maps.sh
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+ 
 
 %check
 # Skip tests requiring network access
-%python_expand %pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath)' %{buildroot}%{$python_sitearch}/healpy
+%pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath)' %{buildroot}%{$python_sitearch}/healpy
+
+%post
+%python_install_alternative healpy_get_wmap_maps.sh
+
+%postun
+%python_uninstall_alternative healpy_get_wmap_maps.sh
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license COPYING
-%python3_only %{_bindir}/healpy_get_wmap_maps.sh
+%python_alternative %{_bindir}/healpy_get_wmap_maps.sh
 %{python_sitearch}/healpy/
 %{python_sitearch}/healpy-%{version}-py%{python_version}.egg-info/
 
