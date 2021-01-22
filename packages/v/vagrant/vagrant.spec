@@ -59,6 +59,8 @@ Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 # https://github.com/hashicorp/vagrant/pull/12097
 Patch10:        0010-Update-rake-to-13.0.patch
+# https://github.com/hashicorp/vagrant/pull/12147
+Patch11:        0011-Remove-not-required-bcrypt_pbkdf-gem.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -87,8 +89,6 @@ BuildRequires:  %{ruby:2 >= 2.5}
 #
 #
 BuildRequires:  %{rubygem bundler}
-#  s.add_dependency "bcrypt_pbkdf", "~> 1.0.0"
-BuildRequires:  %{rubygem bcrypt_pbkdf:1.0 }
 #  s.add_dependency "childprocess", "~> 4.0.0"
 BuildRequires:  %{rubygem childprocess:4.0 }
 #  s.add_dependency "ed25519", "~> 1.2.4"
@@ -178,8 +178,6 @@ BuildRequires:  fdupes
 
 #
 #
-#  s.add_dependency "bcrypt_pbkdf", "~> 1.0.0"
-Requires:       %{rubygem bcrypt_pbkdf:1.0 }
 #    s.add_dependency "childprocess", "~> 4.0.0"
 Requires:       %{rubygem childprocess:4.0}
 #   s.add_dependency "ed25519", "~> 1.2.4"
