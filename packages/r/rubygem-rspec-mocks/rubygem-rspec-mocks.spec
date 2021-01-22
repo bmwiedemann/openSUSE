@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rspec-mocks
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-mocks
-Version:        3.9.1
+Version:        3.10.1
 Release:        0
 %define mod_name rspec-mocks
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{ruby >= 1.8.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/rspec/rspec-mocks
+URL:            https://github.com/rspec/rspec-mocks
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        RSpec's 'test double' framework, with support for stubbing and mocking
