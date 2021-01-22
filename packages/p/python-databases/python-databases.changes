@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 16 18:42:21 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Requires aiocontextvars for python <= 3.6
+
+-------------------------------------------------------------------
 Sat Nov 21 10:25:27 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.4.1

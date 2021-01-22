@@ -1,7 +1,7 @@
 #
 # spec file for package python-databases
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-sqlalchemy
+Suggests:       python-aiocontextvars
 Suggests:       python-aiomysql
 Suggests:       python-aiopg
 Suggests:       python-aiosqlite
@@ -40,6 +41,8 @@ BuildRequires:  %{python_module asyncpg}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sqlalchemy}
+BuildRequires:  (python3-aiocontextvars if python3-base <= 3.6)
+BuildRequires:  (python36-aiocontextvars if python36-base)
 # /SECTION
 %python_subpackages
 
