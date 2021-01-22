@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-search-nspkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,15 +58,13 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-search-nspkg-%{version}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{python2_sitelib}/azure/search
-mkdir -p %{buildroot}%{python3_sitelib}/azure/search
+%python_expand mkdir -p %{buildroot}%{$python_sitelib}/azure/search
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python2_only %{python2_sitelib}/azure/search
-%python3_only %dir %{python3_sitelib}/azure/search
-%python3_only %exclude %{python3_sitelib}/azure/search/*
+%dir %{python_sitelib}/azure/search
+%python2_only %{python_sitelib}/azure/search
 %{python_sitelib}/azure_search_nspkg-*.egg-info
 
 %changelog
