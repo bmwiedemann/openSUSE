@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 20 03:07:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20210112.001
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20210112.001 2021-01-19T14:48:12Z
+  	* freshen distro, dump Travis CI, add Github Actions
+  	* Update to latest Business::ISBN::Data
+
+-------------------------------------------------------------------
 Thu Dec 12 03:09:11 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 20191107
