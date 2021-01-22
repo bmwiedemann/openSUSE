@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 13 14:27:51 MST 2021 - carnold@suse.com
+
+- bsc#1180794 - bogus qemu binary path used when creating fv guest
+  under xen
+  xen.spec
+
+-------------------------------------------------------------------
+Wed Jan 13 10:36:49 MST 2021 - carnold@suse.com
+
+- bsc#1180690 - L3-Question: xen: no needsreboot flag set
+  Add Provides: installhint(reboot-needed) in xen.spec for libzypp
+
+-------------------------------------------------------------------
 Mon Jan  4 19:19:19 UTC 2021 - ohering@suse.de
 
 - Update libxl.set-migration-constraints-from-cmdline.patch

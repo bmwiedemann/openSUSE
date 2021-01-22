@@ -2542,4 +2542,12 @@
 - Pass --with-rundir to configure to get rid of /var/run</comment>
     <requestid>860437</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>83d8d2f28ea65f9667511a9d78e31540</srcmd5>
+    <version>4.14.1_06</version>
+    <time>1611348559</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for bsc#1180690 and bsc#1180794 both of which are spec file changes.</comment>
+    <requestid>864498</requestid>
+  </revision>
 </revisionlist>

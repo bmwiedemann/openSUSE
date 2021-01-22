@@ -22,6 +22,10 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+# Tumbleweed now defines _libexecdir as /usr/libexec
+# Keep it at the original location (/usr/lib) for backward compatibility
+%define _libexecdir /usr/lib
+
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
 %define changeset 41121
@@ -124,8 +128,9 @@ BuildRequires:  makeinfo
 %ifarch x86_64
 BuildRequires:  pesign-obs-integration
 %endif
+Provides:       installhint(reboot-needed)
 
-Version:        4.14.1_05
+Version:        4.14.1_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -862,7 +867,7 @@ make -C xen clean
 # /usr/bin/qemu-system-i386
 # Using qemu-system-x86_64 will result in an incompatible VM
 %ifarch x86_64 aarch64
-hardcoded_path_in_existing_domU_xml='/usr/lib/xen/bin'
+hardcoded_path_in_existing_domU_xml='%{_libexecdir}/%{name}/bin'
 mkdir -vp %{buildroot}${hardcoded_path_in_existing_domU_xml}
 tee %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-%{qemu_arch} << 'EOF'
 #!/bin/sh
@@ -870,6 +875,7 @@ tee %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-%{qemu_arch} 
 exec %{_bindir}/qemu-system-%{qemu_arch} "$@"
 EOF
 chmod 0755 %{buildroot}${hardcoded_path_in_existing_domU_xml}/qemu-system-%{qemu_arch}
+
 #
 unit='%{_libexecdir}/%{name}/bin/xendomains-wait-disks'
 mkdir -vp '%{buildroot}%{_libexecdir}/%{name}/bin'
@@ -1119,12 +1125,11 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
 /usr/lib/supportconfig/plugins/xen
-%dir /usr/lib/xen
-%dir /usr/lib/xen/bin
-/usr/lib/xen/bin/qemu-system-%{qemu_arch}
-%{_libexecdir}/%{name}
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/bin
 %exclude %{_libexecdir}/%{name}-tools-domU
 %ifarch x86_64
+%{_libexecdir}/%{name}/boot
 %exclude %{_libexecdir}/%{name}/bin/xendomains-wait-disks
 %endif
 %{_fillupdir}/sysconfig.pciback
