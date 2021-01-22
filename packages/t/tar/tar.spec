@@ -1,7 +1,7 @@
 #
 # spec file for package tar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 # For correct subpackages docs installation into tar doc directory
 %global _docdir_fmt %{name}
 Name:           tar
-Version:        1.32
+Version:        1.33
 Release:        0
 Summary:        GNU implementation of ((t)ape (ar)chiver)
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://www.gnu.org/software/tar/
-Source0:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.bz2
-Source1:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.bz2.sig
+Source0:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.xz.sig
 # http://wwwkeys.pgp.net:11371/pks/lookup?op=get&search=0x3602B07F55D0C732
 Source2:        %{name}.keyring
 Patch0:         %{name}-wildcards.patch
@@ -88,8 +88,6 @@ and similar backup utilities
 Summary:        Documentation files for GNU tar
 Group:          Documentation/Man
 Requires:       %{name} = %{version}
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 BuildArch:      noarch
 
 %description doc
@@ -123,9 +121,9 @@ autoreconf -fi
 	--enable-backup-scripts \
 	--disable-silent-rules \
 	--program-transform-name='s/^rmt$/gnurmt/'
-make %{?_smp_mflags} LDFLAGS="-pie"
+%make_build LDFLAGS="-pie"
 cd tests
-make %{?_smp_mflags} genfile
+%make_build genfile
 mkdir bin
 mv genfile bin
 cd -
@@ -134,7 +132,7 @@ cd -
 %if !0%{?qemu_user_space_build:1}
 # Checks disabled in qemu because of races happening when we emulate
 # multi-threaded programs
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %install
@@ -162,16 +160,10 @@ ln -s %{_bindir}/%{name} %{buildroot}/bin
 %endif
 %find_lang %{name}
 
-%post doc
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
 %post rmt
 %{_sbindir}/update-alternatives --force \
     --install %{_bindir}/rmt rmt %{_bindir}/gnurmt 10 \
     --slave %{_mandir}/man1/rmt.1%{ext_man} rmt.1%{ext_man} %{_mandir}/man1/gnurmt.1%{ext_man}
-
-%preun doc
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %postun rmt
 if [ ! -f %{_bindir}/gnurmt ] ; then
@@ -209,7 +201,7 @@ fi
 %{_docdir}/%{name}/THANKS
 %{_docdir}/%{name}/ChangeLog
 %{_docdir}/%{name}/TODO
-%{_infodir}/%{name}.info*
+%{_infodir}/%{name}.info*%{?ext_info}
 
 %files
 %license COPYING

@@ -1,20 +1,19 @@
-Index: tar-1.31/Makefile.in
+Index: tar-1.33/Makefile.in
 ===================================================================
---- tar-1.31.orig/Makefile.in
-+++ tar-1.31/Makefile.in
-@@ -341,7 +341,7 @@ am__DIST_COMMON = $(srcdir)/Make.rules $
- 	$(top_srcdir)/build-aux/config.sub \
+--- tar-1.33.orig/Makefile.in
++++ tar-1.33/Makefile.in
+@@ -348,6 +348,7 @@ am__DIST_COMMON = $(srcdir)/Make.rules $
  	$(top_srcdir)/build-aux/install-sh \
  	$(top_srcdir)/build-aux/missing ABOUT-NLS AUTHORS COPYING \
--	ChangeLog INSTALL NEWS README THANKS TODO build-aux/compile \
-+	ChangeLog INSTALL NEWS README README-tests THANKS TODO build-aux/compile \
- 	build-aux/config.guess build-aux/config.rpath \
- 	build-aux/config.sub build-aux/depcomp build-aux/install-sh \
- 	build-aux/mdate-sh build-aux/missing build-aux/texinfo.tex \
-Index: tar-1.31/README-tests
+ 	ChangeLog INSTALL NEWS README THANKS TODO build-aux/ar-lib \
++	README-tests \
+ 	build-aux/compile build-aux/config.guess \
+ 	build-aux/config.rpath build-aux/config.sub build-aux/depcomp \
+ 	build-aux/install-sh build-aux/mdate-sh build-aux/missing \
+Index: tar-1.33/README-tests
 ===================================================================
 --- /dev/null
-+++ tar-1.31/README-tests
++++ tar-1.33/README-tests
 @@ -0,0 +1,22 @@
 +Subpackage tar-tests
 +====================

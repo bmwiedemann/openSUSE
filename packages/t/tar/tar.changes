@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan  9 07:40:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU tar 1.33:
+  * POSIX extended format headers do not include PID by default
+  * --delay-directory-restore works for archives with reversed
+    member ordering
+  * Fix extraction of a symbolic link hardlinked to another
+    symbolic link
+  * Wildcards in exclude-vcs-ignore mode don't match slash
+  * Fix the --no-overwrite-dir option
+  * Fix handling of chained renames in incremental backups
+  * Link counting works for file names supplied with -T
+  * Accept only position-sensitive (file-selection) options in file
+    list files
+- remove deprecated texinfo packaging macros
+
+-------------------------------------------------------------------
 Mon Oct 19 16:20:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
