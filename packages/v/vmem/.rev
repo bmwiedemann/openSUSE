@@ -7,4 +7,12 @@
     <comment>vmem was split out of pmdk 1.8 and now has its own package</comment>
     <requestid>781098</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>66ef0ada077de026b1b2c0afad50b590</srcmd5>
+    <version>1.8</version>
+    <time>1611348768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865985</requestid>
+  </revision>
 </revisionlist>

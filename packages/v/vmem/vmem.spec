@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  man
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le
 
 %description
 The Persistent Memory Development Kit is a collection of libraries for
