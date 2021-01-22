@@ -1034,4 +1034,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Require more packages by default</comment>
     <requestid>863361</requestid>
   </revision>
+  <revision rev="143" vrev="141">
+    <srcmd5>31e6b7b6287702e7c2c665ff762ced58</srcmd5>
+    <version>unknown</version>
+    <time>1611312999</time>
+    <user>dimstar_suse</user>
+    <comment>kde_imaging and kde_plasma cannot be required, as they are not (yet) valid on s390x</comment>
+  </revision>
 </revisionlist>
