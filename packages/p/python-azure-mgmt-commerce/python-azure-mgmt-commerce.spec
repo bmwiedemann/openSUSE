@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-commerce
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-commerce
-Version:        1.0.1
+Version:        6.0.0
 Release:        0
 Summary:        Microsoft Azure Commerce Client Library
 License:        MIT
@@ -37,10 +37,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-mgmt-core < 2.0.0
+Requires:       python-azure-mgmt-core >= 1.2.0
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrestazure < 2.0.0
-Requires:       python-msrestazure >= 0.4.20
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -74,7 +74,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/commerce
 %{python_sitelib}/azure_mgmt_commerce-*.egg-info
