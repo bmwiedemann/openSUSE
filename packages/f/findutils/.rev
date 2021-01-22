@@ -555,4 +555,24 @@ Prompted by an error of 'osc service localrun download_files'.
     <comment></comment>
     <requestid>849802</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>0409be209a761c70daccb28be19b1852</srcmd5>
+    <version>4.8.0</version>
+    <time>1611348533</time>
+    <user>dimstar_suse</user>
+    <comment>- update upstream signing key
+- remove deprecated texinfo packaging macros
+- run spec-cleaner
+- Update to 4.8.0.
+  Announcement: https://savannah.gnu.org/forum/forum.php?forum_id=9914
+- findutils.spec:
+  - Source0: Fix download URL: remove &quot;pub/&quot;.
+  - %check: Output the content of all test-suite files in case of errors.
+- Remove now-upstream patches:
+  - disable-null-ptr-test.patch
+  - findutils-gnulib-disable-test-float.patch
+  - findutils-gnulib-test-avoid-FP-perror-strerror.patch
+</comment>
+    <requestid>862053</requestid>
+  </revision>
 </revisionlist>
