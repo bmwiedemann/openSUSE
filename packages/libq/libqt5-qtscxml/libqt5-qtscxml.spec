@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtscxml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\((CalculatorStateMachine|Directions|MediaPlayerDataModel|MediaPlayerStateMachine|TrafficLightStateMachine).*
 
 %define qt5_snapshot 0
 %define libname libQt5Scxml5
@@ -52,6 +55,7 @@ It also contains functionality to support data models and executable content.
 
 %package -n %{libname}
 Summary:        Qt 5 State Chart XML Library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          System/Libraries
 %requires_ge    libQt5Core5
 
@@ -67,6 +71,7 @@ models and executable content.
 
 %package -n %{libname}-imports
 Summary:        Qt 5 Scxml Addon - QML imports
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 %requires_ge    libQtQuick5
 Supplements:    (%{libname} and libQtQuick5)
@@ -80,8 +85,8 @@ It also contains functionality to support data models and executable content.
 
 %package tools
 Summary:        Qt 5 State Chart XML tools
-Group:          Development/Tools/Debuggers
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
+Group:          Development/Tools/Debuggers
 
 %description tools
 Qt is a set of libraries for developing applications.
@@ -90,6 +95,7 @@ This package contains tools for handling Qt SCXML files.
 
 %package devel
 Summary:        Development files for Qt5's State Chart XML library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name}-tools = %{version}
@@ -99,6 +105,7 @@ You need this package if you want to compile programs with QtScxml.
 
 %package private-headers-devel
 Summary:        Non-ABI stable experimental API for Qt5's State Chart XML library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libQt5Core-private-headers-devel >= %{version}
@@ -112,8 +119,8 @@ the exact Qt version.
 
 %package examples
 Summary:        Qt5 State Chart XML examples
-Group:          Development/Libraries/X11
 License:        BSD-3-Clause
+Group:          Development/Libraries/X11
 Recommends:     %{name}-devel
 
 %description examples
