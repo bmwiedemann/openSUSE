@@ -260,4 +260,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853883</requestid>
   </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>bf2dcb7af5f20ec059082f83cbd88799</srcmd5>
+    <version>4.0.0</version>
+    <time>1611348612</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-azureadb2c
+  + python-azure-mgmt-confluent
+  + python-azure-mgmt-customproviders
+  + python-azure-mgmt-databox
+  + python-azure-mgmt-datadog
+  + python-azure-mgmt-hybridkubernetes
+  + python-azure-mgmt-maintenance
+  + python-azure-mgmt-portal
+  + python-azure-mgmt-powerbidedicated
+  + python-azure-mgmt-support
+  + python-azure-mgmt-timeseriesinsights
+- Remove all version constraints in Requires (forwarded request 861574 from glaubitz)</comment>
+    <requestid>861619</requestid>
+  </revision>
 </revisionlist>

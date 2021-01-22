@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:07:31 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-azureadb2c
+  + python-azure-mgmt-confluent
+  + python-azure-mgmt-customproviders
+  + python-azure-mgmt-databox
+  + python-azure-mgmt-datadog
+  + python-azure-mgmt-hybridkubernetes
+  + python-azure-mgmt-maintenance
+  + python-azure-mgmt-portal
+  + python-azure-mgmt-powerbidedicated
+  + python-azure-mgmt-support
+  + python-azure-mgmt-timeseriesinsights
+- Remove all version constraints in Requires
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

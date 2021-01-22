@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,218 +33,127 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-mgmt-advisor < 5.0.0
-Requires:       python-azure-mgmt-advisor >= 4.0.0
-Requires:       python-azure-mgmt-alertsmanagement < 1.0.0
-Requires:       python-azure-mgmt-alertsmanagement >= 0.2.0
-Requires:       python-azure-mgmt-apimanagement < 1.0.0
-Requires:       python-azure-mgmt-apimanagement >= 0.2.0
-Requires:       python-azure-mgmt-appconfiguration < 2.0.0
-Requires:       python-azure-mgmt-appconfiguration >= 1.0.1
-Requires:       python-azure-mgmt-applicationinsights < 1.0.0
-Requires:       python-azure-mgmt-applicationinsights >= 0.3.0
-Requires:       python-azure-mgmt-appplatform < 2.0.0
-Requires:       python-azure-mgmt-appplatform >= 1.0.0
-Requires:       python-azure-mgmt-attestation < 1.0.0
-Requires:       python-azure-mgmt-attestation >= 0.2.0
-Requires:       python-azure-mgmt-authorization < 1.0.0
-Requires:       python-azure-mgmt-authorization >= 0.61.0
-Requires:       python-azure-mgmt-automanage < 2.0.0
-Requires:       python-azure-mgmt-automanage >= 1.0.0b1
-Requires:       python-azure-mgmt-automation < 1.0.0
-Requires:       python-azure-mgmt-automation >= 0.1.1
-Requires:       python-azure-mgmt-azurestackhci < 2.0.0
-Requires:       python-azure-mgmt-azurestackhci >= 1.0.0rc1
-Requires:       python-azure-mgmt-baremetalinfrastructure < 2.0.0
-Requires:       python-azure-mgmt-baremetalinfrastructure >= 1.0.0b1
-Requires:       python-azure-mgmt-batch < 10.0.0
-Requires:       python-azure-mgmt-batch >= 9.0.0
-Requires:       python-azure-mgmt-batchai < 3.0.0
-Requires:       python-azure-mgmt-batchai >= 2.0.0
-Requires:       python-azure-mgmt-billing < 2.0.0
-Requires:       python-azure-mgmt-billing >= 1.0.0
-Requires:       python-azure-mgmt-botservice < 1.0.0
-Requires:       python-azure-mgmt-botservice >= 0.1.0
-Requires:       python-azure-mgmt-cdn < 6.0.0
-Requires:       python-azure-mgmt-cdn >= 5.1.0
-Requires:       python-azure-mgmt-cognitiveservices < 7.0.0
-Requires:       python-azure-mgmt-cognitiveservices >= 6.3.0
-Requires:       python-azure-mgmt-commerce < 2.0.0
-Requires:       python-azure-mgmt-commerce >= 1.0.1
-Requires:       python-azure-mgmt-communication < 2.0.0
-Requires:       python-azure-mgmt-communication >= 1.0.0b4
-Requires:       python-azure-mgmt-compute < 19.0.0
-Requires:       python-azure-mgmt-compute >= 18.0.0
-Requires:       python-azure-mgmt-consumption < 4.0.0
-Requires:       python-azure-mgmt-consumption >= 3.0.0
-Requires:       python-azure-mgmt-containerinstance < 3.0.0
-Requires:       python-azure-mgmt-containerinstance >= 2.0.0
-Requires:       python-azure-mgmt-containerregistry < 4.0.0
-Requires:       python-azure-mgmt-containerregistry >= 3.0.0
-Requires:       python-azure-mgmt-containerservice < 11.0.0
-Requires:       python-azure-mgmt-containerservice >= 10.1.0
-Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.2.2
-Requires:       python-azure-mgmt-cosmosdb < 2.0.0
-Requires:       python-azure-mgmt-cosmosdb >= 1.0.0
-Requires:       python-azure-mgmt-costmanagement < 1.0.0
-Requires:       python-azure-mgmt-costmanagement >= 0.2.0
-Requires:       python-azure-mgmt-databoxedge < 1.0.0
-Requires:       python-azure-mgmt-databoxedge >= 0.2.0
-Requires:       python-azure-mgmt-databricks < 1.0.0
-Requires:       python-azure-mgmt-databricks >= 0.1.0
-Requires:       python-azure-mgmt-datafactory < 1.0.0
-Requires:       python-azure-mgmt-datafactory >= 0.14.0
-Requires:       python-azure-mgmt-datalake-analytics < 1.0.0
-Requires:       python-azure-mgmt-datalake-analytics >= 0.6.0
-Requires:       python-azure-mgmt-datalake-store < 1.0.0
-Requires:       python-azure-mgmt-datalake-store >= 0.5.0
-Requires:       python-azure-mgmt-datamigration < 5.0.0
-Requires:       python-azure-mgmt-datamigration >= 4.1.0
-Requires:       python-azure-mgmt-datashare < 1.0.0
-Requires:       python-azure-mgmt-datashare >= 0.2.0
-Requires:       python-azure-mgmt-deploymentmanager < 1.0.0
-Requires:       python-azure-mgmt-deploymentmanager >= 0.2.0
-Requires:       python-azure-mgmt-devspaces < 1.0.0
-Requires:       python-azure-mgmt-devspaces >= 0.1.0
-Requires:       python-azure-mgmt-devtestlabs < 5.0.0
-Requires:       python-azure-mgmt-devtestlabs >= 4.0.0
-Requires:       python-azure-mgmt-dns < 4.0.0
-Requires:       python-azure-mgmt-dns >= 3.0.0
-Requires:       python-azure-mgmt-documentdb < 1.0.0
-Requires:       python-azure-mgmt-documentdb >= 0.1.3
-Requires:       python-azure-mgmt-edgegateway < 1.0.0
-Requires:       python-azure-mgmt-edgegateway >= 0.1.0
-Requires:       python-azure-mgmt-eventgrid < 4.0.0
-Requires:       python-azure-mgmt-eventgrid >= 3.0.0rc8
-Requires:       python-azure-mgmt-eventhub < 9.0.0
-Requires:       python-azure-mgmt-eventhub >= 8.0.0
-Requires:       python-azure-mgmt-frontdoor < 1.0.0
-Requires:       python-azure-mgmt-frontdoor >= 0.3.0
-Requires:       python-azure-mgmt-hanaonazure < 1.0.0
-Requires:       python-azure-mgmt-hanaonazure >= 0.14.0
-Requires:       python-azure-mgmt-hdinsight < 3.0.0
-Requires:       python-azure-mgmt-hdinsight >= 2.0.0
-Requires:       python-azure-mgmt-healthcareapis < 1.0.0
-Requires:       python-azure-mgmt-healthcareapis >= 0.2.0
-Requires:       python-azure-mgmt-hybridcompute < 3.0.0
-Requires:       python-azure-mgmt-hybridcompute >= 2.0.0
-Requires:       python-azure-mgmt-imagebuilder < 1.0.0
-Requires:       python-azure-mgmt-imagebuilder >= 0.4.0
-Requires:       python-azure-mgmt-iotcentral < 4.0.0
-Requires:       python-azure-mgmt-iotcentral >= 3.1.0
-Requires:       python-azure-mgmt-iothub < 1.0.0
-Requires:       python-azure-mgmt-iothub >= 0.10.0
-Requires:       python-azure-mgmt-iothubprovisioningservices < 1.0.0
-Requires:       python-azure-mgmt-iothubprovisioningservices >= 0.2.0
-Requires:       python-azure-mgmt-keyvault < 9.0.0
-Requires:       python-azure-mgmt-keyvault >= 8.0.0
-Requires:       python-azure-mgmt-kubernetesconfiguration < 1.0.0
-Requires:       python-azure-mgmt-kubernetesconfiguration >= 0.2.0
-Requires:       python-azure-mgmt-kusto < 1.0.0
-Requires:       python-azure-mgmt-kusto >= 0.10.0
-Requires:       python-azure-mgmt-labservices < 1.0.0
-Requires:       python-azure-mgmt-labservices >= 0.1.1
-Requires:       python-azure-mgmt-loganalytics < 3.0.0
-Requires:       python-azure-mgmt-loganalytics >= 2.0.0
-Requires:       python-azure-mgmt-logic < 5.0.0
-Requires:       python-azure-mgmt-logic >= 4.0.0
-Requires:       python-azure-mgmt-machinelearningcompute < 1.0.0
-Requires:       python-azure-mgmt-machinelearningcompute >= 0.4.1
-Requires:       python-azure-mgmt-machinelearningservices < 1.0.0
-Requires:       python-azure-mgmt-machinelearningservices >= 0.1.0
-Requires:       python-azure-mgmt-managedservices < 2.0.0
-Requires:       python-azure-mgmt-managedservices >= 1.0.0
-Requires:       python-azure-mgmt-managementgroups < 1.0.0
-Requires:       python-azure-mgmt-managementgroups >= 0.1.0
-Requires:       python-azure-mgmt-managementpartner < 1.0.0
-Requires:       python-azure-mgmt-managementpartner >= 0.1.0
-Requires:       python-azure-mgmt-maps < 1.0.0
-Requires:       python-azure-mgmt-maps >= 0.1.0
-Requires:       python-azure-mgmt-marketplaceordering < 1.0.0
-Requires:       python-azure-mgmt-marketplaceordering >= 0.1.0
-Requires:       python-azure-mgmt-media < 4.0.0
-Requires:       python-azure-mgmt-media >= 3.0.0
-Requires:       python-azure-mgmt-mixedreality < 1.0.0
-Requires:       python-azure-mgmt-mixedreality >= 0.2.0
-Requires:       python-azure-mgmt-monitor < 2.0.0
-Requires:       python-azure-mgmt-monitor >= 1.0.1
-Requires:       python-azure-mgmt-msi < 2.0.0
-Requires:       python-azure-mgmt-msi >= 1.0.0
-Requires:       python-azure-mgmt-netapp < 1.0.0
-Requires:       python-azure-mgmt-netapp >= 0.14.0
-Requires:       python-azure-mgmt-network < 17.0.0
-Requires:       python-azure-mgmt-network >= 16.0.0
-Requires:       python-azure-mgmt-notificationhubs < 3.0.0
-Requires:       python-azure-mgmt-notificationhubs >= 2.0.0
-Requires:       python-azure-mgmt-peering < 1.0.0
-Requires:       python-azure-mgmt-peering >= 0.2.0
-Requires:       python-azure-mgmt-policyinsights < 1.0.0
-Requires:       python-azure-mgmt-policyinsights >= 0.6.0
-Requires:       python-azure-mgmt-powerbiembedded < 3.0.0
-Requires:       python-azure-mgmt-powerbiembedded >= 2.0.0
-Requires:       python-azure-mgmt-privatedns < 1.0.0
-Requires:       python-azure-mgmt-privatedns >= 0.1.0
-Requires:       python-azure-mgmt-rdbms < 4.0.0
-Requires:       python-azure-mgmt-rdbms >= 3.0.0
-Requires:       python-azure-mgmt-recoveryservices < 1.0.0
-Requires:       python-azure-mgmt-recoveryservices >= 0.5.0
-Requires:       python-azure-mgmt-recoveryservicesbackup < 1.0.0
-Requires:       python-azure-mgmt-recoveryservicesbackup >= 0.8.0
-Requires:       python-azure-mgmt-redhatopenshift < 1.0.0
-Requires:       python-azure-mgmt-redhatopenshift >= 0.1.0
-Requires:       python-azure-mgmt-redis < 8.0.0
-Requires:       python-azure-mgmt-redis >= 7.0.0rc1
-Requires:       python-azure-mgmt-regionmove < 2.0.0
-Requires:       python-azure-mgmt-regionmove >= 1.0.0b1
-Requires:       python-azure-mgmt-relay < 1.0.0
-Requires:       python-azure-mgmt-relay >= 0.1.0
-Requires:       python-azure-mgmt-reservations < 1.0.0
-Requires:       python-azure-mgmt-reservations >= 0.8.0
-Requires:       python-azure-mgmt-resource < 16.0.0
-Requires:       python-azure-mgmt-resource >= 15.0.0
-Requires:       python-azure-mgmt-resourcegraph < 3.0.0
-Requires:       python-azure-mgmt-resourcegraph >= 2.0.0
-Requires:       python-azure-mgmt-resourcemover < 2.0.0
-Requires:       python-azure-mgmt-resourcemover >= 1.0.1b1
-Requires:       python-azure-mgmt-scheduler < 3.0.0
-Requires:       python-azure-mgmt-scheduler >= 2.0.0
-Requires:       python-azure-mgmt-search < 4.0.0
-Requires:       python-azure-mgmt-search >= 3.0.0
-Requires:       python-azure-mgmt-security < 1.0.0
-Requires:       python-azure-mgmt-security >= 0.6.0
-Requires:       python-azure-mgmt-serialconsole < 1.0.0
-Requires:       python-azure-mgmt-serialconsole >= 0.1.0
-Requires:       python-azure-mgmt-servermanager < 3.0.0
-Requires:       python-azure-mgmt-servermanager >= 2.0.0
-Requires:       python-azure-mgmt-servicebus < 2.0.0
-Requires:       python-azure-mgmt-servicebus >= 1.0.0
-Requires:       python-azure-mgmt-servicefabric < 1.0.0
-Requires:       python-azure-mgmt-servicefabric >= 0.5.0
-Requires:       python-azure-mgmt-signalr < 1.0.0
-Requires:       python-azure-mgmt-signalr >= 0.4.0
-Requires:       python-azure-mgmt-sql < 1.0.0
-Requires:       python-azure-mgmt-sql >= 0.24.0
-Requires:       python-azure-mgmt-sqlvirtualmachine < 1.0.0
-Requires:       python-azure-mgmt-sqlvirtualmachine >= 0.5.0
-Requires:       python-azure-mgmt-storage < 17.0.0
-Requires:       python-azure-mgmt-storage >= 16.0.0
-Requires:       python-azure-mgmt-storagecache < 1.0.0
-Requires:       python-azure-mgmt-storagecache >= 0.3.0
-Requires:       python-azure-mgmt-storageimportexport < 1.0.0
-Requires:       python-azure-mgmt-storageimportexport >= 0.1.0
-Requires:       python-azure-mgmt-storagesync < 1.0.0
-Requires:       python-azure-mgmt-storagesync >= 0.2.0
-Requires:       python-azure-mgmt-streamanalytics < 2.0.0
-Requires:       python-azure-mgmt-streamanalytics >= 1.0.0rc1
-Requires:       python-azure-mgmt-subscription < 1.0.0
-Requires:       python-azure-mgmt-subscription >= 0.7.0
-Requires:       python-azure-mgmt-synapse < 1.0.0
-Requires:       python-azure-mgmt-synapse >= 0.4.0
-Requires:       python-azure-mgmt-trafficmanager < 1.0.0
-Requires:       python-azure-mgmt-trafficmanager >= 0.51.0
-Requires:       python-azure-mgmt-web < 1.0.0
-Requires:       python-azure-mgmt-web >= 0.48.0
+Requires:       python-azure-mgmt-advisor
+Requires:       python-azure-mgmt-alertsmanagement
+Requires:       python-azure-mgmt-apimanagement
+Requires:       python-azure-mgmt-appconfiguration
+Requires:       python-azure-mgmt-applicationinsights
+Requires:       python-azure-mgmt-appplatform
+Requires:       python-azure-mgmt-attestation
+Requires:       python-azure-mgmt-authorization
+Requires:       python-azure-mgmt-automanage
+Requires:       python-azure-mgmt-automation
+Requires:       python-azure-mgmt-azureadb2c
+Requires:       python-azure-mgmt-azurestack
+Requires:       python-azure-mgmt-azurestackhci
+Requires:       python-azure-mgmt-baremetalinfrastructure
+Requires:       python-azure-mgmt-batch
+Requires:       python-azure-mgmt-batchai
+Requires:       python-azure-mgmt-billing
+Requires:       python-azure-mgmt-botservice
+Requires:       python-azure-mgmt-cdn
+Requires:       python-azure-mgmt-cognitiveservices
+Requires:       python-azure-mgmt-commerce
+Requires:       python-azure-mgmt-communication
+Requires:       python-azure-mgmt-compute
+Requires:       python-azure-mgmt-confluent
+Requires:       python-azure-mgmt-consumption
+Requires:       python-azure-mgmt-containerinstance
+Requires:       python-azure-mgmt-containerregistry
+Requires:       python-azure-mgmt-containerservice
+Requires:       python-azure-mgmt-core
+Requires:       python-azure-mgmt-cosmosdb
+Requires:       python-azure-mgmt-costmanagement
+Requires:       python-azure-mgmt-customproviders
+Requires:       python-azure-mgmt-databox
+Requires:       python-azure-mgmt-databoxedge
+Requires:       python-azure-mgmt-databricks
+Requires:       python-azure-mgmt-datadog
+Requires:       python-azure-mgmt-datafactory
+Requires:       python-azure-mgmt-datalake-analytics
+Requires:       python-azure-mgmt-datalake-nspkg
+Requires:       python-azure-mgmt-datalake-store
+Requires:       python-azure-mgmt-datamigration
+Requires:       python-azure-mgmt-datashare
+Requires:       python-azure-mgmt-deploymentmanager
+Requires:       python-azure-mgmt-devspaces
+Requires:       python-azure-mgmt-devtestlabs
+Requires:       python-azure-mgmt-dns
+Requires:       python-azure-mgmt-documentdb
+Requires:       python-azure-mgmt-edgegateway
+Requires:       python-azure-mgmt-eventgrid
+Requires:       python-azure-mgmt-eventhub
+Requires:       python-azure-mgmt-frontdoor
+Requires:       python-azure-mgmt-hanaonazure
+Requires:       python-azure-mgmt-hdinsight
+Requires:       python-azure-mgmt-healthcareapis
+Requires:       python-azure-mgmt-hybridcompute
+Requires:       python-azure-mgmt-hybridkubernetes
+Requires:       python-azure-mgmt-imagebuilder
+Requires:       python-azure-mgmt-iotcentral
+Requires:       python-azure-mgmt-iothub
+Requires:       python-azure-mgmt-iothubprovisioningservices
+Requires:       python-azure-mgmt-keyvault
+Requires:       python-azure-mgmt-kubernetesconfiguration
+Requires:       python-azure-mgmt-kusto
+Requires:       python-azure-mgmt-labservices
+Requires:       python-azure-mgmt-loganalytics
+Requires:       python-azure-mgmt-logic
+Requires:       python-azure-mgmt-machinelearningcompute
+Requires:       python-azure-mgmt-machinelearningservices
+Requires:       python-azure-mgmt-maintenance
+Requires:       python-azure-mgmt-managedservices
+Requires:       python-azure-mgmt-managementgroups
+Requires:       python-azure-mgmt-managementpartner
+Requires:       python-azure-mgmt-maps
+Requires:       python-azure-mgmt-marketplaceordering
+Requires:       python-azure-mgmt-media
+Requires:       python-azure-mgmt-mixedreality
+Requires:       python-azure-mgmt-monitor
+Requires:       python-azure-mgmt-msi
+Requires:       python-azure-mgmt-netapp
+Requires:       python-azure-mgmt-network
+Requires:       python-azure-mgmt-notificationhubs
+Requires:       python-azure-mgmt-nspkg
+Requires:       python-azure-mgmt-peering
+Requires:       python-azure-mgmt-policyinsights
+Requires:       python-azure-mgmt-portal
+Requires:       python-azure-mgmt-powerbidedicated
+Requires:       python-azure-mgmt-powerbiembedded
+Requires:       python-azure-mgmt-privatedns
+Requires:       python-azure-mgmt-rdbms
+Requires:       python-azure-mgmt-recoveryservices
+Requires:       python-azure-mgmt-recoveryservicesbackup
+Requires:       python-azure-mgmt-redhatopenshift
+Requires:       python-azure-mgmt-redis
+Requires:       python-azure-mgmt-regionmove
+Requires:       python-azure-mgmt-relay
+Requires:       python-azure-mgmt-reservations
+Requires:       python-azure-mgmt-resource
+Requires:       python-azure-mgmt-resourcegraph
+Requires:       python-azure-mgmt-resourcemover
+Requires:       python-azure-mgmt-scheduler
+Requires:       python-azure-mgmt-search
+Requires:       python-azure-mgmt-security
+Requires:       python-azure-mgmt-serialconsole
+Requires:       python-azure-mgmt-servermanager
+Requires:       python-azure-mgmt-servicebus
+Requires:       python-azure-mgmt-servicefabric
+Requires:       python-azure-mgmt-signalr
+Requires:       python-azure-mgmt-sql
+Requires:       python-azure-mgmt-sqlvirtualmachine
+Requires:       python-azure-mgmt-storage
+Requires:       python-azure-mgmt-storagecache
+Requires:       python-azure-mgmt-storageimportexport
+Requires:       python-azure-mgmt-storagesync
+Requires:       python-azure-mgmt-streamanalytics
+Requires:       python-azure-mgmt-subscription
+Requires:       python-azure-mgmt-support
+Requires:       python-azure-mgmt-synapse
+Requires:       python-azure-mgmt-timeseriesinsights
+Requires:       python-azure-mgmt-trafficmanager
+Requires:       python-azure-mgmt-vmwarecloudsimple
+Requires:       python-azure-mgmt-web
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
