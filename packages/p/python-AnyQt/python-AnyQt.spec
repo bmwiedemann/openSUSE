@@ -1,7 +1,7 @@
 #
 # spec file for package python-AnyQt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/ales-erjavec/anyqt
 Source:         https://files.pythonhosted.org/packages/source/A/AnyQt/AnyQt-%{version}.tar.gz
+# PATCH-FIX-SLE do-not-test-pyqt4.patch alarrosa@suse.com -- Do not try testing the PyQt4 api
+Patch0:         do-not-test-pyqt4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,6 +56,7 @@ Features include:
 
 %prep
 %setup -q -n AnyQt-%{version}
+%patch0 -p1
 rm AnyQt/QtWinExtras.py
 rm AnyQt/QtMacExtras.py
 
@@ -65,7 +68,7 @@ rm AnyQt/QtMacExtras.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_exec test/test_import.py
 
 %files %{python_files}
 %doc README.txt

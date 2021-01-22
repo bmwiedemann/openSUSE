@@ -1,0 +1,21 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+
+We don't have PyQt4 bindings (not even Qt4 packages) so `import PyQt4`
+should fail but the python3-sip package in SLE creates the directory
+so the import doesn't fail and then it fails where the test doesn't
+expect it.
+
+
+Index: AnyQt-0.0.10/test/test_import.py
+===================================================================
+--- AnyQt-0.0.10.orig/test/test_import.py
++++ AnyQt-0.0.10/test/test_import.py
+@@ -5,7 +5,7 @@ import importlib
+ import subprocess
+ import sys
+ 
+-apis = {'pyqt4': 'PyQt4', 'pyqt5': 'PyQt5', 'pyside': 'PySide', 'pyside2': 'PySide2'}
++apis = {'pyqt5': 'PyQt5', 'pyside': 'PySide', 'pyside2': 'PySide2'}
+ 
+ submodules_common = ['QtCore', 'QtGui', 'QtHelp',
+               'QtMultimedia', 'QtNetwork', 'QtOpenGL', 'QtPrintSupport',

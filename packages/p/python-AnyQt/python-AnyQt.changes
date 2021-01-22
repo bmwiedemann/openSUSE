@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 22 16:16:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use the upstream provided test
+- Add patch to fix tests in Backports/Leap so we don't try testing
+  the PyQt4 api since we don't have Qt4 anymore in any case
+  (boo#1181294):
+  * do-not-test-pyqt4.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 10:01:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop building python2-AnyQt. There are no user in factory.
