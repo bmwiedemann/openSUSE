@@ -696,4 +696,12 @@
     <comment>- Bump kubernetes to 1.20.1 and 1.19.6</comment>
     <requestid>860454</requestid>
   </revision>
+  <revision rev="75" vrev="15">
+    <srcmd5>00f42993002e8244875de4972d310fa9</srcmd5>
+    <version>unknown</version>
+    <time>1611348594</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes to 1.20.2 and 1.19.7</comment>
+    <requestid>865037</requestid>
+  </revision>
 </revisionlist>
