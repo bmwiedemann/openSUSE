@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils-debuginfod
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
+Patch0:         config-do-not-define-DEBUGINFOD_URLS-environment-var.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

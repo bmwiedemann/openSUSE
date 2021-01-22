@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 12:01:02 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add upstream config-do-not-define-DEBUGINFOD_URLS-environment-var.patch
+  in order to fix boo#1180306.
+
+-------------------------------------------------------------------
 Thu Dec 10 12:21:29 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Move profile files to libdebuginfod1 sub-package.

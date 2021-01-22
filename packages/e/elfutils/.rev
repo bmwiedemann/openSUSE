@@ -811,4 +811,13 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>856471</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>35ffd72cbf79140044a08b19b7683475</srcmd5>
+    <version>0.182</version>
+    <time>1611348532</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream config-do-not-define-DEBUGINFOD_URLS-environment-var.patch
+  in order to fix boo#1180306. (forwarded request 860165 from marxin)</comment>
+    <requestid>860398</requestid>
+  </revision>
 </revisionlist>
