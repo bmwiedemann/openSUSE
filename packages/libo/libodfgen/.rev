@@ -154,4 +154,22 @@
     <comment></comment>
     <requestid>828347</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>79c0b0bcaf8c9224ab2db0f23e9e4026</srcmd5>
+    <version>0.1.8</version>
+    <time>1611348602</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.8:
+    + use libxml2 to parse xml's equations...
+    + code modernization:
+        use range-based for loop, use nullptr,
+        fix too small loop variables,
+        don't access static members through instance,
+    + retrieve more border's attributes in tables,
+    + retrieve draw:auto-grow-width,draw:fit-to-size,draw:z-index,
+       style:print-content, style:shrink-to-fit attributes in graphics
+    + output numbers with more precision,
+- Other improvements and fixes.</comment>
+    <requestid>865051</requestid>
+  </revision>
 </revisionlist>

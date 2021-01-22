@@ -1,7 +1,7 @@
 #
 # spec file for package libodfgen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname libodfgen-0_1-1
 Name:           libodfgen
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Library to generate ODF documents from libwpd's and libwpg's api calls
 License:        LGPL-2.1-or-later AND MPL-2.0+
 Group:          Productivity/Publishing/Word
 URL:            http://libwpd.sourceforge.net
-Source:         http://downloads.sourceforge.net/project/libwpd/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
+Source:         https://downloads.sourceforge.net/project/libwpd/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -32,6 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(librevenge-0.0)
 BuildRequires:  pkgconfig(librevenge-stream-0.0)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 libodfgen is a general purpose library designed to generate ODF documents
