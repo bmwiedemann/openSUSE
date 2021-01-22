@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 12:34:54 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make sure LMDB is used for /etc/aliases by newaliases
+
+-------------------------------------------------------------------
 Fri Jan  8 14:35:00 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use LMDB instead of BDB in preparation of obsoleting BDB

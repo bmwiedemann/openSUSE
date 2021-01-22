@@ -64,4 +64,12 @@
 - Fix error caused by uninitialized DEBUG variable (forwarded request 861721 from kukuk)</comment>
     <requestid>861722</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>87ee80ccf167f37d9a805bf212fca49c</srcmd5>
+    <version>1.0.0</version>
+    <time>1611348769</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure LMDB is used for /etc/aliases by newaliases (forwarded request 865994 from kukuk)</comment>
+    <requestid>865995</requestid>
+  </revision>
 </revisionlist>
