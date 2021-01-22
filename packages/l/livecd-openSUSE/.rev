@@ -1104,4 +1104,11 @@
     <comment>  editor is enough (no space left).
 - Drop libstorage-ng-lang: no spaceleft on the rescue CD.</comment>
   </revision>
+  <revision rev="137" vrev="137">
+    <srcmd5>db69b91f82f2a7fe1a5b9136592a9ba1</srcmd5>
+    <version>unknown</version>
+    <time>1611315921</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove recommended python38-pip from RescueCD.</comment>
+  </revision>
 </revisionlist>

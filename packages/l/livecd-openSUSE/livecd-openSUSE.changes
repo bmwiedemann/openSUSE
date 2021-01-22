@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 11:44:45 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove recommended python38-pip from RescueCD.
+
+-------------------------------------------------------------------
 Sun Jan 17 10:25:00 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop joe from the RescueCD: we have vim-small, and one text

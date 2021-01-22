@@ -38,6 +38,7 @@ buildignore Mesa-libva
 
 # No python2 necessary
 buildignore python-base
+buildignore python38-pip
 
 # Pulls in libpython2_7
 buildignore libpeas-loader-python
