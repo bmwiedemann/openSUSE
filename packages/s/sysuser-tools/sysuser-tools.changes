@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 20 15:06:51 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Ignore nscd return code
+
+-------------------------------------------------------------------
+Tue Jan 19 15:15:41 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- If systemd-sysusers is used to create a new user/group, invalidate
+  the nscd passwd and group cache to make the new user/group
+  visible immediately as workaround [bsc#1181121].
+  Needs to be removed after sytemd-sysusers get's fixed, since we
+  invalidate the cache even if the user/group file wasn't changed.
+
+-------------------------------------------------------------------
+Sun Jan 17 21:16:25 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- An "u" in a sysusers.d file will create an user and a group.
+  Create provides for both, user and group.
+
+-------------------------------------------------------------------
+Thu Jan 14 14:30:20 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use systemd-sysusers as default to create and update the user
+  account. Fixes the problem that a modified sysusers config file
+  get's ignored by useradd and adduser [bsc#1180549].
+
+-------------------------------------------------------------------
 Fri Dec  4 10:54:00 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - useradd_or_adduser_dep must be PreReq so ordering makes sure it gets

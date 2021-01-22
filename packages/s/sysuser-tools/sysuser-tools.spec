@@ -1,7 +1,7 @@
 #
 # spec file for package sysuser-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ Generate auto provides for system users.
 %package -n sysuser-shadow
 Summary:        Tool to execute sysusers.d with shadow utilities
 Group:          System/Packages
-PreReq:         useradd_or_adduser_dep
+Requires(pre):  (/usr/sbin/useradd or busybox or /usr/bin/systemd-sysusers)
 # prefer original shadow over busybox by default
 Suggests:       shadow
 
