@@ -1,7 +1,7 @@
 #
 # spec file for package toolbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           toolbox
-Version:        1.0+git20201126.3d26283
+Version:        1.0+git20210119.b5acdcf
 Release:        0
 Summary:        Script to start a toolbox container for system debugging
 License:        Apache-2.0
+Group:          System/Management
 URL:            https://github.com/thkukuk/microos-toolbox
 Source:         microos-toolbox-%{version}.tar.xz
+Source1:        toolboxrc
 Requires:       podman
 BuildArch:      noarch
 
@@ -42,10 +44,17 @@ such a system. The root filesystem can be found at /media/root.
 %install
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 toolbox %{buildroot}%{_bindir}/toolbox
+%if !0%{?is_opensuse}
+mkdir -p %{buildroot}%{_sysconfdir}
+install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/toolboxrc
+%endif
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/toolbox
+%if !0%{?is_opensuse}
+%config %{_sysconfdir}/toolboxrc
+%endif
 
 %changelog
