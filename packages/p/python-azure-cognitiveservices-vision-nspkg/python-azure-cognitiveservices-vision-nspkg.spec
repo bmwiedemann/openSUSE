@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cognitiveservices-vision-nspkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,15 +60,14 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-cognitiveservices-vision-nspkg-%{ve
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{python2_sitelib}/azure/cognitiveservices/vision
-mkdir -p %{buildroot}%{python3_sitelib}/azure/cognitiveservices/vision
+%python_expand mkdir -p %{buildroot}%{$python_sitelib}/azure/cognitiveservices/vision
 
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
-%python2_only %{python2_sitelib}/azure/cognitiveservices/vision
-%python3_only %dir %{python3_sitelib}/azure/cognitiveservices/vision
+%dir %{python_sitelib}/azure/cognitiveservices/vision
+%python2_only %{python_sitelib}/azure/cognitiveservices/vision
 %{python_sitelib}/azure_cognitiveservices_vision_nspkg-*.egg-info
 
 %changelog
