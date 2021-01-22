@@ -1,7 +1,7 @@
 #
 # spec file for package meson
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.56.0
+Version:        0.56.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -37,14 +37,10 @@ URL:            http://mesonbuild.com/
 Source:         https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz
 Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.asc
 Source2:        meson.keyring
-# PATCH-FIX-OPENSUSE meson-suse-ify-macros.patch dimstar@opensuse.org -- Make the macros non-RedHat specific: so far there are no separate {C,CXX,F}FLAGS.
-Patch0:         meson-suse-ify-macros.patch
 # PATCH-FIX-OPENSUSE meson-test-installed-bin.patch dimstar@opensuse.org -- We want the test suite to run against /usr/bin/meson coming from our meson package.
 Patch1:         meson-test-installed-bin.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch2:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM 7930.patch -- pkgconfig: Make external deps of static library public
-Patch3:         https://patch-diff.githubusercontent.com/raw/mesonbuild/meson/pull/7930.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -159,12 +155,10 @@ This package provides support for meson.build files in Vim.
 
 %prep
 %setup -q -n meson-%{version}
-%patch0 -p1
 %patch1 -p1
 %if !%{with setuptools}
 %patch2 -p1
 %endif
-%patch3 -p1
 
 # We do not have gmock available at this moment - can't run the test suite for it
 rm -r "test cases/frameworks/3 gmock" \
