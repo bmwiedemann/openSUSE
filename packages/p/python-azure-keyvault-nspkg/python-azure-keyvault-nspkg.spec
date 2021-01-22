@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-keyvault-nspkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,16 +62,12 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-nspkg-%{version}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{python2_sitelib}/azure/keyvault
-mkdir -p %{buildroot}%{python3_sitelib}/azure/keyvault
 
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.md
 %license LICENSE.txt
-%python2_only %{python2_sitelib}/azure/keyvault
-%python3_only %dir %{python3_sitelib}/azure/keyvault
-%python3_only %exclude %{python3_sitelib}/azure/keyvault/*
+%{python_sitelib}/azure/keyvault
 %{python_sitelib}/azure_keyvault_nspkg-*.egg-info
 
 %changelog

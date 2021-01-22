@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853880</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ea011ae3a5525fe8a4940e707d8f2494</srcmd5>
+    <version>1.0.0</version>
+    <time>1611348691</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with Python multi-flavor builds
+  + Switch to explicit namespace packages on Python 3 (PEP 420) (forwarded request 864364 from glaubitz)</comment>
+    <requestid>864419</requestid>
+  </revision>
 </revisionlist>
