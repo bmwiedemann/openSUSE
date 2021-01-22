@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 20 15:12:07 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL to https://github.com/jaraco/inflect
+- Update to v5.0.2
+  * Inflect withdraws from Jazzband organisation
+    in order to continue to participate in sustained maintenance
+    and enterprise support through Tidelift.
+    The project continues to honor the guidelines and principles
+    behind Jazzband and welcomes contributors openly
+- from v5.0.1
+  * Identical release validating release process
+- from v5.0.0
+  * Module no longer exposes a ``__version__`` attribute.
+    Instead to query the version installed, use
+    importlib.metadata or its backport
+- from v4.1.1
+  * Refreshed package metadata
+
+-------------------------------------------------------------------
 Tue Apr 14 11:03:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.1.0

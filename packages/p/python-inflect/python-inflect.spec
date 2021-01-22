@@ -1,7 +1,7 @@
 #
 # spec file for package python-inflect
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-inflect
-Version:        4.1.0
+Version:        5.0.2
 Release:        0
 Summary:        Methods for working on numbers and nouns
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/jazzband/inflect
+URL:            https://github.com/jaraco/inflect
 Source0:        https://files.pythonhosted.org/packages/source/i/inflect/inflect-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
