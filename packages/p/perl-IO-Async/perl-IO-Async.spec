@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Async
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-IO-Async
-Version:        0.77
+Version:        0.78
 Release:        0
 %define cpan_name IO-Async
 Summary:        Asynchronous event-driven programming
@@ -26,7 +26,6 @@ Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         https://rt.cpan.org/Ticket/Attachment/1912750/1024503/IO-Async-0.77-Adjust-t-50resolver.t-test-for-an-unavailable-DNS-se.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -61,7 +60,6 @@ includes more higher-level functionality built on top of these basic parts.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
 
 %build
 perl Build.PL installdirs=vendor

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jan 22 11:01:01 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Remove patch IO-Async-0.77-Adjust-t-50resolver.t-test-for-an-unavailable-DNS-se.patch
+  (was applied upstream. https://rt.cpan.org/Public/Bug/Display.html?id=131109)
+
+-------------------------------------------------------------------
+Fri Jan 22 03:07:12 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.78
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+
+  0.78    2021-01-21
+          [CHANGES]
+           * Warn on attempts to ->connect to INADDR(6)_LOOPBACK as some OSes
+             (e.g. OpenBSD) do not allow it
+           * Various fixes for IO::Async::LoopTests to better support
+             IO::Async::Loop::UV:
+              + Insert some ->loop_once(0) calls between timing tests to allow
+                libuv to clear its pending queues
+              + Allow loops to declare that they cannot perform all-child PID
+                watch and skip the relevant tests for it if so
+           * Have $loop->later return a future instance if not passed any code
+             (RT133240)
+
+          [BUGFIXES]
+           * Accept more error codes for failure to resolve missing hostname
+             (RT131109)
+           * Defend against some undef values at global destruction time
+             (RT132677)
+
+-------------------------------------------------------------------
 Fri Oct 16 19:34:27 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add IO-Async-0.77-Adjust-t-50resolver.t-test-for-an-unavailable-DNS-se.patch
