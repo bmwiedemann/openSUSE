@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 19 23:21:26 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.14 (released 2021-01-19) includes security fixes to the
+  cmd/go and crypto/elliptic packages.
+  CVE-2021-3114 CVE-2021-3115
+  Refs boo#1164903 go1.14 release tracking
+  * boo#1181145 CVE-2021-3114
+  * go#43787 crypto/elliptic: incorrect operations on the P-224 curve
+  * boo#1181146 CVE-2021-3115
+  * go#43784 cmd/go: packages using cgo can cause arbitrary code execution on Windows
+
+-------------------------------------------------------------------
 Thu Dec  3 22:31:19 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.13 (released 2020-12-03) includes fixes to the compiler,

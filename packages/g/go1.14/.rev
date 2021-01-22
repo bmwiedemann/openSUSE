@@ -218,4 +218,19 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
   * go#42566 cmd/go: allow flags in CGO_LDFLAGS environment variable not in security allowlist</comment>
     <requestid>852983</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dd9d178c9e1127c55d22f381e305cceb</srcmd5>
+    <version>1.14.14</version>
+    <time>1611348553</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.14 (released 2021-01-19) includes security fixes to the
+  cmd/go and crypto/elliptic packages.
+  CVE-2021-3114 CVE-2021-3115
+  Refs boo#1164903 go1.14 release tracking
+  * boo#1181145 CVE-2021-3114
+  * go#43787 crypto/elliptic: incorrect operations on the P-224 curve
+  * boo#1181146 CVE-2021-3115
+  * go#43784 cmd/go: packages using cgo can cause arbitrary code execution on Windows (forwarded request 864484 from jfkw)</comment>
+    <requestid>864485</requestid>
+  </revision>
 </revisionlist>
