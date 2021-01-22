@@ -1,7 +1,7 @@
 #
 # spec file for package python-compat-patcher-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-compat-patcher-core
-Version:        1.0
+Version:        1.2
 Release:        0
 Summary:        Python patcher system
 License:        MIT
@@ -31,11 +31,14 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+Suggests:       cookiecutter > 1.6.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module six}
+BuildRequires:  python3-pytest-cookies
 # /SECTION
 %python_subpackages
 
@@ -46,8 +49,6 @@ Python patcher system to allow easy and lasting API compatibility.
 %setup -q -n compat-patcher-core-%{version}
 sed -i 's/python setup/python3 setup/' tests/*.py
 dos2unix CHANGELOG
-# Depends on pytest-cookies, and the recipe isnt part of the core package
-rm tests/test_cookiecutter_recipe.py
 rm pytest.ini
 
 %build
@@ -58,7 +59,15 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests
+# Cookiecutter is only available as python3, which is not 3.6 on Tumbleweed
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+if [ "$python" = "python3.6" -o "$python" = "python2" ]; then
+  ignore="tests/test_cookiecutter_recipe.py"
+else
+  ignore=""
+fi
+$python -m pytest tests ${ignore:+ --ignore "$ignore"}
+}
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG README.rst

@@ -7,4 +7,12 @@
     <comment>dependency of django-compat-patcher</comment>
     <requestid>828722</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>95d5f77c4fbfb60b7995e3c0f626d251</srcmd5>
+    <version>1.2</version>
+    <time>1611348742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865658</requestid>
+  </revision>
 </revisionlist>
