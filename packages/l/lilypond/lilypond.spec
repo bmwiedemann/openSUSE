@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,21 +21,21 @@
 %define ver %(echo %{version} | cut -d . -f 1,2)
 
 Name:           lilypond
-Version:        2.20.0
+Version:        2.22.0
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            http://www.lilypond.org
-Source0:        https://lilypond.org/download/sources/v2.20/lilypond-%{version}.tar.gz
+Source0:        https://lilypond.org/download/sources/v2.22/lilypond-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
-Patch1:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
+#Patch1:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
 Patch2:         add_dircategories_to_documentation.patch
 Patch3:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
 Patch4:         use_cstring_and_ctype_includes.patch
-Patch5:         0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch
+#Patch5:         0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch
 BuildRequires:  ImageMagick
 BuildRequires:  bison
 BuildRequires:  dblatex
@@ -162,7 +162,7 @@ popd
 
 rm -f %{buildroot}%{_infodir}/dir
 
-chmod 0755  %{buildroot}%{_datadir}/lilypond/2.20.0/python/langdefs.py
+chmod 0755  %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 
 %find_lang %{name}
 
@@ -195,11 +195,9 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS.txt DEDICATION HACKING
-%doc NEWS.txt README.txt ROADMAP VERSION
+%doc AUTHORS.txt DEDICATION HACKING NEWS.txt
 %license COPYING LICENSE*
 %{_bindir}/*
-%{_libdir}/lilypond
 %{_datadir}/lilypond
 %{_datadir}/emacs/site-lisp
 %{_datadir}/vim/vim*

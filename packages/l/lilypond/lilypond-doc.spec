@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond-doc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 ExcludeArch:    x86 x86_64 aarch64 ppc64le s390x
 %endif
 
-%define ver     2.20
+%define ver     2.22
 %define plevel  0
 Name:           lilypond-doc
 Version:        %{ver}.%{plevel}
@@ -38,7 +38,6 @@ Source0:        lilypond-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
-Patch1:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
 Patch2:         add_dircategories_to_documentation.patch
 Patch3:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
 Patch4:         use_cstring_and_ctype_includes.patch
@@ -257,7 +256,7 @@ fi
 LILYPOND_EXTERNAL_BINARY=%{_bindir}/lilypond
 # Remove spurious executables rpm lint error
 chmod 0644 %{buildroot}%{_docdir}/lilypond/Documentation/pictures/*png || true
-%find_lang lilypond
+#%%find_lang lilypond
 texhash %{buildroot}%{_datadir}/lilypond/%{rlversion}
 find %{buildroot}%{_docdir}/lilypond/ -type f -empty -delete -print
 %fdupes -s %{buildroot}%{_docdir}

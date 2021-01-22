@@ -322,4 +322,15 @@
 </comment>
     <requestid>828112</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>81eab72fcd150ae8ae655a3b5521ff72</srcmd5>
+    <version>2.22.0</version>
+    <time>1611348719</time>
+    <user>dimstar_suse</user>
+    <comment>Remove conflicting README.md from lilypond package
+ Update to version 2.22.0 and remove incorporated patches:
+  0101-read_relocation_dir-in-lilypond_datadir-too.patch and
+  0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch</comment>
+    <requestid>865958</requestid>
+  </revision>
 </revisionlist>

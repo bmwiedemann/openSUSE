@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 12 12:15:54 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 2.22.0 and remove incorporated patches:
+  0101-read_relocation_dir-in-lilypond_datadir-too.patch and
+  0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch
+- Upstream changes:
+  *Displaying pitch improvements
+  *Rhythm improvements
+  *Expressive mark improvements
+  *Editorial annotation improvements
+  *Vocal music improvements
+  *Unfretted and fretted string instrument improvements
+  *Chord notation improvements
+  *Contemporary music improvements
+  *Input file improvements
+  *Output improvements
+
+-------------------------------------------------------------------
 Thu Aug  6 09:19:51 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Add patch from git to fix boo#1174949 - CVE-2020-17353:
