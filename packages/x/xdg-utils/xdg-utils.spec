@@ -66,10 +66,16 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+# Make call-browser executable, symlink (bsc#170316)
+ln -snf xdg-open %{buildroot}%{_bindir}/call-browser
+ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
+
 %files
 %defattr(-,root,root)
 %doc ChangeLog README TODO
 %license LICENSE
+%{_bindir}/call-browser
+%{_bindir}/desktop-launch
 %{_bindir}/xdg-desktop-icon
 %{_bindir}/xdg-desktop-menu
 %{_bindir}/xdg-email
