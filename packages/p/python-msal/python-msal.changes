@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 11 15:39:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.8.0
+  + New feature: A new extra_scopes_to_consent parameter is introduced
+    to the acquire_token_interactive(...) API (#212, #286)
+  + Adjustment to previous version 1.7.0: Lazy import webbrowser module
+    only when necessary (#287, #288)
+- from version 1.7.0
+  + New feature: A new initiate_auth_code_flow() & acquire_token_by_auth_code_flow()
+    API, which automatically provides PKCE protection for you (#276, #255).
+    (You are recommended to use these 2 new APIs to replace the previous
+    get_authorization_request_url() and acquire_token_by_authorization_code().)
+  + New feature: A new acquire_token_interactive() (#138, #260, #282), comes with
+    a sample (#283)
+  + Bugfix: Now MSAL Python can properly access those Refresh Tokens which were
+    keyed slightly differently by different apps. (#279, #280)
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater
