@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-datalake-nspkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,15 +60,14 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-datalake-nspkg-%{version}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{python2_sitelib}/azure/mgmt/datalake
-mkdir -p %{buildroot}%{python3_sitelib}/azure/mgmt/datalake
+%python_expand mkdir -p %{buildroot}%{$python_sitelib}/azure/mgmt/datalake
 
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
-%python2_only %{python2_sitelib}/azure/mgmt/datalake
-%python3_only %dir %{python3_sitelib}/azure/mgmt/datalake
+%dir %{python_sitelib}/azure/mgmt/datalake
+%python2_only %{python_sitelib}/azure/mgmt/datalake
 %{python_sitelib}/azure_mgmt_datalake_nspkg-*.egg-info
 
 %changelog
