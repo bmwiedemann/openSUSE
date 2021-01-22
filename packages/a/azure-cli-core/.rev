@@ -195,4 +195,19 @@
 - Update Requires from setup.py (forwarded request 851139 from glaubitz)</comment>
     <requestid>851831</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>17dbc551e0063d45a209751215901469</srcmd5>
+    <version>2.18.0</version>
+    <time>1611348712</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.18.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Rework patch to disable automatic check for updates to
+  fix a crash when calling &quot;az --version&quot; (bsc#1180930)
+  + acc_disable-update-check.patch
+- Update Requires from setup.py (forwarded request 865462 from glaubitz)</comment>
+    <requestid>865490</requestid>
+  </revision>
 </revisionlist>
