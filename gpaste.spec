@@ -1,7 +1,7 @@
 #
 # spec file for package gpaste
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Simone Tolotti, <simone.tolotti@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Clutter\\)
 Name:           gpaste
-Version:        3.38.3
+Version:        3.38.4
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
