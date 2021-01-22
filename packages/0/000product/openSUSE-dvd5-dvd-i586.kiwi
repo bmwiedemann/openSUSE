@@ -57,8 +57,6 @@
       <repopackage name=" patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" arch="i586,i686"/>
       <repopackage name=" patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" arch="i586,i686"/>
       <repopackage name=" patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" arch="i586,i686"/>
-      <repopackage name=" patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" arch="i586,i686"/>
-      <repopackage name=" patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" arch="i586,i686"/>
       <repopackage name="a2ps"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>

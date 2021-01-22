@@ -4050,8 +4050,8 @@
     <package name=" patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" supportstatus="unsupported"/>
     <package name=" patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.2-1.1.i586" supportstatus="unsupported"/>
     <package name=" patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" supportstatus="unsupported"/>
-    <package name=" patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" supportstatus="unsupported"/>
-    <package name=" patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586" supportstatus="unsupported"/>
+    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
     <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
     <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
