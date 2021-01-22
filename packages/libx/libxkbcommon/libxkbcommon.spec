@@ -1,7 +1,7 @@
 #
 # spec file for package libxkbcommon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -128,6 +128,7 @@ layouts and variants for a given ruleset.
 %package -n libxkbregistry-devel
 Summary:        Header files for xkbregistry
 Group:          Development/Libraries/C and C++
+Requires:       libxkbregistry0 = %version-%release
 
 %description -n libxkbregistry-devel
 libxkbregistry is a C library that lists available XKB models,

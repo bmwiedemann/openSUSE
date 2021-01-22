@@ -252,4 +252,13 @@
     <comment>- Update to release 1.0.3</comment>
     <requestid>850308</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>4a243096c7829472186440393266c1a1</srcmd5>
+    <version>1.0.3</version>
+    <time>1611348582</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency of libxkbregistry-devel: the devel package must
+  require the library libxkbregistry0.</comment>
+    <requestid>864992</requestid>
+  </revision>
 </revisionlist>

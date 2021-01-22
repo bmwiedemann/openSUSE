@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:28:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency of libxkbregistry-devel: the devel package must
+  require the library libxkbregistry0.
+
+-------------------------------------------------------------------
 Mon Nov 23 19:07:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.3
