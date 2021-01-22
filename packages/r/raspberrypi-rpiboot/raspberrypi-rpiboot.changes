@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 07:32:07 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- add support for CM4 (jsc#SLE-16895)
+
+-------------------------------------------------------------------
 Tue Jun  9 16:12:22 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - delete update_git.sh

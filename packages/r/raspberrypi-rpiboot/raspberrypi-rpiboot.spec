@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-rpiboot
-Version:        c650cd7
+Version:        49a2a4f
 Release:        0
 Summary:        Raspberry Pi rpiboot tool
 License:        Apache-2.0
