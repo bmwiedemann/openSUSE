@@ -1,0 +1,5 @@
+<package name="python-tableauserverclient" project="openSUSE:Factory">
+  <title></title>
+  <description>Python library for working with the Tableau Server REST API</description>
+  <devel project="devel:languages:python" package="python-tableauserverclient"/>
+</package>
