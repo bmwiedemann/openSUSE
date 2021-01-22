@@ -21,6 +21,9 @@
 
 %bcond_with    x264
 
+# Internal QML imports
+%global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
+
 Name:           shotcut
 Version:        20.11.28
 Release:        0
