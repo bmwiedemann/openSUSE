@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-nspkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,15 +58,14 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-nspkg-%{version}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{python2_sitelib}/azure/mgmt
-mkdir -p %{buildroot}%{python3_sitelib}/azure/mgmt
+%python_expand mkdir -p %{buildroot}%{$python_sitelib}/azure/mgmt
 
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
-%python2_only %{python2_sitelib}/azure/mgmt
-%python3_only %dir %{python3_sitelib}/azure/mgmt
+%dir %{python_sitelib}/azure/mgmt
+%python2_only %{python_sitelib}/azure/mgmt
 %{python_sitelib}/azure_mgmt_nspkg-*.egg-info
 
 %changelog
