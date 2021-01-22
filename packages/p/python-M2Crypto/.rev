@@ -390,4 +390,12 @@ this has necessary adjustments for openssl w/o sslv2; needed for Factory! (forwa
 </comment>
     <requestid>854111</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>3b9ef52b9f2c2b5300c9ad746c47d38c</srcmd5>
+    <version>0.37.1</version>
+    <time>1611348573</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>864616</requestid>
+  </revision>
 </revisionlist>
