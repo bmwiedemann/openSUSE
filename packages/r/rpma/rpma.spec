@@ -30,7 +30,7 @@ BuildRequires:  gcc
 BuildRequires:  pkg-config
 BuildRequires:  libibverbs-devel
 BuildRequires:  pkgconfig(libpmem) >= 1.6
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le
 
 %description
 librpma is a C library for accessing persistent memory (PMem) devices on
