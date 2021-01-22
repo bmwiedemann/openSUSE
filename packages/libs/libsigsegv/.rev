@@ -83,4 +83,22 @@
 - Disable LTO (boo#1133245).</comment>
     <requestid>698204</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e849c9c88a6df5bb6bc99bea687c2087</srcmd5>
+    <version>2.13</version>
+    <time>1611348544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.13:
+  * Added support for macOS/arm64.
+  * Added support for Solaris OpenIndiana.
+  * Added support for catching stack overflow on Solaris 11/SPARC.
+  * Added support for catching stack overflow on 64-bit Haiku.
+  * Provide a correct value for SIGSTKSZ on 64-bit Solaris/x86. The one defined
+    by this system is too small.
+  * Improved support for Linux/RISC-V, Linux/nds32.
+  * Improved support for Android.
+  * Improved support for FreeBSD/x86, FreeBSD/x86_64, FreeBSD/arm, FreeBSD/arm64.
+  * Improved support for 64-bit ABI on Solaris/x86_64.</comment>
+    <requestid>864430</requestid>
+  </revision>
 </revisionlist>

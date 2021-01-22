@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 19 21:16:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13:
+  * Added support for macOS/arm64.
+  * Added support for Solaris OpenIndiana.
+  * Added support for catching stack overflow on Solaris 11/SPARC.
+  * Added support for catching stack overflow on 64-bit Haiku.
+  * Provide a correct value for SIGSTKSZ on 64-bit Solaris/x86. The one defined
+    by this system is too small.
+  * Improved support for Linux/RISC-V, Linux/nds32.
+  * Improved support for Android.
+  * Improved support for FreeBSD/x86, FreeBSD/x86_64, FreeBSD/arm, FreeBSD/arm64.
+  * Improved support for 64-bit ABI on Solaris/x86_64.
+
+-------------------------------------------------------------------
 Fri Apr 26 11:19:16 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Allow LTO but only FAT LTO OBJECTS (boo#1133245)
