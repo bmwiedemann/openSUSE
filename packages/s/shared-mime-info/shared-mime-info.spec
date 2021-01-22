@@ -1,7 +1,7 @@
 #
 # spec file for package shared-mime-info
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define commitid 0440063a2e6823a4b1a6fb2f2af8350f
+%define commitid 0ee50652091363ab0d17e335e5e74fbe
 
 Name:           shared-mime-info
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Shared MIME Database
 License:        GPL-2.0-or-later
@@ -27,9 +27,6 @@ Group:          System/X11/Utilities
 URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
 Source0:        %{url}/uploads/%{commitid}/%{name}-%{version}.tar.xz
 Source1:        macros.shared-mime-info
-# PATCH-FIX-UPSTREAM smi-Fix-pkg-config-installation-path.patch -- Fix pkg-config installation path
-Patch0:         smi-Fix-pkg-config-installation-path.patch
-
 BuildRequires:  glib2-devel
 BuildRequires:  itstool
 BuildRequires:  libxml2-devel

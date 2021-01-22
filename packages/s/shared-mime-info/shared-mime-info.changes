@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan  6 12:41:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  * New maintainers: David Faure and Ville Skyttä
+  * Adapt to xdgmime behaviour change: in case of multiple glob matches, and the magic match is unrelated to all of them, ignore the magic and pick one of the glob matches. xdgmime was actually deviating from the spec on this. (#138)
+  * Improve text/vnd.trolltech.linguist magic to reduce false positives for MPEG TS files (#10)
+  * audio/mpeg: add layer 2, 2.5, and 1 protected magics (#46)
+  * Add many aliases for image/x-tga
+  * audio/x-mod: improve magic for 669 Composer files (#144)
+  * Add mime-type image/ktx2 (Khronos image texture format version 2)
+  * application/oxps: differentiate from /vnd.ms-xpsdocument
+  * Make image/g3fax the canonical name for image/fax-g3
+  * Make text/vnd.trolltech.linguist the canonical name for text/vnd.qt.linguist
+  * Make application/vnd.smaf the canonical name for application/x-smaf
+  * Make application/vnd.apple.keynote the canonical name for application/x-iwork-keynote-sffkey
+  * Add mime-type image/astc (Adaptive Scalable Texture Compression files)
+  * Add mime-type for SageMath script files (*.sage)
+  * Add mime-type for Kaitai Struct
+  * Remove application/x-dc-rom
+  * Add mime-type for MAME compressed hard disk image (application/x-mame-chd)
+  * Add mime-types application/nintendo-3ds-executable, application/x-nintendo-3ds-rom
+  * Add mime-types application/x-dreamcast-rom, application/x-gd-rom-cue, application/x-discjuggler-cd-image
+  * Add mime-type application/x-compressed-iso (*.cso)
+  * Remove image/avif-sequence
+  * Fix application/x-sharedlib vs application/x-executable confusion for PIE executables (#11) 
+- drop smi-Fix-pkg-config-installation-path.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue May 19 18:08:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Revert the previous change, we should not own
