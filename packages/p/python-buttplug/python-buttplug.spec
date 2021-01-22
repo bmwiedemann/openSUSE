@@ -1,7 +1,7 @@
 #
 # spec file for package python-buttplug
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define packagename buttplug-py
 Name:           python-buttplug
@@ -26,18 +27,18 @@ License:        BSD-3-Clause
 URL:            https://github.com/buttplugio/buttplug-py/
 Source:         https://github.com/buttplugio/buttplug-py/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 4.0}
-BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module websockets >= 7.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
+BuildRequires:  ((python3-dataclasses and python3-base < 3.7) or (python36-dataclasses and python36-base))
 Requires:       python-websockets
 BuildArch:      noarch
-%if 0%{?suse_version} <= 1520
-BuildRequires:  %{python_module dataclasses}
+%if 0%{?suse_version} >= 1550
+# pytest-asyncio needs pytest6 now
+BuildRequires:  %{python_module pytest-asyncio}
 %endif
-%if 0%{?suse_version} <= 1520
+%if 0%{?python_version_nodots} < 37
 Requires:       python-dataclasses
 %endif
 %python_subpackages
