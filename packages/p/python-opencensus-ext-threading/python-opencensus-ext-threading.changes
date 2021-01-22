@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 21 11:57:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update base archive to opencensus-0.7.12 (no code change for
+  ext-threading)
+- require futures only for python2
+- Use pyunittest macro
+- Add remove-mock.patch 
+  gh#census-instrumentation/opencensus-python#1002
+
+-------------------------------------------------------------------
 Tue Mar 10 12:55:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not provide generic ext folder init content

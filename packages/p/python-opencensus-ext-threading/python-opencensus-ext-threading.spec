@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus-ext-threading
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
-%define repo_version 0.7.7
+%define repo_version 0.7.12
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-opencensus-ext-threading
 Version:        0.1.2
 Release:        0
@@ -25,11 +26,15 @@ Summary:        OpenCensus threading Integration
 License:        Apache-2.0
 URL:            https://github.com/census-instrumentation/opencensus-python
 Source:         https://github.com/census-instrumentation/opencensus-python/archive/v%{repo_version}.tar.gz#/opencensus-%{repo_version}.tar.gz
-BuildRequires:  %{python_module mock}
+# PATCH-FIX-UPSTREAM remove-mock.patch gh#census-instrumentation/opencensus-python#1002
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module opencensus}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+%if %{with python2}
 BuildRequires:  python-futures
+BuildRequires:  python-mock
+%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-opencensus
 BuildArch:      noarch
@@ -43,6 +48,9 @@ OpenCensus threading Integration
 
 %prep
 %setup -q -n opencensus-python-%{repo_version}/contrib/opencensus-ext-threading
+pushd ../..
+%patch0 -p1
+popd
 # for discovery to work
 touch tests/__init__.py
 
@@ -62,7 +70,7 @@ rm -rf %{buildroot}%{$python_sitelib}/opencensus/ext/__pycache__
 }
 
 %check
-%python_exec -m unittest discover -v
+%pyunittest discover -v
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
