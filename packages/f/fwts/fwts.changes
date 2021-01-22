@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 22 09:30:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 21.01.00:
+  * See provided changelog for detailed list of changes  
+- Drop upstreamed patch:
+  * acpi-pmtt-fix-infinite-loops-when-length-is-incorrectly-zero.diff
+
+-------------------------------------------------------------------
 Mon Jan 18 08:25:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Add patch fixing bsc#1178442 bsc#1177992

@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        20.12.00
+Version:        21.01.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source0:        https://fwts.ubuntu.com/release/%{name}-V%{version}.tar.gz
 Patch1:         fwts-no-compiletime.patch
 # PATCH-FIX-OPENSUSE fwts-fix-non-acpi.patch
 Patch2:         fwts-fix-non-acpi.patch
-# PATCH-FIX-UPSTREAM acpi-pmtt-fix-infinite-loops-when-length-is-incorrectly-zero.diff
-Patch3:         acpi-pmtt-fix-infinite-loops-when-length-is-incorrectly-zero.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
