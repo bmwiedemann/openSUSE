@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-servicebus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-servicebus
-Version:        0.50.3
+Version:        7.0.1
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
@@ -36,10 +36,15 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.6.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-requests
+Requires:       python-isodate >= 0.6.0
+Requires:       python-msrest < 2.0.0
+Requires:       python-msrest >= 0.6.17
+Requires:       python-six >= 1.6
 Requires:       python-uamqp < 2.0.0
-Requires:       python-uamqp >= 1.2.8
+Requires:       python-uamqp >= 1.2.13
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
