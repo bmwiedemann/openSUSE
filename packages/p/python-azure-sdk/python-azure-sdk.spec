@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-sdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,94 +28,100 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 BuildRequires:  python-rpm-macros
-Requires:       python-azure-appconfiguration < 2.0.0
-Requires:       python-azure-appconfiguration >= 1.1.0
-Requires:       python-azure-applicationinsights < 1.0.0
-Requires:       python-azure-applicationinsights >= 0.1.0
-Requires:       python-azure-batch < 10.0.0
-Requires:       python-azure-batch >= 9.0.0
-Requires:       python-azure-cognitiveservices-anomalydetector < 1.0.0
-Requires:       python-azure-cognitiveservices-anomalydetector >= 0.3.0
-Requires:       python-azure-cognitiveservices-formrecognizer < 1.0.0
-Requires:       python-azure-cognitiveservices-formrecognizer >= 0.1.0
-Requires:       python-azure-cognitiveservices-inkrecognizer < 2.0.0
-Requires:       python-azure-cognitiveservices-inkrecognizer >= 1.0.0
-Requires:       python-azure-cognitiveservices-knowledge-qnamaker < 1.0.0
-Requires:       python-azure-cognitiveservices-knowledge-qnamaker >= 0.2.0
-Requires:       python-azure-cognitiveservices-language-luis < 1.0.0
-Requires:       python-azure-cognitiveservices-language-luis >= 0.7.0
-Requires:       python-azure-cognitiveservices-language-spellcheck < 3.0.0
-Requires:       python-azure-cognitiveservices-language-spellcheck >= 2.0.0
-Requires:       python-azure-cognitiveservices-language-textanalytics < 1.0.0
-Requires:       python-azure-cognitiveservices-language-textanalytics >= 0.2.0
-Requires:       python-azure-cognitiveservices-personalizer < 1.0.0
-Requires:       python-azure-cognitiveservices-personalizer >= 0.1.0
-Requires:       python-azure-cognitiveservices-search-autosuggest < 1.0.0
-Requires:       python-azure-cognitiveservices-search-autosuggest >= 0.2.0
-Requires:       python-azure-cognitiveservices-search-customimagesearch < 1.0.0
-Requires:       python-azure-cognitiveservices-search-customimagesearch >= 0.2.0
-Requires:       python-azure-cognitiveservices-search-customsearch < 1.0.0
-Requires:       python-azure-cognitiveservices-search-customsearch >= 0.3.0
-Requires:       python-azure-cognitiveservices-search-entitysearch < 3.0.0
-Requires:       python-azure-cognitiveservices-search-entitysearch >= 2.0.0
-Requires:       python-azure-cognitiveservices-search-imagesearch < 3.0.0
-Requires:       python-azure-cognitiveservices-search-imagesearch >= 2.0.0
-Requires:       python-azure-cognitiveservices-search-newssearch < 3.0.0
-Requires:       python-azure-cognitiveservices-search-newssearch >= 2.0.0
-Requires:       python-azure-cognitiveservices-search-videosearch < 3.0.0
-Requires:       python-azure-cognitiveservices-search-videosearch >= 2.0.0
-Requires:       python-azure-cognitiveservices-search-visualsearch < 1.0.0
-Requires:       python-azure-cognitiveservices-search-visualsearch >= 0.2.0
-Requires:       python-azure-cognitiveservices-search-websearch < 3.0.0
-Requires:       python-azure-cognitiveservices-search-websearch >= 2.0.0
-Requires:       python-azure-cognitiveservices-vision-computervision < 1.0.0
-Requires:       python-azure-cognitiveservices-vision-computervision >= 0.6.0
-Requires:       python-azure-cognitiveservices-vision-contentmoderator < 2.0.0
-Requires:       python-azure-cognitiveservices-vision-contentmoderator >= 1.0.0
-Requires:       python-azure-cognitiveservices-vision-customvision < 4.0.0
-Requires:       python-azure-cognitiveservices-vision-customvision >= 3.0.0
-Requires:       python-azure-cognitiveservices-vision-face < 1.0.0
-Requires:       python-azure-cognitiveservices-vision-face >= 0.4.1
-Requires:       python-azure-cosmos < 5.0.0
-Requires:       python-azure-cosmos >= 4.0.0
-Requires:       python-azure-datalake-store < 1.0.0
-Requires:       python-azure-datalake-store >= 0.0.48
-Requires:       python-azure-eventgrid < 2.0.0
-Requires:       python-azure-eventgrid >= 1.2.0
-Requires:       python-azure-eventhub < 6.0.0
-Requires:       python-azure-eventhub >= 5.0.1
-Requires:       python-azure-eventhub-checkpointstoreblob < 2.0.0
-Requires:       python-azure-eventhub-checkpointstoreblob >= 1.1.0
-Requires:       python-azure-graphrbac < 1.0.0
-Requires:       python-azure-graphrbac >= 0.40.0
-Requires:       python-azure-keyvault < 5.0.0
-Requires:       python-azure-keyvault >= 4.0.0
-Requires:       python-azure-keyvault-administration < 5.0.0
-Requires:       python-azure-keyvault-administration >= 4.0.0
-Requires:       python-azure-keyvault-certificates < 5.0.0
-Requires:       python-azure-keyvault-certificates >= 4.0.0
-Requires:       python-azure-keyvault-keys < 5.0.0
-Requires:       python-azure-keyvault-keys >= 4.0.0
-Requires:       python-azure-keyvault-secrets < 5.0.0
-Requires:       python-azure-keyvault-secrets >= 4.0.0
-Requires:       python-azure-loganalytics < 1.0.0
-Requires:       python-azure-loganalytics >= 0.1.0
-Requires:       python-azure-mgmt < 5.0.0
-Requires:       python-azure-mgmt >= 4.0.0
-Requires:       python-azure-monitor < 1.0.0
-Requires:       python-azure-monitor >= 0.3.0
-Requires:       python-azure-servicebus < 1.0.0
-Requires:       python-azure-servicebus >= 0.21.1
-Requires:       python-azure-servicefabric < 8.0.0.0
-Requires:       python-azure-servicefabric >= 7.0.0.0
-Requires:       python-azure-servicemanagement-legacy < 1.0.0
-Requires:       python-azure-servicemanagement-legacy >= 0.20.6
-Requires:       python-azure-storage-blob < 13.0.0
-Requires:       python-azure-storage-blob >= 12.1.0
-Requires:       python-azure-storage-file < 3.0.0
-Requires:       python-azure-storage-file >= 2.0.0
-Requires:       python-azure-storage-queue < 13.0.0
-Requires:       python-azure-storage-queue >= 12.1.0
+Requires:       python-adal
+Requires:       python-applicationinsights
+Requires:       python-azure-ai-anomalydetector
+Requires:       python-azure-ai-formrecognizer
+Requires:       python-azure-ai-metricsadvisor
+Requires:       python-azure-ai-nspkg
+Requires:       python-azure-ai-textanalytics
+Requires:       python-azure-appconfiguration
+Requires:       python-azure-applicationinsights
+Requires:       python-azure-batch
+Requires:       python-azure-cognitiveservices-anomalydetector
+Requires:       python-azure-cognitiveservices-formrecognizer
+Requires:       python-azure-cognitiveservices-inkrecognizer
+Requires:       python-azure-cognitiveservices-knowledge-nspkg
+Requires:       python-azure-cognitiveservices-knowledge-qnamaker
+Requires:       python-azure-cognitiveservices-language-luis
+Requires:       python-azure-cognitiveservices-language-nspkg
+Requires:       python-azure-cognitiveservices-language-spellcheck
+Requires:       python-azure-cognitiveservices-language-textanalytics
+Requires:       python-azure-cognitiveservices-nspkg
+Requires:       python-azure-cognitiveservices-personalizer
+Requires:       python-azure-cognitiveservices-search-autosuggest
+Requires:       python-azure-cognitiveservices-search-customimagesearch
+Requires:       python-azure-cognitiveservices-search-customsearch
+Requires:       python-azure-cognitiveservices-search-entitysearch
+Requires:       python-azure-cognitiveservices-search-imagesearch
+Requires:       python-azure-cognitiveservices-search-newssearch
+Requires:       python-azure-cognitiveservices-search-nspkg
+Requires:       python-azure-cognitiveservices-search-videosearch
+Requires:       python-azure-cognitiveservices-search-visualsearch
+Requires:       python-azure-cognitiveservices-search-websearch
+Requires:       python-azure-cognitiveservices-vision-computervision
+Requires:       python-azure-cognitiveservices-vision-contentmoderator
+Requires:       python-azure-cognitiveservices-vision-customvision
+Requires:       python-azure-cognitiveservices-vision-face
+Requires:       python-azure-cognitiveservices-vision-nspkg
+Requires:       python-azure-common
+Requires:       python-azure-communication-administration
+Requires:       python-azure-communication-chat
+Requires:       python-azure-communication-nspkg
+Requires:       python-azure-communication-sms
+Requires:       python-azure-core
+Requires:       python-azure-core-tracing-opencensus
+Requires:       python-azure-core-tracing-opentelemetry
+Requires:       python-azure-cosmos
+Requires:       python-azure-data-nspkg
+Requires:       python-azure-data-tables
+Requires:       python-azure-datalake-store
+Requires:       python-azure-devops
+Requires:       python-azure-eventgrid
+Requires:       python-azure-eventhub
+Requires:       python-azure-eventhub-checkpointstoreblob
+Requires:       python-azure-eventhub-checkpointstoreblob-aio
+Requires:       python-azure-functions-devops-build
+Requires:       python-azure-graphrbac
+Requires:       python-azure-identity
+Requires:       python-azure-keyvault
+Requires:       python-azure-keyvault-administration
+Requires:       python-azure-keyvault-certificates
+Requires:       python-azure-keyvault-keys
+Requires:       python-azure-keyvault-nspkg
+Requires:       python-azure-keyvault-secrets
+Requires:       python-azure-loganalytics
+Requires:       python-azure-monitor
+Requires:       python-azure-multiapi-storage
+Requires:       python-azure-nspkg
+Requires:       python-azure-search-documents
+Requires:       python-azure-search-nspkg
+Requires:       python-azure-servicebus
+Requires:       python-azure-servicefabric
+Requires:       python-azure-servicemanagement-legacy
+Requires:       python-azure-storage-blob
+Requires:       python-azure-storage-common
+Requires:       python-azure-storage-file
+Requires:       python-azure-storage-file-datalake
+Requires:       python-azure-storage-file-share
+Requires:       python-azure-storage-nspkg
+Requires:       python-azure-storage-queue
+Requires:       python-azure-synapse
+Requires:       python-azure-synapse-accesscontrol
+Requires:       python-azure-synapse-artifacts
+Requires:       python-azure-synapse-managedprivateendpoints
+Requires:       python-azure-synapse-monitoring
+Requires:       python-azure-synapse-nspkg
+Requires:       python-azure-synapse-spark
+Requires:       python-azure-template
+Requires:       python-msal
+Requires:       python-msal-extensions
+Requires:       python-msrest
+Requires:       python-msrestazure
+Requires:       python-pydocumentdb
+Requires:       python-uamqp
+Requires:       python-vsts
+Requires:       python-vsts-cd-manager
 
 BuildArch:      noarch
 

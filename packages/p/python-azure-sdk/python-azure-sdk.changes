@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:27:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-ai-formrecognizer
+  + python-azure-synapse-managedprivateendpoints
+  + python-azure-synapse-monitoring
+  + python-azure-template
+- Remove all version constraints in Requires
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

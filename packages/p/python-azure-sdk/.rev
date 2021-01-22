@@ -90,4 +90,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>854000</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>ab1e869835763604d31d663541a83402</srcmd5>
+    <version>4.0.0</version>
+    <time>1611348613</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-ai-formrecognizer
+  + python-azure-synapse-managedprivateendpoints
+  + python-azure-synapse-monitoring
+  + python-azure-template
+- Remove all version constraints in Requires (forwarded request 861575 from glaubitz)</comment>
+    <requestid>861629</requestid>
+  </revision>
 </revisionlist>
