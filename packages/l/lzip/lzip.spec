@@ -1,7 +1,7 @@
 #
 # spec file for package lzip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2008-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           lzip
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        Lossless Data Compressor based on the LZMA Algorithm
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
-URL:            http://www.nongnu.org/lzip/lzip.html
+URL:            https://www.nongnu.org/lzip/lzip.html
 Source:         https://download.savannah.gnu.org/releases/lzip/%name-%version.tar.gz
 Source2:        https://download.savannah.gnu.org/releases/lzip/%name-%version.tar.gz.sig
 Source3:        %name.keyring
@@ -68,7 +68,8 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/lzip.info%ext_info"
 
 %files
-%doc AUTHORS ChangeLog COPYING NEWS README
+%doc AUTHORS ChangeLog NEWS README
+%license COPYING
 %_bindir/lzip
 %_infodir/lzip.info%ext_info
 %_mandir/man1/lzip.1%ext_man

@@ -85,4 +85,12 @@
     <comment>- Update to new upstream release 1.21</comment>
     <requestid>665345</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a4e97402f274e4c7311db7b220b1f50e</srcmd5>
+    <version>1.22</version>
+    <time>1611348552</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.22:</comment>
+    <requestid>864475</requestid>
+  </revision>
 </revisionlist>
