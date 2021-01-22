@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2018-2020 SUSE LLC
+# Copyright (c) 2018-2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,6 @@ BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel >= 1.0
 BuildRequires:  pkgconfig
-BuildRequires:  pwdutils
 BuildRequires:  trousers-devel
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  %{_sbindir}/groupadd
