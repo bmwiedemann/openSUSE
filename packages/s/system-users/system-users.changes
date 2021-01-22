@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 14 16:30:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- system-user-tss.conf: Remove group entry, not needed and did
+  contain syntax errors
+- remove duplicate group entry:
+  - system-user-tftp.conf
+  - system-user-uuidd.conf
+  - system-user-uucp.conf
+  - system-user-uucp.conf
+  - system-user-ftp.conf
+  - system-user-games.conf
+  - system-user-news.conf
+
+-------------------------------------------------------------------
+Fri Jan  8 14:23:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add system-user-ntp subpackage with ntp user and group and
+  /var/lib/ntp as home directory
+
+-------------------------------------------------------------------
 Sun Dec 27 20:31:35 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add system-user-vscan subpackage with vscan user and group and

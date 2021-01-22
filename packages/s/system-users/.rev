@@ -176,4 +176,21 @@
 The vscan user is currently used by the amavisd-new and clamav packages, but there are other packages that might benefit from running daemons as non-privileged user (looking at you, spamassassin) (forwarded request 858972 from adkorte)</comment>
     <requestid>859003</requestid>
   </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>f810d75ccab0a1d505cf89f811fefe23</srcmd5>
+    <version>20170617</version>
+    <time>1611348538</time>
+    <user>dimstar_suse</user>
+    <comment>- system-user-tss.conf: Remove group entry, not needed and did
+  contain syntax errors
+- remove duplicate group entry:
+  - system-user-tftp.conf
+  - system-user-uuidd.conf
+  - system-user-uucp.conf
+  - system-user-uucp.conf
+  - system-user-ftp.conf
+  - system-user-games.conf
+  - system-user-news.conf (forwarded request 863309 from kukuk)</comment>
+    <requestid>863310</requestid>
+  </revision>
 </revisionlist>
