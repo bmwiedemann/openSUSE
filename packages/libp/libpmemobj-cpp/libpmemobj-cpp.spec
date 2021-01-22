@@ -30,7 +30,7 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpmemobj) >= 1.8
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le
 
 %description
 There are three main features of the C++ bindings to libpmemobj:
