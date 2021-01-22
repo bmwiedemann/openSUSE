@@ -20,21 +20,19 @@
 
 
 Name:           usbauth
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        USB firewall against BadUSB attacks
 License:        GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://github.com/kochstefan/usbauth-all/tree/master/usbauth
-Source:         https://github.com/kochstefan/usbauth-all/archive/v%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Requires:       systemd
 Requires:       udev
-BuildRequires:  gcc
 BuildRequires:  libtool
-BuildRequires:  libusbauth-configparser-devel
+BuildRequires:  pkgconfig(libusbauth-configparser)
 BuildRequires:  pkgconfig(libudev)
-
-BuildRequires:  dbus-1-devel
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  systemd-rpm-macros
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
@@ -44,34 +42,23 @@ It is a firewall against BadUSB attacks.
 A config file describes in which way devices would be accepted.
 
 %prep
-%autosetup -n usbauth-all-%{version} -p1
+%autosetup
 
 %build
-pushd %{name}/
 autoreconf -f -i
 %configure
 %make_build
-popd
 
 %install
-pushd %{name}/
 %make_install udevrulesdir=%_udevrulesdir
-popd
 
 %files
-%defattr(-,root,root)
-%license %{name}/COPYING
-%doc %{name}/README
+%license COPYING
+%doc README
 %_sbindir/usbauth
 %config %_sysconfdir/dbus-1/system.d/org.opensuse.usbauth.conf
 %config(noreplace) %_sysconfdir/usbauth.conf
 %_udevrulesdir/20-usbauth.rules
-%_mandir/man1/usbauth.1.*
-
-%post
-%{?udev_rules_update:%udev_rules_update}
-
-%postun
-%{?udev_rules_update:%udev_rules_update}
+%_mandir/man8/usbauth.8.*
 
 %changelog
