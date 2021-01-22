@@ -88,11 +88,9 @@ BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module opcodes}
 BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module rpm-macros}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module typing}
-BuildRequires:  %{pythons}
 BuildRequires:  cmake
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
@@ -108,6 +106,7 @@ BuildRequires:  openblas-devel
 BuildRequires:  openssl-devel
 BuildRequires:  protobuf-c
 BuildRequires:  protobuf-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  snappy-devel
 %if %{with cuda}
 BuildRequires:  cuda-compiler-%cudaver
