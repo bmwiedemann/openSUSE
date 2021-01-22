@@ -1,7 +1,7 @@
 #
 # spec file for package mbedtls
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
-Source:         https://github.com/ARMmbed/mbedtls/archive/v%{version}.tar.gz
+Source:         https://github.com/ARMmbed/mbedtls/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  ninja
@@ -113,7 +113,8 @@ sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
 # parallel execution fails
 # %%ctest
 pushd build
-%{_bindir}/ctest --output-on-failure --force-new-ctest-process -j1
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
+ %{_bindir}/ctest --output-on-failure --force-new-ctest-process -j1
 
 %post -n %{lib_tls}      -p /sbin/ldconfig
 %post -n %{lib_crypto}   -p /sbin/ldconfig

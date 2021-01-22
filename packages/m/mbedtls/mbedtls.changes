@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 19 20:25:34 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fix build for Leap targets
+- Use upstream tarball name
+
+-------------------------------------------------------------------
 Tue Dec 22 10:11:45 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.25.0:
