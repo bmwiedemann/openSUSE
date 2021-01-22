@@ -93,4 +93,12 @@
   * test suite can now be run against installed version of libblockdev</comment>
     <requestid>828318</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>23d229135430e68ee4f70f31a4b30431</srcmd5>
+    <version>2.25</version>
+    <time>1611348601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865042</requestid>
+  </revision>
 </revisionlist>
