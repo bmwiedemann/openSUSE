@@ -31,4 +31,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853840</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>337319a04d6ce673702d2c9c8407cf2d</srcmd5>
+    <version>3.0.1</version>
+    <time>1611348658</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with Python multi-flavor builds
+  + Create directories using %pythond_expand in %install section
+  + Use canonical %{python_sitelib} path in %files section (forwarded request 864342 from glaubitz)</comment>
+    <requestid>864394</requestid>
+  </revision>
 </revisionlist>
