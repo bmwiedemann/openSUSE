@@ -41,4 +41,12 @@
     <comment>- Make sure optflags are honored</comment>
     <requestid>842704</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>935e5c26d7e05bc3eb3678dd1d26779a</srcmd5>
+    <version>0.0.0+git.20181203</version>
+    <time>1611348534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862082</requestid>
+  </revision>
 </revisionlist>
