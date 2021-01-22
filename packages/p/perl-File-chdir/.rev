@@ -88,4 +88,15 @@
     <comment>1</comment>
     <requestid>296999</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2e4fb8c1c36f09b7a38091aa4f9a3930</srcmd5>
+    <version>0.1011</version>
+    <time>1611348588</time>
+    <user>dimstar_suse</user>
+    <comment>- regenerate with uptodate cpanspec
+
+- update to 0.1011:
+  * Fix POD typos</comment>
+    <requestid>865017</requestid>
+  </revision>
 </revisionlist>
