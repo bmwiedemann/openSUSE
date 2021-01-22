@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-api
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,21 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-opentelemetry-api
-Version:        0.6b0
+Version:        0.17b0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python/tree/master/opentelemetry-api
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-api/opentelemetry-api-%{version}.tar.gz
-# https://github.com/open-telemetry/opentelemetry-python/pull/557
-Source98:       tests.tar.bz2
-# https://github.com/open-telemetry/opentelemetry-python/issues/473
-Source99:       https://raw.githubusercontent.com/open-telemetry/opentelemetry-python/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  ((python3-aiocontextvars and python3-base < 3.7) or (python36-aiocontextvars and python36-base))
 BuildArch:      noarch
 Requires:       python-setuptools
+%if %{python_version_nodots} < 37
+Requires:       python-aiocontextvars
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -43,8 +43,7 @@ BuildRequires:  %{python_module pytest}
 OpenTelemetry Python API
 
 %prep
-%setup -q -n opentelemetry-api-%{version} -a98
-cp %{SOURCE99} .
+%setup -q -n opentelemetry-api-%{version}
 
 %build
 %python_build
@@ -54,10 +53,7 @@ cp %{SOURCE99} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_environment_variables and test_getattr erroring,
-# let us see whether they got fixed via github PR referenced
-# above (in next version)
-%pytest -k 'not (test_getattr or test_environment_variables)'
+%pytest
 
 %files %{python_files}
 %doc README.rst
