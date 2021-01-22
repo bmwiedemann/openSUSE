@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -141,7 +141,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.10.0
+Version:        7.0.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -291,9 +291,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         0d05d51b-apparmor-lxc-fix.patch
-Patch1:         cf4e7e62-lxc-def-secmodel.patch
-Patch2:         0ddebdb4-qemu-snapshot-deletion.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -631,6 +628,10 @@ Requires:       lzop
 Requires:       qemu
 Requires:       systemd-container
 Requires:       xz
+# swtp is needed to manage <tpm> devices.
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+Requires:       swtpm
+%endif
 
 %description daemon-driver-qemu
 The qemu driver plugin for the libvirtd daemon, providing
@@ -1628,7 +1629,7 @@ fi
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/swtpm/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/%{name}/
-%dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/%{name}/qemu/
+%dir %attr(0731, tss, tss) %{_localstatedir}/log/swtpm/%{name}/qemu/
 %{_bindir}/virt-qemu-run
 %{_mandir}/man1/virt-qemu-run.1*
 %endif

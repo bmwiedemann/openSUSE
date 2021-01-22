@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 19 02:12:11 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.0.0
+  - jsc#SLE-15860
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    0d05d51b-apparmor-lxc-fix.patch,
+    cf4e7e62-lxc-def-secmodel.patch,
+    0ddebdb4-qemu-snapshot-deletion.patch
+
+-------------------------------------------------------------------
 Mon Jan  4 19:19:19 UTC 2021 - olaf@aepfle.de
 
 - Update libxl-set-migration-constraints.patch

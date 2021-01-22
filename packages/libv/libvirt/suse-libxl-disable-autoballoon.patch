@@ -6,10 +6,10 @@ autoballooning. This patch changes libvirt to also disable autoballooning
 by default. It can only be enabled with the 'autoballoon' setting in
 libxl.conf. See jsc#SLE-3059 for more details.
 
-Index: libvirt-6.10.0/src/libxl/libxl.conf
+Index: libvirt-7.0.0/src/libxl/libxl.conf
 ===================================================================
---- libvirt-6.10.0.orig/src/libxl/libxl.conf
-+++ libvirt-6.10.0/src/libxl/libxl.conf
+--- libvirt-7.0.0.orig/src/libxl/libxl.conf
++++ libvirt-7.0.0/src/libxl/libxl.conf
 @@ -4,12 +4,11 @@
  
  # Enable autoballooning of domain0
@@ -27,11 +27,11 @@ Index: libvirt-6.10.0/src/libxl/libxl.conf
  
  
  # In order to prevent accidentally starting two domains that
-Index: libvirt-6.10.0/src/libxl/libxl_conf.c
+Index: libvirt-7.0.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-6.10.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-6.10.0/src/libxl/libxl_conf.c
-@@ -1743,15 +1743,12 @@ libxlMakeBuildInfoVfb(virPortAllocatorRa
+--- libvirt-7.0.0.orig/src/libxl/libxl_conf.c
++++ libvirt-7.0.0/src/libxl/libxl_conf.c
+@@ -1744,15 +1744,12 @@ libxlMakeBuildInfoVfb(virPortAllocatorRa
  /*
   * Get domain0 autoballoon configuration.  Honor user-specified
   * setting in libxl.conf first.  If not specified, autoballooning
@@ -48,7 +48,7 @@ Index: libvirt-6.10.0/src/libxl/libxl_conf.c
      int res;
  
      res = virConfGetValueBool(conf, "autoballoon", &cfg->autoballoon);
-@@ -1760,15 +1757,8 @@ libxlGetAutoballoonConf(libxlDriverConfi
+@@ -1761,15 +1758,8 @@ libxlGetAutoballoonConf(libxlDriverConfi
      else if (res == 1)
          return 0;
  
@@ -66,10 +66,10 @@ Index: libvirt-6.10.0/src/libxl/libxl_conf.c
      return 0;
  }
  
-Index: libvirt-6.10.0/src/libxl/test_libvirtd_libxl.aug.in
+Index: libvirt-7.0.0/src/libxl/test_libvirtd_libxl.aug.in
 ===================================================================
---- libvirt-6.10.0.orig/src/libxl/test_libvirtd_libxl.aug.in
-+++ libvirt-6.10.0/src/libxl/test_libvirtd_libxl.aug.in
+--- libvirt-7.0.0.orig/src/libxl/test_libvirtd_libxl.aug.in
++++ libvirt-7.0.0/src/libxl/test_libvirtd_libxl.aug.in
 @@ -2,7 +2,7 @@ module Test_libvirtd_libxl =
    @CONFIG@
  

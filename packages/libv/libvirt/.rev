@@ -3765,4 +3765,12 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>860506</requestid>
   </revision>
+  <revision rev="322" vrev="1">
+    <srcmd5>7952ab522199643a30252f24f6776d22</srcmd5>
+    <version>7.0.0</version>
+    <time>1611348549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864470</requestid>
+  </revision>
 </revisionlist>

@@ -9,11 +9,11 @@ them using the existing API.
  src/lxc/lxc_driver.c | 138 +++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 138 insertions(+)
 
-Index: libvirt-6.10.0/src/lxc/lxc_driver.c
+Index: libvirt-7.0.0/src/lxc/lxc_driver.c
 ===================================================================
---- libvirt-6.10.0.orig/src/lxc/lxc_driver.c
-+++ libvirt-6.10.0/src/lxc/lxc_driver.c
-@@ -73,6 +73,8 @@
+--- libvirt-7.0.0.orig/src/lxc/lxc_driver.c
++++ libvirt-7.0.0/src/lxc/lxc_driver.c
+@@ -74,6 +74,8 @@
  #include "netdev_bandwidth_conf.h"
  #include "virsocket.h"
  #include "virutil.h"
@@ -22,7 +22,7 @@ Index: libvirt-6.10.0/src/lxc/lxc_driver.c
  
  #define VIR_FROM_THIS VIR_FROM_LXC
  
-@@ -5071,6 +5073,128 @@ lxcDomainHasManagedSaveImage(virDomainPt
+@@ -5065,6 +5067,128 @@ lxcDomainHasManagedSaveImage(virDomainPt
      return ret;
  }
  
@@ -151,7 +151,7 @@ Index: libvirt-6.10.0/src/lxc/lxc_driver.c
  
  /* Function Tables */
  static virHypervisorDriver lxcHypervisorDriver = {
-@@ -5168,6 +5292,7 @@ static virHypervisorDriver lxcHypervisor
+@@ -5162,6 +5286,7 @@ static virHypervisorDriver lxcHypervisor
      .nodeGetFreePages = lxcNodeGetFreePages, /* 1.2.6 */
      .nodeAllocPages = lxcNodeAllocPages, /* 1.2.9 */
      .domainHasManagedSaveImage = lxcDomainHasManagedSaveImage, /* 1.2.13 */

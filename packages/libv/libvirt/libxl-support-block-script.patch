@@ -7,10 +7,10 @@ and npiv.
 
 For more details, see bsc#954872 and FATE#319810
 
-Index: libvirt-6.10.0/src/libxl/libxl_conf.c
+Index: libvirt-7.0.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-6.10.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-6.10.0/src/libxl/libxl_conf.c
+--- libvirt-7.0.0.orig/src/libxl/libxl_conf.c
++++ libvirt-7.0.0/src/libxl/libxl_conf.c
 @@ -921,6 +921,22 @@ libxlDiskSetDiscard(libxl_device_disk *x
  #endif
  }
@@ -34,7 +34,7 @@ Index: libvirt-6.10.0/src/libxl/libxl_conf.c
  static void
  libxlDiskSetCacheMode(libxl_device_disk *x_disk, int cachemode)
  {
-@@ -1057,6 +1073,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
+@@ -1058,6 +1074,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
  int
  libxlMakeDisk(virDomainDiskDefPtr l_disk, libxl_device_disk *x_disk)
  {
@@ -42,7 +42,7 @@ Index: libvirt-6.10.0/src/libxl/libxl_conf.c
      const char *driver = virDomainDiskGetDriver(l_disk);
      int format = virDomainDiskGetFormat(l_disk);
      int actual_type = virStorageSourceGetActualType(l_disk->src);
-@@ -1072,7 +1089,7 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
+@@ -1073,7 +1090,7 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
          if (libxlMakeNetworkDiskSrc(l_disk->src, &x_disk->pdev_path) < 0)
              return -1;
      } else {
@@ -51,7 +51,7 @@ Index: libvirt-6.10.0/src/libxl/libxl_conf.c
      }
  
      x_disk->vdev = g_strdup(l_disk->dst);
-@@ -1183,6 +1200,9 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
+@@ -1184,6 +1201,9 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
      if (libxlDiskSetDiscard(x_disk, l_disk->discard) < 0)
          return -1;
      libxlDiskSetCacheMode(x_disk, l_disk->cachemode);
