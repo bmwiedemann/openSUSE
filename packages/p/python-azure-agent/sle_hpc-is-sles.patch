@@ -1,0 +1,111 @@
+diff --git a/azurelinuxagent/common/osutil/factory.py b/azurelinuxagent/common/osutil/factory.py
+index 69f84300..1b2ffaaf 100644
+--- a/azurelinuxagent/common/osutil/factory.py
++++ b/azurelinuxagent/common/osutil/factory.py
+@@ -83,7 +83,7 @@ def _get_osutil(distro_name, distro_code_name, distro_version, distro_full_name)
+     if distro_name == "coreos" or distro_code_name == "coreos":
+         return CoreOSUtil()
+ 
+-    if distro_name in ("suse", "sles", "opensuse"):
++    if distro_name in ("suse", "sle_hpc", "sles", "opensuse"):
+         if distro_full_name == 'SUSE Linux Enterprise Server' \
+                 and Version(distro_version) < Version('12') \
+                 or distro_full_name == 'openSUSE' and Version(distro_version) < Version('13.2'):
+diff --git a/azurelinuxagent/common/protocol/imds.py b/azurelinuxagent/common/protocol/imds.py
+index a4600ad8..0e7b3052 100644
+--- a/azurelinuxagent/common/protocol/imds.py
++++ b/azurelinuxagent/common/protocol/imds.py
+@@ -112,28 +112,45 @@ ENDORSED_IMAGE_INFO_MATCHER_JSON = """{
+         "SLES-BYOS": {
+             "List": [
+                 "11-SP4",
+-                "11-SP5",
+-                "11-SP6",
++                 "12",
+                 "12-SP1",
+                 "12-SP2",
+                 "12-SP3",
+                 "12-SP4",
+                 "12-SP5",
+-                "12-SP6"
++                "15",
++                "15-SP1",
++                "15-SP2",
++                "15-SP3",
++                "15-SP4",
++                "15-SP5"
+             ]
+         },
+         "SLES-SAP": {
+             "List": [
+                 "11-SP4",
+-                "11-SP5",
+-                "11-SP6",
++                "12",
+                 "12-SP1",
+                 "12-SP2",
+                 "12-SP3",
+                 "12-SP4",
+                 "12-SP5",
+-                "12-SP6"
++                "15",
++                "15-SP1",
++                "15-SP2",
++                "15-SP3",
++                "15-SP4",
++                "15-SP5"
+             ]
++        },
++        "SLE-HPC": {
++           "List": [
++               "15-SP1",
++               "15-SP2",
++                "15-SP3",
++                "15-SP4",
++                "15-SP5"
++           ]
+         }
+     }
+ }"""
+diff --git a/azurelinuxagent/pa/rdma/factory.py b/azurelinuxagent/pa/rdma/factory.py
+index 2de176fa..f0f51897 100644
+--- a/azurelinuxagent/pa/rdma/factory.py
++++ b/azurelinuxagent/pa/rdma/factory.py
+@@ -33,7 +33,8 @@ def get_rdma_handler(
+     """Return the handler object for RDMA driver handling"""
+     if (
+             (distro_full_name == 'SUSE Linux Enterprise Server' or
+-             distro_full_name == 'SLES') and
++             distro_full_name == 'SLES' or
++             distro_full_name == 'SLE_HPC') and
+             Version(distro_version) > Version('11')
+     ):
+         return SUSERDMAHandler()
+diff --git a/azurelinuxagent/pa/rdma/suse.py b/azurelinuxagent/pa/rdma/suse.py
+index b4582581..4bf2147a 100644
+--- a/azurelinuxagent/pa/rdma/suse.py
++++ b/azurelinuxagent/pa/rdma/suse.py
+@@ -20,14 +20,23 @@
+ import glob
+ import azurelinuxagent.common.logger as logger
+ import azurelinuxagent.common.utils.shellutil as shellutil
++
+ from azurelinuxagent.common.rdma import RDMAHandler
++from azurelinuxagent.common.version import DISTRO_VERSION
+ 
++from distutils.version import LooseVersion as Version
+ 
+ class SUSERDMAHandler(RDMAHandler):
+ 
+     def install_driver(self):
+         """Install the appropriate driver package for the RDMA firmware"""
+ 
++        if Version(DISTRO_VERSION) >= Version('15'):
++            msg = 'SLE 15 and later only supports PCI pass through, no '
++            msg += 'special driver needed for IB interface'
++            logger.info(msg)
++            return True
++        
+         fw_version = self.get_rdma_version()
+         if not fw_version:
+             error_msg = 'RDMA: Could not determine firmware version. '

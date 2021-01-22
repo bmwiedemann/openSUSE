@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        WALinuxAgent-%{version}.tar.gz
 Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
 Patch11:        proper_dhcp_config_set.patch
+Patch12:        sle_hpc-is-sles.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
@@ -120,6 +121,7 @@ Unit tests for python-azure-agent.
 %patch6
 %endif
 %patch11
+%patch12 -p1
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
