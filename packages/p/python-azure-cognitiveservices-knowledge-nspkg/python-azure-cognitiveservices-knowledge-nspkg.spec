@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cognitiveservices-knowledge-nspkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,15 +60,14 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-cognitiveservices-knowledge-nspkg-%
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{python2_sitelib}/azure/cognitiveservices/knowledge
-mkdir -p %{buildroot}%{python3_sitelib}/azure/cognitiveservices/knowledge
+%python_expand mkdir -p %{buildroot}%{$python_sitelib}/azure/cognitiveservices/knowledge
 
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
-%python2_only %{python2_sitelib}/azure/cognitiveservices/knowledge
-%python3_only %dir %{python3_sitelib}/azure/cognitiveservices/knowledge
+%dir %{python_sitelib}/azure/cognitiveservices/knowledge
+%python2_only %{python_sitelib}/azure/cognitiveservices/knowledge
 %{python_sitelib}/azure_cognitiveservices_knowledge_nspkg-*.egg-info
 
 %changelog
