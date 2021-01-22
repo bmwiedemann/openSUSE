@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32744757ce0281afd3ee7fd677233e0a</srcmd5>
+    <version>1.0.0b7</version>
+    <time>1611348701</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b7
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.md to CHANGELOG.md in %files section
+- Update Requires from setup.py</comment>
+    <requestid>864690</requestid>
+  </revision>
+</revisionlist>
