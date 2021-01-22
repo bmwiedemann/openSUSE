@@ -1,7 +1,7 @@
 #
 # spec file for package libcap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libcap
-Version:        2.44
+Version:        2.46
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -89,23 +89,16 @@ libcap.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-make prefix=%{_prefix} lib=%{_lib} LIBDIR=%{_libdir} SBINDIR=%{_sbindir} \
-     INCDIR=%{_includedir} MANDIR=%{_mandir} SHARED=yes DEBUG="-g %{optflags}"
+%global _lto_cflags %{nil}
+%global buildvariables RAISE_SETFCAP=no prefix=%{_prefix} lib=%{_lib} SHARED=yes LIBDIR=%{_libdir} SBINDIR=%{_sbindir} PKGCONFIGDIR=%{_libdir}/pkgconfig/ INCDIR=%{_includedir} MANDIR=%{_mandir} SHARED=yes COPTS="%{optflags}"
+
+make %{buildvariables}
 
 %install
-make install RAISE_SETFCAP=no \
-     prefix=%{_prefix} \
-     lib=%{_lib} \
-     DESTDIR=%{buildroot} \
-     LIBDIR=/%{_libdir} \
-     SBINDIR=/%{_sbindir} \
-     INCDIR=/%{_includedir} \
-     MANDIR=/%{_mandir}/ \
-     SHARED=yes \
-     PKGCONFIGDIR=%{_libdir}/pkgconfig/
+make install %{buildvariables} DESTDIR=%{buildroot}
 find %{buildroot} -type f -name "*.la" -delete -print
 # do not provide static libs
 rm %{buildroot}%{_libdir}/libcap.a
@@ -113,19 +106,17 @@ rm %{buildroot}%{_libdir}/libcap.a
 %fdupes -s %{buildroot}
 
 %check
-make test
+make %{buildvariables} test
 
 %post -n libcap2 -p /sbin/ldconfig
 %postun -n libcap2 -p /sbin/ldconfig
 
-%ifarch aarch64
 %post -n libpsx2 -p /sbin/ldconfig
 %postun -n libpsx2 -p /sbin/ldconfig
 
 %files -n libpsx2
 %license License
 %{_libdir}/libpsx.so.2*
-%endif
 
 %files -n libcap2
 %license License

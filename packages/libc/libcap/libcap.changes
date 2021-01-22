@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  4 08:46:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.46:
+  * The bulk of this release concerns fixes and improvements to libpsx
+  * Fix the capsh == argument handling and add a test case 
+  * Added build support for systems that do not support libpthread
+  * Added build support for not building shared libraries
+
+-------------------------------------------------------------------
 Sat Nov 14 10:26:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.44:

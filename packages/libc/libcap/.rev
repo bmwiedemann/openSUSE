@@ -299,4 +299,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853758</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>356a93b3e23bb10e840ef9755aabb964</srcmd5>
+    <version>2.46</version>
+    <time>1611348530</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.46:
+  * The bulk of this release concerns fixes and improvements to libpsx
+  * Fix the capsh == argument handling and add a test case 
+  * Added build support for systems that do not support libpthread
+  * Added build support for not building shared libraries</comment>
+    <requestid>860344</requestid>
+  </revision>
 </revisionlist>
