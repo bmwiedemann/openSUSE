@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 11:10:57 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add missing buildrequirement
+
+-------------------------------------------------------------------
 Mon Mar 16 06:32:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build wihtout python2

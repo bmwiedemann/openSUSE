@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APS
 BuildRequires:  %{python_module SQLAlchemy >= 0.8}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytest}
