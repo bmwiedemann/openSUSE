@@ -18,7 +18,7 @@
 
 %define _name   rocketchat
 Name:           purple-rocketchat
-Version:        0.0+git20201219
+Version:        0.0+git20210119
 Release:        0
 Summary:        RocketChat protocol plugin for libpurple
 License:        GPL-2.0-or-later

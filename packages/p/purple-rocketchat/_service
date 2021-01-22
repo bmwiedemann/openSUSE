@@ -4,7 +4,7 @@
     <param name="url">https://github.com/EionRobb/purple-rocketchat</param>
     <param name="filename">purple-rocketchat</param>
     <param name="versionformat">0.0+git%cd</param>
-    <param name="revision">5840e7d781debd82372a61e72d4abc8f1ecec90b</param>
+    <param name="revision">62090bc61f80fd0c4ea18319b6394990d9b0278a</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
