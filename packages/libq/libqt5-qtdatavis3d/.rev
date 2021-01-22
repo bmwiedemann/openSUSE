@@ -181,4 +181,12 @@
     <comment>Qt 5.15.2</comment>
     <requestid>850014</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7336d4dfd4cec7beb7f7578e4627dbb3</srcmd5>
+    <version>5.15.2</version>
+    <time>1611348779</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov</comment>
+    <requestid>866042</requestid>
+  </revision>
 </revisionlist>

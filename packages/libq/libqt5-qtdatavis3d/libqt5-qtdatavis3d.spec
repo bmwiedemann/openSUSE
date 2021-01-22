@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtdatavis3d
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML import of examples
+%global __requires_exclude qmlimport\\(CustomFormatter.*
 
 %define qt5_snapshot 0
 %define libname libQt5DataVisualization5
@@ -83,7 +86,6 @@ Qt Data Visualization.
 %package examples
 Summary:        Examples for the Qt5 Data Visualization module
 Group:          Development/Libraries/X11
-License:        GPL-3.0-or-later
 Recommends:     %{libname}-devel
 
 %description examples
