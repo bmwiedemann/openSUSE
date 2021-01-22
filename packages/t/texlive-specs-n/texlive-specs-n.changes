@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:18:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Enhance latexmk configuration, that is add a systemwide
+  configuration below /etc/texmf/latexmk/ as latexmk.conf (boo#1180789)
+  For this add patch latexmk_conf.dif
+
+-------------------------------------------------------------------
 Mon May 18 08:47:10 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Enhance spec file generator to find missing .so man page

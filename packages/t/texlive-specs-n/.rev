@@ -416,4 +416,14 @@
     <comment>Enhance spec file geneerator to find missing .so man page link for better dependency resolution</comment>
     <requestid>806901</requestid>
   </revision>
+  <revision rev="40" vrev="43">
+    <srcmd5>36234dde8eb01694587ae6860de656b4</srcmd5>
+    <version>unknown</version>
+    <time>1611348586</time>
+    <user>dimstar_suse</user>
+    <comment>- Enhance latexmk configuration, that is add a systemwide
+  configuration below /etc/texmf/latexmk/ as latexmk.conf (boo#1180789)
+  For this add patch latexmk_conf.dif</comment>
+    <requestid>865008</requestid>
+  </revision>
 </revisionlist>
