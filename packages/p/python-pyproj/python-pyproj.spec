@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproj
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyproj
-Version:        2.6.1.post1
+Version:        3.0.0
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
-Patch0:         pyproj-3.0.0-TST-Update-tests-with-scope-remarks-649.patch
 BuildRequires:  %{python_module Cython} >= 0.23.5
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module aenum}
@@ -35,16 +34,19 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  proj
-BuildRequires:  proj-devel >= 6.2.0
+BuildRequires:  proj-devel >= 7.2.0
 BuildRequires:  python-rpm-macros
 Requires:       python-aenum
 Requires:       python-numpy
 # SECTION test requirements
+BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cov-core}
 BuildRequires:  %{python_module coverage} >= 4.0
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
 
@@ -71,13 +73,14 @@ where you may access the most up-to-date source.
 
 %prep
 %setup -q -n pyproj-%{version}
-%patch0 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyproj
+%python_expand rm -rf  %{buildroot}%{$python_sitearch}/test
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -86,11 +89,12 @@ export PROJ_DIR=$(pkg-config --variable=libdir proj)
 %{python_expand # Multiline
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -c "import pyproj; pyproj.Proj(init='epsg:4269')"
-py.test-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v
+py.test-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.python36 --ignore=_build.python38 --ignore=_build.pypy3 -v -m "not network and not cli and not grid"
 }
 mv pyproj_temp pyproj
 
 %files %{python_files}
+%python_alternative %{_bindir}/pyproj
 %license LICENSE
 %doc README.md
 %{python_sitearch}/*

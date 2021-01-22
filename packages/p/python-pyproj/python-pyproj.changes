@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 19 10:18:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.0.0:
+  * Minimum supported Python version 3.6 (issue #499)
+  * Minimum PROJ version 7.2 (issues #599 & #689)
+  * WHL: Removed datumgrids from wheels because not needed with RFC 4 (pull #628)
+  * ENH: Added PROJ Network Settings (#675, #691, #695)
+  * ENH: Added ability to use global context (issue #661)
+  * ENH: Added transformation grid sync API/CLI (issue #572)
+  * ENH: Support obects with __array__ method (pandas.Series, xarray.DataArray, dask.array.Array) (issue #573)
+  * ENH: Added pyproj.datadir.get_user_data_dir() (pull #636)
+  * ENH: Added pyproj.transformer.Transformer.is_network_enabled (issue #629)
+  * ENH: Added pyproj.transformer.TransformerGroup.download_grids() (pull #643)
+  * ENH: Use ‘proj_get_units_from_database’ in pyproj.database.get_units_map() & cleanup pyproj.database.get_codes() (issue #619)
+  * ENH: Added support for radians for Proj & Transformer.from_pipeline & use less gil (issue #612)
+  * ENH: Datum.from_name default to check all datum types (issue #606)
+  * ENH: Use from_user_input in __eq__ when comparing CRS sub-classes (i.e. PrimeMeridian, Datum, Ellipsoid, etc.) (issue #606)
+  * ENH: Add support for coordinate systems with CRS using CF conventions (issue #536)
+  * ENH: Use proj_is_equivalent_to_with_ctx in the place of proj_is_equivalent_to internally (issue #666)
+  * BUG: Add support for identifying engineering/parametric/temporal datums (issue #670)
+  * ENH: Add support for temporal CRS CF coordinate system (issue #672)
+  * ENH: Added support for debugging internal PROJ (pull #696)
+  * ENH: Added pathlib support for data directory methods (pull #702)
+  * ENH: Added pyproj.database.query_crs_info() (pull #703)
+  * ENH: Added pyproj.database.query_utm_crs_info() (pull #712)
+  * REF: Refactor Proj to inherit from Transformer (issue #624)
+  * REF: Added pyproj.database, pyproj.aoi, and pyproj.list modules (pull #703)
+  * BUG: Fix handling of polygon holes when calculating area in Geod (pull #686)
+- Drop upstream patch:
+  * pyproj-3.0.0-TST-Update-tests-with-scope-remarks-649.patch
+- Include 'pyproj' command line tool
+
+-------------------------------------------------------------------
 Thu Sep 24 06:52:00 UTC 2020 - Libor Pechacek <lpechacek@suse.com>
 
 - Fix failing test after Proj update to 7.1.1

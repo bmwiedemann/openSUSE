@@ -80,4 +80,12 @@
   - added patch pyproj-3.0.0-TST-Update-tests-with-scope-remarks-649.patch (forwarded request 836456 from LPechacek)</comment>
     <requestid>836475</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3f177f129ec44dfc0d9eb44e5e2dc7c2</srcmd5>
+    <version>3.0.0</version>
+    <time>1611348757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865917</requestid>
+  </revision>
 </revisionlist>
