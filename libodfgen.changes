@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 19 21:35:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.8:
+    + use libxml2 to parse xml's equations...
+    + code modernization:
+        use range-based for loop, use nullptr,
+        fix too small loop variables,
+        don't access static members through instance,
+    + retrieve more border's attributes in tables,
+    + retrieve draw:auto-grow-width,draw:fit-to-size,draw:z-index,
+       style:print-content, style:shrink-to-fit attributes in graphics
+    + output numbers with more precision,
+- Other improvements and fixes.
+
+-------------------------------------------------------------------
 Thu Aug 20 21:56:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.1.7:
