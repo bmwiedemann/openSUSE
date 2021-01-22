@@ -1,7 +1,7 @@
 #
 # spec file for package desktop-data-openSUSE
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018-2020 Stasiek Michalski <hellcp@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,13 +45,11 @@ BuildRequires:  perl-RPC-XML
 BuildRequires:  update-desktop-files
 BuildRequires:  wallpaper-branding
 BuildRequires:  xdg-menu
-BuildRequires:  xdg-utils
 %if 0%{?is_opensuse}
 BuildRequires:  branding-openSUSE
 %endif
 
 Requires:       hicolor-icon-theme
-Requires:       xdg-utils
 %if 0%{?is_opensuse}
 Requires:       wallpaper-branding = %{branding_version}
 %endif
@@ -87,11 +85,6 @@ mkdir -p %{buildroot}%{_fillupdir}/
 install -m 0644 %SOURCE1 \
   %{buildroot}%{_fillupdir}/sysconfig.windowmanager-%name
 
-# Make call-browser executable, symlink
-mkdir -p %{buildroot}%{_bindir}
-ln -snf xdg-open %{buildroot}%{_bindir}/call-browser
-ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
-
 %check
 # Check if it's a valid menu
 export XDG_DATA_DIRS=%{buildroot}%{_datadir}/
@@ -108,7 +101,5 @@ xdg_menu --die-on-error --format readable
 %config %{_sysconfdir}/profile.d/desktop-data.*
 %{_datadir}/desktop-*
 %{_fillupdir}/sysconfig.windowmanager-%name
-%{_bindir}/call-browser
-%{_bindir}/desktop-launch
 
 %changelog
