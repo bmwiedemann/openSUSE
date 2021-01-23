@@ -59,7 +59,7 @@ dvd:
   - patterns-gnome-gnome_utilities: [required,suggested]
   - patterns-gnome-gnome_yast: [required,suggested]
   - patterns-desktop-imaging: [required,suggested]
-  - patterns-kde-kde: [required,suggested]
+  - patterns-kde-kde: [suggested]
   - patterns-kde-kde_edutainment: [required,suggested]
   - patterns-kde-kde_games: [required,suggested]
   - patterns-kde-kde_ide: [required,suggested]
