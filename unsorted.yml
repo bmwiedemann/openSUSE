@@ -278,7 +278,6 @@ unsorted:
   - XyGrib 
   - YODA-devel 
   - a2jmidid 
-  - a2ps 
   - a2ps-devel 
   - a2ps-h 
   - a52dec 
@@ -470,8 +469,6 @@ unsorted:
   - alure-devel 
   - amanda 
   - amarok-lang 
-  - amavisd-new 
-  - amavisd-new-docs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - amazon-ecs-init 
   - amazon-ssm-agent 
   - aml-devel 
@@ -709,7 +706,6 @@ unsorted:
   - arandr 
   - aranym 
   - arb-devel 
-  - arc 
   - arc-icon-theme 
   - arcanist 
   - archivemount 
@@ -727,7 +723,6 @@ unsorted:
   - aria2: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - aria2-devel 
   - aria2-lang: [i586] 
-  - arj 
   - arm-ml-examples: [x86_64] 
   - arm-ml-examples-data: [x86_64] 
   - armadillo-devel 
@@ -945,7 +940,6 @@ unsorted:
   - autobench 
   - autobuild 
   - autoconf-archive 
-  - autoconf-el 
   - autoconf213 
   - autocutsel 
   - autofdo 
@@ -1401,7 +1395,6 @@ unsorted:
   - bs1770gain 
   - bs2b-tools 
   - bscalc 
-  - bsd-games 
   - bsdiff 
   - bsdtar 
   - bsf 
@@ -1526,7 +1519,6 @@ unsorted:
   - busybox-netcat 
   - busybox-policycoreutils 
   - busybox-procps 
-  - busybox-psmisc: [i586] 
   - busybox-selinux-tools 
   - busybox-sh 
   - busybox-sharutils 
@@ -1683,7 +1675,6 @@ unsorted:
   - cantor-lang 
   - canutils 
   - canutils-pengutronix 
-  - capi4hylafax 
   - capnet-assist 
   - capnet-assist-lang 
   - capnproto 
@@ -1905,7 +1896,6 @@ unsorted:
   - cjs-tests 
   - ck-devel 
   - ckb-next 
-  - ckermit 
   - ckermit-doc 
   - clFFT: [x86_64] 
   - clFFT-devel: [x86_64] 
@@ -2605,7 +2595,6 @@ unsorted:
   - ddnet-server 
   - ddrescueview 
   - dds2tar 
-  - ddskk 
   - deadbeef 
   - deadbeef-devel 
   - deadbeef-lang 
@@ -2914,7 +2903,6 @@ unsorted:
   - dzen2 
   - e16 
   - e2fsprogs-devel 
-  - e2fsprogs-scrub 
   - e3 
   - eaglemode 
   - earlyoom 
@@ -3033,20 +3021,13 @@ unsorted:
   - elixir-hex 
   - ell-devel 
   - elua 
-  - emacs 
-  - emacs-apel 
   - emacs-auctex 
   - emacs-color-theme 
   - emacs-completion-golang 
   - emacs-el 
-  - emacs-flim 
-  - emacs-info 
-  - emacs-nox 
-  - emacs-plugin-devhelp 
+  - emacs-plugin-devhelp: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - emacs-scheme48 
   - emacs-semi 
-  - emacs-w3m 
-  - emacs-x11 
   - embree-devel-static: [x86_64] 
   - emf2svg-conv 
   - emil 
@@ -5317,7 +5298,6 @@ unsorted:
   - ghcid: [x86_64] 
   - ghex-devel 
   - ghostscript-devel 
-  - ghostscript-fonts 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -6291,7 +6271,6 @@ unsorted:
   - guice-servlet 
   - guice-testlib 
   - guice-throwingproviders 
-  - guile 
   - guile-bytestructures 
   - guile-cairo 
   - guile-cairo-devel 
@@ -6301,7 +6280,6 @@ unsorted:
   - guile-git 
   - guile-json 
   - guile-lzlib 
-  - guile-modules-3_0: [i586] 
   - guile-newt 
   - guile-parted 
   - guile-sqlite3 
@@ -6324,7 +6302,7 @@ unsorted:
   - guvcview-lang 
   - guvcview-qt5 
   - guvcview-qt5-lang 
-  - gv 
+  - gv: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - gvfs-32bit: [x86_64] 
   - gvfs-devel 
   - gvim: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
@@ -6618,7 +6596,6 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
-  - hylafax+ 
   - hyperscan-devel 
   - hyphen 
   - hyphen-devel 
@@ -6836,7 +6813,6 @@ unsorted:
   - injeqt-devel 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
-  - inn 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -8445,7 +8421,6 @@ unsorted:
   - leveldb-devel-static 
   - levmar-devel 
   - lha 
-  - lhasa 
   - lhasa-devel 
   - lib3270-5_3 
   - lib3270-devel 
@@ -9060,7 +9035,6 @@ unsorted:
   - libXaw3d6-32bit: [x86_64] 
   - libXaw3d7 
   - libXaw3d7-32bit: [x86_64] 
-  - libXaw3d8 
   - libXaw3d8-32bit: [x86_64] 
   - libXaw6 
   - libXaw6-32bit: [x86_64] 
@@ -9163,7 +9137,6 @@ unsorted:
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_8_5 
   - libZXing1-32bit: [x86_64] 
-  - liba2ps1 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -9720,7 +9693,6 @@ unsorted:
   - libcap1-32bit: [x86_64] 
   - libcap2-32bit: [x86_64] 
   - libcapi20 
-  - libcapi20-3 
   - libcapi20-devel 
   - libcapnp-0_8 
   - libcapnp-devel 
@@ -10409,7 +10381,6 @@ unsorted:
   - libfko3 
   - libfl-devel: [i586] 
   - libfl-devel-32bit: [x86_64] 
-  - libfl2: [i586] 
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
   - libflatbuffers1 
@@ -10789,8 +10760,6 @@ unsorted:
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
-  - libgsasl-lang 
-  - libgsasl7 
   - libgsequencer0 
   - libgsettings-qt1 
   - libgsf-1-114-32bit: [x86_64] 
@@ -10886,7 +10855,6 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-devel: [x86_64] 
   - libguestfs-test: [x86_64] 
-  - libguile-3_0-1: [i586] 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
   - libguile-srfi-srfi-13-14-v-3-3 
@@ -11515,7 +11483,6 @@ unsorted:
   - liblept5-32bit: [x86_64] 
   - libleveldb1 
   - liblevmar2 
-  - liblhasa0 
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
@@ -11639,7 +11606,6 @@ unsorted:
   - libmagic1-32bit: [x86_64] 
   - libmaia-devel 
   - libmaia1 
-  - libmailutils5 
   - libmanette-devel 
   - libmapi1 
   - libmapidb-devel 
@@ -12076,7 +12042,6 @@ unsorted:
   - libntk1 
   - libntl43 
   - libntlm-devel 
-  - libntlm0 
   - libnuma-devel 
   - libnuma1-32bit: [x86_64] 
   - libnumbertext-devel 
@@ -15100,7 +15065,6 @@ unsorted:
   - mailgraph-apache 
   - mailimporter-devel 
   - mailprocessing 
-  - mailutils 
   - mailutils-devel 
   - mailutils-imap4d 
   - mailutils-mh 
@@ -15732,8 +15696,6 @@ unsorted:
   - mingw64-zlib-devel 
   - mingw64-zlib1 
   - mingzat-fonts 
-  - minicom 
-  - minicom-lang 
   - minidlna 
   - minigalaxy 
   - minikube 
@@ -16445,7 +16407,6 @@ unsorted:
   - ncat 
   - ncdu 
   - ncmpcpp 
-  - ncompress 
   - ncurses-devel 
   - ncurses-devel-32bit: [x86_64] 
   - ncurses-devel-static 
@@ -18456,7 +18417,6 @@ unsorted:
   - perl-Class-Unload 
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
-  - perl-Class-XSAccessor 
   - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
@@ -18483,9 +18443,7 @@ unsorted:
   - perl-Const-Fast 
   - perl-Context-Preserve 
   - perl-Contextual-Return 
-  - perl-Convert-ASN1 
   - perl-Convert-BER 
-  - perl-Convert-BinHex 
   - perl-Convert-TNEF 
   - perl-Convert-UUlib 
   - perl-Cookie-Baker 
@@ -18635,7 +18593,6 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
-  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -18648,7 +18605,6 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
-  - perl-Exporter-Tiny 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
@@ -18719,7 +18675,6 @@ unsorted:
   - perl-Furl 
   - perl-Fuse 
   - perl-Future 
-  - perl-GD 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
@@ -18858,8 +18813,6 @@ unsorted:
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
   - perl-List-Compare 
-  - perl-List-MoreUtils 
-  - perl-List-MoreUtils-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -18884,7 +18837,6 @@ unsorted:
   - perl-MIME-EncWords 
   - perl-MIME-Lite 
   - perl-MIME-Types 
-  - perl-MIME-tools 
   - perl-MLDBM 
   - perl-MLDBM-Sync 
   - perl-MRO-Compat 
@@ -19371,7 +19323,6 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
-  - perl-Test-Pod 
   - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
   - perl-Test-Requires 
@@ -19409,7 +19360,6 @@ unsorted:
   - perl-Text-BibTeX-devel 
   - perl-Text-Brew 
   - perl-Text-CSV 
-  - perl-Text-CSV_XS 
   - perl-Text-Capitalize 
   - perl-Text-ChaSen 
   - perl-Text-CharWidth 
@@ -19482,7 +19432,6 @@ unsorted:
   - perl-Unicode-Normalize 
   - perl-Unicode-String 
   - perl-Unicode-Stringprep 
-  - perl-Unix-Syslog 
   - perl-User-Identity 
   - perl-Variable-Magic 
   - perl-Verilog-Perl 
@@ -19560,7 +19509,6 @@ unsorted:
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
-  - perl-ldap 
   - perl-lib-relative 
   - perl-libconfigfile 
   - perl-libintl-perl 
@@ -20084,7 +20032,6 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
-  - postfix 
   - postfix-devel 
   - postfix-ldap 
   - postfix-lmdb 
@@ -20721,155 +20668,6 @@ unsorted:
   - python3-avocado-plugins-varianter-pict 
   - python3-avocado-plugins-varianter-yaml-to-mux 
   - python3-awkward 
-  - python3-azure-ai-anomalydetector 
-  - python3-azure-ai-formrecognizer 
-  - python3-azure-ai-metricsadvisor 
-  - python3-azure-ai-textanalytics 
-  - python3-azure-appconfiguration 
-  - python3-azure-applicationinsights 
-  - python3-azure-batch 
-  - python3-azure-cognitiveservices-anomalydetector 
-  - python3-azure-cognitiveservices-formrecognizer 
-  - python3-azure-cognitiveservices-inkrecognizer 
-  - python3-azure-cognitiveservices-knowledge-qnamaker 
-  - python3-azure-cognitiveservices-language-luis 
-  - python3-azure-cognitiveservices-language-spellcheck 
-  - python3-azure-cognitiveservices-language-textanalytics 
-  - python3-azure-cognitiveservices-personalizer 
-  - python3-azure-cognitiveservices-search-autosuggest 
-  - python3-azure-cognitiveservices-search-customimagesearch 
-  - python3-azure-cognitiveservices-search-customsearch 
-  - python3-azure-cognitiveservices-search-entitysearch 
-  - python3-azure-cognitiveservices-search-imagesearch 
-  - python3-azure-cognitiveservices-search-newssearch 
-  - python3-azure-cognitiveservices-search-videosearch 
-  - python3-azure-cognitiveservices-search-visualsearch 
-  - python3-azure-cognitiveservices-search-websearch 
-  - python3-azure-cognitiveservices-vision-computervision 
-  - python3-azure-cognitiveservices-vision-contentmoderator 
-  - python3-azure-cognitiveservices-vision-customvision 
-  - python3-azure-cognitiveservices-vision-face 
-  - python3-azure-common 
-  - python3-azure-communication-administration 
-  - python3-azure-communication-chat 
-  - python3-azure-communication-nspkg 
-  - python3-azure-communication-sms 
-  - python3-azure-cosmos 
-  - python3-azure-data-nspkg 
-  - python3-azure-data-tables 
-  - python3-azure-datalake-store 
-  - python3-azure-devops 
-  - python3-azure-eventgrid 
-  - python3-azure-eventhub 
-  - python3-azure-eventhub-checkpointstoreblob 
-  - python3-azure-eventhub-checkpointstoreblob-aio 
-  - python3-azure-graphrbac 
-  - python3-azure-identity 
-  - python3-azure-loganalytics 
-  - python3-azure-mgmt-alertsmanagement 
-  - python3-azure-mgmt-appconfiguration 
-  - python3-azure-mgmt-applicationinsights 
-  - python3-azure-mgmt-appplatform 
-  - python3-azure-mgmt-attestation 
-  - python3-azure-mgmt-authorization 
-  - python3-azure-mgmt-automanage 
-  - python3-azure-mgmt-azureadb2c 
-  - python3-azure-mgmt-azurestack 
-  - python3-azure-mgmt-azurestackhci 
-  - python3-azure-mgmt-baremetalinfrastructure 
-  - python3-azure-mgmt-batchai 
-  - python3-azure-mgmt-billing 
-  - python3-azure-mgmt-cdn 
-  - python3-azure-mgmt-communication 
-  - python3-azure-mgmt-compute 
-  - python3-azure-mgmt-confluent 
-  - python3-azure-mgmt-containerinstance 
-  - python3-azure-mgmt-containerregistry 
-  - python3-azure-mgmt-containerservice 
-  - python3-azure-mgmt-core 
-  - python3-azure-mgmt-cosmosdb 
-  - python3-azure-mgmt-costmanagement 
-  - python3-azure-mgmt-customproviders 
-  - python3-azure-mgmt-databox 
-  - python3-azure-mgmt-databoxedge 
-  - python3-azure-mgmt-databricks 
-  - python3-azure-mgmt-datadog 
-  - python3-azure-mgmt-datalake-analytics 
-  - python3-azure-mgmt-datashare 
-  - python3-azure-mgmt-deploymentmanager 
-  - python3-azure-mgmt-devspaces 
-  - python3-azure-mgmt-dns 
-  - python3-azure-mgmt-documentdb 
-  - python3-azure-mgmt-edgegateway 
-  - python3-azure-mgmt-eventhub 
-  - python3-azure-mgmt-frontdoor 
-  - python3-azure-mgmt-hanaonazure 
-  - python3-azure-mgmt-healthcareapis 
-  - python3-azure-mgmt-hybridcompute 
-  - python3-azure-mgmt-hybridkubernetes 
-  - python3-azure-mgmt-imagebuilder 
-  - python3-azure-mgmt-iothubprovisioningservices 
-  - python3-azure-mgmt-keyvault 
-  - python3-azure-mgmt-kubernetesconfiguration 
-  - python3-azure-mgmt-kusto 
-  - python3-azure-mgmt-labservices 
-  - python3-azure-mgmt-machinelearningcompute 
-  - python3-azure-mgmt-maintenance 
-  - python3-azure-mgmt-managedservices 
-  - python3-azure-mgmt-managementgroups 
-  - python3-azure-mgmt-managementpartner 
-  - python3-azure-mgmt-maps 
-  - python3-azure-mgmt-media 
-  - python3-azure-mgmt-mixedreality 
-  - python3-azure-mgmt-monitor 
-  - python3-azure-mgmt-msi 
-  - python3-azure-mgmt-network 
-  - python3-azure-mgmt-peering 
-  - python3-azure-mgmt-powerbiembedded 
-  - python3-azure-mgmt-privatedns 
-  - python3-azure-mgmt-recoveryservices 
-  - python3-azure-mgmt-recoveryservicesbackup 
-  - python3-azure-mgmt-redhatopenshift 
-  - python3-azure-mgmt-redis 
-  - python3-azure-mgmt-regionmove 
-  - python3-azure-mgmt-reservations 
-  - python3-azure-mgmt-resourcemover 
-  - python3-azure-mgmt-scheduler 
-  - python3-azure-mgmt-serialconsole 
-  - python3-azure-mgmt-servermanager 
-  - python3-azure-mgmt-servicebus 
-  - python3-azure-mgmt-servicefabric 
-  - python3-azure-mgmt-sql 
-  - python3-azure-mgmt-sqlvirtualmachine 
-  - python3-azure-mgmt-storage 
-  - python3-azure-mgmt-storagecache 
-  - python3-azure-mgmt-storageimportexport 
-  - python3-azure-mgmt-storagesync 
-  - python3-azure-mgmt-streamanalytics 
-  - python3-azure-mgmt-support 
-  - python3-azure-mgmt-timeseriesinsights 
-  - python3-azure-mgmt-trafficmanager 
-  - python3-azure-mgmt-vmwarecloudsimple 
-  - python3-azure-mgmt-web 
-  - python3-azure-monitor 
-  - python3-azure-multiapi-storage 
-  - python3-azure-search-documents 
-  - python3-azure-servicefabric 
-  - python3-azure-servicemanagement-legacy 
-  - python3-azure-storage 
-  - python3-azure-storage-blob 
-  - python3-azure-storage-common 
-  - python3-azure-storage-file 
-  - python3-azure-storage-file-datalake 
-  - python3-azure-storage-file-share 
-  - python3-azure-storage-nspkg 
-  - python3-azure-storage-queue 
-  - python3-azure-synapse-accesscontrol 
-  - python3-azure-synapse-artifacts 
-  - python3-azure-synapse-managedprivateendpoints 
-  - python3-azure-synapse-monitoring 
-  - python3-azure-synapse-nspkg 
-  - python3-azure-synapse-spark 
   - python3-azurectl 
   - python3-azuremetadata 
   - python3-babeltrace 
@@ -21225,7 +21023,6 @@ unsorted:
   - python3-otb 
   - python3-ovs 
   - python3-ovsdbapp 
-  - python3-papermill 
   - python3-paraview 
   - python3-pcp 
   - python3-pendulum 
@@ -21746,67 +21543,216 @@ unsorted:
   - python36-aws-xray-sdk-requests 
   - python36-axolotl 
   - python36-axolotl-curve25519 
+  - python36-azure-ai-anomalydetector 
+  - python36-azure-ai-formrecognizer 
+  - python36-azure-ai-metricsadvisor 
   - python36-azure-ai-nspkg 
+  - python36-azure-ai-textanalytics 
+  - python36-azure-appconfiguration 
+  - python36-azure-applicationinsights 
+  - python36-azure-batch 
+  - python36-azure-cognitiveservices-anomalydetector 
+  - python36-azure-cognitiveservices-formrecognizer 
+  - python36-azure-cognitiveservices-inkrecognizer 
   - python36-azure-cognitiveservices-knowledge-nspkg 
+  - python36-azure-cognitiveservices-knowledge-qnamaker 
+  - python36-azure-cognitiveservices-language-luis 
   - python36-azure-cognitiveservices-language-nspkg 
+  - python36-azure-cognitiveservices-language-spellcheck 
+  - python36-azure-cognitiveservices-language-textanalytics 
   - python36-azure-cognitiveservices-nspkg 
+  - python36-azure-cognitiveservices-personalizer 
+  - python36-azure-cognitiveservices-search-autosuggest 
+  - python36-azure-cognitiveservices-search-customimagesearch 
+  - python36-azure-cognitiveservices-search-customsearch 
+  - python36-azure-cognitiveservices-search-entitysearch 
+  - python36-azure-cognitiveservices-search-imagesearch 
+  - python36-azure-cognitiveservices-search-newssearch 
   - python36-azure-cognitiveservices-search-nspkg 
+  - python36-azure-cognitiveservices-search-videosearch 
+  - python36-azure-cognitiveservices-search-visualsearch 
+  - python36-azure-cognitiveservices-search-websearch 
+  - python36-azure-cognitiveservices-vision-computervision 
+  - python36-azure-cognitiveservices-vision-contentmoderator 
+  - python36-azure-cognitiveservices-vision-customvision 
+  - python36-azure-cognitiveservices-vision-face 
   - python36-azure-cognitiveservices-vision-nspkg 
+  - python36-azure-common 
+  - python36-azure-communication-administration 
+  - python36-azure-communication-chat 
+  - python36-azure-communication-nspkg 
+  - python36-azure-communication-sms 
   - python36-azure-core 
   - python36-azure-core-tracing-opencensus 
   - python36-azure-core-tracing-opentelemetry 
+  - python36-azure-cosmos 
+  - python36-azure-data-nspkg 
+  - python36-azure-data-tables 
+  - python36-azure-datalake-store 
+  - python36-azure-devops 
   - python36-azure-digitaltwins-core 
   - python36-azure-digitaltwins-nspkg 
+  - python36-azure-eventgrid 
+  - python36-azure-eventhub 
+  - python36-azure-eventhub-checkpointstoreblob 
+  - python36-azure-eventhub-checkpointstoreblob-aio 
   - python36-azure-functions-devops-build 
+  - python36-azure-graphrbac 
+  - python36-azure-identity 
   - python36-azure-keyvault 
   - python36-azure-keyvault-administration 
   - python36-azure-keyvault-certificates 
   - python36-azure-keyvault-keys 
   - python36-azure-keyvault-nspkg 
   - python36-azure-keyvault-secrets 
+  - python36-azure-loganalytics 
   - python36-azure-media-nspkg 
   - python36-azure-mgmt 
   - python36-azure-mgmt-advisor 
+  - python36-azure-mgmt-alertsmanagement 
   - python36-azure-mgmt-apimanagement 
+  - python36-azure-mgmt-appconfiguration 
+  - python36-azure-mgmt-applicationinsights 
+  - python36-azure-mgmt-appplatform 
+  - python36-azure-mgmt-attestation 
+  - python36-azure-mgmt-authorization 
+  - python36-azure-mgmt-automanage 
   - python36-azure-mgmt-automation 
+  - python36-azure-mgmt-azureadb2c 
+  - python36-azure-mgmt-azurestack 
+  - python36-azure-mgmt-azurestackhci 
+  - python36-azure-mgmt-baremetalinfrastructure 
   - python36-azure-mgmt-batch 
+  - python36-azure-mgmt-batchai 
+  - python36-azure-mgmt-billing 
   - python36-azure-mgmt-botservice 
+  - python36-azure-mgmt-cdn 
   - python36-azure-mgmt-cognitiveservices 
   - python36-azure-mgmt-commerce 
+  - python36-azure-mgmt-communication 
+  - python36-azure-mgmt-compute 
+  - python36-azure-mgmt-confluent 
   - python36-azure-mgmt-consumption 
+  - python36-azure-mgmt-containerinstance 
+  - python36-azure-mgmt-containerregistry 
+  - python36-azure-mgmt-containerservice 
+  - python36-azure-mgmt-core 
+  - python36-azure-mgmt-cosmosdb 
+  - python36-azure-mgmt-costmanagement 
+  - python36-azure-mgmt-customproviders 
+  - python36-azure-mgmt-databox 
+  - python36-azure-mgmt-databoxedge 
+  - python36-azure-mgmt-databricks 
+  - python36-azure-mgmt-datadog 
   - python36-azure-mgmt-datafactory 
+  - python36-azure-mgmt-datalake-analytics 
   - python36-azure-mgmt-datalake-nspkg 
   - python36-azure-mgmt-datalake-store 
   - python36-azure-mgmt-datamigration 
+  - python36-azure-mgmt-datashare 
+  - python36-azure-mgmt-deploymentmanager 
+  - python36-azure-mgmt-devspaces 
   - python36-azure-mgmt-devtestlabs 
+  - python36-azure-mgmt-dns 
+  - python36-azure-mgmt-documentdb 
+  - python36-azure-mgmt-edgegateway 
   - python36-azure-mgmt-eventgrid 
+  - python36-azure-mgmt-eventhub 
+  - python36-azure-mgmt-frontdoor 
+  - python36-azure-mgmt-hanaonazure 
   - python36-azure-mgmt-hdinsight 
+  - python36-azure-mgmt-healthcareapis 
+  - python36-azure-mgmt-hybridcompute 
+  - python36-azure-mgmt-hybridkubernetes 
+  - python36-azure-mgmt-imagebuilder 
   - python36-azure-mgmt-iotcentral 
   - python36-azure-mgmt-iothub 
+  - python36-azure-mgmt-iothubprovisioningservices 
+  - python36-azure-mgmt-keyvault 
+  - python36-azure-mgmt-kubernetesconfiguration 
+  - python36-azure-mgmt-kusto 
+  - python36-azure-mgmt-labservices 
   - python36-azure-mgmt-loganalytics 
   - python36-azure-mgmt-logic 
+  - python36-azure-mgmt-machinelearningcompute 
   - python36-azure-mgmt-machinelearningservices 
+  - python36-azure-mgmt-maintenance 
+  - python36-azure-mgmt-managedservices 
+  - python36-azure-mgmt-managementgroups 
+  - python36-azure-mgmt-managementpartner 
+  - python36-azure-mgmt-maps 
   - python36-azure-mgmt-marketplaceordering 
+  - python36-azure-mgmt-media 
+  - python36-azure-mgmt-mixedreality 
+  - python36-azure-mgmt-monitor 
+  - python36-azure-mgmt-msi 
   - python36-azure-mgmt-netapp 
+  - python36-azure-mgmt-network 
   - python36-azure-mgmt-notificationhubs 
   - python36-azure-mgmt-nspkg 
+  - python36-azure-mgmt-peering 
   - python36-azure-mgmt-policyinsights 
   - python36-azure-mgmt-portal 
   - python36-azure-mgmt-powerbidedicated 
+  - python36-azure-mgmt-powerbiembedded 
+  - python36-azure-mgmt-privatedns 
   - python36-azure-mgmt-rdbms 
+  - python36-azure-mgmt-recoveryservices 
+  - python36-azure-mgmt-recoveryservicesbackup 
+  - python36-azure-mgmt-redhatopenshift 
+  - python36-azure-mgmt-redis 
+  - python36-azure-mgmt-regionmove 
   - python36-azure-mgmt-relay 
+  - python36-azure-mgmt-reservations 
   - python36-azure-mgmt-resource 
   - python36-azure-mgmt-resourcegraph 
+  - python36-azure-mgmt-resourcemover 
+  - python36-azure-mgmt-scheduler 
   - python36-azure-mgmt-search 
   - python36-azure-mgmt-security 
+  - python36-azure-mgmt-serialconsole 
+  - python36-azure-mgmt-servermanager 
+  - python36-azure-mgmt-servicebus 
+  - python36-azure-mgmt-servicefabric 
   - python36-azure-mgmt-signalr 
+  - python36-azure-mgmt-sql 
+  - python36-azure-mgmt-sqlvirtualmachine 
+  - python36-azure-mgmt-storage 
+  - python36-azure-mgmt-storagecache 
+  - python36-azure-mgmt-storageimportexport 
+  - python36-azure-mgmt-storagesync 
+  - python36-azure-mgmt-streamanalytics 
   - python36-azure-mgmt-subscription 
+  - python36-azure-mgmt-support 
   - python36-azure-mgmt-synapse 
+  - python36-azure-mgmt-timeseriesinsights 
+  - python36-azure-mgmt-trafficmanager 
+  - python36-azure-mgmt-vmwarecloudsimple 
+  - python36-azure-mgmt-web 
+  - python36-azure-monitor 
+  - python36-azure-multiapi-storage 
   - python36-azure-nspkg 
   - python36-azure-sdk 
+  - python36-azure-search-documents 
   - python36-azure-search-nspkg 
   - python36-azure-security-nspkg 
   - python36-azure-servicebus 
+  - python36-azure-servicefabric 
+  - python36-azure-servicemanagement-legacy 
+  - python36-azure-storage 
+  - python36-azure-storage-blob 
+  - python36-azure-storage-common 
+  - python36-azure-storage-file 
+  - python36-azure-storage-file-datalake 
+  - python36-azure-storage-file-share 
+  - python36-azure-storage-nspkg 
+  - python36-azure-storage-queue 
+  - python36-azure-synapse-accesscontrol 
+  - python36-azure-synapse-artifacts 
+  - python36-azure-synapse-managedprivateendpoints 
+  - python36-azure-synapse-monitoring 
+  - python36-azure-synapse-nspkg 
+  - python36-azure-synapse-spark 
   - python36-azure-template 
   - python36-babelfish 
   - python36-backcall 
@@ -22941,6 +22887,7 @@ unsorted:
   - python36-pandocfilters 
   - python36-panel 
   - python36-panflute 
+  - python36-papermill 
   - python36-parallax 
   - python36-param 
   - python36-parameterized 
@@ -24383,67 +24330,216 @@ unsorted:
   - python38-aws-xray-sdk-requests 
   - python38-axolotl 
   - python38-axolotl-curve25519 
+  - python38-azure-ai-anomalydetector 
+  - python38-azure-ai-formrecognizer 
+  - python38-azure-ai-metricsadvisor 
   - python38-azure-ai-nspkg 
+  - python38-azure-ai-textanalytics 
+  - python38-azure-appconfiguration 
+  - python38-azure-applicationinsights 
+  - python38-azure-batch 
+  - python38-azure-cognitiveservices-anomalydetector 
+  - python38-azure-cognitiveservices-formrecognizer 
+  - python38-azure-cognitiveservices-inkrecognizer 
   - python38-azure-cognitiveservices-knowledge-nspkg 
+  - python38-azure-cognitiveservices-knowledge-qnamaker 
+  - python38-azure-cognitiveservices-language-luis 
   - python38-azure-cognitiveservices-language-nspkg 
+  - python38-azure-cognitiveservices-language-spellcheck 
+  - python38-azure-cognitiveservices-language-textanalytics 
   - python38-azure-cognitiveservices-nspkg 
+  - python38-azure-cognitiveservices-personalizer 
+  - python38-azure-cognitiveservices-search-autosuggest 
+  - python38-azure-cognitiveservices-search-customimagesearch 
+  - python38-azure-cognitiveservices-search-customsearch 
+  - python38-azure-cognitiveservices-search-entitysearch 
+  - python38-azure-cognitiveservices-search-imagesearch 
+  - python38-azure-cognitiveservices-search-newssearch 
   - python38-azure-cognitiveservices-search-nspkg 
+  - python38-azure-cognitiveservices-search-videosearch 
+  - python38-azure-cognitiveservices-search-visualsearch 
+  - python38-azure-cognitiveservices-search-websearch 
+  - python38-azure-cognitiveservices-vision-computervision 
+  - python38-azure-cognitiveservices-vision-contentmoderator 
+  - python38-azure-cognitiveservices-vision-customvision 
+  - python38-azure-cognitiveservices-vision-face 
   - python38-azure-cognitiveservices-vision-nspkg 
+  - python38-azure-common 
+  - python38-azure-communication-administration 
+  - python38-azure-communication-chat 
+  - python38-azure-communication-nspkg 
+  - python38-azure-communication-sms 
   - python38-azure-core 
   - python38-azure-core-tracing-opencensus 
   - python38-azure-core-tracing-opentelemetry 
+  - python38-azure-cosmos 
+  - python38-azure-data-nspkg 
+  - python38-azure-data-tables 
+  - python38-azure-datalake-store 
+  - python38-azure-devops 
   - python38-azure-digitaltwins-core 
   - python38-azure-digitaltwins-nspkg 
+  - python38-azure-eventgrid 
+  - python38-azure-eventhub 
+  - python38-azure-eventhub-checkpointstoreblob 
+  - python38-azure-eventhub-checkpointstoreblob-aio 
   - python38-azure-functions-devops-build 
+  - python38-azure-graphrbac 
+  - python38-azure-identity 
   - python38-azure-keyvault 
   - python38-azure-keyvault-administration 
   - python38-azure-keyvault-certificates 
   - python38-azure-keyvault-keys 
   - python38-azure-keyvault-nspkg 
   - python38-azure-keyvault-secrets 
+  - python38-azure-loganalytics 
   - python38-azure-media-nspkg 
   - python38-azure-mgmt 
   - python38-azure-mgmt-advisor 
+  - python38-azure-mgmt-alertsmanagement 
   - python38-azure-mgmt-apimanagement 
+  - python38-azure-mgmt-appconfiguration 
+  - python38-azure-mgmt-applicationinsights 
+  - python38-azure-mgmt-appplatform 
+  - python38-azure-mgmt-attestation 
+  - python38-azure-mgmt-authorization 
+  - python38-azure-mgmt-automanage 
   - python38-azure-mgmt-automation 
+  - python38-azure-mgmt-azureadb2c 
+  - python38-azure-mgmt-azurestack 
+  - python38-azure-mgmt-azurestackhci 
+  - python38-azure-mgmt-baremetalinfrastructure 
   - python38-azure-mgmt-batch 
+  - python38-azure-mgmt-batchai 
+  - python38-azure-mgmt-billing 
   - python38-azure-mgmt-botservice 
+  - python38-azure-mgmt-cdn 
   - python38-azure-mgmt-cognitiveservices 
   - python38-azure-mgmt-commerce 
+  - python38-azure-mgmt-communication 
+  - python38-azure-mgmt-compute 
+  - python38-azure-mgmt-confluent 
   - python38-azure-mgmt-consumption 
+  - python38-azure-mgmt-containerinstance 
+  - python38-azure-mgmt-containerregistry 
+  - python38-azure-mgmt-containerservice 
+  - python38-azure-mgmt-core 
+  - python38-azure-mgmt-cosmosdb 
+  - python38-azure-mgmt-costmanagement 
+  - python38-azure-mgmt-customproviders 
+  - python38-azure-mgmt-databox 
+  - python38-azure-mgmt-databoxedge 
+  - python38-azure-mgmt-databricks 
+  - python38-azure-mgmt-datadog 
   - python38-azure-mgmt-datafactory 
+  - python38-azure-mgmt-datalake-analytics 
   - python38-azure-mgmt-datalake-nspkg 
   - python38-azure-mgmt-datalake-store 
   - python38-azure-mgmt-datamigration 
+  - python38-azure-mgmt-datashare 
+  - python38-azure-mgmt-deploymentmanager 
+  - python38-azure-mgmt-devspaces 
   - python38-azure-mgmt-devtestlabs 
+  - python38-azure-mgmt-dns 
+  - python38-azure-mgmt-documentdb 
+  - python38-azure-mgmt-edgegateway 
   - python38-azure-mgmt-eventgrid 
+  - python38-azure-mgmt-eventhub 
+  - python38-azure-mgmt-frontdoor 
+  - python38-azure-mgmt-hanaonazure 
   - python38-azure-mgmt-hdinsight 
+  - python38-azure-mgmt-healthcareapis 
+  - python38-azure-mgmt-hybridcompute 
+  - python38-azure-mgmt-hybridkubernetes 
+  - python38-azure-mgmt-imagebuilder 
   - python38-azure-mgmt-iotcentral 
   - python38-azure-mgmt-iothub 
+  - python38-azure-mgmt-iothubprovisioningservices 
+  - python38-azure-mgmt-keyvault 
+  - python38-azure-mgmt-kubernetesconfiguration 
+  - python38-azure-mgmt-kusto 
+  - python38-azure-mgmt-labservices 
   - python38-azure-mgmt-loganalytics 
   - python38-azure-mgmt-logic 
+  - python38-azure-mgmt-machinelearningcompute 
   - python38-azure-mgmt-machinelearningservices 
+  - python38-azure-mgmt-maintenance 
+  - python38-azure-mgmt-managedservices 
+  - python38-azure-mgmt-managementgroups 
+  - python38-azure-mgmt-managementpartner 
+  - python38-azure-mgmt-maps 
   - python38-azure-mgmt-marketplaceordering 
+  - python38-azure-mgmt-media 
+  - python38-azure-mgmt-mixedreality 
+  - python38-azure-mgmt-monitor 
+  - python38-azure-mgmt-msi 
   - python38-azure-mgmt-netapp 
+  - python38-azure-mgmt-network 
   - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
+  - python38-azure-mgmt-peering 
   - python38-azure-mgmt-policyinsights 
   - python38-azure-mgmt-portal 
   - python38-azure-mgmt-powerbidedicated 
+  - python38-azure-mgmt-powerbiembedded 
+  - python38-azure-mgmt-privatedns 
   - python38-azure-mgmt-rdbms 
+  - python38-azure-mgmt-recoveryservices 
+  - python38-azure-mgmt-recoveryservicesbackup 
+  - python38-azure-mgmt-redhatopenshift 
+  - python38-azure-mgmt-redis 
+  - python38-azure-mgmt-regionmove 
   - python38-azure-mgmt-relay 
+  - python38-azure-mgmt-reservations 
   - python38-azure-mgmt-resource 
   - python38-azure-mgmt-resourcegraph 
+  - python38-azure-mgmt-resourcemover 
+  - python38-azure-mgmt-scheduler 
   - python38-azure-mgmt-search 
   - python38-azure-mgmt-security 
+  - python38-azure-mgmt-serialconsole 
+  - python38-azure-mgmt-servermanager 
+  - python38-azure-mgmt-servicebus 
+  - python38-azure-mgmt-servicefabric 
   - python38-azure-mgmt-signalr 
+  - python38-azure-mgmt-sql 
+  - python38-azure-mgmt-sqlvirtualmachine 
+  - python38-azure-mgmt-storage 
+  - python38-azure-mgmt-storagecache 
+  - python38-azure-mgmt-storageimportexport 
+  - python38-azure-mgmt-storagesync 
+  - python38-azure-mgmt-streamanalytics 
   - python38-azure-mgmt-subscription 
+  - python38-azure-mgmt-support 
   - python38-azure-mgmt-synapse 
+  - python38-azure-mgmt-timeseriesinsights 
+  - python38-azure-mgmt-trafficmanager 
+  - python38-azure-mgmt-vmwarecloudsimple 
+  - python38-azure-mgmt-web 
+  - python38-azure-monitor 
+  - python38-azure-multiapi-storage 
   - python38-azure-nspkg 
   - python38-azure-sdk 
+  - python38-azure-search-documents 
   - python38-azure-search-nspkg 
   - python38-azure-security-nspkg 
   - python38-azure-servicebus 
+  - python38-azure-servicefabric 
+  - python38-azure-servicemanagement-legacy 
+  - python38-azure-storage 
+  - python38-azure-storage-blob 
+  - python38-azure-storage-common 
+  - python38-azure-storage-file 
+  - python38-azure-storage-file-datalake 
+  - python38-azure-storage-file-share 
+  - python38-azure-storage-nspkg 
+  - python38-azure-storage-queue 
+  - python38-azure-synapse-accesscontrol 
+  - python38-azure-synapse-artifacts 
+  - python38-azure-synapse-managedprivateendpoints 
+  - python38-azure-synapse-monitoring 
+  - python38-azure-synapse-nspkg 
+  - python38-azure-synapse-spark 
   - python38-azure-template 
   - python38-babelfish 
   - python38-backcall 
@@ -25507,6 +25603,7 @@ unsorted:
   - python38-pandocfilters 
   - python38-panel 
   - python38-panflute 
+  - python38-papermill 
   - python38-parallax 
   - python38-param 
   - python38-parameterized 
@@ -29252,7 +29349,6 @@ unsorted:
   - rygel-plugin-tracker 
   - rypper 
   - rzip: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - rzsz 
   - s-tui 
   - s3backer 
   - s3fs 
@@ -29516,7 +29612,6 @@ unsorted:
   - selinux-tools: [i586] 
   - semantik 
   - sendfax 
-  - sendmail 
   - sendmail-devel 
   - sendmail-starttls 
   - sendxmpp 
@@ -29655,7 +29750,6 @@ unsorted:
   - skinlf 
   - skinlf-demo 
   - skinlf-javadoc 
-  - skkdic 
   - skkdic-extra 
   - skopeo: [i586] 
   - skrooge 
@@ -30180,19 +30274,14 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
-  - system-user-games 
   - system-user-grafana 
   - system-user-libvirt-dbus 
   - system-user-loki 
-  - system-user-mail 
   - system-user-msr 
-  - system-user-news 
   - system-user-ntp 
   - system-user-osc-collab 
   - system-user-prometheus 
-  - system-user-uucp 
   - system-user-uuidd 
-  - system-user-vscan 
   - systemd-coredump 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
@@ -38183,7 +38272,6 @@ unsorted:
   - tidy 
   - tidy-doc 
   - tidyp 
-  - tiff 
   - tig 
   - tiger-types 
   - tiger-types-javadoc 
@@ -38242,7 +38330,6 @@ unsorted:
   - tmxtools 
   - tn5250 
   - tn5250-devel 
-  - tnef 
   - tntdb-doc 
   - tntdb-mysql 
   - tntdb-postgresql 
@@ -39175,8 +39262,6 @@ unsorted:
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
-  - wdiff 
-  - wdiff-lang 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -40007,7 +40092,6 @@ unsorted:
   - znc-python3 
   - znc-tcl 
   - zonefs-tools 
-  - zoo: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - zopfli 
   - zp 
   - zpaq 
