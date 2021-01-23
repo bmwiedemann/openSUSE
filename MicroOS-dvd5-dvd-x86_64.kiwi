@@ -168,7 +168,6 @@
       <repopackage name="enchant-data" arch="x86_64"/>
       <repopackage name="evmctl" arch="x86_64"/>
       <repopackage name="evolution-data-server" arch="x86_64"/>
-      <repopackage name="expat" arch="x86_64"/>
       <repopackage name="fcoe-utils" arch="x86_64"/>
       <repopackage name="file"/>
       <repopackage name="file-magic"/>
@@ -1227,27 +1226,6 @@
       <repopackage name="perl" arch="x86_64"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
-      <repopackage name="perl-Encode-Locale" arch="x86_64"/>
-      <repopackage name="perl-File-Listing" arch="x86_64"/>
-      <repopackage name="perl-HTML-Parser" arch="x86_64"/>
-      <repopackage name="perl-HTML-Tagset" arch="x86_64"/>
-      <repopackage name="perl-HTTP-Cookies" arch="x86_64"/>
-      <repopackage name="perl-HTTP-Daemon" arch="x86_64"/>
-      <repopackage name="perl-HTTP-Date" arch="x86_64"/>
-      <repopackage name="perl-HTTP-Message" arch="x86_64"/>
-      <repopackage name="perl-HTTP-Negotiate" arch="x86_64"/>
-      <repopackage name="perl-IO-HTML" arch="x86_64"/>
-      <repopackage name="perl-libwww-perl" arch="x86_64"/>
-      <repopackage name="perl-LWP-MediaTypes" arch="x86_64"/>
-      <repopackage name="perl-Net-DBus" arch="x86_64"/>
-      <repopackage name="perl-Net-HTTP" arch="x86_64"/>
-      <repopackage name="perl-TimeDate" arch="x86_64"/>
-      <repopackage name="perl-Try-Tiny" arch="x86_64"/>
-      <repopackage name="perl-URI" arch="x86_64"/>
-      <repopackage name="perl-WWW-RobotRules" arch="x86_64"/>
-      <repopackage name="perl-X11-Protocol" arch="x86_64"/>
-      <repopackage name="perl-XML-Parser" arch="x86_64"/>
-      <repopackage name="perl-XML-Twig" arch="x86_64"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="phonon4qt5-backend-gstreamer" arch="x86_64"/>
@@ -1491,7 +1469,6 @@
       <repopackage name="xdg-desktop-portal-kde" arch="x86_64"/>
       <repopackage name="xdg-user-dirs" arch="x86_64"/>
       <repopackage name="xdg-user-dirs-gtk" arch="x86_64"/>
-      <repopackage name="xdg-utils" arch="x86_64"/>
       <repopackage name="xdm" arch="x86_64"/>
       <repopackage name="xembedsniproxy" arch="x86_64"/>
       <repopackage name="xen-libs" arch="x86_64"/>

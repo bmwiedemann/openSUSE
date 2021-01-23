@@ -278,6 +278,7 @@ unsorted:
   - XyGrib 
   - YODA-devel 
   - a2jmidid 
+  - a2ps 
   - a2ps-devel 
   - a2ps-h 
   - a52dec 
@@ -469,6 +470,8 @@ unsorted:
   - alure-devel 
   - amanda 
   - amarok-lang 
+  - amavisd-new 
+  - amavisd-new-docs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - amazon-ecs-init 
   - amazon-ssm-agent 
   - aml-devel 
@@ -706,6 +709,7 @@ unsorted:
   - arandr 
   - aranym 
   - arb-devel 
+  - arc 
   - arc-icon-theme 
   - arcanist 
   - archivemount 
@@ -723,6 +727,7 @@ unsorted:
   - aria2: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - aria2-devel 
   - aria2-lang: [i586] 
+  - arj 
   - arm-ml-examples: [x86_64] 
   - arm-ml-examples-data: [x86_64] 
   - armadillo-devel 
@@ -940,6 +945,7 @@ unsorted:
   - autobench 
   - autobuild 
   - autoconf-archive 
+  - autoconf-el 
   - autoconf213 
   - autocutsel 
   - autofdo 
@@ -1395,6 +1401,7 @@ unsorted:
   - bs1770gain 
   - bs2b-tools 
   - bscalc 
+  - bsd-games 
   - bsdiff 
   - bsdtar 
   - bsf 
@@ -1519,6 +1526,7 @@ unsorted:
   - busybox-netcat 
   - busybox-policycoreutils 
   - busybox-procps 
+  - busybox-psmisc: [i586] 
   - busybox-selinux-tools 
   - busybox-sh 
   - busybox-sharutils 
@@ -1675,6 +1683,7 @@ unsorted:
   - cantor-lang 
   - canutils 
   - canutils-pengutronix 
+  - capi4hylafax 
   - capnet-assist 
   - capnet-assist-lang 
   - capnproto 
@@ -1896,6 +1905,7 @@ unsorted:
   - cjs-tests 
   - ck-devel 
   - ckb-next 
+  - ckermit 
   - ckermit-doc 
   - clFFT: [x86_64] 
   - clFFT-devel: [x86_64] 
@@ -2595,6 +2605,7 @@ unsorted:
   - ddnet-server 
   - ddrescueview 
   - dds2tar 
+  - ddskk 
   - deadbeef 
   - deadbeef-devel 
   - deadbeef-lang 
@@ -2903,6 +2914,7 @@ unsorted:
   - dzen2 
   - e16 
   - e2fsprogs-devel 
+  - e2fsprogs-scrub 
   - e3 
   - eaglemode 
   - earlyoom 
@@ -3021,13 +3033,20 @@ unsorted:
   - elixir-hex 
   - ell-devel 
   - elua 
+  - emacs 
+  - emacs-apel 
   - emacs-auctex 
   - emacs-color-theme 
   - emacs-completion-golang 
   - emacs-el 
-  - emacs-plugin-devhelp: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - emacs-flim 
+  - emacs-info 
+  - emacs-nox 
+  - emacs-plugin-devhelp 
   - emacs-scheme48 
   - emacs-semi 
+  - emacs-w3m 
+  - emacs-x11 
   - embree-devel-static: [x86_64] 
   - emf2svg-conv 
   - emil 
@@ -5298,6 +5317,7 @@ unsorted:
   - ghcid: [x86_64] 
   - ghex-devel 
   - ghostscript-devel 
+  - ghostscript-fonts 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -6271,6 +6291,7 @@ unsorted:
   - guice-servlet 
   - guice-testlib 
   - guice-throwingproviders 
+  - guile 
   - guile-bytestructures 
   - guile-cairo 
   - guile-cairo-devel 
@@ -6280,6 +6301,7 @@ unsorted:
   - guile-git 
   - guile-json 
   - guile-lzlib 
+  - guile-modules-3_0: [i586] 
   - guile-newt 
   - guile-parted 
   - guile-sqlite3 
@@ -6302,7 +6324,7 @@ unsorted:
   - guvcview-lang 
   - guvcview-qt5 
   - guvcview-qt5-lang 
-  - gv: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - gv 
   - gvfs-32bit: [x86_64] 
   - gvfs-devel 
   - gvim: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
@@ -6596,6 +6618,7 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
+  - hylafax+ 
   - hyperscan-devel 
   - hyphen 
   - hyphen-devel 
@@ -6813,6 +6836,7 @@ unsorted:
   - injeqt-devel 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
+  - inn 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -8421,6 +8445,7 @@ unsorted:
   - leveldb-devel-static 
   - levmar-devel 
   - lha 
+  - lhasa 
   - lhasa-devel 
   - lib3270-5_3 
   - lib3270-devel 
@@ -9035,6 +9060,7 @@ unsorted:
   - libXaw3d6-32bit: [x86_64] 
   - libXaw3d7 
   - libXaw3d7-32bit: [x86_64] 
+  - libXaw3d8 
   - libXaw3d8-32bit: [x86_64] 
   - libXaw6 
   - libXaw6-32bit: [x86_64] 
@@ -9137,6 +9163,7 @@ unsorted:
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_8_5 
   - libZXing1-32bit: [x86_64] 
+  - liba2ps1 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -9693,6 +9720,7 @@ unsorted:
   - libcap1-32bit: [x86_64] 
   - libcap2-32bit: [x86_64] 
   - libcapi20 
+  - libcapi20-3 
   - libcapi20-devel 
   - libcapnp-0_8 
   - libcapnp-devel 
@@ -10381,6 +10409,7 @@ unsorted:
   - libfko3 
   - libfl-devel: [i586] 
   - libfl-devel-32bit: [x86_64] 
+  - libfl2: [i586] 
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
   - libflatbuffers1 
@@ -10760,6 +10789,8 @@ unsorted:
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
+  - libgsasl-lang 
+  - libgsasl7 
   - libgsequencer0 
   - libgsettings-qt1 
   - libgsf-1-114-32bit: [x86_64] 
@@ -10855,6 +10886,7 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-devel: [x86_64] 
   - libguestfs-test: [x86_64] 
+  - libguile-3_0-1: [i586] 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
   - libguile-srfi-srfi-13-14-v-3-3 
@@ -11483,6 +11515,7 @@ unsorted:
   - liblept5-32bit: [x86_64] 
   - libleveldb1 
   - liblevmar2 
+  - liblhasa0 
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
@@ -11606,6 +11639,7 @@ unsorted:
   - libmagic1-32bit: [x86_64] 
   - libmaia-devel 
   - libmaia1 
+  - libmailutils5 
   - libmanette-devel 
   - libmapi1 
   - libmapidb-devel 
@@ -12042,6 +12076,7 @@ unsorted:
   - libntk1 
   - libntl43 
   - libntlm-devel 
+  - libntlm0 
   - libnuma-devel 
   - libnuma1-32bit: [x86_64] 
   - libnumbertext-devel 
@@ -12597,6 +12632,8 @@ unsorted:
   - libpspell15-32bit: [x86_64] 
   - libpst 
   - libpst-devel 
+  - libpsx2 
+  - libpsx2-32bit: [x86_64] 
   - libpt-devel 
   - libpt2_10_11-plugins-avc 
   - libpt2_10_11-plugins-pulse 
@@ -13726,7 +13763,6 @@ unsorted:
   - libtpl-extensions3 
   - libtpm_unseal1 
   - libtpms-devel 
-  - libtpms0 
   - libtranscript-devel 
   - libtranscript1 
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
@@ -14770,7 +14806,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default 
+  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -15064,6 +15100,7 @@ unsorted:
   - mailgraph-apache 
   - mailimporter-devel 
   - mailprocessing 
+  - mailutils 
   - mailutils-devel 
   - mailutils-imap4d 
   - mailutils-mh 
@@ -15695,6 +15732,8 @@ unsorted:
   - mingw64-zlib-devel 
   - mingw64-zlib1 
   - mingzat-fonts 
+  - minicom 
+  - minicom-lang 
   - minidlna 
   - minigalaxy 
   - minikube 
@@ -16406,6 +16445,7 @@ unsorted:
   - ncat 
   - ncdu 
   - ncmpcpp 
+  - ncompress 
   - ncurses-devel 
   - ncurses-devel-32bit: [x86_64] 
   - ncurses-devel-static 
@@ -17702,9 +17742,6 @@ unsorted:
   - optipng 
   - opus-tools 
   - opusfile-devel 
-  - orage 
-  - orage-doc 
-  - orage-lang 
   - orc 
   - orc-doc 
   - orcania-devel 
@@ -18419,6 +18456,7 @@ unsorted:
   - perl-Class-Unload 
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
+  - perl-Class-XSAccessor 
   - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
@@ -18445,7 +18483,9 @@ unsorted:
   - perl-Const-Fast 
   - perl-Context-Preserve 
   - perl-Contextual-Return 
+  - perl-Convert-ASN1 
   - perl-Convert-BER 
+  - perl-Convert-BinHex 
   - perl-Convert-TNEF 
   - perl-Convert-UUlib 
   - perl-Cookie-Baker 
@@ -18595,6 +18635,7 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
+  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -18607,6 +18648,7 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
+  - perl-Exporter-Tiny 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
@@ -18677,6 +18719,7 @@ unsorted:
   - perl-Furl 
   - perl-Fuse 
   - perl-Future 
+  - perl-GD 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
@@ -18815,6 +18858,8 @@ unsorted:
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
   - perl-List-Compare 
+  - perl-List-MoreUtils 
+  - perl-List-MoreUtils-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -18839,6 +18884,7 @@ unsorted:
   - perl-MIME-EncWords 
   - perl-MIME-Lite 
   - perl-MIME-Types 
+  - perl-MIME-tools 
   - perl-MLDBM 
   - perl-MLDBM-Sync 
   - perl-MRO-Compat 
@@ -19325,6 +19371,7 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
+  - perl-Test-Pod 
   - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
   - perl-Test-Requires 
@@ -19362,6 +19409,7 @@ unsorted:
   - perl-Text-BibTeX-devel 
   - perl-Text-Brew 
   - perl-Text-CSV 
+  - perl-Text-CSV_XS 
   - perl-Text-Capitalize 
   - perl-Text-ChaSen 
   - perl-Text-CharWidth 
@@ -19434,6 +19482,7 @@ unsorted:
   - perl-Unicode-Normalize 
   - perl-Unicode-String 
   - perl-Unicode-Stringprep 
+  - perl-Unix-Syslog 
   - perl-User-Identity 
   - perl-Variable-Magic 
   - perl-Verilog-Perl 
@@ -19511,6 +19560,7 @@ unsorted:
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
+  - perl-ldap 
   - perl-lib-relative 
   - perl-libconfigfile 
   - perl-libintl-perl 
@@ -20034,6 +20084,7 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
+  - postfix 
   - postfix-devel 
   - postfix-ldap 
   - postfix-lmdb 
@@ -20187,6 +20238,7 @@ unsorted:
   - ppp-modem 
   - pps-tools 
   - pps-tools-devel 
+  - pps-udev 
   - ppsspp 
   - ppsspp-common 
   - ppsspp-headless 
@@ -20612,12 +20664,10 @@ unsorted:
   - python2-appindicator 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
-  - python2-opencensus-ext-threading 
   - python2-pip 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-setuptools 
-  - python3-APScheduler 
   - python3-Arcus 
   - python3-Cheetah3 
   - python3-Flask-Admin 
@@ -20648,8 +20698,6 @@ unsorted:
   - python3-SQLAlchemy-Utils 
   - python3-SoapySDR 
   - python3-YODA 
-  - python3-ZEO 
-  - python3-ZODB 
   - python3-aexpect 
   - python3-agate-sql 
   - python3-apns2 
@@ -20706,8 +20754,6 @@ unsorted:
   - python3-azure-communication-chat 
   - python3-azure-communication-nspkg 
   - python3-azure-communication-sms 
-  - python3-azure-core 
-  - python3-azure-core-tracing-opencensus 
   - python3-azure-cosmos 
   - python3-azure-data-nspkg 
   - python3-azure-data-tables 
@@ -20719,38 +20765,24 @@ unsorted:
   - python3-azure-eventhub-checkpointstoreblob-aio 
   - python3-azure-graphrbac 
   - python3-azure-identity 
-  - python3-azure-keyvault 
-  - python3-azure-keyvault-administration 
-  - python3-azure-keyvault-certificates 
-  - python3-azure-keyvault-keys 
-  - python3-azure-keyvault-nspkg 
-  - python3-azure-keyvault-secrets 
   - python3-azure-loganalytics 
-  - python3-azure-mgmt-advisor 
   - python3-azure-mgmt-alertsmanagement 
-  - python3-azure-mgmt-apimanagement 
   - python3-azure-mgmt-appconfiguration 
   - python3-azure-mgmt-applicationinsights 
   - python3-azure-mgmt-appplatform 
   - python3-azure-mgmt-attestation 
   - python3-azure-mgmt-authorization 
   - python3-azure-mgmt-automanage 
-  - python3-azure-mgmt-automation 
   - python3-azure-mgmt-azureadb2c 
   - python3-azure-mgmt-azurestack 
   - python3-azure-mgmt-azurestackhci 
   - python3-azure-mgmt-baremetalinfrastructure 
-  - python3-azure-mgmt-batch 
   - python3-azure-mgmt-batchai 
   - python3-azure-mgmt-billing 
-  - python3-azure-mgmt-botservice 
   - python3-azure-mgmt-cdn 
-  - python3-azure-mgmt-cognitiveservices 
-  - python3-azure-mgmt-commerce 
   - python3-azure-mgmt-communication 
   - python3-azure-mgmt-compute 
   - python3-azure-mgmt-confluent 
-  - python3-azure-mgmt-consumption 
   - python3-azure-mgmt-containerinstance 
   - python3-azure-mgmt-containerregistry 
   - python3-azure-mgmt-containerservice 
@@ -20762,73 +20794,51 @@ unsorted:
   - python3-azure-mgmt-databoxedge 
   - python3-azure-mgmt-databricks 
   - python3-azure-mgmt-datadog 
-  - python3-azure-mgmt-datafactory 
   - python3-azure-mgmt-datalake-analytics 
-  - python3-azure-mgmt-datalake-store 
-  - python3-azure-mgmt-datamigration 
   - python3-azure-mgmt-datashare 
   - python3-azure-mgmt-deploymentmanager 
   - python3-azure-mgmt-devspaces 
-  - python3-azure-mgmt-devtestlabs 
   - python3-azure-mgmt-dns 
   - python3-azure-mgmt-documentdb 
   - python3-azure-mgmt-edgegateway 
-  - python3-azure-mgmt-eventgrid 
   - python3-azure-mgmt-eventhub 
   - python3-azure-mgmt-frontdoor 
   - python3-azure-mgmt-hanaonazure 
-  - python3-azure-mgmt-hdinsight 
   - python3-azure-mgmt-healthcareapis 
   - python3-azure-mgmt-hybridcompute 
   - python3-azure-mgmt-hybridkubernetes 
   - python3-azure-mgmt-imagebuilder 
-  - python3-azure-mgmt-iotcentral 
-  - python3-azure-mgmt-iothub 
   - python3-azure-mgmt-iothubprovisioningservices 
   - python3-azure-mgmt-keyvault 
   - python3-azure-mgmt-kubernetesconfiguration 
   - python3-azure-mgmt-kusto 
   - python3-azure-mgmt-labservices 
-  - python3-azure-mgmt-loganalytics 
-  - python3-azure-mgmt-logic 
   - python3-azure-mgmt-machinelearningcompute 
-  - python3-azure-mgmt-machinelearningservices 
   - python3-azure-mgmt-maintenance 
   - python3-azure-mgmt-managedservices 
   - python3-azure-mgmt-managementgroups 
   - python3-azure-mgmt-managementpartner 
   - python3-azure-mgmt-maps 
-  - python3-azure-mgmt-marketplaceordering 
   - python3-azure-mgmt-media 
   - python3-azure-mgmt-mixedreality 
   - python3-azure-mgmt-monitor 
   - python3-azure-mgmt-msi 
-  - python3-azure-mgmt-netapp 
   - python3-azure-mgmt-network 
-  - python3-azure-mgmt-notificationhubs 
   - python3-azure-mgmt-peering 
-  - python3-azure-mgmt-policyinsights 
   - python3-azure-mgmt-powerbiembedded 
   - python3-azure-mgmt-privatedns 
-  - python3-azure-mgmt-rdbms 
   - python3-azure-mgmt-recoveryservices 
   - python3-azure-mgmt-recoveryservicesbackup 
   - python3-azure-mgmt-redhatopenshift 
   - python3-azure-mgmt-redis 
   - python3-azure-mgmt-regionmove 
-  - python3-azure-mgmt-relay 
   - python3-azure-mgmt-reservations 
-  - python3-azure-mgmt-resource 
-  - python3-azure-mgmt-resourcegraph 
   - python3-azure-mgmt-resourcemover 
   - python3-azure-mgmt-scheduler 
-  - python3-azure-mgmt-search 
-  - python3-azure-mgmt-security 
   - python3-azure-mgmt-serialconsole 
   - python3-azure-mgmt-servermanager 
   - python3-azure-mgmt-servicebus 
   - python3-azure-mgmt-servicefabric 
-  - python3-azure-mgmt-signalr 
   - python3-azure-mgmt-sql 
   - python3-azure-mgmt-sqlvirtualmachine 
   - python3-azure-mgmt-storage 
@@ -20836,9 +20846,7 @@ unsorted:
   - python3-azure-mgmt-storageimportexport 
   - python3-azure-mgmt-storagesync 
   - python3-azure-mgmt-streamanalytics 
-  - python3-azure-mgmt-subscription 
   - python3-azure-mgmt-support 
-  - python3-azure-mgmt-synapse 
   - python3-azure-mgmt-timeseriesinsights 
   - python3-azure-mgmt-trafficmanager 
   - python3-azure-mgmt-vmwarecloudsimple 
@@ -20846,7 +20854,6 @@ unsorted:
   - python3-azure-monitor 
   - python3-azure-multiapi-storage 
   - python3-azure-search-documents 
-  - python3-azure-servicebus 
   - python3-azure-servicefabric 
   - python3-azure-servicemanagement-legacy 
   - python3-azure-storage 
@@ -20863,7 +20870,6 @@ unsorted:
   - python3-azure-synapse-monitoring 
   - python3-azure-synapse-nspkg 
   - python3-azure-synapse-spark 
-  - python3-azure-template 
   - python3-azurectl 
   - python3-azuremetadata 
   - python3-babeltrace 
@@ -20877,7 +20883,6 @@ unsorted:
   - python3-botan 
   - python3-bowler 
   - python3-bump2version 
-  - python3-buttplug 
   - python3-caca 
   - python3-caffe 
   - python3-caffe-gnu-hpc 
@@ -20898,7 +20903,6 @@ unsorted:
   - python3-cilium-microscope 
   - python3-cinderclient 
   - python3-cirq: [x86_64] 
-  - python3-ciscoconfparse 
   - python3-clang 
   - python3-cliff 
   - python3-clinkgrammar 
@@ -20910,7 +20914,6 @@ unsorted:
   - python3-csvkit 
   - python3-ctypeslib2 
   - python3-cu2qu 
-  - python3-databases 
   - python3-dbus-presage 
   - python3-debtcollector 
   - python3-deltarpm 
@@ -21005,7 +21008,6 @@ unsorted:
   - python3-haproxyctl 
   - python3-hawkey 
   - python3-hdf5storage 
-  - python3-healpy 
   - python3-heatclient 
   - python3-hiredis 
   - python3-hivex 
@@ -21156,11 +21158,8 @@ unsorted:
   - python3-mraa 
   - python3-murano-pkg-check 
   - python3-mutmut 
-  - python3-napalm 
   - python3-napalm-ansible 
-  - python3-napalm-arubaos-switch 
   - python3-napalm-asa 
-  - python3-napalm-digineo-procurve 
   - python3-napalm-exos 
   - python3-napalm-procurve 
   - python3-nemo 
@@ -21187,7 +21186,6 @@ unsorted:
   - python3-onnx 
   - python3-onnxconverter-common 
   - python3-openbabel 
-  - python3-opencensus-ext-threading 
   - python3-opencv 
   - python3-opencv3 
   - python3-openshot 
@@ -21195,7 +21193,6 @@ unsorted:
   - python3-openstackclient 
   - python3-openstackdocstheme 
   - python3-openstacksdk 
-  - python3-opentelemetry-api 
   - python3-openwsman 
   - python3-orange-widget-base 
   - python3-os-api-ref 
@@ -21256,7 +21253,6 @@ unsorted:
   - python3-pyUSID: [i586] 
   - python3-pyannotate 
   - python3-pycadf 
-  - python3-pycsw 
   - python3-pydenticon 
   - python3-pydle 
   - python3-pyfg 
@@ -21272,7 +21268,6 @@ unsorted:
   - python3-pymod2pkg 
   - python3-pynest2d 
   - python3-pypandoc: [i586] 
-  - python3-pyproj 
   - python3-pyprompter 
   - python3-pysearpc 
   - python3-pyside2 
@@ -21361,8 +21356,6 @@ unsorted:
   - python3-testinfra 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
-  - python3-torch: [x86_64] 
-  - python3-torch-devel: [x86_64] 
   - python3-torchvision: [x86_64] 
   - python3-tornado 
   - python3-translate-toolkit 
@@ -21405,9 +21398,9 @@ unsorted:
   - python3-yui 
   - python3-z3 
   - python3-zeep 
-  - python3-zodbpickle 
   - python36 
   - python36-32bit: [x86_64] 
+  - python36-APScheduler 
   - python36-AnyQt 
   - python36-Arpeggio 
   - python36-Authlib 
@@ -21615,6 +21608,8 @@ unsorted:
   - python36-Yapsy 
   - python36-ZConfig 
   - python36-ZConfig-doc 
+  - python36-ZEO 
+  - python36-ZODB 
   - python36-abclient 
   - python36-abimap 
   - python36-abimap-doc 
@@ -21757,13 +21752,62 @@ unsorted:
   - python36-azure-cognitiveservices-nspkg 
   - python36-azure-cognitiveservices-search-nspkg 
   - python36-azure-cognitiveservices-vision-nspkg 
+  - python36-azure-core 
+  - python36-azure-core-tracing-opencensus 
+  - python36-azure-core-tracing-opentelemetry 
+  - python36-azure-digitaltwins-core 
+  - python36-azure-digitaltwins-nspkg 
   - python36-azure-functions-devops-build 
+  - python36-azure-keyvault 
+  - python36-azure-keyvault-administration 
+  - python36-azure-keyvault-certificates 
+  - python36-azure-keyvault-keys 
+  - python36-azure-keyvault-nspkg 
+  - python36-azure-keyvault-secrets 
+  - python36-azure-media-nspkg 
   - python36-azure-mgmt 
+  - python36-azure-mgmt-advisor 
+  - python36-azure-mgmt-apimanagement 
+  - python36-azure-mgmt-automation 
+  - python36-azure-mgmt-batch 
+  - python36-azure-mgmt-botservice 
+  - python36-azure-mgmt-cognitiveservices 
+  - python36-azure-mgmt-commerce 
+  - python36-azure-mgmt-consumption 
+  - python36-azure-mgmt-datafactory 
   - python36-azure-mgmt-datalake-nspkg 
+  - python36-azure-mgmt-datalake-store 
+  - python36-azure-mgmt-datamigration 
+  - python36-azure-mgmt-devtestlabs 
+  - python36-azure-mgmt-eventgrid 
+  - python36-azure-mgmt-hdinsight 
+  - python36-azure-mgmt-iotcentral 
+  - python36-azure-mgmt-iothub 
+  - python36-azure-mgmt-loganalytics 
+  - python36-azure-mgmt-logic 
+  - python36-azure-mgmt-machinelearningservices 
+  - python36-azure-mgmt-marketplaceordering 
+  - python36-azure-mgmt-netapp 
+  - python36-azure-mgmt-notificationhubs 
   - python36-azure-mgmt-nspkg 
+  - python36-azure-mgmt-policyinsights 
+  - python36-azure-mgmt-portal 
+  - python36-azure-mgmt-powerbidedicated 
+  - python36-azure-mgmt-rdbms 
+  - python36-azure-mgmt-relay 
+  - python36-azure-mgmt-resource 
+  - python36-azure-mgmt-resourcegraph 
+  - python36-azure-mgmt-search 
+  - python36-azure-mgmt-security 
+  - python36-azure-mgmt-signalr 
+  - python36-azure-mgmt-subscription 
+  - python36-azure-mgmt-synapse 
   - python36-azure-nspkg 
   - python36-azure-sdk 
   - python36-azure-search-nspkg 
+  - python36-azure-security-nspkg 
+  - python36-azure-servicebus 
+  - python36-azure-template 
   - python36-babelfish 
   - python36-backcall 
   - python36-backoff 
@@ -21829,6 +21873,7 @@ unsorted:
   - python36-bugzilla 
   - python36-bugzillatools 
   - python36-build 
+  - python36-buttplug 
   - python36-bytecode 
   - python36-cPyparsing 
   - python36-cached-property 
@@ -21883,6 +21928,7 @@ unsorted:
   - python36-check-manifest 
   - python36-cheroot 
   - python36-chest 
+  - python36-ciscoconfparse 
   - python36-cl 
   - python36-cleo 
   - python36-cli-helpers 
@@ -21942,7 +21988,6 @@ unsorted:
   - python36-contexter 
   - python36-contextlib2 
   - python36-contextvars 
-  - python36-control 
   - python36-conu 
   - python36-convertdate 
   - python36-cookies 
@@ -22006,6 +22051,7 @@ unsorted:
   - python36-dask-distributed 
   - python36-dask-dot 
   - python36-dask-multiprocessing 
+  - python36-databases 
   - python36-dataclasses 
   - python36-datadiff 
   - python36-datashader 
@@ -22763,6 +22809,9 @@ unsorted:
   - python36-mysql-connector-python 
   - python36-mysqlclient 
   - python36-nagiosplugin 
+  - python36-napalm 
+  - python36-napalm-arubaos-switch 
+  - python36-napalm-digineo-procurve 
   - python36-natsort 
   - python36-nautilus 
   - python36-nautilus-devel 
@@ -22851,6 +22900,7 @@ unsorted:
   - python36-opencensus 
   - python36-opencensus-context 
   - python36-opencensus-ext-azure 
+  - python36-opencensus-ext-threading 
   - python36-opengl 
   - python36-opengl-accelerate 
   - python36-openidc-client 
@@ -22859,6 +22909,7 @@ unsorted:
   - python36-openqa_client 
   - python36-openqa_review 
   - python36-openstack.nose_plugin 
+  - python36-opentelemetry-api 
   - python36-opentracing 
   - python36-openwrt-luci-rpc 
   - python36-opt-einsum 
@@ -23083,6 +23134,7 @@ unsorted:
   - python36-pycparser 
   - python36-pycryptodome 
   - python36-pycryptodomex 
+  - python36-pycsw 
   - python36-pyct 
   - python36-pycups 
   - python36-pycurl 
@@ -23181,6 +23233,7 @@ unsorted:
   - python36-pyppeteer 
   - python36-pyprel 
   - python36-pyprimes 
+  - python36-pyproj 
   - python36-pypsexec 
   - python36-pypuppetdb 
   - python36-pyqt-builder 
@@ -23711,6 +23764,7 @@ unsorted:
   - python36-sympy 
   - python36-system_hotkey 
   - python36-systemd 
+  - python36-tableauserverclient 
   - python36-tableprint 
   - python36-tables 
   - python36-tablib 
@@ -23776,6 +23830,8 @@ unsorted:
   - python36-toolz 
   - python36-toposort 
   - python36-topy 
+  - python36-torch: [x86_64] 
+  - python36-torch-devel: [x86_64] 
   - python36-tornado4 
   - python36-tornado5 
   - python36-tornado6 
@@ -23982,6 +24038,7 @@ unsorted:
   - python36-zignal 
   - python36-zipp 
   - python36-zipstream 
+  - python36-zodbpickle 
   - python36-zope.cachedescriptors 
   - python36-zope.component 
   - python36-zope.configuration 
@@ -24007,6 +24064,7 @@ unsorted:
   - python36-zxcvbn 
   - python36-zypp-plugin 
   - python38-32bit: [x86_64] 
+  - python38-APScheduler 
   - python38-AnyQt 
   - python38-Arpeggio 
   - python38-Authlib 
@@ -24198,6 +24256,8 @@ unsorted:
   - python38-Yapsy 
   - python38-ZConfig 
   - python38-ZConfig-doc 
+  - python38-ZEO 
+  - python38-ZODB 
   - python38-abclient 
   - python38-abimap 
   - python38-abimap-doc 
@@ -24329,13 +24389,62 @@ unsorted:
   - python38-azure-cognitiveservices-nspkg 
   - python38-azure-cognitiveservices-search-nspkg 
   - python38-azure-cognitiveservices-vision-nspkg 
+  - python38-azure-core 
+  - python38-azure-core-tracing-opencensus 
+  - python38-azure-core-tracing-opentelemetry 
+  - python38-azure-digitaltwins-core 
+  - python38-azure-digitaltwins-nspkg 
   - python38-azure-functions-devops-build 
+  - python38-azure-keyvault 
+  - python38-azure-keyvault-administration 
+  - python38-azure-keyvault-certificates 
+  - python38-azure-keyvault-keys 
+  - python38-azure-keyvault-nspkg 
+  - python38-azure-keyvault-secrets 
+  - python38-azure-media-nspkg 
   - python38-azure-mgmt 
+  - python38-azure-mgmt-advisor 
+  - python38-azure-mgmt-apimanagement 
+  - python38-azure-mgmt-automation 
+  - python38-azure-mgmt-batch 
+  - python38-azure-mgmt-botservice 
+  - python38-azure-mgmt-cognitiveservices 
+  - python38-azure-mgmt-commerce 
+  - python38-azure-mgmt-consumption 
+  - python38-azure-mgmt-datafactory 
   - python38-azure-mgmt-datalake-nspkg 
+  - python38-azure-mgmt-datalake-store 
+  - python38-azure-mgmt-datamigration 
+  - python38-azure-mgmt-devtestlabs 
+  - python38-azure-mgmt-eventgrid 
+  - python38-azure-mgmt-hdinsight 
+  - python38-azure-mgmt-iotcentral 
+  - python38-azure-mgmt-iothub 
+  - python38-azure-mgmt-loganalytics 
+  - python38-azure-mgmt-logic 
+  - python38-azure-mgmt-machinelearningservices 
+  - python38-azure-mgmt-marketplaceordering 
+  - python38-azure-mgmt-netapp 
+  - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
+  - python38-azure-mgmt-policyinsights 
+  - python38-azure-mgmt-portal 
+  - python38-azure-mgmt-powerbidedicated 
+  - python38-azure-mgmt-rdbms 
+  - python38-azure-mgmt-relay 
+  - python38-azure-mgmt-resource 
+  - python38-azure-mgmt-resourcegraph 
+  - python38-azure-mgmt-search 
+  - python38-azure-mgmt-security 
+  - python38-azure-mgmt-signalr 
+  - python38-azure-mgmt-subscription 
+  - python38-azure-mgmt-synapse 
   - python38-azure-nspkg 
   - python38-azure-sdk 
   - python38-azure-search-nspkg 
+  - python38-azure-security-nspkg 
+  - python38-azure-servicebus 
+  - python38-azure-template 
   - python38-babelfish 
   - python38-backcall 
   - python38-backoff 
@@ -24398,6 +24507,7 @@ unsorted:
   - python38-bugzilla 
   - python38-bugzillatools 
   - python38-build 
+  - python38-buttplug 
   - python38-bytecode 
   - python38-cPyparsing 
   - python38-cachelib 
@@ -24448,6 +24558,7 @@ unsorted:
   - python38-check-manifest 
   - python38-cheroot 
   - python38-chest 
+  - python38-ciscoconfparse 
   - python38-cl 
   - python38-cleo 
   - python38-cli-helpers 
@@ -24563,6 +24674,7 @@ unsorted:
   - python38-dask-distributed 
   - python38-dask-dot 
   - python38-dask-multiprocessing 
+  - python38-databases 
   - python38-datadiff 
   - python38-datashader 
   - python38-dateparser 
@@ -24948,6 +25060,7 @@ unsorted:
   - python38-hatch 
   - python38-hawkauthlib 
   - python38-hcloud 
+  - python38-healpy 
   - python38-helpdev 
   - python38-hepunits 
   - python38-hetzner 
@@ -25270,6 +25383,9 @@ unsorted:
   - python38-mypy_extensions 
   - python38-mysql-connector-python 
   - python38-nagiosplugin 
+  - python38-napalm 
+  - python38-napalm-arubaos-switch 
+  - python38-napalm-digineo-procurve 
   - python38-natsort 
   - python38-nautilus 
   - python38-nautilus-devel 
@@ -25353,6 +25469,7 @@ unsorted:
   - python38-opencensus 
   - python38-opencensus-context 
   - python38-opencensus-ext-azure 
+  - python38-opencensus-ext-threading 
   - python38-opengl 
   - python38-opengl-accelerate 
   - python38-openidc-client 
@@ -25361,6 +25478,7 @@ unsorted:
   - python38-openqa_client 
   - python38-openqa_review 
   - python38-openstack.nose_plugin 
+  - python38-opentelemetry-api 
   - python38-opentracing 
   - python38-openwrt-luci-rpc 
   - python38-opt-einsum 
@@ -25565,6 +25683,7 @@ unsorted:
   - python38-pycodestyle 
   - python38-pycountry 
   - python38-pycryptodomex 
+  - python38-pycsw 
   - python38-pyct 
   - python38-pycxx 
   - python38-pycxx-devel 
@@ -25658,6 +25777,7 @@ unsorted:
   - python38-pyppeteer 
   - python38-pyprel 
   - python38-pyprimes 
+  - python38-pyproj 
   - python38-pypsexec 
   - python38-pypuppetdb 
   - python38-pyqt-builder 
@@ -26166,6 +26286,7 @@ unsorted:
   - python38-sympy 
   - python38-system_hotkey 
   - python38-systemd 
+  - python38-tableauserverclient 
   - python38-tableprint 
   - python38-tables 
   - python38-tablib 
@@ -26230,6 +26351,8 @@ unsorted:
   - python38-toolz 
   - python38-toposort 
   - python38-topy 
+  - python38-torch: [x86_64] 
+  - python38-torch-devel: [x86_64] 
   - python38-tornado4 
   - python38-tornado5 
   - python38-toro 
@@ -26431,6 +26554,7 @@ unsorted:
   - python38-zict 
   - python38-zignal 
   - python38-zipstream 
+  - python38-zodbpickle 
   - python38-zope.cachedescriptors 
   - python38-zope.copy 
   - python38-zope.exceptions 
@@ -27137,7 +27261,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default 
+  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -27631,7 +27755,6 @@ unsorted:
   - ruby2.7-rubygem-parallel-doc 
   - ruby2.7-rubygem-parallel_tests-doc 
   - ruby2.7-rubygem-parser-doc 
-  - ruby2.7-rubygem-parser-testsuite 
   - ruby2.7-rubygem-passenger-doc 
   - ruby2.7-rubygem-path_expander-doc 
   - ruby2.7-rubygem-path_expander-testsuite 
@@ -27749,6 +27872,7 @@ unsorted:
   - ruby2.7-rubygem-rspec-its-testsuite 
   - ruby2.7-rubygem-rspec-mocks-doc 
   - ruby2.7-rubygem-rspec-mocks-doc-3_5 
+  - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-rspec-rails-doc 
   - ruby2.7-rubygem-rspec-rails-doc-3.9 
   - ruby2.7-rubygem-rspec-support-doc 
@@ -28658,7 +28782,6 @@ unsorted:
   - ruby3.0-rubygem-parallel_tests-doc 
   - ruby3.0-rubygem-parser 
   - ruby3.0-rubygem-parser-doc 
-  - ruby3.0-rubygem-parser-testsuite 
   - ruby3.0-rubygem-passenger 
   - ruby3.0-rubygem-passenger-doc 
   - ruby3.0-rubygem-path_expander 
@@ -29129,6 +29252,7 @@ unsorted:
   - rygel-plugin-tracker 
   - rypper 
   - rzip: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - rzsz 
   - s-tui 
   - s3backer 
   - s3fs 
@@ -29392,6 +29516,7 @@ unsorted:
   - selinux-tools: [i586] 
   - semantik 
   - sendfax 
+  - sendmail 
   - sendmail-devel 
   - sendmail-starttls 
   - sendxmpp 
@@ -29530,6 +29655,7 @@ unsorted:
   - skinlf 
   - skinlf-demo 
   - skinlf-javadoc 
+  - skkdic 
   - skkdic-extra 
   - skopeo: [i586] 
   - skrooge 
@@ -30008,7 +30134,6 @@ unsorted:
   - swtcalendar 
   - swtchart 
   - swtchart-javadoc 
-  - swtpm 
   - swtpm-devel 
   - sxhkd 
   - sxiv 
@@ -30055,14 +30180,19 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
+  - system-user-games 
   - system-user-grafana 
   - system-user-libvirt-dbus 
   - system-user-loki 
+  - system-user-mail 
   - system-user-msr 
+  - system-user-news 
+  - system-user-ntp 
   - system-user-osc-collab 
   - system-user-prometheus 
-  - system-user-tss 
+  - system-user-uucp 
   - system-user-uuidd 
+  - system-user-vscan 
   - systemd-coredump 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
@@ -38053,6 +38183,7 @@ unsorted:
   - tidy 
   - tidy-doc 
   - tidyp 
+  - tiff 
   - tig 
   - tiger-types 
   - tiger-types-javadoc 
@@ -38111,6 +38242,7 @@ unsorted:
   - tmxtools 
   - tn5250 
   - tn5250-devel 
+  - tnef 
   - tntdb-doc 
   - tntdb-mysql 
   - tntdb-postgresql 
@@ -38250,7 +38382,6 @@ unsorted:
   - trivy 
   - trng-devel 
   - trojita 
-  - trousers 
   - trousers-devel 
   - trustedgrub2 
   - trustedgrub2-i386-pc 
@@ -39044,6 +39175,8 @@ unsorted:
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
+  - wdiff 
+  - wdiff-lang 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -39354,7 +39487,6 @@ unsorted:
   - xfce4-mpc-plugin-lang: [i586] 
   - xfce4-netload-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-netload-plugin-lang: [i586] 
-  - xfce4-netspeed-plugin 
   - xfce4-notes-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-notes-plugin-lang: [i586] 
   - xfce4-notifyd-branding-upstream 
@@ -39875,6 +40007,7 @@ unsorted:
   - znc-python3 
   - znc-tcl 
   - zonefs-tools 
+  - zoo: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - zopfli 
   - zp 
   - zpaq 
