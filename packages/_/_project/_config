@@ -779,6 +779,7 @@ Prefer: -libscalapack2-openmpi1-devel-32bit
 Prefer: -libscalapack2-openmpi2-devel-32bit           
 Prefer: -libscalapack2-openmpi3-devel-32bit           
 Prefer: -libscalapack2-openmpi4-devel-32bit           
+Prefer: -libsmartcols-devel-32bit
 Prefer: -libsoup-devel-32bit                          
 Prefer: -libstatgrab-devel-32bit                      
 Prefer: -libstdc++-devel-32bit                        
