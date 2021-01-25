@@ -57,6 +57,7 @@ unsorted:
   - GraphicsMagick 
   - GraphicsMagick-devel 
   - HSAIL-Tools 
+  - Hawck 
   - HepMC-devel 
   - HepMC-doc 
   - HepMC2-devel 
@@ -6762,16 +6763,19 @@ unsorted:
   - imb-gnu-openmpi1-hpc 
   - imb-gnu-openmpi2-hpc 
   - imb-gnu-openmpi3-hpc 
+  - imb-gnu-openmpi4-hpc 
   - imb-mpich 
   - imb-mvapich2 
   - imb-openmpi1 
   - imb-openmpi2 
   - imb-openmpi3 
+  - imb-openmpi4 
   - imb_2019_6-gnu-mpich-hpc 
   - imb_2019_6-gnu-mvapich2-hpc 
   - imb_2019_6-gnu-openmpi1-hpc 
   - imb_2019_6-gnu-openmpi2-hpc 
   - imb_2019_6-gnu-openmpi3-hpc 
+  - imb_2019_6-gnu-openmpi4-hpc 
   - imgen 
   - imgp 
   - imgp-bash-completion 
@@ -9742,7 +9746,7 @@ unsorted:
   - libcelt051-0 
   - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
-  - libceres1 
+  - libceres2 
   - libcerf-devel 
   - libcerf1 
   - libcerror-devel 
@@ -11185,7 +11189,6 @@ unsorted:
   - libini_config-devel-32bit: [x86_64] 
   - libini_config5-32bit: [x86_64] 
   - libinih-devel 
-  - libinih0 
   - libiniparser-devel 
   - libiniparser1 
   - libiniparser1-32bit: [x86_64] 
@@ -20032,9 +20035,10 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
+  - postfix-bdb 
+  - postfix-bdb-lmdb 
   - postfix-devel 
   - postfix-ldap 
-  - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
@@ -20577,7 +20581,6 @@ unsorted:
   - python-pyramid-debugtoolbar-doc 
   - python-pyserial-doc 
   - python-pysnmp-doc 
-  - python-python-rtmidi-doc 
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
@@ -20720,7 +20723,6 @@ unsorted:
   - python3-django-attachments 
   - python3-django-braces 
   - python3-django-cacheops 
-  - python3-django-codemod 
   - python3-django-compressor 
   - python3-django-countries 
   - python3-django-haystack 
@@ -20747,7 +20749,6 @@ unsorted:
   - python3-dnf-plugins-extras-common 
   - python3-dns-lexicon 
   - python3-docker-compose 
-  - python3-dogpile.cache 
   - python3-dtfabric 
   - python3-dynaconf 
   - python3-ec2imgutils 
@@ -20797,7 +20798,6 @@ unsorted:
   - python3-gpiod 
   - python3-gpsd 
   - python3-gr-iqbal 
-  - python3-graphene 
   - python3-graphene-django 
   - python3-gv 
   - python3-gyp 
@@ -21047,7 +21047,6 @@ unsorted:
   - python3-pwquality 
   - python3-pyIOSXR 
   - python3-pyUSID: [i586] 
-  - python3-pyannotate 
   - python3-pycadf 
   - python3-pydenticon 
   - python3-pydle 
@@ -21060,7 +21059,6 @@ unsorted:
   - python3-pyhcl 
   - python3-pyjnius 
   - python3-pykickstart 
-  - python3-pylineclip 
   - python3-pymod2pkg 
   - python3-pynest2d 
   - python3-pypandoc: [i586] 
@@ -21078,29 +21076,23 @@ unsorted:
   - python3-pytest-server-fixtures 
   - python3-pytest-subtesthack 
   - python3-pytest-translations 
-  - python3-python-crontab 
+  - python3-python-crontab: [x86_64] 
   - python3-python-daemon 
   - python3-python-datamatrix: [i586] 
-  - python3-python-fileinspector 
   - python3-python-jenkins 
   - python3-python-pseudorandom: [i586] 
   - python3-python-qdatamatrix 
   - python3-python-qnotifications 
   - python3-python-redis-lock 
-  - python3-python-rtmidi 
   - python3-pyupgrade 
-  - python3-pyuv 
   - python3-quantities 
   - python3-raet 
   - python3-renderspec 
   - python3-reno 
-  - python3-retry 
-  - python3-rich 
   - python3-rise 
   - python3-rpmconf 
   - python3-rpmdeplint 
   - python3-rpmfluff 
-  - python3-rpmlb 
   - python3-rrdtool 
   - python3-ruffus 
   - python3-rust2rpm 
@@ -21116,7 +21108,6 @@ unsorted:
   - python3-shaptools 
   - python3-sherpa: [x86_64] 
   - python3-sidpy: [i586] 
-  - python3-sievelib 
   - python3-smbus 
   - python3-snimpy 
   - python3-social-auth-app-django 
@@ -21152,11 +21143,8 @@ unsorted:
   - python3-testinfra 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
-  - python3-torchvision: [x86_64] 
   - python3-tornado 
   - python3-translate-toolkit 
-  - python3-tri.declarative 
-  - python3-tri.struct 
   - python3-tvm: [x86_64] 
   - python3-tvm-nnvm: [x86_64] 
   - python3-tvm-topi: [x86_64] 
@@ -21166,7 +21154,6 @@ unsorted:
   - python3-unbound 
   - python3-uncompyle6 
   - python3-upm 
-  - python3-uvicorn 
   - python3-vapoursynth 
   - python3-vatnumber 
   - python3-vdirsyncer 
@@ -21181,7 +21168,6 @@ unsorted:
   - python3-waitress-doc 
   - python3-watchman 
   - python3-websockify 
-  - python3-wsproto 
   - python3-xapian-haystack 
   - python3-xcaplib 
   - python3-xcb-proto-devel 
@@ -22073,8 +22059,10 @@ unsorted:
   - python36-django-avatar 
   - python36-django-axes 
   - python36-django-bootstrap3 
+  - python36-django-bootstrap4 
   - python36-django-ckeditor 
   - python36-django-classy-tags 
+  - python36-django-codemod 
   - python36-django-collectd-rest 
   - python36-django-contrib-comments 
   - python36-django-cors-headers 
@@ -22326,6 +22314,7 @@ unsorted:
   - python36-gcsfs-fuse 
   - python36-ged4py 
   - python36-genfire 
+  - python36-genson 
   - python36-genty 
   - python36-geographiclib 
   - python36-geoip2 
@@ -22373,6 +22362,7 @@ unsorted:
   - python36-gps3 
   - python36-gpxpy 
   - python36-grab 
+  - python36-graphene 
   - python36-graphql-core 
   - python36-graphql-relay 
   - python36-graphviz 
@@ -22853,7 +22843,6 @@ unsorted:
   - python36-openpyxl 
   - python36-openqa_client 
   - python36-openqa_review 
-  - python36-openstack.nose_plugin 
   - python36-opentelemetry-api 
   - python36-opentracing 
   - python36-openwrt-luci-rpc 
@@ -23057,6 +23046,7 @@ unsorted:
   - python36-pyaes 
   - python36-pyalsaaudio 
   - python36-pyaml 
+  - python36-pyannotate 
   - python36-pyasn1 
   - python36-pyasn1-modules 
   - python36-pybars3 
@@ -23137,6 +23127,7 @@ unsorted:
   - python36-pyliblo 
   - python36-pyliblo-doc 
   - python36-pylibmc 
+  - python36-pylineclip 
   - python36-pylint 
   - python36-pylons-sphinx-themes 
   - python36-pylru 
@@ -23317,6 +23308,7 @@ unsorted:
   - python36-python-consul 
   - python36-python-coveralls 
   - python36-python-crfsuite 
+  - python36-python-crontab: [i586] 
   - python36-python-datamatrix: [x86_64] 
   - python36-python-dateutil 
   - python36-python-dbusmock 
@@ -23357,6 +23349,8 @@ unsorted:
   - python36-python-rapidjson 
   - python36-python-redmine 
   - python36-python-rpm-spec 
+  - python36-python-rtmidi 
+  - python36-python-rtmidi-doc 
   - python36-python-slugify 
   - python36-python-snappy 
   - python36-python-socketio 
@@ -23389,6 +23383,7 @@ unsorted:
   - python36-pyuca 
   - python36-pyudev 
   - python36-pyusb 
+  - python36-pyuv 
   - python36-pyux 
   - python36-pyvdr 
   - python36-pyvips 
@@ -23496,12 +23491,14 @@ unsorted:
   - python36-restview 
   - python36-resultsdb_api 
   - python36-rethinkdb 
+  - python36-retry 
   - python36-retry_decorator 
   - python36-retrying 
   - python36-retryrequests 
   - python36-rfc3986 
   - python36-rfc3987 
   - python36-rfc6555 
+  - python36-rich 
   - python36-rjsmin 
   - python36-rnginline 
   - python36-robot-detection 
@@ -23514,6 +23511,7 @@ unsorted:
   - python36-rply 
   - python36-rpm 
   - python36-rpmfile 
+  - python36-rpmlb 
   - python36-rpy2 
   - python36-rpyc 
   - python36-rq 
@@ -23562,7 +23560,6 @@ unsorted:
   - python36-scrypt 
   - python36-scspell3k 
   - python36-sdnotify 
-  - python36-seaborn 
   - python36-selection 
   - python36-selectors2 
   - python36-selenium 
@@ -23594,6 +23591,7 @@ unsorted:
   - python36-shodan 
   - python36-shortuuid 
   - python36-sidecar 
+  - python36-sievelib 
   - python36-sigal 
   - python36-signedjson 
   - python36-simpleaudio 
@@ -23778,6 +23776,7 @@ unsorted:
   - python36-topy 
   - python36-torch: [x86_64] 
   - python36-torch-devel: [x86_64] 
+  - python36-torchvision: [x86_64] 
   - python36-tornado4 
   - python36-tornado5 
   - python36-tornado6 
@@ -23802,6 +23801,8 @@ unsorted:
   - python36-translationstring 
   - python36-translitcodec 
   - python36-treq 
+  - python36-tri.declarative 
+  - python36-tri.struct 
   - python36-trio 
   - python36-trustme 
   - python36-tsk 
@@ -23855,6 +23856,7 @@ unsorted:
   - python36-user-agents 
   - python36-user_agent 
   - python36-userpath 
+  - python36-uvicorn 
   - python36-uvloop 
   - python36-validate_email 
   - python36-validators 
@@ -23925,6 +23927,7 @@ unsorted:
   - python36-ws4py 
   - python36-wsaccel 
   - python36-wsgi_intercept 
+  - python36-wsproto 
   - python36-wstools 
   - python36-wtf-peewee 
   - python36-wurlitzer 
@@ -24841,8 +24844,10 @@ unsorted:
   - python38-django-avatar 
   - python38-django-axes 
   - python38-django-bootstrap3 
+  - python38-django-bootstrap4 
   - python38-django-ckeditor 
   - python38-django-classy-tags 
+  - python38-django-codemod 
   - python38-django-collectd-rest 
   - python38-django-contrib-comments 
   - python38-django-cors-headers 
@@ -24928,6 +24933,7 @@ unsorted:
   - python38-docrepr 
   - python38-docutils 
   - python38-docutils-ast-writer 
+  - python38-dogpile.cache 
   - python38-dogslow 
   - python38-dominate 
   - python38-dotmap 
@@ -25085,6 +25091,7 @@ unsorted:
   - python38-gcsfs-fuse 
   - python38-ged4py 
   - python38-genfire 
+  - python38-genson 
   - python38-genty 
   - python38-geographiclib 
   - python38-geoip2 
@@ -25124,6 +25131,7 @@ unsorted:
   - python38-gps3 
   - python38-gpxpy 
   - python38-grab 
+  - python38-graphene 
   - python38-graphql-core 
   - python38-graphql-relay 
   - python38-graphviz 
@@ -25572,7 +25580,6 @@ unsorted:
   - python38-openpyxl 
   - python38-openqa_client 
   - python38-openqa_review 
-  - python38-openstack.nose_plugin 
   - python38-opentelemetry-api 
   - python38-opentracing 
   - python38-openwrt-luci-rpc 
@@ -25762,6 +25769,7 @@ unsorted:
   - python38-pyaes 
   - python38-pyalsaaudio 
   - python38-pyaml 
+  - python38-pyannotate 
   - python38-pybars3 
   - python38-pybeam 
   - python38-pybind11: [i586] 
@@ -25833,6 +25841,7 @@ unsorted:
   - python38-pylibacl 
   - python38-pyliblo 
   - python38-pyliblo-doc 
+  - python38-pylineclip 
   - python38-pylint 
   - python38-pylons-sphinx-themes 
   - python38-pylru 
@@ -26011,6 +26020,7 @@ unsorted:
   - python38-python-consul 
   - python38-python-coveralls 
   - python38-python-crfsuite 
+  - python38-python-crontab: [i586] 
   - python38-python-datamatrix: [x86_64] 
   - python38-python-dbusmock 
   - python38-python-docs-theme 
@@ -26047,6 +26057,8 @@ unsorted:
   - python38-python-rapidjson 
   - python38-python-redmine 
   - python38-python-rpm-spec 
+  - python38-python-rtmidi 
+  - python38-python-rtmidi-doc 
   - python38-python-slugify 
   - python38-python-snappy 
   - python38-python-socketio 
@@ -26076,6 +26088,7 @@ unsorted:
   - python38-pytzdata 
   - python38-pyuca 
   - python38-pyusb 
+  - python38-pyuv 
   - python38-pyux 
   - python38-pyvdr 
   - python38-pyvips 
@@ -26177,12 +26190,14 @@ unsorted:
   - python38-restview 
   - python38-resultsdb_api 
   - python38-rethinkdb 
+  - python38-retry 
   - python38-retry_decorator 
   - python38-retrying 
   - python38-retryrequests 
   - python38-rfc3986 
   - python38-rfc3987 
   - python38-rfc6555 
+  - python38-rich 
   - python38-rjsmin 
   - python38-rnginline 
   - python38-robot-detection 
@@ -26194,6 +26209,7 @@ unsorted:
   - python38-rpcq 
   - python38-rply 
   - python38-rpmfile 
+  - python38-rpmlb 
   - python38-rpy2 
   - python38-rpyc 
   - python38-rq 
@@ -26270,6 +26286,7 @@ unsorted:
   - python38-shortuuid 
   - python38-sidecar 
   - python38-sidpy: [x86_64] 
+  - python38-sievelib 
   - python38-sigal 
   - python38-signedjson 
   - python38-simpleaudio 
@@ -26449,6 +26466,7 @@ unsorted:
   - python38-topy 
   - python38-torch: [x86_64] 
   - python38-torch-devel: [x86_64] 
+  - python38-torchvision: [x86_64] 
   - python38-tornado4 
   - python38-tornado5 
   - python38-toro 
@@ -26472,6 +26490,8 @@ unsorted:
   - python38-translationstring 
   - python38-translitcodec 
   - python38-treq 
+  - python38-tri.declarative 
+  - python38-tri.struct 
   - python38-trustme 
   - python38-tsk 
   - python38-tweepy 
@@ -26521,6 +26541,7 @@ unsorted:
   - python38-user-agents 
   - python38-user_agent 
   - python38-userpath 
+  - python38-uvicorn 
   - python38-uvloop 
   - python38-validate_email 
   - python38-validators 
@@ -26592,6 +26613,7 @@ unsorted:
   - python38-ws4py 
   - python38-wsaccel 
   - python38-wsgi_intercept 
+  - python38-wsproto 
   - python38-wstools 
   - python38-wtf-peewee 
   - python38-wurlitzer 
