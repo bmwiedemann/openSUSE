@@ -63,6 +63,8 @@ A dedicated search application built on top of Baloo
 %if %{with lang}
   %kf5_find_lang
 %endif
+  # Backport part of https://invent.kde.org/plasma/milou/-/merge_requests/21
+  rm %{buildroot}%{_kf5_plasmadir}/plasmoids/org.kde.milou/contents/ui/previews/Audio.qml
   %fdupes -s %{buildroot}%{_kf5_localedir}/
 
 %post

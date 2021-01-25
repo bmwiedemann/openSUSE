@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 21 07:46:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Backport upstream MR to avoid unfullfillable qmlimport requires
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5
