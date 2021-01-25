@@ -1,7 +1,7 @@
 #
 # spec file for package youtube-dl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           youtube-dl
-Version:        2020.12.31
+Version:        2021.01.16
 Release:        0
 Summary:        A tool for downloading from video sites for offline watching
 License:        SUSE-Public-Domain AND CC-BY-SA-3.0

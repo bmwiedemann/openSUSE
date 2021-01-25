@@ -1425,4 +1425,12 @@
     <comment>- Update to release 2020.12.31</comment>
     <requestid>859529</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>a651f22c95362344ef10fe5207b24a10</srcmd5>
+    <version>2021.01.16</version>
+    <time>1611595426</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>866278</requestid>
+  </revision>
 </revisionlist>

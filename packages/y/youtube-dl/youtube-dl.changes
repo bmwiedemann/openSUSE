@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 16 21:07:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.01.16
+  * Protect from infinite recursion due to recursively nested
+    playlists
+
+-------------------------------------------------------------------
+Sun Jan 10 08:43:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.01.08
+  * twitter: Add support for summary card
+
+-------------------------------------------------------------------
+Sun Jan  3 10:41:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.01.03
+  * sky: add support for Sports News articles and Brighcove videos
+
+-------------------------------------------------------------------
 Wed Dec 30 23:04:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.12.31
