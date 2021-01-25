@@ -17,6 +17,9 @@
 #
 
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(org\\.kde\\.bluedevil\\.kcm.*
+
 %bcond_without lang
 Name:           bluedevil5
 Version:        5.20.5
