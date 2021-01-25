@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 20 20:43:02 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Don't skip test for qemu builds
+
+-------------------------------------------------------------------
+Mon Jan 18 12:59:38 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210116
+  + add comment for linux2.6 regarding CONFIG_CONSOLE_TRANSLATIONS
+    (report by Patrick McDermott) -TD
+  + make opts extension for getcchar work as documented for ncurses 6.1,
+    adding "-g" flag to test/demo_new_pair to illustrate.
+
+-------------------------------------------------------------------
 Mon Jan 11 07:24:25 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210109

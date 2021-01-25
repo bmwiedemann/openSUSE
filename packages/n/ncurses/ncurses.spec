@@ -641,8 +641,8 @@ mv tack-* tack
     #
     # Some tests
     #
-%if 0%{?qemu_user_space_build:1}%{?_crossbuild}
-	echo "Skipping tests due to running under QEMU / cross-building"
+%if 0%{?_crossbuild}
+	echo "Skipping tests due to cross-building"
 %else
     #
     # Check for tack program on base of above ncurses
@@ -786,8 +786,8 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     #
     # Some tests
     #
-%if 0%{?qemu_user_space_build:1}%{?_crossbuild} || 0%{?suse_version} <= 1500
-	echo "Skipping tests due to running under QEMU / cross-building"
+%if 0%{?_crossbuild} || 0%{?suse_version} <= 1500
+	echo "Skipping tests due to cross-building"
 %else
     #
     # Make the test suite for ncurses6
@@ -1088,7 +1088,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 #
     cp -p pc/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
-%if 0%{?qemu_user_space_build:1}%{?_crossbuild}
+%if 0%{?_crossbuild}
 # No test here
 %else
 %check

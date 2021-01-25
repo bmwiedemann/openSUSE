@@ -3047,4 +3047,18 @@
   + improve manual pages for form field-types.</comment>
     <requestid>862372</requestid>
   </revision>
+  <revision rev="183" vrev="14">
+    <srcmd5>8b665637851375f4a72df00bf6a18a31</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1611595330</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't skip test for qemu builds
+
+- Add ncurses patch 20210116
+  + add comment for linux2.6 regarding CONFIG_CONSOLE_TRANSLATIONS
+    (report by Patrick McDermott) -TD
+  + make opts extension for getcchar work as documented for ncurses 6.1,
+    adding &quot;-g&quot; flag to test/demo_new_pair to illustrate.</comment>
+    <requestid>865250</requestid>
+  </revision>
 </revisionlist>
