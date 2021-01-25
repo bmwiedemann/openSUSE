@@ -58,6 +58,7 @@ BuildRequires:  cmake(Qt5QuickWidgets) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 Requires:       kirigami2 >= 2.1
 Recommends:     %{name}-lang
+Provides:       qt5qmlimport(org.kde.systemsettings.1) = 0
 
 %description
 Provides KDE's control center modules.
