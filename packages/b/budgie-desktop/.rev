@@ -200,4 +200,16 @@
     <comment></comment>
     <requestid>860405</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fcd4ece929c9e7cf9a4181d5f77614f7</srcmd5>
+    <version>10.5.2+e04e3b8f</version>
+    <time>1611595516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.2+e04e3b8f:
+  * Add spacing setting to StatusApplet (#2088)
+  * Add setting to pause notifications while apps are fullscreen (#2092)
+  * Synchronize X errors in carbon_child_realize (#2091)
+</comment>
+    <requestid>866639</requestid>
+  </revision>
 </revisionlist>
