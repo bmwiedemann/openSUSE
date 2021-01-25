@@ -1,7 +1,7 @@
 #
 # spec file for package 2ping
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           2ping
 Version:        4.5
 Release:        0
@@ -26,14 +25,14 @@ URL:            https://www.finnie.org/software/2ping/
 Source0:        http://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz
 Source1:        http://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module distro}
-BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module netifaces}
-BuildRequires:  %{python_module pycryptodomex}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python3-devel
+BuildRequires:  python3-distro
+BuildRequires:  python3-dnspython
+BuildRequires:  python3-netifaces
+BuildRequires:  python3-pycryptodomex
+BuildRequires:  python3-pytest
+BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 Requires:       python >= 3.5
 Recommends:     python3-distro
@@ -52,10 +51,10 @@ a 2ping client to determine which direction packet loss occurs.
 %autosetup
 
 %build
-%python_build
+%python3_build
 
 %install
-%python_install
+%python3_install
 install -Dp -m 0644 2ping.service %{buildroot}%{_unitdir}/2ping.service
 install -Dp -m 0644 doc/2ping.1 %{buildroot}%{_mandir}/man1/2ping.1
 install -Dp -m 0644 doc/2ping.1 %{buildroot}%{_mandir}/man1/2ping6.1
@@ -69,7 +68,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc2ping
 %fdupes %{buildroot}%{_prefix}
 
 %check
-%pytest
+py.test-%{python_bin_suffix} -v
 
 %pre
 %service_add_pre 2ping.service

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 25 06:01:09 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- use one python, not singlespec
+
+-------------------------------------------------------------------
 Thu Jul  9 20:24:04 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Change optional requirements to recommends since they just enhance the tool
