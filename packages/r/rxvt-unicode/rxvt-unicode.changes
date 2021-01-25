@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 12 05:46:59 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- fix build error (pass -D to "install")
+- fix one  W: rpm-buildroot-usage
+- ran spec-cleaner and tidy
+- format rxvt-unicode-9.20-CVE-2008-1142-DISPLAY.patch for autosetup
+- format rxvt-unicode-9.22-perl_environ_segfault.patch for autosetup
+
+-------------------------------------------------------------------
 Thu Nov 26 14:25:58 UTC 2020 - Marcus Hüwe <suse-tux@gmx.de>
 
 - add rxvt-unicode-9.22-perl_environ_segfault.patch to avoid a

@@ -1,7 +1,7 @@
 #
 # spec file for package rxvt-unicode
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,7 +29,7 @@ Summary:        Rxvt X Terminal with Unicode Support
 #
 License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
-Url:            http://software.schmorp.de/#rxvt-unicode
+URL:            http://software.schmorp.de/#rxvt-unicode
 Source:         http://dist.schmorp.de/%{name}/%{name}-%{version}.tar.bz2
 Source1:        rxvt-unicode-rpmlintrc
 Source2:        rxvt-unicode.README.SuSE
@@ -55,7 +55,6 @@ BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrender)
 %requires_eq    perl
 Provides:       locale(xorg-x11:ja;ko;zh)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if ! 0%{?with_265color_terminfo_files}
 Requires:       terminfo-base
 %endif
@@ -67,13 +66,7 @@ locale-correct input and output. It also supports mixing multiple fonts
 at the same time, including Xft fonts.
 
 %prep
-%setup -q
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6
+%autosetup -p1
 find -type d -name CVS -print0 | xargs -r0 rm -r
 install -m 0644 %{SOURCE2} README.SUSE
 
@@ -110,23 +103,22 @@ export COMMON_CONFIGURE_OPTIONS=" --enable-warnings --enable-unicode3 \
 export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused"
 export CXXFLAGS="$CFLAGS"
 #
-install -Dd -m 0755 "%{buildroot}%{_terminfo}/r" %{buildroot}%{_datadir}/applications/
 # build the 256color version
 %configure --enable-256-color ${COMMON_CONFIGURE_OPTIONS}
 #
-make %{?_smp_mflags}
+%make_build
 TERMINFO="%{buildroot}%{_terminfo}" %makeinstall
 #
 for i in %{buildroot}%{_bindir}/* ; do mv ${i} ${i}-256color ; done
-make %{?_smp_mflags} distclean
+%make_build distclean
 
 # build the normal 88color version
 %configure ${COMMON_CONFIGURE_OPTIONS}
 #
-make %{?_smp_mflags}
+%make_build
 
 %install
-TERMINFO="%{buildroot}%{_terminfo}" make %{?_smp_mflags} DESTDIR=%{buildroot} install
+TERMINFO="%{buildroot}%{_terminfo}" %make_install
 for j in %{buildroot}%{_mandir}/man1/* ; do
   ln -s $(basename ${j}) ${j%%.1}-256color.1 ;
 done
@@ -134,27 +126,29 @@ mkdir examples/
 cp -av doc/embed* doc/rxvt-tabbed doc/pty-fd examples/
 chmod 0644 examples/*
 rm -rf %{buildroot}%{_libdir}/urxvt/perl/macosx-clipboard-native
+install -Dd -m 0755 "%{buildroot}%{_terminfo}/r" %{buildroot}%{_datadir}/applications/
 # desktop files
-install -m 0644 %{SOURCE3} %{SOURCE4} %{buildroot}%{_datadir}/applications/
-%suse_update_desktop_file rxvt-unicode-256color
-%suse_update_desktop_file rxvt-unicode
+install -Dm644 %{SOURCE3} %{buildroot}%{_datadir}/applications/%{name}-256color.desktop
+install -Dm644 %{SOURCE4} %{buildroot}%{_datadir}/applications/%{name}.desktop
+%suse_update_desktop_file %{name}-256color
+%suse_update_desktop_file %{name}
 rm %{buildroot}/%{_terminfo}/r/%{name}
 
 %files
-%defattr(-,root,root)
-%doc COPYING Changes README* doc/README* doc/changes.txt
+%license COPYING
+%doc Changes README* doc/README* doc/changes.txt
 %doc doc/etc
 %doc examples/
 %{_bindir}/urxvt*
 %dir %{_terminfo}/r
 %if ! 0%{?with_265color_terminfo_files}
-%exclude %{_terminfo}/r/rxvt-unicode-256color
+%exclude %{_terminfo}/r/%{name}-256color
 %else
-%{_terminfo}/r/rxvt-unicode-256color
+%{_terminfo}/r/%{name}-256color
 %endif
-%{_mandir}/man1/urxvt*.1%{ext_man}
-%{_mandir}/man3/urxvt*.3%{ext_man}
-%{_mandir}/man7/urxvt*.7%{ext_man}
+%{_mandir}/man1/urxvt*.1%{?ext_man}
+%{_mandir}/man3/urxvt*.3%{?ext_man}
+%{_mandir}/man7/urxvt*.7%{?ext_man}
 %dir %{_libdir}/urxvt/
 %dir %{_libdir}/urxvt/perl
 %{_libdir}/urxvt/urxvt.pm
@@ -182,7 +176,7 @@ rm %{buildroot}/%{_terminfo}/r/%{name}
 %{_libdir}/urxvt/perl/bell-command
 %{_libdir}/urxvt/perl/keysym-list
 %{_libdir}/urxvt/perl/selection-to-clipboard
-%{_datadir}/applications/rxvt-unicode-256color.desktop
-%{_datadir}/applications/rxvt-unicode.desktop
+%{_datadir}/applications/%{name}-256color.desktop
+%{_datadir}/applications/%{name}.desktop
 
 %changelog

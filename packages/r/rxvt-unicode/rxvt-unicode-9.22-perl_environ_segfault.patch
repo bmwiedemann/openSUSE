@@ -44,10 +44,10 @@ rxvt-unicode-9.22
 perl-5.32.0
 
 Signed-off-by: Marcus Huewe <suse-tux@gmx.de>
-Index: src/rxvtperl.xs
+Index: a/src/rxvtperl.xs
 ===================================================================
---- src/rxvtperl.xs.orig
-+++ src/rxvtperl.xs
+--- a/src/rxvtperl.xs.orig
++++ b/src/rxvtperl.xs
 @@ -376,6 +376,7 @@ rxvt_perl_interp::~rxvt_perl_interp ()
  {
    if (perl)
