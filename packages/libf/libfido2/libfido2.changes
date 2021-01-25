@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 20 09:46:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.0:
+  * Fix OpenSSL 1.0 and Cygwin builds.
+  * hid_linux: fix build on 32-bit systems.
+  * hid_osx: allow reads from spawned threads.
+  * Documentation and reliability fixes.
+  * New API calls:
+    + fido_cred_authdata_raw_len;
+    + fido_cred_authdata_raw_ptr;
+    + fido_cred_sigcount;
+    + fido_dev_get_uv_retry_count;
+    + fido_dev_supports_credman.
+  * Hardened Windows build.
+  * Native FreeBSD and NetBSD support.
+  * Use CTAP2 canonical CBOR when combining hmac-secret and credProtect.
+- Drop 7a17a4e9127fb6df6278f19396760e7d60a5862c.patch
+- Do not build examples as their build fails
+
+-------------------------------------------------------------------
 Tue Nov 17 17:59:21 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
 
 - Add Conflicts: to supersede version 1.0.0. This is needed for

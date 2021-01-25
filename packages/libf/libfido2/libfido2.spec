@@ -1,7 +1,7 @@
 #
 # spec file for package libfido2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
-Patch1:         7a17a4e9127fb6df6278f19396760e7d60a5862c.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-1_1-devel
@@ -76,13 +75,14 @@ BuildArch:      noarch
 This package contains the udev rules for FIDO2 compatible devices.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %define __builder ninja
 %cmake \
     -DCBOR_LIBRARY_DIRS=%{_libdir} \
-    -DUSE_HIDAPI=0
+    -DUSE_HIDAPI=0 \
+    -DBUILD_EXAMPLES=OFF
 %cmake_build
 
 %install
