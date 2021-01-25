@@ -1,7 +1,7 @@
 #
 # spec file for package mpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.22.3
+Version:        0.22.4
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 23 11:49:19 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.22.4
+  * refresh mpd-conf.patch
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.22.4/NEWS
+  * protocol:
+    * add command "binarylimit" to allow larger chunk sizes
+    * fix "readpicture" on 32 bit machines
+    * show duration and tags of songs in virtual playlist (CUE) folders
+  * storage: curl: fix several WebDAV protocol bugs
+  * decoder: dsdiff: apply padding to odd-sized chunks
+  * filter: ffmpeg: detect the output sample format
+  * output: moveoutput: fix always_on and tag lost on move
+
+-------------------------------------------------------------------
 Mon Nov  9 06:24:26 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.22.3
