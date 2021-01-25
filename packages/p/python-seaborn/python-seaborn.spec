@@ -1,7 +1,7 @@
 #
 # spec file for package python-seaborn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# Scipy 1.6.0 dropped Pyhton 3.6, and NumPy 1.20 will, too.
+%define         skip_python36 1
 Name:           python-seaborn
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Statistical data visualization for python
 License:        BSD-3-Clause
@@ -30,7 +32,6 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module fastcluster}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module matplotlib >= 2.1.2}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy-devel >= 1.13.3}
 BuildRequires:  %{python_module pandas >= 0.22.0}

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jan 22 19:13:36 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Disable python36 build because SciPy dropped Python 3.6 and
+  NumPy will do the same in 1.20
+- Remove nose dependency
+
+-------------------------------------------------------------------
+Tue Jan 19 10:41:07 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.11.1.
+  * Enhancement Reduced the use of matplotlib global state in the 
+    multi-grid classes.
+  * Fix Restored support for using tuples or numeric keys to 
+    reference fields in a long-form data object.
+  * Fixed a bug in lineplot() where NAs were propagating into the 
+    confidence interval, sometimes erasing it from the plot.
+  * Fixed a bug in PairGrid/pairplot() where diagonal axes would 
+    be empty when the grid was not square and the diagonal axes 
+    did not contain the marginal plots.
+  * Fixed a bug in PairGrid/pairplot() where off-diagonal plots
+    would not appear when column names in data had non-string type.
+  * Fixed a bug where categorical dtype information was ignored 
+    when data consisted of boolean or boolean-like values.
+  * Fixed a bug in FacetGrid where interior tick labels would be 
+    hidden when only the orthogonal axis was shared.
+  * Fixed a bug in FacetGrid that caused an error when 
+    legend_out=False was set.
+  * Fixed a bug in kdeplot() where common_norm=True was ignored if
+    hue was not assigned.
+  * Fixed a bug in displot() where the row_order and col_order 
+    parameters were not used.
+  * Fixed a bug in PairGrid/pairplot() that caused an exception 
+    when using corner=True and diag_kind=None.
+  * Fixed a bug in clustermap() where annot=False was ignored.
+  * Fixed a bug in clustermap() where row/col color annotations 
+    could not have a categorical dtype.
+  * Fixed a bug in boxenplot() where the linewidth parameter was
+    ignored.
+  * Fix Raise a more informative error in PairGrid/pairplot() when 
+    no variables can be found to define the rows/columns of the grid.
+  * Fix Raise a more informative error from clustermap() if row/col 
+    color objects have semantic index but data object does not.
+
+-------------------------------------------------------------------
 Wed Sep 23 13:56:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.11.0:
