@@ -1,7 +1,7 @@
 #
 # spec file for package python-tri.declarative
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tri.declarative
-Version:        5.4.1
+Version:        5.7.0
 Release:        0
 Summary:        Python class decorators in the style of Django model classes
 License:        BSD-3-Clause
@@ -53,13 +53,12 @@ subclass semantics in the style of django Model classes.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_namespace_missing_call_target - pytest5 incompatible usage
-#   https://github.com/TriOptima/tri.declarative/issues/9
-%pytest -k 'not test_namespace_missing_call_target'
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/tri_declarative
+%{python_sitelib}/tri.declarative-%{version}*-info
 
 %changelog
