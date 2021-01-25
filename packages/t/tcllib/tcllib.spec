@@ -1,7 +1,7 @@
 #
 # spec file for package tcllib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           tcllib
-Url:            http://tcllib.sf.net
+URL:            http://tcllib.sf.net
 BuildRequires:  tcl
-Version:        1.19
+Version:        1.20
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Tcl Standard Library
@@ -45,7 +45,7 @@ chmod 644 examples/mapproj/ncar780.txt
 sed -i 's/\r$//' examples/httpd/htdocs/*.md examples/tepam/run_tepam_demo.bat
 
 # remove shebang from module
-sed -i '1d' modules/pki/pki.tcl modules/oauth/oauth.tcl modules/defer/defer.tcl
+sed -i '1{ /^#!/d }' modules/pki/pki.tcl modules/oauth/oauth.tcl modules/defer/defer.tcl modules/lazyset/lazyset.tcl
 
 # do not use /usr/bin/env in shebang
 for script in $(find apps examples -type f -executable -print); do
@@ -54,7 +54,7 @@ done
 
 %build
 
-%install
+%install  
 tclsh ./installer.tcl -no-examples -no-html \
  -app-path   %buildroot/%_bindir \
  -pkg-path   %buildroot/%_datadir/tcl/%name%version \
@@ -63,7 +63,7 @@ tclsh ./installer.tcl -no-examples -no-html \
 
 %files
 %defattr(-,root,root)
-%doc license.terms README ChangeLog
+%doc license.terms README.md ChangeLog
 %doc support/releases/history/README-*
 %_datadir/tcl
 %_bindir/*

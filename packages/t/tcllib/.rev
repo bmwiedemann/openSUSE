@@ -148,4 +148,12 @@ Make compatible with tcl license (it is the stated license of the package anyway
   * Fixes bsc#1105803</comment>
     <requestid>656045</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c6fc9b1e684d84a0b519c7d8fd059349</srcmd5>
+    <version>1.20</version>
+    <time>1611595514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20: /usr/share/doc/packages/tcllib/README</comment>
+    <requestid>866631</requestid>
+  </revision>
 </revisionlist>
