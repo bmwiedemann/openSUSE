@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 24 10:45:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Sat Jan 16 20:39:36 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use php-config to determine location of files in package
+
+-------------------------------------------------------------------
 Thu Nov 12 20:06:20 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 4.1.0

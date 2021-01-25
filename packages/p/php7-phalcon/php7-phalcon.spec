@@ -1,7 +1,7 @@
 #
 # spec file for package php7-phalcon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,68 +16,61 @@
 #
 
 
-%define _name           phalcon
-%define _cname          cphalcon
-%define _php            php7
-%define _architecture   %([[ %{_arch} == "i586" ]] && echo "32bits" || echo "64bits")
+%define php_name    php7
+%define pkg_name    phalcon
+%define pkg_cname   cphalcon
+%define php_extdir  %(%{__php_config} --extension-dir)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%define php_confdir %(%{__php_config} --ini-dir)
+%else
+%define php_confdir %{_sysconfdir}/%{php_name}/conf.d
+%endif
 
-Name:           %{_php}-phalcon
+Name:           %{php_name}-%{pkg_name}
 Version:        4.1.0
 Release:        0
 Summary:        PHP7 Extension Module
 License:        BSD-3-Clause
 Group:          Development/Libraries/PHP
 URL:            http://phalconphp.com/
-Source0:        https://github.com/%{_name}/%{_cname}/archive/v%{version}.tar.gz#/%{_cname}-%{version}.tar.gz
-BuildRequires:  %{_php} >= 7.2
-BuildRequires:  %{_php}-ctype
-BuildRequires:  %{_php}-devel
-BuildRequires:  %{_php}-json
-BuildRequires:  %{_php}-pdo
-BuildRequires:  %{_php}-psr >= 0.7.0
+Source0:        https://github.com/%{pkg_name}/%{pkg_cname}/archive/v%{version}.tar.gz#/%{pkg_cname}-%{version}.tar.gz
+BuildRequires:  %{php_name}-ctype
+BuildRequires:  %{php_name}-devel
+BuildRequires:  %{php_name}-json
+BuildRequires:  %{php_name}-pdo
+BuildRequires:  %{php_name}-psr >= 0.7.0
 BuildRequires:  gcc
-Requires:       %{_php}-mysql
+Requires:       %{php_name}-mysql
 
 %description
-Phalcon is an open source, full stack framework for PHP 5
-written as a C-extension, optimized for high performance.
-You don't need learn or use the C language, since the functionality
-is exposed as PHP classes ready for you to use. Zephir is a high level
-language, something between C and PHP. It’s both dynamic and static
-typed and it supports just the features we need to create and maintain
-a project like Phalcon.
-
-%package        devel
-Summary:        Development files for %{name}
-Group:          Development/Libraries/PHP
-Requires:       %{name} = %{version}
-
-%description    devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use %{name}.
+Phalcon is a framework for PHP 5 written as a C extension.
+Zephir is a high-level language, something between C and PHP. It is
+both dynamic and static typed and it supports the features we need to
+create and maintain a project like Phalcon.
 
 %prep
-%setup -q -n %{_cname}-%{version}
+%setup -q -n %{pkg_cname}-%{version}
 
 %build
-cd build/%{_php}/%{_architecture}
-phpize
-%configure --enable-%{_name}
-make VERBOSE=1 %{?_smp_mflags}
+cd build/%{php_name}/safe
+%{__phpize}
+%configure --enable-%{pkg_name}
+%make_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}/%{_php}/extensions
-mkdir -p %{buildroot}%{_sysconfdir}/%{_php}/conf.d
-cd build/%{_php}/%{_architecture}
+cd build/%{php_name}/safe
 make INSTALL_ROOT=%{buildroot} install-modules
 
-echo "; comment out next line to disable %{_name} extension in php" > %{buildroot}/%{_sysconfdir}/%{_php}/conf.d/%{_name}.ini
-echo "extension=%{_name}.so" >> %{buildroot}/%{_sysconfdir}/%{_php}/conf.d/%{_name}.ini
+mkdir -p %{buildroot}%{php_confdir}
+cat >> %{buildroot}%{php_confdir}/%{pkg_name}.ini << EOF
+; comment out next line to disable %{pkg_name} extension in php
+extension=%{pkg_name}.so"
+EOF
 
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG.md CONTRIBUTING.md README.md
-%{_libdir}/%{_php}/extensions/%{_name}.so
-%config(noreplace) %{_sysconfdir}/%{_php}/conf.d/%{_name}.ini
+%config(noreplace) %{php_confdir}/%{pkg_name}.ini
+%{php_extdir}/%{pkg_name}.so
 
 %changelog
