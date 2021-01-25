@@ -1,0 +1,60 @@
+From eaa5eacd3e068471537888dee627751dc35e714a Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Wed, 16 Dec 2020 16:38:37 +0100
+Subject: [PATCH 20/20] chtnau8824: Add a SST define/variable
+
+Add a SST define which gets set to "yes" when using the SST driver
+and to "" when not using the SST driver;
+
+And decide if platforms/bytcr/PlatformEnableSeq.conf should be included
+or not based on this.
+
+This is a preparation patch for adding SOF support.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtnau8824/HiFi.conf | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/ucm2/chtnau8824/HiFi.conf b/ucm2/chtnau8824/HiFi.conf
+index 105f36078d38..b36588f25c81 100644
+--- a/ucm2/chtnau8824/HiFi.conf
++++ b/ucm2/chtnau8824/HiFi.conf
+@@ -1,5 +1,16 @@
+ Define.Speaker "Speaker"
+ Define.Mic "InternalMic"
++Define.SST "yes"
++
++If.Controls {
++	Condition {
++		Type ControlExists
++		Control "name='media0_in Gain 0 Switch'"
++	}
++	False {
++		Define.SST ""
++	}
++}
+ 
+ If.cfg-mspk {
+ 	Condition {
+@@ -33,12 +44,12 @@ SectionVerb {
+ 
+ 	Include.e.File "/codecs/nau8824/EnableSeq.conf"
+ 
+-	If.Controls {
++	If.SST {
+ 		Condition {
+-			Type ControlExists
+-			Control "name='media0_in Gain 0 Switch'"
++			Type String
++			Empty "${var:SST}"
+ 		}
+-		True {
++		False {
+ 			Include.pe {
+ 				File "/platforms/bytcr/PlatformEnableSeq.conf"
+ 				Before.EnableSequence "0"
+-- 
+2.26.2
+

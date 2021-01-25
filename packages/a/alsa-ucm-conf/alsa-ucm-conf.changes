@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 21 09:43:27 CET 2021 - tiwai@suse.de
+
+- Backport upstream fixes:
+  more Baytrail/Cherrytrail profiles, TRX40 / ALC1220-VLC profiles:
+  0013-bytcr-rt5640-Add-support-for-devices-without-speaker.patch
+  0014-rt5640-Move-standard-DAC-setup-to-EnableSeq.conf.patch
+  0015-bytcr-rt5640-fix-the-execution-order.patch
+  0016-ucm2-add-initial-configuration-for-TRX40-Gigabyte-Ao.patch
+  0017-USB-Audio-ALC1220-Bump-analog-Speaker-priority-over-.patch
+  0018-USB-Audio-ALC1220-fix-indentation-for-Speaker-device.patch
+  0019-USB-Audio-fix-indentation-in-Gigabyte-Aorus-Master-M.patch
+  0020-chtnau8824-Add-a-SST-define-variable.patch
+  0021-kblrt5660-Fix-file-permissions.patch
+- Run fdupes to reduce the duplicated files
+
+-------------------------------------------------------------------
 Tue Jan  5 15:19:35 CET 2021 - tiwai@suse.de
 
 - Backport upstream fixes: HD-audio dual codec fixes and the builtin

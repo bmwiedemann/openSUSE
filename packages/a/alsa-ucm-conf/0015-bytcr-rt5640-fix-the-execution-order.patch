@@ -1,0 +1,68 @@
+From 95587ae8b75134c4bbc2cec0181e5d529826c9c4 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 14 Jan 2021 18:31:24 +0100
+Subject: [PATCH 15/20] bytcr-rt5640: fix the execution order
+
+The includes must be run _after_ defines. The Include directives
+have precedence. Put everything to If compound.
+
+Fixes: bdd05ac339 ("bytcr-rt5640: Add support for devices without speakers and/or an internal mic")
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/bytcr-rt5640/HiFi-Components.conf | 10 ++++++++--
+ ucm2/bytcr-rt5640/HiFi-LongName.conf   | 10 ++++++++--
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/ucm2/bytcr-rt5640/HiFi-Components.conf b/ucm2/bytcr-rt5640/HiFi-Components.conf
+index a76b42d0b414..19997178a934 100644
+--- a/ucm2/bytcr-rt5640/HiFi-Components.conf
++++ b/ucm2/bytcr-rt5640/HiFi-Components.conf
+@@ -25,7 +25,10 @@ If.mono {
+ 	}
+ }
+ 
+-Include.hs.File "/codecs/rt5640/HeadPhones.conf"
++If.hp {
++	Condition { Type String Empty "" }
++	True.Include.hs.File "/codecs/rt5640/HeadPhones.conf"
++}
+ 
+ If.dmic1 {
+ 	Condition {
+@@ -63,4 +66,7 @@ If.in3 {
+ 	}
+ }
+ 
+-Include.hsmic.File "/codecs/rt5640/HeadsetMic.conf"
++If.hsmic {
++	Condition { Type String Empty "" }
++	True.Include.hsmic.File "/codecs/rt5640/HeadsetMic.conf"
++}
+diff --git a/ucm2/bytcr-rt5640/HiFi-LongName.conf b/ucm2/bytcr-rt5640/HiFi-LongName.conf
+index 6cb55565baec..34acef8142f0 100644
+--- a/ucm2/bytcr-rt5640/HiFi-LongName.conf
++++ b/ucm2/bytcr-rt5640/HiFi-LongName.conf
+@@ -25,7 +25,10 @@ If.mono {
+ 	}
+ }
+ 
+-Include.hs.File "/codecs/rt5640/HeadPhones.conf"
++If.hp {
++	Condition { Type String Empty "" }
++	True.Include.hs.File "/codecs/rt5640/HeadPhones.conf"
++}
+ 
+ If.dmic1 {
+ 	Condition {
+@@ -63,4 +66,7 @@ If.in3 {
+ 	}
+ }
+ 
+-Include.hsmic.File "/codecs/rt5640/HeadsetMic.conf"
++If.hsmic {
++	Condition { Type String Empty "" }
++	True.Include.hsmic.File "/codecs/rt5640/HeadsetMic.conf"
++}
+-- 
+2.26.2
+

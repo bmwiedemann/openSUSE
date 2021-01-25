@@ -1,0 +1,34 @@
+From 8e875c9467cc72e53e53104b07d5515f3ef0a779 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 15 Jan 2021 14:03:35 +0100
+Subject: [PATCH 18/20] USB-Audio/ALC1220: fix indentation for Speaker device
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf b/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf
+index cbf715475e31..0d753843e404 100644
+--- a/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf
++++ b/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf
+@@ -1,11 +1,11 @@
+ SectionDevice."Speaker" {
+ 	Comment "Speakers"
+ 	Value {
+-	       PlaybackChannels 8
+-	       PlaybackPriority 200
+-	       PlaybackPCM "hw:${CardId}"
+-	       JackControl "Speaker Jack"
+-	       PlaybackMixerElem "Speaker"
++		PlaybackChannels 8
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		JackControl "Speaker Jack"
++		PlaybackMixerElem "Speaker"
+ 	}
+ }
+ 
+-- 
+2.26.2
+

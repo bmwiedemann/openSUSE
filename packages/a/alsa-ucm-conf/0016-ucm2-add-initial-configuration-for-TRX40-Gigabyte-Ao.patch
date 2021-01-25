@@ -1,0 +1,107 @@
+From 09e5271401480297c2c9c0b753df9705123a1af1 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 14 Jan 2021 11:03:56 +0100
+Subject: [PATCH 16/20] ucm2: add initial configuration for TRX40 Gigabyte
+ Aorus Master Audio
+
+BugLink: https://github.com/alsa-project/alsa-ucm-conf/pull/25
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ...Gigabyte-Aorus-Master-Front-Headphone.conf |  1 +
+ ...Gigabyte-Aorus-Master-Main-Audio-HiFi.conf | 61 +++++++++++++++++++
+ .../Gigabyte-Aorus-Master-Main-Audio.conf     |  6 ++
+ 3 files changed, 68 insertions(+)
+ create mode 120000 ucm2/USB-Audio/Gigabyte-Aorus-Master-Front-Headphone.conf
+ create mode 100644 ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio-HiFi.conf
+ create mode 100644 ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio.conf
+
+diff --git a/ucm2/USB-Audio/Gigabyte-Aorus-Master-Front-Headphone.conf b/ucm2/USB-Audio/Gigabyte-Aorus-Master-Front-Headphone.conf
+new file mode 120000
+index 000000000000..13764378427a
+--- /dev/null
++++ b/ucm2/USB-Audio/Gigabyte-Aorus-Master-Front-Headphone.conf
+@@ -0,0 +1 @@
++../module/lib/linked.conf
+\ No newline at end of file
+diff --git a/ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio-HiFi.conf b/ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio-HiFi.conf
+new file mode 100644
+index 000000000000..5c241656cf2b
+--- /dev/null
++++ b/ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio-HiFi.conf
+@@ -0,0 +1,61 @@
++Define.SecondaryCardId "$${CardIdByName:Aorus Master Front Headphone}"
++
++SectionDevice."Speaker" {
++	Comment "Speakers"
++	Value {
++	       PlaybackChannels 8
++	       PlaybackPriority 200
++	       PlaybackPCM "hw:${CardId}"
++	       JackControl "Line Out Jack"
++	       PlaybackMixerElem "Line Out"
++	}
++}
++
++SectionDevice."Headphones" {
++	Comment "Front Headphones"
++	Value {
++		PlaybackPriority 300
++		PlaybackPCM "hw:${var:SecondaryCardId}"
++		JackCTL "hw:${var:SecondaryCardId}"
++		JackControl "Headphone - Output Jack"
++	}
++}
++
++SectionDevice."SPDIF" {
++	Comment "S/PDIF Out"
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},1"
++		# PlaybackMixerElem "IEC958"
++	}
++}
++
++SectionDevice."Line" {
++	Comment "Line In"
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		JackControl "Line Jack"
++		CaptureMixerElem "Line"
++	}
++}
++
++SectionDevice."Mic1" {
++	Comment "Microphone"
++	Value {
++		CapturePriority 200
++		CapturePCM "hw:${CardId},1"
++		JackControl "Mic Jack"
++		CaptureMixerElem "Mic"
++	}
++}
++
++SectionDevice."Mic2" {
++	Comment "Front Microphone"
++	Value {
++		CapturePriority 300
++		CapturePCM "hw:${CardId},2"
++		JackControl "Front Mic Jack"
++		CaptureMixerElem "Front Mic"
++	}
++}
+diff --git a/ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio.conf b/ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio.conf
+new file mode 100644
+index 000000000000..656b989762e6
+--- /dev/null
++++ b/ucm2/USB-Audio/Gigabyte-Aorus-Master-Main-Audio.conf
+@@ -0,0 +1,6 @@
++Syntax 3
++Comment "Gigabyte Aorus Integrated Audio"
++SectionUseCase."HiFi" {
++	File "Gigabyte-Aorus-Master-Main-Audio-HiFi.conf"
++	Comment "Default Alsa Profile"
++}
+-- 
+2.26.2
+

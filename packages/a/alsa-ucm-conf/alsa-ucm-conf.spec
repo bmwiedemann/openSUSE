@@ -22,6 +22,7 @@ Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
 URL:            http://www.alsa-project.org/
+BuildRequires:  fdupes
 Source:         ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
 Patch1:         0001-fix-the-ucm2-codecs-hda-hdmi.conf-use.patch
 Patch2:         0002-codecs-hda-hdmi.conf-add-DisplayPort-to-the-device-d.patch
@@ -35,6 +36,15 @@ Patch9:         0009-sof-hda-dsp-Set-Master-Playback-Switch-on-in-the-Boo.patch
 Patch10:        0010-HDA-Intel-HiFi-dual-Add-EnableSequence-and-DisableSe.patch
 Patch11:        0011-HDA-Intel-HiFi-dual-Add-BootSequence-and-disable-pla.patch
 Patch12:        0012-chtrt5645-Enable-Internal-MIC-of-ECS-EF20EA.patch
+Patch13:        0013-bytcr-rt5640-Add-support-for-devices-without-speaker.patch
+Patch14:        0014-rt5640-Move-standard-DAC-setup-to-EnableSeq.conf.patch
+Patch15:        0015-bytcr-rt5640-fix-the-execution-order.patch
+Patch16:        0016-ucm2-add-initial-configuration-for-TRX40-Gigabyte-Ao.patch
+Patch17:        0017-USB-Audio-ALC1220-Bump-analog-Speaker-priority-over-.patch
+Patch18:        0018-USB-Audio-ALC1220-fix-indentation-for-Speaker-device.patch
+Patch19:        0019-USB-Audio-fix-indentation-in-Gigabyte-Aorus-Master-M.patch
+Patch20:        0020-chtnau8824-Add-a-SST-define-variable.patch
+Patch21:        0021-kblrt5660-Fix-file-permissions.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -55,6 +65,15 @@ This package contains the profiles files for ALSA UCM (Use Case Manager).
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
 
 %build
 
@@ -62,6 +81,7 @@ This package contains the profiles files for ALSA UCM (Use Case Manager).
 mkdir -p %{buildroot}%{_datadir}/alsa
 cp -a ucm %{buildroot}%{_datadir}/alsa/
 cp -a ucm2 %{buildroot}%{_datadir}/alsa/
+%fdupes -s %{buildroot}
 
 %files
 %defattr(-, root, root)

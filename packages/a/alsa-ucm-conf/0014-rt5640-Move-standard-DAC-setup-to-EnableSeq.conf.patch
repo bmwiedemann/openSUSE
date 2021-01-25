@@ -1,0 +1,88 @@
+From cd02791e9360bcfa2cd4bed40cf5ddabb378ef93 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Sat, 9 Jan 2021 22:02:52 +0100
+Subject: [PATCH 14/20] rt5640: Move standard DAC setup to EnableSeq.conf
+
+No matter which output is used, we always need to setup the standard
+DAC config. Move this to the shared EnableSeq.conf to avoid having
+to duplicate it in various places.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/codecs/rt5640/EnableSeq.conf   | 6 ++++++
+ ucm2/codecs/rt5640/HeadPhones.conf  | 6 ------
+ ucm2/codecs/rt5640/MonoSpeaker.conf | 6 ------
+ ucm2/codecs/rt5640/Speaker.conf     | 6 ------
+ 4 files changed, 6 insertions(+), 18 deletions(-)
+
+diff --git a/ucm2/codecs/rt5640/EnableSeq.conf b/ucm2/codecs/rt5640/EnableSeq.conf
+index cbf403814a6f..145a23bd42fc 100644
+--- a/ucm2/codecs/rt5640/EnableSeq.conf
++++ b/ucm2/codecs/rt5640/EnableSeq.conf
+@@ -1,5 +1,11 @@
+ EnableSequence [
+ 	# RT5640 default output routing
++	cset "name='DAC MIXL INF1 Switch' on"
++	cset "name='DAC MIXR INF1 Switch' on"
++	cset "name='Stereo DAC MIXL DAC L1 Switch' on"
++	cset "name='Stereo DAC MIXR DAC R1 Switch' on"
++	cset "name='Stereo DAC MIXL DAC L2 Switch' on"
++	cset "name='Stereo DAC MIXR DAC R2 Switch' on"
+ 	cset "name='OUT MIXL DAC L1 Switch'  on"
+ 	cset "name='OUT MIXR DAC R1 Switch'  on"
+ 
+diff --git a/ucm2/codecs/rt5640/HeadPhones.conf b/ucm2/codecs/rt5640/HeadPhones.conf
+index b7707e5285b0..a9e4d2026784 100644
+--- a/ucm2/codecs/rt5640/HeadPhones.conf
++++ b/ucm2/codecs/rt5640/HeadPhones.conf
+@@ -14,12 +14,6 @@ SectionDevice."Headphones" {
+ 	}
+ 
+ 	EnableSequence [
+- 		cset "name='DAC MIXL INF1 Switch'  on"
+- 		cset "name='DAC MIXR INF1 Switch'  on"
+- 		cset "name='Stereo DAC MIXL DAC L1 Switch'  on"
+- 		cset "name='Stereo DAC MIXR DAC R1 Switch'  on"
+-		cset "name='Stereo DAC MIXL DAC L2 Switch'  on"
+- 		cset "name='Stereo DAC MIXR DAC R2 Switch'  on"
+  		cset "name='HPO MIX HPVOL Switch'  on"
+  		cset "name='Headphone Switch'  on"
+ 		cset "name='HP Channel Switch' on"
+diff --git a/ucm2/codecs/rt5640/MonoSpeaker.conf b/ucm2/codecs/rt5640/MonoSpeaker.conf
+index ddc7ba85cddd..23cf34c259e1 100644
+--- a/ucm2/codecs/rt5640/MonoSpeaker.conf
++++ b/ucm2/codecs/rt5640/MonoSpeaker.conf
+@@ -6,12 +6,6 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	EnableSequence [
+-		cset "name='DAC MIXL INF1 Switch' on"
+-		cset "name='DAC MIXR INF1 Switch' on"
+-		cset "name='Stereo DAC MIXL DAC L1 Switch' on"
+-		cset "name='Stereo DAC MIXR DAC R1 Switch' on"
+-		cset "name='Stereo DAC MIXL DAC L2 Switch'  on"
+-		cset "name='Stereo DAC MIXR DAC R2 Switch'  on"
+ 		cset "name='SPK MIXL DAC L1 Switch' on"
+ 		cset "name='SPK MIXR DAC R1 Switch' on"
+ 		cset "name='SPOL MIX SPKVOL L Switch' on"
+diff --git a/ucm2/codecs/rt5640/Speaker.conf b/ucm2/codecs/rt5640/Speaker.conf
+index 411cd13db1ff..422cfdfaf472 100644
+--- a/ucm2/codecs/rt5640/Speaker.conf
++++ b/ucm2/codecs/rt5640/Speaker.conf
+@@ -6,12 +6,6 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	EnableSequence [
+-		cset "name='DAC MIXL INF1 Switch' on"
+-		cset "name='DAC MIXR INF1 Switch' on"
+-		cset "name='Stereo DAC MIXL DAC L1 Switch' on"
+-		cset "name='Stereo DAC MIXR DAC R1 Switch' on"
+-		cset "name='Stereo DAC MIXL DAC L2 Switch'  on"
+- 		cset "name='Stereo DAC MIXR DAC R2 Switch'  on"
+ 		cset "name='SPK MIXL DAC L1 Switch' on"
+ 		cset "name='SPK MIXR DAC R1 Switch' on"
+ 		cset "name='SPOL MIX SPKVOL L Switch' on"
+-- 
+2.26.2
+

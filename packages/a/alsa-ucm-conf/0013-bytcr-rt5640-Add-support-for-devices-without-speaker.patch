@@ -1,0 +1,224 @@
+From bdd05ac3396a3a09f3818aaa9157eb7ef07676d6 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Sat, 9 Jan 2021 22:02:51 +0100
+Subject: [PATCH 13/20] bytcr-rt5640: Add support for devices without speakers
+ and/or an internal mic
+
+There are kernel patches pending upstream for the bytcr-rt5640 machine-driver
+to support devices without speakers and/or an internal mic.
+
+Since the UCM profile already conditionally loads the speaker and
+internal-mic codec include files, these will simply get skipped in this
+case, so this almost works with the current UCM profile without changes.
+
+The only troublesome part is the ConflictingDevice sections in the codec
+HeadPhones.conf and HeadsetMic.conf files, which refer to resp. a "Speaker"
+and a "Mic" device. Without any of the speaker or mic codec conf files
+being included there will not by any "Speaker" / "Mic" devices leading
+to an error while parsing the HeadPhones.conf / HeadsetMic.conf files.
+
+This commit makes the ConflictingDevice section conditional, fixing this.
+
+Cc: Rasmus Porsager <rasmus@beat.dk>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/bytcr-rt5640/HiFi-Components.conf | 28 +++++++++++++++++++++-----
+ ucm2/bytcr-rt5640/HiFi-LongName.conf   | 28 +++++++++++++++++++++-----
+ ucm2/codecs/rt5640/HeadPhones.conf     | 14 ++++++++++---
+ ucm2/codecs/rt5640/HeadsetMic.conf     | 14 ++++++++++---
+ 4 files changed, 68 insertions(+), 16 deletions(-)
+
+diff --git a/ucm2/bytcr-rt5640/HiFi-Components.conf b/ucm2/bytcr-rt5640/HiFi-Components.conf
+index 2ce4f5978567..a76b42d0b414 100644
+--- a/ucm2/bytcr-rt5640/HiFi-Components.conf
++++ b/ucm2/bytcr-rt5640/HiFi-Components.conf
+@@ -1,10 +1,16 @@
++Define.HaveSpeaker ""
++Define.HaveInternalMic ""
++
+ If.spk {
+ 	Condition {
+ 		Type String
+ 		Haystack "${CardComponents}"
+ 		Needle "cfg-spk:2"
+ 	}
+-	True.Include.spk.File "/codecs/rt5640/Speaker.conf"
++	True {
++		Include.spk.File "/codecs/rt5640/Speaker.conf"
++		Define.HaveSpeaker "yes"
++	}
+ }
+ 
+ If.mono {
+@@ -13,7 +19,10 @@ If.mono {
+ 		Haystack "${CardComponents}"
+ 		Needle "cfg-spk:1"
+ 	}
+-	True.Include.mspk.File "/codecs/rt5640/MonoSpeaker.conf"
++	True {
++		Include.mspk.File "/codecs/rt5640/MonoSpeaker.conf"
++		Define.HaveSpeaker "yes"
++	}
+ }
+ 
+ Include.hs.File "/codecs/rt5640/HeadPhones.conf"
+@@ -24,7 +33,10 @@ If.dmic1 {
+ 		Haystack "${CardComponents}"
+ 		Needle "cfg-mic:dmic1"
+ 	}
+-	True.Include.dmic.File "/codecs/rt5640/DigitalMics.conf"
++	True {
++		Include.dmic.File "/codecs/rt5640/DigitalMics.conf"
++		Define.HaveInternalMic "yes"
++	}
+ }
+ 
+ If.in1 {
+@@ -33,7 +45,10 @@ If.in1 {
+ 		Haystack "${CardComponents}"
+ 		Needle "cfg-mic:in1"
+ 	}
+-	True.Include.mic1.File "/codecs/rt5640/IN1-InternalMic.conf"
++	True {
++		Include.mic1.File "/codecs/rt5640/IN1-InternalMic.conf"
++		Define.HaveInternalMic "yes"
++	}
+ }
+ 
+ If.in3 {
+@@ -42,7 +57,10 @@ If.in3 {
+ 		Haystack "${CardComponents}"
+ 		Needle "cfg-mic:in3"
+ 	}
+-	True.Include.mic3.File "/codecs/rt5640/IN3-InternalMic.conf"
++	True {
++		Include.mic3.File "/codecs/rt5640/IN3-InternalMic.conf"
++		Define.HaveInternalMic "yes"
++	}
+ }
+ 
+ Include.hsmic.File "/codecs/rt5640/HeadsetMic.conf"
+diff --git a/ucm2/bytcr-rt5640/HiFi-LongName.conf b/ucm2/bytcr-rt5640/HiFi-LongName.conf
+index c07f153a969b..6cb55565baec 100644
+--- a/ucm2/bytcr-rt5640/HiFi-LongName.conf
++++ b/ucm2/bytcr-rt5640/HiFi-LongName.conf
+@@ -1,10 +1,16 @@
++Define.HaveSpeaker ""
++Define.HaveInternalMic ""
++
+ If.spk {
+ 	Condition {
+ 		Type String
+ 		Haystack "${CardLongName}"
+ 		Needle "-stereo-spk"
+ 	}
+-	True.Include.spk.File "/codecs/rt5640/Speaker.conf"
++	True {
++		Include.spk.File "/codecs/rt5640/Speaker.conf"
++		Define.HaveSpeaker "yes"
++	}
+ }
+ 
+ If.mono {
+@@ -13,7 +19,10 @@ If.mono {
+ 		Haystack "${CardLongName}"
+ 		Needle "-mono-spk"
+ 	}
+-	True.Include.mspk.File "/codecs/rt5640/MonoSpeaker.conf"
++	True {
++		Include.mspk.File "/codecs/rt5640/MonoSpeaker.conf"
++		Define.HaveSpeaker "yes"
++	}
+ }
+ 
+ Include.hs.File "/codecs/rt5640/HeadPhones.conf"
+@@ -24,7 +33,10 @@ If.dmic1 {
+ 		Haystack "${CardLongName}"
+ 		Needle "-dmic1-mic"
+ 	}
+-	True.Include.dmic.File "/codecs/rt5640/DigitalMics.conf"
++	True {
++		Include.dmic.File "/codecs/rt5640/DigitalMics.conf"
++		Define.HaveInternalMic "yes"
++	}
+ }
+ 
+ If.in1 {
+@@ -33,7 +45,10 @@ If.in1 {
+ 		Haystack "${CardLongName}"
+ 		Needle "-in1-mic"
+ 	}
+-	True.Include.mic1.File "/codecs/rt5640/IN1-InternalMic.conf"
++	True {
++		Include.mic1.File "/codecs/rt5640/IN1-InternalMic.conf"
++		Define.HaveInternalMic "yes"
++	}
+ }
+ 
+ If.in3 {
+@@ -42,7 +57,10 @@ If.in3 {
+ 		Haystack "${CardLongName}"
+ 		Needle "-in3-mic"
+ 	}
+-	True.Include.mic3.File "/codecs/rt5640/IN3-InternalMic.conf"
++	True {
++		Include.mic3.File "/codecs/rt5640/IN3-InternalMic.conf"
++		Define.HaveInternalMic "yes"
++	}
+ }
+ 
+ Include.hsmic.File "/codecs/rt5640/HeadsetMic.conf"
+diff --git a/ucm2/codecs/rt5640/HeadPhones.conf b/ucm2/codecs/rt5640/HeadPhones.conf
+index 42151d6e2e17..b7707e5285b0 100644
+--- a/ucm2/codecs/rt5640/HeadPhones.conf
++++ b/ucm2/codecs/rt5640/HeadPhones.conf
+@@ -1,9 +1,17 @@
+ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+-	ConflictingDevice [
+-		"Speaker"
+-	]
++	If.have-spk {
++		Condition {
++			Type String
++			Empty "${var:HaveSpeaker}"
++		}
++		False {
++			ConflictingDevice [
++				"Speaker"
++			]
++		}
++	}
+ 
+ 	EnableSequence [
+  		cset "name='DAC MIXL INF1 Switch'  on"
+diff --git a/ucm2/codecs/rt5640/HeadsetMic.conf b/ucm2/codecs/rt5640/HeadsetMic.conf
+index 7a8dfb8df6cc..f88b611a45c5 100644
+--- a/ucm2/codecs/rt5640/HeadsetMic.conf
++++ b/ucm2/codecs/rt5640/HeadsetMic.conf
+@@ -1,9 +1,17 @@
+ SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+-	ConflictingDevice [
+-		"Mic"
+-	]
++	If.have-mic {
++		Condition {
++			Type String
++			Empty "${var:HaveInternalMic}"
++		}
++		False {
++			ConflictingDevice [
++				"Mic"
++			]
++		}
++	}
+ 
+ 	EnableSequence [
+ 		cset "name='Headset Mic Switch' on"
+-- 
+2.26.2
+
