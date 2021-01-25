@@ -1,7 +1,7 @@
 #
 # spec file for package php7-psr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,24 @@
 #
 
 
-%define _name           psr
-%define _php            php7
+%define php_name    php7
+%define pkg_name    psr
+%define php_extdir  %(%{__php_config} --extension-dir)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%define php_confdir %(%{__php_config} --ini-dir)
+%else
+%define php_confdir %{_sysconfdir}/%{php_name}/conf.d
+%endif
 
-Name:           %{_php}-psr
+Name:           %{php_name}-%{pkg_name}
 Version:        1.0.1
 Release:        0
 Summary:        PSR Extension Module
 License:        BSD-2-Clause
 Group:          Development/Libraries/PHP
 URL:            http://www.php-fig.org/psr/
-Source0:        https://pecl.php.net/get/%{_name}-%{version}.tgz
-BuildRequires:  %{_php}-devel
+Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
+BuildRequires:  %{php_name}-devel
 BuildRequires:  gcc
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
@@ -36,28 +42,27 @@ Requires:       php(zend-abi) = %{php_zend_api}
 This extension provides the accepted PSR interfaces, so they can be used in an extension.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%setup -q -n %{pkg_name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"
 %{__phpize}
-%configure --enable-%{_name}
-make %{?_smp_mflags}
+%configure --enable-%{pkg_name}
+%make_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}/%{_php}/extensions
-mkdir -p %{buildroot}%{_sysconfdir}/%{_php}/conf.d
 make INSTALL_ROOT=%{buildroot} install-modules
 
-cat > %{buildroot}/%{_sysconfdir}/%{_php}/conf.d/%{_name}.ini << EOF
-; comment out next line to disable %{_name} extension in php"
-extension=%{_name}.so
+mkdir -p %{buildroot}%{php_confdir}
+cat > %{buildroot}%{php_confdir}/%{pkg_name}.ini << EOF
+; comment out next line to disable %{pkg_name} extension in php"
+extension=%{pkg_name}.so
 EOF
 
 %files
 %doc CHANGELOG.md README.md
 %license LICENSE.md
-%{_libdir}/%{_php}/extensions/%{_name}.so
-%config(noreplace) %{_sysconfdir}/%{_php}/conf.d/%{_name}.ini
+%config(noreplace) %{php_confdir}/%{pkg_name}.ini
+%{php_extdir}/%{pkg_name}.so
 
 %changelog

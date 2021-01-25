@@ -20,4 +20,12 @@
   * Report proper default value in reflection for LoggerInterface - PHP 8 only</comment>
     <requestid>848317</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>be562198efc829df8f452be71fa999f6</srcmd5>
+    <version>1.0.1</version>
+    <time>1611595428</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>866295</requestid>
+  </revision>
 </revisionlist>
