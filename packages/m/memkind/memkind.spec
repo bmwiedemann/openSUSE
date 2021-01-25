@@ -43,7 +43,7 @@ BuildRequires:  numactl-devel
 %define docdir %{_defaultdocdir}/%{namespace}-%{version}
 %endif
 
-ExclusiveArch:  x86_64 ppc64 ppc64le s390x
+ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 
 # default values if version is a tagged release on github
 %{!?commit: %define commit %{version}}
