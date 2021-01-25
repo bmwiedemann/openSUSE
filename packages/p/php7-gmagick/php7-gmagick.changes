@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 22 12:27:13 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Expect test to fail with GraphicsMagick-1.3.36 (due to API change)
+  + ignore-test-GraphicsMagick-1.3.36.patch
+
+-------------------------------------------------------------------
+Sun Jan 17 10:36:07 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use php_cfgdir and php_extdir macros to determine location of files
+- Generate .ini file from spec
+  - delete imagick.ini
+
+-------------------------------------------------------------------
 Sat Jan  4 12:16:04 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file.
