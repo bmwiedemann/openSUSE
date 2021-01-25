@@ -1,7 +1,7 @@
 #
 # spec file for package rapid-photo-downloader
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 # Copyright (c) 2009-2011 Pascal Blesser pascal.bleser@opensuse.org
 #
@@ -17,10 +17,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} >= 1550
-%global __requires_exclude ^typelib\\(Unity\\).*$
-%endif
 
+%global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
 Version:        0.9.26
 Release:        0
