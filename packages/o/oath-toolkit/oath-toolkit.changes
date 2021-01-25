@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 20 21:40:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.6
+  * oathtool: Support for reading KEY and OTP from standard input
+    or filename.  KEY and OTP may now be given as '-' to mean
+    stdin, or @FILE to read from a particular file.  This is
+    recommended on multi-user systems, since secrets as command
+    line parameters leak.
+  * pam_oath: Fix unlikely logic fail on out of memory conditions.
+
+-------------------------------------------------------------------
 Tue Dec 29 11:58:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.5
