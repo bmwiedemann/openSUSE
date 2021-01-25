@@ -16,6 +16,9 @@
 #
 
 
+# Internal QML imports
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules).*
+
 %global kf5_version 5.54.0
 %global qt5_version 5.11.0
 %global wayland (0%{?suse_version} >= 1330)
@@ -150,6 +153,7 @@ Requires(verify): permissions
 %requires_ge libKF5WindowSystem5
 %requires_ge plasma-framework
 Recommends:     %{name}-lang
+Provides:       qt5qmlimport(org.kde.kwin.2) = 0
 
 %description
 KWin is the window manager of the K desktop environment.
