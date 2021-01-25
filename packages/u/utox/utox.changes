@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan 24 07:24:56 UTC 2021 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 0.18.1
+  Fixes:
+
+    * Solved crash when undoing chat input with ctrl-z (@siburec) (d841c3e)
+      groups: load group topics from Tox save (d6f9b68)
+    * Fix heap-use-after-free when creating new group chats (@siburec) (c47612e)
+      langs: Remove strings that are not supposed to be translated (b1fc2f3)
+    * Use correct type for pthread entry point (@krobelus) (cadab94)
+    * Pass enum value with correct type when cancelling file transfers (@krobelus) (7bf108d)
+    * Copy text from chat without nicks via ctrl-c in Windows (@redmanmale) (88bf58d)
+
+  Documentation:
+
+    * README.md: Add Spanish to the list of complete translations (4b8cda7)
+    * Add Debian installation instructions (@garetethan) (c5595be)
+    * docs: fix simple typo, precomplied -> precompiled (@timgates42) (fd2ad87)
+
+  Languages:
+
+    * Complete Spanish translation (@siburec) (f840779)
+
+-------------------------------------------------------------------
 Sat Nov 28 11:08:13 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 0.18.0
