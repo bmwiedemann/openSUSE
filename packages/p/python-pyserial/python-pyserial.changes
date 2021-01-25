@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jan 20 08:06:12 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.5:
+  New Features:
+  [#411] Add a backend for Silicon Labs CP2110/4 HID-to-UART bridge. (depends on hid module)
+
+  Improvements:
+  [#315] Use absolute import everywhere
+  [#354] Make ListPortInfo hashable
+  [#372] threaded: "write" returns byte count
+  [#400] Add bytesize and stopbits argument parser to tcp_serial_redirect
+  [#408] loop: add out_waiting
+  [#495] list_ports_linux: Correct "interface" property on Linux hosts
+  [#500] Remove Python 3.2 and 3.3 from test
+  [#261, #285, #296, #320, #333, #342, #356, #358, #389, #397, #510] doc updates
+  miniterm: add CTRL+T Q as alternative to exit
+  miniterm: suspend function key changed to CTRL-T Z
+  add command line tool entries pyserial-miniterm (replaces miniterm.py) and pyserial-ports (runs serial.tools.list_ports).
+  python -m serial opens miniterm (use w/o args and it will print port list too) [experimental]
+
+  Bugfixes:
+  [#371] Don't open port if self.port is not set while entering context manager
+  [#437, #502] refactor: raise new instances for PortNotOpenError and SerialTimeoutException
+  [#261, #263] list_ports: set default name attribute
+  [#286] fix: compare only of the same type in list_ports_common.ListPortInfo
+  rfc2217/close(): fix race-condition
+  [#305] return b'' when connection closes on rfc2217 connection
+  [#386] rfc2217/close(): fix race condition
+  Fixed flush_input_buffer() for situations where the remote end has closed the socket.
+  [#441] reset_input_buffer() can hang on sockets
+  examples: port_publisher python 3 fixes
+  [#324] miniterm: Fix miniterm constructor exit_character and menu_character
+  [#326] miniterm: use exclusive access for native serial ports by default
+  [#497] miniterm: fix double use of CTRL-T + s use z for suspend instead
+  [#443, #444] examples: refactor wx example, use Bind to avoid deprecated warnings, IsChecked, unichr
+  [#265] posix: fix PosixPollSerial with timeout=None and add cancel support
+  [#290] option for low latency mode on linux
+  [#335] Add support to xr-usb-serial ports
+  [#494] posix: Don't catch the SerialException we just raised
+  [#519] posix: Fix custom baud rate to not temporarily set 38400 baud rates on linux
+  [#509 #518] list_ports: use hardcoded path to library on osx
+  [#542] list_ports_osx: kIOMasterPortDefault no longer exported on Big Sur
+  [#545, #545] list_ports_osx: getting USB info on BigSur/AppleSilicon
+
+-------------------------------------------------------------------
 Mon Apr 15 06:44:21 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove unnecessary Windows and OSX modules from runtime package

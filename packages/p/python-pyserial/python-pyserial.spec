@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyserial
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyserial
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Python Serial Port Extension
 License:        Python-2.0
@@ -76,8 +76,8 @@ sed -i -e "1{s|^#![[:space:]]*\/.*bin.*$|#!%{_bindir}/python3|}" examples/*.py
 %install
 %python_install
 
-mv %{buildroot}%{_bindir}/miniterm.py %{buildroot}%{_bindir}/miniterm
-%python_clone -a %{buildroot}%{_bindir}/miniterm
+%python_clone -a %{buildroot}%{_bindir}/pyserial-miniterm
+%python_clone -a %{buildroot}%{_bindir}/pyserial-ports
 rm documentation/_build/doctrees/environment.pickle
 
 %{python_expand sed -i '1{/#!/d}' %{buildroot}%{$python_sitelib}/serial/tools/miniterm.py
@@ -88,15 +88,18 @@ rm documentation/_build/doctrees/environment.pickle
 %python_exec test/run_all_tests.py
 
 %post
-%python_install_alternative miniterm
+%python_install_alternative pyserial-miniterm
+%python_install_alternative pyserial-ports
 
 %preun
-%python_uninstall_alternative miniterm
+%python_uninstall_alternative pyserial-miniterm
+%python_uninstall_alternative pyserial-ports
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
-%python_alternative miniterm
+%python_alternative pyserial-miniterm
+%python_alternative pyserial-ports
 %{python_sitelib}/serial/
 %{python_sitelib}/pyserial-%{version}-py*.egg-info
 
