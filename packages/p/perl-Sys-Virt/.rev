@@ -782,4 +782,16 @@ in req#860506.
   iteration for dirty memory, and a final copy iteration prior move.</comment>
     <requestid>860507</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>de3d2325ff824f7f74b5a7cbfaed10b0</srcmd5>
+    <version>7.0.0</version>
+    <time>1611595395</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 7.0.0.
+
+- Update to 7.0.0
+  - Add all new APIs and constants in libvirt 7.0.0
+  - jsc#SLE-15860</comment>
+    <requestid>864473</requestid>
+  </revision>
 </revisionlist>

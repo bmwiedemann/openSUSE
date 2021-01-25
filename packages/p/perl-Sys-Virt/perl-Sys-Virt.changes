@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 19 03:24:55 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to 7.0.0
+  - Add all new APIs and constants in libvirt 7.0.0
+  - jsc#SLE-15860
+
+-------------------------------------------------------------------
 Tue Jan  5 15:31:15 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update suse-set-migration-constraints.patch
