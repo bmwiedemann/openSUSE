@@ -1,0 +1,7 @@
+<package name="Hawck" project="openSUSE:Factory">
+  <title>Hawck</title>
+  <description>A key-rebinding system that works on Wayland, X11 and on console ttys.
+Hawck intercepts key presses and runs corresponding Lua scripts.</description>
+  <devel project="X11:Utilities" package="Hawck"/>
+  <url>https://github.com/snyball/Hawck</url>
+</package>
