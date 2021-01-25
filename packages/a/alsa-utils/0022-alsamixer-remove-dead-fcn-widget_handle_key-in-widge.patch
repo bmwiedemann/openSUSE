@@ -1,0 +1,39 @@
+From b0c4ed248e9f543afe671e253fe1bb285df06477 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 11 Jan 2021 10:40:53 +0100
+Subject: [PATCH 22/25] alsamixer: remove dead fcn widget_handle_key() in
+ widget.c
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsamixer/widget.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/alsamixer/widget.c b/alsamixer/widget.c
+index 17f3aceef35a..5fedaba974eb 100644
+--- a/alsamixer/widget.c
++++ b/alsamixer/widget.c
+@@ -29,10 +29,6 @@ int screen_cols;
+ 
+ static int cursor_visibility = -1;
+ 
+-static void widget_handle_key(int key)
+-{
+-}
+-
+ static void update_cursor_visibility(void)
+ {
+ 	const struct widget *active_widget;
+@@ -87,9 +83,6 @@ void widget_init(struct widget *widget, int lines_, int cols, int y, int x,
+ 		set_panel_userptr(widget->panel, widget);
+ 	}
+ 
+-	//if (!widget->handle_key)
+-	//	widget->handle_key = widget_handle_key;
+-
+ 	if (old_window)
+ 		delwin(old_window);
+ 
+-- 
+2.26.2
+

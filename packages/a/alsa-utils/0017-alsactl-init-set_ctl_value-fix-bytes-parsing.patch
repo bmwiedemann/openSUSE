@@ -1,0 +1,36 @@
+From e55534d8a5f05a6650d3147867bbcb7bb70e64cd Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 8 Jan 2021 18:15:43 +0100
+Subject: [PATCH 17/25] alsactl: init - set_ctl_value() - fix bytes parsing
+
+Use the correct error value handling from hextodigit().
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/init_parse.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/alsactl/init_parse.c b/alsactl/init_parse.c
+index ee9cc6d8f1b1..58b46f42de4b 100644
+--- a/alsactl/init_parse.c
++++ b/alsactl/init_parse.c
+@@ -465,12 +465,13 @@ static int set_ctl_value(struct space *space, const char *value, int all)
+ 			return -EINVAL;
+ 		}
+ 		for (idx = 0; idx < count; idx += 2) {
+-			val = hextodigit(*(value++)) << 4;
+-			val |= hextodigit(*(value++));
+-			if (val > 255) {
++			int nibble1 = hextodigit(*(value++));
++			int nibble2 = hextodigit(*(value++));
++			if (nibble1 < 0 || nibble2 < 0) {
+ 				Perror(space, "bad ctl hexa value");
+ 				return -EINVAL;
+ 			}
++			val = (nibble1 << 4) | nibble2;
+ 			snd_ctl_elem_value_set_byte(space->ctl_value, idx, val);
+ 		}
+ 		break;
+-- 
+2.26.2
+

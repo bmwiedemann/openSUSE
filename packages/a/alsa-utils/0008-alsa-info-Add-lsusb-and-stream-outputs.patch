@@ -1,0 +1,68 @@
+From 5812f37d877c12bc594b9ffddc493d305991963a Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 9 Dec 2020 18:35:49 +0100
+Subject: [PATCH 08/25] alsa-info: Add lsusb and stream outputs
+
+We need more detailed information for USB-audio devices, at least the
+lsusb -v output and the contents of stream* proc files.
+Let's add them to alsa-info.sh output.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index f179bfab8655..3871b97a2268 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -476,6 +476,18 @@ cat /proc/asound/card*/codec\#* > $TEMPDIR/alsa-hda-intel.tmp 2> /dev/null
+ cat /proc/asound/card*/codec97\#0/ac97\#0-0 > $TEMPDIR/alsa-ac97.tmp 2> /dev/null
+ cat /proc/asound/card*/codec97\#0/ac97\#0-0+regs > $TEMPDIR/alsa-ac97-regs.tmp 2> /dev/null
+ 
++#Check for USB descriptors
++if [ -x /usr/bin/lsusb ]; then
++    for f in /proc/asound/card[0-9]*/usbbus; do
++	test -f "$f" || continue
++	id=$(sed 's@/@:@' $f)
++	lsusb -v -s $id >> $TEMPDIR/lsusb.tmp 2> /dev/null
++    done
++fi
++
++#Check for USB stream setup
++cat /proc/asound/card*/stream[0-9]* > $TEMPDIR/alsa-usbstream.tmp 2> /dev/null
++
+ #Check for USB mixer setup
+ cat /proc/asound/card*/usbmixer > $TEMPDIR/alsa-usbmixer.tmp 2> /dev/null
+ 
+@@ -649,6 +661,27 @@ if [ -s "$TEMPDIR/alsa-ac97.tmp" ]; then
+ 	echo "" >> $FILE
+ fi
+ 
++if [ -s "$TEMPDIR/lsusb.tmp" ]; then
++        echo "!!USB Descriptors" >> $FILE
++        echo "!!---------------" >> $FILE
++        echo "--startcollapse--" >> $FILE
++        cat $TEMPDIR/lsusb.tmp >> $FILE
++        echo "--endcollapse--" >> $FILE
++	echo "" >> $FILE
++	echo "" >> $FILE
++fi
++
++if [ -s "$TEMPDIR/lsusb.tmp" ]; then
++        echo "!!USB Stream information" >> $FILE
++        echo "!!----------------------" >> $FILE
++        echo "--startcollapse--" >> $FILE
++        echo "" >> $FILE
++        cat $TEMPDIR/alsa-usbstream.tmp >> $FILE
++        echo "--endcollapse--" >> $FILE
++	echo "" >> $FILE
++	echo "" >> $FILE
++fi
++
+ if [ -s "$TEMPDIR/alsa-usbmixer.tmp" ]; then
+         echo "!!USB Mixer information" >> $FILE
+         echo "!!---------------------" >> $FILE
+-- 
+2.26.2
+

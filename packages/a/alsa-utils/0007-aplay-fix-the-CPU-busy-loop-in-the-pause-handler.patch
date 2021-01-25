@@ -1,0 +1,59 @@
+From c1b92db5ef01311e5fc983f3134caa00826d0c2d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 8 Nov 2020 19:11:12 +0100
+Subject: [PATCH 07/25] aplay: fix the CPU busy loop in the pause handler
+
+Use the standard poll mechanism to ensure that there's
+something in the input to avoid busy loop on the file
+descriptor with the non-block mode set.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ aplay/aplay.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index ae609880bfd7..d385da25fea1 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -1553,6 +1553,19 @@ static void done_stdin(void)
+ 	tcsetattr(fileno(stdin), TCSANOW, &term);
+ }
+ 
++static char wait_for_input(void)
++{
++	struct pollfd pfd;
++	unsigned char b;
++
++	do {
++		pfd.fd = fileno(stdin);
++		pfd.events = POLLIN;
++		poll(&pfd, 1, -1);
++	} while (read(fileno(stdin), &b, 1) != 1);
++	return b;
++}
++
+ static void do_pause(void)
+ {
+ 	int err;
+@@ -1571,7 +1584,7 @@ static void do_pause(void)
+ 		return;
+ 	}
+ 	while (1) {
+-		while (read(fileno(stdin), &b, 1) != 1);
++		b = wait_for_input();
+ 		if (b == ' ' || b == '\r') {
+ 			while (read(fileno(stdin), &b, 1) == 1);
+ 			if (snd_pcm_state(handle) == SND_PCM_STATE_SUSPENDED)
+@@ -1596,7 +1609,7 @@ static void check_stdin(void)
+ 				while (read(fileno(stdin), &b, 1) == 1);
+ 				fprintf(stderr, _("\r=== PAUSE ===                                                            "));
+ 				fflush(stderr);
+-			do_pause();
++				do_pause();
+ 				fprintf(stderr, "                                                                          \r");
+ 				fflush(stderr);
+ 			}
+-- 
+2.26.2
+

@@ -1,0 +1,29 @@
+From 03e98d280678563acbfece12eab4b571026226b1 Mon Sep 17 00:00:00 2001
+From: Curtis Malainey <cujomalainey@chromium.org>
+Date: Wed, 6 Jan 2021 16:23:23 -0800
+Subject: [PATCH 14/25] ucm: fix typo in docs
+
+Do you know the tstaus of this fix?
+
+Signed-off-by: Curtis Malainey <cujomalainey@chromium.org>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsaucm/alsaucm.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/alsaucm/alsaucm.rst b/alsaucm/alsaucm.rst
+index 7890ba5377b8..3098672d3d55 100644
+--- a/alsaucm/alsaucm.rst
++++ b/alsaucm/alsaucm.rst
+@@ -122,7 +122,7 @@ Available commands:
+     the value of the `IDENTIFIER` argument can can be:
+ 
+     - ``_devstatus/{device}``
+-    - ``_modtstaus/{device}``
++    - ``_modstatus/{device}``
+ 
+   ``set`` `IDENTIFIER` `VALUE`
+     set string value
+-- 
+2.26.2
+
