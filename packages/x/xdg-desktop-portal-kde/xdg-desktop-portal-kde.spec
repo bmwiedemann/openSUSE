@@ -23,6 +23,9 @@
 %bcond_with screencast
 %endif
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(org\\.kde\\.xdgdesktopportal
+
 %define kf5_version 5.50.0
 Name:           xdg-desktop-portal-kde
 Version:        5.20.5
