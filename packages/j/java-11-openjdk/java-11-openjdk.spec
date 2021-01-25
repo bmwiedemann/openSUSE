@@ -1,7 +1,7 @@
 #
 # spec file for package java-11-openjdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
 %global debug 0
 %global add_back_javaee_modules 1
+%global is_release 1
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -32,13 +33,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       9
-%global patchver        1
-%global datever         2020-11-04
-%global buildver        1
+%global updatever       10
+%global patchver        0
+%global datever         2021-01-19
+%global buildver        9
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     27723943c0dd
+%global hg_revision     8b3498547395
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -110,7 +111,13 @@
 %else
 %global with_system_pcsc 0
 %endif
+%global with_system_harfbuzz 1
 %global with_pulseaudio 1
+%if %{is_release}
+%global package_version %{featurever}.%{interimver}.%{updatever}.%{patchver}
+%else
+%global package_version %{featurever}.%{interimver}.%{updatever}.%{patchver}~%{buildver}
+%endif
 %bcond_with zero
 %bcond_with aot
 %if ! %{with zero}
@@ -140,7 +147,7 @@
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
 Name:           java-%{featurever}-openjdk
-Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}
+Version:        %{package_version}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
@@ -324,6 +331,9 @@ BuildRequires:  pulseaudio >= 0.9.11
 %endif
 %if %{with_system_pcsc}
 BuildRequires:  pcsc-lite-devel
+%endif
+%if %{with_system_harfbuzz}
+BuildRequires:  harfbuzz-devel
 %endif
 %if %{with aot}
 BuildRequires:  libelf-devel
@@ -591,7 +601,9 @@ bash ../configure \
     --with-version-patch=%{patchver} \
     --with-version-date=%{datever} \
     --with-version-build=%{buildver} \
+%if %{is_release}
     --with-version-pre="" \
+%endif
     --with-version-opt="suse-%{release}-%{_arch}" \
     --disable-warnings-as-errors \
 %if %{with zero}
@@ -615,6 +627,9 @@ bash ../configure \
     --with-lcms=system \
 %if %{with_system_pcsc}
     --with-pcsclite=system \
+%endif
+%if %{with_system_harfbuzz}
+    --with-harfbuzz=system \
 %endif
     --with-stdc++lib=dynamic \
 %ifarch s390
@@ -660,7 +675,7 @@ autoreconf --force --install
 %configure \
     --with-jdk-home=$JAVA_HOME \
     --disable-docs
-make %{?_smp_mflags}
+make %{?_smp_mflags} 
 cp icedtea-sound.jar $JAVA_HOME/../jmods/
 cp build/native/libicedtea-sound.so $JAVA_HOME/lib/
 popd
@@ -1250,6 +1265,9 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libdt_socket.so
 %{_jvmdir}/%{sdkdir}/lib/libextnet.so
 %{_jvmdir}/%{sdkdir}/lib/libfontmanager.so
+%if ! %{with_system_harfbuzz}
+%{_jvmdir}/%{sdkdir}/lib/libharfbuzz.so
+%endif
 %{_jvmdir}/%{sdkdir}/lib/libinstrument.so
 %{_jvmdir}/%{sdkdir}/lib/libj2gss.so
 %{_jvmdir}/%{sdkdir}/lib/libj2pcsc.so

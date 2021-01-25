@@ -327,4 +327,12 @@
     <comment>11.0.9.1</comment>
     <requestid>848910</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>899889f33ec312b153912c3d665c31f9</srcmd5>
+    <version>11.0.10.0</version>
+    <time>1611595385</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle January 2021 CPU</comment>
+    <requestid>866025</requestid>
+  </revision>
 </revisionlist>
