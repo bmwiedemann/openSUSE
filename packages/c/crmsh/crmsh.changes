@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 21 06:36:49 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1611201540.a1006e39:
+  * Dev: corosync: change the permission of corosync.conf to 644
+
+-------------------------------------------------------------------
+Wed Jan 20 01:41:24 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1611106206.1586ae99:
+  * Dev: unittest: add unit test codes for preflight_check
+  * Fix: preflight_check: task: raise error when report_path isn't a directory
+
+-------------------------------------------------------------------
 Mon Jan 18 09:27:22 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1610961380.fc379403:
