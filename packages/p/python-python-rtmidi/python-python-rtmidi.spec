@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rtmidi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,7 @@ rm docs/_build/html/.buildinfo docs/_build/html/objects.inv
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitearch}/*
 
-%files doc
+%files %{python_files doc}
 %doc docs/_build/html examples
 
 %changelog

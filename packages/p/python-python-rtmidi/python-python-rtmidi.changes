@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 24 08:07:30 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Fix package build failure due to -doc package not being marked
+  with %python_files
+
+-------------------------------------------------------------------
 Thu Oct 15 22:22:27 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.4.6

@@ -44,4 +44,13 @@ Examples:
   * Drop official support for Python 3.5</comment>
     <requestid>842008</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c5a9add769255fb21718f9631658ced7</srcmd5>
+    <version>1.4.6</version>
+    <time>1611595435</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package build failure due to -doc package not being marked
+  with %python_files</comment>
+    <requestid>866327</requestid>
+  </revision>
 </revisionlist>
