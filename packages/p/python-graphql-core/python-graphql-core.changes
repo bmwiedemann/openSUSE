@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 25 02:15:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.1.2
+  * match GrapqhQL.js v15.1.0 
+  * Use proper type hints for serializers
+  * Add @SpecifiedBy directive
+  * Simplify get_operation_type_node function
+  * Simplify monkey-patching the did_you_mean function
+  * Add enum type for visitor return values
+  * Add all missing type definitions
+  * Switch to SDL for validation tests
+  * Support visitors with class and static methods
+  * block_string: print multi line for trailing backslash
+  * test_block_string: add fuzzing test for 'print_block_string'
+  * Simplify gen_fuzz_strings using itertools
+  * Make documentation for get_field_def more accurate
+  * Lists in AST nodes should not be optional
+  * Add test for custom scalars
+  * build_ast_schema: pass empty schema as literal
+
+-------------------------------------------------------------------
 Sat Jun  6 07:24:00 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.1.1
