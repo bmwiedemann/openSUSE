@@ -92,4 +92,12 @@
     <comment></comment>
     <requestid>697382</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>58c3c73998074c39cf8fd5c604aa69a3</srcmd5>
+    <version>0.10.0</version>
+    <time>1611595408</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unused dependency on openstack-suse-macros</comment>
+    <requestid>866154</requestid>
+  </revision>
 </revisionlist>
