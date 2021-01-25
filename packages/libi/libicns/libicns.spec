@@ -1,7 +1,7 @@
 #
 # spec file for package libicns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover   1
 Name:           libicns
-Version:        0.8.1+git20190323
+Version:        0.8.1+git20201014
 Release:        0
 Summary:        Application for manipulation of the Mac OS icns
 License:        LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later

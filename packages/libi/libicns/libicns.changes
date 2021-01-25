@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 21 16:44:24 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.1+git20201014
+  * Add support for 64px ARGB (icp6) icons
+  * Add support for 128px ARGB (ic07) icons
+  * Remove some warnings
+  * Code optimization
+
+-------------------------------------------------------------------
 Thu May  7 13:28:35 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to current git version 0.8.1+git20190323
