@@ -279,4 +279,14 @@
   * Disable `mm-verify-option` let-bounded in `mu4e~view-gnus`</comment>
     <requestid>860126</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d4806634e6bc3a7a4d2dd3d2771dea69</srcmd5>
+    <version>1.4.15</version>
+    <time>1611595476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.15:
+  * Fix 'mu4e-interrupt-update-mail alias definition
+  * mu-msg-sexp: Improve list-post regexp</comment>
+    <requestid>866501</requestid>
+  </revision>
 </revisionlist>

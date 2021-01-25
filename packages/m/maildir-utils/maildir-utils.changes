@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 25 08:42:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.15:
+  * Fix 'mu4e-interrupt-update-mail alias definition
+  * mu-msg-sexp: Improve list-post regexp
+
+-------------------------------------------------------------------
 Mon Jan  4 10:13:27 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.14:
