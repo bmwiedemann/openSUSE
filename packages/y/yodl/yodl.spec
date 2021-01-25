@@ -1,7 +1,7 @@
 #
 # spec file for package yodl
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yodl
-Version:        4.02.02
+Version:        4.03.00
 Release:        0
 Summary:        Yet One-other Document Language
 License:        GPL-3.0-only
@@ -48,8 +48,7 @@ variety of other formats. In this purpose, YODL somewhat resembles
 generic markup languages.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p1
 
 sed -i s/"#define COPT.*"/"#define COPT \"%{optflags}\""/ ./yodl/build
 # remove clearing of display during build, since it breaks OBS builds for s390x
@@ -80,7 +79,6 @@ rm %{buildroot}%{_docdir}/%{name}/yodl.txt
 %fdupes -s %{buildroot}
 
 %files
-%defattr(-,root,root)
 %doc yodl/AUTHORS.txt yodl/changelog yodl/README.* yodl/CHANGES
 %doc %{_docdir}/%{name}/
 %{_bindir}/yodl
@@ -97,15 +95,15 @@ rm %{buildroot}%{_docdir}/%{name}/yodl.txt
 %{_bindir}/yodlverbinsert
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%{_mandir}/man1/yodl.1%{ext_man}
-%{_mandir}/man1/yodlconverters.1%{ext_man}
-%{_mandir}/man1/yodlpost.1%{ext_man}
-%{_mandir}/man1/yodlstriproff.1%{ext_man}
-%{_mandir}/man1/yodlverbinsert.1%{ext_man}
-%{_mandir}/man7/yodlbuiltins.7%{ext_man}
-%{_mandir}/man7/yodlletter.7%{ext_man}
-%{_mandir}/man7/yodlmacros.7%{ext_man}
-%{_mandir}/man7/yodlmanpage.7%{ext_man}
-%{_mandir}/man7/yodltables.7%{ext_man}
+%{_mandir}/man1/yodl.1%{?ext_man}
+%{_mandir}/man1/yodlconverters.1%{?ext_man}
+%{_mandir}/man1/yodlpost.1%{?ext_man}
+%{_mandir}/man1/yodlstriproff.1%{?ext_man}
+%{_mandir}/man1/yodlverbinsert.1%{?ext_man}
+%{_mandir}/man7/yodlbuiltins.7%{?ext_man}
+%{_mandir}/man7/yodlletter.7%{?ext_man}
+%{_mandir}/man7/yodlmacros.7%{?ext_man}
+%{_mandir}/man7/yodlmanpage.7%{?ext_man}
+%{_mandir}/man7/yodltables.7%{?ext_man}
 
 %changelog

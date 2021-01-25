@@ -344,4 +344,15 @@ Fixes build failure seen in openSUSE:Factory:Staging</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>759303</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>97151cebc2c0e37b5f50861fe8fd498f</srcmd5>
+    <version>4.03.00</version>
+    <time>1611595369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.03.00:
+  * added -V to yodlverbinsert (suppresses verb())
+- Refresh yodl-doc-packages.patch and user recomended patchlevel
+- Small spec file modernisation (forwarded request 865311 from pluskalm)</comment>
+    <requestid>865322</requestid>
+  </revision>
 </revisionlist>

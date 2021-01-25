@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 21 09:19:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.03.00:
+  * added -V to yodlverbinsert (suppresses verb())
+- Refresh yodl-doc-packages.patch and user recomended patchlevel
+- Small spec file modernisation
+
+-------------------------------------------------------------------
 Thu Dec 19 11:37:43 UTC 2019 - pgajdos@suse.com
 
 - version update to 4.02.02
