@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 16 13:55:40 UTC 2021 - lars@linux-schulserver.de
+
+- add nrpe configuration snipplet
+
+-------------------------------------------------------------------
 Fri Sep 15 12:49:17 UTC 2017 - lars@linux-schulserver.de
 
 - Require monitoring-plugins-common for utils.pm

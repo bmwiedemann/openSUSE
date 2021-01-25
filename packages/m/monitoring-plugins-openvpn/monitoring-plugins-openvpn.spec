@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-openvpn
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           monitoring-plugins-openvpn
 Summary:        Verify the state of the clients connected to a openvpn server
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Monitoring
 Version:        1.1
 Release:        0
-Url:            https://www.monitoringexchange.org/inventory/Check-Plugins/Software/Misc/check_openvpn_pl
+URL:            https://www.monitoringexchange.org/inventory/Check-Plugins/Software/Misc/check_openvpn_pl
 Source0:        check_openvpn.pl
+Source1:        check_openvpn.cfg
 Patch1:         check_openvpn-add-perfdata.patch
 BuildRequires:  nagios-rpm-macros
 Provides:       nagios-plugins-openvpn = %{version}-%{release}
@@ -56,6 +57,7 @@ install -m644 %{SOURCE0} .
 
 %install
 mkdir -p %buildroot/%{nagios_plugindir}
+install -Dm0644 %{SOURCE1} %buildroot/%{nrpe_sysconfdir}/check_openvpn.cfg
 sed "s|/usr/nagios/libexec|%{nagios_plugindir}|g" check_openvpn.pl > %buildroot/%{nagios_plugindir}/check_openvpn
 chmod +x %buildroot/%{nagios_plugindir}/check_openvpn
 
@@ -67,6 +69,8 @@ rm -rf %buildroot
 # avoid build dependecy of nagios - own the dirs
 %dir %{nagios_libdir}
 %dir %{nagios_plugindir}
+%dir %{nrpe_sysconfdir}
+%config(noreplace) %{nrpe_sysconfdir}/check_openvpn.cfg
 %{nagios_plugindir}/check_openvpn
 
 %changelog
