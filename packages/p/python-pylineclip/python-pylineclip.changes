@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 23 18:47:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- The rpm packaging does neither require pip, twine nor any of the 
+  static linters or coverage tools.
+- Numpy is not used anywhere
+- Install DemoLineclip.py into docs dir
+
+-------------------------------------------------------------------
 Tue Nov 19 15:56:12 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version

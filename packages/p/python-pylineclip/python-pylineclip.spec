@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylineclip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,20 +25,12 @@ Summary:        Line clipping tool
 License:        MIT
 URL:            https://github.com/scivision/lineclipping-python-fortran
 Source:         https://github.com/scivision/lineclipping-python-fortran/archive/v%{version}.tar.gz#/lineclipping-python-fortran-%{version}.tar.gz
-BuildRequires:  %{python_module pip >= 10}
 BuildRequires:  %{python_module setuptools >= 38.6}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module twine >= 1.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coveralls}
-BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module mypy}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -55,15 +47,20 @@ sed -i -e '/^#!\//, 1d' pylineclip/__init__.py
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand #
+mkdir demo-%{$python_bin_suffix}
+sed -e '1 {s|^#!.*$|#!%{_bindir}/$python|}' DemoLineclip.py > demo-%{$python_bin_suffix}/DemoLineclip.py
+%fdupes %{buildroot}%{$python_sitelib}
+}
 rm %{buildroot}%{_bindir}/DemoLineclip.py
 
 %check
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc README.md demo-%{python_bin_suffix}/DemoLineclip.py
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pylineclip
+%{python_sitelib}/pylineclip-%{version}*-info
 
 %changelog
