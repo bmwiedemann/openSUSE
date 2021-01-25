@@ -11,6 +11,11 @@ Wed Jan  6 10:48:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
   * Fix broken background (kde#430390)
 
 -------------------------------------------------------------------
+Wed Dec 30 12:15:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add QML import provides
+
+-------------------------------------------------------------------
 Mon Dec  7 17:14:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0

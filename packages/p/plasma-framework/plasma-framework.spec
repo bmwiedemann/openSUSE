@@ -95,6 +95,8 @@ Summary:        Plasma framework - core libraries
 Group:          System/GUI/KDE
 Conflicts:      %{name} < 5.49
 Conflicts:      %{name}-private < 5.49
+Provides:       qt5qmlimport(org.kde.plasma.configuration.2) = 0
+Provides:       qt5qmlimport(org.kde.plasma.plasmoid.2) = 0
 
 %description -n %{lname}
 This package contains the core libraries needed by the Plasma framework.
