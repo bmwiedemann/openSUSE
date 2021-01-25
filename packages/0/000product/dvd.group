@@ -2090,6 +2090,7 @@
     <package name="libimobiledevice6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libindicator3-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libini_config5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libinih0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libinotifytools0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libinput-udev" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libinput10" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
