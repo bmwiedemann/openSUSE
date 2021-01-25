@@ -3,7 +3,7 @@ Tue Mar 31 17:24:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 0001-susepaste-Fix-parsing-of-returned-Location-header.patch:
   fix parsing of location header returned by susepaste.org
-  (boo#116669).
+  (boo#1166669).
 
 -------------------------------------------------------------------
 Tue Aug 27 07:24:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
