@@ -100,4 +100,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>858833</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e43c845f4fc80ffba725b079153ce57</srcmd5>
+    <version>2021.1</version>
+    <time>1611595418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.1:
+  * pytools.tag.Taggable added</comment>
+    <requestid>866179</requestid>
+  </revision>
 </revisionlist>
