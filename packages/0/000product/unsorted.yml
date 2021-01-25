@@ -20185,7 +20185,6 @@ unsorted:
   - ppp-modem 
   - pps-tools 
   - pps-tools-devel 
-  - pps-udev 
   - ppsspp 
   - ppsspp-common 
   - ppsspp-headless 
@@ -30278,7 +30277,6 @@ unsorted:
   - system-user-libvirt-dbus 
   - system-user-loki 
   - system-user-msr 
-  - system-user-ntp 
   - system-user-osc-collab 
   - system-user-prometheus 
   - system-user-uuidd 
