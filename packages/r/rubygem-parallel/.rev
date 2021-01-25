@@ -41,4 +41,14 @@ See related SR https://build.opensuse.org/request/show/615279</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838062</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f4dfbcd5cf8b792890a821d694ce74b1</srcmd5>
+    <version>1.20.1</version>
+    <time>1611595348</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.20.1
+  no changelog found
+</comment>
+    <requestid>865237</requestid>
+  </revision>
 </revisionlist>
