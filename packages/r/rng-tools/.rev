@@ -391,4 +391,27 @@
   * Added short names to entropy sources (rather than just index numbers), for use in identifying sources to exclude/include/set options on</comment>
     <requestid>833996</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9175f84dd33c748ead6cc7975da924d9</srcmd5>
+    <version>6.11</version>
+    <time>1611595416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.11:
+  * Some CI/CD fixes in travis pipeline
+  * Fix detection of duplicate pulses in nist source
+  * Fix --with-rtlsdr option in configure
+  * Clean up some debug statements that were erroneously left in place
+  * Fix error in systemd unit file
+  * Fix buffer overflow in rtlsdr entropy source
+  * Fixed darn source rekeying
+  * Fix various pipe read issues in jitter source
+  * Fix listing of rtlsdr options
+  * Misc Documentation fixes
+  * Fix a broken FIPS 140-2 corner case test
+  * Misc cleanups
+  * Addd aes mangling to nist source
+  * Improve nist performance with opportunistic use of CLOCK_MONOTONIC_COARSE
+  * Add forced reseeding of kernel entropy pool</comment>
+    <requestid>866173</requestid>
+  </revision>
 </revisionlist>

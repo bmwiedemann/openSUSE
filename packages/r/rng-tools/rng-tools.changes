@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 23 00:29:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.11:
+  * Some CI/CD fixes in travis pipeline
+  * Fix detection of duplicate pulses in nist source
+  * Fix --with-rtlsdr option in configure
+  * Clean up some debug statements that were erroneously left in place
+  * Fix error in systemd unit file
+  * Fix buffer overflow in rtlsdr entropy source
+  * Fixed darn source rekeying
+  * Fix various pipe read issues in jitter source
+  * Fix listing of rtlsdr options
+  * Misc Documentation fixes
+  * Fix a broken FIPS 140-2 corner case test
+  * Misc cleanups
+  * Addd aes mangling to nist source
+  * Improve nist performance with opportunistic use of CLOCK_MONOTONIC_COARSE
+  * Add forced reseeding of kernel entropy pool 
+  
+-------------------------------------------------------------------
 Sat Sep 12 13:06:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 -  update to 6.10:
