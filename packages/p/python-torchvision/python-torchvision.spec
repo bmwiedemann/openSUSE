@@ -1,7 +1,7 @@
 #
 # spec file for package python-torch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,15 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pytorch/vision
 Source0:        https://github.com/pytorch/vision/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-BuildRequires:  %{python_module torch-devel} >= 1.5.1
-BuildRequires:  %{python_module devel} >= 3.6
-BuildRequires:  %{python_module rpm-macros}
+BuildRequires:  %{python_module torch-devel >= 1.5.1}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
+BuildRequires:  python-rpm-macros
 # Same as in python-torch
 ExcludeArch:    %ix86
 %python_subpackages
@@ -52,7 +52,8 @@ for computer vision.
 
 %install
 %python_install
-sed -i -e 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{python_sitearch}/torchvision/transforms/_transforms_video.py
+%python_expand sed -i -e 's|/usr/bin/env python3|%{_bindir}/$python|' %{buildroot}%{$python_sitearch}/torchvision/transforms/_transforms_video.py
+%{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
