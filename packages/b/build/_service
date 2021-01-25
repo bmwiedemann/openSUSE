@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="revision">20200828</param>
-    <param name="version">20200828</param>
+  <service name="tar_scm" mode="manual">
+    <param name="revision">20210120</param>
+    <param name="version">20210120</param>
     <param name="url">git://github.com/openSUSE/obs-build.git</param>
     <param name="scm">git</param>
     <param name="extract">dist/build.changes</param>
@@ -13,9 +13,9 @@
     <param name="extract">dist/debian.rules</param>
     <param name="extract">dist/PKGBUILD</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

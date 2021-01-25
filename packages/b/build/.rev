@@ -1292,4 +1292,33 @@ Note: the armv6 build failures atm are complete independend of
 the topic this fix is providing and not specific to build package</comment>
     <requestid>830294</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>025080db12724a1a797fb2a9de0dfa1d</srcmd5>
+    <version>20210120</version>
+    <time>1611595367</time>
+    <user>dimstar_suse</user>
+    <comment>Features:
+- initial flatpak build support added
+- ccache support added
+- debtransform: Add Debian revision if not present
+- allow nodirindex filesystems via BuildFlags: vmfsoptions:nodirindex
+- Also do rich dep handling for PreReqs
+- kiwi image: configure ndb database if we install the rpm-ndb package
+- Implement alternative method to specify build-ignores
+Changes:
+- Ignore kiwi-image: deps when expanding image packages
+Fixes:
+- Improve autonumbering of source/patch
+- init_buildsystem: fix mode of /dev/full
+- drop option transparent_hugepages=never on s390x
+- Allow --vmdisk-filesystem-options as alias for --vm-disk-filesystem-options
+- Do not add a &quot;kiwi-packagemanager:&quot; dependency if no package manager is defined
+- debian:
+  - Do not leave trailing whitespace while generating .dsc
+  - Save modified version into .dsc file
+  - Fail `debtransform` test if `debdiff` can't find something
+  - return the unmapped arch if it is not found in the mapping hash
+  - build-recipe-debootstrap: add fallback for Debian SID distro</comment>
+    <requestid>865306</requestid>
+  </revision>
 </revisionlist>

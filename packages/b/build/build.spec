@@ -1,7 +1,7 @@
 #
 # spec file for package build
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20200828
+Version:        20210120
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -60,6 +60,8 @@ Conflicts:      bsdtar < 2.5.5
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Test::Harness)
 BuildRequires:  perl(Test::More)
+BuildRequires:  perl(YAML)
+BuildRequires:  perl(YAML::LibYAML)
 %if 0%{?suse_version} > 1000 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?fedora_version} >= 21
 # None of them are actually required for core features.
 # Perl helper scripts use them.
@@ -250,7 +252,7 @@ sed -i 's,build-mkbaselibs,,' ../configs/*.conf
 
 %files
 %defattr(-,root,root)
-%doc README
+%doc README.md
 /usr/bin/build
 /usr/bin/buildvc
 /usr/bin/unrpm
