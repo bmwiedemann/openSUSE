@@ -52,4 +52,13 @@
 </comment>
     <requestid>807047</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b5615c2be4d62d3213c95a2afb05e8d2</srcmd5>
+    <version>1.2.0</version>
+    <time>1611595445</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove some tests which do not work on python3.6 flavor due to missing files.
+</comment>
+    <requestid>866343</requestid>
+  </revision>
 </revisionlist>
