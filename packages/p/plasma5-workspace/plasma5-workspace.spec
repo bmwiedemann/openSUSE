@@ -19,6 +19,9 @@
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{!?_fillupdir: %global _fillupdir %{_localstatedir}/adm/fillup-templates}
 
+# Internal QML imports
+%global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm).*
+
 %define kf5_version 5.58.0
 
 %bcond_without lang
@@ -191,6 +194,7 @@ Provides:       %{name}-branding = %{_plasma5_bugfix}
 Provides:       %{name}-branding-upstream = %{version}
 Provides:       dbus(org.freedesktop.Notifications)
 Obsoletes:      %{name}-branding-upstream < %{version}
+Provides:       qt5qmlimport(org.kde.plasma.shell.2) = 0
 
 %description
 This package contains the basic packages for a Plasma workspace.
@@ -338,6 +342,9 @@ Plasma 5 session with Wayland from a display manager.
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
   ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
+
+  # Backport of https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/588
+  rm -r %{buildroot}%{_kf5_plasmadir}/wallpapers/org.kde.image/platformcontents/touch
 
   %fdupes %{buildroot}/%{_prefix}
 

@@ -1563,4 +1563,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>- Add _constraints with min 4GB disk space to avoid build failure (forwarded request 863323 from michel_mno)</comment>
     <requestid>863326</requestid>
   </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>5a8fdd8f75db1988663e803e21850d96</srcmd5>
+    <version>5.20.5</version>
+    <time>1611595358</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov (forwarded request 865265 from Vogtinator)</comment>
+    <requestid>865281</requestid>
+  </revision>
 </revisionlist>
