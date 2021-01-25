@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 21 14:53:55 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Fix unit tests (bsc#1181175).
+- 4.3.18
+
+-------------------------------------------------------------------
 Tue Jan 12 13:23:46 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - The logic for calculating a device udev link is now delegated to
