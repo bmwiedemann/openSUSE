@@ -1,7 +1,7 @@
 #
 # spec file for package python-poppler-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 LISA GmbH, Bingen, Germany.
 # Copyright (c) 2012 Johannes Engel <jcnengel@gmail.com>
 #
@@ -24,7 +24,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-%define skip_python2 1
+%define pythons python3
 Name:           python-poppler-qt5
 Version:        0.75.0
 Release:        0

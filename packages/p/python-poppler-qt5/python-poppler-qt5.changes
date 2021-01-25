@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 21 10:49:11 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Limit build set to python3 (remove skip python2), so that the
+  package builds again. TODO: figure out how to deal with multi-
+  version python installation and usefulness for this package.
+
+-------------------------------------------------------------------
 Sat Oct 10 13:39:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Use SIP5
