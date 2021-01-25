@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tweaks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Luis Medinas, Lisbon, Portugal.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,9 @@ License:        GPL-3.0-or-later AND CC0-1.0
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
 Source0:        https://download.gnome.org/sources/gnome-tweaks/3.34/%{name}-%{version}.tar.xz
+
+# PATCH-FIX-UPSTREAM 77dde7477922f645946bfc64b1b25aeed2b01919.patch -- Update Norwegian bokmål translation
+Patch1:         77dde7477922f645946bfc64b1b25aeed2b01919.patch
 # PATCH-FEATURE-UPSTREAM gnome-tweaks-port-libhandy-1.patch -- Port to libhandy-1
 Patch2:         gnome-tweaks-port-libhandy-1.patch
 

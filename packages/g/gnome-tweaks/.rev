@@ -89,4 +89,13 @@
     <comment></comment>
     <requestid>855312</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>13088d20896ad18f74a035a8a14ecf3c</srcmd5>
+    <version>3.34.1</version>
+    <time>1611595378</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 77dde7477922f645946bfc64b1b25aeed2b01919.patch -- Update
+  Norwegian bokmål translation. (forwarded request 864400 from iznogood)</comment>
+    <requestid>865371</requestid>
+  </revision>
 </revisionlist>
