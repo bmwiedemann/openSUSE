@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jan 16 18:24:07 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.0.0.
+  * C++ threading based multi-threading support.
+  * Problem::AddResidualBlock(), SizedFunction, AutoDiffCostFunction,
+    NumericDiffCostFunction support an arbitrary number of parameter 
+    blocks using variadic templates 
+  * Significantly faster AutoDiff 
+  * Mixed precision solves when using SPARSE_NORMAL_CHOLESKY. 
+  * LocalParameterization objects can have a zero sized tangent 
+    size, which effectively makes the parameter block constant. 
+    In particular, this allows for a SubsetParameterization that 
+    holds all the coordinates of a parameter block constant.
+  * Visibility based preconditioning now works with Eigen and CXSparse. 
+  * Added Problem::EvaluateResidualBlock() and 
+    Problem::EvaluateResidualBlockAssumingParametersUnchanged(). 
+  * GradientChecker now uses RIDDERS method for more accurate 
+    numerical derivatives.
+  * Covariance computation uses a faster SVD algorithm 
+  * A new local parameterization for lines
+  * A new (SUBSET) preconditioner for problems with general sparsity. 
+  * Faster Schur elimination using faster custom BLAS routines for 
+    small matrices.
+  * Automatic differentiation for FirstOrderFunction in the form of
+    AutoDiffFirstOrderFunction. 
+  * TinySolverAutoDiffFunction now supports dynamic number of 
+    residuals just like AutoDiffCostFunction.
+  * Backward Incompatible API Changes
+    * EvaluationCallback has been moved from Solver::Options to 
+      Problem::Options for a more correct API.
+    * Removed Android.mk based build.
+    * Solver::Options::num_linear_solver_threads is no more.
+  * Several other moinor fixes and changes
+
+-------------------------------------------------------------------
 Thu Sep 17 11:07:48 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - libceres-devel requires glog-devel

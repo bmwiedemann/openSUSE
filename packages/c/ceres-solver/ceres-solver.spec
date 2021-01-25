@@ -1,7 +1,7 @@
 #
 # spec file for package ceres-solver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,21 @@
 #
 
 
-%define sover 1
-
+%define sover 2
 Name:           ceres-solver
-Version:        1.14.0
+Version:        2.0.0
 Release:        0
 Summary:        C++ library for modeling and solving optimization problems
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://ceres-solver.org/
 Source:         http://ceres-solver.org/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  glog-devel >= 0.3.1
 BuildRequires:  libcxsparse3
 BuildRequires:  suitesparse-devel
-BuildRequires:  pkgconfig(eigen3) >= 3.1.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(eigen3) >= 3.3.0
 
 %description
 Ceres Solver is a C++ library for modeling and solving large,
@@ -77,7 +75,7 @@ This package is built with Eigen only.
 
 %build
 %cmake -DCXSPARSE=ON -DSUITESPARSE=ON -DEIGENSPARSE=ON -DOPENMP=ON -DCXX11=ON -DCMAKE_INSTALL_PREFIX=/usr -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 -DGFLAGS=OFF -DMINIGLOG=OFF -DBUILD_SHARED_LIBS=ON
-make
+%cmake_build
 
 %install
 %cmake_install
