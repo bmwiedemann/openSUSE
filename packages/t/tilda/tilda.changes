@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 12 04:49:20 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 1.5.4
+  * Fixed an issue that occurs with custom commands in newer VTE versions
+  * Fixes an incorrect usage of 32bit data type for X11 time, which
+    should be 64bit instead
+- includes 1.5.3:
+  * Fixed an issue that could cause tilda to crash due to a BadMatch X11
+    error in certain situations (such as when using the Marco
+    window manager of the Mate Desktop 1.24.1)
+
+-------------------------------------------------------------------
 Wed Jul 29 09:52:39 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.5.2
