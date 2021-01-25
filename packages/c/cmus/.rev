@@ -173,4 +173,12 @@ The program’s features have stabilized and it receives mostly bugfixes and min
 </comment>
     <requestid>859872</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>329120efde0116213c36a6a4a153e4aa</srcmd5>
+    <version>2.9.1</version>
+    <time>1611595495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866555</requestid>
+  </revision>
 </revisionlist>

@@ -19,13 +19,13 @@
 
 %bcond_without sndio
 Name:           cmus
-Version:        2.8.0~20210101.gcef5ea4
+Version:        2.9.1
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://cmus.github.io/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/cmus/cmus/archive/v%{version}.tar.gz
 BuildRequires:  git-core
 BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig

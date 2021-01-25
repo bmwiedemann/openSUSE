@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 24 15:46:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * Documentation improvements for keybindings and some commands
+  * Spelling, grammar, and other improvements
+  * Add comments about fg/bg color to gruvbox-warm.theme
+  * Increase help view keybinding width
+  * pgaskin and flyingmutant committed 11 days ago
+  * ip/cdio.c: only declare track_comments_found if
+  * Remove unused functions in op/sndio.c 
+  * Fixes truncation warnings by replacing %s with %.s 
+  * add amazon.theme (#975)
+  * Fix playlist track selection
+  
+-------------------------------------------------------------------
 Sun Jan 03 01:08:17 UTC 2021 - 9@cirno.systems
 
 - Update to version 2.8.0~20210101.gcef5ea4:
