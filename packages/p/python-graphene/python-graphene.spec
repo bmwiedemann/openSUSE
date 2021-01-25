@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphene
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphene
-Version:        3.0.0b2
+Version:        3.0.0b7
 Release:        0
 Summary:        GraphQL Framework for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphene
 Source:         https://github.com/graphql-python/graphene/archive/v%{version}.tar.gz#/graphene-%{version}.tar.gz
-BuildRequires:  %{python_module Unidecode}
-BuildRequires:  %{python_module aniso8601}
-BuildRequires:  %{python_module graphql-core}
-BuildRequires:  %{python_module graphql-relay}
+BuildRequires:  %{python_module aniso8601 >= 8}
+BuildRequires:  %{python_module graphql-core >= 3.1.2}
+BuildRequires:  %{python_module graphql-relay >= 3.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module promise}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -41,10 +40,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Unidecode
-Requires:       python-aniso8601
-Requires:       python-graphql-core
-Requires:       python-graphql-relay
+Requires:       python-aniso8601 >= 8
+Requires:       python-graphql-core >= 3.1.2
+Requires:       python-graphql-relay >= 3.0
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -65,7 +63,7 @@ Graphene is a Python library for building GraphQL schemas/types.
 %check
 # The example depend on snapshottest, which is a bit messy to package as of v0.5.1
 # https://github.com/syrusakbary/snapshottest/pull/114
-%pytest -k 'not examples'
+%pytest --ignore examples
 
 %files %{python_files}
 %doc README.rst

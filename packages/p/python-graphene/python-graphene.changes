@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 25 01:50:46 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Adjust test invocation to fix builds
+- Remove dependency on Unidecode and add minimum dependency versions
+- Update to v3.0.0b7
+  * fix(Decimal): parse integers as decimal
+- from v3.0.0b6
+  * Fix subscribe with arguments
+  * Add BigInt type
+  * Add UnforgivingExecutionContext
+- from v3.0.0b5
+  * Subscription revamp
+- from v3.0.0b4
+  * Improve enum compatibility
+  * Rename variables called type to type_
+  * Fix ObjectType meta arguments
+  * Add Base64 scalar
+  * Pin graphql-core to >v3.1.2
+- from v3.0.0b3
+  * Fix DateTime Scalar parse_literal methods
+  * Remove to_const function
+
+-------------------------------------------------------------------
 Mon Jun  8 09:24:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim conjecture from descriptions.
