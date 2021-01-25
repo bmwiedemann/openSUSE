@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  4 13:54:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.10.0:
+  - xfs_repair: remove old code for mountpoint inodes
+  - xfsprogs: Add inode btree counter feature
+  - xfsprogs: Add bigtime feature for Y2038
+  - xfsprogs: Polish translation update
+  - mkfs.xfs: Add config file feature
+  - mkfs.xfs: allow users to specify rtinherit=0
+  - xfs_repair: simplify bmap_next_offset
+  - man: various manpage updates
+  - libxfs: remove some old dead code
+  - libxfs: add realtime extent tracking
+  - libxfs changes merged from kernel 5.10
+- refresh 0001-repair-shift-inode-back-into-place-if-corrupted-by-b.patch
+  against libxfs changes
+
+-------------------------------------------------------------------
 Tue Oct 20 16:16:43 UTC 2020 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to v5.9.0:

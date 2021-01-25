@@ -38,9 +38,11 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  repair/dinode.c | 184 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
  1 file changed, 178 insertions(+), 6 deletions(-)
 
---- a/repair/dinode.c
-+++ b/repair/dinode.c
-@@ -2200,6 +2200,158 @@ _("would clear obsolete nlink field in v
+Index: xfsprogs-5.10.0/repair/dinode.c
+===================================================================
+--- xfsprogs-5.10.0.orig/repair/dinode.c
++++ xfsprogs-5.10.0/repair/dinode.c
+@@ -2179,6 +2179,160 @@ _("Bad %s nsec %u on inode %" PRIu64 ",
  	}
  }
  
@@ -69,6 +71,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 +repair_inode_with_bad_atomic(xfs_dinode_t *dino, xfs_mount_t *mp)
 +{
 +	xfs_dinode_t fixed;
++	struct xfs_legacy_timestamp *lts;
 +	uint64_t tmp64;
 +	uint32_t tmp32;
 +	char tmpuuid[16];
@@ -86,13 +89,14 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 +	memcpy(&fixed.di_uuid, uuid, sizeof(uuid));
 +
 +	tmp32 = *(uint32_t *)&dino->di_pad2[4];
-+	fixed.di_crtime.t_sec = cpu_to_be32(tmp32);
++	lts = (struct xfs_legacy_timestamp *)&(fixed.di_crtime);
++	lts->t_sec = cpu_to_be32(tmp32);
 +	tmp32 = *(uint32_t *)&dino->di_pad2[8];
-+	fixed.di_crtime.t_nsec = cpu_to_be32(tmp32);
++	lts->t_nsec = cpu_to_be32(tmp32);
 +
-+	tmp64 = be32_to_cpu(dino->di_crtime.t_nsec);
++	tmp64 = be32_to_cpu(((struct xfs_legacy_timestamp *)(&(dino->di_crtime)))->t_nsec);
 +	tmp64 <<= 32;
-+	tmp64 |= be32_to_cpu(dino->di_crtime.t_sec);
++	tmp64 |= be32_to_cpu(((struct xfs_legacy_timestamp *)(&(dino->di_crtime)))->t_sec);
 +	fixed.di_ino = cpu_to_be64(tmp64);
 +
 +	tmp64 = be64_to_cpu(fixed.di_ino);
@@ -199,7 +203,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  /*
   * returns 0 if the inode is ok, 1 if the inode is corrupt
   * check_dups can be set to 1 *only* when called by the
-@@ -2224,7 +2376,8 @@ process_dinode_int(xfs_mount_t *mp,
+@@ -2203,7 +2357,8 @@ process_dinode_int(xfs_mount_t *mp,
  					 * duplicate blocks		*/
  		int extra_attr_check, /* 1 == do attribute format and value checks */
  		int *isa_dir,		/* out == 1 if inode is a directory */
@@ -209,7 +213,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  {
  	xfs_rfsblock_t		totblocks = 0;
  	xfs_rfsblock_t		atotblocks = 0;
-@@ -2322,6 +2475,25 @@ process_dinode_int(xfs_mount_t *mp,
+@@ -2319,6 +2474,25 @@ process_dinode_int(xfs_mount_t *mp,
  	 * memory and hence invalidated the CRC.
  	 */
  	if (xfs_sb_version_hascrc(&mp->m_sb)) {
@@ -235,7 +239,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  		if (be64_to_cpu(dino->di_ino) != lino) {
  			if (!uncertain)
  				do_warn(
-@@ -2332,8 +2504,7 @@ _("inode identifier %llu mismatch on ino
+@@ -2329,8 +2503,7 @@ _("inode identifier %llu mismatch on ino
  				return 1;
  			goto clear_bad_out;
  		}
@@ -245,7 +249,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  			if (!uncertain)
  				do_warn(
  			_("UUID mismatch on inode %" PRIu64 "\n"), lino);
-@@ -2878,7 +3049,8 @@ process_dinode(
+@@ -2911,7 +3084,8 @@ process_dinode(
  #endif
  	return process_dinode_int(mp, dino, agno, ino, was_free, dirty, used,
  				verify_mode, uncertain, ino_discovery,
@@ -255,7 +259,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  }
  
  /*
-@@ -2905,7 +3077,7 @@ verify_dinode(
+@@ -2938,7 +3112,7 @@ verify_dinode(
  
  	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
  				verify_mode, uncertain, ino_discovery,
@@ -264,7 +268,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  }
  
  /*
-@@ -2931,5 +3103,5 @@ verify_uncertain_dinode(
+@@ -2964,5 +3138,5 @@ verify_uncertain_dinode(
  
  	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
  				verify_mode, uncertain, ino_discovery,

@@ -1,7 +1,7 @@
 #
 # spec file for package xfsprogs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define libname libhandle1
 
 Name:           xfsprogs
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -42,9 +42,10 @@ Patch2:         0001-repair-shift-inode-back-into-place-if-corrupted-by-b.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libblkid-devel
+BuildRequires:  libedit-devel
+BuildRequires:  libinih-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
-BuildRequires:  libedit-devel
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils
@@ -56,7 +57,7 @@ BuildRequires:  suse-module-tools
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %endif
-Suggests:	xfsprogs-scrub
+Suggests:       xfsprogs-scrub
 
 %description
 A set of commands to use the XFS file system, including mkfs.xfs.
@@ -99,10 +100,9 @@ system-specific programs.  If you install xfsprogs-devel, you will also
 want to install xfsprogs.
 
 %package -n	xfsprogs-scrub
-Summary:	XFS scrubbing scripts and service files
-License:        GPL-2.0-or-later
+Summary:        XFS scrubbing scripts and service files
 Group:          System/Filesystems
-Requires:	xfsprogs
+Requires:       xfsprogs
 
 %description -n	xfsprogs-scrub
 Scripts and systemd service files for background scrubbing of metadata
