@@ -1,7 +1,7 @@
 #
 # spec file for package imb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,15 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "openmpi4"
+%{bcond_with hpc}
+%undefine c_f_ver
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
+%endif
+
 %if "%{flavor}" == "gnu-mvapich2-hpc"
 %{bcond_without hpc}
 %define compiler_family gnu
@@ -125,6 +134,17 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%undefine c_f_ver
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
 %endif
 
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
@@ -177,6 +197,17 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
+%endif
+
 %if "%{flavor}" == "gnu8-mvapich2-hpc"
 %{bcond_without hpc}
 %define compiler_family gnu
@@ -225,6 +256,17 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
 %endif
 
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
@@ -277,6 +319,78 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor mvapich2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_flavor mpich
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 1
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
+%endif
+
 %if %{without hpc}
 %define p_bindir /usr/%_lib/mpi/gcc/%{flavor}/bin
 %if "%{flavor}" == ""
@@ -285,7 +399,7 @@ ExclusiveArch:  do_not_build
 %define package_name  %{pname}-%{flavor}
 %endif
 %else
-%{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} -m {%mpi_flavor} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
+%{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} -m {%mpi_flavor} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
 %define package_name %{hpc_package_name %_ver}
 %define p_bindir %hpc_bindir
 %endif

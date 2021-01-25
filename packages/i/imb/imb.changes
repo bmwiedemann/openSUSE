@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 22 15:31:49 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix openmpi HPC builds.
+
+-------------------------------------------------------------------
+Fri Jan 22 12:53:15 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Add support for gcc10.
+- Add build support for openmpi4.
+
+-------------------------------------------------------------------
 Tue Oct 20 13:12:09 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to 2019.6

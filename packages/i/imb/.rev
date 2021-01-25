@@ -85,4 +85,15 @@
     <comment></comment>
     <requestid>842836</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8ef1f425347d02650149e023d072dfa0</srcmd5>
+    <version>2019.6</version>
+    <time>1611595403</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix openmpi HPC builds.
+- Add support for gcc10.
+- Add build support for openmpi4.
+</comment>
+    <requestid>866066</requestid>
+  </revision>
 </revisionlist>
