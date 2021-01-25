@@ -148,4 +148,12 @@ Too many small improvements and cleanups to list them all.
   * Added support for Django 3.0</comment>
     <requestid>777579</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fec2a0ccbe88aae35d56c5a605597dfb</srcmd5>
+    <version>3.2</version>
+    <time>1611595460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866436</requestid>
+  </revision>
 </revisionlist>

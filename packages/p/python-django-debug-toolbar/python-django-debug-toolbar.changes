@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 25 02:40:41 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Added docs/*.rst to docs
+- Update to v3.2
+  * Removed support for Django 1.11
+  * See docs/changes.rst for other breaking changes
+
+-------------------------------------------------------------------
 Thu Feb 20 07:57:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2:

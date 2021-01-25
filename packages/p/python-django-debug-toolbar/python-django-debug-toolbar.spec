@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-debug-toolbar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-debug-toolbar
-Version:        2.2
+Version:        3.2
 Release:        0
 Summary:        A configurable set of panels that display various debug information
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-debug-toolbar
-Source:         https://github.com/jazzband/django-debug-toolbar/archive/%{version}.tar.gz
+Source:         https://github.com/jazzband/django-debug-toolbar/archive/%{version}.tar.gz#/django-debug-toolbar-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-jinja}
 BuildRequires:  %{python_module html5lib}
@@ -71,11 +71,13 @@ There is also one Django management command currently:
 %check
 export LANG=en_US.UTF8
 export DJANGO_SETTINGS_MODULE=tests.settings
+export DB_BACKEND=sqlite3
+export DB_NAME=":memory:"
 %python_expand $python -m django test -v2 tests
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.rst docs/*.rst
 %{python_sitelib}/*
 
 %changelog
