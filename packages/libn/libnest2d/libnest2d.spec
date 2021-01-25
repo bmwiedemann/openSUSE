@@ -1,7 +1,7 @@
 #
 # spec file for package libnest2d
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           libnest2d
-Version:        0.4+git.20200805
+Version:        0.4+git.20201105
 Release:        0
 Summary:        Library for the 2D bin packaging problem
 License:        LGPL-3.0-only
@@ -24,6 +25,8 @@ URL:            https://github.com/tamasmeszaros/libnest2d
 Source:         libnest2d-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- https://github.com/tamasmeszaros/libnest2d/pull/18
 Patch0:         Add-disallowed-areas.patch
+# PATCH-FIX-OPENSUSE -- Fix build with boost 1.75
+Patch1:         0001-Set-CXX_STANDARD-14-for-Boost-Geometry.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel

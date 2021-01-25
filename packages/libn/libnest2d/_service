@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/tamasmeszaros/libnest2d</param>
     <param name="scm">git</param>
-    <param name="revision">da4782500da4eb8cb6e38e5e3f10164ec5a59778</param>
-    <param name="version">0.4+git.20200805</param>
+    <param name="revision">ea7fa99686355f00aa47e390f99bc6934069a50e</param>
+    <param name="version">0.4+git.20201105</param>
     <param name="submodules">disable</param>
   </service>
   <service mode="disabled" name="set_version" />

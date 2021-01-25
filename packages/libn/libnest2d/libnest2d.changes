@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 24 10:34:23 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update git version, 20201105
+  * fix holes duplicates while offset processing
+- Fix build failures with Boost 1.75, add
+  0001-Set-CXX_STANDARD-14-for-Boost-Geometry.patch
+
+-------------------------------------------------------------------
 Sun Oct 25 15:07:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version (0.4+git), first LGPL-3.0 version
