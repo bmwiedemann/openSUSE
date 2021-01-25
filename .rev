@@ -554,4 +554,41 @@
 </comment>
     <requestid>862684</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>98c8679e0695c271062121fec50b3477</srcmd5>
+    <version>3.29.0</version>
+    <time>1611595451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.29.0:
+  - Add better chapter error reporting, refactor proceed_question
+    code.
+  - Add plugin options to mark success/failed/chapter error
+    individually.
+  - Clear metadata cache after adapter metadata fetch. Cached
+    metadata values may not be replace_metadata processed if
+    fetched before their conditional dependencies. Revealed by
+    AO3 one-shots using title for chapter name.
+  - Re-enable ffnet and bump up sleep times for same.
+  - ffnet fpcom, continue_on_chapter_error:true by default,
+    increase sleep times.
+  - First rough version of reporting continue_on_chapter_error
+    chapters.
+  - Report chapter_error in custom error column and marked (when
+    configured).
+  - Update to cloudscraper v1.2.52
+  - Increase times between retries on fetch error.
+  - Tweek ffnet/fpcom sleep times again.
+  - slow_down_sleep_time: randomize between 0.5 time and 1.5
+    time.
+  - Report cloudscraper exceptions as such, plus hide the
+    potentially misleading 'opensource' part.
+  - adapter_fanficsme: do an extra fetch before login for
+    cookie(?) Closes #633
+  - adapter_webnovelcom: Fixes for site changes. Closes #629
+  - quotev.com: site change in date parse, use utf8:ignore as
+    first encoding choice. Closes #625
+
+- Update to version 3.28.0+git.1610814197.37cdec2f:</comment>
+    <requestid>866393</requestid>
+  </revision>
 </revisionlist>
