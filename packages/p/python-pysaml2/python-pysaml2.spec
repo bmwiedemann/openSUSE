@@ -45,24 +45,26 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
-BuildRequires:  update-alternatives
 # This is needed as xmlsec itself does not pull any backend by default
 # Will be fixed in future xmlsec releases
 BuildRequires:  libxmlsec1-openssl1
 BuildRequires:  python-rpm-macros
+BuildRequires:  update-alternatives
 BuildRequires:  xmlsec1
 Requires:       python-Paste
 Requires:       python-cryptography >= 1.4
 Requires:       python-defusedxml
+Requires:       python-importlib-resources
 Requires:       python-pyOpenSSL
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-repoze.who
 Requires:       python-requests >= 1.0.0
 Requires:       python-six
+Requires:       python-xmlschema
 Requires:       python-zope.interface
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # We need to have arch build to make ifarch condition below working
 # BuildArch:      noarch
 %python_subpackages

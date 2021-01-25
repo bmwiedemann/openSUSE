@@ -271,4 +271,12 @@
     <comment></comment>
     <requestid>865254</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>187789cfe734e76b726f115f19b61a52</srcmd5>
+    <version>6.5.1</version>
+    <time>1611595512</time>
+    <user>dimstar_suse</user>
+    <comment>- update requires</comment>
+    <requestid>866629</requestid>
+  </revision>
 </revisionlist>
