@@ -1,8 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 21 09:57:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Depend on python-PyYAML instead of python-pyyaml
+
+-------------------------------------------------------------------
+Tue Jan 19 08:47:04 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 0.21.1
+  + This release adds the draft implementation of OGC API
+  + Coverages support as well as numerous fixes to the codebase.
+  + A full list of commits for 0.21.0 can be found at:
+    https://github.com/geopython/OWSLib/commits/0.21.0
+- packaging
+  + Update copyright year
+  + Sync list of Requires (pyproj > 2 and add pyyaml) with
+    requirements
+
+-------------------------------------------------------------------
 Mon Dec  7 09:31:35 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to version 0.20.0
-  + Provides initial support for draft OGC API - Records standard. 
+  + Provides initial support for draft OGC API - Records standard.
   + WFS: make wfs:FeatureTypeList optional for 1.1 and 2.0 (#673)
   + OGC API - Records: initial draft implementation (#679, #693)
   + WPS: add support for retrieving data from local filesystem (huard, #681)
@@ -43,7 +61,7 @@ Mon Mar  2 08:35:26 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
     * add reference attributes (enolfc)
     * add support for multi process processes (huard)
   + OWS: add support for crs and dimension (saimeCS)
-- packaging: 
+- packaging:
   + cleanup spec
   + move to build only python3
 
@@ -86,7 +104,7 @@ Wed Jan 17 16:18:09 UTC 2018 - bruno@ioda-net.ch
    added BoundingBoxDataInput and fix boundingbox parsing
   + Misc
    fix double '&&' in URL requests
-   add util.clean_ows_url function to remove basic service 
+   add util.clean_ows_url function to remove basic service
    parameters from OWS base URLs
   0.14.0
   + WFS: add authentication (@pmauduit)
@@ -101,26 +119,26 @@ Wed Sep 28 08:22:28 UTC 2016 - bruno@ioda-net.ch
 - Update to 0.13.0
 - Fix licence which is BSD-3-Clause
 - Fix source url to new https and pypi.io schema
-- Added requests as dependency 
+- Added requests as dependency
 - Update Copyright year
 
 -------------------------------------------------------------------
 Sun Mar 13 13:09:41 UTC 2016 - bruno@ioda-net.ch
 
-- Update to 0.10.3 
+- Update to 0.10.3
 
 -------------------------------------------------------------------
 Sun Oct 25 08:51:33 UTC 2015 - bruno@ioda-net.ch
 
-- Packaging : 
+- Packaging :
    Add missing runtime require python(3)-pyproj
    Merge back the two package to one source build python3-owslib
-   become a link to. 
+   become a link to.
 
 -------------------------------------------------------------------
 Sat Oct 17 19:08:37 UTC 2015 - bruno@ioda-net.ch
 
-- Update to 0.9.2  
+- Update to 0.9.2
 
 -------------------------------------------------------------------
 Thu Sep  3 11:21:45 UTC 2015 - toddrme2178@gmail.com

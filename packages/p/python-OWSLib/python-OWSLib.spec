@@ -1,9 +1,9 @@
 #
 # spec file for package python-OWSLib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 Angelos Tzotsos <tzotsos@opensuse.org>
-# Copyright (c) 2020 Ioda-Net Sàrl, Bruno Friedmann, Charmoille, Switzerland.
+# Copyright (c) 2021 Ioda-Net Sàrl, Bruno Friedmann, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define         oldpython python
 %define         skip_python2 1
 Name:           python-OWSLib
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Python interface to OGC Web Services
 License:        BSD-3-Clause
@@ -33,9 +33,10 @@ BuildRequires:  %{python_module devel} > 3.6
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pyproj
+Requires:       python-pyproj >= 2
 Requires:       python-python-dateutil >= 1.5
 Requires:       python-pytz
+Requires:       python-PyYAML
 Requires:       python-requests >= 1.0
 Provides:       python-owslib = %{version}
 Obsoletes:      python-owslib < %{version}
