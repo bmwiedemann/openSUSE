@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 19 19:12:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add webkit-font-scaling.patch: Fix system font scaling not
+  applied to 'font-size: XXXpt'; patch taken from upstream and
+  rebased to apply cleanly
+  (https://bugs.webkit.org/show_bug.cgi?id=218450).
+- Pass `-q` to setup to disable printing long list of files
+  extracted from source tarball.
+
+-------------------------------------------------------------------
 Tue Dec 15 14:06:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.30.4:

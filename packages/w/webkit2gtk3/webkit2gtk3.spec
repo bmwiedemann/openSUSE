@@ -1,7 +1,7 @@
 #
 # spec file for package webkit2gtk3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,8 @@ Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
+# PATCH-FIX-UPSTREAM webkit-font-scaling.patch https://bugs.webkit.org/show_bug.cgi?id=218450 badshah400@gmail.com -- Fix system font scaling not applied to 'font-size: XXXpt'
+Patch1:         webkit-font-scaling.patch
 # Below patches are for 15.0/15.1 only
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
 Patch100:       webkit-process.patch
@@ -273,8 +275,9 @@ A small test browswer from webkit, useful for testing features.
 %lang_package -n %{_pkgname_no_slpp}
 
 %prep
-%setup -n webkitgtk-%{version}
+%setup -q -n webkitgtk-%{version}
 %patch0 -p1
+%patch1 -p1
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %patch100 -p1
 %patch101 -p1

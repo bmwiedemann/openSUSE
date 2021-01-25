@@ -973,4 +973,17 @@
     <comment></comment>
     <requestid>856370</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>7518f20cd201fe2ecebef875441eba1f</srcmd5>
+    <version>2.30.4</version>
+    <time>1611595380</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit-font-scaling.patch: Fix system font scaling not
+  applied to 'font-size: XXXpt'; patch taken from upstream and
+  rebased to apply cleanly
+  (https://bugs.webkit.org/show_bug.cgi?id=218450).
+- Pass `-q` to setup to disable printing long list of files
+  extracted from source tarball. (forwarded request 864423 from iznogood)</comment>
+    <requestid>865372</requestid>
+  </revision>
 </revisionlist>
