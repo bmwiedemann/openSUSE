@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 21 20:00:18 UTC 2021 - antoine.belvire@opensuse.org
+
+- Add CMake option to prevent installation of gtest files instead
+  of removing them by hand.
+- Remove obsolete build dependency on subversion.
+
+-------------------------------------------------------------------
 Sat Jan 16 16:43:36 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 3.0.8:

@@ -38,7 +38,6 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
-BuildRequires:  subversion
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(zlib)
 
@@ -64,16 +63,11 @@ Development files for lucene++, a high-performance, full-featured text search en
 %autosetup -p1 -n LucenePlusPlus-rel_%{version}
 
 %build
-%cmake
+%cmake -DINSTALL_GTEST=OFF
 %make_build lucene++ lucene++-contrib
 
 %install
 %cmake_install
-# These gtest files are not meant to be installed
-rm -r %{buildroot}%{_includedir}/g{mock,test}
-rm -r %{buildroot}%{_libdir}/cmake/GTest
-rm %{buildroot}%{_libdir}/libg{mock,test}*.so
-rm %{buildroot}%{_libdir}/pkgconfig/g{mock,test}*.pc
 
 %check
 # Exclude known failing test on ix86 (https://github.com/luceneplusplus/LucenePlusPlus/issues/98)
