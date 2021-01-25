@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 25 11:52:18 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: fix typo calling to popup (bsc#1181348).
+- 4.3.40
+
+-------------------------------------------------------------------
+Fri Jan 22 15:37:00 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: show used devices for MD BIOS RAID (bsc#1181300).
+- 4.3.39
+
+-------------------------------------------------------------------
+Thu Jan 21 12:20:34 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: properly set subvolume limit when creating a new
+  subvolume (bsc#1181205).
+- 4.3.38
+
+-------------------------------------------------------------------
 Thu Jan 14 13:40:54 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Partitioner: removed warning for too small EFI system partition.
