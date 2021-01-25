@@ -172,4 +172,12 @@
   * Fixed issue #1928: xdebug_stop_gcstats() can also return false</comment>
     <requestid>860316</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>0f48c81d3479b4086533577c0d67a25b</srcmd5>
+    <version>3.0.2</version>
+    <time>1611595429</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>866296</requestid>
+  </revision>
 </revisionlist>

@@ -16,28 +16,29 @@
 #
 
 
+%define php_name    php7
 %define pkg_name    xdebug
-%define pkg_version %{version}
-Name:           php7-%{pkg_name}
+%define php_extdir  %(%{__php_config} --extension-dir)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%define php_confdir %(%{__php_config} --ini-dir)
+%else
+%define php_confdir %{_sysconfdir}/%{php_name}/conf.d
+%endif
+
+Name:           %{php_name}-%{pkg_name}
 Version:        3.0.2
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://xdebug.org/
-Source:         https://xdebug.org/files/%{pkg_name}-%{pkg_version}.tgz
-BuildRequires:  php7 < 8.1
-BuildRequires:  php7 >= 7.2
-BuildRequires:  php7-devel
-BuildRequires:  php7-soap
+Source:         https://xdebug.org/files/%{pkg_name}-%{version}.tgz
+BuildRequires:  %{php_name}-devel >= 7.2
+BuildRequires:  %{php_name}-soap
 Provides:       php-%{pkg_name} = %{version}
 Obsoletes:      php-%{pkg_name} < %{version}
-%if %{?php_zend_api}0
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
-%else
-%requires_eq    php7
-%endif
 
 %description
 The Xdebug extension helps debugging scripts by providing
@@ -57,31 +58,30 @@ Xdebug also provides:
   * capabilities to debug your scripts interactively with a debug client
 
 %prep
-%setup -q -n %{pkg_name}-%{pkg_version}
+%setup -q -n %{pkg_name}-%{version}
 
 %build
 sed -i '1s|^|; comment out next line to disable xdebug extension in php\nzend_extension=xdebug.so\n\n|' xdebug.ini
 export CFLAGS="%{optflags} -fvisibility=hidden"
 %{__phpize}
 %configure --enable-xdebug
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install INSTALL_ROOT=%{buildroot}
-mkdir -p %{buildroot}%{_sysconfdir}/php7/conf.d
-install -m 644 xdebug.ini %{buildroot}%{_sysconfdir}/php7/conf.d/xdebug.ini
+%make_install INSTALL_ROOT=%{buildroot}
+mkdir -p %{buildroot}%{php_confdir}
+install -m 644 xdebug.ini %{buildroot}%{php_confdir}/xdebug.ini
 
 %check
 # check if the extension can be loaded
-%{__php} --no-php-ini  --define zend_extension=%{buildroot}%{_libdir}/php7/extensions/xdebug.so \
+%{__php} --no-php-ini  --define zend_extension=%{buildroot}%{php_extdir}/xdebug.so \
     --modules | grep Xdebug
-
-make %{?_smp_mflags} PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
+%make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
 
 %files
-%{_libdir}/php7/extensions/xdebug.so
-%config(noreplace) %{_sysconfdir}/php7/conf.d/xdebug.ini
 %license LICENSE
 %doc CREDITS
+%config(noreplace) %{php_confdir}/xdebug.ini
+%{php_extdir}/xdebug.so
 
 %changelog

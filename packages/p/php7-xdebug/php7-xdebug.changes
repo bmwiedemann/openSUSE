@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 16 20:39:36 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use php-config to determine location of files in package
+
+-------------------------------------------------------------------
 Mon Jan  4 18:42:29 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.0.2
