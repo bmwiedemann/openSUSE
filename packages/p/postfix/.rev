@@ -1826,4 +1826,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1180473</comment>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>57d8e21fec6eae374e7f2835d3055d35</srcmd5>
+    <version>3.5.9</version>
+    <time>1611595389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866541</requestid>
+  </revision>
 </revisionlist>
