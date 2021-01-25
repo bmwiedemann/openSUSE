@@ -1,7 +1,7 @@
 #
 # spec file for package system-users
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,6 @@ Source21:       system-group-kvm.conf
 Source22:       system-user-qemu.conf
 Source23:       system-group-libvirt.conf
 Source24:       system-user-vscan.conf
-Source25:       system-user-ntp.conf
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildArch:      noarch
@@ -243,14 +242,6 @@ Group:          System/Fhs
 %description -n system-user-vscan
 This package provides the system user 'vscan'.
 
-%package -n system-user-ntp
-Summary:        System user ntp and group
-Group:          System/Fhs
-%{sysusers_requires}
-
-%description -n system-user-ntp
-This package provides the system user and group 'ntp'.
-
 %prep
 %setup -q -c -T
 
@@ -277,14 +268,12 @@ This package provides the system user and group 'ntp'.
 %sysusers_generate_pre %{SOURCE22} qemu
 %sysusers_generate_pre %{SOURCE23} libvirt
 %sysusers_generate_pre %{SOURCE24} vscan
-%sysusers_generate_pre %{SOURCE25} ntp
 
 %install
 mkdir -p %{buildroot}%{_sysusersdir}
 mkdir -p %{buildroot}%{_sysconfdir}/uucp
 mkdir -p %{buildroot}%{_sysconfdir}/news
 mkdir -p %{buildroot}%{_localstatedir}/games
-mkdir -p %{buildroot}%{_localstatedir}/lib/ntp
 mkdir -p %{buildroot}%{_localstatedir}/lib/wwwrun
 mkdir -p %{buildroot}%{_localstatedir}/spool/amavis
 mkdir -p %{buildroot}%{_localstatedir}/spool/clientmqueue
@@ -316,7 +305,6 @@ install -m 644 %{SOURCE21} %{buildroot}%{_sysusersdir}/system-group-kvm.conf
 install -m 644 %{SOURCE22} %{buildroot}%{_sysusersdir}/system-user-qemu.conf
 install -m 644 %{SOURCE23} %{buildroot}%{_sysusersdir}/system-group-libvirt.conf
 install -m 644 %{SOURCE24} %{buildroot}%{_sysusersdir}/system-user-vscan.conf
-install -m 644 %{SOURCE25} %{buildroot}%{_sysusersdir}/system-user-ntp.conf
 
 %pre -n system-user-uucp -f uucp.pre
 %pre -n system-user-games -f games.pre
@@ -343,7 +331,6 @@ test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 %pre -n system-user-qemu -f qemu.pre
 %pre -n system-group-libvirt -f libvirt.pre
 %pre -n system-user-vscan -f vscan.pre
-%pre -n system-user-ntp -f ntp.pre
 
 %files -n system-user-uucp
 %defattr(-,root,root)
@@ -443,10 +430,5 @@ test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 %defattr(-,root,root)
 %dir %attr(0750,vscan,vscan) %{_localstatedir}/spool/amavis
 %{_sysusersdir}/system-user-vscan.conf
-
-%files -n system-user-ntp
-%defattr(-,root,root)
-%dir %attr(0750,ntp,ntp) %{_localstatedir}/lib/ntp
-%{_sysusersdir}/system-user-ntp.conf
 
 %changelog

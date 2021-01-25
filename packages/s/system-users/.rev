@@ -193,4 +193,11 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
   - system-user-news.conf (forwarded request 863309 from kukuk)</comment>
     <requestid>863310</requestid>
   </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>59bf3f68f2bd097867f94b165674a79b</srcmd5>
+    <version>20170617</version>
+    <time>1611567014</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1181328</comment>
+  </revision>
 </revisionlist>
