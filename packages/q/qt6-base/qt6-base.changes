@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 23 20:24:22 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Remove uikit qmake spec to avoid automatic dep on python2
+
+-------------------------------------------------------------------
 Wed Dec 16 11:26:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use a different 'Name' when building the docs flavor.

@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -744,6 +744,9 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_concurrent_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_eglfs_kms_support_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_xcb_qpa_lib_private.pri
+
+# This is only for Apple platforms and has a python2 dep
+rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 
 %post -n libQt6Concurrent6 -p /sbin/ldconfig
 %post -n libQt6Core6 -p /sbin/ldconfig
