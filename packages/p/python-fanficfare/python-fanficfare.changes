@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Jan 20 21:46:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.29.0:
+  - Add better chapter error reporting, refactor proceed_question
+    code.
+  - Add plugin options to mark success/failed/chapter error
+    individually.
+  - Clear metadata cache after adapter metadata fetch. Cached
+    metadata values may not be replace_metadata processed if
+    fetched before their conditional dependencies. Revealed by
+    AO3 one-shots using title for chapter name.
+  - Re-enable ffnet and bump up sleep times for same.
+  - ffnet fpcom, continue_on_chapter_error:true by default,
+    increase sleep times.
+  - First rough version of reporting continue_on_chapter_error
+    chapters.
+  - Report chapter_error in custom error column and marked (when
+    configured).
+  - Update to cloudscraper v1.2.52
+  - Increase times between retries on fetch error.
+  - Tweek ffnet/fpcom sleep times again.
+  - slow_down_sleep_time: randomize between 0.5 time and 1.5
+    time.
+  - Report cloudscraper exceptions as such, plus hide the
+    potentially misleading 'opensource' part.
+  - adapter_fanficsme: do an extra fetch before login for
+    cookie(?) Closes #633
+  - adapter_webnovelcom: Fixes for site changes. Closes #629
+  - quotev.com: site change in date parse, use utf8:ignore as
+    first encoding choice. Closes #625
+
+
+-------------------------------------------------------------------
+Sat Jan 16 20:39:24 UTC 2021 - mcepl@suse.com
+
+- Update to version 3.28.0+git.1610814197.37cdec2f:
+  * Bump Test Version 3.28.4
+  * First rough version of reporting continue_on_chapter_error chapters.
+  * Tweak adapter_test1 chapter error case
+  * ffnet fpcom, continue_on_chapter_error:true by default, increase sleep times.
+  * Re-enable ffnet and bump up sleep times for same.
+  * Bump Test Version 3.28.3
+  * adapter_fanficsme: do an extra fetch before login for cookie(?) Closes #633
+  * Bump Test Version 3.28.2
+  * adapter_webnovelcom: Fixes for site changes.  Closes #629
+  * Update translations.
+  * Bump Test Version 3.28.1
+  * quotev.com: site change in date parse, use utf8:ignore as first encoding choice.  Closes #625
+  * Bump Release Version 3.28.0
+  * Update translations
+  * Tweak disable adapter_fanfictionnet text.
+  * Bump Test Version 3.27.6
+  * Catch exception from emails not decoding, skip & logger.error().
+  * Disable adapter_fanfictionnet with warning about site blocking.
+  * Bump Test Version 3.27.5
+  * Add a fake get_image_size() method for when no image processing available.  Closes #621
+  * Bump Test Version 3.27.4
+  * Change adapter_twilightednet to https
+  * Bump Test Version 3.27.3
+  * Change for adapter_fanfictionnetadapter_fanfictionnet to make skip_author_cover work again.
+  * Bump Test Version 3.27.2
+  * Make included certifi and requests use same tmp file code and store under calibre tmp dir for cleanup.
+  * Bump Test Version 3.27.1
+  * Add append_datepublished_to_storyurl option for storiesonline.net, finestories.com, scifistories.com only.
+  * Bump Release Version 3.27.0
+  * Update translations.
+- Add back dependency (both BR and R) on python-cloudscraper.
+
+-------------------------------------------------------------------
 Tue Jan 12 16:12:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add no-cloudscraper.patch to avoid need to use cloudscraper
