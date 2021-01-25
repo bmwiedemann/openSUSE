@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-
 Name:           Printrun
 Version:        2.0.0~rc7.1599393390.c451359
 Release:        0
@@ -33,10 +30,9 @@ Source1:        pronsole.desktop
 Source2:        pronterface.desktop
 Source3:        plater.desktop
 
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pyserial}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  python3-Cython
+BuildRequires:  python3-pyserial
+BuildRequires:  python3-setuptools
 BuildRequires:  gettext
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -124,7 +120,7 @@ sed -i 's|python skeinforge/skeinforge_application/skeinforge_utilities/skeinfor
 sed -s -i -e '1 s@/usr/bin/env python3@/usr/bin/python3@' printrun/*py
 
 %build
-%python_build
+%python3_build
 
 # rebuild locales
 cd locale
@@ -135,7 +131,7 @@ done
 cd ..
 
 %install
-%python_install
+%python3_install
 
 # fixup executable bits
 for f in %{buildroot}%{python3_sitearch}/printrun/*py; do

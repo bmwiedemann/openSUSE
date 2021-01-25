@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 24 09:17:57 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build failures after backwards incompatible changes to
+  python-rpm-macros.
+
+-------------------------------------------------------------------
 Fri Nov  6 00:00:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 2.0.0rc7

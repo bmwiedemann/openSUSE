@@ -90,4 +90,12 @@
 - Clean up specfile (forwarded request 846361 from StefanBruens)</comment>
     <requestid>846390</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>10c12e9095755798b8a10c4121ccb05a</srcmd5>
+    <version>2.0.0~rc7.1599393390.c451359</version>
+    <time>1611595442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866336</requestid>
+  </revision>
 </revisionlist>
