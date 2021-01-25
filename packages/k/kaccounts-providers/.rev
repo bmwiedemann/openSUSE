@@ -551,4 +551,12 @@
     <comment>KDE Applications 20.12.1</comment>
     <requestid>861133</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>b7f235c484640f4d8e9fd691a51b499d</srcmd5>
+    <version>20.12.1</version>
+    <time>1611595343</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov (forwarded request 864436 from Vogtinator)</comment>
+    <requestid>865087</requestid>
+  </revision>
 </revisionlist>
