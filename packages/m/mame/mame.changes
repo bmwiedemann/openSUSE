@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:25:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax constraints for aarch64
+
+-------------------------------------------------------------------
 Thu Dec 17 10:23:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64

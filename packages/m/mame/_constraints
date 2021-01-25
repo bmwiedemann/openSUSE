@@ -5,13 +5,12 @@
       <size unit="G">8</size>
     </memory>
     <disk>
-      <size unit="G">8</size>
+      <size unit="G">10</size>
     </disk>
   </hardware>
 
   <overwrite>
     <conditions>
-      <arch>aarch64</arch>
       <arch>x86_64</arch>
       <package>mame:mame</package>
     </conditions>
@@ -27,7 +26,6 @@
 
   <overwrite>
     <conditions>
-      <arch>aarch64</arch>
       <arch>x86_64</arch>
       <package>mame:mess</package>
     </conditions>
