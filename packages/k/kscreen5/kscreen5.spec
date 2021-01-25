@@ -16,6 +16,8 @@
 #
 
 
+%global __requires_exclude (org.kde.private.(kcm.)?kscreen)|(org.kde.KScreen)
+
 %bcond_without lang
 Name:           kscreen5
 Version:        5.20.5

@@ -843,4 +843,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
     <requestid>860629</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>f4bac57ca1a5724a85dda5ddaf8f323d</srcmd5>
+    <version>5.20.5</version>
+    <time>1611595353</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov (forwarded request 865265 from Vogtinator)</comment>
+    <requestid>865275</requestid>
+  </revision>
 </revisionlist>
