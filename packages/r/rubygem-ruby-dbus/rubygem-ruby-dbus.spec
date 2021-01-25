@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby-dbus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-ruby-dbus
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 %define mod_name ruby-dbus
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-BuildRequires:  %{rubygem nokogiri > 1.6}
+BuildRequires:  %{rubygem nokogiri >= 1.10.4}
 BuildRequires:  %{rubygem packaging_rake_tasks}
 BuildRequires:  %{rubygem rake}
 BuildRequires:  %{rubygem rspec}
@@ -40,7 +40,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/mvidner/ruby-dbus
+URL:            https://github.com/mvidner/ruby-dbus
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ruby module for interaction with D-Bus
