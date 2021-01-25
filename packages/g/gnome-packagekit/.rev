@@ -1012,4 +1012,14 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
   logout support(glgo#GNOME/gnome-packagekit!2, bsc#1180247). (forwarded request 860968 from JonathanKang)</comment>
     <requestid>862307</requestid>
   </revision>
+  <revision rev="134" vrev="5">
+    <srcmd5>dfa69a0a4876782d9617faecfba97e45</srcmd5>
+    <version>3.32.0</version>
+    <time>1611595383</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-packagekit-define-HAVE_SYSTEMD.patch: define
+  HAVE_SYSTEMD macro if systemd if found
+  (glgo#GNOME/gnome-packagekit!3, bsc#1134544). (forwarded request 864531 from JonathanKang)</comment>
+    <requestid>865373</requestid>
+  </revision>
 </revisionlist>

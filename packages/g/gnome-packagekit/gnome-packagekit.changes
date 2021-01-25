@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 20 06:54:55 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-packagekit-define-HAVE_SYSTEMD.patch: define
+  HAVE_SYSTEMD macro if systemd if found
+  (glgo#GNOME/gnome-packagekit!3, bsc#1134544).
+
+-------------------------------------------------------------------
 Wed Jan  6 08:32:47 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnome-packagekit-bring-back-logout-support.patch: Add back

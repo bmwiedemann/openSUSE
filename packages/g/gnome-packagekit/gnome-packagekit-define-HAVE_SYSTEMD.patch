@@ -1,0 +1,24 @@
+From fa4d0bc05c547894b66bf214eba5c845195cb019 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Tue, 19 Jan 2021 11:21:48 +0800
+Subject: [PATCH] build: Add HAVE_SYSTEMD macro if systemd if found
+
+---
+ meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/meson.build b/meson.build
+index 1f357712..3e528b25 100644
+--- a/meson.build
++++ b/meson.build
+@@ -86,6 +86,7 @@ libm = cc.find_library('libm', required: false)
+ 
+ if get_option('systemd')
+   systemd = dependency('libsystemd')
++  conf.set('HAVE_SYSTEMD', 1)
+   polkit = dependency('polkit-gobject-1')
+ endif
+ 
+-- 
+2.29.2
+

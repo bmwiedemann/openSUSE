@@ -40,7 +40,9 @@ Patch4:         bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.p
 # PATCH-FIX-UPSTREAM gnome-packagekit-fix-not-responding-after-update.patch bgo#782673, bsc#1036542 sckang@suse.com -- Fix gpk-update-viewer not responding after installing available updates.
 Patch5:         gnome-packagekit-fix-not-responding-after-update.patch
 # PATCH-FIX-UPSTREAM gnome-packagekit-bring-back-logout-support.patch glgo#GNOME/gnome-packagekit!2, bsc#1180247 sckang@suse.com -- Add back logout support.
-Patch6:     gnome-packagekit-bring-back-logout-support.patch
+Patch6:         gnome-packagekit-bring-back-logout-support.patch
+# PATCH-FIX-UPSTREAM gnome-packagekit-define-HAVE_SYSTEMD.patch glgo#GNOME/gnome-packagekit!3, bsc#1134544 sckang@suse.com -- define HAVE_SYSTEMD macro if systemd if found.
+Patch7:         gnome-packagekit-define-HAVE_SYSTEMD.patch
 
 BuildRequires:  PackageKit-devel
 BuildRequires:  desktop-file-utils
