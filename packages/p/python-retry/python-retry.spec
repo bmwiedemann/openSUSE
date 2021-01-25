@@ -1,7 +1,7 @@
 #
 # spec file for package python-retry
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-retry
 Version:        0.9.2
 Release:        0
-License:        Apache-2.0
 Summary:        Python retry decorator
-Url:            https://github.com/invl/retry
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/invl/retry
 Source:         https://files.pythonhosted.org/packages/source/r/retry/retry-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module decorator >= 3.4.2}
-BuildRequires:  %{python_module py >= 1.4.26}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module py >= 1.4.26}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
@@ -56,7 +57,7 @@ sed -i '/tox/d;/wheel/d' test-requirements.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest --ignore _build.python2 --ignore _build.python3
+%pytest
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
