@@ -23,4 +23,15 @@
     <comment>clean up SPEC file and upgrade to 1.1.1 (forwarded request 612670 from mcepl)</comment>
     <requestid>612676</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>46eb8b8462bf4dc7473d5821a1661d26</srcmd5>
+    <version>1.2.1</version>
+    <time>1611595467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Fixed parser issues regarding missing comma in tests accepting testlist arguments.
+  * remove python 2.x support
+- drop fix_pip_version.patch: obsolete</comment>
+    <requestid>866481</requestid>
+  </revision>
 </revisionlist>
