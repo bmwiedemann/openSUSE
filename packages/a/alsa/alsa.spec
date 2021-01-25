@@ -55,6 +55,9 @@ Source34:       alsa-init.sh
 Patch1:         0001-dlmisc-the-snd_plugin_dir_set-snd_plugin_dir-must-be.patch
 Patch2:         0002-dlmisc-fix-snd_plugin_dir-locking-for-not-DL_ORIGIN_.patch
 Patch3:         0003-pcm-snd_pcm_mmap_readi-fix-typo-in-comment.patch
+Patch4:         0004-topology-use-inclusive-language-for-bclk.patch
+Patch5:         0005-topology-use-inclusive-language-for-fsync.patch
+Patch6:         0006-topology-use-inclusive-language-in-documentation.patch
 Patch7:         0007-pcm-set-the-snd_pcm_ioplug_status-tstamp-field.patch
 Patch9:         0009-pcm-Add-snd_pcm_audio_tstamp_type_t-constants.patch
 Patch10:        0010-test-audio_time-Make-use-of-SND_PCM_AUDIO_TSTAMP_TYP.patch
@@ -81,6 +84,21 @@ Patch30:        0030-pcm-rate-use-pcm_frame_diff-in-snd_pcm_rate_playback.patch
 Patch31:        0031-pcm-plugin-fix-status-code-for-capture.patch
 Patch32:        0032-pcm-rate-use-pcm_frame_diff-on-related-places.patch
 Patch33:        0033-pcm-rate-fix-the-capture-delay-values.patch
+Patch34:        0034-ucm-fix-possible-memory-leak-in-parse_verb_file.patch
+Patch35:        0035-topology-tplg_pprint_integer-fix-coverity-uninitaliz.patch
+Patch36:        0036-topology-tplg_add_widget_object-do-not-use-invalid-e.patch
+Patch37:        0037-topology-tplg_decode_pcm-add-missing-log-argument-co.patch
+Patch38:        0038-topology-parse_tuple_set-remove-dead-condition-code.patch
+Patch39:        0039-ucm-uc_mgr_substitute_tree-fix-use-after-free.patch
+Patch40:        0040-topology-sort_config-cleanups-use-goto-for-the-error.patch
+Patch41:        0041-conf-USB-add-Xonar-U7-MKII-to-USB-Audio.pcm.iec958_d.patch
+Patch42:        0042-pcm_plugin-set-the-initial-hw_ptr-appl_ptr-from-the-.patch
+Patch43:        0043-pcm-dmix-dshare-delay-calculation-fixes-and-cleanups.patch
+Patch44:        0044-topology-fix-parse_tuple_set-remove-dead-condition-c.patch
+Patch45:        0045-pcm-direct-Fix-the-missing-appl_ptr-update.patch
+Patch46:        0046-pcm-ioplug-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_statu.patch
+Patch47:        0047-pcm-null-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch
+Patch48:        0048-pcm-share-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -172,6 +190,9 @@ This package contains the library for ALSA topology support.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 %patch7 -p1
 %patch9 -p1
 %patch10 -p1
@@ -198,6 +219,21 @@ This package contains the library for ALSA topology support.
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
+%patch43 -p1
+%patch44 -p1
+%patch45 -p1
+%patch46 -p1
+%patch47 -p1
+%patch48 -p1
 %patch101 -p1
 
 %build

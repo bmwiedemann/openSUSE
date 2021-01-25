@@ -1,0 +1,26 @@
+From b8764a061b83284be60adc01c1f7b035c4484ace Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 7 Jan 2021 17:36:04 +0100
+Subject: [PATCH 36/44] topology: tplg_add_widget_object() - do not use invalid
+ elem_ctl
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/dapm.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index 92dc01aa864d..f6a84a6035ce 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -836,6 +836,7 @@ int tplg_add_widget_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 		default:
+ 			SNDERR("widget %s: invalid type %d for ctl %d",
+ 				wt->name, ct->type, i);
++			ret = -EINVAL;
+ 			break;
+ 		}
+ 
+-- 
+2.26.2
+

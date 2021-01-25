@@ -1,0 +1,55 @@
+From 45f503632acf24877c466a7c1c74d8a26414bf3e Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 7 Jan 2021 17:45:27 +0100
+Subject: [PATCH 40/44] topology: sort_config() cleanups - use goto for the
+ error path
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/save.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/src/topology/save.c b/src/topology/save.c
+index f7af7af3e8c2..fecbc6a5dfa8 100644
+--- a/src/topology/save.c
++++ b/src/topology/save.c
+@@ -180,29 +180,28 @@ static snd_config_t *sort_config(const char *id, snd_config_t *src)
+ 	}
+ 	if (array <= 0)
+ 		qsort(a, count, sizeof(a[0]), _compar);
+-	if (snd_config_make_compound(&dst, id, count == 1)) {
+-		free(a);
+-		return NULL;
+-	}
++	if (snd_config_make_compound(&dst, id, count == 1))
++		goto lerr;
+ 	for (index = 0; index < count; index++) {
+ 		snd_config_t *s = a[index];
+ 		const char *id2;
+ 		if (snd_config_get_id(s, &id2)) {
+ 			snd_config_delete(dst);
+-			free(a);
+-			return NULL;
++			goto lerr;
+ 		}
+ 		s = sort_config(id2, s);
+ 		if (s == NULL || snd_config_add(dst, s)) {
+ 			if (s)
+ 				snd_config_delete(s);
+ 			snd_config_delete(dst);
+-			free(a);
+-			return NULL;
++			goto lerr;
+ 		}
+ 	}
+ 	free(a);
+ 	return dst;
++lerr:
++	free(a);
++	return NULL;
+ }
+ 
+ static int tplg_check_quoted(const unsigned char *p)
+-- 
+2.26.2
+

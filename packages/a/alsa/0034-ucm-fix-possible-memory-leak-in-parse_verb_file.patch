@@ -1,0 +1,26 @@
+From 437b5b3aae8b1d9f65289f563deb0fa6356a0fa6 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 7 Jan 2021 17:32:11 +0100
+Subject: [PATCH 34/44] ucm: fix possible memory leak in parse_verb_file()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/parser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ucm/parser.c b/src/ucm/parser.c
+index 75b78826f260..c8bee1f2e1dd 100644
+--- a/src/ucm/parser.c
++++ b/src/ucm/parser.c
+@@ -1575,7 +1575,7 @@ static int parse_verb_file(snd_use_case_mgr_t *uc_mgr,
+ 	/* in-place evaluation */
+ 	err = uc_mgr_evaluate_inplace(uc_mgr, cfg);
+ 	if (err < 0)
+-		return err;
++		goto _err;
+ 
+ 	/* parse master config sections */
+ 	snd_config_for_each(i, next, cfg) {
+-- 
+2.26.2
+

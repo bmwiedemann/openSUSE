@@ -1,0 +1,27 @@
+From 0dbaba95f4bc59602bf2d3fb12a60db7444e5892 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 7 Jan 2021 17:38:50 +0100
+Subject: [PATCH 37/44] topology: tplg_decode_pcm() - add missing log argument
+ (compress)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/pcm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index c8f418621323..a473b59b4c5c 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -2020,7 +2020,7 @@ next:
+ 	pt->playback = pcm->playback;
+ 	pt->capture = pcm->capture;
+ 	pt->compress = pcm->compress;
+-	tplg_log(tplg, 'D', pos, "pcm: playback %d capture %d compress",
++	tplg_log(tplg, 'D', pos, "pcm: playback %d capture %d compress %d",
+ 		 pt->playback, pt->capture, pt->compress);
+ 	pt->num_streams = pcm->num_streams;
+ 	pt->flag_mask = pcm->flag_mask;
+-- 
+2.26.2
+

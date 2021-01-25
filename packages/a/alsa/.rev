@@ -1709,4 +1709,16 @@
     <comment></comment>
     <requestid>860488</requestid>
   </revision>
+  <revision rev="208" vrev="3">
+    <srcmd5>301d5000dd219efa838dfc8ebb4c1781</srcmd5>
+    <version>1.2.4</version>
+    <time>1611595387</time>
+    <user>dimstar_suse</user>
+    <comment>- Yet more fixes for the crash with dmix plugin (bsc#1181194):
+  0045-pcm-direct-Fix-the-missing-appl_ptr-update.patch
+  0046-pcm-ioplug-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_statu.patch
+  0047-pcm-null-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch
+  0048-pcm-share-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch (forwarded request 866049 from tiwai)</comment>
+    <requestid>866050</requestid>
+  </revision>
 </revisionlist>

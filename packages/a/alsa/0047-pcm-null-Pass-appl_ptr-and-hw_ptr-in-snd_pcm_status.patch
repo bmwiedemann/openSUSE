@@ -1,0 +1,29 @@
+From 440c42ec5c90e3e345dd72c6c1d604a30b6a8e94 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 22 Jan 2021 15:42:38 +0100
+Subject: [PATCH 47/48] pcm: null: Pass appl_ptr and hw_ptr in snd_pcm_status()
+
+Just like the previous fix for ioplug, the null plugin also misses the
+appl_ptr and hw_ptr updates for snd_pcm_status().  Fix it as well.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_null.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/pcm/pcm_null.c b/src/pcm/pcm_null.c
+index 1d81548569f0..c8ea9b38785f 100644
+--- a/src/pcm/pcm_null.c
++++ b/src/pcm/pcm_null.c
+@@ -96,6 +96,8 @@ static int snd_pcm_null_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 	memset(status, 0, sizeof(*status));
+ 	status->state = null->state;
+ 	status->trigger_tstamp = null->trigger_tstamp;
++	status->appl_ptr = *pcm->appl.ptr;
++	status->hw_ptr = *pcm->hw.ptr;
+ 	gettimestamp(&status->tstamp, pcm->tstamp_type);
+ 	status->avail = snd_pcm_null_avail_update(pcm);
+ 	status->avail_max = pcm->buffer_size;
+-- 
+2.26.2
+

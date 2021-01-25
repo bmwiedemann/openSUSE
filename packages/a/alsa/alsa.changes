@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 22 15:50:07 CET 2021 - tiwai@suse.de
+
+- Yet more fixes for the crash with dmix plugin (bsc#1181194):
+  0045-pcm-direct-Fix-the-missing-appl_ptr-update.patch
+  0046-pcm-ioplug-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_statu.patch
+  0047-pcm-null-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch
+  0048-pcm-share-Pass-appl_ptr-and-hw_ptr-in-snd_pcm_status.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 09:36:12 CET 2021 - tiwai@suse.de
+
+- Backport upstream fixes:
+  yet more PCM plugin fixes, topology fixes/cleanups, UAF fix in
+  UCM (bsc#1181194):
+  0004-topology-use-inclusive-language-for-bclk.patch
+  0005-topology-use-inclusive-language-for-fsync.patch
+  0006-topology-use-inclusive-language-in-documentation.patch
+  0034-ucm-fix-possible-memory-leak-in-parse_verb_file.patch
+  0035-topology-tplg_pprint_integer-fix-coverity-uninitaliz.patch
+  0036-topology-tplg_add_widget_object-do-not-use-invalid-e.patch
+  0037-topology-tplg_decode_pcm-add-missing-log-argument-co.patch
+  0038-topology-parse_tuple_set-remove-dead-condition-code.patch
+  0039-ucm-uc_mgr_substitute_tree-fix-use-after-free.patch
+  0040-topology-sort_config-cleanups-use-goto-for-the-error.patch
+  0041-conf-USB-add-Xonar-U7-MKII-to-USB-Audio.pcm.iec958_d.patch
+  0042-pcm_plugin-set-the-initial-hw_ptr-appl_ptr-from-the-.patch
+  0043-pcm-dmix-dshare-delay-calculation-fixes-and-cleanups.patch
+  0044-topology-fix-parse_tuple_set-remove-dead-condition-c.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 15:13:13 CET 2021 - tiwai@suse.de
 
 - Backport upstream fixes:

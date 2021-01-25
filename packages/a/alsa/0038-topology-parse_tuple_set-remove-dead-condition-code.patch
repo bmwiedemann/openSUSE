@@ -1,0 +1,27 @@
+From 51e1d486ce4535923692bd1d7e59d5aa3a29cd50 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 7 Jan 2021 17:40:42 +0100
+Subject: [PATCH 38/44] topology: parse_tuple_set() - remove dead condition
+ code
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/data.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/topology/data.c b/src/topology/data.c
+index c2931bd2bbb3..5633cdc34dd9 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -860,7 +860,7 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 			}
+ 
+ 			if ((type == SND_SOC_TPLG_TUPLE_TYPE_WORD
+-					&& tuple_val > UINT_MAX)
++					/* && tuple_val > UINT_MAX */)
+ 				|| (type == SND_SOC_TPLG_TUPLE_TYPE_SHORT
+ 					&& tuple_val > USHRT_MAX)
+ 				|| (type == SND_SOC_TPLG_TUPLE_TYPE_BYTE
+-- 
+2.26.2
+

@@ -1,0 +1,27 @@
+From 93752fb4de397554e92a4eb9079f77dabaec7d7f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 7 Jan 2021 17:49:25 +0100
+Subject: [PATCH 41/44] conf: USB - add "Xonar U7 MKII" to
+ USB-Audio.pcm.iec958_device
+
+BugLink: https://github.com/alsa-project/alsa-lib/issues/100
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf/cards/USB-Audio.conf | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/conf/cards/USB-Audio.conf b/src/conf/cards/USB-Audio.conf
+index 9b64af3c0da9..b1b74b02cb1d 100644
+--- a/src/conf/cards/USB-Audio.conf
++++ b/src/conf/cards/USB-Audio.conf
+@@ -39,6 +39,7 @@ USB-Audio.pcm.iec958_device {
+ 	# "NoiseBlaster 3000" 42
+ 	"USB Sound Blaster HD" 1
+ 	"Xonar U7" 1
++	"Xonar U7 MKII" 1
+ 	"ASUS XONAR U5" 1
+ 	"XONAR U5" 1
+ 	"XONAR SOUND CARD" 1
+-- 
+2.26.2
+

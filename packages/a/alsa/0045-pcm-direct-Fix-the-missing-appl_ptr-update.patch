@@ -1,0 +1,61 @@
+From 8e15c712ed96ea8d1314e94b15a946916394b17b Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 22 Jan 2021 15:37:08 +0100
+Subject: [PATCH 45/48] pcm: direct: Fix the missing appl_ptr update
+
+A snd_pcm_status() call for the direct plugins receives the status
+from the slave PCM, but this doesn't contain a valid appl_ptr, since
+the slave PCM for the direct plugins is in a free-wheel mode, hence
+the appl_ptr is always zero.  This result in the inconsistent
+status->appl_ptr and pcm->appl.ptr, hitting the recently introduced
+assert() call.
+
+Fix it by transferring the plugin's appl_ptr to the upper caller.
+
+BugLink: https://bugzilla.opensuse.org/show_bug.cgi?id=1181194
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_dmix.c   | 1 +
+ src/pcm/pcm_dshare.c | 1 +
+ src/pcm/pcm_dsnoop.c | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/pcm/pcm_dmix.c b/src/pcm/pcm_dmix.c
+index be2675aff0f3..d8495065d5d7 100644
+--- a/src/pcm/pcm_dmix.c
++++ b/src/pcm/pcm_dmix.c
+@@ -495,6 +495,7 @@ static int snd_pcm_dmix_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 	}
+ 
+ 	status->state = snd_pcm_dmix_state(pcm);
++	status->appl_ptr = *pcm->appl.ptr; /* slave PCM doesn't set appl_ptr */
+ 	status->trigger_tstamp = dmix->trigger_tstamp;
+ 	status->avail = snd_pcm_mmap_playback_avail(pcm);
+ 	status->avail_max = status->avail > dmix->avail_max ? status->avail : dmix->avail_max;
+diff --git a/src/pcm/pcm_dshare.c b/src/pcm/pcm_dshare.c
+index 10243013714d..dccb137be253 100644
+--- a/src/pcm/pcm_dshare.c
++++ b/src/pcm/pcm_dshare.c
+@@ -243,6 +243,7 @@ static int snd_pcm_dshare_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 		break;
+ 	}
+ 	status->state = snd_pcm_dshare_state(pcm);
++	status->appl_ptr = *pcm->appl.ptr; /* slave PCM doesn't set appl_ptr */
+ 	status->trigger_tstamp = dshare->trigger_tstamp;
+ 	status->avail = snd_pcm_mmap_playback_avail(pcm);
+ 	status->avail_max = status->avail > dshare->avail_max ? status->avail : dshare->avail_max;
+diff --git a/src/pcm/pcm_dsnoop.c b/src/pcm/pcm_dsnoop.c
+index c6e8cd279b53..695bf4aa340e 100644
+--- a/src/pcm/pcm_dsnoop.c
++++ b/src/pcm/pcm_dsnoop.c
+@@ -193,6 +193,7 @@ static int snd_pcm_dsnoop_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 	snd_pcm_status(dsnoop->spcm, status);
+ 	state = snd_pcm_state(dsnoop->spcm);
+ 	status->state = state == SND_PCM_STATE_RUNNING ? dsnoop->state : state;
++	status->appl_ptr = *pcm->appl.ptr; /* slave PCM doesn't set appl_ptr */
+ 	status->trigger_tstamp = dsnoop->trigger_tstamp;
+ 	status->avail = snd_pcm_mmap_capture_avail(pcm);
+ 	status->avail_max = status->avail > dsnoop->avail_max ? status->avail : dsnoop->avail_max;
+-- 
+2.26.2
+

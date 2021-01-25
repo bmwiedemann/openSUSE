@@ -1,0 +1,30 @@
+From 1705e7c0aba0a9e010e55c8e76851fe57e1e3c70 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 22 Jan 2021 15:43:28 +0100
+Subject: [PATCH 48/48] pcm: share: Pass appl_ptr and hw_ptr in
+ snd_pcm_status()
+
+This one also has the same problem as others; the appl_ptr and hw_ptr
+of share plugin aren't updated in snd_pcm_status() call.  Fix it.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_share.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/pcm/pcm_share.c b/src/pcm/pcm_share.c
+index bff9507d6422..72509491b366 100644
+--- a/src/pcm/pcm_share.c
++++ b/src/pcm/pcm_share.c
+@@ -711,6 +711,8 @@ static int snd_pcm_share_status(snd_pcm_t *pcm, snd_pcm_status_t *status)
+  _notrunning:
+ 	status->delay = sd + d;
+ 	status->state = share->state;
++	status->appl_ptr = *pcm->appl.ptr;
++	status->hw_ptr = *pcm->hw.ptr;
+ 	status->trigger_tstamp = share->trigger_tstamp;
+  _end:
+ 	Pthread_mutex_unlock(&slave->mutex);
+-- 
+2.26.2
+

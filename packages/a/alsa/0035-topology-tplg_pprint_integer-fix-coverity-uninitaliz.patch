@@ -1,0 +1,27 @@
+From d0bb8f84c92357bfd0e024efe5f6d53a963c4d7a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 7 Jan 2021 17:34:00 +0100
+Subject: [PATCH 35/44] topology: tplg_pprint_integer() fix coverity
+ uninitalized variable error
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/save.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/topology/save.c b/src/topology/save.c
+index c7a5a801372e..f7af7af3e8c2 100644
+--- a/src/topology/save.c
++++ b/src/topology/save.c
+@@ -133,6 +133,8 @@ static int tplg_pprint_integer(snd_config_t *n, char **ret)
+ 		if (llval < INT_MIN || llval > UINT_MAX)
+ 			return snd_config_get_ascii(n, ret);
+ 		lval = llval;
++	} else {
++		lval = 0;
+ 	}
+ 	err = tplg_nice_value_format(buf, sizeof(buf), (unsigned int)lval);
+ 	if (err < 0)
+-- 
+2.26.2
+

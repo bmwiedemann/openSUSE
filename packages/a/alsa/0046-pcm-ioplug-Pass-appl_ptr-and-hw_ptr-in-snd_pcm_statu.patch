@@ -1,0 +1,31 @@
+From 2c57c2c959941de50a4492f151cfd9973c46d41e Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 22 Jan 2021 15:41:15 +0100
+Subject: [PATCH 46/48] pcm: ioplug: Pass appl_ptr and hw_ptr in
+ snd_pcm_status()
+
+The snd_pcm_status() of the ioplug doesn't return the current
+positions of hw_ptr and appl_ptr as advertised.  Fix it by copying the
+current values stored in the plugin data.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_ioplug.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/pcm/pcm_ioplug.c b/src/pcm/pcm_ioplug.c
+index e141b1f98da7..a1463bf6b50a 100644
+--- a/src/pcm/pcm_ioplug.c
++++ b/src/pcm/pcm_ioplug.c
+@@ -133,6 +133,8 @@ static int snd_pcm_ioplug_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 	gettimestamp(&status->tstamp, pcm->tstamp_type);
+ 	status->avail = snd_pcm_mmap_avail(pcm);
+ 	status->avail_max = io->avail_max;
++	status->appl_ptr = *pcm->appl.ptr;
++	status->hw_ptr = *pcm->hw.ptr;
+ 	if (snd_pcm_ioplug_delay(pcm, &sd) < 0)
+ 		sd = snd_pcm_mmap_delay(pcm);
+ 	status->delay = sd;
+-- 
+2.26.2
+

@@ -1,0 +1,31 @@
+From e5c350d7bc6f3d45702059c0ae8d32b3603273c1 Mon Sep 17 00:00:00 2001
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Date: Thu, 12 Nov 2020 10:29:40 -0600
+Subject: [PATCH 06/44] topology: use inclusive language in documentation
+
+Use codec_provider and codec_consumer for bclk and fsync
+
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ include/topology.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/topology.h b/include/topology.h
+index 4ade20df0751..d1feee4d9e25 100644
+--- a/include/topology.h
++++ b/include/topology.h
+@@ -658,8 +658,8 @@ extern "C" {
+  *
+  *	id "1"				# used for binding to the config
+  *	format "I2S"			# physical audio format.
+- *	bclk   "master"			# Platform is master of bit clock
+- *	fsync  "slave"			# Platform is slave of fsync
++ *	bclk   "codec_provider"		# Codec provides the bit clock
++ *	fsync  "codec_consumer"		# Codec follows the fsync
+  * }
+  * </pre>
+  *
+-- 
+2.26.2
+

@@ -1,0 +1,40 @@
+From ae7362c996e0b991c399cc26c6d0b3c8e295e83c Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 20 Jan 2021 16:58:33 +0100
+Subject: [PATCH 44/44] topology: fix 'parse_tuple_set() - remove dead
+ condition code'
+
+The whole SND_SOC_TPLG_TUPLE_TYPE_WORD condition part must be
+commented out, otherwise the condition is always true.
+
+Fixes: 51e1d486ce ("topology: parse_tuple_set() - remove dead condition code")
+BugLink: https://github.com/alsa-project/alsa-lib/issues/114
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/data.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 5633cdc34dd9..0546d63e478c 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -859,11 +859,11 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 				goto err;
+ 			}
+ 
+-			if ((type == SND_SOC_TPLG_TUPLE_TYPE_WORD
+-					/* && tuple_val > UINT_MAX */)
+-				|| (type == SND_SOC_TPLG_TUPLE_TYPE_SHORT
+-					&& tuple_val > USHRT_MAX)
+-				|| (type == SND_SOC_TPLG_TUPLE_TYPE_BYTE
++			if (/* (type == SND_SOC_TPLG_TUPLE_TYPE_WORD
++					&& tuple_val > UINT_MAX) || */
++				(type == SND_SOC_TPLG_TUPLE_TYPE_SHORT
++					&& tuple_val > USHRT_MAX) ||
++				(type == SND_SOC_TPLG_TUPLE_TYPE_BYTE
+ 					&& tuple_val > UCHAR_MAX)) {
+ 				SNDERR("tuple %s: invalid value", id);
+ 				goto err;
+-- 
+2.26.2
+

@@ -1,0 +1,77 @@
+From 644514e85da169670e4a490b7b15b5ecfcec92c0 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 18 Jan 2021 21:09:43 +0100
+Subject: [PATCH 42/44] pcm_plugin: set the initial hw_ptr/appl_ptr from the
+ child pcm
+
+The direct plugins (dmix & etc.) sets own initial
+hw_ptr and appl_ptr. Use this initial settings
+to export correct values in snd_pcm_status().
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_plugin.c | 32 +++++++++++++++++---------------
+ 1 file changed, 17 insertions(+), 15 deletions(-)
+
+diff --git a/src/pcm/pcm_plugin.c b/src/pcm/pcm_plugin.c
+index 7ed6f25a2eea..ff254eba9988 100644
+--- a/src/pcm/pcm_plugin.c
++++ b/src/pcm/pcm_plugin.c
+@@ -146,15 +146,14 @@ static int snd_pcm_plugin_delay(snd_pcm_t *pcm, snd_pcm_sframes_t *delayp)
+ 	return 0;
+ }
+ 
+-static int snd_pcm_plugin_prepare(snd_pcm_t *pcm)
++static int snd_pcm_plugin_call_init_cb(snd_pcm_t *pcm, snd_pcm_plugin_t *plugin)
+ {
+-	snd_pcm_plugin_t *plugin = pcm->private_data;
++	snd_pcm_t *slave = plugin->gen.slave;
+ 	int err;
+-	err = snd_pcm_prepare(plugin->gen.slave);
+-	if (err < 0)
+-		return err;
+-	*pcm->hw.ptr = 0;
+-	*pcm->appl.ptr = 0;
++
++	assert(pcm->boundary == slave->boundary);
++	*pcm->hw.ptr = *slave->hw.ptr;
++	*pcm->appl.ptr = *slave->appl.ptr;
+ 	if (plugin->init) {
+ 		err = plugin->init(pcm);
+ 		if (err < 0)
+@@ -163,6 +162,16 @@ static int snd_pcm_plugin_prepare(snd_pcm_t *pcm)
+ 	return 0;
+ }
+ 
++static int snd_pcm_plugin_prepare(snd_pcm_t *pcm)
++{
++	snd_pcm_plugin_t *plugin = pcm->private_data;
++	int err;
++	err = snd_pcm_prepare(plugin->gen.slave);
++	if (err < 0)
++		return err;
++	return snd_pcm_plugin_call_init_cb(pcm, plugin);
++}
++
+ static int snd_pcm_plugin_reset(snd_pcm_t *pcm)
+ {
+ 	snd_pcm_plugin_t *plugin = pcm->private_data;
+@@ -170,14 +179,7 @@ static int snd_pcm_plugin_reset(snd_pcm_t *pcm)
+ 	err = snd_pcm_reset(plugin->gen.slave);
+ 	if (err < 0)
+ 		return err;
+-	*pcm->hw.ptr = 0;
+-	*pcm->appl.ptr = 0;
+-	if (plugin->init) {
+-		err = plugin->init(pcm);
+-		if (err < 0)
+-			return err;
+-	}
+-	return 0;
++	return snd_pcm_plugin_call_init_cb(pcm, plugin);
+ }
+ 
+ static snd_pcm_sframes_t snd_pcm_plugin_rewindable(snd_pcm_t *pcm)
+-- 
+2.26.2
+
