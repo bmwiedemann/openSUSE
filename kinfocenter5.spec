@@ -16,6 +16,9 @@
 #
 
 
+# Internal QML imports
+%global __requires_exclude qmlimport\\(org\\.kde\\.kinfocenter.*
+
 %global kf5_version 5.58.0
 
 %bcond_without lang
