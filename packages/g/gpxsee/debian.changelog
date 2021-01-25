@@ -1,3 +1,9 @@
+gpxsee (8.3) stable; urgency=medium
+
+  * Fixed crash on empty paths (introduced in 8.2).
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 23 Jan 2021 21:48:29 +0100
+
 gpxsee (8.2) stable; urgency=medium
 
   * Fixed crash on broken KMZ maps.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 23 21:45:59 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.3
+  * Fixed crash on empty paths (introduced in 8.2).
+
+-------------------------------------------------------------------
 Tue Jan 19 20:45:47 CET 2021 - tumic@cbox.cz
 
 - Update to version 8.2
