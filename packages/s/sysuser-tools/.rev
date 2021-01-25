@@ -104,4 +104,11 @@
     <comment>- Ignore nscd return code (forwarded request 865021 from kukuk)</comment>
     <requestid>865022</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>9c7f20b7bc1766156e837b0161d82704</srcmd5>
+    <version>3.0</version>
+    <time>1611567035</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1181328</comment>
+  </revision>
 </revisionlist>

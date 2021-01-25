@@ -11,7 +11,6 @@ parse()
 			echo "group($2)"
 		elif [ "$1" = 'u' ]; then
 			echo "user($2)"
-			echo "group($2)"
 		fi
 	done
 }
