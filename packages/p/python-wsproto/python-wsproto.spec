@@ -34,11 +34,12 @@ BuildArch:      noarch
 %if 0%{?suse_version} <= 1520
 BuildRequires:  %{python_module dataclasses}
 %endif
+BuildRequires:  (python36-dataclasses if python36-base)
 # SECTION test requirements
 BuildRequires:  %{python_module h11 >= 0.8.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%if 0%{?suse_version} <= 1520
+%if 0%{?python_version_nodots} <= 36
 Requires:       python-dataclasses
 %endif
 %python_subpackages
