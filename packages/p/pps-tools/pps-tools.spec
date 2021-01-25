@@ -1,7 +1,7 @@
 #
 # spec file for package pps-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,8 @@ Version:        0.0.0+git.20181203
 Release:        0
 Summary:        Userspace tools for the Linux Pulse Per Second subsystem
 License:        GPL-2.0-or-later
-Group:          Hardware/Other
 URL:            http://linuxpps.org
 Source:         %{name}-%{version}.tar.xz
-Source1:        pps.rules
-Requires:       pps-udev
 
 %description
 Userland tools to test Linux kernel PPS API. See Documentations/pps/pps.txt
@@ -34,21 +31,12 @@ for reference.
 
 %package devel
 Summary:        Development files for the LinuxPPS API
-Group:          Hardware/Other
 
 %description devel
 This subpackage contains a header-only C API providing a number of
 inline C functions that call out to the kernel's Pulse Per Second
 API. It is, for example, used by ntpd to interact with timing
 devices.
-
-%package -n pps-udev
-Summary:        Udev rules for Linux Kernel PPS
-Group:          Hardware/Other
-Requires(pre):  user(ntp)
-
-%description -n pps-udev
-Udev rules for Linux Kernel PPS.
 
 %prep
 %autosetup
@@ -63,14 +51,6 @@ export CFLAGS="%{optflags}"
 export CFLAGS="%{optflags}"
 %make_install
 
-install -D -m0644 %{SOURCE1} %{buildroot}%{_udevrulesdir}/89-pps.rules
-
-%post -n pps-udev
-%udev_rules_update
-
-%postun -n pps-udev
-%udev_rules_update
-
 %files
 %license COPYING
 %{_bindir}/ppsctl
@@ -82,8 +62,5 @@ install -D -m0644 %{SOURCE1} %{buildroot}%{_udevrulesdir}/89-pps.rules
 %files devel
 %license COPYING
 %{_includedir}/sys/timepps.h
-
-%files -n pps-udev
-%{_udevrulesdir}/89-pps.rules
 
 %changelog

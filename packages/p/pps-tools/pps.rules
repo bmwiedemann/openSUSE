@@ -1,2 +1,0 @@
-# Linux Kernel pps
-KERNEL=="pps[0-9]*", OWNER="root", GROUP="ntp", MODE="0660"
