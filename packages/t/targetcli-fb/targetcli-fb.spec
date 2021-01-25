@@ -1,7 +1,7 @@
 #
 # spec file for package targetcli-fb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module rtslib-fb}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(systemd)
@@ -41,7 +42,7 @@ Requires:       python-six
 Requires:       targetcli-fb-common
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       targetcli    = %{version}-%{release}
 Provides:       targetcli-fb = %{version}-%{release}
 %endif
@@ -78,8 +79,8 @@ Group:          System/Management
 Provides:       %{python_module targetcli-fb-common}
 
 %description -n %{name}-common
-targetcli-fb-common is the invariant base package needed by both
-python2-targetcli-fb and python3-targetcli-fb.
+targetcli-fb-common is the invariant base package needed by
+all python-version-dependant packages, such as python3-*-targetcli-fb.
 
 %prep
 %setup -q

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 24 22:48:23 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Updated SPEC file to support multiple python3 versions at
+  the same time, and replaced deprecated %ifpython3 macro,
+  as suggested by build service. Also updated "common" sub-
+  package description.
+
+-------------------------------------------------------------------
 Tue Jun 30 20:54:28 UTC 2020 - lduncan@suse.com
 
 - Update to version 2.1.53:
