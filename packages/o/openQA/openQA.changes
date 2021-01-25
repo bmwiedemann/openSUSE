@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 24 20:23:18 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1611422905.79471b7a1:
+  * Revert "Symlink CASEDIR and set values to relative path"
+  * Dependency cron 2021-01-23
+  * Automatically rerun incompleted jobs because of no space left
+  * Symlink CASEDIR and set values to relative path
+
+-------------------------------------------------------------------
 Fri Jan 22 12:23:35 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1611251947.ef6edb09c:
