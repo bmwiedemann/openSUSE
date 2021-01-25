@@ -41,6 +41,8 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  cronie
 BuildRequires:  python2-devel
 BuildRequires:  python3-testsuite
+BuildRequires:  (python36-testsuite if python36-base)
+BuildRequires:  (python38-testsuite if python38-base)
 # /SECTION
 %python_subpackages
 
