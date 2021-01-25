@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan  9 17:17:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add support for qml-autoreqprov
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5
@@ -789,7 +794,7 @@ Tue Jan  8 13:37:18 UTC 2019 - fabian@ritter-vogt.de
   * For more details please see:
   * https://www.kde.org/announcements/plasma-5.14.5.php
 - Changes since 5.14.4:
-  * [Activities KCM] Disable delete button when there's only one activity BUG: 397887 FIXED-IN; 5.12.8 (kde#397887)
+  * [Activities KCM] Disable delete button when there's only one activity (kde#397887)
   * [Activities KCM] vertically center the buttons
   * Fix removing first item in languages list (kde#401473)
   * Make accessibility warning dialog usable again and fix event handling

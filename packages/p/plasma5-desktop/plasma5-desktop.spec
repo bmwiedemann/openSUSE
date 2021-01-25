@@ -16,6 +16,9 @@
 #
 
 
+# Internal QML imports
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm).*
+
 %define kf5_version 5.74.0
 
 %global have_ibus_dict_emoji_pkg (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)

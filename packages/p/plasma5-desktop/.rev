@@ -1314,4 +1314,12 @@
     <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
     <requestid>860644</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>3a8042992541ad455053e0b978fbe7bb</srcmd5>
+    <version>5.20.5</version>
+    <time>1611595360</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov (forwarded request 865265 from Vogtinator)</comment>
+    <requestid>865282</requestid>
+  </revision>
 </revisionlist>
