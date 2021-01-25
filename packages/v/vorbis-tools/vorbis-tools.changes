@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 23 00:40:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+ * Cleanup of the build system
+ * Code cleanup
+ * Removed outdated debian/, and vorbis-tools.spec
+ * Updated po/ to reflect new code positions
+ * ogg123, ogginfo: Added support to decode METADATA_BLOCK_PICTURE
+ * ogginfo: Added support for decoding Skeleton
+- drop oggenc-Fix-large-alloca-on-bad-AIFF-input.patch,
+  vcut-fix-segfault.diff, vorbis-tools-oggenc-CVE-2014-9639.patch,
+  vorbis-tools-r19117-CVE-2014-9640.patch, warning-fixes.diff: merged upstream
+
+-------------------------------------------------------------------
 Fri Jan 31 23:41:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
