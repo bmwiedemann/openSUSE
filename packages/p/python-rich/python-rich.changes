@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jan 25 10:30:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 9.9.0
+  Changed
+  * Extended Windows palette to 16 colors
+  * Modified windows palette to Windows 10 colors
+  * Change regex for attrib_name to be more performant
+  * Optimized traceback generation
+  Fixed
+  * Fix double line tree guides on Windows
+  * Fixed Tracebacks ignoring initial blank lines
+  * Partial fix for tracebacks not finding source after chdir
+  Added
+  * Added post_style argument to Segment.apply_style 
+- Changelog for 9.8.2
+  * Fixed deadlock in live #927
+- Changelog for 9.8.1
+  * Fixed rich.inspect failing with attributes that claim to be
+    callable but aren't #916
+- Changelog for 9.8.0
+  Added
+  * Added rich_measure for tree
+  * Added rich.align.VerticalCenter
+  Changed
+  * The style argument on Align now applies to background only
+  * Changed display of progress bars in no_color mode for 
+     clarity
+  * Console property size will fall back to getting the 
+    terminal size of stdout it stdin fails, this allows size 
+    to be correctly determined when piping
+  Fixed
+  * Fixed panel cropping when shrunk too bar
+  * Allow passing markdown over STDIN when using python -m 
+    rich.markdown
+  * Fix printing MagicMock.mock_calls #903
+- Changelog for 9.7.0
+  * Added rich.tree
+  * Added no_color argument to Console
+- Changelog for 9.6.2
+  * Fixed markup escaping edge case #878
+  * Double tag escape, i.e. "\\[foo]" results in a 
+    backslash plus [foo] tag
+  * Fixed header_style not applying to headers in 
+    positional args #953
+- Changelog for 9.6.1
+  * Fixed encoding error on Windows when loading code for 
+    Tracebacks
+- Changelog for 9.6.0
+  Changed
+  * MarkupError exception raise from None to omit internal 
+    exception
+  * Factored out RichHandler.render and 
+    RichHandler.render_message for easier extending
+  * Display pretty printed value in rich.inspect
+  Added
+  * Added Progress.TimeElapsedColumn
+  * Added IPython support to pretty.install
+  Fixed
+  * Fixed display of locals in Traceback for stdin
+- Add dataclasses BuildRequires for python 3.6 builds
+
+-------------------------------------------------------------------
 Fri Dec 18 19:46:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 9.5.1
