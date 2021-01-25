@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 19 18:13:28 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to revision 700
+- Refresh unetbootin-suse.patch:
+  - Remove Leap_15.1 and and Leap_15.2
+- Drop 0001-rought-Qt5-port.patch, because now in upstream.
+- Drop 0002-comment-out-all-sources-that-require-FTP-LIST.patch,
+  because now in upstream.
+- Drop 0003-fix-distrolst.cpp.patch, because now in upstream.
+- Drop 0004-don-t-wait-until-the-file-is-downloaded-fully-before.patch,
+  because now in upstream.
+
+-------------------------------------------------------------------
 Tue Sep  8 08:37:29 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to revision 681

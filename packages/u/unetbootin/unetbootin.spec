@@ -1,7 +1,7 @@
 #
 # spec file for package unetbootin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define rev 681
+%define rev 700
 Name:           unetbootin
 Version:        0.0.%{rev}
 Release:        0
@@ -26,13 +26,9 @@ Group:          System/GUI/Other
 URL:            https://sourceforge.net/projects/unetbootin/
 #Source:         %%{name}-source-%%{rev}.tar.gz
 Source:         https://downloads.sourceforge.net/project/unetbootin/UNetbootin/%{rev}/unetbootin-source-%{rev}.tar.gz
-Patch0:         0001-rought-Qt5-port.patch
-Patch1:         0002-comment-out-all-sources-that-require-FTP-LIST.patch
-Patch2:         0003-fix-distrolst.cpp.patch
-Patch3:         0004-don-t-wait-until-the-file-is-downloaded-fully-before.patch
-Patch4:         %{name}-suse.patch
-Patch5:         %{name}-locate-usb-devices.diff
-Patch6:         %{name}-desktop.patch
+Patch0:         %{name}-suse.patch
+Patch1:         %{name}-locate-usb-devices.diff
+Patch2:         %{name}-desktop.patch
 BuildRequires:  gcc-c++
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -67,11 +63,7 @@ or replace the existing OS entirely.
 %setup -q -c -n %{name}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6
+%patch2
 # rpmlint: wrong-file-end-of-line-encoding
 sed -i 's/\r$//' README.TXT
 
