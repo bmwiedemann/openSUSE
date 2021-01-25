@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 25 08:53:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.8.3:
+  * Really fix popovers not showing on Wayland without making
+    them non-modal
+  * Prevent GStreamer based configuration from being applied
+    in incompatible wine builds.
+  * Fix crash when wine runner accesses DXVK versions before
+    they are uploaded.
+  * Prevent init dialog from being closed while it
+    downloads the runtime.
+
+-------------------------------------------------------------------
 Sat Jan  9 10:58:56 UTC 2021 - Matthias Bach <marix@marix.org>
 
 - Add recommendation to python3-distro to avoid warning on startup.

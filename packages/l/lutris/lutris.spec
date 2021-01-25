@@ -18,7 +18,7 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.8.2
+Version:        0.5.8.3
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
@@ -55,7 +55,7 @@ BuildArch:      noarch
 %description
 Lutris allows to gather and manage (install, configure and launch)
 all games acquired from any source, in a single interface.
-This includes, for example, Steam or Desura games, Windows games (WINE),
+This includes, for example, Steam or GOG games, Windows games (WINE),
 or emulated console games and browser games.
 
 %prep

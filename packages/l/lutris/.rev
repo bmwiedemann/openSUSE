@@ -181,4 +181,20 @@
     <comment></comment>
     <requestid>861892</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>13df4dcf4e5ba8f96417d894ae5d3228</srcmd5>
+    <version>0.5.8.3</version>
+    <time>1611595470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8.3:
+  * Really fix popovers not showing on Wayland without making
+    them non-modal
+  * Prevent GStreamer based configuration from being applied
+    in incompatible wine builds.
+  * Fix crash when wine runner accesses DXVK versions before
+    they are uploaded.
+  * Prevent init dialog from being closed while it
+    downloads the runtime.</comment>
+    <requestid>866504</requestid>
+  </revision>
 </revisionlist>
