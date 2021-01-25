@@ -1,7 +1,7 @@
 #
 # spec file for package armnn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,6 +90,8 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/499
+Patch1:         96beb97.diff
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -424,6 +426,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
+%patch1 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1

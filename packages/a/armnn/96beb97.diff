@@ -1,0 +1,39 @@
+From 96beb97f0ce6650d64fb15d9c920d70a1572672c Mon Sep 17 00:00:00 2001
+From: Keith Mok <ek9852@gmail.com>
+Date: Thu, 07 Jan 2021 17:24:58 -0800
+Subject: [PATCH] Adopt the change of tflite builtin code
+
+This fixes tflite parser cannot parse model with new schema
+Tensorflow 2.4 updated the schema to version 3.
+And breaks armnn tensorflow lite parser.
+Adopt changes to fix it.
+But it will require using Tensorflow 2.4+ schema_generated.h
+
+Signed-off-by: Keith Mok <ek9852@gmail.com>
+Change-Id: I9eed8542e0882a39b7799a4e870ad09c69c7808f
+---
+
+diff --git a/src/armnnTfLiteParser/TfLiteParser.cpp b/src/armnnTfLiteParser/TfLiteParser.cpp
+index 8e0fae6..183e337 100644
+--- a/src/armnnTfLiteParser/TfLiteParser.cpp
++++ b/src/armnnTfLiteParser/TfLiteParser.cpp
+@@ -645,7 +645,8 @@
+             for (OperatorPtr const& op : subgraph->operators)
+             {
+                 auto const& opCodePtr = m_Model->operator_codes[op->opcode_index];
+-                auto builtinCode = opCodePtr->builtin_code;
++                auto builtinCode = std::max(opCodePtr->builtin_code,
++                        static_cast<tflite::BuiltinOperator>(opCodePtr->deprecated_builtin_code));
+ 
+                 if (builtinCode > tflite::BuiltinOperator_MAX)
+                 {
+@@ -765,7 +766,8 @@
+     const auto & operatorPtr = m_Model->subgraphs[subgraphIndex]->operators[operatorIndex];
+ 
+     auto opcodeIndex = operatorPtr->opcode_index;
+-    auto opcode      = m_Model->operator_codes[opcodeIndex]->builtin_code;
++    auto opcode      = std::max(m_Model->operator_codes[opcodeIndex]->builtin_code,
++            static_cast<tflite::BuiltinOperator>(m_Model->operator_codes[opcodeIndex]->deprecated_builtin_code));
+ 
+     if (!m_Options || !m_Options.value().m_StandInLayerForUnsupported)
+     {
