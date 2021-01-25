@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 22 16:52:40 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mutt 2.0.5:
+  * CVE-2021-3181: recipient parsing memory leak (boo#1181221)
+  * fix other memory leak in IMAP code
+  * Fix color overlay when HAVE_COLOR is unset
+
+-------------------------------------------------------------------
 Thu Dec 31 08:26:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mutt 2.0.4:
