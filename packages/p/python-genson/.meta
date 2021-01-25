@@ -1,0 +1,5 @@
+<package name="python-genson" project="openSUSE:Factory">
+  <title></title>
+  <description>Python JSON Schema generator</description>
+  <devel project="devel:languages:python" package="python-genson"/>
+</package>
