@@ -1,0 +1,5 @@
+<package name="python-django-bootstrap4" project="openSUSE:Factory">
+  <title></title>
+  <description>Bootstrap support for Django projects</description>
+  <devel project="devel:languages:python:django" package="python-django-bootstrap4"/>
+</package>
