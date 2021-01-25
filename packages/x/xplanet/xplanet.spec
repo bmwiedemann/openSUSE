@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            http://xplanet.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source1:        moon.jpg
+Source2:        moon.jpg.COPYING
 # new giflib-5 api
 Patch0:         xplanet-giflib5.patch
 # PATCH-FIX-UPSTREAM gcc6.patch boo#985129 asterios.dramis@gmail.com -- Fix compilation with GCC 6
@@ -69,6 +71,7 @@ satellite cloud images.
 %endif
 %patch1
 %patch2 -p1
+cp -a %{S:2} .
 
 %build
 autoreconf -fi
@@ -82,9 +85,11 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+install -p %{S:1} %{buildroot}%{_datadir}/%{name}/images/
 
 %files
 %license COPYING
+%license moon.jpg.COPYING
 %doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
