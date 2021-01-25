@@ -1,7 +1,7 @@
 #
 # spec file for package python-dogpile.cache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
+%global skip_python36 1
 Name:           python-dogpile.cache
 Version:        1.1.1
 Release:        0
@@ -34,7 +35,7 @@ BuildRequires:  %{python_module decorator >= 4.0.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module stevedore}
+BuildRequires:  python3-stevedore
 Requires:       python-decorator >= 4.0.0
 BuildRequires:  %{python_module six}
 Requires:       python-six

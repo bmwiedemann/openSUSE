@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 24 18:40:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip building against python 3.6 
+
+-------------------------------------------------------------------
 Wed Nov 25 14:10:35 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.1.1:
