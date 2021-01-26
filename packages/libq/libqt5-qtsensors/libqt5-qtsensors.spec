@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtsensors
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\((Explorer|Grue).*
 
 %define qt5_snapshot 0
 %define libname libQt5Sensors5
@@ -54,6 +57,7 @@ recognition API for devices.
 
 %package -n %{libname}
 Summary:        Qt 5 Sensors library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          System/Libraries
 %requires_ge    libQt5Core5
 
@@ -64,6 +68,7 @@ recognition API for devices.
 
 %package -n %{libname}-imports
 Summary:        QML imports for the Qt 5 Sensors library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          System/Libraries
 %requires_ge    libQtQuick5
 Supplements:    (%{libname} and libQtQuick5)
@@ -78,6 +83,7 @@ handling.
 
 %package devel
 Summary:        Development files for the Qt 5 Sensors library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Requires:       %{libname} = %{version}
 Provides:       libQt5Sensors-devel = %{version}
@@ -92,6 +98,7 @@ applications that want to make use of libQt5Sensors5.
 
 %package private-headers-devel
 Summary:        Non-ABI stable experimental API for the Qt5 Sensors library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libQt5Core-private-headers-devel >= %{version}
