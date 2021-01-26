@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 22 18:02:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.6:
+  * libmbim-glib,device:
+    + Fixed a GSource use after free.
+    + Avoid g_file_test() on NULL path.
+    + Don't warn if descriptors file cannot be read.
+  * Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
 Fri Oct  2 17:38:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.24.4:
