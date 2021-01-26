@@ -1047,4 +1047,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1611385633</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="145" vrev="143">
+    <srcmd5>c71c0be26526594e70bdba59e7b52c31</srcmd5>
+    <version>unknown</version>
+    <time>1611648142</time>
+    <user>dimstar_suse</user>
+    <comment>MicroOS-release needs to be arch-limited</comment>
+  </revision>
 </revisionlist>

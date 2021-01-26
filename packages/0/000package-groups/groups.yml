@@ -372,7 +372,7 @@ opensuse_microos:
   - kernel-vanilla: [locked]
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
-  - MicroOS-release
+  - MicroOS-release [aarch64,ppc64le,s390x,x86_64]
   - kernel-default
   - patterns-microos-base: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-defaults: [aarch64,ppc64le,s390x,x86_64]
