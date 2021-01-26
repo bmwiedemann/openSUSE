@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>824987</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8da485b90cc604c59531b0aead0c5e46</srcmd5>
+    <version>0.4.4</version>
+    <time>1611668758</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from python3_only to python_alternative for hcltool.</comment>
+    <requestid>864191</requestid>
+  </revision>
 </revisionlist>
