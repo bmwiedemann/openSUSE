@@ -1,7 +1,7 @@
 #
 # spec file for package python-moreorless
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,21 +30,20 @@ BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
+BuildRequires:  (python36-dataclasses if python36-base)
 Requires:       python-click
 Requires:       python-volatile
+%if 0%{?python_version_nodots} < 37
+Requires:       python-dataclasses
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module volatile}
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module dataclasses}
-%endif
 # /SECTION
-%if 0%{?suse_version} <= 1500
-Requires:       python-dataclasses
-%endif
 %python_subpackages
 
 %description

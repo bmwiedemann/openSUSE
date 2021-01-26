@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 25 16:38:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.0.11
+  * QtGui: Make WheelEvent >=PyQt5.12 constructor work <PyQt5.12
+
+-------------------------------------------------------------------
 Fri Jan 22 16:16:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use the upstream provided test

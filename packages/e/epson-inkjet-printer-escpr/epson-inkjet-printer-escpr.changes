@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 18 20:37:51 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to 1.7.8:
+  * Supported new model:
+    + Epson-EP-713A_Series
+    + Epson-EP-813A_Series
+  * Fixed an issue of filter crash when FIFO I/O was closed. 
+- Rebased bug_x86_64.patch.
+
+-------------------------------------------------------------------
 Tue Apr 21 19:24:12 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to 1.7.7:

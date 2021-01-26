@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pure-sasl
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,6 +63,16 @@ cp %{SOURCE1} .
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand chmod +x %{buildroot}%{$python_sitelib}/pydle/utils/irccat.py
+%python_clone -a %{buildroot}%{_bindir}/pydle
+%python_clone -a %{buildroot}%{_bindir}/pydle-irccat
+
+%post
+%python_install_alternative pydle
+%python_install_alternative pydle-irccat
+
+%postun
+%python_uninstall_alternative pydle
+%python_uninstall_alternative pydle-irccat
 
 %check
 %pytest -m unit
@@ -68,7 +80,7 @@ cp %{SOURCE1} .
 %files %{python_files}
 %license LICENSE.md
 %{python_sitelib}/*
-%{_bindir}/pydle
-%{_bindir}/pydle-irccat
+%python_alternative %{_bindir}/pydle
+%python_alternative %{_bindir}/pydle-irccat
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 24 11:07:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.4
+  * Improved constructor & destructor declaration support
+  * Ability to explain forward declarations
+  * Ability to catch types having bit-field widths
+
+-------------------------------------------------------------------
 Fri Jan 15 10:18:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.3

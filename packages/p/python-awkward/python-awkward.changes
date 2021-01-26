@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jan 25 23:10:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.2
+  * @nsmith- fixed virtual arrays in ak.to_arrow (PR #642).
+  * Fixed #628, allowing np.int64(N) to be used in a slice like
+    integer N (PR #636).
+  * Added the ability to select fields inside of nested 
+    records with syntax like array[[“pt”, “eta”, “phi”], 
+    “nominal”] (#619).
+  * Fixed Apache Arrow → Awkward Array (ak.from_arrow) for 
+    sliced Arrow arrays: it has an offset attribute we had 
+    been ignoring (#625). Thanks to @trickarcher for the 
+    extensive tests!
+  * Ensured that an ak.Array’s behavior always gets passed to 
+    output of any operation (#626), even if the input is a 
+    dict (#627, affected ak.zip, ak.cartesian, and 
+    ak.argcartesian).
+  * Fixed #629, ak.with_field dropping parameters (#631), 
+    and #634, ak.fill_none not accepting a Record as a fill 
+    value (#635).
+  * Added a roadmap and upvote/thumbs up instructions to the 
+    README.
+  * @jpivarski revised the ak.concatenate implementation 
+    (#610), fixed a bug related to axis handling (#612), and 
+    made ak.concatenate friendlier to lazy arrays (#613; 
+    “friendlier” = “materializes arrays in fewer cases”).
+  * @chrisburr added setuptools as a requirement because it 
+    is used for pkg_resources.
+  * @ianna added validity-checking for strings, bytestrings, 
+    and categorical (#571), including some revisions of 
+    sorting and a partial implementation of checking for 
+    uniqueness and identifying unique elements from arrays 
+    that can later be used to implement np.unique.
+  * Updated Awkward <–> Arrow conversion to preserve nullability 
+    in type (PRs #602, #606). Preemptively avoiding warnings 
+    from NumPy 1.20 (#599) and fixed 32-bit Linux cases in the 
+    tests (#604).
+  * @henryiii fixed hardcoded threads in MacOS compilation 
+    target (for deploying to conda-forge).
+- Drop awkward-tests-on-32bit.patch merged upstream
+- Fix python_expand for primary flavor check
+
+-------------------------------------------------------------------
 Wed Dec 16 00:13:41 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add awkward-tests-on-32bit.patch: Fix tests on 32 bit systems;

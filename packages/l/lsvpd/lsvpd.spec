@@ -1,7 +1,7 @@
 #
 # spec file for package lsvpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,10 @@ Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/power-ras/lsvpd
-Source0:        https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         lsvpd-sysvpd-Add-UUID-property.patch
+Patch2:         lsvpd-nvme-Populate-NVMe-firmware-version.patch
+Patch3:         lsvpd-sysfs-Fix-PCI-device-manufacturer-parsing-logic.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel
@@ -48,6 +51,7 @@ levels.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/usb.ids\"'"

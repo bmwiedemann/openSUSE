@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 25 08:07:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.10.5.1
+  * #2589: `DOMDeserializer`: setExpandEntityReferences(false) may
+    not prevent external entity expansion in all cases
+    (CVE-2020-25649, bsc#1177616)
+  * #2787 (partial fix): NPE after add mixin for enum
+  * #2679: 'ObjectMapper.readValue("123", Void.TYPE)' throws
+    "should never occur"
+- Vulnerabilities not affecting this version:
+  * CVE-2020-35728, bsc#1180391
+  * CVE-2021-20190, bsc#1181118
+
+-------------------------------------------------------------------
 Thu Mar 26 07:36:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.10.3

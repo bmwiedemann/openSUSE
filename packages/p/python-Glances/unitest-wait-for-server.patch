@@ -1,0 +1,13 @@
+Index: glances-3.1.5/unitest-xmlrpc.py
+===================================================================
+--- glances-3.1.5.orig/unitest-xmlrpc.py
++++ glances-3.1.5/unitest-xmlrpc.py
+@@ -59,7 +59,7 @@ class TestGlances(unittest.TestCase):
+         args = shlex.split(cmdline)
+         pid = subprocess.Popen(args)
+         print("Please wait...")
+-        time.sleep(1)
++        time.sleep(5)
+ 
+         self.assertTrue(pid is not None)
+ 

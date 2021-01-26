@@ -31,4 +31,12 @@
     <comment>2.10.3</comment>
     <requestid>788433</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e796bbc162f518d1f5b8d5593d55323</srcmd5>
+    <version>2.10.5.1</version>
+    <time>1611668798</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2020-25649, bsc#1177616</comment>
+    <requestid>866653</requestid>
+  </revision>
 </revisionlist>

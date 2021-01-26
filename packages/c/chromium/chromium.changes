@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Jan 23 10:09:14 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 88.0.4324.96 bsc#1181137
+  - CVE-2021-21117: Insufficient policy enforcement in Cryptohome
+  - CVE-2021-21118: Insufficient data validation in V8
+  - CVE-2021-21119: Use after free in Media
+  - CVE-2021-21120: Use after free in WebSQL
+  - CVE-2021-21121: Use after free in Omnibox
+  - CVE-2021-21122: Use after free in Blink
+  - CVE-2021-21123: Insufficient data validation in File System API
+  - CVE-2021-21124: Potential user after free in Speech Recognizer
+  - CVE-2021-21125: Insufficient policy enforcement in File System API
+  - CVE-2020-16044: Use after free in WebRTC
+  - CVE-2021-21126: Insufficient policy enforcement in extensions
+  - CVE-2021-21127: Insufficient policy enforcement in extensions
+  - CVE-2021-21128: Heap buffer overflow in Blink
+  - CVE-2021-21129: Insufficient policy enforcement in File System API
+  - CVE-2021-21130: Insufficient policy enforcement in File System API
+  - CVE-2021-21131: Insufficient policy enforcement in File System API
+  - CVE-2021-21132: Inappropriate implementation in DevTools
+  - CVE-2021-21133: Insufficient policy enforcement in Downloads
+  - CVE-2021-21134: Incorrect security UI in Page Info
+  - CVE-2021-21135: Inappropriate implementation in Performance API
+  - CVE-2021-21136: Insufficient policy enforcement in WebView
+  - CVE-2021-21137: Inappropriate implementation in DevTools
+  - CVE-2021-21138: Use after free in DevTools
+  - CVE-2021-21139: Inappropriate implementation in iframe sandbox
+  - CVE-2021-21140: Uninitialized Use in USB
+  - CVE-2021-21141: Insufficient policy enforcement in File System API
+- Added patches:
+  - chromium-88-compiler.patch
+  - chromium-88-ozone-deps.patch
+  - chromium-88-ityp-include.patch
+  - chromium-88-AXTreeFormatter-include.patch
+  - chromium-88-BookmarkModelObserver-include.patch
+  - chromium-88-federated_learning-include.patch
+  - chromium-88-ideographicSpaceCharacter.patch
+  - chromium-88-StringPool-include.patch
+  - chromium-88-dawn-static.patch
+  - chromium-88-CompositorFrameReporter-dcheck.patch
+- Removed patches:
+  - gpu-timeout.patch
+  - chromium-87-compiler.patch
+  - chromium-87-ServiceWorkerContainerHost-crash.patch
+  - chromium-87-ozone-deps.patch
+  - chromium-87-v8-icu68.patch
+  - chromium-87-icu68.patch
+
+-------------------------------------------------------------------
 Sat Jan 16 11:40:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove C++ only flags from CFLAGS

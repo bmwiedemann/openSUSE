@@ -1,0 +1,56 @@
+From fa1638452b8299f1a7f8e9a94259b25218a92acc Mon Sep 17 00:00:00 2001
+From: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+Date: Wed, 20 Jan 2021 12:30:51 +0530
+Subject: [PATCH 1/3] sysvpd: Add UUID property
+
+Upstream: accepted - expected v1.7.12
+Git-commit: fa1638452b8299f1a7f8e9a94259b25218a92acc
+
+Recent LPARs contains "ibm,partition-uuid" device tree property.. which
+is unique UUID for each LPAR. This is represented by `MU` keyword.
+
+Lets add support to parse this property and populate vpddb.
+
+Ideally we should enhance libvpd to support new keyword. But that will
+add depedency on libvpd version. Hence adding this new keyword (MU)
+as DeviceSpecific keyword.
+
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+---
+ src/internal/sys_interface/devicetreecollector.cpp | 6 ++++++
+ src/internal/sys_interface/icollector.cpp          | 2 ++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/internal/sys_interface/devicetreecollector.cpp b/src/internal/sys_interface/devicetreecollector.cpp
+index 6afbe85dfcb7..db4e8b5ad548 100644
+--- a/src/internal/sys_interface/devicetreecollector.cpp
++++ b/src/internal/sys_interface/devicetreecollector.cpp
+@@ -1215,6 +1215,12 @@ ERROR:
+ 				sys->mSerialNum2.setValue( val, 80 , __FILE__, __LINE__ );
+ 		}
+ 
++		val = getAttrValue("/proc/device-tree", "ibm,partition-uuid" );
++		if( val != "" )
++		{
++			setVPDField( sys, string("MU"), val, __FILE__, __LINE__ );
++		}
++
+ 		getSystemVPD(sys);
+ 	}
+ 
+diff --git a/src/internal/sys_interface/icollector.cpp b/src/internal/sys_interface/icollector.cpp
+index ffa246650e3f..5c4dcccb5100 100644
+--- a/src/internal/sys_interface/icollector.cpp
++++ b/src/internal/sys_interface/icollector.cpp
+@@ -313,6 +313,8 @@ namespace lsvpd
+ 		else if( key == "SE" ) {
+ 			sys->mSerialNum1.setValue( val, 70, file, lineNum );
+ 			sys->mProcessorID.setValue( val, 70, file, lineNum );
++		} else if ( key == "MU" ) {
++			sys->addDeviceSpecific( key, "UUID", val, 90 );
+ 		} else
+ 			/* XXX: Un-recognized key */
+ 			sys->addDeviceSpecific( key, "System Specific", val, 90 );
+-- 
+2.26.2
+

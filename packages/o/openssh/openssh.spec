@@ -58,6 +58,7 @@ Source10:       sshd.service
 Source11:       README.FIPS
 Source12:       cavs_driver-ssh.pl
 Source13:       https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/RELEASE_KEY.asc#/openssh.keyring
+Source14:       sysusers-sshd.conf
 Patch0:         openssh-7.7p1-allow_root_password_login.patch
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
 Patch3:         openssh-7.7p1-enable_PAM_by_default.patch
@@ -107,6 +108,8 @@ Patch39:        openssh-8.1p1-use-openssl-kdf.patch
 Patch40:        openssh-8.1p1-ed25519-use-openssl-rng.patch
 Patch41:        openssh-fips-ensure-approved-moduli.patch
 Patch42:        openssh-link-with-sk.patch
+Patch43:        openssh-reenable-dh-group14-sha1-default.patch
+Patch44:        openssh-fix-ssh-copy-id.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -119,6 +122,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 Requires:       %{name}-clients = %{version}-%{release}
 Requires:       %{name}-server = %{version}-%{release}
 %if %{with tirpc}
@@ -129,6 +134,8 @@ BuildRequires:  pkgconfig(krb5)
 %else
 BuildRequires:  krb5-mini-devel
 %endif
+Requires(pre):  findutils
+Requires(pre):  grep
 
 %description
 SSH (Secure Shell) is a program for logging into and executing commands
@@ -166,10 +173,12 @@ Summary:        SSH (Secure Shell) server
 Group:          Productivity/Networking/SSH
 Requires:       %{name}-common = %{version}-%{release}
 Recommends:     audit
-Requires(pre):  shadow
+Requires(pre):  findutils
+Requires(pre):  grep
 Requires(post): %fillup_prereq
 Requires(post): permissions
 Provides:       openssh:%{_sbindir}/sshd
+%sysusers_requires
 
 %description server
 SSH (Secure Shell) is a program for logging into and executing commands
@@ -287,6 +296,7 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
     --target=%{_target_cpu}-suse-linux
 
 %make_build
+%sysusers_generate_pre %{SOURCE14} sshd
 
 %install
 %make_install
@@ -322,6 +332,10 @@ rm -f %{buildroot}%{_datadir}/Ssh.bin
 # sshd keys generator wrapper
 install -D -m 0755 %{SOURCE9} %{buildroot}%{_sbindir}/sshd-gen-keys-start
 
+# Install sysusers.d config for sshd user
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE14} %{buildroot}%{_sysusersdir}/sshd.conf
+
 # the hmac hashes - taken from openssl
 #
 # re-define the __os_install_post macro: the macro strips
@@ -346,24 +360,29 @@ done
 # %%service_add_post scriptlet (in %%post server) will see it as a new service
 # and apply the preset, disabling it. We need to reenable it afterwards if
 # necessary.
+mkdir -p %{_tmpenableddir} || :
 if [ -x %{_bindir}/systemctl ]; then
-    mkdir -p %{_tmpenableddir} || :
     %{_bindir}/systemctl is-enabled sshd > %{_tmpenabledfile} || :
+else
+    if find %{_sysconfdir}/init.d/rc[35].d -type l -regex '.*/S[0-9]+sshd' \
+        -exec readlink -f {} \; | grep '/etc/init.d/sshd$' >/dev/null 2>&1
+    then echo "enabled" > %{_tmpenabledfile} || :; fi
 fi
 
-%pre server
-getent group sshd >/dev/null || %{_sbindir}/groupadd -r sshd
-getent passwd sshd >/dev/null || %{_sbindir}/useradd -r -g sshd -d %{_localstatedir}/lib/sshd -s /bin/false -c "SSH daemon" sshd
+%pre server -f sshd.pre
 %if %{defined _distconfdir}
 # move outdated pam.d/*.rpmsave file away
 test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd.rpmsave.old ||:
 %endif
 
-
 # See %%pre.
+mkdir -p %{_tmpenableddir} || :
 if [ -x %{_bindir}/systemctl ]; then
-    mkdir -p %{_tmpenableddir} || :
     %{_bindir}/systemctl is-enabled sshd > %{_tmpenabledfile} || :
+else
+    if find %{_sysconfdir}/init.d/rc[35].d -type l -regex '.*/S[0-9]+sshd' \
+        -exec readlink -f {} \; | grep '/etc/init.d/sshd$' >/dev/null 2>&1
+    then echo "enabled" > %{_tmpenabledfile} || :; fi
 fi
 
 %service_add_pre sshd.service
@@ -434,6 +453,7 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
 %endif
 %attr(0644,root,root) %{_unitdir}/sshd.service
+%attr(0644,root,root) %{_sysusersdir}/sshd.conf
 %attr(0444,root,root) %{_mandir}/man5/sshd_config*
 %attr(0444,root,root) %{_mandir}/man8/sftp-server.8*
 %attr(0444,root,root) %{_mandir}/man8/sshd.8*

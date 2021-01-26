@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 25 20:23:12 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Added the following patches for bsc#1179319
+  * Fix compiling with C++:
+    ocki-3.15.1-Fix-compiling-with-c.patch
+  * Added error message handling for p11sak remove-key command.
+    ocki-3.15.1-Added-error-message-handling-for-p11sak-remove-key-c.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 13:34:51 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't require pwdutils for build, dropped long ago and not needed

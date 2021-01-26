@@ -782,7 +782,7 @@ Index: chromium-83.0.4103.116/third_party/webrtc/webrtc.gni
 +++ chromium-83.0.4103.116/third_party/webrtc/webrtc.gni
 @@ -114,6 +114,10 @@ declare_args() {
    # supported Ubuntu and Debian distributions.
-   rtc_use_pipewire = is_desktop_linux && use_sysroot
+   rtc_use_pipewire = is_linux && use_sysroot
  
 +  # Sets the pipewire pkg-config version to use if rtc_use_pipewire is true
 +  rtc_use_pipewire_version = "0.3"

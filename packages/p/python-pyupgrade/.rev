@@ -31,4 +31,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853810</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>73cf65eea5d1dac2ca86fb4da48c5a3f</srcmd5>
+    <version>2.7.4</version>
+    <time>1611668794</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_clone and alternatives to provide the executable.
+</comment>
+    <requestid>866337</requestid>
+  </revision>
 </revisionlist>

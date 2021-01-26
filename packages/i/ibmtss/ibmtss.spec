@@ -1,7 +1,7 @@
 #
 # spec file for package ibmtss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 #
 %define libversion 1
-%define libversion_full 1.5.0
+%define libversion_full 1.6.0
 %define libname libibmtss
 %define libpkgname %{libname}%{libversion}
 
 Name:           ibmtss
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        IBM's TPM 2.0 TSS
 License:        BSD-3-Clause
@@ -32,8 +32,6 @@ URL:            https://sourceforge.net/projects/ibmtpm20tss
 Source:         https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{version}.tar.gz
 Source1:        90-tpm-ibmtss.rules
 Patch1:         ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
-Patch2:         ibmtss-certifyx509-Fix-uninitialized-variable.patch
-Patch3:         ibmtss-fix-dsa-regression.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2

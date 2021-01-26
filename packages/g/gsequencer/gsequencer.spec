@@ -22,7 +22,7 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        3.7.22
+Version:        3.7.30
 Release:        0
 Summary:        Audio processing engine
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later AND GFDL-1.3-only
@@ -104,12 +104,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc-base/
 mkdir -p %{buildroot}%{_datadir}/doc/packages
 mv %{buildroot}%{_datadir}/doc/gsequencer  %{buildroot}%{_docdir}
+%find_lang %name
 
 %check
 xvfb-run --server-args="-screen 0 1920x1080x24" -a make check
 desktop-file-validate %{buildroot}/%{_datadir}/applications/gsequencer.desktop
 
-%files
+%files -f %name.lang
+%defattr(-,root,root)
 %license COPYING
 %{_bindir}/gsequencer
 %{_bindir}/midi2xml

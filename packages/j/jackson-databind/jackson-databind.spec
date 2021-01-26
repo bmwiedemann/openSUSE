@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-databind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-databind
-Version:        2.10.3
+Version:        2.10.5.1
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0 AND LGPL-2.1-or-later
@@ -25,9 +25,9 @@ URL:            https://github.com/FasterXML/jackson-databind/
 Source0:        https://github.com/FasterXML/jackson-databind/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= %{version}
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(org.apache.bcel:bcel)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)

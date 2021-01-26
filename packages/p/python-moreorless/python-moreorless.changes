@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 18 23:37:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add BuildRequires for python-dataclasses
+
+-------------------------------------------------------------------
 Sun Oct 11 07:42:29 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.3.0

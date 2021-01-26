@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 26 11:30:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.2
+  * Fix NULL pointer dereferences in the xls2csv tool
+
+-------------------------------------------------------------------
 Wed Sep  9 14:46:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.1

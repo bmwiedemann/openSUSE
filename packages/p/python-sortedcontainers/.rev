@@ -99,4 +99,12 @@
   * Make sort order stable when updating with large iterables.</comment>
     <requestid>850919</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8fa95b94e26398897c709082c2ecfc4a</srcmd5>
+    <version>2.3.0</version>
+    <time>1611668751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866285</requestid>
+  </revision>
 </revisionlist>

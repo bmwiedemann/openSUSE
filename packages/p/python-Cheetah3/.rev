@@ -114,4 +114,12 @@
  * build fixes</comment>
     <requestid>819499</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>82eb5ce31732ee1fe7dd82e9f0e73b01</srcmd5>
+    <version>3.2.6</version>
+    <time>1611668775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865319</requestid>
+  </revision>
 </revisionlist>

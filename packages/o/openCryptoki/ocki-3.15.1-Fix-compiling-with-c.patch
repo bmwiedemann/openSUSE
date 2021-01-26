@@ -1,0 +1,25 @@
+From 2d16f003911ceee50967546f4b3c7cac2db9ba86 Mon Sep 17 00:00:00 2001
+From: Bjar Ne <43565432+gleichdick@users.noreply.github.com>
+Date: Wed, 25 Nov 2020 09:13:57 +0000
+Subject: [PATCH] Fix compiling with c++
+
+---
+ usr/include/pkcs11types.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usr/include/pkcs11types.h b/usr/include/pkcs11types.h
+index 18a82715..c9a475dd 100644
+--- a/usr/include/pkcs11types.h
++++ b/usr/include/pkcs11types.h
+@@ -1483,7 +1483,7 @@ typedef CK_FUNCTION_LIST_3_0_PTR CK_PTR CK_FUNCTION_LIST_3_0_PTR_PTR;
+ 
+ typedef struct CK_IBM_FUNCTION_LIST_1_0 CK_IBM_FUNCTION_LIST_1_0;
+ typedef struct CK_IBM_FUNCTION_LIST_1_0 CK_PTR CK_IBM_FUNCTION_LIST_1_0_PTR;
+-typedef struct CK_IBM_FUNCTION_LIST_1_0_PTR CK_PTR CK_IBM_FUNCTION_LIST_1_0_PTR_PTR;
++typedef CK_IBM_FUNCTION_LIST_1_0_PTR CK_PTR CK_IBM_FUNCTION_LIST_1_0_PTR_PTR;
+ 
+ typedef CK_RV (CK_PTR CK_C_Initialize) (CK_VOID_PTR pReserved);
+ typedef CK_RV (CK_PTR CK_C_Finalize) (CK_VOID_PTR pReserved);
+-- 
+2.26.2
+

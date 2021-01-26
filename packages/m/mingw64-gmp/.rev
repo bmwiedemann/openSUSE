@@ -7,4 +7,14 @@
     <comment>new package</comment>
     <requestid>750251</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c21d4e4b649ab66d4e2f187c34e5056</srcmd5>
+    <version>6.1.1</version>
+    <time>1611668878</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing dependency to runtime package for development
+  package to be in sync with native package
+</comment>
+    <requestid>866815</requestid>
+  </revision>
 </revisionlist>

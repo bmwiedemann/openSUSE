@@ -19,23 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Pint
-Version:        0.15
+Version:        0.16.1
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
 URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/P/Pint/Pint-%{version}.tar.gz
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
+Requires:       python-importlib-resources
 Requires:       python-packaging
 Requires:       python-uncertainties >= 3.0
 Recommends:     python-numpy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
@@ -61,6 +63,7 @@ the complete list without changing the source code.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pint-convert
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,10 +71,16 @@ the complete list without changing the source code.
 # See: https://github.com/hgrecco/pint/issues/1006
 %pytest -k 'not test_result_type_numpy_func'
 
+%post
+%python_install_alternative pint-convert
+
+%postun
+%python_uninstall_alternative pint-convert
+
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES README.rst
-%{_bindir}/pint-convert
+%python_alternative %{_bindir}/pint-convert
 %{python_sitelib}/Pint-0*-py*.egg-info
 %{python_sitelib}/pint/
 

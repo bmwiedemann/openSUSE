@@ -1,0 +1,41 @@
+diff --git a/myproposal.h b/myproposal.h
+index 5312e60..83fd62d 100644
+--- a/myproposal.h
++++ b/myproposal.h
+@@ -33,7 +33,8 @@
+ 	"diffie-hellman-group-exchange-sha256," \
+ 	"diffie-hellman-group16-sha512," \
+ 	"diffie-hellman-group18-sha512," \
+-	"diffie-hellman-group14-sha256"
++	"diffie-hellman-group14-sha256," \
++	"diffie-hellman-group14-sha1"
+ 
+ #define KEX_CLIENT_KEX KEX_SERVER_KEX
+ 
+diff --git a/ssh_config.5 b/ssh_config.5
+index d5888f2..100563e 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -1170,7 +1170,8 @@ ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,
+ diffie-hellman-group-exchange-sha256,
+ diffie-hellman-group16-sha512,
+ diffie-hellman-group18-sha512,
+-diffie-hellman-group14-sha256
++diffie-hellman-group14-sha256,
++diffie-hellman-group14-sha1
+ .Ed
+ .Pp
+ The list of available key exchange algorithms may also be obtained using
+diff --git a/sshd_config.5 b/sshd_config.5
+index 0f5fe53..97364f5 100644
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -986,7 +986,7 @@ curve25519-sha256,curve25519-sha256@libssh.org,
+ ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,
+ diffie-hellman-group-exchange-sha256,
+ diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,
+-diffie-hellman-group14-sha256
++diffie-hellman-group14-sha256,diffie-hellman-group14-sha1
+ .Ed
+ .Pp
+ The list of available key exchange algorithms may also be obtained using

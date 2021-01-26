@@ -1,7 +1,7 @@
 #
 # spec file for package python-xdis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.10.0}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -52,14 +54,21 @@ rm pytest/test_disasm.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/pydisasm
 
 %check
 %pytest pytest
 
+%post
+%python_install_alternative pydisasm
+
+%postun
+%python_uninstall_alternative pydisasm
+
 %files %{python_files}
 %license COPYING
 %doc NEWS.md README.rst
-%python3_only %{_bindir}/pydisasm
+%python_alternative %{_bindir}/pydisasm
 %{python_sitelib}/*
 
 %changelog

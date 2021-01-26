@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glances
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Patch0:         adjust-data-files.patch
 Patch1:         remove-shebang.patch
 Patch2:         skip-online-tests.patch
 Patch3:         fix-tests.patch
+Patch4:         unitest-wait-for-server.patch
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module psutil >= 5.6.3}

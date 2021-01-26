@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-core
-Version:        2.10.3
+Version:        2.10.5
 Release:        0
 Summary:        Core part of Jackson
 License:        Apache-2.0
@@ -26,7 +26,7 @@ URL:            https://github.com/FasterXML/jackson-core/
 Source0:        https://github.com/FasterXML/jackson-core/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= %{version}
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch

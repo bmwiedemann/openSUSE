@@ -19,8 +19,8 @@ BuildFlags: vmfstype:ext4
 BuildFlags: vmfsoptions:nodirindex
 
 # Help with the switch to the gcc7 provided libs
-#Prefer: -libstdc++6-gcc7 -libtsan0-gcc7 -libgomp1-gcc7 -libgcc_s1-gcc7 -libatomic1-gcc7 -libcilkrts5-gcc7 -libitm1-gcc7
-#Prefer: -liblsan0-gcc7 -libmpx2-gcc7 -libubsan0-gcc7
+#Prefer: -libstdc++6-gcc7 -libtsan0-gcc7 -libgomp1-gcc7 -libgcc_s1-gcc7 -libatomic1-gcc7 -libitm1-gcc7
+#Prefer: -liblsan0-gcc7 -libmpx2-gcc7
 
 # Help with the switch to the gcc9 provided libs:
 Prefer: libasan5 libasan5-32bit libasan6 libasan6-32bit libubsan1 libubsan1-32bit libgfortran5
@@ -121,11 +121,10 @@ Prefer: libffi7
 
 # LUA namespace migration - slowly moving to the new names (keep ports in mind!)
 # lua, lua51, lua52 and lua53 all provide 'lua'; version 5.3 is the 'target'; lua will be deleted in the future
-Prefer: lua53 lua51 lua52 lua
-Prefer: liblua5_3-5 liblua5_1-5 liblua5_2-5
-Prefer: lua53-devel lua51-devel lua52-devel
-Prefer: libtolua++-5_3-devel libtolua++-5_1-devel libtolua++-5_2-devel
-Prefer: -liblua5_3 -liblua5_1 -liblua5_2
+Prefer: lua53 lua51
+Prefer: liblua5_3-5 liblua5_1-5
+Prefer: lua53-devel lua51-devel
+Prefer: libtolua++-5_3-devel libtolua++-5_1-devel
 Prefer: -moonjit-devel
 
 Preinstall: liblua5_3-5
@@ -247,39 +246,23 @@ Prefer: -coreutils-single
 Prefer: systemd-default-settings-branding-openSUSE
 Prefer: distribution-logos-openSUSE-Tumbleweed
 Prefer: awesome:awesome-branding-upstream
-Prefer: bundle-lang-gnome:gnome-session-branding-openSUSE
 Prefer: cinnamon-gschemas:cinnamon-gschemas-branding-upstream
 Prefer: enlightenment-theme-upstream
-Prefer: exo-data:exo-branding-upstream
 Prefer: fcitx:fcitx-branding-openSUSE
 Prefer: gdm:gdm-branding-upstream
-Prefer: gfxboot-branding-openSUSE -gfxboot-branding-basedonopensuse
-Prefer: glib2:glib2-branding-upstream
-Prefer: gnome-panel:gnome-panel-branding-upstream
-Prefer: gnome-session:gconf2-branding-openSUSE
-Prefer: gnome-session:gnome-session-branding-openSUSE
+Prefer: gfxboot-branding-openSUSE
 Prefer: icewm-theme-branding
-Prefer: kde4-kdm:kde4-kdm-branding-upstream
-Prefer: kdebase4-workspace:kdebase4-workspace-branding-upstream
-Prefer: kdelibs4-branding:kdelibs4-branding-upstream
-Prefer: kdelibs4:kdelibs4-branding-upstream
-Prefer: kdm:kdm-branding-upstream
 Prefer: libcinnamon-desktop-data:libcinnamon-desktop-data-branding-upstream
-Prefer: libexo-1-0:libexo-1-0-branding-upstream
 Prefer: libgarcon-1-0:libgarcon-branding-upstream
 Prefer: libgarcon-data:libgarcon-branding-upstream
 Prefer: libgio-2_0-0:gio-branding-upstream
-Prefer: libglib-2_0-0:glib2-branding-upstream
 Prefer: libpurple-branding-upstream
 Prefer: libreoffice:libreoffice-branding-upstream
-Prefer: libsocialweb:libsocialweb-branding-upstream
 Prefer: libxfce4ui:libxfce4ui-branding-upstream
 Prefer: lightdm-gtk-greeter:lightdm-gtk-greeter-branding-upstream
 Prefer: mate-desktop-gschemas:mate-desktop-gschemas-branding-upstream
 Prefer: NetworkManager:NetworkManager-branding-openSUSE
 Prefer: PackageKit:PackageKit-branding-upstream
-Prefer: plasma5-desktop:plasma5-desktop-branding-upstream
-Prefer: plasma5-workspace:plasma5-workspace-branding-upstream
 Prefer: sddm:sddm-branding-upstream
 Prefer: sway:sway-branding-upstream
 Prefer: systemd-presets-branding-openSUSE
@@ -288,15 +271,13 @@ Prefer: waybar:waybar-branding-upstream
 Prefer: xfce4-notifyd:xfce4-notifyd-branding-upstream
 Prefer: xfce4-settings:xfce4-settings-branding-upstream
 Prefer: xfdesktop:xfdesktop-branding-upstream
-Prefer: yast2-branding-openSUSE
 Prefer: yast2-qt:yast2-qt-branding-openSUSE
-Prefer: yast2-theme-openSUSE
 Prefer: branding-openSUSE
 Prefer: chrony-pool-openSUSE
 # pciutils-ids and hwdata both provides pciutils-ids
 Prefer: hwdata
 # have choice for xfce4-panel-plugin-whiskermenu needed by xfce4-panel-branding-openSUSE: xfce4-panel-plugin-whiskermenu xfce4-whiskermenu-plugin
-Prefer: xfce4-panel-branding-openSUSE:xfce4-whiskermenu-plugin -xfce4-panel-plugin-whiskermenu
+Prefer: xfce4-panel-branding-openSUSE:xfce4-whiskermenu-plugin
 Prefer: xfce4-statusnotifier-plugin
 Prefer: patterns-xfce-xfce:mate-calc
 
@@ -310,11 +291,10 @@ Prefer: krb5-mini krb5-mini-devel
 Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
 Prefer: libdebuginfod1 debuginfod-client
 Prefer: libunbound-devel-mini
-Prefer: log4j12-mini log4j-mini
+Prefer: log4j12-mini
 Prefer: systemd-mini-devel:systemd-mini
 Prefer: systemd-mini systemd-mini-devel libsystemd0-mini
-Prefer: udev-mini libcom_err2-mini libext2fs2-mini
-Prefer: -harfbuzz-bootstrap -harfbuzz-bootstrap-devel
+Prefer: udev-mini
 
 # break dependency of the -mini packages: they are valid for OBS, but not for end-user-installation
 Ignore: cmake-mini:this-is-only-for-build-envs
@@ -376,9 +356,6 @@ Conflict: systemd-mini-devel:systemd
 # Cmake exists as a -mini flavor, which is not linked against curl.
 Prefer: cmake-mini
 
-# Samba brings python2 and python3 bindings, with the py3-bindings not 100% complete yet. So we favor py2
-Prefer: samba-libs-python
-
 Prefer: -suse-build-key
 # Set postfix as the 'default' smtp_daemon (virtual symbol provided by all MTAs)
 Prefer: postfix
@@ -437,6 +414,7 @@ Prefer: apache2:apache2-prefork
 # PHP requires php-sapi, which can be provided by multiple packages. We prefer -cli, related to the specific PHP version
 %define php_pref php7
 Prefer: %{php_pref}
+Prefer: %{php_pref}-cli
 Prefer: %{php_pref}-devel
 Prefer: %{php_pref}-pear
 Prefer: %{php_pref}-tokenizer
@@ -453,9 +431,6 @@ Prefer: python38-vsts
 # for symbol syslog (syslogd is best as it has the least dependencies)
 Prefer: syslogd
 
-# rmt is provided by tar-rmt and star-rmt - we prefer star-rmt, which was the one in the past providing rmt
-Prefer: star-rmt
-
 # A couple packares require a dbus daemon to show notifications - unless oterhwise specified, we prefer the 'standalong notification-daemon;
 Prefer: notification-daemon
 
@@ -466,7 +441,7 @@ Prefer: nodejs10 nodejs10-devel npm10
 Prefer: libpulse0-32bit libsane1-32bit
 
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
-Prefer: vtk-java vtk-tcl python3-vtk python36-vtk python38-vtk
+Prefer: vtk-java python3-vtk python36-vtk python38-vtk
 Prefer: eclipse-swt
 
 # wine comes in various flavors by now, we pick the unflavored ones
@@ -733,7 +708,6 @@ Prefer: -libjpeg8-devel-32bit
 Prefer: -libkdecoration2-devel-32bit                  
 Prefer: -libkms-devel-32bit                           
 Prefer: -libkscreen2-devel-32bit                      
-Prefer: -libksysguard5-devel-32bit                    
 Prefer: -liblbxutil-devel-32bit                       
 Prefer: -liblcms2-devel-32bit                         
 Prefer: -libmount-devel-32bit                         
@@ -773,7 +747,6 @@ Prefer: -libqt5-qtsvg-devel-32bit
 Prefer: -libqt5-qttools-devel-32bit                   
 Prefer: -libqt5-qtwayland-devel-32bit                 
 Prefer: -libqt5-qtwebchannel-devel-32bit              
-Prefer: -libqt5-qtwebengine-devel-32bit               
 Prefer: -libqt5-qtwebsockets-devel-32bit              
 Prefer: -libqt5-qtx11extras-devel-32bit               
 Prefer: -libqt5-qtxmlpatterns-devel-32bit             
@@ -786,7 +759,6 @@ Prefer: -libscalapack2-openmpi1-devel-32bit
 Prefer: -libscalapack2-openmpi2-devel-32bit           
 Prefer: -libscalapack2-openmpi3-devel-32bit           
 Prefer: -libscalapack2-openmpi4-devel-32bit           
-Prefer: -libsmartcols-devel-32bit
 Prefer: -libsoup-devel-32bit                          
 Prefer: -libstatgrab-devel-32bit                      
 Prefer: -libstdc++-devel-32bit                        
@@ -919,7 +891,7 @@ Prefer: enchant-2-backend-hunspell
 Prefer: libOpenSceneGraph-devel libOpenThreads-devel
 
 # Java, especially Maven related bootstrap packages are never preferred:
-Prefer: -scala-bootstrap -scala-bootstrap-swing -ant-scala-bootstrap
+Prefer: -scala-bootstrap -scala-bootstrap-swing
 Prefer: -maven-compiler-plugin-bootstrap -maven-resources-plugin-bootstrap -maven-jar-plugin-bootstrap
 Prefer: -maven-javadoc-plugin-bootstrap -maven-plugin-plugin-bootstrap -maven-failsafe-plugin-bootstrap
 Prefer: -maven-surefire-plugin-bootstrap -maven-surefire-report-plugin-bootstrap -stringtemplate4-bootstrap
@@ -933,89 +905,40 @@ Prefer: xorg-x11-Xvnc:icewm
 Prefer: cracklib-dict-small
 Prefer: libstdc++6 libgcc_s1 libquadmath0
 Prefer: libstdc++6-32bit libstdc++6-64bit
-Prefer: libstdc++6-x86
-Prefer: libmpx2 libmpxwrappers2 libmpx2-32bit libmpxwrappers2-32bit
-%ifarch s390x
-Prefer: -libstdc++41
-%endif
 Prefer: syslog-service
 Prefer: poppler-tools
 Prefer: libjpeg8-devel libjpeg-turbo
 Prefer: microcode_ctl:kernel-default
 Prefer: gnu-jaf yast2-control-center-qt
-Prefer: vim-normal myspell-american wine
-Prefer: amarok:amarok-xine
-Prefer: kdenetwork3-vnc:tightvnc
-Prefer: libgweather0 jessie ndesk-dbus ndesk-dbus-glib tomcat-jsp-2_2-api tomcat-jsp-2_3-api tomcat-servlet-2_5-api
-Prefer: -dbus-1-nox11
-Prefer: -servletapi3 -servletapi4 -servletapi5
+Prefer: wine
+Prefer: ndesk-dbus ndesk-dbus-glib tomcat-jsp-2_3-api
+Prefer: -servletapi4 -servletapi5
 Prefer: icewm-lite
-Prefer: yast2-ncurses-pkg
 Prefer: monodevelop: mono-addins
 Prefer: texlive-xmltex texlive-tools texlive-jadetex
-Prefer: libesd-devel:esound
-Prefer: libesd0:esound-daemon
-Prefer: package-lists-openSUSE-KDE-cd: esound-daemon
 Prefer: librest-0_7-0
 
 
-Prefer: -geronimo-jta-1_0_1B-api -geronimo-jms-1_1-api -geronimo-el-1_0-api -java-1_5_0-gcj-compat -geronimo-jta-1_1-api classpathx-mail javamail
+Prefer: -geronimo-jta-1_0_1B-api -geronimo-jms-1_1-api -geronimo-el-1_0-api -geronimo-jta-1_1-api javamail
 Prefer: rhino:xmlbeans-mini
 Prefer: mx4j:log4j12-mini
 Prefer: maven-doxia-module-fo:log4j12-mini
 
-Prefer: rpcbind  eclipse-source
-Prefer: libcdio_cdda0 libcdio_paranoia0
+Prefer: rpcbind
 Prefer: boo tog-pegasus
 Prefer: sysvinit(network) wicked-service
-Prefer: kdebase4-workspace:kdebase4-workspace-ksysguardd
-Prefer: kdebase4-openSUSE:kdebase4-workspace
 Prefer: ant:xerces-j2
 Prefer: dhcp-client:dhcp
 Prefer: libGLw1
 # provides typelib(St)
 Prefer: -cinnamon
-Prefer: -bundle-lang-kde-de -bundle-lang-kde-en -bundle-lang-kde-es
-Prefer: -bundle-lang-kde-fr -bundle-lang-kde-pt -bundle-lang-kde-el
-Prefer: -bundle-lang-kde-zh -bundle-lang-kde-ja -bundle-lang-kde-ru -bundle-lang-kde-pl
-Prefer: -bundle-lang-kde-sv -bundle-lang-kde-ko -bundle-lang-kde-fi -bundle-lang-kde-da
-Prefer: -bundle-lang-kde-cs -bundle-lang-kde-nl -bundle-lang-kde-hu -bundle-lang-kde-nb
-Prefer: -bundle-lang-kde-it -bundle-lang-kde-ca -bundle-lang-kde-ar
-Prefer: -bundle-lang-gnome-es -bundle-lang-gnome-de -bundle-lang-gnome-fr
-Prefer: -bundle-lang-gnome-pt -bundle-lang-gnome-en -bundle-lang-gnome-el
-Prefer: -bundle-lang-gnome-zh -bundle-lang-gnome-ja -bundle-lang-gnome-ru -bundle-lang-gnome-cs
-Prefer: -bundle-lang-gnome-ko -bundle-lang-gnome-da -bundle-lang-gnome-nl -bundle-lang-gnome-hu
-Prefer: -bundle-lang-gnome-pl -bundle-lang-gnome-fi -bundle-lang-gnome-nb -bundle-lang-gnome-sv
-Prefer: -bundle-lang-gnome-it -bundle-lang-gnome-ca -bundle-lang-gnome-ar
-Prefer: -bundle-lang-gnome-extras-es -bundle-lang-gnome-extras-de -bundle-lang-gnome-extras-fr
-Prefer: -bundle-lang-gnome-extras-pt -bundle-lang-gnome-extras-en -bundle-lang-gnome-extras-el
-Prefer: -bundle-lang-gnome-extras-zh -bundle-lang-gnome-extras-ja -bundle-lang-gnome-extras-ru -bundle-lang-gnome-extras-cs
-Prefer: -bundle-lang-gnome-extras-ko -bundle-lang-gnome-extras-da -bundle-lang-gnome-extras-nl -bundle-lang-gnome-extras-hu
-Prefer: -bundle-lang-gnome-extras-pl -bundle-lang-gnome-extras-fi -bundle-lang-gnome-extras-nb -bundle-lang-gnome-extras-sv
-Prefer: -bundle-lang-gnome-extras-it -bundle-lang-gnome-extras-ca -bundle-lang-gnome-extras-ar
-Prefer: -bundle-lang-common-es -bundle-lang-common-de -bundle-lang-common-fr
-Prefer: -bundle-lang-common-pt -bundle-lang-common-en -bundle-lang-common-el
-Prefer: -bundle-lang-common-ja -bundle-lang-common-zh -bundle-lang-common-cs -bundle-lang-common-ru
-Prefer: -bundle-lang-common-nl -bundle-lang-common-hu -bundle-lang-common-pl -bundle-lang-common-da
-Prefer: -bundle-lang-common-ko -bundle-lang-common-nb -bundle-lang-common-fi -bundle-lang-common-sv
-Prefer: -bundle-lang-common-it -bundle-lang-common-ca -bundle-lang-common-ar
-Prefer: -libgcc-mainline -libstdc++-mainline -gcc-mainline-c++
-Prefer: -libgcj-mainline -viewperf -compat -compat-openssl097g
-Prefer: -libreoffice -pam-laus -libgcc-tree-ssa -busybox-links -busybox
-Prefer: -python-setuptools
-Prefer: -kdenetwork3-InstantMessenger
+Prefer: -libreoffice -busybox-links -busybox
 Prefer: -icc-profiles
 Prefer: vala
-# in doubt, take xerces
-Prefer: -crimson
 # in doubt, take higher versions
-Prefer: -rubygem-rack-1_1 -rubygem-rack-1_2 -rubygem-rack-1_3 -rubygem-tilt-1_1 -rubygem-rack-1_4
-Prefer: -rubygem-method_source-0_7 -rubygem-rails-2_3 -rubygem-activerecord-2_3
-Prefer: -rubygem-json_pure-1_5
 Prefer: geronimo-servlet-2_4-api
-Prefer: openmpi-config
-Prefer: -libhdf5-0-openmpi -libhdf5_hl0-openmpi -libhdf5_hl8-openmpi -libhdf5-8-openmpi -libhdf5_hl9-openmpi -libhdf5-9-openmpi -libhdf5-10-openmpi -libhdf5_hl10-openmpi -libhdf5-11-openmpi -libhdf5_hl11-openmpi -libhdf5-101-openmpi -libhdf5-101-mvapich2 -libhdf5_hl101-openmpi libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_hl103-openmpi -libhdf5_cpp103-openmpi -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3 -libhdf5_cpp103-openmpi4
-Prefer: -libvtk1-openmpi libvtk1-openmpi2
+Prefer: libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3 -libhdf5_cpp103-openmpi4
+Prefer: libvtk1-openmpi2
 Prefer: -vtk-openmpi1-qt -vtk-openmpi2-qt -vtk-openmpi3-qt
 Prefer: -openmpi3-libs -openmpi4-libs
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
@@ -1023,68 +946,52 @@ Prefer: fftw3-devel ImageMagick-config-7-SUSE
 Prefer: star
 Prefer: xmlgraphics-commons:apache-commons-io
 # the -32bit stuff provides things it shouldn't (hopefully temporary)
-Prefer: -typelib-1_0-GdkPixbuf-2_0-32bit -typelib-1_0-Pango-1_0-32bit -glib2-devel-32bit -typelib-1_0-Gst-1_0-32bit
+Prefer: -glib2-devel-32bit -typelib-1_0-Gst-1_0-32bit
 Prefer: postgresql postgresql-server postgresql-devel postgresql-server-devel
-Prefer: postgresql13-devel-mini postgresql12-devel-mini
+Prefer: postgresql13-devel-mini
 # only needed to bootstrap 11, but leave it - 12 will come at some point :)
-Prefer: -postgresql94 -postgresql95 -postgresql95-server -postgresql94-server
+Prefer: -postgresql95 -postgresql95-server
 Prefer: -unzip-rcc
 Prefer: -primus -primus-32bit
 Prefer: -staging-build-key
-Prefer: -sssd-wbclient
 Prefer: -clutter-gst-devel
-Prefer: -opencv-qt5-devel
 # We have multiple versions of ffmpeg available, the preferred one is ffmpeg4, followd by 3, followed by 2
 Prefer: ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel ffmpeg-4-libavutil-devel ffmpeg-4-libswscale-devel ffmpeg-4-libavdevice-devel
-Prefer: -ffmpeg-2-libavcodec-devel -ffmpeg-2-libavformat-devel -ffmpeg-2-libavutil-devel -ffmpeg-2-libswscale-devel -ffmpeg-2-libavdevice-devel
-# as long as kactivities4 exists and is provided
-Prefer: kactivities5
 # oxygen5-icon-theme osboletes oxygen-icon-theme
 Prefer: oxygen5-icon-theme
 
 # kernel bug (coolo)
 Prefer: kernel-default-devel
 
-Prefer: -wxWidgets-3_0-devel -python-wxWidgets-3_0 wxWidgets-3_2-devel
-Prefer: -libwx_baseu-suse-nostl3_0_4 -libwx_baseu-suse-nostl4_0_0 -libwx_baseu-suse3_0_4 -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
+Prefer: -wxWidgets-3_0-devel wxWidgets-3_2-devel
+Prefer: -libwx_baseu-suse-nostl4_0_0 -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
 Prefer: libopenssl-devel
 
-Prefer: -NX -xaw3dd -db43 -amanda
-Prefer: -xerces-j2-xml-resolver -xerces-j2-xml-apis
+Prefer: -xaw3dd -amanda
 Prefer: libgcc_s1 libgcc_s1-32bit libgcc_s1-64bit
 Prefer: libffi-devel
-Prefer: libatomic1 libcilkrts5 libitm1 liblsan0 libtsan0 libubsan0
+Prefer: libatomic1 libitm1 liblsan0 libtsan0 libubsan0
 Prefer: libatomic1-32bit libcilkrts5-32bit libitm1-32bit libubsan0-32bit
-Prefer: libgcc_s1-x86 libgcj_bc1
 Prefer: libgomp1 libgomp1-32bit libgomp1-64bit
-Prefer: libmudflap4 libmudflap4-32bit libmudflap4-64bit
-Prefer: libobjc4 libgfortran3 libquadmath0
-Prefer: -libnetpbm -libcdio7-mini -libiso9660-5-mini -libiso9660-7-mini -libcdio10-mini -libcdio12-mini
-Prefer: -libcdio-mini -faac-mini -libcdio-mini-devel
-Prefer: -seamonkey
-Prefer: -libdb-4_4-devel -libdb-4_5-devel -libevoldap-2_4-2
-Prefer: libopenal0-soft openal-soft -lsb-buildenv
-Prefer: -libevent
+Prefer: libobjc4 libquadmath0
 Prefer: gnu-crypto libusb-compat-devel
 Prefer: libusb-0_1-4
 Prefer: libreoffice:xerces-j2
-Prefer: k3b:libdvdread4
 Prefer: glibc-devel
-Prefer: -libpcap -libiniparser -loudmouth -libkonq4 -libnetcdf-4 libnetcdf11 netcdf-devel -libnetcdf13-openmpi -libnetcdf13-openmpi2
+Prefer: netcdf-devel
 Prefer: libnetcdf18
 Prefer: NetworkManager:dhcp-client
-Prefer: kdebase3-SuSE:kdebase3
 Prefer: pcre-tools
 Prefer: libpopt0 makeinfo
-Prefer: -apache2-mod_perl -otrs -qa_apache_testsuite -ctcs2
+Prefer: -apache2-mod_perl -otrs
 Prefer: libgnome-keyring-devel
 Prefer: gnome-keyring-32bit
 Prefer: linux-glibc-devel
 Prefer: squid sysvinit
 Prefer: libpng16-compat-devel
-Prefer: -python -python3-gobject-devel -python3-gobject2-devel -x11-video-fglrxG02 -libpng12-0
+Prefer: -python -python3-gobject-devel -python3-gobject2-devel -libpng12-0
 Prefer: python3-docutils
-Prefer: perl-Mail-SPF:perl-Error libldb0 -audit-libs
+Prefer: perl-Mail-SPF:perl-Error
 Prefer: -xml-commons-apis-bootstrap -xml-commons-resolver-bootstrap
 Prefer: xmlgraphics-fop:xerces-j2
 Prefer: cogl-devel
@@ -1092,12 +999,8 @@ Prefer: -perl-XML-SAX perl-Test-YAML -perl-Pod-Usage
 Prefer: libpsm2-compat
 # choice p11-kit-nss-trust
 Prefer: mozilla-nss-certs
-# amarok dependency resolution
-Prefer: phonon-backend-gstreamer
 # replacing mkinitrd
 Prefer: dracut
-# replacing module-init-tools
-Prefer: kmod-compat
 # Temporary
 Prefer: oxygen5-cursors
 # Temporary
@@ -1105,7 +1008,6 @@ Prefer: -perl-App-cpanminus
 # libmediaart is prepared for a larger update; for now favor mediaart-1.0
 Prefer: -typelib-1_0-MediaArt-2_0
 Prefer: -typelib-1_0-Gtk-2_0 -typelib-1_0-Gtk-4_0
-Prefer: -python-atspi
 Prefer: gettext-its-gtk3 gtk3-schema
 # for pkgconfig(ijs) and no one actually rely on ghostscript-mini-devel in Factory
 Prefer: ghostscript-devel
@@ -1315,7 +1217,6 @@ Ignore: xfce4-desktop:xfce4-desktop-branding
 Ignore: xfce4-panel:xfce4-panel-branding
 Ignore: xfce4-session:xfce4-session-branding
 Ignore: kdebase4-runtime:kdebase4-runtime-branding
-Ignore: kwin:kdebase4-workspace-branding
 Ignore: transmission-common:transmission-ui
 Ignore: sysvinit-tools:mkinitrd cifs-utils:mkinitrd
 Ignore: mkinitrd:sbin_init
@@ -1384,22 +1285,10 @@ Macros:
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
 #  if you change any macros here you have to update the copy in
-#  ruby2.5 aswell.
+#  ruby<X.X> aswell.
 #
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
-
-### And now Ruby 2.6
-
-%rubygemsruby26() rubygem(ruby:2.6.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
-%rubygemsxruby26() %{expand:%%{rubygemsx%*}}
-
-%rubyruby26() ruby2.6 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
-%rubyxruby26() %{expand:%%{rubyx%*}}
-
-%rubydevelruby26() ruby2.6-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
-%rubydevelxruby26() %{expand:%%{rubydevelx%*}}
-
 
 ### And now Ruby 2.7
 
@@ -1448,7 +1337,6 @@ Macros:
 %define rb_build_ruby_abis     ruby:2.7.0 ruby:3.0.0
 %define rb_build_versions      ruby27 ruby30
 
-Prefer: -ruby-stdlib
 Prefer: %{rb_default_ruby_suffix}-rubygem-asciidoctor
 Prefer: %{rb_default_ruby_suffix}-rubygem-bundler
 Prefer: %{rb_default_ruby_suffix}-rubygem-cfa
@@ -1508,14 +1396,7 @@ Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
 Prefer: java-15-openjdk-devel java-15-openjdk java-15-openjdk-headless java-15-openjdk-javadoc
 Prefer: java-14-openjdk-devel java-14-openjdk java-14-openjdk-headless java-14-openjdk-javadoc
-Prefer: java-13-openjdk-devel java-13-openjdk java-13-openjdk-headless
-Prefer: java-12-openjdk-devel java-12-openjdk java-12-openjdk-headless
-Prefer: java-10-openjdk-devel java-10-openjdk java-10-openjdk-headless
-Prefer: java-9-openjdk-devel java-9-openjdk java-9-openjdk-headless
-Prefer: java-1_7_0-openjdk-devel java-1_7_0-openjdk java-1_7_0-openjdk-headless
 Prefer: java-1_7_0-bootstrap-devel java-1_7_0-bootstrap java-1_7_0-bootstrap-headless
-Prefer: java-1_6_0-openjdk-devel java-1_6_0-openjdk java-1_6_0-openjdk-headless
-Prefer: java-1_5_0-gcj-compat-devel java-1_5_0-gcj-compat
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit

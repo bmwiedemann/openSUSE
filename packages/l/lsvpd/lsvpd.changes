@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 26 11:58:25 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix display of NVME adapter firmware version (bsc#1181336 ltc#190621).
+  + lsvpd-nvme-Populate-NVMe-firmware-version.patch
+  + lsvpd-sysvpd-Add-UUID-property.patch
+  + lsvpd-sysfs-Fix-PCI-device-manufacturer-parsing-logic.patch
+
+-------------------------------------------------------------------
 Thu Nov  5 11:14:16 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to upstream version 1.7.11 (jsc#SLE-12938).

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 25 14:35:50 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- fix _service file
+- update to 2.0.5.8.3
+  * fix various issues
+  * add workaround for Bluefield-2 REV-0
+
+-------------------------------------------------------------------
 Thu Nov 19 17:06:49 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - update to 2.0.55.1

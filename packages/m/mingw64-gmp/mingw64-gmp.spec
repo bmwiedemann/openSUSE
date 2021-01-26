@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-gmp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           mingw64-gmp
 Version:        6.1.1
 Release:        0
 Summary:        The GNU MP Library
-License:        GPL-2.0+ and LGPL-3.0+
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://gmplib.org/
+URL:            https://gmplib.org/
 Source:         https://gmplib.org/download/gmp/gmp-%{version}.tar.xz
 #!BuildIgnore: post-build-checks
 BuildRequires:  m4
@@ -60,6 +60,8 @@ rational numbers, and floating point numbers.  C++ bindings for the GNU MP Libra
 %package devel
 Summary:        Include Files and Libraries for Development with the GNU MP Library
 Group:          Development/Libraries/C and C++
+Requires:       mingw64-libgmp10 = %{version} 
+Requires:       mingw64-libgmpxx = %{version}
 
 %description devel
 These libraries are needed to develop programs which calculate with huge numbers (integer and floating point).

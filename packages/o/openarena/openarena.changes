@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 25 22:27:15 UTC 2021 - Matthias Mailänder <matthias@mailaender.name>
+
+- Add https://en.opensuse.org/openSUSE:AppStore metadata
+
+-------------------------------------------------------------------
 Wed Jan 15 09:01:33 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Drop i586 build (does not build with assembler errors)

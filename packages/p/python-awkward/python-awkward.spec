@@ -1,7 +1,7 @@
 #
 # spec file for package python-awkward
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname awkward
 Name:           python-awkward
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -29,8 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/a/awkward/awkward
 Patch0:         awkward-cmake-build-with-RelWithDebInfo.patch
 # PATCH-FEATURE-OPENSUSE awkward-correct-includedir.patch badshah400#gmail.com -- Make awkward.config return the correct includedir where we move the header files to
 Patch1:         awkward-correct-includedir.patch
-# PATCH-FIX-UPSTREAM awkward-tests-on-32bit.patch gh#scikit-hep/awkward-1.0#600 -- Fix tests on 32 bit systems; patch taken from upstream PR
-Patch2:         awkward-tests-on-32bit.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -83,8 +81,8 @@ awkward.
 %python_expand find %{buildroot}%{$python_sitearch}/%{modname}/ -name "*.a" -delete -print
 
 mkdir -p %{buildroot}%{_includedir}/awkward
-%{python_expand # Move headers to standard include dir for one python version and delete for the other
-if [ $python_ = python3_ ]; then
+%{python_expand # Move headers to standard include dir for the primary python3 version and delete for the others
+if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
 mv %{buildroot}%{$python_sitearch}/%{modname}/include/* %{buildroot}%{_includedir}/awkward/
 # Create a symlink to shared library in _libdir for the C/C++ devel pkg
 ln -s %{$python_sitearch}/awkward/libawkward.so %{buildroot}%{_libdir}/
@@ -103,7 +101,7 @@ fi
 %doc README.md
 %license LICENSE
 %{python_sitearch}/%{modname}/
-%{python_sitearch}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/%{modname}-%{version}*-info/
 
 %files -n awkward-devel
 %license LICENSE

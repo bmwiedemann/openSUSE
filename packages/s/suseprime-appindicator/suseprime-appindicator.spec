@@ -30,7 +30,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 Requires:       python3-gobject
-Requires:       suse-prime
+Requires:       (suse-prime or suse-prime-bbswitch)
 Supplements:    (xfce4-indicator-plugin and suse-prime)
 BuildArch:      noarch
 

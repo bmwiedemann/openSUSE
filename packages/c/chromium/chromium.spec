@@ -49,7 +49,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        87.0.4280.141
+Version:        88.0.4324.96
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -73,7 +73,6 @@ Patch4:         chromium-buildname.patch
 Patch5:         chromium-system-libusb.patch
 Patch6:         gcc-enable-lto.patch
 Patch7:         chromium-fix-char_traits.patch
-Patch8:         gpu-timeout.patch
 Patch9:         build-with-pipewire-0.3.patch
 # Do not use unrar code, it is non-free
 Patch10:        chromium-norar.patch
@@ -87,7 +86,7 @@ Patch50:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch51:        chromium-79-gcc-protobuf-alignas.patch
 Patch52:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
 Patch53:        chromium-84-blink-disable-clang-format.patch
-Patch54:        chromium-87-compiler.patch
+Patch54:        chromium-88-compiler.patch
 Patch55:        chromium-86-ConsumeDurationNumber-constexpr.patch
 Patch56:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch57:        chromium-86-nearby-explicit.patch
@@ -96,13 +95,18 @@ Patch60:        chromium-86-f_seal.patch
 Patch61:        chromium-gcc11.patch
 Patch62:        chromium-87-CursorFactory-include.patch
 Patch63:        chromium-87-openscreen-include.patch
-Patch64:        chromium-87-ServiceWorkerContainerHost-crash.patch
 Patch65:        chromium-88-vaapi-attribute.patch
-Patch66:        chromium-87-ozone-deps.patch
+Patch66:        chromium-88-ozone-deps.patch
 Patch67:        chromium-87-webcodecs-deps.patch
 Patch68:        chromium-lp152-missing-includes.patch
-Patch69:        chromium-87-v8-icu68.patch
-Patch70:        chromium-87-icu68.patch
+Patch71:        chromium-88-ityp-include.patch
+Patch72:        chromium-88-AXTreeFormatter-include.patch
+Patch73:        chromium-88-BookmarkModelObserver-include.patch
+Patch74:        chromium-88-federated_learning-include.patch
+Patch75:        chromium-88-ideographicSpaceCharacter.patch
+Patch76:        chromium-88-StringPool-include.patch
+Patch77:        chromium-88-dawn-static.patch
+Patch78:        chromium-88-CompositorFrameReporter-dcheck.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -380,7 +384,9 @@ keeplibs=(
     third_party/dom_distiller_js
     third_party/emoji-segmenter
     third_party/flatbuffers
+    third_party/fusejs/dist
     third_party/libgifcodec
+    third_party/libxcb-keysyms/keysyms
     third_party/glslang
     third_party/google_input_tools
     third_party/google_input_tools/third_party/closure_library
@@ -408,6 +414,7 @@ keeplibs=(
     third_party/libsync
     third_party/libudev
     third_party/libwebm
+    third_party/libx11/src
     third_party/libxml/chromium
     third_party/libyuv
     third_party/lottie
@@ -491,6 +498,7 @@ keeplibs=(
     third_party/widevine
     third_party/woff2
     third_party/wuffs
+    third_party/x11proto
     third_party/xcbproto
     third_party/zxcvbn-cpp
     third_party/zlib/google
@@ -789,6 +797,8 @@ sed -i "s|@@PACKAGE@@|chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 
 %fdupes %{buildroot}
+
+
 
 %files
 %license LICENSE

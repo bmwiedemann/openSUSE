@@ -1,7 +1,7 @@
 #
 # spec file for package gnote
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_version 3.38
 
 Name:           gnote
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
@@ -40,7 +40,7 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.62
 BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.20
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.18
 BuildRequires:  pkgconfig(libsecret-1) >= 0.8
 BuildRequires:  pkgconfig(libxml-2.0)

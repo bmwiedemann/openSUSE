@@ -42,6 +42,9 @@ Requires:       python-requests-toolbelt >= 0.7.1
 Requires:       python-six >= 1.9.0
 Requires:       python-tornado >= 4.0.2
 Requires:       python-xmlsec >= 0.6.1
+%if 0%{?python_version_nodots} >= 34
+Requires:       python-aiohttp >= 1.0
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module appdirs >= 1.4.0}
@@ -55,7 +58,6 @@ BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pretend >= 1.0.8}
 BuildRequires:  %{python_module pytest >= 3.1.3}
 BuildRequires:  %{python_module pytest-tornado >= 0.4.5}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module requests-mock >= 0.7.0}
@@ -63,12 +65,11 @@ BuildRequires:  %{python_module requests-toolbelt >= 0.7.1}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module tornado >= 4.0.2}
 BuildRequires:  %{python_module xmlsec >= 0.6.1}
-BuildRequires:  python3-aiohttp >= 1.0
-BuildRequires:  python3-aioresponses >= 0.4.1
+BuildRequires:  (python36-aiohttp >= 1.0 if python36-base)
+BuildRequires:  (python36-aioresponses >= 0.4.1 if python36-base)
+BuildRequires:  (python38-aiohttp >= 1.0 or (python3-aiohttp >= 0.4.1 and python3-base >= 3.4))
+BuildRequires:  (python38-aioresponses >= 0.4.1 or (python3-aioresponses >= 0.4.1 and python3-base >= 3.4))
 # /SECTION
-%ifpython3
-Requires:       python-aiohttp >= 1.0
-%endif
 %python_subpackages
 
 %description
@@ -91,12 +92,12 @@ rm tests/test_wsse_utils.py
 
 %check
 export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1
 %pytest tests/
 
 %files %{python_files}
 %doc CHANGES README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/zeep
+%{python_sitelib}/zeep-%{version}*-info
 
 %changelog

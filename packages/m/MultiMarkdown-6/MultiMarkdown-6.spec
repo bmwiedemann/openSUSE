@@ -1,7 +1,7 @@
 #
 # spec file for package MultiMarkdown-6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           MultiMarkdown-6
-Version:        6.5.1
+Version:        6.6.0
 Release:        0
 Summary:        Reference implementation of MultiMarkdown
 License:        MIT
@@ -50,6 +50,8 @@ to convert plain text into LaTeX in addition to HTML.
 
 %install
 %cmake_install
+# Remove files installed by package, we ship them anyways
+rm -rf %{buildroot}%{_datadir}/doc/MultiMarkdown
 # Avoid conflict with mtools
 mv %{buildroot}%{_bindir}/mmd  %{buildroot}%{_bindir}/%{name}-mmd
 # multimarkdown is provided by other packages thus we use
@@ -73,7 +75,7 @@ if [ ! -f %{_bindir}/%{name}-markdown ] ; then
 fi
 
 %files
-%license LICENSE.txt
+%license LICENSE
 %doc README.md
 %ghost %{_sysconfdir}/alternatives/markdown
 %{_bindir}/markdown

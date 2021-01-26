@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 pushd src
+PYTHONPATH=.
 %pytest -k 'not (test_setup_egg_info or test_build_calmjs_artifact)'
 popd
 

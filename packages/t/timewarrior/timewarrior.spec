@@ -1,7 +1,7 @@
 #
 # spec file for package timewarrior
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           timewarrior
-Version:        1.2.0
+Version:        1.4.2
 Release:        0
 Summary:        Command line time tracker
 License:        MIT
@@ -50,8 +50,8 @@ chmod -v a+x ext/*
 popd
 
 %files
-%license COPYING LICENSE
-%doc ChangeLog AUTHORS NEWS README.md
+%license LICENSE
+%doc ChangeLog AUTHORS README.md
 %{_bindir}/timew
 %{_mandir}/man1/timew.*
 %{_mandir}/man1/timew-*

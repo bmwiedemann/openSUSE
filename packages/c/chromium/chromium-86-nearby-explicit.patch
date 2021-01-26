@@ -4,13 +4,13 @@ Date: Sat, 18 Jul 2020 15:11:13 +0000
 Subject: [PATCH] GCC: remove explicit from AtomicReference constructor
 
 ---
- .../nearby/src/cpp/platform_v2/public/atomic_reference.h        | 2 +-
+ .../nearby/src/cpp/platform/public/atomic_reference.h        | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/third_party/nearby/src/cpp/platform_v2/public/atomic_reference.h b/third_party/nearby/src/cpp/platform_v2/public/atomic_reference.h
+diff --git a/third_party/nearby/src/cpp/platform/public/atomic_reference.h b/third_party/nearby/src/cpp/platform/public/atomic_reference.h
 index 5742724..bbb8c01 100644
---- a/third_party/nearby/src/cpp/platform_v2/public/atomic_reference.h
-+++ b/third_party/nearby/src/cpp/platform_v2/public/atomic_reference.h
+--- a/third_party/nearby/src/cpp/platform/public/atomic_reference.h
++++ b/third_party/nearby/src/cpp/platform/public/atomic_reference.h
 @@ -37,7 +37,7 @@ class AtomicReference<T, std::enable_if_t<sizeof(T) <= sizeof(std::uint32_t) &&
      final {
   public:

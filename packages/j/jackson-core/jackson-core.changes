@@ -1,11 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 25 08:16:57 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.10.5
+  * #616: Parsing JSON with 'ALLOW_MISSING_VALUE' enabled results
+    in endless stream of 'VALUE_NULL' tokens
+  * #605: Handle case when system property access is restricted
+  * #609: (partial fix) 'FilteringGeneratorDelegate' does not
+    handle 'writeString(Reader, int)'
+
+-------------------------------------------------------------------
 Thu Mar 26 07:34:19 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.10.3
 - Changes:
   * #592: DataFormatMatcher#getMatchedFormatName throws NPE when
     no match exists
-  * #603: 'JsonParser.getCurrentLocation()` byte/char offset update
+  * #603: 'JsonParser.getCurrentLocation()' byte/char offset update
     incorrectly for big payloads
 
 -------------------------------------------------------------------

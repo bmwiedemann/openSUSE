@@ -39,4 +39,12 @@
     <comment>Oracle July and Octobre 2020 CPU</comment>
     <requestid>845444</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e25127304438dabbdc998cb11779993a</srcmd5>
+    <version>1.8.0.282</version>
+    <time>1611668822</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle January 2021 CPU</comment>
+    <requestid>866735</requestid>
+  </revision>
 </revisionlist>

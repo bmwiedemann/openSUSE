@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 23 20:03:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.1:
+  + New Features:
+    - Bump required GTK version to 3.22.20.
+  + Fixes:
+    - Do not use deprecated Gtk::Menu::popup.
+    - Fix find previous match.
+    - Fix changing sorting not always works.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 28 09:22:00 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:

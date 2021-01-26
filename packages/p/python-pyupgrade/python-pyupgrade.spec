@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyupgrade
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ BuildRequires:  %{python_module tokenize-rt >= 3.2.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-tokenize-rt >= 3.2.0
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -51,14 +53,21 @@ A tool to automatically upgrade syntax for newer versions.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/pyupgrade
 
 %check
 %pytest
 
+%post
+%python_install_alternative pyupgrade
+
+%postun
+%python_uninstall_alternative pyupgrade
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/pyupgrade
+%python_alternative %{_bindir}/pyupgrade
 %{python_sitelib}/*
 
 %changelog

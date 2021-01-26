@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openj9
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       272
-%global buildver        b10
+%global updatever       282
+%global buildver        b08
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   41f03341d596924e866595d8c94ab3bff33066a4
-%global root_branch     openj9-0.23.0
+%global root_revision   ab07c6a8fd534eb77c4946e4546e659f8f043b8b
+%global root_branch     openj9-0.24.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    582366ae54510a48f7815921091db00357c4338a
-%global omr_branch      v0.23.0-release
+%global omr_revision    741e94ea8673b021fc7edc59a2ec8bd203fa2b03
+%global omr_branch      v0.24.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 0394ef7545243942a4b27227a22174c1be67ed60
-%global openj9_branch   v0.23.0-release
-%global openj9_tag      openj9-0.23.0
+%global openj9_revision 345e1b09e2a1f2cf6323b25edc901cce197f4365
+%global openj9_branch   v0.24.0-release
+%global openj9_tag      openj9-0.24.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # priority must be 6 digits in total

@@ -164,4 +164,12 @@
     <comment></comment>
     <requestid>859979</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2d1a4ff310824695567d30cdfab65ecb</srcmd5>
+    <version>5.0.6</version>
+    <time>1611668779</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python_alternative for pydisasm script</comment>
+    <requestid>865547</requestid>
+  </revision>
 </revisionlist>

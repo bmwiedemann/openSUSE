@@ -239,4 +239,12 @@
 - Drop obsolete conditional build requirement for SLE10.</comment>
     <requestid>805661</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5e013954a49de24422f78ebdb77f7984</srcmd5>
+    <version>1.7.8</version>
+    <time>1611668806</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>866677</requestid>
+  </revision>
 </revisionlist>

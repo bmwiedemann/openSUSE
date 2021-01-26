@@ -1,0 +1,34 @@
+From cc99870797f732129b4d2703a37461dac7c27098 Mon Sep 17 00:00:00 2001
+From: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+Date: Fri, 22 Jan 2021 18:41:44 +0530
+Subject: [PATCH 2/3] nvme: Populate NVMe firmware version
+
+Upstream: accepted - expected v1.7.12
+Git-commit: cc99870797f732129b4d2703a37461dac7c27098
+
+Looks like NVMe firmware version is added as `firmware_rev`
+property in sysfs. Also its not available in `vpd` blob.
+Hence add explicit logic to parse sysfs property.
+
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+---
+ src/internal/sys_interface/sysfstreecollector.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/internal/sys_interface/sysfstreecollector.cpp b/src/internal/sys_interface/sysfstreecollector.cpp
+index 4404013c3317..70fcc1bd52d8 100644
+--- a/src/internal/sys_interface/sysfstreecollector.cpp
++++ b/src/internal/sys_interface/sysfstreecollector.cpp
+@@ -1794,6 +1794,9 @@ ERROR:
+ 
+ 			fillMe->mFirmwareLevel.setValue( getAttrValue( classNode,
+ 					"fwrev" ), 30, __FILE__, __LINE__ );
++
++			fillMe->mFirmwareVersion.setValue( getAttrValue( classNode,
++					"firmware_rev" ), 30, __FILE__, __LINE__ );
+ 		}
+ 	}
+ 
+-- 
+2.26.2
+

@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtpy
 Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
+Patch0:         0001-Add-QtDatavisualization-alias-to-QtDataVisualization.patch
 BuildRequires:  %{python_module qt3d-qt5}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module qtdatavis3d-qt5}
@@ -61,6 +62,7 @@ sed -i 's/\r$//' LICENSE.txt
 rm qtpy/tests/runtests.py
 # Submitted to upstream at gh#spyder-ide/qtpy#228
 mv qtpy/QtDatavisualization.py qtpy/QtDataVisualization.py
+%patch0 -p1
 
 %build
 %python_build

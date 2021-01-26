@@ -4,6 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">MultiMarkdown-6</param>
+    <param name="revision">refs/tags/6.6.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service mode="disabled" name="set_version"/>

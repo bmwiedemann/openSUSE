@@ -8,9 +8,9 @@ Index: chromium-85.0.4183.69/build/config/BUILDCONFIG.gn
  
 +  gcc_lto = false
 +
-   # Whether we're a traditional desktop unix.
-   is_desktop_linux = current_os == "linux"
- 
+   # Set to true when compiling with the Clang compiler.
+   is_clang = current_os != "linux" ||
+              (current_cpu != "s390x" && current_cpu != "s390" &&
 @@ -441,6 +443,12 @@ default_compiler_configs = [
    "//build/config/sanitizers:default_sanitizer_flags",
  ]
@@ -44,12 +44,12 @@ Index: chromium-85.0.4183.69/sandbox/linux/BUILD.gn
 --- chromium-85.0.4183.69.orig/sandbox/linux/BUILD.gn
 +++ chromium-85.0.4183.69/sandbox/linux/BUILD.gn
 @@ -250,6 +250,9 @@ component("seccomp_bpf") {
-     "//base/third_party/dynamic_annotations",
+     "//build:chromeos_buildflags",
      "//sandbox:sandbox_buildflags",
    ]
 +  if (gcc_lto) {
 +    configs -= [ "//build/config/compiler:gcc_lto" ]
 +  }
  
-   if (is_nacl_nonsfi) {
-     cflags = [ "-fgnu-inline-asm" ]
+   if (is_android) {
+     sources += [

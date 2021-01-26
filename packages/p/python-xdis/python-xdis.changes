@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 05:41:10 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to python_alternative for pydisasm script 
+
+-------------------------------------------------------------------
 Thu Dec 31 08:08:08 UTC 2020 - olaf@aepfle.de
 
 - update to 5.0.6:

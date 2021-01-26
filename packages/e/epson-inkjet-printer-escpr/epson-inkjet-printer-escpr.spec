@@ -1,7 +1,7 @@
 #
 # spec file for package epson-inkjet-printer-escpr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  cups154-devel
 BuildRequires:  cups
 BuildRequires:  cups-devel
 %endif
-Version:        1.7.7
+Version:        1.7.8
 Release:        0
 URL:            http://avasys.jp/english/linux_e/
 Summary:        Epson ESC/P-R Inkjet Printer Driver

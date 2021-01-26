@@ -80,7 +80,8 @@ all inside the IDE.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_dask_multiprocessing is flaky for obs
+%pytest -k "not test_dask_multiprocessing"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

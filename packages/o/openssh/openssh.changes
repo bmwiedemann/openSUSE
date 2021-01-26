@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jan 23 18:28:19 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Add openssh-fix-ssh-copy-id.patch, which fixes breakage
+  introduced in 8.4p1 (bsc#1181311).
+
+-------------------------------------------------------------------
+Fri Jan 22 21:06:42 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Improve robustness of sshd init detection when upgrading from
+  a pre-systemd distribution.
+
+-------------------------------------------------------------------
+Fri Jan 22 03:30:59 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Add openssh-reenable-dh-group14-sha1-default.patch, which adds
+  diffie-hellman-group14-sha1 key exchange back to the default
+  list (bsc#1180958). This is needed for backwards compatibility
+  with older platforms.
+
+-------------------------------------------------------------------
+Fri Jan 22 02:54:02 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Make sure sshd is enabled correctly when upgrading from a
+  pre-systemd distribution (bsc#1180083).
+
+-------------------------------------------------------------------
+Mon Jan 18 11:04:41 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- sysusers-sshd.conf: use sysusers.d configuration file to create
+  sshd user (avoid hard dependency on shadow).
+
+-------------------------------------------------------------------
 Mon Jan 18 00:30:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.4p1:

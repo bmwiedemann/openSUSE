@@ -39,6 +39,8 @@ Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch1:         ocki-3.11-remove-make-install-chgrp.patch
+Patch2:         ocki-3.15.1-Added-error-message-handling-for-p11sak-remove-key-c.patch
+Patch3:         ocki-3.15.1-Fix-compiling-with-c.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -127,6 +129,8 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %prep
 %setup -q -n %{oc_cvs_tag}-%{version}
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 cp %{SOURCE2} .
 

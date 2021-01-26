@@ -1,7 +1,15 @@
---- a/closed/OpenJ9.gmk	2020-01-23 11:32:56.700658325 +0100
-+++ b/closed/OpenJ9.gmk	2020-01-23 23:25:54.764578248 +0100
-@@ -29,15 +29,15 @@
+diff --git a/closed/OpenJ9.gmk b/closed/OpenJ9.gmk
+index 27dcc77dd3..163077bb7d 100644
+--- a/closed/OpenJ9.gmk
++++ b/closed/OpenJ9.gmk
+@@ -30,20 +30,20 @@ ifeq (,$(BUILD_ID))
    BUILD_ID := 000000
+ endif
+ 
+-OPENJDK_SHA := $(shell git -C $(TOPDIR) rev-parse --short HEAD)
++OPENJDK_SHA := @OPENJDK_SHA@
+ ifeq (,$(OPENJDK_SHA))
+   $(error Could not determine OpenJDK SHA)
  endif
  
 -OPENJ9_SHA := $(shell git -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)
@@ -19,7 +27,7 @@
    ifeq (,$(OPENJ9_BRANCH))
      $(error Could not determine OpenJ9 branch)
    endif
-@@ -46,7 +46,7 @@
+@@ -52,7 +52,7 @@ else
    OPENJ9_VERSION_STRING := $(OPENJ9_TAG)
  endif
  
@@ -28,14 +36,20 @@
  ifeq (,$(OPENJ9OMR_SHA))
    $(error Could not determine OMR SHA)
  endif
---- a/jdk/make/closed/autoconf/custom-hook.m4	2020-01-23 11:32:57.428662256 +0100
-+++ b/jdk/make/closed/autoconf/custom-hook.m4	2020-01-23 23:30:36.802221424 +0100
-@@ -368,7 +368,7 @@
-   AC_SUBST(JDK_MOD_VERSION)
-   AC_SUBST(JDK_FIX_VERSION)
- 
--  OPENJDK_SHA=`git -C $SRC_ROOT rev-parse --short HEAD`
-+  OPENJDK_SHA=@OPENJDK_SHA@
- 
-   AC_SUBST(OPENJDK_SHA)
+diff --git a/closed/make/Main.gmk b/closed/make/Main.gmk
+index ab2310f3b0..1c7386d939 100644
+--- a/closed/make/Main.gmk
++++ b/closed/make/Main.gmk
+@@ -35,9 +35,9 @@ clean-j9vm :
+ # Override definition from MakeBase.gmk for OpenJ9.
+ define GetSourceTips
+ 	$(PRINTF) "%s:%s\n" \
+-		OpenJDK "$(shell git -C $(TOPDIR) rev-parse --short HEAD)" \
+-		OpenJ9  "$(shell git -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)" \
+-		OMR     "$(shell git -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)" \
++		OpenJDK "@OPENJDK_SHA@" \
++		OpenJ9  "@OPENJ9_SHA@" \
++		OMR     "@OPENJ9OMR_SHA@" \
+ 		> $@
+ endef
  

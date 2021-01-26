@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 26 07:14:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.3:
+  * Fix --start-at not handling URL-encoded file:/// paths properly. Notably,
+    this also fixes feh not displaying images with spaces or unicode
+    elements in their path when opened from a file manager.
+
+-------------------------------------------------------------------
 Sat Jan 16 04:55:59 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 3.6.2:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 26 06:07:49 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1181397, update to 1.6.0
+ * Added node_restore() method
+ * Added addition_place_count params for auto_place
+ * Node response object now has flags()
+ * added SizeCalc.unit_to_str method
+ * Added methods for error-report deletion
+ * Node create case insensitive for types
+
+-------------------------------------------------------------------
 Tue Sep 22 07:07:48 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1176790, Update to 1.3.0

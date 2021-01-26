@@ -7,4 +7,13 @@
     <comment> </comment>
     <requestid>841458</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cf675f98648042542f6039708d06caf</srcmd5>
+    <version>0.3.0</version>
+    <time>1611668756</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires for python-dataclasses (and fix Requires)
+</comment>
+    <requestid>866818</requestid>
+  </revision>
 </revisionlist>

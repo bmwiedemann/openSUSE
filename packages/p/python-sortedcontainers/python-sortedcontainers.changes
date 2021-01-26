@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 22 21:06:24 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove NumPy, SciPy, and Matplotlib requirement. They are not 
+  used in the regular test suite. 
+- no multibuild needed anymore
+
+-------------------------------------------------------------------
 Thu Nov 26 08:40:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.3.0:

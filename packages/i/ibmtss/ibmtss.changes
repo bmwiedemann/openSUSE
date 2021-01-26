@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 26 09:19:47 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to upstream version 1.6.0
+- Drop patches from this release
+  - ibmtss-certifyx509-Fix-uninitialized-variable.patch
+  - ibmtss-fix-dsa-regression.patch
+
+-------------------------------------------------------------------
 Thu Oct  1 19:24:56 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
 
 - Regression fix:

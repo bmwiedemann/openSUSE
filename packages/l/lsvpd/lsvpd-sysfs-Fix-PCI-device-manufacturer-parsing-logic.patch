@@ -1,0 +1,51 @@
+From 0359436fdd467acd70c9fefa471570681d31e619 Mon Sep 17 00:00:00 2001
+From: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+Date: Sun, 24 Jan 2021 22:37:38 +0530
+Subject: [PATCH 3/3] sysfs: Fix PCI device manufacturer parsing logic
+
+Upstream: accepted - expected v1.7.12
+Git-commit: 0359436fdd467acd70c9fefa471570681d31e619
+
+If we fail to get manufacturer name using subsystem vendor ID
+then use vendor ID to get manufacturer name.
+
+Sample output diff with the this fix:
+------------------------------------
+ *AX 0032:00
+ *YL 0032:00
+ *FC
+-*DS usb-xhci (00008241)
++*DS usb-xhci (104c8241)
+ *AX 0005:01:00.0
+ *AX wakeup0
+ *AX usbmon1
+ *AX usbmon2
+ *AX usb-xhci
+-*MF Unknown
++*MF Texas Instruments
+ *TM TUSB73x0 SuperSpeed USB 3.0 xHCI Host Controller
+-*CD 00008241
++*CD 104c8241
+
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+---
+ src/internal/sys_interface/sysfstreecollector.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/internal/sys_interface/sysfstreecollector.cpp b/src/internal/sys_interface/sysfstreecollector.cpp
+index 70fcc1bd52d8..9e808de395bf 100644
+--- a/src/internal/sys_interface/sysfstreecollector.cpp
++++ b/src/internal/sys_interface/sysfstreecollector.cpp
+@@ -1434,7 +1434,8 @@ ERROR:
+ 		if( mPciTable != NULL )
+ 		{
+ 			// Fill Manufacturer Name
+-			if( subMan == UNKNOWN_ID )
++			if( subMan == UNKNOWN_ID ||
++			    (mPciTable->getName( subMan ) == "Unknown") )
+ 			{
+ 				if( manID != UNKNOWN_ID )
+ 				{
+-- 
+2.26.2
+

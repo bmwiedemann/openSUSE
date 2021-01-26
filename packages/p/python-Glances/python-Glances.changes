@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 16:04:11 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- unitest-wait-for-server.patch: increase time to wait for server to start
+
+-------------------------------------------------------------------
 Sat Aug 22 22:13:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.5

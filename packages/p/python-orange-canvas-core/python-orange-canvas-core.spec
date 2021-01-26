@@ -1,7 +1,7 @@
 #
 # spec file for package python-orange-canvas-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-orange-canvas-core
-Version:        0.1.11
+Version:        0.1.18
 Release:        0
 Summary:        Core component of Orange Canvas
 License:        GPL-3.0-only
@@ -32,6 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-AnyQt
 Requires:       python-CacheControl
 Requires:       python-commonmark
+Requires:       python-dictdiffer
 Requires:       python-docutils
 Requires:       python-qt5
 Requires:       python-requests
@@ -40,6 +41,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module AnyQt}
 BuildRequires:  %{python_module CacheControl}
 BuildRequires:  %{python_module commonmark}
+BuildRequires:  %{python_module dictdiffer}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}

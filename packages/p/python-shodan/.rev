@@ -224,4 +224,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>846973</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f0f1729bce327359e9394bcd9ab878c2</srcmd5>
+    <version>1.25.0</version>
+    <time>1611668836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.25.0:
+ - Add new CLI command: shodan alert download [--alert-id=] &lt;filename&gt;
+</comment>
+    <requestid>866748</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 20 16:54:45 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use %python_alternative to fix multi Python 3 builds
+
+-------------------------------------------------------------------
+Sat Oct 10 19:19:46 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.16.1:
+  * Fix unpickling, now it is using the APP_REGISTRY as expected.
+    (Issue #1175)
+  * require importlib-[resources|metadata]
+
+- changes from version 0.16 :
+  * Fixed issue where performing an operation of a Quantity with
+    certain units would perform an in-place unit conversion that
+    modified the operand in addition to the returned value (Issues
+    #1102 & #1144)
+  * Implements Logarithmic Units like dBm, dB or decade (Issue #71,
+    Thanks Dima Pustakhod, Clark Willison, Giorgio Signorello, Steven
+    Casagrande, Jonathan Wheeler)
+  * Drop dependency on setuptools pkg_resources to read package
+    resources, using std lib importlib.resources instead.  (Issue
+    #1080)
+
+-------------------------------------------------------------------
 Fri Sep 18 10:59:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.15:

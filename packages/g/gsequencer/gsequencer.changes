@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 25 20:07:47 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- added ${datadir}/locale/*/LC_MESSAGES/gsequencer.mo to gsequencer
+  in specs file.
+- new upstream v3.7.30 fixed use ags-fx instead of deprecated
+  recalls in ags_simple_file.c while restore.
+- fixed wrong cast with interface in ags_xorg_application_context.c
+- new since 3.7.29 fixed AgsThread fields start_mutex and
+  start_cond type.
+- new since 3.7.26 fixed missing initialization of ::read() and
+  ::write() of AgsApplicationContextClass.
+- implemented some get_type() functions of enums.
+- other improvements and fixes.
+- new since 3.7.24 added French translation
+- new since 3.7.23 added German translation
+
+-------------------------------------------------------------------
 Sun Jan  3 12:16:55 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.22 fixed AgsTurtle access after freeing string.

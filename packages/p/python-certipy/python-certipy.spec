@@ -1,7 +1,7 @@
 #
 # spec file for package python-certipy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -53,16 +55,23 @@ sed -i 's/\.\.certipy/certipy/' test/*.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/certipy
 
 %check
 mkdir tmp
 export TMP=$(pwd)/tmp
 %pytest test/
 
+%post
+%python_install_alternative certipy
+
+%postun
+%python_uninstall_alternative certipy
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/certipy
+%python_alternative %{_bindir}/certipy
 %{python_sitelib}/*
 
 %changelog

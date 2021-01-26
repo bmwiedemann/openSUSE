@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 26 07:28:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u282 build 08 with OpenJ9 0.24.0 virtual
+  machine
+  * including Oracle January 2021 CPU changes (bsc#1181239)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.24
+- Modified template patch:
+  * openj9-nogit.patch.in
+    + replace git runs by pre-fetched git hashes in new places
+    + remove hunks that are irrelevant in new sources
+
+-------------------------------------------------------------------
 Mon Nov  2 09:07:50 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
-- Update to OpenJDK 8u2732 build 10 with OpenJ9 0.23.0 virtual
+- Update to OpenJDK 8u272 build 10 with OpenJ9 0.23.0 virtual
   machine
   * including Oracle July 2020 CPU changes (bsc#1174157) and
     October 2020 CPU changes (bsc#1177943)

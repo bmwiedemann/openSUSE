@@ -449,4 +449,15 @@
 </comment>
     <requestid>863980</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>43dbee4bd8e426e35838482c0d1aef3e</srcmd5>
+    <version>2.5.3</version>
+    <time>1611668846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.3
+  * Fix invalid command expansion with Xfce 4.14
+    (bxo#panel-plugins/xfce4-whiskermenu-plugin#39)
+  * Translation updates</comment>
+    <requestid>866793</requestid>
+  </revision>
 </revisionlist>

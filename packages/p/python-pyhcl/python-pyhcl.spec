@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyhcl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -43,14 +45,21 @@ HCL configuration parser for python
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/hcltool
 
 %check
 %pytest
 
+%post
+%python_install_alternative hcltool
+
+%postun
+%python_uninstall_alternative hcltool
+
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%python3_only %{_bindir}/hcltool
+%python_alternative %{_bindir}/hcltool
 %{python_sitelib}/*
 
 %changelog

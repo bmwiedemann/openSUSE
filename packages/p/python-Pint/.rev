@@ -172,4 +172,12 @@
   - Add `sort` option to `formatting.formatter` to permit disabling sorting of component units in format string</comment>
     <requestid>835385</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b523146e097e99fb40c3e9368350dff5</srcmd5>
+    <version>0.16.1</version>
+    <time>1611668764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865060</requestid>
+  </revision>
 </revisionlist>

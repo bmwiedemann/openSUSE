@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-genmon-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define plugin genmon
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Generic Monitoring Plugin for the Xfce Panel
 License:        LGPL-2.1-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-genmon-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/4.1/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -92,6 +92,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libgenmon.so
 %{_datadir}/xfce4/panel/plugins/genmon.desktop
+%{_datadir}/icons/hicolor/*/apps/org.xfce.genmon.*
 
 %files lang -f %{name}.lang
 

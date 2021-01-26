@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 19 05:00:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch from python3_only to python_alternative for hcltool. 
+
+-------------------------------------------------------------------
 Fri Aug  7 14:13:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.4.4

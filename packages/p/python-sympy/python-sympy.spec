@@ -1,7 +1,7 @@
 #
 # spec file for package python-sympy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %bcond_with     test
 Name:           python-sympy
-Version:        1.6.2
+Version:        1.7.1
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
@@ -38,7 +39,7 @@ Requires:       python-mpmath >= 0.19
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-jupyter_ipython
+Recommends:     python-ipython
 Recommends:     python-numpy
 Recommends:     python-symengine
 BuildArch:      noarch
@@ -72,13 +73,9 @@ chmod a+x %{buildroot}%{$python_sitelib}/sympy/benchmarks/bench_symbench.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/models.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/physics/optics/polarization.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/benchmarks/bench_symbench.py
-# Deduplicating files can generate a RPMLINT warning for pyc mtime
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/benchmarks/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/benchmarks/
-%fdupes %{buildroot}%{$python_sitelib}
 }
+%python_compileall
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/isympy
 %python_clone -a %{buildroot}%{_mandir}/man1/isympy.1

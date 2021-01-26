@@ -1,7 +1,7 @@
 #
 # spec file for package interbench
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,10 @@ Name:           interbench
 Version:        0.31
 Release:        0
 Summary:        Tool to benchmark interactivity in Linux
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Benchmark
-Url:            http://users.on.net/~ckolivas/interbench/
+URL:            http://users.on.net/~ckolivas/interbench/
 Source0:        http://ck.kolivas.org/apps/interbench/interbench-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This benchmark application is designed to benchmark interactivity in Linux. See
@@ -35,20 +34,22 @@ configuration changes such as cpu, I/O scheduler and filesystem changes and
 options. With careful benchmarking, different hardware can be compared.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make %{?_smp_mflags} clean
-make %{?_smp_mflags} CFLAGS="%{optflags}" LDLIBS="-lrt -lm"
+%make_build clean
+%make_build CFLAGS="%{optflags}" LDLIBS="-lrt -lm"
 
 %install
-install -D -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
-install -D -m 0644 %{name}.8 %{buildroot}%{_mandir}/man8/%{name}.8
+install -Dpm 0755 %{name} \
+  %{buildroot}%{_bindir}/%{name}
+install -Dpm 0644 %{name}.8 \
+  %{buildroot}%{_mandir}/man8/%{name}.8
 
 %files
-%defattr(-,root,root)
-%doc COPYING readme readme.interactivity
+%license COPYING
+%doc readme readme.interactivity
 %{_bindir}/%{name}
-%{_mandir}/man8/%{name}.*
+%{_mandir}/man8/%{name}.8%{?ext_man}
 
 %changelog
