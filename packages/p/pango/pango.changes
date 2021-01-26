@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 22 13:02:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.48.1:
+  + Fix itemization of multi-paragraph layouts.
+  + Fix a few memory leaks.
+  + Fix glyph origins in vertical layout.
+
+-------------------------------------------------------------------
 Mon Nov  9 15:35:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.48.0:

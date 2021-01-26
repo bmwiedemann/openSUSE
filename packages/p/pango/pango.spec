@@ -1,7 +1,7 @@
 #
 # spec file for package pango
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.48.0
+Version:        1.48.1
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -30,13 +30,13 @@ Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  help2man
-BuildRequires:  meson >= 0.54.0
+BuildRequires:  meson >= 0.55.3
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.12.10
 BuildRequires:  pkgconfig(fontconfig) >= 2.11.91
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.7
-BuildRequires:  pkgconfig(glib-2.0) >= 2.60
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.59.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 2.0
