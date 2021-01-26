@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 22 13:35:56 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Disable ITU G.729 Annex A/B speech codec for SUSE based distros, but keep
+  enabled for openSUSE.
+
+-------------------------------------------------------------------
 Fri Jan 13 09:32:30 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - provide helpful error message if user doesn't have permissions to run dumpcap  (bsc#1180102)

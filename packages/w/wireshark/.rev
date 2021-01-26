@@ -1469,4 +1469,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>add dumpcap error message patch</comment>
     <requestid>863103</requestid>
   </revision>
+  <revision rev="168" vrev="3">
+    <srcmd5>97a2d06fc50c35afa9a81a83ee24a5c9</srcmd5>
+    <version>3.4.2</version>
+    <time>1611668653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866054</requestid>
+  </revision>
 </revisionlist>

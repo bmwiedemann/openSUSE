@@ -69,7 +69,6 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(libbcg729)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libssh) >= 0.6.0
@@ -79,6 +78,9 @@ BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(speexdsp)
+%if 0%{?is_opensuse}
+BuildRequires:  pkgconfig(libbcg729)
+%endif
 # keep until libbrotli-devel bug is fixed
 Requires:       libbrotlidec1
 Requires(pre):  permissions
