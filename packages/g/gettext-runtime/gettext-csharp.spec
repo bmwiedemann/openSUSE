@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-csharp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,37 @@
 #
 
 
+%if 0%{?fedora_version} || 0%{?centos_version} <= 600 || 0%{?scilin_version} <= 600 || 0%{?rhel_version} <= 600
+%global debug_package %{nil}
+%endif
 Name:           gettext-csharp
+Version:        0.21
+Release:        0
+Summary:        Native Language Support (NLS) for C#
+License:        LGPL-2.1-or-later
+Group:          Development/Tools/Other
+URL:            https://www.gnu.org/software/gettext/
+Source0:        https://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
+Source2:        suse-start-po-mode.el
+Source3:        gettext-linkdupes.sh
+Source4:        gettext-rpmlintrc
+Source5:        %{name}.keyring
+Patch:          gettext-0.12.1-sigfpe.patch
+Patch1:         gettext-0.19.3-fix-bashisms.patch
+Patch2:         gettext-0.12.1-gettextize.patch
+Patch3:         use-acinit-for-libtextstyle.patch
+Patch4:         gettext-po-mode.diff
+Patch5:         gettext-initialize_vars.patch
+# PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
+Patch6:         gettext-dont-test-gnulib.patch
+# PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
+Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
+# PATCH-FIX-SUSE Bug boo#1106843
+Patch13:        reproducible.patch
+# PATCH-FEATURE bsc#1165138
+Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
+Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -27,27 +57,6 @@ BuildRequires:  mono-devel
 BuildRequires:  perl-libintl-perl
 BuildRequires:  tcl
 Requires:       mono
-URL:            http://www.gnu.org/software/gettext/
-Version:        0.21
-Release:        0
-Summary:        Native Language Support (NLS) for C#
-License:        LGPL-2.1-or-later
-Group:          Development/Tools/Other
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
-Source1:        gettext-rpmlintrc
-Source2:        suse-start-po-mode.el
-Source3:        gettext-linkdupes.sh
-Source4:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
-Source5:        %name.keyring
-Patch:          gettext-0.12.1-sigfpe.patch
-Patch2:         gettext-0.12.1-gettextize.patch
-Patch4:         gettext-po-mode.diff
-Patch5:         gettext-initialize_vars.patch
-
-%if 0%{?fedora_version} || 0%{?centos_version} <= 600 || 0%{?scilin_version} <= 600 || 0%{?rhel_version} <= 600
-%global debug_package %{nil}
-%endif
 
 %description
 Mono with its 'resgen' program uses a design that Microsoft created and
@@ -70,26 +79,31 @@ The included GNU.Gettext.dll gives the user this freedom back and the
 also included msgfmt.net.exe and msgunfmt.net.exe handle PO files more
 reliably than 'resgen'.
 
-
 %prep
 %setup -q -n gettext-%{version}
-%patch
+%patch0
+%patch1 -p1
 %patch2
+%patch3 -p1
 %patch4
 %patch5
+%patch6 -p1
+%patch11 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
 
 %build
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint -lm"
 export CXXFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
 # expect a couple "You should update your `aclocal.m4' by running aclocal."
-#autoreconf -fiv
-#sh autogen.sh
+autoreconf -fiv
 %configure --enable-shared --enable-csharp
-make %{?_smp_mflags} GMSGFMT=../src/msgfmt V=1
+%make_build GMSGFMT=../src/msgfmt
 
 %install
 export LC_CTYPE=ISO-8859-15
-%makeinstall
+%make_install
 mkdir examples
 mv %{buildroot}/%{_datadir}/doc/gettext/examples/*csharp* examples
 mv %{buildroot}/%{_datadir}/doc/gettext/csharpdoc         csharpdoc
@@ -109,24 +123,20 @@ mkdir -p     %{buildroot}/%{_defaultdocdir}/%{name}
 mv examples  %{buildroot}/%{_defaultdocdir}/%{name}
 mv csharpdoc %{buildroot}/%{_defaultdocdir}/%{name}
 # exclude files packaged via other spec files
-rm -Rf %{buildroot}/%_bindir
-rm -f %{buildroot}/%_libdir/lib*
-rm -f %{buildroot}/%_libdir/gettext/hostname
-rm -f %{buildroot}/%_libdir/gettext/project-id
-rm -f %{buildroot}/%_libdir/gettext/urlget
-rm -f %{buildroot}/%_libdir/gettext/user-email
-rm -f %{buildroot}/%_libdir/gettext/cldr-plurals
-rm -Rf %{buildroot}/%_includedir
-rm -f %{buildroot}/%_libdir/preloadable_libintl.so
-
-%clean
-rm -rf %{buildroot}
+rm -Rf %{buildroot}/%{_bindir}
+rm -f %{buildroot}/%{_libdir}/lib*
+rm -f %{buildroot}/%{_libdir}/gettext/hostname
+rm -f %{buildroot}/%{_libdir}/gettext/project-id
+rm -f %{buildroot}/%{_libdir}/gettext/urlget
+rm -f %{buildroot}/%{_libdir}/gettext/user-email
+rm -f %{buildroot}/%{_libdir}/gettext/cldr-plurals
+rm -Rf %{buildroot}/%{_includedir}
+rm -f %{buildroot}/%{_libdir}/preloadable_libintl.so
 
 %files
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/%{name}
-%_libdir/GNU.Gettext.dll
-%_libdir/gettext/msgfmt.net.exe
-%_libdir/gettext/msgunfmt.net.exe
+%{_libdir}/GNU.Gettext.dll
+%{_libdir}/gettext/msgfmt.net.exe
+%{_libdir}/gettext/msgunfmt.net.exe
 
 %changelog

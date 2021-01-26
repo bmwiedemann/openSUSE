@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 22 21:45:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fixup libtextstyle autofoo with adding 
+  use-acinit-for-libtextstyle.patch 
+
+-------------------------------------------------------------------
 Fri Aug  7 07:46:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add multiple new features (bsc#1165138)
 - Add patches:
   * 0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
   * 0002-msgcat-Merge-headers-when-use-first.patch
-- Reintroduce utoreconf call
+- Reintroduce autoreconf call
 
 -------------------------------------------------------------------
 Tue Jul 28 09:33:34 UTC 2020 - Christian Vögl <christian.voegl@suse.com>

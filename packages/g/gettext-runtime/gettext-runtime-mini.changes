@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 22 21:45:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fixup libtextstyle autofoo with adding 
+  use-acinit-for-libtextstyle.patch 
+
+-------------------------------------------------------------------
 Fri Aug  7 07:46:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add multiple new features (bsc#1165138)

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 22 22:06:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use https for urls
+- spec-cleaner run 
+- apply all the patches from gettext-runtime
+
+-------------------------------------------------------------------
 Tue Jul 28 10:33:41 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
 
 -Updated to version 0.21

@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-runtime-mini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 Name:           gettext-runtime-mini
 Version:        0.21
 Release:        0
-BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 # To get an updated linkdupes.sh (in case there are new dupes), temproarily enable:
 #BuildRequires: fdupes
 %if %{without mini}
+BuildRequires:  automake
 BuildRequires:  glib2-devel
 BuildRequires:  libcroco-devel
 BuildRequires:  libxml2-devel
@@ -52,18 +52,18 @@ Provides:       gettext-runtime = %{version}
 Summary:        Tools for Native Language Support (NLS)
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            http://www.gnu.org/software/gettext/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
-Source1:        gettext-rpmlintrc
+URL:            https://www.gnu.org/software/gettext/
+Source0:        https://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
 Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
 Source4:        baselibs.conf
-Source5:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
+Source5:        gettext-rpmlintrc
 Source6:        %name.keyring
-Patch:          gettext-0.12.1-sigfpe.patch
+Patch0:         gettext-0.12.1-sigfpe.patch
 Patch1:         gettext-0.19.3-fix-bashisms.patch
 Patch2:         gettext-0.12.1-gettextize.patch
+Patch3:         use-acinit-for-libtextstyle.patch
 Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
 # PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
@@ -155,9 +155,10 @@ This package provides headers and static libraries for libtextstyle
 
 %prep
 %setup -q -n %{pacname}-%{version}
-%patch
+%patch0
 %patch1 -p1
 %patch2
+%patch3 -p1
 %patch4
 %patch5
 %patch6 -p1
@@ -170,7 +171,6 @@ This package provides headers and static libraries for libtextstyle
 %define _lto_cflags %{nil}
 # expect a couple "You should update your `aclocal.m4' by running aclocal."
 autoreconf -fiv
-#sh autogen.sh
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
 export CXXFLAGS="$CFLAGS -Dgcc_is_lint"
 export LDFLAGS="-lm"

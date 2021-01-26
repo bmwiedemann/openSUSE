@@ -712,4 +712,25 @@ Using build service only atm, any additional work might take a while again... (f
     <comment></comment>
     <requestid>825378</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>33d272da7bec22a904d3d41196c3538d</srcmd5>
+    <version>0.21</version>
+    <time>1611668632</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls
+- spec-cleaner run 
+- apply all the patches from gettext-runtime
+
+- use https for urls 
+- apply all the patches from gettext-runtime
+
+- fixup libtextstyle autofoo with adding 
+  use-acinit-for-libtextstyle.patch 
+
+- fixup libtextstyle autofoo with adding 
+  use-acinit-for-libtextstyle.patch 
+
+- Reintroduce autoreconf call</comment>
+    <requestid>866400</requestid>
+  </revision>
 </revisionlist>
