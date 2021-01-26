@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtconnectivity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML import of examples
+%global __requires_exclude qmlimport\\(Shared.*
 
 %define qt5_snapshot 0
 %define libname libQt5Bluetooth5
@@ -51,6 +54,7 @@ Qt is a set of libraries for developing applications.
 
 %package -n %{libname}
 Summary:        Qt 5 Bluez Addon
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 %requires_ge    libQt5DBus5
 Recommends:     %{name}-tools
@@ -60,6 +64,7 @@ Qt is a set of libraries for developing applications.
 
 %package -n libQt5Nfc5
 Summary:        Qt 5 Nfc Addon
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 %requires_ge    libQt5Core5
 
@@ -68,6 +73,7 @@ Qt is a set of libraries for developing applications.
 
 %package -n %{libname}-imports
 Summary:        Qt 5 Bluez Addon
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 %requires_ge    libQtQuick5
 Supplements:    (%{libname} and libQtQuick5)
@@ -79,6 +85,7 @@ Qt is a set of libraries for developing applications.
 
 %package -n libQt5Nfc5-imports
 Summary:        Qt 5 Nfc Addon
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 %requires_ge    libQtQuick5
 Supplements:    (libQt5Nfc5 and libQtQuick5)
@@ -90,6 +97,7 @@ Qt is a set of libraries for developing applications.
 
 %package tools
 Summary:        Qt 5 Nfc Addon
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 
 %description tools
@@ -97,6 +105,7 @@ Qt is a set of libraries for developing applications.
 
 %package devel
 Summary:        Qt Development Kit
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Requires:       %{libname} = %{version}
 Requires:       libQt5Nfc5 = %{version}
@@ -106,6 +115,7 @@ You need this package, if you want to compile programs with qtsensors.
 
 %package private-headers-devel
 Summary:        Non-ABI stable experimental API
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libqt5-qtbase-private-headers-devel
@@ -120,8 +130,8 @@ the exact Qt version.
 
 %package examples
 Summary:        Qt5 location examples
-Group:          Development/Libraries/X11
 License:        BSD-3-Clause
+Group:          Development/Libraries/X11
 Recommends:     %{name}-devel
 
 %description examples
