@@ -308,4 +308,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
   * 0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch</comment>
     <requestid>852329</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>a39d7fe63fca6a0041dba7c5193e83f3</srcmd5>
+    <version>5.15.2</version>
+    <time>1611668652</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov</comment>
+    <requestid>866048</requestid>
+  </revision>
 </revisionlist>

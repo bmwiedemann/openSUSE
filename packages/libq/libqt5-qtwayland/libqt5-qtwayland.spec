@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwayland
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\(com.theqtcompany.*
 
 %define qt5_snapshot 0
 %define libname libQt5WaylandCompositor5
@@ -56,6 +59,7 @@ Qt is a set of libraries for developing applications.
 
 %package devel
 Summary:        Qt 5 Wayland Addon
+License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libQt5WaylandClient5 = %{version}
@@ -67,6 +71,7 @@ Development package to build Qt-based compositors.
 
 %package private-headers-devel
 Summary:        Qt 5 Wayland Addon Non-ABI stable experimental API files
+License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libqt5-qtbase-private-headers-devel
@@ -80,6 +85,7 @@ the exact Qt version.
 
 %package -n libQt5WaylandCompositor5
 Summary:        Qt 5 Wayland Addon
+License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Conflicts:      qtwayland
 
@@ -88,6 +94,7 @@ Qt is a set of libraries for developing applications.
 
 %package -n libQt5WaylandClient5
 Summary:        Qt 5 Wayland Addon
+License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Conflicts:      qtwayland
 
@@ -96,8 +103,8 @@ Qt is a set of libraries for developing applications.
 
 %package examples
 Summary:        Qt5 wayland examples
-Group:          Development/Libraries/X11
 License:        BSD-3-Clause
+Group:          Development/Libraries/X11
 Recommends:     %{name}-devel
 
 %description examples

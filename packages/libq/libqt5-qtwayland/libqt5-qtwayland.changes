@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 16 16:25:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
 Tue Dec  1 11:36:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix a regression:
