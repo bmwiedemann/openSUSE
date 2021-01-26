@@ -721,15 +721,12 @@ unsorted:
   - argus-client 
   - argus-server 
   - argyllcms-doc 
-  - aria2: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - aria2-devel 
-  - aria2-lang: [i586] 
   - arm-ml-examples: [x86_64] 
   - arm-ml-examples-data: [x86_64] 
   - armadillo-devel 
   - armadillo-devel-32bit: [x86_64] 
   - armadillo-doc 
-  - armagetron: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - armnn: [x86_64] 
   - armnn-devel: [x86_64] 
   - armnn-extratests: [x86_64] 
@@ -1214,9 +1211,7 @@ unsorted:
   - binwalk 
   - bird 
   - bird-doc 
-  - bison: [i586] 
   - bison-32bit: [x86_64] 
-  - bison-lang: [i586] 
   - bitcoin-qt5 
   - bitcoin-test 
   - bitcoin-utils 
@@ -1888,7 +1883,6 @@ unsorted:
   - cinnamon-theme-adapta 
   - cinnamon-theme-plata 
   - cint-devel 
-  - circuslinux: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - citra: [x86_64] 
   - civetweb 
   - civetweb-devel 
@@ -2416,7 +2410,6 @@ unsorted:
   - csi-livenessprobe 
   - csi-node-driver-registrar 
   - csindex 
-  - csmash: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - csmith 
   - csound 
   - csound-devel 
@@ -2528,10 +2521,6 @@ unsorted:
   - darktable-tools-noise: [x86_64] 
   - darts 
   - dash 
-  - dasher: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - dasher-data-extras: [i586] 
-  - dasher-data-recommended: [i586] 
-  - dasher-lang: [i586] 
   - data-partition-service 
   - datamash 
   - dataquay-devel 
@@ -2609,6 +2598,7 @@ unsorted:
   - debuginfod-dummy-client 
   - decentxml 
   - decentxml-javadoc 
+  - deco 
   - deepin-calendar 
   - deepin-calendar-lang 
   - deepin-editor 
@@ -3102,9 +3092,7 @@ unsorted:
   - eog-plugin-pythonconsole 
   - eog-plugin-send-by-mail 
   - eog-plugin-slideshowshuffle 
-  - eog-plugins: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - eog-plugins-data 
-  - eog-plugins-lang: [i586] 
   - eolie 
   - eolie-lang 
   - eom 
@@ -3180,12 +3168,7 @@ unsorted:
   - eventviews-devel 
   - evieproto-devel 
   - evince-devel 
-  - evince-plugin-comicsdocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - evince-plugin-djvudocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - evince-plugin-dvidocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - evince-plugin-psdocument 
-  - evince-plugin-tiffdocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - evince-plugin-xpsdocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - evmctl: [i586] 
   - evolution-data-server-32bit: [x86_64] 
   - evolution-data-server-devel 
@@ -3370,7 +3353,6 @@ unsorted:
   - fence-agents-amt_ws 
   - fence-agents-devel 
   - fence-sanlock 
-  - festival: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - festival-devel 
   - fetchmsttfonts 
   - ffado 
@@ -3617,7 +3599,6 @@ unsorted:
   - freeglut-devel 
   - freeglut-devel-32bit: [x86_64] 
   - freeimage-devel 
-  - freeipmi: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - freeipmi-bmc-watchdog 
   - freeipmi-devel 
   - freeipmi-ipmidetectd 
@@ -4113,7 +4094,6 @@ unsorted:
   - gettext-runtime-mini 
   - gettext-runtime-mini-tools-doc 
   - gettext-runtime-tools-doc 
-  - gettext-tools: [i586] 
   - gettext-tools-mini 
   - gexif 
   - gexif-lang 
@@ -5350,7 +5330,6 @@ unsorted:
   - gimp-plugin-resynthesizer 
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
-  - gimp-ufraw: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - ginac 
   - ginac-devel 
   - ginac-doc-html 
@@ -5400,9 +5379,7 @@ unsorted:
   - gkrellm-lang 
   - gkrellmd 
   - gl2ps-devel 
-  - glabels: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - glabels-devel 
-  - glabels-lang: [i586] 
   - glade-catalog-anjuta 
   - glade-catalog-evolution 
   - glade-catalog-gitg 
@@ -6093,9 +6070,7 @@ unsorted:
   - gstreamermm-doc 
   - gswrap 
   - gtest 
-  - gthumb: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - gthumb-devel 
-  - gthumb-lang: [i586] 
   - gti 
   - gtick 
   - gtick-lang 
@@ -6306,7 +6281,7 @@ unsorted:
   - gv: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - gvfs-32bit: [x86_64] 
   - gvfs-devel 
-  - gvim: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - gvim: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - gwenhywfar 
   - gwenhywfar-devel 
   - gwenhywfar-lang 
@@ -6372,7 +6347,6 @@ unsorted:
   - hda-verb 
   - hdajackretask 
   - hdajacksensetest 
-  - hddtemp: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - hdf5 
   - hdf5-devel 
   - hdf5-devel-32bit: [x86_64] 
@@ -6484,7 +6458,7 @@ unsorted:
   - hevea 
   - hex 
   - hex2bin 
-  - hexchat: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - hexchat: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - hexchat-devel 
   - hexchat-lang: [i586] 
   - hexchat-plugins-lua 
@@ -6864,7 +6838,6 @@ unsorted:
   - intlfonts-phonetic-bitmap-fonts 
   - intlfonts-ttf-fonts 
   - intlfonts-type1-fonts 
-  - intltool: [i586] 
   - inwee 
   - iodbc 
   - iodbc-admin 
@@ -7279,7 +7252,6 @@ unsorted:
   - jhbuild: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - jhbuild-lang: [i586] 
   - jhbuild-recommended-deps 
-  - jhead: [i586] 
   - jhighlight 
   - jhighlight-javadoc 
   - jigdo 
@@ -7579,8 +7551,6 @@ unsorted:
   - kcov 
   - kcrash-devel 
   - kcrash-devel-32bit: [x86_64] 
-  - kcron: [i586] # suggested by dvd:suggested:patterns-kde-kde 
-  - kcron-lang: [i586] 
   - kdav-devel 
   - kdb-devel 
   - kdb-lang 
@@ -7778,7 +7748,6 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
-  - kimageformats-eps: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
@@ -7879,8 +7848,6 @@ unsorted:
   - kohsuke-pom 
   - kokkos-devel: [x86_64] 
   - kolor-manager 
-  - kolourpaint: [i586] # suggested by dvd:suggested:patterns-kde-kde_imaging 
-  - kolourpaint-lang: [i586] 
   - kompare-devel 
   - kompose 
   - konkretcmpi-devel 
@@ -7972,7 +7939,6 @@ unsorted:
   - krdc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - krdc-devel 
   - krdc-lang: [i586] 
-  - krename: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - kreport 
   - kreport-devel 
   - kreport-lang 
@@ -7988,8 +7954,6 @@ unsorted:
   - kross-devel 
   - kross-devel-32bit: [x86_64] 
   - kross-ruby 
-  - kruler: [i586] # suggested by dvd:suggested:patterns-kde-kde_imaging 
-  - kruler-lang: [i586] 
   - krunner-devel 
   - krunner-devel-32bit: [x86_64] 
   - krusader-doc 
@@ -8012,8 +7976,6 @@ unsorted:
   - kst-devel 
   - kstars 
   - kstars-lang 
-  - ksystemlog: [i586] # suggested by dvd:suggested:patterns-kde-kde 
-  - ksystemlog-lang: [i586] 
   - ktexteditor-32bit: [x86_64] 
   - ktexteditor-devel 
   - ktexteditor-devel-32bit: [x86_64] 
@@ -8652,7 +8614,6 @@ unsorted:
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_10-1 
-  - libMagick++-7_Q16HDRI4: [i586] 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
@@ -8968,11 +8929,9 @@ unsorted:
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
-  - libSDL_image-1_2-0: [i586] 
   - libSDL_image-1_2-0-32bit: [x86_64] 
   - libSDL_image-devel 
   - libSDL_image-devel-32bit: [x86_64] 
-  - libSDL_mixer-1_2-0: [i586] 
   - libSDL_mixer-1_2-0-32bit: [x86_64] 
   - libSDL_mixer-devel 
   - libSDL_mixer-devel-32bit: [x86_64] 
@@ -9272,7 +9231,6 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libaria2-0: [i586] 
   - libarm_compute21: [x86_64] 
   - libarmadillo10 
   - libarmadillo10-32bit: [x86_64] 
@@ -10356,7 +10314,6 @@ unsorted:
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
   - libfftw3_omp3-32bit: [x86_64] 
-  - libfftw3_threads3: [i586] 
   - libfftw3_threads3-32bit: [x86_64] 
   - libfguid-devel 
   - libfguid1 
@@ -10630,7 +10587,6 @@ unsorted:
   - libglade2-doc 
   - libgladeui-2-devel 
   - libgle-devel 
-  - libgle3: [i586] 
   - libglfw-devel 
   - libglfw2 
   - libglfw3 
@@ -10835,7 +10791,6 @@ unsorted:
   - libgtkhtml-4_0-0-32bit: [x86_64] 
   - libgtkhtml-editor-4_0-0 
   - libgtkhtml-editor-4_0-0-32bit: [x86_64] 
-  - libgtkimageview0: [i586] 
   - libgtkmm-2_4-1 
   - libgtkmm-2_4-1-32bit: [x86_64] 
   - libgtkmm-3_0-1-32bit: [x86_64] 
@@ -11211,8 +11166,6 @@ unsorted:
   - libipa_hbac-devel 
   - libipa_hbac0 
   - libiperf0 
-  - libipmiconsole2: [i586] 
-  - libipmidetect0: [i586] 
   - libipmimonitoring6 
   - libipopt0: [x86_64] 
   - libipq-devel 
@@ -11277,7 +11230,6 @@ unsorted:
   - libjcat-devel 
   - libjemalloc2 
   - libjim0_75 
-  - libjpeg-turbo: [i586] # suggested by dvd:suggested:patterns-kde-kde_imaging 
   - libjpeg62 
   - libjpeg62-32bit: [x86_64] 
   - libjpeg62-devel 
@@ -11397,7 +11349,6 @@ unsorted:
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
-  - libkpathsea6: [i586] 
   - libkpmcore7 
   - libksane-devel 
   - libksba-devel 
@@ -11715,7 +11666,6 @@ unsorted:
   - libmicrohttpd12 
   - libmidori-core0 
   - libmikmod-devel 
-  - libmikmod3: [i586] 
   - libmikmod3-32bit: [x86_64] 
   - libmilter-doc 
   - libmimetic-devel 
@@ -11757,7 +11707,6 @@ unsorted:
   - libmodman1 
   - libmodman1-32bit: [x86_64] 
   - libmodplug-devel 
-  - libmodplug1: [i586] 
   - libmodplug1-32bit: [x86_64] 
   - libmodsecurity3 
   - libmodsecurity3-32bit: [x86_64] 
@@ -11790,7 +11739,6 @@ unsorted:
   - libmpcdec5-32bit: [x86_64] 
   - libmpcdec6-32bit: [x86_64] 
   - libmpd-devel 
-  - libmpd1: [i586] 
   - libmpd1-32bit: [x86_64] 
   - libmpdclient-devel 
   - libmpdclient2 
@@ -12430,7 +12378,6 @@ unsorted:
   - libpfm-devel-static 
   - libpfm4 
   - libpfm4-32bit: [x86_64] 
-  - libpfs2: [i586] 
   - libpgeasy-devel 
   - libpgeasy3 
   - libpgf-devel 
@@ -12518,7 +12465,6 @@ unsorted:
   - libpocketsphinx3 
   - libpocl2 
   - libpodofo-devel 
-  - libpodofo0_9_6: [i586] 
   - libpolkit-qt5-1-1-32bit: [x86_64] 
   - libpolkit-qt5-1-devel 
   - libpolkit-qt5-1-devel-32bit: [x86_64] 
@@ -13409,7 +13355,6 @@ unsorted:
   - libspdlog1 
   - libspdylay7 
   - libspectre-devel 
-  - libspectre1: [i586] 
   - libspeechd-devel 
   - libspeechd2-32bit: [x86_64] 
   - libspeex1-32bit: [x86_64] 
@@ -13778,7 +13723,6 @@ unsorted:
   - libtty-devel 
   - libtty1 
   - libtun6-0 
-  - libturbojpeg0: [i586] 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
   - libturris-spectator0 
@@ -15043,7 +14987,6 @@ unsorted:
   - lzfse-devel 
   - lzham_codec-devel 
   - lzham_codec-libs 
-  - lzip: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - lziprecover 
   - lzlib-devel 
   - lzma-sdk-devel 
@@ -17321,7 +17264,6 @@ unsorted:
   - okteta-part 
   - okteta-part-lang 
   - okular-devel 
-  - okular-spectre: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - olm-devel 
   - olm-doc 
   - omemo-utils 
@@ -17954,8 +17896,6 @@ unsorted:
   - papi_6_0_0-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
-  - paprefs: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - paprefs-lang: [i586] 
   - paps 
   - par2cmdline 
   - par_text 
@@ -19565,10 +19505,7 @@ unsorted:
   - petsc_3_14_1-gnu-openmpi2-hpc-saws 
   - petsc_3_14_1-gnu-openmpi3-hpc-devel 
   - petsc_3_14_1-gnu-openmpi3-hpc-saws 
-  - pfscalibration: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - pfsglview 
-  - pfstmo: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - pfstools: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - pfstools-devel 
   - pfstools-exr 
   - pfstools-imgmagick 
@@ -20035,10 +19972,9 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
-  - postfix-bdb 
-  - postfix-bdb-lmdb 
   - postfix-devel 
   - postfix-ldap 
+  - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
@@ -20629,14 +20565,12 @@ unsorted:
   - python3-Keras-examples: [x86_64] 
   - python3-LHAPDF 
   - python3-MapProxy 
-  - python3-Mathics 
   - python3-Nuitka 
   - python3-OpenImageIO 
   - python3-Pweave 
   - python3-PyCBC 
   - python3-PyChromecast 
   - python3-PyInstaller 
-  - python3-PyLaTeX 
   - python3-PyMuPDF 
   - python3-PySDL2 
   - python3-QR-Code-generator 
@@ -20668,7 +20602,6 @@ unsorted:
   - python3-avocado-plugins-runner-vm 
   - python3-avocado-plugins-varianter-pict 
   - python3-avocado-plugins-varianter-yaml-to-mux 
-  - python3-awkward 
   - python3-azurectl 
   - python3-azuremetadata 
   - python3-babeltrace 
@@ -20680,7 +20613,6 @@ unsorted:
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_75_0 
   - python3-botan 
-  - python3-bowler 
   - python3-bump2version 
   - python3-caca 
   - python3-caffe 
@@ -20719,12 +20651,10 @@ unsorted:
   - python3-django-attachments 
   - python3-django-braces 
   - python3-django-cacheops 
-  - python3-django-compressor 
   - python3-django-countries 
   - python3-django-haystack 
   - python3-django-mailman3 
   - python3-django-push-notifications 
-  - python3-django-pyscss 
   - python3-django-q 
   - python3-django-redis 
   - python3-django-storages 
@@ -20746,7 +20676,6 @@ unsorted:
   - python3-dns-lexicon 
   - python3-docker-compose 
   - python3-dtfabric 
-  - python3-dynaconf 
   - python3-ec2imgutils 
   - python3-ec2metadata 
   - python3-efl 
@@ -20806,7 +20735,6 @@ unsorted:
   - python3-hivex 
   - python3-httpie 
   - python3-hug 
-  - python3-hvac 
   - python3-hyper 
   - python3-img-proof 
   - python3-img-proof-tests 
@@ -20828,7 +20756,6 @@ unsorted:
   - python3-jfscripts 
   - python3-jinja2-pluralize 
   - python3-jirafs 
-  - python3-jsonextended 
   - python3-jsonpath-rw-ext 
   - python3-jupyter-server 
   - python3-jupyterlab 
@@ -20945,7 +20872,6 @@ unsorted:
   - python3-monascaclient 
   - python3-monitoring-plugins-http_json 
   - python3-morecvutils 
-  - python3-moreorless 
   - python3-moretools 
   - python3-mox3 
   - python3-mraa 
@@ -21078,7 +21004,6 @@ unsorted:
   - python3-python-qdatamatrix 
   - python3-python-qnotifications 
   - python3-python-redis-lock 
-  - python3-quantities 
   - python3-raet 
   - python3-renderspec 
   - python3-reno 
@@ -21097,7 +21022,6 @@ unsorted:
   - python3-selinux: [i586] 
   - python3-senlinclient 
   - python3-setools: [i586] 
-  - python3-setuptools-wheel 
   - python3-shaptools 
   - python3-sherpa: [x86_64] 
   - python3-sidpy: [i586] 
@@ -21144,10 +21068,8 @@ unsorted:
   - python3-tvtk-doc 
   - python3-txt2tags 
   - python3-unbound 
-  - python3-uncompyle6 
   - python3-upm 
   - python3-vapoursynth 
-  - python3-vatnumber 
   - python3-vdirsyncer 
   - python3-vega 
   - python3-virtualbox: [x86_64] 
@@ -21170,7 +21092,6 @@ unsorted:
   - python3-yaql 
   - python3-yui 
   - python3-z3 
-  - python3-zeep 
   - python36 
   - python36-32bit: [x86_64] 
   - python36-APScheduler 
@@ -21190,6 +21111,7 @@ unsorted:
   - python36-CairoSVG 
   - python36-Cerberus 
   - python36-Chameleon 
+  - python36-Cheetah3 
   - python36-CherryPy 
   - python36-CommonMark 
   - python36-Cycler 
@@ -21261,6 +21183,7 @@ unsorted:
   - python36-MarkupPy 
   - python36-MarkupSafe 
   - python36-Markups 
+  - python36-Mathics 
   - python36-MechanicalSoup 
   - python36-Ming 
   - python36-MiniMock 
@@ -21279,6 +21202,7 @@ unsorted:
   - python36-Pebble 
   - python36-Pillow 
   - python36-Pillow-tk 
+  - python36-Pint 
   - python36-PrettyTable 
   - python36-Protego 
   - python36-PsyLab 
@@ -21298,6 +21222,7 @@ unsorted:
   - python36-PyICU 
   - python36-PyJWT 
   - python36-PyKMIP 
+  - python36-PyLaTeX 
   - python36-PyMeeus 
   - python36-PyMeta3 
   - python36-PyMsgBox 
@@ -21505,6 +21430,7 @@ unsorted:
   - python36-av 
   - python36-avocado-plugins-vt 
   - python36-avro 
+  - python36-awkward 
   - python36-awpa 
   - python36-aws-sam-translator 
   - python36-aws-xray-sdk 
@@ -21783,6 +21709,7 @@ unsorted:
   - python36-boto3 
   - python36-botocore 
   - python36-bottle 
+  - python36-bowler 
   - python36-bpython 
   - python36-bqplot 
   - python36-branca 
@@ -21806,6 +21733,7 @@ unsorted:
   - python36-cairocffi 
   - python36-cairocffi-pixbuf 
   - python36-caldav 
+  - python36-calmjs 
   - python36-calmjs.parse 
   - python36-calmjs.types 
   - python36-calysto 
@@ -21834,6 +21762,7 @@ unsorted:
   - python36-certbot-dns-route53 
   - python36-certbot-nginx 
   - python36-certifi 
+  - python36-certipy 
   - python36-certstream 
   - python36-cffi 
   - python36-cfgdiff 
@@ -21949,6 +21878,7 @@ unsorted:
   - python36-cstruct 
   - python36-csv23 
   - python36-ctypescrypto 
+  - python36-cu2qu 
   - python36-cufflinks 
   - python36-curio 
   - python36-curses 
@@ -22055,6 +21985,7 @@ unsorted:
   - python36-django-classy-tags 
   - python36-django-codemod 
   - python36-django-collectd-rest 
+  - python36-django-compressor 
   - python36-django-contrib-comments 
   - python36-django-cors-headers 
   - python36-django-coverage-plugin 
@@ -22099,6 +22030,7 @@ unsorted:
   - python36-django-picklefield 
   - python36-django-pipeline 
   - python36-django-polymorphic 
+  - python36-django-pyscss 
   - python36-django-qsessions 
   - python36-django-registration 
   - python36-django-request 
@@ -22156,6 +22088,7 @@ unsorted:
   - python36-dukpy 
   - python36-dukpy-kovidgoyal 
   - python36-dulwich 
+  - python36-dynaconf 
   - python36-easy-thumbnails 
   - python36-easydev 
   - python36-easygui 
@@ -22419,6 +22352,7 @@ unsorted:
   - python36-humanreadable 
   - python36-hupper 
   - python36-husl 
+  - python36-hvac 
   - python36-hvplot 
   - python36-hyperframe 
   - python36-hyperlink 
@@ -22522,6 +22456,7 @@ unsorted:
   - python36-json_tricks 
   - python36-jsondate 
   - python36-jsondiff 
+  - python36-jsonextended 
   - python36-jsonlib-python3 
   - python36-jsonlines 
   - python36-jsonpatch 
@@ -22703,6 +22638,7 @@ unsorted:
   - python36-mongoengine 
   - python36-monotonic 
   - python36-more-itertools 
+  - python36-moreorless 
   - python36-moto 
   - python36-mpi4py 
   - python36-mpi4py-devel 
@@ -23072,6 +23008,7 @@ unsorted:
   - python36-pydata-google-auth 
   - python36-pydbus 
   - python36-pydicom 
+  - python36-pydle 
   - python36-pydocstyle 
   - python36-pydocumentdb 
   - python36-pydot 
@@ -23101,6 +23038,7 @@ unsorted:
   - python36-pygments-style-railscasts 
   - python36-pygn 
   - python36-pygraphviz 
+  - python36-pyhcl 
   - python36-pyhibp 
   - python36-pyinotify 
   - python36-pyjavaproperties 
@@ -23373,6 +23311,7 @@ unsorted:
   - python36-pytzdata 
   - python36-pyuca 
   - python36-pyudev 
+  - python36-pyupgrade 
   - python36-pyusb 
   - python36-pyuv 
   - python36-pyux 
@@ -23421,6 +23360,7 @@ unsorted:
   - python36-qtwebengine-qt5 
   - python36-qtwebengine-qt5-api 
   - python36-qtwebengine-qt5-sip 
+  - python36-quantities 
   - python36-quantum-blackbird 
   - python36-queuelib 
   - python36-quicktions 
@@ -23569,6 +23509,7 @@ unsorted:
   - python36-setuptools-git 
   - python36-setuptools-test 
   - python36-setuptools-version-command 
+  - python36-setuptools-wheel 
   - python36-setuptools_scm 
   - python36-setuptools_scm_git_archive 
   - python36-sfs 
@@ -23824,6 +23765,7 @@ unsorted:
   - python36-ufonormalizer 
   - python36-ujson 
   - python36-uncertainties 
+  - python36-uncompyle6 
   - python36-unicodecsv 
   - python36-unicodedata2 
   - python36-unidiff 
@@ -23853,6 +23795,7 @@ unsorted:
   - python36-validators 
   - python36-varint 
   - python36-varlink 
+  - python36-vatnumber 
   - python36-vcrpy 
   - python36-vcver 
   - python36-vcversioner 
@@ -23930,6 +23873,7 @@ unsorted:
   - python36-xattr 
   - python36-xcffib 
   - python36-xdg 
+  - python36-xdis 
   - python36-xdoctest 
   - python36-xerox 
   - python36-xhtml2pdf 
@@ -23971,6 +23915,7 @@ unsorted:
   - python36-zc.customdoctests 
   - python36-zc.lockfile 
   - python36-zdaemon 
+  - python36-zeep 
   - python36-zeroconf 
   - python36-zetup 
   - python36-zhon 
@@ -24018,6 +23963,7 @@ unsorted:
   - python38-CairoSVG 
   - python38-Cerberus 
   - python38-Chameleon 
+  - python38-Cheetah3 
   - python38-CherryPy 
   - python38-CommonMark 
   - python38-Cython 
@@ -24084,6 +24030,7 @@ unsorted:
   - python38-Markdown 
   - python38-MarkupPy 
   - python38-Markups 
+  - python38-Mathics 
   - python38-MechanicalSoup 
   - python38-Ming 
   - python38-MiniMock 
@@ -24101,6 +24048,7 @@ unsorted:
   - python38-PeakUtils 
   - python38-Pebble 
   - python38-Pillow-tk 
+  - python38-Pint 
   - python38-PrettyTable: [i586] 
   - python38-Protego 
   - python38-PsyLab 
@@ -24119,6 +24067,7 @@ unsorted:
   - python38-PyICU 
   - python38-PyJWT: [i586] 
   - python38-PyKMIP 
+  - python38-PyLaTeX 
   - python38-PyMeeus 
   - python38-PyMeta3 
   - python38-PyMsgBox 
@@ -24309,6 +24258,7 @@ unsorted:
   - python38-av 
   - python38-avocado-plugins-vt 
   - python38-avro 
+  - python38-awkward 
   - python38-awpa 
   - python38-aws-sam-translator 
   - python38-aws-xray-sdk 
@@ -24585,6 +24535,7 @@ unsorted:
   - python38-boto3 
   - python38-botocore 
   - python38-bottle 
+  - python38-bowler 
   - python38-bpython 
   - python38-bqplot 
   - python38-branca 
@@ -24606,6 +24557,7 @@ unsorted:
   - python38-cairocffi 
   - python38-cairocffi-pixbuf 
   - python38-caldav 
+  - python38-calmjs 
   - python38-calmjs.parse 
   - python38-calmjs.types 
   - python38-calysto 
@@ -24633,6 +24585,7 @@ unsorted:
   - python38-certbot-dns-rfc2136 
   - python38-certbot-dns-route53 
   - python38-certbot-nginx 
+  - python38-certipy 
   - python38-certstream 
   - python38-cfgdiff 
   - python38-cfgv 
@@ -24740,6 +24693,7 @@ unsorted:
   - python38-cstruct 
   - python38-csv23 
   - python38-ctypescrypto 
+  - python38-cu2qu 
   - python38-cufflinks 
   - python38-curio 
   - python38-curtsies 
@@ -24840,6 +24794,7 @@ unsorted:
   - python38-django-classy-tags 
   - python38-django-codemod 
   - python38-django-collectd-rest 
+  - python38-django-compressor 
   - python38-django-contrib-comments 
   - python38-django-cors-headers 
   - python38-django-coverage-plugin 
@@ -24884,6 +24839,7 @@ unsorted:
   - python38-django-picklefield 
   - python38-django-pipeline 
   - python38-django-polymorphic 
+  - python38-django-pyscss 
   - python38-django-qsessions 
   - python38-django-registration 
   - python38-django-request 
@@ -24939,6 +24895,7 @@ unsorted:
   - python38-duckduckgo2 
   - python38-dukpy 
   - python38-dukpy-kovidgoyal 
+  - python38-dynaconf 
   - python38-easy-thumbnails 
   - python38-easydev 
   - python38-easygui 
@@ -25184,6 +25141,7 @@ unsorted:
   - python38-humanreadable 
   - python38-hupper 
   - python38-husl 
+  - python38-hvac 
   - python38-hvplot 
   - python38-hypothesis 
   - python38-hypothesis-auto 
@@ -25279,6 +25237,7 @@ unsorted:
   - python38-json_tricks 
   - python38-jsondate 
   - python38-jsondiff 
+  - python38-jsonextended 
   - python38-jsonlib-python3 
   - python38-jsonlines 
   - python38-jsonpatch: [i586] 
@@ -25447,6 +25406,7 @@ unsorted:
   - python38-moksha-hub 
   - python38-mongoengine 
   - python38-monotonic 
+  - python38-moreorless 
   - python38-moto 
   - python38-mpi4py 
   - python38-mpi4py-devel 
@@ -25787,6 +25747,7 @@ unsorted:
   - python38-pydata-google-auth 
   - python38-pydbus 
   - python38-pydicom 
+  - python38-pydle 
   - python38-pydocstyle 
   - python38-pydocumentdb 
   - python38-pydot: [i586] 
@@ -25815,6 +25776,7 @@ unsorted:
   - python38-pygments-style-railscasts 
   - python38-pygn 
   - python38-pygraphviz: [i586] 
+  - python38-pyhcl 
   - python38-pyhibp 
   - python38-pyinotify 
   - python38-pyipp 
@@ -26078,6 +26040,7 @@ unsorted:
   - python38-pytricia 
   - python38-pytzdata 
   - python38-pyuca 
+  - python38-pyupgrade 
   - python38-pyusb 
   - python38-pyuv 
   - python38-pyux 
@@ -26123,6 +26086,7 @@ unsorted:
   - python38-qtwebengine-qt5 
   - python38-qtwebengine-qt5-api 
   - python38-qtwebengine-qt5-sip 
+  - python38-quantities 
   - python38-quantum-blackbird 
   - python38-queuelib 
   - python38-quicktions 
@@ -26263,6 +26227,7 @@ unsorted:
   - python38-setuptools-git 
   - python38-setuptools-test 
   - python38-setuptools-version-command 
+  - python38-setuptools-wheel 
   - python38-setuptools_scm 
   - python38-setuptools_scm_git_archive 
   - python38-sfs 
@@ -26511,6 +26476,7 @@ unsorted:
   - python38-ufonormalizer 
   - python38-ujson 
   - python38-uncertainties 
+  - python38-uncompyle6 
   - python38-unicodecsv 
   - python38-unicodedata2 
   - python38-unidiff 
@@ -26538,6 +26504,7 @@ unsorted:
   - python38-validators 
   - python38-varint 
   - python38-varlink 
+  - python38-vatnumber 
   - python38-vcrpy 
   - python38-vcver 
   - python38-vcversioner 
@@ -26615,7 +26582,7 @@ unsorted:
   - python38-xarray 
   - python38-xattr 
   - python38-xcffib 
-  - python38-xdg: [i586] 
+  - python38-xdis 
   - python38-xdoctest 
   - python38-xerox 
   - python38-xhtml2pdf 
@@ -26657,6 +26624,7 @@ unsorted:
   - python38-zc.customdoctests 
   - python38-zc.lockfile 
   - python38-zdaemon 
+  - python38-zeep 
   - python38-zeroconf 
   - python38-zetup 
   - python38-zhon 
@@ -26715,7 +26683,6 @@ unsorted:
   - qemacs 
   - qemu-audio-alsa 
   - qemu-audio-pa 
-  - qemu-audio-spice 
   - qemu-extra 
   - qemu-ivshmem-tools 
   - qemu-linux-user 
@@ -29360,7 +29327,6 @@ unsorted:
   - rygel-plugin-gstreamer-renderer 
   - rygel-plugin-tracker 
   - rypper 
-  - rzip: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - s-tui 
   - s3backer 
   - s3fs 
@@ -29603,8 +29569,6 @@ unsorted:
   - seafile 
   - seafile-client 
   - seafile-devel 
-  - seahorse-sharing: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - seahorse-sharing-lang: [i586] 
   - seatd 
   - seatd-devel 
   - seccheck 
@@ -29968,7 +29932,6 @@ unsorted:
   - spectator 
   - spectcl 
   - spectre-meltdown-checker 
-  - speech-dispatcher-configure: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - speedtest-cli 
   - speex 
   - speex-devel 
@@ -38805,8 +38768,6 @@ unsorted:
   - udunits2 
   - udunits2-devel 
   - ufiformat 
-  - ufraw: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - ufraw-lang: [i586] 
   - uftpd 
   - uget 
   - uget-integrator 
@@ -38847,7 +38808,7 @@ unsorted:
   - umockdev-devel 
   - unbound-devel 
   - unbound-munin 
-  - unclutter: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - unclutter: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - uncommons-maths 
   - uncommons-maths-javadoc 
   - uncrustify 
@@ -39226,7 +39187,6 @@ unsorted:
   - vulkan-tools 
   - vulkan-validationlayers 
   - vulkan-validationlayers-devel 
-  - vym: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - w3c-markup-validator 
   - w3c-markup-validator-libs 
   - w3m-inline-image 
@@ -39309,6 +39269,7 @@ unsorted:
   - wesnoth-server 
   - weston 
   - weston-devel 
+  - wev 
   - wget2 
   - wgetpaste 
   - when-command 
@@ -39373,7 +39334,7 @@ unsorted:
   - workrave 
   - workrave-devel 
   - wp-cli 
-  - wpa_supplicant-gui: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - wpa_supplicant-gui: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - wpan-tools 
   - wpebackend-fdo-devel 
   - wqy-bitmap-fonts 
@@ -39506,7 +39467,6 @@ unsorted:
   - xdg-desktop-portal-wlr 
   - xdiskusage 
   - xditview 
-  - xdm-xsession: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xdmsc 
   - xdotool 
   - xdotool-devel 
@@ -39536,7 +39496,6 @@ unsorted:
   - xf86-input-evdev-devel 
   - xf86-input-joystick-devel 
   - xf86-input-libinput-devel 
-  - xf86-input-mouse: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xf86-input-mouse-devel 
   - xf86-input-synaptics 
   - xf86-input-synaptics-devel 
@@ -39551,73 +39510,26 @@ unsorted:
   - xf86dga 
   - xfburn 
   - xfburn-lang 
-  - xfce4-battery-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-battery-plugin-lang: [i586] 
   - xfce4-calculator-plugin 
   - xfce4-calculator-plugin-lang 
-  - xfce4-clipman-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-clipman-plugin-lang: [i586] 
-  - xfce4-cpufreq-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-cpufreq-plugin-lang: [i586] 
-  - xfce4-cpugraph-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-cpugraph-plugin-lang: [i586] 
-  - xfce4-datetime-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-datetime-plugin-lang: [i586] 
-  - xfce4-dev-tools: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-diskperf-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-diskperf-plugin-lang: [i586] 
-  - xfce4-eyes-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-eyes-plugin-lang: [i586] 
-  - xfce4-fsguard-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-fsguard-plugin-lang: [i586] 
-  - xfce4-genmon-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-genmon-plugin-lang: [i586] 
-  - xfce4-mailwatch-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-mailwatch-plugin-lang: [i586] 
   - xfce4-mixer 
   - xfce4-mixer-lang 
   - xfce4-mixer-plugin 
-  - xfce4-mount-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-mount-plugin-lang: [i586] 
-  - xfce4-mpc-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-mpc-plugin-lang: [i586] 
-  - xfce4-netload-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-netload-plugin-lang: [i586] 
-  - xfce4-notes-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-notes-plugin-lang: [i586] 
   - xfce4-notifyd-branding-upstream 
   - xfce4-notifyd-theme-adapta 
   - xfce4-notifyd-theme-plata 
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
   - xfce4-panel-plugin-appmenu 
-  - xfce4-panel-plugin-dict: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-panel-plugin-sntray 
-  - xfce4-places-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-places-plugin-lang: [i586] 
   - xfce4-power-manager-branding-upstream 
-  - xfce4-screenshooter-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-sensors-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-sensors-plugin-devel 
-  - xfce4-sensors-plugin-lang: [i586] 
   - xfce4-session-branding-upstream 
   - xfce4-settings-branding-upstream 
-  - xfce4-smartbookmark-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-smartbookmark-plugin-lang: [i586] 
   - xfce4-stopwatch-plugin 
   - xfce4-stopwatch-plugin-lang 
-  - xfce4-systemload-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-systemload-plugin-lang: [i586] 
   - xfce4-time-out-plugin 
   - xfce4-time-out-plugin-lang 
-  - xfce4-timer-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-timer-plugin-lang: [i586] 
-  - xfce4-verve-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-verve-plugin-lang: [i586] 
-  - xfce4-wavelan-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-wavelan-plugin-lang: [i586] 
-  - xfce4-weather-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
-  - xfce4-weather-plugin-lang: [i586] 
   - xfd 
   - xfdashboard 
   - xfdashboard-devel 
@@ -39668,7 +39580,7 @@ unsorted:
   - xlatencytop 
   - xless 
   - xload 
-  - xlockmore: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - xlockmore: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - xlogin 
   - xlogo 
   - xls2csv 
@@ -39782,7 +39694,7 @@ unsorted:
   - xorg-x11-driver-input 
   - xorg-x11-libs 
   - xorg-x11-server-Xspice: [x86_64] 
-  - xorg-x11-server-sdk: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - xorg-x11-server-sdk: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - xorg-x11-server-source 
   - xorg-x11-server-wrapper 
   - xorg-x11-util-devel 
@@ -39850,9 +39762,7 @@ unsorted:
   - xrootd-server 
   - xrootd-server-devel 
   - xrootd-server-libs 
-  - xsane: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xscope 
-  - xscreensaver-data-extra: [i586] # suggested by dvd:suggested:patterns-base-basic_desktop 
   - xsd 
   - xsd-doc 
   - xsel 
@@ -39927,8 +39837,6 @@ unsorted:
   - yaffshiv 
   - yaics 
   - yajl 
-  - yakuake: [i586] # suggested by dvd:suggested:patterns-kde-kde 
-  - yakuake-lang: [i586] 
   - yamagi-quake2 
   - yamagi-quake2-ctf 
   - yaml-cpp-devel 
