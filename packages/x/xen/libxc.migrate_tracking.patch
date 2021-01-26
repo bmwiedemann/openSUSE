@@ -1,8 +1,6 @@
 Track live migration state unconditionally in logfiles to see how long a domU was suspended.
 Depends on libxc.sr.superpage.patch
 
-Index: xen-4.14.1-testing/tools/libs/toollog/include/xentoollog.h
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libs/toollog/include/xentoollog.h
 +++ xen-4.14.1-testing/tools/libs/toollog/include/xentoollog.h
 @@ -133,6 +133,7 @@ const char *xtl_level_to_string(xentooll
@@ -13,8 +11,6 @@ Index: xen-4.14.1-testing/tools/libs/toollog/include/xentoollog.h
  #endif /* XENTOOLLOG_H */
  
  /*
-Index: xen-4.14.1-testing/tools/libxc/xc_domain.c
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libxc/xc_domain.c
 +++ xen-4.14.1-testing/tools/libxc/xc_domain.c
 @@ -69,20 +69,28 @@ int xc_domain_cacheflush(xc_interface *x
@@ -48,8 +44,6 @@ Index: xen-4.14.1-testing/tools/libxc/xc_domain.c
  }
  
  
-Index: xen-4.14.1-testing/tools/libxc/xc_private.h
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libxc/xc_private.h
 +++ xen-4.14.1-testing/tools/libxc/xc_private.h
 @@ -42,6 +42,15 @@
@@ -68,8 +62,6 @@ Index: xen-4.14.1-testing/tools/libxc/xc_private.h
  #if defined(HAVE_VALGRIND_MEMCHECK_H) && !defined(NDEBUG) && !defined(__MINIOS__)
  /* Compile in Valgrind client requests? */
  #include <valgrind/memcheck.h>
-Index: xen-4.14.1-testing/tools/libxc/xc_resume.c
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libxc/xc_resume.c
 +++ xen-4.14.1-testing/tools/libxc/xc_resume.c
 @@ -284,7 +284,10 @@ out:
@@ -84,8 +76,6 @@ Index: xen-4.14.1-testing/tools/libxc/xc_resume.c
 +        SUSEINFO("domid %u: %s%s returned %d", domid, __func__, fast ? " fast" : "", ret);
 +    return ret;
  }
-Index: xen-4.14.1-testing/tools/libxc/xc_sr_common.c
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libxc/xc_sr_common.c
 +++ xen-4.14.1-testing/tools/libxc/xc_sr_common.c
 @@ -204,6 +204,65 @@ bool _xc_sr_bitmap_resize(struct xc_sr_b
@@ -154,8 +144,6 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_common.c
  /*
   * Local variables:
   * mode: C
-Index: xen-4.14.1-testing/tools/libxc/xc_sr_common.h
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libxc/xc_sr_common.h
 +++ xen-4.14.1-testing/tools/libxc/xc_sr_common.h
 @@ -268,6 +268,7 @@ struct xc_sr_context
@@ -175,8 +163,6 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_common.h
  struct xc_sr_record
  {
      uint32_t type;
-Index: xen-4.14.1-testing/tools/libxc/xc_sr_restore.c
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libxc/xc_sr_restore.c
 +++ xen-4.14.1-testing/tools/libxc/xc_sr_restore.c
 @@ -875,6 +875,7 @@ static int restore(struct xc_sr_context
@@ -203,8 +189,6 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_restore.c
  
      if ( read_headers(&ctx) )
          return -1;
-Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
-===================================================================
 --- xen-4.14.1-testing.orig/tools/libxc/xc_sr_save.c
 +++ xen-4.14.1-testing/tools/libxc/xc_sr_save.c
 @@ -354,7 +354,7 @@ static void show_transfer_rate(struct xc
@@ -216,7 +200,7 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
            ctx->save.overhead_sent, ctx->save.pages_sent, diff.tv_sec, diff.tv_nsec, MiB_sec);
  }
  
-@@ -871,6 +871,7 @@ static int save(struct xc_sr_context *ct
+@@ -861,6 +861,7 @@ static int save(struct xc_sr_context *ct
      xc_interface *xch = ctx->xch;
      int rc, saved_rc = 0, saved_errno = 0;
  
@@ -224,7 +208,7 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
      IPRINTF("Saving domain %d, type %s",
              ctx->domid, dhdr_type_to_str(guest_type));
  
-@@ -991,6 +992,7 @@ static int save(struct xc_sr_context *ct
+@@ -981,6 +982,7 @@ static int save(struct xc_sr_context *ct
      PERROR("Save failed");
  
   done:
@@ -232,7 +216,7 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
      cleanup(ctx);
  
      if ( saved_rc )
-@@ -1059,6 +1061,8 @@ out:
+@@ -1041,6 +1043,8 @@ out:
          return XGS_POLICY_ABORT;
      }
  suspend:
@@ -241,7 +225,7 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
      return XGS_POLICY_STOP_AND_COPY;
  }
  
-@@ -1128,6 +1132,7 @@ int xc_domain_save_suse(xc_interface *xc
+@@ -1109,6 +1113,7 @@ int xc_domain_save_suse(xc_interface *xc
              io_fd, dom, flags, ctx.dominfo.hvm);
  
      ctx.domid = dom;
@@ -249,8 +233,6 @@ Index: xen-4.14.1-testing/tools/libxc/xc_sr_save.c
  
      if ( ctx.dominfo.hvm )
      {
-Index: xen-4.14.1-testing/tools/xl/xl.c
-===================================================================
 --- xen-4.14.1-testing.orig/tools/xl/xl.c
 +++ xen-4.14.1-testing/tools/xl/xl.c
 @@ -398,6 +398,8 @@ int main(int argc, char **argv)

@@ -52,10 +52,8 @@ In this example the per-device value will be set to 5 seconds.
 The change for libxl which handles this xenstore value will enable
 additional logging if the key is found. That extra logging will show how
 the execution time of each script.
-Index: xen-4.14.0-testing/tools/libxl/libxl_aoutils.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_aoutils.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_aoutils.c
+--- xen-4.14.1-testing.orig/tools/libxl/libxl_aoutils.c
++++ xen-4.14.1-testing/tools/libxl/libxl_aoutils.c
 @@ -529,6 +529,8 @@ static void async_exec_timeout(libxl__eg
  {
      libxl__async_exec_state *aes = CONTAINER_OF(ev, *aes, time);
@@ -85,10 +83,8 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_aoutils.c
  
      libxl__ev_time_deregister(gc, &aes->time);
  
-Index: xen-4.14.0-testing/tools/libxl/libxl_create.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_create.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_create.c
+--- xen-4.14.1-testing.orig/tools/libxl/libxl_create.c
++++ xen-4.14.1-testing/tools/libxl/libxl_create.c
 @@ -1247,6 +1247,7 @@ static void initiate_domain_create(libxl
       * build info around just to know if the domain has a device model or not.
       */
@@ -97,10 +93,8 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_create.c
  
      for (i = 0; i < d_config->num_disks; i++) {
          ret = libxl__disk_devtype.set_default(gc, domid, &d_config->disks[i],
-Index: xen-4.14.0-testing/tools/libxl/libxl_device.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_device.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_device.c
+--- xen-4.14.1-testing.orig/tools/libxl/libxl_device.c
++++ xen-4.14.1-testing/tools/libxl/libxl_device.c
 @@ -1212,7 +1212,7 @@ static void device_hotplug(libxl__egc *e
      }
  
@@ -126,10 +120,8 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_device.c
      rc = libxl__async_exec_start(aes);
      if (rc)
          goto out;
-Index: xen-4.14.0-testing/tools/libxl/libxl_event.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_event.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_event.c
+--- xen-4.14.1-testing.orig/tools/libxl/libxl_event.c
++++ xen-4.14.1-testing/tools/libxl/libxl_event.c
 @@ -1033,27 +1033,29 @@ static void devstate_callback(libxl__egc
  {
      EGC_GC;
@@ -176,10 +168,8 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_event.c
      rc = libxl__xswait_start(gc, &ds->w);
      if (rc) goto out;
  
-Index: xen-4.14.0-testing/tools/libxl/libxl_internal.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_internal.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_internal.c
+--- xen-4.14.1-testing.orig/tools/libxl/libxl_internal.c
++++ xen-4.14.1-testing/tools/libxl/libxl_internal.c
 @@ -17,6 +17,97 @@
  
  #include "libxl_internal.h"
@@ -278,10 +268,8 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_internal.c
  void libxl__alloc_failed(libxl_ctx *ctx, const char *func,
                           size_t nmemb, size_t size) {
  #define M "libxl: FATAL ERROR: memory allocation failure"
-Index: xen-4.14.0-testing/tools/libxl/libxl_internal.h
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_internal.h
-+++ xen-4.14.0-testing/tools/libxl/libxl_internal.h
+--- xen-4.14.1-testing.orig/tools/libxl/libxl_internal.h
++++ xen-4.14.1-testing/tools/libxl/libxl_internal.h
 @@ -50,6 +50,7 @@
  #include <sys/un.h>
  #include <sys/file.h>
@@ -306,7 +294,7 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_internal.h
      /* private */
      libxl__ev_time time;
      libxl__ev_child child;
-@@ -4846,6 +4849,9 @@ int libxl__is_domid_recent(libxl__gc *gc
+@@ -4845,6 +4848,9 @@ int libxl__is_domid_recent(libxl__gc *gc
  
  #endif
  

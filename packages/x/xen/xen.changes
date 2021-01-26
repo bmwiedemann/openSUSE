@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 21 08:46:20 MST 2021 - carnold@suse.com
+
+- bsc#1181254 - VUL-0: xen: IRQ vector leak on x86 (XSA-360)
+  xsa360.patch
+
+-------------------------------------------------------------------
 Wed Jan 13 14:27:51 MST 2021 - carnold@suse.com
 
 - bsc#1180794 - bogus qemu binary path used when creating fv guest

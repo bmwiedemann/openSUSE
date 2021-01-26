@@ -2550,4 +2550,12 @@
     <comment>Fixes for bsc#1180690 and bsc#1180794 both of which are spec file changes.</comment>
     <requestid>864498</requestid>
   </revision>
+  <revision rev="297" vrev="1">
+    <srcmd5>686b93194c114de60c54d272df5b73bb</srcmd5>
+    <version>4.14.1_08</version>
+    <time>1611668683</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for security bug bsc#1181254 - VUL-0: xen: IRQ vector leak on x86 (XSA-360)</comment>
+    <requestid>866148</requestid>
+  </revision>
 </revisionlist>

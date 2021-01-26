@@ -130,7 +130,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.14.1_06
+Version:        4.14.1_08
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -169,6 +169,7 @@ Source10183:    xen_maskcalc.py
 Source99:       baselibs.conf
 # Upstream patches
 Patch1:         5fca3b32-tools-libs-ctrl-fix-dumping-of-ballooned-guest.patch
+Patch36001:     xsa360.patch
 # libxc
 Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
 Patch301:       libxc-sr-readv_exact.patch
@@ -426,6 +427,7 @@ Authors:
 %setup -q -n %xen_build_dir -a 1 -a 5 -a 6 -a 57
 # Upstream patches
 %patch1 -p1
+%patch36001 -p1
 # libxc
 %patch300 -p1
 %patch301 -p1
