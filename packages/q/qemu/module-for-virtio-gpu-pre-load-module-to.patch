@@ -1,0 +1,70 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 21 Jan 2021 16:34:32 -0700
+Subject: module: for virtio-gpu, pre-load module to avoid abort on missing
+ module
+
+If the hw-display-virtio-gpu module is not loadable when the virtio-gpu
+device is on the commandline or being added in monitor, qemu will call
+abort. We can fail gracefully by doing the module load in a context
+which is set up to handle errors properly. (bsc#1181103)
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ include/qemu/module.h  |  1 +
+ qom/object.c           | 12 ++++++++++++
+ softmmu/qdev-monitor.c |  8 ++++++++
+ 3 files changed, 21 insertions(+)
+
+diff --git a/include/qemu/module.h b/include/qemu/module.h
+index 944d403cbd1535cc121af76a94f2..4b42dd285eeac1ba12e5c9e18ac0 100644
+--- a/include/qemu/module.h
++++ b/include/qemu/module.h
+@@ -72,5 +72,6 @@ void module_call_init(module_init_type type);
+ bool module_load_one(const char *prefix, const char *lib_name, bool mayfail);
+ void module_load_qom_one(const char *type);
+ void module_load_qom_all(void);
++int module_load_check(const char *name);
+ 
+ #endif
+diff --git a/qom/object.c b/qom/object.c
+index 10653552334549241cd5672d7a02..6f301fec34d103b0b07bc41d107c 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -516,6 +516,18 @@ static void object_initialize_with_type(Object *obj, size_t size, TypeImpl *type
+     object_post_init_with_type(obj, type);
+ }
+ 
++#ifdef CONFIG_MODULES
++int module_load_check(const char *name)
++{
++    TypeImpl *type = type_get_by_name(name);
++    if (!type) {
++        module_load_qom_one(name);
++        type = type_get_by_name(name);
++    }
++    return type == NULL;
++}
++#endif
++
+ void object_initialize(void *data, size_t size, const char *typename)
+ {
+     TypeImpl *type = type_get_by_name(typename);
+diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+index bf79d0bbcd986320eb609f37253e..7f6ad469638ba55a5bb8bfd02fe3 100644
+--- a/softmmu/qdev-monitor.c
++++ b/softmmu/qdev-monitor.c
+@@ -650,6 +650,14 @@ DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
+         return NULL;
+     }
+ 
++#ifdef CONFIG_MODULES
++    if (!strcmp(driver, "virtio-gpu-pci") || !strcmp(driver, "virtio-gpu-ccw")) {
++        if (module_load_check("virtio-gpu-device")) {
++            error_setg(errp, "loadable module for %s not available!", driver);
++            return NULL;
++        }
++    }
++#endif
+     /* create device */
+     dev = qdev_new(driver);
+ 

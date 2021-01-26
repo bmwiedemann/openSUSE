@@ -181,6 +181,7 @@ Patch00046:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
 Patch00047:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00048:     usb-Help-compiler-out-to-avoid-a-warning.patch
 Patch00049:     iotests-Fix-_send_qemu_cmd-with-bash-5.1.patch
+Patch00050:     module-for-virtio-gpu-pre-load-module-to.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -313,7 +314,6 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  nasm
 %endif
 BuildRequires:  pkgconfig
-BuildRequires:  pwdutils
 BuildRequires:  python3-Sphinx
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
@@ -350,21 +350,24 @@ Requires(post): procps
 Recommends:     kvm_stat
 %endif
 Recommends:     qemu-block-curl
-Recommends:     qemu-chardev-spice
-Recommends:     qemu-hw-display-qxl
-Recommends:     qemu-hw-display-virtio-gpu
-Recommends:     qemu-hw-display-virtio-gpu-pci
-Recommends:     qemu-hw-display-virtio-vga
-Recommends:     qemu-hw-usb-redirect
 Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-ksm = %{qemuver}
 Recommends:     qemu-tools
-Recommends:     qemu-ui-opengl
 Recommends:     qemu-ui-curses
+%ifnarch s390x
+Recommends:     qemu-hw-display-qxl
+Recommends:     qemu-hw-display-virtio-vga
+Recommends:     qemu-hw-usb-redirect
 Recommends:     qemu-ui-gtk
-Recommends:     qemu-ui-spice-core
 Recommends:     qemu-ui-spice-app
+%endif
+%ifarch %{ix86} x86_64
+Recommends:     qemu-hw-display-virtio-gpu
+Recommends:     qemu-hw-display-virtio-gpu-pci
 Recommends:     qemu-x86
+%else
+Suggests:       qemu-x86
+%endif
 %ifarch ppc ppc64 ppc64le
 Recommends:     qemu-ppc
 %else
@@ -508,9 +511,9 @@ Obsoletes:      kvm < %{qemuver}
 %description kvm
 %{generic_qemu_description}
 
-This package provides a symlink to the main QEMU emulator used for KVM 
-virtualization. The symlink is named qemu-kvm, which causes the QEMU program 
-to enable the KVM accelerator, due to the name reference ending with 'kvm'. 
+This package provides a symlink to the main QEMU emulator used for KVM
+virtualization. The symlink is named qemu-kvm, which causes the QEMU program
+to enable the KVM accelerator, due to the name reference ending with 'kvm'.
 This package is an artifact of the early origins of QEMU, and is deprecated.
 %endif
 
@@ -562,6 +565,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_datadir/%name/forsplits/05
+Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
 %description audio-spice
@@ -661,6 +665,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_datadir/%name/forsplits/08
+Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
 %description chardev-spice
@@ -672,6 +677,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_datadir/%name/forsplits/01
+Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
 %description hw-display-qxl
@@ -747,6 +753,7 @@ Summary:        GTK based UI support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Requires:       qemu-ui-opengl
 %{qemu_module_conflicts}
 
 %description ui-gtk
@@ -763,26 +770,31 @@ Provides:       %name:%_datadir/%name/forsplits/10
 %description ui-opengl
 This package contains a module for doing OpenGL based UI for QEMU.
 
+%package ui-spice-app
+Summary:        Spice UI support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+Requires:       qemu-chardev-spice
+Requires:       qemu-ui-spice-core
+%{qemu_module_conflicts}
+
+%description ui-spice-app
+This package contains a module for doing Spice based UI for QEMU.
+
 %package ui-spice-core
 Summary:        Core Spice support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_datadir/%name/forsplits/09
+Requires:       qemu-ui-opengl
+# This next Requires is only since virt-manager expects audio support
+Requires:       qemu-audio-spice
 %{qemu_module_conflicts}
 
 %description ui-spice-core
 This package contains a module with core Spice support for QEMU.
-
-%package ui-spice-app
-Summary:        Spice UI support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description ui-spice-app
-This package contains a module for doing Spice based UI for QEMU.
 
 %package vhost-user-gpu
 Summary:        Vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
@@ -1039,6 +1051,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch00048 -p1
 %endif
 %patch00049 -p1
+%patch00050 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 22 17:24:07 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix issue of qemu crashing (abort called) when virtio-gpu device
+  is asked for and the qemu-hw-display-virtio-gpu package isn't
+  installed. (bsc#1181103)
+  module-for-virtio-gpu-pre-load-module-to.patch
+- Add additional inter-module package dependencies, to reflect the
+  current module dependencies (see qemu source file: util/module.c)
+- As of v3.1.0 virt-manager, new VM's are created by default with
+  audio/sound enabled, so it's time to reflect the need, at least
+  in the spice case, by having spice-audio available when spice in
+  general is used (boo#1180210 boo#1181132)
+- Further refine package Recommends/Suggests based on architecture
+- Remove no longer needed dependency on pwdutils (boo#1181235)
+
+-------------------------------------------------------------------
 Mon Jan 18 22:54:11 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Fix qemu-testsuite issue where white space processing gets
