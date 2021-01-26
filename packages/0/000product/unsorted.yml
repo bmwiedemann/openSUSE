@@ -20618,7 +20618,6 @@ unsorted:
   - python2-pycairo-devel 
   - python2-setuptools 
   - python3-Arcus 
-  - python3-Cheetah3 
   - python3-Flask-Admin 
   - python3-GDAL 
   - python3-GitgExt 
@@ -20687,7 +20686,6 @@ unsorted:
   - python3-caffe 
   - python3-caffe-gnu-hpc 
   - python3-caffe_1_0-gnu-hpc 
-  - python3-calmjs 
   - python3-capng 
   - python3-capstone 
   - python3-castellan 
@@ -20699,7 +20697,6 @@ unsorted:
   - python3-certbot-dns-linode 
   - python3-certbot-dns-luadns 
   - python3-certbot-dns-nsone 
-  - python3-certipy 
   - python3-cilium-microscope 
   - python3-cinderclient 
   - python3-cirq: [x86_64] 
@@ -20713,7 +20710,6 @@ unsorted:
   - python3-cotyledon 
   - python3-csvkit 
   - python3-ctypeslib2 
-  - python3-cu2qu 
   - python3-dbus-presage 
   - python3-debtcollector 
   - python3-deltarpm 
@@ -21049,14 +21045,12 @@ unsorted:
   - python3-pyUSID: [i586] 
   - python3-pycadf 
   - python3-pydenticon 
-  - python3-pydle 
   - python3-pyfg 
   - python3-pyfuse3 
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
   - python3-pyglet 
-  - python3-pyhcl 
   - python3-pyjnius 
   - python3-pykickstart 
   - python3-pymod2pkg 
@@ -21084,7 +21078,6 @@ unsorted:
   - python3-python-qdatamatrix 
   - python3-python-qnotifications 
   - python3-python-redis-lock 
-  - python3-pyupgrade 
   - python3-quantities 
   - python3-raet 
   - python3-renderspec 
@@ -21119,7 +21112,6 @@ unsorted:
   - python3-sphinxbase 
   - python3-sphinxbase5 
   - python3-splinter 
-  - python3-spyder-kernels: [i586] 
   - python3-spyder-notebook 
   - python3-spyder-terminal 
   - python3-spyder-unittest 
@@ -21171,7 +21163,6 @@ unsorted:
   - python3-xapian-haystack 
   - python3-xcaplib 
   - python3-xcb-proto-devel 
-  - python3-xdis 
   - python3-xkcdpass 
   - python3-xrootd 
   - python3-yang 
@@ -23672,7 +23663,7 @@ unsorted:
   - python36-sphobjinv 
   - python36-spidev 
   - python36-spotipy 
-  - python36-spyder-kernels: [x86_64] 
+  - python36-spyder-kernels 
   - python36-sqlalchemy-migrate 
   - python36-sqlite-utils: [i586] 
   - python36-sqlitedict 
@@ -26363,7 +26354,7 @@ unsorted:
   - python38-sphobjinv 
   - python38-spidev 
   - python38-spotipy 
-  - python38-spyder-kernels: [x86_64] 
+  - python38-spyder-kernels 
   - python38-sqlalchemy-migrate 
   - python38-sqlite-utils: [i586] 
   - python38-sqlitedict 

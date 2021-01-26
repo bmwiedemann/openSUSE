@@ -54,7 +54,6 @@
       <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
     </metadata>
     <repopackages>
-      <repopackage name=" MicroOS-release [aarch64,ppc64le,s390x,x86_64] not found on i586,x86_64"/>
       <repopackage name="aaa_base"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>

@@ -1,16 +1,15 @@
 <group name="opensuse_microos">
   <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
   <packagelist relationship="recommends">
-    <package name="MicroOS-release" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name=" MicroOS-release [aarch64,ppc64le,s390x,x86_64] not found on i586,x86_64" supportstatus="unsupported"/>
-    <package name="MicroOS-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="MicroOS-release" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="MicroOS-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="bash" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="bash" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="chkstat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="curl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -19,11 +18,11 @@
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="fillup" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="findutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -32,18 +31,18 @@
     <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="kmod" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libacl1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libacl1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libattr1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libattr1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libblkid1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbrotlidec1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbz2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcap-ng0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libcap2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libcap2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libcbor0_8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libcom_err2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -60,9 +59,9 @@
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libfido2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libfido2-udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -76,28 +75,28 @@
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libqrencode4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libreadline8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libreadline8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsasl2-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libseccomp2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libselinux1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libselinux1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsemanage1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libsepol1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -132,7 +131,7 @@
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-group-hardware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-group-kvm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -140,9 +139,9 @@
     <package name="systemd-presets-common-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="systemd-sysvinit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="sysuser-shadow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="util-linux" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
   </packagelist>
