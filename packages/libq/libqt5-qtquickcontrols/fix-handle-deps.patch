@@ -1,0 +1,18 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Fix unfullfillable import in Handle.qml
+
+The module only exists in version 1.0.
+
+Index: qtquickcontrols-everywhere-src-5.15.2/src/extras/Private/Handle.qml
+===================================================================
+--- qtquickcontrols-everywhere-src-5.15.2.orig/src/extras/Private/Handle.qml
++++ qtquickcontrols-everywhere-src-5.15.2/src/extras/Private/Handle.qml
+@@ -41,7 +41,7 @@ import QtQuick 2.0
+ import QtGraphicalEffects 1.0
+ import QtQuick.Controls.Styles 1.4
+ import QtQuick.Controls.Private 1.0
+-import QtQuick.Extras.Private 1.1
++import QtQuick.Extras.Private 1.0
+ import QtQuick.Extras.Private.CppUtils 1.0
+ 
+ Control {

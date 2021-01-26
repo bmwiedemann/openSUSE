@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquickcontrols
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\(.*example.*
+
 %define qt5_snapshot 0
 %define base_name libqt5
 %define real_version 5.15.2
@@ -29,6 +32,8 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         fix-handle-deps.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
@@ -51,8 +56,8 @@ can be used to build complete interfaces in Qt Quick.
 
 %package examples
 Summary:        Qt5 quickcontrols examples
-Group:          Development/Libraries/X11
 License:        BSD-3-Clause
+Group:          Development/Libraries/X11
 
 %description examples
 Examples for libqt5-qtquickcontrols module.

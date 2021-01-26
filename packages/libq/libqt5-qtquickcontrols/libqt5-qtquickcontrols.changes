@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 16 16:25:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
+Mon Dec 28 21:58:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix unfullfillable import:
+  * fix-handle-deps.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:09:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:
