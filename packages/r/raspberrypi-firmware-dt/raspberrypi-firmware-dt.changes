@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 22 11:11:46 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce upstream-blconfig-rmem.patch for firmware to be able to define
+  firmware's configuration reserved memory (jsc#SLE-16616)
+
+-------------------------------------------------------------------
 Wed Dec  9 14:57:29 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to f77383ec0ed3 (2020-12-07) (jsc#SLE-16676):

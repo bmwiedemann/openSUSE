@@ -249,4 +249,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>856032</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>0aad9e01fdedf267a2bd97078b160d16</srcmd5>
+    <version>2020.12.07</version>
+    <time>1611668670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866113</requestid>
+  </revision>
 </revisionlist>

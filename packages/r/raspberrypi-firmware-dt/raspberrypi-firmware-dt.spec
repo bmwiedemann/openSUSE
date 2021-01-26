@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware-dt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        disable-vc4-overlay.dts
 Source2:        uboot-bcm2835-pl011-overlay.dts
 Source100:      get-from-git.sh
 Patch0:         upstream-overlay-rpi-poe.patch
+Patch1:         upstream-blconfig-rmem.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -42,6 +43,7 @@ for the Raspberry Pi boot process.
 %prep
 %setup
 %patch0 -p1
+%patch1 -p1
 
 %build
 SRCDIR=`pwd`
