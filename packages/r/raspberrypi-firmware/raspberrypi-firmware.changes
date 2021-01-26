@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 22 10:42:18 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 051e5e1be8 (2021-01-21) (jsc#SLE-16616):
+  * firmware: Export bootloader config via device-tree
+  * firmware: ISP: Colour denoise
+  * firmware: platform: Define DVFS modes and change default to be fixed AVS voltage
+  * firmware: arm_loader: Auto-select 64-bit for kernel8.img
+  * firmware: hdmi: Throttle auto-i2c register writes to avoid PWM audio underrun
+
+-------------------------------------------------------------------
 Fri Jan 15 13:04:33 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to c78f3ef4 (2021-01-15):

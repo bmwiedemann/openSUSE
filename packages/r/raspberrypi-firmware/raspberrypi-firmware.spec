@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware
-Version:        2021.01.15
+Version:        2021.01.21
 Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware
