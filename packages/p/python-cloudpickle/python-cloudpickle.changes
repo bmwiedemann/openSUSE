@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 22 16:19:43 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update BuildRequirements for tests: scipy and numpy are only
+  available for python >= 3.7 soon. 
+- Apply upstream's deprecation of Python 2: Already failing due to
+  syntax errors.
+
+-------------------------------------------------------------------
 Wed Dec  9 14:43:55 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Don't pip install testpkg into user sitelib

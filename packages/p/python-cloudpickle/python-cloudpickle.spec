@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudpickle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-cloudpickle
 Version:        1.6.0
 Release:        0
@@ -25,27 +25,19 @@ Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-%{version}.tar.gz
-BuildRequires:  %{python_module curses}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module numpy >= 1.8.5}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-curses
-Requires:       python-numpy >= 1.8.5
-Requires:       python-scipy
-Requires:       python-tornado
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures
-%endif
-%ifpython2
-Requires:       python-futures
-%endif
+# SECTION test requirements. None of these are hard dependencies
+BuildRequires:  %{python_module curses} 
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tornado}
+# only test these for the primary interpreter, as packages for older pythons are dropped in TW
+BuildRequires:  python3-scipy
+BuildRequires:  python3-numpy >= 1.18.5
+# /SECTION
 %python_subpackages
 
 %description
