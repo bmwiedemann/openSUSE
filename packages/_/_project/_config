@@ -6,6 +6,11 @@ Ignore: firewall-macros:firewalld
 # testing new cycle algorithm
 BuildFlags: genmetaalgo:1
 
+# The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
+# On macros having impact on dep chains, update the serial (mainly ruby, python)
+# Using a date to indicate when we set the serial
+ExpandFlags: macroserial:20210126
+
 PublishFlags: ympdist:openSUSE%20Tumbleweed
 
 # Use ext4 as FS in builder workers (instead of default ext3)
@@ -810,6 +815,7 @@ Prefer: -libxml2-devel-32bit
 Prefer: -libxslt-devel-32bit                          
 Prefer: -libyajl-devel-32bit                          
 Prefer: -libyaz-devel-32bit                           
+Prefer: -libzstd-devel-32bit
 Prefer: -llvm10-LTO-devel-32bit                       
 Prefer: -llvm10-devel-32bit                           
 Prefer: -llvm7-LTO-devel-32bit                        
