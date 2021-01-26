@@ -451,4 +451,39 @@
     <comment></comment>
     <requestid>822036</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f9d5489baadc2a701be8995de572f6f1</srcmd5>
+    <version>1.16.3</version>
+    <time>1611668630</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-testsuite-failures-with-autoconf270.patch to fix compatibility
+  with autoconf 2.70 
+
+- update to 1.16.3:
+  - In the testsuite summary, the &quot;for $(PACKAGE_STRING)&quot; suffix
+    can be overridden with the AM_TESTSUITE_SUMMARY_HEADER variable.
+  - Python 3.10 version number no longer considered to be 3.1.
+  - Broken links in manual fixed or removed, and new script
+    contrib/checklinkx (a small modification of W3C checklink) added,
+    with accompany target checklinkx to recheck urls.
+  - install-exec target depends on $(BUILT_SOURCES).
+  - valac argument matching more precise, to avoid garbage in DIST_COMMON.
+  - Support for Vala in VPATH builds fixed so that both freshly-generated and
+    distributed C files work, and operation is more reliable with or without
+    an installed valac.
+  - Dejagnu doesn't break on directories containing spaces.
+  - new variable AM_DISTCHECK_DVI_TARGET, to allow overriding the
+    &quot;make dvi&quot; that is done as part of distcheck.
+  - install-sh tweaks:
+    . new option -p to preserve mtime, i.e., invoke cp -p.
+    . new option -S SUFFIX to attempt backup files using SUFFIX.
+    . no longer unconditionally uses -f when rm is overridden by RMPROG.
+    . does not chown existing directories.
+  - Removed function up_to_date_p in lib/Automake/FileUtils.pm.
+    We believe this function is completely unused.
+  - Support for in-tree Vala libraries improved.
+- rename automake-SuSE.patch to automake-suse-vendor.patch and refresh
+- remove automake-testsuite-vala-gcc10.patch (upstream)</comment>
+    <requestid>863898</requestid>
+  </revision>
 </revisionlist>

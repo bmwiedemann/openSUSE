@@ -1,7 +1,7 @@
 #
 # spec file for package automake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define nsuffix %{nil}
 %endif
 Name:           automake%{nsuffix}
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        A Program for Automatically Generating GNU-Style Makefile.in Files
 # docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
@@ -39,11 +39,12 @@ Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=au
 Source3:        automake-rpmlintrc
 #Source4:        http://git.savannah.gnu.org/cgit/config.git/plain/config.sub
 #Source5:        http://git.savannah.gnu.org/cgit/config.git/plain/config.guess
+Patch1:         https://git.savannah.gnu.org/cgit/automake.git/patch/?id=ccb57553e3433df3e52e534e6f87915db23ff9a5#/fix-testsuite-failures-with-autoconf270.patch
 Patch2:         automake-require_file.patch
 Patch3:         automake-1.13.4-fix-primary-prefix-invalid-couples-test.patch
 Patch5:         0001-correct-parameter-parsing-in-test-driver-script.patch
-Patch6:         automake-testsuite-vala-gcc10.patch
-Patch100:       automake-SuSE.patch
+
+Patch100:       automake-suse-vendor.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -59,6 +60,7 @@ BuildArch:      noarch
 %if "%{flavor}" == "testsuite"
 BuildRequires:  cscope
 BuildRequires:  dejagnu
+BuildRequires:  etags
 BuildRequires:  expect
 BuildRequires:  flex
 BuildRequires:  gettext-tools
@@ -69,7 +71,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  sharutils
 BuildRequires:  zip
-BuildRequires:  etags
 Requires:       expect
 Requires:       flex
 Requires:       libtool
@@ -87,11 +88,11 @@ definitions (with rules occasionally thrown in).  The generated
 
 %prep
 %setup -q -n automake-%{version}
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch5 -p1
-%patch6 -p1
-%patch100
+%patch100 -p1
 
 %build
 sh bootstrap

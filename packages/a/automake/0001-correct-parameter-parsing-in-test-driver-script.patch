@@ -10,11 +10,11 @@ The patch adds support for both.
  lib/test-driver | 27 ++++++++++++++++-----------
  1 file changed, 16 insertions(+), 11 deletions(-)
 
-diff --git a/lib/test-driver b/lib/test-driver
-index 8e575b0..69b47f8 100755
---- a/lib/test-driver
-+++ b/lib/test-driver
-@@ -56,21 +56,26 @@ trs_file=  # Where to save the metadata of the test run.
+Index: automake-1.16.3/lib/test-driver
+===================================================================
+--- automake-1.16.3.orig/lib/test-driver
++++ automake-1.16.3/lib/test-driver
+@@ -58,21 +58,26 @@ trs_file=  # Where to save the metadata
  expect_failure=no
  color_tests=no
  enable_hard_errors=yes
@@ -52,6 +52,3 @@ index 8e575b0..69b47f8 100755
  done
  
  missing_opts=
--- 
-2.6.6
-

@@ -2,11 +2,11 @@
  bin/automake.in |    4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Index: automake-1.16.1/bin/automake.in
+Index: automake-1.16.3/bin/automake.in
 ===================================================================
---- automake-1.16.1.orig/bin/automake.in	2018-03-08 21:27:05.000000000 +0100
-+++ automake-1.16.1/bin/automake.in	2018-03-21 12:35:37.288053253 +0100
-@@ -7540,12 +7540,14 @@ sub required_file_check_or_copy
+--- automake-1.16.3.orig/bin/automake.in
++++ automake-1.16.3/bin/automake.in
+@@ -7569,12 +7569,14 @@ sub required_file_check_or_copy
    my $fullfile = "$dir/$file";
    my $found_it = 0;
    my $dangling_sym = 0;
