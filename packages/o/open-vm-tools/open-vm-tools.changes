@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 21 23:11:19 UTC 2021 - Kirk Allan <kallan@suse.com>
+
+- Update to 11.2.5 (build 17337674) (boo#1180997)
+  + Resolved issues:
+    - The SUSE specific vmtoolsd PAM configuration file incorrectly referenced
+      pam_securetty.so.
+    - The following issues and pull requests reported on
+      https://github.com/vmware/open-vm-tools have been addressed:
+        https://github.com/vmware/open-vm-tools/issues/467
+        https://github.com/vmware/open-vm-tools/issues/468
+        https://github.com/vmware/open-vm-tools/pull/469
+    - A number of Coverity reported errors and false positives have been
+      addressed.
+    - A complete list of the granular changes that are in the
+      open-vm-tools 11.2.5 release is available at:
+        https://github.com/vmware/open-vm-tools/blob/stable-11.2.5/open-vm-tools/ChangeLog
+
+- Update pam-vmtoolsd.patch: With the pam_securetty.so entry fixed, only need
+  the modified Makefile.am portion of the patch which copies the suse file to
+  the /etc/pam.d/vmtoolsd file rather than the default generic file.
+
+-------------------------------------------------------------------
 Wed Dec  2 14:34:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64
