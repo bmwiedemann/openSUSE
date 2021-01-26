@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Thu Jan 21 13:52:52 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#245
+- Fix the wrong function name
+- Replace splash with plymouth utils (boo#1149070)
+- 7.0.26
+
+--------------------------------------------------------------------
+Thu Jan 21 13:49:14 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#244
+- cleanup module code to avoid static string buffers (bsc#1180792)
+- minor adjustments
+
+--------------------------------------------------------------------
 Tue Jan 19 10:15:46 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#241
