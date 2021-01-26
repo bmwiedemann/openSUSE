@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/containers/skopeo</param>
+              <param name="changesrevision">bdb117ded6d37f0a6b0a2e28ba3213c20264ab43</param></service></servicedata>

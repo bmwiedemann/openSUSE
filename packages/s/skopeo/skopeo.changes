@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 22 23:34:42 UTC 2021 - dmueller@suse.com
+
+- Update to version 1.2.1:
+  * Bump to v1.2.1
+  * Update nix pin with `make nixpkgs`
+  * Add a smoke test for signedIdentity:remapIdentity
+  * Split copyWithSignedIdentity from TestCopyVerifyingMirroredSignatures
+  * integration test: sync k8s.gcr.io/pause instead of docker.io/alpine
+  * integration test: use fedora-minimal for most manifest list tests
+  * Update vendor of containers/common and containers/storage
+  * Fix reading the after-sync list of tags in SyncSuite.TestYamlUntagged
+  * Bump github.com/containers/common from 0.31.1 to 0.31.2
+
+-------------------------------------------------------------------
 Wed Jul 29 12:32:52 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to skopeo v1.1.1:

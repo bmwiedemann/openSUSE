@@ -1,7 +1,7 @@
 #
 # spec file for package skopeo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # nodebuginfo
 
@@ -24,7 +24,7 @@
 %define with_libostree 1
 %endif
 Name:           skopeo
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -35,11 +35,11 @@ Source1:        skopeo.rpmlintrc
 Requires:       libcontainers-common
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  glib2-devel
-BuildRequires:  golang(API) = 1.12
 BuildRequires:  go-go-md2man
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
+BuildRequires:  golang(API) = 1.15
 ExcludeArch:    s390
 %if 0%{?with_libostree}
 BuildRequires:  libostree-devel
