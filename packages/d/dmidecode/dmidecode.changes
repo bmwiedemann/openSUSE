@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 22 14:58:16 UTC 2021 - Jean Delvare <jdelvare@suse.de>
+
+2 recommended fixes from upstream:
+- dmidecode-fix-the-condition-error-in-ascii_filter.patch:
+  dmidecode: Fix the condition error in ascii_filter.
+- dmidecode-fix-crash-with-u-option.patch: dmidecode: Fix crash
+  with -u option.
+
+-------------------------------------------------------------------
 Wed Oct 14 15:53:32 UTC 2020 - Jean Delvare <jdelvare@suse.de>
 
 - Update to upstream version 3.3:

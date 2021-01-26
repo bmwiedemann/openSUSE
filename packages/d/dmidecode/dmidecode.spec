@@ -1,7 +1,7 @@
 #
 # spec file for package dmidecode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.xz.sig
 # https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=dmidecode
 Source2:        %{name}.keyring
+Patch1:         dmidecode-fix-the-condition-error-in-ascii_filter.patch
+Patch2:         dmidecode-fix-crash-with-u-option.patch
 Provides:       pmtools:%{_sbindir}/dmidecode
 Obsoletes:      pmtools < 20071117
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,6 +51,8 @@ the BIOS told it to.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
 
 %build
 CFLAGS="%{optflags}" make %{?_smp_mflags}

@@ -380,4 +380,16 @@ Partial support for SMBIOS 3.3.0:
 </comment>
     <requestid>841839</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>07f19b849d311835355cfab8af6c4286</srcmd5>
+    <version>3.3</version>
+    <time>1611668662</time>
+    <user>dimstar_suse</user>
+    <comment>2 recommended fixes from upstream:
+- dmidecode-fix-the-condition-error-in-ascii_filter.patch:
+  dmidecode: Fix the condition error in ascii_filter.
+- dmidecode-fix-crash-with-u-option.patch: dmidecode: Fix crash
+  with -u option.</comment>
+    <requestid>866086</requestid>
+  </revision>
 </revisionlist>
