@@ -18,4 +18,17 @@
   * java 8-&gt;9 compatibility</comment>
     <requestid>680056</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af9108518ff8f56dc4c7699b83d60623</srcmd5>
+    <version>1.0.9</version>
+    <time>1611668678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.9:
+  * Fix integer overflow when input chunk is longer than
+    2GiB [boo#1175825]
+  * `brotli -v` now reports raw / compressed size
+  * decoder: minor speed / memory usage improvements
+  * encoder: fix rare access to uninitialized data in ring-buffer</comment>
+    <requestid>866129</requestid>
+  </revision>
 </revisionlist>

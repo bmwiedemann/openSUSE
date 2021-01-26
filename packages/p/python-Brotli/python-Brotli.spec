@@ -1,7 +1,7 @@
 #
 # spec file for package python-Brotli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Brotli
-Version:        1.0.7
+Version:        1.0.9
 Release:        0
 Summary:        Python bindings for the Brotli compression library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/google/brotli
+URL:            https://pypi.org/project/Brotli/
 Source:         https://files.pythonhosted.org/packages/source/B/Brotli/Brotli-%{version}.zip
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -31,7 +31,6 @@ BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-
 %python_subpackages
 
 %description
