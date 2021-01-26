@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquickcontrols2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\((Backend|Theme|.*example).*
 
 %define qt5_snapshot 0
 %define base_name libqt5
@@ -51,6 +54,7 @@ can be used to build complete interfaces in Qt Quick.
 
 %package -n libQt5QuickControls2-5
 Summary:        Qt 5 QuickControl2 Library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          System/Libraries
 
 %description -n libQt5QuickControls2-5
@@ -61,6 +65,7 @@ handling.
 
 %package -n libQt5QuickTemplates2-5
 Summary:        Qt5 QuickTemplates2 Library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          System/Libraries
 
 %description -n libQt5QuickTemplates2-5
@@ -68,6 +73,7 @@ You need this package if you want to compile programs with qtquickcontrols2.
 
 %package -n libQt5QuickControls2-devel
 Summary:        Qt Development Kit
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Requires:       libQt5QuickControls2-5 = %{version}
 
@@ -76,6 +82,7 @@ You need this package if you want to compile programs with qtquickcontrols2.
 
 %package -n libQt5QuickTemplates2-devel
 Summary:        Qt Development Kit
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Requires:       libQt5QuickTemplates2-5 = %{version}
 
@@ -84,6 +91,7 @@ You need this package if you want to compile programs with qtquickcontrols2.
 
 %package private-headers-devel
 Summary:        Headers for the unstable API of the Qt5 QuickControls2 module
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Requires:       libQt5QuickControls2-devel = %{version}
 Requires:       libQt5QuickTemplates2-devel = %{version}
@@ -94,8 +102,8 @@ of the Qt5 QuickControls 2 module.
 
 %package examples
 Summary:        Qt5 quickcontrols2 examples
-Group:          Development/Libraries/X11
 License:        BSD-3-Clause
+Group:          Development/Libraries/X11
 
 %description examples
 Examples for libqt5-qtquickcontrols2 module.
