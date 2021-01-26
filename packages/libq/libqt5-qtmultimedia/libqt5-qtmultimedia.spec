@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtmultimedia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\((FrequencyMonitor|qmlvideofilter).*
 
 %define qt5_snapshot 0
 %define libname libQt5Multimedia5
@@ -72,6 +75,7 @@ management.
 
 %package -n %{libname}
 Summary:        Qt 5 Multimedia Library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 
 %description -n %{libname}
@@ -83,6 +87,7 @@ management.
 
 %package devel
 Summary:        Development files for the Qt5 Multimedia library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Requires:       %{libname} = %{version}
 # The mkspec adds -lpulse-mainloop-glib -lpulse -lglib-2.0
@@ -96,6 +101,7 @@ You need this package if you want to compile programs with qtmultimedia.
 
 %package private-headers-devel
 Summary:        Non-ABI stable experimental API for the Qt5 Multimedia library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libQt5Gui-private-headers-devel >= %{version}
@@ -112,8 +118,8 @@ the exact Qt version.
 
 %package examples
 Summary:        Qt5 multimedia examples
-Group:          Development/Libraries/X11
 License:        BSD-3-Clause
+Group:          Development/Libraries/X11
 Recommends:     %{name}-devel
 
 %description examples
