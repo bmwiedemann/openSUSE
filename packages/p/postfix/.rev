@@ -1834,4 +1834,11 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>866541</requestid>
   </revision>
+  <revision rev="195" vrev="4">
+    <srcmd5>795d9a0fab4d2d3eb13b6cd55b22c9f3</srcmd5>
+    <version>3.5.8</version>
+    <time>1611668476</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1180473</comment>
+  </revision>
 </revisionlist>
