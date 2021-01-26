@@ -761,4 +761,13 @@
   package. (forwarded request 855342 from mcepl)</comment>
     <requestid>855355</requestid>
   </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>abda1e788b90aee08cad3fe56f641dab</srcmd5>
+    <version>44.1.1</version>
+    <time>1611668681</time>
+    <user>dimstar_suse</user>
+    <comment>- We cannot remove vendored packages when generating setuptools
+  wheel (bsc#1177127).</comment>
+    <requestid>866133</requestid>
+  </revision>
 </revisionlist>

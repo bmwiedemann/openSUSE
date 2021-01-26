@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,6 +118,7 @@ chmod -x README.rst
 # replace with nothing
 sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py
 
+%if ! %{with wheel}
 # replace the bundled stuff
 find ./ -type f -name \*.py -exec sed -i \
   -e 's:from setuptools\.extern\.:from :g' \
@@ -132,6 +133,7 @@ find ./ -type f -name \*.py -exec sed -i \
 find ./ -type f -name \*.py -exec sed -i  \
   -e 's:from .extern ::g' \
   {} \;
+%endif
 
 %build
 %if ! %{with wheel}

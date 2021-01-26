@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 22 19:05:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- We cannot remove vendored packages when generating setuptools
+  wheel (bsc#1177127).
+
+-------------------------------------------------------------------
 Tue Dec  8 02:15:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_mock.patch to remove dependency on the external mock
