@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 15 16:56:37 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.9.39:
+ - Use MocketSocket as context manager (#141)
+  * Adding support for using a `socket` as a context manager as requested by #139.
+  * Closing real socket.
+  * Bump version.
+- update to version 3.9.38:
+ - Update __init__.py
+- update to version 3.9.37:
+ - Fix for external decorators (#138)
+- update to version 3.9.36:
+ - New mocket method for checking if all entries have been served (#137)
+ * Mocket method for checking if all entries have been served at least once.
+ - Yet another refactor (#135)
+ - Refactor. (#136)
+
+-------------------------------------------------------------------
 Sun Jan  3 10:37:41 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 3.9.35:
