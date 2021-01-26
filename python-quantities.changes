@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 20 14:30:54 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Change from pytest to unittest.
+- Remove test_umath because the test no longer fails when expected 
+  to fail.
+
+-------------------------------------------------------------------
 Thu Jan 30 15:29:29 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.12.4
