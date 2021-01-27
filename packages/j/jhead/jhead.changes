@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 22 03:28:11 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 3.04
+  * Apply a whole bunch of patches from Debian.
+  * Spell check and fuzz test stuff from Debian, nothing useful to
+    human users.
+  * Add option to set exif date from date from another file.
+  * Bug fixes relating to fuzz testing.
+  * Fix bug where thumbnail replacement DID NOT WORK.
+  * Fix bug when no orientation tag is present
+  * Fix bug of not clearing exif information when processing images
+    with an without exif data in one invocation.
+  * Remove some unnecessary warnings with some types of GPS data
+  * Remove multiple copies of the same type of section when deleting
+    section types
+  * Modify the patch CVE-2018-17088.patch because source code changed
+- Remove these patches because of including upstream code
+  * CVE-2018-6612.patch, CVE-2016-3822.patch, CVE-2018-16554.patch
+
+-------------------------------------------------------------------
 Wed Oct 24 08:01:56 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Renamed CVE-2018-16554.patch to CVE-2018-17088.patch, because

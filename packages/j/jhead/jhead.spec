@@ -1,7 +1,7 @@
 #
 # spec file for package jhead
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,16 @@
 
 
 Name:           jhead
-Version:        3.00
+Version:        3.04
 Release:        0
 Summary:        Tool to Manipulate the Nonimage Part of EXIF Compliant JPEG Files
 License:        SUSE-Public-Domain
 Group:          Productivity/Graphics/Other
-Url:            http://www.sentex.net/~mwandel/jhead/
+URL:            http://www.sentex.net/~mwandel/jhead/
 Source0:        http://www.sentex.net/~mwandel/jhead/jhead-%{version}.tar.gz
 Source1:        %{name}.changes
-Patch0:         CVE-2018-6612.patch
-# PATCH-FIX-SECURITY CVE-2016-3822.patch CVE-2016-3822 boo1108480 sbrabec@suse.com -- Integer overflow fix from Debian (31_CVE-2016-3822.patch).
-Patch1:         CVE-2016-3822.patch
 # PATCH-FIX-SECURITY CVE-2018-17088.patch CVE-2018-17088 boo1108672 sbrabec@suse.com -- Integer overflow fix.
-Patch2:         CVE-2018-17088.patch
-# PATCH-FIX-SECURITY CVE-2018-16554.patch CVE-2018-16554 boo1108480 mcalabkova@suse.com -- Buffer overflow fix.
-Patch3:         CVE-2018-16554.patch
+Patch0:         CVE-2018-17088.patch
 Requires:       %{_bindir}/jpegtran
 Requires:       %{_bindir}/mogrify
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -47,9 +42,7 @@ thumbnails that digital cameras put into the EXIF header.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE1}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
