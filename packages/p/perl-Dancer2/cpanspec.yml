@@ -9,6 +9,8 @@
 #  bar.patch:
 preamble: |-
  BuildRequires: perl(Test::Deep)
+ BuildRequires: perl(Role::Tiny) >= 2.000008
+ Requires:      perl(Role::Tiny) >= 2.000008
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
@@ -18,3 +20,4 @@ preamble: |-
 #skip_noarch: 1
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
+ignore_requires: Role::Tiny

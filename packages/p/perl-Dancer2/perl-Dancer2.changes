@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jan 27 11:12:37 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Explicitly specify perl(Role::Tiny) >= 2.000008
+
+-------------------------------------------------------------------
+Wed Jan 27 03:07:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.300005
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  0.300005  2021-01-26 15:57:41-05:00 America/New_York
+      [ BUG FIXES ]
+      * GH #1546: Add MIME type for all files served from public (Russell
+        @veryrusty Jenkins)
+      * GH #1555: Remove all leftovers of warnings config setting (Sergiy
+        Borodych)
+      * GH #1557: Remove HTTP::XSCookies workaround (Alexander Pankoff)
+      * GH #1564: Add script_name to redirects beginning with / (Nigel Gregoire)
+      * GH #1567: Fix CSS so errors do not display ourside of <pre> HTML
+        element (Elliot Holden)
+      * GH #1568: Serializer::Mutable doesn't auto-load other serializers
+        (Russell @veryrusty Jenkins)
+      * GH #1579: Fix missing push_header method in Response::Delayed
+        (Paul Clements)
+      [ ENHANCEMENTS ]
+      * GH #1552: Update jQuery (Sergiy Borodych)
+      * GH #1558: Test to make sure uploads aren't discarded after the
+        forward keyword is used (Alexander Pankoff)
+      * GH #1571: Add GitHub Actions support (Gabor Szabo)
+      * GH #1572: Install Dancer2::Session::Cookie in order to run the test
+        t/issues/gh-811.t (racke)
+      [ DOCUMENTATION ]
+      * GH #1490: Document Dancer2::Core::App->template() (Steve Dondley)
+      * GH #1551: Fix pod for cookie same site attribute (Sergiy Borodych)
+      * GH #1562: Fix links, missing code in Tutorial (cloveistaken)
+
+-------------------------------------------------------------------
 Wed May 27 03:10:44 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.300004
