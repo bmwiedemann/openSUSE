@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-Validator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-JSON-Validator
-Version:        4.10
-Release:        0
 %define cpan_name JSON-Validator
+Name:           perl-JSON-Validator
+Version:        4.12
+Release:        0
 Summary:        Validate data against a JSON schema
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(List::Util) >= 1.45
@@ -35,11 +33,9 @@ BuildRequires:  perl(Mojolicious) >= 7.28
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 1.30
 BuildRequires:  perl(YAML::PP) >= 0.020
-BuildRequires:  perl(YAML::XS) >= 0.67
 Requires:       perl(List::Util) >= 1.45
 Requires:       perl(Mojolicious) >= 7.28
 Requires:       perl(YAML::PP) >= 0.020
-Requires:       perl(YAML::XS) >= 0.67
 %{perl_requires}
 
 %description
@@ -49,11 +45,11 @@ schema or you can use the elegant DSL schema-builder JSON::Validator::Joi
 to define the schema programmatically.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -64,7 +60,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.md README.md
 
 %changelog
