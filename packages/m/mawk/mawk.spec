@@ -57,13 +57,17 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+# create symlinks for update-alternatives
+install -d -m 755 %{buildroot}%{_sysconfdir}/alternatives
+%if 0%{?usrmerged}
+ln -s %{_sysconfdir}/alternatives/awk %{buildroot}%{_bindir}/awk
+%else
 # compatibility symlink
 install -d -m 755 %{buildroot}/bin
 ln -s %{_bindir}/mawk %{buildroot}/bin/mawk
-# create symlinks for update-alternatives
-install -d -m 755 %{buildroot}%{_sysconfdir}/alternatives
 ln -s %{_sysconfdir}/alternatives/awk %{buildroot}/bin/awk
 ln -s %{_sysconfdir}/alternatives/usr-bin-awk %{buildroot}%{_bindir}/awk
+%endif
 ln -s %{_sysconfdir}/alternatives/awk.1%{?ext_man} %{buildroot}%{_mandir}/man1/awk.1%{?ext_man}
 
 %check
@@ -71,8 +75,12 @@ make %{?_smp_mflags} check
 
 %post
 %{_sbindir}/update-alternatives \
+%if 0%{?usrmerged}
+  --install %{_bindir}/awk awk %{_bindir}/mawk 15 \
+%else
   --install /bin/awk awk %{_bindir}/mawk 15 \
   --slave %{_bindir}/awk usr-bin-awk %{_bindir}/mawk \
+%endif
   --slave %{_mandir}/man1/awk.1.gz awk.1%{?ext_man} %{_mandir}/man1/mawk.1%{?ext_man}
 
 %preun
@@ -83,10 +91,12 @@ fi
 %files
 %license COPYING
 %doc ACKNOWLEDGMENT CHANGES README examples/
-/bin/mawk
 %{_bindir}/mawk
 %{_mandir}/man1/mawk.1%{?ext_man}
+%if !0%{?usrmerged}
 /bin/awk
+/bin/mawk
+%endif
 %{_bindir}/awk
 %{_mandir}/man1/awk.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/awk
