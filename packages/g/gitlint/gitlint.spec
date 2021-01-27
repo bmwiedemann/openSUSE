@@ -1,7 +1,7 @@
 #
 # spec file for package gitlint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,6 @@ also easily customize it to your own liking.
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/*
-%python_alternative %{_bindir}/%{name}
+%python_alternative %{_bindir}/gitlint
 
 %changelog

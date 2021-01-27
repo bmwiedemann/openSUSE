@@ -32,4 +32,12 @@
   * Under-the-hood: dependencies updated, unit and integration test improvements, migrated from TravisCI to Github Actions.</comment>
     <requestid>827516</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2cc12d305db5ec921ccf6cac1f431e2a</srcmd5>
+    <version>0.13.1</version>
+    <time>1611770311</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867225</requestid>
+  </revision>
 </revisionlist>
