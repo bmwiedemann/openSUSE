@@ -1,7 +1,7 @@
 #
 # spec file for package gparted
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gparted
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Gnome Partition Editor
 License:        GPL-2.0-only
@@ -52,6 +52,7 @@ Requires:       xdg-utils
 Recommends:     btrfsprogs >= 4.1
 Recommends:     cryptsetup
 Recommends:     e2fsprogs
+Recommends:     exfatprogs
 Recommends:     hfsutils
 Recommends:     jfsutils
 Recommends:     nilfs-utils
