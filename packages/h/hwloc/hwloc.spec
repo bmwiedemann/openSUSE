@@ -1,7 +1,7 @@
 #
 # spec file for package hwloc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.2/hwloc-%{version}.tar.bz2
+Source0:        https://download.open-mpi.org/release/hwloc/v2.4/hwloc-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -166,7 +166,7 @@ rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
 %{_bindir}/hwloc*
 %{_bindir}/lstopo*
 %{_datadir}/applications/*.desktop
-%{_sysconfdir}/bash_completion.d/hwloc-completion.bash
+%{_datadir}/bash-completion/completions/%{name}
 %ifarch %{ix86} x86_64
 %attr(0755,root,root) %{_sbindir}/hwloc-dump-hwdata
 %{_unitdir}/hwloc-dump-hwdata.service
