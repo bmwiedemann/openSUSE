@@ -20570,11 +20570,11 @@ unsorted:
   - python3-Pweave 
   - python3-PyCBC 
   - python3-PyChromecast 
-  - python3-PyInstaller 
+  - python3-PyInstaller: [i586] 
   - python3-PyMuPDF 
   - python3-PySDL2 
   - python3-QR-Code-generator 
-  - python3-QtAwesome 
+  - python3-QtAwesome: [i586] 
   - python3-Rivet 
   - python3-SHERPA-MC 
   - python3-SQLAlchemy-Utils 
@@ -20583,7 +20583,6 @@ unsorted:
   - python3-aexpect 
   - python3-agate-sql 
   - python3-apns2 
-  - python3-arf 
   - python3-arpack-ng: [x86_64] 
   - python3-asyncssh 
   - python3-audit: [i586] 
@@ -20647,7 +20646,6 @@ unsorted:
   - python3-deltarpm 
   - python3-designateclient 
   - python3-dfVFS 
-  - python3-distob: [x86_64] 
   - python3-django-attachments 
   - python3-django-braces 
   - python3-django-cacheops 
@@ -20681,7 +20679,6 @@ unsorted:
   - python3-efl 
   - python3-efl-doc 
   - python3-efl-examples 
-  - python3-emcee 
   - python3-enforce-pep8 
   - python3-espressomd 
   - python3-evemu 
@@ -20747,14 +20744,12 @@ unsorted:
   - python3-ioflo 
   - python3-ipa_hbac 
   - python3-ipyevents 
-  - python3-ipyparallel: [x86_64] 
   - python3-ironic-inspector-client 
   - python3-ironicclient 
   - python3-itk 
   - python3-javapackages 
   - python3-jenkins-job-builder 
   - python3-jfscripts 
-  - python3-jinja2-pluralize 
   - python3-jirafs 
   - python3-jsonpath-rw-ext 
   - python3-jupyter-server 
@@ -20863,7 +20858,6 @@ unsorted:
   - python3-masakariclient 
   - python3-matrix-synapse-ldap3 
   - python3-mautrix-telegram 
-  - python3-metakernel: [x86_64] 
   - python3-minidb 
   - python3-mistralclient 
   - python3-mitmproxy 
@@ -20893,13 +20887,7 @@ unsorted:
   - python3-notmuch 
   - python3-novaclient 
   - python3-ntp 
-  - python3-numpy-gnu-hpc 
-  - python3-numpy-gnu-hpc-devel 
-  - python3-numpy_1_19_5-gnu-hpc 
-  - python3-numpy_1_19_5-gnu-hpc-devel 
   - python3-obexftp 
-  - python3-oct2py: [x86_64] 
-  - python3-octave-kernel: [x86_64] 
   - python3-octaviaclient 
   - python3-oic 
   - python3-onnx 
@@ -20968,7 +20956,6 @@ unsorted:
   - python3-prewikka 
   - python3-pwquality 
   - python3-pyIOSXR 
-  - python3-pyUSID: [i586] 
   - python3-pycadf 
   - python3-pydenticon 
   - python3-pyfg 
@@ -20996,7 +20983,6 @@ unsorted:
   - python3-pytest-server-fixtures 
   - python3-pytest-subtesthack 
   - python3-pytest-translations 
-  - python3-python-crontab: [x86_64] 
   - python3-python-daemon 
   - python3-python-datamatrix: [i586] 
   - python3-python-jenkins 
@@ -21024,7 +21010,6 @@ unsorted:
   - python3-setools: [i586] 
   - python3-shaptools 
   - python3-sherpa: [x86_64] 
-  - python3-sidpy: [i586] 
   - python3-smbus 
   - python3-snimpy 
   - python3-social-auth-app-django 
@@ -21220,6 +21205,7 @@ unsorted:
   - python36-PyGithub 
   - python36-PyHamcrest 
   - python36-PyICU 
+  - python36-PyInstaller: [x86_64] 
   - python36-PyJWT 
   - python36-PyKMIP 
   - python36-PyLaTeX 
@@ -21256,6 +21242,7 @@ unsorted:
   - python36-Pyro4 
   - python36-QDarkStyle 
   - python36-Qt.py 
+  - python36-QtAwesome: [x86_64] 
   - python36-QtPy 
   - python36-RegexOrder 
   - python36-Routes 
@@ -21381,6 +21368,7 @@ unsorted:
   - python36-apsw 
   - python36-ara 
   - python36-arabic-reshaper 
+  - python36-arf 
   - python36-argcomplete 
   - python36-argh 
   - python36-argon2-cffi 
@@ -21964,7 +21952,7 @@ unsorted:
   - python36-diskcache 
   - python36-dist 
   - python36-distlib 
-  - python36-distob: [i586] 
+  - python36-distob 
   - python36-distorm3 
   - python36-distributed 
   - python36-distro 
@@ -22107,6 +22095,7 @@ unsorted:
   - python36-eliot 
   - python36-email-reply-parser 
   - python36-email_validator 
+  - python36-emcee 
   - python36-emoji 
   - python36-empy 
   - python36-enaml 
@@ -22403,7 +22392,7 @@ unsorted:
   - python36-ipykernel 
   - python36-ipyleaflet 
   - python36-ipympl 
-  - python36-ipyparallel: [i586] 
+  - python36-ipyparallel 
   - python36-ipyscales 
   - python36-ipysheet 
   - python36-ipython715 
@@ -22443,6 +22432,7 @@ unsorted:
   - python36-jenkinsapi 
   - python36-jgraph 
   - python36-jinja2-fsloader 
+  - python36-jinja2-pluralize 
   - python36-jinja2-time 
   - python36-jira 
   - python36-jmespath 
@@ -22614,7 +22604,7 @@ unsorted:
   - python36-meld3 
   - python36-memory_profiler 
   - python36-metaextract 
-  - python36-metakernel: [i586] 
+  - python36-metakernel 
   - python36-metamagic.json 
   - python36-methodtools 
   - python36-mimesis 
@@ -22735,6 +22725,10 @@ unsorted:
   - python36-numexpr 
   - python36-numpy 
   - python36-numpy-devel 
+  - python36-numpy-gnu-hpc 
+  - python36-numpy-gnu-hpc-devel 
+  - python36-numpy_1_19_5-gnu-hpc 
+  - python36-numpy_1_19_5-gnu-hpc-devel 
   - python36-numpydoc 
   - python36-nwdiag 
   - python36-nxapi-plumbing 
@@ -22746,8 +22740,8 @@ unsorted:
   - python36-oauthlib 
   - python36-objgraph 
   - python36-oci-sdk 
-  - python36-oct2py: [i586] 
-  - python36-octave-kernel: [i586] 
+  - python36-oct2py 
+  - python36-octave-kernel 
   - python36-odfpy 
   - python36-odorik 
   - python36-ogr 
@@ -23237,7 +23231,7 @@ unsorted:
   - python36-python-consul 
   - python36-python-coveralls 
   - python36-python-crfsuite 
-  - python36-python-crontab: [i586] 
+  - python36-python-crontab 
   - python36-python-datamatrix: [x86_64] 
   - python36-python-dateutil 
   - python36-python-dbusmock 
@@ -24065,6 +24059,7 @@ unsorted:
   - python38-PyGetWindow 
   - python38-PyGithub 
   - python38-PyICU 
+  - python38-PyInstaller: [x86_64] 
   - python38-PyJWT: [i586] 
   - python38-PyKMIP 
   - python38-PyLaTeX 
@@ -24097,6 +24092,7 @@ unsorted:
   - python38-Pyro4 
   - python38-QDarkStyle 
   - python38-Qt.py 
+  - python38-QtAwesome: [x86_64] 
   - python38-QtPy 
   - python38-RegexOrder 
   - python38-Routes 
@@ -24216,6 +24212,7 @@ unsorted:
   - python38-apsw 
   - python38-ara 
   - python38-arabic-reshaper 
+  - python38-arf 
   - python38-argcomplete: [i586] 
   - python38-argh 
   - python38-argparse-manpage: [i586] 
@@ -24774,7 +24771,7 @@ unsorted:
   - python38-diskcache 
   - python38-dist 
   - python38-distlib 
-  - python38-distob: [i586] 
+  - python38-distob 
   - python38-distorm3 
   - python38-distributed 
   - python38-distroinfo 
@@ -24913,6 +24910,7 @@ unsorted:
   - python38-eliot 
   - python38-email-reply-parser 
   - python38-email_validator 
+  - python38-emcee 
   - python38-emoji 
   - python38-empy 
   - python38-enaml 
@@ -25183,7 +25181,7 @@ unsorted:
   - python38-ipykernel 
   - python38-ipyleaflet 
   - python38-ipympl 
-  - python38-ipyparallel: [i586] 
+  - python38-ipyparallel 
   - python38-ipyscales 
   - python38-ipysheet 
   - python38-ipython 
@@ -25224,6 +25222,7 @@ unsorted:
   - python38-jenkinsapi 
   - python38-jgraph 
   - python38-jinja2-fsloader 
+  - python38-jinja2-pluralize 
   - python38-jinja2-time 
   - python38-jira 
   - python38-jmespath 
@@ -25383,7 +25382,7 @@ unsorted:
   - python38-meld3 
   - python38-memory_profiler 
   - python38-metaextract 
-  - python38-metakernel: [i586] 
+  - python38-metakernel 
   - python38-metamagic.json 
   - python38-methodtools 
   - python38-mimesis 
@@ -25497,6 +25496,10 @@ unsorted:
   - python38-numericalunits 
   - python38-numexpr 
   - python38-numpy-devel 
+  - python38-numpy-gnu-hpc 
+  - python38-numpy-gnu-hpc-devel 
+  - python38-numpy_1_19_5-gnu-hpc 
+  - python38-numpy_1_19_5-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -25508,8 +25511,8 @@ unsorted:
   - python38-oauthlib: [i586] 
   - python38-objgraph 
   - python38-oci-sdk 
-  - python38-oct2py: [i586] 
-  - python38-octave-kernel: [i586] 
+  - python38-oct2py 
+  - python38-octave-kernel 
   - python38-odfpy 
   - python38-odorik 
   - python38-ogr 
@@ -25714,7 +25717,7 @@ unsorted:
   - python38-pyRFC3339 
   - python38-pyRXP 
   - python38-pyScss 
-  - python38-pyUSID: [x86_64] 
+  - python38-pyUSID 
   - python38-pyVows 
   - python38-pyacoustid 
   - python38-pyaes 
@@ -25973,7 +25976,7 @@ unsorted:
   - python38-python-consul 
   - python38-python-coveralls 
   - python38-python-crfsuite 
-  - python38-python-crontab: [i586] 
+  - python38-python-crontab 
   - python38-python-datamatrix: [x86_64] 
   - python38-python-dbusmock 
   - python38-python-docs-theme 
@@ -26241,7 +26244,7 @@ unsorted:
   - python38-shodan 
   - python38-shortuuid 
   - python38-sidecar 
-  - python38-sidpy: [x86_64] 
+  - python38-sidpy 
   - python38-sievelib 
   - python38-sigal 
   - python38-signedjson 
