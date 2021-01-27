@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 25 03:06:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-AnyEvent-WebSocket-Server/Changes
+
+  0.10    2020-01-25
+          - No functional change from 0.09.
+          - Fix test: The RSA key used in the test (in t/data) is now 3072 bit long,
+            because some TLS implementation now requires at least 2048 bit. (#5)
+
+-------------------------------------------------------------------
 Mon May 11 10:05:55 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - initial version of package (0.09) 
