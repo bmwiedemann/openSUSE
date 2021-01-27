@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 26 19:48:02 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.2.0:
+  + Add exFAT support using exfatprogs
+  + Fix gparted not launching when PS_FORMAT environment variable set
+  + Wait for udev change on /dev/DISK when erasing signatures
+  + Raise minimum supported dosfstools to 3.0.18
+  + Fix formatting directive in it.po
+  + Fix GNOME GitLab CI test job failures because of missing /dev entries
+  + Fix GitLab CI job failures following Ubuntu docker image updates
+  + Fix CentOS 7 CI test job fails because of zero sized /etc/machine-id
+  + Set default alignment to cylinder for amiga partition table
+  + Don't try to mask non-existent Systemd \xe2\x97\x8f.service
+- Add exfatprogs to Recommends
+
+-------------------------------------------------------------------
 Mon Jan 20 19:01:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.0:
