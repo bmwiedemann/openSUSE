@@ -17,13 +17,13 @@
 
 
 Name:           bluefish
-Version:        2.2.11
+Version:        2.2.12
 Release:        0
 Summary:        A feature-Rich HTML Editor
 License:        GPL-3.0-or-later
-URL:            http://bluefish.openoffice.nl/
-Source0:        http://www.bennewitz.com/bluefish/stable/source/%{name}-%{version}.tar.bz2
-Source1:        http://www.bennewitz.com/bluefish/stable/source/%{name}-%{version}.tar.bz2.sig
+URL:            https://bluefish.openoffice.nl/
+Source0:        https://www.bennewitz.com/bluefish/stable/source/%{name}-%{version}.tar.bz2
+Source1:        https://www.bennewitz.com/bluefish/stable/source/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE remove-python-class-shebang.patch - Remove unneeded shebang from python class files.
 Patch0:         remove-python-class-shebang.patch

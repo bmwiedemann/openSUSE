@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 08:54:01 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2.12 
+  * fix for a crash in simple search
+  * Python 3 compatibility has been further improved
+  * Encoding detection in python files has been improved.
+  * Triple click now selects the line.
+  * Several programming languages have improved syntax highlighting
+  * Bluefish now works fine with Enchant2 for spell checking.
+
+-------------------------------------------------------------------
 Sun Aug 23 11:54:39 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.2.11
