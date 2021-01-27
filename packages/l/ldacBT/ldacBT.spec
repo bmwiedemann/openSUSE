@@ -1,7 +1,7 @@
 #
 # spec file for package ldacBT
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/EHfive/ldacBT
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
