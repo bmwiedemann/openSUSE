@@ -57,7 +57,7 @@ BuildRequires:  libndctl-devel >= %{min_ndctl_ver}
 # a request for that, and if somebody provides the arch-specific
 # implementation of the low-level routines for flushing to persistent
 # memory.
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le
 
 # Debug variants of the libraries should be filtered out of the provides.
 %global __provides_exclude_from ^%_libdir/pmdk_debug/.*\\.so.*$
