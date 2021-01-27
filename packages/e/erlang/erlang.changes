@@ -1,4 +1,251 @@
 -------------------------------------------------------------------
+Sun Jan 17 07:33:55 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Use wxWidgets < 3.1 (boo#1180488)
+
+-------------------------------------------------------------------
+Fri Jan 15 14:39:59 UTC 2021 - matwey.kornilov@gmail.com
+
+- Changes for 23.2.2:
+  * crypto: Fixed usage of AC_CONFIG_AUX_DIRS() macros in configure
+    script sources.
+  * odbc: Fixed usage of AC_CONFIG_AUX_DIRS() macros in configure
+    script sources.
+  * snmp: Fixed usage of AC_CONFIG_AUX_DIRS() macros in configure
+    script sources.
+  * erts: The suspend_process() and resume_process() BIFs did not
+    check their arguments properly which could cause an emulator
+    crash.
+  * erts: The runtime system would get into an infinite loop if the
+    runtime system was started with more than 1023 file descriptors
+    already open.
+  * megaco: Fixed usage of AC_CONFIG_AUX_DIRS() macros in configure
+    script sources.
+  * erl_interface: Integers outside of the range [-(1 bsl 32) - 1,
+    (1 bsl 32) -1] were previously intended to be printed in an
+    internal bignum format by ei_print_term() and
+    ei_s_print_term(). Unfortunately the implementation has been
+    buggy since OTP R13B02 and since then produced results with
+    random content which also could crash the calling program. This
+    fix replaces the printing of the internal format with printing
+    in hexadecimal form and extend the range for printing in
+    decimal form. Currently integers in the range [-(1 bsl 64), (1
+    bsl 64)] are printed in decimal form and integers outside of
+    this range in Erlang hexadecimal form.
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * ssl: Fix CVE-2020-35733 this only affects ssl-10.2 (OTP-23.2).
+    This vulnerability could enable a man in the middle attack
+    using a fake chain to a known trusted ROOT. Also limits
+    alternative chain handling, for handling of possibly extraneous
+    certs, to improve memory management.
+  * ssl: Add support for AES CCM based cipher suites defined in RFC
+    7251 Also Correct cipher suite name conversion to OpenSSL
+    names. A few names where corrected earlier in OTP-16267 For
+    backwards compatible reasons we support usage of openSSL names
+    for cipher suites. Mostly anonymous suites names where
+    incorrect, but also some legacy suites.
+- Changes for 23.2.1:
+  * erts: Fix emulator crash when sending small bit-strings over
+    Erlang distribution while the connection is being setup. The
+    fault was introduced in OTP-23.0
+- Changes for 23.2:
+  * erl_docgen: Fix links in titles to github and anchors to work.
+  * erl_docgen: Fix some typing errors on variable names in
+    documentation examples.
+  * mnesia: Avoid potential performance issue, if the input queue
+    to mnesia_tm is long.
+  * crypto: Build the supported curves cache in the NIF when crypto
+    is loaded, no matter how it is loaded. This prevents a possible
+    problem with different processes starting the crypto
+    application concurrently.
+  * crypto: It is now possible to build with crypto and openssl
+    gprof-enabled and statically link them into the VM.
+  * crypto: Fixed performance loss in HMAC when using older OpenSSL
+    due to mutex issues. A workaround is implemented to allow
+    fallback from using the EVP API for HMAC operations. On some
+    architectures this may improve the performance, especially with
+    old OpenSSL versions. This fallback to low-level functions is
+    always enabled for openssl versions before 1.0.2.
+  * kernel: The apply call's in logger.hrl are now called with
+    erlang prefix to avoid clashed with local apply/3 functions.
+  * kernel: Fix memory leak in pg.
+  * kernel: Fix crash in logger_proxy due to stray gen_server:call
+    replies not being handled. The stray replies come when logger
+    is under heavy load and the flow control mechanism is reaching
+    its limit.
+  * kernel: Fixed a bug in erl_epmd:names() that caused it to
+    return the illegal return value noport instead of {error,
+    Reason} where Reason is the actual error reason. This bug also
+    propagated to net_adm:names(). This bug was introduced in
+    kernel version 7.1 (OTP 23.1).
+  * kernel: Add export of some resolver documented types.
+  * kernel: Add configurable retry timeout for resolver lookups.
+  * kernel: gen_server:multi_call() has been optimized in the
+    special case of only calling the local node with timeout set to
+    infinity.
+  * public_key: Corrected dialyzer spec for pkix_path_validation/3
+  * snmp: If an attempt was made to send a v1 trap on a IPv6
+    transport this could cause a master agent crash (if the agent
+    was *not* multi-threaded).
+  * snmp: The deprecation info for a couple of the deprecated MIB
+    compiler functions where incorrect. Referred to functions in
+    the 'snmpa' module instead of 'snmpc'.
+  * snmp: Make it possible for the agent to configure separate
+    transports (sockets) for request-responder and trap-sender.
+  * snmp: The mib server cache handling has been improved. First,
+    the default gclimit has been changed from 100 to infinity (to
+    ensure the size is as small as possible). Also, the method of
+    removing old elements has been optimized.
+  * snmp: It is now possible to configure the agent in such a way
+    that the order of outgoing notifications are processed in order
+    in the agent. What happens after the notification message has
+    left the agent (been sent) is of course still out of our
+    control.
+  * snmp: Improve handling of the udp_error message. Basically an
+    improved error/warning message.
+  * wx: Add popup menu callback to wxTaskBarIcon:new/1.
+  * dialyzer: Clarify warning option -Wunmatched_returns in
+    dialyzer(3).
+  * tools: Correct the Xref analysis exports_not_used to not report
+    internally generated behaviour_info/1.
+  * syntax_tools: In the syntax_tools application, the igor module
+    and all functions in erl_tidy except file/2 have been
+    deprecated.
+  * compiler: Several minor compiler bugs have been fixed:
+    Constructing a binary with a list as a size of a binary segment
+    could generate a BEAM file that could not be loaded. When
+    matching a binary segment of type float and ignoring the
+    matched out value, the match would always succeed, even if the
+    size was invalid or the value of the float was NaN or some
+    other non-numeric float value. Attempting to construct an
+    invalid external fun (e.g. fun m:f:bad) is supposed to raise a
+    'badarg' exception, but if the value was never used, no
+    exception would be raised.
+  * compiler: Fixed multiple bugs in the validator that could cause
+    it to reject valid code.
+  * compiler: The compiler could crash when a binary comprehension
+    had a generator that depended on another generator.
+  * compiler: Fixed a bug in the type optimization pass that could
+    yield incorrect values or cause the wrong clauses to be
+    executed.
+  * erts: Fixed bug which could cause VM crash when a NIF is loaded
+    at the same time as the Erlang implementation of the NIF is
+    called. Bug exists since OTP 23.0.
+  * erts: Fixed enif_make_map_* functions in debug build when given
+    environment from enif_alloc_env.
+  * erts: Fixed broken configuration option --disable-pie.
+  * erts: Fixed rare distribution bug in race between received
+    signal (link/monitor/spawn_request/spawn_reply) and
+    disconnection. Symptom: VM crash. Since: OTP 21.0.
+  * erts: Fixed a performance issue when extremely many items were
+    stored in the process dictionary. (Fixing this bug also
+    eliminates a compiler warning emitted by the latest version of
+    Clang.)
+  * erts: Remove -ftree-copyrename from flags passed to compiler
+    when building erts. The flag is not used by modern gcc's and is
+    not supported by clang.
+  * erts: Modules using complicated nested binary comprehensions
+    could fail to load.
+  * erts: Fixed a race in file:read_file/1 were an incomplete file
+    could be returned if another OS process swapped the file out
+    while reading.
+  * erts: The call list_to_integer("10", true) would return 4
+    instead of raising an exception. Certain other atoms would also
+    be interpreted as a number base.
+  * erts: On macOS 11 (Big Sur), erl would not start if the maximum
+    number of file descriptors were unlimited (ulimit -n
+    unlimited).
+  * erts: Add manifest to all executables and dynamic libraries.
+  * xmerl: Corrected namespace and expanded name in the old dom
+    backend example module.
+  * xmerl: Corrected a bug that in some cases didn't allow
+    unresolved references when skip_external_dtd option used.
+  * ssh: Fixed problems in the ssh cli/shell handling. Most
+    important are: 1) the ssh:shell function did sometimes cause
+    the input to be echoed twice, 2) the ssh:shell function didn't
+    transfer the LANG and LC_ALL shell variables to the connected
+    server which sometimes made Unicode handling erroneous, 3)
+    Unicode was not always transferred correctly to and from the
+    peer.
+  * ssh: The SSH protocol message SSH_MSG_DISCONNECT was sometimes
+    sent instead of SSH_MSG_CHANNEL_FAILURE
+  * ssh: The ssh_cli module now always sends the exit-status to
+    connected clients so they can use that to check for successful
+    command execution.
+  * ssh: A new option pk_check_user enables checking of the
+    client's user name in the server when doing public key
+    authentication.
+  * stdlib: This change fixes the handling of deep lists in the
+    path component when using uri_string:recompose/1.
+  * stdlib: Fix shell_docs to clear shell decorations
+    (bold/underline) when paginating output. Fix various small
+    renderings issues when integrating shell_docs with edoc.
+  * stdlib: Improved the API and documentation of the uri_string
+    module. Added a new chapter to the Users Guide about Uniform
+    Resource Identifiers and their handling with the new API. Added
+    two new API functions: uri_string:allowed_characters/0 and
+    uri_string:percent_decode/1. This change has been marked as
+    potentially incompatible as uri_string:normalize/2 used to
+    decode percent-encoded character triplets that corresponded to
+    characters not in the reserved set. After this change,
+    uri_string:normalize/2 will only decode those percent-encoded
+    triplets that correspond to characters in the unreserved set
+    (ALPHA / DIGIT / "-" / "." / "_" / "~"). *** POTENTIAL
+    INCOMPATIBILITY ***
+  * stdlib: The shell_docs module has been expanded with the
+    possibility to configure unicode, ansi and column size for the
+    rendered text.
+  * megaco: Empty statistics descriptor (now) allowed in both
+    encode and decode for version 3.
+  * ssl: SSL's Erlang Distribution Protocol modules inet_tls_dist
+    and inet6_tls_dist lacked a callback function, so the start
+    flag "-dist_listen false" did not work, which has now been
+    fixed.
+  * ssl: Correct OpenSSL names for newer cipher suites using DHE in
+    their name that accidentally got the wrong value when fixing
+    other older names using EDH instead.
+  * ssl: This change improves the handling of DTLS listening
+    dockets, making it possible to open multiple listeners on the
+    same port with different IP addresses.
+  * ssl: Fix a bug that causes cross-build failure. This change
+    excludes the ssl.d dependency file from the source tarballs.
+  * ssl: This change fixes ssl:peername/1 when called on a DTLS
+    client socket.
+  * ssl: Retain emulation of active once on a closed socket to
+    behave as before 23.1
+  * ssl: Corrected server session cache entry deletion pre TLS-1.3.
+    May increase session reuse.
+  * ssl: Handle extraneous certs in certificate chains as well as
+    chains that are incomplete but can be reconstructed or
+    unordered chains. The cert and certfile options will now accept
+    a list of certificates so that the user may specify the chain
+    explicitly. Also, the default value of the depth option has
+    been increased to allow longer chains by default.
+  * ssl: This change implements optional NSS-style keylog in
+    ssl:connection_information/2 for debugging purposes. The keylog
+    contains various TLS secrets that can be loaded in Wireshark to
+    decrypt TLS packets.
+  * ssl: Use new gen_statem feature of changing callback mode to
+    improve code maintainability.
+  * ssl: The handling of Service Name Indication has been aligned
+    with RFC8446.
+  * ssl: Add explicit session reuse option to TLS clients for pre
+    TLS-1.3 sessions. Also, add documentation to Users Guide for
+    such sessions.
+  * inets: Fix an issue about HTML-escaped filename in inets.
+  * common_test: Add behaviour for test suites
+- Changes for 23.1.5:
+  * ssh: An ssh-client can take an accepted socket from a listening
+    socket and do an ssh:connect/2 on it. Multiple clients on
+    sockets accepted from the same listening socket had stopped
+    working. This is corrected now.
+- Changes for 23.1.4:
+  * ssh: The inet option raw was not passed on from the ssh option
+    list to inet.
+
+-------------------------------------------------------------------
 Wed Nov 18 20:20:39 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Changes for 23.1.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package erlang
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        23.1.3
+Version:        23.2.2
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -50,7 +50,7 @@ BuildRequires:  openssh
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
-BuildRequires:  wxWidgets-devel >= 3
+BuildRequires:  wxWidgets-devel < 3.1
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
