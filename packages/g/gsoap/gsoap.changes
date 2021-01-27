@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 21 19:56:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.110
+  * Updated wsdl2h to correct an XML parsing rejection problem
+    for the special case when XML schemas have no
+    targetNamespaces (i.e. empty namespace, no namespace
+    prefixes) for elements defined in a `<sequence>` schema
+    component, the wsdl2h-generated struct/class member names
+    require two underscores instead of one, such as
+    `__Name_sequence`.)
+
+-------------------------------------------------------------------
 Wed Nov 25 00:54:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.109
