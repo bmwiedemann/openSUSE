@@ -37,4 +37,13 @@ It is a dependency of the next version of Haxe (v4.0.0).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>747296</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb9a9daaae72dd327086b88a199beb31</srcmd5>
+    <version>1.5</version>
+    <time>1611770261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  Make Result an alias of Stdlib.Result on OCaml &gt;= 4.08.</comment>
+    <requestid>866884</requestid>
+  </revision>
 </revisionlist>

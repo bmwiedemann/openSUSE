@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-result
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-result
-Version:        1.4
+Version:        1.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Compatibility OCaml Result module
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
-Url:            https://github.com/janestreet/result
+URL:            https://opam.ocaml.org/packages/result
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20210114
 
 %description
 Projects that want to use the new result type defined in OCaml >= 4.03 while
