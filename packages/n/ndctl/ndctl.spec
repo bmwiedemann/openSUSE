@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le
 %{?systemd_requires}
 # required for documentation
 #if 0%{?suse_version} >= 1330
