@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Jan 24 16:18:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * fixed: Remove unimplemented function from libofx.h header
+  * fixed: Return error value if file parsing is unsuccessful in libofx_proc_file
+  * fixed: Use given parameter for actual file type in libofx_proc_file
+  * Large contribution adding investment / security handling in OFX files, by jeffjl74.
+    ABI-breaking change, hence MINOR version incremented (due to MAJOR still at zero), 
+  but libofx.h API should only have additions
+  * jeffjl74 Enhanced handling of investments in OFX files (support not added to OFC)
+  * increased OFX_SECNAME_LENGTH to match the OFX spec (ABI-breaking change,
+  hence MINOR version incremented) OfxSecurityData now includes:
+   - an enum for the type of the security (stock, bond, fund, option)
+    - the optional <SECINFO> fields
+    - the mandatory <DEBTINFO> and <OPTINFO> fields
+    - the optional <DEBTINFO> and <OPTINFO> fields
+  * added <INVBAL> parsing for cash balances in investment accounts
+    - usefulness depends upon how the broker uses these fields
+	- Vanguard fund account puts the market value in there instead of the cash balance
+	- other tested brokers use it appropriately, though the date of the
+	  balance is sometimes inconsistent usually due to unsettled trades,
+          i.e. the "as of" date will say "today" but the cash
+	  balance will actually be from a couple of days ago with the
+          difference being unsettled trades.
+  * <STMTTRN> fields under an <INVBANKTRAN> are now parsed into an
+  OfxInvestmentTransactionContainer
+  * added the fields from section 13.9.2.4.2 of OFX spec 2.1.1 to OfxTransactionData
+  * added <INVPOS> support to provide balances for securities
+  * added <CURRENCY>, <ORIGCURRENCY>, <CURRATE> and <CURSYM> parsing and fields to
+    transactions, securities, and positions
+  * added a new account type OfxAccountData::OFX_401K
+  * added a fix for sourceforge bug #46 account callback on <TRANSFER>
+  * modified ofxdump to support the above changes
+  * added investment account examples from OFX 2.1.1 spec to "ofx_sample_files"
+  * could not get openSP to parse ofx201.dtd
+
+-------------------------------------------------------------------
 Thu Aug 20 21:43:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.9.15:

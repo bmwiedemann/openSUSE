@@ -274,4 +274,12 @@ Not sure I solved this one the best way possible, comments wanted. (forwarded re
 - remove libofx-CVE-2017-14731.patch (upstream)</comment>
     <requestid>828308</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>747a9f2c316d3e63030131aaa41f259e</srcmd5>
+    <version>0.10.0</version>
+    <time>1611770309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867216</requestid>
+  </revision>
 </revisionlist>

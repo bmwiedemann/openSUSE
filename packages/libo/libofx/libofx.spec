@@ -1,7 +1,7 @@
 #
 # spec file for package libofx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,22 @@
 
 
 Name:           libofx
-Version:        0.9.15
+Version:        0.10.0
 Release:        0
 Summary:        OFX Command Parser and API
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
-URL:            http://libofx.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/libofx/libofx/%{name}-%{version}.tar.gz
+URL:            https://github.com/libofx/libofx
+Source:         https://github.com/libofx/libofx/archive/%{version}.tar.gz
+BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gengetopt
 BuildRequires:  graphviz
+BuildRequires:  help2man
+BuildRequires:  libtool
 BuildRequires:  opensp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxml++-2.6) >= 2.6
@@ -66,8 +70,9 @@ This subpackage contains the header files for the C API.
 chmod -x doc/ofx_sample_files/ofx_spec160_stmtrs_example.sgml
 
 %build
+sh autogen.sh
 %configure --disable-static --with-opensp-libs=%{_libdir}
-make %{?_smp_mflags} docdir=%{_defaultdocdir}/%{name}
+%make_build docdir=%{_defaultdocdir}/%{name}
 
 %install
 %make_install
@@ -77,31 +82,28 @@ rm %{buildroot}%{_defaultdocdir}/%{name}/INSTALL
 cp -a doc/ofx_sample_files/*.* %{buildroot}%{_defaultdocdir}/%{name}/
 cp -a doc/html %{buildroot}%{_defaultdocdir}/%{name}/
 %fdupes %{buildroot}%{_prefix}
-rm -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libofx7 -p /sbin/ldconfig
-
 %postun -n libofx7 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/[ACNR]*
 %doc %{_defaultdocdir}/%{name}/*.txt
+%doc %{_defaultdocdir}/%{name}/*.ofx
 %{_bindir}/*
 %{_datadir}/libofx/
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files -n libofx7
-%defattr (-, root, root)
-%{_libdir}/*.so.*
+%{_libdir}/libofx.so.7*
 
 %files devel
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/%{name}/html/
 %doc %{_defaultdocdir}/%{name}/*.sgml
 %doc %{_defaultdocdir}/%{name}/*.xml
-%{_libdir}/*.so
+%{_libdir}/libofx.so
 %{_includedir}/libofx/
 %{_libdir}/pkgconfig/libofx.pc
 
