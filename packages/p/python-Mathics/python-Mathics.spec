@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define pyname Mathics3
 Name:           python-Mathics
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
@@ -44,7 +44,7 @@ Requires:       python-Django >= 1.8
 Requires:       python-mpmath >= 0.19
 Requires:       python-python-dateutil
 Requires:       python-six >= 1.10
-Requires:       python-sympy >= 1.6
+Requires:       python-sympy >= 1.7.1
 # SECTION For tests
 BuildRequires:  %{python_module Pint}
 BuildRequires:  %{python_module chardet}
@@ -84,9 +84,10 @@ popd
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dmathicsserver
+%python_clone -a %{buildroot}%{_bindir}/dmathicsscript
 %python_clone -a %{buildroot}%{_bindir}/mathics
 %python_clone -a %{buildroot}%{_bindir}/mathicsserver
-%python_clone -a %{buildroot}%{_bindir}/mathicsscript
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -94,22 +95,25 @@ popd
 %pytest -k 'not test_home_page'
 
 %post
+%python_install_alternative dmathicsserver
+%python_install_alternative dmathicsscript
 %python_install_alternative mathics
 %python_install_alternative mathicsserver
-%python_install_alternative mathicsscript
 
 %postun
-%python_uninstall_alternative mathics
-%python_uninstall_alternative mathicsserver
-%python_uninstall_alternative mathicsscript
+%python_install_alternative dmathicsserver
+%python_install_alternative dmathicsscript
+%python_install_alternative mathics
+%python_install_alternative mathicsserver
 
 %files %{python_files}
 %license COPYING.txt
 %doc README.rst AUTHORS.txt
 %{python_sitelib}/mathics/
 %{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
-%python_alternative %{_bindir}/mathicsscript
-%python_alternative %{_bindir}/mathicsserver
+%python_alternative %{_bindir}/dmathicsscript
+%python_alternative %{_bindir}/dmathicsserver
 %python_alternative %{_bindir}/mathics
+%python_alternative %{_bindir}/mathicsserver
 
 %changelog
