@@ -18,7 +18,7 @@
 
 %define cpan_name JSON-Parse
 Name:           perl-JSON-Parse
-Version:        0.59
+Version:        0.60
 Release:        0
 Summary:        Parse JSON
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -41,7 +41,7 @@ descriptive fatal error if the JSON is invalid. A function read_json reads
 JSON from a file, and there is a safer version of parse_json called
 parse_json_safe which doesn't throw exceptions.
 
-For special cases of parsing, there are also methods new and run, which
+For special cases of parsing, there are also methods new and parse, which
 create a JSON parsing object and run it on text. See METHODS.
 
 JSON::Parse accepts only UTF-8 as input. See UTF-8 only and Handling of
@@ -72,6 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md examples README see-also-info.json
+%doc Changes CONTRIBUTING.md examples README
 
 %changelog
