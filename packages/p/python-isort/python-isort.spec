@@ -42,7 +42,6 @@ Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-colorama >= 0.4.3
-Recommends:     python-hypothesmith
 Recommends:     python-pip-api
 Recommends:     python-pipreqs
 Recommends:     python-requirementslib
