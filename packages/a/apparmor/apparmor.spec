@@ -1,8 +1,8 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2011-2020 Christian Boltz
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2011-2021 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,9 @@ Patch4:         apparmor-lessopen-profile.patch
 
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
+
+# make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
+Patch6:         apache-extra-profile-include-if-exists.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -318,6 +321,8 @@ SubDomain.
 %setup -q
 
 # very loose profile that doesn't even match the apache2 binary path in openSUSE. Move it away instead of confusing people (boo#872984)
+# (patch to change <apache.d> include to "include if exists" needs to be applied before moving the file to avoid breaking quilt)
+%patch6
 mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/profiles/extras/
 
 %patch1
