@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 27 09:26:46 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- removed obsolete pcsc-cyberjack-3.99.5final.SP09-gcc10.patch
+
+-------------------------------------------------------------------
+Thu Jan  7 18:54:58 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to 3.99.5 Service Pack 14
+- use https://en.opensuse.org/SourceUrls
+- remove check for obsolete SUSE versions
+
+-------------------------------------------------------------------
 Wed Dec  2 11:37:22 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - make sure that the rule files are not marked as executable

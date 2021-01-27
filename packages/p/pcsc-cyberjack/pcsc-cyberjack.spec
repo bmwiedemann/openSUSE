@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-cyberjack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,22 +25,18 @@
 %endif
 
 Name:           pcsc-cyberjack
-Version:        3.99.5final.SP13
+Version:        3.99.5final.SP14
 Release:        0
-URL:            http://www.reiner-sct.de/support/treiber_cyberjack.php
+URL:            https://www.reiner-sct.com/support/support-anfrage/?productGroup=77304735&product=77304820&q=driver&os=Linux#choice5
 Summary:        PC/SC IFD Handler for the Reiner SCT Cyberjack USB-SmartCard Readers
-# libcyberjack/checksuite removed from upstream tarball because it contains
-# GPL licensed code which is totally unused at the moment; to avoid adding
-# GPL as a license
 License:        LGPL-2.1-or-later
 Group:          Productivity/Security
-Source:         %{name}_%{version}.tar.gz
+Source:         https://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP14/%{name}_%{version}.tar.gz
 Source1:        %{name}-README.SUSE
 Source2:        40-cyberjack.rules
 Patch1:         ctapi-cyberjack-configure.patch
 Patch2:         no-checksuite.patch
 Patch3:         no-libdialog.patch
-Patch4:         pcsc-cyberjack-3.99.5final.SP09-gcc10.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define ifddir %(pkg-config --variable=usbdropdir libpcsclite)
 BuildRequires:  distribution-release
@@ -91,26 +87,27 @@ cp -a %{S:1} README.SUSE
 %patch1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
+
+# unused at the moment; avoid adding GPL as a license
+rm -rf libcyberjack checksuite
+mkdir -p libcyberjack
+cat <<EOF > libcyberjack/Makefile.in
+all:
+install:
+EOF
 
 %build
 ACLOCAL="aclocal -I m4" autoreconf -f -i
 %configure\
 	--disable-static\
 	--enable-release\
-%if %suse_version < 1120
-	--enable-hal=yes \
-	--enable-udev=no \
-%endif
 	--with-usbdropdir=%{ifddir}
 make %{?_smp_mflags}
 
 %install
 %makeinstall
-%if %suse_version >= 1120
 mkdir -p %{buildroot}/%{_udevrulesdir}
 install %{SOURCE2} %{buildroot}/%{_udevrulesdir}
-%endif
 # clean up
 mv %{buildroot}/%{_sysconfdir}/cyberjack.conf{.default,}
 # exclude
@@ -124,8 +121,6 @@ chmod a-x %{buildroot}%{_udevrulesdir}/*
 %dir %{ifddir}
 %{ifddir}/libifd-cyberjack.bundle
 %config(noreplace) %{_sysconfdir}/cyberjack.conf
-%if %suse_version >= 1120
 %{_udevrulesdir}/*
-%endif
 
 %changelog
