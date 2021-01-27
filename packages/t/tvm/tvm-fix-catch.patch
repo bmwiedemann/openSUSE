@@ -1,0 +1,11 @@
+--- incubator-tvm-0.7.0.orig/tests/cpp/ir_functor_test.cc	2021-01-21 08:44:53.325919737 +0100
++++ incubator-tvm-0.7.0/tests/cpp/ir_functor_test.cc	2021-01-21 08:45:02.226011081 +0100
+@@ -72,7 +72,7 @@ TEST(IRF, ExprTransform) {
+   try {
+     f(z - 1, 2);
+     LOG(FATAL) << "should fail";
+-  } catch (dmlc::Error) {
++  } catch (dmlc::Error&) {
+   }
+ }
+ 

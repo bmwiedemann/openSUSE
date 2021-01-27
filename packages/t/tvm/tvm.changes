@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jan 26 13:31:03 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix upstream tarball
+
+-------------------------------------------------------------------
+Tue Jan 26 08:12:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO as it breaks runtime, see: https://github.com/apache/tvm/issues/6832
+- Disable python tests as it does not find Vulkan/openCL
+
+-------------------------------------------------------------------
+Thu Jan 21 11:14:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix a warning with gcc10:
+  * tvm-fix-catch.patch
+
+-------------------------------------------------------------------
+Wed Jan 20 16:22:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add Arm Compute Library support
+
+-------------------------------------------------------------------
+Wed Oct 28 07:10:12 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.7.0: https://github.com/apache/incubator-tvm/blob/main/NEWS.md
+  v0.7 brings many major features. The community works together
+  to refactor the internal code base to bring an unified IR code
+  structure with a unified IRModule, type system and pass
+  infrastructure. We have also bought many exciting new features,
+  some highlights include:
+  * Initial automatic scheduling support
+  * Initial command line driver interface
+  * WebGPU and webassembly support
+  * Better first class rust support in the codebase
+  * Intial Hexagon support
+  * Bring your own codegen (BYOC) support
+  The community also continues to bring high quality improvements
+  to the existing modules including, but not limited to: 
+  better frontend coverage, performance, quantization, uTVM 
+  and dynamic shape support.
+- Rebase pacth:
+  * tvm-fix-openblas.patch
+- Drop patch:
+  * lib-finder-python-cmake.patch
+
+-------------------------------------------------------------------
 Fri Oct  2 12:16:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable onednn (formerly mkl-dnn) for aarch64 and ppc64le as well

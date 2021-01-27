@@ -1,7 +1,7 @@
 #
 # spec file for package tvm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%define _lto_cflags %{nil}
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %ifarch aarch64 x86_64 ppc64le
@@ -23,18 +25,25 @@
 %else
 %bcond_with onednn
 %endif
+%ifarch aarch64
+%bcond_without arm_compute_lib
+%else
+%bcond_with arm_compute_lib
+%endif
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        An End to End Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
-Source:         https://github.com/apache/incubator-tvm/archive/v%{version}.tar.gz
+Source:         https://github.com/apache/tvm/archive/v%{version}.tar.gz
 Patch0:         lib-finder-python-cmake.patch
 # Fix cblas.h path
 Patch1:         tvm-fix-openblas.patch
+# PATCH-FIX-UPSTREAM - https://github.com/apache/tvm/issues/7319
+Patch2:         tvm-fix-catch.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module decorator}
@@ -44,6 +53,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
+%if %{with arm_compute_lib}
+BuildRequires:  ComputeLibrary-devel
+%endif
 BuildRequires:  antlr4-java
 BuildRequires:  cmake
 BuildRequires:  dlpack-devel
@@ -67,47 +79,27 @@ Requires:       python-attrs
 Requires:       python-decorator
 Requires:       python-numpy
 Requires:       python-psutil
-# Tests are failing on 32-bit
-ExcludeArch:    %{arm} %{ix86}
-%if 0%{?suse_version} > 1500
-BuildRequires:  xgboost
-%endif
-%if 0%{?suse_version} > 1500
-Requires:       xgboost
-%endif
-# Build fails on TW with LLVM10 - boo#1176220
-%if 0%{?suse_version} > 1500
-BuildRequires:  llvm9-devel
-%else
 BuildRequires:  llvm-devel
-%endif
 %if %{with onednn}
 BuildRequires:  onednn-devel
 %endif
+# Tests are failing on 32-bit
+ExcludeArch:    %{arm} %{ix86}
 %python_subpackages
-
-%package nnvm
-Summary:        NNVM Compiler: Open Compiler for AI Frameworks
-Requires:       python-numpy
-BuildArch:      noarch
-
-%description nnvm
-The NNVM compiler can directly take models from deep learning frameworks such as Apache MXNet.
-It also support model exchange formats such as ONNX and CoreML.
-ONNX support enables NNVM to compile deep learning models from PyTorch, Caffe2 and CNTK.
-
-%package topi
-Summary:        TVM Operator Inventory (TOPI)
-Requires:       python-decorator
-Requires:       python-numpy
-BuildArch:      noarch
-
-%description topi
-TOPI provides numpy-style generic operations and schedules with higher abstractions than TVM.
 
 %description
 TVM is an open deep learning compiler stack for CPUs, GPUs, and specialized accelerators.
 It aims to close the gap between the productivity-focused deep learning frameworks, and the performance- or efficiency-oriented hardware backends.
+
+%package -n tvmc
+Summary:        TVM command line driver
+Requires:       libtvm = %{version}
+Requires:       python3-scipy
+Requires:       python3-typed-ast
+
+%description -n tvmc
+TVMC is a tool that exposes TVM features such as auto-tuning, compiling,
+profiling and execution of models, via a command line interface.
 
 %package -n %{name}-devel
 Summary:        An End to End Deep Learning Compiler Stack
@@ -127,7 +119,7 @@ Obsoletes:      tvm
 Libraries generated for TVM without any provided soname.
 
 %prep
-%setup -q -n incubator-%{name}-%{version}
+%setup -q
 %autopatch -p1
 
 # Workaround - https://discuss.tvm.ai/t/build-fails-on-tvm-0-6-0-0-6-1-with-gcc10-and-gcc7/7462/5?u=ggardet
@@ -141,6 +133,10 @@ ln -s %{_includedir}/endian.h include/endian.h
 # USE_NNPACK
 # USE_ROCBLAS USE_ROCM
 %cmake \
+%if %{with arm_compute_lib}
+  -DUSE_ARM_COMPUTE_LIB_GRAPH_RUNTIME=ON \
+  -DUSE_ARM_COMPUTE_LIB=ON \
+%endif
   -DDMLC_PATH="%{_includedir}/dmlc" \
   -DDLPACK_PATH="%{_includedir}/dlpack" \
   -DRANG_PATH="%{_includedir}/rang" \
@@ -166,24 +162,23 @@ ln -s %{_includedir}/endian.h include/endian.h
 %cmake_build
 cd ..
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
-for folder in '' nnvm topi; do
-  pushd ./$folder/python
-  %python_build
-  popd
-done
+pushd python
+# Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
+find . -name "*.py" -exec sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python3|' {} ";"
+%python_build
+popd
 
 %install
 %cmake_install
 # remove endian hack
 rm -f %{buildroot}%{_includedir}/endian.h
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
-for folder in '' nnvm topi; do
-  pushd ./$folder/python
-  %python_install
-  popd
-done
-# Remove /usr/{tvm,nnvm,topi}/*.so
-rm -rf %{buildroot}%{_prefix}/{tvm,nnvm,topi}
+pushd python
+%python_install
+%python_expand chmod 0755 %{buildroot}%{$python_sitearch}/tvm/driver/tvmc/main.py
+popd
+# Remove /usr/tvm/*.so
+rm -rf %{buildroot}%{_prefix}/tvm
 # Remove .cpp file
 %python_expand rm %{buildroot}/%{$python_sitearch}/tvm/_ffi/_cython/core.cpp
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -192,11 +187,14 @@ rm -rf %{buildroot}%{_prefix}/{tvm,nnvm,topi}
 %check
 pushd %{__builddir}
 %make_build cpptest
-export LD_LIBRARY_PATH=$(pwd)
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$(pwd)
 for test in *_test; do
     ./$test
 done
 popd
+# Tests requires pytest with ExitCode defined, only available on Tumbleweed so far
+# Tests fail on TW as it tries to run Vulkan
+%if 0
 export TVM_INCLUDE_PATH=%{buildroot}%{_prefix}
 # this test needs working vulkan
 rm tests/python/unittest/test_runtime_ndarray.py
@@ -213,24 +211,21 @@ more_not_test="or test_check_correctness or test_graph_simple or test_llvm_add_p
 %{python_expand # test with both $python sitearch and sitelib
 export PYTHONPATH="%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib}"
 $python -m pytest -v tests/python/unittest -k "not (test_device_module_dump or test_conv2d_scalar_bop or test_broadcast_bop or test_tensor_scalar_bop or test_vulkan or test_add_pipeline or test_cmp_load_store or test_task_tuner_without_measurement or test_fit or test_tuner or test_opencl_ternary_expression or test_opencl_inf_nan or test_gpu or test_simplex_data_transferring or test_duplex_data_transferring or test_fp16_to_fp32 $more_not_test)"}
+%endif
 
-%post -n %{name} -p /sbin/ldconfig
-%postun -n %{name} -p /sbin/ldconfig
+%post -n libtvm -p /sbin/ldconfig
+%postun -n libtvm -p /sbin/ldconfig
+
+%files -n tvmc
+%{_bindir}/tvmc
 
 %files -n libtvm
 %license LICENSE
 %doc README.md
-%{_libdir}/libtvm.so
-%{_libdir}/libnnvm_compiler.so
-%{_libdir}/libtvm_topi.so
-%{_libdir}/libtvm_runtime.so
+%{_libdir}/libtvm*.so
 
 %files -n %{name}-devel
-%dir %{_includedir}/nnvm
-%dir %{_includedir}/topi
 %dir %{_includedir}/tvm
-%{_includedir}/nnvm/*
-%{_includedir}/topi/*
 %{_includedir}/tvm/*
 
 %files %{python_files}
@@ -238,17 +233,5 @@ $python -m pytest -v tests/python/unittest -k "not (test_device_module_dump or t
 %{python_sitearch}/tvm/*
 %dir %{python_sitearch}/tvm*egg-info/
 %{python_sitearch}/tvm*egg-info/*
-
-%files %{python_files nnvm}
-%dir %{python_sitelib}/nnvm
-%{python_sitelib}/nnvm/*
-%dir %{python_sitelib}/nnvm*egg-info/
-%{python_sitelib}/nnvm*egg-info/*
-
-%files %{python_files topi}
-%dir %{python_sitelib}/topi
-%{python_sitelib}/topi/*
-%dir %{python_sitelib}/topi*egg-info/
-%{python_sitelib}/topi*egg-info/*
 
 %changelog
