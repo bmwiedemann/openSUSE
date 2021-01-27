@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 27 08:18:52 UTC 2021 - Michal Kubeček <mkubecek@suse.cz>
+
+- update specfile to reflect rpmlintrc rename
+
+-------------------------------------------------------------------
+Wed Jan 27 07:48:21 UTC 2021 - Michal Kubeček <mkubecek@suse.cz>
+
+- rename firebird to firebird-rpmlintrc (requested by reviewer)
+
+-------------------------------------------------------------------
+Tue Jan 12 10:44:37 UTC 2021 - Michal Kubeček <mkubecek@suse.cz>
+
+- add rpmlintrc to suppress bogus build errors in Factory
+
+-------------------------------------------------------------------
 Sat Oct 31 19:57:48 UTC 2020 - Michal Kubeček <mkubecek@suse.cz>
 
 - update to upstream version 3.0.7

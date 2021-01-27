@@ -1,7 +1,7 @@
 #
 # spec file for package firebird
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         Firebird-%{version}-%{up_stage}.tar.xz
 Source1:        README.SUSE
 Source2:        50-server.conf
 Source3:        firebird-clean-tar.sh
+Source998:      %{name}-rpmlintrc
 Source999:      baselibs.conf
 BuildRequires:  autoconf >= 2.67
 BuildRequires:  gcc-c++

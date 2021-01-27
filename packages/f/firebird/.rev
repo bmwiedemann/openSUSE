@@ -452,4 +452,12 @@ Changes against the original submit request:
     <comment>- update to upstream version 3.0.7</comment>
     <requestid>845694</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>4ad513a8c9a6115f37344d265b14648a</srcmd5>
+    <version>3.0.7.33374</version>
+    <time>1611770303</time>
+    <user>dimstar_suse</user>
+    <comment>- address Factory build failure due to new check (based on comment from SR#864289)</comment>
+    <requestid>867157</requestid>
+  </revision>
 </revisionlist>
