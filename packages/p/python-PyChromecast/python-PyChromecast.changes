@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 27 03:47:43 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.7.2:
+  * Use urllib.request instead of requests.
+- Drop python-requests from Requires.
+- Correct egg-info filename to build in the multi-python new world order. 
+
+-------------------------------------------------------------------
 Mon Jan  4 04:44:17 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.7.1:

@@ -173,4 +173,15 @@
   * Add support for BubbleUPNP (#428)</comment>
     <requestid>860029</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c3b8df80a1d0ee70e95788b58fe34290</srcmd5>
+    <version>7.7.2</version>
+    <time>1611770287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.7.2:
+  * Use urllib.request instead of requests.
+- Drop python-requests from Requires.
+- Correct egg-info filename to build in the multi-python new world order.</comment>
+    <requestid>867026</requestid>
+  </revision>
 </revisionlist>

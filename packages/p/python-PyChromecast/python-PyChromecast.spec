@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyChromecast
-Version:        7.7.1
+Version:        7.7.2
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT
@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-casttube >= 0.2.0
 Requires:       python-protobuf >= 3.0.0
-Requires:       python-requests >= 2.0
 Requires:       python-zeroconf >= 0.25.1
 BuildArch:      noarch
 %python_subpackages
@@ -60,6 +59,6 @@ multi-room setups with Audio cast devices.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pychromecast
-%{python_sitelib}/PyChromecast-%{version}-py%{py3_ver}.egg-info
+%{python_sitelib}/PyChromecast-%{version}-*.egg-info
 
 %changelog
