@@ -1,7 +1,7 @@
 #
 # spec file for package kubevirt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -26,8 +26,7 @@ URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{name}-%{version}.tar.gz
 Source1:        kubevirt-psp-caasp.yaml
 Source100:      %{name}-rpmlintrc
-Patch0:         fix-goflags-overwrite.patch
-Patch1:         dont-build-virtctl-darwin.patch
+Patch0:         dont-build-virtctl-darwin.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

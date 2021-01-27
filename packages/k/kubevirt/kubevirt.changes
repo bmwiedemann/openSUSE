@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Wed Jan 20 00:44:01 UTC 2021 - jfehlig@suse.com
+
+- Update to version 0.37.0:
+  * Remove travis-ci logic for pushing to quay app registery
+  * Update Quay credentials in travis config
+  * MacvtapPodInterface.setCachedInterface: fix arg name
+  * make generate: 2021 edition
+  * tests, dhcpv6: verify connectivity survives after migration
+  * tests, dhcpv6: use python server instead of nc
+  * tests, dhcpv6: start dhcpv6 client, config d.route & prefix via console
+  * tests, dhcpv6: use fedora vms for masquerade ipv6 connectiviy tests
+  * tests: split masquerade connectivity tests to ipv4 and ipv6
+  * tests: remove libnet.WithIPv6 from ipv4 only dhcp test
+  * dhcpv6: unit tests
+  * dhcpv6: Extracting the build of the server response to a separate method
+  * dhcpv6: Add the request iana to the response
+  * dhcpv6: reply to dhcp solict with rapid commit
+  * add ipv6 address to VIF.String
+  * dhcpv6: run only for masquerade
+  * dhcpv6: introduce prepareDHCPv6Modifiers
+  * dhcpv6: Allow dhcpv6 server to run without CAP_NET_RAW
+  * dhcpv6: handle requests from client - adding DUID and IANA options
+  * virt-launcher: vendor dhcpv6
+  * virt-launcher: introduce dhcpv6
+  * Extend version functional tests
+  * Set --stamp as default build flag
+  * imageupload: improve nosec comment
+  * cloud-init: test that GenerateLocalData can run twice
+  * cloud-init, GenerateLocalData: simplify staging replacement
+  * tests, ping: increase default amount of packets
+  * cloud-init, GenerateLocalData: drop redundant diskutils.RemoveFile call
+  * cloud-init, GenerateLocalData: drop ambiguous comment
+  * add use case Signed-off-by: xiaobo <zeng.xiaobo@h3c.com>
+  * add use case Signed-off-by: xiaobo <zeng.xiaobo@h3c.com>
+  * add use case Signed-off-by: xiaobo <zeng.xiaobo@h3c.com>
+  * add use case Signed-off-by: xiaobo <zeng.xiaobo@h3c.com>
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../kubevirt/WORKSPACE -dry-run=false
+  * Document dependency update flows
+  * Newer curl version don't allow headerless HTTP
+  * Build all test images in kubervirt/kubevirt
+  * Add managed RPMs and remove unmanaged RPMs
+  * Add repo.yaml files
+  * Add bazeldnf dependencies
+  * Add a script to resolve RPM dependencies
+  * virt-launcher, converter: Extract SRIOV hostdev creation
+  * virt-launcher, converter: Refactor network indexing
+  * virt-launcher, converter: Refactor iface multi queue
+  * tests, vmi_multus: test Sriov with Vlan
+  * Don't overwrite user-provided GOFLAGS
+  * Handle btrfs subvolumes when parsing mountinfo
+  * Add mount info test cases
+  * Add testdata for mount info tests
+  * Cleanup duplicated code
+  * Refactor containerdisk mount code
+  * tests,sriov:make createSriovVms recieve network names
+  * tests, sriov: remove un-needed function.
+  * tests: sriov: extract NAD creation to a helper
+  * tests, utils, delete vmi waiting: assert on err
+  * Preapre build environment for bazeldnf
+  * use placement api for assinging virt-handler pod
+  * virt-launcher, libvirt: Free (all) domain resources
+  * Generate release manifests using quay images
+  * Add maiqueb to code-reviewers list
+  * Update vendored dependencies
+  * Update versions of some dependencies
+  * only validate status of vm, vmi, and vmi migration objects
+  * This fixes a race condition between unmounting a file system volume and detaching a disk from the running VM. In certain conditions it would attempt to unmount before the disk was fully detached causing the unmount to error and preventing the VM sync from fully detaching. This moves the unmount to after the sync, so this race never happens.
+  * smbios, sidecar hook, tests: assert the hook version is advertised
+  * smbios cmd: set the version parameter as mandatory
+  * examples, hooks: correct the vmi-sidecar-hook example
+  * add kubernetes os nodeSelector to injectPlacementMetadata
+  * virt-launcher, converter: Set SRIOV device as unmanaged
+  * tests, sriov: XFail IPv4 connectivity test
+  * Append rootfs mount to containerdisk base path
+  * Narrow down watcher select which waits for object states
+  * Fix Eventually which used the time out as description
+  * Remove unused functions: GenerateSelfSignedCertKey and GenerateSelfSignedCertKeyWithFixtures
+  * use filepath.Clean for two fixed path parameter functions
+  * virt-launcher, converter: Remove vCPU dependency on queue limits
+  * add Kubermatic to adopters list
+  * manager_test: add err check for ioutil.TempDir
+  * windows_test: remove duplicate code
+  * cleanup tempfiles for manager_test
+  * cleanup tempfiles for common_test
+  * Functional test to verify vmis are migratable after update to from latest KubeVirt official release
+  * update libvirt base container to rhel-av 8.3
+  * Unit test to verify evaculation controller generated migration object fields
+  * evacuation informer should only observe the creation of migration objects it created
+  * cloud-init: Allow populate networkData alone
+  * tests, sriov: XFail IPv6 connectivity test
+  * dev guide, networking: net_raw cap is not required by virt-launcher
+  * Revert "dev guide, networking: no capabilities are required"
+  * Make sure to use all supported versions for status subresource
+  * Update csv gen logic for v1 api
+  * Update hardcoded references to v1alpha3 in unit tests
+  * Update unit tests to account for aggregated api server registration for v1 API
+  * Update functional tests that had hardcoded references to v1alpha3
+  * Add functional tests to verify vm creation using all supported API versions
+  * Add v1 api version
+  * Revert "linux capabilities: remove CAP_NET_ADMIN"
+  * Revert "libvirt, mtu: do not perform any network config on the launcher"
+  * move kv update validation webhook to operator validation configuration
+  * Fix test id for io mode test
+  * update listtype markers for kubevirt pci host devices
+  * Fix gosec unhandled errors in delete.go & create.go
+  * Cleanup k8s jobs from test namespaces
+  * If the fedora login expecter is stuck, retry
+  * tests, multus: Change 3rd network SRIOV vnic name
+  * tests, sriov: Centralize SRIOV network names
+  * tests, multus: Fix IP address configuration
+  * tests, Use RandName for creating random VMI names
+  * Fail detection and handling when EFI without SB is not available
+  * Add unit test covering GetDomainSpec fallback behavior
+  * Reject --access-mode ReadOnlyMany when uploading an image.
+  * Consume nightly build images from quay
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../kubevirt/WORKSPACE -dry-run=false
+  * Fix failing unit tests for new GetDomain logic
+  * Remove race condition from GetDomain check
+  * Fix timed domain resync
+  * fix patch for removing infra and workloads from KV
+  * add webhook to validate kubevirt CR updates  - only allow updates to workloads key if no vmis are running
+  * tests, sriov: Retry ping if it fails
+  * tests, libvmi, vmi: shorten random vm names #2
+  * tests, gpu: Do not mount /sys/devices/ for SRIOV devices
+  * VMI configuration test: fix disk cache modes testing
+  * fix gosec g204: Subprocess launched with variable
+  * Removed unused function readProcCmdline()
+  * Enable and fix tests
+  * Fix gosec issue of: Potential file inclusion via variable
+  Dropped patch: fix-goflags-overwrite.patch
+
+-------------------------------------------------------------------
 Mon Dec 21 04:31:30 UTC 2020 - jfehlig@suse.com
 
 - Update to version 0.36.0:
