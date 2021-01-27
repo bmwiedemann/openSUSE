@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan 27 00:25:10 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Update to 1.9.5.p2
+    * When invoked as sudoedit, the same set of command line
+      options are now accepted as for sudo -e. The -H and -P
+      options are now rejected for sudoedit and sudo -e which
+      matches the sudo 1.7 behavior. This is part of the fix for
+      CVE-2021-3156.
+    * Fixed a potential buffer overflow when unescaping backslashes
+      in the command's arguments. Normally, sudo escapes special
+      characters when running a command via a shell (sudo -s or
+      sudo -i). However, it was also possible to run sudoedit with
+      the -s or -i flags in which case no escaping had actually
+      been done, making a buffer overflow possible.
+      This fixes CVE-2021-3156. (bsc#1181090)
+    * Fixed sudo's setprogname(3) emulation on systems that don't
+      provide it.
+    * Fixed a problem with the sudoers log server client where a
+      partial write to the server could result the sudo process
+      consuming large amounts of CPU time due to a cycle in the
+      buffer queue. Bug #954.
+    * Added a missing dependency on libsudo_util in libsudo_eventlog.
+      Fixes a link error when building sudo statically.
+    * The user's KRB5CCNAME environment variable is now preserved
+      when performing PAM authentication. This fixes GSSAPI
+      authentication when the user has a non-default ccache.
+
+-------------------------------------------------------------------
 Thu Jan 14 08:54:04 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.9.5.p1
@@ -23,7 +51,7 @@ Thu Jan 14 08:54:04 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
     warning, help and usage messages as well as the matching of Debug
     lines in the /etc/sudo.conf file.  Previously, it was possible
     for the invoking user to manipulate the program name by setting
-    argv[0] to an arbitrary value when executing sudo.
+    argv[0] to an arbitrary value when executing sudo. (bsc#1180687)
   * Sudo now checks for failure when setting the close-on-exec flag
     on open file descriptors.  This should never fail but, if it
     were to, there is the possibility of a file descriptor leak to
@@ -40,7 +68,7 @@ Thu Jan 14 08:54:04 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
     link does not exist, an error message will be displayed.  The
     race condition can be used to test for the existence of an
     arbitrary directory.  However, it _cannot_ be used to write to
-    an arbitrary location.
+    an arbitrary location. (bsc#1180684)
   * Fixed CVE-2021-23240, a flaw in the temporary file handling of
     sudoedit's SELinux RBAC support.  On systems where SELinux is
     enabled, a user with sudoedit permissions may be able to set the
@@ -48,7 +76,7 @@ Thu Jan 14 08:54:04 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
     On Linux kernels that support "protected symlinks", setting
     /proc/sys/fs/protected_symlinks to 1 will prevent the bug from
     being exploited.  For more information see
-    https://www.sudo.ws/alerts/sudoedit_selinux.html.
+    https://www.sudo.ws/alerts/sudoedit_selinux.html. (bsc#1180685)
   * Added writability checks for sudoedit when SELinux RBAC is in use.
     This makes sudoedit behavior consistent regardless of whether
     or not SELinux RBAC is in use.  Previously, the "sudoedit_checkdir"
@@ -132,7 +160,7 @@ Mon Nov 30 17:36:19 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
   * Sudo packages for macOS 11 now contain universal binaries that
     support both Intel and Apple Silicon CPUs.
   * For sudo_logsrvd, an empty value for the "pid_file" setting in
-    sudo_logsrvd.conf will now disable the process ID file. 
+    sudo_logsrvd.conf will now disable the process ID file.
 - Remove sudo-1.9.3p1-pam_xauth.patch (upstreamed)
 
 -------------------------------------------------------------------
@@ -203,11 +231,11 @@ Fri Nov 13 21:26:58 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
   executing the command. Fixes a problem with pam_xauth which
   checks effective and real uids to get the real identity of the
   user [bsc#1174593]
- 
+
 -------------------------------------------------------------------
 Mon Sep  7 08:01:05 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
 
-- Modified the secure_path to include the other two default paths 
+- Modified the secure_path to include the other two default paths
   which are commonly available to $user. This will offer a better
   and more consistent UX.
 
@@ -311,7 +339,7 @@ Mon May 11 08:15:17 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
     TLS certificate file is explicitly specified in sudo_logsrvd.conf
     or the default TLS certificate file exists in the file system.
     There is no change in behavior for listen_address entries
-    explicitly set in the configuration file. 
+    explicitly set in the configuration file.
 
 -------------------------------------------------------------------
 Thu May  7 12:14:26 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
@@ -324,7 +352,7 @@ Thu May  7 12:14:26 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
     share the same ID. Debian bug #734752.
   * Sudo command line options that take a value may only be specified
     once. This is to help guard against problems caused by poorly
-    written scripts that invoke sudo with user-controlled input. Bug #924. 
+    written scripts that invoke sudo with user-controlled input. Bug #924.
 
 -------------------------------------------------------------------
 Wed May  6 07:37:58 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
@@ -352,7 +380,7 @@ Wed May  6 07:37:58 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 -------------------------------------------------------------------
 Fri Apr 17 17:07:06 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
-- build with enable-python to support python plugins 
+- build with enable-python to support python plugins
 
 -------------------------------------------------------------------
 Fri Apr 17 11:51:49 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
@@ -606,13 +634,13 @@ Sun Jan 13 19:26:23 UTC 2019 - seanlew@opensuse.org
     without using the -f option (#864)
   * Fixed a big introduced in 1.8.22 where utm/p/utmpx would not
     be updated when a command was run in a pseudo-tty (#865)
-  * Sudo now sets the silent flag when opening the PAM session 
+  * Sudo now sets the silent flag when opening the PAM session
     except when running a shell via sudo -s or sudo -i (#867)
 
 -------------------------------------------------------------------
 Sat Nov 17 09:08:54 UTC 2018 - sean@suspend.net
 
-- Update to 1.8.26 
+- Update to 1.8.26
   * Fixed a bug in cvtsudoers when converting to JSON format
     when alias exansion is enabled
   * Sudo no longer sets the USERNAME environment variable
@@ -620,20 +648,20 @@ Sat Nov 17 09:08:54 UTC 2018 - sean@suspend.net
   * Sudo now treats the LOGNAME and USER environment variables
     (as well as the LOGIN variable on AIX) as a single unit
   * Added support for OpenLDAP TLS_REQCERT setting in ldap.conf
-  * Sudo now logs when the command was suspended and resumed 
+  * Sudo now logs when the command was suspended and resumed
     in the I/O logs
-  * Sudo now prints a warning message when there is an error or 
+  * Sudo now prints a warning message when there is an error or
     end of file while reading the password instead of exiting
-  * Fixed a bug introduced in sudo 1.8.25 that prevented sudo 
+  * Fixed a bug introduced in sudo 1.8.25 that prevented sudo
     from properly setting the user's groups on AIX.
-  * The sudoers LDAP back-end now supports negated sudoRunAsUser 
+  * The sudoers LDAP back-end now supports negated sudoRunAsUser
     and sudoRunAsGroup entries
-  * Sudo now rpovides a proper error message when the "fqdn" 
+  * Sudo now rpovides a proper error message when the "fqdn"
     sudoers option is set and it is unable to resolve the local
     host name.
   * Sudo now includes sudoers LDAP schema for the on-line config
     supported by OpenLDAP
- 
+
 -------------------------------------------------------------------
 Wed Sep 19 15:40:24 UTC 2018 - kstreitova@suse.com
 
@@ -644,30 +672,30 @@ Wed Sep 19 15:40:24 UTC 2018 - kstreitova@suse.com
 Tue Sep 18 09:38:57 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.8.25p1
-  * Fixed a bug introduced in sudo 1.8.25 that caused a crash on 
-    systems that have the poll() function but not the ppoll() 
+  * Fixed a bug introduced in sudo 1.8.25 that caused a crash on
+    systems that have the poll() function but not the ppoll()
     function
 
 -------------------------------------------------------------------
 Wed Sep  5 09:02:35 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.8.25
-  * I/O log timing file entries now use a monotonic timer and 
+  * I/O log timing file entries now use a monotonic timer and
     include nanosecond precision
-  * when sudo runs a command in a pseudo-tty, the slave device is 
-    now closed in the main process immediately after starting the 
+  * when sudo runs a command in a pseudo-tty, the slave device is
+    now closed in the main process immediately after starting the
     monitor process
-  * the testsudoers utility now supports querying an LDIF-format 
+  * the testsudoers utility now supports querying an LDIF-format
     policy
 
 -------------------------------------------------------------------
 Tue Aug 21 11:42:45 UTC 2018 - mcalabkova@suse.com
 
 - Update to 1.8.24
-  * random insults are now more random 
-  * added SUDO_CONV_PREFER_TTY flag for conversation function to 
+  * random insults are now more random
+  * added SUDO_CONV_PREFER_TTY flag for conversation function to
     tell sudo to try writing to /dev/tty first
-  * cvtsudoers can now parse base64-encoded attributes in LDIF 
+  * cvtsudoers can now parse base64-encoded attributes in LDIF
     files
 
 -------------------------------------------------------------------
@@ -683,7 +711,7 @@ Wed May  2 16:19:56 UTC 2018 - michael@stroeder.com
   * new cvtsudoers utility (replaces sudoers2ldif) and converts
     between sudoers formats and perform some basic filtering.
   * removed obsolete sudoers2ldif-env.patch
-  
+
 -------------------------------------------------------------------
 Mon Apr 16 15:18:12 UTC 2018 - kstreitova@suse.com
 
@@ -775,14 +803,14 @@ Wed Jan 24 00:44:24 UTC 2018 - avindra@opensuse.org
   * The sudoers time stamp file format is now documented in the new
     sudoers_timestamp manual.
   * Visudo will now use the SUDO_EDITOR environment variable (if
-    present) in addition to VISUAL and EDITOR. 
+    present) in addition to VISUAL and EDITOR.
 - rebase sudoers2ldif-env.patch
 - cleanup with spec-cleaner
 
 -------------------------------------------------------------------
 Mon Dec 11 13:38:25 UTC 2017 - kstreitova@suse.com
 
-- remove sudoers.dist that is not needed [bsc#1071379] 
+- remove sudoers.dist that is not needed [bsc#1071379]
 
 -------------------------------------------------------------------
 Wed Sep 13 14:19:27 UTC 2017 - kstreitova@suse.com
@@ -967,9 +995,9 @@ Major changes between sudo 1.8.20 and 1.8.19p2:
 -------------------------------------------------------------------
 Tue May 30 19:11:42 UTC 2017 - sflees@suse.de
 
-- Fix a vulnerability in Sudo's get_process_ttyname() leading to 
+- Fix a vulnerability in Sudo's get_process_ttyname() leading to
   privlage elevation.
-  * sudo-1.8.19p2-CVE-2017-1000367.patch 
+  * sudo-1.8.19p2-CVE-2017-1000367.patch
   * CVE-2017-1000367
   * bsc#1039361
 
@@ -986,14 +1014,14 @@ Fri Mar  3 15:30:29 UTC 2017 - kstreitova@suse.com
   * remove sudo-1.8.10p3-user_groups.patch [bsc#988014]
     * fixed in sudo 1.8.17p1
   * remove sudo-1.8.10p3_pam_groups_upstream.patch [fate#318850]
-    * fixed in sudo 1.8.17 
+    * fixed in sudo 1.8.17
   * remove sudo-1.8.10p3-CVE-2014-9680.patch [bsc#917806]
-    * fixed in sudo 1.8.12 
+    * fixed in sudo 1.8.12
 
 -------------------------------------------------------------------
 Tue Jan 31 16:11:17 UTC 2017 - kstreitova@suse.com
 
-- add sudo-1.8.19p2-decrement_env_len.patch - In 
+- add sudo-1.8.19p2-decrement_env_len.patch - In
   sudo_unsetenv_nodebug(), decrement envp.env_len after removing
   the variable [bsc#981124]
 - add sudo-1.8.19p2-dont_overwrite_ret_val.patch - don't overwrite
@@ -1206,7 +1234,7 @@ Sun Jun 19 14:01:44 UTC 2016 - michael@stroeder.com
 -------------------------------------------------------------------
 Mon May 23 08:22:12 UTC 2016 - egeorget@openmailbox.org
 
-- Changing password promp to make use of sudo localized prompts. 
+- Changing password promp to make use of sudo localized prompts.
 
 -------------------------------------------------------------------
 Thu May 19 09:13:54 UTC 2016 - kstreitova@suse.com
@@ -1285,7 +1313,7 @@ Thu Mar 17 23:32:59 UTC 2016 - michael@stroeder.com
 Fri Nov  6 11:55:17 UTC 2015 - kstreitova@suse.com
 
 - update to 1.8.15:
-  * Fixed a bug that prevented sudo from building outside the source 
+  * Fixed a bug that prevented sudo from building outside the source
     tree on some platforms. Bug #708.
   * Fixed the location of the sssd library in the RHEL/Centos packages.
     Bug #710.
@@ -1373,7 +1401,7 @@ Thu Jul 23 10:09:08 UTC 2015 - kstreitova@suse.com
 
 - update to 1.8.14p3:
   * changes in 1.8.14p3
-    * Fixed a bug introduced in sudo 1.8.14p2 that prevented sudo 
+    * Fixed a bug introduced in sudo 1.8.14p2 that prevented sudo
       from working when no tty was present. Bug #706.
     * Fixed tty detection on newer AIX systems where dev_t is 64-bit.
   * changes in 1.8.14p2
@@ -1392,7 +1420,7 @@ Thu Jul 23 10:09:08 UTC 2015 - kstreitova@suse.com
       behavior when returning an int from a function declared to
       return bool without an explicit cast.
     * Worked around a bug in Mac OS X 10.10 BSD auditing where the
-      au_preselect() fails for AUE_sudo events but succeeds for 
+      au_preselect() fails for AUE_sudo events but succeeds for
       AUE_DARWIN_sudo.
     * Fixed a hang on Linux systems with glibc when sudo is linked
       with jemalloc.
@@ -1424,12 +1452,12 @@ Thu Jul 23 10:09:08 UTC 2015 - kstreitova@suse.com
     * Fixed a bug that prevented the btime entry in /proc/stat from
       being parsed on Linux.
   * update sudo-sudoers.patch
-  * remove sudo-parse_boottime_properly.patch (it's not longer needed) 
+  * remove sudo-parse_boottime_properly.patch (it's not longer needed)
 
 -------------------------------------------------------------------
 Wed Jul 22 18:27:35 UTC 2015 - crrodriguez@opensuse.org
 
-- BuildRequires zlib-devel, support zlib compressed I/O logs. 
+- BuildRequires zlib-devel, support zlib compressed I/O logs.
 
 -------------------------------------------------------------------
 Thu May 14 12:47:49 UTC 2015 - vcizek@suse.com
@@ -1530,74 +1558,74 @@ Sat Oct 11 02:09:17 UTC 2014 - tabraham@suse.com
 
 - refresh sudo-sudoers.patch
 - update to 1.8.11p1
-  * Fixed a compilation problem on some systems when the 
+  * Fixed a compilation problem on some systems when the
     --disable-shared-libutil configure option was specified.
-  * The user can no longer interrupt the sleep after an incorrect password on 
+  * The user can no longer interrupt the sleep after an incorrect password on
     PAM systems using pam_unix. Bug #666.
   * Fixed a compilation problem on Linux systems that do not use PAM. Bug #667.
-  * "make install" will now work with the stock GNU autotools install-sh 
+  * "make install" will now work with the stock GNU autotools install-sh
     script. Bug #669.
-  * Fixed a crash with "sudo -i" when the current working directory does not 
+  * Fixed a crash with "sudo -i" when the current working directory does not
     exist. Bug #670.
-  * Fixed a potential crash in the debug subsystem when logging a message 
+  * Fixed a potential crash in the debug subsystem when logging a message
     larger that 1024 bytes.
-  * Fixed a "make check" failure for ttyname when stdin is closed and stdout 
+  * Fixed a "make check" failure for ttyname when stdin is closed and stdout
     and stderr are redirected to a different tty. Bug #643.
-  * Added BASH_FUNC_* to environment blacklist to match newer-style bash 
-    functions. 
+  * Added BASH_FUNC_* to environment blacklist to match newer-style bash
+    functions.
 
 - changes from 1.8.11
-  * The sudoers plugin no longer uses setjmp/longjmp to recover from fatal 
+  * The sudoers plugin no longer uses setjmp/longjmp to recover from fatal
     errors. All errors are now propagated to the caller via return codes.
-  * When running a command in the background, sudo will now forward SIGINFO to 
+  * When running a command in the background, sudo will now forward SIGINFO to
     the command (if supported).
-  * Sudo will now use the system versions of the sha2 functions from libc or 
+  * Sudo will now use the system versions of the sha2 functions from libc or
     libmd if available.
   * Visudo now works correctly on GNU Hurd. Bug #647.
-  * Fixed suspend and resume of curses programs on some system when the 
+  * Fixed suspend and resume of curses programs on some system when the
     command is not being run in a pseudo-terminal. Bug #649.
-  * Fixed a crash with LDAP-based sudoers on some systems when Kerberos was 
+  * Fixed a crash with LDAP-based sudoers on some systems when Kerberos was
     enabled.
   * Sudo now includes optional Solaris audit support.
   * Catalan translation for sudoers from translationproject.org.
   * Norwegian Bokmaal translation for sudo from translationproject.org.
   * Greek translation for sudoers from translationproject.org
-  * The sudo source tree has been reorganized to more closely resemble that of 
-    other gettext-enabled packages. 
-  * Sudo and its associated programs now link against a shared version of 
-    libsudo_util. The --disable-shared-libutil configure option may be used to 
-    force static linking if the --enable-static-sudoers option is also 
+  * The sudo source tree has been reorganized to more closely resemble that of
+    other gettext-enabled packages.
+  * Sudo and its associated programs now link against a shared version of
+    libsudo_util. The --disable-shared-libutil configure option may be used to
+    force static linking if the --enable-static-sudoers option is also
     specified.
   * The passwords in ldap.conf and ldap.secret may now be encoded in base64.
-  * Audit updates. SELinux role changes are now audited. For sudoedit, we now 
+  * Audit updates. SELinux role changes are now audited. For sudoedit, we now
     audit the actual editor being run, instead of just the sudoedit command.
-  * Fixed bugs in the man page post-processing that could cause portions of the 
+  * Fixed bugs in the man page post-processing that could cause portions of the
     manuals to be removed.
   * Fixed a crash in the system_group plugin. Bug #653.
-  * Fixed sudoedit on platforms without a native version of the getprogname() 
+  * Fixed sudoedit on platforms without a native version of the getprogname()
     function. Bug #654.
   * Fixed compilation problems with some pre-C99 compilers.
   * Fixed sudo's -C option which was broken in version 1.8.9.
-  * It is now possible to match an environment variable's value as well as its 
-    name using env_keep and env_check. This can be used to preserve bash 
+  * It is now possible to match an environment variable's value as well as its
+    name using env_keep and env_check. This can be used to preserve bash
     functions which would otherwise be removed from the environment.
-  * New files created via sudoedit as a non-root user now have the proper 
+  * New files created via sudoedit as a non-root user now have the proper
     group id. Bug #656.
-  * Sudoedit now works correctly in conjunction with sudo's SELinux RBAC 
+  * Sudoedit now works correctly in conjunction with sudo's SELinux RBAC
     support. Temporary files are now created with the proper security context.
-  * The sudo I/O logging plugin API has been updated. If a logging function 
-    returns an error, the command will be terminated and all of the plugin's 
-    logging functions will be disabled. If a logging function rejects the 
+  * The sudo I/O logging plugin API has been updated. If a logging function
+    returns an error, the command will be terminated and all of the plugin's
+    logging functions will be disabled. If a logging function rejects the
     command's output it will no longer be displayed to the user's terminal.
-  * Fixed a compilation error on systems that lack openpty(), _getpty() and 
+  * Fixed a compilation error on systems that lack openpty(), _getpty() and
     grantpt(). Bug #660.
-  * Fixed a hang when a sudoers source is listed more than once in a single 
+  * Fixed a hang when a sudoers source is listed more than once in a single
     sudoers nsswitch.conf entry.
-  * On AIX, shell scripts without a #! magic number are now passed to 
-    /usr/bin/sh, not /usr/bin/bsh. This is consistent with what the execvp() 
+  * On AIX, shell scripts without a #! magic number are now passed to
+    /usr/bin/sh, not /usr/bin/bsh. This is consistent with what the execvp()
     function on AIX does and matches historic sudo behavior. Bug #661.
-  * Fixed a cross-compilation problem building mksiglist and mksigname. 
-    Bug #662. 
+  * Fixed a cross-compilation problem building mksiglist and mksigname.
+    Bug #662.
 
 -------------------------------------------------------------------
 Thu May 15 13:00:31 UTC 2014 - vcizek@suse.com
@@ -1775,12 +1803,12 @@ Tue Jul  9 15:46:19 UTC 2013 - darin@darins.net
 -------------------------------------------------------------------
 Tue Jul  9 12:34:16 UTC 2013 - darin@darins.net
 
-- Enable SSSD as a sudoers data source 
+- Enable SSSD as a sudoers data source
 
 -------------------------------------------------------------------
 Tue Jul  2 16:30:19 UTC 2013 - dmueller@suse.com
 
-- restore accidentally dropped suse-specific patches 
+- restore accidentally dropped suse-specific patches
 
 -------------------------------------------------------------------
 Thu Jun 27 18:03:10 UTC 2013 - michael@stroeder.com
@@ -1790,14 +1818,14 @@ Thu Jun 27 18:03:10 UTC 2013 - michael@stroeder.com
   * remove CVE-2013-1776
   * The non-Unix group plugin is now supported when sudoers data is stored in LDAP.
   * User messages are now always displayed in the user's locale, even when the
-  same message is being logged or mailed in a different locale.  
+  same message is being logged or mailed in a different locale.
   * Log files created by sudo now explicitly have the group set to group ID 0
   rather than relying on BSD group semantics (which may not be the default).
-  * A new exec_background sudoers option can be used to initially run the 
-  command without read access to the terminal when running a command in a 
-  pseudo-tty. 
+  * A new exec_background sudoers option can be used to initially run the
+  command without read access to the terminal when running a command in a
+  pseudo-tty.
   * Sudo now produces better error messages when there is an error in the sudo.conf file.
-  * Two new settings have been added to sudo.conf to give the admin better control of 
+  * Two new settings have been added to sudo.conf to give the admin better control of
   how group database queries are performed.
   * There is now a standalone sudo.conf manual page.
   * New support for specifying a SHA-2 digest along with the command in sudoers.
@@ -1828,10 +1856,10 @@ Sun Nov  4 20:32:52 UTC 2012 - crrodriguez@opensuse.org
 
 - sudo 1.8.6p3
 * Support for using the System Security Services Daemon (SSSD) as a source of sudoers data
-* Fixed a race condition that could cause sudo to receive SIGTTOU (and stop) 
-  when resuming a shell that was run via sudo when I/O logging (and use_pty) is not enabled. 
+* Fixed a race condition that could cause sudo to receive SIGTTOU (and stop)
+  when resuming a shell that was run via sudo when I/O logging (and use_pty) is not enabled.
 * The sudoers plugin now takes advantage of symbol visibility controls when supported by the compiler or linker.
-* Sending SIGTSTP directly to the sudo process will now suspend 
+* Sending SIGTSTP directly to the sudo process will now suspend
    the running command when I/O logging (and use_pty) is not enabled.
 
 -------------------------------------------------------------------
@@ -1914,10 +1942,10 @@ Wed Jan 25 15:09:14 UTC 2012 - vcizek@suse.com
 -------------------------------------------------------------------
 Wed Jan  4 16:54:23 UTC 2012 - vcizek@suse.com
 
-- update to sudo-1.8.3p1 
+- update to sudo-1.8.3p1
   * Fixed a crash in the monitor process on Solaris when NOPASSWD
     was specified or when authentication was disabled.
-  * Fixed matching of a Runas_Alias in the group section of a Runas_Spec. 
+  * Fixed matching of a Runas_Alias in the group section of a Runas_Spec.
 
 -------------------------------------------------------------------
 Wed Dec 28 06:45:07 UTC 2011 - aj@suse.de
@@ -2010,7 +2038,7 @@ Thu Oct 13 00:59:49 UTC 2011 - prusnak@opensuse.org
 -------------------------------------------------------------------
 Fri May 20 12:10:45 UTC 2011 - puzel@novell.com
 
-- update to sudo-1.8.1p2 
+- update to sudo-1.8.1p2
   - Two-character CIDR-style IPv4 netmasks are now matched
     correctly in the sudoers file.
   - A non-existent includedir is now treated the same as an empty
@@ -2076,7 +2104,7 @@ Thu Mar 17 10:24:49 UTC 2011 - puzel@novell.com
   * Support for logging I/O for the command being run.
   * Sudo will now use the Linux audit system.
   + See /usr/share/doc/packages/sudo/NEWS for full list
-- new configure script flags: enable-warnings, with-linux-audit, 
+- new configure script flags: enable-warnings, with-linux-audit,
   docdir, with-sendmail
 - BuildRequires += audit-devel
 - BuildRequires -= postfix
@@ -2102,12 +2130,12 @@ Thu Mar 17 10:24:49 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Thu Jan 27 09:18:05 UTC 2011 - cprause@novell.com
 
-- added openldap schema file (bnc#667558) 
+- added openldap schema file (bnc#667558)
 
 -------------------------------------------------------------------
 Thu Jan 13 10:11:35 UTC 2011 - puzel@novell.com
 
-- add sudo-CVE-2011-0010.patch (bnc#663881) 
+- add sudo-CVE-2011-0010.patch (bnc#663881)
 
 -------------------------------------------------------------------
 Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
@@ -2135,7 +2163,7 @@ Tue Jun 15 21:23:02 UTC 2010 - pascal.bleser@opensuse.org
 -------------------------------------------------------------------
 Wed Jun  2 10:32:42 UTC 2010 - puzel@novell.com
 
-- add sudo-CVE-2010-1646.patch (bnc#594738) 
+- add sudo-CVE-2010-1646.patch (bnc#594738)
 
 -------------------------------------------------------------------
 Tue May 18 15:52:10 UTC 2010 - puzel@novell.com
@@ -2433,10 +2461,10 @@ Tue Oct 30 12:17:37 CET 2007 - prusnak@suse.cz
 Wed Oct 10 11:45:19 CEST 2007 - prusnak@suse.cz
 
 - update to 1.6.9p6
-  * worked around bugs in the session support of some PAM 
+  * worked around bugs in the session support of some PAM
     implementations
   * the full tty path is now passed to PAM as well
-  * sudo now only prints the password prompt if the process is in 
+  * sudo now only prints the password prompt if the process is in
     the foreground
   * inttypes.h is now included when appropriate if it is present
   * simplified alias allocation in the parser
@@ -2627,7 +2655,7 @@ Wed Dec 21 19:55:27 CET 2005 - mjancar@suse.cz
 -------------------------------------------------------------------
 Fri Dec  9 10:01:27 CET 2005 - ro@suse.de
 
-- disabled selinux 
+- disabled selinux
 
 -------------------------------------------------------------------
 Tue Aug  2 20:42:18 CEST 2005 - mjancar@suse.cz
@@ -2642,7 +2670,7 @@ Mon Jun 20 11:50:45 CEST 2005 - anicka@suse.cz
 -------------------------------------------------------------------
 Mon Feb 28 15:30:42 CET 2005 - ro@suse.de
 
-- update to 1.6.8p7 
+- update to 1.6.8p7
 
 -------------------------------------------------------------------
 Mon Nov 15 14:58:45 CET 2004 - kukuk@suse.de
@@ -2773,12 +2801,12 @@ Wed Aug 15 16:17:35 CEST 2001 - pmladek@suse.cz
 -------------------------------------------------------------------
 Tue Aug 14 18:05:55 CEST 2001 - ro@suse.de
 
-- Don't use absolute paths to PAM modules in PAM config files 
+- Don't use absolute paths to PAM modules in PAM config files
 
 -------------------------------------------------------------------
 Tue Feb 27 11:17:10 CET 2001 - pblaha@suse.cz
 
-- update on 1.6.3p6 for fix potential security problems 
+- update on 1.6.3p6 for fix potential security problems
 
 -------------------------------------------------------------------
 Mon Jun 26 17:39:24 CEST 2000 - schwab@suse.de
@@ -2820,5 +2848,3 @@ Wed Nov  6 00:13:26 CET 1996 - florian@suse.de
 - update to version 1.5.2
 
 - sudo has changed a lot, please check the sudo documentation
-
-
