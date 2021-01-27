@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql-pgagent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,28 @@
 %define         pgname postgresql
 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?suse_version} < 1500 && %{pgname} == "postgresql10"
+%if 0%{?suse_version} < 1500 && "%{pgname}" == "postgresql10"
 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?suse_version} == 1500 && %{pgname} == "postgresql93"
+%if 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql93"
 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?suse_version} == 1500 && %{pgname} == "postgresql94"
+%if 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql94"
 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?suse_version} == 1500 && %{pgname} == "postgresql95"
+%if 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql95"
 ExclusiveArch:  do_not_build
 %endif
-%if !0%{?is_opensuse} && 0%{?suse_version} == 1500 && %{pgname} == "postgresql96"
+%if !0%{?is_opensuse} && 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql96"
+ExclusiveArch:  do_not_build
+%endif
+%if !0%{?is_opensuse} && 0%{?suse_version} == 1500 && "%{pgname}" == "postgresql11"
+ExclusiveArch:  do_not_build
+%endif
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150100 && "%{pgname}" == "postgresql12"
+ExclusiveArch:  do_not_build
+%endif
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150200 && "%{pgname}" == "postgresql13"
 ExclusiveArch:  do_not_build
 %endif
 %define         sname pgagent
