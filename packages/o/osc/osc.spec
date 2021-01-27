@@ -1,7 +1,7 @@
 #
 # spec file for package osc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.171.0
+%define version_unconverted 0.172.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 
 Name:           osc
-Version:        0.171.0
+Version:        0.172.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later

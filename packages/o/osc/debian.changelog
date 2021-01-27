@@ -1,4 +1,22 @@
-osc (0.171.0) unstable; urgency=low
+osc (0.172.0-0) unstable; urgency=low
+  - Update to 0.172.0:
+    - support --lastsucceeded/--last-succeeded in "osc buildlog", "osc
+      remotebuildlog" + friends (perform the corresponding operation on
+      the build log of the last successful build)
+    - fix pypi deployment via Travis CI
+    - several fixes in request related code paths (no double html_escape
+      of a request's description etc.)
+    - support local builds in a systemd-nspawn container
+    - fix potential TypeErrors+UnicodeEncodeErrors in the util.cpio and
+      util.ar modules
+    - support local flatpak builds (requires a recent build version)
+    - "osc init <prj>" works for a non-existent (server-side) project <prj>
+    - .old dir support for source services so that some services have access
+      to the results of a previous service run
+
+ -- Marcus Huewe <suse-tux@gmx.de>  Wed, 27 Jan 2021 14:28:11 +0100
+
+osc (0.171.0-1) unstable; urgency=low
   - Package for Python3
 
  -- Nick Brown <nick.brown@att.com>  Wed, 30 Jan 2020 14:49:30 +0000

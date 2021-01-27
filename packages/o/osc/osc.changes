@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 27 16:40:47 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
+
+- reformat spec with a recent version of the obs-service-format_spec_file
+  service
+
+-------------------------------------------------------------------
+Wed Jan 27 13:31:51 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
+
+- 0.172.0:
+  * support --lastsucceeded/--last-succeeded in "osc buildlog", "osc
+    remotebuildlog" + friends (perform the corresponding operation on
+    the build log of the last successful build)
+  * fix pypi deployment via Travis CI
+  * several fixes in request related code paths (no double html_escape
+    of a request's description etc.)
+  * support local builds in a systemd-nspawn container
+  * fix potential TypeErrors+UnicodeEncodeErrors in the util.cpio and
+    util.ar modules
+  * support local flatpak builds (requires a recent build version)
+  * "osc init <prj>" works for a non-existent (server-side) project <prj>
+  * .old dir support for source services so that some services have access
+    to the results of a previous service run
+
+-------------------------------------------------------------------
 Tue Nov 10 13:42:55 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.171.1

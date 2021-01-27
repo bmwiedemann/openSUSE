@@ -1,7 +1,7 @@
 Source: osc
 Priority: extra
 Maintainer: Adrian Schroeter <adrian@suse.de>, Rene Engelhard <rengelhard@suse.de>
-Build-Depends: debhelper (>= 9), dh-python, python3-all, python3-setuptools
+Build-Depends: debhelper (>= 10), dh-python, python3-all, python3-setuptools
 Standards-Version: 3.7.1
 Section: devel
 

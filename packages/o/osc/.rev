@@ -1430,4 +1430,25 @@ sr#761596 needed for this.</comment>
   * some improvements on output of help and error messages</comment>
     <requestid>847545</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>d46e473b32303881ba7b9c46b2621a15</srcmd5>
+    <version>0.172.0</version>
+    <time>1611770566</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.172.0:
+  * support --lastsucceeded/--last-succeeded in &quot;osc buildlog&quot;, &quot;osc
+    remotebuildlog&quot; + friends (perform the corresponding operation on
+    the build log of the last successful build)
+  * fix pypi deployment via Travis CI
+  * several fixes in request related code paths (no double html_escape
+    of a request's description etc.)
+  * support local builds in a systemd-nspawn container
+  * fix potential TypeErrors+UnicodeEncodeErrors in the util.cpio and
+    util.ar modules
+  * support local flatpak builds (requires a recent build version)
+  * &quot;osc init &lt;prj&gt;&quot; works for a non-existent (server-side) project &lt;prj&gt;
+  * .old dir support for source services so that some services have access
+    to the results of a previous service run</comment>
+    <requestid>867257</requestid>
+  </revision>
 </revisionlist>
