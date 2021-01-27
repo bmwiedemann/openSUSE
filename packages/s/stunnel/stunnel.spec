@@ -175,7 +175,7 @@ fi
 %{_mandir}/man8/*
 %dir %attr(700,root,root) %{_sysconfdir}/%{name}/
 %dir %attr(700,root,root) %{_sysconfdir}/%{name}//conf.d
-%config %{_sysconfdir}/%{name}/stunnel.conf
+%config(noreplace) %{_sysconfdir}/%{name}/stunnel.conf
 %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel
 %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/bin
 %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel%{_sysconfdir}
