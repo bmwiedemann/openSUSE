@@ -1,7 +1,7 @@
 #
 # spec file for package bzrtp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        4.4.21
+Version:        4.4.24
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later
@@ -35,20 +35,18 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 
 %description
-bzrtp is a FOSS implementation of ZRTP keys exchange protocol.
-The library written in C 89, is fully portable, and can be executed
-on many platforms including x86 and ARM processors.
+bzrtp is an implementation of the ZRTP key exchange protocol.
+The library written in C89.
 
 %package -n lib%{name}%{sover}
-Summary:        ZRTP keys exchange protocol implementation
+Summary:        ZRTP key exchange protocol implementation
 
 %description -n lib%{name}%{sover}
-bzrtp is a FOSS implementation of ZRTP keys exchange protocol.
-The library written in C 89, is fully portable, and can be executed
-on many platforms including x86 and ARM processors.
+bzrtp is an implementation of the ZRTP key exchange protocol.
+The library written in C89.
 
 %package devel
-Summary:        Development files of libbzrtp
+Summary:        Development files for libbzrtp
 Requires:       lib%{name}%{sover} = %{version}
 
 %description devel
