@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 24 03:08:49 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.000001
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  2.000001 - 2021-01-23
+    - Remove Module::Runtime requirement
+  2.000000 - 2021-01-21
+    - Collapse custom join conditions back to something DBIC might understand
+  1.90_03 - 2019-10-13
+     - Add proof of concept DBIx::Class::SQLMaker::Role::SQLA2Passthrough
+     - _where_field_IN/BETWEEN are documented as subclassable; feature restored
+  1.90_02 - 2019-10-12
+      - fix DBIC ident op expander compat wrapper to handle call as unop
+  1.90_01 - 2019-10-09
+      - Complete overhaul of the internals, see the SQL::Abstract::Reference
+        docs to understand the new implementation's affordances.
+
+-------------------------------------------------------------------
 Tue Jun  2 15:36:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.87
