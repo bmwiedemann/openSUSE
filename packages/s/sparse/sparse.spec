@@ -1,7 +1,7 @@
 #
 # spec file for package sparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           sparse
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://sparse.wiki.kernel.org/index.php/Main_Page
 Source:         https://mirrors.edge.kernel.org/pub/software/devel/sparse/dist/%{name}-%{version}.tar.xz
-Patch0:         0001-gensel-remove-unneeded-test-uninitialized-warning.patch
-Patch1:         0002-generic-fix-missing-inlining-of-generic-expression.patch
-Patch2:         0004-sindex.1-Use-for-a-plain-quote-char.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel

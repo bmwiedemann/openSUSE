@@ -438,4 +438,18 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
   * 0004-sindex.1-Use-for-a-plain-quote-char.patch</comment>
     <requestid>837254</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d7745e091489bb72655380a6b9725653</srcmd5>
+    <version>0.6.3</version>
+    <time>1611770302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.3:
+  * For full list of changes see:
+  https://sparse.docs.kernel.org/en/latest/release-notes/v0.6.3.html
+- Drop upstreamed patches:
+  * 0001-gensel-remove-unneeded-test-uninitialized-warning.patch
+  * 0002-generic-fix-missing-inlining-of-generic-expression.patch
+  * 0004-sindex.1-Use-for-a-plain-quote-char.patch (forwarded request 867120 from pluskalm)</comment>
+    <requestid>867123</requestid>
+  </revision>
 </revisionlist>

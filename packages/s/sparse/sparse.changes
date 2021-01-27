@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 26 12:36:43 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.3:
+  * For full list of changes see:
+  https://sparse.docs.kernel.org/en/latest/release-notes/v0.6.3.html
+- Drop upstreamed patches:
+  * 0001-gensel-remove-unneeded-test-uninitialized-warning.patch
+  * 0002-generic-fix-missing-inlining-of-generic-expression.patch
+  * 0004-sindex.1-Use-for-a-plain-quote-char.patch
+
+-------------------------------------------------------------------
 Fri Sep 25 05:28:22 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add patches
