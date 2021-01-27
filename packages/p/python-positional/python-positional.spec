@@ -1,7 +1,7 @@
 #
 # spec file for package python-positional
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/morganfainberg/positional
 Source:         https://files.pythonhosted.org/packages/source/p/positional/positional-%{version}.tar.gz
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-dbm
 Requires:       python-wrapt
 BuildArch:      noarch
 # SECTION test requirements
@@ -59,7 +61,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 export PYTHON=$python
 [ -d .testrepository/ ] && rm -r .testrepository/
-$python -B setup.py test
+$python setup.py testr -v
 }
 
 %files %{python_files}

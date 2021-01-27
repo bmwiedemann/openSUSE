@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 07:14:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add missing BR python module dbm
+
+-------------------------------------------------------------------
 Thu Apr 30 07:33:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
