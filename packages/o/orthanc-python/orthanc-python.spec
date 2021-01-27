@@ -2,7 +2,7 @@
 # spec file for package orthanc-python
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Dr. Axel Braun
+# Copyright (c) 2020-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           orthanc-python
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        3.0
+Version:        3.1
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-python/OrthancPython-%{version}.tar.gz
