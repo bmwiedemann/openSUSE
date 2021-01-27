@@ -155,4 +155,12 @@
   - Hopefully fix gh#pyenchant/pyenchant#203 as well.</comment>
     <requestid>810504</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0a6d768e719e5cf57c30451e03d8da59</srcmd5>
+    <version>3.2.0</version>
+    <time>1611770214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865657</requestid>
+  </revision>
 </revisionlist>
