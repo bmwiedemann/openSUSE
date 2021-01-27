@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 20 19:47:15 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version update to 6.1.18 (released January 19 2021)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  Nested VM: Fixed hangs when executing SMP nested-guests under certain conditions on Intel hosts (bug #19315, #19561)
+  OCI integration: Cloud Instance parameters parsing is improved on import (bug #19156)
+  Network: UDP checksum offloading in e1000 no longer produces zero checksums (bug #19930)
+  Network: Fixed Host-Only Ethernet Adapter DHCP, guest os can not get IP on host resume (bug #19620)
+  NAT: Fixed mss parameter handing (bug #15256)
+  macOS host: Multiple optimizations for BigSur
+  Audio: Fixed issues with audio playback after host goes to sleep (bug #18594)
+  Documentation: Some content touch-up and table formatting fixes
+  Linux host and guest: Support kernel version 5.10 (bug #20055)
+  Solaris host: Fix regression breaking VGA text mode since version 6.1.0
+  Guest Additions: Fixed a build failure affecting CentOS 8.2-2004 and later (bug #20091)
+  Guest Additions: Fixed a build failure affecting Linux kernels 3.2.0 through 3.2.50 (bug #20006)
+  Guest Additions: Fixed a VM segfault on copy with shared clipboard with X11 (bug #19226)
+  Shared Folder: Fixed error with remounting on Linux guests
+ 
+  File "debug_mountsf.patch" is deleted - fixed upstream.
+  File "linux-5.10-address-space-fixes.patch" is deleted - fixed upstream.
+  File "linux-5.10-framebuffer-fixes.patch" is deleted - fixed upstream.
+  File "linux-5.10-r0drv-memobj-fix-r0.patch" is deleted - fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jan 14 19:26:59 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Under some circumstances, shared folders are mounted as root. File

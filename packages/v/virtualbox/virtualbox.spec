@@ -66,7 +66,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.16
+Version:        6.1.18
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -178,13 +178,8 @@ Patch135:       fix-missing-includes-with-qt-5.15.patch
 Patch136:       fixes_for_gcc10.patch
 # Fix for changes in GSOAP 2.8.103
 Patch137:       handle_gsoap_208103.patch
-# Fixes for kernel 5.10
-Patch138:       linux-5.10-r0drv-memobj-fix-r0.patch
-Patch139:       linux-5.10-address-space-fixes.patch
-Patch140:       linux-5.10-framebuffer-fixes.patch
+Patch138:       fixes-for-5.11.patch
 Patch141:       vb-6.1.16-modal-dialog-parent.patch
-Patch142:       fixes-for-5.11.patch
-Patch998:       debug_mountsf.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 
@@ -493,12 +488,8 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch136 -p1
 %patch137 -p1
 %patch138 -p1
-%patch139 -p1
-%patch140 -p1
 %patch141 -p1
-%patch142 -p1
 # make VB UI background colors look sane again
-%patch998 -p1
 %patch999 -p1
 
 ### Documents for virtualbox main package ###
