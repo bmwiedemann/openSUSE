@@ -1,7 +1,7 @@
 #
 # spec file for package ortp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        4.4.21
+Version:        4.4.24
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
@@ -37,16 +37,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
 
 %description
-oRTP is a LGPL licensed C library implementing the RTP protocol
-(rfc1889).
+oRTP is a C library implementing the RTP protocol (RFC 1889).
 
 %package -n %{soname}%{sover}
 Summary:        Real-time Transport Protocol Stack
 Group:          System/Libraries
 
 %description -n %{soname}%{sover}
-oRTP is a LGPL licensed C library implementing the RTP protocol
-(rfc1889).
+oRTP is a C library implementing the RTP protocol (RFC 1889).
 
 %package devel
 Summary:        Headers, libraries and docs for the oRTP library
@@ -57,19 +55,17 @@ Provides:       %{soname}-devel = %{version}
 Obsoletes:      %{soname}-devel < %{version}
 
 %description devel
-oRTP is a LGPL licensed C library implementing the RTP protocol
-(rfc1889).
+oRTP is a C library implementing the RTP protocol (RFC 1889).
 
 This package contains header files and development libraries needed to
 develop programs using the oRTP library.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DENABLE_STATIC=OFF
-make %{?_smp_mflags} 
+%make_build
 
 %install
 %cmake_install
