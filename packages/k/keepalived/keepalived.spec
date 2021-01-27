@@ -1,7 +1,7 @@
 #
 # spec file for package keepalived
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@
 %bcond_without json
 
 Name:           keepalived
-Version:        2.0.19
+Version:        2.2.1
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
@@ -81,7 +81,8 @@ Requires(pre):  pwdutils
 Requires(pre):  %fillup_prereq
 %if %{with systemd}
 BuildRequires:  systemd-rpm-macros
-%{?systemd_requires}
+BuildRequires:  pkgconfig(libsystemd)
+%{?systemd_ordering}
 %else
 Requires(pre):  %insserv_prereq
 %endif
@@ -132,10 +133,16 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-nftables \
   %endif
   %if %{with systemd}
+  --enable-systemd \
   --with-init=systemd \
   --with-systemdsystemunitdir="%{_unitdir}" \
+  %else
+  --with-init=SUSE \
   %endif
   --enable-sha1 \
+  --enable-gnu-std-paths \
+  --enable-hardening \
+  --enable-log-file \
   --enable-routes \
   --enable-iptables \
   --enable-dynamic-linking \
