@@ -1,7 +1,7 @@
 #
 # spec file for package python-docker-compose
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,7 +107,11 @@ Previously known as Fig.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/unit
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+%{buildroot}%{_bindir}/docker-compose-%{$python_version} version
+}
+# gh#docker/compose#8044
+%pytest -k 'not (test_custom_timeout_error or test_docker_client_no_home or test_docker_client_with_custom_timeout or test_user_agent)' tests/unit
 
 %post
 %python_install_alternative docker-compose

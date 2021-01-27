@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 19 22:57:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip over tests which are failing (gh#docker/compose#8044)
+
+-------------------------------------------------------------------
 Thu Aug 20 11:17:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.26.2:

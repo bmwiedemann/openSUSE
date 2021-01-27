@@ -140,4 +140,12 @@
   likely cause problems)</comment>
     <requestid>828154</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>da4076f32ba34bc36a97507000bf8848</srcmd5>
+    <version>1.26.2</version>
+    <time>1611770284</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>867013</requestid>
+  </revision>
 </revisionlist>
