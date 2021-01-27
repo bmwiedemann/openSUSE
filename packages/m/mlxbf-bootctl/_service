@@ -1,0 +1,15 @@
+<!-- See https://en.opensuse.org/openSUSE:Build_Service_Concept_SourceService -->
+<!-- for more details on the syntax -->
+
+<services>
+        <service name="obs_scm" mode="disabled">
+                <param name="scm">git</param>
+                <param name="url">https://github.com/Mellanox/mlxbf-bootctl.git</param>
+                <param name="filename">mlxbf-bootctl</param>
+                <param name="versionrewrite-pattern">mlxbf-bootctl-(.*)-(.*)</param>
+                <param name="versionrewrite-replacement">\1.\2</param>
+                <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
+        </service>
+        <service mode="disabled" name="set_version" />
+        <service name="tar" mode="buildtime"/>
+</services>
