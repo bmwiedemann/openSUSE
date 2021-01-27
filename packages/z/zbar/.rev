@@ -169,4 +169,12 @@
 - Add 0002-get-rid-of-gettext_h.patch</comment>
     <requestid>849552</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9498ebd5f8968c9aa5a8929c76b7e4e1</srcmd5>
+    <version>0.23.1</version>
+    <time>1611770205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865511</requestid>
+  </revision>
 </revisionlist>

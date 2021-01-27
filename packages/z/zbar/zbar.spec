@@ -1,7 +1,7 @@
 #
 # spec file for package zbar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Carlos Goncalves <cgoncalves@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,11 +47,6 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
-# autoconf/automake required due to patched configure.ac (Patch0)
-%if 0%{?suse_version} >= 1550
-BuildRequires:  autoconf
-BuildRequires:  automake >= 1.16
-%endif
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 %endif
@@ -106,11 +101,7 @@ configuration files and development tools needed to compile and link
 applications using the zbar-qt library.
 
 %prep
-%setup -q
-%if 0%{?suse_version} >= 1550
-%patch0 -p1
-%endif
-%patch1 -p1
+%autosetup -p1
 
 %build
 test -x "$(type -p gcc)" && export CC=$_
@@ -122,7 +113,7 @@ test -x "$(type -p gcc-8)" && export CC=$_
   --without-java \
   --with-python=no \
   --without-gtk
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
