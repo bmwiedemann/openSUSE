@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 26 13:07:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.4
+  * Officially support Celery 5.0. Drop support for Celery < 4.4.
+  * Drop support for Python < 3.6.
+- Add celery-fixtures.patch to fix the testsuite
+
+-------------------------------------------------------------------
 Mon Mar 30 13:47:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.3
