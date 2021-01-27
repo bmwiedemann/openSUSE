@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>841890</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0b478edb1089522c586f1a79996a5793</srcmd5>
+    <version>26</version>
+    <time>1611770239</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 26
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/26 (forwarded request 866027 from lnussel)</comment>
+    <requestid>866028</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-podman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-podman
-Version:        25
+Version:        26
 Release:        0
 Summary:        Cockpit component for Podman containers
 License:        LGPL-2.1-or-later
