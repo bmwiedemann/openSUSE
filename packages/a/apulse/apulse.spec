@@ -1,7 +1,7 @@
 #
 # spec file for package apulse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libpulse) >= 5.0
-%if %{?_lib} == lib64
-Recommends:     %{name}-32bit = %{version}
-%endif
 
 %description
 PulseAudio emulation intended to be used with Firefox and Skype.
