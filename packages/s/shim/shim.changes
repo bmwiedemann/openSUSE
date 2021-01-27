@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 22 03:29:56 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the SLE signature
+- Exclude some patches from x86_64 to avoid breaking the signature
+- Add shim-correct-license-in-headers.patch back for x86_64 to
+  match the SLE signature
+- Add linker-version.pl to modify the EFI/PE header to match the
+  SLE signature
+
+-------------------------------------------------------------------
 Wed Nov  4 05:53:35 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Disable the signature attachment for AArch64 temporarily until
