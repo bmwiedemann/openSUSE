@@ -1,7 +1,7 @@
 #
 # spec file for package bctoolbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        4.4.21
+Version:        4.4.24
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-2.0-or-later
