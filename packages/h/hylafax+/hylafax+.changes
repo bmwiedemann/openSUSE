@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 26 12:07:54 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix TW build by pretending tiff 4.2 is as good enough as 4.{0,1}
+
+-------------------------------------------------------------------
 Fri Oct 09 08:34:29 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - rearrange files-section (boo#1172731)

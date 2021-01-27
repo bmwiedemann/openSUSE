@@ -1,5 +1,11 @@
+GENERAL NOTE
+============
+Due to history and structure of this package, the server part of HylaFAX+ 
+should only be installed in isolated environments for security reasons,
+allowing direct access for admins only. [bsc#1173519]
+
 Setup of hylafax+ on openSUSE
-----------------------------
+-----------------------------
 
 After installation of hylafax you need to run 
 faxsetup

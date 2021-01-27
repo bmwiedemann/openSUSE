@@ -1,7 +1,7 @@
 #
 # spec file for package hylafax+
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,8 +102,8 @@ used to access the server.
 %setup -q -n hylafax-%{version}
 cp %{SOURCE8} .
 cp %{SOURCE9} .
-# pretend, that libtiff 4.1 is similar to 4.0
-sed -i 's/4.0)/4.[01])/' configure
+# pretend, that libtiff 4.2 is similar to 4.{0,1}
+sed -i 's/4.\[01\])/4.[012])/' configure
 
 %build
 # - Can't use the configure macro because HylaFAX configure script does
