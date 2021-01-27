@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 26 15:38:36 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Display UUID on Power VM LPAR (bsc#1181411 ltc#191040)
+  * lshw-devtree-Add-UUID-property.patch
+
+-------------------------------------------------------------------
 Mon Aug 31 08:34:41 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix detection of ppc products - boo#1172156

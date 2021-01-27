@@ -1,0 +1,32 @@
+From 9c5c2f0706db330114ff4624e0931ac40c1d6fe2 Mon Sep 17 00:00:00 2001
+From: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+Date: Wed, 20 Jan 2021 11:28:47 +0530
+Subject: [PATCH] devtree: Add UUID property
+
+References: bsc#1181411 ltc#191040
+Upstrem: accepted
+Git-commit: 9c5c2f0706db330114ff4624e0931ac40c1d6fe2
+
+Add UUID property to PowerVM LPAR.
+
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+---
+ src/core/device-tree.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/core/device-tree.cc b/src/core/device-tree.cc
+index d3188c6a8a27..7df6a4ee074c 100644
+--- a/src/core/device-tree.cc
++++ b/src/core/device-tree.cc
+@@ -1503,6 +1503,8 @@ bool scan_device_tree(hwNode & n)
+       scan_devtree_bootrom(*core);
+       if (exists(DEVICETREE "/ibm,lpar-capable")) {
+         n.setDescription("pSeries LPAR");
++        if (exists( DEVICETREE "/ibm,partition-uuid"))
++          n.setConfig("uuid", get_string(DEVICETREE "/ibm,partition-uuid"));
+         scan_devtree_cpu_power(*core);
+       }
+       else {
+-- 
+2.26.2
+

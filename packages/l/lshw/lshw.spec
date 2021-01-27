@@ -1,7 +1,7 @@
 #
 # spec file for package lshw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,8 @@ Patch1:         lshw-fix-segfault-in-apfs-volume-code.patch
 Patch2:         lshw-fix-mmc.patch
 # PATCH-FIX-UPSTREAM - https://github.com/lyonel/lshw/commit/3775782808e8b9b8aa72ed2ce23e145433e193cf - boo#1172156
 Patch3:         lshw-fix-ppc.patch
+# PATCH-FIX-UPSTREAM - https://ezix.org/src/pkg/lshw/commit/9c5c2f0706db330114ff4624e0931ac40c1d6fe2 - bsc#1181411
+Patch4:         lshw-devtree-Add-UUID-property.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
