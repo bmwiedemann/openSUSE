@@ -1,0 +1,27 @@
+commit b0847e590432e4143ad5ccd22c9239746ad71b91
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Mon Jan 11 10:51:01 2021 +0100
+
+    srp_daemon: Fix systemd dependency
+    
+    remote-fs-pre.target is a passive target that is not loaded without someone
+    actively requiring it. Even is remote-fs.target is active.
+    This means that srp_daemon will not get started at boot
+    unless another service explicitely requires remote-fs-pre.target.
+    
+    This solves the issue by having the srp_daemon service wanted by
+    the multi-user.target.
+    
+    Fixes: 1c7fe513e3e9 (srp_daemon: One systemd service per port)
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git srp_daemon/srp_daemon.service.in srp_daemon/srp_daemon.service.in
+index 188b7e1a3712..bdd70db566af 100644
+--- srp_daemon/srp_daemon.service.in
++++ srp_daemon/srp_daemon.service.in
+@@ -16,4 +16,4 @@ ProtectKernelModules=yes
+ RestrictRealtime=yes
+ 
+ [Install]
+-WantedBy=remote-fs-pre.target
++WantedBy=multi-user.target

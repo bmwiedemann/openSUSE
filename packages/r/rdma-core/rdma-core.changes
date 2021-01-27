@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 22 13:17:42 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add srp_daemon-Fix-systemd-dependency.patch to make sure srp_daemon
+  is loaded at boot if enabled (bsc#1180196)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:58:55 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v31.0 (jsc#SLE-15657, jsc#SLE-15731, jsc#SLE-15743, jsc#SLE-15810)

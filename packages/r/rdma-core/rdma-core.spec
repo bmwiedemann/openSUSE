@@ -1,7 +1,7 @@
 #
 # spec file for package rdma-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,7 @@ Patch1:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
 Patch2:         Revert-Update-kernel-headers.patch
 Patch3:         disable-rdma-interface-renaming.patch
 Patch4:         cxgb3-nes-fix-declaration-of-free_context.patch
+Patch5:         srp_daemon-Fix-systemd-dependency.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -415,6 +416,7 @@ easy, object-oriented access to IB verbs.
 %patch2
 %patch3
 %patch4
+%patch5
 
 %build
 
