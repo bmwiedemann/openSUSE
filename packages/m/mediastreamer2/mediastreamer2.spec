@@ -1,7 +1,7 @@
 #
 # spec file for package mediastreamer2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        4.4.21
+Version:        4.4.24
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
@@ -68,28 +68,28 @@ BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
 
 %description
-Mediastreamer2 is a GPL licensed library to make audio and video
-real-time streaming and processing. Written in pure C, it is based
-upon the oRTP library.
+Mediastreamer2 is a library to make audio and video real-time
+streaming and processing. It is written in pure C and based upon the
+oRTP library.
 
 %package -n %{sobase}%{sover}
 Summary:        Audio/video real-time streaming library, base part
 Group:          System/Libraries
 
 %description -n %{sobase}%{sover}
-Mediastreamer2 is a GPL licensed library to make audio and video
-real-time streaming and processing. Written in pure C, it is based
-upon the oRTP library.
+Mediastreamer2 is a library to make audio and video real-time
+streaming and processing. It is written in pure C and based upon the
+oRTP library.
 
 %package doc
 Summary:        Documentation for the mediastreamer2 library
-Group:          Development/Libraries/C and C++
+Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 
 %description doc
-Mediastreamer2 is a GPL licensed library to make audio and video
-real-time streaming and processing. Written in pure C, it is based
-upon the ortp library.
+Mediastreamer2 is a library to make audio and video real-time
+streaming and processing. It is written in pure C and based upon the
+oRTP library.
 
 This package contains documentation files
 
@@ -101,16 +101,15 @@ Requires:       %{sobase}%{sover} = %{version}
 Requires:       bcmatroska2-devel
 
 %description devel
-Mediastreamer2 is a GPL licensed library to make audio and video
-real-time streaming and processing. Written in pure C, it is based
-upon the ortp library.
+Mediastreamer2 is a library to make audio and video real-time
+streaming and processing. It is written in pure C and based upon the
+oRTP library.
 
 This package contains header files and development libraries needed to
 develop programs using the mediastreamer2 library.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
