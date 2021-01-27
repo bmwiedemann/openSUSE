@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jan 27 07:49:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.2:
+  * Interop / JVM:
+    - CLJ-1472 Ensure monitor object is on stack, for verifiers
+    - CLJ-2517 More fixes for invocation of static interface methods with primitive args
+    - CLJ-2492 Remove uses of deprecated Class.newInstance()
+    - CLJ-2534 Fix javadoc urls for JDK 11+
+    - CLJ-2571 Add Throwable return type hint to ex-cause
+    - CLJ-2572 Avoid reflection in clojure.data
+    - CLJ-2502 Fix reflection warnings in clojure.stacktrace/print-stack-trace
+    - CLJ-2597 proxy should emit Java 1.8 bytecode
+  * Core:
+    - CLJ-2580 Fix case expression branch analysis that resulted in compilation error
+    - CLJ-2564 Improve error message for case
+    - CLJ-2585 nth with not-found on regex matcher returns not-found on last group index
+    - CLJ-1364 vector-of does not implement equals or hashing methods
+    - CLJ-2549 vector-of does not implement IObj for metadata
+    - CLJ-1187 quoted metadata on empty literal colls is lost
+    - CLJ-2459 ExceptionInInitializerError if jars executed with java -jar
+  * Printing:
+    - CLJ-2469 Fix errors in printing some maps with namespace syntax
+    - CLJ-1445 pprint doesn't print collection metadata when *print-meta* is true
+  * Docstrings:
+    - CLJ-2295 Eliminate duplicate doc string printing for special forms
+    - CLJ-2495 prepl docstring is incorrect
+    - CLJ-2169 conj has out-of-date :arglists
+  * Performance:
+    - CLJ-1005 Use transient map in zipmap
+
+-------------------------------------------------------------------
 Tue Jan  5 19:43:41 UTC 2021 - Aaron Burnett <mullein@adelie.io>
 
 - Adds rlwrap dependency for proper clj functionality
