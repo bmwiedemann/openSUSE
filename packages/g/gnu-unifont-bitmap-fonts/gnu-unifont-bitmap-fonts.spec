@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-unifont-bitmap-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define	fontdir     %{_fontsdir}/uni
 Name:           gnu-unifont-bitmap-fonts
-Version:        13.0.01
+Version:        13.0.05
 Release:        0
 Summary:        The GNU Unicode Bitmap Font
 License:        GPL-2.0-or-later
 Group:          System/X11/Fonts
-URL:            http://unifoundry.com/unifont.html
+URL:            https://unifoundry.com/unifont/index.html
 Source0:        https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont-%{version}.pcf.gz
 Source1:        https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont-%{version}.pcf.gz.sig
 Source2:        http://unifoundry.com/LICENSE.txt

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 27 07:57:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.0.05:
+  * This release contains some minor adjustments. It is a stable release.
+  * Raised dentistry symbols U+23C0..U+23CA up one row, as they were in Unifont
+  13.0.03, per recommendation of David Corbett.
+  * Added missing UCSUR Braille Extended glyphs in the range U+EB60..U+EB9C
+  * updated arrow symbols U+1D9A2..U+1D9A4 and U+1D9DF..U+1D9E1
+  * updated glyphs for U+08AD, U+1467, U+1468, U+1D24, U+23B7, U+2E49, U+A789, U+FBD9, U+FBDA, and FC05
+  * modified many glyphs in these ranges so their visually middle horizontal
+    lines align, except for glyphs that can form part of an overstruck APL
+    character
+  * Numerous Canadian Aboriginal glyphs added
+  * Tamil glyphs U+0BF6 and U+0BF7
+  * Completely redrew the Thaana script, U+0780..U+07B1
+  * modified U+A650 and U+A651 to be single-width.
+  * David Corbett modified U+02AC, U+2720, U+A7F5, and U+A7F6.
+  * Paul Hardy modified U+02B7, U+0D81, U+1FBE, U+2CCE, U+2CCF, and U+AB69.
+
+-------------------------------------------------------------------
 Sun Mar 29 15:21:15 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - unifont 13.0.01:
