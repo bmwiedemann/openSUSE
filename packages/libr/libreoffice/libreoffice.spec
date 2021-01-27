@@ -58,6 +58,7 @@ Source2:        %{tarball_url}/libreoffice-help-%{version}.tar.xz
 Source3:        %{tarball_url}/libreoffice-help-%{version}.tar.xz.asc
 Source4:        %{tarball_url}/libreoffice-translations-%{version}.tar.xz
 Source5:        %{tarball_url}/libreoffice-translations-%{version}.tar.xz.asc
+# SUSE color palette in year 2021: bsc#1181122 https://brand.suse.com/brand-system/color-palette
 # SUSE color palette bsc#1045339 https://intra.microfocus.net/brandcentral/suse/identity.php#palette
 Source6:        SUSE.soc
 Source98:       %{name}.keyring

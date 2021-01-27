@@ -2922,4 +2922,12 @@ Petr</comment>
     <comment>bsc#1179025</comment>
     <requestid>863076</requestid>
   </revision>
+  <revision rev="220" vrev="5">
+    <srcmd5>045214693d2955ea5e7af5d21a9505f6</srcmd5>
+    <version>7.0.3.1</version>
+    <time>1611770175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865477</requestid>
+  </revision>
 </revisionlist>
