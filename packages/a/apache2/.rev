@@ -1857,4 +1857,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- re-add rcapache2 symlink (was lost about 6 weeks ago) (forwarded request 862727 from cboltz)</comment>
     <requestid>862803</requestid>
   </revision>
+  <revision rev="181" vrev="13">
+    <srcmd5>70d64e28907c34332161e817f784f519</srcmd5>
+    <version>2.4.46</version>
+    <time>1611770227</time>
+    <user>dimstar_suse</user>
+    <comment>- added Provides: http_daemon to fix bsc#1180132 (forwarded request 865975 from stroeder)</comment>
+    <requestid>865992</requestid>
+  </revision>
 </revisionlist>

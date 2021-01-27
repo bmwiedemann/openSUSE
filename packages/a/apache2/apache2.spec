@@ -279,6 +279,7 @@ Suggests:       apache2-%{default_mpm}
 Recommends:     apache2-utils
 Requires:       logrotate
 Provides:       %{apache_mmn}
+Provides:       http_daemon
 Provides:       httpd
 Provides:       suse_maintenance_mmn_%{suse_maintenance_mmn}
 Obsoletes:      apache2-example-pages
@@ -968,7 +969,7 @@ if grep -q "^wwwadmin:" %{_sysconfdir}/group; then
 fi
 %service_add_post apache2.service apache2@.service apache2.target
 %set_permissions %{_sbindir}/suexec || \
-  echo "Please check %{_sysconfdir}/permissions.local for settings of %{_sbindir}/suexec2 ."
+  echo "Please check %{_sysconfdir}/permissions.local for settings of %{_sbindir}/suexec ."
 %{fillup_only apache2}
 %if %{use_firewalld}
 %firewalld_reload

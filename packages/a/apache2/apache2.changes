@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 22 12:25:23 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added Provides: http_daemon to fix bsc#1180132
+
+-------------------------------------------------------------------
+Fri Jan 22 07:44:28 UTC 2021 - pgajdos@suse.com
+
+- remove suexec2 from premissions as well
+- modified sources
+  % permissions.apache2
+
+-------------------------------------------------------------------
+Wed Jan 13 20:16:34 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- suexec2 was renamed to suexec in 2015 and the symlink to suexec
+  no longer exists
+
+-------------------------------------------------------------------
 Tue Jan 12 22:29:52 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - re-add rcapache2 symlink (was lost about 6 weeks ago)
