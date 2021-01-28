@@ -94,4 +94,16 @@
   * added source btrfs-subvol-test.sh</comment>
     <requestid>770839</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>eb8cd9cc5d06453613163b40c5bf4851</srcmd5>
+    <version>3.7.2</version>
+    <time>1611865355</time>
+    <user>dimstar_suse</user>
+    <comment>- Only requires user(daemon) on major versions &gt;= 15.
+- Work around silly %autopatch bug in SLE 12.
+
+- Replace system-user-daemon with user(daemon): be resilient to
+  package name changes.</comment>
+    <requestid>867302</requestid>
+  </revision>
 </revisionlist>

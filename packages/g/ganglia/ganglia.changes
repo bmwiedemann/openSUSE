@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 27 11:48:29 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Only requires user(daemon) on major versions >= 15.
+- Work around silly %autopatch bug in SLE 12.
+
+-------------------------------------------------------------------
+Tue Jan 26 14:14:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace system-user-daemon with user(daemon): be resilient to
+  package name changes.
+
+-------------------------------------------------------------------
 Fri Feb  7 09:14:41 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added check for btrfs root filesystem (bsc#1162886)

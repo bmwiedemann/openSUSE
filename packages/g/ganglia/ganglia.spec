@@ -1,7 +1,7 @@
 #
 # spec file for package ganglia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,10 +70,12 @@ BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
 BuildRequires:  rrdtool-devel
-BuildRequires:  system-user-daemon
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
-Requires:       system-user-daemon
+%if 0%{?suse_version} >= 1500
+BuildRequires:  user(daemon)
+Requires:       user(daemon)
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -117,7 +119,9 @@ Provides:       ganglia-monitor-core = %{version}
 Provides:       ganglia-monitor-core-gmond = %{version}
 %{?systemd_requires}
 Requires(post): coreutils
-Requires:       system-user-daemon
+%if 0%{?suse_version} >= 1500
+Requires:       user(daemon)
+%endif
 
 %description gmond
 Ganglia is a scalable, real-time monitoring and execution environment
@@ -178,6 +182,9 @@ gmetad packages
 %prep
 %setup -q
 %autopatch -p1
+
+# do not delete empty line above - autopatch is broken in 12
+
 %build
 export LIBS="-ltirpc"
 %configure --with-gmetad \
