@@ -7,4 +7,13 @@
     <comment>GUI part of seadrive-fuse, an alternative to seafile-client</comment>
     <requestid>860391</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>48c45f056711c10489da93dd34d82a8d</srcmd5>
+    <version>2.0.12</version>
+    <time>1611865754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.12 (no changelog) 
+</comment>
+    <requestid>867504</requestid>
+  </revision>
 </revisionlist>
