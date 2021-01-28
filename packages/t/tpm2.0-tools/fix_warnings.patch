@@ -1,0 +1,28 @@
+Index: tpm2-tools-5.0/tools/tpm2_getekcertificate.c
+===================================================================
+--- tpm2-tools-5.0.orig/tools/tpm2_getekcertificate.c
++++ tpm2-tools-5.0/tools/tpm2_getekcertificate.c
+@@ -190,8 +190,8 @@ static char *base64_encode(const unsigne
+     return final_string;
+ }
+ 
+-static size_t writecallback(void *contents, size_t size, size_t nitems,
+-    char *CERT_BUFFER) {
++static size_t writecallback(char *contents, size_t size, size_t nitems,
++    void *CERT_BUFFER) {
+ 
+     strncpy(CERT_BUFFER, (const char *)contents, nitems * size);
+     ctx.rsa_cert_buffer_size = nitems * size;
+Index: tpm2-tools-5.0/lib/tpm2_util.c
+===================================================================
+--- tpm2-tools-5.0.orig/lib/tpm2_util.c
++++ tpm2-tools-5.0/lib/tpm2_util.c
+@@ -49,7 +49,7 @@ bool tpm2_util_concat_buffer(TPM2B_MAX_B
+         return false;
+     }
+ 
+-    if ((result->size + append->size) > TPM2_MAX_DIGEST_BUFFER) {
++    if (((size_t)result->size + append->size) > TPM2_MAX_DIGEST_BUFFER) {
+         return false;
+     }
+ 

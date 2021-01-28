@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tpm2.0-tools
-Version:        4.3.0
+Version:        5.0
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
@@ -25,6 +25,8 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-tools/releases
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
 Patch0:         fix_bogus_warning.patch
+Patch1:         fix_warnings.patch
+Patch2:         fix_pie_linking.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -64,8 +66,12 @@ associated interfaces.
 %prep
 %setup -q -n tpm2-tools-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
+# TODO: remove autoreconf once fix_pie_linking patch is no longer needed
+autoreconf -fvi
 %configure --disable-static
 make %{?_smp_mflags}
 
@@ -79,10 +85,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %defattr(-,root,root)
 %doc README.md doc/LICENSE doc/CHANGELOG.md
-/usr/bin/tpm2_*
-/usr/bin/tss2_*
-%{_mandir}/man1/tpm2_*
-%{_mandir}/man1/tss2_*
+/usr/bin/tpm2*
+/usr/bin/tss2*
+%{_mandir}/man1/tpm2*
+%{_mandir}/man1/tss2*
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/*

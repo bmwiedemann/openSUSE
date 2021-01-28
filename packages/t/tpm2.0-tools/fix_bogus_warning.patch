@@ -1,7 +1,7 @@
-Index: tpm2-tools-4.1/lib/tpm2_attr_util.c
+Index: tpm2-tools-5.0/lib/tpm2_attr_util.c
 ===================================================================
---- tpm2-tools-4.1.orig/lib/tpm2_attr_util.c
-+++ tpm2-tools-4.1/lib/tpm2_attr_util.c
+--- tpm2-tools-5.0.orig/lib/tpm2_attr_util.c
++++ tpm2-tools-5.0/lib/tpm2_attr_util.c
 @@ -202,7 +202,7 @@ static bool lookup_nt_friendly_name(cons
  
  static bool nt(TPMA_NV *nv, char *arg) {

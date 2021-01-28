@@ -364,4 +364,41 @@ s etc.
     - tpm2_eventlog: add a tool for parsing and displaying the event log.</comment>
     <requestid>843599</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e5447e277b2f41bd5f617a6fc5d0ec79</srcmd5>
+    <version>5.0</version>
+    <time>1611865742</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix_warnings.patch: fixes a couple of build errors resulting from LTO
+  linking and -Werror.
+- add fix_pie_linking.patch: fixes an error in the build system that causes
+  the tss2 binary to be linked without passed LDFLAGS (like -pie), which
+  causes the binary not to be position independent.
+- update to major version 5.0:
+  - Non Backwards Compatible Changes
+    * Default hash algorithm is now sha256. Prior versions claimed sha1, but were
+      inconsistent in choice. Best practice is to specify the hash algorithm to
+      avoid surprises.
+    * tpm2_tools and tss2_tools are now a busybox style commandlet. Ie
+      tpm2_getrandom becomes tpm2 getrandom. make install will install symlinks
+      to the old tool names and the tpm2 commandlet will interrogate argv[0] for
+      the command to run. This will provide backwards compatibility if they are
+      installed. If you wish to use the old names not installed system wide, set
+      DESTDIR during install to a separate path and set the proper directory on
+      PATH.
+    * tpm2_eventlog's output changed to be YAML compliant. The output before
+      was intended to be YAML compliant but was never properly checked and
+      tested.
+    * umask set to 0117 for all tools.
+    * tpm2_getekcertificate now outputs the INTC EK certificates in PEM format
+      by default. In order to output the URL safe variant of base64 encoded
+      output of the INTC EK certificate use the added option --raw.
+  - Dependency update
+    * Update tpm2-tss dependency version to 3.0.1
+    * Update tpm2-abrmd dependency version to 2.3.3
+  - New tools and features
+    * tpm2_zgen2phase: Add new tool to support command TPM2_CC_ZGen_2Phase.
+    * tpm2_ecdhzgen: Add new tool to support command TPM2_CC_ECDH_ZGen.</comment>
+    <requestid>867453</requestid>
+  </revision>
 </revisionlist>

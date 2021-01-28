@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Thu Jan 28 09:49:06 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add fix_warnings.patch: fixes a couple of build errors resulting from LTO
+  linking and -Werror.
+- add fix_pie_linking.patch: fixes an error in the build system that causes
+  the tss2 binary to be linked without passed LDFLAGS (like -pie), which
+  causes the binary not to be position independent.
+- update to major version 5.0:
+  - Non Backwards Compatible Changes
+    * Default hash algorithm is now sha256. Prior versions claimed sha1, but were
+      inconsistent in choice. Best practice is to specify the hash algorithm to
+      avoid surprises.
+
+    * tpm2_tools and tss2_tools are now a busybox style commandlet. Ie
+      tpm2_getrandom becomes tpm2 getrandom. make install will install symlinks
+      to the old tool names and the tpm2 commandlet will interrogate argv[0] for
+      the command to run. This will provide backwards compatibility if they are
+      installed. If you wish to use the old names not installed system wide, set
+      DESTDIR during install to a separate path and set the proper directory on
+      PATH.
+
+    * tpm2_eventlog's output changed to be YAML compliant. The output before
+      was intended to be YAML compliant but was never properly checked and
+      tested.
+
+    * umask set to 0117 for all tools.
+
+    * tpm2_getekcertificate now outputs the INTC EK certificates in PEM format
+      by default. In order to output the URL safe variant of base64 encoded
+      output of the INTC EK certificate use the added option --raw.
+
+  - Dependency update
+    * Update tpm2-tss dependency version to 3.0.1
+
+    * Update tpm2-abrmd dependency version to 2.3.3
+
+  - New tools and features
+    * tpm2_zgen2phase: Add new tool to support command TPM2_CC_ZGen_2Phase.
+    * tpm2_ecdhzgen: Add new tool to support command TPM2_CC_ECDH_ZGen.
+    * tpm2_ecdhkeygen: Add new tool to support command TPM2_CC_ECDH_KeyGen.
+    * tpm2_commit: Add new tool to support command TPM2_CC_Commit.
+    * tpm2_ecephemeral: Add new tool to support command TPM2_CC_EC_Ephemeral.
+    * tpm2_geteccparameters: Add new tool to support command TPM2_CC_ECC_Parameters.
+    * tpm2_setcommandauditstatus: Added new tool to support command TPM2_CC_SetCommandCodeAuditStatus.
+    * tpm2_getcommandauditstatus: Added new tool to support command TPM2_CC_GetCommandAuditDigest.
+    * tpm2_getsessionauditdigest: Added new tool to support command TPM2_CC_GetSessionAuditDigest.
+    * tpm2_certifyX509certutil: Added new tool for creating partial x509 certificates required to support
+      the TPM2_CC_CertifyX509 command.
+    * tpm2_policysigned:
+      Added option --cphash-input to specify the command parameter hash
+      (cpHashA), enforcing the TPM command to be authorized as well as its
+      handle and parameter values.
+    * tpm2_createprimary:
+      Added option to specify the unique data from the stdin by adding
+      provision for specifying the option value for unique file as -.
+    * tpm2_startauthsession:
+      Added new feature/option --audit-session to start an HMAC session to
+      be used as an audit session.
+    * tpm2_getrandom:
+      - Added new feature/option -S, --session to specify a HMAC session
+	to be used as an audit session. This adds support for auditing the
+        command using an audit session.
+      - Added new feature/option --rphash to specify file path to record the
+        hash of the response parameters. This is commonly termed as rpHash.
+      - Added new feature/option --cphash to specify a file path to record
+        the hash of the command parameters. This is commonly termed as cpHash.
+        NOTE: In absence of --rphash option, when this option is selected,
+        The tool will not actually execute the command, it simply returns a
+        cpHash.
+    * tpm2_getcap: tpm2_getcap was missing raw on a property TPM2_PT_REVISION,
+      and it should always be specified.
+    * tpm2_sign:
+      - Add option --commit-index to specify the commit index to use when
+        performing an ECDAA signature.
+      - Add support for ECDAA signature.
+    * tpm2_getekcertificate:
+      - Add option --raw to output EK certificate in URL safe variant base64
+        encoded format. By default it outputs a PEM formatted certificate.
+      - The tool can now output INTC and non INTC EK certificates from NV
+        indices specified by the TCG EK profile specification.
+    * tpm2_activatecredential:
+      - The secret data input can now be specified as stdin with -s option.
+      - The public key used for encryption can be specified as -u to make it
+        similar to rest of the tools specifying a public key. The old -e
+        option is retained for backwards compatibility.
+      - Add option to specify the key algorithm when the input public key is in
+        PEM format using the new option -G, --key-algorithm. Can specify
+	either RSA/ECC. When this option is used, input public key is expected
+        to be in PEM format and the default TCG EK template is used for the key
+        properties.
+    * tpm2_checkqoute:
+      - Add EC support.
+      - Support loading tss signatures.
+      - Support loading tpm2 pcrread PCR values by specifying the PCR
+        selection using the new option -l, --pcr-list.
+      - Added support for automatically detecting the signature format. With
+        this -F, --format option is retained for backwards compatibility but
+        it is deprecated.
+    * tpm2_createak: add option to output qualified name with new option
+                     -q, --ak-qualified-name.
+    * tpm2_policypcr: Add option for specifying cumulative hash of PCR's as an argument.
+    * tpm2_readpublic: Add option to output qualified name using the new option
+                       -q, --qualified-name.
+    * tpm2_print:
+      - Support printing TPM2B_PUBLIC data structures.
+      - Support printing TPMT_PUBLIC data structures.
+    * tpm2_send: Add support for handling sending and receiving command and
+                 response buffer for multiple commands.
+    * tpm2_verifysignature: Added support for verifying RSA-PSS signatures.
+    * tpm2_eventlog:
+      - Add handling of sha1 log format.
+      - Add fixes for eventlog output to be proper YAML.
+      - Add support for sha384, sha512, sm3_256 PCR hash algorithms.
+      - Add support for computing PCR values based on the events.
+    * tpm2_tools (all):
+      - Set stdin/stdout to non-buffering.
+      - Added changes for FreeBSD portability.
+
+  - Bug fixes
+
+     * Fix printing short options when no ascii character is used.
+
+     * OpenSSL: Fix deprecated OpenSSL functions. ECC Functions with suffix
+       GFp will become deprecated (DEPRECATED_1_2_0).
+
+     * tpm2_eventlog: output EV_POST_CODE as string not firmware blob to be
+       compliant with TCG PC Client FPF section 2.3.4.1 and 9.4.12.3.4.1
+
+     * Fix missing handle maps for ESY3 handle breaks. See #1994.
+
+     * tpm2_rsaencrypt: fix OAEP RSA encryption failing to invalid hash selection.
+
+     * tpm2_rsadecrypt: fix OAEP RSA decryption failing to invalid hash selection.
+
+     * tpm2_sign: fix for signing failures with restricted signing keys when
+       input data to sign is not a digest, rather the full message. The
+       validation ticket creation process defaults to the owner hierarchy and
+       so in order to choose other hierarchies the tpm2_hash tool should be
+       used instead.
+
+     * tpm2_print: fix segfault when -t option is omitted by appropriately
+                   warning of the required option.
+
+     * tpm2_nvdefine: fix for default size when size is not specified by
+                      invoking TPM2_CC_GetCapability.
+
+     * Fix for an issue where the return code for unsupported algorithms was
+       tool_rc_general instead of tool_rc_unsupported in tpm2_create and
+       tpm2_createprimary tools.
+
+     * Fix for an issue where RSA_PSS signature verification caused failures.
+
+     * tpm2_nvreadpublic, tpm2_kdfa, tpm2_checkquote, tpm2_quote:
+       Fixes for issues with interoperability of the attestation tools between
+       big and little endian platforms.
+
+     * tss2_*:
+       - Fix bash-completion for tss2_pcrextend and tss2_verifysignature
+       - Add force option to tss2_list
+       - Make force option consistent in all fapi tools
+       - Do not decode non-TPM errors
+       - Enhance integration tests to test changes of optional/mandatory parameters
+       - Add --hex parameter to tss2_getrandom
+       - Fix autocompletion issue
+       - Switch tss2_* to with-"="-style
+       - Add size parameter to tss2_createseal
+       - References to the cryptographic profile (fapi-profile(5)) and config file
+       - (fapi-config(5)) man pages from all relevant tss2_* man pages.
+       - Fix policy branch selection menu item from 1 to 0.
+  - Documentation
+     * wiki pages have been removed and data has been migrated to
+       tpm2-software.github.io portal's tutorial section.
+
+     * Fix the problem with man and no-man help output for tools were not
+       correctly displayed.
+
+     * man:
+
+       - tpm2_create: Correct max seal data size from 256 bytes to 128 bytes.
+
+       - tpm2_nvread: Fix manpage example.
+
+       - tpm2_nvwrite: Added missing information on how to specify the NV index as
+         an argument.
+
+       - tpm2_unseal: Add end-to-end example.
+
+       - tpm2_nvincrement: Fix incorrect commands in example section.
+
+       - tpm2_hmac: Fix the example section.
+
+-------------------------------------------------------------------
 Thu Oct 22 11:58:16 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - update to version 4.3:
