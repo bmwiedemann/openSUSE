@@ -1,6 +1,76 @@
 *** This file is updated by the SUSE package maintainers, based on version
 control logs (e.g. 'git log --oneline v1..v2'), as the Logwatch project does
 not release a change log themselves. ***
+==== 7.5.5 (2021-01-23) ====
+a8bdb8b [logwatch] Preparing new release 7.5.5
+c3fbbc2 Merge /u/fcrawford/logwatch/ branch frank-lvm into master
+cce8ece Some of LVM's messages come out tagged from dmeventd Add some details on snapshot resize size - only lists last value
+72459cd Updates for Fedora 33 Add additional archive files caused by dnf inbuilt rotation Sendmail now adds PID on milters Systemd "bug" printed some unwanted messages
+276a786 [LICENSE, conf/html/footer] Updated Copyright notice
+0800378 [audit] Declaring %unconfineds
+f216016 [logwatch.pl] Cleaning up some code.
+0b17863 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+7d60fae [HOWTO-Customize-LogWatch] Clarified use of quotes in filenames to preserve case.
+c4d15cd [smartd] Handle "SMART Failure" messages
+cdf00b5 [system] Add another "scheduling restart" ignore regex
+2a766d0 [fail2ban] Relax matching of "Determined IP using DNS Lookup" message
+10b7833 [sssd] Ignore "Preauthentication failed" from krb5_child
+4a862fa [clamav] Ignore new "Activating the newly loaded database" message
+326452d [dovecot] Reporting unknown users; reported by Panagiotis Kalogiratos
+25603b0 [[zz-network] Improvements to formatting and command switches. 	See full list at: https://sourceforge.net/p/logwatch/patches/71/
+0c5b671 [openvpn] Filtering new IPv6 statement, by Fritz Elfert
+89bec8b Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+151c80c Merge /u/etumapaudu/logwatch/ branch applystddate into master
+d5d5a44 [systemd] Remove duplicate "Queued start job for default target" line
+4f146ee Allow HHMM TZ
+d2a0a0d [systemd] Ignore "Queued start job for default target" messages
+d6dfa10 [system] Ignore "Queued start job for default target" messages
+60e5b89 Merge /u/joehorn/logwatch/ branch master into master
+a864609 [omsa] Update Unexpected sense log handling
+31291df Got these log on Ubuntu 20.
+2224e24 [zz-lm_sensors] Declare Detail variable
+06f9b28 [named] Allow for any key named in "forwarding update for zone" message
+20a39b6 [sendmail] Grouping AUTH failures because of no user, and filtering STARTTLS   "ok" return code.
+88c0d67 [sshd] Added LookupIP disable.  Requested by Joseph Mocker.
+67a640f [secure] Changed syntax for mit-krb5-1.8.0 and later, by Vladimir Elisseev
+039757f [dhcpd] Filtering for reuse_lease; reported by Matthias Fischer.
+75abbfc Merge /u/etumapaudu/logwatch/ branch monospace into master
+b1ae375 [named] Deal with more bind 9.11.13 transfer messages
+bb4c1f3 conf: Change default td font to monospace
+b42f6a1 audit: use the term Allowed instead of Grants
+e09afa5 dhcpd: Ignore lease age under threshold messages
+69f8d35 exim: Handle self-signed certs warnings
+c827d09 audit: Handle apparmor errors on DENIED messages
+5b379ce audit: Apparmor DENIED entries don't always include parent=N
+8d49ff0 audit: Treat "unconfined" profile changes like regular loads
+27c25ff secure: Ignore warnings about gnome-keyring-daemon items already registered
+a65c77f postfix: Handle backwards-compatible mode
+ce43a81 postfix: Ignore Resolved loghost to 127.0.0.1
+352d70f [postfix] Fix pattern for server TLS messages
+8a9230b [logwatch.pl] Changed Content-Transfer-Encoding to 8bit, per Björn Persson
+60cead4 [logwatch] Preparing new release 7.5.4
+3bb0fc4 Merge /u/fcrawford/logwatch/ branch frank-dnf-rpm into master
+0e4f239 Merge /u/fcrawford/logwatch/ branch frank-dhcpd into master
+331615e Merge /u/fcrawford/logwatch/ branch fedora32 into master
+9adeb9e [stunnel] Update for stunnel 5 messages
+04dcb0a [sendmail] Filtering additional tls statements added in sendmail 8.16.1
+fa724f3 Changed comment references to obsolete logwatch.org to sourceforge.net
+f559311 Update following merge review
+9f556d2 Handle count mismatch for updates
+0526ee5 Add report on IPv6 DNS updates
+98920fb Minor changes in Fedora 32
+ffc7bde [zz-disk_space] Do case-insentive matches for $diskfull_exclude_dirs
+bcb8b5a [dovecot] Match "imap-login: ID sent" messages with later user session
+3cfffb2 Merge /u/bryce/logwatch-from-ubuntu/ branch master into master
+90b09f7 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+01136a8 [zz-zfs] Use $PATH to determine location of zpool and zfs.  Reported by          Paride Legovini, and previously by Stephen Sewell.
+4236c59 imapd: Handle SSL3 connection errors
+94b3745 Match connection shutdown by couriertls
+fc66281 [dovecot] Fix pigeonhole 0.5.9+ discard action ignore pattern
+b9a8ac7 [iptables] STATE_INVALID_DROP is generally uninteresting, ignore unless high detail
+43becad [logwatch-pl] Don't lower-case mailer value, as per Roman Bronis.
+10f4b65 [secure] Allow additional characters in username; reported by David Loffredo.
+6e06733 [zz-lm_sensors] Check that script is run on current host, per Richard Gering
 ==== 7.5.3 (2020-01-22) ====
 48b2db1 Updating version to 7.5.3
 9164fec [logwatch.pl,HOWTO] Added sanity check for egrep, and documented Pre_Ignore

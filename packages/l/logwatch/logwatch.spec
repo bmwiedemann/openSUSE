@@ -1,7 +1,7 @@
 #
 # spec file for package logwatch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           logwatch
 Summary:        Tool to analyze and report on system logs
 License:        MIT
 Group:          System/Monitoring
-Version:        7.5.3
+Version:        7.5.5
 Release:        0
 URL:            http://www.logwatch.org
 BuildArch:      noarch
