@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 28 00:44:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Not a singlespec package (never really was): Spyder is only
+  available for the primary interpreter
+
+-------------------------------------------------------------------
 Sun Apr 19 09:58:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version .2.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-memory-profiler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+# not a singlespec package: Spyder app is only for primary python3 interpreter
 Name:           python-spyder-memory-profiler
 Version:        0.2.1
 Release:        0
@@ -26,20 +25,19 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-memory-profiler
 Source:         https://files.pythonhosted.org/packages/source/s/spyder_memory_profiler/spyder_memory_profiler-%{version}.tar.gz
-Requires:       python-memory_profiler
-Requires:       spyder >= 3
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-memory_profiler
 BuildRequires:  python-rpm-macros
+BuildRequires:  spyder >= 4
+Requires:       python-memory_profiler
+Requires:       spyder >= 4
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module memory_profiler}
-BuildRequires:  %{python_module pytest-qt}
-BuildRequires:  %{python_module pytest-xvfb}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  spyder >= 3
+BuildRequires:  python3-pytest-qt
+BuildRequires:  python3-pytest-xvfb
+BuildRequires:  python3-pytest
 # /SECTION
-%python_subpackages
 
 %description
 Spyder, the Scientific Python Development Environment, is an
@@ -68,21 +66,22 @@ sed -i -e '/^#!\//, 1d' spyder_memory_profiler/example/*.py
 sed -i -e '/^#!\//, 1d' spyder_memory_profiler/example/subdir/*.py
 
 %build
-%python_build
+%python3_build
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python3_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
 export QT_HASH_SEED=0
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
 export PYTHONDONTWRITEBYTECODE=1
-%pytest
+pytest-%{python_bin_suffix} -v
 
 %files -n spyder-memory-profiler
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
-%{python_sitelib}/spyder_memory_profiler
-%{python_sitelib}/spyder_memory_profiler-%{version}-*.egg-info
+%{python3_sitelib}/spyder_memory_profiler
+%{python3_sitelib}/spyder_memory_profiler-%{version}*-info
 
 %changelog
