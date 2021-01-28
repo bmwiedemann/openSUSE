@@ -187,4 +187,17 @@
     <comment></comment>
     <requestid>849861</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3ed84cb4f394cb6c45205654ae84dd5b</srcmd5>
+    <version>1.7.4</version>
+    <time>1611865756</time>
+    <user>dimstar_suse</user>
+    <comment>- OpenLeap is not SLE
+- Use _multibuild to only have the test dependencies as
+  buildrequires of the test build.
+- Have optional test dependencies (Django and scrypt) that are not
+  available in SLE only be buildrequired in TW.
+</comment>
+    <requestid>867499</requestid>
+  </revision>
 </revisionlist>

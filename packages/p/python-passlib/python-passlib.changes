@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 28 13:47:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- OpenLeap is not SLE
+
+-------------------------------------------------------------------
+Thu Jan 28 08:50:11 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use _multibuild to only have the test dependencies as
+  buildrequires of the test build.
+- Have optional test dependencies (Django and scrypt) that are not
+  available in SLE only be buildrequired in TW.
+
+-------------------------------------------------------------------
 Sat Nov 21 00:01:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update URL to https://foss.heptapod.net/python-libs/passlib
