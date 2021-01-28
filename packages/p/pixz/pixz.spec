@@ -1,7 +1,7 @@
 #
 # spec file for package pixz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           pixz
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Parallel, indexing version of XZ
 License:        BSD-2-Clause
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/vasi/pixz
-Source:         https://github.com/vasi/pixz/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/vasi/pixz/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 # compatibility tests run classic xz
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libarchive) >= 2.8
-BuildRequires:  pkgconfig(liblzma) >= 4.999.9-beta-212
+BuildRequires:  pkgconfig(liblzma)
 
 %description
 The existing XZ Utils provide great compression in the .xz file format, but
@@ -49,6 +49,8 @@ export CFLAGS="%{optflags} -fcommon"
 
 %install
 %make_install
+mkdir -p %{buildroot}/%{_mandir}/man1
+install -c -m 644 src/pixz.1 %{buildroot}/%{_mandir}/man1
 
 %check
 %make_build check

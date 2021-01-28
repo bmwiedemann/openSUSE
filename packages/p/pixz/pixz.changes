@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 26 00:20:45 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pixz 1.0.7:
+  * Fix memory corruption error
+  * Fix decompressing large files on 32-bit systems
+  * Avoid unaligned memory access
+
+-------------------------------------------------------------------
 Thu Jun 11 09:31:21 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10
