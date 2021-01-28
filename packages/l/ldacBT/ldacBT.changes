@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 28 10:50:33 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- adapt baselibs.conf to only ship 32bit library, not devel.
+
+-------------------------------------------------------------------
 Mon Jan 25 15:10:50 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - add baselibs.conf
