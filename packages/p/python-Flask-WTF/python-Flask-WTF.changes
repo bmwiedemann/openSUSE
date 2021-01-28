@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 28 09:43:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Define skip_python2 so we can build the package for SLE where an
+  old version of python2-Flask-Babel is available (and doesn't work
+  with a recent python-Werkzeug)
+
+-------------------------------------------------------------------
 Wed Jun 10 08:30:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest
