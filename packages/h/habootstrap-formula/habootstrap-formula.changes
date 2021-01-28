@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 27 12:30:35 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.4.1
+  * Ass sshkeys to default dictionary to allow usage with this item
+  (bsc#1181453) 
+
+-------------------------------------------------------------------
 Wed Jan 20 08:28:05 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.4.0
