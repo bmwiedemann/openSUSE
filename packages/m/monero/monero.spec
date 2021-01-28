@@ -17,7 +17,7 @@
 
 
 Name:           monero
-Version:        0.17.1.8
+Version:        0.17.1.9
 Release:        0
 Summary:        P2P digital currency
 License:        MIT

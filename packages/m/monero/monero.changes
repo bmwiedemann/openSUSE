@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 21 01:53:51 UTC 2021 - nopeinomicon@posteo.net
+
+- Update to version 0.17.1.9:
+  * storages: overridable limits for loading portable_storage from binary
+  * epee: also limit number of strings in portable_storage
+  * add a max levin packet size by command type
+  * blockchain: lock access to m_blocks_hash_of_hashes
+  * protocol: handle receiving a block hash we've not added yet
+  * build: prepare v0.17.1.9
+  * portable_storage: better sanity checking
+  * portable_storage: forbid unnamed sections
+  * protocol: more sanity checks in new chain block hashes
+  * portable_storage: check object limit where appropriate
+  * p2p: fix deadlock banning while updating peer lists
+  * protocol: don't reset last request time on an idle timer
+  * Add aggressive restrictions to pre-handshake p2p buffer limit
+  * Command max_bytes moved from dynamic map to static switch
+  * Restrict duplicate keys in epee binary format
+
+-------------------------------------------------------------------
 Sat Jan 02 11:38:17 UTC 2021 - nopeinomicon@posteo.net
 
 - Add "-DARCH=default" to cmake build args to fix boo#1180472 (https://bugzilla.opensuse.org/show_bug.cgi?id=1180472)
