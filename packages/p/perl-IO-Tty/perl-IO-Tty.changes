@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 23 03:07:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+
+  1.16 2021-01-2 Todd Rinaldo <toddr@cpan.org>
+      * Switch to github for issue tracker.
+      * Switch to testsuite CI workflow.
+      * Tidy
+
+-------------------------------------------------------------------
 Wed Nov  4 03:08:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.15
