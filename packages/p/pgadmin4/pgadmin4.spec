@@ -1,7 +1,7 @@
 #
 # spec file for package pgadmin4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global python3_blinker_min_version 1.4
 %global python3_extras_min_version 1.0.0
 %global python3_fixtures_min_version 3.0.0
-%global python3_flask_babel_min_version 0.11.1
+%global python3_flask_babelex_min_version 0.9.4
 %global python3_flask_compress_min_version 1.4.0
 %global python3_flask_gravatar_min_version 0.5.0
 %global python3_flask_htmlmin_min_version 1.3.2
@@ -74,14 +74,14 @@ Source0:        https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/
 Source10:       https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/source/%{name}-%{version}.tar.gz.asc
 # https://www.pgadmin.org/download/pgadmin-4-source-code/
 Source11:       %{name}.keyring
-Source1:        %{name}.conf
+Source1:        %{name}.conf.in
 Source2:        %{name}.service.in
 Source3:        %{name}.tmpfiles.d
 Source4:        %{name}.desktop.in
 Source6:        %{name}.qt.conf.in
-Source7:        %{name}.uwsgi
+Source7:        %{name}.uwsgi.in
 Source8:        README.SUSE
-Source9:        README.SUSE.uwsgi
+Source9:        README.SUSE.uwsgi.in
 Patch0:         use-os-makedirs.patch
 Patch1:         fix-python3-crypto-call.patch
 Patch2:         fix-python-lib.patch
@@ -93,7 +93,7 @@ BuildRequires:  libQt5Network-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  python3-Babel >= %{python3_babel_min_version}
 BuildRequires:  python3-Flask >= %{python3_flask_min_version}
-BuildRequires:  python3-Flask-Babel >= %{python3_flask_babel_min_version}
+BuildRequires:  python3-Flask-BabelEx >= %{python3_flask_babelex_min_version}
 BuildRequires:  python3-Flask-Compress >= %{python3_flask_compress_min_version}
 BuildRequires:  python3-Flask-Gravatar >= %{python3_flask_gravatar_min_version}
 BuildRequires:  python3-Flask-HTMLmin >= %{python3_flask_htmlmin_min_version}
@@ -113,6 +113,7 @@ BuildRequires:  python3-Werkzeug >= %{python3_werkzeug_min_version}
 BuildRequires:  python3-beautifulsoup4 >= %{python3_beautifulsoup4_min_version}
 BuildRequires:  python3-blinker >= %{python3_blinker_min_version}
 BuildRequires:  python3-click
+BuildRequires:  python3-cryptography
 BuildRequires:  python3-devel
 BuildRequires:  python3-extras >= %{python3_extras_min_version}
 BuildRequires:  python3-fixtures >= %{python3_fixtures_min_version}
@@ -157,7 +158,7 @@ Summary:        Web package for pgAdmin4
 Group:          Productivity/Databases/Tools
 Requires:       python3-Babel >= %{python3_babel_min_version}
 Requires:       python3-Flask >= %{python3_flask_min_version}
-Requires:       python3-Flask-Babel >= %{python3_flask_babel_min_version}
+Requires:       python3-Flask-BabelEx >= %{python3_flask_babelex_min_version}
 Requires:       python3-Flask-Compress >= %{python3_flask_compress_min_version}
 Requires:       python3-Flask-Gravatar >= %{python3_flask_gravatar_min_version}
 Requires:       python3-Flask-HTMLmin >= %{python3_flask_htmlmin_min_version}
@@ -177,6 +178,7 @@ Requires:       python3-Werkzeug >= %{python3_werkzeug_min_version}
 Requires:       python3-beautifulsoup4 >= %{python3_beautifulsoup4_min_version}
 Requires:       python3-blinker >= %{python3_blinker_min_version}
 Requires:       python3-click
+Requires:       python3-cryptography
 Requires:       python3-extras >= %{python3_extras_min_version}
 Requires:       python3-fixtures >= %{python3_fixtures_min_version}
 Requires:       python3-html5lib >= %{python3_html5lib_min_version}
@@ -219,20 +221,6 @@ PostgreSQL database.
 
 This package contains the documentation for pgadmin4.
 
-%prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%if %{?pkg_vcmp:%{pkg_vcmp python3-devel >= 3.8}}%{!?pkg_vcmp:0}
-%patch2 -p1
-%endif
-
-cp %{SOURCE8} .
-cp %{SOURCE9} .
-# rpmlint
-chmod -x docs/en_US/theme/pgadmin4/static/style.css
-chmod -x docs/en_US/theme/pgadmin4/theme.conf
-
 %package web-uwsgi
 Summary:        Pgamdin4 - uwsgi configuration
 Group:          Productivity/Networking/Web/Utilities
@@ -245,6 +233,27 @@ pgadmin4 is a management tool for PostgreSQL.
 
 This package holds the uwsgi configuration.
 
+%prep
+%setup -q
+%patch0 -p1
+%patch1 -p1
+%if %{?pkg_vcmp:%{pkg_vcmp python3-devel >= 3.8}}%{!?pkg_vcmp:0}
+%patch2 -p1
+%endif
+
+sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE1} > %{name}.conf
+sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE2} > %{name}.service
+sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE4} > %{name}.desktop
+sed -e 's@PYTHONSITELIB64@%{python3_sitearch}@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE6} > %{name}.qt.conf
+sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE7} > %{name}.uwsgi
+sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE9} > README.SUSE.uwsgi
+
+cp %{SOURCE8} .
+cp %{SOURCE9} .
+# rpmlint
+chmod -x docs/en_US/theme/pgadmin4/static/style.css
+chmod -x docs/en_US/theme/pgadmin4/theme.conf
+
 %build
 cd runtime
 export PYTHON_CONFIG=%{_bindir}/python3-config
@@ -255,52 +264,54 @@ qmake-qt5 -o Makefile pgAdmin4.pro
 make %{?_smp_mflags} VERBOSE=1
 
 %install
-cd runtime
 install -d -m 755 %{buildroot}%{_docdir}/%{name}-docs/
-cp -pr ../docs/* %{buildroot}%{_docdir}/%{name}-docs
+cp -pr docs/* %{buildroot}%{_docdir}/%{name}-docs
 
+pushd runtime
 install -d -m 755 %{buildroot}%{_bindir}
 cp pgAdmin4 %{buildroot}%{_bindir}
+popd
 
 install -d -m 755 %{buildroot}%{python3_sitelib}/pgadmin4-web
-cp -pR ../web/* %{buildroot}%{python3_sitelib}/pgadmin4-web
+cp -pR web/* %{buildroot}%{python3_sitelib}/pgadmin4-web
 
 install -d %{buildroot}%{_sysconfdir}/apache2/conf.d/
-install -m 0644 -p %{SOURCE1} %{buildroot}%{_sysconfdir}/apache2/conf.d/%{name}.conf
+install -m 0644 -p %{name}.conf %{buildroot}%{_sysconfdir}/apache2/conf.d/%{name}.conf
 
 # Install desktop file
 install -d %{buildroot}%{_datadir}/applications/
-sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE4} > %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # Install config system for webapp
 install -d -m 0755 %{buildroot}%{_sysconfdir}/pgadmin/
-echo "SERVER_MODE = True" > %{buildroot}%{_sysconfdir}/pgadmin/config_system.py
+echo "# SERVER_MODE = True" > %{buildroot}%{_sysconfdir}/pgadmin/config_system.py
 
 # Install QT conf file
 # This directory will/may change in future releases.
 install -d "%{buildroot}%{_sysconfdir}/xdg/pgadmin/"
-sed -e 's@PYTHONSITELIB64@%{python3_sitearch}@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g'<%{SOURCE6} > "%{buildroot}%{_sysconfdir}/xdg/pgadmin/pgadmin4.conf"
+install -m 0644 -p %{name}.qt.conf %{buildroot}%{_sysconfdir}/xdg/pgadmin/pgadmin4.conf
 
 # Install unit file/init script
 # This is only for systemd supported distros:
 install -d %{buildroot}%{_unitdir}
-sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE2} > %{buildroot}%{_unitdir}/%{name}.service
+install -m 0644 -p %{name}.service %{buildroot}%{_unitdir}/%{name}.service
 
 # ... and make a tmpfiles script to recreate it at reboot.
 mkdir -p %{buildroot}/%{_tmpfilesdir}
 install -m 0644 %{SOURCE3} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 
-cd %{buildroot}%{python3_sitelib}/%{name}-web
+pushd %{buildroot}%{python3_sitelib}/%{name}-web
 rm -f %{name}.db
 
 cat << EOF > config_distro.py
-SERVER_MODE = False
+# SERVER_MODE = True
 HTML_HELP = '%{_datadir}/doc/%{name}-docs/en_US/html/'
 UPGRADE_CHECK_ENABLED = False
 DEFAULT_BINARY_PATHS = {
     "pg": "%{_bindir}"
 }
 EOF
+popd
 
 chmod -x %{buildroot}%{_docdir}/%{name}-docs/en_US/images/*
 rm %{buildroot}%{python3_sitelib}/%{name}-web/regression/.gitignore
@@ -314,7 +325,7 @@ install -d -m 0755 %{buildroot}%{pgadmin4homedir}/storage
 install -d -m 0700 %{buildroot}%{pgadmin4homedir}/sessions
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
-install -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/uwsgi/vassals/pgadmin4.ini
+install -m 0644 %{name}.uwsgi %{buildroot}%{_sysconfdir}/uwsgi/vassals/pgadmin4.ini
 
 %pre web
 /usr/sbin/groupadd -r %{user_group_name} &>/dev/null || :
@@ -370,6 +381,7 @@ install -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/uwsgi/vassals/pgadmin4.ini
 
 %files web-uwsgi
 %defattr(-,root,root,-)
+%doc README.SUSE.uwsgi
 %dir %{_sysconfdir}/uwsgi
 %dir %{_sysconfdir}/uwsgi/vassals
 %config (noreplace) %{_sysconfdir}/uwsgi/vassals/pgadmin4.ini

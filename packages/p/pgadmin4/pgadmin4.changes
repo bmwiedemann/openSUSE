@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 27 11:26:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix the desktop application by removing the overriding of
+  SERVER_MODE in config_system.py and config_distro.py which were
+  forcing SERVER_MODE to always have a specific value instead
+  of letting the runtime choose so there's no need to force it.
+- Rename pgadmin4.conf to pgadmin4.conf.in,
+  pgadmin4.uwsgi to pgadmin4.uwsgi.in and
+  README.SUSE.uwsgi to README.SUSE.uwsgi.in and make them also
+  replace PYTHONSITELIB  with the python version used at build time
+- Replace all variables from config files in %prep instead of
+  %install
+- Include README.SUSE.uwsgi in the web-uwsgi subpackage
+
+-------------------------------------------------------------------
+Wed Jan 27 10:51:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add BuildRequires for python-cryptography and replace dependency for
+  python-Flask-Babel with python-Flask-BabelEx
+
+-------------------------------------------------------------------
 Fri Dec 11 11:16:37 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add BuildRequires for python modules
@@ -7,7 +28,7 @@ Fri Dec 11 11:16:37 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 Fri Dec 11 07:59:42 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.29:
-  - Ensure that folder rename should work properly in Storage 
+  - Ensure that folder rename should work properly in Storage
     Manager
   - Fixed an issue where the debugger's custom tab title not
     applied when opened in the new browser tab
