@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 28 03:06:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9717
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9717 2021-01-27
+  - bulk APIs for UnionFind
+  - add unionfind config option for util/grand.pl (benchmark-ish script)
+  - GRAPH_ALLOW_RECURSION env var to turn off recursion protection
+  - "Light" edge-map now uses bit-vectors -> smaller storage
+  - directed hypergraphs
+  - fix same_biconnected_components logic when given >2 vertices
+
+-------------------------------------------------------------------
 Sat Jan  2 03:07:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9716
