@@ -1,7 +1,7 @@
 #
 # spec file for package python-mitmproxy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,87 +18,73 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-mitmproxy
-Version:        5.2
+Version:        6.0.2
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://mitmproxy.org
 Source:         https://github.com/mitmproxy/mitmproxy/archive/v%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
-# upstream likes to pin dependencies too aggressively
-Patch0:         unpin.patch
-# PATCH-FIX-UPSTREAM replace-asynctest.patch gh#mitmproxy/mitmproxy#4020
-Patch1:         replace-asynctest.patch
 BuildRequires:  %{python_module Brotli >= 1.0}
-BuildRequires:  %{python_module Flask >= 1.0}
-%if 0%{?suse_version} < 1550
-# Python 3.6 only
-BuildRequires:  %{python_module dataclasses >= 0.7}
-# Python < 3.8
-BuildRequires:  %{python_module asynctest >= 0.12.0}
-%endif
-BuildRequires:  %{python_module beautifulsoup4 >= 4.4.1}
+BuildRequires:  %{python_module Flask >= 1.1.1}
+BuildRequires:  %{python_module asgiref >= 3.2.10}
 BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module certifi >= 2019.9.11}
 BuildRequires:  %{python_module click >= 7.0}
-BuildRequires:  %{python_module cryptography >= 2.9}
-BuildRequires:  %{python_module h2 >= 3.2.0}
-BuildRequires:  %{python_module hyperframe >= 5.1.0}
+BuildRequires:  %{python_module cryptography >= 3.3}
+BuildRequires:  %{python_module h2 >= 4.0}
+BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis >= 5.8}
 BuildRequires:  %{python_module kaitaistruct >= 0.7}
-BuildRequires:  %{python_module ldap3 >= 2.6.1}
+BuildRequires:  %{python_module ldap3 >= 2.8}
+BuildRequires:  %{python_module msgpack >= 1.0.0}
 BuildRequires:  %{python_module parver >= 0.1}
 BuildRequires:  %{python_module passlib >= 1.6.5}
-BuildRequires:  %{python_module protobuf >= 3.6.0}
+BuildRequires:  %{python_module protobuf >= 3.14}
 BuildRequires:  %{python_module publicsuffix2 >= 2.20190812}
-BuildRequires:  %{python_module pyOpenSSL >= 19.1.0}
-BuildRequires:  %{python_module pyasn1 >= 0.3.1}
+BuildRequires:  %{python_module pyOpenSSL >= 20.0}
 BuildRequires:  %{python_module pyparsing >= 2.4.2}
 BuildRequires:  %{python_module pyperclip >= 1.6.0}
-BuildRequires:  %{python_module pytest >= 5.1.3}
+BuildRequires:  %{python_module pytest >= 6.1.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.10.0}
-BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module requests >= 2.9.1}
 BuildRequires:  %{python_module ruamel.yaml >= 0.16}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
+BuildRequires:  %{python_module sortedcontainers >= 2.3}
 BuildRequires:  %{python_module tornado >= 4.3}
-BuildRequires:  %{python_module urwid >= 2.1.0}
-BuildRequires:  %{python_module wsproto >= 0.14}
+BuildRequires:  %{python_module urwid >= 2.1.1}
+BuildRequires:  %{python_module wsproto >= 1.0}
 BuildRequires:  %{python_module zstandard >= 0.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Brotli >= 1.0
 Requires:       python-Flask >= 1.1.1
+Requires:       python-asgiref >= 3.2.10
 Requires:       python-blinker >= 1.4
 Requires:       python-certifi >= 2019.9.11
 Requires:       python-click >= 7.0
-Requires:       python-cryptography >= 2.9
-Requires:       python-h2 >= 3.2.0
-Requires:       python-hyperframe >= 5.1.0
+Requires:       python-cryptography >= 3.3
+Requires:       python-h2 >= 4.0
+Requires:       python-hyperframe >= 6.0
 Requires:       python-kaitaistruct >= 0.7
-Requires:       python-ldap3 >= 2.6.1
-Requires:       python-passlib >= 1.6.2
-Requires:       python-protobuf >= 3.6.0
+Requires:       python-ldap3 >= 2.8
+Requires:       python-msgpack >= 1.0.0
+Requires:       python-passlib >= 1.6.5
+Requires:       python-protobuf >= 3.14
 Requires:       python-publicsuffix2 >= 2.20190812
-Requires:       python-pyOpenSSL >= 19.1.0
-Requires:       python-pyasn1 >= 0.3.1
+Requires:       python-pyOpenSSL >= 20.0
 Requires:       python-pyparsing >= 2.4.2
 Requires:       python-pyperclip >= 1.6.0
 Requires:       python-ruamel.yaml >= 0.16
-Requires:       python-sortedcontainers >= 2.1.0
+Requires:       python-sortedcontainers >= 2.3
 Requires:       python-tornado >= 4.3
-Requires:       python-urwid >= 2.1.0
-Requires:       python-wsproto >= 0.14
+Requires:       python-urwid >= 2.1.1
+Requires:       python-wsproto >= 1.0
 Requires:       python-zstandard >= 0.11
-%if 0%{?python3_version_nodots} < 37
-# Python 3.6 only
-Requires:       python3-dataclasses >= 0.7
-%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-beautifulsoup4 >= 4.4.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -118,12 +104,10 @@ that creatively violate the standards.
 
 %prep
 %setup -q -n mitmproxy-%{version}
-%patch0 -p1
-%if 0%{?suse_version} >= 1550
-%patch1 -p1
-%endif
 #remove shebang
 sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/contrib/wbxml/*.py
+# upstream likes to pin dependencies too aggressively
+sed -i 's/,\s*<.*"/"/g' setup.py
 rm mitmproxy/contrib/kaitaistruct/make.sh
 
 %build
@@ -159,7 +143,7 @@ rm mitmproxy/contrib/kaitaistruct/make.sh
 %python_uninstall_alternative pathod
 
 %files %{python_files}
-%doc README.rst CHANGELOG
+%doc README.rst CHANGELOG.rst
 %license LICENSE
 %{python_sitelib}/*
 %python_alternative %{_bindir}/mitmdump
