@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Jan 15 08:30:14 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.27
+- New Features and Improvements
+  + ZBXNEXT-2480 Removed autocomplete from fields having sensitive data
+- Bug Fixes
+  + ZBX-18155 Removed positional macros from item names on 'Web monitoring' page
+  + ZBX-5842 Fixed ability to detect username existence from unsuccessful login message
+  + ZBX-18564 Moved taskid calculation to transaction when creating remote command task
+  + ZBX-18487 Increased trapper verbosity for DebugLevel=4 when rejecting sender data
+  + ZBX-18185 Fixed compilation error on Solaris 10
+  + ZBX-18317 Fixed fatal error when updating only discovered triggers and their properties
+  + ZBX-18163 Fixed deletion of one last remaining main host interface to show error
+    instead of silently deleting the interface
+  + ZBX-18058 Updated the list of item keys and their descriptions
+  + ZBX-18464 Fixed javascript Uncaught TypeError when clicking on disabled multiselect item
+  + ZBX-18411 Set maxQueryMetrics default values for vcenter depending on its version
+  + ZBX-18438 Fixed missing asterisk mark for "timeout" field in item, item prototype and LLD rule edit forms
+  + ZBX-18327 Fixed undefined index when invalid URL is given
+  + ZBX-17178 Fixed multi-line value truncation in snmp lld
+  + ZBX-18462 Fixed inconsistent auto-registration behaviour for hosts without metadata
+    on Oracle DB compared to other databases when using Zabbix proxy
+  + ZBX-18364 Fixed inconsistency with autoregistration behaviour for hosts without metadata
+    on Oracle compared to other databases
+  + ZBX-18365 Added Fping 5.0 support to Zabbix
+  + ZBX-17493 Added discarding of incoming values outside history/trends storage periods on server
+  + ZBX-18343 Fixed in screen "host issue" problem stay even after problem resolved
+  + ZBX-17842 Updated VMware template to follow guidelines
+  + ZBX-17848 Fixed fping interval detection, added log prints of detected
+    options in debug mode, re-detect options every hour
+  + ZBX-18188 Increased age and duration related macro resolution to seconds
+  + ZBX-15651 Fixed handling of overlapping IP addresses in network discovery received from single Zabbix proxy
+  + ZBX-18326 Fixed unsupported code for internet explorer
+  + ZBX-15904 Added check of required cache size for vmware event messages
+  + ZBX-18121 Fixed SSH monitoring when compiled with libssh; thanks to MATSUDA Daiki for the patch
+  + ZBX-14503 Updated JMX template to follow guidelines
+  + ZBX-18189 Fixed crash when performing housekeeping with disabled value cache
+  + ZBX-18181 Fixed undefined index when importing host with non-existing interface
+  + ZBX-18050 Removed proxy name from host breadcrumbs
+  + ZBX-18202 Added new default item keys for item type "Zabbix aggregate"
+  + ZBX-18124 Fixed discovered host group prototype saving during import
+  + ZBX-13789 Fixed SQL errors with Oracle backend due to incorrect use of the USING statement
+  + ZBX-18046 Improved error message generation performance of user macro and item key parser
+  + ZBX-18105 Fixed use on uninitialised variable
+  + ZBX-18014 Added ODBC empty query check
+  + ZBX-18160 Fixed fatal error in items.php and host_discovery.php
+  + ZBX-13383 Improved performance of the trigger and trigger prototype inheritance
+  + ZBX-17974 Implement timeouts for WMI queries
+  + ZBX-13789 Improved performance of "Problems" widget with MySQL backend by removing DISTINCT
+    modifier from SQL statements with tables joined by primary keys
+  + ZBX-17468 Fixed excess audit log record being added on host status update
+  + ZBX-18076 Fixed PHP notice and multiple undefined index errors in hostinterface API
+  + ZBX-18000 Added red label for disabled media types in user profile
+  + ZBX-18075 Fixed runtime error when creating a host via API
+  + ZBX-15927 Removed problem calculation for dependent triggers when master trigger is in problem state
+  + ZBX-18063 Fixed usage of unsupported parameter in API call
+  + ZBX-18060 Fixed inaccessible user be displayed as accessible in slide show properties screen
+  + ZBX-17252 Fixed building of Zabbix daemons with link time optimization
+
+-------------------------------------------------------------------
 Thu Jul 30 08:25:38 UTC 2020 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.23

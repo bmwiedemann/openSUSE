@@ -1,7 +1,7 @@
 #
 # spec file for package zabbix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.23
+Version:        4.0.27
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
