@@ -212,4 +212,12 @@
   of the missing local LDAP server running (gh#cannatag/ldap3#843).</comment>
     <requestid>822513</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>768a35876f4e977ca40be015454fbe53</srcmd5>
+    <version>2.9</version>
+    <time>1611865731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867447</requestid>
+  </revision>
 </revisionlist>

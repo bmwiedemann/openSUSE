@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldap3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldap3
-Version:        2.7
+Version:        2.9
 Release:        0
 Summary:        A strictly RFC 4511 conforming LDAP V3 pure Python client
 License:        LGPL-3.0-only
@@ -66,6 +66,6 @@ export STRATEGY=SYNC SERVER=EDIR DECODER=INTERNAL
 %license COPYING.LESSER.txt COPYING.txt LICENSE.txt
 %doc README.rst
 %{python_sitelib}/ldap3
-%{python_sitelib}/ldap3-%{version}-py*.egg-info
+%{python_sitelib}/ldap3-%{version}*-py*.egg-info
 
 %changelog

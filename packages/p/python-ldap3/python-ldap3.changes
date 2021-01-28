@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 27 16:56:28 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.9
+  * SafeSync strategy (SAFE_SYNC) for using a synchronous Connection 
+    object in a multi-threading program
+  * try to use Crypto library if present for hashing NTLM password 
+    on python interpreter missing the MD4 OpenSSL algorithm
+  * SafeRestartable strategy (SAFE_RESTARTABLE) for using a restartable 
+    Connection object in a multi-threading program
+  * many smaller changes and bugfixes
+- Rebase skip-missing-LDAP-server.patch
+  * suprisingly still needed
+
+-------------------------------------------------------------------
 Fri Jul 24 00:46:48 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add skip-missing-LDAP-server.patch to skip over tests failing because
