@@ -365,7 +365,6 @@ unsorted:
   - adminer 
   - adminer-designs 
   - adminer-editor 
-  - adminer-firebird 
   - adminer-mysql 
   - adminer-pgsql 
   - adminer-sqlite 
@@ -8208,7 +8207,6 @@ unsorted:
   - ld10k1 
   - ld10k1-devel 
   - ldacBT-devel 
-  - ldacBT-devel-32bit: [x86_64] 
   - ldap-sdk 
   - ldap-sdk-javadoc 
   - ldapfuse 
@@ -20609,7 +20607,6 @@ unsorted:
   - python3-babeltrace2 
   - python3-bandit 
   - python3-barbicanclient 
-  - python3-bashate 
   - python3-bcc 
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_75_0 
@@ -20650,7 +20647,6 @@ unsorted:
   - python3-django-attachments 
   - python3-django-braces 
   - python3-django-cacheops 
-  - python3-django-countries 
   - python3-django-haystack 
   - python3-django-mailman3 
   - python3-django-push-notifications 
@@ -20719,7 +20715,6 @@ unsorted:
   - python3-gpiod 
   - python3-gpsd 
   - python3-gr-iqbal 
-  - python3-graphene-django 
   - python3-gv 
   - python3-gyp 
   - python3-h5netcdf 
@@ -20859,7 +20854,6 @@ unsorted:
   - python3-mautrix-telegram 
   - python3-minidb 
   - python3-mistralclient 
-  - python3-mitmproxy 
   - python3-mizani 
   - python3-mlt 
   - python3-monascaclient 
@@ -20900,7 +20894,6 @@ unsorted:
   - python3-openstackdocstheme 
   - python3-openstacksdk 
   - python3-openwsman 
-  - python3-orange-widget-base 
   - python3-os-api-ref 
   - python3-os-client-config 
   - python3-os-service-types 
@@ -20942,7 +20935,6 @@ unsorted:
   - python3-plplot 
   - python3-pocketsphinx 
   - python3-pocketsphinx5 
-  - python3-podman-compose 
   - python3-policycoreutils: [i586] 
   - python3-poppler-qt5 
   - python3-poppler-qt5-devel 
@@ -21646,6 +21638,7 @@ unsorted:
   - python36-base 
   - python36-base-32bit: [x86_64] 
   - python36-base58 
+  - python36-bashate 
   - python36-basictracer 
   - python36-bcolz 
   - python36-bcrypt 
@@ -21972,6 +21965,7 @@ unsorted:
   - python36-django-compressor 
   - python36-django-contrib-comments 
   - python36-django-cors-headers 
+  - python36-django-countries 
   - python36-django-coverage-plugin 
   - python36-django-crispy-forms 
   - python36-django-debreach 
@@ -22274,6 +22268,7 @@ unsorted:
   - python36-gpxpy 
   - python36-grab 
   - python36-graphene 
+  - python36-graphene-django 
   - python36-graphql-core 
   - python36-graphql-relay 
   - python36-graphviz 
@@ -22767,6 +22762,7 @@ unsorted:
   - python36-openwrt-luci-rpc 
   - python36-opt-einsum 
   - python36-orange-canvas-core 
+  - python36-orange-widget-base 
   - python36-ordered-namespace 
   - python36-ordered-set 
   - python36-orderedmultidict 
@@ -24487,6 +24483,7 @@ unsorted:
   - python38-baron 
   - python38-base-32bit: [x86_64] 
   - python38-base58 
+  - python38-bashate 
   - python38-basictracer 
   - python38-bcolz 
   - python38-beautifulsoup4 
@@ -24795,6 +24792,7 @@ unsorted:
   - python38-django-compressor 
   - python38-django-contrib-comments 
   - python38-django-cors-headers 
+  - python38-django-countries 
   - python38-django-coverage-plugin 
   - python38-django-crispy-forms 
   - python38-django-debreach 
@@ -25081,6 +25079,7 @@ unsorted:
   - python38-gpxpy 
   - python38-grab 
   - python38-graphene 
+  - python38-graphene-django 
   - python38-graphql-core 
   - python38-graphql-relay 
   - python38-graphviz 
@@ -25394,6 +25393,7 @@ unsorted:
   - python38-misaka 
   - python38-missingno 
   - python38-mistune 
+  - python38-mitmproxy 
   - python38-moban 
   - python38-moban-ansible 
   - python38-mock 
@@ -25542,6 +25542,7 @@ unsorted:
   - python38-openwrt-luci-rpc 
   - python38-opt-einsum 
   - python38-orange-canvas-core 
+  - python38-orange-widget-base 
   - python38-ordered-namespace 
   - python38-orderedmultidict 
   - python38-osc-tiny 
@@ -27842,7 +27843,6 @@ unsorted:
   - ruby2.7-rubygem-path_expander-testsuite 
   - ruby2.7-rubygem-pathutil-doc 
   - ruby2.7-rubygem-pdf-core-doc 
-  - ruby2.7-rubygem-pdf-reader 
   - ruby2.7-rubygem-pdf-reader-doc 
   - ruby2.7-rubygem-pg-doc 
   - ruby2.7-rubygem-pg-testsuite 
@@ -29780,6 +29780,7 @@ unsorted:
   - smatch 
   - smbios-utils 
   - smc-tools 
+  - smc-tools-completion 
   - smcroute 
   - smem 
   - smemstat 
