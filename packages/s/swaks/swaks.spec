@@ -28,14 +28,16 @@ Requires:       perl-Net-SSLeay
 BuildArch:      noarch
 
 %description
-Swaks is a featureful, flexible, scriptable, transaction-oriented SMTP test
-tool written and maintained by John Jetmore. It is free to use and licensed
-under the GNU GPLv2. Features include:
+Swaks is a scriptable, transaction-oriented SMTP test
+tool. Features include:
 
-* SMTP extensions including TLS, authentication, pipelining, and XCLIENT
+* SMTP extensions including TLS, authentication, pipelining, and
+  XCLIENT
 * Protocols including SMTP, ESMTP, and LMTP
-* Transports including UNIX-domain sockets, internet-domain sockets (IPv4 and IPv6), and pipes to spawned processes
-* Completely scriptable configuration, with option specification via environment variables, configuration files, and command line
+* Transports including UNIX-domain sockets, internet-domain sockets
+  (IPv4 and IPv6), and pipes to spawned processes
+* Completely scriptable configuration, with option specification via
+  environment variables, configuration files, and command line
 
 %prep
 %autosetup -p1 
