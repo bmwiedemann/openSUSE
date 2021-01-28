@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>532144</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>091d22218452f176898e90795acccdf2</srcmd5>
+    <version>3.1+git.20150122</version>
+    <time>1611865747</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>867462</requestid>
+  </revision>
 </revisionlist>

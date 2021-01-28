@@ -1,7 +1,7 @@
 #
 # spec file for package fhourstones
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,11 +30,11 @@ This integer benchmark solves positions in the game of connect-4, as played
 on a vertical 7x6 board.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 sed -i "s|-O3|%{optflags}|g" Makefile
-make %{?_smp_mflags} all
+%make_build all
 echo '#!/bin/sh' >> %{name}
 echo 'libexecdir=%{_libdir}/%{name}' >> %{name}
 echo 'datadir=%{_datadir}/%{name}' >> %{name}
@@ -49,7 +49,7 @@ install -D -p -m 0644 inputs \
   %{buildroot}%{_datadir}/%{name}/inputs
 
 %files
-%doc LICENSE
+%license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/%{name}
