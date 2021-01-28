@@ -26,6 +26,8 @@ License:        MIT
 Group:          Productivity/Scientific/Chemistry
 URL:            https://github.com/robashaw/libecpint
 Source0:        https://github.com/robashaw/libecpint/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 26.patch fix memory leak https://github.com/robashaw/libecpint/pull/26
+Patch0:         https://github.com/robashaw/libecpint/pull/26.patch
 
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
@@ -79,6 +81,7 @@ This package contains development headers and libraries for libecpint
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{cmake} -DCMAKE_SKIP_RPATH=OFF

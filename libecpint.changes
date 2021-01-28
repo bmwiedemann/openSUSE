@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 18:28:52 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Added 26.patch to fix memory leak
+
+-------------------------------------------------------------------
 Wed Jan 13 00:12:51 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.0.4:
