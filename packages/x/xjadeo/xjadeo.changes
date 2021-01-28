@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 27 21:45:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.10
+  * add keyboard shortcuts for +/- 1 second offsets
+  * fix Linux gcc10 builds
+- Drop xjadeo-gcc10.patch (merged upstream)
+
+-------------------------------------------------------------------
 Mon Jun  8 11:32:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add xjadeo-gcc10.patch

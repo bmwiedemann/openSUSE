@@ -1,7 +1,7 @@
 #
 # spec file for package xjadeo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,13 @@
 
 
 Name:           xjadeo
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        Video player that gets sync from Jack
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Visualization
 URL:            http://xjadeo.sourceforge.net/
 Source0:        https://sourceforge.net/projects/xjadeo/files/xjadeo/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE xjadeo-gcc10.patch
-Patch0:         xjadeo-gcc10.patch
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
