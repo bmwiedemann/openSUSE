@@ -1,7 +1,7 @@
 #
 # spec file for package arpwatch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           arpwatch
 Version:        2.1a15
 Release:        0
@@ -80,7 +79,7 @@ needed if you want to build the arpwatch-ethercodes package.
 
 %build
 %configure
-make ARPDIR=%{_localstatedir}/lib/arpwatch %{?_smp_mflags}
+%make_build ARPDIR=%{_localstatedir}/lib/arpwatch
 
 %install
 mkdir -p \
@@ -107,6 +106,8 @@ cat > %{buildroot}%{_tmpfilesdir}/arpwatch.conf <<EOF
 d /var/lib/arpwatch - - - -
 f /var/lib/arpwatch/arp.dat - - - -
 EOF
+mkdir %{buildroot}%{_bindir}
+install -m 0755 arp2ethers %{buildroot}%{_bindir}
 
 %pre
 %service_add_pre arpwatch.service arpwatch@.service
@@ -129,11 +130,12 @@ EOF
 %{_sbindir}/rcarpwatch
 %{_sbindir}/arpsnmp
 %{_sbindir}/arpwatch
+%{_bindir}/arp2ethers
 %ghost %dir %{_localstatedir}/lib/arpwatch
 %ghost %{_localstatedir}/lib/arpwatch/arp.dat
 %{_fillupdir}/sysconfig.arpwatch
-%{_mandir}/man8/arpsnmp.8%{ext_man}
-%{_mandir}/man8/arpwatch.8%{ext_man}
+%{_mandir}/man8/arpsnmp.8%{?ext_man}
+%{_mandir}/man8/arpwatch.8%{?ext_man}
 %doc CHANGES FILES README
 
 %files ethercodes-build
