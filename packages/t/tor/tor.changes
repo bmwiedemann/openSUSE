@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 06:16:46 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Restrict service permissions with systemd
+
+-------------------------------------------------------------------
 Thu Nov 12 17:02:48 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.4.6

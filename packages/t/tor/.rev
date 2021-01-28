@@ -781,4 +781,12 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>848313</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>396a4627af7f099a20808354dee4662e</srcmd5>
+    <version>0.4.4.6</version>
+    <time>1611865352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867314</requestid>
+  </revision>
 </revisionlist>

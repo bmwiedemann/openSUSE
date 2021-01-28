@@ -7,8 +7,9 @@ ReloadPropagatedFrom=tor-master.service
 [Service]
 Type=notify
 NotifyAccess=all
-ExecStartPre=/usr/bin/tor --runasdaemon 0 --defaults-torrc /usr/share/tor/defaults-torrc -f /etc/tor/torrc --verify-config
-ExecStart=/usr/bin/tor --runasdaemon 0 --defaults-torrc /usr/share/tor/defaults-torrc -f /etc/tor/torrc
+User=tor
+ExecStartPre=/usr/bin/tor --runasdaemon 0 --defaults-torrc /usr/share/tor/defaults-torrc -f /etc/tor/torrc --verify-config --user tor
+ExecStart=+/usr/bin/tor --runasdaemon 0 --defaults-torrc /usr/share/tor/defaults-torrc -f /etc/tor/torrc --user tor
 ExecReload=/bin/kill -HUP ${MAINPID}
 KillSignal=SIGINT
 TimeoutSec=30
@@ -18,18 +19,35 @@ WatchdogSec=1m
 LimitNOFILE=32768
 
 # Hardening
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PermissionsStartOnly=yes
+PrivateDevices=yes
+PrivateNetwork=no
+PrivateUsers=yes
 PrivateTmp=yes
-DeviceAllow=/dev/null rw
-DeviceAllow=/dev/urandom r
+ProtectClock=yes
+ProtectControlGroups=yes
 ProtectHome=yes
-#ProtectSystem=full
-ReadOnlyDirectories=/run
-ReadOnlyDirectories=/var
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+ProtectHostname=yes
+ReadOnlyDirectories=/
 ReadWriteDirectories=/run/tor
 ReadWriteDirectories=/var/lib/tor
 ReadWriteDirectories=/var/log/tor
-CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
-PermissionsStartOnly=yes
+RemoveIPC=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=~@cpu-emulation @obsolete @raw-io @mount @module @debug @clock @reboot @swap
+UMask=77
 
 [Install]
 WantedBy=multi-user.target

@@ -1,6 +1,6 @@
 DataDirectory /var/lib/tor
 PidFile /var/run/tor/tor.pid
-User tor
+#User tor # handled instead via tor.service
 Log notice file /var/log/tor/tor.log
 #Log notice syslog
 
