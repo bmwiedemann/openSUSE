@@ -60,4 +60,12 @@
   * Add Python 3.5 support</comment>
     <requestid>816620</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9703d313424879efe0b70c1966067063</srcmd5>
+    <version>2.0.0</version>
+    <time>1611865752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867491</requestid>
+  </revision>
 </revisionlist>

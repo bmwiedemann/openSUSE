@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 27 22:56:22 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Only test the primary python3 flavor, because only python3 has
+  stestr (OpenStack package)
+
+-------------------------------------------------------------------
 Tue Jun 23 15:25:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.0.0:

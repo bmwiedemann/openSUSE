@@ -30,10 +30,11 @@ BuildRequires:  %{python_module Babel >= 0.9.6}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  fdupes
 BuildRequires:  python-argparse
+# OpenStack package: stestr is only available for primary python3, only test on this flavor
+BuildRequires:  python3-stestr
 Requires:       python-Babel >= 0.9.6
 Requires:       python-pbr
 Requires(post): update-alternatives
@@ -69,10 +70,11 @@ and will continue to evolve over time.
 rm -rf %{buildroot}%{$python_sitelib}/bashate/tests
 sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/bashate/bashate.py
 }
+%python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
 %post
 %python_install_alternative bashate
