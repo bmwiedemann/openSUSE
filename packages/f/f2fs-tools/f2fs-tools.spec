@@ -54,6 +54,7 @@ Group:          System/Libraries
 %description -n libf2fs_format7
 This package contains a shared library to format F2 filesystems.
 
+%if !0%{?usrmerged}
 %package compat
 Summary:        f2fs utility compatibility symlinks
 Group:          System/Filesystems
@@ -62,6 +63,7 @@ BuildArch:      noarch
 %description compat
 This subpackage contains symbolic links /sbin/fsck.* and /sbin/mkfs.*
 needed for programs that assume these locations.
+%endif
 
 %package devel
 Summary:        Development files for f2fs
@@ -85,7 +87,9 @@ make %{?_smp_mflags}
 find %buildroot -type f -name "*.la" -delete -print
 
 mkdir -p "%buildroot/sbin" "%buildroot/%_includedir"
+%if !0%{?usrmerged}
 ln -sf "%_sbindir"/{defrag.f2fs,dump.f2fs,f2fstat,fibmap.f2fs,fsck.f2fs,mkfs.f2fs,parse.f2fs,resize.f2fs,sload.f2fs} "%buildroot/sbin/"
+%endif
 # for android-tools… this is of course totally untested.
 # The shared library for example has a "main" symbol :-/
 cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
@@ -107,8 +111,10 @@ cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 %files -n libf2fs_format7
 %_libdir/libf2fs_format.so.*
 
+%if !0%{?usrmerged}
 %files compat
 /sbin/*
+%endif
 
 %files devel
 %_includedir/*.h

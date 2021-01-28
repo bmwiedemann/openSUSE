@@ -138,4 +138,12 @@
     <comment>- Update to release 1.14</comment>
     <requestid>829788</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ae8230d277b64620018bd7119240860a</srcmd5>
+    <version>1.14.0</version>
+    <time>1611865760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867518</requestid>
+  </revision>
 </revisionlist>
