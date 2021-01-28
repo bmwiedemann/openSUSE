@@ -233,4 +233,12 @@ BUG FIXES:
   CNAME chain.</comment>
     <requestid>852435</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>11cbb9dabf31acdef11b20fb65416e63</srcmd5>
+    <version>4.3.5</version>
+    <time>1611865743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867450</requestid>
+  </revision>
 </revisionlist>
