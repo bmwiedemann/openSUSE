@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 28 02:08:34 UTC 2021 - Jimmy Berry <jimmy@boombatower.com>
+
+- Drop virtual firebird package since php-firebird was dropped.
+  See sr#863764 for Factory decline.
+
+-------------------------------------------------------------------
+Sat Jan 16 15:41:08 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- BuildRequires php-cli
+
+-------------------------------------------------------------------
+Tue Jan 05 20:52:29 UTC 2021 - elimat@opensuse.org
+
+- Update to version 4.7.8:
+  * Release 4.7.8
+  * MySQL: Use renamed variable
+  * Avoid PDO exceptions in PHP 8
+  * Fix method call after #406
+  * Improve check for numeric ports (bug #769)
+  * Add missing method
+  * Fix compatibility with PHP 8
+  * Avoid each() not available in PHP 8
+  * Fix style
+  * Escape : also in remove_from_param
+
+-------------------------------------------------------------------
 Mon May 11 16:29:55 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 4.7.7:

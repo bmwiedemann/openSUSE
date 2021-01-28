@@ -1,7 +1,7 @@
 #
 # spec file for package adminer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 Jimmy Berry <jimmy@boombatower.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %bcond_with mongodb
 %bcond_with mssql
 Name:           adminer
-Version:        4.7.7
+Version:        4.7.8
 Release:        0
 Summary:        Database management in a single PHP file
 License:        GPL-2.0-only OR Apache-2.0
@@ -36,6 +36,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
+BuildRequires:  php-cli
 BuildRequires:  php-tokenizer
 BuildRequires:  xz
 Requires:       adminer-database-support = %{version}
@@ -84,17 +85,6 @@ Requires:       php-pear-horde_elasticsearch
 
 %description elasticsearch
 Virtual package that requires dependencies needed for Adminer ElasticSearch support
-
-
-%package firebird
-Summary:        Dependencies required for Adminer Firebird SQL support
-Group:          Productivity/Networking/Web/Frontends
-Provides:       adminer-database-support = %{version}
-Requires:       adminer = %{version}
-Requires:       php-firebird
-
-%description firebird
-Virtual package that requires dependencies needed for Adminer Firebird SQL support
 
 
 %package mongodb
@@ -232,10 +222,6 @@ fi
 %defattr(-,root,root)
 %doc README
 %endif
-
-%files firebird
-%defattr(-,root,root)
-%doc README
 
 %if %{with mongodb}
 %files mongodb
