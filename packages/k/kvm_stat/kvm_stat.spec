@@ -30,6 +30,7 @@ BuildRequires:  kernel-source >= 5.2.0
 BuildRequires:  libxslt-tools
 
 Requires:       python3-curses
+Recommends:     logrotate
 
 Recommends:     kernel >= 5.2.0
 Conflicts:      qemu < 2.6.90
@@ -37,6 +38,7 @@ Conflicts:      qemu-kvm < 2.6.90
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # Patches 01 to 07 are for jsc#SLE-13784
+Source1:        logrotate.kvm_stat
 Patch01:        rework-command-line-sequence.patch
 Patch02:        switch-to-argparse.patch
 Patch03:        add-command-line-switch-s-to-update.patch
@@ -78,14 +80,30 @@ make -C tools/kvm/kvm_stat %{?_smp_mflags}
 # OBS checks don't like /usr/bin/env in script interpreter lines
 sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' -i "tools/kvm/kvm_stat/kvm_stat"
 make -C tools kvm_stat_install INSTALL_ROOT=%{buildroot}
-install -d -m 755 %{buildroot}/%{_datadir}/kvm_stat
-install -m 644 tools/kvm/kvm_stat/kvm_stat.service %{buildroot}/%{_datadir}/kvm_stat/
+install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/kvm_stat
+install -D -m 644 tools/kvm/kvm_stat/kvm_stat.service %{buildroot}%{_unitdir}/kvm_stat.service
+install -d %{buildroot}%{_sbindir}
+ln -sf service %{buildroot}%{_sbindir}/rckvm_stat
+
+%pre
+%service_add_pre kvm_stat.service
+
+%post
+%service_add_post kvm_stat.service
+
+%preun
+%service_del_preun kvm_stat.service
+
+%postun
+%service_del_postun kvm_stat.service
 
 %files
 %defattr(-, root, root)
 %license COPYING
+%{_unitdir}/kvm_stat.service
+%config(noreplace) %{_sysconfdir}/logrotate.d/kvm_stat
+%{_sbindir}/rckvm_stat
 %{_bindir}/kvm_stat
 %{_mandir}/man1/kvm_stat*
-%{_datadir}/kvm_stat
 
 %changelog
