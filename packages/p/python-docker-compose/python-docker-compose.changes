@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 28 10:49:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Since we have alternatives for the docker-compose script, drop the
+  if python2 guard for Provides/Obsoletes docker-compose. (bsc#1181497)
+
+-------------------------------------------------------------------
 Tue Jan 19 22:57:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip over tests which are failing (gh#docker/compose#8044)

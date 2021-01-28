@@ -62,11 +62,8 @@ Requires:       python-websocket-client >= 0.32.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# This is py3 only as we have the binary just there
-%ifpython3
 Provides:       docker-compose = %{version}
 Obsoletes:      docker-compose < %{version}
-%endif
 %if %{with python2}
 BuildRequires:  python2-backports.shutil_get_terminal_size >= 1.0.0
 BuildRequires:  python2-backports.ssl_match_hostname >= 3.5
