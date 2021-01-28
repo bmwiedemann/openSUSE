@@ -1,7 +1,7 @@
 #
 # spec file for package smc-tools
 #
-# Copyright (c) 2018-2020 SUSE LLC
+# Copyright (c) 2018-2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://www.ibm.com/developerworks/linux/linux390/smc-tools.html
 Source:         %{name}-%{version}.tar.gz
 Source1:        smc-tools-rpmlintrc
 
+BuildRequires:  bash-completion-devel
 BuildRequires:  libnl3-devel
 PreReq:         permissions
 
@@ -38,6 +39,18 @@ Converged Ethernet (RoCE) network.
 The tools provided in this package allow existing TCP applications
 to use a RoCE network without needing to make changes in them.
 
+%package completion
+Summary:        Bash completion for smc-tools
+Group:          System/Kernel
+
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description completion
+This package contains the files to enable command completion for the
+smc-tools package when running a bash shell.
+
 %prep
 %autosetup -p1
 
@@ -48,7 +61,7 @@ to use a RoCE network without needing to make changes in them.
 # parameters.
 MYCFLAGS=$(grep ^CFLAGS Makefile | head -n1 | cut -f2 -d=)
 MYCFLAGS+=" $(pkg-config --silence-errors --cflags libnl-genl-3.0)"
-make %{?_smp_mflags} V=1 CFLAGS="${MYCFLAGS} %{optflags}"
+%make_build CFLAGS="${MYCFLAGS} %{optflags}"
 
 %install
 %make_install V=1
@@ -91,5 +104,8 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %{_mandir}/man8/smcr-linkgroup.8%{?ext_man}
 %{_mandir}/man8/smcr.8%{?ext_man}
 %{_mandir}/man8/smcss.8%{?ext_man}
+
+%files completion
+%{_datadir}/bash-completion/completions/smc*
 
 %changelog

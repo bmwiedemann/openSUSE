@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 27 21:52:54 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Added a BuildRequires for bash-completion-devel so that the
+  completion file for smc will be built and installed. (bsc#1181360)
+- Created a new sub-package, smc-tools-completion, to deliver the
+  bash completion files.
+- Replaced the "make" command with the %make_build macro according
+  to the recommendation from spec-cleaner.
+
+-------------------------------------------------------------------
 Mon Dec  7 22:10:32 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 1.4.0 (bsc#1179554, jsc#SLE-13707)

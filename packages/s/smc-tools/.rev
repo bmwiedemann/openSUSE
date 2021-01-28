@@ -145,4 +145,18 @@ Changed Jira reference to the Epic and not the Team tasks.</comment>
 </comment>
     <requestid>854103</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ba487c53465cc5ae36fe4004fdd3af1a</srcmd5>
+    <version>1.4.0</version>
+    <time>1611865354</time>
+    <user>dimstar_suse</user>
+    <comment>- Added a BuildRequires for bash-completion-devel so that the
+  completion file for smc will be built and installed. (bsc#1181360)
+- Created a new sub-package, smc-tools-completion, to deliver the
+  bash completion files.
+- Replaced the &quot;make&quot; command with the %make_build macro according
+  to the recommendation from spec-cleaner.
+</comment>
+    <requestid>867550</requestid>
+  </revision>
 </revisionlist>
