@@ -1,0 +1,93 @@
+From 6f8cde3e82ed656bc25bd38ab008efb97d7a4d18 Mon Sep 17 00:00:00 2001
+From: jenswehner <jenswehner@gmail.com>
+Date: Tue, 12 Jan 2021 20:26:08 +0100
+Subject: [PATCH 1/2] replaced C-style arrays with std::vector
+
+---
+ include/libecpint/bessel.hpp |  8 +++-----
+ src/lib/bessel.cpp           | 20 +++++---------------
+ 2 files changed, 8 insertions(+), 20 deletions(-)
+
+diff --git a/include/libecpint/bessel.hpp b/include/libecpint/bessel.hpp
+index bbb0ac9..2420cef 100644
+--- a/include/libecpint/bessel.hpp
++++ b/include/libecpint/bessel.hpp
+@@ -51,9 +51,9 @@ namespace libecpint {
+ 		int order; ///< Order to which the Bessel series is expanded
+ 		double scale; ///< N/16.0
+ 	
+-		double **K; ///< Bessel function values
+-		double ***dK; ///< Bessel function derivatives
+-		double *C; ///< Coefficients of derivatives of the Bessel function
++		std::vector<std::vector<double>> K; ///< Bessel function values
++		std::vector<std::vector<std::vector<double>>> dK; ///< Bessel function derivatives
++		std::vector<double> C; ///< Coefficients of derivatives of the Bessel function
+ 	
+ 		/**
+ 		* Pretabulates the Bessel function (and derivs) to a given accuracy.
+@@ -69,8 +69,6 @@ namespace libecpint {
+ 		/// Specified constructor. Will call init with given arguments.
+ 		BesselFunction(int lMax, int N, int order, double accuracy);
+ 		
+-		/// Destructor, cleans up K and C
+-		~BesselFunction();
+ 	
+ 		/**
+ 		* Initialises and pretabulates the BesselFunction up to the given angular momentum. 
+diff --git a/src/lib/bessel.cpp b/src/lib/bessel.cpp
+index 5cf83eb..9e30ea2 100644
+--- a/src/lib/bessel.cpp
++++ b/src/lib/bessel.cpp
+@@ -45,25 +45,15 @@ namespace libecpint {
+ 		scale = N/16.0;
+ 	
+ 		// Allocate arrays
+-		K = new double*[N+1];
+-		dK = new double**[N+1];
+-		for (int i = 0; i < N+1; i++) {
+-			K[i] = new double[lMax + TAYLOR_CUT + 1];
+-			dK[i] = new double*[TAYLOR_CUT + 1];
+-			for (int j = 0; j < TAYLOR_CUT + 1; j++)
+-				dK[i][j] = new double[lMax + TAYLOR_CUT + 1];
+-		}
+-		C = new double[lMax+TAYLOR_CUT];
+-	
++
++		K=std::vector<std::vector<double>>(N+1,std::vector<double>(lMax + TAYLOR_CUT + 1,0.0));
++		C=std::vector<double>(lMax+TAYLOR_CUT,0.0);
++		dK=std::vector<std::vector<std::vector<double>>>(N+1,std::vector<std::vector<double>>(lMax + TAYLOR_CUT + 1,std::vector<double>(lMax + TAYLOR_CUT + 1,0.0)));
+ 		// Tabulate values
+ 		tabulate(accuracy);
+ 	}
+ 
+-	BesselFunction::~BesselFunction() {
+-		free(K);
+-		free(dK);
+-		free(C);
+-	}
++
+ 
+ 	// Tabulate the bessel function values
+ 	int BesselFunction::tabulate(const double accuracy) {
+
+From 318b2444e058279cb79da36f6faad93dc8e596d5 Mon Sep 17 00:00:00 2001
+From: jenswehner <jenswehner@gmail.com>
+Date: Thu, 14 Jan 2021 11:19:46 +0100
+Subject: [PATCH 2/2] fixed copy constructor
+
+---
+ src/lib/ecp.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lib/ecp.cpp b/src/lib/ecp.cpp
+index c775cbf..d0c38ec 100644
+--- a/src/lib/ecp.cpp
++++ b/src/lib/ecp.cpp
+@@ -67,6 +67,7 @@ namespace libecpint {
+ 		gaussians = other.gaussians;
+ 		N = other.N;
+ 		L = other.L;
++		atom_id=other.atom_id;
+ 		min_exp = other.min_exp;
+ 		for (int i = 0; i < LIBECPINT_MAX_L + 1; i++) {
+ 			min_exp_l[i] = other.min_exp_l[i];
