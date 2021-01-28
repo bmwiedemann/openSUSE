@@ -3,7 +3,7 @@
 #
 # Copyright © 2016 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright © 2016 Yunhe Guo <guoyunhebrave@gmail.com>
-# Copyright © 2018–2019 Markus S. <kamikazow@opensuse.org>
+# Copyright © 2018–2021 Markus S. <kamikazow@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 #
 
 Name:           twemoji-color-font
-Version:        12.0.1
+Version:        13.0.1
 Release:        0
 Summary:        Font using Twitter’s color emoji
 License:        CC-BY-4.0

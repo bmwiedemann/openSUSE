@@ -39,4 +39,12 @@
     <comment>Update to twemoji 12.0.1 - 230 new Emoji</comment>
     <requestid>700866</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cfcdcda6ac11e85b964f64cf4cec2a0c</srcmd5>
+    <version>13.0.1</version>
+    <time>1611865348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867277</requestid>
+  </revision>
 </revisionlist>
