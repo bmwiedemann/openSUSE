@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-dicomweb
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-dicomweb
 Summary:        WebViewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.4
+Version:        1.5
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-dicom-web/OrthancDicomWeb-%{version}.tar.gz

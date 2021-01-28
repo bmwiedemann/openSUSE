@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 27 20:08:04 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.5 
+* Possibility to store the definition of DICOMweb servers into the Orthanc database
+* New configuration option "DicomWeb.ServersInDatabase"
+* Fix compliance with DICOM >= 2016c: If no "transfer-syntax" is provided in WADO-RS
+  Retrieve Instance/Series/Study, DICOM shall be transcoded to Little Endian Explicit
+
+-------------------------------------------------------------------
 Fri Dec 18 14:27:16 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.4 
