@@ -1,7 +1,7 @@
 #
 # spec file for package erlang-rebar
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        A sophisticated build-tool for Erlang projects that follows OTP principles
 License:        Apache-2.0
 Group:          Development/Tools/Building
-Url:            https://github.com/rebar/rebar
+URL:            https://github.com/rebar/rebar
 Source:         rebar-%{version}.tar.bz2
 Source1:        macros.erlang-rebar
 Source98:       %{name}.rpmlintrc
@@ -33,6 +33,7 @@ Patch2:         tdeps_update-retest.patch
 Patch5:         erlc_dep_graph-timeout.patch
 # PATCH-FIX-OPENSUSE -- bmwiedemann
 Patch6:         reproducible.patch
+Patch7:         rebar-0014-erl_interface-was-removed-in-Erlang-23.patch
 BuildRequires:  erlang >= R13B01
 %if 0%{?suse_version} > 1320
 BuildRequires:  strip-nondeterminism
@@ -83,6 +84,7 @@ test Erlang applications, port drivers and releases.
 %patch2 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 export REBAR_DEPS_PREFER_LIBS=1

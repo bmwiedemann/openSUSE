@@ -1,0 +1,37 @@
+From: Peter Lemenkov <lemenkov@gmail.com>
+Date: Tue, 10 Nov 2020 16:20:46 +0100
+Subject: [PATCH] erl_interface was removed in Erlang 23
+
+Signed-off-by: Peter Lemenkov <lemenkov@gmail.com>
+
+diff --git a/src/rebar_port_compiler.erl b/src/rebar_port_compiler.erl
+index 0ba9e84..46ad1c2 100644
+--- a/src/rebar_port_compiler.erl
++++ b/src/rebar_port_compiler.erl
+@@ -137,7 +137,7 @@ info_help(Description) ->
+        "           CXXFLAGS - C++ compiler~n"
+        "           LDFLAGS  - Link flags~n"
+        "           ERL_CFLAGS  - default -I paths for erts and ei~n"
+-       "           ERL_LDFLAGS - default -L and -lerl_interface -lei~n"
++       "           ERL_LDFLAGS - default -L and -lei~n"
+        "           DRV_CFLAGS  - flags that will be used for compiling~n"
+        "           DRV_LDFLAGS - flags that will be used for linking~n"
+        "           EXE_CFLAGS  - flags that will be used for compiling~n"
+@@ -679,7 +679,7 @@ default_env() ->
+                        "\" "
+                       ])},
+      {"ERL_EI_LIBDIR", lists:concat(["\"", erl_interface_dir(lib), "\""])},
+-     {"ERL_LDFLAGS"  , " -L$ERL_EI_LIBDIR -lerl_interface -lei"},
++     {"ERL_LDFLAGS"  , " -L$ERL_EI_LIBDIR -lei"},
+      {"ERLANG_ARCH"  , rebar_utils:wordsize()},
+      {"ERLANG_TARGET", rebar_utils:get_arch()},
+ 
+@@ -727,7 +727,7 @@ default_env() ->
+       "$LINKER $PORT_IN_FILES $LDFLAGS $EXE_LDFLAGS /OUT:$PORT_OUT_FILE"},
+      %% ERL_CFLAGS are ok as -I even though strictly it should be /I
+      {"win32", "ERL_LDFLAGS",
+-      " /LIBPATH:$ERL_EI_LIBDIR erl_interface.lib ei.lib"},
++      " /LIBPATH:$ERL_EI_LIBDIR ei.lib"},
+      {"win32", "DRV_CFLAGS", "/Zi /Wall $ERL_CFLAGS"},
+      {"win32", "DRV_LDFLAGS", "/DLL $ERL_LDFLAGS"}
+     ].
