@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>770296</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8149d7b7e2df5d0477c165391dc8723f</srcmd5>
+    <version>4.3.0</version>
+    <time>1611865721</time>
+    <user>dimstar_suse</user>
+    <comment>- pytest-xvfb will exit 1 due to I/O errors, work around that using grep.</comment>
+    <requestid>867409</requestid>
+  </revision>
 </revisionlist>

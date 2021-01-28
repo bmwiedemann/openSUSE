@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 28 09:36:28 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- pytest-xvfb will exit 1 due to I/O errors, work around that using grep. 
+
+-------------------------------------------------------------------
 Wed Feb  5 14:08:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.3.0
