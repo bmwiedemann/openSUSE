@@ -7,4 +7,12 @@
     <comment>Dependency for rubygem-prawn-templates (added in https://build.opensuse.org/request/show/834971)</comment>
     <requestid>838996</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8551fd2ce9abc275bf47f1dccd252296</srcmd5>
+    <version>2.4.2</version>
+    <time>1611865758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867488</requestid>
+  </revision>
 </revisionlist>
