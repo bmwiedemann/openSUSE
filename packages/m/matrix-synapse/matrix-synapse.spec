@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-synapse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,14 +41,11 @@
 #   https://github.com/matrix-org/synapse/releases or synapse/CHANGES.md
 # * Commit+submit
 
-# Synapse 1.1.0 and onwards only supports Python >= 3.5.
-%define skip_python2 1
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         modname synapse
 %define         pkgname matrix-synapse
+%define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -64,19 +61,17 @@ Source51:       matrix-synapse-generate-config.sh
 # to clean up your working copy afterwards: git reset --hard ; rm -rv .pc patches
 Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
-BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module psutil >= 2.0.0}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module treq >= 15.1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
+BuildRequires:  python3-psutil >= 2.0.0
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-treq >= 15.1.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unzip
 %{?systemd_requires}
 Requires(pre):  shadow
-%ifpython3
-Requires:       %{python_flavor} >= 3.5
-%endif
+Requires:       python3-base >= 3.5
 # NOTE: Keep this is in the same order as synapse/python_dependencie.py.
 BuildRequires:  python3-Pillow >= 4.3.0
 %requires_eq    python3-Pillow
@@ -145,7 +140,7 @@ BuildRequires:  python3-matrix-synapse-ldap3 >= 0.1
 %requires_eq    python3-matrix-synapse-ldap3
 %endif
 %if %{with postgres}
-BuildRequires:  python3-psycopg2 >= 2.7
+BuildRequires:  python3-psycopg2 >= 2.8
 %requires_eq    python3-psycopg2
 %endif
 %if %{with acme}
@@ -191,8 +186,6 @@ Provides:       python2-matrix-synapse = %{version}-%{release}
 Obsoletes:      python3-matrix-synapse < %{version}-%{release}
 Provides:       python3-matrix-synapse = %{version}-%{release}
 
-%python_subpackages
-
 %description
 Synapse is a Python-based reference "homeserver" implementation of
 Matrix. Matrix is a system for federated Instant Messaging and VoIP.
@@ -205,21 +198,21 @@ find synapse/ -type f -exec sed -i '1{/^#!/d}' {} \;
 # Replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly.
 find ./ -type f -exec \
 	sed -i '1s|^#!/usr/bin/env |#!/usr/bin/|' {} \;
-# Force the usage of python_flavor.
+# Force the usage of the default python3 sys executable
 find ./ -type f \
-	-exec sed -i '1s|^#!/usr/bin/python$|#!/usr/bin/%{python_flavor}|' {} \;
+	-exec sed -i '1s|^#!/usr/bin/python.*$|#!%{__python3}|' {} \;
 
 # Update the python flavour in the service file.
-sed -i 's|@PYTHON_FLAVOR@|%{_bindir}/%{python_flavor}|g' %{S:50}
+sed -i 's|@PYTHON_FLAVOR@|%{__python3}|g' %{S:50}
 
 %build
-%python_build
+%python3_build
 
 %install
 cp %{S:48} README.SUSE
 # We install scripts into /usr/lib to avoid silly conflicts with other pkgs.
 install -d -m 0755 %{buildroot}%{_libexecdir}/%{pkgname}
-%python_install "--install-scripts=%{_libexecdir}/%{pkgname}/"
+%python3_install "--install-scripts=%{_libexecdir}/%{pkgname}/"
 
 # While we provide a systemd service, link synctl so it's simpler to use.
 install -d -m 0755 %{buildroot}%{_bindir}
@@ -251,7 +244,7 @@ install -d -m 0750 %{buildroot}%{_rundir}/%{pkgname}
 install -d -m 0750 %{buildroot}%{_localstatedir}/lib/%{pkgname}
 install -d -m 0750 %{buildroot}%{_localstatedir}/log/%{pkgname}
 
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{python3_sitelib}
 
 %pre
 getent group synapse >/dev/null || groupadd -r synapse
@@ -277,7 +270,9 @@ usermod --shell=/bin/false --home=%{_localstatedir}/lib/%{pkgname} --gid=synapse
 %config(noreplace) %attr(-,root,synapse) %{_sysconfdir}/%{pkgname}/
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/lib/%{pkgname}
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/log/%{pkgname}
-%{python_sitelib}
+%{python3_sitelib}/%{modname}
+%{python3_sitelib}/synmark
+%{python3_sitelib}/%{eggname}-*-info
 # Python helper scripts.
 %{_bindir}/synctl
 %{_libexecdir}/%{pkgname}

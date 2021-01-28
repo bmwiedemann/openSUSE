@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-synapse-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,20 @@
 
 # synapse only supports python >= 3.5, which is not available on pre-15 Leap.
 # However, future versions of matrix-synapse will no longer support python2 and
-# continued use of python2 is not recommended, so on newer distributions we
-# only use python3. As a result, at no point do we have two versions of the
+# continued use of python2 is not recommended, so we only use the primary
+# python3 flavor. As a result, at no point do we have two versions of the 
 # matrix-synapse package.
-%if 0%{?suse_version} < 1500
-%define skip_python3 1
-%else
-%define skip_python2 1
-%endif
 
 # Disable debug packages since we're not installing anything.
 %define debug_package %{nil}
 
 %define         pkgname matrix-synapse
 Name:           %{pkgname}-test
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        Test package for %{pkgname}
 License:        Apache-2.0
 BuildRequires:  %{pkgname} == %{version}
-BuildRequires:  python-rpm-macros
 
 %description
 .
@@ -53,7 +47,7 @@ touch %{_sourcedir}/%{pkgname}
 # Following tests disabled which would need to be run as 'synapse' user which
 # we can not do easily (or at all) within RPM
 # Generate a sample config.
-#%{python_flavor} -m synapse.app.homeserver \
+#python3 -m synapse.app.homeserver \
 #	--generate-config \
 #	--server localhost \
 #	--config-path dummy-homeserver.yaml \
@@ -64,7 +58,7 @@ touch %{_sourcedir}/%{pkgname}
 # manually run the module.
 #synctl start dummy-homeserver.yaml
 #sleep 2s
-#%{python_flavor} -m synapse._scripts.register_new_matrix_user \
+#python3 -m synapse._scripts.register_new_matrix_user \
 #	http://localhost:8008 \
 #	--config dummy-homeserver.yaml \
 #	--admin --user opensuse --password opensuse
