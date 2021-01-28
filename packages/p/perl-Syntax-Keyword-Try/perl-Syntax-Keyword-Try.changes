@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 23 03:09:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.21    2021-01-22
+          [CHANGES]
+           * Add some import configuration options required to make
+             Feature::Compat::Try work. Currently unit-tested but undocumented.
+
+-------------------------------------------------------------------
 Tue Nov 24 03:06:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.20
