@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 28 18:35:06 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.9.64.2:
+  * allow --tmpfs inside $HOME for unprivileged users
+  * --disable-usertmpfs compile time option
+  * allow AF_BLUETOOTH via --protocol=bluetooth
+  * setup guide for new users: contrib/firejail-welcome.sh
+  * implement netns in profiles
+  * added nolocal6.net IPv6 network filter
+  * new profiles: spectacle, chromium-browser-privacy,
+    gtk-straw-viewer, gtk-youtube-viewer, gtk2-youtube-viewer,
+    gtk3-youtube-viewer, straw-viewer, lutris, dolphin-emu,
+    authenticator-rs, servo, npm, marker, yarn, lsar, unar, agetpkg,
+    mdr, shotwell, qnapi, new profiles: guvcview, pkglog, kdiff3, CoyIM.
+
+-------------------------------------------------------------------
 Mon Nov  2 19:44:51 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - packaging fixes
@@ -545,4 +561,3 @@ Wed Jun  8 15:20:43 CEST 2016 - tiwai@suse.de
 Tue May 17 17:13:03 CEST 2016 - tiwai@suse.de
 
 - initial package: 0.9.38
-

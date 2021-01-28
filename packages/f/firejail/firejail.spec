@@ -1,7 +1,7 @@
 #
 # spec file for package firejail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           firejail
-Version:        0.9.64
+Version:        0.9.64.2
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://firejail.wordpress.com/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
-Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz.asc
+Source0:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
