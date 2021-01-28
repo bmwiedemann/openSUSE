@@ -8208,6 +8208,7 @@ unsorted:
   - ld10k1 
   - ld10k1-devel 
   - ldacBT-devel 
+  - ldacBT-devel-32bit: [x86_64] 
   - ldap-sdk 
   - ldap-sdk-javadoc 
   - ldapfuse 
@@ -10734,7 +10735,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_109 
+  - libgsoap-2_8_110 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue-devel 
@@ -11409,6 +11410,7 @@ unsorted:
   - liblcms2-devel-32bit: [x86_64] 
   - liblcms2-doc 
   - libldac2 
+  - libldac2-32bit: [x86_64] 
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
@@ -20049,6 +20051,7 @@ unsorted:
   - postgresql13-devel-mini 
   - postgresql13-pg_cron 
   - postgresql13-pg_cron-llvmjit 
+  - postgresql13-pgagent 
   - postgresql13-pgaudit 
   - postgresql13-pgaudit-llvmjit 
   - postgresql13-plperl 
@@ -20569,7 +20572,6 @@ unsorted:
   - python3-OpenImageIO 
   - python3-Pweave 
   - python3-PyCBC 
-  - python3-PyChromecast 
   - python3-PyInstaller: [i586] 
   - python3-PyMuPDF 
   - python3-PySDL2 
@@ -20621,7 +20623,6 @@ unsorted:
   - python3-capstone 
   - python3-castellan 
   - python3-ccm 
-  - python3-celery-batches 
   - python3-certbot-dns-cloudxns 
   - python3-certbot-dns-dnsimple 
   - python3-certbot-dns-dnsmadeeasy 
@@ -20672,7 +20673,6 @@ unsorted:
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
   - python3-dns-lexicon 
-  - python3-docker-compose 
   - python3-dtfabric 
   - python3-ec2imgutils 
   - python3-ec2metadata 
@@ -20702,7 +20702,6 @@ unsorted:
   - python3-gensio 
   - python3-gexiv2 
   - python3-git-deps 
-  - python3-gitlint 
   - python3-glanceclient 
   - python3-glean 
   - python3-glom 
@@ -20947,7 +20946,6 @@ unsorted:
   - python3-policycoreutils: [i586] 
   - python3-poppler-qt5 
   - python3-poppler-qt5-devel 
-  - python3-positional 
   - python3-postorius 
   - python3-pre-commit 
   - python3-prelude-correlator 
@@ -21046,9 +21044,6 @@ unsorted:
   - python3-tooz 
   - python3-tornado 
   - python3-translate-toolkit 
-  - python3-tvm: [x86_64] 
-  - python3-tvm-nnvm: [x86_64] 
-  - python3-tvm-topi: [x86_64] 
   - python3-tvtk 
   - python3-tvtk-doc 
   - python3-txt2tags 
@@ -21197,6 +21192,7 @@ unsorted:
   - python36-PyBindGen 
   - python36-PyBrowserID 
   - python36-PyChart 
+  - python36-PyChromecast 
   - python36-PyCondor 
   - python36-PyDispatcher 
   - python36-PyECLib 
@@ -21323,7 +21319,6 @@ unsorted:
   - python36-aiodns 
   - python36-aioeventlet 
   - python36-aiofiles 
-  - python36-aioftp 
   - python36-aiohttp 
   - python36-aiohttp-socks 
   - python36-aiohttp-theme 
@@ -21739,6 +21734,7 @@ unsorted:
   - python36-cbor2 
   - python36-cchardet 
   - python36-celery 
+  - python36-celery-batches 
   - python36-celerymon 
   - python36-cerealizer 
   - python36-certbot 
@@ -22055,6 +22051,7 @@ unsorted:
   - python36-doc-devhelp 
   - python36-docformatter 
   - python36-docker 
+  - python36-docker-compose 
   - python36-docker-pycreds 
   - python36-dockerpty 
   - python36-docopt 
@@ -22246,6 +22243,7 @@ unsorted:
   - python36-git-url-parse 
   - python36-gitdb 
   - python36-github3.py 
+  - python36-gitlint 
   - python36-glfw 
   - python36-glob2 
   - python36-gmpy 
@@ -22900,6 +22898,7 @@ unsorted:
   - python36-portalocker 
   - python36-portend 
   - python36-portpicker 
+  - python36-positional 
   - python36-power 
   - python36-poyo 
   - python36-pprintpp 
@@ -23472,7 +23471,6 @@ unsorted:
   - python36-scikit-dsp-comm 
   - python36-scikit-hep-testdata 
   - python36-scikit-image 
-  - python36-scikit-learn 
   - python36-scikit-sound 
   - python36-scikit-sparse: [x86_64] 
   - python36-scikit-umfpack: [x86_64] 
@@ -23732,6 +23730,7 @@ unsorted:
   - python36-trio 
   - python36-trustme 
   - python36-tsk 
+  - python36-tvm: [x86_64] 
   - python36-tweepy 
   - python36-twine 
   - python36-twitter.common.finagle-thrift 
@@ -24052,6 +24051,7 @@ unsorted:
   - python38-PyBindGen 
   - python38-PyBrowserID 
   - python38-PyChart 
+  - python38-PyChromecast 
   - python38-PyCondor 
   - python38-PyDispatcher 
   - python38-PyECLib 
@@ -24572,6 +24572,7 @@ unsorted:
   - python38-cbor2 
   - python38-cchardet 
   - python38-celery 
+  - python38-celery-batches 
   - python38-celerymon 
   - python38-cerealizer 
   - python38-certbot 
@@ -24871,6 +24872,7 @@ unsorted:
   - python38-doc-devhelp 
   - python38-docformatter 
   - python38-docker 
+  - python38-docker-compose 
   - python38-docker-pycreds 
   - python38-dockerpty 
   - python38-docopt 
@@ -25054,6 +25056,7 @@ unsorted:
   - python38-git-url-parse 
   - python38-gitdb 
   - python38-github3.py 
+  - python38-gitlint 
   - python38-glfw 
   - python38-glob2 
   - python38-gns3fy 
@@ -25661,6 +25664,7 @@ unsorted:
   - python38-portalocker 
   - python38-portend 
   - python38-portpicker 
+  - python38-positional 
   - python38-power 
   - python38-poyo 
   - python38-pprintpp 
@@ -26453,6 +26457,7 @@ unsorted:
   - python38-tri.struct 
   - python38-trustme 
   - python38-tsk 
+  - python38-tvm: [x86_64] 
   - python38-tweepy 
   - python38-twine 
   - python38-twitter.common.finagle-thrift 
@@ -27751,9 +27756,7 @@ unsorted:
   - ruby2.7-rubygem-mini_magick-doc 
   - ruby2.7-rubygem-mini_mime-doc 
   - ruby2.7-rubygem-mini_portile2-doc 
-  - ruby2.7-rubygem-mini_portile2-doc-2_3 
   - ruby2.7-rubygem-mini_portile2-testsuite 
-  - ruby2.7-rubygem-mini_portile2-testsuite-2_3 
   - ruby2.7-rubygem-minitar-doc 
   - ruby2.7-rubygem-minitar-testsuite 
   - ruby2.7-rubygem-mixlib-authentication-doc 
@@ -28729,11 +28732,8 @@ unsorted:
   - ruby3.0-rubygem-mini_mime 
   - ruby3.0-rubygem-mini_mime-doc 
   - ruby3.0-rubygem-mini_portile2 
-  - ruby3.0-rubygem-mini_portile2-2_3 
   - ruby3.0-rubygem-mini_portile2-doc 
-  - ruby3.0-rubygem-mini_portile2-doc-2_3 
   - ruby3.0-rubygem-mini_portile2-testsuite 
-  - ruby3.0-rubygem-mini_portile2-testsuite-2_3 
   - ruby3.0-rubygem-minitar 
   - ruby3.0-rubygem-minitar-doc 
   - ruby3.0-rubygem-minitar-testsuite 
@@ -38522,6 +38522,7 @@ unsorted:
   - tvbrowser 
   - tvheadend 
   - tvm-devel: [x86_64] 
+  - tvmc: [x86_64] 
   - tvtime 
   - tvtime-lang 
   - twemoji-color-font 
