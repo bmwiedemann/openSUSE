@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-line-profiler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+# not a singlespec package: Spyder is available for the primary interpreter only
 Name:           python-spyder-line-profiler
 Version:        0.2.1
 Release:        0
@@ -25,21 +24,20 @@ Summary:        Line profiler plugin for the Spyder IDE
 License:        MIT
 URL:            https://github.com/spyder-ide/spyder-line-profiler
 Source:         https://files.pythonhosted.org/packages/source/s/spyder_line_profiler/spyder_line_profiler-%{version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  python3-line_profiler
+BuildRequires:  python3-setuptools
+BuildRequires:  python-rpm-macros
+BuildRequires:  spyder >= 4
 Requires:       python-line_profiler
 Requires:       spyder >= 4
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module line_profiler}
-BuildRequires:  %{python_module pytest-qt}
-BuildRequires:  %{python_module pytest-xvfb}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  spyder >= 4
+BuildRequires:  python3-pytest-qt
+BuildRequires:  python3-pytest-xvfb
+BuildRequires:  python3-pytest
 BuildRequires:  xdpyinfo
 # /SECTION
-%python_subpackages
 
 %description
 Spyder, the Scientific Python Development Environment, is an
@@ -68,20 +66,21 @@ sed -i -e '/^#!\//, 1d' spyder_line_profiler/example/profiling_test_script.py
 sed -i -e '/^#!\//, 1d' spyder_line_profiler/example/subdir/profiling_test_script2.py
 
 %build
-%python_build
+%python3_build
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python3_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
 export PYTHONDONTWRITEBYTECODE=1
-%pytest
+pytest-%{python_bin_suffix} -v
 
 %files -n spyder-line-profiler
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
-%{python_sitelib}/spyder_line_profiler-%{version}-py*.egg-info
-%{python_sitelib}/spyder_line_profiler
+%{python3_sitelib}/spyder_line_profiler
+%{python3_sitelib}/spyder_line_profiler-%{version}*-info
 
 %changelog
