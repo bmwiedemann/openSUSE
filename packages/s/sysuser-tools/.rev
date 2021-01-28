@@ -111,4 +111,11 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1181328</comment>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>6db172c9561254c5cf16e7f12e25bf98</srcmd5>
+    <version>3.0</version>
+    <time>1611826931</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:sysuser-tools revision:613f17785b319b452209c6b619588671, using expand</comment>
+  </revision>
 </revisionlist>
