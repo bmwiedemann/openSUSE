@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 28 08:41:30 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Preparing pdsh for Slurm 20.11.
+
+-------------------------------------------------------------------
+Wed Jan 27 07:49:27 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Simplify convoluted condition - no need for Leap 42.2 support.
+
+-------------------------------------------------------------------
 Sat Apr 18 06:04:16 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Bring QA to the package build: add %%check stage

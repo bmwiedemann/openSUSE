@@ -1,7 +1,7 @@
 #
 # spec file for package pdsh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _slurm_version _%{slurm_version}
 %endif
 
-%if 0%{!?sle_version:1} || 0%{?sle_version} >= 120300 || (0%{!?is_opensuse:1} && 0%{?sle_version} >= 120200)
+%if 0%{!?sle_version:1} || 0%{?sle_version} >= 120200
 %define have_munge 1
 %define have_slurm 1
 %define have_genders 1
