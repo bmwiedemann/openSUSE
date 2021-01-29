@@ -1,15 +1,17 @@
---- tdesktop-2.7.3-full/Telegram/SourceFiles/platform/linux/linux_libs.cpp.orig	2020-06-03 18:18:48.829895452 +0000
-+++ tdesktop-2.7.3-full/Telegram/SourceFiles/platform/linux/linux_libs.cpp	2020-06-03 18:21:15.248705051 +0000
-@@ -272,10 +272,10 @@ void start() {
+--- tdesktop-2.5.6-full/Telegram/SourceFiles/platform/linux/linux_gtk_integration.cpp.orig	2021-01-25 12:03:00.667137167 +0100
++++ tdesktop-2.5.6-full/Telegram/SourceFiles/platform/linux/linux_gtk_integration.cpp	2021-01-25 12:04:18.203759707 +0100
+@@ -317,12 +317,12 @@ void GtkIntegration::load() {
  	QLibrary lib_gtk;
  	lib_gtk.setLoadHints(QLibrary::DeepBindHint);
  
--	if (loadLibrary(lib_gtk, "gtk-3", 0)) {
-+	if (loadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
- 		gtkLoaded = setupGtkBase(lib_gtk);
+-	if (LoadLibrary(lib_gtk, "gtk-3", 0)) {
++	if (LoadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
+ 		GtkLoaded = SetupGtkBase(lib_gtk);
  	}
--	if (!gtkLoaded && !gtkTriedToInit && loadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
-+	if (!gtkLoaded && !gtkTriedToInit && loadLibrary(lib_gtk, "gtk-3", 0)) {
- 		gtkLoaded = setupGtkBase(lib_gtk);
+ 	if (!GtkLoaded
+ 		&& !GtkTriedToInit
+-		&& LoadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
++		&& LoadLibrary(lib_gtk, "gtk-3", 0)) {
+ 		GtkLoaded = SetupGtkBase(lib_gtk);
  	}
  

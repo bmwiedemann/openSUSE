@@ -1,7 +1,7 @@
 #
 # spec file for package telegram-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.5.1
+Version:        2.5.7
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -74,6 +74,7 @@ BuildRequires:  xorg-x11-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  yasm
+BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
@@ -131,12 +132,13 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(zlib)
 # Runtime requirements
-Requires:       libqt5-qtimageformats
 Requires:       hicolor-icon-theme
 Requires:       icu
+Requires:       libqt5-qtimageformats
 # TDesktop can fall back to a simple GTK file picker but prefers the portal
 Recommends:     xdg-desktop-portal
 Recommends:     libqt5-qtwayland
+Recommends:     google-opensans-fonts
 
 %description
 Telegram is a non-profit cloud-based instant messaging service.

@@ -1,7 +1,62 @@
 -------------------------------------------------------------------
+Thu Jan 28 18:18:05 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.7
+  * Delete not only messages, but also groups you created and
+    call history for all sides, without a trace.
+  * Adjust volume for individual participants of a voice chat.
+  * Report fake groups or channels impersonating famous people or
+    organizations by opening their Profile > ... > Report.
+
+-------------------------------------------------------------------
+Mon Jan 25 11:06:07 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.6 (beta)
+  * Press Up arrow to edit your last sent comment.
+  * Add more information to date tooltips in Recent Actions and
+    channel comments.
+  * Bug andicrash fixes.
+- Updatet tg_owt
+- Rebase 0000-gtk2-default.patch
+
+-------------------------------------------------------------------
+Mon Jan 18 19:57:52 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.5 (beta)
+  * Fix recording of audio in voice chats.
+  * Fix media viewer zoom and crashing.
+- Update tg_owt
+- Add Recommends for google-opensans-fonts
+
+-------------------------------------------------------------------
+Fri Jan  8 00:01:00 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.4 (beta)
+  * Implement new audio module code for calls and voice chats.
+  * Allow retracting votes from polls in comments to channel posts.
+  * Show small voice chat button for empty voice chats.
+  * Fix media viewer updating when screen resolution is changed.
+- Update tg_owt
+  * adapt 0002-tg_owt-fix-name-confliction.patch
+
+-------------------------------------------------------------------
 Thu Jan 7 16:37:56 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
 
 - Adds a missing runtime dependency (libqt5-qtimageformats).
+
+-------------------------------------------------------------------
+Wed Dec 30 17:05:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.3 (beta)
+  * Allow using mouse buttons in Push-to-Talk shortcut.
+  * Fix blurred thumbnails in Shared Links section.
+
+-------------------------------------------------------------------
+Fri Dec 25 19:42:57 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.2 (beta)
+  * Fix possible crash in video calls.
+  * Fix possible crash in connecting to voice chats.
 
 -------------------------------------------------------------------
 Wed Dec 23 14:42:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>

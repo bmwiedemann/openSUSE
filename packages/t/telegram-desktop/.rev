@@ -526,4 +526,21 @@
     <comment></comment>
     <requestid>861417</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2fdf38fa7a34539cf27b74ad4096f7d7</srcmd5>
+    <version>2.5.7</version>
+    <time>1611929019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.7
+  * Delete not only messages, but also groups you created and
+    call history for all sides, without a trace.
+  * Adjust volume for individual participants of a voice chat.
+  * Report fake groups or channels impersonating famous people or
+    organizations by opening their Profile &gt; ... &gt; Report.
+- Updatet tg_owt
+  * adapt 0002-tg_owt-fix-name-confliction.patch
+- Rebase 0000-gtk2-default.patch
+- Add Recommends for google-opensans-fonts (forwarded request 867562 from tux93)</comment>
+    <requestid>867711</requestid>
+  </revision>
 </revisionlist>
