@@ -3,8 +3,8 @@
     <param name="scm">git</param>
     <param name="url">git://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">v173</param>
-    <param name="versionformat">173</param>
+    <param name="revision">v175</param>
+    <param name="versionformat">175</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">mcelog*.tar</param>

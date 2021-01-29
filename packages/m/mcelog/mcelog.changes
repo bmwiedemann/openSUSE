@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 26 17:43:06 UTC 2021 - trenn@suse.de
+
+- Update to version 175 (jsc#SLE-14450):
+  * mcelog: Add a test case to test page error counter replacement.
+  * mcelog: Use 'num-errors' to specify the number of mce records to be injected.
+  * mcelog: Report how often the replacement of page CE counter happened
+  * mcelog: Limit memory consumption for counting CEs per page
+  * mcelog: Add support for Sapphirerapids server. (jsc#SLE-14450)
+  * mcelog: i10nm: Fix mapping from bank number to functional unit
+
+- Only refreshing patches, due to tarball modifications:
+M    Start-consolidating-AMD-specific-stuff.patch
+M    add-f10h-support.patch
+M    add-f11h-support.patch
+M    add-f12h-support.patch
+M    add-f14h-support.patch
+M    add-f15h-support.patch
+M    add-f16h-support.patch
+M    email.patch
+M    fix_setgroups_missing_call.patch
+M    mcelog_invert_prefill_db_warning.patch
+
+
+-------------------------------------------------------------------
 Mon Sep 28 10:16:15 UTC 2020 - trenn@suse.de
 
 - jsc#SLE-13505, jsc#SLE-13494

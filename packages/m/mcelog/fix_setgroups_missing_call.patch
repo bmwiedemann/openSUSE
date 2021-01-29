@@ -1,7 +1,9 @@
-Index: mcelog-1.60/mcelog.c
-===================================================================
---- mcelog-1.60.orig/mcelog.c	2018-09-24 15:15:35.668459814 +0200
-+++ mcelog-1.60/mcelog.c	2018-09-24 15:15:41.648815524 +0200
+---
+ mcelog.c |    9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+--- a/mcelog.c
++++ b/mcelog.c
 @@ -37,6 +37,7 @@
  #include <assert.h>
  #include <signal.h>
@@ -10,7 +12,7 @@ Index: mcelog-1.60/mcelog.c
  #include <sys/wait.h>
  #include <fnmatch.h>
  #include "mcelog.h"
-@@ -1247,6 +1248,14 @@ static void general_setup(void)
+@@ -1284,6 +1285,14 @@
  
  static void drop_cred(void)
  {

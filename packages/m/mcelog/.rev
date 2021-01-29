@@ -668,4 +668,12 @@ M email.patch
     <comment></comment>
     <requestid>838278</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9c7c30dfa7e486cbae9db52b78a60de2</srcmd5>
+    <version>175</version>
+    <time>1611928584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867083</requestid>
+  </revision>
 </revisionlist>
