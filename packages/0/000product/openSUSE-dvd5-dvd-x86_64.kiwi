@@ -1665,6 +1665,7 @@
       <repopackage name="libdmapsharing-4_0-3"/>
       <repopackage name="libdmtx0"/>
       <repopackage name="libdmx1"/>
+      <repopackage name="libdnf2"/>
       <repopackage name="libdns1610"/>
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
@@ -2014,7 +2015,7 @@
       <repopackage name="libIlmThread-2_5-25"/>
       <repopackage name="libimagequant0"/>
       <repopackage name="libImlib2-1"/>
-      <repopackage name="libimobiledevice6"/>
+      <repopackage name="libimobiledevice-1_0-6"/>
       <repopackage name="libindicator3-7"/>
       <repopackage name="libini_config5"/>
       <repopackage name="libinih0"/>
@@ -2521,7 +2522,7 @@
       <repopackage name="libpixman-1-0-devel" arch="x86_64"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
-      <repopackage name="libplist3"/>
+      <repopackage name="libplist-2_0-3"/>
       <repopackage name="libply-boot-client5"/>
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
@@ -2718,6 +2719,7 @@
       <repopackage name="libreoffice-share-linker"/>
       <repopackage name="libreoffice-writer"/>
       <repopackage name="libreofficekit"/>
+      <repopackage name="librepo0"/>
       <repopackage name="librepository"/>
       <repopackage name="libressl"/>
       <repopackage name="librest-0_7-0"/>
@@ -2927,7 +2929,7 @@
       <repopackage name="libUsageEnvironment3"/>
       <repopackage name="libusb-0_1-4"/>
       <repopackage name="libusb-1_0-0"/>
-      <repopackage name="libusbmuxd6"/>
+      <repopackage name="libusbmuxd-2_0-6"/>
       <repopackage name="libusbredirhost1"/>
       <repopackage name="libusbredirparser1"/>
       <repopackage name="libutempter0"/>
@@ -3551,8 +3553,10 @@
       <repopackage name="package-update-indicator"/>
       <repopackage name="package-update-indicator-lang"/>
       <repopackage name="PackageKit"/>
+      <repopackage name="PackageKit-backend-dnf"/>
       <repopackage name="PackageKit-backend-zypp"/>
       <repopackage name="PackageKit-branding-openSUSE"/>
+      <repopackage name="PackageKit-command-not-found"/>
       <repopackage name="PackageKit-gstreamer-plugin"/>
       <repopackage name="PackageKit-gtk3-module"/>
       <repopackage name="PackageKit-lang"/>
@@ -3788,26 +3792,20 @@
       <repopackage name="phononsettings-lang"/>
       <repopackage name="php7"/>
       <repopackage name="php7-cli"/>
+      <repopackage name="php7-ctype"/>
+      <repopackage name="php7-dom"/>
       <repopackage name="php7-gd"/>
       <repopackage name="php7-gettext"/>
+      <repopackage name="php7-iconv"/>
+      <repopackage name="php7-json"/>
       <repopackage name="php7-mbstring"/>
       <repopackage name="php7-mysql"/>
+      <repopackage name="php7-openssl"/>
       <repopackage name="php7-pdo"/>
-      <repopackage name="php8"/>
-      <repopackage name="php8-cli"/>
-      <repopackage name="php8-ctype"/>
-      <repopackage name="php8-dom"/>
-      <repopackage name="php8-gd"/>
-      <repopackage name="php8-gettext"/>
-      <repopackage name="php8-iconv"/>
-      <repopackage name="php8-mbstring"/>
-      <repopackage name="php8-mysql"/>
-      <repopackage name="php8-openssl"/>
-      <repopackage name="php8-pdo"/>
-      <repopackage name="php8-sqlite"/>
-      <repopackage name="php8-tokenizer"/>
-      <repopackage name="php8-xmlreader"/>
-      <repopackage name="php8-xmlwriter"/>
+      <repopackage name="php7-sqlite"/>
+      <repopackage name="php7-tokenizer"/>
+      <repopackage name="php7-xmlreader"/>
+      <repopackage name="php7-xmlwriter"/>
       <repopackage name="pia"/>
       <repopackage name="pico"/>
       <repopackage name="pidgin"/>
@@ -5204,7 +5202,6 @@
       <repopackage name="urlview"/>
       <repopackage name="usb_modeswitch"/>
       <repopackage name="usb_modeswitch-data"/>
-      <repopackage name="usbmuxd"/>
       <repopackage name="usbutils"/>
       <repopackage name="util-linux"/>
       <repopackage name="util-linux-lang"/>

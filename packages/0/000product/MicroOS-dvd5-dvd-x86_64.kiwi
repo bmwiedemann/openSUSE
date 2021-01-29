@@ -662,7 +662,7 @@
       <repopackage name="libIlmThread-2_5-25" arch="x86_64"/>
       <repopackage name="libimaevm2" arch="x86_64"/>
       <repopackage name="libimagequant0" arch="x86_64"/>
-      <repopackage name="libimobiledevice6" arch="x86_64"/>
+      <repopackage name="libimobiledevice-1_0-6" arch="x86_64"/>
       <repopackage name="libini_config5" arch="x86_64"/>
       <repopackage name="libinih0" arch="x86_64"/>
       <repopackage name="libinput10" arch="x86_64"/>
@@ -861,7 +861,7 @@
       <repopackage name="libpipewire-0_3-0" arch="x86_64"/>
       <repopackage name="libpixman-1-0" arch="x86_64"/>
       <repopackage name="libpkgconf3"/>
-      <repopackage name="libplist3" arch="x86_64"/>
+      <repopackage name="libplist-2_0-3" arch="x86_64"/>
       <repopackage name="libpng16-16" arch="x86_64"/>
       <repopackage name="libpolkit-qt5-1-1" arch="x86_64"/>
       <repopackage name="libpolkit0" arch="x86_64"/>
@@ -1021,7 +1021,7 @@
       <repopackage name="liburcu6" arch="x86_64"/>
       <repopackage name="liburing1" arch="x86_64"/>
       <repopackage name="libusb-1_0-0" arch="x86_64"/>
-      <repopackage name="libusbmuxd6" arch="x86_64"/>
+      <repopackage name="libusbmuxd-2_0-6" arch="x86_64"/>
       <repopackage name="libutempter0"/>
       <repopackage name="libuuid1"/>
       <repopackage name="libv4l" arch="x86_64"/>
