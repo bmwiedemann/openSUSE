@@ -2915,4 +2915,14 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>860800</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e7a55ac66ec1cfa0660e5b94a79eb814</srcmd5>
+    <version>3.6.12</version>
+    <time>1611928592</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide the newest setuptools wheel (bsc#1176262,
+  CVE-2019-20916) in their correct form (bsc#1180686).
+</comment>
+    <requestid>867130</requestid>
+  </revision>
 </revisionlist>
