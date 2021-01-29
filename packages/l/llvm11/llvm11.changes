@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 27 01:53:59 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Revert changes that broke the ABI (boo#1181326).
+  * Sema-Introduce-BuiltinAttr-per-declaration-builtin-n.patch
+  * Sema-Handle-objc_super-special-lookup-when-checking-.patch
+  * Recognize-setjmp-and-friends-as-builtins-even-if-jmp.patch
+  * Don-t-reject-calls-to-MinGW-s-unusual-_setjmp-declar.patch
+
+-------------------------------------------------------------------
 Sat Jan  9 16:19:46 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 11.0.1.

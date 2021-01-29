@@ -127,6 +127,11 @@ Patch26:        lld-default-sha1.patch
 # PATCH-FIX-OPENSUSE llvm-exegesis-link-dylib.patch -- Don't waste space for llvm-exegesis.
 # It's crippled anyway because of missing deps and not relevant for users. Eventually we should drop it.
 Patch27:        llvm-exegesis-link-dylib.patch
+# Revert changes that broke the ABI. (boo#1181326)
+Patch28:        Sema-Introduce-BuiltinAttr-per-declaration-builtin-n.patch
+Patch29:        Sema-Handle-objc_super-special-lookup-when-checking-.patch
+Patch30:        Recognize-setjmp-and-friends-as-builtins-even-if-jmp.patch
+Patch31:        Don-t-reject-calls-to-MinGW-s-unusual-_setjmp-declar.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -555,6 +560,10 @@ pushd clang-%{_version}.src
 %patch4 -p1
 %patch6 -p1
 %patch9 -p2
+%patch31 -R -p2
+%patch30 -R -p2
+%patch29 -R -p2
+%patch28 -R -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
