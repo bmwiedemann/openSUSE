@@ -18,4 +18,17 @@
 </comment>
     <requestid>840108</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e904da28b24eb53267c204e39539cc1</srcmd5>
+    <version>0.6.11.3</version>
+    <time>1611928657</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix multi Python builds
+- Add i811.patch to enable SocketUsing &amp; TkInterUsing tests
+- Disable FlaskUsing tests due to OOM
+- Update to v0.6.11.3
+  * See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst
+</comment>
+    <requestid>867680</requestid>
+  </revision>
 </revisionlist>

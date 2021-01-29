@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 25 10:53:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix multi Python builds
+- Add i811.patch to enable SocketUsing & TkInterUsing tests
+- Disable FlaskUsing tests due to OOM
+- Update to v0.6.11.3
+  * See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst
+
+-------------------------------------------------------------------
 Fri Oct  2 15:10:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add debuginfo to BuildRequires and Suggests
