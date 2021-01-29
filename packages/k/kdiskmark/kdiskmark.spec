@@ -1,6 +1,7 @@
 #
 # spec file for package kdiskmark
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Dmitry Sidorov <jonmagon@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +18,12 @@
 
 
 Name:           kdiskmark
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A simple open-source disk benchmark tool for Linux distros
 License:        GPL-3.0-only
 URL:            https://github.com/JonMagon/KDiskMark
-Source:         %{url}/archive/%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/KDiskMark-%{version}.tar.gz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -30,7 +31,6 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  update-desktop-files
 Requires:       fio
-Requires:       libaio
 
 %description
 KDiskMark is an HDD and SSD benchmark tool with a very friendly graphical user interface.
@@ -61,4 +61,3 @@ KDiskMark is an HDD and SSD benchmark tool with a very friendly graphical user i
 %{_datadir}/icons/hicolor/*/*/*
 
 %changelog
- 
