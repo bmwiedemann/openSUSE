@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 27 09:03:50 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-reset-update-mode-after-get-updates.patch:
+  zypp: Reset update mode after getting updates
+  (gh#hughsie/PackageKit/commit#b208f551, bsc#1180150).
+
+-------------------------------------------------------------------
+Tue Jan 19 21:16:33 UTC 2021 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Build command-not-found by default
+
+-------------------------------------------------------------------
 Tue Dec 29 09:30:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add PackageKit-fix-crash-pre-dbus.patch: Do not crash when
