@@ -134,8 +134,8 @@ BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.30
 BuildRequires:  pkgconfig(libsasl2)
-BuildRequires:  pkgconfig(libxslt) >= 1.1.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
+BuildRequires:  pkgconfig(libxslt) >= 1.1.0
 BuildRequires:  pkgconfig(libzip) >= 0.11
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(oniguruma)
@@ -154,22 +154,26 @@ BuildRequires:  pkgconfig(libsodium) >= 1.0.8
 BuildRequires:  pkgconfig(libargon2)
 %endif
 %if "%{flavor}" == "test"
+BuildRequires:  apache-rex
+BuildRequires:  mod_php_any = %{version}
 BuildRequires:  php-cli = %{version}
+BuildRequires:  php-fpm = %{version}
+%apache_rex_deps
 %endif
 
 %if "%{flavor}" == ""
-Requires:       php-sapi
+Requires:       php-sapi = %{version}
 Requires:       timezone
 Requires(pre):  group(www)
 Requires(pre):  user(wwwrun)
-Recommends:     php-ctype
-Recommends:     php-dom
-Recommends:     php-iconv
-Recommends:     php-openssl
-Recommends:     php-sqlite
-Recommends:     php-tokenizer
-Recommends:     php-xmlreader
-Recommends:     php-xmlwriter
+Recommends:     php-ctype = %{version}
+Recommends:     php-dom = %{version}
+Recommends:     php-iconv = %{version}
+Recommends:     php-openssl = %{version}
+Recommends:     php-sqlite = %{version}
+Recommends:     php-tokenizer = %{version}
+Recommends:     php-xmlreader = %{version}
+Recommends:     php-xmlwriter = %{version}
 # Recommends instead of Requires smtp_daemon bsc#1115213
 Recommends:     smtp_daemon
 # suggest %%{php_name}-* instead of php-* [bsc#1022158c#4]
@@ -197,7 +201,7 @@ Provides:       php-spl = %{version}
 Provides:       php-xml = %{version}
 Provides:       zend = %{zendver}
 # conflicts other php major versions with and should replace it
-Obsoletes:      php < %{version}
+Conflicts:      php < %{version}
 Conflicts:      php72
 # mcrypt was removed in php 7.2
 Obsoletes:      php7-mcrypt
@@ -220,7 +224,7 @@ Summary:        Interpreter for the PHP scripting language version 8
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Provides:       php-cli = %{version}
-Provides:       php-sapi = cli
+Provides:       php-sapi = %{version}
 Conflicts:      php-cli < %{version}
 
 %description cli
@@ -238,12 +242,12 @@ Additional documentation is available in package php-doc.
 # this is required by the installed  development headers
 Summary:        PHP8 development files for C/C++ extensions
 Group:          Development/Libraries/PHP
-Requires:       php = %{version}
 Requires:       %{php_name}-pear
 Requires:       %{php_name}-pecl
 Requires:       glibc-devel
-Requires:       pkgconfig(libxml-2.0) >= 2.9.0
+Requires:       php = %{version}
 Requires:       pkgconfig(libpcre2-8) >= 10.30
+Requires:       pkgconfig(libxml-2.0) >= 2.9.0
 Provides:       php-devel = %{version}
 Conflicts:      php-devel < %{version}
 
@@ -265,19 +269,17 @@ Run php upstream testsuite.
 %if "%{flavor}" == "apache2"
 Summary:        PHP8 module for the Apache 2.x webserver
 Group:          Development/Libraries/PHP
-BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2-devel
 BuildRequires:  php = %{version}
-Requires:       php = %{version}
 Requires:       %{apache_mmn}
 Requires:       apache2-prefork
+Requires:       php = %{version}
 Requires(post): %{_sbindir}/a2enmod
 Requires(preun): %{_sbindir}/a2enmod
-Provides:       php-sapi = %{flavor}
 Provides:       mod_php_any = %{version}
+Provides:       php-sapi = %{version}
 Obsoletes:      mod_php_any < %{version}
-%apache_rex_deps
 
 %description
 PHP is a server-side, cross-platform HTML embedded scripting language.
@@ -297,7 +299,7 @@ BuildRequires:  php = %{version}
 Requires:       php = %{version}
 Provides:       php-cgi = %{version}
 Provides:       php-fastcgi = %{version}
-Provides:       php-sapi = %{flavor}
+Provides:       php-sapi = %{version}
 Conflicts:      php-fastcgi < %{version}
 
 %description
@@ -311,15 +313,12 @@ resources available in the links section.
 %if "%{flavor}" == "fpm"
 Summary:        FastCGI Process Manager PHP8 Module
 Group:          Development/Libraries/PHP
-BuildRequires:  apache-rex
-BuildRequires:  apache2-utils
-BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  php = %{version}
+BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires:       php = %{version}
 Provides:       php-fpm = %{version}
-Provides:       php-sapi = %{flavor}
+Provides:       php-sapi = %{version}
 Conflicts:      php-fpm < %{version}
-%apache_rex_deps
 %systemd_requires
 
 %description
@@ -335,7 +334,7 @@ Summary:        Embedded SAPI Library
 Group:          Development/Libraries/PHP
 BuildRequires:  php = %{version}
 Requires:       php = %{version}
-Provides:       php-sapi = %{flavor}
+Provides:       php-sapi = %{version}
 
 %description
 PHP is a server-side, cross-platform HTML embedded scripting language.
@@ -1097,9 +1096,6 @@ Build cli \
     --with-curl=shared \
     --enable-gd=shared \
     --with-external-gd \
-    --with-xpm \
-    --with-freetype \
-    --with-jpeg \
     --with-gettext=shared \
     --with-gmp=shared \
     --with-iconv=shared \
@@ -1162,6 +1158,9 @@ for f in $(find .. -name "*.diff" -type f -print); do
 done
 set -x
 unset NO_INTERACTION REPORT_EXIT_STATUS
+# Apache HTTPD runnable examples test
+%apache_rex_check -m libs mod_php-basic
+%apache_rex_check -m libs -b sapi/fpm mod_proxy_fcgi-php-fpm mod_proxy_fcgi-php-fpm-auth-RewriteRule mod_proxy_fcgi-php-fpm-CGIPassAuth
 exit 0
 %endif
 
@@ -1177,18 +1176,6 @@ if [ -z "$(ldd modules/gd.so | grep libgd.so)" ]; then
     echo 'php-gd does not link against system libgd.'
     exit 1
 fi
-%endif
-
-# Apache HTTPD runnable examples test
-%if "%{flavor}" == "apache2"
-%apache_rex_check -m libs mod_php-basic
-exit 0
-%endif
-
-# Apache PHP-FPM runnable examples tests
-%if "%{flavor}" == "fpm"
-%apache_rex_check -m libs -b sapi/fpm mod_proxy_fcgi-php-fpm mod_proxy_fcgi-php-fpm-auth-RewriteRule mod_proxy_fcgi-php-fpm-CGIPassAuth
-exit 0
 %endif
 
 %install

@@ -7,4 +7,18 @@
     <comment>Add php8 to factory</comment>
     <requestid>865043</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22a37eb769beb5e27911596b2b0e286d</srcmd5>
+    <version>8.0.1</version>
+    <time>1611928659</time>
+    <user>dimstar_suse</user>
+    <comment>- add conflicts with earlier versions of php (boo#1181292)
+- update contents of configuration file (still referenced php7)
+  % mod_php8.conf
+- require this PHP version of subpackages in Recommends/Suggests
+- run apache-rex tests in php8:test as packages need to be build
+  first (otherwise tests run with previous version)
+</comment>
+    <requestid>867684</requestid>
+  </revision>
 </revisionlist>

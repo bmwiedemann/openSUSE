@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 29 08:47:27 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- add conflicts with earlier versions of php (boo#1181292)
+
+-------------------------------------------------------------------
+Thu Jan 28 19:16:39 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update contents of configuration file (still referenced php7)
+  % mod_php8.conf
+
+-------------------------------------------------------------------
+Sat Jan 23 21:27:09 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- require this PHP version of subpackages in Recommends/Suggests
+- run apache-rex tests in php8:test as packages need to be build
+  first (otherwise tests run with previous version)
+
+-------------------------------------------------------------------
 Mon Jan 18 21:27:14 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - add conflicts with earlier version of php-devel and php-phar
