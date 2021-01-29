@@ -292,4 +292,13 @@
     <comment></comment>
     <requestid>770141</requestid>
   </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>6d9079db5d6f826ebc1987b4a965732c</srcmd5>
+    <version>0.8.3</version>
+    <time>1611928501</time>
+    <user>dimstar_suse</user>
+    <comment>- Use libplist-2.0 on Tumbleweed:
+  libgpod-Use-libplist-2.0.patch</comment>
+    <requestid>865351</requestid>
+  </revision>
 </revisionlist>

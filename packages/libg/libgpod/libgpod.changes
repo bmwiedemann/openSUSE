@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 20 14:18:35 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Use libplist-2.0 on Tumbleweed:
+  libgpod-Use-libplist-2.0.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 22:44:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.

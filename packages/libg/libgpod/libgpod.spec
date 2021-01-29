@@ -1,7 +1,7 @@
 #
 # spec file for package libgpod
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,11 @@
 %define _udevdir %(pkg-config --variable udevdir udev)
 %bcond_with    mono
 %bcond_with    python2
+%if 0%{?suse_version} > 1500
+%define libplist2 1
+%else
+%define libplist2 0
+%endif
 Name:           libgpod
 Version:        0.8.3
 Release:        0
@@ -33,6 +38,7 @@ Patch0:         libgpod-swig-3.0.patch
 Patch1:         0001-Fix-spelling-errors-in-comments-and-strings-using-co.patch
 Patch2:         0002-323-Segmentation-fault-when-opening-ipod.patch
 Patch3:         0003-Fixed-PList-deprication.patch
+Patch4:         libgpod-Use-libplist-2.0.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -40,7 +46,6 @@ BuildRequires:  gtk-doc
 BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libimobiledevice-devel
-BuildRequires:  libplist-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
@@ -49,6 +54,14 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  swig
 BuildRequires:  taglib-devel
 BuildRequires:  update-desktop-files
+%if %libplist2
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  pkgconfig(libplist-2.0)
+%else
+BuildRequires:  pkgconfig(libplist)
+%endif
 BuildRequires:  pkgconfig(udev)
 %if %{with python2}
 BuildRequires:  python-devel
@@ -67,8 +80,8 @@ playlists stored on an iPod, modify them, and save them back to the iPod.
 
 %package -n %{libsoname}
 Summary:        Library to Manipulate Songs and Playlists Stored on an iPod
-Group:          System/Libraries
 # Add provides for installability of lang package
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 
 %description -n %{libsoname}
@@ -149,8 +162,14 @@ This package includes support tools for libgpod.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%if %libplist2
+%patch4 -p1
+%endif
 
 %build
+%if %libplist2
+autoreconf -fvi
+%endif
 %configure --disable-silent-rules \
            --disable-static \
            --with-udev-dir=%{_udevdir} \
