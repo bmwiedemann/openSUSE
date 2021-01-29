@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 22 16:27:17 UTC 2021 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Add use_arroba_to_include_sudoers_directory-bsc_1181283.patchfix (bsc#1181283)
+  - Do not including sudoers.d directory twice 
+
+-------------------------------------------------------------------
 Mon Jan  4 22:27:22 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Update cloud-init-write-routes.patch (bsc#1180176)

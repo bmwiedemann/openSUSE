@@ -1,0 +1,36 @@
+commit d62bd1f0efb25bc156a23b8e703ff264e479303c
+Author: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+Date:   Fri Jan 22 17:10:17 2021 +0100
+
+    includedir in suoders can be prefixed by "arroba"
+    
+    Since version 1.9.1, @includedir can be used in the sudoers files
+    instead of #includedir:
+    
+    https://github.com/sudo-project/sudo/releases/tag/SUDO_1_9_1
+    
+    This happens to be the default in SUSE Linux enterprise sudoer package,
+    so cloudinit should take this into account.
+    
+    Otherwise, cloudinit was adding an extra #includedir, which was
+    resulting on the files under /etc/sudoers.d being included twice, one by
+    @includedir from the SUSE package, one by the @includedir from
+    cloudinit. The consequence of this, was that if you were defining an
+    Cmnd_Alias inside any of those files, this was being defined twice and
+    creating an error when using sudo.
+    
+    Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+diff --git a/cloudinit/distros/__init__.py b/cloudinit/distros/__init__.py
+index 1e118472..220bd11f 100755
+--- a/cloudinit/distros/__init__.py
++++ b/cloudinit/distros/__init__.py
+@@ -673,7 +673,7 @@ class Distro(persistence.CloudInitPickleMixin, metaclass=abc.ABCMeta):
+         found_include = False
+         for line in sudoers_contents.splitlines():
+             line = line.strip()
+-            include_match = re.search(r"^#includedir\s+(.*)$", line)
++            include_match = re.search(r"^[#|@]includedir\s+(.*)$", line)
+             if not include_match:
+                 continue
+             included_dir = include_match.group(1).strip()

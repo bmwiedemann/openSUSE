@@ -41,6 +41,7 @@ Patch59:        cloud-init-recognize-hpc.patch
 # FIXME https://github.com/canonical/cloud-init/commit/eea754492f074e00b601cf77aa278e3623857c5a
 Patch60:        cloud-init-azure-def-usr-pass.patch
 Patch61:        cloud-init-sle12-compat.patch
+Patch70:        use_arroba_to_include_sudoers_directory-bsc_1181283.patch 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -141,6 +142,7 @@ Documentation and examples for cloud-init tools
 %patch60
 %if 0%{?suse_version} < 1500
 %patch61
+%patch70
 %endif
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)

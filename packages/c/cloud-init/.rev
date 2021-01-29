@@ -943,4 +943,12 @@
   - Disable some test for mock version compatibility</comment>
     <requestid>860463</requestid>
   </revision>
+  <revision rev="78" vrev="5">
+    <srcmd5>0df768188105827501f5f2fd68bb09a8</srcmd5>
+    <version>20.2</version>
+    <time>1611928504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866971</requestid>
+  </revision>
 </revisionlist>
