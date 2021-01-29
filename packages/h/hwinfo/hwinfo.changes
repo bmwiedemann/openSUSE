@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Jan 27 10:09:24 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#92
+- improve getting video mode info (bsc#1181101)
+- try harder to break out of infinite I/O loops
+- 21.72
+
+--------------------------------------------------------------------
 Fri Nov 20 16:22:55 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#89

@@ -1,7 +1,7 @@
 #
 # spec file for package hwinfo
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Summary:        Hardware Library
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 Url:            http://gitorious.org/opensuse/hwinfo
-Version:        21.71
+Version:        21.72
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
