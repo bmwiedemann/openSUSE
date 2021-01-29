@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 25 22:14:27 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to properly show the network button in the
+  URL navigator (kde#431626):
+  - 0001-Show-button-to-open-knetattach-inline-with-URL-nav-o.patch
+- Refreshed patches:
+  - 0001-Update-cached-viewContainer-geometry-every-time-they.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 12:24:43 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1

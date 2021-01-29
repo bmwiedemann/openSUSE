@@ -31,7 +31,9 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Update-cached-viewContainer-geometry-every-time-they.patch
+Patch1:         0001-Show-button-to-open-knetattach-inline-with-URL-nav-o.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Update-cached-viewContainer-geometry-every-time-they.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
 BuildRequires:  extra-cmake-modules >= 1.6.0

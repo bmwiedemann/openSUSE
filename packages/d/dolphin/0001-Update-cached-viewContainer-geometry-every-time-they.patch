@@ -9,11 +9,11 @@ Subject: [PATCH] Update cached viewContainer geometry every time they are used
  src/dolphintabpage.cpp                | 26 ++++-------
  3 files changed, 57 insertions(+), 49 deletions(-)
 
-diff --git a/src/dolphinnavigatorswidgetaction.cpp b/src/dolphinnavigatorswidgetaction.cpp
-index b8c77c69b..e534b9bb4 100644
---- a/src/dolphinnavigatorswidgetaction.cpp
-+++ b/src/dolphinnavigatorswidgetaction.cpp
-@@ -53,31 +53,12 @@ void DolphinNavigatorsWidgetAction::createSecondaryUrlNavigator()
+Index: dolphin-20.12.1/src/dolphinnavigatorswidgetaction.cpp
+===================================================================
+--- dolphin-20.12.1.orig/src/dolphinnavigatorswidgetaction.cpp	2021-01-25 23:18:02.080476301 +0100
++++ dolphin-20.12.1/src/dolphinnavigatorswidgetaction.cpp	2021-01-25 23:18:14.684426507 +0100
+@@ -57,31 +57,12 @@
      updateText();
  }
  
@@ -50,7 +50,7 @@ index b8c77c69b..e534b9bb4 100644
      adjustSpacing();
  }
  
-@@ -139,6 +120,7 @@ void DolphinNavigatorsWidgetAction::deleteWidget(QWidget *widget)
+@@ -143,6 +124,7 @@
  
  void DolphinNavigatorsWidgetAction::adjustSpacing()
  {
@@ -58,8 +58,8 @@ index b8c77c69b..e534b9bb4 100644
      Q_ASSERT(m_globalXOfSplitter != INT_MIN);
      Q_ASSERT(m_globalXOfPrimary  != INT_MIN);
      Q_ASSERT(m_widthOfPrimary    != INT_MIN);
-@@ -262,6 +244,38 @@ QWidget *DolphinNavigatorsWidgetAction::spacing(Side side, Position position) co
-     return m_splitter->widget(sideIndex)->layout()->itemAt(2)->widget();
+@@ -323,6 +305,38 @@
+ #endif
  }
  
 +void DolphinNavigatorsWidgetAction::updateCachedViewGeometry()
@@ -97,28 +97,27 @@ index b8c77c69b..e534b9bb4 100644
  void DolphinNavigatorsWidgetAction::updateText()
  {
      const int urlNavigatorsAmount = m_splitter->count() > 1 && m_splitter->widget(1)->isVisible() ?
-diff --git a/src/dolphinnavigatorswidgetaction.h b/src/dolphinnavigatorswidgetaction.h
-index bbd8cf127..32d52e5d1 100644
---- a/src/dolphinnavigatorswidgetaction.h
-+++ b/src/dolphinnavigatorswidgetaction.h
-@@ -10,6 +10,7 @@
- 
+Index: dolphin-20.12.1/src/dolphinnavigatorswidgetaction.h
+===================================================================
+--- dolphin-20.12.1.orig/src/dolphinnavigatorswidgetaction.h	2021-01-25 23:18:02.080476301 +0100
++++ dolphin-20.12.1/src/dolphinnavigatorswidgetaction.h	2021-01-25 23:18:46.064299606 +0100
+@@ -11,6 +11,7 @@
  #include "dolphinurlnavigator.h"
  
+ #include <kio_version.h>
 +#include <QPointer>
  #include <QSplitter>
  #include <QTimer>
  #include <QWidgetAction>
-@@ -52,17 +53,12 @@ public:
-      */
+@@ -55,16 +56,11 @@
      void createSecondaryUrlNavigator();
  
--    /**
+     /**
 -     * Notify the primary UrlNavigator of changes in geometry of the ViewContainer it tries to be
 -     * aligned with. Only call this method if there is no secondary UrlNavigator.
 -     */
 -    void followViewContainerGeometry(int globalXOfPrimary,   int widthOfPrimary);
-     /**
+-    /**
       * Notify this widget of changes in geometry of the ViewContainers it tries to be
       * aligned with.
       */
@@ -129,7 +128,7 @@ index bbd8cf127..32d52e5d1 100644
  
      bool isInToolbar() const;
  
-@@ -141,11 +137,19 @@ private:
+@@ -159,12 +155,20 @@
       */
      QWidget *spacing(Side side, Position position) const;
  
@@ -140,20 +139,21 @@ index bbd8cf127..32d52e5d1 100644
       */
      void updateText();
  
-+    /**
+     /**
 +     * The viewContainers are only remembered for the adjustSpacing calculations.
 +     */
 +    QPointer<const QWidget> m_primaryViewContainer;
 +    QPointer<const QWidget> m_secondaryViewContainer;
 +
-     /**
++    /**
       * The defaultWidget() of this QWidgetAction.
       */
-diff --git a/src/dolphintabpage.cpp b/src/dolphintabpage.cpp
-index 138822cfd..d64c87d75 100644
---- a/src/dolphintabpage.cpp
-+++ b/src/dolphintabpage.cpp
-@@ -167,7 +167,8 @@ void DolphinTabPage::connectNavigators(DolphinNavigatorsWidgetAction *navigators
+     std::unique_ptr<QSplitter> m_splitter;
+Index: dolphin-20.12.1/src/dolphintabpage.cpp
+===================================================================
+--- dolphin-20.12.1.orig/src/dolphintabpage.cpp	2021-01-02 14:42:54.000000000 +0100
++++ dolphin-20.12.1/src/dolphintabpage.cpp	2021-01-25 23:18:14.684426507 +0100
+@@ -167,7 +167,8 @@
          auto secondaryNavigator = navigatorsWidget->secondaryUrlNavigator();
          m_secondaryViewContainer->connectUrlNavigator(secondaryNavigator);
      }
@@ -163,7 +163,7 @@ index 138822cfd..d64c87d75 100644
  }
  
  void DolphinTabPage::disconnectNavigators()
-@@ -182,7 +183,12 @@ void DolphinTabPage::disconnectNavigators()
+@@ -182,7 +183,12 @@
  bool DolphinTabPage::eventFilter(QObject *watched, QEvent *event)
  {
      if (event->type() == QEvent::Resize && m_navigatorsWidget) {
@@ -177,7 +177,7 @@ index 138822cfd..d64c87d75 100644
          return false;
      }
      return QWidget::eventFilter(watched, event);
-@@ -201,22 +207,6 @@ void DolphinTabPage::insertNavigatorsWidget(DolphinNavigatorsWidgetAction* navig
+@@ -201,22 +207,6 @@
      }
  }
  
@@ -200,6 +200,3 @@ index 138822cfd..d64c87d75 100644
  void DolphinTabPage::markUrlsAsSelected(const QList<QUrl>& urls)
  {
      m_primaryViewContainer->view()->markUrlsAsSelected(urls);
--- 
-2.25.1
-
