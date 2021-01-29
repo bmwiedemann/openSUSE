@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ipy
-Version:        1.00
+Version:        1.01
 Release:        0
 Summary:        Class and tools for handling of IPv4 and IPv6 addresses and networks
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/autocracy/python-ipy
+URL:            https://github.com/autocracy/python-ipy
 Source:         https://files.pythonhosted.org/packages/source/I/IPy/IPy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

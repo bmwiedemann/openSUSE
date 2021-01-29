@@ -126,4 +126,13 @@
     <comment></comment>
     <requestid>704422</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>297a864a707e0d4886b2a254e07aa7a3</srcmd5>
+    <version>1.01</version>
+    <time>1611928631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.01:
+  * Update to support up to Python 3.9</comment>
+    <requestid>867592</requestid>
+  </revision>
 </revisionlist>
