@@ -157,4 +157,14 @@
 - Add build support for openmpi4. (forwarded request 833596 from eeich)</comment>
     <requestid>833712</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>8bd010e336e7de90c2f1577e0511dc2e</srcmd5>
+    <version>5.2.1</version>
+    <time>1611928644</time>
+    <user>dimstar_suse</user>
+    <comment>- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning. (forwarded request 867620 from eeich)</comment>
+    <requestid>867656</requestid>
+  </revision>
 </revisionlist>

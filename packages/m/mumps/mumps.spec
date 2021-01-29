@@ -1,7 +1,7 @@
 #
 # spec file for package mumps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -501,7 +501,7 @@ Group:          System/Libraries
 # the solver doesn't have enough information to pick the correct MPI flavor
 %{?with_mpi:Requires:         libblacs2-%{mpi_family}%{?mpi_ext}}
  %else
-Requires:       libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc
+%{requires_eq libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc}
 %hpc_requires
 Requires:       lua-lmod >= 7.6.1
  %endif
@@ -582,7 +582,7 @@ Requires:       lapack-devel
 Recommends:     gcc-fortran
 %else # hpc
 %hpc_requires_devel
-Requires:       libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel
+%{requires_eq libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel}
 %endif
 
 %description devel
