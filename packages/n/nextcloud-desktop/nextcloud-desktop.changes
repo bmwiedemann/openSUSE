@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 28 17:31:58 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.1.2
+  - desktop#2846 [stable-3.1] Handle SVG branded clients
+  - desktop#2849 [stable-3.1] Default to colored systray on linux
+  - desktop#2866 [stable-3.1] Add push notifications for file changes
+  - desktop#2871 [stable-3.1] Start file conflict resolve dialog asynchronous
+  - desktop#2878 [stable-3.1] Use push notifications for Tray activities/notifications fetch trigger.
+  - desktop#2880 Bump release to 3.1.2
+
+-------------------------------------------------------------------
 Wed Dec 23 09:44:24 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.1.1

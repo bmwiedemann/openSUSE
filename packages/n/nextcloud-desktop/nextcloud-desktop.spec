@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -33,6 +33,7 @@ Patch0:         nextcloud-desktop-fix-rpath.patch
 Patch1:         nextcloud-desktop-remove-datetime.patch
 BuildRequires:  AppStream
 BuildRequires:  cmake >= 3.2
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
@@ -43,6 +44,8 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qtkeychain-qt5-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
@@ -55,6 +58,7 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
+BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(cloudproviders)
 BuildRequires:  pkgconfig(dbus-1)
@@ -70,7 +74,6 @@ Provides:       nextcloud-client-lang = %{version}
 Obsoletes:      nextcloud-client-lang < %{version}
 %if 0%{?is_opensuse}
 BuildRequires:  doxygen
-BuildRequires:  kio-devel
 BuildRequires:  python3-Sphinx
 Suggests:       %{name}-doc = %{version}
 %endif
@@ -180,6 +183,7 @@ cp -a %{SOURCE1} sysctl-sync-inotify.conf
 %cmake \
 %if 0%{?is_opensuse}
   -DWITH_DOC=ON          \
+  -DNO_SHIBBOLETH=1 \
 %endif
   -DCMAKE_SKIP_RPATH=OFF
 %cmake_build
