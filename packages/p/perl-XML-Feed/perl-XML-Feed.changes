@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 29 03:10:47 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.61
+   see /usr/share/doc/packages/perl-XML-Feed/ChangeLog.md
+
+  ## [0.61] - 2021-01-28
+
+  ### Fixed
+
+  * Reformated Build.PL
+
+-------------------------------------------------------------------
 Fri Jan 15 03:10:51 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.60
