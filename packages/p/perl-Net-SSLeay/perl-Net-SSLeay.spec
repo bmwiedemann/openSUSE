@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-SSLeay
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Net-SSLeay
 Name:           perl-Net-SSLeay
-Version:        1.88
+Version:        1.90
 Release:        0
 Summary:        Perl extension for using OpenSSL
 License:        Artistic-2.0

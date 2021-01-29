@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 27 08:02:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.90:
+  - New stable release incorporating all changes from developer releases
+      1.89_01 to 1.89_05.
+  - Summary of major changes since version 1.88:
+      - Formalised libssl version support policy: all stable versions of OpenSSL
+	in the 0.9.8 - 1.1.1 branches (with the exception of 0.9.8 - 0.9.8b) and
+	all stable releases of LibreSSL in the 2.0 - 3.1 series are supported.
+	The LibreSSL 3.2 series is not yet fully supported because its TLSv1.3
+	implementation is not currently libssl-compatible.
+      - Added support for LibreSSL on Windows when built with Visual C++.
+      - Exposed P_X509_CRL_add_extensions, several SSL_CIPHER functions, and
+	several stack functions.
+      - Fixed crashes in the callback functions CTX_set_next_proto_select_cb and
+	CTX_set_alpn_select_cb.
+      - The test suite is now compatible with OpenSSL 1.1.1e onwards, as well as
+	OpenSSL security level 2 (the default on many Linux distributions).
+
+-------------------------------------------------------------------
 Mon May 27 11:29:57 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 1.88
