@@ -16,46 +16,45 @@
 #
 
 
-%define soname	6
+%define libname libimobiledevice-1_0-6
 Name:           libimobiledevice
-Version:        1.2.0+git.20200330
+Version:        1.3.0+git.20200910
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
 URL:            https://www.libimobiledevice.org
 Source:         %{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Cython >= 0.17
 BuildRequires:  python3-plist
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(libplist) >= 1.11
+BuildRequires:  pkgconfig(libplist-2.0) >= 2.2.0
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  pkgconfig(libusbmuxd) >= 1.1.0
+BuildRequires:  pkgconfig(libusbmuxd-2.0) >= 2.0.2
+BuildRequires:  pkgconfig(python3)
 
 %description
 libimobiledevice is a software library that talks the protocols to support
 iOS devices. It does not depend on any existing libraries from Apple.
 
-%package -n %{name}%{soname}
+%package -n %{libname}
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
-Provides:       libiphone0 = %{version}
-Obsoletes:      libiphone0 < 0.9.6
 
-%description -n %{name}%{soname}
+%description -n %{libname}
 libimobiledevice is a software library that talks the protocols to support
 iOS devices. It does not depend on any existing libraries from Apple.
 
 %package devel
 Summary:        Development files for %{name}
 License:        LGPL-2.1-or-later
-Requires:       %{name}%{soname} = %{version}
-Requires:       pkgconfig(libplist)
+Requires:       %{libname} = %{version}
+Requires:       pkgconfig(libplist-2.0)
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -64,7 +63,7 @@ developing applications that use %{name}.
 %package -n imobiledevice-tools
 Summary:        Tools using %{name} for iOS devices
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Requires:       %{name}%{soname} = %{version}
+Requires:       %{libname} = %{version}
 Provides:       %{name}-tools = %{version}
 Obsoletes:      %{name}-tools < %{version}
 
@@ -75,7 +74,7 @@ iOS devices. It does not depend on any existing libraries from Apple.
 %package -n python3-imobiledevice
 Summary:        Python bindings for %{name}
 License:        LGPL-2.1-or-later
-Requires:       %{name}%{soname} = %{version}
+Requires:       %{libname} = %{version}
 Requires:       python3-plist >= 1.11
 
 %description -n python3-imobiledevice
@@ -90,23 +89,24 @@ sed -i -e 's/-L${libdir}//' src/%{name}-1.0.pc.in
 autoreconf -fvi
 %configure \
   --disable-silent-rules \
-  --disable-static
+  --disable-static \
+  PYTHON=%{_bindir}/python3
 %make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{name}%{soname} -p /sbin/ldconfig
-%postun -n %{name}%{soname} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{name}%{soname}
+%files -n %{libname}
 %license COPYING.LESSER
-%{_libdir}/%{name}.so.%{soname}*
+%{_libdir}/%{name}-1.0.so.6*
 
 %files devel
 %{_includedir}/%{name}/
-%{_libdir}/%{name}.so
+%{_libdir}/%{name}-1.0.so
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 
 %files -n imobiledevice-tools

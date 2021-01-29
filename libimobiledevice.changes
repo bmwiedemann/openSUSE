@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 14 13:00:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use the new library name in baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Sep 24 07:15:34 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Remove unnecessary provides/obsoletes
+
+-------------------------------------------------------------------
+Tue Sep 22 09:03:31 UTC 2020 - Stefan Elser <suse@foomaster.de>
+- Update to verison 1.3.0+git.20200910
+  * Fix service startup for iOS 14b4
+  * Add more lockdown error codes
+  * Add new lockdownd_pair_with_options() function
+  * Make sure sockets only listen locally due to security reasons
+  * Plug various memory leaks
+  * Store application information in Info.plist using idevicebackup2
+  * Various other bugfixes and improvements
+
+-------------------------------------------------------------------
 Sun Apr  5 07:32:28 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.2.0+git.20200330:
