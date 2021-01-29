@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 26 12:14:19 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add sparse, smatch and coccinelle to pattern
+
+-------------------------------------------------------------------
 Fri Dec  7 13:12:28 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Adjust icons to state of yast2-theme package

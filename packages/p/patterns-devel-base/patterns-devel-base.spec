@@ -1,7 +1,7 @@
 #
-# spec file for package patterns-openSUSE
+# spec file for package patterns-devel-base
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,13 +24,12 @@ Release:        0
 Summary:        Patterns for Installation (base devel patterns)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 Source1:        pattern-definition-32bit.txt
 Source2:        create_32bit-patterns_file.pl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
-
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -51,10 +50,10 @@ Provides:       pattern-icon() = pattern-basis-devel
 Provides:       pattern-order() = 3140
 Provides:       pattern-visible()
 %if ! 0%{?is_opensuse}
-Provides:       patterns-sles-Basis-Devel = %{version}
 Provides:       patterns-sled-Basis-Devel = %{version}
-Obsoletes:      patterns-sles-Basis-Devel < %{version}
+Provides:       patterns-sles-Basis-Devel = %{version}
 Obsoletes:      patterns-sled-Basis-Devel < %{version}
+Obsoletes:      patterns-sles-Basis-Devel < %{version}
 %endif
 Requires:       pattern() = basesystem
 
@@ -98,6 +97,8 @@ Recommends:     binutils-devel
 Recommends:     e2fsprogs-devel
 Recommends:     libapparmor-devel
 Recommends:     libosip2-devel
+# required for make checks
+Recommends:     sparse
 Suggests:       build
 # bnc#804006
 Suggests:       osc
@@ -113,6 +114,8 @@ Suggests:       oprofile
 Suggests:       libgssglue-devel
 Suggests:       audit-devel
 Suggests:       nasm
+Suggests:       smatch
+Suggests:       coccinelle
 
 %description devel_basis
 Minimal set of tools for compiling and linking applications.
