@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Glances
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only

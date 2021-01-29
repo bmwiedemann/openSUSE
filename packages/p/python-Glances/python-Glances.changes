@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jan 28 21:56:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.6
+  Enhancements and new features:
+  * Kill a process from the Curses interface.
+  * Manual refresh on F5 in the Curses interface.
+  * Hide function in sensors section.
+  * Enhancement Request: .conf parameter for AMP.
+  * Password for Web/Browser mode.
+  * Unable to connect to Influxdb 2.0.
+  * ci: fix release process and improve build speeds.
+  * Cache cpuinfo output.
+  * sort by clicking improvements and bug.
+  * Allow embedded AMP python script to be placed in a
+    configurable location.
+  * Add attributes to stdout/stdout-csv plugins.
+  * Do not shorten container names.
+  Bugs corrected:
+  * Unusual characters in cmdline cause lines to disappear and
+    corrupt the display.
+  * UnicodeDecodeError on any command with a utf8 character in
+    its name.
+  * Add option to set the strftime format.
+  * GPU information is incomplete via web.
+  * [WebUI] Fix display of null values for GPU plugin.
+  * crash on startup on Illumos when no swap is configured.
+  * Glances crashes with 2 GPUS bug.
+  * Error with IP Plugin : object has no attribute.
+  * [WebUI] Fix sort by disk io.
+  * Connection to MQTT server failst.
+  * Manpage improvement documentation.
+  * Make build reproducible packaging.
+  * web ui of glances is not coming.
+  * fixing command in json.rst.
+  * Fix container rss value.
+  * Fix gpu plugin to handle multiple gpus with different
+    reporting capabilities.
+
+-------------------------------------------------------------------
 Wed Jan 20 16:04:11 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - unitest-wait-for-server.patch: increase time to wait for server to start
