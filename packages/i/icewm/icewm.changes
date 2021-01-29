@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jan 26 00:46:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.1
+  * Fix issue #542 for texturing background of task pane.
+  * Don't unarm menu popup buttons for issue #527.
+  * Provide drawable context when creating pixmap cursors
+    with Imlib2 for issue #541.
+- from version 2.1.0
+  * Remember whether a window is maximized, when going fullscreen, and restore
+  * back to maximized, when leaving fullscreen, for issues #538 and #533.
+  * Disarm workspace buttons on release of left mouse button for issue #527.
+  * Restore icesh setTrayOption and getTrayOption for issue #537.
+  * Make support for "_NET_WM_FULLSCREEN_MONITORS" more EWMH conformant.
+  * Add "monitors", "frame", "properties" commands to icesh.
+  * Make preference FullscreenUseAllMonitors use only all the monitors.
+  * Prevent desktop artefacts for non-opaque move and resize to fix issue #540.
+  * Option to move the ShowDesktop button to the right side.
+  * Alt-F4 in quick-switch closes application window.
+- from version 2.0.1
+  * Update translations for Japanese, Czech, Dutch, Catalan,
+    Portuguese, Slovak, Portuguese (Brazil), Indonesian.
+  * Handle horizontal scroll keys in window list window.
+  * Search for icewm icon for internal windows.
+  * Fix setting option values for issue #535.
+  * Allow to set QuickSwitch background opacity for issue #534.
+  * Set the window ID in WM_STATE when iconifying to desktop.
+  * Reset horizontal scrolling in the window list for Home and End.
+  * Add IceVM explanation to README for issue #35.
+  * Update the TODO list for icon_pixmap and icon_window fields.
+  * Fix spelling of Gerenciador for pt_BR.
+
+-------------------------------------------------------------------
 Sun Jan  3 22:44:50 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add missing imlib2-loaders to Requires
