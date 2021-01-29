@@ -182,6 +182,8 @@ Patch00047:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00048:     usb-Help-compiler-out-to-avoid-a-warning.patch
 Patch00049:     iotests-Fix-_send_qemu_cmd-with-bash-5.1.patch
 Patch00050:     module-for-virtio-gpu-pre-load-module-to.patch
+Patch00051:     spice-app-avoid-crash-when-core-spice-mo.patch
+Patch00052:     qom-handle-case-of-chardev-spice-module-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1052,6 +1054,8 @@ This package records qemu testsuite results and represents successful testing.
 %endif
 %patch00049 -p1
 %patch00050 -p1
+%patch00051 -p1
+%patch00052 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

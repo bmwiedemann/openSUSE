@@ -1,0 +1,32 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 25 Jan 2021 22:09:27 -0700
+Subject: qom: handle case of chardev-spice module unavailability
+
+When qemu is built with modules, but a given module doesn't load
+qemu should handle that gracefully. When chardev-spice.so isn't
+able to be loaded and qemu is invoked with -display spice-app,
+qemu will reach an abort call. Explicitly detect these conditions
+and error out in a normal way before we reach that code.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ qom/object.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/qom/object.c b/qom/object.c
+index 6f301fec34d103b0b07bc41d107c..0dec164192a55d3d9d955d445db9 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -236,6 +236,12 @@ static bool type_is_ancestor(TypeImpl *type, TypeImpl *target_type)
+             return true;
+         }
+ 
++
++        if (type->parent && !strcmp(type->parent, "chardev-spiceport")) {
++            if (!type->parent_type && !type_get_by_name(type->parent)) {
++                return false;
++            }
++        }
+         type = type_get_parent(type);
+     }
+ 

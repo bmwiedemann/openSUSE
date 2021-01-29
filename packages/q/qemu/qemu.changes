@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 26 17:52:09 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix two additional cases of qemu crashing due to qemu module
+  packages not being loaded.
+  qom-handle-case-of-chardev-spice-module-.patch
+  spice-app-avoid-crash-when-core-spice-mo.patch
+
+-------------------------------------------------------------------
 Fri Jan 22 17:24:07 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Fix issue of qemu crashing (abort called) when virtio-gpu device

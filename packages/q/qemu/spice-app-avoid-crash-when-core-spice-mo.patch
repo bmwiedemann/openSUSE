@@ -1,0 +1,46 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 25 Jan 2021 21:05:05 -0700
+Subject: spice-app: avoid crash when core spice module isn't loaded
+
+When qemu is built with modules, but a given module doesn't load
+qemu should handle that gracefully. When ui-spice-core.so isn't
+able to be loaded and qemu is invoked with -display spice-app or
+-spice, qemu will dereference a null pointer. With this change we
+check the pointer before dereferencing and error out in a normal
+way.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ ui/spice-app.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/ui/spice-app.c b/ui/spice-app.c
+index 026124ef56a0ef26fbe3cf0a1aba..8ded9024a376da5c4802c1f87fd7 100644
+--- a/ui/spice-app.c
++++ b/ui/spice-app.c
+@@ -129,6 +129,7 @@ static void spice_app_atexit(void)
+ static void spice_app_display_early_init(DisplayOptions *opts)
+ {
+     QemuOpts *qopts;
++    QemuOptsList *list;
+     GError *err = NULL;
+ 
+     if (opts->has_full_screen) {
+@@ -159,11 +160,16 @@ static void spice_app_display_early_init(DisplayOptions *opts)
+             exit(1);
+         }
+     }
++    list = qemu_find_opts("spice");
++    if (list == NULL) {
++        error_report("spice-app missing spice support\n");
++	exit(1);
++    }
+ 
+     type_register(&char_vc_type_info);
+ 
+     sock_path = g_strjoin("", app_dir, "/", "spice.sock", NULL);
+-    qopts = qemu_opts_create(qemu_find_opts("spice"), NULL, 0, &error_abort);
++    qopts = qemu_opts_create(list, NULL, 0, &error_abort);
+     qemu_opt_set(qopts, "disable-ticketing", "on", &error_abort);
+     qemu_opt_set(qopts, "unix", "on", &error_abort);
+     qemu_opt_set(qopts, "addr", sock_path, &error_abort);

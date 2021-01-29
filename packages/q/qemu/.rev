@@ -2287,4 +2287,16 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
     <comment></comment>
     <requestid>866170</requestid>
   </revision>
+  <revision rev="193" vrev="5">
+    <srcmd5>19cbe065879746a9da01b268949a5a1a</srcmd5>
+    <version>5.2.0</version>
+    <time>1611928571</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix two additional cases of qemu crashing due to qemu module
+  packages not being loaded.
+  qom-handle-case-of-chardev-spice-module-.patch
+  spice-app-avoid-crash-when-core-spice-mo.patch
+</comment>
+    <requestid>867020</requestid>
+  </revision>
 </revisionlist>
