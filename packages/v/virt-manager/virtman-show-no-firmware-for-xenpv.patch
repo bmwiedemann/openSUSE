@@ -1,14 +1,16 @@
 References: bsc#1180047
 Xen PV doesn't support uefi or BIOS booting
 
---- virt-manager-3.2.0/virtManager/details/details.py.orig	2021-01-05 13:02:58.040792391 -0700
-+++ virt-manager-3.2.0/virtManager/details/details.py	2021-01-05 13:07:51.212799377 -0700
+Index: virt-manager-3.2.0/virtManager/details/details.py
+===================================================================
+--- virt-manager-3.2.0.orig/virtManager/details/details.py
++++ virt-manager-3.2.0/virtManager/details/details.py
 @@ -696,7 +696,7 @@ class vmmDetails(vmmGObjectUI):
              not self.is_customize_dialog)
          show_firmware = ((self.conn.is_qemu() or
                            self.conn.is_test() or
 -                          self.conn.is_xen()) and
-+                          self.conn.is_xen() and not self.vm.is_xenpv()) and
++                          (self.conn.is_xen() and not self.vm.is_xenpv())) and
                           domcaps.arch_can_uefi())
          uiutil.set_grid_row_visible(
              self.widget("overview-firmware-title"), show_firmware)

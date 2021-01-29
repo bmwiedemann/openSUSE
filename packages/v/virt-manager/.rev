@@ -1734,4 +1734,12 @@
     <comment>Fixes for bsc#1180047 and bsc#1180069</comment>
     <requestid>863175</requestid>
   </revision>
+  <revision rev="220" vrev="6">
+    <srcmd5>3e2bda163df985eaa06506cfa4ed12d1</srcmd5>
+    <version>3.2.0</version>
+    <time>1611928507</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for bsc#1180897 - Xen PV ISO installs, and bsc#1181350 - aarch64 openQA test failure.</comment>
+    <requestid>866982</requestid>
+  </revision>
 </revisionlist>

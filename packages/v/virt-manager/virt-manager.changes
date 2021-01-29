@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 25 14:32:10 MST 2021 - carnold@suse.com
+
+- bsc#1180897 - SLES15 SP2: VM does not boot after virt-install
+  installing from ISO image.
+  virtinst-keep-iso-for-xenpv.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 11:32:34 MST 2021 - carnold@suse.com
+
+- bsc#1181350 - [Build 20210122] openQA test fails in virt_install
+  on aarch64
+  virtman-show-no-firmware-for-xenpv.patch
+
+-------------------------------------------------------------------
 Thu Jan  7 12:48:11 MST 2021 - carnold@suse.com
 
 - bsc#1180069 - L3: virsh edit Error: XML document failed to

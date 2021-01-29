@@ -1,0 +1,16 @@
+Index: virt-manager-3.2.0/virtinst/install/installer.py
+===================================================================
+--- virt-manager-3.2.0.orig/virtinst/install/installer.py
++++ virt-manager-3.2.0/virtinst/install/installer.py
+@@ -174,8 +174,9 @@ class Installer(object):
+         for disk in guest.devices.disk:
+             if (disk.is_cdrom() and
+                 disk.get_source_path() == self._cdrom_path()):
+-                disk.set_source_path(None)
+-                disk.sync_path_props()
++                if not guest.os.is_xenpv():
++                    disk.set_source_path(None)
++                    disk.sync_path_props()
+                 break
+ 
+     def _add_unattended_install_cdrom_device(self, guest, location):

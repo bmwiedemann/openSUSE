@@ -77,6 +77,7 @@ Patch176:       virtinst-dont-use-special-copy-cpu-features.patch
 Patch177:       virtinst-set-default-nic.patch
 Patch178:       virtinst-sap-detection.patch
 Patch179:       virtinst-smbios-unsupported-for-xenpv.patch
+Patch180:       virtinst-keep-iso-for-xenpv.patch
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -207,6 +208,7 @@ machine).
 %patch177 -p1
 %patch178 -p1
 %patch179 -p1
+%patch180 -p1
 
 %build
 %if %{default_hvs}
