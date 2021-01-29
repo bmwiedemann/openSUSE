@@ -114,4 +114,14 @@
     <comment>- Update to version 1.24.1.</comment>
     <requestid>780521</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>81bee207c4e5b8af4f6ced257a270076</srcmd5>
+    <version>1.24.2</version>
+    <time>1611928633</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24.2:
+  * Translations update
+  * Added elephants wallpaper (forwarded request 866687 from dirkmueller)</comment>
+    <requestid>867610</requestid>
+  </revision>
 </revisionlist>
