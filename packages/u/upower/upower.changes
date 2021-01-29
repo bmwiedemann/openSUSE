@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 25 13:10:08 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Use libplist-2.0 on Tumblewewd.
+  + upower-build-Use-a-newer-libplist-if-available.patch
+
+-------------------------------------------------------------------
 Thu Apr 30 11:45:35 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Remove _udevdir SLE12 specifics, this was an old compatibility

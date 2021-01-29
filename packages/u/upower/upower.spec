@@ -1,7 +1,7 @@
 #
 # spec file for package upower
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%define libplist2 1
+%else
+%define libplist2 0
+%endif
+
 Name:           upower
 Version:        0.99.11
 Release:        0
@@ -29,6 +35,8 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         upower-hibernate-insteadof-hybridsleep.patch
 # PATCH-FEATURE-SLE upower-sle15.patch fcrozat@suse.com -- Disable some hardenings, don't work on SLE15 SP2+
 Patch1:         upower-sle15.patch
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/upower/upower/-/commit/694207d3f08bdd2095f01eee09eb523363800825
+Patch2:         upower-build-Use-a-newer-libplist-if-available.patch
 
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
@@ -42,7 +50,11 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
+%if %libplist2
+BuildRequires:  pkgconfig(libplist-2.0)
+%else
 BuildRequires:  pkgconfig(libplist) >= 0.12
+%endif
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -101,8 +113,9 @@ system) are restricted using PolicyKit.
 %setup -q
 %patch0 -p1
 %if 0%{?sle_version}
-%patch1 -p1 
+%patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
