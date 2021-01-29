@@ -106,6 +106,11 @@ linked in as a library when building extensible programs.
 # remove broken prebuilt objects
 rm -r prebuilt/32-bit-big-endian
 
+%if 0%{?qemu_user_space_build}
+# QEMU ignores rlimit requests for setting RLIMIT_AS
+echo exit 77 > test-suite/standalone/test-stack-overflow
+%endif
+
 %build
 %configure \
   --disable-static \

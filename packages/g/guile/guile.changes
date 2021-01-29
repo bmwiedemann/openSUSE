@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 12:59:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Skip test-stack-overflow on qemu builds
+
+-------------------------------------------------------------------
 Sat Jan  9 22:11:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU guile 3.0.5:
