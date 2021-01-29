@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 29 10:48:58 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1611917326.c2fb0e67e:
+  * Attempt to avoid accessing stale elements in t/ui/25-developer_mode.t
+  * Increase timeout of t/api/04-jobs.t
+  * Dependency cron 2021-01-28
+  * Convert only OpenQA::WebAPI to a more modern Perl dialect with signatures
+  * Don't create symlink when CASEDIR is an url address
+  * Symlink CASEDIR and set values to relative path
+
+-------------------------------------------------------------------
 Sun Jan 24 20:23:18 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1611422905.79471b7a1:
