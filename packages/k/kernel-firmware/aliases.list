@@ -49,6 +49,9 @@ amdgpu: pci:v00001002d0000131Dsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000015D8sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000015DDsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00001636sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d00001638sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000163Fsv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000164Csv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006600sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006601sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006602sv*sd*bc*sc*i*
@@ -244,6 +247,14 @@ amdgpu: pci:v00001002d000073A3sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073ABsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073AEsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073BFsv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073C0sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073C1sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073C3sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073DFsv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073E0sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073E1sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073E2sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073FFsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00009830sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00009831sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00009832sv*sd*bc*sc*i*
@@ -1376,7 +1387,10 @@ i915: pci:v00008086d0000190Asv*sd*bc03sc*i*
 i915: pci:v00008086d0000190Bsv*sd*bc03sc*i*
 i915: pci:v00008086d0000190Esv*sd*bc03sc*i*
 i915: pci:v00008086d00001912sv*sd*bc03sc*i*
+i915: pci:v00008086d00001913sv*sd*bc03sc*i*
+i915: pci:v00008086d00001915sv*sd*bc03sc*i*
 i915: pci:v00008086d00001916sv*sd*bc03sc*i*
+i915: pci:v00008086d00001917sv*sd*bc03sc*i*
 i915: pci:v00008086d0000191Asv*sd*bc03sc*i*
 i915: pci:v00008086d0000191Bsv*sd*bc03sc*i*
 i915: pci:v00008086d0000191Dsv*sd*bc03sc*i*
@@ -2653,6 +2667,8 @@ libertas_tf_usb: usb:v1286p2001d*dc*dsc*dp*ic*isc*ip*in*
 liquidio: pci:v0000177Dd00000091sv*sd*bc*sc*i*
 liquidio: pci:v0000177Dd00000092sv*sd*bc*sc*i*
 liquidio: pci:v0000177Dd00009702sv*sd*bc*sc*i*
+lontium_lt9611uxc: of:N*T*Clontium,lt9611uxc
+lontium_lt9611uxc: of:N*T*Clontium,lt9611uxcC*
 meson_vdec: of:N*T*Camlogic,g12a-vdec
 meson_vdec: of:N*T*Camlogic,g12a-vdecC*
 meson_vdec: of:N*T*Camlogic,gxbb-vdec
@@ -3145,6 +3161,8 @@ r8152: usb:v17EFp720Cd*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp720Cd*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFp7214d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp7214d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v17EFp721Ed*dc*dsc*dp*ic02isc06ip00in*
+r8152: usb:v17EFp721Ed*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFpA387d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFpA387d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v2357p0601d*dc*dsc*dp*ic02isc06ip00in*

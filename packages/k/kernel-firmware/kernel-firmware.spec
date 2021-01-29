@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20201218
+%define version_unconverted 20210119
 
 Name:           kernel-firmware
-Version:        20201218
+Version:        20210119
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -194,6 +194,9 @@ Supplements:    modalias(pci:v00001002d0000131Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000015D8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000015DDsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001636sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d00001638sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d0000163Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d0000164Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006600sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006601sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006602sv*sd*bc*sc*i*)
@@ -389,6 +392,14 @@ Supplements:    modalias(pci:v00001002d000073A3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073ABsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073AEsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073BFsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073C0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073C1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073C3sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073DFsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073FFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009830sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009831sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009832sv*sd*bc*sc*i*)
@@ -1350,7 +1361,10 @@ Supplements:    modalias(pci:v00008086d0000190Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000190Bsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000190Esv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00001912sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00001913sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00001915sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00001916sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00001917sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000191Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000191Bsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000191Dsv*sd*bc03sc*i*)
@@ -3249,6 +3263,8 @@ Supplements:    modalias(of:N*T*Cfsl,imx7d-sdma)
 Supplements:    modalias(of:N*T*Cfsl,imx7d-sdmaC*)
 Supplements:    modalias(of:N*T*Cfsl,imx8mq-sdma)
 Supplements:    modalias(of:N*T*Cfsl,imx8mq-sdmaC*)
+Supplements:    modalias(of:N*T*Clontium,lt9611uxc)
+Supplements:    modalias(of:N*T*Clontium,lt9611uxcC*)
 Supplements:    modalias(of:N*T*Cqcom,mdp4)
 Supplements:    modalias(of:N*T*Cqcom,mdp4C*)
 Supplements:    modalias(of:N*T*Cqcom,mdp5)
@@ -3850,6 +3866,9 @@ Supplements:    modalias(pci:v00001002d0000131Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000015D8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000015DDsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001636sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d00001638sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d0000163Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d0000164Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00003150sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00003151sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00003152sv*sd*bc*sc*i*)
@@ -4392,6 +4411,14 @@ Supplements:    modalias(pci:v00001002d000073A3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073ABsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073AEsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073BFsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073C0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073C1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073C3sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073DFsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073FFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007834sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007835sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000791Esv*sd*bc*sc*i*)
@@ -5196,6 +5223,8 @@ Supplements:    modalias(usb:v17EFp720Cd*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v17EFp720Cd*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v17EFp7214d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v17EFp7214d*dc*dsc*dp*icFFisc*ip*in*)
+Supplements:    modalias(usb:v17EFp721Ed*dc*dsc*dp*ic02isc06ip00in*)
+Supplements:    modalias(usb:v17EFp721Ed*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v17EFpA387d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v17EFpA387d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v18C5p0008d*dc*dsc*dp*ic*isc*ip*in*)

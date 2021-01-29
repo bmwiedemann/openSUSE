@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 27 07:15:28 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210119 (git commit 05789708b79b):
+  * brcm: Link RPi4's WiFi firmware with DMI machine name.
+  * brcm: Add NVRAM for Vamrs 96boards Rock960
+  * brcm: Update Raspberry Pi 3B+/4B NVRAM for downstream changes
+  * cypress: Fix link direction
+  * cypress: Link the new cypress firmware to the old brcm files
+  * brcm: remove old brcm firmwares that have newer cypress variants
+  * rtl_bt: Update RTL8822C BT(UART I/F) FW to 0x059A_25CB
+  * rtl_bt: Update RTL8822C BT(USB I/F) FW to 0x099a_7253
+  * rtl_bt: Add firmware and config files for RTL8852A BT USB chip
+  * rtl_bt: Update RTL8821C BT(USB I/F) FW to 0x829a_7644
+- Fix install-split.sh to deal with the quoted spaces
+- Update aliases
+
+-------------------------------------------------------------------
 Mon Dec 28 11:22:43 UTC 2020 - tiwai@suse.com
 
 - Update to version 20201218 (git commit 646f159690e2):

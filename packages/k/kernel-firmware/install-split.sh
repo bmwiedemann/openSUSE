@@ -95,7 +95,7 @@ while read l; do
 		echo "ERROR: no topic found for $l"
 		exit 1
 	    fi
-	    f=$(echo "$l" | sed -e's/^File: *//' -e's/"//g')
+	    f=$(echo "$l" | sed -e's/^File: *//' -e's/"//g' -e's/\\//g')
 	    if [ -L "$f" ]; then
 		copy_link "$f"
 	    else
@@ -108,9 +108,9 @@ while read l; do
 		echo "ERROR: no topic found for $l"
 		exit 1
 	    fi
-	    echo "$l" | sed -e's/^Link: *//g' -e's/-> //g' | while read f d; do
-		copy_link "$f" "$d"
-	    done
+	    f=$(echo "$l" | sed -e's/^Link: *//' -e's/ *->.*$//' -es'/\\//g')
+	    d=$(echo "$l" | sed -e's/^.*-> *//' -e's/\\//g')
+	    copy_link "$f" "$d"
 	    ;;
     esac
 done
