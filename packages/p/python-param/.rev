@@ -140,4 +140,12 @@
     <comment></comment>
     <requestid>862303</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4e7f2ed57abed919169972f1d944d05d</srcmd5>
+    <version>1.10.1</version>
+    <time>1611928637</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove %ifpython3 guard for the %check section.</comment>
+    <requestid>867617</requestid>
+  </revision>
 </revisionlist>

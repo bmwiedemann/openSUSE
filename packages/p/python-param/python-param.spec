@@ -64,7 +64,6 @@ echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%ifpython3
 %check
 # Exclusion documented in gh#holoviz/param#423
 %pytest -k 'not test_abstract_class' tests/*/*.py
@@ -76,7 +75,6 @@ v = param.__version__
 assert v == "%{version}", "wrong version reported: {}".format(v)
 '
 }
-%endif
 
 %files %{python_files}
 %license LICENSE.txt

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 29 04:27:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove %ifpython3 guard for the %check section.
+
+-------------------------------------------------------------------
 Sun Jan 10 23:03:56 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.10.1:
