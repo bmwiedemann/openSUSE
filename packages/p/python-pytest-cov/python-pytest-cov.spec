@@ -18,25 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-cov
-Version:        2.10.1
+Version:        2.11.1
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/schlamar/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-cov/commit/25eed212085ce9a2d5383a6a4a2b360d0d514f89 Turns out there were some internal changes in the pytester plugin. 
-Patch0:         pytest62.patch
-BuildRequires:  %{python_module coverage >= 4.4}
+BuildRequires:  %{python_module coverage >= 5.2.1}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
 BuildRequires:  %{python_module pytest >= 4.6.0}
-BuildRequires:  %{python_module pytest-xdist >= 1.32.0}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-coverage >= 4.4
+Requires:       python-coverage >= 5.2.1
 Requires:       python-pytest >= 4.6.0
 BuildArch:      noarch
 %python_subpackages
@@ -51,7 +49,6 @@ through pytest-cov or through coverage's config file.
 
 %prep
 %setup -q -n pytest-cov-%{version}
-%patch0 -p1
 
 %build
 %python_build

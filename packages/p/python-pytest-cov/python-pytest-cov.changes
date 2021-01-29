@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 27 13:51:26 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.11.1
+  * Fixed the missing coverage context when using subprocesses.
+  * Bumped minimum coverage requirement to 5.2.1. This prevents reporting issues.
+- Drop merged pytest62.patch
+
+-------------------------------------------------------------------
 Fri Jan 15 11:59:34 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add pytest62.patch to make testsuite compatible with new pytest
