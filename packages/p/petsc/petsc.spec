@@ -1,7 +1,7 @@
 #
 # spec file for package petsc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -368,8 +368,8 @@ Summary:        Devel files for petsc
 Group:          System/Libraries
 %if %{with hpc}
 %{hpc_requires}
-Requires:       libhdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc
-Requires:       libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc
+%{requires_eq libhdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc}
+%{requires_eq libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc}
 %endif
 
 %description -n %{libname %_vers}
@@ -401,9 +401,9 @@ Provides:       %{pname}-openmpi-devel
  %endif
 %else # with hpc
 Requires:       %{libname %_vers} = %{version}
-Requires:       hdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-Requires:       libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel
+%{requires_eq hdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel}
+%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
+%{requires_eq libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel}
 %hpc_requires_devel
 %endif
 

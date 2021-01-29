@@ -245,4 +245,14 @@
     <comment></comment>
     <requestid>846459</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>4513025d6516bada9d7aec361345c1be</srcmd5>
+    <version>3.14.1</version>
+    <time>1611928646</time>
+    <user>dimstar_suse</user>
+    <comment>- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning. (forwarded request 867621 from eeich)</comment>
+    <requestid>867657</requestid>
+  </revision>
 </revisionlist>
