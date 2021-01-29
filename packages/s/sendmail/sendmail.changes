@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 27 09:21:03 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Move SMTPD_LISTEN_REMOTE hack into valid code of update script
+- Change location of update script in fillup/sysconfig files
+
+-------------------------------------------------------------------
+Tue Jan 26 18:32:51 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add better support for IPv6
+- Fix bug in udage of fillup_only macro to get sysconfig file for
+  sendmail written by fillup 
+
+-------------------------------------------------------------------
 Tue Oct 27 14:38:07 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - cleanup the sendmail permissions profile:

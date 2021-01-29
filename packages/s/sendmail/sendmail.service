@@ -31,11 +31,9 @@ PIDFile=/var/run/sendmail.pid
 ExecStartPre=-/bin/echo 'Initializing SMTP port (sendmail)'
 ExecStartPre=-/etc/mail/system/sm.pre
 Environment="SENDMAIL_ARGS=-L sendmail -Am -bd -q30m -om"
-Environment=SENDMAIL_PORT_OPTS=
 EnvironmentFile=-/etc/sysconfig/mail
 EnvironmentFile=-/etc/sysconfig/sendmail
-EnvironmentFile=-/var/run/sendmail/port
-ExecStart=/usr/sbin/sendmail $SENDMAIL_PORT_OPTS $SENDMAIL_ARGS
+ExecStart=/usr/sbin/sendmail $SENDMAIL_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]

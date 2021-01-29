@@ -1,7 +1,7 @@
 #
 # spec file for package sendmail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -549,7 +549,7 @@ fi
 %if %{with sysvinit}
 %{fillup_and_insserv -nY sendmail sendmail}
 %else
-%{fillup_only -an sendmail}
+%{fillup_only -n sendmail}
 %service_add_post sendmail.service sendmail-client.service sendmail-client.path
 PATH=bin:usr/bin:$PATH
 if type -p systemctl > /dev/null 2>&1 ; then

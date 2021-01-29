@@ -926,4 +926,17 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     by systemd-tmpfiles via the filesystem package (fs-var.conf). (forwarded request 844363 from mgerstner)</comment>
     <requestid>844507</requestid>
   </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>4807bb8fd216dca46e28348e33ebf27c</srcmd5>
+    <version>8.16.1</version>
+    <time>1611928590</time>
+    <user>dimstar_suse</user>
+    <comment>- Move SMTPD_LISTEN_REMOTE hack into valid code of update script
+- Change location of update script in fillup/sysconfig files
+
+- Add better support for IPv6
+- Fix bug in udage of fillup_only macro to get sysconfig file for
+  sendmail written by fillup</comment>
+    <requestid>867124</requestid>
+  </revision>
 </revisionlist>
