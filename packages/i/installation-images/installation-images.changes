@@ -1,4 +1,48 @@
 --------------------------------------------------------------------
+Thu Jan 28 15:13:38 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#439
+- Don't replace directory symlinks (boo#1029961)
+- 16.35
+
+--------------------------------------------------------------------
+Wed Jan 27 16:12:59 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#447
+- aarch64: add tegra20-apb-dma module (bsc#1181463)
+- 16.34
+
+--------------------------------------------------------------------
+Wed Jan 27 15:48:03 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#446
+- work around broken plymouth (bsc#1149070)
+- 16.33
+
+--------------------------------------------------------------------
+Wed Jan 27 11:43:35 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#445
+- do not run prein script for openssh-server in root image
+- 16.32
+
+--------------------------------------------------------------------
+Fri Jan 22 15:17:20 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#443
+- revert plymouth branding for SLE to tribar
+- support both plymouth-theme-tribar and plymouth-theme-bgrt
+- 16.31
+
+--------------------------------------------------------------------
+Thu Jan 21 13:55:40 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#442
+- Replace tribar plymouth theme for installation with bgrt
+  (boo#1149070)
+- 16.30
+
+--------------------------------------------------------------------
 Thu Jan 14 09:53:52 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#441

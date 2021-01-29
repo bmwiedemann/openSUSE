@@ -995,4 +995,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>863302</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>411cccc24861b4284497a42dfa7db505</srcmd5>
+    <version>16.35</version>
+    <time>1611928625</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>867527</requestid>
+  </revision>
 </revisionlist>

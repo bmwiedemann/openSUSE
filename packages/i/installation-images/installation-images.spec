@@ -437,7 +437,6 @@ BuildRequires:  perl-XML-Parser
 BuildRequires:  perl-XML-Simple
 BuildRequires:  perl-solv
 BuildRequires:  pinentry
-BuildRequires:  plymouth-theme-tribar
 BuildRequires:  python3-websockify
 BuildRequires:  raleway-fonts
 BuildRequires:  samba
@@ -457,6 +456,12 @@ BuildRequires:  plymouth
 BuildRequires:  plymouth-branding
 BuildRequires:  plymouth-plugin-script
 BuildRequires:  plymouth-scripts
+# SLE needs to stay with tribar
+%if 0%{?is_opensuse}
+BuildRequires:  plymouth-branding-openSUSE
+%else
+BuildRequires:  plymouth-theme-tribar
+%endif
 %endif
 BuildRequires:  klogd
 BuildRequires:  ltrace
@@ -648,7 +653,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.29
+Version:        16.35
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
