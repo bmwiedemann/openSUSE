@@ -1,7 +1,7 @@
-Index: nrpe-nrpe-3.2.1/Makefile.in
+Index: nrpe-4.0.3/Makefile.in
 ===================================================================
---- nrpe-nrpe-3.2.1.orig/Makefile.in
-+++ nrpe-nrpe-3.2.1/Makefile.in
+--- nrpe-4.0.3.orig/Makefile.in
++++ nrpe-4.0.3/Makefile.in
 @@ -128,13 +128,7 @@ install-init:
  		elif test $(INIT_TYPE) = launchd; then\
  			launchctl load $(INIT_DIR)/$(INIT_FILE); \

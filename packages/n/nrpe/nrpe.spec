@@ -1,7 +1,7 @@
 #
 # spec file for package nrpe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %bcond_with reproducable
 %endif
 Name:           nrpe
-Version:        3.2.1
+Version:        4.0.3
 Release:        0
 Summary:        Nagios Remote Plug-In Executor
 License:        GPL-2.0-or-later
@@ -54,7 +54,7 @@ Source10:       README.SUSE
 Source11:       README.SUSE.systemd-addon
 Source12:       usr.sbin.nrpe
 Source13:       nrpe.xml
-Source14:       nrpe-3.2.1-dh.h
+Source14:       nrpe-dh.h
 # PATCH-FIX-UPSTREAM improve help output of nrpe and check_nrpe
 Patch2:         nrpe-improved_help.patch
 # PATCH-FIX-openSUSE fix pathnames for nrpe_check_control command
@@ -62,9 +62,9 @@ Patch4:         nrpe_check_control.patch
 # PATCH-FIX-UPSTREAM using implicit definitions of functions
 Patch5:         nrpe-implicit_declaration.patch
 # PATCH-FIX-openSUSE patch used to NOT re-calculate dh.h parameters (for reproducable builds)
-Patch6:         nrpe-3.2.1-static_dh_parameters.patch
+Patch6:         nrpe-static_dh_parameters.patch
 # PATCH-FIX-openSUSE disable chkconfig call in Makefile
-Patch7:         nrpe-3.2.1-disable-chkconfig_in_Makefile.patch
+Patch7:         nrpe-disable-chkconfig_in_Makefile.patch
 BuildRequires:  monitoring-plugins-common
 BuildRequires:  nagios-rpm-macros
 Requires(pre):  grep
@@ -145,7 +145,7 @@ The plugin then uses the output and return code from the plugin
 execution on the remote host for its own output and return code.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q -n %{name}-%{version}
 %patch2 -p1
 %patch4 -p1
 %patch5 -p1
@@ -268,6 +268,8 @@ install -Dm644 %{SOURCE5} %{buildroot}%{nagios_sysconfdir}/objects/check_nrpe.cf
 install -Dm755 update-cfg.pl %{buildroot}/%{_defaultdocdir}/%{name}/examples/update-cfg.pl
 # ...and also the files we want in the main package
 install -m644 CHANGELOG.md README.SUSE README.md usr.sbin.nrpe %{buildroot}/%{_defaultdocdir}/%{name}/
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/local
+echo "# Site-specific additions and overrides for 'usr.sbin.nrpe'" > %{buildroot}/%{_defaultdocdir}/%{name}/local/usr.sbin.nrpe
 # remove the uninstall script: this is done by RPM
 rm %{buildroot}/%{_sbindir}/nrpe-uninstall
 
@@ -376,6 +378,8 @@ fi
 %doc %{_defaultdocdir}/%{name}/README.md
 %doc %{_defaultdocdir}/%{name}/CHANGELOG.md
 %doc %{_defaultdocdir}/%{name}/usr.sbin.nrpe
+%dir %{_defaultdocdir}/%{name}/local
+%doc %{_defaultdocdir}/%{name}/local/usr.sbin.nrpe
 %doc %{_defaultdocdir}/%{name}/examples/update-cfg.pl
 %{_mandir}/man8/nrpe.8%{?ext_man}
 %dir %{_sysconfdir}/nrpe.d

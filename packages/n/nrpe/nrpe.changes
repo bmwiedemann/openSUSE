@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jan 22 09:32:47 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 4.0.3
+  ENHANCEMENTS
+  * Added TLSv1.3 and TLSv1.3+ support for systems that have it (Nigel Yong, Rahul Golam)
+  * Added IPv6 ip address to list of default allow_from hosts (Troy Lea)
+  * Added -D option to disable logging to syslog (Tom Griep, Sebastian Wolf)
+  * Added -3 option to force check_nrpe to use NRPE v3 packets
+  * OpenRC: provide a default path for nrpe.cfg (Michael Orlitzky)
+  * OpenRC: Use RC_SVCNAME over a hard-coded PID file (j-licht)
+  FIXES
+  * Fixed nasty_metachars not being read from config file (#235) (Sebastian Wolf)
+  * Fixed buffer length calculations/writing past memory boundaries
+    on some systems (#227, #228) (Andreas Baumann, hariwe, Sebastian Wolf)
+  * Fixed use of uninitialized variable when validating requests (#229) (hariwe, Sebastian Wolf)
+  * Fixed syslog flooding with CRC-checking errors when both plugin 
+    and agent were updated to version 4 (Sebastian Wolf)
+  * Checks for '!' now only occur inside the command buffer (Joni Eskelinen)
+  * NRPE daemon is more resilient to DOS attacks (Leonid Vasiliev)
+  * allowed_hosts will no longer test getaddrinfo records against the
+    wrong protocol (dombenson)
+  * nasty_metachars will now handle C escape sequences properly when
+    specified in the config file (Sebastian Wolf)
+  * Calculated packet sizes now struct padding/alignment when sending
+    and receiving messages (Sebastian Wolf)
+  * Buffer sizes are now checked before use in packet size calculation (Sebastian Wolf)
+  * When using include_dir, individual files' errors do not prevent
+    the remaining files from being read (Sebastian Wolf)
+- refreshed the following patches:
+  * nrpe-implicit_declaration.patch
+  * nrpe-improved_help.patch
+  * nrpe_check_control.patch
+- renamed and refreshed the following patches/sources:
+  * nrpe-3.2.1-disable-chkconfig_in_Makefile.patch 
+    -> nrpe-disable-chkconfig_in_Makefile.patch
+  * nrpe-3.2.1-static_dh_parameters.patch
+    -> nrpe-static_dh_parameters.patch
+  * nrpe-3.2.1-dh.h -> nrpe-dh.h
+- enhanced README.SUSE with some words about Apparmor
+- added an include directive in usr.sbin.nrpe apparmor config 
+  and a basic local/usr.sbin.nrpe file in the docu-directory
+
+-------------------------------------------------------------------
 Tue Jul 28 15:05:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't install SuSEfirewall2 service file, SuSEfirewall2 is gone

@@ -1,7 +1,7 @@
-Index: nrpe-nrpe-3.2.1/macros/ax_nagios_get_ssl
+Index: nrpe-4.0.3/macros/ax_nagios_get_ssl
 ===================================================================
---- nrpe-nrpe-3.2.1.orig/macros/ax_nagios_get_ssl
-+++ nrpe-nrpe-3.2.1/macros/ax_nagios_get_ssl
+--- nrpe-4.0.3.orig/macros/ax_nagios_get_ssl
++++ nrpe-4.0.3/macros/ax_nagios_get_ssl
 @@ -292,10 +292,15 @@ if test x$SSL_TYPE != xNONE; then
  			AC_DEFINE(USE_SSL_DH)
  			# Generate DH parameters
@@ -22,10 +22,10 @@ Index: nrpe-nrpe-3.2.1/macros/ax_nagios_get_ssl
  			fi
  		fi
  	fi
-Index: nrpe-nrpe-3.2.1/configure
+Index: nrpe-4.0.3/configure
 ===================================================================
---- nrpe-nrpe-3.2.1.orig/configure
-+++ nrpe-nrpe-3.2.1/configure
+--- nrpe-4.0.3.orig/configure
++++ nrpe-4.0.3/configure
 @@ -7722,10 +7722,15 @@ fi
  
  			# Generate DH parameters

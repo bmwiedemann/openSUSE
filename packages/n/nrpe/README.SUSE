@@ -43,4 +43,32 @@ Example:
 will open the standard ports for SSH and NRPE on the external interface.
 
 
+= Apparmor and nrpe =
+
+You can find a working apparmor profile for /usr/sbin/nrpe right beside 
+this README.SUSE file. Please note that this (usr.sbin.nrpe) file has 
+an include for local changes.
+
+If you want to activate Apparmor protection for your nrpe binary, please
+copy the usr.sbin.nrpe file together with the file in the local/-subdirectory
+to the Apparmor configuration directory:
+ ~# cp /usr/share/doc/packages/nrpe/usr.sbin.nrpe /etc/apparmor.d/
+ ~# cp /usr/share/doc/packages/nrpe/local/usr.sbin.nrpe /etc/apparmor.d/local/
+after that, please reload Apparmor and restart your NRPE daemon:
+ ~# rcapparmor reload
+ ~# rcnrpe try-restart
+
+Please remember that checks, that should be executed by NRPE, need an 
+entry in /etc/apparmor.d/local/usr.sbin.nrpe - you can already
+find some examples in the /usr/share/doc/packages/nrpe/usr.sbin.nrpe file. 
+
+If you encounter problems with the Apparmor profile, do not hesitate to 
+open a bugreport at https://bugzilla.opensuse.org/
+
+You can debug your Apparmor profile by installing and activating auditd 
+and (after a restart of Apparmor and auditd) look into the log at:
+ /var/log/audit/audit.log
+
+-----
+
 Have a lot of fun!

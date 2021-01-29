@@ -1,7 +1,7 @@
-Index: nrpe-nrpe-3.2.1/contrib/nrpe_check_control.c
+Index: nrpe-4.0.3/contrib/nrpe_check_control.c
 ===================================================================
---- nrpe-nrpe-3.2.1.orig/contrib/nrpe_check_control.c
-+++ nrpe-nrpe-3.2.1/contrib/nrpe_check_control.c
+--- nrpe-4.0.3.orig/contrib/nrpe_check_control.c
++++ nrpe-4.0.3/contrib/nrpe_check_control.c
 @@ -1,4 +1,5 @@
  #include <stdio.h>
 +#include <stdlib.h>
