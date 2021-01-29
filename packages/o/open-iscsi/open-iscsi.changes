@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 26 20:03:42 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Update to latest upstream (no new tag yet). To fix
+  bsc#1181313. Changes since last update added to
+  open-iscsi-SUSE-latest.diff.bz2:
+  * Fix iscsiadm segfault when exiting
+  * iscsid: Add NO_SYSTEMD to CFLAGS
+  * Change mkdir permissions to 0770, adjust usmask
+  * Fix typo in util.py
+  * iscsid: Do not allow conflicting pid-file options
+  * iscsiadm: Fix memory leak in iscsiadm
+  * libopeniscsiusr: Fix memory leak in iscsi_sessions_get()
+  * libopeniscsiusr: Fix memory leak in iscsi_nodes_get()
+  * idbm: Fix memory leak and NULL pointer dereference in idbm_rec_update_param()
+  * Add etc/systemd/iscsi-init.service to SYSTEMDFILES Makefile variable
+
+-------------------------------------------------------------------
 Thu Dec 31 18:16:01 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Updated to upstream version 2.1.3 as 2.1.3-suse, for bsc#1179908,
