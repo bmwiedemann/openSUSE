@@ -1,7 +1,7 @@
 #
 # spec file for package sqlcipher
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define         lib_version 3.31.0
-%define         lib_name lib%{name}-3_31_0-0
+%define         lib_version 3.33.0
+%define         lib_name lib%{name}-3_33_0-0
 Name:           sqlcipher
-Version:        4.4.0
+Version:        4.4.2
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
