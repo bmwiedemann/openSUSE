@@ -61,6 +61,7 @@ dtoverlay=dwc2
 
 armstub=armstub8-rpi4.bin
 dtoverlay=disable-vc4
+dtoverlay=disable-v3d
 
 [all]
 
