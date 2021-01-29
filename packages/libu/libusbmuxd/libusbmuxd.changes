@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  8 11:07:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update baselibs.conf
+
+-------------------------------------------------------------------
+Mon Sep 21 07:27:02 UTC 2020 - Stefan Elser <suse@foomaster.de>
+
+- Update to 2.0.2:
+  - Handle USB and network devices with new options in tools
+  - Make connecting sockets non-blocking
+  - Rename library and all related files by adding an API version resulting in libusbmuxd-2.0
+  - Allow to specify source address for listening socket in iproxy
+  - Allow to map multiple ports in iproxy
+  - Lots of bug fixes and other improvements
+
+-------------------------------------------------------------------
 Thu Mar 12 10:38:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.0:

@@ -16,9 +16,9 @@
 #
 
 
-%define major 6
+%define libname libusbmuxd-2_0-6
 Name:           libusbmuxd
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A client library to multiplex connections from and to iOS devices
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -28,9 +28,9 @@ Source99:       baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  libplist-devel >= 1.11
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libplist-2.0) >= 2.2.0
 
 %description
 'usbmuxd' stands for "USB multiplexing daemon". This daemon is in charge of
@@ -42,11 +42,13 @@ a virtual network device.
 
 This package contains the usbmuxd communication interface library 'libusbmuxd'.
 
-%package -n %{name}%{major}
+%package -n %{libname}
 Summary:        A client library to multiplex connections from and to iOS devices
 Recommends:     usbmuxd
+Provides:       libusbmuxd6 = %{version}
+Obsoletes:      libusbmuxd6 < %{version}
 
-%description -n %{name}%{major}
+%description -n %{libname}
 'usbmuxd' stands for "USB multiplexing daemon". This daemon is in charge of
 multiplexing connections over USB to an iPhone or iPod touch. To users, it means
 you can sync your music, contacts, photos, etc. over USB. To developers, it
@@ -58,7 +60,7 @@ This package contains the usbmuxd communication interface library 'libusbmuxd'.
 
 %package devel
 Summary:        Development files for %{name}
-Requires:       %{name}%{major} = %{version}
+Requires:       %{libname} = %{version}
 
 %description devel
 'usbmuxd' stands for "USB multiplexing daemon". This daemon is in charge of
@@ -104,22 +106,24 @@ export CFLAGS="%{optflags} -fexceptions"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{name}%{major} -p /sbin/ldconfig
-%postun -n %{name}%{major} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{name}%{major}
+%files -n %{libname}
 %license COPYING
 %doc AUTHORS README.md
-%{_libdir}/libusbmuxd.so.*
+%{_libdir}/libusbmuxd-2.0.so.*
 
 %files devel
 %{_includedir}/usbmuxd.h
 %{_includedir}/usbmuxd-proto.h
-%{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/libusbmuxd-2.0.so
+%{_libdir}/pkgconfig/%{name}-2.0.pc
 
 %files tools
 %{_bindir}/iproxy
 %{_bindir}/inetcat
+%{_mandir}/man1/inetcat.1%{?ext_man}
+%{_mandir}/man1/iproxy.1%{?ext_man}
 
 %changelog

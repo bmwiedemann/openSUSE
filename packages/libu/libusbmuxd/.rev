@@ -76,4 +76,12 @@
 - Remove merged patch libusbmuxd-CVE-2016-5104.patch</comment>
     <requestid>784255</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e26cb647fa92ab4129d419e19a74b4b8</srcmd5>
+    <version>2.0.2</version>
+    <time>1611928495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851385</requestid>
+  </revision>
 </revisionlist>
