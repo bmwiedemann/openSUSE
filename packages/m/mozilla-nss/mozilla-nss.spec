@@ -1,8 +1,8 @@
 #
 # spec file for package mozilla-nss
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2006-2020 Wolfgang Rosenauer
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2006-2021 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.59
+%global nss_softokn_fips_version 3.60
 %define NSPR_min_version 4.29
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.59.1
+Version:        3.60.1
 Release:        0
-%define underscore_version 3_59_1
+%define underscore_version 3_60_1
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -49,7 +49,6 @@ Patch4:         add-relro-linker-option.patch
 Patch5:         malloc.patch
 Patch6:         bmo-1400603.patch
 Patch7:         nss-sqlitename.patch
-Patch8:         ppc-old-abi-v3.patch
 Patch9:         nss-fips-use-getrandom.patch
 Patch10:        nss-fips-dsa-kat.patch
 Patch11:        nss-fips-pairwise-consistency-check.patch
@@ -204,7 +203,6 @@ cd nss
 %endif
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 # FIPS patches
 %patch9 -p1
 %patch10 -p1

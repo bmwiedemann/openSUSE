@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 24 09:55:03 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.60.1
+  Notable changes in NSS 3.60:
+  * TLS 1.3 Encrypted Client Hello (draft-ietf-tls-esni-08) support
+    has been added, replacing the previous ESNI (draft-ietf-tls-esni-01)
+    implementation. See bmo#1654332 for more information.
+  * December 2020 batch of Root CA changes, builtins library updated
+    to version 2.46. See bmo#1678189, bmo#1678166, and bmo#1670769
+    for more information.
+- removed obsolete ppc-old-abi-v3.patch
+
+-------------------------------------------------------------------
 Sun Dec 27 10:46:57 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.59.1
