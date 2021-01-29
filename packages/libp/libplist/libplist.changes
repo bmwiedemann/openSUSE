@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:54:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update baselibs.conf.
+- Stop obsoleting 'virtual' provides. The package manager
+  will take care of package updates.
+- Also rename libplist-devel to libplist-2_0-devel.
+- Add missing provides/obsoletes for devel packages.
+
+-------------------------------------------------------------------
+Mon Sep 21 07:37:06 UTC 2020 - Stefan Elser <suse@foomaster.de>
+
+- Update to 2.2.0:
+  - Rename library and all related files by adding an API version resulting in libplist-2.0 and libplist++-2.0
+  - bplist: Improve recursion check performance by at least 30% for large files
+  - Add new plist_val_compare(), plist_val_contains() helper functions
+  - plistutil: Added ability for files to be read from stdin
+  - plistutil: Added ability to specify output format
+  - Fix/suppress several compiler warnings
+  - Fix: Return NULL from plist_copy() if passed a NULL pointer instead of asserting
+  - Fix removal of docs directory on make clean
+
+-------------------------------------------------------------------
 Thu Mar 12 10:18:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.0:

@@ -270,4 +270,12 @@ LGPL-2.1 can be relicensed to GPL without further permission. No need to explici
   * Add sanitizers (ASAN, UBSAN) when building fuzzers (--with-fuzzers)</comment>
     <requestid>784247</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>564e58971b8c204dd806b8ebc88f58dc</srcmd5>
+    <version>2.2.0</version>
+    <time>1611928498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854966</requestid>
+  </revision>
 </revisionlist>

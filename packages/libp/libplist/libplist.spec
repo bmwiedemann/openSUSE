@@ -16,17 +16,22 @@
 #
 
 
-%define cname libplist3
-%define cppname libplist++3
+%define cname_old libplist3
+%define cppname_old libplist++3
+%define cname libplist-2_0-3
+%define cppname libplist++-2_0-3
 Name:           libplist
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Library for handling Apple Binary and XML Property Lists
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://github.com/libimobiledevice/libplist
 Source:         https://github.com/libimobiledevice/libplist/archive/%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  gcc-c++ autoconf automake libtool
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython >= 0.17
 BuildRequires:  pkgconfig(python3)
@@ -37,7 +42,9 @@ libplist is a library for handling Apple Binary and XML Property Lists.
 %package -n %{cname}
 Summary:        Library for handling Apple Binary and XML Property Lists
 Provides:       libplist = %{version}
-Obsoletes:      libplist < %{version}
+# The library was renamed for the 2.2.0 update
+Provides:       %{cname_old} = %{version}
+Obsoletes:      %{cname_old} < %{version}
 
 %description -n %{cname}
 libplist is a library for handling Apple Binary and XML Property Lists.
@@ -45,7 +52,9 @@ libplist is a library for handling Apple Binary and XML Property Lists.
 %package -n %{cppname}
 Summary:        Library for handling Apple Binary and XML Property Lists
 Provides:       libplist++ = %{version}
-Obsoletes:      libplist++ < %{version}
+# The library was renamed for the 2.2.0 update
+Provides:       %{cppname_old} = %{version}
+Obsoletes:      %{cppname_old} < %{version}
 
 %description -n %{cppname}
 libplist is a library for handling Apple Binary and XML Property Lists.
@@ -54,7 +63,6 @@ libplist is a library for handling Apple Binary and XML Property Lists.
 Summary:        Library for handling Apple Binary and XML Property Lists
 Requires:       libplist = %{version}
 Provides:       plutil = %{version}
-Obsoletes:      plutil < %{version}
 
 %description -n plistutil
 libplist is a library for handling Apple Binary and XML Property Lists.
@@ -62,21 +70,25 @@ libplist is a library for handling Apple Binary and XML Property Lists.
 This package contains an utility to convert PList files from binary to XML and
 from XML to binary.
 
-%package devel
+%package -n libplist-2_0-devel
 Summary:        Library for handling Apple Binary and XML Property Lists -- Development Files
+Provides:       libplist-devel = %{version}
+Obsoletes:      libplist-devel < %{version}
 Requires:       libplist = %{version}
 
-%description devel
+%description -n libplist-2_0-devel
 libplist is a library for handling Apple Binary and XML Property Lists.
 
 This package contains the development files for C.
 
-%package -n libplist++-devel
+%package -n libplist++-2_0-devel
 Summary:        Library for handling Apple Binary and XML Property Lists -- Development Files
+Provides:       libplist++-devel = %{version}
+Obsoletes:      libplist++-devel < %{version}
 Requires:       libplist++ = %{version}
-Requires:       pkgconfig(libplist)
+Requires:       pkgconfig(libplist-2.0)
 
-%description -n libplist++-devel
+%description -n libplist++-2_0-devel
 libplist is a library for handling Apple Binary and XML Property Lists.
 
 This package contains the development files for C++.
@@ -118,23 +130,24 @@ install -m 0644 cython/plist.pxd %{buildroot}%{_includedir}/plist/cython/plist.p
 %files -n %{cname}
 %license COPYING COPYING.LESSER
 %doc AUTHORS README.md NEWS
-%{_libdir}/libplist.so.*
+%{_libdir}/libplist-2.0.so.*
 
 %files -n %{cppname}
 %license COPYING COPYING.LESSER
 %doc AUTHORS README.md NEWS
-%{_libdir}/libplist++.so.*
+%{_libdir}/libplist++-2.0.so.*
 
 %files -n plistutil
 %{_bindir}/plistutil
+%{_mandir}/man1/plistutil.1%{?ext_man}
 
-%files devel
+%files -n libplist-2_0-devel
 %dir %{_includedir}/plist
 %{_includedir}/plist/plist.h
-%{_libdir}/libplist.so
-%{_libdir}/pkgconfig/libplist.pc
+%{_libdir}/libplist-2.0.so
+%{_libdir}/pkgconfig/libplist-2.0.pc
 
-%files -n libplist++-devel
+%files -n libplist++-2_0-devel
 %dir %{_includedir}/plist
 %{_includedir}/plist/plist++.h
 %{_includedir}/plist/Array.h
@@ -149,8 +162,8 @@ install -m 0644 cython/plist.pxd %{buildroot}%{_includedir}/plist/cython/plist.p
 %{_includedir}/plist/Real.h
 %{_includedir}/plist/String.h
 %{_includedir}/plist/Structure.h
-%{_libdir}/libplist++.so
-%{_libdir}/pkgconfig/libplist++.pc
+%{_libdir}/libplist++-2.0.so
+%{_libdir}/pkgconfig/libplist++-2.0.pc
 
 %files -n python3-plist
 %dir %{_includedir}/plist/cython
