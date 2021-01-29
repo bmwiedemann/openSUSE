@@ -16,8 +16,6 @@
 #
 
 
-%bcond_with cnf
-
 %if 0%{?sle_version}
 %bcond_with offline_updates
 %else
@@ -27,8 +25,10 @@
 # Only make DNF backend available openSUSE Leap 15.1+
 %if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
 %bcond_without dnf
+%bcond_without cnf
 %else
 %bcond_with dnf
+%bcond_with cnf
 %endif
 
 Name:           PackageKit
@@ -54,6 +54,8 @@ Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.
 Patch4:         PackageKit-zypp-cleanup-tmp-files.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
 Patch5:         PackageKit-fix-crash-pre-dbus.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-reset-update-mode-after-get-updates.patch gh#hughsie/PackageKit/commit#b208f551 bsc#1180150 sckang@suse.com -- zypp: Reset update mode after getting updates
+Patch6:         PackageKit-zypp-reset-update-mode-after-get-updates.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -131,6 +133,7 @@ Requires:       %{name} = %{version}
 Provides:       %{name}-backend = %{version}
 Conflicts:      %{name}-backend
 Supplements:    (%{name} and dnf-conf and rpm-repos-openSUSE)
+Suggests:       PackageKit-command-not-found
 # Stricter dependency to keep things sane
 %requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf.so)")
 
@@ -140,6 +143,23 @@ software on your computer easier.  The primary design goal is to unify
 all the software graphical tools used in different distributions, and
 use some of the latest technology like PolicyKit to make the process
 suck less.
+%endif
+
+%if %{with cnf}
+%package command-not-found
+Summary:        Command Not Found using PackageKit
+License:        GPL-2.0-or-later
+Group:          System/Daemons
+Obsoletes:      command-not-found
+Provides:       command-not-found
+Conflicts:      command-not-found
+# zypp backend lacks full functionality for this to make sense
+Conflicts:      %{name}-backend-zypp
+
+%description command-not-found
+The improved Command Not Found utility from the PackageKit utilities
+suit, making it easier to install the software you need when you
+need it.
 %endif
 
 %package gstreamer-plugin
@@ -357,17 +377,11 @@ fi
 %dir %{_usr}/lib/tmpfiles.d
 %{_datadir}/bash-completion/completions/pkcon
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.PackageKit.conf
-%if %{with cnf}
-%{_sysconfdir}/profile.d/PackageKit.sh
-%endif
 %{_bindir}/pkcon
 %{_bindir}/pkmon
 %{_libdir}/packagekit-backend/libpk_backend_dummy.so
 %{_libexecdir}/packagekitd
 %{_libexecdir}/packagekit-direct
-%if %{with cnf}
-%{_libexecdir}/pk-command-not-found
-%endif
 %{_datadir}/dbus-1/interfaces/org.freedesktop.PackageKit.Transaction.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.PackageKit.xml
 %{_datadir}/PackageKit/pk-upgrade-distro.sh
@@ -398,6 +412,13 @@ fi
 %if %{with dnf}
 %files backend-dnf
 %{_libdir}/packagekit-backend/libpk_backend_dnf.so
+%endif
+
+%if %{with cnf}
+%files command-not-found
+%{_sysconfdir}/profile.d/PackageKit.sh
+%{_libexecdir}/pk-command-not-found
+%config(noreplace) %{_sysconfdir}/PackageKit/CommandNotFound.conf
 %endif
 
 %files gstreamer-plugin
@@ -441,9 +462,6 @@ fi
 %{_datadir}/vala/vapi/packagekit-glib2.deps
 
 %files branding-upstream
-%if %{with cnf}
-%config(noreplace) %{_sysconfdir}/PackageKit/CommandNotFound.conf
-%endif
 %config(noreplace) %{_sysconfdir}/PackageKit/PackageKit.conf
 # This file should not be touched by users/admins, so we can replace it
 %{_sysconfdir}/PackageKit/Vendor.conf

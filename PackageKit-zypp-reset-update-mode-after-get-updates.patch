@@ -1,0 +1,29 @@
+From 1989eb211f881f318b8c0cdf071dfdb3d6b6d784 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Wed, 27 Jan 2021 16:17:36 +0800
+Subject: [PATCH] zypp: Reset update mode after getting updates
+
+This fixes the issue that different list of updates were returned
+when checking for updates in Leap.
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=1180150
+---
+ backends/zypp/pk-backend-zypp.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
+index 9404abb1a..4941a6b86 100644
+--- a/backends/zypp/pk-backend-zypp.cpp
++++ b/backends/zypp/pk-backend-zypp.cpp
+@@ -1249,6 +1249,8 @@ zypp_get_package_updates (string repo, set<PoolItem> &pks)
+ 
+ 	if (is_tumbleweed ()) {
+ 		resolver->setUpgradeMode (FALSE);
++	} else {
++		resolver->setUpdateMode (FALSE);
+ 	}
+ }
+ 
+-- 
+2.29.2
+
