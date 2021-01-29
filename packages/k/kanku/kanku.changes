@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Jan 28 10:03:59 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- removed TODO's from spec file 
+
+-------------------------------------------------------------------
+Mon Jan 25 11:37:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing wording from descriptions.
+- Remove old build recipe constructs.
+
+-------------------------------------------------------------------
+Thu Jan 14 14:54:38 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- initial version of kanku rpm package (0.10.0) 
