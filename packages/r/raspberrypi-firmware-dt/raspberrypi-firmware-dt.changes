@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 27 11:51:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce disable-v3d-overlay.dts, in order to be able to selectively disable
+  v3d while using vc4 as the display controller.
+
+-------------------------------------------------------------------
+Mon Jan 25 13:33:48 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 02dbfea28f (2021-01-22):
+ * Add reserved memory template to hold firmware configuration
+
+- Drop upstream-blconfig-rmem.patch as it's now available upstream.
+
+-------------------------------------------------------------------
 Fri Jan 22 11:11:46 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce upstream-blconfig-rmem.patch for firmware to be able to define
