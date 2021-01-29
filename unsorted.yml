@@ -181,7 +181,6 @@ unsorted:
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
   - PackageKit-Qt-devel 
-  - PackageKit-backend-dnf 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -7508,6 +7507,17 @@ unsorted:
   - kanidm-server: [x86_64] 
   - kanidm-unixd-clients: [x86_64] 
   - kanjipad 
+  - kanku: [x86_64] 
+  - kanku-cli: [x86_64] 
+  - kanku-common: [x86_64] 
+  - kanku-common-server: [x86_64] 
+  - kanku-dispatcher: [x86_64] 
+  - kanku-doc: [x86_64] 
+  - kanku-scheduler: [x86_64] 
+  - kanku-triggerd: [x86_64] 
+  - kanku-urlwrapper: [x86_64] 
+  - kanku-web: [x86_64] 
+  - kanku-worker: [x86_64] 
   - kapidox 
   - kapman 
   - kapman-lang 
@@ -10059,7 +10069,6 @@ unsorted:
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
-  - libdnf2 
   - libdnnl1: [x86_64] 
   - libdns1610-32bit: [x86_64] 
   - libdns_sd 
@@ -11121,8 +11130,8 @@ unsorted:
   - libimaevm2: [i586] 
   - libimagequant-devel 
   - libiml0 
+  - libimobiledevice-1_0-6-32bit: [x86_64] 
   - libimobiledevice-devel 
-  - libimobiledevice6-32bit: [x86_64] 
   - libinchi0 
   - libinchi0-32bit: [x86_64] 
   - libindi 
@@ -12408,11 +12417,11 @@ unsorted:
   - libplank1 
   - libplayerctl2 
   - libplib0 
-  - libplist++-devel 
-  - libplist++3 
-  - libplist++3-32bit: [x86_64] 
-  - libplist-devel 
-  - libplist3-32bit: [x86_64] 
+  - libplist++-2_0-3 
+  - libplist++-2_0-3-32bit: [x86_64] 
+  - libplist++-2_0-devel 
+  - libplist-2_0-3-32bit: [x86_64] 
+  - libplist-2_0-devel 
   - libplot2 
   - libplotter2 
   - libplplot17 
@@ -13011,7 +13020,6 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
-  - librepo0 
   - librepository-javadoc 
   - librepute1 
   - libressl-devel 
@@ -13376,7 +13384,7 @@ unsorted:
   - libspnav0 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_31_0-0 
+  - libsqlcipher-3_33_0-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -13820,9 +13828,9 @@ unsorted:
   - libusbgx-devel 
   - libusbgx-tools 
   - libusbgx2 
+  - libusbmuxd-2_0-6-32bit: [x86_64] 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
-  - libusbmuxd6-32bit: [x86_64] 
   - libusrp-3_4_4+git_20190808-0 
   - libusrp-devel 
   - libustr-1_0-1 
@@ -19551,11 +19559,9 @@ unsorted:
   - php7-bcmath 
   - php7-bz2 
   - php7-calendar 
-  - php7-ctype 
   - php7-curl 
   - php7-dba 
   - php7-devel 
-  - php7-dom 
   - php7-embed 
   - php7-enchant 
   - php7-exif 
@@ -19566,17 +19572,14 @@ unsorted:
   - php7-gmagick 
   - php7-gmp 
   - php7-ice 
-  - php7-iconv 
   - php7-imagick 
   - php7-intl 
-  - php7-json 
   - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
   - php7-memcached 
   - php7-odbc 
   - php7-opcache 
-  - php7-openssl 
   - php7-pcntl 
   - php7-pear 
   - php7-pecl 
@@ -19594,27 +19597,27 @@ unsorted:
   - php7-soap 
   - php7-sockets 
   - php7-sodium 
-  - php7-sqlite 
   - php7-sysvmsg 
   - php7-sysvsem 
   - php7-sysvshm 
   - php7-test 
   - php7-tidy 
-  - php7-tokenizer 
   - php7-uuid 
   - php7-xdebug 
-  - php7-xmlreader 
   - php7-xmlrpc 
-  - php7-xmlwriter 
   - php7-xsl 
   - php7-zip 
   - php7-zlib 
+  - php8 
   - php8-bcmath 
   - php8-bz2 
   - php8-calendar 
+  - php8-cli 
+  - php8-ctype 
   - php8-curl 
   - php8-dba 
   - php8-devel 
+  - php8-dom 
   - php8-embed 
   - php8-enchant 
   - php8-exif 
@@ -19622,12 +19625,19 @@ unsorted:
   - php8-fileinfo 
   - php8-fpm 
   - php8-ftp 
+  - php8-gd 
+  - php8-gettext 
   - php8-gmp 
+  - php8-iconv 
   - php8-intl 
   - php8-ldap 
+  - php8-mbstring 
+  - php8-mysql 
   - php8-odbc 
   - php8-opcache 
+  - php8-openssl 
   - php8-pcntl 
+  - php8-pdo 
   - php8-pear 
   - php8-pecl 
   - php8-pgsql 
@@ -19639,11 +19649,15 @@ unsorted:
   - php8-soap 
   - php8-sockets 
   - php8-sodium 
+  - php8-sqlite 
   - php8-sysvmsg 
   - php8-sysvsem 
   - php8-sysvshm 
   - php8-test 
   - php8-tidy 
+  - php8-tokenizer 
+  - php8-xmlreader 
+  - php8-xmlwriter 
   - php8-xsl 
   - php8-zip 
   - php8-zlib 
@@ -20566,7 +20580,6 @@ unsorted:
   - python3-Keras-examples: [x86_64] 
   - python3-LHAPDF 
   - python3-MapProxy 
-  - python3-Nuitka 
   - python3-OpenImageIO 
   - python3-Pweave 
   - python3-PyCBC 
@@ -21162,6 +21175,7 @@ unsorted:
   - python36-Morfessor 
   - python36-MouseInfo 
   - python36-MulticoreTSNE 
+  - python36-Nuitka 
   - python36-OWSLib 
   - python36-PGet 
   - python36-PTable 
@@ -24026,6 +24040,7 @@ unsorted:
   - python38-Morfessor 
   - python38-MouseInfo 
   - python38-MulticoreTSNE 
+  - python38-Nuitka 
   - python38-OWSLib 
   - python38-PGet 
   - python38-PTable 
@@ -38890,6 +38905,7 @@ unsorted:
   - usbguard 
   - usbguard-devel 
   - usbguard-tools 
+  - usbmuxd 
   - usbredir 
   - usbredir-devel 
   - usbsdmux-udev 
