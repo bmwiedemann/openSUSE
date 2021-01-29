@@ -4783,4 +4783,41 @@
     <comment></comment>
     <requestid>862423</requestid>
   </revision>
+  <revision rev="327" vrev="1">
+    <srcmd5>dad91b383dc0b74266f7d56d452f66b6</srcmd5>
+    <version>85.0</version>
+    <time>1611928531</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 85.0
+  * Adobe Flash is completely history
+  * supercookie protection
+  * new bookmark handling and features
+  MFSA 2021-03 (bsc#1181414)
+  * CVE-2021-23953 (bmo#1683940)
+    Cross-origin information leakage via redirected PDF requests
+  * CVE-2021-23954 (bmo#1684020)
+    Type confusion when using logical assignment operators in
+    JavaScript switch statements
+  * CVE-2021-23955 (bmo#1684837)
+    Clickjacking across tabs through misusing requestPointerLock
+  * CVE-2021-23956 (bmo#1338637)
+    File picker dialog could have been used to disclose a
+    complete directory
+  * CVE-2021-23957 (bmo#1584582)
+    Iframe sandbox could have been bypassed on Android via the
+    intent URL scheme
+  * CVE-2021-23958 (bmo#1642747)
+    Screen sharing permission leaked across tabs
+  * CVE-2021-23959 (bmo#1659035)
+    Cross-Site Scripting in error pages on Firefox for Android
+  * CVE-2021-23960 (bmo#1675755)
+    Use-after-poison for incorrectly redeclared JavaScript
+    variables during GC
+  * CVE-2021-23961 (bmo#1677940)
+    More internal network hosts could have been probed by a
+    malicious webpage
+  * CVE-2021-23962 (bmo#1677194)
+    Use-after-poison in</comment>
+    <requestid>867008</requestid>
+  </revision>
 </revisionlist>

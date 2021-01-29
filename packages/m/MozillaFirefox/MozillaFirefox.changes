@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Jan 24 11:53:58 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 85.0
+  * Adobe Flash is completely history
+  * supercookie protection
+  * new bookmark handling and features
+  MFSA 2021-03 (bsc#1181414)
+  * CVE-2021-23953 (bmo#1683940)
+    Cross-origin information leakage via redirected PDF requests
+  * CVE-2021-23954 (bmo#1684020)
+    Type confusion when using logical assignment operators in
+    JavaScript switch statements
+  * CVE-2021-23955 (bmo#1684837)
+    Clickjacking across tabs through misusing requestPointerLock
+  * CVE-2021-23956 (bmo#1338637)
+    File picker dialog could have been used to disclose a
+    complete directory
+  * CVE-2021-23957 (bmo#1584582)
+    Iframe sandbox could have been bypassed on Android via the
+    intent URL scheme
+  * CVE-2021-23958 (bmo#1642747)
+    Screen sharing permission leaked across tabs
+  * CVE-2021-23959 (bmo#1659035)
+    Cross-Site Scripting in error pages on Firefox for Android
+  * CVE-2021-23960 (bmo#1675755)
+    Use-after-poison for incorrectly redeclared JavaScript
+    variables during GC
+  * CVE-2021-23961 (bmo#1677940)
+    More internal network hosts could have been probed by a
+    malicious webpage
+  * CVE-2021-23962 (bmo#1677194)
+    Use-after-poison in
+    <code>nsTreeBodyFrame::RowCountChanged</code>
+  * CVE-2021-23963 (bmo#1680793)
+    Permission prompt inaccessible after asking for additional
+    permissions
+  * CVE-2021-23964 (bmo#1662507, bmo#1666285, bmo#1673526, bmo#1674278,
+    bmo#1674835, bmo#1675097, bmo#1675844, bmo#1675868, bmo#1677590,
+    bmo#1677888, bmo#1680410, bmo#1681268, bmo#1682068, bmo#1682938,
+    bmo#1683736, bmo#1685260, bmo#1685925)
+    Memory safety bugs fixed in Firefox 85 and Firefox ESR 78.7
+  * CVE-2021-23965 (bmo#1670378, bmo#1673555, bmo#1676812, bmo#1678582,
+    bmo#1684497)
+    Memory safety bugs fixed in Firefox 85
+- requires NSS 3.60.1
+- requires rust 1.47
+- remove obsolete mozilla-pipewire-0-3.patch
+
+-------------------------------------------------------------------
 Mon Jan 11 18:02:01 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Fix AppStream screenshot links

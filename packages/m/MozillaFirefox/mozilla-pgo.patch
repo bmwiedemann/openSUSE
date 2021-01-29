@@ -1,11 +1,11 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  431962e810598b34327620fb99e06768e9a29c38
+# Parent  41df71ef2798d6bd6a67cfc4c4f26b8d41b8ccca
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -223,23 +223,23 @@ def lto(value, c_compiler, ld64_known_go
+@@ -235,23 +235,23 @@ def lto(
                  "configure."
              )
  
@@ -32,25 +32,6 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
              # choose a poor default.  Rust compilation by default uses the
              # pentium4 CPU on x86:
              #
-@@ -263,17 +263,17 @@ def lto(value, c_compiler, ld64_known_go
-                 ldflags.append("-mllvm:-mcpu=x86-64")
-             # We do not need special flags for arm64.  Hooray for fixed-length
-             # instruction sets.
-         else:
-             num_cores = multiprocessing.cpu_count()
-             if len(value) and value[0].lower() == "full":
-                 cflags.append("-flto")
-             else:
--                cflags.append("-flto=thin")
-+                cflags.append("-flto")
-             cflags.append("-flifetime-dse=1")
- 
-             ldflags.append("-flto=%s" % num_cores)
-             ldflags.append("-flifetime-dse=1")
- 
-         # Tell LTO not to inline functions above a certain size, to mitigate
-         # binary size growth while still getting good performance.
-         # (For hot functions, PGO will put a multiplier on this limit.)
 diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
 --- a/build/pgo/profileserver.py
 +++ b/build/pgo/profileserver.py
@@ -173,35 +154,10 @@ diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz
      CXXFLAGS += ["-Wno-error=shadow"]
 +
 +CXXFLAGS += ['-fno-devirtualize']
-diff --git a/python/mozbuild/mozbuild/build_commands.py b/python/mozbuild/mozbuild/build_commands.py
---- a/python/mozbuild/mozbuild/build_commands.py
-+++ b/python/mozbuild/mozbuild/build_commands.py
-@@ -121,19 +121,18 @@ class Build(MachCommandBase):
-                 silent=not verbose,
-                 ensure_exit_code=False,
-                 append_env=append_env,
-             )
-             if status != 0:
-                 return status
- 
-             pgo_env = os.environ.copy()
--            pgo_env["LLVM_PROFDATA"] = instr.config_environment.substs.get(
--                "LLVM_PROFDATA"
--            )
-+            if instr.config_environment.substs.get('CC_TYPE') != 'gcc':
-+                pgo_env["LLVM_PROFDATA"] = instr.config_environment.substs.get("LLVM_PROFDATA")
-             pgo_env["JARLOG_FILE"] = mozpath.join(orig_topobjdir, "jarlog/en-US.log")
-             pgo_cmd = [
-                 instr.virtualenv_manager.python_path,
-                 mozpath.join(self.topsrcdir, "build/pgo/profileserver.py"),
-             ]
-             subprocess.check_call(
-                 pgo_cmd, cwd=instr.topobjdir, env=ensure_subprocess_env(pgo_env)
-             )
 diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
 --- a/toolkit/components/terminator/nsTerminator.cpp
 +++ b/toolkit/components/terminator/nsTerminator.cpp
-@@ -413,16 +413,21 @@ void nsTerminator::StartWatchdog() {
+@@ -425,16 +425,21 @@ void nsTerminator::StartWatchdog() {
        // Defend against overflow
        crashAfterMS = INT32_MAX;
      } else {

@@ -2,7 +2,7 @@
 # spec file for package MozillaFirefox
 #
 # Copyright (c) 2021 SUSE LLC
-#               2006-2020 Wolfgang Rosenauer <wr@rosenauer.org>
+#               2006-2021 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          84
-%define mainver        %major.0.2
-%define orig_version   84.0.2
+%define major          85
+%define mainver        %major.0
+%define orig_version   85.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -92,7 +92,7 @@ BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.44
+BuildRequires:  cargo >= 1.47
 BuildRequires:  ccache
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
@@ -101,7 +101,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.29
-BuildRequires:  mozilla-nss-devel >= 3.59.1
+BuildRequires:  mozilla-nss-devel >= 3.60.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -111,7 +111,7 @@ BuildRequires:  python36
 BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
-BuildRequires:  rust >= 1.44
+BuildRequires:  rust >= 1.47
 BuildRequires:  rust-cbindgen >= 0.15.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -207,7 +207,6 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch23:        mozilla-pipewire-0-3.patch
 Patch24:        mozilla-bmo1602730.patch
 Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
@@ -347,9 +346,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%if %{with_pipewire0_3}
-%patch23 -p1
-%endif
 %patch24 -p1
 %patch25 -p1
 %patch26 -p1
