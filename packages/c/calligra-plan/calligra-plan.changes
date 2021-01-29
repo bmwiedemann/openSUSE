@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 28 19:24:32 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.3.0
+  * Allow to print a selectable time range
+  * Fit printout to page height
+  * Fit printout to a single page
+  * Print the chart on multiple pages
+  * Uses a color palette suitable for printing on white paper
+  * Use the mouse or mouse wheel to zoom the datetime scale
+- Drop 0001-Fix-build-with-Qt-5.15.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Jun  4 15:50:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to build with Qt 5.15:

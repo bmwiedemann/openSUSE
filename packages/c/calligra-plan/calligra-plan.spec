@@ -1,7 +1,7 @@
 #
 # spec file for package calligra-plan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,25 @@
 
 
 Name:           calligra-plan
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Project Management Application
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/calligra/%{version}/calligraplan-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  perl-base
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KChart)
+BuildRequires:  cmake(KChart) >= 2.8.0
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
@@ -53,7 +52,7 @@ BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KGantt)
+BuildRequires:  cmake(KGantt) >= 2.8.0
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -82,7 +81,8 @@ Plan is the project management application of the Calligra Suite.
 
 %install
 %kf5_makeinstall -C build
-%{kf5_find_lang} %{name}
+%kf5_find_lang %{name}
+%kf5_find_htmldocs
 
 %suse_update_desktop_file -r org.kde.calligraplan       Qt KDE Office ProjectManagement
 %suse_update_desktop_file -r org.kde.calligraplanwork   Qt KDE Office ProjectManagement
@@ -104,6 +104,7 @@ rm %{buildroot}/%{_kf5_libdir}/libplan*.so
 %{_kf5_bindir}/calligraplanwork
 %dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/calligraplan*.kcfg
+%doc %lang(en) %{_kf5_htmldir}/en
 %{_kf5_iconsdir}/hicolor/
 %{_kf5_kxmlguidir}/calligraplan/
 %{_kf5_kxmlguidir}/calligraplanwork/

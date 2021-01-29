@@ -113,4 +113,12 @@
   * 0001-Fix-build-with-Qt-5.15.patch</comment>
     <requestid>811557</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>17ac2ab05243cc84e151c60523505a8f</srcmd5>
+    <version>3.3.0</version>
+    <time>1611928629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867590</requestid>
+  </revision>
 </revisionlist>
