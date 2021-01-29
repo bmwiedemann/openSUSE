@@ -1373,4 +1373,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>837197</requestid>
   </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>35df93109394bab1313cb37824cf04e1</srcmd5>
+    <version>5.55</version>
+    <time>1611928605</time>
+    <user>dimstar_suse</user>
+    <comment>add bluez-test-2to3.diff to get rid of python2 dependency (forwarded request 867144 from seife)</comment>
+    <requestid>867146</requestid>
+  </revision>
 </revisionlist>

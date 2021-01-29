@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 08:48:16 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add bluez-test-2to3.diff to get rid of python2 dependency
+
+-------------------------------------------------------------------
 Thu Sep 17 15:41:31 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - Packaging: remove _service and accompanying README.md,

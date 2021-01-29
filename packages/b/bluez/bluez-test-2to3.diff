@@ -1,0 +1,747 @@
+Index: b/test/agent.py
+===================================================================
+--- a/test/agent.py
++++ b/test/agent.py
+@@ -52,16 +52,16 @@ class Agent(dbus.service.Object):
+ 
+ 	@dbus.service.method(AGENT_IFACE, in_signature="su", out_signature="")
+ 	def DisplayNumeric(self, type, value):
+-		print(set_cyan('DisplayNumeric ('), type,
+-				set_cyan(') number ='), set_green(value))
++		print((set_cyan('DisplayNumeric ('), type,
++				set_cyan(') number ='), set_green(value)))
+ 
+ 	@dbus.service.method(AGENT_IFACE, in_signature="s", out_signature="ay")
+ 	def PromptStatic(self, type):
+ 		static_key = numpy.random.randint(0, 255, 16)
+ 		key_str = array_to_string(static_key)
+ 
+-		print(set_cyan('PromptStatic ('), type, set_cyan(')'))
+-		print(set_cyan('Enter 16 octet key on remote device: '),
+-							set_green(key_str));
++		print((set_cyan('PromptStatic ('), type, set_cyan(')')))
++		print((set_cyan('Enter 16 octet key on remote device: '),
++							set_green(key_str)));
+ 
+ 		return dbus.Array(static_key, signature='y')
+Index: b/test/bluezutils.py
+===================================================================
+--- a/test/bluezutils.py
++++ b/test/bluezutils.py
+@@ -15,7 +15,7 @@ def find_adapter(pattern=None):
+ 
+ def find_adapter_in_objects(objects, pattern=None):
+ 	bus = dbus.SystemBus()
+-	for path, ifaces in objects.items():
++	for path, ifaces in list(objects.items()):
+ 		adapter = ifaces.get(ADAPTER_INTERFACE)
+ 		if adapter is None:
+ 			continue
+@@ -35,7 +35,7 @@ def find_device_in_objects(objects, devi
+ 	if adapter_pattern:
+ 		adapter = find_adapter_in_objects(objects, adapter_pattern)
+ 		path_prefix = adapter.object_path
+-	for path, ifaces in objects.items():
++	for path, ifaces in list(objects.items()):
+ 		device = ifaces.get(DEVICE_INTERFACE)
+ 		if device is None:
+ 			continue
+Index: b/test/example-advertisement
+===================================================================
+--- a/test/example-advertisement
++++ b/test/example-advertisement
+@@ -163,7 +163,7 @@ def find_adapter(bus):
+                                DBUS_OM_IFACE)
+     objects = remote_om.GetManagedObjects()
+ 
+-    for o, props in objects.items():
++    for o, props in list(objects.items()):
+         if LE_ADVERTISING_MANAGER_IFACE in props:
+             return o
+ 
+Index: b/test/example-gatt-client
+===================================================================
+--- a/test/example-gatt-client
++++ b/test/example-gatt-client
+@@ -32,7 +32,7 @@ hr_ctrl_pt_chrc = None
+ 
+ 
+ def generic_error_cb(error):
+-    print('D-Bus call failed: ' + str(error))
++    print(('D-Bus call failed: ' + str(error)))
+     mainloop.quit()
+ 
+ 
+@@ -68,10 +68,10 @@ def sensor_contact_val_to_str(val):
+ 
+ def body_sensor_val_cb(value):
+     if len(value) != 1:
+-        print('Invalid body sensor location value: ' + repr(value))
++        print(('Invalid body sensor location value: ' + repr(value)))
+         return
+ 
+-    print('Body sensor location value: ' + body_sensor_val_to_str(value[0]))
++    print(('Body sensor location value: ' + body_sensor_val_to_str(value[0])))
+ 
+ 
+ def hr_msrmt_start_notify_cb():
+@@ -103,12 +103,12 @@ def hr_msrmt_changed_cb(iface, changed_p
+         hr_msrmt = value[1] | (value[2] << 8)
+         next_ind = 3
+ 
+-    print('\tHR: ' + str(int(hr_msrmt)))
+-    print('\tSensor Contact status: ' +
+-          sensor_contact_val_to_str(sc_status))
++    print(('\tHR: ' + str(int(hr_msrmt))))
++    print(('\tSensor Contact status: ' +
++          sensor_contact_val_to_str(sc_status)))
+ 
+     if ee_status:
+-        print('\tEnergy Expended: ' + str(int(value[next_ind])))
++        print(('\tEnergy Expended: ' + str(int(value[next_ind]))))
+ 
+ 
+ def start_client():
+@@ -146,7 +146,7 @@ def process_chrc(chrc_path):
+         global hr_ctrl_pt_chrc
+         hr_ctrl_pt_chrc = (chrc, chrc_props)
+     else:
+-        print('Unrecognized characteristic: ' + uuid)
++        print(('Unrecognized characteristic: ' + uuid))
+ 
+     return True
+ 
+@@ -161,7 +161,7 @@ def process_hr_service(service_path, chr
+     if uuid != HR_SVC_UUID:
+         return False
+ 
+-    print('Heart Rate Service found: ' + service_path)
++    print(('Heart Rate Service found: ' + service_path))
+ 
+     # Process the characteristics.
+     for chrc_path in chrc_paths:
+@@ -198,14 +198,14 @@ def main():
+     chrcs = []
+ 
+     # List characteristics found
+-    for path, interfaces in objects.items():
+-        if GATT_CHRC_IFACE not in interfaces.keys():
++    for path, interfaces in list(objects.items()):
++        if GATT_CHRC_IFACE not in list(interfaces.keys()):
+             continue
+         chrcs.append(path)
+ 
+     # List sevices found
+-    for path, interfaces in objects.items():
+-        if GATT_SERVICE_IFACE not in interfaces.keys():
++    for path, interfaces in list(objects.items()):
++        if GATT_SERVICE_IFACE not in list(interfaces.keys()):
+             continue
+ 
+         chrc_paths = [d for d in chrcs if d.startswith(path + "/")]
+Index: b/test/example-gatt-server
+===================================================================
+--- a/test/example-gatt-server
++++ b/test/example-gatt-server
+@@ -292,7 +292,7 @@ class HeartRateMeasurementChrc(Character
+                 min(0xffff, self.service.energy_expended + 1)
+         self.hr_ee_count += 1
+ 
+-        print('Updating value: ' + repr(value))
++        print(('Updating value: ' + repr(value)))
+ 
+         self.PropertiesChanged(GATT_CHRC_IFACE, { 'Value': value }, [])
+ 
+@@ -354,7 +354,7 @@ class HeartRateControlPointChrc(Characte
+             raise InvalidValueLengthException()
+ 
+         byte = value[0]
+-        print('Control Point value: ' + repr(byte))
++        print(('Control Point value: ' + repr(byte)))
+ 
+         if byte != 1:
+             raise FailedException("0x80")
+@@ -407,12 +407,12 @@ class BatteryLevelCharacteristic(Charact
+             self.battery_lvl -= 2
+             if self.battery_lvl < 0:
+                 self.battery_lvl = 0
+-        print('Battery Level drained: ' + repr(self.battery_lvl))
++        print(('Battery Level drained: ' + repr(self.battery_lvl)))
+         self.notify_battery_level()
+         return True
+ 
+     def ReadValue(self, options):
+-        print('Battery Level read: ' + repr(self.battery_lvl))
++        print(('Battery Level read: ' + repr(self.battery_lvl)))
+         return [dbus.Byte(self.battery_lvl)]
+ 
+     def StartNotify(self):
+@@ -465,11 +465,11 @@ class TestCharacteristic(Characteristic)
+                 CharacteristicUserDescriptionDescriptor(bus, 1, self))
+ 
+     def ReadValue(self, options):
+-        print('TestCharacteristic Read: ' + repr(self.value))
++        print(('TestCharacteristic Read: ' + repr(self.value)))
+         return self.value
+ 
+     def WriteValue(self, value, options):
+-        print('TestCharacteristic Write: ' + repr(value))
++        print(('TestCharacteristic Write: ' + repr(value)))
+         self.value = value
+ 
+ 
+@@ -537,11 +537,11 @@ class TestEncryptCharacteristic(Characte
+                 CharacteristicUserDescriptionDescriptor(bus, 3, self))
+ 
+     def ReadValue(self, options):
+-        print('TestEncryptCharacteristic Read: ' + repr(self.value))
++        print(('TestEncryptCharacteristic Read: ' + repr(self.value)))
+         return self.value
+ 
+     def WriteValue(self, value, options):
+-        print('TestEncryptCharacteristic Write: ' + repr(value))
++        print(('TestEncryptCharacteristic Write: ' + repr(value)))
+         self.value = value
+ 
+ class TestEncryptDescriptor(Descriptor):
+@@ -583,11 +583,11 @@ class TestSecureCharacteristic(Character
+                 CharacteristicUserDescriptionDescriptor(bus, 3, self))
+ 
+     def ReadValue(self, options):
+-        print('TestSecureCharacteristic Read: ' + repr(self.value))
++        print(('TestSecureCharacteristic Read: ' + repr(self.value)))
+         return self.value
+ 
+     def WriteValue(self, value, options):
+-        print('TestSecureCharacteristic Write: ' + repr(value))
++        print(('TestSecureCharacteristic Write: ' + repr(value)))
+         self.value = value
+ 
+ 
+@@ -615,7 +615,7 @@ def register_app_cb():
+ 
+ 
+ def register_app_error_cb(error):
+-    print('Failed to register application: ' + str(error))
++    print(('Failed to register application: ' + str(error)))
+     mainloop.quit()
+ 
+ 
+@@ -624,8 +624,8 @@ def find_adapter(bus):
+                                DBUS_OM_IFACE)
+     objects = remote_om.GetManagedObjects()
+ 
+-    for o, props in objects.items():
+-        if GATT_MANAGER_IFACE in props.keys():
++    for o, props in list(objects.items()):
++        if GATT_MANAGER_IFACE in list(props.keys()):
+             return o
+ 
+     return None
+Index: b/test/list-devices
+===================================================================
+--- a/test/list-devices
++++ b/test/list-devices
+@@ -31,17 +31,17 @@ def extract_uuids(uuid_list):
+ 
+ objects = manager.GetManagedObjects()
+ 
+-all_devices = (str(path) for path, interfaces in objects.iteritems() if
+-					"org.bluez.Device1" in interfaces.keys())
++all_devices = (str(path) for path, interfaces in objects.items() if
++					"org.bluez.Device1" in list(interfaces.keys()))
+ 
+-for path, interfaces in objects.iteritems():
+-	if "org.bluez.Adapter1" not in interfaces.keys():
++for path, interfaces in objects.items():
++	if "org.bluez.Adapter1" not in list(interfaces.keys()):
+ 		continue
+ 
+ 	print("[ " + path + " ]")
+ 
+ 	properties = interfaces["org.bluez.Adapter1"]
+-	for key in properties.keys():
++	for key in list(properties.keys()):
+ 		value = properties[key]
+ 		if (key == "UUIDs"):
+ 			list = extract_uuids(value)
+@@ -57,7 +57,7 @@ for path, interfaces in objects.iteritem
+ 		dev = objects[dev_path]
+ 		properties = dev["org.bluez.Device1"]
+ 
+-		for key in properties.keys():
++		for key in list(properties.keys()):
+ 			value = properties[key]
+ 			if (key == "UUIDs"):
+ 				list = extract_uuids(value)
+Index: b/test/map-client
+===================================================================
+--- a/test/map-client
++++ b/test/map-client
+@@ -26,15 +26,15 @@ def unwrap(x):
+     printed. Taken from d-feet """
+ 
+     if isinstance(x, list):
+-        return map(unwrap, x)
++        return list(map(unwrap, x))
+ 
+     if isinstance(x, tuple):
+         return tuple(map(unwrap, x))
+ 
+     if isinstance(x, dict):
+-        return dict([(unwrap(k), unwrap(v)) for k, v in x.iteritems()])
++        return dict([(unwrap(k), unwrap(v)) for k, v in x.items()])
+ 
+-    for t in [unicode, str, long, int, float, bool]:
++    for t in [str, str, int, int, float, bool]:
+         if isinstance(x, t):
+             return t(x)
+ 
+Index: b/test/monitor-bluetooth
+===================================================================
+--- a/test/monitor-bluetooth
++++ b/test/monitor-bluetooth
+@@ -13,17 +13,17 @@ relevant_ifaces = [ "org.bluez.Adapter1"
+ 
+ def property_changed(interface, changed, invalidated, path):
+ 	iface = interface[interface.rfind(".") + 1:]
+-	for name, value in changed.iteritems():
++	for name, value in changed.items():
+ 		val = str(value)
+ 		print("{%s.PropertyChanged} [%s] %s = %s" % (iface, path, name,
+ 									val))
+ 
+ def interfaces_added(path, interfaces):
+-	for iface, props in interfaces.iteritems():
++	for iface, props in interfaces.items():
+ 		if not(iface in relevant_ifaces):
+ 			continue
+ 		print("{Added %s} [%s]" % (iface, path))
+-		for name, value in props.iteritems():
++		for name, value in props.items():
+ 			print("      %s = %s" % (name, value))
+ 
+ def interfaces_removed(path, interfaces):
+Index: b/test/pbap-client
+===================================================================
+--- a/test/pbap-client
++++ b/test/pbap-client
+@@ -134,11 +134,11 @@ if  __name__ == '__main__':
+ 			print(header)
+ 		for line in lines:
+ 			print(line),
+-		print
++		print()
+ 
+ 	def test_paths(paths):
+ 		if len(paths) == 0:
+-			print
++			print()
+ 			print("FINISHED")
+ 			mainloop.quit()
+ 			return
+Index: b/test/sap_client.py
+===================================================================
+--- a/test/sap_client.py
++++ b/test/sap_client.py
+@@ -178,7 +178,7 @@ class SAPParam_ConnectionStatus(SAPParam
+ 
+     def __validate(self):
+         if self.value is not None and self.value not in (0x00,  0x01,  0x02,  0x03,  0x04):
+-            print "Warning. ConnectionStatus value in reserved range (0x%x)" % self.value
++            print("Warning. ConnectionStatus value in reserved range (0x%x)" % self.value)
+ 
+     def deserialize(self,  buf):
+         ret = SAPParam.deserialize(self, buf)
+@@ -196,7 +196,7 @@ class SAPParam_ResultCode(SAPParam):
+ 
+     def __validate(self):
+         if self.value is not None and self.value not in (0x00,  0x01,  0x02,  0x03,  0x04,  0x05,  0x06,  0x07):
+-            print "Warning. ResultCode value in reserved range (0x%x)" % self.value
++            print("Warning. ResultCode value in reserved range (0x%x)" % self.value)
+ 
+     def deserialize(self,  buf):
+         ret = SAPParam.deserialize(self, buf)
+@@ -214,7 +214,7 @@ class SAPParam_DisconnectionType(SAPPara
+ 
+     def __validate(self):
+         if self.value is not None and self.value not in (0x00,  0x01):
+-            print "Warning. DisconnectionType value in reserved range (0x%x)" % self.value
++            print("Warning. DisconnectionType value in reserved range (0x%x)" % self.value)
+ 
+     def deserialize(self,  buf):
+         ret = SAPParam.deserialize(self, buf)
+@@ -240,7 +240,7 @@ class SAPParam_StatusChange(SAPParam):
+ 
+     def __validate(self):
+         if self.value is not None and self.value not in (0x00,  0x01,  0x02,  0x03,  0x04,  0x05):
+-            print "Warning. StatusChange value in reserved range (0x%x)" % self.value
++            print("Warning. StatusChange value in reserved range (0x%x)" % self.value)
+ 
+     def deserialize(self,  buf):
+         ret = SAPParam.deserialize(self, buf)
+@@ -258,7 +258,7 @@ class SAPParam_TransportProtocol(SAPPara
+ 
+     def __validate(self):
+         if self.value is not None and self.value not in (0x00,  0x01):
+-            print "Warning. TransportProtoco value in reserved range (0x%x)" % self.value
++            print("Warning. TransportProtoco value in reserved range (0x%x)" % self.value)
+ 
+     def deserialize(self,  buf):
+         ret = SAPParam.deserialize(self, buf)
+@@ -741,7 +741,7 @@ class SAPClient:
+         self.port = first_match["port"]
+         self.host = first_match["host"]
+ 
+-        print "SAP Service found on %s(%s)" % first_match["name"] % self.host
++        print("SAP Service found on %s(%s)" % first_match["name"] % self.host)
+ 
+     def __connectRFCOMM(self):
+         self.sock=BluetoothSocket( RFCOMM )
+@@ -752,19 +752,19 @@ class SAPClient:
+     def __sendMsg(self, msg):
+         if isinstance(msg,  SAPMessage):
+             s = msg.serialize()
+-            print "\tTX: " + msg.getContent()
++            print("\tTX: " + msg.getContent())
+             return self.sock.send(s.tostring())
+ 
+     def __rcvMsg(self,  msg):
+         if isinstance(msg,  SAPMessage):
+-            print "\tRX Wait: %s(id = 0x%.2x)" % (msg.name, msg.id)
++            print("\tRX Wait: %s(id = 0x%.2x)" % (msg.name, msg.id))
+             data = self.sock.recv(self.bufsize)
+             if data:
+                 if msg.deserialize(array('B',data)):
+-                    print "\tRX: len(%d) %s" % (len(data), msg.getContent())
++                    print("\tRX: len(%d) %s" % (len(data), msg.getContent()))
+                     return msg
+                 else:
+-                    print "msg: %s" % array('B',data)
++                    print("msg: %s" % array('B',data))
+                     raise BluetoothError ("Message deserialization failed.")
+             else:
+                 raise BluetoothError ("Timeout. No data received.")
+@@ -810,8 +810,8 @@ class SAPClient:
+                     return False
+             else:
+                 return False
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_disconnectByClient(self, timeout=0):
+@@ -821,8 +821,8 @@ class SAPClient:
+             time.sleep(timeout) # let srv to close rfcomm
+             self.__disconnectRFCOMM()
+             return True
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_disconnectByServer(self, timeout=0):
+@@ -836,8 +836,8 @@ class SAPClient:
+ 
+             return self.proc_disconnectByClient(timeout)
+ 
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_transferAPDU(self,  apdu = "Sample APDU command"):
+@@ -845,8 +845,8 @@ class SAPClient:
+             self.__sendMsg(SAPMessage_TRANSFER_APDU_REQ(apdu))
+             params = self.__rcvMsg(SAPMessage_TRANSFER_APDU_RESP()).getParams()
+             return True
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_transferATR(self):
+@@ -854,8 +854,8 @@ class SAPClient:
+             self.__sendMsg(SAPMessage_TRANSFER_ATR_REQ())
+             params = self.__rcvMsg(SAPMessage_TRANSFER_ATR_RESP()).getParams()
+             return True
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_powerSimOff(self):
+@@ -863,8 +863,8 @@ class SAPClient:
+             self.__sendMsg(SAPMessage_POWER_SIM_OFF_REQ())
+             params = self.__rcvMsg(SAPMessage_POWER_SIM_OFF_RESP()).getParams()
+             return True
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_powerSimOn(self):
+@@ -875,8 +875,8 @@ class SAPClient:
+                 return self.proc_transferATR()
+ 
+             return True
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_resetSim(self):
+@@ -887,23 +887,23 @@ class SAPClient:
+                 return self.proc_transferATR()
+ 
+             return True
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_reportStatus(self):
+         try:
+             params = self.__rcvMsg(SAPMessage_STATUS_IND()).getParams()
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_transferCardReaderStatus(self):
+         try:
+             self.__sendMsg(SAPMessage_TRANSFER_CARD_READER_STATUS_REQ())
+             params = self.__rcvMsg(SAPMessage_TRANSFER_CARD_READER_STATUS_RESP()).getParams()
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_errorResponse(self):
+@@ -912,8 +912,8 @@ class SAPClient:
+             self.__sendMsg(SAPMessage_CONNECT_REQ())
+ 
+             params = self.__rcvMsg(SAPMessage_ERROR_RESP()).getParams()
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+     def proc_setTransportProtocol(self,  protocol = 0):
+@@ -935,8 +935,8 @@ class SAPClient:
+             else:
+                 return False
+ 
+-        except BluetoothError , e:
+-            print "Error. " +str(e)
++        except BluetoothError as e:
++            print("Error. " +str(e))
+             return False
+ 
+ if __name__ == "__main__":
+Index: b/test/simple-agent
+===================================================================
+--- a/test/simple-agent
++++ b/test/simple-agent
+@@ -23,9 +23,9 @@ dev_path = None
+ 
+ def ask(prompt):
+ 	try:
+-		return raw_input(prompt)
+-	except:
+ 		return input(prompt)
++	except:
++		return eval(input(prompt))
+ 
+ def set_trusted(path):
+ 	props = dbus.Interface(bus.get_object("org.bluez", path),
+Index: b/test/simple-player
+===================================================================
+--- a/test/simple-player
++++ b/test/simple-player
+@@ -118,7 +118,7 @@ class InputHandler:
+ 			return True
+ 
+ 		try:
+-			exec "self.player.%s" % s
++			exec("self.player.%s" % s)
+ 		except Exception as e:
+ 			print(e)
+ 			pass
+Index: b/test/test-adapter
+===================================================================
+--- a/test/test-adapter
++++ b/test/test-adapter
+@@ -60,7 +60,7 @@ if (args[0] == "list"):
+ 		om = dbus.Interface(bus.get_object("org.bluez", "/"),
+ 					"org.freedesktop.DBus.ObjectManager")
+ 		objects = om.GetManagedObjects()
+-		for path, interfaces in objects.iteritems():
++		for path, interfaces in objects.items():
+ 			if "org.bluez.Adapter1" not in interfaces:
+ 				continue
+ 
+@@ -68,7 +68,7 @@ if (args[0] == "list"):
+ 
+ 			props = interfaces["org.bluez.Adapter1"]
+ 
+-			for (key, value) in props.items():
++			for (key, value) in list(props.items()):
+ 				if (key == "Class"):
+ 					print("    %s = 0x%06x" % (key, value))
+ 				else:
+Index: b/test/test-device
+===================================================================
+--- a/test/test-device
++++ b/test/test-device
+@@ -48,7 +48,7 @@ if (args[0] == "list"):
+ 					"org.freedesktop.DBus.ObjectManager")
+ 	objects = om.GetManagedObjects()
+ 
+-	for path, interfaces in objects.iteritems():
++	for path, interfaces in objects.items():
+ 		if "org.bluez.Device1" not in interfaces:
+ 			continue
+ 		properties = interfaces["org.bluez.Device1"]
+Index: b/test/test-discovery
+===================================================================
+--- a/test/test-discovery
++++ b/test/test-discovery
+@@ -18,9 +18,9 @@ def print_compact(address, properties):
+ 	name = ""
+ 	address = "<unknown>"
+ 
+-	for key, value in properties.iteritems():
++	for key, value in properties.items():
+ 		if type(value) is dbus.String:
+-			value = unicode(value).encode('ascii', 'replace')
++			value = str(value).encode('ascii', 'replace')
+ 		if (key == "Name"):
+ 			name = value
+ 		elif (key == "Address"):
+@@ -38,10 +38,10 @@ def print_compact(address, properties):
+ def print_normal(address, properties):
+ 	print("[ " + address + " ]")
+ 
+-	for key in properties.keys():
++	for key in list(properties.keys()):
+ 		value = properties[key]
+ 		if type(value) is dbus.String:
+-			value = unicode(value).encode('ascii', 'replace')
++			value = str(value).encode('ascii', 'replace')
+ 		if (key == "Class"):
+ 			print("    %s = 0x%06x" % (key, value))
+ 		else:
+@@ -70,7 +70,7 @@ def interfaces_added(path, interfaces):
+ 
+ 		if compact and skip_dev(dev, properties):
+ 			return
+-		devices[path] = dict(devices[path].items() + properties.items())
++		devices[path] = dict(list(devices[path].items()) + list(properties.items()))
+ 	else:
+ 		devices[path] = properties
+ 
+@@ -93,7 +93,7 @@ def properties_changed(interface, change
+ 
+ 		if compact and skip_dev(dev, changed):
+ 			return
+-		devices[path] = dict(devices[path].items() + changed.items())
++		devices[path] = dict(list(devices[path].items()) + list(changed.items()))
+ 	else:
+ 		devices[path] = changed
+ 
+@@ -152,7 +152,7 @@ if __name__ == '__main__':
+ 	om = dbus.Interface(bus.get_object("org.bluez", "/"),
+ 				"org.freedesktop.DBus.ObjectManager")
+ 	objects = om.GetManagedObjects()
+-	for path, interfaces in objects.iteritems():
++	for path, interfaces in objects.items():
+ 		if "org.bluez.Device1" in interfaces:
+ 			devices[path] = interfaces["org.bluez.Device1"]
+ 
+Index: b/test/test-health
+===================================================================
+--- a/test/test-health
++++ b/test/test-health
+@@ -146,8 +146,8 @@ manager = dbus.Interface(bus.get_object(
+ objects = manager.GetManagedObjects()
+ adapters = []
+ 
+-for path, ifaces in objects.iteritems():
+-	if ifaces.has_key(ADAPTER_INTERFACE):
++for path, ifaces in objects.items():
++	if ADAPTER_INTERFACE in ifaces:
+ 		adapters.append(path)
+ 
+ i = 1
+@@ -171,7 +171,7 @@ while select == None:
+ adapter = dbus.Interface(bus.get_object(BUS_NAME, select), ADAPTER_INTERFACE)
+ 
+ devices = []
+-for path, interfaces in objects.iteritems():
++for path, interfaces in objects.items():
+ 	if "org.bluez.Device1" not in interfaces:
+ 		continue
+ 	properties = interfaces["org.bluez.Device1"]
+Index: b/test/test-health-sink
+===================================================================
+--- a/test/test-health-sink
++++ b/test/test-health-sink
+@@ -40,8 +40,8 @@ manager = dbus.Interface(bus.get_object(
+ objects = manager.GetManagedObjects()
+ adapters = []
+ 
+-for path, ifaces in objects.iteritems():
+-	if ifaces.has_key(ADAPTER_INTERFACE):
++for path, ifaces in objects.items():
++	if ADAPTER_INTERFACE in ifaces:
+ 		adapters.append(path)
+ 
+ i = 1
+@@ -66,7 +66,7 @@ adapter =  dbus.Interface(bus.get_object
+ 						ADAPTER_INTERFACE)
+ 
+ devices = []
+-for path, interfaces in objects.iteritems():
++for path, interfaces in objects.items():
+ 	if "org.bluez.Device1" not in interfaces:
+ 		continue
+ 	properties = interfaces["org.bluez.Device1"]
+Index: b/test/test-hfp
+===================================================================
+--- a/test/test-hfp
++++ b/test/test-hfp
+@@ -185,7 +185,7 @@ class HfpProfile(dbus.service.Object):
+ 		version = 0x0105
+ 		features = 0
+ 		print("NewConnection(%s, %d)" % (path, fd))
+-		for key in properties.keys():
++		for key in list(properties.keys()):
+ 			if key == "Version":
+ 				version = properties[key]
+ 			elif key == "Features":
+Index: b/test/test-profile
+===================================================================
+--- a/test/test-profile
++++ b/test/test-profile
+@@ -33,7 +33,7 @@ class Profile(dbus.service.Object):
+ 	def NewConnection(self, path, fd, properties):
+ 		self.fd = fd.take()
+ 		print("NewConnection(%s, %d)" % (path, self.fd))
+-		for key in properties.keys():
++		for key in list(properties.keys()):
+ 			if key == "Version" or key == "Features":
+ 				print("  %s = 0x%04x" % (key, properties[key]))
+ 			else:
