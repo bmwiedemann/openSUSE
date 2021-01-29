@@ -3,8 +3,8 @@
     <param name="url">git://git.kernel.org/pub/scm/utils/b4/b4.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">@PARENT_TAG@</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">stable-0.6.y</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

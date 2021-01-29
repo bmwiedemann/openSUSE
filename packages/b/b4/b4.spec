@@ -1,7 +1,7 @@
 #
 # spec file for package b4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define version_unconverted 0.6.2
+%define version_unconverted 0.6.2+4
 Name:           b4
-Version:        0.6.2
+Version:        0.6.2+4
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -28,8 +27,10 @@ URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         0001-lift-requests-version-requirement.patch
 BuildArch:      noarch
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
+# for checks
+BuildRequires:  git-core
+BuildRequires:  python3-requests
+BuildRequires:  python3-setuptools
 Requires:       python3-dkimpy >= 1.0.5
 Requires:       python3-dnspython >= 2.0.0
 Requires:       python3-requests >= 2.24.0
@@ -50,22 +51,25 @@ precursor to Lore and Data in the Star Trek universe.
 sed -i.old '1{/#!.*/d}' b4/*.py
 
 %build
-%python_build
+%python3_build
 
 %install
-%python_install
+%python3_install
 mv %{buildroot}/%{_mandir}/man5 %{buildroot}/%{_mandir}/man.5
 
 %check
-%python_exec setup.py check
+python3 setup.py check
 export PYTHONPATH="./"
-%python_exec ./b4/command.py --version >check_version
-echo %version | grep "`cat check_version`"
+THEIRS=`python3 ./b4/command.py --version`
+OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" b4/__init__.py`
+test "$THEIRS" = "$OURS"
+python3 ./b4/command.py --help |grep -q 'mbox,am,attest'
+python3 ./b4/command.py mbox abc |& grep -q 'Looking up https://lore.kernel.org/r/abc'
 
 %files
 %doc README.rst
 %license COPYING
-%{_bindir}/{%name}
+%{_bindir}/%{name}
 %dir %{_mandir}/man.5/
 %{_mandir}/man.5/b4.5.gz
 %{python_sitelib}/%{name}*
