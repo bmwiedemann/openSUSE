@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 27 10:59:26 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Do not propose resume kernel parameter when the swap is smaller
+  than the RAM size (bsc#1180977).
+- 4.3.20
+
+-------------------------------------------------------------------
+Tue Jan 26 16:54:23 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Ensure the proposal is re-calculated when the partitioning plan
+  has changed (bsc#1180218 and bsc#1180976)
+- 4.3.19
+
+-------------------------------------------------------------------
 Thu Jan 21 14:53:55 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Fix unit tests (bsc#1181175).
