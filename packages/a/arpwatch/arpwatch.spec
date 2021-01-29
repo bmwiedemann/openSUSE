@@ -43,6 +43,7 @@ Patch9:         getnameinfo.patch
 # PATCH-Fix-Upstream -- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=625796#20 -- seife+obs@b1-systems.com
 Patch10:        0001-Ignore-802.1Q-frames.patch
 Patch11:        report-iface.patch
+Patch12:        arpwatch-MAC.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  postfix
 BuildRequires:  systemd-rpm-macros
@@ -76,6 +77,7 @@ needed if you want to build the arpwatch-ethercodes package.
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 %configure
@@ -110,18 +112,18 @@ mkdir %{buildroot}%{_bindir}
 install -m 0755 arp2ethers %{buildroot}%{_bindir}
 
 %pre
-%service_add_pre arpwatch.service arpwatch@.service
+%service_add_pre arpwatch.service
 
 %preun
-%service_del_preun arpwatch.service arpwatch@.service
+%service_del_preun arpwatch.service
 
 %post
-%service_add_post arpwatch.service arpwatch@.service
 %fillup_only
 %tmpfiles_create %{_tmpfilesdir}/arpwatch.conf
+%service_add_post arpwatch.service
 
 %postun
-%service_del_postun arpwatch.service arpwatch@.service
+%service_del_postun arpwatch.service
 
 %files
 %{_unitdir}/arpwatch.service

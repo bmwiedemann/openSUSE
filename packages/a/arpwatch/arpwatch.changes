@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 28 17:17:17 UTC 2021 - olaf@aepfle.de
+
+- report MAC as HH:HH:HH:HH:HH:HH with arpwatch-MAC.patch
+- remove unused ARPWATCH_INTERFACE= from sysconfig template
+- schedule arpwatch.service after exim/postfix/sendmail
+- remove arpwatch@.service from postinstall scriptlets to avoid warning
+  in case no instance is configured
+- move service_add_post to end of script because the macro exit
+  the script early
+
+-------------------------------------------------------------------
 Thu Jan 28 10:22:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Include arp2ethers script (jsc#SLE-17224)
