@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 26 14:11:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace system-user-nobody with user(nobody): be resilient to
+  package name changes.
+
+-------------------------------------------------------------------
 Thu Mar  5 15:16:09 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.2.8

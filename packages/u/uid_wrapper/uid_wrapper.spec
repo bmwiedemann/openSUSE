@@ -1,7 +1,7 @@
 #
 # spec file for package uid_wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Source3:        uid_wrapper.keyring
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkgconf
-BuildRequires:  system-user-nobody
+BuildRequires:  user(nobody)
 
 Recommends:     cmake
 Recommends:     pkgconf
