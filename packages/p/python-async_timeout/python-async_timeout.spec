@@ -1,7 +1,7 @@
 #
 # spec file for package python-async_timeout
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%ifpython3
-Provides:       python3-async-timeout = %{version}
-Obsoletes:      python3-async-timeout < %{version}
-%endif
+Provides:       python-async-timeout = %{version}
+Obsoletes:      python-async-timeout < %{version}
 %python_subpackages
 
 %description
