@@ -499,4 +499,23 @@
   + Patch: 0009-Add-support-for-disabling-user-registration.patch</comment>
     <requestid>861032</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aa53362568e0162020bb7aa9bdd76fb4</srcmd5>
+    <version>5.13.1</version>
+    <time>1612011390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.13.1
+  + Add the api_project_hascommit endpoint to the API doc
+  + Do not return a 500 error when the OpenID provider doesn't provide an email
+  + Fix bug in the default hook
+  + When failing to find a git repo, log where pagure looked
+  + Get the default branch of the target repo when linking for new PR
+  + Add an hascommit API endpoint
+  + Fixing sample input and output for alias related api
+  + Add missing API endpoints related to git aliases and re-order a little
+  + Add support for chardet 4.0+
+  + Fix support for cchardet
+  + Make the token_id column of the commit_flags table nullable</comment>
+    <requestid>867751</requestid>
+  </revision>
 </revisionlist>
