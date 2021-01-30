@@ -181,6 +181,7 @@ unsorted:
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
   - PackageKit-Qt-devel 
+  - PackageKit-backend-dnf 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -3384,20 +3385,20 @@ unsorted:
   - fftw3-mpi-devel 
   - fftw3-openmp-devel 
   - fftw3-threads-devel 
-  - fftw3_3_3_8-gnu-hpc-devel 
-  - fftw3_3_3_8-gnu-hpc-devel-static 
-  - fftw3_3_3_8-gnu-mpich-hpc-devel 
-  - fftw3_3_3_8-gnu-mpich-hpc-devel-static 
-  - fftw3_3_3_8-gnu-mvapich2-hpc-devel 
-  - fftw3_3_3_8-gnu-mvapich2-hpc-devel-static 
-  - fftw3_3_3_8-gnu-openmpi1-hpc-devel 
-  - fftw3_3_3_8-gnu-openmpi1-hpc-devel-static 
-  - fftw3_3_3_8-gnu-openmpi2-hpc-devel 
-  - fftw3_3_3_8-gnu-openmpi2-hpc-devel-static 
-  - fftw3_3_3_8-gnu-openmpi3-hpc-devel 
-  - fftw3_3_3_8-gnu-openmpi3-hpc-devel-static 
-  - fftw3_3_3_8-gnu-openmpi4-hpc-devel 
-  - fftw3_3_3_8-gnu-openmpi4-hpc-devel-static 
+  - fftw3_3_3_9-gnu-hpc-devel 
+  - fftw3_3_3_9-gnu-hpc-devel-static 
+  - fftw3_3_3_9-gnu-mpich-hpc-devel 
+  - fftw3_3_3_9-gnu-mpich-hpc-devel-static 
+  - fftw3_3_3_9-gnu-mvapich2-hpc-devel 
+  - fftw3_3_3_9-gnu-mvapich2-hpc-devel-static 
+  - fftw3_3_3_9-gnu-openmpi1-hpc-devel 
+  - fftw3_3_3_9-gnu-openmpi1-hpc-devel-static 
+  - fftw3_3_3_9-gnu-openmpi2-hpc-devel 
+  - fftw3_3_3_9-gnu-openmpi2-hpc-devel-static 
+  - fftw3_3_3_9-gnu-openmpi3-hpc-devel 
+  - fftw3_3_3_9-gnu-openmpi3-hpc-devel-static 
+  - fftw3_3_3_9-gnu-openmpi4-hpc-devel 
+  - fftw3_3_3_9-gnu-openmpi4-hpc-devel-static 
   - fhourstones 
   - fhs 
   - fife-devel 
@@ -6585,12 +6586,12 @@ unsorted:
   - hypre-openmpi2-devel 
   - hypre-openmpi3-devel 
   - hypre-openmpi4-devel 
-  - hypre_2_18_2-gnu-mpich-hpc-devel 
-  - hypre_2_18_2-gnu-mvapich2-hpc-devel 
-  - hypre_2_18_2-gnu-openmpi1-hpc-devel 
-  - hypre_2_18_2-gnu-openmpi2-hpc-devel 
-  - hypre_2_18_2-gnu-openmpi3-hpc-devel 
-  - hypre_2_18_2-gnu-openmpi4-hpc-devel 
+  - hypre_2_20_0-gnu-mpich-hpc-devel 
+  - hypre_2_20_0-gnu-mvapich2-hpc-devel 
+  - hypre_2_20_0-gnu-openmpi1-hpc-devel 
+  - hypre_2_20_0-gnu-openmpi2-hpc-devel 
+  - hypre_2_20_0-gnu-openmpi3-hpc-devel 
+  - hypre_2_20_0-gnu-openmpi4-hpc-devel 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -7792,16 +7793,15 @@ unsorted:
   - kiten-devel 
   - kitinerary-devel 
   - kitty 
-  - kiwi-boot-descriptions 
-  - kiwi-filesystem-requires 
-  - kiwi-image-docker-requires 
-  - kiwi-image-iso-requires 
-  - kiwi-image-oem-requires 
-  - kiwi-image-pxe-requires 
-  - kiwi-image-tbz-requires 
-  - kiwi-image-vmx-requires 
-  - kiwi-image-wsl-requires 
   - kiwi-man-pages 
+  - kiwi-systemdeps 
+  - kiwi-systemdeps-bootloaders 
+  - kiwi-systemdeps-containers 
+  - kiwi-systemdeps-core 
+  - kiwi-systemdeps-disk-images 
+  - kiwi-systemdeps-filesystems 
+  - kiwi-systemdeps-image-validation 
+  - kiwi-systemdeps-iso-media 
   - kiwi-templates-JeOS 
   - kiwi-tools 
   - kjobwidgets-devel 
@@ -8098,6 +8098,7 @@ unsorted:
   - kvantum-qt5-32bit: [x86_64] 
   - kvantum-themes 
   - kvirc 
+  - kvm_stat-rebuild 
   - kwallet-devel 
   - kwallet-devel-32bit: [x86_64] 
   - kwave 
@@ -8469,26 +8470,26 @@ unsorted:
   - libHYPRE-gnu-openmpi2-hpc 
   - libHYPRE-gnu-openmpi3-hpc 
   - libHYPRE-gnu-openmpi4-hpc 
-  - libHYPRE2_18_2 
-  - libHYPRE2_18_2-32bit: [x86_64] 
-  - libHYPRE2_18_2-mpich 
-  - libHYPRE2_18_2-mpich-32bit: [x86_64] 
-  - libHYPRE2_18_2-mvapich2 
-  - libHYPRE2_18_2-mvapich2-32bit: [x86_64] 
-  - libHYPRE2_18_2-openmpi1 
-  - libHYPRE2_18_2-openmpi1-32bit: [x86_64] 
-  - libHYPRE2_18_2-openmpi2 
-  - libHYPRE2_18_2-openmpi2-32bit: [x86_64] 
-  - libHYPRE2_18_2-openmpi3 
-  - libHYPRE2_18_2-openmpi3-32bit: [x86_64] 
-  - libHYPRE2_18_2-openmpi4 
-  - libHYPRE2_18_2-openmpi4-32bit: [x86_64] 
-  - libHYPRE_2_18_2-gnu-mpich-hpc 
-  - libHYPRE_2_18_2-gnu-mvapich2-hpc 
-  - libHYPRE_2_18_2-gnu-openmpi1-hpc 
-  - libHYPRE_2_18_2-gnu-openmpi2-hpc 
-  - libHYPRE_2_18_2-gnu-openmpi3-hpc 
-  - libHYPRE_2_18_2-gnu-openmpi4-hpc 
+  - libHYPRE2_20_0 
+  - libHYPRE2_20_0-32bit: [x86_64] 
+  - libHYPRE2_20_0-mpich 
+  - libHYPRE2_20_0-mpich-32bit: [x86_64] 
+  - libHYPRE2_20_0-mvapich2 
+  - libHYPRE2_20_0-mvapich2-32bit: [x86_64] 
+  - libHYPRE2_20_0-openmpi1 
+  - libHYPRE2_20_0-openmpi1-32bit: [x86_64] 
+  - libHYPRE2_20_0-openmpi2 
+  - libHYPRE2_20_0-openmpi2-32bit: [x86_64] 
+  - libHYPRE2_20_0-openmpi3 
+  - libHYPRE2_20_0-openmpi3-32bit: [x86_64] 
+  - libHYPRE2_20_0-openmpi4 
+  - libHYPRE2_20_0-openmpi4-32bit: [x86_64] 
+  - libHYPRE_2_20_0-gnu-mpich-hpc 
+  - libHYPRE_2_20_0-gnu-mvapich2-hpc 
+  - libHYPRE_2_20_0-gnu-openmpi1-hpc 
+  - libHYPRE_2_20_0-gnu-openmpi2-hpc 
+  - libHYPRE_2_20_0-gnu-openmpi3-hpc 
+  - libHYPRE_2_20_0-gnu-openmpi4-hpc 
   - libHalf-2_5-25-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
@@ -9955,12 +9956,12 @@ unsorted:
   - libcxx-gtk-utils-3-devel 
   - libcxx-gtk-utils-4-2_2-0 
   - libcxx-gtk-utils-4-devel 
-  - libcxxtools-bin9 
-  - libcxxtools-http9 
-  - libcxxtools-json9 
-  - libcxxtools-unit9 
-  - libcxxtools-xmlrpc9 
-  - libcxxtools9 
+  - libcxxtools-bin10 
+  - libcxxtools-http10 
+  - libcxxtools-json10 
+  - libcxxtools-unit10 
+  - libcxxtools-xmlrpc10 
+  - libcxxtools10 
   - libczmq4 
   - libd0_blind_id0 
   - libd0_rijndael0 
@@ -10069,8 +10070,9 @@ unsorted:
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
+  - libdnf2 
   - libdnnl1: [x86_64] 
-  - libdns1610-32bit: [x86_64] 
+  - libdns1611-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
@@ -10311,13 +10313,13 @@ unsorted:
   - libfftw3-gnu-openmpi2-hpc 
   - libfftw3-gnu-openmpi3-hpc 
   - libfftw3-gnu-openmpi4-hpc 
-  - libfftw3_3_3_8-gnu-hpc 
-  - libfftw3_3_3_8-gnu-mpich-hpc 
-  - libfftw3_3_3_8-gnu-mvapich2-hpc 
-  - libfftw3_3_3_8-gnu-openmpi1-hpc 
-  - libfftw3_3_3_8-gnu-openmpi2-hpc 
-  - libfftw3_3_3_8-gnu-openmpi3-hpc 
-  - libfftw3_3_3_8-gnu-openmpi4-hpc 
+  - libfftw3_3_3_9-gnu-hpc 
+  - libfftw3_3_3_9-gnu-mpich-hpc 
+  - libfftw3_3_3_9-gnu-mvapich2-hpc 
+  - libfftw3_3_3_9-gnu-openmpi1-hpc 
+  - libfftw3_3_3_9-gnu-openmpi2-hpc 
+  - libfftw3_3_3_9-gnu-openmpi3-hpc 
+  - libfftw3_3_3_9-gnu-openmpi4-hpc 
   - libfftw3_mpi3 
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
@@ -11189,9 +11191,9 @@ unsorted:
   - libirrecord0 
   - libirs-devel 
   - libirs1601-32bit: [x86_64] 
-  - libisc1608-32bit: [x86_64] 
+  - libisc1609-32bit: [x86_64] 
   - libisccc1600-32bit: [x86_64] 
-  - libisccfg1602-32bit: [x86_64] 
+  - libisccfg1603-32bit: [x86_64] 
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
@@ -11986,7 +11988,7 @@ unsorted:
   - libnova-devel 
   - libnpupnp-devel 
   - libnpupnp4 
-  - libns1606-32bit: [x86_64] 
+  - libns1607-32bit: [x86_64] 
   - libnscd-devel 
   - libnsl-devel 
   - libnss_slurm2: [x86_64] 
@@ -12566,16 +12568,19 @@ unsorted:
   - libptscotch-gnu-openmpi1-hpc 
   - libptscotch-gnu-openmpi2-hpc 
   - libptscotch-gnu-openmpi3-hpc 
+  - libptscotch-gnu-openmpi4-hpc 
   - libptscotch0-mpich 
   - libptscotch0-mvapich2 
   - libptscotch0-openmpi1 
   - libptscotch0-openmpi2 
   - libptscotch0-openmpi3 
-  - libptscotch_6_0_9-gnu-mpich-hpc 
-  - libptscotch_6_0_9-gnu-mvapich2-hpc 
-  - libptscotch_6_0_9-gnu-openmpi1-hpc 
-  - libptscotch_6_0_9-gnu-openmpi2-hpc 
-  - libptscotch_6_0_9-gnu-openmpi3-hpc 
+  - libptscotch0-openmpi4 
+  - libptscotch_6_1_0-gnu-mpich-hpc 
+  - libptscotch_6_1_0-gnu-mvapich2-hpc 
+  - libptscotch_6_1_0-gnu-openmpi1-hpc 
+  - libptscotch_6_1_0-gnu-openmpi2-hpc 
+  - libptscotch_6_1_0-gnu-openmpi3-hpc 
+  - libptscotch_6_1_0-gnu-openmpi4-hpc 
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
@@ -13020,6 +13025,7 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
+  - librepo0 
   - librepository-javadoc 
   - librepute1 
   - libressl-devel 
@@ -13652,7 +13658,7 @@ unsorted:
   - libtirpc-devel 
   - libtls20-32bit: [x86_64] 
   - libtntdb-devel 
-  - libtntdb4 
+  - libtntdb5 
   - libtolua++-5_1-1 
   - libtolua++-5_1-devel 
   - libtolua++-5_3-1 
@@ -20306,6 +20312,8 @@ unsorted:
   - ptscotch-gnu-openmpi2-hpc-devel 
   - ptscotch-gnu-openmpi3-hpc 
   - ptscotch-gnu-openmpi3-hpc-devel 
+  - ptscotch-gnu-openmpi4-hpc 
+  - ptscotch-gnu-openmpi4-hpc-devel 
   - ptscotch-mpich 
   - ptscotch-mpich-devel 
   - ptscotch-mpich-devel-static 
@@ -20321,26 +20329,33 @@ unsorted:
   - ptscotch-openmpi3 
   - ptscotch-openmpi3-devel 
   - ptscotch-openmpi3-devel-static 
+  - ptscotch-openmpi4 
+  - ptscotch-openmpi4-devel 
+  - ptscotch-openmpi4-devel-static 
   - ptscotch-parmetis-mpich-devel 
   - ptscotch-parmetis-mvapich2-devel 
   - ptscotch-parmetis-openmpi1-devel 
   - ptscotch-parmetis-openmpi2-devel 
   - ptscotch-parmetis-openmpi3-devel 
-  - ptscotch_6_0_9-gnu-mpich-hpc 
-  - ptscotch_6_0_9-gnu-mpich-hpc-devel 
-  - ptscotch_6_0_9-gnu-mpich-hpc-devel-static 
-  - ptscotch_6_0_9-gnu-mvapich2-hpc 
-  - ptscotch_6_0_9-gnu-mvapich2-hpc-devel 
-  - ptscotch_6_0_9-gnu-mvapich2-hpc-devel-static 
-  - ptscotch_6_0_9-gnu-openmpi1-hpc 
-  - ptscotch_6_0_9-gnu-openmpi1-hpc-devel 
-  - ptscotch_6_0_9-gnu-openmpi1-hpc-devel-static 
-  - ptscotch_6_0_9-gnu-openmpi2-hpc 
-  - ptscotch_6_0_9-gnu-openmpi2-hpc-devel 
-  - ptscotch_6_0_9-gnu-openmpi2-hpc-devel-static 
-  - ptscotch_6_0_9-gnu-openmpi3-hpc 
-  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel 
-  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel-static 
+  - ptscotch-parmetis-openmpi4-devel 
+  - ptscotch_6_1_0-gnu-mpich-hpc 
+  - ptscotch_6_1_0-gnu-mpich-hpc-devel 
+  - ptscotch_6_1_0-gnu-mpich-hpc-devel-static 
+  - ptscotch_6_1_0-gnu-mvapich2-hpc 
+  - ptscotch_6_1_0-gnu-mvapich2-hpc-devel 
+  - ptscotch_6_1_0-gnu-mvapich2-hpc-devel-static 
+  - ptscotch_6_1_0-gnu-openmpi1-hpc 
+  - ptscotch_6_1_0-gnu-openmpi1-hpc-devel 
+  - ptscotch_6_1_0-gnu-openmpi1-hpc-devel-static 
+  - ptscotch_6_1_0-gnu-openmpi2-hpc 
+  - ptscotch_6_1_0-gnu-openmpi2-hpc-devel 
+  - ptscotch_6_1_0-gnu-openmpi2-hpc-devel-static 
+  - ptscotch_6_1_0-gnu-openmpi3-hpc 
+  - ptscotch_6_1_0-gnu-openmpi3-hpc-devel 
+  - ptscotch_6_1_0-gnu-openmpi3-hpc-devel-static 
+  - ptscotch_6_1_0-gnu-openmpi4-hpc 
+  - ptscotch_6_1_0-gnu-openmpi4-hpc-devel 
+  - ptscotch_6_1_0-gnu-openmpi4-hpc-devel-static 
   - pugixml-devel 
   - pulseaudio-equalizer 
   - pulseaudio-esound-compat 
