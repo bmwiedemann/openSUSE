@@ -1,8 +1,8 @@
 #
 # spec file for package sscep
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 
 Name:           sscep
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        A command line client for the SCEP protocol
 License:        BSD-3-Clause-Attribution AND OpenSSL
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/certnanny/sscep
 Source:         https://github.com/certnanny/sscep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
 
 %description
@@ -35,18 +37,17 @@ modifications for engine support & more.
 %setup -q
 
 %build
-./Configure
-%make_build sscep_dyn CFLAGS="%{optflags} -fcommon"
+export CFLAGS="%optflags -fcommon"
+%cmake
 
 %install
+%cmake_install
 install -Dpm 0644 sscep.conf %{buildroot}%{_sysconfdir}/sscep/sscep.conf
-install -d %{buildroot}%{_bindir}
-install -pm 0755 mkrequest %{buildroot}%{_bindir}
-install -pm 0755 sscep_dyn %{buildroot}%{_bindir}/sscep
+install -Dpm 0755 mkrequest %{buildroot}%{_bindir}
 
 %files
-%license COPYRIGHT
-%doc HISTORY TODO README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %dir %{_sysconfdir}/sscep/
 %config(noreplace) %{_sysconfdir}/sscep/sscep.conf
 %{_bindir}/sscep

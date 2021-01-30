@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  8 16:11:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  * Added support for HTTP/1.1
+  * Added support for IPv6
+  * Added GetCACaps (getcaps) operation
+  * Added support for POST method for PKI operations
+  * Added options for additional hashing algorithms
+  * Added support for autoconf/automake and CMake
+  * Changed project directory layout to match the conventions
+  * Fixed encoding of 'issuer and subject' and 'issuer and serial'
+  * Fixed crashes when sscep is used with an OpenSSL engine
+  * Replaced GNU getopt by a BSD licensed alternative
+
+-------------------------------------------------------------------
 Sun Jun  7 19:17:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon to workaround GCC10 compilation issues
