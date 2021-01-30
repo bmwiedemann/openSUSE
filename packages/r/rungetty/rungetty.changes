@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 14 14:14:14 UTC 2020 - olaf@aepfle.de
+
+- Remove usage of sys_errlist with rungetty.patch
+
+-------------------------------------------------------------------
 Fri Jun 29 08:58:20 UTC 2012 - cfarrell@suse.com
 
 - license update: GPL-2.0+

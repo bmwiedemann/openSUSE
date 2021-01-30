@@ -23,8 +23,8 @@ Summary:        Minimal Getty for Virtual Consoles
 License:        GPL-2.0+
 Group:          System/Base
 Provides:       sysvinit:/sbin/mingetty
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%{version}.tar.bz2
+Patch0:         rungetty.patch
 
 %description
 rungetty might be the getty you were looking for when you want to run any
@@ -38,19 +38,17 @@ installing the package.  rungetty is based on mingetty and therefore not
 suitable for serial use.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make RPM_OPT_FLAGS="%optflags -D_FILE_OFFSET_BITS=64" DEFTERM=linux
+make CFLAGS="%optflags -D_FILE_OFFSET_BITS=64"
 
 %install
 mkdir -p %buildroot{/sbin,%{_mandir}/man8}
-# make install MANPATH=%buildroot/%{_mandir} DESTDIR=%buildroot
 install -m 755 rungetty %buildroot/sbin/
 install -m 644 rungetty.8 %buildroot/%{_mandir}/man8/
 
 %files
-%defattr(-,root,root,755)
 %doc %{_mandir}/man8/rungetty.8.gz
 /sbin/rungetty
 
