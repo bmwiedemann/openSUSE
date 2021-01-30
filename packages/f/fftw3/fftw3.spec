@@ -1,7 +1,7 @@
 #
 # spec file for package fftw3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 %define bname fftw
 %define BNAME FFTW
 %define pname fftw3
-%define vers 3.3.8
-%define _ver 3_3_8
+%define vers 3.3.9
+%define _ver 3_3_9
 
 #For non HPC builds only
 %define mpi_implem openmpi2
