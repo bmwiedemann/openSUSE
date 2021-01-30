@@ -87,6 +87,8 @@ Patch31:        %{name}-update-whitepaper-URL.patch
 Patch32:        %{name}-Fix-kmem-i-option-on-Linux-5.9-rc1-and-later-kernels.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/46cfe1f5aed3b1950df505d71553c13abab060a6.patch
 Patch33:        %{name}-task.c-avoid-unnecessary-cpu-cycles-in-stkptr_to_tas.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/fdb41f0b6fa42a692e5fa39da3801f6ca18e8a6b.patch
+Patch34:        %{name}-xen-increase-__physical_mask_shift_xen-to-52.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/e770735200c02ac2414c394ea6ec5f7f033efe64.patch
 Patch91:        %{name}-gdb-fix-aarch64.patch
@@ -289,6 +291,7 @@ Authors:
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif

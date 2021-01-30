@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 28 11:49:06 UTC 2021 - Jiri Bohac <jbohac@suse.com>
+
+- Added crash-xen-increase-__physical_mask_shift_xen-to-52.patch
+  (bsc#1177050)
+
+-------------------------------------------------------------------
 Wed Jan  6 12:00:52 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix "kmem -i" option on Linux 5.9-rc1 and later kernels (bsc#1179970 ltc#188981).
