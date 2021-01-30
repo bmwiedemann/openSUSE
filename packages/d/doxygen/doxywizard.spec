@@ -1,7 +1,7 @@
 #
 # spec file for package doxywizard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           doxywizard
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Tools/Doc Generators
 URL:            https://www.doxygen.nl/
-Source:         http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
+Source:         https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
 Patch3:         vhdlparser-no-return.patch

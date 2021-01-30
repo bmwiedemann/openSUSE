@@ -1,7 +1,7 @@
 #
 # spec file for package doxygen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %endif
 
 Name:           doxygen
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Tools/Doc Generators
 URL:            https://www.doxygen.nl/
-Source0:        http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
+Source0:        https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 # suse specific
 Patch0:         %{name}-modify_footer.patch
 # suse specific

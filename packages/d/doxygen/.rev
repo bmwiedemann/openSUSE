@@ -970,4 +970,34 @@
   - 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch (upstreamed)</comment>
     <requestid>859036</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>7f77a1bf73398a6457f511a829372fbc</srcmd5>
+    <version>1.9.1</version>
+    <time>1612011331</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.1:
+  Bugfixes:
+  * issue #8282: Error on ALIAS declaration without quotes [view]
+  * issue #8286: Incorrect processing of VHDL strings [view], [view]
+  * issue #8291: Doxygen crash on Windows when INLINE_SIMPLE_STRUCTS=YES [view]
+  * issue #8294: Draw sibling dependee directories within same parent directoy in directory dependency graph. [view], [view], [view], [view], and [view]
+  * issue #8295: segmentation fault [view]
+  * issue #8296: LaTeX Error: File ... not found. [view], and [view]
+  * issue #8297: fails to parse list of INPUT files [view]
+  * issue #8300: File naming changed in Doxygen 1.9.0 [view]
+  * issue #8304: compilation failure [view]
+  * issue #8311: Markdown table: double-quote ruins the output [view]
+  * Fix cases where classes inside inline namespaces could lead to crashes [view]
+  * Fix coverity dead-code warning [view]
+  * Fix potential crash with inline namespace [view]
+  * Incorrect entries on treeview [view]
+  * Layout in doxywizard documentation [view]
+  * Various fixes based on coverity scan results [view]
+  * bug_549093 Regular HTML comments are removed. [view]
+  Features:
+  * Add a CLANG_ADD_INC_PATHS option
+  * Add some missing info to the XML output
+  Refactorings and cleanups (forwarded request 866678 from dirkmueller)</comment>
+    <requestid>866736</requestid>
+  </revision>
 </revisionlist>
