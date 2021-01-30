@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 29 16:32:15 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 2.7.5
+
+  Upstream bugfix release, see for details:
+  https://github.com/owncloud/client/releases/tag/v2.7.5 
+
+-------------------------------------------------------------------
 Sun Jan 17 13:59:57 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add quotes in expression: Fix build with RPM 4.16.
