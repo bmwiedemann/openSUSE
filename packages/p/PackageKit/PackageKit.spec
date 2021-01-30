@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # Only make DNF backend available openSUSE Leap 15.1+
 %if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
 %bcond_without dnf
-%bcond_without cnf
+%bcond_with cnf
 %else
 %bcond_with dnf
 %bcond_with cnf
