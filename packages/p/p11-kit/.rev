@@ -350,4 +350,12 @@
     <comment>- avoid bareword to fix build failure</comment>
     <requestid>839597</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b448347e0e73866395ab376356ab1eb2</srcmd5>
+    <version>0.23.22</version>
+    <time>1612011333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866737</requestid>
+  </revision>
 </revisionlist>

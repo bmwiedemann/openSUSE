@@ -1,7 +1,7 @@
 #
 # spec file for package p11-kit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
 Name:           p11-kit
-Version:        0.23.20
+Version:        0.23.22
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause
@@ -134,14 +134,12 @@ ln -s ../../sbin/update-ca-certificates %{buildroot}%{_libexecdir}/%{name}/p11-k
 export NO_BRP_STALE_LINK_ERROR=yes # *grr*
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libp11-kit0 -p /sbin/ldconfig
-
 %postun -n libp11-kit0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %dir %{_libdir}/pkcs11
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
@@ -160,7 +158,6 @@ make %{?_smp_mflags} check
 %{_libexecdir}/%{name}/p11-kit-extract-trust
 
 %files -n libp11-kit0
-%defattr(-,root,root)
 %license COPYING
 # Package the example conf file as documentation. Like this we're sure that we will
 # not introduce conflicts with this version of the library and future ones.
@@ -172,15 +169,13 @@ make %{?_smp_mflags} check
 %{_libdir}/p11-kit-proxy.so
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/p11-kit
 %{_bindir}/trust
-%{_mandir}/man1/trust.1.gz
-%{_mandir}/man5/pkcs11.conf.5.gz
-%{_mandir}/man8/p11-kit.8.gz
+%{_mandir}/man1/trust.1%{?ext_man}
+%{_mandir}/man5/pkcs11.conf.5%{?ext_man}
+%{_mandir}/man8/p11-kit.8%{?ext_man}
 
 %files devel
-%defattr(-,root,root)
 %{_rpmmacrodir}/macros.%{name}
 %{_includedir}/p11-kit-1/
 %{_libdir}/libp11-kit.so
@@ -190,7 +185,6 @@ make %{?_smp_mflags} check
 %doc %{_datadir}/gtk-doc/html/p11-kit/
 
 %files nss-trust
-%defattr(-,root,root)
 %{_libdir}/libnssckbi.so
 
 %files server
