@@ -6,6 +6,7 @@ if [ ${#*} = 1 ] ; then
             -print0 | xargs -r0 rm -rv || :
 	# remove more strict in the docu
         find $1/doc \( -name Makefile.ri -o -name ext -o -name page\*.ri \) -print0 | xargs -r0 rm -rv || :
+        find $1 -type d -name '.gem.*' -print0 | xargs -r0 rm -rv || :
     else
         echo "'$1' does not exists or is not a directory! Exiting." >&2
         exit 1

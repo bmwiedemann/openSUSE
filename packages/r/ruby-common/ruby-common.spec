@@ -1,7 +1,7 @@
 #
 # spec file for package ruby-common
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ Source17:       rubygems_bundled.attr
 Summary:        Collection of scripts and macros for ruby packaging
 License:        MIT
 Group:          Development/Languages/Ruby
-Url:            https://github.com/openSUSE/ruby-packaging/
+URL:            https://github.com/openSUSE/ruby-packaging/
 Requires:       /usr/bin/getopt
 Requires:       rubygem(gem2rpm)
 Recommends:     rubygem(%{rb_default_ruby_abi}:gem2rpm)

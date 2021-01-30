@@ -104,7 +104,7 @@ def register_gemspec_from_file(gemspecs, rubyabi, file)
   end
 
   gemspecs << [ rubyabi, spec ]
-end  
+end
 
 def rubyabi_from_path(path)
   m = path.match($rubyapi_re)

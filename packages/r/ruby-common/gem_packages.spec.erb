@@ -7,7 +7,7 @@
   def self.patch_mod_full_name(path, mod_full_name)
     path.gsub(/\/-/, "/#{mod_full_name}")
   end
-  
+
   def self.patch_libdir(path)
     # path ? path.gsub(/\/usr\/lib(64)?/, '%{_libdir}') : path
     path
@@ -17,7 +17,7 @@
     return nil unless Gem.ruby_engine == 'ruby' && Gem::Requirement.new("~> 2.1.0").satisfied_by?(Gem.ruby_version)
     if gem_spec.respond_to?(:extensions_dir)
       rp = gem_spec.extensions_dir.rpartition(gem_spec.base_dir)
-      return File.join(rp[1], 'doc', rp[2]) 
+      return File.join(rp[1], 'doc', rp[2])
     end
     return nil
   end
@@ -26,7 +26,7 @@
     versions=spec.version.to_s.split('.')
     begin v1=Integer(versions[0]) rescue v1=1 end
     begin v2=Integer(versions[1]) rescue v2=0 end
-    begin v3=Integer(versions[2]) rescue v3=0 end 
+    begin v3=Integer(versions[2]) rescue v3=0 end
     weight=v1*10000+v2*100+v3
   end
 
@@ -60,7 +60,9 @@
     end
     custom_pkgs
   end
-  
+
+  rb_pkg_abi         = "#{RUBY_ENGINE}:#{RUBY_ENGINE_VERSION}:#{spec.name}"
+
   rb_suffix          = RbConfig::CONFIG['ruby_install_name'].gsub(/^ruby/, '')
   rb_pkgname         = RbConfig::CONFIG['ruby_install_name'].gsub(/^ruby\./, '')
   if rb_suffix =~ /\A\d+\.\d+\z/
@@ -69,7 +71,7 @@
   pkg_basename       = rb_pkgname + '-rubygem-' + spec.name
 
   mod_full_name      = "#{spec.name}-#{spec.version}"
-  mod_weight         = get_mod_weight(spec) 
+  mod_weight         = get_mod_weight(spec)
 
   gem_platform       = Gem::Platform.new(RbConfig::CONFIG["arch"]).to_s
   rb_bindir          = RbConfig::CONFIG['bindir']
@@ -78,6 +80,7 @@
   gem_spec           = Gem::Specification.new
   gem_base_dir       = patch_libdir(gem_spec.base_dir)
   gem_cache_dir      = patch_libdir(gem_spec.cache_dir)
+  gem_build_info_dir = patch_libdir(gem_spec.build_info_dir)
   gem_gems_dir       = patch_libdir(gem_spec.gems_dir)
   gem_spec_dir       = patch_libdir(gem_spec.spec_dir)
   gem_bin_dir        = patch_libdir(patch_mod_full_name(gem_spec.bin_dir , mod_full_name ))
@@ -89,6 +92,14 @@
   gem_extension_dir  = gem_spec.respond_to?(:extension_dir)  ? patch_libdir(patch_mod_full_name(gem_spec.extension_dir, mod_full_name)) : nil
   gem_extension_doc  = patch_libdir(get_extension_doc_dir(gem_spec))
   #/ruby2.1
+  gem_plugins_dir  = Gem.respond_to?(:plugindir) ? Gem.plugindir : nil
+  has_plugins      = gem_plugins_dir && not( spec.files.select {|filename| filename =~ /rubygems_plugin#{Gem.suffix_regexp}\z/ }.empty? )
+  if config[:disable_docs].nil?
+    config[:disable_docs] ||= true
+  end
+  if config[:include_testsuite].nil?
+    config[:include_testsuite] ||= false
+  end
 %>
 %package -n <%= pkg_basename %><%= config[:version_suffix] %>
 # MANUAL
@@ -101,12 +112,15 @@ Group:          Development/Languages/Ruby
 <% unless spec.executables.empty? -%>
 PreReq:         update-alternatives
 <% end -%>
+<% if has_plugins -%>
+Conflicts:      rubygem(<%= rb_pkg_abi %>)
+<% end -%>
 Enhances:       <%= rb_pkgname %>
 
 %description -n <%= pkg_basename %><%= config[:version_suffix] %>
 <%= config[:description] or spec.description -%>
 
-<% if spec.has_rdoc && !(config[:disable_docs]) -%>
+<% if spec.has_rdoc? && !(config[:disable_docs]) -%>
 %package -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
 Summary:        RDoc documentation for <%= spec.name %>
 Group:          Development/Languages/Ruby
@@ -205,6 +219,10 @@ fi
 # cache file
 <%= gem_cache_dir %>/<%= mod_full_name %>.gem
 <%= gem_gem_dir %>
+<% if has_plugins -%>
+<%= gem_plugins_dir %>
+<% end -%>
+<%= gem_build_info_dir %>
 <% unless spec.extensions.empty? or gem_extension_dir.nil? -%>
 <%= gem_extension_dir %>
 <% end -%>
@@ -213,7 +231,7 @@ fi
 <% end -%>
 <%= gem_spec_dir %>/<%= mod_full_name -%>.gemspec
 
-<% if spec.has_rdoc && !(config[:disable_docs]) -%>
+<% if spec.has_rdoc? && !(config[:disable_docs]) -%>
 %files -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
 %defattr(-,root,root,-)
 %doc <%= gem_doc_dir %>
@@ -222,7 +240,7 @@ fi
 <%   end -%>
 <% end -%>
 
-<% unless test_frameworks.empty? -%>
+<% if config[:include_testsuite] and !test_frameworks.empty?  -%>
 %files -n <%= pkg_basename %>-testsuite<%= config[:version_suffix] %>
 %defattr(-,root,root,-)
 <%   test_frameworks.each do |framework| -%>
@@ -232,7 +250,7 @@ fi
 <%
   if config[:custom_pkgs_ruby_versioned]
     config[:custom_pkgs_ruby_versioned].each do |custom_pkg_name, data|
--%> 
+-%>
 %package -n <%= pkg_basename %>-<%= custom_pkg_name %><%= config[:version_suffix] %>
 <% if data[:preamble] and data[:preamble] != '' -%>
 <%= data[:preamble] %>

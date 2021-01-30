@@ -156,4 +156,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>736057</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d868e0726b5f0e84ebbc4b10cc74ac38</srcmd5>
+    <version>2.6</version>
+    <time>1612011359</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup the .gem.* dirs that rubygems creates on 3.0
+  (boo#1180528)
+
+- add support to package rubygems plugin dirs 
+  as the file is conflicting you can only have one version of the
+  same gem installed if it provides a rubygems plugin. at least for
+  now
+
+- disable docs and testsuite packaging by default
+- support --no-document option</comment>
+    <requestid>866992</requestid>
+  </revision>
 </revisionlist>

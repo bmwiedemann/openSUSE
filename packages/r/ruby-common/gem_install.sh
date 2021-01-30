@@ -42,7 +42,7 @@ options.gemname=nil
 options.gemversion=nil
 options.gemsuffix=nil
 options.otheropts=[]
-options.skipped_docs=[]
+options.skipped_docs=['always']
 options.ua_dir='/etc/alternatives'
 options.docdir='/usr/share/doc/packages'
 # once we start fixing packages set this to true
@@ -141,6 +141,10 @@ opt_parser = OptionParser.new do |opts|
   end
   opts.on('--no-ri', 'Forwarded to gem install') do |v|
     options.skipped_docs << 'ri'
+  end
+  opts.on('-N', '--no-document', 'Forwarded to gem install') do |v|
+    options.skipped_docs << 'ri'
+    options.skipped_docs << 'rdoc'
   end
   opts.on('--no-rdoc', 'Forwarded to gem install') do |v|
     options.skipped_docs << 'rdoc'
