@@ -37,59 +37,58 @@
     <source path="obsrepositories:/"/>
   </repository>
   <packages type="bootstrap">
-    <package name="busybox"/>
-    <package name="busybox-adduser" replaces="shadow"/>
-    <package name="busybox-attr" replaces="attr"/>
-    <package name="busybox-bc" replaces="bc"/>
-    <package name="busybox-bind-utils" replaces="bind-utils"/>
-    <package name="busybox-bzip2" replaces="bzip2"/>
-    <package name="busybox-coreutils" replaces="coreutils"/>
-    <package name="busybox-cpio" replaces="cpio"/>
-    <package name="busybox-diffutils" replaces="diffutils"/>
+    <!-- Workaround for https://github.com/openSUSE/obs-build/issues/562 -->
+    <package name="busybox" replaces="kiwi-packagemanager:zypper"/>
+    <package name="busybox-adduser"/>
+    <package name="busybox-attr"/>
+    <package name="busybox-bc"/>
+    <package name="busybox-bind-utils"/>
+    <package name="busybox-bzip2"/>
+    <package name="busybox-coreutils"/>
+    <package name="busybox-cpio"/>
+    <package name="busybox-diffutils"/>
     <package name="busybox-dos2unix"/>
     <package name="busybox-ed"/>
-    <package name="busybox-findutils" replaces="findutils"/>
-    <package name="busybox-gawk" replaces="gawk"/>
-    <package name="busybox-grep" replaces="grep"/>
-    <package name="busybox-gzip" replaces="gzip"/>
-    <package name="busybox-hostname" replaces="hostname"/>
+    <package name="busybox-findutils"/>
+    <package name="busybox-gawk"/>
+    <package name="busybox-grep"/>
+    <package name="busybox-gzip"/>
+    <package name="busybox-hostname"/>
     <package name="busybox-iproute2"/>
     <package name="busybox-iputils"/>
-    <package name="busybox-kbd" replaces="kbd"/>
-    <package name="busybox-kmod" replaces="kmod"/>
-    <package name="busybox-less" replaces="less"/>
+    <package name="busybox-kbd"/>
+    <package name="busybox-kmod"/>
+    <package name="busybox-less"/>
     <package name="busybox-man"/>
-    <package name="busybox-misc" replaces="binutils"/>
-    <package name="busybox-misc" replaces="dosfstools"/>
-    <package name="busybox-misc" replaces="e2fsprogs"/>
-    <package name="busybox-ncurses-utils" replaces="ncurses-utils"/>
+    <package name="busybox-misc"/>
+    <package name="busybox-ncurses-utils"/>
     <package name="busybox-net-tools"/>
     <package name="busybox-netcat"/>
-    <package name="busybox-patch" replaces="patch"/>
+    <package name="busybox-patch"/>
     <package name="busybox-policycoreutils"/>
-    <package name="busybox-procps" replaces="procps"/>
+    <package name="busybox-procps"/>
     <package name="busybox-psmisc"/>
-    <package name="busybox-sed" replaces="sed"/>
+    <package name="busybox-sed"/>
     <package name="busybox-selinux-tools"/>
     <package name="busybox-sendmail"/>
     <package name="busybox-sh"/>
     <package name="busybox-sharutils"/>
     <package name="busybox-syslogd"/>
-    <package name="busybox-sysvinit-tools" replaces="sysvinit-tools"/>
-    <package name="busybox-tar" replaces="tar"/>
+    <package name="busybox-sysvinit-tools"/>
+    <package name="busybox-tar"/>
     <package name="busybox-telnet"/>
     <package name="busybox-tftp"/>
     <package name="busybox-time"/>
     <package name="busybox-traceroute"/>
     <package name="busybox-tunctl"/>
     <package name="busybox-unzip"/>
-    <package name="busybox-util-linux" replaces="util-linux"/>
+    <package name="busybox-util-linux"/>
     <package name="busybox-vi"/>
     <package name="busybox-vlan"/>
     <package name="busybox-wget"/>
-    <package name="busybox-which" replaces="which"/>
-    <package name="busybox-whois" replaces="whois"/>
-    <package name="busybox-xz" replaces="xz"/>
+    <package name="busybox-which"/>
+    <package name="busybox-whois"/>
+    <package name="busybox-xz"/>
     <package name="kubernetes-pause"/>
   </packages>
 </image>

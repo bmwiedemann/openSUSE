@@ -130,4 +130,15 @@
     <comment></comment>
     <requestid>838806</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>7c1f739836aae39c7a9b1dbe3b845570</srcmd5>
+    <version>1.0.0</version>
+    <time>1612011369</time>
+    <user>dimstar_suse</user>
+    <comment>- Make use of ExpandFlags: kiwi-nobasepackages:
+  * Drop replaces
+  * Add workaround for bug in obs-build
+</comment>
+    <requestid>867219</requestid>
+  </revision>
 </revisionlist>

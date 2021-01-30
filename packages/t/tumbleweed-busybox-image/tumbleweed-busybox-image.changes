@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  1 09:42:43 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Make use of ExpandFlags: kiwi-nobasepackages:
+  * Drop replaces
+  * Add workaround for bug in obs-build
+
+-------------------------------------------------------------------
 Wed Sep 30 14:36:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove config.sh, busybox does not support rpm anymore (not
