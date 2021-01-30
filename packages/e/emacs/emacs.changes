@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 26 14:17:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace system-user-games with user(games): be resilient to
+  package name changes.
+
+-------------------------------------------------------------------
 Tue Sep 15 11:30:04 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-27.1-gif.patch from upstream mailing list to fix
-  crash on broken gif files 
+  crash on broken gif files
 - Correct group of el package as well as provide it as devel packages
 
 -------------------------------------------------------------------
@@ -14,7 +20,7 @@ Fri Aug 28 13:38:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Aug 24 11:14:22 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Correct paths for emacs manual page on the fly 
+- Correct paths for emacs manual page on the fly
 
 -------------------------------------------------------------------
 Fri Aug 21 10:27:50 UTC 2020 - Dr. Werner Fink <werner@suse.de>
@@ -33,7 +39,7 @@ Fri Aug 21 08:54:57 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Thu Aug 20 09:08:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Disable patch emacs-24.4-glibc.patch to see if this fix boo#1175487 
+- Disable patch emacs-24.4-glibc.patch to see if this fix boo#1175487
 - Require git at build time as used by rebuilding byte compiled lisp files
 - Load pcase and easy-mmode at dump time from emacs-lisp path
 
@@ -51,7 +57,7 @@ Sun Aug 16 16:53:39 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
 Sat Aug 15 06:26:39 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch emacs-27.1-home.patch from mailing list
-  to add missing slashes on finding ~/Emacs 
+  to add missing slashes on finding ~/Emacs
 
 -------------------------------------------------------------------
 Fri Aug 14 08:01:27 UTC 2020 - Dr. Werner Fink <werner@suse.de>
@@ -115,7 +121,7 @@ Fri Apr 10 08:19:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Thu Apr  2 16:32:53 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Let it build even with the fix for boo#1152105 
+- Let it build even with the fix for boo#1152105
 
 -------------------------------------------------------------------
 Thu Jan 23 13:02:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

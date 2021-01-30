@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ BuildRequires:  mailutils-devel
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version} >= 1500
-BuildRequires:  system-user-games
+BuildRequires:  user(games)
 %endif
 BuildRequires:  systemd-rpm-macros
 %if %{with tex4pdf}
