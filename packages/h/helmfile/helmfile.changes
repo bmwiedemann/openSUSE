@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 30 09:58:45 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.138.1: fix: fixed up OCI repos so they support paths and URLs
+  that differ fr…
+  * 8212b63 (HEAD, tag: v0.138.1, origin/master, origin/HEAD, master)
+  fix: fixed up OCI repos so they support paths and URLs that differ
+  from chart names contained there (#1661)
+
+- v0.138.0: feat: added in oci repository flag and added helm
+  methods to pull and…
+  * 2a71640 (HEAD, tag: v0.138.0, origin/master, origin/HEAD, master)
+  feat: added in oci repository flag and added helm methods to pull
+  and export charts (#1629)
+
+-------------------------------------------------------------------
 Wed Jan 13 14:36:41 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.137.0: docs: fix typo (#1645)
