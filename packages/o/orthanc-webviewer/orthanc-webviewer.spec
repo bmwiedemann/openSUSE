@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-webviewer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,7 @@ Source4:        pako-0.2.5.zip
 Source5:        js-url-1.8.6.zip
 Source11:       orthanc-webviewer-readme.SUSE
 Source12:       webviewer.json
+Patch0:         framework190.diff
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
@@ -59,6 +60,8 @@ Webviewer plugin for Orthanc
 
 %prep
 %setup -q -n OrthancWebViewer-%{version}
+
+%patch0 -p1
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
