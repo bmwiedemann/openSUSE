@@ -16,29 +16,27 @@
 #
 
 
+%define libname libflatpak0
 # dbus only used config files in /etc until 1.9.18
 %if %{pkg_vcmp dbus-1 < 1.9.18}
 %define _dbusconfigdir %{_sysconfdir}/dbus-1/system.d
 %else
 %define _dbusconfigdir %{_datadir}/dbus-1/system.d
 %endif
-
 # systemd only supports environment generators since version 233
 %if %{pkg_vcmp systemd < 233}
 %define support_environment_generators 0
 %else
 %define support_environment_generators 1
 %endif
-
-%define libname libflatpak0
 Name:           flatpak
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
 Group:          System/Packages
 URL:            https://flatpak.github.io/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= 0.4.1
@@ -59,7 +57,7 @@ BuildRequires:  pkgconfig(dconf) >= 0.26
 BuildRequires:  pkgconfig(fuse) >= 2.9.2
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.60
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.40.0
 BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0) >= 1.40.0
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -69,13 +67,13 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libzstd) >= 0.8.1
-BuildRequires:  pkgconfig(ostree-1) >= 2018.9
+BuildRequires:  pkgconfig(ostree-1) >= 2020.8
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xau)
 Requires:       %{libname} = %{version}
 Requires:       bubblewrap >= 0.4.1
-Requires:       ostree >= 2018.9
+Requires:       ostree >= 2020.8
 Requires:       xdg-dbus-proxy >= 0.1.0
 Requires:       xdg-desktop-portal >= 0.10
 Requires:       user(flatpak)
@@ -95,7 +93,6 @@ Group:          System/Base
 
 %description -n system-user-flatpak
 System user for the flatpak system helper.
-
 
 %package -n %{libname}
 Summary:        OSTree based application bundle management library
@@ -146,11 +143,9 @@ more information.
 sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-silent-rules \
 	--enable-gtk-doc \
-	--disable-document-portal \
 	--with-system-bubblewrap \
 	--with-priv-mode=none \
 	--with-dbus-config-dir=%{_dbusconfigdir} \
@@ -184,7 +179,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 %find_lang %{name}
 
 %pre -n system-user-flatpak -f system-user-flatpak.pre
-
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 %pre
@@ -229,12 +223,12 @@ fi
 # policykit rules
 %{_datadir}/polkit-1/actions/org.freedesktop.Flatpak.policy
 %{_datadir}/polkit-1/rules.d/60-org.freedesktop.Flatpak.rules
-%{_mandir}/man1/%{name}*.1%{ext_man}
-%{_mandir}/man5/flatpak-metadata.5%{ext_man}
-%{_mandir}/man5/flatpak-flatpakref.5%{ext_man}
-%{_mandir}/man5/flatpak-flatpakrepo.5%{ext_man}
-%{_mandir}/man5/flatpak-installation.5%{ext_man}
-%{_mandir}/man5/flatpak-remote.5%{ext_man}
+%{_mandir}/man1/%{name}*.1%{?ext_man}
+%{_mandir}/man5/flatpak-metadata.5%{?ext_man}
+%{_mandir}/man5/flatpak-flatpakref.5%{?ext_man}
+%{_mandir}/man5/flatpak-flatpakrepo.5%{?ext_man}
+%{_mandir}/man5/flatpak-installation.5%{?ext_man}
+%{_mandir}/man5/flatpak-remote.5%{?ext_man}
 %{_datadir}/%{name}/
 %config %{_sysconfdir}/profile.d/flatpak.sh
 %{_sysconfdir}/flatpak
