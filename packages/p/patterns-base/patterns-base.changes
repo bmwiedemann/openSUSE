@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 26 09:20:12 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- bootloader pattern should not require a base pattern
+
+-------------------------------------------------------------------
 Wed Dec 30 14:53:27 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove yast2-qt requires on x11 pattern, there is already

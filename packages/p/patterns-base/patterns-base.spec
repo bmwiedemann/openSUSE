@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -579,7 +579,6 @@ This is the minimal runtime system. It is really a minimal system. It is intende
 Summary:        Bootloader
 Group:          Metapackages
 Provides:       pattern() = bootloader
-Requires:       pattern() = base
 #
 Requires:       grub2
 Requires:       (grub2-snapper-plugin if snapper)
