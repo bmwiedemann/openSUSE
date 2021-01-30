@@ -45,10 +45,8 @@
     <package name="OpenPrintingPPDs-hpijs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="OpenPrintingPPDs-postscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="PackageKit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="PackageKit-backend-dnf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="PackageKit-backend-zypp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="PackageKit-command-not-found" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="PackageKit-gstreamer-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -197,7 +195,6 @@
     <package name="bijiben" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bijiben-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
-    <package name="bind-chrootenv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="bind-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="bind-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="binutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -307,7 +304,7 @@
     <package name="colord-color-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="command-not-found" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="command-not-found" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="coreutils-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1839,8 +1836,7 @@
     <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmx1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdnf2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libdns1610" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdns1611" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdolphinvcs5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdotconf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdouble-conversion3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2152,9 +2148,9 @@
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libirs1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisc1608" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisc1609" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisccc1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisccfg1602" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisccfg1603" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiscsi9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libisl23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiso9660-11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2355,7 +2351,7 @@
     <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libns1606" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libns1607" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnss_nis2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2577,14 +2573,13 @@
     <package name="libreoffice-share-linker" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-writer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreofficekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="librepo0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="librepository" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libressl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="librest-0_7-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librevenge-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librevenge-stream-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librmt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="librpmbuild9" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="librpmbuild9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="librscg1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librsvg-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3766,7 +3761,7 @@
     <package name="python38-reportlab" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-requests-toolbelt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python38-rpm" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python38-rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python38-scour" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python38-scrypt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
