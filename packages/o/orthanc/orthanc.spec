@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later

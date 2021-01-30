@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jan 29 16:58:24 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.9.0
+* Support of DICOM TLS
+* New configuration options related to DICOM networking:
+  - "DicomTlsEnabled" to enable DICOM TLS in Orthanc SCP
+  - "DicomTlsCertificate" to provide the TLS certificate to be used in both Orthanc SCU and SCP
+  - "DicomTlsPrivateKey" to provide the private key of the TLS certificate
+  - "DicomTlsTrustedCertificates" to provide the list of TLS certificates to be trusted by Orthanc
+  - "UseDicomTls" in "DicomModalities" to enable DICOM TLS in outgoing SCU on a per-modality basis
+  - "MaximumPduLength" to tune the maximum PDU length (Protocol Data Unit)
+  - "LocalAet" in "DicomModalities" to overwrite global "DicomAet" for SCU on a per-modality basis
+  - "AcceptedTransferSyntaxes" to set the transfer syntax UIDs accepted by Orthanc C-STORE SCP
+  - "H265TransferSyntaxAccepted" to enable/disable all the transfer syntaxes related to H.265
+  - "DicomAlwaysAllowFind" to disable verification of the remote modality in C-FIND SCP
+  - "DicomAlwaysAllowGet" to disable verification of the remote modality in C-GET SCP
+* New configuration option: "DicomScuPreferredTransferSyntax" to control transcoding in C-STORE SCU
+* New command-line option: "--openapi" to write the OpenAPI documentation of the REST API to a file
+* New metadata automatically computed at the series level: "RemoteAET"
+* The DICOM meta-header and the transfer syntax are displayed at the "Instance" level
+* API version upgraded to 10
+* "/tools/accepted-transfer-syntaxes": Get/set transfer syntaxes accepted by Orthanc C-STORE SCP
+* "/tools/unknown-sop-class-accepted": Get/set whether C-STORE SCP accepts unknown SOP class UID
+* "/modalities/{...}/query": New string argument "LocalAet"
+* "/tools/create-dicom": New flag "Force" to bypass consistency checks for the DICOM tags
+* BREAKING CHANGE: All the Lua callbacks "IsXXXTransferSyntaxAccepted()" and
+  "IsUnknownSopClassAccepted()" have been removed
+* New functions in the SDK:
+  - OrthancPluginCreateMemoryBuffer64()
+  - OrthancPluginRegisterStorageArea2()
+  - OrthancPluginCreateDicom2()
+* Refactoring and improvements to the cache of DICOM files (it can now hold many files)
+* New Prometheus metrics "orthanc_dicom_cache_count" and "orthanc_dicom_cache_size"
+* Fix upload of multiple DICOM files using one single POST call to "multipart/form-data"
+  Could be the final resolution of issue #21 (DICOM files missing after uploading with Firefox)
+* Partial fix of issue #48 (Windows service not stopped properly), cf. comments 4 and 5
+* Explicitly use little-endian to encode uncompressed file size with zlib compression
+* Upgraded dependencies for static builds (notably on Windows):
+  - dcmtk 3.6.6
+  - jsoncpp 1.9.4
+
+-------------------------------------------------------------------
 Wed Dec 30 13:15:11 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - Workaround for boo#1180359 
