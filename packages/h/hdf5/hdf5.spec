@@ -1,7 +1,7 @@
 #
 # spec file for package hdf5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -412,14 +412,8 @@ ExclusiveArch:  do_not_build
  %define vname %{pname}
 %endif
 
-# TODO: The so numbers autodetected by update_so_version.sh
-# do not match the so numbers that are actually built.
-%define sonum 103
-%define sonum_CXX 103
-%define sonum_F 102
-%define sonum_HL 100
-%define sonum_HL_CXX 100
-%define sonum_HL_F 100
+# Run 'sh ./update_so_version.sh' when updating hdf5!
+%include %{_sourcedir}/so_versions
 
 Name:           %{package_name}
 Version:        %vers
@@ -429,7 +423,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://www.hdfgroup.org/HDF5/
 Source0:        https://www.hdfgroup.org/ftp/HDF5/releases/%{pname}-%{short_ver}/%{pname}-%{src_ver}/src/%{pname}-%{src_ver}.tar.bz2
-Source100:      _multibuild
+Source100:      so_versions
 Source1000:     update_so_version.sh
 Patch0:         hdf5-LD_LIBRARY_PATH.patch
 # not really needed but we want to get noticed if hdf5 doesn' t know our host

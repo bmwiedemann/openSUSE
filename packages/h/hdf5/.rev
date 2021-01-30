@@ -719,4 +719,12 @@ fixed baselibs.conf compared to previous version</comment>
     + Fixed use-of-uninitialized-value error.</comment>
     <requestid>851572</requestid>
   </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>e4a1e138ee8cd2ca218aa5f6455641ec</srcmd5>
+    <version>1.10.7</version>
+    <time>1612011409</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix update_so_version.sh, write so versions to file being included. (forwarded request 867810 from eeich)</comment>
+    <requestid>867822</requestid>
+  </revision>
 </revisionlist>

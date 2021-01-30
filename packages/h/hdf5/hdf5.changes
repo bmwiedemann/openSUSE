@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 29 22:05:44 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix update_so_version.sh, write so versions to file being included.
+
+-------------------------------------------------------------------
 Fri Nov  6 10:41:02 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 1.10.7
