@@ -203,14 +203,14 @@ A plugin for Xreader to read Pixbuf documents.
 
 %build
 %meson \
--Ddbus=false \
--Dintrospection=false \
--Ddjvu=false \
--Ddvi=false \
--Dt1lib=false \
--Dpixbuf=false \
--Dcomics=false \
--Dhelp_files=false \
+-Ddbus=true \
+-Dintrospection=true \
+-Ddjvu=true \
+-Ddvi=true \
+-Dt1lib=true \
+-Dpixbuf=true \
+-Dcomics=true \
+-Dhelp_files=true \
 
 %meson_build
 
@@ -261,7 +261,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*
-# %{_datadir}/help/C/%{name}
+%{_datadir}/help/C/%{name}
 %{_mandir}/man?/*.?%{?ext_man}
 # backends directory structure - backends go to their own packages
 %dir %{_libdir}/%{name}/%{sover}/backends
@@ -279,15 +279,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libxreaderdocument.so.%{sover}*
 
 %files -n %{typelib1}
-# %{_libdir}/girepository-1.0/XreaderDocument-1.5.typelib
+%{_libdir}/girepository-1.0/XreaderDocument-1.5.typelib
 
 %files -n %{typelib2}
-# %{_libdir}/girepository-1.0/XreaderView-1.5.typelib
+%{_libdir}/girepository-1.0/XreaderView-1.5.typelib
 
 %files devel
 %{_includedir}/%{name}/
 %{_libdir}/*.so
-# %{_datadir}/gir-1.0/*.gir
+%{_datadir}/gir-1.0/*.gir
 %{_libdir}/pkgconfig/*.pc
 
 %files -n xreader-plugin-epubdocument
@@ -311,19 +311,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/%{sover}/backends/xpsdocument.xreader-backend
 
 %files -n xreader-plugin-comicsdocument
-# %{_libdir}/%{name}/%{sover}/backends/comicsdocument.xreader-backend
-# %{_libdir}/%{name}/%{sover}/backends/libcomicsdocument.so
+%{_libdir}/%{name}/%{sover}/backends/comicsdocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libcomicsdocument.so
 
 %files -n xreader-plugin-djvudocument
-# %{_libdir}/%{name}/%{sover}/backends/djvudocument.xreader-backend
-# %{_libdir}/%{name}/%{sover}/backends/libdjvudocument.so
+%{_libdir}/%{name}/%{sover}/backends/djvudocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libdjvudocument.so
 
 %files -n xreader-plugin-dvidocument
-# %{_libdir}/%{name}/%{sover}/backends/dvidocument.xreader-backend
-# %{_libdir}/%{name}/%{sover}/backends/libdvidocument.so
+%{_libdir}/%{name}/%{sover}/backends/dvidocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libdvidocument.so
 
 %files -n xreader-plugin-pixbufdocument
-# %{_libdir}/%{name}/%{sover}/backends/pixbufdocument.xreader-backend
-# %{_libdir}/%{name}/%{sover}/backends/libpixbufdocument.so
+%{_libdir}/%{name}/%{sover}/backends/pixbufdocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libpixbufdocument.so
 
 %changelog
