@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 25 22:29:28 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to fix Okular search bar no longer closed
+  when pressing ESC (kde#431493):
+  * 0001-Fix-regression-caused-due-to-porting-from-operator-t.patch
+
+-------------------------------------------------------------------
 Wed Jan  6 10:47:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0

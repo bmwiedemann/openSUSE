@@ -36,6 +36,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-regression-caused-due-to-porting-from-operator-t.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -78,6 +80,7 @@ can be used with own widgets.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build
