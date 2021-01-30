@@ -104,4 +104,14 @@
   package. (forwarded request 840009 from eeich)</comment>
     <requestid>840010</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff86510673399c7794c2e723ccc370dd</srcmd5>
+    <version>2.20.0</version>
+    <time>1612011374</time>
+    <user>dimstar_suse</user>
+    <comment>- Make cmake files installation non-conflicting.
+
+- Fix hypre package conflicts for non HPC packages. (forwarded request 867882 from eeich)</comment>
+    <requestid>867883</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hypre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{?nil}
-%define ver 2.18.2
-%define _ver 2_18_2
+%define ver 2.20.0
+%define _ver 2_20_0
 %define somver %{_ver}
 %define sover %{ver}
 
@@ -356,28 +356,31 @@ ExclusiveArch:  do_not_build
 
 %if %{without hpc}
  %if %{without mpi}
-  %define my_prefix %_prefix
-  %define my_bindir %_bindir
-  %define my_libdir %_libdir
-  %define my_incdir %_includedir
+  %global my_bindir %_bindir
+  %global _incdir %{_prefix}/include/
  %else
-  %global my_suffix -%{?mpi_family}%{?mpi_ext}
-  %global my_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
-  %global my_bindir %{my_prefix}/bin
-  %global my_libdir %{my_prefix}/%{_lib}/
-  %global my_incdir %{my_prefix}/include/
-  %global my_datadir %{my_prefix}/share/
+  %global _bindir %_bindir
+  %global _defaultlicensedir %_defaultlicensedir
+  %global _prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
+  %global _suffix -%{?mpi_family}%{?mpi_ext}
+  %global my_bindir %{_prefix}/bin
+  %global _libdir %{_prefix}/%{_lib}/
+  %global _incdir %{_prefix}/include/
  %endif
  %if 0%{!?package_name:1}
-  %define package_name   %pname%{?my_suffix}
+  %define package_name   %pname%{?_suffix}
  %endif
- %define libname  lib%{PNAME}%{somver}%{?my_suffix}
+ %define libname  lib%{PNAME}%{somver}%{?_suffix}
 %else # with hpc
 %{hpc_init %{?compiler_family:-c %compiler_family %{?c_f_ver:-v %{c_f_ver}}} %{?with_mpi:-m {%mpi_family}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
- %define my_prefix %hpc_prefix
+# Nail these down before changing _prefix
+ %global hpc_base %hpc_base
+ %global _bindir %_bindir
+ %global _defaultlicensedir %_defaultlicensedir
+ %define _prefix %hpc_prefix
  %define my_bindir %hpc_bindir
- %define my_libdir %hpc_libdir
- %define my_incdir %hpc_includedir
+ %define _libdir %hpc_libdir
+ %define _incdir %hpc_includedir
  %define package_name   %{hpc_package_name %_ver}
  %define libname lib%{PNAME}%{hpc_package_name_tail %{?_ver}}
 %endif
@@ -391,8 +394,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://www.llnl.gov/casc/hypre/
 Source:         https://github.com/hypre-space/hypre/archive/v%{version}.tar.gz#/hypre-%{version}.tar.gz
 Patch0:         hypre_Makefile_examples.patch
-Patch1:         Fix-library-version-numbering.patch
-Patch2:         Fix-empty-elseif-in-CMakeLists.txt.patch
+Patch1:         Add-library-version.patch
 
 # TODO : add babel
 #BuildRequires:  babel-devel
@@ -431,8 +433,8 @@ Summary:        Scalable algorithms for solving linear systems of equations
 Group:          System/Libraries
 %if %{with hpc}
 %hpc_requires
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
-Requires:       libsuperlu%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
+%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc}
+%{requires_eq libsuperlu%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc}
 Requires:       lua-lmod >= 7.6.1
 %endif
 
@@ -453,8 +455,8 @@ Requires:       %{libname} = %version
 Requires:       lapack-devel
 Requires:       superlu-devel
 %else
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-Requires:       superlu%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
+%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
+%{requires_eq superlu%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
 %hpc_requires_devel
 %endif
 
@@ -490,14 +492,14 @@ This package contains development documentation for Hypre.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch0 -p0 
-%patch1 -p2
-%patch2 -p2
+%patch0 -p0
+%patch1 -p0
+
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
 %{libname}
 %{libname}-devel
-  requires %{?my_suffix}-<targettype>
+  requires %{?_suffix}-<targettype>
   requires "%{libname}-<targettype> = <version>"
 EOF
 %endif
@@ -543,15 +545,6 @@ install -m 644 -D docs/*pdf -t %{buildroot}%{_docdir}/%{package_name}/
 pushd .
 cd src/
 %cmake_install
-
-# move libaries arround for mpi builds
- %if %{without hpc}
-  %if %{with mpi}
-mkdir -pv %{buildroot}%{my_libdir}
-mv -v %{buildroot}/usr/%{_lib}/*.so* %{buildroot}%{my_libdir}
-mv -v %{buildroot}/usr/include %{buildroot}%{my_incdir}
-  %endif
- %endif
 
  %if %{with hpc}
 %{hpc_write_pkgconfig -n %{pname} -l %{PNAME}}
@@ -603,7 +596,7 @@ setenv          %{PNAME}_LIB        %{hpc_libdir}
 
 EOF
  %endif
-%fdupes -s %{buildroot}%{my_prefix}
+%fdupes -s %{buildroot}%{_prefix}
 %endif # build_all
 
 %if %{without hpc} && %{without mpi}
@@ -611,10 +604,10 @@ EOF
 %postun -n %{libname} -p /sbin/ldconfig
 %else
 %post -n %{libname}
-/sbin/ldconfig -N %{my_libdir}
+/sbin/ldconfig -N %{_libdir}
 
 %postun -n %{libname}
-/sbin/ldconfig -N %{my_libdir}
+/sbin/ldconfig -N %{_libdir}
 %{?with_hpc:%hpc_module_delete_if_default}
 %endif
 
@@ -622,17 +615,18 @@ EOF
 %files -n %{libname}
 %{?hpc_dirs}
 %{?hpc_modules_files}
-%{my_libdir}/*.so.*
+%{_libdir}/*.so.*
 
 %files devel
 %if %{with hpc}
 %{?hpc_dirs}
-%{hpc_pkgconfig_file} 
+%{hpc_pkgconfig_file}
 %endif
+%{_libdir}/cmake
 %license COPYRIGHT LICENSE-APACHE LICENSE-MIT NOTICE 
 %doc CHANGELOG README.md INSTALL.md
-%{my_incdir}%{?!with_hpc:/%{pname}}
-%{my_libdir}/*.so
+%{_incdir}%{?!with_hpc:/%{pname}}
+%{_libdir}/*.so
 %endif # build_all
 
 %if %{with install_doc}

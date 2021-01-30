@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jan 29 12:24:00 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Make cmake files installation non-conflicting.
+
+-------------------------------------------------------------------
+Fri Jan 29 10:25:10 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix hypre package conflicts for non HPC packages.
+
+-------------------------------------------------------------------
+Thu Jan 28 16:58:42 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.
+
+-------------------------------------------------------------------
+Mon Jan 25 15:20:57 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to 2.20.0
+  * New matrix-based interpolation routines for AMG (CPU and GPU)
+  * Added GPU support for aggressive coarsening in AMG
+  * New AMG-DD solver
+  * Improved distributed sparse matrix-matrix and triple-matrix product
+    performance on GPUs
+  * IJMatrix/Vector assembly on GPUs (with pointers to GPU memory)
+  * Updated caliper usage
+  * Separated C and C++ headers
+  * Updated to support superlu-dist version to 6.3.1
+  * Moved reference manual API to online documentation
+  * New AMG features to keep specified F-points and/or C-points.
+  * Added GPU support for AMG setup and several interpolation approaches.
+  * New parallel ILU solvers and smoothers.
+  * New MGR features.
+  * Added several interpolation routines based on matrix-matrix interpolations.
+  * Various bug fixes.
+- Remove patch merged by upstream
+  * Fix-empty-elseif-in-CMakeLists.txt.patch
+- Rework patch following upstream changes
+  * Fix-library-version-numbering.patch Patch removed
+  * Add-library-version.patch Patch added
+
+-------------------------------------------------------------------
 Wed Oct  7 10:05:22 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Don't include superlu-devel and lapack-devel into HPC devel
