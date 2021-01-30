@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 25 21:09:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.41:
+ * Fixes another glitch in the "ignore" meta command.
+ * Fixes two typos in the German translation.
+ * New function gpgrt_access.
+ * Make "ignore" meta command work correctly in the option parser.
+ * Interface changes relative to the 1.39 release:
+ gpgrt_access                     NEW.
+
+-------------------------------------------------------------------
 Wed Sep  2 14:56:26 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
 
 - Update to 1.39:
