@@ -1,7 +1,7 @@
 #
 # spec file for package yara
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 4
 Name:           yara
-Version:        4.0.2
+Version:        4.0.4
 Release:        0
 Summary:        A malware identification and classification tool
 License:        Apache-2.0
