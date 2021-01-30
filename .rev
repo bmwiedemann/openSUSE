@@ -1815,4 +1815,12 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <comment></comment>
     <requestid>867217</requestid>
   </revision>
+  <revision rev="213" vrev="5">
+    <srcmd5>bb2eae179b40936ec4699e2158fa3957</srcmd5>
+    <version>1.2.2</version>
+    <time>1612009735</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build cnf: scout-c-n-f is still pending, having PK-cnf
+  obsolete cnf is unacceptable.</comment>
+  </revision>
 </revisionlist>
