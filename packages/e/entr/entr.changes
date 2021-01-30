@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 29 23:43:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7:
+  * Use system file descriptor limits when max_user_watches is not accessible
+  * Return the exit status of the child process when the '-z' option is used
+  * Handle SIGHUP so child process are terminated when a terminal is closed
+  * More accurately return shell exit code using '-s' option
+
+-------------------------------------------------------------------
 Thu Jul  2 19:25:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.6
