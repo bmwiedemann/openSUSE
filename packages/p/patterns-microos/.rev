@@ -261,4 +261,23 @@
     <comment></comment>
     <requestid>854269</requestid>
   </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>73b4e35bd9c4f58773faa389feaab628</srcmd5>
+    <version>5.0</version>
+    <time>1612011347</time>
+    <user>dimstar_suse</user>
+    <comment>- Use user(nobody) and group(nobody)
+
+- Drop autofs and nfs-client requirements, not commonly needed
+
+- Sync with openSUSE Tumleweed base pattern
+- Add busybox
+- Cleanup comments from last submission
+
+Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
+- Moved unzip and wget from gnome desktop pattern to common desktop pattern
+- add bash-completion, nfs-client and autofs to common desktop pattern for beginner users
+- remove kdeconnect-kde from kde desktop pattern as not necessary for every install</comment>
+    <requestid>866840</requestid>
+  </revision>
 </revisionlist>

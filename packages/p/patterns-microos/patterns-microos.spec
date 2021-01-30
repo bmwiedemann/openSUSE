@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-microos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,38 +66,43 @@ Requires:       btrfsprogs
 Requires:       ca-certificates
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
+Requires:       glibc
 Requires:       hostname
 Requires:       iproute2
+Requires:       libnss_usrfiles2
 Requires:       login
 Requires:       openSUSE-build-key
 Requires:       pam
+Requires:       pam-config
 Requires:       procps
 Requires:       rebootmgr
 Requires:       rpm
 Requires:       shadow
-Requires:       snapper
 Requires:       systemd
 Requires:       wicked
 Requires:       zypper
+Requires:       group(nobody)
+Requires:       user(nobody)
 ####
 Requires:       btrfsmaintenance
+Requires:       busybox
 Requires:       chrony
 # curl indirectly needed by ignition via dracut's url-lib
 Requires:       curl
 # probably needed for fsck.fat on efi partitions
+Requires:       MicroOS-release
 Requires:       dosfstools
 Requires:       glibc-locale-base
 Requires:       haveged
 Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
-# ping!
-Requires:       MicroOS-release
 Requires:       iputils
 Requires:       issue-generator
 Requires:       kdump
 Requires:       less
 Requires:       microos-tools
 Requires:       openssh
+Requires:       snapper
 Requires:       vim-small
 # people are addicted to sudo
 Requires:       sudo
@@ -105,7 +110,6 @@ Requires:       supportutils
 Requires:       systemd-presets-branding-MicroOS
 Requires:       tallow
 Requires:       terminfo-base
-# timezone-base with only UTC useful?
 Requires:       timezone
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
@@ -266,11 +270,15 @@ Requires:       cups
 Requires:       cups-filters
 Requires:       hplip-hpijs
 
+# Common tools, helpful during initial setup
+Requires:       bash-completion
 Requires:       bluez-firmware
 Requires:       hicolor-icon-theme-branding-openSUSE
 Requires:       polkit-default-privs
 Requires:       udisks2
+Requires:       unzip
 Requires:       upower
+Requires:       wget
 
 %if 0%{is_opensuse}
 Requires:       avahi
@@ -365,9 +373,6 @@ Requires:       google-roboto-fonts
 Requires:       noto-coloremoji-fonts
 Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
-# Common tools, helpful during initial setup
-Requires:       unzip
-Requires:       wget
 # Pulseaudio is the default sound server
 Requires:       pulseaudio-module-gsettings
 # So that GNOME keyring works
@@ -419,7 +424,6 @@ Requires:       bluedevil5
 Requires:       breeze5-wallpapers
 Requires:       dolphin
 Requires:       kde-print-manager
-Requires:       kdeconnect-kde
 Requires:       kgamma5
 Requires:       kwrited5
 Requires:       phonon4qt5-backend-gstreamer

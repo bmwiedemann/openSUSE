@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 26 13:28:35 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use user(nobody) and group(nobody)
+
+-------------------------------------------------------------------
+Tue Jan 26 09:41:44 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Drop autofs and nfs-client requirements, not commonly needed
+
+-------------------------------------------------------------------
+Tue Jan 26 08:40:45 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Sync with openSUSE Tumleweed base pattern
+- Add busybox
+- Cleanup comments from last submission
+
+-------------------------------------------------------------------
+Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda <sydsb@opensuse.org>
+
+- Moved unzip and wget from gnome desktop pattern to common desktop pattern
+- add bash-completion, nfs-client and autofs to common desktop pattern for beginner users
+- remove kdeconnect-kde from kde desktop pattern as not necessary for every install
+
+-------------------------------------------------------------------
 Tue Dec  8 14:07:24 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure gnome-session-wayland is pulled by GNOME desktop pattern.
