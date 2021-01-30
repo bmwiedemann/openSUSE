@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 %define oname sqlite
-%define tarversion 3340000
+%define tarversion 3340100
 %bcond_with icu
 Name:           sqlite3
-Version:        3.34.0
+Version:        3.34.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
 Group:          Productivity/Databases/Servers
 URL:            https://www.sqlite.org/
-Source0:        http://www.sqlite.org/2020/sqlite-src-%{tarversion}.zip
+Source0:        http://www.sqlite.org/2021/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
-Source2:        http://www.sqlite.org/2020/sqlite-doc-%{tarversion}.zip
+Source2:        http://www.sqlite.org/2021/sqlite-doc-%{tarversion}.zip
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

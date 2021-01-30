@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 21 20:13:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.34.1:
+  * Fix a potential use-after-free bug when processing a a subquery
+    with both a correlated WHERE clause and a "HAVING 0" clause and
+    where the parent query is an aggregate (boo#1181261)
+  * Fix documentation typos
+  * Fix minor problems in extensions
+
+-------------------------------------------------------------------
 Wed Dec  2 09:08:39 UTC 2020 - Reinhard Max <max@suse.com>
 
 - SQLite 3.34.0:
