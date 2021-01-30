@@ -102,4 +102,14 @@
     + boo#1098252 CVE-2018-12495 heap-based buffer over-read via a crafted file</comment>
     <requestid>663373</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d465563d3da07f67693cee3e0518f1b4</srcmd5>
+    <version>2.2.6</version>
+    <time>1612011336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.6:
+  * No changelog provided
+- Drop no longer needed discount-fix-compile-warings.diff</comment>
+    <requestid>866749</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package discount
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 %define sover 2
 %bcond_with fenced_code
 Name:           discount
-Version:        2.2.4
+Version:        2.2.6
 Release:        0
 Summary:        Markdown text to HTML converter
 License:        BSD-3-Clause
 Group:          Productivity/Text/Convertors
-URL:            http://www.pell.portland.or.us/~orc/Code/discount/
+URL:            https://www.pell.portland.or.us/~orc/Code/discount/
 Source:         http://www.pell.portland.or.us/~orc/Code/discount/discount-%{version}.tar.bz2
 Patch1:         discount-disable_ldconfig.patch
-Patch2:         discount-fix-compile-warings.diff
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 Provides:       markdown
@@ -57,12 +56,10 @@ with some extensions from PHP Markdown Extra, Pandoc, and other implementations
 of Markdown.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
-./configure.sh \
+CFLAGS="%{optflags}" ./configure.sh \
   --shared \
   --prefix="%{_prefix}" \
   --execdir="%{_bindir}" \
@@ -73,8 +70,9 @@ of Markdown.
   --with-fenced-code \
 %endif
   --with-dl=BOTH \
+  --pkg-config \
   --enable-all-features
-make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC"
+%make_build --jobs=1
 
 %install
 make DESTDIR=%{buildroot} install.everything
