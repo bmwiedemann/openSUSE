@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>865005</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>96fec3ae7003114636176cfd621dc8a3</srcmd5>
+    <version>16.0.0.0~33</version>
+    <time>1612011376</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-16+33</comment>
+    <requestid>867722</requestid>
+  </revision>
 </revisionlist>

@@ -35,10 +35,10 @@
 %global updatever       0
 %global patchver        0
 %global datever         2021-03-16
-%global buildver        31
+%global buildver        33
 %global openjdk_repo    jdk16
-%global openjdk_tag     jdk-16+31
-%global openjdk_dir     jdk16-jdk-16-31
+%global openjdk_tag     jdk-16+33
+%global openjdk_dir     jdk16-jdk-16-33
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -342,7 +342,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -375,7 +375,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -419,7 +419,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
