@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 22 17:46:59 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- add PHP version to Requires: and Recommends: to make sure the same
+  version is installed as used during packaging
+- drop Requires: http_daemon (fixes boo#1180132) and Suggests: apache2
+  (which is already required though mod_php_any)
+
+-------------------------------------------------------------------
 Mon Dec 28 10:17:11 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.4.10:

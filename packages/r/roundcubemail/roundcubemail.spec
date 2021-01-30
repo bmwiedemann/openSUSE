@@ -1,7 +1,7 @@
 #
 # spec file for package roundcubemail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define roundcubepath %{apache_serverroot}/%{name}
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
-%define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
+%define php_name      %(php -r "print 'php' . PHP_MAJOR_VERSION;")
 Name:           roundcubemail
 Version:        1.4.10
 Release:        0
@@ -39,17 +39,17 @@ Source8:        robots.txt
 Patch0:         %{name}-config_dir.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2
-BuildRequires:  php
-Requires:       http_daemon
-Requires:       mod_php_any >= 5.4
-Requires:       php-dom
-Requires:       php-exif
-Requires:       php-gettext
-Requires:       php-iconv
-Requires:       php-json
-Requires:       php-mbstring
-Requires:       php-openssl
+BuildRequires:  php-cli
+Requires:       %{php_name}-dom
+Requires:       %{php_name}-exif
+Requires:       %{php_name}-gettext
+Requires:       %{php_name}-iconv
+Requires:       %{php_name}-json
+Requires:       %{php_name}-mbstring
+Requires:       %{php_name}-openssl
+Requires:       apache2-mod_%{php_name}
 ## Requires: for upstream dep package
+Requires:       %{php_name}-sockets
 Requires:       php-pear-Auth_SASL >= 1.0.6
 Requires:       php-pear-MDB2_Driver_mysqli
 Requires:       php-pear-Mail_Mime >= 1.10.0
@@ -58,17 +58,14 @@ Requires:       php-pear-Net_LDAP2
 Requires:       php-pear-Net_SMTP >= 1.8.1
 Requires:       php-pear-Net_Sieve >= 1.4.3
 Requires:       php-pear-Net_Socket >= 1.0.12
-Requires:       php-session
-Requires:       php-sockets
-Requires:       php_any_db
+Requires:       (%{php_name}-mysql or %{php_name}-pgsql)
 Recommends:     logrotate
-Recommends:     php-fileinfo
-Recommends:     php-intl
-Recommends:     php-imagick
-Recommends:     php-mysql
+Recommends:     %{php_name}-fileinfo
+Recommends:     %{php_name}-intl
+Recommends:     %{php_name}-imagick
 Recommends:     php-pear-Crypt_GPG >= 1.6.3
-Recommends:     php-zip
-Suggests:       apache2
+Recommends:     %{php_name}-zip
+Suggests:       %{php_name}-mysql
 Conflicts:      roundcube-framework
 Provides:       roundcube_framework = %{version}
 BuildArch:      noarch
@@ -117,8 +114,11 @@ sed -i '1d' plugins/password/helpers/chpass-wrapper.py
 # remove INSTALL doc
 rm INSTALL
 # fix interpreter for shell scripts
-sed -e 's|%{_bindir}/env php|%{_bindir}/php|' -i bin/*.sh 
-sed -e 's|%{_bindir}/env php|%{_bindir}/php|' -i vendor/pear/crypt_gpg/scripts/crypt-gpg-pinentry vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh
+sed -i 's|/usr/bin/env php|%{_bindir}/php|' \
+	bin/*.sh \
+	vendor/pear/crypt_gpg/scripts/crypt-gpg-pinentry \
+	vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh \
+	plugins/enigma/bin/import_keys.sh
 
 %build
 
@@ -128,8 +128,8 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/logrotate.d
 install %{SOURCE5} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 
 # extract roundcube-framework
-install -d -m 0755 %{buildroot}/%{_datadir}/php%{php_major_version}
-mv program/lib/Roundcube %{buildroot}%{_datadir}/php%{php_major_version}/Roundcube
+install -d -m 0755 %{buildroot}/%{_datadir}/%{php_name}
+mv program/lib/Roundcube %{buildroot}%{_datadir}/%{php_name}/Roundcube
 
 # install roundcubemail
 install -d -m 0755 %{buildroot}/%{roundcubepath}
@@ -250,7 +250,7 @@ if [ ${1:-0} -eq 1 ]; then
   # enable required apache modules
   %if 0%{?suse_version} > 01500
     if ! grep -q php %{_sysconfdir}/sysconfig/apache2 1>&2 2>/dev/null; then
-      %{_sbindir}/a2enmod -q php7    || %{_sbindir}/a2enmod php7
+      %{_sbindir}/a2enmod -q %{php_name}    || %{_sbindir}/a2enmod %{php_name}
     fi
   %endif
     for module in alias brotli deflate expires filter headers rewrite setenvif version ; do
@@ -306,7 +306,7 @@ exit 0
 %doc CHANGELOG
 %if 0%{?suse_version} >= 1500
 %license LICENSE
-%else 
+%else
 %doc LICENSE
 %endif
 %doc README.md
@@ -329,7 +329,7 @@ exit 0
 %config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
 %config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.inc
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
-%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_styles.less 
+%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_styles.less
 %config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_variables.less
 %{roundcubepath}/composer.json-dist
 %{roundcubepath}/composer.json
@@ -340,7 +340,7 @@ exit 0
 %dir %{roundcubepath}/bin
 %attr(0755,root,root) %{roundcubepath}/bin/*.sh
 %attr(0755,root,root) %{roundcubepath}/vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh
-%attr(0755,root,root) %{roundcubepath}/plugins/password/helpers/change_ldap_pass.pl 
+%attr(0755,root,root) %{roundcubepath}/plugins/password/helpers/change_ldap_pass.pl
 %attr(0755,root,root) %{roundcubepath}/vendor/pear/crypt_gpg/scripts/crypt-gpg-pinentry
 %{roundcubepath}/installer/
 %{roundcubepath}/logs
@@ -353,8 +353,7 @@ exit 0
 %{roundcubepath}/SQL
 %{roundcubepath}/temp
 %{roundcubepath}/vendor/
-%dir %{_datadir}/php%{php_major_version}
-%{_datadir}/php%{php_major_version}/Roundcube/
+%{_datadir}/%{php_name}/Roundcube
 %attr(-, wwwrun, root) %{_localstatedir}/log/%{name}
 %attr(-, wwwrun, root) %{_localstatedir}/lib/%{name}
 
