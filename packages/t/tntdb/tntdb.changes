@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 23 14:12:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4 (see
+  https://github.com/maekitalo/tntdb/compare/1.3...1.4
+  for a changelog)
+- Refreshed tntdb-1.3-avoid-version.patch as
+  tntdb-1.4-avoid-version.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Mar 15 02:30:54 UTC 2020 - Max Lin <mlin@suse.com>
 
 - BuildRequires postgresql-server-devel on Leap >= 15.2 as well
