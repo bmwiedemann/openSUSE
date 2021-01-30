@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 23 20:14:50 UTC 2021 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Fix quoting of values in POST_RECOVERY_SCRIPT and
+  BACKUP_PROG_INCLUDE (bsc#1180983).
+- 4.3.0
+
+-------------------------------------------------------------------
 Fri Jan 15 17:23:26 UTC 2021 - aabdallah@suse.com
 
 - Don't show a warning anymore for vfat partitions, as versions
   1.18 and higher of rear support them (bsc#1180599)
+- 4.2.2
 
 -------------------------------------------------------------------
 Tue Dec 31 13:59:56 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
