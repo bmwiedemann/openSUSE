@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -421,6 +421,7 @@ Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.ta
 Source1:        nc-config.1.gz
 Patch0:         Fix-logging-argument.patch
 Patch1:         get_filter_info-get-correct-number-of-filter-elements.patch
+Patch2:         Define-byteswap-functions-before-use.patch
 BuildRequires:  gawk
 BuildRequires:  libtool
 BuildRequires:  m4

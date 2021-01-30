@@ -1,0 +1,28 @@
+From: Egbert Eich <eich@suse.com>
+Date: Fri Jan 29 15:08:00 2021 +0100
+Subject: Define byteswap() functions before use
+Patch-mainline: Not yet
+Git-commit: d35804c423112c496f7c6b0785b646875866b91c
+References: 
+
+This fixes the build on System-z.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ netcdf-c-4.7.4/libdispatch/dfilter.c | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+diff --git a/libdispatch/dfilter.c b/netcdf-c-4.7.4/libdispatch/dfilter.c
+index 8938464..0e490a3 100644
+--- a/libdispatch/dfilter.c
++++ b/libdispatch/dfilter.c
+@@ -40,6 +40,10 @@ Unified filter related code
+ 
+ /* Forward */
+ static int gettype(const int q0, const int q1, int* unsignedp);
++#ifdef WORDS_BIGENDIAN
++static void byteswap8(unsigned char* mem);
++static void byteswap4(unsigned char* mem);
++#endif
+ 
+ const struct LegalFormat {
+     const char* tag;

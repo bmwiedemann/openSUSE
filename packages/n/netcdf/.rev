@@ -540,4 +540,13 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment></comment>
     <requestid>854317</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>fbdf0b5e7f3b0b145c6185e63d908749</srcmd5>
+    <version>4.7.4</version>
+    <time>1612011384</time>
+    <user>dimstar_suse</user>
+    <comment>- Define-byteswap-functions-before-use.patch:
+  Define byteswap() functions before use (bsc#1181523). (forwarded request 867729 from eeich)</comment>
+    <requestid>867730</requestid>
+  </revision>
 </revisionlist>

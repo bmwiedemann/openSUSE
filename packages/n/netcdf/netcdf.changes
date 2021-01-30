@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 29 14:21:02 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Define-byteswap-functions-before-use.patch:
+  Define byteswap() functions before use (bsc#1181523).
+
+-------------------------------------------------------------------
 Wed Dec  9 08:29:38 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Change 'Requires:' to hdf5 to %requires_eq to match the exact
