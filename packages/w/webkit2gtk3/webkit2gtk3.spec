@@ -27,7 +27,7 @@
 %define _name webkitgtk
 # gold linker not available on old s390/s390x
 %define _gold_linker 1
-%ifarch ppc s390
+%ifarch ppc ppc64le s390
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
@@ -41,15 +41,20 @@ Source0:        %{url}/releases/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
+
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
 # PATCH-FIX-UPSTREAM webkit-font-scaling.patch https://bugs.webkit.org/show_bug.cgi?id=218450 badshah400@gmail.com -- Fix system font scaling not applied to 'font-size: XXXpt'
 Patch1:         webkit-font-scaling.patch
+# PATCH-FIX-UPSTREAM gir-multilib.patch -- Fix multilib conflict in gir files
+Patch2:         gir-multilib.patch
+
 # Below patches are for 15.0/15.1 only
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
 Patch100:       webkit-process.patch
 # PATCH-FIX-OPENSUSE old-wayland-scanner.patch mgorse@suse.com -- pass code to wayland-scanner, rather than private-code
 Patch101:       old-wayland-scanner.patch
+
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  Mesa-libGLESv1_CM-devel
@@ -278,6 +283,7 @@ A small test browswer from webkit, useful for testing features.
 %setup -q -n webkitgtk-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %patch100 -p1
 %patch101 -p1

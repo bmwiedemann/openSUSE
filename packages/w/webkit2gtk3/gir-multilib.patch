@@ -1,0 +1,22 @@
+--- a/Source/JavaScriptCore/PlatformGTK.cmake	
++++ a/Source/JavaScriptCore/PlatformGTK.cmake	
+@@ -79,6 +79,8 @@ if (ENABLE_INTROSPECTION)
+             --pkg-export=javascriptcoregtk-${WEBKITGTK_API_VERSION}
+             --output=${CMAKE_BINARY_DIR}/JavaScriptCore-${WEBKITGTK_API_VERSION}.gir
+             --c-include="jsc/jsc.h"
++            --sources-top-dirs=${CMAKE_BINARY_DIR}
++            --sources-top-dirs=${CMAKE_SOURCE_DIR}
+             -DJSC_COMPILATION
+             -I${CMAKE_SOURCE_DIR}/Source
+             -I${JAVASCRIPTCORE_DIR}
+--- a/Source/WebKit/PlatformGTK.cmake	
++++ a/Source/WebKit/PlatformGTK.cmake	
+@@ -678,6 +678,8 @@ if (ENABLE_INTROSPECTION)
+             --pkg-export=webkit2gtk-${WEBKITGTK_API_VERSION}
+             --output=${CMAKE_BINARY_DIR}/WebKit2-${WEBKITGTK_API_VERSION}.gir
+             --c-include="webkit2/webkit2.h"
++            --sources-top-dirs=${CMAKE_BINARY_DIR}
++            --sources-top-dirs=${CMAKE_SOURCE_DIR}
+             -DBUILDING_WEBKIT
+             -DWEBKIT2_COMPILATION
+             -I${CMAKE_SOURCE_DIR}/Source

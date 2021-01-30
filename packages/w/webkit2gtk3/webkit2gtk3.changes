@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 20 10:47:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gir-multilib.patch: Fix multilib conflict in gir files.
+- Disable gold linker for ppc64le
+
+-------------------------------------------------------------------
 Tue Jan 19 19:12:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add webkit-font-scaling.patch: Fix system font scaling not
