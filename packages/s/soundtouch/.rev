@@ -225,4 +225,12 @@
     <comment>- Use dos2unix insted of tr and friends</comment>
     <requestid>723223</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>593e451fb2ae0e9911a3a713113be8e0</srcmd5>
+    <version>2.2</version>
+    <time>1612011348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866864</requestid>
+  </revision>
 </revisionlist>

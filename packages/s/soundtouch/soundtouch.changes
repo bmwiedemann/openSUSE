@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 24 19:32:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Improvements to help compiler autovectorization  
+  * Bugfix in integer version of calcCrossCorrAccumulate()
+  * Compensate initial buffering of anti-alias filter and intepolator.
+  * Tuning for ARM NEON
+  * BPMDetect: Make conversion from size_t to int explicit 
+  * BPM PeakFinder: Fix possible reading past end of array. 
+  * Change correlation loop 'sum' variable type from double to float
+
+-------------------------------------------------------------------
 Wed Aug 14 08:01:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use dos2unix insted of tr and friends
