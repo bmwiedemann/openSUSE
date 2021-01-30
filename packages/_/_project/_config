@@ -1,3 +1,5 @@
+Prefer: -PackageKit-command-not-found
+
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
 Ignore: firewall-macros:firewalld
 
