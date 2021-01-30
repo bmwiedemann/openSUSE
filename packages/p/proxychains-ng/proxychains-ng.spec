@@ -1,7 +1,7 @@
 #
 # spec file for package proxychains-ng
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           proxychains-ng
-Version:        4.11
+Version:        4.14
 Release:        0
 Summary:        Redirect connection through proxy servers
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            http://sourceforge.net/projects/proxychains-ng/
-Source0:        http://downloads.sourceforge.net/project/%{name}/%{name}-%{version}.tar.bz2
+URL:            https://github.com/rofl0r/proxychains-ng
+Source0:        https://ftp.barfooze.de/pub/sabotage/tarballs/proxychains-ng-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  make
 Obsoletes:      proxychains < %{version}
@@ -56,8 +56,8 @@ make %{?_smp_mflags}
 install -Dm 0755 src/proxyresolv %{buildroot}%{_bindir}/proxyresolv4
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING README TODO
+%doc AUTHORS README TODO
+%license COPYING
 %{_bindir}/proxychains4
 %{_bindir}/proxyresolv4
 %{_libdir}/libproxychains4.so
