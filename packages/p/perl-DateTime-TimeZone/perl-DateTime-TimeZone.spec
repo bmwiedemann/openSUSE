@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-TimeZone
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime-TimeZone
 Name:           perl-DateTime-TimeZone
-Version:        2.46
+Version:        2.47
 Release:        0
 Summary:        Time zone object base class and factory
 License:        Artistic-1.0 OR GPL-1.0-or-later
