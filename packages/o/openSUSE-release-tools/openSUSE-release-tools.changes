@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 22 13:48:03 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210122.29b776fd:
+  * Calculate the i586 DVD as i686 package set
+
+-------------------------------------------------------------------
+Tue Jan 19 17:03:14 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210119.d564b3d0:
+  * Accept: Don't crash on actions that aren't submit/delete
+
+-------------------------------------------------------------------
+Tue Jan 19 15:22:57 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210119.75c001c9:
+  * pkglistgen: Check the return code of Popen calls
+
+-------------------------------------------------------------------
+Mon Jan 18 15:41:10 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210118.bb3c6e1c:
+  * pkglistgen: Allow to set require_all for some groups to disable ignore
+  * Update aggregate.php
+
+-------------------------------------------------------------------
 Tue Jan 05 16:08:49 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210106.deab50eb:
