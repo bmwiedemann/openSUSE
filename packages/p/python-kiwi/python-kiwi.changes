@@ -1,4 +1,347 @@
 -------------------------------------------------------------------
+Fri Jan 15 09:26:09 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.4 → 9.23.5
+
+-------------------------------------------------------------------
+Tue Jan 12 17:31:13 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Update contributing link in README
+
+-------------------------------------------------------------------
+Mon Jan 11 09:48:00 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.3 → 9.23.4
+
+-------------------------------------------------------------------
+Wed Dec 23 16:59:52 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Fixes the rpmdb bootstrap management for DNF on SUSE
+
+  This commit makes sure that the compatibility symlink for
+  /var/lib/rpm is created when the host rpmdb path is set to something
+  different. This fixes a mismatch on bootstrapping SUSE using DNF.
+
+  Fixes #1669
+
+-------------------------------------------------------------------
+Tue Dec 22 11:26:18 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.2 → 9.23.3
+
+-------------------------------------------------------------------
+Mon Dec 21 15:17:30 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Modify lsblk flags for a consistent output across distros
+
+  This commit modifies the lsblk flags to make use of the list format
+  instead of raw output. `--list` flag seams to keep the geometry order
+  and produces a consistent output in several distros.
+
+-------------------------------------------------------------------
+Fri Dec 18 15:10:19 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.1 → 9.23.2
+
+-------------------------------------------------------------------
+Fri Dec 18 13:00:07 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update kiwi-systemdeps-image-validation
+
+  Make python anymarkup to be only recommended. The package
+  does not exist on all distributions, e.g suse does not
+  provide it and for kiwi it's an optional plugin
+
+-------------------------------------------------------------------
+Fri Dec 18 12:56:16 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed missing provides tag
+
+  When building WSL images the image type is set to appx.
+  Therefore obs is looking for what provides kiwi-image:appx
+  This provides tag was missing
+
+-------------------------------------------------------------------
+Fri Dec 18 12:47:35 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Don't install obsolete requires packages
+
+  The derived docker build test installs obsolete kiwi requires
+
+-------------------------------------------------------------------
+Thu Dec 17 21:51:17 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.0 → 9.23.1
+
+-------------------------------------------------------------------
+Thu Dec 17 18:09:11 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update spec file
+
+  Complete and cleanup spec for drop in replacement of new
+  systemdeps sub-packages
+
+-------------------------------------------------------------------
+Thu Dec 17 17:28:49 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.22.4 → 9.23.0
+
+-------------------------------------------------------------------
+Thu Dec 17 16:49:09 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Set min version python requirement
+
+  The use of new features like type hinting and annotations
+  requires a python version >= 3.6
+
+-------------------------------------------------------------------
+Thu Dec 17 12:29:50 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.22.3 → 9.22.4
+
+-------------------------------------------------------------------
+Thu Dec 17 11:30:49 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Use the generic Dict type
+
+  This commit makes use of the Dict type in the container factory classes
+  so these type hints aligned with the other dict related type hints in
+  KIWI code. This commit improves the refactor done in 99be52ba.
+
+-------------------------------------------------------------------
+Thu Dec 17 10:44:24 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update preferences documentation
+
+  The last commit added the optional arch attribute to the
+  preferences section but the documentation did not expose
+  this information. This is related to Issue #1640
+
+-------------------------------------------------------------------
+Wed Dec 16 17:57:52 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed no-self-use issue from codacy report
+
+  The Logger.progress method is actually a static method
+  and should be used as such
+
+-------------------------------------------------------------------
+Wed Dec 16 17:42:33 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added strong typing for the following API methods
+
+  * logger
+  * logger_color_formatter
+  * logger_filter
+  * xml_description
+  * xml_state
+  * markup/any
+  * markup/base
+  * markup/xml
+
+  This references Issue #1644
+
+-------------------------------------------------------------------
+Wed Dec 16 14:00:24 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Add 'arch' attribute to preferences
+
+  This commits adds the attribute 'arch' to preferences. It works
+  as any other 'arch' attribute within the schema. Preferences defined
+  with architectures that do not match the host are ignored. If no 'arch'
+  is provided it matches all any host architecture.
+
+  Fixes #1640
+
+-------------------------------------------------------------------
+Wed Dec 16 12:14:20 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed color json output
+
+  kiwi supports output of yaml/json markup in color mode using
+  pjson. The writing of this data required to be encoded prior
+  output.
+
+-------------------------------------------------------------------
+Tue Dec 15 15:54:17 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fix vagrant documentation
+
+  The previous pull request adding a baseVagrantSetup method
+  and documentation broke the build of the docs due to invalid
+  indentation. The test pipeline has failed but the PR was
+  merged so this followup commit is needed to fix the docs
+
+-------------------------------------------------------------------
+Tue Dec 15 15:37:54 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Refactor iso_tools factory class
+
+  This commit refactors the IsoTools class and turns it into a
+  proper factory class and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Tue Dec 15 12:38:33 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Refactor container factory classes
+
+  This commit refactors the container related classes to turn them into
+  proper factory classes and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Tue Dec 15 11:31:45 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Delete traces of travis integration
+
+  Rename and clarify code that was still using the name travis.
+  Delete all references to the travis CI system from kiwi
+
+-------------------------------------------------------------------
+Tue Dec 15 10:27:25 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.22.2 → 9.22.3
+
+-------------------------------------------------------------------
+Tue Dec 15 10:25:35 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed SUSE doc update in gitlab pipeline
+
+  There is a dependency set to build_suse_doc in the push_suse_doc
+  target. But the build_suse_doc target has set except "master"
+  when the push_suse_doc has set only "master". Obviously this
+  doesn't fit together
+
+-------------------------------------------------------------------
+Tue Dec 15 10:11:52 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.22.1 → 9.22.2
+
+-------------------------------------------------------------------
+Mon Dec 14 18:51:30 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed source rpm check in gitlab
+
+  Fedora30 is EOL, thus there is no provider for
+  mock/fedora-30-x86_64.cfg anymore
+
+-------------------------------------------------------------------
+Mon Dec 14 18:45:15 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Delete travis setup
+
+-------------------------------------------------------------------
+Mon Dec 14 18:44:13 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added gitlab pipeline to deploy kiwi documentation
+
+  Use a github token and a bit of script code to deploy
+  the kiwi online documentation to the gh-pages branch
+
+-------------------------------------------------------------------
+Mon Dec 14 16:52:43 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Move CI system to gitlab
+
+  Travis made questionable changes to their open statement
+  and I'm not following this anymore.
+
+-------------------------------------------------------------------
+Fri Dec 11 15:26:38 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added check_swap_name_used_with_lvm runtime check
+
+  The optional oem-swapname is only effective if used together
+  with the LVM volume manager. A name for the swap space can
+  only be set if it is created as a LVM volume. In any other
+  case the name does not apply to the system. This condition
+  should be checked to avoid useless settings in the image
+  description.
+
+-------------------------------------------------------------------
+Fri Dec 11 13:13:03 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Allow to customize swap volume name
+
+  Added a new element <oem-swapname> below the <oemconfig>
+  section which allows to specify a name for the swap volume
+  in case the LVM volume manager is used. The default if
+  not specified continuous to stay at: LVSwap. This
+  Fixes #1638
+
+-------------------------------------------------------------------
+Fri Dec 11 10:49:03 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed base setup links
+
+  Do not create a link /var/run pointing to /run. This is unexpected
+  and looks like a left over from kiwi legacy which supported older
+  distributions who might have needed this. This Fixes #1643
+
+-------------------------------------------------------------------
+Wed Dec 09 13:45:22 CET 2020 - Dan Čermák <dcermak@suse.com>
+
+- [doc] Clarify that suse* functions are also for openSUSE
+
+-------------------------------------------------------------------
+Wed Dec 09 12:44:29 CET 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add baseVagrantSetup helper function
+
+  This function is used to setup a vagrant box, so that each vagrant box creator
+  needn't implement it themselves.
+
+-------------------------------------------------------------------
+Wed Dec 09 12:41:15 CET 2020 - Dan Čermák <dcermak@suse.com>
+
+- Use DEBUG=0 by default in function Debug
+
+  This avoids script failures when invoked with `set -u`.
+
+-------------------------------------------------------------------
+Wed Dec 09 09:28:50 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Make debootstrap repository explicit
+
+  This commit introduces the use_for_debootstrap attribute for
+  repositories of type apt-deb. This is a boolean attribute to specify
+  the repository that will be used for bootstrapping in apt-deb based
+  images. Only one can be selected and if none is specified KIWI just
+  makes use of the last one in the list.
+
+  Fixes #1593
+
+-------------------------------------------------------------------
+Tue Dec 08 15:24:18 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Refactor packaging to split out system dependencies into subpackages
+
+  The eventual goal is to eliminate the requirement to use magic in
+  build systems (e.g, OBS) to compose the necessary dependencies for
+  image builds, while making it easier for local users to discover
+  what they need to build appliances.
+
+  Fixes #1503
+
+-------------------------------------------------------------------
+Tue Dec 08 14:34:45 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Drop useless chkconfig dependency
+
+  We originally had chkconfig as a dependency because alternatives(8)
+  is part of chkconfig in RH/Fedora systems. Since we don't use that
+  anymore, we don't need this dependency.
+
+-------------------------------------------------------------------
+Tue Dec 08 14:31:18 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Require gnupg on Debian/Ubuntu
+
+  Without this, it's not possible to do GPG verification of Debian/Ubuntu
+  repositories.
+
+-------------------------------------------------------------------
 Tue Dec 08 12:37:47 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.22.0 → 9.22.1
@@ -14,6 +357,13 @@ Tue Dec 08 12:21:11 CET 2020 - Marcus Schäfer <ms@suse.de>
   of the form [ -n ... ] is stupid since the variable always
   contains text. This commit fixes the validation to make use
   of the bool() method provided for these type of variables
+
+-------------------------------------------------------------------
+Fri Dec 04 12:58:06 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added SLE15 s390 FBA integration test
+
+  Build image for FBA disk
 
 -------------------------------------------------------------------
 Thu Dec 03 15:37:30 CET 2020 - Marcus Schäfer <ms@suse.de>

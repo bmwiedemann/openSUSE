@@ -1603,4 +1603,41 @@
   use from an API POV. Related to #1498</comment>
     <requestid>854171</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4d3024cd42edf50bded7d3a774e03b4a</srcmd5>
+    <version>9.23.5</version>
+    <time>1612011362</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.4 → 9.23.5
+
+- Update contributing link in README
+
+- Bump version: 9.23.3 → 9.23.4
+
+- Fixes the rpmdb bootstrap management for DNF on SUSE
+  This commit makes sure that the compatibility symlink for
+  /var/lib/rpm is created when the host rpmdb path is set to something
+  different. This fixes a mismatch on bootstrapping SUSE using DNF.
+  Fixes #1669
+
+- Bump version: 9.23.2 → 9.23.3
+
+- Modify lsblk flags for a consistent output across distros
+  This commit modifies the lsblk flags to make use of the list format
+  instead of raw output. `--list` flag seams to keep the geometry order
+  and produces a consistent output in several distros.
+
+- Bump version: 9.23.1 → 9.23.2
+
+- Update kiwi-systemdeps-image-validation
+  Make python anymarkup to be only recommended. The package
+  does not exist on all distributions, e.g suse does not
+  provide it and for kiwi it's an optional plugin
+
+- Fixed missing provides tag
+  When building WSL images the image type is set to appx.
+  Therefore obs is looking for what provides kiwi-image:appx
+  This provides tag was missing</comment>
+    <requestid>863255</requestid>
+  </revision>
 </revisionlist>
