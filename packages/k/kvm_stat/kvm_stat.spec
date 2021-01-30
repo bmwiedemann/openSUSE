@@ -55,6 +55,17 @@ simple text.
 %description
 %{XXX}
 
+%package rebuild
+Summary:        Empty package to ensure rebuilding kvm_stat in OBS
+Group:          System/Monitoring
+%requires_eq kernel-source
+
+%description rebuild
+This is empty package that ensures kvm_stat is rebuilt every time
+kernel-default is rebuilt in OBS.
+
+There is no reason to install this package.
+
 %prep
 # copy necessary files from kernel-source
 (tar -C /usr/src/linux -c COPYING tools scripts) | tar -x
@@ -105,5 +116,8 @@ ln -sf service %{buildroot}%{_sbindir}/rckvm_stat
 %{_sbindir}/rckvm_stat
 %{_bindir}/kvm_stat
 %{_mandir}/man1/kvm_stat*
+
+%files rebuild
+%license COPYING
 
 %changelog

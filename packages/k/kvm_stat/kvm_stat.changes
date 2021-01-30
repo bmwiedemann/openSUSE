@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 28 14:59:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add a dummy -rebuild package: give OBS/Tumbleweed a hint to tell
+  when this package needs a rebuild (boo#1178493).
+
+-------------------------------------------------------------------
 Thu Jan 28 01:55:12 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Install the systemd unit file in the proper place, so that the
