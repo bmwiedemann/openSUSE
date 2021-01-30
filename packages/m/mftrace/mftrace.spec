@@ -1,7 +1,7 @@
 #
 # spec file for package mftrace
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           mftrace
-Version:        1.2.18
+Version:        1.2.20
 Release:        0
 Summary:        Scalable PostScript Fonts for MetaFont
 License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
-Url:            http://lilypond.org/mftrace/
+URL:            http://lilypond.org/mftrace/
 Source0:        http://lilypond.org/download/sources/mftrace/%{name}-%{version}.tar.gz
+Source1:        gf2pbm.1
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  potrace
@@ -44,6 +45,7 @@ into a PFA or PFB font (A PostScript Type1 Scalable Font) or TTF
 %setup -q
 
 %build
+cp %{SOURCE1} .
 autoreconf -fi
 %configure \
 	--with-pic
@@ -56,7 +58,8 @@ rm -rf %{buildroot}%{_datadir}/mftrace/*.pyc
 
 %files
 %defattr(-, root, root)
-%doc ChangeLog COPYING README.txt
+%license COPYING
+%doc ChangeLog README.txt
 %{_bindir}/*
 %{_datadir}/mftrace
 %{_mandir}/man1/*

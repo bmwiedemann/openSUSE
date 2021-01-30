@@ -1,0 +1,54 @@
+.TH gf2pbm 1 "February 11, 2002"
+.SH NAME
+gf2pbm \- convert a character from a GF font file to PBM format
+.SH SYNOPSIS
+.B gf2pbm
+.RI [ options ] " GF-file"
+.SH DESCRIPTION
+This manual page documents briefly the
+.B gf2pbm
+command.
+.B gf2pbm
+is a program that converts a single character from a METAFONT-produced
+GF font file to PBM format.  It is used internally by
+.BR mftrace (1)
+to feed to
+.BR autotrace (1)
+to create a Postscript outline description of the character.
+.SH OPTIONS
+.TP
+.B \-b
+Dump a bitmap file.
+.TP
+.B \-s
+Show glyph size.
+.TP
+.BI \-n " NUM"
+Process glyph number
+.IR NUM .
+.TP
+.BI \-o " FILE"
+Output to
+.I FILE
+instead of
+.IR stdout .
+.TP
+.B \-h
+Show summary of options.
+.TP
+.B \-d
+Display debugging information.
+.SH "EXIT STATUS"
+.B gf2pbm
+exits with status 0 if successful, status 1 if the requested glyph did
+not exist and status 2 if there was some other error.
+.SH SEE ALSO
+.BR mf (1),
+.BR pktrace (1).
+.br
+.SH AUTHOR
+.B gf2pbm
+is based on Paul Vojta's Xdvi, and was munged by Han-Wen Nienhuys
+<hanwen@xs4all.nl>.  This manual page was written by Julian Gilbey
+<jdg@debian.org>, for the Debian GNU/Linux system (but may be used by
+others).

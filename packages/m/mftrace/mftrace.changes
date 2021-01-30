@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 05 04:24:13 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.2.20
+  * Fix p.add_option() issue
+  * Fix parsing of italic correction
+  * Fix FTP_DIR.
+  * Migrate package to python3
+  * Add manpage for gf2pbm
+  * Quieten fontforge invocation
+
+-------------------------------------------------------------------
 Tue Oct 30 12:25:11 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Remove autotrace from build dependencies
