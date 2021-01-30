@@ -13,6 +13,8 @@ BuildFlags: genmetaalgo:1
 # Using a date to indicate when we set the serial
 ExpandFlags: macroserial:20210126
 
+ExpandFlags: kiwi-nobasepackages
+
 PublishFlags: ympdist:openSUSE%20Tumbleweed
 
 # Use ext4 as FS in builder workers (instead of default ext3)
@@ -64,15 +66,18 @@ Macros:
 
 Substitute: kiwi-setup:image python3-kiwi createrepo_c
 Substitute: kiwi-image:tbz   python3-kiwi
-# 2021-01-12; removed openSUSE-release and openSUSE-release-ftp from :docker substitute (boo#1180263)
-Substitute: kiwi-image:docker python3-kiwi kiwi-image-docker-requires
+Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers
 
 Substitute: obs:cli_debug_packages gdb vim strace less rzsz
 
-Prefer: kiwi-filesystem-requires
-Prefer: kiwi-image-docker-requires
-Prefer: kiwi-image-iso-requires
-Prefer: kiwi-image-vmx-requires
+# Prefer: kiwi-filesystem-requires
+# Prefer: kiwi-image-docker-requires
+# Prefer: kiwi-image-iso-requires
+# Prefer: kiwi-image-vmx-requires
+Prefer: kiwi-systemdeps-filesystems
+Prefer: kiwi-systemdeps-disk-images
+Prefer: kiwi-systemdeps-iso-media
+
 
 # Migration to product builder; using the Tumbleweed plugin since 2020-04-28
 Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
@@ -131,7 +136,9 @@ Prefer: -moonjit-devel
 
 Preinstall: liblua5_3-5
 
+FileProvides: /bin/bash bash
 FileProvides: /bin/csh tcsh
+FileProvides: /bin/hostname hostname
 FileProvides: /bin/logger util-linux-systemd
 FileProvides: /sbin/netconfig sysconfig-netconfig
 FileProvides: /sbin/setcap libcap-progs
@@ -141,23 +148,28 @@ FileProvides: /usr/bin/csh tcsh
 FileProvides: /usr/bin/docbook2man docbook-utils
 FileProvides: /usr/bin/eu-nm elfutils
 FileProvides: /usr/bin/fipscheck fipscheck
+FileProvides: /usr/bin/grep busybox-grep grep
+FileProvides: /usr/bin/gzip busybox-gzip gzip
 FileProvides: /usr/bin/killall psmisc
 FileProvides: /usr/bin/mkdir coreutils busybox-coreutils
 FileProvides: /usr/bin/mimencode metamail
 # /sbin/mkinitrd is required by suse-module-tools; but this is pulled into systemd-mini, causing a cycle
 # FileProvides: /sbin/mkinitrd dracut
 FileProvides: /usr/bin/mkisofs mkisofs
+FileProvides: /usr/bin/perl perl-base
 FileProvides: /usr/bin/pkg-config pkgconf-pkg-config
 Substitute: pkg-config pkgconf-pkg-config
 FileProvides: /usr/bin/python python-base
 FileProvides: /usr/bin/python2 python2-base
 FileProvides: /usr/bin/python3 python38-base
+FileProvides: /usr/bin/sed busybox-sed sed sed
 FileProvides: /usr/bin/setfacl acl
 FileProvides: /usr/bin/sg_inq sg3_utils
 FileProvides: /usr/bin/touch coreutils busybox-coreutils
 FileProvides: /usr/bin/tput ncurses-utils
 FileProvides: /usr/bin/xmllint libxml2-tools
 FileProvides: /usr/bin/Xvfb xorg-x11-server
+FileProvides: /usr/bin/xz busybox-xz xz
 FileProvides: /usr/sbin/groupadd shadow
 FileProvides: /usr/sbin/lockdev lockdev
 FileProvides: /usr/sbin/useradd shadow
@@ -935,7 +947,7 @@ Prefer: dhcp-client:dhcp
 Prefer: libGLw1
 # provides typelib(St)
 Prefer: -cinnamon
-Prefer: -libreoffice -busybox-links -busybox
+Prefer: -libreoffice -busybox-links -busybox -busybox-coreutils -busybox-grep -busybox-sed -busybox-xz
 Prefer: -icc-profiles
 Prefer: vala
 # in doubt, take higher versions
