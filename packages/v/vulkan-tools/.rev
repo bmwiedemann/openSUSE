@@ -207,4 +207,12 @@
     <comment>- Update to release 1.2.165</comment>
     <requestid>864137</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1e3cde998c307397e70e4b69abbaa7ad</srcmd5>
+    <version>1.2.166</version>
+    <time>1612011411</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>867836</requestid>
+  </revision>
 </revisionlist>

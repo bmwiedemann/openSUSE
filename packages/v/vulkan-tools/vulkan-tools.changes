@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 23 00:48:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.166:
+  * build: Update known-good files for 1.2.166 header 
+  * vkcube: Updated to support portability extension properly
+  * vkcube: portabilty extension as text so it builds on all platforms
+
+-------------------------------------------------------------------
 Mon Jan 18 15:44:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.165
