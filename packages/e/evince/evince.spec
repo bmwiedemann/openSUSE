@@ -1,7 +1,7 @@
 #
 # spec file for package evince
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
