@@ -7,4 +7,13 @@
     <comment>Final 3.0 version</comment>
     <requestid>858619</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eea9a3c8c66068c09138dccc182e5739</srcmd5>
+    <version>3.0.0</version>
+    <time>1612011357</time>
+    <user>dimstar_suse</user>
+    <comment>- add https://github.com/rubygems/rubygems/pull/4317.patch 
+  make sure the gem plugins path does not contain the buildroot</comment>
+    <requestid>866946</requestid>
+  </revision>
 </revisionlist>

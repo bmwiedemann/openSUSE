@@ -1,7 +1,7 @@
 #
 # spec file for package ruby3.0
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,6 +85,7 @@ Source4:        %{name}-default.macros
 Source98:       series
 Source99:       %{name}-rpmlintrc
 Patch:          use-pie.patch
+Patch1:         https://github.com/rubygems/rubygems/pull/4317.patch 
 #
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}

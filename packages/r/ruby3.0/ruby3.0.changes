@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 25 18:09:45 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- add https://github.com/rubygems/rubygems/pull/4317.patch 
+  make sure the gem plugins path does not contain the buildroot
+
+-------------------------------------------------------------------
 Fri Dec 25 06:28:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to ruby 3.0.0
