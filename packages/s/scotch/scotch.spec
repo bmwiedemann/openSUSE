@@ -1,7 +1,7 @@
 #
 # spec file for package scotch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define base_pname scotch
-%define vers 6.0.9
-%define _vers 6_0_9
+%define vers 6.1.0
+%define _vers 6_1_0
 %define so_ver 0
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
@@ -59,6 +59,13 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %bcond_with hpc
 %define mpi_vers 3
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%{?DisOMPI4}
+%global mpi_family openmpi
+%bcond_with hpc
+%define mpi_vers 4
 %endif
 
 %if "%{flavor}" == "mvapich2"
@@ -118,6 +125,15 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %endif
 
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%undefine c_f_ver
+%global mpi_family openmpi
+%define mpi_vers 4
+%endif
+
 %if "%{flavor}" == "gnu7-hpc"
 %bcond_without hpc
 %global compiler_family gnu
@@ -163,6 +179,15 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 7
 %global mpi_family openmpi
 %define mpi_vers 3
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_family openmpi
+%define mpi_vers 4
 %endif
 
 %if "%{flavor}" == "gnu8-hpc"
@@ -212,6 +237,15 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %endif
 
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_family openmpi
+%define mpi_vers 4
+%endif
+
 %if "%{flavor}" == "gnu9-hpc"
 %bcond_without hpc
 %global compiler_family gnu
@@ -259,11 +293,77 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %endif
 
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_family openmpi
+%define mpi_vers 4
+%endif
+
+%if "%{flavor}" == "gnu10-hpc"
+%bcond_without hpc
+%global compiler_family gnu
+%define c_f_ver 10
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_family mvapich2
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_family mpich
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_family openmpi
+%define mpi_vers 1
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_family openmpi
+%define mpi_vers 2
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_family openmpi
+%define mpi_vers 3
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_family openmpi
+%define mpi_vers 4
+%endif
+
 # Don't build non-HPC on SLE
-%if !0%{?is_opensuse}
- %if !0%{?with_hpc:1}
+%if !0%{?is_opensuse} && !0%{?with_hpc:1}
 ExclusiveArch:  do_not_build
- %endif
+%endif
+
+%if 0%{?with_hpc}
 %bcond_with mumps
 %else
 %bcond_without mumps
@@ -323,8 +423,8 @@ Group:          Productivity/Scientific/Math
 Name:           %{package_name}
 Version:        %{vers}
 Release:        0
-URL:            http://www.labri.fr/perso/pelegrin/scotch/
-Source0:        https://gforge.inria.fr/frs/download.php/latestfile/298/scotch_%{version}.tar.gz
+URL:            https://gitlab.inria.fr/scotch/scotch
+Source0:        https://gitlab.inria.fr/scotch/scotch/-/archive/v%{version}/%{base_pname}-v%{version}.tar.gz
 Source1:        scotch-Makefile.inc.in
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -420,7 +520,7 @@ This package contains the devel libraries and header file in the case
 scotch is used as a replacement of the metis library.
 
 %prep
-%setup -q -n scotch_%{version}
+%setup -q -n scotch-v%{version}
 cp %SOURCE1 src/Makefile.inc
 
 %build
@@ -476,8 +576,8 @@ for static_libs in lib/lib%{pname}*.a %{?with_mumps:lib/lib%{?pt_pref}esmumps.a}
 done
 %if %{without hpc}
 pushd %{buildroot}%{my_libdir}
-ln -s libscotch%{metis}.a lib%{metis}.a
-ln -s libscotch%{metis}.so lib%{metis}.so
+ln -s lib%{?pt_pref}scotch%{metis}.a lib%{metis}.a
+ln -s lib%{?pt_pref}scotch%{metis}.so lib%{metis}.so
 %if %{with mpi}
 	# We create link in order to have the serial libs available in the
 	# same directory as the parallel libs. A lot of software using scotch

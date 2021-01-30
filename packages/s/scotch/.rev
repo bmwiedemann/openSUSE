@@ -120,4 +120,29 @@
   metis-devel (boo#1169791).</comment>
     <requestid>794965</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>abe640b66bdfdc2ecff4a3838ad324c8</srcmd5>
+    <version>6.1.0</version>
+    <time>1612011372</time>
+    <user>dimstar_suse</user>
+    <comment>- Sync SLE and openSUSE builds (jsc#SLE-12162).
+
+- Update to version 6.1.0. The change in release number reflects a change  
+  in behavior of the software, regarding two features:
+  * Algorithms for sparse matrix reordering now fully take into account vertex
+    weights. While the previous versions only accounted for them in the nested
+    dissection method to compute and  optimize separator size/weight, they are
+    now also accounted for in the minimum  degree and minimum fill algorithms.
+    Consequently,  vertex  amalgamation  can  be  tuned so  that  the  size of
+    (column-)blocks is tailored according to the real amount of computation to
+    be performed on supervariables.
+    The esmumps  interface  with MUMPS  has been  updated  so as to  take into
+    account this new feature. 
+  * The routines of the vertex  graph partitioning (with overlap)  module have
+   been redesigned, leading to much smaller  run time and, most often, higher
+   quality
+- Scotch development is moving to gitlab
+- Add support for gcc10 and build support for openmpi4.</comment>
+    <requestid>867464</requestid>
+  </revision>
 </revisionlist>
