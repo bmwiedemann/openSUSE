@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 23 13:52:33 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0 (see
+  https://github.com/maekitalo/cxxtools/compare/v2.2.1...V3.0 for
+  a changelog)
+- Drop cxxtools-2.2-iconvstream-return.diff (merged upstream)
+- Bump soversion to 10
+- Rename rpmlintrc source file as cxxtools-rpmlintrc
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Jan 27 09:33:22 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - #boo1148335: used release tarball from github, it is more reliable than
