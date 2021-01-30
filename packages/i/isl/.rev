@@ -201,4 +201,12 @@
   - ignore parameters in isl_union_* hash tables (forwarded request 859272 from dirkmueller)</comment>
     <requestid>860118</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d7f218d0bb4890908fa96b83f168693a</srcmd5>
+    <version>0.23</version>
+    <time>1612011328</time>
+    <user>dimstar_suse</user>
+    <comment>- Compile with %optflags (forwarded request 866611 from Andreas_Schwab)</comment>
+    <requestid>866636</requestid>
+  </revision>
 </revisionlist>

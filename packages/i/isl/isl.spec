@@ -1,7 +1,7 @@
 #
 # spec file for package isl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ bounded by linear constraints.
 %setup -q
 
 %build
+export CFLAGS_FOR_BUILD="%optflags"
 %configure --disable-static
 %make_build
 
