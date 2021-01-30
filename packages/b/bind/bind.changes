@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 21 08:00:03 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.11
+  * Bug fixing (please check CHANGES file in the source RPM)
+  * Functional change:
+    policy none;", named now
+    permits a safe transition to insecure mode and publishes
+    the CDS and CDNSKEY DELETE records, as described in RFC 8078.
+
+  Remove useless Makefiles and Makefile skeleton files in
+  /usr/share/doc/packages/bind/contrib/
+  [bind.spec, bsc#1179040]
+
+  *** MAJOR CHANGE ***
+  Changed protection of/against "named" from chroot jail to
+  systemd protection. This obsoletes subpackage named-chrootenv.
+  Kudos to Matthias Gerstner <matthias.gerstner@suse.com>
+  [bind.spec, bind-chrootenv.conf, vendor-files.tar.bz2, bsc#1180294]
+
+-------------------------------------------------------------------
 Tue Dec 29 19:28:46 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.16.10:

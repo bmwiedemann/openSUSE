@@ -1,7 +1,7 @@
 #
 # spec file for package bind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,17 @@
 # Note that the sonums are LIBINTERFACE - LIBAGE
 %define bind9_sonum 1600
 %define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 1610
+%define dns_sonum 1611
 %define libdns libdns%{dns_sonum}
 %define irs_sonum 1601
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 1608
+%define isc_sonum 1609
 %define libisc libisc%{isc_sonum}
 %define isccc_sonum 1600
 %define libisccc libisccc%{isccc_sonum}
-%define isccfg_sonum 1602
+%define isccfg_sonum 1603
 %define libisccfg libisccfg%{isccfg_sonum}
-%define ns_sonum 1606
+%define ns_sonum 1607
 %define libns libns%{ns_sonum}
 
 %define	VENDOR SUSE
@@ -61,7 +61,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.10
+Version:        9.16.11
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -78,7 +78,6 @@ Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
 # configuation files for systemd-tmpfiles
 Source70:       bind.conf
-Source71:       bind-chrootenv.conf
 Source72:       named.conf
 Patch51:        pie_compile.diff
 Patch52:        named-bootconf.diff
@@ -99,7 +98,6 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       %{name}-chrootenv
 Requires:       %{name}-utils
 Requires(post): %fillup_prereq
 Requires(post): bind-utils
@@ -215,17 +213,6 @@ Group:          System/Libraries
 %description -n %{libisccfg}
 This BIND library contains the configuration file parser.
 
-%package chrootenv
-Summary:        Chroot environment for BIND named
-# We need the named user and group, have only one authoritative place
-Group:          Productivity/Networking/DNS/Servers
-Requires(pre):  %{name}
-
-%description chrootenv
-This package contains all directories and files which are common to the
-chroot environment of BIND named.  Most is part of the
-structure below %{_localstatedir}/lib/named.
-
 %package devel
 Summary:        Development Libraries and Header Files of BIND
 Group:          Development/Libraries/C and C++
@@ -304,7 +291,7 @@ function replaceStrings()
 		-i "${file}"
 }
 pushd vendor-files
-for file in docu/README tools/createNamedConfInclude config/{README,named.conf} init/named system/named.init sysconfig/{named-common,named-named,syslog-named}; do
+for file in docu/README* tools/createNamedConfInclude config/{README,named.conf} init/named system/named.init sysconfig/named-named; do
 	replaceStrings ${file}
 done
 popd
@@ -363,7 +350,7 @@ mkdir -p \
 	%{buildroot}/%{_datadir}/bind \
 	%{buildroot}/%{_datadir}/susehelp/meta/Administration/System \
 	%{buildroot}/%{_defaultdocdir}/bind \
-	%{buildroot}%{_localstatedir}/lib/named/{etc/named.d,dev,dyn,log,master,slave,var/{lib,run/named}} \
+	%{buildroot}%{_localstatedir}/lib/named/{etc/named.d,dev,dyn,master,slave,var/{lib,run/named}} \
 	%{buildroot}%{_mandir}/{man1,man3,man5,man8} \
 	%{buildroot}%{_fillupdir} \
 	%{buildroot}/%{_rundir} \
@@ -383,9 +370,6 @@ rm -f %{buildroot}/%{_libdir}/lib*.{la,a}
 mv vendor-files/config/named.conf %{buildroot}/%{_sysconfdir}
 mv vendor-files/config/bind.reg %{buildroot}/%{_sysconfdir}/slp.reg.d
 mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
-for file in named.conf.include; do
-	touch %{buildroot}/%{_sysconfdir}/${file}
-done
 
 %if %{with_systemd}
 	for file in named; do
@@ -394,7 +378,6 @@ done
 		ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
 	done
 	install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
-	install -D -m 0644 %{SOURCE71} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind-chrootenv.conf
 	install -D -m 0644 ${RPM_SOURCE_DIR}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
 	install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
 	install -m 0644 bind.keys %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/named.root.key
@@ -413,12 +396,7 @@ cp -p ${RPM_SOURCE_DIR}/dnszone-schema.txt %{buildroot}/%{_sysconfdir}/openldap/
 cp -p "%{SOURCE60}" "%{buildroot}/%{_sysconfdir}/openldap/schema/dlz.schema"
 install -m 0754 vendor-files/tools/ldapdump %{buildroot}/%{_datadir}/bind
 find %{buildroot}/%{_libdir} -type f -name '*.so*' -print0 | xargs -0 chmod 0755
-touch %{buildroot}%{_localstatedir}/lib/named%{_sysconfdir}/{localtime,named.conf.include,named.d/rndc.access.conf}
-touch %{buildroot}%{_localstatedir}/lib/named/dev/log
-ln -s ../.. %{buildroot}%{_localstatedir}/lib/named%{_localstatedir}/lib/named
-ln -s ../log %{buildroot}%{_localstatedir}/lib/named%{_localstatedir}
-ln -s ..%{_localstatedir}/lib/named%{_localstatedir}/run/named %{buildroot}/run
-for file in named-common named-named syslog-named; do
+for file in named-named; do
 	install -m 0644 vendor-files/sysconfig/${file} %{buildroot}%{_fillupdir}/sysconfig.${file}
 done
 %if %{with_sfw2}
@@ -428,7 +406,11 @@ install -m 644 vendor-files/sysconfig/SuSEFirewall.named %{buildroot}/%{_sysconf
 rm doc/misc/Makefile*
 find doc/arm -type f ! -name '*.html' -print0 | xargs -0 rm -f
 # Create doc as we want it in bind and not bind-doc
-cp -a vendor-files/docu/README %{buildroot}/%{_defaultdocdir}/bind/README.%{VENDOR}
+for file in vendor-files/docu/README*; do
+	basename=$( basename ${file})
+	cp -a ${file} %{buildroot}/%{_defaultdocdir}/bind/${basename}.%{VENDOR}
+done
+
 mkdir -p vendor-files/config/ISC-examples
 cp -a bin/tests/*.conf* vendor-files/config/ISC-examples
 for d in arm; do
@@ -441,6 +423,8 @@ for file in CHANGES COPYRIGHT README version contrib doc/misc vendor-files/confi
 	echo "%doc %{_defaultdocdir}/bind/${basename}" >>filelist-bind-doc
 done
 # ---------------------------------------------------------------------------
+# remove useless Makefiles and Makefile skeletons
+find %{buildroot}/%{_defaultdocdir}/bind \( -name Makefile -o -name Makefile.in \) -exec rm {} +
 install -m 0644 bind.keys %{buildroot}%{_localstatedir}/lib/named/named.root.key
 %if %{with_systemd}
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -480,6 +464,11 @@ if [ -x %{_bindir}/systemctl ]; then
     %{_bindir}/systemctl daemon-reload || :
 fi
 %endif
+# Create the rndc.key and named.conf.include* files so they exist when named is started
+[ -e /etc/rndc.key ] || /usr/sbin/rndc-confgen -a -b 512
+[ -e /etc/named.conf.include ] || touch /etc/named.conf.include
+[ -e /etc/named.conf.include.BINDconfig ] || touch /etc/named.conf.include.BINDconfig
+chown named: /etc/rndc.key /etc/named.conf.include*
 
 %postun
 %if %{with_systemd}
@@ -503,19 +492,12 @@ fi
 %postun -n %{libisccc} -p /sbin/ldconfig
 %post   -n %{libisccfg} -p /sbin/ldconfig
 %postun -n %{libisccfg} -p /sbin/ldconfig
-%post chrootenv
-%{fillup_only -nsa named common}
-%{fillup_only -nsa syslog named}
-%if %{with_systemd}
-%tmpfiles_create bind-chrootenv.conf
-%endif
 
 %files
 %license LICENSE
 %attr(0644,root,named) %config(noreplace) /%{_sysconfdir}/named.conf
 %dir %{_sysconfdir}/slp.reg.d
 %attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
-%attr(0644,root,named) %ghost /%{_sysconfdir}/named.conf.include
 %if %{with_systemd}
 %config %{_unitdir}/named.service
 %{_sbindir}/named.init
@@ -581,30 +563,6 @@ fi
 %files -n %{libisccfg}
 %{_libdir}/libisccfg.so.%{isccfg_sonum}*
 
-%files chrootenv
-%if %{with_systemd}
-%{_prefix}/lib/tmpfiles.d/bind-chrootenv.conf
-%endif
-%dir %{_var}/lib/named%{_sysconfdir}
-%dir %{_var}/lib/named%{_sysconfdir}/named.d
-%dir %{_var}/lib/named/dev
-%dir %{_var}/lib/named%{_localstatedir}
-%dir %{_var}/lib/named%{_localstatedir}/lib
-%dir %{_var}/lib/named%{_localstatedir}/run
-%attr(-,named,named) %dir %{_var}/lib/named/log
-%ghost %{_var}/lib/named%{_sysconfdir}/named.d/rndc.access.conf
-%ghost %{_var}/lib/named/dev/log
-%attr(0666, root, root) %dev(c, 1, 3) %{_var}/lib/named/dev/null
-%attr(0666, root, root) %dev(c, 1, 8) %{_var}/lib/named/dev/random
-%attr(0664, root, root) %dev(c, 1, 9) %{_var}/lib/named/dev/urandom
-%{_var}/lib/named%{_localstatedir}/lib/named
-%{_var}/lib/named%{_localstatedir}/log
-%{_fillupdir}/sysconfig.named-common
-%{_fillupdir}/sysconfig.syslog-named
-%ghost %{_var}/lib/named%{_sysconfdir}/localtime
-%attr(0644,root,named) %ghost %{_var}/lib/named%{_sysconfdir}/named.conf.include
-%attr(-,named,named) %dir %{_var}/lib/named%{_localstatedir}/run/named
-
 %files devel
 %dir %{_includedir}/isc
 %{_includedir}/isc/errno2result.h
@@ -655,7 +613,7 @@ fi
 %{_sbindir}/rndc-confgen
 %{_sbindir}/tsig-keygen
 %dir %doc %{_defaultdocdir}/bind
-%{_defaultdocdir}/bind/README.%{VENDOR}
+%{_defaultdocdir}/bind/README*.%{VENDOR}
 %{_defaultdocdir}/bind/.clang-format.headers
 %{_mandir}/man1/arpaname.1%{ext_man}
 %{_mandir}/man1/delv.1%{ext_man}
