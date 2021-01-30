@@ -490,8 +490,8 @@ products:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-OpenStack-Cloud:
     - x86_64
-  - openSUSE-MicroOS:ContainerHost-SelfInstall:
-    - x86_64
+#  - openSUSE-MicroOS:ContainerHost-SelfInstall:
+#   - x86_64
   - openSUSE-MicroOS:ContainerHost-Vagrant:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-VMware:
@@ -536,8 +536,8 @@ products:
   - opensuse-tumbleweed-image:networkd:
     - i586
     - x86_64
-  - openSUSE-Tumbleweed-Yomi:livecd:
-    - x86_64
+#  - openSUSE-Tumbleweed-Yomi:livecd:
+#   - x86_64
   - openSUSE-Tumbleweed-Yomi:pxeboot:
     - x86_64
   livecds:
@@ -564,10 +564,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210129'
+    <value>failed: ''
 published: '20210128'
 publishing: '20210128'
-testing: '20210129'
+testing: '20210130'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

@@ -947,7 +947,7 @@ Prefer: dhcp-client:dhcp
 Prefer: libGLw1
 # provides typelib(St)
 Prefer: -cinnamon
-Prefer: -libreoffice -busybox-links -busybox -busybox-coreutils -busybox-grep -busybox-sed -busybox-xz
+Prefer: -libreoffice -busybox-links -busybox -busybox-coreutils -busybox-grep -busybox-sed -busybox-xz -busybox-gzip
 Prefer: -icc-profiles
 Prefer: vala
 # in doubt, take higher versions
