@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 23 01:32:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.44:
+  * rlwrap is now aware of multi-byte characters and correctly handles prompts (or
+  things that look like prompts, e.g. progress indicators) that contain them.
+  * rlwrap filters can now also filter signals (see RlwrapFilter(3pm)),
+  changing them, or providing extra input to the rlwrapped command.
+  * Key sequences can now be bound to rlwrap-direct-keypress (using a new
+  readline command rlwrap-direct-prefix) (contributed by Yuri d'Elia) 
+- drop reproducible.patch (obsolete)
+
+-------------------------------------------------------------------
 Fri Aug 17 15:40:33 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to fix a build race (boo#1102408)

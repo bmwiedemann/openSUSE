@@ -1,7 +1,7 @@
 #
 # spec file for package rlwrap
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rlwrap
-Version:        0.43
+Version:        0.44
 Release:        0
 Summary:        A Readline Wrapper
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Other
-Url:            http://utopia.knoware.nl/~hlub/uck/rlwrap/
-Source0:        %{name}-%{version}.tar.gz
-Patch0:         reproducible.patch
+URL:            https://github.com/hanslub42/rlwrap/
+Source0:        https://github.com/hanslub42/rlwrap/releases/download/7c1e432/rlwrap-%{version}.tar.gz
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 
@@ -37,7 +36,6 @@ command line.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
@@ -50,7 +48,8 @@ make %{?_smp_mflags} test
 %make_install
 
 %files
-%doc AUTHORS BUGS ChangeLog NEWS README TODO
+%doc AUTHORS BUGS ChangeLog NEWS README.md
+%license COPYING
 %{_bindir}/rlwrap
 %{_mandir}/man1/rlwrap.1%{ext_man}
 %{_mandir}/man3/RlwrapFilter.3pm%{ext_man}
