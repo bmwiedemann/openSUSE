@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -euo pipefail
 shopt -s nullglob
 
 if [ "${BUILD_DIST+x}" != "x" ]; then
@@ -33,17 +33,49 @@ else
 	fi
 fi
 
-[ -f /usr/lib/os-release ] && . /usr/lib/os-release
-[ -f /etc/os-release ] && . /etc/os-release
+# Print all rpm files which contain os-release
+find_release_rpms() {
+	find ./repos -name \*-release\*.rpm | while read rpm; do
+		if rpm -qlp "${rpm}" | grep -qE "^(/etc/os-release|/usr/lib/os-release)$"; then
+			echo "${rpm}"
+		fi
+	done
+}
 
-# Special case for SLE X "SP 0", make sure it has .0
-VERSION_ID_SP="${VERSION_ID}"
-[[ "${VERSION_ID_SP%}" == *"."* ]] || VERSION_ID_SP="${VERSION_ID}.0"
+if grep -q "%OS_" ${files[@]}; then
+	# Needs os-release, search for RPMs
+	relpkgs=($(find_release_rpms))
+
+	if [ ${#relpkgs[@]} -lt 1 ]; then
+		echo "No release package found, but recipe uses %OS_*% placeholders"
+		exit 1
+	fi
+
+	if [ ${#relpkgs[@]} -gt 1 ]; then
+		echo "Multiple release packages found, don't know which os-release to use"
+		exit 1
+	fi
+
+	# Extract the content
+	tempdir=$(mktemp -d)
+	trap "rm -r ${tempdir}" EXIT
+	rpm2cpio "${relpkgs[0]}" | cpio -idD "${tempdir}"
+
+	# And source it
+	[ -f "${tempdir}/usr/lib/os-release" ] && . "${tempdir}/usr/lib/os-release"
+	[ -f "${tempdir}/etc/os-release" ] && . "${tempdir}/etc/os-release"
+
+	# Special case for SLE X "SP 0", make sure it has .0
+	VERSION_ID_SP="${VERSION_ID}"
+	[[ "${VERSION_ID_SP%}" == *"."* ]] || VERSION_ID_SP="${VERSION_ID}.0"
+
+	sed -i"" \
+	    -e "s/%OS_VERSION_ID%/${VERSION_ID}/g" \
+	    -e "s/%OS_PRETTY_NAME%/${PRETTY_NAME}/g" \
+	    -e "s/%OS_VERSION_ID_SP%/${VERSION_ID_SP}/g" "${files[@]}"
+fi
 
 sed -i"" \
     -e "s#%DISTURL%#${DISTURL}#g" \
     -e "s/%RELEASE%/${RELEASE}/g" \
-    -e "s/%BUILDTIME%/$(date --utc +%FT%T.%NZ)/g" \
-    -e "s/%OS_VERSION_ID%/${VERSION_ID}/g" \
-    -e "s/%OS_PRETTY_NAME%/${PRETTY_NAME}/g" \
-    -e "s/%OS_VERSION_ID_SP%/${VERSION_ID_SP}/g" "${files[@]}"
+    -e "s/%BUILDTIME%/$(date --utc +%FT%T.%NZ)/g" "${files[@]}"

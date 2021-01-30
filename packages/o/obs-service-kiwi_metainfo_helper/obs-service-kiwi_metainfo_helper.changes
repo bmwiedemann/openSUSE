@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 27 11:25:26 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Read os-release from the to be installed RPMs. This avoids pulling
+  in distribution-release when not necessary (boo#1180263)
+
+-------------------------------------------------------------------
 Tue Sep  1 08:42:45 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use a boolean dep to avoid use of %{is_opensuse}. The prjconf

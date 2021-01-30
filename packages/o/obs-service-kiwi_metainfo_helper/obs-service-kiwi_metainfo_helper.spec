@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-kiwi_metainfo_helper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           obs-service-kiwi_metainfo_helper
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Service for substituting various variables in build recipes
 License:        GPL-2.0-or-later
@@ -26,12 +26,9 @@ URL:            https://build.opensuse.org
 Source0:        kiwi_metainfo_helper.service
 Source1:        kiwi_metainfo_helper
 Source2:        README
-Requires:       sed
-# Technically, this should read os-release inside the built image, but doing
-# that is much more complex. As obsrepositories:// has to be used anyway,
-# using the system's os-release is fine for now.
-Requires:       (sles-release or openSUSE-release)
-Conflicts:      dummy-release
+Requires:       /usr/bin/find
+Requires:       /usr/bin/grep
+Requires:       /usr/bin/sed
 BuildArch:      noarch
 
 %description
