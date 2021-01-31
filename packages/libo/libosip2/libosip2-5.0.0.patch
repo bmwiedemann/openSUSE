@@ -2,8 +2,8 @@ Index: src/osip2/port_sema.c
 ===================================================================
 --- src/osip2/port_sema.c.orig
 +++ src/osip2/port_sema.c
-@@ -300,6 +300,16 @@ osip_sem_trywait (struct osip_sem *_sem)
- #elif defined (HAVE_SYS_SEM_H)
+@@ -284,6 +284,16 @@ int osip_sem_trywait(struct osip_sem *_s
+ #elif defined(HAVE_SYS_SEM_H)
  /* support for semctl, semop, semget */
  
 +#ifdef _SEM_SEMUN_UNDEFINED
@@ -18,4 +18,4 @@ Index: src/osip2/port_sema.c
 +
  #define SEM_PERM 0600
  
- struct osip_sem *
+ struct osip_sem *osip_sem_init(unsigned int value) {

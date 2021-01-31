@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 11 21:56:22 UTC 2021 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * use localtime_r when __USE_POSIX is available
+  * sync versions with libexosip
+- use https for urls
+
+-------------------------------------------------------------------
 Sat Aug 29 07:26:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop old specfile constructs and excess Provides lines.

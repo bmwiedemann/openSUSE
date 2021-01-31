@@ -1,7 +1,7 @@
 #
 # spec file for package libosip2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 %define soname libosip2-12
-
 Name:           libosip2
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Implementation of SIP (RFC 3261)
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
-URL:            http://www.fsf.org/software/osip/osip.html
-Source:         http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
+URL:            https://www.gnu.org/software/osip/osip.html
+Source:         https://ftp.gnu.org/gnu/osip/libosip2-5.2.0.tar.gz
 Patch0:         libosip2-5.0.0.patch
 BuildRequires:  docbook2x
 BuildRequires:  gcc
 BuildRequires:  gperf
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 This is the GNU oSIP library. It has been designed to provide the
@@ -54,7 +53,7 @@ Summary:        Header files for the GNU SIP implementation
 Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
 Requires:       glibc-devel
-Provides:       libosip2:/usr/include/osip2/osip.h
+Provides:       libosip2:%{_includedir}/osip2/osip.h
 
 %description devel
 This is the GNU oSIP library. It has been designed to provide the
@@ -74,14 +73,13 @@ autoreconf -fiv
   --enable-sysv \
   --enable-gperf \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-rm -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{soname} -p /sbin/ldconfig
-
 %postun -n %{soname} -p /sbin/ldconfig
 
 %files -n %{soname}
