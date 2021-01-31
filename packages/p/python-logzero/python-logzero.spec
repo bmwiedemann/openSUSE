@@ -1,7 +1,7 @@
 #
 # spec file for package python-logzero
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-logzero
 Version:        1.6.3
 Release:        0
@@ -31,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-runner}
 # /SECTION
 BuildRequires:  python3-Sphinx
 %python_subpackages
@@ -65,7 +66,7 @@ popd
 
 %check
 export LANG=en_US.UTF8
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.md HISTORY.md

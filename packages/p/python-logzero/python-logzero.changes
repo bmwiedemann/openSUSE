@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 23 19:17:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Disable Python 2 builds.
+- Use %pytest macro for tests.
+
+-------------------------------------------------------------------
 Wed Nov 25 20:51:51 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 1.6.3:
