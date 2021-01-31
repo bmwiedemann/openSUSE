@@ -38,7 +38,10 @@ BuildRequires:  %{python_module jsonschema}
 %python_subpackages
 
 %description
-GenSON is a powerful, user-friendly JSON Schema generator.
+GenSON is a JSON Schema generator.
+
+Besides taking JSON objects and generating schemas that describe
+them, this generator is able to merge schemas as well.
 
 %prep
 %setup -q -n genson-%{version}
