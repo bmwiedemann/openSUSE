@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 29 23:22:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build because Tumbleweed does not have
+  python36-scikit-learn and python36-scipy (NEP 29) 
+- rpmlint fixes
+
+-------------------------------------------------------------------
 Mon Nov  2 14:36:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 20.10

@@ -1,7 +1,7 @@
 #
 # spec file for package python-acoular
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define		github_version 20.10
+# python36-scikit-learn and python36-scipy are not in Tumbleweed due to NEP 29
+%define         skip_python36 1
+%define         github_version 20.10
 Name:           python-acoular
 Version:        20.10
 Release:        0
@@ -35,6 +37,7 @@ Requires:       python-scikit-learn >= 0.19.1
 Requires:       python-scipy >= 0.1.0
 Requires:       python-tables >= 3.4.4
 Requires:       python-traits >= 4.6.0
+Recommends:     python-traisui
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numba >= 0.40.0}
@@ -57,8 +60,10 @@ interest and to characterize them using their spectra.
 
 %prep
 %setup -q -n acoular-%{github_version}
-sed -i -e '/^#!\//, 1d' acoular/fastFuncs.py
-# UNIX-incompatible test
+sed -i -e '1{/^#!/ d}' acoular/fastFuncs.py acoular/demo/acoular_demo.py acoular/tests/*.py
+# remove test scripts not applicable here
+rm acoular/tests/run_tests*.sh
+# Windows only load of the NIDAQmx dll
 rm acoular/nidaqimport.py
 
 %build
@@ -69,13 +74,13 @@ rm acoular/nidaqimport.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python -c 'import acoular';
 cd acoular/tests
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v -p "test_*.py"
+%pyunittest discover -v -p "test_*.py"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/acoular
+%{python_sitelib}/acoular-%{version}*-info
 
 %changelog
