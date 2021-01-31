@@ -41,4 +41,12 @@
   - Update self._dict_* methods to use dict.__* functions directly.</comment>
     <requestid>822280</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef0e8d80bd4b8841e4b954e832131315</srcmd5>
+    <version>2.1.0</version>
+    <time>1612108324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867972</requestid>
+  </revision>
 </revisionlist>

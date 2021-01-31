@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jan 30 05:20:31 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1.0
+  * Add NearestDict
+  * Update for Python 3
+  * Fixes for doctest support
+  * Add NearestDict implementation
+  * Update docs to reference NearestDict
+  * Use Python3 defaults for inheritance
+  * Use f-strings
+- from v2.0.0
+  * Remove shims for Python 2
+  * Add support for mypy
+  * Drop need for "gj" from requirements
+  * Load version from __init__.py rather than by import
+  * Add __all__ to __init__.py for flake8
+  * Small fixes/changes for linters/formatters/type-checkers
+- from v1.2.3 
+  * Add support for "blue" formatter
+  * Fixes for doctest support 
+- from v1.2.2
+  * Add pickle support for IndexableSet 
+
+-------------------------------------------------------------------
 Wed Jul 22 15:04:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.2.1:
