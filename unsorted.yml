@@ -1932,6 +1932,7 @@ unsorted:
   - clinfo 
   - clipgrab 
   - clipit 
+  - clipman 
   - clipped 
   - clipped-lang 
   - clippy 
@@ -21018,7 +21019,6 @@ unsorted:
   - python3-rrdtool 
   - python3-ruffus 
   - python3-rust2rpm 
-  - python3-rustcfg 
   - python3-saharaclient 
   - python3-scikit-umfpack: [i586] 
   - python3-scipy-gnu-hpc: [x86_64] 
@@ -21189,7 +21189,6 @@ unsorted:
   - python36-MiniMock 
   - python36-Morfessor 
   - python36-MouseInfo 
-  - python36-MulticoreTSNE 
   - python36-Nuitka 
   - python36-OWSLib 
   - python36-PGet 
@@ -21319,7 +21318,6 @@ unsorted:
   - python36-acefile 
   - python36-acitoolkit 
   - python36-acme 
-  - python36-acoular 
   - python36-actdiag 
   - python36-adal 
   - python36-adapt-parser 
@@ -23456,7 +23454,6 @@ unsorted:
   - python36-rollbar 
   - python36-roman 
   - python36-rope 
-  - python36-rpcq 
   - python36-rply 
   - python36-rpm 
   - python36-rpmfile 
@@ -23477,6 +23474,7 @@ unsorted:
   - python36-ruamel.yaml.cmd 
   - python36-ruamel.yaml.convert 
   - python36-runthis-sphinxext 
+  - python36-rustcfg 
   - python36-s3fs 
   - python36-s3transfer 
   - python36-sadisplay 
@@ -23661,6 +23659,7 @@ unsorted:
   - python36-tableprint 
   - python36-tables 
   - python36-tablib 
+  - python36-tabpy 
   - python36-tabulate 
   - python36-tap.py 
   - python36-targetcli-fb 
@@ -26219,6 +26218,7 @@ unsorted:
   - python38-ruamel.yaml.cmd 
   - python38-ruamel.yaml.convert 
   - python38-runthis-sphinxext 
+  - python38-rustcfg 
   - python38-s3fs 
   - python38-s3transfer 
   - python38-sadisplay 
@@ -26397,6 +26397,7 @@ unsorted:
   - python38-tableprint 
   - python38-tables 
   - python38-tablib 
+  - python38-tabpy 
   - python38-tabulate 
   - python38-tap.py 
   - python38-targetcli-fb 
@@ -28927,6 +28928,7 @@ unsorted:
   - ruby3.0-rubygem-prawn-table 
   - ruby3.0-rubygem-prawn-table-doc 
   - ruby3.0-rubygem-prawn-table-testsuite 
+  - ruby3.0-rubygem-prawn-templates 
   - ruby3.0-rubygem-prawn-testsuite 
   - ruby3.0-rubygem-pry 
   - ruby3.0-rubygem-pry-doc 
