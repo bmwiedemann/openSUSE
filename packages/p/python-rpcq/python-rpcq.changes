@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 30 08:10:52 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Fix RPMLINT warning non-executable-script.
+- Zero length rpcq/py.typed must be kept for PEP 561 compliance.
+- Disable build for python 3.6 because numpy will not support it.
+
+-------------------------------------------------------------------
 Fri Jan 29 10:25:51 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 3.8.0.

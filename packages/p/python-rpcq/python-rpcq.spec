@@ -18,6 +18,7 @@
 
 %define packagename rpcq
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpcq
 Version:        3.8.0
@@ -49,6 +50,9 @@ The RPC framework and message specification for Rigetti QCS.
 
 %prep
 %setup -q -n %{packagename}-%{version}
+# Fix non-executable-script
+sed -i '/^#!/d' %{packagename}/core_messages.py
+sed -i '/^#!/d' %{packagename}/messages.py
 
 %build
 %python_build
