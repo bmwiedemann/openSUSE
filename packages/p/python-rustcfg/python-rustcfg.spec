@@ -53,11 +53,11 @@ This package provides a Python module for parsing Config.toml files.
 %python_install
 
 %check
-py.test-%{python3_version} -v
+%pytest -v
 
 %files %{python_files}
 %license LICENSE
-%{python3_sitelib}/rustcfg-*.egg-info/
-%{python3_sitelib}/rustcfg/
+%{python_sitelib}/rustcfg-*.egg-info/
+%{python_sitelib}/rustcfg/
 
 %changelog
