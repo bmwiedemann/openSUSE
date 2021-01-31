@@ -1,7 +1,7 @@
 #
 # spec file for package python-MulticoreTSNE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# TW does not have python36-scipy (SciPy 1.6.0 does not support it)
+%define skip_python36 1
 Name:           python-MulticoreTSNE
 Version:        0.1
 Release:        0
@@ -65,14 +67,13 @@ export CFLAGS="%{optflags}"
 
 %check
 pushd MulticoreTSNE/tests
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -m unittest discover -v
-}
+%pyunittest_arch discover -v
 popd
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitearch}/*
+%{python_sitearch}/MulticoreTSNE
+%{python_sitearch}/MulticoreTSNE-%{version}*-info
 
 %changelog
