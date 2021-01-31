@@ -1573,4 +1573,26 @@
   * Fix a crash with per-track artwork (glgo#World/lollypop#2684).</comment>
     <requestid>864129</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>1d6ade3dd4d7c3a1864e1c68909a0644</srcmd5>
+    <version>1.4.15</version>
+    <time>1612108357</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.15:
+  * Use GLib.get_tmp_dir() instead of harcoded &quot;/tmp&quot; for better
+    support of Flatpak (glgo#World/lollypop#2706).
+  * Fix undesired time slider rewinds (glgo#World/lollypop#2703,
+    rh#1919715).
+  * Fix a crash when clicking on the 3-vertical-dots button
+    (glgo#World/lollypop#2701, rh#1919676).
+  * Fix a crash when playing a track from the web
+    (glgo#World/lollypop#2698).
+  * Fix an issue with history (glgo#World/lollypop#2697).
+  * Fix wrong track repeat (glgo#World/lollypop#2696).
+  * Fix cover size in fullscreen view (glgo#World/lollypop#2665).
+  * Fix an issue with filter (glgo#World/lollypop#2689).
+  * Fix repeated covers for albums with same name but different
+    years (glgo#World/lollypop#2687).</comment>
+    <requestid>868137</requestid>
+  </revision>
 </revisionlist>

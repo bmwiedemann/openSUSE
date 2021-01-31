@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 31 12:48:03 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.15:
+  * Use GLib.get_tmp_dir() instead of harcoded "/tmp" for better
+    support of Flatpak (glgo#World/lollypop#2706).
+  * Fix undesired time slider rewinds (glgo#World/lollypop#2703,
+    rh#1919715).
+  * Fix a crash when clicking on the 3-vertical-dots button
+    (glgo#World/lollypop#2701, rh#1919676).
+  * Fix a crash when playing a track from the web
+    (glgo#World/lollypop#2698).
+  * Fix an issue with history (glgo#World/lollypop#2697).
+  * Fix wrong track repeat (glgo#World/lollypop#2696).
+  * Fix cover size in fullscreen view (glgo#World/lollypop#2665).
+  * Fix an issue with filter (glgo#World/lollypop#2689).
+  * Fix repeated covers for albums with same name but different
+    years (glgo#World/lollypop#2687).
+
+-------------------------------------------------------------------
 Mon Jan 18 17:43:36 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.14:
