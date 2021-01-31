@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 24 11:16:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.01.24.1
+  * aol: add support for yahoo videos
+  * yahoo: fix single video extraction
+  * aljazeera: fix extraction
+  * ard: Fix title and description extraction and update tests
+  * spotify: Add new extractor for Spotify Podcasts
+
+-------------------------------------------------------------------
 Sat Jan 16 21:07:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.01.16
