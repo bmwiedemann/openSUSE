@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorcet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colorcet
-Version:        2.0.2
+Version:        2.0.6
 Release:        0
 Summary:        Collection of perceptually uniform colormaps
 License:        CC-BY-4.0
@@ -69,6 +69,7 @@ holoviews, and datashader.
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/colorcet
-%{python_sitelib}/*
+%{python_sitelib}/colorcet
+%{python_sitelib}/colorcet-%{version}-py*egg-info
 
 %changelog

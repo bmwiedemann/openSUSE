@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 30 06:01:29 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more explicit in %files section
+
+- update to version 2.0.6, 2.0.5, 2.0.4, 2.0.3:
+  * Minor release primarily to update PyPI classifier to show that the
+    license is not proprietary. Also added some docstrings and usage
+    examples, and updated the swatch function to work with both list
+    and tuple colormaps.
+
+-------------------------------------------------------------------
 Wed May 27 09:36:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
