@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 29 23:04:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.10:
+  - rewritten arithmetic solver replacing legacy arithmetic solver and on by default
+
+-------------------------------------------------------------------
 Thu Sep 17 06:36:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.8.9:

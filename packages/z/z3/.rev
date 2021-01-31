@@ -207,4 +207,13 @@
     <comment></comment>
     <requestid>835112</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>da70d35c0c5f2ebb9914c6af41296831</srcmd5>
+    <version>4.8.10</version>
+    <time>1612108345</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.10:
+  - rewritten arithmetic solver replacing legacy arithmetic solver and on by default (forwarded request 867815 from dirkmueller)</comment>
+    <requestid>868100</requestid>
+  </revision>
 </revisionlist>
