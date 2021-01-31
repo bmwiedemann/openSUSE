@@ -1,7 +1,7 @@
 #
 # spec file for package python-nilearn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# SciPy 1.6.0 dropped support for Python 3.6
+%define         skip_python36 1
 Name:           python-nilearn
 Version:        0.7.0
 Release:        0
@@ -31,19 +33,19 @@ Patch1:         nilearn-fix-aarch64.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-joblib >= 0.11
+Requires:       python-joblib >= 0.12
 Requires:       python-matplotlib >= 2.0
 Requires:       python-nibabel >= 2.0.2
-Requires:       python-numpy >= 0.11
+Requires:       python-numpy >= 1.11
 Requires:       python-requests
 Requires:       python-scikit-learn >= 0.19
 Requires:       python-scipy >= 0.19
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module joblib >= 0.11}
+BuildRequires:  %{python_module joblib >= 0.12}
 BuildRequires:  %{python_module matplotlib >= 2.0}
 BuildRequires:  %{python_module nibabel >= 2.0.2}
-BuildRequires:  %{python_module numpy >= 0.11}
+BuildRequires:  %{python_module numpy >= 1.11}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -81,6 +83,7 @@ rm -rf doc/ examples/
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/nilearn
+%{python_sitelib}/nilearn-%{version}*-info
 
 %changelog
