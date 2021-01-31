@@ -7,4 +7,12 @@
     <comment>Allows using openSUSE servers as workers in a Tableau implementation</comment>
     <requestid>866870</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>680337a1eb43646723bd96e4fc60d50c</srcmd5>
+    <version>2.3.1</version>
+    <time>1612108333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867996</requestid>
+  </revision>
 </revisionlist>

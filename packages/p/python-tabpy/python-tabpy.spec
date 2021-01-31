@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define         skip_python2 1
 Name:           python-tabpy
 Version:        2.3.1
 Release:        0
@@ -41,7 +41,7 @@ Recommends:     python-nltk
 Recommends:     python-numpy
 Recommends:     python-pandas
 Recommends:     python-scipy
-Recommends:     python-sklearn
+Recommends:     python-scikit-learn
 Suggests:       python-textblob
 BuildArch:      noarch
 # SECTION test requirements
@@ -60,8 +60,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module simplejson}
-BuildRequires:  %{python_module sklearn}
 BuildRequires:  %{python_module tornado}
+# scikit-learn dropped support for Python 3.6
 # /SECTION
 %python_subpackages
 

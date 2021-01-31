@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 29 16:52:49 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependency on scikit-learn,
+  which is not available for Tumbleweed Python 3.6
+
+-------------------------------------------------------------------
 Thu Jan 21 06:15:13 AM UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v2.3.1
