@@ -1,6 +1,7 @@
 #
 # spec file for package zonefs-tools
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (C) 2020, Western Digital Corporation or its affiliates.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           zonefs-tools
-Version:        0.1
+Version:        1.4.0
 Release:        0
 Summary:        Utilities for the Zonefs filesystem
 License:        GPL-2.0-or-later
@@ -35,7 +36,7 @@ BuildRequires:  pkgconfig(uuid)
 Utilities needed to create and maintain zonefs file systems under Linux.
 
 %prep
-%setup -q -n zonefs-tools
+%setup -q 
 
 %build
 sh ./autogen.sh

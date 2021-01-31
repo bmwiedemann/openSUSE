@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 20 10:03:42 UTC 2021 - Johannes Thumshirn <jth@kernel.org>
+
+- Update to upstream version 1.4
+  This release improves documentation and test coverage of zonefs-tools
+
+-------------------------------------------------------------------
 Mon Apr  6 09:24:37 UTC 2020 - Johannes Thumshirn <jth@kernel.org>
 
 - Initial packaging for openSUSE
