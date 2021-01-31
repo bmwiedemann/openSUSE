@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 29 18:40:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build because Tumbleweed updates to SciPy 1.6.0
+  which dropped support for Python 3.6 (NEP 29)
+
+-------------------------------------------------------------------
 Fri Nov 20 08:18:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add runtime deps: python-requests
