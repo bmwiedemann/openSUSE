@@ -87,12 +87,12 @@ Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
 Substitute: system-packages:docker kmod kernel-default docker createrepo_c
-Substitute: build-packages:docker !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini
+Substitute: build-packages:docker !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
 
 # Podman based image building
 Substitute: system-packages:podman kmod kernel-default podman buildah createrepo_c
 
-Substitute: build-packages:kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream
+Substitute: build-packages:kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream !gettext-runtime-mini
 
 # To build ISO images
 Substitute: build-packages:iso !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !systemd-mini-sysvinit
