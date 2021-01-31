@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan 31 14:19:23 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 0.8.1
+  * A new icon! Thanks jimmac :)
+  * Refined headerbar
+  * A click on the cover image in the headerbar opens the book detail view
+  * Book detail view: Pressing the back button on the mouse brings you back to the library
+  * Fix: Aborting the download of a book is now handled more gracefully
+  * Fix: Opening a book using the return key now works as expected
+  * As always, updated translations thanks to all of the translators!
+  * Hotfix: Custom icons where not detected
+
+-------------------------------------------------------------------
+Sun Jan 31 13:47:05 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 0.8
+  * A new icon! Thanks jimmac :)
+  * Refined headerbar
+  * A click on the cover image in the headerbar opens the book detail view
+  * Book detail view: Pressing the back button on the mouse brings you back to the library
+  * Fix: Aborting the download of a book is now handled more gracefully
+  * Fix: Opening a book using the return key now works as expected
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Sun Dec  6 17:44:12 UTC 2020 - Julian Geywitz <suse@geigi.de>
 
 - Update to 0.7.8
