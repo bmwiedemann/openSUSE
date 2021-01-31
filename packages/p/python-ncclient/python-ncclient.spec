@@ -1,7 +1,7 @@
 #
 # spec file for package python-ncclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://ncclient.org
 Source:         https://github.com/ncclient/ncclient/archive/v%{version}.tar.gz#/ncclient-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE allow_old_sphinx.patch mcepl@suse.com
+# Allow build with old Sphinx (< 2.0) on Leap
+Patch0:         allow_old_sphinx.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,6 +65,10 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n ncclient-%{version}
+%if 0%{?suse_version} < 1550
+%patch0 -p1
+%endif
+
 find examples/ -name "*.py" -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/python|g' {} \;
 # drop shebang
 find ncclient/operations/third_party/ -name "*.py" -exec sed -i '/^#!\//, 1d' {} \;

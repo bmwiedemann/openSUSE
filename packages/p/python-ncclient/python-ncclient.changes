@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 28 21:19:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add allow_old_sphinx.patch allowing building of documentation
+  on Leap 15 (bsc#1181270).
+
+-------------------------------------------------------------------
 Sun Aug  9 14:03:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.9
