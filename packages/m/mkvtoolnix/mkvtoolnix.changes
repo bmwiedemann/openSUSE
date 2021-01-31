@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Jan 30 16:53:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 53.0.0
+  New features and enhancements:
+  * mkvmerge: AVI reader: added support for reading the video
+    aspect ratio from the video properties header (`vprp` chunk)
+    if present and setting the display dimensions accordingly.
+  * mkvmerge: MP4 reader: for h.264/AVC tracks that don't have an
+    `AVCConfigurationBox` (`avcC` atom) in their sample
+    description (`stsd`) atom or whose `avcC` atom contains no
+    content `mkvmerge` will now re-derive the
+    `AVCConfigurationBox` from the bitstream.
+  * mkvextract: mkvextract will now check if any of the
+    destination file names is the same as the source file name
+    and abort with an error if that's the case.
+  * MKVToolNix GUI: when querying the user for a file name for
+    saving things (e.g. multiplexer settings or an attachment in
+    the header editor), the automatically suggested file name
+    will now be based on the situation-specific file names (e.g.
+    the destination file name for multiplexer settings or the
+    attachment's name when saving an attachment in the header
+    editor) instead of the directory's name.
+  * MKVToolNix GUI: multiplexer: when deriving track languages
+    from file names the GUI will now select the right-most match
+    instead of the left-most one. For example,
+    "La.vie.en.rose.(fr).srt" will now be detected as French (fr)
+    instead of English (en).
+  * MKVToolNix GUI: preferences: the items in the "pre-defined
+    …" lists can now be renamed by double-clicking with the
+    mouse or pressing the F2 key.
+  Bug fixes:
+  * mkvmerge: stretching chapter timestamps with
+    `--chapter-sync` now works correctly with floating point
+    values including fractions of floating point numbers (e.g.
+    `12.3/45.67`). The tooltips in the GUI have been adjusted
+    accordingly.
+  * mkvmerge: MPEG 1/2 video handling: the "default duration"
+    header field was often half the value it actually should be,
+    resulting in all video frames having an explicit block
+    duration with the correct value.
+  * mkvmerge: MPEG 1/2 video handling: the data stored in `Codec
+    private` and `Codec state` doesn't contain extensions other
+    than sequence & sequence display extensions anymore.
+  * mkvmerge: tag handling: when remuxing a Matroska file with
+    the `--no-track-tags`, existing `SOURCE_ID` track tags are
+    now skipped, too.
+  * MKVToolNix GUI: multiplexer: the drop-down boxes with
+    pre-defined track names now follow the order set in the
+    preferences instead of sorting the entries alphabetically.
+
+-------------------------------------------------------------------
 Tue Jan  5 09:28:45 UTC 2021 - aloisio@gmx.com
 
 - Update to version 52.0.0
