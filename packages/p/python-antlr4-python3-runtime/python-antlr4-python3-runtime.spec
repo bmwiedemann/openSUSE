@@ -1,7 +1,7 @@
 #
 # spec file for package python-antlr4-python3-runtime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-antlr4-python3-runtime
-Version:        4.8
+Version:        4.9.1
 Release:        0
 Summary:        ANTLR runtime for Python 3
 License:        BSD-3-Clause
@@ -28,6 +29,8 @@ Source1:        LICENSE.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{python3_version_nodots} < 35
 Requires:       python-typing
@@ -49,11 +52,24 @@ cp %{SOURCE1} LICENSE.txt
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pygrun
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%prepare_alternative pygrun
+
+%post
+%python_install_alternative pygrun
+
+%postun
+%python_uninstall_alternative pygrun
+
+%check
+%pyunittest discover -v --pattern "*.py" --start-directory test
 
 %files %{python_files}
 %doc README.txt
 %license LICENSE.txt
-%{python_sitelib}/*
+%python_alternative %{_bindir}/pygrun
+%{python_sitelib}/antlr4_python3_runtime-*.egg-info
+%{python_sitelib}/antlr4
 
 %changelog

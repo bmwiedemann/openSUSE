@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 31 10:41:57 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.9.1.
+  * Improve python3 performance by adding slots
+  * Fix incorrect python token string templates
+- Add testing.
+- Skip python2 because this is for python3.
+- Use python_alternative
+
+-------------------------------------------------------------------
 Wed Apr 29 12:49:38 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
