@@ -1,5 +1,5 @@
 #
-# spec file for package python39
+# spec file for package python39-core
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -145,6 +145,9 @@ Patch32:        sphinx-update-removed-function.patch
 # PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
 # SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
 Patch33:        no-skipif-doctests.patch
+# PATCH-FIX-UPSTREAM CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch bsc#1181126 mcepl@suse.com
+# buffer overflow in PyCArg_repr in _ctypes/callproc.c, which may lead to remote code execution
+Patch34:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -394,6 +397,7 @@ other applications.
 %if 0%{?suse_version} <= 1500
 %patch33 -p1
 %endif
+%patch34 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

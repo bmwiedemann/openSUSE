@@ -154,4 +154,15 @@
 </comment>
     <requestid>860827</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>fe2205371650b5e2902ad94d51fe44bc</srcmd5>
+    <version>3.9.0</version>
+    <time>1612108341</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+</comment>
+    <requestid>868032</requestid>
+  </revision>
 </revisionlist>
