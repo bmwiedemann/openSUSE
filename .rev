@@ -700,4 +700,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
   gnome-packagekit to work (SLE only). (forwarded request 849342 from AZhou)</comment>
     <requestid>849375</requestid>
   </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>1e8d6826ee327b2b7e37ca453f4240ff</srcmd5>
+    <version>3.38.0</version>
+    <time>1612182331</time>
+    <user>dimstar_suse</user>
+    <comment>Remove hard dependency on zypp appdata plugin if other PackageKit backend is used (forwarded request 864183 from hellcp)</comment>
+    <requestid>867240</requestid>
+  </revision>
 </revisionlist>
