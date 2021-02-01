@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Fri Jan 29 13:36:24 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#796
+- Simplify compound actions for subvolumes
+- Show single subvol action
+- Update pot and po files
+- Rename method
+- 4.3.86
+
+--------------------------------------------------------------------
 Thu Jan 21 11:42:01 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#795
