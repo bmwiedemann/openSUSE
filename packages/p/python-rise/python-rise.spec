@@ -1,7 +1,7 @@
 #
 # spec file for package python-rise
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rise
-Version:        5.6.1
+Version:        5.7.1
 Release:        0
 Summary:        Jupyter/IPython Slideshow Extension
 License:        BSD-3-Clause
@@ -32,6 +32,8 @@ BuildRequires:  python-rpm-macros
 Requires:       jupyter-rise = %{version}
 Requires:       python-certifi
 Requires:       python-notebook >= 5.5.0
+Provides:       python-jupyter_rise = %{version}-%{release}
+Obsoletes:      python-jupyter_rise < %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,10 +48,9 @@ This package provides the python module.
 
 %package     -n jupyter-rise
 Summary:        Jupyter/IPython Slideshow Extension
+Group:          Development/Languages/Python
 Requires:       jupyter-notebook >= 5.5.0
 Requires:       python3-hide-code >= 0.5.5
-Provides:       python3-jupyter_rise = %{version}
-Obsoletes:      python3-jupyter_rise < %{version}
 
 %description -n jupyter-rise
 RISE produces live HTML-based slideshows.
@@ -76,12 +77,12 @@ find . -name '.travis.yml' -delete
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%license %{python3_sitelib}/rise/static/reveal.js/LICENSE
-%doc %{python3_sitelib}/rise/static/README.md
-%doc %{python3_sitelib}/rise/static/reveal.js/README.md
-%doc %{python3_sitelib}/rise/static/reveal.js-chalkboard/README.md
-%{python3_sitelib}/rise/
-%{python3_sitelib}/rise-%{version}-py*.egg-info
+%license %{python_sitelib}/rise/static/reveal.js/LICENSE
+%doc %{python_sitelib}/rise/static/README.md
+%doc %{python_sitelib}/rise/static/reveal.js/README.md
+%doc %{python_sitelib}/rise/static/reveal.js-chalkboard/README.md
+%{python_sitelib}/rise/
+%{python_sitelib}/rise-%{version}-py*.egg-info
 
 %files -n jupyter-rise
 %license LICENSE.md
