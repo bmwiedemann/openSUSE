@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 30 18:46:49 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
+
+- Version bump to 0.7.0
+  * Use additional pam service config for greeter
+  * greetd: Added tuigreet to known greeters list.
+  * terminal: Use direct open, proper errors
+  * worker: Unconditionally set up tty
+  * terminal: Forcibly take terminal
+  * session: Do not log pam_conv after start
+  * ci: Build both arch and alpine
+  * Use per-pid socket paths
+  * Terminate cleanly on SIGINT
+  * Use stdin as VT for current/none vt selections
+  * config: Skip reading config in session worker
+  * config: Add general.source_profile
+  * config: Fix tests for general section
+  * docs: Document new general section
+  * ci: Disable automatic github mirroring
+  * Add installation instructions on Gentoo
+  * Make sure to require codec in tokio-codec feature
+
+-------------------------------------------------------------------
 Thu Nov  5 16:47:30 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - add missed group requirement (issue could be seen during installation)
