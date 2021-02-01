@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 29 20:15:24 CET 2021 - tiwai@suse.de
+
+- Drop the bad patch: pulseaudio-wrong-memset.patch
+  the patch has been wrongly refreshed, mutated into a harmful form.
+  The original bug has been already fixed in the upstream commit 764eabd10.
+
+-------------------------------------------------------------------
+Thu Jan 28 15:39:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Supplement pulseaudio-bash-completion against bash-completion,
+  not bash.
+
+-------------------------------------------------------------------
+Tue Jan 26 13:37:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on armv7 as it breaks the build
+
+-------------------------------------------------------------------
+Sun Jan 24 09:52:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 14.2:
+ * Support upto 8 mixer channels on ALSA devices
+ * Handle ALSA jacks with the same name but different index values
+ * Switch to plugged-in headset when mic availability is unknown
+ * Fix a potential segfault in the Bluetooth oFono HFP backend
+ * Fix a problem with module-ladspa-sink when avoid-resampling=true
+ * Update to the NEWS file for 14.0 (and 14.1)
+ * Fix database names containing canonical host for meson builds
+
+-------------------------------------------------------------------
 Wed Jan 13 17:36:51 CET 2021 - tiwai@suse.de
 
 - Drop the outdated module-rescue-stream from gdm default config

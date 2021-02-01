@@ -15,24 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch armv7 armv7hl
+%define _lto_cflags %{nil}
+%endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define drvver  14.0
+%define drvver  14.2
 %define soname  0
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 Name:           pulseaudio
-Version:        14.0
+Version:        14.2
 Release:        0
 Summary:        A Networked Sound Server
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Sound Daemons
-Url:            http://pulseaudio.org
-Source:         http://www.freedesktop.org/software/pulseaudio/releases/%{name}-%{version}.tar.xz
+Url:            https://www.freedesktop.org/wiki/Software/PulseAudio/
+Source:         https://www.freedesktop.org/software/pulseaudio/releases/%{name}-%{version}.tar.xz
 Source1:        default.pa-for-gdm
 Source2:        setup-pulseaudio
 Source3:        sysconfig.sound-pulseaudio
@@ -45,7 +48,6 @@ Source98:       pulseaudio-rpmlintrc
 Source99:       baselibs.conf
 Patch0:         disabled-start.diff
 Patch1:         suppress-socket-error-msg.diff
-Patch2:         pulseaudio-wrong-memset.patch
 # PATCH-FIX-OPENSUSE qpaeq-shebang.patch Avoid rpmlint error due to using env python shebang
 Patch5:         qpaeq-shebang.patch
 # PATCH-FIX-OPENSUSE Workaround for old systemd on Leap 15.x
@@ -318,7 +320,7 @@ Summary:        PulseAudio Bash completion
 Group:          System/Shells
 Requires:       %{name}-utils = %{version}
 Requires:       bash-completion
-Supplements:    packageand(pulseaudio:bash)
+Supplements:    packageand(pulseaudio:bash-completion)
 
 %description bash-completion
 Optional dependency offering bash completion for various PulseAudio utilities
@@ -339,7 +341,6 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %setup -q -T -b0
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 %patch5 -p1
 # workaround for Leap 15.x
 %if 0%{?suse_version} < 1550
