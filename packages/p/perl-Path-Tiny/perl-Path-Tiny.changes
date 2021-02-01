@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 23 03:08:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.116
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.116     2021-01-22 10:32:22-05:00 America/New_York
+      - No changes from 0.115-TRIAL.
+  0.115     2021-01-19 12:01:33-05:00 America/New_York (TRIAL RELEASE)
+      [Tests]
+      - Fixes tests on MSYS without symlinks enabled.
+
+-------------------------------------------------------------------
 Thu Jul 30 10:37:05 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Revert last change as requested (File::Path 2.07 -> 2.070000)
