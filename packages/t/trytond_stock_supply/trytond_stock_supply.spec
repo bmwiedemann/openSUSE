@@ -2,7 +2,7 @@
 # spec file for package trytond_stock_supply
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2014-2017 Dr. Axel Braun
+# Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define 		majorver 5.0
+%define         majorver 5.0
 Name:           trytond_stock_supply
 Version:        %{majorver}.6
 Release:        0
@@ -47,10 +46,10 @@ Tryton application platform.
 %setup -q 
 
 %build
-python3 setup.py build   
+%python3_build   
 
 %install
-python3 setup.py install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot 
 %fdupes -s %{buildroot}
 
 %files 
