@@ -110,6 +110,7 @@ Patch41:        openssh-fips-ensure-approved-moduli.patch
 Patch42:        openssh-link-with-sk.patch
 Patch43:        openssh-reenable-dh-group14-sha1-default.patch
 Patch44:        openssh-fix-ssh-copy-id.patch
+Patch45:        openssh-8.4p1-ssh_config_d.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -308,6 +309,8 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/sshd
 %endif
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/sshd
+install -d -m 755 %{buildroot}%{_sysconfdir}/ssh/ssh_config.d
+install -d -m 755 %{buildroot}%{_sysconfdir}/ssh/sshd_config.d
 install -d -m 755 %{buildroot}%{_sysconfdir}/slp.reg.d/
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/slp.reg.d/
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/sshd.service
@@ -445,7 +448,8 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 %attr(0755,root,root) %{_sbindir}/sshd
 %attr(0755,root,root) %{_sbindir}/rcsshd
 %attr(0755,root,root) %{_sbindir}/sshd-gen-keys-start
-%dir %attr(755,root,root) %{_localstatedir}/lib/sshd
+%dir %attr(0755,root,root) %{_localstatedir}/lib/sshd
+%dir %attr(0755,root,root) %{_sysconfdir}/ssh/sshd_config.d
 %verify(not mode) %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
 %if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/pam.d/sshd
@@ -468,6 +472,7 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 %endif
 
 %files clients
+%dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d
 %verify(not mode) %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config
 %attr(0755,root,root) %{_bindir}/ssh
 %attr(0755,root,root) %{_bindir}/scp*

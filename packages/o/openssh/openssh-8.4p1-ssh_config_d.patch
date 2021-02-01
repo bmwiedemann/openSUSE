@@ -1,0 +1,32 @@
+diff -ur openssh-8.4p1.orig/ssh_config openssh-8.4p1/ssh_config
+--- openssh-8.4p1.orig/ssh_config	2021-01-27 14:43:22.698144889 +0100
++++ openssh-8.4p1/ssh_config	2021-01-27 14:40:46.170143382 +0100
+@@ -17,6 +17,12 @@
+ # list of available options, their meanings and defaults, please see the
+ # ssh_config(5) man page.
+ 
++# To modify the system-wide ssh configuration, create a "*.conf" file under
++# "/etc/ssh/ssh_config.d/" which will be automatically included below.
++# Don't edit this configuration file itself if possible to avoid update
++# problems.
++Include /etc/ssh/ssh_config.d/*.conf
++
+ Host *
+ #   ForwardAgent no
+ #   ForwardX11 no
+diff -ur openssh-8.4p1.orig/sshd_config openssh-8.4p1/sshd_config
+--- openssh-8.4p1.orig/sshd_config	2020-09-27 09:25:01.000000000 +0200
++++ openssh-8.4p1/sshd_config	2021-01-27 14:21:23.070132184 +0100
+@@ -10,6 +10,12 @@
+ # possible, but leave them commented.  Uncommented options override the
+ # default value.
+ 
++# To modify the system-wide sshd configuration, create a "*.conf" file under
++# "/etc/ssh/sshd_config.d/" which will be automatically included below.
++# Don't edit this configuration file itself if possible to avoid update
++# problems.
++Include /etc/ssh/sshd_config.d/*.conf
++
+ #Port 22
+ #AddressFamily any
+ #ListenAddress 0.0.0.0

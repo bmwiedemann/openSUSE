@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 27 14:09:08 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for /etc/ssh/ssh_config.d and /etc/ssh/sshd_config.d
+  (openssh-8.4p1-ssh_config_d.patch)
+
+-------------------------------------------------------------------
 Sat Jan 23 18:28:19 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
 
 - Add openssh-fix-ssh-copy-id.patch, which fixes breakage
