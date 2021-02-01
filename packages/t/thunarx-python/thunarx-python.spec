@@ -1,7 +1,7 @@
 #
 # spec file for package thunarx-python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           thunarx-python
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Python Bindings for the Thunar Extension Framework
 License:        GPL-2.0-or-later
-URL:            https://goodies.xfce.org/projects/bindings/thunarx-python
+URL:            https://docs.xfce.org/bindings/thunarx-python/
 Source:         http://archive.xfce.org/src/bindings/%{name}/0.5/%{name}-%{version}.tar.bz2
-Patch0:         reproducible.patch
-Patch1:         thunarx-python-py3.8.diff
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig

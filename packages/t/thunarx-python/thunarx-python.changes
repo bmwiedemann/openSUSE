@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 31 17:07:58 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.2
+  * Add gitlab-ci for thunarx-python
+  * Update configure.ac.in syntax
+  * Remove checks with unused result
+  * Remove check for unused sys/wait.h
+  * Fix missing-prototypes
+  * Fix g_list_find_custom usage
+  * make distcheck now works !
+  * Update gtk-doc for thunarx-python
+  * Fix compilation with python3.8
+  * fix compilation issues with gcc-10
+  * Scan extension directories only once
+- Remove reproducible.patch and thunarx-python-py3.8.diff
+  * fixed upstream
+
+-------------------------------------------------------------------
 Mon Jun  8 08:08:17 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add -fcommon to CFLAGS to work around gcc10 default changes

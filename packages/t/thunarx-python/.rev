@@ -71,4 +71,26 @@
     <comment></comment>
     <requestid>812538</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ba2574f381464faf144f38a5271792f3</srcmd5>
+    <version>0.5.2</version>
+    <time>1612182511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.2
+  * Add gitlab-ci for thunarx-python
+  * Update configure.ac.in syntax
+  * Remove checks with unused result
+  * Remove check for unused sys/wait.h
+  * Fix missing-prototypes
+  * Fix g_list_find_custom usage
+  * make distcheck now works !
+  * Update gtk-doc for thunarx-python
+  * Fix compilation with python3.8
+  * fix compilation issues with gcc-10
+  * Scan extension directories only once
+- Remove reproducible.patch and thunarx-python-py3.8.diff
+  * fixed upstream
+</comment>
+    <requestid>868243</requestid>
+  </revision>
 </revisionlist>
