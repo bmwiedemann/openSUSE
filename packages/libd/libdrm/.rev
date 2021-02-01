@@ -1462,4 +1462,21 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>860829</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>4730c85aa7e8ac322e6476f21bac5c2b</srcmd5>
+    <version>2.4.104</version>
+    <time>1612182264</time>
+    <user>dimstar_suse</user>
+    <comment>- reenabled build of manual pages (switch from xsltproc to rst2man) 
+
+- update to 2.4.104:
+  * headers: drm: Sync with drm-next
+  * Remove outdated comments about stdint.h
+  * Remove definitions duplicated from drm_mode.h
+  * xf86drmMode.h use ANSI C99 arrays
+  * Document drmModeConnection
+  * man: convert to reSTructuredText
+  * testsuite fixes</comment>
+    <requestid>866361</requestid>
+  </revision>
 </revisionlist>

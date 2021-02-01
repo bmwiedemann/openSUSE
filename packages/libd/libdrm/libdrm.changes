@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 24 11:45:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- reenabled build of manual pages (switch from xsltproc to rst2man) 
+
+-------------------------------------------------------------------
+Sun Jan 24 09:45:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.104:
+  * headers: drm: Sync with drm-next
+  * Remove outdated comments about stdint.h
+  * Remove definitions duplicated from drm_mode.h
+  * xf86drmMode.h use ANSI C99 arrays
+  * Document drmModeConnection
+  * man: convert to reSTructuredText
+  * testsuite fixes
+
+-------------------------------------------------------------------
 Wed Jan  6 16:03:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.103:

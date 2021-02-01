@@ -17,7 +17,7 @@
 
 
 Name:           libdrm
-Version:        2.4.103
+Version:        2.4.104
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
@@ -29,12 +29,11 @@ URL:            https://dri.freedesktop.org/
 Source:         https://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 
-# Required for building manpages
-BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.43
 BuildRequires:  pkgconfig
-BuildRequires:  xsltproc
+# needed for rst2man to create manual pages
+BuildRequires:  python3-docutils
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
 %if 0%{?with_valgrind_support:1}
 %ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm}
