@@ -1053,4 +1053,14 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>863088</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4935196e3483216f0ec27b63070fea3d</srcmd5>
+    <version>0.9.3</version>
+    <time>1612182319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3 (jsc#SLE-17336):
+  nftables (jsc#SLE-16300):
+  (rhbz#1817022, jsc#SLE-16300) (forwarded request 866984 from mrostecki)</comment>
+    <requestid>866985</requestid>
+  </revision>
 </revisionlist>

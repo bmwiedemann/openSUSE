@@ -1,0 +1,59 @@
+From b1145d3efc58220f58a4e67189c4ff4a8bd789ce Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@opensuse.org>
+Date: Mon, 25 Jan 2021 12:58:00 +0100
+Subject: [PATCH] Disable FlushAllOnReload option
+
+Disabling the FlushAllOnReload option restores the old behavior where
+--reload does not retain interface to zone assignmnets and direct rules.
+We want to keep that behavior in openSUSE and SLE
+
+Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
+---
+ config/firewalld.conf              | 4 ++--
+ doc/xml/firewalld.conf.xml         | 2 +-
+ src/firewall/config/__init__.py.in | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/config/firewalld.conf b/config/firewalld.conf
+index 532f0452..e789f2a7 100644
+--- a/config/firewalld.conf
++++ b/config/firewalld.conf
+@@ -52,8 +52,8 @@ FirewallBackend=nftables
+ # configuration was retained during a reload, namely; interface to zone
+ # assignment, and direct rules. This was confusing to users. To get the old
+ # behavior set this to "no".
+-# Default: yes
+-FlushAllOnReload=yes
++# Default: no
++FlushAllOnReload=no
+ 
+ # RFC3964_IPv4
+ # As per RFC 3964, filter IPv6 traffic with 6to4 destination addresses that
+diff --git a/doc/xml/firewalld.conf.xml b/doc/xml/firewalld.conf.xml
+index fcfbfd2b..8415ba3e 100644
+--- a/doc/xml/firewalld.conf.xml
++++ b/doc/xml/firewalld.conf.xml
+@@ -166,7 +166,7 @@
+                 runtime configuration was retained during a reload, namely;
+                 interface to zone assignment, and direct rules. This was
+                 confusing to users. To get the old behavior set this to "no".
+-                Defaults to "yes".
++                Defaults to "no".
+                 </para>
+             </listitem>
+         </varlistentry>
+diff --git a/src/firewall/config/__init__.py.in b/src/firewall/config/__init__.py.in
+index e875e849..df6f449b 100644
+--- a/src/firewall/config/__init__.py.in
++++ b/src/firewall/config/__init__.py.in
+@@ -131,6 +131,6 @@ FALLBACK_INDIVIDUAL_CALLS = False
+ FALLBACK_LOG_DENIED = "off"
+ FALLBACK_AUTOMATIC_HELPERS = "no"
+ FALLBACK_FIREWALL_BACKEND = "nftables"
+-FALLBACK_FLUSH_ALL_ON_RELOAD = True
++FALLBACK_FLUSH_ALL_ON_RELOAD = False
+ FALLBACK_RFC3964_IPV4 = True
+ FALLBACK_ALLOW_ZONE_DRIFTING = False
+-- 
+2.30.0
+

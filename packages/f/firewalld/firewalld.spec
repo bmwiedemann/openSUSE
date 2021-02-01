@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           firewalld
-Version:        0.9.1
+Version:        0.9.3
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Group:          Productivity/Networking/Security
 Url:            http://www.firewalld.org
 Source0:        https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.gz
 Source1:        docker-zone.xml
-
+Patch0:         0002-Disable-FlushAllOnReload-option.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils

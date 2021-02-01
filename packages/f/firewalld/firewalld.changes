@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 26 16:33:10 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Disable FlushAllOnReload option to not retain interface to zone
+  assignments and direct rules when using --reload option.
+  * 0002-Disable-FlushAllOnReload-option.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 11:29:37 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 0.9.3 (jsc#SLE-17336):
+  * docs(dbus): fix invalid method names
+  * fix(forward): iptables: ipset used as zone source
+  * fix(rich): non-printable characters removed from rich rules
+  * docs(firewall-cmd): small description grammar fix
+  * fix(rich): limit table to strip non-printables to C0 and C1
+  * fix(zone): add source with mac address
+
+-------------------------------------------------------------------
 Thu Jan 14 09:52:26 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Add dependency for firewall-offline-cmd (bsc#1180883)
@@ -7,12 +25,12 @@ Thu Jan 14 09:52:26 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 Mon Nov  9 09:15:55 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Remove the patch which enforces usage of iptables instead of
-  nftables:
+  nftables (jsc#SLE-16300):
   * 0001-firewall-backend-Switch-default-backend-to-iptables.patch
 - Add firewalld zone for the docker0 interface. This is the
   workaround for lack of nftables support in docker. Without that
   additional zone, containers have no Internet connectivity.
-  (rhbz#1817022)
+  (rhbz#1817022, jsc#SLE-16300)
 - Update to 0.9.1:
   * Bugfixes:
     * docs(firewall-cmd): clarify lockdown whitelist command paths
