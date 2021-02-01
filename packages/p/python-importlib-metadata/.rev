@@ -25,4 +25,18 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment></comment>
     <requestid>857124</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d4127368b66dfb0ee6af6b3faa7c51e</srcmd5>
+    <version>3.4.0</version>
+    <time>1612182397</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.0:
+  * Project now declares itself as being typed.
+  * Additional performance enhancements to distribution
+    discovery.
+  * For PyPA projects, add test ensuring that
+    ``MetadataPathFinder._search_paths`` honors the needed
+    interface. Method is still private.</comment>
+    <requestid>866399</requestid>
+  </revision>
 </revisionlist>
