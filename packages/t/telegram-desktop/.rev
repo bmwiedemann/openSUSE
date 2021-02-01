@@ -543,4 +543,16 @@
 - Add Recommends for google-opensans-fonts (forwarded request 867562 from tux93)</comment>
     <requestid>867711</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>de20e53ff7fc2bdd8196b929f0de18db</srcmd5>
+    <version>2.5.8</version>
+    <time>1612182553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.8
+  * Fix OpenAL device closing in calls and voice chats.
+  * Fix video chat rotation when calling from iOS.
+  * Fix scheduling messages without sound.
+  * Remove redundant Cancel button in ScheduleBox. (forwarded request 868143 from tux93)</comment>
+    <requestid>868309</requestid>
+  </revision>
 </revisionlist>

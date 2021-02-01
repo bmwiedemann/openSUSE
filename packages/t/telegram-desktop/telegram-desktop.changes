@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 31 14:57:11 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.8
+  * Fix OpenAL device closing in calls and voice chats.
+  * Fix video chat rotation when calling from iOS.
+  * Fix scheduling messages without sound.
+  * Remove redundant Cancel button in ScheduleBox.
+
+-------------------------------------------------------------------
 Thu Jan 28 18:18:05 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.5.7
