@@ -1,7 +1,7 @@
 #
 # spec file for package help2man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           help2man
-Version:        1.47.16
+Version:        1.47.17
 Release:        0
 Summary:        Script for generating man pages from --help output
 License:        GPL-3.0-or-later
@@ -28,8 +28,6 @@ Source1:        https://ftp.gnu.org/gnu/help2man/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 BuildRequires:  perl-gettext
 Requires:       perl-gettext
-Requires(post): info
-Requires(preun): info
 Recommends:     %{name}-lang
 
 %description
@@ -54,18 +52,6 @@ still providing some useful information.
 %make_install
 
 %find_lang %{name} --with-man
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/help2man.info%{ext_info}
-
-%post -n %{name}-lang
-%install_info --info-dir=%{_infodir} %{_infodir}/help2man.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/help2man.info%{ext_info}
-
-%preun -n %{name}-lang
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/help2man.info%{ext_info}
 
 %files
 %license COPYING
