@@ -163,4 +163,24 @@
     <comment></comment>
     <requestid>808851</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c23edf62e6f7acbe8c4da971030af11e</srcmd5>
+    <version>1.0.17</version>
+    <time>1612182312</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer set CFLAGS, because &quot;%optflags&quot; is already included in
+  %configure macro
+
+- update to 1.0.17:
+  * present: fix handling of drmWaitVBlank failures
+  * drmmode: make event handler leave a note that there are stuck events
+  * present: don't enable if there's no acceleration
+  * drmmode: fix screen resize without acceleration
+  * make error when failing to allocate surface more descriptive
+  * dri2,present: move in pixmap before getting addresses
+  * nv4/exa: tiling is unsupported pre-nv10, reduce alignment requirements
+  * Don't advertise any PRIME offloading capabilities without acceleration
+- spec-cleaner cleanups</comment>
+    <requestid>866587</requestid>
+  </revision>
 </revisionlist>
