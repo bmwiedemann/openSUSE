@@ -1,7 +1,7 @@
 #
 # spec file for package tgt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Generic Linux target framework (tgt)
 License:        GPL-2.0-only
 Group:          System/Daemons
-Url:            http://stgt.sourceforge.net/
+URL:            http://stgt.sourceforge.net/
 Source:         https://github.com/fujita/%{name}/archive/v%{version}.tar.gz
 Source1:        %{name}d.service
 Source4:        sysconfig.%{name}
