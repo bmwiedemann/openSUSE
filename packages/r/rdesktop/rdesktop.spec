@@ -1,7 +1,7 @@
 #
 # spec file for package rdesktop
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ URL:            http://www.rdesktop.org/
 Source:         https://github.com/rdesktop/rdesktop/releases/download/v%{version}/%{name}-%{version}.tar.gz
 ## FIX-openSUSE: remove "Don't depend on pkg-config"
 Patch0:         rdesktop-fix_pkgconfig_check.patch
-# PATCH-FIX-OPENSUSE rdesktop-Fix-keymap-script.patch
-Patch3:         rdesktop-Fix-keymap-script.patch
+# PATCH-FIX-OPENSUSE rdesktop-convert-map.python3.patch -- seife+obs@b1-systems.com
+Patch3:         rdesktop-convert-map.python3.patch
 # PATCH-FIX-UPSTREAM rdesktop-fix_segfault_in_rdssl_rkey_get_exp_mod.patch
 Patch4:         rdesktop-fix_segfault_in_rdssl_rkey_get_exp_mod.patch
 BuildRequires:  alsa-devel
@@ -57,7 +57,7 @@ to Windows Server 2012 R2.
 %prep
 %setup -q
 %patch0
-%patch3
+%patch3 -p1
 %patch4 -p1
 
 ## rpmlint

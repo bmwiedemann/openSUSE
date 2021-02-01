@@ -311,4 +311,12 @@
     <comment>fix for boo#1158593 (forwarded request 760071 from computersalat)</comment>
     <requestid>760072</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>5589277a23e63e667730e1b6e16186f8</srcmd5>
+    <version>1.9.0</version>
+    <time>1612182548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868305</requestid>
+  </revision>
 </revisionlist>
