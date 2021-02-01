@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 31 20:23:28 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1612014696.1998b3cde:
+  * Revert "Rework symlink CASEDIR and set values to relative path"
+  * Dependency cron 2021-01-30
+  * Update .circleci/ci-packages.txt
+  * Update patch for B::Deparse
+  * Don't rely on re-checking statfs() during the cleanup
+  * Increase coverage scale factor for t/10-jobs.t to avoid running into timeout
+  * Add test for screenshot deletion failure
+  * Unify code for screenshot deletion
+  * Mock the Minion framework in tests for df-based cleanup to speed up coverage analysis
+  * Document df-based cleanup of results within the web UI and config file
+  * Ensure usage of results disk is below configurable threshold
+  * Add function to delete all results from a job keeping the database entry
+  * Add function to delete only the videos from a job
+  * Add function to determine screenshots exclusively used by a job
+
+-------------------------------------------------------------------
 Fri Jan 29 10:48:58 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1611917326.c2fb0e67e:
