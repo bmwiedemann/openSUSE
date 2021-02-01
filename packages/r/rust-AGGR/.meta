@@ -1,0 +1,37 @@
+<package name="rust-AGGR" project="openSUSE:Factory">
+  <title>The Rust Programming Language</title>
+  <description>NOTE: Builds using Rust bundled LLVM require upwards of 50GB.
+
+Rust is a systems programming language focused on three goals: safety, speed, and concurrency. It maintains these goals without having a garbage collector, making it a useful language for a number of use cases other languages aren’t good at: embedding in other languages, programs with specific space and time requirements, and writing low-level code, like device drivers and operating systems. It improves on current languages targeting this space by having a number of compile-time safety checks that produce no runtime overhead, while eliminating all data races. Rust also aims to achieve ‘zero-cost abstractions’ even though some of these abstractions feel like those of a high-level language. Even then, Rust still allows precise control like a low-level language would.</description>
+  <build>
+    <disable repository="SLE_12"/>
+    <disable repository="SLE_12_SP1"/>
+    <disable repository="SLE_12_SP2"/>
+    <disable arch="i586" repository="SLE_12_SP3"/>
+    <disable arch="i586" repository="SLE_12_SP4"/>
+    <disable arch="i586" repository="SLE_15"/>
+    <disable arch="ppc64" repository="SLE_12_SP3"/>
+    <disable arch="ppc64le" repository="SLE_12_SP3"/>
+    <disable arch="s390x" repository="SLE_12_SP3"/>
+    <disable arch="aarch64" repository="SLE_12_SP3"/>
+    <disable arch="aarch64" repository="SLE_12_SP4"/>
+    <disable arch="aarch64" repository="SLE_15"/>
+    <disable arch="armv7l" repository="SLE_12_SP4"/>
+    <disable arch="ppc64" repository="SLE_12_SP4"/>
+    <disable arch="ppc64le" repository="SLE_12_SP4"/>
+    <disable arch="s390x" repository="SLE_12_SP4"/>
+    <disable repository="SLE-15-SP1"/>
+    <disable repository="SLE_15"/>
+    <disable arch="x86_64" repository="SLE_12_SP3"/>
+    <disable arch="x86_64" repository="SLE_12_SP4"/>
+    <disable arch="armv7l" repository="SLE_12_SP3"/>
+    <disable repository="SLE_12_SP3"/>
+    <disable repository="SLE_12_SP4"/>
+    <enable repository="openSUSE_Leap_42.1"/>
+    <enable repository="openSUSE_Leap_42.3"/>
+  </build>
+  <publish>
+    <enable repository="openSUSE_Leap_42.1"/>
+    <enable repository="openSUSE_Leap_42.2"/>
+  </publish>
+</package>

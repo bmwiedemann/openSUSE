@@ -1,0 +1,6 @@
+<aggregatelist>
+  <aggregate project="devel:languages:rust">
+    <package>rust</package>
+    <repository target="standard" source="openSUSE_Tumbleweed" />
+  </aggregate>
+</aggregatelist>
