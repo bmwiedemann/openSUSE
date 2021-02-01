@@ -4,16 +4,17 @@ Subject: module: for virtio-gpu, pre-load module to avoid abort on missing
  module
 
 If the hw-display-virtio-gpu module is not loadable when the virtio-gpu
-device is on the commandline or being added in monitor, qemu will call
-abort. We can fail gracefully by doing the module load in a context
-which is set up to handle errors properly. (bsc#1181103)
+device is referenced either on the command line or the monitor, qemu
+will call abort. We can fail gracefully by moving the attempted module
+load to a context better situated to handle errors properly. (bsc#1181103)
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  include/qemu/module.h  |  1 +
  qom/object.c           | 12 ++++++++++++
- softmmu/qdev-monitor.c |  8 ++++++++
- 3 files changed, 21 insertions(+)
+ qom/qom-qmp-cmds.c     | 17 +++++++++++++++++
+ softmmu/qdev-monitor.c | 15 +++++++++++++++
+ 4 files changed, 45 insertions(+)
 
 diff --git a/include/qemu/module.h b/include/qemu/module.h
 index 944d403cbd1535cc121af76a94f2..4b42dd285eeac1ba12e5c9e18ac0 100644
@@ -49,11 +50,53 @@ index 10653552334549241cd5672d7a02..6f301fec34d103b0b07bc41d107c 100644
  void object_initialize(void *data, size_t size, const char *typename)
  {
      TypeImpl *type = type_get_by_name(typename);
+diff --git a/qom/qom-qmp-cmds.c b/qom/qom-qmp-cmds.c
+index 310ab2d0481d1517b0432be23256..cf130dc875bb6a7921fd7fb5af26 100644
+--- a/qom/qom-qmp-cmds.c
++++ b/qom/qom-qmp-cmds.c
+@@ -131,6 +131,23 @@ ObjectPropertyInfoList *qmp_device_list_properties(const char *typename,
+     ObjectPropertyIterator iter;
+     ObjectPropertyInfoList *prop_list = NULL;
+ 
++#ifdef CONFIG_MODULES
++    if (!strcmp(typename, "virtio-gpu-pci") || !strcmp(typename, "virtio-gpu-ccw")) {
++        if (module_load_check("virtio-gpu-device")) {
++            ObjectPropertyInfo *info;
++            info = g_new0(ObjectPropertyInfo, 1);
++            info->name = g_strdup("dummy");
++            info->type = g_strdup("dummy");
++            info->has_description = false;
++            info->description = NULL;
++            info->default_value = 0;
++            info->has_default_value = 0;
++            QAPI_LIST_PREPEND(prop_list, info);
++            return prop_list;
++        }
++    }
++#endif
++
+     klass = module_object_class_by_name(typename);
+     if (klass == NULL) {
+         error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
 diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-index bf79d0bbcd986320eb609f37253e..7f6ad469638ba55a5bb8bfd02fe3 100644
+index bf79d0bbcd986320eb609f37253e..564dfaeeda9c3ae9dbf1afa97825 100644
 --- a/softmmu/qdev-monitor.c
 +++ b/softmmu/qdev-monitor.c
-@@ -650,6 +650,14 @@ DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
+@@ -263,6 +263,13 @@ int qdev_device_help(QemuOpts *opts)
+     int i;
+ 
+     driver = qemu_opt_get(opts, "driver");
++#ifdef CONFIG_MODULES
++    if (driver && !strcmp(driver, "virtio-gpu")) {
++        if (module_load_check("virtio-gpu-device")) {
++            return 0;
++        }
++    }
++#endif
+     if (driver && is_help_option(driver)) {
+         qdev_print_devinfos(false);
+         return 1;
+@@ -650,6 +657,14 @@ DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
          return NULL;
      }
  

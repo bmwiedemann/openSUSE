@@ -1759,7 +1759,12 @@ if [ -e /dev/virtio-ports/org.qemu.guest_agent.0 ]; then
 fi
 
 %postun guest-agent
-%service_del_postun qemu-ga@.service
+%service_del_postun_without_restart qemu-ga@.service
+if [ "$1" = "1" ] ; then
+  if [ -e /dev/virtio-ports/org.qemu.guest_agent.0 ]; then
+    /usr/bin/systemctl restart qemu-ga@virtio\\x2dports-org.qemu.guest_agent.0.service || :
+  fi
+fi
 
 %pre ksm
 %service_add_pre ksm.service

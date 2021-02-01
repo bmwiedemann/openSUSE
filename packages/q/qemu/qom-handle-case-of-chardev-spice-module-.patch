@@ -6,7 +6,7 @@ When qemu is built with modules, but a given module doesn't load
 qemu should handle that gracefully. When chardev-spice.so isn't
 able to be loaded and qemu is invoked with -display spice-app,
 qemu will reach an abort call. Explicitly detect these conditions
-and error out in a normal way before we reach that code.
+and error out in a normal way before we reach the abort.
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
