@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 28 23:20:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.3:
+  * Fixed bytes and string comparison issue with headers (Pull #2141)
+  * Changed ``ProxySchemeUnknown`` error message to be
+    more actionable if the user supplies a proxy URL without
+    a scheme. (Pull #2107)
+
+-------------------------------------------------------------------
 Fri Jan  1 13:20:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip test for RECENT_DATE. It is a test purely for developers.
