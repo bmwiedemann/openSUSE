@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jan 28 15:07:09 UTC 2021 - Oliver Kurz <okurz@suse.com>
+
+- Fix rpmlint warning about duplicate file definition
+- Fix package build by relying on %python_subpackages for Obsoletes/Conflicts (bsc#1181281)
+
+-------------------------------------------------------------------
+Sun Jan 24 11:00:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.0 (bsc#1180833, bsc#1180834, bsc#1180832):
+  * Fix TIFF OOB Write error. CVE-2020-35654 
+  * Fix for Read Overflow in PCX Decoding. CVE-2020-35653 
+  * Fix for SGI Decode buffer overrun. CVE-2020-35655 
+  * Fix OOB Read when saving GIF of xsize=1 
+  * Makefile updates 
+  * Add support for PySide6 
+  * Use disposal settings from previous frame in APNG 
+  * Added exception explaining that _repr_png_ saves to PNG 
+  * Use previous disposal method in GIF load_end 
+  * Allow putpalette to accept 1024 integers to include alpha values 
+  * Fix OOB Read when writing TIFF with custom Metadata 
+  * Added append_images support for ICO 
+  * Block TIFFTAG_SUBIFD 
+  * Fixed dereferencing potential null pointers 
+  * Deprecate FreeType 2.7 
+  * Moved warning to end of execution 
+  * Removed unused fromstring and tostring C methods 
+  * init() if one of the formats is unrecognised 
+  * Moved string_dimension CVE image to pillow-depends 
+  * Support raw rgba8888 for DDS 
+- drop patches python-Pillow-tiff-4.2.0.patch
+  python-Pillow-tiff-fix-oob-read.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Dec 30 11:04:46 UTC 2020 - pgajdos@suse.com
 
 - fix build with libtiff 4.2.0

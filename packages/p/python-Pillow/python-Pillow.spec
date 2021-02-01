@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pillow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,12 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pillow
-Version:        8.0.1
+Version:        8.1.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
-# https://github.com/python-pillow/Pillow/commit/416f12e772d2b3cb920b18b3625e8b1419d7519e
-Patch0:         python-Pillow-tiff-fix-oob-read.patch
-# https://github.com/python-pillow/Pillow/pull/5153
-Patch1:         python-Pillow-tiff-4.2.0.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pytest >= 4.0}
@@ -61,10 +57,8 @@ Provides:       %{oldpython}-imaging = %{version}
 Obsoletes:      %{oldpython}-imaging-sane < %{version}
 Provides:       %{oldpython}-imaging-sane = %{version}
 %endif
-%ifpython3
-Obsoletes:      python3-imaging < %{version}
-Provides:       python3-imaging = %{version}
-%endif
+Obsoletes:      python-imaging < %{version}
+Provides:       python-imaging = %{version}
 %python_subpackages
 
 %description
@@ -91,17 +85,15 @@ Python Imaging Library by Fredrik Lundh and Contributors.
 
 %prep
 %setup -q -n Pillow-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
 # add missing path
 %{python_expand echo "PIL" > %{buildroot}%{$python_sitearch}/PIL.pth}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHONDONTWRITEBYTECODE=1
