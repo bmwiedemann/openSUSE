@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 24 19:48:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  * Fixed Python deprecation issues related to module importing, as well as
+    file access within the Lingua plugin, for deprecated APIs that began to
+    emit warnings under Python 3.10. 
+
+-------------------------------------------------------------------
 Fri Dec 11 23:26:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Let the python-rpm-macros do their job for the correct provides
