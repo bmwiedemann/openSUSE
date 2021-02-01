@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptyprocess
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ptyprocess
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Run a subprocess in a pseudo terminal
 License:        ISC
