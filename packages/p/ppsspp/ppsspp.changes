@@ -1,4 +1,545 @@
 -------------------------------------------------------------------
+Sun Jan 24 14:20:20 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.10.3~git20210124:
+  * Fix returned error code on PtpSend and PtpRecv when socket is not connected yet.
+  * Do PtpConnect internally during PtpOpen, since some games (ie. The Warriors) seems to do PtpSend immediately after PtpOpen without trying to PtpConnect first.
+  * Fix Greek characters & Roman numbers & all balance on jpn0.pgf
+  * Resample only in 32000Hz
+  * Plugins: Enable by default.
+  * compat.ini: Add Split/Second to [ReinterpretFramebuffers]. See #13957
+  * PPGe: Scale down by worst of window/internal res.
+  * build fix
+  * Some marks position fixed on jpn0.pgf
+  * Fix Russian (Cyrillic alphabet) on jpn0.pgf.
+  * Resample all mp3
+  * Oops! I misstook uploading jpn0.pgf.
+  * PGF Fixed Bold & Italic property and camouflage the Font name.
+  * Kernel: Adjust sceKernelGetThreadExitStatus timing.
+  * Debugger: Include all press states for convenience.
+  * Debugger: Broadcast ctrl input events.
+  * Debugger: Add API to trigger buttons.
+  * Compat: Enable reinterpret for Kingdom Hearts.
+  * Vulkan: Prevent scaling shader leak.
+  * GPU: Fix safe size checks when rect offscreen.
+  * Headless: Default to PNG for ppdmp tests.
+  * Headless: Simplify executing a ppdmp via headless.
+  * Headless: Disable http disk cache.
+  * Headless: Allow PNGs and http:// for screenshot.
+  * Headless: Read expected file as a FileLoader.
+  * Headless: Allow screenshot compare without backend.
+  * GL FB readback: Only use "inout" if we actually want to read from the fb.
+  * More GPU test improvements
+  * Compat: Note that 3 LEGO games those are require Buffered rendering
+  * Add texture to flat shaded test.
+  * Adds two new tests to GPU driver test screen: Adreno shader logic test and flat shading
+  * CMake fixes and new --ios-xcode ./b.sh command.
+  * There's little reason to build at O3, so let's just not. Changing to O2.
+  * Vulkan: Delete only created swapchain images.
+  * SoftGPU: Fix sprite provoking vertex in fast path.
+  * Module: Keep the state for each import.
+  * Headless: Allow connecting the web debugger.
+  * Compat: Note that Gradius requires block transfer.
+  * Remove re-test each month
+  * Module: Keep HI16/LO16 in a temp state object.
+  * Module: Reverse a single HI16/LO16 pair correctly.
+  * Fix Stuck issue on some games (Dissidia 012, Full Auto 2, etc) when Failed to connect to Adhoc Server (faked success)
+  * VK: Re-apply the old Adreno driver bug workaround. Fixes #13910.
+  * Make sure we don't try to set a negative viewport size.
+  * Update Template
+  * Enable BlockTransferAllowCreateFB for Gradius Collection
+  * PGF Re-Fixed Euro Characters
+  * irjit: Update clobber flag on inst swap.
+  * irjit: Add disable flag for simplify passes.
+  * Android: Add NEON/SSE funcs into Headless/UnitTest.
+  * Build: Validate unittest/headless on Android.
+  * Android: Fix headless and unittest build.
+  * Fix copy/paste typo causing crash getting tempdirs if an env var had no value
+  * GPU: Correct shader gen with weights as floats.
+  * FixPGF for Euro Characters.(Balance emphasis)
+  * UI: Cleanup Windows header in MainScreen.cpp.
+  * http: Prevent Windows header leak from HTTPClient.
+  * Windows: Handle fullscreen message consistently.
+  * irjit: Fix mtv for INF4.
+  * irjit: Correct flags for SetCtrlVFPUReg.
+  * jit: Fix conditional disable flags.
+  * Improve some i18n things
+  * Enable using the folder browser on Android to select SD card through a gross hack.
+  * Add a file picker (WIP)
+  * Use the same logic of game setting for main menu full screen, add other system
+  * Manually tighten up the layout a bit in the top right corner
+  * Add a fullscreen toggle button to the main screen (Windows-only for now)
+  * Try another method for getting SD card storage paths (env vars).
+  * Reducing AdhocMatching events delay to prevent matchingEvents from piling up on Lord of Arcana.
+  * Send AdhocMatching Data from within HLE whenever possible instead of through matchingEvent Thread.
+  * Prevent access violation when running out of userMemory due to piling up AdhocMatching events.
+  * Add game ID for russian version of Tron Evolution
+  * Add 3 games to ForceMax60FPS
+  * Add more error checking in SD storage detection
+  * add assets to ubuntu build artifact
+  * UI: Prevent self-powerdown check on load new game.
+  * Core: Properly stop on abrupt shutdown.
+  * Android: Minor cleanup.
+  * Remove redundant method from PathBrowser.cpp
+  * Fixes for SD card detection on slightly older devices.
+  * UI tweaks
+  * Use hacky methods to retrieve SD card directory if available.
+  * Add home button on all platforms
+  * Add some new icons.
+  * Fix adding extra new line on checkbox change
+  * Save on game start
+  * iOS: Change iOS 13 check.
+  * Savedata: Reduce some noisy logging.
+  * cmake: Silence warning.
+  * Adding games to RequireBufferedRendering that cause black screen when not enabled
+  * Compat.ini cleanup to add missing IDs and remove unused ones from latest version
+  * Add Missing game IDs for Tekken 6
+  * Initialize/Deinitialize the shader translation system once globally.
+  * Savedata: Prevent garbage bleeding into save icons.
+  * Revert "Bleach Soul Carnival. Disable the "First Frame Readback" compat setting."
+  * Never pass a null into QueueDeleteImageView (got a report of that).
+  * UI: Use "Details" for upgrade outside Win/Android.
+  * SaveState: Allow rewind on mobile.
+  * Postshader: Improve error reporting.
+  * Bleach Soul Carnival. Disable the "First Frame Readback" compat setting.
+  * GPU: Be careful with color write mask precision.
+  * GPU: Ignore color write mask if unusable.
+  * Windows: Prevent hang on shutdown.
+  * D3D11: Avoid crash if debug/info queue unavailable.
+  * Build: Include Windows ARM64 in builds too.
+  * headless: Fix Windows ARM64 build.
+  * Windows: Fix miniupnpc build on ARM64.
+  * iOS: Expose iOS 12.1+/13/14 buttons.
+  * UWP: Don't try compiling samplerjit.
+  * Build: Run software backend for tests.
+  * GPU: Remove NULL GPU.
+  * Headless: Always use at least software rendering.
+  * SoftGPU: Allow rendering with no backend at all.
+  * UWP: Allow software renderer.
+  * SoftGPU: Update PPGe draw context.
+  * Readme script update
+  * Psmf: Fix a potential leak on shutdown.
+  * GPU: Correct some incorrect deallocations.
+  * Common: Correct some formatting type mismatches.
+  * http: Ignore signals on recv() too.
+  * http: Cleanup excessive logging.
+  * Android: Remove old NDK profiler.
+  * Common: Fix logging shutdown race condition.
+  * Debugger: Fix some type conversion warnings.
+  * Windows: Fix some type conversion warnings.
+  * Net: Remove static declarations from h file.
+  * Build: Remove Travis in favor of GitHub Actions.
+  * Build: Reference test as file on failure.
+  * Build: Auto skip on documentation only changes.
+  * Build: Disable fast fail to see all build errors.
+  * Build: Skip SDL2 dependency for mobile platforms.
+  * Build: Include PPSSPPSDL on macOS for debugging.
+  * Build: Run tests on Linux and macOS.
+  * Build: Install specific Android NDK.
+  * Build: Install SDL2 dependency.
+  * Build: Ensure yml use tabs.
+  * Build: Add CMake to GitHub Actions.
+  * Build: Enable graphics tests.
+  * Build: Explicitly depend on miniupnpc.
+  * Build: Add test execution.
+  * Build: Add GitHub Actions workflow.
+  * Headless: Add specific GitHub Actions logging.
+  * Headless: Cleanup TeamCity handling in test.py.
+  * Euro characters Fixed in jpn0.pgf.
+  * Ipega PG-9118 	modified:   assets/gamecontrollerdb.txt
+  * If we are reporting a small memstick size, but data is bigger, lie.
+  * Debugger: Correct a type error.
+  * Debugger: Cleanup some syntax.
+  * Debugger: Add helper to read strings.
+  * Debugger: Add API to read/write chunks of memory.
+  * Debugger: Cleanup memory.read/write validation.
+  * http: Prevent assert on bad websocket data.
+  * Corrects the calculation of the return value when the callback of RingbufferPut returns a negative value.
+  * Using MSG_TRUNC along with MSG_PEEK as a precaution of a possible buffer overflow when peeking recv buffer.
+  * Revert "Merge pull request #13807 from unknownbrackets/ios-buttons"
+  * An attempt to add BlockTransferAllowCreateFB for Naruto Shippuden: Ultimate Ninja Impact
+  * Instance: add missing headers more POSIX systems
+  * FileSystems: add missing header
+  * Linux: ignore missing MAP_NORESERVE on FreeBSD
+  * Split the DepthRangeHack compat setting into itself and DisableRangeCulling
+  * http: Treat buffer full flush correctly.
+  * http: Wait less time for IPv6 if IPv4 succeeds.
+  * Fix layout problem on crash screen. Fixes #13808
+  * Fixed an issue where sometimes a player unable to join a host on Warriors Orochi 2 (should also fix similar issue on other games that use PDP/UDP on Windows)
+  * Close the port immediately when closing a socket.
+  * iOS: Expose iOS 12.1+ buttons.
+  * Revert "Cleaner exit on Windows. Will hopefully help #13325"
+  * Typo
+  * Fix Grand Theft Auto - Vice City Stories
+  * Mpeg: Add warm up staff
+  * Android: Fix text color in dialogs by just inheriting from the DeviceDefault theme.
+  * UWP StorageFileLoader: Remove some excessive logging.
+  * Temporary workaround for Wipeout Pure lens flare flicker.
+  * UWP: Work around another race condition in StorageFileLoader.
+  * UWP: Fix dialog rendering (PPGe).
+  * UWP: Make the home button say "Home" instead of "Browse...".
+  * Forget this one HLE_KERNEL_SYSCALL
+  * Add some ThreadManForKernel nis
+  * Folder browsing on main screen: Prevent navigating "up" when you can't.
+  * UWP: Make the home button say "Home" instead of "Browse...".
+  * PathBrowser: Show simplified version of paths under the memstick dir.
+  * Fix navigation upwards from a pinned game streaming folder. Fixes #13224.
+  * Update ffmpeg submodule to a named (identical) commit, to not confuse some buildbots
+  * Postprocessing shader, GL: Fix shader version bug. Fixes #13779
+  * UWP buildfix
+  * D3D11: Avoid the debug layer hazard tracker after blits.
+  * Cleaner exit on Windows. Will hopefully help #13325
+  * Misc logging improvements
+  * Crash screen: Add a very dangerous and inaccurate "Resume" function.
+  * Further improvements to crash screen
+  * Hide touch controls on bluescreen
+  * Fix bluescreen layout on notched phones
+  * Improvements to crash screen.
+  * Fix synchronization bug in StorageFileLoader.cpp (wrong mutex)
+  * XAudioBackend: Limit the number of queued buffers properly.
+  * Reformat and do minor cleanups in UWP/XAudioSoundStream
+  * Linux: Properly avoid committing address space for large mmap().
+  * Fix PGF a figure.
+  * Fixed "jpn0/kr0/ltn0,2,4,6
+  * Add stack value in scempeg and scepsmf from jpcsp
+  * Add an iOS-only utility in devtools to copy savestates to memstick root.
+  * Fix background idle animation on iOS when task switching
+  * Apple driver bug workaround. See issue #13451
+  * Fix check for Android version in whether to display "ignore camera notch when centering" Fixes #13774
+  * GL: Detect Apple GPUs as a category
+  * Minor cleanups
+  * VK: Restore the ARM Mali Z hack that got lost in the refactor somehow.
+  * Some cleanups in GL feature and shader language detection.
+  * ARM64 buildfix
+  * Minor refactor in sceUtility.cpp, making future changes easier.
+  * Android: Enable fullscreen ("Immersive mode") by default.
+  * Fix regression in Dream Club Portable. Fixes, for OpenGL, #6497
+  * Minor comment.
+  * Don't display data info as new data when saving done.
+  * Fixes incorrect date of savedata.
+  * Turn off vertex range culling in bezier/spline calls.
+  * Call g_Config.Save() first thing in MainScreen::OnExit. Workaround for #13286
+  * Assorted drive-by code cleanup
+  * thin3d: Add a way to query the current render target for debugging.
+  * Fix DiRT 2's car reflections.
+  * cmake: Enable the install target for non-linux unix systems.
+  * Use system time format on savedata aswell
+  * Nassau's new fonts. Replaces #13753
+  * Change the typo
+  * Fix loader
+  * Bundle libMoltenVK
+  * Another Ghosts'n'Goblins game ID.
+  * Specify Target
+  * Add more games to RequireBufferedRendering
+  * Avoid potential crash without storage permissions.
+  * Add games that requires buffered rendering
+  * Do not use x86 for other machine
+  * cmake: Add a desktop file.
+  * cmake: Add an install target.
+  * Use the double precision sincos for Hitman RBA 1 too. See #13706
+  * Add missing header in Logmanager.h
+  * Fix headers in MIPSCPUDetect.
+  * sz must be longer than target string
+  * Remove superfluous variable from uniform buffer
+  * Why not iOS?
+  * Safer hack to build on M1.
+  * CMakeLists.txt fixes for M1. It sets cpu arch to "arm64", not "aarch64"
+  * M1: Correctly detect core count.
+  * Cleaner way to flush the instruction cache on Mac ARM64
+  * Mark ARM64 Macs as needing WX-exclusive memory protection
+  * Fix a crash if JIT space failed to allocate
+  * Fix GPU driver test screen
+  * Make universal binary version of ffmpeg work. (#13457)
+  * D3D11: Fix shader module leak in thin3d.
+  * Fixed a PlayStation typo (#13729)
+  * Switch to nassau-tk's latest Korean font. See issue #13190
+  * Respect stage in BindFramebufferAsColorTexture().
+  * Change ltn x font (#13721)
+  * Fix Ghosts & Goblins for older backends too.
+  * Two more Ghosts & Goblins game IDs for compat.ini
+  * Better debug names for BlitFramebuffer operations.
+  * Enable color reinterpret for Ultimate Ghosts & Goblins
+  * Need to take renderArea into account when merging render passes.
+  * Update lang submodule
+  * Correctly handle stuffing data of pack header.
+  * Build fixes
+  * Fixes state.
+  * Writes target buffer address in multiple times.
+  * Turn off the MacOS and iOS Travis jobs, they seem to have stopped working.
+  * Only use double precision sincos in Hitman Reborn Battle Arena 2. See #12900
+  * Partially revert "VFPU: Compute sines and cosines in double precision."
+  * Try to implement some related funcs.
+  * Remember game list scroll
+  * Update jpn0.pgf
+  * Guess at a fix for #13698 - sceKernelThreadGetExitStatus probably takes some cycles.
+  * Clean up.
+  * Mpeg:Checks autual available space before putting data.
+  * Implements sceUsbCamGetMicDataLength.
+  * libretro: Remove VertexShaderGeneratorHLSL from Makefile.common. Fixes #13696
+  * Clean up psp_color shader
+  * Update jpn0.pgf  (manually merged from commit #13683)
+  * Update lang submodule
+  * Add developer setting "Show on screen messages". Uncheck to hide them.
+  * Translation: Fix issue #13685
+  * Translation: Fix issues #13686 and #13687
+  * Adreno/OpenGL: Limit shader depal to 6xx series GPUs. Should help #13668.
+  * Modified "ltn0/1/2/3/4/5/6/7 .pgf"
+  * Makes a distinction between blocking and non blocking modes.
+  * Changes the way of reading microphone data.
+  * Fix some wrong asserts (we don't use <cassert>)
+  * Fix mistake.
+  * Better GLSL version handling. Now specify the latest version supported by the device.
+  * Updated socket's send buffer size as an attempt to fix PSP2i unable to enter dungeon when using RadminVPN issue #13648
+  * Change socket's MSS based on PSP_ADHOC_PTP_MSS
+  * Making use TCP_QUICKACK (or it's alternative) along with TCP_NODELAY
+  * Fix crash when drag-dropping texture packs. Fixes the main part of #13614 .
+  * Fix scale in FramebufferCommon::GetFramebuffer. Fixes #13644
+  * Clears didn't always properly set the RenderArea. Should help #13664
+  * Corrects the number of added packets returned by sceMpegRingbufferPut, especially if callback is called multiple times.
+  * Fix crash in sceusbmic on load old staus then save again
+  * Makes video streams amount meet the expectation of sceMpegRegistStream() not only the mpegheader.
+  * Reads all packets to ringbuffer.
+  * Fix crash on save state. Fixes #13658
+  * Fix Star Ocean stencil issue with OpenGL. Fixes #13746
+  * OpenGL: Assorted shader-depal bugfixes and regression fixes.
+  * Fix check for when to generate packUnorm4x8 replacements
+  * OpenGL: Detect Adreno model number
+  * Update gamecontrollerdb.txt
+  * Expose the "Lower resolution for effects" setting in libretro. Fixes #11099
+  * Don't try to texture from depth if not supported by backend. Works around #13621
+  * More consistent use of GLSL precision modifiers, now use them in Vulkan too.
+  * Fix bug in the new color writemask code, failing to limit it to Outrun properly. Fixes #13650.
+  * Outrun on OpenGL: Fix weird purple highlight seen on some devices
+  * Fix task switching issue with reinterpret. Fixes #13649
+  * Minor cleanup in GL backend, fixes #13647
+  * D3D11: Fix writing to SV_Depth. Fixes #13641
+  * Linker fix - need to move init_resources along.
+  * Mpeg:Revert part of https://github.com/hrydgard/ppsspp/commit/fa59be7e5db1526d07de75f6d7c14b94e98809e6
+  * On GLES3, GL_EXT_shader_framebuffer_fetch works a little differently.
+  * Remove support for NV_shader_framebuffer_fetch extension, very old and rare.
+  * Reorganize the end of the fragment shader generator.
+  * Remove ForceGL2 flag. Add comments... hm.
+  * Move ShaderTranslation.cpp/h to Common/GPU.
+  * Fix crashes on exit (Vulkan). Should help #13223
+  * Fix HLSL shader gen issue
+  * Temporarily disable GL frame-init error checks, see #13639
+  * Get shader color write masking going on all backends.
+  * Fix AuCheckStreamDataNeeded function
+  * Unrelated warning fixes
+  * Fix some comments
+  * Fix some comments, rename a function.
+  * More work on detangling the concepts and making things make more sense.
+  * ShaderBlend and FramebufferRead are separate concepts. Reflect that in naming.
+  * Simplify shader blend logic in FragmentShaderGenerator.cpp
+  * Address feedback.
+  * Add compat flag for reinterpret shader, also disable on platforms that can't support it yet
+  * Fix reinterpret shader for D3D11
+  * Cleanup reinterpret shader resources in FramebufferManagerCommon::DeviceLost().
+  * More work on reinterpret. Get Vulkan running
+  * Reinterpret the data when binding a framebuffer with a different 16-bit format.
+  * Reinterpret code runs, no idea if it works
+  * More shadergen work
+  * More reinterpret shader gen and test work.
+  * Forgot a line in caa960ee8e
+  * Unify FramebufferManager::BindFramebufferAsColorTexture
+  * Start unifying BindFramebufferAsColorTexture
+  * Reorganize the DeviceLost code a little. FramebufferManagerCommon now sees it.
+  * Remove some accidentally added lines
+  * GLSL ES compilers can be very picky about uint/int. Fixes #13628 - for real this time hopefully
+  * Oops, what happened there..
+  * Some GL error logging improvements
+  * Fix GLSL version detection bug. Fixes #13631
+  * Fix bugs caused by 44ec286ba4
+  * Fix off by one
+  * Move shader language feature detection to the draw context.
+  * Framebuffer: Keep the render scale factor around, no need to recompute it.
+  * Partially revert "Remove remnants of an old, no longer applicable readback optimization"
+  * Buildfix
+  * Remove colorDepth property of framebuffers. They're all 8888.
+  * Remove remnants of an old, no longer applicable readback optimization
+  * Fix bug in framebuffer naming
+  * Inline "OptimizeDownloadRange" to make the code more readable
+  * Merge the two ShaderStage enums
+  * Show an error on screen if a shader fails to compile.
+  * Merge the two ShaderLanguage enums.
+  * Move ShaderWriter to Common/GPU, along with some stuff from ShaderCommon.h.
+  * Retry the masked memory experiment on iOS. Turns out it was the shader generator bug that broke things.
+  * GLSL ES: Extensions must go first. Fixes #13620
+  * Disable masked memory on iOS again. The cure was worse than the disease apparently.
+  * Partially revert "Clarify some logic, improve framebuffer names"
+  * GPU: Correct shader blend equations.
+  * Fix Starting multiplayer issue on DBZ Team Tag
+  * Reducing the delay on GetPeerInfo
+  * Enable masked memory addressing on iOS
+  * Fix/workaround ARM64 with the MASKED_PSP_MEMORY build flag.
+  * Fix a bad check, causing masked memory to fail on non-32-bit platforms even if desired.
+  * Bugfix last commit
+  * Apparently only MSVC can handle the ambiguity.
+  * Buildfix the rest of the platforms
+  * GEDebugger: Use utf-8 internally.
+  * ShaderWriter, a replacement for the sprintf WRITE macro.
+  * Safety, comments
+  * Clarify some logic, improve framebuffer names
+  * Fix vertex shader generator bug. Got caught by the new test
+  * Move the generic vertex shader generator into GPU/Common and rename it.
+  * Delete the HLSL shader generator, switch to the newly generic one.
+  * Another hlsl compatibility fix
+  * Share the uniform buffer declarations between D3D11 and VK.
+  * Fix remaining differences between generated shaders
+  * Start working on getting tess to match
+  * Fix through mode differences
+  * Make the lighting code match
+  * Make the hardware skinning code match
+  * More HLSL work. Some vertex shaders are starting to pass.
+  * Vertex shader merge work
+  * Oops, seems I screwed those #version statements up worse.
+  * Fix #version statement for GLES 2.0 vertex shaders
+  * Fix #version statement in GLES 2 fragment shaders
+  * Remove a redundant bit from vertex shader IDs.
+  * Fix an old inconsistency between D3D9 and D3D11 projection matrices.
+  * Remove inPrefix. HLSL shaders gets slightly longer but probably no biggie.
+  * Fix silly issue in vertex shader gen
+  * UWP buildfix
+  * Move the now-renamed fragment shader generator to GPU/Common.
+  * Just some cleanups that get to tag along
+  * Fragment shader gen: Remove unnecessary allocations
+  * Cleanup
+  * Check for a couple additional GL extensions
+  * Remove the HLSL fragment shader generator. The GLSL one can now do its job.
+  * Switch D3D9 too to the glsl shader generator
+  * Switch D3D11 over to use the GLSL fragment shader generator
+  * Misc cleanup
+  * Minor D3D9 fixes
+  * Test parsing of generated OpenGL shaders too (by using glslang).
+  * Get D3D9 fragment shader generation to parity
+  * HLSL fix
+  * More D3D9 fixes.
+  * Set up the test for D3D9, start fixing stuff.
+  * Evolve the HLSL and GLSL fragment shader generators even closer together.
+  * Change fragment shader output to work the same in GLSL and HLSL.
+  * Make discard work the same way in the HLSL shader generator.
+  * Start adding HLSL support to the GLSL shader generator.
+  * wip
+  * HLSL: Use #define to switch to glsl-like vector types.
+  * Fix loading old savestates.
+  * Modified "ltn0/2/4/6 .pgf"
+  * When stops and unloads self module, make sure that the thread is properly deleted.
+  * Fix significant FPS drops on Hitman Reborn Battle Arena 2
+  * Updated Blocking simulation of AdhocSocket (especially PdpRecv)
+  * Updated Minimum Timeout workaround settings to use 0 as default (no override)
+  * Remove support for D3D11_level_9 (previously only really used for Windows Phone, probably).
+  * Blocks current thread to synchronize initial GameMode data. Fixes desync issue when GameMode multiplayer mission is being started.
+  * Moving socket creation from AdhocMatchingCreate to AdhocMatchingStart. (Fixes Dissidia 012 unable to see any room issue)
+  * Fixed an issue with AdhocMatching where there is a possibility that some data didn't get sent upon AdhocMatchingStop causing Joined players to get timeout. (Fixed Star Wars: The Force Unleashed)
+  * Implementing Adhocctl Busy state to prevent getting kicked out from Adhoc Server on games that tries to leave the group multiple times in a row. Also Updated Adhocctl behavior.
+  * Updated GameMode API (Fixed Pocket Pool)
+  * Prevent memory leaks when clearing AdhocMatching events.
+  * Fixed unable to see game room issue on Air Conflicts - Aces Of World War 2, should also fix other games with similar issue (due to invalid group mode)
+  * Added delay result to SetSocketAlert for other threads that use the socket to trigger the alert.
+  * Socket alerts can be triggered regardless of the nonblocking flag
+  * Do not clear socket alert flag after signaled.
+  * Prevent Scanning issue after reconnected to AdhocServer, also Updated logging to showing the error code on sceNetAdhocctlScan
+  * Updated validity checking of mac address on PdpCreate, PtpListen, and PtpOpen
+  * Updated Loggings and return value of PdpSend and PdpRecv
+  * Added hleEatMicro (may not be accurate tho) on PdpSend, PdpRecv, and GetPeerInfo.
+  * Updated error code on sceNetGetLocalEtherAddr
+  * Prevent memory leaks when attempting to play GameMode multiplayer again after loading from SaveState in the middle of GameMode multiplayer.
+  * Prevent Port leaks after loading SaveState in the middle of multiplayer resulting to "port in use" error on the next attempt to play multiplayer.
+  * Fix checks for fragment test cache in GLES fragment shader generator
+  * Modified "ltn1/3/5/7 .pgf"
+  * Log the return value.
+  * Fixes mistake.
+  * IMP sceKernelFindModuleByUID and sceKernelFindModuleByName.
+  * SaveState:Don't register the event during Dostate.
+  * Modified "ltn1/3/5/7 .pgf"
+  * Somehow forgot to delete VertexShaderGeneratorVulkan.cpp
+  * Change jpn0 font (#13588)
+  * Use splat3(x) liberally (converts to vec3(x) on GLES, vec3(x,x,x) on D3D)
+  * Complete the vertex shader merge, deleting the Vulkan-specific vertex shader generator.
+  * Additional fixes
+  * More tess fixes
+  * Initial work on fixing tess
+  * Fix additional minor differences
+  * Fix more vertex shader differences
+  * Bridge more vertex shader differences
+  * Time for the vertex shaders. Set up a test, start eliminating differences.
+  * [Android] Retrieve isMicStarted from AndroidAudio state
+  * [Android] Start recording immediately after asking for permission
+  * [Android] Audio record using OpenSL
+  * Fixes savesate for usbmic.
+  * Revert "Android gradle update"
+  * Completes the merge, deleting the Vulkan-specific fragment shader generator.
+  * Fix more tiny differences. The fragment shader generators now match!
+  * Fix additional differences
+  * Fix minute differences between the shader generators found by the new tester
+  * Hack up a test comparing Vulkan fragment haders generated by the GL GLSL generator to the ones generated by the Vulkan generator.
+  * OpenGL: Share the shader version detection.
+  * Cleanup
+  * GLES: Read compat params first, emit code later.
+  * More splat3
+  * Revert "Try my theory about memory mirrors on iOS 14. See #13451"
+  * Android gradle update
+  * Fix a section of the translatable message
+  * SwicthUMD:Only update Switch UMD item of Windows menu instead of entire UI.
+  * Try my theory about memory mirrors on iOS 14. See #13451
+  * Remove an unmotivated ifdef. Additional cleanup
+  * OpenGL: Allow texture wrapping on framebuffers if supported
+  * Prepare for more GLSL testing
+  * Rename shader generator functions, a bit of moving around and adding an errorString param.
+  * Add brute force shader generator tester. Tests D3D11 and Vulkan shaders.
+  * Vulkan: remove array indexing for light parameters to match the other backends
+  * Rename vk uniforms to match the other backends
+  * Update gitlab ci for libretro to use cmake
+  * Io: Track initial free space for compat flag.
+  * Headless: Define consistent memstick size.
+  * Psmf: Cleanup logging.
+  * Psmf: Handle older states for delayed state change.
+  * Address feedback about recent changes
+  * Don't need to connect if AdhocServer IP is the same with this instance localhost IP and having AdhocServer disabled
+  * Updated Loggings and return value on PtpSend, PtpFlush, and PtpRecv.
+  * Show a warning just in case an abnormal situation occurred.
+  * Fix disconnection issue due to timeout on blocking PTP Socket
+  * Added Connection Refused error code on PtpConnect
+  * Fixed disconnection issue when multiplayer game started on Shaun White Snowboarding, and improved multiplayer performance on games that use GameMode.
+  * Updated Adhocctl timings based on the timestamp on JPCSP + prx files
+  * DoState.
+  * PsmfPlayer:The status will not be changed until the delay result is finished.
+  * Io: Account for free space on the host device.
+  * Qt: Remove Qt-specific screenshot path.
+  * Error handling fixes
+  * D3D11: Implement depth texturing. Fixes, for D3D11, #6411.
+  * Set up depth buffers to be bound as shader resource views
+  * Libretro: set Memory Stick Size config value. fixes #13552.
+  * OpenGL: Disable auto invalidation of framebuffers, it has somehow broken
+  * retro ci fix
+  * oops, wrong filename
+  * Removing the workaround that was used to fix Gran Turismo in the past but no longer needed. Since zero mac address is an invalid mac we should return an error.
+  * Updated AdhocPollSocket timeout checking.
+  * Increasing Adhocctl timeout to 5 seconds (with side effects of longer freezes when detecting disconnected players), to prevent failure to connect to AdhocServer on time due to some unknown reason where sometimes it tooks more than 2 seconds for Adhocctl Init to connect to AdhocServer on localhost (normally only 10 ms), and sometimes it tooks more than 1 seconds for built-in AdhocServer to be ready (normally only 1 ms)
+  * Make all the Comp_Cache implementations the same.
+  * Add libretro CI.
+  * Prevent AdhocServer Pings from spamming Debug Log
+  * Fix disconnection issue when joining multiplayer on Capcom Puzzle World
+  * 2nd or more instance of PPSSPP should only bind it's own localhost IP for Adhoc Server. Fixes Capcom Classics Collection Remix multiplayer on multiple-instance.
+  * More buildfixes
+  * Removed unused texel info
+  * Added new vertex shader file naturalA.vsh
+  * Removed unnecessary vertex coords
+  * Replaced shader vertex file for naturalA
+  * Libretro: add SYSPROP_DISPLAY_SAFE_INSET* properties. fixes screen frame size.
+  * Yet another one
+  * Another missing header buildfix
+  * Minor cleanups related to #13527
+  * Add missing include in URL.h
+  * VS 2017 buildfix hack - these parameters are new to Windows.
+  * libretro: Fix screen size problem in Vulkan.
+  * Get Vulkan going again with libretro. Rendering is the wrong size and crashes on exit, but it's a start.
+  * Libretro/VK: Add a README for debugging, so I don't forget. Minor cleanups.
+  * Added 1 new NID of OpenPSID Service, also added Init & Shutdown function
+  * No need to call video_cb if there is no image
+  * fixed issue with: [libretro ERROR] [G3D] glewInit() failed
+
+-------------------------------------------------------------------
 Thu Oct 15 08:16:11 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Exclude aarch64 and %arm as it never built due to openGL

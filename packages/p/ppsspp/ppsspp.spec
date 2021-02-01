@@ -1,7 +1,7 @@
 #
 # spec file for package ppsspp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.10.3~git20201014
+Version:        1.10.3~git20210124
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later
@@ -34,13 +34,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(libswscale)
 #Desktop icon deps
 BuildRequires:  update-desktop-files
 BuildRequires:  wayland-devel
