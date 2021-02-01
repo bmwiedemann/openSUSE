@@ -2,7 +2,7 @@
 # spec file for package trytond_company
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2015 Dr. Axel Braun
+# Copyright (c) 2015-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,10 +43,10 @@ extend the user model in the Tryton application platform.
 %setup -q -n %{name}-%version
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot 
 %fdupes -s %{buildroot}
 
 %files 
