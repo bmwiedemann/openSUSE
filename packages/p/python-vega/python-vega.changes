@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 29 16:56:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Build wheel from source
+- Remove python-base >= 3.8 requirement
+- Merge empty jupyter-vega package into main python package
+
+-------------------------------------------------------------------
 Tue Jun  9 08:26:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.4.0:
