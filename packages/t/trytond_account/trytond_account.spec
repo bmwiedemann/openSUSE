@@ -2,7 +2,7 @@
 # spec file for package trytond_account
 #
 # Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2016 Dr. Axel Braun
+# Copyright (c) 2016-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,11 @@ Group:          Productivity/Office/Management
 Url:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:	python3-setuptools 
+BuildRequires:  python3-setuptools 
 Requires:       trytond 
 Requires:       trytond_company 
-Requires:	trytond_currency 
-Requires:	trytond_party
+Requires:       trytond_currency 
+Requires:       trytond_party
 BuildArch:      noarch
 
 %description
@@ -42,10 +42,10 @@ period, account type, journal, tax code and more.
 %setup -q 
 
 %build
-python3 setup.py build
+%python3_build
     
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_install --prefix=%{_prefix} --root=%{buildroot}
 %fdupes -s %{buildroot}
 
 %files 
