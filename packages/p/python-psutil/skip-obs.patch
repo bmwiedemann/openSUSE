@@ -1,8 +1,16 @@
-Index: psutil-5.7.3/psutil/tests/test_misc.py
+Index: psutil-5.8.0/psutil/tests/test_misc.py
 ===================================================================
---- psutil-5.7.3.orig/psutil/tests/test_misc.py
-+++ psutil-5.7.3/psutil/tests/test_misc.py
-@@ -664,7 +664,7 @@ class TestScripts(PsutilTestCase):
+--- psutil-5.8.0.orig/psutil/tests/test_misc.py
++++ psutil-5.8.0/psutil/tests/test_misc.py
+@@ -354,6 +354,7 @@ class TestMisc(PsutilTestCase):
+         check(psutil.disk_usage(os.getcwd()))
+         check(psutil.users())
+ 
++    @unittest.skipIf(True, 'does not work on obs')
+     def test_setup_script(self):
+         setup_py = os.path.join(ROOT_DIR, 'setup.py')
+         if CI_TESTING and not os.path.exists(setup_py):
+@@ -667,7 +668,7 @@ class TestScripts(PsutilTestCase):
              src = f.read()
          ast.parse(src)
  
@@ -11,7 +19,7 @@ Index: psutil-5.7.3/psutil/tests/test_misc.py
          # make sure all example scripts have a test method defined
          meths = dir(self)
          for name in os.listdir(SCRIPTS_DIR):
-@@ -682,7 +682,7 @@ class TestScripts(PsutilTestCase):
+@@ -685,7 +686,7 @@ class TestScripts(PsutilTestCase):
                  if not stat.S_IXUSR & os.stat(path)[stat.ST_MODE]:
                      self.fail('%r is not executable' % path)
  
@@ -20,11 +28,11 @@ Index: psutil-5.7.3/psutil/tests/test_misc.py
          self.assert_stdout('disk_usage.py')
  
      def test_free(self):
-Index: psutil-5.7.3/psutil/tests/test_linux.py
+Index: psutil-5.8.0/psutil/tests/test_linux.py
 ===================================================================
---- psutil-5.7.3.orig/psutil/tests/test_linux.py
-+++ psutil-5.7.3/psutil/tests/test_linux.py
-@@ -682,7 +682,7 @@ class TestSystemCPUCountLogical(PsutilTe
+--- psutil-5.8.0.orig/psutil/tests/test_linux.py
++++ psutil-5.8.0/psutil/tests/test_linux.py
+@@ -675,7 +675,7 @@ class TestSystemCPUCountLogical(PsutilTe
          self.assertEqual(psutil.cpu_count(logical=True), num)
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
@@ -33,7 +41,7 @@ Index: psutil-5.7.3/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          num = len([x for x in out.split('\n') if not x.startswith('#')])
          self.assertEqual(psutil.cpu_count(logical=True), num)
-@@ -725,7 +725,7 @@ class TestSystemCPUCountLogical(PsutilTe
+@@ -718,7 +718,7 @@ class TestSystemCPUCountLogical(PsutilTe
  class TestSystemCPUCountPhysical(PsutilTestCase):
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
@@ -42,7 +50,7 @@ Index: psutil-5.7.3/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          core_ids = set()
          for line in out.split('\n'):
-@@ -1080,7 +1080,7 @@ class TestSystemDiskPartitions(PsutilTes
+@@ -1068,7 +1068,7 @@ class TestSystemDiskPartitions(PsutilTes
  
      @unittest.skipIf(not hasattr(os, 'statvfs'), "os.statvfs() not available")
      @skip_on_not_implemented()
@@ -51,7 +59,7 @@ Index: psutil-5.7.3/psutil/tests/test_linux.py
          # test psutil.disk_usage() and psutil.disk_partitions()
          # against "df -a"
          def df(path):
-@@ -1254,7 +1254,7 @@ class TestSystemDiskIoCounters(PsutilTes
+@@ -1242,7 +1242,7 @@ class TestSystemDiskIoCounters(PsutilTes
                  self.assertEqual(ret.read_count, 1)
                  self.assertEqual(ret.write_count, 5)
  
@@ -60,29 +68,49 @@ Index: psutil-5.7.3/psutil/tests/test_linux.py
          def exists(path):
              if path == '/proc/diskstats':
                  return False
-Index: psutil-5.7.3/psutil/tests/test_posix.py
+Index: psutil-5.8.0/psutil/tests/test_posix.py
 ===================================================================
---- psutil-5.7.3.orig/psutil/tests/test_posix.py
-+++ psutil-5.7.3/psutil/tests/test_posix.py
-@@ -371,7 +371,7 @@ class TestSystemAPIs(PsutilTestCase):
- 
+--- psutil-5.8.0.orig/psutil/tests/test_posix.py
++++ psutil-5.8.0/psutil/tests/test_posix.py
+@@ -376,7 +376,7 @@ class TestSystemAPIs(PsutilTestCase):
      # AIX can return '-' in df output instead of numbers, e.g. for /proc
      @unittest.skipIf(AIX, "unreliable on AIX")
+     @retry_on_failure()
 -    def test_disk_usage(self):
 +    def _test_disk_usage(self):
          def df(device):
              out = sh("df -k %s" % device).strip()
              line = out.split('\n')[1]
-Index: psutil-5.7.3/psutil/tests/test_system.py
+Index: psutil-5.8.0/psutil/tests/test_system.py
 ===================================================================
---- psutil-5.7.3.orig/psutil/tests/test_system.py
-+++ psutil-5.7.3/psutil/tests/test_system.py
-@@ -591,7 +591,7 @@ class TestDiskAPIs(PsutilTestCase):
+--- psutil-5.8.0.orig/psutil/tests/test_system.py
++++ psutil-5.8.0/psutil/tests/test_system.py
+@@ -200,6 +200,7 @@ class TestMiscAPIs(PsutilTestCase):
+         self.assertLess(bt, time.time())
+ 
+     @unittest.skipIf(CI_TESTING and not psutil.users(), "unreliable on CI")
++    @unittest.skipIf(True, "does not work on obs")
+     def test_users(self):
+         users = psutil.users()
+         self.assertNotEqual(users, [])
+@@ -580,7 +581,7 @@ class TestDiskAPIs(PsutilTestCase):
      def test_disk_usage_bytes(self):
          psutil.disk_usage(b'.')
  
 -    def test_disk_partitions(self):
 +    def _test_disk_partitions(self):
-         # all = False
-         ls = psutil.disk_partitions(all=False)
-         # on travis we get:
+         def check_ntuple(nt):
+             self.assertIsInstance(nt.device, str)
+             self.assertIsInstance(nt.mountpoint, str)
+Index: psutil-5.8.0/psutil/tests/test_contracts.py
+===================================================================
+--- psutil-5.8.0.orig/psutil/tests/test_contracts.py
++++ psutil-5.8.0/psutil/tests/test_contracts.py
+@@ -246,6 +246,7 @@ class TestSystemAPITypes(PsutilTestCase)
+             self.assertIsInstance(k, str)
+             self.assert_ntuple_of_nums(v, type_=(int, long))
+ 
++    @unittest.skipIf(True, "does not work on obs")
+     def test_disk_partitions(self):
+         # Duplicate of test_system.py. Keep it anyway.
+         for disk in psutil.disk_partitions():

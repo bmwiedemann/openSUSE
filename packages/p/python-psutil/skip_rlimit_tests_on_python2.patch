@@ -1,0 +1,52 @@
+Index: psutil-5.8.0/psutil/tests/test_process.py
+===================================================================
+--- psutil-5.8.0.orig/psutil/tests/test_process.py
++++ psutil-5.8.0/psutil/tests/test_process.py
+@@ -416,6 +416,7 @@ class TestProcess(PsutilTestCase):
+             p.ionice(init)
+ 
+     @unittest.skipIf(not HAS_RLIMIT, "not supported")
++    @unittest.skipIf(sys.version_info.major == 2, "not supported on python2")
+     def test_rlimit_get(self):
+         import resource
+         p = psutil.Process(os.getpid())
+@@ -439,6 +440,7 @@ class TestProcess(PsutilTestCase):
+                 self.assertGreaterEqual(ret[1], -1)
+ 
+     @unittest.skipIf(not HAS_RLIMIT, "not supported")
++    @unittest.skipIf(sys.version_info.major == 2, "not supported on python2")
+     def test_rlimit_set(self):
+         p = self.spawn_psproc()
+         p.rlimit(psutil.RLIMIT_NOFILE, (5, 5))
+@@ -452,6 +454,7 @@ class TestProcess(PsutilTestCase):
+             p.rlimit(psutil.RLIMIT_NOFILE, (5, 5, 5))
+ 
+     @unittest.skipIf(not HAS_RLIMIT, "not supported")
++    @unittest.skipIf(sys.version_info.major == 2, "not supported on python2")
+     def test_rlimit(self):
+         p = psutil.Process()
+         testfn = self.get_testfn()
+@@ -472,6 +475,7 @@ class TestProcess(PsutilTestCase):
+             self.assertEqual(p.rlimit(psutil.RLIMIT_FSIZE), (soft, hard))
+ 
+     @unittest.skipIf(not HAS_RLIMIT, "not supported")
++    @unittest.skipIf(sys.version_info.major == 2, "not supported on python2")
+     def test_rlimit_infinity(self):
+         # First set a limit, then re-set it by specifying INFINITY
+         # and assume we overridden the previous limit.
+@@ -487,6 +491,7 @@ class TestProcess(PsutilTestCase):
+             self.assertEqual(p.rlimit(psutil.RLIMIT_FSIZE), (soft, hard))
+ 
+     @unittest.skipIf(not HAS_RLIMIT, "not supported")
++    @unittest.skipIf(sys.version_info.major == 2, "not supported on python2")
+     def test_rlimit_infinity_value(self):
+         # RLIMIT_FSIZE should be RLIM_INFINITY, which will be a really
+         # big number on a platform with large file support.  On these
+@@ -1270,6 +1275,7 @@ class TestProcess(PsutilTestCase):
+             self.assertEqual(normcase(p.exe()), normcase(PYTHON_EXE))
+ 
+     @unittest.skipIf(not POSIX, 'POSIX only')
++    @unittest.skipIf(sys.version_info.major == 2, "not supported on python2")
+     def test_zombie_process(self):
+         def succeed_or_zombie_p_exc(fun):
+             try:

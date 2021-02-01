@@ -1,7 +1,7 @@
 #
 # spec file for package python-psutil
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %bcond_without python2
 Name:           python-psutil
-Version:        5.7.3
+Version:        5.8.0
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
@@ -34,6 +34,8 @@ Patch1:         skip-obs.patch
 # PATCH-FIX-UPSTREAM skip_failing_tests.patch gh#giampaolo/psutil#1635 mcepl@suse.com
 # skip tests failing because of incomplete emulation of the environment in osc build
 Patch2:         skip_failing_tests.patch
+# PATCH-FIX-SLE skip_rlimit_tests_on_python2.patch alarrosa@suse.com
+Patch3:         skip_rlimit_tests_on_python2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -75,6 +77,7 @@ sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.p
 %{python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-psutil
 cp -r scripts %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
 find %{buildroot}%{_docdir}/%{$python_prefix}-psutil/scripts/ -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python.*|#!%{__$python}|" {} \;
+rm -rf %{buildroot}%{$python_sitearch}/psutil/tests
 %fdupes %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -84,9 +87,10 @@ find %{buildroot}%{_docdir}/%{$python_prefix}-psutil/scripts/ -type f -name "*.p
 export LANG=en_US.UTF-8
 export PSUTIL_TESTING=1
 export TRAVIS=1
+march=`python3 -c "import platform ; print(platform.machine())"`
 
 # Note test_fetch_all is a bit flaky, occasionally failing
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -Wa psutil/tests/runner.py
+%python_expand PYTHONPATH=build/lib.linux-${march}-%{$python_version}/ $python -Wa psutil/tests/runner.py
 %endif
 
 %files %{python_files}

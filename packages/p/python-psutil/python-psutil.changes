@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Jan 29 08:19:00 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not install tests (and change the way they're run since they
+  were run from %{buildroot})
+
+-------------------------------------------------------------------
+Thu Jan 28 16:25:35 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to skip tests related to rlimit and zombie processes
+  that fail when building for python2 on i586:
+  * skip_rlimit_tests_on_python2.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 16:03:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 5.8.0:
+  * Enhancements:
+    - 1863: disk_partitions() exposes 2 extra fields: maxfile and
+      maxpath, which are the maximum file name and path name
+      length.
+    - 1872: [Windows] added support for PyPy 2.7.
+    - 1879: provide pre-compiled wheels for Linux and macOS.
+    - 1880: get rid of Travis and Cirrus CI services (they are no
+      longer free). CI testing is now done by GitHub Actions on
+      Linux, macOS and FreeBSD (yes). AppVeyor is still being used
+      for Windows CI.
+  * Bug fixes:
+    - 1708: [Linux] get rid of sensors_temperatures() duplicates.
+      (patch by Tim Schlueter).
+    - 1839: [Windows] always raise AccessDenied when failing to
+      query 64 processes from 32 bit ones (NtWoW64 APIs).
+    - 1866: [Windows] process exe(), cmdline(), environ() may raise
+      "invalid access to memory location" on Python 3.9.
+    - 1874: [Solaris] wrong swap output given when encrypted column
+      is present.
+    - 1875: [Windows] process username() may raise
+      ERROR_NONE_MAPPED if the SID has no corresponding account
+      name. In this case AccessDenied is now raised.
+    - 1877: [Windows] OpenProcess may fail with ERROR_SUCCESS.
+      Turn it into AccessDenied or NoSuchProcess depending on
+      whether the PID is alive.
+    - 1886: [macOS] EIO error may be raised on cmdline() and
+      environment(). Now it gets translated into AccessDenied.
+    - 1891: [macOS] get rid of deprecated getpagesize().
+- Rebase patch and skip three other tests that fail on obs
+  * skip-obs.patch
+
+-------------------------------------------------------------------
 Fri Dec 11 12:19:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Only require unittest2 for Leap.
