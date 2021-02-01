@@ -1304,4 +1304,16 @@ bsc#1024677</comment>
     <comment></comment>
     <requestid>859304</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>0e08eeb14da7b855c57001df1dba1c3f</srcmd5>
+    <version>2021a</version>
+    <time>1612182291</time>
+    <user>dimstar_suse</user>
+    <comment>- timezone update 2021a (bsc#1177460)
+  * South Sudan changes from +03 to +02 on 2021-02-01 at 00:00. 
+
+- timezone update 2021a (bsc#1177460)
+  * South Sudan changes from +03 to +02 on 2021-02-01 at 00:00.</comment>
+    <requestid>866493</requestid>
+  </revision>
 </revisionlist>

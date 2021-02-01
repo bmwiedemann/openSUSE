@@ -1,7 +1,7 @@
 #
 # spec file for package timezone
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 URL:            http://www.iana.org/time-zones
 # COMMON-BEGIN
-Version:        2020f
+Version:        2021a
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
