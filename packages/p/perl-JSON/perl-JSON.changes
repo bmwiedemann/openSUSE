@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 24 18:07:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.03:
+  - corrected one typo in POD (James E Keenan)
+  - updated backportPP with JSON::PP 4.06
+
+-------------------------------------------------------------------
 Sat Feb 23 06:16:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 4.02
