@@ -11,6 +11,12 @@ Thu Nov  5 16:52:47 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 - Update to version 3.14.1
   * https://www.mcs.anl.gov/petsc/documentation/changes/314.html
 - Refresh patches
+
+-------------------------------------------------------------------
+Tue Jun 23 12:43:57 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Make sure, doc package is built for SLE (bsc#1173269).
+
 -------------------------------------------------------------------
 Wed Jan  8 15:40:51 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 

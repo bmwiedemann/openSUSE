@@ -248,7 +248,7 @@ BuildArch:      noarch
 %{bcond_without hpc}
 %endif
 
-%if !0%{?is_opensuse} && !0%{?with_hpc:1}
+%if !0%{?is_opensuse} && !0%{?with_hpc:1} && !0%{?makedoc:1}
 ExclusiveArch:  do_not_build
 %endif
 

@@ -255,4 +255,13 @@
   proper ABI versioning. (forwarded request 867621 from eeich)</comment>
     <requestid>867657</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c19617633bb25726b47baed0547494d7</srcmd5>
+    <version>3.14.1</version>
+    <time>1612182537</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Make sure, doc package is built for SLE (bsc#1173269).</comment>
+    <requestid>868292</requestid>
+  </revision>
 </revisionlist>
