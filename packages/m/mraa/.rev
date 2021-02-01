@@ -175,4 +175,12 @@
     distributions</comment>
     <requestid>859394</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8408dd7a95f192bee2512b73765fca19</srcmd5>
+    <version>2.2.0</version>
+    <time>1612182560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url</comment>
+    <requestid>868315</requestid>
+  </revision>
 </revisionlist>

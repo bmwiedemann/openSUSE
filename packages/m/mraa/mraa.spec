@@ -1,7 +1,7 @@
 #
 # spec file for package mraa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Low Level Skeleton Library for IO Communication
 License:        MIT
 Group:          Hardware/Other
-URL:            https://github.com/intel-iot-devkit/mraa
-Source:         https://github.com/intel-iot-devkit/mraa/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/eclipse/mraa
+Source:         https://github.com/eclipse/mraa/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         mraa-i686.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
