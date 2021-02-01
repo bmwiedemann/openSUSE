@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jan 17 13:48:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.31b:
+  * Added support for up to 2 TB of RAM on X64 CPUs
+  * Added experimental SMT support up to 32 cores (Press F2 to enable at startup)
+  * Added complete detection for memory controllers
+  * Added Motherboard Manufacturer & Model reporting
+  * Added CPU temperature reporting
+  * Added enhanced Fail Safe Mode (Press F1 at startup)
+  * Added support for Intel "Sandy Bridge-E" CPUs
+  * Added support for Intel "Ivy Bridge" CPUs
+  * Added preliminary support for Intel "Haswell" CPUs (Core 4th Gen)
+  * Added preliminary support for Intel "Haswell-ULT" CPUs
+  * Added support for AMD "Kabini" (K16) CPUs
+  * Added support for AMD "Bulldozer" CPUs
+  * Added support for AMD "Trinity" CPUs
+  * Added support for AMD E-/C-/G-/Z- "Bobcat" CPUs
+  * Added support for Intel Atom "Pineview" CPUs
+  * Added support for Intel Atom "Cedar Trail" CPUs
+  * Added SPD detection on most AMD Chipsets
+  * Enforced Coreboot support
+  * Optimized run time for faster memory error detection
+  * Rewriten lots of memory timings detection cod
+  * Corrected bugs, bugs and more bugs (some could remain) 
+- drop memtest86+-5.01-array-size-fix.patch, memtest86+-5.01-compile-fix.patch
+  memtest86+-gcc5.patch: upstream
+
+-------------------------------------------------------------------
 Thu Apr  2 09:01:17 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Disable parallel build.

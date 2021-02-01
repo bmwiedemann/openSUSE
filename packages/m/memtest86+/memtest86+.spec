@@ -1,7 +1,7 @@
 #
 # spec file for package memtest86+
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,15 @@
 
 
 Name:           memtest86+
-Version:        5.01
+Version:        5.31b
 Release:        0
 Summary:        Memory Testing Image for x86 Architecture
 License:        BSD-3-Clause
 Group:          System/Boot
-URL:            http://www.memtest.org
-Source:         http://www.memtest.org/download/%{version}/%{name}-%{version}.tar.gz
+URL:            https://www.memtest.org
+Source:         https://www.memtest.org/download/%{version}/memtest86+-%{version}.tar.gz
 Patch0:         fix-destdir
 Patch1:         memtest86+-5.01-no-optimization.patch
-Patch2:         memtest86+-5.01-compile-fix.patch
-Patch3:         memtest86+-5.01-array-size-fix.patch
-Patch4:         memtest86+-gcc5.patch
 #!BuildIgnore:  gcc-PIE
 Requires(pre):  /sbin/update-bootloader
 Requires(pre):  perl
@@ -48,9 +45,6 @@ it can be used to test the computer's memory.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 # dependencies are broken for the package and it should not be built in parallel
