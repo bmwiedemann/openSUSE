@@ -17,4 +17,30 @@
     <comment></comment>
     <requestid>846308</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dc787b2c56e1830d81bc50fc1194bf6</srcmd5>
+    <version>0.7.0</version>
+    <time>1612182561</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.7.0
+  * Use additional pam service config for greeter
+  * greetd: Added tuigreet to known greeters list.
+  * terminal: Use direct open, proper errors
+  * worker: Unconditionally set up tty
+  * terminal: Forcibly take terminal
+  * session: Do not log pam_conv after start
+  * ci: Build both arch and alpine
+  * Use per-pid socket paths
+  * Terminate cleanly on SIGINT
+  * Use stdin as VT for current/none vt selections
+  * config: Skip reading config in session worker
+  * config: Add general.source_profile
+  * config: Fix tests for general section
+  * docs: Document new general section
+  * ci: Disable automatic github mirroring
+  * Add installation instructions on Gentoo
+  * Make sure to require codec in tokio-codec feature
+</comment>
+    <requestid>868338</requestid>
+  </revision>
 </revisionlist>

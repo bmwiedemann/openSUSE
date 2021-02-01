@@ -1,7 +1,7 @@
 #
 # spec file for package greetd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,21 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           greetd
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Minimal and flexible login manager daemon
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Management
 URL:            https://git.sr.ht/~kennylevinsen/greetd
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 Source3:        greetd.pam
-BuildRequires:  rust
 BuildRequires:  cargo
-BuildRequires:  rust-packaging
 BuildRequires:  pam-devel
+BuildRequires:  rust
+BuildRequires:  rust-packaging
 BuildRequires:  systemd-rpm-macros
 Requires(post): diffutils
 Requires(pre):  %{_bindir}/getent
