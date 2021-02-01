@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 29 14:53:55 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to 3.7.5 which fixes bsc#1179835 
+- various bugfixes and enhancements, highlights are:
+ * heatmap coloring enhanced
+ * Fix XSS from OBB#1005024 (https://www.openbugbounty.org/reports/1005024/)
+ * uses `httponly` and `secure` flags in setcookie calls
+ * add the available memory to the graph, if present 
+
+
+-------------------------------------------------------------------
 Wed Dec  4 12:54:20 UTC 2019 - Christian Goll <cgoll@suse.com>
 
 - updated to version 3.7.4  

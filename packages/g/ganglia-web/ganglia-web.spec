@@ -1,7 +1,7 @@
 #
 # spec file for package ganglia-web
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 %define web_prefixdir /srv/www/htdocs/ganglia-web
+%define gittag f5bdfca75f9f5d701c8f8e9310f7801cd2e62799
 
 Name:           ganglia-web
-Version:        3.7.4
+Version:        3.7.5
 Release:        0
 Summary:        Ganglia web frontend
 License:        BSD-3-Clause
 Group:          System/Monitoring
 URL:            http://ganglia.info/
-Source0:        ganglia-web-%{version}.tar.xz
+Source0:        https://github.com/ganglia/ganglia-web/archive/%{gittag}.tar.gz#/ganglia-web-%{version}.tar.gz
 Source1:        ganglia-httpd24.conf.d
 Source2:        README.SUSE
 Patch1:         0001-added-of-download_js.patch
@@ -50,7 +51,7 @@ ganglia, and to provide historical graphs of collected metrics. This website is
 written in the PHP5/7 language and uses the Dwoo templating engine.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{gittag}
 %autopatch -p1
 %build
 cp %SOURCE2 .
