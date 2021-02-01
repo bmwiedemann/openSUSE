@@ -17,14 +17,14 @@
 
 
 Name:           toolbox
-Version:        1.0+git20210119.b5acdcf
+Version:        2.0+git20210125.50611db
 Release:        0
 Summary:        Script to start a toolbox container for system debugging
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/thkukuk/microos-toolbox
 Source:         microos-toolbox-%{version}.tar.xz
-Source1:        toolboxrc
+Source1:        toolboxrc.sle-micro
 Requires:       podman
 BuildArch:      noarch
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 25 10:24:32 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.0+git20210125.50611db:
+  * Document configuration files, add /usr/etc/toolboxrc
+  * Update README to include commands
+  * Update the README
+  * Be even more compatible with Silverblue Toolbox
+  * Introduce commands, for compatibility with Silverblue's toolbox
+  * Mount /run/media and and /tmp inside a user toolbox
+  * Export more env variables inside (user) toolboxes
+
+-------------------------------------------------------------------
 Wed Jan 20 09:57:44 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add a group tag for SLE Micro

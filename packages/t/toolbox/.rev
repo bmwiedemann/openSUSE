@@ -76,4 +76,19 @@
     <comment></comment>
     <requestid>865034</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e22627e0860b8470b0ddba67e39be46</srcmd5>
+    <version>2.0+git20210125.50611db</version>
+    <time>1612182302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0+git20210125.50611db:
+  * Document configuration files, add /usr/etc/toolboxrc
+  * Update README to include commands
+  * Update the README
+  * Be even more compatible with Silverblue Toolbox
+  * Introduce commands, for compatibility with Silverblue's toolbox
+  * Mount /run/media and and /tmp inside a user toolbox
+  * Export more env variables inside (user) toolboxes</comment>
+    <requestid>866535</requestid>
+  </revision>
 </revisionlist>
