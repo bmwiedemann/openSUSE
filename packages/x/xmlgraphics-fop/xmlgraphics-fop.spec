@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-fop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define bname fop
 Name:           xmlgraphics-fop
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Formatter for Printing XSLT Processed XML Files
 License:        Apache-2.0
@@ -42,6 +42,7 @@ Patch4:         java8-compatibility.patch
 # PATCH-FEATURE-OPENSUSE reproducible-build-manifest.patch -- boo#1110024
 Patch5:         reproducible-build-manifest.patch
 Patch6:         fop-2.5-QDox-2.0.patch
+Patch7:         reproducible.patch
 BuildRequires:  ant >= 1.8.4
 BuildRequires:  apache-pdfbox >= 2.0
 BuildRequires:  commons-io >= 2.4
@@ -93,6 +94,7 @@ find -name "*.jar" | xargs -t rm
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # Replace keyword "VERSION" in XML files with the real one:
 for x in %{SOURCE10} %{SOURCE11} %{SOURCE12}; do
