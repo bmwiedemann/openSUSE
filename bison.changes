@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 24 15:35:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use https for sources
+  
+-------------------------------------------------------------------
+Sun Jan 24 15:14:31 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.7.5:
+  * Fix crashes in counterexample generation
+  * Fix Table Generation generating incorrect parsers when there
+    are many useless tokens
+  * GLR parsers now support %merge together with
+    api.value.type=union
+  * C++ parsers use noexcept in more places
+  * Generated parsers avoid some warnings about signedness issues
+  * C-language parsers now avoid warnings from pedantic clang
+
+-------------------------------------------------------------------
 Sat Nov 14 16:55:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU bison 3.7.4:
