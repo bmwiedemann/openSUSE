@@ -84,6 +84,10 @@ then
 elif [ -n "$DISPLAY" -a -x /usr/bin/pinentry-fltk ]
 then
 	export PINENTRY_BINARY="/usr/bin/pinentry-fltk"
+# otherwise test if pinentry-efl exists
+elif [ -n "$DISPLAY" -a -x /usr/bin/pinentry-efl ]
+then
+	export PINENTRY_BINARY="/usr/bin/pinentry-efl"
 # use pinentry-tty for modem / serial
 elif [ "$TERM" = "dumb" ]
 then

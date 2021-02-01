@@ -1,7 +1,7 @@
 #
 # spec file for package pinentry
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,19 @@
 %define ncurses %(xxx="`readlink -f %{_includedir}/ncurses.h`"; echo $xxx)
 %define nmajor  %(grep NCURSES_VERSION_MAJOR < %{_includedir}/ncurses.h)
 Name:           pinentry
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.gnupg.org/aegypten/
-Source:         ftp://ftp.gnupg.org/gcrypt/pinentry/%{name}-%{version}.tar.bz2
-Source1:        ftp://ftp.gnupg.org/gcrypt/pinentry/%{name}-%{version}.tar.bz2.sig
+Source:         https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-%{version}.tar.bz2
+Source1:        https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-%{version}.tar.bz2.sig
+# https://www.gnupg.org/signature_key.html
+# https://incenp.org/srv/dgouttegattat.asc
 Source2:        pinentry.keyring
 Source3:        pinentry
 Patch1:         pinentry-0.7.2-gtk+-2.4.diff
-# PATCH-FIX-SUSE make it build with ncurses ABI 6
-Patch7:         pinentry-ncurses6.diff
-# PATCH-FIX-SUSE bsc#1141883 pinentry-qt crashes with QtCurve
-Patch8:         pinentry-qt-Fix-use-of-dangling-pointer.patch
 BuildRequires:  fltk-devel >= 1.3
 BuildRequires:  libassuan-devel >= 2.1.0
 BuildRequires:  libgpg-error-devel >= 1.16
@@ -43,11 +41,11 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(efl)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-base-3)
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.4.0
+BuildRequires:  pkgconfig(gtk+-2.0) >= 2.12.0
 BuildRequires:  pkgconfig(libsecret-1)
-Requires(post): %{install_info_prereq}
 Provides:       pinentry-dialog
 
 %description
@@ -55,7 +53,7 @@ This is a collection of simple PIN or passphrase entry dialogs which
 utilize the Assuan protocol as described by the Aegypten project.
 
 %package qt5
-Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
+Summary:        Simple PIN or Passphrase Entry Dialog for QT5
 Group:          Productivity/Other
 Requires:       pinentry
 Provides:       pinentry-dialog
@@ -66,11 +64,11 @@ Provides:       pinentry-qt4 = %{version}-%{release}
 Obsoletes:      pinentry-qt4 <= 0.9.7
 
 %description qt5
-This is a collection of simple PIN or passphrase entry dialogs which
-utilize the Assuan protocol as described by the Aegypten project.
+A simple PIN or passphrase entry dialog utilize the Assuan protocol
+as described by the Aegypten project, using the QT5 UI toolkit.
 
 %package gtk2
-Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
+Summary:        Simple PIN or Passphrase Entry Dialog for GTK2
 Group:          Productivity/Other
 Requires:       pinentry
 Provides:       pinentry-dialog
@@ -78,11 +76,11 @@ Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-gtk-2
 
 %description gtk2
-This is a collection of simple PIN or passphrase entry dialogs which
-utilize the Assuan protocol as described by the Aegypten project.
+A simple PIN or passphrase entry dialog utilize the Assuan protocol
+as described by the Aegypten project, using the GTK2 UI toolkit.
 
 %package gnome3
-Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
+Summary:        Simple PIN or Passphrase Entry Dialog for GNOME
 Group:          Productivity/Other
 Requires:       pinentry
 Provides:       pinentry-dialog
@@ -90,11 +88,11 @@ Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-gnome3
 
 %description gnome3
-This is a collection of simple PIN or passphrase entry dialogs which
-utilize the Assuan protocol as described by the Aegypten project.
+A simple PIN or passphrase entry dialog utilize the Assuan protocol
+as described by the Aegypten project, using GNOME libraries.
 
 %package emacs
-Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
+Summary:        Simple PIN or Passphrase Entry Dialog integrated into Emacs
 Group:          Productivity/Other
 Requires:       emacs
 Requires:       pinentry
@@ -103,8 +101,8 @@ Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-emacs
 
 %description emacs
-This is a collection of simple PIN or passphrase entry dialogs which
-utilize the Assuan protocol as described by the Aegypten project.
+A simple PIN or passphrase entry dialog utilize the Assuan protocol
+as described by the Aegypten project, integrated into Emacs.
 
 %package fltk
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
@@ -115,14 +113,24 @@ Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-fltk
 
 %description fltk
-This package contains a simple PIN or passphrase entry dialog built
-using the fltk GUI toolkit.
+A simple PIN or passphrase entry dialog utilize the Assuan protocol
+as described by the Aegypten project, using FLTK libraries.
+
+%package efl
+Summary:        Simple PIN or Passphrase Entry Dialog for EFL
+Group:          Productivity/Other
+Requires:       pinentry
+Provides:       pinentry-dialog
+Provides:       pinentry-gui
+Provides:       pinentry:%{_bindir}/pinentry-efl
+
+%description efl
+A simple PIN or passphrase entry dialog utilize the Assuan protocol
+as described by the Aegypten project, using Enlightenment Foundation Libraries.
 
 %prep
 %setup -q
 %patch1 -p1
-%patch7
-%patch8 -p1
 
 %build
 # Regenerate moc's
@@ -148,8 +156,9 @@ cd gui
 	--enable-pinentry-emacs \
 	--enable-inside-emacs \
 	--enable-pinentry-fltk \
+	--enable-pinentry-efl \
 	--without-ncurses-include-dir
-make %{?_smp_mflags}
+%make_build
 # build text version without libsecret (bnc#934214)
 cd ..
 mkdir tui
@@ -164,8 +173,9 @@ cd tui
 	--disable-pinentry-emacs \
 	--disable-inside-emacs \
 	--disable-pinentry-fltk \
+	--disable-pinentry-efl \
 	--without-ncurses-include-dir
-make %{?_smp_mflags}
+%make_build
 
 %install
 cd tui
@@ -195,20 +205,29 @@ cp %{SOURCE3} %{buildroot}%{_bindir}
 %attr(755,root,root) %{_bindir}/pinentry-curses
 
 %files qt5
-%attr(755,root,root) %{_bindir}/pinentry-qt5
-%attr(755,root,root) %{_bindir}/pinentry-qt4
+%license COPYING
+%{_bindir}/pinentry-qt5
+%{_bindir}/pinentry-qt4
 %attr(755,root,root) %{_bindir}/pinentry-qt
 
 %files gtk2
+%license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-gtk-2
 
 %files gnome3
+%license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-gnome3
 
 %files emacs
+%license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-emacs
 
 %files fltk
+%license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-fltk
+
+%files efl
+%license COPYING
+%attr(755,root,root) %{_bindir}/pinentry-efl
 
 %changelog
