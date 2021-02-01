@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Jan 12 02:57:05 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to Patch#363 - 2020/12/26
+  * disable groff hyphenation in generated html when using man2html.
+  * change SCS “&4” Cyrillic to non-NRCS, per VT520 manual.
+  * amend fix for SCS in patch #198 to remove DEL rather than converting
+    it to a space (report by Thomas Wolff).
+  * modify state transitions for selecting character sets to eliminate
+    an ambiguity between the “A” used in VT220 versus VT320.
+    improve error recovery when selecting characters by resetting to US
+    ASCII when no suitable encoding is found, e.g., attempting to use
+    an NRCS sequence when NRCS is not enabled.
+  * turn off hyphenation in “.txt” conversion, prompted by groff changes.
+  * add VT5xx ISO Latin-2 (prompted by discussion with Thomas Wolff).
+  * amend change from patch #361 to event-handling in CopyWait to handle
+    active-icon as a special case (Debian #975687).
+  * add call to loadColorTable to get the visual information needed to
+    decode BE RGBA32 color format (patch by Leandro Lupori).
+  * modify the resource-parsing for disallowedPasteControls and similar
+    lists of names/numbers to recognize “~;” (tilde) for cancelling a given name/number.
+  * add ENQ, EOT and NUL to default for disallowedPasteControls.
+  * change default for disallowedPasteControls to omit the tab character
+    (suggested by Harald Dunkel).
+  * fix swapped height/width in regisScreenSize and maxGraphicSize resources
+    using "auto" value, from patch #314 (report by Anton Lavrentiev)
+  * revise patch #362 change for shift-modifier versus mouse protocol
+    and select/paste by adding resource shiftEscape, which can be enabled
+    via a control sequence (prompted by discussion with Matthijs van Duin).
+  * simplify/improve ifdef in trace code for using a separate set of files
+    for each run of xterm.
+  * add options -r and -t to vttests/query-color.pl to show the 6-digit
+    RGB code and actual colors.
+  * add nel to xterm-basic terminfo.
+  * alter vttests/modify-keys.pl to omit HTML reference links to the
+    modified-keys table where no keycode was available.
+- includes Patch #361 - 2020/10/14
+  * treat the return value of strerror as readonly (patch by Philipp
+    Klaus Krause).
+  * modify event-handling in CopyWait to work around hanging while writing
+    large amounts of text to an active icon and at the same time iconifying/
+    deiconifying (report by Dave Kemper).
+  * initialize double-buffer for active-icon window.
+  * improve manual page description of scrollbar resources (report by Brian Lindholm).
+    correct ifdef for menu entry for active-icon, when initializing
+    it with toolbar configuration.
+  * add preprocessor option to makefile to set internal definition of
+    pixmaps directory to match the install-configuration (FreeBSD #250036)
+  * cleanup of calls to free, removing checks for null (Walter Harms)
+  * add fallback actions pointer-button and pointer-motion which handle
+    events for the mouse control-sequences protocol if the select-related
+    translations are omitted with *omitTranslation:select (prompted by
+    discussion with "Ergus")
+  * amend rule for using shift-key to override mouse-protocol for select/
+    paste to limit that feature to mouse-buttons which are actually
+    bound to select/paste actions (prompted by discussion with "Ergus").
+  * corrected mapping in special case for repainting wrap-marks when viewing
+    the scrollback area.
+  * use separate GCs for showWrapMarks feature, to work around cursor
+    coloring change in patch #345 (report by Paulo Silva de Alíbano).
+- includes Patch #360 - 2020/09/20
+  * mention decGraphicsID in ctlseqs.ms (suggested by Thomas Wolff).
+  * modify pixel-coordinate mouse reponse to use as origin the VT100-
+    window rather than the underlying widget, which includes the scrollbar (report by Thomas Wolff).
+  * add configure option --disable-print-graphics (Ross Combs).
+  * add test_ptydata to “make check” rule.
+  * minor fixes for ctlseqs.ms (report by Jean-Marc Bourguet).
+  * minor fixes for manpage style (report/patch by "a1346054").
+  * correct cleanup from switch between italics/normal font in the show/
+    hide cursor functions (report/testcase by Peter Fabinski)
+  * integrated patch by Ross Combs:
+        internal renaming of GraphicsID symbols, for readability.
+        adjust logic for VT125, treating it as a ReGIS terminal.
+  * update configure macros, for compiler-warning fixes.
+  * integrated patch by Ross Combs:
+        add control sequence modes for graphics printing.
+        improve conversion to bitmaps for TrueType fonts in ReGIS
+        add font7 resource, for an “enormous” bitmap font.
+        do not reset graphics in a soft-reset.
+        add pointerFont resource, and -pf command-line option.
+  * improve typography of manual page (patch by Branden Robinson).
+  * amend patch #359 change to df-install.in to ignore a command-line
+    assignment to DESTDIR if followed by an explicit --dir (report by Sven Joachim)
+- merged 2 patches to form xterm-suse.patch
+- remove xterm-settings.patch
+- remove xterm-better-fonts.patch
+- rebase xterm-sigwinch.patch
+- cleanup spec
+
+-------------------------------------------------------------------
 Tue Sep 15 21:25:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update urls to use https (its 2020 after all)

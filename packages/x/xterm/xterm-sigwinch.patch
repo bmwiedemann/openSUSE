@@ -2,24 +2,14 @@
 # Parent  547d2ea5029c2c3edd129a9d23e424877c6f29f0
 
 diff --git a/screen.c b/screen.c
+index 6fb6b3b..238591f 100644
 --- a/screen.c
 +++ b/screen.c
-@@ -2229,17 +2229,17 @@ ScreenResize(XtermWidget xw,
- 	XConfigureWindow(XtDisplay(xw), screen->iconVwin.window,
- 			 CWWidth | CWHeight | CWBorderWidth, &changes);
-     }
- #endif /* NO_ACTIVE_ICON */
+@@ -2330,7 +2330,7 @@ ScreenResize(XtermWidget xw,
  
  #ifdef TTYSIZE_STRUCT
-     update_winsize(screen->respond, rows, cols, height, width);
- 
+     if (update_winsize(screen->respond, rows, cols, height, width) == 0) {
 -#if defined(SIGWINCH) && defined(TIOCGPGRP)
 +#if defined(SIGWINCH) && (defined(TIOCGPGRP) || defined(linux))
-     if (screen->pid > 1) {
- 	int pgrp;
- 
- 	TRACE(("getting process-group\n"));
- 	if (ioctl(screen->respond, TIOCGPGRP, &pgrp) != -1) {
- 	    TRACE(("sending SIGWINCH to process group %d\n", pgrp));
- 	    kill_process_group(pgrp, SIGWINCH);
- 	}
+ 	if (screen->pid > 1) {
+ 	    int pgrp;

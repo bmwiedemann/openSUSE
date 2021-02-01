@@ -1,16 +1,13 @@
-# HG changeset patch
-# Parent  c7753810ca3026190c5da0536ecf86e9b13800d3
+# from c7753810ca3026190c5da0536ecf86e9b13800d3
 # various distribution configuration tweaks
+# from 7ecf75281e09a29875b61f38bb66920529368050:
+# improve display of chinese letters (bsc#1089049)
 
-diff --git a/UXTerm.ad b/UXTerm.ad
---- a/UXTerm.ad
+diff --git a/UXTerm.ad.1 b/UXTerm.ad
+index 0eac2dd..2ba471d 100644
+--- a/UXTerm.ad.1
 +++ b/UXTerm.ad
-@@ -30,21 +30,31 @@
- ! sale, use or other dealings in this Software without prior written
- ! authorization.
- ! -----------------------------------------------------------------------------
- ! Use
- !	xterm -class UXTerm
+@@ -35,10 +35,20 @@
  ! to set resources for UTF-8 mode with corresponding fonts.
  ! See the uxterm script for an example.
  
@@ -20,7 +17,6 @@ diff --git a/UXTerm.ad b/UXTerm.ad
  
  *fontMenu.Label:  Unicode Fonts
  *VT100.utf8:	1
- 
 +! always use iso10646-1 fonts and luit for non-UTF-8 locales:
 +*locale: true
 +
@@ -29,20 +25,10 @@ diff --git a/UXTerm.ad b/UXTerm.ad
 +! (For details see https://bugzilla.novell.com/show_bug.cgi?id=464930):
 +*ximFont: fixed
 +
+ 
  ! This includes "XTerm-color" which includes "XTerm", which defines fonts.
  ! Why set them here?
- !
- ! Here is a simple description.  A technically precise one would be very long.
- ! When xterm starts up, it uses the
- !
- !	*VT100.font
- !
-@@ -55,22 +65,39 @@
- !
- ! to obtain a wide font.  A "wide" font has more than 256 glyphs.  Typical
- ! wide fonts have 10,000 glyphs.  If the original "*VT100.font" is not wide,
- ! and xterm can load the *VT100.utf8Fonts.font, it will use that.
- !
+@@ -60,13 +70,28 @@
  ! Making the wide fonts associated with *VT100.font in this file allows uxterm
  ! to skip that step.  It will use the fonts that the XTerm file gives for the
  ! *VT100.uft8Fonts.font pattern.
@@ -52,11 +38,11 @@ diff --git a/UXTerm.ad b/UXTerm.ad
 -*VT100.font4:	-misc-fixed-medium-r-normal--13-120-75-75-c-80-iso10646-1
 -*VT100.font5:	-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 -*VT100.font6:	-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1
-+
+-*VT100.font7:	-adobe-courier-medium-r-normal--24-240-75-75-m-150-iso10646-1
 +*VT100.fontMenu*fontdefault*Label: Default
 +*VT100.font:     -misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
 +*VT100.wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
-+ 
++
 +*fontMenu*font1.Label: efont 10 pixel
 +*VT100.font1:     -efont-fixed-medium-r-normal--10-100-75-75-c-50-iso10646-1
 +*VT100.wideFont1: -efont-fixed-medium-r-normal--10-100-75-75-c-100-iso10646-1
@@ -78,11 +64,6 @@ diff --git a/UXTerm.ad b/UXTerm.ad
  
  ! Here is an alternate set of fonts with better support for bold:
  !*VT100.font2:	-efont-biwidth-medium-r-normal--10-100-75-75-p-50-iso10646-1
- !*VT100.font:	-efont-biwidth-medium-r-normal--10-100-75-75-p-50-iso10646-1
- !*VT100.font3:	-efont-biwidth-medium-r-normal--12-120-75-75-p-60-iso10646-1
- !*VT100.font4:	-efont-biwidth-medium-r-normal--14-140-75-75-p-70-iso10646-1
- !*VT100.font5:	-efont-biwidth-medium-r-normal--16-160-75-75-p-80-iso10646-1
- !*VT100.font6:	-efont-biwidth-medium-r-normal--24-240-75-75-p-120-iso10646-1
 diff --git a/XTerm-col.ad b/XTerm-col.ad
 --- a/XTerm-col.ad
 +++ b/XTerm-col.ad
@@ -115,15 +96,11 @@ diff --git a/XTerm-col.ad b/XTerm-col.ad
  !
  ! The choice for color4 and color12 is a tradeoff between contrast, depending
  ! on whether they are used for text or backgrounds.  Note that either color4 or
-diff --git a/XTerm.ad b/XTerm.ad
---- a/XTerm.ad
+diff --git a/XTerm.ad.1 b/XTerm.ad
+index dd6ef52..69aac16 100644
+--- a/XTerm.ad.1
 +++ b/XTerm.ad
-@@ -100,31 +100,57 @@
- *vtMenu*clearsavedlines*Label:  Reset and Clear Saved Lines
- *vtMenu*tekshow*Label:  Show Tek Window
- *vtMenu*tekmode*Label:  Switch to Tek Mode
- *vtMenu*vthide*Label:  Hide VT Window
- *vtMenu*altscreen*Label:  Show Alternate Screen
+@@ -105,21 +105,37 @@
  *vtMenu*sixelScrolling*Label:  Sixel Scrolling
  *vtMenu*privateColorRegisters*Label:  Private Color Registers
  
@@ -140,55 +117,35 @@ diff --git a/XTerm.ad b/XTerm.ad
  *fontMenu*fontdefault*Label:	Default
 -*fontMenu*font1*Label:	Unreadable
 -*VT100.font1:		nil2
-+*VT100.font:		-misc-fixed-medium-r-semicondensed-*-13-120-75-75-c-60-iso10646-1
-+*VT100.wideFont:	-misc-fixed-medium-r-normal-*-13-120-75-75-c-120-iso10646-1
-+*VT100.wideBoldFont:	-misc-fixed-medium-r-normal-*-13-120-75-75-c-120-iso10646-1
++*VT100*font:   -misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
++*VT100*boldfont: -misc-fixed-bold-r-normal-*-18-120-100-100-c-90-iso10646-1
++*VT100*wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
 +
-+*fontMenu*font1*Label:	Unicode Best
-+*VT100.font1:		-misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
-+*VT100.wideFont1:	-misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
-+!*VT100.font1:		nil2
-+!*VT100.wideFont1:
++*fontMenu*font1*Label: Unicode Best
++*VT100.font1:    -misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
++*VT100.wideFont1:  -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
  *IconFont:		nil2
  *fontMenu*font2*Label:	Tiny
 -*VT100.font2:		5x7
-+!*VT100.font2:		5x7
-+*VT100.font2:		-misc-fixed-medium-r-normal--7-70-75-75-c-50-iso10646-1
-+!*VT100.widefont2:
++*VT100.font2:    -misc-fixed-medium-r-normal--7-70-75-75-c-50-iso10646-1
  *fontMenu*font3*Label:	Small
 -*VT100.font3:		6x10
-+!*VT100.font3:		6x10
-+*VT100.font3:		-misc-fixed-medium-r-normal--10-100-75-75-c-60-iso10646-1
-+!*VT100.wideFont3:
++*VT100.font3:    -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso10646-1
  *fontMenu*font4*Label:	Medium
 -*VT100.font4:		7x13
-+!*VT100.font4:		7x13
-+*VT100.font4:		-misc-fixed-medium-r-semicondensed-*-13-120-75-75-c-60-iso10646-1
-+*VT100.wideFont4:	-misc-fixed-medium-r-normal-*-13-120-75-75-c-120-iso10646-1
++*VT100.font4:    -misc-fixed-medium-r-semicondensed-*-13-120-75-75-c-60-iso10646-1
++*VT100.wideFont4:  -misc-fixed-medium-r-normal-*-13-120-75-75-c-120-iso10646-1
  *fontMenu*font5*Label:	Large
 -*VT100.font5:		9x15
-+!*VT100.font5:		9x15
-+*VT100.font5:		-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
-+!*VT100.wideFont5:
++*VT100.font5:    -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
  *fontMenu*font6*Label:	Huge
 -*VT100.font6:		10x20
-+!*VT100.font6:		10x20
-+*VT100.font6:		-misc-fixed-medium-r-normal-*-20-200-75-75-c-100-iso10646-1
-+*VT100.wideFont6:	-misc-fixed-medium-r-normal-*-20-200-75-75-c-200-iso10646-1
- *fontMenu*fontescape*Label:	Escape Sequence
- *fontMenu*fontsel*Label:	Selection
- !fontescape and fontsel overridden by application
- *fontMenu*allow-bold-fonts*Label:  Bold Fonts
- *fontMenu*font-linedrawing*Label:  Line-Drawing Characters
- *fontMenu*font-doublesize*Label: Doublesized Characters
- *fontMenu*font-loadable*Label:	VT220 Soft Fonts
- *fontMenu*font-packed*Label:	Packed Font
-@@ -237,16 +263,70 @@
- !*faceSize: 8
- 
- ! Here is a pattern that is useful for double-clicking on a URL:
- !*charClass: 33:48,35:48,37-38:48,43-47:48,58:48,61:48,63-64:48,95:48,126:48
- !
++*VT100.font6:    -misc-fixed-medium-r-normal-*-20-200-75-75-c-100-iso10646-1
++*VT100.wideFont6:  -misc-fixed-medium-r-normal-*-20-200-75-75-c-200-iso10646-1
+ *fontMenu*font7*Label:	Enormous
+ !*VT100.font7:		12x24
+ *VT100.font7:		-adobe-courier-medium-r-normal--24-240-75-75-m-150-iso10646-1
+@@ -252,6 +268,59 @@
  ! Alternatively,
  !*on2Clicks: regex [[:alpha:]]+://([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
  
@@ -245,15 +202,9 @@ diff --git a/XTerm.ad b/XTerm.ad
 +!! Bug #52655
 +*utf8Title: true
 +
-+
  ! VT100s and similar terminals recognize escape sequences and control
  ! characters to which they reply to the host with other escape sequences,
  ! to provide information.  The "resize" program uses this feature.
- !
- ! In addition, xterm recognizes several escape sequences which can be used to
- ! set fonts, window properties, return settings via escape sequences.  Some
- ! find these useful; others are concerned with the possibility of unexpected
- ! inputs.
 diff --git a/xterm.man b/xterm.man
 --- a/xterm.man
 +++ b/xterm.man

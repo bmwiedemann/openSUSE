@@ -1,7 +1,7 @@
 #
 # spec file for package xterm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define splitbin 0%{?suse_version} >= 1300
 
 Name:           xterm
-Version:        359
+Version:        363
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT
@@ -37,7 +37,7 @@ Source9:        20x20ko.bdf.bz2
 Source11:       xterm.keyring
 # Snoop for the escape sequence assignment of the keypad
 Source20:       snooper.tar.bz2
-Patch1:         xterm-settings.patch
+Patch1:         xterm-suse.patch
 Patch2:         xterm-sigwinch.patch
 Patch3:         xterm-double_width_fonts.patch
 Patch4:         xterm-desktop_file_icon.patch
@@ -46,7 +46,6 @@ Patch6:         xterm-enable_libtinfo.patch
 Patch7:         xterm-allow_iso-utf_fonts_in_menu.patch
 Patch8:         xterm-decomposed_bitmaps.patch
 Patch9:         xterm-desktop-item-in-gnome-utilities-appfolder.patch
-Patch10:        xterm-better-fonts.patch
 BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -85,17 +84,7 @@ Group:          System/X11/Utilities
 This package contains the basic X.Org terminal program.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%autosetup -p1
 cp -t . %{SOURCE8} %{SOURCE9}
 bunzip2 %{basename:%{SOURCE8}} %{basename:%{SOURCE9}}
 
@@ -120,7 +109,7 @@ bunzip2 %{basename:%{SOURCE8}} %{basename:%{SOURCE9}}
 
 #ensure we do not lose FreeType support (boo#911683)
 grep "#define XRENDERFONT 1" xtermcfg.h
-make %{?_smp_mflags}
+%make_build
 
 if ! which bdftopcf &> /dev/null; then exit 1; fi
 for i in *.bdf
