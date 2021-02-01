@@ -1,0 +1,5 @@
+<package name="replay-sorcery" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="games:tools" package="replay-sorcery"/>
+</package>

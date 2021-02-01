@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Jan 27 15:13:43 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.5.0.
+  * Added experimental HEVC support (main profile only)
+  * Added replay-sorcery kms-devices command to list KMS 
+    device/plane combos
+  * Added videoDevice option to select the video device to grab 
+    frames from
+  * Fixes configuration issue where some systems install to lib64
+  * prevent log spamming if audio input fails
+  * Creates parent directories if they are missing
+  * Small improvements to README
+  * Remove extradata generation for VA-API since it was gross, 
+    unnecesary and didn't work in certain cases anyway
+- Remove dependecies libopenh264-6.
+
+-------------------------------------------------------------------
+Sat Jan 23 10:17:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update description.
+
+-------------------------------------------------------------------
+Thu Jan  7 08:26:42 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Add libdrm2 dependency.
+
+-------------------------------------------------------------------
+Mon Nov 30 14:57:21 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.
