@@ -2,7 +2,7 @@
 # spec file for package trytond_purchase_request
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017 Dr. Axel Braun
+# Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define majorver 5.0
 
 Name:           trytond_purchase_request
@@ -29,25 +28,27 @@ Summary:        Tryton is an OpenSource ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 
+BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
-
-BuildArch:      noarch
 
 Requires:       trytond
 Requires:       trytond_product
 Requires:       trytond_purchase
 
+BuildArch:      noarch
+
 %description
 The purchase_request module of the Tryton application platform allows you to create a purchase request as pre-step for a purchase
 
 %prep
-%setup -q -n %{name}-%version
+%setup -q 
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --prefix=%_prefix --root=%buildroot 
+%python3_install --prefix=%_prefix --root=%buildroot 
+%fdupes -s %{buildroot}
 
 %files 
 %defattr(-,root,root)
