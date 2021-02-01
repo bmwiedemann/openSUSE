@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyYAML
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PyYAML
-Version:        5.3.1
+Version:        5.4.1
 Release:        0
 Summary:        YAML parser and emitter for Python
 License:        MIT
 URL:            https://github.com/yaml/pyyaml
 Source:         https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
@@ -56,6 +56,7 @@ configuration files to object serialization and persistance.
 
 %build
 export CFLAGS="%{optflags}"
+export PYYAML_FORCE_LIBYAML=0  # we don't actually want to build the python lib
 %python_build
 # Fix example permissions.
 find examples/ -type f | xargs chmod a-x
@@ -75,7 +76,7 @@ ulimit -Sn 2048
 %license LICENSE
 %doc CHANGES README examples/
 %{python_sitearch}/yaml
-%{python_sitearch}/_yaml.*so
+%{python_sitearch}/_yaml
 %{python_sitearch}/PyYAML-%{version}-py%{python_version}.egg-info
 
 %changelog

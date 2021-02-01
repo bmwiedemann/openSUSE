@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 24 18:21:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.1 (bsc#1174514, CVE-2020-14343):
+  * Fix stub compat with older pyyaml versions that may unwittingly load it
+  * Build modernization, remove distutils, fix metadata, build wheels, CI to GHA
+  * Fix for CVE-2020-14343, moves arbitrary python tags to UnsafeLoader
+  * Fix memory leak in implicit resolver setup
+  * Fix py2 copy support for timezone objects
+  * Fix compatibility with Jython
+
+-------------------------------------------------------------------
 Thu Mar 19 07:23:23 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 5.3.1
