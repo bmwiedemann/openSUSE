@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 24 17:54:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18.2:
+  * Various code cleanups and infrastructure improvements.
+  * eg-sampler: Save and restore gain parameter value.
+  * state: Fix state:StateChanged URI in metadata and documentation. 
+  
+-------------------------------------------------------------------
 Thu Nov 26 12:22:00 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update rpmlintrc format to work with rpmlint2.

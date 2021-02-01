@@ -1,7 +1,7 @@
 #
 # spec file for package lv2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,20 @@
 %else
 %define _waf python2 waf
 %endif
-
 Name:           lv2
-Version:        1.18.0
+Version:        1.18.2
 Release:        0
 Summary:        Plugin standard for audio systems
 License:        ISC
 Group:          System/Libraries
-URL:            http://lv2plug.in/
-Source0:        http://lv2plug.in/spec/lv2-%{version}.tar.bz2
+URL:            https://lv2plug.in/
+Source0:        https://lv2plug.in/spec/lv2-%{version}.tar.bz2
 Source1:        lv2-rpmlintrc
 # Patch-Fix-Upstream  lv2pkgconfig.patch davejplater@gmail.com -- Add "/" to end of -I directory because otherwise pkg-config outputs nothing.
 Patch0:         lv2pkgconfig.patch
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(sndfile) >= 1.0.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-rdflib
@@ -43,8 +44,6 @@ BuildRequires:  python3-rdflib
 BuildRequires:  python-Markdown
 BuildRequires:  python-rdflib
 %endif
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
-BuildRequires:  pkgconfig(sndfile) >= 1.0.0
 %if %{asciidocs} == 1
 # Documentation build requirements.
 BuildRequires:  asciidoc
@@ -182,12 +181,12 @@ This package contains the LV2 API documentation.
 
 %build
 %if 0%{?suse_version} > 1500
-for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 %endif
 
 export CFLAGS='%{optflags}'
 export CXXFLAGS='%{optflags}'
-%_waf configure -v \
+%{_waf} configure -v \
   --prefix=%{_prefix} \
   --lv2dir=%{_libdir}/%{name} \
   --libdir=%{_libdir} \
@@ -197,10 +196,10 @@ export CXXFLAGS='%{optflags}'
 %endif
   --debug
 
-%_waf %{?_smp_mflags} -vvv build
+%{_waf} %{?_smp_mflags} -vvv build
 
 %install
-%_waf install --lv2dir=%{_libdir}/%{name} --destdir=%{buildroot}
+%{_waf} install --lv2dir=%{_libdir}/%{name} --destdir=%{buildroot}
 
 %files
 %defattr(0644,root,root,0755)
