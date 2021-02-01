@@ -53,7 +53,7 @@ Requires(post):	update-alternatives
 Requires(postun): update-alternatives
 Requires:       %{openjdktouse}
 Provides:       bazel = %{version}
-ExcludeArch:    %ix86
+ExcludeArch:    %ix86 %arm
 
 %description
 Tool for the automation of building and testing of software. It supports Java,
