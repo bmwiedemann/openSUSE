@@ -23,4 +23,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>796255</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0c4ea6f38e74d863e530a8421202bf97</srcmd5>
+    <version>1.7.0</version>
+    <time>1612182517</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not unpack the rpms to buildroot in build phase, since install
+  phase cleans that up
+- The pack200 and unpack200 alternatives should be slaves of java
+  and not of javac, since they are part of JRE.
+- add armv7hl bootstrap binaries (copied from Leap 42.3 Ports GA)
+  (bsc#1181571)
+- Rename the icons to avoid file conflicts with java-1_7_0-openjdk
+  packages
+- New package.
+</comment>
+    <requestid>868290</requestid>
+  </revision>
 </revisionlist>

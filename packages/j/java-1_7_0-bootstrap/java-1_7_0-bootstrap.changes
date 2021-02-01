@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  1 08:02:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not unpack the rpms to buildroot in build phase, since install
+  phase cleans that up
+
+-------------------------------------------------------------------
 Wed Apr 15 09:07:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - The pack200 and unpack200 alternatives should be slaves of java
@@ -8,6 +14,7 @@ Wed Apr 15 09:07:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 Tue May  8 11:27:36 UTC 2018 - dmueller@suse.com
 
 - add armv7hl bootstrap binaries (copied from Leap 42.3 Ports GA)
+  (bsc#1181571)
 
 -------------------------------------------------------------------
 Thu Oct  5 07:08:01 UTC 2017 - fstrba@suse.com

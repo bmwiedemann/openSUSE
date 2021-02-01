@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_7_0-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -251,10 +251,10 @@ for the appletviewer, these tools do not provide a graphical user
 interface.
 
 %prep
+%setup -cqT
 
 %build
 srcdir=`dirname %{SOURCE0}`
-cd %{buildroot}
 for f in ${srcdir}/java*.%{arch}.rpm; do
   rpm2cpio $f | cpio --extract --unconditional --preserve-modification-time --make-directories
 done
@@ -277,6 +277,7 @@ for i in `find . -type l | xargs`; do
 done
 
 %install
+tar -cf - . | (cd %{buildroot} && tar xf -)
 export LANG=en_US.UTF-8
 #bnc#530046
 export STRIP_KEEP_SYMTAB=libjvm*
