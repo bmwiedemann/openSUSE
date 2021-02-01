@@ -531,4 +531,12 @@
     <comment></comment>
     <requestid>849988</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>53f22d4362d36c51f2e2326af6f8a408</srcmd5>
+    <version>1.49.0</version>
+    <time>1612190733</time>
+    <user>dimstar_suse</user>
+    <comment>Rebase to Rust 1.49</comment>
+    <requestid>863002</requestid>
+  </revision>
 </revisionlist>

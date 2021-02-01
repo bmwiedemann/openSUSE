@@ -1,7 +1,7 @@
-Index: rustc-1.47.0-src/src/librustc_llvm/build.rs
+Index: rustc-1.49.0-src/compiler/rustc_llvm/build.rs
 ===================================================================
---- rustc-1.47.0-src.orig/src/librustc_llvm/build.rs
-+++ rustc-1.47.0-src/src/librustc_llvm/build.rs
+--- rustc-1.49.0-src.orig/compiler/rustc_llvm/build.rs
++++ rustc-1.49.0-src/compiler/rustc_llvm/build.rs
 @@ -157,6 +157,12 @@ fn main() {
              continue;
          }

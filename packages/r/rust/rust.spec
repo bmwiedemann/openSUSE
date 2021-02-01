@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,12 @@
 #
 
 
-%global version_current 1.47.0
-%global version_previous 1.46.0
-%global version_bootstrap 1.46.0
+%global version_current 1.49.0
+%global version_previous 1.48.0
+%global version_bootstrap 1.48.0
 
 # some sub-packages are versioned independently
-%global rustfmt_version 1.4.21
+%global rustfmt_version 1.4.25
 %global clippy_version 0.0.212
 
 # Build the rust target triple.
@@ -129,6 +129,7 @@ License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
 URL:            https://www.rust-lang.org
 Source0:        %{dl_url}/rustc-%{version}-src.tar.xz
+Source1:        %{name}.keyring
 Source99:       %{name}-rpmlintrc
 Source100:      %{dl_url}/rust-%{version_bootstrap}-x86_64-unknown-linux-gnu.tar.xz
 Source101:      %{dl_url}/rust-%{version_bootstrap}-i686-unknown-linux-gnu.tar.xz
@@ -138,8 +139,16 @@ Source105:      %{dl_url}/rust-%{version_bootstrap}-powerpc64-unknown-linux-gnu.
 Source106:      %{dl_url}/rust-%{version_bootstrap}-powerpc64le-unknown-linux-gnu.tar.xz
 Source107:      %{dl_url}/rust-%{version_bootstrap}-s390x-unknown-linux-gnu.tar.xz
 Source108:      %{dl_url}/rust-%{version_bootstrap}-powerpc-unknown-linux-gnu.tar.xz
-# Not yet available
-#Source109:      %{dl_url}/rust-%{version_bootstrap}-riscv64gc-unknown-linux-gnu.tar.xz
+Source109:      %{dl_url}/rust-%{version_bootstrap}-riscv64gc-unknown-linux-gnu.tar.xz
+Source200:      %{dl_url}/rust-%{version_bootstrap}-x86_64-unknown-linux-gnu.tar.xz.asc
+Source201:      %{dl_url}/rust-%{version_bootstrap}-i686-unknown-linux-gnu.tar.xz.asc
+Source202:      %{dl_url}/rust-%{version_bootstrap}-aarch64-unknown-linux-gnu.tar.xz.asc
+Source203:      %{dl_url}/rust-%{version_bootstrap}-armv7-unknown-linux-gnueabihf.tar.xz.asc
+Source205:      %{dl_url}/rust-%{version_bootstrap}-powerpc64-unknown-linux-gnu.tar.xz.asc
+Source206:      %{dl_url}/rust-%{version_bootstrap}-powerpc64le-unknown-linux-gnu.tar.xz.asc
+Source207:      %{dl_url}/rust-%{version_bootstrap}-s390x-unknown-linux-gnu.tar.xz.asc
+Source208:      %{dl_url}/rust-%{version_bootstrap}-powerpc-unknown-linux-gnu.tar.xz.asc
+Source209:      %{dl_url}/rust-%{version_bootstrap}-riscv64gc-unknown-linux-gnu.tar.xz.asc
 # Make factory-auto stop complaining...
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
@@ -173,10 +182,14 @@ BuildRequires:  gcc-c++
 %if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
 BuildRequires:  pkgconfig(libssh2) >= 1.6.0
 %endif
-# Real LLVM minimum version should be 8.x, but rust has a fallback
+# Real LLVM minimum version should be 9.x, but rust has a fallback
 # mode
 %if !%with bundled_llvm
+%if 0%{?suse_version} < 1550
+BuildRequires:  llvm9-devel
+%else
 BuildRequires:  llvm-devel >= 8.0
+%endif
 %endif
 %if !%with rust_bootstrap
 # We will now package cargo using the version number of rustc since it
@@ -383,8 +396,7 @@ This package includes HTML documentation for Cargo.
 %setup -q -T -b 108 -n rust-%{version_bootstrap}-%{rust_triple}
 %endif
 %ifarch riscv64
-# Not yet available
-#%%setup -q -T -b 109 -n rust-%{version_bootstrap}-%{rust_triple}
+%setup -q -T -b 109 -n rust-%{version_bootstrap}-%{rust_triple}
 %endif
 ./install.sh --components=cargo,rustc,rust-std-%{rust_triple} --prefix=.%{_prefix} --disable-ldconfig
 %endif
@@ -466,6 +478,12 @@ chmod +x library/core/src/unicode/printable.py
 if [ $(%{rust_root}/bin/rustc --version | sed -En 's/rustc ([0-9].[0-9][0-9].[0-9]).*/\1/p') = '%{version}' ]; then
 sed -i -e "s|#local-rebuild = false|local-rebuild = true|" config.toml;
 fi
+%if %with bundled_llvm
+# Ninja gets used for building llvm from rust-1.48 onwards;
+# disable its use for anything older than Leap 15.2:
+sed -i -e "s|#ninja = true|ninja = false|" config.toml
+%endif
+
 
 # Create exports file
 # Keep all the "export VARIABLE" together here, so they can be
@@ -490,7 +508,7 @@ EOF
 . ./.env.sh
 
 ./x.py build -v
-./x.py doc -v
+./x.py doc -v --stage 1
 
 %install
 # Reread exports file
