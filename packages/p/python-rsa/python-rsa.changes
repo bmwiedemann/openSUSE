@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 28 23:02:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7:
+  * CVE-2020-25658 - Bleichenbacher-style timing oracle in PKCS#1 v1.5 decryption code
+  * Add padding length check as described by PKCS#1 v1.5
+  * Reuse of blinding factors to speed up blinding operations.
+  * Declare & test support for Python 3.9 
+
+-------------------------------------------------------------------
 Wed Dec  9 10:45:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove mypy test requirement. The test calls mypy via its API.

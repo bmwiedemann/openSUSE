@@ -152,4 +152,16 @@
     <comment></comment>
     <requestid>854255</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>91ae4561c133a0d4402ffd8293c41d11</srcmd5>
+    <version>4.7</version>
+    <time>1612182417</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7:
+  * CVE-2020-25658 - Bleichenbacher-style timing oracle in PKCS#1 v1.5 decryption code
+  * Add padding length check as described by PKCS#1 v1.5
+  * Reuse of blinding factors to speed up blinding operations.
+  * Declare &amp; test support for Python 3.9</comment>
+    <requestid>867594</requestid>
+  </revision>
 </revisionlist>
