@@ -83,4 +83,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>854044</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b11737adbb8a415ff17baef938102084</srcmd5>
+    <version>235</version>
+    <time>1612186914</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 235
+  https://cockpit-project.org/blog/cockpit-235.html
+  https://cockpit-project.org/blog/cockpit-234.html
+  https://cockpit-project.org/blog/cockpit-233.html
+
+- new version 232</comment>
+    <requestid>867727</requestid>
+  </revision>
 </revisionlist>
