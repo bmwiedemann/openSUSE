@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:37:07 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.8:
+  * Revert back to setuptools for compatibility purposes for some Linux distros (:issue:`363`)
+  * Do not insert an underscore in wheel tags when the interpreter version number
+    is more than 2 digits (:issue:`372`)
+  * Fix flit configuration, to include LICENSE files (:issue:`357`)
+  * Make `intel` a recognized CPU architecture for the `universal` macOS platform tag (:issue:`361`)
+  * Add some missing type hints to `packaging.requirements` (issue:`350`)
+  * Officially support Python 3.9 (:issue:`343`)
+  * Deprecate the ``LegacyVersion`` and ``LegacySpecifier`` classes (:issue:`321`)
+  * Handle ``OSError`` on non-dynamic executables when attempting to resolve
+    the glibc version string.
+
+-------------------------------------------------------------------
 Tue Jun  2 16:35:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.4:

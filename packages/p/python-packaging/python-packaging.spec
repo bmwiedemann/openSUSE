@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-packaging%{psuffix}
-Version:        20.4
+Version:        20.8
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0
