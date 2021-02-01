@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-0-tss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tpm2-0-tss
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -268,12 +268,12 @@ mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{ud
 %{_tmpfilesdir}/tpm2-tss-fapi.conf
 # this would fix "tmpfile-not-in-filelist" warnings but when adding these
 # entries then it complains about "directories not owned by a package:" for
-# /run/tpm2-0-tss & friends. When adding them as %ghost, too, then Leap15.1
+# /run/tpm2-0-tss & friends. When adding them as %%ghost, too, then Leap15.1
 # complains about "found conflict of libtss2-fapi1-3.0.1-lp152.103.1.x86_64
 # with libtss2-fapi1-3.0.1-lp152.103.1.x86_64". Thus leave it be for the
 # moment, some insane circle of errors is involved here.
-#%%ghost %{_sharedstatedir}/%{name}/system/keystore
-#%%ghost %{_rundir}/%{name}/eventlog
+# %%ghost %%{_sharedstatedir}/%%{name}/system/keystore
+# %%ghost %%{_rundir}/%%{name}/eventlog
 
 %files -n libtss2-tcti-cmd0
 %defattr(-,root,root)

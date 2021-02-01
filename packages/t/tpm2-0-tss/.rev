@@ -359,4 +359,32 @@ This should be handled together with sr#769061</comment>
   * libtss2-tcti-swtpm0</comment>
     <requestid>844057</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e3a1b43952176d0cf8bca6cd2991be83</srcmd5>
+    <version>3.0.3</version>
+    <time>1612182356</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.3:
+  - changes in 3.0.3:
+    * Fix Regression in Fapi_List
+    * Fix memory leak in policy calculation
+  - changes in 3.0.2:
+    * FAPI: Fix setting of the system flag of NV objects
+    * This will let NV object metadata be created system-wide always instead of
+    * locally in the user. Existing metadata will remain in the user directory.
+    * It can be moved to the corresponding systemstore manually if needed.
+    * FAPI: Fix policy searching, when a policyRef was provided
+    * FAPI: Accept EK-Certs without CRL dist point
+    * FAPI: Fix return codes of Fapi_List
+    * FAPI: Fix memleak in policy execution
+    * FAPI: Fix coverity NULL-pointer check
+    * FAPI: Set the written flag of NV objects in FAPI PolicyNV commands
+    * FAPI: Fix deleting of policy files.
+    * FAPI: Fix wrong file loading during object search.
+    * Fapi: Fix memory leak
+    * Fapi: Fix potential NULL-Dereference
+    * Fapi: Remove superfluous NULL check
+    * Fix a memory leak in async keystore load.</comment>
+    <requestid>867410</requestid>
+  </revision>
 </revisionlist>
