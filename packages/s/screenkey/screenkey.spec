@@ -1,7 +1,7 @@
 #
 # spec file for package screenkey
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           screenkey
-Version:        1.2
+Version:        1.4
 Release:        0
 Summary:        A screen-cast tool to show keys
 License:        GPL-3.0-only
@@ -28,15 +28,18 @@ Source1:        https://www.thregr.org/~wavexx/software/screenkey/releases/%{nam
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Babel
 BuildRequires:  python3-devel
-BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools-git
 Requires:       python3
-Requires:       python-gtk
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
 Requires:       python3-pycairo
 Requires:       slop
+Requires:       typelib(Gtk) = 3.0
 Recommends:     fontawesome-fonts
+
 BuildArch:      noarch
 
 %description
@@ -47,19 +50,19 @@ the key-mon project.
 %autosetup
 
 %build
-CFLAGS="%{optflags}" %python_exec setup.py build
+%python3_build
 
 %install
-mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-find build/lib* -name '*.py' -exec sed -i "1{/^#!/d}" {} + && \
-%python_exec setup.py install -O1 --skip-build --root %{buildroot} --prefix %{_prefix}/
-%fdupes -s %{buildroot}
+%python3_install
+%find_lang %{name}
+ %fdupes -s %{buildroot}
 
-%files
+%files -f %{name}.lang
 %{_bindir}/%{name}
+%{python3_sitelib}/Screenkey/
+%{python3_sitelib}/%{name}-%{version}-*.egg-info/
 %{_datadir}/applications/%{name}.desktop
-%{python_sitelib}/Screenkey
-%{python_sitelib}/%{name}-%{version}-py3.8.egg-info
+%{_datadir}/metainfo/org.thregr.screenkey.metainfo.xml
 %doc %{_datadir}/doc/%{name}/
 
 %changelog

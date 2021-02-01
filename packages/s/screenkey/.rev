@@ -7,4 +7,12 @@
     <comment>Restore pkg to distribution after (Python 3) porting work is done.</comment>
     <requestid>845495</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ae137ee26d761002f965c44edd6fe75</srcmd5>
+    <version>1.4</version>
+    <time>1612182453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868154</requestid>
+  </revision>
 </revisionlist>
