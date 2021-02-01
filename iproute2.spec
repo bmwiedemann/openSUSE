@@ -1,7 +1,7 @@
 #
 # spec file for package iproute2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
