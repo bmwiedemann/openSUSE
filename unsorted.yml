@@ -2011,7 +2011,6 @@ unsorted:
   - coccinelle 
   - cockpit 
   - cockpit-bridge: [i586] 
-  - cockpit-dashboard 
   - cockpit-doc 
   - cockpit-kdump 
   - cockpit-machines 
@@ -7445,7 +7444,6 @@ unsorted:
   - jupyter-qtconsole 
   - jupyter-rise 
   - jupyter-sidecar-jupyterlab 
-  - jupyter-vega 
   - jupyter-vispy 
   - jupyter-voila 
   - jupyter-widgetsnbextension 
@@ -7634,7 +7632,6 @@ unsorted:
   - kemoticons-devel-32bit: [x86_64] 
   - kernel-debug 
   - kernel-debug-devel 
-  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -7836,7 +7833,6 @@ unsorted:
   - kmime-devel 
   - kmix 
   - kmix-lang 
-  - kmod-bash-completion 
   - kmscon 
   - kmscube 
   - kmymoney 
@@ -11419,7 +11415,6 @@ unsorted:
   - liblcms2-devel 
   - liblcms2-devel-32bit: [x86_64] 
   - liblcms2-doc 
-  - libldac2 
   - libldac2-32bit: [x86_64] 
   - libldapcpp-devel 
   - libldastoolsal7 
@@ -12122,8 +12117,6 @@ unsorted:
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
-  - libopenjpeg1 
-  - libopenjpeg1-32bit: [x86_64] 
   - libopenlibm3 
   - libopenmpi1-gnu-hpc 
   - libopenmpi2-gnu-hpc 
@@ -14464,6 +14457,7 @@ unsorted:
   - libzrtpcpp4 
   - libzsolve0 
   - libzstd-devel 
+  - libzstd-devel-32bit: [x86_64] 
   - libzstd-devel-static 
   - libzvbi-chains0 
   - libzvbi-chains0-32bit: [x86_64] 
@@ -16181,7 +16175,6 @@ unsorted:
   - mypaint-brushes1 
   - mypaint-brushes1-devel 
   - mypaint-lang 
-  - mypy 
   - myquerytutor 
   - myspell-af_NA 
   - myspell-af_ZA 
@@ -17463,9 +17456,6 @@ unsorted:
   - openjfx8-devel 
   - openjfx8-javadoc 
   - openjfx8-src 
-  - openjpeg 
-  - openjpeg-devel 
-  - openjpeg-devel-32bit: [x86_64] 
   - openjpeg2 
   - openjpeg2-devel 
   - openjpeg2-devel-doc 
@@ -18409,6 +18399,7 @@ unsorted:
   - perl-Crypt-CBC 
   - perl-Crypt-DH-GMP 
   - perl-Crypt-Eksblowfish 
+  - perl-Crypt-JWT 
   - perl-Crypt-MySQL 
   - perl-Crypt-OpenSSL-Guess 
   - perl-Crypt-PasswdMD5 
@@ -19711,6 +19702,7 @@ unsorted:
   - pilot-link 
   - pimcommon-devel 
   - pin 
+  - pinentry-efl 
   - pinentry-emacs 
   - pinentry-fltk 
   - pingtunnel 
@@ -19722,13 +19714,14 @@ unsorted:
   - pinta-lang 
   - pipenightdreams 
   - piper 
+  - pipewire-alsa 
   - pipewire-devel 
   - pipewire-doc 
+  - pipewire-lang 
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
-  - pipewire-libpulse-0_3 
-  - pipewire-libpulse-0_3-32bit: [x86_64] 
   - pipewire-modules-32bit: [x86_64] 
+  - pipewire-pulseaudio 
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
@@ -19993,9 +19986,10 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
+  - postfix-bdb 
+  - postfix-bdb-lmdb 
   - postfix-devel 
   - postfix-ldap 
-  - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
@@ -21012,7 +21006,6 @@ unsorted:
   - python3-raet 
   - python3-renderspec 
   - python3-reno 
-  - python3-rise 
   - python3-rpmconf 
   - python3-rpmdeplint 
   - python3-rpmfluff 
@@ -21071,7 +21064,6 @@ unsorted:
   - python3-upm 
   - python3-vapoursynth 
   - python3-vdirsyncer 
-  - python3-vega 
   - python3-virtualbox: [x86_64] 
   - python3-vispy 
   - python3-voila 
@@ -22677,6 +22669,7 @@ unsorted:
   - python36-mutatorMath 
   - python36-mutt-ics 
   - python36-mygpoclient 
+  - python36-mypy 
   - python36-mypy_extensions 
   - python36-mysql-connector-python 
   - python36-mysqlclient 
@@ -22864,7 +22857,6 @@ unsorted:
   - python36-pep8-naming 
   - python36-peppercorn 
   - python36-percy 
-  - python36-perfume-bench 
   - python36-persistent 
   - python36-persistent-devel 
   - python36-petact 
@@ -23446,6 +23438,7 @@ unsorted:
   - python36-rfc3987 
   - python36-rfc6555 
   - python36-rich 
+  - python36-rise 
   - python36-rjsmin 
   - python36-rnginline 
   - python36-robot-detection 
@@ -23816,6 +23809,7 @@ unsorted:
   - python36-vcrpy 
   - python36-vcver 
   - python36-vcversioner 
+  - python36-vega 
   - python36-vega_datasets 
   - python36-venusian 
   - python36-venusian-doc 
@@ -25465,6 +25459,7 @@ unsorted:
   - python38-mutatorMath 
   - python38-mutt-ics 
   - python38-mygpoclient 
+  - python38-mypy 
   - python38-mypy_extensions 
   - python38-mysql-connector-python 
   - python38-nagiosplugin 
@@ -26190,6 +26185,7 @@ unsorted:
   - python38-rfc3987 
   - python38-rfc6555 
   - python38-rich 
+  - python38-rise 
   - python38-rjsmin 
   - python38-rnginline 
   - python38-robot-detection 
@@ -26548,6 +26544,7 @@ unsorted:
   - python38-vcrpy 
   - python38-vcver 
   - python38-vcversioner 
+  - python38-vega 
   - python38-vega_datasets 
   - python38-venusian 
   - python38-venusian-doc 
@@ -27206,6 +27203,7 @@ unsorted:
   - rep-gtk-devel 
   - replacer 
   - replacer-javadoc 
+  - replay-sorcery 
   - reptyr 
   - resample 
   - rescue 
@@ -27470,8 +27468,6 @@ unsorted:
   - ruby2.7-rubygem-bcrypt-doc 
   - ruby2.7-rubygem-bcrypt-ruby-doc 
   - ruby2.7-rubygem-bcrypt-testsuite 
-  - ruby2.7-rubygem-bcrypt_pbkdf-doc 
-  - ruby2.7-rubygem-bcrypt_pbkdf-testsuite 
   - ruby2.7-rubygem-benchmark-doc 
   - ruby2.7-rubygem-bindata-doc 
   - ruby2.7-rubygem-bindata-testsuite 
@@ -27541,8 +27537,6 @@ unsorted:
   - ruby2.7-rubygem-commander-doc 
   - ruby2.7-rubygem-commander-testsuite 
   - ruby2.7-rubygem-concurrent-ruby-doc 
-  - ruby2.7-rubygem-cool.io-doc 
-  - ruby2.7-rubygem-cool.io-testsuite 
   - ruby2.7-rubygem-crack-doc 
   - ruby2.7-rubygem-crass-doc 
   - ruby2.7-rubygem-cri-doc 
@@ -27555,7 +27549,6 @@ unsorted:
   - ruby2.7-rubygem-debase-doc 
   - ruby2.7-rubygem-debase-ruby_core_source-doc 
   - ruby2.7-rubygem-debase-testsuite 
-  - ruby2.7-rubygem-debug_inspector-doc 
   - ruby2.7-rubygem-debugger-linecache-doc 
   - ruby2.7-rubygem-debugger-linecache-testsuite 
   - ruby2.7-rubygem-deep_merge-doc 
@@ -27624,7 +27617,6 @@ unsorted:
   - ruby2.7-rubygem-fast_xs-testsuite 
   - ruby2.7-rubygem-fastercsv-doc 
   - ruby2.7-rubygem-fastercsv-testsuite 
-  - ruby2.7-rubygem-ffi-doc 
   - ruby2.7-rubygem-flog-doc 
   - ruby2.7-rubygem-flog-testsuite 
   - ruby2.7-rubygem-fluentd-doc 
@@ -27726,7 +27718,6 @@ unsorted:
   - ruby2.7-rubygem-jquery-ui-rails-doc 
   - ruby2.7-rubygem-js-routes-doc 
   - ruby2.7-rubygem-js-routes-testsuite 
-  - ruby2.7-rubygem-json-doc 
   - ruby2.7-rubygem-json-jwt-doc 
   - ruby2.7-rubygem-json-schema-doc 
   - ruby2.7-rubygem-json_pure-doc 
@@ -27835,7 +27826,6 @@ unsorted:
   - ruby2.7-rubygem-netrc-testsuite 
   - ruby2.7-rubygem-nio4r-doc 
   - ruby2.7-rubygem-nio4r-testsuite 
-  - ruby2.7-rubygem-nokogiri-doc 
   - ruby2.7-rubygem-nori-doc 
   - ruby2.7-rubygem-nori-testsuite 
   - ruby2.7-rubygem-oauth-doc 
@@ -27900,7 +27890,6 @@ unsorted:
   - ruby2.7-rubygem-public_suffix-doc-3.1 
   - ruby2.7-rubygem-public_suffix-testsuite 
   - ruby2.7-rubygem-public_suffix-testsuite-3.1 
-  - ruby2.7-rubygem-puma-doc 
   - ruby2.7-rubygem-puma_worker_killer-doc 
   - ruby2.7-rubygem-puma_worker_killer-testsuite 
   - ruby2.7-rubygem-pundit-doc 
@@ -27993,8 +27982,6 @@ unsorted:
   - ruby2.7-rubygem-rubocop-ast-doc 
   - ruby2.7-rubygem-rubocop-doc 
   - ruby2.7-rubygem-ruby-augeas-doc 
-  - ruby2.7-rubygem-ruby-dbus-doc 
-  - ruby2.7-rubygem-ruby-dbus-testsuite 
   - ruby2.7-rubygem-ruby-filemagic-doc 
   - ruby2.7-rubygem-ruby-filemagic-testsuite 
   - ruby2.7-rubygem-ruby-libvirt-doc 
@@ -28073,7 +28060,6 @@ unsorted:
   - ruby2.7-rubygem-stackdeck-testsuite 
   - ruby2.7-rubygem-stomp-doc 
   - ruby2.7-rubygem-stomp-testsuite 
-  - ruby2.7-rubygem-strptime-doc 
   - ruby2.7-rubygem-swd-doc 
   - ruby2.7-rubygem-swd-testsuite 
   - ruby2.7-rubygem-systemu-doc 
@@ -28156,8 +28142,6 @@ unsorted:
   - ruby2.7-rubygem-xml-simple-doc 
   - ruby2.7-rubygem-xmlhash-doc 
   - ruby2.7-rubygem-xmlhash-testsuite 
-  - ruby2.7-rubygem-yajl-ruby-doc 
-  - ruby2.7-rubygem-yajl-ruby-testsuite 
   - ruby2.7-rubygem-yard-doc 
   - ruby2.7-rubygem-yast-rake-doc 
   - ruby2.7-rubygem-zeitwerk-doc 
@@ -28272,8 +28256,6 @@ unsorted:
   - ruby3.0-rubygem-bcrypt-ruby-doc 
   - ruby3.0-rubygem-bcrypt-testsuite 
   - ruby3.0-rubygem-bcrypt_pbkdf 
-  - ruby3.0-rubygem-bcrypt_pbkdf-doc 
-  - ruby3.0-rubygem-bcrypt_pbkdf-testsuite 
   - ruby3.0-rubygem-benchmark 
   - ruby3.0-rubygem-benchmark-doc 
   - ruby3.0-rubygem-bindata 
@@ -28384,8 +28366,6 @@ unsorted:
   - ruby3.0-rubygem-commander-testsuite 
   - ruby3.0-rubygem-concurrent-ruby-doc 
   - ruby3.0-rubygem-cool.io 
-  - ruby3.0-rubygem-cool.io-doc 
-  - ruby3.0-rubygem-cool.io-testsuite 
   - ruby3.0-rubygem-crack 
   - ruby3.0-rubygem-crack-doc 
   - ruby3.0-rubygem-crass-doc 
@@ -28398,7 +28378,6 @@ unsorted:
   - ruby3.0-rubygem-debase-ruby_core_source 
   - ruby3.0-rubygem-debase-ruby_core_source-doc 
   - ruby3.0-rubygem-debug_inspector 
-  - ruby3.0-rubygem-debug_inspector-doc 
   - ruby3.0-rubygem-debugger-linecache 
   - ruby3.0-rubygem-debugger-linecache-doc 
   - ruby3.0-rubygem-debugger-linecache-testsuite 
@@ -28511,7 +28490,6 @@ unsorted:
   - ruby3.0-rubygem-fastercsv 
   - ruby3.0-rubygem-fastercsv-doc 
   - ruby3.0-rubygem-fastercsv-testsuite 
-  - ruby3.0-rubygem-ffi-doc 
   - ruby3.0-rubygem-flog 
   - ruby3.0-rubygem-flog-doc 
   - ruby3.0-rubygem-flog-testsuite 
@@ -28671,7 +28649,6 @@ unsorted:
   - ruby3.0-rubygem-js-routes-doc 
   - ruby3.0-rubygem-js-routes-testsuite 
   - ruby3.0-rubygem-json 
-  - ruby3.0-rubygem-json-doc 
   - ruby3.0-rubygem-json-jwt 
   - ruby3.0-rubygem-json-jwt-doc 
   - ruby3.0-rubygem-json-schema 
@@ -28840,7 +28817,6 @@ unsorted:
   - ruby3.0-rubygem-netrc-testsuite 
   - ruby3.0-rubygem-nio4r-doc 
   - ruby3.0-rubygem-nio4r-testsuite 
-  - ruby3.0-rubygem-nokogiri-doc 
   - ruby3.0-rubygem-nori 
   - ruby3.0-rubygem-nori-doc 
   - ruby3.0-rubygem-nori-testsuite 
@@ -28939,7 +28915,6 @@ unsorted:
   - ruby3.0-rubygem-public_suffix-doc-3.1 
   - ruby3.0-rubygem-public_suffix-testsuite 
   - ruby3.0-rubygem-public_suffix-testsuite-3.1 
-  - ruby3.0-rubygem-puma-doc 
   - ruby3.0-rubygem-puma_worker_killer 
   - ruby3.0-rubygem-puma_worker_killer-doc 
   - ruby3.0-rubygem-puma_worker_killer-testsuite 
@@ -29081,6 +29056,7 @@ unsorted:
   - ruby3.0-rubygem-rubocop-doc 
   - ruby3.0-rubygem-ruby-augeas 
   - ruby3.0-rubygem-ruby-augeas-doc 
+  - ruby3.0-rubygem-ruby-dbus 
   - ruby3.0-rubygem-ruby-filemagic 
   - ruby3.0-rubygem-ruby-filemagic-doc 
   - ruby3.0-rubygem-ruby-filemagic-testsuite 
@@ -29196,7 +29172,6 @@ unsorted:
   - ruby3.0-rubygem-stomp-doc 
   - ruby3.0-rubygem-stomp-testsuite 
   - ruby3.0-rubygem-strptime 
-  - ruby3.0-rubygem-strptime-doc 
   - ruby3.0-rubygem-swd 
   - ruby3.0-rubygem-swd-doc 
   - ruby3.0-rubygem-swd-testsuite 
@@ -29324,8 +29299,6 @@ unsorted:
   - ruby3.0-rubygem-xml-simple 
   - ruby3.0-rubygem-xml-simple-doc 
   - ruby3.0-rubygem-yajl-ruby 
-  - ruby3.0-rubygem-yajl-ruby-doc 
-  - ruby3.0-rubygem-yajl-ruby-testsuite 
   - ruby3.0-rubygem-zeitwerk-doc 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 

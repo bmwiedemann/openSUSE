@@ -16,7 +16,7 @@
     <package name="Mesa-libglapi0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa-libva" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ModemManager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="ModemManager-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ModemManager-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ModemManager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -186,7 +186,7 @@
     <package name="baobab" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="baobab-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="bash-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="bash-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -1230,6 +1230,7 @@
     <package name="kmines" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmines-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmod" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kmod-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kmousetool" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmousetool-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmouth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2230,6 +2231,7 @@
     <package name="liblavrec-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblayout" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblcms2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libldac2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libldap-2_4-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libldap-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libldapcpp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
@@ -2981,7 +2983,7 @@
     <package name="mariadb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mariadb-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mariadb-errormessages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="mbimcli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="mbimcli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="mbox-importer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mbox-importer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3185,7 +3187,7 @@
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="openconnect-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="openconnect-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="openconnect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openldap2-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="opensc" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
@@ -3574,7 +3576,7 @@
     <package name="publicsuffix" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pullin-bcm43xx-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pulseaudio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pulseaudio-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pulseaudio-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="pulseaudio-gdm-hooks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pulseaudio-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pulseaudio-module-bluetooth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4994,8 +4996,6 @@
     <package name="xfce4-settings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-smartbookmark-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-smartbookmark-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-statusnotifier-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-statusnotifier-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-systemload-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-systemload-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-taskmanager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -5227,6 +5227,7 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="MozillaFirefox-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
