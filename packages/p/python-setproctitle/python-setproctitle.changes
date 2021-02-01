@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 28 23:04:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  - Fixed Windows build (issues #89, #90).
+  - Added wheel packages for Windows (issues #47, #90).
+  - Added wheel packages for aarch64 (issues #95).
+
+-------------------------------------------------------------------
 Sat Dec 19 10:02:40 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1

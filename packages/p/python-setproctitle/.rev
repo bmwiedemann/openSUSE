@@ -238,4 +238,15 @@
   - Fixed segfault after ``os.environ.clear()`` (issue #88).</comment>
     <requestid>856966</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3137585826403357812ebea03ea8e647</srcmd5>
+    <version>1.2.2</version>
+    <time>1612182419</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2:
+  - Fixed Windows build (issues #89, #90).
+  - Added wheel packages for Windows (issues #47, #90).
+  - Added wheel packages for aarch64 (issues #95).</comment>
+    <requestid>867595</requestid>
+  </revision>
 </revisionlist>
