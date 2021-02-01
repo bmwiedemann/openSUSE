@@ -1784,4 +1784,15 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847189</requestid>
   </revision>
+  <revision rev="235" vrev="2">
+    <srcmd5>a6c7b3bbc5bb231bda51fe1882dedc21</srcmd5>
+    <version>3.38.2</version>
+    <time>1612186901</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixup gdm.sysyers: gecos field needs to be quoted for multi-word
+  value.
+
+- Use sysusers config file to generate gdm user</comment>
+    <requestid>867712</requestid>
+  </revision>
 </revisionlist>

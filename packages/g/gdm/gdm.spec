@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Source7:        X11-displaymanager-gdm
 Source9:        gdm.tmpfiles
 # Use reserveVT.conf to make autologin user session not to select tty1
 Source10:       reserveVT.conf
+# Use sysusers to create gdm system user
+Source11:       gdm.sysusers
 # WARNING: do not remove/significantly change patch0 without updating the relevant patch in accountsservice too
 # PATCH-FIX-OPENSUSE  gdm-sysconfig-settings.patch bnc432360 bsc#919723 hpj@novell.com -- Read autologin options from /etc/sysconfig/displaymanager; note that accountsservice has a similar patch (accountsservice-sysconfig.patch)
 Patch0:         gdm-sysconfig-settings.patch
@@ -76,7 +78,8 @@ BuildRequires:  gnome-session-core
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pwdutils
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -113,9 +116,6 @@ Requires:       gnome-shell
 # xdm package ships systemd display-manager service and other common scripts
 # between display managers (bsc#1084655)
 Requires:       xdm
-# FIXME: use proper Requires(pre/post/preun/...)
-# For groupadd, useradd, usermod
-PreReq:         pwdutils
 Requires(post): dconf
 Requires(pre):  group(video)
 Recommends:     iso-codes
@@ -129,6 +129,7 @@ DocDir:         %{_defaultdocdir}
 %ifnarch s390 s390x
 BuildRequires:  pkgconfig(xorg-server)
 %endif
+%sysusers_requires
 
 %description
 The GNOME Display Manager is a system service that is responsible for
@@ -248,6 +249,7 @@ running display manager.
         -Dwayland-support=true \
         %nil
 %meson_build
+%sysusers_generate_pre %{SOURCE11} gdm
 
 %install
 %meson_install
@@ -295,17 +297,16 @@ install -m 644 %{SOURCE9} %{buildroot}%{_tmpfilesdir}/gdm.conf
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/logind.conf.d
 install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
 
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE11} %{buildroot}%{_sysusersdir}/gdm.conf
+
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
 
 %check
 %meson_test
 
-%pre
-%{_sbindir}/groupadd -r gdm 2> /dev/null || :
-%{_sbindir}/useradd -r -g gdm -G video -s /bin/false \
--c "Gnome Display Manager daemon" -d %{_localstatedir}/lib/gdm gdm 2> /dev/null || :
-%{_sbindir}/usermod -g gdm -G video -s /bin/false gdm 2> /dev/null
+%pre -f gdm.pre
 
 %post
 %tmpfiles_create gdm.conf
@@ -362,6 +363,7 @@ dconf update
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
 %{_udevrulesdir}/61-gdm.rules
 %{_tmpfilesdir}/gdm.conf
+%{_sysusersdir}/gdm.conf
 %dir %{_prefix}/lib/systemd/logind.conf.d
 %{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
 %dir %{_userunitdir}/gnome-session@gnome-login.target.d
