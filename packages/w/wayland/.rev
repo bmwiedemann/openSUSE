@@ -339,4 +339,12 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment></comment>
     <requestid>777736</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e92095bac5b9d73e1f7370e57681b8ca</srcmd5>
+    <version>1.19.0</version>
+    <time>1612182337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.19</comment>
+    <requestid>867284</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 27 18:19:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.19
+  * This release mostly contains bug fixes and minor
+    protocol updates.
+
+-------------------------------------------------------------------
 Thu Feb 20 15:02:56 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace public key in keyring with
