@@ -158,4 +158,14 @@
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 828980 from gmbr3)</comment>
     <requestid>829091</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>05a8913a7cae8d8cbbe845db1d2b3cc8</srcmd5>
+    <version>3.8</version>
+    <time>1612186897</time>
+    <user>dimstar_suse</user>
+    <comment>- remove obsolete info macros (boo#1152105)
+- fix update-alternatives usage (need to be in postun)
+- prepare usrmerge (boo#1029961) (forwarded request 867516 from lnussel)</comment>
+    <requestid>867652</requestid>
+  </revision>
 </revisionlist>

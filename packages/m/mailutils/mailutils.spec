@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,10 +67,8 @@ BuildRequires:  pkgconfig(kyotocabinet)
 BuildRequires:  pkgconfig(libgsasl)
 BuildRequires:  pkgconfig(python3)
 Requires:       guile = %(rpm -q --queryformat '%%{VERSION}' guile-devel)
-Requires(post): %{install_info_prereq}
 Requires(post): update-alternatives
-Requires(preun): %{install_info_prereq}
-Requires(preun): update-alternatives
+Requires(postun): update-alternatives
 %if 0
 # Seems not compatible with original radius (missing debug.h)
 BuildRequires:  freeradius-server-devel
@@ -324,13 +322,17 @@ mv %{buildroot}%{_mandir}/man1/mail.1 %{buildroot}%{_mandir}/man1/mu-mail.1
 
 mkdir -p %{buildroot}/bin
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+%if !0%{?usrmerged}
 ln -sf %{_sysconfdir}/alternatives/binmail %{buildroot}/bin/mail
+%endif
 ln -sf %{_sysconfdir}/alternatives/Mail    %{buildroot}%{_bindir}/Mail
 ln -sf %{_sysconfdir}/alternatives/mail    %{buildroot}%{_bindir}/mail
 ln -sf %{_sysconfdir}/alternatives/Mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/Mail.1%{?ext_man}
 ln -sf %{_sysconfdir}/alternatives/mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/mail.1%{?ext_man}
 #
+%if !0%{?usrmerged}
 ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/binmail
+%endif
 ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/Mail
 ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/mail
 ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/Mail.1%{?ext_man}
@@ -341,10 +343,11 @@ ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternati
 %find_lang %{name}
 
 %post
-%install_info --info-dir=%{_infodir} %{_infodir}/mailutils.info.gz
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mu-mail 10 \
+%if !0%{?usrmerged}
     --slave   /bin/mail binmail %{_bindir}/mu-mail \
+%endif
     --slave   %{_bindir}/Mail Mail %{_bindir}/mu-mail \
     --slave   %{_mandir}/man1/mail.1%{?ext_man} mail.1%{?ext_man} %{_mandir}/man1/mu-mail.1%{?ext_man} \
     --slave   %{_mandir}/man1/Mail.1%{?ext_man} Mail.1%{?ext_man} %{_mandir}/man1/mu-mail.1%{?ext_man}
@@ -353,8 +356,7 @@ ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternati
 %set_permissions %{_sbindir}/maidag
 %endif
 
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/mailutils.info.gz
+%postun
 if test ! -e %{_bindir}/mu-mail; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mu-mail
 fi
@@ -376,7 +378,10 @@ fi
 %if %{with set_user_identity}
 %config %{_sysconfdir}/permissions.d/mailutils*
 %endif
+%if !0%{?usrmerged}
 %ghost %config %{_sysconfdir}/alternatives/binmail
+/bin/mail
+%endif
 %ghost %config %{_sysconfdir}/alternatives/Mail
 %ghost %config %{_sysconfdir}/alternatives/mail
 %ghost %config %{_sysconfdir}/alternatives/Mail.1%{?ext_man}
@@ -387,7 +392,6 @@ fi
 %{_bindir}/frm
 %{_bindir}/from
 %{_bindir}/guimb
-/bin/mail
 %{_bindir}/Mail
 %{_bindir}/mail
 %{_bindir}/mu-mail
