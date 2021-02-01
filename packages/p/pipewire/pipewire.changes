@@ -1,4 +1,282 @@
 -------------------------------------------------------------------
+Thu Jan 21 12:12:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(ldacBT-abr) and pkgconfig(ldacBT-enc)
+  BuildRequires: Build bluetooth ldac codec support.
+
+-------------------------------------------------------------------
+Wed Jan 20 15:50:31 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.20:
+  * Highlights
+    + Latency was reduced in ALSA and PulseAudio and time
+      reporting has improved a lot.
+    + Bluetooth now has a native HFP backed, SBC XQ and
+      mSBC support.
+    + Many bugfixes and improvements, improved device
+      support.
+  * PipeWire improvements
+    + pw-dump can now dump all objects such as Endpoints
+    + pw-dump has a -m option to monitor changes
+    + pw-dump can now dump metadata
+    + pw-stream can now use the rate-match io to exactly
+      produce the required number of samples for the
+      current cycle. When using this feature, a stream can
+      achieve the same low-latency as pw-filter.
+    + spa-acp-tool can now load a custom profile-set and
+      correctly parses the volume updates
+    + There is now a nofail option when loading modules
+    + The connection has been made reentrant to fix some
+      strange random problems with metadata.
+    + Turn some errors into warnings or simply info.
+    + Executables are now built with PIE
+    + S24OE formats should work now (MAudio FastTrack Pro)
+    + Remove mlock warnings. Add support for mlockall with
+      a config option.
+  * Session-manager
+    + There are now config files for bluez and v4l2 modules
+    + Improve ALSA device and node properties
+    + Bluetooth devices have better properties now.
+    + The default device routing has been improved.
+  * Device support
+    + Port priorities are updated for UCM devices
+    + ACP devices notify change in routes in all cases
+    + There is now RW support in ALSA devices to increase
+      compatibility.
+    + Many improvements to Bluetooth. SBC XQ support can now
+      be enabled with a config option. mSBC can be enabled
+      with an option.
+    + Bluetooth devices not expose Routes so that they look
+      more like how PulseAudio handles them
+    + Gracefully handle missing profile-sets
+    + There is now a native HFP backend
+    + Improve card names in some cases.
+    + pause-on-idle is now disabled for ALSA devices. This can
+      reduce pops and clicks when the device is stopped.
+  * ALSA plugin
+    + Use rate-match to reduce the latency
+    + Implement a _delay() function to get smoother timestamps.
+    + Fix property parsing. Fixes volume changes in alsamixer.
+  * PulseAudio server
+    + Use rate-match to reduce the latency. This also reduces
+      the buffering in audioconvert and improves timestamp
+      reporting.
+    + Implement rate changes now that we have rate-match
+      support.
+    + pactl stats will now work
+    + Fix excessive memory usage when a capture client doesn't
+      read fast enough.
+
+-------------------------------------------------------------------
+Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 0.3.19:
+  * Highlights
+    - Startup after login should be fixed now with inotify
+      used to wait for permissions.
+    - Channels should be mapped correctly now.
+    - Many bluetooth improvements in LDAC, AptX-HD. AAC was
+      also added. Headsets should work better now.
+    - pipewire-libpulse was removed. It is now completely
+      replaced by pipewire-pulse.
+    - Fix a crasher bug in pipewire-pulse and some memory leaks.
+    - Fix a bug with feedback loop that would cause 100% CPU.
+    - A new pw-top tool to display real-time graph performance.
+    - The example session manager now has config files.
+    - The config file format was changed to use the SPA JSON
+      tokenizer. This makes it more flexible and extensible.
+  * PipeWire improvements
+    - Fix debug of id in format channels
+    - Audioconvert should now remap channels correctly in all
+      cases.
+    - Feedback loops were not scheduled correctly and would
+      cause 100% CPU usage.
+    - Small improvements to the profiler to also log incomplete
+      graph status.
+    - a new tool pw-top was added that prints real-time performance
+      stats of the graph.
+    - the rtkit module now sets the nice level to -11
+  * Session-manager
+    - The session manager would sometimes link dont-reconnect
+      nodes to another node, which would leak monitor streams in
+     pipewire-pulse.
+    - The session manager now has configuration files. Config files
+      can also be placed in the user home directory to make custom
+      configurations.
+    - The session managers now creates unique device and node
+      names for alsa and v4l2 devices.
+  * Device support
+    - Many improvements in Bluetooth codecs, LDAC stuttering,
+      AptX-HD negotiation, LDAC ABR support
+    - Bluetooth supports AAC audio now.
+    - Many fixes to Bluetooth SCO transport used in headsets.
+    - inotify support in device monitors
+    - ACP was synced with the latest pulseaudio code
+    - Fix a bug in enumeration of device ports.
+  - PulseAudio server
+    - seek flags and offset are now supported, making gstreamer
+      pulse elements work better.
+    - Fix a crasher bug in pipewire-pulse, we sometimes would
+      write too much to the ringbuffer
+    - Fix some memory leaks in error cases.
+    - Fix handling of NULL string to locate default sink/source
+  * JACK layer
+    - Ports can also be found with the aliases now, making
+      qjackctl work in more cases.
+- Changes from PipeWire 0.3.18:
+  * Highlights
+    - More work in the PulseAudio server. It should be compatible
+      with more applications.
+    - Bluetooth now support extra codecs such as AptX/HD and LDAC.
+    - Support for virtual sources and sink was improved a lot.
+    - Added a new pw-dump tool to dump the objects in JSON formats
+      and for filtering them with tools like jq.
+    - Many more stability fixes and improvements.
+  * PipeWire improvements
+    - Silence some harmless warnings
+    - pw-cli can now be used to set parameters.
+    - Streams now perform the correct channel mapping when linked
+      to non-standard multichannel devices. Previously channels
+      would get swapped.
+    - port, node and device params are now cached in the server.
+      This avoids opening and closing devices whenever some client
+      enumerates formats, which improves performance a lot,
+      especially in cases where opening a device is slow.
+    - Add a command to keep a device open during negotiation. This
+      is used to enumerate and set a format while opening the
+      device just once, improving performance.
+    - The null-sink scheduling was fixed.
+    - A memory corruption bug was fixed in format conversion, this
+      could cause crashes, silent channels or other undefined
+      behaviour.
+    - There is now a simple JSON parser.
+  * Session-manager
+    - Settings files are now stored in JSON. With the json parser
+      this is easier to parse and extend
+  * Device support
+    - Bluetooth now supports additional codecs: LDAC, AptX and
+      AptX HD. LDAC is known to not work very well yet.
+    - ALSA devices will now default to the max supported channels
+      if nothing else is specified. This makes it possible to use
+      8+ channel cards with the alsa-pcm module, which is not
+      supported with the default alsa-acp module.
+    - Enable mSBC support in oFono.
+    - Add an option to disable hardware mixers
+    - ALSA now improves support for batch devices.
+    - The udev rules had references to Pulseaudio removed in order
+      to not create conflicts.
+    - Fix a potential crash in bluetooth devices when
+      disconnecting.
+    - UCM cards now use HW volume when possible.
+  * PulseAudio server
+    - The id can now be used as the name to locate cards and
+      devices
+    - Report streams with planar formats as well
+    - Better error reporting when stream create fails
+    - module-null-sink can now handle channels, rate and
+      channel_map properties
+    - Add support for 3 types of virtual devices: source,
+      sink and duplex.
+    - set-port was fixed
+    - Some buffer parameters were tweaked to improve
+      performance, compatibility and stuttering with lower
+      latency.
+    - NULL can be used as a name for the device sink/source
+    - Support lookup of monitor names
+    - Set properties more like pulseaudio so that some
+      clients (Teamspeak) don't crash anymore
+- Changes from PipeWire 0.3.17:
+  * Highlights
+    - Fix crasher bug for kwin when screensharing stopped.
+    - Massive improvements and compatibility fixes in the
+      PulseAudio server.
+    - The session manager now has a config directory in
+      /etc/pipewire/media-session.d/ It will look for files there
+      to activate session manager modules. Packagers can use
+      this to only activate the audio modules when the PulseAudio
+      server, libjack.so or the alsa modules are installed.
+  * PipeWire improvements
+    - We now clear hooks before adding them. Some application
+      did not clear them and had random data for the destroy
+      callback.
+    - Return -ENOENT from unknown resources so apps can handle
+      this better. It's a common problem when an app tries to
+      introspect and object but it disappeared before the message
+      reached the server. Apps should ignore this.
+    - channelmap information is now passed with the volume
+    settings.
+    - DMABuf is not mmapp()ed anymore with the FLAG_MAP_BUFFERS in
+      the stream or filter. This is because DMABuf usually
+      requires more that just a simple mmap and is better left
+      for the application.
+    - increase the maximum number of ports for a client-node.
+    - adapter and node-factory now support the linger option to
+      keep the objects alive after the creating client disconnected.
+  * Device support
+    - ALSA now handles error in close(), like when unplugging a
+      USB device.
+  * Session-manager
+    - The session manager is now handling DONT_RECONNECT streams
+      without a target node. They get connected to a default node
+      once and then fail to reconnect.
+    - The session manager now exposes the stream setting as
+      metadata. This makes it possible for other components, such
+      as pulse-server to use this information. Information is stored
+      as a json object for easier consumption.
+    - The session manager now has a config directory in
+      /etc/pipewire/media-session.d/ packagers can use this
+  * PulseAudio server
+    - Pulse server now acquire the dbus name.
+    - Improvements in timing and compatibility with many apps.
+    - The stream-restore extension is now implemented so that
+      the event volume can be configured.
+    - Many stability fixes and improvements.
+    - Fix some issues with module-load/unload
+- Changes from PipeWire 0.3.16:
+  * Highlights
+    - Fix screensharing for old 0.2 clients
+    - Many pulse-server improvements. There is now a
+      pipewire-pulse binary that is the prefered solution for
+      PulseAudio compatibility. The replacement libpulse
+      libraries are now deprecated. This also makes audio in
+      Flatpak work.
+  * PipeWire improvements
+    - Fix cleanup of listeners everywhere. Force remove of
+      listeners in _destroy to avoid crashes.
+    - Add support for a journald logger module.
+    - Various memory leak fixes
+    - Silence some warnings that spammed the logs.
+    - Fix flush in pw_stream. This fixes small glitches when
+      switching streams in music players.
+    - Various FreeBSD fixes and improvements.
+    - Fix some crashes when destroying objects.
+  * Device support
+    - Reload the ALSA configuration when creating a node so that
+      hotplugged devices work in all cases.
+    - Fix memory leaks in ACP library. This also fixes issues
+      where the mixer device was not closed.
+    - Bluetooth now has support for the mSBC codec for SCO
+      source and sink.
+  * pulse-server
+    - Many introspection and compatibility improvements. It should
+      now be as good or better than the replacement library.
+    - Implement sample cache to make notification events work.
+  * JACK layer
+    - handle errors when linking, fixes jack_connect hang when
+      the ports were already linked.
+- Drop patches do-not-use-snd_pcm_ioplug_hw_avail.patch and
+  fix-memfd_create-call.patch, no longer needed on SLE/Leap which
+  have updated glibc / alsa.
+- Drop do-not-install-alsa-config-files.patch, remove files at
+  install time instead.
+- pw-pulse wrapper is gone, remove all mentions of it.
+- Package pulseaudio replacement in a subpackage and drop
+  pipewire-libpulse-0_3 (pipewire will use pulseaudio libraries
+  directly).
+- Create an alsa subpackage and move alsa pipewire plugin to this
+  subpackage.
+
+-------------------------------------------------------------------
 Thu Nov  5 10:37:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.15:

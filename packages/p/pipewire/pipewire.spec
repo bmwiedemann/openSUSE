@@ -1,7 +1,7 @@
 #
 # spec file for package pipewire
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define _use_internal_dependency_generator 0
 
-%global provfind sh -c "grep -v -e 'libpulse.*\\.so' -e 'libjack.*\\.so' | %__find_provides"
+%global provfind sh -c "grep -v -e 'libjack.*\\.so' | %__find_provides"
 %global __find_provides %provfind
 
 %define apiver 0.3
@@ -35,7 +35,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.15
+Version:        0.3.20
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -44,9 +44,6 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
-Patch0:         fix-memfd_create-call.patch
-Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
-Patch2:         do-not-install-alsa-config-files.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -71,6 +68,8 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.10
+BuildRequires:  pkgconfig(ldacBT-abr)
+BuildRequires:  pkgconfig(ldacBT-enc)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
@@ -103,7 +102,6 @@ Some of its features include:
 
 %package -n %{libpipewire}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
-License:        MIT
 Group:          System/Libraries
 Recommends:     pipewire
 
@@ -122,7 +120,6 @@ This package provides the PipeWire shared library.
 
 %package libjack-%{apiver_str}
 Summary:        PipeWire libjack replacement libraries
-License:        MIT
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -141,29 +138,8 @@ Some of its features include:
 This package provides the PipeWire replacement libraries for libjack.
 
 
-%package libpulse-%{apiver_str}
-Summary:        A Multimedia Framework designed to be an audio and video server and more
-License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-
-%description libpulse-%{apiver_str}
-PipeWire is a server and user space API to deal with multimedia pipelines.
-
-Some of its features include:
-
- * Capture and playback of audio and video with minimal latency;
- * Real-time Multimedia processing on audio and video;
- * Multiprocess architecture to let applications share multimedia content;
- * GStreamer plugins for easy use and integration in current applications;
- * Sandboxed applications support.
-
-This package provides the PipeWire shared library.
-
 %package -n gstreamer-plugin-pipewire
 Summary:        Gstreamer Plugin for PipeWire
-License:        MIT
 Group:          System/Libraries
 
 %description -n gstreamer-plugin-pipewire
@@ -173,17 +149,13 @@ This package provides the gstreamer plugin.
 
 %package tools
 Summary:        The PipeWire Tools
-License:        MIT
 Group:          Productivity/Multimedia/Other
 
 %description tools
-SPA or Simple Plugin API is a plugin API.
-
-This package provides pipewire-cli and pipewire-monitor tools.
+This package contains command line utilities for the PipeWire media server.
 
 %package spa-tools
 Summary:        The PipeWire SPA Tools
-License:        MIT
 Group:          Productivity/Multimedia/Other
 
 %description spa-tools
@@ -193,7 +165,6 @@ This package provides spa-inspect and spa-monitor tools.
 
 %package modules
 Summary:        Modules For PipeWire, A Multimedia Framework
-License:        MIT
 Group:          Productivity/Multimedia/Other
 Requires:       pipewire
 
@@ -210,7 +181,6 @@ The framework is used to build a modular daemon that can be configured to:
 
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
-License:        MIT
 Group:          Productivity/Multimedia/Other
 Requires:       pipewire
 
@@ -235,7 +205,6 @@ This package provides plugins for extending PipeWire SPA's functionality.
 
 %package devel
 Summary:        Development Files For PipeWire, A Multimedia Framework
-License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{libpipewire} >= %{version}
 
@@ -246,26 +215,40 @@ This package provides all the necessary files for development with PipeWire
 
 %package doc
 Summary:        PipeWire media server documentation
-License:        MIT
 Group:          Development/Libraries/C and C++
 
 %description doc
 This package contains documentation for the PipeWire media server.
 
+%package alsa
+Summary:        PipeWire media server ALSA support
+Group:          Development/Libraries/C and C++
+Recommends:     %{name} >= %{version}-%{release}
+Requires:       %{libpipewire} >= %{version}-%{release}
+
+%description alsa
+This package contains an ALSA plugin for the PipeWire media server.
+
+%package pulseaudio
+Summary:        PipeWire PulseAudio implementation
+Group:          Development/Libraries/C and C++
+Recommends:     %{name} >= %{version}-%{release}
+Requires:       %{libpipewire} >= %{version}-%{release}
+Conflicts:      pulseaudio
+
+# Virtual Provides to support swapping between PipeWire-PA and PA
+#Provides:       pulseaudio-daemon
+#Conflicts:      pulseaudio-daemon
+#Provides:       pulseaudio-module-bluetooth
+#Provides:       pulseaudio-module-jack
+
+%description pulseaudio
+This package provides a PulseAudio implementation based on PipeWire
+
+%lang_package
+
 %prep
-%setup
-%if %{pkg_vcmp glibc < 2.27}
-%patch0 -p1
-%endif
-
-%if %{pkg_vcmp alsa-devel < 1.1.7}
-%patch1 -p1
-sed -i -e "s/dependency('alsa', version : '>=1.1.7')/dependency('alsa', version : '>=1.1.5')/" meson.build
-%endif
-sed -i -e "s/meson_version : '>= 0.49.0',/meson_version : '>= 0.46.0',/" meson.build
-%patch2 -p1
-
-%autopatch -m 100 -p1
+%autosetup -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -289,24 +272,33 @@ export CC=gcc-9
 
 %install
 %meson_install
+#do not install alsa card paths, profile-sets configuration files and udev rules which upstream installs "so that we don't have to rely on the pulseaudio ones"
+
+rm -fr %{buildroot}%{_datadir}/alsa-card-profile/mixer
 
 mkdir -p %{buildroot}%{_sysconfdir}/alsa/conf.d/
-# Copy the alsa configuration but keep 99-pipewire-default.conf disabled by default
-cp -a pipewire-alsa/conf/50-pipewire.conf %{buildroot}%{_sysconfdir}/alsa/conf.d/
-cp -a pipewire-alsa/conf/99-pipewire-default.conf %{buildroot}%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf.example
+cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf \
+        %{buildroot}%{_sysconfdir}/alsa/conf.d/50-pipewire.conf
+cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf \
+        %{buildroot}%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
+touch %{buildroot}%{_sysconfdir}/pipewire/media-session.d/with-alsa
+mkdir -p %{buildroot}%{_udevrulesdir}
+mv -fv %{buildroot}/lib/udev/rules.d/90-pipewire-alsa.rules %{buildroot}%{_udevrulesdir}
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-for wrapper in pw-pulse pw-jack ; do
+for wrapper in pw-jack ; do
     mv  %{buildroot}%{_bindir}/$wrapper   %{buildroot}%{_bindir}/$wrapper-%{apiver}
     ln -s -f %{_sysconfdir}/alternatives/$wrapper %{buildroot}%{_bindir}/$wrapper
 done
 
-for manpage in pw-jack pw-pulse ; do
+for manpage in pw-jack ; do
     mv  %{buildroot}%{_mandir}/man1/$manpage.1 %{buildroot}%{_mandir}/man1/$manpage-%{apiver}.1
     ln -s -f %{_sysconfdir}/alternatives/$manpage.1%{ext_man} %{buildroot}%{_mandir}/man1/$manpage.1%{ext_man}
 done
 
 %fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
+
+%find_lang %{name} %{name}.lang
 
 %check
 %meson_test
@@ -331,17 +323,17 @@ fi
 %postun
 %systemd_user_postun pipewire.socket
 
+%preun pulseaudio
+%systemd_user_preun pipewire-pulse.service pipewire-pulse.socket
+
+%post pulseaudio
+%systemd_user_post pipewire-pulse.service pipewire-pulse.socket
+
+%postun pulseaudio
+%systemd_user_postun pipewire-pulse.service pipewire-pulse.socket
+
 %post   -n %{libpipewire} -p /sbin/ldconfig
 %postun -n %{libpipewire} -p /sbin/ldconfig
-
-%post libpulse-%{apiver_str}
-%{_sbindir}/update-alternatives --install %{_bindir}/pw-pulse pw-pulse %{_bindir}/pw-pulse-%{apiver} 20 \
-    --slave %{_mandir}/man1/pw-pulse.1%{ext_man} pw-pulse.1%{ext_man} %{_mandir}/man1/pw-pulse-%{apiver}.1%{ext_man}
-
-%postun libpulse-%{apiver_str}
-if [ ! -e %{_bindir}/pw-pulse-%{apiver} ] ; then
-  %{_sbindir}/update-alternatives --remove pw-pulse %{_bindir}/pw-pulse-%{apiver}
-fi
 
 %post libjack-%{apiver_str}
 %{_sbindir}/update-alternatives --install %{_bindir}/pw-jack pw-jack %{_bindir}/pw-jack-%{apiver} 20 \
@@ -362,17 +354,11 @@ fi
 
 %dir %{_sysconfdir}/pipewire
 %config %{_sysconfdir}/pipewire/pipewire.conf
-
-%dir %{_libdir}/alsa-lib
-%{_libdir}/alsa-lib/libasound_module_pcm_pipewire.so
-%{_libdir}/alsa-lib/libasound_module_ctl_pipewire.so
-%dir %{_datadir}/alsa/alsa.conf.d
-%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf
-%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf
-%dir %{_sysconfdir}/alsa
-%dir %{_sysconfdir}/alsa/conf.d
-%config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
-%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf.example
+%dir %{_sysconfdir}/pipewire/media-session.d
+%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/media-session.conf
+%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/alsa-monitor.conf
+%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/bluez-monitor.conf
+%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/v4l2-monitor.conf
 
 %files -n %{libpipewire}
 %license LICENSE COPYING
@@ -390,19 +376,7 @@ fi
 %{_bindir}/pw-jack
 %{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
 %{_mandir}/man1/pw-jack.1%{ext_man}
-
-%files libpulse-%{apiver_str}
-%license pipewire-pulseaudio/LICENSE
-%dir %{_libdir}/pipewire-%{apiver}/pulse
-%{_libdir}/pipewire-%{apiver}/pulse/libpulse.so*
-%{_libdir}/pipewire-%{apiver}/pulse/libpulse-simple.so*
-%{_libdir}/pipewire-%{apiver}/pulse/libpulse-mainloop-glib.so*
-%ghost %{_sysconfdir}/alternatives/pw-pulse
-%ghost %{_sysconfdir}/alternatives/pw-pulse.1%{ext_man}
-%{_bindir}/pw-pulse-%{apiver}
-%{_bindir}/pw-pulse
-%{_mandir}/man1/pw-pulse-%{apiver}.1%{ext_man}
-%{_mandir}/man1/pw-pulse.1%{ext_man}
+%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-jack
 
 %files -n gstreamer-plugin-pipewire
 %{_libdir}/gstreamer-1.0/libgstpipewire.so
@@ -410,9 +384,11 @@ fi
 %files tools
 %{_bindir}/pw-cli
 %{_bindir}/pw-dot
+%{_bindir}/pw-dump
 %{_bindir}/pw-mon
 %{_bindir}/pw-profiler
 %{_bindir}/pw-cat
+%{_bindir}/pw-dump
 %{_bindir}/pw-play
 %{_bindir}/pw-record
 %{_bindir}/pw-metadata
@@ -462,6 +438,7 @@ fi
 %{_libdir}/spa-%{spa_ver}/ffmpeg/libspa-ffmpeg.so
 %{_libdir}/spa-%{spa_ver}/jack/libspa-jack.so
 %{_libdir}/spa-%{spa_ver}/support/libspa-dbus.so
+%{_libdir}/spa-%{spa_ver}/support/libspa-journal.so
 %{_libdir}/spa-%{spa_ver}/support/libspa-support.so
 %{_libdir}/spa-%{spa_ver}/v4l2/libspa-v4l2.so
 %{_libdir}/spa-%{spa_ver}/videoconvert/libspa-videoconvert.so
@@ -498,5 +475,26 @@ fi
 %files doc
 %dir %{_datadir}/doc/pipewire
 %{_datadir}/doc/pipewire/html
+
+%files pulseaudio
+%{_bindir}/pipewire-pulse
+%{_userunitdir}/pipewire-pulse.*
+%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-pulseaudio
+
+%files alsa
+%dir %{_libdir}/alsa-lib
+%{_libdir}/alsa-lib/libasound_module_pcm_pipewire.so
+%{_libdir}/alsa-lib/libasound_module_ctl_pipewire.so
+%dir %{_datadir}/alsa/alsa.conf.d
+%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf
+%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf
+%dir %{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa/conf.d
+%config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
+%config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
+%config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-alsa
+%{_udevrulesdir}/90-pipewire-alsa.rules
+
+%files lang -f %{name}.lang
 
 %changelog
