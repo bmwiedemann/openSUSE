@@ -1841,4 +1841,41 @@ successfully tested on Tumbleweed x86_64</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1180473</comment>
   </revision>
+  <revision rev="196" vrev="2">
+    <srcmd5>d0628636d7653b3781173fd2b8622773</srcmd5>
+    <version>3.5.9</version>
+    <time>1612182326</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1180473 - [Build 20201230] postfix has invalid default config
+  Fixing config.postfix and sysconfig.postfix
+
+- Update to 3.5.9
+  * improves the reporting of DNSSEC problems that may affect
+    DANE security
+
+- Only do the conversion from the hash/btree databases to lmdb when
+  the default database type changes from hash to lmdb and do not
+  stop and start the service (the old compiled databases can live
+  together with the new ones)
+  - convert-bdb-to-lmdb.sh
+- Clean up the specfile
+  * Remove &lt; 1330 conditional builds
+  * Use generated postfix-files instead of the obsolete one from
+    postfix-SUSE.tar.gz
+  * Use dynamicmaps.cf.d instead of modifying dynamicmaps.cf upon
+    (de)installation of optional mysql, pgsql and ldap subpackages
+  * Use default location for post-install, postfix-tls-script,
+    postfix-wrapper and postmulti-script
+
+- Set lmdb to be the default db.
+- Convert btree tables to lmdb too. Stop postfix before converting from
+  bdb to lmdb
+- This package is without bdb support. That's why convert must be done
+  without any suse release condition.
+  o remove patch postfix-no-btree.patch
+  o add set-default-db-type.patch
+
+- Set database type for address_verify_map and postscreen_cache_map</comment>
+    <requestid>867220</requestid>
+  </revision>
 </revisionlist>
