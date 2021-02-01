@@ -1,7 +1,7 @@
 #
 # spec file for package idutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Language-Independent Identifier Database Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Utilities
-Url:            http://www.gnu.org/software/idutils/
+URL:            http://www.gnu.org/software/idutils/
 Source0:        ftp://ftp.gnu.org/pub/gnu/idutils/idutils-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/pub/gnu/idutils/idutils-%{version}.tar.xz.sig
 Source2:        %{name}.keyring

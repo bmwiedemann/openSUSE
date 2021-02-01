@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Aug 28 10:22:44 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
-- gnulib.patch: adjust to glibc 2.28 libio.h removal
+- gnulib.patch: adjust to glibc 2.28 libio.h removal (bsc#1181571)
 - Use %license
 
 -------------------------------------------------------------------
