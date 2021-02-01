@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 28 22:52:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Add support for `time.monotonic` (and `…_ns`)
+  * Allow to configure default ignore list, and also to just extend the default
+  * Fixed when accessing from thread after stop()
+
+-------------------------------------------------------------------
 Tue Oct 20 01:42:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.0:
