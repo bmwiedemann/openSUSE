@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>847888</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7509a35e46c6ef3740ff13e0097aaa4a</srcmd5>
+    <version>5.4.3</version>
+    <time>1612182409</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the conditional to work with new python-rpm-macros
+</comment>
+    <requestid>867575</requestid>
+  </revision>
 </revisionlist>

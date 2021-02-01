@@ -72,7 +72,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
 %endif
-%if %{python3_version_nodots} < 36
+%if %{?python3_version_nodots} < 36
 Requires:       python-pathlib2 >= 2.2.0
 %endif
 %python_subpackages

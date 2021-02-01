@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 28 21:09:10 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Fix the conditional to work with new python-rpm-macros
+
+-------------------------------------------------------------------
 Tue Nov 10 17:21:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix boo#1178547: include transition for pytest py.test
