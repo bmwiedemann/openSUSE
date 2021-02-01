@@ -1,7 +1,7 @@
 #
 # spec file for package libvc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib   libvc0
 Name:           libvc
-Version:        007
+Version:        008
 Release:        0
 Summary:        Library to read and write vcard files
 License:        LGPL-2.1-only
