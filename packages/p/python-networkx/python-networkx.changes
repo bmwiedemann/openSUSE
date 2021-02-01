@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 30 01:42:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Temporarily reenable python36 build until SciPy is updated,
+  because the PyYAML fix needs to be merged first
+
+-------------------------------------------------------------------
+Wed Jan 27 12:55:26 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add yaml-loader.patch adding support for new PyYAML
+
+-------------------------------------------------------------------
+Mon Jan 18 01:43:05 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 because of SciPy 1.6.0
+
+-------------------------------------------------------------------
 Tue Oct  6 11:47:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream that fixes gh#networkx/networkx#4203)

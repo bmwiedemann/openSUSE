@@ -1,7 +1,7 @@
 #
 # spec file for package python-networkx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# Temporarily reenabled until SciPy is updated, because the PyYAML fix needs to be merged first
+#%%define         skip_python36 1
 Name:           python-networkx
 Version:        2.5
 Release:        0
@@ -26,6 +28,8 @@ License:        BSD-3-Clause
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
 Patch0:         0001-Replace-hash-function-for-test-of-weighted-astar.patch
+# PATCH-FIX-UPSTREAM https://github.com/networkx/networkx/commit/a6dd458a12ad8db161271e2271644803d4f29a96 fixes Github Actions failures
+Patch1:         yaml-loader.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module matplotlib >= 3.1}
