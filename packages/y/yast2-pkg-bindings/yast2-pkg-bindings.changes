@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 28 12:50:29 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Log more details about the newly added repositories
+  (for debugging bsc#1181344)
+- 4.3.8
+
+-------------------------------------------------------------------
+Fri Jan 22 17:21:15 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Allow filtering resolvables by RPM path, return RPM path
+  for the product packages (related to bsc#1178688, bsc#1176276)
+- 4.3.7
+
+-------------------------------------------------------------------
 Fri Jan  8 11:12:53 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed repository refresh (a bug caused downloading only the index
