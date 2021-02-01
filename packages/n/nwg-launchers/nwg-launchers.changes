@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  1 09:13:00 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.4:
+  * Fix desktop description line break (#151)
+  * Fix press entering (#152)
+  * Fix nwgdmenu error (#153)
+
+-------------------------------------------------------------------
 Wed Jan  6 08:33:22 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.3:

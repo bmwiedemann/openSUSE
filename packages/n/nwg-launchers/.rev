@@ -84,4 +84,15 @@
   * fixed keyboard-driven selection in dmenu #141</comment>
     <requestid>860613</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>132187dd00458f5387fdc4cac9a8083f</srcmd5>
+    <version>0.4.4</version>
+    <time>1612182543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.4:
+  * Fix desktop description line break (#151)
+  * Fix press entering (#152)
+  * Fix nwgdmenu error (#153)</comment>
+    <requestid>868301</requestid>
+  </revision>
 </revisionlist>
