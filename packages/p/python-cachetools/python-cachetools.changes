@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 28 22:51:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  - Handle ``__missing__()`` not storing cache items.
+  - Clean up ``__missing__()`` example.
+
+-------------------------------------------------------------------
 Tue Dec 29 13:43:41 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:
