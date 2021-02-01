@@ -1,4 +1,3 @@
-Prefer: -PackageKit-command-not-found
 
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
 Ignore: firewall-macros:firewalld
@@ -153,6 +152,7 @@ FileProvides: /usr/bin/mimencode metamail
 # /sbin/mkinitrd is required by suse-module-tools; but this is pulled into systemd-mini, causing a cycle
 # FileProvides: /sbin/mkinitrd dracut
 FileProvides: /usr/bin/mkisofs mkisofs
+FileProvides: /usr/bin/openssl openssl
 FileProvides: /usr/bin/perl perl-base
 FileProvides: /usr/bin/pkg-config pkgconf-pkg-config
 Substitute: pkg-config pkgconf-pkg-config

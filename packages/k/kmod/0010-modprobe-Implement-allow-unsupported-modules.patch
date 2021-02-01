@@ -14,12 +14,11 @@ Patch-mainline: never
  create mode 100644 libkmod/libkmod-unsupported.c
  create mode 100644 libkmod/libkmod-unsupported.h
 
-Index: kmod-27/Makefile.am
-===================================================================
---- kmod-27.orig/Makefile.am
-+++ kmod-27/Makefile.am
-@@ -93,7 +93,9 @@ libkmod_libkmod_la_LIBADD = \
- 	${liblzma_LIBS} ${zlib_LIBS} ${libcrypto_LIBS}
+diff -u kmod-28.orig/Makefile.am kmod-28/Makefile.am
+--- kmod-28.orig/Makefile.am	2021-01-07 19:29:12.972438665 +0100
++++ kmod-28/Makefile.am	2021-01-28 12:59:16.613421834 +0100
+@@ -108,7 +108,9 @@
+ 	${libzstd_LIBS} ${liblzma_LIBS} ${zlib_LIBS} ${libcrypto_LIBS}
  
  noinst_LTLIBRARIES += libkmod/libkmod-internal.la
 -libkmod_libkmod_internal_la_SOURCES = $(libkmod_libkmod_la_SOURCES)

@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.10
-%define patchversion 5.10.9
+%define patchversion 5.10.12
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-kvmsmall
 Summary:        The Small Developer Kernel for KVM
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.10.9
+Version:        5.10.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb7732a5
+Release:        <RELEASE>.ga3c8888
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-b7732a530a744bcaca615f4d4be29f3438754621
-Provides:       kernel-srchash-b7732a530a744bcaca615f4d4be29f3438754621
+Provides:       kernel-%build_flavor-base-srchash-a3c888884a63d7ee7325a11835d55562f6785407
+Provides:       kernel-srchash-a3c888884a63d7ee7325a11835d55562f6785407
 # END COMMON DEPS
-Provides:       %name-srchash-b7732a530a744bcaca615f4d4be29f3438754621
+Provides:       %name-srchash-a3c888884a63d7ee7325a11835d55562f6785407
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -1184,6 +1184,7 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 %dir /usr/src/linux-obj
 %dir /usr/src/linux-obj/%cpu_arch
 %ghost /usr/src/linux-obj/%cpu_arch_flavor
+%exclude %obj_install_dir/%cpu_arch_flavor/Symbols.list
 %if "%kmp_target_cpu" != "%cpu_arch"
 %obj_install_dir/%kmp_target_cpu
 /usr/src/linux-obj/%kmp_target_cpu

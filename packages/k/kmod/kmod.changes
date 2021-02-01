@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan 29 11:54:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Supplement bash-completion subpackage against the main package
+  and bash-completion.
+- Also require the main package plus bash-completion: the
+  completion package is useless without either of the two.
+
+-------------------------------------------------------------------
+Thu Jan 28 12:05:17 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to v28
+  * Add Zstandard to the supported compression formats using libzstd
+     (tests only - cannot be disabled in tests)
+  * Ignore ill-formed kernel command line, e.g. with "ivrs_acpihid[00:14.5]=AMD0020:0"
+    option in it
+  * Fix some memory leaks
+  * Fix 0-length builtin.alias.bin: it needs at least the index header
+
+-------------------------------------------------------------------
+Thu Jan 28 11:03:09 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Backport upstream fix 0001-Fix-modinfo-F-always-shows-name-for-built-ins.patch
+
+-------------------------------------------------------------------
 Tue Jan 12 16:04:41 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Update usr-lib-modprobe.patch to upstream submission (boo#1180821).

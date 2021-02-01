@@ -1,0 +1,38 @@
+From fa67110f896cdef67f42cbc2206ae2a8524acee6 Mon Sep 17 00:00:00 2001
+From: Marco d'Itri <md@linux.it>
+Date: Thu, 7 Jan 2021 20:17:48 -0800
+Subject: [PATCH] Fix "modinfo -F always shows name for built-ins"
+
+Bug reported by Ben Hutchings <ben@decadent.org.uk>:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970871
+
+	Now that the kernel provides module information for potentially
+	modular code that's actually built-in, it's possible to query these
+	built-ins with "modinfo -F".  However, this doesn't work quite right:
+
+	$ modinfo -Flicense e1000e
+	GPL v2
+	$ modinfo -Flicense bitrev
+	name:           bitrev
+	GPL
+---
+ tools/modinfo.c |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+Index: kmod-27/tools/modinfo.c
+===================================================================
+--- kmod-27.orig/tools/modinfo.c
++++ kmod-27/tools/modinfo.c
+@@ -178,7 +178,11 @@ static int modinfo_do(struct kmod_module
+ 	is_builtin = (filename == NULL);
+ 
+ 	if (is_builtin) {
+-		printf("%-16s%s%c", "name:", kmod_module_get_name(mod), separator);
++		if (field == NULL)
++			printf("%-16s%s%c", "name:",
++			       kmod_module_get_name(mod), separator);
++		else if (field != NULL && streq(field, "name"))
++			printf("%s%c", kmod_module_get_name(mod), separator);
+ 		filename = "(builtin)";
+ 	}
+ 

@@ -1,3 +1,18 @@
+-------------------------------------------------------------------
+Thu Jan 28 21:17:13 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1177955 - LO-L3: SmartArt: text wrongly aligned, background boxes not quite right,...
+  * bsc1177955.diff
+
+-------------------------------------------------------------------
+Sat Jan 23 22:55:19 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Update to 7.0.4
+  * .4 bugfix release of 7.0 series
+- Removed patch:
+  * icu68.patch
+    + integrated upstream
+
 ------------------------------------------------------------------
 Thu Jan 21 07:22:58 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 

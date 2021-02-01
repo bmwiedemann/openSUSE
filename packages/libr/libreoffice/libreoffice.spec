@@ -46,7 +46,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        7.0.3.1
+Version:        7.0.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -87,7 +87,7 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-4137.tar.bz2
+Source2008:     %{external_url}/pdfium-4306.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
@@ -103,12 +103,12 @@ Patch4:         0001-Upgrade-liborcus-to-0.16.0.patch
 # LO-L3: Shadow effect(s) for table completely missing - part 1 and 2
 Patch5:         bsc1178944.diff
 Patch6:         bsc1178943.diff
-# Fix build with ICU 68
-Patch7:         icu68.patch
 # Bug 1178807 - LO-L3: Text box from PowerPoint renders vertically instead of horizontally
 Patch8:         bsc1178807.diff
 # Bug 1179025 - LO-L3: LibreOffice crashes opening a PPTX
 Patch9:         bsc1179025.diff
+# Bug 1177955 - LO-L3: SmartArt: text wrongly aligned, background boxes not quite right,...
+Patch10:        bsc1177955.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -969,9 +969,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 %patch990 -p1
 %patch991 -p1
 
