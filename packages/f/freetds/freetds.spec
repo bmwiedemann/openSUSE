@@ -1,7 +1,7 @@
 #
 # spec file for package freetds
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           freetds
-Version:        1.1.36
+Version:        1.2.18
 Release:        0
 Summary:        A free re-implementation of the TDS (Tabular Data Stream) protocol
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 URL:            https://www.freetds.org/
-Source:         ftp://ftp.freetds.org/pub/freetds/stable/%{name}-%{version}.tar.bz2
+Source:         https://www.freetds.org/files/stable/freetds-1.2.18.tar.gz
 Patch0:         configure-return-void-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -144,7 +144,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 install -d %{buildroot}%{_docdir}/freetds
 mv %{buildroot}%{_datadir}/doc/freetds/* %{buildroot}%{_docdir}/freetds/
 rm -rf %{buildroot}%{_docdir}/freetds* %{buildroot}%{_datadir}/doc/freetds-*
-install -D AUTHORS %{buildroot}%{_defaultdocdir}/%{name}/AUTHORS
 # Fix permissions
 find %{buildroot}%{_datadir}     -type f -print0 | xargs -0 chmod -x
 find %{buildroot}%{_sysconfdir}  -type f -print0 | xargs -0 chmod -x
@@ -180,7 +179,6 @@ odbcinst -u -d -n 'SQL Server'
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files devel
-%doc BUGS NEWS README TODO
 %{_libdir}/*.so
 %{_includedir}/*
 
@@ -197,6 +195,6 @@ odbcinst -u -d -n 'SQL Server'
 %{_libdir}/libtdsodbc.so.*
 
 %files doc
-%{_defaultdocdir}/freetds/
+%doc AUTHORS.md BUGS.md NEWS.md README.md TODO.md
 
 %changelog
