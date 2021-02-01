@@ -1,7 +1,7 @@
 #
 # spec file for package live-net-installer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_url http://download.opensuse.org
 
 # AArch64 has a different repo url on TW and Leap < 15.3
-%if !0%{?sle_version} || !0%{?sle_version} < 150300
+%if !0%{?sle_version} || 0%{?sle_version} < 150300
 %ifarch aarch64
 %define base_url http://download.opensuse.org/ports/aarch64
 %endif

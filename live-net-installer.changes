@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  1 09:50:26 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Fix typo breaking the URL on Leap 15.3 on aarch64
+
+-------------------------------------------------------------------
 Wed Jan  6 16:49:53 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix EFI detection for non-x86 with kernel 5.10+ - boo#1180408
