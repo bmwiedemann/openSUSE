@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 31 17:50:13 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.8
+  * Remove unneeded x264 presets
+  * Remove predefined recording areas
+  * Add h264parse to vaapih264enc
+  * Add resolution combobox for camera recording in the dialog window
+  * Limit fps to the vertical refresh rate of the screen in Hz
+  * Add CPU count to info output
+  * Translation updates
+- Adapt add_appstream_metadata.patch
+
+-------------------------------------------------------------------
 Thu Oct  1 13:12:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.7

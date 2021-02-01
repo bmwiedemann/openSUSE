@@ -74,9 +74,9 @@ diff --git a/src/vokoscreenNG.pro b/src/vokoscreenNG.pro
 index 69bc5a33..fdf7fd07 100644
 --- a/src/vokoscreenNG.pro
 +++ b/src/vokoscreenNG.pro
-@@ -157,5 +157,30 @@ include(loadExtensions/loadExtensions.pri)
- # systrayAlternative
- include(systrayAlternative/systrayAlternative.pri)
+@@ -65,6 +65,30 @@ TRANSLATIONS = $$files(language/*.ts)
+ }
+   else: message(No translation files in project)
  
 +unix:!macx {
 +  isEmpty(PREFIX) {
@@ -102,6 +102,7 @@ index 69bc5a33..fdf7fd07 100644
 +
 +  INSTALLS += target icon desktop appdata
 +}
-+
- # ciscoOpenh264
- # include(ciscoOpenh264/ciscoOpenh264.pri)
+ 
+ # Clean target
+ QMAKE_CLEAN += $$TARGET */*~
+
