@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# there is no python36-seaborn (NEP 29)
+%define         skip_python36 1
 Name:           python-perfume-bench
 Version:        0.1.6
 Release:        0

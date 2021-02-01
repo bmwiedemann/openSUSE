@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 31 12:57:20 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 build because there is no python36-seaborn
+  (NumPy, SciPy NEP 29)
+
+-------------------------------------------------------------------
 Wed May 20 10:47:41 UTC 2020 - pgajdos@suse.com
 
 - added patches
