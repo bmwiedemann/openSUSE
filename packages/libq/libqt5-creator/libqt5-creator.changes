@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 31 13:16:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+- Don't recommend obsolete libqt5-qtquick1-devel
+
+-------------------------------------------------------------------
 Tue Jan 19 08:40:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to use GNUInstallDirs instead of using sed:

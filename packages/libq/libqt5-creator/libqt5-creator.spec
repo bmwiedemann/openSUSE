@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-creator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Enable the clangcodemodel plugin on openSUSE TW and Leap 15.3+, which have LLVM >= 10
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %global build_clang_backend 1
@@ -24,6 +25,11 @@
 %if "%{_libexecdir}" == "%{_prefix}/lib"
 %global libexecdirname lib
 %endif
+
+# Private QML imports
+%global __requires_exclude qmlimport\\((CameraGeometry|GridGeometry|HelperWidgets|LightUtils|LineGeometry|MouseArea3D|QtQuickDesignerTheme|SelectionBoxGeometry|StudioControls|StudioTheme).*
+# Has mocks for quite a few components, which are only pulled in when actually used
+%global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
 %define major_ver 4.14
 %define qt5_version 5.14.0
@@ -84,10 +90,10 @@ BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Xml) >= %{qt5_version}
-BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  cmake(yaml-cpp)
-BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libdw)
+BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(libzstd)
 Requires:       hicolor-icon-theme
 Requires:       libqt5-qtquickcontrols
 # Make sure to rebuild against latest Qt5 (using the last package in chain - libQt5Designer5)
@@ -99,7 +105,6 @@ Recommends:     libqt5-qtbase-common-devel
 Recommends:     libqt5-qtbase-devel
 Recommends:     libqt5-qtdeclarative-devel
 Recommends:     libqt5-qtdoc-qch
-Recommends:     libqt5-qtquick1-devel
 Recommends:     libqt5-qttranslations
 Provides:       qt-creator = %{version}
 Obsoletes:      qt-creator < %{version}
