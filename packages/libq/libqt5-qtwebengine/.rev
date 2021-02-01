@@ -630,4 +630,14 @@
     <comment>- Drop baselibs.conf, not needed after libksysguard5 got adjusted</comment>
     <requestid>861768</requestid>
   </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>5a24888cafdf843dee1290ac37cb1847</srcmd5>
+    <version>5.15.2</version>
+    <time>1612182320</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump _constraints and %limit_build, hopefully avoid occasional
+  OOM and make the build quicker
+- Drop obsolete conditions</comment>
+    <requestid>867694</requestid>
+  </revision>
 </revisionlist>

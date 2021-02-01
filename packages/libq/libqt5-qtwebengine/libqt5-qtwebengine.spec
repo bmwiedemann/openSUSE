@@ -124,10 +124,6 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(jsoncpp)
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
-%endif
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
@@ -315,9 +311,6 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
         QMAKE_CXXFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_LFLAGS+="-Wl,--no-keep-memory -Wl,--hash-size=31 -Wl,--reduce-memory-overheads" \
         gn_args+="link_pulseaudio=true" \
-%if 0%{?suse_version} < 1330
-        QMAKE_CC=gcc-7 QMAKE_CXX=g++-7 CONFIG+=c++14 \
-%endif
         qtwebengine.pro -- \
         -webengine-alsa -webengine-kerberos -no-webengine-embedded-build \
 %if %{with system_icu}
@@ -330,7 +323,7 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
         -system-webengine-opus -system-webengine-webp -webengine-pepper-plugins -webengine-printing-and-pdf
 
 # Determine the right number of parallel processes based on the available memory
-%limit_build -m 2500
+%limit_build -m 2750
 
 # Ensure that also the internal chromium build follows the right number of parallel
 # processes instead of its defaults.

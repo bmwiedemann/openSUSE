@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 29 11:06:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Bump _constraints and %limit_build, hopefully avoid occasional
+  OOM and make the build quicker
+- Drop obsolete conditions
+
+-------------------------------------------------------------------
 Fri Jan  8 16:27:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop baselibs.conf, not needed after libksysguard5 got adjusted
