@@ -221,4 +221,12 @@
   * Drop upstream fix-lib-build.patch</comment>
     <requestid>856941</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2a5d66d774f38a18f8d629339f24500b</srcmd5>
+    <version>1.4.8</version>
+    <time>1612182295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866512</requestid>
+  </revision>
 </revisionlist>

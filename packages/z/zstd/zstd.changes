@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 14:34:28 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add libzstd-devel-32bit (boo#1181272)
+
+-------------------------------------------------------------------
 Sat Dec 19 04:01:08 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 1.4.8 to fix i586+s390x
