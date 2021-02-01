@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 29 18:07:55 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 2.1.7
+  * a regression introduced in `2.1.0` prevented chorus from being
+    audible when `fluid_synth_process()` was used
+  * a regression introduced in `2.0.6` prevented the MIDI player from
+    restarting playback after all files have been played
+  * fix a double-free violation introduced in `2.0.0` after executing
+    the `info` shell command
+
+
+-------------------------------------------------------------------
 Sat Jan  9 11:37:13 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to version 2.1.6
