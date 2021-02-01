@@ -1,7 +1,7 @@
 #
 # spec file for package python-wheel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-wheel%{psuffix}
-Version:        0.34.2
+Version:        0.36.2
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
