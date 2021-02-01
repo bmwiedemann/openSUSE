@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+# tests fail on python2 on Leap 15.3
+%define skip_python2 1
+%endif
 Name:           python-click-plugins
 Version:        1.1.1
 Release:        0
