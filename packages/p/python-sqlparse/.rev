@@ -114,4 +114,12 @@
 - remove non-upstream stdout-encoding-set.patch patch</comment>
     <requestid>850920</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5bb525f1c333d233e71141b972628bec</srcmd5>
+    <version>0.4.1</version>
+    <time>1612182360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867445</requestid>
+  </revision>
 </revisionlist>

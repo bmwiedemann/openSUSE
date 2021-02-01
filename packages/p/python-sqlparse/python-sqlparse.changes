@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 28 08:27:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable building a python2 flavor so we can build the package
+  for Leap/SLE.
+
+-------------------------------------------------------------------
 Thu Nov 26 08:42:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.4.1:
