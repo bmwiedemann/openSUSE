@@ -1,7 +1,7 @@
 #
 # spec file for package glibmm2_4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.64.5
+Version:        2.66.0
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.64/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glibmm/2.66/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  doxygen
