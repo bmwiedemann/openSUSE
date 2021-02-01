@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 24 17:54:37 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.14
+  * BATIK-1284: Dont load DTDs in NodePickerPanel
+  * BATIK-1292: Remove console message "About to transcoder source
+    of type: ..."
+
+-------------------------------------------------------------------
 Tue Jun 16 13:00:51 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.13

@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-batik
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Scalable Vector Graphics for Java
 License:        Apache-2.0

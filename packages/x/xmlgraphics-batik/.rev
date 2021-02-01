@@ -289,4 +289,12 @@
     <comment>bsc#1172961, CVE-2019-17566</comment>
     <requestid>815293</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>19f6778d8e84f8390d74ce2878ddb473</srcmd5>
+    <version>1.14</version>
+    <time>1612182284</time>
+    <user>dimstar_suse</user>
+    <comment>1.14</comment>
+    <requestid>866484</requestid>
+  </revision>
 </revisionlist>
