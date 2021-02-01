@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(Cura.*
 
 Name:           cura
 %define sversion        4.8
