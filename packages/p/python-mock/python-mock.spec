@@ -1,7 +1,7 @@
 #
 # spec file for package python-mock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-mock%{psuffix}
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        A Python Mocking and Patching Library for Testing
 License:        BSD-2-Clause
