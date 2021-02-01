@@ -1352,4 +1352,15 @@ See also discussion at
 https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5FSP57UVYLS7BNBDNF4EGHW5TEEZUS5D/ (forwarded request 853107 from lnussel)</comment>
     <requestid>853596</requestid>
   </revision>
+  <revision rev="147" vrev="27">
+    <srcmd5>dcc6385754a4e02602ebe6935af9e227</srcmd5>
+    <version>unknown</version>
+    <time>1612182309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210125:
+  * usbauth: drop compatibility variable for libexec
+  * usbauth: Updated path for usbauth-npriv
+  * profiles: finish usage of variable for polkit-agent-helper-1</comment>
+    <requestid>866579</requestid>
+  </revision>
 </revisionlist>

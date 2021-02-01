@@ -1,7 +1,7 @@
 #
 # spec file for package permissions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION_DATE 20201111
+%define VERSION_DATE 20210125
 
 Name:           permissions
 Version:        %{VERSION_DATE}.%{suse_version}

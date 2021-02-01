@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 25 12:14:46 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 20210125:
+  * usbauth: drop compatibility variable for libexec
+  * usbauth: Updated path for usbauth-npriv
+  * profiles: finish usage of variable for polkit-agent-helper-1
+
+-------------------------------------------------------------------
 Fri Dec  4 12:58:20 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - move man page to where the documented files are
