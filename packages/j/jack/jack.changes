@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 24 16:01:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.17:
+  * Fix jack_control stopping after first command iteration
+  * Fix registry keys for Windows, add 32bit compat ones on 64bit
+  * Fix library compat/current version under macOS
+  * Fix return codes of jackd on success
+  * Ignore DB_VERSION_MISMATCH error on windows, it is expected
+  * Remove old workaround for asio4all, as it breaks with jack-router
+
+-------------------------------------------------------------------
 Mon Jan 18 09:06:19 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Removed portaudio build dependency to prevent cycles
@@ -6,7 +17,7 @@ Mon Jan 18 09:06:19 UTC 2021 - Dave Plater <davejplater@gmail.com>
 -------------------------------------------------------------------
 Thu Jan 14 16:06:37 UTC 2021 - ecsos <ecsos@opensuse.org>
 
-- Update to 0.9.16
+- Update to 1.9.16
   - Fix/revert a change in how meta-data definitions were exposed
     (regression in 1.9.15)
   - Remove jack-router Windows code from the repository
