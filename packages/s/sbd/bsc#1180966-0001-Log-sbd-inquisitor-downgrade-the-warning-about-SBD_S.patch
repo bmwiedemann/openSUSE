@@ -1,0 +1,26 @@
+From debebb2dcdd7af99b16c34f9bab2d91c42ae6cdd Mon Sep 17 00:00:00 2001
+From: "Gao,Yan" <ygao@suse.com>
+Date: Fri, 29 Jan 2021 14:14:44 +0100
+Subject: [PATCH] Log: sbd-inquisitor: downgrade the warning about
+ SBD_SYNC_RESOURCE_STARTUP to notice
+
+---
+ src/sbd-inquisitor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/sbd-inquisitor.c b/src/sbd-inquisitor.c
+index c943030..b527218 100644
+--- a/src/sbd-inquisitor.c
++++ b/src/sbd-inquisitor.c
+@@ -1122,7 +1122,7 @@ int main(int argc, char **argv, char **envp)
+         }
+ #else
+         if (!sync_resource_startup) {
+-            cl_log(LOG_WARNING, "SBD built against pacemaker supporting "
++            cl_log(LOG_NOTICE, "SBD built against pacemaker supporting "
+                              "pacemakerd-API. Should think about enabling "
+                              "SBD_SYNC_RESOURCE_STARTUP.");
+         }
+-- 
+2.26.2
+

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 29 13:19:29 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- sbd-inquisitor: downgrade the warning about SBD_SYNC_RESOURCE_STARTUP to notice (bsc#1180966)
+  * bsc#1180966-0001-Log-sbd-inquisitor-downgrade-the-warning-about-SBD_S.patch
+
+-------------------------------------------------------------------
+Fri Jan 29 10:57:17 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.4.2+20210129.5e2100f:
+- Doc: adapt description of startup/shutdown sync with pacemaker
+
+-------------------------------------------------------------------
 Thu Jan 21 12:30:37 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.4.2+20201214.01c18c7:

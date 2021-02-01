@@ -435,4 +435,12 @@ the sources.</comment>
 - sbd-inquisitor: check SBD_SYNC_RESOURCE_STARTUP only in watch mode (bsc#1180966) (forwarded request 866039 from yan_gao)</comment>
     <requestid>866040</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f256390b2d724650f5d98995f4603f24</srcmd5>
+    <version>1.4.2+20210129.5e2100f</version>
+    <time>1612182563</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 868347 from yan_gao)</comment>
+    <requestid>868348</requestid>
+  </revision>
 </revisionlist>

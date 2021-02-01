@@ -33,7 +33,7 @@
 %global sync_resource_startup_sysconfig no
 
 Name:           sbd
-Version:        1.4.2+20201214.01c18c7
+Version:        1.4.2+20210129.5e2100f
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ Group:          Productivity/Clustering/HA
 URL:            https://github.com/ClusterLabs/sbd
 Source:         %{name}-%{version}.tar.xz
 Patch1:         bsc#1140065-Fix-sbd-cluster-exit-if-cmap-is-disconnected.patch
+Patch2:         bsc#1180966-0001-Log-sbd-inquisitor-downgrade-the-warning-about-SBD_S.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
