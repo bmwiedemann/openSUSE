@@ -65,7 +65,8 @@ BuildRequires:  pkgconfig(xmlb) >= 0.1.7
 # boo#1090042
 Requires:       fwupd
 Requires:       iso-codes
-Requires:       libzypp-plugin-appdata
+Requires:       PackageKit
+Requires:       (libzypp-plugin-appdata if PackageKit-backend-zypp)
 Recommends:     flatpak
 # bsc#1178768
 %if 0%{?sle_version}
