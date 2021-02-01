@@ -419,4 +419,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>865004</requestid>
   </revision>
+  <revision rev="47" vrev="11">
+    <srcmd5>f08ba963b7ac26be29eda93e07638abb</srcmd5>
+    <version>1.99.8</version>
+    <time>1612186893</time>
+    <user>dimstar_suse</user>
+    <comment>- build with -fno-strict-aliasing on aarch64 to workaround (bsc#1181402)</comment>
+    <requestid>867587</requestid>
+  </revision>
 </revisionlist>

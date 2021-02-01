@@ -115,11 +115,7 @@ data to the decompressor; the plugin is still young and might expose bugs.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autopatch -p1
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE99} '+%%H:%%M')
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{SOURCE99} '+%%b %%e %%Y')
@@ -130,9 +126,16 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" dd_rescue.c
 autoheader
 autoconf
 %configure
+
 # avoid running dependency generation step
 touch .dep
-%make_build RPM_OPT_FLAGS="%{optflags}" LIBDIR=%{_libdir} LIB=%{_lib}
+
+OPT_FLAGS="%{optflags}"
+%ifarch aarch64
+OPT_FLAGS+=" -fno-strict-aliasing"
+%endif
+
+%make_build RPM_OPT_FLAGS="$OPT_FLAGS" LIBDIR=%{_libdir} LIB=%{_lib}
 
 %install
 %make_install RPM_OPT_FLAGS="%{optflags}" INSTALLDIR=%{buildroot}/%{_bindir} LIB=%{_lib} LIBDIR=%{_libdir} \
