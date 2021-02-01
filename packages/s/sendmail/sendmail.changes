@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 29 10:46:23 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Correct path of update script for older products/distributions
+
+-------------------------------------------------------------------
+Wed Jan 27 14:18:48 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add qtool perl script from contrib as this is very handy 
+- Make GLIBC_VERSION macro work again
+
+-------------------------------------------------------------------
 Wed Jan 27 09:21:03 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Move SMTPD_LISTEN_REMOTE hack into valid code of update script

@@ -46,8 +46,10 @@ BuildRequires:  openldap2-devel
 BuildRequires:  procmail
 BuildRequires:  tcpd-devel
 BuildRequires:  vacation
-%if 0%{?suse_version} > 1140
+%if 0%{?suse_version} > 1315
 BuildRequires:  libnsl-devel
+%endif
+%if 0%{?suse_version} > 1140
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libsystemd)
 %endif
@@ -215,15 +217,15 @@ processed mail on to the MTA (e.g. sendmail).
     cat <<-EOF > file-list
 	%%defattr(-,root,root)
 %if %{with sysvinit}
-	%%ghost %%dir %%attr(1750,root,root)   %{_localstatedir}/run/sendmail
+	%%ghost %%dir %%attr(1750,root,root)   %{_localstatedir}/run/sendmail/
 %endif
-	%%dir    %%attr(0750,root,root)        %{_localstatedir}/lib/sendmail
+	%%dir    %%attr(0750,root,root)        %{_localstatedir}/lib/sendmail/
 	%%attr(0600,root,root)                 %{_localstatedir}/lib/sendmail/statistics
 	%%attr(0600,root,root)                 %{_mailcnfdir}/statistics
-	%%dir    %%attr(0700,root,root)        %{_localstatedir}/spool/mqueue
-	%%dir    %%attr(0700,root,root)        %{_localstatedir}/spool/mqueue/.hoststat
+	%%dir    %%attr(0700,root,root)        %{_localstatedir}/spool/mqueue/
+	%%dir    %%attr(0700,root,root)        %{_localstatedir}/spool/mqueue/.hoststat/
 	# Part of filesystem RPM
-	# %%dir    %%attr(0770,root,mail)      %{_localstatedir}/spool/clientmqueue
+	# %%dir    %%attr(0770,root,mail)      %{_localstatedir}/spool/clientmqueue/
 	%%attr(0660,root,mail)                 %{_localstatedir}/spool/clientmqueue/sm-client.st
 	%%config %%attr(0644,root,root)        %{_sysconfdir}/permissions.d/sendmail
 	%%config %%attr(0644,root,root)        %{_sysconfdir}/permissions.d/sendmail.paranoid
@@ -372,8 +374,8 @@ processed mail on to the MTA (e.g. sendmail).
     ln -sf %{_bindir}/procmail %{buildroot}%{_libexecdir}/sendmail.d/bin/
     install -m 0644 K* README RELE* doc/op/op.ps sendmail/SECURITY \
                        sendmail/TRACEFLAGS suse/README.SUSE \
-                       contrib/{e*,re-*,sm*,passwd*}.pl \
-		       contrib/etrn.0 ${doc}
+                       contrib/{e*,re-*,sm*,passwd*,qtool}.pl \
+		       contrib/etrn.0 contrib/qtool.8 ${doc}
     cat > ${doc}/FAQ.sendmail.html <<-'EOF'
 	<html>
 	<head>
@@ -440,6 +442,11 @@ processed mail on to the MTA (e.g. sendmail).
     chmod 755 %{buildroot}%{_sbindir}/config.sendmail
     install -m 0644 sysconfig.sendmail      %{buildroot}%{_fillupdir}/
     install -m 0644 sysconfig.mail-sendmail %{buildroot}%{_fillupdir}/
+    if test %{_libexecdir} = /usr/lib
+    then
+	sed -ri '/^##\s+Command:/{ s@/usr/libexec@%{_libexecdir}@ }' %{buildroot}%{_fillupdir}/sysconfig.sendmail
+	sed -ri '/^##\s+Command:/{ s@/usr/libexec@%{_libexecdir}@ }' %{buildroot}%{_fillupdir}/sysconfig.mail-sendmail
+    fi
     > ${doc}/README.sendmail-local-only
     for m in messages/sendmail-local-only.[a-z][a-z]; do
 	l=${m##*.}
@@ -538,9 +545,9 @@ if test -s /etc/sysconfig/sendmail ; then
   sed -ri '\@^##[[:space:]]+Type:@,\@^#[[:space:]]+@ {
     \@^##[[:space:]]+Command:@b skip
     \@# enable this to change also the recipient address\.@i\
-## Command:     /usr/lib/sendmail.d/update
+## Command:     %{_libexecdir}/sendmail.d/update
     \@^#[[:space:]]*$@i\
-## Command:     /usr/lib/sendmail.d/update
+## Command:     %{_libexecdir}/sendmail.d/update
     :skip
     N
   }' /etc/sysconfig/sendmail
@@ -611,13 +618,13 @@ fi
 
 %files -f file-list
 %defattr(-,root,root)
-%dir %{_mailcnfdir}
+%dir %{_mailcnfdir}/
 # %{_sysconfdir}/aliases.d is part of aaa_dir
-# %dir %attr(0750,root,mail) %{_sysconfdir}/aliases.d
-%dir %attr(0750,root,root) %{_mailcnfdir}/auth
-%dir %attr(0750,root,root) %{_mailcnfdir}/certs
+# %dir %attr(0750,root,mail) %{_sysconfdir}/aliases.d/
+%dir %attr(0750,root,root) %{_mailcnfdir}/auth/
+%dir %attr(0750,root,root) %{_mailcnfdir}/certs/
 %if %{without sysvinit}
-%dir %attr(0750,root,root) %{_mailcnfdir}/system
+%dir %attr(0750,root,root) %{_mailcnfdir}/system/
 %endif
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sendmail.cf
 # %{_sysconfdir}/aliases is part of netcfg
@@ -644,7 +651,7 @@ fi
 %config(noreplace) %verify(not md5 size mtime) %{_mailcnfdir}/submit.cf
 %doc %{_defaultdocdir}/sendmail
 %exclude %{_defaultdocdir}/sendmail/README.libmilter
-%exclude %dir %{_defaultdocdir}/sendmail/libmilter
+%exclude %dir %{_defaultdocdir}/sendmail/libmilter/
 %exclude %{_defaultdocdir}/sendmail/libmilter/*
 %{_datadir}/sendmail
 %{_fillupdir}/sysconfig.sendmail
@@ -698,11 +705,11 @@ fi
 
 %files devel
 %defattr(-,root,root)
-%dir %{_includedir}/libmilter
+%dir %{_includedir}/libmilter/
 %{_includedir}/libmilter/*.h
-%dir %{_includedir}/sm
+%dir %{_includedir}/sm/
 %{_includedir}/sm/*.h
-%dir %{_includedir}/sm/os
+%dir %{_includedir}/sm/os/
 %{_includedir}/sm/os/*.h
 %{_libdir}/libmilter.a
 %{_libdir}/libmilter.so

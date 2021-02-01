@@ -939,4 +939,15 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   sendmail written by fillup</comment>
     <requestid>867124</requestid>
   </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>cf320c5df1207fbecaa33ec8afff1728</srcmd5>
+    <version>8.16.1</version>
+    <time>1612186912</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct path of update script for older products/distributions
+
+- Add qtool perl script from contrib as this is very handy 
+- Make GLIBC_VERSION macro work again</comment>
+    <requestid>867723</requestid>
+  </revision>
 </revisionlist>

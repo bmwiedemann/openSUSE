@@ -23,13 +23,14 @@
  contrib/etrn.pl                   |    2 -
  contrib/expn.pl                   |   26 +++++++++++++++----
  contrib/passwd-to-alias.pl        |    2 -
+ contrib/qtool.pl                  |    4 +-
  contrib/smcontrol.pl              |    2 -
  devtools/M4/UNIX/manpage.m4       |    2 -
  devtools/M4/depend/CC-M.m4        |    2 -
  devtools/OS/Linux                 |    3 +-
  devtools/bin/install.sh           |    5 ++-
  doc/op/op.me                      |   52 +++++++++++++++++++-------------------
- include/sm/conf.h                 |   47 +++++++++++++++++++++++++++-------
+ include/sm/conf.h                 |   48 +++++++++++++++++++++++++++-------
  libmilter/Makefile.m4             |   28 ++++++++++++++++++++
  libsm/Makefile.m4                 |    4 ++
  libsm/inet6_ntop.c                |    2 -
@@ -50,10 +51,10 @@
  smrsh/README                      |   32 +++++++++++------------
  smrsh/smrsh.8                     |   25 ++++++++----------
  vacation/vacation.c               |    3 ++
- 51 files changed, 287 insertions(+), 136 deletions(-)
+ 52 files changed, 289 insertions(+), 139 deletions(-)
 
 --- cf/README
-+++ cf/README	2020-07-28 07:08:41.642206592 +0000
++++ cf/README	2020-07-28 08:17:37.960109008 +0000
 @@ -364,7 +364,7 @@ LOCAL_MAILER_DSN_DIAGNOSTIC_CODE
  			local mailer.  This should be changed with care.
  LOCAL_SHELL_PATH	[/bin/sh] The shell used to deliver piped email.
@@ -64,7 +65,7 @@
  			mail.
  LOCAL_SHELL_DIR		[$z:/] The directory search path in which the
 --- cf/domain/generic.m4
-+++ cf/domain/generic.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/domain/generic.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -25,4 +25,4 @@ define(`confFORWARD_PATH', `$z/.forward.
  define(`confMAX_HEADERS_LENGTH', `32768')dnl
  FEATURE(`redirect')dnl
@@ -72,7 +73,7 @@
 -EXPOSED_USER(`root')
 +ifdef(`_MAILER_uucp_', `EXPOSED_USER(`root uucp')',`EXPOSED_USER(`root')')dnl
 --- cf/feature/masquerade_envelope.m4
-+++ cf/feature/masquerade_envelope.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/feature/masquerade_envelope.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -17,3 +17,5 @@ VERSIONID(`$Id: masquerade_envelope.m4,v
  divert(-1)
  
@@ -80,7 +81,7 @@
 +
 +divert(0)dnl
 --- cf/feature/msp.m4
-+++ cf/feature/msp.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/feature/msp.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -20,7 +20,7 @@ define(`confPRIVACY_FLAGS', `goaway,noet
  define(`confDONT_PROBE_INTERFACES', `True')
  dnl ---------------------------------------------
@@ -110,7 +111,7 @@
  LOCAL_RULESETS
  SLocal_localaddr
 --- cf/feature/use_cw_file.m4
-+++ cf/feature/use_cw_file.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/feature/use_cw_file.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -22,4 +22,4 @@ divert(-1)
  
  define(`USE_CW_FILE', `')
@@ -118,7 +119,7 @@
 -divert(0)
 +divert(0)dnl
 --- cf/m4/cfhead.m4
-+++ cf/m4/cfhead.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/m4/cfhead.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -313,6 +313,7 @@ define(`confMILTER_MACROS_HELO', ``{tls_
  define(`confMILTER_MACROS_ENVFROM', ``i, {auth_type}, {auth_authen}, {auth_ssf}, {auth_author}, {mail_mailer}, {mail_host}, {mail_addr}'')
  define(`confMILTER_MACROS_ENVRCPT', ``{rcpt_mailer}, {rcpt_host}, {rcpt_addr}'')
@@ -128,7 +129,7 @@
  
  divert(0)dnl
 --- cf/m4/proto.m4
-+++ cf/m4/proto.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/m4/proto.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -1291,6 +1291,12 @@ ifdef(`_PRESERVE_LUSER_HOST_', `dnl
  R< $+ > $+		$: < $1 > $2 $&{Host}')
  dnl')
@@ -143,7 +144,7 @@
  R< > $+			$: < $H > $1			try hub', `dnl')
  ifdef(`LOCAL_RELAY', `dnl
 --- cf/mailer/cyrus.m4
-+++ cf/mailer/cyrus.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/mailer/cyrus.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -36,7 +36,7 @@ PUSHDIVERT(-1)
  #
  
@@ -162,7 +163,7 @@
  		ifdef(`CYRUS_MAILER_MAX', `M=CYRUS_MAILER_MAX, ')U=CYRUS_MAILER_USER, T=DNS/RFC822/X-Unix,_CYRUS_QGRP
  		A=CYRUS_MAILER_ARGS
 --- cf/mailer/fax.m4
-+++ cf/mailer/fax.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/mailer/fax.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -30,6 +30,7 @@ POPDIVERT
  
  VERSIONID(`$Id: fax.m4,v 8.17 2013-11-22 20:51:14 ca Exp $')
@@ -172,7 +173,7 @@
  		M=FAX_MAILER_MAX, T=X-Phone/X-FAX/X-Unix,_FAX_QGRP
  		A=FAX_MAILER_ARGS
 --- cf/mailer/local.m4
-+++ cf/mailer/local.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/mailer/local.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -34,6 +34,7 @@ POPDIVERT
  
  VERSIONID(`$Id: local.m4,v 8.60 2013-11-22 20:51:14 ca Exp $')
@@ -190,7 +191,7 @@
  		_OPTINS(`LOCAL_MAILER_MAX', `M=', `, ')_OPTINS(`LOCAL_MAILER_MAXMSGS', `m=', `, ')_OPTINS(`LOCAL_MAILER_MAXRCPTS', `r=', `, ')_OPTINS(`LOCAL_MAILER_CHARSET', `C=', `, ')T=DNS/RFC822/LOCAL_MAILER_DSN_DIAGNOSTIC_CODE,_LOCAL_QGRP
  		A=LOCAL_MAILER_ARGS
 --- cf/mailer/mail11.m4
-+++ cf/mailer/mail11.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/mailer/mail11.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -34,7 +34,7 @@ R$* < @ $=w .DECNET. >		$#_LOCAL_ $: $1
  R$+ < @ $+ .DECNET. >		$#mail11 $@ $2 $: $1		DECnet user
  POPDIVERT
@@ -220,7 +221,7 @@
 +		T=DNS/X-DECnet/X-Unix,_MAIL11_QGRP
 +		A=MAIL11_MAILER_ARGS
 --- cf/mailer/phquery.m4
-+++ cf/mailer/phquery.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/mailer/phquery.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -27,6 +27,7 @@ POPDIVERT
  
  VERSIONID(`$Id: phquery.m4,v 8.18 2013-11-22 20:51:14 ca Exp $')
@@ -230,7 +231,7 @@
  		T=DNS/RFC822/X-Unix,_PH_QGRP
  		A=PH_MAILER_ARGS
 --- cf/mailer/pop.m4
-+++ cf/mailer/pop.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/mailer/pop.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -25,6 +25,7 @@ POPDIVERT
  
  VERSIONID(`$Id: pop.m4,v 8.23 2013-11-22 20:51:14 ca Exp $')
@@ -240,7 +241,7 @@
  		T=DNS/RFC822/X-Unix,_POP_QGRP
  		A=POP_MAILER_ARGS
 --- cf/mailer/procmail.m4
-+++ cf/mailer/procmail.m4	2020-07-28 07:08:41.642206592 +0000
++++ cf/mailer/procmail.m4	2020-07-28 08:17:37.960109008 +0000
 @@ -29,6 +29,7 @@ POPDIVERT
  
  VERSIONID(`$Id: procmail.m4,v 8.23 2013-11-22 20:51:14 ca Exp $')
@@ -250,7 +251,7 @@
  		ifdef(`PROCMAIL_MAILER_MAX', `M=PROCMAIL_MAILER_MAX, ')T=DNS/RFC822/X-Unix,_PROCMAIL_QGRP
  		A=PROCMAIL_MAILER_ARGS
 --- cf/mailer/qpage.m4
-+++ cf/mailer/qpage.m4	2020-07-28 07:08:41.658206307 +0000
++++ cf/mailer/qpage.m4	2020-07-28 08:17:37.976108719 +0000
 @@ -26,6 +26,7 @@ POPDIVERT
  
  VERSIONID(`$Id: qpage.m4,v 8.11 2013-11-22 20:51:14 ca Exp $')
@@ -260,7 +261,7 @@
  	M=QPAGE_MAILER_MAX,  T=DNS/RFC822/X-Unix,_QPAGE_QGRP
  	A=QPAGE_MAILER_ARGS
 --- cf/mailer/smtp.m4
-+++ cf/mailer/smtp.m4	2020-07-28 07:08:41.658206307 +0000
++++ cf/mailer/smtp.m4	2020-07-28 08:17:37.976108719 +0000
 @@ -33,6 +33,7 @@ POPDIVERT
  
  VERSIONID(`$Id: smtp.m4,v 8.66 2013-11-22 20:51:14 ca Exp $')
@@ -278,7 +279,7 @@
  		_OPTINS(`SMTP_MAILER_MAX', `M=', `, ')_OPTINS(`SMTP_MAILER_MAXMSGS', `m=', `, ')_OPTINS(`SMTP_MAILER_MAXRCPTS', `r=', `, ')_OPTINS(`SMTP_MAILER_CHARSET', `C=', `, ')T=DNS/RFC822/SMTP,_SMTP_QGRP
  		A=SMTP_MAILER_ARGS
 --- cf/mailer/usenet.m4
-+++ cf/mailer/usenet.m4	2020-07-28 07:08:41.658206307 +0000
++++ cf/mailer/usenet.m4	2020-07-28 08:17:37.976108719 +0000
 @@ -23,6 +23,7 @@ POPDIVERT
  
  VERSIONID(`$Id: usenet.m4,v 8.23 2013-11-22 20:51:14 ca Exp $')
@@ -288,7 +289,7 @@
  		_OPTINS(`USENET_MAILER_MAX', `M=', `, ')T=X-Usenet/X-Usenet/X-Unix,_USENET_QGRP
  		A=USENET_MAILER_ARGS $u
 --- cf/mailer/uucp.m4
-+++ cf/mailer/uucp.m4	2020-07-28 07:08:41.658206307 +0000
++++ cf/mailer/uucp.m4	2020-07-28 08:17:37.976108719 +0000
 @@ -26,6 +26,7 @@ POPDIVERT
  
  VERSIONID(`$Id: uucp.m4,v 8.45 2013-11-22 20:51:14 ca Exp $')
@@ -311,7 +312,7 @@
  
 -
 --- cf/sh/makeinfo.sh
-+++ cf/sh/makeinfo.sh	2020-07-28 07:08:41.658206307 +0000
++++ cf/sh/makeinfo.sh	2020-07-28 08:17:37.984108575 +0000
 @@ -22,7 +22,7 @@ do
  	then
  		p="."
@@ -353,7 +354,7 @@
  echo '#####' using $1 as configuration include directory | sed 's/\/tmp_mnt//'
  echo "define(\`__HOST__', $host)dnl"
 --- contrib/bounce-resender.pl
-+++ contrib/bounce-resender.pl	2020-07-28 07:08:41.658206307 +0000
++++ contrib/bounce-resender.pl	2020-07-28 08:17:37.976108719 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/local/bin/perl -w
 +#!/usr/bin/perl -w
@@ -370,7 +371,7 @@
  
  # FIXME: Define the functions "major" and "minor" for your OS.
 --- contrib/doublebounce.pl
-+++ contrib/doublebounce.pl	2020-07-28 07:08:41.658206307 +0000
++++ contrib/doublebounce.pl	2020-07-28 08:17:37.976108719 +0000
 @@ -111,6 +111,11 @@ EOT
    return $result;
  }
@@ -400,7 +401,7 @@
  exit(0);
 -
 --- contrib/etrn.pl
-+++ contrib/etrn.pl	2020-07-28 07:08:41.658206307 +0000
++++ contrib/etrn.pl	2020-07-28 08:17:37.976108719 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/perl5/bin/perl -w
 +#!/usr/bin/perl -w
@@ -408,7 +409,7 @@
  # CDDL HEADER START
  #
 --- contrib/expn.pl
-+++ contrib/expn.pl	2020-07-28 07:08:41.658206307 +0000
++++ contrib/expn.pl	2020-07-28 08:17:37.976108719 +0000
 @@ -101,6 +101,7 @@ use Fcntl;
  
  $have_nslookup = 1;	# we have the nslookup program
@@ -483,15 +484,32 @@
  .BR nslookup .
  .SH SEE ALSO
 --- contrib/passwd-to-alias.pl
-+++ contrib/passwd-to-alias.pl	2020-07-28 07:08:41.658206307 +0000
++++ contrib/passwd-to-alias.pl	2020-07-28 08:17:37.976108719 +0000
 @@ -1,4 +1,4 @@
 -#!/bin/perl
 +#!/usr/bin/perl
  
  #
  #  Convert GECOS information in password files to alias syntax.
+--- contrib/qtool.pl
++++ contrib/qtool.pl	2021-01-27 14:09:10.525768813 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ ##
+ ## Copyright (c) 1998-2002 Proofpoint, Inc. and its suppliers.
+ ##	All rights reserved.
+@@ -151,7 +151,7 @@ if ($action == \&move_action)
+ # determine queue_root by reading config file
+ my $queue_root;
+ {
+-	my $config_file = "/etc/mail/sendmail.cf";
++	my $config_file = "/etc/sendmail.cf";
+ 	if (defined $opts{C})
+ 	{
+ 		$config_file = $opts{C};
 --- contrib/smcontrol.pl
-+++ contrib/smcontrol.pl	2020-07-28 07:08:41.658206307 +0000
++++ contrib/smcontrol.pl	2020-07-28 08:17:37.976108719 +0000
 @@ -25,7 +25,7 @@ sub get_controlname
  	my $cn = undef;
  	my $qd = undef;
@@ -502,7 +520,7 @@
  	{
  		chomp;
 --- devtools/M4/UNIX/manpage.m4
-+++ devtools/M4/UNIX/manpage.m4	2020-07-28 07:08:41.658206307 +0000
++++ devtools/M4/UNIX/manpage.m4	2020-07-28 08:17:37.976108719 +0000
 @@ -69,7 +69,7 @@ ifdef(`confNO_MAN_INSTALL', `divert(-1)'
  define(`bldMAN_INSTALL_CMD',
  `ifdef(`confDONT_INSTALL_CATMAN', `dnl',
@@ -513,7 +531,7 @@
  `	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN} ]; then confMKDIR -p ${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN}; else :; fi ')
  	${INSTALL} -c -o ${MANOWN} -g ${MANGRP} -m ${MANMODE} bldGET_MAN_BASE_NAME($1).bldGET_MAN_SOURCE_NUM($1) `${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN}'/bldGET_MAN_BASE_NAME($1)`.${MAN'bldGET_MAN_SOURCE_NUM($1)`EXT}'', `dnl')'
 --- devtools/M4/depend/CC-M.m4
-+++ devtools/M4/depend/CC-M.m4	2020-07-28 07:08:41.658206307 +0000
++++ devtools/M4/depend/CC-M.m4	2020-07-28 08:17:37.976108719 +0000
 @@ -3,6 +3,6 @@ depend: ${BEFORE} ${LINKS}
  	@mv Makefile Makefile.old
  	@sed -e '/^# Do not edit or remove this line or anything below it.$$/,$$d' < Makefile.old > Makefile
@@ -523,7 +541,7 @@
  
  #	End of $RCSfile: CC-M.m4,v $
 --- devtools/OS/Linux
-+++ devtools/OS/Linux	2020-07-28 07:08:41.658206307 +0000
++++ devtools/OS/Linux	2020-07-28 08:17:37.976108719 +0000
 @@ -5,8 +5,9 @@ dnl	Place personal settings in devtools/
  
  define(`confDEPEND_TYPE', `CC-M')
@@ -536,7 +554,7 @@
  define(`confEBINDIR', `/usr/sbin')
  APPENDDEF(`confLIBSEARCH', `crypt nsl')
 --- devtools/bin/install.sh
-+++ devtools/bin/install.sh	2020-07-28 07:08:41.658206307 +0000
++++ devtools/bin/install.sh	2020-07-28 08:17:37.976108719 +0000
 @@ -16,6 +16,7 @@ owner=""
  group=""
  mode=""
@@ -564,7 +582,7 @@
  	chgrp $group $dst
  	if [ $? != 0 ]
 --- doc/op/op.me
-+++ doc/op/op.me	2020-07-28 07:08:41.658206307 +0000
++++ doc/op/op.me	2020-07-28 08:17:37.976108719 +0000
 @@ -589,7 +589,7 @@ The binary for
  .i sendmail
  is located in /usr/\*(SD\**.
@@ -800,7 +818,7 @@
  nothing can replace looking at what your own system generates.
  .)f
 --- include/sm/conf.h
-+++ include/sm/conf.h	2020-07-28 07:08:41.662206236 +0000
++++ include/sm/conf.h	2020-07-28 08:17:37.980108646 +0000
 @@ -1474,23 +1474,47 @@ extern void		*malloc();
  #   define KERNEL_VERSION(a,b,c) (((a) << 16) + ((b) << 8) + (c))
  #  endif
@@ -880,7 +898,14 @@
  #  endif
  #  ifndef TZ_TYPE
  #   define TZ_TYPE	TZ_NONE		/* no standard for Linux */
-@@ -1542,6 +1567,10 @@ extern void		*malloc();
+@@ -1535,13 +1560,16 @@ extern void		*malloc();
+ #  undef atol			/* wounded in <stdlib.h> */
+ 
+ #  if defined(__GLIBC__) && defined(__GLIBC_MINOR__)
+-#   define GLIBC_VERSION ((__GLIBC__ << 9) + __GLIBC_MINOR__)
+ #   if (GLIBC_VERSION >= 0x201)
+ #    define SOCKADDR_LEN_T     socklen_t
+ #    define SOCKOPT_LEN_T      socklen_t
  #   endif
  #  endif /* defined(__GLIBC__) && defined(__GLIBC_MINOR__) */
  
@@ -891,7 +916,7 @@
  #  if NETINET6
     /*
     **  Linux doesn't have a good way to tell userland what interfaces are
-@@ -1555,7 +1584,7 @@ extern void		*malloc();
+@@ -1555,7 +1583,7 @@ extern void		*malloc();
     **  Indirectly included from glibc's <feature.h>.  IPv6 support is native
     **  in 2.1 and later, but the APIs appear before the functions.
     */
@@ -900,7 +925,7 @@
  #    if (GLIBC_VERSION >= 0x201)
  #     undef IPPROTO_ICMPV6	/* linux #defines, glibc enums */
  #    else
-@@ -1566,7 +1595,7 @@ extern void		*malloc();
+@@ -1566,7 +1594,7 @@ extern void		*malloc();
  #     define NEEDSGETIPNODE	1
  #    endif
  #    undef GLIBC_VERSION
@@ -910,7 +935,7 @@
  #  ifndef HASFCHOWN
  #   define HASFCHOWN	1	/* fchown(2) */
 --- libmilter/Makefile.m4
-+++ libmilter/Makefile.m4	2020-07-28 07:08:41.662206236 +0000
++++ libmilter/Makefile.m4	2020-07-28 08:17:37.980108646 +0000
 @@ -12,6 +12,8 @@ PREPENDDEF(`confINCDIRS', `-I${SMSRCDIR}
  bldPRODUCT_START(`library', `libmilter')
  define(`bldINSTALLABLE', `true')
@@ -954,7 +979,7 @@
  MFAPI=	${SRCDIR}/inc`'lude/libmilter/mfapi.h
  MFDEF=	${SRCDIR}/inc`'lude/libmilter/mfdef.h
 --- libsm/Makefile.m4
-+++ libsm/Makefile.m4	2020-07-28 07:10:08.420666180 +0000
++++ libsm/Makefile.m4	2020-07-28 08:17:37.980108646 +0000
 @@ -4,8 +4,12 @@ include(confBUILDTOOLSDIR`/M4/switch.m4'
  
  define(`confREQUIRE_LIBSM', `true')
@@ -969,7 +994,7 @@
  bldPRODUCT_END
  dnl msg.c
 --- libsm/inet6_ntop.c
-+++ libsm/inet6_ntop.c	2020-07-28 07:08:41.662206236 +0000
++++ libsm/inet6_ntop.c	2020-07-28 08:17:37.980108646 +0000
 @@ -11,8 +11,8 @@
  #include <sm/gen.h>
  SM_RCSID("@(#)$Id: inet6_ntop.c,v 1.2 2013-11-22 20:51:43 ca Exp $")
@@ -981,7 +1006,7 @@
  # include <sm/io.h>
  # include <sm/string.h>
 --- libsmutil/Makefile.m4
-+++ libsmutil/Makefile.m4	2020-07-28 07:08:41.662206236 +0000
++++ libsmutil/Makefile.m4	2020-07-28 08:17:37.980108646 +0000
 @@ -6,8 +6,12 @@ define(`confREQUIRE_SM_OS_H', `true')
  SMSRCDIR=	ifdef(`confSMSRCDIR', `confSMSRCDIR', `${SRCDIR}/sendmail')
  PREPENDDEF(`confENVDEF', `confMAPDEF')
@@ -996,7 +1021,7 @@
  APPENDDEF(`confENVDEF', `-DNOT_SENDMAIL')
  bldPRODUCT_END
 --- mail.local/Makefile.m4
-+++ mail.local/Makefile.m4	2020-07-28 07:08:41.662206236 +0000
++++ mail.local/Makefile.m4	2020-07-28 08:17:37.980108646 +0000
 @@ -20,8 +20,12 @@ bldPRODUCT_START(`manpage', `mail.local'
  define(`bldSOURCES', `mail.local.8')
  bldPRODUCT_END
@@ -1012,7 +1037,7 @@
  	@echo "      systems such as HP-UX and Solaris.  Please consult the"
  	@echo "      README file in the mail.local directory.  You can force"
 --- mail.local/mail.local.8
-+++ mail.local/mail.local.8	2020-07-28 07:08:41.662206236 +0000
++++ mail.local/mail.local.8	2020-07-28 08:17:37.980108646 +0000
 @@ -123,10 +123,10 @@ Used to set the appropriate time zone on
  /tmp/local.XXXXXX
  temporary files
@@ -1027,7 +1052,7 @@
  .PD
  .SH SEE ALSO
 --- mailstats/mailstats.8
-+++ mailstats/mailstats.8	2020-07-28 07:08:41.662206236 +0000
++++ mailstats/mailstats.8	2020-07-28 08:17:37.980108646 +0000
 @@ -108,10 +108,13 @@ The default
  .B sendmail
  configuration file.
@@ -1044,7 +1069,7 @@
  .SH SEE ALSO
  mailq(1), 
 --- makemap/makemap.8
-+++ makemap/makemap.8	2020-07-28 07:12:21.674300673 +0000
++++ makemap/makemap.8	2020-07-28 08:17:37.980108646 +0000
 @@ -52,12 +52,6 @@ selected using the
  parameter.  
  They may be
@@ -1059,7 +1084,7 @@
  B-Tree format maps.  
  This requires the new Berkeley DB 
 --- praliases/Makefile.m4
-+++ praliases/Makefile.m4	2020-07-28 07:08:41.662206236 +0000
++++ praliases/Makefile.m4	2020-07-28 08:17:37.980108646 +0000
 @@ -9,7 +9,8 @@ PREPENDDEF(`confENVDEF', `confMAPDEF')
  PREPENDDEF(`confINCDIRS', `-I${SMSRCDIR} ')
  
@@ -1071,7 +1096,7 @@
  bldPUSH_SMLIB(`sm')
  bldPUSH_SMLIB(`smutil')
 --- rmail/rmail.c
-+++ rmail/rmail.c	2020-07-28 07:08:41.662206236 +0000
++++ rmail/rmail.c	2020-07-28 08:17:37.980108646 +0000
 @@ -276,7 +276,7 @@ main(argc, argv)
  	args[i++] = _PATH_SENDMAIL;	/* Build sendmail's argument list. */
  	args[i++] = "-G";		/* relay submission */
@@ -1082,7 +1107,7 @@
  
  	/* set from system and protocol used */
 --- sendmail/Makefile.m4
-+++ sendmail/Makefile.m4	2020-07-28 07:23:32.266370795 +0000
++++ sendmail/Makefile.m4	2020-07-28 08:17:37.980108646 +0000
 @@ -49,13 +49,16 @@ ${DESTDIR}/etc/mail/submit.cf:
  	cd ${SRCDIR}/cf/cf && make install-submit-cf
  
@@ -1101,7 +1126,7 @@
  	chmod 0770 ${DESTDIR}${MSPQ}
  
 --- sendmail/SECURITY
-+++ sendmail/SECURITY	2020-07-28 07:08:41.662206236 +0000
++++ sendmail/SECURITY	2020-07-28 08:17:37.980108646 +0000
 @@ -49,14 +49,14 @@ The default configuration starting with
  sendmail binary which acts differently based on operation mode and
  supplied options.
@@ -1198,7 +1223,7 @@
  STARTTLS: If sendmail is compiled with STARTTLS support on a platform
  that does not have HASURANDOMDEV defined, you either need to specify
 --- sendmail/control.c
-+++ sendmail/control.c	2020-07-28 07:08:41.662206236 +0000
++++ sendmail/control.c	2020-07-28 08:17:37.980108646 +0000
 @@ -137,7 +137,7 @@ opencontrolsocket()
  		}
  	}
@@ -1209,7 +1234,7 @@
  		save_errno = errno;
  		closecontrolsocket(true);
 --- sendmail/domain.c
-+++ sendmail/domain.c	2020-07-28 07:22:06.795900723 +0000
++++ sendmail/domain.c	2020-07-28 08:17:37.980108646 +0000
 @@ -1382,14 +1382,20 @@ cnameloop:
  		if (qtype == initial)
  			gotmx = false;
@@ -1234,7 +1259,7 @@
  		hp = (HEADER *) &answer;
  		ret = (*resqdomain)(host, dp, C_IN, qtype,
 --- sendmail/readcf.c
-+++ sendmail/readcf.c	2020-07-28 07:19:21.742842782 +0000
++++ sendmail/readcf.c	2020-07-28 08:17:37.980108646 +0000
 @@ -1741,15 +1741,19 @@ makemailer(line)
  #endif
  		    )
@@ -1258,7 +1283,7 @@
  		if (m->m_mtatype == NULL)
  			m->m_mtatype = "dns";
 --- sendmail/sendmail.h
-+++ sendmail/sendmail.h	2020-07-28 07:08:41.662206236 +0000
++++ sendmail/sendmail.h	2020-07-28 08:17:37.980108646 +0000
 @@ -218,14 +218,14 @@ typedef int (*sasl_callback_ft)(void);
  #   define SASL SASL_VERSION
  #  else /* SASL == 1 || SASL == 2 */
@@ -1279,7 +1304,7 @@
  # endif /* defined(SASL_VERSION_MAJOR) && defined(SASL_VERSION_MINOR) && defined(SASL_VERSION_STEP) */
  #endif /* SASL */
 --- sendmail/udb.c
-+++ sendmail/udb.c	2020-07-28 07:08:41.662206236 +0000
++++ sendmail/udb.c	2020-07-28 08:17:37.980108646 +0000
 @@ -1046,24 +1046,29 @@ _udbx_init(e)
  
  #  if DB_VERSION_MAJOR < 2
@@ -1327,7 +1352,7 @@
  			up->udb_type = UDB_DBFETCH;
  			up->udb_pid = CurrentPid;
 --- smrsh/README
-+++ smrsh/README	2020-07-28 07:08:41.662206236 +0000
++++ smrsh/README	2020-07-28 08:17:37.980108646 +0000
 @@ -6,7 +6,7 @@ Software Engineering Institute, Carnegie
  intended as a supplement to the CERT advisory CA-93:16.sendmail.vulnerability,
  and to the software, smrsh.c, written by Eric Allman.
@@ -1430,7 +1455,7 @@
  
  After modifying the Mprog definition in the sendmail.cf file, if a frozen
 --- smrsh/smrsh.8
-+++ smrsh/smrsh.8	2020-07-28 07:08:41.662206236 +0000
++++ smrsh/smrsh.8	2020-07-28 08:17:37.980108646 +0000
 @@ -39,7 +39,7 @@ Briefly,
  .I smrsh
  limits programs to be in a single directory,
@@ -1496,7 +1521,7 @@
  .SH SEE ALSO
  sendmail(8)
 --- vacation/vacation.c
-+++ vacation/vacation.c	2020-07-28 07:08:41.666206165 +0000
++++ vacation/vacation.c	2020-07-28 08:17:37.980108646 +0000
 @@ -699,6 +699,7 @@ junkmail(from)
  		{ "uucp",		4	},
  		{ "mailer-daemon",	13	},
