@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 27 09:22:50 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Do not propose hibernation when running over a virtualized setup
+  (bsc#1180982).
+- 4.3.51
+
+-------------------------------------------------------------------
+Wed Jan 20 09:28:51 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed Resolvables class to uniqely identify the libzypp objects
+  to avoid random failures (related to bsc#1178688)
+- 4.3.50
+
+-------------------------------------------------------------------
 Wed Jan 13 16:03:51 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Keep the libzypp target open to verify other packages
