@@ -363,4 +363,14 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
     <comment></comment>
     <requestid>860670</requestid>
   </revision>
+  <revision rev="43" vrev="31">
+    <srcmd5>b1a873579f075b41b2742c2d780546de</srcmd5>
+    <version>12.5</version>
+    <time>1612186895</time>
+    <user>dimstar_suse</user>
+    <comment>- update-alternatives call needs to be in postun rather than preun
+
+- prepare usrmerge (boo#1029961) (forwarded request 867514 from lnussel)</comment>
+    <requestid>867651</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mailx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ BuildRequires:  postfix
 BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(openssl)
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(postun): update-alternatives
 URL:            http://heirloom.sourceforge.net/mailx.html
 Provides:       mail
 Recommends:     smtp_daemon
@@ -100,13 +100,17 @@ minor enhancements like the ability to set a "From:" address.
     rm -rf %{buildroot}/bin
     mkdir  %{buildroot}/bin
     mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+%if !0%{?usrmerged}
     ln -sf %{_sysconfdir}/alternatives/binmail %{buildroot}/bin/mail
+%endif
     ln -sf %{_sysconfdir}/alternatives/Mail    %{buildroot}/usr/bin/Mail
     ln -sf %{_sysconfdir}/alternatives/mail    %{buildroot}/usr/bin/mail
     ln -sf %{_sysconfdir}/alternatives/Mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/Mail.1%{?ext_man}
     ln -sf %{_sysconfdir}/alternatives/mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/mail.1%{?ext_man}
     #
+%if !0%{?usrmerged}
     ln -sf %{_bindir}/mailx %{buildroot}%{_sysconfdir}/alternatives/binmail
+%endif
     ln -sf %{_bindir}/mailx %{buildroot}%{_sysconfdir}/alternatives/Mail
     ln -sf %{_bindir}/mailx %{buildroot}%{_sysconfdir}/alternatives/mail
     ln -sf %{_mandir}/man1/mailx.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/Mail.1%{?ext_man}
@@ -117,12 +121,14 @@ minor enhancements like the ability to set a "From:" address.
 %post
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mailx 20 \
+%if !0%{?usrmerged}
     --slave   /bin/mail binmail %{_bindir}/mailx \
+%endif
     --slave   %{_bindir}/Mail Mail %{_bindir}/mailx \
     --slave   %{_mandir}/man1/mail.1%{?ext_man} mail.1%{?ext_man} %{_mandir}/man1/mailx.1%{?ext_man} \
     --slave   %{_mandir}/man1/Mail.1%{?ext_man} Mail.1%{?ext_man} %{_mandir}/man1/mailx.1%{?ext_man}
 
-%preun
+%postun
 if test ! -e %{_bindir}/mailx; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx
 fi
@@ -131,9 +137,11 @@ fi
 %defattr(-,root,root)
 %license COPYING
 %doc README manual.ps.gz nail.rc
-/bin/mail
 %config /etc/mail.rc
+%if !0%{?usrmerged}
+/bin/mail
 %ghost %config %{_sysconfdir}/alternatives/binmail
+%endif
 %ghost %config %{_sysconfdir}/alternatives/Mail
 %ghost %config %{_sysconfdir}/alternatives/mail
 %ghost %config %{_sysconfdir}/alternatives/Mail.1%{?ext_man}

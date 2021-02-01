@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 27 12:27:13 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- update-alternatives call needs to be in postun rather than preun
+
+-------------------------------------------------------------------
 Fri Dec 25 10:51:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - fix-sendmail-name.patch: fix name argument when calling
   /usr/sbin/sendmail [bsc#1180355].
+
+-------------------------------------------------------------------
+Fri Oct 16 10:12:58 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
 
 -------------------------------------------------------------------
 Mon Nov 19 09:47:38 UTC 2018 - Dr. Werner Fink <werner@suse.de>
