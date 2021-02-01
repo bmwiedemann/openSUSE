@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Jan 31 15:02:32 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.2
+  * Add a "Viewer Mode" toggle
+    (gxo#apps/mousepad#50, gxo#apps/mousepad!72)
+  * Improve `--quit` option: close all windows interactively
+    (gxo#apps/mousepad!71)
+  * Improve encoding management
+    (gxo#apps/mousepad#42, gxo#apps/mousepad!69)
+    - Display the current encoding in the status bar
+    - Make the default encoding configurable via GSettings
+    - Allow to choose encoding in the "Open" and "Save As" dialogs
+      (gxo#apps/mousepad#42)
+    - Add a command line option to choose encoding
+  * Add a "Delete Line" action
+    (gxo#apps/mousepad#13, gxo#apps/mousepad!66)
+  * Make automatic addition of the last EOL character configurable
+    (gxo#apps/mousepad#53, gxo#apps/mousepad!65)
+  * Switch to GFile for I/O operations (gxo#apps/mousepad#4,
+    gxo#apps/mousepad#27, gxo#apps/mousepad#75, gxo#apps/mousepad!64)
+  * - Add file monitoring (gxo#apps/mousepad#75)
+  * - Add a setting to create a tilde-backup file when saving
+      (gxo#apps/mousepad#27)
+  * - Make saving atomic (gxo#apps/mousepad#4)
+  * Filter files on mime type in the "Open" and "Save As" dialogs
+    (gxo#apps/mousepad#2, gxo#apps/mousepad#35, gxo#apps/mousepad!67)
+  * Improve encoding management
+    (gxo#apps/mousepad#42, gxo#apps/mousepad!69)
+    - Make encoding dialog more generic and self-contained
+    - Encodings definition review
+    - Clarify encoding management when opening files
+    - Improve unicode BOM management
+  * Switch to GFile for I/O operations (gxo#apps/mousepad#4,
+      gxo#apps/mousepad#27, gxo#apps/mousepad#75, gxo#apps/mousepad!64)
+    - Set the save action sensitivity more precisely
+    - Let GFile APIs check for file existence when reading
+    - Let GFile APIs check for external modifications when saving
+    - Basic switch to GFile for I/O operations
+  * Make "replace" and "replace all" behaviors consistent
+  * (gxo#apps/mousepad#94)
+  * Ensure that the page setup is properly applied when printing
+  * (gxo#apps/mousepad#90)
+  * Avoid character escape issues in menu item action names
+    (gxo#apps/mousepad#91)
+  * Properly initialize document search properties
+  * Avoid illegal memory access when searching with tab changes
+    (gxo#apps/mousepad!73)
+  * Revert to "Wrap Around" always true for the search bar
+    (gxo#apps/mousepad#83)
+  * Prevent too late accesses to the buffer in selection mode
+  * Direct call to keybinding signals for "Delete" and "Select All"
+    (gxo#apps/mousepad#83)
+  * Improve editing keybindings consistency (gxo#apps/mousepad#83)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Dec 23 02:24:56 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 0.5.1
