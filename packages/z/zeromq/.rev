@@ -386,4 +386,12 @@ For complete list of changes, see
 https://github.com/zeromq/libzmq/releases/tag/v4.3.3</comment>
     <requestid>839566</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ec876c991a2900b92de6ca6c4eaea1bd</srcmd5>
+    <version>4.3.4</version>
+    <time>1612182311</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866585</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan 24 19:02:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.4:
+  * ZMQ_PRIORITY will set the SO_PRIORITY socket option on the underlying
+    sockets. Only supported on Linux.
+  * Fixed compilation errors on kFreeBSD and GNU/Hurd
+  * Fixed excessive amount of socket files left behind in Windows TMP
+  * Fixed regression that breaks using IPv6 link-local addresses on Linux
+  * Fixed compilation errors on Android
+  * Fixed compilation error with ulibc and libbsd
+  * Fixed stack overflow on Windows x64
+  * Fixed various compilation errors on Windows ARM 32bit
+  * Fixed various compilation warnings with XCode
+  * Fixed return value of zmq_ctx_get changed unintentionally
+
+-------------------------------------------------------------------
 Mon Sep  7 16:56:09 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 4.3.3:
