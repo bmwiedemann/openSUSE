@@ -1,7 +1,7 @@
-Index: socat-1.7.3.4/filan.c
+Index: socat-1.7.4.1/filan.c
 ===================================================================
---- socat-1.7.3.4.orig/filan.c
-+++ socat-1.7.3.4/filan.c
+--- socat-1.7.4.1.orig/filan.c
++++ socat-1.7.4.1/filan.c
 @@ -20,6 +20,10 @@
  
  #include "filan.h"
@@ -13,21 +13,10 @@ Index: socat-1.7.3.4/filan.c
  
  struct sockopt {
     int so;
-@@ -28,10 +32,6 @@ struct sockopt {
- 
- static int filan_streams_analyze(int fd, FILE *outfile);
- 
--/* dirty workaround so we dont get an error on AIX when being linked with
--   libwrap */
--int allow_severity, deny_severity;
--
- /* global variables for configuring filan */
- bool filan_followsymlinks;
- bool filan_rawoutput;
-Index: socat-1.7.3.4/procan.c
+Index: socat-1.7.4.1/procan.c
 ===================================================================
---- socat-1.7.3.4.orig/procan.c
-+++ socat-1.7.3.4/procan.c
+--- socat-1.7.4.1.orig/procan.c
++++ socat-1.7.4.1/procan.c
 @@ -16,6 +16,9 @@
  #include "filan.h"
  
@@ -38,10 +27,10 @@ Index: socat-1.7.3.4/procan.c
  
  #include "procan.h"
  
-Index: socat-1.7.3.4/xio-tcpwrap.c
+Index: socat-1.7.4.1/xio-tcpwrap.c
 ===================================================================
---- socat-1.7.3.4.orig/xio-tcpwrap.c
-+++ socat-1.7.3.4/xio-tcpwrap.c
+--- socat-1.7.4.1.orig/xio-tcpwrap.c
++++ socat-1.7.4.1/xio-tcpwrap.c
 @@ -13,6 +13,7 @@
  #include "xio-tcpwrap.h"
  

@@ -10,12 +10,12 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  test.sh |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: socat-1.7.3.4/test.sh
+Index: socat-1.7.4.1/test.sh
 ===================================================================
---- socat-1.7.3.4.orig/test.sh
-+++ socat-1.7.3.4/test.sh
-@@ -13224,7 +13224,7 @@ echo "summary: $((N-1)) tests, $((numOK+
- 
+--- socat-1.7.4.1.orig/test.sh
++++ socat-1.7.4.1/test.sh
+@@ -15042,7 +15042,7 @@ if [ "$numCANT" -gt 0 ]; then
+ fi
  if [ "$numFAIL" -gt 0 ]; then
      echo "FAILED: $listFAIL"
 -    exit 1

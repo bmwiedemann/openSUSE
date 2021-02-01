@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 11 22:24:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.4.1:
+  Security:
+  * Buffer size option (-b) is internally doubled for CR-CRLF conversion,
+    but not checked for integer overflow. This could lead to heap based buffer
+    overflow, assuming the attacker could provide this parameter. 
+  * Many further bugfixes and new features, see the CHANGES file
+
+-------------------------------------------------------------------
 Fri Apr 17 06:58:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.7.3.4:
