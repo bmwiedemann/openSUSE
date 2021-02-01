@@ -1,7 +1,7 @@
 #
 # spec file for package diffstat
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diffstat
-Version:        1.63
+Version:        1.64
 Release:        0
 Summary:        Utility That Provides Statistics Based on the Output of diff
 License:        MIT
@@ -27,7 +27,6 @@ Source0:        https://invisible-mirror.net/archives/diffstat/diffstat-%{versio
 Source1:        https://invisible-mirror.net/archives/diffstat/diffstat-%{version}.tgz.asc
 Source2:        %{name}.keyring
 Patch0:         %{name}.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 diffstat reads the output of the diff command and displays a histogram
@@ -39,18 +38,18 @@ of the insertions, deletions, and modifications in each file.
 
 %build
 %configure
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
-%defattr(-,root,root)
-%doc README CHANGES COPYING
+%doc README CHANGES
+%license COPYING
 %{_bindir}/diffstat
-%{_mandir}/man1/diffstat.1%{ext_man}
+%{_mandir}/man1/diffstat.1%{?ext_man}
 
 %changelog

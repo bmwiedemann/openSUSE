@@ -258,4 +258,14 @@
   + update config.guess, config.sub</comment>
     <requestid>758173</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a37981d92148f162e4836e2af0282ef6</srcmd5>
+    <version>1.64</version>
+    <time>1612182289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.64:
+  + recognize binary files mentioned in &quot;git diff --binary&quot;, and
+  &quot;git log -p --binary&quot; formatted files (report by Faheem Mitha). (forwarded request 866405 from dirkmueller)</comment>
+    <requestid>866492</requestid>
+  </revision>
 </revisionlist>
