@@ -645,4 +645,24 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860878</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>21ac5724f3052914b8b562cc4668b3af</srcmd5>
+    <version>4.16.1</version>
+    <time>1612182507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.16.1
+  * pager: Use gobject bindings (gxo#xfce/xfce4-panel#376)
+  * pager: Switch to new workspaces icon name
+  * launcher: avoid double fork
+  * statustray: Display tooltip title of statusnotifier items as
+  * plaintext
+  * statustray: Prevent crash when parsing properties
+    (gxo#xfce/xfce4-panel#379)
+  * windowmenu: fix use-after-free in window_menu_plugin_window_item_new
+  * Fix compilation warnings
+  * Update `.gitignore`
+  * Translation Updates
+</comment>
+    <requestid>868241</requestid>
+  </revision>
 </revisionlist>

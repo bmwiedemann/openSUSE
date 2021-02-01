@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-panel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname_gtk3 libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.16.0
+Version:        4.16.1
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
