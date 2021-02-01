@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 27 18:25:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.10
+  * iplink: add support for protodown reason
+  * ss: add support to expose various inet sockopts
+  * ss: add support for XDP statistics
+  * bridge: mdb: add support for source address
+
+-------------------------------------------------------------------
 Sat Oct 17 11:23:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9
