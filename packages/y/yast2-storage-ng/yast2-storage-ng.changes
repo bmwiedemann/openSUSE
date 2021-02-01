@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 28 17:07:25 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST UI: improved visualization of some partition sections
+  in the left tree (related to jsc#SLE-11308).
+- 4.3.41
+
+-------------------------------------------------------------------
 Mon Jan 25 11:52:18 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Partitioner: fix typo calling to popup (bsc#1181348).
