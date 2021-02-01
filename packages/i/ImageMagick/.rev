@@ -2924,4 +2924,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick6/issues/129). (forwarded request 863931 from dirkmueller)</comment>
     <requestid>864042</requestid>
   </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>9d1136dd6f6e3e4790d0aef6b5ae2f63</srcmd5>
+    <version>7.0.10.59</version>
+    <time>1612182286</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.10.59:
+  * strip EXIF marker from profile
+  * add --enable-opencl to the configure command-line to enable OpenCL
+    support.
+  * generate histograms by comparing pixel components rather than color (forwarded request 866417 from dirkmueller)</comment>
+    <requestid>866491</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 24 20:17:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.10.59:
+  * strip EXIF marker from profile
+  * add --enable-opencl to the configure command-line to enable OpenCL
+    support.
+  * generate histograms by comparing pixel components rather than color
+
+-------------------------------------------------------------------
 Sun Jan 17 23:25:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.10.58:
