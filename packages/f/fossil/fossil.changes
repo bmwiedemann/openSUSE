@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  1 04:46:24 UTC 2021 - Sheng Mao <shngmao@gmail.com>
+
+- fossil 2.14
+  * add fossil chat
+  * enhanced fossil clone
+  * performance optimization
+  * enhanced documents
+  * Pikchr improvements
+  * Schema Update Notice #1: This release drops a trigger from 
+  the database schema
+  * Schema Update Notice #2: This release changes how the descriptions
+  of wiki edits are stored in the EVENT table, for improved display
+  on timelines
+
+-------------------------------------------------------------------
 Wed Nov 25 11:42:18 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - enable tests
