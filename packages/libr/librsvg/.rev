@@ -836,4 +836,14 @@
     <comment>New stable rel (forwarded request 849732 from iznogood)</comment>
     <requestid>851023</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>3401afd73ef0ce5e27e5a31a30873960</srcmd5>
+    <version>2.50.3</version>
+    <time>1612190794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.50.3:
+  + Compute correct bounds for objects with stroke-width=0.
+  + Fix test suite on Rust 1.49. (forwarded request 867565 from iznogood)</comment>
+    <requestid>867679</requestid>
+  </revision>
 </revisionlist>

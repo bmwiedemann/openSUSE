@@ -1,7 +1,7 @@
 #
 # spec file for package librsvg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.50.2
+Version:        2.50.3
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND MIT
