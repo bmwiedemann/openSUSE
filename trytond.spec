@@ -2,7 +2,7 @@
 # spec file for package trytond
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2015 2017 Dr. Axel Braun
+# Copyright (c) 2015-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ BuildRequires:  python3-pydot3
 BuildRequires:  python3-python-sql
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wrapt
-BuildRequires:  systemd-rpm-macros
+
 Requires:       html2text
 Requires:       libreoffice-pyuno
 Requires:       postgresql-server
@@ -65,7 +65,7 @@ Requires:       unoconv
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 BuildArch:      noarch
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 This package contains the server of the Tryton application platform,
@@ -82,10 +82,11 @@ cp %{SOURCE2} .
 %patch1 -p1
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_install --prefix=%{_prefix} --root=%{buildroot}
+
 # only for systemd
 mkdir -p %{buildroot}%{_sysconfdir}/%{base_name}
 install -p -m 640 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{base_name}/%{name}.conf
