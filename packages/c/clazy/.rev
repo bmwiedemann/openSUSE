@@ -117,4 +117,13 @@
     <comment></comment>
     <requestid>862220</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>512f39c64d0492b4d8e91b0086faf6fc</srcmd5>
+    <version>1.9</version>
+    <time>1612182436</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a stricter llvm requirement. Only relying on the llvm
+  soversion is still not enough. (kde#432078)</comment>
+    <requestid>866842</requestid>
+  </revision>
 </revisionlist>

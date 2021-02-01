@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 26 13:35:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use a stricter llvm requirement. Only relying on the llvm
+  soversion is still not enough. (kde#432078)
+
+-------------------------------------------------------------------
 Mon Jan 11 07:16:27 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.9:
