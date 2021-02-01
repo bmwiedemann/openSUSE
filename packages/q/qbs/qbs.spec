@@ -1,7 +1,7 @@
 #
 # spec file for package qbs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 The Qt Company.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define qt5_version 5.11.0
 Name:           qbs
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Modern build tool for software projects
 # Legal:
@@ -31,6 +31,8 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND (LGPL-2.
 Group:          Development/Tools/Building
 URL:            https://wiki.qt.io/Qbs
 Source:         https://download.qt.io/official_releases/%{name}/%{version}/%{name}-src-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix-env-script-interpreter.patch -- Avoid the "env-script-interpreter" warning when building
+Patch0:         fix-env-script-interpreter.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Concurrent-devel >= %{qt5_version}
 BuildRequires:  libQt5Core-devel >= %{qt5_version}
@@ -66,6 +68,7 @@ This package is required to develop applications using %{name} as a library
 
 %prep
 %setup -q -n %{name}-src-%{version}
+%patch0 -p1
 
 %build
 makeopts=""
@@ -89,11 +92,8 @@ makeopts=""
 %install
 %qmake5_install
 
-# Cleanup
-rm -f %{buildroot}%{_datadir}/%{name}/python/biplist/qt_attribution.json
-rm -f %{buildroot}%{_datadir}/%{name}/python/dmgbuild/qt_attribution.json
-rm -f %{buildroot}%{_datadir}/%{name}/python/ds_store/qt_attribution.json
-rm -f %{buildroot}%{_datadir}/%{name}/python/mac_alias/qt_attribution.json
+# Cleanup, until the code is ported to python3 completely
+rm -fr %{buildroot}%{_datadir}/%{name}/python
 
 ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config.1.gz
 ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config-ui.1.gz
@@ -124,7 +124,6 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 %{_datadir}/%{name}/imports/
 %{_datadir}/%{name}/module-providers/
 %{_datadir}/%{name}/modules/
-%{_datadir}/%{name}/python/
 %{_datadir}/%{name}/qml-type-descriptions/
 %{_libdir}/%{name}/plugins/lib%{name}_cpp_scanner.so
 %{_libdir}/%{name}/plugins/lib%{name}_qt_scanner.so

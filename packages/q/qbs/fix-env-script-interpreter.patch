@@ -1,0 +1,12 @@
+From: Wang Jun <jgwang@suse.com>
+Date: Mon, 1 Feb 2021 09:50:35 +0800
+Subject: Avoid the "env-script-interpreter" warning when building
+
+--- qbs-src-1.18.0/src/3rdparty/python/bin/dmgbuild.orig	2021-01-27 15:33:13.548068334 +0800
++++ qbs-src-1.18.0/src/3rdparty/python/bin/dmgbuild	2021-01-27 15:33:23.916039320 +0800
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ 
+ from __future__ import unicode_literals

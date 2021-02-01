@@ -93,4 +93,12 @@ Initial import of qbs 1.10.1
     <comment></comment>
     <requestid>834777</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4c9f9652cdb2f20fa4fc59552aaac85a</srcmd5>
+    <version>1.18.0</version>
+    <time>1612182540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868293</requestid>
+  </revision>
 </revisionlist>
