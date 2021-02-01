@@ -1,7 +1,7 @@
 #
 # spec file for package python-celery
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %bcond_with ringdisabled
 Name:           python-celery%{psuffix}
-Version:        5.0.2
+Version:        5.0.5
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
@@ -42,6 +42,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-billiard >= 3.6.3.0
 Requires:       python-click => 7.0
 Requires:       python-click-didyoumean >= 0.0.3
+Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.1.6
 Requires:       python-kombu >= 5.0.0
 Requires:       python-pytz >= 2016.7
@@ -58,20 +59,17 @@ Suggests:       python-pytyrant
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module billiard >= 3.6.3.0}
 BuildRequires:  %{python_module boto3 >= 1.9.178}
 BuildRequires:  %{python_module case >= 1.3.1}
+BuildRequires:  %{python_module celery = %{version}}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module eventlet >= 0.26.1}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module kombu >= 5.0.0}
 BuildRequires:  %{python_module moto >= 1.3.7}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pymongo >= 3.3.0}
 BuildRequires:  %{python_module pytest >= 4.5.0}
 BuildRequires:  %{python_module pytest-subtests}
-BuildRequires:  %{python_module pytz >= 2016.7}
-BuildRequires:  %{python_module vine >= 5.0.0}
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif
@@ -90,7 +88,9 @@ scheduling as well.
 sed -i -e 's:==:>=:g' requirements/*.txt
 
 %build
+%if !%{with test}
 %python_build
+%endif
 
 %install
 %if !%{with test}
@@ -101,9 +101,8 @@ sed -i -e 's:==:>=:g' requirements/*.txt
 
 %check
 %if %{with test}
-# test_setup_security__default_app - fails with py3.8
-# test_pytest_celery_marker_registration - fails, do not know really why
-%pytest -k 'not test_setup_security__default_app' -k 'not test_pytest_celery_marker_registration'
+# test_init_mongodb_dns_seedlist - does not work with new pymongo, will be fixed in 5.1
+%pytest -k 'not test_init_mongodb_dns_seedlist'
 %endif
 
 %if !%{with test}

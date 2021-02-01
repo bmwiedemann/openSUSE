@@ -375,4 +375,12 @@
 - Add patch move-pytest-configuration-to-conftest.patch to fix testsuite.</comment>
     <requestid>848996</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7d7e0abcbc7edce35bb81db69b6ba109</srcmd5>
+    <version>5.0.5</version>
+    <time>1612182407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866877</requestid>
+  </revision>
 </revisionlist>

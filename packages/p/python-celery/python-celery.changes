@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 26 10:14:33 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.0.5
+  * Make –workdir eager for early handling
+  * When using the MongoDB backend, don’t cleanup if result_expires is 0 or None
+  * Detaching no longer creates an extra log file
+  * DummyClient of cache+memory:// backend now shares state between threads
+  * Ensure keys are strings when deleting results from S3
+- Require celery package when running tests to automatically pull dependencies
+
+-------------------------------------------------------------------
 Tue Nov 17 04:14:43 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.02:
