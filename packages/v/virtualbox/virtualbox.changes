@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 23 21:28:37 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+- Fix additional problem with modal dialog parent.
+  Fixes CVE-2021-2074, boo#1181197 and CVE-2021-2129, boo#1181198.
+
+-------------------------------------------------------------------
 Wed Jan 20 19:47:15 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version update to 6.1.18 (released January 19 2021)
