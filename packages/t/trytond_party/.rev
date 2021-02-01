@@ -48,4 +48,12 @@
     <comment>bufix release</comment>
     <requestid>791422</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1559ad610e31ed09c0422f5f0de00e32</srcmd5>
+    <version>5.0.3</version>
+    <time>1612182478</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868173</requestid>
+  </revision>
 </revisionlist>
