@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 25 03:10:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.002004
+   see /usr/share/doc/packages/perl-Role-Tiny/Changes
+
+  2.002004 - 2021-01-24
+    - restore requiring base class when using create_class_with_roles, which was
+      accidentally lost in 2.002_000 (RT#134075)
+
+-------------------------------------------------------------------
 Tue Jan 12 03:09:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.002003

@@ -18,7 +18,7 @@
 
 %define cpan_name Role-Tiny
 Name:           perl-Role-Tiny
-Version:        2.002003
+Version:        2.002004
 Release:        0
 Summary:        Roles: a nouvelle cuisine portion size slice of Moose
 License:        Artistic-1.0 OR GPL-1.0-or-later
