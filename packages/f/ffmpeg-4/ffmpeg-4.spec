@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -153,7 +153,6 @@ BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
-BuildRequires:  pkgconfig(libopenjpeg)
 %if %{with openmpt}
 BuildRequires:  pkgconfig(libopenmpt)
 %endif

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 24 11:22:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove dependency on OpenJPEG, this is obsolete since ffmpeg 4.0,
+  we already build against OpenJPEG 2.1.
+  see changes: 
+    - Dropped support for OpenJPEG versions 2.0 and below. Using OpenJPEG now
+      requires 2.1 (or later) and pkg-config.
+
+-------------------------------------------------------------------
 Fri Nov 27 15:03:17 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add ffmpeg_altivec_yuv2rgb_novsx.patch for ppc64 (BE) as per
