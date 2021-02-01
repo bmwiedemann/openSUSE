@@ -241,4 +241,34 @@
 </comment>
     <requestid>865324</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>76755cd12d8ec11d897189071e15c3d9</srcmd5>
+    <version>3.8.5</version>
+    <time>1612182454</time>
+    <user>dimstar_suse</user>
+    <comment>- Shared libs libkid3-core.so and libkid3-gui.so are no longer
+  versioned with the release tag.
+- Fixed wrong date in file kid3.changes.
+  
+- Update to version 3.8.5
+  * New:
+    + Language can be configured in &quot;Appearance&quot; tab of settings.
+    + New action &quot;Edit/Invert Selection&quot;.
+    + kid3-cli: Command &quot;config&quot; to query and set configuration
+      options.
+    + Script to rewrite all tags of the selected files.
+  * Improved:
+    + Import multiple genres from Discogs and MusicBrainz.
+    + Support import from Discogs JSON API when token is provided.
+    + Snapshot builds can download the current translations.
+    + Mac: Allow code signing.
+  * Fixed:
+    + Crash when adding Chapter frame.
+    + Support ID3v2 Podcast Category (TCAT) and Podcast Keywords
+      (TKWD).
+    + Support for multiple genres with ID3v2.3.0.
+    + Support MP4 values with multiple strings with TagLib.
+</comment>
+    <requestid>868314</requestid>
+  </revision>
 </revisionlist>
