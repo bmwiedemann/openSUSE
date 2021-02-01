@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Jan 25 22:16:46 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the toolname only for the primary python3 flavor in order
+  to avoid choice conflicts.
+- python3-mypy and python3Y-mypy are provided automatically.
+
+-------------------------------------------------------------------
+Sat Jan 23 19:22:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.800:
+ - Python 3.9 Support
+ - Typing Usability Improvements (PEP 585 and PEP 604)
+   The necessity to repeatedly import various types and special forms from typing has been a long-term nuisance for users of static type checking and Python.
+   Two new Python features improve this situation and are now supported by mypy:
+       PEP 585 lets you use list[int] instead of List[int] (no need to import List and other generic collections from typing).
+       PEP 604 lets you write X | Y instead of Union[X, Y], and X | None instead of Optional[X] (no need to import Union or Optional from typing). 
+   Note: Using list[int] requires Python 3.9 and X | Y requires Python 3.10 (alpha) in order to work at runtime. To use them on older versions of Python, use from __future__ import annotations. This allows them to be used in type annotations, but the older variants (or string literal escaping) may be required in non-annotation contexts, such as in type aliases. See the docs for more details.
+   Here is an example that uses the new features:
+       from __future__ import annotations
+       def fields(s: str | None) -> list[str]:
+           if not s:
+               return []
+           else:
+               return s.split(',')
+   These were implemented by Allan Daemon in PR 9564 and by Marc Mueller in PR 9647.
+ - Improvements to Finding Modules
+   This release adds several improvements to how mypy finds Python source files to type check.
+   You can now pass paths to files within namespace packages on the command line, and mypy can better infer their module names. As before, use --namespace-packages to enable namespace packages.
+   When you use --explicit-package-bases together with --namespace-packages, mypy assumes that only the current directory and directories explicitly specified in MYPYPATH (or mypy_path in the config file) are valid package roots. This can help with situations where the module name of a file is ambiguous. For example, it may not be clear whether src/pkg/mod.py should be treated as src.pkg.mod or pkg.mod, and you can use this option to disambiguate between the two (more information in the docs).
+   The above improvements were implemented in PR 9742 by Shantanu.
+   Other related improvements (also implemented by Shantanu):
+  - When you run mypy as mypy <directory>, look for source files recursively also inside directories without a __init__.py (PR 9614)
+  - Support namespace packages with -p (PR 9683)
+  - Log encountered source files when running mypy with -v (PR 9672)
+  - Document the new module finding behavior (PR 9923) 
+ - Other Notable Improvements and Bug Fixes
+  - Only treat import X as X as a re-export in stubs (Shantanu, PR 9515)
+  - Fix package imports with aliases in stubgen (Chad Dombrova, PR 9534)
+  - Require first argument of namedtuple() to match the variable name (Momoko Hattori, PR 9577)
+  - Add error code for name mismatches in named tuples and TypedDicts to make it easy to disable these error messages (Jukka Lehtosalo, PR 9811)
+  - Document local_partial_types config option (Momoko Hattori, PR 9551)
+  - Improve ambiguous kwargs checking (Erik Soma, PR 9573)
+  - Disable unreachable warnings in boolean operators for type variables with value restrictions (Vincent Barbaresi, PR 9572)
+  - Allow assignment to an empty tuple (Tobin Yehle, PR 5617)
+  - Use absolute path when checking source duplication error (Yuki Igarashi, PR 9059)
+  - Add get_function_signature_hook() to the plugin API (Nikita Sobolev, PR 9102)
+  - Speed up type checking of dictionary, set, and list expressions (Hugues, PR 9477)
+  - Allow non-types as arguments in Annotated (Patrick Arminio, PR 9625)
+  - Add support for next generation attrs API (David Euresti, PR 9396)
+  - Fix case folding of missing keys error message for TypedDicts (Marti Raudsepp, PR 9757)
+  - Fix generic inheritance of __init__() methods in dataclasses and attrs classes (Nate McMaster, PR 9383, PR 9380)
+  - Add more information to error message on too few arguments (Abhinay Pandey, PR 9796)
+  - Document PEP 585, 563, 604, and related functionality (Shantanu, PR 9763) 
+ - Mypyc Improvements
+   We use mypyc to compile mypy into fast C extension modules. This release includes many mypyc improvements.
+   Xuanda Yang finished the migration to use a new, lower-level compiler intermediate representation in his Google Summer of Code project.
+ - New supported Python features:
+  - Support the walrus operator (:=) (Michael J. Sullivan, PR 9624) 
+ - Performance improvements:
+  - Add primitives for list sort and list reverse (Jukka Lehtosalo, PR 9897)
+  - Recognize six.moves.xrange again as an alias of range (Jukka Lehtosalo, PR 9896)
+  - Speed up some integer primitives (Jukka Lehtosalo, PR 9801)
+  - Speed up if x for int values (Jukka Lehtosalo, PR 9854)
+  - Implement dict clear primitive (Vasileios Sakkas, PR 9724)
+  - Implement list insert primitive (Vasileios Sakkas, PR 9741)
+  - Implement float abs primitive (Xuanda Yang, PR 9695)
+  - Implement str-to-float primitive (Xuanda Yang, PR 9685)
+  - Specialize some calls to frozenset (Michael J. Sullivan, PR 9623)
+  - Speed up multiple assignment from tuple (Xuanda Yang, PR 9575)
+  - Speed up multiple assignment from sequence (Jukka Lehtosalo, PR 9800)
+  - Optimize startswith and endswith (Tomer Chachamu, PR 9557)
+  - Add primitives for bitwise ops (Jukka Lehtosalo, PR 9529)
+  - Speed up in operations for list/tuple (Johan Dahlin, PR 9004)
+  - Add primitives for list, str and tuple slicing (Jukka Lehtosalo, PR 9283)
+  - Speed up tuple equality checks (Xuanda Yang, PR 9343) 
+ - Bug fixes:
+  - Always add implicit None return type to __init__ method (Thomas Johnson, PR 9866)
+  - Fix deallocation of deeply nested data structures (Michael J. Sullivan, PR 9839)
+  - Fix using package imported inside a function (Jukka Lehtosalo, PR 9782)
+  - Fix type of for loop index register in for over range (Jukka Lehtosalo, PR 9634) 
+
+-------------------------------------------------------------------
+Fri Jan 22 15:48:13 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Convert to single-spec
+- Use update-alternatives to handle binaries
+- Do not expect python3.5 during tests
+
+-------------------------------------------------------------------
 Sun Oct 11 06:53:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.790:

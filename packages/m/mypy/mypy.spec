@@ -1,7 +1,7 @@
 #
 # spec file for package mypy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           mypy
-Version:        0.790
+Version:        0.800
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -25,26 +26,30 @@ Group:          Development/Languages/Python
 URL:            http://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
 Source99:       mypy-rpmlintrc
+BuildRequires:  %{python_module mypy_extensions >= 0.4.0}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typed-ast >= 1.4.0}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-mypy_extensions >= 0.4.0
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-typed-ast >= 1.4.0
-BuildRequires:  python3-typing_extensions >= 3.7.4
-# SECTION tests
-BuildRequires:  python3-pytest
-# /SECTION
-Requires:       python3
-Requires:       python3-mypy_extensions >= 0.4.0
-Requires:       python3-typed-ast >= 1.4.0
-Requires:       python3-typing_extensions >= 3.7.4
-Provides:       python3-mypy = %{version}
-Obsoletes:      python3-mypy < %{version}
+Requires:       python-mypy_extensions >= 0.4.0
+Requires:       python-typed-ast >= 1.4.0
+Requires:       python-typing_extensions >= 3.7.4
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
+Provides:       mypy = %{version}
+Obsoletes:      mypy < %{version}
+%endif
 BuildArch:      noarch
+# SECTION tests
+BuildRequires:  %{python_module pytest}
+# /SECTION
 # SECTION docs
 BuildRequires:  python3-Sphinx >= 1.4.4
 BuildRequires:  python3-sphinx_rtd_theme >= 0.1.9
 # /SECTION
+%python_subpackages
 
 %description
 Mypy is an optional static type checker for Python that aims to
@@ -69,32 +74,43 @@ sed -i '/env python3/d' ./mypy/stubgen.py
 sed -i '1s/env //' mypy/typeshed/scripts/update-stubtest-whitelist.py
 
 %build
-%python3_build
+%python_build
 pushd docs
-make %{?_smp_mflags} html
+%make_build html
 rm build/html/.buildinfo
 popd
 
 %install
-%python3_install
-%fdupes %{buildroot}
+%python_install
+%python_clone -a  %{buildroot}%{_bindir}/dmypy
+%python_clone -a  %{buildroot}%{_bindir}/mypy
+%python_clone -a  %{buildroot}%{_bindir}/mypyc
+%python_clone -a  %{buildroot}%{_bindir}/stubgen
+%python_clone -a  %{buildroot}%{_bindir}/stubtest
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
 sed -i '/plugin/d' ./mypy_self_check.ini
 sed -i '/warn_unused_ignores/d' ./mypy_self_check.ini
-python3 -m mypy --config-file mypy_self_check.ini -p mypy
+sed -i '/python_version.*$/d' ./mypy_self_check.ini
+%python_exec -m mypy --config-file mypy_self_check.ini -p mypy
 # py.test3 -v … we need to analyze subset of tests which would be
 # available and without large dependencies.
 
-%files
+%post
+%python_install_alternative mypy dmypy mypyc stubgen stubtest
+
+%postun
+%python_uninstall_alternative mypy
+
+%files %{python_files}
 %doc docs/README.md docs/build/html/
 %license LICENSE
-%{python3_sitelib}/*
-%{_bindir}/dmypy
-%{_bindir}/mypy
-%{_bindir}/mypyc
-%{_bindir}/stubgen
-%{_bindir}/stubtest
+%{python_sitelib}/*
+%python_alternative %{_bindir}/dmypy
+%python_alternative %{_bindir}/mypy
+%python_alternative %{_bindir}/mypyc
+%python_alternative %{_bindir}/stubgen
+%python_alternative %{_bindir}/stubtest
 
 %changelog
