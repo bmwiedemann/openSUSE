@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 27 13:58:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.0:
+  + Attribute: Add Overline and ShowFlags enums and some create*()
+    methods.
+  + Font, FontFace, FontFamily, FontMetrics: Add new methods.
+  + LayoutIter: Fix get_run().
+  + LayoutRun:
+    - Fix a memory leak in split().
+    - Make most methods public.
+  + GlyphString, Item: Wrap pango_shape_with_flags().
+  + Layout:
+    - Add set/get_line_spacing().
+    - Add get_const_line() and get_const_lines().
+  + Coverage: Deprecate create(bytes, n_bytes), max(), to_bytes().
+  + Build: Requires pango >= 1.45.1 because of Overline.
+
+-------------------------------------------------------------------
 Fri Dec 18 19:00:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.42.2:

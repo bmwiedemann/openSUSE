@@ -39,4 +39,12 @@
     <comment>New stable release (forwarded request 856918 from iznogood)</comment>
     <requestid>857823</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c3238b2682661473ed7d79cdc33336a</srcmd5>
+    <version>2.46.0</version>
+    <time>1612182335</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 867210 from iznogood)</comment>
+    <requestid>867242</requestid>
+  </revision>
 </revisionlist>
