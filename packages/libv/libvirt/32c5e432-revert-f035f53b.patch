@@ -1,0 +1,27 @@
+commit 32c5e432044689b6679cdedeb1026f27653449d8
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Thu Jan 28 12:09:18 2021 -0700
+
+    Revert "remote: Add libvirtd dependency to virt-guest-shutdown.target"
+    
+    Further testing revealed commit f035f53baa regresses Debian bug 955216
+    
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=955216
+    
+    Restarting libvirt-guests on libvirtd restart is worse than the original
+    dependency issue, so revert the commit until a better solution is found.
+    
+    This reverts commit f035f53baa2e5dc00b8e866e594672a90b4cea78.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+Index: libvirt-7.0.0/src/remote/virt-guest-shutdown.target
+===================================================================
+--- libvirt-7.0.0.orig/src/remote/virt-guest-shutdown.target
++++ libvirt-7.0.0/src/remote/virt-guest-shutdown.target
+@@ -1,4 +1,3 @@
+ [Unit]
+ Description=Libvirt guests shutdown
+-Requires=libvirtd.service
+ Documentation=https://libvirt.org

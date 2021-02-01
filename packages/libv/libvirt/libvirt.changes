@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 29 17:54:25 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Revert "Add libvirtd dependency to virt-guest-shutdown.target"
+  32c5e432-revert-f035f53b.patch
+  bsc#1177902
+
+-------------------------------------------------------------------
+Fri Jan 29 01:27:36 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Enable the libvirt firewalld zone in SLE >= 15 SP3
+  jsc#SLE-17336
+
+-------------------------------------------------------------------
 Tue Jan 19 02:12:11 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 7.0.0

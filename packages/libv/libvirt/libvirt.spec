@@ -76,7 +76,7 @@
 %endif
 
 # The 'libvirt' zone must be used with firewalld >= 0.7.0
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
     %define with_firewalld_zone 1
 %endif
 
@@ -291,6 +291,7 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         32c5e432-revert-f035f53b.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
