@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 19 12:28:49 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require the awk, which and sed commands instead of packages to
+  allow alternate implementations on embedded/Edge systems
+
+-------------------------------------------------------------------
 Thu Dec 31 17:15:30 UTC 2020 - jason.record@suse.com
 
 - Additions to version 3.1.13

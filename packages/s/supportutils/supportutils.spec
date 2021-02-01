@@ -33,9 +33,9 @@ Requires:       net-tools
 Requires:       sysfsutils
 Requires:       tar
 Requires:       util-linux-systemd
-Requires:       which
-Requires:       sed
-Requires:       gawk
+Requires:       /usr/bin/which
+Requires:       /usr/bin/sed
+Requires:       /usr/bin/awk
 Provides:       supportconfig-plugin-icommand
 Provides:       supportconfig-plugin-resource
 Provides:       supportconfig-plugin-tag
