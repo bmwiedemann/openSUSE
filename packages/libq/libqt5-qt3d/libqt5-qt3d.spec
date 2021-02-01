@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\(Qardboard.*
 
 %define qt5_snapshot 0
 %define libname libQt53DCore5

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 31 13:39:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
 Tue Dec 15 08:15:38 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop baselibs.conf, -32bit packages are not used anywhere and due

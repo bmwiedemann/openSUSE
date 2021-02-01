@@ -286,4 +286,12 @@
 - Fix links in %{_bindir}</comment>
     <requestid>856348</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>8fe7c46b7d54c04ef367a1381bb883d1</srcmd5>
+    <version>5.15.2</version>
+    <time>1612182490</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compatibility with qml-autoreqprov</comment>
+    <requestid>868199</requestid>
+  </revision>
 </revisionlist>
