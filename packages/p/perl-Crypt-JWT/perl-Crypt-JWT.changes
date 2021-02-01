@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Mon Jan 11 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.031
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.031   2021-01-10
+          - fix #29 Broken JWS support for ES256K "alg" type
+
+  0.030   2021-01-08
+          - fix #28 Using "kid_keys" with PS256 fails
+
+-------------------------------------------------------------------
+Tue Jun 23 03:10:00 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.029
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.029   2020-06-22
+          - verify_iss, verify_aud, verify_sub, verify_jti accept Scalar
+
+-------------------------------------------------------------------
+Mon Jun 15 03:07:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.028
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.028   2020-06-14
+          - switch to JSON from JSON::MaybeXS
+
+-------------------------------------------------------------------
+Fri Jun  5 03:07:37 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.027
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.027   2020-06-05
+          - fix #25 more intuitive exceptions
+          - support for ES256K
+  
+
+-------------------------------------------------------------------
+Mon Feb  3 03:10:49 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.026
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.026   2019-02-02
+          - added support for EdDSA/ed25519 + ECDH/x25519
+          - fix #21 Potentially wrong IV in gcm_key_wrap
+
+-------------------------------------------------------------------
+Mon Sep 30 10:39:12 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.025
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.025   2019-09-29
+          - fix #19 Empty payload in JWS JSON token
+          - PR #18 _verify_claims: Refactor iss, sub, aud, and jti checks
+
+-------------------------------------------------------------------
+Wed Mar 27 06:07:43 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.024
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+-------------------------------------------------------------------
+Wed Sep 19 05:10:40 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.023
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+-------------------------------------------------------------------
+Mon Jun 25 05:11:56 UTC 2018 - coolo@suse.com
+
+- updated to 0.022
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.022   2018/06/24
+          - fix AESGCM IV size as required by RFC (in encrypt_jwe_payload)
+
+-------------------------------------------------------------------
+Fri Mar 16 06:08:11 UTC 2018 - coolo@suse.com
+
+- updated to 0.021
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.021   2018/03/15
+          - fix #13 off-by-one in exp verification
+
+-------------------------------------------------------------------
+Wed Feb  7 15:16:15 UTC 2018 - coolo@suse.com
+
+- updated to 0.020
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.020   2018/02/02
+          - improved diagnostics
+  
+  0.019   2018/01/26
+          - fix #11 kid keys
+          - fix #9  Support for Java lib that pads base64 encoding
+
+-------------------------------------------------------------------
+Wed Aug 30 13:15:24 UTC 2017 - rjschwei@suse.com
+
+- Fix package name in spec file, cut and paste error
+
+-------------------------------------------------------------------
+Tue Aug 15 17:52:14 UTC 2017 - rjschwei@suse.com
+
+- Initial build
+  + Version 0.018

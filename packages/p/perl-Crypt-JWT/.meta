@@ -1,0 +1,7 @@
+<package name="perl-Crypt-JWT" project="openSUSE:Factory">
+  <title>Perl handling for JSON Web Token</title>
+  <description>Implements JSON Web Token (JWT) - https://tools.ietf.org/html/rfc7519. The implementation covers not only JSON Web Signature (JWS) - https://tools.ietf.org/html/rfc7515, but also JSON Web Encryption (JWE) - https://tools.ietf.org/html/rfc7516.
+
+The module implements all (100%) algorithms defined in https://tools.ietf.org/html/rfc7518 - JSON Web Algorithms (JWA).</description>
+  <devel project="devel:languages:perl" package="perl-Crypt-JWT"/>
+</package>
