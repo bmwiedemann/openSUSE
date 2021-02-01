@@ -97,4 +97,14 @@
     <comment></comment>
     <requestid>817301</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5cf8e07cadb018dc0da8868602946853</srcmd5>
+    <version>1.10.2</version>
+    <time>1612186909</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass conditional Darm_neon=false instead of Darm-neon=true to
+  meson, fix build for armv7.
+- Stop passing Dbenchmarks=true, no longer recognized nor used. (forwarded request 867574 from iznogood)</comment>
+    <requestid>867720</requestid>
+  </revision>
 </revisionlist>

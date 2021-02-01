@@ -1,7 +1,7 @@
 #
 # spec file for package graphene
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,9 +87,12 @@ This subpackage contains the development files for the Graphene library.
 	-Dintrospection=true \
 	-Dgcc_vector=true \
 	-Dsse2=true \
-	-Darm-neon=true \
+%ifarch armv7hl
+	-Darm_neon=false \
+%else
+	-Darm_neon=true \
+%endif
 	-Dtests=true \
-	-Dbenchmarks=true \
 	%{nil}
 %meson_build
 
