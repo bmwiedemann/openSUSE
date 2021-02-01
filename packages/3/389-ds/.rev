@@ -406,4 +406,12 @@
   * Bump version to 1.4.5.0</comment>
     <requestid>852782</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4028f6f21304b294903c2be5470d7b4c</srcmd5>
+    <version>2.0.2~git0.6d17ca7df</version>
+    <time>1612182504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868235</requestid>
+  </revision>
 </revisionlist>

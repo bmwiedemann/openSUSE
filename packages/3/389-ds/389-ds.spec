@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.1~git0.b557f5daa
+Version:        2.0.2~git0.6d17ca7df
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -73,15 +73,15 @@ BuildRequires:  sysuser-tools
 BuildRequires:  net-snmp-devel >= 5.1.2
 BuildRequires:  openldap2-devel
 # pam-devel is required by the pam passthru auth plug-in
-BuildRequires:  %{python_module argcomplete}
-BuildRequires:  %{python_module argparse-manpage}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module ldap >= 3}
-BuildRequires:  %{python_module pyasn1-modules}
-BuildRequires:  %{python_module pyasn1}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %use_python-argcomplete
+BuildRequires:  %use_python-argparse-manpage
+BuildRequires:  %use_python-devel
+BuildRequires:  %use_python-ldap >= 3
+BuildRequires:  %use_python-pyasn1
+BuildRequires:  %use_python-pyasn1-modules
+BuildRequires:  %use_python-python-dateutil
+BuildRequires:  %use_python-setuptools
+BuildRequires:  %use_python-six
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -261,13 +261,13 @@ export XCFLAGS="$CFLAGS"
 make %{?_smp_mflags}
 #make setup.py
 pushd src/lib389
-%python_build
+%python3_build
 popd
 
 %install
 %make_install
 pushd src/lib389
-%python_install
+%python3_install
 mv %{buildroot}/usr/libexec/dirsrv/dscontainer %{buildroot}%{_prefix}/lib/dirsrv/
 rmdir %{buildroot}/usr/libexec/dirsrv/
 popd
@@ -384,11 +384,9 @@ exit 0
 %{_includedir}/svrcore.h
 %{_libdir}/libsvrcore.so
 %{_libdir}/dirsrv/libns-dshttpd.so
-%{_libdir}/dirsrv/libsds.so
 %{_libdir}/dirsrv/libslapd.so
 %{_libdir}/dirsrv/libldaputil.so
 %{_libdir}/pkgconfig/dirsrv.pc
-%{_libdir}/pkgconfig/libsds.pc
 %{_libdir}/pkgconfig/svrcore.pc
 
 %files -n %{svrcorelib}
@@ -419,6 +417,6 @@ exit 0
 %{_mandir}/man8/dscreate.8.gz
 %{_mandir}/man8/dsctl.8.gz
 %{_mandir}/man8/dsidm.8.gz
-/usr/lib/python*/site-packages/lib389*
+%{python3_sitelib}/lib389*
 
 %changelog
