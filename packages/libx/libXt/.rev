@@ -105,4 +105,12 @@
 - supersedes U_libXt_code-cleanup.patch</comment>
     <requestid>713196</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b23273d85734aee958e2238dd5325c8a</srcmd5>
+    <version>1.2.1</version>
+    <time>1612182304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866558</requestid>
+  </revision>
 </revisionlist>

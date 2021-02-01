@@ -1,7 +1,7 @@
 #
 # spec file for package libXt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 Name:           libXt
 %define lname	libXt6
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        X Toolkit Intrinsics library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXt
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXt/

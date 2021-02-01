@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 24 20:26:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * _XtCalloc actually uses a Cardinal, not size_t
+  * add errorhandling to _XtVaToTypedArgList()
+  * refactoring, reduce indent level
+  * work within existing interface which attempts to obtain the
+    display-pointer from the screen-pointer but fails when the screen-pointer
+    itself is invalid.  Ensure that the screen-pointer is valid by checking
+    the default_screen value against the valid range, and forcing it to zero
+    if it is out of bounds.
+  * indent
+
+-------------------------------------------------------------------
 Wed Jul  3 09:33:33 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.0
