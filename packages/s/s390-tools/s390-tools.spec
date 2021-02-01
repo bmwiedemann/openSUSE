@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2001-2020 SUSE LLC
+# Copyright (c) 2001-2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -522,6 +522,8 @@ fi
 %dir %{_datadir}/s390-tools/genprotimg
 %dir %{_prefix}/lib/dracut/modules.d/95zdev
 %dir /boot/zipl
+%dir %{_libdir}/zkey
+%{_libdir}/zkey/zkey-ekmfweb.so
 %dir /lib/s390-tools/
 /lib/s390-tools/zipl.conf
 %{_prefix}/lib/modules-load.d/pkey.conf
@@ -553,8 +555,6 @@ fi
 %files -n libekmfweb1
 %defattr(-,root,root)
 %{_libdir}/libekmfweb.so.*
-%dir %{_libdir}/zkey
-%{_libdir}/zkey/zkey-ekmfweb.so
 
 %files -n libekmfweb1-devel
 %{_libdir}/libekmfweb.so

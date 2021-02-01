@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 28 21:23:35 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Moved %dir %{_libdir}/zkey and %{_libdir}/zkey/zkey-ekmfweb.so
+  from the libekfmweb1 package to the main package since it is a
+  plugin for the zkey command, and not a shared library.
+  (bsc#1180534)
+
+-------------------------------------------------------------------
 Mon Dec  7 17:53:46 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.15.1. (bsc#1178250, jsc#SLE-13663)
