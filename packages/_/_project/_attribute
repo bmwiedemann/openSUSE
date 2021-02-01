@@ -409,8 +409,8 @@ products:
     - x86_64
   - opensuse-bind-image:
     - x86_64
-  - opensuse-cockpit-ws-image:
-    - x86_64
+#  - opensuse-cockpit-ws-image:
+#   - x86_64
   - opensuse-dhcp-server-image:
     - x86_64
   - opensuse-docker_auth-image:
