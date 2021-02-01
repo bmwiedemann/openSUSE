@@ -96,4 +96,12 @@
     <comment></comment>
     <requestid>860991</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>9692a1f7d647fd8e97d1fc1d7692a436</srcmd5>
+    <version>1.0</version>
+    <time>1612182558</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo breaking the URL on Leap 15.3 on aarch64</comment>
+    <requestid>868312</requestid>
+  </revision>
 </revisionlist>
