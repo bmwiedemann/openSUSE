@@ -496,4 +496,16 @@
     <comment></comment>
     <requestid>859719</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>de9afe1c2dbdafca4da7c9def7108123</srcmd5>
+    <version>1.26.3</version>
+    <time>1612182423</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.3:
+  * Fixed bytes and string comparison issue with headers (Pull #2141)
+  * Changed ``ProxySchemeUnknown`` error message to be
+    more actionable if the user supplies a proxy URL without
+    a scheme. (Pull #2107)</comment>
+    <requestid>867599</requestid>
+  </revision>
 </revisionlist>

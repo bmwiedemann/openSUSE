@@ -1,5 +1,7 @@
---- a/docs/conf.py
-+++ b/docs/conf.py
+Index: urllib3-1.26.3/docs/conf.py
+===================================================================
+--- urllib3-1.26.3.orig/docs/conf.py
++++ urllib3-1.26.3/docs/conf.py
 @@ -14,7 +14,10 @@ sys.path.insert(0, root_path)
  # Mock some expensive/platform-specific modules so build will work.
  # (https://read-the-docs.readthedocs.io/en/latest/faq.html#\
@@ -12,17 +14,10 @@
  
  
  class MockModule(mock.Mock):
-@@ -77,7 +80,7 @@ html_logo = "images/banner.svg"
- 
- html_theme_options = {
-     "announcement": """
--        <a style=\"text-decoration: none; color: white;\" 
-+        <a style=\"text-decoration: none; color: white;\"
-            href=\"https://opencollective.com/urllib3\">
-            <img src=\"/en/latest/_static/favicon.png\"/> Sponsor urllib3 v2.0 on Open Collective
-         </a>
---- a/test/appengine/test_urlfetch.py
-+++ b/test/appengine/test_urlfetch.py
+Index: urllib3-1.26.3/test/appengine/test_urlfetch.py
+===================================================================
+--- urllib3-1.26.3.orig/test/appengine/test_urlfetch.py
++++ urllib3-1.26.3/test/appengine/test_urlfetch.py
 @@ -5,7 +5,10 @@ Engine-patched version of httplib to mak
  import httplib
  import pytest
@@ -35,8 +30,10 @@
  
  from ..test_no_ssl import TestWithoutSSL
  
---- a/test/contrib/test_pyopenssl.py
-+++ b/test/contrib/test_pyopenssl.py
+Index: urllib3-1.26.3/test/contrib/test_pyopenssl.py
+===================================================================
+--- urllib3-1.26.3.orig/test/contrib/test_pyopenssl.py
++++ urllib3-1.26.3/test/contrib/test_pyopenssl.py
 @@ -1,7 +1,10 @@
  # -*- coding: utf-8 -*-
  import os
@@ -49,8 +46,10 @@
  import pytest
  
  try:
---- a/test/contrib/test_pyopenssl_dependencies.py
-+++ b/test/contrib/test_pyopenssl_dependencies.py
+Index: urllib3-1.26.3/test/contrib/test_pyopenssl_dependencies.py
+===================================================================
+--- urllib3-1.26.3.orig/test/contrib/test_pyopenssl_dependencies.py
++++ urllib3-1.26.3/test/contrib/test_pyopenssl_dependencies.py
 @@ -1,6 +1,9 @@
  # -*- coding: utf-8 -*-
  import pytest
@@ -62,8 +61,10 @@
  
  try:
      from urllib3.contrib.pyopenssl import extract_from_urllib3, inject_into_urllib3
---- a/test/test_connection.py
-+++ b/test/test_connection.py
+Index: urllib3-1.26.3/test/test_connection.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_connection.py
++++ urllib3-1.26.3/test/test_connection.py
 @@ -1,6 +1,9 @@
  import datetime
  
@@ -75,8 +76,10 @@
  import pytest
  
  from urllib3.connection import RECENT_DATE, CertificateError, _match_hostname
---- a/test/test_connectionpool.py
-+++ b/test/test_connectionpool.py
+Index: urllib3-1.26.3/test/test_connectionpool.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_connectionpool.py
++++ urllib3-1.26.3/test/test_connectionpool.py
 @@ -6,7 +6,10 @@ from ssl import SSLError as BaseSSLError
  from test import SHORT_TIMEOUT
  
@@ -89,8 +92,10 @@
  
  from dummyserver.server import DEFAULT_CA
  from urllib3._collections import HTTPHeaderDict
---- a/test/test_queue_monkeypatch.py
-+++ b/test/test_queue_monkeypatch.py
+Index: urllib3-1.26.3/test/test_queue_monkeypatch.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_queue_monkeypatch.py
++++ urllib3-1.26.3/test/test_queue_monkeypatch.py
 @@ -1,6 +1,9 @@
  from __future__ import absolute_import
  
@@ -102,8 +107,10 @@
  import pytest
  
  from urllib3 import HTTPConnectionPool
---- a/test/test_response.py
-+++ b/test/test_response.py
+Index: urllib3-1.26.3/test/test_response.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_response.py
++++ urllib3-1.26.3/test/test_response.py
 @@ -9,7 +9,10 @@ from base64 import b64decode
  from io import BufferedReader, BytesIO, TextIOWrapper
  from test import onlyBrotlipy
@@ -116,8 +123,10 @@
  import pytest
  import six
  
---- a/test/test_retry.py
-+++ b/test/test_retry.py
+Index: urllib3-1.26.3/test/test_retry.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_retry.py
++++ urllib3-1.26.3/test/test_retry.py
 @@ -1,6 +1,9 @@
  import warnings
  
@@ -129,8 +138,10 @@
  import pytest
  
  from urllib3.exceptions import (
---- a/test/test_retry_deprecated.py
-+++ b/test/test_retry_deprecated.py
+Index: urllib3-1.26.3/test/test_retry_deprecated.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_retry_deprecated.py
++++ urllib3-1.26.3/test/test_retry_deprecated.py
 @@ -1,7 +1,10 @@
  # This is a copy-paste of test_retry.py with extra asserts about deprecated options. It will be removed for v2.
  import warnings
@@ -143,8 +154,10 @@
  import pytest
  
  from urllib3.exceptions import (
---- a/test/test_ssl.py
-+++ b/test/test_ssl.py
+Index: urllib3-1.26.3/test/test_ssl.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_ssl.py
++++ urllib3-1.26.3/test/test_ssl.py
 @@ -1,6 +1,9 @@
  from test import notPyPy2
  
@@ -156,8 +169,10 @@
  import pytest
  
  from urllib3.exceptions import SNIMissingWarning
---- a/test/test_ssltransport.py
-+++ b/test/test_ssltransport.py
+Index: urllib3-1.26.3/test/test_ssltransport.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_ssltransport.py
++++ urllib3-1.26.3/test/test_ssltransport.py
 @@ -4,7 +4,10 @@ import socket
  import ssl
  import sys
@@ -170,8 +185,10 @@
  import pytest
  
  from dummyserver.server import DEFAULT_CA, DEFAULT_CERTS
---- a/test/test_util.py
-+++ b/test/test_util.py
+Index: urllib3-1.26.3/test/test_util.py
+===================================================================
+--- urllib3-1.26.3.orig/test/test_util.py
++++ urllib3-1.26.3/test/test_util.py
 @@ -9,7 +9,10 @@ from itertools import chain
  from test import notBrotlipy, onlyBrotlipy, onlyPy2, onlyPy3
  
@@ -184,8 +201,10 @@
  
  from urllib3 import add_stderr_logger, disable_warnings, util
  from urllib3.exceptions import (
---- a/test/with_dummyserver/test_connectionpool.py
-+++ b/test/with_dummyserver/test_connectionpool.py
+Index: urllib3-1.26.3/test/with_dummyserver/test_connectionpool.py
+===================================================================
+--- urllib3-1.26.3.orig/test/with_dummyserver/test_connectionpool.py
++++ urllib3-1.26.3/test/with_dummyserver/test_connectionpool.py
 @@ -10,7 +10,10 @@ import warnings
  from test import LONG_TIMEOUT, SHORT_TIMEOUT, onlyPy2
  from threading import Event
@@ -198,8 +217,10 @@
  import pytest
  import six
  
---- a/test/with_dummyserver/test_https.py
-+++ b/test/with_dummyserver/test_https.py
+Index: urllib3-1.26.3/test/with_dummyserver/test_https.py
+===================================================================
+--- urllib3-1.26.3.orig/test/with_dummyserver/test_https.py
++++ urllib3-1.26.3/test/with_dummyserver/test_https.py
 @@ -19,7 +19,10 @@ from test import (
      resolvesLocalhostFQDN,
  )
@@ -212,8 +233,10 @@
  import pytest
  import trustme
  
---- a/test/with_dummyserver/test_socketlevel.py
-+++ b/test/with_dummyserver/test_socketlevel.py
+Index: urllib3-1.26.3/test/with_dummyserver/test_socketlevel.py
+===================================================================
+--- urllib3-1.26.3.orig/test/with_dummyserver/test_socketlevel.py
++++ urllib3-1.26.3/test/with_dummyserver/test_socketlevel.py
 @@ -52,7 +52,10 @@ from test import (
  )
  from threading import Event
