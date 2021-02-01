@@ -1968,4 +1968,12 @@ General:
     <comment></comment>
     <requestid>861075</requestid>
   </revision>
+  <revision rev="124" vrev="5">
+    <srcmd5>25dba63dbf2802b0648f6f9480664a92</srcmd5>
+    <version>2.10.22</version>
+    <time>1612182362</time>
+    <user>dimstar_suse</user>
+    <comment>fix bsc#1180614</comment>
+    <requestid>867528</requestid>
+  </revision>
 </revisionlist>

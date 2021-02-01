@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 25 08:33:24 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make graphviz/dot only required for runtime debugging an
+  optional dependency, fixes bsc#1180614:
+  * 0001-app-make-gegl-introspect-an-optional-operation-depen.patch
+- Cleanup spec file, remove Leap 42.x parts
+
+-------------------------------------------------------------------
 Thu Jan  7 06:43:45 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Added python-xml as recommend dependency. (bsc#1180363)

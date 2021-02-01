@@ -1,7 +1,7 @@
 #
 # spec file for package gimp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -44,17 +44,14 @@ Source2:        openSUSE.gpl
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM git diff GIMP_2_10_22..gimp-2-10 -- plug-ins/common/file-heif.c > libheif-avif-only.patch mrueckert@suse.de -- only offer the fileformats that our current libheif actually supports 
 Patch:          libheif-avif-only.patch
+# PATCH-FIX-UPSTREAM Make graphviz/dot dependency optional -- https://github.com/GNOME/gimp/commit/2cae9b9acf9da98c4c9990819ffbd5aabe23017e.patch
+Patch1:         0001-app-make-gegl-introspect-an-optional-operation-depen.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel >= 2.12.4
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  gdk-pixbuf-loader-rsvg
 # For some odd reason build needs gegl executable.
 BuildRequires:  gegl
@@ -221,6 +218,7 @@ applications that want to make use of the GIMP libraries.
 %prep
 %setup -q
 %patch -p1
+%patch1 -p1
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -246,10 +244,6 @@ if test "x${vapi}" != "x%{apiver}"; then
 fi
 
 %build
-%if 0%{?suse_version} < 1500
-test -x "$(type -p %{_bindir}/gcc-7)" && export CC="%{_bindir}/gcc-7"
-test -x "$(type -p %{_bindir}/g++-7)" && export CXX="%{_bindir}/g++-7"
-%endif
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -257,17 +251,15 @@ export LDFLAGS="%{optflags} -lm"
 %configure \
 	--disable-silent-rules \
 	--disable-static\
-%if 0%{?suse_version} >= 1330
 	--without-webkit\
 	--with-lcms=lcms2\
-%endif
         %{!?with_python_plugin:--disable-python} \
 	--libexecdir=%{_libexecdir}\
 	--enable-default-binary\
 	--disable-check-update\
 	--enable-mp
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -299,18 +291,6 @@ install -m 644 -c macros.gimp \
 %fdupes %{buildroot}%{_datadir}/gtk-doc/
 %fdupes %{buildroot}%{_libdir}/gimp/2.0/python/
 %fdupes %{buildroot}%{_datadir}/gimp/2.0/
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
-%if 0%{?suse_version} < 1500
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %post -n libgimp-2_0-0 -p /sbin/ldconfig
 %postun -n libgimp-2_0-0 -p /sbin/ldconfig
