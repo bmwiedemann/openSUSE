@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-commons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xmlgraphics-commons
-Version:        2.4
+Version:        2.6
 Release:        0
 Summary:        XML Graphics Commons
 License:        Apache-2.0

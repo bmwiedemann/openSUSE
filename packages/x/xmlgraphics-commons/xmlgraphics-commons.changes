@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 24 18:23:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.6:
+  * minor release
+  * changes:
+    + Fix test on Windows
+    + XGC-122: Dont load DTDs in XMP
+    + XGC-123: Decode image at page load rather than document load
+
+-------------------------------------------------------------------
 Thu Jun  4 05:05:24 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.4:
