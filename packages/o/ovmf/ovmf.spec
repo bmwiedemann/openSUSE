@@ -53,6 +53,7 @@ Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-bsc1180079-amd-sev-es-mitigation.patch
+Patch7:         %{name}-jscSLE-16075-SEV-ES-use-physical-address.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -170,6 +171,7 @@ rm -rf $PKG_TO_REMOVE
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

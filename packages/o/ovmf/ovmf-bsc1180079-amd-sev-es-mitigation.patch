@@ -711,19 +711,21 @@ Skip OvmfPkg/AmdSev/AmdSevX64.dsc
 ---
  OvmfPkg/Bhyve/BhyveX64.dsc                    |   4 +-
  OvmfPkg/Include/Library/MemEncryptSevLib.h    |  12 ++
- ...ryptSevLib.inf => DxeMemEncryptSevLib.inf} |  15 +-
+ .../BaseMemEncryptSevLib.inf                  |  51 ------
+ .../DxeMemEncryptSevLib.inf                   |  56 ++++++
  .../DxeMemEncryptSevLibInternal.c             | 145 ++++++++++++++++
  .../MemEncryptSevLibInternal.c                |  94 +----------
- ...ryptSevLib.inf => PeiMemEncryptSevLib.inf} |  17 +-
+ .../PeiMemEncryptSevLib.inf                   |  56 ++++++
  .../PeiMemEncryptSevLibInternal.c             | 159 ++++++++++++++++++
  OvmfPkg/OvmfPkgIa32.dsc                       |   4 +-
  OvmfPkg/OvmfPkgIa32X64.dsc                    |   4 +-
  OvmfPkg/OvmfPkgX64.dsc                        |   4 +-
  OvmfPkg/OvmfXen.dsc                           |   3 +-
- 11 files changed, 352 insertions(+), 109 deletions(-)
- copy OvmfPkg/Library/BaseMemEncryptSevLib/{BaseMemEncryptSevLib.inf => DxeMemEncryptSevLib.inf} (68%)
+ 12 files changed, 443 insertions(+), 149 deletions(-)
+ delete mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
  create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c
- rename OvmfPkg/Library/BaseMemEncryptSevLib/{BaseMemEncryptSevLib.inf => PeiMemEncryptSevLib.inf} (67%)
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
  create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c
 
 diff --git a/OvmfPkg/Bhyve/BhyveX64.dsc b/OvmfPkg/Bhyve/BhyveX64.dsc
@@ -769,60 +771,122 @@ index a2c70aa550fe..872abe6725dc 100644
 +  );
 +
  #endif // _MEM_ENCRYPT_SEV_LIB_H_
-diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
-similarity index 68%
-copy from OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
-copy to OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
-index 7c44d0952815..837db0876184 100644
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
+deleted file mode 100644
+index 7c44d0952815..000000000000
 --- a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
-+++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
-@@ -1,7 +1,7 @@
- ## @file
- #  Library provides the helper functions for SEV guest
- #
++++ /dev/null
+@@ -1,51 +0,0 @@
+-## @file
+-#  Library provides the helper functions for SEV guest
+-#
 -# Copyright (c) 2017 Advanced Micro Devices. All rights reserved.<BR>
-+# Copyright (c) 2017 - 2020, Advanced Micro Devices. All rights reserved.<BR>
- #
- #  SPDX-License-Identifier: BSD-2-Clause-Patent
- #
-@@ -10,11 +10,11 @@
- 
- [Defines]
-   INF_VERSION                    = 1.25
+-#
+-#  SPDX-License-Identifier: BSD-2-Clause-Patent
+-#
+-#
+-##
+-
+-[Defines]
+-  INF_VERSION                    = 1.25
 -  BASE_NAME                      = MemEncryptSevLib
-+  BASE_NAME                      = DxeMemEncryptSevLib
-   FILE_GUID                      = c1594631-3888-4be4-949f-9c630dbc842b
-   MODULE_TYPE                    = BASE
-   VERSION_STRING                 = 1.0
+-  FILE_GUID                      = c1594631-3888-4be4-949f-9c630dbc842b
+-  MODULE_TYPE                    = BASE
+-  VERSION_STRING                 = 1.0
 -  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
+-
+-#
+-# The following information is for reference only and not required by the build
+-# tools.
+-#
+-# VALID_ARCHITECTURES           = IA32 X64
+-#
+-
+-[Packages]
+-  MdeModulePkg/MdeModulePkg.dec
+-  MdePkg/MdePkg.dec
+-  OvmfPkg/OvmfPkg.dec
+-  UefiCpuPkg/UefiCpuPkg.dec
+-
+-[Sources.X64]
+-  MemEncryptSevLibInternal.c
+-  X64/MemEncryptSevLib.c
+-  X64/VirtualMemory.c
+-  X64/VirtualMemory.h
+-
+-[Sources.IA32]
+-  Ia32/MemEncryptSevLib.c
+-  MemEncryptSevLibInternal.c
+-
+-[LibraryClasses]
+-  BaseLib
+-  CacheMaintenanceLib
+-  CpuLib
+-  DebugLib
+-  MemoryAllocationLib
+-  PcdLib
+-
+-[FeaturePcd]
+-  gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+new file mode 100644
+index 000000000000..837db0876184
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+@@ -0,0 +1,56 @@
++## @file
++#  Library provides the helper functions for SEV guest
++#
++# Copyright (c) 2017 - 2020, Advanced Micro Devices. All rights reserved.<BR>
++#
++#  SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++#
++##
++
++[Defines]
++  INF_VERSION                    = 1.25
++  BASE_NAME                      = DxeMemEncryptSevLib
++  FILE_GUID                      = c1594631-3888-4be4-949f-9c630dbc842b
++  MODULE_TYPE                    = BASE
++  VERSION_STRING                 = 1.0
 +  LIBRARY_CLASS                  = MemEncryptSevLib|DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
- 
- #
- # The following information is for reference only and not required by the build
-@@ -29,15 +29,17 @@ [Packages]
-   OvmfPkg/OvmfPkg.dec
-   UefiCpuPkg/UefiCpuPkg.dec
- 
++
++#
++# The following information is for reference only and not required by the build
++# tools.
++#
++# VALID_ARCHITECTURES           = IA32 X64
++#
++
++[Packages]
++  MdeModulePkg/MdeModulePkg.dec
++  MdePkg/MdePkg.dec
++  OvmfPkg/OvmfPkg.dec
++  UefiCpuPkg/UefiCpuPkg.dec
++
 +[Sources]
 +  DxeMemEncryptSevLibInternal.c
 +  MemEncryptSevLibInternal.c
 +
- [Sources.X64]
--  MemEncryptSevLibInternal.c
-   X64/MemEncryptSevLib.c
-   X64/VirtualMemory.c
-   X64/VirtualMemory.h
- 
- [Sources.IA32]
-   Ia32/MemEncryptSevLib.c
--  MemEncryptSevLibInternal.c
- 
- [LibraryClasses]
-   BaseLib
-@@ -49,3 +51,6 @@ [LibraryClasses]
- 
- [FeaturePcd]
-   gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
++[Sources.X64]
++  X64/MemEncryptSevLib.c
++  X64/VirtualMemory.c
++  X64/VirtualMemory.h
++
++[Sources.IA32]
++  Ia32/MemEncryptSevLib.c
++
++[LibraryClasses]
++  BaseLib
++  CacheMaintenanceLib
++  CpuLib
++  DebugLib
++  MemoryAllocationLib
++  PcdLib
++
++[FeaturePcd]
++  gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
 +
 +[Pcd]
 +  gEfiMdeModulePkgTokenSpaceGuid.PcdPteMemoryEncryptionAddressOrMask
@@ -1093,61 +1157,65 @@ index 02b8eb225d81..b4a9f464e268 100644
  /**
    Locate the page range that covers the initial (pre-SMBASE-relocation) SMRAM
    Save State Map.
-diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
-similarity index 67%
-rename from OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
-rename to OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
-index 7c44d0952815..c3cd046cb630 100644
---- a/OvmfPkg/Library/BaseMemEncryptSevLib/BaseMemEncryptSevLib.inf
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+new file mode 100644
+index 000000000000..c3cd046cb630
+--- /dev/null
 +++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
-@@ -1,7 +1,7 @@
- ## @file
- #  Library provides the helper functions for SEV guest
- #
--# Copyright (c) 2017 Advanced Micro Devices. All rights reserved.<BR>
+@@ -0,0 +1,56 @@
++## @file
++#  Library provides the helper functions for SEV guest
++#
 +# Copyright (c) 2020 Advanced Micro Devices. All rights reserved.<BR>
- #
- #  SPDX-License-Identifier: BSD-2-Clause-Patent
- #
-@@ -10,11 +10,11 @@
- 
- [Defines]
-   INF_VERSION                    = 1.25
--  BASE_NAME                      = MemEncryptSevLib
--  FILE_GUID                      = c1594631-3888-4be4-949f-9c630dbc842b
++#
++#  SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++#
++##
++
++[Defines]
++  INF_VERSION                    = 1.25
 +  BASE_NAME                      = PeiMemEncryptSevLib
 +  FILE_GUID                      = 15d9a694-3d2a-4184-9672-ba55c3070e07
-   MODULE_TYPE                    = BASE
-   VERSION_STRING                 = 1.0
--  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_DRIVER
++  MODULE_TYPE                    = BASE
++  VERSION_STRING                 = 1.0
 +  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM
- 
- #
- # The following information is for reference only and not required by the build
-@@ -29,15 +29,17 @@ [Packages]
-   OvmfPkg/OvmfPkg.dec
-   UefiCpuPkg/UefiCpuPkg.dec
- 
++
++#
++# The following information is for reference only and not required by the build
++# tools.
++#
++# VALID_ARCHITECTURES           = IA32 X64
++#
++
++[Packages]
++  MdeModulePkg/MdeModulePkg.dec
++  MdePkg/MdePkg.dec
++  OvmfPkg/OvmfPkg.dec
++  UefiCpuPkg/UefiCpuPkg.dec
++
 +[Sources]
 +  MemEncryptSevLibInternal.c
 +  PeiMemEncryptSevLibInternal.c
 +
- [Sources.X64]
--  MemEncryptSevLibInternal.c
-   X64/MemEncryptSevLib.c
-   X64/VirtualMemory.c
-   X64/VirtualMemory.h
- 
- [Sources.IA32]
-   Ia32/MemEncryptSevLib.c
--  MemEncryptSevLibInternal.c
- 
- [LibraryClasses]
-   BaseLib
-@@ -49,3 +51,6 @@ [LibraryClasses]
- 
- [FeaturePcd]
-   gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
++[Sources.X64]
++  X64/MemEncryptSevLib.c
++  X64/VirtualMemory.c
++  X64/VirtualMemory.h
++
++[Sources.IA32]
++  Ia32/MemEncryptSevLib.c
++
++[LibraryClasses]
++  BaseLib
++  CacheMaintenanceLib
++  CpuLib
++  DebugLib
++  MemoryAllocationLib
++  PcdLib
++
++[FeaturePcd]
++  gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
 +
 +[FixedPcd]
 +  gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
@@ -1949,18 +2017,22 @@ Message-Id: <bc7fa76cc23784ab3f37356b6c10dfec61942c38.1610045305.git.thomas.lend
 (cherry picked from commit a746ca5b47fdffd9c675f2cbf321a1c36ccc9356)
 ---
  .../DxeMemEncryptSevLib.inf                   |   4 +-
- ...nal.c => PeiDxeMemEncryptSevLibInternal.c} |   0
+ .../MemEncryptSevLibInternal.c                |  63 --
+ .../PeiDxeMemEncryptSevLibInternal.c          |  63 ++
  .../PeiMemEncryptSevLib.inf                   |   4 +-
- ...ryptSevLib.inf => SecMemEncryptSevLib.inf} |  16 +-
- .../SecMemEncryptSevLibInternal.c             | 155 ++++++++++++++++++
- ...{VirtualMemory.c => PeiDxeVirtualMemory.c} |   0
- .../X64/SecVirtualMemory.c                    |  80 +++++++++
- 7 files changed, 244 insertions(+), 15 deletions(-)
- rename OvmfPkg/Library/BaseMemEncryptSevLib/{MemEncryptSevLibInternal.c => PeiDxeMemEncryptSevLibInternal.c} (100%)
- copy OvmfPkg/Library/BaseMemEncryptSevLib/{PeiMemEncryptSevLib.inf => SecMemEncryptSevLib.inf} (65%)
+ .../SecMemEncryptSevLib.inf                   |  50 +
+ .../SecMemEncryptSevLibInternal.c             | 155 +++
+ .../X64/PeiDxeVirtualMemory.c                 | 892 ++++++++++++++++++
+ .../X64/SecVirtualMemory.c                    |  80 ++
+ .../BaseMemEncryptSevLib/X64/VirtualMemory.c  | 892 ------------------
+ 9 files changed, 1244 insertions(+), 959 deletions(-)
+ delete mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
  create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
- rename OvmfPkg/Library/BaseMemEncryptSevLib/X64/{VirtualMemory.c => PeiDxeVirtualMemory.c} (100%)
+ create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
  create mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
+ delete mode 100644 OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
 
 diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
 index 837db0876184..4480e4cc7c89 100644
@@ -1980,10 +2052,144 @@ index 837db0876184..4480e4cc7c89 100644
    X64/VirtualMemory.h
  
  [Sources.IA32]
-diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c
-similarity index 100%
-rename from OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
-rename to OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
+deleted file mode 100644
+index b4a9f464e268..000000000000
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/MemEncryptSevLibInternal.c
++++ /dev/null
+@@ -1,63 +0,0 @@
+-/** @file
+-
+-  Secure Encrypted Virtualization (SEV) library helper function
+-
+-  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+-
+-  SPDX-License-Identifier: BSD-2-Clause-Patent
+-
+-**/
+-
+-#include <Library/BaseLib.h>
+-#include <Library/DebugLib.h>
+-#include <Library/MemEncryptSevLib.h>
+-#include <Library/PcdLib.h>
+-#include <Register/QemuSmramSaveStateMap.h>
+-#include <Register/SmramSaveStateMap.h>
+-#include <Uefi/UefiBaseType.h>
+-
+-/**
+-  Locate the page range that covers the initial (pre-SMBASE-relocation) SMRAM
+-  Save State Map.
+-
+-  @param[out] BaseAddress     The base address of the lowest-address page that
+-                              covers the initial SMRAM Save State Map.
+-
+-  @param[out] NumberOfPages   The number of pages in the page range that covers
+-                              the initial SMRAM Save State Map.
+-
+-  @retval RETURN_SUCCESS      BaseAddress and NumberOfPages have been set on
+-                              output.
+-
+-  @retval RETURN_UNSUPPORTED  SMM is unavailable.
+-**/
+-RETURN_STATUS
+-EFIAPI
+-MemEncryptSevLocateInitialSmramSaveStateMapPages (
+-  OUT UINTN *BaseAddress,
+-  OUT UINTN *NumberOfPages
+-  )
+-{
+-  UINTN MapStart;
+-  UINTN MapEnd;
+-  UINTN MapPagesStart; // MapStart rounded down to page boundary
+-  UINTN MapPagesEnd;   // MapEnd rounded up to page boundary
+-  UINTN MapPagesSize;  // difference between MapPagesStart and MapPagesEnd
+-
+-  if (!FeaturePcdGet (PcdSmmSmramRequire)) {
+-    return RETURN_UNSUPPORTED;
+-  }
+-
+-  MapStart      = SMM_DEFAULT_SMBASE + SMRAM_SAVE_STATE_MAP_OFFSET;
+-  MapEnd        = MapStart + sizeof (QEMU_SMRAM_SAVE_STATE_MAP);
+-  MapPagesStart = MapStart & ~(UINTN)EFI_PAGE_MASK;
+-  MapPagesEnd   = ALIGN_VALUE (MapEnd, EFI_PAGE_SIZE);
+-  MapPagesSize  = MapPagesEnd - MapPagesStart;
+-
+-  ASSERT ((MapPagesSize & EFI_PAGE_MASK) == 0);
+-
+-  *BaseAddress   = MapPagesStart;
+-  *NumberOfPages = MapPagesSize >> EFI_PAGE_SHIFT;
+-
+-  return RETURN_SUCCESS;
+-}
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c
+new file mode 100644
+index 000000000000..b4a9f464e268
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiDxeMemEncryptSevLibInternal.c
+@@ -0,0 +1,63 @@
++/** @file
++
++  Secure Encrypted Virtualization (SEV) library helper function
++
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/BaseLib.h>
++#include <Library/DebugLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Library/PcdLib.h>
++#include <Register/QemuSmramSaveStateMap.h>
++#include <Register/SmramSaveStateMap.h>
++#include <Uefi/UefiBaseType.h>
++
++/**
++  Locate the page range that covers the initial (pre-SMBASE-relocation) SMRAM
++  Save State Map.
++
++  @param[out] BaseAddress     The base address of the lowest-address page that
++                              covers the initial SMRAM Save State Map.
++
++  @param[out] NumberOfPages   The number of pages in the page range that covers
++                              the initial SMRAM Save State Map.
++
++  @retval RETURN_SUCCESS      BaseAddress and NumberOfPages have been set on
++                              output.
++
++  @retval RETURN_UNSUPPORTED  SMM is unavailable.
++**/
++RETURN_STATUS
++EFIAPI
++MemEncryptSevLocateInitialSmramSaveStateMapPages (
++  OUT UINTN *BaseAddress,
++  OUT UINTN *NumberOfPages
++  )
++{
++  UINTN MapStart;
++  UINTN MapEnd;
++  UINTN MapPagesStart; // MapStart rounded down to page boundary
++  UINTN MapPagesEnd;   // MapEnd rounded up to page boundary
++  UINTN MapPagesSize;  // difference between MapPagesStart and MapPagesEnd
++
++  if (!FeaturePcdGet (PcdSmmSmramRequire)) {
++    return RETURN_UNSUPPORTED;
++  }
++
++  MapStart      = SMM_DEFAULT_SMBASE + SMRAM_SAVE_STATE_MAP_OFFSET;
++  MapEnd        = MapStart + sizeof (QEMU_SMRAM_SAVE_STATE_MAP);
++  MapPagesStart = MapStart & ~(UINTN)EFI_PAGE_MASK;
++  MapPagesEnd   = ALIGN_VALUE (MapEnd, EFI_PAGE_SIZE);
++  MapPagesSize  = MapPagesEnd - MapPagesStart;
++
++  ASSERT ((MapPagesSize & EFI_PAGE_MASK) == 0);
++
++  *BaseAddress   = MapPagesStart;
++  *NumberOfPages = MapPagesSize >> EFI_PAGE_SHIFT;
++
++  return RETURN_SUCCESS;
++}
 diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
 index c3cd046cb630..0697f1dab502 100644
 --- a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
@@ -2003,58 +2209,62 @@ index c3cd046cb630..0697f1dab502 100644
    X64/VirtualMemory.h
  
  [Sources.IA32]
-diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
-similarity index 65%
-copy from OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
-copy to OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
-index c3cd046cb630..7cd0111fe47b 100644
---- a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+new file mode 100644
+index 000000000000..7cd0111fe47b
+--- /dev/null
 +++ b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
-@@ -10,11 +10,11 @@
- 
- [Defines]
-   INF_VERSION                    = 1.25
--  BASE_NAME                      = PeiMemEncryptSevLib
--  FILE_GUID                      = 15d9a694-3d2a-4184-9672-ba55c3070e07
+@@ -0,0 +1,50 @@
++## @file
++#  Library provides the helper functions for SEV guest
++#
++# Copyright (c) 2020 Advanced Micro Devices. All rights reserved.<BR>
++#
++#  SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++#
++##
++
++[Defines]
++  INF_VERSION                    = 1.25
 +  BASE_NAME                      = SecMemEncryptSevLib
 +  FILE_GUID                      = 046388b4-430e-4e61-88f6-51ea21db2632
-   MODULE_TYPE                    = BASE
-   VERSION_STRING                 = 1.0
--  LIBRARY_CLASS                  = MemEncryptSevLib|PEIM
++  MODULE_TYPE                    = BASE
++  VERSION_STRING                 = 1.0
 +  LIBRARY_CLASS                  = MemEncryptSevLib|SEC
- 
- #
- # The following information is for reference only and not required by the build
-@@ -30,12 +30,11 @@ [Packages]
-   UefiCpuPkg/UefiCpuPkg.dec
- 
- [Sources]
--  MemEncryptSevLibInternal.c
--  PeiMemEncryptSevLibInternal.c
++
++#
++# The following information is for reference only and not required by the build
++# tools.
++#
++# VALID_ARCHITECTURES           = IA32 X64
++#
++
++[Packages]
++  MdeModulePkg/MdeModulePkg.dec
++  MdePkg/MdePkg.dec
++  OvmfPkg/OvmfPkg.dec
++  UefiCpuPkg/UefiCpuPkg.dec
++
++[Sources]
 +  SecMemEncryptSevLibInternal.c
- 
- [Sources.X64]
-   X64/MemEncryptSevLib.c
--  X64/VirtualMemory.c
++
++[Sources.X64]
++  X64/MemEncryptSevLib.c
 +  X64/SecVirtualMemory.c
-   X64/VirtualMemory.h
- 
- [Sources.IA32]
-@@ -43,14 +42,9 @@ [Sources.IA32]
- 
- [LibraryClasses]
-   BaseLib
--  CacheMaintenanceLib
-   CpuLib
-   DebugLib
--  MemoryAllocationLib
-   PcdLib
- 
--[FeaturePcd]
--  gUefiOvmfPkgTokenSpaceGuid.PcdSmmSmramRequire
--
- [FixedPcd]
-   gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
++  X64/VirtualMemory.h
++
++[Sources.IA32]
++  Ia32/MemEncryptSevLib.c
++
++[LibraryClasses]
++  BaseLib
++  CpuLib
++  DebugLib
++  PcdLib
++
++[FixedPcd]
++  gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
 diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
 new file mode 100644
 index 000000000000..56d8f3f3183f
@@ -2216,10 +2426,904 @@ index 000000000000..56d8f3f3183f
 +{
 +  return RETURN_UNSUPPORTED;
 +}
-diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
-similarity index 100%
-rename from OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
-rename to OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
+new file mode 100644
+index 000000000000..3a5bab657bd7
+--- /dev/null
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/PeiDxeVirtualMemory.c
+@@ -0,0 +1,892 @@
++/** @file
++
++  Virtual Memory Management Services to set or clear the memory encryption bit
++
++  Copyright (c) 2006 - 2018, Intel Corporation. All rights reserved.<BR>
++  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++  Code is derived from MdeModulePkg/Core/DxeIplPeim/X64/VirtualMemory.c
++
++**/
++
++#include <Library/CpuLib.h>
++#include <Library/MemEncryptSevLib.h>
++#include <Register/Amd/Cpuid.h>
++#include <Register/Cpuid.h>
++
++#include "VirtualMemory.h"
++
++STATIC BOOLEAN mAddressEncMaskChecked = FALSE;
++STATIC UINT64  mAddressEncMask;
++STATIC PAGE_TABLE_POOL   *mPageTablePool = NULL;
++
++typedef enum {
++   SetCBit,
++   ClearCBit
++} MAP_RANGE_MODE;
++
++/**
++  Get the memory encryption mask
++
++  @param[out]      EncryptionMask        contains the pte mask.
++
++**/
++STATIC
++UINT64
++GetMemEncryptionAddressMask (
++  VOID
++  )
++{
++  UINT64                            EncryptionMask;
++
++  if (mAddressEncMaskChecked) {
++    return mAddressEncMask;
++  }
++
++  EncryptionMask = MemEncryptSevGetEncryptionMask ();
++
++  mAddressEncMask = EncryptionMask & PAGING_1G_ADDRESS_MASK_64;
++  mAddressEncMaskChecked = TRUE;
++
++  return mAddressEncMask;
++}
++
++/**
++  Initialize a buffer pool for page table use only.
++
++  To reduce the potential split operation on page table, the pages reserved for
++  page table should be allocated in the times of PAGE_TABLE_POOL_UNIT_PAGES and
++  at the boundary of PAGE_TABLE_POOL_ALIGNMENT. So the page pool is always
++  initialized with number of pages greater than or equal to the given
++  PoolPages.
++
++  Once the pages in the pool are used up, this method should be called again to
++  reserve at least another PAGE_TABLE_POOL_UNIT_PAGES. Usually this won't
++  happen often in practice.
++
++  @param[in] PoolPages      The least page number of the pool to be created.
++
++  @retval TRUE    The pool is initialized successfully.
++  @retval FALSE   The memory is out of resource.
++**/
++STATIC
++BOOLEAN
++InitializePageTablePool (
++  IN  UINTN                           PoolPages
++  )
++{
++  VOID                      *Buffer;
++
++  //
++  // Always reserve at least PAGE_TABLE_POOL_UNIT_PAGES, including one page for
++  // header.
++  //
++  PoolPages += 1;   // Add one page for header.
++  PoolPages = ((PoolPages - 1) / PAGE_TABLE_POOL_UNIT_PAGES + 1) *
++              PAGE_TABLE_POOL_UNIT_PAGES;
++  Buffer = AllocateAlignedPages (PoolPages, PAGE_TABLE_POOL_ALIGNMENT);
++  if (Buffer == NULL) {
++    DEBUG ((DEBUG_ERROR, "ERROR: Out of aligned pages\r\n"));
++    return FALSE;
++  }
++
++  //
++  // Link all pools into a list for easier track later.
++  //
++  if (mPageTablePool == NULL) {
++    mPageTablePool = Buffer;
++    mPageTablePool->NextPool = mPageTablePool;
++  } else {
++    ((PAGE_TABLE_POOL *)Buffer)->NextPool = mPageTablePool->NextPool;
++    mPageTablePool->NextPool = Buffer;
++    mPageTablePool = Buffer;
++  }
++
++  //
++  // Reserve one page for pool header.
++  //
++  mPageTablePool->FreePages  = PoolPages - 1;
++  mPageTablePool->Offset = EFI_PAGES_TO_SIZE (1);
++
++  return TRUE;
++}
++
++/**
++  This API provides a way to allocate memory for page table.
++
++  This API can be called more than once to allocate memory for page tables.
++
++  Allocates the number of 4KB pages and returns a pointer to the allocated
++  buffer. The buffer returned is aligned on a 4KB boundary.
++
++  If Pages is 0, then NULL is returned.
++  If there is not enough memory remaining to satisfy the request, then NULL is
++  returned.
++
++  @param  Pages                 The number of 4 KB pages to allocate.
++
++  @return A pointer to the allocated buffer or NULL if allocation fails.
++
++**/
++STATIC
++VOID *
++EFIAPI
++AllocatePageTableMemory (
++  IN UINTN           Pages
++  )
++{
++  VOID                            *Buffer;
++
++  if (Pages == 0) {
++    return NULL;
++  }
++
++  //
++  // Renew the pool if necessary.
++  //
++  if (mPageTablePool == NULL ||
++      Pages > mPageTablePool->FreePages) {
++    if (!InitializePageTablePool (Pages)) {
++      return NULL;
++    }
++  }
++
++  Buffer = (UINT8 *)mPageTablePool + mPageTablePool->Offset;
++
++  mPageTablePool->Offset     += EFI_PAGES_TO_SIZE (Pages);
++  mPageTablePool->FreePages  -= Pages;
++
++  DEBUG ((
++    DEBUG_VERBOSE,
++    "%a:%a: Buffer=0x%Lx Pages=%ld\n",
++    gEfiCallerBaseName,
++    __FUNCTION__,
++    Buffer,
++    Pages
++    ));
++
++  return Buffer;
++}
++
++
++/**
++  Split 2M page to 4K.
++
++  @param[in]      PhysicalAddress       Start physical address the 2M page
++                                        covered.
++  @param[in, out] PageEntry2M           Pointer to 2M page entry.
++  @param[in]      StackBase             Stack base address.
++  @param[in]      StackSize             Stack size.
++
++**/
++STATIC
++VOID
++Split2MPageTo4K (
++  IN        PHYSICAL_ADDRESS               PhysicalAddress,
++  IN  OUT   UINT64                        *PageEntry2M,
++  IN        PHYSICAL_ADDRESS               StackBase,
++  IN        UINTN                          StackSize
++  )
++{
++  PHYSICAL_ADDRESS                  PhysicalAddress4K;
++  UINTN                             IndexOfPageTableEntries;
++  PAGE_TABLE_4K_ENTRY               *PageTableEntry;
++  PAGE_TABLE_4K_ENTRY               *PageTableEntry1;
++  UINT64                            AddressEncMask;
++
++  PageTableEntry = AllocatePageTableMemory(1);
++
++  PageTableEntry1 = PageTableEntry;
++
++  AddressEncMask = GetMemEncryptionAddressMask ();
++
++  ASSERT (PageTableEntry != NULL);
++  ASSERT (*PageEntry2M & AddressEncMask);
++
++  PhysicalAddress4K = PhysicalAddress;
++  for (IndexOfPageTableEntries = 0;
++       IndexOfPageTableEntries < 512;
++       (IndexOfPageTableEntries++,
++        PageTableEntry++,
++        PhysicalAddress4K += SIZE_4KB)) {
++    //
++    // Fill in the Page Table entries
++    //
++    PageTableEntry->Uint64 = (UINT64) PhysicalAddress4K | AddressEncMask;
++    PageTableEntry->Bits.ReadWrite = 1;
++    PageTableEntry->Bits.Present = 1;
++    if ((PhysicalAddress4K >= StackBase) &&
++        (PhysicalAddress4K < StackBase + StackSize)) {
++      //
++      // Set Nx bit for stack.
++      //
++      PageTableEntry->Bits.Nx = 1;
++    }
++  }
++
++  //
++  // Fill in 2M page entry.
++  //
++  *PageEntry2M = ((UINT64)(UINTN)PageTableEntry1 |
++                  IA32_PG_P | IA32_PG_RW | AddressEncMask);
++}
++
++/**
++  Set one page of page table pool memory to be read-only.
++
++  @param[in] PageTableBase    Base address of page table (CR3).
++  @param[in] Address          Start address of a page to be set as read-only.
++  @param[in] Level4Paging     Level 4 paging flag.
++
++**/
++STATIC
++VOID
++SetPageTablePoolReadOnly (
++  IN  UINTN                             PageTableBase,
++  IN  EFI_PHYSICAL_ADDRESS              Address,
++  IN  BOOLEAN                           Level4Paging
++  )
++{
++  UINTN                 Index;
++  UINTN                 EntryIndex;
++  UINT64                AddressEncMask;
++  EFI_PHYSICAL_ADDRESS  PhysicalAddress;
++  UINT64                *PageTable;
++  UINT64                *NewPageTable;
++  UINT64                PageAttr;
++  UINT64                LevelSize[5];
++  UINT64                LevelMask[5];
++  UINTN                 LevelShift[5];
++  UINTN                 Level;
++  UINT64                PoolUnitSize;
++
++  ASSERT (PageTableBase != 0);
++
++  //
++  // Since the page table is always from page table pool, which is always
++  // located at the boundary of PcdPageTablePoolAlignment, we just need to
++  // set the whole pool unit to be read-only.
++  //
++  Address = Address & PAGE_TABLE_POOL_ALIGN_MASK;
++
++  LevelShift[1] = PAGING_L1_ADDRESS_SHIFT;
++  LevelShift[2] = PAGING_L2_ADDRESS_SHIFT;
++  LevelShift[3] = PAGING_L3_ADDRESS_SHIFT;
++  LevelShift[4] = PAGING_L4_ADDRESS_SHIFT;
++
++  LevelMask[1] = PAGING_4K_ADDRESS_MASK_64;
++  LevelMask[2] = PAGING_2M_ADDRESS_MASK_64;
++  LevelMask[3] = PAGING_1G_ADDRESS_MASK_64;
++  LevelMask[4] = PAGING_1G_ADDRESS_MASK_64;
++
++  LevelSize[1] = SIZE_4KB;
++  LevelSize[2] = SIZE_2MB;
++  LevelSize[3] = SIZE_1GB;
++  LevelSize[4] = SIZE_512GB;
++
++  AddressEncMask  = GetMemEncryptionAddressMask();
++  PageTable       = (UINT64 *)(UINTN)PageTableBase;
++  PoolUnitSize    = PAGE_TABLE_POOL_UNIT_SIZE;
++
++  for (Level = (Level4Paging) ? 4 : 3; Level > 0; --Level) {
++    Index = ((UINTN)RShiftU64 (Address, LevelShift[Level]));
++    Index &= PAGING_PAE_INDEX_MASK;
++
++    PageAttr = PageTable[Index];
++    if ((PageAttr & IA32_PG_PS) == 0) {
++      //
++      // Go to next level of table.
++      //
++      PageTable = (UINT64 *)(UINTN)(PageAttr & ~AddressEncMask &
++                                    PAGING_4K_ADDRESS_MASK_64);
++      continue;
++    }
++
++    if (PoolUnitSize >= LevelSize[Level]) {
++      //
++      // Clear R/W bit if current page granularity is not larger than pool unit
++      // size.
++      //
++      if ((PageAttr & IA32_PG_RW) != 0) {
++        while (PoolUnitSize > 0) {
++          //
++          // PAGE_TABLE_POOL_UNIT_SIZE and PAGE_TABLE_POOL_ALIGNMENT are fit in
++          // one page (2MB). Then we don't need to update attributes for pages
++          // crossing page directory. ASSERT below is for that purpose.
++          //
++          ASSERT (Index < EFI_PAGE_SIZE/sizeof (UINT64));
++
++          PageTable[Index] &= ~(UINT64)IA32_PG_RW;
++          PoolUnitSize    -= LevelSize[Level];
++
++          ++Index;
++        }
++      }
++
++      break;
++
++    } else {
++      //
++      // The smaller granularity of page must be needed.
++      //
++      ASSERT (Level > 1);
++
++      NewPageTable = AllocatePageTableMemory (1);
++      ASSERT (NewPageTable != NULL);
++
++      PhysicalAddress = PageAttr & LevelMask[Level];
++      for (EntryIndex = 0;
++            EntryIndex < EFI_PAGE_SIZE/sizeof (UINT64);
++            ++EntryIndex) {
++        NewPageTable[EntryIndex] = PhysicalAddress  | AddressEncMask |
++                                   IA32_PG_P | IA32_PG_RW;
++        if (Level > 2) {
++          NewPageTable[EntryIndex] |= IA32_PG_PS;
++        }
++        PhysicalAddress += LevelSize[Level - 1];
++      }
++
++      PageTable[Index] = (UINT64)(UINTN)NewPageTable | AddressEncMask |
++                                        IA32_PG_P | IA32_PG_RW;
++      PageTable = NewPageTable;
++    }
++  }
++}
++
++/**
++  Prevent the memory pages used for page table from been overwritten.
++
++  @param[in] PageTableBase    Base address of page table (CR3).
++  @param[in] Level4Paging     Level 4 paging flag.
++
++**/
++STATIC
++VOID
++EnablePageTableProtection (
++  IN  UINTN     PageTableBase,
++  IN  BOOLEAN   Level4Paging
++  )
++{
++  PAGE_TABLE_POOL         *HeadPool;
++  PAGE_TABLE_POOL         *Pool;
++  UINT64                  PoolSize;
++  EFI_PHYSICAL_ADDRESS    Address;
++
++  if (mPageTablePool == NULL) {
++    return;
++  }
++
++  //
++  // SetPageTablePoolReadOnly might update mPageTablePool. It's safer to
++  // remember original one in advance.
++  //
++  HeadPool = mPageTablePool;
++  Pool = HeadPool;
++  do {
++    Address  = (EFI_PHYSICAL_ADDRESS)(UINTN)Pool;
++    PoolSize = Pool->Offset + EFI_PAGES_TO_SIZE (Pool->FreePages);
++
++    //
++    // The size of one pool must be multiple of PAGE_TABLE_POOL_UNIT_SIZE,
++    // which is one of page size of the processor (2MB by default). Let's apply
++    // the protection to them one by one.
++    //
++    while (PoolSize > 0) {
++      SetPageTablePoolReadOnly(PageTableBase, Address, Level4Paging);
++      Address   += PAGE_TABLE_POOL_UNIT_SIZE;
++      PoolSize  -= PAGE_TABLE_POOL_UNIT_SIZE;
++    }
++
++    Pool = Pool->NextPool;
++  } while (Pool != HeadPool);
++
++}
++
++
++/**
++  Split 1G page to 2M.
++
++  @param[in]      PhysicalAddress       Start physical address the 1G page
++                                        covered.
++  @param[in, out] PageEntry1G           Pointer to 1G page entry.
++  @param[in]      StackBase             Stack base address.
++  @param[in]      StackSize             Stack size.
++
++**/
++STATIC
++VOID
++Split1GPageTo2M (
++  IN          PHYSICAL_ADDRESS               PhysicalAddress,
++  IN  OUT     UINT64                         *PageEntry1G,
++  IN          PHYSICAL_ADDRESS               StackBase,
++  IN          UINTN                          StackSize
++  )
++{
++  PHYSICAL_ADDRESS                  PhysicalAddress2M;
++  UINTN                             IndexOfPageDirectoryEntries;
++  PAGE_TABLE_ENTRY                  *PageDirectoryEntry;
++  UINT64                            AddressEncMask;
++
++  PageDirectoryEntry = AllocatePageTableMemory(1);
++
++  AddressEncMask = GetMemEncryptionAddressMask ();
++  ASSERT (PageDirectoryEntry != NULL);
++  ASSERT (*PageEntry1G & AddressEncMask);
++  //
++  // Fill in 1G page entry.
++  //
++  *PageEntry1G = ((UINT64)(UINTN)PageDirectoryEntry |
++                  IA32_PG_P | IA32_PG_RW | AddressEncMask);
++
++  PhysicalAddress2M = PhysicalAddress;
++  for (IndexOfPageDirectoryEntries = 0;
++       IndexOfPageDirectoryEntries < 512;
++       (IndexOfPageDirectoryEntries++,
++        PageDirectoryEntry++,
++        PhysicalAddress2M += SIZE_2MB)) {
++    if ((PhysicalAddress2M < StackBase + StackSize) &&
++        ((PhysicalAddress2M + SIZE_2MB) > StackBase)) {
++      //
++      // Need to split this 2M page that covers stack range.
++      //
++      Split2MPageTo4K (
++        PhysicalAddress2M,
++        (UINT64 *)PageDirectoryEntry,
++        StackBase,
++        StackSize
++        );
++    } else {
++      //
++      // Fill in the Page Directory entries
++      //
++      PageDirectoryEntry->Uint64 = (UINT64) PhysicalAddress2M | AddressEncMask;
++      PageDirectoryEntry->Bits.ReadWrite = 1;
++      PageDirectoryEntry->Bits.Present = 1;
++      PageDirectoryEntry->Bits.MustBe1 = 1;
++    }
++  }
++}
++
++
++/**
++  Set or Clear the memory encryption bit
++
++  @param[in, out] PageTablePointer      Page table entry pointer (PTE).
++  @param[in]      Mode                  Set or Clear encryption bit
++
++**/
++STATIC VOID
++SetOrClearCBit(
++  IN   OUT     UINT64*            PageTablePointer,
++  IN           MAP_RANGE_MODE     Mode
++  )
++{
++  UINT64      AddressEncMask;
++
++  AddressEncMask = GetMemEncryptionAddressMask ();
++
++  if (Mode == SetCBit) {
++    *PageTablePointer |= AddressEncMask;
++  } else {
++    *PageTablePointer &= ~AddressEncMask;
++  }
++
++}
++
++/**
++ Check the WP status in CR0 register. This bit is used to lock or unlock write
++ access to pages marked as read-only.
++
++  @retval TRUE    Write protection is enabled.
++  @retval FALSE   Write protection is disabled.
++**/
++STATIC
++BOOLEAN
++IsReadOnlyPageWriteProtected (
++  VOID
++  )
++{
++  return ((AsmReadCr0 () & BIT16) != 0);
++}
++
++
++/**
++ Disable Write Protect on pages marked as read-only.
++**/
++STATIC
++VOID
++DisableReadOnlyPageWriteProtect (
++  VOID
++  )
++{
++  AsmWriteCr0 (AsmReadCr0() & ~BIT16);
++}
++
++/**
++ Enable Write Protect on pages marked as read-only.
++**/
++VOID
++EnableReadOnlyPageWriteProtect (
++  VOID
++  )
++{
++  AsmWriteCr0 (AsmReadCr0() | BIT16);
++}
++
++
++/**
++  This function either sets or clears memory encryption bit for the memory
++  region specified by PhysicalAddress and Length from the current page table
++  context.
++
++  The function iterates through the PhysicalAddress one page at a time, and set
++  or clears the memory encryption mask in the page table. If it encounters
++  that a given physical address range is part of large page then it attempts to
++  change the attribute at one go (based on size), otherwise it splits the
++  large pages into smaller (e.g 2M page into 4K pages) and then try to set or
++  clear the encryption bit on the smallest page size.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  PhysicalAddress         The physical address that is the start
++                                      address of a memory region.
++  @param[in]  Length                  The length of memory region
++  @param[in]  Mode                    Set or Clear mode
++  @param[in]  CacheFlush              Flush the caches before applying the
++                                      encryption mask
++
++  @retval RETURN_SUCCESS              The attributes were cleared for the
++                                      memory region.
++  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
++  @retval RETURN_UNSUPPORTED          Setting the memory encyrption attribute
++                                      is not supported
++**/
++STATIC
++RETURN_STATUS
++EFIAPI
++SetMemoryEncDec (
++  IN    PHYSICAL_ADDRESS         Cr3BaseAddress,
++  IN    PHYSICAL_ADDRESS         PhysicalAddress,
++  IN    UINTN                    Length,
++  IN    MAP_RANGE_MODE           Mode,
++  IN    BOOLEAN                  CacheFlush
++  )
++{
++  PAGE_MAP_AND_DIRECTORY_POINTER *PageMapLevel4Entry;
++  PAGE_MAP_AND_DIRECTORY_POINTER *PageUpperDirectoryPointerEntry;
++  PAGE_MAP_AND_DIRECTORY_POINTER *PageDirectoryPointerEntry;
++  PAGE_TABLE_1G_ENTRY            *PageDirectory1GEntry;
++  PAGE_TABLE_ENTRY               *PageDirectory2MEntry;
++  PAGE_TABLE_4K_ENTRY            *PageTableEntry;
++  UINT64                         PgTableMask;
++  UINT64                         AddressEncMask;
++  BOOLEAN                        IsWpEnabled;
++  RETURN_STATUS                  Status;
++
++  //
++  // Set PageMapLevel4Entry to suppress incorrect compiler/analyzer warnings.
++  //
++  PageMapLevel4Entry = NULL;
++
++  DEBUG ((
++    DEBUG_VERBOSE,
++    "%a:%a: Cr3Base=0x%Lx Physical=0x%Lx Length=0x%Lx Mode=%a CacheFlush=%u\n",
++    gEfiCallerBaseName,
++    __FUNCTION__,
++    Cr3BaseAddress,
++    PhysicalAddress,
++    (UINT64)Length,
++    (Mode == SetCBit) ? "Encrypt" : "Decrypt",
++    (UINT32)CacheFlush
++    ));
++
++  //
++  // Check if we have a valid memory encryption mask
++  //
++  AddressEncMask = GetMemEncryptionAddressMask ();
++  if (!AddressEncMask) {
++    return RETURN_ACCESS_DENIED;
++  }
++
++  PgTableMask = AddressEncMask | EFI_PAGE_MASK;
++
++  if (Length == 0) {
++    return RETURN_INVALID_PARAMETER;
++  }
++
++  //
++  // We are going to change the memory encryption attribute from C=0 -> C=1 or
++  // vice versa Flush the caches to ensure that data is written into memory
++  // with correct C-bit
++  //
++  if (CacheFlush) {
++    WriteBackInvalidateDataCacheRange((VOID*) (UINTN)PhysicalAddress, Length);
++  }
++
++  //
++  // Make sure that the page table is changeable.
++  //
++  IsWpEnabled = IsReadOnlyPageWriteProtected ();
++  if (IsWpEnabled) {
++    DisableReadOnlyPageWriteProtect ();
++  }
++
++  Status = EFI_SUCCESS;
++
++  while (Length != 0)
++  {
++    //
++    // If Cr3BaseAddress is not specified then read the current CR3
++    //
++    if (Cr3BaseAddress == 0) {
++      Cr3BaseAddress = AsmReadCr3();
++    }
++
++    PageMapLevel4Entry = (VOID*) (Cr3BaseAddress & ~PgTableMask);
++    PageMapLevel4Entry += PML4_OFFSET(PhysicalAddress);
++    if (!PageMapLevel4Entry->Bits.Present) {
++      DEBUG ((
++        DEBUG_ERROR,
++        "%a:%a: bad PML4 for Physical=0x%Lx\n",
++        gEfiCallerBaseName,
++        __FUNCTION__,
++        PhysicalAddress
++        ));
++      Status = RETURN_NO_MAPPING;
++      goto Done;
++    }
++
++    PageDirectory1GEntry = (VOID *)(
++                             (PageMapLevel4Entry->Bits.PageTableBaseAddress <<
++                              12) & ~PgTableMask
++                             );
++    PageDirectory1GEntry += PDP_OFFSET(PhysicalAddress);
++    if (!PageDirectory1GEntry->Bits.Present) {
++      DEBUG ((
++        DEBUG_ERROR,
++        "%a:%a: bad PDPE for Physical=0x%Lx\n",
++        gEfiCallerBaseName,
++        __FUNCTION__,
++        PhysicalAddress
++        ));
++      Status = RETURN_NO_MAPPING;
++      goto Done;
++    }
++
++    //
++    // If the MustBe1 bit is not 1, it's not actually a 1GB entry
++    //
++    if (PageDirectory1GEntry->Bits.MustBe1) {
++      //
++      // Valid 1GB page
++      // If we have at least 1GB to go, we can just update this entry
++      //
++      if ((PhysicalAddress & (BIT30 - 1)) == 0 && Length >= BIT30) {
++        SetOrClearCBit(&PageDirectory1GEntry->Uint64, Mode);
++        DEBUG ((
++          DEBUG_VERBOSE,
++          "%a:%a: updated 1GB entry for Physical=0x%Lx\n",
++          gEfiCallerBaseName,
++          __FUNCTION__,
++          PhysicalAddress
++          ));
++        PhysicalAddress += BIT30;
++        Length -= BIT30;
++      } else {
++        //
++        // We must split the page
++        //
++        DEBUG ((
++          DEBUG_VERBOSE,
++          "%a:%a: splitting 1GB page for Physical=0x%Lx\n",
++          gEfiCallerBaseName,
++          __FUNCTION__,
++          PhysicalAddress
++          ));
++        Split1GPageTo2M (
++          (UINT64)PageDirectory1GEntry->Bits.PageTableBaseAddress << 30,
++          (UINT64 *)PageDirectory1GEntry,
++          0,
++          0
++          );
++        continue;
++      }
++    } else {
++      //
++      // Actually a PDP
++      //
++      PageUpperDirectoryPointerEntry =
++        (PAGE_MAP_AND_DIRECTORY_POINTER *)PageDirectory1GEntry;
++      PageDirectory2MEntry =
++        (VOID *)(
++          (PageUpperDirectoryPointerEntry->Bits.PageTableBaseAddress <<
++           12) & ~PgTableMask
++          );
++      PageDirectory2MEntry += PDE_OFFSET(PhysicalAddress);
++      if (!PageDirectory2MEntry->Bits.Present) {
++        DEBUG ((
++          DEBUG_ERROR,
++          "%a:%a: bad PDE for Physical=0x%Lx\n",
++          gEfiCallerBaseName,
++          __FUNCTION__,
++          PhysicalAddress
++          ));
++        Status = RETURN_NO_MAPPING;
++        goto Done;
++      }
++      //
++      // If the MustBe1 bit is not a 1, it's not a 2MB entry
++      //
++      if (PageDirectory2MEntry->Bits.MustBe1) {
++        //
++        // Valid 2MB page
++        // If we have at least 2MB left to go, we can just update this entry
++        //
++        if ((PhysicalAddress & (BIT21-1)) == 0 && Length >= BIT21) {
++          SetOrClearCBit (&PageDirectory2MEntry->Uint64, Mode);
++          PhysicalAddress += BIT21;
++          Length -= BIT21;
++        } else {
++          //
++          // We must split up this page into 4K pages
++          //
++          DEBUG ((
++            DEBUG_VERBOSE,
++            "%a:%a: splitting 2MB page for Physical=0x%Lx\n",
++            gEfiCallerBaseName,
++            __FUNCTION__,
++            PhysicalAddress
++            ));
++          Split2MPageTo4K (
++            (UINT64)PageDirectory2MEntry->Bits.PageTableBaseAddress << 21,
++            (UINT64 *)PageDirectory2MEntry,
++            0,
++            0
++            );
++          continue;
++        }
++      } else {
++        PageDirectoryPointerEntry =
++          (PAGE_MAP_AND_DIRECTORY_POINTER *)PageDirectory2MEntry;
++        PageTableEntry =
++          (VOID *)(
++            (PageDirectoryPointerEntry->Bits.PageTableBaseAddress <<
++             12) & ~PgTableMask
++            );
++        PageTableEntry += PTE_OFFSET(PhysicalAddress);
++        if (!PageTableEntry->Bits.Present) {
++          DEBUG ((
++            DEBUG_ERROR,
++            "%a:%a: bad PTE for Physical=0x%Lx\n",
++            gEfiCallerBaseName,
++            __FUNCTION__,
++            PhysicalAddress
++            ));
++          Status = RETURN_NO_MAPPING;
++          goto Done;
++        }
++        SetOrClearCBit (&PageTableEntry->Uint64, Mode);
++        PhysicalAddress += EFI_PAGE_SIZE;
++        Length -= EFI_PAGE_SIZE;
++      }
++    }
++  }
++
++  //
++  // Protect the page table by marking the memory used for page table to be
++  // read-only.
++  //
++  if (IsWpEnabled) {
++    EnablePageTableProtection ((UINTN)PageMapLevel4Entry, TRUE);
++  }
++
++  //
++  // Flush TLB
++  //
++  CpuFlushTlb();
++
++Done:
++  //
++  // Restore page table write protection, if any.
++  //
++  if (IsWpEnabled) {
++    EnableReadOnlyPageWriteProtect ();
++  }
++
++  return Status;
++}
++
++/**
++  This function clears memory encryption bit for the memory region specified by
++  PhysicalAddress and Length from the current page table context.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  PhysicalAddress         The physical address that is the start
++                                      address of a memory region.
++  @param[in]  Length                  The length of memory region
++  @param[in]  Flush                   Flush the caches before applying the
++                                      encryption mask
++
++  @retval RETURN_SUCCESS              The attributes were cleared for the
++                                      memory region.
++  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
++  @retval RETURN_UNSUPPORTED          Clearing the memory encyrption attribute
++                                      is not supported
++**/
++RETURN_STATUS
++EFIAPI
++InternalMemEncryptSevSetMemoryDecrypted (
++  IN  PHYSICAL_ADDRESS        Cr3BaseAddress,
++  IN  PHYSICAL_ADDRESS        PhysicalAddress,
++  IN  UINTN                   Length,
++  IN  BOOLEAN                 Flush
++  )
++{
++
++  return SetMemoryEncDec (
++           Cr3BaseAddress,
++           PhysicalAddress,
++           Length,
++           ClearCBit,
++           Flush
++           );
++}
++
++/**
++  This function sets memory encryption bit for the memory region specified by
++  PhysicalAddress and Length from the current page table context.
++
++  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
++                                      current CR3)
++  @param[in]  PhysicalAddress         The physical address that is the start
++                                      address of a memory region.
++  @param[in]  Length                  The length of memory region
++  @param[in]  Flush                   Flush the caches before applying the
++                                      encryption mask
++
++  @retval RETURN_SUCCESS              The attributes were set for the memory
++                                      region.
++  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
++  @retval RETURN_UNSUPPORTED          Setting the memory encyrption attribute
++                                      is not supported
++**/
++RETURN_STATUS
++EFIAPI
++InternalMemEncryptSevSetMemoryEncrypted (
++  IN  PHYSICAL_ADDRESS        Cr3BaseAddress,
++  IN  PHYSICAL_ADDRESS        PhysicalAddress,
++  IN  UINTN                   Length,
++  IN  BOOLEAN                 Flush
++  )
++{
++  return SetMemoryEncDec (
++           Cr3BaseAddress,
++           PhysicalAddress,
++           Length,
++           SetCBit,
++           Flush
++           );
++}
 diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/SecVirtualMemory.c
 new file mode 100644
 index 000000000000..5c337ea0b820
@@ -2306,6 +3410,904 @@ index 000000000000..5c337ea0b820
 +  //
 +  return RETURN_UNSUPPORTED;
 +}
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c b/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
+deleted file mode 100644
+index 3a5bab657bd7..000000000000
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/X64/VirtualMemory.c
++++ /dev/null
+@@ -1,892 +0,0 @@
+-/** @file
+-
+-  Virtual Memory Management Services to set or clear the memory encryption bit
+-
+-  Copyright (c) 2006 - 2018, Intel Corporation. All rights reserved.<BR>
+-  Copyright (c) 2017 - 2020, AMD Incorporated. All rights reserved.<BR>
+-
+-  SPDX-License-Identifier: BSD-2-Clause-Patent
+-
+-  Code is derived from MdeModulePkg/Core/DxeIplPeim/X64/VirtualMemory.c
+-
+-**/
+-
+-#include <Library/CpuLib.h>
+-#include <Library/MemEncryptSevLib.h>
+-#include <Register/Amd/Cpuid.h>
+-#include <Register/Cpuid.h>
+-
+-#include "VirtualMemory.h"
+-
+-STATIC BOOLEAN mAddressEncMaskChecked = FALSE;
+-STATIC UINT64  mAddressEncMask;
+-STATIC PAGE_TABLE_POOL   *mPageTablePool = NULL;
+-
+-typedef enum {
+-   SetCBit,
+-   ClearCBit
+-} MAP_RANGE_MODE;
+-
+-/**
+-  Get the memory encryption mask
+-
+-  @param[out]      EncryptionMask        contains the pte mask.
+-
+-**/
+-STATIC
+-UINT64
+-GetMemEncryptionAddressMask (
+-  VOID
+-  )
+-{
+-  UINT64                            EncryptionMask;
+-
+-  if (mAddressEncMaskChecked) {
+-    return mAddressEncMask;
+-  }
+-
+-  EncryptionMask = MemEncryptSevGetEncryptionMask ();
+-
+-  mAddressEncMask = EncryptionMask & PAGING_1G_ADDRESS_MASK_64;
+-  mAddressEncMaskChecked = TRUE;
+-
+-  return mAddressEncMask;
+-}
+-
+-/**
+-  Initialize a buffer pool for page table use only.
+-
+-  To reduce the potential split operation on page table, the pages reserved for
+-  page table should be allocated in the times of PAGE_TABLE_POOL_UNIT_PAGES and
+-  at the boundary of PAGE_TABLE_POOL_ALIGNMENT. So the page pool is always
+-  initialized with number of pages greater than or equal to the given
+-  PoolPages.
+-
+-  Once the pages in the pool are used up, this method should be called again to
+-  reserve at least another PAGE_TABLE_POOL_UNIT_PAGES. Usually this won't
+-  happen often in practice.
+-
+-  @param[in] PoolPages      The least page number of the pool to be created.
+-
+-  @retval TRUE    The pool is initialized successfully.
+-  @retval FALSE   The memory is out of resource.
+-**/
+-STATIC
+-BOOLEAN
+-InitializePageTablePool (
+-  IN  UINTN                           PoolPages
+-  )
+-{
+-  VOID                      *Buffer;
+-
+-  //
+-  // Always reserve at least PAGE_TABLE_POOL_UNIT_PAGES, including one page for
+-  // header.
+-  //
+-  PoolPages += 1;   // Add one page for header.
+-  PoolPages = ((PoolPages - 1) / PAGE_TABLE_POOL_UNIT_PAGES + 1) *
+-              PAGE_TABLE_POOL_UNIT_PAGES;
+-  Buffer = AllocateAlignedPages (PoolPages, PAGE_TABLE_POOL_ALIGNMENT);
+-  if (Buffer == NULL) {
+-    DEBUG ((DEBUG_ERROR, "ERROR: Out of aligned pages\r\n"));
+-    return FALSE;
+-  }
+-
+-  //
+-  // Link all pools into a list for easier track later.
+-  //
+-  if (mPageTablePool == NULL) {
+-    mPageTablePool = Buffer;
+-    mPageTablePool->NextPool = mPageTablePool;
+-  } else {
+-    ((PAGE_TABLE_POOL *)Buffer)->NextPool = mPageTablePool->NextPool;
+-    mPageTablePool->NextPool = Buffer;
+-    mPageTablePool = Buffer;
+-  }
+-
+-  //
+-  // Reserve one page for pool header.
+-  //
+-  mPageTablePool->FreePages  = PoolPages - 1;
+-  mPageTablePool->Offset = EFI_PAGES_TO_SIZE (1);
+-
+-  return TRUE;
+-}
+-
+-/**
+-  This API provides a way to allocate memory for page table.
+-
+-  This API can be called more than once to allocate memory for page tables.
+-
+-  Allocates the number of 4KB pages and returns a pointer to the allocated
+-  buffer. The buffer returned is aligned on a 4KB boundary.
+-
+-  If Pages is 0, then NULL is returned.
+-  If there is not enough memory remaining to satisfy the request, then NULL is
+-  returned.
+-
+-  @param  Pages                 The number of 4 KB pages to allocate.
+-
+-  @return A pointer to the allocated buffer or NULL if allocation fails.
+-
+-**/
+-STATIC
+-VOID *
+-EFIAPI
+-AllocatePageTableMemory (
+-  IN UINTN           Pages
+-  )
+-{
+-  VOID                            *Buffer;
+-
+-  if (Pages == 0) {
+-    return NULL;
+-  }
+-
+-  //
+-  // Renew the pool if necessary.
+-  //
+-  if (mPageTablePool == NULL ||
+-      Pages > mPageTablePool->FreePages) {
+-    if (!InitializePageTablePool (Pages)) {
+-      return NULL;
+-    }
+-  }
+-
+-  Buffer = (UINT8 *)mPageTablePool + mPageTablePool->Offset;
+-
+-  mPageTablePool->Offset     += EFI_PAGES_TO_SIZE (Pages);
+-  mPageTablePool->FreePages  -= Pages;
+-
+-  DEBUG ((
+-    DEBUG_VERBOSE,
+-    "%a:%a: Buffer=0x%Lx Pages=%ld\n",
+-    gEfiCallerBaseName,
+-    __FUNCTION__,
+-    Buffer,
+-    Pages
+-    ));
+-
+-  return Buffer;
+-}
+-
+-
+-/**
+-  Split 2M page to 4K.
+-
+-  @param[in]      PhysicalAddress       Start physical address the 2M page
+-                                        covered.
+-  @param[in, out] PageEntry2M           Pointer to 2M page entry.
+-  @param[in]      StackBase             Stack base address.
+-  @param[in]      StackSize             Stack size.
+-
+-**/
+-STATIC
+-VOID
+-Split2MPageTo4K (
+-  IN        PHYSICAL_ADDRESS               PhysicalAddress,
+-  IN  OUT   UINT64                        *PageEntry2M,
+-  IN        PHYSICAL_ADDRESS               StackBase,
+-  IN        UINTN                          StackSize
+-  )
+-{
+-  PHYSICAL_ADDRESS                  PhysicalAddress4K;
+-  UINTN                             IndexOfPageTableEntries;
+-  PAGE_TABLE_4K_ENTRY               *PageTableEntry;
+-  PAGE_TABLE_4K_ENTRY               *PageTableEntry1;
+-  UINT64                            AddressEncMask;
+-
+-  PageTableEntry = AllocatePageTableMemory(1);
+-
+-  PageTableEntry1 = PageTableEntry;
+-
+-  AddressEncMask = GetMemEncryptionAddressMask ();
+-
+-  ASSERT (PageTableEntry != NULL);
+-  ASSERT (*PageEntry2M & AddressEncMask);
+-
+-  PhysicalAddress4K = PhysicalAddress;
+-  for (IndexOfPageTableEntries = 0;
+-       IndexOfPageTableEntries < 512;
+-       (IndexOfPageTableEntries++,
+-        PageTableEntry++,
+-        PhysicalAddress4K += SIZE_4KB)) {
+-    //
+-    // Fill in the Page Table entries
+-    //
+-    PageTableEntry->Uint64 = (UINT64) PhysicalAddress4K | AddressEncMask;
+-    PageTableEntry->Bits.ReadWrite = 1;
+-    PageTableEntry->Bits.Present = 1;
+-    if ((PhysicalAddress4K >= StackBase) &&
+-        (PhysicalAddress4K < StackBase + StackSize)) {
+-      //
+-      // Set Nx bit for stack.
+-      //
+-      PageTableEntry->Bits.Nx = 1;
+-    }
+-  }
+-
+-  //
+-  // Fill in 2M page entry.
+-  //
+-  *PageEntry2M = ((UINT64)(UINTN)PageTableEntry1 |
+-                  IA32_PG_P | IA32_PG_RW | AddressEncMask);
+-}
+-
+-/**
+-  Set one page of page table pool memory to be read-only.
+-
+-  @param[in] PageTableBase    Base address of page table (CR3).
+-  @param[in] Address          Start address of a page to be set as read-only.
+-  @param[in] Level4Paging     Level 4 paging flag.
+-
+-**/
+-STATIC
+-VOID
+-SetPageTablePoolReadOnly (
+-  IN  UINTN                             PageTableBase,
+-  IN  EFI_PHYSICAL_ADDRESS              Address,
+-  IN  BOOLEAN                           Level4Paging
+-  )
+-{
+-  UINTN                 Index;
+-  UINTN                 EntryIndex;
+-  UINT64                AddressEncMask;
+-  EFI_PHYSICAL_ADDRESS  PhysicalAddress;
+-  UINT64                *PageTable;
+-  UINT64                *NewPageTable;
+-  UINT64                PageAttr;
+-  UINT64                LevelSize[5];
+-  UINT64                LevelMask[5];
+-  UINTN                 LevelShift[5];
+-  UINTN                 Level;
+-  UINT64                PoolUnitSize;
+-
+-  ASSERT (PageTableBase != 0);
+-
+-  //
+-  // Since the page table is always from page table pool, which is always
+-  // located at the boundary of PcdPageTablePoolAlignment, we just need to
+-  // set the whole pool unit to be read-only.
+-  //
+-  Address = Address & PAGE_TABLE_POOL_ALIGN_MASK;
+-
+-  LevelShift[1] = PAGING_L1_ADDRESS_SHIFT;
+-  LevelShift[2] = PAGING_L2_ADDRESS_SHIFT;
+-  LevelShift[3] = PAGING_L3_ADDRESS_SHIFT;
+-  LevelShift[4] = PAGING_L4_ADDRESS_SHIFT;
+-
+-  LevelMask[1] = PAGING_4K_ADDRESS_MASK_64;
+-  LevelMask[2] = PAGING_2M_ADDRESS_MASK_64;
+-  LevelMask[3] = PAGING_1G_ADDRESS_MASK_64;
+-  LevelMask[4] = PAGING_1G_ADDRESS_MASK_64;
+-
+-  LevelSize[1] = SIZE_4KB;
+-  LevelSize[2] = SIZE_2MB;
+-  LevelSize[3] = SIZE_1GB;
+-  LevelSize[4] = SIZE_512GB;
+-
+-  AddressEncMask  = GetMemEncryptionAddressMask();
+-  PageTable       = (UINT64 *)(UINTN)PageTableBase;
+-  PoolUnitSize    = PAGE_TABLE_POOL_UNIT_SIZE;
+-
+-  for (Level = (Level4Paging) ? 4 : 3; Level > 0; --Level) {
+-    Index = ((UINTN)RShiftU64 (Address, LevelShift[Level]));
+-    Index &= PAGING_PAE_INDEX_MASK;
+-
+-    PageAttr = PageTable[Index];
+-    if ((PageAttr & IA32_PG_PS) == 0) {
+-      //
+-      // Go to next level of table.
+-      //
+-      PageTable = (UINT64 *)(UINTN)(PageAttr & ~AddressEncMask &
+-                                    PAGING_4K_ADDRESS_MASK_64);
+-      continue;
+-    }
+-
+-    if (PoolUnitSize >= LevelSize[Level]) {
+-      //
+-      // Clear R/W bit if current page granularity is not larger than pool unit
+-      // size.
+-      //
+-      if ((PageAttr & IA32_PG_RW) != 0) {
+-        while (PoolUnitSize > 0) {
+-          //
+-          // PAGE_TABLE_POOL_UNIT_SIZE and PAGE_TABLE_POOL_ALIGNMENT are fit in
+-          // one page (2MB). Then we don't need to update attributes for pages
+-          // crossing page directory. ASSERT below is for that purpose.
+-          //
+-          ASSERT (Index < EFI_PAGE_SIZE/sizeof (UINT64));
+-
+-          PageTable[Index] &= ~(UINT64)IA32_PG_RW;
+-          PoolUnitSize    -= LevelSize[Level];
+-
+-          ++Index;
+-        }
+-      }
+-
+-      break;
+-
+-    } else {
+-      //
+-      // The smaller granularity of page must be needed.
+-      //
+-      ASSERT (Level > 1);
+-
+-      NewPageTable = AllocatePageTableMemory (1);
+-      ASSERT (NewPageTable != NULL);
+-
+-      PhysicalAddress = PageAttr & LevelMask[Level];
+-      for (EntryIndex = 0;
+-            EntryIndex < EFI_PAGE_SIZE/sizeof (UINT64);
+-            ++EntryIndex) {
+-        NewPageTable[EntryIndex] = PhysicalAddress  | AddressEncMask |
+-                                   IA32_PG_P | IA32_PG_RW;
+-        if (Level > 2) {
+-          NewPageTable[EntryIndex] |= IA32_PG_PS;
+-        }
+-        PhysicalAddress += LevelSize[Level - 1];
+-      }
+-
+-      PageTable[Index] = (UINT64)(UINTN)NewPageTable | AddressEncMask |
+-                                        IA32_PG_P | IA32_PG_RW;
+-      PageTable = NewPageTable;
+-    }
+-  }
+-}
+-
+-/**
+-  Prevent the memory pages used for page table from been overwritten.
+-
+-  @param[in] PageTableBase    Base address of page table (CR3).
+-  @param[in] Level4Paging     Level 4 paging flag.
+-
+-**/
+-STATIC
+-VOID
+-EnablePageTableProtection (
+-  IN  UINTN     PageTableBase,
+-  IN  BOOLEAN   Level4Paging
+-  )
+-{
+-  PAGE_TABLE_POOL         *HeadPool;
+-  PAGE_TABLE_POOL         *Pool;
+-  UINT64                  PoolSize;
+-  EFI_PHYSICAL_ADDRESS    Address;
+-
+-  if (mPageTablePool == NULL) {
+-    return;
+-  }
+-
+-  //
+-  // SetPageTablePoolReadOnly might update mPageTablePool. It's safer to
+-  // remember original one in advance.
+-  //
+-  HeadPool = mPageTablePool;
+-  Pool = HeadPool;
+-  do {
+-    Address  = (EFI_PHYSICAL_ADDRESS)(UINTN)Pool;
+-    PoolSize = Pool->Offset + EFI_PAGES_TO_SIZE (Pool->FreePages);
+-
+-    //
+-    // The size of one pool must be multiple of PAGE_TABLE_POOL_UNIT_SIZE,
+-    // which is one of page size of the processor (2MB by default). Let's apply
+-    // the protection to them one by one.
+-    //
+-    while (PoolSize > 0) {
+-      SetPageTablePoolReadOnly(PageTableBase, Address, Level4Paging);
+-      Address   += PAGE_TABLE_POOL_UNIT_SIZE;
+-      PoolSize  -= PAGE_TABLE_POOL_UNIT_SIZE;
+-    }
+-
+-    Pool = Pool->NextPool;
+-  } while (Pool != HeadPool);
+-
+-}
+-
+-
+-/**
+-  Split 1G page to 2M.
+-
+-  @param[in]      PhysicalAddress       Start physical address the 1G page
+-                                        covered.
+-  @param[in, out] PageEntry1G           Pointer to 1G page entry.
+-  @param[in]      StackBase             Stack base address.
+-  @param[in]      StackSize             Stack size.
+-
+-**/
+-STATIC
+-VOID
+-Split1GPageTo2M (
+-  IN          PHYSICAL_ADDRESS               PhysicalAddress,
+-  IN  OUT     UINT64                         *PageEntry1G,
+-  IN          PHYSICAL_ADDRESS               StackBase,
+-  IN          UINTN                          StackSize
+-  )
+-{
+-  PHYSICAL_ADDRESS                  PhysicalAddress2M;
+-  UINTN                             IndexOfPageDirectoryEntries;
+-  PAGE_TABLE_ENTRY                  *PageDirectoryEntry;
+-  UINT64                            AddressEncMask;
+-
+-  PageDirectoryEntry = AllocatePageTableMemory(1);
+-
+-  AddressEncMask = GetMemEncryptionAddressMask ();
+-  ASSERT (PageDirectoryEntry != NULL);
+-  ASSERT (*PageEntry1G & AddressEncMask);
+-  //
+-  // Fill in 1G page entry.
+-  //
+-  *PageEntry1G = ((UINT64)(UINTN)PageDirectoryEntry |
+-                  IA32_PG_P | IA32_PG_RW | AddressEncMask);
+-
+-  PhysicalAddress2M = PhysicalAddress;
+-  for (IndexOfPageDirectoryEntries = 0;
+-       IndexOfPageDirectoryEntries < 512;
+-       (IndexOfPageDirectoryEntries++,
+-        PageDirectoryEntry++,
+-        PhysicalAddress2M += SIZE_2MB)) {
+-    if ((PhysicalAddress2M < StackBase + StackSize) &&
+-        ((PhysicalAddress2M + SIZE_2MB) > StackBase)) {
+-      //
+-      // Need to split this 2M page that covers stack range.
+-      //
+-      Split2MPageTo4K (
+-        PhysicalAddress2M,
+-        (UINT64 *)PageDirectoryEntry,
+-        StackBase,
+-        StackSize
+-        );
+-    } else {
+-      //
+-      // Fill in the Page Directory entries
+-      //
+-      PageDirectoryEntry->Uint64 = (UINT64) PhysicalAddress2M | AddressEncMask;
+-      PageDirectoryEntry->Bits.ReadWrite = 1;
+-      PageDirectoryEntry->Bits.Present = 1;
+-      PageDirectoryEntry->Bits.MustBe1 = 1;
+-    }
+-  }
+-}
+-
+-
+-/**
+-  Set or Clear the memory encryption bit
+-
+-  @param[in, out] PageTablePointer      Page table entry pointer (PTE).
+-  @param[in]      Mode                  Set or Clear encryption bit
+-
+-**/
+-STATIC VOID
+-SetOrClearCBit(
+-  IN   OUT     UINT64*            PageTablePointer,
+-  IN           MAP_RANGE_MODE     Mode
+-  )
+-{
+-  UINT64      AddressEncMask;
+-
+-  AddressEncMask = GetMemEncryptionAddressMask ();
+-
+-  if (Mode == SetCBit) {
+-    *PageTablePointer |= AddressEncMask;
+-  } else {
+-    *PageTablePointer &= ~AddressEncMask;
+-  }
+-
+-}
+-
+-/**
+- Check the WP status in CR0 register. This bit is used to lock or unlock write
+- access to pages marked as read-only.
+-
+-  @retval TRUE    Write protection is enabled.
+-  @retval FALSE   Write protection is disabled.
+-**/
+-STATIC
+-BOOLEAN
+-IsReadOnlyPageWriteProtected (
+-  VOID
+-  )
+-{
+-  return ((AsmReadCr0 () & BIT16) != 0);
+-}
+-
+-
+-/**
+- Disable Write Protect on pages marked as read-only.
+-**/
+-STATIC
+-VOID
+-DisableReadOnlyPageWriteProtect (
+-  VOID
+-  )
+-{
+-  AsmWriteCr0 (AsmReadCr0() & ~BIT16);
+-}
+-
+-/**
+- Enable Write Protect on pages marked as read-only.
+-**/
+-VOID
+-EnableReadOnlyPageWriteProtect (
+-  VOID
+-  )
+-{
+-  AsmWriteCr0 (AsmReadCr0() | BIT16);
+-}
+-
+-
+-/**
+-  This function either sets or clears memory encryption bit for the memory
+-  region specified by PhysicalAddress and Length from the current page table
+-  context.
+-
+-  The function iterates through the PhysicalAddress one page at a time, and set
+-  or clears the memory encryption mask in the page table. If it encounters
+-  that a given physical address range is part of large page then it attempts to
+-  change the attribute at one go (based on size), otherwise it splits the
+-  large pages into smaller (e.g 2M page into 4K pages) and then try to set or
+-  clear the encryption bit on the smallest page size.
+-
+-  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
+-                                      current CR3)
+-  @param[in]  PhysicalAddress         The physical address that is the start
+-                                      address of a memory region.
+-  @param[in]  Length                  The length of memory region
+-  @param[in]  Mode                    Set or Clear mode
+-  @param[in]  CacheFlush              Flush the caches before applying the
+-                                      encryption mask
+-
+-  @retval RETURN_SUCCESS              The attributes were cleared for the
+-                                      memory region.
+-  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
+-  @retval RETURN_UNSUPPORTED          Setting the memory encyrption attribute
+-                                      is not supported
+-**/
+-STATIC
+-RETURN_STATUS
+-EFIAPI
+-SetMemoryEncDec (
+-  IN    PHYSICAL_ADDRESS         Cr3BaseAddress,
+-  IN    PHYSICAL_ADDRESS         PhysicalAddress,
+-  IN    UINTN                    Length,
+-  IN    MAP_RANGE_MODE           Mode,
+-  IN    BOOLEAN                  CacheFlush
+-  )
+-{
+-  PAGE_MAP_AND_DIRECTORY_POINTER *PageMapLevel4Entry;
+-  PAGE_MAP_AND_DIRECTORY_POINTER *PageUpperDirectoryPointerEntry;
+-  PAGE_MAP_AND_DIRECTORY_POINTER *PageDirectoryPointerEntry;
+-  PAGE_TABLE_1G_ENTRY            *PageDirectory1GEntry;
+-  PAGE_TABLE_ENTRY               *PageDirectory2MEntry;
+-  PAGE_TABLE_4K_ENTRY            *PageTableEntry;
+-  UINT64                         PgTableMask;
+-  UINT64                         AddressEncMask;
+-  BOOLEAN                        IsWpEnabled;
+-  RETURN_STATUS                  Status;
+-
+-  //
+-  // Set PageMapLevel4Entry to suppress incorrect compiler/analyzer warnings.
+-  //
+-  PageMapLevel4Entry = NULL;
+-
+-  DEBUG ((
+-    DEBUG_VERBOSE,
+-    "%a:%a: Cr3Base=0x%Lx Physical=0x%Lx Length=0x%Lx Mode=%a CacheFlush=%u\n",
+-    gEfiCallerBaseName,
+-    __FUNCTION__,
+-    Cr3BaseAddress,
+-    PhysicalAddress,
+-    (UINT64)Length,
+-    (Mode == SetCBit) ? "Encrypt" : "Decrypt",
+-    (UINT32)CacheFlush
+-    ));
+-
+-  //
+-  // Check if we have a valid memory encryption mask
+-  //
+-  AddressEncMask = GetMemEncryptionAddressMask ();
+-  if (!AddressEncMask) {
+-    return RETURN_ACCESS_DENIED;
+-  }
+-
+-  PgTableMask = AddressEncMask | EFI_PAGE_MASK;
+-
+-  if (Length == 0) {
+-    return RETURN_INVALID_PARAMETER;
+-  }
+-
+-  //
+-  // We are going to change the memory encryption attribute from C=0 -> C=1 or
+-  // vice versa Flush the caches to ensure that data is written into memory
+-  // with correct C-bit
+-  //
+-  if (CacheFlush) {
+-    WriteBackInvalidateDataCacheRange((VOID*) (UINTN)PhysicalAddress, Length);
+-  }
+-
+-  //
+-  // Make sure that the page table is changeable.
+-  //
+-  IsWpEnabled = IsReadOnlyPageWriteProtected ();
+-  if (IsWpEnabled) {
+-    DisableReadOnlyPageWriteProtect ();
+-  }
+-
+-  Status = EFI_SUCCESS;
+-
+-  while (Length != 0)
+-  {
+-    //
+-    // If Cr3BaseAddress is not specified then read the current CR3
+-    //
+-    if (Cr3BaseAddress == 0) {
+-      Cr3BaseAddress = AsmReadCr3();
+-    }
+-
+-    PageMapLevel4Entry = (VOID*) (Cr3BaseAddress & ~PgTableMask);
+-    PageMapLevel4Entry += PML4_OFFSET(PhysicalAddress);
+-    if (!PageMapLevel4Entry->Bits.Present) {
+-      DEBUG ((
+-        DEBUG_ERROR,
+-        "%a:%a: bad PML4 for Physical=0x%Lx\n",
+-        gEfiCallerBaseName,
+-        __FUNCTION__,
+-        PhysicalAddress
+-        ));
+-      Status = RETURN_NO_MAPPING;
+-      goto Done;
+-    }
+-
+-    PageDirectory1GEntry = (VOID *)(
+-                             (PageMapLevel4Entry->Bits.PageTableBaseAddress <<
+-                              12) & ~PgTableMask
+-                             );
+-    PageDirectory1GEntry += PDP_OFFSET(PhysicalAddress);
+-    if (!PageDirectory1GEntry->Bits.Present) {
+-      DEBUG ((
+-        DEBUG_ERROR,
+-        "%a:%a: bad PDPE for Physical=0x%Lx\n",
+-        gEfiCallerBaseName,
+-        __FUNCTION__,
+-        PhysicalAddress
+-        ));
+-      Status = RETURN_NO_MAPPING;
+-      goto Done;
+-    }
+-
+-    //
+-    // If the MustBe1 bit is not 1, it's not actually a 1GB entry
+-    //
+-    if (PageDirectory1GEntry->Bits.MustBe1) {
+-      //
+-      // Valid 1GB page
+-      // If we have at least 1GB to go, we can just update this entry
+-      //
+-      if ((PhysicalAddress & (BIT30 - 1)) == 0 && Length >= BIT30) {
+-        SetOrClearCBit(&PageDirectory1GEntry->Uint64, Mode);
+-        DEBUG ((
+-          DEBUG_VERBOSE,
+-          "%a:%a: updated 1GB entry for Physical=0x%Lx\n",
+-          gEfiCallerBaseName,
+-          __FUNCTION__,
+-          PhysicalAddress
+-          ));
+-        PhysicalAddress += BIT30;
+-        Length -= BIT30;
+-      } else {
+-        //
+-        // We must split the page
+-        //
+-        DEBUG ((
+-          DEBUG_VERBOSE,
+-          "%a:%a: splitting 1GB page for Physical=0x%Lx\n",
+-          gEfiCallerBaseName,
+-          __FUNCTION__,
+-          PhysicalAddress
+-          ));
+-        Split1GPageTo2M (
+-          (UINT64)PageDirectory1GEntry->Bits.PageTableBaseAddress << 30,
+-          (UINT64 *)PageDirectory1GEntry,
+-          0,
+-          0
+-          );
+-        continue;
+-      }
+-    } else {
+-      //
+-      // Actually a PDP
+-      //
+-      PageUpperDirectoryPointerEntry =
+-        (PAGE_MAP_AND_DIRECTORY_POINTER *)PageDirectory1GEntry;
+-      PageDirectory2MEntry =
+-        (VOID *)(
+-          (PageUpperDirectoryPointerEntry->Bits.PageTableBaseAddress <<
+-           12) & ~PgTableMask
+-          );
+-      PageDirectory2MEntry += PDE_OFFSET(PhysicalAddress);
+-      if (!PageDirectory2MEntry->Bits.Present) {
+-        DEBUG ((
+-          DEBUG_ERROR,
+-          "%a:%a: bad PDE for Physical=0x%Lx\n",
+-          gEfiCallerBaseName,
+-          __FUNCTION__,
+-          PhysicalAddress
+-          ));
+-        Status = RETURN_NO_MAPPING;
+-        goto Done;
+-      }
+-      //
+-      // If the MustBe1 bit is not a 1, it's not a 2MB entry
+-      //
+-      if (PageDirectory2MEntry->Bits.MustBe1) {
+-        //
+-        // Valid 2MB page
+-        // If we have at least 2MB left to go, we can just update this entry
+-        //
+-        if ((PhysicalAddress & (BIT21-1)) == 0 && Length >= BIT21) {
+-          SetOrClearCBit (&PageDirectory2MEntry->Uint64, Mode);
+-          PhysicalAddress += BIT21;
+-          Length -= BIT21;
+-        } else {
+-          //
+-          // We must split up this page into 4K pages
+-          //
+-          DEBUG ((
+-            DEBUG_VERBOSE,
+-            "%a:%a: splitting 2MB page for Physical=0x%Lx\n",
+-            gEfiCallerBaseName,
+-            __FUNCTION__,
+-            PhysicalAddress
+-            ));
+-          Split2MPageTo4K (
+-            (UINT64)PageDirectory2MEntry->Bits.PageTableBaseAddress << 21,
+-            (UINT64 *)PageDirectory2MEntry,
+-            0,
+-            0
+-            );
+-          continue;
+-        }
+-      } else {
+-        PageDirectoryPointerEntry =
+-          (PAGE_MAP_AND_DIRECTORY_POINTER *)PageDirectory2MEntry;
+-        PageTableEntry =
+-          (VOID *)(
+-            (PageDirectoryPointerEntry->Bits.PageTableBaseAddress <<
+-             12) & ~PgTableMask
+-            );
+-        PageTableEntry += PTE_OFFSET(PhysicalAddress);
+-        if (!PageTableEntry->Bits.Present) {
+-          DEBUG ((
+-            DEBUG_ERROR,
+-            "%a:%a: bad PTE for Physical=0x%Lx\n",
+-            gEfiCallerBaseName,
+-            __FUNCTION__,
+-            PhysicalAddress
+-            ));
+-          Status = RETURN_NO_MAPPING;
+-          goto Done;
+-        }
+-        SetOrClearCBit (&PageTableEntry->Uint64, Mode);
+-        PhysicalAddress += EFI_PAGE_SIZE;
+-        Length -= EFI_PAGE_SIZE;
+-      }
+-    }
+-  }
+-
+-  //
+-  // Protect the page table by marking the memory used for page table to be
+-  // read-only.
+-  //
+-  if (IsWpEnabled) {
+-    EnablePageTableProtection ((UINTN)PageMapLevel4Entry, TRUE);
+-  }
+-
+-  //
+-  // Flush TLB
+-  //
+-  CpuFlushTlb();
+-
+-Done:
+-  //
+-  // Restore page table write protection, if any.
+-  //
+-  if (IsWpEnabled) {
+-    EnableReadOnlyPageWriteProtect ();
+-  }
+-
+-  return Status;
+-}
+-
+-/**
+-  This function clears memory encryption bit for the memory region specified by
+-  PhysicalAddress and Length from the current page table context.
+-
+-  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
+-                                      current CR3)
+-  @param[in]  PhysicalAddress         The physical address that is the start
+-                                      address of a memory region.
+-  @param[in]  Length                  The length of memory region
+-  @param[in]  Flush                   Flush the caches before applying the
+-                                      encryption mask
+-
+-  @retval RETURN_SUCCESS              The attributes were cleared for the
+-                                      memory region.
+-  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
+-  @retval RETURN_UNSUPPORTED          Clearing the memory encyrption attribute
+-                                      is not supported
+-**/
+-RETURN_STATUS
+-EFIAPI
+-InternalMemEncryptSevSetMemoryDecrypted (
+-  IN  PHYSICAL_ADDRESS        Cr3BaseAddress,
+-  IN  PHYSICAL_ADDRESS        PhysicalAddress,
+-  IN  UINTN                   Length,
+-  IN  BOOLEAN                 Flush
+-  )
+-{
+-
+-  return SetMemoryEncDec (
+-           Cr3BaseAddress,
+-           PhysicalAddress,
+-           Length,
+-           ClearCBit,
+-           Flush
+-           );
+-}
+-
+-/**
+-  This function sets memory encryption bit for the memory region specified by
+-  PhysicalAddress and Length from the current page table context.
+-
+-  @param[in]  Cr3BaseAddress          Cr3 Base Address (if zero then use
+-                                      current CR3)
+-  @param[in]  PhysicalAddress         The physical address that is the start
+-                                      address of a memory region.
+-  @param[in]  Length                  The length of memory region
+-  @param[in]  Flush                   Flush the caches before applying the
+-                                      encryption mask
+-
+-  @retval RETURN_SUCCESS              The attributes were set for the memory
+-                                      region.
+-  @retval RETURN_INVALID_PARAMETER    Number of pages is zero.
+-  @retval RETURN_UNSUPPORTED          Setting the memory encyrption attribute
+-                                      is not supported
+-**/
+-RETURN_STATUS
+-EFIAPI
+-InternalMemEncryptSevSetMemoryEncrypted (
+-  IN  PHYSICAL_ADDRESS        Cr3BaseAddress,
+-  IN  PHYSICAL_ADDRESS        PhysicalAddress,
+-  IN  UINTN                   Length,
+-  IN  BOOLEAN                 Flush
+-  )
+-{
+-  return SetMemoryEncDec (
+-           Cr3BaseAddress,
+-           PhysicalAddress,
+-           Length,
+-           SetCBit,
+-           Flush
+-           );
+-}
 -- 
 2.29.2
 
@@ -2949,7 +4951,7 @@ Skip OvmfPkg/AmdSev/AmdSevX64.dsc and OvmfPkg/AmdSev/AmdSevX64.fdf
 ---
  OvmfPkg/Include/Library/MemEncryptSevLib.h    |  23 ++++
  .../VmgExitLib/PeiDxeVmgExitVcHandler.c       | 103 +++++++++++++++++
- .../{VmgExitLib.inf => SecVmgExitLib.inf}     |  13 ++-
+ OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf  |  43 +++++++
  .../Library/VmgExitLib/SecVmgExitVcHandler.c  | 109 ++++++++++++++++++
  OvmfPkg/Library/VmgExitLib/VmgExitLib.inf     |   4 +-
  OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.c |  48 ++++----
@@ -2958,9 +4960,9 @@ Skip OvmfPkg/AmdSev/AmdSevX64.dsc and OvmfPkg/AmdSev/AmdSevX64.fdf
  OvmfPkg/OvmfPkgX64.dsc                        |   1 +
  OvmfPkg/OvmfPkgX64.fdf                        |   3 +
  OvmfPkg/PlatformPei/AmdSev.c                  |  38 +++++-
- 11 files changed, 367 insertions(+), 30 deletions(-)
+ 11 files changed, 400 insertions(+), 27 deletions(-)
  create mode 100644 OvmfPkg/Library/VmgExitLib/PeiDxeVmgExitVcHandler.c
- copy OvmfPkg/Library/VmgExitLib/{VmgExitLib.inf => SecVmgExitLib.inf} (61%)
+ create mode 100644 OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
  create mode 100644 OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c
  create mode 100644 OvmfPkg/Library/VmgExitLib/VmgExitVcHandler.h
 
@@ -3107,47 +5109,55 @@ index 000000000000..fb4942df37ca
 +
 +  return VcRet;
 +}
-diff --git a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf b/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
-similarity index 61%
-copy from OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
-copy to OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
-index d003ac63173e..df14de3c21bc 100644
---- a/OvmfPkg/Library/VmgExitLib/VmgExitLib.inf
+diff --git a/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf b/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
+new file mode 100644
+index 000000000000..df14de3c21bc
+--- /dev/null
 +++ b/OvmfPkg/Library/VmgExitLib/SecVmgExitLib.inf
-@@ -8,11 +8,11 @@
- 
- [Defines]
-   INF_VERSION                    = 0x00010005
--  BASE_NAME                      = VmgExitLib
--  FILE_GUID                      = 0e923c25-13cd-430b-8714-ffe85652a97b
+@@ -0,0 +1,43 @@
++## @file
++#  VMGEXIT Support Library.
++#
++#  Copyright (C) 2020, Advanced Micro Devices, Inc. All rights reserved.<BR>
++#  SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++##
++
++[Defines]
++  INF_VERSION                    = 0x00010005
 +  BASE_NAME                      = SecVmgExitLib
 +  FILE_GUID                      = dafff819-f86c-4cff-a70e-83161e5bcf9a
-   MODULE_TYPE                    = BASE
-   VERSION_STRING                 = 1.0
--  LIBRARY_CLASS                  = VmgExitLib
++  MODULE_TYPE                    = BASE
++  VERSION_STRING                 = 1.0
 +  LIBRARY_CLASS                  = VmgExitLib|SEC
- 
- #
- # The following information is for reference only and not required by the build tools.
-@@ -23,6 +23,8 @@ [Defines]
- [Sources.common]
-   VmgExitLib.c
-   VmgExitVcHandler.c
++
++#
++# The following information is for reference only and not required by the build tools.
++#
++#  VALID_ARCHITECTURES           = X64
++#
++
++[Sources.common]
++  VmgExitLib.c
++  VmgExitVcHandler.c
 +  VmgExitVcHandler.h
 +  SecVmgExitVcHandler.c
- 
- [Packages]
-   MdePkg/MdePkg.dec
-@@ -33,4 +35,9 @@ [LibraryClasses]
-   BaseLib
-   BaseMemoryLib
-   DebugLib
++
++[Packages]
++  MdePkg/MdePkg.dec
++  OvmfPkg/OvmfPkg.dec
++  UefiCpuPkg/UefiCpuPkg.dec
++
++[LibraryClasses]
++  BaseLib
++  BaseMemoryLib
++  DebugLib
 +  PcdLib
 +
 +[FixedPcd]
 +  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupBase
 +  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupSize
- 
++
 diff --git a/OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c b/OvmfPkg/Library/VmgExitLib/SecVmgExitVcHandler.c
 new file mode 100644
 index 000000000000..85853d334b35

@@ -1,0 +1,102 @@
+From 3d750c55d1f11ed9cef88698c7caff7495d1450f Mon Sep 17 00:00:00 2001
+From: Tom Lendacky <thomas.lendacky@amd.com>
+Date: Sat, 23 Jan 2021 07:57:44 -0600
+Subject: [PATCH 1/1] OvmfPkg/QemuFlashFvbServicesRuntimeDxe: Use physical
+ address with SEV-ES
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3183
+
+Under SEV-ES, a write to the flash device is done using a direct VMGEXIT
+to perform an MMIO write. The address provided to the MMIO write must be
+the physical address of the MMIO write destitnation. During boot, OVMF
+runs with an identity mapped pagetable structure so that VA == PA and the
+VMGEXIT MMIO write destination is just the virtual address of the flash
+area address being written.
+
+However, when the UEFI SetVirtualAddressMap() API is invoked, an identity
+mapped pagetable structure may not be in place and using the virtual
+address for the flash area address is no longer valid. This results in
+writes to the flash not being performed successfully. This can be seen
+by attempting to change the boot order under Linux. The update will
+appear to be performed, based on the output of the command. But rebooting
+the guest will show that the new boot order has not been set.
+
+To remedy this, save the value of the flash base physical address before
+converting the address as part of SetVirtualAddressMap(). The physical
+address can then be calculated by obtaining the offset of the MMIO target
+virtual address relative to the flash base virtual address and adding that
+to the original flash base physical address. The resulting value produces
+a successful MMIO write during runtime services.
+
+Fixes: 437eb3f7a8db7681afe0e6064d3a8edb12abb766
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Signed-off-by: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <84a5f9161541db5aa3b57c96b737afbcb4b6189d.1611410263.git.thomas.lendacky@amd.com>
+[lersek@redhat.com: SetVitualAddressMap() -> SetVirtualAddressMap() typo
+ fix, in both the commit message and the code comment]
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+(cherry picked from commit 3a3501862f73095059bb05cc28147c8e899488f2)
+---
+ .../QemuFlashDxe.c                            | 20 ++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/OvmfPkg/QemuFlashFvbServicesRuntimeDxe/QemuFlashDxe.c b/OvmfPkg/QemuFlashFvbServicesRuntimeDxe/QemuFlashDxe.c
+index 1b0742967f71..63daa0b55b49 100644
+--- a/OvmfPkg/QemuFlashFvbServicesRuntimeDxe/QemuFlashDxe.c
++++ b/OvmfPkg/QemuFlashFvbServicesRuntimeDxe/QemuFlashDxe.c
+@@ -16,11 +16,17 @@
+ 
+ #include "QemuFlash.h"
+ 
++STATIC EFI_PHYSICAL_ADDRESS mSevEsFlashPhysBase;
++
+ VOID
+ QemuFlashConvertPointers (
+   VOID
+   )
+ {
++  if (MemEncryptSevEsIsEnabled ()) {
++    mSevEsFlashPhysBase = (UINTN) mFlashBase;
++  }
++
+   EfiConvertPointer (0x0, (VOID **) &mFlashBase);
+ }
+ 
+@@ -52,11 +58,23 @@ QemuFlashPtrWrite (
+   if (MemEncryptSevEsIsEnabled ()) {
+     MSR_SEV_ES_GHCB_REGISTER  Msr;
+     GHCB                      *Ghcb;
++    EFI_PHYSICAL_ADDRESS      PhysAddr;
+     BOOLEAN                   InterruptState;
+ 
+     Msr.GhcbPhysicalAddress = AsmReadMsr64 (MSR_SEV_ES_GHCB);
+     Ghcb = Msr.Ghcb;
+ 
++    //
++    // The MMIO write needs to be to the physical address of the flash pointer.
++    // Since this service is available as part of the EFI runtime services,
++    // account for a non-identity mapped VA after SetVirtualAddressMap().
++    //
++    if (mSevEsFlashPhysBase == 0) {
++      PhysAddr = (UINTN) Ptr;
++    } else {
++      PhysAddr = mSevEsFlashPhysBase + (Ptr - mFlashBase);
++    }
++
+     //
+     // Writing to flash is emulated by the hypervisor through the use of write
+     // protection. This won't work for an SEV-ES guest because the write won't
+@@ -68,7 +86,7 @@ QemuFlashPtrWrite (
+     Ghcb->SharedBuffer[0] = Value;
+     Ghcb->SaveArea.SwScratch = (UINT64) (UINTN) Ghcb->SharedBuffer;
+     VmgSetOffsetValid (Ghcb, GhcbSwScratch);
+-    VmgExit (Ghcb, SVM_EXIT_MMIO_WRITE, (UINT64) (UINTN) Ptr, 1);
++    VmgExit (Ghcb, SVM_EXIT_MMIO_WRITE, PhysAddr, 1);
+     VmgDone (Ghcb, InterruptState);
+   } else {
+     *Ptr = Value;
+-- 
+2.29.2
+

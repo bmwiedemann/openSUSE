@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 28 07:56:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-jscSLE-16075-SEV-ES-use-physical-address.patch as the
+  follow-up patch for SEV-ES to fix the flash writing
+  (jsc#SLE-16075)
+- Update 50-xen-hvm-x86_64.json to add "nvram-template" and change
+  the firmware file to ovmf-x86_64-ms-4m.bin
+  (bsc#1180050, bsc#1181264)
+- Refresh ovmf-bsc1180079-amd-sev-es-mitigation.patch
+  + Use "git format-patch --no-renames" to generate the patch to
+    avoid confusing quilt with the renamed files
+
+-------------------------------------------------------------------
 Mon Jan 11 08:50:11 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-bsc1180079-amd-sev-es-mitigation.patch to mitigate the
