@@ -67,13 +67,10 @@ Macros:
 Substitute: kiwi-setup:image python3-kiwi createrepo_c
 Substitute: kiwi-image:tbz   python3-kiwi
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers
+Substitute: kiwi-image:iso kiwi-systemdeps-iso-media qemu-tools
 
 Substitute: obs:cli_debug_packages gdb vim strace less rzsz
 
-# Prefer: kiwi-filesystem-requires
-# Prefer: kiwi-image-docker-requires
-# Prefer: kiwi-image-iso-requires
-# Prefer: kiwi-image-vmx-requires
 Prefer: kiwi-systemdeps-filesystems
 Prefer: kiwi-systemdeps-disk-images
 Prefer: kiwi-systemdeps-iso-media
@@ -1361,6 +1358,7 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
 Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
 Prefer: %{rb_default_ruby_suffix}-rubygem-ronn
 Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
+Prefer: -ruby3.0-rubygem-rspec-3_5
 Prefer: %{rb_default_ruby_suffix}-rubygem-ruby-dbus
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass-rails
