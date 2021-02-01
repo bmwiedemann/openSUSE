@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 24 14:42:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.5:
+  - Use config newline setting in system attribute evaulation
+  - Update to deadsnakes/python@v2.0.2
+
+-------------------------------------------------------------------
 Tue Nov  3 08:09:36 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 9.0.4
