@@ -97,4 +97,12 @@
 - Switch to using %pytest macro now that nose is not required</comment>
     <requestid>809724</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>796b199c429f290c21aef14101c18a80</srcmd5>
+    <version>1.4.1</version>
+    <time>1612182402</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch</comment>
+    <requestid>866682</requestid>
+  </revision>
 </revisionlist>

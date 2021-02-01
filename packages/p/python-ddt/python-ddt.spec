@@ -1,7 +1,7 @@
 #
 # spec file for package python-ddt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Data-Driven/Decorated Tests
 License:        MIT
 URL:            https://github.com/txels/ddt
 Source:         https://files.pythonhosted.org/packages/source/d/ddt/ddt-%{version}.tar.gz
+# https://github.com/datadriventests/ddt/pull/96
+Patch1:         0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,6 +45,7 @@ A library to multiply test cases.
 
 %prep
 %setup -q -n ddt-%{version}
+%autopatch -p1
 
 %build
 %python_build

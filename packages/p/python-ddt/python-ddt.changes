@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 25 21:52:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch 
+
+-------------------------------------------------------------------
 Thu May 28 03:09:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.1:

@@ -1,0 +1,62 @@
+From 97f0a2315736e50f1b34a015447cd751da66ecb6 Mon Sep 17 00:00:00 2001
+From: Dirk Mueller <dirk@dmllr.de>
+Date: Mon, 25 Jan 2021 22:49:04 +0100
+Subject: [PATCH] Use Yaml's UnsafeLoader for Python embedding tests
+
+In newer PyYAML versions the default FullLoader has
+python/object/* integration removed. One has to use
+UnsafeLoader instead. see this issue for details:
+
+https://github.com/yaml/pyyaml/issues/321
+---
+ test/test_example.py    |  2 +-
+ test/test_functional.py | 10 +++++-----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/test/test_example.py b/test/test_example.py
+index db2cf17..1d27043 100644
+--- a/test/test_example.py
++++ b/test/test_example.py
+@@ -151,7 +151,7 @@ if have_yaml_support:
+ 
+     @ddt
+     class YamlOnlyTestCase(unittest.TestCase):
+-        @file_data('data/test_custom_yaml_loader.yaml', yaml.FullLoader)
++        @file_data('data/test_custom_yaml_loader.yaml', yaml.UnsafeLoader)
+         def test_custom_yaml_loader(self, instance, expected):
+             """Test with yaml tags to create specific classes to compare"""
+             self.assertEqual(expected, instance)
+diff --git a/test/test_functional.py b/test/test_functional.py
+index 45c1cae..f9609c6 100644
+--- a/test/test_functional.py
++++ b/test/test_functional.py
+@@ -440,7 +440,7 @@ def test_load_yaml_with_python_tag():
+     loader allowing python tags is passed.
+     """
+ 
+-    from yaml import FullLoader
++    from yaml import UnsafeLoader
+     from yaml.constructor import ConstructorError
+ 
+     def str_to_type(class_name):
+@@ -457,13 +457,13 @@ def test_load_yaml_with_python_tag():
+             raise AssertionError()
+ 
+     @ddt
+-    class YamlFullLoaderTest(object):
+-        @file_data('data/test_functional_custom_tags.yaml', FullLoader)
++    class YamlUnsafeLoaderTest(object):
++        @file_data('data/test_functional_custom_tags.yaml', UnsafeLoader)
+         def test_cls_is_instance(self, instance, expected):
+             assert isinstance(instance, str_to_type(expected))
+ 
+-    tests = list(filter(_is_test, YamlFullLoaderTest.__dict__))
+-    obj = YamlFullLoaderTest()
++    tests = list(filter(_is_test, YamlUnsafeLoaderTest.__dict__))
++    obj = YamlUnsafeLoaderTest()
+ 
+     if not tests:
+         raise AssertionError('No tests have been found.')
+-- 
+2.30.0
+
