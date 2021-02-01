@@ -120,4 +120,15 @@ trim changes file</comment>
   Remove version: from *.opam files, inject version into dune-project</comment>
     <requestid>864001</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b33ac9d841e6b5616c5da4d91d297af9</srcmd5>
+    <version>20210121</version>
+    <time>1612186905</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust parser of ocamfind() requires
+  Take negative predicates in requires() into account, and ignore them.
+  This is supposed to avoid dependency cycles due to excessive
+  list of dependencies.</comment>
+    <requestid>867714</requestid>
+  </revision>
 </revisionlist>
