@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  2 07:43:26 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 5.3.3
+  * Fix PHP8 Windows includes
+  * Fix hash ops for php 8.0.1
+  * Disable cloning Redis and RedisCluster objects
+
+-------------------------------------------------------------------
 Fri Jan 22 19:50:35 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Remove BuildRequires:php7-json (don't need in php7, but in php8 work in core).
