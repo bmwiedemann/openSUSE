@@ -1,7 +1,7 @@
 #
 # spec file for package ghostscript-fonts-grops
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ghostscript-fonts-grops
 Version:        1.22.2
 Release:        0
-Url:            http://www.gnu.org/software/groff/groff.html
+URL:            http://www.gnu.org/software/groff/groff.html
 Summary:        Ghostscript fonts imported to groff for use with grops
 License:        GPL-2.0-only
 Group:          Productivity/Publishing/Troff
@@ -47,8 +47,7 @@ A version of PostScript® driver for Groff to support characters outside ISO Lat
 %build
 %define gs_fonts %{_datadir}/ghostscript/fonts
 %define gs_version %(gs --version)
-%define gs_ver %(gs --version | sed "s/\\.//")
-%if %{gs_ver} >= 950
+%if %{lua:print(rpm.vercmp(rpm.expand("%{gs_version}"), "9.50"))} >= 0
 %define import_font() ln -s -T "%{gs_fonts}/%1.afm" "%2.afm" && gs -P- -dNOSAFER -dNODISPLAY -- pfbtopfa.ps %{gs_fonts}/%1.pfb devps/%1.pfa
 %else
 %define import_font() ln -s -T "%{gs_fonts}/%1.afm" "%2.afm" && pfbtopfa %{gs_fonts}/%1.pfb devps/%1.pfa
@@ -57,7 +56,7 @@ A version of PostScript® driver for Groff to support characters outside ISO Lat
 cp %{S:3} .
 mkdir devps
 while read fn fa
-# Grops font generator expects conventional font file names; 
+# Grops font generator expects conventional font file names;
 # the substitutes provided by ghostscript must be linked accordingly.
 # The link is needed only at build time.
 # Ghostscript substitutes stripped fonts, full fonts must be embedded in the printout.
@@ -72,7 +71,7 @@ cd ..
 for f in *.afm
 do pf="$(readlink "${f}")"
 pf="${pf##*/}"
-pf="${pf:0:-4}.pfa" 
+pf="${pf:0:-4}.pfa"
 read<"devps/${pf}" decl fn ver
 echo "${fn}" "${pf}"
 done >>devps/download
