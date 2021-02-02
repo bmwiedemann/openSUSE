@@ -1,7 +1,7 @@
 #
 # spec file for package python-APScheduler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-APScheduler
-Version:        3.6.3
+Version:        3.7.0
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
@@ -28,27 +28,27 @@ Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APS
 BuildRequires:  %{python_module SQLAlchemy >= 0.8}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module pytest < 6}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-tornado}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools >= 36.2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module tzlocal >= 1.2}
+BuildRequires:  %{python_module tzlocal >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest-asyncio
 Requires:       python-pytz
 Requires:       python-six >= 1.4.0
-Requires:       python-tzlocal >= 1.2
+Requires:       python-tzlocal >= 2.0
 Recommends:     python-SQLAlchemy >= 0.8
 Recommends:     python-Twisted
 Recommends:     python-gevent
 Suggests:       python-kazoo
-Suggests:       python-pymongo >= 2.8
+Suggests:       python-pymongo >= 3.0
 Suggests:       python-redis
 Suggests:       python-tornado >= 4.3
 BuildArch:      noarch

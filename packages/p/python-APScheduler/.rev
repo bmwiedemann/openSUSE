@@ -138,4 +138,37 @@
 </comment>
     <requestid>865942</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8799a02d7632087470833e4a3b24973c</srcmd5>
+    <version>3.7.0</version>
+    <time>1612272328</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.0:
+  * Dropped support for Python 3.4
+  * Added PySide2 support (PR by Abdulla Ibrahim)
+  * Pinned ``tzlocal`` to a version compatible with pytz
+  * Ensured that jitter is always non-negative to prevent triggers from firing
+    more often than intended
+  * Changed ``AsyncIOScheduler`` to obtain the event loop in ``start()``
+    instead of ``__init__()``,
+    to prevent situations where the scheduler won't run because it's using a
+    different event loop than then one currently running
+  * Made it possible to create weak references to ``Job`` instances
+  * Made the schedulers explicitly raise a descriptive ``TypeError`` when serialization is attempted
+  * Fixed Zookeeper job store using backslashes instead of forward slashes for paths
+    on Windows
+  * Fixed deprecation warnings on the MongoDB job store and increased the minimum PyMongo
+  * Fixed ``BlockingScheduler`` and ``BackgroundScheduler`` shutdown hanging after the user has
+    erroneously tried to start it twice
+  * Fixed memory leak when coroutine jobs raise exceptions
+  * Fixed inability to schedule wrapped functions with extra arguments when the wrapped function
+    cannot accept them but the wrapper can (original PR by Egor Malykh)
+  * Fixed potential ``where`` clause error in the SQLAlchemy job store when a subclass uses more than
+    one search condition
+  * Fixed a problem where bound methods added as jobs via textual references were called with an
+    unwanted extra ``self`` argument (PR by Pengjie Song)
+  * Fixed ``BrokenPoolError`` in ``ProcessPoolExecutor`` so that it will automatically replace the
+    broken pool with a fresh instance</comment>
+    <requestid>868433</requestid>
+  </revision>
 </revisionlist>
