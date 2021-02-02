@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 23 01:27:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- don't recreate games user - managed by systemd-users-game
+- update to 4.2.2.1:
+  * fixed bug with playing team mode tapes with changed visible playfield size
+  * added patch mode to patch tapes to force visible playfield size of 34 x 34
+  * added patch mode to automatically fix tapes for visible playfield size
+  * fixed single step mode for R’n’D game engine when used in team mode
+  * fixed triggering custom element actions by digging or collecting
+  * added option in level editor to use time score for 1 or 10 seconds left
+  * fixed time score for native Emerald Mine and Diamond Caves levels
+  * fixed bug with screen keyboard still being active during request dialogs
+  * fixed bug with screen keyboard causing overlay buttons to be disabled
+  * added option to disable warning about read-only levels when entering editor
+  * fixed bug with not updating game panel when leaving invisible warp mode
+  * fixed displaying new high score entry if new entry is not on the first page
+  * fixed graphical bug with envelope style request dialog after the game ended 
+  
+-------------------------------------------------------------------
 Sun Jan  3 06:57:36 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.2.2.0

@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.2.2.0
+Version:        4.2.2.1
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
@@ -31,16 +31,13 @@ Patch0:         %{name}-src_libgame_setup.c-CVE-2011-4606.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-#BuildRequires:  libsmpeg-devel
+BuildRequires:  system-user-games
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data
-Requires(pre):  %{_sbindir}/groupadd
-Requires(pre):  %{_sbindir}/useradd
-Requires(pre):  group(games)
 Requires(pre):  user(games)
 
 %description
@@ -89,10 +86,6 @@ install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}
 %suse_update_desktop_file %{name}
 
 %fdupes -s %{buildroot}%{_prefix}
-
-%pre
-getent group games >/dev/null || groupadd -r games
-getent passwd games >/dev/null || useradd -r -g games -d %{_localstatedir}/games -s /sbin/nologin
 
 %files
 %license COPYING
