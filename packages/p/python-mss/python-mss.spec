@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mss
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Python multiple screenshots module
 License:        MIT
@@ -45,8 +45,6 @@ An ultra fast cross-platform multiple screenshots module in pure Python using ct
 
 %prep
 %setup -q -n mss-%{version}
-mv mss/tests .
-rm tests/test_setup.py
 
 %build
 %python_build
@@ -65,12 +63,17 @@ rm tests/test_setup.py
 %check
 export LANG=en_US.UTF-8
 # test_region_out_of_monitor_bounds fails on ppc64 only
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run --server-args "-screen 0 1920x1080x24" $python -m pytest tests/test_*.py -k 'not test_region_out_of_monitor_bounds'
+echo '
+%pytest --ignore mss/tests/test_setup.py -k "not test_region_out_of_monitor_bounds" 
+'> pytest_script.sh
+# need explicitly set up screen.
+xvfb-run --server-args "-screen 0 1920x1080x24" sh pytest_script.sh
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/mss
-%{python_sitelib}/*
+%{python_sitelib}/mss
+%{python_sitelib}/mss-%{version}*-info
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 23 09:33:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v6.1.0
+  * MSS: reworked how C functions are initialised
+  * tests: expand Python versions to 3.9 and 3.10
+  * tests: fix test_entry_point() when there are several monitors 
+- clean test rig setup
+
+-------------------------------------------------------------------
 Fri Aug 14 03:22:58 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v6.0.0
