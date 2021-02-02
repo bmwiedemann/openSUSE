@@ -10,7 +10,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20210126
+ExpandFlags: macroserial:20210202
 
 ExpandFlags: kiwi-nobasepackages
 
@@ -1377,12 +1377,14 @@ Macros:
 %skip_python2 1
 %_without_python2 1
 
-# This method for generating python_modules gets too deep to expand at about 5 python flavors.
-# It is replaced by a Lua macro in macros.lua
-# However, OBS has a much higher expansion depth, so this works fine.
-%python_module_iter(a:) %{-a*}-%{args} %{expand:%%{?!python_module_iter_%1:%%{python_module_iter -a%*}}}
-%python_module_iter_STOP stop
-%python_module() %{expand:%%define args %{**}} %{expand:%%{python_module_iter -a %{pythons} STOP}}
+# prjconf definitions for python-rpm-macros
+# This method for generating python_modules gets too deep to expand for rpm at about 5 python flavors.
+# Hence, python_module_iter is replaced by python_module_lua in macros.lua.
+# However, OBS cannot expand lua, but has a much higher expansion depth, so this works fine for the server side resolver.
+%python_module_iter(a:) %{expand:%%define python %{-a*}} ( %python-%args ) %{expand:%%{?!python_module_iter_%1:%%{python_module_iter -a%*}}%%{?python_module_iter_%1}}
+# pseudo-undefine for obs: reset for the next expansion within the next call of python_module
+%python_module_iter_STOP %global python %%%%python
+%python_module() %{?!python_module_lua:%{expand:%%define args %{**}} %{expand:%%{python_module_iter -a %{pythons} STOP}}}%{?python_module_lua:%python_module_lua %{**}}
 
 %add_python() %{expand:%%define pythons %pythons %1}
 :Macros
