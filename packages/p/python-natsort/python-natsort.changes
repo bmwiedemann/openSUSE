@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  1 18:02:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.1:
+ - Use GitHub Actions instead of Travis-CI (issue #125)
+ - No longer pin testing dependencies (issue #126)
+ - Correct a minor typo 
+
+-------------------------------------------------------------------
 Tue Jan 19 20:56:40 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Set up alternatives correctly.

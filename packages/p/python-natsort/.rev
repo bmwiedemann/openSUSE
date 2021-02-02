@@ -160,4 +160,15 @@
 </comment>
     <requestid>864431</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>129bbfc1913bb532c79e64a68fa92044</srcmd5>
+    <version>7.1.1</version>
+    <time>1612272335</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.1:
+ - Use GitHub Actions instead of Travis-CI (issue #125)
+ - No longer pin testing dependencies (issue #126)
+ - Correct a minor typo</comment>
+    <requestid>868437</requestid>
+  </revision>
 </revisionlist>
