@@ -20,8 +20,9 @@
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
+%define skip_python36 1
 Name:           python-cfn-lint
-Version:        0.44.2
+Version:        0.44.5
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT

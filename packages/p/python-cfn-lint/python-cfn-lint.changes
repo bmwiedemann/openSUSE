@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  1 17:47:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.44.5:
+  - Update resource specs to `25.0.0`
+  - Add support for `AWS::SSO::PermissionSet` `InlinePolicy`
+  - Update resource specs to `24.0.0`
+  -  Update `AWS::DataBrew::Recipe.Action` `Parameters` `Type` to `Map`
+  - Fix an issue when we parse a json string in [E2507] and used the parsed
+    json to append to the location
+  - Update spec files as of 2021.01.08
+  - Update `AWS::Lambda::Function.MemorySize` to new service limits 
+  - Replace `ContentUri` to a s3 path when doing a SAM transform
+  - Add `RouteSelectionExpression` to exludes on rule 
+  - Remove newlines from parseable format messages
+
+-------------------------------------------------------------------
 Sat Jan  2 12:59:15 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.44.2
