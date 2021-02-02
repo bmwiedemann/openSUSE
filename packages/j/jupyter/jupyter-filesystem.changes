@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 31 00:32:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- BuildRequire python-rpm-macros because the definition from
+  the prjconfig introduces rich dependencies, which must be
+  overridden by the lua version.
+  gh#openSUSE/python-rpm-macros#99
+
+-------------------------------------------------------------------
 Fri Aug 23 22:34:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Have jupyterlab-filesystem provide/obsolete jupyterlab-widgets.

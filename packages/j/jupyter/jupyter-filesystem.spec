@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-filesystem
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           jupyter-filesystem
-Url:            https://jupyter.org/
+URL:            https://jupyter.org/
 Version:        20190823
 Release:        0
 %define tar_ver 1.0.0
@@ -29,6 +29,7 @@ Source0:        https://files.pythonhosted.org/packages/source/j/jupyter/jupyter
 Source10:       macros.jupyter_core
 Source11:       macros.jupyter_notebook
 Source12:       macros.jupyterlab
+BuildRequires:  python-rpm-macros
 
 %description
 This package provides common directories and macros used by many 

@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,36 +19,39 @@
 Name:           jupyter
 Version:        1.0.0
 Release:        0
-Summary:        Environment for interactive computing
+Summary:        Metapackage to install all the Jupyter components in one go
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter/jupyter-%{version}.tar.gz
 Source1:        https://buildmedia.readthedocs.org/media/pdf/jupyter/latest/jupyter.pdf
 Source2:        https://buildmedia.readthedocs.org/media/htmlzip/jupyter/latest/jupyter.zip
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module jupyter-client}
+BuildRequires:  %{python_module jupyter-core}
+BuildRequires:  %{python_module jupyter_console}
+BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module qtconsole}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-ipykernel
-BuildRequires:  jupyter-ipywidgets
-BuildRequires:  jupyter-jupyter-client
-BuildRequires:  jupyter-jupyter-core
-BuildRequires:  jupyter-jupyter_console
-BuildRequires:  jupyter-nbconvert
-BuildRequires:  jupyter-notebook
-BuildRequires:  jupyter-qtconsole
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 BuildRequires:  unzip
-Requires:       jupyter-jupyter-client
-Requires:       jupyter-jupyter-core
-Recommends:     jupyter-ipykernel
-Recommends:     jupyter-ipywidgets
-Recommends:     jupyter-jupyter_console
-Recommends:     jupyter-nbconvert
-Recommends:     jupyter-notebook
-Recommends:     jupyter-qtconsole
-Provides:       python3-jupyter = %{version}
-Obsoletes:      python3-jupyter <= %{version}
+Requires:       python-ipykernel
+Requires:       python-ipywidgets
+Requires:       python-jupyter-client
+Requires:       python-jupyter-core
+Requires:       python-jupyter_console
+Requires:       python-nbconvert
+Requires:       python-notebook
+Requires:       python-qtconsole
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       jupyter = %{version}-%{release}
+Obsoletes:      jupyter < %{version}-%{release}
+%endif
 BuildArch:      noarch
+%python_subpackages
 
 %description
 Jupyter is an environment for interactive computing in multiple languages.
@@ -62,21 +65,20 @@ This package pulls in the main Jupyter system, including the notebook,
 qtconsole, and the IPython kernel.  Additional components and kernels
 can be installed separately.
 
-%package        doc
+%package        -n jupyter-doc
 Summary:        HTML documentation for %{name}
 Group:          Development/Languages/Python
-Provides:       %{name}-doc-html = %{version}
-Provides:       %{name}-doc-pdf = %{version}
-Provides:       %{python_module %{name}-doc = %{version}}
-Provides:       %{python_module %{name}-doc-html = %{version}}
-Provides:       %{python_module %{name}-doc-pdf = %{version}}
-# Change from <= to < when (and if) there is a next release after 1.0.0
-Obsoletes:      %{name}-doc-html <= %{version}
-Obsoletes:      %{name}-doc-pdf <= %{version}
-Obsoletes:      %{python_module %{name}-doc-html <= %{version}}
-Obsoletes:      %{python_module %{name}-doc-pdf <= %{version}}
+Provides:       %{name}-doc-html = %{version}-%{release}
+Provides:       %{name}-doc-pdf = %{version}-%{release}
+Provides:       %{python_module %{name}-doc = %{version}-%{release}}
+Provides:       %{python_module %{name}-doc-html = %{version}-%{release}}
+Provides:       %{python_module %{name}-doc-pdf = %{version}-%{release}}
+Obsoletes:      %{name}-doc-html < %{version}-%{release}
+Obsoletes:      %{name}-doc-pdf < %{version}-%{release}
+Obsoletes:      %{python_module %{name}-doc-html < %{version}-%{release}}
+Obsoletes:      %{python_module %{name}-doc-pdf < %{version}-%{release}}
 
-%description    doc
+%description    -n jupyter-doc
 Documentation and help files for %{name}.
 
 %prep
@@ -86,14 +88,10 @@ mv docs/jupyter-* docs/html
 rm docs/html/.buildinfo
 
 %build
-%python3_build
+%python_build
 
 %install
-%python3_install
-
-# This is provided by jupyter_core now
-rm -f %{buildroot}%{python3_sitelib}/jupyter.py*
-rm -rf %{buildroot}%{python3_sitelib}/__pycache__/
+%python_install
 
 # Install documentation
 mkdir -p %{buildroot}%{_docdir}/%{name}
@@ -103,14 +101,18 @@ cp -r docs/html %{buildroot}%{_docdir}/%{name}/
 
 %fdupes %{buildroot}%{_docdir}/%{name}/
 
-%files
+%files %python_files
 %license LICENSE
 %doc README.md
-%{python3_sitelib}/jupyter-%{version}-py*.egg-info
+%{python_sitelib}/jupyter-%{version}*-info
+# This is provided by jupyter_core now
+%exclude %{python_sitelib}/jupyter.py*
+%pycache_only %exclude %{python_sitelib}/__pycache__/
 
-%files doc
+%files -n jupyter-doc
 %license LICENSE
 %doc README.md
+%dir %{_docdir}/%{name}/
 %{_docdir}/%{name}/html/
 %{_docdir}/%{name}/jupyter.pdf
 
