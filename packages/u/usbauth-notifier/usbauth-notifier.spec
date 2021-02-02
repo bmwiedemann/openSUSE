@@ -20,16 +20,13 @@
 
 
 Name:           usbauth-notifier
-Version:        1.0
+Version:        1.0.2
 Release:        0
 Summary:        Notifier for USB Firewall to use with desktop environments
 License:        GPL-2.0-only
 Group:          System/X11/Utilities
 URL:            https://github.com/kochstefan/usbauth-all/tree/master/usbauth-notifier
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}.tar.bz2
-
+Source0:        %{name}-%{version}.tar.xz
 Requires(pre):  permissions
 Requires:       usbauth
 BuildRequires:  gettext-runtime
@@ -44,8 +41,10 @@ BuildRequires:  pkgconfig(libudev)
 %description
 A notifier for the usbauth firewall against BadUSB attacks. The user could manually allow or deny USB devices.
 
+%lang_package
+
 %prep
-%setup -n %{name}
+%setup -q -n %{name}-%{version}
 
 %build
 autoreconf -f -i
@@ -58,23 +57,24 @@ if ! getent group usbauth-notifier>/dev/null; then groupadd -r usbauth-notifier;
 
 %install
 %make_install
+%find_lang %{name}
 
 %files
-%defattr(-,root,root)
 %doc COPYING README
 %dir /etc/xdg/autostart
 /etc/xdg/autostart/usbauth-notifier.desktop
-%verify(not mode) %attr(04750,root,usbauth) %_bindir/usbauth-npriv
-%dir %verify(not mode) %attr(00750,root,usbauth-notifier) /usr/lib/usbauth-notifier
-%verify(not mode) %attr(02755,root,usbauth) /usr/lib/usbauth-notifier/usbauth-notifier
+%verify(not mode) %attr(04750,root,usbauth) %{_libexecdir}/usbauth-npriv
+%dir %verify(not mode) %attr(00750,root,usbauth-notifier) %{_libexecdir}/usbauth-notifier
+%verify(not mode) %attr(02755,root,usbauth) %{_libexecdir}/usbauth-notifier/usbauth-notifier
 %_mandir/man1/usbauth-notifier.1*
 %_mandir/man1/usbauth-npriv.1*
-%_datadir/locale/*/LC_MESSAGES/usbauth-notifier.mo
+
+%files lang -f %{name}.lang
 
 %post
-%set_permissions %_bindir/usbauth-npriv /usr/lib/usbauth-notifier /usr/lib/usbauth-notifier/usbauth-notifier
+%set_permissions %{_libexecdir}/usbauth-npriv %{_libexecdir}/usbauth-notifier %{_libexecdir}/usbauth-notifier/usbauth-notifier
 
 %verifyscript
-%verify_permissions -e %_bindir/usbauth-npriv /usr/lib/usbauth-notifier /usr/lib/usbauth-notifier/usbauth-notifier
+%verify_permissions -e %{_libexecdir}/usbauth-npriv %{_libexecdir}/usbauth-notifier %{_libexecdir}/usbauth-notifier/usbauth-notifier
 
 %changelog

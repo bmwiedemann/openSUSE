@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 27 18:24:10 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.0.2:
+  * move usbauth-npriv from bindir to libexecdir
+  * move usbauth-notifier from libdir to libexecdir
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+- Create lang package
+
+-------------------------------------------------------------------
 Mon Feb  3 16:46:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: Allow
