@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 14 15:40:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add explicit requirement on python-rpm-macros to avoid widespread
+  breakage by package mistakenly ignoring their requirement of
+  python-rpm-macros (bsc#1180125).
+
+-------------------------------------------------------------------
 Mon Dec 21 16:29:40 CET 2020 - mls@suse.de
 
 - fix potential access of freed mem in ndb's glue code [bnc#1179416]

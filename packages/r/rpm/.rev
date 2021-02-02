@@ -2227,4 +2227,14 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- update to rpm-4.16.0</comment>
     <requestid>861385</requestid>
   </revision>
+  <revision rev="285" vrev="2">
+    <srcmd5>253033e20bd313b25a008a41815dded9</srcmd5>
+    <version>4.16.0</version>
+    <time>1612272259</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit requirement on python-rpm-macros to avoid widespread
+  breakage by package mistakenly ignoring their requirement of
+  python-rpm-macros (bsc#1180125). (forwarded request 864326 from mcepl)</comment>
+    <requestid>864328</requestid>
+  </revision>
 </revisionlist>

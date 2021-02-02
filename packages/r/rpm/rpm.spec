@@ -215,6 +215,9 @@ and requires some packages that are usually required.
 Summary:        RPM dependency generator for Python
 Group:          Development/Languages/Python
 Requires:       python3-base
+# To avoid widespread breakage by package mistakenly ignoring
+# their requirement of python-rpm-macros (bsc#1180125)
+Requires:       python-rpm-macros
 
 %description build-python
 Provides and requires generator for .py files and modules.
