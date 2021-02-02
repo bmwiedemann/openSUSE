@@ -66,4 +66,13 @@
     <comment></comment>
     <requestid>867218</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7062aeaac26bbed2f82907131fec6899</srcmd5>
+    <version>0.2</version>
+    <time>1612281274</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't enable pipefail: rpm got SIGPIPE because grep -q exits early
+  and closes the other end, which made the whole expression fail</comment>
+    <requestid>868341</requestid>
+  </revision>
 </revisionlist>

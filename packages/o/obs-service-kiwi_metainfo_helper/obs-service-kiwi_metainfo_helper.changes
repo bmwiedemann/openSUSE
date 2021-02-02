@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  1 10:29:08 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Don't enable pipefail: rpm got SIGPIPE because grep -q exits early
+  and closes the other end, which made the whole expression fail
+
+-------------------------------------------------------------------
 Wed Jan 27 11:25:26 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Read os-release from the to be installed RPMs. This avoids pulling

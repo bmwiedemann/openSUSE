@@ -1,5 +1,6 @@
 #!/bin/bash
-set -euo pipefail
+# Not using -o pipefail, as SIGPIPE is annoying to deal with
+set -eu
 shopt -s nullglob
 
 if [ "${BUILD_DIST+x}" != "x" ]; then
@@ -36,7 +37,7 @@ fi
 # Print all rpm files which contain os-release
 find_release_rpms() {
 	find ./repos -name \*-release\*.rpm | while read rpm; do
-		if rpm -qlp "${rpm}" | grep -qE "^(/etc/os-release|/usr/lib/os-release)$"; then
+		if rpm -qlp "${rpm}" | grep -qE '^(/etc/os-release|/usr/lib/os-release)$'; then
 			echo "${rpm}"
 		fi
 	done
