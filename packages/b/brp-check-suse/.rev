@@ -575,4 +575,17 @@ Lets break everything :)
   * Fix error handling of brp-25-symlink</comment>
     <requestid>852306</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e2ebf625554c15c9179af46979451a03</srcmd5>
+    <version>84.87+git20201203.5008eba</version>
+    <time>1612272258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20201203.5008eba:
+  * brp-25-symlink: Detect if a link points inside the build root
+  * brp-25-symlink: Remove unused $link part of the case statement
+  * brp-25-symlink: Print all errors before exiting
+  * Makefile: enable -O2, use standard variables and clean up
+  * simplify split_paths using std::getline</comment>
+    <requestid>863264</requestid>
+  </revision>
 </revisionlist>

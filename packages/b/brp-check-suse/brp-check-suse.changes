@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 15 09:04:13 UTC 2021 - coolo@suse.com
+
+- Update to version 84.87+git20201203.5008eba:
+  * brp-25-symlink: Detect if a link points inside the build root
+  * brp-25-symlink: Remove unused $link part of the case statement
+  * brp-25-symlink: Print all errors before exiting
+  * Makefile: enable -O2, use standard variables and clean up
+  * simplify split_paths using std::getline
+
+-------------------------------------------------------------------
 Tue Dec 01 10:11:49 UTC 2020 - coolo@suse.com
 
 - Update to version 84.87+git20201201.9bbfade:
