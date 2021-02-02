@@ -37,7 +37,7 @@ Source:         https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210127.3a18043
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -97,7 +97,7 @@ export PATH="$(pwd)/isort-test-%{$python_bin_suffix}/usr/bin:$ORIGPATH"
 export PYTHONPATH="$(pwd)/isort-test-%{$python_bin_suffix}%{$python_sitelib}"
 export PYTHONDONTWRITEBYTECODE=1
 
-for proj in isort-%{version}-py3-none-any.whl ./example_shared_isort_profile ./example_isort_formatting_plugin; do
+for proj in build/isort-%{version}-py3-none-any.whl ./example_shared_isort_profile ./example_isort_formatting_plugin; do
   $python -m pip install --verbose \
                          --no-index \
                          --root $(pwd)/isort-test-%{$python_bin_suffix} \
