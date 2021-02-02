@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jan 28 01:09:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to Version 3.5.3
+  * Handle large number of hosted zones in route53 provider 
+- Changelog for 3.5.2
+  * Fix domains in "lock" state with joker provider
+- Changelog for 3.5.1
+  * Add the Joker.com provider
+  * Add environment variable TLDEXTRACT_CACHE_PATH to configure a 
+    tldextract cache custom location for Lexicon
+  * Old environment variable TLDEXTRACT_CACHE_FILE is deprecated 
+    and will be removed in a future release
+- Changelog for 3.5.0
+  * Avoid installation problems with setuptools==50
+  * Migrating codebase to Python 3.6+ specific features (Lexicon
+    will explicitly break on older versions now)
+  * Fix Easyname provider to work with their new website
+- Changelog for 3.4.5
+  * Add pagination support to Google Cloud DNS provider (#577)
+  * Add official support to Python 3.9
+  * Add SSHFP record support to CloudFlare provider (library only)
+    (#612)
+- Changelog for 3.4.4
+  * Fix Gandi provider to use the new LiveDNS API URL
+- Changelog for 3.4.3
+  * Improve versions constraints by declaring latest major versions
+    known to work with Lexicon
+- Changelog for 3.4.2
+  * Relax versions constraints on Lexicon dependencies until there 
+    is a real need. 
+- Changelog for 3.4.1
+  * Add the Njalla provider
+- Changelog for 3.4.0
+  * Use poetry to manage dependencies, build and package Lexicon.
+  * The beautifulsoup4 dependency has been integrated to the core 
+    ones for generic purpose. As a consequence henet, easyname and
+    gratisdns providers do not have optional dependencies anymore.
+  * Remove support for Python 2.7.
+  * Remove support for Python 3.5.
+  * Remove the extra security from requests dependency which does 
+    not make sense anymore on recent versions of Python.
+- Changelog for 3.3.28
+  * Fix localzone provider to make it work with dnspython 2.x.
+  * Update easyname provider against the recent API changes.
+
+-------------------------------------------------------------------
 Wed Jul  8 04:43:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.3.26:
@@ -14,6 +60,7 @@ Wed Jul  8 04:43:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Use Bearer Token Authorization for Cloudflare API Tokens
   * Remove Hetzner KonsoleH provider that is broken and not maintained
   * Implement pagination for cloudflare 
+- add remove-mock.patch gh#AnalogJ/lexicon#706
 
 -------------------------------------------------------------------
 Tue May 26 07:22:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

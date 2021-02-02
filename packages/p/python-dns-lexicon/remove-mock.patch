@@ -1,0 +1,26 @@
+Index: lexicon-3.5.3/lexicon/tests/test_library.py
+===================================================================
+--- lexicon-3.5.3.orig/lexicon/tests/test_library.py
++++ lexicon-3.5.3/lexicon/tests/test_library.py
+@@ -12,7 +12,7 @@ import importlib
+ import pkgutil
+ from types import ModuleType
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from lexicon.config import ConfigResolver
+Index: lexicon-3.5.3/lexicon/tests/providers/test_auto.py
+===================================================================
+--- lexicon-3.5.3.orig/lexicon/tests/providers/test_auto.py
++++ lexicon-3.5.3/lexicon/tests/providers/test_auto.py
+@@ -2,7 +2,7 @@
+ import socket
+ from unittest import TestCase
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from lexicon.providers.auto import _get_ns_records_domains_for_domain

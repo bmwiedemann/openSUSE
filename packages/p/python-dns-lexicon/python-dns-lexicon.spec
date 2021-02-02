@@ -1,7 +1,7 @@
 #
 # spec file for package python-dns-lexicon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,50 +19,58 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dns-lexicon
-Version:        3.3.26
+Version:        3.5.3
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT
 URL:            https://github.com/AnalogJ/lexicon
 Source0:        https://github.com/AnalogJ/lexicon/archive/v%{version}.tar.gz#/lexicon-%{version}.tar.gz
-BuildRequires:  %{python_module PyNamecheap}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module boto3}
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module dnspython >= 1.15.0}
-BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module html5lib}
-BuildRequires:  %{python_module localzone}
-BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module pytest >= 3.8.0}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module softlayer}
-BuildRequires:  %{python_module tldextract}
-BuildRequires:  %{python_module transip >= 0.3.0}
-BuildRequires:  %{python_module vcrpy >= 1.13.0}
-BuildRequires:  %{python_module xmltodict}
-BuildRequires:  %{python_module zeep}
+# PATCH-FIX-UPSTREAM remove-mock.patch gh#AnalogJ/lexicon#706
+Patch0:         remove-mock.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyNamecheap
+# SECTION Python build system requirements
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module setuptools}
+# /SECTION
+# SECTION poetry.dependencies
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module tldextract}
+# /SECTION
+# SECTION extras
+BuildRequires:  %{python_module PyNamecheap}
+BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module localzone}
+BuildRequires:  %{python_module softlayer => 5}
+BuildRequires:  %{python_module transip >= 2}
+BuildRequires:  %{python_module xmltodict}
+BuildRequires:  %{python_module zeep}
+# /section
+# SECTION test dependencies
+BuildRequires:  %{python_module pytest >= 3.8.0}
+BuildRequires:  %{python_module vcrpy >= 1.13.0}
+# /SECTION
 Requires:       python-PyYAML
 Requires:       python-beautifulsoup4
-Requires:       python-boto3
 Requires:       python-cryptography
-Requires:       python-dnspython >= 1.15.0
 Requires:       python-future
-Requires:       python-localzone
 Requires:       python-requests
-Requires:       python-setuptools
-Requires:       python-softlayer
 Requires:       python-tldextract
-Requires:       python-transip >= 0.3.0
 Requires:       python-vcrpy
-Requires:       python-xmltodict
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python-PyNamecheap
+Recommends:     python-boto3
+Recommends:     python-localzone
+Recommends:     python-softlayer >= 5
+Recommends:     python-transip >= 2
+Recommends:     python-xmltodict
+Recommends:     python-zeep
 # Completely different pkg but same namespace
 Conflicts:      python-lexicon
 BuildArch:      noarch
@@ -76,26 +84,21 @@ Python library.
 Lexicon was designed to be used in automation, specifically letsencrypt.
 
 %prep
-%setup -q -n lexicon-%{version}
-# Remove, since they are completely broken
-rm lexicon/tests/providers/test_auto.py
-
+%autosetup -p1 -n lexicon-%{version}
 # rpmlint
 find . -type f -name ".gitignore" -delete
 
 %build
-%python_build
-
-# rpmlint
-find . -type f -name ".buildinfo" -delete
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/lexicon
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest lexicon/tests
+# test_auto does not work inside OBS
+%pytest lexicon/tests --ignore lexicon/tests/providers/test_auto.py
 
 %post
 %python_install_alternative lexicon
@@ -104,9 +107,10 @@ find . -type f -name ".buildinfo" -delete
 %python_uninstall_alternative lexicon
 
 %files %{python_files}
-%{python_sitelib}
 %license LICENSE
-%doc README.md
+%doc README.rst
 %python_alternative %{_bindir}/lexicon
+%{python_sitelib}/lexicon
+%{python_sitelib}/dns_lexicon-%{version}*-info
 
 %changelog
