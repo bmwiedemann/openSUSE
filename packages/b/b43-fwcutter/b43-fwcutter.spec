@@ -1,7 +1,7 @@
 #
 # spec file for package b43-fwcutter
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Tool for extracting firmware from newer Broadcom WLAN drivers
 License:        BSD-2-Clause
 Group:          Hardware/Wifi
-Url:            http://linuxwireless.org/en/users/Drivers/b43
+URL:            http://linuxwireless.org/en/users/Drivers/b43
 Source:         http://bues.ch/b43/fwcutter/%{name}-%{version}.tar.bz2
 Source1:        install_bcm43xx_firmware
 Requires:       curl
@@ -70,15 +70,16 @@ mkdir -p %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_sbindir}/
 install -m 755 b43-fwcutter %{buildroot}%{_bindir}/
 install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/
-mkdir -p %{buildroot}/lib/firmware/b43/
-mkdir -p %{buildroot}/lib/firmware/b43legacy/
+sed -i -e 's,/lib/firmware,%{_firmwaredir},' %{buildroot}%{_sbindir}/install_bcm43xx_firmware
+mkdir -p %{buildroot}%{_firmwaredir}/b43/
+mkdir -p %{buildroot}%{_firmwaredir}/b43legacy/
 for i in a0g0bsinitvals5.fw a0g0bsinitvals9.fw a0g0initvals5.fw a0g0initvals9.fw a0g1bsinitvals13.fw a0g1bsinitvals5.fw a0g1bsinitvals9.fw a0g1initvals13.fw a0g1initvals5.fw a0g1initvals9.fw b0g0bsinitvals13.fw b0g0bsinitvals5.fw b0g0bsinitvals9.fw b0g0initvals13.fw b0g0initvals5.fw b0g0initvals9.fw lp0bsinitvals13.fw lp0bsinitvals14.fw lp0bsinitvals15.fw lp0bsinitvals16.fw lp0initvals13.fw lp0initvals14.fw lp0initvals15.fw lp0initvals16.fw n0absinitvals11.fw n0bsinitvals11.fw n0bsinitvals16.fw n0initvals11.fw n0initvals16.fw pcm5.fw sslpn0bsinitvals16.fw sslpn0initvals16.fw sslpn1bsinitvals20.fw sslpn1initvals20.fw sslpn2bsinitvals17.fw sslpn2bsinitvals19.fw sslpn2initvals17.fw sslpn2initvals19.fw sslpn4bsinitvals22.fw sslpn4initvals22.fw ucode11.fw ucode13.fw ucode14.fw ucode15.fw ucode16_lp.fw ucode16_mimo.fw ucode16_sslpn.fw ucode16_sslpn_nobt.fw ucode17.fw ucode19.fw ucode20.fw ucode22_sslpn.fw ucode5.fw ucode9.fw
 do
-     touch %{buildroot}/lib/firmware/b43/$i
+     touch %{buildroot}%{_firmwaredir}/b43/$i
 done
 for j in a0g0bsinitvals2.fw a0g0bsinitvals5.fw a0g0initvals2.fw a0g0initvals5.fw a0g1bsinitvals5.fw a0g1initvals5.fw b0g0bsinitvals2.fw b0g0bsinitvals5.fw b0g0initvals2.fw b0g0initvals5.fw pcm4.fw pcm5.fw ucode11.fw ucode2.fw ucode4.fw ucode5.fw
 do
-     touch %{buildroot}/lib/firmware/b43legacy/$j
+     touch %{buildroot}%{_firmwaredir}/b43legacy/$j
 done
 
 %files
@@ -88,79 +89,79 @@ done
 %{_sbindir}/install_bcm43xx_firmware
 #%{_mandir}/man1/b43-fwcutter.1.gz
 #/usr/man/man1/b43-fwcutter.1.gz
-%dir /lib/firmware/b43
-%dir /lib/firmware/b43legacy
+%dir %{_firmwaredir}/b43
+%dir %{_firmwaredir}/b43legacy
 # ghost b43 firmware
-%ghost /lib/firmware/b43/a0g0bsinitvals5.fw
-%ghost /lib/firmware/b43/a0g0bsinitvals9.fw
-%ghost /lib/firmware/b43/a0g0initvals5.fw
-%ghost /lib/firmware/b43/a0g0initvals9.fw
-%ghost /lib/firmware/b43/a0g1bsinitvals13.fw
-%ghost /lib/firmware/b43/a0g1bsinitvals5.fw
-%ghost /lib/firmware/b43/a0g1bsinitvals9.fw
-%ghost /lib/firmware/b43/a0g1initvals13.fw
-%ghost /lib/firmware/b43/a0g1initvals5.fw
-%ghost /lib/firmware/b43/a0g1initvals9.fw
-%ghost /lib/firmware/b43/b0g0bsinitvals13.fw
-%ghost /lib/firmware/b43/b0g0bsinitvals5.fw
-%ghost /lib/firmware/b43/b0g0bsinitvals9.fw
-%ghost /lib/firmware/b43/b0g0initvals13.fw
-%ghost /lib/firmware/b43/b0g0initvals5.fw
-%ghost /lib/firmware/b43/b0g0initvals9.fw
-%ghost /lib/firmware/b43/lp0bsinitvals13.fw
-%ghost /lib/firmware/b43/lp0bsinitvals14.fw
-%ghost /lib/firmware/b43/lp0bsinitvals15.fw
-%ghost /lib/firmware/b43/lp0bsinitvals16.fw
-%ghost /lib/firmware/b43/lp0initvals13.fw
-%ghost /lib/firmware/b43/lp0initvals14.fw
-%ghost /lib/firmware/b43/lp0initvals15.fw
-%ghost /lib/firmware/b43/lp0initvals16.fw
-%ghost /lib/firmware/b43/n0absinitvals11.fw
-%ghost /lib/firmware/b43/n0bsinitvals11.fw
-%ghost /lib/firmware/b43/n0bsinitvals16.fw
-%ghost /lib/firmware/b43/n0initvals11.fw
-%ghost /lib/firmware/b43/n0initvals16.fw
-%ghost /lib/firmware/b43/pcm5.fw
-%ghost /lib/firmware/b43/sslpn0bsinitvals16.fw
-%ghost /lib/firmware/b43/sslpn0initvals16.fw
-%ghost /lib/firmware/b43/sslpn1bsinitvals20.fw
-%ghost /lib/firmware/b43/sslpn1initvals20.fw
-%ghost /lib/firmware/b43/sslpn2bsinitvals17.fw
-%ghost /lib/firmware/b43/sslpn2bsinitvals19.fw
-%ghost /lib/firmware/b43/sslpn2initvals17.fw
-%ghost /lib/firmware/b43/sslpn2initvals19.fw
-%ghost /lib/firmware/b43/sslpn4bsinitvals22.fw
-%ghost /lib/firmware/b43/sslpn4initvals22.fw
-%ghost /lib/firmware/b43/ucode11.fw
-%ghost /lib/firmware/b43/ucode13.fw
-%ghost /lib/firmware/b43/ucode14.fw
-%ghost /lib/firmware/b43/ucode15.fw
-%ghost /lib/firmware/b43/ucode16_lp.fw
-%ghost /lib/firmware/b43/ucode16_mimo.fw
-%ghost /lib/firmware/b43/ucode16_sslpn.fw
-%ghost /lib/firmware/b43/ucode16_sslpn_nobt.fw
-%ghost /lib/firmware/b43/ucode17.fw
-%ghost /lib/firmware/b43/ucode19.fw
-%ghost /lib/firmware/b43/ucode20.fw
-%ghost /lib/firmware/b43/ucode22_sslpn.fw
-%ghost /lib/firmware/b43/ucode5.fw
-%ghost /lib/firmware/b43/ucode9.fw
+%ghost %{_firmwaredir}/b43/a0g0bsinitvals5.fw
+%ghost %{_firmwaredir}/b43/a0g0bsinitvals9.fw
+%ghost %{_firmwaredir}/b43/a0g0initvals5.fw
+%ghost %{_firmwaredir}/b43/a0g0initvals9.fw
+%ghost %{_firmwaredir}/b43/a0g1bsinitvals13.fw
+%ghost %{_firmwaredir}/b43/a0g1bsinitvals5.fw
+%ghost %{_firmwaredir}/b43/a0g1bsinitvals9.fw
+%ghost %{_firmwaredir}/b43/a0g1initvals13.fw
+%ghost %{_firmwaredir}/b43/a0g1initvals5.fw
+%ghost %{_firmwaredir}/b43/a0g1initvals9.fw
+%ghost %{_firmwaredir}/b43/b0g0bsinitvals13.fw
+%ghost %{_firmwaredir}/b43/b0g0bsinitvals5.fw
+%ghost %{_firmwaredir}/b43/b0g0bsinitvals9.fw
+%ghost %{_firmwaredir}/b43/b0g0initvals13.fw
+%ghost %{_firmwaredir}/b43/b0g0initvals5.fw
+%ghost %{_firmwaredir}/b43/b0g0initvals9.fw
+%ghost %{_firmwaredir}/b43/lp0bsinitvals13.fw
+%ghost %{_firmwaredir}/b43/lp0bsinitvals14.fw
+%ghost %{_firmwaredir}/b43/lp0bsinitvals15.fw
+%ghost %{_firmwaredir}/b43/lp0bsinitvals16.fw
+%ghost %{_firmwaredir}/b43/lp0initvals13.fw
+%ghost %{_firmwaredir}/b43/lp0initvals14.fw
+%ghost %{_firmwaredir}/b43/lp0initvals15.fw
+%ghost %{_firmwaredir}/b43/lp0initvals16.fw
+%ghost %{_firmwaredir}/b43/n0absinitvals11.fw
+%ghost %{_firmwaredir}/b43/n0bsinitvals11.fw
+%ghost %{_firmwaredir}/b43/n0bsinitvals16.fw
+%ghost %{_firmwaredir}/b43/n0initvals11.fw
+%ghost %{_firmwaredir}/b43/n0initvals16.fw
+%ghost %{_firmwaredir}/b43/pcm5.fw
+%ghost %{_firmwaredir}/b43/sslpn0bsinitvals16.fw
+%ghost %{_firmwaredir}/b43/sslpn0initvals16.fw
+%ghost %{_firmwaredir}/b43/sslpn1bsinitvals20.fw
+%ghost %{_firmwaredir}/b43/sslpn1initvals20.fw
+%ghost %{_firmwaredir}/b43/sslpn2bsinitvals17.fw
+%ghost %{_firmwaredir}/b43/sslpn2bsinitvals19.fw
+%ghost %{_firmwaredir}/b43/sslpn2initvals17.fw
+%ghost %{_firmwaredir}/b43/sslpn2initvals19.fw
+%ghost %{_firmwaredir}/b43/sslpn4bsinitvals22.fw
+%ghost %{_firmwaredir}/b43/sslpn4initvals22.fw
+%ghost %{_firmwaredir}/b43/ucode11.fw
+%ghost %{_firmwaredir}/b43/ucode13.fw
+%ghost %{_firmwaredir}/b43/ucode14.fw
+%ghost %{_firmwaredir}/b43/ucode15.fw
+%ghost %{_firmwaredir}/b43/ucode16_lp.fw
+%ghost %{_firmwaredir}/b43/ucode16_mimo.fw
+%ghost %{_firmwaredir}/b43/ucode16_sslpn.fw
+%ghost %{_firmwaredir}/b43/ucode16_sslpn_nobt.fw
+%ghost %{_firmwaredir}/b43/ucode17.fw
+%ghost %{_firmwaredir}/b43/ucode19.fw
+%ghost %{_firmwaredir}/b43/ucode20.fw
+%ghost %{_firmwaredir}/b43/ucode22_sslpn.fw
+%ghost %{_firmwaredir}/b43/ucode5.fw
+%ghost %{_firmwaredir}/b43/ucode9.fw
 # ghost b43legacy firmware
-%ghost /lib/firmware/b43legacy/a0g0bsinitvals2.fw
-%ghost /lib/firmware/b43legacy/a0g0bsinitvals5.fw
-%ghost /lib/firmware/b43legacy/a0g0initvals2.fw
-%ghost /lib/firmware/b43legacy/a0g0initvals5.fw
-%ghost /lib/firmware/b43legacy/a0g1bsinitvals5.fw
-%ghost /lib/firmware/b43legacy/a0g1initvals5.fw
-%ghost /lib/firmware/b43legacy/b0g0bsinitvals2.fw
-%ghost /lib/firmware/b43legacy/b0g0bsinitvals5.fw
-%ghost /lib/firmware/b43legacy/b0g0initvals2.fw
-%ghost /lib/firmware/b43legacy/b0g0initvals5.fw
-%ghost /lib/firmware/b43legacy/pcm4.fw
-%ghost /lib/firmware/b43legacy/pcm5.fw
-%ghost /lib/firmware/b43legacy/ucode11.fw
-%ghost /lib/firmware/b43legacy/ucode2.fw
-%ghost /lib/firmware/b43legacy/ucode4.fw
-%ghost /lib/firmware/b43legacy/ucode5.fw
+%ghost %{_firmwaredir}/b43legacy/a0g0bsinitvals2.fw
+%ghost %{_firmwaredir}/b43legacy/a0g0bsinitvals5.fw
+%ghost %{_firmwaredir}/b43legacy/a0g0initvals2.fw
+%ghost %{_firmwaredir}/b43legacy/a0g0initvals5.fw
+%ghost %{_firmwaredir}/b43legacy/a0g1bsinitvals5.fw
+%ghost %{_firmwaredir}/b43legacy/a0g1initvals5.fw
+%ghost %{_firmwaredir}/b43legacy/b0g0bsinitvals2.fw
+%ghost %{_firmwaredir}/b43legacy/b0g0bsinitvals5.fw
+%ghost %{_firmwaredir}/b43legacy/b0g0initvals2.fw
+%ghost %{_firmwaredir}/b43legacy/b0g0initvals5.fw
+%ghost %{_firmwaredir}/b43legacy/pcm4.fw
+%ghost %{_firmwaredir}/b43legacy/pcm5.fw
+%ghost %{_firmwaredir}/b43legacy/ucode11.fw
+%ghost %{_firmwaredir}/b43legacy/ucode2.fw
+%ghost %{_firmwaredir}/b43legacy/ucode4.fw
+%ghost %{_firmwaredir}/b43legacy/ucode5.fw
 
 %changelog
