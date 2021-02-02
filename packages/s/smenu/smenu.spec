@@ -1,8 +1,7 @@
 #
 # spec file for package smenu
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) Pierre Gentile <p.gen.progs@gmail.com>
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +17,7 @@
 
 
 Name:           smenu
-Version:        0.9.16
+Version:        0.9.17
 Release:        0
 Summary:        A standard input word picker
 License:        GPL-2.0-only
@@ -43,6 +42,7 @@ make %{?_smp_mflags}
 %package tests
 Summary:        Testing system for %{name}
 Group:          Productivity/Text/Utilities
+Requires:       smenu
 
 %description tests
 This packages contains some scripts and a number of tests to check the
