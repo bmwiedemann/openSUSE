@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distributed%{psuffix}
-Version:        2020.12.0
+Version:        2021.1.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -35,8 +35,6 @@ URL:            https://distributed.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/d/distributed/distributed-%{version}.tar.gz
 Source99:       python-distributed-rpmlintrc
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module joblib >= 0.10.2}
-BuildRequires:  %{python_module scikit-learn >= 0.17.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,11 +42,9 @@ Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 1.5.0
-Requires:       python-dask >= 2020.12.0
-Requires:       python-joblib >= 0.10.2
+Requires:       python-dask >= 2021.1.1
 Requires:       python-msgpack
 Requires:       python-psutil >= 5.0
-Requires:       python-scikit-learn >= 0.17.1
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.8.2
@@ -102,6 +98,8 @@ clusters.
 
 %prep
 %setup -q -n distributed-%{version}
+# gh#dask/distributed#4467
+sed -i 's/raise pytest.skip(reason=/raise pytest.skip(/' distributed/tests/test_core.py
 
 %build
 %if ! %{with test}
@@ -121,8 +119,6 @@ clusters.
 %check
 # add fail and error summaries to pytest report, but xfail is not interesting
 sed -i '/pytest/,/addopts/ s/-rsx/-rfEs/' setup.cfg
-# All tests in test_core.py need network connection
-ignoretestfiles="--ignore distributed/tests/test_core.py"
 # many tests from multiple files are broken by new pytest-asyncio (see https://github.com/dask/distributed/pull/4212 for explanation)
 # as a proof build it with old pytest-asyncio and see these tests pass
 donttest+=" or (test_asyncprocess and test_child_main_thread)"
@@ -137,6 +133,8 @@ donttest+=" or (test_client and test_bad_tasks_fail)"
 donttest+=" or (test_client and test_cleanup_after_broken_client_connection)"
 donttest+=" or (test_client and test_futures_in_subgraphs)"
 donttest+=" or (test_client and test_get_client)"
+donttest+=" or (test_client and test_logs)"
+donttest+=" or (test_client and test_lose_scattered_data)"
 donttest+=" or (test_client and test_open_close_many_workers)"
 donttest+=" or (test_client and test_performance_report)"
 donttest+=" or (test_client and test_profile_server)"
@@ -153,6 +151,7 @@ donttest+=" or (test_collections and test_sparse_arrays)"
 donttest+=" or (test_diskutils and test_workspace_concurrency_intense)"
 donttest+=" or (test_diskutils and test_workspace_concurrency)"
 donttest+=" or (test_events and test_event_on_workers)"
+donttest+=" or (test_events and test_set_not_set_many_events)"
 donttest+=" or (test_events and test_two_events_on_workers)"
 donttest+=" or (test_failed_workers and test_broken_worker_during_computation)"
 donttest+=" or (test_failed_workers and test_fast_kill)"
@@ -160,6 +159,7 @@ donttest+=" or (test_failed_workers and test_gather_then_submit_after_failed_wor
 donttest+=" or (test_failed_workers and test_restart_during_computation)"
 donttest+=" or (test_failed_workers and test_restart_fast)"
 donttest+=" or (test_failed_workers and test_restart_scheduler)"
+donttest+=" or (test_failed_workers and test_restart)"
 donttest+=" or (test_failed_workers and test_worker_who_has_clears_after_failed_connection)"
 donttest+=" or (test_locks and test_lock)"
 donttest+=" or (test_locks and test_serializable)"
@@ -169,33 +169,49 @@ donttest+=" or (test_nanny and test_nanny)"
 donttest+=" or (test_nanny and test_num_fds)"
 donttest+=" or (test_preload and test_web_preload)"
 donttest+=" or (test_profile and test_watch)"
+donttest+=" or (test_publish and test_publish_simple)"
 donttest+=" or (test_queues and test_2220)"
 donttest+=" or (test_resources and test_prefer_constrained)"
 donttest+=" or (test_scheduler and test_balance_many_workers_2)"
+donttest+=" or (test_scheduler and test_balance_many_workers)"
 donttest+=" or (test_scheduler and test_bandwidth_clear)"
+donttest+=" or (test_scheduler and test_file_descriptors)"
+donttest+=" or (test_scheduler and test_gather_allow_worker_reconnect)"
 donttest+=" or (test_scheduler and test_idle_timeout)"
+donttest+=" or (test_scheduler and test_include_communication_in_occupancy)"
 donttest+=" or (test_scheduler and test_log_tasks_during_restart)"
 donttest+=" or (test_scheduler and test_restart)"
+donttest+=" or (test_scheduler and test_steal_when_more_tasks)"
 donttest+=" or (test_scheduler and test_task_groups)"
+donttest+=" or (test_semaphor and test_getvalue)"
 donttest+=" or (test_semaphore and test_access_semaphore_by_name)"
 donttest+=" or (test_semaphore and test_close_async)"
 donttest+=" or (test_semaphore and test_oversubscribing_leases)"
+donttest+=" or (test_semaphore and test_release_failure)"
 donttest+=" or (test_semaphore and test_release_once_too_many_resilience)"
 donttest+=" or (test_semaphore and test_release_simple)"
+donttest+=" or (test_semaphore and test_threadpoolworkers_pick_correct_ioloop)"
 donttest+=" or (test_sparse_arrays and concurrent)"
 donttest+=" or (test_spec and test_address_default_none)"
 donttest+=" or (test_spec and test_child_address_persists)"
 donttest+=" or (test_steal and test_balance)"
 donttest+=" or (test_steal and test_dont_steal_already_released)"
+donttest+=" or (test_steal and test_dont_steal_fast_tasks_compute_time)"
+donttest+=" or (test_steal and test_dont_steal_few_saturated_tasks_many_workers)"
+donttest+=" or (test_steal and test_eventually_steal_unknown_functions)"
 donttest+=" or (test_steal and test_restart)"
 donttest+=" or (test_steal and test_steal_more_attractive_tasks)"
 donttest+=" or (test_steal and test_steal_twice)"
-donttest+=" or (test_scheduler and test_steal_when_more_tasks)"
+donttest+=" or (test_steal and test_worksteal_many_thieves)"
+donttest+=" or (test_stress and test_cancel_stress)"
 donttest+=" or (test_stress and test_close_connections)"
+donttest+=" or (test_tls_functional and test_retire_workers)"
 donttest+=" or (test_tls_functional and test_worker_client)"
 donttest+=" or (test_worker and test_dont_overlap_communications_to_same_worker)"
 donttest+=" or (test_worker and test_get_client)"
+donttest+=" or (test_worker and test_lifetime)"
 donttest+=" or (test_worker and test_robust_to_bad_sizeof_estimates)"
+donttest+=" or (test_worker and test_share_communication)"
 donttest+=" or (test_worker and test_statistical_profiling_2)"
 donttest+=" or (test_worker and test_stop_doing_unnecessary_work)"
 donttest+=" or (test_worker and test_wait_for_outgoing)"
@@ -212,13 +228,9 @@ donttest+=" or (test_worker_client and test_submit_from_worker)"
 donttest+=" or test_metrics"
 # randomly fails
 donttest+=" or (test_worker and test_fail_write_to_disk)"
-# version mismatch
+# false version mismatch
 donttest+=" or test_version_warning_in_cluster"
-%{pytest_arch distributed/tests/ \
-    $ignoretestfiles\
-    -k "not (${donttest:4})"\
-    -m "not avoid_travis" -n auto
-}
+%pytest_arch distributed/tests/ -k "not (${donttest:4})" -m "not avoid_travis" -n auto
 %endif
 
 %if ! %{with test}

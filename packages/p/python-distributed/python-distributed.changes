@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Jan 28 12:31:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.1.1
+  * Make system monitor interval configurable (GH#4447) Matthew 
+    Rocklin
+  * Add uvloop config value (GH#4448) Matthew Rocklin
+  * Additional optimizations to stealing (GH#4445) jakirkham
+  * Give clusters names (GH#4426) Jacob Tomlinson
+  * Use worker comm pool in Semaphore (GH#4195) Florian Jetter
+  * Set runspec on all new tasks to avoid deadlocks (GH#4432) 
+    Florian Jetter
+  * Support TaskState objects in story methods (GH#4434) Matthew 
+    Rocklin
+  * Support missing event loop in Client.asynchronous (GH#4436) 
+    Matthew Rocklin
+  * Don’t require network to inspect tests (GH#4433) Matthew 
+    Rocklin
+- Changelog for 2021.1.0
+  * Add time started to scheduler info (GH#4425) Jacob Tomlinson
+  * Log adaptive error (GH#4422) Jacob Tomlinson
+  * Xfail normalization tests (GH#4411) Jacob Tomlinson
+  * Use dumps_msgpack and loads_msgpack when packing high level 
+    graphs (GH#4409) Mads R. B. Kristensen
+  * Add nprocs auto option to dask-worker CLI (GH#4377) Jacob 
+    Tomlinson
+  * Type annotation of _reevaluate_occupancy_worker (GH#4398) 
+    jakirkham
+  * Type TaskGroup in active_states (GH#4408) jakirkham
+  * Fix test_as_current_is_thread_local (GH#4402) jakirkham
+  * Use list comprehensions to bind TaskGroup type (GH#4401) 
+    jakirkham
+  * Make tests pass after 2028 (GH#4403) Bernhard M. Wiedemann
+  * Fix compilation warnings, decide_worker now a C func, stealing 
+    improvements (GH#4375) jakirkham
+  * Drop custom __eq__ from Status (GH#4270) jakirkham
+  * test_performance_report: skip without bokeh (GH#4388) Bruno 
+    Pagani
+  * Nanny now respects dask settings from ctx mgr (GH#4378) 
+    Florian Jetter
+  * Better task duration estimates for outliers (GH#4213) selshowk
+  * Dask internal inherit config (GH#4364) Jacob Tomlinson
+  * Provide setup.py option to profile Cython code (GH#4362) 
+    jakirkham
+  * Optimizations of *State and Task* objects and stealing 
+    (GH#4358) jakirkham
+  * Cast SortedDict s to dict s in a few key places & other minor 
+    changes (GH#4355) jakirkham
+  * Use task annotation priorities for user-level priorities 
+    (GH#4354) James Bourbeau
+  * Added docs to highlevelgraph pack/unpack (GH#4352) Mads R. B. 
+    Kristensen
+  * Optimizations in notable functions used by transitions 
+    (GH#4351) jakirkham
+  * Silence exception when releasing futures on process shutdown 
+    (GH#4309) Benjamin Zaitlen
+- Deboard blind passenger requirement: scikit-build is only
+  available for Python > 3.6 (because of SciPy) and not needed here
+
+-------------------------------------------------------------------
 Sat Jan  9 23:23:31 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 2020.12.0
