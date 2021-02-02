@@ -1,7 +1,7 @@
 From c87044b9007fa5f6331206b5edd9f7b6bfde4cef Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Fri, 22 Jan 2021 09:35:47 +0100
-Subject: [PATCH 11/11] Remove not required bcrypt_pbkdf gem
+Subject: [PATCH 11/12] Remove not required bcrypt_pbkdf gem
 
 This gem is no longer required by vagrant and was forgotten to get removed.
 

@@ -1,7 +1,7 @@
 From 25b740d34eac7a430f248711ac6b97caadeecac1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Fri, 4 Dec 2020 14:54:50 +0100
-Subject: [PATCH 10/11] Update rake to ~> 13.0
+Subject: [PATCH 10/12] Update rake to ~> 13.0
 
 (cherry picked from commit 1916f69425f8a0f86e3d7249a25a116c5cf2a771)
 ---

@@ -61,6 +61,8 @@ Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Update-rake-to-13.0.patch
 # https://github.com/hashicorp/vagrant/pull/12147
 Patch11:        0011-Remove-not-required-bcrypt_pbkdf-gem.patch
+# https://github.com/hashicorp/vagrant/pull/12148
+Patch12:        0012-Bump-listen-gem-version-and-remove-ruby_dep.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -97,8 +99,9 @@ BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 BuildRequires:  %{rubygem erubi }
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
-#  s.add_dependency "listen", "~> 3.1"
-BuildRequires:  %{rubygem listen:3 >= 3.1 }
+# PATCHED
+#  s.add_dependency "listen", "~> 3.4"
+BuildRequires:  %{rubygem listen:3 >= 3.4 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
@@ -135,15 +138,13 @@ BuildRequires:  %{rubygem rake:13 }
 BuildRequires:  %{rubygem rspec:3.5 }
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
 BuildRequires:  %{rubygem rspec-its:1.3 }
-#  s.add_dependency "ruby_dep", "<= 1.3.1"
-BuildRequires:  %{rubygem ruby_dep <= 1.3.1 }
 #  s.add_development_dependency "webmock", "~> 2.3.1"
 BuildRequires:  %{rubygem webmock:2.3 >= 2.3.1 }
 #  s.add_development_dependency "fake_ftp", "~> 0.1.1"
 BuildRequires:  %{rubygem fake_ftp:0.1 >= 0.1.1 }
 
 # Prevent have choice for rubygem(ruby:2.7.0:listen:3) >= 3.1
-BuildRequires:  %{rubygem listen:3.1}
+BuildRequires:  %{rubygem listen:3.4}
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }
 # Prevent have choice for rubygem(ruby:2.6.0:builder) >= 2.1.2
@@ -186,8 +187,9 @@ Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 Requires:       %{rubygem erubi}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
-#  s.add_dependency "listen", "~> 3.1"
-Requires:       %{rubygem listen:3 >= 3.1}
+# PATCHED
+#  s.add_dependency "listen", "~> 3.4"
+Requires:       %{rubygem listen:3 >= 3.4}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
@@ -215,8 +217,6 @@ Requires:       %{rubygem winrm-fs:1 >= 1.3.4}
 Requires:       %{rubygem winrm-elevated:1 >= 1.2.1}
 #  s.add_dependency "vagrant_cloud", "~> 3.0.2"
 Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.2}
-#  s.add_dependency "ruby_dep", "<= 1.3.1"
-Requires:       %{rubygem ruby_dep <= 1.3.1 }
 
 
 Requires:       bsdtar
