@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  1 17:43:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.1:
+  * Deprecate running tests with python setup.py tests as the test suite
+    support in Setuptools is deprecated
+  *  Add version to __init__.py
+  * Cleaner reading of README.rst into the long_description field of setup.py
+  * Define long_description_content_type as text/x-rst
+  * Simplify Sphinx configuration
+  * Add compat.is_string method, returns True for str, unicode types, False
+    otherwise, used to fix 28 
+  
+-------------------------------------------------------------------
 Sun Dec 20 09:47:26 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.1.0:

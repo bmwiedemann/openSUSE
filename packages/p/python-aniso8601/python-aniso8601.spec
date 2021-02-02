@@ -1,7 +1,7 @@
 #
 # spec file for package python-aniso8601
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modname aniso8601
 %bcond_without python2
 Name:           python-%{modname}
-Version:        8.1.0
+Version:        8.1.1
 Release:        0
 Summary:        A library for parsing ISO 8601 strings
 License:        BSD-3-Clause
