@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2020.12.0
+Version:        2021.1.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause

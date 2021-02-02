@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Jan 28 12:25:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2020.1.1
+  Partially fix cumprod (GH#7089) Julia Signell
+  * Test pandas 1.1.x / 1.2.0 releases and pandas nightly 
+    (GH#6996) Joris Van den Bossche
+  * Use assign to avoid SettingWithCopyWarning (GH#7092) Julia 
+    Signell
+  * 'mode' argument passed to bokeh.output_file() (GH#7034) 
+    (GH#7075) patquem
+  * Skip empty partitions when doing groupby.value_counts 
+    (GH#7073) Julia Signell
+  * Add error messages to assert_eq() (GH#7083) James Lamb
+  * Make cached properties read-only (GH#7077) Illviljan
+- Changelog for 2021.01.0
+ * map_partitions with review comments (GH#6776) Kumar Bharath 
+   Prabhu
+ * Make sure that population is a real list (GH#7027) Julia Signell
+ * Propagate storage_options in read_csv (GH#7074) Richard (Rick) 
+   Zamora
+ * Remove all BlockwiseIO code (GH#7067) Richard (Rick) Zamora
+ * Fix CI (GH#7069) James Bourbeau
+ * Add option to control rechunking in reshape (GH#6753) Tom 
+   Augspurger
+ * Fix linalg.lstsq for complex inputs (GH#7056) Johnnie Gray
+ * Add compression='infer' default to read_csv (GH#6960) Richard 
+   (Rick) Zamora
+ * Revert parameter changes in svd_compressed #7003 (GH#7004) Eric 
+   Czech
+ * Skip failing s3 test (GH#7064) Martin Durant
+ * Revert BlockwiseIO (GH#7048) Richard (Rick) Zamora
+ * Add some cross-references to DataFrame.to_bag() and Series.
+   to_bag() (GH#7049) Rob Malouf
+ * Rewrite matmul as blockwise without contraction/concatenate 
+   (GH#7000) Rafal Wojdyla
+ * Use functools.cached_property in da.shape (GH#7023) Illviljan
+ * Use meta value in series non_empty (GH#6976) Julia Signell
+ * Revert “Temporarly pin sphinx version to 3.3.1 (GH#7002)” 
+   (GH#7014) Rafal Wojdyla
+ * Revert python-graphviz pinning (GH#7037) Julia Signell
+ * Accidentally committed print statement (GH#7038) Julia Signell
+ * Pass dropna and observed in agg (GH#6992) Julia Signell
+ * Add index to meta after .str.split with expand (GH#7026) Ruben 
+   van de Geer
+ * CI: test pyarrow 2.0 and nightly (GH#7030) Joris Van den Bossche
+ * Temporarily pin python-graphviz in CI (GH#7031) James Bourbeau
+ * Underline section in numpydoc (GH#7013) Matthias Bussonnier
+ * Keep normal optimizations when adding custom optimizations 
+   (GH#7016) Matthew Rocklin
+ * Temporarily pin sphinx version to 3.3.1 (GH#7002) Rafal Wojdyla
+ * DOC: Misc formatting (GH#6998) Matthias Bussonnier
+ * Add inline_array option to from_array (GH#6773) Tom Augspurger
+ * Revert “Initial pass at blockwise array creation routines 
+   (GH#6931)” (:pr:`6995) James Bourbeau
+ * Set npartitions in set_index (GH#6978) Julia Signell
+ * Upstream config serialization and inheritance (GH#6987) Jacob 
+   Tomlinson
+ * Bump the minimum time in test_minimum_time (GH#6988) Martin 
+   Durant
+ * Fix pandas dtype inference for read_parquet (GH#6985) Richard 
+   (Rick) Zamora
+ * Avoid data loss in set_index with sorted=True (GH#6980) Richard 
+   (Rick) Zamora
+ * Bugfix in read_parquet for handling un-named indices with 
+   index=False (GH#6969) Richard (Rick) Zamora
+ * Use __class__ when comparing meta data (GH#6981) Mads R. B. 
+   Kristensen
+ * Comparing string versions won’t always work (GH#6979) Rafal 
+   Wojdyla
+ * Fix GH#6925 (GH#6982) sdementen
+ * Initial pass at blockwise array creation routines (GH#6931) Ian 
+   Rose
+ * Simplify has_parallel_type() (GH#6927) Mads R. B. Kristensen
+ * Handle annotation unpacking in BlockwiseIO (GH#6934) Simon 
+   Perkins
+ * Avoid deprecated yield_fixture in test_sql.py (GH#6968) Richard 
+   (Rick) Zamora
+ * Remove bad graph logic in BlockwiseIO (GH#6933) Richard (Rick) 
+   Zamora
+ * Get config item if variable is None (GH#6862) Jacob Tomlinson
+ * Update from_pandas docstring (GH#6957) Richard (Rick) Zamora
+ * Prevent fuse_roots from clobbering annotations (GH#6955) Simon 
+   Perkins 
+
+-------------------------------------------------------------------
 Wed Jan 13 14:01:09 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 2020.12.0
