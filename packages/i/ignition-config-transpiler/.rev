@@ -77,4 +77,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>841303</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fbe8317fb04870906601631debd78a44</srcmd5>
+    <version>0.9.0+git20210121.4bf0250</version>
+    <time>1612272302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0+git20210121.4bf0250:
+  * config/fcos: Avoid merging invalid configs
+  * config/fcos/v1_{3,4_exp}: drop ESP from ppc64le boot_device layout
+  * NEWS: add news for 0.9.0
+  * docs/examples: add some monospacing
+  * base/v0_4_exp: teach with_mount_unit to create swap units
+  * base/v0_4_exp: abstract MountOptions handling into subtemplate
+  * docs: Update fcct download instructions
+  * build_for_container: stop building non-Linux-x86_64 binaries
+  * build_releases: rename for container build
+  * test: don't recompile fcct for every FCC in docs
+  * docs/development: clean up definition list
+  * README: move project layout section to dev docs
+  * docs: fix indentation level for storage.luks
+  * config/fcos/v1_[34]: un-RAID ESP
+  * docs: make storage.filesystems.path field optional
+  * docs: move systemd.units.name uniqueness constraint to units
+  * NEWS: add news for 0.8.0
+  * docs: document rhcos specs
+  * docs: specialize spec docs for the fcos variant
+  * docs/specs: unwrap lines
+  * config: add rhcos 0.2.0-experimental variant
+  * config: add rhcos 0.1.0 variant
+  * docs: update spec bump instructions
+  * docs: document spec 1.3.0
+  * docs: stabilize spec 1.3.0
+  * docs: add 46 to spec nav_order fields
+  * config/fcos/v1_4_exp: update sources for new package
+  * config/fcos/v1_4_exp: copy from v1_3
+  * config/fcos/v1_3_exp: stabilize</comment>
+    <requestid>868368</requestid>
+  </revision>
 </revisionlist>
