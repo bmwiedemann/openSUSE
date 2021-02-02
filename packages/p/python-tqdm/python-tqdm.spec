@@ -66,7 +66,7 @@ and does not require ncurses.
 %package -n %allpython-tqdm-bash-completion
 Summary:        Bash completion for python-tqdm
 Requires:       bash-completion
-Supplements:    ((%{lua: print(string.sub(rpm.expand("%{python_module tqdm or}"),0,-4))}) and bash)
+Supplements:    %{python_module tqdm and bash-completion}
 
 %description -n %allpython-tqdm-bash-completion
 tqdm lets you output a progress meter from within loops by wrapping
