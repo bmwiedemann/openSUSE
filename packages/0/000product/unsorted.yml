@@ -20893,7 +20893,6 @@ unsorted:
   - python3-napalm-exos 
   - python3-napalm-procurve 
   - python3-nemo 
-  - python3-neovim-remote 
   - python3-neutronclient 
   - python3-newt 
   - python3-nghttp2 
@@ -20979,7 +20978,6 @@ unsorted:
   - python3-pyginac-devel 
   - python3-pyglet 
   - python3-pyjnius 
-  - python3-pykickstart 
   - python3-pymod2pkg 
   - python3-pynest2d 
   - python3-pypandoc: [i586] 
@@ -21033,9 +21031,6 @@ unsorted:
   - python3-sphinxbase 
   - python3-sphinxbase5 
   - python3-splinter 
-  - python3-spyder-notebook 
-  - python3-spyder-terminal 
-  - python3-spyder-unittest 
   - python3-sqlite-utils: [x86_64] 
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
