@@ -84,11 +84,38 @@ rm -f %{buildroot}%{_firmwaredir}/intel/sof/sof-jsl.ri
 rm -f %{buildroot}%{_firmwaredir}/intel/sof/community/sof-jsl.ri
 %fdupes -s %{buildroot}
 
+# A grand opening of a monkey theater now:
+# as rpm cannot handle the transition from a directory to a symlinked
+# directory, we need many very ugly tricks to work around it.
+# See bsc#1180287 and bsc#1181554
+
+# At first, rename the old directory that will be overriden via symlink.
+# This has to be done at pre, not preun.  Without this workaround, cpio
+# expansion fails.
 %pre
-# Mighty rpm cannot handle the transition from a directory to a symlinked
-# directory, hence we have to get rid of it beforehand at this moment (but
-# not at un preun!): bsc#1180287
-test -h %{_firmwaredir}/intel/sof-tplg || rm -rf %{_firmwaredir}/intel/sof-tplg
+if test -d %{_firmwaredir}/intel/sof-tplg; then
+  if ! test -h %{_firmwaredir}/intel/sof-tplg; then
+    mv %{_firmwaredir}/intel/sof-tplg %{_firmwaredir}/intel/sof-tplg.old
+  fi
+fi
+
+# At next, rename the symlink at post if the old package contained the
+# directory; it's needed to avoid the old package removing the new contents
+# mistakenly.  The old contents are removed here instead.
+%post
+if test -d %{_firmwaredir}/intel/sof-tplg.old; then
+  mv %{_firmwaredir}/intel/sof-tplg %{_firmwaredir}/intel/sof-tplg.new
+  rm -rf %{_firmwaredir}/intel/sof-tplg.old
+fi
+
+# At last in posttrans, recover the symlink again;
+# it's the only place we can use after the old package triggers run
+%posttrans
+if test -h %{_firmwaredir}/intel/sof-tplg.new; then
+  mv %{_firmwaredir}/intel/sof-tplg.new %{_firmwaredir}/intel/sof-tplg
+  # remove stale files
+  rm -f %{_firmwaredir}/intel/sof-tplg\;*
+fi
 
 %files
 %license LICENCE.*
