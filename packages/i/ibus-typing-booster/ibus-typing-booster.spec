@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.10.3
+Version:        2.10.4
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -36,7 +36,6 @@ BuildRequires:  update-desktop-files
 # for the unit tests
 BuildRequires:  m17n-lib
 BuildRequires:  m17n-db
-BuildRequires:  python3-mock
 BuildRequires:  python3-pyenchant
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib

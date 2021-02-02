@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 02 09:45:29 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.10.4
+- Use “from unittest import mock” instead of just “import mock”.
+- Update emoji annotations from CLDR
+- Translation update from Weblate for zh_CN (still 100% complete)
+
+-------------------------------------------------------------------
 Sun Jan 24 20:17:06 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.10.3
