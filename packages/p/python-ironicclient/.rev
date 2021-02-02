@@ -396,4 +396,15 @@
     <comment>switch to victoria</comment>
     <requestid>841182</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c2a15fb296afa8e46a0a1b1c12b62e3d</srcmd5>
+    <version>4.4.0</version>
+    <time>1612272344</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.0
+  - Update .gitreview for stable/victoria
+  - Update TOX_CONSTRAINTS_FILE for stable/victoria
+  - Fix l-c job</comment>
+    <requestid>868496</requestid>
+  </revision>
 </revisionlist>

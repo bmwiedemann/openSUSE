@@ -1,7 +1,7 @@
 #
 # spec file for package python-ironicclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-ironicclient
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-ironicclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-4.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-4.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-PyYAML >= 3.13
@@ -90,13 +90,13 @@ Each implements 100% of the OpenStack Ironic API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-ironicclient-4.3.0
+%autosetup -p1 -n python-ironicclient-4.4.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=4.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.4.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
