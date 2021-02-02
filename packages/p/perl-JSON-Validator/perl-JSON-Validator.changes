@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 29 03:08:04 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.13
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.13 2021-01-28T18:22:43+0900
+   - Fix handling offset in RFC3339 date-time #236
+   - Add CLEAR method to JSON::Validator::Ref #237
+
+-------------------------------------------------------------------
 Mon Jan 25 03:09:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.12
