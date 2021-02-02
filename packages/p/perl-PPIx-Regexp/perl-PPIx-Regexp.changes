@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 29 03:09:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.078
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.078		2021-01-28	T. R. Wyant
+      Allow CPAN to index Script_Run, Atomic_Script_Run, since they made
+      it into a production release.
+
+      Allow {,3} and { 0 , 3 } as quantifiers, requiring at least Perl
+      5.33.6. Previously these parsed as literals. This parse will be
+      retracted if it does not make it into 5.34.0.
+
+-------------------------------------------------------------------
 Fri Jan 15 03:08:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.077
