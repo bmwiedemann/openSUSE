@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -4686,12 +4686,26 @@ else
+@@ -4688,12 +4688,26 @@ else
    LIBPYTHON=''
  fi
  
@@ -314,7 +314,7 @@
          # just making sure _main() runs and returns things in the stdout
 --- a/configure
 +++ b/configure
-@@ -15214,9 +15214,9 @@ fi
+@@ -15233,9 +15233,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then

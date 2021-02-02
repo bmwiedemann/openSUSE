@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jan 29 17:22:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+
+-------------------------------------------------------------------
+Tue Jan  5 09:15:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.
+
+-------------------------------------------------------------------
+Tue Dec 22 08:27:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.7:
+  - bugfix release
+  - multiple patches realigned:
+    - F00102-lib64.patch
+    - SUSE-FEDORA-multilib.patch
+    - bpo-31046_ensurepip_honours_prefix.patch
+    - skip_random_failing_tests.patch
+
+-------------------------------------------------------------------
+Thu Dec 10 00:26:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Last try before this results in an editwar:
+  * remove importlib_resources and importlib-metadata 
+    provides/obsoletes
+  * import importlib_resources is not the same as
+    import importlib.resources, same for metadata
+  * The backport packages from PyPI needed for older flavors are
+    specified as such for setuptools or in pyproject.toml. If a
+    package requires them they typically add them with a python
+    version qualifier and the packages have their own version
+    numbers.
+
+-------------------------------------------------------------------
+Sat Dec  5 16:55:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add patch sphinx-update-removed-function.patch to no longer call
+  a now removed function and to make documentation build independent of
+  the Sphinx version (bsc#1179630, gh#python/cpython#13236).
+
+-------------------------------------------------------------------
+Wed Dec  2 10:57:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add importlib_resources provide/obsolete as it is integral
+  part of the lang since 3.7 release 
+
+-------------------------------------------------------------------
 Fri Nov 20 14:40:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - The Python stdlib >= does not provide importlib_metadata or

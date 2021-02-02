@@ -55,7 +55,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
     .. note::
 --- a/Lib/ensurepip/__init__.py
 +++ b/Lib/ensurepip/__init__.py
-@@ -56,27 +56,27 @@ def _disable_pip_configuration_settings(
+@@ -53,27 +53,27 @@ def _disable_pip_configuration_settings(
      os.environ['PIP_CONFIG_FILE'] = os.devnull
  
  
@@ -88,7 +88,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
      Note that calling this function will alter both sys.path and os.environ.
      """
-@@ -119,6 +119,8 @@ def _bootstrap(*, root=None, upgrade=Fal
+@@ -116,6 +116,8 @@ def _bootstrap(*, root=None, upgrade=Fal
          args = ["install", "--no-cache-dir", "--no-index", "--find-links", tmpdir]
          if root:
              args += ["--root", root]
@@ -97,7 +97,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          if upgrade:
              args += ["--upgrade"]
          if user:
-@@ -191,6 +193,11 @@ def _main(argv=None):
+@@ -188,6 +190,11 @@ def _main(argv=None):
          help="Install everything relative to this alternate root directory.",
      )
      parser.add_argument(
@@ -109,7 +109,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          "--altinstall",
          action="store_true",
          default=False,
-@@ -209,6 +216,7 @@ def _main(argv=None):
+@@ -206,6 +213,7 @@ def _main(argv=None):
  
      return _bootstrap(
          root=args.root,

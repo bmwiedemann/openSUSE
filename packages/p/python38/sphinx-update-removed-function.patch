@@ -1,0 +1,26 @@
+From 960bb883769e5c64a63b014590d75654db87ffb0 Mon Sep 17 00:00:00 2001
+From: Pablo Galindo <Pablogsal@gmail.com>
+Date: Fri, 10 May 2019 22:58:17 +0100
+Subject: [PATCH] Fix sphinx deprecation warning about env.note_versionchange()
+ (GH-13236)
+
+---
+ Doc/tools/extensions/pyspecific.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Doc/tools/extensions/pyspecific.py
++++ b/Doc/tools/extensions/pyspecific.py
+@@ -361,7 +361,12 @@ class DeprecatedRemoved(Directive):
+                                    translatable=False)
+             node.append(para)
+         env = self.state.document.settings.env
+-        env.get_domain('changeset').note_changeset(node)
++        # new method
++        if hasattr(env, 'get_domain'):
++            env.get_domain('changeset').note_changeset(node)
++        # deprecated pre-Sphinx-2 method
++        else:
++            env.note_versionchange('deprecated', version[0], node, self.lineno)
+         return [node] + messages
+ 
+ 

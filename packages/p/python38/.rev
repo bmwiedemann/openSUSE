@@ -67,4 +67,39 @@
     <comment></comment>
     <requestid>850380</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>709ef5ec1512ddcad6c37dbc15fcaf9e</srcmd5>
+    <version>3.8.7</version>
+    <time>1612272267</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.
+- Update to 3.8.7:
+  - bugfix release
+  - multiple patches realigned:
+    - F00102-lib64.patch
+    - SUSE-FEDORA-multilib.patch
+    - bpo-31046_ensurepip_honours_prefix.patch
+    - skip_random_failing_tests.patch
+- Last try before this results in an editwar:
+  * remove importlib_resources and importlib-metadata 
+    provides/obsoletes
+  * import importlib_resources is not the same as
+    import importlib.resources, same for metadata
+  * The backport packages from PyPI needed for older flavors are
+    specified as such for setuptools or in pyproject.toml. If a
+    package requires them they typically add them with a python
+    version qualifier and the packages have their own version
+    numbers.
+- Add patch sphinx-update-removed-function.patch to no longer call
+  a now removed function and to make documentation build independent of
+  the Sphinx version (bsc#1179630, gh#python/cpython#13236).
+- Add importlib_resources provide/obsolete as it is integral
+  part of the lang since 3.7 release 
+</comment>
+    <requestid>868033</requestid>
+  </revision>
 </revisionlist>
