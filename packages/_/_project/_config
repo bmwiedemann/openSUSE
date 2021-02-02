@@ -63,17 +63,16 @@ Macros:
 :Macros
 %endif
 
-Substitute: kiwi-setup:image python3-kiwi createrepo_c
-Substitute: kiwi-image:tbz   python3-kiwi
+Substitute: kiwi-setup:image  python3-kiwi createrepo_c
+Substitute: kiwi-image:tbz    python3-kiwi
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers
-Substitute: kiwi-image:iso kiwi-systemdeps-iso-media qemu-tools
-
-Substitute: obs:cli_debug_packages gdb vim strace less rzsz
-
+Substitute: kiwi-image:iso    kiwi-systemdeps-iso-media qemu-tools
+Substitute: kiwi-image:oem    kiwi-systemdeps-disk-images xorriso
 Prefer: kiwi-systemdeps-filesystems
 Prefer: kiwi-systemdeps-disk-images
 Prefer: kiwi-systemdeps-iso-media
 
+Substitute: obs:cli_debug_packages gdb vim strace less rzsz
 
 # Migration to product builder; using the Tumbleweed plugin since 2020-04-28
 Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
