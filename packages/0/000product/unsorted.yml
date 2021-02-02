@@ -7374,7 +7374,6 @@ unsorted:
   - junitperf 
   - junitperf-demo 
   - junitperf-javadoc 
-  - jupyter 
   - jupyter-bqplot 
   - jupyter-cadabra2-kernel 
   - jupyter-calysto 
@@ -10287,7 +10286,9 @@ unsorted:
   - libfdatetime-devel 
   - libfdatetime1 
   - libfdisk-devel 
+  - libfdisk-devel-32bit: [x86_64] 
   - libfdisk-devel-static 
+  - libfdisk1-32bit: [x86_64] 
   - libfdt-devel 
   - libfdt-devel-32bit: [x86_64] 
   - libfdt1-32bit: [x86_64] 
@@ -10644,7 +10645,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
-  - libgnuastro11 
+  - libgnuastro12 
   - libgnuradio-3_8_2 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
@@ -13297,7 +13298,9 @@ unsorted:
   - libslopy7_5 
   - libslurm36: [x86_64] 
   - libsmartcols-devel 
+  - libsmartcols-devel-32bit: [x86_64] 
   - libsmartcols-devel-static 
+  - libsmartcols1-32bit: [x86_64] 
   - libsmbclient-devel 
   - libsmbclient0-32bit: [x86_64] 
   - libsmbconf-devel 
@@ -14658,6 +14661,7 @@ unsorted:
   - lnav 
   - lndir 
   - loadlin: [i586] 
+  - local-npm-registry 
   - lockdev-devel 
   - lockfile 
   - lodepng-devel 
@@ -17665,9 +17669,6 @@ unsorted:
   - orthanc-devel 
   - orthanc-dicomweb 
   - orthanc-doc 
-  - orthanc-framework 
-  - orthanc-framework-devel 
-  - orthanc-framework-source 
   - orthanc-gdcm 
   - orthanc-mysql 
   - orthanc-postgresql 
@@ -19987,10 +19988,9 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
-  - postfix-bdb 
-  - postfix-bdb-lmdb 
   - postfix-devel 
   - postfix-ldap 
+  - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
@@ -20546,6 +20546,8 @@ unsorted:
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
+  - python-rpm-generators 
+  - python-rpm-macros 
   - python-rtslib-fb-common 
   - python-saharaclient-doc 
   - python-senlinclient-doc 
@@ -20580,7 +20582,6 @@ unsorted:
   - python2-pycairo-devel 
   - python2-setuptools 
   - python3-Arcus 
-  - python3-Flask-Admin 
   - python3-GDAL 
   - python3-GitgExt 
   - python3-Glymur 
@@ -20601,7 +20602,6 @@ unsorted:
   - python3-QtAwesome: [i586] 
   - python3-Rivet 
   - python3-SHERPA-MC 
-  - python3-SQLAlchemy-Utils 
   - python3-SoapySDR 
   - python3-YODA 
   - python3-aexpect 
@@ -20644,12 +20644,6 @@ unsorted:
   - python3-capstone 
   - python3-castellan 
   - python3-ccm 
-  - python3-certbot-dns-cloudxns 
-  - python3-certbot-dns-dnsimple 
-  - python3-certbot-dns-dnsmadeeasy 
-  - python3-certbot-dns-linode 
-  - python3-certbot-dns-luadns 
-  - python3-certbot-dns-nsone 
   - python3-cilium-microscope 
   - python3-cinderclient 
   - python3-cirq: [x86_64] 
@@ -20692,7 +20686,6 @@ unsorted:
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
-  - python3-dns-lexicon 
   - python3-dtfabric 
   - python3-ec2imgutils 
   - python3-ec2metadata 
@@ -20896,7 +20889,6 @@ unsorted:
   - python3-neutronclient 
   - python3-newt 
   - python3-nghttp2 
-  - python3-nilearn: [i586] 
   - python3-nornir 
   - python3-nose2pytest 
   - python3-notcurses 
@@ -20949,7 +20941,6 @@ unsorted:
   - python3-ovsdbapp 
   - python3-paraview 
   - python3-pcp 
-  - python3-pendulum 
   - python3-piexif 
   - python3-pikepdf 
   - python3-pip-test 
@@ -21002,7 +20993,6 @@ unsorted:
   - python3-python-qdatamatrix 
   - python3-python-qnotifications 
   - python3-python-redis-lock 
-  - python3-raet 
   - python3-renderspec 
   - python3-reno 
   - python3-rpmconf 
@@ -21117,6 +21107,7 @@ unsorted:
   - python36-Fabric 
   - python36-Faker 
   - python36-Flask 
+  - python36-Flask-Admin 
   - python36-Flask-Babel 
   - python36-Flask-BabelEx 
   - python36-Flask-Bootstrap 
@@ -21252,6 +21243,7 @@ unsorted:
   - python36-Routes 
   - python36-SPARQLWrapper 
   - python36-SQLAlchemy 
+  - python36-SQLAlchemy-Utils 
   - python36-Scrapy 
   - python36-SecretStorage 
   - python36-Send2Trash 
@@ -21748,8 +21740,14 @@ unsorted:
   - python36-certbot 
   - python36-certbot-apache 
   - python36-certbot-dns-cloudflare 
+  - python36-certbot-dns-cloudxns 
   - python36-certbot-dns-digitalocean 
+  - python36-certbot-dns-dnsimple 
+  - python36-certbot-dns-dnsmadeeasy 
   - python36-certbot-dns-google 
+  - python36-certbot-dns-linode 
+  - python36-certbot-dns-luadns 
+  - python36-certbot-dns-nsone 
   - python36-certbot-dns-rfc2136 
   - python36-certbot-dns-route53 
   - python36-certbot-nginx 
@@ -21759,7 +21757,6 @@ unsorted:
   - python36-cffi 
   - python36-cfgdiff 
   - python36-cfgv 
-  - python36-cfn-lint 
   - python36-cfscrape 
   - python36-cftime 
   - python36-chai 
@@ -22054,6 +22051,7 @@ unsorted:
   - python36-djet 
   - python36-djvulibre 
   - python36-dkimpy 
+  - python36-dns-lexicon 
   - python36-dnslib 
   - python36-dnspython 
   - python36-doc 
@@ -22141,7 +22139,6 @@ unsorted:
   - python36-falcon 
   - python36-fanficfare 
   - python36-fann2 
-  - python36-fastTSNE 
   - python36-fasteners 
   - python36-fastimport 
   - python36-fastnumbers 
@@ -22469,6 +22466,7 @@ unsorted:
   - python36-junit-xml 
   - python36-junitxml 
   - python36-junos-eznc 
+  - python36-jupyter 
   - python36-jupyter-client 
   - python36-jupyter-contrib-nbextensions 
   - python36-jupyter-core 
@@ -22691,6 +22689,7 @@ unsorted:
   - python36-ncclient 
   - python36-ndg-httpsclient 
   - python36-neovim 
+  - python36-neovim-remote 
   - python36-nest-asyncio 
   - python36-net-snmp 
   - python36-netCDF4 
@@ -22849,6 +22848,7 @@ unsorted:
   - python36-pefile 
   - python36-pelican 
   - python36-pem 
+  - python36-pendulum 
   - python36-pep517 
   - python36-pep8-naming 
   - python36-peppercorn 
@@ -23052,6 +23052,7 @@ unsorted:
   - python36-pykafka 
   - python36-pykeepass 
   - python36-pykerberos 
+  - python36-pykickstart 
   - python36-pykwalify 
   - python36-pylama 
   - python36-pylast 
@@ -23542,7 +23543,6 @@ unsorted:
   - python36-sip4-devel 
   - python36-siphashc 
   - python36-six 
-  - python36-sklearn-pandas 
   - python36-slackclient 
   - python36-sleekxmpp 
   - python36-slimit 
@@ -23987,6 +23987,7 @@ unsorted:
   - python38-Fabric 
   - python38-Faker 
   - python38-Flask 
+  - python38-Flask-Admin 
   - python38-Flask-Babel 
   - python38-Flask-BabelEx 
   - python38-Flask-Bootstrap 
@@ -24112,6 +24113,7 @@ unsorted:
   - python38-RegexOrder 
   - python38-Routes 
   - python38-SPARQLWrapper 
+  - python38-SQLAlchemy-Utils 
   - python38-Scrapy 
   - python38-SecretStorage 
   - python38-Send2Trash 
@@ -24594,8 +24596,14 @@ unsorted:
   - python38-certbot 
   - python38-certbot-apache 
   - python38-certbot-dns-cloudflare 
+  - python38-certbot-dns-cloudxns 
   - python38-certbot-dns-digitalocean 
+  - python38-certbot-dns-dnsimple 
+  - python38-certbot-dns-dnsmadeeasy 
   - python38-certbot-dns-google 
+  - python38-certbot-dns-linode 
+  - python38-certbot-dns-luadns 
+  - python38-certbot-dns-nsone 
   - python38-certbot-dns-rfc2136 
   - python38-certbot-dns-route53 
   - python38-certbot-nginx 
@@ -24884,6 +24892,7 @@ unsorted:
   - python38-djangorestframework-simplejwt 
   - python38-djet 
   - python38-djvulibre 
+  - python38-dns-lexicon 
   - python38-dnslib 
   - python38-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - python38-doc-devhelp 
@@ -24969,7 +24978,6 @@ unsorted:
   - python38-fakeredis 
   - python38-fanficfare 
   - python38-fann2 
-  - python38-fastTSNE 
   - python38-fastcluster 
   - python38-fasteners 
   - python38-fastnumbers 
@@ -25272,6 +25280,7 @@ unsorted:
   - python38-junit-xml 
   - python38-junitxml 
   - python38-junos-eznc 
+  - python38-jupyter 
   - python38-jupyter-client 
   - python38-jupyter-contrib-nbextensions 
   - python38-jupyter-core 
@@ -25480,6 +25489,7 @@ unsorted:
   - python38-ncclient 
   - python38-ndg-httpsclient 
   - python38-neovim 
+  - python38-neovim-remote 
   - python38-nest-asyncio 
   - python38-net-snmp 
   - python38-netCDF4 
@@ -25487,7 +25497,7 @@ unsorted:
   - python38-netpbmfile 
   - python38-networkx: [i586] 
   - python38-nibabel 
-  - python38-nilearn: [x86_64] 
+  - python38-nilearn 
   - python38-nine 
   - python38-nltk 
   - python38-nocasedict 
@@ -25626,6 +25636,7 @@ unsorted:
   - python38-pefile 
   - python38-pelican 
   - python38-pem 
+  - python38-pendulum 
   - python38-pep517 
   - python38-pep8-naming 
   - python38-peppercorn 
@@ -25815,6 +25826,7 @@ unsorted:
   - python38-pykafka 
   - python38-pykeepass 
   - python38-pykerberos 
+  - python38-pykickstart 
   - python38-pykwalify 
   - python38-pylama 
   - python38-pylast 
@@ -26702,6 +26714,8 @@ unsorted:
   - qalculate 
   - qalculate-gtk 
   - qalculate-gtk-lang 
+  - qatlib: [x86_64] 
+  - qatlib-devel: [x86_64] 
   - qbittorrent 
   - qbittorrent-nox 
   - qbs 
@@ -27751,7 +27765,6 @@ unsorted:
   - ruby2.7-rubygem-loofah-doc 
   - ruby2.7-rubygem-mail-doc 
   - ruby2.7-rubygem-mail-doc-2_5 
-  - ruby2.7-rubygem-manpages-doc 
   - ruby2.7-rubygem-marcel-doc 
   - ruby2.7-rubygem-memcache-client-doc 
   - ruby2.7-rubygem-memcache-client-testsuite 
@@ -28137,7 +28150,6 @@ unsorted:
   - ruby2.7-rubygem-xml-simple-doc 
   - ruby2.7-rubygem-xmlhash-doc 
   - ruby2.7-rubygem-xmlhash-testsuite 
-  - ruby2.7-rubygem-yard-doc 
   - ruby2.7-rubygem-yast-rake-doc 
   - ruby2.7-rubygem-zeitwerk-doc 
   - ruby3.0-devel 
@@ -28703,6 +28715,7 @@ unsorted:
   - ruby3.0-rubygem-mail-2_5 
   - ruby3.0-rubygem-mail-doc 
   - ruby3.0-rubygem-mail-doc-2_5 
+  - ruby3.0-rubygem-manpages 
   - ruby3.0-rubygem-marcel 
   - ruby3.0-rubygem-marcel-doc 
   - ruby3.0-rubygem-mercenary 
@@ -29293,6 +29306,7 @@ unsorted:
   - ruby3.0-rubygem-xml-simple 
   - ruby3.0-rubygem-xml-simple-doc 
   - ruby3.0-rubygem-yajl-ruby 
+  - ruby3.0-rubygem-yard 
   - ruby3.0-rubygem-zeitwerk-doc 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
@@ -38886,6 +38900,7 @@ unsorted:
   - us428control 
   - usbauth 
   - usbauth-notifier 
+  - usbauth-notifier-lang 
   - usbguard 
   - usbguard-devel 
   - usbguard-tools 
