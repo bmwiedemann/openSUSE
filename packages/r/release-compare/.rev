@@ -156,4 +156,22 @@ transfered the wrong version into git :/</comment>
   * support short rpm structures for appliance server side builds</comment>
     <requestid>852661</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4f76170cbd771e124f50c9d09d57cb1a</srcmd5>
+    <version>0.5.2</version>
+    <time>1612272348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.2
+  * escape backslashes in YAML string
+
+- update to version 0.5.1
+  * Handle packages info without license tag correctly
+  * fix potential diff format issue
+
+- create list of package version changes in YAML output
+
+- update to version 0.5.0
+  * exports changes also as YAML file (provided by Joachim Gleissner)</comment>
+    <requestid>868534</requestid>
+  </revision>
 </revisionlist>

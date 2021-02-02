@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb  2 08:12:14 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.2
+  * escape backslashes in YAML string
+
+-------------------------------------------------------------------
+Mon Feb  1 13:06:15 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.1
+  * Handle packages info without license tag correctly
+  * fix potential diff format issue
+
+-------------------------------------------------------------------
+Wed Dec 16 13:08:26 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- create list of package version changes in YAML output
+
+
+-------------------------------------------------------------------
+Thu Dec 10 15:00:48 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.0
+  * exports changes also as YAML file (provided by Joachim Gleissner)
+
+-------------------------------------------------------------------
 Tue Nov 10 10:13:59 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.1

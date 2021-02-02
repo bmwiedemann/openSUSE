@@ -1,14 +1,14 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/release-compare.git</param>
     <param name="scm">git</param>
 
-    <param name="version">0.4.1</param>
-    <param name="revision">0.4.1</param>
+    <param name="version">0.5.2</param>
+    <param name="revision">0.5.2</param>
 
     <param name="extract">release-compare.spec</param>
   </service>
-  <service name="set_version" mode="disabled" />
+  <service name="set_version" mode="manual" />
 
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
