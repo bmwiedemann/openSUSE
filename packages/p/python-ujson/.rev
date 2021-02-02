@@ -104,4 +104,17 @@
   * Make PEP 384 compliant</comment>
     <requestid>850915</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>98cb79226d9c15abb3122a4fa6bc3e72</srcmd5>
+    <version>4.0.2</version>
+    <time>1612272339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.2:
+  * Travis CI: Test on 3.9 final, remove 3.8
+  * Toward matching Python standard library output for float
+  * Fix errors on reading long decimal floats
+  * Fix #429: Make empty dict/list indented serialization match stdlib json
+  * Fix dealing with None types</comment>
+    <requestid>868446</requestid>
+  </revision>
 </revisionlist>

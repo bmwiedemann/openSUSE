@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  1 18:19:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Travis CI: Test on 3.9 final, remove 3.8
+  * Toward matching Python standard library output for float
+  * Fix errors on reading long decimal floats
+  * Fix #429: Make empty dict/list indented serialization match stdlib json
+  * Fix dealing with None types
+ 
+-------------------------------------------------------------------
 Thu Nov 26 08:33:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.1:
