@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 21 09:05:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Override new python-rpm-macros
+
+-------------------------------------------------------------------
 Tue Apr 21 11:55:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Fix using update_alternatives.

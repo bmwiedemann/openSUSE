@@ -15,4 +15,12 @@
     <comment>- Fix using update_alternatives.</comment>
     <requestid>796056</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ea5baa3cffda4ad31e005249be2e2347</srcmd5>
+    <version>44.0.0</version>
+    <time>1612272262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865317</requestid>
+  </revision>
 </revisionlist>
