@@ -8,12 +8,12 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  sys-utils/mount.8 | 26 ++++++++++++++++++++++++++
  1 file changed, 26 insertions(+)
 
-diff --git a/sys-utils/mount.8 b/sys-utils/mount.8
-index da0ac5b..c231e12 100644
---- a/sys-utils/mount.8
-+++ b/sys-utils/mount.8
-@@ -338,6 +338,32 @@ The
- option is similar, with the restriction that the user must be
+Index: util-linux-2.36/sys-utils/mount.8
+===================================================================
+--- util-linux-2.36.orig/sys-utils/mount.8
++++ util-linux-2.36/sys-utils/mount.8
+@@ -400,6 +400,32 @@ The
+ option is similar, with the restriction that the user must be a
  member of the group of the special file.
  
 +.SS Blacklisted file systems
@@ -45,6 +45,3 @@ index da0ac5b..c231e12 100644
  .SS Bind mount operation
  Remount part of the file hierarchy somewhere else.  The call is:
  
--- 
-2.19.2
-

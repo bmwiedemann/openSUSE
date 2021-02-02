@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Fri Jan 29 02:18:58 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Do not require libeconf-devel on products without /usr/etc.
+
+-------------------------------------------------------------------
+Mon Jan 25 17:07:55 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- s/--enable-vendordir/--with-vendordir/
+- remove pam_securetty line again. As long as there is no agreement
+  from pam side having it would fail openQA (boo#1033626)
+
+-------------------------------------------------------------------
+Sat Jan 16 02:30:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.36.1:
+  * chrt: use SCHED_FLAG_RESET_ON_FORK for sched_setattr()
+  * fallocate: fix --dig-holes at end of files
+  * fdisk: always report fdisk_create_disklabel() errors
+  * flock: keep -E exit status more restrictive
+  * fstrim: remove fstab condition from fstrim.timer
+  * hexdump: automatically use -C when called as hd
+  * hwclock: add fallback if SYS_settimeofday does not exist, fix
+    SYS_settimeofday fallback
+  * libblkid: allow a lot of mac partitions, fix Atari prober logic,
+    limit amount of parsed partitions
+  * more libfdisk improvements
+  * losetup: avoid infinite busy loop, increase limit of setup
+    attempts
+  * lsblk: fix -T optional argument, fix SCSI_IDENT_SERIAL, print
+    zero rather than empty SIZE, read ID_SCSI_IDENT_SERIAL if
+    available
+  * lscpu: Add FUJITSU aarch64 A64FX cpupart, Even more Arm part
+    numbers, avoid segfault on PowerPC systems with valid hardware
+    configurations (bsc#1175623)
+  * mount: Add support for "nosymfollow" mount option.
+  * pg: fix wcstombs()
+  * sfdisk: correct --json --dump false exclusive, fix backward
+    --move-data
+  * vipw: fix short write handling in copyfile
+  * whereis: fix out of boundary read, support zst compressed man
+    pages
+  * minor code improvements and fixes
+  * minor licensing changes
+  * improve docs
+- Require both group(uuidd) and user(uuidd).
+
+-------------------------------------------------------------------
+Thu Nov 26 20:15:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do search /usr/sbin for mount helpers. (This drops /sbin/fs,
+  /sbin/fs.d, which we do not use in openSUSE.)
+
+-------------------------------------------------------------------
+Fri Nov 20 15:06:37 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Wed Nov  4 11:07:03 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Modernize patch util-linux-sulogin4bsc1175514.patch
+  * Try to autoconfigure broken serial lines
+
+-------------------------------------------------------------------
+Fri Oct 30 14:03:47 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch util-linux-sulogin4bsc1175514.patch
+  Avoid sulogin failing on not existing or not functional console
+  devices (bsc#1175514)
+
+-------------------------------------------------------------------
+Wed Sep 16 00:10:11 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix default permissions of wall and write.
+- Update to version 2.36:
+  * blkdiscard(8) refuses to proceed if filesystem or RAID
+    signatures are found in interactive mode (executed on a
+    terminal). The option --force is required to the discard
+    data.
+  * new commands irqtop(1) and lsirq(1)to monitor kernel
+    interrupts.
+  * cal(1) provides a new --vertical command line option.
+  * blkzone(8) implements open/close/finish commands now.
+  * unshare(1) and nsenter(1) commands support the time namespace
+    now.
+  * agetty(8) now supports multiple paths in the option
+    --issue-file.
+  * fdisk(8), sfdisk(8), cfdisk(8), mkswap(8) and wipefs(8) now
+    support block devices locking by flock(2), new command line
+    option --lock and $LOCK_BLOCK_DEVICE environmental variable.
+  * dmesg(1) new command line option --follow-new to wait and
+    print only new kernel messages.
+  * fdisk(8) new command line option --list-details and
+    --noauto-pt.
+  * fdisk(8) and sfdisk(8) support user-friendly aliases for
+    partition types.
+  * fstrim(8) supports new command line option --listed-in.
+  * libfdisk provides API to relocate GPT backup header. New
+    command line option "sfdisk --relocate".
+  * mount(8) now supports mount by ID= tag.
+  * login(1) supports list of "message of the day".
+  * All tools which read /etc/login.defs is possible to compile
+    with libeconf now.
+  * more(1) has been refactored.
+  * man pages cleanup
+  * other fixes and improvements, see:
+    https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.36/v2.36-ReleaseNotes
+- Refresh Add-documentation-on-blacklisted-modules-to-mount-8-.patch.
+- Drop upstreamed libeconf.patch,
+  libmount-Avoid-triggering-autofs-in-lookup_umount_fs.patch.
+- util-linux-login_defs-check.sh: Perform all steps to integrate
+  MOTD_FIRSTONLY.
+- Update baselibs.conf.
+
+-------------------------------------------------------------------
+Fri May 22 11:15:01 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use plain #!/bin/sh for flushb
+
+-------------------------------------------------------------------
+Thu May 21 12:48:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Include pam_securetty in login.pamd again (bsc#1033626)
+- Update to 2.35.2
+  * make glibc 2.31 compatible
+- Dropped unneeded patch libfdisk-script-accept-sector-size.patch
+
+-------------------------------------------------------------------
 Wed May 13 10:19:22 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix sfdisk not reading its own scripts:

@@ -1,7 +1,7 @@
 #
 # spec file for package python3-libmount
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,13 +79,16 @@ Name:           python3-libmount
 %endif
 Summary:        %main_summary
 License:        GPL-2.0-or-later
-Group:          %group_pl
+Group:          %main_group
 BuildRequires:  audit-devel
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  libcap-ng-devel
+# It should be %%if %%{defined no_config}, but OBS cannot handle it:
+%if 0%{?suse_version} >= 1550
 BuildRequires:  libeconf-devel
+%endif
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  libtool
@@ -122,10 +125,10 @@ BuildRequires:  libmount-devel
 %endif
 %endif
 #END SECOND STAGE DEPENDENCIES
-Version:        2.35.1
+Version:        2.36.1
 Release:        0
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-%{version}.tar.xz
 Source1:        util-linux-rpmlintrc
 Source2:        util-linux-login_defs-check.sh
 Source4:        raw.service
@@ -136,7 +139,7 @@ Source8:        login.pamd
 Source9:        remote.pamd
 Source10:       su.pamd
 Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-%{version}.tar.sign
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-%{version}.tar.sign
 Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
@@ -146,10 +149,8 @@ Source51:       blkid.conf
 Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
-Patch3:         libeconf.patch
-Patch4:         libmount-Avoid-triggering-autofs-in-lookup_umount_fs.patch
-Patch5:         libfdisk-script-accept-sector-size.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# PATCH-FIX-SUSE: Avoid sulogin failing on not existing or not functional console devices
+Patch3:         util-linux-sulogin4bsc1175514.patch
 #
 %if %build_util_linux
 Supplements:    filesystem(minix)
@@ -179,12 +180,12 @@ Obsoletes:      s390-32
 Provides:       s390-32
 %endif
 # uuid-runtime appeared in SLE11 SP1 to SLE11 SP3
-Provides:       uuid-runtime = %{version}-%{release}
+Provides:       uuid-runtime = %{version}
 Obsoletes:      uuid-runtime <= 2.19.1
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
-Requires:       login_defs-support-for-util-linux >= 2.33.1
+Requires:       login_defs-support-for-util-linux >= 2.36
 #
 # Using "Requires" here would lend itself to help upgrading, but since
 # util-linux is in the initial bootstrap, that is not a good thing to do:
@@ -378,6 +379,7 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(uuidd)
+Requires(pre):  user(uuidd)
 %else
 Requires(pre):  /usr/sbin/groupadd
 Requires(pre):  /usr/sbin/useradd
@@ -550,11 +552,11 @@ AUTOPOINT=true autoreconf -vfi
   --enable-static \
   --disable-rpath \
   --enable-all-programs \
-  --disable-reset \
   --disable-chfn-chsh \
   --disable-newgrp \
   --disable-vipw \
   --disable-pg \
+  --enable-fs-paths-default="/sbin:/usr/sbin" \
 %if %{without enable_last}
   --disable-last \
 %endif
@@ -574,7 +576,7 @@ AUTOPOINT=true autoreconf -vfi
 %else
   --without-python \
 %endif
-  --enable-vendordir=%{_distconfdir}
+  --with-vendordir=%{_distconfdir}
 
 #
 # Safety check: HAVE_UUIDD should be always 1:
@@ -637,7 +639,7 @@ install -m 644 runuser.default %{buildroot}%{_distconfdir}/default/runuser
 %make_install
 rm -f %{buildroot}%{python3_sitearch}/libmount/*.*a
 %if %build_util_linux
-#UsrMerge
+%if !0%{?usrmerged}
 ln -s %{_bindir}/kill %{buildroot}/bin
 ln -s %{_bindir}/su %{buildroot}/bin
 ln -s %{_bindir}/dmesg %{buildroot}/bin
@@ -675,9 +677,9 @@ ln -s %{_sbindir}/fsfreeze %{buildroot}/sbin
 ln -s %{_sbindir}/swaplabel %{buildroot}/sbin
 ln -s %{_sbindir}/fstrim %{buildroot}/sbin
 ln -s %{_sbindir}/chcpu %{buildroot}/sbin
-#EndUsrMerge
+%endif
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/filesystems
-echo -e "#! /bin/bash\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
+echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
 chmod 755 %{buildroot}%{_sbindir}/flushb
 # Install scripts to configure raw devices at boot time
 install -m 644 $RPM_SOURCE_DIR%{_sysconfdir}.raw   %{buildroot}%{_sysconfdir}/raw
@@ -688,16 +690,18 @@ ln -sf service %{buildroot}%{_sbindir}/rcraw
 mv %{buildroot}%{_docdir}/%{_name}/getopt %{buildroot}%{_datadir}/
 # Stupid hack so we don't have a tcsh dependency
 chmod 644 %{buildroot}%{_datadir}/getopt/getopt*.tcsh
+%if !0%{?usrmerged}
 # login is always and only in /bin
 mv %{buildroot}%{_bindir}/login %{buildroot}/bin/
+%endif
 # arch dependent
 %ifarch s390 s390x
 rm -f %{buildroot}%{_sysconfdir}/fdprm
 rm -f %{buildroot}%{_sbindir}/fdformat
 rm -f %{buildroot}%{_sbindir}/hwclock
-#UsrMerge
+%if !0%{?usrmerged}
 rm -f %{buildroot}/sbin/hwclock
-#EndUsrMerge
+%endif
 rm -f %{buildroot}%{_bindir}/setterm
 rm -f %{buildroot}%{_sbindir}/tunelp
 rm -f %{buildroot}%{_mandir}/man8/fdformat.8*
@@ -708,19 +712,17 @@ rm -f %{buildroot}%{_mandir}/man8/tunelp.8*
 rm -f %{buildroot}%{_mandir}/man8/cfdisk.8*
 rm -f %{buildroot}%{_mandir}/man8/sfdisk.8*
 rm -f %{buildroot}%{_sbindir}/cfdisk
-#UsrMerge
-rm -f %{buildroot}/sbin/cfdisk
-#EndUsrMerge
 rm -f %{buildroot}%{_sbindir}/sfdisk
-#UsrMerge
+%if !0%{?usrmerged}
+rm -f %{buildroot}/sbin/cfdisk
 rm -f %{buildroot}/sbin/sfdisk
-#EndUsrMerge
+%endif
 %endif
 %ifarch ia64 m68k
 rm -f %{buildroot}%{_sbindir}/fdisk
-#UsrMerge
+%if !0%{?usrmerged}
 rm -f %{buildroot}/sbin/fdisk
-#EndUsrMerge
+%endif
 rm -f %{buildroot}%{_mandir}/man8/fdisk.8*
 %endif
 %find_lang %{name} %{name}.lang
@@ -739,7 +741,9 @@ mkdir -p %{buildroot}/bin
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_localstatedir}/lib/libuuid
 mkdir -p %{buildroot}/run/uuidd
+%if !0%{?usrmerged}
 ln -s %{_bindir}/logger %{buildroot}/bin
+%endif
 # clock.txt from uuidd is a ghost file
 touch %{buildroot}%{_localstatedir}/lib/libuuid/clock.txt
 ln -sf /sbin/service %{buildroot}/usr/sbin/rcuuidd
@@ -763,6 +767,7 @@ done
 %service_add_post raw.service
 %set_permissions %{_bindir}/wall %{_bindir}/write %{_bindir}/mount %{_bindir}/umount
 %set_permissions %{_bindir}/su
+%if ! %{defined no_config}
 #
 # If outdated PAM file is detected, issue a warning.
 for PAM_FILE in login remote runuser runuser-l su su-l ; do
@@ -787,12 +792,15 @@ if ! grep -q "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; the
 		echo "Please edit %{_sysconfdir}/login.defs or %{_sysconfdir}/default/su to restore your customization." >&2
 	fi
 fi
+%endif
 
 %posttrans
+%if %{defined no_config}
 # Migration to /usr/etc.
 for i in  login remote runuser runuser-l su su-l; do
   test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
 done
+%endif
 
 %preun
 %service_del_preun raw.service
@@ -898,7 +906,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_distconfdir}/pam.d/runuser-l
 %{_distconfdir}/pam.d/su
 %{_distconfdir}/pam.d/su-l
-%{_distconfdir}/default
+%if 0%{?suse_version} <= 1520
+%dir %{_distconfdir}/default
+%endif
 %{_distconfdir}/default/runuser
 %{_distconfdir}/default/su
 %else
@@ -912,7 +922,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config(noreplace) %{_sysconfdir}/default/su
 %endif
 %config %dir %{_sysconfdir}/issue.d
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/kill
 /bin/su
 /bin/dmesg
@@ -947,7 +957,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 /sbin/swaplabel
 /sbin/fstrim
 /sbin/chcpu
-#EndUsrMerge
+%endif
 %{_bindir}/kill
 %verify(not mode) %{_bindir}/su
 %{_bindir}/eject
@@ -971,6 +981,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/ipcmk
 %{_bindir}/ipcrm
 %{_bindir}/ipcs
+%{_bindir}/irqtop
 %{_bindir}/isosize
 %if %{with enable_last}
 %{_bindir}/last
@@ -978,9 +989,13 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %endif
 %{_bindir}/line
 %{_bindir}/look
+%if 0%{?usrmerged}
+%{_bindir}/login
+%endif
 %{_bindir}/lsblk
 %{_bindir}/lscpu
 %{_bindir}/lsipc
+%{_bindir}/lsirq
 %{_bindir}/lslocks
 %{_bindir}/lsmem
 %{_bindir}/lsns
@@ -1082,6 +1097,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man1/look.1.gz
 %{_mandir}/man1/lscpu.1.gz
 %{_mandir}/man1/lsipc.1.gz
+%{_mandir}/man1/lsirq.1.gz
 %{_mandir}/man1/lsmem.1.gz
 %{_mandir}/man1/mcookie.1.gz
 %{_mandir}/man1/mesg.1.gz
@@ -1089,6 +1105,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man1/namei.1.gz
 %{_mandir}/man1/nsenter.1.gz
 %{_mandir}/man1/ionice.1.gz
+%{_mandir}/man1/irqtop.1.gz
 %{_mandir}/man1/prlimit.1.gz
 %{_mandir}/man1/rename.1.gz
 %{_mandir}/man1/rev.1.gz
@@ -1182,27 +1199,27 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %ifnarch ia64 m68k
 #XXX: post our patches upstream
 #XXX: call fdupes on /usr/share/man
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/fdisk
-#EndUsrMerge
+%endif
 %{_sbindir}/fdisk
 %{_mandir}/man8/fdisk.8.gz
 %endif
 %ifnarch %sparc ia64 m68k
 %{_mandir}/man8/cfdisk.8.gz
 %{_mandir}/man8/sfdisk.8.gz
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/cfdisk
 /sbin/sfdisk
-#EndUsrMerge
+%endif
 %{_sbindir}/cfdisk
 %{_sbindir}/sfdisk
 %endif
 %ifnarch s390 s390x
 %{_sbindir}/fdformat
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/hwclock
-#EndUsrMerge
+%endif
 %{_sbindir}/hwclock
 %{_bindir}/setterm
 %{_sbindir}/tunelp
@@ -1301,7 +1318,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %files
 %endif
 %defattr(-, root, root)
+%if !0%{?usrmerged}
 /bin/logger
+%endif
 %{_bindir}/logger
 %{_bindir}/lslogins
 #BEGIN bootstrap_hack
