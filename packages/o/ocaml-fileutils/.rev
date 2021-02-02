@@ -48,4 +48,12 @@
   See included CHANGES.md for details</comment>
     <requestid>828683</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>61a2b40679055c83235de92187bbfe56</srcmd5>
+    <version>0.6.3</version>
+    <time>1612272287</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency to ounit via _multibuild</comment>
+    <requestid>867971</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-fileutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,15 @@
 #
 
 
-Name:           ocaml-fileutils
+%define build_flavor @BUILD_FLAVOR@%{nil}
+%if "%{build_flavor}" == "testsuite"
+%define nsuffix -testsuite
+%else
+%define nsuffix %{nil}
+%endif
+
+%define     pkg ocaml-fileutils
+Name:           %{pkg}%{nsuffix}
 Version:        0.6.3
 Release:        0
 %{?ocaml_preserve_bytecode}
@@ -24,15 +32,20 @@ Summary:        OCaml library for common file and filename operations
 License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/fileutils
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml-rpm-macros >= 20210121
 BuildRequires:  ocamlfind(bytes)
-BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
+
+%if "%{build_flavor}" == "testsuite"
+BuildRequires:  ocamlfind(fileutils)
+BuildRequires:  ocamlfind(oUnit)
+BuildRequires:  ocamlfind(stdlib-shims)
+%endif
 
 %description
 This library is intended to provide a basic interface to the most
@@ -54,23 +67,31 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pkg}-%{version}
 
 %build
 dune_release_pkgs='fileutils'
 %ocaml_dune_setup
+%if "%{build_flavor}" == ""
 %ocaml_dune_build
+%endif
 
 %install
+%if "%{build_flavor}" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
+%endif
 
+%if "%{build_flavor}" == "testsuite"
 %check
 %ocaml_dune_test
+%endif
 
+%if "%{build_flavor}" == ""
 %files -f %{name}.files
-%doc README.md
 
 %files devel -f %{name}.files.devel
+
+%endif
 
 %changelog
