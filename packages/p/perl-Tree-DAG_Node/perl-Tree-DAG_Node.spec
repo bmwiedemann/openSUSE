@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tree-DAG_Node
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define cpan_name Tree-DAG_Node
 Name:           perl-Tree-DAG_Node
-Version:        1.31
+Version:        1.32
 Release:        0
 Summary:        An N-ary tree
-License:        Artistic-1.0 OR GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Tree-DAG_Node/
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Slurp::Tiny) >= 0.003
@@ -33,7 +33,6 @@ BuildRequires:  perl(File::Spec) >= 3.4
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(Test::More) >= 1.001002
 Requires:       perl(File::Slurp::Tiny) >= 0.003
-BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -46,14 +45,14 @@ you from ever making any kinds of linkages which are not allowed in a tree
 two mothers).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -61,7 +60,6 @@ make %{?_smp_mflags} test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
