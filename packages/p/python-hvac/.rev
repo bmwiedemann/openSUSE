@@ -53,4 +53,21 @@
   - Update Vault version test matrix / Oldest Support Vault Version. GH-610</comment>
     <requestid>834893</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b9ca395ba4b8773a668728c42fa7c676</srcmd5>
+    <version>0.10.6</version>
+    <time>1612272337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.6:
+  - Enable response wrapping of PKI secrets. GH-649
+  - Fix OIDC login and add working example. GH-638
+  - Add rabbitmq vhost_topics parameter. GH-626
+  - Expand auth_methods module to support AppRole. GH-637
+  - Template &quot;auth method not implemented&quot; error message. GH-651
+  - Fix health.py read_health_status GET method. GH-653
+  - Fix transit constants for &quot;generate_data_key&quot;. GH-632
+  - Fix PUT method in secrets engine kv_v1 to use PUT instead of POST. GH-629
+  - Remove Erroneous json() Calls In rabbitmq Class. GH-624</comment>
+    <requestid>868438</requestid>
+  </revision>
 </revisionlist>

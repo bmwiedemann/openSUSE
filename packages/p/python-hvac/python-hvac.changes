@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  1 18:05:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.6:
+  - Enable response wrapping of PKI secrets. GH-649
+  - Fix OIDC login and add working example. GH-638
+  - Add rabbitmq vhost_topics parameter. GH-626
+  - Expand auth_methods module to support AppRole. GH-637
+  - Template "auth method not implemented" error message. GH-651
+  - Fix health.py read_health_status GET method. GH-653
+  - Fix transit constants for "generate_data_key". GH-632
+  - Fix PUT method in secrets engine kv_v1 to use PUT instead of POST. GH-629
+  - Remove Erroneous json() Calls In rabbitmq Class. GH-624
+
+-------------------------------------------------------------------
 Tue Aug  4 16:11:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.10.5:
