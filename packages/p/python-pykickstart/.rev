@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>857755</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>942e08c6f1be923ebdc82eb2cbac6b18</srcmd5>
+    <version>3.30</version>
+    <time>1612272289</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt for new singlespec style</comment>
+    <requestid>868037</requestid>
+  </revision>
 </revisionlist>

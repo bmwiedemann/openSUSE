@@ -66,9 +66,31 @@ and a writer to generate kickstart files.
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%python_clone -a %{buildroot}%{_bindir}/ksflatten
+%python_clone -a %{buildroot}%{_mandir}/man1/ksflatten.1
+%python_clone -a %{buildroot}%{_bindir}/ksshell
+%python_clone -a %{buildroot}%{_mandir}/man1/ksshell.1
+%python_clone -a %{buildroot}%{_bindir}/ksvalidator
+%python_clone -a %{buildroot}%{_mandir}/man1/ksvalidator.1
+%python_clone -a %{buildroot}%{_bindir}/ksverdiff
+%python_clone -a %{buildroot}%{_mandir}/man1/ksverdiff.1
 
 %check
 %python_expand PYTHONPATH=.. $python -m unittest discover -v
+
+
+%post
+%python_install_alternative ksflatten ksflatten.1%{?ext_man}
+%python_install_alternative ksshell ksshell.1%{?ext_man}
+%python_install_alternative ksvalidator ksvalidator.1%{?ext_man}
+%python_install_alternative ksverdiff ksverdiff.1%{?ext_man}
+
+
+%postun
+%python_uninstall_alternative ksflatten ksflatten.1%{?ext_man}
+%python_uninstall_alternative ksshell ksshell.1%{?ext_man}
+%python_uninstall_alternative ksvalidator ksvalidator.1%{?ext_man}
+%python_uninstall_alternative ksverdiff ksverdiff.1%{?ext_man}
 
 
 %files %{python_files}
@@ -80,7 +102,14 @@ and a writer to generate kickstart files.
 %doc docs/kickstart-docs.txt
 %{python_sitelib}/%{mod_name}/
 %{python_sitelib}/%{mod_name}-*
-%python3_only %{_bindir}/*
-%python3_only %{_mandir}/man1/*
+%python_alternative %{_bindir}/ksflatten
+%python_alternative %{_mandir}/man1/ksflatten.1%{?ext_man}
+%python_alternative %{_bindir}/ksshell
+%python_alternative %{_mandir}/man1/ksshell.1%{?ext_man}
+%python_alternative %{_bindir}/ksvalidator
+%python_alternative %{_mandir}/man1/ksvalidator.1%{?ext_man}
+%python_alternative %{_bindir}/ksverdiff
+%python_alternative %{_mandir}/man1/ksverdiff.1%{?ext_man}
+
 
 %changelog
