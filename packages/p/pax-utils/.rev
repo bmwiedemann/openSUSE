@@ -172,4 +172,16 @@
     <comment></comment>
     <requestid>828138</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f38da6597eaa1469203e8ff6c0ee893f</srcmd5>
+    <version>1.2.8</version>
+    <time>1612272316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.8.
+- Changes since 1.2.6:
+  - Add support for arm64 arch.
+  - Add flag -U/--uuid to dump the object's UUID.
+    This is in particular useful when comparing against TextAPI stubs, .tbd files. (forwarded request 868409 from crazybyte)</comment>
+    <requestid>868413</requestid>
+  </revision>
 </revisionlist>

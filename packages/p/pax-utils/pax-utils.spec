@@ -1,7 +1,7 @@
 #
 # spec file for package pax-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pax-utils
-Version:        1.2.6
+Version:        1.2.8
 Release:        0
 Summary:        Tools to Check ELF Files for Security Relevant Properties
 License:        GPL-2.0-or-later

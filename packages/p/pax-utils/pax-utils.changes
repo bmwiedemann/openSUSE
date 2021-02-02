@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  1 14:24:19 UTC 2021 - Gianluca Gabrielli <gianluca.gabrielli@suse.com>
+
+- Update to 1.2.8.
+- Changes since 1.2.6:
+  - Add support for arm64 arch.
+  - Add flag -U/--uuid to dump the object's UUID.
+    This is in particular useful when comparing against TextAPI stubs, .tbd files.
+
+-------------------------------------------------------------------
 Tue Jul 21 14:21:17 UTC 2020 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to 1.2.6.
