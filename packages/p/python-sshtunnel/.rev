@@ -32,4 +32,30 @@
   * Introduce block_on_close attribute</comment>
     <requestid>717579</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e1d4043478c6d6706b213a7c7647f28</srcmd5>
+    <version>0.4.0</version>
+    <time>1612272341</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+    + Change the daemon mod flag for all tunnel threads (is not fully backward
+      compatible) to prevent unexpected hangs (`#219`_) + Add docker based end to end
+      functinal tests for Mongo/Postgres/MySQL
+    + Add docker based end to end hangs tests
+    + Fix host key directory detection
+    + Unify default ssh config folder to `~/.ssh`
+    + Increase open connection timeout to 10 secods
+    + Change default with context behavior to use `.stop(force=True)` on exit
+    + Remove useless `daemon_forward_servers = True` hack for hangs prevention
+    + Set transport keepalive to 5 second by default
+    + Set default transport timeout to 0.1
+    + Deprecate and remove `block_on_close` option
+    + Fix &quot;deadlocks&quot; / &quot;tunneling hangs&quot;
+    + Add `.stop(force=True)` for force close active connections
+    + Fixes bug with orphan thread for a tunnel that is DOWN 
+    + Support IPv6 without proxy command. Use built-in paramiko create socket
+      logic. The logic tries to use ipv6 socket family first, then ipv4 socket
+      family.</comment>
+    <requestid>868477</requestid>
+  </revision>
 </revisionlist>

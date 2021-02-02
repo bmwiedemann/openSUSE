@@ -1,7 +1,7 @@
 #
 # spec file for package python-sshtunnel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sshtunnel
-Version:        0.1.5
+Version:        0.4.0
 Release:        0
 Summary:        SSH tunnels to remote server
 License:        MIT
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pahaz/sshtunnel/
 Source:         https://files.pythonhosted.org/packages/source/s/sshtunnel/sshtunnel-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module paramiko >= 1.15.2}
+BuildRequires:  %{python_module paramiko >= 2.7.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 # for the tests to validate some things
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  openssh
 BuildRequires:  python-rpm-macros
 Requires:       openssh
-Requires:       python-paramiko >= 1.15.2
+Requires:       python-paramiko >= 2.7.2
 BuildArch:      noarch
 %python_subpackages
 

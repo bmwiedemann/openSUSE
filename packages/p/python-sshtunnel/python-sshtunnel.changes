@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb  1 22:00:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+    + Change the daemon mod flag for all tunnel threads (is not fully backward
+      compatible) to prevent unexpected hangs (`#219`_) + Add docker based end to end
+      functinal tests for Mongo/Postgres/MySQL
+    + Add docker based end to end hangs tests
+    + Fix host key directory detection
+    + Unify default ssh config folder to `~/.ssh`
+    + Increase open connection timeout to 10 secods
+    + Change default with context behavior to use `.stop(force=True)` on exit
+    + Remove useless `daemon_forward_servers = True` hack for hangs prevention
+    + Set transport keepalive to 5 second by default
+    + Set default transport timeout to 0.1
+    + Deprecate and remove `block_on_close` option
+    + Fix "deadlocks" / "tunneling hangs"
+    + Add `.stop(force=True)` for force close active connections
+    + Fixes bug with orphan thread for a tunnel that is DOWN 
+    + Support IPv6 without proxy command. Use built-in paramiko create socket
+      logic. The logic tries to use ipv6 socket family first, then ipv4 socket
+      family.
+
+-------------------------------------------------------------------
 Mon Jul 22 12:49:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.1.5:
