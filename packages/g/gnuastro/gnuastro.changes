@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 30 07:55:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.14 (library 12.0.0):
+  * new program Query ('astquery') to query to external datasets
+    and retrieve the resulting datasets from the command-line.
+    The package now recommends curl for this purpose.
+  * Gnuastro programs will first attempt to write the array in RAM,
+    only when it fails will they use a memory-mapped file.
+    Directory changes from .gnuastro_mmap to gnuastro_mmap
+  * Various documentation updates, extensions and fixes
+- remove obsolete texinfo packaging macros
+
+-------------------------------------------------------------------
 Sat Sep 12 09:26:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.13 (library 11.0.0):

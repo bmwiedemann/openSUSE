@@ -1,7 +1,7 @@
 #
 # spec file for package gnuastro
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 11
+%define sover 12
 %bcond_with     tests
 Name:           gnuastro
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
@@ -36,9 +36,8 @@ BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(wcslib)
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 Recommends:     %{name}-doc
+Recommends:     curl
 Recommends:     ghostscript_any >= 9.10
 %if %{with tests}
 BuildRequires:  ghostscript_any
@@ -93,15 +92,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libgnuastro%{sover} -p /sbin/ldconfig
 %postun -n libgnuastro%{sover} -p /sbin/ldconfig
-%post doc
-for infoname in %{name}.info %{name}.info-{1..6}; do
-%install_info --info-dir=%{_infodir} %{_infodir}/${infoname}.gz
-done
-
-%preun doc
-for infoname in %{name}.info %{name}.info-{1..6}; do
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/${infoname}.gz
-done
 
 %files
 %license COPYING*
