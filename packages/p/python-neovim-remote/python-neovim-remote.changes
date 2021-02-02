@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 31 08:22:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch to using update-alternatives(1) to avoid collisions.
+
+-------------------------------------------------------------------
 Thu Dec  5 01:31:44 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Upgade to 2.4.0:

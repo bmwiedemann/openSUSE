@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim-remote
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Summary:        Neovim process control utility
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mhinz/neovim-remote
-Source0:        https://files.pythonhosted.org/packages/source/n/%{modname}/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/n/neovim-remote/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module neovim}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
@@ -34,8 +34,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,6 +55,7 @@ sed -i -e '1{\@^#!\s*%{_bindir}/env python@d}' nvr/nvr.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/nvr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,8 +63,14 @@ sed -i -e '1{\@^#!\s*%{_bindir}/env python@d}' nvr/nvr.py
 # diagnostic output.
 %python_expand PYTHONPATH=. py.test-%{$python_bin_suffix} -v tests
 
+%post
+%python_install_alternative nvr
+
+%postun
+%python_uninstall_alternative nvr
+
 %files %{python_files}
-%{_bindir}/nvr
+%python_alternative %{_bindir}/nvr
 %{python_sitelib}/*
 
 %changelog

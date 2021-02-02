@@ -41,4 +41,13 @@
   - improved support for IPv6</comment>
     <requestid>754206</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>408d1d41b8ff42bfce3336f9aec6b7cb</srcmd5>
+    <version>2.4.0</version>
+    <time>1612272291</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to using update-alternatives(1) to avoid collisions.
+</comment>
+    <requestid>868124</requestid>
+  </revision>
 </revisionlist>
