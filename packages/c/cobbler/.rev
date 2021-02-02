@@ -1183,4 +1183,12 @@ D fixes-a-template-rendering-error.patch
     <comment></comment>
     <requestid>848373</requestid>
   </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>7abcbe83744aba0034cc0365b8d9ccec</srcmd5>
+    <version>3.1.2</version>
+    <time>1612272297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868358</requestid>
+  </revision>
 </revisionlist>

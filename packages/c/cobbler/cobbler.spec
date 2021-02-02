@@ -1,4 +1,4 @@
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,7 +103,7 @@
 # To ensure correct byte compilation
 %global __python %{__python3}
 
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 %global devsuffix dev
 %else
 %global devsuffix devel
@@ -117,7 +117,7 @@ Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
 
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 Packager:       Cobbler Developers <cobbler@lists.fedorahosted.org>
 Group:          admin
 %endif
@@ -136,6 +136,8 @@ Patch1:         refactored_auth_module.diff
 Patch2:         load_module_apache_suse_fix.diff
 Patch3:         fix-for-old-str.join-usage.diff
 Patch4:         remove-redundant-json-suffix.diff
+Patch5:		better-string-replacement-performance.diff
+Patch6:		fix-string-replacement.diff
 
 BuildRequires:  git-core
 BuildRequires:  %{system_release_pkg}
@@ -143,7 +145,7 @@ BuildRequires:  python%{python3_pkgversion}-%{devsuffix}
 %if 0%{?suse_version}
 BuildRequires:  python-rpm-macros
 %endif
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 BuildRequires:  python3-deb-macros
 BuildRequires:  apache2-deb-macros
 
@@ -172,7 +174,7 @@ BuildRequires:  systemd
 %if 0%{?fedora} >= 30 || 0%{?rhel} >= 9 || 0%{?suse_version}
 BuildRequires:  systemd-rpm-macros
 %endif
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 BuildRequires:  systemd-deb-macros
 Requires:       systemd-sysv
 Requires(post): python3-minimal
@@ -219,7 +221,7 @@ Recommends:     %{grub2_ia32_efi_pkg}
 Recommends:     logrotate
 %endif
 # https://github.com/cobbler/cobbler/issues/1685
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 Requires:       init-system-helpers
 %else
 Requires:       /sbin/service
@@ -273,6 +275,8 @@ Unit test files from the Cobbler project
 %endif
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions
@@ -317,13 +321,13 @@ cp -r tests/ %{buildroot}/%{_datadir}/cobbler/
 
 
 %pre
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 if [ "$1" = "upgrade" ]; then
 %else
 if [ $1 -ge 2 ]; then
 %endif
     # package upgrade: backup configuration
-    DATE=$(date "+%Y%m%d-%H%M%S")
+    DATE=$(date "+%%Y%%m%%d-%%H%%M%%S")
     if [ ! -d "%{_sharedstatedir}/cobbler/backup/upgrade-${DATE}" ]; then
         mkdir -p "%{_sharedstatedir}/cobbler/backup/upgrade-${DATE}"
     fi
@@ -337,7 +341,7 @@ if [ $1 -ge 2 ]; then
     fi
 fi
 
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 %post
 %{py3_bytecompile_post %{name}}
 %{systemd_post cobblerd.service}
@@ -377,7 +381,7 @@ fi
 %endif
 
 %post web
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 # Work around broken attr support
 # Cf. https://github.com/debbuild/debbuild/issues/160
 chown %{apache_user}:%{apache_group} %{_datadir}/cobbler/web
@@ -484,7 +488,7 @@ sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{_datadir}/cobbler
 %license COPYING
 %doc AUTHORS.in README.md
 %config(noreplace) %{apache_etc}/vhosts.d/cobbler_web.conf
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 # Work around broken attr support
 # Cf. https://github.com/debbuild/debbuild/issues/160
 %{_datadir}/cobbler/web
