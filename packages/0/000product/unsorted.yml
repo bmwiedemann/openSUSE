@@ -7632,6 +7632,7 @@ unsorted:
   - kemoticons-devel-32bit: [x86_64] 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -27984,7 +27985,6 @@ unsorted:
   - ruby2.7-rubygem-ruby-augeas-doc 
   - ruby2.7-rubygem-ruby-filemagic-doc 
   - ruby2.7-rubygem-ruby-filemagic-testsuite 
-  - ruby2.7-rubygem-ruby-libvirt-doc 
   - ruby2.7-rubygem-ruby-openid-doc 
   - ruby2.7-rubygem-ruby-openid-testsuite 
   - ruby2.7-rubygem-ruby-progressbar-doc 
@@ -29061,7 +29061,6 @@ unsorted:
   - ruby3.0-rubygem-ruby-filemagic-doc 
   - ruby3.0-rubygem-ruby-filemagic-testsuite 
   - ruby3.0-rubygem-ruby-libvirt 
-  - ruby3.0-rubygem-ruby-libvirt-doc 
   - ruby3.0-rubygem-ruby-openid 
   - ruby3.0-rubygem-ruby-openid-doc 
   - ruby3.0-rubygem-ruby-openid-testsuite 
