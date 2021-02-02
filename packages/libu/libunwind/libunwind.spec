@@ -1,7 +1,7 @@
 #
 # spec file for package libunwind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libunwind
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Call chain detection library
 License:        MIT
@@ -27,12 +27,11 @@ Source0:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{ver
 Source1:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         libunwind_U_dyn_info_list.patch
 BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(atomic_ops)
-ExclusiveArch:  %{ix86} ia64 x86_64 %{arm} ppc ppc64 ppc64le aarch64 s390x
+ExcludeArch:    s390 riscv64
 
 %description
 A C programming interface (API) to determine the call chain of a program.
@@ -46,18 +45,17 @@ Requires:       %{name} = %{version}
 A C programming interface (API) to determine the call chain of a program.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%setup -q
 
 %build
 %configure \
     --enable-minidebuginfo
-make %{?_smp_mflags}
+%make_build
 
 %check
 %if ! 0%{?qemu_user_space_build}
 # run-coredump-unwind fails
-make check %{?_smp_mflags} || :
+%make_build check || :
 %endif
 
 %install
