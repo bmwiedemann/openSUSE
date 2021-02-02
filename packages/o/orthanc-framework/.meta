@@ -1,5 +1,0 @@
-<package name="orthanc-framework" project="openSUSE:Factory">
-  <title>Framework required to build plugins</title>
-  <description></description>
-  <devel project="graphics" package="orthanc-framework"/>
-</package>
