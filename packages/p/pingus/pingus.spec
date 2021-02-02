@@ -1,7 +1,7 @@
 #
 # spec file for package pingus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,9 @@ URL:            https://pingus.seul.org/
 # Packed as tar.bz2
 Source0:        %{name}-%{version}+git-6a1153a.tar.bz2
 # PATCH-FIX-UPSTREAM Issue 136, Add .desktop file to source package
-Source1:        %{name}.desktop
+Source1:        https://gitlab.com/pingus/pingus/-/raw/dddd6be31a04d7cadd71ca6e5d3e292d73c270c9/%{name}.desktop
+# PATCH-FEATURE-UPSTREAM
+Source2:        https://gitlab.com/pingus/pingus/-/raw/62e3f61ad704563e09d0a2ed8f4d369ba5a0167e/%{name}.appdata.xml
 # PATCH-FIX-UPSTREAM pingus-0.7.6-Makefile.patch -- Issue 144, use /usr for prefix, fix man, permissions
 Patch1:         %{name}-%{version}-Makefile.patch
 # PATCH-FIX-UPSTREAM pingus-0.7.6-SConscript.patch -- Issue 145, Fix linking against X11 and adds wii support
@@ -117,13 +119,13 @@ scons %{?_smp_mflags} CCFLAGS="%{optflags}" with_wiimote=%{with_wiimote} \
 %install
 %make_install
 
-# install icons
 install -Dm 0644 data/images/icons/pingus.png %{buildroot}/%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 install -Dm 0644 data/images/icons/pingus-icon.png %{buildroot}/%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
-install -Dm 0644 data/images/icons/pingus.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.png
+install -Dm 0644 data/images/icons/pingus.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
-# install Desktop file
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}
@@ -136,7 +138,8 @@ install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_bindir}/%{name}
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/
+%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/%{name}
 
 %changelog
