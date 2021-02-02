@@ -742,4 +742,16 @@ all changed Requires/Buildrequires seem to be available
     <comment>switch to victoria</comment>
     <requestid>841206</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b65c4d15eff319a3ec6743715aad97bc</srcmd5>
+    <version>8.3.3</version>
+    <time>1612272346</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 8.3.3
+  - sphinxext: Add 'merge_domaindata'
+  - Update TOX_CONSTRAINTS_FILE for stable/victoria
+  - Update .gitreview for stable/victoria
+  - Add a new type HostDomain.</comment>
+    <requestid>868497</requestid>
+  </revision>
 </revisionlist>

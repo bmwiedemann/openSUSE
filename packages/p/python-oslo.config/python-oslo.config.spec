@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.config
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.config
-Version:        8.3.2
+Version:        8.3.3
 Release:        0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.config
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-8.3.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-8.3.3.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-debtcollector >= 1.2.0
@@ -91,13 +91,13 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo-config library.
 
 %prep
-%autosetup -p1 -n oslo.config-8.3.2
+%autosetup -p1 -n oslo.config-8.3.3
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=8.3.2 PYTHONPATH=. \
+PBR_VERSION=8.3.3 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}

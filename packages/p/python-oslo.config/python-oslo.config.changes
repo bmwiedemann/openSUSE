@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  2 00:38:32 UTC 2021 - cloud-devel@suse.de
+
+- update to version 8.3.3
+  - sphinxext: Add 'merge_domaindata'
+  - Update TOX_CONSTRAINTS_FILE for stable/victoria
+  - Update .gitreview for stable/victoria
+  - Add a new type HostDomain.
+
+-------------------------------------------------------------------
 Fri Oct  9 19:16:51 UTC 2020 - cloud-devel@suse.de
 
 - update to version 8.3.2
