@@ -579,4 +579,12 @@ The new default is much safer and will reduce the effect application channel lea
     <comment></comment>
     <requestid>844029</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>21f7329ced2d777086c5a171fcdd1724</srcmd5>
+    <version>3.8.11</version>
+    <time>1612272314</time>
+    <user>dimstar_suse</user>
+    <comment>update rabbitmq-server to version 3.8.11</comment>
+    <requestid>868400</requestid>
+  </revision>
 </revisionlist>

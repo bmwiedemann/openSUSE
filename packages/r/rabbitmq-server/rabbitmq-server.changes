@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Feb  1 03:31:44 PM UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update to RabbitMQ 3.8.11
+
+  * Quorum queues that had active consumers during a rolling
+    cluster upgrade could run into an exception and restart loop.
+
+  * Nodes that had reverse_dns_lookup set to true could not accept
+    client connections.
+
+- Update to RabbitMQ 3.8.10
+
+  * This release deprecates boot time definition import build into
+    the management plugin.
+
+  * Repeated polling of a quorum queue with basic.get that yielded
+    an empty response could result in an unbounded growth of log
+    segment files on on disk.
+
+  * RabbitMQ core plugin activation was revisited to be closer to
+    that of 3.7.x. This does not any related improvements w.r.t.
+    definition import, e.g. those introudced in RabbitMQ 3.8.6.
+
+  * Syslog dependency was not started correctly. This meant no log
+    messages were sent to Syslog.
+
+  * rabbitmq-diagnostics check_if_node_is_quorum_critical returned
+    a false positive for a node marked for maintenance.
+
+  * Queues could update their internal bookkeeping state
+    incorrectly in some cases, leading to a file_handle_cache
+    operation exception.
+
+  * Quorum queues now can use the reject-publish max length
+    overflow strategy.
+
+  * Quorum queues now support consumer priority.
+
+  * Per-user connection and queue limits. This is similar to
+    per-vhost limits but, as the name suggests, these limits are
+    associated for a given user.
+
+  * TLSv1.3 is no longer considered experimental (on Erlang 23) and
+    excluded from TLS listener configuration.
+
+  * When a node is put under maintenance, it will now stop all
+    local quorum queue replicas after completing leadership
+    transfer. This means that no quorum queue replicas on the node
+    will be considered for leader elections.
+
+  * Nodes now keep track of failed client authentication attempts
+    and expose it as a metric via both the Prometheus endpoint and
+    the HTTP API at GET /api/auth/attempts/{node}.
+
+  * bypass_pem_cache is a new configuration key that makes it
+    possible to disable the cache of PEM files used by the Erlang
+    TLS implementation. This rotated certificates quicker to detect
+    for nodes but can also increase latency for inbound TLS
+    connections, e.g. under high connection churn scenarios.
+
+  * Definition import now safely handles some missing queue object
+    arguments.
+
+  * rabbitmq.conf schema now allows for peer certificate chain
+    verification depth to be set to zero. When this value is used,
+    peer certificate must be signed by a trusted CA certificate
+    directly in order for the verification to pass.
+
+  * RABBITMQ_IO_THREAD_POOL_SIZE will no longer be respected by
+    RabbitMQ nodes. It is no longer relevant with supported Erlang
+    versions and will simplify rabbitmq-diagnostics
+    runtime_thread_stats output.
+
+  * The +K runtime parameter is no longer used by RabbitMQ nodes as
+    it has no effect with supported Erlang versions.
+
+-------------------------------------------------------------------
+Mon Nov 23 15:38:36 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- %insserv_prereq is only requires when !have_systemd
+
+-------------------------------------------------------------------
 Tue Oct 20 09:30:39 UTC 2020 - Gabriele Santomaggio <g.santomaggio@gmail.com>
 
 - Update to RabbitMQ 3.8.9

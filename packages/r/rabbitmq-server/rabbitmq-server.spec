@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-server
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define _make_args DESTDIR="%{buildroot}" PREFIX="%{_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MAN_INSTALL_PATH="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
 
 Name:           rabbitmq-server
-Version:        3.8.9
+Version:        3.8.11
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -55,7 +55,7 @@ Source10:       advanced.config.example
 Source11:       rabbitmq.config.example
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
-BuildRequires:  erlang >= 21.3
+BuildRequires:  erlang >= 22.3
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
 BuildRequires:  libxslt
@@ -65,14 +65,13 @@ BuildRequires:  unzip
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zip
-Requires:       erlang >= 21.3
+Requires:       erlang >= 22.3
 Requires:       erlang-epmd
 Requires:       logrotate
 Provides:       AMQP-server
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
-Requires(pre):  %insserv_prereq
 Requires:       rabbitmq-server-plugins
 %if 0%{?suse_version} > 1140
 BuildRequires:  pkgconfig(systemd)
@@ -82,6 +81,7 @@ Requires:       socat
 %else
 Requires:       %fillup_prereq
 Requires:       %insserv_prereq
+Requires(pre):  %insserv_prereq
 %endif
 # Do not use noarch since the Erlang packaging does not really allow that
 #BuildArch:      noarch
