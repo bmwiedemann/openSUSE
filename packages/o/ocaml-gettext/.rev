@@ -44,4 +44,12 @@
   Compatibility with OCaml 4.11</comment>
     <requestid>828685</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2e4cb37694d1165093abaf55e3efa444</srcmd5>
+    <version>0.4.2</version>
+    <time>1612272285</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency to ounit via _multibuild</comment>
+    <requestid>867970</requestid>
+  </revision>
 </revisionlist>

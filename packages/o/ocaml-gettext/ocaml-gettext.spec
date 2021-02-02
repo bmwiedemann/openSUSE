@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gettext
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,15 @@
 #
 
 
-Name:           ocaml-gettext
+%define build_flavor @BUILD_FLAVOR@%{nil}
+%if "%{build_flavor}" == "testsuite"
+%define nsuffix -testsuite
+%else
+%define nsuffix %{nil}
+%endif
+
+%define     pkg ocaml-gettext
+Name:           %{pkg}%{nsuffix}
 Version:        0.4.2
 Release:        0
 %{?ocaml_preserve_bytecode}
@@ -24,17 +32,25 @@ Summary:        OCaml library for i18n
 License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/gettext
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml-rpm-macros >= 20210121
+%if 1
 BuildRequires:  ocamlfind(camomile)
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(cppo)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(fileutils)
+%endif
+
+%if "%{build_flavor}" == "testsuite"
+BuildRequires:  ocamlfind(fileutils)
+BuildRequires:  ocamlfind(gettext)
 BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(str)
+%endif
+
 # ocaml-gettext program needs camomile data files
 Requires:       ocaml-camomile-data
 #
@@ -70,26 +86,34 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pkg}-%{version}
 
 %build
 dune_release_pkgs='gettext,gettext-camomile,gettext-stub'
 %ocaml_dune_setup
+%if "%{build_flavor}" == ""
 %ocaml_dune_build
+%endif
 
 %install
+%if "%{build_flavor}" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
 grep -m1 '%%dir' %{name}.files.devel | tee %{name}.files.stub-devel
+%endif
 
+%if "%{build_flavor}" == "testsuite"
 %check
-dune_test_tolerate_fail='dune_test_tolerate_fail'
 %ocaml_dune_test
+%endif
 
+%if "%{build_flavor}" == ""
 %files -f %{name}.files
 %{_bindir}/*
 %{_mandir}/*/*
 
 %files devel -f %{name}.files.devel
+
+%endif
 
 %changelog
