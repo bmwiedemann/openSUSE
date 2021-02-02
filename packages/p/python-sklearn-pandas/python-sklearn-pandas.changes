@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 28 19:44:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to version 2.0.4
+  * Explicitly handling serialization (#224)
+  * document fixes
+  * Making transform function thread safe (#194)
+  * Switched to nox for unit testing (#226)
+- Changlog for 2.0.3
+  * Added elapsed time information for each feature.
+- Skip python36 build because of SciPy 1.6.0  
+- Get the GitHub archive for the tests and run them
+- No extra mock required
+
+-------------------------------------------------------------------
 Sat Oct 10 19:08:06 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
