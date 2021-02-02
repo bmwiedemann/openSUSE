@@ -1,0 +1,9 @@
+<package name="qatlib" project="openSUSE:Factory">
+  <title>Intel QuickAssist Technology Library</title>
+  <description>This package provides user space libraries that allow access to Intel(R)
+QuickAssist devices for hardware-accelerated cryptography.
+The QuickAssist APIs allow for finer control over the qat_4xxx devices
+than the more general libkcapi.
+</description>
+  <devel project="security" package="qatlib"/>
+</package>
