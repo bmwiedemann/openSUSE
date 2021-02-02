@@ -1,0 +1,6 @@
+<package name="local-npm-registry" project="openSUSE:Factory">
+  <title>local-npm-registry</title>
+  <description>Provides localhost-only representation of NPM registry allowing networkless `npm install`</description>
+  <devel project="devel:languages:javascript" package="local-npm-registry"/>
+  <url>https://github.com/openSUSE/npm-localhost-proxy</url>
+</package>

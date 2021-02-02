@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Jan 26 14:43:10 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to 0.0.2: fixes uncaught exceptions
+- work with quilt when unpacking archive 
+
+-------------------------------------------------------------------
+Mon Jan 18 16:16:21 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Initial version 0.0.1
+
+
