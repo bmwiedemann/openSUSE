@@ -368,4 +368,36 @@ prerequisite for new python submission</comment>
     <comment></comment>
     <requestid>862532</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5b6ef319f1746b33b33a86f2e3650dcc</srcmd5>
+    <version>20210131.ec7577b</version>
+    <time>1612272272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210131.ec7577b:
+  * remove old commented path finding section
+  * expand python_subpackage_only not earlier than in python_subpackages call
+  * make the path and var macros return a non-interrupted string even when the flavor is not installed
+
+- Update to version 20210131.1450767:
+  * only add parentheses when boolean operators are used
+  * sync buildset definitions with Factory
+  * fix typo
+
+- Update to version 20210127.3a18043:
+  * dont't rename wheel when it already has the same name
+
+- Update to version 20210126.fea1c1f:
+  * Document python_module with boolean dependecies
+  * workaround undetected abi and platform tags gh#openSUSE/python-rpm-macros#93
+
+- Update to version 20210121.ef5b8b9:
+  * Add %python pseudo-macro for %python_modules -- server and rpm version
+
+- Update to version 20210117.63cf413:
+  * improve flavor variable naming in python_expand
+
+- Update to version 20210116.2682657:
+  * remove python2 not found error</comment>
+    <requestid>868221</requestid>
+  </revision>
 </revisionlist>

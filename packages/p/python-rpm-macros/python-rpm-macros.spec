@@ -17,7 +17,7 @@
 
 
 Name:           python-rpm-macros
-Version:        20210112.86f4d9d
+Version:        20210131.ec7577b
 Release:        0
 Summary:        RPM macros for building of Python modules
 License:        WTFPL
