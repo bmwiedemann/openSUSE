@@ -1878,4 +1878,11 @@ successfully tested on Tumbleweed x86_64</comment>
 - Set database type for address_verify_map and postscreen_cache_map</comment>
     <requestid>867220</requestid>
   </revision>
+  <revision rev="197" vrev="5">
+    <srcmd5>047f066a8c3b590bf57bb4f2d6e4ca9f</srcmd5>
+    <version>3.5.8</version>
+    <time>1612271694</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1180473 - once again</comment>
+  </revision>
 </revisionlist>
