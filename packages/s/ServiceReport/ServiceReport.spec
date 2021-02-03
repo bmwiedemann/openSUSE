@@ -1,7 +1,7 @@
 #
 # spec file for package ServiceReport
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,18 @@
 #
 
 
+%define libversion %(echo %{version} | sed -e "s/+git.*//")
+
 # By default python 3 is used to build the package.
 %define python python3
 Name:           ServiceReport
-Version:        2.2.2
+Version:        2.2.2+git10.1caca0630e36
 Release:        0
 Summary:        A tool to validate and repair First Failure Data Capture (FFDC) configuration
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/linux-ras/ServiceReport
-Source0:        https://github.com/linux-ras/%{name}/archive/v%{version}/%{name}-v%{version}.tar.gz
-Patch1:         0001-Add-active-dump-check-in-kdump-and-FADump-plugin.patch
-Patch2:         0002-Introduce-a-new-option-to-mark-plugins-optional.patch
-Patch3:         0003-HTX-Mark-HTX-plugin-as-optional.patch
-Patch4:         0004-Add-new-option-to-run-all-applicable-plugins.patch
-Patch5:         0005-Allow-distro-classes-to-redefine-the-capture-kernel-.patch
-Patch6:         0006-utils-remove-the-invalid-function-call-to-walk_packa.patch
-Patch7:         0007-Update-data-files-of-the-project.patch
-Patch8:         0008-Run-servicereport-using-python3-binary.patch
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  %{python}
 BuildRequires:  %{python}-setuptools
 BuildRequires:  systemd-rpm-macros
@@ -78,10 +72,10 @@ the incorrect configuration
 
 %if "%{python}" == "python3"
 %{python3_sitelib}/servicereportpkg
-%{python3_sitelib}/%{name}-%{version}*.egg-info
+%{python3_sitelib}/%{name}-%{libversion}*.egg-info
 %else
 %{python_sitelib}/servicereportpkg
-%{python_sitelib}/%{name}-%{version}*.egg-info
+%{python_sitelib}/%{name}-%{libversion}*.egg-info
 %endif
 
 %changelog

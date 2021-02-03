@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 03 10:33:36 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 2.2.2+git10.1caca0630e36 (bsc#1181729 ltc#191203):
+  * Update SLES crashkernel recommendation values
+  * update HTX service name
+- Remove the already included patches
+  - 0001-Add-active-dump-check-in-kdump-and-FADump-plugin.patch
+  - 0002-Introduce-a-new-option-to-mark-plugins-optional.patch
+  - 0003-HTX-Mark-HTX-plugin-as-optional.patch
+  - 0004-Add-new-option-to-run-all-applicable-plugins.patch
+  - 0005-Allow-distro-classes-to-redefine-the-capture-kernel-.patch
+  - 0006-utils-remove-the-invalid-function-call-to-walk_packa.patch
+  - 0007-Update-data-files-of-the-project.patch
+  - 0008-Run-servicereport-using-python3-binary.patch
+
+-------------------------------------------------------------------
 Tue Nov  3 11:37:00 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to upstream git (jsc#SLE-13288).
