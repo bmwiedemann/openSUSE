@@ -218,4 +218,18 @@
   + copr: don't try to list runtime dependencies</comment>
     <requestid>843804</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32cabf77b6819f3fd26261506a628e84</srcmd5>
+    <version>4.0.19</version>
+    <time>1612378553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.19
+  + copr: allow only 2 arguments with copr enable command
+  + [needs-restarting] fix -r in nspawn containers (rh#1913962, rh#1914251)
+  + Add --gpgcheck option to reposync (rh#1856818) (rh#1856818)
+  + Re-introduce yum-groups-manager functionality (rh#1826016)
+  + [repomanage] Don't use cached metadata (rh#1899852)
+  + [needs-restarting] add -s to list services (rh#1772939) (rh#1772939)</comment>
+    <requestid>868795</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  3 02:10:58 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.19
+  + copr: allow only 2 arguments with copr enable command
+  + [needs-restarting] fix -r in nspawn containers (rh#1913962, rh#1914251)
+  + Add --gpgcheck option to reposync (rh#1856818) (rh#1856818)
+  + Re-introduce yum-groups-manager functionality (rh#1826016)
+  + [repomanage] Don't use cached metadata (rh#1899852)
+  + [needs-restarting] add -s to list services (rh#1772939) (rh#1772939)
+
+-------------------------------------------------------------------
 Sat Oct 24 16:59:18 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.18
