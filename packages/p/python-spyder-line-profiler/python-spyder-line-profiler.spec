@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  spyder >= 4
 Requires:       python-line_profiler
 Requires:       spyder >= 4
+Provides:       python3-spyder-line-profiler = %{version}-%{release}
+Provides:       python3-spyder_line_profiler = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  python3-pytest-qt
