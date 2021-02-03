@@ -1,0 +1,6 @@
+<package name="perl-Parse-MIME" project="openSUSE:Factory">
+  <title>Parse mime-types, match against media ranges</title>
+  <description>This module provides basic functions for handling mime-types. It can handle matching mime-types against a list of media-ranges. See section 14.1 of the HTTP specification [RFC 2616] for a complete explanation: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1</description>
+  <devel project="devel:languages:perl" package="perl-Parse-MIME"/>
+  <url>https://metacpan.org/release/Parse-MIME</url>
+</package>
