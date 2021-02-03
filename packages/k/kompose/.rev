@@ -15,4 +15,12 @@
     <comment>- Require python3-PyYAML (forwarded request 822957 from RBrownSUSE)</comment>
     <requestid>822958</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e19098514572929464c2e6e3f8b70fd4</srcmd5>
+    <version>1.21.0</version>
+    <time>1612378543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868686</requestid>
+  </revision>
 </revisionlist>
