@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  3 16:30:05 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.25.1:
+  - Added `close` action
+    - Close preview window if open, abort fzf otherwise
+  - Bug fixes and improvements
+
+-------------------------------------------------------------------
 Sun Jan  3 07:16:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Text attributes set in --color are not reset when fzf sees another

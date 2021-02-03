@@ -214,4 +214,16 @@
 </comment>
     <requestid>859924</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>46d0396cba5ca8030814a8b56815f96a</srcmd5>
+    <version>0.25.1</version>
+    <time>1612378605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.1:
+  - Added `close` action
+    - Close preview window if open, abort fzf otherwise
+  - Bug fixes and improvements
+</comment>
+    <requestid>868989</requestid>
+  </revision>
 </revisionlist>
