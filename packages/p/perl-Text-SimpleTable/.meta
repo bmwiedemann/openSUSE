@@ -1,0 +1,6 @@
+<package name="perl-Text-SimpleTable" project="openSUSE:Factory">
+  <title>Simple Eyecandy ASCII Tables</title>
+  <description>Simple eyecandy ASCII tables.</description>
+  <devel project="devel:languages:perl" package="perl-Text-SimpleTable"/>
+  <url>https://metacpan.org/release/Text-SimpleTable</url>
+</package>
