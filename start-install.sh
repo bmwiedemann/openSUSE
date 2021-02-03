@@ -12,6 +12,11 @@ export KDE_SESSION_VERSION=0
 # boo#1155687
 systemctl stop nscd.service
 
+# boo#1181606
+if systemctl -q is-active packagekit.service; then
+	systemctl stop packagekit.service
+fi
+
 #The URL placeholder gets filled by live-net-installer.spec
 cat >/etc/install.inf <<EOF
 ZyppRepoURL: @URL@
