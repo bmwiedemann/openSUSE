@@ -142,4 +142,12 @@
   - Move require 5.008001 from Tiny.pm into Makefile.PL.</comment>
     <requestid>720161</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>839570ab236c8d82564bbfc7b695bc09</srcmd5>
+    <version>2.26</version>
+    <time>1612378580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868898</requestid>
+  </revision>
 </revisionlist>
