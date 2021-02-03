@@ -1,8 +1,45 @@
 -------------------------------------------------------------------
+Wed Feb  3 11:25:49 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 20.0.7
+  - Catch NotFoundException when querying quota (server#25315)
+  - CalDAV] Validate notified emails (server#25324)
+  - Fix/app fetcher php compat comparison (server#25347)
+  - Show the actual error on share requests (server#25352)
+  - Fix parameter provided as string not array (server#25366)
+  - The objectid is a string (server#25374)
+  - 20.0.7 final (server#25387)
+  - Properly handle SMB ACL blocking scanning a directory (server#25421)
+  - Don't break completely when creating the digest fail for one user (activity#556)
+  - Only attempt to use a secure view if hide download is actually set (files_pdfviewer#296)
+  - Fix opening PDF files with special characters in their name (files_pdfviewer#298)
+  - Fix PDF viewer failing on Edge (not based on Chromium) (files_pdfviewer#299)
+  - Cannot unfold plain text notifications (notifications#846)
+  - Remove EPUB mimetype (text#1391)
+
+-------------------------------------------------------------------
 Tue Jan 26 17:02:07 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 20.0.6
-  - No changelog from upstream at this time.
+  - Make sure to do priority app upgrades first (server#25077)
+  - Respect DB restrictions on number of arguments in statements and queries (server#25120)
+  - Add a hint about the direction of priority (server#25143)
+  - Do not redirect to logout after login (server#25146)
+  - Fix comparison of PHP versions (server#25152)
+  - Add "composer.lock" for acceptance tests to git (server#25178)
+  - Update CRL due to revoked gravatar.crl (server#25190)
+  - Don't log keys on checkSignature (server#25193)
+  - Update 3rdparty after Archive_Tar (server#25199)
+  - Bump CA bundle (server#25219)
+  - Update handling of user credentials (server#25225)
+  - Fix encoding issue with OC.Notification.show (server#25244)
+  - Also use storage copy when dav copying directories (server#25261)
+  - Silence log message (server#25263)
+  - Extend ILDAPProvider to allow reading arbitrairy ldap attributes for users (server#25276)
+  - Do not obtain userFolder of a federated user (server#25278)
+  - Bump pear/archive_tar from 1.4.11 to 1.4.12 (3rdparty#603)
+  - Add gitignore entry for .github folder of dependencies (3rdparty#604)
+  - Clear event array on getting them (activity#551)
 
 -------------------------------------------------------------------
 Thu Jan 14 15:41:07 UTC 2021 - ecsos <ecsos@opensuse.org>
