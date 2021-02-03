@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-terminal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+# Not really singlespec: Spyder is an app only for the primary python3 interpreter
+# But we need the python3-spyder-terminal name, provided by the python_subpackages rewrite
+%define pythons python3
 Name:           python-spyder-terminal
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        Operating system virtual terminal plugin for the Spyder IDE
 License:        MIT
@@ -31,38 +32,36 @@ URL:            https://github.com/spyder-ide/spyder-terminal
 # from the Github package.
 Source0:        https://files.pythonhosted.org/packages/source/s/spyder-terminal/spyder-terminal-%{version}.tar.gz#/%{name}-%{version}-pypi.tar.gz
 Source1:        https://github.com/spyder-ide/spyder-terminal/archive/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
+# The bundled nodejs stuff has a few files tripping rpmlint
 Source2:        %{name}-rpmlintrc
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 Requires:       python-coloredlogs
 Requires:       python-pexpect
 Requires:       python-requests
-Requires:       python-terminado
+Requires:       python-terminado >= 0.9.1
 Requires:       python-tornado
-Requires:       spyder >= 4.1.0
+Requires:       spyder >= 4.2.0
 # SECTION test requirements
-BuildRequires:  %{python_module coloredlogs}
-BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module pexpect}
-# plugin currently not tested. see below
-# BuildRequires:  %%{python_module pytest-qt}
-# BuildRequires:  %%{python_module pytest-timeout}
-# BuildRequires:  %%{python_module pytest-xvfb}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module terminado}
-BuildRequires:  %{python_module tornado}
-BuildRequires:  spyder >= 4.1.0
+BuildRequires:  python3-coloredlogs
+BuildRequires:  python3-flaky
+BuildRequires:  python3-pexpect
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-qt
+BuildRequires:  python3-pytest-timeout
+BuildRequires:  python3-pytest-xvfb
+BuildRequires:  python3-requests
+BuildRequires:  python3-terminado >= 0.9.1
+BuildRequires:  python3-tornado
+BuildRequires:  spyder >= 4.2.0
 BuildRequires:  xdpyinfo
 # /SECTION
 BuildArch:      noarch
-Provides:       spyder-terminal = %{version}-%{release}   
+Provides:       spyder-terminal = %{version}-%{release}
 Obsoletes:      spyder-terminal < %{version}-%{release}
-%ifpython3
-Provides:       spyder3-terminal = %{version}-%{release}   
+Provides:       spyder3-terminal = %{version}-%{release}
 Obsoletes:      spyder3-terminal < %{version}-%{release}
-%endif
 %python_subpackages
 
 %description
@@ -85,36 +84,34 @@ sed -i -e '/^#!\//, 1d' spyder_terminal/server/__main__.py
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/tests/print_size.py
 
 %build
-%python_build
+%python3_build
 
 %install
-%python_install
-%{python_expand # find compiled lang files and remove lang source
+%python3_install
 %find_lang spyder_terminal
-find %{buildroot}%{$python_sitelib}/spyder_terminal/locale -name '*.po*' -delete
-%fdupes %{buildroot}%{$python_sitelib}
-}
+find %{buildroot}%{python3_sitelib}/spyder_terminal/locale -name '*.po*' -delete
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
 # The unittests fail with a seccomp-bpf crash if the sandbox
 # is not disabled on i586
 export QTWEBENGINE_DISABLE_SANDBOX=1
-# Only run the server unit tests. The plugin tests abort with 
-# breakpoint trap at qapp fixture setup (pytest-qt/qtpy bug)
-%pytest spyder_terminal/server/tests
+# qtbot timeouts in OBS env
+donttest="test_terminal_paste or test_new_terminal"
+%pytest -k "not ($donttest)"
 
-%files -f spyder_terminal.lang %python_files
+%files %{python_files} -f spyder_terminal.lang
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
 %dir %{python_sitelib}/spyder_terminal
 %{python_sitelib}/spyder_terminal/{*.py*,server,widgets}
-%pycache_only %{python_sitelib}/spyder_terminal/__pycache__/
+%{python_sitelib}/spyder_terminal/__pycache__/
 %dir %{python_sitelib}/spyder_terminal/locale
 %dir %{python_sitelib}/spyder_terminal/locale/*
 %dir %{python_sitelib}/spyder_terminal/locale/*/LC_MESSAGES
 %exclude %{python_sitelib}/spyder_terminal/tests
 %exclude %{python_sitelib}/spyder_terminal/server/tests
-%{python3_sitelib}/spyder_terminal-%{version}-*.egg-info
+%{python_sitelib}/spyder_terminal-%{version}*-info
 
 %changelog

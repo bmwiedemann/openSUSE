@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:07:47 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Use the singlespec rewrite from %python_subpackages to provide
+  the python3-spyder-terminal name
+
+-------------------------------------------------------------------
+Thu Jan 28 00:05:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to Version 0.5.0
+  * for Spyder 4.2
+  * Fix the terminal with the latest version of terminado
+  * Update to the latest release of xtermjs
+- Build only for primary python3 interpreter, as Spyder does the
+  same.
+
+-------------------------------------------------------------------
 Fri Aug 28 15:49:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix package name resoulution
