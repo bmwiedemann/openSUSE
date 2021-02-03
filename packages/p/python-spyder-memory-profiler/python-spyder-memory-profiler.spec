@@ -32,6 +32,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  spyder >= 4
 Requires:       python-memory_profiler
 Requires:       spyder >= 4
+Provides:       python3-spyder-memory-profiler = %{version}-%{release}
+Provides:       python3-spyder_memory_profiler = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  python3-pytest-qt

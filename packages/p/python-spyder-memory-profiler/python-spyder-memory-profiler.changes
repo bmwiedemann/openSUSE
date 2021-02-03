@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:23:29 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide primary python3 module names for consistency with other
+  spyder extensions
+
+-------------------------------------------------------------------
 Thu Jan 28 00:44:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Not a singlespec package (never really was): Spyder is only
