@@ -1,7 +1,7 @@
 #
 # spec file for package i3-gaps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           i3-gaps
-Version:        4.19
+Version:        4.19.1
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause

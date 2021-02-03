@@ -262,4 +262,16 @@
 </comment>
     <requestid>848756</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bb5ef3ef6097943651f8741fd5ef7a3c</srcmd5>
+    <version>4.19.1</version>
+    <time>1612378551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.19.1:
+  * fix: workspaces not moving to assigned output after output becomes available
+  * doc: rofi call in default i3 config comment fixed
+  * fix: i3-config-wizard creates duplicate bindcode
+</comment>
+    <requestid>868784</requestid>
+  </revision>
 </revisionlist>

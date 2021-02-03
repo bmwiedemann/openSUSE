@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  2 21:37:38 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.19.1:
+  * fix: workspaces not moving to assigned output after output becomes available
+  * doc: rofi call in default i3 config comment fixed
+  * fix: i3-config-wizard creates duplicate bindcode
+
+-------------------------------------------------------------------
 Sun Nov 15 19:29:17 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 4.19:
