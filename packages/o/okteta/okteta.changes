@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb  3 10:19:47 UTC 2021 - wbauer@tmo.at
+
+- Update to 0.26.5
+  * Improved: Structure definitions allow custom pointer
+    interpretations in JS
+  * Improved: cursor flash time setting of 0 (= no blinking)
+    supported
+  * Improved: cursor shows char/value in background color instead
+    of blank
+  * Improved: new menu entry for selecting custom UI color scheme
+  * Improved: less deprecated Qt/KF code usage
+  * Improved: translations
+
+-------------------------------------------------------------------
+Thu Aug 27 13:43:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
 Wed Jul 29 13:34:19 UTC 2020 - wbauer@tmo.at
 
 - Update to 0.26.4

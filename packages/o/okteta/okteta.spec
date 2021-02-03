@@ -1,7 +1,7 @@
 #
 # spec file for package okteta
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define Okteta_sover 3
 %bcond_without lang
 Name:           okteta
-Version:        0.26.4
+Version:        0.26.5
 Release:        0
 Summary:        Hex Editor
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -126,7 +126,7 @@ Contains the development files for the Okteta Hex Editor.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -147,7 +147,7 @@ Contains the development files for the Okteta Hex Editor.
 %postun -n libOkteta%{Okteta_sover} -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/okteta/
 %{_kf5_applicationsdir}/org.kde.okteta.desktop
 %{_kf5_appstreamdir}/org.kde.okteta.appdata.xml
@@ -155,7 +155,7 @@ Contains the development files for the Okteta Hex Editor.
 %{_kf5_iconsdir}/hicolor/*/*/*.*
 
 %files data
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/struct2osd
 %{_kf5_configkcfgdir}/
 %{_kf5_knsrcfilesdir}/okteta-structures.knsrc
@@ -163,20 +163,20 @@ Contains the development files for the Okteta Hex Editor.
 %{_kf5_sharedir}/okteta/
 
 %files part
-%license COPYING*
+%license LICENSES/*
 %{_kf5_plugindir}/kf5/
 %{_kf5_servicesdir}/oktetapart.desktop
 
 %files -n libKasten%{Kasten_sover}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKasten%{Kasten_sover}*.so.*
 
 %files -n libOkteta%{Okteta_sover}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libOkteta%{Okteta_sover}*.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/
 %{_kf5_libdir}/libKasten%{Kasten_sover}*.so
 %{_kf5_libdir}/libOkteta%{Okteta_sover}*.so
@@ -189,16 +189,16 @@ Contains the development files for the Okteta Hex Editor.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 
 %files part-lang -f oktetapart.lang
-%license COPYING*
+%license LICENSES/*
 
 %files -n libkasten-lang -f libkasten.lang
-%license COPYING*
+%license LICENSES/*
 
 %files -n libokteta-lang -f libokteta.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
