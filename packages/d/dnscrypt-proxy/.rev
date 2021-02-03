@@ -235,4 +235,12 @@ dnscrypt-proxy v2 differs significantly from v1.</comment>
     <comment>Added optional resolvconf support via systemd unit.</comment>
     <requestid>864131</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>52da8afb0e422ef4e5f7d89d4d62bb11</srcmd5>
+    <version>2.0.45</version>
+    <time>1612378601</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1181502</comment>
+    <requestid>868982</requestid>
+  </revision>
 </revisionlist>

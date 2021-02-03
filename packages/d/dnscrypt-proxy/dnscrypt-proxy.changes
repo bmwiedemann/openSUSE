@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 30 12:00:00 UTC 2021 - cunix@mail.de
+
+- Use less predictable temporary files during build (bsc#1181502).
+
+-------------------------------------------------------------------
 Thu Jan  7 20:00:00 UTC 2021 - cunix@mail.de
 
 - Added optional resolvconf support via systemd unit.

@@ -12,7 +12,7 @@
 vendor_licenses_dir=$1
 username=$(whoami)
 workingdir=$(pwd)
-licenses_file=/tmp/license_files.txt
+licenses_file=$(mktemp /tmp/license_files_XXXXXXXXXX.txt)
 goahead=0
 hash_list=()
 filename_list=()
