@@ -1,7 +1,7 @@
 #
 # spec file for package ifuse
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ifuse
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Filesystem access for Apple devices
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://www.libimobiledevice.org
-Source:         %{name}-%{version}.tar.bz2
+URL:            https://www.libimobiledevice.org
+Source:         https://github.com/libimobiledevice/ifuse/releases/download/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  fuse-devel
-BuildRequires:  libimobiledevice-devel
-BuildRequires:  libplist-devel
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  libimobiledevice-devel >= 1.3.0
+BuildRequires:  libplist-2_0-devel >= 2.2.0
+BuildRequires:  pkgconfig
 
 %description
 iFuse is a FUSE filesystem driver which uses `libimobiledevice` to connect to
@@ -41,19 +40,18 @@ to access the iPhone's, iPod Touch's or iPad's media files under Linux.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README NEWS
+%license COPYING
+%doc AUTHORS README.md NEWS
 %{_bindir}/ifuse
-%doc %{_mandir}/man1/ifuse.1.*
+%{_mandir}/man1/ifuse.1%{?ext_man}
 
 %changelog
