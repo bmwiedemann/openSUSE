@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:13:34 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Use the singlespec rewrite from %python_subpackages to provide
+  the python3-spyder-unittest name
+
+-------------------------------------------------------------------
+Wed Jan 27 23:55:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+-  Build only for primary interpreter as spyder does the same
+ 
+-------------------------------------------------------------------
 Fri Jul 17 09:55:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.4.1
