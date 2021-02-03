@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Jan 28 07:27:32 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- moved previous fix to cpanspec.yml and re-run cpanspec
+
+-------------------------------------------------------------------
+Wed Sep 30 10:55:14 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Fix 'perl(Time::Local) >= 1.1901' dependency manually
+
+-------------------------------------------------------------------
+Mon Sep 21 03:08:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-HTTP-CookieJar/Changes
+
+  0.010     2020-09-20 11:28:49-04:00 America/New_York
+      - No changes from 0.009
+  0.009     2020-09-17 22:39:16-04:00 America/New_York (TRIAL RELEASE)
+      [FIXED]
+      - Fixed handling of edge case where Max-Age == 0
+
+-------------------------------------------------------------------
+Thu Aug 29 20:53:39 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Set minimum version of Time::Local version to 1.28 because of the version
+  system difference between perl and rpm
+
+-------------------------------------------------------------------
+Sat Mar  2 15:17:05 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- initial package 0.008
+ * created by cpanspec 1.78.09
