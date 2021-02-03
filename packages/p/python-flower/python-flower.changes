@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  2 00:18:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_1021.patch for Celery 5.0 support
+- Update to v0.9.7
+  * See https://github.com/mher/flower/compare/v0.9.3...v0.9.7
+
+-------------------------------------------------------------------
 Mon Apr 20 12:03:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

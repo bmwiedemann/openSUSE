@@ -1,0 +1,543 @@
+From f52fea63d97eb16409f174acc2ded66403c66aac Mon Sep 17 00:00:00 2001
+From: avikam <avikam@gmail.com>
+Date: Tue, 1 Sep 2020 13:32:18 -0400
+Subject: [PATCH 01/10] start porting to 5.0.0
+
+---
+ flower/__main__.py       |  14 +--
+ flower/command.py        | 240 ++++++++++++++++++++-------------------
+ requirements/default.txt |   3 +-
+ setup.py                 |   3 -
+ 4 files changed, 130 insertions(+), 130 deletions(-)
+
+diff --git a/flower/__main__.py b/flower/__main__.py
+index b0e47c81..9d645588 100644
+--- a/flower/__main__.py
++++ b/flower/__main__.py
+@@ -1,15 +1,11 @@
+-from flower.command import FlowerCommand
+-from flower.utils import bugreport
++import sys
+ 
+ 
+ def main():
+-    try:
+-        flower = FlowerCommand()
+-        flower.execute_from_commandline()
+-    except Exception:
+-        import sys
+-        print(bugreport(app=flower.app), file=sys.stderr)
+-        raise
++    from celery.bin.celery import main as _main, celery
++    from flower.command import flower
++    celery.add_command(flower)
++    sys.exit(_main())
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/flower/command.py b/flower/command.py
+index 9a716362..6c75a524 100644
+--- a/flower/command.py
++++ b/flower/command.py
+@@ -8,10 +8,11 @@
+ 
+ from logging import NullHandler
+ 
++import click
+ from tornado.options import options
+ from tornado.options import parse_command_line, parse_config_file
+ from tornado.log import enable_pretty_logging
+-from celery.bin.base import Command
++from celery.bin.base import CeleryCommand
+ 
+ from . import __version__
+ from .app import Flower
+@@ -21,127 +22,134 @@
+ 
+ 
+ logger = logging.getLogger(__name__)
++ENV_VAR_PREFIX = 'FLOWER_'
+ 
+ 
+-class FlowerCommand(Command):
+-    ENV_VAR_PREFIX = 'FLOWER_'
++def print_banner(app, ssl):
++    if not options.unix_socket:
++        logger.info(
++            "Visit me at http%s://%s:%s", 's' if ssl else '',
++            options.address or 'localhost', options.port
++        )
++    else:
++        logger.info("Visit me via unix socket file: %s", options.unix_socket)
++
++    logger.info('Broker: %s', app.connection().as_uri())
++    logger.info(
++        'Registered tasks: \n%s',
++        pformat(sorted(app.tasks.keys()))
++    )
++    logger.debug('Settings: %s', pformat(settings))
++
++
++@click.command(cls=CeleryCommand,
++               context_settings={'allow_extra_args': True})
++@click.argument("torando_argv", nargs=-1, type=click.UNPROCESSED)
++@click.pass_context
++def flower(ctx, torando_argv):
++    apply_env_options()
++    apply_options(sys.argv[0], torando_argv)
++
++    extract_settings()
++    setup_logging()
++
++    app = ctx.obj.app
++    flower = Flower(capp=app, options=options, **settings)
++
++    atexit.register(flower.stop)
++
++    def sigterm_handler(signal, frame):
++        logger.info('SIGTERM detected, shutting down')
++        sys.exit(0)
++
++    signal.signal(signal.SIGTERM, sigterm_handler)
++    print_banner(app, 'ssl_options' in settings)
++    try:
++        flower.start()
++    except (KeyboardInterrupt, SystemExit):
++        pass
++
++
++def apply_env_options():
++    "apply options passed through environment variables"
++    env_options = filter(is_flower_envvar, os.environ)
++    for env_var_name in env_options:
++        name = env_var_name.replace(ENV_VAR_PREFIX, '', 1).lower()
++        value = os.environ[env_var_name]
++        try:
++            option = options._options[name]
++        except KeyError:
++            option = options._options[name.replace('_', '-')]
++        if option.multiple:
++            value = [option.type(i) for i in value.split(',')]
++        else:
++            value = option.type(value)
++        setattr(options, name, value)
+ 
+-    def run_from_argv(self, prog_name, argv=None, **_kwargs):
+-        self.apply_env_options()
+-        self.apply_options(prog_name, argv)
+ 
+-        self.extract_settings()
+-        self.setup_logging()
++def apply_options(prog_name, argv):
++    "apply options passed through the configuration file"
++    argv = list(filter(is_flower_option, argv))
++    # parse the command line to get --conf option
++    parse_command_line([prog_name] + argv)
++    try:
++        parse_config_file(os.path.abspath(options.conf), final=False)
++        parse_command_line([prog_name] + argv)
++    except IOError:
++        if os.path.basename(options.conf) != DEFAULT_CONFIG_FILE:
++            raise
+ 
+-        self.app.loader.import_default_modules()
+-        flower = Flower(capp=self.app, options=options, **settings)
+-        atexit.register(flower.stop)
+ 
+-        def sigterm_handler(signal, frame):
+-            logger.info('SIGTERM detected, shutting down')
+-            sys.exit(0)
+-        signal.signal(signal.SIGTERM, sigterm_handler)
++def setup_logging():
++    if options.debug and options.logging == 'info':
++        options.logging = 'debug'
++        enable_pretty_logging()
++    else:
++        logging.getLogger("tornado.access").addHandler(NullHandler())
++        logging.getLogger("tornado.access").propagate = False
+ 
+-        self.print_banner('ssl_options' in settings)
+ 
+-        try:
+-            flower.start()
+-        except (KeyboardInterrupt, SystemExit):
+-            pass
+-
+-    def handle_argv(self, prog_name, argv=None):
+-        return self.run_from_argv(prog_name, argv)
+-
+-    def apply_env_options(self):
+-        "apply options passed through environment variables"
+-        env_options = filter(self.is_flower_envvar, os.environ)
+-        for env_var_name in env_options:
+-            name = env_var_name.replace(self.ENV_VAR_PREFIX, '', 1).lower()
+-            value = os.environ[env_var_name]
+-            try:
+-                option = options._options[name]
+-            except KeyError:
+-                option = options._options[name.replace('_', '-')]
+-            if option.multiple:
+-                value = [option.type(i) for i in value.split(',')]
+-            else:
+-                value = option.type(value)
+-            setattr(options, name, value)
+-
+-    def apply_options(self, prog_name, argv):
+-        "apply options passed through the configuration file"
+-        argv = list(filter(self.is_flower_option, argv))
+-        # parse the command line to get --conf option
+-        parse_command_line([prog_name] + argv)
+-        try:
+-            parse_config_file(os.path.abspath(options.conf), final=False)
+-            parse_command_line([prog_name] + argv)
+-        except IOError:
+-            if os.path.basename(options.conf) != DEFAULT_CONFIG_FILE:
+-                raise
+-
+-    def setup_logging(self):
+-        if options.debug and options.logging == 'info':
+-            options.logging = 'debug'
+-            enable_pretty_logging()
+-        else:
+-            logging.getLogger("tornado.access").addHandler(NullHandler())
+-            logging.getLogger("tornado.access").propagate = False
+-
+-    def extract_settings(self):
+-        settings['debug'] = options.debug
+-
+-        if options.cookie_secret:
+-            settings['cookie_secret'] = options.cookie_secret
+-
+-        if options.url_prefix:
+-            for name in ['login_url', 'static_url_prefix']:
+-                settings[name] = prepend_url(settings[name], options.url_prefix)
+-
+-        if options.auth:
+-            settings['oauth'] = {
+-                'key': options.oauth2_key or os.environ.get('FLOWER_OAUTH2_KEY'),
+-                'secret': options.oauth2_secret or os.environ.get('FLOWER_OAUTH2_SECRET'),
+-                'redirect_uri': options.oauth2_redirect_uri or os.environ.get('FLOWER_OAUTH2_REDIRECT_URI'),
+-            }
+-
+-        if options.certfile and options.keyfile:
+-            settings['ssl_options'] = dict(certfile=abs_path(options.certfile),
+-                                           keyfile=abs_path(options.keyfile))
+-            if options.ca_certs:
+-                settings['ssl_options']['ca_certs'] = abs_path(options.ca_certs)
+-
+-    def early_version(self, argv):
+-        if '--version' in argv:
+-            if '--debug' in argv:
+-                from flower.utils import bugreport
+-                print(bugreport(), file=self.stdout)
+-
+-            print(__version__, file=self.stdout)
+-            super(FlowerCommand, self).early_version(argv)
+-
+-    @staticmethod
+-    def is_flower_option(arg):
+-        name, _, _ = arg.lstrip('-').partition("=")
+-        name = name.replace('-', '_')
+-        return hasattr(options, name)
+-
+-    def is_flower_envvar(self, name):
+-        return name.startswith(self.ENV_VAR_PREFIX) and\
+-               name[len(self.ENV_VAR_PREFIX):].lower() in default_options
+-
+-    def print_banner(self, ssl):
+-        if not options.unix_socket:
+-            logger.info(
+-                "Visit me at http%s://%s:%s", 's' if ssl else '',
+-                options.address or 'localhost', options.port
+-            )
+-        else:
+-            logger.info("Visit me via unix socket file: %s", options.unix_socket)
++def extract_settings():
++    settings['debug'] = options.debug
+ 
+-        logger.info('Broker: %s', self.app.connection().as_uri())
+-        logger.info(
+-            'Registered tasks: \n%s',
+-            pformat(sorted(self.app.tasks.keys()))
+-        )
+-        logger.debug('Settings: %s', pformat(settings))
++    if options.cookie_secret:
++        settings['cookie_secret'] = options.cookie_secret
++
++    if options.url_prefix:
++        for name in ['login_url', 'static_url_prefix']:
++            settings[name] = prepend_url(settings[name], options.url_prefix)
++
++    if options.auth:
++        settings['oauth'] = {
++            'key': options.oauth2_key or os.environ.get('FLOWER_OAUTH2_KEY'),
++            'secret': options.oauth2_secret or os.environ.get('FLOWER_OAUTH2_SECRET'),
++            'redirect_uri': options.oauth2_redirect_uri or os.environ.get('FLOWER_OAUTH2_REDIRECT_URI'),
++        }
++
++    if options.certfile and options.keyfile:
++        settings['ssl_options'] = dict(certfile=abs_path(options.certfile),
++                                       keyfile=abs_path(options.keyfile))
++        if options.ca_certs:
++            settings['ssl_options']['ca_certs'] = abs_path(options.ca_certs)
++
++
++def early_version(self, argv):
++    if '--version' in argv:
++        if '--debug' in argv:
++            from flower.utils import bugreport
++            print(bugreport(), file=self.stdout)
++
++        print(__version__, file=self.stdout)
++        super(FlowerCommand, self).early_version(argv)
++
++
++@staticmethod
++def is_flower_option(arg):
++    name, _, _ = arg.lstrip('-').partition("=")
++    name = name.replace('-', '_')
++    return hasattr(options, name)
++
++
++def is_flower_envvar(name):
++    return name.startswith(ENV_VAR_PREFIX) and\
++           name[len(ENV_VAR_PREFIX):].lower() in default_options
+
+From 5d69f8638aad3caa208b338f6fed3386260e27d6 Mon Sep 17 00:00:00 2001
+From: avikam <avikam@gmail.com>
+Date: Tue, 1 Sep 2020 13:36:03 -0400
+Subject: [PATCH 02/10] change friendly
+
+---
+ flower/command.py | 45 +++++++++++++++++----------------------------
+ 1 file changed, 17 insertions(+), 28 deletions(-)
+
+diff --git a/flower/command.py b/flower/command.py
+index 6c75a524..95cd4c9d 100644
+--- a/flower/command.py
++++ b/flower/command.py
+@@ -25,23 +25,6 @@
+ ENV_VAR_PREFIX = 'FLOWER_'
+ 
+ 
+-def print_banner(app, ssl):
+-    if not options.unix_socket:
+-        logger.info(
+-            "Visit me at http%s://%s:%s", 's' if ssl else '',
+-            options.address or 'localhost', options.port
+-        )
+-    else:
+-        logger.info("Visit me via unix socket file: %s", options.unix_socket)
+-
+-    logger.info('Broker: %s', app.connection().as_uri())
+-    logger.info(
+-        'Registered tasks: \n%s',
+-        pformat(sorted(app.tasks.keys()))
+-    )
+-    logger.debug('Settings: %s', pformat(settings))
+-
+-
+ @click.command(cls=CeleryCommand,
+                context_settings={'allow_extra_args': True})
+ @click.argument("torando_argv", nargs=-1, type=click.UNPROCESSED)
+@@ -133,17 +116,6 @@ def extract_settings():
+             settings['ssl_options']['ca_certs'] = abs_path(options.ca_certs)
+ 
+ 
+-def early_version(self, argv):
+-    if '--version' in argv:
+-        if '--debug' in argv:
+-            from flower.utils import bugreport
+-            print(bugreport(), file=self.stdout)
+-
+-        print(__version__, file=self.stdout)
+-        super(FlowerCommand, self).early_version(argv)
+-
+-
+-@staticmethod
+ def is_flower_option(arg):
+     name, _, _ = arg.lstrip('-').partition("=")
+     name = name.replace('-', '_')
+@@ -153,3 +125,20 @@ def is_flower_option(arg):
+ def is_flower_envvar(name):
+     return name.startswith(ENV_VAR_PREFIX) and\
+            name[len(ENV_VAR_PREFIX):].lower() in default_options
++
++
++def print_banner(app, ssl):
++    if not options.unix_socket:
++        logger.info(
++            "Visit me at http%s://%s:%s", 's' if ssl else '',
++            options.address or 'localhost', options.port
++        )
++    else:
++        logger.info("Visit me via unix socket file: %s", options.unix_socket)
++
++    logger.info('Broker: %s', app.connection().as_uri())
++    logger.info(
++        'Registered tasks: \n%s',
++        pformat(sorted(app.tasks.keys()))
++    )
++    logger.debug('Settings: %s', pformat(settings))
+\ No newline at end of file
+
+From 25e1cb7b26b9350cd90d4c820e7e6808d8470f07 Mon Sep 17 00:00:00 2001
+From: avikam <avikam@gmail.com>
+Date: Tue, 1 Sep 2020 13:50:35 -0400
+Subject: [PATCH 03/10] forwarding arguments to tornado
+
+---
+ flower/command.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/flower/command.py b/flower/command.py
+index 95cd4c9d..57082f2d 100644
+--- a/flower/command.py
++++ b/flower/command.py
+@@ -20,13 +20,14 @@
+ from .utils import abs_path, prepend_url
+ from .options import DEFAULT_CONFIG_FILE, default_options
+ 
+-
+ logger = logging.getLogger(__name__)
+ ENV_VAR_PREFIX = 'FLOWER_'
+ 
+ 
+ @click.command(cls=CeleryCommand,
+-               context_settings={'allow_extra_args': True})
++               context_settings={
++                   'ignore_unknown_options': True
++               })
+ @click.argument("torando_argv", nargs=-1, type=click.UNPROCESSED)
+ @click.pass_context
+ def flower(ctx, torando_argv):
+@@ -123,7 +124,7 @@ def is_flower_option(arg):
+ 
+ 
+ def is_flower_envvar(name):
+-    return name.startswith(ENV_VAR_PREFIX) and\
++    return name.startswith(ENV_VAR_PREFIX) and \
+            name[len(ENV_VAR_PREFIX):].lower() in default_options
+ 
+ 
+@@ -141,4 +142,4 @@ def print_banner(app, ssl):
+         'Registered tasks: \n%s',
+         pformat(sorted(app.tasks.keys()))
+     )
+-    logger.debug('Settings: %s', pformat(settings))
+\ No newline at end of file
++    logger.debug('Settings: %s', pformat(settings))
+
+From 10e1447ee8f44c1bb2a700ab65de577c08b74b9a Mon Sep 17 00:00:00 2001
+From: avikam <avikam@gmail.com>
+Date: Sat, 14 Nov 2020 14:22:21 -0500
+Subject: [PATCH 05/10] fixing tornado options checking
+
+---
+ tests/unit/test_command.py | 25 +++++++++----------------
+ 1 file changed, 9 insertions(+), 16 deletions(-)
+
+diff --git a/tests/unit/test_command.py b/tests/unit/test_command.py
+index d5fe9a5f..2c007110 100644
+--- a/tests/unit/test_command.py
++++ b/tests/unit/test_command.py
+@@ -4,7 +4,7 @@
+ import unittest
+ import subprocess
+ 
+-from flower.command import FlowerCommand
++from flower.command import apply_options
+ from tornado.options import options
+ from tests.unit import AsyncHTTPTestCase
+ 
+@@ -12,35 +12,30 @@
+ class TestFlowerCommand(AsyncHTTPTestCase):
+     def test_port(self):
+         with self.mock_option('port', 5555):
+-            command = FlowerCommand()
+-            command.apply_options('flower', argv=['--port=123'])
++            apply_options('flower', argv=['--port=123'])
+             self.assertEqual(123, options.port)
+ 
+     def test_address(self):
+         with self.mock_option('address', '127.0.0.1'):
+-            command = FlowerCommand()
+-            command.apply_options('flower', argv=['--address=foo'])
++            apply_options('flower', argv=['--address=foo'])
+             self.assertEqual('foo', options.address)
+ 
+ 
+ class TestConfOption(AsyncHTTPTestCase):
+     def test_error_conf(self):
+         with self.mock_option('conf', None):
+-            command = FlowerCommand()
+-            self.assertRaises(IOError, command.apply_options,
++            self.assertRaises(IOError, apply_options,
+                               'flower', argv=['--conf=foo'])
+-            self.assertRaises(IOError, command.apply_options,
++            self.assertRaises(IOError, apply_options,
+                               'flower', argv=['--conf=/tmp/flower/foo'])
+ 
+     def test_default_option(self):
+-        command = FlowerCommand()
+-        command.apply_options('flower', argv=[])
++        apply_options('flower', argv=[])
+         self.assertEqual('flowerconfig.py', options.conf)
+ 
+     def test_empty_conf(self):
+         with self.mock_option('conf', None):
+-            command = FlowerCommand()
+-            command.apply_options('flower', argv=['--conf=/dev/null'])
++            apply_options('flower', argv=['--conf=/dev/null'])
+             self.assertEqual('/dev/null', options.conf)
+ 
+     def test_conf_abs(self):
+@@ -48,8 +43,7 @@ def test_conf_abs(self):
+             with self.mock_option('conf', cf.name), self.mock_option('debug', False):
+                 cf.write('debug=True\n'.encode('utf-8'))
+                 cf.flush()
+-                command = FlowerCommand()
+-                command.apply_options('flower', argv=['--conf=%s' % cf.name])
++                apply_options('flower', argv=['--conf=%s' % cf.name])
+                 self.assertEqual(cf.name, options.conf)
+                 self.assertTrue(options.debug)
+ 
+@@ -58,8 +52,7 @@ def test_conf_relative(self):
+             with self.mock_option('conf', cf.name), self.mock_option('debug', False):
+                 cf.write('debug=True\n'.encode('utf-8'))
+                 cf.flush()
+-                command = FlowerCommand()
+-                command.apply_options('flower', argv=['--conf=%s' % os.path.basename(cf.name)])
++                apply_options('flower', argv=['--conf=%s' % os.path.basename(cf.name)])
+                 self.assertTrue(options.debug)
+ 
+     @unittest.skipUnless(not sys.platform.startswith("win"), 'skip windows')
+
+From 9aade51671a2c1f0c1d0c1c81c7ca9bb49837f83 Mon Sep 17 00:00:00 2001
+From: avikam <avikam@gmail.com>
+Date: Mon, 25 Jan 2021 09:55:35 -0500
+Subject: [PATCH 10/10] s/torando/tornado/ typo
+
+---
+ flower/command.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/flower/command.py b/flower/command.py
+index 57082f2d..840d0990 100644
+--- a/flower/command.py
++++ b/flower/command.py
+@@ -28,11 +28,11 @@
+                context_settings={
+                    'ignore_unknown_options': True
+                })
+-@click.argument("torando_argv", nargs=-1, type=click.UNPROCESSED)
++@click.argument("tornado_argv", nargs=-1, type=click.UNPROCESSED)
+ @click.pass_context
+-def flower(ctx, torando_argv):
++def flower(ctx, tornado_argv):
+     apply_env_options()
+-    apply_options(sys.argv[0], torando_argv)
++    apply_options(sys.argv[0], tornado_argv)
+ 
+     extract_settings()
+     setup_logging()
