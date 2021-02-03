@@ -1,0 +1,6 @@
+<package name="perl-HTML-Restrict" project="openSUSE:Factory">
+  <title>Strip unwanted HTML tags and attributes</title>
+  <description>This module uses HTML::Parser to strip HTML from text in a restrictive manner. By default all HTML is restricted. You may alter the default behaviour by supplying your own tag rules.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-Restrict"/>
+  <url>https://metacpan.org/release/HTML-Restrict</url>
+</package>
