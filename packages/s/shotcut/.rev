@@ -401,4 +401,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>865323</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c7ea598649eb988dc9a511923c794577</srcmd5>
+    <version>21.01.29</version>
+    <time>1612378558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868797</requestid>
+  </revision>
 </revisionlist>

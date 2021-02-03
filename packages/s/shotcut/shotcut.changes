@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Feb  2 12:00:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.01.29:
+  * Fixed image skewed with odd width when using certain combinations of filters and transitions (broken in v20.11).
+  * Fixed being unable to pick transparent black in filters with color pickers (broken in v20.11).
+  * Fixed some tooltips in Timeline, Filters, & Keyframes not showing on multi-monitor systems (broken in v20.10).
+  * Fixed Zoom in Scale, Position & Rotate does not always default and undo at 100% (broken in v20.10).
+  * Fixed crash with files having more than 32 multiplexed streams.
+  * Fixed quality-based VBR encoding with the VP8 Export > WebM preset.
+  * Fixed leading zeros for seconds in Timer video filter with MM:SS.SSS or SS.SSS formats.
+  * Fixed support for explicit fractional high DPI (e.g. --QT_DISPLAY_SCALE 1.5).
+  * Fixed bad text formatting when File > Open a plain text file in Text: Rich filter.
+  * Fixed drag-n-drop from Playlist when a project (MLT XML clip) is in Source player.
+  * Fixed using the numeric keypad for some shortcuts.
+  * Fixed selecting the same filter Preset again.
+  * Fixed Export File does not check for missing files.
+  * Upgraded Qt to version 5.15.2 for Linux & Windows and 5.12.10 for macOS.
+  * Improved the playback speeds of fast forward and rewind.
+  * Changed Playlist to not automatically start playback when add to playlist of empty project.
+  * Finished converting Timeline, Filters, & Keyframes to Qt Quick Controls 2 API.
+  * Changed keyframe interpolation Discrete to Hold.
+  * Improved multi-threaded performance of video track blending and video filters:
+    + Alpha Channel: View
+    + Chroma Key: Advanced
+    + Chroma Key: Simple
+    + Elastic Scale
+    + Key Spill: Advanced
+    + Key Spill: Simple
+    + Levels
+    + Mask: Apply
+    + Noise: Keyframes
+    + Posterize
+    + Saturation
+    + Unpremultiply
+    + White Balance
+  * Added support for AV1 decoding and encoding.
+  * Added Color space and Color transfer to Properties > Video.
+  * Added an Advanced mode to the Convert to Edit-friendly dialog with:
+  * Added Deinterlace option (bwdif) that outputs one frame for each field.
+  * Added Override frame rate and Frame rate conversion with Blend and Motion Compensation options.
+  * Added Convert to BT.709 colorspace that provides HDR-to-SDR tonemapping.
+  * Added detection of a HDR transfer function (ITU-R BT.2020 or SMPTE ST2084) to automatically show Convert dialog.
+  * Added Use Higher Performance Waveforms to Timeline and Keyframes menus (default on).
+  * Added a red outline around the thumnbail of the currently opened Playlist item.
+  * Added video filter Reduce Noise: Quantization.
+
+-------------------------------------------------------------------
 Fri Jan 15 17:56:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
