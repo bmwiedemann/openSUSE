@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  2 00:50:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * exec: fix search of command by identifier
+  * spell: fix refresh of bar item "spell_suggest" when the input becomes empty (issue #1586)
+  * spell: fix crash with IRC color codes in command line (issue #1589)
+
+-------------------------------------------------------------------
 Wed Nov 11 12:00:26 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - update to 3.0
