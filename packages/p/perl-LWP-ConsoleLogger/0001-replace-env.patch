@@ -1,0 +1,110 @@
+From b32bbf3b01ecaac64c114b772d3b25f6cecb84d4 Mon Sep 17 00:00:00 2001
+From: Frank Schreiner <schreiner@suse.de>
+Date: Tue, 19 Jan 2021 08:15:42 +0100
+Subject: [PATCH] replace env
+
+---
+ examples/dump-only-headers.pl       | 2 +-
+ examples/html-in-text.pl            | 2 +-
+ examples/http-tiny-mech.pl          | 2 +-
+ examples/log-to-file.pl             | 2 +-
+ examples/new-york-times.pl          | 2 +-
+ examples/pithub.pl                  | 2 +-
+ examples/test-lwp-useragent.pl      | 2 +-
+ examples/test-www-mechanize-psgi.pl | 2 +-
+ examples/test-www-mechanize.pl      | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/examples/dump-only-headers.pl b/examples/dump-only-headers.pl
+index 8fc3cff..a85f88e 100755
+--- a/examples/dump-only-headers.pl
++++ b/examples/dump-only-headers.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/html-in-text.pl b/examples/html-in-text.pl
+index f1a0760..2aa37e4 100755
+--- a/examples/html-in-text.pl
++++ b/examples/html-in-text.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/http-tiny-mech.pl b/examples/http-tiny-mech.pl
+index 65c9899..d29abd7 100755
+--- a/examples/http-tiny-mech.pl
++++ b/examples/http-tiny-mech.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/log-to-file.pl b/examples/log-to-file.pl
+index fb2fe69..2b54e93 100755
+--- a/examples/log-to-file.pl
++++ b/examples/log-to-file.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/new-york-times.pl b/examples/new-york-times.pl
+index 9fb24dc..eb96b48 100755
+--- a/examples/new-york-times.pl
++++ b/examples/new-york-times.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/pithub.pl b/examples/pithub.pl
+index f9cdbef..8216683 100755
+--- a/examples/pithub.pl
++++ b/examples/pithub.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/test-lwp-useragent.pl b/examples/test-lwp-useragent.pl
+index 8e17758..f9af1fc 100644
+--- a/examples/test-lwp-useragent.pl
++++ b/examples/test-lwp-useragent.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl;
++#!/usr/bin/perl;
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/test-www-mechanize-psgi.pl b/examples/test-www-mechanize-psgi.pl
+index 93871b7..d8a0e13 100755
+--- a/examples/test-www-mechanize-psgi.pl
++++ b/examples/test-www-mechanize-psgi.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl;
++#!/usr/bin/perl;
+ 
+ use strict;
+ use warnings;
+diff --git a/examples/test-www-mechanize.pl b/examples/test-www-mechanize.pl
+index 9ca0d90..abcb973 100755
+--- a/examples/test-www-mechanize.pl
++++ b/examples/test-www-mechanize.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl;
++#!/usr/bin/perl;
+ 
+ use strict;
+ use warnings;
+-- 
+2.30.0
+
