@@ -43,4 +43,12 @@
 - Removed 0001-Fix-runtests.py.patch (forwarded request 796436 from polslinux)</comment>
     <requestid>796767</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f3304704f0b86ff92652b0ad34d86a9b</srcmd5>
+    <version>0.8.3</version>
+    <time>1612378541</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868679</requestid>
+  </revision>
 </revisionlist>

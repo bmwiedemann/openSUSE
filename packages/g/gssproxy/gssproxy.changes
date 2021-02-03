@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 26 14:04:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace system-user-nobody with user(nobody): be resilient to
+  package name changes.
+- Replace python3 BuildRequires with python3-base: make build dep
+  chain quite a bit cheaper.
+
+-------------------------------------------------------------------
 Thu Apr 23 07:53:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.8.3:

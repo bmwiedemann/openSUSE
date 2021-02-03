@@ -1,7 +1,7 @@
 #
 # spec file for package gssproxy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,7 @@ BuildRequires:  libtool
 BuildRequires:  openldap2
 BuildRequires:  openldap2-client
 BuildRequires:  pkgconfig
-BuildRequires:  python3
-BuildRequires:  system-user-nobody
+BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(ini_config) >= 1.2.0
@@ -45,6 +44,7 @@ BuildRequires:  pkgconfig(nss_wrapper)
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(socket_wrapper)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  user(nobody)
 %{?systemd_requires}
 %if 0%{?suse_version} > 1315
 # in earlier versions, libverto is in krb5-devel
