@@ -1,7 +1,7 @@
 #
 # spec file for package netsniff-ng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           netsniff-ng
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        Network Sniffer for Packet Inspection
 License:        GPL-2.0-only
@@ -73,7 +73,7 @@ The netsniff-ng toolkit consists of the following utilities:
 export NACL_LIB=sodium
 export NACL_INC_DIR=/usr/include/sodium
 ./configure --disable-geoip
-make %{?_smp_mflags} ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags} -fcommon"
+make %{?_smp_mflags} ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags}"
 
 %install
 make install PREFIX=%{_prefix} ETCDIR=%{_sysconfdir} DESTDIR=%{buildroot}

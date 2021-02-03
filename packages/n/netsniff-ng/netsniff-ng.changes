@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 11 12:05:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.8
+  * Bugfix release
+  * remove "CFLAGS+=-fcommon"
+
+-------------------------------------------------------------------
 Sun Jun  7 19:32:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon
