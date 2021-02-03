@@ -1,0 +1,40 @@
+From d26558924250f571709cd4fe44dd1c0874c57347 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 18 Jan 2021 15:58:35 +0100
+Subject: [PATCH] msrtool: fix build with gcc 10.
+
+[   84s] /usr/lib/gcc/i586-suse-linux/10/../../../../i586-suse-linux/bin/ld: msrutils.o:(.bss+0x0): multiple definition of `PresentTypes'; msrtool.o:(.bss+0x14): first defined here
+[   84s] /usr/lib/gcc/i586-suse-linux/10/../../../../i586-suse-linux/bin/ld: msrutils.o:(.bss+0x4): multiple definition of `MsrTypes'; msrtool.o:(.bss+0x18): first defined here
+
+There should be typedefs, not variable definitions.
+
+Change-Id: I663a011e9f1fc169126570d5eac7abe82d204a90
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ util/msrtool/msrtool.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/util/msrtool/msrtool.h b/util/msrtool/msrtool.h
+index f5e6738c5c37..e4a44f45c1f6 100644
+--- a/util/msrtool/msrtool.h
++++ b/util/msrtool/msrtool.h
+@@ -18,14 +18,14 @@
+ 
+ #define HEXCHARS "0123456789abcdefABCDEF"
+ 
+-enum {
++typedef enum {
+ 	MSRTYPE_RDONLY,
+ 	MSRTYPE_RDWR,
+ 	MSRTYPE_WRONLY,
+ 	MSRTYPE_EOT
+ } MsrTypes;
+ 
+-enum {
++typedef enum {
+ 	PRESENT_RSVD,
+ 	PRESENT_DEC,
+ 	PRESENT_BIN,
+-- 
+2.26.2
+

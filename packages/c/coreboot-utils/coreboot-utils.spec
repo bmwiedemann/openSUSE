@@ -1,7 +1,7 @@
 #
 # spec file for package coreboot-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source3:        %{name}.keyring
 Patch1:         no-pie.patch
 Patch2:         k8resdump.diff
 Patch3:         do-explicit-fallthrough.patch
+Patch4:         msrtool-fix-build-with-gcc-10.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pciutils-devel
 BuildRequires:  xz
@@ -49,6 +50,7 @@ used to develop and configure systems with coreboot.
 %if 0%{?suse_version} > 1320
 %patch3 -p1
 %endif
+%patch4 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}" -C util/ectool
