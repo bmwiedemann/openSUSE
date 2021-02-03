@@ -1,7 +1,7 @@
 #
 # spec file for package gdouros-abydos-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define _buildshell /bin/bash
 Name:           gdouros-abydos-fonts
 Version:        1.96
 Release:        0
 Summary:        A data font of 7440 Egyptian hieroglyphs
 License:        SUSE-Permissive
 Group:          System/X11/Fonts
-Url:            http://users.teilar.gr/~g1951d/
+URL:            http://users.teilar.gr/~g1951d/
 # Download URL
 # http://users.teilar.gr/~g1951d/AbydosFont.zip
 Source0:        AbydosFont-%{version}.zip
@@ -36,7 +37,6 @@ Source3:        README-SUSE
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -59,7 +59,7 @@ Requires:       %{name} = %{version}
 Contains pdf documentation for %{name}.
 
 %prep
-%setup -q -cT -a0
+%autosetup -c
 
 %build
 
@@ -76,12 +76,10 @@ done
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
 %doc README-SUSE
 %{_ttfontsdir}
 
 %files doc
-%defattr(-,root,root)
 %doc Abydos.pdf AbydosGlyph.pdf
 
 %changelog

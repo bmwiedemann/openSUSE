@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  2 17:29:36 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Set /bin/bash as buildshell for "<<<".
+
+-------------------------------------------------------------------
 Fri Jan  5 17:16:33 UTC 2018 - aloisio@gmx.com
 
 - Update to version 1.96
