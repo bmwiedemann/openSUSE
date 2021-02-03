@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb  1 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.91
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+
+  0.91
+  	- Released at 2021-01-31T17:10:27+0900
+  	- Fix META info included in 0.90. No other feature changes.
+
+  0.90
+  	- Released at 2021-01-29T09:43:17+0900
+  	- Thanks to our contributors: Mose Schmiedel, gucchisk
+  	- The output of 'available' command is split into sections of different type of distributions. Github issue #646.
+          - Let the output of `perlbrew -h` be the short usage. Github issue #647
+          - Unbreak env script for fish users. GitHub PR #698 and #708
+          - Prefer https URLs of www.cpan.org
+
+-------------------------------------------------------------------
 Mon Oct 19 03:07:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.89
