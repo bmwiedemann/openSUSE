@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 14:16:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Recommends onnx and PIL for tvmc
+
+-------------------------------------------------------------------
 Tue Jan 26 13:31:03 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix upstream tarball

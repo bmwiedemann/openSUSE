@@ -96,6 +96,8 @@ Summary:        TVM command line driver
 Requires:       libtvm = %{version}
 Requires:       python3-scipy
 Requires:       python3-typed-ast
+Recommends:     python3-onnx
+Recommends:     python3-Pillow
 
 %description -n tvmc
 TVMC is a tool that exposes TVM features such as auto-tuning, compiling,
