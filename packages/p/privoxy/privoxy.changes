@@ -2,13 +2,13 @@
 Mon Feb  1 19:51:51 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.0.31:
-  - Security/Reliability:
+  - Security/Reliability (boo#1181650)
     - Prevent an assertion from getting triggered by a crafted
       CGI request.
-      Commit 5bba5b89193fa. OVE-20210130-0001.
+      Commit 5bba5b89193fa. OVE-20210130-0001. CVE-2021-20217
       Reported by: Joshua Rogers (Opera)
     - Fixed a memory leak when decompression fails "unexpectedly".
-      Commit f431d61740cc0. OVE-20210128-0001.
+      Commit f431d61740cc0. OVE-20210128-0001. CVE-2021-20216
   - Bug fixes:
     - Fixed detection of insufficient data for decompression.
       Previously Privoxy could try to decompress a partly
