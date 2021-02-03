@@ -2,7 +2,7 @@
 Wed Jan 27 11:51:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce disable-v3d-overlay.dts, in order to be able to selectively disable
-  v3d while using vc4 as the display controller.
+  v3d while using vc4 as the display controller (jsc#SLE-15928).
 
 -------------------------------------------------------------------
 Mon Jan 25 13:33:48 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
