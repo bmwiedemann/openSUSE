@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  3 07:53:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.2.4
+  * Procrun. Ensure that log messages written to stdout and stderr
+    are not lost during start-up.
+  * Procrun. Correct a regression introduced in 1.2.3. Enable the
+    service to start if the Options value is not present in the
+    registry.
+  * jsvc. Don't fail if the CAP_DAC_READ_SEARCH capability is not
+    available. Fall back to using argv[0] rather than
+    /proc/self/exe to determine the path for the current binary.
+  * Improved JRE/JDK detection to support increased range of both
+    JVM versions and vendors
+
+-------------------------------------------------------------------
 Tue Oct 27 08:26:44 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.2.3
