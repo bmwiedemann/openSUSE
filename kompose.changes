@@ -1,7 +1,50 @@
 -------------------------------------------------------------------
+Wed Jan 27 11:45:28 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update to version 1.21.0:
+  * Ingress path names are now supported (#1245)
+  * V2 restart unless-stopped is not supported (#1244)
+  * You're now able to provide an external apiserver for Kubernetes (#1243)
+  * MacPorts support has been added to the documentation (#1242)
+  * deploy.update_config will now convert to rolling update within Kubernetes (#1232)
+  * Deployment labels are now supported (#1231)
+  * Config short syntax bug fixes (#1230)
+  * Code refactoring (#1228)
+  * Support port expose (#1227)
+  * Updated documentation regarding push image (#1225)
+  * Fix duplicate in container spec (#1223)
+  * Fixed v3 hostpath path error (#1222)
+  * Fixed hostpath path translate error (#1221)
+  * Added notes regarding windows (#1220)
+  * Fixed YAML indentation (#1219)
+  * Dep update (#1218)
+  * Added support for configmap as a volume (#1216)
+  * Fixed configmap name case error (#1215)
+  * Merge will include deploy resources (#1214)
+  * User a service name when image name is empty when built (#1213)
+  * Fixed build (#1212)
+  * Support assign nodeport port in labels (#1212)
+  * Use new go version for build (#1209)
+  * Add flag to support store manifest when using kompose up (#1208)
+  * Updated API versioning (#1207)
+  * Removed duplicated entries of configmap (#1206)
+  * Fixed chart lint (#1205)
+  * Modify default kubernetes client apiserver URL (#1204)
+- Update to version 1.20.0:
+  * Added flag to push an imaging when using kompose up (#1147)
+  * Top level non-service keys are now merged in correctly when converting (#1187)
+  * networks is now an officially supported key (#1195)
+  * Added support for file based secrets (#1159)
+  * Multiple tests have been fixed (#1175) (#1197) (#1198)
+  * Updated documentation on endpoint_mode (#1151)
+  * Updated OWNERS (#1177)
+  * Fixed golint error (#1178)
+  * Binaries are now statically built (#1193)
+
+-------------------------------------------------------------------
 Mon Jul 27 10:45:49 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Require python3-PyYAML 
+- Require python3-PyYAML
 
 -------------------------------------------------------------------
 Wed Nov 27 09:32:58 UTC 2019 - Stefan Weiberg <sweiberg@suse.com>
