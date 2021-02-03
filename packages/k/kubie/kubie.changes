@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Feb 03 10:56:30 UTC 2021 - rombert@apache.org
+
+- Update to version 0.12.1:
+  * Version 0.12.1
+  * Add Apple Sillicon build of kubie (#57)
+  * Version 0.12.0
+  * Update dependencies
+  * Add test & release actions and make kubie fully static on Linux (#56)
+  * Version 0.11.1
+  * Update lock file
+  * Version 0.11.0
+  * Add support for unsetting namespace
+  * Run fish as an interactive login shell
+
+-------------------------------------------------------------------
+Tue Feb  2 14:41:17 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Initial package 
