@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>862973</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61d7397e408b4b0a8365ce311748fa63</srcmd5>
+    <version>1.2.4</version>
+    <time>1612378574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4
+  * Display governors even if they differ among CPU cores
+  * Enable fixed units in the frequency text box
+  * Create the label widget if it does not exist
+  * Update copyright year
+  * Translation Updates (forwarded request 868831 from mauriziogalli)</comment>
+    <requestid>868874</requestid>
+  </revision>
 </revisionlist>

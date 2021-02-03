@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://git.xfce.org/panel-plugins/xfce4-cpufreq-plugin/</param>
+    <param name="url">https://gitlab.xfce.org/panel-plugins/xfce4-cpufreq-plugin.git</param>
     <param name="scm">git</param>
+    <param name="revision">master</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">maurizio.galli@gmail.com</param>
