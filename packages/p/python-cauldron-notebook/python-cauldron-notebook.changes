@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 27 22:48:12 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Disable python36 build, because SciPy dropped support for
+  Python 3.6 and other NumPy related packages will drop it soon.
+
+-------------------------------------------------------------------
 Wed Jul  8 10:39:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.0.3
