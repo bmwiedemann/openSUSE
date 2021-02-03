@@ -1,0 +1,6 @@
+<package name="perl-MooX-StrictConstructor" project="openSUSE:Factory">
+  <title>Make your Moo-based object constructors blow up on unknown attributes</title>
+  <description>Simply loading this module makes your constructors &quot;strict&quot;. If your constructor is called with an attribute init argument that your class does not declare, then it dies. This is a great way to catch small typos.  Your application can use Carp::Always to generate stack traces on 'die'. Previously all exceptions contained traces, but this could potentially leak sensitive information, e.g. My::Sensitive::Class-&gt;new( password =&gt; , extra_value =&gt; 'foo' );</description>
+  <devel project="devel:languages:perl" package="perl-MooX-StrictConstructor"/>
+  <url>https://metacpan.org/release/MooX-StrictConstructor</url>
+</package>
