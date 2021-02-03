@@ -1,7 +1,7 @@
 #
 # spec file for package jedit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define _buildshell /bin/bash
 %define section	free
 Name:           jedit
 Version:        5.5.0
@@ -23,7 +24,7 @@ Release:        0
 Summary:        Programmer's Text Editor Written in Java
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
-Url:            http://www.jedit.org/
+URL:            http://www.jedit.org/
 Source0:        http://download.sourceforge.net/jedit/jedit%{version}source.tar.bz2
 Source1:        icons.tar
 Source2:        %{name}.desktop
