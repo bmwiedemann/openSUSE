@@ -1,7 +1,7 @@
 #
 # spec file for package gdouros-symbola-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define _buildshell /bin/bash
 %define fontname  symbola-fonts
 
 Name:           gdouros-symbola-fonts
@@ -24,7 +25,7 @@ Release:        0
 Summary:        Font with Support for Symbol Blocks of the Unicode Standard
 License:        SUSE-Permissive
 Group:          System/X11/Fonts
-Url:            http://users.teilar.gr/~g1951d/
+URL:            http://users.teilar.gr/~g1951d/
 # Download URL
 # http://users.teilar.gr/~g1951d/Symbola.zip
 Source:         Symbola-%{version}.zip
@@ -37,14 +38,13 @@ BuildRequires:  unzip
 %reconfigure_fonts_prereq
 Obsoletes:      %{fontname} < 6.05
 Provides:       %{fontname} = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
 Symbola covers the following scripts and symbols supported by Unicode: Basic Latin, IPA Extensions, Spacing Modifier Letters, Combining Diacritical Marks, Greek and Coptic, Cyrillic, Cyrillic Supplement, General Punctuation, Superscripts and Subscripts, Currency Symbols, Combining Diacritical Marks for Symbols, Letterlike Symbols, Number Forms, Arrows, Mathematical Operators, Miscellaneous Technical, Control Pictures, Optical Character Recognition, Box Drawing, Block Elements, Geometric Shapes, Miscellaneous Symbols, Dingbats, Miscellaneous Mathematical Symbols-A, Supplemental Arrows-A, Supplemental Arrows-B, Miscellaneous Mathematical Symbols-B, Supplemental Mathematical Operators, Miscellaneous Symbols and Arrows, Supplemental Punctuation, Yijing Hexagram Symbols, Combining Half Marks, Specials, Byzantine Musical Symbols, Musical Symbols, Ancient Greek Musical Notation, Tai Xuan Jing Symbols, Counting Rod Numerals, Mathematical Alphanumeric Symbols, Mahjong Tiles, Domino Tiles, Playing Cards, Miscellaneous Symbols And Pictographs, Emoticons, Transport And Map Symbols, Alchemical Symbols, et al.
 
 %prep
-%setup -q -cT -a0
+%autosetup -c
 
 %build
 
@@ -61,7 +61,6 @@ done
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
 %doc README-SUSE Bibliography.pdf Symbola.pdf
 %{_ttfontsdir}
 

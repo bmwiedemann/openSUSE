@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  2 17:38:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Set /bin/bash as buildshell for "<<<".
+
+-------------------------------------------------------------------
 Fri Jan  5 17:22:30 UTC 2018 - aloisio@gmx.com
 
 - Update to version 10.23
