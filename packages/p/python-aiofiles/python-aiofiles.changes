@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  3 10:57:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.6.0
+  * aiofiles is now tested on ppc64le.
+  * Added name and mode properties to async file objects. #82
+  * Fixed a DeprecationWarning internally. #75
+  * Python 3.9 support and tests.
+
+-------------------------------------------------------------------
 Tue Jun  2 16:44:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.5.0
