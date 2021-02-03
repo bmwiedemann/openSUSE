@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 03 04:23:40 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1612273300.b98492573:
+  * Make 'perl >= 5.20.0' a common dependency to be able to use signatures everywhere
+  * Use Mojo::UserAgent::socket_options if available to avoid relying on monkey patch
+  * Return size of symlink (and not its target) when deleting job results
+  * tests: Test expected output from job cloning
+  * Add service files to restart worker after config changes without interrupting running jobs
+  * Restart openqa-worker-auto-restart@.service on pkg upgrade without interrupting jobs
+
+-------------------------------------------------------------------
 Sun Jan 31 20:23:28 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1612014696.1998b3cde:
