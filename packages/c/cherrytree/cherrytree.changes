@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jan 31 01:47:32 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.30+7:
+  * Fixed misleading command line argument export to pdf name - the
+    user is expected to pass a directory path, not a file path.
+  * Updated tests/googletest to current master HEAD to get rid of
+    cmake warnings.
+  * Replaced few Gio::File with g_file because of unit tests
+    issues.
+  * Moved a couple of types to proper header and fixed a unit test.
+  * Insert link dialog to remember/repropose last selection,
+    (gh#giuspen/cherrytree#1413).
+  * Fix export to pdf crash.
+  * Improved language selection in preferences dialog,
+    (gh#giuspen/cherrytree#1496).
+  * Moved top menu items 'Edit'->'Preferences' and 'Tree'->'Tree
+    Info' to 'File' menu, (gh#giuspen/cherrytree#1497).
+  * Cmake option to not automatically run the unit tests
+    -DAUTO_RUN_TESTING='', (gh#giuspen/cherrytree#1433).
+  * Versioning 48px variant of the icons, not currenlty in use,
+   (gh#giuspen/cherrytree#1451).
+  * New ct_code.svg, (gh#giuspen/cherrytree#1451).
+  * Fix when creating new node/subnode not proposing syntax
+    highlighting of selected node, (gh#giuspen/cherrytree#1481).
+  * Update README.md - Added build description,
+    (gh#giuspen/cherrytree#1488).
+  * Fix Table of Contents not saving, (gh#giuspen/cherrytree#1484).
+  * Fix crash when importing CSV file,
+    (gh#giuspen/cherrytree#1476).
+
+-------------------------------------------------------------------
 Sat Jan 09 00:12:55 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.29:
