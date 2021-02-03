@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Feb 15 07:07:49 UTC 2018 - coolo@suse.com
+
+- updated to 0.031
+   see /usr/share/doc/packages/perl-Term-Size-Perl/Changes
+
+  0.031 Wed Feb 14 2018
+  
+          - Makefile.PL: add Test::Pod{,::Coverage} as "develop" prereqs
+          - Enclose GitHub issues link in a link
+          - Don't mention deprecated Term::Size::Unix
+  
+  0.030_0 Tue Feb 13 2018
+  
+          - rewrite Makefile.PL
+          - proper POD for Term::Size::Perl::Params (CPAN RT#74219)
+          - fix POD typos (CPAN RT#74219)
+          - put VERSION in quotes
+          - t/99_pod.t: only if RELEASE_TESTING
+          - t/98_pod-coverage.t: only if RELEASE_TESTING
+          - document that GitHub issues are preferred to report bugs
+
+-------------------------------------------------------------------
+Tue May 30 14:38:04 UTC 2017 - coolo@suse.com
+
+- initial package 0.029
+ * created by cpanspec 1.78.08

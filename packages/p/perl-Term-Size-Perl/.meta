@@ -1,0 +1,6 @@
+<package name="perl-Term-Size-Perl" project="openSUSE:Factory">
+  <title>Perl extension for retrieving terminal size (Perl version)</title>
+  <description>Yet another implementation of 'Term::Size'. Now in pure Perl, with the exception of a C probe run on build time.</description>
+  <devel project="devel:languages:perl" package="perl-Term-Size-Perl"/>
+  <url>https://metacpan.org/release/Term-Size-Perl</url>
+</package>
