@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Tue Feb  2 01:05:35 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version  20200201
+
+  - Added icons
+
+    * ADLplug & OPNplug
+    * Aqualung
+    * Astah
+    * Audiosurf & Audiosurf 2
+    * Baobab #2506
+    * Beemy
+    * Big Finish Downloader
+    * Blanket #2513
+    * Blob Wars: Attrition
+    * Bloboats #2478
+    * Boiler
+    * Bomber (Flathub) #2007
+    * Bovo (Flathub) #2007
+    * Catfish
+    * Comgen
+    * Copy Paste Grab
+    * CudaText #2483
+    * Cyberpunk 2077 (Steam and Lutris)
+    * Dangerous Golf
+    * DDC/CI control #2465
+    * Dimmer
+    * Ding #2514
+    * Dino
+    * Dooble Web Browser #2516
+    * DOSBox ECE
+    * dotFonts
+    * Dragon Player
+    * DUSK #2475
+    * EndeavourOS distro logo #2485
+    * ExpanDrive
+    * FreeTennis #2479
+    * Friday Night Funkin (Lutris) #2507
+    * Friday Night Funkin #2507
+    * Gammastep (app and tray icons) #2468
+    * Gammy
+    * Garcon #2487
+    * Greenfish Icon Editor Pro
+    * Guitar (Git Client)
+    * Hypnotix
+    * icons DaVinci Resolve Studio
+    * icons Linux Lite Software #2496
+    * ImageJ #2521
+    * Implemented individual icons for the file managers:
+         * Dolphin (FlatHub)
+         * Nautilus
+         * Nemo
+         * Thunar
+    * Joplin (Flathub) #2007
+    * Keysmith
+    * KiCad (Flathub) #2007
+    * Kindd
+    * Kiwix #2480
+    * KMPlayer
+    * KonbuCase
+    * KTimeTracker
+    * Laborejo Software Suite:
+        * Agordejo
+        * Fluajho
+        * Laborejo
+        * Patroneo
+        * Vico
+    * LibreWolf Browser
+    * melonDS #2464
+    * Modelio
+    * Mousepad
+    * Mpdevil #2499
+    * NeoChat (KDE)
+    * Neverball (Flathub) #2007
+    * New Session Manager
+        * Jackpatch
+        * NSM-Legacy-GUI
+        * NSM-Proxy
+    * NoiseTorch
+    * Nostlan
+    * Notejot (Flathub) #2007
+    * OpenBlok
+    * OpenMW Content Editor #2413
+    * OPN2BankEditor & OPL3BankEditor
+    * osu!Lazer
+    * Parole
+    * PeaZip (Flathub) #2007
+    * Phototonic #2481
+    * Pixelitor (Flathub) #2007
+    * Play it Slowly #2493
+    * Popout3D
+    * Projecteur #2491
+    * QJournalctl
+    * Quilter (Flathub) #2007
+    * Reco
+    * Ristretto
+    * Rosegarden (Flathub) #2007
+    * ROM mimetypes #2505
+        * Atari 2600
+        * Atari 7800
+        * Atari Lynx
+        * Game Boy
+        * Game Boy Advance
+        * Game Boy Color
+        * Nintendo 3DS
+        * Nintendo 3DS Executable
+        * Nintendo DS
+        * Sega Pico
+        * SEGA Pico
+        * Wonderswan
+        * Wonderswan Color
+    * Send Anywhere (tray icons)
+    * Spectator #2007
+    * Substance (AppImage)
+    * Timekpr-nExT Control Panel (app & tray icons) #2498
+    * Tomato
+    * Torii SRS #2512
+    * Tuxcut #2473
+    * Unknown Horizons (Flathub) #2007
+    * Webapp Manager
+    * What IP #2471
+    * Wifi Hotspot #2489
+    * WxMaxima #2524
+    * Xfce Task Manager
+    * Xfce Terminal Settings
+    * Xfwm 4
+    * yadPush
+    * Yuzu (AppImage)
+
+  - Updated icons
+
+    * Android File Transfer
+    * Android SDK
+    * ANGRYsearch
+    * APK mimetype icons
+    * Applixware #2495
+    * Arduino
+    * Ark
+    * Audacity
+    * Boop-GTK #2530
+    * Cantor #2476
+    * Chess #2495
+    * Chromium
+    * Chromium Dev
+    * Civilization V
+    * Distributor Logo Linux Lite #2496
+    * EasyTAG
+    * Eric
+    * FileZilla
+    * GUFW
+    * Java mimetype icons
+    * Joplin #2520
+    * LabPlot #2472
+    * Mumble #2495
+    * Preferences System Search
+    * Python
+    * Qv2ray
+    * Ring
+    * SearchMonkey #2494
+    * Security High/Medium/Low icons
+    * Send Anywhere (app icon)
+    * Shell script mimetype icons
+    * Telegram (tray icons) #2477
+    * Terminal emulators (Terminal, Terminal SU, Tilix, Terminology)
+    * Type:Rider #2495
+    * VirtualBox disk image mimetype icons #2508
+    * VK Messenger (app & tray icons) #2503
+    * X Rebirth #2495
+    * Xfce4 Session
+    * Xfwm 4 Composite Editor
+
+  - Changes and fixes
+
+    * Added a few mimetype symlinks #2492
+    * Added missing audio-off symlinks to derivative themes
+    * Added missing mic-off symlink to Papirus/16x16/panel
+    * Fixed org.nicotine_plus.Nicotine_connect icons
+    * Fixed paper size in 32/64 mimetype icons #2508
+    * Remap application-octet-stream symlink to unknown mimetype
+      #2500
+    * Removed folder-pastel icons from derivative themes
+    * Removed mic-ready icons from ePapirus/*/actions
+    * Removed nicotine-tray-* icons from ePapirus
+    * Removed orphan folder-nordic-saved-search icon
+    * Removed orphan onboard icon from ePapirus/24x24/panel
+    * Restored text color in a few panel icons 
+
+-------------------------------------------------------------------
 Sat Jan  2 05:36:21 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20210101
