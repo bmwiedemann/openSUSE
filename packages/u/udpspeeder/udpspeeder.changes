@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 17 21:40:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20210116.0
+  * Added a warning when you send huge packets to UDPspeeder and
+    packets are being truncated. (to fix the problem/confusion
+    mentioned in https://github.com/wangyu-/UDPspeeder/issues/259)
+
+-------------------------------------------------------------------
 Wed Aug 19 19:33:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 20200818.0

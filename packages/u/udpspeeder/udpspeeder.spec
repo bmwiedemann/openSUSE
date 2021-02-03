@@ -1,8 +1,8 @@
 #
 # spec file for package udpspeeder
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           udpspeeder
-Version:        20200818.0
+Version:        20210116.0
 Release:        0
 Summary:        A tunnel which can improve network quality by using FEC
 # Bundled libev is licenced under GPL-3.0+ or BSD-2-Clause
