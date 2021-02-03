@@ -1,7 +1,7 @@
 #
 # spec file for package v4l2loopback
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# needssslcertforbuild
 
 
 Name:           v4l2loopback
@@ -30,7 +31,12 @@ Source3:        modules-load.d_v4l2loopback.conf
 Patch0:         v4l2loopback-include_header.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  help2man
+
+%if 0%{?is_opensuse}
 %kernel_module_package -p %{_sourcedir}/preamble
+%else
+%kernel_module_package -c %_sourcedir/_projectcert.crt -p %{_sourcedir}/preamble
+%endif
 
 %description
 This module allows you to create "virtual video devices". Normal (v4l2)
@@ -79,6 +85,8 @@ for flavor in %{flavors_to_build}; do
 	make V=1 -C obj/$flavor install-utils DESTDIR=%{?buildroot:%{buildroot}} PREFIX=%{_prefix}
 	make V=1 -C obj/$flavor install-man DESTDIR=%{?buildroot:%{buildroot}} PREFIX=%{_prefix}
 done
+
+export BRP_PESIGN_FILES='*.ko'
 
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_modprobedir}/98-v4l2loopback.conf
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_modulesloaddir}/v4l2loopback.conf
