@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jan 31 17:57:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.7.1
+  * Allow creating user to delete secure file
+- Changelog for 4.7.0
+  * Add a new JUPYTER_PREFER_ENV_PATH variable, which can be set 
+    to switch the order of the environment-level path and the 
+    user-level path in the Jupyter path hierarchy (e.g., jupyter 
+    --paths). It is considered set if it is a value that is not 
+    one of 'no', 'n', 'off', 'false', '0', or '0.0' (case 
+    insensitive). If you are running Jupyter in multiple virtual 
+    environments as the same user, you will likely want to set 
+    this environment variable.
+  * Drop Python 2.x and 3.5 support, as they have reached end of 
+    life.
+  * jupyter --paths --debug now explains the environment 
+    variables that affect the current path list.
+  * Add conda environment information in jupyter troubleshoot.
+  * Update _version.version_info and _version.__version__ to 
+    follow Python conventions.
+- merge jupyter package as capability into the primary python
+  package
+- fix replacement of paths:
+  * fix noop introduced by overeager specfile-cleaner for system
+    paths, adjust use_rpm_paths.patch
+  * don't replace ENV_CONFIG_PATH or ENV_JUPYTER_PATH because that 
+    would break virtual environments. See also
+     gh#jupyter/jupyter_core#208
+
+-------------------------------------------------------------------
 Sat Mar 28 07:39:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

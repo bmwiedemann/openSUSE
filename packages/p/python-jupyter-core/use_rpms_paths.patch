@@ -2,7 +2,7 @@ From: toddrme2178@gmail.com
 Date: 2017-09-20
 Subject: Use rpm paths
 
-Use single-line paths. These should be replaced with the appropriate
+Use single-line paths. These must be replaced with the appropriate
 system paths in the .spec file.
 
 ---
@@ -17,7 +17,7 @@ system paths in the .spec file.
 -        "/usr/local/share/jupyter",
 -        "/usr/share/jupyter",
 -    ]
-+    SYSTEM_JUPYTER_PATH = ["/usr/share/jupyter"]
++    SYSTEM_JUPYTER_PATH = ["_datadir_jupyter_"]
  
  ENV_JUPYTER_PATH = [os.path.join(sys.prefix, 'share', 'jupyter')]
  
@@ -29,7 +29,7 @@ system paths in the .spec file.
 -        "/usr/local/etc/jupyter",
 -        "/etc/jupyter",
 -    ]
-+    SYSTEM_CONFIG_PATH = ["/etc/jupyter"]
++    SYSTEM_CONFIG_PATH = ["_sysconfdir_jupyter_"]
  
  ENV_CONFIG_PATH = [os.path.join(sys.prefix, 'etc', 'jupyter')]
  
