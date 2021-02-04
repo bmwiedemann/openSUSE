@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 30 06:54:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.4.3:
+  * CVE-2021-22173: fix USB HID dissector memory leak
+    (wnpa-sec-2021-01, boo#1181598)
+  * CVE-2021-22174: fix USB HID dissector crash
+    (wnpa-sec-2021-02, boo#1181599)
+  * Fix bugs in SIP, Telephony, QUIC, SOMEIP-SD, SRv6, TECMP,
+    AUTOSAR-NM, Fibre Channel, f5ethtrailer, ZVT dissectors.
+  * fix TShark crashes with -T ek option
+
+-------------------------------------------------------------------
 Fri Jan 22 13:35:56 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Disable ITU G.729 Annex A/B speech codec for SUSE based distros, but keep
