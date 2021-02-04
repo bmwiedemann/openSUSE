@@ -7,4 +7,16 @@
     <comment>new dependency of python-pywbem</comment>
     <requestid>841609</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>839d5fbc5ea63227db5d90f36ceeb53e</srcmd5>
+    <version>1.0.2</version>
+    <time>1612466585</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Migrated from Travis and Appveyor to GitHub Actions. This required changes
+    in several areas including dependent packages used for testing and
+    coverage. This did not cause any changes on dependent packages used for the
+    installation of the package.</comment>
+    <requestid>868442</requestid>
+  </revision>
 </revisionlist>
