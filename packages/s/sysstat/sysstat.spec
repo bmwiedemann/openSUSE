@@ -1,7 +1,7 @@
 #
 # spec file for package sysstat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sysstat
-Version:        12.4.0
+Version:        12.4.2
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
@@ -35,8 +35,6 @@ Patch2:         sysstat-8.0.4-pagesize.diff
 Patch3:         sysstat-service.patch
 # PATCH-FIX-OPENSUSE Temporarily disable failing tests on s390x and ppc64
 Patch4:         sysstat-disable-test-failures.patch
-# PATCH-FIX-OPENSUSE bsc#1174227 Workaround for iowait being decremented
-Patch5:         sysstat-iowait-decr.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
@@ -79,8 +77,7 @@ from a sysstat package.
 %ifarch s390x ppc64
 %patch4 -p1
 %endif
-%patch5 -p1
-cp %{S:1} .
+cp %{SOURCE1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
 
@@ -103,7 +100,7 @@ export sadc_options="-S ALL"
            --enable-sensors \
 %endif
            --disable-stripping
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_localstatedir}/log/sa %{buildroot}%{_sbindir}

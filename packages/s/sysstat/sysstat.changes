@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 29 00:01:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.2:
+  * [Aleksei Nikiforov]: Fix alignment and structure size for 32-bit
+  systems.
+  * Fix metric's name in sar -y output: txmtin -> xmtin.
+  * FAQ: Add links to markdown file.
+  * [Tim Gates]: sar.c: Fix typo in comment.
+  * NLS updated.
+  * [Petr Pavlu]: Workaround for iowait being decremented.
+  * [SacValleyTech]: Make sure setbuf() is the first operation
+  performed on stream.
+  * [Michal Berger]: Fix typo in PHYS_PACK_ID definition.
+  * configure: Fix option --disable-compress-manpg.
+  * sar: Update definition for runq-sz metric in manual page.
+  * iostat: Update manual page (explain "*_w+d*" fields).
+  * iostat: Explain options -f/+f in manual page.
+  * [Nan Xiao]: mpstat: Add -T option in help message.
+  * [Nan Xiao]: mpstat: Fix typo in manual page.
+  * FAQ.md file: Add missing spaces at end of line.
+  * Non regression tests updated.
+  * NLS updated.
+- drop sysstat-iowait-decr.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Oct  3 07:38:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't hard require systemd, it works without,too.
