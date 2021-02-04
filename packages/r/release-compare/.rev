@@ -174,4 +174,14 @@ transfered the wrong version into git :/</comment>
   * exports changes also as YAML file (provided by Joachim Gleissner)</comment>
     <requestid>868534</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3a19c05d946b2a43e3b76bc9fd93ed43</srcmd5>
+    <version>0.5.3</version>
+    <time>1612466645</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.5.3
+  * fix regex for CVE scan
+  * fix glob for old obsgendiff file name expansion</comment>
+    <requestid>869006</requestid>
+  </revision>
 </revisionlist>
