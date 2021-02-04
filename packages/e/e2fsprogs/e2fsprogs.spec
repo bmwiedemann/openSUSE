@@ -1,7 +1,7 @@
 #
 # spec file for package e2fsprogs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,13 +39,13 @@ BuildRequires:  xz
 BuildRequires:  makeinfo
 %endif
 # Define info macros if missing (for Fedora builds)
-%if 0%{!?%install_info_prereq:1}
+%if ! 0%{?suse_version}
 %define install_info_prereq info
 %define install_info sbin/install-info
 %define install_info_delete sbin/install-info --delete
-%endif
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
+%endif
 %endif
 # bug437293
 %ifarch ppc64
@@ -74,7 +74,8 @@ Summary:        Utilities for the Second Extended File System
 License:        GPL-2.0-only
 Group:          System/Filesystems
 URL:            http://e2fsprogs.sourceforge.net
-Requires(post): coreutils
+# For regenerate_initrd_post macro
+Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires:       libcom_err2 >= %{version}
 Requires:       libext2fs2 >= %{version}
 Suggests:       e2fsprogs-scrub
