@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan 29 15:42:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.7.4 (all what was in the update to 2.7.2 and above
+  it):
+  - Updated lexers:
+
+    * Ada (#1581)
+    * HTML (#1615, #1614)
+    * Java (#1594, #1586)
+    * JavaScript (#1605, #1589, #1588)
+    * JSON (#1569 -- this is a complete rewrite)
+    * Lean (#1601)
+    * LLVM (#1612)
+    * Mason (#1592)
+    * MySQL (#1555, #1551)
+    * Rust (#1608)
+    * Turtle (#1590, #1553)
+
+  - Deprecated JsonBareObjectLexer, which is now identical to
+    JsonLexer (#1600)
+  - The ``ImgFormatter`` now calculates the exact character
+    width, which fixes some issues with overlapping text (#1213,
+    #1611)
+  - Documentation fixes (#1609, #1599, #1598)
+  - Fixed duplicated Juttle language alias (#1604, #1606)
+  - Added support for Kotlin scripts (#1587)
+  - Removed CSS rule which forced margin to 0
+
+-------------------------------------------------------------------
 Fri Dec  4 13:06:36 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Revert to 2.6.1 (higher version break python-Pelican).
