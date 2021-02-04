@@ -1,7 +1,7 @@
-Index: vim-8.2.0348/runtime/gvimrc_example.vim
+Index: vim-8.2.2411/runtime/gvimrc_example.vim
 ===================================================================
---- vim-8.2.0348.orig/runtime/gvimrc_example.vim
-+++ vim-8.2.0348/runtime/gvimrc_example.vim
+--- vim-8.2.2411.orig/runtime/gvimrc_example.vim
++++ vim-8.2.2411/runtime/gvimrc_example.vim
 @@ -15,9 +15,6 @@
  " Make external commands work through a pipe instead of a pseudo-tty
  "set noguipty

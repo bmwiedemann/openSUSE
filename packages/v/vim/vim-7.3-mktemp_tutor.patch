@@ -1,7 +1,7 @@
-Index: vim-8.2.0348/src/vimtutor
+Index: vim-8.2.2411/src/vimtutor
 ===================================================================
---- vim-8.2.0348.orig/src/vimtutor
-+++ vim-8.2.0348/src/vimtutor
+--- vim-8.2.2411.orig/src/vimtutor
++++ vim-8.2.2411/src/vimtutor
 @@ -24,8 +24,7 @@ xx=$1
  export xx
  

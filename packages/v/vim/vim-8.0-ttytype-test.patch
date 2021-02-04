@@ -1,8 +1,8 @@
-Index: vim-8.2.0348/src/testdir/test_options.vim
+Index: vim-8.2.2411/src/testdir/test_options.vim
 ===================================================================
---- vim-8.2.0348.orig/src/testdir/test_options.vim
-+++ vim-8.2.0348/src/testdir/test_options.vim
-@@ -369,7 +369,7 @@ func Test_set_ttytype()
+--- vim-8.2.2411.orig/src/testdir/test_options.vim
++++ vim-8.2.2411/src/testdir/test_options.vim
+@@ -496,7 +496,7 @@ func Test_set_ttytype()
    " check for failure of finding the entry and for missing 'cm' entry.
    try
      set ttytype=xxx

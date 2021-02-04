@@ -1,8 +1,8 @@
-Index: vim-8.2.0348/src/configure.ac
+Index: vim-8.2.2411/src/configure.ac
 ===================================================================
---- vim-8.2.0348.orig/src/configure.ac
-+++ vim-8.2.0348/src/configure.ac
-@@ -1267,7 +1267,7 @@ eof
+--- vim-8.2.2411.orig/src/configure.ac
++++ vim-8.2.2411/src/configure.ac
+@@ -1289,7 +1289,7 @@ eof
  		  vi_cv_path_python_plibs="-F${python_PYTHONFRAMEWORKPREFIX} -framework Python"
  	      fi
  	    else

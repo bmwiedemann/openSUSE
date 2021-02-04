@@ -4983,4 +4983,12 @@ always built-in because vim has direct perl dependencies anyway.
   * CI on cirrus times out, coveralls doesn't always run.</comment>
     <requestid>862401</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>584726f55521d3600815d74b2cb4e3e8</srcmd5>
+    <version>8.2.2411</version>
+    <time>1612466495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867702</requestid>
+  </revision>
 </revisionlist>

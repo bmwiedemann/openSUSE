@@ -1,7 +1,7 @@
-Index: vim-8.2.1389/runtime/syntax/fstab.vim
+Index: vim-8.2.2411/runtime/syntax/fstab.vim
 ===================================================================
---- vim-8.2.1389.orig/runtime/syntax/fstab.vim
-+++ vim-8.2.1389/runtime/syntax/fstab.vim
+--- vim-8.2.2411.orig/runtime/syntax/fstab.vim
++++ vim-8.2.2411/runtime/syntax/fstab.vim
 @@ -35,7 +35,7 @@ syn match fsOperator /[,=:#]/
  " Device
  syn cluster fsDeviceCluster contains=fsOperator,fsDeviceKeyword,fsDeviceError

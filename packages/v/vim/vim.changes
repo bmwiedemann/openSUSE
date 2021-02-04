@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Mon Jan 26 11:30:34 UTC 2021 - Dimitis Karakasilis <DKarakasilis@suse.com>
+
+Updated to version 8.2.2411, fixes the following problems
+  * Debugging code included.
+  * Some test files may not be deleted.
+  * Not all ways Vim can be started are tested.
+  * Vim9: crash when using :trow in a not executed block.
+  * Vim9: wrong error when modifying dict declared with :final.
+  * Vim9: missing :endif not reported when using :windo.
+  * Vim9: warning for uninitialized variable. (Tony Mechelynck)
+  * Pascal-like filetypes not always detected.
+  * Vim9: "silent return" does not restore command modifiers.
+  * Vim9: it is not possible to extend a dictionary with different item types.
+  * Configure test for GTK only says "no". (Harm te Hennepe)
+  * Vim9: no error if using job_info() result wrongly.
+  * Cannot get the type of a value as a string.
+  * win_execute() unexpectedly returns number zero when failing.
+  * Expression command line completion shows variables but not functions after
+  "g:". (Gary Johnson)
+  * "char" functions return the wront column in Insert mode when the cursor
+  is beyond the end of the line.
+  * Vim9: return type of readfile() is any.
+  * Using inclusive index for slice is not always desired.
+  * No focus events in a terminal.
+  * Codecov reports every little coverage drop.
+  * Build failure without GUI.
+  * No check for modified files after focus gained. (Mathias Stearn)
+  * Vim9: cannot handle line break after parenthesis at line end.
+  * Using "void" for no reason.
+  * Vim9: error message for "throw" in function that was called with "silent!".
+  * If the focus lost/gained escape sequence is received twice it is not
+  ignored. (Christ van Willigen)
+  * Spartql files are not detected.
+  * Crash with a weird combination of autocommands.
+  * Stray test failure on Appveyor.
+  * Vim9: ":put =expr" does not handle a list properly.
+  * Vim9: crash when parsing function return type fails.
+  * Wrong #ifdef for use_xterm_like_mouse().
+  * Strange test failure with MS-Windows.
+  * Test leaves file behind.
+  * Vim9: no highlight for "s///gc" when using 'opfunc'.
+  * Vim9: check of builtin function argument type is incomplete.
+  * Vim9: line break in lambda accesses freed memory.
+  * Vim9: no check for map() changing item type at script level.
+  * When using ":sleep" the cursor is always displayed.
+  * Test failures on some less often used systems.
+  * Insufficient tests for setting options.
+  * Vim9: functions return true/false but can't be used as bool.
+  * Vim9: command fails in catch block.
+  * Vim9: crash when using types in :for with unpack.
+  * Confusing error message for wrong :let command.
+  * Vim9: list assignment only accepts a number index.
+  * Accessing uninitialized memory in test_undo.
+  * Test for RGB color skipped in the terminal.
+  * Vim9: crash when dividing by zero in compiled code using constants.
+  * Vim9: crash when using a range after another expression.
+  * Vim9: no error message for dividing by zero.
+  * Finding spell suggestions twice if 'spellsuggest' contains number.
+  * Vim9: occasional crash when using try/catch and a timer.
+  * Vim9: divide by zero does not abort expression execution.
+  * Build failure.
+  * Focus escape sequences are not named in ":set termcap" output.
+  * Turtle filetype not recognized.
+  * "gj" and "gk" do not work correctly when inside a fold.
+  * Vim9: crash when using ":silent! put".
+  * Runtime type check does not mention argument index.
+  * No easy way to get the maximum or mininum number value.
+  * Test failure on a few systems.
+  * Vim9: using positive offset is unexpected.
+  * Memory leak when creating a global function with closure.
+  * Fennel filetype not recognized.
+  * Vim9: error message when script line starts with "[{".
+  * Vim9: min() and max() return type is "any".
+  * Vim9: error for wrong type may report wrong line number.
+  * Vim9: no white space allowed before "->".
+  * Vim9: "%%" not seen as alternate file name for commands with a buffer
+  name argument.
+  * Method test fails.
+  * Fold test fails in wide terminal.
+  * Vim9: compiled functions are not profiled.
+  * Build fails without +profiling feature.
+  * Some filetypes not detected.
+  * Vim9: profiling if/elseif/endif not correct.
+  * Vim9: profiling try/catch not correct.
+  * Vim9: no need to allow white space before "(" for :def.
+  * Vim9: profiled :def function leaks memory.
+  * Old jumplist code is never used.
+  * MinGW: "--preprocessor" flag no longer supported.
+  * Vim9: profiling only works for one function.
+  * Build failure without the +profiling feature.
+  * Profile test fails on MS-Windows.
+
+-------------------------------------------------------------------
+Fri Jan 15 13:18:59 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- remove forcing /usr/bin/vi -> vim symlink. Previous line linked to
+  /etc/alternatives already. 
+
+-------------------------------------------------------------------
 Mon Jan 11 16:17:34 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2327, fixes the following problems

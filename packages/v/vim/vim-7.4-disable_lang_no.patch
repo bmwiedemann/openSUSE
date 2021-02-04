@@ -1,7 +1,7 @@
-Index: vim-8.2.0348/src/po/Make_all.mak
+Index: vim-8.2.2411/src/po/Make_all.mak
 ===================================================================
---- vim-8.2.0348.orig/src/po/Make_all.mak
-+++ vim-8.2.0348/src/po/Make_all.mak
+--- vim-8.2.2411.orig/src/po/Make_all.mak
++++ vim-8.2.2411/src/po/Make_all.mak
 @@ -24,7 +24,6 @@ LANGUAGES = \
  		lv \
  		nb \

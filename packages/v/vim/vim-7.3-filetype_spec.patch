@@ -1,9 +1,9 @@
-Index: vim-8.2.0348/runtime/filetype.vim
+Index: vim-8.2.2411/runtime/filetype.vim
 ===================================================================
---- vim-8.2.0348.orig/runtime/filetype.vim
-+++ vim-8.2.0348/runtime/filetype.vim
-@@ -1581,7 +1581,7 @@ au BufNewFile,BufRead *.hog,snort.conf,v
- au BufNewFile,BufRead *.rules			call dist#ft#FTRules()
+--- vim-8.2.2411.orig/runtime/filetype.vim
++++ vim-8.2.2411/runtime/filetype.vim
+@@ -1639,7 +1639,7 @@ au BufNewFile,BufRead *.rules			call dis
+ au BufNewFile,BufRead *.rq,*.sparql		setf sparql
  
  " Spec (Linux RPM)
 -au BufNewFile,BufRead *.spec			setf spec
@@ -11,10 +11,10 @@ Index: vim-8.2.0348/runtime/filetype.vim
  
  " Speedup (AspenTech plant simulator)
  au BufNewFile,BufRead *.speedup,*.spdata,*.spd	setf spup
-Index: vim-8.2.0348/runtime/syntax/spec.vim
+Index: vim-8.2.2411/runtime/syntax/spec.vim
 ===================================================================
---- vim-8.2.0348.orig/runtime/syntax/spec.vim
-+++ vim-8.2.0348/runtime/syntax/spec.vim
+--- vim-8.2.2411.orig/runtime/syntax/spec.vim
++++ vim-8.2.2411/runtime/syntax/spec.vim
 @@ -102,7 +102,7 @@ syn case ignore
  "%% PreAmble Section %%
  "Copyright and Serial were deprecated by License and Epoch

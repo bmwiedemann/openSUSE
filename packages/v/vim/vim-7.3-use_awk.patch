@@ -1,7 +1,7 @@
-Index: vim-8.2.0348/runtime/tools/mve.awk
+Index: vim-8.2.2411/runtime/tools/mve.awk
 ===================================================================
---- vim-8.2.0348.orig/runtime/tools/mve.awk
-+++ vim-8.2.0348/runtime/tools/mve.awk
+--- vim-8.2.2411.orig/runtime/tools/mve.awk
++++ vim-8.2.2411/runtime/tools/mve.awk
 @@ -1,4 +1,4 @@
 -#!/usr/bin/nawk -f
 +#!/usr/bin/awk -f

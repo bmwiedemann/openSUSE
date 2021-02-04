@@ -1,7 +1,7 @@
-Index: vim-8.2.0348/runtime/filetype.vim
+Index: vim-8.2.2411/runtime/filetype.vim
 ===================================================================
---- vim-8.2.0348.orig/runtime/filetype.vim
-+++ vim-8.2.0348/runtime/filetype.vim
+--- vim-8.2.2411.orig/runtime/filetype.vim
++++ vim-8.2.2411/runtime/filetype.vim
 @@ -17,7 +17,7 @@ augroup filetypedetect
  
  " Ignored extensions

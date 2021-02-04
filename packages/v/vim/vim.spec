@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 2327
+%define patchlevel 2411
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -316,7 +316,6 @@ mkdir %{buildroot}/bin
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/vi
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/vim
 %endif
-ln -s -f vim              %{buildroot}%{_bindir}/vi
 ln -s -f vim              %{buildroot}%{_bindir}/edit
 %if !0%{?usrmerged}
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/ex

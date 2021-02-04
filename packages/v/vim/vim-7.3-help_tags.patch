@@ -1,8 +1,8 @@
-Index: vim-8.2.0348/runtime/doc/Makefile
+Index: vim-8.2.2411/runtime/doc/Makefile
 ===================================================================
---- vim-8.2.0348.orig/runtime/doc/Makefile
-+++ vim-8.2.0348/runtime/doc/Makefile
-@@ -325,6 +325,7 @@ CONVERTED = \
+--- vim-8.2.2411.orig/runtime/doc/Makefile
++++ vim-8.2.2411/runtime/doc/Makefile
+@@ -331,6 +331,7 @@ CONVERTED = \
  all: tags vim.man evim.man vimdiff.man vimtutor.man xxd.man $(CONVERTED)
  
  # Use Vim to generate the tags file.  Can only be used when Vim has been

@@ -1,8 +1,8 @@
-Index: vim-8.2.0348/runtime/filetype.vim
+Index: vim-8.2.2411/runtime/filetype.vim
 ===================================================================
---- vim-8.2.0348.orig/runtime/filetype.vim
-+++ vim-8.2.0348/runtime/filetype.vim
-@@ -101,6 +101,10 @@ au BufNewFile,BufRead *.ino,*.pde		setf
+--- vim-8.2.2411.orig/runtime/filetype.vim
++++ vim-8.2.2411/runtime/filetype.vim
+@@ -104,6 +104,10 @@ au BufNewFile,BufRead *.ino,*.pde		setf
  au BufNewFile,BufRead .htaccess,*/etc/httpd/*.conf		setf apache
  au BufNewFile,BufRead */etc/apache2/sites-*/*.com		setf apache
  

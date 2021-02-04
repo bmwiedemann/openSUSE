@@ -1,8 +1,8 @@
-Index: vim-8.2.0348/src/feature.h
+Index: vim-8.2.2411/src/feature.h
 ===================================================================
---- vim-8.2.0348.orig/src/feature.h
-+++ vim-8.2.0348/src/feature.h
-@@ -822,11 +822,12 @@
+--- vim-8.2.2411.orig/src/feature.h
++++ vim-8.2.2411/src/feature.h
+@@ -813,11 +813,12 @@
   * SYS_VIMRC_FILE	Name of the system-wide .vimrc file.
   */
  // #define SYS_VIMRC_FILE	"/etc/vimrc"
