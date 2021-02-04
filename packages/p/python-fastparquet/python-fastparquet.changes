@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  3 21:43:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip the import without warning test gh#dask/fastparquet#558
+- Apply the Cepl-Strangelove-Parameter to pytest
+  (--import-mode append)
+
+-------------------------------------------------------------------
 Sat Jan  2 21:04:30 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 0.5

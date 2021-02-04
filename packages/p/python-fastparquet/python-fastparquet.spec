@@ -75,18 +75,13 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# avoid that the process call of python inside the tests imports from source
-# directory fastparquet and don't read setup.cfg
-mkdir ../testdir
-cp -r test-data ../testdir/
-pushd ../testdir
+# newer packaging package creates false DeprecationWarning gh#dask/fastparquet#558
+donttest+=" or test_import_without_warning"
 # Test test_time_millis has the wrong reference type for 32-bit
 %if 0%{?__isa_bits} != 64
-%define donttest  -k 'not test_time_millis'
+donttest+=" or test_time_millis"
 %endif
-%pytest_arch --pyargs fastparquet %{?donttest}
-popd
-rm -r ../testdir
+%pytest_arch --pyargs fastparquet --import-mode append -k "not (${donttest:4})"
 
 %files %{python_files}
 %doc README.rst
