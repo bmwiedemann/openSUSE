@@ -1,7 +1,7 @@
 #
 # spec file for package python-apache-libcloud
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %define skip_python2 1
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with	python2
 Name:           python-apache-libcloud
-Version:        3.2.0
+Version:        3.3.1
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
@@ -55,11 +54,6 @@ Suggests:       python-lockfile
 Suggests:       python-paramiko
 Suggests:       python-pysphere
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-backports.ssl_match_hostname
-BuildRequires:  python2
-Requires:       python-backports.ssl_match_hostname
-%endif
 %python_subpackages
 
 %description
@@ -88,10 +82,11 @@ find %{buildroot} -name '*.pem' -size 0 -delete
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Skip OvhTests::test_list_nodes_invalid_region which tries to reach OVH servers
 # Skip ShellOutSSHClientTests tests which attempt to ssh to localhost
 # Skip test_key_file_non_pem_format_error since OpenSSH support is backported for SLE python-paramiko < 2.7.0
 # Note these four extra py3 failures are undesirable and should be fixed: fail in s390 and ppc64
-%pytest -k '(not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_non_utf8_character and not test_consume_stderr_chunk_contains_non_utf8_character and not test_key_file_non_pem_format_error and not ShellOutSSHClientTests and not ElasticContainerDriverTestCase)'
+%pytest -k '(not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_non_utf8_character and not test_consume_stderr_chunk_contains_non_utf8_character and not test_key_file_non_pem_format_error and not ShellOutSSHClientTests and not ElasticContainerDriverTestCase and not test_list_nodes_invalid_region)'
 
 %files %{python_files}
 %license LICENSE
