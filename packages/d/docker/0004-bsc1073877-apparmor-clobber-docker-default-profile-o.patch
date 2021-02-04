@@ -1,0 +1,89 @@
+From eb4e0b351b4bb229bfd5fd3ed57d3c35040265e0 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <asarai@suse.de>
+Date: Fri, 29 Jun 2018 17:59:30 +1000
+Subject: [PATCH 4/4] bsc1073877: apparmor: clobber docker-default profile on
+ start
+
+In the process of making docker-default reloading far less expensive,
+567ef8e7858c ("daemon: switch to 'ensure' workflow for AppArmor
+profiles") mistakenly made the initial profile load at dockerd start-up
+lazy. As a result, if you have a running Docker daemon and upgrade it to
+a new one with an updated AppArmor profile the new profile will not take
+effect (because the old one is still loaded). The fix for this is quite
+trivial, and just requires us to clobber the profile on start-up.
+
+Fixes: 567ef8e7858c ("daemon: switch to 'ensure' workflow for AppArmor profiles")
+SUSE-Bugs: bsc#1099277
+Signed-off-by: Aleksa Sarai <asarai@suse.de>
+---
+ daemon/apparmor_default.go             | 14 ++++++++++----
+ daemon/apparmor_default_unsupported.go |  4 ++++
+ daemon/daemon.go                       |  5 +++--
+ 3 files changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
+index a7cc3a5ef412..1a952953da8f 100644
+--- a/daemon/apparmor_default.go
++++ b/daemon/apparmor_default.go
+@@ -23,6 +23,15 @@ func DefaultApparmorProfile() string {
+ 	return ""
+ }
+ 
++func clobberDefaultAppArmorProfile() error {
++	if apparmor.IsEnabled() {
++		if err := aaprofile.InstallDefault(defaultAppArmorProfile); err != nil {
++			return fmt.Errorf("AppArmor enabled on system but the %s profile could not be loaded: %s", defaultAppArmorProfile, err)
++		}
++	}
++	return nil
++}
++
+ func ensureDefaultAppArmorProfile() error {
+ 	if apparmor.IsEnabled() {
+ 		loaded, err := aaprofile.IsLoaded(defaultAppArmorProfile)
+@@ -36,10 +45,7 @@ func ensureDefaultAppArmorProfile() error {
+ 		}
+ 
+ 		// Load the profile.
+-		if err := aaprofile.InstallDefault(defaultAppArmorProfile); err != nil {
+-			return fmt.Errorf("AppArmor enabled on system but the %s profile could not be loaded: %s", defaultAppArmorProfile, err)
+-		}
++		return clobberDefaultAppArmorProfile()
+ 	}
+-
+ 	return nil
+ }
+diff --git a/daemon/apparmor_default_unsupported.go b/daemon/apparmor_default_unsupported.go
+index dd581dc7dadb..5b14979cd4a3 100644
+--- a/daemon/apparmor_default_unsupported.go
++++ b/daemon/apparmor_default_unsupported.go
+@@ -2,6 +2,10 @@
+ 
+ package daemon // import "github.com/docker/docker/daemon"
+ 
++func clobberDefaultAppArmorProfile() error {
++	return nil
++}
++
+ func ensureDefaultAppArmorProfile() error {
+ 	return nil
+ }
+diff --git a/daemon/daemon.go b/daemon/daemon.go
+index 794ff9712d08..f9e727b348c5 100644
+--- a/daemon/daemon.go
++++ b/daemon/daemon.go
+@@ -855,8 +855,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+ 		logrus.Warnf("Failed to configure golang's threads limit: %v", err)
+ 	}
+ 
+-	// ensureDefaultAppArmorProfile does nothing if apparmor is disabled
+-	if err := ensureDefaultAppArmorProfile(); err != nil {
++	// Make sure we clobber any pre-existing docker-default profile to ensure
++	// that upgrades to the profile actually work smoothly.
++	if err := clobberDefaultAppArmorProfile(); err != nil {
+ 		logrus.Errorf(err.Error())
+ 	}
+ 
+-- 
+2.30.0
+

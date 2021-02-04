@@ -1,0 +1,59 @@
+From 6e2607c6a68ecf1a7378133f22cb7192e2eb9d5b Mon Sep 17 00:00:00 2001
+From: Arnaud Rebillout <elboulangero@gmail.com>
+Date: Wed, 16 Dec 2020 10:19:43 +0700
+Subject: [PATCH] Rename bin/md2man to bin/go-md2man
+
+In the recent PR !2877, some code was added to check if md2man is
+already installed in the build environment. This is to cater to the
+needs of Linux distributions.
+
+However it turns out that Linux distributions install md2man as
+bin/go-md2man instead of bin/md2man, hence the PR !2877 doesn't help
+much.
+
+This commit fixes it by settling on using the binary name go-md2man.
+
+For reference, here the file list of the package go-md2man in several
+distributions:
+
+- Debian: <https://packages.debian.org/sid/amd64/go-md2man/filelist>
+- Ubuntu: <https://packages.ubuntu.com/hirsute/amd64/go-md2man/filelist>
+- Fedora: <https://fedora.pkgs.org/31/fedora-x86_64/golang-github-cpuguy83-md2man-2.0.0-0.4.20190624gitf79a8a8.fc31.x86_64.rpm.html>
+- ArchLinux: <https://www.archlinux.org/packages/community/x86_64/go-md2man/>
+
+Signed-off-by: Arnaud Rebillout <elboulangero@gmail.com>
+---
+ man/md2man-all.sh            | 2 +-
+ scripts/docs/generate-man.sh | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/man/md2man-all.sh b/man/md2man-all.sh
+index eb0bc6366a27..46c7b8f08eae 100755
+--- a/man/md2man-all.sh
++++ b/man/md2man-all.sh
+@@ -18,5 +18,5 @@ for FILE in *.md; do
+ 		continue
+ 	fi
+ 	mkdir -p "./man${num}"
+-	md2man -in "$FILE" -out "./man${num}/${name}"
++	go-md2man -in "$FILE" -out "./man${num}/${name}"
+ done
+diff --git a/scripts/docs/generate-man.sh b/scripts/docs/generate-man.sh
+index 136ed1e00094..e312c87dd321 100755
+--- a/scripts/docs/generate-man.sh
++++ b/scripts/docs/generate-man.sh
+@@ -4,9 +4,9 @@ set -eu -o pipefail
+ 
+ mkdir -p ./man/man1
+ 
+-if ! command -v md2man &> /dev/null; then
++if ! command -v go-md2man &> /dev/null; then
+ 	# yay, go install creates a binary named "v2" ¯\_(ツ)_/¯
+-	go build -o "/go/bin/md2man" ./vendor/github.com/cpuguy83/go-md2man/v2
++	go build -o "/go/bin/go-md2man" ./vendor/github.com/cpuguy83/go-md2man/v2
+ fi
+ 
+ # Generate man pages from cobra commands
+-- 
+2.30.0
+

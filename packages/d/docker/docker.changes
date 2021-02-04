@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:06:17 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.3-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. CVE-2021-21285 CVE-2021-21284
+- Rebase patches on top of 20.10.3-ce.
+  - 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  + 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  - 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  + 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  - 0004-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  + 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  - 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  + 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+
+-------------------------------------------------------------------
+Tue Feb  2 05:28:01 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Drop docker-runc, docker-test and docker-libnetwork packages. We now just use
+  the upstream runc package (it's stable enough and Docker no longer pins git
+  versions). docker-libnetwork is so unstable that it doesn't have any
+  versioning scheme and so it really doesn't make sense to maintain the project
+  as a separate package. bsc#1181641 bsc#1181677
+- Remove no-longer-needed patch for packaging now that we've dropped
+  docker-runc and docker-libnetwork.
+  - 0001-PACKAGING-revert-Remove-docker-prefix-for-containerd.patch
+
+-------------------------------------------------------------------
+Fri Jan 29 22:55:48 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.2-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1181594
+- Remove upstreamed patches:
+  - bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
+  - boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
+- Add patches to fix build:
+  + cli-0001-Rename-bin-md2man-to-bin-go-md2man.patch
+- Since upstream has changed their source repo (again) we have to rebase all of
+  our patches. While doing this, I've collapsed all patches into one branch
+  per-release and thus all the patches are now just one series:
+  - packaging-0001-revert-Remove-docker-prefix-for-containerd-and-runc-.patch
+  + 0001-PACKAGING-revert-Remove-docker-prefix-for-containerd.patch
+  - secrets-0001-daemon-allow-directory-creation-in-run-secrets.patch
+  + 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  - secrets-0002-SUSE-implement-SUSE-container-secrets.patch
+  + 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  - private-registry-0001-Add-private-registry-mirror-support.patch
+  + 0004-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  - bsc1073877-0001-apparmor-clobber-docker-default-profile-on-start.patch
+  + 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+
+-------------------------------------------------------------------
+Fri Jan 29 11:54:53 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Re-apply secrets fix for bsc#1065609 which appears to have been lost after it
+  was fixed.
+  * secrets-0001-daemon-allow-directory-creation-in-run-secrets.patch
+  * secrets-0002-SUSE-implement-SUSE-container-secrets.patch
+
+-------------------------------------------------------------------
 Wed Dec 23 06:40:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Add Conflicts and Provides for kubic flavour of docker-fish-completion.

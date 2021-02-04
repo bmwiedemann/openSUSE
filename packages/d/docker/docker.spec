@@ -1,7 +1,7 @@
 #
 # spec file for package docker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,52 +42,55 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 5eb3275d4006
-%define git_commit_epoch 1606849828
+%define git_version 46229ca1d815
+%define git_commit_epoch 1611869592
 
-# These are the git commits required. We verify them against the source to make
-# sure we didn't miss anything important when doing upgrades.
-%define required_containerd ea765aba0d05254012b0b9e595e995c09186427f
-%define required_dockerrunc dc9208a3303feef5b3839f4323d9beb36df0a9dd
-%define required_libnetwork 55e924b8a84231a065879156c0de95aefc5f5435
+# We require a specific pin of libnetwork because it doesn't really do
+# versioning and minor version mismatches in libnetwork can break Docker
+# networking. All other key runtime dependencies (containerd, runc) are stable
+# enough that this isn't necessary.
+%define libnetwork_version fa125a3512ee0f6187721c88582bf8c4378bd4d7
+
+%define dist_builddir  %{_builddir}/dist-suse
+%define cli_builddir   %{dist_builddir}/src/github.com/docker/cli
+%define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.14_ce
+Version:        20.10.3_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
 Group:          System/Management
 URL:            http://www.docker.io
-# TODO(VR): check those SOURCE files below
 Source:         %{realname}-%{version}_%{git_version}.tar.xz
-Source1:        docker.service
+Source1:        %{realname}-cli-%{version}.tar.xz
+Source2:        %{realname}-libnetwork-%{libnetwork_version}.tar.xz
+Source3:        docker-rpmlintrc
+# TODO: Move these source files to somewhere nicer.
+Source100:      docker.service
+Source101:      80-docker.rules
+Source102:      sysconfig.docker
+Source103:      README_SUSE.md
+Source104:      docker-audit.rules
+Source105:      docker-daemon.json
+# Kubelet-specific sources.
 # bsc#1086185 -- but we only apply this on Kubic.
-Source2:        docker-kubic-service.conf
-Source3:        80-docker.rules
-Source4:        sysconfig.docker
-Source5:        kubelet.env
-Source6:        docker-rpmlintrc
-Source7:        README_SUSE.md
-Source8:        docker-audit.rules
-Source9:        tests.sh
-Source10:       docker-daemon.json
+Source900:      docker-kubic-service.conf
+Source901:      kubelet.env
+# NOTE: All of these patches are maintained in <https://github.com/suse/docker>
+#       in the suse-<version> branch. Make sure you update the patches in that
+#       branch and then git-format-patch the patch here.
 # SUSE-FEATURE: Adds the /run/secrets mountpoint inside all Docker containers
-# which is not snapshotted when images are committed. Note that if you modify
-# this patch, please also modify the patch in the suse-secrets-v<version>
-# branch in http://github.com/suse/docker.mirror.
-Patch200:       secrets-0001-daemon-allow-directory-creation-in-run-secrets.patch
-Patch201:       secrets-0002-SUSE-implement-SUSE-container-secrets.patch
-# SUSE-ISSUE: Revert of https://github.com/docker/docker/pull/37907.
-Patch300:       packaging-0001-revert-Remove-docker-prefix-for-containerd-and-runc-.patch
-# SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/37353. bsc#1099277
-Patch401:       bsc1073877-0001-apparmor-clobber-docker-default-profile-on-start.patch
-# SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/39121. bsc#1122469
-Patch402:       bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
-# SUSE-BACKPORT: Backport of https://github.com/moby/libnetwork/pull/2548. boo#1178801, SLE-16460
-Patch403:       boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
-# SUSE-FEATURE: Add support to mirror inofficial/private registries
-#               (https://github.com/docker/docker/pull/34319)
-Patch500:       private-registry-0001-Add-private-registry-mirror-support.patch
+#               which is not snapshotted when images are committed.
+Patch100:       0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+# SUSE-FEATURE: Add support to mirror unofficial/private registries
+#               <https://github.com/docker/docker/pull/34319>.
+Patch200:       0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+# SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/37353. bsc#1073877 bsc#1099277
+Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+# SUSE-BACKPORT: Backport of https://github.com/docker/cli/pull/2888.
+Patch301:       cli-0001-Rename-bin-md2man-to-bin-go-md2man.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -101,23 +104,21 @@ BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  zsh
 BuildRequires:  fish
+BuildRequires:  go-go-md2man
+# We cannot use Go 1.14 because it breaks io.Copy (among other things) by
+# returning -EINTR from I/O syscalls much more often.
+BuildRequires:  go1.13
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       apparmor-parser
 Requires:       ca-certificates-mozilla
-# Required in order for networking to work. fix_bsc_1057743 is a work-around
-# for some old packaging issues (where rpm would delete a binary that was
-# installed by docker-libnetwork). See bsc#1057743 for more details.
-BuildRequires:  docker-libnetwork%{name_suffix}-git = %{required_libnetwork}
-Requires:       docker-libnetwork%{name_suffix}-git = %{required_libnetwork}
-Requires:       fix_bsc_1057743
-# Containerd and runC are required as they are the only currently supported
-# execdrivers of Docker. NOTE: The version pinning here matches upstream's
-# vendor.conf to ensure that we don't use a slightly incompatible version of
-# runC or containerd (which would be bad).
-BuildRequires:  containerd%{name_suffix}-git  = %{required_containerd}
-Requires:       containerd%{name_suffix}-git = %{required_containerd}
-BuildRequires:  docker-runc%{name_suffix}-git = %{required_dockerrunc}
-Requires:       docker-runc%{name_suffix}-git = %{required_dockerrunc}
+# The docker-proxy binary used to be in a separate package. We obsolete it,
+# since now docker-proxy is maintained as part of this package.
+Obsoletes:      docker-libnetwork%{name_suffix} < 0.7.0.2
+Provides:       docker-libnetwork%{name_suffix} = 0.7.0.2.%{version}
+# Required to actually run containers. We require the minimum version that is
+# pinned by Docker, but in order to avoid headaches we allow for updates.
+Requires:       runc >= 1.0.0~rc92
+Requires:       containerd >= 1.4.3
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
@@ -131,20 +132,13 @@ Requires:       xz >= 4.9
 Requires(post): %fillup_prereq
 Requires(post): udev
 Requires(post): shadow
-# We used to have a migration tool for the upgrade from v1.9.x to v1.10.x.
-# It is no longer useful, so we obsolete it. bsc#1069758
-Obsoletes:      docker-image-migrator
 # Not necessary, but must be installed when the underlying system is
 # configured to use lvm and the user doesn't explicitly provide a
 # different storage-driver than devicemapper
 Recommends:     lvm2 >= 2.2.89
 Recommends:     git-core >= 1.7
-Conflicts:      lxc < 1.0
 ExcludeArch:    s390 ppc
-BuildRequires:  go-go-md2man
-# We cannot use Go 1.14 because it breaks io.Copy (among other things) by
-# returning -EINTR from I/O syscalls much more often.
-BuildRequires:  go1.13
+
 # KUBIC-SPECIFIC: This was required when upgrading from the original kubic
 #                 packaging, when everything was renamed to -kubic. It also is
 #                 used to ensure that nothing complains too much when using
@@ -232,31 +226,6 @@ Provides:       %{realname}-fish-completion = %{version}
 %description fish-completion
 Fish command line completion support for %{name}.
 
-%package test
-%global __requires_exclude ^libgo.so.*$
-Summary:        Test package for docker
-# Needed for test-suite.
-Group:          System/Management
-Requires:       curl
-Requires:       go
-Requires:       iputils
-Requires:       jq
-Requires:       net-tools-deprecated
-# KUBIC-SPECIFIC: This was required when upgrading from the original kubic
-#                 packaging, when everything was renamed to -kubic. It also is
-#                 used to ensure that nothing complains too much when using
-#                 -kubic packages. Hopfully it can be removed one day.
-%if "%flavour" == "kubic"
-# Obsolete old packege without the -kubic suffix
-Obsoletes:      %{realname}-test = 1.12.6
-# Conflict with non-kubic package, and provide equivalent
-Conflicts:      %{realname}-test > 1.12.6
-Provides:       %{realname}-test = %{version}
-%endif
-
-%description test
-Test package for docker. It contains the source code and the tests.
-
 %if "%flavour" == "kubic"
 %package kubeadm-criconfig
 Summary:        docker container runtime configuration for kubeadm
@@ -273,34 +242,47 @@ docker container runtime configuration for kubeadm
 
 %prep
 %setup -q -n %{realname}-%{version}_%{git_version}
+
 %if 0%{?is_opensuse}
 # nothing
 %else
 # PATCH-SUSE: Secrets patches.
-%patch200 -p1
-%patch201 -p1
+%patch100 -p1
+%patch101 -p1
 %endif
-# revert upstream
-%patch300 -p1
-# bsc#1099277
-%patch401 -p1
-# bsc#1122469
-%patch402 -p1
-# boo#1178801, SLE-16460
-%patch403 -p1
 %if "%flavour" == "kubic"
 # PATCH-SUSE: Mirror patch.
-%patch500 -p1
+%patch200 -p1
 %endif
+# bsc#1099277
+%patch300 -p1
 
-cp %{SOURCE7} .
+# README_SUSE.md for documentation.
+cp %{SOURCE103} .
+
+# Extract the docker-cli source in a subdir.
+mkdir -p %{cli_builddir}
+pushd %{cli_builddir}
+xz -dc %{SOURCE1} | tar -xof - --strip-components=1
+# https://github.com/docker/cli/pull/2888
+%patch301 -p1
+popd
+
+# Extract the docker-libnetwork source in a subdir.
+mkdir -p %{proxy_builddir}
+pushd %{proxy_builddir}
+xz -dc %{SOURCE2} | tar -xof - --strip-components=1
+popd
 
 %build
+echo "$PWD -- $PWD -- $PWD"
+
 BUILDTAGS="exclude_graphdriver_aufs apparmor selinux seccomp pkcs11"
 %if 0%{?sle_version} == 120000
-	# Provided by patch406, to allow us to build with older distros but still
-	# have deferred removal support at runtime. We only use this when building
-	# on SLE12.
+	# Allow us to build with older distros but still have deferred removal
+	# support at runtime. We only use this when building on SLE12, because
+	# later openSUSE/SLE versions have a new enough libdevicemapper to not
+	# require the runtime checking.
 	BUILDTAGS="libdm_dlsym_deferred_remove $BUILDTAGS"
 %endif
 
@@ -326,119 +308,92 @@ EOF
 
 # Preparing GOPATH so that the client is visible to the compiler
 mkdir -p src/github.com/docker/
-ln -s $(pwd)/components/cli $(pwd)/src/github.com/docker/cli
-export GOPATH=$GOPATH:$(pwd)
+ln -s "%{cli_builddir}" "$PWD/src/github.com/docker/cli"
+export GOPATH="$GOPATH:$PWD"
 
 ###################
 ## DOCKER ENGINE ##
 ###################
 
-pushd components/engine/
 # Ignore the warning that we compile outside a Docker container.
 ./hack/make.sh dynbinary
-
-# Build test binaries (integration-cli and integration/*). They are all stored
-# within the testdir -- we will only end up installing these test files for
-# docker-test.
-for testdir in {integration-cli,integration/*/}
-do
-	( find "$testdir" -name '*_test.go' | grep -q '.' ) || continue
-	GOPATH=$(pwd)/vendor:$(pwd)/.gopath/ go test \
-		-buildmode=pie \
-		-tags "$DOCKER_BUILDTAGS daemon autogen" \
-		-c "github.com/docker/docker/$testdir" -o "$testdir/tests.main"
-done
-popd
 
 ###################
 ## DOCKER CLIENT ##
 ###################
 
-pushd components/cli/
+pushd %{cli_builddir}
 ./scripts/build/dynbinary
 
 mkdir -p ./man/man1
 go build -buildmode=pie -o gen-manpages github.com/docker/cli/man
-./gen-manpages --root "$(pwd)" --target "$(pwd)/man/man1"
+./gen-manpages --root "$PWD" --target "$PWD/man/man1"
 ./man/md2man-all.sh
 popd
 
-%check
-# We used to run 'go test' here, however we found that this actually didn't
-# catch any issues that were caught by smoke testing, and %check would
-# continually cause package builds to fail due to flaky tests. If you ever need
-# to know how the testing was done, you can always look in the package history.
-# boo#1095817
+##################
+## DOCKER PROXY ##
+##################
 
-# We verify that all of our -git requires are correct, and match the contents
-# of the upstream vendoring scripts. This is done on-build to make sure that
-# someone doing an update didn't miss anything.
-cd components/engine
-grep 'RUNC_COMMIT:=%{required_dockerrunc}'       hack/dockerfile/install/runc.installer
-grep 'CONTAINERD_COMMIT:=%{required_containerd}' hack/dockerfile/install/containerd.installer
-grep 'LIBNETWORK_COMMIT:=%{required_libnetwork}' hack/dockerfile/install/proxy.installer
+pushd %{proxy_builddir}
+GOPATH="%{dist_builddir}" \
+	go build -buildmode=pie -o docker-proxy github.com/docker/libnetwork/cmd/proxy
+popd
+
+# We verify that our libnetwork source is the correct version. This is done
+# on-build to make sure that someone doing an update didn't miss anything.
+grep 'LIBNETWORK_COMMIT:=%{libnetwork_version}' hack/dockerfile/install/proxy.installer
 
 %install
-install -d %{buildroot}%{_bindir}
-install -D -m755 components/cli/build/docker %{buildroot}/%{_bindir}/docker
-install -D -m755 components/engine/bundles/dynbinary-daemon/dockerd %{buildroot}/%{_bindir}/dockerd
-install -d %{buildroot}/%{_localstatedir}/lib/docker
-install -Dd -m 0755 \
+install -Dd -m0755 \
 	%{buildroot}%{_sysconfdir}/init.d \
+	%{buildroot}%{_bindir} \
 	%{buildroot}%{_sbindir}
 
-install -D -m0644 components/cli/contrib/completion/bash/docker "%{buildroot}%{_datarootdir}/bash-completion/completions/%{realname}"
-install -D -m0644 components/cli/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/_%{realname}"
-install -D -m0644 components/cli/contrib/completion/fish/docker.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{realname}.fish"
+# docker daemon
+install -D -m0755 bundles/dynbinary-daemon/dockerd %{buildroot}/%{_bindir}/dockerd
+install -d %{buildroot}/%{_localstatedir}/lib/docker
+# daemon.json config file
+install -D -m0644 %{SOURCE105} %{buildroot}%{_sysconfdir}/docker/daemon.json
 
-#
+# docker cli
+install -D -m0755 %{cli_builddir}/build/docker %{buildroot}/%{_bindir}/docker
+install -D -m0644 %{cli_builddir}/contrib/completion/bash/docker "%{buildroot}%{_datarootdir}/bash-completion/completions/%{realname}"
+install -D -m0644 %{cli_builddir}/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/_%{realname}"
+install -D -m0644 %{cli_builddir}/contrib/completion/fish/docker.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{realname}.fish"
+
+# docker proxy
+install -D -m0755 %{proxy_builddir}/docker-proxy %{buildroot}/%{_bindir}/docker-proxy
+
 # systemd service
-#
-install -D -m0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{realname}.service
+install -D -m0644 %{SOURCE100} %{buildroot}%{_unitdir}/%{realname}.service
 %if "%flavour" == "kubic"
-install -D -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{realname}.service.d/90-kubic.conf
+install -D -m0644 %{SOURCE900} %{buildroot}%{_unitdir}/%{realname}.service.d/90-kubic.conf
 %endif
 ln -sf service %{buildroot}%{_sbindir}/rcdocker
 
-#
 # udev rules that prevents dolphin to show all docker devices and slows down
 # upstream report https://bugs.kde.org/show_bug.cgi?id=329930
-#
-install -D -m 0644 %{SOURCE3} %{buildroot}%{_udevrulesdir}/80-%{realname}.rules
+install -D -m0644 %{SOURCE101} %{buildroot}%{_udevrulesdir}/80-%{realname}.rules
 
 # audit rules
-install -D -m 0640 %{SOURCE8} %{buildroot}%{_sysconfdir}/audit/rules.d/%{realname}.rules
+install -D -m0640 %{SOURCE104} %{buildroot}%{_sysconfdir}/audit/rules.d/%{realname}.rules
 
 # sysconfig file
-install -D -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.docker
-
-# install docker config file
-install -D -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/docker/daemon.json
+install -D -m0644 %{SOURCE102} %{buildroot}%{_fillupdir}/sysconfig.docker
 
 # install manpages (using the ones from the engine)
 install -d %{buildroot}%{_mandir}/man1
-install -p -m 644 components/cli/man/man1/*.1 %{buildroot}%{_mandir}/man1
+install -p -m0644 %{cli_builddir}/man/man1/*.1 %{buildroot}%{_mandir}/man1
 install -d %{buildroot}%{_mandir}/man5
-install -p -m 644 components/cli/man/man5/Dockerfile.5 %{buildroot}%{_mandir}/man5
+install -p -m0644 %{cli_builddir}/man/man5/Dockerfile.5 %{buildroot}%{_mandir}/man5
 install -d %{buildroot}%{_mandir}/man8
-install -p -m 644 components/cli/man/man8/*.8 %{buildroot}%{_mandir}/man8
-
-# install docker-test files -- we want to avoid installing the entire source tree.
-install -d %{buildroot}%{_prefix}/src/docker/
-install -D -m0755 %{SOURCE9} %{buildroot}%{_prefix}/src/docker/tests.sh
-# We need hack/, contrib/, profiles/, and the integration*/ trees.
-cp -a components/engine/{hack,contrib,profiles,integration{,-cli}} %{buildroot}%{_prefix}/src/docker/
-echo "%{version}" > %{buildroot}%{_prefix}/src/docker/VERSION
-# And now we can remove all *_test.go files -- since we already have test
-# binaries. Due to a lot of hacks within the Docker integration tests, we can't
-# really do a bigger cleanup than this.
-find %{buildroot}%{_prefix}/src/docker \
-	-type f -name '*_test.go' -delete
+install -p -m0644 %{cli_builddir}/man/man8/*.8 %{buildroot}%{_mandir}/man8
 
 %if "%flavour" == "kubic"
 # place kubelet.env in fillupdir (for kubeadm-criconfig)
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE5}
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.kubelet
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE901}
+install -D -m0644 %{SOURCE901} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 %endif
 
 %fdupes %{buildroot}
@@ -485,10 +440,11 @@ grep -q '^dockremap:' /etc/subgid || \
 
 %files
 %defattr(-,root,root)
-%doc components/engine/README.md README_SUSE.md CHANGELOG.md
-%license components/engine/LICENSE
+%doc README.md README_SUSE.md CHANGELOG.md
+%license LICENSE
 %{_bindir}/docker
 %{_bindir}/dockerd
+%{_bindir}/docker-proxy
 %{_sbindir}/rcdocker
 %dir %{_localstatedir}/lib/docker/
 
@@ -521,10 +477,6 @@ grep -q '^dockremap:' /etc/subgid || \
 %files fish-completion
 %defattr(-,root,root)
 %{_datadir}/fish/vendor_completions.d/%{realname}.fish
-
-%files test
-%defattr(-,root,root)
-%{_prefix}/src/docker/
 
 %if "%flavour" == "kubic"
 %files kubeadm-criconfig
