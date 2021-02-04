@@ -1018,4 +1018,12 @@
     <comment>- Update to version 2.3.4+git0.10189c965:</comment>
     <requestid>862941</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>71ddd08ce26da77018763657207722ca</srcmd5>
+    <version>2.3.4+git0.10189c965</version>
+    <time>1612466629</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54.patch to fix building with lua 5.4</comment>
+    <requestid>868970</requestid>
+  </revision>
 </revisionlist>

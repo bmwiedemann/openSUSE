@@ -101,6 +101,7 @@ Source5:        haproxy-user.conf
 Patch1:         haproxy-1.6.0_config_haproxy_user.patch
 Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
+Patch4:         lua54.patch
 #
 Source98:       series
 Source99:       haproxy-rpmlintrc
@@ -136,6 +137,7 @@ the most work done from every CPU cycle.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 make %{?_smp_mflags} \

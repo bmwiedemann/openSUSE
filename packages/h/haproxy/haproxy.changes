@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 16:19:26 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add lua54.patch to fix building with lua 5.4
+
+-------------------------------------------------------------------
 Wed Jan 13 16:02:43 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.3.4+git0.10189c965:
