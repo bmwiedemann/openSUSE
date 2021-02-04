@@ -222,7 +222,8 @@ autoreconf -fi
            --enable-surrounding-text \
            --libexecdir=%{_libdir}/ibus
 
-make %{?_smp_mflags}
+# non-parallel to have reproducible results in spite of non-deterministic build scripts https://github.com/ibus/ibus/issues/2272
+make
 
 %install
 %make_install

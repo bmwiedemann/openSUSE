@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  1 15:25:13 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do not build in parallel for reproducible build results (boo#1102408)
+
+-------------------------------------------------------------------
 Mon Oct 26 08:18:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add vala-0.50.patch: Fix build with vala 0.50 (gh#ibus/ibus#2265)
