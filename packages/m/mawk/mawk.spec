@@ -1,7 +1,7 @@
 #
 # spec file for package mawk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -83,8 +83,8 @@ make %{?_smp_mflags} check
 %endif
   --slave %{_mandir}/man1/awk.1.gz awk.1%{?ext_man} %{_mandir}/man1/mawk.1%{?ext_man}
 
-%preun
-if [ $1 -eq 0 ]; then
+%postun
+if [ ! -f %{_bindir}/mawk ]; then
     %{_sbindir}/update-alternatives --remove awk %{_bindir}/mawk
 fi
 
