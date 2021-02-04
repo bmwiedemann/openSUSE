@@ -1,0 +1,15 @@
+---
+ grammar.y |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/grammar.y
++++ b/grammar.y
+@@ -73,7 +73,7 @@ static struct qual qerr = { Q_UNDEF, Q_U
+ int n_errors = 0;
+ struct ctrl *root;
+ char *yyfilename;
+-int yylineno;
++extern int yylineno;
+ 
+ #ifdef HAVE_STDARG_H
+ /* GCC complains if we declare this function in traditional style */

@@ -1,7 +1,7 @@
 #
 # spec file for package mgp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        MagicPoint, an X Window System Presentation Tool
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/Presentation
-Url:            http://member.wide.ad.jp/wg/mgp/
+URL:            http://member.wide.ad.jp/wg/mgp/
 Source:         magicpoint-%{version}.tar.bz2
 Source1:        README.SUSE
 Patch1:         magicpoint-ia64.diff
@@ -40,6 +40,7 @@ Patch14:        mgp-bilinear-zoom.diff
 Patch15:        mgp-imlib2-segfault-fix.diff
 Patch16:        mgp-alpha-channel.diff
 Patch17:        mpg-netpbm-jpeg-fix.diff
+Patch18:        mgp-yylineno-fix.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  emacs-nox
@@ -84,6 +85,7 @@ into other file formats.
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
 cp %{SOURCE1} .
 rm -rf sample/CVS
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  4 13:17:26 CET 2021 - tiwai@suse.de
+
+- Fix build with the recent gcc, the doubly defined yylineno:
+  mgp-yylineno-fix.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 17:51:46 UTC 2018 - crrodriguez@opensuse.org
 
 - Fix BuildRequires:
