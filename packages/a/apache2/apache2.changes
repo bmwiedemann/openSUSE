@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 17:42:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add lua54.patch to fix building with lua54
+
+-------------------------------------------------------------------
 Fri Jan 22 12:25:23 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - added Provides: http_daemon to fix bsc#1180132

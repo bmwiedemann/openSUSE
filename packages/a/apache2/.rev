@@ -1865,4 +1865,13 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- added Provides: http_daemon to fix bsc#1180132 (forwarded request 865975 from stroeder)</comment>
     <requestid>865992</requestid>
   </revision>
+  <revision rev="182" vrev="14">
+    <srcmd5>22bfd79114d81f26ba1b85f71d5f7b2f</srcmd5>
+    <version>2.4.46</version>
+    <time>1612466623</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54.patch to fix building with lua54
+</comment>
+    <requestid>867750</requestid>
+  </revision>
 </revisionlist>

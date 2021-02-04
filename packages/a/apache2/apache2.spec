@@ -191,6 +191,8 @@ Patch3:         apache2-LimitRequestFieldSize-limits-headers.patch
 Patch4:         apache2-HttpContentLengthHeadZero-HttpExpectStrict.patch
 # [bsc#1174052] picked upstream commit
 Patch5:         apache2-mod_proxy_uwsgi-fix-crash.patch
+# PATCH:  https://svn.apache.org/viewvc?view=revision&revision=1880678
+Patch6:         lua54.patch
 # PATCH:  https://marc.info/?l=apache-httpd-users&m=147448312531134&w=2
 Patch100:       apache-test-application-xml-type.patch
 # PATCH:  /test_ssl_var_lookup?SSL_SERVER_SAN_DNS_0 returns <build-host-name>
@@ -328,6 +330,7 @@ provides HTTP services in sync with the current HTTP standards.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %patch100 -p1
 %patch101 -p1
 
