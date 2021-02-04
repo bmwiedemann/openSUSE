@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 15:57:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro
+
+-------------------------------------------------------------------
 Mon Jul  6 21:03:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Switch to multibuild and add lua54 build target.

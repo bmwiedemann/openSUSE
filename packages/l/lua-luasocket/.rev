@@ -45,4 +45,12 @@
     <comment>- Switch to multibuild and add lua54 build target.</comment>
     <requestid>819302</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b08f66524fda79c6b0b158082a6ee9e1</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1612466618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867733</requestid>
+  </revision>
 </revisionlist>

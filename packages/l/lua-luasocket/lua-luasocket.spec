@@ -28,13 +28,10 @@ Source:         %{mod_name}-%{version}.tar.xz
 Patch0:         luasocket-makefile.patch
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
-%if "%{flavor}" == "lua53"
-Provides:       luasocket = %{version}
-Obsoletes:      luasocket < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
-ExclusiveArch:  do_not_build
 Name:           lua-%{mod_name}
+ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
