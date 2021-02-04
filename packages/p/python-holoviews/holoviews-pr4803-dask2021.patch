@@ -1,0 +1,93 @@
+From 6744b36d40d25868c539c9e5cb712c03a8ab35e7 Mon Sep 17 00:00:00 2001
+From: jlstevens <jlrstevens@gmail.com>
+Date: Tue, 26 Jan 2021 15:24:16 +0000
+Subject: [PATCH 1/4] Pinning dask to fix test failures seen in PR 4794
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index a11e8b424c..9c02269d84 100644
+--- a/setup.py
++++ b/setup.py
+@@ -42,7 +42,7 @@
+     "ffmpeg",
+     "cftime",
+     "netcdf4",
+-    "dask",
++    "dask<=2020.12.0",
+     "scipy",
+     "shapely",
+     "scikit-image"
+
+From 6a153bb42f0d4c2ede1c4797a36de8614cc3ef6f Mon Sep 17 00:00:00 2001
+From: jlstevens <jlrstevens@gmail.com>
+Date: Wed, 27 Jan 2021 11:44:24 +0000
+Subject: [PATCH 2/4] Unpinning dask in setup.py
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 9c02269d84..a11e8b424c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -42,7 +42,7 @@
+     "ffmpeg",
+     "cftime",
+     "netcdf4",
+-    "dask<=2020.12.0",
++    "dask",
+     "scipy",
+     "shapely",
+     "scikit-image"
+
+From 378b553382a4332929b2a47ef07dc4fedcd28da1 Mon Sep 17 00:00:00 2001
+From: jlstevens <jlrstevens@gmail.com>
+Date: Wed, 27 Jan 2021 14:09:04 +0000
+Subject: [PATCH 3/4] Always supplying axis=0 to cumsum
+
+---
+ holoviews/util/transform.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/holoviews/util/transform.py b/holoviews/util/transform.py
+index 2d6c2a6b38..4c25a6565c 100644
+--- a/holoviews/util/transform.py
++++ b/holoviews/util/transform.py
+@@ -400,7 +400,7 @@ def clip(self, min=None, max=None):
+     def any(self, *args, **kwargs):      return type(self)(self, np.any, *args, **kwargs)
+     def all(self, *args, **kwargs):      return type(self)(self, np.all, *args, **kwargs)
+     def cumprod(self, *args, **kwargs):  return type(self)(self, np.cumprod,  *args, **kwargs)
+-    def cumsum(self, *args, **kwargs):   return type(self)(self, np.cumsum,  *args, **kwargs)
++    def cumsum(self, *args, **kwargs):   return type(self)(self, np.cumsum,  *args, axis=0, **kwargs)
+     def max(self, *args, **kwargs):      return type(self)(self, np.max, *args, **kwargs)
+     def mean(self, *args, **kwargs):     return type(self)(self, np.mean, *args, **kwargs)
+     def min(self, *args, **kwargs):      return type(self)(self, np.min, *args, **kwargs)
+
+From 13b9b5c72537793db0f6efd82c5407ff8c7ed924 Mon Sep 17 00:00:00 2001
+From: jlstevens <jlrstevens@gmail.com>
+Date: Wed, 27 Jan 2021 14:33:23 +0000
+Subject: [PATCH 4/4] Checking if axis already in kwargs
+
+---
+ holoviews/util/transform.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/holoviews/util/transform.py b/holoviews/util/transform.py
+index 4c25a6565c..bb97b80d4f 100644
+--- a/holoviews/util/transform.py
++++ b/holoviews/util/transform.py
+@@ -400,7 +400,9 @@ def clip(self, min=None, max=None):
+     def any(self, *args, **kwargs):      return type(self)(self, np.any, *args, **kwargs)
+     def all(self, *args, **kwargs):      return type(self)(self, np.all, *args, **kwargs)
+     def cumprod(self, *args, **kwargs):  return type(self)(self, np.cumprod,  *args, **kwargs)
+-    def cumsum(self, *args, **kwargs):   return type(self)(self, np.cumsum,  *args, axis=0, **kwargs)
++    def cumsum(self, *args, **kwargs):   return type(self)(self, np.cumsum,  *args,
++                                                           axis=kwargs.pop('axis',0),
++                                                           **kwargs)
+     def max(self, *args, **kwargs):      return type(self)(self, np.max, *args, **kwargs)
+     def mean(self, *args, **kwargs):     return type(self)(self, np.mean, *args, **kwargs)
+     def min(self, *args, **kwargs):      return type(self)(self, np.min, *args, **kwargs)

@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-holoviews
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#holoviz/holoviews#4803 support dask 2021.1
+Patch0:         https://github.com/holoviz/holoviews/pull/4803.patch#/holoviews-pr4803-dask2021.patch
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#holoviz/holoviews#4621 mcepl@suse.com
 Patch1:         remove_nose.patch
 BuildRequires:  %{python_module colorcet}
