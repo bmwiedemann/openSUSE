@@ -1,7 +1,7 @@
 #
 # spec file for package runc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,16 @@
 # nodebuginfo
 
 
-# We don't include a git_version in the "upstream" runc package, because we
-# only package released versions (unlike docker-runc).
-%define git_version %{nil}
+# MANUAL: Make sure you update this each time you update runc.
+%define git_version 12644e614e25b05da6fd08a38ffa0cfe1903fdec
 
 # Package-wide golang version
 %define go_version 1.13
-%define go_tool go
-%define _version 1.0.0-rc92
+%define _version 1.0.0-rc93
 %define project github.com/opencontainers/runc
 
-# enable libseccomp for sle >= sle12sp2
-%if 0%{?sle_version} >= 120200
-%define with_libseccomp 1
-%endif
-# enable libseccomp for leap >= 42.2
-%if 0%{?leap_version} >= 420200
-%define with_libseccomp 1
-%endif
-# enable libseccomp for Factory
-%if 0%{?suse_version} > 1320
-%define with_libseccomp 1
-%endif
-
 Name:           runc
-Version:        1.0.0~rc92
+Version:        1.0.0~rc93
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -56,11 +41,25 @@ BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
 # for 'golang(API) >= 1.x' here, so just require 1.x exactly. bsc#1172608
 BuildRequires:  go%{go_version}
-%if 0%{?with_libseccomp}
 BuildRequires:  libseccomp-devel
-%endif
 BuildRequires:  libselinux-devel
 Recommends:     criu
+# There used to be a docker-runc package which was specifically for Docker.
+# Since Docker now tracks upstream more consistently, we use the same package
+# but we need to obsolete the old one. bsc#1181677
+# NOTE: We can't use the package version here because docker-runc used a
+#       different versioning scheme by accident (1.0.0rc92 vs 1.0.0~rc92 -- and
+#       GNU sort considers the former to be newer than the latter, in fact
+#       1.0.0rc92 is newer than 1.0.0 according to GNU sort). So we invent a
+#       fake 1.0.0.1 version.
+Obsoletes:      docker-runc < 1.0.0.1
+Provides:       docker-runc = 1.0.0.1.%{version}
+# KUBIC-SPECIFIC: There used to be a kubic-specific docker-runc package, but
+#                 now it's been merged into the one package. bsc#1181677
+Obsoletes:      docker-runc-kubic < 1.0.0.1
+Provides:       docker-runc-kubic = 1.0.0.1.%{version}
+Obsoletes:      docker-runc = 0.1.1+gitr2819_50a19c6
+Obsoletes:      docker-runc_50a19c6
 
 %description
 runc is a CLI tool for spawning and running containers according to the OCI
@@ -68,84 +67,27 @@ specification. It is designed to be as minimal as possible, and is the workhorse
 of Docker. It was originally designed to be a replacement for LXC within Docker,
 and has grown to become a separate project entirely.
 
-%package test
-Summary:        Test package for runc
-Group:          System/Management
-BuildRequires:  go%{go_version}
-%if 0%{?with_libseccomp}
-BuildRequires:  libseccomp-devel
-%endif
-Requires:       go-go-md2man
-Requires:       libapparmor-devel
-Requires:       libselinux-devel
-Recommends:     criu
-BuildArch:      noarch
-
-%description test
-Test package for runc. It contains the source code and the tests.
-
 %prep
 %setup -q -n %{name}-%{_version}
 
 %build
-# Do not use symlinks. If you want to run the unit tests for this package at
-# some point during the build and you need to directly use go list directly it
-# will get confused by symlinks.
-export GOPATH=${HOME}/go
-mkdir -p $HOME/go/src/%project
-rm -rf $HOME/go/src/%project/*
-cp -a * $HOME/go/src/%project
-
-# Additionally enable seccomp.
-%if 0%{?with_libseccomp}
-export EXTRA_BUILDTAGS+="seccomp"
-export EXTRA_GCCFLAGS+="-lseccomp"
-%endif
-
-# Build all features.
-export BUILDTAGS="apparmor selinux $EXTRA_BUILDTAGS"
-export BUILDFLAGS="-buildmode=pie -gccgoflags='-Wl,--add-needed -Wl,--no-as-needed -static-libgo -ldl -lselinux -lapparmor $EXTRA_GCCFLAGS'"
-
-(cat <<EOF
-export GOPATH="$GOPATH"
-export BUILDTAGS="$BUILDTAGS"
-export BUILDFLAGS="$BUILDFLAGS"
-EOF
-) >./.runc_build_env
-source ./.runc_build_env
-
-# Build runc.
-make -C "$HOME/go/src/%project" EXTRA_FLAGS="$BUILDFLAGS" BUILDTAGS="$BUILDTAGS" COMMIT_NO="%{git_version}" runc
-mv "$HOME/go/src/%project/runc" %{name}-%{version}
-
-# Build man pages, this can only be done on arches where we can build go-md2man.
+# build runc
+make BUILDTAGS="seccomp" COMMIT_NO="%{git_version}" runc
+# build man pages
 man/md2man-all.sh
 
-%check
-# We used to run 'go test' here, however we found that this actually didn't
-# catch any issues that were caught by smoke testing, and %check would
-# continually cause package builds to fail due to flaky tests. If you ever need
-# to know how the testing was done, you can always look in the package history.
-# boo#1095817
-
 %install
-source ./.runc_build_env
-
-# We install to /usr/sbin/runc as per upstream an create a symlink in /usr/bin
+# We install to /usr/sbin/runc as per upstream and create a symlink in /usr/bin
 # for rootless tools.
-install -D -m755 %{name}-%{version} %{buildroot}%{_sbindir}/%{name}
-install -m 755 -d %{buildroot}%{_bindir}
+install -D -m0755 %{name} %{buildroot}%{_sbindir}/%{name}
+install -m0755 -d %{buildroot}%{_bindir}
 ln -s  %{_sbindir}/%{name} %{buildroot}%{_bindir}/%{name}
-install -d -m755 %{buildroot}/usr/src/%{name}/
-cp -av $HOME/go/src/%{project}/* %{buildroot}/usr/src/%{name}/
 
 # Man pages.
-install -d -m755 %{buildroot}%{_mandir}/man8
-install -m644 man/man8/runc*.8 %{buildroot}%{_mandir}/man8
+install -d -m0755 %{buildroot}%{_mandir}/man8
+install -m0644 man/man8/runc*.8 %{buildroot}%{_mandir}/man8
 
 %fdupes %{buildroot}
-
-%post
 
 %files
 %defattr(-,root,root)
@@ -154,11 +96,5 @@ install -m644 man/man8/runc*.8 %{buildroot}%{_mandir}/man8
 %{_sbindir}/%{name}
 %{_bindir}/%{name}
 %{_mandir}/man8/runc*.8.gz
-
-%files test
-%defattr(-,root,root)
-/usr/src/runc/
-%exclude /usr/src/runc/runc
-%exclude /usr/src/runc/runc/Godeps/_workspace/pkg
 
 %changelog

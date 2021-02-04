@@ -1,8 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb  3 04:09:17 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.0.0~rc93. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc93
+
+  * Cgroupv2 support is no longer considered experimental.
+  * Mountinfo parsing code has been reworked significantly.
+  * Special ENOSYS handling for seccomp profiles to avoid making new
+	syscalls unusable for glibc.
+  * Various rootless containers improvements.
+  * The "selinux" and "apparmor" buildtags have been removed, and now all runc
+    builds will have SELinux and AppArmor support enabled.
+
+-------------------------------------------------------------------
+Tue Feb  2 05:53:17 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to handle the docker-runc removal. bsc#1181677
+- Modernise go building for runc now that it has go.mod.
+
+-------------------------------------------------------------------
 Fri Aug 28 07:38:29 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
-- Upgrade to runc v1.0.0~rc92 (bsc#1175821). Upstream changelog is
-  available from https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc92
+- Upgrade to runc v1.0.0~rc92 (bsc#1175821). Upstream changelog is available
+  from https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc92
 
   * Updates to CRIU support.
   * Improvements to cgroupfs performance and correctness.

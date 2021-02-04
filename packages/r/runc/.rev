@@ -282,4 +282,22 @@ provides).</comment>
     <comment></comment>
     <requestid>830453</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8fe9df39ba1031977d81f053e7295ccd</srcmd5>
+    <version>1.0.0~rc93</version>
+    <time>1612466573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to runc v1.0.0~rc93. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc93
+  * Cgroupv2 support is no longer considered experimental.
+  * Mountinfo parsing code has been reworked significantly.
+  * Special ENOSYS handling for seccomp profiles to avoid making new
+	syscalls unusable for glibc.
+  * Various rootless containers improvements.
+  * The &quot;selinux&quot; and &quot;apparmor&quot; buildtags have been removed, and now all runc
+    builds will have SELinux and AppArmor support enabled.
+- Update to handle the docker-runc removal. bsc#1181677
+- Modernise go building for runc now that it has go.mod.</comment>
+    <requestid>869059</requestid>
+  </revision>
 </revisionlist>
