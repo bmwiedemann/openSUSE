@@ -19,7 +19,7 @@ Fri Sep 11 20:40:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 Wed Apr 10 14:30:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add lsof-glibc-linux-5.0.patch: Fix build with
-  linux-glibc-devel-5.0 by including sysmacros.h as needed.
+  linux-glibc-devel-5.0 by including sysmacros.h as needed (bsc#1181571)
 
 -------------------------------------------------------------------
 Tue Mar 27 09:46:50 UTC 2018 - kstreitova@suse.com
