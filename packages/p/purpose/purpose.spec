@@ -16,6 +16,9 @@
 #
 
 
+# Used by optional plugins
+%global __requires_exclude qmlimport\\((Ubuntu\\.OnlineAccounts|org\\.kde\\.kdeconnect).*
+
 %define lname   libKF5Purpose5
 %define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)

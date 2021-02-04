@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 31 12:01:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Avoid hard dependency of optional plugin requirements
+
+-------------------------------------------------------------------
 Wed Jan  6 10:48:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
