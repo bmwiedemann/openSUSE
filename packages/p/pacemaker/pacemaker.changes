@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Fri Jan 29 12:42:52 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- pacemakerd: downgrade the warning about SBD_SYNC_RESOURCE_STARTUP to notice (bsc#1180966)
+  * bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 14:28:18 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210104.8ae19fdf9:
+- attrd: prevent leftover attributes of shutdown node in cib (bsc#1173668)
+
+-------------------------------------------------------------------
+Thu Jan 28 14:22:47 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20201218.c67665496:
+- books: enable Sphinx build
+- books: remove Publican
+- xml: Update XML schema for crm_resource changes.
+- libpacemaker: Also flatten XML location constraint output.
+- libpacemaker: Various small fixes to location-list.
+- libpacemaker: Fix printing out location constraints.
+- libpacemaker: Correct loop detection in rscs_colocated_with_list.
+- libpacemaker: Flatten XML output for colocations.
+- libpacemaker: Pass the correct resource to recursive calls.
+- tools: Don't display generic lists for colocations and constraints.
+- libpacemaker: Change the colocation list headings.
+- libpacemaker: Don't show an empty locations list.
+- libcrmcluster: properly check CPG payload size
+- libcrmcluster: correctly return error for invalid payload size
+- libcrmcommon: set errno properly on IPC connection failure
+- scheduler: Don't output a resource header with no list.
+- libcib: Cleanup at signoff.Fix(CLBZ#5457)
+- scheduler: add class back to multiple recovery message
+- fencer: standardize fence device references in log messages
+- fencer: improve wording of various messages
+- fencer: correct order of arguments to a message
+- fencer: log operation IDs more consistently
+- fencer: log operation state as readable string rather than integer enum value
+- fencer: prefer "fencing" to "stonith"
+- fencer: use singular or plural correctly in messages
+- pacemakerd: improve error message when -S can't connect
+- libcrmcommon: improve messages when adding a log file
+- libcrmcommon: drop unformatted log message about log permissions
+- libcrmcommon: drop unnecessary parent check when adding log file
+- daemons: improve client name used in log messages
+- ipc_client: Use libqb to get auth data for ipcc connections
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * bug-728579_pacemaker-stonith-dev-id.patch
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 12:29:58 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20201203.dc64a43f9:
+- libpacemaker: add public API functions for cluster queries
+- libs: Remove extra whitespace in list_item calls.
+- schedulerd: Fixed processing to expand meta_attributes. Fix(#CLBZ:5451)
+- scheduler: Fix output of failed actions without an operation_key.
+- scheduler: treat missing parameter as NULL in rules with value-source (rh#1872376)
+- scheduler: correctly skip dangling id-ref(rh#1872376)
+- controld: Retry connection failure when controld is stopped.(Fix:CLBZ#5445)
+- travis: run cts-exec with --force-wait option (bsc#1177489)
+- cts-exec: add --force-wait/-w option (bsc#1177489)
+- cts-fencing: add --force-wait/-w option (bsc#1177489)
+- cts-exec: add --timeout/-t option (bsc#1177489)
+- cts-fencing: add --timeout/-t option (bsc#1177489)
+- cts-exec: optimize exec regression testing via appropriate synchronization with execd (bsc#1177489)
+- cts-fencing: optimize fencing regression testing via appropriate synchronization with fenced (bsc#1177489)
+- Pacemaker Explained: Explain limitations of node attr expressions. (rh#1891929)
+- include: Bump CRM_FEATURE_SET to 3.6.3.
+- xml: Add a schema for new crm_resource output.
+- tools: Use formatted output for stacks and constraints.
+- tools: Use formatted output for resource searching.
+- tools: Use formatted output for crm_resource checks.
+- tools: Use formatted output for CTS printing in crm_resource.
+- scheduler, tools: Add a new node-and-op output message.
+- tools: Use formatted output for crm_resource info messages.
+- tools: Use formatted output for finding resources.
+- tools: Use formatted output for resource output in crm_resource.
+- scheduler: Add a message for resource config printing.
+- tools: Use formatted output for props, attrs, and metadata.
+- liblrmd: Add output messages for agents, providers, and standards.
+- tools: Use the existing resource-list message in crm_resource.
+- tools: Add an output message for a list of resource names.
+- tools: Add the beginnings of formatted output to crm_resource.
+- scheduler: filter Pacemaker-supplied stonith parameters from secure hash (rh#1872376)
+- scheduler: use same default private parameter list as controller
+- libstonithd: improve filtering of Pacemaker-handled parameters
+- scheduler: properly compute digest of non-sensitive resource parameters (rh#1872376)
+- libcrmcommon: Prevent a segfault in pcmk__cmdline_preproc.
+- tools: Save the optarg parameter for --list-ocf-alternatives.
+- xml: Add a generic list XML schema file.
+- xml: Move resource-related XML schema into its own file.
+- libcrmcommon: Automatically lower case XML list names.
+- xml: add schema for new crmadmin output
+- crmadmin: implement formatted output (bsc#1178865)
+
+-------------------------------------------------------------------
 Sun Dec 06 12:32:29 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20201202.ba59be712 (Pacemaker-2.0.5):
@@ -859,10 +959,10 @@ Fri Jul 12 13:54:03 UTC 2019 - Yan Gao <ygao@suse.com>
 - libcrmcommon: Add a formatted outputter for HTML.
 - remote: allow run-time configurable TLS priorities
 - pengine: formatted output for text
-- scheduler: properly detect dangling migrations
-- scheduler: only successful ops count for migration comparisons
-- libpe_status: add sanity check when unpacking migration history
-- libpe_status: check for stops correctly when unpacking migration
+- scheduler: properly detect dangling migrations (bsc#1177212)
+- scheduler: only successful ops count for migration comparisons (bsc#1177212)
+- libpe_status: add sanity check when unpacking migration history (bsc#1177212)
+- libpe_status: check for stops correctly when unpacking migration (bsc#1177212)
 - controller: reset expected reply when disconnecting from scheduler
 - cts-scheduler: convert to python
 - tools: Use a copy of argv in stonith_admin.

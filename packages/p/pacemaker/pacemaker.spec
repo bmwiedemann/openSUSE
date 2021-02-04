@@ -80,7 +80,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.0.5+20201202.ba59be712
+Version:        2.0.5+20210104.8ae19fdf9
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -102,6 +102,7 @@ Patch7:         bug-977201_pacemaker-controld-self-fencing.patch
 Patch8:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
 Patch9:         pacemaker-cts-StartCmd.patch
 Patch10:        0001-Log-libcrmcommon-lower-message-on-reading-proc-file-.patch
+Patch11:        bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
 # Required for core functionality
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -167,7 +168,7 @@ BuildRequires:  cluster-glue-libs-devel
 %if %{with doc}
 BuildRequires:  asciidoc
 BuildRequires:  inkscape
-BuildRequires:  publican
+BuildRequires:  python3-sphinx
 %endif
 %if %{with_regression_tests}
 BuildRequires:  procps
@@ -317,6 +318,7 @@ manager.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 
@@ -353,7 +355,6 @@ autoreconf -fvi
         %{?with_profiling:     --with-profiling}       \
         %{?with_coverage:      --with-coverage}        \
         %{?with_cibsecrets:    --with-cibsecrets}      \
-        %{!?with_doc:          --with-brand=}          \
         --with-initdir=%{_initddir}                    \
         --with-runstatedir=%{_rundir}                  \
         --localstatedir=%{_var}                        \

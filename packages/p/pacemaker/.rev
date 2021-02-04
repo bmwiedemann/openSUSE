@@ -1781,4 +1781,41 @@
 - Update to version 2.0.4+20201014.b0ef36d82: (forwarded request 853533 from yan_gao)</comment>
     <requestid>853534</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>4f1eb8b1f1783989e399564ff99f6157</srcmd5>
+    <version>2.0.5+20210104.8ae19fdf9</version>
+    <time>1612466541</time>
+    <user>dimstar_suse</user>
+    <comment>- pacemakerd: downgrade the warning about SBD_SYNC_RESOURCE_STARTUP to notice (bsc#1180966)
+  * bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
+
+- Update to version 2.0.5+20210104.8ae19fdf9:
+- attrd: prevent leftover attributes of shutdown node in cib (bsc#1173668)
+
+- Update to version 2.0.5+20201218.c67665496:
+- books: enable Sphinx build
+- books: remove Publican
+- xml: Update XML schema for crm_resource changes.
+- libpacemaker: Also flatten XML location constraint output.
+- libpacemaker: Various small fixes to location-list.
+- libpacemaker: Fix printing out location constraints.
+- libpacemaker: Correct loop detection in rscs_colocated_with_list.
+- libpacemaker: Flatten XML output for colocations.
+- libpacemaker: Pass the correct resource to recursive calls.
+- tools: Don't display generic lists for colocations and constraints.
+- libpacemaker: Change the colocation list headings.
+- libpacemaker: Don't show an empty locations list.
+- libcrmcluster: properly check CPG payload size
+- libcrmcluster: correctly return error for invalid payload size
+- libcrmcommon: set errno properly on IPC connection failure
+- scheduler: Don't output a resource header with no list.
+- libcib: Cleanup at signoff.Fix(CLBZ#5457)
+- scheduler: add class back to multiple recovery message
+- fencer: standardize fence device references in log messages
+- fencer: improve wording of various messages
+- fencer: correct order of arguments to a message
+- fencer: log operation IDs more consistently
+- fencer: log operation state as readable string rather than integer enum value (forwarded request 868329 from yan_gao)</comment>
+    <requestid>868330</requestid>
+  </revision>
 </revisionlist>
