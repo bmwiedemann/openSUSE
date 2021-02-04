@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Feb  4 08:41:20 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.54.0:
+  * New backends
+    - Compression remote (experimental)
+    - Enterprise File Fabric
+    - HDFS (Hadoop Distributed File System
+    - Zoho workdrive
+  * New Features
+    - Deglobalise the config
+    - Add --bwlimit for upload and download
+    - Enhance systemd integration
+    - Add a --download flag to md5sum/sha1sum/hashsum to force rclone
+      to download and hash files locally
+    - Add --progress-terminal-title to print ETA to terminal title 
+    - Make backend env vars show in help as the defaults for backend flags
+    - dedupe: add '--by-hash' and '--dedupe-mode list'
+    - obscure: Make rclone osbcure - ignore newline at end of line
+    - serve ftp: Add options to enable TLS
+    - serve http/webdav: Redirect requests to the base url without the /
+    - serve restic: Implement object cache
+    - stats: Add counter for deleted directories
+    - sync: Only print "There was nothing to transfer" if no errors
+  * Bug fixes
+    - log: Fix enabling systemd logging when using --log-fil
+    - move: Fix data loss when source and destination are the same object
+    - operations: Fix --cutof-mode and --immutable
+  * Docs update
+  * Mount fixes
+  * VFS fixes
+  * Local fixes
+  * Azure
+    - Add support for service principals
+    - Add support for managed identities
+    - Utilize the streaming capabilities from the SDK for multipart uploads
+    - Fix setting of mime types
+    - Fix crash when listing outside a SAS URL's root
+    - Require go1.14+ to compile due to SDK changes
+  * B2
+    - Make NewObject use less expensive API calls 
+    - Fixed crash on an empty file name 
+  * Box
+    - Fix NewObject for files that differ in case
+    - Fix finding directories in a case insentive way
+  * Drive
+    - Implement rclone backend copyid command for copying files by ID
+    - Added flag --drive-stop-on-download-limit to stop transfers
+      when the download limit is exceeded
+    - Implement CleanUp workaround for team drives
+    - Allow shortcut resolution and creation to be retried
+    - Log that emptying the trash can take some time 
+  * Dropbox
+    - Add support for viewing shared files and folders
+    - Enable short lived access tokens 
+    - Implement IDer on Objects so rclone lsf etc can read the IDs 
+    - Set Features ReadMimeType to false as Object.MimeType not supported
+    - Make malformed_path errors from too long files not retriable
+  * S3
+    - Added --s3-disable-http2 to disable http/2
+    - Complete SSE-C implementation
+    - Add --s3-no-head parameter to minimise transactions on upload
+    - Add requester pays option
+    - Fix copy multipart with v2 auth failing with 'SignatureDoesNotMatch'
+  * SFTP
+    - Allow cert based auth via optional pubkey
+    - Allow user to optionally check server hosts key to add security
+    - Defer asking for user passwords until the SSH connection succeeds
+    - Remember entered password in AskPass mode
+    - Implement Shutdown method
+    - Make --tpslimit apply
+    - Implement --sftp-use-fstat for unusual SFTP servers
+  * Various fixes to other providers
+
+-------------------------------------------------------------------
 Thu Jan 21 10:11:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.53.4:
