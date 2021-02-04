@@ -43,4 +43,13 @@
     <comment>- Add lua54 as new build target</comment>
     <requestid>819784</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>293075a8a01ea022fff8943ab50c0aec</srcmd5>
+    <version>0.07</version>
+    <time>1612466628</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %lua_provides macro
+</comment>
+    <requestid>868188</requestid>
+  </revision>
 </revisionlist>

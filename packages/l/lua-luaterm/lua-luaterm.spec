@@ -17,31 +17,29 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define mod_name lua-term
+%define mod_name luaterm
+%define rname lua-term
 Version:        0.07
 Release:        0
 Summary:        Terminal operations for Lua
 License:        MIT
 URL:            https://github.com/hoelzro/lua-term
-Source:         https://github.com/hoelzro/lua-term/archive/%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
+Source:         https://github.com/hoelzro/lua-term/archive/%{version}.tar.gz#$/%{rname}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
-%if "%{flavor}" == "lua53"
-Provides:       lua-luaterm = %{version}
-Obsoletes:      lua-luaterm < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
-Name:           lua-luaterm
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-luaterm
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description
 This package provides terminal operations for Lua
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%setup -q -n %{rname}-%{version}
 
 %build
 %make_build \
