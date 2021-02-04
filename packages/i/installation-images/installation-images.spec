@@ -500,7 +500,7 @@ BuildRequires:  usbutils
 BuildRequires:  util-linux
 BuildRequires:  util-linux-systemd
 BuildRequires:  valgrind
-BuildRequires:  vim
+BuildRequires:  vim-small
 BuildRequires:  wget
 BuildRequires:  wicked
 BuildRequires:  wireless-tools
@@ -653,7 +653,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.35
+Version:        16.36
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
