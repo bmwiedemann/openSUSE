@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  1 23:34:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Backport Jedi 0.18 support ipython-jedi018.patch
+  gh#ipython/ipython#12793 
+
+-------------------------------------------------------------------
 Mon Dec  7 20:56:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Copy python-ipython rev45 to python-ipython715 for the last

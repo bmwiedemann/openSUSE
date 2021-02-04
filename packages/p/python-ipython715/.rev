@@ -10,4 +10,12 @@
   depending on ipython gh#openSUSE/python-rpm-macros#66</comment>
     <requestid>856016</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b55363919b1501baf122781d6e3e3848</srcmd5>
+    <version>7.15.0</version>
+    <time>1612466601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868549</requestid>
+  </revision>
 </revisionlist>

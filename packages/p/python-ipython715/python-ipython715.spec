@@ -1,7 +1,7 @@
 #
-# spec file for package python-ipython
+# spec file for package python-ipython715
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
+# PATCH-FEATURE-UPSTREAM ipython-jedi018.patch -- gh#ipython/ipython#12793 Support Jedi 0.18 for this legacy release
+Patch1:         ipython-jedi018.patch
 BuildRequires:  %{python_module backcall}
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools >= 18.5}
@@ -47,7 +49,7 @@ Requires:       python-Pygments
 Requires:       python-backcall
 Requires:       python-base >= 3.5
 Requires:       python-decorator
-Requires:       python-jedi >= 0.10
+Requires:       python-jedi >= 0.16
 Requires:       python-pexpect
 Requires:       python-pickleshare
 Requires:       python-prompt_toolkit < 3.1
@@ -146,7 +148,7 @@ which supports Python 3.6. It is used for testing software that
 uses %{name} in the same version.
 
 %prep
-%setup -q -n ipython-%{version}
+%autosetup -p1 -n ipython-%{version}
 
 %build
 %python_build
