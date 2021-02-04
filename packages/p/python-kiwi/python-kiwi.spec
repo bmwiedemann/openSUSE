@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.23.5
+Version:        9.23.12
 Provides:       kiwi-schema = 7.3
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -156,6 +156,15 @@ Requires:       xorriso
 %ifarch %{ix86} x86_64
 Requires:       syslinux
 %endif
+%if "%{_vendor}" == "debbuild"
+Requires:       qemu-utils
+%else
+%if 0%{?suse_version}
+Requires:       qemu-tools
+%else
+Requires:       qemu-img
+%endif
+%endif
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
@@ -210,6 +219,7 @@ Provides:       kiwi-image:kis
 %if ! 0%{?el8}
 Provides:       kiwi-filesystem:btrfs
 %endif
+Provides:       kiwi-filesystem:ext2
 Provides:       kiwi-filesystem:ext3
 Provides:       kiwi-filesystem:ext4
 Provides:       kiwi-filesystem:squashfs

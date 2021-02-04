@@ -1,7 +1,287 @@
 -------------------------------------------------------------------
+Mon Feb 01 16:16:22 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.11 → 9.23.12
+
+-------------------------------------------------------------------
+Sun Jan 31 16:01:42 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added aaa_base to s390 TW build tests
+
+  On s390 TW aaa_base is not pulled in by a dependency in obs.
+  It looks like the package is pulled in by a file provides which
+  is not resolved by obs. Thus the package needs to be added
+  explicitly
+
+-------------------------------------------------------------------
+Fri Jan 29 15:25:30 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.10 → 9.23.11
+
+-------------------------------------------------------------------
+Fri Jan 29 15:24:21 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Follow up fix, creating custom grub EFI images
+
+  Make sure custom EFI grub image is copied to the media
+  directory if this is different from the root directory
+  e.g on creation of live images
+
+-------------------------------------------------------------------
+Thu Jan 28 19:06:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.9 → 9.23.10
+
+-------------------------------------------------------------------
+Thu Jan 28 19:02:24 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Follow up fix, creating custom grub images
+
+  Moving the grub mkimage call as chroot operation also broke
+  the creation of image builds that uses the legacy custom kiwi
+  boot image feature instead of dracut. This commit fixes it
+
+-------------------------------------------------------------------
+Thu Jan 28 09:10:06 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added leap box to be shown by build_status helper
+
+-------------------------------------------------------------------
+Wed Jan 27 22:21:44 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added decorators to help with API management
+
+  The lifetime of API methods could be limited due to
+  the development of kiwi. To allow for a deprecation
+  process the following helper methods has been added
+
+-------------------------------------------------------------------
+Wed Jan 27 14:40:12 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.8 → 9.23.9
+
+-------------------------------------------------------------------
+Wed Jan 27 13:40:20 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Update MicroOS build test
+
+  This commit alignes the MicroOS tests with the MicroOS images build
+  for kvm and xen. In addition it adds the installation media request and
+  custom initrd modules configuration for the installation media.
+
+-------------------------------------------------------------------
+Wed Jan 27 11:45:54 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed creation of custom bios grub image
+
+  The last commit moved the grub mkimage call into the chroot.
+  As a side effect and when creating install media the earlyboot
+  script could no longer be found. This commit fixes it
+
+-------------------------------------------------------------------
+Wed Jan 27 10:06:39 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Include installmedia documentation
+
+-------------------------------------------------------------------
+Tue Jan 26 15:47:45 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.7 → 9.23.8
+
+-------------------------------------------------------------------
+Mon Jan 25 15:50:41 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed creation of custom grub image
+
+  If kiwi can't find the distribution provided grub image(s) it
+  creates them using the respective grub[X]-mkimage tool. However
+  the tool was called on the build host which could cause an
+  inconsistency on the used module path. Grub is not packaged
+  consistently across the distributions and also the provided
+  modules comes in different versions and patch sets. Therefore
+  it's required that kiwi calls the grub mkimage tool as chrooted
+  operation inside of the tree that provides the target image.
+  As consequence of the change it's required that the image root
+  tree provides the grub mkimage tool. In addition to the change
+  we now also log the output from the grub mkimage call in the
+  kiwi build logfile. This Fixes #1254
+
+-------------------------------------------------------------------
+Thu Jan 21 20:48:26 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add strong typing for the following API methods
+
+  * kiwi/system/kernel.py
+  * kiwi/system/result.py
+  * kiwi/system/shell.py
+
+  This references issue #1644
+
+-------------------------------------------------------------------
+Thu Jan 21 17:06:50 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Add the schematron rules for installinitrd
+
+  This commit adds an schematron rule to limit the presence of
+  installinitrd element to disk builds including installation media.
+
+-------------------------------------------------------------------
+Thu Jan 21 15:47:38 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Add the installinitrd element
+
+  This commit adds the `<installinitrd>` element in kiwi schema to
+  facilitate the dracut modules configuration for the installation initrds
+  on OEM images. Within installinitrd element is possible list the dracut
+  modules to append, to omit or to just set an static list of dracut
+  modules to include.
+
+  Fixes #1676
+  Fixes #1683
+
+-------------------------------------------------------------------
+Thu Jan 21 12:07:05 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add strong typing for the following API methods
+
+  * system/root_bind.py
+  * system/root_init.py
+  * system/identifier.py
+
+  This references issue #1644
+
+-------------------------------------------------------------------
+Thu Jan 21 09:12:31 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.6 → 9.23.7
+
+-------------------------------------------------------------------
+Wed Jan 20 16:15:32 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Don't call super() from logging.Formatter
+
+  It's not needed to run the base class constructor.
+  The interface for the logging facility is also different
+  between python 3.6 and python 3.8 such that calling
+  the base constructor would be bad idea anyway.
+
+-------------------------------------------------------------------
+Wed Jan 20 14:35:58 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add strong typing for the following API methods
+
+  * kiwi/system/size.py
+  * kiwi/system/uri.py
+  * kiwi/system/users.py
+
+  Update the test path for users_test.py
+
+  This references #1644
+
+-------------------------------------------------------------------
+Wed Jan 20 13:02:33 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Include missing qemu-tools dependency for iso images
+
+  This commit includes a missing qemu-tools dependency for iso
+  image type.
+
+-------------------------------------------------------------------
+Wed Jan 20 12:43:48 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added strong typing for the following API methods
+
+  * kiwi/system/prepare.py
+  * kiwi/system/profile.py
+  * kiwi/system/setup.py
+
+  The changes here also lead to a small refactoring for the handling
+  of the package manager. In my opinion it doesn't make sense to allow
+  a None type package manager from the stateful XML instance. As without
+  any package manager nothing can be done. As it also turns into an
+  issue for the PackageManager API which does not allow for an empty
+  value here I thought it's better to come up with a default package
+  manager (set to dnf) if no one is explicitly specified
+
+  This references Issue #1644
+
+-------------------------------------------------------------------
+Wed Jan 20 08:38:46 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Explicitly set lvm device source
+
+  Set external_device_info_source=none for lvm calls.
+  This is related to Issue #1665
+
+-------------------------------------------------------------------
+Tue Jan 19 14:51:19 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed use of encoding in open calls
+
+  The use of encodings.ascii in open calls was wrong. Open expects
+  an encoding string but encodings.ascii returns a module reference
+
+-------------------------------------------------------------------
+Tue Jan 19 14:11:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.5 → 9.23.6
+
+-------------------------------------------------------------------
+Tue Jan 19 09:16:25 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Handle checksum files in ascii encoding
+
+  Follow up fix for #1673. Handle reading/writing of all
+  supported checksum variants in ascii encoding
+
+-------------------------------------------------------------------
+Mon Jan 18 17:56:55 CET 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Mark Micro DNF as a RPM based package manager
+
+  Without doing this, KIWI won't generate the correct output files
+  for verification of image content.
+
+-------------------------------------------------------------------
+Mon Jan 18 13:02:22 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Only write GRUB_CMDLINE_LINUX_DEFAULT with content
+
+  Only write GRUB_CMDLINE_LINUX_DEFAULT in the grub defaults
+  file if there are custom options set via the kernelcmdline
+  attribute. This Fixes #1650
+
+-------------------------------------------------------------------
+Sat Jan 16 15:23:47 CET 2021 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Move logic to sync system data into a separate method
+
+  Reduce cyclomatic complexity of DiskBuilder.create_disk() by moving the
+  logic to sync system data into a separate method.
+
+-------------------------------------------------------------------
+Fri Jan 15 15:02:21 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed missing systemdisk provides
+
+  kiwi-systemdeps-filesystems did not provide kiwi-filesystem:ext2
+
+-------------------------------------------------------------------
 Fri Jan 15 09:26:09 CET 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.4 → 9.23.5
+
+-------------------------------------------------------------------
+Wed Jan 13 12:32:17 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Refactor default shared cache location
+
+  Defaults shared cache location does not depend on CLI parameters
+  Add set method for custom cache location in Defaults
+  CLI default value for shared cache dir depends on Defaults if not set
+  Update default if CLI shared cache dir set
+
+  Fixes #1671
 
 -------------------------------------------------------------------
 Tue Jan 12 17:31:13 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
@@ -12,6 +292,17 @@ Tue Jan 12 17:31:13 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
 Mon Jan 11 09:48:00 CET 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.3 → 9.23.4
+
+-------------------------------------------------------------------
+Sun Dec 27 19:03:49 CET 2020 - Josua Mayer <josua@solid-run.com>
+
+- force ascii encoding on checksum files
+
+  Python open function can fail when a file is not found encoded in
+  utf-8, depending on the execution environment. In particular on
+  Debian 10 an error message regarding utf8 was encountered.
+
+  Since checksum files always use only ascii characters, force it.
 
 -------------------------------------------------------------------
 Wed Dec 23 16:59:52 CET 2020 - David Cassany <dcassany@suse.com>
@@ -340,6 +631,19 @@ Tue Dec 08 14:31:18 CET 2020 - Neal Gompa <ngompa13@gmail.com>
 
   Without this, it's not possible to do GPG verification of Debian/Ubuntu
   repositories.
+
+-------------------------------------------------------------------
+Tue Dec 08 12:41:31 CET 2020 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Fix disk build with <bootloader name="custom"/>
+
+  * Fix DiskBuilder.create_disk() to not call the BootLoaderConfig
+  factory when bootloader=custom. The factory does not recognize the
+  "custom" bootloader name and raises the following exception:
+  KiwiBootLoaderConfigSetupError: Support for custom bootloader config not implemented
+  * Update DiskBuilder._install_bootloader() to not invoke any
+  bootloader_config methods when bootloader=custom since no config
+  instance is created in such a case.
 
 -------------------------------------------------------------------
 Tue Dec 08 12:37:47 CET 2020 - Marcus Schäfer <ms@suse.de>

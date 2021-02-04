@@ -1640,4 +1640,41 @@
   This provides tag was missing</comment>
     <requestid>863255</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>0bb4b7fe9bf0a23be139993a6b1359da</srcmd5>
+    <version>9.23.12</version>
+    <time>1612466559</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.11 → 9.23.12
+
+- Added aaa_base to s390 TW build tests
+  On s390 TW aaa_base is not pulled in by a dependency in obs.
+  It looks like the package is pulled in by a file provides which
+  is not resolved by obs. Thus the package needs to be added
+  explicitly
+
+- Bump version: 9.23.10 → 9.23.11
+
+- Follow up fix, creating custom grub EFI images
+  Make sure custom EFI grub image is copied to the media
+  directory if this is different from the root directory
+  e.g on creation of live images
+
+- Bump version: 9.23.9 → 9.23.10
+
+- Follow up fix, creating custom grub images
+  Moving the grub mkimage call as chroot operation also broke
+  the creation of image builds that uses the legacy custom kiwi
+  boot image feature instead of dracut. This commit fixes it
+
+- Added leap box to be shown by build_status helper
+
+- Added decorators to help with API management
+  The lifetime of API methods could be limited due to
+  the development of kiwi. To allow for a deprecation
+  process the following helper methods has been added
+
+- Bump version: 9.23.8 → 9.23.9</comment>
+    <requestid>868394</requestid>
+  </revision>
 </revisionlist>
