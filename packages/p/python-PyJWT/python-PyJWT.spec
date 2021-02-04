@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyJWT
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-PyJWT
-Version:        1.7.1
+Version:        2.0.1
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/progrium/pyjwt
 Source:         https://files.pythonhosted.org/packages/source/P/PyJWT/PyJWT-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/jpadilla/pyjwt/pull/448.patch
-Patch0:         0001-Catch-BadSignatureError-raised-by-ecdsa-0.13.3.patch
-BuildRequires:  %{python_module cryptography >= 1.4}
-BuildRequires:  %{python_module ecdsa}
+BuildRequires:  %{python_module cryptography >= 3.3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography >= 1.4
-Requires:       python-ecdsa
+Requires:       python-cryptography >= 3.3.1
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -46,7 +43,6 @@ A Python implementation of JSON Web Token draft 01.
 
 %prep
 %setup -q -n PyJWT-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -56,21 +52,13 @@ find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#!%{_bindir}/env py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/pyjwt
-
-%post
-%python_install_alternative pyjwt
-
-%postun
-%python_uninstall_alternative pyjwt
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -o addopts="" -k "not test_verify_false_deprecated"
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS CHANGELOG.md README.rst
+%doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/*
-%python_alternative %{_bindir}/pyjwt
 
 %changelog

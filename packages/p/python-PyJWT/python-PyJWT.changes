@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb  1 20:52:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Drop support for Python 2 and Python 3.0-3.5
+  * Require cryptography >= 3
+  * Drop support for PyCrypto and ECDSA
+  * Drop CLI
+  * Improve typings
+  * Dropped deprecated errors
+  * Dropped deprecated ``verify_expiration`` param in ``jwt.decode(...)``
+  * Dropped deprecated ``verify`` param in ``jwt.decode(...)``
+  * Require explicit ``algorithms`` in ``jwt.decode(...)`` by default
+  * Dropped deprecated ``require_*`` options in ``jwt.decode(...)``
+  * Introduce better experience for JWKs
+  * further details see included CHANGELOG.rst
+- drop 0001-Catch-BadSignatureError-raised-by-ecdsa-0.13.3.patch (obsolete)
+
+-------------------------------------------------------------------
 Fri Oct 18 20:24:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with ecdsa >= 0.13.3, #447
