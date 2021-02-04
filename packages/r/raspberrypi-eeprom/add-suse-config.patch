@@ -1,0 +1,25 @@
+From d1d1945ef34cab5ff0d41eda2e08266f417be3dc Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Fri, 22 Jan 2021 16:54:49 +0100
+Subject: [PATCH] Add suse config
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ rpi-eeprom-update-default | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/rpi-eeprom-update-default b/rpi-eeprom-update-default
+index f567b6a..7111176 100644
+--- a/rpi-eeprom-update-default
++++ b/rpi-eeprom-update-default
+@@ -3,6 +3,6 @@ FIRMWARE_ROOT=/lib/firmware/raspberrypi/bootloader
+ FIRMWARE_RELEASE_STATUS="critical"
+ FIRMWARE_IMAGE_DIR="${FIRMWARE_ROOT}/${FIRMWARE_RELEASE_STATUS}"
+ FIRMWARE_BACKUP_DIR="/var/lib/raspberrypi/bootloader/backup"
+-BOOTFS=/boot
++BOOTFS=/boot/efi
+ USE_FLASHROM=0
+ EEPROM_CONFIG_HOOK=
+-- 
+2.30.0
+

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Jan 28 16:05:58 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Remove VL805 firmware version from package version as it prevents it from
+  incresing monotonically.
+
+-------------------------------------------------------------------
+Thu Jan 28 13:55:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Prefix version with 0.0~
+
+-------------------------------------------------------------------
+Wed Jan 27 12:22:39 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Define _firmwaredir when relevant
+
+-------------------------------------------------------------------
+Tue Jan 26 12:31:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to b9c255d:
+ * rpi-eeprom-config: Properly decode sysfs binary files
+
+-------------------------------------------------------------------
+Mon Jan 25 18:29:06 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce _service file.
+
+-------------------------------------------------------------------
+Mon Jan 25 12:55:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Ditch unnecessarily split package.
+
+-------------------------------------------------------------------
+Fri Jan 22 14:15:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- First commit
+- Introduce patches: 'add-suse-config.patch' and 'don't-use-env.patch'.

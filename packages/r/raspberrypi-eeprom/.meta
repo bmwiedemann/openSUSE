@@ -1,0 +1,8 @@
+<package name="raspberrypi-eeprom" project="openSUSE:Factory">
+  <title>Raspberry Pi4 Bootlooader</title>
+  <description>
+  Mirrors Raspberry Pi OS' rpi-eeprom package[1]. Contains tools for upgrading and configuring RPi's first stage bootloader.
+  
+  [1] https://github.com/raspberrypi/rpi-eeprom</description>
+  <devel project="hardware:boot" package="raspberrypi-eeprom"/>
+</package>

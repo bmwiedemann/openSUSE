@@ -1,0 +1,23 @@
+From e28936a8fa34346727b229e7366960e508545cf0 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Fri, 22 Jan 2021 17:08:46 +0100
+Subject: [PATCH] Avoid using env so rpm catches the python dependency
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ rpi-eeprom-config | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rpi-eeprom-config b/rpi-eeprom-config
+index 0a6ce5e..943d0dd 100755
+--- a/rpi-eeprom-config
++++ b/rpi-eeprom-config
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ """
+ rpi-eeprom-config
+-- 
+2.30.0
+
