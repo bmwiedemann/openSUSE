@@ -20,7 +20,7 @@
 
 %define pname scalapack
 %define vers 2.1.0
-%define _vers 2_1_0
+%define _vers %(echo %{vers} | tr . _)
 %define so_ver  2
 %define openblas_vers 0.3.6
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -430,7 +430,7 @@ Obsoletes:      %{name} < %{version}
 Provides:       %{name} = %{version}
 %if %{with hpc}
 Requires:       %{name}-module
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
+%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc}
 Provides:       %{libblacsname %_vers}
 %hpc_requires
 %endif
@@ -476,7 +476,7 @@ Provides:       lib%{pname}%{so_ver}-openmpi-devel
 %endif
 %else
 %hpc_requires_devel
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
+%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
 Provides:       %{libblacsname %_vers}-devel
 %endif
 Obsoletes:      %{name}-devel < %{version}

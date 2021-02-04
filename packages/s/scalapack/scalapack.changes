@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  3 10:15:16 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.
+
+-------------------------------------------------------------------
 Tue Jan  5 14:32:47 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix build for non-HPC packages: do not build BLACS headers for

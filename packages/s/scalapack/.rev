@@ -222,4 +222,14 @@
   multiple flavors (boo#1178116).</comment>
     <requestid>860504</requestid>
   </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>98ed5b93547609fb730953c7fd2f223f</srcmd5>
+    <version>2.1.0</version>
+    <time>1612466643</time>
+    <user>dimstar_suse</user>
+    <comment>- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning. (forwarded request 868996 from eeich)</comment>
+    <requestid>869000</requestid>
+  </revision>
 </revisionlist>
