@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 15:54:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro
+
+-------------------------------------------------------------------
 Mon Jul  6 19:05:20 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add lua54 as new build target

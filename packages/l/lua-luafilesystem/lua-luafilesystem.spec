@@ -29,10 +29,7 @@ URL:            https://keplerproject.github.io/luafilesystem/
 Source:         https://github.com/keplerproject/luafilesystem/archive/v%{_pversion}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
-%if "%{flavor}" == "lua53"
-Provides:       lua-%{mod_name} = %{version}
-Obsoletes:      lua-%{mod_name} < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
