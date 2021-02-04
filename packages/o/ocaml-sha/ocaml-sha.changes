@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
+
+- remove dependency to ounit via _multibuild
+- fix discarded-qualifiers errors via ocaml-sha.patch
+
+-------------------------------------------------------------------
 Sun Mar 29 12:34:56 UTC 2020 - ohering@suse.de
 
 - Update to version 1.13
