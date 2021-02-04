@@ -1,7 +1,7 @@
 #
 # spec file for package python-sniffio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,13 @@ License:        MIT OR Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/sniffio
 Source:         https://github.com/python-trio/sniffio/archive/v%{version}.tar.gz#/sniffio-%{version}.tar.gz
-BuildRequires:  %{python_module contextvars >= 2.1}
+BuildRequires:  %{python_module contextvars >= 2.1 if %python-base < 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Suggests:       python-contextvars >= 2.1
+BuildRequires:  python-rpm-macros >= 20210127.3a18043
+%if 0%{?python_version_nodots} < 37
+Requires:       python-contextvars >= 2.1
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module curio}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 31 13:35:33 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the contextvars requirement for python36
+
+-------------------------------------------------------------------
 Wed Dec  9 22:59:17 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Revert the python36 skip. python36-curio has been reenabled
