@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  4 14:11:21 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- multiple_definitions.patch: fix build with GCC10
+
+-------------------------------------------------------------------
 Fri Jun  9 09:03:58 UTC 2017 - jengelh@inai.de
 
 - Rework description.
