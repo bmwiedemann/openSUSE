@@ -84,4 +84,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>866084</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cf2fd1b479d8ba3b3f46dbc94f85e1fb</srcmd5>
+    <version>3.9.40</version>
+    <time>1612466605</time>
+    <user>dimstar_suse</user>
+    <comment>- disable test test_asyncio_record_replay as it requires DNS.
+- Update to version 3.9.40:
+ - Fix for asyncio.open_connection() (#144)
+ - fix UT for 3.5 support
+</comment>
+    <requestid>868763</requestid>
+  </revision>
 </revisionlist>

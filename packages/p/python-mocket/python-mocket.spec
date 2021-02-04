@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-mocket%{psuffix}
-Version:        3.9.39
+Version:        3.9.40
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -106,7 +106,8 @@ pytest_python36_ignore="--ignore tests/tests38"
 %if %{python3_version_nodots} < 38
 pytest_python3_ignore="--ignore tests/tests38"
 %endif
-%pytest -k 'not RedisTestCase' ${pytest_$python_ignore}
+# test_asyncio_record_replay requires DNS ("Temporary failure in name resolution")
+%pytest -k 'not RedisTestCase and not test_asyncio_record_replay' ${pytest_$python_ignore}
 %endif
 
 %if !%{with test}
