@@ -1,7 +1,7 @@
 #
 # spec file for package htmldoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           htmldoc
-Version:        1.9.9
+Version:        1.9.11
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
 License:        LGPL-2.1-or-later
@@ -26,6 +26,7 @@ URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libXpm-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgnutls-devel
@@ -63,6 +64,7 @@ rm -rf %{buildroot}/home %{buildroot}%{_datadir}/doc/%{name}
 %{_bindir}/htmldoc
 %{_datadir}/htmldoc
 %{_datadir}/pixmaps/htmldoc.xpm
+%{_datadir}/icons/hicolor/*x*/apps/htmldoc.png
 %{_datadir}/mime/packages/htmldoc.xml
 %{_datadir}/applications/htmldoc.desktop
 %{_mandir}/man1/htmldoc.1%{?ext_man}
