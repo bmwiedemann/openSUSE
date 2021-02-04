@@ -15,10 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define name_ext -test
+%define debug_package %{nil}
+%else
+%define name_ext %{nil}
+%endif
 %define major_version 5.4
 %define libname liblua5_4-5
-Name:           lua54
+Name:           lua54%{name_ext}
 Version:        5.4.2
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
@@ -37,10 +43,14 @@ Patch2:         files_test.patch
 Patch3:         main_test.patch
 # PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.2
 #Patch4:         upstream-bugs.patch
+%if "%{flavor}" == "test"
+BuildRequires:  lua54
+%else
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       lua = %{version}
@@ -123,11 +133,18 @@ scripting, and rapid prototyping. Lua is implemented as a small library
 of C functions, written in ANSI C.
 
 %prep
-%setup -q -n lua-%{version} -a1
-mv lua-%{version}-tests lua-tests
-%autopatch -p1
+%if "%{flavor}" == "test"
+%setup -T -q -b1 -n lua-%{version}-tests
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%else
+%setup -q -n lua-%{version}
+%patch0 -p1
+%endif
 
 # manpage
+%if "%{flavor}" != "test"
 cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_version}.1
 cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_version}.1
 
@@ -185,11 +202,12 @@ touch %{buildroot}%{_sysconfdir}/alternatives/liblua.so
 ln -sf %{_sysconfdir}/alternatives/liblua.so %{buildroot}%{_libdir}/liblua.so
 touch %{buildroot}%{_sysconfdir}/alternatives/lua.pc
 ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
-
+%else
 %check
-cd ./lua-tests/
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/lua%{major_version} all.lua
+LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
+%endif
 
+%if "%{flavor}" != "test"
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
@@ -258,4 +276,5 @@ fi
 %files doc
 %doc doc/*
 
+%endif
 %changelog

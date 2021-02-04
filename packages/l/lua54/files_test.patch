@@ -1,7 +1,7 @@
-Index: lua/lua-tests/files.lua
+Index: lua/files.lua
 ===================================================================
---- lua.orig/lua-tests/files.lua
-+++ lua/lua-tests/files.lua
+--- lua.orig/files.lua
++++ lua/files.lua
 @@ -81,7 +81,7 @@ assert(io.output() ~= io.stdout)
  
  if not _port then   -- invalid seek

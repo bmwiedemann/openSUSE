@@ -1,5 +1,5 @@
---- a/lua-tests/main.lua
-+++ b/lua-tests/main.lua
+--- a/main.lua
++++ b/main.lua
 @@ -307,11 +307,11 @@
  ]]
  RUN([[lua -e "%s" -i < %s > %s]], prompt, prog, out)
