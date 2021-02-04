@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Feb 04 10:02:29 UTC 2021 - trenn@suse.de
+
+- This update has one part (fence-agents part) of a fix for bsc#1178294
+  It still needs cobbler adjustings
+- Update to version 4.7.0+git.1612425309.e4f51e44:
+  * Add fence_ipmilanplus as fence_ipmilan wrapper always enabling lanplus (bsc#1178294)
+  * fence_vbox: updated metadata file
+  * fence_vbox: do not flood host account with vboxmanage calls
+  * fence_aws/fence_gce: allow building without cloud libs
+  * fence_gce: default to onoff
+  * fence_lpar: Make --managed a required option
+  * fence_zvmip: fix shell-timeout when using new disable-timeout parameter
+  * Adds service account authentication to GCE fence agent
+  * spec: dont build -all subpackage as noarch
+- Patch that went mainline and got deleted:
+D 0001-Adds-service-account-authentication-to-GCE-fence-age.patch
+
+-------------------------------------------------------------------
+Wed Feb  3 09:41:25 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Quote strings in specfile (originally by Olaf Hering, ohering@suse.de)
+
+-------------------------------------------------------------------
+Thu Jan 21 15:13:20 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- Adds service account authentication to GCE fence agent 
+
+-------------------------------------------------------------------
+Thu Jan 21 15:05:26 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.7.0+git.1607346448.17bd8552:
+  * fence_mpath, fence_scsi: Improve logging for failed res/key get
+  * fence_mpath, fence_scsi: Capture stderr in run_cmd()
+  * build: depend on config changes to rebuild when running make after running ./configure
+  * fence_redfish: Fix typo in help.
+  * fence_aws: add support for IMDSv2
+  * spec: add pkg-config file, and set version for obsoletes to avoid failing to build on Fedora 33
+  * Add pkg-config file
+  * fence_scsi: dont write key to device if it's already registered, and open file correctly to avoid using regex against end-of-file
+  * fencing: fix run_command() to allow timeout=0 to mean forever
+  * fencing: fix to make timeout(s)=0 be treated as forever for agents using pexpect
+
+-------------------------------------------------------------------
+Thu Oct 29 13:39:38 UTC 2020 - varkoly@suse.com
+
+- Update to version 4.6.0+git.1603723121.a17eb9d4:
+  * Add a fence_crosslink agent
+  * fencing: fix power-timeout when using new disable-timeout parameter
+  * metadata: update for disable_timeout parameter
+  * fencing: add disable-timeout parameter, and make it default when run from Pacemaker (at least 2.0+)
+  * spec: make telnet a weak dependency
+  * Adds baremetal support to GCE fence agent and API call retries (#355)
+  * spec: add -aws and -gce dependency to -all subpackage
+  * spec: fix ibmz subpackage referring to fence_z instead of fence_ibmz
+  * fence_lpar: Reduce code duplication in get_lpar_list
+
+-------------------------------------------------------------------
 Fri Jun 19 14:34:32 UTC 2020 - dakechi@suse.com
 
 - Update to version 4.5.2+git.1592573838.1eee0863:

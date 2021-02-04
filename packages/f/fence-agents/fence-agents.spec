@@ -1,7 +1,7 @@
 #
 # spec file for package fence-agents
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,15 @@ Name:           fence-agents
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Clustering/HA
-Version:        4.5.2+git.1592573838.1eee0863
+Version:        4.7.0+git.1612425309.e4f51e44
 Release:        0
-Url:            https://github.com/ClusterLabs/fence-agents
+URL:            https://github.com/ClusterLabs/fence-agents
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         0001-Use-Python-3-for-all-scripts-bsc-1065966.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_version}
-%if %{python_version} == "python3"
+%if "%{python_version}" == "python3"
 BuildRequires:  python3-google-api-python-client
 BuildRequires:  python3-keystoneclient
 BuildRequires:  python3-novaclient
@@ -71,7 +71,7 @@ BuildRequires:  perl-Net-Telnet
 BuildRequires:  pkg-config
 BuildRequires:  xz
 
-%if %{python_version} == "python3"
+%if "%{python_version}" == "python3"
 Requires:       python3-pexpect
 Requires:       python3-pycurl
 Requires:       python3-requests
@@ -94,7 +94,7 @@ Recommends:     /usr/bin/virsh
 # have changed Requires around. Make sure to get the right one.
 Recommends:     /usr/bin/ipmitool
 
-%if %{python_version} == "python3"
+%if "%{python_version}" == "python3"
 Recommends:     python3-openwsman
 %endif
 
@@ -136,14 +136,14 @@ development.
 
 %prep
 %setup -q -n %{name}-%{version}
-%if %{python_version} == "python3"
+%if "%{python_version}" == "python3"
 %patch1 -p1
 %endif
 
 %build
 CFLAGS="${CFLAGS} ${RPM_OPT_FLAGS}"
 export CFLAGS
-%if %{python_version} == "python3"
+%if "%{python_version}" == "python3"
 PYTHON="%{_bindir}/python3"
 %else
 PYTHON="%{_bindir}/python2"
@@ -170,7 +170,7 @@ ln -s %{_sbindir}/fence_cisco_ucs %{buildroot}%{plugin_dir}
 %if 0%{?with_regression_tests}
 %check
 make check
-PYTHONPATH=fence/agents/lib %{python_version} fence/agents/lib/tests/test_fencing.py
+PYTHONPATH=fence/agents/lib "%{python_version}" fence/agents/lib/tests/test_fencing.py
 %endif
 
 %files
@@ -189,6 +189,7 @@ PYTHONPATH=fence/agents/lib %{python_version} fence/agents/lib/tests/test_fencin
 %exclude %{_mandir}/man8/fence_dummy*
 %{_mandir}/man8/fence_*
 %{_libexecdir}/fence_*
+/usr/share/pkgconfig/fence-agents.pc
 
 %files amt_ws
 %{_sbindir}/fence_amt_ws
