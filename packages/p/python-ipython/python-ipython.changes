@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  1 23:25:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 7.20.0
+  https://ipython.readthedocs.io/en/stable/whatsnew/version7.html
+  * Support for PyQt5 >= 5.11 PR #12715
+  * %reset remove imports more agressively PR #12718
+  * fix the %conda magic PR #12739
+  * compatibility with Jedi 0.18, and bump minimum Jedi version. 
+    PR #12793 
+
+-------------------------------------------------------------------
 Thu Dec 10 20:14:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update requirement to python >= 3.7, which is officially the case
