@@ -2,7 +2,9 @@
 # exact version of main package, parallel installation
 # not wanted
 addFilter("php.-embed.* shlib-policy-name-error")
-# PHP5 is obsolete, replaced by PHP7
-addFilter("obsolete-not-provided php5-*")
+# PHP7 is (almost) obsolete, replaced by PHP8
+addFilter("obsolete-not-provided php7-*")
 # Forgot to add category?
 addFilter("non-standard-group Development/Libraries/PHP")
+# Warning for all flavors not equal to "" in multibuild
+addFilter("invalid-spec-name")

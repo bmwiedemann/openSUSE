@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -176,12 +176,12 @@ Recommends:     php-xmlreader = %{version}
 Recommends:     php-xmlwriter = %{version}
 # Recommends instead of Requires smtp_daemon bsc#1115213
 Recommends:     smtp_daemon
-# suggest %%{php_name}-* instead of php-* [bsc#1022158c#4]
-Suggests:       %{php_name}-cli
-Suggests:       %{php_name}-gd
-Suggests:       %{php_name}-gettext
-Suggests:       %{php_name}-mbstring
-Suggests:       %{php_name}-mysql
+# Suggest php-* = %%{version} instead of php-* [bsc#1022158c#4]
+Suggests:       php-cli = %{version}
+Suggests:       php-gd = %{version}
+Suggests:       php-gettext = %{version}
+Suggests:       php-mbstring = %{version}
+Suggests:       php-mysql = %{version}
 ## Provides
 Provides:       php = %{version}
 Provides:       php-api = %{apiver}
@@ -921,7 +921,6 @@ files, too, but not with sockets).
 %endif
 
 %prep
-echo %{apache_mmn}
 %setup -q -n php-%{version}
 cp %{SOURCE5} .
 

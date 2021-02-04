@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  1 20:14:44 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.2: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.2
+- suppress warning for all flavors not equal to "" in multibuild
+  and obsoletes for php7
+  % php8.rpmlintrc
+
+-------------------------------------------------------------------
 Fri Jan 29 08:47:27 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - add conflicts with earlier versions of php (boo#1181292)
