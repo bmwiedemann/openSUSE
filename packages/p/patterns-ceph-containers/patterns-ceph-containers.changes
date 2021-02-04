@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  1 19:17:23 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Drop all nfs-ganesha packages from ceph-base:
+  + nfs-ganesha
+  + nfs-ganesha-ceph
+  + nfs-ganesha-rgw
+  + nfs-ganesha-rados-grace
+  + nfs-ganesha-rados-urls
+
+-------------------------------------------------------------------
 Tue Jan 28 15:29:13 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Added nfs-ganesha-rados-urls to ceph_base

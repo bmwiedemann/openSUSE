@@ -56,11 +56,6 @@ Requires:       ceph-osd
 Requires:       ceph-prometheus-alerts
 Requires:       ceph-radosgw
 Requires:       ceph-iscsi
-Requires:       nfs-ganesha
-Requires:       nfs-ganesha-ceph
-Requires:       nfs-ganesha-rgw
-Requires:       nfs-ganesha-rados-grace
-Requires:       nfs-ganesha-rados-urls
 Requires:       rbd-mirror
 Requires:       rbd-nbd
 Requires:       ca-certificates
