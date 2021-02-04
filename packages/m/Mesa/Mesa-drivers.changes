@@ -1,14 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb  1 10:50:16 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.3.4
+  * fourth bugfix release for the 20.3 branch
+
+-------------------------------------------------------------------
+Wed Jan 27 10:13:51 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed no longer needed buildfix-ppc64le.patch; build failed on
+  ppc64 due to this patch (bsc#1181439)
+
+-------------------------------------------------------------------
 Thu Jan 14 15:02:07 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.3.3
-  * fourth bugfix release for the 20.3 branch 
+  * third bugfix release for the 20.3 branch 
 
 -------------------------------------------------------------------
 Thu Dec 31 13:02:52 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - update to 20.3.2
-  * third bugfix release for the 20.3 branch
+  * second bugfix release for the 20.3 branch
 - drm and surfaceless are not specified as platforms anymore,
   remove them from egl_platforms
 

@@ -4370,4 +4370,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fourth bugfix release for the 20.3 branch</comment>
     <requestid>863196</requestid>
   </revision>
+  <revision rev="400" vrev="272">
+    <srcmd5>68779588c1cbd5d8bcdb7d57cc5373b2</srcmd5>
+    <version>unknown</version>
+    <time>1612466548</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.3.4
+  * fourth bugfix release for the 20.3 branch
+
+- removed no longer needed buildfix-ppc64le.patch; build failed on
+  ppc64 due to this patch (bsc#1181439)</comment>
+    <requestid>868345</requestid>
+  </revision>
 </revisionlist>
