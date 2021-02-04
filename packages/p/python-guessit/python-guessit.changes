@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb  4 05:51:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to verison 3.3.0
+  Feature:
+  * Add --output-input-string option
+  * streaming_service: Add Showtime, HBO and AppleTV
+  * other: Add Hybrid support
+  Fix:
+  * options: Avoid appending None values to list when merging
+    options
+  * streaming_service: Add iT keyword support for iTunes
+  * streaming_service: Fix regex patterns declared with re:
+    prefix
+  Documentation:
+  * readme: Avoid mixed-content in github pages
+
+-------------------------------------------------------------------
 Thu Dec 24 09:10:44 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.2.0
