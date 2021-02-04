@@ -442,4 +442,12 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
     <comment></comment>
     <requestid>838464</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a7ed4588c6d73b4160e2ec3f3340fee0</srcmd5>
+    <version>3.21</version>
+    <time>1612466669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869213</requestid>
+  </revision>
 </revisionlist>

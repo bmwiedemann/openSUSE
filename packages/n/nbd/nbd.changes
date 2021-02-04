@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  4 11:16:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21:
+  - Fix --disable-manpages build
+  - Fix a bug in whitespace handling regarding authorization files
+  - Support client-side marking of devices as read-only
+  - Support preinitialized NBD connection (i.e., skip the negotiation).
+  - Fix the systemd unit file for nbd-client so it works with netlink (the
+    more common situation nowadays)
+
+-------------------------------------------------------------------
 Fri Sep 18 08:53:47 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Remove firewalld service file - it's in the main firewalld

@@ -1,7 +1,7 @@
 #
 # spec file for package nbd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           nbd
-Version:        3.20
+Version:        3.21
 Release:        0
 Summary:        Network Block Device Server and Client Utilities
 License:        GPL-2.0-or-later
