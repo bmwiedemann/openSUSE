@@ -179,4 +179,13 @@
   * Reformat the change log entries with keepachangelog.com sub-sections.</comment>
     <requestid>780388</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>712837555d479a4632160e05b819b458</srcmd5>
+    <version>2.2.4</version>
+    <time>1612466690</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off running of the test suite
+  (https://pagure.io/python-daemon/issue/53).</comment>
+    <requestid>869533</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  4 16:56:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch off running of the test suite
+  (https://pagure.io/python-daemon/issue/53).
+
+-------------------------------------------------------------------
 Fri Feb 28 21:41:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.2.4:
