@@ -1441,4 +1441,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>868128</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>68ece954d70d7b2861c4fa01f157edd9</srcmd5>
+    <version>2021.02.04</version>
+    <time>1612466652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.02.04</comment>
+    <requestid>869042</requestid>
+  </revision>
 </revisionlist>

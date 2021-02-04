@@ -17,7 +17,7 @@
 
 
 Name:           youtube-dl
-Version:        2021.01.24.1
+Version:        2021.02.04
 Release:        0
 Summary:        A tool for downloading from video sites for offline watching
 License:        SUSE-Public-Domain AND CC-BY-SA-3.0

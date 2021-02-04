@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  3 22:12:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.02.04
+  * medialaan: add support DPG Media MyChannels based websites
+  * youtube: improve DASH formats file size extraction
+
+-------------------------------------------------------------------
 Sun Jan 24 11:16:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.01.24.1
