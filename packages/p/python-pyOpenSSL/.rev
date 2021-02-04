@@ -390,4 +390,13 @@
 </comment>
     <requestid>858225</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>027a76e22392c252af19c3d989059280</srcmd5>
+    <version>20.0.1</version>
+    <time>1612466582</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.0.1:
+  - Fixed compatibility with OpenSSL 1.1.0.</comment>
+    <requestid>868439</requestid>
+  </revision>
 </revisionlist>
