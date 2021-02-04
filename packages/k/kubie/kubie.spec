@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubie
 Version:        0.12.1
 Release:        0
-Summary:        An alternative to kubectx, kubens and the k on prompt modification script
+Summary:        A Kubernetes context switcher
 License:        Zlib
 URL:            https://github.com/sbstp/kubie
 Source:         https://github.com/sbstp/kubie/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -31,14 +32,15 @@ BuildRequires:  cargo
 BuildRequires:  rust
 
 %description
-It offers context switching, namespace switching and prompt modification in a
+kubie offers context switching, namespace switching and prompt modification in a
 way that makes each shell independent from others. It also has support for
 split configuration files, meaning it can load Kubernetes contexts from
 multiple files. You can configure the paths where kubie will look for
 contexts, see the settings section.
 
 %prep
-%setup -qa1
+%autosetup -a1
+
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
@@ -57,4 +59,3 @@ rm -f %{buildroot}%{_prefix}/.crates2.json
 %{_bindir}/%{name}
 
 %changelog
-
