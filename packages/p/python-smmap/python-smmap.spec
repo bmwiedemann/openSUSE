@@ -1,7 +1,7 @@
 #
 # spec file for package python-smmap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smmap
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A pure git implementation of a sliding window memory map manager
 License:        BSD-2-Clause
