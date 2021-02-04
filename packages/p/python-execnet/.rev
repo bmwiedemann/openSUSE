@@ -104,4 +104,12 @@
   * #108: Revert linecache optimization introduced in 1.7.0 which broke remote execution.</comment>
     <requestid>727104</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>00a3df13d57895eed34ceff75092cd00</srcmd5>
+    <version>1.8.0</version>
+    <time>1612466607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868773</requestid>
+  </revision>
 </revisionlist>

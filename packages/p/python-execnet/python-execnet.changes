@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  2 09:57:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Dropped support for Python 3.4.
+  * Fixed internal leak that should make ``execnet`` execute remote code in the main thread more often
+  * Current working directory is now restored when calling ``script/socketserver.py``. 
+
+-------------------------------------------------------------------
 Fri Aug 30 01:11:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.1:
