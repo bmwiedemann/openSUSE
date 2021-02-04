@@ -1373,8 +1373,12 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-yast-rake
 %define _without_python2 1
 
 Macros:
+## PYTHON MACROS BEGIN
+# order of %pythons is important: The last flavor overrides any operation on conflicting files and definitions during expansions,
+# making it the "default" in many cases --> keep the primary python3 provider at the end.
 %pythons %{?!skip_python3:%{?!skip_python36:python36} %{?!skip_python38:python38}}
-%skip_python2 1
+%add_python() %{expand:%%define pythons %1 %pythons}
+
 %_without_python2 1
 
 # prjconf definitions for python-rpm-macros
@@ -1385,8 +1389,7 @@ Macros:
 # pseudo-undefine for obs: reset for the next expansion within the next call of python_module
 %python_module_iter_STOP %global python %%%%python
 %python_module() %{?!python_module_lua:%{expand:%%define args %{**}} %{expand:%%{python_module_iter -a %{pythons} STOP}}}%{?python_module_lua:%python_module_lua %{**}}
-
-%add_python() %{expand:%%define pythons %pythons %1}
+## PYTHON MACROS END
 :Macros
 
 # END PYTHON STUFF
