@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycurl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-pycurl%{psuffix}
-Version:        7.43.0.5
+Version:        7.43.0.6
 Release:        0
 Summary:        PycURL -- cURL library module
 License:        LGPL-2.1-or-later AND MIT
@@ -37,8 +37,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/pycurl/pycurl-%
 Patch0:         increase_test_timeout.diff
 # PATCH-FIX-UPSTREAM handle difference between libssh and libssh2
 Patch1:         pycurl-libssh.patch
-# PATCH-FIX-OPENSUSE python-pycurl-7.43.0-tls-backend.patch -- do not run runtime tests to compare linked libs
-Patch2:         python-pycurl-7.43.0-tls-backend.patch
 Patch3:         disable_randomly_failing_tests.patch
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#pycurl/pycurl#655 mcepl@suse.com
 # remove dependency on nose
