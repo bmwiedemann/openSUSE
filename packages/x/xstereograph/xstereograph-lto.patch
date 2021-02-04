@@ -1,0 +1,59 @@
+Index: xstereograph-2.1/stereograph-0.28a/globals.h
+===================================================================
+--- xstereograph-2.1.orig/stereograph-0.28a/globals.h
++++ xstereograph-2.1/stereograph-0.28a/globals.h
+@@ -1,6 +1,6 @@
+ #ifndef _GLOBALS_H_
+ #define _GLOBALS_H_
+ 
+-int verbose;
++extern int verbose;
+ 
+ #endif /* _GLOBALS_H_ */
+Index: xstereograph-2.1/stereograph-0.28a/gfxio.c
+===================================================================
+--- xstereograph-2.1.orig/stereograph-0.28a/gfxio.c
++++ xstereograph-2.1/stereograph-0.28a/gfxio.c
+@@ -32,6 +32,7 @@
+ #include "gfxio.h"
+ #include "globals.h"
+ 
++int verbose;
+ 
+ #define frand1() ((float)rand() / (float)RAND_MAX)
+ #define PI 3.14159265358979
+Index: xstereograph-2.1/stereograph-0.28a/Makefile
+===================================================================
+--- xstereograph-2.1.orig/stereograph-0.28a/Makefile
++++ xstereograph-2.1/stereograph-0.28a/Makefile
+@@ -12,7 +12,7 @@
+ # Linux
+ CC  = gcc
+ CFLAGS = -Wall -O2 -Dlinux $(RPM_OPT_FLAGS)
+-LDFLAGS = -lm -lpng -lz
++LDLIBS = -lm -lpng -lz
+ 
+ # HPUX
+ #CC = cc
+Index: xstereograph-2.1/src/Makefile
+===================================================================
+--- xstereograph-2.1.orig/src/Makefile
++++ xstereograph-2.1/src/Makefile
+@@ -2,7 +2,7 @@ BIN_DIR = /usr/bin
+ CC = gcc
+ #CFLAGS = -Wall -g
+ CFLAGS = -I../libsx-2.03/src -Wall -O2 $(RPM_OPT_FLAGS)
+-LDFLAGS = -lm
++LDLIBS = -lm
+ 
+ # XLIBS = -L/usr/X11R6/lib -lsx -lXt -lXpm -lXaw -lX11
+ # XLIBS = -L/usr/X11R6/lib -lsx -lXt -lXpm -lXaw3d -lX11
+@@ -13,7 +13,7 @@ all: xstereograph
+ 
+ xstereograph:   help.h xstereograph.c
+ 	echo "#define SISDIR \"/usr/share/xstereograph\"" > config.h
+-	$(CC) $(CFLAGS) $(XLIBS) $(LDFLAGS) xstereograph.c -o xstereograph
++	$(CC) $(CFLAGS) $(LDFLAGS) xstereograph.c  $(XLIBS) -o xstereograph
+ 
+ clean:
+ 	rm -f config.h *.o *~ core xstereograph 

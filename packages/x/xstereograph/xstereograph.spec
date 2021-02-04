@@ -1,7 +1,7 @@
 #
 # spec file for package xstereograph
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,7 +33,7 @@ Requires:       emacs-x11
 Requires:       xless
 Version:        2.1
 Release:        0
-Url:            http://freshmeat.net/projects/xstereograph/
+URL:            http://freshmeat.net/projects/xstereograph/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        libsx-%{version_libsx}.tar.bz2
 Patch0:         %{name}-%{version}.patch
@@ -47,6 +47,7 @@ Patch6:         %{name}-%{version}-libpng15.patch
 # libpng16.patch not sent to upstream (is project alive?)
 Patch7:         %{name}-%{version}-libpng16.patch
 Patch8:         trunc.patch
+Patch9:         xstereograph-lto.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -75,19 +76,16 @@ Authors:
 %patch6
 %patch7
 %patch8 -p0
+%patch9 -p1
 
 %build
-# This package failed when testing with -Wl,-as-needed being default.
-# So we disable it here, if you want to retest, just delete this comment and the line below.
-export SUSE_ASNEEDED=0
-#
 # libsx
 cd libsx-%{version_libsx}/src
-make
+make CFLAGS="%optflags -D_POSIX_SOURCE -fPIC"
 cd ../..
 #
 # xstereograph
-make X11_LIBDIR=/usr/%{_lib}
+make X11_LIBDIR=/usr/%{_lib} RPM_OPT_FLAGS="%optflags"
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  4 10:05:34 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- xstereograph-lto.patch: fix lto build
+- also fixed some, but not all, ASNEEDED issues.
+
+-------------------------------------------------------------------
 Wed Mar  7 14:33:35 UTC 2018 - crrodriguez@opensuse.org
 
 - Replace xorg-x11-devel by individual pkgconfig buildrequires 
