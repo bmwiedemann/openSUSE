@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros

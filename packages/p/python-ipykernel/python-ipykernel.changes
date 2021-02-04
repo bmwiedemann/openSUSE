@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  3 22:39:49 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- BuildRequire jupyter-jupyter_core-filesystem for the macro
+
+-------------------------------------------------------------------
 Mon Dec 14 22:47:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 5.4.2
