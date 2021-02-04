@@ -1,7 +1,7 @@
 #
 # spec file for package python-configshell-fb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-configshell-fb
-Version:        1.1.27
+Version:        1.1.28
 Release:        0%{?dist}
 Summary:        A Python library for building configuration shells
 License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://github.com/open-iscsi/configshell-fb
-Source:         %{name}-v%{version}.tar.xz
-Patch1:         Ensure-that-all-output-reaches-the-client-when-daemo.patch
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{_bindir}/env
@@ -65,8 +65,7 @@ rtslib, and configshell, or stick with all non-fb versions, since they are
 no longer strictly compatible.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%patch1 -p1
+%setup -q -n %{name}-%{version}
 
 %build
 %python_build

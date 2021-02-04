@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 30 21:39:26 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Update to version v1.1.28 from v1.1.27 (jre#SLE-17360):
+  * version 1.1.28
+  * Ensure that all output reaches the client when daemonized
+  * Remove Epydoc markup from command messages
+  * Remove epydoc imports and epydoc calls
+  Which removed the need for patch:
+  * Ensure-that-all-output-reaches-the-client-when-daemo.patch
+
+-------------------------------------------------------------------
 Tue Mar 03 17:32:48 UTC 2020 - lduncan@suse.com
 
 - Update to version v1.1.27 from v1.1.26 (jre#SLE-7751):
