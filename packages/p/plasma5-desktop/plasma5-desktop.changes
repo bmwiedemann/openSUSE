@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- signon-plugin-oauth2 is a runtime dep
+
+-------------------------------------------------------------------
 Sat Jan  9 17:17:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add support for qml-autoreqprov

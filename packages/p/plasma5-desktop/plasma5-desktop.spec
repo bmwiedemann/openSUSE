@@ -102,7 +102,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
@@ -148,6 +147,11 @@ Requires:       kactivities5-imports
 Requires:       knewstuff-imports
 # Needed for kcm_users
 Requires:       accountsservice
+# Only when WebEngine is available
+%ifarch %arm aarch64 %ix86 x86_64
+# Needed for the OpenDesktop integration
+Requires:       signon-plugin-oauth2
+%endif
 Conflicts:      kactivities5 < 5.20.0
 Recommends:     plasma5-addons
 Recommends:     %{name}-emojier

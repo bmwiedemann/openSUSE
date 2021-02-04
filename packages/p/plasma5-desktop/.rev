@@ -1322,4 +1322,11 @@
     <comment>Add compatibility with qml-autoreqprov (forwarded request 865265 from Vogtinator)</comment>
     <requestid>865282</requestid>
   </revision>
+  <revision rev="143" vrev="3">
+    <srcmd5>7b26a960eb3e59abd6d147ef691d9f0d</srcmd5>
+    <version>5.20.5</version>
+    <time>1612463348</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency checkin, make ppc buildable</comment>
+  </revision>
 </revisionlist>
