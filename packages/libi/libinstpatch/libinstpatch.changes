@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 29 18:11:08 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 1.1.6
+  * fix an access violation on Windows
+  * getter-functions for SLI have been added
+  * fix a memory corruption when saving the same DLS file several times
+  * fix compilation with MinGW
+
+-------------------------------------------------------------------
 Tue May 26 11:35:13 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to version 1.1.5
