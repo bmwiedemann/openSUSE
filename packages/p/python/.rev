@@ -1436,4 +1436,21 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   Unnecessary dependency.</comment>
     <requestid>860672</requestid>
   </revision>
+  <revision rev="153" vrev="4">
+    <srcmd5>ac3993635528671cbb63f351787a8b56</srcmd5>
+    <version>2.7.18</version>
+    <time>1612466526</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+</comment>
+    <requestid>868217</requestid>
+  </revision>
 </revisionlist>

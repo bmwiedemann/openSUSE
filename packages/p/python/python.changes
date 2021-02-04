@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 25 23:35:49 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+
+-------------------------------------------------------------------
 Tue Jan  5 09:15:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - (bsc#1180125) We really don't Require python-rpm-macros package.

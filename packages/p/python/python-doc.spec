@@ -99,6 +99,9 @@ Patch59:        CVE-2019-9674-zip-bomb.patch
 # PATCH-FIX-UPSTREAM configure_PYTHON_FOR_REGEN.patch bsc#1078326 mcepl@suse.com
 # PYTHON_FOR_REGEN value is set very weird upstream
 Patch60:        configure_PYTHON_FOR_REGEN.patch
+# PATCH-FIX-SLE CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch bsc#1181126 mcepl@suse.com
+# buffer overflow in PyCArg_repr in _ctypes/callproc.c, which may lead to remote code execution
+Patch61:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc
 Provides:       pyth_ps
@@ -166,6 +169,7 @@ Python, and Macintosh Module Reference in PDF format.
 %patch58 -p1
 %patch59 -p1
 %patch60 -p1
+%patch61 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
@@ -194,7 +198,7 @@ mv $PDOCS/docs-pdf $PDOCS/paper-a4
 tar xfj %{SOURCE3} -C $PDOCS
 mv $PDOCS/docs-pdf $PDOCS/paper-letter
 # this is part of main package
-#install -c -m 644 README $PDOCS/README 
+#install -c -m 644 README $PDOCS/README
 for i in Misc/* ; do
   [ -f $i ] && install -c -m 644 $i $PDOCS/Misc/
 done
