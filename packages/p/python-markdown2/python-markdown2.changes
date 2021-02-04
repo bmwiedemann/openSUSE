@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 27 23:10:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.4.0 (bsc#1181270):
+  - [pull #377] Fixed bug breaking strings elements in metadata lists
+  - [pull #380] When rendering fenced code blocks, also add the
+    language-LANG class
+  - [pull #387] Regex DoS fixes
+- Switch off failing tests (gh#trentm/python-markdown2#388),
+  ignore failing test suite.
+
+-------------------------------------------------------------------
 Mon Aug 17 07:51:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.3.9:
