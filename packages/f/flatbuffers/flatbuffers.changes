@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  4 10:38:57 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on Tumbleweed:
+  - Backport patches:
+    * 5938.patch
+    * 6020.patch
+  - Disable LTO
+
+-------------------------------------------------------------------
 Thu Apr 30 07:30:35 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Update to 1.12.0

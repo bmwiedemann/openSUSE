@@ -1,7 +1,7 @@
 #
 # spec file for package flatbuffers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%define _lto_cflags %{nil}
+
 %define   sonum 1
 Name:           flatbuffers
 Version:        1.12.0
@@ -25,6 +27,10 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://google.github.io/flatbuffers/
 Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/google/flatbuffers/pull/5938 but dropped src/idl_gen_cpp.cpp parts
+Patch1:         5938.patch
+# PATCH-FIX-UPSTREAM - https://github.com/google/flatbuffers/pull/6020
+Patch2:         6020.patch
 BuildRequires:  cmake >= 2.8.11.2
 BuildRequires:  gcc-c++
 
