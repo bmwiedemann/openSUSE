@@ -90,4 +90,12 @@ enable user-level storage back-ends.</comment>
     <comment></comment>
     <requestid>760730</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c0274d84c8c63b411fe899158c1d3e26</srcmd5>
+    <version>1.5.3</version>
+    <time>1612466518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.3 from 1.5.2</comment>
+    <requestid>868022</requestid>
+  </revision>
 </revisionlist>

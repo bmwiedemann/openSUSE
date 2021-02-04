@@ -1,7 +1,7 @@
 #
 # spec file for package tcmu-runner
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,12 +35,12 @@
 %bcond_with tcmalloc
 
 Name:           tcmu-runner
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        A userspace daemon that handles the LIO TCM-User backstore
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/agrover/%{name}
+URL:            https://github.com/open-iscsi/%{name}
 Source:         %{name}-%{version}.tar.xz
 Patch1:         %{name}-handler_file-add-libtcmu.patch
 Patch2:         %{name}-remove-handler-path-install-prefix.patch

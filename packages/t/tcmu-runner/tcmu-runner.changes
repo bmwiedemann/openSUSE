@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Jan 30 19:34:44 UTC 2021 - lduncan@suse.com
+
+- Update to version 1.5.3:
+  * tcmur: error if both src/dst_dev are unset after CSCD parsing
+  * tcmur: don't assume two XCOPY CSCDs
+  * tcmur: fail XCOPY requests with inline data
+  * tcmur: fail cross-device XCOPY requests
+  * scsi: minor simplification of inquiry if/else logic
+  * Add supported vpd pages to zbc vpd pages
+  * lock: do not try to acquire the lock for read fops
+  * rbd: remove all the stale blacklist entries when opening devices
+  * tcmu-runner: explicitly release the g_runner_handlers resources
+  * glfs: add init/destroy support to fix memory leak
+  * tcmur: add the init/destroy support in struct tcmur_handler
+  * CMakeList.txt: fix the style and switch tabes to white spaces
+  * worker: do not set thread name in the callback fn
+  * target: convert recovery thread to work helpers
+  * rbd: add report event support
+  * runner: add handler error reporting cb
+  * runner: convert alua code to work helpers
+  * runner: add thread helpers
+  * rbd: fix formatting
+  * tcmur_device: remove unused recovery_thread member
+  * rbd: fix logging when client is blacklisted
+  * glfs: allow to load the device when the sizes disagree
+  * Fix possible cdb printing overflow
+  * libtcmu_log: Set tcmu_logbuf before log thread is created
+  * extra/install_dep.sh: Add support for SUSE
+  * glfs: disable the fencing when it is not support
+  * Simplify tcmu_set_thread_name
+  * extra script: Fix install_dep.sh
+  * logger: add pthread name
+  * tcmu-runner: set a name for each pthread
+  * libtcmu: remove stale fns declaration
+  * glfs: check EOF for read
+  * Add missing libpthread
+  * logger: correct the log message for log dir path
+  * logger: fix posible crash when loging to file
+  * Add tcmu_dev_get_memory_info() and split+rename device_add().
+  * Add support for Debian
+  * glfs: add lock support
+  * alua: make the lock done as INFO message
+
+-------------------------------------------------------------------
 Fri Jan  3 17:12:42 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Fixed i586 compilation complaint in tcmur_cmd_handler.c, adding:
