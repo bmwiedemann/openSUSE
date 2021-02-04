@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 15:51:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add lua_provides macro for default lua naming
+
+-------------------------------------------------------------------
 Sun Apr 12 13:22:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Modify lua_incdir to work even on Fedora/RHEL

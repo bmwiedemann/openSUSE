@@ -17,4 +17,12 @@
 - Install into /usr/lib/ not libexec (forwarded request 793405 from mcepl)</comment>
     <requestid>793406</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0c559d19a6a34154530d045de229a3c6</srcmd5>
+    <version>20170611</version>
+    <time>1612466616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867502</requestid>
+  </revision>
 </revisionlist>
