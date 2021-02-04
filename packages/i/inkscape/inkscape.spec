@@ -1,7 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _version 1.0.1_2020-09-07_3bc2e813f5
+%define _version 1.0.2_2021-01-15_e86c870879
 Name:           inkscape
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -27,8 +27,6 @@ Source:         https://media.inkscape.org/dl/resources/file/%{name}-%{version}.
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
-# PATCH-FIX-UPSTREAM inkscape-include-atomic.patch https://gitlab.com/inkscape/inkscape/-/issues/1798 -- Fix build with Boost 1.74
-Patch0:         inkscape-include-atomic.patch
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
@@ -133,7 +131,6 @@ Inkscape is a vector graphics editor.
 
 %prep
 %setup -q -n %{name}-%{_version}
-%patch0 -p1
 
 %build
 %ifarch %{arm}
@@ -159,6 +156,7 @@ rm %{buildroot}%{_datadir}/inkscape/extensions/setup.{cfg,py} \
    %{buildroot}%{_datadir}/inkscape/extensions/tox.ini        \
    %{buildroot}%{_datadir}/inkscape/extensions/.pylintrc      \
    %{buildroot}%{_datadir}/inkscape/extensions/doxygen-main.dox
+rm -r %{buildroot}%{_datadir}/inkscape/extensions/.pytest_cache
 
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/inkscape/palettes/
 

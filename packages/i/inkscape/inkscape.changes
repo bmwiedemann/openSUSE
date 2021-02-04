@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan 25 12:43:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.2
+  * Zooming by middle mouse button click (pressing scroll wheel) can
+    now be deactivated in Edit → Preferences → Behavior → Steps:
+    Zoom with middle mouse click
+  * Canvas rotation by Ctrl + middle mouse drag or
+    Ctrl + Shift + Scroll can be prevented in two ways:
+    - from View → Canvas Orientation → Lock Rotation
+    - for all new Inkscape windows in Edit → Preferences → Interface:
+      Lock canvas rotation by default 
+  * fixed a long-standing, very annoying bug where, when copying
+    an object to the clipboard while also running certain other
+    programs on Linux desktops
+  * Stroke to Path: Converting an object's stroke to a path
+    no longer makes its clones vanish
+  * Performance: Improved rendering performance when zooming
+    through multiple zoom levels 
+  * CSS: CSS classes that start with a letter that isn't part of
+    the ASCII set are no longer ignored 
+  * User interface: Random actions should no longer cause sudden
+    scaling of the canvas
+  * Arcs from Inkscape files created with versions older than 1.0
+    are no longer rendered as slices
+  * A long-standing issue with the Eraser tool painting red lines
+    0instead of erasing as soon as the user has interacted with
+    a menu or dialog or another user interface element has been fixed
+  * Lots of other minor fixes
+- Drop inkscape-include-atomic.patch
+
+-------------------------------------------------------------------
 Mon Nov  2 16:41:50 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Switch to ninja; probably fixes intermittent build failure
