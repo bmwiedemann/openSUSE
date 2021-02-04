@@ -1,7 +1,7 @@
 #
 # spec file for package usbmuxd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 Name:           usbmuxd
-Version:        1.1.0+git.20200121
+Version:        1.1.1
 Release:        0
 Summary:        A socket daemon to multiplex connections from and to iOS devices
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Libraries
 URL:            https://github.com/libimobiledevice/usbmuxd
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/libimobiledevice/usbmuxd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.1.6
-BuildRequires:  pkgconfig(libplist) >= 1.11
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.3
+BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.3.0
+BuildRequires:  pkgconfig(libplist-2.0) >= 2.2.0
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires(pre):  group(nogroup)

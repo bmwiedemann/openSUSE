@@ -268,4 +268,12 @@ https://bugzilla.novell.com/show_bug.cgi?id=811801#c5 (forwarded request 162236 
 - Do not manually require libusmuxd (boo#1169012)</comment>
     <requestid>792594</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8846b3c913425082e022c16a3d0b432f</srcmd5>
+    <version>1.1.1</version>
+    <time>1612466659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869111</requestid>
+  </revision>
 </revisionlist>
