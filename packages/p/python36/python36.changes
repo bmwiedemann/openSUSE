@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 29 17:22:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+
+-------------------------------------------------------------------
 Wed Jan 27 08:58:25 CET 2021 - Matej Cepl <mcepl@suse.com>
 
 - Provide the newest setuptools wheel (bsc#1176262,

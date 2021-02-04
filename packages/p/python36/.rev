@@ -2925,4 +2925,15 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>867130</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>aa94c4447efed55fb642cc1dc0417ae5</srcmd5>
+    <version>3.6.12</version>
+    <time>1612466498</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+</comment>
+    <requestid>867797</requestid>
+  </revision>
 </revisionlist>

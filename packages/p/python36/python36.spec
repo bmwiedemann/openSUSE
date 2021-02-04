@@ -1,5 +1,5 @@
 #
-# spec file for package python36
+# spec file for package python36-core
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -172,8 +172,11 @@ Patch39:        ignore_pip_deprec_warn.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch40:        sphinx-update-removed-function.patch
 # PATCH-FIX-UPSTREAM CVE-2020-27619-no-eval-http-content.patch bsc#1178009 mcepl@suse.com
-# No longer call eval() on content received via HTTP in the CJK codec tests 
+# No longer call eval() on content received via HTTP in the CJK codec tests
 Patch41:        CVE-2020-27619-no-eval-http-content.patch
+# PATCH-FIX-UPSTREAM CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch bsc#1181126 mcepl@suse.com
+# buffer overflow in PyCArg_repr in _ctypes/callproc.c, which may lead to remote code execution
+Patch42:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
 
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -440,6 +443,7 @@ other applications.
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%patch42 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
