@@ -308,4 +308,17 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
   fixes CVE-2020-15257. bsc#1178969 bsc#1180243</comment>
     <requestid>857815</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f3bd6b02c07c0f007ebb304f0b3747f8</srcmd5>
+    <version>1.4.3</version>
+    <time>1612466571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to handle the docker-runc removal, and drop the -kubic flavour.
+  bsc#1181677 bsc#1181749
+- Update to containerd v1.4.3, which is needed for Docker v20.10.2-ce.
+  bsc#1181594
+- Install the containerd-shim* binaries and stop creating
+  docker-containerd-shim because that isn't used by Docker anymore.</comment>
+    <requestid>869058</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  2 05:33:02 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to handle the docker-runc removal, and drop the -kubic flavour.
+  bsc#1181677 bsc#1181749
+
+-------------------------------------------------------------------
+Fri Jan 29 23:24:30 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.4.3, which is needed for Docker v20.10.2-ce.
+  bsc#1181594
+- Install the containerd-shim* binaries and stop creating
+  docker-containerd-shim because that isn't used by Docker anymore.
+
+-------------------------------------------------------------------
 Mon Dec 21 06:53:15 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.3.9, which is needed for Docker v19.03.14-ce and
