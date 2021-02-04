@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  1 18:09:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.2:
+  - Fixed a memory leak caused by failing SDAM monitor checks on Python 3 (`PYTHON-2433`_).
+  - Fixed a regression that changed the string representation of
+    :exc:`~pymongo.errors.BulkWriteError` (`PYTHON-2438`_).
+  - Fixed a bug that made it impossible to use
+    :meth:`bson.codec_options.CodecOptions.with_options` and
+    :meth:`~bson.json_util.JSONOptions.with_options` on some early versions of
+    Python 3.4 and Python 3.5 due to a bug in the standard library implementation
+    of :meth:`collections.namedtuple._asdict` (`PYTHON-2440`_).
+  - Fixed a bug that resulted in a :exc:`TypeError` exception when a PyOpenSSL
+    socket was configured with a timeout of ``None`` (`PYTHON-2443`_).
+
+-------------------------------------------------------------------
 Thu Nov 26 08:37:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.11.1:
