@@ -1,7 +1,7 @@
 #
 # spec file for package libebur128
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover   1
 Name:           libebur128
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        A library implementing the EBU R128 loudness standard
 License:        MIT
@@ -56,7 +56,7 @@ application that use %{name}.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -65,7 +65,8 @@ make %{?_smp_mflags}
 %postun -n %{name}-%{sover} -p /sbin/ldconfig
 
 %files -n %{name}-%{sover}
-%doc COPYING
+%doc README.md
+%license COPYING
 %{_libdir}/%{name}.so.%{sover}*
 
 %files -n %{name}-devel

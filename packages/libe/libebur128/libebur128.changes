@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  3 20:31:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.2.5:
+ * Various code cleanups, warning fixes and documentation
+   improvements.
+ * Fix issue related to filter state indexing with high channel
+   enums.
+ * Introduce limits for number of channels and maximum supported
+   samplerate to avoid integer overflows.
+ * Fix error return code of `ebur128_set_channel`. The actual
+   behavior is now aligned to the documentation.
+
+-------------------------------------------------------------------
 Mon Feb 26 19:11:35 UTC 2018 - tom.mbrt@googlemail.com
 
 - Update to 1.2.4:
