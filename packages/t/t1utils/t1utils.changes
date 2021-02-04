@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:18:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.41:
+  * t1asm, t1disasm: More security fixes.
+  * t1disasm: More security fixes reported by Jakub Wilk and Niels Thykier.
+
+-------------------------------------------------------------------
 Sat Mar 28 22:12:14 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.39
