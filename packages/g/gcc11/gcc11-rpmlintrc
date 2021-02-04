@@ -1,0 +1,18 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+# gcc/gcc-c++ are devel packages even if not called -devel...
+addFilter ("gcc.*devel-file-in-non-devel-package")
+addFilter ("gcc.*devel-dependency glibc-devel")
+addFilter ("gcc.*devel-dependency libstdc")
+# libstdc++6-devel is the devel package of libstdc++6, no better name exists
+# and we do package static libs and the .so links (but in a gcc versioned
+# directory)
+addFilter ("libstdc.*shlib-policy-missing-lib")
+# We have names lib libgcc_s1-gcc7 for non-default GCCs
+addFilter ("shlib-policy-name-error")
+addFilter ("shlib-legacy-policy-name-error")
+# Packages provide libgcc_s1 = $version and conflict with other providers
+# of libgcc_s1
+addFilter ("conflicts-with-provides")
+

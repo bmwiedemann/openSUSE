@@ -1,0 +1,90 @@
+diff --git a/gcc/gcc.c b/gcc/gcc.c
+index 10bc9881aed..3082a91f9dc 100644
+--- a/gcc/gcc.c
++++ b/gcc/gcc.c
+@@ -319,6 +319,10 @@ static const char *spec_host_machine = DEFAULT_REAL_TARGET_MACHINE;
+ 
+ static char *offload_targets = NULL;
+ 
++/* Set to true if -foffload has not been used and offload_targets
++   is set to the configured in default.  */
++static bool offload_targets_default;
++
+ /* Nonzero if cross-compiling.
+    When -b is used, the value comes from the `specs' file.  */
+ 
+@@ -4711,7 +4715,10 @@ process_command (unsigned int decoded_options_count,
+   /* If the user didn't specify any, default to all configured offload
+      targets.  */
+   if (ENABLE_OFFLOADING && offload_targets == NULL)
+-    handle_foffload_option (OFFLOAD_TARGETS);
++    {
++      handle_foffload_option (OFFLOAD_TARGETS);
++      offload_targets_default = true;
++    }
+ 
+   if (output_file
+       && strcmp (output_file, "-") != 0
+@@ -8367,6 +8374,8 @@ driver::maybe_putenv_OFFLOAD_TARGETS () const
+       obstack_grow (&collect_obstack, offload_targets,
+ 		    strlen (offload_targets) + 1);
+       xputenv (XOBFINISH (&collect_obstack, char *));
++      if (offload_targets_default)
++	  xputenv ("OFFLOAD_TARGET_DEFAULT=1");
+     }
+ 
+   free (offload_targets);
+diff --git a/gcc/lto-wrapper.c b/gcc/lto-wrapper.c
+index 82cfa6bd67e..f5185f9c69f 100644
+--- a/gcc/lto-wrapper.c
++++ b/gcc/lto-wrapper.c
+@@ -52,6 +52,7 @@ along with GCC; see the file COPYING3.  If not see
+ /* Environment variable, used for passing the names of offload targets from GCC
+    driver to lto-wrapper.  */
+ #define OFFLOAD_TARGET_NAMES_ENV	"OFFLOAD_TARGET_NAMES"
++#define OFFLOAD_TARGET_DEFAULT_ENV	"OFFLOAD_TARGET_DEFAULT"
+ 
+ /* By default there is no special suffix for target executables.  */
+ #ifdef TARGET_EXECUTABLE_SUFFIX
+@@ -906,6 +907,12 @@ compile_offload_image (const char *target, const char *compiler_path,
+ 	break;
+       }
+ 
++  if (!compiler && getenv (OFFLOAD_TARGET_DEFAULT_ENV))
++    {
++      free_array_of_ptrs ((void **) paths, n_paths);
++      return NULL;
++    }
++
+   if (!compiler)
+     fatal_error (input_location,
+ 		 "could not find %s in %s (consider using %<-B%>)",
+@@ -990,8 +997,13 @@ compile_images_for_offload_targets (unsigned in_argc, char *in_argv[],
+ 				 compiler_opts, compiler_opt_count,
+ 				 linker_opts, linker_opt_count);
+       if (!offload_names[i])
+-	fatal_error (input_location,
+-		     "problem with building target image for %s", names[i]);
++	continue;
++    }
++
++  if (num_targets == 0)
++    {
++      free (offload_names);
++      offload_names = NULL;
+     }
+ 
+  out:
+diff --git a/libgomp/target.c b/libgomp/target.c
+index 3e292eb8c62..060758bb826 100644
+--- a/libgomp/target.c
++++ b/libgomp/target.c
+@@ -3015,7 +3015,7 @@ gomp_load_plugin_for_device (struct gomp_device_descr *device,
+ 
+   void *plugin_handle = dlopen (plugin_name, RTLD_LAZY);
+   if (!plugin_handle)
+-    goto dl_fail;
++    return 0;
+ 
+   /* Check if all required functions are available in the plugin and store
+      their handlers.  None of the symbols can legitimately be NULL,

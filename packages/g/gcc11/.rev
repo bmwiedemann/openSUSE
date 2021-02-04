@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b8d03a45a9ee566682f24f4f5e03a58</srcmd5>
+    <version>11.0.0+git182924</version>
+    <time>1612454129</time>
+    <user>dimstar_suse</user>
+    <comment>It's the addition of the future GCC 11.1 release.
+The compiler is NOT used by default.</comment>
+    <requestid>864102</requestid>
+  </revision>
+</revisionlist>
