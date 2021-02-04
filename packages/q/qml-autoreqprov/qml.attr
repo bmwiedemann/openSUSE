@@ -1,4 +1,4 @@
 %__qml_requires         %{_rpmconfigdir}/qml.req
 %__qml_path             \\.qml$
-# Exclude everything unless _enable_qml_requires is set
-%__qml_exclude_path     %nil%{?!_enable_qml_requires:\\.qml$}
+# Exclude everything if _disable_qml_requires is set
+%__qml_exclude_path     %nil%{?_disable_qml_requires:\\.qml$}

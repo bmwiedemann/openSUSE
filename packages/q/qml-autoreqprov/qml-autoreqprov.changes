@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 08:54:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Convert the opt-in for qml.req to an opt-out
+
+-------------------------------------------------------------------
 Fri Jan 15 15:40:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add a missing { to fix the relative plugin path case

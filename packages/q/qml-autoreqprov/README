@@ -17,12 +17,11 @@ TLDR for packagers
 
 Packages with system-wide QML modules get Provides like
 `qt5qmlimport(QtQuick.Controls.2) = 15` automatically. Imports in .qml files
-map to RPM requires like `qt5qmlimport(QtQuick.Controls.2) >= 15`, but this is
-currently opt-in and has to be enabled with `%global %_enable_qml_requires 1`
-in .spec files. After adding that, it's important to check that all
-dependendencies are fulfilled, as in some cases a needed `qmlimport` Provides
-is missing. See the "Internal and private exports" section for how to deal with
-that.
+map to RPM requires like `qt5qmlimport(QtQuick.Controls.2) >= 15`. This can be
+disabled with `%global %_disable_qml_requires 1` in .spec files. It's important
+to check that all dependendencies are fulfilled, as in some cases a needed
+`qmlimport` Provides is missing. See the "Internal and private exports" section
+for how to deal with that.
 
 How the QML engine imports modules
 ----------------------------------
@@ -74,12 +73,6 @@ can be overwritten by setting a variable in the .spec file (unfortunately not
 possible per subpackage):
 
 `%global %__qml_requires_opts --qtver 5`
-
-To avoid that missing qmlimport provides (see "Internal and private exports")
-make previously working packages unresolvable, generation of requires is opt-in
-and needs to be enabled by defining `%_enable_qml_requires`:
-
-`%global %_enable_qml_requires 1`
 
 Currently, only .qml files directly part of the package are handled, so if
 those are part of a resources file embedded into an executable or library, they
