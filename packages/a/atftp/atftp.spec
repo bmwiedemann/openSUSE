@@ -1,7 +1,7 @@
 #
 # spec file for package atftp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,14 +52,13 @@ BuildRequires:  pcre-devel
 BuildRequires:  readline-devel
 BuildRequires:  tcpd-devel
 Requires(pre):  %fillup_prereq
-Requires(pre):  pwdutils
+Requires(pre):  user(tftp) group(tftp)
 Recommends:     logrotate
 Conflicts:      tftp
 Provides:       tftp(client)
 Provides:       tftp(server)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  systemd-rpm-macros
-%{?systemd_requires}
 
 %description
 atftp stands for Advanced Trivial File Transfer Protocol. It is called
@@ -98,13 +97,6 @@ install -d -m 0755 %{buildroot}/srv/tftpboot
 install -d -m 0750 %{buildroot}%{_localstatedir}/log/atftpd
 
 %pre
-# This group/user is shared with tftp, so please
-# keep this in sync with tftp.spec
-# add group
-%{_sbindir}/groupadd -r tftp 2>/dev/null || :
-# add user
-%{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
-  -r -s /bin/false tftp 2>/dev/null || :
 # fix sysconfig to get new defaults on Update
 if [ -f %{_sysconfdir}/sysconfig/atftpd ]; then
   sed -i -e "s@^\(ATFTPD_OPTIONS=\"--daemon \"\)@#\1@" %{_sysconfdir}/sysconfig/atftpd

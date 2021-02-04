@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 21 08:30:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use system wide tftp user/group, don't create them again
+
+-------------------------------------------------------------------
 Wed Oct 21 18:19:51 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1176437, CVE-2020-6097]
