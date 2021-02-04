@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Feb  3 22:22:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  * Fixed up secure negotiation logic when connecting to older
+    SMB dialects.
+  * Will attempt to perform secure negotiation even on older
+    dialects that may not implement it properly.
+  * Added `ClientConfig` option `require_secure_negotiate` to
+    globally turn off secure negotiation if the client wishes.
+  * Fix explicit `ntlm` or `kerberos` authentication when the
+    server response with the initial SPNEGO mech list token.
+
+-------------------------------------------------------------------
+Thu Jan 28 21:52:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.0
+  * Changed initial credit request from 256 to 64 when creating
+    the SMB session.
+    + This is done to avoid overloading the SMB server.
+    + If smbclient requires more credits to perform an operation
+      it will request it automatically.
+  * Improve credit handling when reading and writing large amounts
+    of data to reduce the number of requests being made.
+  * Fixed up write() in smbclient.open_file() to be able to write
+    bytes greater than the max_write_size.
+  * Fixed issue when receiving an unknown NtStatus error code from
+    the server.
+  * Added PipeBusy exception for STATUS_PIPE_NOT_AVAILABLE
+    0xC00000AD error responses.
+  * Fix credit granting calculation when receiving a compound
+    response.
+    + Original logic granted len(responses) - 1 credits than what
+      the server actually given causing errors when the client ran
+      out of credits without it knowing.
+  * Added auth_protocol to Session, ClientConfig, and
+    register_session() to control what authentication protocol is
+    used.
+    + This can be negotiate (default), kerberos, or ntlm where
+      negotiate selects kerberos or ntlm depending on what's
+      available.
+
+-------------------------------------------------------------------
 Sun Oct 25 15:55:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.0
