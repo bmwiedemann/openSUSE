@@ -70,4 +70,14 @@
     <comment></comment>
     <requestid>862892</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a32ddebddecb2216fae962dbb61068eb</srcmd5>
+    <version>1.4.8.1</version>
+    <time>1612466598</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.8.1:
+  * Allow ultra-fast levels from -100 to -1
+  * Update bundled zstd library to 1.4.8 release</comment>
+    <requestid>868481</requestid>
+  </revision>
 </revisionlist>
