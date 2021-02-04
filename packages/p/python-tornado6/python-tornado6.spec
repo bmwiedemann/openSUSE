@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,26 +19,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-tornado6
-Version:        6.0.4
+Version:        6.1
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
 URL:            https://www.tornadoweb.org
 Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado-%{version}.tar.gz
-Patch1:         tornado-testsuite_timeout.patch
-Patch2:         skip-failing-tests.patch
-Patch3:         ignore-resourcewarning-doctests.patch
-Patch4:         python-tornado6-httpclient-test.patch
+# PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
+Patch0:         ignore-resourcewarning-doctests.patch
 BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pycares}
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module simplejson}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-simplejson
 Recommends:     python-Twisted
 Recommends:     python-pycares
 Recommends:     python-pycurl
@@ -67,10 +63,9 @@ FriendFeed servers. (For more information on scaling servers to support
 thousands of clients, see The C10K problem.)
 
 %prep
-%setup -q -n tornado-%{version}
+%autosetup -p1 -n tornado-%{version}
 # Fix non-executable script rpmlint issue:
-find demos tornado -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
-%autopatch -p1
+find tornado -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
 
 %pre
 # remove egg-info _file_, being replaced by an egg-info directory
@@ -83,9 +78,17 @@ fi
 
 %install
 %python_install
-%fdupes demos
-%python_expand rm -r %{buildroot}%{$python_sitearch}/tornado/test
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand #
+# do not install tests
+rm -r %{buildroot}%{$python_sitearch}/tornado/test
+# deduplicate files in python platlibdir
+%fdupes %{buildroot}%{$python_sitearch}
+# install demos into docdir and deduplicate
+mkdir -p %{buildroot}%{_docdir}/$python-tornado6/
+cp -r demos %{buildroot}%{_docdir}/$python-tornado6/
+find %{buildroot}%{_docdir}/$python-tornado6 -name "*.py" -exec sed -i "1{s|^#!.*$|%{_bindir}/$python|}" {} \;
+%fdupes %{buildroot}%{_docdir}/$python-tornado6
+}
 
 %check
 export ASYNC_TEST_TIMEOUT=30
@@ -95,7 +98,7 @@ export TRAVIS=1
 
 %files %{python_files}
 %license LICENSE
-%doc demos
+%doc %{_docdir}/%{python_prefix}-tornado6
 %{python_sitearch}/tornado
 %{python_sitearch}/tornado-%{version}-py*.egg-info
 
