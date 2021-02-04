@@ -1,7 +1,7 @@
 #
 # spec file for package python-boltons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-boltons
-Version:        20.0.0
+Version:        20.2.1
 Release:        0
 Summary:        The "Boltons" utility package for Python
 License:        BSD-3-Clause
@@ -52,7 +52,7 @@ http://boltons.readthedocs.org.
 
 %files %{python_files}
 %license LICENSE
-%doc README.md
+%doc README.md CHANGELOG.md docs/*.rst
 %{python_sitelib}/*
 
 %changelog

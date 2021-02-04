@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jan 30 07:06:02 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Include CHANGELOG.md & docs/*.rst
+- Update to v20.2.1
+  * Improve import time of iterutils
+  * Add custom repr parameter to funcutils.format_invocation
+- from v20.2.0
+  * Added iterutils.lstrip, iterutils.rstrip, iterutils.strip
+  * More robust and complete strutils.strip_ansi
+  * Add iterutils.untyped_sorted
+  * Fixes to IndexedSet rsub and index methods
+  * Expose text mode flag in fileutils.AtomicSaver
+  * Add strutils.int_list_complement and
+    strutils.int_list_to_int_tuples to the int_list suite
+  * Docs: intersphinx links finally point to Python 3 docs
+- from v20.1.0
+  * Add funcutils.update_wrapper, used to make a wrapper function
+    reflect various aspects of the wrapped function's API
+  * Fix FunctionBuilder handling of functions without __module__
+  * Add partial support to FunctionBuilder
+  * Fix NetstringSocket's handling of arguments in read_ns
+  * Fix IndexedSet's index() method to account for removals
+  * Add seekable, readable, and writable to SpooledIOBase
+  * Add a special case to singularize
+  * Fix various warnings for Py3.9
+
+-------------------------------------------------------------------
 Wed Jan 22 15:50:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 20.0.0
