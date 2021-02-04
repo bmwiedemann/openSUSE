@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 30 05:58:22 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.3.4:
+  * Fix WebAgg initialization.
+  * Fix parsing QT_API setting with mixed case.
+  * Fix build with link-time optimization disabled in environment.
+  * Fix test compatibility with NumPy 1.20.
+  * Fix test compatibility with pytest 6.2.
+
+-------------------------------------------------------------------
 Thu Jan 14 20:19:32 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v3.3.3

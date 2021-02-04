@@ -29,7 +29,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -60,6 +60,7 @@ Requires:       python-numpy >= 1.7.1
 Requires:       python-pyparsing > 2.2.1
 Requires:       python-python-dateutil >= 2.7
 Requires:       python-pytz
+Recommends:     (%{python_flavor}-matplotlib-tk if tk)
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
@@ -110,7 +111,6 @@ BuildRequires:  tex(type1cm.sty)
 BuildRequires:  tex(ucs.sty)
 # /SECTION
 %endif
-Recommends:     (%{python_flavor}-matplotlib-tk if tk)
 %python_subpackages
 
 %description
