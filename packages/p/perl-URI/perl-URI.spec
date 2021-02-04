@@ -18,7 +18,7 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.06
+Version:        5.07
 Release:        0
 Summary:        Uniform Resource Identifiers (absolute and relative)
 License:        Artistic-1.0 OR GPL-1.0-or-later
