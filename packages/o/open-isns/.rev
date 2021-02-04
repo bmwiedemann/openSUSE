@@ -123,4 +123,12 @@ Creates two RPMs: open-isns, and open-isns-devel</comment>
     <comment></comment>
     <requestid>854649</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f9cee412d212df5340339e7256675ddc</srcmd5>
+    <version>0.101</version>
+    <time>1612466562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868452</requestid>
+  </revision>
 </revisionlist>

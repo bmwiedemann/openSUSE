@@ -4,8 +4,8 @@
     <param name="url">https://github.com/open-iscsi/open-isns.git</param>
     <param name="subdir"></param>
     <param name="filename">open-isns</param>
-    <param name="versionformat">0.100</param>
-    <param name="revision">v0.100</param>
+    <param name="versionformat">0.101</param>
+    <param name="revision">v0.101</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

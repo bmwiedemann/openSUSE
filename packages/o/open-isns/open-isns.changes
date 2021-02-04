@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 01 18:23:30 UTC 2021 - lduncan@suse.com
+
+- Update to version 0.101:
+  * Updated ChangeLog for version v0.101
+  * Preparing for version 0.101
+  * Fix parsing of GetNextRsp
+  * Added TODO to test "isnsd --init"
+  * Add man page for isnssetup.
+  * Fix broken server authentication initialization.
+  * Update version string to "0.100".
+  * Added a TODO: 'make depend' not worrking
+  * libisns: remove sighold and sigrelse
+  * fix compilation without deprecated OpenSSL APIs
+  * socket.c: include poll.h instead of sys/poll.h for POSIX compatibility
+  * Fix 586 compile issue and remove -Werror
+  * Do not ignore write() return value.
+  * Fix compiler issue when not in security mode
+  * Ignore common build files
+  This removed the need for open-isns-updates.diff.bz2 (for now), since
+  those commits are in version v0.101.
+
+-------------------------------------------------------------------
 Thu Dec 10 18:10:11 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Removed isns.xml, as firewalld already supplies this file.
