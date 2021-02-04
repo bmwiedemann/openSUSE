@@ -33,6 +33,9 @@ Patch3:         0003-Cleanup-and-compiler-issues-only-no-functional-chang.patch
 Patch4:         0004-Adjust-SUSE-paths.patch
 Patch5:         0005-HPM-x-compatibility-message-is-DEBUG-only.patch
 Patch6:         0006-Make-IANA-PEN-download-configurable-fix-uninitalized.patch
+Patch7:         0007-bsc#1175328-check-for-correct-fd.patch
+Patch8:         0008-bsc#1181063-dont-parametrize-pidfile-name.patch
+Patch9:         lanplus-don-t-retry-pre-session-Get-cipher-suites.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel

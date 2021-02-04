@@ -1,0 +1,39 @@
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/src/ipmievd.c
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/src/ipmievd.c
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/src/ipmievd.c
+@@ -702,8 +702,8 @@ ipmievd_main(struct ipmi_event_intf * ei
+ 	struct sigaction act;
+ 	mode_t oldumask;
+ 
+-	memset(pidfile, 0, 64);
+-	sprintf(pidfile, "%s%d", DEFAULT_PIDFILE, eintf->intf->devnum);
++	memset(pidfile, 0, sizeof(pidfile));
++	strncpy(pidfile, DEFAULT_PIDFILE, sizeof(pidfile)-1);
+ 
+ 	for (i = 0; i < argc; i++) {
+ 		if (strcasecmp(argv[i], "help") == 0) {
+Index: ipmitool-1.8.18+git20200916.1245aaa387dc/doc/ipmievd.8.in
+===================================================================
+--- ipmitool-1.8.18+git20200916.1245aaa387dc.orig/doc/ipmievd.8.in
++++ ipmitool-1.8.18+git20200916.1245aaa387dc/doc/ipmievd.8.in
+@@ -174,8 +174,7 @@ Do NOT become a daemon, instead log all
+ .TP
+ \fIpidfile\fP=<\fBfilename\fR>
+ Save process ID to this file when in daemon mode.  Defaults to
+-/var/run/ipmievd.pid\fIN\fP (where \fIN\fP is the ipmi device
+-number -- defaults to 0).
++/var/run/ipmievd.pid.
+ .RE
+ 
+ .TP 
+@@ -197,8 +196,7 @@ Do NOT become a daemon, instead log all
+ .TP
+ \fIpidfile\fP=<\fBfilename\fR>
+ Save process ID to this file when in daemon mode.  Defaults to
+-/var/run/ipmievd.pid\fIN\fP (where \fIN\fP is the ipmi device
+-number -- defaults to 0).
++/var/run/ipmievd.pid.
+ .TP 
+ \fItimeout\fP=<\fBseconds\fR>
+ Time between checks for SEL polling method.  Default is 10 seconds.

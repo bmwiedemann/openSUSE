@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb  3 11:08:48 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Fixes (bsc#1179133) lanplus: hanging on getting cipher suites for 10 seconds
+A lanplus-don-t-retry-pre-session-Get-cipher-suites.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 13:53:14 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Do not append the device number to the PIDFILE pathname
+  as this will confuse systemd.
+  [bsc#1181063, 0008-bsc#1181063-dont-parametrize-pidfile-name.patch]
+
+-------------------------------------------------------------------
+Thu Jan 28 09:10:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- When really starting the daemon, in lib/helper.c::ipmi_start_daemon()
+  stdin/stdout/stderr are redirected to /dev/null and this is checked
+  but the check for stderr tests for STDOUT_FILENO. This is, most
+  likely, a copy-paste error.
+  [bsc#1175328, 0007-bsc#1175328-check-for-correct-fd.patch]
+
+-------------------------------------------------------------------
 Wed Sep 23 07:49:45 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - clean up patches
