@@ -1,0 +1,50 @@
+From 1c45cea02df7f947b4296c1dcaefa1024235ef10 Mon Sep 17 00:00:00 2001
+From: Bhupesh Sharma <bhsharma@redhat.com>
+Date: Tue, 14 Jul 2020 01:14:49 +0530
+Subject: [PATCH] arm64: Change tcr_el1_t1sz variable name to TCR_EL1_T1SZ
+
+References: bsc#1169099
+Upstream: 7.2.9
+Git-commit: 1c45cea02df7f947b4296c1dcaefa1024235ef10
+
+Since linux kernel commit bbdbc11804ff ("arm64/crash_core: Export
+TCR_EL1.T1SZ in vmcoreinfo") [available in linux-next now], the name
+of tcr_el1_t1sz vmcoreinfo variable has been changed to TCR_EL1_T1SZ.
+
+Make a similar change in crash-utility.
+
+Signed-off-by: Bhupesh Sharma <bhsharma@redhat.com>
+---
+ arm64.c   | 2 +-
+ netdump.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arm64.c b/arm64.c
+index 653225cd8cd6..fdf77bd5e0c1 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -3922,7 +3922,7 @@ arm64_calc_VA_BITS(void)
+ 		} else if (ACTIVE())
+ 			error(FATAL, "cannot determine VA_BITS_ACTUAL: please use /proc/kcore\n");
+ 		else {
+-			if ((string = pc->read_vmcoreinfo("NUMBER(tcr_el1_t1sz)"))) {
++			if ((string = pc->read_vmcoreinfo("NUMBER(TCR_EL1_T1SZ)"))) {
+ 				/* See ARMv8 ARM for the description of
+ 				 * TCR_EL1.T1SZ and how it can be used
+ 				 * to calculate the vabits_actual
+diff --git a/netdump.c b/netdump.c
+index 406416af36bf..0054d6ab35b4 100644
+--- a/netdump.c
++++ b/netdump.c
+@@ -1887,7 +1887,7 @@ vmcoreinfo_read_string(const char *key)
+ 			sprintf(value, "%ld", nd->arch_data2 & 0xffffffff);
+ 			return value;
+ 		}
+-		if (STREQ(key, "NUMBER(tcr_el1_t1sz)") && nd->arch_data2) {
++		if (STREQ(key, "NUMBER(TCR_EL1_T1SZ)") && nd->arch_data2) {
+ 			value = calloc(VADDR_PRLEN+1, sizeof(char));
+ 			sprintf(value, "%lld", ((ulonglong)nd->arch_data2 >> 32) & 0xffffffff);
+ 			pc->read_vmcoreinfo = no_vmcoreinfo;
+-- 
+2.26.2
+

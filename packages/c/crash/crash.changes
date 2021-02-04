@@ -5,6 +5,19 @@ Thu Jan 28 11:49:06 UTC 2021 - Jiri Bohac <jbohac@suse.com>
   (bsc#1177050)
 
 -------------------------------------------------------------------
+Mon Jan 18 10:30:03 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Update arm64 support (boo#1169099).
+  crash-Fix-to-allow-the-translation-of-ARM64-FIXMAP-address.patch
+  crash-Introduce-a-new-ARM64-machdep-vabits_actual-value-co.patch
+  crash-Prepare-for-the-introduction-of-ARM64-8.3-Pointer-Au.patch
+  crash-Several-fixes-for-ARM64-kernels.patch
+  crash-arm64-Change-tcr_el1_t1sz-variable-name-to-TCR_EL1_T.patch
+  crash-xendump-fix-failure-to-match-arm-aarch64-elf-format-.patch
+  crash-arm64-update-mapping-symbol-filter-in-arm64_verify_s.patch
+  crash-Fix-segmentation-fault-when-ikconfig-passed-nonstand.patch
+
+-------------------------------------------------------------------
 Wed Jan  6 12:00:52 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix "kmem -i" option on Linux 5.9-rc1 and later kernels (bsc#1179970 ltc#188981).

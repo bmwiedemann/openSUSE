@@ -89,6 +89,22 @@ Patch32:        %{name}-Fix-kmem-i-option-on-Linux-5.9-rc1-and-later-kernels.pat
 Patch33:        %{name}-task.c-avoid-unnecessary-cpu-cycles-in-stkptr_to_tas.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/fdb41f0b6fa42a692e5fa39da3801f6ca18e8a6b.patch
 Patch34:        %{name}-xen-increase-__physical_mask_shift_xen-to-52.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/49ed67d2c72e3f1a18ca5ce2166c6f5091ed61b0.patch
+Patch35:        %{name}-Fix-to-allow-the-translation-of-ARM64-FIXMAP-address.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/d379b47f04dc77ea1989609aca9bfd8d37b7b639.patch
+Patch36:        %{name}-Introduce-a-new-ARM64-machdep-vabits_actual-value-co.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/41d61189d60e0fdd6509b96dc8160795263f3229.patch
+Patch37:        %{name}-Prepare-for-the-introduction-of-ARM64-8.3-Pointer-Au.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/339ddcd6f26fbd3519f50e96689645da867f6e0f.patch
+Patch38:        %{name}-Several-fixes-for-ARM64-kernels.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/1c45cea02df7f947b4296c1dcaefa1024235ef10.patch
+Patch39:        %{name}-arm64-Change-tcr_el1_t1sz-variable-name-to-TCR_EL1_T.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/4d2e607af5d758f9ae42864cb6b26af49e9f5b1d.patch
+Patch40:        %{name}-xendump-fix-failure-to-match-arm-aarch64-elf-format-.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/9080711bd1c0645c272e74c25724ad2969d64674.patch
+Patch41:        %{name}-arm64-update-mapping-symbol-filter-in-arm64_verify_s.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/5a0488049917ba2790d59108f3def16825528974.patch
+Patch42:        %{name}-Fix-segmentation-fault-when-ikconfig-passed-nonstand.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/e770735200c02ac2414c394ea6ec5f7f033efe64.patch
 Patch91:        %{name}-gdb-fix-aarch64.patch
@@ -292,6 +308,14 @@ Authors:
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif

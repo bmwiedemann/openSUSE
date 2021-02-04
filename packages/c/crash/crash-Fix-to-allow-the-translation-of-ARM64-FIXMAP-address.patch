@@ -1,0 +1,34 @@
+From 49ed67d2c72e3f1a18ca5ce2166c6f5091ed61b0 Mon Sep 17 00:00:00 2001
+From: Dave Anderson <anderson@redhat.com>
+Date: Mon, 24 Feb 2020 11:53:04 -0500
+Subject: [PATCH] Fix to allow the translation of ARM64 FIXMAP addresses
+ located in the virtual memory region between the end of the vmalloc region
+ and the beginning of the vmemmap region.  Without the patch, reads of virtual
+ addresses within that region are not recognized properly and will fail.
+ (zhaoqianli@xiaomi.com)
+
+References: bsc#1169099
+Upstream: 7.2.9
+Git-commit: 49ed67d2c72e3f1a18ca5ce2166c6f5091ed61b0
+
+---
+ arm64.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arm64.c b/arm64.c
+index 7662d71f2e6d..6abcfe053e90 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -3839,7 +3839,8 @@ arm64_IS_VMALLOC_ADDR(ulong vaddr)
+ 
+         return ((vaddr >= ms->vmalloc_start_addr && vaddr <= ms->vmalloc_end) ||
+                 ((machdep->flags & VMEMMAP) &&
+-                 (vaddr >= ms->vmemmap_vaddr && vaddr <= ms->vmemmap_end)) ||
++                ((vaddr >= ms->vmemmap_vaddr && vaddr <= ms->vmemmap_end) ||
++                (vaddr >= ms->vmalloc_end && vaddr <= ms->vmemmap_vaddr))) ||
+                 (vaddr >= ms->modules_vaddr && vaddr <= ms->modules_end));
+ }
+ 
+-- 
+2.26.2
+

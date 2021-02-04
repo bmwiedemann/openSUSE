@@ -1,0 +1,85 @@
+From d379b47f04dc77ea1989609aca9bfd8d37b7b639 Mon Sep 17 00:00:00 2001
+From: Dave Anderson <anderson@redhat.com>
+Date: Thu, 2 Apr 2020 15:09:42 -0400
+Subject: [PATCH] Introduce a new ARM64 "--machdep vabits_actual=<value>"
+ command line option for Linux 5.4 and later dumpfiles, which require the
+ kernel's dynamically-determined "vabits_actual" value for virtual address
+ translation.  Without the patch, the crash session fails during
+ initialization with the error message "crash: cannot determine
+ VA_BITS_ACTUAL".  This option will become unnecessary when the proposed
+ TCR_EL1.T1SZ vmcoreinfo entry entry is incorporated into the kernel.
+ (anderson@redhat.com)
+
+References: bsc#1169099
+Upstream: 7.2.9
+Git-commit: d379b47f04dc77ea1989609aca9bfd8d37b7b639
+
+---
+ arm64.c | 11 +++++++++++
+ crash.8 |  1 +
+ help.c  |  1 +
+ 3 files changed, 13 insertions(+)
+
+diff --git a/arm64.c b/arm64.c
+index 6abcfe053e90..09b1b766229e 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -747,6 +747,8 @@ arm64_parse_machdep_arg_l(char *argstring, char *param, ulong *value)
+ 
+ 		if (STRNEQ(argstring, "max_physmem_bits")) {
+ 			*value = dtol(p, flags, &err);
++		} else if (STRNEQ(argstring, "vabits_actual")) {
++			*value = dtol(p, flags, &err);
+ 		} else if (megabytes) {
+ 			*value = dtol(p, flags, &err);
+ 			if (!err)
+@@ -816,6 +818,12 @@ arm64_parse_cmdline_args(void)
+ 					"setting max_physmem_bits to: %ld\n\n",
+ 					machdep->max_physmem_bits);
+ 				continue;
++			} else if (arm64_parse_machdep_arg_l(arglist[i], "vabits_actual",
++			        &machdep->machspec->VA_BITS_ACTUAL)) {
++				error(NOTE,
++					"setting vabits_actual to: %ld\n\n",
++					machdep->machspec->VA_BITS_ACTUAL);
++				continue;
+ 			}
+ 
+ 			error(WARNING, "ignoring --machdep option: %s\n",
+@@ -3890,6 +3898,9 @@ arm64_calc_VA_BITS(void)
+ 				machdep->machspec->VA_BITS_ACTUAL = value;
+ 				machdep->machspec->VA_BITS = value;
+ 				machdep->machspec->VA_START = _VA_START(machdep->machspec->VA_BITS_ACTUAL);
++			} else if (machdep->machspec->VA_BITS_ACTUAL) {
++				machdep->machspec->VA_BITS = machdep->machspec->VA_BITS_ACTUAL;
++				machdep->machspec->VA_START = _VA_START(machdep->machspec->VA_BITS_ACTUAL);
+ 			} else
+ 				error(FATAL, "cannot determine VA_BITS_ACTUAL\n");
+ 		}
+diff --git a/crash.8 b/crash.8
+index f9de36d87f68..994a2e05b8ab 100644
+--- a/crash.8
++++ b/crash.8
+@@ -280,6 +280,7 @@ ARM64:
+   phys_offset=<physical-address>
+   kimage_voffset=<kimage_voffset-value>
+   max_physmem_bits=<value>
++  vabits_actual=<value>
+ X86:
+   page_offset=<CONFIG_PAGE_OFFSET-value>
+ .fi
+diff --git a/help.c b/help.c
+index eda5ce97b612..c443cad74bc1 100644
+--- a/help.c
++++ b/help.c
+@@ -181,6 +181,7 @@ char *program_usage_info[] = {
+     "      phys_offset=<physical-address>",
+     "      kimage_voffset=<kimage_voffset-value>",
+     "      max_physmem_bits=<value>",
++    "      vabits_actual=<value>",
+     "    X86:",
+     "      page_offset=<CONFIG_PAGE_OFFSET-value>",
+     "",
+-- 
+2.26.2
+

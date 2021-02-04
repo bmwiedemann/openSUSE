@@ -1,0 +1,40 @@
+From 4d2e607af5d758f9ae42864cb6b26af49e9f5b1d Mon Sep 17 00:00:00 2001
+From: Goodbach <goodbach@gmail.com>
+Date: Wed, 12 Aug 2020 11:22:29 +0800
+Subject: [PATCH] xendump: fix failure to match arm/aarch64 elf format of
+ xendump file
+
+References: bsc#1169099
+Upstream: 7.2.9
+Git-commit: 4d2e607af5d758f9ae42864cb6b26af49e9f5b1d
+
+Resolves: https://github.com/crash-utility/crash/pull/61
+Signed-off-by: Goodbach <goodbach@gmail.com>
+---
+ xendump.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/xendump.c b/xendump.c
+index 70cf261abcbd..a81817d0250b 100644
+--- a/xendump.c
++++ b/xendump.c
+@@ -2055,6 +2055,16 @@ xc_core_elf_verify(char *file, char *buf)
+ 				goto bailout;
+ 			break;
+ 
++		case EM_ARM:
++			if (machine_type_mismatch(file, "ARM", NULL, 0))
++				goto bailout;
++			break;
++
++		case EM_AARCH64:
++			if (machine_type_mismatch(file, "ARM64", NULL, 0))
++				goto bailout;
++			break;
++
+ 		default:
+ 			if (machine_type_mismatch(file, "(unknown)", NULL, 0))
+ 				goto bailout;
+-- 
+2.26.2
+

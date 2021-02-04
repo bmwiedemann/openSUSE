@@ -5,12 +5,15 @@ Subject: [PATCH] Fix for an ARM64 gcc-10 compilation error.  Without the
  patch, the build of the embedded gdb module fails with an error message that
  indicates "multiple definition of 'tdesc_aarch64'". (anderson@redhat.com)
 
+Upstream: 7.2.9
+Git-commit: e770735200c02ac2414c394ea6ec5f7f033efe64
+
 ---
  gdb-7.6.patch | 30 ++++++++++++++++++++++++++++++
  1 file changed, 30 insertions(+)
 
 diff --git a/gdb-7.6.patch b/gdb-7.6.patch
-index f6c311d..f64b55f 100644
+index f6c311dd866c..f64b55fe547a 100644
 --- a/gdb-7.6.patch
 +++ b/gdb-7.6.patch
 @@ -2471,3 +2471,33 @@ diff -up gdb-7.6/opcodes/configure.orig gdb-7.6/opcodes/configure
@@ -47,3 +50,6 @@ index f6c311d..f64b55f 100644
 + #include "features/aarch64.c"
 + #include "features/aarch64-without-fpu.c"
 + 
+-- 
+2.26.2
+
