@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 27 21:20:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.166
+  * layers: Add VK_KHR_shader_clock support
+
+-------------------------------------------------------------------
 Mon Jan 18 15:42:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.165
