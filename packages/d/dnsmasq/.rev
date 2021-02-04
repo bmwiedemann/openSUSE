@@ -753,4 +753,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     to all the clients who asked. Refer: CVE-2020-25686.</comment>
     <requestid>864301</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>e12f6be3f26ae0a6b5d2064ada279514</srcmd5>
+    <version>2.83</version>
+    <time>1612466626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867893</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 16:24:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix building with lua54
+
+-------------------------------------------------------------------
 Tue Jan 19 12:24:02 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Update to 2.83:

@@ -86,7 +86,7 @@ sed -i -e 's|\(PREFIX *= *\)%{_prefix}/local|\1/usr|;
 	Makefile
 
 # use lua5.3 instead of lua5.2
-sed -i -e 's|lua5.2|lua5.3|' Makefile
+sed -i -e 's|lua5.2|lua%{lua_version}|' Makefile
 
 # SED-FIX-UPSTREAM -- Fix man page
 sed -i -e 's|The default is "dip",|The default is "nogroup",|' \
