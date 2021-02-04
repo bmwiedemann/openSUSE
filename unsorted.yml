@@ -8071,6 +8071,7 @@ unsorted:
   - kubevirt-virtctl: [x86_64] 
   - kubic-locale-archive 
   - kubic-pause 
+  - kubie 
   - kucero 
   - kuiviewer 
   - kuiviewer-lang 
@@ -10672,9 +10673,6 @@ unsorted:
   - libgomp1-gcc9 
   - libgomp1-gcc9-32bit: [x86_64] 
   - libgoocanvas-2_0-9 
-  - libgoocanvas3 
-  - libgoocanvas3-devel 
-  - libgoocanvas3-lang 
   - libgoocanvasmm-2_0-6 
   - libgoocanvasmm-devel 
   - libgooglepinyin-devel 
@@ -18383,6 +18381,7 @@ unsorted:
   - perl-Config-Grammar 
   - perl-Config-INI 
   - perl-Config-INI-Reader-Ordered 
+  - perl-Config-Identity 
   - perl-Config-IniFiles 
   - perl-Config-MVP 
   - perl-Config-MVP-Reader-INI 
@@ -18666,6 +18665,7 @@ unsorted:
   - perl-HTML-FormHandler 
   - perl-HTML-Format 
   - perl-HTML-FormatText-WithLinks 
+  - perl-HTML-Restrict 
   - perl-HTML-RewriteAttributes 
   - perl-HTML-Scrubber 
   - perl-HTML-SimpleParse 
@@ -18677,15 +18677,19 @@ unsorted:
   - perl-HTML-Tree 
   - perl-HTTP-Body 
   - perl-HTTP-BrowserDetect 
+  - perl-HTTP-CookieJar 
+  - perl-HTTP-CookieMonster 
   - perl-HTTP-DAV 
   - perl-HTTP-Entity-Parser 
   - perl-HTTP-Headers-ActionPack 
   - perl-HTTP-Headers-Fast 
   - perl-HTTP-Lite 
   - perl-HTTP-MultiPartParser 
+  - perl-HTTP-Parser 
   - perl-HTTP-Parser-XS 
   - perl-HTTP-Request-AsCGI 
   - perl-HTTP-Server-Simple 
+  - perl-HTTP-Server-Simple-PSGI 
   - perl-HTTP-Thin 
   - perl-HTTP-Tiny 
   - perl-HTTP-Tinyish 
@@ -18738,6 +18742,7 @@ unsorted:
   - perl-JSON-RPC 
   - perl-JSON-Validator 
   - perl-JavaScript-Minifier-XS 
+  - perl-LWP-ConsoleLogger 
   - perl-LWP-Online 
   - perl-Lexical-Persistence 
   - perl-Lexical-SealRequireHints 
@@ -18874,6 +18879,7 @@ unsorted:
   - perl-MooX-HandlesVia 
   - perl-MooX-Locale-Passthrough 
   - perl-MooX-Options 
+  - perl-MooX-StrictConstructor 
   - perl-MooX-Traits 
   - perl-MooX-Types-MooseLike 
   - perl-MooX-Types-MooseLike-Numeric 
@@ -19017,6 +19023,7 @@ unsorted:
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-CPAN-Packages 
+  - perl-Parse-MIME 
   - perl-Parse-Method-Signatures 
   - perl-Parse-PMFile 
   - perl-Parse-Win32Registry 
@@ -19051,6 +19058,7 @@ unsorted:
   - perl-Plack-Middleware-LogErrors 
   - perl-Plack-Middleware-RemoveRedundantBody 
   - perl-Plack-Middleware-Session 
+  - perl-Plack-Test-Agent 
   - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
@@ -19158,6 +19166,7 @@ unsorted:
   - perl-String-RewritePrefix 
   - perl-String-ShellQuote 
   - perl-String-ToIdentifier-EN 
+  - perl-String-Trim 
   - perl-String-Truncate 
   - perl-String-Util 
   - perl-Struct-Dumb 
@@ -19211,6 +19220,8 @@ unsorted:
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
   - perl-Term-ReadPassword 
+  - perl-Term-Size-Any 
+  - perl-Term-Size-Perl 
   - perl-Term-Table 
   - perl-Term-Terminfo 
   - perl-Term-UI 
@@ -19240,6 +19251,7 @@ unsorted:
   - perl-Test-File 
   - perl-Test-File-Contents 
   - perl-Test-File-ShareDir 
+  - perl-Test-HTTP-MockServer 
   - perl-Test-HasVersion 
   - perl-Test-Identity 
   - perl-Test-InDistDir 
@@ -19326,6 +19338,8 @@ unsorted:
   - perl-Text-RecordParser 
   - perl-Text-Reform 
   - perl-Text-Roman 
+  - perl-Text-SimpleTable 
+  - perl-Text-SimpleTable-AutoWidth 
   - perl-Text-Soundex 
   - perl-Text-SpellChecker 
   - perl-Text-Sprintf-Named 
@@ -19371,6 +19385,7 @@ unsorted:
   - perl-URI-Fetch 
   - perl-URI-Find 
   - perl-URI-Nested 
+  - perl-URI-Query 
   - perl-URI-Template 
   - perl-URI-db 
   - perl-URI-ws 
@@ -20701,7 +20716,6 @@ unsorted:
   - python3-flake8-comprehensions 
   - python3-flake8-future-import 
   - python3-flask-oidc 
-  - python3-flower 
   - python3-framel 
   - python3-freezerclient 
   - python3-futurist 
@@ -21019,6 +21033,9 @@ unsorted:
   - python3-sphinxbase 
   - python3-sphinxbase5 
   - python3-splinter 
+  - python3-spyder-notebook: [x86_64] 
+  - python3-spyder-terminal 
+  - python3-spyder-unittest 
   - python3-sqlite-utils: [x86_64] 
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
@@ -21727,7 +21744,6 @@ unsorted:
   - python36-cassowary 
   - python36-casttube 
   - python36-catkin-pkg 
-  - python36-cauldron-notebook 
   - python36-cbor 
   - python36-cbor2 
   - python36-cchardet 
@@ -22190,6 +22206,7 @@ unsorted:
   - python36-flickrapi 
   - python36-flit 
   - python36-flit-core 
+  - python36-flower 
   - python36-fluent 
   - python36-flufl.bounce 
   - python36-flufl.i18n 
@@ -25029,6 +25046,7 @@ unsorted:
   - python38-flickrapi 
   - python38-flit 
   - python38-flit-core 
+  - python38-flower 
   - python38-fluent 
   - python38-flufl.testing 
   - python38-flup 
