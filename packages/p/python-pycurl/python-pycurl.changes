@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 28 23:06:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.43.0.6:
+  * Fixed offset parameter usage in seek callback
+  * Added support for libcurl SSL backend detection via
+    `curl-config --ssl-backends`
+  * Added support for libcurl MultiSSL
+  * Added ability to unset CURLOPT_PROXY.
+  * Added support for CURLOPT_UPLOAD_BUFFERSIZE
+  * Added support for CURLOPT_MAXAGE_CONN
+  * Added support for sharing connection cache in libcurl
+  * Added support for CURLOPT_HAPROXYPROTOCOL
+  * CC and CFLAGS environment variables are now respected when building
+  * Fixed OpenSSL detection on CentOS 7 and 8
+  * surrogateescape error handler is used in multi_info_read to handle
+    invalid UTF-8.
+- drop python-pycurl-7.43.0-tls-backend.patch (upstream)
+- refresh remove_nose.patch to remove even more nose code
+
+-------------------------------------------------------------------
 Tue Dec 15 12:56:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add make-leap15-compat.patch to pass tests on Leap 15.2

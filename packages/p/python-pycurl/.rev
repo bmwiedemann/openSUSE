@@ -294,4 +294,27 @@
 </comment>
     <requestid>855998</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cb485d2344989c4363c895a49140df95</srcmd5>
+    <version>7.43.0.6</version>
+    <time>1612466509</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.43.0.6:
+  * Fixed offset parameter usage in seek callback
+  * Added support for libcurl SSL backend detection via
+    `curl-config --ssl-backends`
+  * Added support for libcurl MultiSSL
+  * Added ability to unset CURLOPT_PROXY.
+  * Added support for CURLOPT_UPLOAD_BUFFERSIZE
+  * Added support for CURLOPT_MAXAGE_CONN
+  * Added support for sharing connection cache in libcurl
+  * Added support for CURLOPT_HAPROXYPROTOCOL
+  * CC and CFLAGS environment variables are now respected when building
+  * Fixed OpenSSL detection on CentOS 7 and 8
+  * surrogateescape error handler is used in multi_info_read to handle
+    invalid UTF-8.
+- drop python-pycurl-7.43.0-tls-backend.patch (upstream)
+- refresh remove_nose.patch to remove even more nose code</comment>
+    <requestid>867959</requestid>
+  </revision>
 </revisionlist>

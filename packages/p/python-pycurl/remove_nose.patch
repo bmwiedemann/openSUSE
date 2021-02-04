@@ -31,8 +31,10 @@ the test suite.
  22 files changed, 95 insertions(+), 113 deletions(-)
  create mode 100644 pytest.ini
 
---- a/Makefile
-+++ b/Makefile
+Index: pycurl-7.43.0.6/Makefile
+===================================================================
+--- pycurl-7.43.0.6.orig/Makefile
++++ pycurl-7.43.0.6/Makefile
 @@ -6,7 +6,7 @@
  SHELL = /bin/sh
  
@@ -42,8 +44,10 @@ the test suite.
  PYFLAKES = pyflakes
  
  # -c on linux
---- a/README.rst
-+++ b/README.rst
+Index: pycurl-7.43.0.6/README.rst
+===================================================================
+--- pycurl-7.43.0.6.orig/README.rst
++++ pycurl-7.43.0.6/README.rst
 @@ -93,7 +93,7 @@ PycURL comes with an automated test suit
  
      make test
@@ -62,8 +66,10 @@ the test suite.
  .. _bottle: http://bottlepy.org/
  .. _vsftpd: http://vsftpd.beasts.org/
  
+Index: pycurl-7.43.0.6/pytest.ini
+===================================================================
 --- /dev/null
-+++ b/pytest.ini
++++ pycurl-7.43.0.6/pytest.ini
 @@ -0,0 +1,10 @@
 +[pytest]
 +python_files = tests/*.py
@@ -75,8 +81,10 @@ the test suite.
 +    http2: mark a test as requiring HTTP/2
 +    standalone: mark a test as being standalone
 +    occasionally_failing: mark a test as unstable
---- a/requirements-dev.txt
-+++ b/requirements-dev.txt
+Index: pycurl-7.43.0.6/requirements-dev.txt
+===================================================================
+--- pycurl-7.43.0.6.orig/requirements-dev.txt
++++ pycurl-7.43.0.6/requirements-dev.txt
 @@ -1,10 +1,7 @@
  # bottle 0.12.17 changed behavior
  # https://github.com/pycurl/pycurl/issues/573
@@ -91,8 +99,10 @@ the test suite.
 \ No newline at end of file
 +pytest>=5
 +sphinx
---- a/tests/certinfo_test.py
-+++ b/tests/certinfo_test.py
+Index: pycurl-7.43.0.6/tests/certinfo_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/certinfo_test.py
++++ pycurl-7.43.0.6/tests/certinfo_test.py
 @@ -4,7 +4,6 @@
  
  import pycurl
@@ -119,8 +129,10 @@ the test suite.
  
          self.curl.setopt(pycurl.URL, 'https://localhost:8383/success')
          sio = util.BytesIO()
---- a/tests/curl_object_test.py
-+++ b/tests/curl_object_test.py
+Index: pycurl-7.43.0.6/tests/curl_object_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/curl_object_test.py
++++ pycurl-7.43.0.6/tests/curl_object_test.py
 @@ -3,8 +3,8 @@
  # vi:ts=4:et
  
@@ -169,8 +181,10 @@ the test suite.
 -        del self.curl.foo
 +        with pytest.raises(AttributeError, match='trying to delete.*'):
 +            del self.curl.foo
---- a/tests/global_init_test.py
-+++ b/tests/global_init_test.py
+Index: pycurl-7.43.0.6/tests/global_init_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/global_init_test.py
++++ pycurl-7.43.0.6/tests/global_init_test.py
 @@ -3,9 +3,8 @@
  # vi:ts=4:et
  
@@ -199,8 +213,10 @@ the test suite.
 -        pycurl.global_init(0xffff)
 +        with pytest.raises(ValueError):
 +            pycurl.global_init(0xffff)
---- a/tests/header_test.py
-+++ b/tests/header_test.py
+Index: pycurl-7.43.0.6/tests/header_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/header_test.py
++++ pycurl-7.43.0.6/tests/header_test.py
 @@ -3,9 +3,9 @@
  # vi:ts=4:et
  
@@ -230,8 +246,10 @@ the test suite.
  
      def test_encoded_unicode_header(self):
          self.check(util.u('x-test-header: Москва').encode('utf-8'), util.u('Москва'))
---- a/tests/multi_test.py
-+++ b/tests/multi_test.py
+Index: pycurl-7.43.0.6/tests/multi_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/multi_test.py
++++ pycurl-7.43.0.6/tests/multi_test.py
 @@ -4,8 +4,8 @@
  
  from . import localhost
@@ -258,8 +276,10 @@ the test suite.
 -        pycurl.CurlMulti(a=1)
 +        with pytest.raises(TypeError):
 +            pycurl.CurlMulti(a=1)
---- a/tests/option_constants_test.py
-+++ b/tests/option_constants_test.py
+Index: pycurl-7.43.0.6/tests/option_constants_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/option_constants_test.py
++++ pycurl-7.43.0.6/tests/option_constants_test.py
 @@ -4,9 +4,8 @@
  
  from . import localhost
@@ -333,7 +353,7 @@ the test suite.
      def test_ssl_enable_npn(self):
          curl = pycurl.Curl()
          curl.setopt(curl.SSL_ENABLE_NPN, 1)
-@@ -449,23 +448,23 @@ class OptionConstantsSettingTest(unittes
+@@ -450,23 +449,23 @@ class OptionConstantsSettingTest(unittes
          self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_1_0)
          self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_1_1)
  
@@ -361,8 +381,10 @@ the test suite.
      def test_http_version_2prior_knowledge(self):
          self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_2_PRIOR_KNOWLEDGE)
  
---- a/tests/procmgr.py
-+++ b/tests/procmgr.py
+Index: pycurl-7.43.0.6/tests/procmgr.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/procmgr.py
++++ pycurl-7.43.0.6/tests/procmgr.py
 @@ -3,7 +3,7 @@ import subprocess
  import os
  import sys
@@ -390,8 +412,10 @@ the test suite.
          try:
              setup_module()
          except OSError:
---- a/tests/reload_test.py
-+++ b/tests/reload_test.py
+Index: pycurl-7.43.0.6/tests/reload_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/reload_test.py
++++ pycurl-7.43.0.6/tests/reload_test.py
 @@ -3,11 +3,11 @@
  # vi:ts=4:et
  
@@ -406,8 +430,10 @@ the test suite.
      def test_reloading(self):
          try:
              # python 2
---- a/tests/resolve_test.py
-+++ b/tests/resolve_test.py
+Index: pycurl-7.43.0.6/tests/resolve_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/resolve_test.py
++++ pycurl-7.43.0.6/tests/resolve_test.py
 @@ -2,7 +2,6 @@
  
  import pycurl
@@ -425,8 +451,10 @@ the test suite.
  
          self.curl.setopt(pycurl.URL, 'http://p.localhost:8380/success')
          self.curl.setopt(pycurl.RESOLVE, ['p.localhost:8380:127.0.0.1'])
---- a/tests/run.sh
-+++ b/tests/run.sh
+Index: pycurl-7.43.0.6/tests/run.sh
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/run.sh
++++ pycurl-7.43.0.6/tests/run.sh
 @@ -4,7 +4,7 @@ set -e
  set -x
  
@@ -443,8 +471,10 @@ the test suite.
 -$NOSETESTS -a \!standalone"$extra_attrs" --with-flaky --show-skipped "$@"
 -$NOSETESTS -a standalone --with-flaky --show-skipped "$@"
 +$PYTEST
---- a/tests/setopt_string_test.py
-+++ b/tests/setopt_string_test.py
+Index: pycurl-7.43.0.6/tests/setopt_string_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/setopt_string_test.py
++++ pycurl-7.43.0.6/tests/setopt_string_test.py
 @@ -3,9 +3,9 @@
  # vi:ts=4:et
  
@@ -465,8 +495,10 @@ the test suite.
 -        self.curl.setopt_string(pycurl.VERBOSE, True)
 +        with pytest.raises(TypeError):
 +            self.curl.setopt_string(pycurl.VERBOSE, True)
---- a/tests/setopt_test.py
-+++ b/tests/setopt_test.py
+Index: pycurl-7.43.0.6/tests/setopt_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/setopt_test.py
++++ pycurl-7.43.0.6/tests/setopt_test.py
 @@ -4,8 +4,8 @@
  
  from . import localhost
@@ -505,8 +537,10 @@ the test suite.
  
      def test_httpheader_list(self):
          self.curl.setopt(self.curl.HTTPHEADER, ['Accept:'])
---- a/tests/setopt_unicode_test.py
-+++ b/tests/setopt_unicode_test.py
+Index: pycurl-7.43.0.6/tests/setopt_unicode_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/setopt_unicode_test.py
++++ pycurl-7.43.0.6/tests/setopt_unicode_test.py
 @@ -4,8 +4,8 @@
  
  from . import localhost
@@ -529,8 +563,10 @@ the test suite.
  
      def test_unicode_encoded(self):
          self.check(util.u('p=Москва').encode('utf8'), util.u('Москва'))
---- a/tests/setup_test.py
-+++ b/tests/setup_test.py
+Index: pycurl-7.43.0.6/tests/setup_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/setup_test.py
++++ pycurl-7.43.0.6/tests/setup_test.py
 @@ -6,7 +6,6 @@ from . import util
  import setup as pycurl_setup
  import unittest
@@ -548,8 +584,10 @@ the test suite.
  
              return fn(*args, **kwargs)
          return decorated
---- a/tests/share_test.py
-+++ b/tests/share_test.py
+Index: pycurl-7.43.0.6/tests/share_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/share_test.py
++++ pycurl-7.43.0.6/tests/share_test.py
 @@ -5,8 +5,8 @@
  from . import localhost
  import threading
@@ -576,8 +614,10 @@ the test suite.
 -        pycurl.CurlShare(a=1)
 +        with pytest.raises(TypeError):
 +            pycurl.CurlShare(a=1)
---- a/tests/ssh_key_cb_test.py
-+++ b/tests/ssh_key_cb_test.py
+Index: pycurl-7.43.0.6/tests/ssh_key_cb_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/ssh_key_cb_test.py
++++ pycurl-7.43.0.6/tests/ssh_key_cb_test.py
 @@ -2,16 +2,16 @@
  # -*- coding: utf-8 -*-
  # vi:ts=4:et
@@ -607,8 +647,10 @@ the test suite.
  class SshKeyCbUnsetTest(unittest.TestCase):
      def setUp(self):
          self.curl = util.DefaultCurl()
---- a/tests/util.py
-+++ b/tests/util.py
+Index: pycurl-7.43.0.6/tests/util.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/util.py
++++ pycurl-7.43.0.6/tests/util.py
 @@ -5,6 +5,7 @@ import tempfile
  import os, sys, socket
  import time as _time
@@ -681,7 +723,7 @@ the test suite.
      import pycurl
  
      @functools.wraps(fn)
-@@ -132,7 +124,7 @@ def only_ssl(fn):
+@@ -132,21 +124,20 @@ def only_ssl(fn):
          # theoretically it is not the same test.
          # pycurl.version_info()[8] is a tuple of protocols supported by libcurl
          if 'https' not in pycurl.version_info()[8]:
@@ -690,7 +732,22 @@ the test suite.
  
          return fn(*args, **kwargs)
  
-@@ -140,7 +132,6 @@ def only_ssl(fn):
+     return decorated
+ 
+ def only_telnet(fn):
+-    import nose.plugins.skip
+     import pycurl
+ 
+     @functools.wraps(fn)
+     def decorated(*args, **kwargs):
+         # pycurl.version_info()[8] is a tuple of protocols supported by libcurl
+         if 'telnet' not in pycurl.version_info()[8]:
+-            raise nose.plugins.skip.SkipTest('libcurl does not support telnet')
++            raise unittest.SkipTest('libcurl does not support telnet')
+ 
+         return fn(*args, **kwargs)
+ 
+@@ -154,7 +145,6 @@ def only_telnet(fn):
  
  def only_ssl_backends(*backends):
      def decorator(fn):
@@ -698,7 +755,7 @@ the test suite.
          import pycurl
  
          @functools.wraps(fn)
-@@ -149,7 +140,7 @@ def only_ssl_backends(*backends):
+@@ -163,7 +153,7 @@ def only_ssl_backends(*backends):
              # theoretically it is not the same test.
              # pycurl.version_info()[8] is a tuple of protocols supported by libcurl
              if 'https' not in pycurl.version_info()[8]:
@@ -707,7 +764,7 @@ the test suite.
  
              # XXX move to pycurl library
              if 'OpenSSL/' in pycurl.version:
-@@ -161,7 +152,7 @@ def only_ssl_backends(*backends):
+@@ -175,7 +165,7 @@ def only_ssl_backends(*backends):
              else:
                  current_backend = 'none'
              if current_backend not in backends:
@@ -716,7 +773,7 @@ the test suite.
  
              return fn(*args, **kwargs)
  
-@@ -169,25 +160,22 @@ def only_ssl_backends(*backends):
+@@ -183,25 +173,22 @@ def only_ssl_backends(*backends):
      return decorator
  
  def only_ipv6(fn):
@@ -744,7 +801,7 @@ the test suite.
  
          return fn(*args, **kwargs)
  
-@@ -200,7 +188,6 @@ def guard_unknown_libcurl_option(fn):
+@@ -214,7 +201,6 @@ def guard_unknown_libcurl_option(fn):
      where libcurl does not provide a way of detecting whether the
      required libraries were compiled against.'''
  
@@ -752,7 +809,7 @@ the test suite.
      import pycurl
  
      @functools.wraps(fn)
-@@ -211,7 +198,7 @@ def guard_unknown_libcurl_option(fn):
+@@ -225,7 +211,7 @@ def guard_unknown_libcurl_option(fn):
              exc = sys.exc_info()[1]
              # E_UNKNOWN_OPTION is available as of libcurl 7.21.5
              if hasattr(pycurl, 'E_UNKNOWN_OPTION') and exc.args[0] == pycurl.E_UNKNOWN_OPTION:
@@ -761,7 +818,7 @@ the test suite.
  
      return decorated
  
-@@ -286,12 +273,12 @@ def DefaultCurlLocalhost(port):
+@@ -300,12 +286,12 @@ def DefaultCurlLocalhost(port):
      '''This is a default curl with localhost -> 127.0.0.1 name mapping
      on windows systems, because they don't have it in the hosts file.
      '''
@@ -777,8 +834,10 @@ the test suite.
      return curl
  
  def with_real_write_file(fn):
---- a/tests/memory_mgmt_test.py
-+++ b/tests/memory_mgmt_test.py
+Index: pycurl-7.43.0.6/tests/memory_mgmt_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/memory_mgmt_test.py
++++ pycurl-7.43.0.6/tests/memory_mgmt_test.py
 @@ -9,7 +9,7 @@ import unittest
  import gc
  import flaky
@@ -847,8 +906,10 @@ the test suite.
          c.close()
          gc.collect()
          assert ref() is None
---- a/tests/multi_memory_mgmt_test.py
-+++ b/tests/multi_memory_mgmt_test.py
+Index: pycurl-7.43.0.6/tests/multi_memory_mgmt_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/multi_memory_mgmt_test.py
++++ pycurl-7.43.0.6/tests/multi_memory_mgmt_test.py
 @@ -7,21 +7,21 @@ import unittest
  import gc
  import flaky
@@ -911,8 +972,10 @@ the test suite.
          m.remove_handle(ref())
          gc.collect()
          assert ref() is None
---- a/tests/multi_timer_test.py
-+++ b/tests/multi_timer_test.py
+Index: pycurl-7.43.0.6/tests/multi_timer_test.py
+===================================================================
+--- pycurl-7.43.0.6.orig/tests/multi_timer_test.py
++++ pycurl-7.43.0.6/tests/multi_timer_test.py
 @@ -5,7 +5,7 @@
  from . import localhost
  import pycurl
