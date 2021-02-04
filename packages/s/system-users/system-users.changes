@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  8 14:23:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add system-user-ntp subpackage with ntp user and group and
+  /var/lib/ntp as home directory
+
+-------------------------------------------------------------------
 Sun Dec 27 20:31:35 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add system-user-vscan subpackage with vscan user and group and

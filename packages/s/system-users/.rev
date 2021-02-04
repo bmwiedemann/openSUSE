@@ -207,4 +207,12 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:system-users revision:08e56674b4e10ff478103abacbf2d413, using expand</comment>
   </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>88f7c56a574cf9aad02ff47d63b10fc1</srcmd5>
+    <version>20170617</version>
+    <time>1612466487</time>
+    <user>dimstar_suse</user>
+    <comment>Add system-user-ntp</comment>
+    <requestid>868678</requestid>
+  </revision>
 </revisionlist>
