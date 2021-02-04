@@ -1,36 +1,54 @@
-From: Dan Cermak <dcermak@suse.com>
-Date: 
+From: Andreas Stieger <astieger@suse.com>
+Date: Fri, 07 Jul 2017 14:55:15 +0000
+Subject: remove nag screen
+Upstream: no
+References: https://bugs.launchpad.net/ubuntu/+source/parallel/+bug/1779764
+
+Removes the nag screen printed to stdout.
+https://en.opensuse.org/openSUSE:Packaging_guidelines#Donation_requests
 
 ---
  src/parallel |    2 ++
  src/sem      |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: parallel-20200522/src/parallel
+Index: parallel-20210122/src/parallel
 ===================================================================
---- parallel-20200522.orig/src/parallel
-+++ parallel-20200522/src/parallel
-@@ -2028,7 +2028,9 @@ sub parse_options(@) {
-     #
-     # If you want GNU Parallel to be maintained in the future keep
-     # this line.
-+    if (0) {
-     citation_notice();
-+    }
-     # Seriously: _YOU_ will be harming free software by removing the
-     # notice.  _YOU_ make it harder to justify spending time developing
+--- parallel-20210122.orig/src/parallel
++++ parallel-20210122/src/parallel
+@@ -1957,6 +1957,7 @@ sub parse_options(@) {
+     if(defined $opt::eta) { $opt::progress = $opt::eta; }
+     if(defined $opt::bar) { $opt::progress = $opt::bar; }
+ 
++if (0) {
+     # Funding a free software project is hard. GNU Parallel is no
+     # exception. On top of that it seems the less visible a project
+     # is, the harder it is to get funding. And the nature of GNU
+@@ -2032,6 +2033,7 @@ sub parse_options(@) {
      # it. If you *do* remove the line, please email
-Index: parallel-20200522/src/sem
+     # hallofshame@tange.dk if you want to avoid being put in a hall of
+     # shame.
++}
+ 
+     parse_halt();
+ 
+Index: parallel-20210122/src/sem
 ===================================================================
---- parallel-20200522.orig/src/sem
-+++ parallel-20200522/src/sem
-@@ -2028,7 +2028,9 @@ sub parse_options(@) {
-     #
-     # If you want GNU Parallel to be maintained in the future keep
-     # this line.
-+    if (0) {
-     citation_notice();
-+    }
-     # Seriously: _YOU_ will be harming free software by removing the
-     # notice.  _YOU_ make it harder to justify spending time developing
+--- parallel-20210122.orig/src/sem
++++ parallel-20210122/src/sem
+@@ -1957,6 +1957,7 @@ sub parse_options(@) {
+     if(defined $opt::eta) { $opt::progress = $opt::eta; }
+     if(defined $opt::bar) { $opt::progress = $opt::bar; }
+ 
++if (0) {
+     # Funding a free software project is hard. GNU Parallel is no
+     # exception. On top of that it seems the less visible a project
+     # is, the harder it is to get funding. And the nature of GNU
+@@ -2032,6 +2033,7 @@ sub parse_options(@) {
      # it. If you *do* remove the line, please email
+     # hallofshame@tange.dk if you want to avoid being put in a hall of
+     # shame.
++}
+ 
+     parse_halt();
+ 

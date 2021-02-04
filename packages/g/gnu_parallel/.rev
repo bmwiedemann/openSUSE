@@ -517,4 +517,12 @@
     <comment>- Update to release 20201222</comment>
     <requestid>858495</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>dc8123bf9dd5f72fb7bc311ffba50576</srcmd5>
+    <version>20210122</version>
+    <time>1612466663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210122</comment>
+    <requestid>869182</requestid>
+  </revision>
 </revisionlist>

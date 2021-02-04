@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20210122.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAmAJ2+4ACgkQ0atFFoiI
+iIhnGSaeKH3bW0zA8nEgUVBfGw5xJCvJHrxxb9RLGSd2AXGM6EOMeuwR67oJ3lUN
+09IZoGcUj8bULihEAR05BE/4v7Uvueg4O2UBZYyIGYL5lB5QKCvDAymZPeO/br0R
+/eCL+hGw/s3hzAlwKksme9sJUt2+uwDrstigpegK3/hcSAmx2E+aUL9db4lp5832
+CYDengYheki54lhHCkwc3+Wvt5l9aYiZXazYeDVE2Hd10UAEYebS57+Dtd/gepLx
+i9KZ3gP2uIkCNfACZ98nSnQE6KoBBqx/uj9Gwmu2Y1Q4g9ZBet5xC9ktlXJP99F5
+xSvu5TAgJzqpO8brHHUd6S5BHq/1rAeEEqeSLxsc9PSKYV45W3gFMiyC4GpfMd6W
+2ry8sflrNemT6aCqEz5Y861PZDRG3l0nKMj9esK0RqjybkLIjHT2TSGzdZI8ecrO
+2hFPP5xD6/6b4Mv+Nd1xoiHRECtDHxqmJNzbfl0X4kRy+kopamJCfj56E/jkYYYo
+Sv3+EhtXIFVam/rsLHvf3QG9aCNrVEA051tMsxuUbsQFF70f77v7ELu9Mf8sbJfx
+VXBma2vfRPf+/E/jwdB6KEe1tBMenZ2iRp+y2cbWiUmFVQwjUOIRy2QxkcUeAL0i
+m3Mfjjy6r76Gs9QaCym3wFhJ4Nd9sB2Qt1vt54NpkNHHU3wMGg9VZqvyRF/FKBTI
+yAa68zWDciQgELRg4+rM/sz012Jbl/Sva/meo3JU/lR1Feoct5pNTGldzbibHicP
+r/Atwhe3IgdY4ZvuAatYi9QiQafVrLii52GVP7EJ4vXyfRW3wJa+6YOFXapl3P9B
+pyKaeKPA23mST/wnM48XYO8IEZ1Edlf1r597XVHGvsrOayvqZFhIY3TklCgZAKd8
+eOcQflH9qAb92dJTKnddA5AvCixNzggielw//gjpVKAxs45V0Fiv4AA3ayf4Toby
+PJteVieGXCXx+GNTinusuhm7KYMppfAWetfAstGl7tvfH1AFaOUzHWz6Wlnz948I
+ZYGaNLdXcByMJaYQzqSPq3m9oEUNokg0dtuESzP4PdR9WuDkv8gUhanhwt1LgTxI
+luZNjdhJG44oHQvc0+irfp/a2rGrFY9qvHjHNdDl1xVZ1bpoWVK6jUC1DW3HYVIW
+0pDpUpdGuuoX0LeRPgZAcF5DCryXKo5hx92XfjtJc2To7MjLJWtxWltK6qdgGHz+
+NZ8RptmnqxciOOwnrDq3eTwR5UUw0tWm3nQl7WZYlVMdsEcDdM6JQGvYqHL4Tpm/
+h6//4953tn8YPWr4r2vR+5KlzE4cr8jf6T3AFZSMW7ZR+uVi17IknW0fumzmGyc5
+iwLsjG+Z6jVoZr4Dsk/qNW1ILHPtu2LpCLZHZVP5zZaay45h0e0qO8LvywbEIxXI
+2iJN9ciFWNVNImsTtTw9boyeRBawqdHQhX7aL/RQEkIv28LEbqtRINZxBsjVzbPP
+9+Bx1b/dD1NxWcFwo9vWezhhHkxwYpPmW0XcjSyYjHra5ILkSJgak4vaxoo5aLRO
+p5ZYNeMt74ATfAEihpvKU/njvvl4FT9X+qmwDu6038gE1oRb5FnHdjnNo5ik+s2Z
+FxF6kB+SWK+Vkm2ppBuXIEz43CVqSnpk8YPdSJvWpSDZoXvqPbxOY3DL
+=GzfF
+-----END PGP SIGNATURE-----

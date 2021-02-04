@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  4 09:36:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210122
+  * --memsuspend suspends jobs when there is little memory free.
+    This way you can run jobs in parallel that add up to more RAM
+    than is available.
+  * $PARALLEL_ARGHOSTGROUPS and the replacement string {agrp}
+    will give the hostgroup given on the argument when using
+    --hostgroup.
+
+-------------------------------------------------------------------
 Thu Dec 24 12:51:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20201222
