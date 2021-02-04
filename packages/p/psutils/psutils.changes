@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 30 15:46:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.04:
+  * pstops: fix ability to use paper size in x/y offsets
+  * pstops: fix a warning 
+
+-------------------------------------------------------------------
 Tue Sep 22 08:11:01 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - The previous update makes trhe patches

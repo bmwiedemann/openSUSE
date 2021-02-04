@@ -1,7 +1,7 @@
 #
 # spec file for package psutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           psutils
-Version:        2.03
+Version:        2.04
 Release:        0
 Summary:        Tools for Manipulating PostScript Files
 License:        GPL-3.0-or-later

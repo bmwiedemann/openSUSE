@@ -122,4 +122,14 @@
 - Update to v2.03 (no changelog)</comment>
     <requestid>836008</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a43e2f05b29a945a9d24cb02eaea6973</srcmd5>
+    <version>2.04</version>
+    <time>1612466531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.04:
+  * pstops: fix ability to use paper size in x/y offsets
+  * pstops: fix a warning (forwarded request 867999 from dirkmueller)</comment>
+    <requestid>868294</requestid>
+  </revision>
 </revisionlist>
