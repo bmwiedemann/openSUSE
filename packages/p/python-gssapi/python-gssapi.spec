@@ -1,7 +1,7 @@
 #
 # spec file for package python-gssapi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-gssapi
-Version:        1.6.2
+Version:        1.6.12
 Release:        0
 Summary:        A Python interface to RFC 2743/2744 (plus common extensions)
 License:        ISC
@@ -29,18 +29,10 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  krb5-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator
-Requires:       python-six
-%if %{with python2}
-BuildRequires:  python2-enum34
-%endif
-%ifpython2
-Requires:       python2-enum34
-%endif
 %python_subpackages
 
 %description

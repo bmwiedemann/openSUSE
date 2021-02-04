@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb  1 12:46:00 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.6.12:
+  * Fix GSSAPI detection for macOS Big Sur (#235, #236)
+  * Clarify how to disable detection (#234)
+- Update to 1.6.11:
+  * Fix build on FreeBSD (#232, #228)
+  * On FreeBSD, prefer GSSAPI from ports if available (#232)
+  * Support python >= 3.8 in test suite by dropping dependency on
+    should_be (#215, #229)
+  * Fix malformed S4U tests (#220, #229)
+- Update to 1.6.10:
+  * Provide python 3.9 Windows wheels (#226, #227)
+  * Fix shlex.split on Windows (#223)
+  * Removed six package and other older py cleanup values
+    (#221, #222)
+- Update to 1.6.9:
+  * Raise exception on unknown usage (#202, #203)
+  * Update tutorial to make server_name equal FQDN (#209)
+  * Handle missing locale.LC_MESSAGES on Windows (#211)
+- Update to 1.6.5:
+  * There were no releases between 1.6.5 and 1.6.9 due to release
+    pipeline issues with Github Actions.
+  * Fix python_requires so that python-3.5 users hopefully
+    don't get a version they can't use (#199, #198)
+- Update to 1.6.4:
+  * There was no v1.6.3 due to an incompatible sphinx extension
+    change.
+  * Fix missing substitution in inquire_property (#195, #196)
+  * Fix DLL handling on Windows with workarounds (#193, #194, #197)
+
+-------------------------------------------------------------------
 Mon Mar 16 10:36:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
