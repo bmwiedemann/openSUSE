@@ -18,7 +18,7 @@
 
 %bcond_with	regression_tests
 Name:           wget
-Version:        1.21
+Version:        1.21.1
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later
