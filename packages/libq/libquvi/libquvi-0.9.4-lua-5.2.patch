@@ -6,7 +6,7 @@ Index: libquvi-0.9.4/src/lua/init.c
      return (QUVI_ERROR_LUA_INIT);
  
    luaL_openlibs(q->handle.lua);
-+#if LUA_VERSION_NM < 502
++#if LUA_VERSION_NUM < 502
    luaL_register(q->handle.lua, "quvi", quvi_reg_meth);
    luaL_register(q->handle.lua, "quvi.http", quvi_http_reg_meth);
    luaL_register(q->handle.lua, "quvi.crypto", quvi_crypto_reg_meth);
