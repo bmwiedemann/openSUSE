@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtlocation
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Internal QML imports of examples
+%global __requires_exclude qmlimport\\((Local|Qt\\.GeoJson|WeatherInfo).*
 
 %define qt5_snapshot 0
 %define libname libQt5Positioning5
