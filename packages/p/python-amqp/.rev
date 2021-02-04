@@ -331,4 +331,30 @@
   - Fix infinite wait when using confirm_publish</comment>
     <requestid>857118</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>abbe8c99ea983ae3c3d808e9b6aaf45b</srcmd5>
+    <version>5.0.5</version>
+    <time>1612466580</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.5:
+  - Removed mistakenly introduced code which was causing import errors
+  - Add missing load_default_certs() call to fix a regression in v5.0.3 release. (#350)
+  - Change the default value of ssl_version to None. When not set, the
+    proper value between ssl.PROTOCOL_TLS_CLIENT and ssl.PROTOCOL_TLS_SERVER
+    will be selected based on the param server_side in order to create
+    a TLS Context object with better defaults that fit the desired
+    connection side.
+  - Change the default value of cert_reqs to None. The default value
+    of ctx.verify_mode is ssl.CERT_NONE, but when ssl.PROTOCOL_TLS_CLIENT
+    is used, ctx.verify_mode defaults to ssl.CERT_REQUIRED.
+  - Fix context.check_hostname logic. Checking the hostname depends on
+    having support of the SNI TLS extension and being provided with a
+    server_hostname value. Another important thing to mention is that
+    enabling hostname checking automatically sets verify_mode from
+    ssl.CERT_NONE to ssl.CERT_REQUIRED in the stdlib ssl and it cannot
+    be set back to ssl.CERT_NONE as long as hostname checking is enabled.
+  - Refactor the SNI tests to test one thing at a time and removing some
+    tests that were being repeated over an</comment>
+    <requestid>868434</requestid>
+  </revision>
 </revisionlist>
