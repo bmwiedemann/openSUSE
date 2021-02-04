@@ -753,4 +753,26 @@ Now with build cycle removed.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>864226</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9320bce7e00066a74db729a080e635a6</srcmd5>
+    <version>20210128</version>
+    <time>1612466537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210128:
+  * Add Appspace to PSL (#1197)
+  * add torproject.net (#1196)
+  * Public suffixes KU Leuven (#1194)
+  * added clickrising.net (#1192)
+  * Add hosting and paas from OVHcloud (#1193)
+  * add missing IDN ccTLDs:  for Bahrain and Laos ( .xn--mgbcpq6gpa1a and .xn--q7ce6a ) (#1175)
+  * Add try-snowplow.com to PSL (#1184)
+  * Update public_suffix_list.dat (#1189)
+  * Update public_suffix_list.dat (#1187)
+  * removal of scapp.io and applicationcloud.io (#1186)
+  * Update public_suffix_list.dat (#1185)
+  * Added fireweb.app to PSL (#1181)
+  * Update and rename tld-update.yml to tld-update.yml.hold
+  * CI: Add Github Actions workflow for TLD updates PRs. (#1166)</comment>
+    <requestid>868308</requestid>
+  </revision>
 </revisionlist>

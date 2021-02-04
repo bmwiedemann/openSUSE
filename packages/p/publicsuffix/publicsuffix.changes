@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  1 09:45:07 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210128:
+  * Add Appspace to PSL (#1197)
+  * add torproject.net (#1196)
+  * Public suffixes KU Leuven (#1194)
+  * added clickrising.net (#1192)
+  * Add hosting and paas from OVHcloud (#1193)
+  * add missing IDN ccTLDs:  for Bahrain and Laos ( .xn--mgbcpq6gpa1a and .xn--q7ce6a ) (#1175)
+  * Add try-snowplow.com to PSL (#1184)
+  * Update public_suffix_list.dat (#1189)
+  * Update public_suffix_list.dat (#1187)
+  * removal of scapp.io and applicationcloud.io (#1186)
+  * Update public_suffix_list.dat (#1185)
+  * Added fireweb.app to PSL (#1181)
+  * Update and rename tld-update.yml to tld-update.yml.hold
+  * CI: Add Github Actions workflow for TLD updates PRs. (#1166)
+
+-------------------------------------------------------------------
 Mon Jan 11 11:55:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210108:
