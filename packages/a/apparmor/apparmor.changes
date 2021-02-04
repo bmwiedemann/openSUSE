@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  2 18:35:17 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- define %_pamdir for <= 15.x to fix the build on those releases
+
+-------------------------------------------------------------------
 Fri Jan 22 11:23:59 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - add apache-extra-profile-include-if-exists.diff: make <apache2.d>
   include in apache extra profile optional to avoid problems with empty
   profile directory (boo#1178527)
+
+-------------------------------------------------------------------
+Wed Jan 13 10:45:18 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+  * use %_pamdir
 
 -------------------------------------------------------------------
 Wed Dec  2 19:29:34 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>

@@ -17,6 +17,17 @@
 #
 
 
+%if 0%{?usrmerged}
+%define sbindir %_sbindir
+%else
+%define sbindir /sbin
+%endif
+
+%if 0%{?suse_version} <= 1500
+# _pamdir isn't defined in 15.x
+%define _pamdir /%{_lib}/security
+%endif
+
 # warning - confusing syntax ahead ;-)
 # bcond_with means "disable"
 # bcond_without means "enable"
@@ -69,7 +80,7 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define apparmor_bin_prefix /lib/apparmor
+%define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
 BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  flex
@@ -427,7 +438,7 @@ test -f %{buildroot}/usr/share/apparmor/cache/*/.features
 test -f %{buildroot}/usr/share/apparmor/cache/*/bin.ping
 %endif
 
-%makeinstall -C parser
+%makeinstall SBINDIR="%{buildroot}%{sbindir}" APPARMOR_BIN_PREFIX="%{buildroot}%{apparmor_bin_prefix}" -C parser
 # default cache dir (up to 2.12) is /etc/apparmor.d/cache - not the best location.
 # Use /var/lib/apparmor/cache and make /etc/apparmor.d/cache a symlink to it
 mkdir -p %{buildroot}%{_localstatedir}/lib/apparmor/cache
@@ -442,7 +453,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/apparmor
 %endif
 
 %if %{with pam}
-  %makeinstall -C changehat/pam_apparmor SECDIR=%{buildroot}/%{_lib}/security
+  %makeinstall -C changehat/pam_apparmor SECDIR=%{buildroot}%{_pamdir}
 %endif
 
 %if %{with tomcat}
@@ -493,7 +504,10 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %defattr(-,root,root)
 %license parser/COPYING.GPL
 %doc parser/README
+%{sbindir}/apparmor_parser
+%if !0%{?usrmerged}
 /sbin/apparmor_parser
+%endif
 %{_bindir}/aa-enabled
 %{_bindir}/aa-exec
 %{_bindir}/aa-features-abi
@@ -506,7 +520,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %dir %{_sysconfdir}/apparmor.d
 %{_sysconfdir}/apparmor.d/cache
 %{_sysconfdir}/apparmor.d/cache.d
-/sbin/rcapparmor
+%{sbindir}/rcapparmor
 %{_unitdir}/apparmor.service
 %config(noreplace) %{_sysconfdir}/apparmor/parser.conf
 %{_localstatedir}/lib/apparmor
@@ -662,7 +676,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 
 %files -n pam_apparmor
 %defattr(444,root,root,755)
-%attr(555,root,root) /%{_lib}/security/pam_apparmor.so
+%attr(555,root,root) %{_pamdir}/pam_apparmor.so
 %endif
 
 %if %{with tomcat}

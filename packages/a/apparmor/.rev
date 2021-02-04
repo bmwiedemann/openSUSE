@@ -2085,4 +2085,12 @@ libapparmor:
   profile directory (boo#1178527) (forwarded request 865955 from cboltz)</comment>
     <requestid>865956</requestid>
   </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>6209d38a68de7bd5a5ed9500f7e64710</srcmd5>
+    <version>3.0.1</version>
+    <time>1612466566</time>
+    <user>dimstar_suse</user>
+    <comment>- define %_pamdir for &lt;= 15.x to fix the build on those releases (forwarded request 868745 from cboltz)</comment>
+    <requestid>868746</requestid>
+  </revision>
 </revisionlist>
