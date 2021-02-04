@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 30 20:51:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make packages for python36 and python38 in Tumbleweed
+
+-------------------------------------------------------------------
 Wed Apr  8 12:17:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add conditional so we can dynamically turn off python2

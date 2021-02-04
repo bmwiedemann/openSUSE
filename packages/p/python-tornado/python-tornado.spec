@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,12 +68,58 @@ FriendFeed servers. (For more information on scaling servers to support
 thousands of clients, see The C10K problem.)
 
 %package -n python3-tornado
-Version:        6.0
+Version:        6.1
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 Requires:       python3-tornado6
 
 %description -n python3-tornado
+Tornado is an open source version of the scalable, non-blocking web server and
+tools that power FriendFeed. The FriendFeed application is written using a web
+framework that looks a bit like web.py or Google's webapp, but with additional
+tools and optimizations to take advantage of the underlying non-blocking
+infrastructure.
+
+The framework is distinct from most mainstream web server frameworks (and
+certainly most Python frameworks) because it is non-blocking and reasonably
+fast. Because it is non-blocking and uses epoll, it can handle thousands of
+simultaneous standing connections, which means it is ideal for real-time web
+services. We built the web server specifically to handle FriendFeed's real-time
+features — every active user of FriendFeed maintains an open connection to the
+FriendFeed servers. (For more information on scaling servers to support
+thousands of clients, see The C10K problem.)
+
+%package -n python36-tornado
+Version:        6.1
+Release:        0
+Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
+Requires:       python36-tornado6
+
+%description -n python36-tornado
+Tornado is an open source version of the scalable, non-blocking web server and
+tools that power FriendFeed. The FriendFeed application is written using a web
+framework that looks a bit like web.py or Google's webapp, but with additional
+tools and optimizations to take advantage of the underlying non-blocking
+infrastructure.
+
+The framework is distinct from most mainstream web server frameworks (and
+certainly most Python frameworks) because it is non-blocking and reasonably
+fast. Because it is non-blocking and uses epoll, it can handle thousands of
+simultaneous standing connections, which means it is ideal for real-time web
+services. We built the web server specifically to handle FriendFeed's real-time
+features — every active user of FriendFeed maintains an open connection to the
+FriendFeed servers. (For more information on scaling servers to support
+thousands of clients, see The C10K problem.)
+
+%package -n python38-tornado
+Version:        6.1
+Release:        0
+Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
+Requires:       python38-tornado6
+Provides:       python3-tornado = %{version}
+Obsoletes:      python3-tornado < %{version}
+
+%description -n python38-tornado
 Tornado is an open source version of the scalable, non-blocking web server and
 tools that power FriendFeed. The FriendFeed application is written using a web
 framework that looks a bit like web.py or Google's webapp, but with additional
@@ -104,7 +150,15 @@ cp %{SOURCE0} .
 %doc README.SUSE
 %endif
 
+%if %{suse_version} < 1550
 %files -n python3-tornado
 %doc README.SUSE
+%else
+%files -n python36-tornado
+%doc README.SUSE
+
+%files -n python38-tornado
+%doc README.SUSE
+%endif
 
 %changelog
