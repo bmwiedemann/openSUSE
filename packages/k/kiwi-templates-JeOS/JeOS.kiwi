@@ -10,28 +10,14 @@
     </description>
     <profiles>
         <!-- Those two are only used as deps -->
-        <profile name="kvm-and-xen.x86_64" description="JeOS for KVM and HVM Xen" arch="x86_64"/>
-        <profile name="kvm-and-xen.aarch64" description="JeOS for KVM and HVM Xen" arch="aarch64"/>
-        <profile name="kvm-and-xen" description="JeOS for KVM and HVM Xen" arch="x86_64">
-            <requires profile="kvm-and-xen.x86_64"/>
-        </profile>
-        <profile name="kvm-and-xen" description="JeOS for KVM and HVM Xen" arch="aarch64">
-            <requires profile="kvm-and-xen.aarch64"/>
-        </profile>
+        <profile name="kvm-and-xen" description="JeOS for KVM and Xen" arch="aarch64,x86_64"/>
         <profile name="VMware" description="JeOS for VMware" arch="x86_64"/>
         <!-- Those two are only used as deps -->
-        <profile name="MS-HyperV.x86_64" description="JeOS for Hyper-V" arch="x86_64"/>
-        <profile name="MS-HyperV.aarch64" description="JeOS for Hyper-V" arch="aarch64"/>
-        <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="x86_64">
-            <requires profile="MS-HyperV.x86_64"/>
-        </profile>
-        <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="aarch64">
-            <requires profile="MS-HyperV.aarch64"/>
-        </profile>
+        <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="aarch64,x86_64"/>
         <profile name="OpenStack-Cloud" description="JeOS for OpenStack Cloud" arch="x86_64"/>
         <profile name="RaspberryPi" description="JeOS for the Raspberry Pi" arch="aarch64"/>
     </profiles>
-    <preferences profiles="kvm-and-xen.x86_64">
+    <preferences profiles="kvm-and-xen" arch="x86_64">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -64,7 +50,7 @@
         </type>
     </preferences>
 
-    <preferences profiles="kvm-and-xen.aarch64">
+    <preferences profiles="kvm-and-xen" arch="aarch64">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -152,7 +138,7 @@
         </type>
     </preferences>
 
-    <preferences profiles="MS-HyperV.x86_64">
+    <preferences profiles="MS-HyperV" arch="x86_64">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -186,7 +172,7 @@
         </type>
     </preferences>
 
-    <preferences profiles="MS-HyperV.aarch64">
+    <preferences profiles="MS-HyperV" arch="aarch64">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>

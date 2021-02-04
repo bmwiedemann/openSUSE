@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 27 08:33:04 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Simplify multi-arch profiles using a new kiwi feature
+
+-------------------------------------------------------------------
 Tue Jan 19 13:05:39 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Drop /etc/shadow modification in config.sh, fixed in system-user-root

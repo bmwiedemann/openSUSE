@@ -178,4 +178,12 @@
 - Fix bare *** in config.sh</comment>
     <requestid>864308</requestid>
   </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>bc260ce1ceaba1bd73b51f26d5ad2a8c</srcmd5>
+    <version>84.87</version>
+    <time>1612466529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868291</requestid>
+  </revision>
 </revisionlist>
