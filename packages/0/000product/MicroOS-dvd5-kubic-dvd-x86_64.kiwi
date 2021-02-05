@@ -154,7 +154,6 @@
       <repopackage name="grub2-snapper-plugin" arch="x86_64"/>
       <repopackage name="grub2-x86_64-efi" arch="x86_64"/>
       <repopackage name="gsettings-desktop-schemas" arch="x86_64"/>
-      <repopackage name="gzip" arch="x86_64"/>
       <repopackage name="haproxy" arch="x86_64"/>
       <repopackage name="haveged" arch="x86_64"/>
       <repopackage name="health-checker" arch="x86_64"/>
@@ -165,7 +164,6 @@
       <repopackage name="hostname" arch="x86_64"/>
       <repopackage name="hwinfo" arch="x86_64"/>
       <repopackage name="hyper-v" arch="x86_64"/>
-      <repopackage name="info" arch="x86_64"/>
       <repopackage name="iproute2" arch="x86_64"/>
       <repopackage name="ipset" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
@@ -289,7 +287,7 @@
       <repopackage name="libfreetype6" arch="x86_64"/>
       <repopackage name="libfuse2" arch="x86_64"/>
       <repopackage name="libfuse3-3" arch="x86_64"/>
-      <repopackage name="libgcc_s1"/>
+      <repopackage name="libgcc_s1-gcc11"/>
       <repopackage name="libgcrypt20"/>
       <repopackage name="libgdbm6" arch="x86_64"/>
       <repopackage name="libgdbm_compat4" arch="x86_64"/>
@@ -300,7 +298,7 @@
       <repopackage name="libgmp10"/>
       <repopackage name="libgnutls30" arch="x86_64"/>
       <repopackage name="libgobject-2_0-0" arch="x86_64"/>
-      <repopackage name="libgomp1" arch="x86_64"/>
+      <repopackage name="libgomp1-gcc11" arch="x86_64"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libhavege2" arch="x86_64"/>
@@ -328,7 +326,7 @@
       <repopackage name="liblmdb-0_9_24" arch="x86_64"/>
       <repopackage name="libltdl7" arch="x86_64"/>
       <repopackage name="liblttng-ust0" arch="x86_64"/>
-      <repopackage name="liblua5_3-5"/>
+      <repopackage name="liblua5_4-5"/>
       <repopackage name="liblvm2cmd2_03" arch="x86_64"/>
       <repopackage name="liblz4-1"/>
       <repopackage name="liblzma5"/>
@@ -407,7 +405,7 @@
       <repopackage name="libsss_certmap0" arch="x86_64"/>
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
-      <repopackage name="libstdc++6"/>
+      <repopackage name="libstdc++6-gcc11"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtalloc2" arch="x86_64"/>
       <repopackage name="libtasn1" arch="x86_64"/>
@@ -444,7 +442,6 @@
       <repopackage name="libyaml-cpp0_6" arch="x86_64"/>
       <repopackage name="libz1"/>
       <repopackage name="libzck1" arch="x86_64"/>
-      <repopackage name="libzio1" arch="x86_64"/>
       <repopackage name="libzmq5" arch="x86_64"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzypp" arch="x86_64"/>
@@ -545,7 +542,6 @@
       <repopackage name="python38-dbus-python" arch="x86_64"/>
       <repopackage name="python38-decorator" arch="x86_64"/>
       <repopackage name="python38-distro" arch="x86_64"/>
-      <repopackage name="python38-ecdsa" arch="x86_64"/>
       <repopackage name="python38-gobject" arch="x86_64"/>
       <repopackage name="python38-idna" arch="x86_64"/>
       <repopackage name="python38-importlib-metadata" arch="x86_64"/>

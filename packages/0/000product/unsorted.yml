@@ -2153,8 +2153,6 @@ unsorted:
   - container-support-utils 
   - containerd 
   - containerd-ctr 
-  - containerd-kubic 
-  - containerd-kubic-ctr 
   - containers-systemd: [i586] 
   - containment-rpm-docker 
   - contractor 
@@ -2208,6 +2206,7 @@ unsorted:
   - cpanspec 
   - cpluff 
   - cpmono_v07-fonts 
+  - cpp11 
   - cpp7 
   - cpp9 
   - cppcheck-gui 
@@ -2265,20 +2264,28 @@ unsorted:
   - cross-aarch64-binutils 
   - cross-aarch64-gcc10: [x86_64] 
   - cross-aarch64-gcc10-icecream-backend: [x86_64] 
+  - cross-aarch64-gcc11: [x86_64] 
+  - cross-aarch64-gcc11-icecream-backend: [x86_64] 
   - cross-aarch64-gcc7: [x86_64] 
   - cross-aarch64-gcc7-icecream-backend: [x86_64] 
   - cross-aarch64-gcc9: [x86_64] 
   - cross-aarch64-gcc9-icecream-backend: [x86_64] 
   - cross-amdgcn-gcc10: [x86_64] 
+  - cross-amdgcn-gcc11: [x86_64] 
   - cross-amdgcn-newlib10-devel: [x86_64] 
+  - cross-amdgcn-newlib11-devel: [x86_64] 
   - cross-arm-binutils 
   - cross-arm-gcc10: [x86_64] 
   - cross-arm-gcc10-icecream-backend: [x86_64] 
+  - cross-arm-gcc11: [x86_64] 
+  - cross-arm-gcc11-icecream-backend: [x86_64] 
   - cross-arm-gcc7: [x86_64] 
   - cross-arm-gcc9: [x86_64] 
   - cross-arm-gcc9-icecream-backend: [x86_64] 
   - cross-arm-none-gcc10 
   - cross-arm-none-gcc10-bootstrap 
+  - cross-arm-none-gcc11 
+  - cross-arm-none-gcc11-bootstrap 
   - cross-arm-none-gcc7 
   - cross-arm-none-gcc7-bootstrap 
   - cross-arm-none-gcc9 
@@ -2287,6 +2294,8 @@ unsorted:
   - cross-avr-binutils 
   - cross-avr-gcc10 
   - cross-avr-gcc10-bootstrap 
+  - cross-avr-gcc11 
+  - cross-avr-gcc11-bootstrap 
   - cross-avr-gcc7 
   - cross-avr-gcc7-bootstrap 
   - cross-avr-gcc9 
@@ -2294,6 +2303,8 @@ unsorted:
   - cross-epiphany-binutils 
   - cross-epiphany-gcc10 
   - cross-epiphany-gcc10-bootstrap 
+  - cross-epiphany-gcc11 
+  - cross-epiphany-gcc11-bootstrap 
   - cross-epiphany-gcc7 
   - cross-epiphany-gcc7-bootstrap 
   - cross-epiphany-gcc9 
@@ -2302,6 +2313,8 @@ unsorted:
   - cross-hppa-binutils 
   - cross-hppa-gcc10: [x86_64] 
   - cross-hppa-gcc10-icecream-backend: [x86_64] 
+  - cross-hppa-gcc11: [x86_64] 
+  - cross-hppa-gcc11-icecream-backend: [x86_64] 
   - cross-hppa-gcc7: [x86_64] 
   - cross-hppa-gcc7-icecream-backend: [x86_64] 
   - cross-hppa-gcc9: [x86_64] 
@@ -2310,6 +2323,8 @@ unsorted:
   - cross-i386-binutils: [x86_64] 
   - cross-i386-gcc10: [x86_64] 
   - cross-i386-gcc10-icecream-backend: [x86_64] 
+  - cross-i386-gcc11: [x86_64] 
+  - cross-i386-gcc11-icecream-backend: [x86_64] 
   - cross-i386-gcc7: [x86_64] 
   - cross-i386-gcc7-icecream-backend: [x86_64] 
   - cross-i386-gcc9: [x86_64] 
@@ -2318,6 +2333,8 @@ unsorted:
   - cross-m68k-binutils 
   - cross-m68k-gcc10: [x86_64] 
   - cross-m68k-gcc10-icecream-backend: [x86_64] 
+  - cross-m68k-gcc11: [x86_64] 
+  - cross-m68k-gcc11-icecream-backend: [x86_64] 
   - cross-m68k-gcc7: [x86_64] 
   - cross-m68k-gcc7-icecream-backend: [x86_64] 
   - cross-m68k-gcc9: [x86_64] 
@@ -2325,20 +2342,26 @@ unsorted:
   - cross-mips-binutils 
   - cross-mips-gcc10: [x86_64] 
   - cross-mips-gcc10-icecream-backend: [x86_64] 
+  - cross-mips-gcc11: [x86_64] 
+  - cross-mips-gcc11-icecream-backend: [x86_64] 
   - cross-mips-gcc7: [x86_64] 
   - cross-mips-gcc7-icecream-backend: [x86_64] 
   - cross-mips-gcc9: [x86_64] 
   - cross-mips-gcc9-icecream-backend: [x86_64] 
   - cross-nvptx-gcc10: [x86_64] 
+  - cross-nvptx-gcc11: [x86_64] 
   - cross-nvptx-gcc7: [x86_64] 
   - cross-nvptx-gcc9: [x86_64] 
   - cross-nvptx-newlib10-devel: [x86_64] 
+  - cross-nvptx-newlib11-devel: [x86_64] 
   - cross-nvptx-newlib7-devel: [x86_64] 
   - cross-nvptx-newlib9-devel: [x86_64] 
   - cross-ppc-binutils 
   - cross-ppc64-binutils 
   - cross-ppc64-gcc10: [x86_64] 
   - cross-ppc64-gcc10-icecream-backend: [x86_64] 
+  - cross-ppc64-gcc11: [x86_64] 
+  - cross-ppc64-gcc11-icecream-backend: [x86_64] 
   - cross-ppc64-gcc7: [x86_64] 
   - cross-ppc64-gcc7-icecream-backend: [x86_64] 
   - cross-ppc64-gcc9: [x86_64] 
@@ -2346,6 +2369,8 @@ unsorted:
   - cross-ppc64le-binutils 
   - cross-ppc64le-gcc10: [x86_64] 
   - cross-ppc64le-gcc10-icecream-backend: [x86_64] 
+  - cross-ppc64le-gcc11: [x86_64] 
+  - cross-ppc64le-gcc11-icecream-backend: [x86_64] 
   - cross-ppc64le-gcc7: [x86_64] 
   - cross-ppc64le-gcc7-icecream-backend: [x86_64] 
   - cross-ppc64le-gcc9: [x86_64] 
@@ -2353,16 +2378,22 @@ unsorted:
   - cross-riscv64-binutils 
   - cross-riscv64-elf-gcc10 
   - cross-riscv64-elf-gcc10-bootstrap 
+  - cross-riscv64-elf-gcc11 
+  - cross-riscv64-elf-gcc11-bootstrap 
   - cross-riscv64-elf-gcc9 
   - cross-riscv64-elf-gcc9-bootstrap 
   - cross-riscv64-gcc10: [x86_64] 
   - cross-riscv64-gcc10-icecream-backend: [x86_64] 
+  - cross-riscv64-gcc11: [x86_64] 
+  - cross-riscv64-gcc11-icecream-backend: [x86_64] 
   - cross-riscv64-gcc9: [x86_64] 
   - cross-riscv64-gcc9-icecream-backend: [x86_64] 
   - cross-riscv64-newlib-devel 
   - cross-rx-binutils 
   - cross-rx-gcc10 
   - cross-rx-gcc10-bootstrap 
+  - cross-rx-gcc11 
+  - cross-rx-gcc11-bootstrap 
   - cross-rx-gcc7 
   - cross-rx-gcc7-bootstrap 
   - cross-rx-gcc9 
@@ -2372,22 +2403,28 @@ unsorted:
   - cross-s390x-binutils 
   - cross-s390x-gcc10: [x86_64] 
   - cross-s390x-gcc10-icecream-backend: [x86_64] 
+  - cross-s390x-gcc11: [x86_64] 
+  - cross-s390x-gcc11-icecream-backend: [x86_64] 
   - cross-s390x-gcc7: [x86_64] 
   - cross-s390x-gcc7-icecream-backend: [x86_64] 
   - cross-s390x-gcc9: [x86_64] 
   - cross-s390x-gcc9-icecream-backend: [x86_64] 
   - cross-sparc-binutils 
   - cross-sparc-gcc10: [x86_64] 
+  - cross-sparc-gcc11: [x86_64] 
   - cross-sparc-gcc7: [x86_64] 
   - cross-sparc-gcc9: [x86_64] 
   - cross-sparc64-binutils 
   - cross-sparc64-gcc10: [x86_64] 
   - cross-sparc64-gcc10-icecream-backend: [x86_64] 
+  - cross-sparc64-gcc11: [x86_64] 
+  - cross-sparc64-gcc11-icecream-backend: [x86_64] 
   - cross-sparc64-gcc7: [x86_64] 
   - cross-sparc64-gcc7-icecream-backend: [x86_64] 
   - cross-sparc64-gcc9: [x86_64] 
   - cross-sparc64-gcc9-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc10-icecream-backend: [x86_64] 
+  - cross-sparcv9-gcc11-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc7-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc9-icecream-backend: [x86_64] 
   - cross-spu-binutils 
@@ -2690,7 +2727,7 @@ unsorted:
   - dirvish 
   - discord-rpc-devel 
   - discount 
-  - discover-notifier: [i586] 
+  - discover-notifier 
   - diskimage-builder 
   - diskmonitor 
   - diskmonitor-lang 
@@ -2763,14 +2800,12 @@ unsorted:
   - docker-kubic-bash-completion: [x86_64] 
   - docker-kubic-fish-completion: [x86_64] 
   - docker-kubic-kubeadm-criconfig: [x86_64] 
-  - docker-kubic-test: [x86_64] 
   - docker-kubic-zsh-completion: [x86_64] 
   - docker-libnetwork 
   - docker-libnetwork-kubic 
   - docker-machine-driver-kvm2: [x86_64] 
   - docker-runc 
   - docker-runc-kubic 
-  - docker-test 
   - docker-zsh-completion 
   - docker_auth 
   - doctest-devel 
@@ -3882,6 +3917,26 @@ unsorted:
   - gcc10-objc 
   - gcc10-objc-32bit: [x86_64] 
   - gcc10-testresults 
+  - gcc11 
+  - gcc11-32bit: [x86_64] 
+  - gcc11-ada 
+  - gcc11-ada-32bit: [x86_64] 
+  - gcc11-c++ 
+  - gcc11-c++-32bit: [x86_64] 
+  - gcc11-d 
+  - gcc11-d-32bit: [x86_64] 
+  - gcc11-devel 
+  - gcc11-fortran 
+  - gcc11-fortran-32bit: [x86_64] 
+  - gcc11-go 
+  - gcc11-go-32bit: [x86_64] 
+  - gcc11-info 
+  - gcc11-locale 
+  - gcc11-obj-c++ 
+  - gcc11-obj-c++-32bit: [x86_64] 
+  - gcc11-objc 
+  - gcc11-objc-32bit: [x86_64] 
+  - gcc11-testresults 
   - gcc7 
   - gcc7-32bit: [x86_64] 
   - gcc7-ada 
@@ -7395,7 +7450,6 @@ unsorted:
   - jupyter-ipywebrtc 
   - jupyter-jupyter-client 
   - jupyter-jupyter-contrib-nbextensions 
-  - jupyter-jupyter-core 
   - jupyter-jupyter-full-width 
   - jupyter-jupyter-require 
   - jupyter-jupyter-server 
@@ -7575,6 +7629,9 @@ unsorted:
   - kdeclarative-devel 
   - kdeclarative-devel-32bit: [x86_64] 
   - kdeclarative-tools 
+  - kdeconnect-kde 
+  - kdeconnect-kde-lang 
+  - kdeconnect-kde-zsh-completion 
   - kded-devel 
   - kdegames-carddecks-other 
   - kdelibs4support-32bit: [x86_64] 
@@ -7910,6 +7967,7 @@ unsorted:
   - kpeople5-32bit: [x86_64] 
   - kpeople5-devel 
   - kpeople5-devel-32bit: [x86_64] 
+  - kpeoplevcard 
   - kpeoplevcard-devel 
   - kphotoalbum 
   - kphotoalbum-lang 
@@ -8565,6 +8623,7 @@ unsorted:
   - libKF5Plotting5-32bit: [x86_64] 
   - libKF5Prison5-32bit: [x86_64] 
   - libKF5Pty5-32bit: [x86_64] 
+  - libKF5PulseAudioQt2 
   - libKF5Purpose5-32bit: [x86_64] 
   - libKF5PurposeWidgets5-32bit: [x86_64] 
   - libKF5QuickAddons5-32bit: [x86_64] 
@@ -8578,7 +8637,9 @@ unsorted:
   - libKF5SyntaxHighlighting5-32bit: [x86_64] 
   - libKF5TextWidgets5-32bit: [x86_64] 
   - libKF5ThreadWeaver5-32bit: [x86_64] 
+  - libKF5UnitConversion5 
   - libKF5UnitConversion5-32bit: [x86_64] 
+  - libKF5UnitConversion5-lang 
   - libKF5Vkontakte2 
   - libKF5Wallet5-32bit: [x86_64] 
   - libKF5WebKit5 
@@ -8988,7 +9049,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
-  - libVkLayer_utils-1_2_165 
+  - libVkLayer_utils-1_2_166 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -9139,6 +9200,8 @@ unsorted:
   - libacr38ucontrol0 
   - libada10 
   - libada10-32bit: [x86_64] 
+  - libada11 
+  - libada11-32bit: [x86_64] 
   - libada7 
   - libada7-32bit: [x86_64] 
   - libada9 
@@ -9265,8 +9328,10 @@ unsorted:
   - libasan4-32bit: [x86_64] 
   - libasan5 
   - libasan5-32bit: [x86_64] 
-  - libasan6: [i586] 
+  - libasan6 
   - libasan6-32bit: [x86_64] 
+  - libasan6-gcc11: [i586] 
+  - libasan6-gcc11-32bit: [x86_64] 
   - libaslcommon0 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
@@ -9292,7 +9357,9 @@ unsorted:
   - libatkmm-2_36-1 
   - libatkmm-2_36-1-32bit: [x86_64] 
   - libatlascpp-0_6-1 
+  - libatomic1 
   - libatomic1-32bit: [x86_64] 
+  - libatomic1-gcc11-32bit: [x86_64] 
   - libatomic1-gcc7 
   - libatomic1-gcc7-32bit: [x86_64] 
   - libatomic1-gcc9 
@@ -9659,8 +9726,6 @@ unsorted:
   - libcap-ng-utils 
   - libcap-ng0-32bit: [x86_64] 
   - libcap-progs 
-  - libcap1 
-  - libcap1-32bit: [x86_64] 
   - libcap2-32bit: [x86_64] 
   - libcapi20 
   - libcapi20-devel 
@@ -10264,6 +10329,7 @@ unsorted:
   - libfabric1 
   - libfabric1-32bit: [x86_64] 
   - libfakekey-devel 
+  - libfakekey0 
   - libfaketime 
   - libfallocate-devel 
   - libfallocate-devel-static 
@@ -10490,10 +10556,14 @@ unsorted:
   - libgbm-devel-32bit: [x86_64] 
   - libgbm1-32bit: [x86_64] 
   - libgcalc-2-1_0_1 
+  - libgcc_s1 
+  - libgcc_s1-32bit: [x86_64] 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
   - libgcc_s1-gcc9 
   - libgcc_s1-gcc9-32bit: [x86_64] 
+  - libgccjit0-devel-gcc11 
+  - libgccjit0-gcc11 
   - libgci-1-0_0_0 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
@@ -10539,6 +10609,8 @@ unsorted:
   - libgdk_pixbuf_xlib-2_0-0-32bit: [x86_64] 
   - libgdruntime1 
   - libgdruntime1-32bit: [x86_64] 
+  - libgdruntime2-gcc11 
+  - libgdruntime2-gcc11-32bit: [x86_64] 
   - libgdruntime76-gcc9 
   - libgdruntime76-gcc9-32bit: [x86_64] 
   - libgeany0 
@@ -10566,7 +10638,9 @@ unsorted:
   - libgflags2 
   - libgfortran4 
   - libgfortran4-32bit: [x86_64] 
+  - libgfortran5 
   - libgfortran5-32bit: [x86_64] 
+  - libgfortran5-gcc11-32bit: [x86_64] 
   - libgfortran5-gcc9 
   - libgfortran5-gcc9-32bit: [x86_64] 
   - libgiac0 
@@ -10664,10 +10738,14 @@ unsorted:
   - libgo14-32bit: [x86_64] 
   - libgo16 
   - libgo16-32bit: [x86_64] 
+  - libgo19-gcc11 
+  - libgo19-gcc11-32bit: [x86_64] 
   - libgoa-1_0-0-32bit: [x86_64] 
   - libgoa-backend-1_0-1-32bit: [x86_64] 
   - libgoffice-0_10-10 
+  - libgomp1 
   - libgomp1-32bit: [x86_64] 
+  - libgomp1-gcc11-32bit: [x86_64] 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit: [x86_64] 
   - libgomp1-gcc9 
@@ -10689,6 +10767,8 @@ unsorted:
   - libgpgmepp6-32bit: [x86_64] 
   - libgphobos1 
   - libgphobos1-32bit: [x86_64] 
+  - libgphobos2-gcc11 
+  - libgphobos2-gcc11-32bit: [x86_64] 
   - libgphobos76-gcc9 
   - libgphobos76-gcc9-32bit: [x86_64] 
   - libgphoto2-6-32bit: [x86_64] 
@@ -10741,7 +10821,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_110 
+  - libgsoap-2_8_111 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue-devel 
@@ -11203,8 +11283,10 @@ unsorted:
   - libite-devel 
   - libite5 
   - libiterm-devel 
-  - libitm1: [i586] 
+  - libitm1 
   - libitm1-32bit: [x86_64] 
+  - libitm1-gcc11: [i586] 
+  - libitm1-gcc11-32bit: [x86_64] 
   - libitm1-gcc7 
   - libitm1-gcc7-32bit: [x86_64] 
   - libitm1-gcc9 
@@ -11522,6 +11604,7 @@ unsorted:
   - liblrdf-devel 
   - liblrdf2-32bit: [x86_64] 
   - liblrs1 
+  - liblsan0: [x86_64] 
   - liblsan0-gcc7: [x86_64] 
   - liblsan0-gcc9: [x86_64] 
   - liblscp-devel 
@@ -11534,7 +11617,6 @@ unsorted:
   - liblttng-ust0: [i586] 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
-  - liblua5_4-5 
   - liblua5_4-5-32bit: [x86_64] 
   - libluabind0_9_1 
   - libluajit-5_1-2-32bit: [x86_64] 
@@ -12020,7 +12102,9 @@ unsorted:
   - liboauth0-32bit: [x86_64] 
   - libobby-0_4-1 
   - libobjc2-devel 
+  - libobjc4 
   - libobjc4-32bit: [x86_64] 
+  - libobjc4-gcc11-32bit: [x86_64] 
   - libobjc4-gcc7 
   - libobjc4-gcc7-32bit: [x86_64] 
   - libobjc4-gcc9 
@@ -12786,7 +12870,9 @@ unsorted:
   - libqtcurve-utils2-32bit: [x86_64] 
   - libqtermwidget5-0 
   - libqtolm-devel 
+  - libquadmath0 
   - libquadmath0-32bit: [x86_64] 
+  - libquadmath0-gcc11-32bit: [x86_64] 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit: [x86_64] 
   - libquadmath0-gcc9 
@@ -13418,7 +13504,11 @@ unsorted:
   - libstatgrab10 
   - libstatgrab10-32bit: [x86_64] 
   - libstdc++-devel-32bit: [x86_64] 
+  - libstdc++6 
+  - libstdc++6-32bit: [x86_64] 
   - libstdc++6-devel-gcc10-32bit: [x86_64] 
+  - libstdc++6-devel-gcc11 
+  - libstdc++6-devel-gcc11-32bit: [x86_64] 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit: [x86_64] 
   - libstdc++6-devel-gcc9 
@@ -13429,6 +13519,8 @@ unsorted:
   - libstdc++6-gcc9 
   - libstdc++6-gcc9-32bit: [x86_64] 
   - libstdc++6-gcc9-locale 
+  - libstdc++6-pp-gcc10 
+  - libstdc++6-pp-gcc10-32bit: [x86_64] 
   - libstdc++6-pp-gcc9 
   - libstdc++6-pp-gcc9-32bit: [x86_64] 
   - libstellarsolver1 
@@ -13702,6 +13794,7 @@ unsorted:
   - libtrilinos_12_14_1-gnu-openmpi4-hpc: [x86_64] 
   - libtrng4-22 
   - libts0-32bit: [x86_64] 
+  - libtsan0: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
   - libtsan0-gcc9: [x86_64] 
   - libtsk19 
@@ -13741,8 +13834,10 @@ unsorted:
   - libtwolame0-32bit: [x86_64] 
   - libubsan0 
   - libubsan0-32bit: [x86_64] 
-  - libubsan1: [i586] 
+  - libubsan1 
   - libubsan1-32bit: [x86_64] 
+  - libubsan1-gcc11: [i586] 
+  - libubsan1-gcc11-32bit: [x86_64] 
   - libubsan1-gcc9 
   - libubsan1-gcc9-32bit: [x86_64] 
   - libuchardet-devel 
@@ -16635,8 +16730,11 @@ unsorted:
   - nodejs10: [x86_64] 
   - nodejs10-devel 
   - nodejs10-docs 
+  - nodejs14: [x86_64] 
   - nodejs14-devel: [x86_64] 
   - nodejs14-docs: [x86_64] 
+  - nodejs15-devel: [x86_64] 
+  - nodejs15-docs: [x86_64] 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -16881,6 +16979,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm10: [x86_64] 
+  - npm14: [x86_64] 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -18017,6 +18116,7 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
+  - patterns-microos-desktop-kde: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -19783,7 +19883,9 @@ unsorted:
   - plasma-vault-backend-encfs 
   - plasma-vault-lang 
   - plasma-wayland-protocols 
+  - plasma5-addons 
   - plasma5-addons-devel 
+  - plasma5-addons-lang 
   - plasma5-applet-suse-prime 
   - plasma5-nano 
   - plasma5-nano-lang 
@@ -20381,9 +20483,11 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
+  - purpose 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
+  - purpose-lang 
   - putty 
   - pv 
   - pw3270 
@@ -20722,7 +20826,6 @@ unsorted:
   - python3-gabbi 
   - python3-gcemetadata 
   - python3-gdcm 
-  - python3-gear 
   - python3-geis 
   - python3-genders 
   - python3-gensio 
@@ -20998,7 +21101,6 @@ unsorted:
   - python3-pytest-server-fixtures 
   - python3-pytest-subtesthack 
   - python3-pytest-translations 
-  - python3-python-daemon 
   - python3-python-datamatrix: [i586] 
   - python3-python-jenkins 
   - python3-python-pseudorandom: [i586] 
@@ -21056,7 +21158,6 @@ unsorted:
   - python3-testinfra 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
-  - python3-tornado 
   - python3-translate-toolkit 
   - python3-tvtk 
   - python3-tvtk-doc 
@@ -22243,6 +22344,7 @@ unsorted:
   - python36-gast 
   - python36-gcsfs 
   - python36-gcsfs-fuse 
+  - python36-gear 
   - python36-ged4py 
   - python36-genfire 
   - python36-genson 
@@ -23258,6 +23360,7 @@ unsorted:
   - python36-python-coveralls 
   - python36-python-crfsuite 
   - python36-python-crontab 
+  - python36-python-daemon 
   - python36-python-datamatrix: [x86_64] 
   - python36-python-dateutil 
   - python36-python-dbusmock 
@@ -23729,6 +23832,7 @@ unsorted:
   - python36-torch: [x86_64] 
   - python36-torch-devel: [x86_64] 
   - python36-torchvision: [x86_64] 
+  - python36-tornado 
   - python36-tornado4 
   - python36-tornado5 
   - python36-tornado6 
@@ -24692,6 +24796,7 @@ unsorted:
   - python38-construct 
   - python38-contexter 
   - python38-contextlib2 
+  - python38-contextvars 
   - python38-control 
   - python38-conu 
   - python38-convertdate 
@@ -25078,6 +25183,7 @@ unsorted:
   - python38-gast 
   - python38-gcsfs 
   - python38-gcsfs-fuse 
+  - python38-gear 
   - python38-ged4py 
   - python38-genfire 
   - python38-genson 
@@ -25204,6 +25310,7 @@ unsorted:
   - python38-imagesize 
   - python38-imbox 
   - python38-iminuit 
+  - python38-immutables 
   - python38-importlab 
   - python38-imread 
   - python38-imreg 
@@ -26030,6 +26137,7 @@ unsorted:
   - python38-python-coveralls 
   - python38-python-crfsuite 
   - python38-python-crontab 
+  - python38-python-daemon 
   - python38-python-datamatrix: [x86_64] 
   - python38-python-dbusmock 
   - python38-python-docs-theme 
@@ -26482,6 +26590,7 @@ unsorted:
   - python38-torch: [x86_64] 
   - python38-torch-devel: [x86_64] 
   - python38-torchvision: [x86_64] 
+  - python38-tornado 
   - python38-tornado4 
   - python38-tornado5 
   - python38-toro 
@@ -27128,6 +27237,8 @@ unsorted:
   - rasdaemon 
   - rash 
   - rasmol 
+  - raspberrypi-eeprom 
+  - raspberrypi-eeprom-firmware 
   - raspberrypi-firmware 
   - raspberrypi-firmware-config 
   - raspberrypi-firmware-dt 
@@ -29335,7 +29446,6 @@ unsorted:
   - runawk 
   - runawk-examples 
   - runc: [i586] 
-  - runc-test 
   - rungetty 
   - ruqola 
   - rust 
@@ -30286,6 +30396,7 @@ unsorted:
   - system-user-libvirt-dbus 
   - system-user-loki 
   - system-user-msr 
+  - system-user-ntp 
   - system-user-osc-collab 
   - system-user-prometheus 
   - system-user-uuidd 

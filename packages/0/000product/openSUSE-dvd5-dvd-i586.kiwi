@@ -1082,9 +1082,6 @@
       <repopackage name="kde-print-manager"/>
       <repopackage name="kde-print-manager-lang"/>
       <repopackage name="kdeclarative-components"/>
-      <repopackage name="kdeconnect-kde"/>
-      <repopackage name="kdeconnect-kde-lang"/>
-      <repopackage name="kdeconnect-kde-zsh-completion"/>
       <repopackage name="kded"/>
       <repopackage name="kded-lang"/>
       <repopackage name="kdeedu-data"/>
@@ -1281,7 +1278,6 @@
       <repopackage name="kpat-lang"/>
       <repopackage name="kpeople5"/>
       <repopackage name="kpeople5-lang"/>
-      <repopackage name="kpeoplevcard"/>
       <repopackage name="kpimtextedit"/>
       <repopackage name="kpimtextedit-lang"/>
       <repopackage name="kpkpass"/>
@@ -1395,7 +1391,7 @@
       <repopackage name="libatk-bridge-2_0-0"/>
       <repopackage name="libatkmm-1_6-1"/>
       <repopackage name="libatm1"/>
-      <repopackage name="libatomic1"/>
+      <repopackage name="libatomic1-gcc11"/>
       <repopackage name="libatopology2"/>
       <repopackage name="libatspi0"/>
       <repopackage name="libattr1"/>
@@ -1630,7 +1626,6 @@
       <repopackage name="libexttextcat"/>
       <repopackage name="libexttextcat-2_0-0"/>
       <repopackage name="libf2fs8"/>
-      <repopackage name="libfakekey0"/>
       <repopackage name="libfam0-gamin"/>
       <repopackage name="libfarstream-0_2-5"/>
       <repopackage name="libfastjson4"/>
@@ -1679,7 +1674,7 @@
       <repopackage name="libgbm1"/>
       <repopackage name="libgc1"/>
       <repopackage name="libgcab-1_0-0"/>
-      <repopackage name="libgcc_s1"/>
+      <repopackage name="libgcc_s1-gcc11"/>
       <repopackage name="libgcin-im-client1"/>
       <repopackage name="libgck-1-0"/>
       <repopackage name="libgck-modules-gnome-keyring"/>
@@ -1704,7 +1699,7 @@
       <repopackage name="libgexiv2-2"/>
       <repopackage name="libgfapi0"/>
       <repopackage name="libgfbgraph-0_2-0"/>
-      <repopackage name="libgfortran5"/>
+      <repopackage name="libgfortran5-gcc11"/>
       <repopackage name="libgfrpc0"/>
       <repopackage name="libgfxdr0"/>
       <repopackage name="libgif7"/>
@@ -1754,7 +1749,7 @@
       <repopackage name="libgoa-backend-1_0-1"/>
       <repopackage name="libgobject-2_0-0"/>
       <repopackage name="libgom-1_0-0"/>
-      <repopackage name="libgomp1"/>
+      <repopackage name="libgomp1-gcc11"/>
       <repopackage name="libgooglepinyin0"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11"/>
@@ -2059,7 +2054,6 @@
       <repopackage name="libKF5Prison5"/>
       <repopackage name="libKF5Pty5"/>
       <repopackage name="libKF5Pty5-lang"/>
-      <repopackage name="libKF5PulseAudioQt2"/>
       <repopackage name="libKF5Purpose5"/>
       <repopackage name="libKF5PurposeWidgets5"/>
       <repopackage name="libKF5QuickAddons5"/>
@@ -2082,8 +2076,6 @@
       <repopackage name="libKF5ThreadWeaver5"/>
       <repopackage name="libKF5Tnef5"/>
       <repopackage name="libKF5Torrent6"/>
-      <repopackage name="libKF5UnitConversion5"/>
-      <repopackage name="libKF5UnitConversion5-lang"/>
       <repopackage name="libKF5Wallet5"/>
       <repopackage name="libKF5WidgetsAddons5"/>
       <repopackage name="libKF5WidgetsAddons5-lang"/>
@@ -2168,6 +2160,7 @@
       <repopackage name="libLTO11"/>
       <repopackage name="liblua5_1-5"/>
       <repopackage name="liblua5_3-5"/>
+      <repopackage name="liblua5_4-5"/>
       <repopackage name="libluajit-5_1-2"/>
       <repopackage name="liblunar-calendar-3_0-1"/>
       <repopackage name="liblunar-date-3_0-1"/>
@@ -2279,7 +2272,7 @@
       <repopackage name="libnumbertext-1_0-0"/>
       <repopackage name="libnumbertext-data"/>
       <repopackage name="liboauth0"/>
-      <repopackage name="libobjc4"/>
+      <repopackage name="libobjc4-gcc11"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
       <repopackage name="libofa0"/>
@@ -2487,7 +2480,7 @@
       <repopackage name="libQt5Xml5"/>
       <repopackage name="libQt5XmlPatterns5"/>
       <repopackage name="libQtQuick5"/>
-      <repopackage name="libquadmath0"/>
+      <repopackage name="libquadmath0-gcc11"/>
       <repopackage name="libquicktime0"/>
       <repopackage name="libquorum5"/>
       <repopackage name="libquvi-0_9-0_9_4"/>
@@ -2642,10 +2635,11 @@
       <repopackage name="libstaroffice-0_0-0"/>
       <repopackage name="libstartup-notification-1-0"/>
       <repopackage name="libstdc++-devel"/>
-      <repopackage name="libstdc++6"/>
       <repopackage name="libstdc++6-devel-gcc10"/>
+      <repopackage name="libstdc++6-gcc11"/>
+      <repopackage name="libstdc++6-gcc11-locale"/>
       <repopackage name="libstdc++6-locale"/>
-      <repopackage name="libstdc++6-pp-gcc10"/>
+      <repopackage name="libstdc++6-pp-gcc11"/>
       <repopackage name="libstoken1"/>
       <repopackage name="libstorage-ng-lang"/>
       <repopackage name="libstorage-ng-ruby"/>
@@ -3552,8 +3546,6 @@
       <repopackage name="plasma-nm5-openvpn"/>
       <repopackage name="plasma-nm5-pptp"/>
       <repopackage name="plasma-nm5-vpnc"/>
-      <repopackage name="plasma5-addons"/>
-      <repopackage name="plasma5-addons-lang"/>
       <repopackage name="plasma5-defaults-openSUSE"/>
       <repopackage name="plasma5-desktop"/>
       <repopackage name="plasma5-desktop-emojier"/>
@@ -3638,8 +3630,6 @@
       <repopackage name="pulseaudio-utils"/>
       <repopackage name="pulseaudio-zsh-completion"/>
       <repopackage name="purge-kernels-service"/>
-      <repopackage name="purpose"/>
-      <repopackage name="purpose-lang"/>
       <repopackage name="pwgen"/>
       <repopackage name="python"/>
       <repopackage name="python-base"/>
@@ -3693,7 +3683,6 @@
       <repopackage name="python38-cmdln"/>
       <repopackage name="python38-configobj"/>
       <repopackage name="python38-constantly"/>
-      <repopackage name="python38-contextvars"/>
       <repopackage name="python38-cryptography"/>
       <repopackage name="python38-cssselect"/>
       <repopackage name="python38-curses"/>
@@ -3730,7 +3719,6 @@
       <repopackage name="python38-hyperframe"/>
       <repopackage name="python38-hyperlink"/>
       <repopackage name="python38-idna"/>
-      <repopackage name="python38-immutables"/>
       <repopackage name="python38-importlib-metadata"/>
       <repopackage name="python38-importlib-resources"/>
       <repopackage name="python38-incremental"/>
@@ -4863,6 +4851,7 @@
       <repopackage name="urlview"/>
       <repopackage name="usb_modeswitch"/>
       <repopackage name="usb_modeswitch-data"/>
+      <repopackage name="usbmuxd"/>
       <repopackage name="usbutils"/>
       <repopackage name="util-linux"/>
       <repopackage name="util-linux-lang"/>
