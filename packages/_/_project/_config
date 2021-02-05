@@ -1522,7 +1522,7 @@ Macros:
 # clamp_mtime_to_source_date_epoch Y
 
 # define which gcc package builds the system libraries
-%product_libs_gcc_ver 10
+%product_libs_gcc_ver 11
 # The following shlibs have latest versions built from GCC 6 sources
 %product_libs_gcc_ver_libasan3 6
 %product_libs_gcc_ver_libgo9 6
@@ -1542,6 +1542,10 @@ Macros:
 # The following shlibs have the latest version built from GCC 9 sources
 %product_libs_gcc_ver_libasan5 9
 %product_libs_gcc_ver_libgo14 9
+# The following shlibs have the latest version built from GCC 10 sources
+%product_libs_gcc_ver_libgphobos1 10
+%product_libs_gcc_ver_libgdruntime1 10
+%product_libs_gcc_ver_libgo16 10
 %gcc_version 10
 
 %ext_info .gz
