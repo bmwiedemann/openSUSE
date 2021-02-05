@@ -287,7 +287,7 @@
       <repopackage name="libfreetype6" arch="x86_64"/>
       <repopackage name="libfuse2" arch="x86_64"/>
       <repopackage name="libfuse3-3" arch="x86_64"/>
-      <repopackage name="libgcc_s1-gcc11"/>
+      <repopackage name="libgcc_s1"/>
       <repopackage name="libgcrypt20"/>
       <repopackage name="libgdbm6" arch="x86_64"/>
       <repopackage name="libgdbm_compat4" arch="x86_64"/>
@@ -298,7 +298,7 @@
       <repopackage name="libgmp10"/>
       <repopackage name="libgnutls30" arch="x86_64"/>
       <repopackage name="libgobject-2_0-0" arch="x86_64"/>
-      <repopackage name="libgomp1-gcc11" arch="x86_64"/>
+      <repopackage name="libgomp1" arch="x86_64"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libhavege2" arch="x86_64"/>
@@ -405,7 +405,7 @@
       <repopackage name="libsss_certmap0" arch="x86_64"/>
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
-      <repopackage name="libstdc++6-gcc11"/>
+      <repopackage name="libstdc++6"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtalloc2" arch="x86_64"/>
       <repopackage name="libtasn1" arch="x86_64"/>
