@@ -54,7 +54,7 @@
       <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
     </metadata>
     <repopackages>
-      <repopackage name=" patterns-microos-desktop-kde uninstallable: nothing provides qt5qmlimport(org.kde.bluezqt.1) &gt;= 0 needed by purpose-5.78.0-2.1.x86_64" arch="x86_64"/>
+      <repopackage name=" patterns-microos-desktop-kde uninstallable: nothing provides qt5qmlimport(QtQuick.VirtualKeyboard.2) &gt;= 1 needed by plasma5-workspace-5.20.5-3.2.x86_64" arch="x86_64"/>
       <repopackage name="aaa_base"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>
@@ -462,7 +462,7 @@
       <repopackage name="libfwupdplugin1" arch="x86_64"/>
       <repopackage name="libgbm1" arch="x86_64"/>
       <repopackage name="libgcab-1_0-0" arch="x86_64"/>
-      <repopackage name="libgcc_s1-gcc11"/>
+      <repopackage name="libgcc_s1"/>
       <repopackage name="libgck-1-0" arch="x86_64"/>
       <repopackage name="libgck-modules-gnome-keyring" arch="x86_64"/>
       <repopackage name="libgcr-3-1" arch="x86_64"/>
@@ -500,7 +500,7 @@
       <repopackage name="libgoa-1_0-0" arch="x86_64"/>
       <repopackage name="libgoa-backend-1_0-1" arch="x86_64"/>
       <repopackage name="libgobject-2_0-0" arch="x86_64"/>
-      <repopackage name="libgomp1-gcc11" arch="x86_64"/>
+      <repopackage name="libgomp1" arch="x86_64"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libgphoto2-6" arch="x86_64"/>
@@ -764,7 +764,7 @@
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
       <repopackage name="libstartup-notification-1-0" arch="x86_64"/>
-      <repopackage name="libstdc++6-gcc11"/>
+      <repopackage name="libstdc++6"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag1" arch="x86_64"/>
       <repopackage name="libtalloc2" arch="x86_64"/>

@@ -59,7 +59,7 @@
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libfido2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libfido2-udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libgcc_s1-gcc11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -96,7 +96,7 @@
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libstdc++6-gcc11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -586,7 +586,7 @@
     <package name="libgoa-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgoa-backend-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgobject-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="libgomp1-gcc11" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="libgomp1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgpgme11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libgphoto2-6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgraphene-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -962,7 +962,7 @@
     <package name="patterns-microos-defaults" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
     <package name="patterns-microos-desktop-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="patterns-microos-desktop-gnome" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name=" patterns-microos-desktop-kde uninstallable: nothing provides qt5qmlimport(org.kde.bluezqt.1) &gt;= 0 needed by purpose-5.78.0-2.1.x86_64" supportstatus="unsupported"/>
+    <package name=" patterns-microos-desktop-kde uninstallable: nothing provides qt5qmlimport(QtQuick.VirtualKeyboard.2) &gt;= 1 needed by plasma5-workspace-5.20.5-3.2.x86_64" supportstatus="unsupported"/>
     <package name="patterns-microos-hardware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="patterns-microos-ima_evm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
     <package name="patterns-microos-onlyDVD" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
