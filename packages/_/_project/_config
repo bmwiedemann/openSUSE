@@ -393,8 +393,8 @@ Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python3-tornado -python3-tornado4
-Prefer: python36-tornado -python36-tornado4 -python36-tornado6
-Prefer: python38-tornado -python38-tornado4 -python38-tornado6
+Prefer: python36-tornado -python36-tornado4 -python36-tornado5
+Prefer: python38-tornado -python38-tornado4 -python38-tornado5
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
