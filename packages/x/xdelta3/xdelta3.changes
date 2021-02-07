@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 29 08:50:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Run tests using upstrem test wrapper
+- Small packaging updates
+
+-------------------------------------------------------------------
 Mon Feb  4 16:08:36 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
 
 - do not require ancient ncompress for build in SLES 

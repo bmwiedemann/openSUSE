@@ -1,7 +1,7 @@
 #
 # spec file for package xdelta3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,18 @@ Release:        0
 Summary:        A diff utility which works with binary files
 License:        GPL-2.0-only AND Apache-2.0
 Group:          Productivity/Archiving/Compression
-Url:            http://xdelta.org/
+URL:            http://xdelta.org/
 Source0:        https://github.com/jmacd/xdelta-devel/releases/download/v%{version}/xdelta3-%{version}.tar.gz
 BuildRequires:  gcc-c++
-%if 0%{?opensuse}
-# Dependency of tests
-BuildRequires:  ncompress
-%endif
 BuildRequires:  python
 BuildRequires:  xz-devel
 # xdelta is being dropped
 Provides:       xdelta = %{version}
 Obsoletes:      xdelta < %{version}
+%if 0%{?opensuse}
+# Dependency of tests
+BuildRequires:  ncompress
+%endif
 
 %description
 Xdelta3 is a set of tools designed to compute changes between
@@ -43,17 +43,17 @@ changes between files.  The "delta files" that Xdelta3 manages are
 stored in RFC3284 (VCDIFF) format.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
 %if %{do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" CXXFLAGS="%{optflags} %{cflags_profile_generate}"
-  ./xdelta3 test 
-  make clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" CXXFLAGS="%{optflags} %{cflags_profile_feedback}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" CXXFLAGS="%{optflags} %{cflags_profile_generate}"
+  ./xdelta3 test
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}" CXXFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
+  %make_build CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
 %endif
 
 %install
@@ -66,14 +66,14 @@ ln -sv %{_mandir}/man1/xdelta3.1 \
   %{buildroot}%{_mandir}/man1/xdelta.1
 
 %check
-./xdelta3 test
+./xdelta3regtest
 
 %files
-%defattr(-, root, root)
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %{_bindir}/xdelta
 %{_bindir}/xdelta3
-%{_mandir}/man1/xdelta.1%{ext_man}
-%{_mandir}/man1/xdelta3.1%{ext_man}
+%{_mandir}/man1/xdelta.1%{?ext_man}
+%{_mandir}/man1/xdelta3.1%{?ext_man}
 
 %changelog

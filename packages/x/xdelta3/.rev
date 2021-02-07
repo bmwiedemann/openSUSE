@@ -113,4 +113,13 @@
   * why: contains useful info</comment>
     <requestid>671930</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>eca38f967379f9f8076b3a6797328c43</srcmd5>
+    <version>3.1.0</version>
+    <time>1612707402</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests using upstrem test wrapper
+- Small packaging updates (forwarded request 867685 from pluskalm)</comment>
+    <requestid>868892</requestid>
+  </revision>
 </revisionlist>
