@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:27:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * don't crash when building without baloo (kde#431730)
+  * Show button to open knetattach inline with URL nav on remove:// view (kde#431626)
+  * fix folder size calculation on FUSE and network file systems (kde#430778)
+  * Change copy location shortcut in dolphin so as to not conflict with Konsole panel (kde#426461)
+- Drop upstream patch:
+  * 0001-Show-button-to-open-knetattach-inline-with-URL-nav-o.patch
+
+-------------------------------------------------------------------
 Mon Jan 25 22:14:27 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Add upstream patch to properly show the network button in the
