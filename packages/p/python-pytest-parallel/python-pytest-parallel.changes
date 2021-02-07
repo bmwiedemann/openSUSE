@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  6 19:26:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Limit pytest to pytest5 as pytest6 is not supported yet
+  (gh#browsertron/pytest-parallel#91).
+
+-------------------------------------------------------------------
 Sun May  3 07:34:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.1.0:

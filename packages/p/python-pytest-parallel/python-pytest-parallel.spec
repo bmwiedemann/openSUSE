@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-parallel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,11 +29,12 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 3.0.0
+Requires:       python-pytest5 >= 3.0.0
 Requires:       python-tblib
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 3.0.0}
+# Pytest5 because of gh#browsertron/pytest-parallel#91
+BuildRequires:  %{python_module pytest5 >= 3.0.0}
 BuildRequires:  %{python_module pytest-html}
 BuildRequires:  %{python_module tblib}
 # /SECTION
