@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb  4 08:26:24 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.18
+  WF fft controls
+    * Restore averaging, fft pre filter, latency controls
+  Debug text
+    * add millisecond timing to debug time stamp
+  flarq build
+    * fix broken build for ./configure --disable-fldigi --enable-debug
+  Exit processing
+    * Set PTT off if user elects to close fldigi with PTT enabled.
+      - works for both Files/Exit and the dreaded windows decoration
+        bar 'X' button.
+  Scheduled Macro
+    * Add PTT OFF during scheduled count down
+    * Add clock display on status bar during scheduled count down
+    * remove end-of-line '\n' white space between macro tags, i.e.
+        <!WPM:24>
+        <LOCAL><!SKED:12:00>how now brown cow<RX>
+      becomes
+        ^!^!how now brown cow
+      after parser substitutions
+    * Add space ' ' to end of inserted file <FILE:...> if file does
+      not contain either ' ' or '\n' as last character
+  xmlrpc
+    * flrig detection update
+  flarq debug
+    * fix to allow --enable-debug with flarq build
+  Doc update
+    * CW CAT keying, add IC705 to list of tested transceivers
+
+-------------------------------------------------------------------
 Wed Dec  9 21:27:32 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.17
