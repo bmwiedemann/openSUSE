@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:28:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * The New Download button had an empty layout
+  * Don't create dangling iterators in TransferMultiSegKio
+  * Initialize Transfer::m_runningSeconds
+- Drop upstream patches:
+  * 0001-Initialize-Transfer-m_runningSeconds.patch
+  * 0002-Don-t-create-dangling-iterators-in-TransferMultiSegK.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 12:25:37 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
