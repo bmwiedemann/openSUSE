@@ -63,4 +63,12 @@
     <comment>Updated Package</comment>
     <requestid>856089</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c1c53b86ff369191b7fa767ed89c8199</srcmd5>
+    <version>1.0.1</version>
+    <time>1612707647</time>
+    <user>dimstar_suse</user>
+    <comment>TID000019786 (forwarded request 869593 from jrecord)</comment>
+    <requestid>869594</requestid>
+  </revision>
 </revisionlist>
