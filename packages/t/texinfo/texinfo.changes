@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 28 14:01:49 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use file requires for gzip to be able to use alternate
+  implementations
+
+-------------------------------------------------------------------
 Sat Oct 26 07:48:33 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.7:

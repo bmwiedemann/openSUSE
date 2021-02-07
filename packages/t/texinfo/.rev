@@ -548,4 +548,13 @@
     <comment></comment>
     <requestid>745177</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>4507476c09d203e697841b2e8e9cd558</srcmd5>
+    <version>6.7</version>
+    <time>1612707222</time>
+    <user>dimstar_suse</user>
+    <comment>- Use file requires for gzip to be able to use alternate
+  implementations (forwarded request 867509 from kukuk)</comment>
+    <requestid>867650</requestid>
+  </revision>
 </revisionlist>

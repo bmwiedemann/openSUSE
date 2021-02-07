@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,8 @@ makeinfo tool.
 
 %package     -n info
 Summary:        A Stand-Alone Terminal-Based Info Browser
-Requires:       gzip
+Requires:       /usr/bin/gunzip
+Requires:       /usr/bin/gzip
 
 %description -n info
 Info is a terminal-based program for reading documentation of computer
