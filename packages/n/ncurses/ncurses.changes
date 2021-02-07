@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb  1 07:58:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210130
+  + correct an off-by-one in comparison in waddch_literal() which caused
+    scrolling when a double-cell character would not fit at the lower
+    right corner of the screen (report by Benno Schulenberg).
+  + split-out att610+cvis, vt220+cvis, vt220+cvis8 -TD
+  + add vt220-base, for terminal emulators which generally have not
+    supported att610's blinking cursor control -TD
+  + use vt220+cvis in vt220, etc -TD
+  + use att610+cvis, xterm+tmux and ansi+enq in kitty -TD
+  + use vt220+cvis in st, terminology, termite since they ignore
+    blinking-cursor detail in att610+cvis -TD
+- Port patch ncurses-6.2.dif
+  * Skip cvvis entries where vt220+cvis is used
+  * Skip function keys in rxvt-basic as rxvt+pcfkeys and use=vt220+keypadcw
+    is used
+
+-------------------------------------------------------------------
+Mon Jan 25 13:04:21 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210123
+  + modify package/config scripts to provide an explicit -L option for
+    cases when the loader search path has other directories preceding
+    the one in which ncurses is installed (report by Yuri Victorovich).
+  + minor build-fixes in configure script and makefiles to work around
+    quirks of pmake.
+
+-------------------------------------------------------------------
 Wed Jan 20 20:43:02 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Don't skip test for qemu builds

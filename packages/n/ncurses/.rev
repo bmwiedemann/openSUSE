@@ -3061,4 +3061,33 @@
     adding &quot;-g&quot; flag to test/demo_new_pair to illustrate.</comment>
     <requestid>865250</requestid>
   </revision>
+  <revision rev="184" vrev="15">
+    <srcmd5>6e04596bb1bef3c396511a0fab6257d9</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1612707233</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20210130
+  + correct an off-by-one in comparison in waddch_literal() which caused
+    scrolling when a double-cell character would not fit at the lower
+    right corner of the screen (report by Benno Schulenberg).
+  + split-out att610+cvis, vt220+cvis, vt220+cvis8 -TD
+  + add vt220-base, for terminal emulators which generally have not
+    supported att610's blinking cursor control -TD
+  + use vt220+cvis in vt220, etc -TD
+  + use att610+cvis, xterm+tmux and ansi+enq in kitty -TD
+  + use vt220+cvis in st, terminology, termite since they ignore
+    blinking-cursor detail in att610+cvis -TD
+- Port patch ncurses-6.2.dif
+  * Skip cvvis entries where vt220+cvis is used
+  * Skip function keys in rxvt-basic as rxvt+pcfkeys and use=vt220+keypadcw
+    is used
+
+- Add ncurses patch 20210123
+  + modify package/config scripts to provide an explicit -L option for
+    cases when the loader search path has other directories preceding
+    the one in which ncurses is installed (report by Yuri Victorovich).
+  + minor build-fixes in configure script and makefiles to work around
+    quirks of pmake.</comment>
+    <requestid>868392</requestid>
+  </revision>
 </revisionlist>
