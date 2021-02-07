@@ -1,7 +1,7 @@
 #
 # spec file for package libexplain
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,10 @@ Patch0:         libexplain-1.4-largefile.patch
 Patch1:         libexplain-1.4-syscall.patch
 # PATCH-FIX-UPSTREAM libexplain-1.4-missing-defines.patch mpluskal@suse.com
 Patch2:         libexplain-1.4-missing-defines.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-build-failure-with-GCC10.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         sanitize-bison.patch
 BuildRequires:  bison
 BuildRequires:  ghostscript
 BuildRequires:  groff-full
@@ -89,6 +93,8 @@ Development files for the libexplain library.
 %patch0
 %patch1
 %patch2
+%patch3 -p1
+%patch4 -p1
 
 %build
 %configure

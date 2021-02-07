@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  4 21:55:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 10:
+  * 0001-Fix-build-failure-with-GCC10.patch
+- Add patch from Debian to fix failures with recent bison versions:
+  * sanitize-bison.patch
+
+-------------------------------------------------------------------
 Mon Nov 26 08:44:27 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Update license information
