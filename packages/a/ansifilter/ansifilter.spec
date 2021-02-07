@@ -1,7 +1,7 @@
 #
 # spec file for package ansifilter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without gui
 Name:           ansifilter
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later

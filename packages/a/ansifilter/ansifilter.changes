@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  4 22:07:51 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 2.18:
+  * Added support for OSC 8 (iterm2) Hyperlinks
+    (gl#saalen/ansifilter#27).
+
+-------------------------------------------------------------------
 Thu Oct  1 21:00:49 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 2.17:
