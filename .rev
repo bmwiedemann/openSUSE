@@ -146,4 +146,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>867645</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f1458fc9fecda77318b4998b51575138</srcmd5>
+    <version>0.6.2+4</version>
+    <time>1612707711</time>
+    <user>dimstar_suse</user>
+    <comment>- fix for newer dnspython
+  * add 0001-lift-requests-version-requirements.patch
+  * remove 0001-lift-requests-version-requirement.patch</comment>
+    <requestid>869913</requestid>
+  </revision>
 </revisionlist>
