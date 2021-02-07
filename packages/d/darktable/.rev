@@ -1407,4 +1407,15 @@ Togan
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>865998</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>f5c7d9e0e597a69014b37d0a8a0e2ebc</srcmd5>
+    <version>3.4.1</version>
+    <time>1612707728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.1
+  * https://github.com/darktable-org/darktable/releases/tag/release-3.4.1
+- Removed d10c290fb3b47bbc8fd90d6d1d7935b900c1caf6.patch
+</comment>
+    <requestid>869923</requestid>
+  </revision>
 </revisionlist>

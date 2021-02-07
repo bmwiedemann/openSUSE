@@ -85,7 +85,7 @@
 %endif
 
 Name:           darktable
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 %define pkg_name darktable
 %define pkg_version %{version}
@@ -106,7 +106,6 @@ Source98:       debian.tar.xz
 Source99:       README.openSUSE
 #
 Patch0:         darktable-old-glib.patch
-Patch1:         https://github.com/darktable-org/darktable/commit/d10c290fb3b47bbc8fd90d6d1d7935b900c1caf6.patch
 #
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools

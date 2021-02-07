@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  4 14:29:34 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.4.1
+  * https://github.com/darktable-org/darktable/releases/tag/release-3.4.1
+- Removed d10c290fb3b47bbc8fd90d6d1d7935b900c1caf6.patch
+
+-------------------------------------------------------------------
 Fri Jan 15 12:59:25 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Added libgmic to build dependencies on Debian/Ubuntu
