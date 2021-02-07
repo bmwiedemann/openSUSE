@@ -626,4 +626,29 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - SELinux: Make synchronisation work for both pre-SELinux snapshots and later snapshots; SELinux support should be ready for most tasks now.</comment>
     <requestid>847069</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>6c6181afaa975ae06b74c69f25080d7d</srcmd5>
+    <version>3.1.0</version>
+    <time>1612707256</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.1.0
+  - t-u: Support installing RPMs from the user's directory again
+  - Adapt selfupdate to new packaging
+  - Implement signal handling
+  - Remove empty text files
+- Add libselinux build time dependency
+- Remove RPM version check
+- Fix libstdc++ filesystem ABI incompatibility by using newer gcc version on old distributions. [boo#1181582]
+- Rework packaging based on Fedora packaging to separate all the components to remove the intrinsic requirement for Zypper
+- Version 3.0.0
+  - This release changes the internal structure, but should be identical to the previous release feature wise.
+  - Major parts of the previous Bash only application have been rewritten in C++ with the goal to provide an API around transactions; the transactional-update script is using that
+    new interface internally already, however the API should be considered experimental for now - if you are interested to use it, please notify us in
+    https://github.com/openSUSE/transactional-update/issues/52
+  - A new tool called &quot;tukit&quot; provides a C++ tool that can be wrapped by scripts to leverage the functionality. Please consider it experimental for now, the commands may still change.
+  - Bugfixes:
+    - Implement support for system offline update [boo#1180808]
+    - Add statistics files to update environment [boo#1173282]</comment>
+    <requestid>868670</requestid>
+  </revision>
 </revisionlist>
