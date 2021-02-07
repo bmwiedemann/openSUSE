@@ -18,7 +18,7 @@
 
 %define c_lib   libvc0
 Name:           libvc
-Version:        008
+Version:        009
 Release:        0
 Summary:        Library to read and write vcard files
 License:        LGPL-2.1-only

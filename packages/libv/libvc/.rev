@@ -35,4 +35,13 @@
     ending CRLF</comment>
     <requestid>868297</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c5dad63a4a317fbb28612a1c91c9386</srcmd5>
+    <version>009</version>
+    <time>1612707665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 009:
+  * This version fixes minor warnings from libtoolize</comment>
+    <requestid>869689</requestid>
+  </revision>
 </revisionlist>
