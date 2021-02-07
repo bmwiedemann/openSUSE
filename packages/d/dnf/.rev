@@ -428,4 +428,31 @@
   + New config option module_allow_stream_switch allows switching enabled streams</comment>
     <requestid>853403</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>11023a909871686227ce332bb3ff0477</srcmd5>
+    <version>4.6.0</version>
+    <time>1612707392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.0
+  + Log scriptlets output also for API users (rh#1847340)
+  + Fix module remove --all when no match spec (rh#1904490)
+  + yum.misc.decompress() to handle uncompressed files (rh#1895059)
+  + Make an error message more informative (rh#1814831)
+  + Add deprecation notice to help messages of deplist
+  + Remove Base._history_undo_operations() as it was replaced with transaction_sr code
+  + cli/output: Return number of listed packages from listPkgs()
+  + Clean up history command error handling
+  + [doc] Describe install with just a name and obsoletes (rh#1902279)
+  + Add api function fill_sack_from_repos_in_cache to allow loading a repo cache with repomd and (solv file or primary xml) only (rh#1865803)
+  + Packages installed/removed via DNF API are logged into dnf.log (rh#1855158)
+  + Support comps groups in history redo (rh#1657123, rh#1809565, rh#1809639)
+  + Support comps groups in history rollback (rh#1657123, rh#1809565, rh#1809639)
+  + Support comps groups in history undo (rh#1657123, rh#1809565, rh#1809639)
+  + New optional parameter for filter_modules enables following modular obsoletes based on a config option module_obsoletes
+  + Add get_header() method to the Package class (rh#1876606)
+  + Fix documentation of globs not supporting curly brackets (rh#1913418)
+
+- Fix a typo.</comment>
+    <requestid>868791</requestid>
+  </revision>
 </revisionlist>
