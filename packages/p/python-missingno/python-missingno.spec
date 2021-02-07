@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# Scipy, Numpy, Seaborn follow NEP29 dropping support for Python 3.6
+%define         skip_python36 1
 Name:           python-missingno
 Version:        0.4.2
 Release:        0
@@ -65,6 +67,7 @@ BuildRequires:  %{python_module seaborn}
 %doc QuickStart.ipynb
 %doc paper.bib paper.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/missingno
+%{python_sitelib}/missingno-%{version}*-info
 
 %changelog
