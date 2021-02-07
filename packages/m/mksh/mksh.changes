@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 27 12:39:20 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+- update-alternatives call must be in postun
+- remove obsolete pre-sle12 code
+
+-------------------------------------------------------------------
 Thu Nov 12 07:09:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 59c:

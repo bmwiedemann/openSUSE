@@ -1,7 +1,7 @@
 #
 # spec file for package mksh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Guido Berhoerster.
 # Copyright (c) 2013, 2014, 2019 Thorsten Glaser.
 #
@@ -36,8 +36,6 @@ BuildRequires:  perl
 BuildRequires:  screen
 BuildRequires:  sed
 BuildRequires:  update-alternatives
-%if 0%{?suse_version} >= 1315
-# replaces pdksh in openSUSE >= 13.2 and SLES >= 12
 Provides:       pdksh = %{version}
 Obsoletes:      pdksh < %{version}
 %if !0%{?is_opensuse}
@@ -46,13 +44,7 @@ Obsoletes:      ksh < %{version}
 %endif
 Provides:       /bin/ksh
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
-%else
-# for SLES or openSUSE < 13.2 which do not mksh
-Requires(post): grep
-Requires(postun): awk
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(postun): update-alternatives
 
 %description
 The MirBSD Korn Shell is an actively developed free implementation of the Korn
@@ -134,25 +126,33 @@ install -d %{buildroot}/bin
 for shell in mksh lksh; do
     install -D -p -m 755 ${shell} %{buildroot}%{_bindir}/${shell}
     install -D -p -m 644 ${shell}.1 %{buildroot}%{_mandir}/man1/${shell}.1
+%if !0%{?usrmerged}
     ln -s %{_bindir}/${shell} %{buildroot}/bin/${shell}
+%endif
 done
 install -d -m 755 %{buildroot}%{_sysconfdir}/alternatives
 ln -s %{_sysconfdir}/bash.bashrc %{buildroot}%{_sysconfdir}/mkshrc
-%if 0%{?suse_version} >= 1315
 # compatibility symlinks for pdksh, lksh replaces pdksh in openSUSE >= 13.2
+%if !0%{?usrmerged}
 ln -s /bin/lksh %{buildroot}/bin/pdksh
+%endif
 ln -s %{_bindir}/lksh %{buildroot}%{_bindir}/pdksh
 ln -s %{_mandir}/man1/lksh.1%{ext_man} \
     %{buildroot}%{_mandir}/man1/pdksh.1%{ext_man}
 # symlinks for update-alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/ksh \
+%if !0%{?usrmerged}
     %{buildroot}%{_sysconfdir}/alternatives/usr-bin-ksh \
+%endif
     %{buildroot}%{_sysconfdir}/alternatives/ksh.1%{ext_man}
+%if 0%{?usrmerged}
+ln -sf %{_sysconfdir}/alternatives/ksh %{buildroot}/%{_bindir}/ksh
+%else
 ln -sf %{_sysconfdir}/alternatives/ksh %{buildroot}/bin/ksh
 ln -sf %{_sysconfdir}/alternatives/usr-bin-ksh %{buildroot}/%{_bindir}/ksh
+%endif
 ln -sf %{_sysconfdir}/alternatives/ksh.1%{ext_man} \
     %{buildroot}/%{_mandir}/man1/ksh.1%{ext_man}
-%endif
 
 %check
 # should always run in a clean environment as otherwise
@@ -191,57 +191,47 @@ fi
 %clean
 rm -Rf %{buildroot}
 
-%if 0%{?suse_version} >= 1315
 %post
 %{_sbindir}/update-alternatives \
+%if 0%{?usrmerged}
+  --install %{_bindir}/ksh ksh %{_bindir}/lksh 15 \
+%else
   --install /bin/ksh ksh %{_bindir}/lksh 15 \
   --slave %{_bindir}/ksh usr-bin-ksh %{_bindir}/lksh \
+%endif
   --slave %{_mandir}/man1/ksh.1%{?ext_man} ksh.1%{?ext_man} %{_mandir}/man1/lksh.1%{?ext_man}
 
-%preun
-if test $1 -eq 0 ; then
-    %{_sbindir}/update-alternatives --remove ksh /bin/lksh
+%postun
+%if 0%{?usrmerged}
+if [ ! -f %{_bindir}/lksh ] ; then
+    %{_sbindir}/update-alternatives --remove ksh %{_bindir}/lksh
 fi
 %else
-# for SLE or openSUSE < 13.2 which do not support mksh
-%post
-for entry in /bin/mksh %{_bindir}/mksh; do
-    grep -q ${entry} %{_sysconfdir}/shells ||\
-        printf '%%s\n' ${entry} >>%{_sysconfdir}/shells
-done
-
-%postun
-test -x %{_bindir}/mksh && awk '
-($1 != "/bin/mksh") && ($1 != "%{_bindir}/mksh") {
-    line[n++] = $0
-}
-END {
-    for (i = 0; i < n; i++) {
-        print line[i] >"%{_sysconfdir}/shells"
-    }
-}' '%{_sysconfdir}/shells' || true
+if [ ! -f /bin/lksh ] ; then
+    %{_sbindir}/update-alternatives --remove ksh /bin/lksh
+fi
 %endif
 
 %files
 %defattr(-,root,root)
 %doc examples/dot.mkshrc
 %{_sysconfdir}/mkshrc
-/bin/mksh
-/bin/lksh
 %{_bindir}/mksh
 %{_bindir}/lksh
 %{_mandir}/man1/mksh.1%{?ext_man}
 %{_mandir}/man1/lksh.1%{?ext_man}
-%if 0%{?suse_version} >= 1315
-/bin/pdksh
 %{_bindir}/pdksh
 %{_mandir}/man1/pdksh.1%{?ext_man}
-/bin/ksh
 %{_bindir}/ksh
 %{_mandir}/man1/ksh.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/ksh
-%ghost %{_sysconfdir}/alternatives/usr-bin-ksh
 %ghost %{_sysconfdir}/alternatives/ksh.1%{?ext_man}
+%if !0%{?usrmerged}
+/bin/mksh
+/bin/lksh
+/bin/ksh
+/bin/pdksh
+%ghost %{_sysconfdir}/alternatives/usr-bin-ksh
 %endif
 
 %changelog

@@ -427,4 +427,14 @@ The next upstream release (R58 most likely) will add -fno-lto to CFLAGS and LDFL
     <comment></comment>
     <requestid>848112</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6131eebb975829e1c0360c61bf23a9a1</srcmd5>
+    <version>59c</version>
+    <time>1612707693</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare usrmerge (boo#1029961)
+- update-alternatives call must be in postun
+- remove obsolete pre-sle12 code (forwarded request 868403 from lnussel)</comment>
+    <requestid>869783</requestid>
+  </revision>
 </revisionlist>
