@@ -63,4 +63,24 @@
     <comment></comment>
     <requestid>827393</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8949774bbf441b4505f4d159c5c49153</srcmd5>
+    <version>1.1.0</version>
+    <time>1612707654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.1.0
+  * Prevent invalid flag combinations when creating a database.
+  * Add a Cursor.getmulti method with optional buffer support.
+
+- Update to v1.0.0
+  * Start of new semantic versioning scheme.  This would be a minor
+    version bump from the 0.99 release if it were semantically
+    versioned.
+  * Allow environment copy to take a passed-in transaction.
+    This is the first released feature that requires a (very small)
+    patch to the underlying C library.  By default, the patch will
+    be applied unless this module is built with LMDB_PURE
+    environment variable set.</comment>
+    <requestid>869612</requestid>
+  </revision>
 </revisionlist>

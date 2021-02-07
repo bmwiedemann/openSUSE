@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb  5 03:09:49 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.1.0
+  * Prevent invalid flag combinations when creating a database.
+  * Add a Cursor.getmulti method with optional buffer support.
+
+-------------------------------------------------------------------
+Sun Oct 11 17:00:51 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.0.0
+  * Start of new semantic versioning scheme.  This would be a minor
+    version bump from the 0.99 release if it were semantically
+    versioned.
+  * Allow environment copy to take a passed-in transaction.
+    This is the first released feature that requires a (very small)
+    patch to the underlying C library.  By default, the patch will
+    be applied unless this module is built with LMDB_PURE
+    environment variable set.
+
+-------------------------------------------------------------------
 Mon Aug 17 16:04:47 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to v0.99
