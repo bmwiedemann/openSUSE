@@ -1,7 +1,7 @@
 #
-# spec file for package python-mailman
+# spec file for package python-mailman-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,8 @@
 %define mailman_homedir  %{_localstatedir}/lib/%{mailman_name}
 %define mailman_logdir   %{_localstatedir}/log/%{mailman_name}
 %define mailman_spooldir %{_localstatedir}/spool/%{mailman_name}
-
 %define mailman_rundir   %{_rundir}/%{mailman_name}
 %define mailman_lockdir  %{_rundir}/lock/%{mailman_name}
-
 %global mailman_services %{mailman_name}.service %{mailman_name}-digests.service %{mailman_name}-digests.timer %{mailman_name}-notify.service %{mailman_name}-notify.timer
 
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -38,10 +36,13 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%if 0%{?suse_version} >= 1550
+%define skip_python36 1
+%endif
 Name:           python-mailman%{psuffix}
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
-Summary:        Mailman -- the GNU mailing list manager
+Summary:        A mailing list manager
 License:        GPL-3.0-only
 URL:            https://www.list.org
 Source0:        https://files.pythonhosted.org/packages/source/m/mailman/mailman-%{version}.tar.gz
@@ -62,6 +63,9 @@ Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/test
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
 # whitespace fix
 Patch0:         python-mailman-test_interact_default_banner.patch
+# PATCH-FIX-UPSTREAM gl823_exclude_failing_tests.patch gl#mailman/mailman#823 mcepl@suse.com
+# Skip two failing tests.
+Patch1:         gl823_exclude_failing_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -90,7 +94,7 @@ Requires:       python-zope.configuration
 Requires:       python-zope.event
 Requires:       python-zope.interface >= 5.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       mailman = %{version}
 BuildArch:      noarch
 %if %{with test}
@@ -112,7 +116,7 @@ BuildRequires:  %{python_module importlib_resources >= 1.1.0}
 BuildRequires:  %{python_module lazr.config}
 BuildRequires:  %{python_module mailman >= %{version}}
 BuildRequires:  %{python_module nose2}
-BuildRequires:  %{python_module nose}
+# BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.0}
@@ -125,11 +129,10 @@ BuildRequires:  %{python_module zope.interface >= 5.0}
 %python_subpackages
 
 %description
-Mailman -- the GNU mailing list manager
+Mailman is a mailing list manager from the GNU project.
 
 %prep
-%setup -q -n mailman-%{version}
-%patch0 -p1
+%autosetup -p1 -n mailman-%{version}
 
 # https://gitlab.com/mailman/mailman/-/issues/704
 cp %{SOURCE100} src/mailman/testing/

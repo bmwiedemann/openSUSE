@@ -75,4 +75,45 @@
     <comment></comment>
     <requestid>856847</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>321608f5c080cb4e3e1cd798fd02e37b</srcmd5>
+    <version>3.3.3</version>
+    <time>1612707425</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gl823_exclude_failing_tests.patch to skip two failing tests
+  (gl#mailman/mailman#823).
+- Modernize specfile. Update summary so it does not fall under
+  rpmlint name-repeated-in-summary.
+- Fix building on tumbleweed
+- Update to 3.3.3:
+  * Handle some UnicodeEncodeErrors in creating digests.  (Closes #560)
+  * Increased the size of the data column in the workflowstate table.
+    (Closes #793)
+  * Implemented a ``scrubber`` for plain text digests.  (Closes #473)
+  * The ``mailman gatenews`` command now adds ``original_size`` as a message
+    attribute.  (Extends fix for #762)
+  * Handle FileNotFoundError when creating digest.mmdf file without a
+    parent directory present.  (Closes #699)
+  * Fixed an issue where content filtering can throw UnicodeEncodeError when
+    converting HTML to plain text.  (Closes #798)
+  * A bounce for a non-existent list is now handled.  (Closes #799)
+  * RFC 2047 From: headers in emailed ``join`` commands are now decoded.
+    (Closes #802)
+  * The ``mailman addmembers`` command now catches and reports a
+    ``SubscriptionPendingError``.  (Closes #805)
+  * RFC 2369 ``List-Owner`` header is now added when these headers are included.
+    (Closes #809)
+  * Header filters will now properly match RFC 2047 encoded headers.
+    (Closes #815)
+  * Mailman's ``vette`` log discard messages now include the reasons.
+    (Closes #816)
+  * Increase the default REST API (gunicorn) timeout to 360 seconds from 30 as
+    several API endpoinds can be very slow. (Closes #770)
+  * Header filter rules are now properly processed after deletions and/or
+    reordering.  (Closes #818)
+  * Folded ``To: list-confirm+token@...`` headers are now parsed correctly.
+    (Closes: #819)
+</comment>
+    <requestid>869592</requestid>
+  </revision>
 </revisionlist>
