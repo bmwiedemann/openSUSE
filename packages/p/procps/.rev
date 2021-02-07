@@ -1162,4 +1162,19 @@ provide distro defaults in a sane way. (forwarded request 71353 from lnussel)</c
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853759</requestid>
   </revision>
+  <revision rev="118" vrev="6">
+    <srcmd5>d6195d8aaf687418f040988ce59d0254</srcmd5>
+    <version>3.3.16</version>
+    <time>1612707399</time>
+    <user>dimstar_suse</user>
+    <comment>- Package translations in procps-lang.
+
+I don't know why nls was disabled.
+osc blame shows that `--disable-nls` is passed to configure script since at least 2012-06-04.
+Didn't find a reason in changelog.
+So let's try to package them and see what happens.
+
+There are also man pages translations but they doesn't get installed automatically for some reason + it's probably already provided by manpages-l10n (https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/6) so let's keep it that way. (forwarded request 868776 from 1Antoine1)</comment>
+    <requestid>868827</requestid>
+  </revision>
 </revisionlist>

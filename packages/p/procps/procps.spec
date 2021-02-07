@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@
 %bcond_without  bin2usr
 %endif
 %bcond_without  pidof
+%bcond_without  nls
 Name:           procps
 Version:        3.3.16
 Release:        0
@@ -86,6 +87,10 @@ BuildRequires:  pkgconfig(libsystemd)
 Requires(post): %fillup_prereq
 Requires(post): %insserv_prereq
 Requires(postun): %insserv_prereq
+%endif
+
+%if %{with nls}
+%lang_package
 %endif
 
 %description
@@ -167,7 +172,9 @@ export LFS_CFLAGS="$(getconf LFS_CFLAGS)"
 %global optflags	%{optflags} -D_GNU_SOURCE $LFS_CFLAGS -DCPU_ZEROTICS -DUSE_X_COLHDR -pipe
 %configure		\
     --disable-static	\
+%if !%{with nls}
     --disable-nls	\
+%endif
     --disable-rpath	\
     --disable-kill	\
 %if !%{with pidof}
@@ -274,6 +281,9 @@ ln -s /bin/ps      %{buildroot}%{_bindir}/ps
 ln -s /bin/pgrep   %{buildroot}%{_bindir}/pgrep
 ln -s /bin/pkill   %{buildroot}%{_bindir}/pkill
 ln -s /sbin/sysctl %{buildroot}%{_sbindir}/sysctl
+%endif
+%if %{with nls}
+%find_lang procps-ng
 %endif
 
 %post   -n %{libname} -p /sbin/ldconfig
@@ -409,5 +419,9 @@ test $error = no || exit 1
 %files -n %{libname}
 %defattr (-,root,root,755)
 %{_libdir}/libprocps.so.%{somajor}*
+
+%if %{with nls}
+%files lang -f procps-ng.lang 
+%endif
 
 %changelog
