@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:28:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Large directories were not being added to data projects with all their contents
+
+-------------------------------------------------------------------
 Tue Jan  5 12:24:55 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
