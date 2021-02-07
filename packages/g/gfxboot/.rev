@@ -1217,4 +1217,15 @@
     <comment>Rebased fix for RPM 4.16; plus changelog order fix (forwarded request 847900 from dimstar)</comment>
     <requestid>847901</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>5c969b3d16bdcc80b029f37266678074</srcmd5>
+    <version>4.5.74</version>
+    <time>1612707234</time>
+    <user>dimstar_suse</user>
+    <comment>--------------------------------------------------------------------
+- merge gh#openSUSE/gfxboot#50
+- Do not generate .note.gnu.property section.
+- 4.5.74</comment>
+    <requestid>868395</requestid>
+  </revision>
 </revisionlist>
