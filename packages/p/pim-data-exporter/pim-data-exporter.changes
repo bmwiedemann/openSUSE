@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:30:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Don't copy empty exporteddata information file (kde#429895)
+  * Fix store archive info.
+
+-------------------------------------------------------------------
 Tue Jan  5 12:27:23 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
