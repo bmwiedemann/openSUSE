@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  5 12:52:20 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.4
+  * fixed crash when changing audio parameters
+  * fixed memory leak
+  * removed lyrics.wikia.com provider (service was closed)
+  * using plain text in the KDE tray tooltip
+  * updated Dutch translation
+  * updated Galician translation
+  * updated Spanish translation
+  * updated Bulgarian translation
+
+-------------------------------------------------------------------
 Fri Dec 18 12:47:57 UTC 2020 - aloisio@gmx.com
 
 - Update to version 1.4.3
