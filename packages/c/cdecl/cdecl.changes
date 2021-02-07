@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  6 00:23:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.5
+  * Added enum, class, struct, and union attribute specifier
+    support.
+  * Added fixed-type enum support.
+  * Added C2X __attr__ aliases.
+  * Added support for parsing C++ attribute arguments.
+  * Added support for parsing C++17 using in attributes.
+  * Added support for parsing GNU __attribute__.
+
+-------------------------------------------------------------------
 Sun Jan 24 11:07:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.4

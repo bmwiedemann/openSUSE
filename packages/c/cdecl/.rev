@@ -250,4 +250,12 @@
     <comment>- Update to release 9.4</comment>
     <requestid>866811</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4c02a6e050fb6954ef560447f92b28cd</srcmd5>
+    <version>9.5</version>
+    <time>1612707713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.5</comment>
+    <requestid>869924</requestid>
+  </revision>
 </revisionlist>
