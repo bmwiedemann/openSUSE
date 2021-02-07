@@ -18,6 +18,7 @@
 
 %define packagename Cirq
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cirq
 Version:        0.9.1
@@ -64,6 +65,8 @@ Requires:       python-scipy
 Requires:       python-sortedcontainers >= 2.0
 Requires:       python-sympy
 Requires:       python-typing_extensions
+# quimb does not support 32 bit arch.
+ExcludeArch:    %ix86 %arm ppc
 BuildArch:      noarch
 %python_subpackages
 

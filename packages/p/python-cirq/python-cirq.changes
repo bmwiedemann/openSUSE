@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  3 13:03:35 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36: There are NEP 29 packages in the dependencies.
+- Don't try to build this noarch package in i586, because quimb is
+  not available for that
+
+-------------------------------------------------------------------
 Sun Jul 19 15:42:41 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Initail package release.
