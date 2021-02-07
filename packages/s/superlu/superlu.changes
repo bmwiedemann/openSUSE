@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 28 17:45:16 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.
+
+-------------------------------------------------------------------
 Mon Nov 16 14:41:49 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Fix package name, re-add lines removed by mistake. 

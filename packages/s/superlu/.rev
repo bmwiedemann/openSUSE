@@ -248,4 +248,14 @@ Readded changes dropped by accident:
     <comment></comment>
     <requestid>848906</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>0deddb71b540d7f5a4a64fdb46b5e7cf</srcmd5>
+    <version>5.2.2</version>
+    <time>1612707400</time>
+    <user>dimstar_suse</user>
+    <comment>- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.</comment>
+    <requestid>868870</requestid>
+  </revision>
 </revisionlist>

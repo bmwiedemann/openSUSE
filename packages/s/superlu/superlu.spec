@@ -1,7 +1,7 @@
 #
 # spec file for package superlu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,7 +125,7 @@ http://www.netlib.org.
 Summary:        SuperLU matrix solver
 Group:          System/Libraries
 %if %{with hpc}
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
+%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc}
 Requires:       lua-lmod >= 7.6.1
 %hpc_requires
 %endif
@@ -139,7 +139,7 @@ Summary:        Headers and development library for lib%{name}%{?_sover}
 Group:          Development/Libraries/C and C++
 Requires:       %libname = %version
 %if %{with hpc}
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
+%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
 %hpc_requires_devel
 %endif
 Recommends:     %name-doc
