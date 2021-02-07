@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  2 23:22:53 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.5:
+  * [Bug] stb_vorbis: Fix decoding of Vorbis streams without
+    comments which affected most Vorbis samples since stb_vorbis
+    v1.20.
+  * openmpt::ext::interactive::set_pitch_factor wasn’t applied to
+    OPL voices.
+  * OPL channel state (in particular current patch) is now updated
+    when seeking.
+  * The FT2 tremolo quirk is now also applied to MOD files.
+    FT2 just copied the quirky code from ProTracker!
+  * DMF: Preserve effects better in some situations where there is
+    more than one effect in a pattern cell.
+  * DMF: Improve import of finetune effect with parameters larger
+    than +/-15.
+
+-------------------------------------------------------------------
 Wed Dec 16 02:53:46 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.5.4:

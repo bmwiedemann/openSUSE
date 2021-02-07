@@ -464,4 +464,25 @@ Changes in 0.5.3:
     data).</comment>
     <requestid>856261</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>11c01472766f78064d4331fa03e1dcfb</srcmd5>
+    <version>0.5.5</version>
+    <time>1612707386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.5:
+  * [Bug] stb_vorbis: Fix decoding of Vorbis streams without
+    comments which affected most Vorbis samples since stb_vorbis
+    v1.20.
+  * openmpt::ext::interactive::set_pitch_factor wasn’t applied to
+    OPL voices.
+  * OPL channel state (in particular current patch) is now updated
+    when seeking.
+  * The FT2 tremolo quirk is now also applied to MOD files.
+    FT2 just copied the quirky code from ProTracker!
+  * DMF: Preserve effects better in some situations where there is
+    more than one effect in a pattern cell.
+  * DMF: Improve import of finetune effect with parameters larger
+    than +/-15.</comment>
+    <requestid>868777</requestid>
+  </revision>
 </revisionlist>
