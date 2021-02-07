@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:28:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Fix notifications in the KDE Connect plasmoid (kde#432337)
+  * UseHighDpiPixmaps in kdeconnectd and kdeconnect-indicator
+  * Remove OnlyShowIn from daemon desktop file
+- Add upstream patch:
+  * 0001-Don-t-escape-notification-title-text.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 12:25:20 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1

@@ -1,0 +1,41 @@
+From 893ede696038ce52f0c9ada3999b0d40bbe04692 Mon Sep 17 00:00:00 2001
+From: Bharadwaj Raju <bharadwaj.raju777@protonmail.com>
+Date: Tue, 2 Feb 2021 12:54:16 +0000
+Subject: [PATCH] Don't escape notification title text
+
+Notifications don't support markup in title text, so escaping it causes
+unintended HTML entities like &amp; to show up instead of the actual
+text.
+
+
+(cherry picked from commit 26a8ca7fe98ab77079f836a7fed9e888c8d046a6)
+---
+ plugins/notifications/notification.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/notifications/notification.cpp b/plugins/notifications/notification.cpp
+index e5206b9e..0baf0001 100644
+--- a/plugins/notifications/notification.cpp
++++ b/plugins/notifications/notification.cpp
+@@ -88,15 +88,16 @@ void Notification::createKNotification(const NetworkPacket& np)
+     }
+ 
+     QString escapedTitle = m_title.toHtmlEscaped();
++    // notification title text does not have markup, but in some cases below it is used in body text so we escape it
+     QString escapedText = m_text.toHtmlEscaped();
+     QString escapedTicker = m_ticker.toHtmlEscaped();
+ 
+     if (NotificationServerInfo::instance().supportedHints().testFlag(NotificationServerInfo::X_KDE_DISPLAY_APPNAME)) {
+-        m_notification->setTitle(escapedTitle);
++        m_notification->setTitle(m_title);
+         m_notification->setText(escapedText);
+         m_notification->setHint(QStringLiteral("x-kde-display-appname"), m_appName.toHtmlEscaped());
+     } else {
+-        m_notification->setTitle(m_appName.toHtmlEscaped());
++        m_notification->setTitle(m_appName);
+ 
+         if (m_title.isEmpty() && m_text.isEmpty()) {
+             m_notification->setText(escapedTicker);
+-- 
+2.30.0
+
