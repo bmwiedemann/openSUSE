@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 28 15:22:02 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.33.0
+  - many bug fixes and new features
+- update_passwd_selinux_fix.patch upstream compile fix for SELinux
+
+-------------------------------------------------------------------
 Tue Jan  5 08:17:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.32.1

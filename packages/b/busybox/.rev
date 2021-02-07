@@ -681,4 +681,14 @@
   cron (workaround for [bbn#13426]) (forwarded request 860408 from kukuk)</comment>
     <requestid>860409</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>fc49122e29f6b3dde6523cc25cf86e38</srcmd5>
+    <version>1.33.0</version>
+    <time>1612707259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.33.0
+  - many bug fixes and new features
+- update_passwd_selinux_fix.patch upstream compile fix for SELinux (forwarded request 868684 from kukuk)</comment>
+    <requestid>868685</requestid>
+  </revision>
 </revisionlist>

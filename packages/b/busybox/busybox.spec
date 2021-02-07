@@ -17,7 +17,7 @@
 
 
 Name:           busybox
-Version:        1.32.1
+Version:        1.33.0
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
@@ -30,6 +30,8 @@ Source3:        busybox-static.config
 Source4:        man.conf
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
+# Compile fix from upstream
+Patch10:        update_passwd_selinux_fix.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -74,6 +76,7 @@ PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch10 -p1
 %patch100 -p0
 cp -a %{SOURCE1} docs/
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \
@@ -93,7 +96,8 @@ mv busybox busybox-static
 make -e %{?_smp_mflags} clean
 cp -a %{SOURCE2} .config
 make %{?_smp_mflags} -e oldconfig
-make -e %{?_smp_mflags}
+#make -e %{?_smp_mflags}
+make -e
 make -e doc busybox.links %{?_smp_mflags}
 %if 0%{?usrmerged}
 sed -i -e 's,^/\(s\?bin\)/,/usr/\1/,' busybox.links
