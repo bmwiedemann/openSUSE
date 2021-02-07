@@ -1,0 +1,25 @@
+From d5f4154db7c492de3f4cfa6105f7d5be949da308 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 3 Feb 2021 13:29:27 +0100
+Subject: [PATCH 2/2] Exclude loading stylesheet
+
+---
+ .../loadexternalreferencesurlinterceptor.cpp                    | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/messageviewer/src/viewer/webengine/loadexternalreferencesurlinterceptor/loadexternalreferencesurlinterceptor.cpp b/messageviewer/src/viewer/webengine/loadexternalreferencesurlinterceptor/loadexternalreferencesurlinterceptor.cpp
+index a7a49fcb6c..2aa69c3c21 100644
+--- a/messageviewer/src/viewer/webengine/loadexternalreferencesurlinterceptor/loadexternalreferencesurlinterceptor.cpp
++++ b/messageviewer/src/viewer/webengine/loadexternalreferencesurlinterceptor/loadexternalreferencesurlinterceptor.cpp
+@@ -35,6 +35,8 @@ bool LoadExternalReferencesUrlInterceptor::interceptRequest(QWebEngineUrlRequest
+             return true;
+         } else if (info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeFontResource) {
+             return true;
++        } else if (info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeStylesheet) {
++            return true;
+         }
+     }
+     return false;
+-- 
+2.30.0
+
