@@ -1,7 +1,7 @@
 #
 # spec file for package libftdi1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 %define sover -2
 %define libname %{name}%{sover}
 Name:           libftdi1
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Library to program and control the FTDI USB controller
-License:        LGPL-2.1-or-later AND GPL-2.0-with-classpath-exception
+License:        LGPL-2.1-only AND GPL-2.0-only AND GPL-2.0-with-classpath-exception
 Group:          Hardware/Other
 URL:            https://www.intra2net.com/en/developer/libftdi
-Source:         http://www.intra2net.com/en/developer/libftdi/download/libftdi1-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM libftdi-cmake.patch -- CMake: move options to a dedicated file
-Patch1:         libftdi-cmake.patch
+Source:         https://www.intra2net.com/en/developer/libftdi/download/libftdi1-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM -- http://developer.intra2net.com/git/?p=libftdi;a=patch;h=11a50ae5b80b3e03694a19e84513345d0794e563
+Patch0:         Fix-building-unit-tests-without-FTDIPP.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -46,6 +46,7 @@ This library is used by many programs accessing FTDI USB-to-RS232 converters.
 
 %package -n %{libname}
 Summary:        Library to program and control the FTDI USB controller
+License:        LGPL-2.1-only
 Group:          System/Libraries
 
 %description -n %{libname}
@@ -54,6 +55,7 @@ This library is used by many programs accessing FTDI USB-to-RS232 converters.
 
 %package -n python3-%{name}
 Summary:        Python 3 binding for libftdi1
+License:        LGPL-2.1-only AND GPL-2.0-only AND GPL-2.0-with-classpath-exception
 Group:          Development/Languages/Python
 
 %description -n python3-%{name}
@@ -63,7 +65,8 @@ This library is used by many programs accessing FTDI USB-to-RS232 converters.
 This package provides the python binding for libftdi.
 
 %package devel
-Summary:        Header files and static libraries for libftdi
+Summary:        Header files for libftdi1
+License:        LGPL-2.1-only AND GPL-2.0-only AND GPL-2.0-with-classpath-exception
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       pkgconfig(libusb-1.0)
@@ -73,8 +76,7 @@ Header files and static libraries for libftdi.
 This library is used by many programs accessing FTDI USB-to-RS232 converters.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -94,7 +96,7 @@ install -pm 0644 build/doc/man/man3/[^_]*.3 \
   %{buildroot}%{_mandir}/man3
 
 %check
-make -C build check
+%ctest
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
