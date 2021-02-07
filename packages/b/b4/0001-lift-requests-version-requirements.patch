@@ -1,0 +1,31 @@
+From be92fafe2b4d80e1ef09c9f594f1f68920ee6523 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Fri, 18 Dec 2020 09:57:54 +0100
+Subject: [PATCH] lift "requests" version requirements
+Patch-upstream: it will get fixed eventually
+
+We have requests-2.25, dnspython-2.0.1 in TW...
+---
+ setup.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 358e6a7a..952ad861 100644
+--- a/setup.py
++++ b/setup.py
+@@ -41,9 +41,9 @@ setup(
+     data_files = [('share/man/man5', ['man/b4.5'])],
+     keywords=['git', 'lore.kernel.org', 'patches'],
+     install_requires=[
+-        'requests~=2.24.0',
+-        'dkimpy~=1.0.5',
+-        'dnspython~=2.0.0',
++        'requests>=2.24.0',
++        'dkimpy>=1.0.5',
++        'dnspython>=2.0.0',
+     ],
+     python_requires='>=3.6',
+     entry_points={
+-- 
+2.26.2
+
