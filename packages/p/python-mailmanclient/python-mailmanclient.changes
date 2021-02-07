@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb  4 00:11:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition (e.g. rpmlint's name-repeated-in-summary)
+
+-------------------------------------------------------------------
+Wed Feb  3 16:36:32 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to 3.3.2
+  * Add two new get_requests() and get_requests_count() to get pending
+    subscription requests``MailingList.get_requests`` is the new API to fetch
+    pending requests and supersedes the previous requests property. (See !121)
+  * Add Member.subscription_mode to determine if a User is subscribed or an
+    Address. (See !121)
+  * Add a new get_held_count() API to get a count of held messages for a
+    MailingList. (See !122)
+  * Add display_name to the pending subscription requests. (Fixes #55)
+  * Allow setting a Member's address attribute. (See !128)
+  * Add support for inviting an email address to join a list.
+  * Rewrite urls according to the baseurl used to instantiate Client instead of
+    relying on self_link. (Fixes #22)
+  * Add get_request API to MailingList to get individual request objects.
+  * Add send_welcome_message parameter to MailingList.subscribe() to suppress
+    welcome message. (Closes #61)
+- Fix build on tumbleweed
+
+-------------------------------------------------------------------
 Tue Aug  4 02:03:44 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Update to 3.3.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailmanclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%if 0%{?suse_version} >= 1550
+%define skip_python36 1
+%endif
 Name:           python-mailmanclient
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
-Summary:        mailmanclient -- Python bindings for Mailman REST API
+Summary:        Python bindings for the Mailman REST API
 License:        LGPL-3.0-only
 URL:            https://www.list.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mailmanclient/mailmanclient-%{version}.tar.gz
@@ -41,10 +44,10 @@ BuildRequires:  %{python_module requests}
 %python_subpackages
 
 %description
-mailmanclient -- Python bindings for Mailman REST API
+Python bindings for Mailman REST API.
 
 %prep
-%setup -q -n mailmanclient-%{version}
+%autosetup -n mailmanclient-%{version}
 
 %build
 export LC_ALL=C.UTF-8
