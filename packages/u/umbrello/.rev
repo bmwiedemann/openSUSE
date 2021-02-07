@@ -1330,4 +1330,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Applications 20.12.1</comment>
     <requestid>861334</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>26f31297445026b27fa17c71337fe258</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707640</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869461</requestid>
+  </revision>
 </revisionlist>
