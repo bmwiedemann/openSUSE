@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 03 10:33:22 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210203.a669e3a:
+  * Fix formatting
+  * Enhance alternate UI docu
+  * Ignore podman runlabel error if no RUN label exist
+  * Enhance documentation
+  * Check existence of volume directories (#15)
+
+-------------------------------------------------------------------
 Mon Jan 25 10:24:32 UTC 2021 - kukuk@suse.com
 
 - Update to version 2.0+git20210125.50611db:

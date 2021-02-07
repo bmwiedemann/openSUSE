@@ -91,4 +91,17 @@
   * Export more env variables inside (user) toolboxes</comment>
     <requestid>866535</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c4c524c73368ec12f6949263893fba0f</srcmd5>
+    <version>2.1+git20210203.a669e3a</version>
+    <time>1612707403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20210203.a669e3a:
+  * Fix formatting
+  * Enhance alternate UI docu
+  * Ignore podman runlabel error if no RUN label exist
+  * Enhance documentation
+  * Check existence of volume directories (#15)</comment>
+    <requestid>868896</requestid>
+  </revision>
 </revisionlist>
