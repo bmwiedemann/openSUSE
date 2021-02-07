@@ -63,4 +63,12 @@
   * Update testing to opensuse 15</comment>
     <requestid>811558</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>44644829924c4424eae4a5f7f01ab6bc</srcmd5>
+    <version>1.18.2</version>
+    <time>1612707697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869792</requestid>
+  </revision>
 </revisionlist>

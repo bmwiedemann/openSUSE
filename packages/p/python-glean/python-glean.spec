@@ -1,7 +1,7 @@
 #
 # spec file for package python-glean
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glean
-Version:        1.18.0
+Version:        1.18.2
 Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
@@ -33,13 +33,13 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Sphinx >= 1.1.2}
-BuildRequires:  %{python_module mock >= 1.0}
-BuildRequires:  %{python_module oslotest >= 1.1.0.0a1}
-BuildRequires:  %{python_module python-subunit}
-BuildRequires:  %{python_module testrepository >= 0.0.18}
-BuildRequires:  %{python_module testscenarios >= 0.4}
-BuildRequires:  %{python_module testtools >= 0.9.34}
+# The OpenStack package oslotest is only available for the primary python3 flavor on TW.
+# On Leap (backports at least), the python2 package conflicts with the python3 package.
+BuildRequires:  python3-oslotest >= 1.1.0.0a1
+BuildRequires:  python3-python-subunit
+BuildRequires:  python3-testrepository >= 0.0.18
+BuildRequires:  python3-testscenarios >= 0.4
+BuildRequires:  python3-testtools >= 0.9.34
 # /SECTION
 %python_subpackages
 
@@ -64,10 +64,9 @@ notably Rackspace, use configuration provided via a configuration drive.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand rm -rf .testrepository
-export PYTHON=$python
-$python setup.py test
-}
+# only test the primary python3 flavor
+export PYTHON=%{_bindir}/python3
+python3 setup.py testr
 
 %post
 %python_install_alternative glean-install
