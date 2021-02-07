@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  6 08:49:30 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.3.1
+  Fix:
+  * options: Fix custom options.json groups starting/ending
+  Documentation:
+  * Lighten README and update doc index page
+
+-------------------------------------------------------------------
 Thu Feb  4 05:51:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to verison 3.3.0
