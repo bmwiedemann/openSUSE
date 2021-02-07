@@ -1,7 +1,7 @@
 #
 # spec file for package busybox-links
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -631,6 +631,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/sh %{buildroot}%{_bindir}/sh
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
 cp -av %{_bindir}/zgrep %{buildroot}%{_bindir}
+cp -av %{_bindir}/zmore %{buildroot}%{_bindir}
+sed -e 's|PAGER-more|PAGER-less|g' %{buildroot}%{_bindir}/zmore > %{buildroot}%{_bindir}/zless
+chmod 755 %{buildroot}%{_bindir}/zless
 
 %post -n busybox-sh -p /usr/bin/ash
 %{_sbindir}/update-alternatives --quiet --force \
@@ -658,6 +661,8 @@ fi
 %files -n busybox-grep -f filelist-grep.txt
 %files -n busybox-gzip -f filelist-gzip.txt
 %{_bindir}/zgrep
+%{_bindir}/zless
+%{_bindir}/zmore
 %files -n busybox-hostname -f filelist-hostname.txt
 %files -n busybox-iproute2 -f filelist-iproute2.txt
 %files -n busybox-iputils -f filelist-iputils.txt

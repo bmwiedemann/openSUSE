@@ -117,4 +117,12 @@
     <comment>- busybox-sendmail also conflicts with the postfix-bdb flavor. (forwarded request 858968 from dimstar)</comment>
     <requestid>859004</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>a1b582998ea4ef39c1102209f064493c</srcmd5>
+    <version>MACRO</version>
+    <time>1612707260</time>
+    <user>dimstar_suse</user>
+    <comment>- Add zmore and zless (forwarded request 868693 from kukuk)</comment>
+    <requestid>868694</requestid>
+  </revision>
 </revisionlist>
