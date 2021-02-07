@@ -58,8 +58,8 @@ Suggests:       python-mpi4py
 Suggests:       python-petsc4py
 Suggests:       python-randomgen >= 1.18
 Suggests:       python-slepc4py
-# This package does not support 32 bit arch.
-ExcludeArch:    i586
+# This package does not support 32 bit arch, s390x fails too
+ExcludeArch:    %ix86 %arm ppc s390x
 %python_subpackages
 
 %description

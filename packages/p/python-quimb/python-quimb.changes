@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  5 20:13:46 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Generalize the ExcludeArch into %ix64 %arm ppc s390x
+
+-------------------------------------------------------------------
+Thu Feb  4 22:31:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Disable build for armv7l and s390x
+
+-------------------------------------------------------------------
 Tue Jan 19 09:36:08 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Disable build for python36 because scipy.
