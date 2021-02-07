@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb  5 07:41:04 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.11. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-11-has-been-released/10135
+  boo#1181825
+
+  + Bulk instance state change API
+  + GVRP support for dynamic vlan configuration
+  + Server-side instance storage pool migration
+  + Volume usage API
+
+  + VM: SR-IOV GPU Support
+  + VM: PCI Device Type
+  + VM: ISO images now exposed as cdrom
+
+-------------------------------------------------------------------
 Mon Jan 11 12:53:22 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.10. The full upstream changelog is available from:
