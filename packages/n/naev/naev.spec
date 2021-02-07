@@ -1,7 +1,7 @@
 #
 # spec file for package naev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           naev
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        2D action RPG space game
 License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Other
 URL:            http://naev.org/
 Source0:        %{name}-%{version}-source.tar.gz
+Source1:        %{name}-%{version}-overlay.tar.gz
 BuildRequires:  SDL2-devel
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
@@ -46,12 +47,14 @@ a large variety of equipment and a large galaxy to explore. The game is
 open-ended, letting you proceed at your own pace.
 
 %prep
-%setup -q
+%autosetup -b1
 
 %build
-%configure --enable-lua=shared --enable-debug=no
+# Remove 'docs' directory - fails in configure script, not needed for gameplay
+rm -r docs
 
-make %{?_smp_mflags}
+%configure --enable-lua=shared --enable-debug=no
+%make_build
 
 %install
 %make_install
@@ -77,7 +80,6 @@ find %{buildroot}%{_datadir}/%{name} -name '*.sh' -exec rm {} \;
 %fdupes %{buildroot}%{_datadir}/%{name}
 
 %files
-%defattr(-,root,root)
 %doc LICENSE README TODO dat/AUTHORS
 %doc %{_mandir}/man6/*
 %{_bindir}/%{name}
