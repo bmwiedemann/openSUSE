@@ -31,4 +31,13 @@
   * code cleanup and general usability improvements (Rob Latham, ANL)</comment>
     <requestid>649521</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae7106c53fd93c8c84d84a3b04b710f6</srcmd5>
+    <version>3.3.0</version>
+    <time>1612707663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.0:
+  * See provided NEWS for detailed list of changes</comment>
+    <requestid>869685</requestid>
+  </revision>
 </revisionlist>

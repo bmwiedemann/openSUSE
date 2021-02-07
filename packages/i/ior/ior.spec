@@ -1,7 +1,7 @@
 #
 # spec file for package ior
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,37 +17,48 @@
 
 
 Name:           ior
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        Parallel filesystem I/O benchmark
 License:        GPL-2.0-only
 Group:          System/Benchmark
 URL:            https://github.com/hpc/ior
 Source:         https://github.com/hpc/ior/releases/download/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  hdf5-openmpi2-devel
+BuildRequires:  librbd-devel
 BuildRequires:  libs3-devel
 BuildRequires:  openmpi2-devel
+BuildRequires:  zlib-devel
 Requires:       openmpi2
+Provides:       mdtest = %{version}
+Obsoletes:      mdtest < %{version}
 
 %description
 Parallel filesystem I/O benchmark
 
 %prep
-%setup -q
+%autosetup
+chmod -x README.md doc/USER_GUIDE COPYRIGHT
 
 %build
 export MPICC="%{_libdir}/mpi/gcc/openmpi2/bin/mpicc"
 %configure \
   --with-mpiio \
-  --with-posix
-make %{?_smp_mflags}
+  --with-posix \
+  --with-hdf5 \
+  --with-rados
+%make_build
 
 %install
 %make_install
 rm %{buildroot}%{_datadir}/USER_GUIDE
-chmod -x  {COPYRIGHT,ChangeLog,README,doc/USER_GUIDE}
+rm %{buildroot}%{_libdir}/libaiori.a
 
 %files
-%doc COPYRIGHT ChangeLog README doc/USER_GUIDE
+%doc NEWS README.md doc/USER_GUIDE
+%license COPYRIGHT
 %{_bindir}/%{name}
+%{_bindir}/mdtest
+%{_mandir}/man1/mdtest.1%{?ext_man}
 
 %changelog
