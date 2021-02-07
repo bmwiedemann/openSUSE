@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 05 17:46:04 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.16:
+  * Fix playback stopping after reordering songs
+    (glgo#World/lollypop#2709).
+  * Prevent LastFM/ListenBrainz scrobble loss upon e.g. loss of
+    Internet access.
+
+-------------------------------------------------------------------
 Sun Jan 31 12:48:03 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.15:

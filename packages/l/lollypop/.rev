@@ -1595,4 +1595,16 @@
     years (glgo#World/lollypop#2687).</comment>
     <requestid>868137</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>8ca757f6fbbfb109d77f8e1c0c87b982</srcmd5>
+    <version>1.4.16</version>
+    <time>1612707702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.16:
+  * Fix playback stopping after reordering songs
+    (glgo#World/lollypop#2709).
+  * Prevent LastFM/ListenBrainz scrobble loss upon e.g. loss of
+    Internet access.</comment>
+    <requestid>869825</requestid>
+  </revision>
 </revisionlist>
