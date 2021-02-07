@@ -17,13 +17,13 @@
 
 
 Name:           wlr-randr
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Utility to manage outputs of a Wayland compositor
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/emersion/wlr-randr
-Source:         https://github.com/emersion/wlr-randr/releases/download/v0.1.0/wlr-randr-%{version}.tar.gz
+Source:         https://github.com/emersion/wlr-randr/releases/download/v0.2.0/wlr-randr-%{version}.tar.gz
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-client)

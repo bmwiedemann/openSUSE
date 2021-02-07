@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  5 16:00:50 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- Bump version to 0.2.0
+  * Add --preferred
+  * Fix mode refresh rounding issue
+
+-------------------------------------------------------------------
 Sun Aug  2 10:16:17 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Initial wlr-randr package version 0.1.0
