@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 27 07:53:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.47:
+  * Restructured gowns to default to uid base of getuid().
+  * Augment NOPRIV libcap mode with the sticky NO_NEW_PRIVS prctl bit.
+  * Improve the usage and diagnostic message for setcap
+  * Documentation fixes, license declarations, example updates
+
+-------------------------------------------------------------------
 Mon Jan  4 08:46:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.46:

@@ -311,4 +311,16 @@
   * Added build support for not building shared libraries</comment>
     <requestid>860344</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2de27d618e145db35348ce9e54c9a6e0</srcmd5>
+    <version>2.47</version>
+    <time>1612707215</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.47:
+  * Restructured gowns to default to uid base of getuid().
+  * Augment NOPRIV libcap mode with the sticky NO_NEW_PRIVS prctl bit.
+  * Improve the usage and diagnostic message for setcap
+  * Documentation fixes, license declarations, example updates</comment>
+    <requestid>867074</requestid>
+  </revision>
 </revisionlist>
