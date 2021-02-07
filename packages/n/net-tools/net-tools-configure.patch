@@ -1,20 +1,7 @@
-Index: Makefile
+Index: net-tools-2.10/config.in
 ===================================================================
---- a/Makefile
-+++ b/Makefile
-@@ -109,7 +109,7 @@ all:		config.h version.h subdirs $(PROGS
- 
- config: 	cleanconfig config.h
- 
--install:	all savebin installbin installdata
-+install:	all installbin installdata
- 
- update: 	all installbin installdata
- 
-Index: config.in
-===================================================================
---- a/config.in
-+++ b/config.in
+--- net-tools-2.10.orig/config.in
++++ net-tools-2.10/config.in
 @@ -42,7 +42,7 @@
  * course, welcome.  Answer `n' here if you have no support for
  * internationalization on your system.
@@ -38,10 +25,10 @@ Index: config.in
  bool 'Build plipconfig' HAVE_PLIP_TOOLS y
  bool 'Build slattach' HAVE_SERIAL_TOOLS y
  bool 'SELinux support' HAVE_SELINUX n
-Index: configure.sh
+Index: net-tools-2.10/configure.sh
 ===================================================================
---- a/configure.sh
-+++ b/configure.sh
+--- net-tools-2.10.orig/configure.sh
++++ net-tools-2.10/configure.sh
 @@ -66,9 +66,8 @@ config_fd_redir='<&7'
  #
  function readln()

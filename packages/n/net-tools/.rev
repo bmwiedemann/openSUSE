@@ -408,4 +408,12 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
     <comment></comment>
     <requestid>862849</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>c7d39cfdbdb635a2acd460e6b4ef0739</srcmd5>
+    <version>2.10</version>
+    <time>1612707228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867901</requestid>
+  </revision>
 </revisionlist>

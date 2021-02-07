@@ -1,7 +1,7 @@
 #
 # spec file for package net-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,20 @@
 
 
 Name:           net-tools
-Version:        2.0+git20180626.aebd88e
+Version:        2.10
 Release:        0
 Summary:        Important Programs for Networking
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://sourceforge.net/projects/net-tools/
-# Repacked by the service file from git
-Source:         %{name}-%{version}.tar.xz
+Source:         https://sourceforge.net/projects/net-tools/files/net-tools-%{version}.tar.xz
 # PATCH-FEATURE-SUSE: set configure values to our liking as we do not need
 # everything here
 Patch0:         net-tools-configure.patch
 # Git formatted patches described in each patch
 Patch1:         0001-Add-ether-wake-binary.patch
 Patch2:         0002-Do-not-warn-about-interface-socket-not-binded.patch
-Patch3:         0003-Add-support-for-EiB-in-interface.c.patch
 Patch4:         0004-By-default-do-not-fopen-anything-in-netrom_gr.patch
-Patch5:         0005-Add-support-for-interface-rename-in-nameif.patch
 Patch6:         0006-Allow-interface-stacking.patch
 Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
 BuildRequires:  help2man

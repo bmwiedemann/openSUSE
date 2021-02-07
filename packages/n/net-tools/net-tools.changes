@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jan 24 18:04:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10:
+  * man: pt_BR: ifconfig: fix procmisc option typo
+  * netstat: exit non-zero when sctp protocols are not supported
+  * man: route: add single route del example
+  * ifconfig: accept "pointtopoint" as an alias to "pointopoint"
+  * man: netstat: fill out Timers section
+  * man: ethers: remove funky comment blocks
+  * man: standardize SEE ALSO across all pages & translations
+  * netstat: fix iface truncation with -i
+  * ifconfig: fix exabyte statistic handling
+  * man: ipmaddr/iptunnel: new stub man pages
+  * man: route: use standard .BR for SEE ALSO
+  * netstat: fix iface truncation with -g
+  * po: rename et_EE to et
+  * README/INSTALL: refresh for the modern times
+  * THANKS: add a few more people from `git-log`
+  * netstat: Set SCTP report compliant with -l/--listening option.
+  * Describe "hyphen" program in man page.
+  * man: cleanup ipfw & ipchains refs
+  * ipv6: fix memmove usage with overlapping memory
+  * build: drop support for backing up programs
+  * netstat: add ROSE print support
+  * remove ancient "register" markings
+  * hostname: constify a few string arguments
+  * hostname: add fallback errno decoding on failure
+  * de.po: fix typo "Processe" -> "Prozesse"
+  * route: Fix a missing space in the ipv6 route output
+  * util: drop new() helper
+  * proc: constify filename arg
+  * nameif: add printf attributes to helper funcs
+  * nameif: mark local vars/funcs as static
+  * nameif: fix memory corruption and increase maximum MAC address length
+  * inet_gr: tweak formatting to avoid confusing the compiler
+  * ipmaddr: use safe_strncpy for ifr_name
+  * ifconfig: fix confusing error message logic
+  * ifconfig: add name subcommand to rename an interface
+  * statistics: Fix ipFragOKs and ipFragFails verbiage
+  * statistics: fix packets typo
+  * fix minor mistakes in Czech translation
+- drop 0003-Add-support-for-EiB-in-interface.c.patch
+  0005-Add-support-for-interface-rename-in-nameif.patch: upstream
+- net-tools-configure.patch: refresh
+
+-------------------------------------------------------------------
 Mon Oct 19 16:15:27 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
