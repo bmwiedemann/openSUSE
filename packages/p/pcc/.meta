@@ -1,8 +1,0 @@
-<package name="pcc" project="openSUSE:Factory">
-  <title>Portable and Fast C Compiler</title>
-  <description>The Portable C Compiler is a C99 compiler which aims to be small, simple, fast
-and understandable. It is based on the original Portable C Compiler written by
-S. C. Johnson in the late 70's although large parts of the codebase have been
-rewritten.</description>
-  <devel project="devel:tools:compiler" package="pcc"/>
-</package>
