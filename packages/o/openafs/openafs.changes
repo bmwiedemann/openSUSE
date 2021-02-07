@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  5 08:41:48 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- use stock 1.8.7 from openafs.org
+  * git-version might contain experimental code
+  * add linux-kmp.patch for newer kernels 
+
+-------------------------------------------------------------------
 Sat Jan 16 23:01:13 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to HEAD of git branch openafs-stable-1_8_x 

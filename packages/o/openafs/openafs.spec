@@ -35,9 +35,6 @@
 # build kernel modules
 %define build_kernel_modules 1
 
-# run regen to create new configure script
-%define run_regen 1
-
 # flag for firewalld, only required for SLE-12
 %if 0%{?sle_version} <= 120500 && !0%{?is_opensuse} 
 %define have_firewalld 0
@@ -60,7 +57,7 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version git-43ef1f2a5d80aa1c3f5b4831ada8e776ac0c7d13
+%define upstream_version 1.8.7
 
 Name:           openafs
 
@@ -71,18 +68,12 @@ License:        IPL-1.0
 Group:          System/Filesystems
 URL:            http://www.openafs.org/
 
-#Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
-#Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
-#Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
-#Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
-#Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
-#Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
-Source0:        openafs-%{upstream_version}-src.tar.bz2
-Source1:        openafs-%{upstream_version}-doc.tar.bz2
-Source2:        openafs-%{upstream_version}-src.tar.bz2.md5
-Source3:        openafs-%{upstream_version}-doc.tar.bz2.md5 
-Source4:        openafs-%{upstream_version}-src.tar.bz2.sha256
-Source5:        openafs-%{upstream_version}-doc.tar.bz2.sha256
+Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
+Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
+Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
+Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
+Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
+Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
 
 Source10:       README.SUSE.openafs
 Source15:       logrotate.openafs-server
@@ -114,6 +105,8 @@ Source99:       openafs.changes
 Patch3:         dir_layout.patch
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         openafs-1.8.x.ncurses6.patch
+# PATCH-FIX-UPSTREAM make KMP bild on Factory
+Patch5:         linux-kmp.patch
 
 #
 #	GENERAL BuildRequires and Requires
@@ -326,6 +319,7 @@ done
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 ./regen.sh
 
@@ -930,7 +924,6 @@ fi
 %{_sbindir}/voldump
 %{_sbindir}/volinfo
 %{_sbindir}/volscan
-%{_sbindir}/rxstat_*
 %_unitdir/openafs-server.service
 %{_sbindir}/rcopenafs-server
 /%{_fillupdir}/sysconfig.openafs-server
