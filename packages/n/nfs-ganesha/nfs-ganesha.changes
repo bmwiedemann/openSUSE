@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  5 08:42:46 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Disable FSAL_RGW which is incompatible with Ceph 16.1.0
+
+-------------------------------------------------------------------
 Mon Jul 27 12:44:00 UTC 2020 - Supriti Singh <supriti.singh@suse.com>
 
 - Remove -fcommon from spec file

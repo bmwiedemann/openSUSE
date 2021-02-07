@@ -61,7 +61,7 @@ BuildRequires:  distribution-release
 %bcond_without ceph
 %global use_fsal_ceph %{on_off_switch ceph}
 
-%bcond_without rgw
+%bcond_with rgw
 %global use_fsal_rgw %{on_off_switch rgw}
 
 %bcond_with gluster

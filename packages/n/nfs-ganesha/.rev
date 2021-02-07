@@ -126,4 +126,12 @@
     <comment></comment>
     <requestid>823005</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b88a5b755dd54f0cded9c1df11a2f950</srcmd5>
+    <version>3.3+git0.39e0cf712</version>
+    <time>1612707420</time>
+    <user>dimstar_suse</user>
+    <comment>disable FSAL_RGW build</comment>
+    <requestid>869688</requestid>
+  </revision>
 </revisionlist>
