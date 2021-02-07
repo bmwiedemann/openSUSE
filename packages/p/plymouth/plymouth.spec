@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,8 +45,6 @@ Patch2:         plymouth-correct-runtime-dir.patch
 Patch3:         plymouth-manpages.patch
 # PATCH-FIX-SLE plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch qzhao@suse.com  jsc#SLE-11637 -- plymouth will use plymouthd.defaults instead of plymouth.conf to close the leap gap.
 Patch4:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
-# PATCH-FIX-OPENSUSE plymouth-ignore-serial-console.patch qzhao@opensuse.org bnc#1051692 bnc#1164123 bnc#1170906 -- Don't output in serial console for openQA need to take serial in the test, and yast-installation prgram has a feature to install system through it.
-Patch5:         plymouth-ignore-serial-console.patch
 # PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@opensuse.org -- Disable the fedora logo reference which is not in openSUSE.
 Patch6:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.

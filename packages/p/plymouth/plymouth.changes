@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  1 15:18:48 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Disable plymouth-ignore-serial-console.patch:
+  We could not totally disable serial, because S390 and some customer
+  are still rely on it (bnc#1180973, bnc#1181216).
+
+-------------------------------------------------------------------
 Tue Dec  8 03:46:39 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version: 0.9.5+git20201026: 
