@@ -1,7 +1,7 @@
 #
 # spec file for package audit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://people.redhat.com/sgrubb/audit/
 Source0:        http://people.redhat.com/sgrubb/audit/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        README-BEFORE-ADDING-PATCHES
+Patch0:         change-default-log_group.patch
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  gcc-c++
 BuildRequires:  kernel-headers >= 2.6.30
@@ -74,6 +75,7 @@ libraries.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fi

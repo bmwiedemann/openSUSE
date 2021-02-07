@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  1 18:13:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not explicitly provide group(audit) in system-users-audit:
+  this is automatically handled by rpm/providers.
+
+-------------------------------------------------------------------
+Thu Jan 28 17:59:43 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Create new "audit" group for read access to logs (bsc#1178154)
+  * add change-default-log_group.patch
+  * update audit-secondary.spec
+
+-------------------------------------------------------------------
 Wed Dec  2 11:49:28 UTC 2020 - Alexander Bergmann <abergmann@suse.com>
 
-- Enable Aarch64 processor support. (bsc#1179515 bsc#1179806) 
+- Enable Aarch64 processor support. (bsc#1179515 bsc#1179806)
 
 -------------------------------------------------------------------
 Fri Oct 16 09:40:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>

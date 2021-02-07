@@ -1,0 +1,21 @@
+From: Enzo Matsumiya <ematsumiya@suse.de>
+Date: Thu Jan 28 18:11:39 UTC 2021
+References: bsc#1178154
+Patch-mainline: Not yet, under review
+Subject: change default log_group to "audit"
+
+Change the default log_group to newly added "audit" group.
+
+Signed-Off-by: Enzo Matsumiya <ematsumiya@suse.de>
+
+--- a/init.d/auditd.conf
++++ b/init.d/auditd.conf
+@@ -5,7 +5,7 @@
+ local_events = yes
+ write_logs = yes
+ log_file = /var/log/audit/audit.log
+-log_group = root
++log_group = audit
+ log_format = RAW
+ flush = INCREMENTAL_ASYNC
+ freq = 50
