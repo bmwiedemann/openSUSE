@@ -81,7 +81,7 @@ Summary:        Configuration tool for Speech Dispatcher
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Requires:       python3-xdg
+Requires:       python3-pyxdg
 Enhances:       %{name}
 
 %description configure
