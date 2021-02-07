@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  2 09:46:14 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.344:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
 Thu Jan  7 14:28:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Add merge-pciids.pl to fully duplicate behavior of pciutils-ids
