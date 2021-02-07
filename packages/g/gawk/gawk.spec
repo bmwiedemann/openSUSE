@@ -1,7 +1,7 @@
 #
 # spec file for package gawk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,50 +60,56 @@ make check %{?_smp_mflags}
 %install
 %make_install
 
-#UsrMerge
+%if !0%{?usrmerged}
 install -d %{buildroot}/bin
 ln -sf %{_bindir}/gawk %{buildroot}/bin
 ln -s %{_sysconfdir}/alternatives/awk %{buildroot}/bin/awk
-#EndUsrMerge
+%endif
 rm -f %{buildroot}%{_bindir}/*-%{version} %{buildroot}%{_bindir}/awk
 
 # create symlinks for update-alternatives
+%if !0%{?usrmerged}
 ln -s %{_sysconfdir}/alternatives/usr-bin-awk %{buildroot}%{_bindir}/awk
+%else
+ln -s %{_sysconfdir}/alternatives/awk %{buildroot}%{_bindir}/awk
+%endif
 ln -s %{_sysconfdir}/alternatives/awk.1%{?ext_man} %{buildroot}%{_mandir}/man1/awk.1%{?ext_man}
 
 %find_lang %{name}
 
 %post
+%if !0%{?usrmerged}
 %{_sbindir}/update-alternatives \
   --install /bin/awk awk %{_bindir}/gawk 20 \
   --slave %{_bindir}/awk usr-bin-awk %{_bindir}/gawk \
   --slave %{_mandir}/man1/awk.1.gz awk.1%{?ext_man} %{_mandir}/man1/gawk.1%{?ext_man}
-%install_info --info-dir=%{_infodir} %{_infodir}/gawk.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/gawkinet.info.gz
+%else
+%{_sbindir}/update-alternatives \
+  --install %{_bindir}/awk awk %{_bindir}/gawk 20 \
+  --slave %{_mandir}/man1/awk.1.gz awk.1%{?ext_man} %{_mandir}/man1/gawk.1%{?ext_man}
+%endif
 
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/gawk.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/gawkinet.info.gz
-if [ $1 -eq 0 ]; then
+%postun
+if [ ! -f %{_bindir}/gawk ]; then
     %{_sbindir}/update-alternatives --remove awk %{_bindir}/gawk
 fi
 
 %files -f %{name}.lang
 %config %{_sysconfdir}/profile.d/gawk.csh
 %config %{_sysconfdir}/profile.d/gawk.sh
+%if !0%{?usrmerged}
 #UsrMerge
 /bin/awk
+/bin/gawk
+%ghost %{_sysconfdir}/alternatives/usr-bin-awk
 #EndUsrMerge
+%endif
 %{_bindir}/awk
 %{_mandir}/man1/awk.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/awk
-%ghost %{_sysconfdir}/alternatives/usr-bin-awk
 %ghost %{_sysconfdir}/alternatives/awk.1%{?ext_man}
 %license COPYING*
 %doc AUTHORS NEWS POSIX.STD README ChangeLog*
-#UsrMerge
-/bin/gawk
-#EndUsrMerge
 %{_bindir}/gawk
 %{_libexecdir}/awk
 %{_libdir}/gawk

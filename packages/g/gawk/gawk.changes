@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  4 10:41:36 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- fix update-alternatives usage. Needs to be in %postun according to
+  https://en.opensuse.org/openSUSE:Packaging_Multiple_Version_guidelines#update-alternatives_mechanism
+
+-------------------------------------------------------------------
+Mon Dec 14 16:06:16 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+- remove use of obsolete %install_info
+
+-------------------------------------------------------------------
 Wed Apr 15 08:48:59 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.0: 
