@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:29:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Fix the handbook URL in the maintainer README
+  * Fix crash exiting all tabs at the same time (kde#431827)
+  * Fix "Remember window size" not working when unchecked (kde#427610)
+
+-------------------------------------------------------------------
 Tue Jan  5 12:26:16 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
