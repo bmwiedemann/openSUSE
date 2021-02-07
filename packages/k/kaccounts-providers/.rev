@@ -559,4 +559,12 @@
     <comment>Add compatibility with qml-autoreqprov (forwarded request 864436 from Vogtinator)</comment>
     <requestid>865087</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8243ce46c787501ed45f7dcaf3e399db</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707292</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869273</requestid>
+  </revision>
 </revisionlist>
