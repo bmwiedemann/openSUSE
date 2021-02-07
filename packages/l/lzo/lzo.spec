@@ -1,7 +1,7 @@
 #
 # spec file for package lzo
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,10 @@ Release:        0
 Summary:        A Real-Time Data Compression Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.oberhumer.com/opensource/lzo/
-Source:         http://www.oberhumer.com/opensource/%{name}/download/%{name}-%{version}.tar.gz
+URL:            https://www.oberhumer.com/opensource/lzo/
+Source:         https://www.oberhumer.com/opensource/%{name}/download/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch1:         https://src.fedoraproject.org/rpms/lzo/raw/master/f/lzo-2.08-rhbz1309225.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -72,10 +73,11 @@ compression ratio.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CFLAGS="%{optflags} -fvisibility=hidden -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fvisibility=hidden"
 %configure --enable-shared \
            --enable-static \
            --disable-silent-rules \

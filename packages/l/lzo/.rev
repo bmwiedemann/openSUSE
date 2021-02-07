@@ -306,4 +306,12 @@ No GPL-2.0 &quot;only&quot; licenses found in the package (forwarded request 131
   (boo#1157271). (forwarded request 749836 from marxin)</comment>
     <requestid>749922</requestid>
   </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>f2f60d6f2271637b33bf7410fc3e2f8b</srcmd5>
+    <version>2.10</version>
+    <time>1612707246</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868545</requestid>
+  </revision>
 </revisionlist>
