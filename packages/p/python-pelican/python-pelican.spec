@@ -19,14 +19,15 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
-Version:        4.5.4
+Version:        4.5.4+git.1610713159.8bb5f1b7
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://getpelican.com/
 # Use the source instead of the pypi release for the tests
-Source:         https://github.com/getpelican/pelican/archive/%{version}.tar.gz
+# Source:         https://github.com/getpelican/pelican/archive/%%{version}.tar.gz
+Source:         pelican-%{version}.tar.xz
 BuildRequires:  %{python_module Jinja2 >= 2.11}
 BuildRequires:  %{python_module Markdown >= 3.1.1}
 BuildRequires:  %{python_module Pygments}
@@ -54,7 +55,7 @@ Requires:       python-feedgenerator >= 1.9
 Requires:       python-python-dateutil
 Requires:       python-pytz >= 0a
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       asciidoc
 Suggests:       python-Markdown >= 3.1.1
 Suggests:       python-typogrify
@@ -83,7 +84,7 @@ Pelican currently supports:
 * Integration with external tools: Twitter, Google Analytics, etc. (optional)
 
 %prep
-%setup -q -n pelican-%{version}
+%autosetup -p1 -n pelican-%{version}
 
 # remove useless shebang
 sed -i '1d' \
@@ -125,6 +126,6 @@ export LC_ALL=C.utf8
 %python_alternative %{_bindir}/pelican-quickstart
 %python_alternative %{_bindir}/pelican-themes
 %{python_sitelib}/pelican
-%{python_sitelib}/pelican-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pelican-*.egg-info
 
 %changelog

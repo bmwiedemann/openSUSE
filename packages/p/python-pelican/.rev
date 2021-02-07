@@ -261,4 +261,25 @@
     <comment></comment>
     <requestid>860413</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>181e8259e959941ec73b0e501c18e5c4</srcmd5>
+    <version>4.5.4+git.1610713159.8bb5f1b7</version>
+    <time>1612707423</time>
+    <user>dimstar_suse</user>
+    <comment>REQUIRES SR#867803!!!
+
+- Update to version 4.5.4+git.1610713159.8bb5f1b7:
+  * Drop unsupported Python 3.5 from test matrix
+  * Allow latest Python-Markdown to be installed
+  * Adjust functional test output for Pygments 2.7.x
+  * Allow latest Pygments to be installed
+  * Match test output line endings with current rendering
+  * Support last page pattern in PAGINATION_PATTERNS
+  * Add FAQ re: Atom full-post vs. summary-only feeds
+  * Release Pelican 4.5.4
+  * Fix typo in the FAQ: steamline --&gt; streamline.
+  * add &quot;http://&quot; prefix to ip+port
+</comment>
+    <requestid>867804</requestid>
+  </revision>
 </revisionlist>
