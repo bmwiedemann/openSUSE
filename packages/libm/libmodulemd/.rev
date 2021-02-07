@@ -157,4 +157,22 @@
   + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch</comment>
     <requestid>851720</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fce34b511b83d497e00268e2219b3275</srcmd5>
+    <version>2.12.0</version>
+    <time>1612707387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.0
+  + Add support for 'buildorder' to Packager documents
+  + Fix issue with ModuleIndex when input contains only Obsoletes documents
+  + Extend read_packager_[file|string]() to support overriding the module name
+    and stream.
+  + Ignore Packager documents when running ModuleIndex.update_from_*()
+  + Add python overrides for XMD in PackagerV3
+  + Add python override to ignore the GType return when reading packager files
+  + Add PackagerV3.get_mdversion()
+- Drop patch incorporated in this release
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch</comment>
+    <requestid>868780</requestid>
+  </revision>
 </revisionlist>

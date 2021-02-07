@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  2 23:20:15 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.12.0
+  + Add support for 'buildorder' to Packager documents
+  + Fix issue with ModuleIndex when input contains only Obsoletes documents
+  + Extend read_packager_[file|string]() to support overriding the module name
+    and stream.
+  + Ignore Packager documents when running ModuleIndex.update_from_*()
+  + Add python overrides for XMD in PackagerV3
+  + Add python override to ignore the GType return when reading packager files
+  + Add PackagerV3.get_mdversion()
+- Drop patch incorporated in this release
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch
+
+-------------------------------------------------------------------
 Sun Nov 29 22:03:09 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 2.10.0

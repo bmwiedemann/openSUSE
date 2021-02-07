@@ -1,7 +1,7 @@
 #
 # spec file for package libmodulemd
 #
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %global majorversion 2
-%global minorversion 10
+%global minorversion 12
 %global patchversion 0
 %global majorminorversion %{majorversion}.%{minorversion}
 %global nsversion %{majorversion}.0
@@ -37,9 +37,6 @@ Group:          System/Packages
 License:        MIT
 URL:            https://github.com/fedora-modularity/libmodulemd
 Source0:        %{url}/releases/download/%{name}-%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
-
-# Patches from upstream
-Patch0001:      0001-Fix-integer-size-issue-on-32-bit-platforms.patch
 
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.47.0
