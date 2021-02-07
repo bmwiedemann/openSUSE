@@ -75,4 +75,21 @@
     <comment></comment>
     <requestid>816454</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f325fe30ac2bbe382113ff8388c7020</srcmd5>
+    <version>3.99.git.1612358888.e8844d3</version>
+    <time>1612707241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream URL.
+- Convert to obs_scm source service.
+- Upgrade to git commit e8844d3.
+- Drop patches that have been merged into upstream:
+  o eppic-no-return.patch
+  o eppic-use-extern-in-devel-declaration.patch
+  o eppic-binutils-fix.patch
+- Add eppic-binutils-fix.patch in order to not used 'l' option for
+  ar. It has a new meaning.
+</comment>
+    <requestid>868967</requestid>
+  </revision>
 </revisionlist>

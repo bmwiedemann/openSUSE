@@ -1,7 +1,7 @@
 #
 # spec file for package eppic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,18 @@
 #
 
 
-%define git_date	20140619
-%define git_commit	5391d3d
-%define checkout	%{git_date}git%{git_commit}
-
 Name:           eppic
-Version:        3.99.%{checkout}
+Version:        3.99.git.1612358888.e8844d3
 Release:        0
 Summary:        Embeddable Pre-Processor and Interpreter for C
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Source:         %{name}-git%{git_commit}.tar.bz2
+Source:         lib%{name}-%{version}.tar.bz2
 Patch1:         %{name}-fix-install.patch
-Patch2:         %{name}-no-return.patch
-Patch3:         %{name}-use-extern-in-devel-declaration.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
-URL:            http://code.google.com/p/eppic/
+URL:            https://github.com/lucchouina/eppic
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -57,25 +51,21 @@ embedded in any tools that is C friendly.
 This package provides the include files and libraries needed for development.
 
 %prep
-%setup -n %{name}-git%{git_commit}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%setup -n lib%{name}-%{version}
+%patch1 -p2
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-cd libeppic
 make CFLAGS="%{optflags} -fPIC" %{?_smp_mflags}
 
 %install
-cd libeppic
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}
 make ROOT="%{buildroot}" LIBDIR=%{_libdir} install
 
 %files -n libeppic-devel
 %defattr(-,root,root)
-%doc libeppic/README
+%doc README
 %{_includedir}/eppic.h
 %{_includedir}/eppic_api.h
 %attr(644,root,root) %{_libdir}/libeppic.a

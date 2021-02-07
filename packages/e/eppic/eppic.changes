@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb  3 13:57:25 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Update upstream URL.
+- Convert to obs_scm source service.
+- Upgrade to git commit e8844d3.
+- Drop patches that have been merged into upstream:
+  o eppic-no-return.patch
+  o eppic-use-extern-in-devel-declaration.patch
+  o eppic-binutils-fix.patch
+
+-------------------------------------------------------------------
+Tue Feb  2 08:29:23 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add eppic-binutils-fix.patch in order to not used 'l' option for
+  ar. It has a new meaning.
+
+-------------------------------------------------------------------
 Tue Jun  9 13:58:20 UTC 2020 - David Mair <dmair@suse.com>
 
 - eppic-use-extern-in-devel-declaration.patch: Use extern for
