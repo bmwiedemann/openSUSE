@@ -1,7 +1,7 @@
 #
 # spec file for package dracut
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        051+suse.84.gc6bd70b8
+Version:        051+suse.85.g04886430
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -148,10 +148,12 @@ rm %{buildroot}%{_bindir}/mkinitrd
 install -D -m 0755 mkinitrd-suse.sh %{buildroot}/%{_sbindir}/mkinitrd
 install -D -m 0755 suse/dracut-installkernel %{buildroot}/%{_sbindir}/installkernel
 
+%if !0%{?usrmerged}
 # moved to /usr/sbin, maintain /sbin compat symlinks
 mkdir -p %{buildroot}/sbin
 ln -s %{_sbindir}/mkinitrd %{buildroot}/sbin/mkinitrd
 ln -s %{_sbindir}/installkernel %{buildroot}/sbin/installkernel
+%endif
 
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
@@ -266,8 +268,10 @@ fi
 %{_bindir}/lsinitrd
 %{_sbindir}/installkernel
 %{_sbindir}/mkinitrd
+%if !0%{?usrmerged}
 /sbin/installkernel
 /sbin/mkinitrd
+%endif
 %{_datarootdir}/bash-completion/completions/lsinitrd
 %{_datadir}/pkgconfig/dracut.pc
 

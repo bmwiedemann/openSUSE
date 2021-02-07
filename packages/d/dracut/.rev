@@ -1871,4 +1871,13 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * 95nfs: /var/lib/nfs/statd/sm is /var/lib/nfs/sm on SUSE (boo#1177462)</comment>
     <requestid>855784</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>8490b6b61eaa3d2be82979950a263de2</srcmd5>
+    <version>051+suse.85.g04886430</version>
+    <time>1612707258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 051+suse.85.g04886430:
+  * prepare usrmerge (boo#1029961)</comment>
+    <requestid>868682</requestid>
+  </revision>
 </revisionlist>
