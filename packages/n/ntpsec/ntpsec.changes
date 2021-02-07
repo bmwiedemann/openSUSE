@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 17:21:57 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Let system-user-ntp handle the user/group generation
+
+-------------------------------------------------------------------
 Fri May 29 07:25:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.1.9. See the NEWS.adoc file for the full list

@@ -1,7 +1,7 @@
 #
 # spec file for package ntpsec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(python3)
 Requires:       netcfg
 Requires:       ntpsec-utils
-Requires(pre):  shadow
+Requires(pre):  user(ntp)
 Recommends:     logrotate
 # For ntpleapfetch
 Recommends:     wget
@@ -143,8 +143,6 @@ install -pm 0644 -D %{SOURCE8} %{buildroot}%{_sysconfdir}/ntp.conf
 python3 ./waf check --verbose %{?_smp_mflags}
 
 %pre
-getent group ntp >/dev/null || groupadd -r ntp
-getent passwd ntp >/dev/null || useradd -u 74 -r -g ntp -d %{_localstatedir}/lib/ntp -s /sbin/nologin -c "NTP daemon" ntp
 %service_add_pre ntp.service ntpd.service
 exit 0
 
