@@ -637,4 +637,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Applications 20.12.1</comment>
     <requestid>861101</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>5be9417b854fc2e4d110fa6090461e97</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707275</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869243</requestid>
+  </revision>
 </revisionlist>

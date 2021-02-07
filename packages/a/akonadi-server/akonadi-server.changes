@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:27:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Fix Bug 432307 - Cancel drag'n drop does not work (kde#432307)
+  * Add autotest for Item::setTags when creating instances
+  * When tags are overwriien, get them from tags()
+  * Remove unsused method in Config
+  * Use lazy global initialization of Config singleton
+  * Fix bug when deleting the last tag (kde#431297)
+  * Fix Bug 430787 - When moving an email into a subfolder
+    on KDE Plasma Wayland the context menu does not appear
+    at the target subfolder (kde#430787)
+
+-------------------------------------------------------------------
 Tue Jan  5 12:24:25 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
