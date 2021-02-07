@@ -1059,4 +1059,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Applications 20.12.1</comment>
     <requestid>861319</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>a671442ce0a0fbc831572ba086488012</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707377</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869447</requestid>
+  </revision>
 </revisionlist>

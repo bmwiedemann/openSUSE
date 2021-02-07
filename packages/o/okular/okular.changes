@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:30:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Reload xml to update shortcuts when they change in other parts
+  * Fix an unexpected file type being the default on open (non Plasma desktops) (kde#430728)
+  * We're using clang format 11 on CI now
+  * CI: Switch to new clang-format
+
+-------------------------------------------------------------------
 Tue Jan  5 12:27:19 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
