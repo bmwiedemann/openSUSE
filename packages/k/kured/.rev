@@ -207,4 +207,17 @@
   * Release helper</comment>
     <requestid>850527</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>893368bfdb994b8a0fdf3ec80499c369</srcmd5>
+    <version>1.6.1</version>
+    <time>1612707253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1:
+  - add additional parameters to override the drain/reboot slack messages
+  - rename message template parameters so they are not related to slack
+  - Improve coordinated reboot output
+  - Add more logs into gates
+  - Added support for time wrap in timewindow.Contains</comment>
+    <requestid>868637</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 02 12:16:48 UTC 2021 - kukuk@suse.com
+
+- Update to version 1.6.1:
+  - add additional parameters to override the drain/reboot slack messages
+  - rename message template parameters so they are not related to slack
+  - Improve coordinated reboot output
+  - Add more logs into gates
+  - Added support for time wrap in timewindow.Contains
+
+-------------------------------------------------------------------
 Tue Nov 24 15:02:46 UTC 2020 - kukuk@suse.com
 
 - Update to version 1.5.1:
