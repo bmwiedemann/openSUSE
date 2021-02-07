@@ -454,4 +454,12 @@
   * Fixed misdetection of AVX2 capability in some Sandybridge cpus</comment>
     <requestid>856635</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>fbeefad812af108d4799d117d77c0358</srcmd5>
+    <version>0.3.13</version>
+    <time>1612707411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869479</requestid>
+  </revision>
 </revisionlist>

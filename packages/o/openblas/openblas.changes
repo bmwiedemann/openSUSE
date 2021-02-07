@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb  4 11:49:11 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Disable lto for ppc64le to avoid build failure (bsc#1181733)
+- Add openblas-ppc64be_up2_p8.patch to avoid ppc64 (BE) build failure
+  Do not set BUILD_BFLOAT16 for ppc64 (BE) (same bug nb)
+
+-------------------------------------------------------------------
+Tue Feb  2 21:30:18 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- BUILD_BFLOAT16=1 is not supported in s390(x) (bsc#1181522)
+- Add:
+  * 0001-Require-gcc-11-for-builtin_cpu_is-power10.patch
+  * 0002-patch-to-support-power10-in-builtin_cpu_is-was-backp.patch:
+    Only gcc11 has builtin_cpu_is(power10) - fix build issue for ppc64
+    (bsc#1181522).
+   
+-------------------------------------------------------------------
 Thu Dec 17 07:12:02 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.3.13

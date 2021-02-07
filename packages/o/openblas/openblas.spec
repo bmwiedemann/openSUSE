@@ -1,7 +1,7 @@
 #
 # spec file for package openblas
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -167,10 +167,14 @@ URL:            http://www.openblas.net
 Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/OpenBLAS-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
+# Temporarily - delete with next version update
+Patch1:         0001-Require-gcc-11-for-builtin_cpu_is-power10.patch
+Patch2:         0002-patch-to-support-power10-in-builtin_cpu_is-was-backp.patch
 # PATCH-FIX-UPSTREAM openblas-noexecstack.patch
-Patch1:         openblas-noexecstack.patch
+Patch101:       openblas-noexecstack.patch
 # PATCH port
-Patch2:         openblas-s390.patch
+Patch102:       openblas-s390.patch
+Patch103:       openblas-ppc64be_up2_p8.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -282,6 +286,9 @@ This package contains headers for OpenBLAS.
 %setup -q -n OpenBLAS-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
 %ifarch s390
 sed -i -e "s@m32@m31@" Makefile.system
 %endif
@@ -294,6 +301,11 @@ cp %{SOURCE2} .
 
 %build
 
+# disable lto for ppc64le, boo#1181733
+%ifarch ppc64le
+%define  _lto_cflags %{nil}
+%endif
+
 %if %{with hpc}
 %hpc_debug
 %hpc_setup_compiler
@@ -304,14 +316,20 @@ cp %{SOURCE2} .
 # We specify TARGET= to avoid compile-time CPU-detection (boo#1100677)
 %ifarch %ix86 x86_64
 %global openblas_target %openblas_target TARGET=CORE2
+%define openblas_opt BUILD_BFLOAT16=1
 %endif
 %ifarch aarch64
 %global openblas_target %openblas_target TARGET=ARMV8 
+%define openblas_opt BUILD_BFLOAT16=1
 %endif  
 %ifarch s390 s390x
 %global openblas_target %openblas_target TARGET=ZARCH_GENERIC
 %endif
-%ifarch ppc64 ppc64le
+%ifarch ppc64le
+%global openblas_target %openblas_target TARGET=POWER8
+%define openblas_opt BUILD_BFLOAT16=1
+%endif
+%ifarch ppc64
 %global openblas_target %openblas_target TARGET=POWER8
 %endif
 # force -mvsx for ppc64 to avoid build failure:
@@ -322,7 +340,7 @@ cp %{SOURCE2} .
 %endif
 # Make serial, threaded and OpenMP versions
 make  %{?_smp_mflags} %{?openblas_target} %{?build_flags} \
-    BUILD_BFLOAT16=1 COMMON_OPT="%{optflags} %{?addopt}" \
+    %{?openblas_opt} COMMON_OPT="%{optflags} %{?addopt}" \
     NUM_THREADS=%{num_threads} V=1 \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{hpc_includedir} \

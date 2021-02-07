@@ -1,0 +1,26 @@
+From 63fa3c3f8f869c585d8c5aef6f580a967b64405c Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Wed, 20 Jan 2021 15:41:04 +0100
+Subject: [PATCH 1/2] Require gcc 11 for builtin_cpu_is(power10)
+
+fixes #3074
+---
+ driver/others/dynamic_power.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/driver/others/dynamic_power.c b/driver/others/dynamic_power.c
+index f9feeb6e..18f16f83 100644
+--- a/driver/others/dynamic_power.c
++++ b/driver/others/dynamic_power.c
+@@ -202,7 +202,7 @@ static gotoblas_t *get_coretype(void) {
+ 		return &gotoblas_POWER10;
+ #endif
+ 	/* Fall back to the POWER9 implementation if the toolchain is too old or the MMA feature is not set */
+-#if (!defined __GNUC__) || ( __GNUC__ >= 6)
++#if (!defined __GNUC__) || ( __GNUC__ >= 11)
+ 	if (__builtin_cpu_is("power10"))
+ 		return &gotoblas_POWER9;
+ #endif	
+-- 
+2.26.2
+

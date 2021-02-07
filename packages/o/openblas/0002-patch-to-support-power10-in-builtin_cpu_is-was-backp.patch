@@ -1,0 +1,26 @@
+From b94dab5250469d4d30d1a21bf0e0b78eea3cf286 Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Wed, 20 Jan 2021 21:34:36 +0100
+Subject: [PATCH 2/2] patch to support power10 in builtin_cpu_is was backported
+ to gcc 10.2, so allow that as wel
+
+---
+ driver/others/dynamic_power.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/driver/others/dynamic_power.c b/driver/others/dynamic_power.c
+index 18f16f83..b8e5840a 100644
+--- a/driver/others/dynamic_power.c
++++ b/driver/others/dynamic_power.c
+@@ -202,7 +202,7 @@ static gotoblas_t *get_coretype(void) {
+ 		return &gotoblas_POWER10;
+ #endif
+ 	/* Fall back to the POWER9 implementation if the toolchain is too old or the MMA feature is not set */
+-#if (!defined __GNUC__) || ( __GNUC__ >= 11)
++#if (!defined __GNUC__) || ( __GNUC__ >= 11) || (__GNUC__ == 10 && __GNUC_MINOR__ >= 2)
+ 	if (__builtin_cpu_is("power10"))
+ 		return &gotoblas_POWER9;
+ #endif	
+-- 
+2.26.2
+
