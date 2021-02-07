@@ -787,4 +787,12 @@
     <comment></comment>
     <requestid>834510</requestid>
   </revision>
+  <revision rev="85" vrev="14">
+    <srcmd5>cda4f11984756adfd5ac46c3cb6c9706</srcmd5>
+    <version>2.8.4</version>
+    <time>1612707262</time>
+    <user>dimstar_suse</user>
+    <comment>- require only glibc-locale-base (forwarded request 866172 from dirkmueller)</comment>
+    <requestid>868695</requestid>
+  </revision>
 </revisionlist>

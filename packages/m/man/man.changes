@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 22 23:57:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- require only glibc-locale-base 
+
+-------------------------------------------------------------------
 Fri Sep 11 19:34:46 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add migration code to handle upgrade from old version of the man

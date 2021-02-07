@@ -1,7 +1,7 @@
 #
 # spec file for package man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,8 @@ BuildRequires:  update-alternatives
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
-Requires:       glibc-locale
+Requires:       glibc-locale-base
+Suggests:       glibc-locale
 Requires:       groff >= 1.18
 Requires:       less
 # FIXME: use proper Requires(pre/post/preun/...)
