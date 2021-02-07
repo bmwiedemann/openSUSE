@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:27:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * avoid concurrent access when fetching lyrics (kde#431422)
+  * Fix "show current track" button (kde#431602)
+  * ensure the configuration dialog is not dirty when just open (kde#430743)
+  * avoid printing useless logs on console when power management is working (kde#421660)
+  * fix enqueue from files explorer (kde#428218)
+  * Fix Radio streams
+  * use a QFlags to handle entities to watch for file system changes
+
+-------------------------------------------------------------------
 Tue Jan  5 12:24:46 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.1
