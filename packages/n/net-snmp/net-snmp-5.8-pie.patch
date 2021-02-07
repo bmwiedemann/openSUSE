@@ -1,6 +1,7 @@
-diff -Nurp net-snmp-5.8-orig/agent/Makefile.in net-snmp-5.8/agent/Makefile.in
---- net-snmp-5.8-orig/agent/Makefile.in	2018-10-10 20:12:33.288508471 +0000
-+++ net-snmp-5.8/agent/Makefile.in	2018-10-10 20:12:13.236322553 +0000
+Index: net-snmp-5.9/agent/Makefile.in
+===================================================================
+--- net-snmp-5.9.orig/agent/Makefile.in
++++ net-snmp-5.9/agent/Makefile.in
 @@ -297,7 +297,7 @@ getmibstat.o: mibgroup/kernel_sunos5.c
  	$(CC) $(CFLAGS) -o $@ -D_GETMIBSTAT_TEST -DDODEBUG -c $? 
  
@@ -9,11 +10,12 @@ diff -Nurp net-snmp-5.8-orig/agent/Makefile.in net-snmp-5.8/agent/Makefile.in
 +	$(LINK) $(CFLAGS) -o $@ -pie ${LAGENTOBJS} ${LDFLAGS} ${OUR_AGENT_LIBS}
  
  libnetsnmpagent.$(LIB_EXTENSION)$(LIB_VERSION):    ${LLIBAGENTOBJS} $(USELIBS)
- 	$(LIB_LD_CMD) $(AGENTLIB) ${LLIBAGENTOBJS} $(USELIBS) ${LAGENTLIBS} @LD_NO_UNDEFINED@ $(LDFLAGS) $(PERLLDOPTS_FOR_LIBS) $(LIB_LD_LIBS) @AGENTLIBS@
-diff -Nurp net-snmp-5.8-orig/apps/Makefile.in net-snmp-5.8/apps/Makefile.in
---- net-snmp-5.8-orig/apps/Makefile.in	2018-10-10 20:10:23.983309589 +0000
-+++ net-snmp-5.8/apps/Makefile.in	2018-10-10 20:11:50.172108708 +0000
-@@ -183,7 +183,7 @@ snmptest$(EXEEXT):    snmptest.$(OSUFFIX
+ 	$(LIB_LD_CMD) $(AGENTLIB) ${LLIBAGENTOBJS} $(USELIBS) ${LAGENTLIBS} @LD_NO_UNDEFINED@ $(LDFLAGS) $(PERLLDOPTS_FOR_LIBS) @AGENTLIBS@
+Index: net-snmp-5.9/apps/Makefile.in
+===================================================================
+--- net-snmp-5.9.orig/apps/Makefile.in
++++ net-snmp-5.9/apps/Makefile.in
+@@ -190,7 +190,7 @@ snmptest$(EXEEXT):    snmptest.$(OSUFFIX
  	$(LINK) ${CFLAGS} -o $@ snmptest.$(OSUFFIX) ${LDFLAGS} ${LIBS}
  
  snmptrapd$(EXEEXT):    $(TRAPD_OBJECTS) $(USETRAPLIBS) $(INSTALLLIBS)

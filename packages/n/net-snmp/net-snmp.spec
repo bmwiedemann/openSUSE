@@ -1,7 +1,7 @@
 #
 # spec file for package net-snmp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,13 @@
 %define libname libsnmp30
 %bcond_without python2
 Name:           net-snmp
-Version:        5.8
+Version:        5.9
 Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
 Group:          Productivity/Networking/Other
-URL:            http://sourceforge.net/projects/net-snmp
-Source:         http://sourceforge.net/projects/net-snmp/files/net-snmp/%{version}/%{name}-%{version}.tar.gz
+URL:            https://sourceforge.net/projects/net-snmp
+Source:         https://sourceforge.net/projects/net-snmp/files/net-snmp/%{version}/%{name}-%{version}.tar.gz
 Source1:        snmpd.service
 Source2:        snmpd.conf
 Source3:        README.SUSE
@@ -54,17 +54,16 @@ Patch3:         net-snmp-5.8-pie.patch
 Patch4:         net-snmp-5.8-net-snmp-config-headercheck.patch
 Patch5:         net-snmp-5.8-perl-tk-warning.patch
 Patch6:         net-snmp-5.8-velocity-mib.patch
-Patch7:         net-snmp-5.8-netgroups.patch
 Patch8:         net-snmp-5.8-snmpstatus-suppress-output.patch
 Patch9:         net-snmp-5.8-fix-Makefile.PL.patch
 Patch10:        net-snmp-5.8-modern-rpm-api.patch
-Patch11:        net-snmp-5.8-fix-python3.patch
 Patch12:        net-snmp-5.8-add-lustre-fs-support.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
@@ -267,7 +266,7 @@ autoreconf -fvi
         --with-systemd
 
 # Parallel build deps not properly stated
-make -j1
+%make_build -j1
 
 pushd python
 %python_exec setup.py build --basedir="../"
@@ -301,7 +300,7 @@ install -D -m 0644 %{SOURCE10} %{buildroot}%{_fillupdir}/sysconfig.snmpd
 install -D -m 0644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.snmptrapd
 # tmpfiles
 install -m 755 -d %{buildroot}/%{_tmpfilesdir}
-install -m 644 %SOURCE20 %{buildroot}/%{_tmpfilesdir}/net-snmp.conf
+install -m 644 %{SOURCE20} %{buildroot}/%{_tmpfilesdir}/net-snmp.conf
 #
 ln -s -f %{netsnmp_agentx_socket_dir_fhs} %{buildroot}%{netsnmp_agentx_socket_dir_rfc}
 #
@@ -399,6 +398,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/net-snmp
 %{_libdir}/libsnmp*.so
 %{_libdir}/libnetsnmp*.so
+%{_libdir}/pkgconfig/netsnmp-agent.pc
+%{_libdir}/pkgconfig/netsnmp.pc
 %{_bindir}/mib2c
 %{_bindir}/mib2c-update
 %{_datadir}/snmp/mib2c*

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 18 21:31:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.9:
+    snmplib:
+      - Add IPv6 support to DTLSUDP transport CHANGES: snmplib: use new
+        netsnmp_sockaddr_storage in netsnmp_addr_pair CHANGES: snmplib: add
+        base_transport ptr for tunneled transports
+    snmpd:
+      - Security vulnerabilty in the ping MIB reported by Christopher Ertl
+        from Microsoft fixed
+      - Changing to a different uid/gid can only be done once
+      - The extend mib is now read-only by default
+    snmptrap:
+      - BUG: 2899: Patch from Drew Roedersheimer to set library
+        engineboots/time values before sending
+    unspecified:
+      - Add pkg-config support for building applications and sub-agents Use
+        the netsnmp package when building Net-SNMP applications. Use the
+        netsnmp-agent package when building Net-SNMP subagents.
+- drop net-snmp-5.8-fix-python3.patch, net-snmp-5.8-netgroups.patch: obsolete
+
+-------------------------------------------------------------------
 Sun Dec 13 12:58:00 UTC 2020 - <d_werner@gmx.net>
 
 - Update the tmpfiles.d/ drop-in file - remove legacy directory
