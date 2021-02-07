@@ -54,6 +54,7 @@ Requires:       eject
 Requires:       grep
 Requires:       iptables
 Requires:       logrotate
+Requires:       sysvinit-tools
 %if 0%{?suse_version} < 1140
 Requires:       insserv
 Requires:       sysvinit

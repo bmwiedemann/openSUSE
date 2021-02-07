@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 30 11:25:56 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Add sysvinit-tools as dependency (bsc#1181600, bsc#1181601)
+
+-------------------------------------------------------------------
 Tue Jan 12 21:20:17 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Add sle_hpc-is-sles.patch (bsc#1180719)
