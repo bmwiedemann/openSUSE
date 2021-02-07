@@ -828,4 +828,12 @@
     <comment>KDE Applications 20.12.1</comment>
     <requestid>861195</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>de8174080fca94e0329858fbac8feb1e</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707532</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869328</requestid>
+  </revision>
 </revisionlist>
