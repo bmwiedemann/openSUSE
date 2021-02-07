@@ -1,7 +1,7 @@
 #
 # spec file for package libgudev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgudev
-Version:        233
+Version:        234
 Release:        0
 Summary:        Library that provides GObject bindings for libudev
 License:        LGPL-2.0-or-later

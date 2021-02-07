@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 24 14:29:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 234:
+  * Clarify that _get_sysfs_attr() functions are cached
+  * Add functions to get uncached sysfs attributes
+
+-------------------------------------------------------------------
 Sat Aug  3 18:38:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 233:
