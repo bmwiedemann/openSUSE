@@ -47,4 +47,12 @@
     <comment>- Update to release 1.3.5</comment>
     <requestid>867446</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5879782c0a24ace342caf688a31478d0</srcmd5>
+    <version>1.3.6</version>
+    <time>1612707704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.6</comment>
+    <requestid>869823</requestid>
+  </revision>
 </revisionlist>
