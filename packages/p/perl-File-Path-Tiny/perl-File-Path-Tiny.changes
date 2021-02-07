@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  5 03:08:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0
+   see /usr/share/doc/packages/perl-File-Path-Tiny/Changes
+
+  1.0  2021-02-04 13:53:54
+      - rt 125502: fix empty_dir() fast-mode, thanks ishigaki!
+      - f749173 Stop using bareword handle (still ::Tiny since perl is newer)
+
+-------------------------------------------------------------------
 Wed Feb  7 16:31:14 UTC 2018 - coolo@suse.com
 
 - updated to 0.9
