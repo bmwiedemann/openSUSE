@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  2 07:39:54 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add the 'lladdr' element to the networking interface section
+  (bsc#1179876).
+- 4.3.17
+
+-------------------------------------------------------------------
 Mon Dec 14 10:21:57 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add support for Btrfs quotas (jsc#SLE-7742).
