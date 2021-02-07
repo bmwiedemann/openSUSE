@@ -1,7 +1,0 @@
-<package name="mlmmj" project="openSUSE:Factory">
-  <title>Mail Server Independent Reimplementation of the EZMLM Mailing List</title>
-  <description>This is an attempt at implementing a mailing list manager with the same
-functionality as EZMLM, but with the MIT/X11 license and no mail server
-dependency.</description>
-  <devel project="server:mail" package="mlmmj"/>
-</package>

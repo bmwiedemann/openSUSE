@@ -1,2 +1,0 @@
-# exclude the examples
-addFilter("doc-file-dependency.*/usr/share/doc/packages/mlmmj/examples/.*");
