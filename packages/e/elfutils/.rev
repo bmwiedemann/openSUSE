@@ -820,4 +820,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   in order to fix boo#1180306. (forwarded request 860165 from marxin)</comment>
     <requestid>860398</requestid>
   </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>13050e6b0a6376d75a79dfe6076afde4</srcmd5>
+    <version>0.182</version>
+    <time>1612707221</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>867186</requestid>
+  </revision>
 </revisionlist>

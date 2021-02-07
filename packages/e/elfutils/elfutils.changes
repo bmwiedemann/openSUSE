@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 20 12:16:31 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO (boo#1138796) for elfutils.spec.
+
+-------------------------------------------------------------------
 Mon Nov 30 12:03:29 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Mention elfutils-rpmlintrc as a Source.

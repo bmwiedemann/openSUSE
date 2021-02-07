@@ -138,7 +138,7 @@ The package is dummy.
 %autosetup -p1
 
 %build
-%global _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -flto-partition=none -Wno-error=stack-usage= -ffat-lto-objects
 # Change DATE/TIME macros to use last change time of elfutils.changes
 # See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
