@@ -17,6 +17,7 @@
 #
 
 
+%define _buildshell /bin/bash
 %global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
 Version:        1.14
