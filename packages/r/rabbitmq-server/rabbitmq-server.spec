@@ -69,20 +69,12 @@ Requires:       erlang >= 22.3
 Requires:       erlang-epmd
 Requires:       logrotate
 Provides:       AMQP-server
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires:       rabbitmq-server-plugins
-%if 0%{?suse_version} > 1140
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
-%define have_systemd 1
 Requires:       socat
-%else
-Requires:       %fillup_prereq
-Requires:       %insserv_prereq
-Requires(pre):  %insserv_prereq
-%endif
 # Do not use noarch since the Erlang packaging does not really allow that
 #BuildArch:      noarch
 
@@ -130,17 +122,9 @@ export PYTHON=%{_bindir}/python3
 make install %{_make_args}
 
 mkdir -p %{buildroot}%{_sbindir}
-%if 0%{?have_systemd}
 install -p -D -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -p -D -m 0644 %{SOURCE7} %{buildroot}/usr/lib/tmpfiles.d/rabbitmq-server.conf
-%else
-# Install init scripts
-install -p -D -m 0755 %{SOURCE1} %{buildroot}%{_initddir}/rabbitmq-server
-ln -sf %{_initddir}/rabbitmq-server %{buildroot}%{_sbindir}/rcrabbitmq-server
-mkdir -p %{buildroot}%{_fillupdir}/
-install -p -D -m 644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.rabbitmq-server
-%endif
 
 # Install wrapper scripts
 %define _rabbit_wrapper %{_builddir}/`basename %{SOURCE2}`
@@ -185,35 +169,19 @@ getent passwd rabbitmq >/dev/null || useradd -r -g rabbitmq \
   -d %{_localstatedir}/lib/rabbitmq \
   -s /sbin/nologin \
   -c "user for RabbitMQ messaging server" rabbitmq
-%if 0%{?have_systemd}
 %service_add_pre %{name}.service
-%endif
 
 %post
-%if 0%{?have_systemd}
 %service_add_post %{name}.service
 systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
-%else
-%fillup_and_insserv rabbitmq-server
-%endif
 
 %preun
-%if 0%{?have_systemd}
 %service_del_preun %{name}.service
-%else
-%stop_on_removal rabbitmq-server
-%endif
 
 %postun
-%if 0%{?have_systemd}
 %service_del_postun %{name}.service
-%else
-%restart_on_update rabbitmq-server
-%insserv_cleanup
-%endif
 
 %files
-%defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/logrotate.d/rabbitmq-server
 %config(noreplace) %{_sysconfdir}/rabbitmq/
 %{_rabbit_libdir}
@@ -221,13 +189,8 @@ systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
 %exclude %{_rabbit_erllibdir}/plugins/rabbitmq_*
 %endif
 #
-%if 0%{?have_systemd}
 %{_unitdir}/%{name}.service
 /usr/lib/tmpfiles.d/rabbitmq-server.conf
-%else
-%{_initddir}/rabbitmq-server
-%dir %attr(0755, rabbitmq, rabbitmq) %{_localstatedir}/run/rabbitmq
-%endif
 #
 %attr(0750, rabbitmq, rabbitmq) %dir %{_localstatedir}/lib/rabbitmq
 %attr(0750, rabbitmq, rabbitmq) %dir %{_localstatedir}/log/rabbitmq
@@ -249,12 +212,10 @@ systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
 
 %if %{with split_plugins}
 %files plugins
-%defattr(-,root,root)
 %{_rabbit_erllibdir}/plugins/rabbitmq_*
 %endif
 
 %files -n erlang-rabbitmq-client
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/amqp_client*/
 %{_libdir}/erlang/lib/rabbit_common*/
 

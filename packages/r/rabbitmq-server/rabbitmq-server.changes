@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  4 03:15:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove recipe parts for SUSE 11.x, since that does not build.
+
+-------------------------------------------------------------------
 Mon Feb  1 03:31:44 PM UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update to RabbitMQ 3.8.11
