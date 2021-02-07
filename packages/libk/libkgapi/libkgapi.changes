@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  3 08:29:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Don't reset account scopes if not necessary (kde#429406)
+- Drop upstream patch:
+  * kde-429406-dont-reset-account-scopes.patch
+
+-------------------------------------------------------------------
 Sat Jan  9 10:22:40 UTC 2021 - Nico Kruber <nico.kruber@gmail.com>
 
 - add kde-429406-dont-reset-account-scopes.patch (kde#429406)
