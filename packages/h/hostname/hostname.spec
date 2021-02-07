@@ -44,11 +44,15 @@ make %{?_smp_mflags} CFLAGS="%{optflags} -D_GNU_SOURCE"
 
 %install
 install -D -p -m 755 %{name} %{buildroot}%{_bindir}/%{name}
+%if !0%{?usrmerged}
 install -d -m 755 %{buildroot}/bin/
 ln -sf %{_bindir}/%{name} %{buildroot}/bin/%{name}
+%endif
 install -D -p -m 644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 for prog in dnsdomainname domainname ypdomainname nisdomainname; do
+%if !0%{?usrmerged}
     ln -sf %{_bindir}/%{name} %{buildroot}/bin/$prog
+%endif
     ln -sf %{_bindir}/%{name} %{buildroot}%{_bindir}/$prog
     ln -sf hostname.1 %{buildroot}%{_mandir}/man1/${prog}.1
 done
@@ -67,11 +71,13 @@ install -p -m 0644 nis-domainname.service %{buildroot}%{_unitdir}
 %files
 %license COPYRIGHT
 %doc debian/changelog
+%if !0%{?usrmerged}
 /bin/%{name}
 /bin/domainname
 /bin/dnsdomainname
 /bin/nisdomainname
 /bin/ypdomainname
+%endif
 %{_bindir}/%{name}
 %{_bindir}/domainname
 %{_bindir}/dnsdomainname
