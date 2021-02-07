@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb  5 17:05:15 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version to 0.12.0
+  * Add early detection of invalid http data when request line
+    starts with binary
+  * Drop support for Python 2
+  * Fix ReST formatting
+  * Tuned maybe_extract_next_line to search only \r\n
+  * Changed the ReceiveBuffer
+  * Speed up maybe_extract_lines and removed unused variables
+  * Changed the maybe_extract_lines logic according PR review
+  * Small rfg (renamed body_and_headers_delimiter_regex ->
+    blank_line_delimiiter_regex) and slightly updated docs
+  * Fixed some performance issues
+  * Added ability to use LF, not only CRLF delimiter
+
+-------------------------------------------------------------------
 Tue Nov 10 08:02:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.11.0:
