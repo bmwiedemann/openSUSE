@@ -1,6 +1,0 @@
-<package name="sdlscavenger" project="openSUSE:Factory">
-  <title>Lode Runner like game</title>
-  <description>SdlScavenger a fun 2-D Game like Lode Runner.
-With 196 very good puzzle screens to solve.</description>
-  <devel project="games" package="sdlscavenger"/>
-</package>
