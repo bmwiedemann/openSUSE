@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  3 02:27:10 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 3.7.0
+  + Add support for command aliases
+  + Rename "update" to "upgrade" command
+  + Add "update" alias to "upgrade" command
+  + Add "download" command
+  + Add support for user confirmation
+  + Default to user confirmation like DNF
+
+-------------------------------------------------------------------
 Sun Dec  6 15:36:53 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 3.6.0

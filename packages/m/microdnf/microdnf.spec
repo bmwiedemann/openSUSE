@@ -1,7 +1,7 @@
 #
 # spec file for package microdnf
 #
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %global libdnf_version 0.55.2
 
 Name:           microdnf
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Lightweight implementation of DNF in C
 Group:          System/Packages

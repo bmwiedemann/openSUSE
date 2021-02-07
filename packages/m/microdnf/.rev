@@ -38,4 +38,18 @@
 - Add weak dependency for DNF configuration skeleton</comment>
     <requestid>853402</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6b9a8408173ed6b5e8bb0ef123caaba</srcmd5>
+    <version>3.7.0</version>
+    <time>1612707393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.0
+  + Add support for command aliases
+  + Rename &quot;update&quot; to &quot;upgrade&quot; command
+  + Add &quot;update&quot; alias to &quot;upgrade&quot; command
+  + Add &quot;download&quot; command
+  + Add support for user confirmation
+  + Default to user confirmation like DNF</comment>
+    <requestid>868793</requestid>
+  </revision>
 </revisionlist>
