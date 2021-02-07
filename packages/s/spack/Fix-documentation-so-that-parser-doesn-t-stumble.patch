@@ -1,0 +1,40 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Feb 4 07:51:10 2021 +0100
+Subject: Fix documentation so that parser doesn't stumble
+Patch-mainline: Not yet
+Git-commit: 7e787fef5e2c87c53166ee71670f1787300cced3
+References: 
+
+Add argument to code-block::
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ lib/spack/docs/build_systems/autotoolspackage.rst | 2 +-
+ lib/spack/docs/build_systems/pythonpackage.rst    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+diff --git a/lib/spack/docs/build_systems/autotoolspackage.rst b/lib/spack/docs/build_systems/autotoolspackage.rst
+index a4c15e5..21913a6 100644
+--- a/lib/spack/docs/build_systems/autotoolspackage.rst
++++ b/lib/spack/docs/build_systems/autotoolspackage.rst
+@@ -348,7 +348,7 @@ Defining ``with_or_without_verbs`` overrides the behavior of a
+ ``--with-openib`` for older versions of the package and specifying an
+ alternative dependency name:
+ 
+-.. code-block::
++.. code-block:: console
+ 
+    --with-openib=</path/to/rdma-core>
+ 
+diff --git a/lib/spack/docs/build_systems/pythonpackage.rst b/lib/spack/docs/build_systems/pythonpackage.rst
+index c2da028..695b446 100644
+--- a/lib/spack/docs/build_systems/pythonpackage.rst
++++ b/lib/spack/docs/build_systems/pythonpackage.rst
+@@ -90,7 +90,7 @@ Instead of using the ``PythonPackage`` base class, you should extend
+ the ``Package`` base class and implement the following custom installation
+ procedure:
+ 
+-.. code-block::
++.. code-block:: python
+ 
+    def install(self, spec, prefix):
+        pip = which('pip')

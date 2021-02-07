@@ -7,4 +7,16 @@
     <comment>more reproduceable output in the doc file as relevant spack command called during documentation build now have an explicit `target` and `os`</comment>
     <requestid>854933</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f790797de4ad939226c547653134b48</srcmd5>
+    <version>0.16.0</version>
+    <time>1612707642</time>
+    <user>dimstar_suse</user>
+    <comment>- Add
+  * Fix-documentation-so-that-parser-doesn-t-stumble.patch:
+  * Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+    Fix documentation building.
+- Fix texinfo file installation. (forwarded request 869487 from eeich)</comment>
+    <requestid>869552</requestid>
+  </revision>
 </revisionlist>

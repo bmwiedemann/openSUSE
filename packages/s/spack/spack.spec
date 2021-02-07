@@ -1,7 +1,7 @@
 #
 # spec file for package spack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "doc"
@@ -38,7 +39,7 @@ Name:           spack
 Version:        0.16.0
 Release:        0
 Summary:        Package manager for HPC systems
-License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause   
+License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
 URL:            https://spack.io
 Source0:        https://github.com/spack/spack/archive/v%{version}.tar.gz#/spack-%{version}.tar.gz
 Source1:        README.SUSE
@@ -48,33 +49,35 @@ Patch1:         fix-tumbleweed-naming.patch
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
 Patch3:         added-dockerfile-for-opensuse-leap-15.patch
 Patch4:         added-target-and-os-calls-to-output-of-spack-spec-co.patch
+Patch5:         Fix-documentation-so-that-parser-doesn-t-stumble.patch
+Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
 # upstream patch removes also problemtatic binaries
 #Patch4:         spack-test-15702.patch
 %if %{without doc}
-BuildRequires:  polkit
 BuildRequires:  fdupes
+BuildRequires:  lua-lmod
+BuildRequires:  polkit
 BuildRequires:  python-base
 BuildRequires:  python3-urllib3
-BuildRequires:  lua-lmod
 Requires:       %{name}-recipes = %{version}
+Requires:       bzip2
 Requires:       curl
-Requires:       lua-lmod
-Requires:       polkit
 Requires:       gcc-fortran
 Requires:       gpg2
-Requires:       xz
-Requires:       bzip2
+Requires:       lua-lmod
+Requires:       polkit
 Requires:       spack-recipes
+Requires:       xz
 Recommends:     spack-recipes = %version
 Recommends:     %spack_trigger_recommended
 %else
-BuildRequires:  patterns-base-basesystem
-BuildRequires:  spack
-BuildRequires:  makeinfo
-BuildRequires:  distribution-release
 BuildRequires:  %{python_module Sphinx >= 1.8}
 BuildRequires:  %{python_module sphinxcontrib-programoutput}
+BuildRequires:  distribution-release
 BuildRequires:  git
+BuildRequires:  makeinfo
+BuildRequires:  patterns-base-basesystem
+BuildRequires:  spack
 # html
 BuildRequires:  graphviz
 # info
@@ -87,7 +90,6 @@ BuildArch:      noarch
 %if  0%{?sle_version} <= 120500 && !0%{?is_opensuse}
 %define __python3 python3
 %endif
-
 
 %description
 Spack is a configurable Python-based HPC package manager, automating
@@ -252,7 +254,6 @@ cat >>  %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml <<EOF
   binary_index_root: ~/.spack/indices
 EOF
 
-
 # compile python files for python3
 # %%{buildroot}%%{spack_dir}/spack
 %py_compile .
@@ -355,12 +356,12 @@ mkdir -p %{buildroot}%{_infodir}
 mkdir -p %{buildroot}%{_mandir}/man1
 cd lib/spack/docs/_build
 cp man/spack.1.gz %{buildroot}%{_mandir}/man1/
-cp -r texinfo/Spack.info.gz texinfo/Spack-figures %{buildroot}%{_infodir}
+cp -r texinfo/Spack.info.gz %{buildroot}%{_infodir}
+[ -d texinfo/Spack-figures ] && cp -r texinfo/Spack-figures %{buildroot}%{_infodir}
 %endif
 
 %pre
 getent group %spack_group >/dev/null || groupadd -r %spack_group
-
 
 %post
 # Replace /etc/spack/compilers.yaml
@@ -387,11 +388,11 @@ test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope syste
 %triggerin -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
 test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system
 test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack/no_rpm_trigger to stop spack to search for new packages after a rpm install"
+
 %triggerpostun -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
 test -e %{_sysconfdir}/spack/no_rpm_trigger || rm /etc/spack/packages.yaml
 test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system
 test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack/no_rpm_trigger to stop spack to search for new packages after a rpm install"
-
 
 %if %{without doc}
 %files
@@ -424,6 +425,13 @@ test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack
 %{_localstatedir}/lib/spack/repos
 
 %else
+
+%post info
+%install_info --info-dir=%{_infodir} --info-file="%{_infodir}/Spack.info.gz"
+
+%preun info
+%install_info_delete --info-dir=%{_infodir} --info-file="%{_infodir}/Spack.info.gz"
+
 %files man
 %{_mandir}/man1/*
 

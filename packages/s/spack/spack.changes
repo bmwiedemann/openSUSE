@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  4 06:54:13 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add
+  * Fix-documentation-so-that-parser-doesn-t-stumble.patch:
+  * Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+    Fix documentation building.
+- Fix texinfo file installation.
+
+-------------------------------------------------------------------
 Fri Dec 11 15:09:07 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added patch for more reproduceable output for the doc package

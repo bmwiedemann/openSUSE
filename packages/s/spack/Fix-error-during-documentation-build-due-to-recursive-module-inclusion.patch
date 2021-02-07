@@ -1,0 +1,40 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Feb 4 09:17:55 2021 +0100
+Subject: Fix error during documentation build due to recursive module inclusion
+Patch-mainline: Not yet
+Git-commit: 7102b892cfc6e0697b658f35b7774a03bd1c42e9
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ lib/spack/spack/user_environment.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+diff --git a/lib/spack/spack/user_environment.py b/lib/spack/spack/user_environment.py
+index f08f21e..0da6c43 100644
+--- a/lib/spack/spack/user_environment.py
++++ b/lib/spack/spack/user_environment.py
+@@ -8,7 +8,7 @@
+ import spack.config
+ import spack.util.prefix as prefix
+ import spack.util.environment as environment
+-import spack.build_environment as build_env
++import spack.build_environment
+ 
+ #: Environment variable name Spack uses to track individually loaded packages
+ spack_loaded_hashes_var = 'SPACK_LOADED_HASHES'
+@@ -85,13 +85,13 @@ def environment_modifications_for_spec(spec, view=None):
+     # Let the extendee/dependency modify their extensions/dependents
+     # before asking for package-specific modifications
+     env.extend(
+-        build_env.modifications_from_dependencies(
++        build_environment.modifications_from_dependencies(
+             spec, context='run'
+         )
+     )
+ 
+     # Package specific modifications
+-    build_env.set_module_variables_for_package(spec.package)
++    build_environment.set_module_variables_for_package(spec.package)
+     spec.package.setup_run_environment(env)
+ 
+     return env
