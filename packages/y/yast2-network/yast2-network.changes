@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb  4 15:05:25 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Cache the hardware netcards information in order to speed up the
+  access (bsc#1180702)
+- 4.3.44
+
+-------------------------------------------------------------------
+Mon Feb  1 20:05:05 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Added lladdr attribute to the interface section in the networking
+  schema and honors it when importing the config (bsc#1179876)
+- 4.3.43
+
+-------------------------------------------------------------------
+Fri Jan 29 15:56:44 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Improved the NetworkManager wireless configuration writers adding
+  support for writing WPA-EAP and open WEP authentication modes.
+- 4.3.42
+
+-------------------------------------------------------------------
 Tue Jan 26 11:23:33 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fixes some usability issues (bsc#1177834):
