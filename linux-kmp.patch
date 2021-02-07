@@ -1,0 +1,807 @@
+commit d7fc5bf9bf031089d80703c48daf30d5b15a80ca
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Jul 3 10:33:51 2020 -0600
+
+    LINUX 5.8: Replace kernel_setsockopt with new funcs
+    
+    Linux 5.8-rc1 commit 'net: remove kernel_setsockopt' (5a892ff2facb)
+    retires the kernel_setsockopt function. In prior kernel commits new
+    functions (ip_sock_set_*) were added to replace the specific functions
+    performed by kernel_setsockopt.
+    
+    Define new config test 'HAVE_IP_SOCK_SET' if the 'ip_sock_set' functions
+    are available. The config define 'HAVE_KERNEL_SETSOCKOPT' is no longer
+    set in Linux 5.8.
+    
+    Create wrapper functions that replace the kernel_setsockopt calls with
+    calls to the appropriate Linux kernel function(s) (depending on what
+    functions the kernel supports).
+    
+    Remove the unused 'kernel_getsockopt' function (used for building with
+    pre 2.6.19 kernels).
+    
+    For reference
+        Linux 2.6.19 introduced kernel_setsockopt
+        Linux 5.8 removed kernel_setsockopt and replaced the functionality
+                  with a set of new functions (ip_sock_set_*)
+    
+    Reviewed-on: https://gerrit.openafs.org/14247
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit c48072b9800759ef1682b91ff1e962f6904a2594)
+    
+    Change-Id: I2724fad06b1882149d2066d13eced55eff5ee695
+    Reviewed-on: https://gerrit.openafs.org/14267
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index 4999b89b9..620b3730c 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -314,9 +314,22 @@ zero_user_segment(struct page *pp, unsigned int from1, unsigned int to1)
+ }
+ #endif
+ 
+-#ifndef HAVE_LINUX_KERNEL_SETSOCKOPT
++#if defined(HAVE_LINUX_IP_SOCK_SET)
++# include <net/ip.h>
++/* ip_sock_set_* introduced in linux 5.8 */
++static inline void
++afs_linux_sock_set_mtu_discover(struct socket *sockp, int pmtu)
++{
++    ip_sock_set_mtu_discover(sockp->sk, pmtu);
++}
++static inline void
++afs_linux_sock_set_recverr(struct socket *sockp)
++{
++    ip_sock_set_recverr(sockp->sk);
++}
++#else
++# if !defined(HAVE_LINUX_KERNEL_SETSOCKOPT)
+ /* Available from 2.6.19 */
+-
+ static inline int
+ kernel_setsockopt(struct socket *sockp, int level, int name, char *val,
+ 		  unsigned int len) {
+@@ -329,20 +342,22 @@ kernel_setsockopt(struct socket *sockp, int level, int name, char *val,
+ 
+     return ret;
+ }
++# endif /* !HAVE_LINUX_KERNEL_SETSOCKOPT */
+ 
+-static inline int
+-kernel_getsockopt(struct socket *sockp, int level, int name, char *val,
+-		  int *len) {
+-    mm_segment_t old_fs = get_fs();
+-    int ret;
+-
+-    set_fs(get_ds());
+-    ret = sockp->ops->getsockopt(sockp, level, name, val, len);
+-    set_fs(old_fs);
+-
+-    return ret;
++static inline void
++afs_linux_sock_set_mtu_discover(struct socket *sockp, int pmtu)
++{
++    kernel_setsockopt(sockp, SOL_IP, IP_MTU_DISCOVER, (char *)&pmtu,
++		      sizeof(pmtu));
+ }
+-#endif
++static inline void
++afs_linux_sock_set_recverr(struct socket *sockp)
++{
++    int recverr = 1;
++    kernel_setsockopt(sockp, SOL_IP, IP_RECVERR, (char *)&recverr,
++		      sizeof(recverr));
++}
++#endif /* !HAVE_LINUX_IP_SOCK_SET */
+ 
+ #ifdef HAVE_TRY_TO_FREEZE
+ static inline int
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 07627db52..78ff48294 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -151,6 +151,12 @@ AC_CHECK_LINUX_FUNC([lru_cache_add_file],
+                     [#include <linux/swap.h>],
+                     [lru_cache_add_file(NULL);])
+ 
++dnl Linux 5.8 replaced kernel_setsockopt with helper functions
++dnl e.g. ip_sock_set_mtu_discover, ip_sock_set_recverr
++AC_CHECK_LINUX_FUNC([ip_sock_set],
++                    [#include <net/ip.h>],
++                    [ip_sock_set_mtu_discover(NULL, 0);])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+diff --git a/src/rx/LINUX/rx_knet.c b/src/rx/LINUX/rx_knet.c
+index 9fbb563f3..50607c8f5 100644
+--- a/src/rx/LINUX/rx_knet.c
++++ b/src/rx/LINUX/rx_knet.c
+@@ -34,7 +34,6 @@
+ #include <linux/errqueue.h>
+ #include <linux/icmp.h>
+ #endif
+-
+ #include "osi_compat.h"
+ 
+ /* rxk_NewSocket
+@@ -76,14 +75,10 @@ rxk_NewSocketHost(afs_uint32 ahost, short aport)
+ 	return NULL;
+     }
+ 
+-    kernel_setsockopt(sockp, SOL_IP, IP_MTU_DISCOVER, (char *)&pmtu,
+-		      sizeof(pmtu));
++    afs_linux_sock_set_mtu_discover(sockp, pmtu);
++
+ #ifdef AFS_RXERRQ_ENV
+-    {
+-	int recverr = 1;
+-	kernel_setsockopt(sockp, SOL_IP, IP_RECVERR, (char *)&recverr,
+-	                  sizeof(recverr));
+-    }
++    afs_linux_sock_set_recverr(sockp);
+ #endif
+     return (osi_socket *)sockp;
+ }
+commit 335f37be13d2ff954e4aeea617ee66502170805e
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Jul 3 10:34:42 2020 -0600
+
+    LINUX 5.8: do not set name field in backing_dev_info
+    
+    Linux-5.8-rc1 commit 'bdi: remove the name field in struct
+    backing_dev_info' (1cd925d5838)
+    
+    Do not set the name field in the backing_dev_info structure if it is
+    not available. Uses an existing config test
+        'STRUCT_BACKING_DEV_INFO_HAS_NAME'
+    
+    Note the name field in the backing_dev_info structure was added in
+    Linux-2.6.32
+    
+    Reviewed-on: https://gerrit.openafs.org/14248
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit d8ec294534fcdee77a2ccd297b4b167dc4d5573d)
+    
+    Change-Id: I3d9e18092db998a4c4f26bd63ee3b75383a53d4c
+    Reviewed-on: https://gerrit.openafs.org/14268
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+diff --git a/src/afs/LINUX/osi_vfsops.c b/src/afs/LINUX/osi_vfsops.c
+index 8bbb5f225..ca1d5c83b 100644
+--- a/src/afs/LINUX/osi_vfsops.c
++++ b/src/afs/LINUX/osi_vfsops.c
+@@ -121,7 +121,9 @@ afs_fill_super(struct super_block *sb, void *data, int silent)
+     code = super_setup_bdi(sb);
+     if (code)
+         goto out;
++# if defined(STRUCT_BACKING_DEV_INFO_HAS_NAME)
+     sb->s_bdi->name = "openafs";
++# endif
+     sb->s_bdi->ra_pages = 32;
+ #else
+     /* used for inodes backing_dev_info field, also */
+commit facff58b840a47853592510617ba7a1da2e3eaa9
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Jul 3 10:35:06 2020 -0600
+
+    LINUX 5.8: use lru_cache_add
+    
+    With Linux-5.8-rc1 commit 'mm: fold and remove lru_cache_add_anon() and
+    lru_cache_add_file()' (6058eaec), the lru_cache_add_file function is
+    removed since it was functionally equivalent to lru_cache_add.
+    
+    Replace lru_cache_add_file with lru_cache_add.
+    
+    Introduce a new autoconf test to determine if lru_cache_add is present
+    
+    For reference, the Linux changes associated with the lru caches:
+    
+      __pagevec_lru_add introduced before v2.6.12-rc2
+    
+      lru_cache_add_file introduced in v2.6.28-rc1
+      __pagevec_lru_add_file replaces __pagevec_lru_add in v2.6.28-rc1
+         vmscan: split LRU lists into anon & file sets (4f98a2fee)
+    
+      __pagevec_lru_add removed in v5.7 with a note to use lru_cache_add_file
+         mm/swap.c: not necessary to export __pagevec_lru_add() (bde07cfc6)
+    
+      lru_cache_add_file removed in v5.8
+         mm: fold and remove lru_cache_add_anon() and lru_cache_add_file()
+          (6058eaec)
+      lru_cache_add exported
+         mm: fold and remove lru_cache_add_anon() and lru_cache_add_file()
+          (6058eaec)
+    
+    Openafs will use:
+      lru_cache_add on 5.8 kernels
+      lru_cache_add_file from 2.6.28 through 5.7 kernels
+      __pagevec_lru_add/__pagevec_lru_add_file on pre 2.6.28 kernels
+    
+    Reviewed-on: https://gerrit.openafs.org/14249
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Yadavendra Yadav <yadayada@in.ibm.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 7d85ce221d6ccc19cf76ce7680c74311e4ed2632)
+    
+    Change-Id: Iba6ef4441687dbf60d227a708e2a032c2c0dc79f
+    Reviewed-on: https://gerrit.openafs.org/14269
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 00995b27a..36a4f685e 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -71,7 +71,7 @@ extern struct vcache *afs_globalVp;
+ 
+ /* Handle interfacing with Linux's pagevec/lru facilities */
+ 
+-#if defined(HAVE_LINUX_LRU_CACHE_ADD_FILE)
++#if defined(HAVE_LINUX_LRU_CACHE_ADD_FILE) || defined(HAVE_LINUX_LRU_CACHE_ADD)
+ 
+ /*
+  * Linux's lru_cache_add_file provides a simplified LRU interface without
+@@ -90,7 +90,13 @@ afs_lru_cache_init(struct afs_lru_pages *alrupages)
+ static inline void
+ afs_lru_cache_add(struct afs_lru_pages *alrupages, struct page *page)
+ {
++# if defined(HAVE_LINUX_LRU_CACHE_ADD)
++    lru_cache_add(page);
++# elif defined(HAVE_LINUX_LRU_CACHE_ADD_FILE)
+     lru_cache_add_file(page);
++# else
++#  error need a kernel function to add a page to the kernel lru cache
++# endif
+ }
+ 
+ static inline void
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 78ff48294..11d071806 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -147,10 +147,17 @@ AC_CHECK_LINUX_FUNC([inode_lock],
+                     [inode_lock(NULL);])
+ 
+ dnl lru_cache_add_file added to Linux 2.6.28.
++dnl                    removed in Linux 5.8
+ AC_CHECK_LINUX_FUNC([lru_cache_add_file],
+                     [#include <linux/swap.h>],
+                     [lru_cache_add_file(NULL);])
+ 
++dnl lru_cache_add exported in Linux 5.8
++dnl    replaces lru_cache_add_file
++AC_CHECK_LINUX_FUNC([lru_cache_add],
++                    [#include <linux/swap.h>],
++                    [lru_cache_add(NULL);])
++
+ dnl Linux 5.8 replaced kernel_setsockopt with helper functions
+ dnl e.g. ip_sock_set_mtu_discover, ip_sock_set_recverr
+ AC_CHECK_LINUX_FUNC([ip_sock_set],
+commit e7902252f15acfc28453c531f6fa3b29c9c91b92
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Aug 21 10:37:51 2020 -0600
+
+    LINUX 5.9: Remove HAVE_UNLOCKED_IOCTL/COMPAT_IOCTL
+    
+    Linux-5.9-rc1 commit 'fs: remove the HAVE_UNLOCKED_IOCTL and
+    HAVE_COMPAT_IOCTL defines' (4e24566a) removed the two referenced macros
+    from the kernel.
+    
+    The support for unlocked_ioctl and compat_ioctl were introduced in
+    Linux 2.6.11.
+    
+    Remove references to HAVE_UNLOCKED_IOCTL and HAVE_COMPAT_IOCTL using
+    the assumption that they were always defined.
+    
+    Notes:
+    
+    With this change, building against kernels 2.6.10 and older will fail.
+    RHEL4 (EOL in March 2017) used a 2.6.9 kernel.  RHEL5 uses a 2.6.18
+    kernel.
+    
+    In linux-2.6.33-rc1 the commit messages for "staging: comedi:
+    Remove check for HAVE_UNLOCKED_IOCTL" (00a1855c) and "Staging: comedi:
+    remove check for HAVE_COMPAT_IOCTL" (5d7ae225) both state that all new
+    kernels have support for unlocked_ioctl/compat_ioctl so the checks can
+    be removed along with removing support for older kernels.
+    
+    Reviewed-on: https://gerrit.openafs.org/14300
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 13a49aaf0d5c43bce08135edaabb65587e1a8031)
+    
+    Change-Id: I6dc5ae5b32031641f4a021a31630390a91d834fe
+    Reviewed-on: https://gerrit.openafs.org/14315
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+diff --git a/src/afs/LINUX/osi_ioctl.c b/src/afs/LINUX/osi_ioctl.c
+index 1646a1518..9ba076a1b 100644
+--- a/src/afs/LINUX/osi_ioctl.c
++++ b/src/afs/LINUX/osi_ioctl.c
+@@ -25,10 +25,6 @@
+ #include <asm/ia32_unistd.h>
+ #endif
+ 
+-#if defined(AFS_SPARC64_LINUX26_ENV) && defined(NEED_IOCTL32) && !defined(HAVE_COMPAT_IOCTL)
+-#include <linux/ioctl32.h>
+-#endif
+-
+ #include <linux/slab.h>
+ #include <linux/init.h>
+ #include <linux/sched.h>
+@@ -37,9 +33,6 @@
+ #include "osi_compat.h"
+ 
+ extern struct proc_dir_entry *openafs_procfs;
+-#if defined(NEED_IOCTL32) && !defined(HAVE_COMPAT_IOCTL)
+-static int ioctl32_done;
+-#endif
+ 
+ extern asmlinkage long
+ afs_syscall(long syscall, long parm1, long parm2, long parm3, long parm4);
+@@ -85,12 +78,11 @@ afs_ioctl(struct inode *inode, struct file *file, unsigned int cmd,
+     }
+ }
+ 
+-#if defined(HAVE_UNLOCKED_IOCTL) || defined(HAVE_COMPAT_IOCTL)
+ static long afs_unlocked_ioctl(struct file *file, unsigned int cmd,
+                                unsigned long arg) {
+     return afs_ioctl(FILE_INODE(file), file, cmd, arg);
+ }
+-#endif
++
+ #if defined(HAVE_LINUX_STRUCT_PROC_OPS)
+ static struct proc_ops afs_syscall_ops = {
+     .proc_ioctl = afs_unlocked_ioctl,
+@@ -100,16 +92,11 @@ static struct proc_ops afs_syscall_ops = {
+ };
+ #else
+ static struct file_operations afs_syscall_ops = {
+-# ifdef HAVE_UNLOCKED_IOCTL
+     .unlocked_ioctl = afs_unlocked_ioctl,
+-# else
+-    .ioctl = afs_ioctl,
+-# endif
+-# ifdef HAVE_COMPAT_IOCTL
+     .compat_ioctl = afs_unlocked_ioctl,
+-# endif
+ };
+ #endif /* HAVE_LINUX_STRUCT_PROC_OPS */
++
+ void
+ osi_ioctl_init(void)
+ {
+@@ -121,18 +108,10 @@ osi_ioctl_init(void)
+ 	entry->owner = THIS_MODULE;
+ #endif
+ 
+-#if defined(NEED_IOCTL32) && !defined(HAVE_COMPAT_IOCTL)
+-    if (register_ioctl32_conversion(VIOC_SYSCALL32, NULL) == 0) 
+-	ioctl32_done = 1;
+-#endif
+ }
+ 
+ void
+ osi_ioctl_clean(void)
+ {
+     remove_proc_entry(PROC_SYSCALL_NAME, openafs_procfs);
+-#if defined(NEED_IOCTL32) && !defined(HAVE_COMPAT_IOCTL)
+-    if (ioctl32_done)
+-	    unregister_ioctl32_conversion(VIOC_SYSCALL32);
+-#endif
+ }
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 36a4f685e..ba4f1e6af 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -589,13 +589,11 @@ out1:
+ extern int afs_xioctl(struct inode *ip, struct file *fp, unsigned int com,
+ 		      unsigned long arg);
+ 
+-#if defined(HAVE_UNLOCKED_IOCTL) || defined(HAVE_COMPAT_IOCTL)
+ static long afs_unlocked_xioctl(struct file *fp, unsigned int com,
+                                unsigned long arg) {
+     return afs_xioctl(FILE_INODE(fp), fp, com, arg);
+ 
+ }
+-#endif
+ 
+ 
+ static int
+@@ -891,14 +889,8 @@ struct file_operations afs_dir_fops = {
+ #else
+   .readdir =	afs_linux_readdir,
+ #endif
+-#ifdef HAVE_UNLOCKED_IOCTL
+   .unlocked_ioctl = afs_unlocked_xioctl,
+-#else
+-  .ioctl =	afs_xioctl,
+-#endif
+-#ifdef HAVE_COMPAT_IOCTL
+   .compat_ioctl = afs_unlocked_xioctl,
+-#endif
+   .open =	afs_linux_open,
+   .release =	afs_linux_release,
+   .llseek =	default_llseek,
+@@ -926,14 +918,8 @@ struct file_operations afs_file_fops = {
+   .read =	afs_linux_read,
+   .write =	afs_linux_write,
+ #endif
+-#ifdef HAVE_UNLOCKED_IOCTL
+   .unlocked_ioctl = afs_unlocked_xioctl,
+-#else
+-  .ioctl =	afs_xioctl,
+-#endif
+-#ifdef HAVE_COMPAT_IOCTL
+   .compat_ioctl = afs_unlocked_xioctl,
+-#endif
+   .mmap =	afs_linux_mmap,
+   .open =	afs_linux_open,
+   .flush =	afs_linux_flush,
+commit 5c476b91fd2259e9c34070be8ba201dd471ad974
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Jul 13 17:40:21 2017 -0500
+
+    afs: Change VerifyVCache2 calls to VerifyVCache
+    
+    afs_VerifyVCache is a macro that (on most platforms) effectively
+    expands to:
+    
+        if ((avc->f.states & CStatd)) {
+            return 0;
+        } else {
+            return afs_VerifyVCache2(...);
+        }
+    
+    Some callers call afs_VerifyVCache2 directly, since they already check
+    for CStatd for other reasons. A few callers currently call
+    afs_VerifyVCache2, but without guaranteeing that CStatd is not set.
+    Specifically, in afs_getattr and afs_linux_VerifyVCache, CStatd could
+    be set while afs_CreateReq drops GLOCK. And in afs_linux_readdir,
+    CStatd could be cleared at multiple different points before the
+    VerifyVCache call.
+    
+    This can result in afs_VerifyVCache2 acquiring a write-lock on the
+    vcache, even when CStatd is already set, which is an unnecessary
+    performance hit.
+    
+    To avoid this, change these call sites to use afs_VerifyVCache instead
+    of calling afs_VerifyVCache2 directly, which skips the write lock when
+    CStatd is already set.
+    
+    Reviewed-on: https://gerrit.openafs.org/12655
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit a05d5b7503e466e18f5157006c1de2a2f7d019f7)
+    
+    Change-Id: I05bdcb7f10930ed465c24a8d7e51077a027b1a4b
+    Reviewed-on: https://gerrit.openafs.org/14395
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index ba4f1e6af..d2a994389 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -177,7 +177,7 @@ afs_linux_VerifyVCache(struct vcache *avc, cred_t **retcred) {
+ 
+     code = afs_CreateReq(&treq, credp);
+     if (code == 0) {
+-        code = afs_VerifyVCache2(avc, treq);
++	code = afs_VerifyVCache(avc, treq);
+ 	afs_DestroyReq(treq);
+     }
+ 
+@@ -419,7 +419,7 @@ afs_linux_readdir(struct file *fp, void *dirbuf, filldir_t filldir)
+ 
+     /* update the cache entry */
+   tagain:
+-    code = afs_convert_code(afs_VerifyVCache2(avc, treq));
++    code = afs_convert_code(afs_VerifyVCache(avc, treq));
+     if (code)
+ 	goto out;
+ 
+diff --git a/src/afs/VNOPS/afs_vnop_attrs.c b/src/afs/VNOPS/afs_vnop_attrs.c
+index a22331a5b..7166bf3c3 100644
+--- a/src/afs/VNOPS/afs_vnop_attrs.c
++++ b/src/afs/VNOPS/afs_vnop_attrs.c
+@@ -248,7 +248,7 @@ afs_getattr(OSI_VC_DECL(avc), struct vattr *attrs, afs_ucred_t *acred)
+ 
+     if (!(avc->f.states & CStatd)) {
+ 	if (!(code = afs_CreateReq(&treq, acred))) {
+-	    code = afs_VerifyVCache2(avc, treq);
++	    code = afs_VerifyVCache(avc, treq);
+ 	    inited = 1;
+ 	}
+     } else
+commit b7ddd1262117332871e7cd537aa6065b78a41bb2
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Jun 18 21:16:09 2020 -0500
+
+    LINUX: Close cacheFp if no ->readpage in fastpath
+    
+    In afs_linux_readpage_fastpath, if we discover that our disk cache fs
+    has no ->readpage function, we'll 'goto out', but we never close our
+    cacheFp. To make sure we close it, add a filp_close() call to the
+    'goto out' cleanup code.
+    
+    Reviewed-on: https://gerrit.openafs.org/14252
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit f9d20c631d7280ce00125a1208331931a6e3f31c)
+    
+    Change-Id: If409c50e5515cd80f77171a90fd96e2d3fb575a8
+    Reviewed-on: https://gerrit.openafs.org/14421
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index d2a994389..ae406df61 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -2357,6 +2357,9 @@ afs_linux_readpage_fastpath(struct file *fp, struct page *pp, int *codep)
+     return 1;
+ 
+ out:
++    if (cacheFp != NULL) {
++	filp_close(cacheFp, NULL);
++    }
+     ReleaseWriteLock(&avc->lock);
+     ReleaseReadLock(&tdc->lock);
+     afs_PutDCache(tdc);
+commit c55607d732a65f8acb1dfc6bf93aee0f4409cecf
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Mon Oct 26 12:35:32 2020 -0500
+
+    LINUX: Return errors in our d_revalidate
+    
+    In our d_revalidate callback (afs_linux_dentry_revalidate), we
+    currently 'goto bad_dentry' when we encounter any error. This can
+    happen if we can't allocate memory or some other internal errors, or
+    if the relevant afs_lookup call fails just due to plain network
+    errors.
+    
+    For any of these cases, we'll treat the dentry as if it's no longer
+    valid, so we'll return '0' and call d_invalidate() on the dentry.
+    However, the behavior of d_invalidate changed, as mentioned in commit
+    afbc199f1 (LINUX: Avoid d_invalidate() during
+    afs_ShakeLooseVCaches()). After a certain point in the Linux kernel,
+    d_invalidate() will also effectively d_drop() the given dentry,
+    unhashing it. This can cause getcwd() calls to fail with ENOENT for
+    those directories (as mentioned in afbc199f1), and can cause
+    bind-mount calls to fail similarly during a small window.
+    
+    To avoid all of this, when we encounter an error that prevents us from
+    checking if the dentry is valid or not, we need to return an error,
+    instead of saying 'yes' or 'no'. So, change
+    afs_linux_dentry_revalidate to jump to the 'done' label when we
+    encounter such errors, and avoid calling d_drop/d_invalidate in such
+    cases. This also lets us remove the 'lookup_good' variable and
+    consolidate some of the related logic.
+    
+    Important note: in older Linux kernels, d_revalidate cannot return
+    errors; callers just interpreted its return value as either 'valid'
+    (non-zero) or 'not valid' (zero). The treatment of negative values as
+    errors was introduced in Linux commit
+    bcdc5e019d9f525a9f181a7de642d3a9c27c7610, which was included in
+    2.6.19. This is very old, but technically still above our stated
+    requirements for the Linux kernel, so try to handle this case, by
+    jumping to 'bad_dentry' still for those old kernels. Just do this with
+    a version check, since no configure check can detect this (no function
+    signatures changed), and the only Linux versions that are a concern
+    are quite old.
+    
+    Reviewed-on: https://gerrit.openafs.org/14417
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 78e5e1b0e54b31bb08b7578e86a6a2a95770d94c)
+    
+    Change-Id: I9f9e2cd3a10cc8fa30a770cabd6ae9757f412ce5
+    Reviewed-on: https://gerrit.openafs.org/14451
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index ae406df61..c2a4278bf 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -63,6 +63,12 @@
+ #undef USE_FOP_ITERATE
+ #endif
+ 
++/* Kernels from before 2.6.19 may not be able to return errors from
++ * d_revalidate. */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,19)
++# define ERRORS_FROM_D_REVALIDATE
++#endif
++
+ int cachefs_noreadpage = 0;
+ 
+ extern struct backing_dev_info *afs_backing_dev_info;
+@@ -1291,6 +1297,7 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+     struct afs_fakestat_state fakestate;
+     int force_drop = 0;
+     afs_uint32 parent_dv;
++    int code = 0;
+ 
+ #ifdef LOOKUP_RCU
+     /* We don't support RCU path walking */
+@@ -1321,14 +1328,13 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+ 	if (vcp->mvstat == AFS_MVSTAT_MTPT) {
+ 	    if (vcp->mvid.target_root && (vcp->f.states & CMValid)) {
+ 		int tryEvalOnly = 0;
+-		int code = 0;
+ 		struct vrequest *treq = NULL;
+ 
+ 		credp = crref();
+ 
+ 		code = afs_CreateReq(&treq, credp);
+ 		if (code) {
+-		    goto bad_dentry;
++		    goto error;
+ 		}
+ 		if ((strcmp(dp->d_name.name, ".directory") == 0)) {
+ 		    tryEvalOnly = 1;
+@@ -1338,7 +1344,10 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+ 		else
+ 		    code = afs_EvalFakeStat(&vcp, &fakestate, treq);
+ 		afs_DestroyReq(treq);
+-		if ((tryEvalOnly && vcp->mvstat == AFS_MVSTAT_MTPT) || code) {
++		if (code != 0) {
++		    goto error;
++		}
++		if (tryEvalOnly && vcp->mvstat == AFS_MVSTAT_MTPT) {
+ 		    /* a mount point, not yet replaced by its directory */
+ 		    goto bad_dentry;
+ 		}
+@@ -1372,22 +1381,27 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+ 
+ 	if (parent_dv > dp->d_time || !(vcp->f.states & CStatd)) {
+ 	    struct vattr *vattr = NULL;
+-	    int code;
+-	    int lookup_good;
+ 
+ 	    if (credp == NULL) {
+ 		credp = crref();
+ 	    }
+ 	    code = afs_lookup(pvcp, (char *)dp->d_name.name, &tvc, credp);
+             code = filter_enoent(code);
++	    if (code == ENOENT) {
++		/* ENOENT is not an error here. */
++		code = 0;
++		osi_Assert(tvc == NULL);
++	    }
+ 
+ 	    if (code) {
+-		/* We couldn't perform the lookup, so we're not okay. */
+-		lookup_good = 0;
++		/* We couldn't perform the lookup, so we don't know if the
++		 * dentry is valid or not. */
++		dput(parent);
++		goto error;
++	    }
+ 
+-	    } else if (tvc == vcp) {
++	    if (tvc == vcp) {
+ 		/* We got back the same vcache, so we're good. */
+-		lookup_good = 1;
+ 
+ 	    } else if (tvc == VTOAFS(dp->d_inode)) {
+ 		/* We got back the same vcache, so we're good. This is
+@@ -1398,37 +1412,29 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+ 		 * versa, so the previous case will not succeed. But this is
+ 		 * still 'correct', so make sure not to mark the dentry as
+ 		 * invalid; it still points to the same thing! */
+-		lookup_good = 1;
+ 
+ 	    } else {
+-		/* We got back a different file, so we're definitely not
+-		 * okay. */
+-		lookup_good = 0;
+-	    }
+-
+-	    if (!lookup_good) {
++		/*
++		 * We got back a different file, so we know this dentry is
++		 * _not_ okay. Force it to be unhashed, since the given name
++		 * doesn't point to this file anymore.
++		 */
+ 		dput(parent);
+-		/* Force unhash; the name doesn't point to this file
+-		 * anymore. */
+ 		force_drop = 1;
+-		if (code && code != ENOENT) {
+-		    /* ...except if we couldn't perform the actual lookup,
+-		     * we don't know if the name points to this file or not. */
+-		    force_drop = 0;
+-		}
+ 		goto bad_dentry;
+ 	    }
+ 
+ 	    code = afs_CreateAttr(&vattr);
+ 	    if (code) {
+ 		dput(parent);
+-		goto bad_dentry;
++		goto error;
+ 	    }
+ 
+ 	    if (afs_getattr(vcp, vattr, credp)) {
+ 		dput(parent);
+ 		afs_DestroyAttr(vattr);
+-		goto bad_dentry;
++		code = EIO;
++		goto error;
+ 	    }
+ 
+ 	    vattr2inode(AFSTOV(vcp), vattr);
+@@ -1460,10 +1466,12 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+     }
+ 
+   good_dentry:
++    code = 0;
+     valid = 1;
+     goto done;
+ 
+   bad_dentry:
++    code = 0;
+     valid = 0;
+ #ifndef D_INVALIDATE_IS_VOID
+     /* When (v3.18) d_invalidate was converted to void, it also started
+@@ -1489,6 +1497,18 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+     if (credp)
+ 	crfree(credp);
+ 
++#ifdef ERRORS_FROM_D_REVALIDATE
++    if (code != 0) {
++	/*
++	 * If code is nonzero, we don't know whether this dentry is valid or
++	 * not; we couldn't successfully perform the relevant lookup in order
++	 * to tell. So we must not return 'valid' (1) or 'not valid' (0); we
++	 * need to return an error (e.g. -EIO).
++	 */
++	return -code;
++    }
++#endif
++
+ #ifndef D_INVALIDATE_IS_VOID
+     if (!valid) {
+ 	/*
+@@ -1505,6 +1525,17 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+ #endif
+     return valid;
+ 
++ error:
++    if (code <= 0) {
++	code = EIO;
++    }
++#ifdef ERRORS_FROM_D_REVALIDATE
++    valid = 0;
++    goto done;
++#else
++    /* We can't return an error, so default to saying the dentry is invalid. */
++    goto bad_dentry;
++#endif
+ }
+ 
+ static void
