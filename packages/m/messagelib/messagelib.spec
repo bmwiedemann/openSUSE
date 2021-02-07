@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        20.12.1
+Version:        20.12.2
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-Bug-431218-mail-viewer-loads-external-fonts-even.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0002-Exclude-loading-stylesheet.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
@@ -111,7 +115,7 @@ This package contains source headers for messagelib.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DMESSAGEVIEWER_USE_QTWEBENGINE=TRUE -DQTWEBENGINE_SUPPORT_OPTION=TRUE
+%cmake_kf5 -d build
 %cmake_build
 
 %install
