@@ -1,0 +1,101 @@
+From 5f98e139f74a1280dee4f1579eeab05e08541e8c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 10 Nov 2020 04:33:21 +0000
+Subject: [PATCH 8/9] squash! Add support for Linux EFI stub loading on
+ aarch64.
+
+Make efi handoff the default loader for arm64 platform.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def        |  4 +---
+ grub-core/loader/arm64/efi/linux.c | 20 ++++++++++----------
+ 2 files changed, 11 insertions(+), 13 deletions(-)
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index cfdd31431..ce4f71ebe 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1787,7 +1787,7 @@ module = {
+   arm_coreboot = loader/arm/linux.c;
+   arm_efi = loader/arm64/linux.c;
+   arm_uboot = loader/arm/linux.c;
+-  arm64 = loader/arm64/linux.c;
++  arm64 = loader/arm64/efi/linux.c;
+   riscv32 = loader/riscv/linux.c;
+   riscv64 = loader/riscv/linux.c;
+   emu = loader/emu/linux.c;
+@@ -1855,10 +1855,8 @@ module = {
+ module = {
+   name = linuxefi;
+   x86 = lib/fake_module.c;
+-  arm64 = loader/arm64/efi/linux.c;
+   enable = i386_efi;
+   enable = x86_64_efi;
+-  enable = arm64_efi;
+ };
+ 
+ module = {
+diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
+index 0e5782caa..7a8c6dfe4 100644
+--- a/grub-core/loader/arm64/efi/linux.c
++++ b/grub-core/loader/arm64/efi/linux.c
+@@ -123,9 +123,8 @@ grub_efi_linux_boot (void *kernel_address, grub_off_t offset,
+ 
+ #pragma GCC diagnostic pop
+ 
+-/* FIXME: This is copy of grub_arch_efi_linux_check_image () */
+-static grub_err_t
+-grub_arch_efi_linux_check_image_XX (struct linux_arch_kernel_header * lh)
++grub_err_t
++grub_arch_efi_linux_check_image (struct linux_arch_kernel_header * lh)
+ {
+   if (lh->magic != GRUB_LINUX_ARMXX_MAGIC_SIGNATURE)
+     return grub_error(GRUB_ERR_BAD_OS, "invalid magic number");
+@@ -263,9 +262,10 @@ free_params (void)
+     }
+ }
+ 
+-/* FIXME: This is to replace grub_arch_efi_linux_boot_image */
+-static grub_err_t
+-grub_arch_efi_linux_boot_image_XX (grub_addr_t addr, char *args)
++grub_err_t
++grub_arch_efi_linux_boot_image (grub_addr_t addr,
++			        grub_size_t size __attribute__ ((unused)),
++			        char *args)
+ {
+   grub_err_t retval;
+ 
+@@ -285,7 +285,7 @@ grub_arch_efi_linux_boot_image_XX (grub_addr_t addr, char *args)
+ static grub_err_t
+ grub_linux_boot (void)
+ {
+-  return (grub_arch_efi_linux_boot_image_XX ((grub_addr_t)kernel_addr, linux_args));
++  return (grub_arch_efi_linux_boot_image ((grub_addr_t)kernel_addr, kernel_size, linux_args));
+ }
+ 
+ static grub_err_t
+@@ -432,7 +432,7 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+   if (grub_file_read (file, &lh, sizeof (lh)) < (long) sizeof (lh))
+     return grub_errno;
+ 
+-  if (grub_arch_efi_linux_check_image_XX (&lh) != GRUB_ERR_NONE)
++  if (grub_arch_efi_linux_check_image (&lh) != GRUB_ERR_NONE)
+     goto fail;
+ 
+   grub_loader_unset();
+@@ -518,9 +518,9 @@ static grub_command_t cmd_linux, cmd_initrd;
+ 
+ GRUB_MOD_INIT (linux)
+ {
+-  cmd_linux = grub_register_command ("linuxefi", grub_cmd_linux, 0,
++  cmd_linux = grub_register_command ("linux", grub_cmd_linux, 0,
+ 				     N_("Load Linux."));
+-  cmd_initrd = grub_register_command ("initrdefi", grub_cmd_initrd, 0,
++  cmd_initrd = grub_register_command ("initrd", grub_cmd_initrd, 0,
+ 				      N_("Load initrd."));
+   my_mod = mod;
+ }
+-- 
+2.26.2
+

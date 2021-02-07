@@ -1,0 +1,39 @@
+From 5d72f1ccbedcfc883e5f4cda60ea456cdc2b5dcd Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Sat, 30 Jan 2021 12:34:17 +0800
+Subject: [PATCH 9/9] squash! Add support for linuxefi
+
+The upstream commit
+
+df84d6e94 efi: Print error messages to grub_efi_allocate_pages_real()
+
+adds grub_error() to set error message and return grub_errno. We have to
+unset the grub_errno if we want to ignore the error and proceed, or
+the inadvertently provoked error handler would lead to unspecified
+consequence.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/loader/i386/efi/linux.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
+index 3f6d51519..742b215a3 100644
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -283,8 +283,11 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+ 				       BYTES_TO_PAGES(lh.init_size));
+ 
+   if (!kernel_mem)
+-    kernel_mem = grub_efi_allocate_pages_max(0x3fffffff,
++    {
++      grub_errno = GRUB_ERR_NONE;
++      kernel_mem = grub_efi_allocate_pages_max(0x3fffffff,
+ 					     BYTES_TO_PAGES(lh.init_size));
++    }
+ 
+   if (!kernel_mem)
+     {
+-- 
+2.26.2
+

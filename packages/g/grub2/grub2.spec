@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -336,6 +336,16 @@ Patch721:       0001-efi-linux-provide-linux-command.patch
 # (bsc#1176062)
 Patch722:       0001-Warn-if-MBR-gap-is-small-and-user-uses-advanced-modu.patch
 Patch723:       0002-grub-install-Avoid-incompleted-install-on-i386-pc.patch
+# Secure Boot support in GRUB on aarch64 (jsc#SLE-15864)
+Patch730:       0001-Add-support-for-Linux-EFI-stub-loading-on-aarch64.patch
+Patch731:       0002-arm64-make-sure-fdt-has-address-cells-and-size-cells.patch
+Patch732:       0003-Make-grub_error-more-verbose.patch
+Patch733:       0004-arm-arm64-loader-Better-memory-allocation-and-error-.patch
+Patch734:       0005-Make-linux_arm_kernel_header.hdr_offset-be-at-the-ri.patch
+Patch735:       0006-efi-Set-image-base-address-before-jumping-to-the-PE-.patch
+Patch736:       0007-linuxefi-fail-kernel-validation-without-shim-protoco.patch
+Patch737:       0008-squash-Add-support-for-Linux-EFI-stub-loading-on-aar.patch
+Patch738:       0009-squash-Add-support-for-linuxefi.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -458,6 +468,10 @@ Requires(post): perl-Bootloader >= 0.706
 %endif
 Provides:       %{name}-efi = %{version}-%{release}
 Obsoletes:      %{name}-efi < %{version}-%{release}
+%ifarch x86_64
+Conflicts:      python2-kiwi < 9.17.12
+Conflicts:      python3-kiwi < 9.17.12
+%endif
 
 %description %{grubefiarch}
 The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
@@ -490,6 +504,7 @@ Group:          System/Boot
 Provides:       %{name}-xen = %{version}-%{release}
 Obsoletes:      %{name}-xen < %{version}-%{release}
 BuildArch:      noarch
+Conflicts:      xen < 4.12.0_03
 
 %description %{grubxenarch}
 The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
@@ -661,6 +676,15 @@ swap partition while in resuming
 %patch721 -p1
 %patch722 -p1
 %patch723 -p1
+%patch730 -p1
+%patch731 -p1
+%patch732 -p1
+%patch733 -p1
+%patch734 -p1
+%patch735 -p1
+%patch736 -p1
+%patch737 -p1
+%patch738 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15
@@ -842,14 +866,6 @@ cd ..
 cd build-xen
 %make_install
 install -m 644 grub.xen %{buildroot}/%{_datadir}/%{name}/%{grubxenarch}/.
-# provide compatibility sym-link for VM definitions pointing to old location
-install -d %{buildroot}%{_libdir}/%{name}/%{grubxenarch}
-ln -srf %{buildroot}%{_datadir}/%{name}/%{grubxenarch}/grub.xen %{buildroot}%{_libdir}/%{name}/%{grubxenarch}/grub.xen
-cat <<-EoM >%{buildroot}%{_libdir}/%{name}/%{grubxenarch}/DEPRECATED
-	This directory and its contents was moved to %{_datadir}/%{name}/%{grubxenarch}.
-	Individual symbolic links are provided for a smooth transition.
-	Please update your VM definition files to use the new location!
-EoM
 cd ..
 %endif
 
@@ -867,16 +883,6 @@ install -m 644 grub-tpm.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %define sysefidir %{sysefibasedir}/%{_target_cpu} 
 install -d %{buildroot}/%{sysefidir}
 ln -sr %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}%{sysefidir}/grub.efi
-%ifarch x86_64
-# provide compatibility sym-link for previous shim-install and the like
-install -d %{buildroot}/usr/lib64/efi
-ln -srf %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}/usr/lib64/efi/grub.efi
-cat <<-EoM >%{buildroot}/usr/lib64/efi/DEPRECATED
-	This directory and its contents was moved to %{_datadir}/efi/x86_64.
-	Individual symbolic links are provided for a smooth transition and
-	may vanish at any point in time.  Please use the new location!
-EoM
-%endif
 
 %ifarch x86_64 aarch64
 %if 0%{?suse_version} >= 1230 || 0%{?suse_version} == 1110
@@ -1304,12 +1310,6 @@ fi
 %dir %{sysefidir}
 %{sysefidir}/grub.efi
 %if 0%{?suse_version} < 1600
-%ifarch x86_64
-# provide compatibility sym-link for previous shim-install and kiwi
-%dir /usr/lib64/efi
-/usr/lib64/efi/DEPRECATED
-/usr/lib64/efi/grub.efi
-%endif
 %endif
 
 %ifarch x86_64 aarch64
@@ -1338,9 +1338,6 @@ fi
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/%{grubxenarch}
 %{_datadir}/%{name}/%{grubxenarch}/*
-# provide compatibility sym-link for VM definitions pointing to old location
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/%{grubxenarch}
 %endif
 
 %if 0%{?has_systemd:1}

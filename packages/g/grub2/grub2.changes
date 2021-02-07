@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 27 04:13:32 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Complete Secure Boot support on aarch64 (jsc#SLE-15020)
+  * 0001-Add-support-for-Linux-EFI-stub-loading-on-aarch64.patch
+  * 0002-arm64-make-sure-fdt-has-address-cells-and-size-cells.patch
+  * 0003-Make-grub_error-more-verbose.patch
+  * 0004-arm-arm64-loader-Better-memory-allocation-and-error-.patch
+  * 0005-Make-linux_arm_kernel_header.hdr_offset-be-at-the-ri.patch
+  * 0006-efi-Set-image-base-address-before-jumping-to-the-PE-.patch
+  * 0007-linuxefi-fail-kernel-validation-without-shim-protoco.patch
+  * 0008-squash-Add-support-for-Linux-EFI-stub-loading-on-aar.patch
+  * 0009-squash-Add-support-for-linuxefi.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 07:59:39 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix rpmlint 2.0 error for having arch specific path in noarch package aiming
+  for compatibility with old package (bsc#1179044)
+  * grub2.spec
+- Fix non POSIX sed argument which failed in sed from busybox (bsc#1181091)
+  * grub2-check-default.sh
+
+-------------------------------------------------------------------
 Mon Nov  2 06:42:04 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Fix boot failure in blocklist installation (bsc#1178278)

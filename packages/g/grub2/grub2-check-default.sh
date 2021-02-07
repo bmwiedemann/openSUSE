@@ -5,7 +5,7 @@ set -e
 fallback_entry () {
 
   local saved=$1
-  local FALLBACK_MATCH=`echo $saved | sed -e '/>/!d' -e '/>/s/>.*$//'`
+  local FALLBACK_MATCH=`echo $saved | sed -e '/>/!d' -e '/>.*$/s///'`
 
   if [ -n "$FALLBACK_MATCH" ]; then
     for i in $MENU_ENTRIES; do
@@ -35,7 +35,7 @@ esac
 GRUB_EDITENV="/usr/bin/grub2-editenv"
 GRUB_SET_DEFAULT="/usr/sbin/grub2-set-default"
 
-SAVED_ENTRY=`${GRUB_EDITENV} list | sed -ne "/^saved_entry=/{s@\"\(.*\)\"@\1@;t 1;s@'\(.*\)'@\1@;: 1;s@^[^=]\+=@@;p;b}"`
+SAVED_ENTRY=`${GRUB_EDITENV} list | sed -ne "/^saved_entry=/s///p"`
 
 debug_print "SAVED_ENTRY=$SAVED_ENTRY"
 
@@ -101,7 +101,7 @@ fi
 
 source /etc/os-release
 
-NEW_SAVED_ENTRY=`echo $SAVED_ENTRY | sed -ne "s/$NAME [0-9a-zA-Z_.-]\\+/$NAME $VERSION/pg"`
+NEW_SAVED_ENTRY=`echo $SAVED_ENTRY | sed -ne "s/$NAME [0-9a-zA-Z_.-]\{1,\}/$NAME $VERSION/pg"`
 
 debug_print "NEW_SAVED_ENTRY=$NEW_SAVED_ENTRY"
 
