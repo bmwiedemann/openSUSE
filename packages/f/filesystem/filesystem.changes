@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  1 14:23:11 CET 2021 - ro@suse.de
+
+- add /usr/etc/skel/.cache with perm 0700 (boo#1181011)
+
+-------------------------------------------------------------------
+Fri Jan 29 13:29:53 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Set correct permissions when creating /proc and /sys
+
+-------------------------------------------------------------------
 Mon Nov 16 14:22:50 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - /proc and /sys should be %ghost to allow filesystem package updates in
-  rootless container environments (rh#1548403)
+  rootless container environments (rh#1548403) (boo#1146705)
 
 -------------------------------------------------------------------
 Sat Oct 10 12:41:34 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>

@@ -1,7 +1,7 @@
 #
 # spec file for package filesystem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -238,7 +238,9 @@ if posix.stat("/var/lock.rpmsave.tmpx") then
   os.remove("/var/lock.rpmsave.tmpx")
 end
 posix.mkdir("/proc")
+posix.chmod("/proc", 0555)
 posix.mkdir("/sys")
+posix.chmod("/sys", 0555)
 
 %files -f filesystem.list
 /usr/lib/tmpfiles.d/fs-tmp.conf
