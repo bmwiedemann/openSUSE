@@ -279,6 +279,7 @@ unsorted:
   - XyGrib 
   - YODA-devel 
   - a2jmidid 
+  - a2ps 
   - a2ps-devel 
   - a2ps-h 
   - a52dec 
@@ -1952,7 +1953,6 @@ unsorted:
   - cloud-netconfig-azure 
   - cloud-netconfig-ec2 
   - cloud-netconfig-gce 
-  - clpeak 
   - clthreads-devel 
   - clucene-core-devel 
   - clustduct 
@@ -2647,8 +2647,6 @@ unsorted:
   - deepin-music-libnetease-meta-search 
   - deepin-music-player 
   - deepin-music-player-lang 
-  - deepin-screenshot 
-  - deepin-screenshot-lang 
   - deepin-system-monitor 
   - deepin-system-monitor-lang 
   - deepin-terminal 
@@ -4137,9 +4135,6 @@ unsorted:
   - geronimo-specs-pom 
   - geronimo-stax-1_0-api 
   - geronimo-ws-metadata-2_0-api 
-  - getdp 
-  - getdp-devel 
-  - getdp-doc 
   - gettext-csharp 
   - gettext-its-gtk3 
   - gettext-its-gtk4 
@@ -6285,6 +6280,7 @@ unsorted:
   - guava20-javadoc 
   - guava20-testlib 
   - gucharmap-devel 
+  - gude-mouseclock-udev 
   - gudev-sharp 
   - gudev-sharp-devel 
   - guess-changelog: [x86_64] 
@@ -6332,7 +6328,7 @@ unsorted:
   - guvcview-lang 
   - guvcview-qt5 
   - guvcview-qt5-lang 
-  - gv: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - gv 
   - gvfs-32bit: [x86_64] 
   - gvfs-devel 
   - gvim: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
@@ -6964,7 +6960,6 @@ unsorted:
   - istack-commons-soimp 
   - istack-commons-test 
   - istack-commons-tools 
-  - istgt 
   - isync 
   - itext-parent 
   - itextpdf 
@@ -8507,7 +8502,6 @@ unsorted:
   - libGLwM1-32bit: [x86_64] 
   - libGammu8 
   - libGeneratedSaxParser0_3 
-  - libGetDP2_11 
   - libGraphicsMagick++-Q16-12 
   - libGraphicsMagick++-devel 
   - libGraphicsMagick-Q16-3 
@@ -9162,6 +9156,7 @@ unsorted:
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_8_5 
   - libZXing1-32bit: [x86_64] 
+  - liba2ps1 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -9721,6 +9716,7 @@ unsorted:
   - libcap-progs 
   - libcap2-32bit: [x86_64] 
   - libcapi20 
+  - libcapi20-3 
   - libcapi20-devel 
   - libcapnp-0_8 
   - libcapnp-devel 
@@ -13818,6 +13814,7 @@ unsorted:
   - libttsmimic0 
   - libtty-devel 
   - libtty1 
+  - libtukit-devel 
   - libtun6-0 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
@@ -15518,7 +15515,6 @@ unsorted:
   - mdbtools-devel 
   - mdds-1_4-devel 
   - mdds-1_5-devel 
-  - mdtest 
   - meabo 
   - meanwhile-devel 
   - meanwhile-doc 
@@ -15784,7 +15780,6 @@ unsorted:
   - mktorrent 
   - mkvtoolnix 
   - mkvtoolnix-gui 
-  - mlmmj 
   - mlterm-m17n 
   - mlterm-uim 
   - mm-common 
@@ -16670,7 +16665,6 @@ unsorted:
   - nfs-ganesha-proxy: [x86_64] 
   - nfs-ganesha-rados-grace: [x86_64] 
   - nfs-ganesha-rados-urls: [x86_64] 
-  - nfs-ganesha-rgw: [x86_64] 
   - nfs-ganesha-vfs: [x86_64] 
   - nfs-ganesha-xfs: [x86_64] 
   - nfs4-acl-tools 
@@ -18134,7 +18128,6 @@ unsorted:
   - pcaudiolib-devel 
   - pcb 
   - pcb-doc 
-  - pcc 
   - pcfclock 
   - pcfclock-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - pcfclock-kmp-pae: [i586] 
@@ -20752,7 +20745,6 @@ unsorted:
   - python3-ccm 
   - python3-cilium-microscope 
   - python3-cinderclient 
-  - python3-cirq: [x86_64] 
   - python3-clang 
   - python3-cliff 
   - python3-clinkgrammar 
@@ -20802,7 +20794,6 @@ unsorted:
   - python3-espressomd 
   - python3-evemu 
   - python3-fastjet 
-  - python3-featureflow: [i586] 
   - python3-fife 
   - python3-fityk 
   - python3-flake8-comprehensions 
@@ -20820,7 +20811,6 @@ unsorted:
   - python3-gexiv2 
   - python3-git-deps 
   - python3-glanceclient 
-  - python3-glean 
   - python3-glom 
   - python3-glucat 
   - python3-gluster 
@@ -20966,7 +20956,6 @@ unsorted:
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
   - python3-mailman-web 
-  - python3-mailmanclient 
   - python3-manilaclient 
   - python3-mapi 
   - python3-marisa 
@@ -21070,7 +21059,6 @@ unsorted:
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
-  - python3-pyglet 
   - python3-pyjnius 
   - python3-pymod2pkg 
   - python3-pynest2d 
@@ -21084,7 +21072,6 @@ unsorted:
   - python3-pysvn 
   - python3-pytest-cookies 
   - python3-pytest-listener 
-  - python3-pytest-parallel 
   - python3-pytest-pyramid-server 
   - python3-pytest-server-fixtures 
   - python3-pytest-subtesthack 
@@ -22248,7 +22235,6 @@ unsorted:
   - python36-fastparquet 
   - python36-fastremap 
   - python36-fb-re2 
-  - python36-featureflow: [x86_64] 
   - python36-fedmsg 
   - python36-fedmsg-tests 
   - python36-fedora-messaging 
@@ -22355,6 +22341,7 @@ unsorted:
   - python36-gitdb 
   - python36-github3.py 
   - python36-gitlint 
+  - python36-glean 
   - python36-glfw 
   - python36-glob2 
   - python36-gmpy 
@@ -22722,7 +22709,6 @@ unsorted:
   - python36-minio 
   - python36-miniupnpc 
   - python36-misaka 
-  - python36-missingno 
   - python36-mistune 
   - python36-moban 
   - python36-moban-ansible 
@@ -23142,6 +23128,7 @@ unsorted:
   - python36-pygame-devel 
   - python36-pygerrit2 
   - python36-pygit2 
+  - python36-pyglet 
   - python36-pygments-ansi-color 
   - python36-pygments-pytest 
   - python36-pygments-style-railscasts 
@@ -23298,6 +23285,7 @@ unsorted:
   - python36-pytest-mpl 
   - python36-pytest-openfiles 
   - python36-pytest-ordering 
+  - python36-pytest-parallel 
   - python36-pytest-percent 
   - python36-pytest-plus 
   - python36-pytest-profiling 
@@ -24729,6 +24717,7 @@ unsorted:
   - python38-check-manifest 
   - python38-cheroot 
   - python38-chest 
+  - python38-cirq: [x86_64] 
   - python38-ciscoconfparse 
   - python38-cl 
   - python38-cleo 
@@ -25092,7 +25081,6 @@ unsorted:
   - python38-fastparquet 
   - python38-fastremap 
   - python38-fb-re2 
-  - python38-featureflow: [x86_64] 
   - python38-fedmsg 
   - python38-fedmsg-tests 
   - python38-fedora-messaging 
@@ -25192,6 +25180,7 @@ unsorted:
   - python38-gitdb 
   - python38-github3.py 
   - python38-gitlint 
+  - python38-glean 
   - python38-glfw 
   - python38-glob2 
   - python38-gns3fy 
@@ -25497,6 +25486,7 @@ unsorted:
   - python38-magic-wormhole-mailbox-server 
   - python38-magicalimport 
   - python38-mailman3-fedmsg-plugin 
+  - python38-mailmanclient 
   - python38-main-wrapper 
   - python38-managesieve 
   - python38-mando 
@@ -25921,6 +25911,7 @@ unsorted:
   - python38-pygame 
   - python38-pygame-devel 
   - python38-pygerrit2 
+  - python38-pyglet 
   - python38-pygments-ansi-color 
   - python38-pygments-pytest 
   - python38-pygments-style-railscasts 
@@ -26075,6 +26066,7 @@ unsorted:
   - python38-pytest-mpl 
   - python38-pytest-openfiles 
   - python38-pytest-ordering 
+  - python38-pytest-parallel 
   - python38-pytest-percent 
   - python38-pytest-plus 
   - python38-pytest-profiling 
@@ -26206,7 +26198,6 @@ unsorted:
   - python38-pywebpush 
   - python38-pywinrm 
   - python38-pyxattr 
-  - python38-pyxdg 
   - python38-pyzmq-devel 
   - python38-pyzo 
   - python38-q 
@@ -26740,6 +26731,7 @@ unsorted:
   - python38-xarray 
   - python38-xattr 
   - python38-xcffib 
+  - python38-xdg 
   - python38-xdis 
   - python38-xdoctest 
   - python38-xerox 
@@ -29691,7 +29683,6 @@ unsorted:
   - sdl-ball 
   - sdl_bomber 
   - sdlpop 
-  - sdlscavenger 
   - sdparm 
   - seadrive-fuse 
   - seadrive-gui 
@@ -29764,7 +29755,6 @@ unsorted:
   - shared-color-targets 
   - sharpfont 
   - sharpfont-devel 
-  - shellementary 
   - shelltestrunner: [x86_64] 
   - shepherd 
   - shepherd-bins 
@@ -30359,9 +30349,6 @@ unsorted:
   - sysinfo 
   - syslinux-debuginfo-x86_64: [x86_64] 
   - syslinux-x86_64: [x86_64] 
-  - syslinux6 
-  - syslinux6-debuginfo-x86_64: [x86_64] 
-  - syslinux6-x86_64: [x86_64] 
   - syslog-ng 
   - syslog-ng-curl 
   - syslog-ng-devel 
@@ -39366,6 +39353,8 @@ unsorted:
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
+  - wdiff 
+  - wdiff-lang 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
