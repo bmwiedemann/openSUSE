@@ -7,4 +7,41 @@
     <comment>Current NodeJS for Factory </comment>
     <requestid>863724</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c55b91bae147b4d3ac3db90f24b85ae7</srcmd5>
+    <version>15.8.0</version>
+    <time>1612707694</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 15.8.0:
+  * crypto:
+    + add generatePrime/checkPrime
+    + experimental (Ed/X)25519/(Ed/X)448 support
+  * deps: upgrade npm to 7.5.0
+    This update adds a new npm diff command.
+  * dgram: support AbortSignal in createSocket
+  * esm: deprecate legacy main lookup for modules
+  * readline:
+    + add history event and option to set initial history
+    + add support for the AbortController to the question method
+- versioned.patch: refreshed
+
+- New upstream version 15.7.0:
+  * buffer:
+    + introduce Blob
+    + add base64url encoding option
+  * fs:
+    + allow position parameter to be a BigInt in read and
+      readSync (raisinten)
+  * http:
+    + attach request as res.req
+    + expose urlToHttpOptions utility
+
+- New upstream version 15.6.0:
+  * child_process:
+    + add 'overlapped' stdio flag
+    + support AbortSignal in fork
+  * crypto:
+    + implement basic secure heap support</comment>
+    <requestid>869789</requestid>
+  </revision>
 </revisionlist>

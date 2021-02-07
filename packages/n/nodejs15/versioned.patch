@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v15.5.1/Makefile
+Index: node-v15.8.0/Makefile
 ===================================================================
---- node-v15.5.1.orig/Makefile
-+++ node-v15.5.1/Makefile
+--- node-v15.8.0.orig/Makefile
++++ node-v15.8.0/Makefile
 @@ -46,7 +46,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v15.5.1/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v15.5.1/tools/install.py
+Index: node-v15.8.0/tools/install.py
 ===================================================================
---- node-v15.5.1.orig/tools/install.py
-+++ node-v15.5.1/tools/install.py
+--- node-v15.8.0.orig/tools/install.py
++++ node-v15.8.0/tools/install.py
 @@ -81,34 +81,34 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -137,10 +137,10 @@ Index: node-v15.5.1/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v15.5.1/doc/node.1
+Index: node-v15.8.0/doc/node.1
 ===================================================================
---- node-v15.5.1.orig/doc/node.1
-+++ node-v15.5.1/doc/node.1
+--- node-v15.8.0.orig/doc/node.1
++++ node-v15.8.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -170,10 +170,10 @@ Index: node-v15.5.1/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v15.5.1/src/node.stp
+Index: node-v15.8.0/src/node.stp
 ===================================================================
---- node-v15.5.1.orig/src/node.stp
-+++ node-v15.5.1/src/node.stp
+--- node-v15.8.0.orig/src/node.stp
++++ node-v15.8.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -246,12 +246,12 @@ Index: node-v15.5.1/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v15.5.1/deps/npm/man/man1/npm.1
+Index: node-v15.8.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v15.5.1.orig/deps/npm/man/man1/npm.1
-+++ node-v15.5.1/deps/npm/man/man1/npm.1
+--- node-v15.8.0.orig/deps/npm/man/man1/npm.1
++++ node-v15.8.0/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "December 2020" "" ""
+ .TH "NPM" "1" "February 2021" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm15\fR \- javascript package manager
@@ -259,53 +259,91 @@ Index: node-v15.5.1/deps/npm/man/man1/npm.1
  .P
  .RS 2
 @@ -21,7 +21,7 @@ It is extremely configurable to support
- Most commonly, it is used to publish, discover, install, and develop node
+ commonly, you use it to publish, discover, install, and develop node
  programs\.
  .P
 -Run \fBnpm help\fP to get a list of available commands\.
 +Run \fBnpm15 help\fP to get a list of available commands\.
  .SS Important
  .P
- npm is configured to use npm, Inc\.'s public registry at
-@@ -35,11 +35,11 @@ terms of use\.
- .P
+ npm comes preconfigured to use npm's public registry at
+@@ -37,14 +37,14 @@ their terms of use\.
  You probably got npm because you want to install stuff\.
  .P
--Use \fBnpm install blerg\fP to install the latest version of "blerg"\.  Check out
-+Use \fBnpm15 install blerg\fP to install the latest version of "blerg"\.  Check out
- npm help \fBinstall\fP for more info\.  It can do a lot of stuff\.
+ The very first thing you will most likely want to run in any node
+-program is \fBnpm install\fP to install its dependencies\.
++program is \fBnpm15 install\fP to install its dependencies\.
  .P
--Use the \fBnpm search\fP command to show everything that's available\.
--Use \fBnpm ls\fP to show everything you've installed\.
-+Use the \fBnpm15 search\fP command to show everything that's available\.
-+Use \fBnpm15 ls\fP to show everything you've installed\.
+-You can also run \fBnpm install blerg\fP to install the latest version of
+-"blerg"\.  Check out npm help \fBinstall\fP for more
++You can also run \fBnpm15 install blerg\fP to install the latest version of
++"blerg"\.  Check out npm15 help \fBinstall\fP for more
+ info\.  It can do a lot of stuff\.
+ .P
+-Use the \fBnpm search\fP command to show everything that's available in the
+-public registry\.  Use \fBnpm ls\fP to show everything you've installed\.
++Use the \fBnpm15 search\fP command to show everything that's available in the
++public registry\.  Use \fBnpm15 ls\fP to show everything you've installed\.
  .SS Dependencies
  .P
- If a package references to another package with a git URL, npm depends
-@@ -87,19 +87,19 @@ Make a package\.json file\.  See npm hel
+ If a package lists a dependency using a git URL, npm will install that
+@@ -63,7 +63,7 @@ the node\-gyp repository \fIhttps://gith
+ the node\-gyp Wiki \fIhttps://github\.com/nodejs/node\-gyp/wiki\fR\|\.
+ .SS Directories
+ .P
+-See npm help \fBfolders\fP to learn about where npm puts
++See npm15 help \fBfolders\fP to learn about where npm puts
+ stuff\.
+ .P
+ In particular, npm has two modes of operation:
+@@ -91,24 +91,24 @@ following help topics:
+ .IP \(bu 2
+ json:
+ Make a package\.json file\.  See
+-npm help \fBpackage\.json\fP\|\.
++npm15 help \fBpackage\.json\fP\|\.
+ .IP \(bu 2
  link:
- For linking your current working code into Node's path, so that you
- don't have to reinstall every time you make a change\.  Use
--\fBnpm link\fP to do this\.
-+\fBnpm15 link\fP to do this\.
+ Links your current working code into Node's path, so that you don't
+-have to reinstall every time you make a change\.  Use npm help \fBnpm
++have to reinstall every time you make a change\.  Use npm15 help \fBnpm
+ link\fP to do this\.
  .IP \(bu 2
  install:
- It's a good idea to install things if you don't need the symbolic link\.
- Especially, installing other peoples code from the registry is done via
--\fBnpm install\fP
-+\fBnpm15 install\fP
+ It's a good idea to install things if you don't need the symbolic
+ link\.  Especially, installing other peoples code from the registry is
+-done via npm help \fBinstall\fP
++done via npm15 help \fBinstall\fP
  .IP \(bu 2
  adduser:
- Create an account or log in\.  Credentials are stored in the
- user config file\.
+ Create an account or log in\.  When you do this, npm will store
+ credentials in the user config file config file\.
  .IP \(bu 2
  publish:
--Use the \fBnpm publish\fP command to upload your code to the registry\.
-+Use the \fBnpm15 publish\fP command to upload your code to the registry\.
+-Use the npm help \fBpublish\fP command to upload your
++Use the npm15 help \fBpublish\fP command to upload your
+ code to the registry\.
  
  .RE
- .SS Configuration
-@@ -187,14 +187,14 @@ i@izs\.me
+@@ -135,7 +135,7 @@ or env, that file will be used instead\.
+ .IP \(bu 2
+ Global Configs:
+ The file found at \fB\|\./etc/npmrc\fP (relative to the global prefix will be
+-parsed if it is found\.  See npm help \fBprefix\fP for
++parsed if it is found\.  See npm15 help \fBprefix\fP for
+ more info on the global prefix\.  If the \fBglobalconfig\fP option is set
+ in the cli, env, or user config, then that file is parsed instead\.
+ .IP \(bu 2
+@@ -145,7 +145,7 @@ lib/utils/config\-defs\.js\.  These must
+ 
+ .RE
+ .P
+-See npm help \fBconfig\fP for much much more information\.
++See npm15 help \fBconfig\fP for much much more information\.
+ .SS Contributions
+ .P
+ Patches welcome!
+@@ -178,18 +178,18 @@ https://github\.com/npm/rfcs
  .SS See Also
  .RS 0
  .IP \(bu 2
@@ -315,20 +353,26 @@ Index: node-v15.5.1/deps/npm/man/man1/npm.1
 -npm help package\.json
 +npm15 help package\.json
  .IP \(bu 2
--npm help install
-+npm15 help install
+-npm help npmrc
++npm15 help npmrc
  .IP \(bu 2
 -npm help config
 +npm15 help config
  .IP \(bu 2
--npm help npmrc
-+npm15 help npmrc
+-npm help install
++npm15 help install
+ .IP \(bu 2
+-npm help prefix
++npm15 help prefix
+ .IP \(bu 2
+-npm help publish
++npm15 help publish
  
  .RE
-Index: node-v15.5.1/src/node_main.cc
+Index: node-v15.8.0/src/node_main.cc
 ===================================================================
---- node-v15.5.1.orig/src/node_main.cc
-+++ node-v15.5.1/src/node_main.cc
+--- node-v15.8.0.orig/src/node_main.cc
++++ node-v15.8.0/src/node_main.cc
 @@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -337,10 +381,10 @@ Index: node-v15.5.1/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v15.5.1/tools/test.py
+Index: node-v15.8.0/tools/test.py
 ===================================================================
---- node-v15.5.1.orig/tools/test.py
-+++ node-v15.5.1/tools/test.py
+--- node-v15.8.0.orig/tools/test.py
++++ node-v15.8.0/tools/test.py
 @@ -933,7 +933,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -350,11 +394,11 @@ Index: node-v15.5.1/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v15.5.1/node.gyp
+Index: node-v15.8.0/node.gyp
 ===================================================================
---- node-v15.5.1.orig/node.gyp
-+++ node-v15.5.1/node.gyp
-@@ -26,8 +26,8 @@
+--- node-v15.8.0.orig/node.gyp
++++ node-v15.8.0/node.gyp
+@@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',
@@ -365,12 +409,12 @@ Index: node-v15.5.1/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      'library_files': [
-Index: node-v15.5.1/deps/npm/man/man1/npx.1
+Index: node-v15.8.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v15.5.1.orig/deps/npm/man/man1/npx.1
-+++ node-v15.5.1/deps/npm/man/man1/npx.1
+--- node-v15.8.0.orig/deps/npm/man/man1/npx.1
++++ node-v15.8.0/deps/npm/man/man1/npx.1
 @@ -1,19 +1,19 @@
- .TH "NPX" "1" "December 2020" "" ""
+ .TH "NPX" "1" "February 2021" "" ""
  .SH "NAME"
 -\fBnpx\fR \- Run a command from a local or remote npm package
 +\fBnpx15\fR \- Run a command from a local or remote npm package

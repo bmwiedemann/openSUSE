@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Feb  5 14:56:36 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 15.8.0:
+  * crypto:
+    + add generatePrime/checkPrime
+    + experimental (Ed/X)25519/(Ed/X)448 support
+  * deps: upgrade npm to 7.5.0
+    This update adds a new npm diff command.
+  * dgram: support AbortSignal in createSocket
+  * esm: deprecate legacy main lookup for modules
+  * readline:
+    + add history event and option to set initial history
+    + add support for the AbortController to the question method
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Tue Feb  2 12:45:15 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 15.7.0:
+  * buffer:
+    + introduce Blob
+    + add base64url encoding option
+  * fs:
+    + allow position parameter to be a BigInt in read and
+      readSync (raisinten)
+  * http:
+    + attach request as res.req
+    + expose urlToHttpOptions utility
+
+-------------------------------------------------------------------
+Thu Jan 21 16:40:06 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 15.6.0:
+  * child_process:
+    + add 'overlapped' stdio flag
+    + support AbortSignal in fork
+  * crypto:
+    + implement basic secure heap support
+    + fixup bug in keygen error handling
+    + introduce X509Certificate API
+    + implement randomuuid
+  * http: set lifo as the default scheduling strategy in Agent
+  * net: support abortSignal in server.listen
+  * process: add direct access to rss without iterating pages
+  * v8: fix native serdes constructors
+https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V15.md#15.6.0
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Jan  4 19:29:12 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 15.5.1:
