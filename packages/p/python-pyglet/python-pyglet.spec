@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyglet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %define skip_python2 1
 %bcond_with     pytest_helpers
 Name:           python-pyglet
-Version:        1.5.7
+Version:        1.5.14
 Release:        0
 Summary:        Windowing and multimedia library
 License:        BSD-3-Clause AND MIT
@@ -100,11 +100,8 @@ developing games and other visually-rich applications.
 %setup -q -n pyglet-%{version}
 %patch0
 
-# Can't be used for commercial purposes
-rm -r examples/noisy/
-
 # Windows only, and is a vendored module
-rm pyglet/font/win32*.py examples/font_comparison.py
+rm pyglet/font/win32*.py
 
 # De-vendoring pypng-ing results in failures in v1.3.2, as it is using pypng an earlier pypng:
 # AttributeError: 'module' object has no attribute 'Writer'
@@ -191,10 +188,6 @@ rm examples/astraea/setup.py
 # Convert to unix line endings
 find pyglet -name "*.py" -exec dos2unix "{}" "+"
 
-chmod a+x examples/synthesizer.py examples/soundspace/soundspace.py examples/game/version*/asteroid.py
-
-dos2unix examples/tablet.py
-
 %build
 %python_build
 
@@ -258,8 +251,7 @@ fi
 
 %files %{python_files}
 %license LICENSE
-%doc NOTICE README.md RELEASE_NOTES
-%{_defaultdocdir}/python3-pyglet/examples/
+%doc NOTICE README.md RELEASE_NOTES examples
 %{python_sitelib}/pyglet
 %{python_sitelib}/pyglet-%{version}-py*.egg-info
 
