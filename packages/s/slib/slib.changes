@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 28 23:39:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3b6:
+  * comlist.scm (butnth): Added.
+  * guile-2.init: patch from
+  https://gist.github.com/alexgian/1fe75b0c3fc95cb46baae2f50ae9211c
+  * grapheps.scm (set-font): Fixed pointsize dependent scaling.
+  * Makefile (INSTALL_INFO): ginstall-info -> install-info.
+  * iso8601.scm (iso-8601->time): Use gmktime rather than mktime.
+  * mkclrnam.scm (load-rgb-txt): Make encoding case insensitive in
+  method m5x (FED-STD-595C1).
+  * Makefile, iso8601.scm, mklibcat.scm, slib.texi:
+  Added feature iso-8601: ISO 8601 Representation of dates and times.
+
+-------------------------------------------------------------------
 Thu Jul 13 11:46:15 UTC 2017 - tchvatal@suse.com
 
 - Reduce bit a guile code for older distros, we have 1.8.5 on

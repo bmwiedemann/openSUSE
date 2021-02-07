@@ -1,7 +1,7 @@
 #
 # spec file for package slib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           slib
-Version:        3b5
+Version:        3b6
 Release:        0
 Summary:        Portable Scheme Library
 License:        SUSE-SLIB
 Group:          Development/Languages/Scheme
-Url:            http://swissnet.ai.mit.edu/~jaffer/SLIB.html
+URL:            http://swissnet.ai.mit.edu/~jaffer/SLIB.html
 Source:         http://groups.csail.mit.edu/mac/ftpdir/scm/slib-%{version}.tar.gz
 # this is not upstreamable (bnc#754532):
 Patch0:         remove-resene-colors.diff
@@ -100,7 +100,8 @@ if ! test -d %{_datadir}/slib -a -d %{_datadir}/guile/site ; then
 fi
 
 %files
-%doc ANNOUNCE COPYING ChangeLog FAQ README
+%license COPYING
+%doc ANNOUNCE ChangeLog FAQ README
 %{_infodir}/*
 %{_datadir}/slib
 
