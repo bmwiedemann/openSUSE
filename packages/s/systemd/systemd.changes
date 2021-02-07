@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb  5 13:02:58 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- systemd-sysv-convert: handle the case when services are migrated
+  from SysV scripts to systemd units and are renamed at the same
+  time (bsc#1181788)
+
+  The list of such services is hard coded and contains only the
+  'ntp->ntpd' translation.
+
+-------------------------------------------------------------------
+Wed Feb  3 09:57:58 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 134cf1c8bc3e361a2641161aa11ac2b5b990480b (merge of v246.10)
+
+  25f220eafb sysusers: flush nscd's caches whenever /etc/{passwd,group} are modified (bsc#1181121)
+  4a543f0257 journal: send journald logs to kmsg again
+  26df96473f busctl: add a timestamp to the output of the busctl monitor command (bsc#1180225)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/520e53b6d85087b05892ee637ae93f1b269e7e52...134cf1c8bc3e361a2641161aa11ac2b5b990480b
+
+-------------------------------------------------------------------
+Wed Jan 13 10:37:16 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+  * don't install legacy symlinks to /
+  * use %_pamdir to install pam modules
+  * leave nss files in /usr/lib*, glibc loads them from there just
+    fine independent of usrmerge
+
+-------------------------------------------------------------------
 Fri Dec 18 08:54:20 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Import commit 520e53b6d85087b05892ee637ae93f1b269e7e52 (merge of v246.9)

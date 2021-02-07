@@ -79,6 +79,14 @@ case "$1" in
 		# in the db only once.
 		database_add $initscript -1
 
+		# Some services were renamed during the transition from SySV init to
+		# systemd (bsc#1181788). Rather than letting packages fixing that
+		# themselves by hacking our database directly, let's hard-code renames
+		# here. Not really nice but that's the least worst solution.
+		case $initscript in
+		ntpd)	initscript=ntp ;;
+		esac
+
 		# The package is introducing new services and never has any sysv init
 		# scripts (bsc#982303).
 		if [ ! -r /etc/init.d/$initscript ] &&

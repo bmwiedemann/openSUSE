@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-mini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.78.g520e53b6d8
+%define suse_version +suse.83.g134cf1c8bc
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -55,7 +55,7 @@
 
 Name:           systemd-mini
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        246.9
+Version:        246.10
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -511,7 +511,7 @@ systemd-journal-remote, and systemd-journal-upload.
         -Dsplit-bin=true \
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
-        -Dpamlibdir=/%{_lib}/security \
+        -Dpamlibdir=%{_pamdir} \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
         -Ddefault-hierarchy=hybrid \
@@ -577,10 +577,7 @@ systemd-journal-remote, and systemd-journal-upload.
 %install
 %meson_install
 
-# move to %{_lib}
-%if ! 0%{?bootstrap}
-mv %{buildroot}%{_libdir}/libnss_myhostname.so.2 %{buildroot}/%{_lib}
-%else
+%if 0%{?bootstrap}
 rm %{buildroot}%{_libdir}/libnss_systemd.so*
 rm -r %{buildroot}%{_datadir}/locale
 %endif
@@ -611,6 +608,7 @@ for s in %{S:100} %{S:101} %{S:102}; do
 	install -m0755 -D $s %{buildroot}%{_prefix}/lib/systemd/scripts/${s#*/scripts-systemd-}
 done
 
+%if !0%{?usrmerged}
 # Legacy sysvinit tools
 mkdir -p %{buildroot}/sbin
 ln -s ../usr/lib/systemd/systemd %{buildroot}/sbin/init
@@ -621,6 +619,7 @@ ln -s ../usr/bin/systemctl %{buildroot}/sbin/poweroff
 %if %{with sysvcompat}
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/telinit
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/runlevel
+%endif
 %endif
 
 # Make sure we don't ship static enablement symlinks in /etc during
@@ -1171,7 +1170,7 @@ fi
 %dir %{_prefix}/lib/systemd/system-shutdown/
 %dir %{_prefix}/lib/systemd/system-sleep/
 
-/%{_lib}/security/pam_systemd.so
+%{_pamdir}/pam_systemd.so
 
 %if %{with gnuefi}
 %dir %{_prefix}/lib/systemd/boot
@@ -1350,6 +1349,7 @@ fi
 
 %files sysvinit
 %defattr(-,root,root,-)
+%if !0%{?usrmerged}
 /sbin/init
 /sbin/reboot
 /sbin/halt
@@ -1358,6 +1358,7 @@ fi
 %if %{with sysvcompat}
 /sbin/telinit
 /sbin/runlevel
+%endif
 %endif
 %{_sbindir}/init
 %{_sbindir}/reboot
@@ -1508,7 +1509,7 @@ fi
 
 %files -n nss-myhostname
 %defattr(-, root, root)
-/%{_lib}/*nss_myhostname*
+%{_libdir}/*nss_myhostname*
 %{_mandir}/man8/libnss_myhostname.*
 %{_mandir}/man8/nss-myhostname.*
 

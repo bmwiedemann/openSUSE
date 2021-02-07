@@ -5244,4 +5244,12 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>856900</requestid>
   </revision>
+  <revision rev="324" vrev="1">
+    <srcmd5>f2a594ff6ee183523cc03e3741f44531</srcmd5>
+    <version>246.10</version>
+    <time>1612707414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869763</requestid>
+  </revision>
 </revisionlist>
