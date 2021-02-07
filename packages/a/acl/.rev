@@ -394,4 +394,12 @@ SPDX format (forwarded request 94532 from babelworx)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>832951</requestid>
   </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>3a473608e1010f8ff746dbe937a0ed6b</srcmd5>
+    <version>2.2.53</version>
+    <time>1612707218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867086</requestid>
+  </revision>
 </revisionlist>

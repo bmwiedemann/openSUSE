@@ -1,7 +1,7 @@
 #
 # spec file for package acl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,8 +45,8 @@ BuildRequires:  libattr-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 %if %{with acl_tests} && 0%{?suse_version} > 1320
-BuildRequires:  system-user-bin
-BuildRequires:  system-user-daemon
+BuildRequires:  user(bin)
+BuildRequires:  user(daemon)
 %endif
 BuildRequires:  xz
 
