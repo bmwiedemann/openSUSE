@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  3 02:37:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.13.0
+  + Fix the key string parsing in url_substitution
+  + Fix memory leak in 'fastestmirror'
+  + Download whole file when server doesn't support ranges (rh#1886706)
+  + Various fixes for mirrors without ranges support and zchunk
+  + Add support for pkcs11 certificate and key for repository authorization (rh#1859495)
+  + Fix lr_perform() - Avoid 100% CPU usage
+  + Drop Python 2 support
+  + Add support for working with certificates used with proxy (rh#1920991)
+
+-------------------------------------------------------------------
 Sat Aug 22 20:18:17 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 1.12.1

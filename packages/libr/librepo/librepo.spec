@@ -2,7 +2,7 @@
 # spec file for package librepo
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define devname %{name}-devel
 
 Name:           librepo
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        Repodata downloading library
 License:        LGPL-2.0-or-later
@@ -51,7 +51,7 @@ BuildRequires:  doxygen
 BuildRequires:  gpgme-devel
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(libcurl) >= 7.28.0
+BuildRequires:  pkgconfig(libcurl) >= 7.52.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(openssl)
