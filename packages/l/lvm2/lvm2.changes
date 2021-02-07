@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 02 03:49:00 UTC 2021 - heming.zhao@suse.com
+
+- lvm2 should use 'external_device_info_source="udev"' by default (bsc#1179691)
+  - add SUSE special patch to void issues in non udev env
+    + bug-1179691_config-set-external_device_info_source-none.patch
+
+-------------------------------------------------------------------
 Mon Dec 09 01:16:00 UTC 2020 - heming.zhao@suse.com
 
 - lvm2 should use 'external_device_info_source="udev"' by default (bsc#1179691)

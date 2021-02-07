@@ -1,0 +1,66 @@
+From: Martin Wilck <mwilck@suse.com>
+Subject: [PATCH] config: set external_device_info_source=none if udev isn't running
+Date: Wed, 27 Jan 2021 18:28:59 +0100
+Message-Id: <20210127172859.956-1-mwilck@suse.com>
+
+LVM2 has several configuration options related to device detection
+and udev. In particular, we have obtain_device_list_from_udev=(0|1)
+and external_device_info_source=("none"|"udev"). The two options are
+obviously semantically related, but it's rather unclear if and how
+they interact.
+
+If udev is unavailable, e.g. in containers, obtain_device_list_from_udev
+(which defaults to 1) will be automatically reset to 0. However,
+if external_device_info_source="udev" is set, this setting is not
+reset to "none", leading to error messages like
+
+  Udev database has incomplete information about device /dev/vda.
+  /dev/vda: Failed to get external handle [udev].
+
+This patch changes that, treating external_device_info_source the
+same way as obtain_device_list_from_udev, thereby making LVM2's
+device detection more consistent.
+
+The default for external_device_info_source is "none", but I believe
+there are very good reasons to change this setting to "udev", because
+LVM will get detection of multipath and md devices wrong most of the
+time otherwise. LVM should follow the same logic as systemd and other
+system components with respect to device detection.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>,
+---
+ lib/commands/toolcontext.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/lib/commands/toolcontext.c b/lib/commands/toolcontext.c
+index 63b6811..55f6806 100644
+--- a/lib/commands/toolcontext.c
++++ b/lib/commands/toolcontext.c
+@@ -598,9 +598,20 @@ static int _process_config(struct cmd_context *cmd)
+ 	dev_ext_info_src = find_config_tree_str(cmd, devices_external_device_info_source_CFG, NULL);
+ 	if (dev_ext_info_src && !strcmp(dev_ext_info_src, "none"))
+ 		init_external_device_info_source(DEV_EXT_NONE);
+-	else if (dev_ext_info_src && !strcmp(dev_ext_info_src, "udev"))
+-		init_external_device_info_source(DEV_EXT_UDEV);
+-	else {
++	else if (dev_ext_info_src && !strcmp(dev_ext_info_src, "udev")) {
++		/*
++		 * Override existing config and hardcode external_device_info_source==none if:
++		 *   - udev is not running
++		 *   - udev is disabled using DM_DISABLE_UDEV environment variable
++		 * See also treatment of obtain_device_list_from_udev in _init_dev_cache()
++		 */
++		if (udev_is_running())
++			init_external_device_info_source(DEV_EXT_UDEV);
++		else  {
++			log_notice("udev is not running. Using external_device_info_source==none");
++			init_external_device_info_source(DEV_EXT_NONE);
++		}
++	} else {
+ 		log_error("Invalid external device info source specification.");
+ 		return 0;
+ 	}
+--
+2.29.2
+

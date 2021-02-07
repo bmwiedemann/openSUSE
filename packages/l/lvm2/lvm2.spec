@@ -1,7 +1,7 @@
 #
 # spec file for package lvm2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,6 @@ Source1:        lvm.conf
 Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 # Upstream patches
-# n/a
 Patch0001:      bug-1175565_01-tools-move-struct-element-before-variable-lenght-lis.patch
 Patch0002:      bug-1175565_02-gcc-change-zero-sized-array-to-fexlible-array.patch
 Patch0003:      bug-1175565_03-gcc-zero-sized-array-to-fexlible-array-C99.patch
@@ -72,6 +71,7 @@ Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
 Patch1003:      fate-31841_fsadm-add-support-for-btrfs.patch
 Patch1004:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
 Patch1005:      bug-998893_make_pvscan_service_after_multipathd.patch
+Patch1006:      bug-1179691_config-set-external_device_info_source-none.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
 # SUSE patches 3000+ for test code
@@ -128,6 +128,7 @@ Volume Manager.
 %patch1003 -p1
 %patch1004 -p1
 %patch1005 -p1
+%patch1006 -p1
 %patch2001 -p1
 
 %if !%{with lockd}
