@@ -1,0 +1,83 @@
+commit 8e3e87d2fc1e63d287f203d441dcb9360775c6b7
+Author: sjaakola <seppo.jaakola@iki.fi>
+Date:   Tue Dec 8 18:02:42 2020 +0200
+
+    MDEV-23851 MDEV-24229 BF-BF conflict issues
+    
+    Issues MDEV-23851 and MDEV-24229 are probably duplicates and are caused by the new self-asserting function lock0lock.cc:wsrep_assert_no_bf_bf_wait().
+    The criteria for asserting is too strict and does not take in consideration scenarios of "false positive" lock conflicts, which are resolved by replaying the local transaction.
+    As a fix, this PR is relaxing the assert criteria by two conditions, which skip assert if high priority transactions are locking in correct order or if conflicting high priority lock holder is aborting and has just not yet released the lock.
+    
+    Alternative fix would be to remove wsrep_assert_no_bf_bf_wait() altogether, or remove the assert in this function and let it only print warnings in error log.
+    But in my high conflict rate multi-master test scenario, this relaxed asserting appears to be safe.
+    
+    This PR also removes two wsrep_report_bf_lock_wait() calls in innodb lock manager, which cause mutex access assert in debug builds.
+    
+    Foreign key appending missed handling of data types of float and double in INSERT execution. This is not directly related to the actual issue here but is fixed in this PR nevertheless. Missing these foreign keys values in certification could cause problems in some multi-master load scenarios.
+    
+    Finally, some problem reports suggest that some of the issues reported in MDEV-23851 might relate to false positive lock conflicts over unique secondary index gaps. There is separate work for relaxing UK index gap locking of replication appliers, and separate PR will be submitted for it, with a related mtr test as well.
+
+Index: mariadb-10.5.8/storage/innobase/lock/lock0lock.cc
+===================================================================
+--- mariadb-10.5.8.orig/storage/innobase/lock/lock0lock.cc
++++ mariadb-10.5.8/storage/innobase/lock/lock0lock.cc
+@@ -627,6 +627,20 @@ static void wsrep_assert_no_bf_bf_wait(
+ 	if (UNIV_LIKELY(!wsrep_thd_is_BF(lock_rec2->trx->mysql_thd, FALSE)))
+ 		return;
+ 
++	/* if BF - BF order is honored, we can keep trx1 waiting for the lock */
++	if (wsrep_thd_order_before(trx1->mysql_thd, lock_rec2->trx->mysql_thd))
++		return;
++
++	/* avoiding BF-BF conflict assert, if victim is already aborting
++	   or rolling back for replaying
++	*/
++	wsrep_thd_LOCK(lock_rec2->trx->mysql_thd);
++	if (wsrep_thd_is_aborting(lock_rec2->trx->mysql_thd)) {
++		wsrep_thd_UNLOCK(lock_rec2->trx->mysql_thd);
++		return;
++	}
++	wsrep_thd_UNLOCK(lock_rec2->trx->mysql_thd);
++
+ 	mtr_t mtr;
+ 
+ 	if (lock_rec1) {
+@@ -1385,11 +1399,6 @@ lock_rec_create_low(
+ 
+ 			trx_mutex_exit(c_lock->trx);
+ 
+-			if (UNIV_UNLIKELY(wsrep_debug)) {
+-				wsrep_report_bf_lock_wait(trx->mysql_thd, trx->id);
+-				wsrep_report_bf_lock_wait(c_lock->trx->mysql_thd, c_lock->trx->id);
+-			}
+-
+ 			/* have to bail out here to avoid lock_set_lock... */
+ 			return(lock);
+ 		}
+Index: mariadb-10.5.8/storage/innobase/rem/rem0rec.cc
+===================================================================
+--- mariadb-10.5.8.orig/storage/innobase/rem/rem0rec.cc
++++ mariadb-10.5.8/storage/innobase/rem/rem0rec.cc
+@@ -2735,8 +2735,22 @@ wsrep_rec_get_foreign_key(
+ 				break;
+ 			case DATA_BLOB:
+ 			case DATA_BINARY:
++			case DATA_FIXBINARY:
++			case DATA_GEOMETRY:
+ 				memcpy(buf, data, len);
+ 				break;
++			case DATA_FLOAT:
++			{
++				float f = mach_float_read(data);
++				memcpy(buf, &f, sizeof(float));
++			}
++			break;
++			case DATA_DOUBLE:
++			{
++				double d = mach_double_read(data);
++				memcpy(buf, &d, sizeof(double));
++			}
++			break;
+ 			default:
+ 				break;
+ 			}

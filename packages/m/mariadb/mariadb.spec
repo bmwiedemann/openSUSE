@@ -77,6 +77,7 @@ Source18:       mariadb@.service.in
 Source19:       macros.mariadb-test
 Source50:       suse_skipped_tests.list
 Source51:       mariadb-rpmlintrc
+Source52:       series
 Patch1:         mariadb-10.2.4-logrotate.patch
 Patch2:         mariadb-10.1.1-mysqld_multi-features.patch
 Patch3:         mariadb-10.0.15-logrotate-su.patch
@@ -84,6 +85,7 @@ Patch4:         mariadb-10.2.4-fortify-and-O.patch
 Patch5:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
+Patch8:         fix-lock-rollback-assert-abort.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -372,6 +374,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -508,6 +511,30 @@ filelist()
 	popd >/dev/null
 }
 
+filelist_excludes()
+{
+	echo '%%defattr(-, root, root)'
+	pushd %{buildroot} >/dev/null
+	for i; do
+		if test -e usr/sbin/"$i"; then
+			echo "%exclude %{_sbindir}/$i"
+		fi
+		if test -e usr/bin/"$i"; then
+			echo "%exclude %{_bindir}/$i"
+		fi
+		if test -d usr/share/*/"$i"; then
+			echo "%exclude /$(echo usr/share/*/"$i")"
+		fi
+		if test -n "$(ls -1 %{buildroot}$i 2> /dev/null)"; then
+			echo "%exclude $i"
+		fi
+		if ls usr/share/man/*/"$i".[1-9]* >/dev/null 2>&1; then
+			echo "%exclude %{_mandir}/*/$i.[1-9]*"
+		fi
+	done
+	popd >/dev/null
+}
+
 # Install the package itself
 %cmake_install benchdir_root=%{_datadir}/
 
@@ -599,6 +626,11 @@ fi
 %if %{with galera}
 # mariadb-galera.files
 filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera.files
+touch mariadb-galera-exclude.files
+%else
+filelist_excludes galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera-exclude.files
+echo /usr/share/mysql/systemd/use_galera_new_cluster.conf >>mariadb-galera-exclude.files
+echo /usr/share/mysql/wsrep_notify >>mariadb-galera-exclude.files
 %endif
 
 # mariadb-bench.files
@@ -635,7 +667,7 @@ for i in "${DOCS[@]}"; do
 done
 
 # Install default configuration file
-install -m 664 %{SOURCE14} %{buildroot}%{_sysconfdir}/my.cnf
+install -m 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/my.cnf
 
 # Systemd/initscript
 install -D -m 755 %{_sourcedir}/mysql-systemd-helper '%{buildroot}'%{_libexecdir}/mysql/mysql-systemd-helper
@@ -822,10 +854,9 @@ exit 0
 %post -n libmariadbd%{soname} -p /sbin/ldconfig
 %postun -n libmariadbd%{soname} -p /sbin/ldconfig
 
-%files -f mariadb.files
-%config(noreplace) %attr(0644, root, mysql) %{_sysconfdir}/my.cnf
-%dir %attr(0755, root, mysql) %{_sysconfdir}/my.cnf.d
-%config(noreplace) %attr(0644, root, mysql) %{_sysconfdir}/my.cnf.d/*
+%files -f mariadb.files -f mariadb-galera-exclude.files
+%config(noreplace) %attr(-, root, mysql) %{_sysconfdir}/my.cnf
+%config(noreplace) %attr(-, root, mysql) %{_sysconfdir}/my.cnf.d/
 %if %{with galera}
 %exclude %{_sysconfdir}/my.cnf.d/50-galera.cnf
 %endif
@@ -902,7 +933,7 @@ exit 0
 %if %{with galera}
 %files galera -f mariadb-galera.files
 %doc Docs/README.wsrep
-%config(noreplace) %{_sysconfdir}/my.cnf.d/50-galera.cnf
+%config(noreplace) %attr(-, root, mysql) %{_sysconfdir}/my.cnf.d/50-galera.cnf
 %{_datadir}/mysql/systemd/use_galera_new_cluster.conf
 %{_datadir}/mysql/wsrep_notify
 %endif

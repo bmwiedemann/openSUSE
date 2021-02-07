@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 20 19:37:46 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- exclude galera files if we build without this feature.
+- switch from 664 to 644 for my.cnf configuration file (probably
+  a typo)
+
+-------------------------------------------------------------------
+Wed Jan 20 15:49:47 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- added fix-lock-rollback-assert-abort.patch
+  fix an abort when a transaction is rolled back
+- track all patches in a series so we can easily set up a quilt
+  tree without requiring all the devel packages
+
+-------------------------------------------------------------------
 Wed Dec  2 17:27:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - switch to bcond_with to make it easier to enable galera support
