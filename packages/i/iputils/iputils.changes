@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  2 08:32:14 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 20210202
+  https://github.com/iputils/iputils/releases/tag/20210202
+- Version scheme change: dropped leading 's', update that change
+
+-------------------------------------------------------------------
 Mon Oct 19 12:17:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Reference meson's build subdirectory as %_vpath_builddir, to
