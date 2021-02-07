@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  5 03:13:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.100
+   see /usr/share/doc/packages/perl-String-CRC32/Changes
+
+  2.100     2021-02-04
+          - Declare vars with our instead of use vars (GH #7, thanks to Grinnz)
+          - Quote $VERSION to preserve formatting (GH #6, thanks to Grinnz)
+
+-------------------------------------------------------------------
 Tue Nov 10 03:11:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2
