@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  8 09:52:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.8.1
+  * Bugfix release which fixes the issue of the local port always
+    being zero, which got introduced by the 0.9.8 release.
+
+-------------------------------------------------------------------
 Mon Dec  7 18:41:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.8

@@ -1,7 +1,7 @@
 #
 # spec file for package sipsak
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sipsak
-Version:        0.9.8
+Version:        0.9.8.1
 Release:        0
 Summary:        SIP Swiss Army Knife
 License:        GPL-2.0-only
