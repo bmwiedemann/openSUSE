@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 23 00:35:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.18:
+  * Support macOS 11.0 - AC_CANONICAL_HOST identifies this as darwin20, which
+    wasn't caught by our glob pattern.  Patch from FX Coudert in
+    https://github.com/xapian/xapian/pull/319
+  * Wrap const std::string* parameters to accept a string or null in C#.  See #204.
+  * Wrap const std::string* parameters to accept a String or null in Java.
+  * Fix minor documentation typo.
+
+-------------------------------------------------------------------
 Thu Dec 17 19:15:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Build bindings for all possible python3 flavors in TW
