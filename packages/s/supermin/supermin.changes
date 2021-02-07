@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  5 16:59:34 CET 2021 - ro@suse.de
+
+- add patch supermin-kernel_version_compressed.patch
+  find kernel module path even for compressed kernels
+  like on aarch64 and s390x 
+
+-------------------------------------------------------------------
 Fri Oct 23 18:45:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.2.0:

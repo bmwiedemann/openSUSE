@@ -1,0 +1,19 @@
+--- supermin-5.2.0/src/format_ext2_kernel.ml	2021/02/05 16:10:36	1.1
++++ supermin-5.2.0/src/format_ext2_kernel.ml	2021/02/05 16:12:46
+@@ -212,6 +212,16 @@
+   | None ->
+      (* Try to work it out from the filename instead. *)
+      let basename = Filename.basename kernel_file in
++     let basename =
++       let len = String.length basename in
++       if Filename.check_suffix basename ".xz" || Filename.check_suffix basename ".gz"
++       then (
++         let basename = String.sub basename 0 (len-3) in
++         basename
++       )
++       else (
++         basename
++       ) in
+      if string_prefix "vmlinuz-" basename || string_prefix "vmlinux-" basename
+      then (
+        let version = String.sub basename 8 (String.length basename - 8) in

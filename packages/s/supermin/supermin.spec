@@ -1,7 +1,7 @@
 #
 # spec file for package supermin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2
 Source9:        supermin.keyring
 # Pending upstream review
 Patch0:         suse_release.patch
+Patch1:         supermin-kernel_version_compressed.patch
 BuildRequires:  augeas
 BuildRequires:  autoconf
 BuildRequires:  automake
