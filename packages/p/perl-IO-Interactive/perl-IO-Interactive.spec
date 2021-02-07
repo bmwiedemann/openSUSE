@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Interactive
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-IO-Interactive
-Version:        1.022
-Release:        0
 %define cpan_name IO-Interactive
+Name:           perl-IO-Interactive
+Version:        1.023
+Release:        0
 Summary:        Utilities for interactive I/O
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/IO-Interactive/
-Source0:        http://www.cpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+License:        Artistic-2.0
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.94
+BuildRequires:  perl(Test::More) >= 1
 %{perl_requires}
 
 %description
 This module provides three utility subroutines that make it easier to
-develop interactive applications...
+develop interactive applications.
+
+The 'ARGV' filehandle, the one that '<>' or an empty 'readline()' uses, has
+various magic associated with it. It's not actually opened until you try to
+read from it. Checking '-t ARGV' before you've tried to read from it might
+give you the wrong answer. Not only that, you might not read from 'ARGV'.
+If the value in '@ARGV' is the magic filename '-' (a convention to mean the
+standard filehandle for input or output), 'ARGV' might actually be 'STDIN'.
+You don't want to think about all of this. This module is discussed in
+_Perl Best Practices_ on page 218. Also see the 'ARGV' entry in perlvar and
+the 'readline' entry in perlfunc.
 
 * 'is_interactive()'
 
@@ -87,14 +95,14 @@ A 'busy' block is therefore useful to prevent attempts at input when the
 program is busy at some non-interactive task.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -102,7 +110,7 @@ program is busy at some non-interactive task.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples LICENSE
+%doc Changes examples
+%license LICENSE
 
 %changelog

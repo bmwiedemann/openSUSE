@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  4 03:09:44 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.023
+   see /usr/share/doc/packages/perl-IO-Interactive/Changes
+
+  1.023 2021-02-03T22:37:57Z
+  	* Explain why ARGV is a problem (Github #9)
+  	* Freshen distro, remove Travis CI, add Github Actions
+
+-------------------------------------------------------------------
 Mon Sep  5 05:25:33 UTC 2016 - coolo@suse.com
 
 - updated to 1.022
