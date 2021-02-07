@@ -559,4 +559,12 @@
     control how many reconnections are attempted.</comment>
     <requestid>860321</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>ed9508c14dfcfaea716cd9fc79685c4b</srcmd5>
+    <version>2.3.13</version>
+    <time>1612707669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869704</requestid>
+  </revision>
 </revisionlist>

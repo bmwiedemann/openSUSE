@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  4 07:06:00 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- add BuildRequires openssl-devel >= 1.0.1
+- add fix-timeval_cmp_margin-for-32bit-systems.patch
+  Fix timeval_cmp_margin for 32-bit systems
+
+  https://github.com/dovecot/core/pull/149
+
+-------------------------------------------------------------------
 Mon Jan  4 12:16:00 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.13 and pigeonhole to 0.5.13
