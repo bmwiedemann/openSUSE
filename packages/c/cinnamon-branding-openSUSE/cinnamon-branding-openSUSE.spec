@@ -65,7 +65,6 @@ Summary:        openSUSE Branding of the Cinnamon Desktop Environment
 Group:          System/GUI/Other
 Requires:       adwaita-icon-theme
 Requires:       libcinnamon-desktop-data = %{libcinnamon_desktop_data_version}
-Requires:       mate-themes
 Requires:       wallpaper-branding-openSUSE
 Supplements:    packageand(libcinnamon-desktop-data:branding-openSUSE)
 Conflicts:      otherproviders(libcinnamon-desktop-data-branding)
