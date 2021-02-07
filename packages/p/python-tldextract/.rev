@@ -161,4 +161,12 @@ Needed for python-dns-lexicon</comment>
       (https://github.com/john-kurkowski/tldextract/issues/215)</comment>
     <requestid>851574</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8f8afe4d74de32634d8ab3f3953b5ef2</srcmd5>
+    <version>3.1.0</version>
+    <time>1612707709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869865</requestid>
+  </revision>
 </revisionlist>

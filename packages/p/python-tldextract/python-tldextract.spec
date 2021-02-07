@@ -16,8 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define oldpython python
 Name:           python-tldextract
 Version:        3.1.0
 Release:        0
@@ -27,16 +28,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/john-kurkowski/tldextract
 Source:         https://files.pythonhosted.org/packages/source/t/tldextract/tldextract-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-### BEGIN test requirements
-BuildRequires:  %{python_module filelock} >= 3.0.8
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests-file} >= 1.4
-BuildRequires:  %{python_module requests} >= 2.1.0
-BuildRequires:  %{python_module responses}
-### END test requirements
+BuildRequires:  %{python_module filelock >= 3.0.8}
+BuildRequires:  %{python_module idna >= 2.1.0}
+BuildRequires:  %{python_module requests-file >= 1.4}
+BuildRequires:  %{python_module requests >= 2.1.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+### SECTION test requirements
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module responses}
+### /SECTION test requirements
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-filelock >= 3.0.8
@@ -46,7 +48,7 @@ Requires:       python-requests-file >= 1.4
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Obsoletes:      python-tldextract <= 2.0.1
+Obsoletes:      %{oldpython}-tldextract <= 2.0.1
 BuildArch:      noarch
 %python_subpackages
 

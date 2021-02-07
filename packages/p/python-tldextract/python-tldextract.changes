@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  4 20:10:10 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix python-rpm-macros singlespec glitches:
+  * The versions go inside python_module
+  * The obsoletion of the old python2 package did not work with
+    the python_subpackages rewrite
+
+-------------------------------------------------------------------
 Sat Nov 28 20:13:57 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 3.1.0:
