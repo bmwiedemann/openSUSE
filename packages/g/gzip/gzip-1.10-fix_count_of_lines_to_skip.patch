@@ -1,0 +1,26 @@
+From 38ae6a4ed36a7c86609a6a595add4298d9c202bc Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Tue, 26 Mar 2019 19:44:43 -0700
+Subject: gzexe: fix count of lines to skip
+
+Problem reported by Jakub Martisko (Bug#35002).
+* gzexe.in (skip): Bump from 44 to 49.
+---
+ gzexe.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gzexe.in b/gzexe.in
+index 8fca8c8..832cd07 100644
+--- a/gzexe.in
++++ b/gzexe.in
+@@ -145,7 +145,7 @@ for i do
+   if test $decomp -eq 0; then
+     (cat <<'EOF' &&
+ #!/bin/sh
+-skip=44
++skip=49
+ 
+ tab='	'
+ nl='
+-- 
+cgit v1.2.1

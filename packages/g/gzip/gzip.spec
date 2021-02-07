@@ -1,7 +1,7 @@
 #
 # spec file for package gzip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch6:         zdiff.diff
 Patch7:         xz_lzma.patch
 Patch8:         manpage-no-date.patch
 Patch9:         gzip-1.10-ibm_dfltcc_support.patch
+Patch10:        gzip-1.10-fix_count_of_lines_to_skip.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
@@ -58,6 +59,7 @@ times.
 %patch8 -p1
 %ifarch s390x
 %patch9 -p1
+%patch10 -p1
 %endif
 
 %build

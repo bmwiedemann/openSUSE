@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 27 22:05:47 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- add gzip-1.10-fix_count_of_lines_to_skip.patch to fix count
+  of lines to skip [bsc#1180713]
+
+-------------------------------------------------------------------
 Fri Oct 16 09:48:53 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
