@@ -17,7 +17,7 @@
 #
 
 %global libsolv_version 0.7.7
-%global libmodulemd_version 2.5.0
+%global libmodulemd_version 2.12.0
 %global librepo_version 1.12.0
 %global dnf_conflict 4.3.0
 %global swig_version 3.0.12
@@ -33,7 +33,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.55.2
+Version:        0.58.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -44,8 +44,6 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 # Backports from upstream
 
 # Fixes proposed upstream
-## From: https://github.com/rpm-software-management/libdnf/pull/1112
-Patch0101:      0001-context-Sync-missing-arches-from-DNF.patch
 
 # openSUSE specific fixes
 ## Fix libdnf build with static libsolvext
