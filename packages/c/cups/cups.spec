@@ -1,7 +1,7 @@
 #
 # spec file for package cups
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,9 @@ Patch101:       cups-2.0.3-additional_policies.patch
 Patch103:       cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 Patch104:       cups-config-libs.patch
+# Patch105 CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
+# access to uninitialized buffer in ipp.c
+Patch105:       CVE-2020-10001.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -296,6 +299,9 @@ printer drivers for CUPS.
 %patch103 -b do_not_strip_recommended_from_PPDs.orig
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 %patch104 -b cups-config-libs.orig
+# Patch105 CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
+# access to uninitialized buffer in ipp.c
+%patch105 -b CVE-2020-10001.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output

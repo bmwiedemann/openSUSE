@@ -1147,4 +1147,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>843399</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>ef1c26d702b19f31dfc3012b9f1735b2</srcmd5>
+    <version>2.3.3</version>
+    <time>1612707254</time>
+    <user>dimstar_suse</user>
+    <comment>CUPS security fix CVE-2020-10001 (bsc#1180520) (forwarded request 868665 from jsmeix)</comment>
+    <requestid>868667</requestid>
+  </revision>
 </revisionlist>

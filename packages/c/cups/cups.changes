@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  2 14:22:38 CET 2021 - jsmeix@suse.de
+
+- CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
+  access to uninitialized buffer in ipp.c
+
+-------------------------------------------------------------------
 Wed Oct 14 09:11:00 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Version upgrade to 2.3.3:
