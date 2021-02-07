@@ -1,7 +1,7 @@
 #
 # spec file for package libdwarf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libdwarf
-Version:        20201020
+Version:        20201201
 Release:        0
 Summary:        Access DWARF debugging information
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://prevanders.net/dwarf.html
-Source:         http://prevanders.net/%{name}-%{version}.tar.gz
+Source:         https://prevanders.net/%{name}-%{version}.tar.gz
 BuildRequires:  binutils-devel
 BuildRequires:  libelf-devel
 

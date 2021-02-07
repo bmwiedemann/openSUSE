@@ -201,4 +201,22 @@
   * Fix various read and write outside bounds found via fuzzing</comment>
     <requestid>844033</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>70114a8122084e5847d7f8bc9437bdcd</srcmd5>
+    <version>20201201</version>
+    <time>1612707224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20201201:
+  dwarfdump now prints DWARF expression operators each on
+  its own line.  This makes viewing DWARF expressions much
+  nicer given the increased use of much longer expressions.
+  Those expression operators that reference DIES are now
+  followed, verified, and the target DW_TAG and DW_AT_name
+  are printed.  A new dwarfdump.conf command 'option:' lets
+  one specify option: --format-expr-ops-joined in case you
+  want the old style DWARF expression operators-on-one-line.
+  Where the DWARF DIE children nest &gt; nine-deep dwarfdump
+  switches from indentation by spaces to a nest-level number.</comment>
+    <requestid>867800</requestid>
+  </revision>
 </revisionlist>
