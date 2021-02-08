@@ -651,4 +651,11 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     - Add statistics files to update environment [boo#1173282]</comment>
     <requestid>868670</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>ad65576978cd71825b09eccba9b21a6d</srcmd5>
+    <version>2.28.3</version>
+    <time>1612781300</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1181934</comment>
+  </revision>
 </revisionlist>
