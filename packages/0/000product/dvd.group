@@ -401,7 +401,6 @@
     <package name="dos2unix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="dosfstools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="dracut-transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="dragonplayer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dragonplayer-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drkonqi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2725,7 +2724,6 @@
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtukit0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libturbojpeg0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libtwolame0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4691,7 +4689,6 @@
     <package name="tre-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="tree" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="trousers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="tukit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="tumbler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-folder-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
