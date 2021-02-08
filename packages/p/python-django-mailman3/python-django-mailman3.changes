@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  3 16:21:17 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.5
+  * Add a new method get_django_user to return Django User model. (See !99)
+  * Add delete_archives field to mailinglist_deleted Signal.
+  * Replaced deprecated ugettexy_lazy with gettext_lazy. (Closes #37)
+- Fix building on tumbleweed
+
+-------------------------------------------------------------------
 Tue Aug  4 02:04:03 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Update to 1.3.4

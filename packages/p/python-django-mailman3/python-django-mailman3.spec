@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mailman3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%if 0%{?suse_version} >= 1550
+%define skip_python36 1
+%endif
 Name:           python-django-mailman3
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Django library to help interaction with Mailman
 License:        GPL-3.0-only
