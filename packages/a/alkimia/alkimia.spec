@@ -1,7 +1,7 @@
 #
 # spec file for package alkimia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define sonum 8
 %bcond_without lang
 Name:           alkimia
-Version:        8.0.3
+Version:        8.0.4
 Release:        0
 Summary:        Library with common classes and functionality used by finance applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://kmymoney.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Use-new-KNS-install-location.patch
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel
@@ -63,11 +65,11 @@ The development files for libalkimia.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_WITH_WEBKIT=0 -DBUILD_APPLETS=0
-%make_jobs
+%cmake_kf5 -d build -- -DBUILD_WITH_WEBKIT=0 -DBUILD_APPLETS=0 -DENABLE_FINANCEQUOTE=1
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -89,15 +91,15 @@ mv %{buildroot}/alkimia5/misc/financequote.pl %{buildroot}%{_datadir}/alkimia5/m
 %{_kf5_applicationsdir}/org.kde.onlinequoteseditor5.desktop
 %{_kf5_bindir}/onlinequoteseditor5
 %{_kf5_iconsdir}/hicolor/*/apps/onlinequoteseditor5.*
+%{_kf5_knsrcfilesdir}/alkimia-quotes.knsrc
+%{_kf5_knsrcfilesdir}/kmymoney-quotes.knsrc
+%{_kf5_knsrcfilesdir}/skrooge-quotes.knsrc
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde
 %dir %{_kf5_qmldir}/org/kde/alkimia
 %{_kf5_qmldir}/org/kde/alkimia/libqmlalkimia.so
 %{_kf5_qmldir}/org/kde/alkimia/qmldir
 %{_kf5_sharedir}/alkimia5/
-%{_kf5_sysconfdir}/xdg/alkimia-quotes.knsrc
-%{_kf5_sysconfdir}/xdg/kmymoney-quotes.knsrc
-%{_kf5_sysconfdir}/xdg/skrooge-quotes.knsrc
 
 %files -n libalkimia5-devel
 %license COPYING.LIB

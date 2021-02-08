@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Feb  7 08:45:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Use-new-KNS-install-location.patch
+
+-------------------------------------------------------------------
+Fri Feb 05 08:16:29 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 8.0.4
+  * Add initial QWebEngine support for KF5 builds
+  * Add debug info for running perl script in
+    AlkFinanceQuoteProcess::launch()
+  * Add file menu with entry 'quit'
+  * Add switch language entry to help menu
+  * Add option ENABLE_FINANCEQUOTE and set to false by default on Windows
+  * Bug and crash fixes
+  * Fix fatal error caused by calling i18n in another thread initiated
+  * Fix WebEngine/WebKit/Widgets backend choice
+  * Fix 'alkimia fails to find mpirxx.h
+  * Remove unused toolbar
+
+-------------------------------------------------------------------
 Sat Jan 11 09:28:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 8.0.3.
