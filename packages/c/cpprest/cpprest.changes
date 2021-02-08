@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  7 13:57:13 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.10.18:
+  * Add ability to parse and emit the NT Epoch 1601-01-01T00:00:00Z.
+- Remove obsolete conditionals.
+- Remove duplicate call to license macro.
+- Simplify check section and make it work on Leap 15.2/15.3.
+
+-------------------------------------------------------------------
 Sun Jan 17 20:27:55 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.10.17:

@@ -19,7 +19,7 @@
 %define major 2
 %define minor 10
 Name:           cpprest
-Version:        2.10.17
+Version:        2.10.18
 Release:        0
 Summary:        C++ REST library
 # main: MIT (license.txt)
@@ -39,20 +39,16 @@ Patch2:         base64.patch
 Patch3:         filestream.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libssl) >= 1.0
-BuildRequires:  pkgconfig(websocketpp) >= 0.8
-BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_random-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel >= 1.55
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libssl) >= 1.0
+BuildRequires:  pkgconfig(websocketpp) >= 0.8
+BuildRequires:  pkgconfig(zlib)
 
 %description
 The C++ REST SDK is a Microsoft project for cloud-based client-server
@@ -112,20 +108,17 @@ Cflags: -I%{_includedir}/cpprest -I%{_includedir}/pplx
 EOF
 
 %check
+# Tweak library path so that libccprest + libunittestpp are found
+export LD_LIBRARY_PATH="$PWD/build/Release/Binaries"
 # websocketsclient_test -> authentication_tests - online tests
 # httpclient_test -> follows_retrieval_redirect - online test
-# do not use macro so we can exclude tests
-pushd build
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} -E '(httpclient_test|websocketsclient_test)'
-popd
+%ctest --exclude-regex '(httpclient_test|websocketsclient_test)'
 
 %post -n libcpprest%{major}_%{minor} -p /sbin/ldconfig
 %postun -n libcpprest%{major}_%{minor} -p /sbin/ldconfig
 
 %files -n libcpprest%{major}_%{minor}
 %license license.txt ThirdPartyNotices.txt
-%license license.txt
 %doc CONTRIBUTORS.txt ThirdPartyNotices.txt
 %{_libdir}/libcpprest.so.%{major}.%{minor}
 
