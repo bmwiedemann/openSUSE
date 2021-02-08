@@ -1,7 +1,7 @@
-Index: libgcrypt-1.8.2/src/global.c
+Index: libgcrypt-1.9.1/src/global.c
 ===================================================================
---- libgcrypt-1.8.2.orig/src/global.c	2020-04-16 21:13:28.252717330 +0200
-+++ libgcrypt-1.8.2/src/global.c	2020-04-16 21:13:47.960822991 +0200
+--- libgcrypt-1.9.1.orig/src/global.c
++++ libgcrypt-1.9.1/src/global.c
 @@ -86,7 +86,7 @@ static gpg_err_code_t external_lock_test
     likely to be called at startup.  The suggested way for an
     application to make sure that this has been called is by using
@@ -45,11 +45,11 @@ Index: libgcrypt-1.8.2/src/global.c
  /* This function is called by the macro fips_is_operational and makes
     sure that the minimal initialization has been done.  This is far
     from a perfect solution and hides problems with an improper
-Index: libgcrypt-1.8.2/src/fips.c
+Index: libgcrypt-1.9.1/src/fips.c
 ===================================================================
---- libgcrypt-1.8.2.orig/src/fips.c	2020-04-16 21:13:28.252717330 +0200
-+++ libgcrypt-1.8.2/src/fips.c	2020-04-16 21:14:44.781127616 +0200
-@@ -125,6 +125,7 @@ void
+--- libgcrypt-1.9.1.orig/src/fips.c
++++ libgcrypt-1.9.1/src/fips.c
+@@ -124,6 +124,7 @@ void
  _gcry_initialize_fips_mode (int force)
  {
    static int done;
@@ -57,48 +57,33 @@ Index: libgcrypt-1.8.2/src/fips.c
  
    /* Make sure we are not accidentally called twice.  */
    if (done)
-@@ -214,6 +215,23 @@ _gcry_initialize_fips_mode (int force)
+@@ -213,6 +214,23 @@ _gcry_initialize_fips_mode (int force)
        /* Yes, we are in FIPS mode.  */
        FILE *fp;
  
 +      /* Intitialize the lock to protect the FSM.  */
 +      err = gpgrt_lock_init (&fsm_lock);
 +      if (err)
-+	{
-+	  /* If that fails we can't do anything but abort the
-+             process. We need to use log_info so that the FSM won't
-+             get involved.  */
-+	  log_info ("FATAL: failed to create the FSM lock in libgcrypt: %s\n",
-+		    gpg_strerror (err));
++        {
++          /* If that fails we can't do anything but abort the
++           * process. We need to use log_info so that the FSM won't
++           * get involved.  */
++          log_info ("FATAL: failed to create the FSM lock in libgcrypt: %s\n",
++          gpg_strerror (err));
 +#ifdef HAVE_SYSLOG
-+	  syslog (LOG_USER|LOG_ERR, "Libgcrypt error: "
-+		  "creating FSM lock failed: %s - abort",
-+		  gpg_strerror (err));
++          syslog (LOG_USER|LOG_ERR, "Libgcrypt error: "
++                  "creating FSM lock failed: %s - abort",
++          gpg_strerror (err));
 +#endif /*HAVE_SYSLOG*/
-+	  abort ();
-+	}
++          abort ();
++        }
 +
        /* If the FIPS force files exists, is readable and has a number
           != 0 on its first line, we enable the enforced fips mode.  */
        fp = fopen (FIPS_FORCE_FILE, "r");
-@@ -614,10 +632,10 @@ get_library_path(const char *libname, co
-     void *dl, *sym;
-     int rv = -1;
- 
--        dl = dlopen(libname, RTLD_LAZY);
--        if (dl == NULL) {
--            return -1;
--        }       
-+    dl = dlopen(libname, RTLD_LAZY);
-+    if (dl == NULL) {
-+        return -1;
-+    }
- 
-     sym = dlsym(dl, symbolname);
- 
-@@ -632,6 +650,39 @@ get_library_path(const char *libname, co
-     return rv;
+@@ -641,6 +659,39 @@ get_library_path(const char *libname, co
  }
+ #endif
  
 +static gpg_error_t
 +get_hmac_path(char **fname)
@@ -112,23 +97,23 @@ Index: libgcrypt-1.8.2/src/fips.c
 +    {
 +      *fname = _gcry_malloc (strlen (libpath) + 1 + 5 + 1 );
 +      if (!*fname)
-+	err = gpg_error_from_syserror ();
++        err = gpg_error_from_syserror ();
 +      else
-+	{
++        {
 +          char *p;
 +
-+	  /* Prefix the basename with a dot.  */
-+	  strcpy (*fname, libpath);
-+	  p = strrchr (*fname, '/');
-+	  if (p)
++          /* Prefix the basename with a dot.  */
++          strcpy (*fname, libpath);
++          p = strrchr (*fname, '/');
++          if (p)
 +            p++;
-+	  else
-+	    p = *fname;
-+	  memmove (p+1, p, strlen (p)+1);
-+	  *p = '.';
-+	  strcat (*fname, ".hmac");
-+	  err = 0;
-+	}
++          else
++            p = *fname;
++          memmove (p+1, p, strlen (p)+1);
++          *p = '.';
++          strcat (*fname, ".hmac");
++          err = 0;
++      }
 +    }
 +  return err;
 +}
@@ -136,7 +121,7 @@ Index: libgcrypt-1.8.2/src/fips.c
  /* Run an integrity check on the binary.  Returns 0 on success.  */
  static int
  check_binary_integrity (void)
-@@ -656,25 +707,10 @@ check_binary_integrity (void)
+@@ -665,25 +716,10 @@ check_binary_integrity (void)
          err = gpg_error (GPG_ERR_INTERNAL);
        else
          {
@@ -144,7 +129,10 @@ Index: libgcrypt-1.8.2/src/fips.c
 -          if (!fname)
 -            err = gpg_error_from_syserror ();
 -          else
--            {
++          FILE *fp;
++          err = get_hmac_path(&fname);
++          if (!err)
+             {
 -              FILE *fp;
 -              char *p;
 -
@@ -159,14 +147,10 @@ Index: libgcrypt-1.8.2/src/fips.c
 -              *p = '.';
 -              strcat (fname, ".hmac");
 -
-+          FILE *fp;
-+	  err = get_hmac_path(&fname);
-+	  if (!err)
-+	    {
                /* Open the file.  */
                fp = fopen (fname, "r");
                if (!fp)
-@@ -725,6 +761,33 @@ check_binary_integrity (void)
+@@ -734,6 +770,33 @@ check_binary_integrity (void)
  #endif
  }
  
@@ -200,18 +184,18 @@ Index: libgcrypt-1.8.2/src/fips.c
  
  /* Run the self-tests.  If EXTENDED is true, extended versions of the
     selftest are run, that is more tests than required by FIPS.  */
-@@ -733,26 +795,13 @@ _gcry_fips_run_selftests (int extended)
+@@ -742,26 +805,13 @@ _gcry_fips_run_selftests (int extended)
  {
    enum module_states result = STATE_ERROR;
    gcry_err_code_t ec = GPG_ERR_SELFTEST_FAILED;
 -  int in_poweron;
- 
+-
 -  lock_fsm ();
 -  in_poweron = (current_state == STATE_POWERON);
 -  unlock_fsm ();
 -
 -  fips_new_state (STATE_SELFTEST);
--
+ 
 -  /* We first check the integrity of the binary.
 -     If run from the constructor we are in POWERON state,
 -     we return and finish the remaining selftests before
@@ -231,8 +215,8 @@ Index: libgcrypt-1.8.2/src/fips.c
    if (run_cipher_selftests (extended))
      goto leave;
  
-@@ -762,6 +811,9 @@ _gcry_fips_run_selftests (int extended)
-   if (run_mac_selftests (extended))
+@@ -774,6 +824,9 @@ _gcry_fips_run_selftests (int extended)
+   if (run_kdf_selftests (extended))
      goto leave;
  
 +  if (check_binary_integrity ())
@@ -241,7 +225,7 @@ Index: libgcrypt-1.8.2/src/fips.c
    /* Run random tests before the pubkey tests because the latter
       require random.  */
    if (run_random_selftests ())
-@@ -775,7 +827,8 @@ _gcry_fips_run_selftests (int extended)
+@@ -787,7 +840,8 @@ _gcry_fips_run_selftests (int extended)
    ec = 0;
  
   leave:
@@ -251,7 +235,7 @@ Index: libgcrypt-1.8.2/src/fips.c
  
    return ec;
  }
-@@ -831,7 +884,6 @@ fips_new_state (enum module_states new_s
+@@ -843,7 +897,6 @@ fips_new_state (enum module_states new_s
      {
      case STATE_POWERON:
        if (new_state == STATE_INIT
@@ -259,7 +243,7 @@ Index: libgcrypt-1.8.2/src/fips.c
            || new_state == STATE_ERROR
            || new_state == STATE_FATALERROR)
          ok = 1;
-@@ -846,8 +898,6 @@ fips_new_state (enum module_states new_s
+@@ -858,8 +911,6 @@ fips_new_state (enum module_states new_s
  
      case STATE_SELFTEST:
        if (new_state == STATE_OPERATIONAL

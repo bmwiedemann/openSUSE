@@ -1,7 +1,7 @@
-Index: libgcrypt-1.8.2/cipher/pubkey.c
+Index: libgcrypt-1.9.0/cipher/pubkey.c
 ===================================================================
---- libgcrypt-1.8.2.orig/cipher/pubkey.c
-+++ libgcrypt-1.8.2/cipher/pubkey.c
+--- libgcrypt-1.9.0.orig/cipher/pubkey.c
++++ libgcrypt-1.9.0/cipher/pubkey.c
 @@ -384,6 +384,33 @@ _gcry_pk_decrypt (gcry_sexp_t *r_plain,
  }
  
@@ -106,10 +106,10 @@ Index: libgcrypt-1.8.2/cipher/pubkey.c
  /*
     Test a key.
  
-Index: libgcrypt-1.8.2/cipher/pubkey-internal.h
+Index: libgcrypt-1.9.0/cipher/pubkey-internal.h
 ===================================================================
---- libgcrypt-1.8.2.orig/cipher/pubkey-internal.h
-+++ libgcrypt-1.8.2/cipher/pubkey-internal.h
+--- libgcrypt-1.9.0.orig/cipher/pubkey-internal.h
++++ libgcrypt-1.9.0/cipher/pubkey-internal.h
 @@ -43,6 +43,8 @@ void _gcry_pk_util_free_encoding_ctx (st
  gcry_err_code_t _gcry_pk_util_data_to_mpi (gcry_sexp_t input,
                                             gcry_mpi_t *ret_mpi,
@@ -119,11 +119,11 @@ Index: libgcrypt-1.8.2/cipher/pubkey-internal.h
  
  
  
-Index: libgcrypt-1.8.2/cipher/pubkey-util.c
+Index: libgcrypt-1.9.0/cipher/pubkey-util.c
 ===================================================================
---- libgcrypt-1.8.2.orig/cipher/pubkey-util.c
-+++ libgcrypt-1.8.2/cipher/pubkey-util.c
-@@ -1119,3 +1119,50 @@ _gcry_pk_util_data_to_mpi (gcry_sexp_t i
+--- libgcrypt-1.9.0.orig/cipher/pubkey-util.c
++++ libgcrypt-1.9.0/cipher/pubkey-util.c
+@@ -1158,3 +1158,50 @@ _gcry_pk_util_data_to_mpi (gcry_sexp_t i
  
    return rc;
  }
@@ -174,11 +174,11 @@ Index: libgcrypt-1.8.2/cipher/pubkey-util.c
 +
 +  return rc;
 +}
-Index: libgcrypt-1.8.2/src/g10lib.h
+Index: libgcrypt-1.9.0/src/g10lib.h
 ===================================================================
---- libgcrypt-1.8.2.orig/src/g10lib.h
-+++ libgcrypt-1.8.2/src/g10lib.h
-@@ -288,6 +288,10 @@ gpg_err_code_t _gcry_generate_fips186_3_
+--- libgcrypt-1.9.0.orig/src/g10lib.h
++++ libgcrypt-1.9.0/src/g10lib.h
+@@ -299,6 +299,10 @@ gpg_err_code_t _gcry_generate_fips186_3_
  gpg_err_code_t _gcry_fips186_4_prime_check (const gcry_mpi_t x,
                                              unsigned int bits);
  
@@ -189,10 +189,10 @@ Index: libgcrypt-1.8.2/src/g10lib.h
  
  /* Replacements of missing functions (missing-string.c).  */
  #ifndef HAVE_STPCPY
-Index: libgcrypt-1.8.2/src/visibility.c
+Index: libgcrypt-1.9.0/src/visibility.c
 ===================================================================
---- libgcrypt-1.8.2.orig/src/visibility.c
-+++ libgcrypt-1.8.2/src/visibility.c
+--- libgcrypt-1.9.0.orig/src/visibility.c
++++ libgcrypt-1.9.0/src/visibility.c
 @@ -992,6 +992,18 @@ gcry_pk_decrypt (gcry_sexp_t *result, gc
  }
  
@@ -228,11 +228,11 @@ Index: libgcrypt-1.8.2/src/visibility.c
  gcry_pk_verify (gcry_sexp_t sigval, gcry_sexp_t data, gcry_sexp_t pkey)
  {
    if (!fips_is_operational ())
-Index: libgcrypt-1.8.2/src/visibility.h
+Index: libgcrypt-1.9.0/src/visibility.h
 ===================================================================
---- libgcrypt-1.8.2.orig/src/visibility.h
-+++ libgcrypt-1.8.2/src/visibility.h
-@@ -357,8 +357,10 @@ MARK_VISIBLEX (_gcry_mpi_get_const)
+--- libgcrypt-1.9.0.orig/src/visibility.h
++++ libgcrypt-1.9.0/src/visibility.h
+@@ -360,8 +360,10 @@ MARK_VISIBLEX (_gcry_mpi_get_const)
  #define gcry_pk_get_param           _gcry_USE_THE_UNDERSCORED_FUNCTION
  #define gcry_pk_get_nbits           _gcry_USE_THE_UNDERSCORED_FUNCTION
  #define gcry_pk_map_name            _gcry_USE_THE_UNDERSCORED_FUNCTION
@@ -242,4 +242,4 @@ Index: libgcrypt-1.8.2/src/visibility.h
 +#define gcry_pk_verify_md           _gcry_USE_THE_UNDERSCORED_FUNCTION
  #define gcry_pk_verify              _gcry_USE_THE_UNDERSCORED_FUNCTION
  #define gcry_pubkey_get_sexp        _gcry_USE_THE_UNDERSCORED_FUNCTION
- 
+ #define gcry_ecc_get_algo_keylen    _gcry_USE_THE_UNDERSCORED_FUNCTION

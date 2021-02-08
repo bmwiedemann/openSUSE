@@ -2,7 +2,7 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
 ===================================================================
 --- libgcrypt-1.8.2.orig/cipher/rsa.c
 +++ libgcrypt-1.8.2/cipher/rsa.c
-@@ -159,27 +159,103 @@ test_keys (RSA_secret_key *sk, unsigned
+@@ -159,22 +159,97 @@ test_keys (RSA_secret_key *sk, unsigned
    /* Create another random plaintext as data for signature checking.  */
    _gcry_mpi_randomize (plaintext, nbits, GCRY_WEAK_RANDOM);
  
@@ -112,12 +112,6 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
   leave:
    _gcry_mpi_release (signature);
    _gcry_mpi_release (decr_plaintext);
-   _gcry_mpi_release (ciphertext);
-   _gcry_mpi_release (plaintext);
-+
-   return result;
- }
- 
 @@ -1903,7 +1979,7 @@ selftest_encr_2048 (gcry_sexp_t pkey, gc
    /* This sexp trickery is to prevent the use of blinding.
     * The flag doesn't get inherited by encr, so we have to
@@ -127,11 +121,3 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
    memset(buf, 0, sizeof(buf));
    err = _gcry_mpi_print (GCRYMPI_FMT_STD, buf, sizeof buf, NULL, ciphertext);
    if (err)
-@@ -2012,6 +2088,7 @@ selftests_rsa (selftest_report_func_t re
-   sexp_release (skey);
-   if (report)
-     report ("pubkey", GCRY_PK_RSA, what, errtxt);
-+
-   return GPG_ERR_SELFTEST_FAILED;
- }
- 

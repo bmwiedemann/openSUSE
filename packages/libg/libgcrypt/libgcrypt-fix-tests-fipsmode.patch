@@ -1,8 +1,9 @@
-diff -up libgcrypt-1.8.4/tests/basic.c.tests-fipsmode libgcrypt-1.8.4/tests/basic.c
---- libgcrypt-1.8.4/tests/basic.c.tests-fipsmode	2018-04-17 17:29:40.000000000 +0200
-+++ libgcrypt-1.8.4/tests/basic.c	2019-02-12 13:30:48.935791024 +0100
-@@ -6964,7 +6964,7 @@ check_ciphers (void)
-       check_one_cipher (algos[i], GCRY_CIPHER_MODE_CTR, 0);
+Index: libgcrypt-1.9.1/tests/basic.c
+===================================================================
+--- libgcrypt-1.9.1.orig/tests/basic.c
++++ libgcrypt-1.9.1/tests/basic.c
+@@ -9978,7 +9978,7 @@ check_ciphers (void)
+       check_one_cipher (algos[i], GCRY_CIPHER_MODE_EAX, 0);
        if (gcry_cipher_get_algo_blklen (algos[i]) == GCRY_CCM_BLOCK_LEN)
          check_one_cipher (algos[i], GCRY_CIPHER_MODE_CCM, 0);
 -      if (gcry_cipher_get_algo_blklen (algos[i]) == GCRY_GCM_BLOCK_LEN)
@@ -10,7 +11,7 @@ diff -up libgcrypt-1.8.4/tests/basic.c.tests-fipsmode libgcrypt-1.8.4/tests/basi
          check_one_cipher (algos[i], GCRY_CIPHER_MODE_GCM, 0);
        if (gcry_cipher_get_algo_blklen (algos[i]) == GCRY_OCB_BLOCK_LEN)
          check_one_cipher (algos[i], GCRY_CIPHER_MODE_OCB, 0);
-@@ -7010,11 +7010,17 @@ check_cipher_modes(void)
+@@ -10025,12 +10025,18 @@ check_cipher_modes(void)
    check_cfb_cipher ();
    check_ofb_cipher ();
    check_ccm_cipher ();
@@ -24,6 +25,7 @@ diff -up libgcrypt-1.8.4/tests/basic.c.tests-fipsmode libgcrypt-1.8.4/tests/basi
 +      check_ocb_cipher ();
 +    }
    check_xts_cipher ();
+   check_eax_cipher ();
 -  check_gost28147_cipher ();
 +  if (!in_fips_mode)
 +    {
@@ -32,7 +34,7 @@ diff -up libgcrypt-1.8.4/tests/basic.c.tests-fipsmode libgcrypt-1.8.4/tests/basi
    check_stream_cipher ();
    check_stream_cipher_large_block ();
  
-@@ -10001,7 +10007,7 @@ check_mac (void)
+@@ -13383,7 +13389,7 @@ check_mac (void)
            show_mac_not_available (algos[i].algo);
            continue;
          }
@@ -41,16 +43,16 @@ diff -up libgcrypt-1.8.4/tests/basic.c.tests-fipsmode libgcrypt-1.8.4/tests/basi
          {
            if (verbose)
              fprintf (stderr, "  algorithm %d not available in fips mode\n",
-@@ -11095,8 +11101,6 @@ main (int argc, char **argv)
+@@ -14508,8 +14514,6 @@ main (int argc, char **argv)
        /* If we are in fips mode do some more tests. */
        gcry_md_hd_t md;
  
 -      /* First trigger a self-test.  */
--      xgcry_control (GCRYCTL_FORCE_FIPS_MODE, 0);
+-      xgcry_control ((GCRYCTL_FORCE_FIPS_MODE, 0));
        if (!gcry_control (GCRYCTL_OPERATIONAL_P, 0))
          fail ("not in operational state after self-test\n");
  
-@@ -11121,15 +11125,6 @@ main (int argc, char **argv)
+@@ -14534,15 +14538,6 @@ main (int argc, char **argv)
                gcry_md_close (md);
                if (gcry_control (GCRYCTL_OPERATIONAL_P, 0))
                  fail ("expected error state but still in operational state\n");
@@ -58,7 +60,7 @@ diff -up libgcrypt-1.8.4/tests/basic.c.tests-fipsmode libgcrypt-1.8.4/tests/basi
 -                {
 -                  /* Now run a self-test and to get back into
 -                     operational state.  */
--                  xgcry_control (GCRYCTL_FORCE_FIPS_MODE, 0);
+-                  xgcry_control ((GCRYCTL_FORCE_FIPS_MODE, 0));
 -                  if (!gcry_control (GCRYCTL_OPERATIONAL_P, 0))
 -                    fail ("did not reach operational after error "
 -                          "and self-test\n");
@@ -66,26 +68,28 @@ diff -up libgcrypt-1.8.4/tests/basic.c.tests-fipsmode libgcrypt-1.8.4/tests/basi
              }
          }
  
-diff -up libgcrypt-1.8.4/tests/benchmark.c.tests-fipsmode libgcrypt-1.8.4/tests/benchmark.c
---- libgcrypt-1.8.4/tests/benchmark.c.tests-fipsmode	2019-02-12 11:31:44.859603883 +0100
-+++ libgcrypt-1.8.4/tests/benchmark.c	2019-02-12 14:10:40.271999352 +0100
-@@ -872,8 +872,10 @@ cipher_bench ( const char *algoname )
-           || (blklen == 1 && modes[modeidx].mode != GCRY_CIPHER_MODE_STREAM))
+Index: libgcrypt-1.9.1/tests/benchmark.c
+===================================================================
+--- libgcrypt-1.9.1.orig/tests/benchmark.c
++++ libgcrypt-1.9.1/tests/benchmark.c
+@@ -943,8 +943,10 @@ cipher_bench ( const char *algoname )
+           && algo != GCRY_CIPHER_CHACHA20)
          continue;
  
 -      if (modes[modeidx].req_blocksize > 0
 -          && blklen != modes[modeidx].req_blocksize)
 +      if ((modes[modeidx].req_blocksize > 0
 +           && blklen != modes[modeidx].req_blocksize)
-+          || (in_fips_mode 
++           || (in_fips_mode
 +           && modes[modeidx].mode == GCRY_CIPHER_MODE_GCM))
          {
            printf (" %7s %7s", "-", "-" );
            continue;
-diff -up libgcrypt-1.8.4/tests/bench-slope.c.tests-fipsmode libgcrypt-1.8.4/tests/bench-slope.c
---- libgcrypt-1.8.4/tests/bench-slope.c.tests-fipsmode	2017-11-23 19:16:58.000000000 +0100
-+++ libgcrypt-1.8.4/tests/bench-slope.c	2019-02-12 14:14:33.618763325 +0100
-@@ -1338,7 +1338,7 @@ cipher_bench_one (int algo, struct bench
+Index: libgcrypt-1.9.1/tests/bench-slope.c
+===================================================================
+--- libgcrypt-1.9.1.orig/tests/bench-slope.c
++++ libgcrypt-1.9.1/tests/bench-slope.c
+@@ -1573,7 +1573,7 @@ cipher_bench_one (int algo, struct bench
      return;
  
    /* GCM has restrictions for block-size */
@@ -94,9 +98,10 @@ diff -up libgcrypt-1.8.4/tests/bench-slope.c.tests-fipsmode libgcrypt-1.8.4/test
      return;
  
    /* XTS has restrictions for block-size */
-diff -up libgcrypt-1.8.4/tests/pubkey.c.tests-fipsmode libgcrypt-1.8.4/tests/pubkey.c
---- libgcrypt-1.8.4/tests/pubkey.c.tests-fipsmode	2017-11-23 19:16:58.000000000 +0100
-+++ libgcrypt-1.8.4/tests/pubkey.c	2019-02-12 13:52:25.658746415 +0100
+Index: libgcrypt-1.9.1/tests/pubkey.c
+===================================================================
+--- libgcrypt-1.9.1.orig/tests/pubkey.c
++++ libgcrypt-1.9.1/tests/pubkey.c
 @@ -504,15 +504,30 @@ get_dsa_key_with_domain_new (gcry_sexp_t
    rc = gcry_sexp_new
      (&key_spec,
@@ -137,39 +142,27 @@ diff -up libgcrypt-1.8.4/tests/pubkey.c.tests-fipsmode libgcrypt-1.8.4/tests/pub
       ")))", 0, 1);
    if (rc)
      die ("error creating S-expression: %s\n", gcry_strerror (rc));
-@@ -595,7 +610,7 @@ get_dsa_key_fips186_with_seed_new (gcry_
+@@ -596,7 +611,7 @@ get_dsa_key_fips186_with_seed_new (gcry_
       "    (use-fips186)"
       "    (transient-key)"
       "    (derive-parms"
--     "      (seed #0cb1990c1fd3626055d7a0096f8fa99807399871#))))",
+-     "      (seed #f770a4598ff756931fc529764513b103ce57d85f4ad8c5cf297c9b4d48241c5b#))))",
 +     "      (seed #8b4c4d671fff82e8ed932260206d0571e3a1c2cee8cd94cb73fe58f9b67488fa#))))",
       0, 1);
    if (rc)
      die ("error creating S-expression: %s\n", gcry_strerror (rc));
-diff -up libgcrypt-1.8.4/tests/t-cv25519.c.tests-fipsmode libgcrypt-1.8.4/tests/t-cv25519.c
---- libgcrypt-1.8.4/tests/t-cv25519.c.tests-fipsmode	2017-11-23 19:16:58.000000000 +0100
-+++ libgcrypt-1.8.4/tests/t-cv25519.c	2019-02-12 14:02:35.935705390 +0100
-@@ -560,6 +560,9 @@ main (int argc, char **argv)
-     xgcry_control (GCRYCTL_SET_DEBUG_FLAGS, 1u , 0);
-   xgcry_control (GCRYCTL_ENABLE_QUICK_RANDOM, 0);
-   xgcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
-+  /* Curve25519 isn't supported in fips mode */
-+  if (gcry_fips_mode_active())
-+    return 77;
- 
-   start_timer ();
-   check_cv25519 ();
-diff -up libgcrypt-1.8.4/tests/t-secmem.c.tests-fipsmode libgcrypt-1.8.4/tests/t-secmem.c
---- libgcrypt-1.8.4/tests/t-secmem.c.tests-fipsmode	2017-11-23 19:19:54.000000000 +0100
-+++ libgcrypt-1.8.4/tests/t-secmem.c	2019-02-12 11:51:02.462190538 +0100
+Index: libgcrypt-1.9.1/tests/t-secmem.c
+===================================================================
+--- libgcrypt-1.9.1.orig/tests/t-secmem.c
++++ libgcrypt-1.9.1/tests/t-secmem.c
 @@ -174,7 +174,8 @@ main (int argc, char **argv)
-     xgcry_control (GCRYCTL_SET_DEBUG_FLAGS, 1u , 0);
-   xgcry_control (GCRYCTL_ENABLE_QUICK_RANDOM, 0);
-   xgcry_control (GCRYCTL_INIT_SECMEM, pool_size, 0);
+     xgcry_control ((GCRYCTL_SET_DEBUG_FLAGS, 1u , 0));
+   xgcry_control ((GCRYCTL_ENABLE_QUICK_RANDOM, 0));
+   xgcry_control ((GCRYCTL_INIT_SECMEM, pool_size, 0));
 -  gcry_set_outofcore_handler (outofcore_handler, NULL);
 +  if (!gcry_fips_mode_active ())
 +    gcry_set_outofcore_handler (outofcore_handler, NULL);
-   xgcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
+   xgcry_control ((GCRYCTL_INITIALIZATION_FINISHED, 0));
  
    /* Libgcrypt prints a warning when the first overflow is allocated;
 @@ -184,7 +185,8 @@ main (int argc, char **argv)

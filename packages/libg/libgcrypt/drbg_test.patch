@@ -1,7 +1,7 @@
-Index: libgcrypt-1.7.2/tests/drbg_test.c
+Index: libgcrypt-1.9.0/tests/drbg_test.c
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ libgcrypt-1.7.2/tests/drbg_test.c	2016-08-16 16:04:52.289060124 +0200
+--- /dev/null
++++ libgcrypt-1.9.0/tests/drbg_test.c
 @@ -0,0 +1,1332 @@
 +/* DRBG test for libgcrypt
 +   Copyright (C) 2014 Stephan Mueller <smueller@chronox.de>
@@ -1335,11 +1335,26 @@ Index: libgcrypt-1.7.2/tests/drbg_test.c
 +	return 0;
 +}
 +
-Index: libgcrypt-1.7.2/Makefile.am
+Index: libgcrypt-1.9.0/Makefile.am
 ===================================================================
---- libgcrypt-1.7.2.orig/Makefile.am	2016-08-16 15:57:43.397736723 +0200
-+++ libgcrypt-1.7.2/Makefile.am	2016-08-16 15:57:44.341752563 +0200
-@@ -42,6 +42,14 @@ EXTRA_DIST = autogen.sh autogen.rc READM
+--- libgcrypt-1.9.0.orig/Makefile.am
++++ libgcrypt-1.9.0/Makefile.am
+@@ -39,6 +39,14 @@ else
+ doc =
+ endif
+ 
++bin_PROGRAMS = fipsdrv drbg_test
++
++fipsdrv_SOURCES = tests/fipsdrv.c
++fipsdrv_LDADD = src/libgcrypt.la $(DL_LIBS) $(GPG_ERROR_LIBS)
++
++drbg_test_CPPFLAGS = -I../src -I$(top_srcdir)/src
++drbg_test_SOURCES = src/gcrypt.h tests/drbg_test.c
++drbg_test_LDADD = src/libgcrypt.la $(DL_LIBS) $(GPG_ERROR_LIBS)
+ 
+ DIST_SUBDIRS = m4 compat mpi cipher random src doc tests
+ SUBDIRS =         compat mpi cipher random src $(doc) tests
+@@ -51,6 +59,14 @@ EXTRA_DIST = autogen.sh autogen.rc READM
  
  DISTCLEANFILES =
  
@@ -1352,5 +1367,5 @@ Index: libgcrypt-1.7.2/Makefile.am
 +drbg_test_SOURCES = src/gcrypt.h tests/drbg_test.c
 +drbg_test_LDADD = src/libgcrypt.la $(DL_LIBS) $(GPG_ERROR_LIBS)
  
- # Add all the files listed in "distfiles" files to the distribution,
- # apply version number s to some files and create a VERSION file which
+ # Add all the files listed in "distfiles" files to the distribution
+ dist-hook: gen-ChangeLog

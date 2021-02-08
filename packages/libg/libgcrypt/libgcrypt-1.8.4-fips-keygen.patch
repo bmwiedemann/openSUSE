@@ -1,33 +1,32 @@
-Index: libgcrypt-1.8.2/cipher/dsa.c
+Index: libgcrypt-1.9.1/cipher/dsa.c
 ===================================================================
---- libgcrypt-1.8.2.orig/cipher/dsa.c
-+++ libgcrypt-1.8.2/cipher/dsa.c
-@@ -457,11 +457,22 @@ generate_fips186 (DSA_secret_key *sk, un
+--- libgcrypt-1.9.1.orig/cipher/dsa.c
++++ libgcrypt-1.9.1/cipher/dsa.c
+@@ -457,13 +457,22 @@ generate_fips186 (DSA_secret_key *sk, un
                                               &prime_q, &prime_p,
                                               r_counter,
                                               r_seed, r_seedlen);
 -      else
--        ec = _gcry_generate_fips186_3_prime (nbits, qbits, NULL, 0,
 +      else if (!domain->p || !domain->q)
-+        ec = _gcry_generate_fips186_3_prime (nbits, qbits,
-+                                             initial_seed.seed,
-+                                             initial_seed.seedlen,
+         ec = _gcry_generate_fips186_3_prime (nbits, qbits,
+                                              initial_seed.seed,
+                                              initial_seed.seedlen,
                                               &prime_q, &prime_p,
                                               r_counter,
                                               r_seed, r_seedlen, NULL);
 +      else
-+	{
-+	  /* Domain parameters p and q are given; use them.  */
-+	  prime_p = mpi_copy (domain->p);
-+	  prime_q = mpi_copy (domain->q);
-+	  gcry_assert (mpi_get_nbits (prime_p) == nbits);
-+	  gcry_assert (mpi_get_nbits (prime_q) == qbits);
-+	  ec = 0;
-+	}
++        {
++          /* Domain parameters p and q are given; use them.  */
++          prime_p = mpi_copy (domain->p);
++          prime_q = mpi_copy (domain->q);
++          gcry_assert (mpi_get_nbits (prime_p) == nbits);
++          gcry_assert (mpi_get_nbits (prime_q) == qbits);
++          ec = 0;
++        }
        sexp_release (initial_seed.sexp);
        if (ec)
          goto leave;
-@@ -857,13 +868,12 @@ dsa_generate (const gcry_sexp_t genparms
+@@ -859,13 +868,12 @@ dsa_generate (const gcry_sexp_t genparms
        sexp_release (l1);
        sexp_release (domainsexp);
  
@@ -43,15 +42,15 @@ Index: libgcrypt-1.8.2/cipher/dsa.c
            return GPG_ERR_MISSING_VALUE;
          }
  
-Index: libgcrypt-1.8.2/cipher/rsa.c
+Index: libgcrypt-1.9.1/cipher/rsa.c
 ===================================================================
---- libgcrypt-1.8.2.orig/cipher/rsa.c
-+++ libgcrypt-1.8.2/cipher/rsa.c
+--- libgcrypt-1.9.1.orig/cipher/rsa.c
++++ libgcrypt-1.9.1/cipher/rsa.c
 @@ -389,7 +389,7 @@ generate_fips (RSA_secret_key *sk, unsig
  
    if (nbits < 1024 || (nbits & 0x1FF))
      return GPG_ERR_INV_VALUE;
--  if (fips_mode() && nbits != 2048 && nbits != 3072)
+-  if (_gcry_enforced_fips_mode() && nbits != 2048 && nbits != 3072)
 +  if (fips_mode() && nbits < 2048)
        return GPG_ERR_INV_VALUE;
  

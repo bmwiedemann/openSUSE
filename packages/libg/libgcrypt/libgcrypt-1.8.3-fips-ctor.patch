@@ -1,8 +1,8 @@
-Index: libgcrypt-1.8.4/cipher/md.c
+Index: libgcrypt-1.9.0/cipher/md.c
 ===================================================================
---- libgcrypt-1.8.4.orig/cipher/md.c	2019-03-25 16:58:52.844354398 +0100
-+++ libgcrypt-1.8.4/cipher/md.c	2019-03-25 16:58:53.512358321 +0100
-@@ -411,11 +411,8 @@ md_enable (gcry_md_hd_t hd, int algorith
+--- libgcrypt-1.9.0.orig/cipher/md.c
++++ libgcrypt-1.9.0/cipher/md.c
+@@ -564,11 +564,8 @@ md_enable (gcry_md_hd_t hd, int algorith
  
    if (!err && algorithm == GCRY_MD_MD5 && fips_mode ())
      {
@@ -14,14 +14,15 @@ Index: libgcrypt-1.8.4/cipher/md.c
            err = GPG_ERR_DIGEST_ALGO;
          }
      }
-Index: libgcrypt-1.8.4/src/fips.c
+Index: libgcrypt-1.9.0/src/fips.c
 ===================================================================
---- libgcrypt-1.8.4.orig/src/fips.c	2019-03-25 16:58:52.844354398 +0100
-+++ libgcrypt-1.8.4/src/fips.c	2019-03-25 16:58:53.516358344 +0100
-@@ -91,6 +91,31 @@ static void fips_new_state (enum module_
+--- libgcrypt-1.9.0.orig/src/fips.c
++++ libgcrypt-1.9.0/src/fips.c
+@@ -90,7 +90,31 @@ static void fips_new_state (enum module_
+ #define loxdigit_p(p) !!strchr ("01234567890abcdef", *(p))
  
  
- 
+-
 +/* Initialize the FSM lock - this function may only
 +   be called once and is intended to be run from the library
 +   constructor  */
@@ -46,11 +47,11 @@ Index: libgcrypt-1.8.4/src/fips.c
 +      abort ();
 +    }
 +}
-+
++
  /* Check whether the OS is in FIPS mode and record that in a module
     local variable.  If FORCE is passed as true, fips mode will be
     enabled anyway. Note: This function is not thread-safe and should
-@@ -100,7 +125,6 @@ void
+@@ -100,7 +124,6 @@ void
  _gcry_initialize_fips_mode (int force)
  {
    static int done;
@@ -58,7 +59,7 @@ Index: libgcrypt-1.8.4/src/fips.c
  
    /* Make sure we are not accidentally called twice.  */
    if (done)
-@@ -190,24 +214,6 @@ _gcry_initialize_fips_mode (int force)
+@@ -190,24 +213,6 @@ _gcry_initialize_fips_mode (int force)
        /* Yes, we are in FIPS mode.  */
        FILE *fp;
  
@@ -83,7 +84,7 @@ Index: libgcrypt-1.8.4/src/fips.c
        /* If the FIPS force files exists, is readable and has a number
           != 0 on its first line, we enable the enforced fips mode.  */
        fp = fopen (FIPS_FORCE_FILE, "r");
-@@ -370,16 +376,20 @@ _gcry_fips_is_operational (void)
+@@ -356,16 +361,20 @@ _gcry_fips_is_operational (void)
  {
    int result;
  
@@ -92,7 +93,7 @@ Index: libgcrypt-1.8.4/src/fips.c
 +  if (current_state == STATE_POWERON && !fips_mode ())
 +    /* If we are at this point in POWERON state it means the FIPS
 +       module installation was not completed. (/etc/system-fips
-+      is not present.) */
++       is not present.) */
      result = 1;
    else
      {
@@ -110,7 +111,7 @@ Index: libgcrypt-1.8.4/src/fips.c
               initialization of libgcrypt, but that has traditionally
               not been enforced, we use this on demand self-test
               checking.  Note that Proper applications would do the
-@@ -395,9 +405,11 @@ _gcry_fips_is_operational (void)
+@@ -381,9 +390,11 @@ _gcry_fips_is_operational (void)
            lock_fsm ();
          }
  
@@ -124,7 +125,7 @@ Index: libgcrypt-1.8.4/src/fips.c
    return result;
  }
  
-@@ -722,9 +734,25 @@ _gcry_fips_run_selftests (int extended)
+@@ -729,9 +740,25 @@ _gcry_fips_run_selftests (int extended)
  {
    enum module_states result = STATE_ERROR;
    gcry_err_code_t ec = GPG_ERR_SELFTEST_FAILED;
@@ -152,14 +153,17 @@ Index: libgcrypt-1.8.4/src/fips.c
  
    if (run_cipher_selftests (extended))
      goto leave;
-@@ -743,18 +771,12 @@ _gcry_fips_run_selftests (int extended)
+@@ -753,21 +780,12 @@ _gcry_fips_run_selftests (int extended)
    if (run_pubkey_selftests (extended))
      goto leave;
  
--  /* Now check the integrity of the binary.  We do this this after
--     having checked the HMAC code.  */
--  if (check_binary_integrity ())
--    goto leave;
+-  if (fips_mode ())
+-    {
+-      /* Now check the integrity of the binary.  We do this this after
+-         having checked the HMAC code.  */
+-      if (check_binary_integrity ())
+-        goto leave;
+-    }
 -
    /* All selftests passed.  */
    result = STATE_OPERATIONAL;
@@ -172,7 +176,7 @@ Index: libgcrypt-1.8.4/src/fips.c
  
    return ec;
  }
-@@ -810,6 +832,7 @@ fips_new_state (enum module_states new_s
+@@ -823,6 +841,7 @@ fips_new_state (enum module_states new_s
      {
      case STATE_POWERON:
        if (new_state == STATE_INIT
@@ -180,7 +184,7 @@ Index: libgcrypt-1.8.4/src/fips.c
            || new_state == STATE_ERROR
            || new_state == STATE_FATALERROR)
          ok = 1;
-@@ -824,6 +847,8 @@ fips_new_state (enum module_states new_s
+@@ -837,6 +856,8 @@ fips_new_state (enum module_states new_s
  
      case STATE_SELFTEST:
        if (new_state == STATE_OPERATIONAL
@@ -189,11 +193,11 @@ Index: libgcrypt-1.8.4/src/fips.c
            || new_state == STATE_ERROR
            || new_state == STATE_FATALERROR)
          ok = 1;
-Index: libgcrypt-1.8.4/src/global.c
+Index: libgcrypt-1.9.0/src/global.c
 ===================================================================
---- libgcrypt-1.8.4.orig/src/global.c	2019-03-25 16:58:52.844354398 +0100
-+++ libgcrypt-1.8.4/src/global.c	2019-03-25 16:58:53.516358344 +0100
-@@ -145,6 +145,29 @@ global_init (void)
+--- libgcrypt-1.9.0.orig/src/global.c
++++ libgcrypt-1.9.0/src/global.c
+@@ -141,6 +141,29 @@ global_init (void)
  }
  
  
@@ -223,38 +227,40 @@ Index: libgcrypt-1.8.4/src/global.c
  /* This function is called by the macro fips_is_operational and makes
     sure that the minimal initialization has been done.  This is far
     from a perfect solution and hides problems with an improper
-@@ -675,8 +698,7 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
+@@ -672,9 +695,8 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
  
      case GCRYCTL_FIPS_MODE_P:
        if (fips_mode ()
 -          && !_gcry_is_fips_mode_inactive ()
 -          && !no_secure_memory)
+-	rc = GPG_ERR_GENERAL; /* Used as TRUE value */
 +          && !_gcry_is_fips_mode_inactive ())
- 	rc = GPG_ERR_GENERAL; /* Used as TRUE value */
++        rc = GPG_ERR_GENERAL; /* Used as TRUE value */
        break;
  
-@@ -753,9 +775,9 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
+     case GCRYCTL_FORCE_FIPS_MODE:
+@@ -750,9 +772,9 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
        break;
  
      case GCRYCTL_SET_ENFORCED_FIPS_FLAG:
--      if (!any_init_done)
-+      if (fips_mode ())
+-      if (!_gcry_global_any_init_done)
++      if (fips_mode())
          {
 -          /* Not yet initialized at all.  Set the enforced fips mode flag */
 +          /* We are in FIPS mode, we can set the enforced fips mode flag. */
            _gcry_set_preferred_rng_type (0);
            _gcry_set_enforced_fips_mode ();
          }
-Index: libgcrypt-1.8.4/src/g10lib.h
+Index: libgcrypt-1.9.0/src/g10lib.h
 ===================================================================
---- libgcrypt-1.8.4.orig/src/g10lib.h	2019-03-25 16:58:52.844354398 +0100
-+++ libgcrypt-1.8.4/src/g10lib.h	2019-03-25 16:58:53.516358344 +0100
-@@ -422,6 +422,8 @@ gpg_err_code_t _gcry_sexp_vextract_param
+--- libgcrypt-1.9.0.orig/src/g10lib.h
++++ libgcrypt-1.9.0/src/g10lib.h
+@@ -429,6 +429,8 @@ gpg_err_code_t _gcry_sexp_vextract_param
  
- /*-- fips.c --*/
+ extern int _gcry_no_fips_mode_required;
  
 +void _gcry_initialize_fsm_lock (void);
 +
  void _gcry_initialize_fips_mode (int force);
  
- int _gcry_fips_mode (void);
+ /* This macro returns true if fips mode is enabled.  This is

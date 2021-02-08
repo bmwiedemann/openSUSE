@@ -17,7 +17,7 @@ Index: libgcrypt-1.5.2/src/fips.c
 +
 +  if (getenv("LIBGCRYPT_FORCE_FIPS_MODE") != NULL)
 +    {
-+      gcry_assert (!no_fips_mode_required);
++      gcry_assert (!_gcry_no_fips_mode_required);
 +      goto leave;
 +    }
 +

@@ -723,4 +723,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>843816</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>2bd7a2ff8d3894e60646db400960282c</srcmd5>
+    <version>1.9.1</version>
+    <time>1612781223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868946</requestid>
+  </revision>
 </revisionlist>

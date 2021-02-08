@@ -13,7 +13,7 @@ Index: libgcrypt-1.6.1/tests/fipsdrv.c
  static void
 -run_dsa_sign (const void *data, size_t datalen, const char *keyfile)
 +run_dsa_sign (const void *data, size_t datalen,
-+	      int hashalgo, const char *keyfile)
++              int hashalgo, const char *keyfile)
  
  {
    gpg_error_t err;
@@ -31,7 +31,7 @@ Index: libgcrypt-1.6.1/tests/fipsdrv.c
  
 -  gcry_md_hash_buffer (algo, hash, data, datalen);
 +  if (hashalgo_len < algo_len)
-+  algo_len = hashalgo_len;
++    algo_len = hashalgo_len;
 +
 +  gcry_md_hash_buffer (hashalgo, hash, data, datalen);
    err = gcry_mpi_scan (&tmpmpi, GCRYMPI_FMT_USG, hash,

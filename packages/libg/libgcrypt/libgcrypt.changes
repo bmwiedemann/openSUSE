@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Feb  2 01:06:47 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.9.1
+   * *Fix exploitable bug* in hash functions introduced with
+     1.9.0. [bsc#1181632, CVE-2021-3345]
+   * Return an error if a negative MPI is used with sexp scan
+     functions.
+   * Check for operational FIPS in the random and KDF functions.
+   * Fix compile error on ARMv7 with NEON disabled.
+   * Fix self-test in KDF module.
+   * Improve assembler checks for better LTO support.
+   * Fix 32-bit cross build on x86.
+   * Fix non-NEON ARM assembly implementation for SHA512.
+   * Fix build problems with the cipher_bulk_ops_t typedef.
+   * Fix Ed25519 private key handling for preceding ZEROs.
+   * Fix overflow in modular inverse implementation.
+   * Fix register access for AVX/AVX2 implementations of Blake2.
+   * Add optimized cipher and hash functions for s390x/zSeries.
+   * Use hardware bit counting functionx when available.
+   * Update DSA functions to match FIPS 186-3.
+   * New self-tests for CMACs and KDFs.
+   * Add bulk cipher functions for OFB and GCM modes.
+- Update libgpg-error required version
+
+-------------------------------------------------------------------
+Tue Feb  1 12:03:31 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Use the suffix variable correctly in get_hmac_path()
+- Rebase libgcrypt-fips_selftest_trigger_file.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 12:38:35 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add the global config file /etc/gcrypt/random.conf
+  * This file can be used to globally change parameters of the random
+    generator with the options: only-urandom and disable-jent.
+
+-------------------------------------------------------------------
+Thu Jan 21 15:42:15 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.9.0:
+  New stable branch of Libgcrypt with full API and ABI compatibility
+  to the 1.8 series. Release-info: https://dev.gnupg.org/T4294
+  * New and extended interfaces:
+    - New curves Ed448, X448, and SM2.
+    - New cipher mode EAX.
+    - New cipher algo SM4.
+    - New hash algo SM3.
+    - New hash algo variants SHA512/224 and SHA512/256.
+    - New MAC algos for Blake-2 algorithms, the new SHA512 variants,
+      SM3, SM4 and for a GOST variant.
+    - New convenience function gcry_mpi_get_ui.
+    - gcry_sexp_extract_param understands new format specifiers to
+      directly store to integers and strings.
+    - New function gcry_ecc_mul_point and curve constants for Curve448
+      and Curve25519.
+    - New function gcry_ecc_get_algo_keylen.
+    - New control code GCRYCTL_AUTO_EXPAND_SECMEM to allow growing the
+      secure memory area.
+  * Performance optimizations and bug fixes: See Release-info.
+  * Other features:
+    - Add OIDs from RFC-8410 as aliases for Ed25519 and Curve25519.
+    - Add mitigation against ECC timing attack CVE-2019-13627.
+    - Internal cleanup of the ECC implementation.
+    - Support reading EC point in compressed format for some curves.
+- Rebase patches:
+  * libgcrypt-1.4.1-rijndael_no_strict_aliasing.patch
+  * libgcrypt-1.5.0-LIBGCRYPT_FORCE_FIPS_MODE-env.diff
+  * libgcrypt-1.6.1-use-fipscheck.patch
+  * drbg_test.patch
+  * libgcrypt-fipsdrv-enable-algo-for-dsa-sign.patch
+  * libgcrypt-FIPS-RSA-DSA-ECDSA-hashing-operation.patch
+  * libgcrypt-1.8.4-fips-keygen.patch
+  * libgcrypt-1.8.4-getrandom.patch
+  * libgcrypt-fix-tests-fipsmode.patch
+  * libgcrypt-global_init-constructor.patch
+  * libgcrypt-ecc-ecdsa-no-blinding.patch
+  * libgcrypt-PCT-RSA.patch
+  * libgcrypt-PCT-ECC.patch
+- Remove patches:
+  * libgcrypt-unresolved-dladdr.patch
+  * libgcrypt-CVE-2019-12904-GCM-Prefetch.patch
+  * libgcrypt-CVE-2019-12904-GCM.patch
+  * libgcrypt-CVE-2019-12904-AES.patch
+  * libgcrypt-CMAC-AES-TDES-selftest.patch
+  * libgcrypt-1.6.1-fips-cfgrandom.patch
+  * libgcrypt-fips_rsa_no_enforced_mode.patch
+
+-------------------------------------------------------------------
 Sat Oct 24 10:25:13 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libgcrypt 1.8.7:
