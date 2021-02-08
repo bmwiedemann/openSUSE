@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pweave
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,22 @@ with e.g. Sphinx or rest2web.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/pweave
+%python_clone -a %{buildroot}%{_bindir}/ptangle
+%python_clone -a %{buildroot}%{_bindir}/pypublish
+%python_clone -a %{buildroot}%{_bindir}/pweave-convert
+
+%post
+%python_install_alternative pweave
+%python_install_alternative ptangle
+%python_install_alternative pypublish
+%python_install_alternative pweave-convert
+
+%postun
+%python_uninstall_alternative pweave
+%python_uninstall_alternative ptangle
+%python_uninstall_alternative pypublish
+%python_uninstall_alternative pweave-convert
 
 %check
 # tests.test_readers.test_url - online
@@ -85,10 +101,10 @@ with e.g. Sphinx or rest2web.
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
-%{_bindir}/pweave
-%{_bindir}/ptangle
-%{_bindir}/pypublish
-%{_bindir}/pweave-convert
+%python_alternative %{_bindir}/pweave
+%python_alternative %{_bindir}/ptangle
+%python_alternative %{_bindir}/pypublish
+%python_alternative %{_bindir}/pweave-convert
 %{python_sitelib}/*
 
 %changelog

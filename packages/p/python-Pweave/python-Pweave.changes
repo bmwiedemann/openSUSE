@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:42:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update-alternatives for multi-python3 builds 
+
+-------------------------------------------------------------------
 Mon Jun  8 07:55:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Adjust the tests to run with pytest and not nose
