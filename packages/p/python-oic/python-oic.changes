@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:21:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use update-alternatives for multi-python3-flavor build 
+
+-------------------------------------------------------------------
 Thu Mar 26 13:34:44 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.2.0

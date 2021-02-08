@@ -1,7 +1,7 @@
 #
 # spec file for package python-oic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            https://github.com/OpenIDC/pyoidc
 Source:         https://github.com/OpenIDC/pyoidc/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module future}
@@ -44,10 +45,10 @@ BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dbm
 Requires:       python-Beaker
 Requires:       python-Mako
 Requires:       python-cryptography
+Requires:       python-dbm
 Requires:       python-defusedxml
 Requires:       python-future
 Requires:       python-pycryptodomex
@@ -58,9 +59,6 @@ Requires:       python-typing
 Requires:       python-typing_extensions
 Suggests:       python-ldap
 BuildArch:      noarch
-%ifpython3
-Requires:       python3-dbm
-%endif
 %python_subpackages
 
 %description
@@ -78,6 +76,13 @@ find src -type f -exec sed -i '1 {/#!/d}' {} +
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/oic-client-management
+
+%post
+%python_install_alternative oic-client-management
+
+%postun
+%python_uninstall_alternative oic-client-management
 
 %check
 export PYTHONPATH=src
@@ -87,6 +92,6 @@ export PYTHONPATH=src
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/*
-%{_bindir}/oic-client-management
+%python_alternative %{_bindir}/oic-client-management
 
 %changelog
