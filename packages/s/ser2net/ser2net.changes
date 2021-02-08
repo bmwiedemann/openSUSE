@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb  6 21:28:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.3.3
+  * Some minor bug fixes, including a long standing issue with UDP
+    that I finally tracked down. Nothing major, but upgrading is
+    recommended.
+- Update to version 4.3.1
+  * Lots of little cleanups and bug fixes.
+
+-------------------------------------------------------------------
 Thu Oct 29 19:37:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.3.0
