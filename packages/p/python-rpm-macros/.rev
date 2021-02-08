@@ -400,4 +400,21 @@ prerequisite for new python submission</comment>
   * remove python2 not found error</comment>
     <requestid>868221</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>965eb9d5ec2ab38237f02645d003c81a</srcmd5>
+    <version>20210204.937b8d8</version>
+    <time>1612781229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210204.937b8d8:
+  * fixup: last PR was missing a commit for pyproject_wheel syntax errors
+- Update to version 20210204.90721de:
+  * mv -n does not work in SLE12
+  * Update PEP517/518 macro documentation in README
+  * Let pyproject_install search for more locations for wheels or specify explicitely
+  * Read .rpmmacros (= prjconf Macro: definitions) for default buildset
+- Update to version 20210203.0d8a91e:
+  * don't define skip_python2 by default
+</comment>
+    <requestid>869588</requestid>
+  </revision>
 </revisionlist>

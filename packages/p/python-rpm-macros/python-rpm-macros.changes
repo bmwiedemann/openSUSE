@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 04 22:27:24 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20210204.937b8d8:
+  * fixup: last PR was missing a commit for pyproject_wheel syntax errors
+
+-------------------------------------------------------------------
+Thu Feb 04 14:39:22 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20210204.90721de:
+  * mv -n does not work in SLE12
+  * Update PEP517/518 macro documentation in README
+  * Let pyproject_install search for more locations for wheels or specify explicitely
+  * Read .rpmmacros (= prjconf Macro: definitions) for default buildset
+
+-------------------------------------------------------------------
+Wed Feb 03 16:40:14 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20210203.0d8a91e:
+  * don't define skip_python2 by default
+
+-------------------------------------------------------------------
 Sun Jan 31 20:38:20 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 20210131.ec7577b:
