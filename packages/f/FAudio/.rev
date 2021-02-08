@@ -78,4 +78,13 @@
   Micro-optimize byte swapping for XACT file parsing</comment>
     <requestid>860082</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d54a2bc7140f5dc3a14792570304eea5</srcmd5>
+    <version>21.02</version>
+    <time>1612781268</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.02:
+  * XACT: All notification types with the PERSIST flag are now recorded (forwarded request 870133 from elimat)</comment>
+    <requestid>870191</requestid>
+  </revision>
 </revisionlist>
