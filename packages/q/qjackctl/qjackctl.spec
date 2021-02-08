@@ -18,7 +18,7 @@
 
 
 Name:           qjackctl
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later

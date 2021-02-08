@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb  8 06:36:55 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.1
+  - Graph Disconnect now applies to all selected ports and 
+    connections.
+  - Main window is now freely resizable, while keeping all the
+    buttons stretched to the same aspect ratio.
+  - Warning to confirm application close is now back in business
+    when functioning as client only (Active).
+  - Graph items are automatically raised when created or
+    high-lighted (incremental z-value).
+  - Add a little but straight horizontal line-gap to the Graph
+    connections.
+  - Customize the Graph zoom slider widget to reset upon mouse
+    middle-button click.
+  - Add Clear preset button to Setup dialog.
+  - Use default values for most preset parameters: sample rate,
+    frames/period (aka. buffer-size), periods/buffer, 
+    realtime priority, port maximum, client timeout, word length,
+    wait time, channel maximum.
+  - Early preparations for the New Year develop(ment) cycle.
+
+-------------------------------------------------------------------
 Thu Jan 14 16:01:47 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.9.0
