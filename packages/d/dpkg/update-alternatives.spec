@@ -1,7 +1,7 @@
 #
 # spec file for package update-alternatives
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://ftp.de.debian.org/debian/pool/main/d/dpkg/
 Source0:        http://ftp.de.debian.org/debian/pool/main/d/dpkg/dpkg_%{version}.tar.xz
 Source3:        sensible-editor
 Patch0:         update-alternatives-suse.patch
+Patch1:         update-alternatives-slavetomaster.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -45,8 +46,7 @@ make a good choice of editor to invoke if the user has not specified a
 particular preference.
 
 %prep
-%setup -q -n dpkg-%{version}
-%patch0 -p1
+%autosetup -p1 -n dpkg-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 14 09:33:00 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- don't remove slave links that turned into master. Happens on usrmerge
+  (boo#1180939, update-alternatives-slavetomaster.patch)
+
+-------------------------------------------------------------------
 Tue Apr  2 20:04:25 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - Remove useless uses of rpm.expand

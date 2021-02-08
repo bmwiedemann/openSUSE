@@ -1,0 +1,16 @@
+Index: dpkg-1.19.0.5/utils/update-alternatives.c
+===================================================================
+--- dpkg-1.19.0.5.orig/utils/update-alternatives.c
++++ dpkg-1.19.0.5/utils/update-alternatives.c
+@@ -1796,7 +1796,10 @@ alternative_prepare_install(struct alter
+ 		/* Drop unused slave. */
+ 		fn = xasprintf("%s/%s", altdir, sl->name);
+ 		if (alternative_path_can_remove(sl->link))
+-			alternative_add_commit_op(a, OPCODE_RM, sl->link, NULL);
++			if (strcmp(sl->link, a->master_link))
++				alternative_add_commit_op(a, OPCODE_RM, sl->link, NULL);
++			else
++				warning("not removing %s, now master", a->master_link);
+ 		else
+ 			warning(_("not removing %s since it's not a symlink"),
+ 			        sl->link);
