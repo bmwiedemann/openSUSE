@@ -1,7 +1,7 @@
 #
 # spec file for package ed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           ed
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        A line-oriented text editor
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Text/Editors
-URL:            http://www.gnu.org/software/ed/
-# This is just recompressed below in order to avoid pulling lzip to ring0
+URL:            https://www.gnu.org/software/ed/
+# This is just recompressed from  http://ftp.gnu.org/gnu/ed/ed-%{version}.tar.lz
+# in order to avoid pulling lzip to ring0
 Source0:        ed-%{version}.tar.xz
-#Source0:        http://ftp.gnu.org/gnu/ed/ed-%{version}.tar.lz
-#Source1:        https://ftp.gnu.org/gnu/ed/ed-%{version}.tar.lz.sig
-#BuildRequires:  lzip
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
@@ -45,7 +43,7 @@ superseded by full-screen editors such as GNU Emacs or GNU Moe.
 
 %build
 %configure
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 %make_install
@@ -55,7 +53,7 @@ ln -s %{_bindir}/ed %{buildroot}/bin/ed
 %endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post
 %install_info --entry="* ed: (ed). Line-oriented text editor" --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 25 10:34:49 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.17 
+  * The commands 'q' and 'Q' now work in a global command.
+  * The new option '-E, --extended-regexp' has been added. It tells
+    ed to use extended regular expressions instead of the basic
+    regular expressions mandated by POSIX
+  * Print the file name in case of read or write error
+
+-------------------------------------------------------------------
 Fri Oct 16 09:46:50 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
