@@ -88,4 +88,13 @@
     <comment>Add zenity installation recommendation for UI support (forwarded request 864122 from okurz)</comment>
     <requestid>864125</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>45cb962f92da49a0ea8355cf748f8165</srcmd5>
+    <version>20210206</version>
+    <time>1612781246</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20210206
+  - lots of fixes</comment>
+    <requestid>870059</requestid>
+  </revision>
 </revisionlist>
