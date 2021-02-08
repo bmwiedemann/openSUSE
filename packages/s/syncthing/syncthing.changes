@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  3 19:37:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.1:
+  * This release adds configuration options for min/max connections (see
+    https://docs.syncthing.net/advanced/option-connection-limits.html) and
+    moves the storage of pending devices/folders from the config to the
+    database (see https://docs.syncthing.net/dev/rest.html#cluster-endpoints).
+  * Bugfixes
+  * Official builds of v1.13.0 come with the Tech Ui, which is impossible to
+    switch back from
+
+-------------------------------------------------------------------
 Sun Jan 17 23:55:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:
