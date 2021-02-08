@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:35:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- filelist fix for multi-python3 
+
+-------------------------------------------------------------------
 Mon May 25 06:50:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

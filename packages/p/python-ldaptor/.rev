@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>808687</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e0b8315328bf5336f5f790567b0c29ae</srcmd5>
+    <version>19.1.0</version>
+    <time>1612781240</time>
+    <user>dimstar_suse</user>
+    <comment>- filelist fix for multi-python3</comment>
+    <requestid>870228</requestid>
+  </revision>
 </revisionlist>

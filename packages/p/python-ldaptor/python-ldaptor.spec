@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldaptor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,6 +82,19 @@ done
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
-%python_alternative %{_bindir}/ldaptor-*
+%python_alternative %{_bindir}/ldaptor-fetchschema
+%python_alternative %{_bindir}/ldaptor-find-server
+%python_alternative %{_bindir}/ldaptor-getfreenumber
+%python_alternative %{_bindir}/ldaptor-ldap2dhcpconf
+%python_alternative %{_bindir}/ldaptor-ldap2dnszones
+%python_alternative %{_bindir}/ldaptor-ldap2maradns
+%python_alternative %{_bindir}/ldaptor-ldap2passwd
+%python_alternative %{_bindir}/ldaptor-ldap2pdns
+%python_alternative %{_bindir}/ldaptor-ldifdiff
+%python_alternative %{_bindir}/ldaptor-ldifpatch
+%python_alternative %{_bindir}/ldaptor-namingcontexts
+%python_alternative %{_bindir}/ldaptor-passwd
+%python_alternative %{_bindir}/ldaptor-rename
+%python_alternative %{_bindir}/ldaptor-search
 
 %changelog
