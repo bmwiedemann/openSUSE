@@ -13814,7 +13814,6 @@ unsorted:
   - libttsmimic0 
   - libtty-devel 
   - libtty1 
-  - libtukit-devel 
   - libtun6-0 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
@@ -20764,7 +20763,6 @@ unsorted:
   - python3-django-braces 
   - python3-django-cacheops 
   - python3-django-haystack 
-  - python3-django-mailman3 
   - python3-django-push-notifications 
   - python3-django-q 
   - python3-django-redis 
@@ -20878,7 +20876,6 @@ unsorted:
   - python3-lash 
   - python3-lasso 
   - python3-ldappool 
-  - python3-ldaptor 
   - python3-ldas-tools-al-swig 
   - python3-ldb-32bit: [x86_64] 
   - python3-ldb-devel 
@@ -20973,7 +20970,6 @@ unsorted:
   - python3-mox3 
   - python3-mraa 
   - python3-murano-pkg-check 
-  - python3-mutmut 
   - python3-napalm-ansible 
   - python3-napalm-asa 
   - python3-napalm-exos 
@@ -21069,7 +21065,6 @@ unsorted:
   - python3-pyside2-devel 
   - python3-pyside2-examples 
   - python3-pysol-cards 
-  - python3-pysvn 
   - python3-pytest-cookies 
   - python3-pytest-listener 
   - python3-pytest-pyramid-server 
@@ -21277,6 +21272,7 @@ unsorted:
   - python36-Protego 
   - python36-PsyLab 
   - python36-PubChemPy 
+  - python36-Pweave 
   - python36-PyAudio 
   - python36-PyAutoGUI 
   - python36-PyBindGen 
@@ -22618,6 +22614,7 @@ unsorted:
   - python36-ldap 
   - python36-ldap3 
   - python36-ldapdomaindump 
+  - python36-ldaptor 
   - python36-leather 
   - python36-lesscpy 
   - python36-leveldb 
@@ -22844,6 +22841,7 @@ unsorted:
   - python36-odfpy 
   - python36-odorik 
   - python36-ogr 
+  - python36-oic 
   - python36-oiffile 
   - python36-olefile 
   - python36-onionshare 
@@ -23232,6 +23230,7 @@ unsorted:
   - python36-pysrt 
   - python36-pyssim 
   - python36-pystache 
+  - python36-pysvn 
   - python36-pytaglib 
   - python36-pyte 
   - python36-pytesseract 
@@ -24157,6 +24156,7 @@ unsorted:
   - python38-Protego 
   - python38-PsyLab 
   - python38-PubChemPy 
+  - python38-Pweave 
   - python38-PyAudio 
   - python38-PyAutoGUI 
   - python38-PyBindGen 
@@ -24943,6 +24943,7 @@ unsorted:
   - python38-django-jsonfield 
   - python38-django-localflavor 
   - python38-django-mailer 
+  - python38-django-mailman3 
   - python38-django-minio-storage 
   - python38-django-model-utils 
   - python38-django-money 
@@ -25437,6 +25438,7 @@ unsorted:
   - python38-ldap: [i586] 
   - python38-ldap3 
   - python38-ldapdomaindump 
+  - python38-ldaptor 
   - python38-leather 
   - python38-lesscpy 
   - python38-leveldb 
@@ -25563,6 +25565,7 @@ unsorted:
   - python38-musicbrainzngs 
   - python38-mutagen 
   - python38-mutatorMath 
+  - python38-mutmut 
   - python38-mutt-ics 
   - python38-mygpoclient 
   - python38-mypy 
@@ -25650,6 +25653,7 @@ unsorted:
   - python38-odfpy 
   - python38-odorik 
   - python38-ogr 
+  - python38-oic 
   - python38-oiffile 
   - python38-onionshare 
   - python38-opcodes 
@@ -26012,6 +26016,7 @@ unsorted:
   - python38-pysrt 
   - python38-pyssim 
   - python38-pystache 
+  - python38-pysvn 
   - python38-pytaglib 
   - python38-pyte 
   - python38-pytesseract 

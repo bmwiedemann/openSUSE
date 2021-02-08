@@ -120,7 +120,6 @@
       <repopackage name="dosfstools" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-ima" arch="x86_64"/>
-      <repopackage name="dracut-transactional-update" arch="x86_64"/>
       <repopackage name="e2fsprogs" arch="x86_64"/>
       <repopackage name="ebtables" arch="x86_64"/>
       <repopackage name="efibootmgr" arch="x86_64"/>
@@ -421,7 +420,6 @@
       <repopackage name="libtss2-mu0" arch="x86_64"/>
       <repopackage name="libtss2-rc0" arch="x86_64"/>
       <repopackage name="libtss2-sys1" arch="x86_64"/>
-      <repopackage name="libtukit0" arch="x86_64"/>
       <repopackage name="libudev1"/>
       <repopackage name="libunistring2"/>
       <repopackage name="libunwind" arch="x86_64"/>
@@ -640,7 +638,6 @@
       <repopackage name="toolbox" arch="x86_64"/>
       <repopackage name="transactional-update" arch="x86_64"/>
       <repopackage name="transactional-update-zypp-config" arch="x86_64"/>
-      <repopackage name="tukit" arch="x86_64"/>
       <repopackage name="ucode-amd" arch="x86_64"/>
       <repopackage name="ucode-intel" arch="x86_64"/>
       <repopackage name="udev"/>

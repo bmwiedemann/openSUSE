@@ -419,7 +419,6 @@
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
       <repopackage name="dracut"/>
-      <repopackage name="dracut-transactional-update"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
@@ -2901,7 +2900,6 @@
       <repopackage name="libtss2-esys0"/>
       <repopackage name="libtss2-mu0"/>
       <repopackage name="libtss2-sys1"/>
-      <repopackage name="libtukit0"/>
       <repopackage name="libtumbler-1-0"/>
       <repopackage name="libturbojpeg0"/>
       <repopackage name="libtwolame0"/>
@@ -5076,7 +5074,6 @@
       <repopackage name="tre-lang"/>
       <repopackage name="tree"/>
       <repopackage name="trousers"/>
-      <repopackage name="tukit"/>
       <repopackage name="tumbler"/>
       <repopackage name="tumbler-folder-thumbnailer"/>
       <repopackage name="tumbler-lang"/>
