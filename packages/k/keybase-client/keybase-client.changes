@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  7 10:50:36 UTC 2021 - Matthias Bach <marix@marix.org> - 5.6.1
+
+- Upgrade to version 5.6.1
+  * Various bug fixes, security enhancements
+
+-------------------------------------------------------------------
 Thu Dec 24 12:40:23 UTC 2020 - Matthias Bach <marix@marix.org>
 
 - Make package conform to spec-cleaner
