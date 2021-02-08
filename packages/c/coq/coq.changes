@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Feb  7 22:48:00 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.13.0.
+  * Introduction of primitive persistent arrays in the core
+    language, implemented using imperative persistent arrays.
+  * Introduction of definitional proof irrelevance for the equality
+    type defined in the SProp sort.
+  * Cumulative record and inductive type declarations can now
+    specify the variance of their universes.
+  * Various bugfixes and uniformization of behavior with respect to
+    the use of implicit arguments and the handling of existential
+    variables in declarations, unification and tactics.
+  * New warning for unused variables in catch-all match branches
+    that match multiple distinct patterns.
+  * New warning for Hint commands outside sections without a
+    locality attribute, whose goal is to eventually remove the
+    fragile default behavior of importing hints only when using
+    Require. The recommended fix is to declare hints as export,
+    instead of the current default global, meaning that they are
+    imported through Require Import only, not Require.
+  * General support for boolean attributes.
+  * Many improvements to the handling of notations, including
+    number notations, recursive notations and notations with
+    bindings. A new algorithm chooses the most precise notation
+    available to print an expression, which might introduce changes
+    in printing behavior.
+  * Tactic improvements in lia and its zify preprocessing step,
+    now supporting reasoning on boolean operators such as Z.leb and
+    supporting primitive integers Int63.
+  * Typing flags can now be specified per-constant / inductive.
+  * Improvements to the reference manual including updated syntax
+    descriptions that match Coq's grammar in several chapters, and
+    splitting parts of the tactics chapter to independent sections.
+- Add build flag to turn off building of the IDE.
+
+-------------------------------------------------------------------
 Sun Dec 13 15:55:58 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.12.2. Fixes two impacting 8.12 regressions:

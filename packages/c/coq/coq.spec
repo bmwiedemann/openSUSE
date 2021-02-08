@@ -1,7 +1,7 @@
 #
 # spec file for package coq
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-2018 Peter Trommler, peter.trommler at ohm-hochschule.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,10 @@
 #
 
 
+%bcond_without ide
+
 Name:           coq
-Version:        8.12.2
+Version:        8.13.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -29,25 +31,18 @@ Source1:        coq.desktop
 Source2:        coq.xml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  desktop-file-utils
-# Required for standard coq:
 BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.05.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
-# TODO: Build docs when antlr4-python3-runtime becomes available.
-#BuildRequires:  python3-Sphinx
-#BuildRequires:  python3-pexpect
-#BuildRequires:  antlr4-python3-runtime
-#BuildRequires:  python3-beautifulsoup4
-# Required for coq-ide:
-BuildRequires:  update-desktop-files
 BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(zarith)
+%if %{with ide}
+BuildRequires:  update-desktop-files
 BuildRequires:  ocamlfind(lablgtk3)
-BuildRequires:  ocamlfind(num)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
-
-%global __requires_exclude ocaml\\\((Interface|Sos_types|GtkSourceView2_types)\\\)
+%endif
 
 %description
 Proof assistant which allows to handle calculus assertions, check mechanically
@@ -76,9 +71,13 @@ This package contains development files for Coq.
 
 %prep
 %setup -q
+# META for ocamlfind doesn't contain a version, so configure.ml fails. We patch that.
+sed -i 's/v, _ = tryrun camlexec.find \["query"; "-format"; "%v"; "lablgtk3"\]/v = "%{pkg_version ocamlfind(lablgtk3)}"/' \
+    configure.ml
 
 %build
 export CFLAGS='%{optflags}'
+# TODO: Add -with-doc yes
 ./configure                \
    -bindir %{_bindir}      \
    -libdir %{_libdir}/coq  \
@@ -87,6 +86,11 @@ export CFLAGS='%{optflags}'
    -docdir %{_docdir}/%{name} \
    -configdir %{_sysconfdir}/xdg/%{name} \
    -coqdocdir %{_datadir}/texmf/tex/latex/misc \
+%if %{with ide}
+   -coqide opt \
+%else
+   -coqide no \
+%endif
    -native-compiler yes \
    -natdynlink yes \
    -browser "xdg-open %s"
@@ -94,16 +98,23 @@ export CFLAGS='%{optflags}'
 make %{?_smp_mflags} world
 
 %install
+%if %{with ide}
 # Fixup dependencies before we install. Some are apparently not detected.
 sed -i 's#^ide/ide_MLLIB_DEPENDENCIES:=.*$#& ide/configwin_types ide/protocol/richpp#' \
     .mllibfiles.d
+%endif
 
 make COQINSTALLPREFIX=%{buildroot} install
 
+%if %{with ide}
 %suse_update_desktop_file -i %{SOURCE1}
 install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/coq.desktop
 install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/mime/packages/coq.xml
-install -D -m 644 ide/coq.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/coq.png
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
+ln -s %{_datadir}/coq/coq.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/coq.png
+%else
+rm %{buildroot}%{_bindir}/coqidetop{,.opt} %{buildroot}%{_mandir}/man1/coqide.1
+%endif
 
 # Sometimes we get identical x and x.opt files, replace by symlink x -> x.opt.
 for bin in %{buildroot}%{_bindir}/*.opt
@@ -151,7 +162,6 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 %files -f runtime.list
 %license LICENSE CREDITS
 %doc README.md
-%{_docdir}/%{name}/FAQ-CoqIde
 
 %{_bindir}/coq-tex
 %{_bindir}/coq_makefile
@@ -190,21 +200,24 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 %{_mandir}/man1/coqtop.opt.1%{ext_man}
 %{_mandir}/man1/coqwc.1%{ext_man}
 
-%{_datadir}/%{name}
 %dir %{_datadir}/texmf
 %dir %{_datadir}/texmf/tex
 %dir %{_datadir}/texmf/tex/latex
 %dir %{_datadir}/texmf/tex/latex/misc
 %{_datadir}/texmf/tex/latex/misc/coqdoc.sty
 
+%if %{with ide}
 %files ide
 %{_bindir}/coqide
 %{_bindir}/coqidetop
 %{_bindir}/coqidetop.opt
 %{_mandir}/man1/coqide.1%{ext_man}
+%{_datadir}/%{name}
 %{_datadir}/applications/coq.desktop
 %{_datadir}/icons/hicolor/256x256/apps/coq.png
 %{_datadir}/mime/packages/coq.xml
+%{_docdir}/%{name}/FAQ-CoqIde
+%endif
 
 %files devel -f devel.list
 %{_libdir}/coq/tools/CoqMakefile.in
