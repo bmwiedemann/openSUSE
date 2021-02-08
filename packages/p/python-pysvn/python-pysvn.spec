@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysvn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://pysvn.sourceforge.io/
 Source0:        https://sourceforge.net/projects/pysvn/files/pysvn/V%{version}/pysvn-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycxx-devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -66,14 +67,12 @@ pushd Source
 %python_exec setup.py configure --enable-debug --verbose --fixed-module-name --norpath
 
 sed -i -e 's@-Wall -fPIC -fexceptions -frtti@%{optflags} -fPIC -frtti@' Makefile
-make %{?_smp_mflags}
+%make_build
 
 %install
-install -d -m 755 %{buildroot}%{python_sitearch}/%{packagename}
-install -p -m 644 Source/%{packagename}/__init__.py %{buildroot}%{python_sitearch}/%{packagename}
-install -p -m 755 Source/%{packagename}/_pysvn.so %{buildroot}%{python_sitearch}/%{packagename}
+%python_install
 
-%fdupes %{buildroot}%{python_sitearch}/%{packagename}/__pycache__
+%fdupes %{buildroot}%{python_sitearch}/%{packagename}*
 
 %check
 pushd Tests
@@ -81,13 +80,12 @@ pushd Tests
 # C.UTF-8 does not work. Use en_US.utf-8.
 # The test have not been test in parallel, use one core for now.
 export LC_ALL=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHON=$python make -j1
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} make -j1
 popd
 
 %files %{python_files}
 %license LICENSE.txt
 %doc Docs Examples
-%dir %{python_sitearch}/%{packagename}
-%{python_sitearch}/%{packagename}/*
+%{python_sitearch}/pysvn*
 
 %changelog

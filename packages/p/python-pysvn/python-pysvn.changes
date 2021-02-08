@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  6 06:07:30 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Fix build fail on TW.
+
+-------------------------------------------------------------------
 Tue Dec 15 15:24:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Replace %__python3 with %python_exec
