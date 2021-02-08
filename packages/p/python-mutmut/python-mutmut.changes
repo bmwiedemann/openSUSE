@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:29:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (hammett requires python 3.7 or later) 
+
+-------------------------------------------------------------------
 Mon May 25 06:50:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
