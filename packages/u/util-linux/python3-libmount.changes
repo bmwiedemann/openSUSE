@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Feb  4 02:17:39 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Merge package with SLE15 SP3 and openSUSE Leap 15.3:
+  Obsoletes upstreamed patches:
+- libblkid: Do not trigger CDROM autoclose (v2.35, bsc#1084671,
+  util-linux-libblkid-cdrom-autoclose-1.patch,
+  util-linux-libblkid-cdrom-autoclose-2.patch,
+  util-linux-libblkid-cdrom-autoclose-3.patch).
+- lscpu: avoid segfault on PowerPC systems with valid hardware
+  configurations
+  (v2.36.1, bsc#1175623, bsc#1178554, bsc#1178825,
+  lscpu-avoid-segfault-on-PowerPC-systems-with-valid-h.patch)
+- Fix for SG#57988, bsc#1174942 (v2.36):
+  libmount-fix-mount-a-EBUSY-for-cifs.patch: Fix warning on mounts
+  to CIFS with mount –a.
+- blockdev: Do not fail --report on kpartx-style partitions on
+  multipath (v2.36,
+  bsc#1168235, util-linux-blockdev-report-dm.patch).
+- nologin: Add support for -c to prevent error from su -c
+  (v2.35, bsc#1151708, util-linux-nologin-su-c.patch).
+- Add libmount-Avoid-triggering-autofs-in-lookup_umount_fs.patch:
+  Avoid triggering autofs in lookup_umount_fs_by_statfs
+  (v2.36 boo#1168389)
+- mount: fall back to device node name if /dev/mapper link not found
+  (v2.34, bsc#1149911)
+  * Add patch: util-linux-canonicalize-coverity-scan.patch
+- De-duplicate fstrim -A properly (v2.34, bsc#1127701,
+  util-linux-fstrim-A-1.patch, util-linux-fstrim-A-3.patch,
+  util-linux-fstrim-A-4.patch).
+- Do not trim read-only volumes
+  (v2.34, boo#1106214, util-linux-fstrim-A-2.patch,
+  util-linux-fstrim-A-4.patch).
+- libmount: To prevent incorrect behavior, recognize more pseudofs
+  and netfs (v2.34, bsc#1122417,
+  util-linux-libmount-pseudofs.patch).
+- agetty: Return previous response of agetty for special characters
+  (v2.34, bsc#1085196, bsc#1125886,
+  util-linux-agetty-smart-reload-13.patch,
+  util-linux-agetty-smart-reload-14.patch).
+- Fix problems in reading of login.defs values (v2.34, bsc#1121197,
+  util-linux-login_defs-priority1.patch,
+  util-linux-login_defs-priority2.patch,
+  util-linux-login_defs-SYS_UID.patch).
+
+-------------------------------------------------------------------
+Thu Feb  4 01:24:55 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Build with libudev support to support non-root users
+  (boo#1169006).
+- Move findmnt and lsblk to util-linux-systemd, as they use libudev
+  (bsc#1169006#c10).
+
+-------------------------------------------------------------------
 Fri Jan 29 02:18:58 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Do not require libeconf-devel on products without /usr/etc.

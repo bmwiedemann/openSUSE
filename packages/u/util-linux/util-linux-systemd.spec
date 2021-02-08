@@ -105,6 +105,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  librtas-devel
 %endif
 %if %build_util_linux_systemd
+BuildRequires:  libudev-devel
 BuildRequires:  socat
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
@@ -201,8 +202,8 @@ Recommends:     which
 Supplements:    packageand(util-linux:systemd)
 # Split-provides for upgrade from SLE < 12 and openSUSE <= 13.1
 Provides:       util-linux:/bin/logger
-# Service files are being migrated during the update from SLE < 12 and openSUSE <= 13.1
-Conflicts:      util-linux < 2.25
+# findmnt and lsblk are being migrated during the update from SLE < 12SP3 and openSUSE < Leap 15.3
+Conflicts:      util-linux < 2.36.1
 %systemd_requires
 %else
 # ERROR: No build_* variables are set.
@@ -423,8 +424,8 @@ bash ./util-linux-login_defs-check.sh
 # sources to prevent building of systemd-less versions.
 #
 # WARNING: Never edit following line without doing all suggested in the echo below!
-UTIL_LINUX_KNOWN_SYSTEMD_DEPS='./login-utils/lslogins.c ./misc-utils/logger.c ./misc-utils/uuidd.c '
-UTIL_LINUX_FOUND_SYSTEMD_DEPS=$(grep -rl 'HAVE_LIBSYSTEMD' . | fgrep '.c' | LC_ALL=C sort | tr '\n' ' ')
+UTIL_LINUX_KNOWN_SYSTEMD_DEPS='./login-utils/lslogins.c ./misc-utils/findmnt.c ./misc-utils/logger.c ./misc-utils/lsblk-properties.c ./misc-utils/uuidd.c '
+UTIL_LINUX_FOUND_SYSTEMD_DEPS=$(grep -rl 'HAVE_LIB\(SYSTEMD\|UDEV\)' . | fgrep '.c' | LC_ALL=C sort | tr '\n' ' ')
 if test "$UTIL_LINUX_KNOWN_SYSTEMD_DEPS" != "$UTIL_LINUX_FOUND_SYSTEMD_DEPS" ; then
 	echo "List of utilities depending on systemd have changed.
 Please check the new util-linux-systemd file list, file removal and update of Conflicts for safe update!
@@ -434,6 +435,13 @@ UTIL_LINUX_KNOWN_SYSTEMD_DEPS='$UTIL_LINUX_FOUND_SYSTEMD_DEPS'"
 	exit 1
 fi
 #END SYSTEMD SAFETY CHECK
+#BEGIN FIRST STAGE MODIFICATIONS
+%if ! %build_util_linux_systemd
+sed -i 's/if BUILD_FINDMNT/if FALSE/
+	s/if BUILD_LSBLK/if FALSE/
+	' misc-utils/Makemodule.am
+%endif
+#END FIRST STAGE MODIFICATIONS
 %else
 #BEGIN SECOND STAGE MODIFICATIONS
 # delete all make modules except wanted ones
@@ -444,7 +452,7 @@ sed -i '/^include/{
 %if %build_util_linux_systemd
 # for lslogins
 		/login-utils/b 1
-# for logger and uuidd
+# for findmnt, logger, lsblk and uuidd
 		/misc-utils/b 1
 # for fstrim.service and fstrim.timer
 		/sys-utils/b 1
@@ -474,8 +482,10 @@ sed -i '/dist_man_MANS/d' lib/Makemodule.am
 # disable all make modules except wanted ones
 sed -i '/^if BUILD_/{
 %if %build_util_linux_systemd
-		/LSLOGINS/b 1
+		/FINDMNT/b 1
 		/LOGGER/b 1
+		/LSBLK/b 1
+		/LSLOGINS/b 1
 		/UUIDD/b 1
 		/BASH_COMPLETION/b 1
 %endif
@@ -646,8 +656,6 @@ ln -s %{_bindir}/dmesg %{buildroot}/bin
 ln -s %{_bindir}/more %{buildroot}/bin
 ln -s %{_bindir}/mount %{buildroot}/bin
 ln -s %{_bindir}/umount %{buildroot}/bin
-ln -s %{_bindir}/findmnt %{buildroot}/bin
-ln -s %{_bindir}/lsblk %{buildroot}/bin
 ln -s %{_sbindir}/agetty %{buildroot}/sbin
 ln -s %{_sbindir}/blockdev %{buildroot}/sbin
 ln -s %{_sbindir}/cfdisk %{buildroot}/sbin
@@ -742,7 +750,9 @@ mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_localstatedir}/lib/libuuid
 mkdir -p %{buildroot}/run/uuidd
 %if !0%{?usrmerged}
+ln -s %{_bindir}/findmnt %{buildroot}/bin
 ln -s %{_bindir}/logger %{buildroot}/bin
+ln -s %{_bindir}/lsblk %{buildroot}/bin
 %endif
 # clock.txt from uuidd is a ghost file
 touch %{buildroot}%{_localstatedir}/lib/libuuid/clock.txt
@@ -751,6 +761,9 @@ ln -sf /sbin/service %{buildroot}/usr/sbin/rcfstrim
 %if !%build_util_linux
 %make_install
 %endif
+%else
+rm -f %{buildroot}%{_mandir}/man8/findmnt.8*
+rm -f %{buildroot}%{_mandir}/man8/lsblk.8*
 %endif
 # link duplicate manpages and python bindings
 %fdupes -s %{buildroot}%{_prefix}
@@ -929,9 +942,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 /bin/more
 /bin/mount
 /bin/umount
-/bin/findmnt
 /bin/login
-/bin/lsblk
 /sbin/agetty
 /sbin/blockdev
 /sbin/ctrlaltdel
@@ -972,7 +983,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/dmesg
 %{_bindir}/fallocate
 %{_bindir}/fincore
-%{_bindir}/findmnt
 %{_bindir}/flock
 %{_bindir}/getopt
 %{_bindir}/hardlink
@@ -992,7 +1002,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %if 0%{?usrmerged}
 %{_bindir}/login
 %endif
-%{_bindir}/lsblk
 %{_bindir}/lscpu
 %{_bindir}/lsipc
 %{_bindir}/lsirq
@@ -1159,7 +1168,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man8/mkswap.8.gz
 %{_mandir}/man8/mount.8.gz
 %{_mandir}/man8/nologin.8.gz
-%{_mandir}/man8/findmnt.8.gz
 %{_mandir}/man8/fsfreeze.8.gz
 %{_mandir}/man8/swaplabel.8.gz
 %{_mandir}/man8/readprofile.8.gz
@@ -1177,7 +1185,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man8/wipefs.8.gz
 %{_mandir}/man8/zramctl.8.gz
 %{_mandir}/man8/fstrim.8.gz
-%{_mandir}/man8/lsblk.8.gz
 %{_mandir}/man8/resizepart.8.gz
 %{_mandir}/man8/sulogin.8.gz
 %{_mandir}/man8/wdctl.8.gz
@@ -1192,7 +1199,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/*
 %if %build_util_linux_systemd
+%exclude %{_datadir}/bash-completion/completions/findmnt
 %exclude %{_datadir}/bash-completion/completions/logger
+%exclude %{_datadir}/bash-completion/completions/lsblk
 %exclude %{_datadir}/bash-completion/completions/lslogins
 %exclude %{_datadir}/bash-completion/completions/uuidd
 %endif
@@ -1319,9 +1328,13 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %endif
 %defattr(-, root, root)
 %if !0%{?usrmerged}
+/bin/findmnt
 /bin/logger
+/bin/lsblk
 %endif
+%{_bindir}/findmnt
 %{_bindir}/logger
+%{_bindir}/lsblk
 %{_bindir}/lslogins
 #BEGIN bootstrap_hack
 %if 0%{?suse_version} < 1330
@@ -1332,10 +1345,14 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %dir %{_datadir}/bash-completion/completions
 %endif
 #END bootstrap_hack
+%{_datadir}/bash-completion/completions/findmnt
 %{_datadir}/bash-completion/completions/logger
+%{_datadir}/bash-completion/completions/lsblk
 %{_datadir}/bash-completion/completions/lslogins
 %{_mandir}/man1/logger.1.gz
 %{_mandir}/man1/lslogins.1.gz
+%{_mandir}/man8/lsblk.8.gz
+%{_mandir}/man8/findmnt.8.gz
 %{_sbindir}/rcfstrim
 %{_unitdir}/fstrim.service
 %{_unitdir}/fstrim.timer
