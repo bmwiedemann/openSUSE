@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 14:05:43 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop dep on %insserv_prereq as it's not needed since the switch to a
+  service unit
+
+-------------------------------------------------------------------
 Wed Oct  7 10:45:43 CEST 2020 - ro@suse.de
 
 - drop explicit buildreq for libosip2, already have libosip2-devel 

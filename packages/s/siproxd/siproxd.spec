@@ -70,7 +70,6 @@ BuildRequires:  texlive-wasy
 Requires:       logrotate
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
-Requires(pre):  %insserv_prereq
 %if %suse_version <= 1500
 Suggests:       SuSEfirewall2
 %endif

@@ -334,4 +334,13 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
 - mark COPYING as license, drop defattr lines (forwarded request 839973 from oertel)</comment>
     <requestid>839974</requestid>
   </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>1bf00907bd55be118a16e912094a4027</srcmd5>
+    <version>0.8.2</version>
+    <time>1612781258</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop dep on %insserv_prereq as it's not needed since the switch to a
+  service unit (forwarded request 850224 from fbui)</comment>
+    <requestid>870155</requestid>
+  </revision>
 </revisionlist>
