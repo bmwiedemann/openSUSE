@@ -1,6 +1,8 @@
---- include/rfbClient.h
-+++ include/rfbClient.h	2002/04/11 23:03:59
-@@ -257,7 +257,7 @@
+Index: rfb-0.6.1/include/rfbClient.h
+===================================================================
+--- rfb-0.6.1.orig/include/rfbClient.h
++++ rfb-0.6.1/include/rfbClient.h
+@@ -257,7 +257,7 @@ class ClientStateReadingRectangle: publi
  
   protected:
    Rectangle rectangle;
@@ -9,9 +11,11 @@
  };
  
  
---- include/rfbServer.h
-+++ include/rfbServer.h	2002/04/11 23:03:59
-@@ -325,7 +325,7 @@
+Index: rfb-0.6.1/include/rfbServer.h
+===================================================================
+--- rfb-0.6.1.orig/include/rfbServer.h
++++ rfb-0.6.1/include/rfbServer.h
+@@ -325,7 +325,7 @@ class Server
    
    bool framebufferUpdateRequested;
    bool incrementalFramebufferUpdateRequested;
@@ -20,9 +24,11 @@
  
    void RequestRegionRefresh( unsigned int x,
                               unsigned int y,
---- lib/Framebuffer.cc
-+++ lib/Framebuffer.cc	2002/04/11 23:03:59
-@@ -161,7 +161,7 @@
+Index: rfb-0.6.1/lib/Framebuffer.cc
+===================================================================
+--- rfb-0.6.1.orig/lib/Framebuffer.cc
++++ rfb-0.6.1/lib/Framebuffer.cc
+@@ -161,7 +161,7 @@ void Framebuffer::putPixel( unsigned int
                              unsigned int r,
                              unsigned int g,
                              unsigned int b,
@@ -31,7 +37,7 @@
  {
      FramebufferPixel(this,x,y).setColor(r,g,b,m);
  }
-@@ -172,7 +172,7 @@
+@@ -172,7 +172,7 @@ void Framebuffer::getPixel( unsigned int
                              unsigned int &r,
                              unsigned int &g,
                              unsigned int &b,
@@ -40,7 +46,7 @@
  {
      FramebufferPixel(this,x,y).getColor(r,g,b,m);
  }
-@@ -181,7 +181,7 @@
+@@ -181,7 +181,7 @@ void Framebuffer::getPixel( unsigned int
  void FramebufferPixel::setColor( unsigned int r,
                                   unsigned int g,
                                   unsigned int b,
@@ -49,7 +55,7 @@
  {
      unsigned int r_max =   fb->pixelFormat.red_max;
      unsigned int g_max =   fb->pixelFormat.green_max;
-@@ -246,7 +246,7 @@
+@@ -246,7 +246,7 @@ void FramebufferPixel::setColor( unsigne
  void FramebufferPixel::getColor( unsigned int &r,
                                   unsigned int &g,
                                   unsigned int &b,
@@ -58,7 +64,7 @@
  {
      unsigned int r_max =   fb->pixelFormat.red_max;
      unsigned int g_max =   fb->pixelFormat.green_max;
-@@ -288,10 +288,10 @@
+@@ -288,10 +288,10 @@ void FramebufferPixel::getColor( unsigne
  
  
  int saveFramebufferAsPPM( int file, Framebuffer *fb,
@@ -73,9 +79,11 @@
      if ( width < 0 ) width = fb->width;
      if ( height < 0 ) height = fb->height;
      char tmp[255] = "";
---- lib/rfb.cc
-+++ lib/rfb.cc	2002/04/11 23:03:59
-@@ -28,7 +28,7 @@
+Index: rfb-0.6.1/lib/rfb.cc
+===================================================================
+--- rfb-0.6.1.orig/lib/rfb.cc
++++ rfb-0.6.1/lib/rfb.cc
+@@ -28,7 +28,7 @@ namespace rfb {
  /* CARD16                                         */
  /**************************************************/
  
@@ -84,7 +92,7 @@
  {
    value[1] = _value;
    _value >>= 8;
-@@ -55,7 +55,7 @@
+@@ -55,7 +55,7 @@ CARD16& CARD16::operator=( unsigned int
  /* CARD32                                         */
  /**************************************************/
  
@@ -93,8 +101,10 @@
  {
    value[3] = _value;
    _value >>= 8;
---- lib/rfbServer.cc
-+++ lib/rfbServer.cc	2002/04/11 23:03:59
+Index: rfb-0.6.1/lib/rfbServer.cc
+===================================================================
+--- rfb-0.6.1.orig/lib/rfbServer.cc
++++ rfb-0.6.1/lib/rfbServer.cc
 @@ -23,7 +23,8 @@
  #include <stdlib.h>
  #include <string.h>
@@ -105,7 +115,7 @@
  
  namespace rfb {
  
-@@ -104,8 +105,8 @@
+@@ -104,8 +105,8 @@ void Server::RequestRegionRefresh( unsig
  void Server::RequestBlockRefresh( unsigned int block, int x, int y,
                                    int width, int height )
  {
@@ -116,7 +126,7 @@
    if ( x < 0 ) { width += x; x = 0; }
    if ( y < 0 ) { height += y; y = 0; }
    if ( x + width > blockWidth ) width = blockWidth - x;
-@@ -126,8 +127,8 @@
+@@ -126,8 +127,8 @@ void Server::RequestBlockRefresh( unsign
    blocks[block].y = y;
    blocks[block].width = width;
    blocks[block].height = height;
@@ -127,7 +137,7 @@
  }
  
  
-@@ -138,13 +139,13 @@
+@@ -138,13 +139,13 @@ void Server::InitBlocks( unsigned char b
    blocksX = (framebuffer->width + blockWidth - 1) / blockWidth;
    blocksY = (framebuffer->height + blockHeight - 1) / blockHeight;
    blocks = (Block*) malloc( sizeof(Block) * blocksX * blocksY );
@@ -148,7 +158,7 @@
  //  ResetBlocks();
  }
  
-@@ -230,8 +231,8 @@
+@@ -230,8 +231,8 @@ void Server::handleAuthentication( CARD8
  
  void Server::handleClientInitialisation( ClientInitialisation &clientInitialisation )
  {
@@ -159,7 +169,7 @@
    
    ServerInitialisation serverInitialisation;
    getServerInitialisation( serverInitialisation );
-@@ -349,7 +350,7 @@
+@@ -349,7 +350,7 @@ void Server::sendIncrementalFramebufferU
    message.framebufferUpdate.number_of_rectangles = hintList.size();
    connection->send( (unsigned char*) &message, 4 );
  
@@ -168,7 +178,7 @@
    while ( i != hintList.end() ) {
        sendEncodedRectangle( *i );
        i++;
-@@ -670,7 +671,7 @@
+@@ -670,7 +671,7 @@ void ServerStateSetEncodings::update()
    }
    if ( size == 4 ) {
      if ( offset == size ) {
@@ -177,8 +187,10 @@
        encodings.count = encodings.count + 1;
        data = (unsigned char*) &(encodings.encoding[encodings.count]);
        offset = 0;
---- rfbcat/rfbcat.cc
-+++ rfbcat/rfbcat.cc	2002/04/13 01:03:16
+Index: rfb-0.6.1/rfbcat/rfbcat.cc
+===================================================================
+--- rfb-0.6.1.orig/rfbcat/rfbcat.cc
++++ rfb-0.6.1/rfbcat/rfbcat.cc
 @@ -45,7 +45,7 @@
  
  #ifdef DEBUG
@@ -188,7 +200,7 @@
  #else // DEBUG
  #define debug(msg)
  #endif // DEBUG
-@@ -180,7 +180,7 @@
+@@ -180,7 +180,7 @@ void rfbcat::handleVNCAuthentication( CA
  
  void rfbcat::handleAuthenticationFailed()
  {
@@ -197,7 +209,7 @@
    exit( 1 );
  }
  
-@@ -200,31 +200,31 @@
+@@ -200,31 +200,31 @@ void rfbcat::handleAuthenticated()
  
  void printVersion_xrfbviewer()
  {
@@ -229,7 +241,7 @@
 -    << "       -viewonly" << endl
 -    << "       -bgr233 | -spf" << endl
 -    << "       -scale <num>/<denum>" << endl;
-+  std::cerr 
++  std::cerr
 +    << std::endl
 +    << "usage: rfbcat [options] [host]:<display>" << std::endl
 +    << "       rfbcat [options] -fbs <file>" << std::endl
@@ -249,8 +261,10 @@
    ;
    exit( 1 );
  }
---- x0rfbserver/XUpdateScanner.cc
-+++ x0rfbserver/XUpdateScanner.cc	2002/04/13 00:55:20
+Index: rfb-0.6.1/x0rfbserver/XUpdateScanner.cc
+===================================================================
+--- rfb-0.6.1.orig/x0rfbserver/XUpdateScanner.cc
++++ rfb-0.6.1/x0rfbserver/XUpdateScanner.cc
 @@ -17,6 +17,7 @@
   *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   *  USA.
@@ -259,7 +273,7 @@
  
  #include <sys/ipc.h>
  #include <sys/shm.h>
-@@ -148,7 +149,7 @@
+@@ -148,7 +149,7 @@ XUpdateScanner::~XUpdateScanner()
  }
  
  
@@ -268,7 +282,7 @@
  {
    unsigned int maxWidth = fb->width - x;
    unsigned int maxHeight = fb->height - y;
-@@ -314,7 +315,7 @@
+@@ -314,7 +315,7 @@ void XUpdateScanner::restoreRegion() {
  }
  
  
@@ -277,7 +291,7 @@
  {
    restoreRegion();
  
-@@ -382,7 +383,7 @@
+@@ -382,7 +383,7 @@ void XUpdateScanner::searchUpdates( list
      }
    }
  
@@ -286,9 +300,11 @@
    
    if ( properties.showMousePointer ) {
  
---- x0rfbserver/XUpdateScanner.h
-+++ x0rfbserver/XUpdateScanner.h	2002/04/13 00:53:33
-@@ -40,8 +40,8 @@
+Index: rfb-0.6.1/x0rfbserver/XUpdateScanner.h
+===================================================================
+--- rfb-0.6.1.orig/x0rfbserver/XUpdateScanner.h
++++ rfb-0.6.1/x0rfbserver/XUpdateScanner.h
+@@ -40,8 +40,8 @@ class XUpdateScanner
  
      ~XUpdateScanner();
  
@@ -299,8 +315,10 @@
      
      void paintMousePointer(int x, int y);
      void saveRegion(int x, int y, int w, int h);
---- x0rfbserver/x0rfbserver.cc
-+++ x0rfbserver/x0rfbserver.cc	2002/04/13 01:00:09
+Index: rfb-0.6.1/x0rfbserver/x0rfbserver.cc
+===================================================================
+--- rfb-0.6.1.orig/x0rfbserver/x0rfbserver.cc
++++ rfb-0.6.1/x0rfbserver/x0rfbserver.cc
 @@ -62,6 +62,7 @@
  
  #include <map>
@@ -309,7 +327,7 @@
  
  Properties properties;
  
-@@ -112,8 +113,8 @@
+@@ -112,8 +113,8 @@ class OXServerMainFrame: public OXMainFr
      
      OXServiceApplet *serviceApplet;
      
@@ -320,7 +338,7 @@
  };
  
  
-@@ -343,11 +344,11 @@
+@@ -343,11 +344,11 @@ void OXServerMainFrame::UnregisterServer
  
  void OXServerMainFrame::CreateFramebuffer()
  {
@@ -337,7 +355,7 @@
    framebufferImage = XGetImage( dpy,
                                  root->GetId(),
  				0,
-@@ -356,7 +357,7 @@
+@@ -356,7 +357,7 @@ void OXServerMainFrame::CreateFramebuffe
  				clientX->GetDisplayHeight(),
  				AllPlanes,
  				ZPixmap );
@@ -346,7 +364,7 @@
    framebuffer.width        = framebufferImage->width;
    framebuffer.height       = framebufferImage->height;
    framebuffer.bytesPerLine = framebufferImage->bytes_per_line;
-@@ -393,9 +394,9 @@
+@@ -393,9 +394,9 @@ void OXServerMainFrame::CreateFramebuffe
    }
    scanner = new XUpdateScanner( dpy, root->GetId(), &framebuffer );
  
@@ -358,7 +376,7 @@
  }
  
  
-@@ -410,7 +411,7 @@
+@@ -410,7 +411,7 @@ void OXServerMainFrame::DestroyFramebuff
  int OXServerMainFrame::HandleTimer( OTimer *_timer )
  {
    if ( _timer == timer ) {
@@ -367,7 +385,7 @@
        delete ( timer );
        timer = NULL;
        idle = new OIdleHandler( this );
-@@ -430,7 +431,7 @@
+@@ -430,7 +431,7 @@ int OXServerMainFrame::HandleIdleEvent(
    if ( properties.scanDelay ) {
        if (!timer) timer = new OTimer( this, properties.scanDelay );
    }
@@ -376,7 +394,7 @@
    int wantsUpdate = 0;
    for ( s = serverList.begin(); s != serverList.end(); s++ )
        if ( (*s)->framebufferUpdateRequested 
-@@ -451,17 +452,17 @@
+@@ -451,17 +452,17 @@ int OXServerMainFrame::HandleIdleEvent(
  
  void OXServerMainFrame::ScanUpdates()
  {
@@ -399,7 +417,7 @@
  };
  
  
-@@ -532,7 +533,7 @@
+@@ -532,7 +533,7 @@ int OXServerMainFrame::HandleFileEvent(
  //      return true;
      }
      if ( bytesWritten == 0 ) {
@@ -408,7 +426,7 @@
          _fh->SetEventMask(XCM_READABLE);
      }
    }
-@@ -612,7 +613,7 @@
+@@ -612,7 +613,7 @@ void BaseServer::handleKeyEvent( KeyEven
              event.same_screen = True;
              event.state = modifier;
              event.keycode = kc;
@@ -417,7 +435,7 @@
              if ( kc != NoSymbol )
                  XSendEvent( dpy,
                              dest,
-@@ -699,7 +700,7 @@
+@@ -699,7 +700,7 @@ void BaseServer::handlePointerEvent( Poi
              }
          }
          else {
@@ -426,7 +444,7 @@
              XWarpPointer( dpy,
                            None,
                            root->GetId(),
-@@ -747,10 +748,10 @@
+@@ -747,10 +748,10 @@ void BaseServer::handlePointerEvent( Poi
  #ifdef USE_ZLIB_WARREN
  void BaseServer::handleEnableZlib( CARD8 level )
  {
@@ -439,7 +457,7 @@
  }
  #endif // USE_ZLIB_WARREN
  
-@@ -799,7 +800,7 @@
+@@ -799,7 +800,7 @@ BaseServer::BaseServer( int _fd )
    , key_Hyper_L( 0 )
    , key_Hyper_R( 0 )
  {
@@ -448,7 +466,7 @@
    memcpy( password, "\0\0\0\0\0\0\0\0", 8 );
    strncpy( password, properties.password, 8 );
  #ifdef USE_ZLIB_WARREN
-@@ -816,20 +817,20 @@
+@@ -816,20 +817,20 @@ BaseServer::BaseServer( int _fd )
    fh = new OSocketFileHandler( mainFrame, fd, XCM_READABLE | XCM_WRITABLE );
    mainFrame->RegisterServer( this );
    connection->send( (unsigned char*) RFB_PROTOCOL_VERSION, 12 );
@@ -472,7 +490,7 @@
  }
  
  
-@@ -841,25 +842,25 @@
+@@ -841,25 +842,25 @@ BaseServer::~BaseServer()
  
  void printVersion_x0rfbserver()
  {
@@ -499,8 +517,8 @@
 -    << "<options>" << endl
 -    << "       -shared" << endl
 -    << "       -viewonly" << endl;
-+  std::cerr 
-+    << std::endl 
++  std::cerr
++    << std::endl
 +    << "usage: x0rfbserver [<options>]" << std::endl
 +    << "       x0rfbserver -stdio" << std::endl
 +    << "       x0rfbserver -about" << std::endl
@@ -512,8 +530,10 @@
    ;
    exit( 1 );
  }
---- x0rfbserver/xclass++.h
-+++ x0rfbserver/xclass++.h	2002/04/11 23:03:59
+Index: rfb-0.6.1/x0rfbserver/xclass++.h
+===================================================================
+--- rfb-0.6.1.orig/x0rfbserver/xclass++.h
++++ rfb-0.6.1/x0rfbserver/xclass++.h
 @@ -4,7 +4,7 @@
  #include <map>
  
@@ -523,9 +543,11 @@
  
  #define DELETE_LAYOUT_HINTS                                       \
      while ( layoutHints.begin() != layoutHints.end() ) {          \
---- xrfbviewer/OXViewerApplet.cc
-+++ xrfbviewer/OXViewerApplet.cc	2002/04/11 23:03:59
-@@ -195,7 +195,7 @@
+Index: rfb-0.6.1/xrfbviewer/OXViewerApplet.cc
+===================================================================
+--- rfb-0.6.1.orig/xrfbviewer/OXViewerApplet.cc
++++ rfb-0.6.1/xrfbviewer/OXViewerApplet.cc
+@@ -195,7 +195,7 @@ OXViewerApplet::~OXViewerApplet()
  int OXViewerApplet::HandleFileEvent( OFileHandler *_fh, unsigned int _mask )
  {
    if ( _fh == fhSocket ) {
@@ -534,7 +556,7 @@
      struct sockaddr addr;
      size_t laddr = sizeof(addr);
      int fdClient = accept(_fh->GetFd(), &addr, &laddr);
-@@ -253,21 +253,21 @@
+@@ -253,21 +253,21 @@ int OXViewerApplet::ProcessMessage( OMes
            switch(wmsg->id) {
  
              case 100: {
@@ -560,7 +582,7 @@
                OXAbout *about = new OXAbout( _client->GetRoot(),
  	                                    this,
  					    "About: heXoNet xrfbviewer V" VERSION_xrfbviewer,
-@@ -280,7 +280,7 @@
+@@ -280,7 +280,7 @@ int OXViewerApplet::ProcessMessage( OMes
              }
  
              case 103:
@@ -569,9 +591,11 @@
                delete this;
                return true;
            }
---- xrfbviewer/OXViewerApplet.h
-+++ xrfbviewer/OXViewerApplet.h	2002/04/11 23:04:19
-@@ -51,7 +51,7 @@
+Index: rfb-0.6.1/xrfbviewer/OXViewerApplet.h
+===================================================================
+--- rfb-0.6.1.orig/xrfbviewer/OXViewerApplet.h
++++ rfb-0.6.1/xrfbviewer/OXViewerApplet.h
+@@ -51,7 +51,7 @@ class OXViewerApplet: public OXMainFrame
    private:
      char *xrfbviewerCommand;
    
@@ -580,8 +604,10 @@
  
      OXPopupMenu *popupMenu;
      rfb::ConnectionInfo connectionInfo;
---- xrfbviewer/xclass++.h
-+++ xrfbviewer/xclass++.h	2002/04/11 23:03:59
+Index: rfb-0.6.1/xrfbviewer/xclass++.h
+===================================================================
+--- rfb-0.6.1.orig/xrfbviewer/xclass++.h
++++ rfb-0.6.1/xrfbviewer/xclass++.h
 @@ -4,7 +4,7 @@
  #include <map>
  
@@ -591,9 +617,11 @@
  
  #define DELETE_LAYOUT_HINTS                                       \
      while ( layoutHints.begin() != layoutHints.end() ) {          \
---- xrfbviewer/xplayfbs.cc
-+++ xrfbviewer/xplayfbs.cc	2002/04/13 01:01:34
-@@ -312,24 +312,24 @@
+Index: rfb-0.6.1/xrfbviewer/xplayfbs.cc
+===================================================================
+--- rfb-0.6.1.orig/xrfbviewer/xplayfbs.cc
++++ rfb-0.6.1/xrfbviewer/xplayfbs.cc
+@@ -312,24 +312,24 @@ void OXFBSPlayerMainFrame::CloseFile()
  
  void printVersion_xplayfbs()
  {
@@ -618,8 +646,8 @@
 -    << endl
 -    << "<options>" << endl
 -    << "       " << endl
-+  std::cerr 
-+    << std::endl 
++  std::cerr
++    << std::endl
 +    << "usage: xplayfbs [<options>] [file]" << std::endl
 +    << "       xplayfbs [<options>] -stdout [file]" << std::endl
 +    << "       xplayfbs [<options>] -connect [<host>][:<display>] [file]" << std::endl
@@ -630,8 +658,10 @@
    ;
    exit( 1 );
  }
---- xrfbviewer/xrfbviewer.cc
-+++ xrfbviewer/xrfbviewer.cc	2002/04/13 00:50:57
+Index: rfb-0.6.1/xrfbviewer/xrfbviewer.cc
+===================================================================
+--- rfb-0.6.1.orig/xrfbviewer/xrfbviewer.cc
++++ rfb-0.6.1/xrfbviewer/xrfbviewer.cc
 @@ -84,7 +84,7 @@
  
  #ifdef DEBUG
@@ -641,7 +671,7 @@
  #else // DEBUG
  #define debug(msg)
  #endif // DEBUG
-@@ -284,7 +284,7 @@
+@@ -284,7 +284,7 @@ class Client95Connection: public Connect
  
    virtual int send( unsigned char* _data, unsigned int _size )
      {
@@ -650,7 +680,7 @@
        if ( !client->fh1 )
          if ( client->fd0 == client->fd1 ) {
  	  delete client->fh0;
-@@ -300,7 +300,7 @@
+@@ -300,7 +300,7 @@ class Client95Connection: public Connect
            client->fh1 = new OFileHandler( client->mainFrame,
  	                                  client->fd1,
  		                          XCM_WRITABLE | XCM_EXCEPTION );
@@ -659,7 +689,7 @@
        return connection->send( _data, _size );
      }
  
-@@ -526,18 +526,18 @@
+@@ -526,18 +526,18 @@ int Client95MainFrame::HandleFileEvent(O
    BufferedConnection *connection = client->connectionLayer.buffered;
    int fd = _fh->GetFd();
    
@@ -682,7 +712,7 @@
  
      int readSize = connection->receiverBuffer.size - connection->receiverBuffer.end;
      int bytesRead;
-@@ -546,7 +546,7 @@
+@@ -546,7 +546,7 @@ int Client95MainFrame::HandleFileEvent(O
                        readSize );
      
      if (bytesRead <= 0) {
@@ -691,7 +721,7 @@
        delete this;
        return true;
      }
-@@ -560,7 +560,7 @@
+@@ -560,7 +560,7 @@ int Client95MainFrame::HandleFileEvent(O
  
  
    if ( (mask & XCM_WRITABLE) && (fd == client->fd1) ) {
@@ -700,7 +730,7 @@
  
      int writeSize = connection->senderBuffer.end - connection->senderBuffer.pos;
      if ( writeSize > 0 ) {
-@@ -569,7 +569,7 @@
+@@ -569,7 +569,7 @@ int Client95MainFrame::HandleFileEvent(O
                 connection->senderBuffer.data + connection->senderBuffer.pos,
                 writeSize );
        if (bytesWritten < 0) {
@@ -709,7 +739,7 @@
          delete this;
          return true;
        }
-@@ -583,7 +583,7 @@
+@@ -583,7 +583,7 @@ int Client95MainFrame::HandleFileEvent(O
      }
    }
  
@@ -718,7 +748,7 @@
    return True;
  }
  
-@@ -593,7 +593,7 @@
+@@ -593,7 +593,7 @@ void Client95::handleProtocolVersion( Pr
  {
    Client::handleProtocolVersion( protocolVersion );
    protocolVersion[12] = 0;
@@ -727,7 +757,7 @@
  }
  
  
-@@ -607,7 +607,7 @@
+@@ -607,7 +607,7 @@ void Client95::handleBell()
  #ifdef USE_ZLIB_WARREN
  void Client95::handleZlibEnabled()
  {
@@ -736,7 +766,7 @@
    connectionLayer.buffered->enableReceiverInflation();
  }
  #endif
-@@ -660,7 +660,7 @@
+@@ -660,7 +660,7 @@ void Client95::handleAuthenticated()
      connectionInfo->recordFBS = (finfo.filename)? 1 : 0;
      if ( connectionInfo->recordFBS ) {
        sprintf( connectionInfo->filenameFBS, "%s/%s", finfo.ini_dir, finfo.filename );
@@ -745,7 +775,7 @@
        
        fbsRecorder = new FBStreamRecorder( connectionInfo->filenameFBS );
        fbsRecorder->record( (unsigned char*) "RFB 003.003\n", 12 );
-@@ -682,7 +682,7 @@
+@@ -682,7 +682,7 @@ void Client95::handleAuthenticated()
      connectionInfo->recordRFM = (finfo.filename)? 1 : 0;
      if ( connectionInfo->recordRFM ) {
        sprintf( connectionInfo->filenameRFM, "%s/%s", finfo.ini_dir, finfo.filename );
@@ -754,7 +784,7 @@
        
        rfmRecorder = new RFMacroRecorder( connectionInfo->filenameRFM );
      }
-@@ -702,9 +702,9 @@
+@@ -702,9 +702,9 @@ void Client95::handleServerInitialisatio
  {
    Client::handleServerInitialisation( serverInitialisation );
  
@@ -767,7 +797,7 @@
  
    
    mainFrame->canvas = new OXCanvas( mainFrame,
-@@ -912,26 +912,26 @@
+@@ -912,26 +912,26 @@ void createViewerProcess( rfb::Connectio
  
  void printVersion_xrfbviewer()
  {
@@ -794,8 +824,8 @@
 -    << "       -viewonly" << endl
 -    << "       -bgr233 | -spf" << endl
 -    << "       -scale <num>/<denum>" << endl;
-+  std::cerr 
-+    << std::endl 
++  std::cerr
++    << std::endl
 +    << "usage: xrfbviewer [<options>] [<host>][:<display>]" << std::endl
 +    << "       xrfbviewer [<options>] -listen [<display>]" << std::endl
 +    << "       xrfbviewer [<options>] -stdio" << std::endl

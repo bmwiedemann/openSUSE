@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:30:03 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Do not use source url as domain is no longer available
+- Refresh patches
+
+-------------------------------------------------------------------
 Sun Oct 19 02:42:05 UTC 2014 - crrodriguez@opensuse.org
 
 - run spec cleaner

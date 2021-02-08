@@ -1,14 +1,18 @@
---- x0rfbserver/XUpdateScanner.h
-+++ x0rfbserver/XUpdateScanner.h
-@@ -75,4 +75,4 @@
+Index: rfb-0.6.1/x0rfbserver/XUpdateScanner.h
+===================================================================
+--- rfb-0.6.1.orig/x0rfbserver/XUpdateScanner.h
++++ rfb-0.6.1/x0rfbserver/XUpdateScanner.h
+@@ -75,4 +75,4 @@ class XUpdateScanner
  
  } // namespace rfb
  
 -#endif _hexonet_rfb_XUpdateScanner_h_
 +#endif // _hexonet_rfb_XUpdateScanner_h_
---- xrfbviewer/xrfbviewer.cc
-+++ xrfbviewer/xrfbviewer.cc
-@@ -780,7 +780,7 @@
+Index: rfb-0.6.1/xrfbviewer/xrfbviewer.cc
+===================================================================
+--- rfb-0.6.1.orig/xrfbviewer/xrfbviewer.cc
++++ rfb-0.6.1/xrfbviewer/xrfbviewer.cc
+@@ -780,7 +780,7 @@ void Client95::handleServerInitialisatio
      connection->send( (unsigned char*) &zlib, 1 );
      connection->send( (unsigned char*) &level, 1 );
    }

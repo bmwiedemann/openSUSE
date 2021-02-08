@@ -111,4 +111,14 @@
     <comment>1</comment>
     <requestid>258287</requestid>
   </revision>
+  <revision rev="18" vrev="703">
+    <srcmd5>335ee3fef5944d43b62c6bd12466be0a</srcmd5>
+    <version>0.6.1</version>
+    <time>1612781274</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Do not use source url as domain is no longer available
+- Refresh patches</comment>
+    <requestid>870209</requestid>
+  </revision>
 </revisionlist>
