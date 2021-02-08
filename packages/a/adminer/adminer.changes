@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Feb 08 01:15:24 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 4.7.9:
+  * Release 4.7.9
+  * Reorder changes
+  * Editor: Avoid trailing dot in export filename
+  * Skip impossible condition ($link always contains ?username=)
+  * Fix displayed foreign key columns from other DB (bug #766)
+  * Do not display empty database in the list twice
+  * Display CSRF logout error after connecting
+  * Fix displaying type mapping for Elasticsearch >= 6.0
+  * MongoDB: Prefer modern extension
+  * Fix MongoDB connect 'Database does not support password.' tips
+  * Update bug numbers
+  * Postgres - fix missing partitioned tables in navigation
+  * Linkify URLs in SQL results
+  * Title for select data link
+  * Quote values with leading and trailing zeroes in CSV export (bug #777)
+  * MySQL: Don't quote default value of text fields (bug #779)
+  * fixed Unsupported operand types when $port is socket
+  * Respect SQL command URL parameters
+  * Fix XSS in browsers which don't encode URL parameters (bug #775)
+  * SQLite: Set busy_timeout to 500
+  * PostgreSQL 11: Create PRIMARY KEY for auto increment columns
+  * PostgreSQL: Support smallserial
+  * Add comment
+  * PostgreSQL PDO: Support PgBouncer, unsupport PostgreSQL < 9.1 (bug #771)
+  * fix wrong hungarian translation
+  * Editor: Cast to string when searching (bug #325)
+  * Don't syntax highlight during IME composition (bug #747)
+  * PostgreSQL: Use bigserial for bigint auto increment (bug #765, regression from 3.0.0)
+  * MSSQL: Don't trucate displayed comments to 30 chars (use varchar maximum of 8000 upon casting)
+  * Update Korean translation (thanks to B. Cansmile Cha)
+  * add alternative design dracula theme
+  * show correct collation for PostgresSQL
+  * PostgreSQL: Fix current schema in view definition
+  * Add external designs as submodules
+  * Fixes to lucas-sandery theme
+  * Do not export names in quotes with sql_mode='ANSI_QUOTES' (bug #749)
+  * Fix PgSQL generated always as identity fix
+  * Update Russian translation.
+  * Update Ukrainian translation.
+  * PostgreSQL: Export all FKs after all CREATE TABLE
+  * MySQL, MariaDB: Fix doc links
+  * Do not display SQL function for checkbox
+  * Fix style (bug #743)
+  * PostgreSQL: Fix dollar-quoted syntax highlighting (bug #738)
+  * Elasticsearch, ClickHouse: Do not print response if HTTP code is not 200
+  * Add basic Makefile.
+  * Travis: add php 7.4 && 8.0
+  * Re-enable PHP warnings
+
+-------------------------------------------------------------------
 Thu Jan 28 02:08:34 UTC 2021 - Jimmy Berry <jimmy@boombatower.com>
 
 - Drop virtual firebird package since php-firebird was dropped.
