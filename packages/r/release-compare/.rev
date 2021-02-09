@@ -184,4 +184,12 @@ transfered the wrong version into git :/</comment>
   * fix glob for old obsgendiff file name expansion</comment>
     <requestid>869006</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a71221f2b43992b6db7fc876da62811</srcmd5>
+    <version>0.5.4</version>
+    <time>1612901805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870323</requestid>
+  </revision>
 </revisionlist>
