@@ -1,7 +1,6 @@
-diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
---- ../arpwatch-2.1a15.orig/arpwatch.c	2008-11-12 15:16:19.000000000 +0100
-+++ ./arpwatch.c	2008-11-12 16:31:50.000000000 +0100
-@@ -64,6 +64,8 @@
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -64,6 +64,8 @@ struct rtentry;
  #include <string.h>
  #include <syslog.h>
  #include <unistd.h>
@@ -10,7 +9,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  
  #include <pcap.h>
  
-@@ -152,6 +154,52 @@
+@@ -152,6 +154,52 @@ int	sanity_toring(struct toring_header *
  #endif
  __dead	void usage(void) __attribute__((volatile));
  
@@ -63,7 +62,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  int
  main(int argc, char **argv)
  {
-@@ -164,6 +212,7 @@
+@@ -164,6 +212,7 @@ main(int argc, char **argv)
  	register char *interface, *rfilename;
  	struct bpf_program code;
  	char errbuf[PCAP_ERRBUF_SIZE];
@@ -71,7 +70,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  
  	if (argv[0] == NULL)
  		prog = "arpwatch";
-@@ -181,7 +230,7 @@
+@@ -181,7 +230,7 @@ main(int argc, char **argv)
  	interface = NULL;
  	rfilename = NULL;
  	pd = NULL;
@@ -80,7 +79,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  		switch (op) {
  
  		case 'd':
-@@ -213,6 +262,16 @@
+@@ -213,6 +262,16 @@ main(int argc, char **argv)
  			rfilename = optarg;
  			break;
  
@@ -97,7 +96,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  		default:
  			usage();
  		}
-@@ -295,8 +354,11 @@
+@@ -295,8 +354,11 @@ main(int argc, char **argv)
  	 * Revert to non-privileged user after opening sockets
  	 * (not needed on most systems).
  	 */
@@ -111,7 +110,7 @@ diff -ruN ../arpwatch-2.1a15.orig/arpwatch.c ./arpwatch.c
  
  	/* Must be ethernet or fddi or tokenring */
  	linktype = pcap_datalink(pd);
-@@ -842,6 +904,6 @@
+@@ -842,6 +904,6 @@ usage(void)
  
  	(void)fprintf(stderr, "Version %s\n", version);
  	(void)fprintf(stderr, "usage: %s [-dN] [-f datafile] [-i interface]"

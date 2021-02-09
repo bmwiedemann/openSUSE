@@ -1,7 +1,5 @@
-Index: arpwatch-2.1a15/db.c
-===================================================================
---- arpwatch-2.1a15.orig/db.c	2019-01-22 13:34:02.942536296 +0100
-+++ arpwatch-2.1a15/db.c	2019-01-22 13:38:54.099329959 +0100
+--- a/db.c
++++ b/db.c
 @@ -269,6 +269,7 @@ elist_alloc(register u_int32_t a, regist
  	register u_int size;
  	static struct einfo *elist = NULL;
@@ -36,10 +34,8 @@ Index: arpwatch-2.1a15/db.c
  }
  
  int
-Index: arpwatch-2.1a15/dns.c
-===================================================================
---- arpwatch-2.1a15.orig/dns.c	2000-10-14 03:50:52.000000000 +0200
-+++ arpwatch-2.1a15/dns.c	2019-01-22 13:39:31.043941461 +0100
+--- a/dns.c
++++ b/dns.c
 @@ -137,24 +137,30 @@ gethinfo(register char *hostname, regist
  	return (0);
  }
@@ -83,10 +79,8 @@ Index: arpwatch-2.1a15/dns.c
  char *
  getsname(register u_int32_t a)
  {
-Index: arpwatch-2.1a15/report.c
-===================================================================
---- arpwatch-2.1a15.orig/report.c	2019-01-22 13:34:02.962536621 +0100
-+++ arpwatch-2.1a15/report.c	2019-01-22 13:37:04.081507637 +0100
+--- a/report.c
++++ b/report.c
 @@ -311,6 +311,7 @@ report(register char *title, register u_
  		(void)fprintf(f, "Subject: %s (%s)\n", title, hn);
  	else {

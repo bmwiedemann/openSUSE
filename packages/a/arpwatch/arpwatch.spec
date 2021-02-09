@@ -44,6 +44,8 @@ Patch9:         getnameinfo.patch
 Patch10:        0001-Ignore-802.1Q-frames.patch
 Patch11:        report-iface.patch
 Patch12:        arpwatch-MAC.patch
+Patch13:        arpwatch-exit.patch
+Patch14:        arp2ethers.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  postfix
 BuildRequires:  systemd-rpm-macros
@@ -65,19 +67,7 @@ and company ID data as provided by IEEE.org.  This package is only
 needed if you want to build the arpwatch-ethercodes package.
 
 %prep
-%setup -q
-%patch0 -E
-%patch1 -p1 -E
-%patch3 -p1 -E
-%patch4 -p1 -E
-%patch5 -p1 -E
-%patch6 -p1 -E
-%patch7 -p1 -E
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%autosetup -p1
 
 %build
 %configure

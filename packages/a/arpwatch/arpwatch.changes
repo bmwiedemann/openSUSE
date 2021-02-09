@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  9 08:36:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix arp2ethers script (bsc#1181936). Added arp2ethers.patch to 
+  inline the awk fragments. I tried hard to do this in a script
+  but no matter if sed, awk or perl is used something always breaks
+
+-------------------------------------------------------------------
+Mon Feb  1 15:15:15 UTC 2021 - olaf@aepfle.de
+
+- exit cleanly on SIGTERM with arpwatch-exit.patch
+- refresh all patches for autosetup
+
+-------------------------------------------------------------------
 Thu Jan 28 17:17:17 UTC 2021 - olaf@aepfle.de
 
 - report MAC as HH:HH:HH:HH:HH:HH with arpwatch-MAC.patch

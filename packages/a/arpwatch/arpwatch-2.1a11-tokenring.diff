@@ -1,6 +1,6 @@
---- arpwatch-2.1a11/arpwatch.8
-+++ arpwatch-2.1a11/arpwatch.8
-@@ -47,12 +47,12 @@
+--- a/arpwatch.8
++++ b/arpwatch.8
+@@ -47,12 +47,12 @@ arpwatch - keep track of ethernet/ip add
  .ad
  .SH DESCRIPTION
  .B Arpwatch
@@ -15,7 +15,7 @@
  .LP
  The
  .B -d
-@@ -62,7 +62,7 @@
+@@ -62,7 +62,7 @@ background and emailing the reports. Ins
  .LP
  The
  .B -f
@@ -24,7 +24,7 @@
  The default is
  .IR arp.dat .
  .LP
-@@ -106,26 +106,26 @@
+@@ -106,26 +106,26 @@ Here's a quick list of the report messag
  .BR arpsnmp (1)):
  .TP
  .B "new activity"
@@ -59,7 +59,7 @@
  .TP
  .B "ip broadcast"
  The ip address of the host is a broadcast address.
-@@ -133,15 +133,15 @@
+@@ -133,15 +133,15 @@ The ip address of the host is a broadcas
  .B "bogon"
  The source ip address is not local to the local subnet.
  .TP
@@ -81,7 +81,7 @@
  the third (or greater) least recently seen address.
  (This is similar to a flip flop.)
  .TP
-@@ -153,7 +153,7 @@
+@@ -153,7 +153,7 @@ addresses was a DECnet address.
  .nh
  .nf
  /usr/operator/arpwatch - default directory
@@ -90,9 +90,9 @@
  ethercodes.dat - vendor ethernet block list
  .ad
  .hy
---- arpwatch-2.1a11/arpwatch.c
-+++ arpwatch-2.1a11/arpwatch.c
-@@ -26,6 +26,8 @@
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -26,6 +26,8 @@ static const char rcsid[] =
      "@(#) $Id: arpwatch.c,v 1.63 2000/10/14 02:07:28 leres Exp $ (LBL)";
  #endif
  
@@ -101,7 +101,7 @@
  /*
   * arpwatch - keep track of ethernet/ip address pairings, report changes
   */
-@@ -74,6 +76,9 @@
+@@ -74,6 +76,9 @@ struct rtentry;
  #include "db.h"
  #include "ec.h"
  #include "fddi.h"
@@ -111,7 +111,7 @@
  #include "file.h"
  #include "machdep.h"
  #include "setsignal.h"
-@@ -135,10 +140,16 @@
+@@ -135,10 +140,16 @@ int	isbogon(u_int32_t);
  int	main(int, char **);
  void	process_ether(u_char *, const struct pcap_pkthdr *, const u_char *);
  void	process_fddi(u_char *, const struct pcap_pkthdr *, const u_char *);
@@ -128,7 +128,7 @@
  __dead	void usage(void) __attribute__((volatile));
  
  int
-@@ -267,6 +278,7 @@
+@@ -267,6 +278,7 @@ main(int argc, char **argv)
  		swapped = pcap_is_swapped(pd);
  	} else {
  		snaplen = max(sizeof(struct ether_header),
@@ -136,7 +136,7 @@
  		    sizeof(struct fddi_header)) + sizeof(struct ether_arp);
  		timeout = 1000;
  		pd = pcap_open_live(interface, snaplen, 1, timeout, errbuf);
-@@ -286,10 +298,14 @@
+@@ -286,10 +298,14 @@ main(int argc, char **argv)
  	setgid(getgid());
  	setuid(getuid());
  
@@ -154,7 +154,7 @@
  		    linktype);
  		exit(1);
  	}
-@@ -337,7 +353,11 @@
+@@ -337,7 +353,11 @@ main(int argc, char **argv)
  	case DLT_FDDI:
  		status = pcap_loop(pd, 0, process_fddi, NULL);
  		break;
@@ -167,7 +167,7 @@
  	default:
  		syslog(LOG_ERR, "bad linktype %d (can't happen)", linktype);
  		exit(1);
-@@ -393,13 +413,13 @@
+@@ -393,13 +413,13 @@ process_ether(register u_char *u, regist
  	/* Watch for ethernet broadcast */
  	if (MEMCMP(sea, zero, 6) == 0 || MEMCMP(sea, allones, 6) == 0 ||
  	    MEMCMP(sha, zero, 6) == 0 || MEMCMP(sha, allones, 6) == 0) {
@@ -183,7 +183,7 @@
  		return;
  	}
  
-@@ -542,13 +562,13 @@
+@@ -542,13 +562,13 @@ process_fddi(register u_char *u, registe
  	/* Watch for ethernet broadcast */
  	if (MEMCMP(sea, zero, 6) == 0 || MEMCMP(sea, allones, 6) == 0 ||
  	    MEMCMP(sha, zero, 6) == 0 || MEMCMP(sha, allones, 6) == 0) {
@@ -199,7 +199,7 @@
  		return;
  	}
  
-@@ -639,6 +659,71 @@
+@@ -639,6 +659,71 @@ sanity_fddi(register struct fddi_header
  	return(1);
  }
  
@@ -271,9 +271,9 @@
  int
  addnet(register const char *str)
  {
---- arpwatch-2.1a11/db.c
-+++ arpwatch-2.1a11/db.c
-@@ -150,7 +150,7 @@
+--- a/db.c
++++ b/db.c
+@@ -150,7 +150,7 @@ ent_add(register u_int32_t a, register u
  			/* An old entry comes to life */
  			e2 = ap->elist[0]->e;
  			t2 = ap->elist[0]->t;
@@ -282,7 +282,7 @@
  			    a, e, e2);
  			/* Shift entries down */
  			len = i * sizeof(ap->elist[0]);
-@@ -165,7 +165,7 @@
+@@ -165,7 +165,7 @@ ent_add(register u_int32_t a, register u
  	/* New ether address */
  	e2 = ap->elist[0]->e;
  	t2 = ap->elist[0]->t;
@@ -291,9 +291,9 @@
  	/* Make room at head of list */
  	alist_alloc(ap);
  	len = ap->ecount * sizeof(ap->elist[0]);
---- arpwatch-2.1a11/report.c
-+++ arpwatch-2.1a11/report.c
-@@ -312,19 +312,19 @@
+--- a/report.c
++++ b/report.c
+@@ -312,19 +312,19 @@ report(register char *title, register u_
  	(void)putc('\n', f);
  	(void)fprintf(f, fmt, "hostname", hn);
  	(void)fprintf(f, fmt, "ip address", intoa(a));
@@ -317,8 +317,8 @@
  	}
  	if (t1p)
  		(void)fprintf(f, fmt, "timestamp", fmtdate(*t1p));
---- arpwatch-2.1a11/toring.h
-+++ arpwatch-2.1a11/toring.h
+--- /dev/null
++++ b/toring.h
 @@ -0,0 +1,26 @@
 +/* Support for tokenring */
 +      

@@ -1,5 +1,5 @@
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -17,7 +17,7 @@
  #  WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
  #  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
@@ -9,7 +9,7 @@
  
  #
  # Various configurable paths (remember to edit Makefile.in, not Makefile)
-@@ -110,13 +110,16 @@
+@@ -110,13 +110,16 @@ zap: zap.o intoa.o
  	$(CC) $(CFLAGS) -o $@ zap.o intoa.o -lutil
  
  install: force
@@ -30,8 +30,8 @@
  	    $(DESTDIR)$(MANDEST)/man8
  
  lint:	$(GENSRC) force
---- arpwatch.h
-+++ arpwatch.h
+--- a/arpwatch.h
++++ b/arpwatch.h
 @@ -1,7 +1,7 @@
 -/* @(#) $Id: arpwatch.h,v 1.29 2000/09/30 23:40:49 leres Exp $ (LBL) */
 +/* @(#) $Id: arpwatch.h,v 1.1 2001/01/11 01:08:54 root Exp root $ (LBL) */
