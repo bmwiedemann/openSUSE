@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 15:28:39 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Get rid of %ifpython3
+
+-------------------------------------------------------------------
 Sat Mar 14 09:09:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
