@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  8 21:42:21 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.5
+  * Fixed crash on areas/polygons (introduced in 8.2).
+
+-------------------------------------------------------------------
+Sun Feb  7 13:08:31 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.4
+  * Added support for AlpineQuest AQM maps.
+  * Added position date display option.
+  * IMG format compatability and performance improvements.
+
+-------------------------------------------------------------------
 Sat Jan 23 21:45:59 CET 2021 - tumic@cbox.cz
 
 - Update to version 8.3
