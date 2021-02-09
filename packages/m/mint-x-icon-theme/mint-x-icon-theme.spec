@@ -1,7 +1,7 @@
 #
 # spec file for package mint-x-icon-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   Mint-X
 Name:           mint-x-icon-theme
-Version:        1.5.8
+Version:        1.5.9
 Release:        0
 Summary:        Mint-X icon theme
 License:        GPL-3.0-or-later
@@ -36,6 +36,9 @@ Clearlooks Revamp, Elementary and Faenza.
 
 %prep
 %setup -q -n mint-x-icons
+# Remove broken symlinks
+# https://github.com/linuxmint/mint-x-icons/issues/194
+find . -xtype l -exec rm {} \;
 
 %build
 # Nothing to build.
