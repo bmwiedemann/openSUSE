@@ -1,7 +1,7 @@
 #
 # spec file for package pari
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 # for details on the SO versioning.
 
 Name:           pari
-%define sover  6
+%define sover 7
 %define lname   libpari-gmp-tls%sover
-Version:        2.11.4
+Version:        2.13.1
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
@@ -96,7 +96,7 @@ functions.
 	--libdir="%_libdir" \
 	--sysdatadir="%_libdir" --datadir="%_datadir/%name" \
 	--mt=pthread
-make %{?_smp_mflags} all \
+%make_build all \
 	CFLAGS="%optflags -fno-strict-aliasing" \
 	STRIP=true
 
