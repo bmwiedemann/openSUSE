@@ -20693,11 +20693,9 @@ unsorted:
   - python3-MapProxy 
   - python3-OpenImageIO 
   - python3-PyCBC 
-  - python3-PyInstaller: [i586] 
   - python3-PyMuPDF 
   - python3-PySDL2 
   - python3-QR-Code-generator 
-  - python3-QtAwesome: [i586] 
   - python3-Rivet 
   - python3-SHERPA-MC 
   - python3-SoapySDR 
@@ -21287,7 +21285,7 @@ unsorted:
   - python36-PyGithub 
   - python36-PyHamcrest 
   - python36-PyICU 
-  - python36-PyInstaller: [x86_64] 
+  - python36-PyInstaller 
   - python36-PyJWT 
   - python36-PyKMIP 
   - python36-PyLaTeX 
@@ -21324,7 +21322,7 @@ unsorted:
   - python36-Pyro4 
   - python36-QDarkStyle 
   - python36-Qt.py 
-  - python36-QtAwesome: [x86_64] 
+  - python36-QtAwesome 
   - python36-QtPy 
   - python36-RegexOrder 
   - python36-Routes 
@@ -24169,7 +24167,7 @@ unsorted:
   - python38-PyGetWindow 
   - python38-PyGithub 
   - python38-PyICU 
-  - python38-PyInstaller: [x86_64] 
+  - python38-PyInstaller 
   - python38-PyJWT: [i586] 
   - python38-PyKMIP 
   - python38-PyLaTeX 
@@ -24202,7 +24200,7 @@ unsorted:
   - python38-Pyro4 
   - python38-QDarkStyle 
   - python38-Qt.py 
-  - python38-QtAwesome: [x86_64] 
+  - python38-QtAwesome 
   - python38-QtPy 
   - python38-RegexOrder 
   - python38-Routes 
