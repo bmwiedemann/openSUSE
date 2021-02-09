@@ -162,4 +162,12 @@
     <comment>- Remove python-tornado Conflicts, {Build,}Require tornado4 directly.</comment>
     <requestid>777563</requestid>
   </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>7f4bd104bdc432a0b6645f251ceef846</srcmd5>
+    <version>1.7.0</version>
+    <time>1612901826</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump {Build,}Require to tornado5.</comment>
+    <requestid>870414</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-httpdomain
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.7.0
 Release:        0
 Summary:        Sphinx domain for HTTP APIs
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-contrib/httpdomain
 Source:         https://github.com/sphinx-contrib/httpdomain/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.11}
@@ -31,12 +30,12 @@ BuildRequires:  %{python_module bottle >= 0.11.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module tornado4}
+BuildRequires:  %{python_module tornado5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.5
 Requires:       python-six
-Requires:       python-tornado4
+Requires:       python-tornado5
 BuildArch:      noarch
 %python_subpackages
 

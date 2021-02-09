@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 07:55:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Bump {Build,}Require to tornado5. 
+
+-------------------------------------------------------------------
 Thu Feb 20 06:34:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove python-tornado Conflicts, {Build,}Require tornado4 directly.
