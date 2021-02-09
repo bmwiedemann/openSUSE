@@ -1,7 +1,7 @@
 #
 # spec file for package assimp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         do-not-install-irrXML.patch
 # PATCH-FIX-UPSTREAM -- Don't hardcode the library and binary location
 Patch1:         0001-use-GNUInstallDirs-where-possible.patch
+# PATCH-FIX-UPSTREAM -- GCC 11 build fixes backported to the 5.0.1 version
+Patch2:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++

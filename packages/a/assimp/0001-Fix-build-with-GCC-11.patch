@@ -1,0 +1,69 @@
+From afc79a00f8377cd376480a1d245d4d570ea6f426 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 8 Feb 2021 11:43:34 +0100
+Subject: [PATCH] Fix build with GCC 11.
+
+Based on upstream change 1afc4c045e.
+---
+ code/AMF/AMFImporter_Postprocess.cpp | 4 ++--
+ code/Common/Importer.cpp             | 1 +
+ code/Common/Importer.h               | 1 +
+ include/assimp/Importer.hpp          | 2 ++
+ 4 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/code/AMF/AMFImporter_Postprocess.cpp b/code/AMF/AMFImporter_Postprocess.cpp
+index 79b5e15..3c1b842 100644
+--- a/code/AMF/AMFImporter_Postprocess.cpp
++++ b/code/AMF/AMFImporter_Postprocess.cpp
+@@ -359,9 +359,9 @@ void AMFImporter::Postprocess_AddMetadata(const std::list<CAMFImporter_NodeEleme
+         sceneNode.mMetaData = aiMetadata::Alloc( static_cast<unsigned int>(metadataList.size()) );
+ 		size_t meta_idx( 0 );
+ 
+-		for(const CAMFImporter_NodeElement_Metadata& metadata: metadataList)
++		for(const CAMFImporter_NodeElement_Metadata *metadata: metadataList)
+ 		{
+-			sceneNode.mMetaData->Set(static_cast<unsigned int>(meta_idx++), metadata.Type, aiString(metadata.Value));
++			sceneNode.mMetaData->Set(static_cast<unsigned int>(meta_idx++), metadata->Type, aiString(metadata->Value));
+ 		}
+ 	}// if(!metadataList.empty())
+ }
+diff --git a/code/Common/Importer.cpp b/code/Common/Importer.cpp
+index 91b5085..a287637 100644
+--- a/code/Common/Importer.cpp
++++ b/code/Common/Importer.cpp
+@@ -78,6 +78,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include <assimp/TinyFormatter.h>
+ #include <assimp/Exceptional.h>
+ #include <assimp/Profiler.h>
++#include <exception>
+ #include <set>
+ #include <memory>
+ #include <cctype>
+diff --git a/code/Common/Importer.h b/code/Common/Importer.h
+index a439d99..277af0f 100644
+--- a/code/Common/Importer.h
++++ b/code/Common/Importer.h
+@@ -45,6 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #ifndef INCLUDED_AI_IMPORTER_H
+ #define INCLUDED_AI_IMPORTER_H
+ 
++#include <exception>
+ #include <map>
+ #include <vector>
+ #include <string>
+diff --git a/include/assimp/Importer.hpp b/include/assimp/Importer.hpp
+index 4941df4..d0705c7 100644
+--- a/include/assimp/Importer.hpp
++++ b/include/assimp/Importer.hpp
+@@ -55,6 +55,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ // Public ASSIMP data structures
+ #include <assimp/types.h>
+ 
++#include <exception>
++
+ namespace Assimp    {
+     // =======================================================================
+     // Public interface to Assimp
+-- 
+2.30.0
+
