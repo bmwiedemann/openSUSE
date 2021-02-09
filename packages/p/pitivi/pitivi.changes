@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  4 16:48:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 2021.01:
+  + The Render dialog has been further simplified.
+  + Lots of bugfixes.
+
+-------------------------------------------------------------------
 Sat Nov 14 19:33:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(gst-transcoder-1.0) with
