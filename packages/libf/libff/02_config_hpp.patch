@@ -1,0 +1,326 @@
+From: Adam Mizerski <adam@mizerski.pl>
+Date: 2019-02-12 20:48:31
+Upstream: yes
+References: https://github.com/scipr-lab/libff/issues/21
+Subject: add a configuration header
+
+Index: libff-1.0.0/CMakeLists.txt
+===================================================================
+--- libff-1.0.0.orig/CMakeLists.txt
++++ libff-1.0.0/CMakeLists.txt
+@@ -124,13 +124,14 @@ if("${WITH_PROCPS}")
+     libprocps
+   )
+ else()
++  set(NO_PROCPS)
+   add_definitions(
+     -DNO_PROCPS
+   )
+ endif()
+ 
+ add_definitions(
+-  -DCURVE_${CURVE}
++  -DCURVE=${CURVE}
+ )
+ 
+ enable_testing()
+@@ -156,6 +157,7 @@ if("${MONTGOMERY_OUTPUT}")
+ endif()
+ 
+ if(NOT "${USE_PT_COMPRESSION}")
++  set(NO_PT_COMPRESSION)
+   add_definitions(-DNO_PT_COMPRESSION=1)
+ endif()
+ 
+Index: libff-1.0.0/libff/CMakeLists.txt
+===================================================================
+--- libff-1.0.0.orig/libff/CMakeLists.txt
++++ libff-1.0.0/libff/CMakeLists.txt
+@@ -1,3 +1,5 @@
++configure_file(config.hpp.in config.hpp)
++
+ add_library(
+   ff
+   SHARED
+@@ -36,6 +38,7 @@ target_link_libraries(
+ target_include_directories(
+   ff
+   PUBLIC ..
++  ${CMAKE_CURRENT_BINARY_DIR}/..
+ )
+ 
+ install(
+@@ -48,6 +51,10 @@ install(
+ )
+ 
+ install(
++  FILES "${CMAKE_CURRENT_BINARY_DIR}/config.hpp" DESTINATION "include/libff"
++)
++
++install(
+   TARGETS ff DESTINATION lib${LIB_SUFFIX}
+ )
+ 
+Index: libff-1.0.0/libff/config.hpp.in
+===================================================================
+--- /dev/null
++++ libff-1.0.0/libff/config.hpp.in
+@@ -0,0 +1,22 @@
++#ifndef LIBFF_CONFIG_HPP_
++#define LIBFF_CONFIG_HPP_
++
++#cmakedefine NO_PROCPS
++
++#define ALT_BN128 1
++#define EDWARDS 2
++#define MNT4 3
++#define MNT6 4
++#cmakedefine CURVE ${CURVE}
++
++#cmakedefine DEBUG
++#cmakedefine LOWMEM
++#cmakedefine MULTICORE
++#cmakedefine BINARY_OUTPUT
++#cmakedefine MONTGOMERY_OUTPUT
++#cmakedefine NO_PT_COMPRESSION
++#cmakedefine PROFILE_OP_COUNTS
++#cmakedefine USE_MIXED_ADDITION
++#cmakedefine USE_ASM
++
++#endif // LIBFF_CONFIG_HPP_
+Index: libff-1.0.0/libff/common/default_types/ec_pp.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/common/default_types/ec_pp.hpp
++++ libff-1.0.0/libff/common/default_types/ec_pp.hpp
+@@ -13,9 +13,11 @@
+ #ifndef EC_PP_HPP_
+ #define EC_PP_HPP_
+ 
++#include <libff/config.hpp>
++
+ /************************ Pick the elliptic curve ****************************/
+ 
+-#ifdef CURVE_ALT_BN128
++#if CURVE == ALT_BN128
+ #define LIBFF_DEFAULT_EC_PP_DEFINED
+ #include <libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp>
+ namespace libff {
+@@ -23,7 +25,7 @@ typedef alt_bn128_pp default_ec_pp;
+ } // libff
+ #endif
+ 
+-#ifdef CURVE_EDWARDS
++#if CURVE == EDWARDS
+ #define LIBFF_DEFAULT_EC_PP_DEFINED
+ #include <libff/algebra/curves/edwards/edwards_pp.hpp>
+ namespace libff {
+@@ -31,7 +33,7 @@ typedef edwards_pp default_ec_pp;
+ } // libff
+ #endif
+ 
+-#ifdef CURVE_MNT4
++#if CURVE == MNT4
+ #define LIBFF_DEFAULT_EC_PP_DEFINED
+ #include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
+ namespace libff {
+@@ -39,7 +41,7 @@ typedef mnt4_pp default_ec_pp;
+ } // libff
+ #endif
+ 
+-#ifdef CURVE_MNT6
++#if CURVE == MNT6
+ #define LIBFF_DEFAULT_EC_PP_DEFINED
+ #include <libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp>
+ namespace libff {
+@@ -48,7 +50,7 @@ typedef mnt6_pp default_ec_pp;
+ #endif
+ 
+ #ifndef LIBFF_DEFAULT_EC_PP_DEFINED
+-#error You must define one of the CURVE_* symbols to pick a curve for pairings.
++#error You must define the CURVE symbol to pick a curve for pairings.
+ #endif
+ 
+ #endif // EC_PP_HPP_
+Index: libff-1.0.0/libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
++++ libff-1.0.0/libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
+@@ -9,6 +9,7 @@
+ #define ALT_BN128_G1_HPP_
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/alt_bn128/alt_bn128_init.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
++++ libff-1.0.0/libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
+@@ -9,6 +9,7 @@
+ #define ALT_BN128_G2_HPP_
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/alt_bn128/alt_bn128_init.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/curves/edwards/edwards_g1.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/edwards/edwards_g1.hpp
++++ libff-1.0.0/libff/algebra/curves/edwards/edwards_g1.hpp
+@@ -9,6 +9,7 @@
+ #define EDWARDS_G1_HPP_
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ #include <libff/algebra/curves/edwards/edwards_init.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/curves/edwards/edwards_g2.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/edwards/edwards_g2.hpp
++++ libff-1.0.0/libff/algebra/curves/edwards/edwards_g2.hpp
+@@ -10,6 +10,7 @@
+ #include <iostream>
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ #include <libff/algebra/curves/edwards/edwards_init.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
++++ libff-1.0.0/libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
+@@ -14,6 +14,7 @@
+ 
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ #include <libff/algebra/curves/mnt/mnt4/mnt4_init.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
++++ libff-1.0.0/libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
+@@ -14,6 +14,7 @@
+ 
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ #include <libff/algebra/curves/mnt/mnt4/mnt4_init.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
++++ libff-1.0.0/libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
+@@ -14,6 +14,7 @@
+ 
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ #include <libff/algebra/curves/mnt/mnt6/mnt6_init.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
++++ libff-1.0.0/libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
+@@ -14,6 +14,7 @@
+ 
+ #include <vector>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/curves/curve_utils.hpp>
+ #include <libff/algebra/curves/mnt/mnt6/mnt6_init.hpp>
+ 
+Index: libff-1.0.0/libff/algebra/fields/fp2.tcc
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/fields/fp2.tcc
++++ libff-1.0.0/libff/algebra/fields/fp2.tcc
+@@ -10,6 +10,7 @@
+ #ifndef FP2_TCC_
+ #define FP2_TCC_
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/fields/field_utils.hpp>
+ 
+ namespace libff {
+Index: libff-1.0.0/libff/algebra/fields/fp3.tcc
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/fields/fp3.tcc
++++ libff-1.0.0/libff/algebra/fields/fp3.tcc
+@@ -10,6 +10,7 @@
+ #ifndef FP3_TCC_
+ #define FP3_TCC_
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/fields/field_utils.hpp>
+ 
+ namespace libff {
+Index: libff-1.0.0/libff/algebra/scalar_multiplication/multiexp.tcc
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/scalar_multiplication/multiexp.tcc
++++ libff-1.0.0/libff/algebra/scalar_multiplication/multiexp.tcc
+@@ -18,6 +18,7 @@
+ #include <cassert>
+ #include <type_traits>
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/fields/bigint.hpp>
+ #include <libff/algebra/fields/fp_aux.tcc>
+ #include <libff/algebra/scalar_multiplication/multiexp.hpp>
+Index: libff-1.0.0/libff/common/utils.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/common/utils.hpp
++++ libff-1.0.0/libff/common/utils.hpp
+@@ -16,6 +16,8 @@
+ #include <string>
+ #include <vector>
+ 
++#include <libff/config.hpp>
++
+ namespace libff {
+ 
+ typedef std::vector<bool> bit_vector;
+Index: libff-1.0.0/libff/algebra/fields/bigint.tcc
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/fields/bigint.tcc
++++ libff-1.0.0/libff/algebra/fields/bigint.tcc
+@@ -13,6 +13,8 @@
+ #include <cstring>
+ #include <random>
+ 
++#include <libff/config.hpp>
++
+ namespace libff {
+ 
+ template<mp_size_t n>
+Index: libff-1.0.0/libff/algebra/fields/fp.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/fields/fp.hpp
++++ libff-1.0.0/libff/algebra/fields/fp.hpp
+@@ -10,6 +10,7 @@
+ #ifndef FP_HPP_
+ #define FP_HPP_
+ 
++#include <libff/config.hpp>
+ #include <libff/algebra/exponentiation/exponentiation.hpp>
+ #include <libff/algebra/fields/bigint.hpp>
+ 
+Index: libff-1.0.0/libff/common/serialization.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/common/serialization.hpp
++++ libff-1.0.0/libff/common/serialization.hpp
+@@ -18,6 +18,8 @@
+ #include <set>
+ #include <vector>
+ 
++#include <libff/config.hpp>
++
+ namespace libff {
+ 
+ /*
