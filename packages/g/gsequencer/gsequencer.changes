@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  9 10:37:41 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.35 fixed bad bug related to serialization of
+  AgsComplex and other float types. This affects ags-fx-envelope
+  to do wrong behavior.
+- since v3.7.34 correct double _Complex types for all AgsComplex.
+- since v3.7.32 improved thread-safety of pulseaudio
+- since v3.7.31 minor improvements
+
+-------------------------------------------------------------------
 Mon Jan 25 20:07:47 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - added ${datadir}/locale/*/LC_MESSAGES/gsequencer.mo to gsequencer
