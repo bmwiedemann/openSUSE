@@ -1,7 +1,7 @@
 #
 # spec file for package xcb
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define _appdefdif %{_datadir}/X11/app-defaults
 Name:           xcb
-%define _appdefdif %_prefix/share/X11/app-defaults
-BuildRequires:  imake
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xaw7)
-BuildRequires:  pkgconfig(xt)
-Url:            http://www.goof.com/pcg/marc/xcb.html
 Version:        2.5
 Release:        0
 Summary:        X11 cut&paste utility
 License:        MIT
 Group:          System/X11/Utilities
+URL:            http://www.goof.com/pcg/marc/xcb.html
 Source:         %{name}-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  imake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xaw7)
+BuildRequires:  pkgconfig(xt)
 
 %description
 Xcb provides access to the cut buffers built into every X server. It
@@ -40,24 +40,19 @@ number of different pieces of data can be saved and recalled later. The
 program is designed primarily for use with textual data.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 xmkmf -a
-make CCOPTIONS="$RPM_OPT_FLAGS"
+%make_build CCOPTIONS="%{optflags}"
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make "DESTDIR=$RPM_BUILD_ROOT" install
-make "DESTDIR=$RPM_BUILD_ROOT" install.man
+%make_install install.man
 
 %files
-%defattr(-,root,root)
-%_bindir/xcb
-%_appdefdif
-%doc %_mandir/man1/xcb.1x*
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%doc README Changes
+%{_bindir}/xcb
+%{_appdefdif}
+%{_mandir}/man1/xcb.1x*
 
 %changelog
