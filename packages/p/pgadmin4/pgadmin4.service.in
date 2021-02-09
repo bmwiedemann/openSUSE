@@ -16,8 +16,8 @@ After=network.target
 [Service]
 Type=simple
 
-User=root
-Group=root
+User=pgadmin
+Group=pgadmin
 ExecStart=PYTHONDIR PYTHONSITELIB/pgadmin4-web/pgAdmin4.py
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=mixed

@@ -34,6 +34,7 @@
 %global python3_flask_security_too_min_version 3.0.0
 %global python3_flask_sqlalchemy_min_version 2.4.1
 %global python3_flask_wtf_min_version 0.14.3
+%global python3_gssapi_min_version 1.6.11 
 %global python3_html5lib_min_version 1.0.1
 %global python3_htmlmin_min_version 0.1.12
 %global python3_itsdangerous_min_version 0.24
@@ -64,7 +65,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        4.29
+Version:        4.30
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -117,6 +118,7 @@ BuildRequires:  python3-cryptography
 BuildRequires:  python3-devel
 BuildRequires:  python3-extras >= %{python3_extras_min_version}
 BuildRequires:  python3-fixtures >= %{python3_fixtures_min_version}
+BuildRequires:  python3-gssapi >= %{python3_gssapi_min_version}
 BuildRequires:  python3-html5lib >= %{python3_html5lib_min_version}
 BuildRequires:  python3-htmlmin >= %{python3_htmlmin_min_version}
 BuildRequires:  python3-itsdangerous >= %{python3_itsdangerous_min_version}
@@ -181,6 +183,7 @@ Requires:       python3-click
 Requires:       python3-cryptography
 Requires:       python3-extras >= %{python3_extras_min_version}
 Requires:       python3-fixtures >= %{python3_fixtures_min_version}
+Requires:       python3-gssapi >= %{python3_gssapi_min_version}
 Requires:       python3-html5lib >= %{python3_html5lib_min_version}
 Requires:       python3-htmlmin >= %{python3_htmlmin_min_version}
 Requires:       python3-itsdangerous >= %{python3_itsdangerous_min_version}
@@ -340,6 +343,7 @@ install -m 0644 %{name}.uwsgi %{buildroot}%{_sysconfdir}/uwsgi/vassals/pgadmin4.
 %service_del_preun %{name}.service
 
 %postun web
+chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 %service_del_postun %{name}.service
 
 %files

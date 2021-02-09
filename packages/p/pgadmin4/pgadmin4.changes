@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:59:50 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix typos (chmod being used instead of chown in %postun web and
+  pgadmin4 used in the service file for User/Group keys instead of
+  pgadmin)
+
+-------------------------------------------------------------------
+Mon Feb  1 12:43:28 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- the system wide service does not need to run as root. switch to
+  user/group pgadmin 
+
+-------------------------------------------------------------------
+Sat Jan 30 04:22:43 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.30 
+  - Features:
+    - ERD Tool (Beta): The Entity-Relationship Diagram (ERD) tool
+      is a database design tool that provides a graphical
+      representation of database tables, columns, and
+      inter-relationships. You can use the ERD tool to design a new
+      schema and generate the SQL required to create it, or to
+      reverse engineer and diagram an existing database schema.
+    - Kerberos support is added in pgAdmin 4 using SPNEGO for
+      logging into pgAdmin, similar to the existing LDAP and
+      "internal" options. Note that support for logging into
+      database servers using Kerberos is not included in this
+      release, but will be added in a future version.
+    - Add a container option (PGADMIN_DISABLE_POSTFIX) to disable
+      the Postfix server: Postfix (like other MTAs) must start as
+      user 'root', and the pgAdmin container achieves this using
+      'sudo'. Whilst that works well in most environments, it can
+      cause problems in some. This option allows you to completely
+      disable Postfix to avoid these issues, though you will need
+      to configure an external mail server to be used to send
+      password reset emails.
+  - Bugs/Housekeeping:
+    - Improve the explain plan details by showing a popup instead
+      of a tooltip when clicking on plan nodes.
+    - Ensure that verbose logs are visible for Utility (Backup,
+      Maintenance etc.) jobs.
+    - Added support for expressions in exclusion constraints.
+    - Ensure that the 'template1' database is not visible after
+      pg_upgrade.
+    - Added appropriate help message and a placeholder for letting
+      users know about the account password expiry for Login/Group
+      Role.
+    - Updated Flask-BabelEx to the latest version.
+    - Fixed extra parentheses issue around joins for Views.
+    - Ensure that the current value of sequences is ignored while
+      comparing using Schema Diff.
+    - Fixed an issue when the user tries to delete multiple records
+      in the data grid.
+    - Fixed TypeError exception in schema diff when selecting two
+      identical objects.
+    - Include PostgreSQL 13 utilities in the container
+      distribution.
+
+  https://www.pgadmin.org/docs/pgadmin4/4.30/release_notes_4_30.html
+
+-------------------------------------------------------------------
 Wed Jan 27 11:26:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix the desktop application by removing the overriding of

@@ -145,4 +145,41 @@
     <comment></comment>
     <requestid>867523</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bfb46e3e339d5dcaab35d5a7aa8b4739</srcmd5>
+    <version>4.30</version>
+    <time>1612901777</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typos (chmod being used instead of chown in %postun web and
+  pgadmin4 used in the service file for User/Group keys instead of
+  pgadmin)
+
+- the system wide service does not need to run as root. switch to
+  user/group pgadmin 
+
+- Update to 4.30 
+  - Features:
+    - ERD Tool (Beta): The Entity-Relationship Diagram (ERD) tool
+      is a database design tool that provides a graphical
+      representation of database tables, columns, and
+      inter-relationships. You can use the ERD tool to design a new
+      schema and generate the SQL required to create it, or to
+      reverse engineer and diagram an existing database schema.
+    - Kerberos support is added in pgAdmin 4 using SPNEGO for
+      logging into pgAdmin, similar to the existing LDAP and
+      &quot;internal&quot; options. Note that support for logging into
+      database servers using Kerberos is not included in this
+      release, but will be added in a future version.
+    - Add a container option (PGADMIN_DISABLE_POSTFIX) to disable
+      the Postfix server: Postfix (like other MTAs) must start as
+      user 'root', and the pgAdmin container achieves this using
+      'sudo'. Whilst that works well in most environments, it can
+      cause problems in some. This option allows you to completely
+      disable Postfix to avoid these issues, though you will need
+      to configure an external mail server to be used to send
+      password reset emails.
+  - Bugs/Housekeeping:
+    - Improve the explain plan details by showing a popup instead</comment>
+    <requestid>870250</requestid>
+  </revision>
 </revisionlist>
