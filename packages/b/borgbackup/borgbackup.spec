@@ -1,7 +1,7 @@
 #
 # spec file for package borgbackup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,7 +38,7 @@
 %endif
 
 Name:           borgbackup
-Version:        1.1.14
+Version:        1.1.15
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -69,12 +69,13 @@ BuildRequires:  liblz4-devel >= 1.7.0
 BuildRequires:  libzstd-devel >= 1.3.0
 %endif
 BuildRequires:  openssl-devel >= 1.0.0
-BuildRequires:  python3 >= 3.4
+BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-Cython
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  zsh
+BuildRequires:  pkgconfig(libxxhash)
 
 # docs requirements
 BuildRequires:  python3-Sphinx
