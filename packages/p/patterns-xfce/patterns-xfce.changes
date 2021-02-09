@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  9 01:35:23 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Clean up weak dependencies
+
+-------------------------------------------------------------------
+Sun Feb 7 15:00:00 UTC 2021 - slbtty <shenlebantongying@gmail.com>
+
+- Fix incorrect obsolete.
+- Fix duplicated recommend on avahi.
+- Removed IcedTea-Web
+
+-------------------------------------------------------------------
 Fri Dec 18 06:16:29 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Xfce 4.16 is introducing CSD, we want to switch to GNOME

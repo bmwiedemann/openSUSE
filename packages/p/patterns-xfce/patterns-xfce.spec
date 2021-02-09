@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-xfce
-Version:        20190809
+Version:        20210209
 Release:        0
 Summary:        Patterns for Installation (Xfce)
 License:        MIT
@@ -107,40 +107,11 @@ Recommends:     opensuse-welcome
 Recommends:     xfce4-taskmanager
 Recommends:     thunar-volman
 Recommends:     tumbler
-Suggests:       xfce4-dev-tools
-Suggests:       xfce4-battery-plugin
-Suggests:       xfce4-clipman-plugin
-Suggests:       xfce4-cpufreq-plugin
-Suggests:       xfce4-cpugraph-plugin
-Suggests:       xfce4-datetime-plugin
-Suggests:       xfce4-dict-plugin
-Suggests:       xfce4-diskperf-plugin
-Suggests:       xfce4-eyes-plugin
-Suggests:       xfce4-fsguard-plugin
-Suggests:       xfce4-genmon-plugin
-Suggests:       xfce4-mailwatch-plugin
-Suggests:       xfce4-mount-plugin
-Suggests:       xfce4-mpc-plugin
-Suggests:       xfce4-netload-plugin
-Suggests:       xfce4-notes-plugin
-Suggests:       xfce4-places-plugin
-Suggests:       xfce4-screenshooter-plugin
-Suggests:       xfce4-sensors-plugin
-Suggests:       xfce4-smartbookmark-plugin
-Suggests:       xfce4-systemload-plugin
-Suggests:       xfce4-timeout-out-plugin
-Suggests:       xfce4-timer-plugin
-Suggests:       xfce4-verve-plugin
-Suggests:       xfce4-wavelan-plugin
-Suggests:       xfce4-weather-plugin
-Suggests:       xfwm4-themes
-Suggests:       xfce4-vala
 
 # from data/COMMON-DESKTOP-OPT
 # packages a GTK application
 Recommends:     gutenprint
 # MAYBE later lsb-graphics
-Recommends:     icedtea-web
 # give net shares
 Recommends:     samba
 # needs python-qt4, see#649280#14
@@ -166,7 +137,7 @@ Provides:       pattern-order() = 1300
 Requires:       pattern() = basesystem
 Requires:       pattern() = x11
 Provides:       patterns-openSUSE-xfce_basis = %{version}
-Obsoletes:      patterns-openSUSE-xfce_basise < %{version}
+Obsoletes:      patterns-openSUSE-xfce_basis < %{version}
 # This defines a bare minimum Xfce desktop used, for example, as
 # base for the openSUSE Rescue CD
 Requires:       thunar
@@ -232,7 +203,6 @@ Suggests:       desktop-branding
 
 Recommends:     MozillaFirefox
 Recommends:     desktop-data-openSUSE
-Recommends:     avahi
 # bnc#508120
 Recommends:     xdg-user-dirs
 # metalink downloader

@@ -103,4 +103,12 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860860</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c10dcb5d1a6cbbd30de8ce207c5204bc</srcmd5>
+    <version>20210209</version>
+    <time>1612901787</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up weak dependencies (forwarded request 870375 from mauriziogalli)</comment>
+    <requestid>870549</requestid>
+  </revision>
 </revisionlist>
