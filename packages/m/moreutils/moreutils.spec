@@ -1,7 +1,7 @@
 #
 # spec file for package moreutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           moreutils
-Version:        0.64
+Version:        0.65
 Release:        0
 Summary:        Additional Unix Utilities
 License:        GPL-2.0-or-later AND GPL-2.0-only AND MIT
@@ -30,9 +30,6 @@ Requires:       perl
 Requires:       perl-IPC-Run
 Requires:       perl-Time-Duration
 Requires:       perl-TimeDate
-# These perl modules add functionality to the ts command, as they are added in eval'd code they are not
-# picked up automatically by rpm.
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is a growing collection of the Unix tools that nobody thought to write long ago, when Unix was young.
@@ -68,7 +65,6 @@ Conflicts:      gnu_parallel
 
   - parallel: run multiple jobs at once
 
-
 %prep
 %setup -q
 sed -e 's/^CFLAGS =/CFLAGS ?=/' -i is_utf8/Makefile
@@ -76,21 +72,21 @@ sed -e 's/^CFLAGS =/CFLAGS ?=/' -i is_utf8/Makefile
 %build
 export CFLAGS="%{optflags}"
 %if 0%{?suse_version}
-export DOCBOOKXSL="/usr/share/xml/docbook/stylesheet/nwalsh/current"
+export DOCBOOKXSL="%{_datadir}/xml/docbook/stylesheet/nwalsh/current"
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
-export DOCBOOKXSL="/usr/share/sgml/docbook/xsl-stylesheets"
+export DOCBOOKXSL="%{_datadir}/sgml/docbook/xsl-stylesheets"
 %endif
-make %{?_smp_mflags}
+%make_build
 echo "### before install ###"
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 echo "### after install ###"
 
 %files
-%defattr(-, root, root)
-%doc COPYING README
+%license COPYING
+%doc README
 %attr(644, root, root) %{_mandir}/man1/chronic.1*
 %attr(644, root, root) %{_mandir}/man1/combine.1*
 %attr(644, root, root) %{_mandir}/man1/errno.1*
@@ -121,8 +117,8 @@ echo "### after install ###"
 %{_bindir}/zrun
 
 %files parallel
-%defattr(-,root,root)
-%doc README COPYING
+%doc README
+%license COPYING
 %attr(644, root, root) %{_mandir}/man1/parallel.1.gz
 %{_bindir}/parallel
 

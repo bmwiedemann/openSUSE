@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 22:04:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.65:
+  * vipe: Added --suffix option.
+  * ifdata: fail when -ph is given but no hwaddr is available 
+
+-------------------------------------------------------------------
 Sat Oct 10 19:39:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.64:
