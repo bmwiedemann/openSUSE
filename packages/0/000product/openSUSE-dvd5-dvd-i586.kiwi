@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210208" schemaversion="4.1">
+<image name="OBS__openSUSE___20210209" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210208</productvar>
+      <productvar name="VERSION">20210209</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210208,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210209,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210208/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210209/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -198,8 +198,6 @@
       <repopackage name="bind-utils"/>
       <repopackage name="binutils"/>
       <repopackage name="biosdevname"/>
-      <repopackage name="bison"/>
-      <repopackage name="bison-lang"/>
       <repopackage name="bitstream-vera-fonts"/>
       <repopackage name="blinken"/>
       <repopackage name="blinken-lang"/>
@@ -580,7 +578,6 @@
       <repopackage name="geoclue2"/>
       <repopackage name="geocode-glib"/>
       <repopackage name="gettext-runtime"/>
-      <repopackage name="gettext-tools"/>
       <repopackage name="ghex"/>
       <repopackage name="ghex-lang"/>
       <repopackage name="ghostscript"/>
@@ -923,8 +920,6 @@
       <repopackage name="ibus-table-rustrad"/>
       <repopackage name="ibus-table-translit"/>
       <repopackage name="iceauth"/>
-      <repopackage name="icedtea-web"/>
-      <repopackage name="icedtea-web-javadoc"/>
       <repopackage name="icewm"/>
       <repopackage name="icewm-config-upstream"/>
       <repopackage name="icewm-default"/>
@@ -952,7 +947,6 @@
       <repopackage name="insserv-compat"/>
       <repopackage name="intel-vaapi-driver"/>
       <repopackage name="intlfonts-euro-bitmap-fonts"/>
-      <repopackage name="intltool"/>
       <repopackage name="inxi"/>
       <repopackage name="ipa-ex-gothic-fonts"/>
       <repopackage name="ipa-ex-mincho-fonts"/>
@@ -1000,7 +994,6 @@
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
       <repopackage name="jhead"/>
-      <repopackage name="jline1"/>
       <repopackage name="jmdict"/>
       <repopackage name="joe"/>
       <repopackage name="jq"/>
@@ -2215,7 +2208,6 @@
       <repopackage name="libmpath0"/>
       <repopackage name="libmpc3"/>
       <repopackage name="libmpcdec6"/>
-      <repopackage name="libmpd1"/>
       <repopackage name="libmpeg2-0"/>
       <repopackage name="libmpeg2encpp-2_0-0"/>
       <repopackage name="libmpfr6"/>
@@ -2727,7 +2719,6 @@
       <repopackage name="libva-wayland2"/>
       <repopackage name="libva-x11-2"/>
       <repopackage name="libva2"/>
-      <repopackage name="libvala-0_50-0"/>
       <repopackage name="libvcdinfo0"/>
       <repopackage name="libvdeplug3"/>
       <repopackage name="libvdpau1"/>
@@ -3901,7 +3892,6 @@
       <repopackage name="remmina-plugin-vnc"/>
       <repopackage name="remmina-plugin-xdmcp"/>
       <repopackage name="rgb"/>
-      <repopackage name="rhino"/>
       <repopackage name="ripit"/>
       <repopackage name="ristretto"/>
       <repopackage name="ristretto-lang"/>
@@ -4648,7 +4638,6 @@
       <repopackage name="systemsettings5-lang"/>
       <repopackage name="sysuser-shadow"/>
       <repopackage name="sysvinit-tools"/>
-      <repopackage name="tagsoup"/>
       <repopackage name="tango-icon-theme"/>
       <repopackage name="tar"/>
       <repopackage name="tar-lang"/>
@@ -4864,7 +4853,6 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="v4l-conf"/>
       <repopackage name="vacation"/>
-      <repopackage name="vala"/>
       <repopackage name="vcdimager"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
@@ -4978,37 +4966,8 @@
       <repopackage name="xf86-video-voodoo"/>
       <repopackage name="xfce4-appfinder"/>
       <repopackage name="xfce4-appfinder-lang"/>
-      <repopackage name="xfce4-battery-plugin"/>
-      <repopackage name="xfce4-battery-plugin-lang"/>
-      <repopackage name="xfce4-clipman-plugin"/>
-      <repopackage name="xfce4-clipman-plugin-lang"/>
-      <repopackage name="xfce4-cpufreq-plugin"/>
-      <repopackage name="xfce4-cpufreq-plugin-lang"/>
-      <repopackage name="xfce4-cpugraph-plugin"/>
-      <repopackage name="xfce4-cpugraph-plugin-lang"/>
-      <repopackage name="xfce4-datetime-plugin"/>
-      <repopackage name="xfce4-datetime-plugin-lang"/>
-      <repopackage name="xfce4-dev-tools"/>
       <repopackage name="xfce4-dict"/>
       <repopackage name="xfce4-dict-lang"/>
-      <repopackage name="xfce4-diskperf-plugin"/>
-      <repopackage name="xfce4-diskperf-plugin-lang"/>
-      <repopackage name="xfce4-eyes-plugin"/>
-      <repopackage name="xfce4-eyes-plugin-lang"/>
-      <repopackage name="xfce4-fsguard-plugin"/>
-      <repopackage name="xfce4-fsguard-plugin-lang"/>
-      <repopackage name="xfce4-genmon-plugin"/>
-      <repopackage name="xfce4-genmon-plugin-lang"/>
-      <repopackage name="xfce4-mailwatch-plugin"/>
-      <repopackage name="xfce4-mailwatch-plugin-lang"/>
-      <repopackage name="xfce4-mount-plugin"/>
-      <repopackage name="xfce4-mount-plugin-lang"/>
-      <repopackage name="xfce4-mpc-plugin"/>
-      <repopackage name="xfce4-mpc-plugin-lang"/>
-      <repopackage name="xfce4-netload-plugin"/>
-      <repopackage name="xfce4-netload-plugin-lang"/>
-      <repopackage name="xfce4-notes-plugin"/>
-      <repopackage name="xfce4-notes-plugin-lang"/>
       <repopackage name="xfce4-notifyd"/>
       <repopackage name="xfce4-notifyd-branding-openSUSE"/>
       <repopackage name="xfce4-notifyd-lang"/>
@@ -5018,8 +4977,6 @@
       <repopackage name="xfce4-panel-plugin-dict"/>
       <repopackage name="xfce4-panel-profiles"/>
       <repopackage name="xfce4-panel-restore-defaults"/>
-      <repopackage name="xfce4-places-plugin"/>
-      <repopackage name="xfce4-places-plugin-lang"/>
       <repopackage name="xfce4-power-manager"/>
       <repopackage name="xfce4-power-manager-branding-openSUSE"/>
       <repopackage name="xfce4-power-manager-lang"/>
@@ -5030,31 +4987,16 @@
       <repopackage name="xfce4-screenshooter"/>
       <repopackage name="xfce4-screenshooter-lang"/>
       <repopackage name="xfce4-screenshooter-plugin"/>
-      <repopackage name="xfce4-sensors-plugin"/>
-      <repopackage name="xfce4-sensors-plugin-lang"/>
       <repopackage name="xfce4-session"/>
       <repopackage name="xfce4-session-branding-openSUSE"/>
       <repopackage name="xfce4-session-lang"/>
       <repopackage name="xfce4-settings"/>
       <repopackage name="xfce4-settings-branding-openSUSE"/>
       <repopackage name="xfce4-settings-lang"/>
-      <repopackage name="xfce4-smartbookmark-plugin"/>
-      <repopackage name="xfce4-smartbookmark-plugin-lang"/>
-      <repopackage name="xfce4-systemload-plugin"/>
-      <repopackage name="xfce4-systemload-plugin-lang"/>
       <repopackage name="xfce4-taskmanager"/>
       <repopackage name="xfce4-taskmanager-lang"/>
       <repopackage name="xfce4-terminal"/>
       <repopackage name="xfce4-terminal-lang"/>
-      <repopackage name="xfce4-timer-plugin"/>
-      <repopackage name="xfce4-timer-plugin-lang"/>
-      <repopackage name="xfce4-vala"/>
-      <repopackage name="xfce4-verve-plugin"/>
-      <repopackage name="xfce4-verve-plugin-lang"/>
-      <repopackage name="xfce4-wavelan-plugin"/>
-      <repopackage name="xfce4-wavelan-plugin-lang"/>
-      <repopackage name="xfce4-weather-plugin"/>
-      <repopackage name="xfce4-weather-plugin-lang"/>
       <repopackage name="xfce4-whiskermenu-plugin"/>
       <repopackage name="xfce4-whiskermenu-plugin-lang"/>
       <repopackage name="xfce4-xkb-plugin"/>

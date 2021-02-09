@@ -198,8 +198,6 @@
     <package name="bind-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="binutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="biosdevname" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="bison" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bitstream-vera-fonts" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="blinken" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="blinken-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -550,9 +548,9 @@
     <package name="gcin-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gcin-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gcin-qt5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="gconf-polkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="gconf2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="gconf2-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="gconf-polkit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="gconf2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="gconf2-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gcr-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gcr-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gcr-prompter" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -582,7 +580,6 @@
     <package name="geoclue2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="geocode-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="gettext-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ghex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ghex-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ghostscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -923,8 +920,6 @@
     <package name="ibus-table-rustrad" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-translit" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="iceauth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="icedtea-web" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="icedtea-web-javadoc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="icewm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="icewm-config-upstream" supportstatus="unsupported"/> <!-- reason: dvd:icewm-config-upstream -->
     <package name="icewm-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
@@ -949,7 +944,6 @@
     <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intel-vaapi-driver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intlfonts-euro-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
-    <package name="intltool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="inxi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ipa-ex-gothic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ipa-ex-mincho-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -997,7 +991,6 @@
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="jfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="jhead" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="jline1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="joe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
@@ -2301,7 +2294,6 @@
     <package name="libmpath0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmpc3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpcdec6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libmpd1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libmpeg2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpeg2encpp-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2756,7 +2748,6 @@
     <package name="libva-wayland2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libva-x11-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libva2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libvala-0_50-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libvcdinfo0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libvdeplug3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libvdpau1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3849,7 +3840,6 @@
     <package name="remmina-plugin-vnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-plugin-xdmcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="rgb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="rhino" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ripit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ristretto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ristretto-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4596,7 +4586,6 @@
     <package name="systemsettings5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sysuser-shadow" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="sysvinit-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="tagsoup" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tango-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4812,7 +4801,6 @@
     <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="v4l-conf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vacation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="vala" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vcdimager" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="vim-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4926,37 +4914,8 @@
     <package name="xf86-video-voodoo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xfce4-appfinder" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-appfinder-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xfce4-battery-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-battery-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-clipman-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-clipman-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-cpufreq-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-cpufreq-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-cpugraph-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-cpugraph-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-datetime-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-datetime-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-dev-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-dict" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-dict-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xfce4-diskperf-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-diskperf-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-eyes-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-eyes-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-fsguard-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-fsguard-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-genmon-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-genmon-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-mailwatch-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-mailwatch-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-mount-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-mount-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-mpc-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-mpc-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-netload-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-netload-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-notes-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-notes-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-notifyd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-notifyd-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-notifyd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4966,8 +4925,6 @@
     <package name="xfce4-panel-plugin-dict" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-panel-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-panel-restore-defaults" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xfce4-places-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-places-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-power-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-power-manager-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-power-manager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4978,31 +4935,16 @@
     <package name="xfce4-screenshooter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-screenshooter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-screenshooter-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-sensors-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-sensors-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-session-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-session-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-settings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-settings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xfce4-smartbookmark-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-smartbookmark-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-systemload-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-systemload-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-taskmanager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-taskmanager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-terminal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-terminal-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xfce4-timer-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-timer-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-vala" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-verve-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-verve-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-wavelan-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-wavelan-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-weather-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-weather-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-whiskermenu-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-whiskermenu-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-xkb-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -5242,6 +5184,8 @@
     <package name="audacity-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="autogen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="bison" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dhcp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5261,6 +5205,7 @@
     <package name="gcc10-info" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gcc10-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gdk-pixbuf-query-loaders-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="gettext-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="git-daemon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="gnome-keyring-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
