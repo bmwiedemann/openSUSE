@@ -17,4 +17,13 @@
 	- sunwait-implicit-declaration.patch no longer needed</comment>
     <requestid>761181</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>944bcc10fe857a5232bf10e257e17bf8</srcmd5>
+    <version>20201026</version>
+    <time>1612901802</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 20201026
+    - Fix error in print.cpp in displaying target time</comment>
+    <requestid>870307</requestid>
+  </revision>
 </revisionlist>
