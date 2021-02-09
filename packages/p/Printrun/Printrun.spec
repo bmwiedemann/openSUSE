@@ -1,7 +1,7 @@
 #
 # spec file for package Printrun
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,7 @@ It is a part of Printrun.
 %package     -n pronterface
 Summary:        GUI interface for RepRap
 Group:          Productivity/Graphics/Convertors
-Requires:       %{python_module wxPython}
+Requires:       python3-wxPython
 Requires:       pronsole = %{version}-%{release}
 BuildArch:      noarch
 
@@ -99,7 +99,7 @@ It is a part of Printrun.
 Summary:        RepRap STL plater
 Group:          Productivity/Graphics/Convertors
 Requires:       %{name}-common = %{version}-%{release}
-Requires:       %{python_module wxPython}
+Requires:       python3-wxPython
 BuildArch:      noarch
 
 %description -n plater

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  8 21:21:15 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove two remaining instances of python_module macro, pulling
+  in python36-wxPython.
+
+-------------------------------------------------------------------
 Sun Jan 24 09:17:57 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build failures after backwards incompatible changes to
