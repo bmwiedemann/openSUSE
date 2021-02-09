@@ -17,7 +17,7 @@
 
 
 Name:           compsize
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Utility for measuring compression ratio of files on btrfs
 License:        GPL-2.0-or-later

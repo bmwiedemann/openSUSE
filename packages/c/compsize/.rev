@@ -28,4 +28,13 @@ Requested here: https://lists.opensuse.org/opensuse-factory/2018-10/msg00229.htm
   * No changelog provided.</comment>
     <requestid>865063</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f3bb6482b33fb4408e2113a894013995</srcmd5>
+    <version>1.5</version>
+    <time>1612901812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5:
+  * Improve performances.</comment>
+    <requestid>870328</requestid>
+  </revision>
 </revisionlist>
