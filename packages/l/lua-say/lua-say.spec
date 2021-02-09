@@ -1,7 +1,7 @@
 #
 # spec file for package lua-say
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,7 @@ Source:         https://github.com/Olivine-Labs/say/archive/v%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-say = %{version}
-Obsoletes:      lua-say < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-say
 ExclusiveArch:  do_not_build
