@@ -4,13 +4,13 @@ Date: Sat, 11 Jul 2020 07:30:28 +0200
 Subject: [PATCH 3/3] Hack backwards compatibility for TurboJPEG < 2.0.0
 
 ---
- linux/src/decoder.c | 6 ++++++
+ src/decoder.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
-diff --git a/linux/src/decoder.c b/linux/src/decoder.c
+diff --git a/src/decoder.c b/src/decoder.c
 index 69496b0..ad48f92 100644
---- a/linux/src/decoder.c
-+++ b/linux/src/decoder.c
+--- a/src/decoder.c
++++ b/src/decoder.c
 @@ -25,6 +25,15 @@ extern "C" {
  #include "libswscale/swscale.h"
  #include "speex/speex.h"

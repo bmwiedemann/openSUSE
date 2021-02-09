@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb  8 19:32:13 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.7
+  * Added 'Vertical Flip' option. (original PR: #120)
+  * Added Gnome desktop entry. (original PR: #127)
+  * GUI client will show a warning when closing with active
+    connection.
+  * Added -dev command line option, to use a specific video device
+    instead of auto-discovery.
+- Update to version 1.6
+  * Added support for the regular v4l2loopback module
+    (Original pr #105)
+  * Fixed bug with server mode not using the port value correctly
+    in the GUI
+  * Fixed bug when connecting to iOS device via USB (#97)
+- Fix failing build due to renamed libusbmusd pkgconfig file.
+- Drop upstreamed v4l2loopback patches:
+  * 0001-Enhance-compatibility-with-upstream-v4l2loopback-dri.patch
+  * 0002-Accept-upstream-v4l2loopback-driver-as-device.patch
+- Rebased patches:
+  * 0001-Use-icon-installed-to-theme-directory.patch
+  * 0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch
+
+-------------------------------------------------------------------
 Tue Oct  6 19:20:45 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.5
