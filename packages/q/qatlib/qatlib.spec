@@ -35,6 +35,7 @@ ExclusiveArch:  x86_64
 
 %package devel
 Summary:        Development files for qatlib
+Group:          Hardware/Other
 Requires:       %{name}
 
 %description
