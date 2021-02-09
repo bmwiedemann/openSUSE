@@ -133,4 +133,12 @@
     <comment>1</comment>
     <requestid>259351</requestid>
   </revision>
+  <revision rev="20" vrev="1243">
+    <srcmd5>7c639a2abc56e28991a40312e53ad74f</srcmd5>
+    <version>91.10.4</version>
+    <time>1612901835</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>870423</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xcolors
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,35 +32,30 @@ Source:         xcolors-04oct91.tar.bz2
 Patch0:         xcolors-04oct91.patch
 Patch1:         xcolors-04oct91-xorg7_rgbtxt.patch
 BuildRequires:  imake
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Xcolorsel displays colors defined in rgb.txt. You can create an RGB
 file by redirecting the output of showrgb to a file.
 
 %prep
-%setup -q -n xcolors-04oct91
-%patch0
-%if "%(pkg-config --variable=prefix xft)" == "/usr"
-%patch1
-%endif
+%autosetup -n xcolors-04oct91 -p0
 
 %build
 xmkmf -a
-make %{?_smp_mflags} CCOPTIONS="%{optflags}"
+%make_build CCOPTIONS="%{optflags}"
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-make DESTDIR=%{buildroot} install.man
+%make_install install.man
 
 %files
-%defattr(-,root,root)
+%doc Changes
 %{_prefix}/%{_xorg7bin}/xcolors
 %dir %{_prefix}/%{_xorg7libshare}/X11/app-defaults
 %config %{_prefix}/%{_xorg7libshare}/X11/app-defaults/Xcolors
-%doc %{_xorg7_mandir}/man1/xcolors.1x.gz
+%{_xorg7_mandir}/man1/xcolors.1x*
 
 %changelog

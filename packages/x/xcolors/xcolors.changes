@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 08:43:47 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+
+-------------------------------------------------------------------
 Sun Nov  2 00:42:45 UTC 2014 - crrodriguez@opensuse.org
 
 - Switch to individual pkgconfig() build requires 
