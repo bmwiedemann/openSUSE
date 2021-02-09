@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 22:45:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- remove duplicate check section: Only the Xvfb version runs
+  without segfaults when loading the SDL libraries. (Except for
+  two flaky Window position and size tests) 
+
+-------------------------------------------------------------------
 Fri Mar 27 10:23:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.9.7

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySDL2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Can't be properly tested without full desktop system
-%bcond_with     test
-%if %{with test}
 %define         X_display         ":98"
-BuildRequires:  %{python_module pytest}
-BuildRequires:  SDL2
-BuildRequires:  SDL2_ttf
-BuildRequires:  xorg-x11-server
-%endif
 Name:           python-PySDL2
 Version:        0.9.7
 Release:        0
@@ -33,13 +25,23 @@ Summary:        Python SDL2 bindings
 License:        SUSE-Public-Domain
 URL:            https://github.com/marcusva/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/P/PySDL2/PySDL2-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  SDL2 >= 2.0.5
+BuildRequires:  SDL2_gfx >= 1.0.3
+BuildRequires:  SDL2_image >= 2.0.1
+BuildRequires:  SDL2_mixer >= 2.0.1
 BuildRequires:  SDL2_ttf >= 2.0.14
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module opengl}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  xorg-x11-server
+# /SECTION
 Requires:       SDL2 >= 2.0.5
+Requires:       SDL2_gfx >= 1.0.3
+Requires:       SDL2_image >= 2.0.1
+Requires:       SDL2_mixer >= 2.0.1
 Requires:       SDL2_ttf >= 2.0.14
 BuildArch:      noarch
 %python_subpackages
@@ -60,10 +62,10 @@ sed -i 's/\r$//' AUTHORS.txt COPYING.txt README.md
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 #############################################
 ### Launch a virtual framebuffer X server ###
+###      (pytest-xvfb is not enough)      ###
 #############################################
 export DISPLAY=%{X_display}
 Xvfb %{X_display} >& Xvfb.log &
@@ -71,17 +73,19 @@ trap "kill $! || true" EXIT
 sleep 10
 
 pushd sdl2/test
-%python_exec -B -m pytest
+# we do not have audio devices in build environment
+donttest+=" or test_Mix_OpenAudio or test_SDL_GetNumAudioDevices or TestSDLMixer"
+# we get border size 0 in build "desktop" environment
+donttest+=" or test_SDL_GetWindowsBordersSize"
+# flaky segfaults
+donttest+=" or (TestSDL2ExtWindow and (test_Window_position or test_Window_size))"
+%pytest -k "not (${donttest:4})"
 popd
-%endif
-
-%check
-# we do not have audio devices nor joystick in build environment
-%pytest -k "not (test_SDL_GetNumAudioDevices or test_SDL_InitJoystick)"
 
 %files %{python_files}
 %license COPYING.txt
 %doc AUTHORS.txt README.md
-%{python_sitelib}/*
+%{python_sitelib}/sdl2
+%{python_sitelib}/PySDL2-%{version}*-info
 
 %changelog
