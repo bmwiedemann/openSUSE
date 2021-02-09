@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 09 11:08:41 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.104+11:
+  * osc-collab: Do not crash if we encounter a (broken) package (version unknown)
+  * gnome-versions: fix crash in new GNOME version scheme code
+
+-------------------------------------------------------------------
 Fri Jan 15 19:51:43 UTC 2021 - dimstar@opensuse.org
 
 - Update to version 0.104+9:

@@ -123,4 +123,14 @@
     <comment></comment>
     <requestid>863903</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3d76f47e860889c4bd8e05625b1e43f1</srcmd5>
+    <version>0.104+11</version>
+    <time>1612901844</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.104+11:
+  * osc-collab: Do not crash if we encounter a (broken) package (version unknown)
+  * gnome-versions: fix crash in new GNOME version scheme code (forwarded request 870503 from dimstar)</comment>
+    <requestid>870504</requestid>
+  </revision>
 </revisionlist>
