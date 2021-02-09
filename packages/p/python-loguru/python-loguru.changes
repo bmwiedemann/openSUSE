@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Feb  8 22:31:43 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update t0 v0.5.3
+  * Fix child process possibly hanging at exit while combining
+    enqueue=True with third party library like uwsgi
+  * Fix possible exception during formatting of non-string messages
+- from v0.5.2
+  * Fix AttributeError within handlers using serialize=True when
+    calling logger.exception() outside of the context of an exception
+  * Fix error while logging an exception containing a non-picklable
+    value to a handler with enqueue=True
+  * Add support for async callable classes used as sinks
+- from v0.5.1
+  * Modify the way the extra dict is used by LogRecord in order to
+    prevent possible KeyError with standard logging handlers
+  * Add a new default optional argument to logger.catch(), it should
+    be the returned value by the decorated function in case an
+    error occurred
+  * Fix ValueError when using serialize=True in combination with
+    logger.catch() or logger.opt(record=True) due to circular
+    reference of the record dict
+- from v0.5.0
+  * Remove the possibility to modify the severity no of levels
+    once they have been added in order to prevent surprising
+    behavior
+  * Add better support for "structured logging" by automatically
+    adding **kwargs to the extra dict besides using these arguments
+    to format the message. This behavior can be disabled by setting
+    the new .opt(capture=False) parameter
+  * Add a new onerror optional argument to logger.catch(), it should
+    be a function which will be called when an exception occurs in
+    order to customize error handling
+  * Add a new exclude optional argument to logger.catch(), is should
+    be a type of exception to be purposefully ignored and propagated
+    to the caller without being logged
+  * Modify complete() to make it callable from non-asynchronous
+    functions, it can thus be used if enqueue=True to make sure
+    all messages have been processed
+  * Fix possible deadlocks on Linux when multiprocessing.Process()
+    collides with enqueue=True or threading
+  * Fix compression function not executable concurrently due to file
+    renaming (to resolve conflicts) being performed after and not
+    before it
+  * Fix the filter function listing files for retention being too
+    restrictive, it now matches files based on the pattern
+    "basename(.*).ext(.*)"
+  * Fix the impossibility to remove() a handler if an exception is
+    raised while the sink' stop() function is called
+  * Fix file sink left in an unstable state if an exception occurred
+    during retention or compression process
+  * Fix situation where changes made to record["message"] were
+    unexpectedly ignored when opt(colors=True), causing
+    "out-of-date" message to be logged due to implementation details
+  * Fix possible exception if a stream having an isatty() method
+    returning True but not being compatible with colorama is used
+    on Windows
+  * Fix exceptions occurring in coroutine sinks never retrieved and
+    hence causing warnings
+
+-------------------------------------------------------------------
 Thu Jan 21 10:44:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Add runtime requirement for contextvars and the correct BR for
