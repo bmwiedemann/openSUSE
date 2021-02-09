@@ -222,4 +222,12 @@
     <comment>Version bump for jsc#SLE-7482.</comment>
     <requestid>741643</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>529b021cf2505faf050e7d4dfcd38574</srcmd5>
+    <version>0.4.11</version>
+    <time>1612901822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870367</requestid>
+  </revision>
 </revisionlist>

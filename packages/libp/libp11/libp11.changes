@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 26 12:00:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.4.11:
+  * Fixed "EVP_PKEY_derive:buffer too small" EC errors (Luka Logar)
+  * Fixed various memory leaks (Mateusz Kwiatkowski)
+  * Fixed Windows VERSIONINFO (Pavol Misik)
+  * Fixed builds with OpenSSL older than 1.0.2 (Michał Trojnara)
+  * Fixed a double free in EVP_PKEY_meth_free() (Mikhail Durnev)
+  * Added CKA_VALUE_LEN to EC key derivation template (Michał Trojnara)
+  * Fixed handling keys without label attribute (efternavn)
+  * Updated the tests (Anderson Toshiyuki Sasaki)
+  * Made ECDH-derived keys extractable (Bent Bisballe Nyeng)
+  * Added support for pin-source within PKCS#11 URI (Stanislav Levin)
+  * Improved LibreSSL compatibility (patchMonkey156)
+  * Fixed handling RSA private keys in BIND (Stanislav Levin)
+  * Added macOS testing support (Stanislav Levin)
+  * Fixed engine object search algorithm (Anderson Toshiyuki Sasaki)
+
+-------------------------------------------------------------------
 Tue Oct 22 04:23:31 UTC 2019 - Jason Sikes <jsikes@suse.com>
 
 - Update to version 0.4.10:
