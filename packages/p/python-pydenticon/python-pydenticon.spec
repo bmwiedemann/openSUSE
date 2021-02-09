@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydenticon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # tests on big endian systems fail due to https://github.com/azaghal/pydenticon/issues/10 , disabled until fixed"
 # can not use "ifarch" when BuildArch is set to noarch
-%if %_arch == s390x || %_arch == s390x || %_arch == ppc || %_arch == ppc64
+%if "%_arch" == "s390x" || "%_arch" == "s390x" || "%_arch" == "ppc" || "%_arch" == "ppc64"
 %bcond_with test
 %else
 %bcond_without test
@@ -31,7 +31,7 @@ Release:        0
 Summary:        Library for generating identicons
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/azaghal/%{modname}
+URL:            https://github.com/azaghal/%{modname}
 Source:         https://pypi.io/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module base}
