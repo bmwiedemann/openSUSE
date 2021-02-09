@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:32:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.2.0
+  * Bump minimum Dask to 2021.02.0 (GH#4486) James Bourbeau
+  * Update TaskState documentation about dependents attribute
+    (GH#4440) Florian Jetter
+  * DOC: Autoreformat all functions docstrings (GH#4475) Matthias
+    Bussonnier
+  * Use cached version of is_coroutine_function in stream handling 
+    to (GH#4481) Ian Rose
+  * Optimize transitions (GH#4451) jakirkham
+  * Create PULL_REQUEST_TEMPLATE.md (GH#4476) Ray Bell
+  * DOC: typo, directives ends with 2 colons :: (GH#4472) Matthias 
+    Bussonnier
+  * DOC: Proper numpydoc syntax for distributed/protocol/*.py 
+    (GH#4473) Matthias Bussonnier
+  * Update pytest.skip usage in test_server_listen (GH#4467) James 
+    Bourbeau
+  * Unify annotations (GH#4406) Ian Rose
+  * Added worker resources from config (GH#4456) Tom Augspurger
+  * Fix var name in worker validation func (GH#4457) Gil Forsyth
+  * Refactor task_groups & task_prefixes (GH#4452) jakirkham
+  * Use parent._tasks in heartbeat (GH#4450) jakirkham
+  * Refactor SchedulerState from Scheduler (GH#4365) jakirkham
+- Do not pin to tornado < 6.1. The referenced pull request reverted
+  that change and we have asyncio test problems anyway.
+- Use new python_module boolean deps capability
+
+-------------------------------------------------------------------
 Thu Jan 28 12:31:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2021.1.1

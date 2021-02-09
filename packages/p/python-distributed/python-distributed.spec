@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distributed%{psuffix}
-Version:        2021.1.1
+Version:        2021.2.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -42,14 +42,13 @@ Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 1.5.0
-Requires:       python-dask >= 2021.1.1
+Requires:       python-dask >= 2021.2.0
 Requires:       python-msgpack
 Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.8.2
-# https://github.com/dask/distributed/pull/4212
-Requires:       python-tornado < 6.1
+Requires:       python-tornado
 %if %{python_version_nodots} < 38
 Requires:       python-contextvars
 Requires:       python-tornado >= 5
@@ -63,7 +62,7 @@ BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module click >= 6.6}
 BuildRequires:  %{python_module cloudpickle >= 1.5.0}
-BuildRequires:  %{python_module dask-all >= 2020.12.0}
+BuildRequires:  %{python_module dask-all >= 2021.2.0}
 # need built extension
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
@@ -79,15 +78,9 @@ BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module sparse}
 BuildRequires:  %{python_module tblib}
 BuildRequires:  %{python_module toolz >= 0.8.2}
+BuildRequires:  %{python_module tornado >= 5 if %python-base < 3.8}
+BuildRequires:  %{python_module tornado >= 6.0.3 if %python-base >= 3.8}
 BuildRequires:  %{python_module zict >= 0.1.3}
-# https://github.com/dask/distributed/pull/4212
-BuildRequires:  %{python_module tornado < 6.1}
-BuildRequires:  (python3-tornado >= 5 if python3-base < 3.8)
-BuildRequires:  (python3-tornado >= 6.0.3 if python3-base >= 3.8)
-BuildRequires:  (python36-tornado >= 5 if python36-base)
-# switch comment/nocomment of the next two lines when the python3 primary flavor has been changed from python38 to python39
-# BuildRequires:  (python38-tornado >= 6.0.3 if python38-base)
-BuildRequires:  (python39-tornado >= 6.0.3 if python39-base)
 %endif
 %python_subpackages
 
@@ -119,7 +112,8 @@ sed -i 's/raise pytest.skip(reason=/raise pytest.skip(/' distributed/tests/test_
 %check
 # add fail and error summaries to pytest report, but xfail is not interesting
 sed -i '/pytest/,/addopts/ s/-rsx/-rfEs/' setup.cfg
-# many tests from multiple files are broken by new pytest-asyncio (see https://github.com/dask/distributed/pull/4212 for explanation)
+# many tests from multiple files are broken by new pytest-asyncio
+# (see https://github.com/dask/distributed/pull/4212 and https://github.com/pytest-dev/pytest-asyncio/issues/168)
 # as a proof build it with old pytest-asyncio and see these tests pass
 donttest+=" or (test_asyncprocess and test_child_main_thread)"
 donttest+=" or (test_asyncprocess and test_close)"
@@ -181,6 +175,7 @@ donttest+=" or (test_scheduler and test_idle_timeout)"
 donttest+=" or (test_scheduler and test_include_communication_in_occupancy)"
 donttest+=" or (test_scheduler and test_log_tasks_during_restart)"
 donttest+=" or (test_scheduler and test_restart)"
+donttest+=" or (test_scheduler and test_scheduler_init_pulls_blocked_handlers_from_config)"
 donttest+=" or (test_scheduler and test_steal_when_more_tasks)"
 donttest+=" or (test_scheduler and test_task_groups)"
 donttest+=" or (test_semaphor and test_getvalue)"
@@ -207,6 +202,7 @@ donttest+=" or (test_stress and test_cancel_stress)"
 donttest+=" or (test_stress and test_close_connections)"
 donttest+=" or (test_tls_functional and test_retire_workers)"
 donttest+=" or (test_tls_functional and test_worker_client)"
+donttest+=" or (test_utils and test_sync_closed_loop)"
 donttest+=" or (test_worker and test_dont_overlap_communications_to_same_worker)"
 donttest+=" or (test_worker and test_get_client)"
 donttest+=" or (test_worker and test_lifetime)"
@@ -230,6 +226,8 @@ donttest+=" or test_metrics"
 donttest+=" or (test_worker and test_fail_write_to_disk)"
 # false version mismatch
 donttest+=" or test_version_warning_in_cluster"
+# ambiguous order in returned message
+donttest+=" or (test_client and test_as_completed_async_for_cancel)"
 %pytest_arch distributed/tests/ -k "not (${donttest:4})" -m "not avoid_travis" -n auto
 %endif
 
