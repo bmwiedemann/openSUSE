@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  9 14:57:36 UTC 2021 - rw@suse.com
+
+- Update to version 02.00.00.3847  [jsc#SLE-12711]
+  (For detailed changes see 'ChangeLog.xz')
+
+-------------------------------------------------------------------
+Fri Dec 11 13:05:13 UTC 2020 - rw@suse.com
+
+- Update to version 02.00.00.3833
+  - Fix create goal command.  [bsc#1174807]
+  (For detailed changes see 'ChangeLog.xz')
+
+-------------------------------------------------------------------
 Tue Mar 10 14:06:35 UTC 2020 - rw@suse.com
 
 - Update to version 02.00.00.3733

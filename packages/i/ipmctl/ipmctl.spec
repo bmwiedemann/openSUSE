@@ -21,7 +21,7 @@
 %define vgit    %{nil}
 
 Name:           ipmctl
-Version:        02.00.00.3733
+Version:        02.00.00.3847
 Release:        0
 Summary:        Utility for managing Intel Optane persistent memory modules
 License:        BSD-3-Clause
@@ -120,7 +120,7 @@ diff -u CMakeLists.txt{.00,} || sleep 4
 %cmake_install
 mkdir -p %{buildroot}%{_sbindir}
 rm -f %{buildroot}%{_datadir}/doc/ipmctl/ipmctl_default.conf
-rm -f %{buildroot}%{_libdir}/*.so.%{abi}
+rm -f %{buildroot}%{_datadir}/doc/ipmctl/LICENSE
 install -m 444 -p "%{SOURCE1}" .
 
 %post -p /sbin/ldconfig
@@ -129,6 +129,7 @@ install -m 444 -p "%{SOURCE1}" .
 
 %files
 %defattr(-,root,root)
+%{!?_licensedir:%global license %%doc}
 %license LICENSE
 %doc README.md CONTRIBUTING.md
 %doc ChangeLog.xz
@@ -140,8 +141,9 @@ install -m 444 -p "%{SOURCE1}" .
 %config %{_sysconfdir}/%{name}.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
 %dir %{_localstatedir}/log/%{name}
+
 #files -n lib%%{name}%%{abi}
-%{_libdir}/lib%{name}.so.%{abi}.*
+%{_libdir}/lib%{name}.so.%{abi}*
 
 %files devel
 %defattr(-,root,root)
