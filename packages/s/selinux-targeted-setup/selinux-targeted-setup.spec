@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-targeted-setup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define _buildshell /bin/bash
 Name:           selinux-targeted-setup
 Version:        20201215
 Release:        0
-Summary:        Install, configure and enable targeted SELinux policy
+Summary:        Metapackage that enables a targeted SELinux policy
 License:        GPL-2.0-or-later
 Group:          System/Management
 BuildArch:      noarch
@@ -29,7 +31,7 @@ Recommends:     container-selinux
 %{update_bootloader_requires}
 
 %description
-Install, configure and enable targeted SELinux policy
+Metapackage that enables a targeted SELinux policy.
 
 %prep
 
@@ -37,7 +39,7 @@ Install, configure and enable targeted SELinux policy
 
 %install
 
-%post
+%post -p /bin/bash
 GRUB_CFG=/etc/default/grub
 SELINUX_CFG=/etc/selinux/config
 LABEL_CFG1=/.autorelabel
@@ -66,7 +68,7 @@ fi
 %{?regenerate_initrd_posttrans}
 %update_bootloader_posttrans
 
-%postun
+%postun -p /bin/bash
 GRUB_CFG=/etc/default/grub
 SELINUX_CFG=/etc/selinux/config
 
