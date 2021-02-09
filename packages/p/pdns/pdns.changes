@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  8 11:14:53 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.4.1
+  * Improvements
+    - debian packaging update #9965
+    - dockerfiles: do not claim equivs-dummy is built from the pdns source package #9953
+    - Fix missing #include for gcc-11#9952
+    - lmdb: Do a mdb_readers_check to clean up stale readers on database load #9946
+  * Bug Fixes
+    - fix TCP answer counters #10008
+    - run deleteDomain() inside a transaction #10039
+    - lmdb: do not reuse backend that has seen corrupted data #9985
+    - lmdb: serialise LMDBBackend construction to ensure only a single schema upgrade is attempted #9949
+    - backport some asan/ubsan fixes #9923
+    - pdnsutil edit-zone: do not exit on ZoneParser exception #9912
+
+-------------------------------------------------------------------
 Fri Dec 18 18:10:17 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.4.0

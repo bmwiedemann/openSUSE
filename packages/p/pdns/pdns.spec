@@ -1,7 +1,7 @@
 #
 # spec file for package pdns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@
 %define services %{name}.service %{name}@.service %{?ixfrdist_services}
 
 Name:           pdns
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
