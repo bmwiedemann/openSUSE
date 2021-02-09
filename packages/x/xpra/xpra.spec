@@ -115,18 +115,19 @@ connections, and also the xpra html5 client.
 
 %prep
 %autosetup -p1
+
+%build
 # fix shebangs
 find -name '*.py' \
      -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
 sed -i "1 s|^#!/usr/bin/env python\b|#!%__python3|" cups/xpraforwarder
-sed -i "1 s|^/usr/bin/bash|#!$(which bash)|" scripts/xpra_udev_product_version
+sed -i "1 s|^/usr/bin/bash|#!/bin/bash|" scripts/xpra_udev_product_version
 install -m0644 %{SOURCE1} -t xdg
 # set fillup dir
 sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
     -e 's|__UNITDIR__|%{_unitdir}|' \
     -i setup.py
 
-%build
 python3 setup.py build \
     --verbose \
     --with-enc_ffmpeg \
