@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:22:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Skip pythons < 3.8 because of scipy and imagecodecs
+
+-------------------------------------------------------------------
 Sat Aug  1 15:38:06 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update spec file to use python alternative.
