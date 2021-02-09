@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  8 09:58:59 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.4.1
+  * Replace AC_PROG_LIBTOOL with IT_PROG_INTLTOOL
+  * Simplify "query-tooltip" signal handler
+  * statusbar: Use better color that works well with both light
+    and dark themes (gxo#apps/xfce4-taskmanager!17)
+  * Fix tooltip markdown issue
+  * Create notification area icon only if needed
+    (gxo#apps/xfce4-taskmanager#25)
+
+-------------------------------------------------------------------
 Tue Dec 29 02:41:44 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.4.0
