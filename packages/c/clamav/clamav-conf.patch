@@ -194,4 +194,4 @@
 +NotifyClamd /etc/clamd.conf
  
  # Run command after successful database update.
- # Default: disabled
+ # Use EXIT_1 to return 1 after successful database update.

@@ -1,7 +1,7 @@
 #
 # spec file for package clamav
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define clamav_check --enable-check
 %bcond_with clammspack
 Name:           clamav
-Version:        0.103.0
+Version:        0.103.1
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only

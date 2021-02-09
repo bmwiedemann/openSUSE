@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Feb  6 11:20:37 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.103.1
+  * Added a new scan option to alert on broken media (graphics) file
+    formats. This feature mitigates the risk of malformed media files
+    intended to exploit vulnerabilities in other software. At present
+    media validation exists for JPEG, TIFF, PNG, and GIF files. To
+    enable this feature, set AlertBrokenMedia yes in clamd.conf, or
+    use the --alert-broken-media option when using clamscan. These
+    options are disabled by default in this patch release, but may be
+    enabled in a subsequent release. Application developers may enable
+    this scan option by enabling CL_SCAN_HEURISTIC_BROKEN_MEDIA for
+    the heuristic scan option bit field.
+  * Added CL_TYPE_TIFF, CL_TYPE_JPEG types to match GIF, PNG typing
+    behavior. BMP and JPEG 2000 files will continue to detect as
+    CL_TYPE_GRAPHICS because ClamAV does not yet have BMP or JPEG
+    2000 format checking capabilities.
+  * Fixed PNG parser logic bugs that caused an excess of parsing
+    errors and fixed a stack exhaustion issue affecting some systems
+    when scanning PNG files. PNG file type detection was disabled via
+    signature database update for ClamAV version 0.103.0 to mitigate
+    the effects from these bugs.
+  * Fixed an issue where PNG and GIF files no longer work with
+    Target:5 graphics signatures if detected as CL_TYPE_PNG/GIF rather
+    than as CL_TYPE_GRAPHICS. Target types now support up to 10
+    possible file types to make way for additional graphics types in
+    future releases.
+  * Fixed clamonacc's --fdpass option.
+    - Interprocess file descriptor passing for clamonacc was broken
+      since version 0.102.0 due to a bug introduced by the switch to
+      curl for communicating with clamd. On Linux, passing file
+      descriptors from one process to another is handled by the
+      kernel, so we reverted clamonacc to use standard system calls
+      for socket communication when fd passing is enabled.
+  * Fixed a clamonacc stack corruption issue on some systems when
+    using an older version of libcurl.
+  * Allow clamscan and clamdscan scans to proceed even if the
+    realpath lookup failed. This alleviates an issue on Windows
+    scanning files hosted on file- systems that do not support the
+    GetMappedFileNameW() API such as on ImDisk RAM-disks.
+  * Fixed freshclam --on-update-execute=EXIT_1 temporary directory
+    cleanup issue.
+  * clamd's log output and VirusEvent now provide the scan target's
+    file path instead of a file descriptor. The clamd socket API for
+    submitting a scan by FD-passing doesn't include a file path, this
+    feature works by looking up the file path by file descriptor.
+    This feature works on Mac and Linux but is not yet implemented
+    for other UNIX operating systems. FD-passing is not available for
+    Windows.
+  * Fixed an issue where freshclam database validation didn't work
+    correctly when run in daemon mode on Linux/Unix.
+
+-------------------------------------------------------------------
 Thu Nov 12 11:02:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not hard-depend on systemd: use systemd_ordering instead of
