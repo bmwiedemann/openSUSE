@@ -201,4 +201,14 @@
     <comment></comment>
     <requestid>867566</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2b3932e67515fbc71d66051161d5e8cc</srcmd5>
+    <version>0.9.64.4</version>
+    <time>1612901808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.64.4:
+  * disabled overlayfs, pending multiple fixes
+  * fixed launch firefox for open url in telegram-desktop.profile</comment>
+    <requestid>870339</requestid>
+  </revision>
 </revisionlist>

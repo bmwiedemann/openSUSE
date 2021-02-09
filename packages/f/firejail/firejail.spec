@@ -17,12 +17,12 @@
 
 
 Name:           firejail
-Version:        0.9.64.2
+Version:        0.9.64.4
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
 Group:          Productivity/Security
-URL:            https://firejail.wordpress.com/
+URL:            https://firejail.wordpress.com
 Source0:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 BuildRequires:  fdupes

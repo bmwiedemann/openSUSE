@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  7 23:09:58 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.9.64.4:
+  * disabled overlayfs, pending multiple fixes
+  * fixed launch firefox for open url in telegram-desktop.profile
+
+-------------------------------------------------------------------
 Thu Jan 28 18:35:06 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.9.64.2:
