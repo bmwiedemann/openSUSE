@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  5 20:18:20 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors.
+
+-------------------------------------------------------------------
 Thu Jan 28 18:30:29 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Change 'Requires:' to other HPC packages to %requires_eq to depend

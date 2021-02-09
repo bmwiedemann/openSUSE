@@ -264,4 +264,13 @@
 - Make sure, doc package is built for SLE (bsc#1173269).</comment>
     <requestid>868292</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>053d638e208d20700ba9825afd5d64c1</srcmd5>
+    <version>3.14.1</version>
+    <time>1612901765</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors. (forwarded request 869850 from eeich)</comment>
+    <requestid>869851</requestid>
+  </revision>
 </revisionlist>

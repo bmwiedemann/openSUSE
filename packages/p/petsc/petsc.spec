@@ -43,6 +43,9 @@ ExcludeArch:    s390 s390x
 %if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -79,6 +82,13 @@ BuildArch:      noarch
 %{bcond_with hpc}
 %endif
 
+%if "%flavor" == "openmpi4"
+%{?DisOMPI4}
+%define mpi_family openmpi
+%define mpi_vers 4
+%{bcond_with hpc}
+%endif
+
 %if "%flavor" == "mvapich2"
 %define mpi_family mvapich2
 %{bcond_with hpc}
@@ -108,6 +118,15 @@ BuildArch:      noarch
 %define compiler_family gnu
 %undefine c_f_ver
 %define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_family openmpi
+%define compiler_family gnu
+%undefine c_f_ver
+%define mpi_vers 4
 %{bcond_without hpc}
 %endif
 
@@ -152,6 +171,15 @@ BuildArch:      noarch
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 7
+%define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
 %if "%flavor" == "gnu7-mvapich2-hpc"
 %define mpi_family mvapich2
 %define compiler_family gnu
@@ -190,6 +218,15 @@ BuildArch:      noarch
 %define compiler_family gnu
 %define c_f_ver 8
 %define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 4
 %{bcond_without hpc}
 %endif
 
@@ -234,6 +271,15 @@ BuildArch:      noarch
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
 %if "%flavor" == "gnu9-mvapich2-hpc"
 %define mpi_family mvapich2
 %define compiler_family gnu
@@ -245,6 +291,56 @@ BuildArch:      noarch
 %define mpi_family mpich
 %define compiler_family gnu
 %define c_f_ver 9
+%{bcond_without hpc}
+%endif
+#
+%if "%flavor" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-mvapich2-hpc"
+%define mpi_family mvapich2
+%define compiler_family gnu
+%define c_f_ver 10
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-mpich-hpc"
+%define mpi_family mpich
+%define compiler_family gnu
+%define c_f_ver 10
 %{bcond_without hpc}
 %endif
 
