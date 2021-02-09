@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Feb  9 09:48:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.7
+  * Sample applies now suppress logging in addition to stdout and 
+    stderr
+  * Allow new kwargs offset and origin for pandas df.resample
+- Changes in 1.0.5
+  * Added warnings/errors for swifter methods which do not exist 
+    when using modin dataframes
+  * Updated Dask Dataframe dependencies to require a more recent 
+    version
+  * Updated examples/speed benchmark notebooks
+- Changes in 1.0.3
+  * Fixed bug with string, axis=1 applies for pandas dataframes 
+    that prevented swifter from leveraging modin for 
+    parallelization when returning a series instead of a dataframe
+- Changes in 1.0.2
+  * Remove pickle5 hard dependency
+- Changes in 1.0.1
+  * Reduce resources consumed by swifter by only importing modin/
+    ray when necessary.
+  * Added swifter.register_modin() function, which gives access to 
+    modin.DataFrame.swifter.apply(...), but is only required if 
+    modin is imported after swifter. If you import modin before 
+    swifter, this is not necessary.
+- Changes in 1.0.0
+  * Two major enhancements are included in this release, both 
+    involving the use of modin in swifter. Special thanks to Devin 
+    Petersohn for the collaboration.
+  * Enable compatibility with modin dataframes. Compatibility not 
+    only allows modin dataframes to work with
+    df.swifter.apply(...), but still attempts to vectorize the 
+    operation which can lead to a performance boost.
+    Example:
+      import modin.pandas as pd
+       df = pd.DataFrame(...)
+       df.swifter.apply(...)
+  * Significantly speed up swifter axis=1 string applies by using 
+    Modin, resolving a long-standing issue for swifter.
+  * Use Modin for axis=1 string applies, unless 
+    allow_dask_on_strings(True) is set. If that flag is set, still 
+    use Dask.
+    NOTE: this means that allow_dask_on_strings() is no longer 
+    required to work with text data using swifter.
+- Changes in 0.305
+  * Remove Numba hard dependency, but still handle TypingErrors 
+    when numba is installed 
+  * Only call tqdm's progress_apply on transformations (e.g. 
+    Resampler, Rolling) when tqdm has an implementation for that 
+    object.
+- Do not require modin and skip the tests involving it.
+  gh#jmcarpenter2/swifter#147
+
+-------------------------------------------------------------------
 Thu May  7 07:13:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.304:
