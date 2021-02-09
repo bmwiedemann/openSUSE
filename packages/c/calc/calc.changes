@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb  4 08:22:25 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.7.6:
+  * The missing cscript/square.calc file has been restored.
+
+-------------------------------------------------------------------
+Thu Feb  4 08:20:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.7.5:
+  * Requiring calc shell scripts to use -s -f at the end of the
+    initial #! line.
+  * Fixed /tmp/mersenne example in calc(1) man page.
+  * Added make variable ${ARCH_CFLAGS}.  The ${ARCH_CFLAGS} is
+    added after ${CCMISC} and before ${EXTRA_CFLAGS} when building
+    the ${CFLAGS} for compiling C code.  are ${CC} when compiling
+    C files.  The default value is:
+  * By default, the calc history file is located in ~/.calc_history.
+    Now, if the environment variable $CALCHISTFILE is defined
+    and is non-empty, then calc history file will be defined
+    by the $CALCHISTFILE environment variable.
+  * Calc as defined 0^0 as 1.  However in the past, 0 raised to
+    an expression that evaluated to zero returned 1.  The result
+    was that 0^0 was different than 0^(6-6) or even 0^(0).
+    Now, calc will return 1 for 0^(0) and 0^zero when zero == 0.
+
+-------------------------------------------------------------------
 Thu Nov 29 11:53:30 UTC 2018 - mvetter@suse.com
 
 - new stable release 2.12.7.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package calc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname 2
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.12.7.2
+Version:        2.12.7.6
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
 Group:          Productivity/Scientific/Math
-Url:            http://www.isthe.com/chongo/tech/comp/calc/index.html
+URL:            http://www.isthe.com/chongo/tech/comp/calc/index.html
 Source0:        http://www.isthe.com/chongo/src/calc/%{name}-%{version}.tar.bz2
 Source1:        http://www.isthe.com/chongo/src/calc/checksum.sha-256
 Source2:        README.openSUSE
