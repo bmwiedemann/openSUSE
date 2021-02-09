@@ -1,7 +1,7 @@
 #
 # spec file for package python-gTTS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gTTS
-Version:        2.1.1
+Version:        2.2.2
 Release:        0
 Summary:        Python module to create MP3 files from spoken text via the Google TTS API
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pndurette/gTTS
 Source:         https://files.pythonhosted.org/packages/source/g/gTTS/gTTS-%{version}.tar.gz
-Patch0:         remove-pip-requirement.patch
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module gTTS-token >= 1.1.3}
@@ -56,7 +55,6 @@ sentences where the speech would naturally pause.
 
 %prep
 %setup -q -n gTTS-%{version}
-%patch0 -p1
 
 %build
 %python_build
