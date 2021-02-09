@@ -1,7 +1,7 @@
 #
 # spec file for package xpenguins
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xpenguins
 Version:        2.2
 Release:        0
-Summary:        cute little penguins that walk along the tops of your windows
-License:        GPL-2.0+
+Summary:        Cute little penguins that walk along the tops of your windows
+License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
-Url:            http://xpenguins.seul.org/
+URL:            http://xpenguins.seul.org/
 Source:         xpenguins-%{version}.tar.bz2
 Source1:        README.openSUSE
 Source2:        %{name}.desktop
@@ -32,12 +32,13 @@ Source5:        %{name}-stop.png
 Patch0:         xpenguins-%{version}-typo.diff
 Patch1:         xpenguins-%{version}-automake-1.13.diff
 BuildRequires:  automake
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This program animates a friendly family of penguins on your root
@@ -47,30 +48,28 @@ and sometimes even levitate with their genetically-modified
 go-go-gadget 'copter ability.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-cp %{SOURCE1} %{SOURCE4} %{SOURCE5} .
+%autosetup -p1
 
 %build
 aclocal
-automake -a
-autoconf
+autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp %{name}.png %{name}-stop.png %{buildroot}%{_datadir}/pixmaps
+cp %{SOURCE4} %{SOURCE5} %{buildroot}%{_datadir}/pixmaps
+cp %{SOURCE4} .
 %suse_update_desktop_file -i %{name} Amusement
 %suse_update_desktop_file -i %{name}-stop Amusement
+%fdupes %{buildroot}
 
 %files
-%defattr(-,root,root)
-%doc README* AUTHORS COPYING ChangeLog
+%license COPYING
+%doc README* AUTHORS ChangeLog
 %attr(755,root,root) %{_bindir}/xpenguins
-%doc %{_mandir}/man1/xpenguins.1*
+%{_mandir}/man1/xpenguins.1%{?ext_man}
 %{_datadir}/xpenguins
 %{_datadir}/pixmaps/*.png
 %{_datadir}/applications/*.desktop
