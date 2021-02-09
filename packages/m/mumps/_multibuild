@@ -3,6 +3,7 @@
   <package>openmpi1</package>
   <package>openmpi2</package>
   <package>openmpi3</package>
+  <package>openmpi4</package>
   <package>mvapich2</package>
   <package>scotch-serial</package>
   <package>scotch-openmpi1</package>
@@ -10,6 +11,7 @@
   <package>gnu-openmpi-hpc</package>
   <package>gnu-openmpi2-hpc</package>
   <package>gnu-openmpi3-hpc</package>
+  <package>gnu-openmpi4-hpc</package>
   <package>gnu-mvapich2-hpc</package>
   <package>gnu-mpich-hpc</package>
 <!-- <package>scotch-mvapich2</package> -->

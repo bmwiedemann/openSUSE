@@ -167,4 +167,12 @@
   proper ABI versioning. (forwarded request 867620 from eeich)</comment>
     <requestid>867656</requestid>
   </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>2a8622c61b93ea6639968c987c570811</srcmd5>
+    <version>5.2.1</version>
+    <time>1612901767</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable openmpi4 builds for SLE/Leap &amp;lt; 15.3. (forwarded request 869855 from eeich)</comment>
+    <requestid>869856</requestid>
+  </revision>
 </revisionlist>

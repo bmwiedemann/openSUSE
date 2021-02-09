@@ -38,6 +38,9 @@ ExclusiveArch:  do_not_build
 %if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
 
 %if "%{flavor}" == "serial"
 # Stub MPI library
@@ -61,6 +64,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi2"
+%{?DisOMPI2}
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 2
@@ -68,6 +72,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi3"
+%{?DisOMPI3}
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 3
@@ -75,6 +80,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi4"
+%{?DisOMPI4}
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 4
@@ -97,6 +103,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "scotch-openmpi2"
+%{?DisOMPI2}
 %define mpi_family  openmpi
 %define mpi_ver 2
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
@@ -105,6 +112,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "scotch-openmpi3"
+%{?DisOMPI3}
 %define mpi_family  openmpi
 %define mpi_ver 3
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
@@ -113,6 +121,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "scotch-openmpi4"
+%{?DisOMPI4}
 %define mpi_family  openmpi
 %define mpi_ver 4
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
@@ -158,7 +167,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu-openmpi4-hpc"
-%{?DisOMPI3}
+%{?DisOMPI4}
 %undefine c_f_ver
 # macro mpi is used by macros for master package
 %global mpi_family openmpi
@@ -213,7 +222,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu7-openmpi4-hpc"
-%{?DisOMPI3}
+%{?DisOMPI4}
 %define c_f_ver 7
 # macro mpi is used by macros for master package
 %global mpi_family openmpi
@@ -268,7 +277,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu8-openmpi4-hpc"
-%{?DisOMPI3}
+%{?DisOMPI4}
 %define c_f_ver 8
 # macro mpi is used by macros for master package
 %global mpi_family openmpi
@@ -323,7 +332,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu9-openmpi4-hpc"
-%{?DisOMPI3}
+%{?DisOMPI4}
 %define c_f_ver 9
 # macro mpi is used by macros for master package
 %global mpi_family openmpi
@@ -378,7 +387,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
-%{?DisOMPI3}
+%{?DisOMPI4}
 %define c_f_ver 10
 # macro mpi is used by macros for master package
 %global mpi_family openmpi

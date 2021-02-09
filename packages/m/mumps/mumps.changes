@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  5 20:31:13 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Disable openmpi4 builds for SLE/Leap < 15.3.
+
+-------------------------------------------------------------------
 Thu Jan 28 17:52:27 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Change 'Requires:' to other HPC packages to %requires_eq to depend
