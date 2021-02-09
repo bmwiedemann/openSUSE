@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyginac
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,9 @@
 #
 
 
-%define skip_python2 1
+# The specfile is prepared for multiple python flavors, but the boost library
+# is only available for the primary python3.
+%define pythons python3
 %global modname pyginac
 Name:           python-pyginac
 Version:        1.5.5
@@ -25,19 +27,17 @@ Summary:        Python bindings for ginac - a symbolic manipulation library
 License:        GPL-2.0-only
 URL:            http://moebinv.sourceforge.net/pyGiNaC.html
 Source:         https://download.sf.net/pyginac.moebinv.p/%{modname}_%{version}.orig.tar.gz
-# PATCH-FEATURE-OPENSUSE pyginac-makefile-fix.patch badshah400@gmail.com -- In the lack of a proper configuring tool, we patch the Makefile appropriately to fix installation paths
-Patch0:         pyginac-makefile-fix.patch
-# PATCH-FIX-UPSTREAM pyginac-python38.patch badshah400@gmail.com -- Fix build with python 3.8, patch taken from upstream (commit b4848e)
-Patch1:         pyginac-python38.patch
+# PATCH-FEATURE-OPENSUSE pyginac-opensusepaths.patch badshah400@gmail.com, code@bnavigator.de -- Enable build with multiple python versions, patch adapted from upstream (commit b4848e)
+Patch1:         pyginac-opensusepaths.patch
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module devel}
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ginac-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module Cython}
-
 %python_subpackages
 
 %description
@@ -61,27 +61,37 @@ pyginac.
 %autosetup -p1 -n %{modname}-%{version}
 
 %build
-%make_build
+cp -ar site-packages site-packages0
+%{python_expand # build for flavor and place into shuffled build/ dir
+%make_build PYTHON=$python
+mkdir build
+mv site-packages build/
+# get clean state for next build
+cp -ar site-packages0 site-packages
+}
 
 %install
-%make_install
-
-mv %{buildroot}%{_prefix}/lib/python3 %{buildroot}%{_prefix}/lib/python%{python_version}
-if [[ "%{_lib}" != 'lib' ]]
-then
-  mkdir -p %{buildroot}%{_libdir}
-  mv %{buildroot}%{_prefix}/lib/* %{buildroot}%{_libdir}/
+%{python_expand # install into flavor sitearch
+rm -r site-packages
+cp -ar build/site-packages ./
+%make_install PYTHON=$python prefix=%{_prefix} libdir=%{$python_sitearch} docdir=%{_docdir}/%{$python_prefix}-pyginac
+}
+%{python_compileall}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+if [[ "%{_lib}" != 'lib' ]]; then
+  mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_libdir}/
 fi
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{python_sitearch}
-%python_exec bin/checkall.py
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python bin/checkall.py
+}
 
 %files %{python_files}
 %license COPYING
 %doc AUTHORS debian/changelog README.md
-%doc %{_docdir}/%{python_flavor}-%{modname}
+%doc %{_docdir}/%{python_prefix}-pyginac
 %{python_sitearch}/ginac/
 %{python_sitearch}/*.so
 
