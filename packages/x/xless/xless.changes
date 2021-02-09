@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  8 12:31:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec file modernisation
+
+-------------------------------------------------------------------
 Wed Oct  1 23:42:16 UTC 2014 - crrodriguez@opensuse.org
 
 - Cleanup BuildRequires, do not use xorg-x11-devel 

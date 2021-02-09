@@ -118,4 +118,12 @@ Use SPDX license (forwarded request 111340 from babelworx)</comment>
     <comment>1</comment>
     <requestid>254147</requestid>
   </revision>
+  <revision rev="18" vrev="1258">
+    <srcmd5>5551366d69e5efd85b06c6304fdfdba2</srcmd5>
+    <version>1.7</version>
+    <time>1612901785</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec file modernisation</comment>
+    <requestid>870270</requestid>
+  </revision>
 </revisionlist>
