@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2021.1.1
+Version:        2021.2.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -263,7 +263,10 @@ donttest+=" or test_local_scheduler"
 # /SECTION
 # different seed or mimesis version
 donttest+=" or (test_datasets and test_deterministic)"
-%pytest dask/tests -k "not ($donttest)" -n auto
+# distributed/pytest-asyncio cancer is spreading
+# https://github.com/dask/distributed/pull/4212 and https://github.com/pytest-dev/pytest-asyncio/issues/168
+donttest+="or test_annotations_blockwise_unpack"
+%pytest -ra dask/tests -k "not ($donttest)" -n auto
 %endif
 
 %if !%{with test}

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:24:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2020.2.0
+  * Add percentile support for NEP-35 (GH#7162) Peter Andreas
+    Entschev
+  * Added support for Float64 in column assignment (GH#7173) Nils
+    Braun
+  * Coarsen rechunking error (GH#7127) Davis Bennett
+  * Fix upstream CI tests (GH#6896) Julia Signell
+  * Revise HighLevelGraph Mapping API (GH#7160) Guido Imperiale
+  * Update low-level graph spec to use any hashable for keys
+    (GH#7163) James Bourbeau
+  * Generically rebuild a collection with different keys (GH#7142)
+    Guido Imperiale
+  * Make easier to link issues in PRs (GH#7130) Ray Bell
+  * Add dask.array.append (GH#7146) D-Stacks
+  * Allow dask.array.ravel to accept array_like argument (GH#7138)
+    D-Stacks
+  * Fixes link in array design doc (GH#7152) Thomas J. Fan
+  * Fix example of using blockwise for an outer product (GH#7119)
+    Bruce Merry
+  * Deprecate HighlevelGraph.dicts in favor of .layers (GH#7145)
+    Amit Kumar
+  * Align FastParquetEngine with pyarrow engines (GH#7091) Richard
+    (Rick) Zamora
+  * Merge annotations (GH#7102) Ian Rose
+  * Simplify contents of parts list in read_parquet (GH#7066) 
+    Richard (Rick) Zamora
+  * check_meta(): use __class__ when checking DataFrame types
+    (GH#7099) Mads R. B. Kristensen
+  * Cache several properties (GH#7104) Illviljan
+  * Fix parquet getitem optimization (GH#7106) Richard (Rick)
+    Zamora
+  * Add cytoolz back to CI environment (GH#7103) James Bourbeau
+
+-------------------------------------------------------------------
 Thu Jan 28 12:25:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2020.1.1
