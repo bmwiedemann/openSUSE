@@ -2,19 +2,21 @@ Index: pyginac-1.5.5/Makefile
 ===================================================================
 --- pyginac-1.5.5.orig/Makefile
 +++ pyginac-1.5.5/Makefile
-@@ -9,6 +9,11 @@ libdir = $(prefix)/lib/python3/site-pack
+@@ -8,6 +8,13 @@ includedir =  $(prefix)/include
+ libdir = $(prefix)/lib/python3/dist-packages
  datarootdir = $(prefix)/share
- docdir = $(datarootdir)/doc/packages/python3-pyginac
- 
-+PYTHON_CONFIG = $(shell if python3-config --ldflags --libs --embed >/dev/null 2>&1; then \
-+echo  python3-config  --embed; \
+ docdir = $(datarootdir)/doc/python3-pyginac
++
++PYTHON=python3
++PYTHON_CONFIG = $(shell if $(PYTHON)-config --ldflags --libs --embed >/dev/null 2>&1; then \
++echo  $(PYTHON)-config  --embed; \
 +else \
-+echo  python3-config ; \
++echo  $(PYTHON)-config ; \
 +fi)
  #======================================================================
  ifeq ($(DISTRO_NAME),stretch)
  BOOST_PYTHON_LIB=boost_python-py35
-@@ -16,11 +21,11 @@ else
+@@ -15,11 +22,11 @@ else
  BOOST_PYTHON_LIB=boost_python3
  endif
  
