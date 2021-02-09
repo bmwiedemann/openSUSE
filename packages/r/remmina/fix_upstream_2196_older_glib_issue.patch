@@ -1,0 +1,43 @@
+From 04eb76c1de7a1bd2998ecb0615b90436a3ec4f80 Mon Sep 17 00:00:00 2001
+From: Antenore Gatta <antenore@simbiosi.org>
+Date: Mon, 8 Feb 2021 07:43:08 +0100
+Subject: [PATCH] Ignoring glib functions if glib version older then 2.56
+
+Closes #2409
+---
+ src/remmina.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/remmina.c b/src/remmina.c
+index 344a37638..53c1fc4ff 100644
+--- a/src/remmina.c
++++ b/src/remmina.c
+@@ -322,7 +322,6 @@ int main(int argc, char *argv[])
+ 	TRACE_CALL(__func__);
+ 	GtkApplication *app;
+ 	const gchar *app_id;
+-	gchar *summary;
+ 	int status;
+ 
+ 	g_unsetenv("GDK_CORE_DEVICE_EVENTS");
+@@ -368,7 +367,8 @@ int main(int argc, char *argv[])
+ 	g_set_prgname(app_id);
+ #endif
+ 	g_application_add_main_option_entries(G_APPLICATION(app), remmina_options);
+-	summary = g_strdup_printf ("%s %s", app_id, VERSION);
++#if GLIB_CHECK_VERSION(2,56,0)
++	gchar *summary = g_strdup_printf ("%s %s", app_id, VERSION);
+ 	g_application_set_option_context_summary (G_APPLICATION(app), summary);
+ 	g_free(summary);
+ 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
+@@ -402,6 +402,7 @@ int main(int argc, char *argv[])
+ 				"To update username and password and set a different resolution mode of a Remmina connection profile, use:\n"
+ 				"\n"
+ 				"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-option resolution_mode=2 --set-option password\n"));
++#endif
+ 
+ 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
+ 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
+-- 
+GitLab
+
