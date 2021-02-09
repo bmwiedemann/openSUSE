@@ -1211,7 +1211,9 @@ unsorted:
   - binwalk 
   - bird 
   - bird-doc 
+  - bison: [i586] 
   - bison-32bit: [x86_64] 
+  - bison-lang: [i586] 
   - bitcoin-qt5 
   - bitcoin-test 
   - bitcoin-utils 
@@ -2809,6 +2811,7 @@ unsorted:
   - doctest-devel 
   - dogtail 
   - doh 
+  - dolly 
   - dolphin-devel 
   - dolphin-emu: [x86_64] 
   - dolphin-emu-lang: [x86_64] 
@@ -3133,7 +3136,6 @@ unsorted:
   - eperiodique 
   - ephoto 
   - ephoto-lang 
-  - epic 
   - epiphany-branding-upstream 
   - epour 
   - epour-lang 
@@ -3757,96 +3759,6 @@ unsorted:
   - galculator-lang 
   - galene 
   - gama 
-  - gambas3 
-  - gambas3-devel 
-  - gambas3-gb-args 
-  - gambas3-gb-cairo 
-  - gambas3-gb-chart 
-  - gambas3-gb-clipper 
-  - gambas3-gb-complex 
-  - gambas3-gb-compress 
-  - gambas3-gb-compress-bzlib2 
-  - gambas3-gb-compress-zlib 
-  - gambas3-gb-crypt 
-  - gambas3-gb-data 
-  - gambas3-gb-db 
-  - gambas3-gb-db-form 
-  - gambas3-gb-db-mysql 
-  - gambas3-gb-db-odbc 
-  - gambas3-gb-db-postgresql 
-  - gambas3-gb-db-sqlite3 
-  - gambas3-gb-dbus 
-  - gambas3-gb-desktop 
-  - gambas3-gb-eval-highlight 
-  - gambas3-gb-form 
-  - gambas3-gb-form-dialog 
-  - gambas3-gb-form-editor 
-  - gambas3-gb-form-mdi 
-  - gambas3-gb-form-print 
-  - gambas3-gb-form-stock 
-  - gambas3-gb-form-terminal 
-  - gambas3-gb-geom 
-  - gambas3-gb-gmp 
-  - gambas3-gb-gsl 
-  - gambas3-gb-gtk 
-  - gambas3-gb-gtk-opengl 
-  - gambas3-gb-gtk3 
-  - gambas3-gb-gui 
-  - gambas3-gb-httpd 
-  - gambas3-gb-image 
-  - gambas3-gb-image-effect 
-  - gambas3-gb-image-imlib 
-  - gambas3-gb-image-io 
-  - gambas3-gb-inotify 
-  - gambas3-gb-jit 
-  - gambas3-gb-libxml 
-  - gambas3-gb-logging 
-  - gambas3-gb-maps 
-  - gambas3-gb-markdown 
-  - gambas3-gb-media 
-  - gambas3-gb-memcached 
-  - gambas3-gb-mime 
-  - gambas3-gb-mysql 
-  - gambas3-gb-ncurses 
-  - gambas3-gb-net 
-  - gambas3-gb-net-curl 
-  - gambas3-gb-net-pop3 
-  - gambas3-gb-net-smtp 
-  - gambas3-gb-openal 
-  - gambas3-gb-opengl 
-  - gambas3-gb-opengl-glsl 
-  - gambas3-gb-opengl-glu 
-  - gambas3-gb-opengl-sge 
-  - gambas3-gb-openssl 
-  - gambas3-gb-option 
-  - gambas3-gb-pcre 
-  - gambas3-gb-pdf 
-  - gambas3-gb-qt5 
-  - gambas3-gb-qt5-ext 
-  - gambas3-gb-qt5-opengl 
-  - gambas3-gb-qt5-webkit 
-  - gambas3-gb-report 
-  - gambas3-gb-report2 
-  - gambas3-gb-scanner 
-  - gambas3-gb-sdl 
-  - gambas3-gb-sdl-sound 
-  - gambas3-gb-settings 
-  - gambas3-gb-signal 
-  - gambas3-gb-term 
-  - gambas3-gb-term-form 
-  - gambas3-gb-util 
-  - gambas3-gb-util-web 
-  - gambas3-gb-v4l 
-  - gambas3-gb-vb 
-  - gambas3-gb-web 
-  - gambas3-gb-web-feed 
-  - gambas3-gb-web-form 
-  - gambas3-gb-xml 
-  - gambas3-gb-xml-rpc 
-  - gambas3-gb-xml-xslt 
-  - gambas3-ide 
-  - gambas3-runtime 
-  - gambas3-script 
   - gamemoded 
   - gamin-devel 
   - gammaray 
@@ -4143,6 +4055,7 @@ unsorted:
   - gettext-runtime-mini 
   - gettext-runtime-mini-tools-doc 
   - gettext-runtime-tools-doc 
+  - gettext-tools: [i586] 
   - gettext-tools-mini 
   - gexif 
   - gexif-lang 
@@ -6716,6 +6629,8 @@ unsorted:
   - icecream 
   - icecream-clang-wrappers 
   - icecream-monitor 
+  - icedtea-web 
+  - icedtea-web-javadoc 
   - ices 
   - icewm-theme-yast-installation 
   - icewm-themes 
@@ -6888,6 +6803,7 @@ unsorted:
   - intlfonts-phonetic-bitmap-fonts 
   - intlfonts-ttf-fonts 
   - intlfonts-type1-fonts 
+  - intltool 
   - inwee 
   - iodbc 
   - iodbc-admin 
@@ -7320,6 +7236,7 @@ unsorted:
   - jlfgr 
   - jline 
   - jline-javadoc 
+  - jline1 
   - jline1-javadoc 
   - jmock 
   - jmock-demo 
@@ -10348,6 +10265,8 @@ unsorted:
   - libfdt-devel-32bit: [x86_64] 
   - libfdt1-32bit: [x86_64] 
   - libfec3 
+  - libff-1_0_0 
+  - libff-devel 
   - libffado-devel 
   - libffado2 
   - libffado2-32bit: [x86_64] 
@@ -11816,6 +11735,7 @@ unsorted:
   - libmpcdec5-32bit: [x86_64] 
   - libmpcdec6-32bit: [x86_64] 
   - libmpd-devel 
+  - libmpd1 
   - libmpd1-32bit: [x86_64] 
   - libmpdclient-devel 
   - libmpdclient2 
@@ -11863,6 +11783,7 @@ unsorted:
   - libmumps-gnu-openmpi1-hpc: [x86_64] 
   - libmumps-gnu-openmpi2-hpc: [x86_64] 
   - libmumps-gnu-openmpi3-hpc: [x86_64] 
+  - libmumps-gnu-openmpi4-hpc: [x86_64] 
   - libmumps-ptscotch5-openmpi1: [x86_64] 
   - libmumps-ptscotch5-openmpi2: [x86_64] 
   - libmumps-scotch5: [x86_64] 
@@ -11871,11 +11792,13 @@ unsorted:
   - libmumps5-openmpi1: [x86_64] 
   - libmumps5-openmpi2: [x86_64] 
   - libmumps5-openmpi3: [x86_64] 
+  - libmumps5-openmpi4: [x86_64] 
   - libmumps_5_2_1-gnu-mpich-hpc: [x86_64] 
   - libmumps_5_2_1-gnu-mvapich2-hpc: [x86_64] 
   - libmumps_5_2_1-gnu-openmpi1-hpc: [x86_64] 
   - libmumps_5_2_1-gnu-openmpi2-hpc: [x86_64] 
   - libmumps_5_2_1-gnu-openmpi3-hpc: [x86_64] 
+  - libmumps_5_2_1-gnu-openmpi4-hpc: [x86_64] 
   - libmunge2 
   - libmunge2-32bit: [x86_64] 
   - libmunit0suse0 
@@ -12378,7 +12301,7 @@ unsorted:
   - libpapi-hpc 
   - libpapi_6_0_0-hpc 
   - libparaview5_8 
-  - libpari-gmp-tls6 
+  - libpari-gmp-tls7 
   - libparlatype-devel 
   - libparlatype3 
   - libparpack2-openmpi1 
@@ -12439,15 +12362,18 @@ unsorted:
   - libpetsc-gnu-openmpi1-hpc 
   - libpetsc-gnu-openmpi2-hpc 
   - libpetsc-gnu-openmpi3-hpc 
+  - libpetsc-gnu-openmpi4-hpc 
   - libpetsc3 
   - libpetsc3-openmpi1 
   - libpetsc3-openmpi2 
   - libpetsc3-openmpi3 
+  - libpetsc3-openmpi4 
   - libpetsc_3_14_1-gnu-mpich-hpc 
   - libpetsc_3_14_1-gnu-mvapich2-hpc 
   - libpetsc_3_14_1-gnu-openmpi1-hpc 
   - libpetsc_3_14_1-gnu-openmpi2-hpc 
   - libpetsc_3_14_1-gnu-openmpi3-hpc 
+  - libpetsc_3_14_1-gnu-openmpi4-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -13952,6 +13878,7 @@ unsorted:
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
   - libvacuumutils37 
+  - libvala-0_50-0 
   - libvala-0_50-devel 
   - libvaladoc-0_50-0 
   - libvaladoc-0_50-devel 
@@ -14820,8 +14747,6 @@ unsorted:
   - lttng-tools-devel 
   - lttng-ust-devel 
   - lttng-ust-doc 
-  - ltxml 
-  - ltxml-devel 
   - lua-Hamliblua 
   - lua-genders 
   - lua-libguestfs: [x86_64] 
@@ -16131,6 +16056,9 @@ unsorted:
   - mumps-gnu-openmpi3-hpc-devel: [x86_64] 
   - mumps-gnu-openmpi3-hpc-doc: [x86_64] 
   - mumps-gnu-openmpi3-hpc-examples: [x86_64] 
+  - mumps-gnu-openmpi4-hpc-devel: [x86_64] 
+  - mumps-gnu-openmpi4-hpc-doc: [x86_64] 
+  - mumps-gnu-openmpi4-hpc-examples: [x86_64] 
   - mumps-mvapich2-5-compat: [x86_64] 
   - mumps-mvapich2-devel: [x86_64] 
   - mumps-mvapich2-devel-static: [x86_64] 
@@ -16151,6 +16079,11 @@ unsorted:
   - mumps-openmpi3-devel-static: [x86_64] 
   - mumps-openmpi3-devel-static-compat: [x86_64] 
   - mumps-openmpi3-examples: [x86_64] 
+  - mumps-openmpi4-5-compat: [x86_64] 
+  - mumps-openmpi4-devel: [x86_64] 
+  - mumps-openmpi4-devel-static: [x86_64] 
+  - mumps-openmpi4-devel-static-compat: [x86_64] 
+  - mumps-openmpi4-examples: [x86_64] 
   - mumps-ptscotch-openmpi1-5-compat: [x86_64] 
   - mumps-ptscotch-openmpi1-devel: [x86_64] 
   - mumps-ptscotch-openmpi1-devel-static: [x86_64] 
@@ -16184,6 +16117,10 @@ unsorted:
   - mumps_5_2_1-gnu-openmpi3-hpc-devel-static: [x86_64] 
   - mumps_5_2_1-gnu-openmpi3-hpc-doc: [x86_64] 
   - mumps_5_2_1-gnu-openmpi3-hpc-examples: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi4-hpc-devel: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi4-hpc-devel-static: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi4-hpc-doc: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi4-hpc-examples: [x86_64] 
   - munge 
   - munge-devel 
   - munge-devel-32bit: [x86_64] 
@@ -16689,7 +16626,6 @@ unsorted:
   - nini 
   - ninja 
   - ninvaders 
-  - nip2 
   - nitrogen 
   - nitrogen-lang 
   - nitroshare 
@@ -16701,7 +16637,6 @@ unsorted:
   - nm-tray-lang 
   - nmap-parse-output 
   - nmap-parse-output-bash-completion 
-  - nmapsi4 
   - nmcli-dmenu 
   - nmh 
   - nml 
@@ -19599,9 +19534,11 @@ unsorted:
   - petsc-gnu-openmpi1-hpc-devel 
   - petsc-gnu-openmpi2-hpc-devel 
   - petsc-gnu-openmpi3-hpc-devel 
+  - petsc-gnu-openmpi4-hpc-devel 
   - petsc-openmpi1-devel 
   - petsc-openmpi2-devel 
   - petsc-openmpi3-devel 
+  - petsc-openmpi4-devel 
   - petsc_3_14_1-gnu-mpich-hpc-devel 
   - petsc_3_14_1-gnu-mpich-hpc-saws 
   - petsc_3_14_1-gnu-mvapich2-hpc-devel 
@@ -19612,6 +19549,8 @@ unsorted:
   - petsc_3_14_1-gnu-openmpi2-hpc-saws 
   - petsc_3_14_1-gnu-openmpi3-hpc-devel 
   - petsc_3_14_1-gnu-openmpi3-hpc-saws 
+  - petsc_3_14_1-gnu-openmpi4-hpc-devel 
+  - petsc_3_14_1-gnu-openmpi4-hpc-saws 
   - pfsglview 
   - pfstools-devel 
   - pfstools-exr 
@@ -20694,7 +20633,6 @@ unsorted:
   - python3-OpenImageIO 
   - python3-PyCBC 
   - python3-PyMuPDF 
-  - python3-PySDL2 
   - python3-QR-Code-generator 
   - python3-Rivet 
   - python3-SHERPA-MC 
@@ -21047,7 +20985,6 @@ unsorted:
   - python3-pwquality 
   - python3-pyIOSXR 
   - python3-pycadf 
-  - python3-pydenticon 
   - python3-pyfg 
   - python3-pyfuse3 
   - python3-pyghmi 
@@ -21119,7 +21056,6 @@ unsorted:
   - python3-susepubliccloudinfo 
   - python3-sushy 
   - python3-swiftclient 
-  - python3-swifter 
   - python3-talloc-32bit: [x86_64] 
   - python3-talloc-devel 
   - python3-tdb-32bit: [x86_64] 
@@ -21135,7 +21071,6 @@ unsorted:
   - python3-vapoursynth 
   - python3-vdirsyncer 
   - python3-virtualbox: [x86_64] 
-  - python3-vispy 
   - python3-voila 
   - python3-vtk 
   - python3-vtk-openmpi1 
@@ -21304,6 +21239,7 @@ unsorted:
   - python36-PyRIC 
   - python36-PyRSS2Gen 
   - python36-PyRect 
+  - python36-PySDL2 
   - python36-PyScreeze 
   - python36-PySocks 
   - python36-PyTrie 
@@ -21959,7 +21895,6 @@ unsorted:
   - python36-cx_Freeze 
   - python36-cymruwhois 
   - python36-cytoolz 
-  - python36-czifile 
   - python36-d2to1 
   - python36-daemonize 
   - python36-daiquiri 
@@ -23097,6 +23032,7 @@ unsorted:
   - python36-pydash 
   - python36-pydata-google-auth 
   - python36-pydbus 
+  - python36-pydenticon 
   - python36-pydicom 
   - python36-pydle 
   - python36-pydocstyle 
@@ -23730,6 +23666,7 @@ unsorted:
   - python36-svgwrite 
   - python36-svneverever 
   - python36-swapper 
+  - python36-swifter 
   - python36-sybil 
   - python36-sympy 
   - python36-system_hotkey 
@@ -23911,6 +23848,7 @@ unsorted:
   - python36-virtualenv-clone 
   - python36-virtualenvwrapper 
   - python36-visitor 
+  - python36-vispy 
   - python36-vistir 
   - python36-visvis 
   - python36-vncdotool 
@@ -24185,6 +24123,7 @@ unsorted:
   - python38-PyRIC 
   - python38-PyRSS2Gen 
   - python38-PyRect 
+  - python38-PySDL2 
   - python38-PyScreeze 
   - python38-PyTrie 
   - python38-PyTweening 
@@ -25887,6 +25826,7 @@ unsorted:
   - python38-pydash 
   - python38-pydata-google-auth 
   - python38-pydbus 
+  - python38-pydenticon 
   - python38-pydicom 
   - python38-pydle 
   - python38-pydocstyle 
@@ -26498,6 +26438,7 @@ unsorted:
   - python38-svgwrite 
   - python38-svneverever 
   - python38-swapper 
+  - python38-swifter 
   - python38-sybil 
   - python38-sympy 
   - python38-system_hotkey 
@@ -26674,6 +26615,7 @@ unsorted:
   - python38-virtualenv-clone 
   - python38-virtualenvwrapper 
   - python38-visitor 
+  - python38-vispy 
   - python38-vistir 
   - python38-visvis 
   - python38-vncdotool 
@@ -27356,6 +27298,7 @@ unsorted:
   - rhash 
   - rhash-devel 
   - rhash-lang 
+  - rhino 
   - rhino-demo 
   - rhythmbox 
   - rhythmbox-devel 
@@ -30409,6 +30352,7 @@ unsorted:
   - tagbanwa-fonts 
   - taglib 
   - taglib-extras-devel 
+  - tagsoup 
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
   - taigo 
@@ -38484,7 +38428,6 @@ unsorted:
   - tpm2.0-abrmd-devel 
   - tpm2.0-tools 
   - trace-cmd 
-  - trackballs 
   - tracker-devel 
   - tracker2-devel 
   - trader 
@@ -39079,6 +39022,7 @@ unsorted:
   - vagrant-sshfs-doc 
   - vagrant-sshfs-testsuite 
   - vagrant-vim 
+  - vala 
   - vala-cmake-modules 
   - vala-panel 
   - vala-panel-appmenu-lang 
@@ -39092,8 +39036,6 @@ unsorted:
   - vala-panel-extras-xkb-flags 
   - vala-panel-lang 
   - vala-panel-plugin-appmenu 
-  - vala-panel-plugin-sntray 
-  - vala-panel-plugin-sntray-lang 
   - vala-panel-plugins-base 
   - vala-panel-plugins-wnck 
   - vala-panel-runner 
@@ -39634,26 +39576,71 @@ unsorted:
   - xf86dga 
   - xfburn 
   - xfburn-lang 
+  - xfce4-battery-plugin 
+  - xfce4-battery-plugin-lang 
   - xfce4-calculator-plugin 
   - xfce4-calculator-plugin-lang 
+  - xfce4-clipman-plugin 
+  - xfce4-clipman-plugin-lang 
+  - xfce4-cpufreq-plugin 
+  - xfce4-cpufreq-plugin-lang 
+  - xfce4-cpugraph-plugin 
+  - xfce4-cpugraph-plugin-lang 
+  - xfce4-datetime-plugin 
+  - xfce4-datetime-plugin-lang 
+  - xfce4-dev-tools 
+  - xfce4-diskperf-plugin 
+  - xfce4-diskperf-plugin-lang 
+  - xfce4-eyes-plugin 
+  - xfce4-eyes-plugin-lang 
+  - xfce4-fsguard-plugin 
+  - xfce4-fsguard-plugin-lang 
+  - xfce4-genmon-plugin 
+  - xfce4-genmon-plugin-lang 
+  - xfce4-mailwatch-plugin 
+  - xfce4-mailwatch-plugin-lang 
   - xfce4-mixer 
   - xfce4-mixer-lang 
   - xfce4-mixer-plugin 
+  - xfce4-mount-plugin 
+  - xfce4-mount-plugin-lang 
+  - xfce4-mpc-plugin 
+  - xfce4-mpc-plugin-lang 
+  - xfce4-netload-plugin 
+  - xfce4-netload-plugin-lang 
+  - xfce4-notes-plugin 
+  - xfce4-notes-plugin-lang 
   - xfce4-notifyd-branding-upstream 
   - xfce4-notifyd-theme-adapta 
   - xfce4-notifyd-theme-plata 
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
   - xfce4-panel-plugin-appmenu 
-  - xfce4-panel-plugin-sntray 
+  - xfce4-places-plugin 
+  - xfce4-places-plugin-lang 
   - xfce4-power-manager-branding-upstream 
+  - xfce4-sensors-plugin 
   - xfce4-sensors-plugin-devel 
+  - xfce4-sensors-plugin-lang 
   - xfce4-session-branding-upstream 
   - xfce4-settings-branding-upstream 
+  - xfce4-smartbookmark-plugin 
+  - xfce4-smartbookmark-plugin-lang 
   - xfce4-stopwatch-plugin 
   - xfce4-stopwatch-plugin-lang 
+  - xfce4-systemload-plugin 
+  - xfce4-systemload-plugin-lang 
   - xfce4-time-out-plugin 
   - xfce4-time-out-plugin-lang 
+  - xfce4-timer-plugin 
+  - xfce4-timer-plugin-lang 
+  - xfce4-vala 
+  - xfce4-verve-plugin 
+  - xfce4-verve-plugin-lang 
+  - xfce4-wavelan-plugin 
+  - xfce4-wavelan-plugin-lang 
+  - xfce4-weather-plugin 
+  - xfce4-weather-plugin-lang 
   - xfd 
   - xfdashboard 
   - xfdashboard-devel 
@@ -39679,7 +39666,6 @@ unsorted:
   - xgboost-predictor 
   - xgboost-predictor-javadoc 
   - xgc 
-  - xgrabsc 
   - xhfsutil 
   - xhtml-dtd 
   - xiccd 
