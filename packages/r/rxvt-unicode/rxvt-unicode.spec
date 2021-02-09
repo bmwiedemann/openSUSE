@@ -107,9 +107,8 @@ export CXXFLAGS="$CFLAGS"
 %configure --enable-256-color ${COMMON_CONFIGURE_OPTIONS}
 #
 %make_build
-TERMINFO="%{buildroot}%{_terminfo}" %makeinstall
 #
-for i in %{buildroot}%{_bindir}/* ; do mv ${i} ${i}-256color ; done
+for i in rxvt rxvtd rxvtc ; do mv src/${i} u${i}-256color ; done
 %make_build distclean
 
 # build the normal 88color version
@@ -119,6 +118,7 @@ for i in %{buildroot}%{_bindir}/* ; do mv ${i} ${i}-256color ; done
 
 %install
 TERMINFO="%{buildroot}%{_terminfo}" %make_install
+install -m 0755 u*-256color %{buildroot}%{_bindir}
 for j in %{buildroot}%{_mandir}/man1/* ; do
   ln -s $(basename ${j}) ${j%%.1}-256color.1 ;
 done

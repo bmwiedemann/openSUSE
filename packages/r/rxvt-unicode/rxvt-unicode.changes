@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 16:23:46 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- restore the -256color binaries
+
+-------------------------------------------------------------------
 Tue Jan 12 05:46:59 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - fix build error (pass -D to "install")

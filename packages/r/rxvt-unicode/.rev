@@ -314,4 +314,12 @@ adds .desktop files</comment>
     <comment></comment>
     <requestid>866522</requestid>
   </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>3db2ed610be901bbe4ceaf2e33abc675</srcmd5>
+    <version>9.22</version>
+    <time>1612901872</time>
+    <user>dimstar_suse</user>
+    <comment>- restore the -256color binaries</comment>
+    <requestid>870637</requestid>
+  </revision>
 </revisionlist>
