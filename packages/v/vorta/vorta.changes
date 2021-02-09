@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Feb  9 12:35:06 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.7.2
+  * Renable buttons on cancel. By @samuel-w (#772)
+  * Allow pasting files/folders from file manager, set model
+    defaults (#759)
+  * Add option to disable exit dialog. By @samuel-w (#681)
+  * Allow only one profile with --create. By @samuel-w (#744)
+  * Improved password handling and transparency. By @samuel-w
+    (#550)
+  * Fix file selector dialog (#764)
+  * Fix label colour not changing on dark mode change.
+    By @samuel-w (#757)
+  * Cleanup database at exit, use write-ahead logging.
+    By @samuel-w (#696)
+  * Sort files in Extract dialog alphabetically. By @samuel-w
+    (#741)
+  * Update check message on completion. By @samuel-w (#672)
+  * Give error message on unmount failure. By @samuel-w (#668)
+  * Improve exception handling. By @samuel-w (#628)
+  * Ensure system keychain is unlocked before using it.
+    By @samuel-w (#607)
+  * Create backups from command line using existing profiles.
+    By @samuel-w (#556)
+  * Diff: better color of added and removed text.
+    By @samuel-w (#649)
+  * Add KWallet support. By @samuel-w (#540)
+  * Correctly sort archives by size. By @samuel-w (#729)
+  * Refactoring: remove last exec_, add tests, retain archive
+    deletion message. By @samuel-w (#722)
+  * Refactor add and rename to not use exec_. By @samuel-w (#721)
+  * Improve autostart test. By @samuel-w (#720)
+  * Limit network checking to only remote repos.
+    By @samuel-w (#701)
+  * Re-enable SSH host key checking for all operations except
+    when adding repo (#717)
+  * Add valid copyright header to Johan Rade's work.
+    By @sten0 (#716)
+  * Display number of files and sizes in source tab.
+    By @XXXBold (#617)
+  * Translate category labels for log output. By @samuel-w (#683)
+  * Fix crash when window is closed while thread running.
+    By @samuel-w (#685)
+  * Reuse existing window when bringing to front. (#674)
+  * Set icon through code (#676)
+  * Show dialog on copy failure. By @samuel-w (#647)
+  * Get keyring at runtime. By @samuel-w (#635)
+  * Save correct window size. By @samuel-w (#661)
+  * Properly catch DBusException. By @samuel-w (#670)
+  * Set application name (#666)
+  * Set all icons to same height (#660)
+  * Replace Borg version with install method in bug report (#657)
+  * Reduce icon memory usage. By @samuel-w (#656)
+  * Cancel Borg thread at end of test. (#648)
+
+- Update to version 0.7.1
+  * Fix crash when GUI is opened via tray icon while a backup is
+    running. By @samuel-w
+  * Use single tray icon for light and dark themes. By @samuel-w
+  * Use naked en locale instead of en_US. Fixes #623 (#626)
+  * Remove 'Backup in progress' when re-opening window (#627)
+    by @samuel-w
+  * Avoid formatting date and time twice. Fixes #624 (#625)
+  * Handle DBusException in NetworkManagerMonitor (#636)
+    by @ktosiek
+  * Initialize the network status monitor lazily (#634)
+    by @ktosiek
+
+- Update to version 0.7.0
+  * Proper dark style support and removal of style hacks
+  * Prevent duplicate repos from being added. Fixes #473
+  * New setting to store previously selected profile. Fixes #241
+  * Add error message when Borg binary is missing. Fixes #333
+  * Notify of errors after system tray backup run. Fixes #105
+  * Linux Desktop file: fix syntax, enhance Categories,
+    add a Keyword. By @sten0
+  * Fix parsing "changed link" lines. By @ktosiek
+  * Add paste button for source paths. By @samuel-w
+  * Prevent profiles from sharing the same name. Fixes #512.
+    By @samuel-w
+  * Add copy button for repository URLs/paths. Fixes #409.
+    By @samuel-w
+  * Move socket file from state-dir to tmp-dir. Fixes #513
+  * Save main window state before closing. By @Hofer-Julian
+  * Parse owner changes in borg diff results. By @ktosiek
+  * Fix tests for PyQt 5.15 on Linux. By @samuel-w
+  * Refactor Linux autostart by @samuel-w
+  * Add correct icon for notifications on Linux. By @Hofer-Julian
+  * Newer macOS deploy target for detecting dark mode. Fixes #575
+  * Enable multiselection on source list by @XXXBold
+  * Allow selection of multiple files by @samuel-w for #593
+  * Prevent running backups on metered network. By @ktosiek
+  * Add autosorting for source list. By @samuel-w
+  * Use dt.now everywhere. By @samuel-w
+  * Improved progress updates. By @SergioRAgostinho
+
+- Remove patch which is not needed anymore:
+  * fix-qtoolbox-titles.patch
+
+-------------------------------------------------------------------
 Tue May 26 07:09:27 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.6.26

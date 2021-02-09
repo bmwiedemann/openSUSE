@@ -1,7 +1,7 @@
 #
 # spec file for package vorta
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vorta
-Version:        0.6.26
+Version:        0.7.2
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        GPL-3.0-only
@@ -27,8 +27,6 @@ Source:         https://github.com/borgbase/%{name}/archive/v%{version}.tar.gz
 Source1:        vorta.desktop
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-dependencies.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         fix-qtoolbox-titles.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -65,7 +63,6 @@ ransomware and theft.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 export LANG=en_US.UTF-8
@@ -75,7 +72,6 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 %python3_install
 install -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
-install -m644 src/vorta/assets/icons/hdd-o-active-dark.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/vorta.png
 %suse_update_desktop_file -i vorta
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -84,7 +80,6 @@ install -m644 src/vorta/assets/icons/hdd-o-active-dark.png %{buildroot}%{_datadi
 %doc README.md
 %{_bindir}/vorta
 %{_datadir}/applications/vorta.desktop
-%{_datadir}/icons/hicolor/*/apps/vorta.png
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
 
