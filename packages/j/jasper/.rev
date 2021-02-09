@@ -68,4 +68,17 @@
     arrays are not available. (#256)</comment>
     <requestid>860103</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>753392fd18d49cd223ff0811929f0bfd</srcmd5>
+    <version>2.0.25</version>
+    <time>1612901769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.25:
+  * Fix memory-related bugs in the JPEG-2000 codec resulting from
+    attempting to decode invalid code streams. (#264, #265)
+  * Fix wrong return value under some compilers (#260)
+  * Fix bsc#1181483 CVE-2021-3272 heap buffer overflow
+    in jp2_decode (#259)</comment>
+    <requestid>870221</requestid>
+  </revision>
 </revisionlist>

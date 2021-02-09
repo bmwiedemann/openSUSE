@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  8 09:02:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.25:
+  * Fix memory-related bugs in the JPEG-2000 codec resulting from
+    attempting to decode invalid code streams. (#264, #265)
+  * Fix wrong return value under some compilers (#260)
+  * Fix bsc#1181483 CVE-2021-3272 heap buffer overflow
+    in jp2_decode (#259)
+
+-------------------------------------------------------------------
 Mon Jan  4 09:15:44 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.24:
