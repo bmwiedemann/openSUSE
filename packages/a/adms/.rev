@@ -47,4 +47,12 @@ For legal-team: package audit was successful, no changes in tarball</comment>
     <comment></comment>
     <requestid>628286</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>46dae71751e01c14b70cdb08e34e43c4</srcmd5>
+    <version>2.3.7</version>
+    <time>1612901810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870329</requestid>
+  </revision>
 </revisionlist>

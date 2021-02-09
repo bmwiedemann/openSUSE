@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  5 21:03:18 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to version 2.3.7
+  * reproducible build
+  * typo fixes
+  * include path
+  * instructions
+
+-------------------------------------------------------------------
 Wed Aug  8 13:18:45 UTC 2018 - jengelh@inai.de
 
 - Expand shared library subpacakge description.
