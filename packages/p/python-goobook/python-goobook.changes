@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:52:57 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+Update to version 3.5.1:
+- Issue 91: oauth_db_filename in config file has been broken since 3.5
+- Issue 92: AttributeError: module 'xdg' has no attribute 'XDG_CONFIG_HOME' Bumped minimum required versions for some dependencies
+- Issue 87: Adjustments to how authenticate is used and documented, removed embedded client_id and secret Added documentation for getting a client_id and secret. Deprecated "client_secret_filename" in config.
+- Issue 82: Feature request: Option to add phone number when creating new contact
+- Issue 89: Support XDG Spec, files located in the old locations is still used if they exists but XDG locations are preferred.
+- Issue 75: Added unauthenticate command.
+
+-------------------------------------------------------------------
 Tue May 26 06:34:27 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

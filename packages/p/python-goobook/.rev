@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>809363</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa463a75a53fc3daa9bf4acca9cc4f02</srcmd5>
+    <version>3.5.1</version>
+    <time>1612901798</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.5.1:
+- Issue 91: oauth_db_filename in config file has been broken since 3.5
+- Issue 92: AttributeError: module 'xdg' has no attribute 'XDG_CONFIG_HOME' Bumped minimum required versions for some dependencies
+- Issue 87: Adjustments to how authenticate is used and documented, removed embedded client_id and secret Added documentation for getting a client_id and secret. Deprecated &quot;client_secret_filename&quot; in config.
+- Issue 82: Feature request: Option to add phone number when creating new contact
+- Issue 89: Support XDG Spec, files located in the old locations is still used if they exists but XDG locations are preferred.
+- Issue 75: Added unauthenticate command.
+</comment>
+    <requestid>870304</requestid>
+  </revision>
 </revisionlist>
