@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.std.argparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/r/ruamel.std.argp
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%ifpython3
 Requires:       python-ruamel.base
-%endif
 %ifpython2
 Requires:       python2-ruamel.std.pathlib
 %endif
