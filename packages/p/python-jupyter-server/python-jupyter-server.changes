@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb  1 22:48:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.2.3
+  * for the full changelog between 0.2.1 and 1.2.3 see
+    https://github.com/jupyter-server/jupyter_server/blob/master/CHANGELOG.md
+  * 1.0.6: Fix open redirect vulnerability GHSA-grfj-wjv9-4f9v
+    (CVE-2020-26232) 
+  * 1.0: Added new extension manager API for handling server 
+    extensions
+  * 1.0: Dropped support for Python 3.5. (296)
+  * 1.0: Removed ipykernel as a dependency of jupyter_server.
+  * 0.3: (#194) The bundlerextension entry point was removed.
+- Merge the jupyter-jupyter_server package into the python
+  packages using update-alternatives. It contained only the script
+  entrypoints.
+- Fix testsuite by providing the correct entrypoints in PATH
+
+-------------------------------------------------------------------
 Tue Jun  9 07:13:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not restrict us to pytest4 as the tests work with pytest5 too
