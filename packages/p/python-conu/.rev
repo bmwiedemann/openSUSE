@@ -7,4 +7,15 @@
     <comment>test dep of bodhi</comment>
     <requestid>849390</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73eefdc76fa2d856b371168873963ac7</srcmd5>
+    <version>1.0.0</version>
+    <time>1612989046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Conu is now under MIT license
+  * New buildah backend
+  * Docker backend supports Skopeo for copying</comment>
+    <requestid>870735</requestid>
+  </revision>
 </revisionlist>

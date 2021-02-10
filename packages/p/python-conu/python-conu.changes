@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 10 04:31:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.0:
+  * Conu is now under MIT license
+  * New buildah backend
+  * Docker backend supports Skopeo for copying 
+
+-------------------------------------------------------------------
 Tue Nov 17 04:18:12 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.7.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-conu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-conu
-Version:        0.7.1
+Version:        1.0.0
 Release:        0
 Summary:        Python container testing library
-License:        GPL-2.0-or-later
+License:        MIT
 URL:            https://github.com/user-cont/conu
 Source:         https://files.pythonhosted.org/packages/source/c/conu/conu-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docker
-Requires:       python-kubernetes
+Requires:       python-flexmock
+Requires:       python-kubernetes >= 8
 Requires:       python-pytest
 Requires:       python-requests
 Requires:       python-six
@@ -38,7 +39,8 @@ Recommends:     podman
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docker}
-BuildRequires:  %{python_module kubernetes}
+BuildRequires:  %{python_module flexmock}
+BuildRequires:  %{python_module kubernetes >= 8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
