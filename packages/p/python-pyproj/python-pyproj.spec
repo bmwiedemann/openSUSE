@@ -26,7 +26,7 @@ License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
-BuildRequires:  %{python_module Cython} >= 0.23.5
+BuildRequires:  %{python_module Cython >= 0.23.5}
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module devel}
@@ -38,11 +38,10 @@ BuildRequires:  proj-devel >= 7.2.0
 BuildRequires:  python-rpm-macros
 Requires:       python-aenum
 Requires:       python-numpy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module cov-core}
-BuildRequires:  %{python_module coverage} >= 4.0
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
@@ -89,14 +88,23 @@ export PROJ_DIR=$(pkg-config --variable=libdir proj)
 %{python_expand # Multiline
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -c "import pyproj; pyproj.Proj(init='epsg:4269')"
-py.test-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.python36 --ignore=_build.python38 --ignore=_build.pypy3 -v -m "not network and not cli and not grid"
 }
+# Reset to remove wrong flavor path from loop above
+export PYTHONPATH=""
+%pytest_arch -m "not network and not cli and not grid"
 mv pyproj_temp pyproj
+
+%post
+%python_install_alternative pyproj
+
+%postun
+%python_uninstall_alternative pyproj
 
 %files %{python_files}
 %python_alternative %{_bindir}/pyproj
 %license LICENSE
 %doc README.md
-%{python_sitearch}/*
+%{python_sitearch}/pyproj
+%{python_sitearch}/pyproj-%{version}*-info
 
 %changelog

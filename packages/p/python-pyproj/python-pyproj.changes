@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  9 23:23:49 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix malformed Cython requirement
+- Remove (malformed) unneeded coverage requirement and mock which
+  is imported from unittest already.
+- Actually install the alternative for the entrypoint
+- Use the pytest_arch macro for the tests
+
+-------------------------------------------------------------------
 Tue Jan 19 10:18:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.0.0:
