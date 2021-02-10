@@ -361,4 +361,14 @@ reviewed ok
 </comment>
     <requestid>816096</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>19773ffbf0da2f961c24dfa4f2c20995</srcmd5>
+    <version>0.71.1</version>
+    <time>1612989068</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.71.1
+  * Clean up header files, do not install autoconf-generated
+    courier_auth_config.h</comment>
+    <requestid>870803</requestid>
+  </revision>
 </revisionlist>

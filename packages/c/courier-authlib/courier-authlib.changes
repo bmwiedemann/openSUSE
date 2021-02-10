@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 10 08:49:15 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.71.1
+  * Clean up header files, do not install autoconf-generated
+    courier_auth_config.h
+
+-------------------------------------------------------------------
 Fri Jun 19 07:49:28 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.71.0
