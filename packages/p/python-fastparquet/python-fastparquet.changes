@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  4 17:50:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use of "+=" in %check warrants bash as buildshell.
+
+-------------------------------------------------------------------
 Wed Feb  3 21:43:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip the import without warning test gh#dask/fastparquet#558
