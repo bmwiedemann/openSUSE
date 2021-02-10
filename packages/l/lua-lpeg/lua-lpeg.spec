@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lpeg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,7 @@ URL:            http://www.inf.puc-rio.br/~roberto/lpeg
 Source:         http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
-%if "%{flavor}" == "lua53"
-Provides:       lua-%{mod_name} = %{version}
-Obsoletes:      lua-%{mod_name} < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

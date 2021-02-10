@@ -31,4 +31,12 @@
     <comment>- Add lua54 as new build target</comment>
     <requestid>819511</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>226316a4b676ad084e69973be0a90476</srcmd5>
+    <version>1.0.2</version>
+    <time>1612989032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870699</requestid>
+  </revision>
 </revisionlist>
