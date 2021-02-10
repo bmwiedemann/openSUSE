@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Clutter\\)
 Name:           gpaste
-Version:        3.38.4
+Version:        3.38.5
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
