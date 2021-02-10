@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 10 09:55:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix typo in previous commit (defnie -> define).
+
+-------------------------------------------------------------------
+Wed Feb 10 08:32:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for python 3.6: not all dependencies are available
+  and compatible to Python 3.6.
+
+-------------------------------------------------------------------
 Tue Nov  3 15:02:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Reinclude the cli files under update-alternatives control into
