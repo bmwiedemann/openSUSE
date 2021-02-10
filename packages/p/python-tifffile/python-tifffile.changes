@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:28:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Skip python36 because of imagecodecs
+
+-------------------------------------------------------------------
+Sun Jan 31 12:08:11 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Add missing python_alternative.
+
+-------------------------------------------------------------------
+Mon Jan 25 09:05:41 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2021.1.14.
+  * Try ImageJ series if OME series fails
+  * Add option to use pages as chunks in ZarrFileStore (experimental).
+  * Fix reading from file objects with no readinto function.
+- Updates for version 2021.1.11
+  * Fix test errors on PyPy.
+  * Fix decoding bitorder with imagecodecs >= 2021.1.11.
+- Updates for version 2021.1.8
+  * Decode float24 using imagecodecs >= 2021.1.8.
+  * Consolidate reading of segments if possible.
+
+-------------------------------------------------------------------
+Mon Dec 28 19:54:11 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Add zarr dependency.
+
+-------------------------------------------------------------------
 Sat Dec 19 19:26:05 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2020.12.8.

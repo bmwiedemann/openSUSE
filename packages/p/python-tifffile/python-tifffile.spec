@@ -1,7 +1,7 @@
 #
 # spec file for package python-tifffile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define packagename tifffile
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tifffile
-Version:        2020.12.8
+Version:        2021.1.14
 Release:        0
 Summary:        Read and write TIFF(r) files
 License:        BSD-2-Clause
@@ -32,12 +33,16 @@ BuildRequires:  %{python_module matplotlib >= 3.2}
 BuildRequires:  %{python_module numpy >= 1.15.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module zarr >= 2.5.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-imagecodecs >= 2020.5.30
 Requires:       python-lxml
 Requires:       python-matplotlib >= 3.2
 Requires:       python-numpy >= 1.15.1
+Requires:       python-zarr >= 2.5.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

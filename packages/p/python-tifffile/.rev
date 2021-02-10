@@ -50,4 +50,27 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
     <comment></comment>
     <requestid>857032</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05f315f143005c3835ceaba4fa218479</srcmd5>
+    <version>2021.1.14</version>
+    <time>1612989025</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python36 because of imagecodecs
+
+- Add missing python_alternative.
+
+- Update to version 2021.1.14.
+  * Try ImageJ series if OME series fails
+  * Add option to use pages as chunks in ZarrFileStore (experimental).
+  * Fix reading from file objects with no readinto function.
+- Updates for version 2021.1.11
+  * Fix test errors on PyPy.
+  * Fix decoding bitorder with imagecodecs &gt;= 2021.1.11.
+- Updates for version 2021.1.8
+  * Decode float24 using imagecodecs &gt;= 2021.1.8.
+  * Consolidate reading of segments if possible.
+
+- Add zarr dependency.</comment>
+    <requestid>870287</requestid>
+  </revision>
 </revisionlist>
