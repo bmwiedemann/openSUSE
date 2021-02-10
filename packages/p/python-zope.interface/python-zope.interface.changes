@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  8 07:50:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't switch off python36 build, half of python-* packages depend on it.
+
+-------------------------------------------------------------------
+Wed Feb  3 16:41:53 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 5.2.0
+  * Add documentation section ``Persistency and Equality``
+  * Create arm64 wheels.
+  * Add support for Python 3.9.
+- Fix build on tumbleweed
+
+-------------------------------------------------------------------
 Tue Apr 14 09:12:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.1.0:

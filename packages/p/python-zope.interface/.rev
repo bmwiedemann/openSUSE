@@ -217,4 +217,18 @@
   * Make the internal singleton object returned by APIs like implementedBy and directlyProvidedBy for objects that implement or provide no interfaces more immutable. Previously an internal cache could be mutated. See issue 204.</comment>
     <requestid>793786</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>378370afd8290bac2b49e202e8c28338</srcmd5>
+    <version>5.2.0</version>
+    <time>1612988993</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't switch off python36 build, half of python-* packages depend on it.
+- Update to version 5.2.0
+  * Add documentation section ``Persistency and Equality``
+  * Create arm64 wheels.
+  * Add support for Python 3.9.
+- Fix build on tumbleweed
+</comment>
+    <requestid>870203</requestid>
+  </revision>
 </revisionlist>
