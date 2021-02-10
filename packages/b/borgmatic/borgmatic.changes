@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb  9 15:20:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.5.12
+  * Fix for previous release with incorrect version suffix in
+    setup.py. No other changes.
+
+- Update to 1.5.11
+  * #341: Add "temporary_directory" option for changing Borg's
+    temporary directory.
+  * #352: Lock down systemd security settings in sample systemd
+    service file.
+  * #355: Fix traceback when a database hook value is null in
+    a configuration file.
+  * #361: Merge override values when specifying the "--override"
+    flag multiple times. The previous behavior was to take the
+    value of the last "--override" flag only.
+  * #367: Fix traceback when upgrading old INI-style configuration
+    with upgrade-borgmatic-config.
+  * #368: Fix signal forwarding from borgmatic to Borg resulting
+    in recursion traceback.
+  * #369: Document support for Borg placeholders in repository
+    names.
+
+- Replace patch:
+  * remove-invalid-test.patch
+  with patch from upstream that fixes tests:
+  * 0001-Update-versions-of-test-dependencies.patch
+
+-------------------------------------------------------------------
 Mon Aug 31 09:35:40 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.5.10

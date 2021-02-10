@@ -1,7 +1,7 @@
 #
 # spec file for package borgmatic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           borgmatic
-Version:        1.5.10
+Version:        1.5.12
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://torsion.org/borgmatic/
 Source:         https://github.com/witten/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
-Patch0:         remove-invalid-test.patch
 Patch1:         skip-tests.patch
+# PATCH-FIX-UPSTREAM 0001-Update-versions-of-test-dependencies.patch -- alarrosa@suse.com
+Patch2:         0001-Update-versions-of-test-dependencies.patch
 # testing requirements
 BuildRequires:  borgbackup
 # To create the manpage
@@ -75,8 +76,8 @@ common errors.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 sed -i -e "s/colorama>=0.4.1,<0.5/colorama>=0.3.9/" setup.py
 %if 0%{?suse_version} <= 1500
