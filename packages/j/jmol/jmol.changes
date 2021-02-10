@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 22:01:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- update build recipes/scripts to use https [boo#1181924]
+- Redownload Source2 because it was some HTML content rather than
+  a PNG file
+
+-------------------------------------------------------------------
 Thu Dec 24 12:19:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.31.20

@@ -1,7 +1,7 @@
 #
 # spec file for package jmol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,9 @@ License:        LGPL-2.1-only
 Group:          Productivity/Scientific/Chemistry
 URL:            http://jmol.sf.net/
 
-#Source:         http://downloads.sf.net/jmol/Jmol-%version-binary.tar.gz
+#Source:         https://downloads.sf.net/jmol/Jmol-%version-binary.tar.gz
 Source:         jmol-%version.tar.xz
-Source2:        Jmol_icon13.png
-#Source2-Orig:  http://wiki.jmol.org/index.php/File:Jmol_icon13.png
+Source2:        https://wiki.jmol.org/images/1/1c/Jmol_icon13.png
 Source3:        %name.man
 Source4:        %name.desktop
 Source9:        sanitize_binpkg.sh

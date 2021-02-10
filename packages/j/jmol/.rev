@@ -31,4 +31,14 @@
     <comment>- Update to release 14.31.20</comment>
     <requestid>858490</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8816a4e35b797daad6ef39169b74c8db</srcmd5>
+    <version>14.31.20</version>
+    <time>1612989015</time>
+    <user>dimstar_suse</user>
+    <comment>- update build recipes/scripts to use https [boo#1181924]
+- Redownload Source2 because it was some HTML content rather than
+  a PNG file</comment>
+    <requestid>870362</requestid>
+  </revision>
 </revisionlist>
