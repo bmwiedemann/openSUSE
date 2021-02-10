@@ -321,4 +321,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
   docker-containerd-shim because that isn't used by Docker anymore.</comment>
     <requestid>869058</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>66a5505393dde61f9065f710d4752077</srcmd5>
+    <version>1.4.3</version>
+    <time>1612989023</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing BZ entries to changelog.</comment>
+    <requestid>870779</requestid>
+  </revision>
 </revisionlist>

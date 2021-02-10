@@ -22,7 +22,7 @@ Mon Dec 21 06:53:15 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 Fri Sep 18 08:16:20 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.3.7, which is required for Docker 19.03.13-ce.
-  boo#1176708
+  boo#1176708 bsc#1177598 CVE-2020-15157
 - Refresh patches:
   * 0001-makefile-remove-emoji.patch
 
@@ -41,7 +41,7 @@ Tue Jun  2 08:57:36 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 Tue Oct  8 23:35:36 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.2.10, which is required for Docker 19.03.3-ce.
-  bsc#1153367
+  bsc#1153367 bsc#1157330
 
 -------------------------------------------------------------------
 Fri Jun 28 01:45:50 UTC 2019 - Aleksa Sarai <asarai@suse.com>
@@ -106,6 +106,7 @@ Thu Dec 20 18:05:24 UTC 2018 - clee@suse.com
     go#29231 cmd/go: directory traversal in "go get" via curly braces in import paths
   * bsc#1118899 CVE-2018-16875
     go#29233 crypto/x509: CPU denial of service
+
 -------------------------------------------------------------------
 Mon Nov  5 10:28:13 UTC 2018 - Aleksa Sarai <asarai@suse.com>
 
