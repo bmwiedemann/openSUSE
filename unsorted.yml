@@ -3483,6 +3483,7 @@ unsorted:
   - firehol-doc 
   - firejail 
   - firescope 
+  - firetools 
   - firewall-applet 
   - firewall-config 
   - firewall-macros 
@@ -7379,13 +7380,13 @@ unsorted:
   - jupyter-jupyterlab-filesystem 
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
-  - jupyter-jupyterlab-server 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab_github 
   - jupyter-jupytext 
   - jupyter-jupytext-jupyterlab 
   - jupyter-lineup-widget 
   - jupyter-matlab-kernel 
+  - jupyter-nbclassic 
   - jupyter-nbconvert 
   - jupyter-nbconvert-doc 
   - jupyter-nbconvert-latex 
@@ -13081,7 +13082,6 @@ unsorted:
   - librhash0 
   - librime-devel 
   - librime1 
-  - librime1-32bit: [x86_64] 
   - librk0 
   - librlog-devel 
   - librlog5 
@@ -17628,8 +17628,6 @@ unsorted:
   - openssl_tpm2_engine 
   - openssl_tpm_engine 
   - openstack-macros 
-  - openstack-suse-macros 
-  - openstack-suse-sudo 
   - openstack-utils 
   - opentest4j 
   - opentest4j-javadoc 
@@ -20779,9 +20777,7 @@ unsorted:
   - python3-influxdb 
   - python3-injector 
   - python3-inspektor 
-  - python3-ioflo 
   - python3-ipa_hbac 
-  - python3-ipyevents 
   - python3-ironic-inspector-client 
   - python3-ironicclient 
   - python3-itk 
@@ -20790,7 +20786,6 @@ unsorted:
   - python3-jfscripts 
   - python3-jirafs 
   - python3-jsonpath-rw-ext 
-  - python3-jupyterlab 
   - python3-kasa 
   - python3-kea 
   - python3-keras2onnx: [x86_64] 
@@ -21020,8 +21015,6 @@ unsorted:
   - python3-rust2rpm 
   - python3-saharaclient 
   - python3-scikit-umfpack: [i586] 
-  - python3-scipy-gnu-hpc: [x86_64] 
-  - python3-scipy_1_5_4-gnu-hpc: [x86_64] 
   - python3-selinux: [i586] 
   - python3-senlinclient 
   - python3-setools: [i586] 
@@ -21069,7 +21062,6 @@ unsorted:
   - python3-vapoursynth 
   - python3-vdirsyncer 
   - python3-virtualbox: [x86_64] 
-  - python3-voila 
   - python3-vtk 
   - python3-vtk-openmpi1 
   - python3-vtk-openmpi2 
@@ -21369,6 +21361,7 @@ unsorted:
   - python36-ansicolors 
   - python36-ansiwrap 
   - python36-antlr4-python3-runtime 
+  - python36-anyio 
   - python36-anyjson 
   - python36-anymarkup-core 
   - python36-apache-libcloud 
@@ -22345,7 +22338,6 @@ unsorted:
   - python36-hl7apy 
   - python36-holidays 
   - python36-holoviews 
-  - python36-hotdoc 
   - python36-hpack 
   - python36-html2text 
   - python36-html5-parser 
@@ -22413,6 +22405,7 @@ unsorted:
   - python36-iptables 
   - python36-ipy 
   - python36-ipydatawidgets 
+  - python36-ipyevents 
   - python36-ipykernel 
   - python36-ipyleaflet 
   - python36-ipympl 
@@ -22490,10 +22483,12 @@ unsorted:
   - python36-jupyter-contrib-nbextensions 
   - python36-jupyter-core 
   - python36-jupyter-datatables 
+  - python36-jupyter-jupyterlab-server 
   - python36-jupyter-nbutils 
   - python36-jupyter-packaging 
   - python36-jupyter-protocol 
   - python36-jupyter-require 
+  - python36-jupyter-server 
   - python36-jupyter-sphinx 
   - python36-jupyter-telemetry 
   - python36-jupyter_console 
@@ -22502,6 +22497,7 @@ unsorted:
   - python36-jupyter_kernel_test 
   - python36-jupyter_latex_envs 
   - python36-jupyter_nbextensions_configurator 
+  - python36-jupyterlab 
   - python36-jupyterlab-pygments 
   - python36-jupyterlab-templates 
   - python36-jupytext 
@@ -22693,6 +22689,7 @@ unsorted:
   - python36-natsort 
   - python36-nautilus 
   - python36-nautilus-devel 
+  - python36-nbclassic 
   - python36-nbclient 
   - python36-nbconvert 
   - python36-nbdime 
@@ -22716,7 +22713,6 @@ unsorted:
   - python36-netifaces 
   - python36-netmiko 
   - python36-netpbmfile 
-  - python36-networkx 
   - python36-nibabel 
   - python36-nine 
   - python36-nltk 
@@ -23507,11 +23503,9 @@ unsorted:
   - python36-scikit-build 
   - python36-scikit-dsp-comm 
   - python36-scikit-hep-testdata 
-  - python36-scikit-image 
   - python36-scikit-sound 
   - python36-scikit-sparse: [x86_64] 
   - python36-scikit-umfpack: [x86_64] 
-  - python36-scipy 
   - python36-scour 
   - python36-scp 
   - python36-screeninfo 
@@ -23717,7 +23711,6 @@ unsorted:
   - python36-threevis 
   - python36-thrift 
   - python36-thriftpy2 
-  - python36-tifffile 
   - python36-tinyarray 
   - python36-tinycss2 
   - python36-tinydb 
@@ -23743,7 +23736,6 @@ unsorted:
   - python36-tornado4 
   - python36-tornado5 
   - python36-tornado6 
-  - python36-toro 
   - python36-tortilla 
   - python36-towncrier 
   - python36-tox 
@@ -23851,6 +23843,7 @@ unsorted:
   - python36-visvis 
   - python36-vncdotool 
   - python36-vobject 
+  - python36-voila 
   - python36-volatile 
   - python36-voluptuous 
   - python36-voluptuous-serialize 
@@ -24247,6 +24240,7 @@ unsorted:
   - python38-ansicolors 
   - python38-ansiwrap 
   - python38-antlr4-python3-runtime 
+  - python38-anyio 
   - python38-anyjson 
   - python38-anymarkup-core 
   - python38-apache-libcloud 
@@ -25242,6 +25236,7 @@ unsorted:
   - python38-iptables 
   - python38-ipy 
   - python38-ipydatawidgets 
+  - python38-ipyevents 
   - python38-ipykernel 
   - python38-ipyleaflet 
   - python38-ipympl 
@@ -25320,10 +25315,12 @@ unsorted:
   - python38-jupyter-contrib-nbextensions 
   - python38-jupyter-core 
   - python38-jupyter-datatables 
+  - python38-jupyter-jupyterlab-server 
   - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
   - python38-jupyter-protocol 
   - python38-jupyter-require 
+  - python38-jupyter-server 
   - python38-jupyter-sphinx 
   - python38-jupyter-telemetry 
   - python38-jupyter_console 
@@ -25332,6 +25329,7 @@ unsorted:
   - python38-jupyter_kernel_test 
   - python38-jupyter_latex_envs 
   - python38-jupyter_nbextensions_configurator 
+  - python38-jupyterlab 
   - python38-jupyterlab-pygments 
   - python38-jupyterlab-templates 
   - python38-jupytext 
@@ -25512,6 +25510,7 @@ unsorted:
   - python38-natsort 
   - python38-nautilus 
   - python38-nautilus-devel 
+  - python38-nbclassic 
   - python38-nbclient 
   - python38-nbconvert 
   - python38-nbdime 
@@ -26290,6 +26289,8 @@ unsorted:
   - python38-scikit-sparse: [x86_64] 
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy: [i586] 
+  - python38-scipy-gnu-hpc: [x86_64] 
+  - python38-scipy_1_6_0-gnu-hpc: [x86_64] 
   - python38-scp 
   - python38-screeninfo 
   - python38-screenplain 
@@ -26513,7 +26514,6 @@ unsorted:
   - python38-tornado 
   - python38-tornado4 
   - python38-tornado5 
-  - python38-toro 
   - python38-tortilla 
   - python38-towncrier 
   - python38-tox 
@@ -26618,6 +26618,7 @@ unsorted:
   - python38-visvis 
   - python38-vncdotool 
   - python38-vobject 
+  - python38-voila 
   - python38-volatile 
   - python38-voluptuous 
   - python38-voluptuous-serialize 
