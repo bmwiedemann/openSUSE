@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-image
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,15 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+# SciPy 1.6.0 dropped Python 3.6 and numpy 1.20 will soon
+%define skip_python36 1
 Name:           python-scikit-image%{psuffix}
-Version:        0.17.2
+Version:        0.18.1
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
 URL:            https://scikit-image.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/scikit-image/scikit-image/pull/4731
-Patch0:         scikit-image-pr4731-floatingwarnings.patch
-# PATCH-FIX-UPSTREAM https://github.com/scikit-image/scikit-image/pull/4735
-Patch1:         scikit-image-pr4735-ragged.patch
 BuildRequires:  %{python_module Cython >= 0.29.13}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.15.1}
@@ -86,7 +84,6 @@ It is available free of charge and free of restriction.
 %prep
 %if !%{with test}
 %setup -q -n scikit-image-%{version}
-%autopatch -p1
 #remove shebang
 sed -i '1 {\@usr/bin/env@ d}' skimage/*/setup.py skimage/future/graph/setup.py
 %else
@@ -122,6 +119,9 @@ skiptests="test_wrap_around"
 skiptests+=" or test_structural_similarity_dtype"
 # test_colorconv.py hdx and hed tests segfault
 skiptests+=" or test_hdx_rgb or test_hed_rgb"
+# these test require pooch to download data files, which we don't have and which needs internet to work anyway
+# see skimage/data/_registry.py
+skiptests+=" or test_ndim or test_skin or test_custom_load_func_w_kwarg"
 %pytest_arch -v --pyargs skimage -n auto -k "not ($skiptests)"
 %endif
 

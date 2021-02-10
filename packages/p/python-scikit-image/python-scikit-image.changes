@@ -1,4 +1,227 @@
 -------------------------------------------------------------------
+Fri Jan 22 19:18:32 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.18.1
+  * Fix indexing error for labelling in large (>2GB) arrays (#5143,
+    #5151)
+  * Only use retry_if_failed with recent pooch (#5148)
+- Announcement: scikit-image 0.18.0
+  * We're happy to announce the release of scikit-image v0.18.0!
+  * scikit-image is an image processing toolbox for SciPy
+    that includes algorithms for segmentation, geometric
+    transformations, color space manipulation, analysis,
+    filtering, morphology, feature detection, and more.
+  * This release of scikit-image drops support for Python
+    3.6 in accordance with the NEP-29 Python and Numpy
+    version support community standard
+    <https://numpy.org/neps/nep-0029-deprecation_policy.html>_:
+    Python 3.7 or
+    newer is required to run this version.
+  * For more information, examples, and documentation,
+    please visit our website: https://scikit-image.org
+  New Features
+  * Add the iterative Lucas-Kanade (iLK) optical flow method 
+    (#4161)
+  * Add Feret diameter in region properties (#4379, #4820)
+  * Add functions to compute Euler number and Crofton perimeter 
+    estimation (#4380)
+  * Add a function to compute the Hausdorff distance (#4382)
+  * Added 3D support for many filters in skimage.filters.rank.
+  * An experimental implementation of trainable pixel 
+    segmentation, aiming for
+    compatibility with the scikit-learn API, has been added to
+    skimage.future. Try it out! (#4739)
+  * Add a new function segmentation.expand_labels to dilate labels 
+    while preventing overlap (#4795)
+  * It is now possible to pass extra measurement functions to
+    measure.regionprops and regionprops_table (#4810)
+  * Add rolling ball algorithm for background subtraction (#4851)
+  * New sample images have been added in the data subpackage: 
+    data.eagle
+  * (#4922), data.human_mitosis (#4939), data.cells3d (#4951), and
+  * data.vortex (#5041). Also note that the image for data.camera 
+    has been changed due to copyright issues (#4913).
+  * skimage.feature.structure_tensor now supports 3D (and nD) 
+    images as input (#5002)
+  * Many thresholding methods can now receive a precomputed 
+    histogram as input, resulting in significant speedups if 
+    multiple methods are tried on the same image, or if a fast 
+    histogram method is used. (#5006)
+  * measure.regionprops now supports multichannel intensity images 
+    (#5037)
+  Documentation
+  * Add an example to the flood fill tutorial (#4619)
+  * Docstring enhancements for marching cubes and find_contours 
+    (#4641)
+  * A new tutorial presenting a cell biology example has been 
+    added to the gallery (#4648). Special thanks to Pierre Poulain 
+    and Fred Bernard (Université de Paris and Institut Jacques 
+    Monod) for scientific review of this example!
+  * Improve register rotation example with notes and references 
+    (#4723)
+  * Add versionadded for new scalar type support for "scale" param 
+    in transform.AffineTransform (#4733)
+  * New tutorial on visualizing 3D data <https://scikit-image.org/
+    docs/dev/auto_examples/applications/
+    plot_3d_image_processing.html>_ (#4850)
+  * Add example for 3D adaptive histogram equalization (AHE) 
+    (#4658)
+  * Automatic formatting of docstrings for improved consistency 
+    (#4849)
+  * Improved docstring for rgb2lab (#4839) and marching_cubes 
+    (#4846)
+  * Improved docstring for measure.marching_cubes, mentioning how 
+    to decimate a mesh using mayavi (#4846)
+  * Document how to contribute a gallery example. (#4857)
+  * Fix and improve entropy example (#4904)
+  * expand the benchmarking section of the developer docs (#4905)
+  * Improved docstring for util.random_noise (#5001)
+  * Improved docstrings for morphology.h_maxima and 
+    morphology.h_minima (#4929).
+  * Improved docstring for util.img_as_int (#4888).
+  * A new example demonstrates interactive exploration of 
+    regionprops results using the PyData stack (pandas, seaborn) 
+    at https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_regionprops.html
+    (#5010).
+  * Documentation has been added to explain how to download 
+    example datasets <https://scikit-image.org/docs/dev/install.html#downloading-all-demo-datasets>_
+    which are not installed with scikit-image (#4984). Similarly, 
+    the contributor guide has been updated to mention how to host 
+    new datasets in a gitlab repository (#4892).
+  * The benchmarking section of the developer documentation 
+    <https://scikit-image.org/docs/dev/contribute.html#benchmarks>_
+    has been expanded (#4905).
+  * Added links to the image.sc forum in example pages (#5094, 
+    #5096)
+  * Added missing datasets to gallery examples (#5116, #5118)
+  * Add farid filters in all, to populate the documentation 
+    (#5128, #5129)
+  * Proofread gallery example for rank filters. (#5126, #5136)
+  Improvements
+  * float32 support for SLIC (#4683), ORB (#4684, #4697), BRIEF 
+    (#4685),
+  * pyramid_gaussian (#4696), Richardson-Lucy deconvolution (#4880)
+  * In skimage.restoration.richardson_lucy, computations are now 
+    done in single-precision when the input image is single-
+    precision. This can give a substantial performance improvement 
+    when working with single precision data.
+  * Richardson-Lucy deconvolution now has a filter_epsilon keyword 
+    argument to avoid division by very small numbers (#4823)
+  * Add default level parameter (max-min) / 2 in 
+    measure.find_contours (#4862)
+  * The performance of the SLIC superpixels algorithm 
+    (skimage.segmentation.slice) was improved for the case where a 
+    mask is supplied by the user (#4903). The specific superpixels 
+    produced by masked SLIC will not be identical to those 
+    produced by prior releases.
+  * exposure.adjust_gamma has been accelerated for uint8 images by 
+    using a look-up table (LUT) (#4966).
+  * measure.label has been accelerated for boolean input images, 
+    by using scipy.ndimage's implementation for this case (#4945).
+  * util.apply_parallel now works with multichannel data (#4927).
+  * skimage.feature.peak_local_max supports now any Minkowski 
+    distance.
+  * We now use sparse cross-correlation to accelerate local 
+    thresholding functions (#4912)
+  * morphology.convex_hull_image now uses much less memory by 
+    checking hull inequalities in sequence (#5020)
+  * Polygon rasterization is more precise and will no longer 
+    potentially exclude input vertices. (#5029)
+  * Add data optional requirements to allow pip install scikit-
+    image[data] (#5105, #5111)
+  * OpenMP support in MSVC (#4924, #5111)
+  * Restandardize handling of Multi-Image files (#2815, #5132)
+  * Consistent zoom boundary behavior across SciPy versions (#5131, 
+    #5133)
+  API Changes
+  * skimage.restoration.richardson_lucy returns a single-precision 
+    output when the input is single-precision. Prior to this 
+    release, double-precision was always used. (#4880)
+  * The default value of threshold_rel in skimage.feature.corner 
+    has changed from 0.1 to None, which corresponds to letting
+  * skimage.feature.peak_local_max decide on the default. This is 
+    currently equivalent to threshold_rel=0.
+  * In measure.label, the deprecated neighbors parameter has been
+    removed. (#4942)
+  * The image returned by data.camera has changed because of 
+    copyright issues (#4913).
+  Bug fixes
+  * A bug in label2rgb has been fixed when the input image had 
+    np.uint8 dtype (#4661)
+  * Fixed incorrect implementation of skimage.color.separate_stains 
+    (#4725)
+  * Many bug fixes have been made in peak_local_max (#2592, #4756, 
+    #4760, #5047)
+  * Fix bug in random_walker when input labels have negative values 
+    (#4771)
+  * PSF flipping is now correct for Richardson-Lucy deconvolution 
+    work in >2D (#4823)
+  * Fix equalize_adapthist (CLAHE) for clip value 1.0 (#4828)
+  * For the RANSAC algorithm, improved the case where all data 
+    points are outliers, which was previously raising an error
+    (#4844)
+  * An error-causing bug has been corrected for the bg_color 
+    parameter in label2rgb when its value is a string (#4840)
+  * A normalization bug was fixed in 
+    metrics.variation_of_information (#4875)
+  * Euler characteristic property of skimage.measure.regionprops 
+    was erroneous for 3D objects, since it did not take tunnels 
+    into account. A new implementation based on integral geometry
+    fixes this bug (#4380).
+  * In skimage.morphology.selem.rectangle the height argument
+    controlled the width and the width argument controlled the 
+    height. They have been replaced with nrow and ncol. (#4906)
+  * skimage.segmentation.flood_fill and skimage.segmentation.flood
+    now consistently handle negative values for seed_point.
+  * Segmentation faults in segmentation.flood have been fixed 
+    (#4948, #4972)
+  * A segfault in draw.polygon for the case of 0-d input has been   
+    fixed (#4943).
+  * In registration.phase_cross_correlation, a ValueError is raised 
+    when NaNs are found in the computation (as a result of NaNs in 
+    input images). Before this fix, an incorrect value could be 
+    returned where the input images had NaNs (#4886).
+  * Fix edge filters not respecting padding mode (#4907)
+  * Use v{} for version tags with pooch (#5104, #5110)
+  * Fix compilation error in XCode 12 (#5107, #5111)
+  Deprecations
+  * The indices argument in skimage.feature.peak_local_max has been
+    deprecated. Indices will always be returned. (#4752)
+  * In skimage.feature.structure_tensor, an order argument has been
+    introduced which will default to 'rc' starting in version 0.20. 
+    (#4841)
+  * skimage.feature.structure_tensor_eigvals has been deprecated 
+    and will be removed in version 0.20. Use 
+    skimage.feature.structure_tensor_eigenvalues instead.
+  * The skimage.viewer subpackage and the skivi script have been   
+    deprecated and will be removed in version 0.20. For interactive 
+    visualization we recommend using dedicated tools such as napari 
+    <https://napari.org>_ or plotly <https://plotly.com>_. In a 
+    similar vein, the qt and skivi plugins of skimage.io have been 
+    deprecated and will be removed in version 0.20. (#4941, #4954)
+  * In skimage.morphology.selem.rectangle the arguments width and
+    height have been deprecated. Use nrow and ncol instead.
+  * The explicit setting threshold_rel=0` was removed from the 
+    Examples of the following docstrings: skimage.feature.BRIEF, 
+    skimage.feature.corner_harris, 
+    skimage.feature.corner_shi_tomasi, 
+    skimage.feature.corner_foerstner, skimage.feature.corner_fast, 
+    skimage.feature.corner_subpix, skimage.feature.corner_peaks, 
+    skimage.feature.corner_orientations, and 
+    skimage.feature._detect_octave``.
+  * In skimage.restoration._denoise, the warning regarding
+    rescale_sigma=None was removed.
+  * In skimage.restoration._cycle_spin, the # doctest: +SKIP was 
+    removed.
+
+-------------------------------------------------------------------
+Thu Jan  7 17:04:54 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Deleted patches:
+  * scikit-image-pr4735-ragged.patch
+  * scikit-image-pr4731-floatingwarnings.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 10:22:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Apply patches to fix errors due to numpy warnings
@@ -336,7 +559,7 @@ Sat Nov  9 14:58:21 UTC 2019 - Arun Persaud <arun@gmx.de>
 -------------------------------------------------------------------
 Wed Jul 31 20:59:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
-- Add fix_numpy_1_17.patch 
+- Add fix_numpy_1_17.patch
   Fixes building with numpy 1.17
   From gh#scikit-image/scikit-image#3992
 
