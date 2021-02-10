@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  2 23:22:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.1 with 2.2.0 jupyterlab extension
+  * no upstream changelog
+- Use new wheel path for pyproject_install
+- Enable test suite by getting the examples from GitHub
+- Deselect some examples on python36, because the examples depend 
+  on packages following NEP 29.
+
+-------------------------------------------------------------------
 Sat Jan 11 13:59:18 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)
