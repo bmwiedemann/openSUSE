@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 10 06:38:12 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- A quick note that tumbleweed isn't affeted by bsc#1181680 which
+  is being fixed for SLE.
+
+-------------------------------------------------------------------
 Fri Jan 29 09:19:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cmake 3.19.4:
