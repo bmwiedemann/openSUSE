@@ -22,6 +22,12 @@ Wed Feb  3 09:41:25 UTC 2021 - Thomas Renninger <trenn@suse.de>
 - Quote strings in specfile (originally by Olaf Hering, ohering@suse.de)
 
 -------------------------------------------------------------------
+Tue Jan 26 19:12:05 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- bsc#1180518 [15sp3 FEAT] Product-HA / High Availability Extension:
+  Add IBM Z LPAR fence agent fence_ibmz to Pacemaker (kvm) (fence-agents) 
+
+-------------------------------------------------------------------
 Thu Jan 21 15:13:20 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - Adds service account authentication to GCE fence agent 
