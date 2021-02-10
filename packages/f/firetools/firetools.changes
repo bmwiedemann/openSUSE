@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Tue Feb  9 21:27:58 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update source file URLs, changed upstream at sourceforge.
+
+-------------------------------------------------------------------
+Sat Aug 29 12:45:17 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- adapt to libexec directory change
+
+-------------------------------------------------------------------
+Tue Feb 11 22:58:37 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- added firetools-0.9.62-fail_linking.patch:
+  properly link librt/libc for shm_open 
+
+-------------------------------------------------------------------
+Tue Feb 11 22:36:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 0.9.62: 
+  * added fdns support
+  * added stats system tray icon
+  * split network interface stats in a separate window
+  * detect --net=none in network interface stats
+  * support for Firejail LTS versions
+  * bugfixes
+
+-------------------------------------------------------------------
+Sun Jun  2 16:37:07 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.9.58:
+ * split network interface stats in a separate window
+ * detect --net=none in network interface stats
+ * support for Firejail LTS versions
+ * bugfixes
+
+-------------------------------------------------------------------
+Mon Mar  5 07:59:54 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.9.52:
+ * modif: moving to a grayscale color scheme
+ * feature: firewall support in stats window
+ * feature: AppArmor support in stats window
+ * feature: adding Signal to the default list of applications
+ * bugfixes and various user interface improvements
+
+-------------------------------------------------------------------
+Sat Mar  3 15:03:08 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.9.50:
+ * modif: removed the periodic window update for seccomp, caps,
+    and dns
+ * feature: memory deny exec stats support 
+ * feature: print security profile name in stats window
+ * feature: protocol support in firejail-ui
+ * feature: nodvd support in firejail-ui
+ * feature: novideo support in firejail-ui
+ * feature: notv support in firejail-ui
+ * enhancement: save window size for fmgr and fstats upon exit
+    and restore it next time the program is started
+ * enhancement: updated default application list
+ * enhancement: rework icon search for firetools launcher
+ * enhancement: --enable-fatal-warnings compile configuration
+ * bugfixes
+
+-------------------------------------------------------------------
+Tue Aug 15 15:53:12 CEST 2017 - tiwai@suse.de
+
+- Update to version 0.9.46:
+  This release brings in a number of bugfixes and general
+  enhancements, and a simple configuration wizard for Firejail
+  sandbox – firejail-ui
+
+-------------------------------------------------------------------
+Fri Aug  5 17:37:22 CEST 2016 - tiwai@suse.de
+
+- Updated to version 0.9.40:
+  * including Grsecurity support, protocols, cup cores, sandbox
+    name and X11 sandboxing support in the stats section, and a
+    number of updates and bug fixes
+  * A file manager that allows the user to browse the filesystem
+    inside the sandbox is also included
+- Update to version 0.9.40.1:
+  * Minor bugfix release
+- Dropped the obsoleted patch:
+  firetools-qt-path-fix.diff
+
+-------------------------------------------------------------------
+Tue May 17 18:01:27 CEST 2016 - tiwai@suse.de
+
+- Initial package: 0.9.30
+- Fix the hackish configure.ac to build properly:
+  firetools-qt-path-fix.diff
+

@@ -1,0 +1,8 @@
+<package name="firetools" project="openSUSE:Factory">
+  <title>GUI for Firajail security sandbox</title>
+  <description>Firetools is the graphical user interface of Firejail security sandbox.
+
+</description>
+  <devel project="Virtualization" package="firetools"/>
+  <url>https://firejail.wordpress.com/</url>
+</package>
