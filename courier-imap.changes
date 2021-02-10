@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 10 08:53:30 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.0.12
+  * openssl: Add TLS_PROTOCOL setting to disable client-initiated
+    renegotiation.
+  * imap: send corrupted Unicode alerts only for new messages.
+  * waitlib: fix testwait.c failure with LTO enabled on F33.
+  * pop3login.c: fflush before STARTLS.
+
+-------------------------------------------------------------------
 Fri Jun 19 08:25:12 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.0.11
