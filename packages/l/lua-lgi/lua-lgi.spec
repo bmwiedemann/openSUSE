@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lgi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,10 +33,7 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.8
 BuildRequires:  pkgconfig(libffi)
 Requires:       %{flavor}
-%if "%{flavor}" == "lua53"
-Provides:       lua-%{mod_name} = %{version}
-Obsoletes:      lua-%{mod_name} < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
