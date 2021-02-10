@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  9 22:55:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.14:
+  - Regression Fix: support for non-lowercase Transfer-Encoding value
+  - Regression Fix: cachemgr.cgi wrong 403 response to authenticated menu URIs
+  - Bug 5076: WCCP Security Info incorrect
+  - Bug 5073: Compile error: index was not declared in this scope
+  - Bug 5065: url_rewrite_program documentation update
+  - Bug 3074 pt2: improved handling of URI paths implicit '/'
+  - Fix transactions exceeding client_lifetime logged as _ABORTED
+ 
+-------------------------------------------------------------------
 Mon Nov  2 10:34:59 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - re-add older SLES12 requirements so we can use one devel project
