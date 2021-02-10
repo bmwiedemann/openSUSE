@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 10 09:09:18 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.8.4
+  #19696: fix(flux): add durations to Flux logging
+- Version 1.8.3
+  #19187: feat: Collect values written stats.
+  #19611: feat: Add -lponly flag to export sub-command.
+
+-------------------------------------------------------------------
 Mon Nov 30 15:59:56 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Fix build for Factory
