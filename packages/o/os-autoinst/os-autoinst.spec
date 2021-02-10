@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1611071183.d4854e5a
+Version:        4.6.1612868503.2e2b378a
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -73,10 +73,12 @@ Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  %test_requires
 BuildRequires:  %test_version_only_requires
 Requires:       %main_requires
-Recommends:     tesseract-ocr
-Recommends:     /usr/bin/xkbcomp /usr/bin/Xvnc dumponlyconsole
-Recommends:     qemu >= 2.0.0
+Recommends:     /usr/bin/Xvnc
 Recommends:     /usr/bin/qemu-img
+Recommends:     /usr/bin/xkbcomp
+Recommends:     dumponlyconsole
+Recommends:     qemu >= 2.0.0
+Recommends:     tesseract-ocr
 Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/useradd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -217,6 +219,7 @@ cd %{__builddir}
 %files devel
 %ifarch x86_64
 %files qemu-kvm
+
 %files qemu-x86
 %endif
 

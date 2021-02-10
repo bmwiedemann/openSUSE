@@ -1,5 +1,5 @@
 #
-# spec file for package os
+# spec file for package os-autoinst%{?name_ext}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,11 +19,11 @@
 %define name_ext -test
 %define         short_name os-autoinst
 Name:           %{short_name}%{?name_ext}
-Version:        4.6.1611071183.d4854e5a
+Version:        4.6.1612868503.2e2b378a
 Release:        0
 Summary:        test package for os-autoinst
-#BuildRequires:  %{short_name} == %{version}
 License:        GPL-2.0-or-later
+#BuildRequires:  %{short_name} == %{version}
 BuildRequires:  %{short_name}
 
 %description
