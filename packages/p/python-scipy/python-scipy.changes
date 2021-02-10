@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Jan 16 17:14:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- NEP 29: Last minorversion bump deprecated Python 3.6
+  https://numpy.org/neps/nep-0029-deprecation_policy.html
+- Fix hpc setup for coinstallable python3 flavors, needs
+  gh#openSUSE/hpc#3
+
+-------------------------------------------------------------------
+Tue Jan  5 07:57:30 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6.0:
+  * scipy.ndimage improvements: Fixes and ehancements to boundary extension
+    modes for interpolation functions. Support for complex-valued inputs
+    in many filtering and interpolation functions. New grid_mode option
+    for scipy.ndimage.zoom to enable results consistent with scikit-image’s rescale.
+  * scipy.optimize.linprog has fast, new methods for large, sparse
+    problems from the HiGHS library.
+  * scipy.stats improvements including new distributions, a new test,
+    and enhancements to existing distributions and tests
+  * scipy.special now has improved support for 64-bit LAPACK backend
+  * scipy.odr now has support for 64-bit integer BLAS
+  * scipy.odr.ODR has gained an optional overwrite argument so that
+    existing files may be overwritten.
+  * scipy.cluster.hierarchy.DisjointSet has been added for incremental
+    connectivity queries.
+  * scipy.cluster.hierarchy.dendrogram return value now also includes
+    leaf color information in leaves_color_list.
+  * scipy.interpolate.interp1d has a new method nearest-up, similar to
+    the existing method nearest but rounds half-integers up instead of down.
+  * scipy.ndimage.convolve, scipy.ndimage.correlate and their 1d counterparts
+    now accept both complex-valued images and/or complex-valued filter kernels.
+    All convolution-based filters also now accept complex-valued inputs 
+  * scipy.optimize.linprog has fast, new methods for large, sparse problems
+    from the HiGHS C++ library
+  * scipy.optimize.quadratic_assignment has been added for approximate solution of
+    the quadratic assignment problem.
+  * scipy.optimize.linear_sum_assignment now has a substantially reduced
+    overhead for small cost matrix sizes
+  * scipy.optimize.least_squares has improved performance when the user
+    provides the jacobian as a sparse jacobian already in csr_matrix format
+  * scipy.signal.gammatone has been added to design FIR or IIR filters that
+    model the human auditory system.
+  * scipy.signal.iircomb has been added to design IIR peaking/notching
+    comb filters that can boost/attenuate a frequency from a signal.
+  * scipy.signal.sosfilt performance has been improved to avoid some
+    previously- observed slowdowns
+  * scipy.signal.windows.taylor has been added–the Taylor window function
+    is commonly used in radar digital signal processing
+  * scipy.signal.gauss_spline now supports list type input for consistency
+    with other related SciPy functions
+  * scipy.signal.correlation_lags has been added to allow calculation of
+    the lag/ displacement indices array for 1D cross-correlation.
+
+-------------------------------------------------------------------
 Fri Dec 18 20:29:48 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.5.4.
