@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:50:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.2.1
+  * pytest now supports python3.6+ only.
+  * Directly constructing/calling some classes/functions is now deprecated
+    (see upstream changelog)
+  * The @pytest.yield_fixture decorator/function is now deprecated. 
+    Use pytest.fixture() instead.
+  * No removals so far.
+  * Verbose mode now shows the reason that a test was skipped in the 
+    test’s terminal line after the “SKIPPED”, “XFAIL” or “XPASS”.
+  * pytest now warns about unraisable exceptions and unhandled thread 
+    exceptions that occur in tests on Python>=3.8.
+  * New pytester fixture, which is identical to testdir but its methods 
+    return pathlib.Path when appropriate instead of py.path.local.
+  * It is now possible to construct a MonkeyPatch object directly as pytest.MonkeyPatch(), 
+    in cases when the monkeypatch fixture cannot be used.
+  * Many more new features and bugfixes
+
+-------------------------------------------------------------------
 Sun Dec 13 00:56:12 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - fix version in egg-info for Leap gh#pytest-dev/pytest#7891

@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,21 +27,20 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        6.1.2
+Version:        6.2.1
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 40.0}
+BuildRequires:  %{python_module setuptools >= 42.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 17.4.0
+Requires:       python-attrs >= 19.2.0
 Requires:       python-importlib-metadata >= 0.12
 Requires:       python-iniconfig
-Requires:       python-more-itertools >= 4.0.0
 Requires:       python-packaging
 Requires:       python-pluggy >= 0.12
 Requires:       python-py >= 1.8.2
@@ -57,8 +56,6 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis >= 3.56}
-BuildRequires:  %{python_module importlib-metadata >= 0.12}
-BuildRequires:  %{python_module iniconfig}
 # nose is really not REQUIRED, the test suite skips over particular
 # tests, when the package is not available.
 # BuildRequires:  %%{python_module nose}
@@ -66,13 +63,12 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest >= %{version}}
-BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
 %endif
-%if %{python_version_nodots} < 36
+%if %{?python_version_nodots} < 36
 Requires:       python-pathlib2 >= 2.2.0
 %endif
 %python_subpackages

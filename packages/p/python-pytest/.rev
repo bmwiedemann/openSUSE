@@ -904,4 +904,28 @@
     <comment></comment>
     <requestid>855557</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>719fdf37180a2d1f5ee6ce15a5a9812a</srcmd5>
+    <version>6.2.1</version>
+    <time>1612988990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.1
+  * pytest now supports python3.6+ only.
+  * Directly constructing/calling some classes/functions is now deprecated
+    (see upstream changelog)
+  * The @pytest.yield_fixture decorator/function is now deprecated. 
+    Use pytest.fixture() instead.
+  * No removals so far.
+  * Verbose mode now shows the reason that a test was skipped in the 
+    test’s terminal line after the “SKIPPED”, “XFAIL” or “XPASS”.
+  * pytest now warns about unraisable exceptions and unhandled thread 
+    exceptions that occur in tests on Python&gt;=3.8.
+  * New pytester fixture, which is identical to testdir but its methods 
+    return pathlib.Path when appropriate instead of py.path.local.
+  * It is now possible to construct a MonkeyPatch object directly as pytest.MonkeyPatch(), 
+    in cases when the monkeypatch fixture cannot be used.
+  * Many more new features and bugfixes
+</comment>
+    <requestid>865459</requestid>
+  </revision>
 </revisionlist>
