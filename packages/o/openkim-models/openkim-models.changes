@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:39:40 CST 2021 - relliott@umn.edu
+
+- Update to 2021.01.28
+  * Release of latest snapshot of openkim.org models.  Includes
+    various minor item updates and a significant addition of
+    MEAM models.
+
+-------------------------------------------------------------------
 Tue Jun  9 15:29:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM errors seen in Tumbleweed

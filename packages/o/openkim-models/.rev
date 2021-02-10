@@ -24,4 +24,16 @@
     <comment></comment>
     <requestid>813280</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c49ce8a8af4ca5faa81d8e3eb6649973</srcmd5>
+    <version>2021.01.28</version>
+    <time>1612989017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.01.28
+  * Release of latest snapshot of openkim.org models.  Includes
+    various minor item updates and a significant addition of
+    MEAM models.
+</comment>
+    <requestid>870690</requestid>
+  </revision>
 </revisionlist>

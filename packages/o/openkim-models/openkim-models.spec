@@ -17,19 +17,19 @@
 #
 
 
-%define         uversion 2019-07-25
+%define         uversion 2021-01-28
 Name:           openkim-models
-Version:        2019.07.25
+Version:        2021.01.28
 Release:        0
 Summary:        Open Knowledgebase of Interatomic Models
 License:        CDDL-1.0 AND Apache-2.0 AND MPL-2.0 AND GPL-3.0-only AND LGPL-3.0-only
 Group:          Productivity/Scientific/Chemistry
 URL:            https://openkim.org
 Source0:        https://s3.openkim.org/archives/collection/openkim-models-%{uversion}.txz
-BuildRequires:  cmake >= 3.4
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  kim-api-devel >= 2.1.2
+BuildRequires:  kim-api-devel >= 2.2.1
 
 %description
 OpenKIM is an online framework for making molecular simulations reliable,
