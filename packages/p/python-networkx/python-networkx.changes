@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  1 14:05:38 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Disable python36 build for good. Next up is SciPy 1.6.0 dropping
+  Python 3.6 because of NEP 29.
+- Mark the doc package files as doc.
+
+-------------------------------------------------------------------
 Sat Jan 30 01:42:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Temporarily reenable python36 build until SciPy is updated,

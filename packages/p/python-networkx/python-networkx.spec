@@ -18,8 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-# Temporarily reenabled until SciPy is updated, because the PyYAML fix needs to be merged first
-#%%define         skip_python36 1
+%define         skip_python36 1
 Name:           python-networkx
 Version:        2.5
 Release:        0
@@ -115,6 +114,6 @@ popd
 
 %files -n %{name}-doc
 %license LICENSE.txt
-%{_docdir}/networkx-%{version}/
+%doc %{_docdir}/networkx-%{version}/
 
 %changelog
