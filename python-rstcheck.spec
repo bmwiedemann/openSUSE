@@ -1,7 +1,7 @@
 #
 # spec file for package python-rstcheck
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,11 +41,9 @@ Recommends:     bash
 Recommends:     gcc
 Recommends:     gcc-c++
 Recommends:     python-Sphinx
-BuildArch:      noarch
-%ifpython3
 Provides:       rstcheck = %{version}
-Obsoletes:      rstcheck
-%endif
+Obsoletes:      rstcheck < %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description
