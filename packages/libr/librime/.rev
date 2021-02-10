@@ -211,4 +211,13 @@
     <comment></comment>
     <requestid>844098</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ffed288d50472ae14da80b04b7718430</srcmd5>
+    <version>1.7.1</version>
+    <time>1612989013</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf, as the dependencies are missing on 32bit arch
+  and no other packages require it (forwarded request 870781 from tiwai)</comment>
+    <requestid>870782</requestid>
+  </revision>
 </revisionlist>

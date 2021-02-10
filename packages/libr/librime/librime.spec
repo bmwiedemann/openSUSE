@@ -1,7 +1,7 @@
 #
 # spec file for package librime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           librime
-Version:        1.6.2~git20200921.4e518b9
+Version:        1.7.1
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
-Source:         %{name}-%{version}.tar.xz
-Source99:       baselibs.conf
-#PATCH-FIX-OPENSUSE workaround for gcc bug 53613 on 12.3 and lower
-Patch1:         librime-1.1-gcc53613.patch
-#PATCH-FIX-OPENSUSE fix boost 1.49 filesystem linking on 12.3 and lower
-Patch2:         librime-1.2-BOOST_NO_SCOPED_ENUMS.patch
-BuildRequires:  cmake
+Source:         https://github.com/rime/librime/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  capnproto >= 0.7.0
+BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  glog-devel
 BuildRequires:  googletest-devel
 BuildRequires:  leveldb-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_locale-devel
+BuildRequires:  libboost_regex-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libcapnp-devel >= 0.7.0
 BuildRequires:  libkyotocabinet-devel
 BuildRequires:  marisa-devel
 BuildRequires:  opencc-devel >= 1.0.2
@@ -41,14 +42,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  yaml-cpp-devel
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_locale-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 Rime is an Traditional Chinese input method engine.
@@ -93,37 +86,13 @@ This package is the development headers of Rime.
 
 %prep
 %setup -q
-%if 0%{?suse_version} <= 1230
-%patch1 -p1
-%patch2 -p1
-%endif
 
 %build
-# build internal capnproto
-mkdir -p thirdparty/src/capnproto/build
-pushd thirdparty/src/capnproto/build
-cmake -DCMAKE_INSTALL_PREFIX=../../../ -DCMAKE_CXX_FLAGS="%{optflags} -fPIC" ..
-make
-make install
-popd
-
-%cmake -DCapnProto_DIR=thirdparty/src/%{_lib}/cmake/CapnProto
-make %{?_smp_mflags}
+%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake_build
 
 %install
 %cmake_install
-# librime-lua
-mkdir -p %{buildroot}%{_includedir}/rime
-for i in $(find src/rime/ -type f -name "*.h"); do
-  dir=$(dirname $i);
-  if [ "$dir" != "src/rime" ]; then
-    target_dir=$(basename $dir);
-    mkdir -p %{buildroot}%{_includedir}/rime/$target_dir;
-    cp -r $i %{buildroot}%{_includedir}/rime/$target_dir/;
-  else
-    cp -r $i %{buildroot}%{_includedir}/rime/;
-  fi
-done
 
 %post -n librime1 -p /sbin/ldconfig
 %postun -n librime1 -p /sbin/ldconfig
@@ -137,12 +106,11 @@ done
 
 %files -n librime1
 %{_libdir}/%{name}.so.1
-%{_libdir}/%{name}.so.1.6.1
+%{_libdir}/%{name}.so.%{version}
 
 %files devel
 %{_includedir}/rime_api.h
 %{_includedir}/rime_levers_api.h
-%{_includedir}/rime
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/rime.pc
 %{_datadir}/cmake/rime/

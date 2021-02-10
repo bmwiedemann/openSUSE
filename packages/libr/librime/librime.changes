@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Feb 10 08:53:08 CET 2021 - tiwai@suse.de
+
+- Drop baselibs.conf, as the dependencies are missing on 32bit arch
+  and no other packages require it
+
+-------------------------------------------------------------------
+Mon Feb  8 16:53:18 CET 2021 - tiwai@suse.de
+
+- Corrected the source download URL
+
+-------------------------------------------------------------------
+Sat Feb  6 09:24:43 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to version 1.7.1
+  Bug Fixes
+  * chord_composer: press Return key to commit raw key sequence (2b25861)
+- Dropped obsoleted patches:
+  librime-1.1-gcc53613.patch
+  librime-1.2-BOOST_NO_SCOPED_ENUMS.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 15:38:48 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to version 1.7.0
+  Bug Fixes
+  * chord_composer: more safely handle the placeholder ZWSP (025d9fb)
+  * cmake: use full paths defined by GNUInstallDirs (bb8c263), closes #424
+  * opencc: update submodule to fix #425 (3fa1571)
+  * script_translator: always_show_comments also applies to phrases
+    (440a97c), closes #272 #419
+  * table_translator: index out of bound access in string (ff7acdc)
+  Features
+  * chareset_filter: add CJK Compatibility Ideographs in is_extended_cjk()
+    (3cb1128), closes #305
+  * setup: find and load external RIME plugins as shared libs #431 (b2abd09)
+- Clean up spec: remove EOL conditions, move capnproto to BR dependency
+
+-------------------------------------------------------------------
 Sun Oct 25 14:05:02 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - revert: Add plugin librime-lua
