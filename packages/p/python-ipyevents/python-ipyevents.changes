@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 31 10:30:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.8.1
+  * no upstream changelog
+  * javascript and npm updates
+  * support newer versions of dependencies (jupyterlab, traitlets)
+  * Add property to get list of supported xy coordinates
+- Fix singlespec
+- Fix wheel location for install
+- Enable tests by getting them from GitHub
+
+-------------------------------------------------------------------
 Sat Jan 11 14:56:22 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)

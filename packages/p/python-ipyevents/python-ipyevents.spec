@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyevents
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define mainver 0.7.0
-%define labver  1.7.0
+%define mainver 0.8.1
+%define labver  1.8.1
 Name:           python-ipyevents
 Version:        %{mainver}
 Release:        0
-License:        BSD-3-Clause
 Summary:        A custom ipython widget for returning mouse and keyboard events
-Url:            https://github.com/mwcraig/ipyevents
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipyevents/ipyevents-%{mainver}-py2.py3-none-any.whl
+URL:            https://github.com/mwcraig/ipyevents
+# The Github archive has the test file, but does not bundle the extensions
+Source0:        %{url}/archive/%{version}.tar.gz#/ipyevents-%{mainver}-gh.tar.gz
+# Only the (pure) wheel bundles both extensions
+Source1:        https://files.pythonhosted.org/packages/py2.py3/i/ipyevents/ipyevents-%{mainver}-py2.py3-none-any.whl
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
+BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  jupyter-jupyterlab-filesystem
+BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
-Requires:       python-ipywidgets >= 7.0.0
 Requires:       jupyter-ipyevents = %{mainver}
+Requires:       python-ipywidgets >= 7.0.0
 BuildArch:      noarch
 
 %python_subpackages
@@ -51,6 +56,7 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyevents
 Summary:        A custom ipython widget for returning mouse and keyboard events
+Group:          Development/Languages/Python
 Requires:       jupyter-notebook
 Requires:       python3-ipyevents = %{mainver}
 
@@ -66,7 +72,9 @@ This package provides the tools and jupyter notebook extension.
 
 %package     -n jupyter-ipyevents-jupyterlab
 Version:        %{labver}
+Release:        0
 Summary:        A custom ipython widget for returning mouse and keyboard events
+Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
 Requires:       python3-ipyevents = %{mainver}
 
@@ -81,25 +89,29 @@ events to Python. Use it to:
 This package provides the JupyterLab extension.
 
 %prep
-%setup -q -c -T
+%setup -q -n ipyevents-%{mainver}
 
 %build
-# Not Needed
+# we install the (pure) wheel directly...
 
 %install
-cp -a %{SOURCE0} .
+%{python_expand mkdir -p build; cp %SOURCE1 build/}
 %pyproject_install
 
 %{jupyter_move_config}
 %python_expand find %{buildroot}%{$python_sitelib}/ipyevents/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
+%python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix} 
 cp %{buildroot}%{python3_sitelib}/ipyevents-%{mainver}.dist-info/LICENSE.md .
 
+%check
+%pytest
+
 %files %{python_files}
-%license %{python3_sitelib}/ipyevents-%{mainver}.dist-info/LICENSE.md
-%{python3_sitelib}/ipyevents-%{mainver}.dist-info/
-%{python3_sitelib}/ipyevents/
+%license LICENSE.md
+%{python_sitelib}/ipyevents-%{mainver}*-info/
+%{python_sitelib}/ipyevents/
 
 %files -n jupyter-ipyevents
 %license LICENSE.md
