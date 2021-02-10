@@ -53,4 +53,12 @@ Examples:
   with %python_files</comment>
     <requestid>866327</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d69a25d332c099b25a9493d9132fef6</srcmd5>
+    <version>1.4.7</version>
+    <time>1612989044</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>870722</requestid>
+  </revision>
 </revisionlist>
