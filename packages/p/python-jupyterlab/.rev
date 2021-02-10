@@ -111,4 +111,28 @@
     <comment></comment>
     <requestid>821358</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e5f649130446a77d50d6bd74841b23e7</srcmd5>
+    <version>3.0.7</version>
+    <time>1612989011</time>
+    <user>dimstar_suse</user>
+    <comment>- Set buildshell to /bin/bash for use of &quot;+=&quot;.
+- Fix typo in requirements
+- Update to 3.0.7
+  * Full Changelog at
+    https://jupyterlab.readthedocs.io/en/stable/getting_started/changelog.html
+- User Facing changes in v3.0.0
+  * Extensions can be installed without building JupyterLab with
+    NodeJS
+  * The JupyterLab interface supports multiple language
+  * A new visual debugger
+  * Improvements to Simple Interface mode and Mobile
+  * Table of Contents is now in core
+  * Visual filter in file browser
+  * Property inspector moved to right sidebar
+  * Command Palette is a floating window
+  * Now depends on Jupyter Server
+</comment>
+    <requestid>870838</requestid>
+  </revision>
 </revisionlist>
