@@ -410,4 +410,17 @@
 </comment>
     <requestid>816098</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>55e4d7242926932268d4a1f931cca63b</srcmd5>
+    <version>5.0.12</version>
+    <time>1612989071</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.12
+  * openssl: Add TLS_PROTOCOL setting to disable client-initiated
+    renegotiation.
+  * imap: send corrupted Unicode alerts only for new messages.
+  * waitlib: fix testwait.c failure with LTO enabled on F33.
+  * pop3login.c: fflush before STARTLS.</comment>
+    <requestid>870806</requestid>
+  </revision>
 </revisionlist>
