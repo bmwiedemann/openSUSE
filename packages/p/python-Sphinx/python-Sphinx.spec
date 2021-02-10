@@ -1,7 +1,7 @@
 #
 # spec file for package python-Sphinx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        3.3.1
+Version:        3.4.3
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -38,9 +38,8 @@ Source:         https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%
 Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz.asc
 # Provide intersphinx inventory offline
 Source2:        https://docs.python.org/3/objects.inv#/python3.inv
+Source3:        https://requests.readthedocs.io/en/master/objects.inv#/requests.inv
 Source99:       python-Sphinx-rpmlintrc
-# PATCH-FIX-UPSTREAM gh#sphinx-doc/sphinx#8520
-Patch0:         https://github.com/sphinx-doc/sphinx/pull/8520.patch#/sphinx-pr8520-fix-AliasNode-copy.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -235,10 +234,13 @@ sed -i 's/\r$//' sphinx/themes/basic/static/jquery.js # Fix wrong end-of-line en
 mkdir build.doc
 
 cp %{SOURCE2} doc/python3.inv
+cp %{SOURCE3} doc/requests.inv
 %{python_expand # Use one bundled intersphinx inventory for all flavors.
 # The python3.6 inventory fails to build even in its own flavor.
 # Use a more recent default (currently 3.9) from the source tag instead.
-sed -i -e "s/\(intersphinx_mapping = ..python.: (.https:..docs.python.org.3.., \)None\()\)/\1'python3.inv'\2/g" doc/conf.py
+# The same for requests.
+sed -i -e "s/\((.https:..docs.python.org.3.., \)None\()\)/\1'python3.inv'\2/g" doc/conf.py
+sed -i -e "s/\((.https:..requests.readthedocs.io.*, \)None\()\)/\1'requests.inv'\2/g" doc/conf.py
 $python setup.py build_sphinx
 rm build/sphinx/html/.buildinfo
 $python setup.py build_sphinx -b man

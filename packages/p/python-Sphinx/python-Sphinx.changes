@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jan 13 08:15:17 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.4.3
+  * Bugfix release, see upstream CHANGES
+
+-------------------------------------------------------------------
+Mon Jan 11 14:09:59 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Do not download python (and requests) documentation in the runtime.
+- Add file requests.inv
+
+-------------------------------------------------------------------
+Tue Dec 29 20:31:46 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.1:
+  * #8105: autodoc: the signature of class constructor will be shown for decorated
+    classes, not a signature of decorator
+  * #8119: autodoc: Allow to determine whether a member not included in
+    ``__all__`` attribute of the module should be documented or not via
+    :event:`autodoc-skip-member` event
+  * #8219: autodoc: Parameters for generic class are not shown when super class is
+    a generic class and show-inheritance option is given (in Python 3.7 or above)
+  * autodoc: Add ``Documenter.config`` as a shortcut to access the config object
+  * autodoc: Add Optional[t] to annotation of function and method if a default
+    value equal to None is set.
+  * #8209: autodoc: Add ``:no-value:`` option to :rst:dir:`autoattribute` and
+    :rst:dir:`autodata` directive to suppress the default value of the variable
+  * #8460: autodoc: Support custom types defined by typing.NewType
+  * #8285: napoleon: Add :confval:`napoleon_attr_annotations` to merge type hints
+    on source code automatically if any type is specified in docstring
+  * #8236: napoleon: Support numpydoc's "Receives" section
+  * #6914: Add a new event :event:`warn-missing-reference` to custom warning
+    messages when failed to resolve a cross-reference
+  * #6914: Emit a detailed warning when failed to resolve a ``:ref:`` reference
+  * #6629: linkcheck: The builder now handles rate limits. See
+    :confval:`linkcheck_retry_on_rate_limit` for details.
+  * Large number of bugfixes, see included NEWS
+- remove sphinx-pr8520-fix-AliasNode-copy.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Dec  4 17:19:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove unused mypy from BuildRequires in :test
