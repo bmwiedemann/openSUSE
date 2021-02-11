@@ -1,7 +1,7 @@
 #
 # spec file for package unixODBC
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,8 @@ Includes for ODBC development (based on unixODBC).
 %patch3 -p1
 %patch4 -p1
 
+chmod -x NEWS README doc/*.html doc/*.gif
+
 %build
 perl -i -pe 's{^ACLOCAL_AMFLAGS.*}{}' Makefile.am
 export -n LANG LINGUAS LC_ALL
@@ -108,7 +110,7 @@ rm -f "%{buildroot}/%{_libdir}"/unixODBC/libodbcpsql.*
 
 %files
 %license COPYING
-%attr(644,root,root) %doc AUTHORS ChangeLog NEWS README doc/*.html doc/*.gif
+%doc AUTHORS ChangeLog NEWS README doc/*.html doc/*.gif
 %docdir %{_mandir}
 %{_mandir}/man1/dltest.1%{?ext_man}
 %{_mandir}/man1/isql.1%{?ext_man}
