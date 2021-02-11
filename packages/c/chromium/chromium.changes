@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb  6 13:26:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 88.0.4324.150 bsc#1181827
+  - CVE-2021-21148: Heap buffer overflow in V8
+
+-------------------------------------------------------------------
+Thu Feb  4 10:09:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 88.0.4324.146 bsc#1181772
+  - CVE-2021-21142: Use after free in Payments
+  - CVE-2021-21143: Heap buffer overflow in Extensions
+  - CVE-2021-21144: Heap buffer overflow in Tab Groups.
+  - CVE-2021-21145: Use after free in Fonts
+  - CVE-2021-21146: Use after free in Navigation.
+  - CVE-2021-21147: Inappropriate implementation in Skia
+
+-------------------------------------------------------------------
 Sat Jan 23 10:09:14 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 88.0.4324.96 bsc#1181137

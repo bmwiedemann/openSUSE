@@ -3423,4 +3423,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment></comment>
     <requestid>866254</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>21fae0673bfb723277b3bad1ab96980d</srcmd5>
+    <version>88.0.4324.150</version>
+    <time>1613044065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 88.0.4324.150 bsc#1181827
+  - CVE-2021-21148: Heap buffer overflow in V8 (forwarded request 869981 from gmbr3)</comment>
+    <requestid>869982</requestid>
+  </revision>
 </revisionlist>
