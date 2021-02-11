@@ -1,5 +1,5 @@
 #
-# spec file for package qemu
+# spec file for package qemu%{name_suffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -281,20 +281,20 @@ Requires(post): procps
 Recommends:     kvm_stat
 %endif
 Recommends:     qemu-block-curl
-Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-ksm = %{qemuver}
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
 %ifnarch s390x
 Recommends:     qemu-hw-display-qxl
+Recommends:     qemu-hw-display-virtio-gpu
+Recommends:     qemu-hw-display-virtio-gpu-pci
 Recommends:     qemu-hw-display-virtio-vga
 Recommends:     qemu-hw-usb-redirect
+Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-ui-gtk
 Recommends:     qemu-ui-spice-app
 %endif
 %ifarch %{ix86} x86_64
-Recommends:     qemu-hw-display-virtio-gpu
-Recommends:     qemu-hw-display-virtio-gpu-pci
 Recommends:     qemu-x86
 %else
 Suggests:       qemu-x86
@@ -397,10 +397,10 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Requires:       %name = %{qemuver}
-Recommends:     qemu-ipxe
-Recommends:     qemu-vgabios
 Recommends:     ovmf
+Recommends:     qemu-ipxe
 Recommends:     qemu-uefi-aarch64
+Recommends:     qemu-vgabios
 
 %description arm
 %{generic_qemu_description}
@@ -414,8 +414,8 @@ Version:        %{qemuver}
 Release:        0
 Requires:       %name = %{qemuver}
 Recommends:     qemu-ipxe
-Recommends:     qemu-vgabios
 Recommends:     qemu-skiboot
+Recommends:     qemu-vgabios
 
 %description extra
 %{generic_qemu_description}
@@ -775,8 +775,8 @@ Release:        0
 Requires:       group(kvm)
 Requires(post): udev
 Supplements:    modalias(acpi*:QEMU0002%3A*)
-Supplements:    modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00005853d00000001sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)
 %{?systemd_ordering}
 
 %description guest-agent
@@ -855,7 +855,7 @@ Version:        %{qemuver}
 Release:        0
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       %name:%_datadir/%name/forsplits/06
 
 %description skiboot

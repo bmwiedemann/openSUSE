@@ -84,7 +84,7 @@ index 34045ea3cfeb5e30acac17ae8a10..b5cec71dd9a718055d9264e51946 100755
  echo
  echo "== Detecting -U and force-share conflicts =="
 diff --git a/tests/qemu-iotests/153.out b/tests/qemu-iotests/153.out
-index fcaa71aeeebd855d684d8056410f..8fbc7413e716462a4f196c39db5e 100644
+index ff8e55864a53501197bb4a66bf99..4e9c4607bdb3d46c24bad9e80f64 100644
 --- a/tests/qemu-iotests/153.out
 +++ b/tests/qemu-iotests/153.out
 @@ -424,6 +424,8 @@ Is another process using the image [TEST_DIR/t.qcow2]?
@@ -94,9 +94,9 @@ index fcaa71aeeebd855d684d8056410f..8fbc7413e716462a4f196c39db5e 100644
 +{"timestamp": {"seconds":  TIMESTAMP, "microseconds":  TIMESTAMP}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-qmp-quit"}}
 +{"return": {}}
  Adding drive
- { 'execute': 'human-monitor-command', 'arguments': { 'command-line': 'drive_add 0 if=none,id=d0,file=TEST_DIR/t.IMGFMT' } }
- {"return": "OKrn"}
-@@ -457,6 +459,8 @@ Closing the other
+ { 'execute': 'human-monitor-command',
+        'arguments': { 'command-line': 'drive_add 0 if=none,id=d0,file=TEST_DIR/t.IMGFMT' } }
+@@ -463,6 +465,8 @@ Closing the other
  {"return": ""}
  
  _qemu_io_wrapper TEST_DIR/t.qcow2 -c write 0 512

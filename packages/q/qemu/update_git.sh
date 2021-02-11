@@ -159,10 +159,10 @@ bundle2local() {
 rm -rf $BUNDLE_DIR
 mkdir -p $BUNDLE_DIR
 tar xJf bundles.tar.xz -C $BUNDLE_DIR
-BUNDLE_FILES=$(find $BUNDLE_DIR -printf "%P\n"|grep "bundle$")
+ID_FILES=$(find $BUNDLE_DIR -printf "%P\n"|grep "id$")
 
-for entry in ${BUNDLE_FILES[@]}; do
-    if [[ $entry =~ ^(.*)[/]*([a-f0-9]{40})[.]bundle$ ]]; then
+for entry in ${ID_FILES[@]}; do
+    if [[ $entry =~ ^(.*)[/]*([a-f0-9]{40})[.]id$ ]]; then
         SUBDIR=${BASH_REMATCH[1]}
         GITREPO_COMMIT_ISH=${BASH_REMATCH[2]}
     else
@@ -175,20 +175,29 @@ for entry in ${BUNDLE_FILES[@]}; do
             break
         fi
     done
+    if [[ "$i" = "REPO_COUNT" ]]; then
+        echo "ERROR! BUNDLE SUBPROJECT NOT MENTIONED IN config.sh! Fix!"
+        exit
+    fi
 
     LOCAL_REPO=$(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
     if [ -e $LOCAL_REPO ]; then
         git -C $LOCAL_REPO remote remove bundlerepo || true
-	# git won't let you delete a branch we're on - so get onto master temporarily (TODO: is there a better approach?)
+        # git won't let you delete a branch we're on - so get onto master temporarily (TODO: is there a better approach?)
         git -C $LOCAL_REPO checkout master -f
         git -C $LOCAL_REPO branch -D frombundle || true
-        git -C $LOCAL_REPO remote add bundlerepo $BUNDLE_DIR/$entry 
-        git -C $LOCAL_REPO fetch bundlerepo FETCH_HEAD
-        git -C $LOCAL_REPO branch frombundle FETCH_HEAD
-        git -C $LOCAL_REPO remote remove bundlerepo
+        if [ -e $BUNDLE_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle ]; then
+            git -C $LOCAL_REPO remote add bundlerepo $BUNDLE_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle
+            git -C $LOCAL_REPO fetch bundlerepo FETCH_HEAD
+            git -C $LOCAL_REPO branch frombundle FETCH_HEAD
+            git -C $LOCAL_REPO remote remove bundlerepo
+        fi
     else
-        echo "No local repo $LOCAL_REPO corresponding to archived git bundle!"
-        exit
+        if [ -e $BUNDLE_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle ]; then
+            # TODO: We should be able to handle this case with some more coding, but for now...
+            echo "No local repo $LOCAL_REPO available to process git bundle! Please create one"
+            exit
+        fi
     fi
 done
 rm -rf $BUNDLE_DIR
@@ -265,7 +274,7 @@ COMMIT_IDS_BY_SUBMODULE_PATH[SUPERPROJECT]=$NEW_COMMIT_ISH_FULL
 # MOVE BUNDLE COMMITS OVER TO LOCAL frombundle BRANCH
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-bundle2local
+bundle2local 
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # REBASE frombundle patches USING COMMIT_IDS_BY_SUBMODULE, ALSO USING OLD ID'S STORED IN OLD BUNDLE 
@@ -282,7 +291,7 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
             if [[ $GITREPO_COMMIT_ISH  =~ .*(.{40})[.]id ]]; then
                 GITREPO_COMMIT_ISH=${BASH_REMATCH[1]}
             fi
-            git -C ${LOCAL_REPO_MAP[$i]} checkout frombundle -f
+            git -C ${LOCAL_REPO_MAP[$i]} checkout -f frombundle
             git -C ${LOCAL_REPO_MAP[$i]} branch -D $GIT_BRANCH
             git -C ${LOCAL_REPO_MAP[$i]} checkout -b $GIT_BRANCH
             if [[ "$SUBDIR" = "" ]]; then
@@ -309,9 +318,9 @@ rm -rf $CMP_DIR
 rm -rf $BUNDLE_DIR
 mkdir -p $BUNDLE_DIR
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# NOW PROCESS BUNDLES INTO COMMITS AND FILL SPEC FILE
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# CONVERT BUNDLES INTO COMMITS AND FILL SPEC FILE
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 tar xJf bundles.tar.xz -C $BUNDLE_DIR
 BUNDLE_FILES=$(find $BUNDLE_DIR -printf "%P\n"|grep "bundle$")
@@ -588,6 +597,7 @@ rm -rf $CMP_DIR
 rm -rf checkdir
 
 osc service localrun format_spec_file
+sed -i 's/^# spec file for package qemu$/# spec file for package qemu%{name_suffix}/g' qemu.spec
 }
 
 #==============================================================================
@@ -739,7 +749,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
             echo "be lost. Then run script again without the continue option"
             exit
         fi
-        redo_tarball_and_rebase_patches &> /tmp/latest.log
+        redo_tarball_and_rebase_patches &> /tmp/latest.log # This includes a bundle2local
         if [[ "$REBASE_FAILS" ]]; then
             echo "ERROR! Rebase of the $GIT_BRANCH branch failed in the following local git repos:"
             echo $REBASE_FAILS

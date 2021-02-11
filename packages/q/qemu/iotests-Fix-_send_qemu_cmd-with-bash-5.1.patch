@@ -954,11 +954,11 @@ index 13e0c4f5a7dce51094fcbb77d069..b3b48120150b89d83c560ef2c9da 100644
  {"return": {}}
  *** done
 diff --git a/tests/qemu-iotests/153.out b/tests/qemu-iotests/153.out
-index 8fbc7413e716462a4f196c39db5e..4e9c4607bdb3d46c24bad9e80f64 100644
+index fcaa71aeeebd855d684d8056410f..ff8e55864a53501197bb4a66bf99 100644
 --- a/tests/qemu-iotests/153.out
 +++ b/tests/qemu-iotests/153.out
-@@ -427,7 +427,8 @@ _qemu_img_wrapper commit -b TEST_DIR/t.qcow2.b TEST_DIR/t.qcow2.c
- {"timestamp": {"seconds":  TIMESTAMP, "microseconds":  TIMESTAMP}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-qmp-quit"}}
+@@ -425,7 +425,8 @@ _qemu_img_wrapper commit -b TEST_DIR/t.qcow2.b TEST_DIR/t.qcow2.c
+ { 'execute': 'qmp_capabilities' }
  {"return": {}}
  Adding drive
 -{ 'execute': 'human-monitor-command', 'arguments': { 'command-line': 'drive_add 0 if=none,id=d0,file=TEST_DIR/t.IMGFMT' } }
@@ -967,7 +967,7 @@ index 8fbc7413e716462a4f196c39db5e..4e9c4607bdb3d46c24bad9e80f64 100644
  {"return": "OKrn"}
  
  _qemu_io_wrapper TEST_DIR/t.qcow2 -c write 0 512
-@@ -437,25 +438,30 @@ Creating overlay with qemu-img when the guest is running should be allowed
+@@ -435,25 +436,30 @@ Creating overlay with qemu-img when the guest is running should be allowed
  
  _qemu_img_wrapper create -f qcow2 -b TEST_DIR/t.qcow2 -F qcow2 TEST_DIR/t.qcow2.overlay
  == Closing an image should unlock it ==
@@ -1629,7 +1629,7 @@ index 85acda4635b37c14c40c485ca288..92ec81db034fd8af8520d160033c 100644
  {"return": "Block node is read-onlyrn"}
  *** done
 diff --git a/tests/qemu-iotests/common.qemu b/tests/qemu-iotests/common.qemu
-index 4f2557cc568beed038223af7660b..3ecff3edfa7569d49ec7d81c2195 100644
+index de680cf1c7c92e50b82aa2bc0262..ef105dfc393e96c6ef2f34c1466d 100644
 --- a/tests/qemu-iotests/common.qemu
 +++ b/tests/qemu-iotests/common.qemu
 @@ -146,14 +146,9 @@ _send_qemu_cmd()
