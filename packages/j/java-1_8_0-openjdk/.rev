@@ -618,4 +618,12 @@
     <comment>jdk8u275</comment>
     <requestid>852320</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>8eb803db3cf4280a25fdf2a5120c6c74</srcmd5>
+    <version>1.8.0.282</version>
+    <time>1613044102</time>
+    <user>dimstar_suse</user>
+    <comment>icedtea 3.18.0 (January 2021 CPU)</comment>
+    <requestid>870211</requestid>
+  </revision>
 </revisionlist>

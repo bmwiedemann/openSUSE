@@ -1,4 +1,194 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:08:11 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u282 (icedtea 3.18.0)
+  * January 2021 CPU (bsc#1181239)
+  * Security fixes
+    + JDK-8247619: Improve Direct Buffering of Characters
+  * Import of OpenJDK 8 u282 build 01
+    + JDK-6962725: Regtest javax/swing/JFileChooser/6738668/
+      /bug6738668.java fails under Linux
+    + JDK-8025936: Windows .pdb and .map files does not have proper
+      dependencies setup
+    + JDK-8030350: Enable additional compiler warnings for GCC
+    + JDK-8031423: Test java/awt/dnd/DisposeFrameOnDragCrash/
+      /DisposeFrameOnDragTest.java fails by Timeout on Windows
+    + JDK-8036122: Fix warning 'format not a string literal'
+    + JDK-8051853: new
+      URI("x/").resolve("..").getSchemeSpecificPart() returns null!
+    + JDK-8132664: closed/javax/swing/DataTransfer/DefaultNoDrop/
+      /DefaultNoDrop.java locks on Windows
+    + JDK-8134632: Mark javax/sound/midi/Devices/
+      /InitializationHang.java as headful
+    + JDK-8148854: Class names "SomeClass" and "LSomeClass;"
+      treated by JVM as an equivalent
+    + JDK-8148916: Mark bug6400879.java as intermittently failing
+    + JDK-8148983: Fix extra comma in changes for JDK-8148916
+    + JDK-8160438: javax/swing/plaf/nimbus/8057791/bug8057791.java
+      fails
+    + JDK-8165808: Add release barriers when allocating objects
+      with concurrent collection
+    + JDK-8185003: JMX: Add a version of
+      ThreadMXBean.dumpAllThreads with a maxDepth argument
+    + JDK-8202076: test/jdk/java/io/File/WinSpecialFiles.java on
+      windows with VS2017
+    + JDK-8207766: [testbug] Adapt tests for Aix.
+    + JDK-8212070: Introduce diagnostic flag to abort VM on failed
+      JIT compilation
+    + JDK-8213448: [TESTBUG] enhance jfr/jvm/TestDumpOnCrash
+    + JDK-8215727: Restore JFR thread sampler loop to old /
+      previous behavior
+    + JDK-8220657: JFR.dump does not work when filename is set
+    + JDK-8221342: [TESTBUG] Generate Dockerfile for docker testing
+    + JDK-8224502: [TESTBUG] JDK docker test TestSystemMetrics.java
+      fails with access issues and OOM
+    + JDK-8231209: [REDO] ThreadMXBean::getThreadAllocatedBytes()
+      can be quicker for self thread
+    + JDK-8231968: getCurrentThreadAllocatedBytes default
+      implementation s/b getThreadAllocatedBytes
+    + JDK-8232114: JVM crashed at imjpapi.dll in native code
+    + JDK-8234270: [REDO] JDK-8204128 NMT might report incorrect
+      numbers for Compiler area
+    + JDK-8234339: replace JLI_StrTok in java_md_solinux.c
+    + JDK-8238448: RSASSA-PSS signature verification fail when
+      using certain odd key sizes
+    + JDK-8242335: Additional Tests for RSASSA-PSS
+    + JDK-8244225: stringop-overflow warning on strncpy call from
+      compile_the_world_in
+    + JDK-8245400: Upgrade to LittleCMS 2.11
+    + JDK-8248214: Add paddings for TaskQueueSuper to reduce
+      false-sharing cache contention
+    + JDK-8249176: Update GlobalSignR6CA test certificates
+    + JDK-8250665: Wrong translation for the month name of May in
+      ar_JO,LB,SY
+    + JDK-8250928: JFR: Improve hash algorithm for stack traces
+    + JDK-8251469: Better cleanup for
+      test/jdk/javax/imageio/SetOutput.java
+    + JDK-8251840: Java_sun_awt_X11_XToolkit_getDefaultScreenData
+      should not be in make/mapfiles/libawt_xawt/mapfile-vers
+    + JDK-8252384: [TESTBUG] Some tests refer to COMPAT provider
+      rather than JRE
+    + JDK-8252395: [8u] --with-native-debug-symbols=external
+      doesn't include debuginfo files for binaries
+    + JDK-8252497: Incorrect numeric currency code for ROL
+    + JDK-8252754: Hash code calculation of JfrStackTrace is
+      inconsistent
+    + JDK-8252904: VM crashes when JFR is used and JFR event class
+      is transformed
+    + JDK-8252975: [8u] JDK-8252395 breaks the build for
+      --with-native-debug-symbols=internal
+    + JDK-8253284: Zero OrderAccess barrier mappings are incorrect
+    + JDK-8253550: [8u] JDK-8252395 breaks the build for make
+      STRIP_POLICY=no_strip
+    + JDK-8253752: test/sun/management/jmxremote/bootstrap/
+      /RmiBootstrapTest.java fails randomly
+    + JDK-8254081: java/security/cert/PolicyNode/
+      /GetPolicyQualifiers.java fails due to an expired certificate
+    + JDK-8254144: Non-x86 Zero builds fail with return-type
+      warning in os_linux_zero.cpp
+    + JDK-8254166: Zero: return-type warning in
+       zeroInterpreter_zero.cpp
+    + JDK-8254683: [TEST_BUG] jdk/test/sun/tools/jconsole/
+      /WorkerDeadlockTest.java fails
+    + JDK-8255003: Build failures on Solaris
+  * Import of OpenJDK 8 u282 build 02
+    + JDK-8253837: JFR 8u fix symbol and cstring hashtable equals
+      implementaion
+    + JDK-8255269: Unsigned overflow in g1Policy.cpp
+  * Import of OpenJDK 8 u282 build 03
+    + JDK-8163161: [PIT][TEST_BUG] increase timeout in
+      javax/swing/plaf/nimbus/8057791/bug8057791.java
+    + JDK-8168292: [TESTBUG] [macosx] Test
+      java/awt/TrayIcon/DragEventSource/DragEventSource.java fails
+      on OS X
+    + JDK-8168682: jdk/test/java/lang/ClassLoader/forNameLeak/
+      /ClassForNameLeak.java fails with -Xcomp
+    + JDK-8223108: Test java/awt/EventQueue/
+      /NonComponentSourcePost.java is unstable
+    + JDK-8255603: Memory/Performance regression after JDK-8210985
+  * Import of OpenJDK 8 u282 build 04
+    + JDK-8022535: [TEST BUG] javax/swing/text/html/parser/
+      /Test8017492.java fails
+    + JDK-8043899: compiler/5091921/Test7005594.java fails if
+      specified -Xmx is less than 1600m
+    + JDK-8046221: [TEST_BUG] Cleanup datatransfer tests
+    + JDK-8058805: [TEST_BUG]Test java/awt/TrayIcon/SecurityCheck/
+      /NoPermissionTest/NoPermissionTest.java fails
+    + JDK-8068275: Some tests failed after JDK-8063104
+    + JDK-8069211: (zipfs) ZipFileSystem creates corrupted zip if
+      entry output stream gets closed more than once
+    + JDK-8130772: Util.hitMnemonics does not work:
+      getSystemMnemonicKeyCodes() returns ALT_MASK rather than
+      VK_ALT
+    + JDK-8156803: Turn StressLCM/StressGCM flags to diagnostic
+    + JDK-8160761: [TESTBUG] Several compiler tests fail with
+      product bits
+    + JDK-8166015: [PIT][TEST_BUG] stray character in java/awt/
+      /Focus/ModalDialogActivationTest/
+      /ModalDialogActivationTest.java
+    + JDK-8166583: Add oopDesc::klass_or_null_acquire()
+    + JDK-8166663: Simplify oops_on_card_seq_iterate_careful
+    + JDK-8166862: CMS needs klass_or_null_acquire
+    + JDK-8179083: Uninitialized notifier in Java Monitor Wait
+      tracing event
+    + JDK-8205507: jdk/javax/xml/crypto/dsig/GenerationTests.java
+      timed out
+    + JDK-8217362: Emergency dump does not work when disk=false is
+      set
+    + JDK-8217766: Container Support doesn't work for some Join
+      Controllers combinations
+    + JDK-8219013: Update Apache Santuario (XML Signature) to
+      version 2.1.3
+    + JDK-8219562: Line of code in osContainer_linux.cpp L102
+      appears unreachable
+    + JDK-8220579: [Containers] SubSystem.java out of sync with
+      osContainer_linux.cpp
+    + JDK-8221340: [TESTBUG] TestCgroupMetrics.java fails after fix
+      for JDK-8219562
+    + JDK-8221710: [TESTBUG] more configurable parameters for
+      docker testing
+    + JDK-8227006: [linux] Runtime.availableProcessors execution
+      time increased by factor of 100
+    + JDK-8229868: Update Apache Santuario TPRM version
+    + JDK-8233548: Update CUP to v0.11b
+    + JDK-8242480: Negative value may be returned by
+       getFreeSwapSpaceSize() in the docker
+    + JDK-8246648: issue with OperatingSystemImpl
+      getFreeSwapSpaceSize in docker after 8242480
+    + JDK-8249846: Change of behavior after JDK-8237117: Better
+      ForkJoinPool behavior
+    + JDK-8250636: iso8601_time returns incorrect offset part on
+      MacOS
+    + JDK-8251365: Build failure on AIX after 8250636
+    + JDK-8255717: Fix JFR crash in WriteObjectSampleStacktrace due
+      to object not initialized
+    + JDK-8256618: Zero: Linux x86_32 build still fails
+    + JDK-8256671: Incorrect assignment operator used in
+      guarantee() in genCollectedHeap
+    + JDK-8256752: 8252395 incorrect copy rule for macos .dSYM
+      folder
+    + JDK-8257397: [TESTBUG] test/lib/containers/docker/Common.java
+      refers to -Xlog:os+container=trace
+  * Import of OpenJDK 8 u282 build 05
+    + JDK-8254982: (tz) Upgrade time-zone data to tzdata2020c
+  * Import of OpenJDK 8 u282 build 06
+    + JDK-8255226: (tz) Upgrade time-zone data to tzdata2020d
+  * Import of OpenJDK 8 u282 build 07
+    + JDK-8225072: Add LuxTrust certificate that is expiring in
+      March 2021 to list of allowed but expired certs
+    + JDK-8239105: Add exception for expiring Digicert root
+      certificates to VerifyCACerts test
+    + JDK-8258630: Add expiry exception for QuoVadis root
+      certificate
+  * Bug fixes
+    + PR3819: Installation can't handle existing tapset symlinks
+  * Shenandoah
+    + Shenandoah: Fix racy update of code roots
+  * AArch32 port
+    + JDK-8253036: Support building the Zero assembler port on
+      AArch64
+
+-------------------------------------------------------------------
 Thu Nov 26 19:13:31 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u275 (icedtea 3.17.1)
