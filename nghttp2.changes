@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  4 11:22:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.43.0:
+  * doc: Make doc generation work with sphinx v3.3
+  * python: Require python3 for python bindings
+  * python: Require python3 for python scripts
+  * nghttpx: Make sure that Pool gets cleared when all buffers are returned
+  * nghttpx: Choose ECDSA cert if compatible signature algorithm available
+  * nghttpx: Add workaround to include ':' in backend pattern
+
+-------------------------------------------------------------------
 Wed Jan  6 12:22:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.42.0:
