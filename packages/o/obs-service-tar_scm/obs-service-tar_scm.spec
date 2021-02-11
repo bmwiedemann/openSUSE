@@ -1,7 +1,7 @@
 #
-# spec file for package obs-service-tar_scm
+# spec file for package obs-service-tar_scm-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?fedora}
+%if 0%{?fedora_version}%{?centos_version}%{?rhel_version}
 %define _pkg_base %nil
 %else
 %define _pkg_base -base
@@ -40,7 +40,7 @@
 ExclusiveArch:  skip-build
 %endif
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29
+%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -111,8 +111,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.19.1605080719.3b79112
-Version:        0.10.19.1605080719.3b79112
+%define version_unconverted 0.10.20.1606128060.135ac94
+Version:        0.10.20.1606128060.135ac94
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -252,6 +252,7 @@ source artefacts (.dsc, .origin.tar.gz and .debian.tar.gz if non-native).
 make install DESTDIR="%{buildroot}" PREFIX="%{_prefix}" SYSCFG="%{_sysconfdir}" PYTHON="%{_bindir}/%{use_python}" WITH_GBP="%{enable_gbp}"
 
 %else
+
 # moved conditional to the top as it helps to have it all in one place and only rely on the bcond_with here.
 %check
 # No need to run PEP8 tests here; that would require a potentially

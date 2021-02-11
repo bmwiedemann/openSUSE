@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 01 09:16:58 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.20.1606128060.135ac94:
+  * fix build for CentOS adn RHEL 8
+  * filter dirs with "include" filter option
+
+-------------------------------------------------------------------
 Wed Nov 11 07:50:03 UTC 2020 - FSchreiner@suse.com
 
 - Update to version 0.10.19.1605080719.3b79112:
