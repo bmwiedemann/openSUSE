@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -104,6 +104,11 @@ sed -i "s#\(httpbin.*\), 'never'#\1#" tests/test_requests.py
 %install
 %if !%{with test}
 %python_install
+%{python_expand # don't pin to idna<3 for python3, because many package installers check this and fail with newer idna
+if [ ! 0%{$python_version_nodots} -lt 30 ]; then
+  sed -i -E 's/idna<3,?/idna/' %{buildroot}%{$python_sitelib}/requests-%{version}*-info/requires.txt
+fi
+}
 # check that urllib3 is not installed
 test ! -e %{buildroot}%{python3_sitelib}/requests/packages/urllib3
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  3 14:04:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't pin idna<3 in the egg-info so that depending packages
+  can install the new idna dropping python2 
+
+-------------------------------------------------------------------
 Sat Dec 19 09:57:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.25.1:
