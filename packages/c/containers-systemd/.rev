@@ -229,4 +229,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>866615</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>141101a6271186db932e1f80174232b5</srcmd5>
+    <version>0.0+git20210205.a4b07b6</version>
+    <time>1613044039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210205.a4b07b6:
+  * Add container-nfs-service files</comment>
+    <requestid>869722</requestid>
+  </revision>
 </revisionlist>

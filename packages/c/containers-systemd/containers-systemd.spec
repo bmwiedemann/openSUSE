@@ -16,8 +16,8 @@
 #
 
 
-%define containers bind dhcp-server dovecot fetchmail haproxy mariadb minidlna nginx openldap postfix spamassassin squid
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nginx.service container-openldap.service container-postfix.service container-spamassassin.service container-squid.service container-image-prune.service container-image-prune.timer
+%define containers bind dhcp-server dovecot fetchmail haproxy mariadb minidlna nfs-server nginx openldap postfix spamassassin squid
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nfs-server.service container-nginx.service container-openldap.service container-postfix.service container-spamassassin.service container-squid.service container-image-prune.service container-image-prune.timer
 
 %if %{undefined service_del_postun_without_restart}
 %define service_del_postun_without_restart() \
@@ -26,7 +26,7 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20210118.1366ecb
+Version:        0.0+git20210205.a4b07b6
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -125,6 +125,9 @@ done
 %{_unitdir}/container-minidlna.service
 %{_distconfdir}/default/container-minidlna
 %{_sbindir}/rccontainer-minidlna
+%{_unitdir}/container-nfs-server.service
+%{_distconfdir}/default/container-nfs-server
+%{_sbindir}/rccontainer-nfs-server
 %{_unitdir}/container-nginx.service
 %{_distconfdir}/default/container-nginx
 %{_sbindir}/rccontainer-nginx
