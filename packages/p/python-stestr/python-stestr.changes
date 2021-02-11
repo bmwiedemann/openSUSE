@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  9 15:34:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Get rid of %ifpython3
+
+-------------------------------------------------------------------
+Mon Feb  8 13:05:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Add python 3.9 support
+  * Behaviour with a mix of New and Old options
+  * Update doc/source/MANUAL.rst
+  * Change option '--black-regex' to '--exclusion-regex'
+  * Change option '--blacklist-file' to '--exclude-list'
+  * Change option '--whitelist-file' to '--include-list'
+  * Change option '--whitelist-file' to '--include-list'
+  * Bump hacking version 
+
+-------------------------------------------------------------------
 Mon Dec 14 21:17:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - This package depends on python3-cliff from openstack, which is

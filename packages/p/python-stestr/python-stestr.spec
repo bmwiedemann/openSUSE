@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-stestr%{psuffix}
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        A test runner runner similar to testrepository
 License:        Apache-2.0
@@ -68,7 +68,7 @@ BuildRequires:  %{python_module stestr >= %{version}}
 BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module voluptuous >= 0.8.9}
 %endif
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Requires:       python-dbm
 %endif
 %if !0%{?_no_weakdeps}
