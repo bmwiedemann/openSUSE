@@ -17,26 +17,22 @@
 
 
 Name:           dosfstools
-Version:        4.1+git.1610658652.9443732
+Version:        4.2
 Release:        0
 Summary:        Utilities for Making and Checking MS-DOS FAT File Systems on Linux
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/dosfstools/dosfstools
-Source:         dosfstools-%{version}.tar.gz
-# Source:         https://github.com/dosfstools/dosfstools/releases/download/v%%{version}/dosfstools-%%{version}.tar.gz
+Source:         https://github.com/dosfstools/dosfstools/releases/download/v%{version}/dosfstools-%{version}.tar.gz
 # Source2:        https://github.com/dosfstools/dosfstools/releases/download/v%%{version}/dosfstools-%%{version}.tar.gz.sig
 # Source3:        %%{name}.keyring
 BuildRequires:  pkgconfig
 # xxd from vim is required for testsuite
 BuildRequires:  vim
 BuildRequires:  pkgconfig(libudev)
-# for ./autogen.sh
-BuildRequires:  libtool
 Supplements:    filesystem(vfat)
 Provides:       dosfsck
 Provides:       mkdosfs
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The dosfstools package includes the mkdosfs and dosfsck utilities, which
@@ -45,13 +41,12 @@ floppies.
 
 %prep
 %setup -q
-./autogen.sh
 
 %build
 %configure \
   --docdir=%{_docdir}/dosfstools \
   --enable-compat-symlinks
-make %{?_smp_mflags} CFLAGS="%{optflags} -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+%make_build CFLAGS="%{optflags} -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 
 %install
 %make_install
@@ -61,10 +56,9 @@ ln -sf %{_sbindir}/{dosfsck,dosfslabel,mkdosfs,fsck.msdos,mkfs.msdos,fsck.fat,fs
 %endif
 
 %check
-make check
+%make_build check
 
 %files
-%defattr(-,root,root)
 %doc %{_docdir}/dosfstools
 %if !0%{?usrmerged}
 /sbin/*
@@ -79,15 +73,15 @@ make check
 %{_sbindir}/mkfs.fat
 %{_sbindir}/mkfs.msdos
 %{_sbindir}/mkfs.vfat
-%{_mandir}/man8/dosfsck.8%{ext_man}
-%{_mandir}/man8/dosfslabel.8%{ext_man}
-%{_mandir}/man8/fatlabel.8%{ext_man}
-%{_mandir}/man8/fsck.fat.8%{ext_man}
-%{_mandir}/man8/fsck.msdos.8%{ext_man}
-%{_mandir}/man8/fsck.vfat.8%{ext_man}
-%{_mandir}/man8/mkdosfs.8%{ext_man}
-%{_mandir}/man8/mkfs.fat.8%{ext_man}
-%{_mandir}/man8/mkfs.msdos.8%{ext_man}
-%{_mandir}/man8/mkfs.vfat.8%{ext_man}
+%{_mandir}/man8/dosfsck.8%{?ext_man}
+%{_mandir}/man8/dosfslabel.8%{?ext_man}
+%{_mandir}/man8/fatlabel.8%{?ext_man}
+%{_mandir}/man8/fsck.fat.8%{?ext_man}
+%{_mandir}/man8/fsck.msdos.8%{?ext_man}
+%{_mandir}/man8/fsck.vfat.8%{?ext_man}
+%{_mandir}/man8/mkdosfs.8%{?ext_man}
+%{_mandir}/man8/mkfs.fat.8%{?ext_man}
+%{_mandir}/man8/mkfs.msdos.8%{?ext_man}
+%{_mandir}/man8/mkfs.vfat.8%{?ext_man}
 
 %changelog

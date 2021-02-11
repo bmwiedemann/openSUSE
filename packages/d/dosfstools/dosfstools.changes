@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  2 00:55:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2:
+  * mkfs.fat: Allow to specify disk geometry via new -g option
+  * fsck.fat: Add code for fixing first FAT cluster 
+  * fatlabel: Do not call parts of fsck repair procedure
+  * Update warning message about lowercase labels
+  * mkfs.fat: Read geom_start from sysfs
+  * Add missing files into distribution tarball 
+
+-------------------------------------------------------------------
 Fri Jan 15 06:13:07 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 4.1+git.1610658652.9443732 (bsc#1172863):
