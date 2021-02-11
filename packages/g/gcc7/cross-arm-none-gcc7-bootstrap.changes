@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  3 09:31:02 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Remove include-fixed/pthread.h
+- Change GCC exception licenses to SPDX format
+
+-------------------------------------------------------------------
+Sun Jan 31 16:41:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add gcc7-pr81942.patch [bsc#1181618] 
+
+-------------------------------------------------------------------
 Mon Jan  4 09:29:07 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Amend gcc7-aarch64-moutline-atomics.patch for glibc namespace

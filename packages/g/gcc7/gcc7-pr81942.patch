@@ -1,0 +1,116 @@
+From d49318d9bc3e63251aada27b322e7756eab19884 Mon Sep 17 00:00:00 2001
+From: Paolo Carlini <paolo.carlini@oracle.com>
+Date: Tue, 5 Sep 2017 13:33:44 +0000
+Subject: [PATCH 1/1] re PR c++/81942 (ICE on empty constexpr constructor with
+ C++14)
+
+/cp
+2017-09-05  Paolo Carlini  <paolo.carlini@oracle.com>
+
+	PR c++/81942
+	* cp-tree.h (LABEL_DECL_CDTOR): Add and document.
+	* decl.c (start_preparsed_function): Set LABEL_DECL_CDTOR when
+	creating cdtor_label.
+	* constexpr.c (returns): Add the case of a constructor/destructor
+	returning via a LABEL_DECL_CDTOR label.
+	(cxx_eval_constant_expression, case [GOTO_EXPR]): Likewise.
+
+/testsuite
+2017-09-05  Paolo Carlini  <paolo.carlini@oracle.com>
+
+	PR c++/81942
+	* g++.dg/cpp1y/constexpr-return3.C: New.
+
+From-SVN: r251714
+---
+ gcc/cp/ChangeLog                               | 10 ++++++++++
+ gcc/cp/constexpr.c                             |  8 ++++++--
+ gcc/cp/cp-tree.h                               |  6 ++++++
+ gcc/cp/decl.c                                  |  5 ++++-
+ gcc/testsuite/ChangeLog                        |  5 +++++
+ gcc/testsuite/g++.dg/cpp1y/constexpr-return3.C | 11 +++++++++++
+ 6 files changed, 42 insertions(+), 3 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/cpp1y/constexpr-return3.C
+
+Index: gcc-7.5.0+r278197/gcc/cp/constexpr.c
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/cp/constexpr.c
++++ gcc-7.5.0+r278197/gcc/cp/constexpr.c
+@@ -3744,7 +3744,9 @@ static bool
+ returns (tree *jump_target)
+ {
+   return *jump_target
+-    && TREE_CODE (*jump_target) == RETURN_EXPR;
++    && (TREE_CODE (*jump_target) == RETURN_EXPR
++	|| (TREE_CODE (*jump_target) == LABEL_DECL
++	    && LABEL_DECL_CDTOR (*jump_target)));
+ }
+ 
+ static bool
+@@ -4641,7 +4643,9 @@ cxx_eval_constant_expression (const cons
+ 
+     case GOTO_EXPR:
+       *jump_target = TREE_OPERAND (t, 0);
+-      gcc_assert (breaks (jump_target) || continues (jump_target));
++      gcc_assert (breaks (jump_target) || continues (jump_target)
++		  /* Allow for jumping to a cdtor_label.  */
++		  || returns (jump_target));
+       break;
+ 
+     case LOOP_EXPR:
+Index: gcc-7.5.0+r278197/gcc/cp/cp-tree.h
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/cp/cp-tree.h
++++ gcc-7.5.0+r278197/gcc/cp/cp-tree.h
+@@ -229,6 +229,7 @@ operator == (const cp_expr &lhs, tree rh
+       DECL_CONSTRAINT_VAR_P (in a PARM_DECL)
+       TEMPLATE_DECL_COMPLEX_ALIAS_P (in TEMPLATE_DECL)
+       DECL_INSTANTIATING_NSDMI_P (in a FIELD_DECL)
++      LABEL_DECL_CDTOR (in LABEL_DECL)
+    3: DECL_IN_AGGR_P.
+    4: DECL_C_BIT_FIELD (in a FIELD_DECL)
+       DECL_ANON_UNION_VAR_P (in a VAR_DECL)
+@@ -3610,6 +3611,11 @@ more_aggr_init_expr_args_p (const aggr_i
+ #define LABEL_DECL_CONTINUE(NODE) \
+   DECL_LANG_FLAG_1 (LABEL_DECL_CHECK (NODE))
+ 
++/* Nonzero if NODE is the target for genericization of 'return' stmts
++   in constructors/destructors of targetm.cxx.cdtor_returns_this targets.  */
++#define LABEL_DECL_CDTOR(NODE) \
++  DECL_LANG_FLAG_2 (LABEL_DECL_CHECK (NODE))
++
+ /* True if NODE was declared with auto in its return type, but it has
+    started compilation and so the return type might have been changed by
+    return type deduction; its declared return type should be found in
+Index: gcc-7.5.0+r278197/gcc/cp/decl.c
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/cp/decl.c
++++ gcc-7.5.0+r278197/gcc/cp/decl.c
+@@ -15253,7 +15253,10 @@ start_preparsed_function (tree decl1, tr
+   if (DECL_DESTRUCTOR_P (decl1)
+       || (DECL_CONSTRUCTOR_P (decl1)
+ 	  && targetm.cxx.cdtor_returns_this ()))
+-    cdtor_label = create_artificial_label (input_location);
++    {
++      cdtor_label = create_artificial_label (input_location);
++      LABEL_DECL_CDTOR (cdtor_label) = true;
++    }
+ 
+   start_fname_decls ();
+ 
+Index: gcc-7.5.0+r278197/gcc/testsuite/g++.dg/cpp1y/constexpr-return3.C
+===================================================================
+--- /dev/null
++++ gcc-7.5.0+r278197/gcc/testsuite/g++.dg/cpp1y/constexpr-return3.C
+@@ -0,0 +1,11 @@
++// PR c++/81942
++// { dg-do compile { target c++14 } }
++
++class A {
++public:
++    constexpr A() {
++      return;
++    }
++};
++
++A mwi;

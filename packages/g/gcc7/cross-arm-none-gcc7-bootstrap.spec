@@ -138,6 +138,7 @@ Patch27:        gcc7-pr94148.patch
 Patch29:        gcc7-pr97535.patch
 Patch30:        gcc7-pr88522.patch
 Patch31:        gcc7-testsuite-fixes.patch
+Patch32:        gcc7-pr81942.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -301,6 +302,7 @@ ln -s nvptx-newlib/newlib .
 %patch29
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
 %patch51
 %patch60
 %patch61
