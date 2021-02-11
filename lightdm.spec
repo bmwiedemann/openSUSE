@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -61,6 +61,7 @@ Patch3:         lightdm-disable-utmp-handling.patch
 Patch4:         lightdm-use-run-dir.patch
 # PATCH-FIX-OPENSUSE ignore-known-symlink-sessions.patch boo#1030873 -- Ignore known synlink sessions.
 Patch5:         lightdm-ignore-known-symlink-sessions.patch
+Patch6:         lightdm-glibc-2.33-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

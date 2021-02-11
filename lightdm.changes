@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  8 16:04:34 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add lightdm-glibc-2.33-fix.patch that fixes issue with glibc 2.33
+  (boo#1181778).  The patch was suggested as gh#168.
+
+-------------------------------------------------------------------
 Wed Dec  9 13:21:40 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Only build the qt4 subpackage up to Leap 15.2 / SLE 15 SP2
