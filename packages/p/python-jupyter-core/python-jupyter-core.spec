@@ -41,6 +41,7 @@ BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros
+Requires:       jupyter-jupyter_core-filesystem
 Requires:       python-traitlets
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
