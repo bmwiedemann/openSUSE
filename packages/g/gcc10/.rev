@@ -177,4 +177,16 @@
 - Enable fortran for offload compilers.</comment>
     <requestid>852655</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ca4758f83defd464f7e1ddb89de31f39</srcmd5>
+    <version>10.2.1+git1030</version>
+    <time>1613043878</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove include-fixed/pthread.h
+- Change GCC exception licenses to SPDX format
+
+- prepare usrmerge: Install libgcc_s into %_libdir. ABI wise it
+  stays /%lib. (boo#1029961)</comment>
+    <requestid>868872</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  3 09:27:45 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Remove include-fixed/pthread.h
+- Change GCC exception licenses to SPDX format
+
+-------------------------------------------------------------------
 Wed Dec  2 14:20:06 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (e563687cf9d3d1278f45aaebd), git1030
@@ -34,6 +40,12 @@ Tue Nov 17 10:39:16 UTC 2020 - Richard Biener <rguenther@suse.com>
 Wed Nov 11 15:20:35 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Fix 32bit libgnat.so link.  [bsc#1178675]
+
+-------------------------------------------------------------------
+Thu Oct 29 10:57:04 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge: Install libgcc_s into %_libdir. ABI wise it
+  stays /%lib. (boo#1029961)
 
 -------------------------------------------------------------------
 Wed Oct 28 09:45:37 UTC 2020 - Richard Biener <rguenther@suse.com>

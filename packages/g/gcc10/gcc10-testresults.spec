@@ -1,7 +1,7 @@
 #
 # spec file for package gcc10-testresults
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,16 @@
 #
 
 # nospeccleaner
+
+%if !0%{?usrmerged}
+%define _slibdir  /%{_lib}
+%define slibdir   /lib
+%define slibdir64 /lib64
+%else
+%define _slibdir  %{_libdir}
+%define slibdir   %{_prefix}/lib
+%define slibdir64 %{_libdir}
+%endif
 
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
