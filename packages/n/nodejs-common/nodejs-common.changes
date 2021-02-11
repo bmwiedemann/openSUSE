@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 19 11:33:38 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- set nodejs14 as default for sle15-sp3+
+- set nodejs15 as default for TW
+
+-------------------------------------------------------------------
 Tue Jun  9 10:35:06 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Add nodejs-default, npm-default and nodejs-devel-default subpackages

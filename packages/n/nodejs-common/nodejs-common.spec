@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-common
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@
 #
 ###########################################################
 
-%define NODEJS_LTS      12
-%define NODEJS_CURRENT  14
+%define NODEJS_LTS      14
+%define NODEJS_CURRENT  15
 
 # logic for default version
 # OBSOLETE ARCHES
@@ -44,14 +44,22 @@
 # TW
 %if 0%{?suse_version} > 1500
 %define default_node_ver %NODEJS_CURRENT
-%endif
+
+%else
 
 # SLE-15 variants, variation based on SP
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 150200
 %define default_node_ver 10
+%else
+%if 0%{?sle_version} < 150300
+%define default_node_ver 12
+%else
+%define default_node_ver NODEJS_LTS
 %endif
-%if 0%{?sle_version} >= 150200
-%define default_node_ver %NODEJS_LTS
+# SLE-15 variants
+%endif
+
+# TW
 %endif
 
 # END - GENERAL ARCHES
@@ -63,7 +71,7 @@ Release:        0
 Summary:        Common files for the NodeJS ecosystem
 License:        MIT
 Group:          Development/Languages/NodeJS
-Url:            https://github.com/AdamMajer/nodejs-packaging
+URL:            https://github.com/AdamMajer/nodejs-packaging
 Source1:        node.c
 Source2:        LICENSE
 Requires:       nodejs
@@ -111,6 +119,8 @@ the current architecture and codestream.
 %build
 cp %{S:2} .
 gcc ${RPM_OPT_FLAGS} -o node %{S:1}
+
+echo "Default Node version: " %{default_node_ver}
 
 %install
 install -D -m 0755 node %{buildroot}%{_bindir}/node
