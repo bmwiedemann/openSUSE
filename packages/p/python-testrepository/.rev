@@ -190,4 +190,12 @@
 - Fix %license</comment>
     <requestid>688831</requestid>
   </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>0e39c6e69e2500a3ea3f46ab14c64407</srcmd5>
+    <version>0.0.20</version>
+    <time>1613043954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870271</requestid>
+  </revision>
 </revisionlist>

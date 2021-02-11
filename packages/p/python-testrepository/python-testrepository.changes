@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  8 11:17:44 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- %ifpython3 does not work with new multi-build python
+
+-------------------------------------------------------------------
 Tue Mar 26 16:00:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove accidental runtime dep on python-dbm
