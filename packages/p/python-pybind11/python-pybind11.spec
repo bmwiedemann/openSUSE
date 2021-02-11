@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pybind11
-Version:        2.5.0
+Version:        2.6.2
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
@@ -76,6 +76,7 @@ popd
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pybind11-config
 %python_expand %cmake_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # removing duplicated header files
@@ -85,11 +86,19 @@ rm -rfv %{buildroot}%{_includedir}/python3.*/pybind11
 %check
 # test fails as python3-widget is not in distribuion
 rm tests/test_embed/test_interpreter.py
-%pytest
+export PYTHONPATH=${PWD}/build/tests/
+%pytest -k 'not (tests_build_wheel or tests_build_global_wheel)'
+
+%post
+%python_install_alternative pybind11-config
+
+%postun
+%python_uninstall_alternative pybind11-config
 
 %files %{python_files}
-%doc README.md
+%doc README.rst docs/changelog.rst
 %license LICENSE
+%python_alternative %{_bindir}/pybind11-config
 %{python_sitelib}/pybind11*
 %exclude %{python_sitelib}/pybind11/include
 

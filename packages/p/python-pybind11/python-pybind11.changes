@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  7 13:15:06 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/changelog.rst to package contents
+- Update to v2.6.2
+  * See changelog for changes since 2.5.0
+
+-------------------------------------------------------------------
 Fri Jul 17 01:00:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Also expand generation of test binaries for Python 2 and 3,
