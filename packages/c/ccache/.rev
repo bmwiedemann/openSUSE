@@ -563,4 +563,17 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment></comment>
     <requestid>850371</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>a0e525aef67d3ed041be48b063fe4fdc</srcmd5>
+    <version>4.2</version>
+    <time>1613043996</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Update to version 4.2:
+  * Improved calculation of relative paths when using base_dir to also consider canonical paths (i.e. paths with dereferenced symlinks) as candidates.
+  * Added a debug_dir (CCACHE_DEBUGDIR) configuration setting for specifying a directory for files written in debug mode.
+  * Added support for compiler option -x cuda, understood by Clang.
+  * The value of the SOURCE_DATE_EPOCH variable is now only hashed if it potentially affects the output from ccache. This means that ccache now (like before version 4.0) will be able produce cache hits for source code that doesn’t contain __DATE__ or __TIME__ macros regardless of the value of SOURCE_DATE_EPOCH.</comment>
+    <requestid>869207</requestid>
+  </revision>
 </revisionlist>
