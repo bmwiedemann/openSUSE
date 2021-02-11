@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ security contexts and to obtain security policy decisions.
 %package -n libselinux1
 Summary:        SELinux runtime library
 Group:          System/Libraries
+Recommends:     selinux-autorelabel
 
 %description -n libselinux1
 libselinux provides an interface to get and set process and file
