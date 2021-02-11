@@ -1,7 +1,7 @@
 #
 # spec file for package python-XlsxWriter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,18 +32,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Provides:       python3-xlsxwriter = %{version}
+Obsoletes:      python3-xlsxwriter < %{version}
 BuildArch:      noarch
 %ifpython2
 # python-xlsxwriter was last used in openSUSE Leap 42.1.
 Provides:       %{oldpython}-xlsxwriter = %{version}
 Obsoletes:      %{oldpython}-xlsxwriter < %{version}
 %endif
-%ifpython3
-# python3-xlsxwriter was last used in openSUSE Leap 42.1.
-Provides:       python3-xlsxwriter = %{version}
-Obsoletes:      python3-xlsxwriter < %{version}
-%endif
-
 %python_subpackages
 
 %description
