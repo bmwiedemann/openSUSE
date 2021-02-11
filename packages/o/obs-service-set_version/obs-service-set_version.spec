@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-set_version
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,26 @@
 #
 
 
+%if 0%{?centos_version}
+%bcond_with obs_scm_testsuite
+%else
 %bcond_without obs_scm_testsuite
+%endif
 %define service set_version
 
-%if 0%{?suse_version} > 1315  || 0%{?fedora_version} 
+%if 0%{?suse_version} > 1315  || 0%{?fedora_version}  || 0%{?centos_version} >= 800
 %define use_python python3
 %else
 %define use_python python
 %endif
 
 Name:           obs-service-%{service}
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 Summary:        An OBS source service: Update spec file version
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            https://github.com/openSUSE/obs-service-%{service}
+URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
