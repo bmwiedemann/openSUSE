@@ -1,5 +1,0 @@
-<package name="docker-runc" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="Virtualization:containers" package="docker-runc"/>
-</package>
