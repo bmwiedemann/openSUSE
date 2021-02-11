@@ -2252,4 +2252,14 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
 - Spec file cleanup, remove conditionals for Leap 42.x</comment>
     <requestid>864292</requestid>
   </revision>
+  <revision rev="117" vrev="4">
+    <srcmd5>f8573d5175d0eb3a420769e2a3702683</srcmd5>
+    <version>5.15.2</version>
+    <time>1613043947</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC 11 (boo#1181861, QTBUG-90395):
+  * 0001-Fix-build-with-GCC-11-include-limits.patch
+  * 0002-Build-fixes-for-GCC-11.patch</comment>
+    <requestid>870237</requestid>
+  </revision>
 </revisionlist>
