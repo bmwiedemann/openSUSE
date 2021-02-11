@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Mon Feb 08 05:13:48 UTC 2021 - git@opensuse.org
+
+- Update to version 84.87.20210205.68980f3ed7:
+  * New POT for text domain 'qt-pkg'.
+  * New POT for text domain 'qt'.
+  * New POT for text domain 'ncurses-pkg'.
+  * New POT for text domain 'wol'.
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'rmt'.
+  * New POT for text domain 'relocation-server'.
+  * New POT for text domain 'reipl'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rdp'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'multipath'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'iplb'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'geo-cluster'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'add-on'.
+  * Add empty po files for cc and cc-control
+  * product-check.sh: Add support for 000product and inherited products
+  * DOMAIN_MAP: Add system-role-common-criteria
+  * Automatic update of wol.
+  * Automatic update of vpn.
+  * Automatic update of users.
+  * Automatic update of update.
+  * Automatic update of tune.
+  * Automatic update of s390.
+  * Automatic update of sysconfig.
+  * Automatic update of support.
+  * Automatic update of sudo.
+  * Automatic update of storage.
+  * Automatic update of squid.
+  * Automatic update of sound.
+  * Automatic update of snapper.
+  * Automatic update of slp-server.
+  * Automatic update of services-manager.
+  * Automatic update of security.
+  * Automatic update of scanner.
+  * Automatic update of samba-server.
+  * Automatic update of samba-client.
+  * Automatic update of rmt.
+  * Automatic update of relocation-server.
+  * Automatic update of reipl.
+  * Automatic update of registration.
+  * Automatic update of rdp.
+  * Automatic update of proxy.
+  * Automatic update of printer.
+  * Automatic update of pam.
+  * Automatic update of packager.
+  * Automatic update of online-update.
+  * Automatic update of ntp-client.
+  * Automatic update of nis_server.
+  * Automatic update of nis.
+  * Automatic update of nfs_server.
+  * Automatic update of nfs.
+  * Automatic update of network.
+  * Automatic update of multipath.
+  * Automatic update of migration.
+  * Automatic update of mail.
+  * Automatic update of ldap-client.
+  * Automatic update of ldap.
+  * Automatic update of kdump.
+  * Automatic update of journalctl.
+  * Automatic update of isns.
+  * Automatic update of iscsi-lio-server.
+  * Automatic update of iscsi-client.
+  * Automatic update of iplb.
+  * Automatic update of instserver.
+  * Automatic update of installation.
+  * Automatic update of http-server.
+  * Automatic update of geo-cluster.
+  * Automatic update of ftp-server.
+  * Automatic update of firewall.
+  * Automatic update of fcoe-client.
+  * Automatic update of drbd.
+  * Automatic update of dns-server.
+  * Automatic update of dhcp-server.
+  * Automatic update of crowbar.
+  * Automatic update of country.
+  * Automatic update of control.
+  * Automatic update of cluster.
+  * Automatic update of bootloader.
+  * Automatic update of base.
+  * Automatic update of autoinst.
+  * Automatic update of auth-client.
+  * Automatic update of audit-laf.
+  * Automatic update of apparmor.
+  * Automatic update of add-on.
+  * New POT for text domain 'ncurses'.
+  * New POT for text domain 'autoinst'.
+
+-------------------------------------------------------------------
 Mon Feb 01 05:13:21 UTC 2021 - git@opensuse.org
 
 - Update to version 84.87.20210130.332fb904b7:
