@@ -181,4 +181,12 @@
   * Fixed and improved build scripts</comment>
     <requestid>840487</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5d9c4fdd1fbe358bec3c6eab4dfe93c2</srcmd5>
+    <version>2.4.5</version>
+    <time>1613044000</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.5:</comment>
+    <requestid>869214</requestid>
+  </revision>
 </revisionlist>

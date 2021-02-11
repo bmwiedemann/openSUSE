@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 17 23:31:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.5:
+  * Improved shout.h for reading, and understanding.
+  * Marked dumpfile support as obsolete (as SHOUT_PROTOCOL_XAUDIOCAST already is).
+  * Added Support for setting the content language.
+  * Avoid the use of obsolete functions (#2317).
+  * Several small fixes for non-blocking mode (#2321, #2315).
+  * Corrected detection of libogg (mostly for windows targets).
+  * Now accept TLS mode "auto" when build without TLS support.
+  * Added new tool shout(1).
+
+-------------------------------------------------------------------
 Fri Oct  9 19:39:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.4.4:

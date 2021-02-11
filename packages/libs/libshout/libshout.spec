@@ -1,7 +1,7 @@
 #
 # spec file for package libshout
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libshout
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        Library for communcating with Icecast servers
 License:        LGPL-2.1-or-later
@@ -80,8 +80,10 @@ rm -Rf "%buildroot/%_libdir/ckport"
 %files devel
 %doc README doc/*.xml examples/*.c
 %license COPYING
+%_bindir/shout
 %_libdir/*.so
 %_includedir/shout
+%_mandir/man1/shout.1%{?ext_man}
 %_datadir/aclocal/*.m4
 %_libdir/pkgconfig/*.pc
 
