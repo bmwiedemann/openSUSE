@@ -840,4 +840,13 @@
   sequence any more (revisited boo#1159963) (forwarded request 834881 from oertel)</comment>
     <requestid>834886</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>bc61857fd2d2515287457740a0a6be03</srcmd5>
+    <version>84.87+git20210208.d8d4154</version>
+    <time>1613043956</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210208.d8d4154:
+  * Don't remove usrmerge helper packages (boo#1029961)</comment>
+    <requestid>870280</requestid>
+  </revision>
 </revisionlist>

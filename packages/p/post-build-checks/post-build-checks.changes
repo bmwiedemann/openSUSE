@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 08 13:41:18 UTC 2021 - lnussel@suse.de
+
+- Update to version 84.87+git20210208.d8d4154:
+  * Don't remove usrmerge helper packages (boo#1029961)
+
+-------------------------------------------------------------------
 Wed Sep 16 10:12:53 UTC 2020 - ro@suse.de
 
 - Update to version 84.87+git20200916.d341ab0:

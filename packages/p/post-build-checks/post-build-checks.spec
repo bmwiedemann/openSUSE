@@ -1,7 +1,7 @@
 #
 # spec file for package post-build-checks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define version_unconverted 84.87+git20200916.d341ab0
+%define version_unconverted 84.87+git20210208.d8d4154
 
 Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20200916.d341ab0
+Version:        84.87+git20210208.d8d4154
 Release:        0
 PreReq:         aaa_base permissions sed
 Requires:       aaa_base-malloccheck
