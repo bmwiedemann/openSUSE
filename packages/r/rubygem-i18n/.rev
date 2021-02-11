@@ -232,4 +232,12 @@
     <comment></comment>
     <requestid>864571</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>18e2688adffdcec20cb6e401f0e8c2a0</srcmd5>
+    <version>1.8.8</version>
+    <time>1613043908</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 869937 from mschnitzer)</comment>
+    <requestid>869947</requestid>
+  </revision>
 </revisionlist>

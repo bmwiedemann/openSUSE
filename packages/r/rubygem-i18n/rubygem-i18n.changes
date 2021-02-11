@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  6 11:28:44 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.8
+
+  * Fixed threadsafety issues in Simple backend: #554
+  * Re-attempt to fix threadsafety of fallbacks: #548
+  * Use OpenSSL::Digest instead of usual Digest libraries: #549
+  * Goodbye, post-install message #552
+  * Use Rails' main branch, instead of master #553
+
+-------------------------------------------------------------------
 Wed Jan 20 07:35:40 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.8.7
