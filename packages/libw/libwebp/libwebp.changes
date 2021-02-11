@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 30 11:20:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * API changes in libwebp: encode.h: add a qmin / qmax range for
+    quality factor (cwebp adds -qrange)
+  * lossless encoder improvements
+  * SIMD support for Wasm builds
+  * import fuzzers from oss-fuzz & chromium 
+  * webpmux: add a '-set loop <value>' option
+
+-------------------------------------------------------------------
 Wed Apr  1 07:25:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.1.0:

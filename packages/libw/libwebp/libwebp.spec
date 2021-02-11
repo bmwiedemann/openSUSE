@@ -1,7 +1,7 @@
 #
 # spec file for package libwebp
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           libwebp
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://developers.google.com/speed/webp/
+URL:            https://developers.google.com/speed/webp/
 
-#Git-Clone:	http://git.chromium.org/webm/libwebp.git
-Source:         http://downloads.webmproject.org/releases/webp/%name-%version.tar.gz
-Source2:        http://downloads.webmproject.org/releases/webp/%name-%version.tar.gz.asc
+#Git-Clone:	https://chromium.googlesource.com/webm/libwebp/
+Source:         https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz
+Source2:        https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
 BuildRequires:  freeglut-devel
@@ -131,15 +131,10 @@ images more efficiently.
 %autosetup -p1
 
 %build
-
-%ifarch %arm
-%define _lto_cflags %{nil}
-%endif
-
 %configure --disable-static \
 	--enable-libwebpmux --enable-libwebpdemux \
 	--enable-libwebpdecoder --enable-libwebpextras
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
