@@ -366,4 +366,13 @@
     <comment></comment>
     <requestid>866363</requestid>
   </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>54424495da77cb1dee7466608a8b177e</srcmd5>
+    <version>4.3.1</version>
+    <time>1613044111</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-avformat-vividas-improve-extradata-packing-checks-in.patch
+  [boo#1180519] [CVE-2020-35964]</comment>
+    <requestid>870496</requestid>
+  </revision>
 </revisionlist>

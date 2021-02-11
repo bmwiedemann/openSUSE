@@ -118,6 +118,7 @@ Patch6:         ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
 Patch7:         0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch
 Patch8:         vmaf-trim-usr-local.patch
 Patch9:         ffmpeg_altivec_yuv2rgb_novsx.patch
+Patch10:        0001-avformat-vividas-improve-extradata-packing-checks-in.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -579,8 +580,7 @@ from libav should depend on these private headers which are expected to
 break compatibility without any notice.
 
 %prep
-%setup -q -n %_name-%version
-%autopatch -p1
+%autosetup -p1 -n %_name-%version
 
 %build
 %ifarch %ix86 %arm

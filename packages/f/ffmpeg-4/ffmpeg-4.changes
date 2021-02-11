@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  5 21:10:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avformat-vividas-improve-extradata-packing-checks-in.patch
+  [boo#1180519] [CVE-2020-35964]
+
+-------------------------------------------------------------------
 Sun Jan 24 11:22:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove dependency on OpenJPEG, this is obsolete since ffmpeg 4.0,
