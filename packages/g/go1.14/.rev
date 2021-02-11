@@ -233,4 +233,20 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
   * go#43784 cmd/go: packages using cgo can cause arbitrary code execution on Windows (forwarded request 864484 from jfkw)</comment>
     <requestid>864485</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>963b2ec38cbe53018a1ae4922e910a6e</srcmd5>
+    <version>1.14.15</version>
+    <time>1613044026</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.15 (released 2021-02-04) includes fixes to the compiler,
+  runtime, the go command, and the net/http package.
+  Refs boo#1164903 go1.14 release tracking
+  * go#43859 cmd/go: handle space in path to C compiler
+  * go#43796 cmd/go: TestScript/mod_get_fallback relies on x/tools not being tagged
+  * go#43792 internal/execabs: disable tests on js-wasm
+  * go#43574 cmd/compile: 32-bit random data corruption
+  * go#43405 x/mobile/cmd/gomobile: gomobile build on simple program returns &quot;ld: error: duplicate symbol: x_cgo_inittls&quot;
+  * go#42586 net/http: race in http2Transport (forwarded request 869615 from jfkw)</comment>
+    <requestid>869617</requestid>
+  </revision>
 </revisionlist>
