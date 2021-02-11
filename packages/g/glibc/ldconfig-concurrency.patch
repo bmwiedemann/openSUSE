@@ -25,7 +25,7 @@ Index: glibc-2.29/elf/cache.c
 @@ -481,6 +481,7 @@ save_cache (const char *cache_name)
    free (file_entries_new);
    free (file_entries);
-   free (strings);
+   free (strings_finalized.strings);
 +  free (temp_name);
  
    while (entries)

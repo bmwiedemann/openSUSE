@@ -1,7 +1,7 @@
 #
-# spec file for package glibc
+# spec file for package glibc%{name_suffix}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ ExclusiveArch:  do_not_build
 
 Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
-License:        LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
 BuildRequires:  audit-devel
 BuildRequires:  bison
@@ -109,29 +109,6 @@ BuildArch:      i686
 
 %define disable_assert 0
 %define enable_stackguard_randomization 1
-%ifarch ppc ppc64
- %define optimize_power 1
- %ifarch ppc
- %define powerpc_optimize_base %{nil}
- %define powerpc_optimize_tune power3
- %define powerpc_optimize_cpu_power4 1
- %else
- %define powerpc_optimize_base %{nil}
- %define powerpc_optimize_tune power5
- %define powerpc_optimize_cpu_power4 0
- %endif
- # We are not building Power CPU specific optimizations for openSUSE.
- %define powerpc_optimize_cpu_power6 0
- %define powerpc_optimize_cpu_power7 0
- %define powerpc_optimize_cpu_cell 0
-%else
- %define optimize_power 0
- %define powerpc_optimize_base %{nil}
- %define powerpc_optimize_cpu_power4 0
- %define powerpc_optimize_cpu_power6 0
- %define powerpc_optimize_cpu_power7 0
- %define powerpc_optimize_cpu_cell 0
-%endif
 # glibc requires at least kernel 3.2
 %define enablekernel 3.2
 # some architectures need a newer kernel
@@ -148,10 +125,10 @@ BuildArch:      i686
 %define enablekernel 4.15
 %endif
 
-Version:        2.32
+Version:        2.33
 Release:        0
 %if !%{build_snapshot}
-%define git_id 0a8262a1b2
+%define git_id 9826b03b74
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -171,7 +148,7 @@ Source5:        nsswitch.conf
 Source7:        bindresvport.blacklist
 Source9:        glibc.rpmlintrc
 Source10:       baselibs.conf
-# For systemd 
+# For systemd
 Source20:       nscd.conf
 Source21:       nscd.service
 
@@ -259,38 +236,14 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM Correct locking and cancellation cleanup in syslog functions (BZ #26100)
-Patch1000:      syslog-locking.patch
-# PATCH-FIX-UPSTREAM x86-64: Fix FMA4 detection in ifunc (BZ #26534)
-Patch1001:      ifunc-fma4.patch
-# PATCH-FIX-UPSTREAM intl: Handle translation output codesets with suffixes (BZ #26383)
-Patch1002:      intl-codeset-suffixes.patch
-# PATCH-FIX-UPSTREAM string: Fix strerrorname_np return value (BZ #26555)
-Patch1003:      strerrorname-np.patch
-# PATCH-FIX-UPSTREAM sysvipc: Fix SEM_STAT_ANY kernel argument pass (BZ #26637, BZ #26639, BZ #26636)
-Patch1004:      sysvipc.patch
-# PATCH-FIX-UPSTREAM aarch64: fix static PIE start code for BTI (BZ #27068)
-Patch1005:      aarch64-static-pie.patch
-# PATCH-FIX-UPSTREAM iconv: Accept redundant shift sequences in IBM1364 (CVE-2020-27618, BZ #26224)
-Patch1006:      iconv-redundant-shift.patch
-# PATCH-FIX-UPSTREAM iconv: Fix incorrect UCS4 inner loop bounds (CVE-2020-29562, BZ#26923)
-Patch1007:      iconv-ucs4-loop-bounds.patch
-# PATCH-FIX-UPSTREAM x86: Harden printf against non-normal long double values (CVE-2020-29573, BZ #26649)
-Patch1008:      printf-long-double-non-normal.patch
-# PATCH-FIX-UPSTREAM Fix parsing of /sys/devices/system/cpu/online (BZ #25859)
-Patch1009:      get-nprocs-cpu-online-parsing.patch
 
-### 
+###
 # Patches awaiting upstream approval
 ###
 # PATCH-FIX-UPSTREAM Always to locking when accessing streams (BZ #15142)
 Patch2000:      fix-locking-in-_IO_cleanup.patch
 # PATCH-FIX-UPSTREAM Avoid concurrency problem in ldconfig (BZ #23973)
 Patch2001:      ldconfig-concurrency.patch
-# PATCH-FIX-UPSTREAM Fix buffer overrun in EUC-KR conversion module (BZ #24973)
-Patch2002:      euc-kr-overrun.patch
-# PATCH-FIX-UPSTREAM nscd: bump GC cycle during cache pruning (BZ #26130)
-Patch2003:      nscd-gc-cycle.patch
 
 # Non-glibc patches
 # PATCH-FIX-OPENSUSE Remove debianisms from manpages
@@ -329,7 +282,7 @@ Summary:        Info Files for the GNU C Library
 License:        GFDL-1.1-only
 Group:          Documentation/Other
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 BuildArch:      noarch
 
 %description info
@@ -403,7 +356,7 @@ performance with NIS, NIS+, and LDAP.
 
 %package profile
 Summary:        Libc Profiling and Debugging Versions
-License:        LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          Development/Libraries/C and C++
 Requires:       glibc = %{version}
 # bug437293
@@ -453,6 +406,7 @@ The glibc-devel-static package contains the C library static libraries
 for -static linking.  You don't need these, unless you link statically,
 which is highly discouraged.
 
+
 # makedb requires libselinux. We add this program in a separate
 # package so that glibc does not require libselinux.
 %package extra
@@ -491,43 +445,10 @@ makedb: A program to create a database for nss
 %patch304 -p1
 %patch306 -p1
 
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-
 %patch2000 -p1
 %patch2001 -p1
-%patch2002 -p1
-%patch2003 -p1
 
 %patch3000
-
-#
-# Inconsistency detected by ld.so: dl-close.c: 719: _dl_close: Assertion `map->l_init_called' failed!
-#
-# Glibc 2.8 introduced the HP_TIMING element to the rtld_global_ro struct # definition.
-# If the base is built without power4 the loader won't have this element in
-# the struct whereas the power4/5/6/... libc will, so there will be a disconnect
-# between the size of the rtld_global_ro struct between the two and dl_close
-# ends up getting called incorrectly when it's actually attempting to call a
-# resolver function.  This is because the GLRO() macro simply attempts to
-# compute an offset and gets the wrong one.
-# Building the base glibc with --with-cpu=power4 solves this problem.
-# But: ppc32 can not default to -mcpu=power4 because it would emit instructions
-# which are not available on G3, G4 etc.
-#
-# We simply remove the power4 files, and build the base glibc for a generic powerpc cpu
-# Additional cputuned libs can now be used on powerpc32
-#
-rm -fv sysdeps/powerpc/powerpc32/power4/hp-timing.c sysdeps/powerpc/powerpc32/power4/hp-timing.h
-find . -name configure | xargs touch
 
 %build
 # Disable LTO due to a usage of top-level assembler that
@@ -597,6 +518,7 @@ BuildCCplus="%__cxx"
 %endif
 %ifarch ppc ppc64
 	BuildFlags="$(echo $BuildFlags | sed 's#-mminimal-toc##')"
+	BuildFlags+=" -mtune=power5"
 %endif
 %ifarch ppc64
 	BuildCC="$BuildCC -m64"
@@ -617,106 +539,63 @@ BuildCCplus="%__cxx"
 	%define enable_stackguard_randomization 0
 %endif
 
-configure_and_build_glibc() {
-	local dirname="$1"; shift
-	local cflags="$1"; shift
-	mkdir "cc-$dirname"
-	cd "cc-$dirname"
+#
+# Build base glibc
+#
+mkdir cc-base
+cd cc-base
 %ifarch %arm aarch64
-	# remove asynchronous-unwind-tables during configure as it causes
-	# some checks to fail spuriously on arm
-	conf_cflags="${cflags/-fasynchronous-unwind-tables/}"
-	conf_cflags="${conf_cflags/-funwind-tables/}"
+# remove asynchronous-unwind-tables during configure as it causes
+# some checks to fail spuriously on arm
+conf_cflags="${BuildFlags/-fasynchronous-unwind-tables/}"
+conf_cflags="${conf_cflags/-funwind-tables/}"
 %else
-	conf_cflags="$cflags"
+conf_cflags="$BuildFlags"
 %endif
 
-	profile="--disable-profile"
 %if %{build_profile}
-        if [ "$dirname" = "base" ] ; then
-	    profile="--enable-profile"
-	fi
+profile="--enable-profile"
+%else
+profile="--disable-profile"
 %endif
-	../configure \
-		CFLAGS="$conf_cflags" BUILD_CFLAGS="$conf_cflags" \
-		CC="$BuildCC" CXX="$BuildCCplus" \
-		--prefix=%{_prefix} \
-		--libexecdir=%{_libexecdir} --infodir=%{_infodir} \
-	        $profile \
-		"$@" \
-		--build=%{target} --host=%{target} \
+../configure \
+	CFLAGS="$conf_cflags" BUILD_CFLAGS="$conf_cflags" \
+	CC="$BuildCC" CXX="$BuildCCplus" \
+	--prefix=%{_prefix} \
+	--libexecdir=%{_libexecdir} --infodir=%{_infodir} \
+        $profile \
+	--build=%{target} --host=%{target} \
 %ifarch armv7hl ppc ppc64 ppc64le i686 x86_64 sparc sparc64 s390 s390x
-		--enable-multi-arch \
+	--enable-multi-arch \
 %endif
 %ifarch mipsel
-		--without-fp \
+	--without-fp \
+%endif
+%ifarch ppc
+	--with-cpu=power4 \
 %endif
 %ifarch ppc64p7
-		--with-cpu=power7 \
+	--with-cpu=power7 \
 %endif
 %ifarch x86_64
 %if %suse_version > 1500
-		--enable-cet \
+	--enable-cet \
 %endif
 %endif
 %if %{enable_stackguard_randomization}
-		--enable-stackguard-randomization \
+	--enable-stackguard-randomization \
 %endif
-		${enable_stack_protector:+--enable-stack-protector=$enable_stack_protector} \
-		--enable-tunables \
-		--enable-kernel=%{enablekernel} \
-		--with-bugurl=http://bugs.opensuse.org \
-		--enable-bind-now \
-		--enable-systemtap \
-		--disable-timezone-tools \
-		--disable-crypt
-	# explicitly set CFLAGS to use the full CFLAGS (not the reduced one for configure)
-	make %{?_smp_mflags} CFLAGS="$cflags" BUILD_CFLAGS="$cflags"
-	cd ..
-}
-
-%if !%{optimize_power}
-	#
-	# Build base glibc
-	#
-	configure_and_build_glibc base "$BuildFlags"
-%else
-	#
-	# Build POWER-optimized glibc
-	#
-	# First, base build:
-	pBuildFlags="$BuildFlags -mtune=%{powerpc_optimize_tune}"
-	%if "%{powerpc_optimize_base}" != ""
-	pBuildFlags+=" -mcpu=%{powerpc_optimize_base}"
-	%endif
-	%if "%{powerpc_optimize_base}" != ""
-	configure_and_build_glibc base "$pBuildFlags" --with-cpu=%{powerpc_optimize_base}
-	%else
-	# Use no default CPU
-	configure_and_build_glibc base "$pBuildFlags"
-	%endif
-	%if %{build_variants}
-	# Then other power variants:
-	for pcpu in \
-	%if %{powerpc_optimize_cpu_power4}
-		power4 \
-	%endif
-	%if %{powerpc_optimize_cpu_power6}
-		power6 \
-	%endif
-	%if %{powerpc_optimize_cpu_power7}
-		power7 \
-	%endif
-	; do
-		configure_and_build_glibc $pcpu "$BuildFlags -mcpu=$pcpu" \
-			--with-cpu=$pcpu
-	done
-	# Eventually, special Cell variant:
-	%if %{powerpc_optimize_cpu_cell}
-		configure_and_build_glibc ppc-cell-be "$BuildFlags -mcpu=cell"
-	%endif
-	%endif
-%endif
+	${enable_stack_protector:+--enable-stack-protector=$enable_stack_protector} \
+	--enable-tunables \
+	--enable-kernel=%{enablekernel} \
+	--with-bugurl=http://bugs.opensuse.org \
+	--enable-bind-now \
+	--enable-systemtap \
+	--disable-timezone-tools \
+	--disable-crypt
+# explicitly set CFLAGS to use the full CFLAGS (not the reduced one for configure)
+make %{?_smp_mflags} CFLAGS="$BuildFlags" BUILD_CFLAGS="$BuildFlags"
+cd ..
 
 #
 # Build html documentation
@@ -786,62 +665,8 @@ export STRIP_KEEP_SYMTAB=*.so*
 # Install base glibc
 make %{?_smp_mflags} install_root=%{buildroot} install -C cc-base
 
-install_optimized_variant() {
-	local dirname="$1"; shift
-	local subdir="$1"; shift
-	local subdir_up="$1"; shift
-
-cd "cc-$dirname"
-destdir=$RPM_BUILD_ROOT/%{_lib}/$subdir
-mkdir -p $destdir
-# Don't run a complete make install, we know which libraries
-# we want
-for lib in libc math/libm nptl/libpthread rt/librt nptl_db/libthread_db
-do
-  libbase=${lib#*/}
-  libbaseso=$(basename $RPM_BUILD_ROOT/%{_lib}/${libbase}-*.so)
-  # Only install if different from base lib
-  if cmp -s ${lib}.so ../cc-base/${lib}.so; then
-    ln -sf $subdir_up/$libbaseso $destdir/$libbaseso
-  else
-    cp -a ${lib}.so $destdir/$libbaseso
-  fi
-done
-cd ..
-cc-base/elf/ldconfig -vn $destdir
-}
-
-# Install power-optimized glibc
-%if %{optimize_power}
-	%if %{powerpc_optimize_cpu_power4}
-	install_optimized_variant power4 power4 ".."
-	%endif
-	%if %{powerpc_optimize_cpu_power6}
-	install_optimized_variant power6 power6 ".."
-	%endif
-	%if %{powerpc_optimize_cpu_power7}
-	install_optimized_variant power7 power7 ".."
-	%endif
-	%if %{powerpc_optimize_cpu_cell}
-	install_optimized_variant ppc-cell-be ppc-cell-be ".."
-	%endif
-	%if %{powerpc_optimize_cpu_power6}
-	# power6 is compatible with power6x
-	# doing a directory symlink doesnt work, ldconfig follows them and accepts only the first real dir
-	if test -d %{buildroot}/%{_lib}/power6; then
-	    mkdir -p %{buildroot}/%{_lib}/power6x
-	    for i in %{buildroot}/%{_lib}/power6/*.so; do
-		b=$(basename $i)
-		ln -vs ../power6/$b %{buildroot}/%{_lib}/power6x/$b
-	    done
-	    cc-base/elf/ldconfig -vn %{buildroot}/%{_lib}/power6x
-	fi
-	%endif
-%endif
-
 # Install locales
 %if %{build_locales}
-	# XXX Do not install locales in parallel!
 	cd cc-base
 	# localedef creates hardlinks to other locales if possible
 	# this will not work if we generate them in parallel.
@@ -873,9 +698,6 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/etc/nsswitch.conf
 %else
 install -m 644 %{SOURCE5} %{buildroot}/etc
 %endif
-
-mkdir -p %{buildroot}/etc/default
-install -m 644 nis/nss %{buildroot}/etc/default/
 
 mkdir -p %{buildroot}%{_includedir}/resolv
 install -m 0644 resolv/mapv4v6addr.h %{buildroot}%{_includedir}/resolv/
@@ -1042,19 +864,11 @@ remove_dirs = {
   "/%{_lib}/i686/",
 %endif
 %ifarch ppc ppc64
-%if !%{powerpc_optimize_cpu_power4}
   "/%{_lib}/power4/", "/%{_lib}/ppc970/",
-%endif
   "/%{_lib}/power5/", "/%{_lib}/power5+/",
-%if !%{powerpc_optimize_cpu_power6}
   "/%{_lib}/power6/", "/%{_lib}/power6x/",
-%endif
-%if !%{powerpc_optimize_cpu_power7}
   "/%{_lib}/power7/",
-%endif
-%if !%{powerpc_optimize_cpu_cell}
   "/%{_lib}/ppc-cell-be/",
-%endif
 %endif
   "/%{_lib}/tls/"
 }
@@ -1128,7 +942,6 @@ exit 0
 %endif
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/gai.conf
 %doc posix/gai.conf
-%config(noreplace) /etc/default/nss
 %doc %{_mandir}/man1/gencat.1.gz
 %doc %{_mandir}/man1/getconf.1.gz
 %doc %{_mandir}/man5/*
@@ -1218,34 +1031,6 @@ exit 0
 /%{_lib}/libthread_db.so.1
 /%{_lib}/libutil-%{libversion}.so
 /%{_lib}/libutil.so.1
-%define optimized_libs() \
-	%dir %attr(0755,root,root) /%{_lib}/%1\
-	/%{_lib}/%1/libc-%{libversion}.so\
-	/%{_lib}/%1/libc.so.6*\
-	/%{_lib}/%1/libm-%{libversion}.so\
-	/%{_lib}/%1/libm.so.6*\
-	/%{_lib}/%1/libpthread-%{libversion}.so\
-	/%{_lib}/%1/libpthread.so.0\
-	/%{_lib}/%1/librt-%{libversion}.so\
-	/%{_lib}/%1/librt.so.1\
-	/%{_lib}/%1/libthread_db-1.0.so\
-	/%{_lib}/%1/libthread_db.so.1
-
-%if %{optimize_power}
-	%if %{powerpc_optimize_cpu_power4}
-		%{optimized_libs power4}
-	%endif
-	%if %{powerpc_optimize_cpu_power6}
-		%{optimized_libs power6}
-		%{optimized_libs power6x}
-	%endif
-	%if %{powerpc_optimize_cpu_power7}
-		%{optimized_libs power7}
-	%endif
-	%if %{powerpc_optimize_cpu_cell}
-		%{optimized_libs ppc-cell-be}
-	%endif
-%endif
 %dir %attr(0700,root,root) /var/cache/ldconfig
 /sbin/ldconfig
 %{_bindir}/gencat

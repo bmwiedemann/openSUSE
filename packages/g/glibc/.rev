@@ -2379,4 +2379,41 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   /sys/devices/system/cpu/online (bsc#1180038, BZ #25859) (forwarded request 856525 from Andreas_Schwab)</comment>
     <requestid>856526</requestid>
   </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>74d4932d779727126ce71c4031322bd2</srcmd5>
+    <version>2.33</version>
+    <time>1613043875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to glibc 2.33
+  * The dynamic linker accepts the --list-tunables argument which prints
+    all the supported tunables.
+  * The dynamic linker accepts the --argv0 argument and provides opportunity
+    to change argv[0] string.
+  * The dynamic linker loads optimized implementations of shared objects
+    from subdirectories under the glibc-hwcaps directory on the library
+    search path if the system's capabilities meet the requirements for
+    that subdirectory.
+  * The new --help option of the dynamic linker provides usage and
+    information and library search path diagnostics.
+  * The mallinfo2 function is added to report statistics as per mallinfo,
+    but with larger field widths to accurately report values that are
+    larger than fit in an integer.
+  * Add &amp;lt;sys/platform/x86.h&amp;gt; to provide query macros for x86 CPU features.
+  * A new fortification level _FORTIFY_SOURCE=3 is available.
+  * The mallinfo function is marked deprecated.
+  * When dlopen is used in statically linked programs, alternative library
+    implementations from HWCAP subdirectories are no longer loaded.
+  * The deprecated &amp;lt;sys/vtimes.h&amp;gt; header and the function vtimes have been
+    removed.
+  * On s390(x), the type float_t is now derived from the macro
+    __FLT_EVAL_METHOD__ that is defined by the compiler, instead of being
+    hardcoded to double.
+  * A future version of glibc will stop loading shared objects from the
+    &quot;tls&quot; subdirectories on the library search path, the subdirectory that
+    corresponds to the AT_PLATFORM system name, and also stop employing
+    the legacy AT_HWCAP search mechanism.
+  * CVE-2021-3326: An assertion failure during conversion from the
+    ISO-20220-JP-3 character set using the iconv function has been fixed. (forwarded request 868599 from Andreas_Schwab)</comment>
+    <requestid>868600</requestid>
+  </revision>
 </revisionlist>
