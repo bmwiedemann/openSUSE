@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  4 09:58:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add pytest-cov-pr453-coverage54.patch to work with coverage 5.4
+  gh#pytest-dev/pytest-cov#453
+
+-------------------------------------------------------------------
 Wed Jan 27 13:51:26 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.11.1

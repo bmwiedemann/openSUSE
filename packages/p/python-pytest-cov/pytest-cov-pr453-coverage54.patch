@@ -1,0 +1,40 @@
+From 92ad6f411167dc05bf54beeb5d9ebc916cc0f6f3 Mon Sep 17 00:00:00 2001
+From: chedi <chedi.toueiti@gmail.com>
+Date: Fri, 29 Jan 2021 18:48:58 +0100
+Subject: [PATCH] fix for failing tests with coverage 5.4
+
+---
+ tests/test_pytest_cov.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_pytest_cov.py b/tests/test_pytest_cov.py
+index 3c73050..ff22fef 100644
+--- a/tests/test_pytest_cov.py
++++ b/tests/test_pytest_cov.py
+@@ -500,7 +500,7 @@ def test_central_coveragerc(testdir, prop):
+     ])
+ 
+     # single-module coverage report
+-    assert all(not line.startswith('TOTAL ') for line in result.stdout.lines[-4:])
++    assert all(not line.startswith('TOTAL ') for line in result.stdout.lines[-3:])
+ 
+     assert result.ret == 0
+ 
+@@ -538,7 +538,7 @@ def test_central_with_path_aliasing(testdir, monkeypatch, opts, prop):
+     ])
+ 
+     # single-module coverage report
+-    assert all(not line.startswith('TOTAL ') for line in result.stdout.lines[-4:])
++    assert all(not line.startswith('TOTAL ') for line in result.stdout.lines[-3:])
+ 
+     assert result.ret == 0
+ 
+@@ -643,7 +643,7 @@ def test_show_missing_coveragerc(testdir, prop):
+     ])
+ 
+     # single-module coverage report
+-    assert all(not line.startswith('TOTAL ') for line in result.stdout.lines[-4:])
++    assert all(not line.startswith('TOTAL ') for line in result.stdout.lines[-3:])
+ 
+     assert result.ret == 0
+ 

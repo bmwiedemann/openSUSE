@@ -24,6 +24,8 @@ Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/schlamar/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov#453 work with coverage 5.4
+Patch0:         https://github.com/pytest-dev/pytest-cov/pull/453.patch#/pytest-cov-pr453-coverage54.patch
 BuildRequires:  %{python_module coverage >= 5.2.1}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
@@ -48,7 +50,7 @@ All features offered by the coverage package should be available, either
 through pytest-cov or through coverage's config file.
 
 %prep
-%setup -q -n pytest-cov-%{version}
+%autosetup -p1 -n pytest-cov-%{version}
 
 %build
 %python_build
