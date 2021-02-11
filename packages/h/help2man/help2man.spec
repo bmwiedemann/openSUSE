@@ -17,7 +17,7 @@
 
 
 Name:           help2man
-Version:        1.47.17
+Version:        1.48.1
 Release:        0
 Summary:        Script for generating man pages from --help output
 License:        GPL-3.0-or-later
@@ -62,6 +62,7 @@ still providing some useful information.
 %{_mandir}/man1/help2man.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 %{_infodir}/help2man-*.info%{?ext_info}
 %dir %{_mandir}/??
 %dir %{_mandir}/??/man1

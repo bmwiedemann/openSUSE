@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Feb  6 12:42:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.48.1:
+  * Add Serbian, Swedish, Brazilian Portuguese and Chinese
+    (simplified) translations of info documentation
+  * Add Tamil and Chinese (simplified) translations
+  * Move table of contents to the top of the texi file so that it
+    appears in the correct location in the html page
+  * Use the package name and version as the default for --source
+    (was program)
+  * Support packages in version strings without the GNU or Free
+    prefix
+  * Allow an optional second dash to separate the package name from
+    the version for multi-word packages: "program - package name -
+    version"
+  * Suppress creation of an empty pkglibdir when nls is disabled
+  * Fix ordering of "other" sections in manual page
+  * Use POSIX compliant TZ when setting UTC
+
+-------------------------------------------------------------------
 Thu Jan 21 19:20:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - help2man 1.47.17:
