@@ -6,3 +6,5 @@ addFilter("php.-embed.* shlib-policy-name-error")
 addFilter("obsolete-not-provided php5-*")
 # Forgot to add category?
 addFilter("non-standard-group Development/Libraries/PHP")
+# Warning for all flavors not equal to "" in multibuild
+addFilter("invalid-spec-name")

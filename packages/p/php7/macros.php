@@ -13,6 +13,8 @@
 %__phpize       /usr/bin/phpize
 %__php_config   /usr/bin/php-config
 %php_version    %(%{__php_config} --version)
+%php_cfgdir     %(%{__php_config} --ini-dir)
+%php_extdir     %(%{__php_config} --extension-dir)
 
 # pear related macros
 %__pear         /usr/bin/pear

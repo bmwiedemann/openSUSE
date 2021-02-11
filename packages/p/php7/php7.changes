@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb  1 20:12:24 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.15: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.15
+- suppress warning for all flavors not equal to "" in multibuild
+  % php7.rpmlintrc
+
+-------------------------------------------------------------------
+Fri Jan 29 13:02:30 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- add versioning to php-sapi as well
+
+-------------------------------------------------------------------
+Sat Jan 23 21:27:09 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- require this PHP version of subpackages in Recommends/Suggests
+- run apache-rex tests in php7:test as packages need to be build
+  first (otherwise tests run with previous version)
+
+-------------------------------------------------------------------
+Sun Jan 17 10:25:54 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- add php_cfgdir and php_extdir macros
+
+-------------------------------------------------------------------
 Fri Jan 15 09:02:57 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - deleted patch (redundant cast, both sides are already signed int)

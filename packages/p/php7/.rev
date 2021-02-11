@@ -1034,4 +1034,23 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   php-fpm (forwarded request 863276 from adkorte)</comment>
     <requestid>863278</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>d6e706c80593022418aeaa186768a8bf</srcmd5>
+    <version>7.4.15</version>
+    <time>1613044002</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.15: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.15
+- suppress warning for all flavors not equal to &quot;&quot; in multibuild
+  % php7.rpmlintrc
+
+- add versioning to php-sapi as well
+
+- require this PHP version of subpackages in Recommends/Suggests
+- run apache-rex tests in php7:test as packages need to be build
+  first (otherwise tests run with previous version)
+
+- add php_cfgdir and php_extdir macros</comment>
+    <requestid>869234</requestid>
+  </revision>
 </revisionlist>

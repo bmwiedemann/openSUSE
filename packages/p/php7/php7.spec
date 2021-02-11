@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        7.4.14
+Version:        7.4.15
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
@@ -156,34 +156,39 @@ BuildRequires:  pkgconfig(libsodium) >= 1.0.8
 BuildRequires:  pkgconfig(libargon2)
 %endif
 %if "%{flavor}" == "test"
+BuildRequires:  apache-rex
+BuildRequires:  mod_php_any = %{version}
 BuildRequires:  php-cli = %{version}
+BuildRequires:  php-fpm = %{version}
+%apache_rex_deps
 %endif
 
 %if "%{flavor}" == ""
-Requires:       php-sapi
+Requires:       php-sapi = %{version}
 Requires:       timezone
 Requires(pre):  group(www)
 Requires(pre):  user(wwwrun)
-Recommends:     php-ctype
-Recommends:     php-dom
-Recommends:     php-iconv
-Recommends:     php-json
-Recommends:     php-openssl
-Recommends:     php-sqlite
-Recommends:     php-tokenizer
-Recommends:     php-xmlreader
-Recommends:     php-xmlwriter
+Recommends:     php-ctype = %{version}
+Recommends:     php-dom = %{version}
+Recommends:     php-iconv = %{version}
+Recommends:     php-json = %{version}
+Recommends:     php-openssl = %{version}
+Recommends:     php-sqlite = %{version}
+Recommends:     php-tokenizer = %{version}
+Recommends:     php-xmlreader = %{version}
+Recommends:     php-xmlwriter = %{version}
 # Recommends instead of Requires smtp_daemon bsc#1115213
 Recommends:     smtp_daemon
-# suggest %%{php_name}-* instead of php-* [bsc#1022158c#4]
-Suggests:       %{php_name}-cli
-Suggests:       %{php_name}-gd
-Suggests:       %{php_name}-gettext
-Suggests:       %{php_name}-mbstring
-Suggests:       %{php_name}-mysql
+# Suggest php-* = %%{version} instead of php-* [bsc#1022158c#4]
+Suggests:       php-cli = %{version}
+Suggests:       php-gd = %{version}
+Suggests:       php-gettext = %{version}
+Suggests:       php-mbstring = %{version}
+Suggests:       php-mysql = %{version}
 ## Provides
 Provides:       php = %{version}
 Provides:       php-api = %{apiver}
+Provides:       php-zend-abi = %{zendver}
 Provides:       php(api) = %{apiver}
 Provides:       php(zend-abi) = %{zendver}
 # builtin extensions
@@ -219,7 +224,7 @@ Summary:        Interpreter for the PHP scripting language version 7
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Provides:       php-cli = %{version}
-Provides:       php-sapi = cli
+Provides:       php-sapi = %{version}
 Conflicts:      php-cli < %{version}
 
 %description cli
@@ -264,7 +269,6 @@ Run php upstream testsuite.
 %if "%{flavor}" == "apache2"
 Summary:        PHP7 module for the Apache 2.x webserver
 Group:          Development/Libraries/PHP
-BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2-devel
 BuildRequires:  php = %{version}
@@ -274,9 +278,8 @@ Requires:       php = %{version}
 Requires(post): %{_sbindir}/a2enmod
 Requires(preun): %{_sbindir}/a2enmod
 Provides:       mod_php_any = %{version}
-Provides:       php-sapi = %{flavor}
+Provides:       php-sapi = %{version}
 Obsoletes:      apache2-mod_php5
-%apache_rex_deps
 
 %description
 PHP is a server-side, cross-platform HTML embedded scripting language.
@@ -296,7 +299,7 @@ BuildRequires:  php = %{version}
 Requires:       php = %{version}
 Provides:       php-cgi = %{version}
 Provides:       php-fastcgi = %{version}
-Provides:       php-sapi = %{flavor}
+Provides:       php-sapi = %{version}
 Conflicts:      php-fastcgi < %{version}
 
 %description
@@ -310,15 +313,12 @@ resources available in the links section.
 %if "%{flavor}" == "fpm"
 Summary:        FastCGI Process Manager PHP7 Module
 Group:          Development/Libraries/PHP
-BuildRequires:  apache-rex
-BuildRequires:  apache2-utils
 BuildRequires:  php = %{version}
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires:       php = %{version}
 Provides:       php-fpm = %{version}
-Provides:       php-sapi = %{flavor}
+Provides:       php-sapi = %{version}
 Conflicts:      php-fpm < %{version}
-%apache_rex_deps
 %systemd_requires
 
 %description
@@ -334,7 +334,7 @@ Summary:        Embedded SAPI Library
 Group:          Development/Libraries/PHP
 BuildRequires:  php = %{version}
 Requires:       php = %{version}
-Provides:       php-sapi = %{flavor}
+Provides:       php-sapi = %{version}
 
 %description
 PHP is a server-side, cross-platform HTML embedded scripting language.
@@ -944,7 +944,6 @@ files, too, but not with sockets).
 %endif
 
 %prep
-echo %{apache_mmn}
 %setup -q -n php-%{version}
 cp %{SOURCE5} .
 
@@ -1195,6 +1194,9 @@ for f in $(find .. -name "*.diff" -type f -print); do
 done
 set -x
 unset NO_INTERACTION REPORT_EXIT_STATUS
+# Apache HTTPD runnable examples test
+%apache_rex_check -m libs mod_php-basic
+%apache_rex_check -m libs -b sapi/fpm mod_proxy_fcgi-php-fpm mod_proxy_fcgi-php-fpm-auth-RewriteRule mod_proxy_fcgi-php-fpm-CGIPassAuth
 exit 0
 %endif
 
@@ -1210,18 +1212,6 @@ if [ -z "$(ldd modules/gd.so | grep libgd.so)" ]; then
     echo 'php-gd does not link against system libgd.'
     exit 1
 fi
-%endif
-
-# Apache HTTPD runnable examples test
-%if "%{flavor}" == "apache2"
-%apache_rex_check -m libs mod_php-basic
-exit 0
-%endif
-
-# Apache PHP-FPM runnable examples tests
-%if "%{flavor}" == "fpm"
-%apache_rex_check -m libs -b sapi/fpm mod_proxy_fcgi-php-fpm mod_proxy_fcgi-php-fpm-auth-RewriteRule mod_proxy_fcgi-php-fpm-CGIPassAuth
-exit 0
 %endif
 
 %install
