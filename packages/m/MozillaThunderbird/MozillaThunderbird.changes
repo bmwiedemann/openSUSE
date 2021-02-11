@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  5 22:23:03 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.7.1
+  * CardDAV address books now support OAuth2 and Google Contacts
+  * Thunderbird will no longer allow installation of addons that
+    use legacy APIs
+
+-------------------------------------------------------------------
 Tue Jan 26 07:47:13 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.7.0

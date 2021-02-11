@@ -3500,4 +3500,15 @@ I cannot test locally unfortunately.
   of %install</comment>
     <requestid>867009</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>0fb80c2143dbfb3222746021862345c5</srcmd5>
+    <version>78.7.1</version>
+    <time>1613044048</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.7.1
+  * CardDAV address books now support OAuth2 and Google Contacts
+  * Thunderbird will no longer allow installation of addons that
+    use legacy APIs</comment>
+    <requestid>869925</requestid>
+  </revision>
 </revisionlist>

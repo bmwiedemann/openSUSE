@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.7.0
-%define orig_version   78.7.0
+%define mainver        %major.7.1
+%define orig_version   78.7.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -204,7 +204,10 @@ Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-PreReq:         coreutils fileutils textutils /bin/sh
+PreReq:         /bin/sh
+PreReq:         coreutils
+PreReq:         fileutils
+PreReq:         textutils
 ### build options end
 %requires_ge    mozilla-nspr
 %requires_ge    mozilla-nss
@@ -212,7 +215,7 @@ PreReq:         coreutils fileutils textutils /bin/sh
 Recommends:     libcanberra0
 Recommends:     libpulse0
 Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(postun):desktop-file-utils
 %define libgssapi libgssapi_krb5.so.2
 ExcludeArch:    armv6l armv6hl
 
