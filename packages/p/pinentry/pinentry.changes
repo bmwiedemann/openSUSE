@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 29 22:35:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add _multibuild to separate out gui client builds 
+
+-------------------------------------------------------------------
 Wed Jan 27 17:20:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - actually build efl based pinentry

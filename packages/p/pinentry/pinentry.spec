@@ -18,6 +18,7 @@
 
 %define ncurses %(xxx="`readlink -f %{_includedir}/ncurses.h`"; echo $xxx)
 %define nmajor  %(grep NCURSES_VERSION_MAJOR < %{_includedir}/ncurses.h)
+%global flavor @BUILD_FLAVOR@%{nil}
 Name:           pinentry
 Version:        1.1.1
 Release:        0
@@ -38,34 +39,49 @@ BuildRequires:  libgpg-error-devel >= 1.16
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if "%{flavor}" == "gui"
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%ifnarch ppc
 BuildRequires:  pkgconfig(efl)
+%endif
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.12.0
 BuildRequires:  pkgconfig(libsecret-1)
+%endif
 Provides:       pinentry-dialog
 
 %description
 This is a collection of simple PIN or passphrase entry dialogs which
 utilize the Assuan protocol as described by the Aegypten project.
 
-%package qt5
-Summary:        Simple PIN or Passphrase Entry Dialog for QT5
+%if "%{flavor}" == "gui"
+%package emacs
+Summary:        Simple PIN or Passphrase Entry Dialog integrated into Emacs
+Group:          Productivity/Other
+Requires:       emacs
+Requires:       pinentry
+Provides:       pinentry-dialog
+Provides:       pinentry-gui
+Provides:       pinentry:%{_bindir}/pinentry-emacs
+
+%description emacs
+A simple PIN or passphrase entry dialog utilize the Assuan protocol
+as described by the Aegypten project, integrated into Emacs.
+
+%package efl
+Summary:        Simple PIN or Passphrase Entry Dialog for EFL
 Group:          Productivity/Other
 Requires:       pinentry
 Provides:       pinentry-dialog
 Provides:       pinentry-gui
-Provides:       pinentry-qt = %{version}
-Obsoletes:      pinentry-qt <= 0.8.3
-Provides:       pinentry-qt4 = %{version}-%{release}
-Obsoletes:      pinentry-qt4 <= 0.9.7
+Provides:       pinentry:%{_bindir}/pinentry-efl
 
-%description qt5
+%description efl
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
-as described by the Aegypten project, using the QT5 UI toolkit.
+as described by the Aegypten project, using Enlightenment Foundation Libraries.
 
 %package gtk2
 Summary:        Simple PIN or Passphrase Entry Dialog for GTK2
@@ -91,19 +107,6 @@ Provides:       pinentry:%{_bindir}/pinentry-gnome3
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using GNOME libraries.
 
-%package emacs
-Summary:        Simple PIN or Passphrase Entry Dialog integrated into Emacs
-Group:          Productivity/Other
-Requires:       emacs
-Requires:       pinentry
-Provides:       pinentry-dialog
-Provides:       pinentry-gui
-Provides:       pinentry:%{_bindir}/pinentry-emacs
-
-%description emacs
-A simple PIN or passphrase entry dialog utilize the Assuan protocol
-as described by the Aegypten project, integrated into Emacs.
-
 %package fltk
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 Group:          Productivity/Other
@@ -116,26 +119,27 @@ Provides:       pinentry:%{_bindir}/pinentry-fltk
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using FLTK libraries.
 
-%package efl
-Summary:        Simple PIN or Passphrase Entry Dialog for EFL
+%package qt5
+Summary:        Simple PIN or Passphrase Entry Dialog for QT5
 Group:          Productivity/Other
 Requires:       pinentry
 Provides:       pinentry-dialog
 Provides:       pinentry-gui
-Provides:       pinentry:%{_bindir}/pinentry-efl
+Provides:       pinentry-qt = %{version}
+Obsoletes:      pinentry-qt <= 0.8.3
+Provides:       pinentry-qt4 = %{version}-%{release}
+Obsoletes:      pinentry-qt4 <= 0.9.7
 
-%description efl
+%description qt5
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
-as described by the Aegypten project, using Enlightenment Foundation Libraries.
+as described by the Aegypten project, using the QT5 UI toolkit.
+%endif
 
 %prep
 %setup -q
 %patch1 -p1
 
 %build
-# Regenerate moc's
-moc-qt5 qt/pinentrydialog.h > qt/pinentrydialog.moc
-moc-qt5 qt/pinentryconfirm.h > qt/pinentryconfirm.moc
 nmajor=$(sed -rn 's/^#define\s+NCURSES_VERSION_MAJOR\s+([0-9]+)/\1/p' %{_includedir}/ncurses.h)
 CFLAGS="%{optflags} $(ncursesw${nmajor}-config --cflags)"
 CXXFLAGS="%{optflags} -std=gnu++11 $(ncursesw${nmajor}-config --cflags)"
@@ -143,6 +147,11 @@ LDFLAGS="$(ncursesw${nmajor}-config --libs)"
 export CFLAGS CXXFLAGS LDFLAGS
 
 %define _configure ../configure
+%if "%{flavor}" == "gui"
+# Regenerate moc's
+moc-qt5 qt/pinentrydialog.h > qt/pinentrydialog.moc
+moc-qt5 qt/pinentryconfirm.h > qt/pinentryconfirm.moc
+
 # build gui version with libsecret (bnc#934214)
 mkdir gui
 cd gui
@@ -161,6 +170,7 @@ cd gui
 %make_build
 # build text version without libsecret (bnc#934214)
 cd ..
+%else
 mkdir tui
 cd tui
 %configure \
@@ -176,39 +186,46 @@ cd tui
 	--disable-pinentry-efl \
 	--without-ncurses-include-dir
 %make_build
+%endif
 
 %install
-cd tui
+%if "%{flavor}" == "gui"
+cd gui
 %make_install
-cd ../gui
-%make_install
+cd ..
 
-# remove symlink
-rm -rf %{buildroot}%{_bindir}/pinentry
 # backward compatibility symlinks
 ln -s pinentry-qt %{buildroot}%{_bindir}/pinentry-qt5
 ln -s pinentry-qt %{buildroot}%{_bindir}/pinentry-qt4
-cp %{SOURCE3} %{buildroot}%{_bindir}
+rm -rf %{buildroot}%{_infodir}
+rm -rf %{buildroot}%{_bindir}/pinentry
+%else
+cd tui
+%make_install
+cd ..
+
+# remove symlink
+rm -rf %{buildroot}%{_bindir}/pinentry
+install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 
 %post
 %install_info --info-dir=.%{_infodir} .%{_infodir}/pinentry.info.gz
 
 %postun
 %install_info_delete --info-dir=.%{_infodir} .%{_infodir}/pinentry.info.gz
+%endif
 
-%files
-%license COPYING
-%doc AUTHORS ChangeLog NEWS README
-%{_infodir}/pinentry*
-%attr(755,root,root) %{_bindir}/pinentry
-%attr(755,root,root) %{_bindir}/pinentry-tty
-%attr(755,root,root) %{_bindir}/pinentry-curses
+%if "%{flavor}" == "gui"
 
-%files qt5
+%ifnarch ppc
+%files efl
 %license COPYING
-%{_bindir}/pinentry-qt5
-%{_bindir}/pinentry-qt4
-%attr(755,root,root) %{_bindir}/pinentry-qt
+%attr(755,root,root) %{_bindir}/pinentry-efl
+%endif
+
+%files emacs
+%license COPYING
+%attr(755,root,root) %{_bindir}/pinentry-emacs
 
 %files gtk2
 %license COPYING
@@ -218,16 +235,24 @@ cp %{SOURCE3} %{buildroot}%{_bindir}
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-gnome3
 
-%files emacs
-%license COPYING
-%attr(755,root,root) %{_bindir}/pinentry-emacs
-
 %files fltk
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-fltk
 
-%files efl
+%files qt5
 %license COPYING
-%attr(755,root,root) %{_bindir}/pinentry-efl
+%{_bindir}/pinentry-qt5
+%{_bindir}/pinentry-qt4
+%attr(755,root,root) %{_bindir}/pinentry-qt
+%else
+%files
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
+%{_infodir}/pinentry*
+%attr(755,root,root) %{_bindir}/pinentry
+%attr(755,root,root) %{_bindir}/pinentry-tty
+%attr(755,root,root) %{_bindir}/pinentry-curses
+
+%endif
 
 %changelog
