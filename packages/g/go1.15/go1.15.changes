@@ -1,8 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb  5 02:41:52 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15.8 (released 2021-02-04) includes fixes to the compiler,
+  linker, runtime, the go command, and the net/http package.
+  Refs boo#1175132 go1.15 release tracking
+  * go#43861 cmd/go: TestScript/get_update_unknown_protocol test fails
+  * go#43860 cmd/go: handle space in path to C compiler
+  * go#43833 runtime: SIGSEGV in runtime.deltimer on linux-mips-rtrk during ReadMemStats
+  * go#43797 cmd/go: TestScript/mod_get_fallback relies on x/tools not being tagged
+  * go#43793 internal/execabs: disable tests on js-wasm
+  * go#43575 cmd/compile: 32-bit random data corruption
+  * go#43406 x/mobile/cmd/gomobile: gomobile build on simple program returns "ld: error: duplicate symbol: x_cgo_inittls"
+  * go#43214 cmd/link: panic: runtime error: slice bounds out of range [::1751306] with length 1048576
+  * go#42539 net/http: race in http2Transport
+  * go#42384 cmd/link: PE linker segfaults in addpersrc when cross-compiling
+
+-------------------------------------------------------------------
 Tue Jan 19 23:21:26 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.15.7 (released 2021-01-19) includes security fixes to the
-  cmd/go and crypto/elliptic packages.
+  go command and crypto/elliptic package.
   CVE-2021-3114 CVE-2021-3115
   Refs boo#1175132 go1.15 release tracking
   * boo#1181145 CVE-2021-3114
