@@ -1,7 +1,0 @@
-<package name="golang-github-docker-libnetwork" project="openSUSE:Factory">
-  <title>golang-github-docker-libnetwork</title>
-  <description>Libnetwork provides a native Go implementation for connecting containers
-
-The goal of libnetwork is to deliver a robust Container Network Model that provides a consistent programming interface and the required network abstractions for applications.</description>
-  <devel project="Virtualization:containers" package="golang-github-docker-libnetwork"/>
-</package>
