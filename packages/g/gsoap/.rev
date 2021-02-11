@@ -585,4 +585,12 @@
     <comment>- Update to release 2.8.111</comment>
     <requestid>868381</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>d1641fc172caf5a5d9fd0e50caa7dc8c</srcmd5>
+    <version>2.8.111</version>
+    <time>1613043968</time>
+    <user>dimstar_suse</user>
+    <comment>- build scripts: sanitize_source.sh: use https [boo#1181923]</comment>
+    <requestid>870345</requestid>
+  </revision>
 </revisionlist>

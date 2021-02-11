@@ -16,7 +16,7 @@ fi;
 version="2.8.111"
 shortver="2.8" # agh...
 if [ ! -e "gsoap_$version.zip" ]; then
-	wget -c "http://downloads.sf.net/gsoap2/gsoap_$version.zip"
+	wget -c "https://downloads.sf.net/gsoap2/gsoap_$version.zip"
 fi
 
 rm -Rf "gsoap-$shortver" "gsoap-$version"

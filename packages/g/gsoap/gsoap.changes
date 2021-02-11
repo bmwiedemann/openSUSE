@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  8 18:57:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- build scripts: sanitize_source.sh: use https [boo#1181923]
+
+-------------------------------------------------------------------
 Mon Feb  1 14:05:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.111
