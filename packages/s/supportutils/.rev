@@ -130,4 +130,12 @@
     <comment></comment>
     <requestid>866571</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9a9a607e1ef4abb3dda3a8a0421de48e</srcmd5>
+    <version>3.1.14</version>
+    <time>1613044108</time>
+    <user>dimstar_suse</user>
+    <comment>GDPR and logs for power (forwarded request 870330 from jrecord)</comment>
+    <requestid>870331</requestid>
+  </revision>
 </revisionlist>

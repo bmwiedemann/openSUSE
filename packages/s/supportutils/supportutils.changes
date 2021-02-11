@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  8 15:30:43 UTC 2021 - jason.record@gmail.com
+
+- Additions to version 3.1.14
+  + [powerpc] Collect logs for power specific components (HNV ) #88 (bsc#1181911)
+  + Updated pam.txt documentation explaining GDPR
+
+-------------------------------------------------------------------
+Thu Feb  4 18:44:12 UTC 2021 - jason.record@gmail.com
+
+- No longer truncates boot log (bsc#1181610)
+
+-------------------------------------------------------------------
 Tue Jan 19 12:28:49 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require the awk, which and sed commands instead of packages to
@@ -33,7 +45,7 @@ Tue Nov 10 17:25:36 UTC 2020 - jason.record@suse.com
 Thu Sep  3 14:51:50 UTC 2020 - jason.record@suse.com
 
 - Additions to version 3.1.12
-  + [powerpc] Collect logs for power specific components #72
+  + [powerpc] Collect logs for power specific components #72 (bscn#1176895)
   + supportconfig: fs-btrfs: Add "btrfs device stats" output #73
 
 -------------------------------------------------------------------
