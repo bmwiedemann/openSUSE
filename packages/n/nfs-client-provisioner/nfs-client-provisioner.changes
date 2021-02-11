@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 08 15:34:18 UTC 2021 - kukuk@suse.com
+
+- Switch to kubernetes-sigs/nfs-subdir-external-provisioner
+- Update to version 4.0.0+git20210204.23ecb30:
+  * Fix typo in CHANGELOG and change provisioner name to use the sigs namespace
+  * Change the helm chart kubeVersion semver to include pre-releases
+  * Update the README and deploy objects with better class names as examples
+
+-------------------------------------------------------------------
 Mon Mar  2 15:38:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Adjust yaml files

@@ -1,8 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">2.3.0+git%cd.%h</param>
-    <param name="url">git://github.com/kubernetes-incubator/external-storage.git</param>
-    <param name="subdir">nfs-client</param>
+    <param name="versionformat">4.0.0+git%cd.%h</param>
+    <param name="url">git://github.com/kubernetes-sigs/nfs-subdir-external-provisioner.git</param>
     <param name="filename">nfs-client-provisioner</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>

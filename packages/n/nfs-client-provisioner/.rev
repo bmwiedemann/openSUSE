@@ -17,4 +17,16 @@
   - add kustomization.yaml file</comment>
     <requestid>781008</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b44d2f8543a9fa999baee3ee3863093</srcmd5>
+    <version>4.0.0+git20210204.23ecb30</version>
+    <time>1613043966</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to kubernetes-sigs/nfs-subdir-external-provisioner
+- Update to version 4.0.0+git20210204.23ecb30:
+  * Fix typo in CHANGELOG and change provisioner name to use the sigs namespace
+  * Change the helm chart kubeVersion semver to include pre-releases
+  * Update the README and deploy objects with better class names as examples</comment>
+    <requestid>870318</requestid>
+  </revision>
 </revisionlist>
