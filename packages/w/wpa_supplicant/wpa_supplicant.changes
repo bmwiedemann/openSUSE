@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  4 12:27:02 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add CVE-2021-0326.patch -- P2P group information processing vulnerability 
+  (bsc#1181777) 
+
+-------------------------------------------------------------------
 Tue Oct  6 15:20:18 UTC 2020 - Florian <sp1ritCS@protonmail.com>
 
 - Add wpa_supplicant-p2p_iname_size.diff -- Limit P2P_DEVICE name to appropriate ifname size
