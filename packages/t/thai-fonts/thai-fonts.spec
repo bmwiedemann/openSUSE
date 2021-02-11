@@ -1,7 +1,7 @@
 #
 # spec file for package thai-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,19 +37,22 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-The Thai OpenType fonts included here are Norasi and Garuda from the
-National Font project.
+Fonts-TLWG is a collection of Thai scalable fonts. It provides
+fonts that conform to existing standards and recommendations, so that it 
+can be a reference implementation.
+
+The fonts included are Garuda, Kinnari, Laksaman, Loma, Norasi, Purisa,
+Sawasdee, TlwgMono, TlwgTypewriter, TlwgTypo, Umpush and Waree.
 
 %prep
-%setup -q -n fonts-tlwg-%{version}
-%patch0 -p1
+%autosetup -n fonts-tlwg-%{version} -p1
 
 %build
 %configure --with-ttfdir=%{_ttfontsdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 rm -f %{buildroot}%{_ttfontsdir}/encodings.dir
 rm -f %{buildroot}%{_ttfontsdir}/fonts.*
 mkdir -p %{buildroot}%{_fontsconfavaildir}
