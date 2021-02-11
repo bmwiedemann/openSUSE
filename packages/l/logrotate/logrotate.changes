@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  3 07:45:15 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.18.0:
+  * Allow UIDs and GIDs to be specified numerically
+  * Add support for Zstandard compressed files
+  * Make delaycompress not to fail with rotate 0
+
+-------------------------------------------------------------------
 Tue Jul 28 09:02:52 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.17.0:
