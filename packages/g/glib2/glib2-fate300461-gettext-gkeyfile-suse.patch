@@ -1,7 +1,7 @@
-Index: glib-2.56.2/glib/gkeyfile.c
+Index: glib-2.66.5/glib/gkeyfile.c
 ===================================================================
---- glib-2.56.2.orig/glib/gkeyfile.c	2018-08-17 10:53:47.314889363 +0200
-+++ glib-2.56.2/glib/gkeyfile.c	2018-08-17 10:53:47.330889591 +0200
+--- glib-2.66.5.orig/glib/gkeyfile.c
++++ glib-2.66.5/glib/gkeyfile.c
 @@ -512,6 +512,7 @@ struct _GKeyFile
  
    gchar **locales;
@@ -10,7 +10,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
  
    volatile gint ref_count;
  };
-@@ -637,6 +638,7 @@ g_key_file_init (GKeyFile *key_file)
+@@ -638,6 +639,7 @@ g_key_file_init (GKeyFile *key_file)
    key_file->flags = 0;
    key_file->locales = g_strdupv ((gchar **)g_get_language_names ());
    key_file->gettext_domain = NULL;
@@ -18,7 +18,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
  }
  
  static void
-@@ -662,6 +664,12 @@ g_key_file_clear (GKeyFile *key_file)
+@@ -663,6 +665,12 @@ g_key_file_clear (GKeyFile *key_file)
         key_file->gettext_domain = NULL;
      }
  
@@ -31,7 +31,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
    tmp = key_file->groups;
    while (tmp != NULL)
      {
-@@ -805,6 +813,39 @@ find_file_in_data_dirs (const gchar   *f
+@@ -806,6 +814,39 @@ find_file_in_data_dirs (const gchar   *f
    return fd;
  }
  
@@ -71,7 +71,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
  static gboolean
  g_key_file_load_from_fd (GKeyFile       *key_file,
  			 gint            fd,
-@@ -886,6 +927,9 @@ g_key_file_load_from_fd (GKeyFile
+@@ -887,6 +928,9 @@ g_key_file_load_from_fd (GKeyFile
                                                      G_KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN,
                                                      NULL);
  
@@ -81,7 +81,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -942,6 +986,8 @@ g_key_file_load_from_file (GKeyFile
+@@ -943,6 +987,8 @@ g_key_file_load_from_file (GKeyFile
        return FALSE;
      }
  
@@ -90,7 +90,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -1003,6 +1049,9 @@ g_key_file_load_from_data (GKeyFile
+@@ -1004,6 +1050,9 @@ g_key_file_load_from_data (GKeyFile
                                                      G_KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN,
                                                      NULL);
  
@@ -100,7 +100,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -1107,6 +1156,9 @@ g_key_file_load_from_dirs (GKeyFile
+@@ -1108,6 +1157,9 @@ g_key_file_load_from_dirs (GKeyFile
          }
      }
  
@@ -110,7 +110,7 @@ Index: glib-2.56.2/glib/gkeyfile.c
    if (found_file && full_path)
      *full_path = output_path;
    else
-@@ -2291,14 +2343,40 @@ g_key_file_get_locale_string (GKeyFile
+@@ -2296,14 +2348,40 @@ g_key_file_get_locale_string (GKeyFile
          {
            gboolean codeset_set;
            const gchar *translated;
@@ -156,10 +156,10 @@ Index: glib-2.56.2/glib/gkeyfile.c
  
            g_free (orig_value);
  
-Index: glib-2.56.2/glib/gkeyfile.h
+Index: glib-2.66.5/glib/gkeyfile.h
 ===================================================================
---- glib-2.56.2.orig/glib/gkeyfile.h	2018-08-17 10:53:47.314889363 +0200
-+++ glib-2.56.2/glib/gkeyfile.h	2018-08-17 10:53:47.330889591 +0200
+--- glib-2.66.5.orig/glib/gkeyfile.h
++++ glib-2.66.5/glib/gkeyfile.h
 @@ -320,7 +320,7 @@ gboolean  g_key_file_remove_group
  #define G_KEY_FILE_DESKTOP_KEY_URL              "URL"
  #define G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE "DBusActivatable"

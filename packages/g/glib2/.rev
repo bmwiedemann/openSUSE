@@ -1816,4 +1816,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>856943</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>f2de4909c206d24936dec53686a6b04c</srcmd5>
+    <version>2.66.6</version>
+    <time>1613043949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870248</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
-Index: glib-2.65.2/gio/gdbus-2.0/codegen/codegen.py
+Index: glib-2.66.5/gio/gdbus-2.0/codegen/codegen.py
 ===================================================================
---- glib-2.65.2.orig/gio/gdbus-2.0/codegen/codegen.py
-+++ glib-2.65.2/gio/gdbus-2.0/codegen/codegen.py
+--- glib-2.66.5.orig/gio/gdbus-2.0/codegen/codegen.py
++++ glib-2.66.5/gio/gdbus-2.0/codegen/codegen.py
 @@ -79,8 +79,7 @@ class HeaderCodeGenerator:
      # ----------------------------------------------------------------------------------------------------
  
