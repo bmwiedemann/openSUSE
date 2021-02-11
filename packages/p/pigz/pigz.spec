@@ -1,7 +1,7 @@
 #
 # spec file for package pigz
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pigz
-Version:        2.4
+Version:        2.6
 Release:        0
 Summary:        Multi-core gzip version
 License:        Zlib
 Group:          Productivity/Archiving/Compression
-URL:            http://www.zlib.net/pigz/
-Source0:        http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www.zlib.net/pigz/
+Source0:        https://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://www.zlib.net/%{name}/%{name}-%{version}-sig.txt#/%{name}-%{version}.tar.gz.asc
+Source9:        %{name}.keyring
 BuildRequires:  zlib-devel
 
 %description
@@ -31,12 +33,13 @@ A parallel implementation of gzip for modern multi-processor, multi-core machine
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -fexceptions"
+%make_build CFLAGS="%{optflags}"
 
 %check
-make tests %{?_smp_mflags} CFLAGS="%{optflags} -fexceptions"
+%make_build tests CFLAGS="%{optflags}"
 
 %install
 install -Dpm 0755 pigz \

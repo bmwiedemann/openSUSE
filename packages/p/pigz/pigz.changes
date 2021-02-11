@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  7 23:27:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6:
+  * Add --huffman/-H and --rle/U strategy options
+  * Fix issue when compiling for no threads
+  * Fail silently on a broken pipe 
+  * Add --alias/-A option to set .zip name for stdin input
+  * Add --comment/-C option to add comment in .gz or .zip
+  * Several bug and behavior fixes
+- drop fortify.patch: obsolete
+
+-------------------------------------------------------------------
 Wed Aug 12 14:22:56 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Build with -fexceptions to get compiler/os specific (aka. sane) 
