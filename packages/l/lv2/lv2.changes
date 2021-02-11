@@ -1,11 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb  5 00:41:59 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Big ugly patch to force waf to use python3 everywhere, python2
+  is no longer available for build in SLE core
+  * build-with-python3.patch
+
+-------------------------------------------------------------------
 Sun Jan 24 17:54:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18.2:
   * Various code cleanups and infrastructure improvements.
   * eg-sampler: Save and restore gain parameter value.
-  * state: Fix state:StateChanged URI in metadata and documentation. 
-  
+  * state: Fix state:StateChanged URI in metadata and documentation.
+
 -------------------------------------------------------------------
 Thu Nov 26 12:22:00 UTC 2020 - Martin Liška <mliska@suse.cz>
 
@@ -133,24 +140,24 @@ Fri Jan  9 00:02:55 UTC 2015 - ecsos@opensuse.org
 
 - Update to 1.10.0
   * Upgrade to waf 1.7.16.
-  * lv2specgen: Display deprecated warning on classes 
+  * lv2specgen: Display deprecated warning on classes
     marked owl:deprecated.
   * Fix -Wconversion warnings in headers.
-  * lv2core: Clarify lv2_descriptor() and lv2_lib_descriptor() 
+  * lv2core: Clarify lv2_descriptor() and lv2_lib_descriptor()
     documentation.
-  * atom: Add lv2_atom_sequence_clear() and 
+  * atom: Add lv2_atom_sequence_clear() and
     lv2_atom_sequence_append_event() helper functions.
-  * atom: Add lv2_atom_forge_is_object_type() and 
+  * atom: Add lv2_atom_forge_is_object_type() and
     lv2_atom_forge_is_blank() to ease backwards compatibility.
   * atom: Deprecate Blank and Resource in favour of just Object.
   * atom: Add lv2_atom_forge_key() for terser object writing.
   * event: Minor documentation improvements.
-  * patch: Add patch:sequenceNumber for associating replies with 
+  * patch: Add patch:sequenceNumber for associating replies with
     requests.
   * ui: Fix identifier typos in documentation.
-  * ui: Add show interface so UIs can gracefully degrade to 
+  * ui: Add show interface so UIs can gracefully degrade to
     separate windows if hosts can not use their widget directly.
-    
+
 -------------------------------------------------------------------
 Tue Nov 11 11:51:45 UTC 2014 - olaf@aepfle.de
 
@@ -246,4 +253,3 @@ Tue Oct 23 22:24:06 UTC 2012 - reddwarf@opensuse.org
 Wed Aug  1 22:55:27 UTC 2012 - reddwarf@opensuse.org
 
 - The first unified LV2 release
-

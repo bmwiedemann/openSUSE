@@ -17,12 +17,8 @@
 
 
 %define asciidocs 1
-# build Leap:15 with python2 it fails with 3
-%if 0%{?suse_version} > 1500
 %define _waf python3 waf
-%else
-%define _waf python2 waf
-%endif
+
 Name:           lv2
 Version:        1.18.2
 Release:        0
@@ -34,26 +30,20 @@ Source0:        https://lv2plug.in/spec/lv2-%{version}.tar.bz2
 Source1:        lv2-rpmlintrc
 # Patch-Fix-Upstream  lv2pkgconfig.patch davejplater@gmail.com -- Add "/" to end of -I directory because otherwise pkg-config outputs nothing.
 Patch0:         lv2pkgconfig.patch
+# Patch Build with python3 everywhere (allows python3 builds on leap)
+Patch1:         build-with-python3.patch
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
-BuildRequires:  pkgconfig(sndfile) >= 1.0.0
-%if 0%{?suse_version} > 1500
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-rdflib
-%else
-BuildRequires:  python-Markdown
-BuildRequires:  python-rdflib
-%endif
+BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(sndfile) >= 1.0.0
+
 %if %{asciidocs} == 1
 # Documentation build requirements.
 BuildRequires:  asciidoc
 BuildRequires:  doxygen
 BuildRequires:  graphviz
-%if 0%{?suse_version} > 1500
 BuildRequires:  python3-Pygments
-%else
-BuildRequires:  python-Pygments
-%endif
 %endif
 
 %description
