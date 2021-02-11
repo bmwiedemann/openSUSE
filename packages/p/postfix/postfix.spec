@@ -31,15 +31,7 @@
 %define pf_html_directory    %{_docdir}/%{name}-doc/html
 %define pf_sample_directory  %{_docdir}/%{name}-doc/samples
 %define pf_data_directory    %{_localstatedir}/lib/%{name}
-%if 0%{?suse_version} < 1330
-%define pf_uid               51
-%define pf_gid               51
-%define maildrop_gid         59
-%define vmusr                vmail
-%define vmgid                303
-%define vmid                 303
-%define vmdir                /srv/maildirs
-%endif
+%define pf_database_convert  %{_rundir}/%{name}-needs-convert
 %define mail_group           mail
 %define conf_backup_dir      %{_localstatedir}/adm/backup/%{name}
 %define unitdir %{_prefix}/lib/systemd
@@ -47,16 +39,10 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?suse_version} >= 1320 || ( 0%{?suse_version} == 1315 && 0%{?is_opensuse} )
-%bcond_without lmdb
 %bcond_without libnsl
-%else
-%bcond_with    lmdb
-%bcond_with    libnsl
-%endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.5.8
+Version:        3.5.9
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -82,9 +68,10 @@ Patch7:         %{name}-ssl-release-buffers.patch
 Patch8:         %{name}-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
 Patch10:        %{name}-avoid-infinit-loop-if-no-permission.patch
+Patch11:	set-default-db-type.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  db-devel
+#BuildRequires:  db-devel
 BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  libicu-devel
@@ -94,6 +81,7 @@ BuildRequires:  mysql-devel
 %if %{with ldap}
 BuildRequires:  openldap2-devel
 %endif
+BuildRequires:  lmdb-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
@@ -106,23 +94,19 @@ Requires(pre):  %fillup_prereq
 Requires(pre):  permissions
 Conflicts:      exim
 Conflicts:      sendmail
+Conflicts:      postfix-bdb
+Provides:       postfix-lmdb = %{version}-%{release}
+Obsoletes:      postfix-lmdb < %{version}-%{release}
 Provides:       smtp_daemon
 %{?systemd_ordering}
-%if %{with lmdb}
-BuildRequires:  lmdb-devel
-%endif
 %if %{with libnsl}
 BuildRequires:  libnsl-devel
 %endif
-%if 0%{?suse_version} >= 1330
 BuildRequires:  sysuser-tools
 Requires:       system-user-nobody
 Requires:       group(%{mail_group})
 Requires(pre):  group(%{mail_group})
 %sysusers_requires
-%else
-Requires(pre):  shadow
-%endif
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.
@@ -148,11 +132,7 @@ This package contains the documentation for %{name}
 Summary:        Postfix plugin to support MySQL maps
 Group:          Productivity/Networking/Email/Servers
 Requires(pre):  %{name} = %{version}
-%if 0%{?suse_version} >= 1330
 %sysusers_requires
-%else
-Requires(pre):  shadow
-%endif
 
 %description mysql
 Postfix plugin to support MySQL maps. This library will be loaded by
@@ -180,18 +160,6 @@ This provides support for LDAP maps in Postfix. If you plan to use LDAP
 maps with Postfix, you need this.
 %endif
 
-%if %{with lmdb}
-%package      lmdb
-Summary:        Postfix plugin to support LMDB maps
-Group:          Productivity/Networking/Email/Servers
-Requires(pre):  %{name} = %{version}
-
-%description lmdb
-Postfix plugin to support LMDB maps. This library will be loaded
-by starting %{name} if you'll access a postmap which is stored in
-PostgreSQL.
-%endif
-
 %prep
 %setup -q -a 2 -a 3
 %patch1
@@ -204,6 +172,7 @@ PostgreSQL.
 %patch8
 %patch9
 %patch10
+%patch11
 
 # ---------------------------------------------------------------------------
 
@@ -249,15 +218,15 @@ else
   export AUXLIBS_PGSQL="-lpq"
 fi
 #
-%if %{with lmdb}
 export CCARGS="${CCARGS} -DHAS_LMDB -I/usr/local/include" \
 export AUXLIBS_LMDB="-llmdb"
-%endif
 #
 # TODO
 #export AUXLIBS_SQLITE
 #export AUXLIBS_CDB
 #export AUXLIBS_SDBM
+# Remove berkeley DB and set lmdb as default
+export CCARGS="${CCARGS} -DNO_DB -DDEF_DB_TYPE=\\\"lmdb\\\""
 
 export PIE=-pie
 # using SHLIB_RPATH to specify unrelated linker flags, because LDFLAGS is
@@ -268,17 +237,14 @@ make makefiles pie=yes shared=yes dynamicmaps=yes \
   config_directory=%{_sysconfdir}/%{name} \
   SHLIB_RPATH="-Wl,-rpath,%{pf_shlib_directory} -Wl,-z,relro,-z,now"
 make %{?_smp_mflags}
-%if 0%{?suse_version} >= 1330
 # Create postfix user
 %sysusers_generate_pre %{SOURCE12} postfix
 %sysusers_generate_pre %{SOURCE13} vmail
-%endif
 # ---------------------------------------------------------------------------
 
 %install
 mkdir -p %{buildroot}/%{_libdir}
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
-cp conf/* %{buildroot}%{_sysconfdir}/%{name}
 # create our default postfix ssl DIR (/etc/postfix/ssl)
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/ssl/certs
 # link cacerts to /etc/ssl/certs
@@ -327,7 +293,6 @@ sed -e 's;@lib@;%{_lib};g' \
     -e 's;@sample_directory@;%{pf_sample_directory};' \
     -e 's;@mailq_path@;%{pf_mailq_path};' %{name}-SUSE/config.%{name} > %{buildroot}%{_sbindir}/config.%{name}
 chmod 755 %{buildroot}%{_sbindir}/config.%{name}
-install -m 644 %{name}-SUSE/dynamicmaps.cf %{buildroot}%{_sysconfdir}/%{name}/dynamicmaps.cf
 install -m 644 %{name}-SUSE/ldap_aliases.cf %{buildroot}%{_sysconfdir}/%{name}/ldap_aliases.cf
 install -m 644 %{name}-SUSE/helo_access %{buildroot}%{_sysconfdir}/%{name}/helo_access
 install -m 644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
@@ -367,7 +332,15 @@ cat conf/main.cf
 	   "disable_vrfy_command = yes" \
 	   'smtpd_banner      = $myhostname ESMTP'
 #Set Permissions
-install -m 644 %{name}-SUSE/%{name}-files %{buildroot}%{pf_shlib_directory}/%{name}-files
+sed -i	-e 's/\(.*ldap.*\)/#\1/g' \
+	-e 's/\(.*mysql.*\)/#\1/g' \
+	-e 's/\(.*pgsql.*\)/#\1/g' \
+	-e 's/\(.*LICENSE.*\)/#\1/g' \
+	-e '/html_directory/d' \
+	-e '/manpage_directory/d' \
+	-e '/readme_directory/d' \
+	%{buildroot}%{pf_shlib_directory}/postfix-files
+mkdir -p %{buildroot}%{pf_shlib_directory}/postfix-files.d
 # postfix-mysql
 install -m 644 %{name}-mysql/main.cf-mysql %{buildroot}%{_sysconfdir}/%{name}/main.cf-mysql
 install -m 640 %{name}-mysql/*_maps.cf     %{buildroot}%{_sysconfdir}/%{name}/
@@ -405,148 +378,101 @@ do
   rm -vf $path
   ln -sf %{_libdir}/$name $path
 done
-# ---------------------------------------------------------------------------
+
+# create dynamicmaps.cf.d entries for optional modules
+sed -n -e '/^#/p' -e '/mysql/p' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf > %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-mysql.cf
+sed -i -e '/mysql/d' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf
+sed -n -e '/^#/p' -e '/pgsql/p' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf > %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-pgsql.cf
+sed -i -e '/pgsql/d' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf
+%if %{with ldap}
+sed -n -e '/^#/p' -e "/ldap/p" %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf > %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-ldap.cf
+sed -i -e '/ldap/d' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf
+%endif
+
 install -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/
-%if 0%{?suse_version} >= 1330
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
-%endif
 
-%if 0%{?suse_version} >= 1330
+# ---------------------------------------------------------------------------
+
 %pre -f postfix.pre
-%else
-%pre
-getent group %{name} >/dev/null || groupadd -g %{pf_gid} -o -r %{name}
-getent group maildrop >/dev/null || groupadd -g %{maildrop_gid} -o -r maildrop
-getent passwd %{name} >/dev/null || useradd -r -o -g %{name} -u %{pf_uid} -s /bin/false -c "Postfix Daemon" -d /%{pf_queue_directory} %{name}
-usermod -a -G %{maildrop_gid},%{mail_group} %{name}
-%endif
-
+# If existing default database type is hash, we need to convert the
+# databases because hash (and btree) is no longer supported after
+# the upgrade
+if [ -x %{_sbindir}/postconf ]; then
+	DEF_DB_TYPE=$(postconf default_database_type)
+	case $DEF_DB_TYPE in *hash)
+		touch %{pf_database_convert}
+	esac
+fi
 %service_add_pre %{name}.service
 
-VERSIONTEST=$(test -x usr/sbin/postconf && usr/sbin/postconf proxy_read_maps 2>/dev/null || :)
-if [ -z "$VERSIONTEST" -a -f %{pf_queue_directory}/pid/master.pid ]; then
-  if checkproc -p %{pf_queue_directory}/pid/master.pid usr/lib/%{name}/master; then
-     echo "%{name} is still running. You have to stop %{name} in order to"
-     echo "install a newer version."
-     exit 1
-  fi
-fi
-# ---------------------------------------------------------------------------
-
-%if 0%{?suse_version} >= 1330
-%pre mysql -f vmail.pre
-%else
-%pre mysql
-#echo "PARAM_pre: "$1
-# on `rpm -ivh` PARAM is 1
-# on `rpm -Uvh` PARAM is 2
-if [ "$1" = "1" ]; then
-  echo "Adding %{vmusr} user"
-  if [ -z "`getent group  %{vmusr} 2>/dev/null`" ]; then
-    groupadd -r -g %{vmgid} %{vmusr}
-  fi
-  if [ -z "`getent passwd  %{vmusr} 2>/dev/null`" ]; then
-    useradd -c "maildirs chef" -d %{vmdir} -g %{vmusr} -u %{vmid} -r -s /bin/false %{vmusr}
-  fi
-fi
-%endif
-# ---------------------------------------------------------------------------
-
 %preun
-%stop_on_removal %{name}
 %service_del_preun %{name}.service
-# ---------------------------------------------------------------------------
-
-%preun mysql
-#echo "PARAM_preun: "$1
-# on `rpm -e` PARAM is 0
-if [ "$1" = "0" ]; then
-    FILE=etc/%{name}/dynamicmaps.cf
-    if [ -e "$FILE" ] ; then
-        if grep -q "^mysql[[:space:]]" ${FILE}; then
-             echo "Removing mysql map entry from ${FILE}"
-             sed "/^mysql[[:space:]]/d" ${FILE} > ${FILE}.$$ && \
-                 cp --remove-destination ${FILE}.$$ ${FILE} && \
-                 rm ${FILE}.$$
-        fi
-    else
-        echo "Can not find \"$FILE\". Not updating the file." >&2
-    fi
-fi
-# ---------------------------------------------------------------------------
-
-%preun postgresql
-if [ "$1" = 0 ] ; then
-    FILE=etc/%{name}/dynamicmaps.cf
-    if [ -e "$FILE" ] ; then
-        if grep -q "^pgsql[[:space:]]" ${FILE}; then
-             echo "Removing pgsql map entry from ${FILE}"
-             sed "/^pgsql[[:space:]]/d" ${FILE} > ${FILE}.$$ && \
-                 cp --remove-destination ${FILE}.$$ ${FILE} && \
-                 rm ${FILE}.$$
-        fi
-    else
-        echo "Can not find \"$FILE\". Not updating the file." >&2
-    fi
-fi
-# ---------------------------------------------------------------------------
 
 %post
 # We never have to run suseconfig for postfix after installation
 # We only start postfix own upgrade-configuration by update
+#
+# If the default database type of the previous installation was
+# hash, we also need to rebuild the databases in the new lmdb
+# format
 if [ ${1:-0} -gt 1 ]; then
 	touch %{_localstatedir}/adm/%{name}.configured
-        echo "Executing upgrade-configuration."
-        %{_sbindir}/%{name} set-permissions upgrade-configuration setgid_group=%{pf_setgid_group} || :
-        if [ "$(%{_sbindir}/postconf -h daemon_directory)" != "%{pf_daemon_directory}" ]; then
-                %{_sbindir}/postconf daemon_directory=%{pf_daemon_directory}
-        fi
+	echo "Executing upgrade-configuration."
+	%{_sbindir}/%{name} set-permissions upgrade-configuration setgid_group=%{pf_setgid_group} || :
+	if [ "$(%{_sbindir}/postconf -h daemon_directory)" != "%{pf_daemon_directory}" ]; then
+		%{_sbindir}/postconf daemon_directory=%{pf_daemon_directory}
+	fi
+	if [ -e %{pf_database_convert} ]; then
+		sed -i -E "s/(btree|hash):/lmdb:/g" %{pf_config_directory}/{main.cf,master.cf}
+		for i in $(find %{pf_config_directory} -name "*.db"); do
+			postmap ${i%.db}
+		done
+		for i in $(find %{_sysconfdir}/aliases.d/ -name "*.db"); do
+			postalias ${i%.db}
+		done
+		if [ -e %{_sysconfdir}/aliases.db ]; then
+			postalias %{_sysconfdir}/aliases
+		fi
+		rm %{pf_database_convert}
+	fi
 fi
-
-%service_add_post %{name}.service
-
 %set_permissions %{_sbindir}/postqueue
 %set_permissions %{_sbindir}/postdrop
 %set_permissions %{_sysconfdir}/%{name}/sasl_passwd
 %set_permissions %{_sbindir}/sendmail
-
 %{fillup_only postfix}
 %{fillup_only -an mail}
-/sbin/ldconfig
+%service_add_post %{name}.service
+
+%postun
+%service_del_postun %{name}.service
 
 %verifyscript
 %verify_permissions -e %{_sbindir}/postqueue
 %verify_permissions -e %{_sbindir}/postdrop
 %verify_permissions -e %{_sysconfdir}/%{name}/sasl_passwd
 %verify_permissions -e %{_sbindir}/sendmail
-%{fillup_only postfix}
-
-%postun
-%service_del_postun %{name}.service
-/sbin/ldconfig
 
 # ---------------------------------------------------------------------------
 
-%post postgresql
-FILE=etc/%{name}/dynamicmaps.cf
-if ! grep -q "^pgsql[[:space:]]" ${FILE}; then
-     echo "Adding pgsql map entry to ${FILE}"
-     echo "pgsql   %{pf_shlib_directory}/dict_pgsql.so      dict_pgsql_open" >> ${FILE}
-fi
-# ---------------------------------------------------------------------------
+%pre    mysql -f vmail.pre
 
-%post mysql
-FILE=etc/%{name}/dynamicmaps.cf
-if ! grep -q "^mysql[[:space:]]" ${FILE}; then
-     echo "Adding mysql map entry to ${FILE}"
-     echo "mysql   %{pf_shlib_directory}/dict_mysql.so      dict_mysql_open" >> ${FILE}
-fi
-# ---------------------------------------------------------------------------
+%post   mysql -p /sbin/ldconfig
+%postun mysql -p /sbin/ldconfig
+
+%post   postgresql -p /sbin/ldconfig
+%postun postgresql -p /sbin/ldconfig
+
+%if %{with ldap}
+%post   ldap -p /sbin/ldconfig
+%postun ldap -p /sbin/ldconfig
+%endif
 
 %files
-%license LICENSE
+%license LICENSE TLS_LICENSE
 %config %{_sysconfdir}/pam.d/*
 %{_fillupdir}/sysconfig.%{name}
 %{_fillupdir}/sysconfig.mail-%{name}
@@ -561,24 +487,19 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/helo_access
 %config(noreplace) %{_sysconfdir}/%{name}/main.cf
 %config(noreplace) %{_sysconfdir}/%{name}/master.cf
-%attr(0750,root,root) %config %{_sysconfdir}/%{name}/post-install
-%attr(0750,root,root) %config %{_sysconfdir}/%{name}/%{name}-tls-script
-%attr(0750,root,root) %config %{_sysconfdir}/%{name}/%{name}-wrapper
-%attr(0750,root,root) %config %{_sysconfdir}/%{name}/postmulti-script
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}-files
 %config(noreplace) %{_sysconfdir}/%{name}/relay
 %config(noreplace) %{_sysconfdir}/%{name}/relay_ccerts
 %config(noreplace) %{_sysconfdir}/%{name}/sasl_passwd
 %config(noreplace) %{_sysconfdir}/%{name}/sender_canonical
 %config(noreplace) %{_sysconfdir}/%{name}/virtual
-
+%ghost %{_sysconfdir}/%{name}/*.lmdb
+%ghost %{_sysconfdir}/aliases.lmdb
 %dir %{_sysconfdir}/sasl2
 %config(noreplace) %{_sysconfdir}/sasl2/smtpd.conf
-%config %{_sysconfdir}/%{name}/LICENSE
-%config %{_sysconfdir}/%{name}/TLS_LICENSE
+%exclude %{_sysconfdir}/%{name}/LICENSE
+%exclude %{_sysconfdir}/%{name}/TLS_LICENSE
 %config %{_sysconfdir}/permissions.d/%{name}
 %config %{_sysconfdir}/permissions.d/%{name}.paranoid
-%attr(0644, root, root) %config %{_sysconfdir}/%{name}/makedefs.out
 %{pf_shlib_directory}/%{name}-files
 # create our default postfix ssl DIR (/etc/postfix/ssl)
 %dir %{_sysconfdir}/%{name}/ssl
@@ -612,20 +533,25 @@ fi
 %{_libdir}/lib*
 %{_libexecdir}/sendmail
 %dir %{pf_shlib_directory}
-%{pf_shlib_directory}/*[^.so]
 %{pf_shlib_directory}/%{name}-pcre.so
+%{pf_shlib_directory}/%{name}-lmdb.so
 %{pf_shlib_directory}/lib%{name}-dns.so
 %{pf_shlib_directory}/lib%{name}-global.so
 %{pf_shlib_directory}/lib%{name}-master.so
 %{pf_shlib_directory}/lib%{name}-tls.so
 %{pf_shlib_directory}/lib%{name}-util.so
+%{pf_shlib_directory}/dynamicmaps.cf
 %{pf_shlib_directory}/main.cf.proto
+%{pf_shlib_directory}/makedefs.out
 %{pf_shlib_directory}/master.cf.proto
+%dir %{pf_daemon_directory}
+%{pf_daemon_directory}/*
+%dir %{pf_shlib_directory}/dynamicmaps.cf.d
+%dir %{pf_shlib_directory}/postfix-files.d
 
 %{conf_backup_dir}
 %dir %attr(0700,%{name},root) %{pf_data_directory}
 %exclude %{_mandir}/man5/ldap_table.5*
-%exclude %{_mandir}/man5/lmdb_table.5*
 %exclude %{_mandir}/man5/mysql_table.5*
 %exclude %{_mandir}/man5/pgsql_table.5*
 %{_mandir}/man?/*%{?ext_man}
@@ -643,9 +569,7 @@ fi
 %dir %attr(0700,%{name},root) /%{pf_queue_directory}/trace
 %dir %attr(0730,%{name},maildrop) /%{pf_queue_directory}/maildrop
 %dir %attr(0710,%{name},maildrop) /%{pf_queue_directory}/public
-%if 0%{?suse_version} >= 1330
 %{_sysusersdir}/postfix-user.conf
-%endif
 
 %files devel
 %{_includedir}/%{name}/
@@ -659,26 +583,21 @@ fi
 %config(noreplace) %attr(640, root, %{name}) %{_sysconfdir}/%{name}/*_maps.cf
 %config(noreplace) %{_sysconfdir}/%{name}/main.cf-mysql
 %{pf_shlib_directory}/%{name}-mysql.so
+%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-mysql.cf
 %{_mandir}/man5/mysql_table.5%{?ext_man}
-%if 0%{?suse_version} >= 1330
 %{_sysusersdir}/postfix-vmail-user.conf
-%endif
 
 %files postgresql
 %{pf_shlib_directory}/%{name}-pgsql.so
+%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-pgsql.cf
 %{_mandir}/man5/pgsql_table.5%{?ext_man}
 
 %if %{with ldap}
 %files ldap
 %config(noreplace) %{_sysconfdir}/%{name}/ldap_aliases.cf
 %{pf_shlib_directory}/%{name}-ldap.so
+%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-ldap.cf
 %{_mandir}/man5/ldap_table.5%{?ext_man}
-%endif
-
-%if %{with lmdb}
-%files lmdb
-%{pf_shlib_directory}/%{name}-lmdb.so
-%{_mandir}/man5/lmdb_table.5%{?ext_man}
 %endif
 
 %changelog
