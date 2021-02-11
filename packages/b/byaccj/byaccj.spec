@@ -1,7 +1,7 @@
 #
 # spec file for package byaccj
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define jpp_release 3
+Name:           byaccj
+Version:        1.15
+Release:        0
 Summary:        Parser Generator with Java Extension
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Java
-
-Name:           byaccj
-Version:        1.14
-Release:        0
-%define jpp_release 3
-Url:            http://byaccj.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}%{version}_src.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://byaccj.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}%{version}_src.tar.gz
 Requires:       man-pages
 
 %description
@@ -40,30 +38,26 @@ use every day to produce C/C++ parsers. I have added a "-J" flag which
 will cause BYACC to generate Java source code, instead. So there
 finally is a YACC for Java now!
 
-
-
 %prep
-%setup -q -n %{name}%{version}_src
+%setup -q -n %{name}%{version}
+
+chmod -c -x src/* docs/*
+sed -i -e 's|-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4|$(LDFLAGS)|g' src/Makefile
 
 %build
 pushd src
-make linux CFLAGS="$RPM_OPT_FLAGS"
+%make_build yacc CFLAGS="%{optflags}" LDFLAGS="$RPM_LD_FLAGS"
 popd
+
+#Fix wrong-file-end-of-line-encoding
 sed -i 's/\r//g' docs/tf.y
 
 %install
-# manual
-install -d -m 755 %{buildroot}%{_mandir}/man1
-mv docs/yacc.cat %{buildroot}%{_mandir}/man1
-# jars
-mkdir -p %{buildroot}%{_bindir}
-cp -p src/yacc.linux \
-  %{buildroot}%{_bindir}/%{name}
+install -d -m 755 %{buildroot}%{_bindir}
+install -p -m 755 src/yacc %{buildroot}%{_bindir}/%{name}
 
 %files
-%defattr(0644,root,root,0755)
-%doc docs/* src/readme src/README
-%{_mandir}/man1/yacc.cat*
-%attr(755, root, root) %{_bindir}/%{name}
+%doc docs/* src/README
+%{_bindir}/%{name}
 
 %changelog

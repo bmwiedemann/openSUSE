@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  3 18:57:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.15
+  * Fix: stack corruption when generating a java parser
+  * Fix: Targets with empty right-hand side problematic in Java mode
+
+-------------------------------------------------------------------
+Wed Feb  3 18:19:13 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update the spec file
+  * Simplify the docs installation
+  * Remove mac and arch specifics
+
+-------------------------------------------------------------------
 Tue Jan  7 11:05:45 UTC 2014 - schwab@suse.de
 
 - Build with $RPM_OPT_FLAGS
