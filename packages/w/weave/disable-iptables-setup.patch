@@ -1,7 +1,8 @@
---- a/prog/weave-kube/launch.sh
-+++ b/prog/weave-kube/launch.sh	2020/03/09 14:39:53
-@@ -52,7 +52,7 @@
-     [ -z "$NOT_EXIST" ] || (echo "\"xt_set\" does not exist" >&2 && return 1)
+diff -urN weave-2.8.1.orig/prog/weave-kube/launch.sh weave-2.8.1/prog/weave-kube/launch.sh
+--- weave-2.8.1.orig/prog/weave-kube/launch.sh	2021-01-25 11:55:30.000000000 +0100
++++ weave-2.8.1/prog/weave-kube/launch.sh	2021-02-02 11:46:39.505699795 +0100
+@@ -34,7 +34,7 @@
+     fi
  }
  
 -setup_iptables_backend
@@ -9,8 +10,9 @@
  
  # Default if not supplied - same as weave net default
  IPALLOC_RANGE=${IPALLOC_RANGE:-10.32.0.0/12}
---- a/prog/weave-npc/launch.sh
-+++ b/prog/weave-npc/launch.sh	2020/03/09 14:40:07
+diff -urN weave-2.8.1.orig/prog/weave-npc/launch.sh weave-2.8.1/prog/weave-npc/launch.sh
+--- weave-2.8.1.orig/prog/weave-npc/launch.sh	2021-01-25 11:55:30.000000000 +0100
++++ weave-2.8.1/prog/weave-npc/launch.sh	2021-02-02 11:46:39.505699795 +0100
 @@ -30,7 +30,7 @@
      fi
  }

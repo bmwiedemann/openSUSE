@@ -111,4 +111,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>830123</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fcfc8876ec35221b1ad7f178c52de5a4</srcmd5>
+    <version>2.8.1</version>
+    <time>1613044007</time>
+    <user>dimstar_suse</user>
+    <comment>- Add init.sh for init container
+
+- Update to version 2.8.1
+  - Kubernetes: move kernel and CNI setup to init container
+  - For K8s, stop running in host PID namespace
+  - NetworkPolicy: avoid logging dropped packets that were not actually dropped
+  - Use go 1.15</comment>
+    <requestid>869516</requestid>
+  </revision>
 </revisionlist>

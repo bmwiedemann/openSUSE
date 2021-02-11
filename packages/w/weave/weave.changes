@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  4 16:16:13 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add init.sh for init container
+
+-------------------------------------------------------------------
+Tue Feb  2 10:53:41 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.8.1
+  - Kubernetes: move kernel and CNI setup to init container
+  - For K8s, stop running in host PID namespace
+  - NetworkPolicy: avoid logging dropped packets that were not actually dropped
+  - Use go 1.15
+
+-------------------------------------------------------------------
 Fri Aug 14 11:22:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.7.0

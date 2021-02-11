@@ -1,7 +1,7 @@
 #
 # spec file for package weave
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           weave
-Version:        2.7.0
+Version:        2.8.1
 Release:        0
 Summary:        Pod Network Add-On
 License:        Apache-2.0
@@ -32,7 +32,7 @@ Patch0:         Makefile.diff
 Patch1:         disable-iptables-setup.patch
 BuildRequires:  binutils-gold
 BuildRequires:  libpcap-devel
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.15
 ExcludeArch:    s390 %{ix86}
 
 %description
@@ -113,6 +113,7 @@ mkdir -p %{buildroot}%{_sysconfdir}
 mkdir -p %{buildroot}/weavedb
 
 install -m 0755 prog/weave-kube/launch.sh %{buildroot}/home/weave/
+install -m 0755 prog/weave-kube/init.sh %{buildroot}/home/weave/
 install -m 0755 prog/kube-utils/kube-utils %{buildroot}/home/weave/
 install -m 0755 prog/weaver/weaver %{buildroot}/home/weave/
 install -m 0755 weave %{buildroot}/home/weave/

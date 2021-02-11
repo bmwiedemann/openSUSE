@@ -118,17 +118,39 @@ items:
           labels:
             name: weave-net
         spec:
+          initContainers:
+            - name: weave-init
+              image: 'weaveworks/weave-kube:2.8.1'
+              command:
+                - /home/weave/init.sh
+              env:
+              securityContext:
+                privileged: true
+              volumeMounts:
+                - name: cni-bin
+                  mountPath: /host/opt
+                - name: cni-bin2
+                  mountPath: /host/home
+                - name: cni-conf
+                  mountPath: /host/etc
+                - name: lib-modules
+                  mountPath: /lib/modules
+                - name: xtables-lock
+                  mountPath: /run/xtables.lock
+                  readOnly: false
           containers:
             - name: weave
               command:
                 - /home/weave/launch.sh
               env:
+                - name: INIT_CONTAINER
+                  value: "true"
                 - name: HOSTNAME
                   valueFrom:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              image: 'weaveworks/weave-kube:2.7.0'
+              image: 'weaveworks/weave-kube:2.8.1'
               readinessProbe:
                 httpGet:
                   host: 127.0.0.1
@@ -142,16 +164,12 @@ items:
               volumeMounts:
                 - name: weavedb
                   mountPath: /weavedb
-                - name: cni-bin
-                  mountPath: /host/opt
-                - name: cni-bin2
-                  mountPath: /host/home
-                - name: cni-conf
-                  mountPath: /host/etc
                 - name: dbus
                   mountPath: /host/var/lib/dbus
-                - name: lib-modules
-                  mountPath: /lib/modules
+                  readOnly: true
+                - mountPath: /host/etc/machine-id
+                  name: cni-machine-id
+                  readOnly: true
                 - name: xtables-lock
                   mountPath: /run/xtables.lock
                   readOnly: false
@@ -162,7 +180,7 @@ items:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              image: 'weaveworks/weave-npc:2.7.0'
+              image: 'weaveworks/weave-npc:2.8.1'
 #npc-args
               resources:
                 requests:
@@ -175,7 +193,7 @@ items:
                   readOnly: false
           hostNetwork: true
           dnsPolicy: ClusterFirstWithHostNet
-          hostPID: true
+          hostPID: false
           restartPolicy: Always
           securityContext:
             seLinuxOptions: {}
@@ -198,6 +216,9 @@ items:
             - name: cni-conf
               hostPath:
                 path: /etc
+            - name: cni-machine-id
+              hostPath:
+                path: /etc/machine-id
             - name: dbus
               hostPath:
                 path: /var/lib/dbus
