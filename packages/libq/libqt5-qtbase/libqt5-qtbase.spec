@@ -70,6 +70,8 @@ Patch1001:      0001-Let-QXcbConnection-getTimestamp-properly-exit-when-X.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
+Patch2002:      0001-Fix-build-with-GCC-11-include-limits.patch
+Patch2003:      0002-Build-fixes-for-GCC-11.patch
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
 BuildRequires:  gcc-c++

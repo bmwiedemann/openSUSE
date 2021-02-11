@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 09:16:47 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with GCC 11 (boo#1181861, QTBUG-90395):
+  * 0001-Fix-build-with-GCC-11-include-limits.patch
+  * 0002-Build-fixes-for-GCC-11.patch
+
+-------------------------------------------------------------------
 Tue Jan 19 07:46:43 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add patch to fix infinite loop in KWin on XServer exit:
