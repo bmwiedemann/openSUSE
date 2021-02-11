@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  6 10:13:41 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439). 
+
+-------------------------------------------------------------------
 Sun Jan 24 19:36:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.9:
