@@ -8,4 +8,41 @@
 The compiler is NOT used by default.</comment>
     <requestid>864102</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c73254956498748c5963db8497f270b</srcmd5>
+    <version>11.0.0+git183291</version>
+    <time>1613043903</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 7a18bc4ae62081021f4fd90d591a588cac931f77.
+
+- New package, inherits from gcc10
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs
+    file that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not
+    slow down Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for
+    CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr
+    for ppc, just a testcase
+  * gcc44-textdomain.patch, make translation files version specific
+    and adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files
+    when renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed
+    libstdc++ html documentation
+  * gcc48-remove-mpfr-2.4.0-requirement.patch, make GCC work with
+    earlier mpfr versions on old products
+  * gcc5-no-return-gcc43-workaround.patch, make build work with
+    host gcc 4.3
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes
+    new warning from -Wextra
+  * gcc7-avoid-fixinc-error.diff
+  * gcc9-reproducible-builds-buildid-for-checksum.patch
+  * gcc9-reproducible-builds.patch
+  * gcc10-amdgcn-llvm-as.patch
+  * gcc10-foffload-default.patch
+- libgccjit subpackage is added.
+- HWASAN is built for aarch64 target.</comment>
+    <requestid>870326</requestid>
+  </revision>
 </revisionlist>

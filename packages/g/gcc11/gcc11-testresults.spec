@@ -36,6 +36,16 @@
 
 # nospeccleaner
 
+%if !0%{?usrmerged}
+%define _slibdir  /%{_lib}
+%define slibdir   /lib
+%define slibdir64 /lib64
+%else
+%define _slibdir  %{_libdir}
+%define slibdir   %{_prefix}/lib
+%define slibdir64 %{_libdir}
+%endif
+
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
 %if %{suse_version} >= 1310
@@ -292,7 +302,7 @@ BuildRequires:  cross-amdgcn-newlib11-devel
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.0.0+git182924
+Version:        11.0.0+git183291
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
