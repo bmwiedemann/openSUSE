@@ -5359,4 +5359,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.10.12 &amp; 5.10.11 &amp; 5.10.10 &amp; small fixes</comment>
     <requestid>868023</requestid>
   </revision>
+  <revision rev="575" vrev="1">
+    <srcmd5>5211a773bcfc8e62798808773cb78b88</srcmd5>
+    <version>5.10.14</version>
+    <time>1613043974</time>
+    <user>dimstar_suse</user>
+    <comment>5.10.14 &amp; 5.10.13</comment>
+    <requestid>870268</requestid>
+  </revision>
 </revisionlist>
