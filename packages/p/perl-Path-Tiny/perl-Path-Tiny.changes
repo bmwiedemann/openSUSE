@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb  5 03:12:12 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.118
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.118     2021-02-04 19:09:58-05:00 America/New_York
+      - No changes from 0.117-TRIAL.
+  0.117     2021-01-31 21:22:29-05:00 America/New_York (TRIAL RELEASE)
+      [Tests]
+      - Skip symlink tests on Windows by actually testing symlinks, as Perl
+        5.33.5 adds notional support but it's not possible without elevated
+        privileges.
+
+-------------------------------------------------------------------
 Sat Jan 23 03:08:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.116
