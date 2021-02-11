@@ -44,7 +44,7 @@ else
 fi
 
 case "$WINDOWMANAGER" in
-    *kde*|*xfce*|*lxde*)
+    *kde*|*plasma*|*xfce*|*lxde*)
 	# started via xdg autostart
 	;;
     *)

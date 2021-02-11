@@ -1,12 +1,11 @@
 [Desktop Entry]
-_Name=IBus
-_GenericName=IBus Daemon
-_Comment=Start IBus daemon
+Name=IBus
+GenericName=IBus Daemon
+Comment=Start IBus daemon
 Exec=ibus-autostart
 Icon=ibus-setup
 Terminal=false
 Type=Application
-Categories=System;Utility;
 StartupNotify=false
 NoDisplay=true
 X-GNOME-Autostart-Phase=Applications

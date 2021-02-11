@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:37:27 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Fix the invalid desktop file for auto start (boo#1178447)
+- Fix xim.d/ibus so that a Plasma session can use XDG auto start
+
+-------------------------------------------------------------------
 Mon Feb  1 15:25:13 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Do not build in parallel for reproducible build results (boo#1102408)
