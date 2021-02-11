@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
+# NEP 29: NumPy dropped Python 3.6
+%define         skip_python36 1
 Name:           python-holoviews
 Version:        1.14.1
 Release:        0

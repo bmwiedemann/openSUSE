@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 11 09:08:58 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 10.5.2+481e9bd2:
+  * Update submodules
+  * Resolve issues with status applet spacing persistence (#2093)
+
+-------------------------------------------------------------------
 Mon Jan 11 11:47:18 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.2+e04e3b8f:

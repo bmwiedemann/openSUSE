@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 10 20:25:29 UTC 2021 - trenn@suse.de
+
+- Update to version 4.7.1+git.1612974063.9e01fc92:
+  * fence_gce: Adds cloud-platform scope for bare metal API and optional proxy flags (#382)
+
+-------------------------------------------------------------------
+Wed Feb 10 13:33:34 UTC 2021 - trenn@suse.de
+
+- Update to version 4.7.1+git.1612946165.05fa9b4e:
+  * fence_gce: update module reqs for SLES 15 (#383)
+  * fence_redfish: Add diag action
+- Fixed by previous versions already, but for the records...
+  These sources include fixes for these bugs:
+  bsc#1169485 (git commit 020f48a309bcad659dc493960d2b39e8e1243085)
+  bsc#1169852 (git commit 5c182c4018728e3cdcc6846d74d373cc5b0639dd)
+  bsc#1178343 (git commit 877be689d75892fe069154cf3bc02909f3edaf50)
+
+-------------------------------------------------------------------
 Thu Feb 04 10:02:29 UTC 2021 - trenn@suse.de
 
 - This update has one part (fence-agents part) of a fix for bsc#1178294

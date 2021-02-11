@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Dec 24 16:03:24 UTC 2020 - Matthias Bach <marix@marix.org> - 1.7.4
+
+- Make package conform to spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 12 18:51:58 UTC 2020 - Matthias Bach <marix@marix.org> - 1.7.4
+
+- Update to version 1.7.4
+  * Progress bar is now displayed in the taskbar.
+
+-------------------------------------------------------------------
+Sat Oct 10 09:27:27 UTC 2020 - Matthias Bach <marix@marix.org> - 1.7.3
+
+- Update to version 1.7.3
+  * Fixed various crashes when performing actions with no entries
+    selected.
+
+-------------------------------------------------------------------
+Sun Sep  6 18:32:37 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Update to version 1.7.2
+  * Create Bloom Filter window now displays elapsed time
+
+-------------------------------------------------------------------
+Sun Aug  9 15:55:52 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Initial package release

@@ -1,0 +1,32 @@
+From d302ba9d5b891bda792d82667e11b89df0c3efc2 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@de.ibm.com>
+Date: Fri, 29 Jan 2021 15:49:05 +0100
+Subject: [PATCH 1/2] smc_chk: Remove 'EXPERIMENTAL' flag for '-C' option
+
+The 'EXPERIMENTAL' portion could be irritating to users of option '-C' -
+this functionality is ready for prime time. However, the same code is
+also called by one of the undocumented _experimental_ features, and
+it makes sense in that context.
+
+Signed-off-by: Stefan Raspl <raspl@linux.ibm.com>
+---
+diff --git a/smc_chk b/smc_chk
+index ee64043..9af9c8b 100755
+--- a/smc_chk
++++ b/smc_chk
+@@ -221,7 +221,11 @@ function signal_handler() {
+ function test_iface() {
+    local i;
+ 
+-   echo "  Live test (SMC-D and SMC-R, EXPERIMENTAL)";
++   if [ $mode -eq $MODE_CONNECT ]; then
++      echo "  Live test (SMC-D and SMC-R)";
++   else
++      echo "  Live test (SMC-D and SMC-R, EXPERIMENTAL)";
++   fi
+    if [ "$1" != "" ]; then
+       debug "Determine IP for interface $1";
+       ip="`get_netmasks $1 | head -1 | sed 's#/.*##'`";
+-- 
+2.26.2
+

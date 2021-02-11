@@ -2938,4 +2938,23 @@ Petr</comment>
     <comment>bsc#1177955</comment>
     <requestid>867658</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>b1069c65a036bfbd07a533c4dd4214fa</srcmd5>
+    <version>7.1.0.3</version>
+    <time>1613044122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.0.3
+  * RC3 7.1 series
+- Update bundled dependencies
+- New patch use-comphelper.patch to fix build
+- Rebased patch bsc1177955.diff
+- Dropped merged patches:
+  * 0001-Upgrade-liborcus-to-0.16.0.patch
+  * bsc1178944.diff
+  * bsc1178943.diff
+  * bsc1178807.diff
+  * bsc1179025.diff
+</comment>
+    <requestid>870919</requestid>
+  </revision>
 </revisionlist>

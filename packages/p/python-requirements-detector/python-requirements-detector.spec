@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-detector
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,9 +38,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module astroid >= 1.4}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%ifpython3
-Conflicts:      %{oldpython}-requirements-detector < 0.6
-%endif
 %python_subpackages
 
 %description

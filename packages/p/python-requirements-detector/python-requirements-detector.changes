@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 10 16:28:05 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Get rid of %ifpython3
+- Drop the conflict, the old version is only on Leap 15.1 and older by now
+
+-------------------------------------------------------------------
 Mon Aug  3 10:06:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.7

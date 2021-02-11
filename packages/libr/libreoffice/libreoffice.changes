@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  1 13:08:22 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.1.0.3
+  * RC3 7.1 series
+- Update bundled dependencies
+- New patch use-comphelper.patch to fix build
+- Rebased patch bsc1177955.diff
+- Dropped merged patches:
+  * 0001-Upgrade-liborcus-to-0.16.0.patch
+  * bsc1178944.diff
+  * bsc1178943.diff
+  * bsc1178807.diff
+  * bsc1179025.diff
+
+-------------------------------------------------------------------
 Thu Jan 28 21:17:13 UTC 2021 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1177955 - LO-L3: SmartArt: text wrongly aligned, background boxes not quite right,...

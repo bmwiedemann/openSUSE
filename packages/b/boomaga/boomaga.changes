@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 10 19:54:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require zlib explicitly
+- Spec cleanup
+- Remove obsolete macros in %post/%postun
+- Switch to cmake() syntax for Qt requirements
+
+-------------------------------------------------------------------
 Tue Aug 25 08:47:41 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

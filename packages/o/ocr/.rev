@@ -38,4 +38,14 @@
     <comment>- Enable openmpi3 build for all SLE versions. (forwarded request 805381 from eeich)</comment>
     <requestid>805382</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>2b3c2a671ba25eeaaa5e5cb50577ff9c</srcmd5>
+    <version>1.0.1</version>
+    <time>1613044162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors (jsc#SLE-16462).
+- Fix mpi_ver -&amp;gt; mpi_vers. (forwarded request 870974 from eeich)</comment>
+    <requestid>870975</requestid>
+  </revision>
 </revisionlist>

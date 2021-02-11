@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 10 17:06:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.9.6. No changelog.
+- Drop the digikam-plugin-gmic subpackage. Integration was
+  removed upstream.
+- Drop 0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch
+  no longer needed.
+
+-------------------------------------------------------------------
 Thu Nov 26 15:17:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.9.4. No changelog.

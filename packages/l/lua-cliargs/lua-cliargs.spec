@@ -1,7 +1,7 @@
 #
 # spec file for package lua-cliargs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,7 @@ Source:         https://github.com/amireh/lua_cliargs/archive/v%{upversion}.tar.
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-luacliargs = %{version}
-Obsoletes:      lua-luacliargs < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-cliargs
 ExclusiveArch:  do_not_build

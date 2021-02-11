@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 11 10:18:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.7.2 
+  * Fix bug causing test collection failures under Python 3.9.
+  * Fix bug when decompressing arrays with numpy 1.20.
+  * Replace assert statements with raise at the behest
+    of the bandit security linter.
+
+-------------------------------------------------------------------
 Tue Dec  8 22:37:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix pytest collection error by importing from source dir 

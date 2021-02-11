@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 04:23:45 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to drop build host name (boo#1084909)
+
+-------------------------------------------------------------------
 Thu Jan 14 08:31:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.0.2:

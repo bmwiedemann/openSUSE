@@ -1,0 +1,28 @@
+From c3d1f45abff2433afefaea9d31cd9cda0a7408d3 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@de.ibm.com>
+Date: Mon, 8 Feb 2021 16:43:01 +0100
+Subject: [PATCH 2/2] Makefile: Install smc_chk.8 on s390 only
+
+Since smc_chk depends on smc_rnics (which is s390-only), we should not
+install the man-page on non-s390 platforms, too.
+
+Signed-off-by: Stefan Raspl <raspl@linux.ibm.com>
+---
+diff --git a/Makefile b/Makefile
+index a9068d0..427fc71 100644
+--- a/Makefile
++++ b/Makefile
+@@ -161,9 +161,9 @@ ifeq ($(shell uname -m | cut -c1-4),s390)
+ 	install $(INSTALL_FLAGS_BIN) smc_rnics $(DESTDIR)$(BINDIR)
+ 	install $(INSTALL_FLAGS_MAN) smc_rnics.8 $(DESTDIR)$(MANDIR)/man8
+ 	install $(INSTALL_FLAGS_BIN) smc_chk $(DESTDIR)$(BINDIR)
++	install $(INSTALL_FLAGS_MAN) smc_chk.8 $(DESTDIR)$(MANDIR)/man8
+ endif
+ 	install $(INSTALL_FLAGS_MAN) af_smc.7 $(DESTDIR)$(MANDIR)/man7
+-	install $(INSTALL_FLAGS_MAN) smc_chk.8 $(DESTDIR)$(MANDIR)/man8
+ 	install $(INSTALL_FLAGS_MAN) smc_run.8 $(DESTDIR)$(MANDIR)/man8
+ 	install $(INSTALL_FLAGS_MAN) smc_pnet.8 $(DESTDIR)$(MANDIR)/man8
+ 	install $(INSTALL_FLAGS_MAN) smcss.8 $(DESTDIR)$(MANDIR)/man8
+-- 
+2.26.2
+

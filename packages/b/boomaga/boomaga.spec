@@ -1,7 +1,7 @@
 #
 # spec file for package boomaga
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,35 +43,21 @@ BuildRequires:  cups
 BuildRequires:  cups-devel
 %endif
 BuildRequires:  hicolor-icon-theme
-# There was a bug in the libpoppler-devel package (bnc#864299). Fixed in
-# the "Update" repository.
-%if 0%{?suse_version} && 0%{?suse_version} < 1320
-BuildRequires:  libpoppler-cpp0
-%endif
-#
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} >= 1315
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
-%else
-BuildRequires:  pkgconfig(QtCore)
-BuildRequires:  pkgconfig(QtDBus)
-BuildRequires:  pkgconfig(QtGui)
-BuildRequires:  pkgconfig(QtXml)
-%endif
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(poppler) >= 0.18
 BuildRequires:  pkgconfig(poppler-cpp)
+BuildRequires:  pkgconfig(zlib)
 Requires:       ghostscript
 Requires(post): %{_sbindir}/lpadmin
 Requires(postun): %{_sbindir}/lpadmin
-Requires(pre):  shared-mime-info
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Boomaga (BOOklet MAnager) is a virtual printer for viewing a document
@@ -102,18 +88,13 @@ make %{?_smp_mflags} VERBOSE=1
 if [ "$1" -eq 1 ] ; then
     %{_sbindir}/lpadmin -h localhost -p "Boomaga" -v "boomaga:/" -E -m "boomaga.ppd" -o printer-is-shared=no -o PageSize=A4
 fi
-%icon_theme_cache_post
-%mime_database_post
 
 %postun
 if [ "$1" -eq 0 ] ; then
      %{_sbindir}/lpadmin -h localhost -x "Boomaga"
 fi
-%icon_theme_cache_postun
-%mime_database_postun
 
 %files
-%defattr(-,root,root,-)
 %license COPYING GPL LGPL
 %doc README.md
 %{_bindir}/%{name}
@@ -126,7 +107,6 @@ fi
 %{_mandir}/man?/*
 
 %files lang -f %{name}.lang
-%defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/
 %dir %{_datadir}/%{name}/translations/
 

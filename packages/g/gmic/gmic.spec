@@ -1,7 +1,7 @@
 #
 # spec file for package gmic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,14 @@
 %define _lto_cflags %{nil}
 
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-%bcond_without digikam_plugin
-%else
-%bcond_with digikam_plugin
-%endif
-# opencv3 is not available for ppc
-%ifnarch ppc64 ppc64le
+# opencv3 is not available for ppc64
+%ifnarch ppc64
 %bcond_without opencv
 %else
 %bcond_with opencv
 %endif
 Name:           gmic
-Version:        2.9.4
+Version:        2.9.6
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -49,15 +44,10 @@ URL:            https://gmic.eu
 # Git URL:      https://framagit.org/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Source1:        gmic_qt.png
-# PATCH-FIX-UPSTREAM
-Patch:          0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch
-BuildRequires:  cmake >= 3.9.4
+BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-%if %{with digikam_plugin}
-BuildRequires:  cmake(DigikamCore) >= 6.3.0
-%endif
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -74,12 +64,13 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
 %if %{with opencv}
-# gmic first looks for opencv 4 first and falls back to opencv 3 if not found.
-# opencv in not available in leap <= 15.2
+# gmic first looks for opencv 4 and falls back to opencv 3 if not found.
+# opencv 4 in not available in leap <= 15.3
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(opencv)
 %else
 BuildRequires:  pkgconfig(opencv4)
+BuildRequires:  pkgconfig(zlib)
 %endif
 %endif
 
@@ -130,17 +121,6 @@ Requires:       krita
 %description -n  krita-plugin-gmic
 This is a plugin for krita to provide gmic features.
 
-%if %{with digikam_plugin}
-%package -n digikam-plugin-gmic
-Summary:        GMIC plugin for digikam
-License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Bitmap Editors
-Requires:       digikam
-
-%description -n  digikam-plugin-gmic
-This is a plugin for digikam to provide gmic features.
-%endif
-
 %package zart
 Summary:        GMIC GUI for video streams
 License:        CECILL-2.0
@@ -180,7 +160,7 @@ cd ..
 # Create link for zart dynamic linking
 ln -s ../build/libgmic.so src/libgmic.so
 
-# Build gmic{_gimp|_krita|_digikam}_qt
+# Build gmic{_gimp|_krita}_qt
 pushd gmic-qt
 %cmake \
     -DENABLE_DYNAMIC_LINKING=ON \
@@ -199,17 +179,6 @@ cd ..
 %cmake_build
 
 cd ..
-
-%if %{with digikam_plugin}
-%cmake \
-    -DENABLE_DYNAMIC_LINKING=ON \
-    -DGMIC_PATH=%{_builddir}/%{name}-%{version}/src \
-    -DGMIC_LIB_PATH=%{_builddir}/%{name}-%{version}/build \
-    -DGMIC_QT_HOST=digikam
-%cmake_build
-
-cd ..
-%endif
 
 %cmake \
     -DENABLE_DYNAMIC_LINKING=ON \
@@ -253,12 +222,6 @@ install -m 0755 build/gmic_krita_qt %{buildroot}%{_bindir}/gmic_krita_qt
 # gimp plugin
 install -d -m 0755 %{buildroot}%{_gimpplugindir}
 install -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
-
-%if %{with digikam_plugin}
-# digikam plugin
-install -d -m 0755 %{buildroot}%{_libqt5_plugindir}/digikam/editor
-install -m 0755 build/Editor_GmicQt_Plugin.so %{buildroot}%{_libqt5_plugindir}/digikam/editor/Editor_GmicQt_Plugin.so
-%endif
 popd
 
 %if %{with opencv}
@@ -293,14 +256,6 @@ popd
 %files -n krita-plugin-gmic
 %license COPYING
 %{_bindir}/gmic_krita_qt
-
-%if %{with digikam_plugin}
-%files -n digikam-plugin-gmic
-%license COPYING
-%dir %{_libqt5_plugindir}/digikam
-%dir %{_libqt5_plugindir}/digikam/editor
-%{_libqt5_plugindir}/digikam/editor/Editor_GmicQt_Plugin.so
-%endif
 
 %files -n libgmic1
 %license COPYING

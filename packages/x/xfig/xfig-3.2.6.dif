@@ -3,9 +3,11 @@
  src/w_menuentry.c |    2 +-
  2 files changed, 31 insertions(+), 3 deletions(-)
 
---- app-defaults/Fig.in
-+++ app-defaults/Fig.in	2016-09-22 08:33:16.879768102 +0000
-@@ -14,6 +14,7 @@ Fig.version:			3.2.6
+Index: app-defaults/Fig.in
+===================================================================
+--- app-defaults/Fig.in.orig
++++ app-defaults/Fig.in
+@@ -14,6 +14,7 @@ Fig.version:			@VERSION@
  ! with xfig continually resizing itself
  
  Fig*AllowShellResize:		false
@@ -28,7 +30,7 @@
  
  ! Specify a private Compose key database file.  If this resource contains a "/"
  ! then the wired-in name of the xfig global directory won't be prefixed to it.
-@@ -661,7 +667,29 @@ Fig*sideruler.background:		gray95
+@@ -663,7 +669,29 @@ Fig*sideruler.background:		gray95
  
  Fig*FigList*background:			gray95
  Fig*List*background:			gray95
@@ -59,14 +61,3 @@
  
  Fig*Label.background:			gray80
  Fig*ind_box.background:			gray80
---- src/w_menuentry.c
-+++ src/w_menuentry.c	2016-09-22 08:34:54.249950001 +0000
-@@ -172,7 +172,7 @@ Redisplay(Widget w, XEvent *event, Regio
- 	gc = entry->sme_bsb.norm_gray_gc;
-     }
- 
--    if (entry->sme_bsb.label != NULL) {
-+    if (entry->sme_bsb.label != /* NULL */ XtName((Widget)(entry))) {
- 	int x_loc = entry->sme_bsb.left_margin;
- 	int len = strlen(entry->sme_bsb.label);
- 	char * label = entry->sme_bsb.label;

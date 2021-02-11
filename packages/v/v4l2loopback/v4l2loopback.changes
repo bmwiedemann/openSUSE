@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 10:47:03 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add undefined macros when building on older distributions
+
+-------------------------------------------------------------------
 Tue Feb  2 14:08:32 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add Secureboot signing support

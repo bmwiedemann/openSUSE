@@ -3,24 +3,20 @@
  src/u_print.c |    1 +
  2 files changed, 13 insertions(+), 6 deletions(-)
 
---- src/main.c
-+++ src/main.c	2018-09-06 11:16:21.842867881 +0000
-@@ -60,11 +60,13 @@
- 
- /* input extensions for an input tablet */
- #ifdef USE_TAB
--#include "X11/extensions/XInput.h"
-+#include <X11/extensions/XInput.h>
- #endif /* USE_TAB */
- 
+Index: src/main.c
+===================================================================
+--- src/main.c.orig
++++ src/main.c
+@@ -44,6 +44,8 @@
+ #include <X11/xpm.h>
  #ifdef I18N
  #include <X11/keysym.h>
 +#include <locale.h>
 +#include <langinfo.h>
- #endif  /* I18N */
- 
- #include <X11/IntrinsicP.h>
-@@ -782,11 +784,6 @@ void main(int argc, char **argv)
+ #endif
+ #ifdef USE_TAB		/* input extensions for an input tablet */
+ #include <X11/extensions/XInput.h>
+@@ -831,11 +833,6 @@ main(int argc, char **argv)
  	}
      }
  
@@ -32,7 +28,7 @@
      /*
       * save the command line arguments
       */
-@@ -891,6 +888,10 @@ void main(int argc, char **argv)
+@@ -937,6 +934,10 @@ main(int argc, char **argv)
  		setup_icons_big();
  
  #ifdef I18N
@@ -43,7 +39,7 @@
      /************************************************************/
      /* if the international option has been set, set the locale */
      /************************************************************/
-@@ -1611,6 +1612,11 @@ setup_visual(int *argc_p, char **argv, A
+@@ -1657,6 +1658,11 @@ setup_visual(int *argc_p, char **argv, A
  	 */
  	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options), argc_p, argv,
  			       (String *) NULL, args, 0);
@@ -55,8 +51,10 @@
  	/* save important info */
  	tool_d = XtDisplay(tool);
  	tool_s = XtScreen(tool);
---- src/u_print.c
-+++ src/u_print.c	2018-09-06 09:47:09.839191953 +0000
+Index: src/u_print.c
+===================================================================
+--- src/u_print.c.orig
++++ src/u_print.c
 @@ -16,6 +16,7 @@
   *
   */

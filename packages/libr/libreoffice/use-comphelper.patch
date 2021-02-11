@@ -1,0 +1,42 @@
+From f14b83b38d35a585976ef5d422754d8e0d0266a6 Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Thu, 24 Dec 2020 06:04:16 -0500
+Subject: [PATCH] ucp: fix call to getComponentContext
+
+Commit 3f9940c2e050830051a31e4b70736132e034a9db mistakenly removed
+include/ucbhelper/getcomponentcontext.hxx seeing the getComponentContext method
+as unused.
+According to that file, ucbhelper::getComponentContext was just a duplicate of
+comphelper::getComponentContext so this commit changes to calling that method
+instead.
+
+Change-Id: Ibd66b56a72afce437a26417d7944ec1ace34a4eb
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/108262
+Reviewed-by: Julien Nabet <serval2412@yahoo.fr>
+Reviewed-by: Noel Grandin <noel.grandin@collabora.co.uk>
+Tested-by: Noel Grandin <noel.grandin@collabora.co.uk>
+---
+ ucb/source/ucp/webdav/webdavprovider.cxx | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ucb/source/ucp/webdav/webdavprovider.cxx b/ucb/source/ucp/webdav/webdavprovider.cxx
+index 462e4e5a98f7..570b36e6180c 100644
+--- a/ucb/source/ucp/webdav/webdavprovider.cxx
++++ b/ucb/source/ucp/webdav/webdavprovider.cxx
+@@ -17,6 +17,7 @@
+  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+  */
+ 
++#include <comphelper/processfactory.hxx>
+ #include <ucbhelper/contentidentifier.hxx>
+ #include <ucbhelper/macros.hxx>
+ #include "webdavprovider.hxx"
+@@ -106,7 +107,7 @@ static css::uno::Reference< css::uno::XInterface >
+ ContentProvider_CreateInstance( const css::uno::Reference< css::lang::XMultiServiceFactory> & rSMgr )
+ {
+     css::lang::XServiceInfo* pX =
+-                static_cast<css::lang::XServiceInfo*>(new ContentProvider( ucbhelper::getComponentContext(rSMgr) ));
++                static_cast<css::lang::XServiceInfo*>(new ContentProvider( comphelper::getComponentContext(rSMgr) ));
+     return css::uno::Reference< css::uno::XInterface >::query( pX );
+ }
+ 

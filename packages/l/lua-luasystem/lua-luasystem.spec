@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luasystem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,7 @@ URL:            https://github.com/o-lim/luasystem
 Source:         https://github.com/o-lim/luasystem/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
-%if "%{flavor}" == "lua53"
-Provides:       lua-luasystem = %{version}
-Obsoletes:      lua-luasystem < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-luasystem
 ExclusiveArch:  do_not_build

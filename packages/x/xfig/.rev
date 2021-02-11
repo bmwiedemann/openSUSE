@@ -462,4 +462,31 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
   * xfig.3.2.5b-pspdftex.dif</comment>
     <requestid>743818</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>36aa056057a0d2b592b1b9a7cef10699</srcmd5>
+    <version>3.2.8</version>
+    <time>1613044183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.8:
+  o Shift + Wheel Up pans left, Shift + Wheel Down pans right.
+    Alt or Meta + Wheel Up pops up the edit panel, Alt or Meta + Wheel
+    Down pops up the drawing panel. Previously, Shift + Wheel Up or Down
+    popped up the edit or drawing panel, respectively, and panning
+    sideways could only be achieved by moving the wheel sideways.
+  o To display gif image files, either giftopnm and ppmtopcx from the
+    netpbm package, imagemagick, or graphicsmagick must be installed.
+  o Obey the resolution given in embedded png, tiff and jpeg image files.
+  o Embedded image files are displayed in full color, not reduced to
+    a maximum of 256 colors.
+  o Display embedded pdf files.
+  o Read version 1.3 fig files.
+  o The default resolution of embedded raster images is changed
+    from 80 dpi to 72 dpi.
+  o Read compressed files, but do not silently uncompress them.
+  o Get correct bounding box (/MediaBox) of embedded pdf files.
+- remove xfig.3.2.5b-preview.dif, xfig.3.2.5b-pspdftex.dif,
+  xfig.3.2.5-xim.dif: obsolete
+- remove X11R6 ifdefs from spec file, this is obsolete (forwarded request 870850 from dirkmueller)</comment>
+    <requestid>871142</requestid>
+  </revision>
 </revisionlist>

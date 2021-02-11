@@ -17,7 +17,7 @@
 
 
 Name:           smc-tools
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Shared Memory Communication via RDMA
 License:        EPL-1.0
@@ -25,6 +25,8 @@ Group:          System/Kernel
 URL:            https://www.ibm.com/developerworks/linux/linux390/smc-tools.html
 Source:         %{name}-%{version}.tar.gz
 Source1:        smc-tools-rpmlintrc
+Patch1:         smc-tools-sles15sp3-smc_chk-Remove-EXPERIMENTAL-flag-for-C-option.patch
+Patch2:         smc-tools-sles15sp3-Makefile-Install-smc_chk.8-on-s390-only.patch
 
 BuildRequires:  bash-completion-devel
 BuildRequires:  libnl3-devel
@@ -87,6 +89,7 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %{_bindir}/smcd
 %{_bindir}/smcr
 %ifarch s390 s390x
+%{_bindir}/smc_chk
 %{_bindir}/smc_rnics
 %endif
 %{_bindir}/smcss
@@ -95,12 +98,15 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %{_mandir}/man8/smc_pnet.8%{?ext_man}
 %ifarch s390 s390x
 %{_mandir}/man8/smc_rnics.8%{?ext_man}
+%{_mandir}/man8/smc_chk.8%{?ext_man}
 %endif
 %{_mandir}/man8/smc_run.8%{?ext_man}
 %{_mandir}/man8/smcd-device.8%{?ext_man}
+%{_mandir}/man8/smcd-info.8%{?ext_man}
 %{_mandir}/man8/smcd-linkgroup.8%{?ext_man}
 %{_mandir}/man8/smcd.8%{?ext_man}
 %{_mandir}/man8/smcr-device.8%{?ext_man}
+%{_mandir}/man8/smcr-info.8%{?ext_man}
 %{_mandir}/man8/smcr-linkgroup.8%{?ext_man}
 %{_mandir}/man8/smcr.8%{?ext_man}
 %{_mandir}/man8/smcss.8%{?ext_man}

@@ -29,6 +29,8 @@ Group:          Hardware/TV
 URL:            https://github.com/Pulse-Eight/libcec
 Source:         https://github.com/Pulse-Eight/libcec/archive/libcec-%{version}.tar.gz
 Patch1:         libcec-cmake_install_lib_dir.patch
+# PATCH-FIX-UPSTREAM https://github.com/Pulse-Eight/libcec/pull/553
+Patch2:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel

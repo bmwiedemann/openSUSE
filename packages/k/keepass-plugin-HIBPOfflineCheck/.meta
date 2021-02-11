@@ -1,0 +1,5 @@
+<package name="keepass-plugin-HIBPOfflineCheck" project="openSUSE:Factory">
+  <title>keepass-plugin-HIBPOfflineCheck</title>
+  <description>A Keepass plugin allowing to verify stored passwords against Have I Been Pawned.</description>
+  <devel project="Mono" package="keepass-plugin-HIBPOfflineCheck"/>
+</package>

@@ -28,8 +28,8 @@
 %else
 %bcond_with lto
 %endif
-# Enable the kde integration on openSUSE only
-%if 0%{?is_opensuse}
+# Enable the kde integration on openSUSE and SLE15-SP3 only
+%if 0%{?is_opensuse} || 0%{?sle_version} == 150300
 %bcond_without kdeintegration
 %else
 %bcond_with kdeintegration
@@ -46,7 +46,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        7.0.4.2
+Version:        7.1.0.3
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -70,9 +70,9 @@ Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_%{nu
 Source450:      %{external_url}/1f467e5bb703f12cbbb09d5cf67ecf4a-converttexttonumber-1-5-0.oxt
 Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.bz2
 # GPGME bundle list
-Source1000:     %{external_url}/gpgme-1.9.0.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.27.tar.bz2
-Source1002:     %{external_url}/libassuan-2.5.1.tar.bz2
+Source1000:     %{external_url}/gpgme-1.13.1.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.37.tar.bz2
+Source1002:     %{external_url}/libassuan-2.5.3.tar.bz2
 # Internal bundled stuff we can't remove
 # To build this we would pull cygwin; not worth it
 Source2001:     https://dev-www.libreoffice.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll
@@ -91,7 +91,7 @@ Source2008:     %{external_url}/pdfium-4306.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m85-e684c6daef6bfb774a325a069eda1f76ca6ac26c.tar.xz
+Source2010:     %{external_url}/skia-m88-59bafeeaa7de9eb753e3778c414e01dcf013dcd8.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -99,14 +99,8 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-Patch4:         0001-Upgrade-liborcus-to-0.16.0.patch
-# LO-L3: Shadow effect(s) for table completely missing - part 1 and 2
-Patch5:         bsc1178944.diff
-Patch6:         bsc1178943.diff
-# Bug 1178807 - LO-L3: Text box from PowerPoint renders vertically instead of horizontally
-Patch8:         bsc1178807.diff
-# Bug 1179025 - LO-L3: LibreOffice crashes opening a PPTX
-Patch9:         bsc1179025.diff
+# PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/f14b83b38d35a585976ef5d422754d8e0d0266a6 ucp: fix call to getComponentContext
+Patch4:         use-comphelper.patch
 # Bug 1177955 - LO-L3: SmartArt: text wrongly aligned, background boxes not quite right,...
 Patch10:        bsc1177955.diff
 # try to save space by using hardlinks
@@ -140,6 +134,7 @@ BuildRequires:  hyphen-devel
 BuildRequires:  icu
 BuildRequires:  java-devel >= 9.0
 BuildRequires:  junit4
+BuildRequires:  libBox2D-devel
 BuildRequires:  libbase
 BuildRequires:  libcppunit-devel >= 1.14.0
 BuildRequires:  liberation-fonts
@@ -967,10 +962,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch8 -p1
-%patch9 -p1
 %patch10 -p1
 %patch990 -p1
 %patch991 -p1
@@ -1194,18 +1185,10 @@ echo "%dir %{_datadir}/%{name}/program"       >>file-lists/common_list.txt
 ################
 # helper script for noarch packages
 # add missing directories to the file list
-for dir in `find %{buildroot}/%{_datadir}/icons/gnome -type d` ; do
+for dir in `find %{buildroot}/%{_datadir}/icons/hicolor -type d` ; do
     dir=`echo $dir | sed -e "s|%{buildroot}||"`
     echo "%dir $dir" >>file-lists/common_list.txt
 done
-
-# remove obsolete content bsc#1062631
-rm -r %{buildroot}%{_datadir}/application-registry
-rm -r %{buildroot}%{_datadir}/mime-info
-grep -v %{_datadir}/mime-info file-lists/common_list.txt > tmplist
-mv tmplist file-lists/common_list.txt
-grep -v %{_datadir}/application-registry file-lists/common_list.txt > tmplist
-mv tmplist file-lists/common_list.txt
 
 #################################
 # Move split noarch data to share
@@ -1291,20 +1274,20 @@ rm -r %{buildroot}%{_datadir}/libreoffice/share/autotext/sr/
 # Install appdata files, so we're shown in gnome-software (and other, future app stores)
 # upstream ships the files called libreoffice-{base,writer,...}, but the destop files are called base.destop [...]
 # fixup the appdata files internal reference to the .desktop file and rename them on the go to match the name
-install -m 0755 -d %{buildroot}%{_datadir}/appdata
+install -m 0755 -d %{buildroot}%{_datadir}/metainfo
 for appdata in base calc draw impress writer; do
   sed "s/libreoffice-${appdata}.desktop/${appdata}.desktop/" \
-    sysui/desktop/appstream-appdata/libreoffice-${appdata}.appdata.xml > %{buildroot}%{_datadir}/appdata/${appdata}.appdata.xml
-  echo "%{_datadir}/appdata/${appdata}.appdata.xml" >>file-lists/${appdata}_list.txt
+    sysui/desktop/appstream-appdata/libreoffice-${appdata}.appdata.xml > %{buildroot}%{_datadir}/metainfo/${appdata}.appdata.xml
+  echo "%{_datadir}/metainfo/${appdata}.appdata.xml" >>file-lists/${appdata}_list.txt
 %if 0%{?suse_version} < 1320
-  echo "%dir %{_datadir}/appdata/" >>file-lists/${appdata}_list.txt
+  echo "%dir %{_datadir}/metainfo/" >>file-lists/${appdata}_list.txt
 %endif
-  rm -rf %{buildroot}%{_datadir}/appdata/libreoffice-${appdata}.appdata.xml
+  rm -rf %{buildroot}%{_datadir}/metainfo/libreoffice-${appdata}.appdata.xml
 done
 %if %{with kdeintegration}
-echo "%{_datadir}/appdata/org.libreoffice.kde.metainfo.xml" >>file-lists/kde4_list.txt
+echo "%{_datadir}/metainfo/org.libreoffice.kde.metainfo.xml" >>file-lists/kde4_list.txt
 %else
-rm -f %{buildroot}%{_datadir}/appdata/org.libreoffice.kde.metainfo.xml
+rm -f %{buildroot}%{_datadir}/metainfo/org.libreoffice.kde.metainfo.xml
 %endif
 
 # Remove pointless readmes
@@ -1458,14 +1441,6 @@ exit 0
 %dir %{_datadir}/icons/hicolor/512x512/apps
 %dir %{_datadir}/icons/hicolor/512x512/mimetypes
 %endif
-# FIXME: this is KDE4 only, wipe?
-%dir %{_datadir}/icons/locolor
-%dir %{_datadir}/icons/locolor/16x16
-%dir %{_datadir}/icons/locolor/16x16/apps
-%dir %{_datadir}/icons/locolor/16x16/mimetypes
-%dir %{_datadir}/icons/locolor/32x32
-%dir %{_datadir}/icons/locolor/32x32/apps
-%dir %{_datadir}/icons/locolor/32x32/mimetypes
 
 %files -n libreofficekit
 %dir %{_libdir}/girepository-1.0

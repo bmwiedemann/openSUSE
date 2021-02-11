@@ -33,15 +33,14 @@ Change-Id: I80db290bd1695884ffb7b1eabaffa09462e8883d
  .../drawingml/diagram/diagramlayoutatoms.cxx  | 78 ++++++++++++++-----
  1 file changed, 60 insertions(+), 18 deletions(-)
 
-diff --git a/oox/source/drawingml/diagram/diagramlayoutatoms.cxx b/oox/source/drawingml/diagram/diagramlayoutatoms.cxx
-index 24acaf176491..3492ccefaa1a 100644
---- a/oox/source/drawingml/diagram/diagramlayoutatoms.cxx
-+++ b/oox/source/drawingml/diagram/diagramlayoutatoms.cxx
-@@ -452,6 +452,37 @@ sal_Int32 AlgAtom::getVerticalShapesCount(const ShapePtr& rShape)
- 
+Index: libreoffice-7.1.0.3/oox/source/drawingml/diagram/diagramlayoutatoms.cxx
+===================================================================
+--- libreoffice-7.1.0.3.orig/oox/source/drawingml/diagram/diagramlayoutatoms.cxx
++++ libreoffice-7.1.0.3/oox/source/drawingml/diagram/diagramlayoutatoms.cxx
+@@ -784,6 +784,37 @@ sal_Int32 AlgAtom::getVerticalShapesCoun
  namespace
  {
-+/**
+ /**
 + * Decides if a certain reference type (e.g. "right") can be inferred from the available properties
 + * in rMap (e.g. left and width). Returns true if rValue is written to.
 + */
@@ -72,24 +71,20 @@ index 24acaf176491..3492ccefaa1a 100644
 +    return false;
 +}
 +
- /**
++/**
   * Apply rConstraint to the rProperties shared layout state.
   *
-@@ -468,26 +499,37 @@ void ApplyConstraintToLayout(const Constraint& rConstraint, LayoutPropertyMap& r
-     }
+  * Note that the order in which constraints are applied matters, given that constraints can refer to
+@@ -803,11 +834,22 @@ void ApplyConstraintToLayout(const Const
+         return;
  
-     const LayoutPropertyMap::const_iterator aRef = rProperties.find(rConstraint.msRefForName);
--    if (aRef != rProperties.end())
-+    if (aRef == rProperties.end())
-+        return;
-+
-+    const LayoutProperty::const_iterator aRefType = aRef->second.find(rConstraint.mnRefType);
+     const LayoutProperty::const_iterator aRefType = aRef->second.find(rConstraint.mnRefType);
 +    sal_Int32 nInferredValue = 0;
-+    if (aRefType != aRef->second.end())
+     if (aRefType != aRef->second.end())
 +    {
 +        // Reference is found directly.
-+        rProperties[rConstraint.msForName][rConstraint.mnType]
-+            = aRefType->second * rConstraint.mfFactor;
+         rProperties[rConstraint.msForName][rConstraint.mnType]
+             = aRefType->second * rConstraint.mfFactor;
 +    }
 +    else if (InferFromLayoutProperty(aRef->second, rConstraint.mnRefType, nInferredValue))
 +    {
@@ -97,40 +92,9 @@ index 24acaf176491..3492ccefaa1a 100644
 +        rProperties[rConstraint.msForName][rConstraint.mnType]
 +            = nInferredValue * rConstraint.mfFactor;
 +    }
-+    else
+     else
      {
--        const LayoutProperty::const_iterator aRefType = aRef->second.find(rConstraint.mnRefType);
--        if (aRefType != aRef->second.end())
--            rProperties[rConstraint.msForName][rConstraint.mnType]
--                = aRefType->second * rConstraint.mfFactor;
 +        // Reference not found, assume a fixed value.
-+        // Values are never in EMU, while oox::drawingml::Shape position and size are always in
-+        // EMU.
-+        double fUnitFactor = 0;
-+        if (isFontUnit(rConstraint.mnRefType))
-+            // Points -> EMU.
-+            fUnitFactor = EMU_PER_PT;
-         else
--        {
--            // Values are never in EMU, while oox::drawingml::Shape position and size are always in
--            // EMU.
--            double fUnitFactor = 0;
--            if (isFontUnit(rConstraint.mnRefType))
--                // Points -> EMU.
--                fUnitFactor = EMU_PER_PT;
--            else
--                // Millimeters -> EMU.
--                fUnitFactor = EMU_PER_HMM * 100;
--            rProperties[rConstraint.msForName][rConstraint.mnType]
--                = rConstraint.mfValue * fUnitFactor;
--        }
-+            // Millimeters -> EMU.
-+            fUnitFactor = EMU_PER_HMM * 100;
-+        rProperties[rConstraint.msForName][rConstraint.mnType]
-+            = rConstraint.mfValue * fUnitFactor;
-     }
- }
- 
--- 
-2.26.2
-
+         // Values are never in EMU, while oox::drawingml::Shape position and size are always in
+         // EMU.
+         double fUnitFactor = 0;

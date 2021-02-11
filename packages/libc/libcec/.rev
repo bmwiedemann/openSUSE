@@ -132,4 +132,12 @@ Now with proper naming, thanks to Jan Engelhardt.</comment>
 - Drop no longer applying libcec-build-compare.patch</comment>
     <requestid>863036</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ea6ab11355fdd38f07c34908c23ac348</srcmd5>
+    <version>6.0.2</version>
+    <time>1613044180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871140</requestid>
+  </revision>
 </revisionlist>

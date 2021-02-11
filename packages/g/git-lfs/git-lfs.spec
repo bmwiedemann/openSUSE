@@ -1,7 +1,7 @@
 #
 # spec file for package git-lfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,20 @@
 %define rb_build_versions      %{rb_default_ruby}
 
 %if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
-%bcond_without build_docs
+%bcond_with    build_docs
 %else
 %bcond_with    build_docs
 %endif
 
 Name:           git-lfs
-Version:        2.12.1
+Version:        2.13.2
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://git-lfs.github.com/
-Source0:        %{name}-v%{version}.tar.gz
+Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}/git-lfs-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        README.packaging
-Source2:        vendor.tar.xz
 Patch0:         Makefile_path.patch
 %if %{with build_docs}
 BuildRequires:  %{rubygem ronn}
@@ -56,7 +55,7 @@ videos, datasets, and graphics with text pointers inside Git, while
 storing the file contents on a remote server.
 
 %prep
-%autosetup -p1 -a 2
+%autosetup -p1
 
 %build
 go build -mod=vendor --buildmode=pie .
@@ -81,7 +80,9 @@ install  -m 644 man/*.5 %{buildroot}%{_mandir}/man5
 git lfs install --system
 
 %preun
-git lfs uninstall --system
+if [ $1 -eq 0 ] ; then
+  git lfs uninstall --system
+fi
 
 %check
 export GIT_LFS_TEST_DIR=$(mktemp -d)
@@ -98,7 +99,7 @@ rm -rf ${GIT_LFS_TEST_DIR}
 %{_bindir}/git-lfs
 %license LICENSE.md
 %doc CHANGELOG.md CODE-OF-CONDUCT.md CONTRIBUTING.md  INSTALLING.md README.md
-%if %{with build_docs} 
+%if %{with build_docs}
 %{_mandir}/man*/*
 %endif
 

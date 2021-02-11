@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 10 19:12:48 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 1.5.0 (bsc#1181649).
+  * Changes:
+    - `smcd`/`smcr`: Add new command `info`
+    - `smc_rnics`: Use '`n/a`' to indicate missing PNET ID
+    - `smc_chk`: New tool to perform SMC eligilibilty checks,
+       requires `man` and `python3` to be installed
+    - `man` pages: Consistency improvements
+  * Bug fixes:
+    - `smc_pnet.8`: Use correct spelling for 'PNET ID'
+    - `smc_rnics`: Suppress output of port attribute for offline devices
+- Added smc-tools-sles15sp3-Makefile-Install-smc_chk.8-on-s390-only.patch
+  The smc_chk command is only built for s390/s390x systems. Don't include the
+  man page for it on systems where the command doesn't exist.
+- Added smc-tools-sles15sp3-smc_chk-Remove-EXPERIMENTAL-flag-for-C-option.patch
+  The 'EXPERIMENTAL' portion could be irritating to users of option '-C' -
+  this functionality is ready for prime time. However, the same code is
+  also called by one of the undocumented _experimental_ features, and
+  it makes sense in that context.
+
+-------------------------------------------------------------------
 Wed Jan 27 21:52:54 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Added a BuildRequires for bash-completion-devel so that the

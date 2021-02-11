@@ -107,4 +107,16 @@
     <comment></comment>
     <requestid>851116</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>898ddd0d62ec727048cbfd32faef754a</srcmd5>
+    <version>2.9.6</version>
+    <time>1613044160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.6. No changelog.
+- Drop the digikam-plugin-gmic subpackage. Integration was
+  removed upstream.
+- Drop 0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch
+  no longer needed.</comment>
+    <requestid>870971</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 00:14:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- NEP 29: NumPy dropped Python 3.6 -- skip python36 build for TW
+
+-------------------------------------------------------------------
 Wed Feb  3 11:50:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.14.1 

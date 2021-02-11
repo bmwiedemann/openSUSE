@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 10 15:25:32 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- add missing "#" for the tarball rename
+
+-------------------------------------------------------------------
+Wed Jan 20 15:16:05 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.13.2
+  https://github.com/git-lfs/git-lfs/releases/tag/v2.13.0
+  https://github.com/git-lfs/git-lfs/releases/tag/v2.13.1
+  https://github.com/git-lfs/git-lfs/releases/tag/v2.13.2
+- use tarball that actually has the vendored golang libraries
+  already. drop vendor.tar.xz
+- disable documentation as it relies on an unmaintained tool.
+- only run the uninstall script if it is actually the last copy
+  being uninstalled
+
+-------------------------------------------------------------------
 Mon Nov  9 02:03:34 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - actually make the uninstall step also call it with --system

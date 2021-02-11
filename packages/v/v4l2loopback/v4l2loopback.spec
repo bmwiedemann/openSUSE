@@ -17,6 +17,9 @@
 # needssslcertforbuild
 
 
+%{!?_modprobedir: %define _modprobedir /lib/modprobe.d/} 
+%{!?_modulesloaddir: %define _modulesloaddir /usr/lib/modules-load.d/} 
+
 Name:           v4l2loopback
 Version:        0.12.5
 Release:        0
@@ -96,7 +99,9 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_modulesloaddir}/v4l2loopback.conf
 %attr(0644,root,root) %{_mandir}/man1/v4l2loopback-ctl.1.gz
 
 %files autoload
+%dir %{_modprobedir}
 %{_modprobedir}/98-v4l2loopback.conf
+%dir %{_modulesloaddir}
 %{_modulesloaddir}/v4l2loopback.conf
 
 %changelog
