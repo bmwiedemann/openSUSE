@@ -300,4 +300,13 @@ gruss friseer (forwarded request 77922 from Friseer)</comment>
     <comment></comment>
     <requestid>825271</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>8cf2c40720b639808c2deb48fbc2130b</srcmd5>
+    <version>2.1.12</version>
+    <time>1613063396</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop insserv_prereq and fillup_prereq macros: there are no
+  pre-scripts that would justify these dependencies. (forwarded request 870408 from dimstar)</comment>
+    <requestid>870473</requestid>
+  </revision>
 </revisionlist>

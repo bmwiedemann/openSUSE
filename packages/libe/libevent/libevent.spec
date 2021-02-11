@@ -1,7 +1,7 @@
 #
 # spec file for package libevent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,10 +50,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkg-config
 %endif
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1220
-Requires(pre):  %fillup_prereq
-Requires(pre):  %insserv_prereq
-%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
