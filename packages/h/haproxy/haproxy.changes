@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Feb 06 16:29:34 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.5+git0.5902ad99b:
+  * [RELEASE] Released version 2.3.5
+  * MINOR: config: Deprecate and ignore tune.chksize global option
+  * BUG/MINOR: sock: Unclosed fd in case of connection allocation failure
+  * BUG/MEDIUM: mux-h2: do not quit the demux loop before setting END_REACHED
+  * BUG/MEDIUM: mux-h2: handle remaining read0 cases
+  * BUILD: Makefile: move REGTESTST_TYPE default setting
+  * MINOR: cli/show_fd: report local and report ports when known
+  * BUILD: ssl: fix build breakage with last commit
+  * BUG/MINOR: ssl: do not try to use early data if not configured
+  * BUG/MINOR: xxhash: make sure armv6 uses memcpy()
+  * BUG/MINOR: mux_h2: fix incorrect stat titles
+  * BUG/MEDIUM: ssl: check a connection's status before computing a handshake
+  * BUG/MEDIUM: ssl/cli: abort ssl cert is freeing the old store
+  * BUG/MINOR: stick-table: Always call smp_fetch_src() with a valid arg list
+  * DOC: management: fix "show resolvers" alphabetical ordering
+  * MINOR: h1: Raise the chunk size limit up to (2^52 - 1)
+  * MINOR: mux-h1/show_fd: report as suspicious an entry with too many calls
+  * MINOR: mux-h2/show_fd: report as suspicious an entry with too many calls
+  * MINOR: ssl/show_fd: report some FDs as suspicious when possible
+  * MINOR: cli/show_fd: report some easily detectable suspicious states
+  * MINOR: cli: give the show_fd helpers the ability to report a suspicious entry
+  * MINOR: mux-fcgi: make the "show fd" helper also decode the fstrm subscriber when known
+  * MINOR: mux-h1: make the "show fd" helper also decode the h1s subscriber when known
+  * MINOR: mux-h2: make the "show fd" helper also decode the h2s subscriber when known
+  * MINOR: xprt/mux: export all *_io_cb functions so that "show fd" resolves them
+  * MINOR: ssl: provide a "show fd" helper to report important SSL information
+  * MINOR: xprt: add a new show_fd() helper to complete some "show fd" dumps.
+  * MINOR: cli: make "show fd" also report the xprt and xprt_ctx
+  * CLEANUP: cli: make "show fd" use a const connection to access other fields
+  * CLEANUP: tools: make resolve_sym_name() take a const pointer
+  * MINOR: contrib: Make the wireshark peers dissector compile for more distribs.
+  * BUG/MINOR: backend: check available list allocation for reuse
+  * BUG/MEDIUM: backend: never reuse a connection for tcp mode
+  * REORG: backend: simplify conn_backend_get
+  * BUG/MEDIUM: session: only retrieve ready idle conn from session
+  * BUG/MINOR: ssl: init tmp chunk correctly in ssl_sock_load_sctl_from_file()
+  * BUG/MINOR: config: fix leak on proxy.conn_src.bind_hdr_name
+  * BUG/MEDIUM: filters/htx: Fix data forwarding when payload length is unknown
+  * DOC: Improve documentation of the various hdr() fetches
+  * BUILD/MINOR: lua: define _GNU_SOURCE for LLONG_MAX
+  * BUG/MEDIUM: mux-h2: fix read0 handling on partial frames
+  * BUG/MEDIUM: tcpcheck: Don't destroy connection in the wake callback context
+  * BUG/MINOR: mworker: define _GNU_SOURCE for strsignal()
+  * BUG/MINOR: mux_h2: missing space between "st" and ".flg" in the "show fd" helper
+  * BUG/MINOR: peers: Wrong "new_conn" value for "show peers" CLI command.
+  * MINOR: build: discard echoing in help target
+  * BUG/MINOR: peers: Possible appctx pointer dereference.
+  * BUG/MEDIUM: stats: add missing INF_BUILD_INFO definition
+  * BUILD: peers: fix build warning about unused variable
+  * BUG/MINOR: dns: SRV records ignores duplicated AR records (v2)
+  * MINOR: peers: Add traces for peer control messages.
+  * BUG/MINOR: threads: Fixes the number of possible cpus report for Mac.
+  * MINOR: server: Forbid server definitions in frontend sections
+  * MINOR: config: Add failifnotcap() to emit an alert on proxy capabilities
+  * BUG/MINOR: init: Use a dynamic buffer to set HAPROXY_CFGFILES env variable
+
+-------------------------------------------------------------------
 Wed Jan 27 16:19:26 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add lua54.patch to fix building with lua 5.4

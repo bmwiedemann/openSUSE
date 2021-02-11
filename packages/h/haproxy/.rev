@@ -1026,4 +1026,12 @@
     <comment>- Add lua54.patch to fix building with lua 5.4</comment>
     <requestid>868970</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>b53d1ff59f8f49312af39c94ee21a97b</srcmd5>
+    <version>2.3.5+git0.5902ad99b</version>
+    <time>1613043924</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.5+git0.5902ad99b:</comment>
+    <requestid>869992</requestid>
+  </revision>
 </revisionlist>
