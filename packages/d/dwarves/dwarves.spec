@@ -17,7 +17,7 @@
 
 
 Name:           dwarves
-Version:        1.19
+Version:        1.20
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb  5 01:08:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.20
+  * Addresses problems related to gcc 11 defaulting to DWARF5
+    for -g.
+  * Support SHN_XINDEX in st_shndx symbol indexes, to handle ELF
+    objects with more than 65534 sections, for instance, which
+    happens with kernels built with KCFLAGS="-ffunction-sections
+    -fdata-sections", Other cases may include when using FG-ASLR,
+    LTO.
+  * Fix BTF variable generation for kernel modules, not skipping
+    variables at offset zero.
+  * Fix address size to match what is in the ELF file being
+    processed, to fix using a 64-bit pahole binary to generate
+    BTF for a 32-bit vmlinux image.
+
+-------------------------------------------------------------------
 Wed Jan  6 06:07:31 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Drop the version requirement of libdw-devel
