@@ -179,6 +179,8 @@ Patch136:       fixes_for_gcc10.patch
 # Fix for changes in GSOAP 2.8.103
 Patch137:       handle_gsoap_208103.patch
 Patch138:       fixes-for-5.11.patch
+# Fix for struct file_operations backport in 15.3
+Patch139:       fixes_for_leap15.3.patch
 Patch141:       vb-6.1.16-modal-dialog-parent.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
@@ -488,6 +490,10 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch136 -p1
 %patch137 -p1
 %patch138 -p1
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse} 
+# Patch for Leap 15.3
+%patch139 -p1
+%endif
 %patch141 -p1
 # make VB UI background colors look sane again
 %patch999 -p1

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  4 18:47:09 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+-  Fix build for Leap 15.3. File "fixes_for_leap15.3.patch" is added.
+
+-------------------------------------------------------------------
 Sat Jan 23 21:28:37 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 - Fix additional problem with modal dialog parent.
   Fixes CVE-2021-2074, boo#1181197 and CVE-2021-2129, boo#1181198.
