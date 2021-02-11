@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Jan 27 15:17:14 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.1.0-46-g571704f730
+  + rebase on top of upstream v16.1.0 (Pacific release candidate)
+  + drop obsolete downstream patches that were causing conflicts:
+    * cephadm: use registry.suse.com by default
+    * cephadm: add global flag --container-init
+    * mgr/cephadm: append --container-init to basecommand
+    * cephadm: remove container-init subparser from "deploy"
+
+-------------------------------------------------------------------
+Wed Nov 25 16:52:05 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-7500-g78f6791981:
+  + cephadm: add global flag --container-init
+  + mgr/cephadm: append --container-init to basecommand
+  + cephadm: remove container-init subparser from "deploy"
+
+-------------------------------------------------------------------
+Mon Nov 23 17:12:00 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-7497-g63a0682c7e:
+  + rebase on tip of upstream "master" branch, SHA1 8c6b533ee85e7fe2cd19e5dbb6f0363898f5a2ee
+
+-------------------------------------------------------------------
+Thu Oct  8 18:11:31 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-6239-g0c2e605e78:
+  + rebase on tip of upstream "master" branch, SHA1 6d1f1f63b711797e21ff8ff12662d07d86546e66
+    * cephadm: Fix error setting 'mgr/cephadm/container_init' config (PR #37500)
+
+-------------------------------------------------------------------
+Thu Oct  8 10:36:10 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-6229-g71574673b0:
+  + rebase on tip of upstream "master" branch, SHA1 f68197eca4b4dceef9fbf497d640b4600663d3ed
+    * ceph-volume: don't exit before empty report can be printed (PR #37591)
+
+-------------------------------------------------------------------
+Mon Oct  5 13:57:45 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-6177-g01e4ab745b:
+  + rebase on tip of upstream "master" branch, SHA1 f8ea1f38aee3d8715186a756331a23d4b51121f2
+    * ceph-volume: pass filter_for_batch as keyword argument (PR #37545)
+
+-------------------------------------------------------------------
+Sun Oct  4 16:16:52 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.0.0-6162-g892bfa3fef:
+  + drop the following commits:
+    + lvmcache: refactor argument parsing and add -h flag
+    + ceph-volume: install lvmcache plugin
+    + ceph-volume: add lvmcache plugin and its tests
+  + rebase on tip of upstream "master" branch, SHA1 0a92d5094fc0baae3af223aa16b271d2e5e6f349 
+    + mgr/devicehealth: device_health_metrics pool gets created even without
+      any OSDs in the cluster (bsc#1173079)
+
+-------------------------------------------------------------------
 Fri Sep 18 09:58:45 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.0.0-5613-gb1a0951432:

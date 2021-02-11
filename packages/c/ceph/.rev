@@ -501,4 +501,12 @@
     <comment>16.0.0-5613 (forwarded request 835544 from smithfarm)</comment>
     <requestid>835545</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f7074332f4b0dd3a062afda6c73fafda</srcmd5>
+    <version>16.1.0.46+g571704f730</version>
+    <time>1613043977</time>
+    <user>dimstar_suse</user>
+    <comment>16.1.0 (forwarded request 867395 from smithfarm)</comment>
+    <requestid>867396</requestid>
+  </revision>
 </revisionlist>

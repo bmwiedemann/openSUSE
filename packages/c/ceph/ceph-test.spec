@@ -21,6 +21,7 @@
 # bcond syntax!
 #################################################################################
 %bcond_with make_check
+%bcond_with zbd
 %bcond_with cmake_verbose_logging
 %bcond_without ceph_test_package
 %bcond_with minimal_debugging_information
@@ -61,6 +62,7 @@
 %endif
 %endif
 %bcond_with seastar
+%bcond_with jaeger
 %if 0%{?fedora} || 0%{?suse_version} >= 1500
 # distros that ship cmd2 and/or colorama
 %bcond_without cephfs_shell
@@ -81,6 +83,19 @@
 %endif
 %endif
 
+%if 0%{?suse_version}
+%if !0%{?is_opensuse}
+# SLE does not support luarocks
+%bcond_with lua_packages
+%else
+%global luarocks_package_name lua53-luarocks
+%bcond_without lua_packages
+%endif
+%else
+%global luarocks_package_name luarocks
+%bcond_without lua_packages
+%endif
+
 %{!?_udevrulesdir: %global _udevrulesdir /lib/udev/rules.d}
 %{!?tmpfiles_create: %global tmpfiles_create systemd-tmpfiles --create}
 %{!?python3_pkgversion: %global python3_pkgversion 3}
@@ -94,7 +109,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.0.0.5613+gb1a0951432
+Version: 16.1.0.46+g571704f730
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -110,7 +125,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.0.0-5613-gb1a0951432.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.1.0-46-g571704f730.tar.bz2
 %if 0%{?suse_version}
 Source96: checkin.sh
 Source97: README-checkin.txt
@@ -160,8 +175,10 @@ BuildRequires:	gperftools-devel >= 2.4
 BuildRequires:	leveldb-devel > 1.2
 BuildRequires:	libaio-devel
 BuildRequires:	libblkid-devel >= 2.17
+BuildRequires:	cryptsetup-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libcap-ng-devel
+BuildRequires:	fmt-devel >= 5.2.1
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	libnl3-devel
 BuildRequires:	liboath-devel
@@ -185,12 +202,16 @@ BuildRequires:	which
 BuildRequires:	xfsprogs
 BuildRequires:	xfsprogs-devel
 BuildRequires:	xmlstarlet
-BuildRequires:	yasm
+BuildRequires:	nasm
+BuildRequires:	lua-devel
 %if 0%{with amqp_endpoint}
 BuildRequires:  librabbitmq-devel
 %endif
 %if 0%{with kafka_endpoint}
 BuildRequires:  librdkafka-devel
+%endif
+%if 0%{with lua_packages}
+BuildRequires:  %{luarocks_package_name}
 %endif
 %if 0%{with make_check}
 BuildRequires:  jq
@@ -205,6 +226,21 @@ BuildRequires:	python%{python3_pkgversion}-coverage
 BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
 BuildRequires:	socat
 %endif
+%if 0%{with zbd}
+BuildRequires:  libzbd-devel
+%endif
+%if 0%{with jaeger}
+BuildRequires:  bison
+BuildRequires:  flex
+%if 0%{?fedora} || 0%{?rhel}
+BuildRequires:  json-devel
+%endif
+%if 0%{?suse_version}
+BuildRequires:  nlohmann_json-devel
+%endif
+BuildRequires:  libevent-devel
+BuildRequires:  yaml-cpp-devel
+%endif
 %if 0%{with seastar}
 BuildRequires:  c-ares-devel
 BuildRequires:  gnutls-devel
@@ -215,17 +251,16 @@ BuildRequires:  protobuf-devel
 BuildRequires:  ragel
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  yaml-cpp-devel
-%if 0%{?fedora} || 0%{?rhel} >= 8
-BuildRequires:  fmt-devel
+%if 0%{?fedora}
 BuildRequires:  libubsan
 BuildRequires:  libasan
 BuildRequires:  libatomic
-%if 0%{with seastar}
+%endif
+%if 0%{?rhel}
 BuildRequires:  gcc-toolset-9-annobin
 BuildRequires:  gcc-toolset-9-libubsan-devel
 BuildRequires:  gcc-toolset-9-libasan-devel
 BuildRequires:  gcc-toolset-9-libatomic-devel
-%endif
 %endif
 %endif
 #################################################################################
@@ -358,13 +393,11 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?weak_deps}
 %endif
-%if 0%{?suse_version}
-%endif
-%if ! 0%{?suse_version}
 %if 0%{?weak_deps}
 %endif
-%endif
 %if 0%{?suse_version}
+%endif
+%if 0%{with jaeger}
 %endif
 %if 0%{?fedora} || 0%{?rhel}
 %endif
@@ -377,6 +410,12 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %if 0%{?suse_version}
+%endif
+%if 0%{?weak_deps}
+%if 0%{?suse_version}
+%endif
+%endif
+%if 0%{with jaeger}
 %endif
 %if 0%{?suse_version}
 %endif
@@ -436,6 +475,10 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?suse_version}
 %endif
+%if 0%{?weak_deps}
+%if 0%{?suse_version}
+%endif
+%endif
 %if 0%{with seastar}
 %if 0%{?suse_version}
 %endif
@@ -478,6 +521,10 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?suse_version}
 %endif
+%if 0%{with jaeger}
+%if 0%{?suse_version}
+%endif
+%endif
 %if 0%{?suse_version}
 %endif
 %if 0%{?suse_version}
@@ -511,14 +558,14 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.0.0-5613-gb1a0951432
+%autosetup -p1 -n ceph-16.1.0-46-g571704f730
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48200
 %define _lto_cflags %{nil}
 
-%if 0%{with seastar}
+%if 0%{with seastar} && 0%{?rhel}
 . /opt/rh/gcc-toolset-9/enable
 %endif
 
@@ -608,11 +655,6 @@ ${CMAKE} .. \
 %if 0%{with ocf}
     -DWITH_OCF=ON \
 %endif
-%ifarch aarch64 armv7hl mips mipsel ppc ppc64 ppc64le %{ix86} x86_64 s390x
-    -DWITH_BOOST_CONTEXT=ON \
-%else
-    -DWITH_BOOST_CONTEXT=OFF \
-%endif
 %if 0%{with cephfs_shell}
     -DWITH_CEPHFS_SHELL=ON \
 %endif
@@ -630,6 +672,12 @@ ${CMAKE} .. \
     -DWITH_RADOSGW_KAFKA_ENDPOINT=ON \
 %else
     -DWITH_RADOSGW_KAFKA_ENDPOINT=OFF \
+%endif
+%if 0%{without lua_packages}
+    -DWITH_RADOSGW_LUA_PACKAGES=OFF
+%endif
+%if 0%{with zbd}
+    -DWITH_ZBD=ON \
 %endif
 %if 0%{with cmake_verbose_logging}
     -DCMAKE_VERBOSE_MAKEFILE=ON \
@@ -699,7 +747,7 @@ ln -sf %{_sbindir}/mount.ceph %{buildroot}/sbin/mount.ceph
 install -m 0644 -D udev/50-rbd.rules %{buildroot}%{_udevrulesdir}/50-rbd.rules
 
 # sudoers.d
-install -m 0600 -D sudoers.d/ceph-osd-smartctl %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
+install -m 0440 -D sudoers.d/ceph-osd-smartctl %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
 
 %if 0%{?rhel} >= 8
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_bindir}/*
@@ -765,8 +813,6 @@ rm -rf %{buildroot}%{_fillupdir}/sysconfig.*
 rm -rf %{buildroot}%{_unitdir}/ceph.target
 rm -rf %{buildroot}%{python3_sitelib}/ceph_volume/*
 rm -rf %{buildroot}%{python3_sitelib}/ceph_volume-*
-rm -rf %{buildroot}%{python3_sitelib}/ceph_lvm*
-rm -rf %{buildroot}%{python3_sitelib}/ceph_volume_lvm*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-deploy.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-create-keys.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-run.8*
@@ -854,6 +900,7 @@ rm -rf %{buildroot}%{_datadir}/ceph/mgr/rbd_support
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/restful
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/selftest
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/snap_schedule
+rm -rf %{buildroot}%{_datadir}/ceph/mgr/stats
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/status
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/telegraf
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/telemetry
@@ -871,9 +918,13 @@ rm -rf %{buildroot}%{_unitdir}/ceph-mon.target
 rm -rf %{buildroot}%{_bindir}/ceph-fuse
 rm -rf %{buildroot}%{_mandir}/man8/ceph-fuse.8*
 rm -rf %{buildroot}%{_sbindir}/mount.fuse.ceph
+rm -rf %{buildroot}%{_mandir}/man8/mount.fuse.ceph.8*
 rm -rf %{buildroot}%{_unitdir}/ceph-fuse@.service
 rm -rf %{buildroot}%{_unitdir}/ceph-fuse.target
 rm -rf %{buildroot}%{_bindir}/cephfs-mirror
+rm -rf %{buildroot}%{_mandir}/man8/cephfs-mirror.8*
+rm -rf %{buildroot}%{_unitdir}/cephfs-mirror@.service
+rm -rf %{buildroot}%{_unitdir}/cephfs-mirror.target
 rm -rf %{buildroot}%{_bindir}/rbd-fuse
 rm -rf %{buildroot}%{_mandir}/man8/rbd-fuse.8*
 rm -rf %{buildroot}%{_bindir}/rbd-mirror
@@ -966,6 +1017,9 @@ rm -rf %{buildroot}%{_includedir}/cephfs/libcephfs.h
 rm -rf %{buildroot}%{_includedir}/cephfs/ceph_ll_client.h
 rm -rf %{buildroot}%{_includedir}/cephfs/metrics/Types.h
 rm -rf %{buildroot}%{_libdir}/libcephfs.so
+rm -rf %{buildroot}%{_libdir}/libopentracing.so.*
+rm -rf %{buildroot}%{_libdir}/libthrift.so.*
+rm -rf %{buildroot}%{_libdir}/libjaegertracing.so.*
 rm -rf %{buildroot}%{python3_sitearch}/cephfs.cpython*.so
 rm -rf %{buildroot}%{python3_sitearch}/cephfs-*.egg-info
 rm -rf %{buildroot}%{python3_sitelib}/ceph_volume_client.py
@@ -978,6 +1032,9 @@ rm -rf %{buildroot}%{python3_sitelib}/ceph
 rm -rf %{buildroot}%{python3_sitelib}/ceph-*.egg-info
 rm -rf %{buildroot}%{python3_sitelib}/cephfs_shell-*.egg-info
 rm -rf %{buildroot}%{_bindir}/cephfs-shell
+rm -rf %{buildroot}%{python3_sitelib}/cephfs_top-*.egg-info
+rm -rf %{buildroot}%{_bindir}/cephfs-top
+rm -rf %{buildroot}%{_mandir}/man8/cephfs-top.8*
 rm -rf %{buildroot}%{_libdir}/libcephfs_jni.so.*
 rm -rf %{buildroot}%{_libdir}/libcephfs_jni.so
 rm -rf %{buildroot}%{_javadir}/libcephfs.jar
@@ -1014,10 +1071,6 @@ rm -rf %{buildroot}
 %if 0%{?fedora} || 0%{?rhel}
 %endif
 %if 0%{?suse_version}
-%endif
-%if 0%{?suse_version}
-%endif
-%if 0%{?fedora} || 0%{?rhel}
 %endif
 %if 0%{?suse_version}
 %endif
@@ -1097,27 +1150,7 @@ rm -rf %{buildroot}
 %endif
 %if 0%{?fedora} || 0%{?rhel}
 %endif
-%if 0%{?suse_version}
-%endif
-%if 0%{?fedora} || 0%{?rhel}
-%endif
-%if 0%{?suse_version}
-%endif
-%if 0%{?fedora} || 0%{?rhel}
-%endif
-%if 0%{?suse_version}
-%endif
-%if 0%{?fedora} || 0%{?rhel}
-%endif
-%if 0%{?suse_version}
-%endif
-%if 0%{?fedora} || 0%{?rhel}
-%endif
 %if 0%{?sysctl_apply}
-%endif
-%if 0%{?suse_version}
-%endif
-%if 0%{?fedora} || 0%{?rhel}
 %endif
 %if 0%{?suse_version}
 %endif
@@ -1140,6 +1173,8 @@ rm -rf %{buildroot}
 %if %{with lttng}
 %endif
 %if %{with lttng}
+%endif
+%if %{with jaeger}
 %endif
 %if 0%{with cephfs_shell}
 %endif
@@ -1166,6 +1201,9 @@ rm -rf %{buildroot}
 %{_bindir}/ceph-coverage
 %{_bindir}/ceph-debugpack
 %{_bindir}/ceph-dedup-tool
+%if 0%{with seastar}
+%{_bindir}/crimson-store-nbd
+%endif
 %{_mandir}/man8/ceph-debugpack.8*
 %dir %{_libdir}/ceph
 %{_libdir}/ceph/ceph-monstore-update-crush.sh
