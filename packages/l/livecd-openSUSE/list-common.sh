@@ -43,6 +43,7 @@ buildignore patterns-desktop-multimedia_opt
 buildignore patterns-openSUSE-non_oss_opt
 buildignore patterns-office-office_opt
 buildignore patterns-base-x11_opt
+buildignore patterns-base-x11_enhanced
 buildignore make
 buildignore netpbm
 buildignore p7zip-full
@@ -232,7 +233,6 @@ install dosfstools
 install e2fsprogs
 install efibootmgr
 install gtk2-branding-openSUSE
-install insserv
 install ipw-firmware
 install iw
 install jfsutils

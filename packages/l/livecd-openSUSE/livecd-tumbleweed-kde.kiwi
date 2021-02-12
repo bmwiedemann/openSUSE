@@ -147,6 +147,8 @@
     <ignore name="patterns-office-office_opt"/>
     <package name="aaa_base" replaces="patterns-base-x11_opt"/>
     <ignore name="patterns-base-x11_opt"/>
+    <package name="aaa_base" replaces="patterns-base-x11_enhanced"/>
+    <ignore name="patterns-base-x11_enhanced"/>
     <package name="aaa_base" replaces="make"/>
     <ignore name="make"/>
     <package name="aaa_base" replaces="netpbm"/>
@@ -353,7 +355,6 @@
     <package name="e2fsprogs"/>
     <package name="efibootmgr"/>
     <package name="gtk2-branding-openSUSE"/>
-    <package name="insserv"/>
     <package name="ipw-firmware"/>
     <package name="iw"/>
     <package name="jfsutils"/>

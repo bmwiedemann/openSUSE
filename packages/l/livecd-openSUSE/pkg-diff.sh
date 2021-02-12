@@ -14,7 +14,7 @@ fetch_pkglist() {
 	local arch=$4
 	local binaryname=$(osc ls -b ${project} ${package} -a ${arch} -r ${repo} | grep .packages | xargs)
 
-	osc api /build/${project}/${repo}/${arch}/${package}/${binaryname} | awk -F\| '{ print printf "%s-%s-%s\n", $1, $3, $4 }' | sort -u
+	osc api /build/${project}/${repo}/${arch}/${package}/${binaryname} | awk -F\| '{ printf "%s-%s-%s\n", $1, $3, $4 }' | sort -u
 }
 
 tmpdir=$(mktemp -d)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 13:45:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop insserv, ignore patterns-base-x11_enhanced. On TW,
+  it was ignored because of the xorg-x11-essentials block anyway.
+
+-------------------------------------------------------------------
 Fri Jan 22 11:44:45 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Remove recommended python38-pip from RescueCD.
