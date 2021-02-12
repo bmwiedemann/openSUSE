@@ -998,7 +998,6 @@
       <repopackage name="inkscape-lang"/>
       <repopackage name="inn"/>
       <repopackage name="inotify-tools"/>
-      <repopackage name="insserv-compat"/>
       <repopackage name="intel-vaapi-driver"/>
       <repopackage name="intlfonts-euro-bitmap-fonts"/>
       <repopackage name="inxi"/>
@@ -1510,6 +1509,7 @@
       <repopackage name="libboost_python-py3-1_75_0"/>
       <repopackage name="libboost_regex1_75_0"/>
       <repopackage name="libboost_thread1_75_0"/>
+      <repopackage name="libBox2D2_3_1"/>
       <repopackage name="libbrasero-burn3-1"/>
       <repopackage name="libbrasero-media3-1"/>
       <repopackage name="libbrasero-utils3-1"/>
@@ -1745,6 +1745,7 @@
       <repopackage name="libFLAC8"/>
       <repopackage name="libflatpak0"/>
       <repopackage name="libfltk1"/>
+      <repopackage name="libfmt7" arch="x86_64"/>
       <repopackage name="libfolks-eds25"/>
       <repopackage name="libfolks25"/>
       <repopackage name="libfontconfig1"/>
@@ -3870,8 +3871,8 @@
       <repopackage name="pngquant"/>
       <repopackage name="polari"/>
       <repopackage name="polari-lang"/>
-      <repopackage name="policycoreutils" arch="x86_64"/>
-      <repopackage name="policycoreutils-lang" arch="x86_64"/>
+      <repopackage name="policycoreutils"/>
+      <repopackage name="policycoreutils-lang"/>
       <repopackage name="polkit"/>
       <repopackage name="polkit-default-privs"/>
       <repopackage name="polkit-gnome"/>
@@ -3882,15 +3883,9 @@
       <repopackage name="postfix"/>
       <repopackage name="postfix-doc"/>
       <repopackage name="postgresql"/>
-      <repopackage name="postgresql-contrib"/>
       <repopackage name="postgresql-docs"/>
-      <repopackage name="postgresql-llvmjit"/>
-      <repopackage name="postgresql-server"/>
       <repopackage name="postgresql13"/>
-      <repopackage name="postgresql13-contrib"/>
       <repopackage name="postgresql13-docs"/>
-      <repopackage name="postgresql13-llvmjit"/>
-      <repopackage name="postgresql13-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="powerdevil5"/>
       <repopackage name="powerdevil5-lang"/>
@@ -3953,7 +3948,6 @@
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-salt"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
-      <repopackage name="python3-setools" arch="x86_64"/>
       <repopackage name="python3-smbios"/>
       <repopackage name="python3-smbios-utils"/>
       <repopackage name="python3-solv"/>
@@ -4120,6 +4114,7 @@
       <repopackage name="python38-scrypt"/>
       <repopackage name="python38-semanage" arch="x86_64"/>
       <repopackage name="python38-service_identity"/>
+      <repopackage name="python38-setools" arch="x86_64"/>
       <repopackage name="python38-setproctitle"/>
       <repopackage name="python38-setuptools"/>
       <repopackage name="python38-simplejson"/>
@@ -4824,7 +4819,8 @@
       <repopackage name="seahorse-sharing-lang"/>
       <repopackage name="sed"/>
       <repopackage name="sed-lang"/>
-      <repopackage name="selinux-tools" arch="x86_64"/>
+      <repopackage name="selinux-autorelabel"/>
+      <repopackage name="selinux-tools"/>
       <repopackage name="sendmail"/>
       <repopackage name="sensors"/>
       <repopackage name="sessreg"/>

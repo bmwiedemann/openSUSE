@@ -1280,7 +1280,6 @@
       <repopackage name="python3-ldb" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
-      <repopackage name="python3-setools" arch="x86_64"/>
       <repopackage name="python3-talloc" arch="x86_64"/>
       <repopackage name="python38" arch="x86_64"/>
       <repopackage name="python38-appdirs" arch="x86_64"/>
@@ -1326,6 +1325,7 @@
       <repopackage name="python38-PyYAML" arch="x86_64"/>
       <repopackage name="python38-requests" arch="x86_64"/>
       <repopackage name="python38-semanage" arch="x86_64"/>
+      <repopackage name="python38-setools" arch="x86_64"/>
       <repopackage name="python38-setuptools" arch="x86_64"/>
       <repopackage name="python38-six" arch="x86_64"/>
       <repopackage name="python38-urllib3" arch="x86_64"/>

@@ -283,6 +283,7 @@
       <repopackage name="libffi8" arch="x86_64"/>
       <repopackage name="libfido2-1"/>
       <repopackage name="libfido2-udev"/>
+      <repopackage name="libfmt7" arch="x86_64"/>
       <repopackage name="libfreebl3" arch="x86_64"/>
       <repopackage name="libfreetype6" arch="x86_64"/>
       <repopackage name="libfuse2" arch="x86_64"/>
@@ -526,7 +527,6 @@
       <repopackage name="python3-rgw" arch="x86_64"/>
       <repopackage name="python3-salt" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
-      <repopackage name="python3-setools" arch="x86_64"/>
       <repopackage name="python38" arch="x86_64"/>
       <repopackage name="python38-appdirs" arch="x86_64"/>
       <repopackage name="python38-asn1crypto" arch="x86_64"/>
@@ -574,6 +574,7 @@
       <repopackage name="python38-requests" arch="x86_64"/>
       <repopackage name="python38-rpm" arch="x86_64"/>
       <repopackage name="python38-semanage" arch="x86_64"/>
+      <repopackage name="python38-setools" arch="x86_64"/>
       <repopackage name="python38-setuptools" arch="x86_64"/>
       <repopackage name="python38-six" arch="x86_64"/>
       <repopackage name="python38-urllib3" arch="x86_64"/>
