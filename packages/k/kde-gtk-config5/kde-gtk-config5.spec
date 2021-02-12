@@ -29,6 +29,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config
 Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Remove-debug-message-to-avoid-polute-to-stdout.patch
 BuildRequires:  extra-cmake-modules >= 0.0.9
 BuildRequires:  kf5-filesystem
 BuildRequires:  sassc
