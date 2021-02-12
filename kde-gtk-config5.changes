@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 12 09:33:00 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to not pollute stdout, which broke some applications
+  (boo#1182151, kde#431365):
+  * 0001-Remove-debug-message-to-avoid-polute-to-stdout.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

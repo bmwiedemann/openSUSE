@@ -843,4 +843,14 @@
     <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
     <requestid>860624</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>0a78cd385a80086af14d954a018ac3d5</srcmd5>
+    <version>5.20.5</version>
+    <time>1613123808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not pollute stdout, which broke some applications
+  (boo#1182151, kde#431365):
+  * 0001-Remove-debug-message-to-avoid-polute-to-stdout.patch</comment>
+    <requestid>871384</requestid>
+  </revision>
 </revisionlist>
