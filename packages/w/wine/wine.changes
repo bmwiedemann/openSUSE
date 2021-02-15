@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Feb 13 07:27:45 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 6.2 development release
+  - Mono engine updated to version 6.0.0, with DirectX support.
+  - Support for NTDLL debugger APIs.
+  - More WinRT support in WIDL.
+  - Xbox One controller fixes on Mac.
+  - Various bug fixes.
+- update staging to 6.2 release
+
+-------------------------------------------------------------------
+Sat Jan 30 18:38:54 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 6.1 development release
+  - Arabic text shaping.
+  - More WinRT support in WIDL.
+  - VKD3D version 1.2 is used for Direct3D 12.
+  - Support for Rosetta's memory layout on M1 Macs.
+  - Support for Thumb-2 mode on ARM.
+  - Various bug fixes.
+- update staging to 6.1 release
+
+-------------------------------------------------------------------
 Thu Jan 14 16:07:35 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 6.0 release, highlevel changes:

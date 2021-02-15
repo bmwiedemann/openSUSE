@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 6.0
-Version:        6.0
+%define realver 6.2
+Version:        6.2
 Release:        0
 
 %if "%{flavor}" != ""
@@ -127,9 +127,9 @@ Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
 URL:            http://www.winehq.org/
-Source0:        https://dl.winehq.org/wine/source/6.0/%{projectname}-%{realver}.tar.xz
+Source0:        https://dl.winehq.org/wine/source/6.x/%{projectname}-%{realver}.tar.xz
 Source41:       wine.keyring
-Source42:       https://dl.winehq.org/wine/source/6.0/%{projectname}-%{realver}.tar.xz.sign
+Source42:       https://dl.winehq.org/wine/source/6.x/%{projectname}-%{realver}.tar.xz.sign
 Source2:        http://kegel.com/wine/wisotool
 Source3:        README.SUSE
 Source4:        wine.desktop
@@ -158,7 +158,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 6.0
+%define staging_version 6.2
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
