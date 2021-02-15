@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 13 14:18:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  Changes
+  * Add support for fremove(), formatted remove() replacement
+  * Add support for truncatef(), formatted truncate() replacement
+  Fixes
+  * Handle ETIMEDOUT error for connect() call in telnet_open()
+
+-------------------------------------------------------------------
 Tue Mar 17 08:53:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 2.2.0
