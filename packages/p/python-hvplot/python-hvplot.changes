@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Feb 13 10:37:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.7.0
+  Major new features:
+  * Powerful new .interactive() API for building easy apps (#505,
+    #523)
+  * New transforms argument to transform data in .hvplot() calls 
+    (#526)
+  Other new features and enhancements:
+  * Support passing geographic projections as strings (#372)
+  * Improved data selection, e.g. for filtering on metadata (#522)
+  * Provide color_key to datashade as well as cmap, for convenience
+    (#525)
+  * Update param warnings to new API (#528)
+  Bug fixes:
+  * Fix for specifying hover_cols (#504)
+  * Remove outdated reference to __main__ console script (#494)
+  * Misc doc fixes, including to Streaming.ipynb (#481, #511)
+  * Handle node_shape for networkx (#527)
+- Skip python36 build: python36-numpy is being removed from TW
+  (NEP 29)
+- Enable test suite
+  * Use xarray-data.tar.gz
+  * Skip tests not working on 32-bit gh#holoviz/hvplot#560
+- No more entrypoint
+
+-------------------------------------------------------------------
 Wed Jun 24 02:26:24 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.6.0
