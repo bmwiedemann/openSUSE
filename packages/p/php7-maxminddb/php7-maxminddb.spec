@@ -1,7 +1,7 @@
 #
 # spec file for package php7-maxminddb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define source_file MaxMind-DB-Reader-php
 %define pkg_name    maxminddb
 Name:           php7-%{pkg_name}
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        PHP extension providing access to maxminddb databases
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/maxminddb
-Source0:        https://github.com/maxmind/%{source_file}/archive/v%{version}.tar.gz#/%{source_file}-%{version}.tar.gz
+Source0:        https://pecl.php.net/get/maxminddb-%{version}.tgz
 BuildRequires:  php7-devel >= 7.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  re2c
@@ -40,7 +39,7 @@ This extension provides access to maxminddb databases and is
 a drop-in replacement for MaxMind\Db\Reader.
 
 %prep
-%setup -q -n %{source_file}-%{version}
+%setup -q -n maxminddb-%{version}
 
 %build
 cd ext
