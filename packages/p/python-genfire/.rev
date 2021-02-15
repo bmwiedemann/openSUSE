@@ -15,4 +15,12 @@
     <comment>- Switch from python3_only to python_alternative for genfire script</comment>
     <requestid>864503</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>465b578381730947803c7a0465192d87</srcmd5>
+    <version>1.1.11</version>
+    <time>1613427461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871597</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 23:52:18 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- NEP 29: python36-numpy and -scipy are no longer available in TW
+  skip python36 build
+
+-------------------------------------------------------------------
 Wed Jan 20 05:33:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch from python3_only to python_alternative for genfire script

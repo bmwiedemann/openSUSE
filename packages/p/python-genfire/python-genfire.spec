@@ -18,13 +18,15 @@
 
 %define packagename genfire
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# NEP 29: python36-numpy and -scipy are no longer available in TW
+%define skip_python36 1
 Name:           python-genfire
 Version:        1.1.11
 Release:        0
 Summary:        GENeralized Fourier Iterative REconstruction
 License:        GPL-3.0-only
 URL:            https://github.com/genfire-em/GENFIRE-Python
-Source:         https://files.pythonhosted.org/packages/1e/e3/bb80c9e9f9b0255f70b230baf05609122a317945fa623eee8aba8f9ec8ec/%{packagename}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/%{packagename}/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow >= 4.1.1}
 BuildRequires:  %{python_module PyQt5 >= 5.5.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.2}
