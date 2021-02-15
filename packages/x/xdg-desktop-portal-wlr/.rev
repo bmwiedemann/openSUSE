@@ -7,4 +7,35 @@
     <comment>This package is needed to screencast from firefox, chromium or any other pipewire-using applications in a Sway session.</comment>
     <requestid>820843</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>da602781092c97d9e409d9c52b3b8346</srcmd5>
+    <version>0.2.0</version>
+    <time>1613427614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * Add Wayfire to portal UseIn list, as it is also supported
+  * Add river to portal UseIn list
+  * build: introduce sd-bus-provider option
+  * build: add basu as sd-bus provider
+  * screencast: prefix macros to avoid conflict with system definitions
+  * Revert &quot;Remove unnecessary check from wlr_screencast.c&quot; (#54)
+  * core: fix error handling in main
+  * core/main: Add static qualifier to internal func
+  * core/main: Use EXIT_FAILURE / EXIT_SUCCESS
+  * core/main: Clean up option handling
+  * systemd: ensure service is stopped on exit of graphical session
+  * Fix freeze on skipped frame
+  * Remove extraneous whitespace
+  * Add --replace flag
+  * Destroy wlr_buffer only on quit or error in wlr_screencast.c
+  * Only recreate simple_frame on change in wlr_screencast.c
+  * munmap simple_frame.data only if needed in wlr_screencast.c
+  * Fix log messages in wlr_screencast.c
+  * Refresh buffer on change in wlr_screencast.c
+  * Change refresh logic and add tests in wlr_screencast.c
+  * Add functions to clean simple_buffer.{data,buffer} in wlr_screencast.c
+  * Remove unecessary checks in wlr_screencast.c
+  * Update to wlr-screencopy-unstable-v1 version 3</comment>
+    <requestid>872363</requestid>
+  </revision>
 </revisionlist>
