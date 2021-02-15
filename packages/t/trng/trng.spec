@@ -1,7 +1,7 @@
 #
 # spec file for package trng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %global shlib libtrng4-22
 Name:           trng
-Version:        4.23
+Version:        4.23.1
 Release:        0
 Summary:        A Random Number Generator Library
 License:        BSD-3-Clause
 URL:            https://www.numbercrunch.de/trng/
-Source:         https://github.com/rabauke/trng4/archive/v4.23.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/rabauke/trng4/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
