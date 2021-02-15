@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 14 14:07:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (no networkx anymore) 
+
+-------------------------------------------------------------------
 Sat Oct 10 19:21:44 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.6.0:
