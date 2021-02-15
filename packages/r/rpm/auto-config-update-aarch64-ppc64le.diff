@@ -16,7 +16,7 @@
 +		"for s in guess sub; do\n"
 +		"    for c in $(find -maxdepth 8 -name \"config.$s\"); do\n"
 +		"         grep -q config-patches@ $c || continue\n"
-+		"         grep -q $testarch\\[-:\\] $c || install -m 755 $ref/config.$s $c\n"
++		"         grep -q \"$testarch[-: ]\" $c || install -m 755 $ref/config.$s $c\n"
 +		"     done\n"
 +		"done\n"
 +	    );

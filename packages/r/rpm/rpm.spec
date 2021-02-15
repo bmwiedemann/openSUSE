@@ -233,7 +233,6 @@ Provides and requires generator for .pl files and modules.
 %prep
 %setup -q -n rpm-%{version}
 rm -rf sqlite
-cp /usr/share/libtool/build-aux/config.guess /usr/share/libtool/build-aux/config.sub .
 %if 0%{?!without_bdb:1}
 tar xjf %{SOURCE11}
 ln -s db-4.8.30 db
@@ -242,7 +241,7 @@ cd db
 cd ..
 chmod -R u+w db/*
 rm -f rpmdb/db.h
-cp config.guess config.sub db/dist/
+cp build-aux/config.guess build-aux/config.sub db/dist/
 %endif
 %patch5 -p1
 %patch       -P 11 -P 12 -P 13       -P 15 -P 16       -P 18
@@ -307,7 +306,9 @@ mkdir -p %{buildroot}/usr/share/locale
 ln -s ../share/locale %{buildroot}/usr/lib/locale
 %make_install
 mkdir -p %{buildroot}/bin
+%if !0%{?usrmerged}
 ln -s /usr/bin/rpm %{buildroot}/bin/rpm
+%endif
 %if 0%{?!without_bdb:1}
 install -m 644 db3/db.h %{buildroot}/usr/include/rpm
 %endif
@@ -367,8 +368,8 @@ for i in /usr/share/automake-*/*; do
 done
 popd
 %ifarch aarch64 ppc64le riscv64
-install -m 755 config.guess %{buildroot}/usr/lib/rpm
-install -m 755 config.sub %{buildroot}/usr/lib/rpm
+install -m 755 build-aux/config.guess %{buildroot}/usr/lib/rpm
+install -m 755 build-aux/config.sub %{buildroot}/usr/lib/rpm
 %endif
 rm -rf %{buildroot}/%{_libdir}/python%{py_ver}
 rm -f %{buildroot}%{_libdir}/*.la
@@ -428,7 +429,9 @@ fi
 %doc 	doc/manual
 %doc    RPM-HOWTO
 	/etc/rpm
+%if !0%{?usrmerged}
 	/bin/rpm
+%endif
 	%{_bindir}/gendiff
 	%{_bindir}/rpm
 	%{_bindir}/rpm2cpio

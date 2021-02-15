@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  8 09:38:33 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Use shipped config.sub/config.guess instead of stone-aged from libtool
+- auto-config-update-aarch64-ppc64le.diff: update grep regex
+
+-------------------------------------------------------------------
 Thu Jan 14 15:40:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add explicit requirement on python-rpm-macros to avoid widespread
@@ -69,6 +75,11 @@ Mon Oct 19 11:53:00 CEST 2020 - mls@suse.de
 
 - Backport FA_TOUCH fixes from upsteam [bnc#1175025] [bnc#1177428]
   * new patch: touch_backport.diff
+
+-------------------------------------------------------------------
+Fri Oct 16 08:42:08 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
 
 -------------------------------------------------------------------
 Fri Oct  9 13:28:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
