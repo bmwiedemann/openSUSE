@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 00:12:25 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 build: No python36-networkx anymore due to SciPy
+  following NEP 29.
+
+-------------------------------------------------------------------
 Mon May 25 10:59:26 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

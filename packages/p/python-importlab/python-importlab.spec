@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# python36-networkx no longer exists in Tumbleweed (due to SciPy following NEP 29)
+%define         skip_python36 1
 Name:           python-importlab
 Version:        0.5.1
 Release:        0
@@ -30,13 +32,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-networkx
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
