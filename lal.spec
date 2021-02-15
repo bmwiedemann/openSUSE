@@ -1,7 +1,7 @@
 #
 # spec file for package lal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,23 @@
 #
 
 
+# NEP 29: numpy, scipy do not have a python36 flavor package in TW
+%define skip_python36 1
+
 %define shliblal liblal20
 %define shliblalsupport liblalsupport14
-%bcond_without octave
+
+# No support for octave >= 6
+%bcond_with octave
 Name:           lal
-Version:        7.0.0
+Version:        7.1.1
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/lal-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM lal-implicit-conversion-XLALError.patch badshah400@gmail.com -- Fix an implicit coversion issue flagged by GCC 10
-Patch0:         lal-implicit-conversion-XLALError.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lscsoft-glue}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module six}
@@ -40,23 +42,26 @@ BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  swig >= 4.0
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(zlib)
 Requires:       python-freezegun
-Requires:       python-ligo-segments
-Requires:       python-lscsoft-glue
 Requires:       python-numpy
 Requires:       python-python-dateutil
 Requires:       python-scipy
 Requires:       python-six
+Recommends:     python-ligo-lw
+Recommends:     python-ligo-segments
 ExcludeArch:    %{ix86}
 %if %{with octave}
 BuildRequires:  octave-devel
+BuildRequires:  swig >= 4.0
+%else
+BuildRequires:  swig >= 3.0
 %endif
-# SECTION For tests (only with python3)
+# SECTION For tests (only the default python3 flavor)
 BuildRequires:  python3-freezegun
+BuildRequires:  python3-ligo-lw
 BuildRequires:  python3-ligo-segments
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-dateutil
@@ -124,7 +129,7 @@ This package provides the octave module for lal.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run %%configure with all python flavors
 export PYTHON=$python
 mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build
@@ -137,7 +142,7 @@ popd
 }
 
 %install
-%{python_expand # py2 and py3 make_install
+%{python_expand #  all python flavors as configured above
 export PYTHON=$python
 pushd ../${PYTHON}_build
 %make_install
@@ -156,14 +161,17 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/gp
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/series.py
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/antenna.py
 }
+%{?python_compileall}
 
-%ifpython3
 %check
-# Run tests from the python3 build dir
-pushd ../python3_build
+%{python_expand # Run tests from the build dir of the primary python3 flavor only
+if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
+export PYTHON=$python
+pushd ../${PYTHON}_build
 %make_build check
 popd
-%endif
+fi
+}
 
 %post -n %{shliblal} -p /sbin/ldconfig
 %post -n %{shliblalsupport} -p /sbin/ldconfig
@@ -171,7 +179,7 @@ popd
 %postun -n %{shliblalsupport} -p /sbin/ldconfig
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/lal
 
 %files -n %{shliblal}
 %{_libdir}/liblal.so.*
