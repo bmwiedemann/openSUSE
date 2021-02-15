@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Feb  9 10:56:09 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.13.1
+
+Features
+- Merge PR #375 by fhriley: Add rpz_enable and rpz_disable commands
+  to unbound-control.
+- Merge PR #391 from fhriley: Add start_time to reply callbacks so
+  modules can compute the response time.
+- Fix #397: [Feature request] add new type always_null to local-zone
+  similar to always_nxdomain.
+- Support for RFC5001: DNS Name Server Identifier (NSID) Option
+  with the nsid: option in unbound.conf
+- Padding of queries and responses with DNS over TLS as specified in
+  RFC7830 and RFC8467.
+- Merge PR #275 from Roland van Rijswijk-Deij: Add feature to return the
+  original instead of a decrementing TTL ('serve-original-ttl')
+
+Bug Fixes
+- Fix #358: Squelch udp connect 'no route to host' errors on low
+  verbosity.
+- Fix #360: for the additionally reported TCP Fast Open makes TCP
+  connections fail, in that case we print a hint that this is
+  happening with the error in the logs.
+- Fix #356: deadlock when listening tcp.
+- Fix unbound-dnstap-socket to not use log routine from interrupt
+  handler and not print so frequently when invoked in sequence.
+- Fix on windows to ignore connection failure on UDP, unless verbose.
+- make depend.
+- Fix #371: unbound-control timeout when Unbound is not running.
+- Fix to squelch permission denied and other errors from remote host,
+  they are logged at higher verbosity but not on low verbosity.
+- Merge PR #335 from fobser: Sprinkle in some static to prevent
+  missing prototype warnings.
+- Merge PR #373 from fobser: Warning: arithmetic on a pointer to void
+  is a GNU extension.
+- Fix missing prototypes in the code.
+- Fix error cases when udp-connect is set and send() returns an error
+  (modified patch from Xin Li @delphij).
+- For #376: Fix that comm point event is not double removed or double
+  added to event map.
+- iana portlist updated.
+- Fix #385: autoconf 2.70 impacts unbound build
+- Fix #379: zone loading over HTTP appears to have buffer issues.
+- Merge PR #395 from mptre: add missing null check.
+- Fix #387: client-subnet-always-forward seems to effectively bypass
+  any caching?
+- For #391: use struct timeval* start_time for callback information.
+- For #391: fix indentation.
+- For #391: more double casts in python start time calculation.
+- Add comment documentation.
+- Fix clang analysis warning.
+- Fix so local zone types always_nodata and always_deny can be used
+  from the config file.
+- Merge #399 from xiangbao227: The lock of lruhash table should
+  unlocked after markdel entry.
+- Fix for #93: dynlibmodule link fix for Windows.
+- Fix for #93: dynlibmodule import library is named libunbound.dll.a.
+- Merge #402 from fobser: Implement IPv4-Embedded addresses according
+  to RFC6052.
+- Fix #404: DNS query with small edns bufsize fail.
+- Fix declaration before statement and signed comparison warning in
+  dns64.
+- Fix TTL of SOA record for negative answers (localzone and
+  authzone data) to be the minimum of the SOA TTL and the SOA.MINIMUM.
+- Fix compile of unbound-dnstap-socket without dnstap installed.
+- Merge PR #355 from noloader: Make ICANN Update CA and DS Trust Anchor
+  static data.
+- Ignore cache blacklisting when trying to reply with expired data from
+  cache (#394).
+- Merge PR #408 from fobser: Prevent a few more yacc clashes.
+- Annotate that we ignore the return value of if_indextoname.
+- Fix to use correct type for label count in rpz routine.
+- Fix empty clause warning in config_file nsid parse.
+- Fix to use correct type for label count in ipdnametoaddr rpz routine.
+- Fix empty clause warning in edns pass for padding.
+- Fix for doxygen 1.8.20 compatibility.
+- Attempt to fix NULL keys in the reuse_tcp tree; relates to #411.
+- Fix dynlibmod link on rhel8 for -ldl inclusion.
+- Fix windows dependency on libssp.dll because of default stack
+  protector in mingw.
+- Fix indentation of root anchor for use by windows install script.
+
+-------------------------------------------------------------------
 Thu Dec  3 11:26:17 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.13.0

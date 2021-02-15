@@ -1,7 +1,7 @@
 #
 # spec file for package unbound
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 #
 #
