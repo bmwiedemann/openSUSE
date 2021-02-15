@@ -1,0 +1,5 @@
+<package name="matcha-gtk-theme" project="openSUSE:Factory">
+  <title>Matcha GTK Theme</title>
+  <description>Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc.</description>
+  <devel project="X11:common:Factory" package="matcha-gtk-theme"/>
+</package>
