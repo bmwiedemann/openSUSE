@@ -1,13 +1,11 @@
-Index: trytond-5.0.18/trytond/wsgi.py
-===================================================================
---- trytond-5.0.18.orig/trytond/wsgi.py
-+++ trytond-5.0.18/trytond/wsgi.py
-@@ -9,8 +9,19 @@ import traceback
+diff -U 3 -dHrN -- a/trytond/wsgi.py b/trytond/wsgi.py
+--- a/trytond/wsgi.py	2021-02-12 10:14:41.000000000 +0100
++++ b/trytond/wsgi.py	2021-02-15 12:37:50.432511576 +0100
+@@ -10,13 +10,23 @@
  from werkzeug.wrappers import Response
  from werkzeug.routing import Map, Rule
  from werkzeug.exceptions import abort, HTTPException, InternalServerError
 -from werkzeug.contrib.fixers import ProxyFix
--from werkzeug.wsgi import SharedDataMiddleware
 +try:
 +    from werkzeug.middleware.proxy_fix import ProxyFix
 +
@@ -17,6 +15,12 @@ Index: trytond-5.0.18/trytond/wsgi.py
 +            x_port=num_proxies, x_prefix=num_proxies)
 +except ImportError:
 +    from werkzeug.contrib.fixers import ProxyFix as NumProxyFix
+ try:
+     from werkzeug.security import safe_join
+ except ImportError:
+     safe_join = posixpath.join
+-
+-from werkzeug.wsgi import SharedDataMiddleware
 +try:
 +    from werkzeug.middleware.shared_data import SharedDataMiddleware
 +except ImportError:
@@ -24,7 +28,7 @@ Index: trytond-5.0.18/trytond/wsgi.py
  
  import wrapt
  
-@@ -150,6 +161,6 @@ if config.get('web', 'root'):
+@@ -157,6 +167,6 @@
      app.wsgi_app = SharedDataMiddlewareIndex(app.wsgi_app, static_files)
  num_proxies = config.getint('web', 'num_proxies')
  if num_proxies:

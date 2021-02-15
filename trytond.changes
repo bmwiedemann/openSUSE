@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 15 11:44:23 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- fix_werkzeug.patch adjusted
+
+-------------------------------------------------------------------
+Fri Feb 12 18:10:08 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 5.0.33 - Security fix for https://bugs.tryton.org/issue10068
+
+-------------------------------------------------------------------
 Tue Feb  2 08:53:34 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Version 5.0.32 - Bugfix Release
