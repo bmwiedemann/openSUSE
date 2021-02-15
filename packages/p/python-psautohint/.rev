@@ -16,4 +16,12 @@
   * no changelog available</comment>
     <requestid>827431</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2b2779055b9fb6fe40735ab6b49d60ce</srcmd5>
+    <version>2.1.0</version>
+    <time>1613427481</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36 (no scipy needed by FontTools)</comment>
+    <requestid>871616</requestid>
+  </revision>
 </revisionlist>
