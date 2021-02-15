@@ -562,4 +562,13 @@
   caused the command to fail.</comment>
     <requestid>842502</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>17964adad66b49c9171c0fbd4ca7f7e8</srcmd5>
+    <version>2.6.6</version>
+    <time>1613427618</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.6.6
+- Add filter options for product listing and bash completion for new flags</comment>
+    <requestid>872417</requestid>
+  </revision>
 </revisionlist>
