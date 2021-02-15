@@ -24,9 +24,6 @@
 #
 # sysvinit -- build for SysVinit and not for systemd
 #
-%if %{undefined systemd_requires}
-%global		with_sysvinit 1
-%endif
 %bcond_with     sysvinit
 %define libmilter_somajor 1
 %define libmilter_sominor 0
@@ -88,7 +85,7 @@ Requires(posttrans): coreutils
 Requires(posttrans): findutils
 Requires(posttrans): m4
 Requires(verify): permissions
-%{?systemd_requires}
+%{?systemd_ordering}
 Conflicts:      smail postfix postfix-tls
 Obsoletes:      sendmail-tls
 Version:        8.16.1

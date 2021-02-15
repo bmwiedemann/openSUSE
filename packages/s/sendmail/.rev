@@ -950,4 +950,26 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
 - Make GLIBC_VERSION macro work again</comment>
     <requestid>867723</requestid>
   </revision>
+  <revision rev="102" vrev="6">
+    <srcmd5>0b5eb93c2068dc5ed890a3220e108314</srcmd5>
+    <version>8.16.1</version>
+    <time>1613427031</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix up build dependencies. The construct:
+    %%if %%{undefined systemd_requires}\n%%global with_sysvinit 1
+  does not work as intended. The OBS scheduler for example does not
+  have all the macros coming from 'random' rpmmacro files/packages
+  (systemd-rpm-macros in this case) present, as such for OBS,
+  systemd_requires is undefined, which in turn pulls in
+  insserv_prereq. The build itself then does not use it though, as
+  at this time, the correct macros are known (inside the build VM).
+- As we're at it: replace systemd_requires with systemd_ordering:
+  people installing sendmail into a container do not require
+  systemd as a dependency there. But for people installing sendmail
+  in a transaction together with systemd, we prefer systemd to be
+  installed first.
+
+- Add qtool perl script from contrib as this is very handy</comment>
+    <requestid>870505</requestid>
+  </revision>
 </revisionlist>
