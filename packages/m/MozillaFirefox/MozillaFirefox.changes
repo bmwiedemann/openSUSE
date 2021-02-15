@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  9 09:05:26 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 85.0.1
+  MFSA 2021-06 (bsc#1181848)
+  * MOZ-2021-0001 (bmo#1676636)
+    Buffer overflow in depth pitch calculations for compressed
+    textures
+  * Fixed: Avoid printing an extra blank page at the end of some
+    documents (bmo#1689789).
+  * Fixed: Fixed a browser crash in case of unexpected Cache API
+    state (bmo#1684838).
+
+-------------------------------------------------------------------
 Sun Jan 24 11:53:58 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 85.0
