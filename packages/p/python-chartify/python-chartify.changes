@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 12 15:46:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.3
+  * Fix loading of color, color palette and styles configuration 
+    with PyYaml >= 5.2
+- Change in 3.0.2
+  * Support pyyaml 5.2+ 
+- Skip python36 build in TW because python36-scipy is no more 
+  (NEP 29)
+
+-------------------------------------------------------------------
 Wed Jul  8 11:01:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.0.1
