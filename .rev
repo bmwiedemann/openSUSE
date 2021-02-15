@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>761207</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4f87e835a3469fcdef29af135657d0d6</srcmd5>
+    <version>0.12.0</version>
+    <time>1613427424</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36 from build</comment>
+    <requestid>871469</requestid>
+  </revision>
 </revisionlist>
