@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 14 19:42:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libuev 2.3.2:
+  * fixes for other distributions only
+- switch to bootstrapped upstream tarball
+
+-------------------------------------------------------------------
 Tue Feb 25 12:39:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.1:

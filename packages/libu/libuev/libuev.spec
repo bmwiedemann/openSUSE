@@ -1,7 +1,7 @@
 #
 # spec file for package libuev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,16 +19,13 @@
 
 %define sover 2
 Name:           libuev
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Event loop library
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/troglobit/libuev/
-Source:         https://github.com/troglobit/libuev/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Source:         https://github.com/troglobit/libuev/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 
 %description
@@ -63,10 +60,9 @@ Development and header files for libuEv.
 %setup -q
 
 %build
-autoreconf -fiv
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -82,6 +78,7 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %{_libdir}/libuev.so.%{sover}*
 
 %files devel
+%license LICENSE
 %{_includedir}/uev
 %{_libdir}/libuev.so
 %{_libdir}/pkgconfig/libuev.pc
