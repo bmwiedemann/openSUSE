@@ -1,0 +1,9 @@
+<package name="PTL" project="openSUSE:Factory">
+  <title>Lightweight C++11 mutilthreading tasking system</title>
+  <description>Parallel Tasking Library (PTL) is a lightweight C++11 multithreading tasking
+system featuring thread-pool, task-groups, and lock-free task queue.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="PTL"/>
+  <url>https://github.com/jrmadsen/PTL</url>
+</package>
