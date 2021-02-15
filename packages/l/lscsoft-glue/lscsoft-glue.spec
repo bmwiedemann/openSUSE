@@ -27,6 +27,9 @@ ExcludeArch:    %{ix86}
 %define psuffix %{nil}
 %endif
 
+# NEP 29: numpy, matplotlib do not have a python36 flavor package in TW
+%define skip_python36 1
+
 %define ligocommands ligolw_print_tables dmtdq_seg_insert ldbdc ldbdd ldg_submit_dax \
         ligolw_cbc_glitch_page ligolw_combine_segments ligolw_diff ligolw_dq_active ligolw_dq_active_cats \
         ligolw_dq_grapher ligolw_dq_query ligolw_geo_fr_to_dq ligolw_inspiral2mon \
@@ -48,8 +51,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ligo-segments
 Requires:       python-numpy
-Provides:       python-glue = %{version}
-Obsoletes:      python-glue < %{version}
+Provides:       python-glue = %{version}-%{release}
+Obsoletes:      python-glue < %{version}-%{release}
+%define oldpython python
+Provides:       %{oldpython}-glue = %{version}-%{release}
+Obsoletes:      %{oldpython}-glue < %{version}-%{release}
 %if %{with test}
 BuildRequires:  %{python_module lal}
 BuildRequires:  %{python_module ligo-segments}

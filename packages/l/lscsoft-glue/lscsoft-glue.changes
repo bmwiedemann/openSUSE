@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 15 10:55:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Revert the Obsoletes/Provides removal of python-glue.
+
+-------------------------------------------------------------------
+Fri Feb 12 22:02:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build. Due to NEP 29, numpy, matplotlib and co.
+  do not have a python36 flavored package in TW 
+
+-------------------------------------------------------------------
+Thu Jan 21 21:03:04 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix Obsoletes/Provides for python-glue to fix problems with
+  python multi-versioning.
+
+-------------------------------------------------------------------
 Mon Jan 18 19:11:38 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Install commands with update-alternatives to avoid conflicts with
