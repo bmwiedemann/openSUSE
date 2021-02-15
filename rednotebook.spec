@@ -1,7 +1,7 @@
 #
 # spec file for package rednotebook
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           rednotebook
-Version:        2.16
+Version:        2.21
 Release:        0
 Summary:        Graphical diary and journal
 # See note at the end of README: code is using some LGPL-3.0+ module, so the resulting work is GPL-3.0+.
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            http://rednotebook.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/rednotebook/%{name}-%{version}.tar.gz
+Source:         https://downloads.sourceforge.net/project/rednotebook/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
