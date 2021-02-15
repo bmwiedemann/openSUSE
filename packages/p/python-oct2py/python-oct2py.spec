@@ -1,7 +1,7 @@
 #
 # spec file for package python-oct2py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-oct2py
 Version:        5.0.4
 Release:        0
 Summary:        Python to GNU Octave bridge
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/blink1073/oct2py
+URL:            http://github.com/blink1073/oct2py
 Source:         https://files.pythonhosted.org/packages/source/o/oct2py/oct2py-%{version}.tar.gz
 BuildRequires:  %{python_module numpy >= 1.12}
 BuildRequires:  %{python_module octave-kernel >= 0.30}
 BuildRequires:  %{python_module scipy >= 0.17}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.12
 Requires:       python-octave-kernel >= 0.30
 Requires:       python-scipy >= 0.17
