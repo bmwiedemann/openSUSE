@@ -1,7 +1,7 @@
 #
 # spec file for package python-dtaidistance
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,45 +19,36 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-dtaidistance
-Version:        1.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Dynamic Time Warping (DTW) package
 License:        Apache-2.0
 URL:            https://github.com/wannesm/dtaidistance
 Source:         https://github.com/wannesm/dtaidistance/archive/v%{version}.tar.gz#/dtaidistance-%{version}.tar.gz
-Source10:       https://kdd.ics.uci.edu/databases/synthetic_control/synthetic_control.data
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+# NEP 29: python36-numpy is not in TW anymore. This package can build a basic version without numpy
+BuildRequires:  %{python_module numpy-devel if (%python-base without python36-base)}
+Recommends:     python-numpy
 Recommends:     python-scipy
+Recommends:     python-matplotlib
+Recommends:     python-tqdm
 # SECTION test requirements
+BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module scipy}
+# NEP 29: python36-scipy is not in TW anymore
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
 %description
 Library for time series distances (e.g. Dynamic Time Warping, DTW).
 
-%package        devel
-Summary:        Development files for %{name}
-Requires:       %{name} = %{version}
-
-%description    devel
-This package contains development files needed to build packages
-that use %{name}.
-
 %prep
 %setup -q -n dtaidistance-%{version}
-mkdir tests/rsrc
-cp %{SOURCE10} tests/rsrc
 
 %build
 export CFLAGS="%{optflags}"
@@ -65,14 +56,27 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_expand find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # Test are too slow in x86
 %ifnarch %{ix86}
-mv dtaidistance dtaidistance_temp
-%pytest_arch
-mv dtaidistance_temp dtaidistance
+python36_parameter="-c pytest-nolibs.ini \
+--ignore tests/test_alignment.py \
+--ignore tests/test_benchmark.py \
+--ignore tests/test_dtw2d.py \
+--ignore tests/test_dtw_weighted.py \
+--ignore tests/test_dtw_weighted_dt.py \
+--ignore tests/test_penalty.py \
+"
+# openMP library mismatch (symbol in libgomp not found) -- use use_mp=True"
+donttest+=" or (test_clustering and test_clustering_tree_ndim)"
+donttest+=" or (test_dtw and test_distance_matrix2_e)"
+donttest+=" or (test_dtw and test_distance_matrix_block)"
+donttest+=" or (test_dtw2d and test_distances1_fast_parallel)"
+donttest+=" or (test_dtw2d and test_distances2_fast_parallel)"
+%pytest_arch ${$python_parameter} ${donttest:+ -k "not (${donttest:4})"} -m "not benchmark"
 %endif
 
 %files %{python_files}
@@ -80,10 +84,5 @@ mv dtaidistance_temp dtaidistance
 %license LICENSE
 %{python_sitearch}/dtaidistance
 %{python_sitearch}/dtaidistance-%{version}-py*.egg-info
-%exclude %{python_sitearch}/dtaidistance/dtw_c.c
-
-%files %{python_files devel}
-%license LICENSE
-%{python_sitearch}/dtaidistance/dtw_c.c
 
 %changelog
