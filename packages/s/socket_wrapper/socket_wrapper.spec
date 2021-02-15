@@ -1,7 +1,7 @@
 #
 # spec file for package socket_wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@
 ############################# NOTE ##################################
 
 Name:           socket_wrapper
-Version:        1.2.5
+Version:        1.3.2
 Release:        0
-Summary:        A library passing all socket communications trough Unix sockets
+Summary:        A library passing all socket communications through Unix sockets
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://cwrap.org/
@@ -39,19 +39,13 @@ Source3:        %{name}-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkg-config
-#
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-Recommends:     cmake
-Recommends:     pkgconf
 
 %description
-socket_wrapper aims to help client/server software development teams willing to
-gain full functional test coverage. It makes it possible to run several instances
-of the full software stack on the same machine and perform locally functional
-testing of complex network configurations.
+socket_wrapper helps client/server software development to gain functional test
+coverage. It can run several instances of a software stack on the same machine
+and perform functional testing of network configurations locally.
 
-To use it set the following environment variables:
+To use it, set the following environment variables:
 
 LD_PRELOAD=libsocket_wrapper.so
 SOCKET_WRAPPER_DIR=/path/to/swrap_dir
@@ -63,7 +57,7 @@ SOCKET_WRAPPER_DIR=/path/to/swrap_dir
 %cmake \
   -DUNIT_TESTING=ON
 
-make %{?_smp_mflags} VERBOSE=1
+%make_build VERBOSE=1
 
 %install
 %cmake_install
@@ -76,7 +70,6 @@ make %{?_smp_mflags} VERBOSE=1
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README.md CHANGELOG
 %license LICENSE
 %{_libdir}/libsocket_wrapper.so.*
