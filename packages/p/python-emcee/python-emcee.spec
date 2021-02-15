@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# NEP 29: python36-numpy and -scipy are no longer available in TW
+%define         skip_python36 1
 Name:           python-emcee
 Version:        3.0.2
 Release:        0

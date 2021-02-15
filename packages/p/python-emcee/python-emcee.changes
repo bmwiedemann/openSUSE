@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 23:50:34 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- NEP 29: python36-numpy and -scipy are no longer available in TW
+  skip python36 build
+
+-------------------------------------------------------------------
 Sun Aug  9 00:02:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Tidy spec
