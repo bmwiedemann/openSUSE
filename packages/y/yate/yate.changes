@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 14:11:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.3.0
+  * Upstream does not provide a changelog
+
+-------------------------------------------------------------------
 Fri Dec 11 11:59:11 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix for previous change so the !%{build_qt4} test actually works

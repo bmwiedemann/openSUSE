@@ -1,7 +1,7 @@
 #
 # spec file for package yate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 # Copyright (c) 2011, Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -25,7 +25,7 @@
 %endif
 
 Name:           yate
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Yet Another Telephony Engine
 License:        GPL-2.0-or-later
