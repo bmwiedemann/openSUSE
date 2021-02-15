@@ -62,3 +62,6 @@ index 4b18a1a..f53d0b9 100755
                      lines.append("{}: {}".format(k, v))
                  h = rect[1] + rect[3] + fontHeight
                  for line in lines:
+-- 
+GitLab
+

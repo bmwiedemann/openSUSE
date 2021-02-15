@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 15 08:24:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from descriptions.
+
+-------------------------------------------------------------------
+Sun Feb 14 13:53:52 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- rename 8037d4406eb76dd5c106819f72c3562f8b255b5b.patch to python3.patch
+- switch source and patch URLs to gitlab
+- remove %check as that crashed on OBS, but not locally.
+- fix shebang by removing env.
+
+-------------------------------------------------------------------
 Tue Jul  4 20:32:15 UTC 2017 - sebix+novell.com@sebix.at
 
 - initial package
