@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname awkward
+%global skip_python36 1
 Name:           python-awkward
 Version:        1.0.2
 Release:        0

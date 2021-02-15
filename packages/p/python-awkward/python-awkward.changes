@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 14 14:10:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (numbas requires scipy) 
+
+-------------------------------------------------------------------
 Mon Jan 25 23:10:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.2

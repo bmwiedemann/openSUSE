@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>866781</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>57f6da9a07c5687bb98eddb0276fd806</srcmd5>
+    <version>1.0.2</version>
+    <time>1613427582</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (numbas requires scipy)</comment>
+    <requestid>872168</requestid>
+  </revision>
 </revisionlist>
