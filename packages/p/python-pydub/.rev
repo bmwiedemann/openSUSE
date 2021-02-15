@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>677639</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>df2d3a78d7eef39c9a80fba2bcf9be34</srcmd5>
+    <version>0.23.1</version>
+    <time>1613427492</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (no scipy)</comment>
+    <requestid>871627</requestid>
+  </revision>
 </revisionlist>

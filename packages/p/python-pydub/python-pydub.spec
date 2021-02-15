@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydub
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python36 1
 Name:           python-pydub
 Version:        0.23.1
 Release:        0
 Summary:        Audio manipulation with Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jiaaro/pydub
+URL:            https://github.com/jiaaro/pydub
 Source:         https://github.com/jiaaro/pydub/archive/v%{version}.tar.gz#/pydub-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Skip-tests-that-use-unavailable-codecs.patch
