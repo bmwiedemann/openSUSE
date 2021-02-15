@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 13 20:06:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.2.1:
+  * new: XBR ABI files now via separate package (“xbr”) - substantially reduce
+    package size for non-XBR users
+  * fix: circular dependency in “xbr” install flavor
+  * fix: XBR package manifest and CLI user profile loading
+  * fix: consider ‘wamp.close.goodbye_and_out’ a clean exit
+  * fix: HASH import as well as improve diagnostics if things go wrong
+  * fix: add missing jinja2 dependency for XBR CLI
+  * fix: wamp.close.goodbye_and_out counts as a clean exit
+  
+-------------------------------------------------------------------
 Tue Jan 12 05:13:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires/Requires on python-hyperlink 

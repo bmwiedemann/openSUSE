@@ -223,4 +223,20 @@
     <comment>- Add missing BuildRequires/Requires on python-hyperlink</comment>
     <requestid>862473</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>46aab89a9b310dccec7c4c54051d3939</srcmd5>
+    <version>21.2.1</version>
+    <time>1613427539</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.2.1:
+  * new: XBR ABI files now via separate package (“xbr”) - substantially reduce
+    package size for non-XBR users
+  * fix: circular dependency in “xbr” install flavor
+  * fix: XBR package manifest and CLI user profile loading
+  * fix: consider ‘wamp.close.goodbye_and_out’ a clean exit
+  * fix: HASH import as well as improve diagnostics if things go wrong
+  * fix: add missing jinja2 dependency for XBR CLI
+  * fix: wamp.close.goodbye_and_out counts as a clean exit</comment>
+    <requestid>872023</requestid>
+  </revision>
 </revisionlist>

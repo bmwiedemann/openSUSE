@@ -25,7 +25,7 @@
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
 %define skip_python2 1
 Name:           python-autobahn
-Version:        20.12.3
+Version:        21.2.1
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
