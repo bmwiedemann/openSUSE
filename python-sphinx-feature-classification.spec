@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-feature-classification
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/sphinx-feature-
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pbr >= 2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 13:43:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- replace oslotest with more correct fixtures dependency 
+
+-------------------------------------------------------------------
 Fri Sep 18 12:04:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1.0:
