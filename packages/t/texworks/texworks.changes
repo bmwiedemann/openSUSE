@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 14 00:02:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add texworks-drop-FindLua-cmake-module.patch: Drop custom
+  FindLua.cmake included in sources in favour of cmake's default
+  module [gh#TeXworks/texworks#924].
+
+-------------------------------------------------------------------
 Fri Jun  5 18:48:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

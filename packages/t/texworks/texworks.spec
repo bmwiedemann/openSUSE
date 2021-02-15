@@ -1,7 +1,7 @@
 #
 # spec file for package texworks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2007-09 by Jonathan Kew.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ URL:            https://www.tug.org/texworks/
 Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-QtPDF-Fix-compilation-with-Qt-5.15.patch
+# PATCH-FIX-UPSTREAM texworks-drop-FindLua-cmake-module.patch gh#TeXworks/texworks#924 badshah400@gmail.com -- Drop custom FindLua.cmake included in sources in favour of cmake's default module
+Patch1:         texworks-drop-FindLua-cmake-module.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  desktop-file-utils
@@ -83,11 +85,9 @@ environment) that is modeled on Dick Koch's TeXShop for Mac OS X.
 This package adds lua scripting abitilies to TeXworks.
 
 %prep
-%setup -q -n texworks-release-%{version}
-%patch0 -p1
+%autosetup -p1 -n texworks-release-%{version}
 
 %build
-
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
        -DTW_BUILD_ID="openSUSE" \
        -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=%{_lib} \
