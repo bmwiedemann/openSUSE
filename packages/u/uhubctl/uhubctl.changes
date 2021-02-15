@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 14 08:47:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  * Support for toggle action (turn power on or off opposite to
+    current power state).
+  * More sane error reporting when we enumerate devices which
+    lack permissions.
+  * Allow pkg-config override to make some build systems (e.g.
+    chromium OS) happier.
+  * Even more supported devices.
+
+-------------------------------------------------------------------
 Mon Dec 14 06:52:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.0
