@@ -17,4 +17,12 @@
 </comment>
     <requestid>839731</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0b75e61ed1d920c00d3486696b18dbb9</srcmd5>
+    <version>0.8.0</version>
+    <time>1613427496</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (no FontTools as it needs scipy)</comment>
+    <requestid>871629</requestid>
+  </revision>
 </revisionlist>

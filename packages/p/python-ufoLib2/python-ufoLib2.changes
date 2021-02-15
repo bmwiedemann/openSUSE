@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 10:17:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no FontTools as it needs scipy) 
+
+-------------------------------------------------------------------
 Thu Jul 23 12:03:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.8.0
