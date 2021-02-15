@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 13 12:24:34 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add plplot-drop-FindLua-cmake-module.patch to drop in-house
+  FindLua.cmake module, which is severely dated, to use cmake's
+  own module and fix building for lua >= 5.4; patch taken from
+  upstream.
+
+-------------------------------------------------------------------
+Sat Jan  9 13:26:01 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave bindings until compilation against octave 6 is
+  fixed (fix should happen mostly in swig, see gh#swig/swig#1893).
+
+-------------------------------------------------------------------
 Tue Dec 22 12:57:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependency of -devel package when built without qhull

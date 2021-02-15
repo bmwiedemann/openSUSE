@@ -1,7 +1,7 @@
 #
 # spec file for package plplot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,8 @@
 %bcond_with    ocaml_camlidl
 %define tk_enabled 1
 
-# SECTION Disable octave bindings for openSUSE < 1550 until compilation against octave 4.4 is fixed
-%if 0%{?suse_version} < 1550
+# SECTION Disable octave bindings until compilation against octave 6 is fixed
 %define octave_enabled 0
-%else
-%define octave_enabled 1
-%endif
 # /SECTION
 
 # SECTION Does not build against qhull_r
@@ -67,6 +63,8 @@ Patch0:         plplot-ocaml.patch
 Patch1:         plplot-5.9.9-ada-pic.patch
 # PATCH-FIX-UPSTREAM plplot-include-QPainterPath.patch badshah400@gmail.com -- Include QPainterPath header when building Qt modules, needed for Qt >= 5.15.0; patch from upstream
 Patch2:         plplot-include-QPainterPath.patch
+# PATCH-FIX-UPSTREAM plplot-drop-FindLua-cmake-module.patch badshah400@gmail.com -- Drop in-house FindLua.cmake module, which is severely dated, to use cmake's own module and fix building for lua >= 5.4; patch taken from upstream.
+Patch3:         plplot-drop-FindLua-cmake-module.patch
 # List based on build_ada in gcc.spec
 ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
