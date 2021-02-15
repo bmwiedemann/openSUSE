@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  8 21:56:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build with GCC 11 (boo#1181865):
+  * 0001-src-benchmark_register.h-add-missing-limits-inclusio.patch 
+
+-------------------------------------------------------------------
 Tue Dec 29 15:45:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.2:

@@ -144,4 +144,12 @@
   * Workflow additions in github include pylint (#1039) and bindings runs (#1041)</comment>
     <requestid>859259</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>4d868b5ebbf47c05b895c7c3ad9c1475</srcmd5>
+    <version>1.5.2</version>
+    <time>1613427005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870401</requestid>
+  </revision>
 </revisionlist>

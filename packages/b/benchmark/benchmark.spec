@@ -1,7 +1,7 @@
 #
 # spec file for package benchmark
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        A microbenchmark support library
 License:        Apache-2.0
 URL:            https://github.com/google/benchmark
 Source:         https://github.com/google/benchmark/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-src-benchmark_register.h-add-missing-limits-inclusio.patch
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -49,7 +51,7 @@ Requires:       %{soname}%{sover} = %{version}
 Development files for google benchmark library
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 sed -e 's|lib_install_dir "lib/"|lib_install_dir "%{_libdir}/"|g' \
