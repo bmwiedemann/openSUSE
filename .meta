@@ -1,0 +1,8 @@
+<package name="knot" project="openSUSE:Factory">
+  <title>An authoritative DNS daemon</title>
+  <description>Knot DNS is a high-performance authoritative DNS server implementation.
+
+</description>
+  <devel project="server:dns" package="knot"/>
+  <url>http://www.knot-dns.cz</url>
+</package>
