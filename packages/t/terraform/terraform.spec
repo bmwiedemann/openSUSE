@@ -1,7 +1,7 @@
 #
 # spec file for package terraform
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           terraform
-Version:        0.13.4
+Version:        0.14.5
 Release:        0
 Summary:        Tool for building infrastructure safely and efficiently
 License:        MPL-2.0
 Group:          System/Management
 URL:            https://www.terraform.io/
 Source:         %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 Source99:       terraform-rpmlintrc
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.15
 # See: https://github.com/hashicorp/terraform/issues/22807
 ExcludeArch:    %{ix86}
 %{go_nostrip}
@@ -40,6 +41,7 @@ providers as well as custom in-house solutions.
 
 %prep
 %setup -q
+%setup -q -T -D -a 1
 
 %build
 export GOFLAGS=-mod=vendor

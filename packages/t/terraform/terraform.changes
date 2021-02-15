@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Jan 26 07:42:30 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.14.5 :
+  NEW FEATURES:
+  * terraform now supports marking input variables as sensitive, and
+    will propagate that sensitivity through expressions that derive
+    from sensitive input variables.
+  * terraform init will now generate a lock file in the configuration directory
+    which you can check in to your version control so that Terraform can make
+    the same version selections in future. (#26524)
+  * if you wish to retain the previous behavior of always taking
+    the newest version allowed by the version constraints on each install,
+    you can run terraform init -upgrade to see that behavior.
+  * terraform will now support reading and writing all compatible state files,
+    even from future versions of Terraform. This means that users of
+    Terraform 0.14.0 will be able to share state files with future Terraform
+    versions until a new state file format version is needed.
+  ENHANCEMENTS:
+  * config: Added sensitive argument for variable blocks, which supresses
+    output where that variable is used (#26183)
+  * config: Added alltrue and anytrue functions, which serve as a sort of
+    dynamic version of the && and || or operators, respectively.
+    These are intended to allow evaluating boolean conditions, such as in variable
+    validation blocks, across all of the items in a collection using for expressions.
+  * config: New functions textencodebase64 and textdecodebase64 for encoding text
+    in various character encodings other than UTF-8. (#25470)
+  * terraform plan and terraform apply: Added an experimental concise diff renderer.
+    By default, Terraform plans now hide most unchanged fields, only displaying
+    the most relevant changes and some identifying context. This experiment can be disabled
+    by setting a TF_X_CONCISE_DIFF environment variable to 0.
+  * config: ignore_changes can now apply to map keys that are not
+    listed in the configuration
+  * terraform console: Now has distinct rendering of lists, sets, and tuples,
+    and correctly renders objects with null attribute values. Multi-line strings
+    are rendered using the "heredoc" syntax. (#26189, #27054)
+  * terraform login: Added support for OAuth2 application scopes. (#26239)
+  * terraform fmt: Will now do some slightly more opinionated normalization behaviors,
+    using the documented idiomatic syntax. (#26390)
+  * terraform init's provider installation step will now abort promptly if Terraform
+    receives an interrupt signal. (#26405)
+  * cli: A new global command line option -chdir=..., placed before the selected subcommand,
+    instructs Terraform to switch to a different working directory before executing the subcommand.
+    This is similar to switching to a new directory with cd before running Terraform,
+    but it avoids changing the state of the calling shell. (#26087)
+  * cli: help text is been reorganized to emphasize the main commands and improve consistency
+  * cli: Ensure that provider requirements are met by the locked dependencies for every command.
+    This will help catch errors if the configuration has changed since
+    the last run of terraform init. (#26761)
+  * core: When sensitive values are used as part of provisioner configuration,
+    logging is disabled to ensure the values are not displayed to the UI (#26611)
+  * core: terraform plan no longer uses a separate refresh phase. Instead, all resources
+    are updated on-demand during planning (#26270)
+  * modules: Adds support for loading modules with S3 virtual hosted-style access (#26914)
+  * backend/consul: Split state into chunks when outgrowing the limit of the Consul KV store.
+    This allows storing state larger than the Consul 512KB limit. (#25856)
+  * backend/consul: Add force-unlock support to the Consul backend (#25837)
+  * backend/gcs: Add service account impersonation to GCS backend (#26837)
+  * On Unix-based operating systems other than MacOS, the SSL_CERT_DIR environment variable
+    can now be a colon-separated list of multiple certificate search paths. (#26357)
+  BUG FIXES:
+  * cli: Fix formatting of long integers in outputs and console (#27479)
+  * cli: Fix redundant check of remote workspace version for local operations (#27498)
+  * cli: Fix missing check of remote workspace version for state migration (#27556)
+  * cli: Fix world-writable permissions on dependency lock file (#27205)
+  * backend/remote: Disable remote Terraform workspace version check when the remote workspace
+    is in local operations mode ([#27407])
+  * core: Fix panic when using sensitive values as arguments to data sources ([#27335])
+  * core: Fix panic when using sensitive values as count arguments on validate ([#27410])
+  * core: Fix panic when passing sensitive values to module input variables which have
+    custom variable validation ([#27412])
+  * dependencies: Upgrade HCL to v2.8.2, fixing several bugs with sensitive values ([#27420])
+  * config: Fix anytrue and alltrue functions when called with values
+    which are not known until apply.
+  * config: Fix sum function when called with values which are not known until apply.
+    Also allows sum to cope with numbers too large to represent in float64,
+    along with correctly handling errors around infinite values. (#27249)
+  * config: Fixed panic when referencing sensitive values in resource count expressions 
+  * config: Fix incorrect attributes in diagnostics when validating objects (#27010)
+  * core: Prevent unexpected updates during plan when multiple sensitive values are involved
+  * dependencies: Fix several small bugs related to the use of sensitive values
+    with expressions and functions.
+  * lang: Fix panic when calling coalescelist with a null argument (#26988)
+  * terraform apply: -refresh=false was skipped when running apply directly (#27233)
+  * terraform init: setting -get-plugins to false will now cause a warning, as this flag has been
+    a no-op since 0.13.0 and usage is better served through using provider_installation blocks
+  * terraform init and other commands which interact with the dependency lock file:
+    These will now generate a normal error message if the lock file is
+    incorrectly a directory, rather than crashing as before.
+
+-------------------------------------------------------------------
 Wed Oct  7 10:39:33 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.13.4 (bsc#1177421, jsc#ECO-2766, jsc#PM-2215)
