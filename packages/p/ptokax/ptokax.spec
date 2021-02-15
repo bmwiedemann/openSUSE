@@ -1,7 +1,7 @@
 #
 # spec file for package ptokax
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/File-Sharing
 URL:            http://www.ptokax.org/
 BuildRequires:  gcc-c++
-BuildRequires:  lua-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tinyxml-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(lua)
 Source:         http://www.ptokax.org/files/%version-nix-src.tgz
 Source1:        ptokax.service
 Patch1:         logs.patch
@@ -43,16 +43,17 @@ PtokaX has a comprehensive user interface, tuned built-in features,
 scripting-based extendability.
 
 %prep
-%setup -q -n PtokaX
-%autopatch -p1
+%autosetup -p1 -n PtokaX
 sed -i 's/\r//' ReadMe.txt Changelog.txt scripting.docs/scripting-interface.txt
 # remove tinyxml as we use system lib
 rm -rf tinyxml
 
 %build
-sed -i 's|CXXFLAGS = -O -g -Wall -Wextra|CXXFLAGS = %optflags|' makefile
-perl -i -pe 's{-llua5.3}{-llua}g' makefile*
-make %{?_smp_mflags}
+perl -i -pe '
+	s{^CXXFLAGS = .*}{CXXFLAGS = %optflags '"$(pkg-config lua --cflags)"'}g;
+	s{-llua5.3\b}{'"$(pkg-config lua --libs)"'}g;
+' makefile
+%make_build
 
 %install
 install -D -m 755 PtokaX %buildroot/%_sbindir/%name

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 09:30:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Cure build failure with Lua 5.4 by adding pkg-config results
+  to the makefile.
+
+-------------------------------------------------------------------
 Sun Jul 12 09:10:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim old RPM constructs. Drop hard dependency on systemd.

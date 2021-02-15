@@ -39,4 +39,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>821753</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>af76bbfe314bd115f838cc103f308b90</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1613427489</time>
+    <user>dimstar_suse</user>
+    <comment>- Cure build failure with Lua 5.4 by adding pkg-config results
+  to the makefile.</comment>
+    <requestid>871622</requestid>
+  </revision>
 </revisionlist>
