@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Feb 11 16:37:50 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 4.8.0:
+  * Release 4.8.0
+  * Remove .inc extension from driver plugins
+  * Oracle: Use correct DB in db_size, fix typo (thanks to Shirai Takashi)
+  * MongoDB: Alpha
+  * MongoDB: Prefer driver used in other functions
+  * Save bytes
+  * MongoDB: Fix edit operations in select
+  * Fix typo
+  * MongoDB: Use ObjectID only if used
+  * MongoDB: Fix operators
+  * MongoDB: Handle errors
+  * MongoDB: Fix query
+  * Save bytes
+  * MongoDB: Display error when selecting wrong table
+  * MongoDB: Display arrays as JSON
+  * MongoDB: Fix executeQuery
+  * MongoDB: Modern extension doesn't allow connecting with random user/password
+  * MongoDB: Add operators
+  * MongoDB: Handle exceptions
+  * MongoDB: Fix getting binary fields
+  * MongoDB: Fix num_rows
+  * MongoDB: Move common code to function
+  * MongoDB: Display Authentication failed instead of exception
+  * Delete duplicate code
+  * Fix operators init
+  * PostgreSQL: Fix displaying NULL bytea fields
+  * Avoid errors about 'view_trigger'
+  * Support unprivileged users for schema list
+  * Support altering indexes
+  * Avoid errors when alter table column
+  * Avoid errors about auto increment
+  * Support granted table to list up indexes
+  * Correct column size with string type
+  * Sort the DB list
+  * Support importing table data
+  * The table with another scheme is deleted from the table list
+  * Support computing DB infos
+  * PostgreSQL: Do not show triggers from other schemas
+  * SimpleDB, Firebird, ClickHouse: Move to plugin
+  * Add comments
+  * Prepare for moving drivers to plugins
+  * Support function default values in insert (bug #713)
+  * Allow SQL pseudo-function in insert
+  * Save bytes
+  * PostgreSQL: Fix multi-parameter functions in default values (bug #736)
+  * Add id to <th> in select (bug #724)
+  * Remove newline before error message
+  * Fix whitespace
+  * Add bug number
+  * PostgreSQL: Avoid exporting empty sequence last value
+  * PostgreSQL: Create PRIMARY KEY for auto increment columns
+  * PostgreSQL PDO: Do not select NULL function for false values in edit (thanks to PR #380)
+  * MySQL 8: Fix EXPLAIN in SQL command
+  * Update tests
+  * Add callback before edit form (bug #759)
+  * Skip date columns for non-date values in search anywhere (thanks to PR #408)
+  * Fix PHP 8 warning
+  * Add DB version to comment in export
+
+-------------------------------------------------------------------
 Mon Feb 08 01:15:24 UTC 2021 - jimmy@boombatower.com
 
 - Update to version 4.7.9:
