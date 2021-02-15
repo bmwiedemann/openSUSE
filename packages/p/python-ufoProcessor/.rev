@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>808969</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cef4453f1907aa542a72e8f3d7c88447</srcmd5>
+    <version>1.9.0</version>
+    <time>1613427494</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (no scipy)</comment>
+    <requestid>871628</requestid>
+  </revision>
 </revisionlist>

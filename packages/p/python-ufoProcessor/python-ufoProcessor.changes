@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 10:16:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no scipy) 
+
+-------------------------------------------------------------------
 Wed May 20 09:48:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of python-ufoProcessor
