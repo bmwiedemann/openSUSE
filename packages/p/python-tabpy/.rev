@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>867996</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c8a6d9d604fe730a8eb7ef72a66424da</srcmd5>
+    <version>2.3.1</version>
+    <time>1613427497</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (missing scipy)</comment>
+    <requestid>871630</requestid>
+  </revision>
 </revisionlist>
