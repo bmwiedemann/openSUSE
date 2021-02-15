@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 13 11:46:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.4
+  * Switch back to certificate verification code from LibreSSL
+    3.1.x. The new verifier is not bug compatible with the old
+    verifier causing issues with applications expecting behavior
+    of the old verifier.
+  * Unbreak DTLS retransmissions for flights that include a CCS.
+  * Implement autochain for the TLSv1.3 server.
+  * Use the legacy verifier for autochain.
+  * Implement exporter for TLSv1.3.
+  * Plug leak in x509_verify_chain_dup().
+
+-------------------------------------------------------------------
 Thu Dec 10 13:30:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.3

@@ -17,7 +17,7 @@
 
 
 Name:           libressl
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
@@ -116,7 +116,7 @@ This subpackage contains the manpages to the LibreSSL API.
 autoreconf -fi
 # Some smart people broke disable-static
 %configure --enable-libtls
-make %{?_smp_mflags}
+%make_build
 
 %install
 b="%buildroot"
@@ -125,6 +125,10 @@ rm -f "$b/%_libdir"/*.la
 for i in "$b/%_mandir"/man*; do
 	pushd "$i"
 	for j in *.*; do
+		if [ -L "$j" ]; then
+			target=$(readlink "$j")
+			ln -fs "${target}ssl" "$j"
+		fi
 		mv "$j" "${j}ssl"
 	done
 	popd
