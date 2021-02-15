@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 18:53:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Multibuild and singlespec again: remove a lot of duplicated code
+- Get the correct tornado6 version from the installed package at
+  buildtime.
+
+-------------------------------------------------------------------
 Sat Jan 30 20:51:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Make packages for python36 and python38 in Tumbleweed
