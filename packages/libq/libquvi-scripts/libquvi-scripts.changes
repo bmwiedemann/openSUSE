@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 17:39:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use boolean dependencies to require the correct lua<n>-luasocket,
+  depending on the system in use (lua53-luasocket if liblua5_3-5,
+  lua54-luasocket if liblua5-4-5).
+
+-------------------------------------------------------------------
 Thu Jul 27 12:54:32 UTC 2017 - dimstar@opensuse.org
 
 - Require the lua53-luasocket depending on suse_version > 1320.

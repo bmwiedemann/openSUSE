@@ -1,7 +1,7 @@
 #
 # spec file for package libquvi-scripts
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,19 +20,14 @@ Name:           libquvi-scripts
 Version:        0.9.20131130
 Release:        0
 Summary:        Lua scripts used by libquvi
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://quvi.sourceforge.net/
+URL:            http://quvi.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/libquvi-scripts-%{version}.tar.xz
 # For pkgconfig() Provides
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1320
-# Package was renamed and provided for multiple lua versions after Leap 42.3
-# Require the lua-version that libquvi links
-Requires:       lua53-luasocket
-%else
-Requires:       luasocket
-%endif
+Requires:       (lua53-luasocket if liblua5_3-5)
+Requires:       (lua54-luasocket if liblua5_4-5)
 
 %description
 libquvi-scripts contains the embedded lua scripts that libquvi uses for
