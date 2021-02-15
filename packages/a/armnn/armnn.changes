@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 15 09:48:06 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix instalaltion of cmake files with an upstream patch:
+  * c5c40fe.diff
+
+-------------------------------------------------------------------
 Mon Jan 25 08:21:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patch to fix tflite parser when built against

@@ -109,4 +109,14 @@
     <comment></comment>
     <requestid>866498</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>6665e55641759d975ed14be4e5be24a7</srcmd5>
+    <version>20.11</version>
+    <time>1613427612</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix instalaltion of cmake files with an upstream patch:
+  * c5c40fe.diff
+</comment>
+    <requestid>872350</requestid>
+  </revision>
 </revisionlist>

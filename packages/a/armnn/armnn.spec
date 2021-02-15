@@ -1,5 +1,5 @@
 #
-# spec file for package armnn
+# spec file for package armnn%{?package_suffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -92,6 +92,8 @@ Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz
 Source1:        armnn-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/499
 Patch1:         96beb97.diff
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/481
+Patch2:         c5c40fe.diff
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -427,6 +429,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 %prep
 %setup -q -n armnn-%{version}
 %patch1 -p1
+%patch2 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -457,9 +460,6 @@ sed -i 's/-Werror//' ./cmake/GlobalConfig.cmake
 %endif
 %endif
 %endif
-# Fix *.cmake installation path - https://github.com/ARM-software/armnn/issues/481
-sed -i 's#set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR})#set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/Armnn)#' CMakeLists.txt
-sed -i 's#    DESTINATION ${CMAKE_INSTALL_LIBDIR}#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Armnn#' CMakeLists.txt
 %cmake \
   -DCMAKE_SKIP_RPATH=True \
   -DSHARED_BOOST=1 \
@@ -720,8 +720,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_includedir}/armnnQuantizer/INetworkQuantizer.hpp
 %dir %{_includedir}/armnnSerializer/
 %{_includedir}/armnnSerializer/ISerializer.hpp
-%dir %{_libdir}/cmake/Armnn
-%{_libdir}/cmake/Armnn/*
+%dir %{_libdir}/cmake/armnn
+%{_libdir}/cmake/armnn/*
 %{_libdir}/libarmnn.so
 %{_libdir}/libarmnnBasePipeServer.so
 %{_libdir}/libtimelineDecoder.so
