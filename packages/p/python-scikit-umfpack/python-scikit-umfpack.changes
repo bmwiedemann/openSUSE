@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 14 10:32:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python36 (no scipy anymore) 
+
+-------------------------------------------------------------------
 Fri Sep 20 17:56:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in the scikits.example
