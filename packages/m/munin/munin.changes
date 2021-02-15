@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb  8 22:09:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.66:
+  * unknown_limit: do not misinterpret zero as one
+  * unknown_limit: fix handling of value "1"
+  * SpoolReader: process spooled content lines separately
+  * async: fetch spooled data in order of timestamps
+  * async: use name squashing rules when determining the names of spooled files
+  * async: clarify handling of timestamp
+  * doc: describe "timeout_fetch_all_nodes" and "timeout_fetch_one_node"
+  * Make sensors_ temperature plugin work on musl libc
+  * Symlink and custom name support for diskstat_
+  * fix reporting on URL in the munin-update log (stable-2.0)
+  * make it possible to configure global munin-update timeouts
+  * Use configured plugin group as primary group
+  * plugins/memory: add per-cpu counter
+  * Munin thresholds support for http_loadtime
+  * adjust_threshold: strings indexes are 1 based in AWK
+  * Plugin apt_all: prevent ambiguity between slash and hyphen in release names
+  * Fix utf8 encoding in plugins
+  * Fix special character for author name (Kristian Lyngst370l)
+  * Plugin snmp__if_err_: clarify authors list
+  * Plugin nomadix_users_: clarify formatting of authors
+  * Plugin vserver_cpu_: clarify copyright statement
+  * Plugin snmp__uptime: clarify authors
+  * Unify spelling of author "Dagfinn Ilmari Manns345ker"
+  * Unify more author names
+  * Fix template error in case of an empty host list
+
+-------------------------------------------------------------------
 Tue Sep 29 11:17:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - pwdutils is long gone, use shadow
