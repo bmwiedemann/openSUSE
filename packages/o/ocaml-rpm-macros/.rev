@@ -131,4 +131,12 @@ trim changes file</comment>
   list of dependencies.</comment>
     <requestid>867714</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>363936523d898bd3bdfb15882a212700</srcmd5>
+    <version>20210209</version>
+    <time>1613427024</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix regex in file list generator to really match dot and extension</comment>
+    <requestid>870497</requestid>
+  </revision>
 </revisionlist>
