@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>808691</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a1e1a1fcade1273940ca22d21f5aed2b</srcmd5>
+    <version>0.0~git1580219900.15b0c8c</version>
+    <time>1613427482</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (only compatible with python 3.7+)</comment>
+    <requestid>871617</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-kasa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-kasa
 Version:        0.0~git1580219900.15b0c8c
 Release:        0
@@ -25,7 +26,6 @@ Summary:        Python API for TP-Link Kasa Smarthome products
 License:        GPL-3.0-or-later
 URL:            https://github.com/python-kasa/python-kasa
 Source0:        python-kasa-%{version}.tar.xz
-BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
