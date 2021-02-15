@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 13 11:03:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  * no changelog
+- Skip python36 build: Packages depening on numpy are in the
+  dependency tree (NEP 29)
+- Add test files
+  * tests-data.zarr.0
+  * tests-data.zarr.zarray
+  * calvert_uk_filter.tar.gz
+- Add intake-pr560-fix-category-ordering.patch gh#intake/intake#560
+  in order to support newer dask versions
+
+-------------------------------------------------------------------
 Mon May 25 10:59:27 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
