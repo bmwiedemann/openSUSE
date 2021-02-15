@@ -320,4 +320,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>rename the list.3 manpage to list-inn.3</comment>
     <requestid>847297</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>72d141df04848ce6aee0948e4083d0b8</srcmd5>
+    <version>2.6.3</version>
+    <time>1613427473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871604</requestid>
+  </revision>
 </revisionlist>

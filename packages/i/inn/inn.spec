@@ -15,7 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if "%{_libexecdir}"=="/usr/libexec"
+%define search usr\\/libexec
+%define nslash usr/libexec
+%else
+%define search usr\\/lib
+%define nslash usr/lib
+%endif
 Name:           inn
 BuildRequires:  bison
 BuildRequires:  gdbm-devel
@@ -92,6 +98,7 @@ Rich Salz's InterNetNews news transport system.
 %setup -n inn%{PatchVersion} 
 %setup -n inn%{PatchVersion} -D -T -a 1 
 %setup -n inn%{PatchVersion} -D -T -a 3
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i  %{SOURCE7} %{PATCH0}
 %patch0 -p1
 cp -a $RPM_SOURCE_DIR/pubring.pgp .
 
@@ -100,7 +107,7 @@ cp -a $RPM_SOURCE_DIR/pubring.pgp .
 LDFLAGS="-pie" CFLAGS="$RPM_OPT_FLAGS -pipe -fno-strict-aliasing -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fPIE -fstack-protector -fcommon" ./configure \
 		--enable-uucp-rnews \
 		--enable-setgid-inews \
-		--prefix=/usr/lib/news \
+		--prefix=%{_libexecdir}/news \
 		--sysconfdir=/etc/news \
 		--mandir=%{_mandir} \
 		--disable-shared \
@@ -129,7 +136,7 @@ rm -f inn.conf.tmp
 
 %install
 mkdir -p %{buildroot}/etc
-mkdir -p %{buildroot}/usr/lib
+mkdir -p %{buildroot}%{_libexecdir}
 mkdir -p %{buildroot}/usr/bin
 mkdir -p %{buildroot}/var/lib
 mkdir -p %{buildroot}/var/log
@@ -148,12 +155,12 @@ for i in %{buildroot}%{_mandir}/*/* ; do
     gzip -nf9 "$i"
   fi
 done
-chmod 444 %{buildroot}/usr/lib/news/lib/*.a
+chmod 444 %{buildroot}%{_libexecdir}/news/lib/*.a
 # those just die("BerkeleyDB support not compiled");
-rm %{buildroot}/usr/lib/news/bin/ovdb_server
-rm %{buildroot}/usr/lib/news/bin/ovdb_stat
-ln %{buildroot}/usr/lib/news/bin/ovdb_init %{buildroot}/usr/lib/news/bin/ovdb_server
-ln %{buildroot}/usr/lib/news/bin/ovdb_init %{buildroot}/usr/lib/news/bin/ovdb_stat
+rm %{buildroot}%{_libexecdir}/news/bin/ovdb_server
+rm %{buildroot}%{_libexecdir}/news/bin/ovdb_stat
+ln %{buildroot}%{_libexecdir}/news/bin/ovdb_init %{buildroot}%{_libexecdir}/news/bin/ovdb_server
+ln %{buildroot}%{_libexecdir}/news/bin/ovdb_init %{buildroot}%{_libexecdir}/news/bin/ovdb_stat
 #
 #
 # 
@@ -171,9 +178,9 @@ ln %{buildroot}/usr/lib/news/bin/ovdb_init %{buildroot}/usr/lib/news/bin/ovdb_st
 %{installnews} 0644	samples/send-uucp.cf	%{buildroot}/etc/news
 %{installnews} 0755 	-d		%{buildroot}/var/log/news/http
 %{installnews} 0755 	-d		%{buildroot}/var/log/news/http/pics
-%{installnews} 0555	convertspool	%{buildroot}/usr/lib/news/bin
-%{installnews} 0755 	-d		%{buildroot}/usr/lib/news/include
-%{installnews} 0755 	-d		%{buildroot}/usr/lib/news/include/inn
+%{installnews} 0555	convertspool	%{buildroot}%{_libexecdir}/news/bin
+%{installnews} 0755 	-d		%{buildroot}%{_libexecdir}/news/include
+%{installnews} 0755 	-d		%{buildroot}%{_libexecdir}/news/include/inn
 #
 # 
 #
@@ -182,9 +189,9 @@ ln %{buildroot}/usr/lib/news/bin/ovdb_init %{buildroot}/usr/lib/news/bin/ovdb_st
 #
 # compat links
 #
-ln -sf bin/inews		%{buildroot}/usr/lib/news/inews
-ln -sf ../lib/news/bin/inews	%{buildroot}/usr/bin/inews
-ln -sf ../lib/news/bin/rnews	%{buildroot}/usr/bin/rnews
+ln -sf bin/inews		%{buildroot}%{_libexecdir}/news/inews
+ln -sf %{_libexecdir}/news/bin/inews	%{buildroot}/usr/bin/inews
+ln -sf %{_libexecdir}/news/bin/rnews	%{buildroot}/usr/bin/rnews
 #
 # other links
 #
@@ -218,15 +225,15 @@ echo "d /var/run/news 0750 news news -" > %{buildroot}/usr/lib/tmpfiles.d/inn.co
 # 
 %define filelist %{name}-filelist
 find %{buildroot} -type d -printf "/%%P\n" | awk '
-! /^\/(etc|usr\/lib|var\/lib|var\/log|var\/spool|var\/run)\/news/ { next }
+! /^\/(etc|%{search}|var\/lib|var\/log|var\/spool|var\/run)\/news/ { next }
 $0 == "/etc/news"     { next }
-$0 == "/usr/lib/news/include" { next }
-$0 == "/usr/lib/news/include/inn" { next }
+$0 == "%{_libexecdir}/news/include" { next }
+$0 == "%{_libexecdir}/news/include/inn" { next }
 $0 == "/var/run/news" { next }
 { pfx="" }
-$0 == "/usr/lib/news" { pfx = "%%attr(755,root,root) " }
+$0 == "%{_libexecdir}/news" { pfx = "%%attr(755,root,root) " }
 $0 == "/var/lib/news" { pfx = "%%attr(755,news,news) " }
-$0 == "/usr/lib/news/bin" { pfx = "%%attr(755,root,root) " }
+$0 == "%{_libexecdir}/news/bin" { pfx = "%%attr(755,root,root) " }
 $0 == "/var/spool/news" { pfx = "%%attr(775,news,news) " }
 $0 == "/var/run/news" { pfx = "%ghost %%attr(750,news,news) "}
 /\/news/ {
@@ -236,12 +243,12 @@ $0 == "/var/run/news" { pfx = "%ghost %%attr(750,news,news) "}
 ' > %{filelist}
 find %{buildroot} ! -type d -printf "/%%P\n" | awk '
 { pfx="" }
-/^\/usr\/lib\/news\/include/              { next }
-/^\/usr\/lib\/news\/lib\/.*\.a/             { next }
-$0 == "/usr/lib/news/bin/inews"           { pfx="%attr(2555,news,news) " }
-$0 == "/usr/lib/news/bin/rnews"           { pfx="%attr(4550,news,uucp) " }
-$0 == "/usr/lib/news/bin/innbind"         { pfx="%verify(not mode) %attr(4550,root,news) " }
-/^\/(etc\/news|usr\/lib\/news\/bin\/filter|var\/lib\/news)\// {
+/^\/%{search}\/news\/include/              { next }
+/^\/%{search}\/news\/lib\/.*\.a/             { next }
+$0 == "%{_libexecdir}/news/bin/inews"           { pfx="%attr(2555,news,news) " }
+$0 == "%{_libexecdir}/news/bin/rnews"           { pfx="%attr(4550,news,uucp) " }
+$0 == "%{_libexecdir}/news/bin/innbind"         { pfx="%verify(not mode) %attr(4550,root,news) " }
+/^\/(etc\/news|%{search}\/news\/bin\/filter|var\/lib\/news)\// {
 	pfx="%config(noreplace) "pfx
 }
 /\/man\/man/ {
@@ -256,6 +263,7 @@ $0 == "/usr/lib/news/bin/innbind"         { pfx="%verify(not mode) %attr(4550,ro
 /^\/etc\/slp\.reg\.d\// { next }
 { print pfx $0 }
 ' >> %{filelist}
+
 #
 # 
 # 
@@ -273,27 +281,27 @@ runuser -u news -g news touch \
     var/log/news/news \
     var/log/news/inn.status \
     var/log/news/innfeed.status
-if test -e usr/lib/news/bin/control/version -o -e usr/lib/news/bin/inndstart ; then
+if test -e %{nslash}/news/bin/control/version -o -e %{nslash}/news/bin/inndstart ; then
     rm -f etc/news/inn.conf.OLD
     rm -f etc/news/newsfeeds.OLD
-    usr/lib/news/bin/innupgrade etc/news
+    %{nslash}/news/bin/innupgrade etc/news
 fi
 if ! test -d /var/run/news ; then
     install -d -m 750 -o news -g news /var/run/news
 fi
-%set_permissions /usr/lib/news/bin/innbind /usr/lib/news/bin/inews /usr/lib/news/bin/rnews
+%set_permissions %{_libexecdir}/news/bin/innbind %{_libexecdir}/news/bin/inews %{_libexecdir}/news/bin/rnews
 %service_add_post inn.service
 %tmpfiles_create inn.conf
 
 %post -n mininews
-%set_permissions /usr/lib/news/bin/inews /usr/lib/news/bin/rnews
+%set_permissions %{_libexecdir}/news/bin/inews %{_libexecdir}/news/bin/rnews
 %tmpfiles_create inn.conf
 
 %verifyscript
-%verify_permissions -e /usr/lib/news/bin/innbind -e /usr/lib/news/bin/inews -e /usr/lib/news/bin/rnews
+%verify_permissions -e %{_libexecdir}/news/bin/innbind -e %{_libexecdir}/news/bin/inews -e %{_libexecdir}/news/bin/rnews
 
 %verifyscript -n mininews
-%verify_permissions -e /usr/lib/news/bin/inews -e /usr/lib/news/bin/rnews
+%verify_permissions -e %{_libexecdir}/news/bin/inews -e %{_libexecdir}/news/bin/rnews
 
 %preun
 %service_del_preun inn.service
@@ -310,17 +318,17 @@ fi
 
 %files devel
 %defattr(-,root,root)
-/usr/lib/news/include
-/usr/lib/news/lib/*.a
+%{_libexecdir}/news/include
+%{_libexecdir}/news/lib/*.a
 
 %files -n mininews
 %defattr(-,root,root)
 %config(noreplace)      /etc/news/inn.conf
-%dir                    /usr/lib/news/bin
-%attr(4550,news,uucp)   /usr/lib/news/bin/rnews
-%attr(2555,news,news)   /usr/lib/news/bin/inews
+%dir                    %{_libexecdir}/news/bin
+%attr(4550,news,uucp)   %{_libexecdir}/news/bin/rnews
+%attr(2555,news,news)   %{_libexecdir}/news/bin/inews
                         /usr/bin/[ri]news
-                        /usr/lib/news/[ri]news
+                        %{_libexecdir}/news/[ri]news
 %doc                    %{_mandir}/*/inn.conf.*
 %doc                    %{_mandir}/*/[ri]news.*
 

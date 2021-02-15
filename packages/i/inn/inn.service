@@ -7,9 +7,9 @@ After=nss-lookup.target
 User=news
 PIDFile=/run/news/innd.pid
 Type=forking
-ExecStart=/usr/lib/news/bin/rc.news
-ExecStop=/usr/lib/news/bin/rc.news stop
-ExecReload=/usr/lib/news/bin/rc.news reload
+ExecStart=@LIBEXECDIR@/news/bin/rc.news
+ExecStop=@LIBEXECDIR@/news/bin/rc.news stop
+ExecReload=@LIBEXECDIR@/news/bin/rc.news reload
 KillMode=control-group
 
 [Install]
