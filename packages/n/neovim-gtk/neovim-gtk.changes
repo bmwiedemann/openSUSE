@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 12 22:31:10 UTC 2021 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1609586374.c036492:
+  * Delete FUNDING.yml
+  * Adds an option to change cursor blinking
+  * Update README with Debian install instructions
+  * Add support for strikethrough
+  * Fix underlines/undercurl rendering
+
+-------------------------------------------------------------------
 Sat Jan 25 23:01:54 UTC 2020 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 0.2.0+git.1579960262.0af8952:

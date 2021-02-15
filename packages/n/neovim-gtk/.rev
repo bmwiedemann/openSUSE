@@ -36,4 +36,18 @@
   * Fix mouse selection while dragging with leftclick, fixes #185</comment>
     <requestid>767261</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>beaba4e96f9c20e69bc3c2c2ffd8a440</srcmd5>
+    <version>0.2.0+git.1609586374.c036492</version>
+    <time>1613427448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0+git.1609586374.c036492:
+  * Delete FUNDING.yml
+  * Adds an option to change cursor blinking
+  * Update README with Debian install instructions
+  * Add support for strikethrough
+  * Fix underlines/undercurl rendering
+</comment>
+    <requestid>872044</requestid>
+  </revision>
 </revisionlist>
