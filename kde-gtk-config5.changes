@@ -1,9 +1,47 @@
 -------------------------------------------------------------------
+Fri Feb 12 10:33:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop patch, part of 5.20.90:
+  * 0001-Remove-debug-message-to-avoid-polute-to-stdout.patch
+
+-------------------------------------------------------------------
 Fri Feb 12 09:33:00 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to not pollute stdout, which broke some applications
   (boo#1182151, kde#431365):
   * 0001-Remove-debug-message-to-avoid-polute-to-stdout.patch
+
+-------------------------------------------------------------------
+Thu Feb 11 18:23:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Reset altered config in the decoration bridge
+  * Use the same configs for watching and reading (kde#421745)
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Add .gitignore file to ignore generated .clang-format file.
+  * Remove debug message to avoid polute to stdout.
+  * Reference Plasma Workspace repo instead of Desktop
+  * Set correct installation directory for kconf_update script
+  * Use only GTK Module for managing window decorations CSS (kde#428322,kde#428120,kde#428842)
+  * fix build
+  * Fix for cpp17 : Ld couldnt reach references when we use constexpr
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Begin writing out settings to GTK4
+  * Disable global animations for the time decoration is being rendered (kde#426687)
+  * Fix default decoration fallback
+  * Remove kservice dependency
 
 -------------------------------------------------------------------
 Tue Jan  5 14:40:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
