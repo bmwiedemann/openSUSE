@@ -147,4 +147,12 @@
     <comment>- Fix AppStream file location to match latest standard (forwarded request 845307 from guoyunhe)</comment>
     <requestid>846089</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ef83a7c5882fefe6b2b41e9f03114eba</srcmd5>
+    <version>3.2.3</version>
+    <time>1613427552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872035</requestid>
+  </revision>
 </revisionlist>

@@ -36,6 +36,9 @@ Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%
 Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
 Patch1:         certs_fallback.patch
+# PATCH-FIX-UPSTREAM upstream_fix_TGA_loader.patch boo#1182177 boo#1182178
+# commit 113b5ab1c45c01b8e6d54d13ac8876d091f883a8
+Patch2:         upstream_fix_TGA_loader.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -215,6 +218,7 @@ Bash command line completion support for %{name}, %{name}-headless,
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 

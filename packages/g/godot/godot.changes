@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 13 00:00:00 UTC 2021 - cunix@mail.de
+
+- Fix a crash in the TGA loader with malformed input
+  * added upstream_fix_TGA_loader.patch from upstream
+  * integer overflow issue CVE-2021-26825 (boo#1182177)
+  * stack overflow issue CVE-2021-26826 (boo#1182178)
+
+-------------------------------------------------------------------
 Sun Nov  1 23:35:40 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Fix AppStream file location to match latest standard
