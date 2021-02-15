@@ -200,4 +200,12 @@
     <comment>  instead of python2 bsc#1159243</comment>
     <requestid>760360</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>a057e521560a5ada99a95da9714a826e</srcmd5>
+    <version>4.8.4</version>
+    <time>1613427550</time>
+    <user>dimstar_suse</user>
+    <comment>- build against main-python as this is a cli tool (bsc#1181608)</comment>
+    <requestid>872029</requestid>
+  </revision>
 </revisionlist>
