@@ -941,6 +941,7 @@
     <package name="inkscape-lang" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="inotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
+    <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intel-vaapi-driver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intlfonts-euro-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="inxi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3531,9 +3532,15 @@
     <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="postfix-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="postgresql" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
+    <package name="postgresql-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="postgresql-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql13" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
+    <package name="postgresql13-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql13-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="postgresql13-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql13-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="powerdevil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5162,8 +5169,6 @@
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- postgresql-contrib uninstallable: nothing provides /sbin/chkconfig needed by postgresql13-server-13.1-3.2.i586-->
-    <!-- postgresql-server uninstallable: nothing provides /sbin/chkconfig needed by postgresql13-server-13.1-3.2.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5475,8 +5480,6 @@
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pmdk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <!-- postgresql-contrib uninstallable: nothing provides /sbin/chkconfig needed by postgresql96-server-9.6.20-2.2.x86_64-->
-    <!-- postgresql-server uninstallable: nothing provides /sbin/chkconfig needed by postgresql96-server-9.6.20-2.2.x86_64-->
     <package name="powertop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="powertop-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="printproto-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

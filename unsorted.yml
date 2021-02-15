@@ -14589,7 +14589,7 @@ unsorted:
   - lldb10: [x86_64] 
   - lldb10-devel: [x86_64] 
   - lldb11: [x86_64] 
-  - lldb11-devel: [x86_64] # devel package of dvd:clang11-doc 
+  - lldb11-devel: [x86_64] # devel package of dvd:libLLVM11 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb8: [x86_64] 
@@ -20037,15 +20037,12 @@ unsorted:
   - postfix-postgresql 
   - postfixadmin 
   - postfixadmin-apache 
-  - postgresql-contrib 
   - postgresql-devel 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
-  - postgresql-llvmjit 
   - postgresql-plperl 
   - postgresql-plpython 
   - postgresql-pltcl 
-  - postgresql-server 
   - postgresql-server-devel 
   - postgresql-test 
   - postgresql10 
@@ -20106,10 +20103,8 @@ unsorted:
   - postgresql12-server-devel 
   - postgresql12-test 
   - postgresql12-timescaledb 
-  - postgresql13-contrib 
   - postgresql13-devel 
   - postgresql13-devel-mini 
-  - postgresql13-llvmjit 
   - postgresql13-pg_cron 
   - postgresql13-pg_cron-llvmjit 
   - postgresql13-pgagent 
@@ -20118,7 +20113,6 @@ unsorted:
   - postgresql13-plperl 
   - postgresql13-plpython 
   - postgresql13-pltcl 
-  - postgresql13-server 
   - postgresql13-server-devel 
   - postgresql13-test 
   - postgresql95 
