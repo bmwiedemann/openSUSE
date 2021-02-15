@@ -7,4 +7,12 @@
     <comment>This is a dependency for avogadrolibs update to version 1.93.0</comment>
     <requestid>828584</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>83e4835539b2c1fc6eb0ee63345d7933</srcmd5>
+    <version>1.0.0</version>
+    <time>1613427534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872016</requestid>
+  </revision>
 </revisionlist>

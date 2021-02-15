@@ -24,16 +24,18 @@ Release:        0
 Summary:        The pure C++ implementation of the MMTF API, decoder and encoder
 License:        MIT
 Group:          Productivity/Scientific/Chemistry
-URL:            https://github.com/rcsb/%{name}
-Source0:        https://github.com/rcsb/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/rcsb/mmtf-cpp
+Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE fix_catch2_not_found.patch gh#rcsb/mmtf-cpp#39 andythe_great@pm.me -- Fix issue catch.hpp not found. 
+Patch0:         fix_catch2_not_found.patch
 BuildRequires:  cmake
+BuildRequires:  Catch2-devel
 BuildRequires:  ninja
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  msgpack-devel
 BuildArch:      noarch
-
 
 %description
 Macromolecular transmission format documentation, including README, license and HTML docs.
@@ -48,11 +50,11 @@ This package contains libraries and header files for developing
 applications that use %{name}.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-%cmake -DBUILD_TESTS=OFF \
-       -Dmmtf_build_local:BOOL=OFF \
+%cmake -DBUILD_TESTS:BOOL=ON \
+       -Dmmtf_build_local:BOOL=ON \
        -Dmmtf_build_examples:BOOL=ON
 
 %cmake_build
@@ -63,8 +65,10 @@ popd
 
 %install
 %cmake_install
+%fdupes %{buildroot}%{_prefix}
 
-%fdupes -s %{buildroot}%{_prefix}
+%check
+%ctest
 
 %files devel
 %license LICENSE
