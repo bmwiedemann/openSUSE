@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 08:13:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (scipy) 
+
+-------------------------------------------------------------------
 Mon May 18 07:25:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
