@@ -269,4 +269,14 @@
     <comment></comment>
     <requestid>870277</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c52e153316346a3bdce0eea80f8e71a1</srcmd5>
+    <version>1.4.2</version>
+    <time>1613427438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2
+  * Ellipsize memory and swap labels (gxo#apps/xfce4-taskmanager#32)
+</comment>
+    <requestid>871500</requestid>
+  </revision>
 </revisionlist>

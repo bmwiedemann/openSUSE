@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
