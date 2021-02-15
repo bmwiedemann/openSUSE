@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  2 12:37:22 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.23.2:
+  * deps: upgrade npm to 6.14.11
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Jan  4 19:14:43 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 10.23.1:

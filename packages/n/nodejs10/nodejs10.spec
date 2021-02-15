@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs10
-Version:        10.23.1
+Version:        10.23.2
 Release:        0
 
 %define node_version_number 10
