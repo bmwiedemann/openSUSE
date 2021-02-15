@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 14 18:05:36 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.0:
+  * Special case ExtensionApp that starts the ServerApp #401 (afshin)
+  * only use deprecated notebook_dir config if root_dir is not set
+    #400 (minrk)
+  * Use async kernel manager by default #399 (kevin-bates)
+  * Revert Session.username default value change #398 (mwakaba2)
+  * Re-enable default_url in ExtensionApp #393 (afshin)
+  * Enable notebook ContentsManager in jupyter_server #392 (afshin)
+  * Use jupyter_server_config.json as config file in the update
+    password api #390 (echarles)
+  * Increase culling test idle timeout #388 (kevin-bates)
+
+-------------------------------------------------------------------
 Mon Feb  1 22:48:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.2.3

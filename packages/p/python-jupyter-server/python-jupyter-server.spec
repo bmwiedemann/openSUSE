@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
-Version:        1.2.3
+Version:        1.3.0
 Release:        0
 Summary:        The Jupyter Server
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_server
 Source:         https://github.com/jupyter/jupyter_server/archive/%{version}.tar.gz#/jupyter_server-%{version}.tar.gz
-# We need the full stdlib
-BuildRequires:  %pythons
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Send2Trash}
 BuildRequires:  %{python_module anyio >= 2.0.2}
@@ -42,6 +40,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module terminado >= 0.8.3}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
+# We need the full stdlib
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -59,6 +59,8 @@ Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Provides:       python-jupyter_server = %{version}-%{release}
+Obsoletes:      python-jupyter_server < %{version}-%{release}
 # SECTION extras_require test
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module pytest-console-scripts}
@@ -66,8 +68,6 @@ BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
-Provides:       python-jupyter_server = %{version}-%{release}
-Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyter-server = %{version}-%{release}
 Obsoletes:      jupyter-jupyter-server < %{version}-%{release}
