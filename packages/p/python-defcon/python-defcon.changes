@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 10:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (needs FontTools which needs scipy) 
+
+-------------------------------------------------------------------
 Mon Jun 15 05:47:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.2:

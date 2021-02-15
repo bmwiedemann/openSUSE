@@ -30,4 +30,12 @@
   * Add ufoFormatVersionTuple property, deprecate ufoFormatVersion: #291</comment>
     <requestid>814613</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>02cba8472813a8b55f491c3cd1efd5fa</srcmd5>
+    <version>0.7.2</version>
+    <time>1613427502</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (needs FontTools which needs scipy)</comment>
+    <requestid>871634</requestid>
+  </revision>
 </revisionlist>
