@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 13 14:14:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2021.02
+  Bugfix release
+  * Revert "ad936x_params: allow CTRL_IN to control gain in MGC
+    mode"
+
+-------------------------------------------------------------------
 Fri Jan 15 16:24:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2020.12
