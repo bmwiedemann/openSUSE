@@ -1,7 +1,7 @@
 #
 # spec file for package taskwarrior
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           taskwarrior
-Version:        2.5.1
+Version:        2.5.3
 Release:        0
 Summary:        Command-line todo list manager
 License:        MIT
 Group:          Productivity/Office/Organizers
-Url:            http://taskwarrior.org
-Source0:        http://www.taskwarrior.org/download/task-%{version}.tar.gz
+URL:            http://taskwarrior.org
+#Source0:        http://www.taskwarrior.org/download/task-#{version}.tar.gz
+Source0:        https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v%{version}/task-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE: skip the INSTALL and LICENSE from files intended for the installation
 Patch0:         task-skip-INSTALL.patch
 BuildRequires:  awk
@@ -32,7 +33,6 @@ BuildRequires:  coreutils
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  lua-devel
 # for completion
 BuildRequires:  bash
 BuildRequires:  vim-base
@@ -40,7 +40,7 @@ BuildRequires:  zsh
 # for sync
 BuildRequires:  libgnutls-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# use the name as other distributions, so 
+# use the name as other distributions, so
 # zypper in task will work as well
 Provides:       task = %{version}-%{release}
 
@@ -65,18 +65,22 @@ sed -i src/commands/CmdDiagnostics.cpp \
  -e "s/__DATE__/\"${DATE}\"/"
 
 %build
-%cmake
-
-make %{?_smp_mflags}
+%cmake -DENABLE_SYNC:BOOL=ON \
+    -DTASK_DOCDIR:PATH=%{_docdir}/task \
+    -DTASK_MAN1DIR:PATH=%{_datadir}/man/man1/ \
+    -DBUILD_SHARED_LIBS:BOOL=OFF \
+    -DBUILD_STATIC_LIBS:BOOL=OFF \
+    -DTASK_MAN5DIR:PATH=%{_datadir}/man/man5/
+%cmake_build
 
 %install
 %cmake_install
 
 # this integration stuff might be in CMakeList.txt, but ...
-%define scriptsdir %{buildroot}%{_datadir}/doc/task/scripts/
+%define scriptsdir %{buildroot}%{_docdir}/task/scripts/
 
-install -m 0755 -d %{buildroot}%{_sysconfdir}/bash_completion.d/
-mv %{scriptsdir}bash/task.sh %{buildroot}%{_sysconfdir}/bash_completion.d/
+install -m 0755 -d %{buildroot}%{_datadir}/bash_completion.d/
+mv %{scriptsdir}bash/task.sh %{buildroot}%{_datadir}/bash_completion.d/
 
 install -m 0755 -d %{buildroot}%{_datadir}/zsh/site-functions/
 mv %{scriptsdir}zsh/_task %{buildroot}%{_datadir}/zsh/site-functions/
@@ -92,19 +96,16 @@ mv %{scriptsdir}vim/ftdetect/*vim %{buildroot}%{_datadir}/vim/site/ftdetect
 mv %{scriptsdir}vim/syntax/*vim %{buildroot}%{_datadir}/vim/site/syntax
 rm -rf %{scriptsdir}vim
 
-install -m 0755 -d %{buildroot}/%{_defaultdocdir}/task
-mv %{buildroot}/%{_datadir}/doc/task %{buildroot}/%{_defaultdocdir}/
-rm -rf %{buildroot}/%{_datadir}/doc/task
 # don't requre python/perl/ruby by default, so remove executable bit
-find %{buildroot}/%{_defaultdocdir}/task -type f -exec chmod a-x {} +
+find %{buildroot}/%{_docdir}/task -type f -exec chmod a-x {} +
 
 %files
 %defattr(-,root,root)
-%doc %{_defaultdocdir}/task
+%doc %{_docdir}/task
 %{_bindir}/task*
 %{_datadir}/man/man1/task*
 %{_datadir}/man/man5/task*
-%config %{_sysconfdir}/bash_completion.d/task.sh
+%{_datadir}/bash_completion.d/
 %{_datadir}/zsh/site-functions/
 %dir %{_datadir}/fish/
 %{_datadir}/fish/completions/

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 25 01:43:13 UTC 2021 - Michael Bryant <shadow53@shadow53.com> - 2.5.3
+
+- Update to 2.5.3 upstream release 2.5.3, skipping 2.5.2
+  Refer to /usr/share/doc/packages/task/Changelog for full list of changes
+  * Deprecated the 'DUETODAY' virtual tag, which is a synonym for the 'TODAY'
+    virtual tag.
+  * Removed deprecated 'alias._query' setting.
+  * Fixed ambiguity in the esp-ESP localization
+  * Deprecated the 'new-uuid' verbosity option, since its functionality can be
+    removed by merging with 'new-id'.
+  * Correct a false-positive warning when a due date is removed and a wait is
+    added.
+  * Added 'QUARTER' virtual tag.
+  * Fixed unquoted glob in bash completion script
+  * Deprecated use of alternate Boolean configuration settings. Use values "0" for
+    off, and "1" for on. Avoid used of "on", "off", "true", "t", "false", "f",
+    "yes", "y", "no", "n".
+  * Improved certificate validation diagnostics
+  * Updated the 'timesheet' command with a more compact report
+  * Added 'history.weekly', 'history.daily', 'ghistory.weekly', 'ghistory.daily'
+    report variations, with code refactoring.
+  * New DOM references: annotations.count, tw.syncneeded, tw.program, tw.args,
+  * tw.width, tw.height, tw.version.
+  * The message telling you to sync now indicates how many local changes will be
+    synced.
+  * Workaround for alias grep=rg in fish
+
+-------------------------------------------------------------------
 Sat Mar  5 08:34:45 UTC 2016 - sleep_walker@opensuse.org
 
 - update to 2.5.1 (bugfix and performance release)
