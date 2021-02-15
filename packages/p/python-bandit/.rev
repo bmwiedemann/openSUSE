@@ -47,4 +47,12 @@
     <comment>- drop oslosphinx dependency</comment>
     <requestid>811559</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>13987f91dd727a77bd02a1238251b304</srcmd5>
+    <version>1.6.2</version>
+    <time>1613427499</time>
+    <user>dimstar_suse</user>
+    <comment>- cli tool, don't build with multiple python versions</comment>
+    <requestid>871632</requestid>
+  </revision>
 </revisionlist>
