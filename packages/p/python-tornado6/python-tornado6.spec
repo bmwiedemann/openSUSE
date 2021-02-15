@@ -94,7 +94,7 @@ find %{buildroot}%{_docdir}/$python-tornado6 -name "*.py" -exec sed -i "1{s|^#!.
 export ASYNC_TEST_TIMEOUT=30
 export PYTHONDONTWRITEBYTECODE=1
 export TRAVIS=1
-%python_exec -m tornado.test.runtests
+%python_exec -m tornado.test.runtests --verbose
 
 %files %{python_files}
 %license LICENSE

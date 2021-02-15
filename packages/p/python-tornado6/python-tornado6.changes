@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  8 20:46:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- back to version 6.1. Tornado pin in distributed is removed.
+- Dear bot, here are the patch names:
+  * re-drop python-tornado6-httpclient-test.patch
+  * re-drop skip-failing-tests.patch
+  * re-drop tornado-testsuite_timeout.patch
+  * refreshed ignore-resourcewarning-doctests.patch
+
+-------------------------------------------------------------------
+Sun Feb  7 12:53:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Revert back to 6.0.4 for incompatibility with python-distributed.
+- Adds back patches:
+  * python-tornado6-httpclient-test.patch
+  * skip-failing-tests.patch
+  * tornado-testsuite_timeout.patch
+
+-------------------------------------------------------------------
 Sat Jan 30 20:22:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.1.0
