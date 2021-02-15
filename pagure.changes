@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 12 00:58:08 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 5.13.2
+  + Fix broken pagination of group API
+  + Fixing the alias url in the examples
+  + Pull in upstream fix for apostrophes from highlightjs-rpm-specfile
+  + Improve logging when trying to interract with a git repo via http(s)
+
+-------------------------------------------------------------------
 Fri Jan 29 15:43:26 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 5.13.1

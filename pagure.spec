@@ -1,7 +1,7 @@
 #
 # spec file for package pagure
 #
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 
 
 Name:               pagure
-Version:            5.13.1
+Version:            5.13.2
 Release:            0
 Summary:            A git-centered forge
 Group:              Development/Tools/Version Control
