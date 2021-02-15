@@ -1,3 +1,4 @@
+# macros for the primary python3 providing python flavor
 %have_python3   1
 
 # commented out legacy macro definitions
@@ -25,4 +26,5 @@ find %1 -name '*.pyo' -exec rm -f {} ";"\
 python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile_dir(sys.argv[1], ddir=br and (sys.argv[1][len(os.path.abspath(br)):]+'/') or None)" %1\
 }
 
-
+%python3_default  %(s=$(rpm -qf /usr/bin/python3); echo ${s%%%%-*})
+%default_python3  %(s=$(rpm -qf /usr/bin/python3); echo ${s%%%%-*})

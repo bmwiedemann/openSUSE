@@ -102,4 +102,18 @@
 </comment>
     <requestid>868033</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d487fac17c23c3083ff03691c71a1b23</srcmd5>
+    <version>3.8.7</version>
+    <time>1613427021</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes for python3-base when primary interpreter is set to
+  properly replace it during upgrades. (bsc#1181324)
+
+- Provide %have_&lt;flavor&gt; for all python flavors
+  gh#openSUSE/python-rpm-macros#96
+- Add %python3_default and %default_python3 for the primary python3
+  flavor</comment>
+    <requestid>870493</requestid>
+  </revision>
 </revisionlist>

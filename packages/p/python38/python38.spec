@@ -1,5 +1,5 @@
 #
-# spec file for package python38-core
+# spec file for package python38
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -307,8 +307,9 @@ Provides:       %{python_pkg_name}-typing = %{version}
 Provides:       %{python_pkg_name}-xml = %{version}
 %if %{primary_interpreter}
 Provides:       python3-asyncio = %{version}
-Provides:       python3-base = %{version}
 Obsoletes:      python3-asyncio < %{version}
+Provides:       python3-base = %{version}
+Obsoletes:      python3-base < %{version}
 Provides:       python3-typing = %{version}
 Obsoletes:      python3-typing < %{version}
 Provides:       python3-xml = %{version}
@@ -698,10 +699,16 @@ install -m 755 -D Tools/gdb/libpython.py %{buildroot}%{_datadir}/gdb/auto-load/%
 #cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%{sitedir}/config-%{python_abi}/
 
 # RPM macros
-%if %{primary_interpreter}
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
+# primary python3 macros
+%if %{primary_interpreter}
 install -m 644 %{SOURCE7} %{buildroot}%{_rpmconfigdir}/macros.d/ # macros.python3
 %endif
+# flavor specific macros, only to be supplied "if we are in the buildset", e.g. installed.
+echo '
+# macros for the %{python_pkg_name} flavor
+%%have_%{python_pkg_name} 1
+' > %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{python_pkg_name}
 
 # import_failed hooks
 FAILDIR=%{buildroot}/%{sitedir}/_import_failed
@@ -860,6 +867,7 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %if %{primary_interpreter}
 %{_rpmconfigdir}/macros.d/macros.python3
 %endif
+%{_rpmconfigdir}/macros.d/macros.%{python_pkg_name}
 # binary parts
 %dir %{sitedir}/lib-dynload
 %{dynlib array}

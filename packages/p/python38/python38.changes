@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  9 01:37:01 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add Obsoletes for python3-base when primary interpreter is set to
+  properly replace it during upgrades. (bsc#1181324)
+
+-------------------------------------------------------------------
+Fri Feb  5 15:35:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Provide %have_<flavor> for all python flavors
+  gh#openSUSE/python-rpm-macros#96
+- Add %python3_default and %default_python3 for the primary python3
+  flavor
+
+-------------------------------------------------------------------
 Fri Jan 29 17:22:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
