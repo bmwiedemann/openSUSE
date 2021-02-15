@@ -55,6 +55,7 @@ Requires:       python3-bcrypt
 Requires:       python3-dateutil
 Requires:       python3-lxml
 Requires:       python3-mock
+Requires:       python3-passlib >= 1.7.0
 Requires:       python3-polib
 Requires:       python3-psycopg2 >= 2.5.4
 Requires:       python3-python-sql >= 0.4
