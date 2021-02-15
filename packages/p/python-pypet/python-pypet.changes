@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 14 19:59:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- turn off python 3.6 build (no scipy) 
+
+-------------------------------------------------------------------
 Tue Jun 23 20:05:26 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.5.1

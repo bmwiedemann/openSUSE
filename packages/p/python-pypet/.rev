@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>817771</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>658ce8bd206d3c33cf386adb8f922917</srcmd5>
+    <version>0.5.1</version>
+    <time>1613427589</time>
+    <user>dimstar_suse</user>
+    <comment>- turn off python 3.6 build (no scipy)</comment>
+    <requestid>872201</requestid>
+  </revision>
 </revisionlist>
