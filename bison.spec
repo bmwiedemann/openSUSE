@@ -50,8 +50,7 @@ Bison is a parser generator similar to yacc(1).
   gl_cv_func_printf_infinite_long_double=yes
 %if 0%{?do_profiling}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
-  # non-parallel profiling for reproducible results https://bugzilla.opensuse.org/show_bug.cgi?id=1040589
-  %make_build --jobs=1 CFLAGS="%{optflags}" check
+  %make_build CFLAGS="%{optflags}" check
   %make_build clean
   %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
@@ -59,8 +58,7 @@ Bison is a parser generator similar to yacc(1).
 %endif
 
 %check
-# Tests dont work reliably in parallel
-%make_build --jobs=1 check
+%make_build check
 
 %install
 %make_install

@@ -500,4 +500,12 @@ Documentation
     <comment></comment>
     <requestid>866721</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>84b6b73a13d5289f3b644fd45b3feabf</srcmd5>
+    <version>3.7.5</version>
+    <time>1613427026</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests in parallel</comment>
+    <requestid>870498</requestid>
+  </revision>
 </revisionlist>

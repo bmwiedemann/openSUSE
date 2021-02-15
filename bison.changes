@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 09:29:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Run tests in parallel
+
+-------------------------------------------------------------------
 Sun Jan 24 15:35:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use https for sources
