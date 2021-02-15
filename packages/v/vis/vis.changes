@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  5 23:00:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add BR libselinux-devel to make vis SELinux aware.
+
+-------------------------------------------------------------------
 Tue Dec  8 18:42:07 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to the released version 0.7:

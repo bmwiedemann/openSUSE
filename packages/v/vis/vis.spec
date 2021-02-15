@@ -1,7 +1,7 @@
 #
 # spec file for package vis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Productivity/Text/Editors
 URL:            https://github.com/martanne/vis
 Source0:        https://github.com/martanne/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/martanne/vis-test/releases/download/v%{test_version}/vis-test-%{test_version}.tar.gz
+BuildRequires:  libselinux-devel
 BuildRequires:  libtermkey-devel
 BuildRequires:  lua-devel
 BuildRequires:  lua-lpeg
@@ -53,7 +54,7 @@ export CFLAGS="%{optflags} -fcommon"
 %make_install
 
 %check
-# According to the debian/rules: 
+# According to the debian/rules:
 # The vim tests harness is not solid, let's skip them for the moment.
 # Upstream mentioned the possibility of phasing them out entirely.
 make -C test/core
