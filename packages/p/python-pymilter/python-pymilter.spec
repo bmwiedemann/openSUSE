@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymilter
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,12 +40,7 @@ BuildRequires:  systemd-rpm-macros
 # Common subpackage named as such to avoid creating flavor packages
 Requires:       pymilter-common = %{version}-%{release}
 Requires:       python
-%ifpython2
-Requires:       python2-pydns
-%endif
-%ifpython3
-Requires:       python3-py3dns
-%endif
+Requires:       python-py3dns
 %python_subpackages
 
 %description

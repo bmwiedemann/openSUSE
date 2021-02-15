@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Dec 22 09:25:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not hard-require systemd. Drop redundant wording from
+  description. Drop %defattr.
+
+-------------------------------------------------------------------
+Mon Dec 21 19:16:41 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Initial packaging of 0.10.8 for Factory

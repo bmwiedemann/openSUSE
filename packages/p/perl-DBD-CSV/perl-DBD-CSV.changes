@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 11 03:07:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.58
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+
+  0.58	- 2021-02-10, H.Merijn Brand
+      * It's 2021
+      * "class" is not a CSV attribute to pass on (issue#8)
+
+  0.57	- 2020-12-17, H.Merijn Brand
+      * META fixes
+
+-------------------------------------------------------------------
 Thu Dec 10 10:57:55 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Remove post_prep typo fix (was fixed upstream)

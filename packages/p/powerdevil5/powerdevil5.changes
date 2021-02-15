@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * [backlighthelper] Don't touch brightness when animation isn't running
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Autogenerate categories file
+  * Clarify ambiguous settings entries in launchers
+  * Clear ambiguity when searching for settings in launchers
+  * Take into account logind sleep and idle inhibitions (kde#364067)
+  * mobile: bind the power off key to "Turn Off Screen"
+  * Expose screen locked state in policy agent
+  * autostart: start powerdevil earlier in the phase 0
+  * Set NoDisplay=true in powerdevil autoatart
+  * Remove use of XCB DPMS timeouts and handle it explicitly
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Do not explicitely define Exec lines for KCMs
+  * Add gitignore file
+  * Ignore player's from KDE Connect when suspending (kde#427209)
+  * Remove XRandRBrightness
+  * Honor animation brightness threshold also for sysfs helper (kde#426883)
+  * Add systemd unit for powerdevil
+  * Set correct type for autostart .desktop file
+  * Show "you might need to reconnect charger" hint only when charging/fully charged
+  * Take DESTDIR into account when running setcap
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

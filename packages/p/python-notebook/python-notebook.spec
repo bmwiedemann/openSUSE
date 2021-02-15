@@ -1,7 +1,7 @@
 #
 # spec file for package python-notebook
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ BuildArch:      noarch
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-notebook%{psuffix}
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -36,8 +36,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
 Source100:      python-notebook-rpmlintrc
-# PATCH-FIX-UPSTREAM remove_nose.patch gh#jupyter/notebook#5826 -- Port the test suite to pytest from nose
-Patch0:         remove_nose.patch
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -54,7 +52,7 @@ Requires:       python-nbformat
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.3
-Requires:       python-tornado >= 5
+Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
 Recommends:     python-ipywidgets
 Suggests:       %{name}-latex
@@ -85,7 +83,7 @@ BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module terminado >= 0.8.3}
-BuildRequires:  %{python_module tornado >= 5}
+BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
 %ifnarch %{ix86}
 # pandoc package disabled build for ix86
@@ -101,6 +99,7 @@ interactive computing.
 This package provides the python interface.
 
 %package        lang
+# FIXME: consider using %%lang_package macro
 Summary:        Translations for the Jupyter Notebook
 Group:          System/Localization
 Requires:       python-notebook = %{version}
@@ -134,6 +133,7 @@ interactive computing.
 This package provides the jupyter components.
 
 %package     -n jupyter-notebook-lang
+# FIXME: consider using %%lang_package macro
 Summary:        Translations for the Jupyter Notebook
 Group:          System/Localization
 Requires:       jupyter-notebook = %{version}
@@ -162,7 +162,6 @@ This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 
 %prep
 %setup -q -n notebook-%{version}
-%autopatch -p1
 
 # We don't want to run selenium tests
 rm -rf notebook/tests/selenium
@@ -226,7 +225,6 @@ fi
 %endif
 
 %if !%{with test}
-
 %post
 %python_install_alternative jupyter-notebook jupyter-bundlerextension jupyter-nbextension jupyter-serverextension
 

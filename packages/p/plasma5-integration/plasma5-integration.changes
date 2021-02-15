@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Revert held-key behaviour
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * x11integration: Force standalone Qt::Dialog resizable
+  * Change default color scheme to BreezeLight
+  * operator+/- is disabled for QFlags in qt6
+  * Add comment explaining the pkg-config file installed by IM module
+  * [keyheld]: add tittleless i and s-cedilla
+  * Add Philippine Peso to currency alternatives in plasma im module
+  * Add some currency mappings to new key-held im module module
+  * Add key-held behaviour
+  * Use new standard shortcut for "Create Folder"
+  * Enable hover effects by default
+  * Use nullptr
+  * Ignore files
+  * Use Q_EMIT
+  * initialize pointer/values
+  * Fix typo + use direct
+  * Now it depends against new version. Old code can be removed
+  * kdirselectdialog: when creating a new dir that already exists, select it
+  * QXdgDesktopPortalFileDialog: pass directory option to portal
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

@@ -1,7 +1,7 @@
 #
 # spec file for package netty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch1:         0002-Remove-NPN.patch
 Patch2:         0003-Remove-conscrypt-ALPN.patch
 Patch3:         0004-Remove-jetty-ALPN.patch
 Patch4:         netty-CVE-2020-11612.patch
+Patch5:         netty-CVE-2021-21290.patch
 BuildRequires:  maven-local
 BuildRequires:  mvn(ant-contrib:ant-contrib)
 BuildRequires:  mvn(com.jcraft:jzlib)
@@ -100,6 +101,7 @@ Summary:        API documentation for %{name}
 %patch3 -p1
 %endif
 %patch4 -p1
+%patch5 -p1
 
 # Missing Mavenized rxtx
 %pom_disable_module "transport-rxtx"

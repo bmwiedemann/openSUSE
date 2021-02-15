@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 11 09:20:25 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * netty-CVE-2021-21290.patch
+    + bsc#1182103, CVE-2021-21290
+
+-------------------------------------------------------------------
 Thu Apr  9 07:54:00 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

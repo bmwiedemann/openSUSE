@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan 13 01:34:41 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.2.15~git1.22a176c:
+  * (cargo-release) start next development iteration 0.2.16-alpha.0
+  * (cargo-release) version 0.2.15
+  * Update docs/Releasing.md
+  * Workaround tiny_http issue #151 by disabling HTTP pipelining
+  * Upgrade itertools to 0.10
+  * Run `cargo update`
+  * Add C compiler versions to the hash calculation when available
+  * Move lru-disk-cache to an internal module
+  * Fix clippy warnings in lru-disk-cache
+  * Still read config file from Library/Preferences if it exists
+
+-------------------------------------------------------------------
+Tue Dec 22 03:22:20 UTC 2020 - wbrown@suse.de
+
+- Update to version 0.2.14~git0.655ef1a:
+  * (cargo-release) version 0.2.14
+  * Remove [patch] section for the purpose of release
+  * Upgrade zstd to 0.6
+  * Run `cargo update`
+  * Bump lru-disk-cache version
+  * Fix a few more clippy warnings
+  * Make lru_disk_cache::Error's impl Display match what it was before 65bb3b6
+  * Ignore both -FS and -MP on MSVC
+  * Use a full path relative to `cwd` for extra hash files
+  * Set the current directory of the server to the directory containing the executable
+
+-------------------------------------------------------------------
 Wed Nov 25 14:25:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on non-x86_64 archs

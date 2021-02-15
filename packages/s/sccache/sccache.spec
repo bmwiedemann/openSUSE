@@ -1,7 +1,7 @@
 #
 # spec file for package sccache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define configdir %{_sysconfdir}/%{name}
 
 Name:           sccache
-Version:        0.2.13~git474.6628e1f
+Version:        0.2.15~git1.22a176c
 Release:        0
 Summary:        A compiler caching tool for Rust, C and C++ with optional cloud storage
 License:        Apache-2.0

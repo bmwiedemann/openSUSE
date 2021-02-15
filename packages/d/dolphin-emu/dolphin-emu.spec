@@ -18,11 +18,11 @@
 
 # revision needs to be the full output of 'git rev-parse HEAD'
 # (netplay version check relies on it)
-%define _revision e957ed0809c73417103010f91ba058dd7a96bf86
-%define _revision_description 5.0-13424
+%define _revision 1fc6fbc2c0c77d5ccde9440b54aba1b007b07136
+%define _revision_description 5.0-13620
 
 Name:           dolphin-emu
-Version:        5.0+git.20210103T185325.e957ed0809
+Version:        5.0+git.20210211T001537.1fc6fbc2c0
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        GPL-2.0-or-later

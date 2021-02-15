@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 11 09:06:20 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add modules which got lost when migrating away from supported.conf
+  (bsc#1182110):
+  * am53c974 had a typo
+  * cls_bpf, iscsi_ibft, libahci, libata, openvswitch, sch_ingress
+- Also add vport-* modules for Open vSwitch
+
+-------------------------------------------------------------------
 Thu Nov 26 07:59:32 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add wireguard (boo#1179225)

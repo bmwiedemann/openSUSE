@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  7 13:18:33 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/*/*.rst to package contents
+- Update to v2.5.2
+  * See https://github.com/pikepdf/pikepdf/blob/master/docs/release_notes.rst
+
+-------------------------------------------------------------------
 Fri Jul 31 03:37:38 UTC 2020 - Karl Cheng <qantas94heavy@gmail.com>
 
 - Update pikepdf to 1.17.3

@@ -1,0 +1,13 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">http://hg.code.sf.net/p/ruamel-std-argparse/code</param>
+    <param name="versionprefix">0.8.3+hg</param>
+    <param name="scm">hg</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

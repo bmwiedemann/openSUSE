@@ -16,4 +16,12 @@
   * no upstream changelog</comment>
     <requestid>791712</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>81c79605ad2ce5cfe7a3b20f78ddc849</srcmd5>
+    <version>0.6.3</version>
+    <time>1613427435</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (scipy)</comment>
+    <requestid>871494</requestid>
+  </revision>
 </revisionlist>

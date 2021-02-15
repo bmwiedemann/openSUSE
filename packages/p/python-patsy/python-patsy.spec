@@ -1,7 +1,7 @@
 #
 # spec file for package python-patsy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
+%define skip_python36 1
 Name:           python-patsy%{pkg_suffix}
 Version:        0.5.1
 Release:        0

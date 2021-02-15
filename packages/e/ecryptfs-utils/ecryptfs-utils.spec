@@ -1,7 +1,7 @@
 #
 # spec file for package ecryptfs-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,7 @@ autoreconf -fiv
 	--disable-pywrap \
 	--enable-tspi \
 	--enable-pkcs11-helper \
-	--with-pamdir=/%{_lib}/security
+	--with-pamdir=%{_pamdir}
 make %{?_smp_mflags}
 
 %check
@@ -158,7 +158,7 @@ fi
 %{_mandir}/man8/*ecryptfs*
 %{_libdir}/ecryptfs*
 %{_datadir}/ecryptfs-utils
-/%{_lib}/security/pam_ecryptfs.so
+%{_pamdir}/pam_ecryptfs.so
 #{python_sitelib}/ecryptfs-utils
 #{python_sitearch}/ecryptfs-utils
 %{_datadir}/applications/*.desktop

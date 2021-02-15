@@ -1,7 +1,7 @@
 #
 # spec file for package bitlbee-facebook
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define from_checkout 1
 Name:           bitlbee-facebook
-Version:        1.2.0
+Version:        1.2.1+git.1611145185.49ea312
 Release:        0
 Summary:        The Facebook protocol plugin for bitlbee
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/IRC
-Url:            https://github.com/bitlbee/bitlbee-facebook
+URL:            https://github.com/bitlbee/bitlbee-facebook
+%if 0%{?from_checkout}
+Source:         %{name}-%{version}.tar.gz
+%else
 Source:         https://github.com/bitlbee/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bitlbee)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Facebook protocol plugin for bitlbee. This plugin uses the Facebook Mobile API.
@@ -39,16 +43,17 @@ The Facebook protocol plugin for bitlbee. This plugin uses the Facebook Mobile A
 %setup -q
 
 %build
-autoreconf -fvi
+%if 0%{?from_checkout}
+./autogen.sh
+%endif
 %configure
 make %{?_smp_mflags}
-
+ 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 rm %{buildroot}%{_libdir}/bitlbee/facebook.la
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog README COPYING
 %dir %{_libdir}/bitlbee
 %{_libdir}/bitlbee/facebook.so

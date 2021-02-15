@@ -18,19 +18,17 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://projects.kde.org/kde-gtk-config
-Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz
+Source:         kde-gtk-config-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz.sig
+Source1:        kde-gtk-config-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Remove-debug-message-to-avoid-polute-to-stdout.patch
 BuildRequires:  extra-cmake-modules >= 0.0.9
 BuildRequires:  kf5-filesystem
 BuildRequires:  sassc

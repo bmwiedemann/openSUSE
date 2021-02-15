@@ -30,7 +30,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         add-suse-config.patch
 Patch1:         dont-use-env.patch
 Provides:       rpi-eeprom
-Supplements:    modalias(of:N*T*Cbrcm,bcm2711*C*)
+Supplements:    modalias(of:N*T*Cbrcm%2Cbcm2711*C*)
 Requires:       raspberrypi-firmware >= 2021.01.21
 Requires:       raspberrypi-firmware-dt >= 2020.12.07
 Provides:       rpi-eeprom-config = %{version}

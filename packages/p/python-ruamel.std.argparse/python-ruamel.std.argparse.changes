@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 11 16:27:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add discover-name-of-the-pytest-executable-at-runtime.patch
+
+  Original code had hard-coded name of 'py.test', but that
+  coname uld be very flexible. Either this name is discovered
+  automagically, or the user can set variable PYTEST_EXECUTABLE,
+  which is honored.
+
+  Filed as https://sourceforge.net/p/ruamel-std-argparse/tickets/4/
+
+-------------------------------------------------------------------
+Wed Feb 10 17:38:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add _service and pull from the upstream VCS
+  (https://sourceforge.net/p/ruamel-std-argparse/tickets/3/).
+
+-------------------------------------------------------------------
 Wed Feb 10 14:12:48 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Get rid of %ifpython3

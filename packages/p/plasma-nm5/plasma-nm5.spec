@@ -19,19 +19,17 @@
 %bcond_without lang
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (LGPL-2.1-only OR LGPL-3.0-only) AND (GPL-2.0-only OR GPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
+Source:         plasma-nm-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
+Source1:        plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Add-support-for-the-OpenVPN-parameter-compress.patch
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
 BuildRequires:  extra-cmake-modules >= 1.3.0
 BuildRequires:  fdupes
@@ -317,6 +315,7 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_servicesdir}/plasmanetworkmanagement_openconnectui.desktop
 %{_kf5_servicesdir}/plasmanetworkmanagement_openconnect_juniperui.desktop
 %{_kf5_servicesdir}/plasmanetworkmanagement_openconnect_globalprotectui.desktop
+%{_kf5_servicesdir}/plasmanetworkmanagement_openconnect_pulseui.desktop
 
 %files openswan
 %license COPYING*
@@ -361,16 +360,13 @@ wireless connectivity on Plasma Mobile.
 %files mobile
 %license COPYING*
 %dir %{_kf5_plugindir}/kcms
-%{_kf5_plugindir}/kcms/kcm_mobile_broadband.so
 %{_kf5_plugindir}/kcms/kcm_mobile_hotspot.so
 %{_kf5_plugindir}/kcms/kcm_mobile_wifi.so
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
-%{_kf5_sharedir}/kpackage/kcms/kcm_mobile_broadband/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_hotspot/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_wifi/
 %{_kf5_servicesdir}/hotspotsettings.desktop
-%{_kf5_servicesdir}/mobilebroadbandsettings.desktop
 %{_kf5_servicesdir}/wifisettings.desktop
 
 %if %{with lang}

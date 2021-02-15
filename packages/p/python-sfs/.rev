@@ -7,4 +7,12 @@
     <comment>Sound Field Synthesis toolbox for Python</comment>
     <requestid>753305</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8a345196b34ec769d19678e81ab0d43</srcmd5>
+    <version>0.5.0</version>
+    <time>1613427428</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36</comment>
+    <requestid>871481</requestid>
+  </revision>
 </revisionlist>

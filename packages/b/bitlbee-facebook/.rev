@@ -62,4 +62,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>706066</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fab6c6e45df6292776b050c9a194a575</srcmd5>
+    <version>1.2.1+git.1611145185.49ea312</version>
+    <time>1613427318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1+git.1611145185.49ea312:
+  * Bump the FB_ORCA_AGENT version once again (#208)
+  * Remove bash-ism in configure.ac
+  * Port away from deprecated g_type_class_add_private() and friends
+  * Increase default sync_interval from 5 to 1440
+  * travis: replace python-m2crypto dependency with python3-m2crypto
+  * facebook-api: Fix id assertion in fb_api_cb_publish_mst() (#204)
+  * travis: add python-m2crypto to dependencies for OBS deploy
+  * Release 1.2.1 with fixes for a couple of server changes
+  * Fix taNewMessage bug (#202)
+  * fb_api_cb_publish_pt: check field is stop (#199)
+
+- Update to 1.2.1:
+  - Fix &quot;Parse error: unexpected identifier 'taNewMessage'&quot;
+    (gh#bitlbee/bitlbee-facebook#200)
+  - Fix &quot;Failed to read thrift: facebook-api.c:1929
+    fb_api_cb_publish_pt: assertion 'fb_thrift_read_stop(thft)' failed&quot;
+    (gh#bitlbee/bitlbee-facebook#197)</comment>
+    <requestid>871240</requestid>
+  </revision>
 </revisionlist>

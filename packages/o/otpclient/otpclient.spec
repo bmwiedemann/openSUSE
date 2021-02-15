@@ -1,7 +1,7 @@
 #
 # spec file for package otpclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -75,14 +75,6 @@ HMAC-Based One-Time Passwords (HOTP).
 %{_mandir}/man1/otpclient.1.gz
 
 %{_datadir}/icons/hicolor/scalable/apps/com.github.paolostivanin.OTPClient-symbolic.svg
-%{_datadir}/icons/hicolor/16x16/apps/com.github.paolostivanin.%{uclname}.png
-%{_datadir}/icons/hicolor/24x24/apps/com.github.paolostivanin.%{uclname}.png
-%{_datadir}/icons/hicolor/32x32/apps/com.github.paolostivanin.%{uclname}.png
-%{_datadir}/icons/hicolor/48x48/apps/com.github.paolostivanin.%{uclname}.png
-%{_datadir}/icons/hicolor/64x64/apps/com.github.paolostivanin.%{uclname}.png
-%{_datadir}/icons/hicolor/128x128/apps/com.github.paolostivanin.%{uclname}.png
-%{_datadir}/icons/hicolor/256x256/apps/com.github.paolostivanin.%{uclname}.png
-%{_datadir}/icons/hicolor/512x512/apps/com.github.paolostivanin.%{uclname}.png
 %{_datadir}/icons/hicolor/scalable/apps/com.github.paolostivanin.OTPClient.svg
 
 %changelog

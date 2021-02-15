@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_console
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,49 +46,50 @@ Requires:       python-ipython
 Requires:       python-jupyter-client
 Requires:       python-prompt_toolkit >= 2
 Requires:       python-pyzmq
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Provides:       python-jupyter-console = %{version}-%{release}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       jupyter-jupyter_console = %{version}-%{release}
+Obsoletes:      jupyter-jupyter_console < %{version}-%{release}
+Provides:       jupyter-jupyter_console-doc = %{version}-%{release}
+Obsoletes:      jupyter-jupyter_console-doc < %{version}-%{release}
+%endif
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
-A terminal-based console frontend for Jupter kernels.
+A terminal-based console frontend for Jupyter kernels.
 This code is based on the single-process IPython terminal.
-
-This package provides the python components.
-
-%package     -n jupyter-jupyter_console
-Summary:        Jupyter terminal console
-Requires:       python3-jupyter_console = %{version}
-Provides:       jupyter-jupyter_console-doc = %{version}
-Obsoletes:      jupyter-jupyter_console-doc < %{version}
-
-%description -n jupyter-jupyter_console
-A terminal-based console frontend for Jupter kernels.
-This code is based on the single-process IPython terminal.
-
-This package provides the jupyter components.
 
 %prep
 %setup -q -n jupyter_console-%{version}
 %patch0 -p1
+# always build and install with setuptools: it is needed to get the entrypoint gh#jupyter/jupyter_console#222
+sed -i '/import sys/ a import setuptools' setup.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/jupyter-console
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest -s --force-flaky --max-runs=10
 
+%post
+%python_install_alternative jupyter-console
+
+%postun
+%python_uninstall_alternative jupyter-console
+
 %files %{python_files}
 %doc CONTRIBUTING.md README.md
 %license COPYING.md 
+%python_alternative %{_bindir}/jupyter-console
 %{python_sitelib}/jupyter_console
-%{python_sitelib}/jupyter_console-%{version}-*.egg-info
-
-%files -n jupyter-jupyter_console
-%license COPYING.md
+%{python_sitelib}/jupyter_console-%{version}*-info
 
 %changelog

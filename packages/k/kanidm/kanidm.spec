@@ -22,11 +22,11 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           kanidm
-Version:        v1.1.0alpha.2~git0.ca71b12
+Version:        v1.1.0alpha.3~git0.b34c893
 Release:        0
-Summary:        Kanidm identity project
-License:        MPL-2.0 AND Apache-2.0 AND MIT AND ISC AND OpenSSL AND APSL-2.0
-URL:            https://github.com/kanidm/kanidm
+Summary:        Kanidm identity management project
+License:        MPL-2.0
+URL:            https://github.com/Firstyear/kanidm
 Source:         kanidm-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
@@ -34,21 +34,23 @@ Source10:       kanidmd.service
 Source11:       kanidm-unixd.service
 Source12:       server.toml
 
-ExcludeArch:    %ix86
+ExcludeArch:    %ix86 s390x ppc64le armhfp armv7hl
 
 BuildRequires:  cargo
-BuildRequires:  lld
-BuildRequires:  rust >= 1.45.0
-BuildRequires:  rust-std-static
-# BuildRequires:  pkgconfig(openssl)
-# BuildRequires:  sqlite-devel
+BuildRequires:  libudev-devel
 BuildRequires:  pam-devel
+BuildRequires:  rust >= 1.45.0
+BuildRequires:  sqlite-devel
+BuildRequires:  pkgconfig(openssl)
+
+%if 0%{?rhel} > 7 || 0%{?fedora}
+BuildRequires:  systemd
+%{?systemd_requires}
+%endif
 
 Requires:       %{name}-clients
 Requires:       %{name}-server
 Requires:       %{name}-unixd-clients
-
-# Are openssl and sqlite implied as requires from this?
 
 %description
 An identity management platform written in rust that supports RADIUS, SSH Key management
@@ -56,26 +58,20 @@ and more.
 
 %package clients
 Summary:        Client tools for interacting with Kanidm
-License:        MPL-2.0
 
 %description clients
-Client utilities for interactive with kanidm
+Client utilities for interactive with kanidm servers
 
 %package server
 Summary:        Kanidm server and related tools
-License:        MPL-2.0
 Requires:       %{name}-clients
-# Requires:	libsqlite3-0
 
 %description server
-Server for kanidm
+Server for kanidm providing the main authentication and identity service
 
 %package unixd-clients
 Summary:        Client nsswitch/pam/ssh integration for consuming kanidm
-License:        MPL-2.0
 Requires:       %{name}-clients
-Requires:       pam
-# Requires:	libsqlite3-0
 
 %description unixd-clients
 A localhost resolver and libraries that allow a system to resolve posix
@@ -123,7 +119,7 @@ install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/kanidm-unixd.service
 install -m 0640 %{SOURCE12} %{buildroot}%{configdir}/server.toml
 
 # Example of how to install examples later.
-# install -D -m 0755 examples %{buildroot}%{_datadir}/kandim/examples
+# install -D -m 0755 examples percent {buildroot} percent {_datadir}/kandim/examples
 
 %pre server
 %service_add_pre kanidmd.service
@@ -151,8 +147,8 @@ install -m 0640 %{SOURCE12} %{buildroot}%{configdir}/server.toml
 
 %files
 %defattr(-,root,root)
-# %{_datadir}/kandim/examples
-%exclude /usr/.crates.toml
+# percent {_datadir}/kandim/examples
+# percent exclude /usr/.crates.toml
 
 %files clients
 %defattr(-,root,root)

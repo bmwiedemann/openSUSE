@@ -1,0 +1,28 @@
+From 056f5379830970dc2a7e12e3f16c898b384d5997 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 12 Feb 2021 18:00:45 +0100
+Subject: [PATCH] ksmserver: Enable debug output by default
+
+Sometimes logout just doesn't do anything (kde#432460). Debugging so far
+didn't help as it made the issue disappear, so enable log output in general
+so that either the issue disappears or there's useful output when it breaks.
+---
+ ksmserver/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ksmserver/CMakeLists.txt b/ksmserver/CMakeLists.txt
+index 34f943f5d..69dc58ac8 100644
+--- a/ksmserver/CMakeLists.txt
++++ b/ksmserver/CMakeLists.txt
+@@ -18,7 +18,7 @@ set(ksmserver_SRCS
+     logout.cpp
+     client.cpp
+ )
+-ecm_qt_declare_logging_category(ksmserver_SRCS HEADER ksmserver_debug.h IDENTIFIER KSMSERVER CATEGORY_NAME org.kde.kf5.ksmserver)
++ecm_qt_declare_logging_category(ksmserver_SRCS HEADER ksmserver_debug.h IDENTIFIER KSMSERVER CATEGORY_NAME org.kde.kf5.ksmserver DEFAULT_SEVERITY Debug)
+ 
+ qt5_add_dbus_adaptor( ksmserver_SRCS org.kde.KSMServerInterface.xml server.h KSMServer )
+ qt5_add_dbus_interface( ksmserver_SRCS ${KSCREENLOCKER_DBUS_INTERFACES_DIR}/org.kde.screensaver.xml kscreenlocker_interface )
+-- 
+2.25.1
+

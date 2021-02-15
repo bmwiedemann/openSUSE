@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroomacoustics
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# NEP 29: NumPy dropped Python 3.6
+%define skip_python36 1
 Name:           python-pyroomacoustics
-Version:        0.3.1
+Version:        0.4.2
 Release:        0
 Summary:        A framework for room acoustics and audio processing in Python
 License:        MIT
@@ -27,16 +29,19 @@ Source:         https://github.com/LCAV/pyroomacoustics/archive/v%{version}.tar.
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pybind11-devel >= 2.2}
+BuildRequires:  %{python_module scipy >= 0.18.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  c++_compiler
+BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Cython
 Requires:       python-numpy
+Requires:       python-pybind11 >= 2.2
 Requires:       python-scipy >= 0.18.0
 # SECTION test requirements
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 0.18.0}
 # /SECTION
 %python_subpackages
 
@@ -51,6 +56,10 @@ chmod a-x README.rst
 
 %build
 export CFLAGS="%{optflags}"
+# First build the extension with custom include path:
+# Use eigen3 headers from system instead of from the empty submodule dir in the github archive.
+%python_exec setup.py build_ext -I %{_includedir}/eigen3
+# Then build everything
 %python_build
 
 %install
@@ -58,17 +67,16 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mv pyroomacoustics pyroomacoustics_temp
-rm -rf build _build.*
-%{python_expand rm -rf build _build.*
-export PYTHONPATH=%{buildroot}%{$python_sitearch}
-%pytest pyroomacoustics_temp/tests/
-}
-mv pyroomacoustics_temp pyroomacoustics
+# Only test on x86_64: All other platforms fail because of rounding errors vs.
+# too tight precision requirements in tests.
+%ifarch x86_64
+%pytest_arch pyroomacoustics/tests --import-mode=append
+%endif
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/pyroomacoustics
+%{python_sitearch}/pyroomacoustics-%{version}*-info
 
 %changelog

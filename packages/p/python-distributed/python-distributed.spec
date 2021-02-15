@@ -75,12 +75,12 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sortedcontainers}
-BuildRequires:  %{python_module sparse}
 BuildRequires:  %{python_module tblib}
 BuildRequires:  %{python_module toolz >= 0.8.2}
 BuildRequires:  %{python_module tornado >= 5 if %python-base < 3.8}
 BuildRequires:  %{python_module tornado >= 6.0.3 if %python-base >= 3.8}
 BuildRequires:  %{python_module zict >= 0.1.3}
+BuildRequires:  %{python_module sparse if (%python-base without python36-base)}
 %endif
 %python_subpackages
 

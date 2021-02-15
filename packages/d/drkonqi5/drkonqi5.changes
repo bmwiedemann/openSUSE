@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * discard wayland client crashes following compositor crash (kde#431561)
+  * Fix includes order on windows
+  * Update .gitignore file
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Prevent clang-format uglification
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Remove duplicate line
+  * include the drkonqi version in reports
+  * report all reproducible selections
+  * capitalize consistently
+  * Layout have already a parent. Not necessary to call this method
+  * Don't include QtTest
+  * Modify DBus service name to allow using QDBusServiceWatcher
+  * fix warning about unused capture
+  * focus lineedits for bug info page (kde#428350)
+  * Fix for Clang: ptracer.cpp needs <errno.h>
+  * fix buttongroup state toggles (kde#428346)
+  * Port from QStandardPaths::DataLocation to QStandardPaths::AppDataLocation
+  * Don't use deprecated signal
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Remove this add_definition
+  * Compile without deprecated method
+  * Add .gitignore file
+  * it depends against kf5.74
+  * it depends against qt5.15
+  * Remove not implemented method
+  * [systeminformation] Fix cpp17+ compatibility
+  * Remove unused forward declaration
+  * Convert copyright statements to SPDX expressions
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

@@ -17,7 +17,7 @@
 
 
 Name:           balsa
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
@@ -25,9 +25,8 @@ URL:            https://pawsa.fedorapeople.org/balsa/
 Source0:        %{url}/%{name}-%{version}.tar.bz2
 BuildRequires:  compface-devel
 BuildRequires:  fdupes
-BuildRequires:  gpgme-devel
+BuildRequires:  gpgme-devel >= 1.8.0
 BuildRequires:  intltool
-BuildRequires:  krb5-devel
 BuildRequires:  libesmtp-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -38,13 +37,21 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gspell-1)
+BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(kadm-client)
+BuildRequires:  pkgconfig(kadm-server)
+BuildRequires:  pkgconfig(kdb)
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libical) >= 2.0.0
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mit-krb5)
+BuildRequires:  pkgconfig(mit-krb5-gssapi)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)

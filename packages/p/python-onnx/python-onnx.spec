@@ -1,7 +1,7 @@
 #
 # spec file for package python-onnx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
+%define skip_python36 1
 Name:           python-onnx
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
@@ -27,7 +29,6 @@ URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch1:         no-python2.patch
-Patch2:         using-onnxruntime-proto.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module protobuf}
@@ -50,7 +51,7 @@ Requires:       python-protobuf
 Requires:       python-six
 Requires:       python-typing_extensions >= 3.6.2.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-onnx-devel = %{version}-%{release}
 Obsoletes:      python-onnx-devel < %{version}-%{release}
 %python_subpackages
@@ -68,7 +69,7 @@ Requires:       libonnx_proto == %version
 Requires:       libonnxifi_dummy == %version
 
 %description  -n onnx-devel
-Header files of ONNX. 
+Header files of ONNX.
 
 %package -n libonnxifi_dummy
 Summary:        Library for ONNX Interface for Framework Integration
@@ -97,37 +98,26 @@ Summary:        Test data
 %description -n onnx-backend-test
 This packages includes the data for testing the backend.
 
-
 %prep
 %setup -q -n onnx-%{version}
 # avoid bundles
 rm -rf third_party
 %autopatch -p1
-# say that the cmake was already built (we used our macros)
-sed -i -e 's:built = False:built = True:g' setup.py
+# build inside python_expand shuffled build dir also used by the cmake macro instead of upstream's custom dirname
+sed -i "/^CMAKE_BUILD_DIR = / s/TOP_DIR, '.setuptools-cmake-build'/TOP_DIR, 'build'/" setup.py
 # do not require extra pytest modules
 sed -i -e '/addopts/d' setup.cfg
 # do not pull in pytest-runner as it is deprecated
 sed -i -e '/pytest-runner/d' setup.py
 
 %build
-# define same folder like is used for the setup.py later
-%define __builddir .setuptools-cmake-build
-# FIXME: you should use %%cmake macros
-# Force the cmake to build static libs as otherwise we end
-# up with unresolvable package.
-%{python_expand # we need to generate for each python
-%cmake \
-  -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
-  -DONNX_WERROR=OFF \
-  -DBUILD_ONNX_PYTHON=ON \
-  -DBUILD_SHARED_LIBS=ON \
-  -DBUILD_STATIC_LIBS=OFF \
-  -DPYTHON_EXECUTABLE="%{_bindir}/$python" \
-  -DPY_EXT_SUFFIX="`$python-config --extension-suffix`" \
-  %{nil}
-%cmake_build ; cd ..
+%{python_expand # Generate the build system using the distro macro, configuring everything to taste for every python flavor.
+%cmake -DONNX_USE_PROTOBUF_SHARED_LIBS:BOOL=ON \
+       -DONNX_WERROR:BOOL=OFF
+# the macro stays in build/
+cd ..
 }
+# let setup.py do the cmake build call (for every flavor)
 %python_build
 
 %install
@@ -136,19 +126,34 @@ sed -i -e '/pytest-runner/d' setup.py
 %python_clone -a %{buildroot}%{_bindir}/backend-test-tools
 %python_clone -a %{buildroot}%{_bindir}/check-node
 %python_clone -a %{buildroot}%{_bindir}/check-model
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
-shebang_files="%{python_sitearch}/onnx/backend/test/stat_coverage.py %{python_sitearch}/onnx/defs/gen_doc.py %{python_sitearch}/onnx/gen_proto.py"
+%{python_expand # fix shebang
+shebang_files="%{$python_sitearch}/onnx/backend/test/stat_coverage.py %{$python_sitearch}/onnx/defs/gen_doc.py %{$python_sitearch}/onnx/gen_proto.py"
 for file in $shebang_files ; do
-  sed -i 's@%{_bindir}/env python@%{_bindir}/python3@' %{buildroot}/$file
+  sed -i 's|%{_bindir}/env python.*$|%{_bindir}/$python|' %{buildroot}/$file
   chmod 755 %{buildroot}/$file
 done
+}
+%{?python_compileall}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-# copy inplace for tests
-cp %{__builddir}/*cpp2py* ./onnx/
+export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
+# copy tests into clean subdir and test the installed lib in sitearch
+mkdir cleantestdir
+cp -r onnx/test onnx/examples cleantestdir/
+pushd cleantestdir
 # skip online tests
-%pytest_arch -n auto -k 'not (test_bvlc_alexnet_cpu or test_shufflenet_cpu or test_densenet121_cpu or test_squeezenet_cpu or test_inception_v1_cpu or test_vgg19_cpu or test_inception_v2_cpu or test_zfnet512_cpu or test_resnet50_cpu)'
+donttest="   test_bvlc_alexnet_cpu \
+          or test_shufflenet_cpu \
+          or test_densenet121_cpu \
+          or test_squeezenet_cpu \
+          or test_inception_v1_cpu \
+          or test_vgg19_cpu \
+          or test_inception_v2_cpu \
+          or test_zfnet512_cpu \
+          or test_resnet50_cpu"
+%pytest_arch -n auto -k "not ($donttest)" -ra
+popd
 
 %post
 %python_install_alternative backend-test-tools
@@ -183,6 +188,7 @@ cp %{__builddir}/*cpp2py* ./onnx/
 
 %files -n libonnx
 %{_libdir}/libonnx.so
+
 %files -n libonnx_proto
 %{_libdir}/libonnx_proto.so
 

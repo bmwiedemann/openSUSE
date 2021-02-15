@@ -1,7 +1,60 @@
 -------------------------------------------------------------------
+Mon Feb 15 14:02:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * kcms/keyboard: migrate to repeat, not to accent
+  * Correctly construct URL from local file
+  * fix: Inconsistent effect when hover over the new Keyboard Layout applet (kde#432091)
+  * fix: Wrong fontsize on Keyboard Layout applet (kde#431889)
+  * Fix crash when deleting activity from activity manager (kde#426926,kde#427593)
+  * fix: the first keyboard layout can't have variants (kde#432367)
+  * Use ThickMargin to redirect mouse input to panel and update spacingAtMinSize value
+  * Make the timeout for the applet actions dialog much shorter
+  * migrate from desktops *and* panels (kde#432148)
+  * migrate from MidButton to MiddleButton (kde#430418)
+  * [Kickoff] Open leave menu on press
+  * Fix drag directions for  top and right panels (kde#429063)
+  * [Kickoff] Turn off hovering to switch tabs by default
+  * Fix display string for middle click containment action
+  * fix: keyboard applet doesn't autoload on Wayland
+  * [Kickoff] Reduce spacing between label and arrow alleviating elision problem
+  * [Kickoff] Tweak padding around configure button
+  * [Kickoff] Use RoundButton for now Right now Avatar isn't mature enough for keyboard navigation so it's best to work around touch issue for now
+  * [applets/kickoff] Add a visible configure button
+  * [applets/kickoff] Re-add Avatar to the focus chain
+  * hotfix: re-add id to avatar in Kickoff
+  * kickoff: use Kirigami.Avatar directly instead of wrapping in RoundButton
+  * [Kickoff] Fix leave buttons not working
+  * [Kickoff] Revamp LeaveButtons item
+  * [Kickoff] Check for searchPage directly rather than root.state (kde#431894)
+  * [Folder View] implement "two click rename" feature for double-click mode (kde#392731)
+  * Enable 2 columns mode
+- Avoid hard dependency on plasma5-pa
+
+-------------------------------------------------------------------
 Thu Feb  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - signon-plugin-oauth2 is a runtime dep
+
+-------------------------------------------------------------------
+Fri Jan 22 11:21:29 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix build on s390, where various Xorg components aren't available
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+- Drop patch, kickoff got redesigned:
+  * 0001-Use-themed-user-face-icon-in-kickoff.patch
 
 -------------------------------------------------------------------
 Sat Jan  9 17:17:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>

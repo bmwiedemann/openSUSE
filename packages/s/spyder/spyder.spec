@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM spyder-pr14514-fix-pandas120.patch -- gh#spyder-ide/spyder/14514
+Patch0:         https://github.com/spyder-ide/spyder/pull/14514.patch#/spyder-pr14514-fix-pandas120.patch
 Source1:        spyder-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

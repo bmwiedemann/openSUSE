@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-sparse
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-scikit-sparse
 Version:        0.4.4
 Release:        0
@@ -25,7 +27,7 @@ Release:        0
 Summary:        Scikits sparse matrix package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/scikit-sparse/scikit-sparse/
+URL:            https://github.com/scikit-sparse/scikit-sparse/
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-sparse/scikit-sparse-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/scikit-sparse/scikit-sparse/%{tag}/LICENSE.txt
 BuildRequires:  %{python_module Cython}

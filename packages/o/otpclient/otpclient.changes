@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 07:31:08 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.2
+  * fix handling of andOTP data when importing/exporting
+
+-------------------------------------------------------------------
 Thu Dec 31 07:38:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.1

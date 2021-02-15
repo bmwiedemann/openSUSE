@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  8 15:35:55 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 2.26.4276.102
+  * Fix problem with conversion including a number
+  * Introduce a new configuration file ibus_config.textproto
+    so that users can change IBus keyboard layout without root
+- Update README.SUSE
+- Update post code dictionary
+- Update abseil-cpp to 20200923.3
+- Refresh build-with-libstdc++.patch
+- Refresh ibus-provide-layout-variations.patch
+- Remove fcitx-mozc-2.23.2815.102.1.patch
+  * Replaced with fcitx-mozc.tar.xz
+- Remove fcitx-fix-for-a1dcadab.patch
+  * Merged by upstream
+
+-------------------------------------------------------------------
 Thu Nov  5 14:14:36 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Upstream update to 2.25.4150

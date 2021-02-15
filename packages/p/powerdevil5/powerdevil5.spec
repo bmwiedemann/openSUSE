@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           powerdevil5
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,13 +28,14 @@ Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz
+Source:         powerdevil-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
+Source1:        powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Auth)
@@ -89,9 +90,16 @@ DBus helper and KCM for configuring Power settings.
 
   rm -rfv %{buildroot}%{_kf5_libdir}/libpowerdevil{ui,core,configcommonprivate}.so
 
-%post   -p /sbin/ldconfig
+%post 
+/sbin/ldconfig
+%{systemd_user_post plasma-powerdevil.service}
 
-%postun -p /sbin/ldconfig
+%preun
+%{systemd_user_preun plasma-powerdevil.service}
+
+%postun
+/sbin/ldconfig
+%{systemd_user_postun plasma-powerdevil.service}
 
 %files
 %license COPYING*
@@ -129,6 +137,7 @@ DBus helper and KCM for configuring Power settings.
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.powerdevil.chargethresholdhelper.service
 %{_kf5_sharedir}/dbus-1/system.d/org.kde.powerdevil.chargethresholdhelper.conf
 %{_kf5_sharedir}/polkit-1/actions/org.kde.powerdevil.chargethresholdhelper.policy
+%{_userunitdir}/plasma-powerdevil.service
 
 %{_kf5_configdir}/autostart/powerdevil.desktop
 

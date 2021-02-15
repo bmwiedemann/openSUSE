@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 13 00:27:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: Due to NEP 29, python36-scipy in TW is no
+  more. Numpy and the lal packages follow
+
+-------------------------------------------------------------------
+Thu Jan 21 19:33:51 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix up tests and binary installation to account for multiple
+  python versions.
+- Use mutibuild to split up main pkg building and tests since
+  tests require the binaries which are installed using
+  /etc/alternatives.
+
+-------------------------------------------------------------------
 Fri Oct 30 23:32:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.7.0:

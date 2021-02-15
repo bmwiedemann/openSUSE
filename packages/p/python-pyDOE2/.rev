@@ -43,4 +43,12 @@
     <comment></comment>
     <requestid>768811</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a55f509e3a85c79888d48e04339306f1</srcmd5>
+    <version>1.3.0</version>
+    <time>1613427430</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python36 (scipy)</comment>
+    <requestid>871486</requestid>
+  </revision>
 </revisionlist>

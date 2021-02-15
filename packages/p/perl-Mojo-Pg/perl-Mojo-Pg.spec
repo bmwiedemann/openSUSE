@@ -18,7 +18,7 @@
 
 %define cpan_name Mojo-Pg
 Name:           perl-Mojo-Pg
-Version:        4.23
+Version:        4.24
 Release:        0
 Summary:        Wrapper around DBD::Pg for using PostgreSql with Mojolicious
 License:        Artistic-2.0

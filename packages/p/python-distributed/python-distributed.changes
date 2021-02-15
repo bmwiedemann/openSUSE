@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 15 11:56:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unskip python36 build. Just skip installing optional 
+  python36-sparse for the tests. 
+
+-------------------------------------------------------------------
+Fri Feb 12 14:30:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 build 
+
+-------------------------------------------------------------------
 Mon Feb  8 14:32:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2021.2.0

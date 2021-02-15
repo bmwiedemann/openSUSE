@@ -1,7 +1,7 @@
 #
 # spec file for package python-distlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        Python-2.0
 URL:            https://bitbucket.org/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.zip
 Patch0:         remove-backports.patch
+#PATCH-FIX-UPSTREAM Update self-signed certificate to use 2048-bit key.
+Patch1:         python-distlib-2048-bit-key.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 11 14:40:29 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- use maven local
+- drop commons-math3-3.6.1-notests.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 11:22:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Add alias to the maven artifact

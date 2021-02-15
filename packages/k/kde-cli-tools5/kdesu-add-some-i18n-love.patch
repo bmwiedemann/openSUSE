@@ -11,61 +11,60 @@ BUG: boo#852256
  kdesu/kdesu.cpp | 16 ++++++++--------
  1 file changed, 8 insertions(+), 8 deletions(-)
 
-Index: kde-cli-tools-5.14.80git.20180925T084325~290b262/kdesu/kdesu.cpp
+Index: kde-cli-tools-5.15.80git.20210118T171249~517a2f9/kdesu/kdesu.cpp
 ===================================================================
---- kde-cli-tools-5.14.80git.20180925T084325~290b262.orig/kdesu/kdesu.cpp
-+++ kde-cli-tools-5.14.80git.20180925T084325~290b262/kdesu/kdesu.cpp
-@@ -157,11 +157,11 @@ int main(int argc, char *argv[])
+--- kde-cli-tools-5.15.80git.20210118T171249~517a2f9.orig/kdesu/kdesu.cpp	2021-01-19 09:50:49.604400930 +0100
++++ kde-cli-tools-5.15.80git.20210118T171249~517a2f9/kdesu/kdesu.cpp	2021-01-19 09:53:33.170263817 +0100
+@@ -164,10 +164,10 @@
+     int result = startApp(parser);
  
-     if (result == 127)
-     {
+     if (result == 127) {
 -        KMessageBox::sorry(nullptr, i18n("Cannot execute command '%1'.", QString::fromLocal8Bit(command)));
 +        KMessageBox::sorry(nullptr, i18n("Cannot execute command '%1'.", QString::fromUtf8(command)));
      }
-     if (result == -2)
-     {
+     if (result == -2) {
 -        KMessageBox::sorry(nullptr, i18n("Cannot execute command '%1'. It contains invalid characters.", QString::fromLocal8Bit(command)));
 +        KMessageBox::sorry(nullptr, i18n("Cannot execute command '%1'. It contains invalid characters.", QString::fromUtf8(command)));
      }
  
      return result;
-@@ -196,7 +196,7 @@ static int startApp(QCommandLineParser&
-         prompt = false;
+@@ -201,7 +201,7 @@
+     }
  
      // Get target uid
 -    const QByteArray user = p.value(QStringLiteral("u")).toLocal8Bit();
 +    const QByteArray user = p.value(QStringLiteral("u")).toUtf8();
      QByteArray auth_user = user;
      struct passwd *pw = getpwnam(user.constData());
-     if (pw == nullptr)
-@@ -256,7 +256,7 @@ static int startApp(QCommandLineParser&
+     if (pw == nullptr) {
+@@ -255,7 +255,7 @@
+ 
      // Get command
-     if (p.isSet(QStringLiteral("c")))
-     {
+     if (p.isSet(QStringLiteral("c"))) {
 -        command = p.value(QStringLiteral("c")).toLocal8Bit();
 +        command = p.value(QStringLiteral("c")).toUtf8();
          // Accepting additional arguments here is somewhat weird,
          // but one can conceive use cases: have a complex command with
          // redirections and additional file names which need to be quoted
-@@ -344,7 +344,7 @@ static int startApp(QCommandLineParser&
- //     }
+@@ -337,7 +337,7 @@
+     //     }
  
      KUser u;
--    env << (QByteArray) ("KDESU_USER=" + u.loginName().toLocal8Bit());
-+    env << (QByteArray) ("KDESU_USER=" + u.loginName().toUtf8());
+-    env << (QByteArray)("KDESU_USER=" + u.loginName().toLocal8Bit());
++    env << (QByteArray)("KDESU_USER=" + u.loginName().toUtf8());
  
-     if (keep && !terminal && !just_started)
-     {
-@@ -456,7 +456,7 @@ static int startApp(QCommandLineParser&
-     }
-     else if (keep && have_daemon)
-     {
+     if (keep && !terminal && !just_started) {
+         client.setPriority(priority);
+@@ -445,7 +445,7 @@
+         result = WEXITSTATUS(result);
+         return result;
+     } else if (keep && have_daemon) {
 -        client.setPass(password.toLocal8Bit().constData(), timeout);
 +        client.setPass(password.toUtf8().constData(), timeout);
          client.setPriority(priority);
          client.setScheduler(scheduler);
          int result = client.exec(command, user, options, env);
-@@ -475,7 +475,7 @@ static int startApp(QCommandLineParser&
+@@ -462,7 +462,7 @@
          proc.setPriority(priority);
          proc.setScheduler(scheduler);
          proc.setCommand(command);

@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Sat Nov 28 16:02:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 18.4
+  * Avoid unnecessary dependency on QtQml QML module.
+  * Aborting computer play with the Stop button did not work
+    reliably when the computer played multiple colors at low
+    levels.
+  * New Russian translation of manual.
+
+-------------------------------------------------------------------
+Wed Nov  4 15:01:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 18.3
+  * Made opening of recent rated games from rating dialog work
+    again.
+  * New Russian UI translation.
+  * Menu shortcuts are no longer supported.
+
+-------------------------------------------------------------------
+Sun Oct 11 08:04:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 18.2
+  * Fixed truncated submenu in desktop version with Qt 5.15.
+  * Updated bugtracker link.
+
+-------------------------------------------------------------------
+Fri Jun 26 09:20:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 18.1
+  * Fixed compilation with Qt 5.15.
+  * Updated AndroidManifest.xml for usage with Qt 5.15.
+  * HTML manual generation failed with older versions of DocBook XSL.
+
+-------------------------------------------------------------------
+Mon May 11 14:32:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Updat to version 18.0
+  * The minimum required Qt version is now 5.12.
+  * Fixed crash if application was closed while game analysis was
+    running.
+  * Added missing include that broke the compilation with GCC 10
+    if compiled with PENTOBI_BUILD_GTP=1.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:06:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 17.3
+  * Don't use Fusion style on desktop anymore because it is
+    currently broken on some Linux distributions (QTBUG-77107).
+  * Added more search hints for location of DocBook XSL.
+- Update to version 17.2
+  * New Spanish translation
+  * New Game button and menu item were not enabled if no moves were
+    played but an analysis graph existed (e.g. after analyzing a
+    game and then undoing all moves).
+  * Clear autosaved analysis if autosaved game corresponded to a
+    file that no longer exists.
+
+-------------------------------------------------------------------
+Thu Jun 13 20:20:45 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release, version 17.1
+  * Move generation hung if a move generation using search was
+    aborted and the next move generation used the opening book.
+  * Added search hint for DocBook XSL for compilation on OpenSUSE.
+- Remove patch (fixed upstream):
+  * pentobi-add-proper-docbook-path.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 07:39:37 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release, version 17.0
+  * see /usr/share/doc/packages/pentobi/NEWS for all changes
+  * Add patch:
+    - pentobi-add-proper-docbook-path.patch
+      Add hint path so cmake can find html/chunk.xsl
+
+-------------------------------------------------------------------
+Wed Apr 17 18:11:43 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release, version 16.3
+  * see /usr/share/doc/packages/pentobi/NEWS for all changes
+
+-------------------------------------------------------------------
+Thu Jul 19 20:43:22 UTC 2018 - mardnh@gmx.de
+
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Fri Jun 29 00:00:00 UTC 2018 - huaren.zhong@gmail.com
+
+- Rebuild for Fedora
+
+-------------------------------------------------------------------
+Mon Jan  4 00:00:00 UTC 2016 - juhaninumminen0@gmail.com
+
+- Created by borrowing from existing pentobi.spec files
+- Add subpackage kde-thumbnailer
+- Build with -O3 to make higher levels faster
+

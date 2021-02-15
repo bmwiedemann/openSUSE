@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 14 22:05:58 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.2
+  *  Record CPU load data even if the chart is currently disabled
+  *  Validate size against minimum and maximum allowed values
+  *  Change semantics of the non-linear time-scale mode
+  *  Fix corner cases when rendering the grid and LED modes
+  *  Show SMT stats tooltip only when needed
+  *  Translation Updates
+
+-------------------------------------------------------------------
 Sun Jan 31 17:11:53 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.2.1

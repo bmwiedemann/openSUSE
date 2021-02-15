@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luassert
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,7 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-say
 Requires:       %{flavor}
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-luassert = %{version}
-Obsoletes:      lua-luassert < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-luassert
 ExclusiveArch:  do_not_build

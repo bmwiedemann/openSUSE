@@ -18,7 +18,7 @@
 
 
 Name:           sscep
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A command line client for the SCEP protocol
 License:        BSD-3-Clause-Attribution AND OpenSSL
@@ -37,7 +37,6 @@ modifications for engine support & more.
 %setup -q
 
 %build
-export CFLAGS="%optflags -fcommon"
 %cmake
 
 %install

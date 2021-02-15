@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 14:23:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36
+
+-------------------------------------------------------------------
 Sat Jan  2 23:30:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Test in _multibuild flavor in order to avoid build dependency

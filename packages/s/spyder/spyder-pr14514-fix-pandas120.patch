@@ -1,0 +1,21 @@
+From ac21be7a426f21de4247df9af15584f13ddfe06d Mon Sep 17 00:00:00 2001
+From: dalthviz <d.althviz10@uniandes.edu.co>
+Date: Tue, 29 Dec 2020 18:44:32 -0500
+Subject: [PATCH] CollectionsEditor: Fix test compatibility with Pandas 1.2.0
+
+---
+ .../variableexplorer/widgets/tests/test_collectioneditor.py      | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/spyder/plugins/variableexplorer/widgets/tests/test_collectioneditor.py b/spyder/plugins/variableexplorer/widgets/tests/test_collectioneditor.py
+index 76d17a8d9a..c240330dc2 100644
+--- a/spyder/plugins/variableexplorer/widgets/tests/test_collectioneditor.py
++++ b/spyder/plugins/variableexplorer/widgets/tests/test_collectioneditor.py
+@@ -725,6 +725,7 @@ def test_set_nonsettable_objects(nonsettable_objects_data):
+     """
+     for test_obj, expected_obj, keys in nonsettable_objects_data:
+         col_model = CollectionsModel(None, test_obj)
++        col_model.load_all()
+         indicies = [col_model.get_index_from_key(key) for key in keys]
+         for idx in indicies:
+             assert not col_model.set_value(idx, "2")

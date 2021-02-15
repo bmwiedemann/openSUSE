@@ -1,4 +1,371 @@
 -------------------------------------------------------------------
+Sat Feb 13 17:19:54 CET 2021 - jslaby@suse.cz
+
+- Linux 5.10.16 (bsc#1012628).
+- squashfs: add more sanity checks in xattr id lookup
+  (bsc#1012628).
+- squashfs: add more sanity checks in inode lookup (bsc#1012628).
+- squashfs: add more sanity checks in id lookup (bsc#1012628).
+- squashfs: avoid out of bounds writes in decompressors
+  (bsc#1012628).
+- Revert "mm: memcontrol: avoid workload stalls when lowering
+  memory.high" (bsc#1012628).
+- nilfs2: make splice write available again (bsc#1012628).
+- drm/i915: Skip vswing programming for TBT (bsc#1012628).
+- drm/i915: Fix ICL MG PHY vswing handling (bsc#1012628).
+- bpf: Fix verifier jsgt branch analysis on max bound
+  (bsc#1012628).
+- bpf: Fix 32 bit src register truncation on div/mod
+  (bsc#1012628).
+- bpf: Fix verifier jmp32 pruning decision logic (bsc#1012628).
+- regulator: Fix lockdep warning resolving supplies (bsc#1012628).
+- blk-cgroup: Use cond_resched() when destroy blkgs (bsc#1012628).
+- i2c: mediatek: Move suspend and resume handling to NOIRQ phase
+  (bsc#1012628).
+- SUNRPC: Handle 0 length opaque XDR object data properly
+  (bsc#1012628).
+- SUNRPC: Move simple_get_bytes and simple_get_netobj into
+  private header (bsc#1012628).
+- iwlwifi: queue: bail out on invalid freeing (bsc#1012628).
+- iwlwifi: mvm: guard against device removal in reprobe
+  (bsc#1012628).
+- iwlwifi: pcie: add rules to match Qu with Hr2 (bsc#1012628).
+- iwlwifi: mvm: invalidate IDs of internal stations at mvm start
+  (bsc#1012628).
+- iwlwifi: pcie: fix context info memory leak (bsc#1012628).
+- iwlwifi: pcie: add a NULL check in iwl_pcie_txq_unmap
+  (bsc#1012628).
+- iwlwifi: mvm: take mutex for calling iwl_mvm_get_sync_time()
+  (bsc#1012628).
+- iwlwifi: mvm: skip power command when unbinding vif during CSA
+  (bsc#1012628).
+- ASoC: Intel: sof_sdw: set proper flags for Dell TGL-H SKU 0A5E
+  (bsc#1012628).
+- ASoC: ak4458: correct reset polarity (bsc#1012628).
+- ALSA: hda: intel-dsp-config: add PCI id for TGL-H (bsc#1012628).
+- pNFS/NFSv4: Improve rejection of out-of-order layouts
+  (bsc#1012628).
+- pNFS/NFSv4: Try to return invalid layout in
+  pnfs_layout_process() (bsc#1012628).
+- chtls: Fix potential resource leak (bsc#1012628).
+- ASoC: Intel: Skylake: Zero snd_ctl_elem_value (bsc#1012628).
+- mac80211: 160MHz with extended NSS BW in CSA (bsc#1012628).
+- drm/nouveau/nvif: fix method count when pushing an array
+  (bsc#1012628).
+- ASoC: wm_adsp: Fix control name parsing for multi-fw
+  (bsc#1012628).
+- regulator: core: avoid regulator_resolve_supply() race condition
+  (bsc#1012628).
+- af_key: relax availability checks for skb size calculation
+  (bsc#1012628).
+- powerpc/64/signal: Fix regression in __kernel_sigtramp_rt64()
+  semantics (bsc#1012628).
+- gpiolib: cdev: clear debounce period if line set to output
+  (bsc#1012628).
+- io_uring: drop mm/files between task_work_submit (bsc#1012628).
+- io_uring: reinforce cancel on flush during exit (bsc#1012628).
+- io_uring: fix sqo ownership false positive warning
+  (bsc#1012628).
+- io_uring: fix list corruption for splice file_get (bsc#1012628).
+- io_uring: fix flush cqring overflow list while
+  TASK_INTERRUPTIBLE (bsc#1012628).
+- io_uring: fix cancellation taking mutex while
+  TASK_UNINTERRUPTIBLE (bsc#1012628).
+- io_uring: replace inflight_wait with tctx->wait (bsc#1012628).
+- io_uring: fix __io_uring_files_cancel() with
+  TASK_UNINTERRUPTIBLE (bsc#1012628).
+- io_uring: if we see flush on exit, cancel related tasks
+  (bsc#1012628).
+- io_uring: account io_uring internal files as REQ_F_INFLIGHT
+  (bsc#1012628).
+- io_uring: fix files cancellation (bsc#1012628).
+- io_uring: always batch cancel in *cancel_files() (bsc#1012628).
+- io_uring: pass files into kill timeouts/poll (bsc#1012628).
+- io_uring: don't iterate io_uring_cancel_files() (bsc#1012628).
+- io_uring: add a {task,files} pair matching helper (bsc#1012628).
+- io_uring: simplify io_task_match() (bsc#1012628).
+- commit 11381f3
+
+-------------------------------------------------------------------
+Fri Feb 12 15:31:50 CET 2021 - tiwai@suse.de
+
+- Update config files: enable CONFIG_SERIAL_DEV_CTRL_TTYPORT on x86 (bsc#1182035)
+  For supporting MS Surface devices. This required CONFIG_SERIAL_DEV_BUS
+  to be built-in. Also this allowed CONFIG_BT_HCIUART_BCM=y as well.
+- commit 2d8fb7a
+
+-------------------------------------------------------------------
+Fri Feb 12 15:27:56 CET 2021 - tiwai@suse.de
+
+- media: pwc: Use correct device for DMA (bsc#1181133).
+- commit 4a7417d
+
+-------------------------------------------------------------------
+Fri Feb 12 15:26:57 CET 2021 - tiwai@suse.de
+
+- Drop pwc fix patch; it'll be replaced with the upstream fix (bsc#1181133)
+- commit 2202405
+
+-------------------------------------------------------------------
+Fri Feb 12 09:18:21 CET 2021 - nsaenzjulienne@suse.de
+
+- Update config files: armv7hl: Set ledtrig-default-on as builtin (bsc#1182128)
+- commit d24d9b2
+
+-------------------------------------------------------------------
+Thu Feb 11 18:31:44 CET 2021 - fdmanana@suse.com
+
+- btrfs: fix crash after non-aligned direct IO write with O_DSYNC
+  (bsc#1181605).
+- commit 9e44573
+
+-------------------------------------------------------------------
+Thu Feb 11 15:29:59 CET 2021 - nsaenzjulienne@suse.de
+
+- Update config files: Set ledtrig-default-on as builtin (bsc#1182128)
+- commit 7119d5a
+
+-------------------------------------------------------------------
+Thu Feb 11 14:37:16 CET 2021 - oneukum@suse.com
+
+- Update config files. Enable DWC3 on x86_64
+  DWC3 is now needed on x86_64, too, with the added benefit
+  of making x86_64 and ARM64 closer (jsc#SLE-14042)
+- commit 7cc21b5
+
+-------------------------------------------------------------------
+Wed Feb 10 09:41:17 CET 2021 - jslaby@suse.cz
+
+- Linux 5.10.15 (bsc#1012628).
+- USB: serial: cp210x: add pid/vid for WSDA-200-USB (bsc#1012628).
+- USB: serial: cp210x: add new VID/PID for supporting Teraoka
+  AD2000 (bsc#1012628).
+- USB: serial: option: Adding support for Cinterion MV31
+  (bsc#1012628).
+- usb: host: xhci: mvebu: make USB 3.0 PHY optional for Armada
+  3720 (bsc#1012628).
+- USB: gadget: legacy: fix an error code in eth_bind()
+  (bsc#1012628).
+- usb: gadget: aspeed: add missing of_node_put (bsc#1012628).
+- USB: usblp: don't call usb_set_interface if there's a single
+  alt (bsc#1012628).
+- usb: renesas_usbhs: Clear pipe running flag in usbhs_pkt_pop()
+  (bsc#1012628).
+- usb: dwc2: Fix endpoint direction check in ep_from_windex
+  (bsc#1012628).
+- usb: dwc3: fix clock issue during resume in OTG mode
+  (bsc#1012628).
+- usb: xhci-mtk: fix unreleased bandwidth data (bsc#1012628).
+- usb: xhci-mtk: skip dropping bandwidth of unchecked endpoints
+  (bsc#1012628).
+- usb: xhci-mtk: break loop when find the endpoint to drop
+  (bsc#1012628).
+- ARM: OMAP1: OSK: fix ohci-omap breakage (bsc#1012628).
+- arm64: dts: qcom: c630: keep both touchpad devices enabled
+  (bsc#1012628).
+- Input: i8042 - unbreak Pegatron C15B (bsc#1012628).
+- arm64: dts: amlogic: meson-g12: Set FL-adj property value
+  (bsc#1012628).
+- arm64: dts: rockchip: fix vopl iommu irq on px30 (bsc#1012628).
+- arm64: dts: rockchip: Use only supported PCIe link speed on
+  Pinebook Pro (bsc#1012628).
+- ARM: dts: stm32: Fix polarity of the DH DRC02 uSD card detect
+  (bsc#1012628).
+- ARM: dts: stm32: Connect card-detect signal on DHCOM
+  (bsc#1012628).
+- ARM: dts: stm32: Disable WP on DHCOM uSD slot (bsc#1012628).
+- ARM: dts: stm32: Disable optional TSC2004 on DRC02 board
+  (bsc#1012628).
+- ARM: dts: stm32: Fix GPIO hog flags on DHCOM DRC02
+  (bsc#1012628).
+- vdpa/mlx5: Fix memory key MTT population (bsc#1012628).
+- bpf, cgroup: Fix optlen WARN_ON_ONCE toctou (bsc#1012628).
+- bpf, cgroup: Fix problematic bounds check (bsc#1012628).
+- bpf, inode_storage: Put file handler if no storage was found
+  (bsc#1012628).
+- um: virtio: free vu_dev only with the contained struct device
+  (bsc#1012628).
+- bpf, preload: Fix build when $(O) points to a relative path
+  (bsc#1012628).
+- arm64: dts: meson: switch TFLASH_VDD_EN pin to open drain on
+  Odroid-C4 (bsc#1012628).
+- r8169: work around RTL8125 UDP hw bug (bsc#1012628).
+- rxrpc: Fix deadlock around release of dst cached on udp tunnel
+  (bsc#1012628).
+- arm64: dts: ls1046a: fix dcfg address range (bsc#1012628).
+- SUNRPC: Fix NFS READs that start at non-page-aligned offsets
+  (bsc#1012628).
+- igc: set the default return value to -IGC_ERR_NVM in
+  igc_write_nvm_srwr (bsc#1012628).
+- igc: check return value of ret_val in
+  igc_config_fc_after_link_up (bsc#1012628).
+- i40e: Revert "i40e: don't report link up for a VF who hasn't
+  enabled queues" (bsc#1012628).
+- ibmvnic: device remove has higher precedence over reset
+  (bsc#1012628).
+- net/mlx5: Fix leak upon failure of rule creation (bsc#1012628).
+- net/mlx5e: Update max_opened_tc also when channels are closed
+  (bsc#1012628).
+- net/mlx5e: Release skb in case of failure in tc update skb
+  (bsc#1012628).
+- net: lapb: Copy the skb before sending a packet (bsc#1012628).
+- net: mvpp2: TCAM entry enable should be written after SRAM data
+  (bsc#1012628).
+- r8169: fix WoL on shutdown if CONFIG_DEBUG_SHIRQ is set
+  (bsc#1012628).
+- net: ipa: pass correct dma_handle to dma_free_coherent()
+  (bsc#1012628).
+- ARM: dts: sun7i: a20: bananapro: Fix ethernet phy-mode
+  (bsc#1012628).
+- nvmet-tcp: fix out-of-bounds access when receiving multiple
+  h2cdata PDUs (bsc#1012628).
+- vdpa/mlx5: Restore the hardware used index after change map
+  (bsc#1012628).
+- memblock: do not start bottom-up allocations with kernel_end
+  (bsc#1012628).
+- kbuild: fix duplicated flags in DEBUG_CFLAGS (bsc#1012628).
+- thunderbolt: Fix possible NULL pointer dereference in
+  tb_acpi_add_link() (bsc#1012628).
+- ovl: fix dentry leak in ovl_get_redirect (bsc#1012628).
+- ovl: avoid deadlock on directory ioctl (bsc#1012628).
+- ovl: implement volatile-specific fsync error behaviour
+  (bsc#1012628).
+- mac80211: fix station rate table updates on assoc (bsc#1012628).
+- gpiolib: free device name on error path to fix kmemleak
+  (bsc#1012628).
+- fgraph: Initialize tracing_graph_pause at task creation
+  (bsc#1012628).
+- tracing/kprobe: Fix to support kretprobe events on unloaded
+  modules (bsc#1012628).
+- kretprobe: Avoid re-registration of the same kretprobe earlier
+  (bsc#1012628).
+- tracing: Use pause-on-trace with the latency tracers
+  (bsc#1012628).
+- tracepoint: Fix race between tracing and removing tracepoint
+  (bsc#1012628).
+- libnvdimm/namespace: Fix visibility of namespace resource
+  attribute (bsc#1012628).
+- libnvdimm/dimm: Avoid race between probe and
+  available_slots_show() (bsc#1012628).
+- genirq: Prevent [devm_]irq_alloc_desc from returning irq 0
+  (bsc#1012628).
+- genirq/msi: Activate Multi-MSI early when
+  MSI_FLAG_ACTIVATE_EARLY is set (bsc#1012628).
+- scripts: use pkg-config to locate libcrypto (bsc#1012628).
+- xhci: fix bounce buffer usage for non-sg list case
+  (bsc#1012628).
+- RISC-V: Define MAXPHYSMEM_1GB only for RV32 (bsc#1012628).
+- cifs: report error instead of invalid when revalidating a
+  dentry fails (bsc#1012628).
+- iommu: Check dev->iommu in dev_iommu_priv_get() before
+  dereferencing it (bsc#1012628).
+- smb3: Fix out-of-bounds bug in SMB2_negotiate() (bsc#1012628).
+- smb3: fix crediting for compounding when only one request in
+  flight (bsc#1012628).
+- mmc: sdhci-pltfm: Fix linking err for sdhci-brcmstb
+  (bsc#1012628).
+- mmc: core: Limit retries when analyse of SDIO tuples fails
+  (bsc#1012628).
+- Fix unsynchronized access to sev members through
+  svm_register_enc_region (bsc#1012628).
+- drm/dp/mst: Export drm_dp_get_vc_payload_bw() (bsc#1012628).
+- drm/i915: Fix the MST PBN divider calculation (bsc#1012628).
+- drm/i915/gem: Drop lru bumping on display unpinning
+  (bsc#1012628).
+- drm/i915/gt: Close race between enable_breadcrumbs and
+  cancel_breadcrumbs (bsc#1012628).
+- drm/i915/display: Prevent double YUV range correction on HDR
+  planes (bsc#1012628).
+- drm/i915: Extract intel_ddi_power_up_lanes() (bsc#1012628).
+- drm/i915: Power up combo PHY lanes for for HDMI as well
+  (bsc#1012628).
+- drm/amd/display: Revert "Fix EDID parsing after resume from
+  suspend" (bsc#1012628).
+- io_uring: don't modify identity's files uncess identity is cowed
+  (bsc#1012628).
+- nvme-pci: avoid the deepest sleep state on Kingston A2000 SSDs
+  (bsc#1012628).
+- KVM: SVM: Treat SVM as unsupported when running as an SEV guest
+  (bsc#1012628).
+- KVM: x86/mmu: Fix TDP MMU zap collapsible SPTEs (bsc#1012628).
+- KVM: x86: Allow guests to see MSR_IA32_TSX_CTRL even if tsx=off
+  (bsc#1012628).
+- KVM: x86: fix CPUID entries returned by KVM_GET_CPUID2 ioctl
+  (bsc#1012628).
+- KVM: x86: Update emulator context mode if SYSENTER xfers to
+  64-bit mode (bsc#1012628).
+- KVM: x86: Set so called 'reserved CR3 bits in LM mask' at vCPU
+  reset (bsc#1012628).
+- DTS: ARM: gta04: remove legacy spi-cs-high to make display
+  work again (bsc#1012628).
+- ARM: dts; gta04: SPI panel chip select is active low
+  (bsc#1012628).
+- ARM: footbridge: fix dc21285 PCI configuration accessors
+  (bsc#1012628).
+- ARM: 9043/1: tegra: Fix misplaced tegra_uart_config in
+  decompressor (bsc#1012628).
+- mm: hugetlbfs: fix cannot migrate the fallocated HugeTLB page
+  (bsc#1012628).
+- mm: hugetlb: fix a race between freeing and dissolving the page
+  (bsc#1012628).
+- mm: hugetlb: fix a race between isolating and freeing page
+  (bsc#1012628).
+- mm: hugetlb: remove VM_BUG_ON_PAGE from page_huge_active
+  (bsc#1012628).
+- mm, compaction: move high_pfn to the for loop scope
+  (bsc#1012628).
+- mm/vmalloc: separate put pages and flush VM flags (bsc#1012628).
+- mm: thp: fix MADV_REMOVE deadlock on shmem THP (bsc#1012628).
+- mm/filemap: add missing mem_cgroup_uncharge() to
+  __add_to_page_cache_locked() (bsc#1012628).
+- x86/build: Disable CET instrumentation in the kernel
+  (bsc#1012628).
+- x86/debug: Fix DR6 handling (bsc#1012628).
+- x86/debug: Prevent data breakpoints on __per_cpu_offset
+  (bsc#1012628).
+- x86/debug: Prevent data breakpoints on cpu_dr7 (bsc#1012628).
+- x86/apic: Add extra serialization for non-serializing MSRs
+  (bsc#1012628).
+- Input: goodix - add support for Goodix GT9286 chip
+  (bsc#1012628).
+- Input: xpad - sync supported devices with fork on GitHub
+  (bsc#1012628).
+- Input: ili210x - implement pressure reporting for ILI251x
+  (bsc#1012628).
+- md: Set prev_flush_start and flush_bio in an atomic way
+  (bsc#1012628).
+- igc: Report speed and duplex as unknown when device is runtime
+  suspended (bsc#1012628).
+- neighbour: Prevent a dead entry from updating gc_list
+  (bsc#1012628).
+- net: ip_tunnel: fix mtu calculation (bsc#1012628).
+- udp: ipv4: manipulate network header of NATed UDP GRO fraglist
+  (bsc#1012628).
+- net: dsa: mv88e6xxx: override existent unicast portvec in
+  port_fdb_add (bsc#1012628).
+- net: sched: replaced invalid qdisc tree flush helper in
+  qdisc_replace (bsc#1012628).
+- commit 24c2efe
+
+-------------------------------------------------------------------
+Tue Feb  9 10:14:09 CET 2021 - jslaby@suse.cz
+
+- Update
+  patches.kernel.org/5.10.13-143-vsock-fix-the-race-conditions-in-multi-transp.patch
+  (bsc#1012628 bsc#1181806 CVE-2021-26708).
+  Add CVE number.
+- commit bf327d1
+
+-------------------------------------------------------------------
+Mon Feb  8 17:26:30 CET 2021 - matwey.kornilov@gmail.com
+
+- config: arm64: Use y for CLK_RK3399
+  This is to fix booting on RK3399 systems (JeOS-rockpi4)
+  When compiled as 'm' there are lots of errors related to clk and no host mmc
+  controler initialized.
+- commit 52fdc54
+
+-------------------------------------------------------------------
 Sun Feb  7 16:07:09 CET 2021 - jslaby@suse.cz
 
 - Linux 5.10.14 (bsc#1012628).
@@ -415,6 +782,14 @@ Sat Jan 30 20:15:49 CET 2021 - jslaby@suse.cz
 - printk: fix string termination for record_print_text()
   (bsc#1012628).
 - commit a3c8888
+
+-------------------------------------------------------------------
+Sat Jan 30 16:50:45 CET 2021 - afaerber@suse.com
+
+- config: arm64: Enable Arm SP805 hardware watchdog (boo#1181607)
+  The Ten64 board with NXP LS1088A SoC is documented to have Arm SP805 based
+  watchdogs, so let's enable the driver for it.
+- commit a0c37a5
 
 -------------------------------------------------------------------
 Thu Jan 28 11:34:53 CET 2021 - msuchanek@suse.de

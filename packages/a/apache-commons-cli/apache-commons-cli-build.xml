@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="commons-cli" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property name="build.finalName" value="commons-cli-1.4"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="."/>
+  <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
+  <property name="build.testDir" value="src/test/java"/>
+  <property name="build.testResourceDir" value="src/test/resources"/>
+  <property name="test.reports" value="${build.dir}/test-reports"/>
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath"/>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           encoding="iso-8859-1" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="6" 
+           verbose="false" 
+           fork="false" 
+           source="6">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.outputDir}/META-INF"/>
+    <copy todir="${build.outputDir}/META-INF">
+      <fileset dir="${build.resourceDir}">
+        <include name="NOTICE.txt"/>
+        <include name="LICENSE.txt"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             old="false" 
+             verbose="false" 
+             encoding="iso-8859-1" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             charset="ISO-8859-1" 
+             source="6" 
+             linksource="true" 
+             breakiterator="false">
+      <link href="http://java.sun.com/javase/6/docs/api/"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Bundle-Description" value="Apache Commons CLI provides a simple API for presenting, processing and validating a command line interface."/>
+        <attribute name="Bundle-DocURL" value="http://commons.apache.org/proper/commons-cli/"/>
+        <attribute name="Bundle-License" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="Apache Commons CLI"/>
+        <attribute name="Bundle-SymbolicName" value="org.apache.commons.cli"/>
+        <attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
+        <attribute name="Bundle-Version" value="1.4.0"/>
+        <attribute name="Export-Package" value="org.apache.commons.cli;version=&quot;1.4&quot;"/>
+        <attribute name="Implementation-Title" value="Apache Commons CLI"/>
+        <attribute name="Implementation-Vendor-Id" value="org.apache"/>
+        <attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
+        <attribute name="Implementation-Version" value="1.4"/>
+        <attribute name="Include-Resource" value="META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.6))&quot;"/>
+        <attribute name="Specification-Title" value="Apache Commons CLI"/>
+        <attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
+        <attribute name="Specification-Version" value="1.4"/>
+      </manifest>
+    </jar>
+  </target>
+
+</project>

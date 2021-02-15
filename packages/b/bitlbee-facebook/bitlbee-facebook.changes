@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 04 14:08:56 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 1.2.1+git.1611145185.49ea312:
+  * Bump the FB_ORCA_AGENT version once again (#208)
+  * Remove bash-ism in configure.ac
+  * Port away from deprecated g_type_class_add_private() and friends
+  * Increase default sync_interval from 5 to 1440
+  * travis: replace python-m2crypto dependency with python3-m2crypto
+  * facebook-api: Fix id assertion in fb_api_cb_publish_mst() (#204)
+  * travis: add python-m2crypto to dependencies for OBS deploy
+  * Release 1.2.1 with fixes for a couple of server changes
+  * Fix taNewMessage bug (#202)
+  * fb_api_cb_publish_pt: check field is stop (#199)
+
+-------------------------------------------------------------------
+Sun Oct 25 17:03:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.1:
+  - Fix "Parse error: unexpected identifier 'taNewMessage'"
+    (gh#bitlbee/bitlbee-facebook#200)
+  - Fix "Failed to read thrift: facebook-api.c:1929
+    fb_api_cb_publish_pt: assertion 'fb_thrift_read_stop(thft)' failed"
+    (gh#bitlbee/bitlbee-facebook#197)
+
+-------------------------------------------------------------------
 Thu Mar 14 14:20:03 UTC 2019 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Version bump 1.2.0

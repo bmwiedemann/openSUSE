@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lua-ev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,6 +45,7 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
+%lua_provides
 
 %description
 Lua integration with libev (http://dist.schmorp.de/libev)

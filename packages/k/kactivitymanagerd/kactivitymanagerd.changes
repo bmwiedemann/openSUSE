@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Add trailing comma to enums
+  * Fix Boot dependency problems and cleanup old configs
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Fix a dangling reference to the list of database files
+  * Explicit lambda captures to avoid future dangling reference bugs
+  * Fix a dangling reference to the list of database files
+  * Convert copyright statements to SPDX expressions
+  * Explicitly scope unit to graphical-session.target
+  * Fix installation of the systemd unit
+  * Use correct way to register for a shortcut (kde#374575)
+  * systemd dbus activation
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

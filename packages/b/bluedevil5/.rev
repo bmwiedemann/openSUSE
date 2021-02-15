@@ -856,4 +856,12 @@
     <comment>Add compatibility with qml-autoreqprov (forwarded request 865265 from Vogtinator)</comment>
     <requestid>865276</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>db276ca3609fb1eaf0c3ccc87a80d1a5</srcmd5>
+    <version>5.21.0</version>
+    <time>1613427136</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
+    <requestid>872074</requestid>
+  </revision>
 </revisionlist>

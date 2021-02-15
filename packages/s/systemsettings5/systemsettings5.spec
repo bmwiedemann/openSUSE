@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
+Source:         systemsettings-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
+Source1:        systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -61,16 +61,8 @@ Recommends:     %{name}-lang
 Provides:       qt5qmlimport(org.kde.systemsettings.1) = 0
 
 %description
-Provides KDE's control center modules.
-
-%package devel
-Summary:        KDE's control center
-Group:          Development/Libraries/KDE
-Requires:       %{name} = %{version}
-Conflicts:      kdebase4-workspace-devel
-
-%description devel
-Provides KDE's control center modules. Development files.
+This package provides modules to control settings of Plasma and other
+applications by KDE.
 
 %lang_package
 
@@ -103,7 +95,6 @@ Provides KDE's control center modules. Development files.
 %{_kf5_appstreamdir}/org.kde.systemsettings.metainfo.xml
 %{_kf5_bindir}/systemsettings5
 %{_kf5_debugdir}/*.categories
-%{_kf5_libdir}/libsystemsettingsview.so.*
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
@@ -111,10 +102,6 @@ Provides KDE's control center modules. Development files.
 %{_kf5_sharedir}/kpackage/genericqml/org.kde.systemsettings.sidebar
 %{_kf5_sharedir}/kxmlgui5/
 %{_kf5_sharedir}/systemsettings/
-
-%files devel
-%{_kf5_libdir}/libsystemsettingsview.so
-%{_includedir}/*
 
 %if %{with lang}
 %files lang -f %{name}.lang

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb 14 18:12:07 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * update tornado version requirement
+  * removed remove_nose.patch, included upstream
+
+- update to version 6.2.0:
+  * Increase minimum tornado version (:ghpull:`5933`)
+  * Adjust skip decorators to avoid remaining dependency on nose
+     (:ghpull:`5932`)
+  * Ensure that cell ids persist after save (:ghpull:`5928`)
+  * Add reconnection to Gateway (form nb2kg) (:ghpull:`5924`)
+  * Fix some typos (:ghpull:`5917`)
+  * Handle TrashPermissionError, now that it exists (:ghpull:`5894`)
+
+- changes from version 6.1.6:
+  * do not require nose for testing (:ghpull:`5826`)
+  * [docs] Update Chinese and Hindi readme.md (:ghpull:`5823`)
+  * Add support for creating terminals via GET (:ghpull:`5813`)
+  * Made doc translations in Hindi and Chinese (:ghpull:`5787`)
+
+-------------------------------------------------------------------
 Sat Jan  9 20:07:07 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Don't test with pandoc on ix86

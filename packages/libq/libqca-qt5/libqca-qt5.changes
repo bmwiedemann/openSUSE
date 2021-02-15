@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 11 10:23:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a keyring file
+- Use cmake() syntax for Qt build requirements
+
+-------------------------------------------------------------------
+Fri Feb  5 09:00:14 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3.2:
+  * Add macOS framework major version
+  * qca-gcrypt: Add support for HKDF
+  * Minimum Qt updated to 5.9
+  * Fixed compilation with gcc 11
+- Rebase qca-2.3.0-fixDSA.patch 
+
+-------------------------------------------------------------------
 Mon Jul  6 16:02:52 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 2.3.1

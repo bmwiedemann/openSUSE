@@ -149,4 +149,12 @@
     <comment></comment>
     <requestid>860007</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0f8953094625cffb33cf28281917dc8b</srcmd5>
+    <version>0.11.1</version>
+    <time>1613427407</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36</comment>
+    <requestid>871456</requestid>
+  </revision>
 </revisionlist>

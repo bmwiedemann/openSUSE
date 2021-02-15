@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 11 03:09:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.033
+   see /usr/share/doc/packages/perl-Test-Output/Changes
+
+  1.033 2021-02-11T00:21:54Z
+  	* v1.032 had some regressions because I released 1.031 from an
+  	unmerged branch. https://github.com/briandfoy/test-output/issues/8
+  	This was noticed by Tina MÃ¼ller in https://github.com/os-autoinst/os-autoinst/pull/1622
+  	* I didn't realize that I'd released an experiment in 2017, but
+  	no own complained until it was reverted (by releasing from master).
+  	The experiment worked I guess? Sub::Exporter is gone, so the
+  	dependency tree for this is greatly reduced, and now it's gone
+  	again.
+
+-------------------------------------------------------------------
 Fri Jan 29 03:10:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.032

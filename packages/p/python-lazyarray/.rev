@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>718012</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eaf6855dcbca09eef3573443768c3a5c</srcmd5>
+    <version>0.3.3</version>
+    <time>1613427433</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (skip scipy)</comment>
+    <requestid>871492</requestid>
+  </revision>
 </revisionlist>

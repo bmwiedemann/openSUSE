@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Feb 14 17:23:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable the migration from the breeze color scheme to breeze.
+  On fresh installations, the LNF is applied afterwards and so it
+  has no effect. Switching the color scheme in the LNF would need
+  an almost complete reneedling, so don't do that just yet.
+
+-------------------------------------------------------------------
+Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Clean up listener (kde#432660)
+  * Update users that have Breeze as colorscheme to BreezeLight (kde#432470)
+  * Fix colors files
+  * Don't waste a space in menus
+  * [kstyle]: Don't attempt to adjust contentsMargins on QDialogs
+  * [kstyle]: Don't attempt to adjust contentsMargins on QMainWindows (kde#432246)
+  * kstyle: expand tools area 1px downwards if present (kde#431540)
+  * [kstyle]: Don't draw line when no toolbars are present in fullscreen (kde#431969)
+  * hotfix: remove hasHeaderColors call from ::polish
+  * Revert "Do not draw background or line in toolbars if the color scheme has no headers group"
+  * kde4breeze: Breeze Light is the new default (kde#431917)
+
+-------------------------------------------------------------------
+Mon Jan 25 09:25:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Only Recommend breeze5-wallpapers, it's fairly big and by default
+  (openSUSE look-and-feel) not used
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

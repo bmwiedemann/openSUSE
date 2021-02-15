@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 12 13:27:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5:
+  * New feature: retry to grab the keyboard for 1s in 50ms intervals
+    if it is still being grabbed by the windows manager.
+  * Do not record pointer when selecting an area.
+  * Fixed a possible overflow in src/options.c.
+  * Fixed a segfault with --multidisp option.
+  * Fixed issues when file extension is more than 3 characters.
+  * New feature: allow save thumbnail without extension.
+  * New option --class (-C): discriminate windows by class name.
+  * Support various modes of drawing selection.
+  * Use correct type for calloc and other assignments.
+
+-------------------------------------------------------------------
 Fri Jul 24 08:53:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4:

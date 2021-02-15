@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:34 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Update .gitignore file
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * clang-tidy: Force braces around statements
+  * Run clang-format
+  * Be more consistent with includes and do not break when reordering them
+  * Do not explicitely define Exec line for KCM
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Convert copyright statements to SPDX statements
+  * Documentation fixes: Sync GUI messages
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Fix breakages caused by formatter run (kde#432245)
+  * Adjust menu heights to properly match Breeze QStyle (kde#431819)
+  * gtk4: remove margin on windows (kde#431930)
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * fix(widgets/treeview): fix unlegiblity of disabled treeview items (kde#431839)
+  * gtk3: Fix close button icon
+  * Increase menu padding to reflect changes in Breeze
+  * gtk3, gtk4: remove hover animations
+  * Breeze for GTK4
+  * Run formatter
+  * [gtk3]: Make scrollbars fixed size (kde#414763)
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

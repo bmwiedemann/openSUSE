@@ -135,4 +135,12 @@ systems
     <comment>- Update to release 3.8.9</comment>
     <requestid>839145</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>447b8b745a5e30184a5c0ca6a94928aa</srcmd5>
+    <version>3.8.10</version>
+    <time>1613427328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.10</comment>
+    <requestid>871258</requestid>
+  </revision>
 </revisionlist>

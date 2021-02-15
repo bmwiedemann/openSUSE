@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 11 15:26:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8.10
+  * New data structure for the return of triangulations and other
+    decompositions by libnormaliz.
+
+-------------------------------------------------------------------
 Fri Oct  2 11:20:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.8.9

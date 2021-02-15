@@ -1,7 +1,7 @@
 #
 # spec file for package meld
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           meld
-Version:        3.20.2
+Version:        3.20.3
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later

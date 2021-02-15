@@ -1,7 +1,7 @@
 #
 # spec file for package papi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname papi
-%define ver 6.0.0
-%define _ver 6_0_0
-
-%bcond_with ringdisabled
+%define ver 6.0.0.1
+%define _ver 6_0_0_1
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build

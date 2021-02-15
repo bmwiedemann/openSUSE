@@ -17,7 +17,9 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private).*
+# Optional PulseAudio integration, needs plasma5-pa
+%global __requires_exclude_from org\\.kde\\.plasma\\.taskmanager/contents/ui/PulseAudio\\.qml
 
 %define kf5_version 5.74.0
 
@@ -26,7 +28,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -36,13 +38,11 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -79,6 +79,7 @@ BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Runner) >= %{kf5_version}
+BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KRunnerAppDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(KSMServerDBusInterface) >= %{_plasma5_version}
@@ -97,6 +98,7 @@ BuildRequires:  cmake(Qt5Test) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
 BuildRequires:  cmake(ScreenSaverDBusInterface) >= %{_plasma5_version}
+BuildRequires:  cmake(packagekitqt5)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -110,12 +112,16 @@ BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbfile)
+%ifnarch s390 s390x
 BuildRequires:  pkgconfig(xorg-evdev)
 BuildRequires:  pkgconfig(xorg-libinput)
 BuildRequires:  pkgconfig(xorg-server)
 BuildRequires:  pkgconfig(xorg-synaptics)
+%endif
 %ifarch %arm aarch64
 BuildRequires:  pkgconfig(glesv2)
 %else
@@ -242,40 +248,38 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_debugdir}/*.categories
 %{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmclock.conf
 %{_kf5_knsrcfilesdir}/ksplash.knsrc
+%{_kf5_knsrcfilesdir}/krunner.knsrc
 %{_kf5_bindir}/kaccess
-%{_kf5_bindir}/kapplymousetheme
 %{_kf5_bindir}/knetattach
-%{_kf5_bindir}/kcm-touchpad-list-devices
+%{_kf5_bindir}/krunner-plugininstaller
 %{_kf5_bindir}/solid-action-desktop-gen
 %{_kf5_bindir}/tastenbrett
 %{_kf5_configdir}/autostart/kaccess.desktop
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkdeinit5_kaccess.so
-%{_kf5_plugindir}/kcm_access.so
 %{_kf5_plugindir}/kcm_activities.so
 %{_kf5_plugindir}/kcm_clock.so
-%{_kf5_plugindir}/kcm_componentchooser.so
 %{_kf5_plugindir}/kcm_desktoppaths.so
 %{_kf5_plugindir}/kcm_formats.so
 %{_kf5_plugindir}/kcm_joystick.so
 %{_kf5_plugindir}/kcm_keyboard.so
-%{_kf5_plugindir}/kcm_mouse.so
 %{_kf5_plugindir}/kcm_plasmasearch.so
 %dir %{_kf5_plugindir}/kcms/
+%{_kf5_plugindir}/kcms/kcm_access.so
 %{_kf5_plugindir}/kcms/kcm_autostart.so
 %{_kf5_plugindir}/kcms/kcm_baloofile.so
+%{_kf5_plugindir}/kcms/kcm_componentchooser.so
 %{_kf5_plugindir}/kcms/kcm_kded.so
 %{_kf5_plugindir}/kcms/kcm_keys.so
 %{_kf5_plugindir}/kcms/kcm_launchfeedback.so
 %{_kf5_plugindir}/kcms/kcm_nightcolor.so
 %{_kf5_plugindir}/kcms/kcm_notifications.so
+%{_kf5_plugindir}/kcms/kcm_smserver.so
 %{_kf5_plugindir}/kcms/kcm_splashscreen.so
 %{_kf5_plugindir}/kcms/kcm_users.so
 %{_kf5_plugindir}/kcms/kcm_workspace.so
-%{_kf5_plugindir}/kcm_smserver.so
 %{_kf5_plugindir}/kcm_solid_actions.so
 %{_kf5_plugindir}/kcmspellchecking.so
-%{_kf5_plugindir}/kded_touchpad.so
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kded/
 %{_kf5_plugindir}/kf5/kded/device_automounter.so
@@ -283,9 +287,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_plugindir}/kf5/krunner/
 %{_kf5_plugindir}/libkcm_device_automounter.so
 %{_kf5_plugindir}/libkcm_qtquicksettings.so
-%dir %{_kf5_plugindir}/plasma/
-%dir %{_kf5_plugindir}/plasma/dataengine/
-%{_kf5_plugindir}/plasma/dataengine/plasma_engine_touchpad.so
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.knetattach.desktop
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmclock.service
@@ -301,11 +302,7 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
 %doc %{_kf5_htmldir}/en/*/
-%dir %{_kf5_iconsdir}/hicolor/*/
-%dir %{_kf5_iconsdir}/hicolor/*/*/
-%{_kf5_iconsdir}/hicolor/*/*/*.*
 %{_kf5_configkcfgdir}/
-%{_kf5_sharedir}/kcm_componentchooser/
 %{_kf5_sharedir}/kcmkeys/
 %{_kf5_sharedir}/kcmsolidactions/
 %{_kf5_sharedir}/kconf_update/
@@ -318,10 +315,12 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_sharedir}/kpackage/kcms/kcm_launchfeedback/
 %{_kf5_sharedir}/kpackage/kcms/kcm_nightcolor/
 %{_kf5_sharedir}/kpackage/kcms/kcm_notifications/
+%{_kf5_sharedir}/kpackage/kcms/kcm_smserver/
 %{_kf5_sharedir}/kpackage/kcms/kcm_splashscreen/
 %{_kf5_sharedir}/kpackage/kcms/kcm_users/
 %{_kf5_sharedir}/kpackage/kcms/kcm_workspace/
-%{_kf5_sharedir}/kcmmouse/
+%{_kf5_sharedir}/kpackage/kcms/kcmaccess/
+%{_kf5_sharedir}/kpackage/kcms/kcm_componentchooser
 %{_kf5_sharedir}/kcmkeyboard/
 %{_kf5_notifydir}/
 %{_kf5_servicesdir}/
@@ -336,6 +335,19 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
 %if !%{have_ibus_dict_emoji_pkg}
 %exclude %{_kf5_plasmadir}/ibus-emoji-dicts/
+%endif
+%ifnarch s390 s390x
+%{_kf5_bindir}/kapplymousetheme
+%{_kf5_bindir}/kcm-touchpad-list-devices
+%dir %{_kf5_iconsdir}/hicolor/*/
+%dir %{_kf5_iconsdir}/hicolor/*/devices/
+%{_kf5_iconsdir}/hicolor/*/devices/input-touchpad.*
+%{_kf5_sharedir}/kcmmouse/
+%{_kf5_plugindir}/kcm_mouse.so
+%{_kf5_plugindir}/kded_touchpad.so
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/dataengine/
+%{_kf5_plugindir}/plasma/dataengine/plasma_engine_touchpad.so
 %endif
 
 %files emojier

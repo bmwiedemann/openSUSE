@@ -1,0 +1,5 @@
+<package name="janus-gateway" project="openSUSE:Factory">
+  <title>Janus WebRTC Gateway</title>
+  <description>Janus is an open source, general purpose, WebRTC gateway designed and developed by Meetecho. </description>
+  <devel project="network:telephony" package="janus-gateway"/>
+</package>

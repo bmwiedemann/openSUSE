@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Jan 29 19:13:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change to 'more complete' multibuild: build all flavors (php7 and
+  php8) as flavors. The base package (flavor="") is not being
+  built.
+- Ensure the Name: tag matches the spec file name in case of
+  flavor="".
+
+-------------------------------------------------------------------
+Sun Jan 17 20:10:05 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Initial release 4.0.5.2 (php7) and 8.0 (php8)

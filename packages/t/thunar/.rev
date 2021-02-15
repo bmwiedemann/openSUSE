@@ -1592,4 +1592,23 @@
     <comment></comment>
     <requestid>862972</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>5ed744a482b4ea171166b1c79fccc9d0</srcmd5>
+    <version>4.16.3</version>
+    <time>1613427436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.3
+  * By default show all available volumes
+  * Regression: Skip app info updates on sendto actions
+    (bxo#xfce/thunar#502)
+  * Regression: Toggle menu visibility on F10 if menu hidden
+    (bxo#xfce/thunar#498)
+  * Regression: &quot;Shift&quot; + &quot;Select Trash in menu&quot; has to trigger delete
+  * Dont select previous file after delete/trash (bxo#xfce/thunar#477)
+  * Increase min. size of &quot;text&quot; field in bulk renamer
+    (bxo#xfce/thunar#474)
+  * Translation Updates
+</comment>
+    <requestid>871499</requestid>
+  </revision>
 </revisionlist>

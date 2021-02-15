@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://github.com/meetecho/janus-gateway.git</param>
+    <param name="versionformat">0.10.8</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.10.8</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

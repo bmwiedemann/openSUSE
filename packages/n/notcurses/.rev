@@ -92,4 +92,12 @@
   * Divide ncdirect_render_image() into component</comment>
     <requestid>864405</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0f9f84c19c8a28fa832b725f91a2a7a</srcmd5>
+    <version>2.2.1</version>
+    <time>1613427259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872132</requestid>
+  </revision>
 </revisionlist>

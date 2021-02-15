@@ -51,9 +51,10 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch1:         armv6-ffmpeg-no-thumb.patch
-# PATCH-FIX-UPSTREAM disable-gpu-when-using-nouveau-boo-1005323.diff
+# PATCH-FIX-OPENSUSE disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch7:         fix1163766.patch
+Patch8:         chromium-glibc-2.33.patch
 # PATCH-FIX-OPENSUSE
 Patch9:         rtc-dont-use-h264.patch
 # PATCH-FIX-UPSTREAM

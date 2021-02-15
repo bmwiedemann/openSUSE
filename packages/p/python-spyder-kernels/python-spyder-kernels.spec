@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-kernels
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,14 +40,14 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 5.1.3}
 BuildRequires:  %{python_module ipython >= 7.6.0}
 BuildRequires:  %{python_module jupyter_client >= 5.3.4}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
-BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module wurlitzer >= 1.0.3}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
+BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
+BuildRequires:  %{python_module xarray if (%python-base without python36-base)}
 # /SECTION
 Requires:       python-cloudpickle
 Requires:       python-ipykernel >= 5.1.3
@@ -80,8 +80,15 @@ all inside the IDE.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_dask_multiprocessing is flaky for obs
-%pytest -k "not test_dask_multiprocessing"
+# flaky for obs
+donttest="test_dask_multiprocessing"
+# no python36-numpy and related packages in Tumbleweed
+python36_donttest=" or test_matplotlib_inline or test_umr_reload_modules"
+python36_ignorefiles=" --ignore spyder_kernels/console/tests/test_console_kernel.py \
+                       --ignore spyder_kernels/utils/tests/test_iofuncs.py \
+                       --ignore spyder_kernels/utils/tests/test_nsview.py"
+
+%pytest -k "not (${donttest} ${$python_donttest})" ${$python_ignorefiles} -ra
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

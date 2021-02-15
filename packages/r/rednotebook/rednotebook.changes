@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 11 23:57:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21:
+  * Update MathJax to version 3 (#515, @dgcampea).
+  * Fix date references in CEF-based HtmlView (#544, Paweł Żukowski).
+  * Fix drag and drop (#492, @dgcampea).
+  * Fix external previews (Eric Chazan).
+  * Document how to change the theme on Windows (#487, Ankur A. Sharma).
+  * Allow symlinking to `./run` script (#509).
+  * Reload GTK theme colors when saving the journal (#485).
+  * Don't use dark mode for exported HTML files (#486).
+  * Use PNG version instead of SVG for RedNotebook icons to avoid problems on macOS.
+  * Use GitHub actions for continuous integration testing.
+  * Use background and foreground colors from GTK theme for HTML preview.
+  * Fix HTML colors for dark themes (#474).
+
+-------------------------------------------------------------------
 Wed Jan 24 10:38:18 UTC 2020 - max.oss.09@gmail.com
 - update to 2.16
 

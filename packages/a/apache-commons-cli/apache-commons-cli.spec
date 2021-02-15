@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,15 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://commons.apache.org/%{base_name}/
 Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        build.xml.tar.bz2
+Source1:        %{name}-build.xml
 Patch0:         CLI-253-workaround.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-Requires:       java >= 1.8
 Provides:       jakarta-%{short_name} = %{version}-%{release}
-Obsoletes:      jakarta-%{short_name} < %{version}
-Provides:       apache-cli = %{version}
-Obsoletes:      apache-cli < %{version}
+Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
+Provides:       apache-cli = %{version}-%{release}
+Obsoletes:      apache-cli < %{version}-%{release}
 BuildArch:      noarch
 
 %description
@@ -46,22 +44,21 @@ command line arguments and options.
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
-Provides:       jakarta-%{short_name}-javadoc = %{version}
-Obsoletes:      jakarta-%{short_name}-javadoc < %{version}
+Provides:       jakarta-%{short_name}-javadoc = %{version}-%{release}
+Obsoletes:      jakarta-%{short_name}-javadoc < %{version}-%{release}
 
 %description javadoc
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src -a1
+%setup -q -n %{short_name}-%{version}-src
+cp %{SOURCE1} build.xml
 %patch0 -p1
 
 %pom_remove_parent
 
 %build
-ant -Dmaven.mode.offline=true package javadoc \
-    -Dmaven.test.skip=true \
-    -lib %{_datadir}/java
+%ant package javadoc
 
 %install
 # jars

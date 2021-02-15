@@ -1,7 +1,7 @@
 #
 # spec file for package liblastfm-qt5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,10 +25,12 @@ Group:          System/Libraries
 URL:            https://github.com/lastfm/liblastfm/
 Source:         liblastfm-%{version}.tar.gz
 Source1:        baselibs.conf
-#PATCH-FIX-UPSTREAM
+# PATCH-FIX-UPSTREAM
 Patch0:         0001-Make-Qt5-build-default-and-simplify-logic-add-missin.patch
-#PATCH-FIX-UPSTREAM
+# PATCH-FIX-UPSTREAM
 Patch1:         0004-Fix-build-with-Qt-5.11_beta3-drop-qt5_use_modules.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Stick-to-c-14-for-liblastfm.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  libsamplerate-devel
@@ -89,7 +91,7 @@ This package contains development files for liblastfm.
   -DBUILD_WITH_QT4=OFF \
   -DBUILD_TESTS=OFF \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

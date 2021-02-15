@@ -404,4 +404,12 @@
   - added: ecryptfs-usrmerge.diff</comment>
     <requestid>851796</requestid>
   </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>537bb52b1ea050c5ebef05d273bd3cab</srcmd5>
+    <version>111</version>
+    <time>1613427371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871392</requestid>
+  </revision>
 </revisionlist>

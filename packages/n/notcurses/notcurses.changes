@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Feb 13 22:08:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.1
+  * Blitters properly degrade to NCBLIT_2x2 from NCBLIT_3x2 and
+    NCBLIT_BRAILLE on linux console.
+  * Fix transparent blitter stacking when the lower plane has no
+    transparency.
+  * ncplayer now always shows actual blitter being used.
+  * First use of notcurses_getc() and other input functions no
+    longer resets colors on tmux.
+  * When using rendered mode but inhibiting the alternate screen,
+    the cursor is now placed on the bottom left on exit.
+
+-------------------------------------------------------------------
+Wed Feb  3 20:38:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.8
+  * The notcurses-tetris binary has been renamed nctetris.
+  * The new function channel_set_palindex() has been added.
+  * NCDIRECT_OPTION_NO_READLINE has been removed after a short life
+  * ncdirect_readline() has been added. The first time used, it
+    initializes Readline. Readline will be destroyed by
+    ncdirect_stop() if it was ever initialized.
+- Update to version 2.1.7
+  * Notcurses has been split into two libraries, "notcurses-core"
+    and "notcurses". The latter contains the heavyweight multimedia
+    code, so that applications which don't need this functionality
+    can link against only the former. "pkg-config" support is
+    present for both. If using only "notcurses_core", use the new
+    functions "notcurses_core_init()" and/or "ncdirect_core_init()"
+    in place of "ncdirect_init()" and "notcurses_init()", or
+    your program is unlikely to link.
+  * The "notcurses-view" binary has been renamed "ncplayer".
+- Introduce subpackages for notcurses-core
+
+-------------------------------------------------------------------
 Tue Jan 19 20:08:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix build without pandoc on 32bit x86 and arm

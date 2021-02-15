@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-default-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define extrasummary base modules
 %define extradescription This package contains only the base modules, required in all installs.
 
-%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg hid-generic
+%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg hid-generic iscsi_ibft
 
 %define virtio_modules virtio virtio_.* virtio-.*
 
@@ -36,14 +36,15 @@
 %define hyperv_modules hid-hyperv hv_balloon hv_utils \
 hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 
-%define net_drivers  8390 ne2k-pci tulip e100 e1000 e1000e 8139cp 8139too
+%define net_drivers 8390 ne2k-pci tulip e100 e1000 e1000e 8139cp 8139too
 
 %define scsi_modules scsi_transport_iscsi sd_mod sg sr_mod st scsi_mod
 
-%define block_drivers loop dm-mod ahci ata_piix mptsas mptspi BusLogic sym53c8xx aam53c974 rbd brd
+%define block_drivers loop dm-mod libata libahci ahci ata_piix mptsas mptspi \
+        BusLogic sym53c8xx am53c974 rbd brd
 
 %define usb_modules usb-common usbcore ehci-hcd ehci-pci ohci-hcd ohci-pci uhci-hcd \
-xhci-hcd xhci-pci typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \
+xhci-hcd xhci-pci typec typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \
 ums-eneub6250 ums-freecom ums-isd200 ums-jumpshot ums-karma ums-onetouch \
 ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage usbhid
 
@@ -52,9 +53,9 @@ ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage usbhid
 
 %define networking \
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \
-ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.* \
-nf_.* nfnetlink.* nft_.* tun veth xfrm.*_tunnel xfrm_.* x_tables xt_.* tcp_diag \
-vxlan wireguard
+cls_bpf ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.* \
+nf_.* nfnetlink.* nft_.* openvswitch sch_ingress tun veth xfrm.*_tunnel xfrm_.* \
+x_tables xt_.* tcp_diag vport-.* vxlan vport-.* wireguard
 
 %define crypto_modules \
 %(rpm -ql %{kernel_package_name} | grep -E 'kernel/crypto/|kernel/arch/.*/crypto/' | xargs basename -a | cut -d. -f1)

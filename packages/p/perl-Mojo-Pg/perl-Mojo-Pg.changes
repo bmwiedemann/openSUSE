@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  7 03:11:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.24
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.24  2021-01-27
+    - Fixed Mojolicious 8.72 support.
+
+-------------------------------------------------------------------
 Mon Jan  4 03:10:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.23

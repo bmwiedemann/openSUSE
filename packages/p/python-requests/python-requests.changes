@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  4 10:32:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 5711.patch from upstream instead to remove idna<3 pin 
+
+-------------------------------------------------------------------
 Wed Feb  3 14:04:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't pin idna<3 in the egg-info so that depending packages

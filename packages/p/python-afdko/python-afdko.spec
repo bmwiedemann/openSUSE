@@ -1,7 +1,7 @@
 #
 # spec file for package python-afdko
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 %define skip_python2 1
 Name:           python-afdko%{psuffix}
 Version:        3.5.0

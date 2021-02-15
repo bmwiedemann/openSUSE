@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksysguard5
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE System Guard daemon
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz
+Source:         ksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz.sig
+Source1:        ksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        ksysguardd.service
@@ -65,6 +65,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libnl-3.0)
+BuildRequires:  pkgconfig(libudev)
 Requires:       libksysguard5-helper
 Recommends:     %{name}-lang
 BuildRequires:  update-desktop-files
@@ -114,7 +115,6 @@ to enable monitoring them remotely with ksysguard.
 %postun
 /sbin/ldconfig
 %service_del_postun ksysguardd.service
-exit 0
 
 %verifyscript
 %verify_permissions -e %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
@@ -142,12 +142,16 @@ exit 0
 %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
 %dir %{_kf5_plugindir}/ksysguard/
 %dir %{_kf5_plugindir}/ksysguard/process
+%{_kf5_plugindir}/ksysguard/ksysguard_globalplugin_network.so
+%{_kf5_plugindir}/ksysguard/ksysguard_ksgrd.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_cpu.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_disk.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_gpu.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_memory.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_osinfo.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_power.so
 %{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_network.so
 %{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_nvidia.so
-%{_kf5_plugindir}/ksysguard/ksysguard_plugin_nvidiaglobal.so
-%{_kf5_plugindir}/ksysguard/ksysguard_ksgrd.so
-%{_kf5_plugindir}/ksysguard/ksysguard_plugin_osinfo.so
-%{_kf5_plugindir}/ksysguard/ksysguard_globalplugin_network.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.ksystemstats.service
 %{_unitdir}/ksysguardd.service
 

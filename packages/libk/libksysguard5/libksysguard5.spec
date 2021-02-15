@@ -18,20 +18,24 @@
 
 %bcond_without lang
 Name:           libksysguard5
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
+Source:         libksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
+Source1:        libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
+%if 0%{?suse_version} <= 1500
+# It does not build with the default compiler (GCC 7) on Leap 15.x
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  cmake(KF5Auth)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -105,6 +109,9 @@ QML applications.
 %autosetup -p1 -n libksysguard-%{version}
 
 %build
+  %if 0%{?suse_version} <= 1500
+    export CC=gcc-10 CXX=g++-10
+  %endif
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 

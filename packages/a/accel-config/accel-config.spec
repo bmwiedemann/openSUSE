@@ -1,7 +1,7 @@
 #
 # spec file for package accel-config
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,36 +15,40 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define pkg_libname libaccel-config1
 
 Name:           accel-config
-Version:        2.8
+Version:        3.0.1
 Release:        0
-Summary:	Configure accelerator subsystem devices
+Summary:        Configure accelerator subsystem devices
 License:        GPL-2.0-only
 URL:            https://github.com/intel/idxd-config
 Source:         https://github.com/intel/idxd-config/archive/accel-config-v%{version}.tar.gz
+Patch0:         v3.0.1-use-portable-data-types.patch
+BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  binutils
-BuildRequires:  asciidoc
-BuildRequires:  xmlto
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libkmod)
-BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(libudev)
 BuildRequires:  systemd
+BuildRequires:  xmlto
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libkmod)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(uuid)
 Requires:       %{pkg_libname} = %{version}-%{release}
-
+ExclusiveArch:  x86_64 i586
 
 %description
-Utility library for configuring the accelerator subsystem.
+Utility library and command-line tool for configuring the Intel
+Data Streaming Accelerator (DSA) and Intel Analytics Accelerator
+(IAX).
 
 %package -n %{name}-devel
 Summary:        Development files for libaccfg
-License:        LGPL-2.0-only
+License:        LGPL-2.1-only
 Requires:       %{pkg_libname} = %{version}-%{release}
 
 %description -n %{name}-devel
@@ -53,13 +57,15 @@ developing applications that use %{name}.
 
 %package -n %{pkg_libname}
 Summary:        Configuration library for accelerator subsystem devices
-License:        LGPL-2.0-only
+License:        LGPL-2.1-only
+Requires:       kmod(idxd.ko)
 
 %description -n %{pkg_libname}
 Libraries for %{name}.
 
 %prep
 %setup -q -n idxd-config-accel-config-v%{version}
+%autopatch -p1
 
 %build
 echo %{version} > version
@@ -78,6 +84,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files
 %defattr(-,root,root)
 %license Documentation/COPYING licenses/BSD-MIT licenses/CC0
+%license licenses/accel-config-licenses LICENSE_GPL_2_0
 %{_bindir}/accel-config
 %{_mandir}/man1/accel-config*
 %dir %{_sysconfdir}/accel-config
@@ -87,6 +94,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %defattr(-,root,root)
 %doc README.md
 %license Documentation/COPYING licenses/BSD-MIT licenses/CC0
+%license licenses/libaccel-config-licenses accfg/lib/LICENSE_LGPL_2_1
 %{_libdir}/libaccel-config.so.*
 
 %files -n %{name}-devel
@@ -97,4 +105,3 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/pkgconfig/libaccel-config.pc
 
 %changelog
-

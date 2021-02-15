@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 28 11:23:40 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.6.2:
+  * Webkit widgets are now sandboxed.
+  * Improved desktop notifications.
+  * iTIP calendar reply are improved.
+  * Handling of multiple crypto keys for the same recipient.
+  * build cleanups and improvements, e.g. application logging.
+  * code cleanups and simplifications as enabled by moving to more modern
+    libraries.
+  * bug fixes: draft with message/external-body attachments;
+    do not crash on importing half-broken keys
+
+-------------------------------------------------------------------
 Wed Jul 29 19:16:57 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.6.1:

@@ -992,4 +992,17 @@
     <comment></comment>
     <requestid>866097</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>19b97bf5eeaa0478330c6fc81b6020e1</srcmd5>
+    <version>1.48.2</version>
+    <time>1613427121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.48.2:
+  + Fix memory leaks reported by asan
+  + Avoid overflow in pango_attr_list_update
+  + Add a valgrind suppression file
+  + Make tests more robust
+  + Fix pango_font_describe for Emoji fonts (forwarded request 871176 from iznogood)</comment>
+    <requestid>871201</requestid>
+  </revision>
 </revisionlist>

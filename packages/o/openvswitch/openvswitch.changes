@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 12 10:36:03 UTC 2021 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Update openvswitch to 2.14.2. For a list of changes, check
+  https://github.com/openvswitch/ovs/blob/v2.14.2/NEWS 
+  Includes security fix for CVE-2020-27827 (bsc#1181345) and CVE-2020-35498
+  (bsc#1181742). 
+- Removed patches no longer applying to code base:
+  * 0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
+  * 0001-ipsec-Fix-Strongswan-configuration-syntax.patch
+
+-------------------------------------------------------------------
 Tue Nov  3 10:50:49 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Replaced `%service_del_postun -n` with `%service_del_postun_without_restart`

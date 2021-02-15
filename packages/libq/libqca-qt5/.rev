@@ -136,4 +136,20 @@
     <comment></comment>
     <requestid>819912</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>df7e9d12e7a09bce401a8869ff9d410f</srcmd5>
+    <version>2.3.2</version>
+    <time>1613427109</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a keyring file
+- Use cmake() syntax for Qt build requirements
+
+- Update to 2.3.2:
+  * Add macOS framework major version
+  * qca-gcrypt: Add support for HKDF
+  * Minimum Qt updated to 5.9
+  * Fixed compilation with gcc 11
+- Rebase qca-2.3.0-fixDSA.patch</comment>
+    <requestid>871159</requestid>
+  </revision>
 </revisionlist>

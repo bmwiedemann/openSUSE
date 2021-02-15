@@ -123,4 +123,12 @@
     <comment></comment>
     <requestid>870700</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>283788416efb85ffe0fb8e9baa610bb0</srcmd5>
+    <version>0.5.0</version>
+    <time>1613427421</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36 build</comment>
+    <requestid>871464</requestid>
+  </revision>
 </revisionlist>

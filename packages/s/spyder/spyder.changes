@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 15 15:54:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add spyder-pr14514-fix-pandas120.patch to work with pandas 1.2
+  gh#spyder-ide/spyder/14514 
+
+-------------------------------------------------------------------
 Fri Jan 15 10:18:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip two more tests which are too slow for qtbot on OBS and one

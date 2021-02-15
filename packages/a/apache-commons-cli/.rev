@@ -95,4 +95,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>Disregard the pom parent</comment>
     <requestid>689039</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0ad0ca1ce60c0850cd7f73923d9c7427</srcmd5>
+    <version>1.4</version>
+    <time>1613427383</time>
+    <user>dimstar_suse</user>
+    <comment>Add OSGi manifest</comment>
+    <requestid>871432</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 11 03:08:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.61
+   see /usr/share/doc/packages/perl-JSON-Parse/Changes
+
+  0.61 2021-02-11
+
+  * Add upgrade_utf8 method
+
+-------------------------------------------------------------------
 Tue Jan 26 03:07:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.60

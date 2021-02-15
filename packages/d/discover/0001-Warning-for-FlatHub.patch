@@ -7,11 +7,11 @@ Subject: [PATCH] Warning for FlatHub
  .../backends/FlatpakBackend/FlatpakSourcesBackend.cpp      | 14 +++++++++++++-
  1 file changed, 13 insertions(+), 1 deletion(-)
 
-Index: discover-5.14.1/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
+Index: discover-5.15.80git.20201202T042445~7a4215b7/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 ===================================================================
---- discover-5.14.1.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
-+++ discover-5.14.1/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
-@@ -26,6 +26,8 @@
+--- discover-5.15.80git.20201202T042445~7a4215b7.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2020-12-02 04:24:45.000000000 +0100
++++ discover-5.15.80git.20201202T042445~7a4215b7/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2020-12-03 09:11:22.052037067 +0100
+@@ -13,6 +13,8 @@
  #include <KSharedConfig>
  #include <KConfigGroup>
  #include <QDebug>
@@ -20,11 +20,10 @@ Index: discover-5.14.1/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend
  #include <QNetworkAccessManager>
  #include <QNetworkReply>
  #include <QAction>
-@@ -55,7 +57,17 @@ FlatpakSourcesBackend::FlatpakSourcesBac
- {
-     m_flathubAction->setToolTip(QStringLiteral("flathub"));
+@@ -43,8 +45,18 @@
+     m_flathubAction->setObjectName(QStringLiteral("flathub"));
+     m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
      connect(m_flathubAction, &QAction::triggered, this, [this](){
--        addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
 +        auto *warnBox = new QMessageBox(QMessageBox::Information, i18n("Adding a third-party source"),
 +                            i18n("FlatHub is not part of the openSUSE distribution.\n"
 +                                 "It contains packages of unknown quality which might not be tested to work correctly "
@@ -32,10 +31,11 @@ Index: discover-5.14.1/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend
 +                            QMessageBox::Ok | QMessageBox::Abort);
 +        connect(warnBox, &QMessageBox::buttonClicked, this, [this, warnBox](QAbstractButton *button) {
 +            if (warnBox->standardButton(button) == QMessageBox::Ok)
-+                addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
-+        });
+         addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
+     });
 +        warnBox->setAttribute(Qt::WA_DeleteOnClose);
 +        warnBox->show();
-     });
++    });
      for (auto installation : installations) {
          if (!listRepositories(installation)) {
+             qWarning() << "Failed to list repositories from installation" << installation;

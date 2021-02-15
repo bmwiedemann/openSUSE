@@ -1,0 +1,21 @@
+--- tests/056.phpt	2019-12-20 16:07:05.000000000 +0100
++++ tests/056.phpt	2021-01-23 15:14:23.977514559 +0100
+@@ -1,5 +1,7 @@
+ --TEST--
+ memcache->addServer() with microsecond timeout
++--XFAIL--
++Timeouts not honored on OBS for unreachable networks
+ --SKIPIF--
+ <?php include 'connect.inc'; ?>
+ --FILE--
+--- tests/connect.inc	2019-12-20 16:07:05.000000000 +0100
++++ tests/connect.inc	2021-01-18 10:01:27.213810971 +0100
+@@ -34,7 +34,7 @@ if (ini_get('memcache.protocol') == 'bin
+  * memcached -d -u memcached -s /var/run/memcached/memcached.sock
+  * chmod a+w /var/run/memcached/memcached.sock
+  */
+-$domainsocket = 'unix:///var/run/memcached/memcached.sock';
++$domainsocket = 'unix:///tmp/memcached.sock';
+ 
+ // A server which is guaranteed to fail immediatly
+ $nonExistingHost = "localhost";

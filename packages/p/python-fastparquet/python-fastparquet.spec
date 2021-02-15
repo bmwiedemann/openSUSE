@@ -19,6 +19,7 @@
 %define _buildshell /bin/bash
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-fastparquet
 Version:        0.5.0
 Release:        0

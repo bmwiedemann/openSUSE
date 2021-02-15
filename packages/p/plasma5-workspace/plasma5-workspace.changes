@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * fix restore size when float is used
+  * show colors,icons and plasma style in plamo
+  * [Notifications] Escape HTML in destUrl and fileName
+  * [Notifications] When application responds to cancel request, stop kill timer
+  * Fix condition for executable folders (kde#432653)
+  * ksmserver: Filter out services with NoDisplay=true
+  * Fix wallpaper paths in org.kde.slideshow package
+  * Revert "Use subseq matching for service runner" (kde#431609,kde#432339)
+  * [Notifications] Property is supposed to be "ProcessedItems"
+  * remove phone specific wallpaper config ui
+  * [applets/digital clock] Unbreak the time zone config dialog
+  * Set add panel as an explicit menu of a panel action (kde#432250)
+  * Wallpaper config: fix property imageModel that was missing in delegate (kde#431961)
+  * Make ksmserver's lock screen detection automatic
+  * [systemd] Move kwin to "wants"
+  * [applets/systemmonitor] fix not hiding the title on vertical panels
+  * [applets/digital clock] Restore scroll-to-change-displayed-timezone (kde#431977)
+  * Don't crash if the panelview is not ready
+  * [Notifications] Re-evaluate unread count when a notification is "read"
+  * [keyboard applet] fix TypeError garbage in log
+  * Fix condition for windowed widgets standalone mode (kde#432032)
+- Add patch to either get more info or work around logout not working
+  sometimes (kde#432460):
+  * 0001-ksmserver-Enable-debug-output-by-default.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Revert-No-icons-on-the-desktop-by-default.patch
+  * 0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
+  * 0001-Use-qdbus-qt5.patch
+
+-------------------------------------------------------------------
 Fri Jan 15 10:54:18 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with min 4GB disk space to avoid build failure

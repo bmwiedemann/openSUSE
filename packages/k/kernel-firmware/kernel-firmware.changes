@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 09 14:52:28 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210208 (commit b79d2396bc63):
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2008.2304
+  * linux-firmware: add firmware for MT7921
+  * rtw88: RTL8821C: Update firmware to v24.8
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * i915: Add DMC v2.01 for ADL-S
+  * i915: Add HuC v7.7.1 for DG1
+  * i915: Add GuC v49.0.1 for DG1
+  * qcom: Add venus firmware files for VPU-1.0
+  * qcom: Add SM8250 Compute DSP firmware
+  * qcom: Add SM8250 Audio DSP firmware
+  * qcom: add firmware files for Adreno a650
+
+-------------------------------------------------------------------
 Wed Jan 27 07:15:28 UTC 2021 - tiwai@suse.com
 
 - Update to version 20210119 (git commit 05789708b79b):

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:18:46 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- merge libapparmor.changes into apparmor.changes
+
+-------------------------------------------------------------------
 Tue Feb  2 18:35:17 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - define %_pamdir for <= 15.x to fix the build on those releases
@@ -100,6 +105,7 @@ Sat Oct 17 15:46:01 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 - update to AppArmor 2.13.5
   - add missing permissions to several profiles and abstractions
   - bugfixes in parser and tools
+  - fix two potential build failures in libapparmor
   - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.5
     for the detailed upstream changelog
 - remove upstream(ed) patches
@@ -194,6 +200,7 @@ Thu Mar 12 19:55:06 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
   - several abstraction updates (including boo#1153162)
   - disallow writing to fontconfig cache in abstractions/fonts
   - some bugfixes in the aa-* tools
+  - fix log parsing for logs with an embedded newline
   - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.4
     for the detailed upstream changelog
 - drop upstreamed patches:
@@ -247,6 +254,7 @@ Tue Jun 18 20:51:07 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
   - several abstraction updates
   - parser: fix "Px -> foo-bar" (the "-" was rejected before)
   - several bugfixes in aa-genprof and aa-logprof
+  - some fixes in cache handling
   - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.3
     for the detailed upstream changelog
 - drop upstream(ed) patches:
@@ -480,6 +488,7 @@ Mon Dec 25 15:27:03 UTC 2017 - suse-beta@cboltz.de
   - add support for includes with absolute path in aa-logprof etc. (lp#1733700)
   - update aa-decode to also decode PROCTITLE (lp#1736841)
   - several profile and abstraction updates, including boo#1069470
+  - preserve errno across aa_*_unref() functions
   - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.12
     for the detailed upstream changelog
 - drop upstreamed patches:
@@ -488,6 +497,7 @@ Mon Dec 25 15:27:03 UTC 2017 - suse-beta@cboltz.de
 - lessopen profile: change all 'rix' rules to 'mrix'
 - add 32-bit-no-uid.diff to fix handling of log events without ouid on
   32 bit systems
+- no longer package static libapparmor.a
 
 -------------------------------------------------------------------
 Tue Nov 30 10:30:33 UTC 2017 - suse-beta@cboltz.de
@@ -615,6 +625,11 @@ Thu Feb 16 14:08:55 UTC 2017 - jmatejek@suse.com
   flag in Python UI as it was dropped from Python 3.6 (lp#1661766)
 
 -------------------------------------------------------------------
+Sat Feb 11 11:33:16 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
 Mon Jan 30 21:37:48 UTC 2017 - suse-beta@cboltz.de
 
 - add upstream-changes-r3616..3628.diff:
@@ -630,6 +645,8 @@ Sat Jan 28 21:40:11 UTC 2017 - suse-beta@cboltz.de
 - split libapparmor into separate spec to get rid of build loop
   involving mariadb, systemd, apparmor, libapr and mariadb again
   (see the discussion in SR 448871 for details)
+- libapparmor.spec is based on the AppArmor 2.11 apparmor.spec, but
+  with minimum BuildRequires
 
 -------------------------------------------------------------------
 Fri Jan 27 20:08:03 UTC 2017 - suse-beta@cboltz.de

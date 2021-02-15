@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  8 10:09:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0
+  * Added -E options for aes128, aes192 and aes256.
+  * Changed semantics of -E aes. Per RFC8894, plain aes is equal
+    to aes128. (Before 0.9.0 it was aes256.)
+  * Implemented mechanism to auto-detect CA certificates (-c)
+  * Fixed handling of Content-Type headers with a charset defined
+  * Fixed Content-Type handling in GetCACaps responses
+  * Fixed global variable declaration for building using GCC 10
+- Drop not longer needed patches:
+  * 0001-Fixed-handling-of-Content-Type-with-a-charset-124.patch
+  * 0002-Global-variables-need-to-be-declared-using-extern.patch
+
+-------------------------------------------------------------------
 Fri Jan  8 16:11:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.0

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Parent TasksModel to QGuiApplication and delete TasksModel after we've set the environment
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Bump manifest version
+  * [Download Job] Show referrer instead of data URL
+  * Open KRunner KCM in System Settings
+  * Add .gitignore to ignore generated .clang-format
+  * Apply autoplay prevention evasion also for Video tags
+  * [Options Page] Provide feedback when permission was already granted
+  * Add Microsoft Edge environment
+  * Port from Settings::environmentDescription().icon to qApp->windowIcon().name()
+  * Use libTaskManager for identifying the browser
+  * [Tabs Runner] Slightly better scoring
+  * Install messaging host for Edge
+  * [Options Page] Force http(s) links to open in new tab
+  * [Reminder] Add Microsoft Edge store link
+  * [convertpottojson] Handle lines ending with "
+  * Add Microsoft Edge extension ID
+  * Move conversion of data URL into QImage into base class
+  * Tabs Runner: Use KApplicationTrader::isSubsequence
+  * Port TabsRunner to DBus runner
+  * Add browser history runner
+  * Introduce AbstractKRunnerPlugin for wrapping DBusRunner
+  * [Settings] Add browser icon name
+  * [Tabs Runner] Rework handling of favicons
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

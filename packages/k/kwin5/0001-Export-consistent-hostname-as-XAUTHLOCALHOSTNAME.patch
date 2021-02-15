@@ -1,0 +1,73 @@
+From 1b4234cfd61a3cfdbe5023cdef5d7cfa5a1c9704 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 10 Feb 2021 21:23:40 +0100
+Subject: [PATCH] Export consistent hostname as XAUTHLOCALHOSTNAME
+
+To deal with hostname changes, FamilyWild is used for Xauthority, but for Xsm
+XAUTHLOCALHOSTNAME is also set (boo#1177835, downstream patch in xtrans).
+The hostname is read once on startup and then used consistently.
+---
+ xwl/xwayland.cpp | 6 ++++--
+ xwl/xwayland.h   | 1 +
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/xwl/xwayland.cpp b/xwl/xwayland.cpp
+index 92e3d9199..c5d877148 100644
+--- a/xwl/xwayland.cpp
++++ b/xwl/xwayland.cpp
+@@ -66,6 +66,7 @@ namespace Xwl
+ Xwayland::Xwayland(ApplicationWaylandAbstract *app, QObject *parent)
+     : XwaylandInterface(parent)
+     , m_app(app)
++    , m_hostname(QHostInfo::localHostName().toUtf8())
+ {
+     m_resetCrashCountTimer = new QTimer(this);
+     m_resetCrashCountTimer->setSingleShot(true);
+@@ -326,6 +327,7 @@ void Xwayland::handleXwaylandReady()
+     qCInfo(KWIN_XWL) << "Xwayland server started on display" << displayName;
+     qputenv("DISPLAY", displayName);
+     qputenv("XAUTHORITY", m_authorityFile.fileName().toUtf8());
++    qputenv("XAUTHLOCALHOSTNAME", m_hostname);
+ 
+     // create selection owner for WM_S0 - magic X display number expected by XWayland
+     m_selectionOwner.reset(new KSelectionOwner("WM_S0", kwinApp()->x11Connection(), kwinApp()->x11RootWindow()));
+@@ -336,6 +338,7 @@ void Xwayland::handleXwaylandReady()
+     auto env = m_app->processStartupEnvironment();
+     env.insert(QStringLiteral("DISPLAY"), displayName);
+     env.insert(QStringLiteral("XAUTHORITY"), m_authorityFile.fileName());
++    env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), m_hostname);
+     m_app->setProcessStartupEnvironment(env);
+ 
+     emit started();
+@@ -435,7 +438,6 @@ static QByteArray generateXauthorityCookie()
+ 
+ bool Xwayland::writeXauthorityEntries()
+ {
+-    const QByteArray hostname = QHostInfo::localHostName().toUtf8();
+     const QByteArray display = QByteArray::number(m_display);
+     const QByteArray name = QByteArrayLiteral("MIT-MAGIC-COOKIE-1");
+     const QByteArray cookie = generateXauthorityCookie();
+@@ -444,7 +446,7 @@ bool Xwayland::writeXauthorityEntries()
+     stream.setByteOrder(QDataStream::BigEndian);
+ 
+     // Write entry with FamilyLocal and the host name as address
+-    writeXauthorityEntry(stream, 256 /* FamilyLocal */, hostname, display, name, cookie);
++    writeXauthorityEntry(stream, 256 /* FamilyLocal */, m_hostname, display, name, cookie);
+ 
+     // Write entry with FamilyWild, no address
+     writeXauthorityEntry(stream, 65535 /* FamilyWild */, QByteArray{}, display, name, cookie);
+diff --git a/xwl/xwayland.h b/xwl/xwayland.h
+index 0bdbdbfdf..5c3cca60a 100644
+--- a/xwl/xwayland.h
++++ b/xwl/xwayland.h
+@@ -113,6 +113,7 @@ private:
+     ApplicationWaylandAbstract *m_app;
+     QScopedPointer<KSelectionOwner> m_selectionOwner;
+     QTemporaryFile m_authorityFile;
++    QByteArray m_hostname;
+     int m_crashCount = 0;
+ 
+     Q_DISABLE_COPY(Xwayland)
+-- 
+2.25.1
+

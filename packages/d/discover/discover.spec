@@ -17,19 +17,19 @@
 
 
 %bcond_without lang
-# Version in Leap 15.1 is too old
-%global have_fwupd (!0%{?sle_version} || 0%{?sle_version} >= 150200)
+# Version in Leap 15.2 is too old
+%global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
+Source:         discover-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -48,7 +48,9 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IdleTime)
 BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5NewStuff)
@@ -56,7 +58,8 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KUserFeedback)
+# Disabled until upstream complies with the KDE policies
+#BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5DBus)
@@ -65,6 +68,7 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
 %if %{have_fwupd}
@@ -145,36 +149,37 @@ user to install them using Discover.
   %suse_update_desktop_file -r org.kde.discover Qt KDE System PackageManager
 
   # Even without the snap backend, this is installed...
-  rm %{buildroot}%{_kf5_applicationsdir}/org.kde.discover.snap.urlhandler.desktop
+  rm %{buildroot}%{_kf5_applicationsdir}/org.kde.discover.snap.desktop
 
 %if %{with lang}
   %find_lang libdiscover %{name}.lang
   %find_lang plasma-discover %{name}.lang
 
   %find_lang plasma-discover-notifier notifier.lang
+  %find_lang kcm_updates notifier.lang
 %else
   touch notifier.lang
 %endif
 
 %files
 %license LICENSES/*
-%{_kf5_bindir}/plasma-discover
-%{_kf5_bindir}/plasma-discover-update
-%{_kf5_libdir}/plasma-discover/
 %dir %{_kf5_plugindir}/discover/
-%{_kf5_plugindir}/discover/kns-backend.so
-%{_kf5_applicationsdir}/org.kde.discover.desktop
-%{_kf5_applicationsdir}/org.kde.discover.urlhandler.desktop
-%{_kf5_iconsdir}/hicolor/*/apps/plasmadiscover.*
-%{_kf5_notifydir}/discoverabstractnotifier.notifyrc
-%{_kf5_kxmlguidir}/plasmadiscover/
 %dir %{_kf5_sharedir}/libdiscover/
 %dir %{_kf5_sharedir}/libdiscover/categories/
+%{_kf5_applicationsdir}/org.kde.discover.desktop
+%{_kf5_applicationsdir}/org.kde.discover.urlhandler.desktop
 %{_kf5_appstreamdir}/org.kde.discover.appdata.xml
-%{_kf5_sharedir}/discover/
-%{_libdir}/libexec/kf5/discover/
-%{_kf5_knsrcfilesdir}/discover_ktexteditor_codesnippets_core.knsrc
+%{_kf5_bindir}/plasma-discover
+%{_kf5_bindir}/plasma-discover-update
 %{_kf5_debugdir}/discover.categories
+%{_kf5_iconsdir}/hicolor/*/apps/plasmadiscover.*
+%{_kf5_knsrcfilesdir}/discover_ktexteditor_codesnippets_core.knsrc
+%{_kf5_kxmlguidir}/plasmadiscover/
+%{_kf5_libdir}/plasma-discover/
+%{_kf5_libexecdir}/discover/
+%{_kf5_notifydir}/discoverabstractnotifier.notifyrc
+%{_kf5_plugindir}/discover/kns-backend.so
+%{_kf5_sharedir}/discover/
 
 %if %{with lang}
 %files lang -f %{name}.lang
@@ -205,10 +210,16 @@ user to install them using Discover.
 %files notifier -f notifier.lang
 %license LICENSES/*
 %dir %{_kf5_plugindir}/discover-notifier
-%{_kf5_configdir}/autostart/org.kde.discover.notifier.desktop
-%{_libdir}/libexec/DiscoverNotifier
 %{_kf5_plugindir}/discover-notifier/DiscoverPackageKitNotifier.so
 %{_kf5_plugindir}/discover-notifier/FlatpakNotifier.so
+%{_kf5_configdir}/autostart/org.kde.discover.notifier.desktop
+%{_libdir}/libexec/DiscoverNotifier
 %{_kf5_applicationsdir}/org.kde.discover.notifier.desktop
+%dir %{_kf5_plugindir}/kcms/
+%{_kf5_plugindir}/kcms/kcm_updates.so
+%dir %{_kf5_sharedir}/kpackage/
+%dir %{_kf5_sharedir}/kpackage/kcms/
+%{_kf5_sharedir}/kpackage/kcms/kcm_updates/
+%{_kf5_servicesdir}/kcm_updates.desktop
 
 %changelog

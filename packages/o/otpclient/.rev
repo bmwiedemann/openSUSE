@@ -59,4 +59,12 @@
   * add export command to otpclient-cli (forwarded request 859574 from polslinux)</comment>
     <requestid>860465</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>880a40db65ecfe29b8868297cb426d8a</srcmd5>
+    <version>2.4.2</version>
+    <time>1613427627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872518</requestid>
+  </revision>
 </revisionlist>

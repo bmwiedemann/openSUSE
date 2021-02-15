@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  9 14:13:20 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.3
+  * By default show all available volumes
+  * Regression: Skip app info updates on sendto actions
+    (bxo#xfce/thunar#502)
+  * Regression: Toggle menu visibility on F10 if menu hidden
+    (bxo#xfce/thunar#498)
+  * Regression: "Shift" + "Select Trash in menu" has to trigger delete
+  * Dont select previous file after delete/trash (bxo#xfce/thunar#477)
+  * Increase min. size of "text" field in bulk renamer
+    (bxo#xfce/thunar#474)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Jan 12 23:21:42 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.2

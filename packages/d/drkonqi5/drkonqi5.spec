@@ -23,15 +23,15 @@ Name:           drkonqi5
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
+Source:         drkonqi-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
+Source1:        drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCHES 100-199 are from upstream 5.16 branch
@@ -87,7 +87,7 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
   %{buildroot}%{_kf5_bindir}/installdbgsymbols.sh
 
 %files
-%license COPYING
+%license LICENSES/*
 %{_kf5_bindir}/installdbgsymbols.sh
 %dir %{_kf5_libdir}/libexec
 %{_kf5_libdir}/libexec/drkonqi

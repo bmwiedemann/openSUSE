@@ -1,7 +1,7 @@
 #
 # spec file for package x3270
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2016,2020,2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source0:        http://download.sourceforge.net/%{name}/%{_fullname}-src.tgz
 Source1:        http://download.sourceforge.net/%{name}/x026-%{_x026ver}.tgz
 Source2:        x3270.desktop
 Patch0:         mknod.patch
+Patch1:         x3270-handle-missing-font.patch
 Patch100:       usr_local_bin.patch
 Patch102:       x026-offset.diff
 Patch105:       x3270-missing-include.patch
@@ -103,6 +104,7 @@ x026 is a fun toy which emulates an x026 puncher.
 # -a fter changing into all3270, expand sources
 %setup -q -n suite3270-%{version} -a1
 %patch0
+%patch1
 %patch100
 %patch102
 %patch105 -p1

@@ -71,4 +71,12 @@
     <comment>TID000019786 (forwarded request 869593 from jrecord)</comment>
     <requestid>869594</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>851a94a75cda3973c21e40a69714662c</srcmd5>
+    <version>1.0.2</version>
+    <time>1613427350</time>
+    <user>dimstar_suse</user>
+    <comment>Updates for version 1.0.2 (forwarded request 871298 from jrecord)</comment>
+    <requestid>871300</requestid>
+  </revision>
 </revisionlist>

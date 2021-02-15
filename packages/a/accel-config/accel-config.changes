@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 12 13:09:35 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to v3.0.1 (jsc#SLE-13348)
+  - Added IAX support
+  - Added implementation and support for new mdev types
+  - Removed uuid type mdevs
+  - Introduced a new wq API to set max batch and transfer size
+  - Added new GPL2 and LGPL-2.1 license files
+  - Library license changed to LGPL-2.1
+  - Fixed static code analysis bugs
+- Enhanced Description
+- Added dependency on the idxd kernel driver
+- Restricted architecture to x86 - DSA is embedded
+  into Intel CPUs
+- Added patch: v3.0.1-use-portable-data-types.patch
+
+-------------------------------------------------------------------
 Tue Sep 22 09:28:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Initial packaging of v2.8 (jsc#SLE-15021)

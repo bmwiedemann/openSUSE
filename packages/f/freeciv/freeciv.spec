@@ -1,7 +1,7 @@
 #
 # spec file for package freeciv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        2.6.2.1
+Version:        2.6.3
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ Source3:        freeciv.png
 Source4:        freeciv-manual
 Source5:        freeciv-manual.desktop
 Source6:        freeciv-manual.png
-Patch0:         freeciv-appdata-desktop-references.patch
 BuildRequires:  audiofile-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -91,7 +90,6 @@ Freeciv executable using Gtk3 library
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export MOCCMD="moc-qt5"
@@ -108,9 +106,8 @@ autoreconf -fi
 install -m 755 $RPM_SOURCE_DIR/freeciv-manual %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/pixmaps/
 install -m 644 $RPM_SOURCE_DIR/*.png %{buildroot}%{_datadir}/pixmaps
-rm %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file -i %{name}-gtk3 Game StrategyGame
-%suse_update_desktop_file -i %{name}-qt Game StrategyGame
+%suse_update_desktop_file -i org.freeciv.gtk3 Game StrategyGame
+%suse_update_desktop_file -i org.freeciv.qt Game StrategyGame
 %suse_update_desktop_file -i freeciv-manual Game StrategyGame
 rm %{buildroot}%{_docdir}/freeciv/COPYING
 
@@ -133,8 +130,8 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_bindir}/freeciv-server
 %{_bindir}/freeciv-manual
 %{_datadir}/applications/freeciv-manual.desktop
-%{_datadir}/applications/freeciv-server.desktop
-%{_datadir}/applications/freeciv-ruledit.desktop
+%{_datadir}/applications/org.freeciv.server.desktop
+%{_datadir}/applications/org.freeciv.ruledit.desktop
 %{_datadir}/freeciv/
 %{_datadir}/icons/hicolor/128x128/apps/freeciv-client.png
 %{_datadir}/icons/hicolor/128x128/apps/freeciv-server.png
@@ -163,14 +160,14 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %files gtk3
 %{_bindir}/freeciv-gtk3
 %{_bindir}/freeciv-mp-gtk3
-%{_datadir}/applications/%{name}-gtk3.desktop
+%{_datadir}/applications/org.freeciv.gtk3.desktop
 %{_datadir}/appdata/freeciv-gtk3.appdata.xml
-%{_datadir}/applications/freeciv-mp-gtk3.desktop
+%{_datadir}/applications/org.freeciv.mp.gtk3.desktop
 %{_datadir}/appdata/freeciv-mp-gtk3.appdata.xml
 
 %files qt
 %{_bindir}/freeciv-qt
-%{_datadir}/applications/%{name}-qt.desktop
+%{_datadir}/applications/org.freeciv.qt.desktop
 %{_datadir}/appdata/freeciv-qt.appdata.xml
 
 %changelog

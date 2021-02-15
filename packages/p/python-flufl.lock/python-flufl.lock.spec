@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.lock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,33 +19,36 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flufl.lock
-Version:        3.2
+Version:        5.0.4
 Release:        0
-Summary:        NFS-safe file locking with timeouts for POSIX systems
+Summary:        NFS-safe file locking with timeouts for POSIX and Windows
 License:        Apache-2.0
 URL:            https://flufllock.readthedocs.io
-Source0:        https://files.pythonhosted.org/packages/source/f/flufl.lock/flufl.lock-%{version}.tar.gz
-# https://gitlab.com/warsaw/flufl.lock/merge_requests/11
-Source1:        https://gitlab.com/warsaw/flufl.lock/raw/master/LICENSE
+Source:         https://files.pythonhosted.org/packages/source/f/flufl.lock/flufl.lock-%{version}.tar.gz
+Patch:          python-flufl.lock-fix-setup.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
-BuildArch:      noarch
+Requires:       python-psutil
+Requires:       python-typing_extensions
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sybil}
 # /SECTION
+BuildArch:      noarch
 %python_subpackages
 
 %description
-NFS-safe file locking with timeouts for POSIX systems.
+NFS-safe file locking with timeouts for POSIX and Windows.
 
 %prep
-%setup -q -n flufl.lock-%{version}
+%autosetup -p1 -n flufl.lock-%{version}
 
 %build
-cp %{SOURCE1} .
 %python_build
 
 %install
@@ -56,7 +59,7 @@ cp %{SOURCE1} .
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst docs/NEWS.rst
 %license LICENSE
 %{python_sitelib}/*
 

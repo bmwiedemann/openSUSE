@@ -14,19 +14,19 @@ reason not to have them.
  3 files changed, 93 insertions(+)
  create mode 100644 kioslave/desktop/Home.desktop
 
-Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/CMakeLists.txt
+Index: plasma-workspace-5.15.80git.20210121T134153~83e5f9011/kioslave/desktop/CMakeLists.txt
 ===================================================================
---- plasma-workspace-5.15.80git.20190309T171418~4ede2e10.orig/kioslave/desktop/CMakeLists.txt	2019-03-09 17:14:18.000000000 +0100
-+++ plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/CMakeLists.txt	2019-03-10 14:10:36.943333000 +0100
+--- plasma-workspace-5.15.80git.20210121T134153~83e5f9011.orig/kioslave/desktop/CMakeLists.txt	2021-01-21 14:41:53.000000000 +0100
++++ plasma-workspace-5.15.80git.20210121T134153~83e5f9011/kioslave/desktop/CMakeLists.txt	2021-01-22 08:39:23.984081176 +0100
 @@ -33,3 +33,4 @@
  install( FILES desktop.protocol  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
  
  install(FILES directory.desktop directory.trash DESTINATION ${KDE_INSTALL_DATADIR}/kio_desktop)
 +install(FILES Home.desktop DESTINATION ${KDE_INSTALL_DATADIR}/kio_desktop/DesktopLinks)
-Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/Home.desktop
+Index: plasma-workspace-5.15.80git.20210121T134153~83e5f9011/kioslave/desktop/Home.desktop
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/Home.desktop	2019-03-10 14:10:36.943333000 +0100
++++ plasma-workspace-5.15.80git.20210121T134153~83e5f9011/kioslave/desktop/Home.desktop	2021-01-22 08:39:23.984081176 +0100
 @@ -0,0 +1,88 @@
 +[Desktop Entry]
 +Encoding=UTF-8
@@ -116,13 +116,13 @@ Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/Hom
 +Icon=user-home
 +Type=Link
 +
-Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/kio_desktop.cpp
+Index: plasma-workspace-5.15.80git.20210121T134153~83e5f9011/kioslave/desktop/kio_desktop.cpp
 ===================================================================
---- plasma-workspace-5.15.80git.20190309T171418~4ede2e10.orig/kioslave/desktop/kio_desktop.cpp	2019-03-09 17:14:18.000000000 +0100
-+++ plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/kio_desktop.cpp	2019-03-10 14:10:36.955343591 +0100
-@@ -87,6 +87,10 @@
-         QFile::copy(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kio_desktop/directory.desktop")),
-                     desktopPath + "/.directory");
+--- plasma-workspace-5.15.80git.20210121T134153~83e5f9011.orig/kioslave/desktop/kio_desktop.cpp	2021-01-21 14:41:53.000000000 +0100
++++ plasma-workspace-5.15.80git.20210121T134153~83e5f9011/kioslave/desktop/kio_desktop.cpp	2021-01-22 08:39:23.984081176 +0100
+@@ -83,6 +83,10 @@
+         // Copy the .directory file
+         QFile::copy(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kio_desktop/directory.desktop")), desktopPath + "/.directory");
  
 +        // Copy the trash link
 +        QFile::copy(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kio_desktop/directory.trash")),
@@ -130,4 +130,4 @@ Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/kioslave/desktop/kio
 + 
          // Copy the desktop links
          QSet<QString> links;
-         const auto dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("kio_desktop/DesktopLinks"), QStandardPaths::LocateDirectory);
+         const auto dirs =

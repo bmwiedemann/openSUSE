@@ -565,4 +565,15 @@
     <comment></comment>
     <requestid>856694</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>afba8e4269733139d26cbfdceb3113e5</srcmd5>
+    <version>3.38.2</version>
+    <time>1613427125</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.38.2:
+  + Ignore the --xid option when formatting from Nautilus (this
+    aligns the behavior under X11 with that on Wayland).
+  + Updated translations. (forwarded request 871177 from iznogood)</comment>
+    <requestid>871202</requestid>
+  </revision>
 </revisionlist>

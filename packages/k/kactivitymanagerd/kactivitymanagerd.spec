@@ -20,15 +20,15 @@
 
 %bcond_without lang
 Name:           kactivitymanagerd
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://projects.kde.org/kactivitymanagerd
-Source:         https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz
+Source:         kactivitymanagerd-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz.sig
+Source1:        kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 %if 0%{?suse_version} > 1325
@@ -52,6 +52,7 @@ BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
@@ -84,7 +85,6 @@ Provides translations to the package %{name}.
 
 %prep
 %setup -q -n kactivitymanagerd-%{version}
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build
@@ -98,22 +98,30 @@ Provides translations to the package %{name}.
 %find_lang kactivities5
 %endif
 
-%post -p /sbin/ldconfig
+%post 
+/sbin/ldconfig
+%{systemd_user_post plasma-kactivitymanagerd.service}
 
-%postun -p /sbin/ldconfig
+%preun
+%{systemd_user_preun plasma-kactivitymanagerd.service}
+
+%postun 
+/sbin/ldconfig
+%{systemd_user_postun plasma-kactivitymanagerd.service}
 
 %if %{with lang}
 %files -n %name-lang -f kactivities5.lang
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libexec/kactivitymanagerd
 %{_kf5_libdir}/libkactivitymanagerd_plugin.so
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
-%{_kf5_sharedir}/dbus-1/services/org.kde.activitymanager.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.ActivityManager.service
 %{_kf5_debugdir}/kactivitymanagerd.categories
+%{_userunitdir}/plasma-kactivitymanagerd.service
 
 %changelog

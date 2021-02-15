@@ -145,4 +145,38 @@
     <comment></comment>
     <requestid>827756</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0302dd15a6a795eb8d56ee7272d1b5d3</srcmd5>
+    <version>0.6.1</version>
+    <time>1613427392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * utils: fix keep\_file to return True when a file is not excluded
+  * setup: removes server left-over
+  * readme: document the new python module usage
+  * Remove server components
+  * download-logs: remove include-path option
+  * utils: prevent division by zero on Windows
+  * process: use a functional argument for process\_line
+  * process: use a functional argument for keep\_file
+  * process: use a functional argument for the filename2modelname
+  * tests: remove python version pinning and rename to unit
+  * process: simplify tokenizer by removing ansible std\_lines unpack
+  * process: simplify files\_iterator function by removing non list input
+  * process: simplify process function by removing non list input
+  * process: simplify train function by removing non list input
+  * process: add save\_file and load\_file to simplify joblib usage
+  * cmd: annotate cli functions
+  * process: annotate the test function
+  * utils: add type annotation for the files\_iterator
+  * data: add Build data type
+  * data: add initial data type using TypedDict for process Result
+  * Ignore reformatting change rev for git blame
+  * Reformat source code using black
+  * Enable mypy linters
+  * download: add support for absolute log path in indexes
+  * Switching Fedora runc nodeset to pod
+  * Update filename2modelname method to work with kubernetes logs</comment>
+    <requestid>871473</requestid>
+  </revision>
 </revisionlist>

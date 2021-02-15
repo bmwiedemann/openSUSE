@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 15:01:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 from build 
+
+-------------------------------------------------------------------
 Wed Feb  5 14:10:31 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.6.4

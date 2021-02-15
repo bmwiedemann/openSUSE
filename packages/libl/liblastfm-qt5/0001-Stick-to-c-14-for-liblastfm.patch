@@ -1,0 +1,27 @@
+From a739805b7b5ce0eaa2e29aa36c23074195a43f74 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 9 Feb 2021 11:13:07 +0100
+Subject: [PATCH] Stick to c++14 for liblastfm
+
+The project is dead upstream, changing code to fix
+build with GCC 11 may cause other issues.
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 71e3563..7e881e0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,6 +17,8 @@ option(BUILD_FINGERPRINT "Build the lastfm-fingerprint library" ON)
+ option(BUILD_DEMOS "Build the lastfm example programs" OFF)
+ option(BUILD_TESTS "Build liblastfm tests" ON)
+ 
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ # installation dirs
+ include(GNUInstallDirs)
+-- 
+2.30.0
+

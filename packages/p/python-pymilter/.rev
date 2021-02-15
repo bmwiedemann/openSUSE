@@ -25,4 +25,14 @@
     <comment>- Require full python for sqlite module</comment>
     <requestid>755744</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>22b09327790f5c14415e46dafbafd85d</srcmd5>
+    <version>1.0.4</version>
+    <time>1613427394</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency on py3dns so that flavor builds generate correctly
+
+- Drop py{2.3}-only parts as py2 is skipped</comment>
+    <requestid>871559</requestid>
+  </revision>
 </revisionlist>

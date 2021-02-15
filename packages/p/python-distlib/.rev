@@ -229,4 +229,12 @@
 - Refreshed remove-backports.patch</comment>
     <requestid>840141</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9faf0a818f66291b927a074c3da767ee</srcmd5>
+    <version>0.3.1</version>
+    <time>1613427094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870995</requestid>
+  </revision>
 </revisionlist>

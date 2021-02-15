@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Ensure text doesn't flow outside the Pie Chart face (kde#431995)
+  * Respect "show title" flag for Faces' CompactRepresentation
+  * Reduce default history amount for line charts to 60 seconds
+  * Do the sensor setters in two stages (kde#432254)
+  * Always reset minimum and maximum, not only when inserting
+  * Use faster file system searcing for iterating process groups
+  * Also require C++ 17 on stable
+  * SensorDataModel: Cache minimum and maximum values
+  * Fix dataChanged emitted when PIDs are loaded
+  * Avoid formatting NaN values
+  * Don't call update inside the application constructor
+  * Filter our services in the application slice which don't match the app string specifier
+  * Prevent inadvertently writing config when destroying SensorFaceController (kde#428970)
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Fri Jan  8 16:04:08 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop baselibs.conf, not needed

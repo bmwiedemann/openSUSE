@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 14:50:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 build 
+
+-------------------------------------------------------------------
 Thu Feb  4 17:50:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Use of "+=" in %check warrants bash as buildshell.

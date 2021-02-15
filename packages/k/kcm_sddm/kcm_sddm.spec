@@ -16,22 +16,25 @@
 #
 
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(org\\.kde\\.private\\.kcms\\.sddm
+
 %bcond_without lang
 Name:           kcm_sddm
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz
+Source:         sddm-kcm-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz.sig
+Source1:        sddm-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Support-default.session-symlink.patch
-Patch2:         0002-Replace-autologin-configuration-with-a-note-to-use-Y.patch
+Patch2:         0002-Read-and-write-autologin-user-to-etc-sysconfig-displ.patch
 Patch3:         0003-Don-t-add-a-Wayland-suffix-to-Wayland-sessions.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -40,7 +43,9 @@ BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Auth)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5XmlGui)
@@ -79,14 +84,17 @@ sddm.
 %files
 %doc README.md
 %license COPYING
-%{_kf5_knsrcfilesdir}/sddmtheme.knsrc
-%{_bindir}/sddmthemeinstaller
-%{_kf5_servicesdir}/
+%{_kf5_servicesdir}/kcm_sddm.desktop
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmsddm.policy
 %{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmsddm.conf
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmsddm.service
-%{_kf5_libdir}/libexec/
-%{_kf5_plugindir}/
-%{_kf5_sharedir}/sddm-kcm/
+%{_kf5_libdir}/libexec/kauth/kcmsddm_authhelper
+%{_bindir}/sddmthemeinstaller
+%{_kf5_knsrcfilesdir}/sddmtheme.knsrc
+%dir %{_kf5_sharedir}/kpackage/
+%dir %{_kf5_sharedir}/kpackage/kcms/
+%{_kf5_sharedir}/kpackage/kcms/kcm_sddm/
+%dir %{_kf5_plugindir}/kcms/
+%{_kf5_plugindir}/kcms/kcm_sddm.so
 
 %changelog

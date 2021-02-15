@@ -8,11 +8,11 @@ Works around missing window decorations and broken config file reading
  startkde/startplasma-waylandsession.cpp | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/startkde/startplasma-waylandsession.cpp b/startkde/startplasma-waylandsession.cpp
-index 87c71c6b3..5d0b3f65f 100644
---- a/startkde/startplasma-waylandsession.cpp
-+++ b/startkde/startplasma-waylandsession.cpp
-@@ -45,6 +45,11 @@ int main(int /*argc*/, char** /*argv*/)
+Index: plasma-workspace-5.15.80git.20210121T134153~83e5f9011/startkde/startplasma-waylandsession.cpp
+===================================================================
+--- plasma-workspace-5.15.80git.20210121T134153~83e5f9011.orig/startkde/startplasma-waylandsession.cpp	2021-01-21 14:41:53.000000000 +0100
++++ plasma-workspace-5.15.80git.20210121T134153~83e5f9011/startkde/startplasma-waylandsession.cpp	2021-01-22 08:39:19.900539408 +0100
+@@ -47,6 +47,11 @@
      out << "startplasma-waylandsession: Starting up...";
  
      if (qEnvironmentVariableIsSet("DISPLAY")) {
@@ -24,6 +24,3 @@ index 87c71c6b3..5d0b3f65f 100644
          setupX11();
      } else {
          qWarning() << "running kwin without Xwayland support";
--- 
-2.22.0
-

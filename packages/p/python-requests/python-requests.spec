@@ -35,6 +35,8 @@ URL:            http://python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch
+# PATCH-FIX-UPSTREAM: gh#psf/requests#5711
+Patch1:         https://patch-diff.githubusercontent.com/raw/psf/requests/pull/5711.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -104,11 +106,6 @@ sed -i "s#\(httpbin.*\), 'never'#\1#" tests/test_requests.py
 %install
 %if !%{with test}
 %python_install
-%{python_expand # don't pin to idna<3 for python3, because many package installers check this and fail with newer idna
-if [ ! 0%{$python_version_nodots} -lt 30 ]; then
-  sed -i -E 's/idna<3,?/idna/' %{buildroot}%{$python_sitelib}/requests-%{version}*-info/requires.txt
-fi
-}
 # check that urllib3 is not installed
 test ! -e %{buildroot}%{python3_sitelib}/requests/packages/urllib3
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

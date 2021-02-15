@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb 11 19:15:18 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.9.4
+  Features:
+  * Actually install Yaru color scheme
+  * Give every tab the ${title} (instead of "Default")
+  * Add option to strip trailing whitespace on paste (#1904)
+  Bugfixes:
+  * Fix saving of already saved session
+  * Add shortcut to "Unselect all"
+  * Many Meson buildsystem fixes
+  * Avoid missing the previous command exit code when encoding URLs
+  * Resolve some D deprecation messages
+  * Mention powerline/fonts in README
+  * Avoid calling values() on a shared object
+  * Update metainfo data
+  * Drop compat code for older D frontend versions
+  * Bump minimum VTE version to 0.46
+  * Remove deprecated Autotools support
+  * Add release notes, NEWS file, automatic metainfo update
+  * Update to GtkD 3.9.0
+  Translations:
+  * This release contains many localization updates
+- Simplify by just use ldc as compiler and meson for build on all
+  architectures instead of supporting two different build chains
+- Drop patches not required for meson builds:
+  * dynamic-link.patch
+  * fix-ldc-link.patch
+- Drop patches fixed upstream:
+  * 0001-Avoid-calling-values-on-a-shared-object.patch
+  * fix-meson-build.patch
+
+-------------------------------------------------------------------
 Fri Jun  5 23:29:52 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Always apply patch 0001-Avoid-calling-values-on-a-shared-object.patch

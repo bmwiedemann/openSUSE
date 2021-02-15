@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  6 03:07:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.015
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.015		2021-02-05	T. R. Wyant
+      Handle <<\EOD and <<~\EOD, which are equivalent to <<'EOD' and
+      <<~'EOD', respectively.
+
+      Recognize indented here documents. Thanks to Olaf Alders (oalders)
+      for alerting me to this omission.
+
+-------------------------------------------------------------------
 Fri Jan 15 03:07:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.014

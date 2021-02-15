@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * [Sidebar view] Make Intro Page icons keyboard-triggerable
+  * Include SystemSettingsExternalApp modules in the --list output as well
+  * Fix headers missing for non-KCM modules
+  * [Icon View] Don't open modules twice on clicking
+  * Fix ExternalAppModules not showing up
+  * [sidebar view] Fix sidebar header alignment and height
+- Drop patches, now upstream:
+  * 0001-Fix-ExternalAppModules-not-showing-up.patch
+  * 0002-Icon-View-Don-t-open-modules-twice-on-clicking.patch
+  * 0003-Fix-headers-missing-for-non-KCM-modules.patch
+  * 0004-Include-SystemSettingsExternalApp-modules-in-the-lis.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+- Add patches to fix the YaST item:
+  * 0001-Fix-ExternalAppModules-not-showing-up.patch
+  * 0002-Icon-View-Don-t-open-modules-twice-on-clicking.patch
+  * 0003-Fix-headers-missing-for-non-KCM-modules.patch
+  * 0004-Include-SystemSettingsExternalApp-modules-in-the-lis.patch
+
+-------------------------------------------------------------------
 Sat Jan  9 16:16:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add QML provides

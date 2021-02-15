@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Fix osd actions not working
+  * Fix rotation direction after change in libkscreen
+  * [kcm] Limit maximum device combobox length (kde#432249)
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * clang-tidy: Force braces around statements
+  * Run clang-format
+  * Update .gitignore file
+  * Add trailing comma to enums
+  * Make orientation icons more obvious in KScreen
+  * Autogenerate categories file
+  * Remove unused include
+  * Fix Connections warnings
+  * Print debug information when something failed
+  * Skip unneeded copies
+  * daemon: improve consistency of the lid behaviour
+  * Address constness of objects
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Do not explicitely define Exec line for KCM
+  * refactor(kded): refactor OSD
+  * fix(kded): move to kdirwatch to reduce inotify footprint
+
+-------------------------------------------------------------------
 Sat Jan  9 16:19:36 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Compatibility with qml-autoreqprov

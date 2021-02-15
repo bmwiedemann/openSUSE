@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Feb  5 07:31:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-16+35
+  * Fixes:
+    + JDK-8253353: Crash in C2: guarantee(n != NULL) failed: No Node
+    + JDK-8257215: JFR: Events dropped when streaming over a chunk
+      rotation
+    + JDK-8258378: Final nroff manpage update for JDK 16
+    + JDK-8259765: ZGC: Handle incorrect processor id reported by
+      the operating system
+    + JDK-8259794: Remove EA from JDK 16 version string starting
+      with Initial RC promotion on Feb 04, 2021(B35)
+    + JDK-8260339: JVM crashes when executing
+      PhaseIdealLoop::match_fill_loop
+    + JDK-8260473: [vector] ZGC: VectorReshape test produces
+      incorrect results with ZGC enabled
+    + JDK-8260585: AArch64: Wrong code generated for shifting right
+      and accumulating four unsigned short integers
+    + JDK-8260608: add a regression test for 8260370
+    + JDK-8260632: Build failures after JDK-8253353
+    + JDK-8260704: ParallelGC: oldgen expansion needs release-store
+      for _end
+    + JDK-8260927: StringBuilder::insert is incorrect without
+      Compact Strings
+
+-------------------------------------------------------------------
+Fri Feb  5 07:22:23 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-16+34
+  * Fixes:
+    + JDK-8227695: assert(pss->trim_ticks().seconds() == 0.0)
+      failed: Unexpected partial trimming during evacuation
+    + JDK-8247619: Improve Direct Buffering of Characters
+    + JDK-8255199: Catching a few NumberFormatExceptions in xmldsig
+    + JDK-8259025: Record compact constructor using
+      Objects.requireNonNull
+    + JDK-8259271: gc/parallel/TestDynShrinkHeap.java still fails
+      "assert(covered_region.contains(new_memregion)) failed: new
+      region is not in covered_region"
+    + JDK-8259276: C2: Empty expression stack when reexecuting
+      tableswitch/lookupswitch instructions after deoptimization
+    + JDK-8259775: [Vector API] Incorrect code-gen for
+      VectorReinterpret operation
+    + JDK-8260284: C2: assert(_base == Int) failed: Not an Int
+    + JDK-8260370: C2: LoopLimit node is not eliminated
+
+-------------------------------------------------------------------
 Fri Jan 22 13:24:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-16+33

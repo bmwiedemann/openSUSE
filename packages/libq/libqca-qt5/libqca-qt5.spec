@@ -1,7 +1,7 @@
 #
 # spec file for package libqca-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define _so 2
 %bcond_without pkcs11
 Name:           libqca-qt5
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://userbase.kde.org/QCA
-Source:         https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz.sig
+Source2:        qca-qt5.keyring
 Source99:       libqca-qt5-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         qca-2.3.0-fixDSA.patch
@@ -37,11 +39,11 @@ BuildRequires:  libdrm-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  mozilla-nss-devel
+BuildRequires:  openssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.6.0
-BuildRequires:  openssl-devel >= 1.1.1
+BuildRequires:  cmake(Qt5Core) >= 5.9.0
+BuildRequires:  cmake(Qt5Network) >= 5.9.0
 Requires:       gpg2 >= 2.0.0
 Recommends:     %{name}-plugins
 Provides:       libqca-qt5-2 = %{version}
@@ -63,8 +65,8 @@ SASL support.
 Summary:        Development files for the Qt Cryptographic Architecture 2
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       pkgconfig(Qt5Core) >= 5.6.0
-Requires:       pkgconfig(Qt5Network) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.6.0
+Requires:       cmake(Qt5Network) >= 5.6.0
 
 %description devel
 This package provides a generic Qt cryptographic architecture,
@@ -86,7 +88,7 @@ SASL support.
 
 %prep
 %setup -q -n qca-%{version}
-%patch0 -p1
+%patch0 -p0
 
 %build
 %cmake \

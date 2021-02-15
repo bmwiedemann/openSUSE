@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 11 10:24:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Actually do the update to 0.16.1 m-)
+- Skip schema tests not tolerating any deprecation warnings from
+  numpy 1.20 -- Already fixed upstream, but patch is too
+  unspecific gh#spacetelescope/gwcs#353
+
+-------------------------------------------------------------------
 Mon Jan 18 00:46:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.16.1

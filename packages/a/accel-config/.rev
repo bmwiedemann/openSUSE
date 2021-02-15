@@ -7,4 +7,12 @@
     <comment>- Initial packaging of v2.8 (jsc#SLE-15021)</comment>
     <requestid>836279</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e06c650dbe1ac8948b3802069985793</srcmd5>
+    <version>3.0.1</version>
+    <time>1613427399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871451</requestid>
+  </revision>
 </revisionlist>

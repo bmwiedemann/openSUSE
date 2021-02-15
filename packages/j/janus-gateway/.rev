@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57304210df95e11f2abc9a923645c9f9</srcmd5>
+    <version>0.10.8</version>
+    <time>1613427231</time>
+    <user>dimstar_suse</user>
+    <comment>Please add this to Factory. It's a backend used in many WebRTC deployments (e.g. Nextcloud signaling server).</comment>
+    <requestid>858112</requestid>
+  </revision>
+</revisionlist>

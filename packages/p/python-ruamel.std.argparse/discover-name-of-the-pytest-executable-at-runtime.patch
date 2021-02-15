@@ -1,0 +1,103 @@
+From d7373adeee526c67ff0cef83d166bd9579399c22 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Thu, 11 Feb 2021 17:17:49 +0100
+Subject: [PATCH] Discover name of the pytest executable at runtime.
+
+Original code had hard-coded name of 'py.test', but that name
+could be very flexible. Either this name is discovered
+automagically, or the user can set variable PYTEST_EXECUTABLE,
+which is honored.
+---
+ _test/__init__.py      |    6 ++++++
+ _test/test_argparse.py |   20 +++++++++++---------
+ _test/test_program.py  |    4 +++-
+ 3 files changed, 20 insertions(+), 10 deletions(-)
+ create mode 100644 _test/__init__.py
+
+--- /dev/null
++++ b/_test/__init__.py
+@@ -0,0 +1,6 @@
++import os
++import os.path
++import sys
++
++PYTEST_EXECUTABLE = os.environ.get('PYTEST_EXECUTABLE') or \
++        os.path.basename(sys.argv[0])
+--- a/_test/test_program.py
++++ b/_test/test_program.py
+@@ -8,6 +8,7 @@ import sys
+ import pytest
+ 
+ from ruamel.std.argparse import ProgramBase, option, sub_parser, version
++from _test import PYTEST_EXECUTABLE
+ 
+ 
+ class Program(ProgramBase):
+@@ -213,11 +214,12 @@ class TestProgram:
+         assert pho.start('optional arguments', '--extra')
+         assert pho.start('optional arguments', '--verbose')
+ 
++
+     def test_git_sub_sub_sub_parser(self, capsys, program):
+         with pytest.raises(SystemExit):
+             program._parse_args('git hihi oops -h'.split())
+         pho = ParseHelpOutput(capsys)
+-        assert pho.start('usage', 'py.test git hihi oops')
++        assert pho.start('usage', '{} git hihi oops'.format(PYTEST_EXECUTABLE))
+         assert pho.start('optional arguments', '--verbose')
+ 
+     def test_version(self, capsys, program):
+--- a/_test/test_argparse.py
++++ b/_test/test_argparse.py
+@@ -6,6 +6,7 @@ import pytest  # NOQA  < so flake doesn'
+ from ruamel.std.argparse import argparse, SmartFormatter
+ 
+ from textwrap import dedent
++from _test import PYTEST_EXECUTABLE
+ 
+ 
+ def exit(self=None, status=None, message=None):
+@@ -43,16 +44,16 @@ def test_argparse(capsys):
+     parser.parse_args(['--help'])
+     out, err = capsys.readouterr()
+     full_help = dedent("""\
+-    usage: pytest [-h] [--verbose] [--list LIST] [--oneline]
++    usage: {} [-h] [--verbose] [--list LIST] [--oneline]
+ 
+-    {0}
++    {}
+     optional arguments:
+       -h, --help   show this help message and exit
+-      --verbose    {1}
+-      --list LIST  {2}
++      --verbose    {}
++      --list LIST  {}
+       --oneline    one line help
+     """).format(
+-        desc, help_verbose,
++        PYTEST_EXECUTABLE, desc, help_verbose,
+         help_list.lstrip().replace('\n  ', '\n             ').rstrip(),
+     )
+     assert full_help == out
+@@ -90,16 +91,17 @@ def test_argparse_default(capsys):
+     parser.parse_args(['--help'])
+     out, err = capsys.readouterr()
+     full_help = dedent("""\
+-    usage: pytest [-h] [--verbose] [--list LIST] [--oneline]
++    usage: {} [-h] [--verbose] [--list LIST] [--oneline]
+ 
+-    {0}
++    {}
+     optional arguments:
+       -h, --help   show this help message and exit
+-      --verbose    {1} (default: False)
+-      --list LIST  {2}
++      --verbose    {}
++      --list LIST  {}
+                     (default: None)
+       --oneline    one line help (default: False)
+     """).format(
++        PYTEST_EXECUTABLE,
+         desc, help_verbose,
+         help_list.lstrip().replace('\n  ', '\n             ').rstrip(),
+     )

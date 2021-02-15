@@ -112,4 +112,12 @@
 - from version 2.13.0 (forwarded request 841902 from glaubitz)</comment>
     <requestid>841940</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>449247cde037332dc9fe1ab366ede2b1</srcmd5>
+    <version>2.21.1</version>
+    <time>1613427642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872528</requestid>
+  </revision>
 </revisionlist>

@@ -381,7 +381,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
 %if 0%{!?gcc_libc_bootstrap:1}
-%if %{cross_arch} == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
+%if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++
 %endif
 %endif

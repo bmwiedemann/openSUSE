@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 15 14:02:53 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Fix sensors names of aggregate disk rates (kde#432851)
+  * Fix copy paste error resulting in total upload displaying the upload rate (kde#430676)
+  * Fix disk speeds (kde#432637)
+  * Check if we could open a file
+  * Include StorageVolumes by default
+  * Set name for temperature sensor
+  * cmake: add URL to help packagers
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

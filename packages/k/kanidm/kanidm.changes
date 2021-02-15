@@ -1,3 +1,24 @@
+-------------------------------------------------------------------
+Mon Dec 28 00:15:25 UTC 2020 - wbrown@suse.de
+
+- Update to version v1.1.0alpha.3~git0.b34c893:
+  * (cargo-release) version 1.1.0-alpha.3
+  * release notes
+  * Update Dependencies
+  * Unixd - NXCache of unknown items (#338)
+  * WIP - Improve Auth Proto to Support Webauthn (#333)
+  * Follow up on ci fixes
+  * Add port verification to start server in kanidm_client tests
+  * Update CI base image to ubuntu 20.04
+  * Add libudev to ci
+  * 13 135 webauthn support (#332)
+  * Change root user check to warning due to container run times (#328)
+  * Fixes #324 account softlocking and rate limiting (#326)
+  * Add passpoint link
+  * Update tumbleweed docs
+  * Account valid-from and expiry (#322)
+
+-------------------------------------------------------------------
 Thu Oct 01 00:19:19 UTC 2020 - wbrown@suse.de
 
 - Update to version v1.1.0alpha.2~git0.764e727:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 10 19:44:20 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update the test self-signed certificate to use 2048-bit key.
+- Add python-distlib-2048-bit-key.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 03:44:52 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.3.1:

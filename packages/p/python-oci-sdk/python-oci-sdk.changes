@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Feb 11 15:13:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.31.0
+  * Support for the Database Management service
+  * Support for setting an offset for budget processing in the Budgets service
+  * Support for enabling and disabling Oracle Cloud Agent plugins in the Compute service
+  * Support for listing available plugins and for getting the status of plugins
+    in the Oracle Cloud Agent service
+  * Support for one-off patching in autonomous transaction processing - dedicated
+    databases in the Database service
+  * Support for additional database upgrade options in the Database service
+  * Support for glossary term recommendations in the Data Catalog service
+  * Support for listing errata in the OS Management service
+  * Model `InstanceAgentCommandContentInfo` is removed from Compute Instance Agent service
+- from version 2.30.0
+  * Support for checking if a contact for Exadata infrastructure is valid
+    in My Oracle Support in the Database service
+  * Support for checking if Exadata infrastructure is in a degraded
+    state in the Database service
+  * Support for updating the operating system on a VM cluster in the Database service
+  * Support for external databases in the Database service
+  * Support for uploading objects to the infrequent access storage
+    tier in the Object Storage service
+  * Support for changing the storage tier of existing objects in the Object Storage service
+  * Support for private templates in the Resource Manager service
+  * Support for multiple encryption domains on IPSec tunnels in the Networking service
+  * Attribute `vnic_id` in response model `Ipv6` changed from required
+    to optional in the Networking service
+- from version 2.29.0
+  * Support for creating, managing, and using asymmetric keys in the Key Management service
+  * Support for peer ACD unique names in Exadata Cloud at Customer in the Database service
+  * Support for ACLs on autonomous databases in Exadata Cloud at Customer
+    Data Guard in the Database service
+  * Support for drift detection on individual resources of a stack in the Resource Manager service
+  * Support for private access channels and vanity URLs in the Analytics Cloud service
+  * Support for updating load balancer shapes in the Blockchain Platform service
+  * Support for assigning volume backup policies to volume groups in the Block Volume service
+  * Parameter `idcs_access_token` in model `CreateBlockchainPlatformDetails` changed from
+    optional to required in the Blockchain service
+- from version 2.28.0
+  * Support for Logging Analytics as a target in the Service Connector Hub service
+  * Support for lookups, agent collection warnings, task commands, and data archive/recall
+    in the Logging Analytics service
+  * Fixed a bug in the endpoint used for the Management Dashboard service
+  * A new required property `kind` is added to the models `UpdateScheduledTaskDetails`
+    and `ScheduledTask` in the Log Analytics service
+  * The allowed values for parameter `sort_by` are restricted for methods `list_meta_source_types`,
+    `list_parser_functions`, `list_parser_meta_plugins`, `list_source_label_operators`,
+    `list_source_meta_functions` in the Log Analytics service. For more information please see
+     the documentation for `LogAnalyticsClient <https://docs.oracle.com/en-us/iaas/tools/python\
+     /latest/api/log_analytics/client/oci.log_analytics.LogAnalyticsClient.html#loganalyticsclient>`_
+- from version 2.27.0
+  * Support for auto-scaling in the Big Data service
+  * Documentation fixes for the Logging Search service
+  * Removed `LIFECYCLE_STATE_UPDATING_INFRA` from model BdsInstance in the Big Data service
+  * Removed `LIFECYCLE_STATE_STOPPING` and `LIFECYCLE_STATE_STARTING` from model
+    Node in the Big Data Service
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Fri Jan  8 21:54:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.26.0

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Feb 11 06:51:46 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to Patch#366 2021/02/10
+
+  * correct   a  compiler-warning  fix  in  patch  #352  which  allowed
+    sign-extension of coordinate values (report by "CismonX").
+  * correct  upper-limit for selection buffer, accounting for combining
+    characters (report/testcase by Tavis Ormandy).
+    (CVE-2021-27135 bsc#1182091)
+  * with alwaysHighlight true, xterm does not properly track focus. The
+    screen->select   FOCUS  flag  remains  always  on,  which  prevents
+    bellIsUrgent  from  working, as the urgent WM_HINT flag is only set
+    in  setXUrgency()  when  the  window  is  not  focused. Fix this by
+    updating screen->select in unselectwindow() regardless of the value
+    of always_highlight (patch by Jiri Bohac).
+  * improve  fix  for  interaction between SRM and ENQ (report by Grant
+    Taylor).
+  * build-fix   for  --with-Xaw3dxft,  needed  when  --with-toolbar  is
+    omitted (report by Jimmy Olgeni, Emanuel Haupt).
+- Updated to Patch #365 - 2021/02/03
+
+  * amend fix for “word” selection in patch #364 to limit that to
+    the insert-selectable action, which reads data from the screen. This
+    restores the interactive behavior where double-clicking on a
+    “word” would make subsequent selection extensions by words as
+    well as suppressing some boundary-checks (report by David Wolfskill,
+    FreeBSD #253225).
+
+- Updated to Patch #364 - 2021/02/02
+
+  * add -fc option.
+  * correct/improve limit-checks for SRM versus ENQ from patch #344 (report by Tom Szilagyi).
+  * enable XftFont resource in Xaw3dxft configuration (patch by Tavis Ormandy).
+  * improve quoting/escaping in build-scripts per shellcheck.
+  * add libpcre2-posix to the packages tested for --with-pcre2 option, needed with Fedora (report by Tomas Korbar).
+  * correct a typo in manual page, and note that KeepClipboard may not be compiled-in (report/patch by Sean C Farley).
+  * corrected boundary-checks for “word” selection used in onNClicks resources (report by Tavis Ormandy).
+  * update to autoconf-2.52-20210101, to improve shellcheck warnings.
+  * improve configure check for desktop categories.
+
+-------------------------------------------------------------------
 Tue Jan 12 02:57:05 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to Patch#363 - 2020/12/26

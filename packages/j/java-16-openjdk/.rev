@@ -39,4 +39,12 @@
     <comment>jdk-16+33</comment>
     <requestid>867722</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82720e3db295062865c36e155fe371a4</srcmd5>
+    <version>16.0.0.0~35</version>
+    <time>1613427362</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>871356</requestid>
+  </revision>
 </revisionlist>

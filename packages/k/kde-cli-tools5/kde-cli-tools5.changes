@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Update .gitignore
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Prevent clang-format uglification
+  * Add .gitignore file to ignore generated .clang-format file
+  * kioclient: add "appmenu" command to use a kopenwith dialog as a basic launcher
+  * Require C++17
+  * Avoid pointless KCModuleInfo usage
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Do not explicitely define Exec line for KCM
+  * Now it depends against new version. Old code can be removed
+  * Partly port away from KMimeTypeTrader
+  * Documentation fixes
+  * Ignore options after positional arguments (kde#426896)
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

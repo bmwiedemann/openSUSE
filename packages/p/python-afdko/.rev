@@ -45,4 +45,12 @@
 - No longer install 2 removed binaries</comment>
     <requestid>822561</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>75710cde644830907a55c6d3e746b310</srcmd5>
+    <version>3.5.0</version>
+    <time>1613427388</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36 as python36-scipy is missing</comment>
+    <requestid>871438</requestid>
+  </revision>
 </revisionlist>

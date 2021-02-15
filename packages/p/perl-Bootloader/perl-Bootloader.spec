@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Bootloader
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Bootloader
-Version:        0.932
+Version:        0.933
 Release:        0
 Requires:       coreutils
 Requires:       perl-base = %{perl_version}

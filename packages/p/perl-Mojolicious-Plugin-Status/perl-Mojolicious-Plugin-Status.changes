@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  9 03:07:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.14  2021-02-09
+    - Switched back to Sereal for serialization in Mojo::MemoryMap to reduce memory usage.
+
+-------------------------------------------------------------------
 Mon Jan  4 03:10:50 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.13

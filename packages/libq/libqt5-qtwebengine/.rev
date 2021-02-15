@@ -640,4 +640,13 @@
 - Drop obsolete conditions</comment>
     <requestid>867694</requestid>
   </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>866bd4c891f136286ef3946a0e4e4038</srcmd5>
+    <version>5.15.2</version>
+    <time>1613427299</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix sandbox with glibc 2.33 (boo#1182233):
+  * chromium-glibc-2.33.patch</comment>
+    <requestid>872643</requestid>
+  </revision>
 </revisionlist>

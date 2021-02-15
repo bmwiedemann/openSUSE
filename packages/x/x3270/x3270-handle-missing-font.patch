@@ -1,0 +1,13 @@
+--- x3270/screen.c	2020-10-30 13:35:58.238416347 +0100
++++ x3270/screen.c	2020-10-30 13:39:12.721353850 +0100
+@@ -4686,7 +4686,9 @@
+ 	}
+     }
+ 
+-    g = XLoadQueryFont(display, best);
++    if ((g = XLoadQueryFont(display, best)) == NULL) {
++        return xs_buffer("Font %s could not be loaded", best);
++    }
+     set_font_globals(g, /*name*/best, best, g->fid, is_dbcs);
+     return NULL;
+ }

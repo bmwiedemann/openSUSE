@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 15 12:30:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable python36 build: python36-numpy is no longer in Tumbleweed
+  xarray will follow to drop Python 3.6 support on next release.
+  (NEP 29)
+- Add xarray-pr4884-dask2021.patch gh#pydata/xarray#4884
+- Enable parralel testing with pytest-xdist
+- Recommend/Suggest the extras
+
+-------------------------------------------------------------------
 Sun Dec 20 16:09:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.16.2:

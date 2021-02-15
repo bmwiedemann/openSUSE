@@ -18,7 +18,7 @@
 
 %define cpan_name PPIx-QuoteLike
 Name:           perl-PPIx-QuoteLike
-Version:        0.014
+Version:        0.015
 Release:        0
 Summary:        Parse Perl string literals and string-literal-like things
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -42,6 +42,12 @@ Requires:       perl(Readonly)
 This Perl class parses Perl string literals and things that are reasonably
 like string literals. Its real reason for being is to find interpolated
 variables for Perl::Critic policies and similar code.
+
+The parse is fairly straightforward, and a little poking around with
+_eg/pqldump_ should show how it normally goes.
+
+But there is at least one quote-like thing that probably needs some
+explanation.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

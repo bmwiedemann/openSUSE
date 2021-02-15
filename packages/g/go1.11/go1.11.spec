@@ -1,7 +1,7 @@
 #
 # spec file for package go1.11
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -104,7 +104,6 @@ Patch5:         tools-packaging.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
-Patch10:        gcc9-go.patch
 Patch101:       gcc9-rsp-clobber.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
@@ -120,7 +119,7 @@ BuildRequires:  gcc6-go
 # SLE15 or Leap 15.x
 BuildRequires:  gcc7-go
 %else
-BuildRequires:  gcc9-go
+BuildRequires:  gcc-go
 %endif
 %endif
 %else
@@ -206,8 +205,6 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %if 0%{?suse_version} == 1500
 # SLE15 or Leap 15.x
 %patch9 -p1
-%else
-%patch10 -p1
 %endif
 %endif
 %endif

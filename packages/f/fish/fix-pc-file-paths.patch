@@ -1,0 +1,23 @@
+Index: fish-3.1.2/cmake/Install.cmake
+===================================================================
+--- fish-3.1.2.orig/cmake/Install.cmake
++++ fish-3.1.2/cmake/Install.cmake
+@@ -25,15 +25,15 @@ SET(configure_input
+  DO NOT MANUALLY EDIT THIS FILE!")
+ 
+ SET(extra_completionsdir
+-    /usr/local/share/fish/vendor_completions.d
++    ${CMAKE_INSTALL_FULL_DATADIR}/fish/vendor_completions.d
+     CACHE STRING "Path for extra completions")
+ 
+ SET(extra_functionsdir
+-    /usr/local/share/fish/vendor_functions.d
++    ${CMAKE_INSTALL_FULL_DATADIR}/fish/vendor_functions.d
+     CACHE STRING "Path for extra functions")
+ 
+ SET(extra_confdir
+-    /usr/local/share/fish/vendor_conf.d
++    ${CMAKE_INSTALL_FULL_DATADIR}/fish/vendor_conf.d
+     CACHE STRING "Path for extra configuration")
+ 
+ # These are the man pages that go in system manpath; all manpages go in the fish-specific manpath.

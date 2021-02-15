@@ -31,4 +31,20 @@
     <comment></comment>
     <requestid>870948</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>41640f92eafa61cd6fdd59d5fad8e1dc</srcmd5>
+    <version>0.8.3+hg.34</version>
+    <time>1613427342</time>
+    <user>dimstar_suse</user>
+    <comment>- Add discover-name-of-the-pytest-executable-at-runtime.patch
+  Original code had hard-coded name of 'py.test', but that
+  coname uld be very flexible. Either this name is discovered
+  automagically, or the user can set variable PYTEST_EXECUTABLE,
+  which is honored.
+  Filed as https://sourceforge.net/p/ruamel-std-argparse/tickets/4/
+- Add _service and pull from the upstream VCS
+  (https://sourceforge.net/p/ruamel-std-argparse/tickets/3/).
+</comment>
+    <requestid>871389</requestid>
+  </revision>
 </revisionlist>

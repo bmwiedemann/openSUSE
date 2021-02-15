@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gst-vaapi-glx-iterate-over-FBConfig.patch -- glx: Iterate over FBConfig and select 8 bit color size
+Patch0:         gst-vaapi-glx-iterate-over-FBConfig.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -87,7 +89,6 @@ This package contains documentation for gstreamer-plugins-vaapi.
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

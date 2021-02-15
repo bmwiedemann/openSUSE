@@ -1,24 +1,20 @@
-Index: qca-2.3.0/plugins/qca-ossl/qca-ossl.cpp
-===================================================================
---- qca-2.3.0.orig/plugins/qca-ossl/qca-ossl.cpp
-+++ qca-2.3.0/plugins/qca-ossl/qca-ossl.cpp
-@@ -1652,18 +1652,14 @@ public:
+--- plugins/qca-ossl/qca-ossl.cpp.orig	2021-02-05 10:04:54.073661759 +0100
++++ plugins/qca-ossl/qca-ossl.cpp	2021-02-05 10:05:57.141861984 +0100
+@@ -1617,16 +1617,12 @@
  
  static bool make_dlgroup(const QByteArray &seed, int bits, int counter, DLParams *params)
  {
--	int ret_counter;
- 	QScopedPointer<DSA, DsaDeleter> dsa(DSA_new());
- 	if(!dsa)
- 		return false;
+-    int                             ret_counter;
+     QScopedPointer<DSA, DsaDeleter> dsa(DSA_new());
+     if (!dsa)
+         return false;
  
- 	if (DSA_generate_parameters_ex(dsa.data(), bits, (const unsigned char *)seed.data(), seed.size(),
--			&ret_counter, nullptr, nullptr) != 1)
-+			nullptr, nullptr, nullptr) != 1)
- 		return false;
- 
--	if(ret_counter != counter)
--		return false;
+     if (DSA_generate_parameters_ex(
+-            dsa.data(), bits, (const unsigned char *)seed.data(), seed.size(), &ret_counter, nullptr, nullptr) != 1)
+-        return false;
 -
- 	const BIGNUM *bnp, *bnq, *bng;
- 	DSA_get0_pqg(dsa.data(), &bnp, &bnq, &bng);
- 	params->p = bn2bi(bnp);
+-    if (ret_counter != counter)
++            dsa.data(), bits, (const unsigned char *)seed.data(), seed.size(), nullptr, nullptr, nullptr) != 1)
+         return false;
+ 
+     const BIGNUM *bnp, *bnq, *bng;

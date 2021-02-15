@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 11 22:21:36 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Added x3270-handle-missing-font.patch (bsc#1177104)
+  In some cases when fonts are present locally but are not present
+  in the fontpath, x3270 can crash due to a segfault caused by
+  XLoadQueryFont() returning NULL in lff_single().
+
+-------------------------------------------------------------------
 Mon Nov  9 07:28:01 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

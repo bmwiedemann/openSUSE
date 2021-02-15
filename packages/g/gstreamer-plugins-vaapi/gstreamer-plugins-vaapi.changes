@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 21 21:41:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gst-vaapi-glx-iterate-over-FBConfig.patch: glx: Iterate over
+  FBConfig and select 8 bit color size. Texture upload mechanism
+  used by gstreamer-vaapi relies on 8 bpc. In latest mesa versions
+  the first fbconfig might not be 8 bit, so iterate over it to find
+  the correct config with supported values. This also adds 8 bit
+  alpha size to the framebuffer configuration which is required to
+  get it working properly.
+
+-------------------------------------------------------------------
 Sat Jan 16 19:57:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:

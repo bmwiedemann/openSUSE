@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:17 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Add X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot to desktop file
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * FileChooser: escape slash character in user visible filter name (kde#427306)
+  * mobile filechooser: Make sure to also return the right folder when the folder wasn't changed
+  * Disable X11 session management
+  * screencast: Improve the screencasting process
+  * mobile filechooser: Use new required property API
+  * mobile filechooser: Don't accept empty titles
+
+-------------------------------------------------------------------
 Fri Jan 15 17:54:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov

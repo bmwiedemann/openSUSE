@@ -16,11 +16,11 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%{!?_fillupdir: %global _fillupdir %{_localstatedir}/adm/fillup-templates}
-
 # Internal QML imports
 %global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm).*
+
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%{!?_fillupdir: %global _fillupdir %{_localstatedir}/adm/fillup-templates}
 
 %define kf5_version 5.58.0
 
@@ -30,16 +30,15 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
-%global _plasma5_bugfix 5.20.1
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -47,6 +46,7 @@ Source3:        baselibs.conf
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
 Patch503:       0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
+Patch504:       0001-ksmserver-Enable-debug-output-by-default.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
 BuildRequires:  breeze5-icons
@@ -91,7 +91,8 @@ BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlRpcClient)
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
-BuildRequires:  cmake(KUserFeedback)
+# Disabled until upstream complies with the KDE policies
+#BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.1.0
 #!BuildIgnore:  kdialog
@@ -343,13 +344,24 @@ Plasma 5 session with Wayland from a display manager.
   touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
   ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-  # Backport of https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/588
-  rm -r %{buildroot}%{_kf5_plasmadir}/wallpapers/org.kde.image/platformcontents/touch
-
   %fdupes %{buildroot}/%{_prefix}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post 
+/sbin/ldconfig
+%{systemd_user_post plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
+	plasma-krunner.service plasma-ksmserver.service plasma-ksplash-ready.service plasma-plasmashell.service \
+	plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service}
+
+%preun
+%{systemd_user_preun plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
+	plasma-krunner.service plasma-ksmserver.service plasma-ksplash-ready.service plasma-plasmashell.service \
+	plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service}
+
+%postun
+/sbin/ldconfig
+%{systemd_user_postun plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
+	plasma-krunner.service plasma-ksmserver.service plasma-ksplash-ready.service plasma-plasmashell.service \
+	plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service}
 
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
@@ -433,8 +445,8 @@ fi
 %{_kf5_libdir}/libkdeinit5_kcminit.so
 %{_kf5_libdir}/libkdeinit5_kcminit_startup.so
 %{_kf5_libdir}/libkdeinit5_klipper.so
-%{_kf5_libdir}/kconf_update_bin/krunnerplugins
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
+%{_kf5_libdir}/kconf_update_bin/krunnerhistory
 %{_kf5_libdir}/libexec/baloorunner
 %{_kf5_libdir}/libexec/plasma-sourceenv.sh
 %{_kf5_libdir}/libexec/startplasma-waylandsession
@@ -448,7 +460,7 @@ fi
 %{_kf5_applicationsdir}/plasma-windowed.desktop
 %{_kf5_configkcfgdir}/freespacenotifier.kcfg
 %{_kf5_configkcfgdir}/iconssettingsbase.kcfg
-%{_kf5_configkcfgdir}/feedbacksettings.kcfg
+# %%{_kf5_configkcfgdir}/feedbacksettings.kcfg
 %dir %{_kf5_sharedir}/krunner/
 %dir %{_kf5_sharedir}/krunner/dbusplugins/
 %{_kf5_sharedir}/kcontrol/
@@ -459,11 +471,11 @@ fi
 %{_kf5_sharedir}/dbus-1/services/org.kde.fontinst.service
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.fontinst.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.LogoutPrompt.service
-%{_kf5_sharedir}/dbus-1/services/org.kde.baloorunner.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.krunner.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.plasma.Notifications.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.KSplash.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.Shutdown.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.runners.baloo.service
 %{_kf5_sharedir}/dbus-1/system.d/org.kde.fontinst.conf
 %{_kf5_sharedir}/desktop-directories/
 %{_kf5_sharedir}/kconf_update/
@@ -500,7 +512,7 @@ fi
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_translations
-%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
+# %%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm5_icons
 %{_kf5_sharedir}/kpackage/kcms/kcm_desktoptheme
 %dir %{_kf5_libdir}/libexec/kauth
@@ -512,6 +524,19 @@ fi
 %{_kf5_libdir}/libkfontinst.so.*
 %exclude %{_kf5_libdir}/libkfontinstui.so
 %{_kf5_libdir}/libkfontinstui.so.*
+
+%{_userunitdir}/plasma-gmenudbusmenuproxy.service
+%{_userunitdir}/plasma-kcminit-phase1.service
+%{_userunitdir}/plasma-kcminit.service
+%{_userunitdir}/plasma-krunner.service
+%{_userunitdir}/plasma-ksmserver.service
+%{_userunitdir}/plasma-ksplash-ready.service
+%{_userunitdir}/plasma-plasmashell.service
+%{_userunitdir}/plasma-restoresession.service
+%{_userunitdir}/plasma-baloorunner.service
+%{_userunitdir}/plasma-workspace@.target
+%{_userunitdir}/plasma-xembedsniproxy.service
+%{_userunitdir}/plasma-core.target
 
 %files -n xembedsniproxy
 %license COPYING*

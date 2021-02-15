@@ -1,18 +1,18 @@
-From 59515b3c6046e1c432836262fd8dc16acf6bcb11 Mon Sep 17 00:00:00 2001
+From bb0c90b0a7c9f0a1a76b3f71fa802ae2050a87b2 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 7 Jul 2018 20:34:44 +0200
 Subject: [PATCH 3/3] Don't add a (Wayland) suffix to Wayland sessions
 
 It got removed from sddm as well.
 ---
- src/sessionmodel.cpp | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
+ src/sessionmodel.cpp | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
 diff --git a/src/sessionmodel.cpp b/src/sessionmodel.cpp
-index e1d337f..8af214a 100644
+index 50e22d4..e756a9b 100644
 --- a/src/sessionmodel.cpp
 +++ b/src/sessionmodel.cpp
-@@ -55,6 +55,7 @@ SessionModel::~SessionModel() {
+@@ -61,6 +61,7 @@ SessionModel::~SessionModel()
  
  void SessionModel::loadDir(const QString &path, SessionType type)
  {
@@ -20,12 +20,9 @@ index e1d337f..8af214a 100644
      QDir dir(path);
      dir.setNameFilters(QStringList() << QStringLiteral("*.desktop"));
      dir.setFilter(QDir::Files);
-@@ -80,16 +81,8 @@ void SessionModel::loadDir(const QString &path, SessionType type)
-             if (current_section != QLatin1String("Desktop Entry"))
-                 continue; // We are only interested in the "Desktop Entry" section
+@@ -91,13 +92,6 @@ void SessionModel::loadDir(const QString &path, SessionType type)
  
--            if (line.startsWith(QLatin1String("Name="))) {
-+            if (line.startsWith(QLatin1String("Name=")))
+             if (line.startsWith(QLatin1String("Name="))) {
                  si->name = line.mid(5);
 -                if (type == SessionTypeWayland) {
 -                    // we want to exactly match the SDDM prompt which is formatted in this way
@@ -34,10 +31,9 @@ index e1d337f..8af214a 100644
 -                        si->name = i18nc("%1 is the name of a session", "%1 (Wayland)", si->name);
 -                    }
 -                }
--            }
-             if (line.startsWith(QLatin1String("Exec=")))
+             }
+             if (line.startsWith(QLatin1String("Exec="))) {
                  si->exec = line.mid(5);
-             if (line.startsWith(QLatin1String("Comment=")))
 -- 
-2.23.0
+2.25.1
 

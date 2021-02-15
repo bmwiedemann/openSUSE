@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 12 09:51:11 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.11.2
+  * Security: Drop urlize_quoted_links template tag in favour of 
+    Django's built-in urlize. Removes a XSS vulnerability for some 
+    kinds of content in the browsable API. (boo#1177205)
+
+-------------------------------------------------------------------
 Thu Sep  3 07:57:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.11.1

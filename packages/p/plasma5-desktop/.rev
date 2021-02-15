@@ -1329,4 +1329,12 @@
     <user>dimstar_suse</user>
     <comment>Emergency checkin, make ppc buildable</comment>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>3d30c092ecba99ddf8cf47664c2d9298</srcmd5>
+    <version>5.21.0</version>
+    <time>1613427222</time>
+    <user>dimstar_suse</user>
+    <comment>5.21.0 respins (forwarded request 872544 from Vogtinator)</comment>
+    <requestid>872553</requestid>
+  </revision>
 </revisionlist>

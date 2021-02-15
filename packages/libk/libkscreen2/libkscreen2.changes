@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Fix refresh rate reported for my laptop monitor
+  * wayland: Fix mapping between kscreen and kwayland transforms
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Update .gitignore file
+  * Add .git-blame-ignore-revs file
+  * clang-tidy: Force braces around statements
+  * Run clang-format
+  * Add missing protect header
+  * Fix build with newer Qt
+  * doctor: Add an option to allow excluding outputs from a dpms action
+  * Fix build with newer Qt
+  * ConfigMonitor: Properly combine erase and iteration
+  * Proper variable scope
+  * KScreen::Output debug output readability
+  * Config: Reserve hash size before populating it
+  * edid: Do not split strings twice unnecessarily
+  * edid: Do not access unallocated QByteArrays
+  * wayland: Provide the Edid when we have it
+  * Prefer straightforward API
+  * wayland: remove meaningless comment
+  * doctor: do not crash when accessing dpms
+  * Initialise the WaylandOutput::size
+  * Use non-deprecated scale method to calculate the screen geometry
+  * Remove unused method declaration
+  * Include rotation in the debug output
+  * Remove not implemented method
+  * Use new simpler way to disable session management
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

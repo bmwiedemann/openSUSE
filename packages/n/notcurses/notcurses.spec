@@ -24,7 +24,7 @@
 %bcond_without  pandoc
 %endif
 Name:           notcurses
-Version:        2.1.5
+Version:        2.2.1
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -73,6 +73,19 @@ fades, resize awareness, and multithreading support.
 
 This subpackage contains shared library part of libnotcurses.
 
+%package -n libnotcurses-core%{sover}
+Summary:        Character graphics and TUI library
+Group:          System/Libraries
+
+%description -n libnotcurses-core%{sover}
+notcurses facilitates the creation of modern TUI programs, making
+full use of Unicode and 24-bit TrueColor. Its API is similar
+to that of NCURSES, but extends that with z-buffering, rendering
+of images and video using ffmpeg, alpha blending, widgets, palette
+fades, resize awareness, and multithreading support.
+
+This subpackage contains shared library part of libnotcurses-core.
+
 %package -n libnotcurses++%{sover}
 Summary:        Character graphics and TUI library
 Group:          System/Libraries
@@ -100,6 +113,22 @@ fades, resize awareness, and multithreading support.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libnotcurses.
+
+%package -n notcurses-core-devel
+Summary:        Development files for notcursescore
+Group:          Development/Libraries/C and C++
+Requires:       libnotcurses-core%{sover} = %{version}
+
+%description -n notcurses-core-devel
+notcurses facilitates the creation of modern TUI programs, making
+full use of Unicode and 24-bit TrueColor. Its API is similar
+to that of NCURSES, but extends that with z-buffering, rendering
+of images and video using ffmpeg, alpha blending, widgets, palette
+fades, resize awareness, and multithreading support.
+
+This subpackage contains libraries and header files for developing
+applications that want to make use of libnotcurses-core.
+
 
 %package -n notcurses++-devel
 Summary:        Development files for notcurses++
@@ -169,6 +198,8 @@ cd python
 
 %post   -n libnotcurses%{sover} -p /sbin/ldconfig
 %postun -n libnotcurses%{sover} -p /sbin/ldconfig
+%post   -n libnotcurses-core%{sover} -p /sbin/ldconfig
+%postun -n libnotcurses-core%{sover} -p /sbin/ldconfig
 %post   -n libnotcurses++%{sover} -p /sbin/ldconfig
 %postun -n libnotcurses++%{sover} -p /sbin/ldconfig
 
@@ -177,9 +208,12 @@ cd build
 %make_build test
 
 %files -n libnotcurses%{sover}
-%license LICENSE
-%doc NEWS.md OTHERS.md README.md TERMS.md USAGE.md
+%license COPYRIGHT
+%doc NEWS.md README.md USAGE.md
 %{_libdir}/libnotcurses.so.%{sover}*
+
+%files -n libnotcurses-core%{sover}
+%{_libdir}/libnotcurses-core.so.%{sover}*
 
 %files -n libnotcurses++%{sover}
 %{_libdir}/libnotcurses++.so.%{sover}*
@@ -189,18 +223,25 @@ cd build
 %{_bindir}/ncneofetch
 %{_bindir}/notcurses-demo
 %{_bindir}/notcurses-input
-%{_bindir}/notcurses-tetris
-%{_bindir}/notcurses-view
+%{_bindir}/nctetris
+%{_bindir}/ncplayer
 %if %{with pandoc}
 %{_mandir}/man1/notcurses-demo.1%{?ext_man}
 %{_mandir}/man1/notcurses-input.1%{?ext_man}
 %{_mandir}/man1/notcurses-tester.1%{?ext_man}
-%{_mandir}/man1/notcurses-tetris.1%{?ext_man}
-%{_mandir}/man1/notcurses-view.1%{?ext_man}
+%{_mandir}/man1/nctetris.1%{?ext_man}
+%{_mandir}/man1/ncplayer.1%{?ext_man}
 %{_mandir}/man1/ncls.1%{?ext_man}
 %{_mandir}/man1/ncneofetch.1%{?ext_man}
 %endif
 %{_datadir}/notcurses/
+
+%files -n notcurses-core-devel
+%{_libdir}/libnotcurses-core.so
+%{_libdir}/pkgconfig/notcurses-core.pc
+%dir %{_libdir}/cmake/NotcursesCore
+%{_libdir}/cmake/NotcursesCore/NotcursesCoreConfig.cmake
+%{_libdir}/cmake/NotcursesCore/NotcursesCoreConfigVersion.cmake
 
 %files -n notcurses-devel
 %{_includedir}/notcurses

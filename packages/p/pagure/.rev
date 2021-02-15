@@ -518,4 +518,16 @@
   + Make the token_id column of the commit_flags table nullable</comment>
     <requestid>867751</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f34edc7ca888c4c840faf81d2d3ffa48</srcmd5>
+    <version>5.13.2</version>
+    <time>1613427352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.13.2
+  + Fix broken pagination of group API
+  + Fixing the alias url in the examples
+  + Pull in upstream fix for apostrophes from highlightjs-rpm-specfile
+  + Improve logging when trying to interract with a git repo via http(s)</comment>
+    <requestid>871310</requestid>
+  </revision>
 </revisionlist>

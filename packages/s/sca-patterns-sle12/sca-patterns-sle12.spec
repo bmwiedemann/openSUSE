@@ -25,7 +25,7 @@
 %define category SLE
 
 Name:           sca-patterns-sle12
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE12
 License:        GPL-2.0-only

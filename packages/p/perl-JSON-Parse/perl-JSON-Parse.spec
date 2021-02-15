@@ -18,7 +18,7 @@
 
 %define cpan_name JSON-Parse
 Name:           perl-JSON-Parse
-Version:        0.60
+Version:        0.61
 Release:        0
 Summary:        Parse JSON
 License:        Artistic-1.0 OR GPL-1.0-or-later

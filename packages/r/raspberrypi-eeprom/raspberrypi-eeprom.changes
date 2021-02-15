@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  4 14:17:12 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Fix 'Supplements:' in spec file, as per
+  https://doc.opensuse.org/projects/libzypp/HEAD/zypp-modalias.html commas are
+  special charactes that should be replaced with '%2C'
+
+-------------------------------------------------------------------
 Thu Jan 28 16:05:58 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Remove VL805 firmware version from package version as it prevents it from

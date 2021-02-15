@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Feb 12 10:54:02 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.4
+  * Update the default Site when creating a domain to match the domain if it is
+    example.com. (Closes #427)
+  * Add the ability to subscribe via Primary Address instead of specific
+    address. (See !516)
+  * Fix a bug where the user's display name would be ignore when
+    subscribing. (Closes #429)
+  * Display a user's name in the pending subscription request list. (Closes #430)
+  * Set a user's preferrred_address in Core if it isn't already set and the user
+    has a Primary Address that is verified.
+  * Use the new APIs in Core to get the count of held messages and pending
+    subscriptions to improve peroformance of settings page for list
+    owners. (Fixes #417)
+  * Show held message is local time of the User. (Closes #434)
+  * Fix a bug where non-member options page would show an owner's options if the
+    same email was subscribed as owner and non-member in a list. (Closes #436)
+  * Switching subscription from one email address to other or Primary Address now
+    preserves preferences and does not require Moderator approval. (Closes #425)
+  * Make 'Archives' and 'List Options' urls more prominently visible in the
+    list summary page as buttons. (Closes #439)
+  * Added the ability to issue invitations from the mass subscribe view.
+  * Expose emergency moderation setting for MailingList.
+  * Fixed some minor HTML errors. (Closes #442)
+  * Fix the bug where ListOfStringsField couldn't be unset in Postorius. (Closes
+    #444)
+  * Allow list:user:action:invite template to be set in Postorius. (Closes
+    #454)
+  * Fix a bug where the Bans form would always use default language instead of
+    current request's language. (Closes #441)
+  * Fix the URL on cancel buttons in template's confirm delete page. (Closes
+    #458)
+  * Use server side filtering for pending subscription requests for moderator
+    approval. (See !559)
+  * Allow setting moderation action for a nonmember from Held Message modal. (
+    Closes #448)
+  * Add a new view to confirm subscriptions or new emails for Users using
+    Postorius. (Fixes #459)
+  * Fix a bug where membership check compared email addresses in different
+    cases. (Closes #457)
+  * Mass removal now accepts address formats with display names and/or angle
+    brackets. (Closes #455)
+  * Add support to override send_welcome_message when mass subscribing to
+    suppress welcome messages. (Closes #99)
+  * Add support for Django 3.1.x. (See !574)
+  * The list's send_goodbye_message is now settable on the Automatic
+    Responses view.  (Closes #466)
+  * Support HYPERKITTY_ENABLE_GRAVATAR setting to control the user gravatar.
+    (Closes #467)
+- Fix building on tumbleweed
+
+-------------------------------------------------------------------
 Sun Dec 20 14:35:33 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Improve documentation (README.SUSE.md)

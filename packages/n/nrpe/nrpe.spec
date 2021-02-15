@@ -65,6 +65,8 @@ Patch5:         nrpe-implicit_declaration.patch
 Patch6:         nrpe-static_dh_parameters.patch
 # PATCH-FIX-openSUSE disable chkconfig call in Makefile
 Patch7:         nrpe-disable-chkconfig_in_Makefile.patch
+# PATCH-FIX-UPSTREAM this fills up the logs on the clients without real need
+Patch8:         nrpe-4.0.4-silence_wrong_package_version_messages.patch
 BuildRequires:  monitoring-plugins-common
 BuildRequires:  nagios-rpm-macros
 Requires(pre):  grep
@@ -154,6 +156,7 @@ execution on the remote host for its own output and return code.
 install -m644 %{SOURCE14} include/dh.h
 %endif
 %patch7 -p1
+%patch8 -p1
 cp -a %{SOURCE10} .
 cp -a %{SOURCE12} .
 %if 0%{?suse_version} >= 1210

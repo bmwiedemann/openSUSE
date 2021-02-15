@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           khotkeys5
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,14 +28,11 @@ Summary:        KDE's hotkey daemon
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz
+Source:         khotkeys-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz.sig
+Source1:        khotkeys-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/khotkeys/-/merge_requests/3
-Patch1:         0001-Handle-modifier-keys-with-xtest-in-ShortcutsHandler-.patch
-Patch2:         0002-Use-xtest-also-for-sending-input-to-the-active-windo.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Use-qdbus-qt5-and-qdbusviewer-qt5.patch
 BuildRequires:  extra-cmake-modules >= 1.1.0
@@ -91,7 +88,7 @@ Files to develop with KDE's hotkey daemon module.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libkhotkeysprivate.so.*
 %{_kf5_plugindir}/
 %dir %{_kf5_htmldir}/en
@@ -101,7 +98,6 @@ Files to develop with KDE's hotkey daemon module.
 %{_kf5_servicesdir}/
 
 %files devel
-%license COPYING*
 %{_kf5_libdir}/cmake/KHotKeysDBusInterface/
 %{_kf5_sharedir}/dbus-1/interfaces/org.kde.khotkeys.xml
 

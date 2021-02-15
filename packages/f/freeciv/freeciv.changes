@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Jan 30 11:25:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.3:
+  * see http://www.freeciv.org/wiki/NEWS-2.6.3
+  * Fixed trouble when a new city is founded to the ruins of a former city,
+    and that new city establish a trade route with a player who had seen
+    former city, and is unaware that it had been destroyed HRM#871606
+  * Fixed a case where shared vision did not completely update
+    recipient's map HRM#846106
+  * Fixed a bug where one could paradrop to peaceful nation's territory
+    after continuing game from an old savegame HRM#879084
+  * Fixed a bug causing game sometimes to tell wrong reason of why an
+    action failed HRM#879880
+  * Cease fire no longer runs out with an already dead player, making his
+    former allies to hate the alive party of the treaty HRM#879055
+  * Made server not to end in a infinite loop after loading savegame with
+    too high phase number. Such a savegame was reported to be created
+    after spaceship was launched but game was still continued HRM#815196
+  * Unified writing of the city name Washington-on-the-Brazos
+    between rulesets, so it doesn't appear multiple times in the same
+    game in a bit different form HRM#867817
+  * Stealth units are no longer erroneously hidden even from allies
+    HRM#764976
+  * Placing initial units is now done in shuffled player order HRM#850656
+  * Corrupt worker tasks are cleared. Those can originate, e.g.,
+    from buggy pre-2.6.2.1 Qt-client, and live in old savegames HRM#901938
+  * In a ruleset, such as civ2civ3, where caravans can help building wonder
+    in a foreign city, refresh city info of the city owner when one does
+    HRM#907977
+  * Display of success probabilities for diplomats was off when targeting
+    stack of units instead of individual unit HRM#859761
+  * Fixed pillaging of extras that are caused by something else than
+    player actions. For the fix to work, both server and client must be
+    at least version 2.6.3 HRM#861508
+  * Civilian unit trying to paradrop to an enemy city dies HRM#870004
+  * Prevented dead player from getting techs via Tech_Parasite effect.
+    This caused trouble in alien ruleset where Tech_Parasite is granted
+     by a tech HRM#873692
+  * Improved support of CityTile requirement type HRM#877780
+  * Fixed trouble preventing Small Wonders from working as impr_reqs
+    for units HRM#884993
+  * Corrected success probability shown by action dialog when it depends
+    on a special kind of road HRM#897490
+  * The included Lua engine has been upgraded from 5.3.5 to 5.3.6. HRM#889425
+- drop freeciv-appdata-desktop-references.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Dec 22 09:03:17 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.2.1:

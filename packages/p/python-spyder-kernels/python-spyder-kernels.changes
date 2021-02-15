@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 15 12:57:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- NEP29: python36-numpy in Tumbleweed is no more.
+  * don't install numpy and co for testing
+  * skip tests requiring them
+
+-------------------------------------------------------------------
 Tue Jan 26 09:37:46 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
-- Skip test_dask_multiprocessis as it very often fails on OBS i586
+- Skip test_dask_multiprocessing as it very often fails on OBS i586
 
 -------------------------------------------------------------------
 Sat Dec 19 22:43:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>

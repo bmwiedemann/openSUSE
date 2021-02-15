@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Feb 12 20:32:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.1
+  * no release notes
+- Skip python36 build. Due to NEP 29, python36-numpy and scipy in
+  TW are no more. 
+
+-------------------------------------------------------------------
+Thu Jan 21 22:58:57 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Recommend rather than require python-ligo-lw and
+  python-ligo-segments to avoid circular dependencies (these pkgs
+  also require lal).
+
+-------------------------------------------------------------------
+Mon Jan 18 21:09:11 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the test suite setup to actually call the tests 
+
+-------------------------------------------------------------------
+Mon Jan 18 13:49:55 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop lscsoft-glue BuildRequires: no longer required and prevents
+  circular dependency with lscsoft-glue which indeed needs lal for
+  its tests.
+
+-------------------------------------------------------------------
+Mon Dec 21 22:11:03 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.1.0:
+  * No release notes.
+- Drop lal-implicit-conversion-XLALError.patch: fixed properly
+  upstream.
+- Add BuildRequires: python3-ligo-lw, needed for new tests.
+- Disable octave bindings: does not support octave >= 6.
+
+-------------------------------------------------------------------
+Fri Oct 30 09:52:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Build without octave bindings on Leap 15.x, requires SWIG 4.0
+
+-------------------------------------------------------------------
 Sun Oct 25 17:56:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Specfile cleanups with spec-cleaner.

@@ -1,7 +1,7 @@
-diff -Nru oci-cli-2.6.10.orig/src/oci_cli/cli_root.py oci-cli-2.6.10/src/oci_cli/cli_root.py
---- oci-cli-2.6.10.orig/src/oci_cli/cli_root.py	2019-10-29 21:42:32.000000000 +0100
-+++ oci-cli-2.6.10/src/oci_cli/cli_root.py	2019-11-05 13:48:54.066905418 +0100
-@@ -219,7 +219,7 @@
+diff -Nru oci-cli-2.21.1.orig/src/oci_cli/cli_root.py oci-cli-2.21.1/src/oci_cli/cli_root.py
+--- oci-cli-2.21.1.orig/src/oci_cli/cli_root.py	2021-02-09 20:32:49.000000000 +0100
++++ oci-cli-2.21.1/src/oci_cli/cli_root.py	2021-02-15 14:53:16.002718177 +0100
+@@ -299,7 +299,7 @@
  @click.option('--profile',
                default=Sentinel(DEFAULT_PROFILE), show_default=False,
                help='The profile in the config file to load. This profile will also be used to locate any default parameter values which have been specified in the OCI CLI-specific configuration file.  [default: DEFAULT]')

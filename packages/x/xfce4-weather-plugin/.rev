@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>847433</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ddafedf94a6c0f82608c6051ecfb753</srcmd5>
+    <version>0.11.0</version>
+    <time>1613427657</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed URL
+- Update to 0.11.0</comment>
+    <requestid>872617</requestid>
+  </revision>
 </revisionlist>

@@ -1,9 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 15 12:34:27 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Give the option to mount /sapmnt folder locally without using
+  a NFS share
+- Make /sapmnt path configurable using `sapmnt_path` pillar variable
+
+-------------------------------------------------------------------
+Wed Feb 10 16:14:24 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Update PAS and AAS templates to use HANA sid and instance number
+  to create the configuration file
+
+-------------------------------------------------------------------
 Thu Jan 28 22:23:36 UTC 2021 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version 0.6.1
   * Fix error about missing instance installation requisite when monitoring is enabled
-  (bsc#1181541) 
+  (bsc#1181541)
 
 -------------------------------------------------------------------
 Tue Jan 19 13:39:12 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>

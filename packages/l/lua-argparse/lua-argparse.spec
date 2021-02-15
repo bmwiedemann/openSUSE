@@ -1,7 +1,7 @@
 #
 # spec file for package lua-argparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,10 +35,7 @@ Source:         https://github.com/luarocks/%{mod_name}/archive/%{upversion}.tar
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-argparse = %{version}
-Obsoletes:      lua-argparse < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-argparse
 ExclusiveArch:  do_not_build

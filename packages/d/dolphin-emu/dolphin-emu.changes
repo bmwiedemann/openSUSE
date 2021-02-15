@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Thu Feb 11 14:30:16 UTC 2021 - idonmez@suse.com
+
+- Update to version 5.0+git.20210211T001537.1fc6fbc2c0:
+  * Qt: Fix "open wiki" option not using the wiki redirect script
+  * JitArm64: Fix mistaken use of LSL imm
+  * JitArm64: More constant propagation optimizations
+  * Fix mapping window title bar becoming unresponsive
+  * DolphinQt: Fix regression that caused the regex expression to be evaluated incorrectly.  If an input expression has a non-alpha character in it, we want to quote it with backticks
+  * Translation resources sync with Transifex
+  * MovI2R: Do not exhaustively test
+  * UnitTests: Add MOVI2R test
+  * Random: Add seeded PRNG
+  * JitArm64_Integer: Add optimizations for rlwimix
+  * Arm64Emitter: Add additional assertions to BFI/UBFIZ
+  * Arm64Emitter: Prefer BFM/UBFM to EncodeBitfieldMOVInst
+  * Arm64Emitter: Add BFXIL
+  * NetworkCaptureLogger: PCAP support added
+  * Working Game IDs for Elf/Dol files
+  * JitArm64: Use STP for pc/npc
+  * JitArm64: Use STP for (parts of) ppcState.ps
+  * Arm64Emitter: Add asserts for LDP/STP imm out of range
+  * Fix typo in Readme.md
+  * Externals/rangeset: use qualified 'size_t'
+  * require clang-format 10.0
+  * BreakpointWidget: Remove unnecessary code
+  * NetworkCaptureLogger: Move SSL logging
+  * msbuild: re-enable HAS_OPENGL and HAS_VULKAN
+  * VideoCommon: use Quaternion for Free Look orientation
+  * Common: update Quaternion to allow rotating pitch, yaw, and roll all at once
+  * Common: add convenience function to convert a Quaternion to a Matrix44
+  * MemoryWidget: Add 'Offset' and General Improvements
+  * msbuild: bundle all dolphin "core" code into single library
+  * rename D3DCommon/Common to D3DCommon/D3DCommon
+  * normalize common filenames in VideoBackends/D3D12
+  * normalize common filenames in VideoBackends/D3D
+  * normalize common filenames in VideoBackends/Vulkan
+  * normalize common filenames in VideoBackends/Null
+  * normalize common filenames in VideoBackends/OGL
+  * rename Core/IOS/FS/FileSystem.cpp to FileSystemCommon.cpp
+  * rename InputCommon/ControllerInterface/Device to CoreDevice
+  * rename ciface::Wiimote to ciface::WiimoteController
+  * rename Common/File to Common/IOFile
+  * rename Core/Analytics to Core/DolphinAnalytics
+  * Android: Re-implement a subset of CompletableFuture
+  * Android: Implement save overwrite confirmation
+  * Android: Add "Import Wii Save"
+  * Android: Refactor MainPresenter.installWad
+  * Android: Merge launchInstallWad into launchOpenFileActivity
+  * Android: Move InstallWAD to a new WiiUtils class
+  * DolphinQt: Move gamecube controller ui logic to its own widget
+  * DolphinQt: Move wiimote controller ui logic to its own widget
+  * JitArm64: Fix false positive "turned singles into doubles" asserts
+  * windows: fix unregistering VEH
+  * JitArm64: Update registers last used before start of instruction
+  * JitArm64: Remove default parameters from Arm64FPRCache::R/RW
+  * JitArm64: Add asserts for unexpected single to float conversions
+  * Add script for running unit tests on Android device
+  * Remove redundant INI settings
+  * Jit: Fix correctness issue in dcbf/dcbi/dcbst
+  * DolphinQt: Move common controller interface logic to its own widget
+  * JitArm64: Avoid using X30 with BLR
+  * UnitTests: Add setup error checking
+  * Breakpoint from string flag parsing using token
+  * WiimoteReal: Fix crash on real Wii Remote disconnect on Windows caused by dangling pointer.
+  * FreeLookManager: acquire global input lock before accessing individual FreeLook control states
+  * TraversalClient: Make use of std::string_view with ConnectToClient()
+  * TraversalClient: Prevent uninitialized values from occurring in MakeENetAddress
+  * TraversalProto: Convert typedefs into using aliases
+  * TraversalProto: Collapse version enum into a typed variable
+  * TraversalProto: Convert TraversalPacketType into an enum class
+  * TraversalProto: Convert TraversalConnectFailedReason into an enum class
+  * TraversalClient: Convert state enum into an enum class
+  * Android: Fix in-game settings changes not getting saved
+  * Check return value when calling ReadArray for savestates
+  * Android: Don't show OSD messages when opening savestate menu
+  * Arm64Emitter: Convert ShiftType to enum class
+  * InputCommon: Wrap remaining invalid default input expressions around ``
+  * Jit64: boolx - Eliminate read dependency
+  * Qt: Fix stock input profiles being deletable
+  * Translation resources sync with Transifex
+  * Added Opacity settings for touchscreen controls
+  * Qt: Fix Shake Mapping Indicator not showing deadzone
+  * Arm64Emitter: Convert IndexType to enum class
+  * Android: Update dependencies to the latest version
+  * Android: Update Gradle Plugin to 4.1.1
+  * gradle.properties: Remove duplicate property keys
+  * Contributing.md: Code comment for do-while sample
+  * DolphinQt: Resolve deprecated usages of setTime_t and toTime_t
+  * DolphinQt: Resolve deprecated usage of margin()
+  * DolphinQt: Migrate QRegExp over to QRegularExpression
+  * DolphinQt: Explicitly include <QActionGroup> where applicable
+  * DolphinQt: Replace usages of QLatin1Literal with QStringLiteral
+  * DolphinQT: Gives option to add desktop shortcut
+  * Use GX_CMD_UNKNOWN_METRICS instead of magic number 0x44
+  * small prettification
+  * msvc: add asan support (disabled by default)
+  * BitUtils: cleanup constexpr usage for msvc clz
+  * BitUtils: loosen clz to inline on msvc/arm64
+  * msbuild: enable USE_GDBSTUB this does nothing about it actually being usable
+  * BitUtils: initialize variables fixes C3615 on some msvc/cmake configs
+  * Revert "msvc: temporary workaround for C4789 false positive"
+  * msvc: bump _MSC_FULL_VER check to 192829335
+  * Jit64: Fix FinalizeCarryOverflow XER[OV/SO]
+  * Android: Use old folder picker on Android TV
+  * JitArm64: subfx - Special case a == b
+  * Fix a couple of typos
+  * DolphinQt: Remove some useless includes
+  * Core: Fix variable naming conventions
+  * Jit64: subfx - Special case a == b
+  * Jit64: subfx - Special case b == 0
+  * Jit64: subfx - Special case a == 0
+  * Jit64: subfx - Optimize more constant a cases
+  * Fix DualShockUDP not adding/removing devices correctly
+  * Externals: Link against required libraries
+  * Rehabilitate Haiku support.
+  * Qt: Give better error messages when Wii save importing fails.
+  * WiiSave: Delete existing save, if any, before importing one.
+  * WiiSave: In Import(), make sure the TMD exists or can be reinstalled before allowing save to be imported.
+  * WiiUtils: Add utility functions to handle prep-work for importing 'SD-card export' style Wii saves.
+  * Jit_Integer: srawx: Handle a != b case with SARX
+  * IOS/ES: Pass relevant caller title information to ImportTmd() and ExportTitleInit().
+  * Rename "Use Fullscreen" setting to "Start in Fullscreen"
+  * DSP: Fix write masks on AUDIO_*/AR_* MMIO registers
+  * Jit_Integer: Use SHLX, SHRX, SARX
+  * Fix bad memory references in NewPatchDialog
+  * Patches for Resident Evil 2/3 audio issues
+  * IOS/WD: Report game quirk if unimplemented ioctl is used
+  * IOS/WD: Implement more parts of the interface
+  * IOS: Simplify usage of GetVector
+  * IOS/NCD: Implement Lock/Unlock more accurately
+
+-------------------------------------------------------------------
 Tue Jan 05 09:30:11 UTC 2021 - idonmez@suse.com
 
 - Update to version 5.0+git.20210103T185325.e957ed0809:

@@ -1,7 +1,7 @@
 #
 # spec file for package openvswitch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define ovs_lname libopenvswitch-2_14-0
 %define ovn_lname libovn-20_06-0
-%define ovs_version 2.14.0
+%define ovs_version 2.14.2
 %define ovn_version 20.06.2
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
@@ -66,12 +66,8 @@ Patch0:         0001-Use-strongswan-for-openvswitch-ipsec-service.patch
 Patch1:         0001-Run-openvswitch-as-openvswitch-openvswitch.patch
 # PATCH-FIX-OPENSUSE: 0001-Don-t-change-permissions-of-dev-hugepages.patch
 Patch2:         0001-Don-t-change-permissions-of-dev-hugepages.patch
-# PATCH-FIX-UPSTREAM: 0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
-Patch3:         0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
 # PATCH-FIX-OPENSUSE: 0001-Use-double-hash-for-OVS_USER_ID-comment.patch
-Patch4:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
-# PATCH-FIX-UPSTREAM: 0001-ipsec-Fix-Strongswan-configuration-syntax.patch
-Patch5:         0001-ipsec-Fix-Strongswan-configuration-syntax.patch
+Patch3:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
@@ -399,8 +395,6 @@ Devel libraries and headers for Open Virtual Network.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
 cd %{ovn_dir}
 %patch20 -p1
 

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Do not always bring refreshed resources in (kde#432654)
+  * Don't show the search action on desktop mode (kde#432693)
+  * pk: Don't call the size function as it triggers a details fetch
+  * pk: no need to fetch the details of the updatable packages
+  * odrs: Move JSON parsing to a separate thread
+  * pk: Small optimisation
+  * pk: Make sure that we give precedence to the first pkgid we receive
+  * pk: remove unused method
+  * pk: Make sure we execute absolute paths
+  * flatpak: Make sure we refresh the size display on the views
+  * Show a "Search" main action on mobile on the Featured page
+  * Do not show "Sorry, nothing found" on the search page before searching
+  * pk: also remove duplicates from accounnting for the offline upgrades
+  * [Updates page] Match style of Kirigami.PlaceholderMessage
+  * pk: Fix installed filtering (kde#428681)
+  * packagekit: Don't list repeated packages several times
+  * pk: sort the updated package in offline updates description
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+- Refresh 0001-Warning-for-FlatHub.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5

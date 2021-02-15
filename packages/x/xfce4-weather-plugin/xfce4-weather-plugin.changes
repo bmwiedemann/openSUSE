@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 15 17:26:25 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed broken package and URL 
+
+-------------------------------------------------------------------
+Sun Feb 14 22:08:35 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.11.0
+  * Port to Xfconf
+    - Please note that settings from the rc file are not
+      automatically migrated.
+  * Fix null g_array_sort() argument
+  * settings: Use infobar and symbolic icons
+  * Improve forecast window
+  * autoconf: Remove AC_HEADER_STDC
+  * Update `.gitignore`
+  * Set pointers to NULL
+  * Fix double-free
+  * Fix missing-prototypes
+  * Enable debug=yes when compiling from git and fix warnings
+  * Remove GSourceFunc casts
+  * Update copyright
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Nov 10 02:24:02 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to 0.10.2

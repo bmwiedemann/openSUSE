@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 11 09:50:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %lua_provides: add the lua-mod_name provides/obsoletes to
+  the lua version matching the distro default.
+
+-------------------------------------------------------------------
 Mon Jul  6 19:06:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add lua54 as new build target

@@ -1,0 +1,9 @@
+<package name="patterns-cinnamon" project="openSUSE:Factory">
+  <title>patterns-cinnamon</title>
+  <description>Patterns for cinnamon.
+
+This pattern is based on Linux Mint's applciation perference.
+    
+  </description>
+  <devel project="X11:Cinnamon:Factory" package="patterns-cinnamon"/>
+</package>

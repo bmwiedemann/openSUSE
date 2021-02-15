@@ -1,4 +1,386 @@
 -------------------------------------------------------------------
+Mon Feb 15 13:53:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.21.1
+  * Support for Database Management service
+    * ``oci database-management``
+  * Support for additional upgrade options in Database service
+    * ``oci db database upgrade-with-db-home``
+    * ``oci db database upgrade-with-database-software-image``
+    * ``oci db database upgrade-with-db-version``
+  * Support for discovering available plugins in Oracle Cloud Agent service
+    * ``oci instance-agent plugin``
+    * ``oci instance-agent available-plugins``
+  * Support for Erratum List API in OS Management service
+    * ``oci os-management erratum-summary list-errata``
+    * ``oci os-management managed-instance list-managed-instance-errata``
+  * Support to Enable/Disable Oracle Cloud Agent plugins in Compute service
+    * ``oci compute instance launch --agent-config
+      '{ "are-all-plugins-disabled" : true|false,"plugins-config": []}'``
+    * ``oci compute instance update --agent-config
+      '{ "are-all-plugins-disabled" : true|false,"plugins-config": []}'``
+  * Support for recommending glossary terms in Data Catalog service
+    * ``oci data-catalog catalog recommendations``
+    * ``oci data-catalog catalog process-recommendation``
+  * Support for setting the offset to start budget processing in Budgets service
+    * ``oci budgets budget create --budget-processing-period-start-offset``
+    * ``oci budgets budget update --budget-processing-period-start-offset``
+  * Minor help text updates for
+    * ``oci os object bulk-delete-versions``
+    * ``oci os object bulk-delete``
+    * ``oci os object bulk-download``
+- from version 2.21.0
+  * Support for checking if a contact for Exadata infrastructure is valid in
+    My Oracle Support in the Database service
+    * ``oci db exadata-infrastructure create --contacts``
+    * ``oci db exadata-infrastructure update --contacts``
+  * Support for external databases in the Database service
+    * ``oci db external-cdb``
+    * ``oci db external-database-connector``
+    * ``oci db external-pdb``
+    * ``oci db external-non-cdb``
+  * Support for uploading objects to the infrequent access storage tier
+    in the Object Storage service
+    * ``oci os object put --storage-tier``
+    * ``oci os object copy --destination-object-storage-tier``
+    * ``oci os object bulk-upload --storage-tier`` 
+  * Support for changing the storage tier of existing objects
+    in the Object Storage service
+    * ``oci os object update-storage-tier --storage-tier`` 
+  * Support for private templates in the Resource Manager service
+    * ``oci resource-manager template create``
+    * ``oci resource-manager template get``
+    * ``oci resource-manager template delete``
+    * ``oci resource-manager template get-template-logo``
+    * ``oci resource-manager template get-template-tf-config``
+    * ``oci resource-manager template list``
+    * ``oci resource-manager template update``
+    * ``oci resource-manager template list-template-categories``
+    * ``oci resource-manager template change-compartment``
+  * Support for multiple encryption domains on IPSec tunnels in the Networking service
+    * ``oci network ip-sec-tunnel update --encryption-domain-config``
+  * Input parameter ``--vnic-id`` is now optional for the command ``oci network ipv6 create``
+  * [Breaking] Response field ``vnicId`` is now optional for the following commands
+    * ``oci network ipv6 create``
+    * ``oci network ipv6 get``
+    * ``oci network ipv6 update``
+- from version 2.20.0
+  * Support for Load Balancer Shape update for Blockchain Platform in Blockchain Service
+    * ``oci blockchain blockchain-platform update --load-balancer-shape``
+  * [Breaking] The parameter --idcs-access-token is now required for
+    Blockchain Platform create in Blockchain Service
+    * ``oci blockchain blockchain-platform create``
+  * Support for private access channel in Analytics Service
+    * ``oci analytics analytics-instance create-private-access-channel ``
+    * ``oci analytics analytics-instance get-private-access-channel``
+    * ``oci analytics analytics-instance update-private-access-channel``
+    * ``oci analytics analytics-instance delete-private-access-channel``
+  * Support for vanity URL in Analytics Service
+    * ``oci analytics analytics-instance create-vanity-url``
+    * ``oci analytics analytics-instance update-vanity-url``
+    * ``oci analytics analytics-instance delete-vanity-url``
+  * Support assignment of Volume Backup Policy to Volume Group
+    in Block Volume Service
+    * ``oci bv volume-group create --backup-policy-id``
+  * Support for --max-wait-seconds, --wait-for-state, --wait-interval-seconds
+    for Change Compartment of Dedicated VM Host in Compute Service
+    * ``oci compute dedicated-vm-host change-compartment --max-wait-seconds
+      --wait-for-state --wait-interval-seconds``
+  * Support for --max-wait-seconds, --wait-for-state, --wait-interval-seconds
+    for the below commands of Network Service
+    * ``oci network byoip-range validate``
+    * ``oci network drg change-compartment``
+    * ``oci network subnet change-compartment``
+    * ``oci network vcn add-vcn-cidr``
+    * ``oci network vcn change-compartment``
+    * ``oci network vcn modify-vcn-cidr``
+    * ``oci network vcn remove-vcn-cidr``
+    * ``oci network vlan change-compartment``
+  * support for Access Control List for Autonomous Database with Data Guard
+    enabled on Exadata Cloud Customer in Database Service
+    * ``oci db autonomous-database create --are-primary-whitelisted-ips-used,
+      --standby-whitelisted-ips``
+    * ``oci db autonomous-database update --are-primary-whitelisted-ips-used,
+      --standby-whitelisted-ips``
+  * Support to specify Peer ACD unique name when creating Data Guard enabled
+    Autonomous Container Database on Exadata Cloud Customer in Database Service
+    * ``oci db autonomous-container-database create --peer-db-unique-name``
+  * Support for drift detection on individual resources of a stack
+    in Resource Manager Service
+    * ``oci resource-manager stack detect-drift --resource-addresses``
+  * Support for listing drift detection details given a work request
+    id in Resource Manager Service
+    * ``oci resource-manager stack list-resource-drift-details --work-request-id``
+  * Support for Create, Manage and Use of AsymmetricKeys in KeyManagement Service.
+    * ``oci kms crypto encrypt --key-version-id --encryption-algorithm``
+    * ``oci kms crypto decrypt --key-version-id --encryption-algorithm``
+- from version 2.19.0
+  * Support for Data Archive and Recall features as a part of the Logging Analytics Service
+    * ``oci log-analytics storage``
+  * Support for lookups in the Logging Analytics service
+    * ``oci log-analytics lookup *``
+  * Support for Agent Collection Warnings in the Logging Analytics service
+    * ``oci log-analytics warning list``
+    * ``oci log-analytics warning suppress``
+    * ``oci log-analytics warning unsuppress``
+  * Scheduled Task commands in the Logging Analytics service
+    * ``oci log-analytics scheduled-task pause``
+    * ``oci log-analytics scheduled-task resume``
+  * Support to specify whether or not an object-collection-rule is currently
+    enabled in the Logging Analytics service
+    * ``oci log-analytics object-collection-rule create --is-enabled``
+    * ``oci log-analytics object-collection-rule update --is-enabled``
+  * Support for Logging Analytics as a target in the Service Connector Hub service
+  * [BREAKING] The --sort-by parameter for few of the commands in
+    log-analytics is restricted to only name field
+    * ``oci log-analytics source list-meta-source-types --sort-by``
+    * ``oci log-analytics parser list-parser-functions --sort-by``
+    * ``oci log-analytics parser list-parser-meta-plugins --sort-by``
+    * ``oci log-analytics source list-source-label-operators --sort-by``
+- from version 2.18.0
+  * Support for specifying region using numbers for the setup configuration command
+    * ``oci setup config``
+  * Support for auto-scaling in the Big Data service
+    * ``oci bds auto-scale-config create``
+    * ``oci bds auto-scale-config get``
+    * ``oci bds auto-scale-config edit``
+    * ``oci bds auto-scale-config list``
+    * ``oci bds auto-scale-config delete``
+    * [BREAKING] ``UPDATING_INFRA`` option removed for
+      ``oci bds instance list --lifecycle-state``
+  * Documentation fixes for the Logging Search service
+  * Fixed node-shape-config to be recognized as complex type
+    * ``oci ce node-pool create --generate-param-json-input node-shape-config``
+- from version 2.17.0
+  * Support for the following in the Roving Edge Infrastructure Service
+    * Rover Cluster API
+      * ``oci rover cluster``
+    * Rover Node API
+      * ``oci rover node``
+  * Database Service
+    * Support for Customer-Managed Key features
+      * ``oci db database migrate-vault-key``
+      * ``oci db database rotate-vault-key``
+    * Support for listing flex components
+      * ``oci db flex-component list``
+  * Support for filtering listKeys based on KeyShape in Key Management Service
+    * ``oci kms management key list --algorithm, --length``
+  * Support for Github configuration source provider in Resource Manager Service
+    * ``oci resource-manager configuration-source-provider
+      create-github-access-token-provider``
+    * ``oci resource-manager configuration-source-provider
+      update-github-access-token-provider``
+  * Data Catalog Service
+    * Support for listing harvested rules
+      * ``oci data-catalog rule-summary list-rules``
+    * Additional filtering options available for Logical Entity list calls
+      * ``oci data-catalog entity list-aggregated-physical --display-name-contains``
+      * ``oci data-catalog entity list-derived-logical-entities --display-name-contains``
+  * Support for flexible load balancers in Load Balancer Service
+    * ``oci lb load-balancer create --shape-details``
+  * [BREAKING] Deprecated support for Autonomous Data Warehouse in Database Service
+    * ``oci db autonomous-data-warehouse``
+- from version 2.16.1
+  * Support for custom endpoint feature in the Integration Service
+    * ``oci integration integration-instance create --custom-endpoint``
+    * ``oci integration integration-instance update --custom-endpoint``
+  * Support for the following in the Database Service
+    * Maintenance Schedule feature for Exadata Infrastructure resources
+      * ``oci db exadata-infrastructure create --maintenance-window``
+      * ``oci db exadata-infrastructure update --maintenance-window`` 
+    * ORDS and SSL certificate rotation for Autonomous Exadata Infrastructure 
+      * ``oci db autonomous-exadata-infrastructure rotate-ords-certs
+        --autonomous-exadata-infrastructure-id``
+      * ``oci db autonomous-exadata-infrastructure rotate-ssl-certs
+        --autonomous-exadata-infrastructure-id``
+  * Support added for fine-grained data analysis and improved SQL insights 
+    * Added IMPROVING field for ``oci opsi database-insights
+      summarize-sql-statistics --category``
+- from version 2.16.0
+  * Support for calling Oracle Cloud Infrastructure services in
+    the Santiago region (``--region sa-santiago-1``)
+  * Support for Mysql Database Service Channels
+    * ``oci mysql channel``
+  * Support for Data Safe on-prem-connector
+    * ``oci data-safe on-prem-connector``
+  * Support for Availability Status and History of Management Agent
+    * ``oci management-agent agent list-availability-histories``
+  * Backups now can be filtered by creation type in MySql Service
+    * ``oci mysql backup list --creation-type``
+  * Upgraded versions for the following packages: arrow (0.14.7),
+    cryptography (3.2.1), pyOpenSSL (19.1.0) and pycparser (2.20).
+  * Added optional parameter ``--tenancy-name`` to ``oci session authenticate``
+  * [Breaking] The command ``oci data-safe configuration get`` has been
+    changed to ``oci data-safe service get`` in Data Safe Service
+  * [Breaking] The parameter --compartment-id is now required for private
+    endpoint list in Data Safe Service
+    * ``oci data-safe private-endpoint list --compartment-id``
+  * [Breaking] The parameter --compartment-id is now required for work
+    request list in Data Safe Service
+    * ``oci data-safe work-request list --compartment-id``
+  * [Breaking] The parameter --is-enabled is now required for service
+    enable in Data Safe Service
+    * ``oci data-safe service enable --is-enabled``
+  * Help text improvements for blockchain platform in Blockchain Service
+    * ``oci blockchain blockchain-platform``
+  * The parameter --variables is now optional for mysql configuration in MySql Service
+    * ``oci mysql configuration create --variables``
+  * The parameter --configuration-id is now optional for the
+    below commands in MySql Service
+    * ``oci mysql db-system clone --configuration-id``
+    * ``oci mysql db-system create --configuration-id``
+    * ``oci mysql db-system import --configuration-id``
+- from version 2.15.0
+  * Support to bulk edit tags on resources in Identity and Access Management Service
+    * ``oci iam tag bulk-edit --bulk-edit-operations``
+  * Support to retrieve bulk edit tags enabled resources in
+    Identity and Access Management Service
+    * ``oci iam tag bulk-edit-tags-resource-type list``
+  * New Options have been added to the following command in Database Service
+    * ``oci db autonomous-container-database create --peer-autonomous-vm-cluster-id
+      --peer-autonomous-container-database-compartment-id
+      --peer-autonomous-container-database-backup-config``
+  * New Option has been added to the following commands in Database Service
+    * ``oci db database-software-image list --is-upgrade-supported``
+    * ``oci db version list --is-upgrade-supported``
+  * Support for Database Upgrade in Database Service
+    * ``oci db database list-upgrade-history``
+    * ``oci db upgrade-history get``
+    * ``oci db database upgrade``
+    * ``oci db database upgrade-rollback``
+    * ``oci db database upgrade-with-database-software-image``
+    * ``oci db database upgrade-with-db-home``
+    * ``oci db database upgrade-with-db-version``
+  * Added automatic retries for ``oci os object put`` (single part and multipart uploads)
+    in case of certain errors. Retry will happen a maximum of 3 times and will have
+    exponential backoff. To disable these retries, please use the `-—no-retry` flag
+  * Removed the constraints about the accepted values for status in Work Requests
+    list in Container Engine Service
+    * ``oci ce work-request list --status``
+  * ID field is now optional for the below command in Management Dashboard Service
+    * ``oci management-dashboard saved-search create --id``
+  * [Breaking] Following changes in the Log Analytics Service
+    * Moved commands under ``oci log-analytics error-details`` to be under
+      ``oci log-analytics source`` in Log Analytics Service
+    * Moved commands under ``oci log-analytics extended-fields-validation-result``
+      to be under ``oci log-analytics source``  in Log Analytics Service
+    * Moved commands association* to assoc
+      * Example ``oci log-analytics log-analytics-association-collection
+        list-source-associations`` to ``oci log-analytics assoc list-source-assocs``
+    * Moved commands estimate* and storage-work-request to storage
+      * Example ``oci log-analytics estimate-purge-data-size-result estimate-purge-data-size``
+        to ``oci log-analytics storage estimate-purge-data-size``
+      * Example ``oci log-analytics storage-work-request list``
+        to ``oci log-analytics storage list-storage-work-requests``
+- from version 2.14.5
+  * Support for --dry-run option for bulk-upload and bulk-download
+    command in object storage service
+    * ``oci os object bulk-download --dry-run``
+    * ``oci os object bulk-upload --dry-run``
+  * Support for creating a Data Guard association with a standby database
+    from a database software image in the Database service
+    * ``oci db data-guard-association create from-existing-db-system --database-software-image-id``
+    * ``oci db data-guard-association create from-existing-vm-cluster --database-software-image-id``
+    * ``oci db data-guard-association create with-new-db-system --database-software-image-id``
+  * Support for specifying a TDE wallet password when creating/updating a
+    database or database system in the Database service
+    * ``oci db database create --tde-wallet-password``
+    * ``oci db system launch --tde-wallet-password``
+    * ``oci db database update --new-admin-password --new-tde-wallet-password
+      --old-tde-wallet-password``
+  * Support for private DNS resolvers, resolver endpoints, and views in the DNS service
+    * ``oci dns resolver``
+    * ``oci dns resolver-endpoint``
+    * ``oci dns view``
+  * Support for analytics clusters (database accelerators) in the MySQL Database service
+    * ``oci mysql db-system analytics-cluster-memory-estimate generate``
+    * ``oci mysql db-system analytics-cluster-memory-estimate get``
+    * ``oci mysql db-system analytics-cluster``
+  * Support for migrations to Java Cloud Service and Oracle Weblogic Server instances
+    that use existing databases in the Application Migration service
+    * ``oci application-migration migration create --pre-created-target-database-type``
+  * Support for Enabling Access Control Lists for Autonomous Databases on Exadata Cloud At Customer
+    * ``oci db autonomous-database create --is-acl-enabled``
+    * ``oci db autonomous-database create-from-clone --is-acl-enabled``
+    * ``oci db autonomous-database update --is-acl-enabled``
+  * Support for getting a VCN and resolver association in the Networking service
+    * ``oci network vcn-dns-resolver-association get``
+  * Support for specifying reserved IPs when creating load balancers
+    in the Load Balancing service
+    * ``oci lb load-balancer create --reserved-ips``
+  * Support for additional parameters when updating subnets and VLANs
+    in the Networking service
+    * ``oci network vcn add``
+    * ``oci network vcn modify-vcn-cidr``
+    * ``oci network vcn remove``
+  * Create db-home requires either db-version or database-software-image-id
+    * ``oci db db-home create``
+  * ``cidr-block`` parameter is now Optional for the following commands
+    in the Network Service
+    * ``oci network subnet update --cidr-block``
+    * ``oci network vcn create --cidr-block``
+    * ``oci network vlan update --cidr-block``
+  * Incorrect help text for --fields parameter for following command
+    in Object Storage Service
+    * ``oci os bucket get --fields``
+- from version 2.14.4
+  * Support for calling Oracle Cloud Infrastructure services in
+    the Cardiff region (``--region uk-cardiff-1``)
+  * Support for the Organizations service
+    * ``oci organizations``
+  * Support for the Optimizer service
+    * ``oci optimizer``
+  * Support for tenancy ID and name on responses in the Usage service
+  * Support for specifying a syslog URL for applications in the Functions service
+    * ``oci fn application create --syslog-url``
+  * Support for creation of always-free NoSQL database tables
+    in the NoSQL Database service
+    * ``oci nosql table create`` has a new option ``--is-auto-reclaimable``
+      to request the creation of a free table. 
+- from version 2.14.3
+  * Upgraded version of OCI Python SDK to fix Object Storage Service issue. Please
+    see `github issue #300 <https://github.com/oracle/oci-python-sdk/issues/300>`_
+    for more details.
+  * Bug in installation script for --accept-all-defaults installs with TTY
+    (`Pull Request <https://github.com/oracle/oci-cli/pull/344/files>`__)
+- from version 2.14.2
+  * Support for Compute Instance Agent Service
+    * ``oci instance-agent``
+  * Support for Key Store Resource representing Oracle Key Vault
+    Instances in Database Service
+    * ``oci db key-store``
+  * Support for customer managed key store in Autonomous Container
+    Databases in Database Service
+    * ``oci db autonomous-container-database create --key-store-id``
+  * Installation script will prompt users to upgrade to Python 3
+    if Python 2 is installed
+  * Unicode errors for bulk object operations in Object Storage Service
+    * ``oci os object bulk-upload | bulk-download | bulk-delete``
+  * Documentation fixes for Logging Search Service
+    * ``oci logging-search``
+- from version 2.14.1
+  * Support for Operations Insights service
+    * ``oci opsi``
+  * Support to enable/disable Operations Insights Service for
+    Autonomous Database in Database Service
+    * ``oci db autonomous-database enable-operations-insights --autonomous-database-id``
+    * ``oci db autonomous-database disable-operations-insights --autonomous-database-id``
+  * New lifecycle state NEEDS_ATTENTION to Improve DB System in Database Service
+    * ``oci db system``
+  * Support for HCX for create/update Software Defined Data Center (SDDC) in
+    Oracle Cloud VMware Solution Service (OCVS)
+    * ``oci ocvs sddc create --is-hcx-enabled --hcx-vlan-id``
+    * ``oci ocvs sddc update --hcx-vlan-id``
+  * Improvement for Service Connector Hub documentation
+    * ``oci sch``
+  * Parameter --package-name is now optional for Software Source Search in OS
+    Management Service (`Issue 332 <https://github.com/oracle/oci-cli/issues/332>`__)
+    * ``oci os-management software-source search --package-name``
+- Refresh patches for new version
+  + oc_name-defaults_file-parameter.patch
+  + oc_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Thu Oct 15 11:21:26 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.14.0

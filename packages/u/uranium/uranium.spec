@@ -1,7 +1,7 @@
 #
 # spec file for package uranium
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Recommends:     python3-numpy-stl
 BuildArch:      noarch
 # No 32bit support in cura-engine anymore
 ExcludeArch:    %ix86 %arm
+# Registered in UM/Qt/Bindings/Bindings.py
+Provides:       qt5qmlimport(UM.1) = 5
 
 %description
 A Python framework for building Desktop applications.

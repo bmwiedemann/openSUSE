@@ -55,4 +55,12 @@
     <comment>- update-alternatives for multi-python3 builds</comment>
     <requestid>868666</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>b126c3811f05673bd2b4995ab264f57d</srcmd5>
+    <version>0.30.3</version>
+    <time>1613427414</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36 build (scipy)</comment>
+    <requestid>871474</requestid>
+  </revision>
 </revisionlist>

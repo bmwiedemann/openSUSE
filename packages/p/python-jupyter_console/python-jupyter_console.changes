@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 10 23:30:30 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Force to import setuptools so that we get the entrypoint
+  gh#jupyter/jupyter_console#222
+- Install entrypoint under update-alternatives control
+- Drop empty jupyter-jupyter_console package, provide it in primary
+  python3 package
+
+-------------------------------------------------------------------
 Fri Oct  2 14:15:27 UTC 2020 - pgajdos@suse.com
 
 - before test drop, try more runs for --flaky

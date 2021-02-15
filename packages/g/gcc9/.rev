@@ -240,4 +240,13 @@ release expected in about a week.
     <comment>- Fix 32bit libgnat.so link.  [bsc#1178675]</comment>
     <requestid>848104</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>6712e514fac6a2b94169480bd5d4d3d9</srcmd5>
+    <version>9.3.1+git1684</version>
+    <time>1613427311</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove include-fixed/pthread.h
+- Change GCC exception licenses to SPDX format</comment>
+    <requestid>871357</requestid>
+  </revision>
 </revisionlist>

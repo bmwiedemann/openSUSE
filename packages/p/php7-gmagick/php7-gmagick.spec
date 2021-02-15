@@ -22,15 +22,13 @@
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 
 Name:           %{php_name}-%{pkg_name}
-Version:        2.0.5RC1
+Version:        2.0.6RC1
 Release:        0
 Summary:        Wrapper to the GraphicsMagick library
 License:        PHP-3.01
 Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/gmagick
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
-# PATCH-FIX-UPSTREAM fix-segfault-on-shutdown.patch https://bugs.php.net/bug.php?id=78465
-Patch0:         fix-segfault-on-shutdown.patch
 Patch1:         ignore-test-GraphicsMagick-1.3.36.patch
 BuildRequires:  %{php_name}-devel
 BuildRequires:  GraphicsMagick-devel
@@ -48,7 +46,6 @@ the GraphicsMagick API
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%patch0
 %if 0%{?suse_version} > 1500
 %patch1
 %endif

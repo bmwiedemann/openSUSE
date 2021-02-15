@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Feb 11 14:16:58 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#133
+- use shim on aarch64 (jsc#SLE-15823, jsc#SLE-15020)
+- 0.933
+
+--------------------------------------------------------------------
 Mon Oct 19 10:26:56 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#131

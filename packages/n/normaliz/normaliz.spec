@@ -1,7 +1,7 @@
 #
 # spec file for package normaliz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.8.9
+Version:        3.8.10
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later

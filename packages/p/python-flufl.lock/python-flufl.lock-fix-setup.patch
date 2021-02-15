@@ -1,0 +1,10 @@
+Index: flufl.lock-5.0.4/setup.cfg
+===================================================================
+--- flufl.lock-5.0.4.orig/setup.cfg	2021-01-02 03:42:37.032559900 +0100
++++ flufl.lock-5.0.4/setup.cfg	2021-02-11 09:11:24.784359755 +0100
+@@ -1,5 +1,4 @@
+ [tool:pytest]
+-addopts = --cov=flufl
+ testpaths = test docs
+ 
+ [flake8]

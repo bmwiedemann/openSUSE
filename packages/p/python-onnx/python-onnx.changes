@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Feb 15 18:25:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- NEP 29: Tumbleweed does not have python36-numpy and depending
+  packages anymore. Skip python36 build.
+- Make setup.py cmake call and %cmake macros compatible, even for
+  multiple python3 flavors (when we get python39)
+- Fix boo#1182258
+
+-------------------------------------------------------------------
+Fri Feb  5 08:50:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.8.1: https://github.com/onnx/onnx/releases/tag/v1.8.1
+  * Bug fixes:
+    - #3169 To resolve memory crash on Windows, register python exceptions and update exceptions handling
+    - #3171 Fix bugs in external data helpers and add add size thresholds for converting
+    - #2961 Fix build issues on some distributions of linux due to hard dependency on python2
+    - #3221 Fix mypy wrapper error while using ONNX as a submodule
+- Changes from skipped 1.8.0: https://github.com/onnx/onnx/releases/tag/v1.8.0
+  * Training
+    - Added Differentiable tags to make Gradient operator better defined #2723, #2893, #2911, #2954
+    - Removed GraphCall; eliminated need to implement GraphCall #2964
+    - Created a tool and example for users to use TrainingInfoProto for training #3008
+  * Shape Inference and Checker
+    - Large model (>2GB model) support added for checker and shape_inference #2744
+    - Graph level shape inference fixes to patch the IR gap introduced since IR version 4 #3023
+    - Node level shape inference fixes for operators
+  * Version Converter
+    - More operators supported #2664
+  * General Features
+    - Added serialization for inputs and outputs of Sequence and Map data types #2581
+    - Added programmatic access to version-table and extend make-model #2918
+    - Added size check to make_tensor #2987
+- Drop patch as the related problem has been fixed upstream:
+  * using-onnxruntime-proto.patch
+
+-------------------------------------------------------------------
 Tue Jul 14 14:05:18 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - reorganized package in order to have shared library support.

@@ -1330,4 +1330,14 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
     <comment>- Ensure ARM arch is set properly - boo#1169832 (forwarded request 813234 from Guillaume_G)</comment>
     <requestid>813269</requestid>
   </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>202a19bddea8fff750199541ce4ea9d0</srcmd5>
+    <version>1.11.13</version>
+    <time>1613427099</time>
+    <user>dimstar_suse</user>
+    <comment>- bootstrap via default &quot;gcc-go&quot; compiler in newer distros rather than
+  hardcoding gcc 9 (which is on its way out).
+- drop gcc9-go.patch (obsolete) (forwarded request 870430 from dirkmueller)</comment>
+    <requestid>871025</requestid>
+  </revision>
 </revisionlist>

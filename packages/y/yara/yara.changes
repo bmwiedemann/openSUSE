@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  8 22:17:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.5:
+  * Fix bug in "macho" module introduced in v4.0.4. 
+
+-------------------------------------------------------------------
 Fri Jan 29 22:36:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.4:

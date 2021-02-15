@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Fix duplicate cmake method call
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Fix mouse interaction with history entries (kde#431010)
+  * Remove dead preview code (part 2)
+  * Add .gitignore file
+  * Disable test dir based on BUILD_TESTING option
+  * Utilize new KRunner features
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Fix clazy warning
+  * Remove Qt 5.15 version checks
+  * Remove dead preview code
+  * Port away from foreach and emit
+
+-------------------------------------------------------------------
 Thu Jan 21 07:46:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Backport upstream MR to avoid unfullfillable qmlimport requires

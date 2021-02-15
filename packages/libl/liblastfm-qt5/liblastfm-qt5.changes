@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  9 10:19:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 11 (boo#1181870):
+  * 0001-Stick-to-c-14-for-liblastfm.patch
+
+-------------------------------------------------------------------
 Thu May 24 21:24:47 UTC 2018 - christophe@krop.fr
 
 - Add patches to fix build with Qt 5.11:

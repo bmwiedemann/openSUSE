@@ -775,4 +775,16 @@ Now with build cycle removed.</comment>
   * CI: Add Github Actions workflow for TLD updates PRs. (#1166)</comment>
     <requestid>868308</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0b6aac98c53d9af20596b68ef372e995</srcmd5>
+    <version>20210211</version>
+    <time>1613427116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210211:
+  * Add mcpre.ru, mcdir.me to mchost.ru subsection (#1206)
+  * Add awsglobalaccelerator.com (#1199)
+  * Add northflank.app and code.run to PSL (#1198)
+  * gTLD autopull: 2021-02-07 (#1203)</comment>
+    <requestid>871196</requestid>
+  </revision>
 </revisionlist>

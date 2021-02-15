@@ -69,4 +69,12 @@ http://lists.opensuse.org/opensuse-factory/2016-02/msg00457.html</comment>
   * Mark license as such</comment>
     <requestid>666950</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3f4a8fa832889f2dc054ec8d7289f795</srcmd5>
+    <version>0.43</version>
+    <time>1613427360</time>
+    <user>dimstar_suse</user>
+    <comment>- Requires lua-5.1 as its only one supported now</comment>
+    <requestid>871354</requestid>
+  </revision>
 </revisionlist>

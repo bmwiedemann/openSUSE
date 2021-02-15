@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Output
 Name:           perl-Test-Output
-Version:        1.032
+Version:        1.033
 Release:        0
 Summary:        Utilities to test STDOUT and STDERR messages
 License:        Artistic-2.0
@@ -30,22 +30,16 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.17
 BuildRequires:  perl(File::Temp) >= 0.17
-BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(Test::Tester) >= 0.107
 Requires:       perl(Capture::Tiny) >= 0.17
 Requires:       perl(File::Temp) >= 0.17
-Requires:       perl(Sub::Exporter)
 %{perl_requires}
 
 %description
-Test::Output provides a simple interface for testing output sent to STDOUT
-or STDERR. A number of different utilities are included to try and be as
-flexible as possible to the tester.
-
-Originally this module was designed not to have external requirements,
-however, the features provided by Sub::Exporter over what Exporter provides
-is just to great to pass up.
+Test::Output provides a simple interface for testing output sent to
+'STDOUT' or 'STDERR'. A number of different utilities are included to try
+and be as flexible as possible to the tester.
 
 Likewise, Capture::Tiny provides a much more robust capture mechanism
 without than the original Test::Output::Tie.

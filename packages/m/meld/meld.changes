@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 13 16:40:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.20.3:
+  + Fix folder comparison sensitivity breaking when cancelling a
+    scan.
+  + Fix Subversion comparsion on Python 3.9.
+  + Retain clipboard contents after exiting Meld.
+  + Fix wrapping in notification bars.
+  + Fix border width in our file selection dialog.
+  + Fix occasional traceback when closing comparisons.
+  + Update links to reflect move to Discourse.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 16 12:38:05 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.20.2:

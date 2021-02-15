@@ -1,0 +1,5 @@
+<package name="usrsctp" project="openSUSE:Factory">
+  <title>Userland SCTP</title>
+  <description></description>
+  <devel project="network:telephony" package="usrsctp"/>
+</package>

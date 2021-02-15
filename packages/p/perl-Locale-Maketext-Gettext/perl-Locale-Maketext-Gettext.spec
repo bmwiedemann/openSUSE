@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Locale-Maketext-Gettext
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-Name:           perl-Locale-Maketext-Gettext
-Version:        1.30
-Release:        0
 %define cpan_name Locale-Maketext-Gettext
+Name:           perl-Locale-Maketext-Gettext
+Version:        1.32
+Release:        0
 Summary:        Joins the gettext and Maketext frameworks
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IM/IMACAT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build) >= 0.420000
 %{perl_requires}
 
 %description
@@ -40,7 +38,7 @@ works. It works seamlessly, _both in the sense of GNU gettext and
 Maketext_. As a result, you _enjoy both their advantages, and get rid of
 both their problems, too._
 
-You start as an usual GNU gettext localization project: Work on PO files
+You start as a usual GNU gettext localization project: Work on PO files
 with the help of translators, reviewers and Emacs. Turn them into MO files
 with _msgfmt_. Copy them into the appropriate locale directory, such as
 _/usr/share/locale/de/LC_MESSAGES/myapp.mo_.
@@ -49,8 +47,8 @@ Then, build your Maketext localization class, with your base class changed
 from Locale::Maketext(3) to Locale::Maketext::Gettext. That is all.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL installdirs=vendor
@@ -64,8 +62,7 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc BUGS Changes README THANKS TODO
-%license Artistic COPYING
+%doc Changes README.md
+%license Artistic
 
 %changelog

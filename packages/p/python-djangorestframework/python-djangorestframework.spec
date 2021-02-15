@@ -1,7 +1,7 @@
 #
 # spec file for package python-djangorestframework
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-djangorestframework%{psuffix}
-Version:        3.11.1
+Version:        3.11.2
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause

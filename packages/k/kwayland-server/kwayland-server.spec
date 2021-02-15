@@ -24,15 +24,15 @@
 
 %bcond_without lang
 Name:           kwayland-server
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        KDE Wayland server library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz
+Source:         kwayland-server-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz.sig
+Source1:        kwayland-server-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.5
@@ -98,13 +98,13 @@ rm -r $XDG_RUNTIME_DIR
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%license COPYING* LICENSES/*.txt
+%license LICENSES/*.txt
 %{_kf5_debugdir}/kwaylandserver.categories
 %{_kf5_libdir}/libKWaylandServer.so.5
 %{_kf5_libdir}/libKWaylandServer.so.%{_plasma5_bugfix}
 
 %files devel
-%license COPYING* LICENSES/*.txt
+%license LICENSES/*.txt
 %{_kf5_libdir}/libKWaylandServer.so
 %{_kf5_libdir}/cmake/KWaylandServer/
 %{_includedir}/KWaylandServer/

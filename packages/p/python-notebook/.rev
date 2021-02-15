@@ -70,4 +70,29 @@
     <comment></comment>
     <requestid>862130</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0c5b78ddfb7ce58114e5ff6d5fcf4b44</srcmd5>
+    <version>6.2.0</version>
+    <time>1613427635</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update copyright year
+  * update tornado version requirement
+  * removed remove_nose.patch, included upstream
+- update to version 6.2.0:
+  * Increase minimum tornado version (:ghpull:`5933`)
+  * Adjust skip decorators to avoid remaining dependency on nose
+     (:ghpull:`5932`)
+  * Ensure that cell ids persist after save (:ghpull:`5928`)
+  * Add reconnection to Gateway (form nb2kg) (:ghpull:`5924`)
+  * Fix some typos (:ghpull:`5917`)
+  * Handle TrashPermissionError, now that it exists (:ghpull:`5894`)
+- changes from version 6.1.6:
+  * do not require nose for testing (:ghpull:`5826`)
+  * [docs] Update Chinese and Hindi readme.md (:ghpull:`5823`)
+  * Add support for creating terminals via GET (:ghpull:`5813`)
+  * Made doc translations in Hindi and Chinese (:ghpull:`5787`)
+</comment>
+    <requestid>872505</requestid>
+  </revision>
 </revisionlist>

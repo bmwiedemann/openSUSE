@@ -319,4 +319,41 @@
   * IOS: Make use of insert_or_assign with AddDevice()</comment>
     <requestid>860420</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c9cc815b8a569db7b7b5f09daf942af</srcmd5>
+    <version>5.0+git.20210211T001537.1fc6fbc2c0</version>
+    <time>1613427294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.20210211T001537.1fc6fbc2c0:
+  * Qt: Fix &quot;open wiki&quot; option not using the wiki redirect script
+  * JitArm64: Fix mistaken use of LSL imm
+  * JitArm64: More constant propagation optimizations
+  * Fix mapping window title bar becoming unresponsive
+  * DolphinQt: Fix regression that caused the regex expression to be evaluated incorrectly.  If an input expression has a non-alpha character in it, we want to quote it with backticks
+  * Translation resources sync with Transifex
+  * MovI2R: Do not exhaustively test
+  * UnitTests: Add MOVI2R test
+  * Random: Add seeded PRNG
+  * JitArm64_Integer: Add optimizations for rlwimix
+  * Arm64Emitter: Add additional assertions to BFI/UBFIZ
+  * Arm64Emitter: Prefer BFM/UBFM to EncodeBitfieldMOVInst
+  * Arm64Emitter: Add BFXIL
+  * NetworkCaptureLogger: PCAP support added
+  * Working Game IDs for Elf/Dol files
+  * JitArm64: Use STP for pc/npc
+  * JitArm64: Use STP for (parts of) ppcState.ps
+  * Arm64Emitter: Add asserts for LDP/STP imm out of range
+  * Fix typo in Readme.md
+  * Externals/rangeset: use qualified 'size_t'
+  * require clang-format 10.0
+  * BreakpointWidget: Remove unnecessary code
+  * NetworkCaptureLogger: Move SSL logging
+  * msbuild: re-enable HAS_OPENGL and HAS_VULKAN
+  * VideoCommon: use Quaternion for Free Look orientation
+  * Common: update Quaternion to allow rotating pitch, yaw, and roll all at once
+  * Common: add convenience function to convert a Quaternion to a Matrix44
+  * MemoryWidget: Add 'Offset' and General Improvements
+  * msbuild: bundle all dolphin &quot;core&quot; code into single library</comment>
+    <requestid>871231</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb 14 15:55:25 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1613318110.525d96fca:
+  * Dependency cron 2021-02-14
+  * script: Fallback to running openqa-bootstrap-container without pipe
+  * Add a section on how to use signatures to the code style guide
+  * Increase timeout for slow ui test
+  * Convert all of OpenQA::CacheService::Client to signatures
+  * Simplify WebUIConnection method arguments with signatures
+  * Replace one occurence of @_ unrolling to put in default value
+  * Mark uncoverage statements in OpenQA::Worker::WebUIConnection
+  * Refactor scheduler to fix occasional failures of the fullstack test
+  * Make scheduler output more verbose for fullstack tests
+  * Stabilize scalability test
+  * Improve verbosity of scalability test when scheduling fails
+  * Allow using `systemctl reload openqa-worker-auto-restart@*.service`
+  * Use --kill-who=main when reloading worker to send signal only the main process
+  * Avoid the worker to stop its current job when receiving SIGHUP twice
+  * Prevent test timeouts in CI with splitting out "heavy" tests
+  * Combine "scheduler"+"developer" test runs into one to save time
+  * t: Simplify 25-cache.t with IPC::Run instead of Mojo::IOLoop::ReadWriteProcess
+
+-------------------------------------------------------------------
 Tue Feb 09 15:00:34 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1612882822.353560390:

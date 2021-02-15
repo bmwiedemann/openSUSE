@@ -22,15 +22,15 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           breeze
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
+Source:         breeze-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
+Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 2.8.12
@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig(xcb)
 Requires:       breeze5-cursors >= %{version}
 Requires:       breeze5-icons >= %{version}
 Requires:       breeze5-style >= %{version}
-Requires:       breeze5-wallpapers >= %{version}
+Recommends:     breeze5-wallpapers >= %{version}
 Recommends:     breeze5-decoration >= %{version}
 
 %description
@@ -120,6 +120,10 @@ Library containing support code for the Breeze Qt5 style.
 
 %install
   %kf5_makeinstall -C build
+
+# The migration overrides the look and feel, don't migrate for now
+rm %{buildroot}%{_kf5_sharedir}/kconf_update/breezetobreezelight.upd
+
 %if %{with lang}
   %{kf5_find_lang}
 %endif
@@ -159,6 +163,7 @@ Library containing support code for the Breeze Qt5 style.
 %{_kf5_libdir}/cmake/Breeze/
 %dir %{_kf5_appstreamdir}/
 %{_kf5_appstreamdir}/org.kde.breezedark.desktop.appdata.xml
+%{_kf5_appstreamdir}/org.kde.breezetwilight.desktop.appdata.xml
 
 %files -n breeze5-wallpapers
 %license LICENSES/*

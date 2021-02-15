@@ -31,4 +31,12 @@
     <comment>Fix build with Qt 5.11</comment>
     <requestid>612182</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a752f1b3031a783fe53acf95f4edea3b</srcmd5>
+    <version>1.0.9+20150206</version>
+    <time>1613427104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871031</requestid>
+  </revision>
 </revisionlist>

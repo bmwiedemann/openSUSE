@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-math
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,10 @@ Release:        0
 Summary:        The Apache Commons Mathematics Library
 License:        Apache-2.0
 URL:            http://commons.apache.org/%{base_name}/
-Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}3-%{version}-src.tar.gz
-Patch0:         commons-math3-3.6.1-notests.patch
-BuildRequires:  ant
-BuildRequires:  ant-junit
+Source:         http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}3-%{version}-src.tar.gz
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  maven-local
+BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -44,40 +42,22 @@ Summary:        Javadoc for %{name}
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{short_name}3-%{version}-src
-%patch0 -p1
+%autosetup -n %{short_name}3-%{version}-src
 
-%pom_remove_parent .
+%pom_remove_plugin :maven-antrun-plugin
+%pom_remove_plugin :build-helper-maven-plugin
 
 %build
-export CLASSPATH=$(build-classpath ant-junit junit)
-ant -Dant.build.javac.source=8 -Dcompile.source=8 \
-    -Dant.build.javac.target=8 -Dcompile.target=8 \
-    -Dmaven.mode.offline=true -Dmaven.test.skip=true \
-    -lib %{_datadir}/java -Dbuild.sysclasspath=first \
-    jar javadoc
+%mvn_build -f -- -Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8
 
 %install
-# jars
-install -Dpm 644 target/%{short_name}*.jar %{buildroot}%{_javadir}/%{short_name}.jar
-ln -sf %{_javadir}/%{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
-
-# pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
-%add_maven_depmap %{short_name}.pom %{short_name}.jar -a %{short_name}:%{short_name}
-
-# javadoc
-install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr target/apidocs/ %{buildroot}%{_javadocdir}/%{name}
+%mvn_install
 
 %files -f .mfiles
 %license LICENSE.txt license-header.txt NOTICE.txt
 %doc RELEASE-NOTES.txt
-%{_javadir}/%{name}.jar
 
-%files javadoc
+%files javadoc -f .mfiles-javadoc
 %license LICENSE.txt
-%{_javadocdir}/%{name}
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 11 06:32:54 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Update PAPI to v6.0.0.1 bugfix release:
+  * Fix undefined reference to "pthread_self" in static builds.
+  * Fix a bug with "make -j".
+
+-------------------------------------------------------------------
 Wed Mar  4 18:55:04 UTC 2020 - Tony Jones <tonyj@suse.com>
 
 - Update to PAPI v6.0

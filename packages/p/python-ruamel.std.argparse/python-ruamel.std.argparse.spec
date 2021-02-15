@@ -16,17 +16,25 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.std.argparse
-Version:        0.8.3
+Version:        0.8.3+hg.34
 Release:        0
 Summary:        Enhancements to argparse
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://sourceforge.net/p/ruamel-std-argparse
-Source:         https://files.pythonhosted.org/packages/source/r/ruamel.std.argparse/ruamel.std.argparse-%{version}.tar.gz
+# Pull code from the checkout because of https://sourceforge.net/p/ruamel-std-argparse/tickets/3/
+# Source:         https://files.pythonhosted.org/packages/source/r/ruamel.std.argparse/ruamel.std.argparse-%%{version}.tar.gz
+Source:         code-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE discover-name-of-the-pytest-executable-at-runtime.patch https://sourceforge.net/p/ruamel-std-argparse/tickets/4/ mcepl@suse.com
+# Automagically discover pytest executable name in runtime.
+Patch0:         discover-name-of-the-pytest-executable-at-runtime.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  python-rpm-macros
 Requires:       python-ruamel.base
 %ifpython2
@@ -41,7 +49,8 @@ Enhancements to argparse providing extra actions, subparser aliases,
 smart formatter, and a decorator based wrapper.
 
 %prep
-%setup -q -n ruamel.std.argparse-%{version}
+%setup -q -n code-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -50,6 +59,9 @@ smart formatter, and a decorator based wrapper.
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest -vv
 
 %files %{python_files}
 %doc README.rst

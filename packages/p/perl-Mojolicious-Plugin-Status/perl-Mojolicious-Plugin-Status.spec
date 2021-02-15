@@ -18,7 +18,7 @@
 
 %define cpan_name Mojolicious-Plugin-Status
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Mojolicious server status
 License:        Artistic-2.0
@@ -29,15 +29,15 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(BSD::Resource)
-BuildRequires:  perl(Cpanel::JSON::XS) >= 4.09
 BuildRequires:  perl(File::Map)
 BuildRequires:  perl(File::Temp) >= 0.2308
 BuildRequires:  perl(Mojolicious) >= 8.50
+BuildRequires:  perl(Sereal)
 Requires:       perl(BSD::Resource)
-Requires:       perl(Cpanel::JSON::XS) >= 4.09
 Requires:       perl(File::Map)
 Requires:       perl(File::Temp) >= 0.2308
 Requires:       perl(Mojolicious) >= 8.50
+Requires:       perl(Sereal)
 %{perl_requires}
 
 %description

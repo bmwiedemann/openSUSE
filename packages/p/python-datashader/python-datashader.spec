@@ -28,6 +28,7 @@ ExclusiveArch:  x86_64
 BuildArch:      noarch
 %endif
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-datashader%{psuffix}
 Version:        0.11.1
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 15:04:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 build (scipy) 
+
+-------------------------------------------------------------------
 Tue Feb  2 13:42:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update-alternatives for multi-python3 builds 

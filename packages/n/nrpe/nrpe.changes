@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  4 16:35:12 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- added nrpe-4.0.4-silence_wrong_package_version_messages.patch
+  NRPE logs 'packet version was invalid' and 'Could not read request
+  from client' if the NRPE version on the client does not match the
+  one on the server side. 
+  This patch reduces the importance of the log entry to be just 
+  informal, which should silent most client logs, while it makes 
+  it still available for debugging.
+
+-------------------------------------------------------------------
 Fri Jan 22 09:32:47 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 4.0.3

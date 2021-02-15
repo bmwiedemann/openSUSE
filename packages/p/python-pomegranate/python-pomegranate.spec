@@ -1,7 +1,7 @@
 #
 # spec file for package python-pomegranate
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-pomegranate
 Version:        0.12.0
 Release:        0
@@ -32,16 +33,16 @@ BuildRequires:  %{python_module scipy >= 0.17.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
 Requires:       python-joblib >= 0.9.0b4
 Requires:       python-networkx >= 2.0
 Requires:       python-numpy >= 1.8.0
-Requires:       python-PyYAML
 Requires:       python-scipy >= 0.17.0
 # SECTION test requirements
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module joblib >= 0.9.0b4}
 BuildRequires:  %{python_module networkx >= 2.0}
 BuildRequires:  %{python_module numpy >= 1.8.0}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module scipy >= 0.17.0}
 # /SECTION
 %python_subpackages

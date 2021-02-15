@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-CSV
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-DBD-CSV
-Version:        0.56
-Release:        0
 %define cpan_name DBD-CSV
+Name:           perl-DBD-CSV
+Version:        0.58
+Release:        0
 Summary:        DBI driver for CSV files
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBD::File) >= 0.42
@@ -44,7 +42,7 @@ Recommends:     perl(DBD::File) >= 0.44
 Recommends:     perl(DBI) >= 1.643
 Recommends:     perl(SQL::Statement) >= 1.414
 Recommends:     perl(Test::More) >= 1.302183
-Recommends:     perl(Text::CSV_XS) >= 1.44
+Recommends:     perl(Text::CSV_XS) >= 1.45
 %{perl_requires}
 
 %description
@@ -58,12 +56,12 @@ See DBI for details on DBI, SQL::Statement for details on SQL::Statement
 and DBD::File for details on the base class DBD::File.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -74,7 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog CONTRIBUTING.md examples README
 
 %changelog

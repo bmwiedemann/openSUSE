@@ -3,14 +3,14 @@
     <param name="url">https://github.com/mozilla/sccache.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">6628e1f70db3d583cb5e79210603ad878de3d315</param>
-    <!-- <param name="revision">0.2.13</param> -->
+    <param name="revision">v0.2.15</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">wbrown@suse.de</param>
   </service>
+  <service mode="disabled" name="set_version"/>
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
@@ -20,5 +20,4 @@
      <param name="srcdir">sccache</param>
      <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
 </services>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 13:40:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 as python36-scipy is missing 
+
+-------------------------------------------------------------------
 Fri Jul 24 06:52:07 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.5.0: 

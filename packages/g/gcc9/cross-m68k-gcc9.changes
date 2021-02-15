@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 11 15:08:22 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Remove include-fixed/pthread.h
+- Change GCC exception licenses to SPDX format
+
+-------------------------------------------------------------------
 Thu Nov 12 11:30:09 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Fix 32bit libgnat.so link.  [bsc#1178675]

@@ -1,7 +1,7 @@
 #
 # spec file for package cross-m68k-gcc9
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -798,7 +798,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
 %if 0%{!?gcc_libc_bootstrap:1}
-%if %{cross_arch} == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
+%if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++
 %endif
 %endif

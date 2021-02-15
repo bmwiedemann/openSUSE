@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 11 07:51:18 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 21.02.0:
+  + core:
+    - GfxCal*ColorSpace: introduce Bradford transform for chromatic adaptation
+    - Fix memory leak if saving the file fails
+    - Internal code improvements
+    - Fix various issues handling broken files
+    - Make checkedAdd work for long long in MSVC
+
+  + qt5:
+    - Properly export NewSignatureData class
+    - Fix regression in QIODeviceOutStream + MSVC
+
+  + qt6:
+    - Properly export NewSignatureData class
+    - Fix regression in QIODeviceOutStream + MSVC
+
+  + utils:
+    - pdftohtml: Fix error() parameter type
+
+-------------------------------------------------------------------
 Mon Jan  4 08:14:51 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 21.01.0:

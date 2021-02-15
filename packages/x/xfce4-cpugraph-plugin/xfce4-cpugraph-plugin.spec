@@ -20,7 +20,7 @@
 %define plugin cpugraph
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        CPU Graph Plugin for the Xfce Panel
 License:        GPL-2.0-or-later

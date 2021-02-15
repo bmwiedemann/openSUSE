@@ -1,7 +1,7 @@
 #
 # spec file for package python-logreduce
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+# CLI tool, no module
+%define pythons python3
 Name:           python-logreduce
-Version:        0.5.2
+Version:        0.6.1
 Release:        0
 Summary:        Log file anomaly extractor
 License:        Apache-2.0
@@ -79,8 +80,7 @@ failed logs:
 %prep
 %setup -q -n logreduce-%{version}
 sed -i -e 's,flake8.*,,' test-requirements.txt
-rm logreduce/server/web/.keep
-sed -i '1{/^#!/d}' logreduce/cmd.py logreduce/mqtt/cmd.py
+sed -i '1{/^#!/d}' logreduce/cmd.py
 
 # CherryPy 10.1 and lower requires nose in cherrypy/test/helper.py needed by test_api.py
 # As of logreduce 0.5.2, upstream doesnt restrict the cherrypy version,
@@ -104,11 +104,7 @@ fi}
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%python3_only %{_bindir}/logreduce
-%python3_only %{_bindir}/logreduce-client
-%python3_only %{_bindir}/logreduce-server
-%python3_only %{_bindir}/logreduce-worker
-%python3_only %{_bindir}/logreduce-mqtt
+%{_bindir}/logreduce
 %{python_sitelib}/*
 
 %changelog

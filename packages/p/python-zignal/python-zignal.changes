@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 14:16:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build 
+
+-------------------------------------------------------------------
 Fri Jul  3 07:51:37 UTC 2020 - pgajdos@suse.com
 
 - do not depend on nose, use %pytest

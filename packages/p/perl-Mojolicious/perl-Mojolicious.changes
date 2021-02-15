@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  7 03:12:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.73
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.73  2021-02-05
+    - Removed finally keyword from check function in Mojo::Exception.
+    - Changed arguments of check function in Mojo::Exception to be easier to use with Perl 5.34 try/catch.
+    - Removed experimental status from preload_namespaces attribute in Mojolicious.
+    - Removed experimental status from any, map, timer and timeout methods in Mojo::Promise.
+    - Removed experimental status from extname method in Mojo::File.
+    - Removed experimental status from warmup method in Mojolicious.
+    - Removed experimental status from load_classes function in Mojo::Loader.
+    - Removed experimental status from Mojo::DynamicMethods. Still summons old gods, use at your own risk!
+    - Removed experimental status from before_command hook in Mojolicious.
+    - Added silent attribute to Mojo::Server::Morbo.
+
+-------------------------------------------------------------------
 Thu Jan 28 03:07:49 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.72

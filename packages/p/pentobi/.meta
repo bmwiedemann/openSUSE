@@ -1,0 +1,11 @@
+<package name="pentobi" project="openSUSE:Factory">
+  <title>Program to play the board game Blokus</title>
+  <description>Pentobi is a computer opponent for the board game Blokus with
+support for Classic, Duo, Junior, Trigon, and Nexos game variants.
+Different levels of playing strength are available. Pentobi can
+save and load games along with comments and move variations.
+
+</description>
+  <devel project="games" package="pentobi"/>
+  <url>http://pentobi.sourceforge.net/</url>
+</package>

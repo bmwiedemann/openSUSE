@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 15 16:28:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix sandbox with glibc 2.33 (boo#1182233):
+  * chromium-glibc-2.33.patch
+
+-------------------------------------------------------------------
 Fri Jan 29 11:06:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Bump _constraints and %limit_build, hopefully avoid occasional

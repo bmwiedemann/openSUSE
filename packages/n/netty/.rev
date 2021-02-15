@@ -23,4 +23,12 @@
     <comment>bsc#1168932, CVE-2020-11612, bsc#1169082, CVE-2020-10707</comment>
     <requestid>792763</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>90045c5c3d55243db3152ac1a13f6d37</srcmd5>
+    <version>4.1.13</version>
+    <time>1613427316</time>
+    <user>dimstar_suse</user>
+    <comment>sec fixes</comment>
+    <requestid>871237</requestid>
+  </revision>
 </revisionlist>

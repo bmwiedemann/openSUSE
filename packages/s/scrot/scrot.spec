@@ -1,7 +1,7 @@
 #
 # spec file for package scrot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,23 @@
 
 
 Name:           scrot
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
 Group:          Productivity/Graphics/Other
-URL:            https://github.com/resurrecting-open-source-projects/scrot 
+URL:            https://github.com/resurrecting-open-source-projects/scrot
 Source:         https://github.com/resurrecting-open-source-projects/scrot/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
-BuildRequires:  libXcomposite-devel
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(giblib)
 BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(zlib)
 
@@ -49,12 +51,13 @@ the dynamic loaders of imlib2.
 
 %install
 %make_install
+mkdir -p %{buildroot}/%{_datadir}/pixmaps/
+rm -rf %{buildroot}/%{_datadir}/doc/scrot
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog README.md TODO CONTRIBUTING.md
+%doc AUTHORS ChangeLog README.md TODO CONTRIBUTING.md 
 %license COPYING
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
