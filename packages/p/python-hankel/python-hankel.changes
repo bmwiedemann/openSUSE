@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 00:02:02 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- NEP29: TW does not have python36-scipy anymore
+  skip python36 build
+
+-------------------------------------------------------------------
 Mon Sep 14 09:01:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch to using PyPI source tarball to prevent version

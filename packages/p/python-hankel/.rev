@@ -73,4 +73,13 @@
     <comment></comment>
     <requestid>834269</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6081de894a46441519f16a49cb60ad2d</srcmd5>
+    <version>1.1.0</version>
+    <time>1613427459</time>
+    <user>dimstar_suse</user>
+    <comment>- NEP29: TW does not have python36-scipy anymore
+  skip python36 build</comment>
+    <requestid>871596</requestid>
+  </revision>
 </revisionlist>
