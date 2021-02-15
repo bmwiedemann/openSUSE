@@ -2936,4 +2936,26 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * generate histograms by comparing pixel components rather than color (forwarded request 866417 from dirkmueller)</comment>
     <requestid>866491</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>c4956ff4cfbba8dc03b0e7b5f787ac87</srcmd5>
+    <version>7.0.10.62</version>
+    <time>1613427034</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.62
+  * -trim not working as expected (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/3172).
+  * possible undefined behavior (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3195).
+  * sanitize buggy ascender and descender values (reference
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=980202).
+  * dng:decode element in delegates.xml quoted incorrectly (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3156).
+  * Extract GPS info from TIFF images (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3167).
+  * Revert tieing MagickFloatType to double (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2832).
+  * revert configure script for validating JXL delegate library.
+  * the distributed pixel cache now properly deserializes the image attributes.</comment>
+    <requestid>870506</requestid>
+  </revision>
 </revisionlist>

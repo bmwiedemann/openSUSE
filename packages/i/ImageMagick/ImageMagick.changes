@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb  9 11:11:52 UTC 2021 - pgajdos@suse.com
+
+- version update to 7.0.10.62
+  * -trim not working as expected (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/3172).
+  * possible undefined behavior (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3195).
+  * sanitize buggy ascender and descender values (reference
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=980202).
+  * dng:decode element in delegates.xml quoted incorrectly (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3156).
+  * Extract GPS info from TIFF images (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3167).
+  * Revert tieing MagickFloatType to double (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2832).
+  * revert configure script for validating JXL delegate library.
+  * the distributed pixel cache now properly deserializes the image attributes.
+
+-------------------------------------------------------------------
 Sun Jan 24 20:17:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.10.59:
