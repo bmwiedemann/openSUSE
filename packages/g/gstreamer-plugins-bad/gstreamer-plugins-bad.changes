@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  6 01:16:54 UTC 2021 - Federico Mena Quintero <federico@suse.com>
+
+- Disable the kate/libtiger plugin.  Kate streams for karaoke are not
+  used anymore, and the source tarball for libtiger is no longer
+  available upstream.
+
+-------------------------------------------------------------------
 Sat Jan 16 19:31:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:

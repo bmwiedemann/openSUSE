@@ -78,7 +78,6 @@ BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(kate) >= 0.1.7
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libass) >= 0.10.2
 BuildRequires:  pkgconfig(libchromaprint)
@@ -145,7 +144,6 @@ BuildRequires:  libbs2b-devel
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(tiger) >= 0.3.2
 BuildRequires:  pkgconfig(zbar) >= 0.9
 BuildRequires:  pkgconfig(zvbi-0.2)
 %if 0%{?suse_version} >= 1500
@@ -614,6 +612,7 @@ export PYTHON=%{_bindir}/python3
 	-Dhls-crypto=openssl \
 	-Dintrospection=enabled \
 	-Diqa=disabled \
+        -Dkate=disabled \
 	-Dmagicleap=disabled \
 	-Dmicrodns=disabled \
 	-Dnvdec=disabled \
@@ -748,7 +747,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstivtc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstjp2kdecimator.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstjpegformat.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstkate.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstkms.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstladspa.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmidi.so
