@@ -99,4 +99,13 @@
   * Add --utp-only flag to disable TCP</comment>
     <requestid>849914</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2adb479cbf6d26fde2ef1e47097b4dd6</srcmd5>
+    <version>2.24</version>
+    <time>1613427563</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.24
+  * use XDG_DATA_HOME if defined</comment>
+    <requestid>872150</requestid>
+  </revision>
 </revisionlist>
