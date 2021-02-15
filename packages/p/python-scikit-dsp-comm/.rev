@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>821089</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0bdb5c4d4b5bc16dcfc2d3e43d9c4cf0</srcmd5>
+    <version>1.2.0</version>
+    <time>1613427573</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (no scipy anymore)</comment>
+    <requestid>872151</requestid>
+  </revision>
 </revisionlist>
