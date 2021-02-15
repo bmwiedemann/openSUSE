@@ -7,4 +7,12 @@
     <comment>[NOTE: Depends on sr#843533] Different language bindings for LDAS tools.</comment>
     <requestid>843534</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b839911f64f3ca2e38232c805ca8211d</srcmd5>
+    <version>2.6.7</version>
+    <time>1613427510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871641</requestid>
+  </revision>
 </revisionlist>

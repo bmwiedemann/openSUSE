@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define skip_python36 1
 Name:           ldas-tools-al-swig
 Version:        2.6.7
 Release:        0
@@ -46,7 +47,7 @@ This provides different language bindings for the LDAS tools abstaction library.
 %install
 %cmake_install
 
-%files
+%files -n %{name}
 %license COPYING
 %{_includedir}/ldastoolsal/*.i
 
