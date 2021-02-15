@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  8 22:51:24 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 7.6.3: 
+  * The main change in this release is that installing `ipywidgets`
+    7.6.0 will now automatically enable ipywidgets support in
+    JupyterLab 3.0
+  * Full list of pull requests and issues, see the [7.6.0
+    milestone](https://github.com/jupyter-widgets/ipywidgets/
+    milestone/31?closed=1).
+- Update html and pdf files.
+
+-------------------------------------------------------------------
 Tue Dec 15 12:52:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Provide the old jupyter package name only for the primary
