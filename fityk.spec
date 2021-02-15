@@ -1,7 +1,7 @@
 #
 # spec file for package fityk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,13 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://fityk.nieto.pl/
 Source:         https://github.com/wojdyr/fityk/releases/download/v%{version}/fityk-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM fityk-support-lua-5.4.patch badshah400@gmail.com -- Support lua up to version 5.4; patch taken from upstream git commit
+Patch0:         fityk-support-lua-5.4.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnuplot
+BuildRequires:  libtool
 BuildRequires:  lua-devel >= 5.1
 BuildRequires:  ncurses-devel
 BuildRequires:  nlopt-devel
@@ -95,10 +98,11 @@ data). It can also be used for visualization of x-y data only.
 This package contains python bindings to Fityk library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export PYTHON=%{_bindir}/python3
+autoreconf -fvi
 %configure \
     --enable-nlopt \
     --enable-python

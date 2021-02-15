@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 13 18:52:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add fityk-support-lua-5.4.patch: Support lua up to version 5.4;
+  patch taken from upstream git commit and rebased for current
+  version. Add BuildRequires: libtool and run autoreconf before
+  configure since patch modifies configure.ac.
+
+-------------------------------------------------------------------
 Sun Feb  2 15:53:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Don't make python3-fityk Obsolete or Provide python-fityk (the
