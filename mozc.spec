@@ -1,7 +1,7 @@
 #
 # spec file for package mozc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,14 @@
 %define fcitx_lib_dir %{_libdir}/fcitx/
 %endif
 
+%define server_dir %{_libdir}/mozc
 %define ibus_mozc_path %{_libdir}/ibus-mozc/ibus-engine-mozc
 %define ibus_mozc_icon_path %{_datadir}/ibus-mozc/product_icon.png
 %define document_dir %{_docdir}/ibus-mozc
 %define use_libprotobuf 1
 
 Name:           mozc
-Version:        2.25.4150.102
+Version:        2.26.4276.102
 Release:        0
 Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
 License:        BSD-3-Clause AND SUSE-Public-Domain AND Apache-2.0
@@ -62,8 +63,8 @@ Source5:        japanese_usage_dictionary-r10.tar.xz
 Source6:        protobuf-v3.5.2.tar.gz
 # abseil cpp
 # License: Apache-2.0
-# https://github.com/abseil/abseil-cpp/archive/lts_2020_02_25.zip
-Source7:        abseil-cpp-lts_2020_02_25.zip
+# https://github.com/abseil/abseil-cpp/archive/20200923.3.zip
+Source7:        abseil-cpp-20200923.3.zip
 #
 # jigyosyo.zip and ken_all.zip are zip-code--address data provided by
 # Japan Post Co., Ltd.
@@ -74,9 +75,8 @@ Source11:       ken_all.zip
 %if %{with_fcitx}
 # add fcitx as mozc module
 # License: BSD-3-Clause
-Patch:          fcitx-mozc-2.23.2815.102.1.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp -- update fcitx-mozc for newer mozc
-Patch22:        fcitx-fix-for-a1dcadab.patch
+# https://github.com/fcitx/mozc/tree/fcitx/src/unix/fcitx{,5}
+Source20:       fcitx-mozc.tar.xz
 Source21:       fcitx-mozc-icons.tar.gz
 %endif
 # A script for making a source tar.xz archive
@@ -93,7 +93,7 @@ Patch6:         ibus-qt5-hide_preedit_text-workaround.patch
 
 # PATCH-FIX-OPENSUSE mozc-build-gcc.patch bsc#990844 qzhao@suse.com -- Portng mozc-build-gcc.patch to force mozc build with gcc.
 Patch7:         mozc-build-gcc.patch
-# PATCH-FIX-OPENSUSE build-with-libstdc++.patch ftake@geeko.jp -- force to use libstdc++ instead of libc++
+# PATCH-FIX-OPENSUSE build-with-libstdc++.patch ftake@geeko.jp -- Use libstdc++ instead of libc++
 Patch8:         build-with-libstdc++.patch
 
 BuildRequires:  ninja >= 1.4
@@ -167,8 +167,7 @@ character-palette tools.
 
 # extract fcitx-mozc
 %if %{with_fcitx}
-%patch -p1
-%patch22 -p1
+tar xvf %{SOURCE20}
 %endif
 
 %patch1 -p1
@@ -189,7 +188,7 @@ tar xvf %{SOURCE6} -C protobuf --strip-components 1
 %endif
 # abseil
 unzip %{SOURCE7}
-mv abseil-cpp-lts_2020_02_25 abseil-cpp
+mv abseil-cpp-20200923.3 abseil-cpp
 cd ../..
 
 cd src
@@ -225,7 +224,7 @@ flags=${RPM_OPT_FLAGS/-Wall/}
 export GYP_DEFINES='ibus_mozc_path=%{ibus_mozc_path} ibus_mozc_icon_path=%{ibus_mozc_icon_path} use_libprotobuf=%{use_libprotobuf} document_dir=%{document_dir} release_extra_cflags="'$flags'" use_fcitx5=0'
 
 cd src
-python3 build_mozc.py gyp --server_dir=%{_libdir}/mozc
+python3 build_mozc.py gyp --server_dir=%{server_dir}
 python3 build_mozc.py build -c %{target} \
 	unix/ibus/ibus.gyp:ibus_mozc \
 %if %{with_fcitx}
@@ -303,10 +302,10 @@ rm -rf fcitx-mozc-icons.tar.gz
 
 %endif
 
-install -m755 -d %{buildroot}%{_libdir}/mozc
-install -m755 %{output_dir}/mozc_server %{buildroot}%{_libdir}/mozc
-install -m755 %{output_dir}/mozc_tool %{buildroot}%{_libdir}/mozc
-install -m755 %{output_dir}/mozc_renderer %{buildroot}%{_libdir}/mozc
+install -m755 -d %{buildroot}%{server_dir}
+install -m755 %{output_dir}/mozc_server %{buildroot}%{server_dir}
+install -m755 %{output_dir}/mozc_tool %{buildroot}%{server_dir}
+install -m755 %{output_dir}/mozc_renderer %{buildroot}%{server_dir}
 
 install -m755 -d %{buildroot}%{_bindir}
 install -m755 %{output_dir}/mozc_emacs_helper %{buildroot}%{_bindir}
@@ -324,8 +323,8 @@ chmod 644 src/data/installer/credits_*.html
 %defattr(-, root, root)
 %doc src/data/installer/credits_en.html
 %doc README.SUSE
-%dir %{_libdir}/mozc
-%{_libdir}/mozc/mozc_server
+%dir %{server_dir}
+%{server_dir}/mozc_server
 %{_bindir}/mozc_emacs_helper
 %dir %{_datadir}/emacs/site-lisp/
 %{_datadir}/emacs/site-lisp/mozc.el

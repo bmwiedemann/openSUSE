@@ -1,9 +1,9 @@
 #!/bin/sh
 
-commit=42426e181cd4691eb840290f60890b0f21e7b23e
+commit=6ac62d2e888cabb138c8427e6173c04e07bb60e0
 # See: mozc/src/data/version/mozc_version_template.bzl
 # REVISION is always 102 for Linux
-version=2.25.4150.102
+version=2.26.4276.102
 
 set -e
 
