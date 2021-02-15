@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>754772</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5e901fcbd0cfd80eb87941871aaa59fe</srcmd5>
+    <version>2018.9.14.1501</version>
+    <time>1613427508</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (requires scipy)</comment>
+    <requestid>871637</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 10:29:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (requires scipy) 
+
+-------------------------------------------------------------------
 Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 support since dependencies dropped python2
