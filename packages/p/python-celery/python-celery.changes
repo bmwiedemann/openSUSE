@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  2 00:27:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- consistently use >= in requires 
+
+-------------------------------------------------------------------
 Tue Jan 26 10:14:33 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.0.5

@@ -40,7 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 Requires:       python-billiard >= 3.6.3.0
-Requires:       python-click => 7.0
+Requires:       python-click >= 7.0
 Requires:       python-click-didyoumean >= 0.0.3
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.1.6
