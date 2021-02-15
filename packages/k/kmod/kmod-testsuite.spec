@@ -38,6 +38,9 @@ Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
 Patch8:         no-stylesheet-download.patch
 Patch9:         0001-Fix-modinfo-F-always-shows-name-for-built-ins.patch
+Patch10:        kmod-populate-modules-Use-more-bash-more-quotes.patch
+Patch11:        kmod-testsuite-compress-modules-if-feature-is-enabled.patch
+Patch12:        kmod-also-test-xz-compression.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook5-xsl-stylesheets
@@ -47,9 +50,7 @@ BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  xz
-BuildRequires:  zstd
 BuildRequires:  pkgconfig(liblzma) >= 4.99
-BuildRequires:  pkgconfig(libzstd) >= 1.4.4
 BuildRequires:  pkgconfig(zlib)
 Requires:       suse-module-tools
 %if !0%{?is_opensuse}
@@ -74,7 +75,6 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 %configure \
 	--with-xz \
 	--with-zlib \
-	--with-zstd \
 	--with-openssl \
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \

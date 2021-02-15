@@ -1,0 +1,39 @@
+From 07aed32d80f306372e13701181cb827e6d0d7cff Mon Sep 17 00:00:00 2001
+From: Lucas De Marchi <lucas.demarchi@intel.com>
+Date: Fri, 29 Jan 2021 18:36:00 -0800
+Subject: [PATCH 2/2] testsuite: also test xz compression
+
+---
+ testsuite/populate-modules.sh | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/testsuite/populate-modules.sh b/testsuite/populate-modules.sh
+index ae43884984b8..099f02669156 100755
+--- a/testsuite/populate-modules.sh
++++ b/testsuite/populate-modules.sh
+@@ -72,6 +72,9 @@ map=(
+ 
+ gzip_array=(
+     "test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/block/cciss.ko"
++    )
++
++xz_array=(
+     "test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/scsi/scsi_mod.ko"
+     )
+ 
+@@ -112,6 +115,12 @@ if feature_enabled ZLIB; then
+ 	done
+ fi
+ 
++if feature_enabled XZ; then
++	for m in "${xz_array[@]}"; do
++	    xz "$ROOTFS/$m"
++	done
++fi
++
+ if feature_enabled ZSTD; then
+ 	for m in "${zstd_array[@]}"; do
+ 	    zstd --rm $ROOTFS/$m
+-- 
+2.26.2
+

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  4 08:55:08 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix tests to not test disabled features. Disable zstd again.
+  + kmod-populate-modules-Use-more-bash-more-quotes.patch
+  + kmod-testsuite-compress-modules-if-feature-is-enabled.patch
+  + kmod-also-test-xz-compression.patch
+
+-------------------------------------------------------------------
 Fri Jan 29 11:54:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Supplement bash-completion subpackage against the main package
