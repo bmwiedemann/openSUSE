@@ -111,6 +111,7 @@ Patch42:        openssh-link-with-sk.patch
 Patch43:        openssh-reenable-dh-group14-sha1-default.patch
 Patch44:        openssh-fix-ssh-copy-id.patch
 Patch45:        openssh-8.4p1-ssh_config_d.patch
+Patch46:        openssh-whitelist-syscalls.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff

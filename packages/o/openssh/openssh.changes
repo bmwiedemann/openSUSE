@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 15 10:01:33 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Add openssh-whitelist-syscalls.patch (bsc#1182232), fixing
+  failure to accept connections on 32-bit platforms with
+  glibc 2.33+.
+
+-------------------------------------------------------------------
 Wed Jan 27 14:09:08 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add support for /etc/ssh/ssh_config.d and /etc/ssh/sshd_config.d

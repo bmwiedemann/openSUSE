@@ -1,0 +1,24 @@
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index 797a14b..02698cc 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -204,6 +204,9 @@ static const struct sock_filter preauth_insns[] = {
+ #ifdef __NR_futex
+ 	SC_ALLOW(__NR_futex),
+ #endif
++#ifdef __NR_futex_time64
++	SC_ALLOW(__NR_futex_time64),
++#endif
+ #ifdef __NR_geteuid
+ 	SC_ALLOW(__NR_geteuid),
+ #endif
+@@ -282,6 +285,9 @@ static const struct sock_filter preauth_insns[] = {
+ #ifdef __NR_pselect6
+ 	SC_ALLOW(__NR_pselect6),
+ #endif
++#ifdef __NR_pselect6_time64
++	SC_ALLOW(__NR_pselect6_time64),
++#endif
+ #ifdef __NR_read
+ 	SC_ALLOW(__NR_read),
+ #endif
