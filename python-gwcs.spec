@@ -22,7 +22,7 @@
 # But gwcs still supports it, so keep the -base, requirement below for potential Leap backports
 %define skip_python36 1
 Name:           python-gwcs
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
@@ -64,7 +64,9 @@ World Coordinate System of astronomical data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# the schema tests do not tolerate numpy 1.20 deprecation warnings. Already fixed upstream, but patch is too unspecific
+# gh#spacetelescope/gwcs#353
+%pytest -ra -k "not (schemas and (label_mapper or regions_selector))"
 
 %files %{python_files}
 %doc README.rst
