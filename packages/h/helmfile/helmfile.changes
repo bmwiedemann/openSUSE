@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Feb 13 11:28:22 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.138.4
+  * f24b61f (HEAD, tag: v0.138.4, origin/master, origin/HEAD, master)
+    Fix error on concurrent go-getter on same URL (#1669)
+
+- v0.138.3
+  * 257c1f6 (HEAD, tag: v0.138.3, origin/master, origin/HEAD, master)
+    Fix OCI support (#1667)
+  * 4e1ecb5 Bump variantdev/vals to 0.13.0 (#1666)
+
+- v0.138.2
+  * ad5fba5 (HEAD, tag: v0.138.2, origin/master, origin/HEAD, master)
+    Bump Helm to v3.5.0. (#1656)
+  * 0ad62b5 docs: update helm command name (#1635)
+  * 8487970 fix: dont sent RegistryLogin password via args (#1662)
+
+-------------------------------------------------------------------
 Sat Jan 30 09:58:45 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.138.1: fix: fixed up OCI repos so they support paths and URLs
