@@ -579,4 +579,12 @@
     <comment>- Update to release 3.12</comment>
     <requestid>849494</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ddf54138d802185dfb00d7706f538a2b</srcmd5>
+    <version>3.15</version>
+    <time>1613427444</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>871545</requestid>
+  </revision>
 </revisionlist>

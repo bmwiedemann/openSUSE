@@ -1,7 +1,7 @@
 #
 # spec file for package xtables-addons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xtables-addons
-Version:        3.12
+Version:        3.15
 Release:        0
 Summary:        IP Packet Filter Administration Extensions
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -96,7 +96,7 @@ find "$b/%_libdir" -maxdepth 1 -type l -iname "*.so" -delete
 %postun -p /sbin/ldconfig
 
 %files
-%_bindir/xt_geoip_fetch*
+%_bindir/xt_geoip*
 %_mandir/man*/*
 %_sbindir/*
 %_libdir/*.so.*
