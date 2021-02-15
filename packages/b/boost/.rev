@@ -1342,4 +1342,16 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
 - Add missing dependencies in libboost_iostream-devel (bsc#1180359) (forwarded request 859473 from adamm)</comment>
     <requestid>859474</requestid>
   </revision>
+  <revision rev="145" vrev="4">
+    <srcmd5>f6759525e4333e04b21f8b63b9d3dc41</srcmd5>
+    <version>1.75.0</version>
+    <time>1613427036</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix HPC build on ARM. It seems boost_serialization libraries
+  are no longer implicitly build with this setup.
+
+- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors (jsc#SLE-16462).</comment>
+    <requestid>870560</requestid>
+  </revision>
 </revisionlist>

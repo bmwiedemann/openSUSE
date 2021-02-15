@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  9 14:23:32 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Fix HPC build on ARM. It seems boost_serialization libraries
+  are no longer implicitly build with this setup.
+
+-------------------------------------------------------------------
+Sat Feb  6 12:09:28 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors (jsc#SLE-16462).
+
+-------------------------------------------------------------------
 Mon Dec 28 15:09:51 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Log additional information during build

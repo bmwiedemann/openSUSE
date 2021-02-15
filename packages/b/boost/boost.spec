@@ -1,7 +1,7 @@
 #
 # spec file for package boost
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+#
+%global flavor @BUILD_FLAVOR@%{nil}
 
 %define ver 1.75.0
 %define _ver 1_75_0
@@ -30,6 +33,14 @@
 %bcond_with    boost_devel
 %bcond_with ringdisabled
 
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
+%define DisOMPI3 ExclusiveArch:  do_not_build
+%endif
+
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
+
 %define package_name boost%{library_version}
 %define my_docdir %{_docdir}/boost%{library_version}
 
@@ -38,38 +49,34 @@
 %define build_base 1
 %define name_suffix %{nil}
 
-%if "@BUILD_FLAVOR@" == "%nil"
+%if "%{flavor}" == "%nil"
 ExclusiveArch:  do_not_build
 %endif
 
-%if "@BUILD_FLAVOR@" == "base"
+%if "%{flavor}" == "base"
 %define build_base 1
 %define name_suffix -base
 %bcond_with hpc
 %bcond_with mpi
 %endif
 
-%if "@BUILD_FLAVOR@" == "extra"
+%if "%{flavor}" == "extra"
 %define build_base 0
 %define name_suffix -extra
 %bcond_without python3
 %bcond_without mpi
 %endif
 
-%if "@BUILD_FLAVOR@" == "gnu-hpc"
+%if "%{flavor}" == "gnu-hpc"
 %define build_base 1
-%define name_suffix hpc
 %define compiler_family gnu
 %undefine c_f_ver
 %bcond_with mpi
 %bcond_without hpc
-#ExcludeArch:    %%arm s390x i586
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
-%if "@BUILD_FLAVOR@" == "gnu-openmpi2-hpc"
+%if "%{flavor}" == "gnu-openmpi2-hpc"
 %define build_base 0
-%define name_suffix openmpi2_hpc
 %define mpi_vers 2
 %define compiler_family gnu
 %define mpi_flavor openmpi
@@ -77,16 +84,11 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %bcond_without hpc
 %bcond_without mpi
 %bcond_without python3
-%if %{with ringdisabled}
-ExclusiveArch:  do-not-build
-%else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le
-%endif
 %endif
 
-%if "@BUILD_FLAVOR@" == "gnu-openmpi3-hpc"
+%if "%{flavor}" == "gnu-openmpi3-hpc"
+%{?DisOMPI3}
 %define build_base 0
-%define name_suffix openmpi3_hpc
 %define mpi_vers 3
 %define compiler_family gnu
 %define mpi_flavor openmpi
@@ -94,38 +96,96 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %bcond_without hpc
 %bcond_without mpi
 %bcond_without python3
-%if %{with ringdisabled}
-ExclusiveArch:  do-not-build
-%else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le
-%endif
 %endif
 
-%if "@BUILD_FLAVOR@" == "gnu-mvapich2-hpc"
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
 %define build_base 0
-%define name_suffix mvapich2_hpc
+%define mpi_vers 4
+%define compiler_family gnu
+%define mpi_flavor openmpi
+%undefine c_f_ver
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if "%{flavor}" == "gnu-mvapich2-hpc"
+%define build_base 0
 %define compiler_family gnu
 %define mpi_flavor mvapich2
 %undefine c_f_ver
 %bcond_without hpc
 %bcond_without mpi
 %bcond_without python3
-%if %{with ringdisabled}
-ExclusiveArch:  do-not-build
-%else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le
-%endif
 %endif
 
-%if "@BUILD_FLAVOR@" == "gnu-mpich-hpc"
+%if "%{flavor}" == "gnu-mpich-hpc"
 %define build_base 0
-%define name_suffix mpich
 %define compiler_family gnu
 %define mpi_flavor mpich
 %undefine c_f_ver
 %bcond_without hpc
 %bcond_without mpi
 %bcond_without python3
+%endif
+#
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%define build_base 0
+%define mpi_vers 2
+%define compiler_family gnu
+%define mpi_flavor openmpi
+%define c_f_ver 10
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%define build_base 0
+%define mpi_vers 3
+%define compiler_family gnu
+%define mpi_flavor openmpi
+%define c_f_ver 10
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%define build_base 0
+%define mpi_vers 4
+%define compiler_family gnu
+%define mpi_flavor openmpi
+%define c_f_ver 10
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%define build_base 0
+%define compiler_family gnu
+%define mpi_flavor mvapich2
+%define c_f_ver 10
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%define build_base 0
+%define compiler_family gnu
+%define mpi_flavor mpich
+%define c_f_ver 10
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if 0%{?with_hpc}
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
@@ -163,7 +223,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %define package_libdir %{_libdir}
 %define package_includedir %{_includedir}
 %define package_datadir %{_datadir}
-%define base_name boost%{name_suffix}
+%define base_name boost%{?name_suffix}
 %define package_python3_sitearch %python3_sitearch
 %endif
 
@@ -1476,10 +1536,10 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 rm %{buildroot}%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
 rm -r %{buildroot}%{package_libdir}/cmake/Boost-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_headers-%{version}
-rm -r %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
+rm -rf %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
 
 rm -r %{buildroot}%{package_includedir}/boost
-rm %{buildroot}%{package_libdir}/libboost_{w,}serialization*
+rm -f %{buildroot}%{package_libdir}/libboost_{w,}serialization*
 rmdir --ignore-fail-on-non-empty %{buildroot}%{package_libdir}
 %fdupes %{buildroot}%{my_docdir}
 %endif
