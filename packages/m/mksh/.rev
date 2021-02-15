@@ -437,4 +437,14 @@ The next upstream release (R58 most likely) will add -fno-lto to CFLAGS and LDFL
 - remove obsolete pre-sle12 code (forwarded request 868403 from lnussel)</comment>
     <requestid>869783</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>de8b9da6f9b68710357bbac23bce562c</srcmd5>
+    <version>59c</version>
+    <time>1613427605</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize/remove old RPM constructs.
+- Replace wrong `uname -m` (source arch); CFLAGS are a matter
+  dependent on the target arch. (forwarded request 870510 from jengelh)</comment>
+    <requestid>872321</requestid>
+  </revision>
 </revisionlist>

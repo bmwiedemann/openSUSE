@@ -52,8 +52,7 @@ Shell programming language and a successor to the Public Domain Korn Shell
 (pdksh).
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1 -b .p0
+%autosetup -p1 -n %{name}
 
 ed -s mksh.1 <<-'EOF'
 	/insert-your-name-here/s/^\.\\" //
@@ -89,7 +88,7 @@ then
 else
     export CFLAGS='%{optflags} -Wuninitialized -Wall -Wextra -pipe'
 fi
-case "$(uname -m)" in
+case "%{_target_arch}" in
 ppc64)   CFLAGS="$CFLAGS -mbig-endian -mcpu=power4"  ;;
 ppc64le) CFLAGS="$CFLAGS -mtune=power8 -mcpu=power8" ;;
 esac
@@ -188,9 +187,6 @@ then
     exit 1
 fi
 
-%clean
-rm -Rf %{buildroot}
-
 %post
 %{_sbindir}/update-alternatives \
 %if 0%{?usrmerged}
@@ -213,7 +209,6 @@ fi
 %endif
 
 %files
-%defattr(-,root,root)
 %doc examples/dot.mkshrc
 %{_sysconfdir}/mkshrc
 %{_bindir}/mksh

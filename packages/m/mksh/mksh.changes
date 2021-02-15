@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  9 11:20:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize/remove old RPM constructs.
+- Replace wrong `uname -m` (source arch); CFLAGS are a matter
+  dependent on the target arch.
+
+-------------------------------------------------------------------
 Wed Jan 27 12:39:20 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
