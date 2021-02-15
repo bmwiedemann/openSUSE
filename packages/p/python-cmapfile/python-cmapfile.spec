@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmapfile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %define skip_python2 1
+# NEP 29: TW python36-numpy -scipy and -tifffile are no more
+%define skip_python36 1
 %define packagename cmapfile
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cmapfile
