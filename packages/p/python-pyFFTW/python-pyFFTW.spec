@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyFFTW
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# NEP29: python36-numpy and python36-scipy are not available for TW any longer
+%define skip_python36 1
 %ifarch %{ix86} x86_64
 %bcond_without  test
 %else
@@ -69,17 +71,17 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %{python_expand find %{buildroot}%{$python_sitearch}/pyfftw/ -name "*.py" -exec sed -i "s|^#!/usr/bin/env python$|#!%__$python|" {} \; -exec grep -q "^#!%__$python$" {} \; -exec chmod a+x {} \;
-$python -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/pyfftw/
-$python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/pyfftw/
+%python_compileall
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
 %if %{with test}
 %check
-%{python_expand $python setup.py build_ext --inplace
-$python setup.py test
-$python setup.py clean
-}
+mkdir nomoduleimporttestdir
+cp -r test nomoduleimporttestdir/
+pushd nomoduleimporttestdir
+%pyunittest_arch -v
+popd
 %endif
 
 %files %{python_files}
