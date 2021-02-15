@@ -1,0 +1,24 @@
+From: = Mustafa Çalışkan <musfay@protonmail.com>
+Date: Mon, 1 Feb 2021 23:43:06 +0300
+Subject: [PATCH] export syslinux lib root
+
+---
+ bootiso | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/bootiso b/bootiso
+index 75e1ce5..eb5f4b2 100755
+--- a/bootiso
++++ b/bootiso
+@@ -22,6 +22,8 @@
+ #
+ # This file is organized in "pseudo-modules".
+ # Refer to the style.md file for a detailed definition.
++# SUSE specific variable
++export BOOTISO_SYSLINUX_LIB_ROOT=/usr/share/syslinux
+ 
+ set -o pipefail
+ set -E
+-- 
+2.30.0
+

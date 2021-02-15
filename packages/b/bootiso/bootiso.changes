@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sat Feb 13 20:24:56 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Create subpackages for bash and zsh completions
+- Polish spec file
+
+-------------------------------------------------------------------
+Sat Feb 13 10:51:05 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Change source to upstream tarball 
+
+-------------------------------------------------------------------
+Mon Feb 01 20:58:39 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 4.2.0:
+  * chore: update changelog
+  * feat: add new flag --assume-image-is hybrid | non-hybrid
+  * fix: robust check for image hybridness
+  * deps: require util-linux >= 2.27
+  * chore: move pull request template
+  * .github: issue templates enhanced
+  * man: fix typo
+  * man: add troubleshooting entry for USB3
+  * man: typo
+- Add patch export-syslinux-lib-root.patch
