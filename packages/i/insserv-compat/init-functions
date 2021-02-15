@@ -1,0 +1,55 @@
+#
+# Define init LSB shell functions
+#
+
+#
+# Source SuSE's rc functions
+#
+. /etc/rc.status
+
+#
+# Be sure that  start_daemon, killproc, and
+# pidofproc will be script functions.
+#
+function start_daemon ()
+{
+    /sbin/start_daemon ${1+"$@"}
+}
+
+function killproc ()
+{
+    /sbin/killproc ${1+"$@"}
+}
+
+function pidofproc ()
+{
+    /sbin/pidofproc ${1+"$@"}
+}
+
+#
+# Logging of succes messages
+#
+function log_success_msg ()
+{
+    echo -en "$@"
+    echo -e  "$rc_done"
+}
+
+#
+# Logging of failure messages
+#
+function log_failure_msg ()
+{
+    echo -en "$@"
+    echo -e  "$rc_failed"
+}
+
+#
+# Logging of warn messages
+#
+function log_warning_msg ()
+{
+    echo -en "$@"
+    echo -e  "${stat}${attn} warning${norm}"
+}
+

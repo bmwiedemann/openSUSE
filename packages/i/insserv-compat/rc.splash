@@ -1,0 +1,107 @@
+# /etc/rc.splash
+# vim: syntax=sh
+#
+# Initialize bootsplash progressbar variables and
+# define the bootsplash boot script functions.
+#
+
+SPLASHCFG=
+   SPLASH=yes
+SPLASHNUM=0
+    THEME=
+export SPLASHCFG SPLASH
+
+test -s /etc/sysconfig/bootsplash && . /etc/sysconfig/bootsplash
+test -x /sbin/splash -a -w /proc/splash			|| SPLASH=no
+test -n "$THEME" -a -d "/etc/bootsplash/themes/$THEME"	|| SPLASH=no
+case "$PREVLEVEL-$RUNLEVEL" in
+    [2-5]-[2-5]) SPLASH=no
+esac
+
+if test "$SPLASH" = yes -a -r /proc/splash ; then
+    read -t 1 splashstatus < /proc/splash
+    splashstatus="${splashstatus#*:}"
+    splashstatus="${splashstatus## }"
+    test "$splashstatus" = on	|| SPLASH=no
+    unset splashstatus
+else
+    SPLASH=no
+fi
+
+if test "$SPLASH" = yes -a -x /sbin/fbresolution ; then
+    fbresolution="$(/sbin/fbresolution 2> /dev/null)"
+    SPLASHCFG="/etc/bootsplash/themes/$THEME/config/bootsplash-${fbresolution}.cfg"
+    unset fbresolution
+    test -f "$SPLASHCFG"	|| SPLASH=no
+fi
+
+if test "$SPLASH" = "yes" ; then
+    if test "$1" = "B" ; then
+	SPLASHSTART=100
+	SPLASHEND=20000
+	for i in /etc/init.d/boot.d/S[0-9][0-9]*; do
+	    test -x "$i" || continue
+	    : $((SPLASHNUM++))
+	done
+	unset i
+    else
+	SPLASHSTART=0
+	SPLASHEND=65535
+	case "$PREVLEVEL-$RUNLEVEL" in
+	    N-[3-5]) SPLASHSTART=20000 ;;
+	esac
+	for i in /etc/init.d/rc${RUNLEVEL}.d/S[0-9][0-9]*; do
+	    test -x "$i" || continue
+	    : $((SPLASHNUM++))
+	done
+	for i in /etc/init.d/rc${PREVLEVEL}.d/K[0-9][0-9]*; do
+	    test -x "$i" || continue
+	    : $((SPLASHNUM++))
+	done
+	unset i
+    fi
+    splashtrigger  ()
+    {
+	case "$1" in
+	rlreached*) SPLASHSTART=$SPLASHEND
+	esac
+	case "$RUNLEVEL" in
+	[06]) /sbin/splash -S -p $SPLASHSTART -t "$1" "$SPLASHCFG" ;;
+	*)    /sbin/splash    -p $SPLASHSTART -t "$1" "$SPLASHCFG"
+	esac
+    }
+    splashprogress ()
+    {
+	local SPLASHDIFF
+	test "$SPLASHNUM" -ge 1 || SPLASHNUM=1
+	SPLASHDIFF=$(((SPLASHEND - SPLASHSTART)/SPLASHNUM))
+	/sbin/splash -p "$SPLASHSTART:$SPLASHDIFF" -t "$1" "$SPLASHCFG"
+	SPLASHSTART=$((SPLASHSTART+SPLASHDIFF))
+	: $((SPLASHNUM--))
+    }
+    splashparallel ()
+    {
+	local SPLASHDIFF
+	local SPLASHOLDSTART=$SPLASHSTART
+	for i; do
+	    test "$SPLASHNUM" -ge 1 || SPLASHNUM=1
+	    SPLASHDIFF=$(((SPLASHEND-SPLASHSTART)/SPLASHNUM))
+	    SPLASHSTART=$((SPLASHSTART+SPLASHDIFF))
+	    : $((SPLASHNUM--))
+	done
+	SPLASHDIFF=$((SPLASHSTART-SPLASHOLDSTART))
+	echo "-S $SPLASHOLDSTART:$SPLASHDIFF"
+    }
+    splashmake ()
+    {
+	local SPLASHDIFF=$((SPLASHEND-SPLASHSTART))
+	echo "-S $SPLASHSTART:$SPLASHDIFF"
+	SPLASHSTART=$SPLASHEND
+	SPLASHNUM=0
+    }
+else
+    splashtrigger  () { :; }
+    splashprogress () { :; }
+    splashparallel () { echo ""; }
+    splashmake     () { echo ""; }
+fi
