@@ -944,6 +944,7 @@
       <repopackage name="inkscape-lang"/>
       <repopackage name="inn"/>
       <repopackage name="inotify-tools"/>
+      <repopackage name="insserv-compat"/>
       <repopackage name="intel-vaapi-driver"/>
       <repopackage name="intlfonts-euro-bitmap-fonts"/>
       <repopackage name="inxi"/>
@@ -3582,9 +3583,15 @@
       <repopackage name="postfix"/>
       <repopackage name="postfix-doc"/>
       <repopackage name="postgresql"/>
+      <repopackage name="postgresql-contrib"/>
       <repopackage name="postgresql-docs"/>
+      <repopackage name="postgresql-llvmjit"/>
+      <repopackage name="postgresql-server"/>
       <repopackage name="postgresql13"/>
+      <repopackage name="postgresql13-contrib"/>
       <repopackage name="postgresql13-docs"/>
+      <repopackage name="postgresql13-llvmjit"/>
+      <repopackage name="postgresql13-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="powerdevil5"/>
       <repopackage name="powerdevil5-lang"/>
