@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  5 08:16:39 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.4.7
+  * https://blog.torproject.org/node/1990
+  * Stop requiring a live consensus for v3 clients and services
+  * Re-entry into the network is now denied at the Exit level
+  * Fix undefined behavior on our Keccak library
+  * Strip '\r' characters when reading text files on Unix platforms
+  * Handle partial SOCKS5 messages correctly
+- Add tor-practracker.patch to fix tests
+
+-------------------------------------------------------------------
 Wed Jan 27 06:16:46 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Restrict service permissions with systemd
