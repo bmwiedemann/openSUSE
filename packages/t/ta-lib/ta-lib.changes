@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Jan 21 14:27:05 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add URL
+- Tidy spec
+- Clarify license is BSD-3-Clause
+
+-------------------------------------------------------------------
+Sun Jan 29 12:31:26 UTC 2012 - jengelh@medozas.de
+
+- Use shlib name rpmlint wants
+- Add explicit autotools buildrequires for factory/12.2
+
+-------------------------------------------------------------------
+Sun Jan 29 01:36:22 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Wed Jan  2 08:26:01 CET 2008 - crrodriguez@suse.de
+
+- update to version 0.4.0  
+
+-------------------------------------------------------------------
+Mon Sep 10 06:01:17 CEST 2007 - crrodriguez@suse.de
+
+-minor spec file fixes 
+
