@@ -15,4 +15,12 @@
     <comment>- Ensure neutrality of description. (forwarded request 615076 from jengelh)</comment>
     <requestid>615173</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>caa5ed585e7756e809aa6e51e1d68d73</srcmd5>
+    <version>0.11.5</version>
+    <time>1613427584</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (requires scipy)</comment>
+    <requestid>872169</requestid>
+  </revision>
 </revisionlist>

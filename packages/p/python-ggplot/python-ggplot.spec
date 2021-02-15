@@ -1,7 +1,7 @@
 #
 # spec file for package python-ggplot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
+%global skip_python36 1
 Name:           python-ggplot
 Version:        0.11.5
 Release:        0
@@ -26,7 +27,7 @@ Release:        0
 Summary:        Python clone of R's ggplot
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/yhat/ggplot/
+URL:            https://github.com/yhat/ggplot/
 Source:         https://files.pythonhosted.org/packages/source/g/ggplot/ggplot-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/yhat/ggpy/%{lictag}/LICENSE
 BuildRequires:  %{python_module Cycler}
