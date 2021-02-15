@@ -107,6 +107,7 @@ Patch75:        chromium-88-ideographicSpaceCharacter.patch
 Patch76:        chromium-88-StringPool-include.patch
 Patch77:        chromium-88-dawn-static.patch
 Patch78:        chromium-88-CompositorFrameReporter-dcheck.patch
+Patch79:        chromium-glibc-2.33.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches

@@ -3432,4 +3432,14 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   - CVE-2021-21148: Heap buffer overflow in V8 (forwarded request 869981 from gmbr3)</comment>
     <requestid>869982</requestid>
   </revision>
+  <revision rev="283" vrev="2">
+    <srcmd5>28ebbea855c19f5f6bc1a720e50c6233</srcmd5>
+    <version>88.0.4324.150</version>
+    <time>1613391342</time>
+    <user>dimstar_suse</user>
+    <comment>- Add chromium-glibc-2.33.patch: fix Sandbox with glibc 2.33
+  (bsc#1182233)
+</comment>
+    <requestid>872345</requestid>
+  </revision>
 </revisionlist>
