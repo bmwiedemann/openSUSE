@@ -30,6 +30,7 @@ License:        BSD-2-Clause AND OFL-1.1
 Group:          System/X11/Terminals
 URL:            http://enlightenment.org
 Source:         https://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
+Patch0:         fix-desktop.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.1
@@ -106,7 +107,7 @@ Mild and Black themes.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export ECORE_NO_SYSTEM_MODULES=1
