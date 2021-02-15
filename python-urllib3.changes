@@ -12,7 +12,7 @@ Fri Jan  1 13:20:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip test for RECENT_DATE. It is a test purely for developers.
   To maintain reproducibility, keep upstreams possibly outdated
-  RECENT_DATE in the source code.
+  RECENT_DATE in the source code. (bsc#1181571)
 
 -------------------------------------------------------------------
 Thu Dec 17 18:13:57 UTC 2020 - Matej Cepl <mcepl@suse.com>
