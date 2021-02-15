@@ -413,4 +413,12 @@
 - update to gsl 2.6: (jsc#SLE-8495)</comment>
     <requestid>755641</requestid>
   </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>cec76f63328a4bc38017b8b45714ab35</srcmd5>
+    <version>2.6</version>
+    <time>1613427019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870440</requestid>
+  </revision>
 </revisionlist>

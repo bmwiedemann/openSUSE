@@ -1,7 +1,7 @@
 #
 # spec file for package gsl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,34 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "gnu6-hpc"
 %define compiler_family gnu
 %define c_f_ver 6
+%define manext %{nil}
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-hpc"
+%define compiler_family gnu
+%define c_f_ver 7
+%define manext %{nil}
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-hpc"
+%define compiler_family gnu
+%define c_f_ver 8
+%define manext %{nil}
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-hpc"
+%define compiler_family gnu
+%define c_f_ver 9
+%define manext %{nil}
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-hpc"
+%define compiler_family gnu
+%define c_f_ver 10
 %define manext %{nil}
 %bcond_without hpc
 %endif
