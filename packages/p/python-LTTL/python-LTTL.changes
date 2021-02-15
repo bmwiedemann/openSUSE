@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 09:50:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (no scipy) 
+
+-------------------------------------------------------------------
 Wed Oct 21 03:10:01 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.12:

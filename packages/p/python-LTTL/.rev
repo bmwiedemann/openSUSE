@@ -33,4 +33,12 @@
   * ordered annotation keys</comment>
     <requestid>843041</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ee265e3e4a12b8e1758f5b79379128e4</srcmd5>
+    <version>2.0.12</version>
+    <time>1613427484</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (no scipy)</comment>
+    <requestid>871618</requestid>
+  </revision>
 </revisionlist>
