@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 07:49:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 build (scipy) 
+
+-------------------------------------------------------------------
 Wed May 20 07:26:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
