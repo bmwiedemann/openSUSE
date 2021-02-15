@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           cadabra2
-Version:        2.3.6.2
+Version:        2.3.6.8
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -55,6 +55,9 @@ BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       python3
 Recommends:     %{name}-doc
+%if 0%{?suse_version} >= 1550
+BuildRequires:  jupyter-jupyter_core-filesystem
+%endif
 # SECTION For test
 %if %{with tests}
 BuildRequires:  python3-gmpy2

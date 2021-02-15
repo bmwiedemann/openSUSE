@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Feb 14 01:09:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.6.8:
+  * Add forgotten file to sources.
+- Changes from version 2.3.6.4 and 2.3.6.6:
+  * Do not remove latex log/aux files on error.
+  * Fix glib linker error for cadabra-cli
+  * Fix meld error where terms with different names but same index
+    structure were melded.
+  * Add more functionality to cdb.core.node.
+  * Fix handling of auto-declare names ('A#'); these were not
+    matched correctly to numbered names ('A18').
+  * Fix vcpkg changing 'libintl' to 'intl'.
+  * Optimise AdjformEx to use int32_t instead of mpq_class.
+  * Handle Diagonal objects with symbolic (as opposed to numeric)
+    indices.
+  * Remove old-style gauge theory package.
+  * Disable mathematica support by default.
+- Require jupyter-jupyter_core-filesystem for openSUSE >= 1550 for
+  the appropriate rpm macros.
+
+-------------------------------------------------------------------
 Tue Jan  5 18:54:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.3.6.2:
