@@ -1,7 +1,7 @@
 #
 # spec file for package mumble
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver 1.3.3
+%define ver 1.3.4
 %if 0%{?fedora_version}
 %bcond_without ice
 %else
@@ -46,7 +46,7 @@ Source1:        https://github.com/mumble-voip/mumble/releases/download/%{ver}%{
 Source2:        mumble-server.init
 Source3:        murmur.apparmor
 # http://mumble.info/gpg/gpg.txt
-Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2020.asc#/%{name}.keyring
+Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2021.asc#/%{name}.keyring
 Source5:        mumble-server.service
 Source6:        baselibs.conf
 BuildRequires:  gcc-c++
