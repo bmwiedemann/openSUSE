@@ -443,4 +443,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>870425</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>20170a9a974d81e02e28812c6157bd8a</srcmd5>
+    <version>5.0.33</version>
+    <time>1613427555</time>
+    <user>dimstar_suse</user>
+    <comment>- fix_werkzeug.patch adjusted
+- Version 5.0.33 - Security fix for https://bugs.tryton.org/issue10068
+</comment>
+    <requestid>872368</requestid>
+  </revision>
 </revisionlist>
