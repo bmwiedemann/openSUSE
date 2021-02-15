@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python36 1
 Name:           python-cu2qu
 Version:        1.6.7
 Release:        0
