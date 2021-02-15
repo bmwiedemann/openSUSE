@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 12 08:54:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.19.4:
+  * run: fix check for host pid namespace
+  * bump containernetworking/cni library to v0.8.1 - fix for CVE-2021-20206
+  * Finish plumbing for buildah bud --manifest
+  * buildah manifest add localimage should work
+  * Fix build arg check
+  * [ci:docs] Fix man page for buildah push
+  * Vendor in containers/image v5.10.1
+  * Rebuild layer if a change in ARG is detected
+  * Bump golang.org/x/crypto to latest rel-1.19
+  * local image lookup by digest
+  * Use build-arg ENV val from local environment if set
+  * Pick default OCI Runtime from containers.conf
+
+-------------------------------------------------------------------
 Fri Jan 22 23:28:28 UTC 2021 - dmueller@suse.com
 
 - Update to version 1.19.2:
