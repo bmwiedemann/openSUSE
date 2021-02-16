@@ -68,4 +68,12 @@
   * updated vectors for cryptography 3.3.1</comment>
     <requestid>857127</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7dd8fed7549ff049a0611bacc2630adf</srcmd5>
+    <version>3.3.2</version>
+    <time>1613511252</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>872207</requestid>
+  </revision>
 </revisionlist>
