@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-network-uri
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name network-uri
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.6.3.0
+Version:        2.6.4.1
 Release:        0
 Summary:        URI manipulation
 License:        BSD-3-Clause
@@ -30,13 +30,14 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-th-compat-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-criterion-devel
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-hunit-devel
-BuildRequires:  ghc-test-framework-quickcheck2-devel
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
