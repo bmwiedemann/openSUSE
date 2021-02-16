@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 10 14:56:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.1
+  * Remove port >= 49152 restriction.
+
+-------------------------------------------------------------------
 Sun Aug 16 15:27:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.0
