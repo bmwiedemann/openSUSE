@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,6 @@ BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module geoip2}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= 0.2.2}
@@ -53,6 +52,7 @@ BuildRequires:  %{python_module tblib}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Requires:       python
 Requires:       python-Pillow
 Requires:       python-argon2-cffi >= 16.1.0
@@ -69,10 +69,10 @@ Recommends:     python-bcrypt
 Recommends:     python-geoip2
 Recommends:     python-pylibmc
 Recommends:     python-python-memcached >= 1.59
-Provides:       python3-django = %{version}
-Obsoletes:      python3-django < %{version}
-Provides:       python3-South = %{version}
-Obsoletes:      python3-South < %{version}
+Provides:       python-django = %{version}
+Obsoletes:      python-django < %{version}
+Provides:       python-South = %{version}
+Obsoletes:      python-South < %{version}
 BuildArch:      noarch
 %if %{with memcached}
 BuildRequires:  %{python_module pylibmc}
@@ -114,9 +114,12 @@ chmod a-x django/contrib/admin/static/admin/js/vendor/xregexp/xregexp.js
 
 %{python_expand install -D -m 0644 extras/django_bash_completion %{buildroot}%%{_datadir}/bash-completion/completions/django_bash_completion-%{$python_bin_suffix}.sh
 # Fix wrong-script-interpreter
-sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" \
+sed -i "s|^#!%{_bindir}/env python$|#!%{_bindir}/$python|" \
   %{buildroot}%{$python_sitelib}/django/bin/django-admin.py \
   %{buildroot}%{$python_sitelib}/django/conf/project_template/manage.py-tpl
+}
+%python_compileall
+%{python_expand #
 %fdupes %{buildroot}%{$python_sitelib}/django/
 %fdupes %{buildroot}%{$python_sitelib}/Django-%{version}-py*.egg-info/
 }
@@ -128,7 +131,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export PATH=%{_libdir}/chromium:$PATH
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python tests/runtests.py -v 2 --selenium=chrome
 %else
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/runtests.py
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/runtests.py -v 2
 %endif
 
 %post

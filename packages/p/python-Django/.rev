@@ -817,4 +817,12 @@
      key transforms for JSONField returning non-string primitive values</comment>
     <requestid>854260</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>47892d55f2a838c7bf8a41b662aa01ff</srcmd5>
+    <version>3.1.4</version>
+    <time>1613511265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872447</requestid>
+  </revision>
 </revisionlist>

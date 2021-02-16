@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 13 22:41:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't install python36-numpy for testing. It is no longer
+  available. (The tests or portions of tests requiring numpy
+  are skipped automatically in this case.)
+- Let the singlespec macro do its job to set the primary provider
+  for python3-django and python3-South on the primary flavor only.
+- Fix mtime of cache file by recompiling.
+
+-------------------------------------------------------------------
 Wed Dec  9 12:16:46 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 3.1.4
