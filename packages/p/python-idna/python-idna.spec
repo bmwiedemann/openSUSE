@@ -1,7 +1,7 @@
 #
 # spec file for package python-idna
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-idna
-Version:        2.10
+Version:        3.1
 Release:        0
 Summary:        Internationalized Domain Names in Applications (IDNA)
 License:        BSD-3-Clause
@@ -56,7 +57,7 @@ library but currently only supports the older 2003 specification.
 %python_exec setup.py test
 
 %files %{python_files}
-%license LICENSE.rst
+%license LICENSE.md
 %doc HISTORY.rst README.rst
 %{python_sitelib}/*
 

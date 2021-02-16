@@ -97,4 +97,18 @@ update to version v2.5
   - This is expected to be the last version that supports Python 2.</comment>
     <requestid>821447</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>529a77372b6d2c656dd318eadf6bf05f</srcmd5>
+    <version>3.1</version>
+    <time>1613511227</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1:
+  - Ensure license is included in package (Thanks, Julien Schueller)
+  - No longer mark wheel has universal (Thanks, Matthieu Darbois)
+  - Test on PowerPC using Travis CI
+  - Python 2 is no longer supported (the 2.x branch supports Python 2,
+    use &quot;idna&lt;3&quot; in your requirements file if you need Python 2 support)
+  - Support for V2 UTS 46 test vectors.</comment>
+    <requestid>868498</requestid>
+  </revision>
 </revisionlist>
