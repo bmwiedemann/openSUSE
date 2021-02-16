@@ -1,7 +1,7 @@
 #
 # spec file for package python-blosc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,31 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# Upstream dropped official support for Python < 3.7 and python36-numpy is being phased out of TW
+%define skip_python36 1
 Name:           python-blosc
-Version:        1.9.2
+Version:        1.10.2
 Release:        0
 Summary:        Blosc data compressor for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Blosc/python-blosc
 Source:         https://files.pythonhosted.org/packages/source/b/blosc/blosc-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module scikit-build}
+# PATCH-FEATURE-UPSTREAM use-system-blosc.patch -- gh#Blosc/python-blosc#244
+Patch0:         https://github.com/Blosc/python-blosc/pull/244.patch#/use-system-blosc.patch
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module scikit-build >= 0.11.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  blosc-devel >= 1.9.0
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module psutil}
 # /SECTION
-Requires:       blosc-devel
 Recommends:     python-numpy
 %python_subpackages
 
@@ -48,31 +51,26 @@ Blosc is a high performance compressor optimized for binary data in
 Python.
 
 %prep
-%setup -q -n blosc-%{version}
+%autosetup -p1 -n blosc-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-export BLOSC_DIR=%{_prefix}
-export DISABLE_BLOSC_AVX2=1
-%python_exec setup.py build_clib
-%python_exec setup.py build_ext --inplace
+export USE_SYSTEM_BLOSC=1
 %python_build
 
 %install
-export BLOSC_DIR=%{_prefix}
-# This is being installed in purelib instead of platlib
-# See: https://github.com/Blosc/python-blosc/issues/222
-%python_exec setup.py install -O1 --skip-build --force --root %{buildroot} --install-purelib=%{$python_sitearch}
+export USE_SYSTEM_BLOSC=1
+# gh#Blosc/python-blosc#222
+%python_expand %{$python_install} --install-purelib %{$python_sitearch}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%python_exec -m unittest discover -s blosc/ -v 
+%pyunittest_arch discover -s blosc/ -v 
 
 %files %{python_files}
 %doc ANNOUNCE.rst README.rst RELEASE_NOTES.rst
 %license LICENSES/*.txt
-%{python_sitearch}/blosc-%{version}-py*.egg-info
+%{python_sitearch}/blosc-%{version}*-info
 %{python_sitearch}/blosc/
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 13 13:40:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.2
+  * (Upstream bumped the version to release their wheels)
+  * Officially drop support for Python < 3.7.  Although we did not 
+    any explicit action that is incompatible with older Python
+    versions, we only provide wheels for Python >= 3.7 (til 3.9).
+- Skip python36 build on TW, because upstream dropped support and
+  numpy follows NEP 29
+- Use the system provided Blosc library
+  * use-system-blosc.patch gh#Blosc/python-blosc#244
+
+-------------------------------------------------------------------
 Sun Dec 20 18:35:01 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.9.2.
