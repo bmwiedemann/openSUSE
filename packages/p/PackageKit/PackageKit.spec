@@ -56,6 +56,8 @@ Patch4:         PackageKit-zypp-cleanup-tmp-files.patch
 Patch5:         PackageKit-fix-crash-pre-dbus.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-reset-update-mode-after-get-updates.patch gh#hughsie/PackageKit/commit#b208f551 bsc#1180150 sckang@suse.com -- zypp: Reset update mode after getting updates
 Patch6:         PackageKit-zypp-reset-update-mode-after-get-updates.patch
+# PATCH-FIX-UPSTREAM PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch gh#hughsie/PackageKit#449 -- Use dup for upgrades on Tumbleweed with DNF
+Patch7:         PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
