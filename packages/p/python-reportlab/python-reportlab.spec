@@ -35,13 +35,11 @@ BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 4.0.0
+Provides:       python-ReportLab = %{version}
+Obsoletes:      python-ReportLab < %{version}
 %ifpython2
 Obsoletes:      %{oldpython}-ReportLab < %{version}
 Provides:       %{oldpython}-ReportLab = %{version}
-%endif
-%ifpython3
-Provides:       python3-ReportLab = %{version}
-Obsoletes:      python3-ReportLab < %{version}
 %endif
 %python_subpackages
 

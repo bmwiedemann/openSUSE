@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 12:36:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Get rid of %ifpython3, we could provide/obsolete more variants
+
+-------------------------------------------------------------------
 Mon Jan 11 12:31:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 3.5.59
