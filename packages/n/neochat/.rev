@@ -7,4 +7,12 @@
     <comment>New package: neochat, a Matrix client by KDE</comment>
     <requestid>864159</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>937e9e8bc5ae912ac2a68851920a0e43</srcmd5>
+    <version>1.0.1</version>
+    <time>1613511612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872799</requestid>
+  </revision>
 </revisionlist>

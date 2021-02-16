@@ -55,6 +55,7 @@ Requires:       kitemmodels-imports
 Requires:       kquickimageeditor-imports
 Requires:       libQt5Multimedia5
 Requires:       libqt5-qtgraphicaleffects
+Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
 %if %{with lang}
 Source1:        https://download.kde.org/stable/neochat/%{version}/%{name}-%{version}.tar.xz.sig
