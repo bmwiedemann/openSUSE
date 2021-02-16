@@ -23,10 +23,10 @@
 %endif
 
 %global unregisterised_archs s390 s390x riscv64
-%define full_version 8.10.3
+%define full_version 8.10.4
 
 Name:           ghc
-Version:        8.10.3
+Version:        8.10.4
 Release:        0
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
