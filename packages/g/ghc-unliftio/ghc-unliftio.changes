@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 24 16:09:36 UTC 2021 - psimons@suse.com
+
+- Update unliftio to version 0.2.14.
+  ## 0.2.14
+
+  * Add `UnliftIO.QSem`
+  * Add `UnliftIO.QSemN`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
