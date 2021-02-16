@@ -1,7 +1,7 @@
 #
 # spec file for package lalinference
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,15 @@
 
 
 %define shlib lib%{name}21
-%bcond_without octave
+# octave >= 6 not supported
+%bcond_with octave
+
+# astropy not supported for python < 3.7
+%define skip_python2  1
+%define skip_python36 1
+
 Name:           lalinference
-Version:        2.0.3
+Version:        2.0.6
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later
@@ -31,24 +37,21 @@ Patch0:         lalinference-printf-data-type-consistency.patch
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module glue}
-BuildRequires:  %{python_module lal >= 6.19.2}
-BuildRequires:  %{python_module lalburst >= 1.5.1}
+BuildRequires:  %{python_module glue >= 1.54.1}
+BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module lalburst >= 1.5.3}
 BuildRequires:  %{python_module lalframe >= 1.4.0}
-BuildRequires:  %{python_module lalinspiral >= 1.8.1}
-BuildRequires:  %{python_module lalmetaio >= 1.5.0}
-BuildRequires:  %{python_module lalpulsar >= 1.17.1}
-BuildRequires:  %{python_module lalsimulation >= 2.2.0}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module lalinspiral >= 2.0.0}
+BuildRequires:  %{python_module lalmetaio >= 2.0.0}
+BuildRequires:  %{python_module lalpulsar >= 3.0.0}
+BuildRequires:  %{python_module lalsimulation >= 2.5.0}
+BuildRequires:  %{python_module matplotlib >= 1.2.0}
+BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 0.9.0}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} < 1550
-BuildRequires:  python-xml
-%endif
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(lal)
@@ -59,6 +62,11 @@ BuildRequires:  pkgconfig(lalmetaio)
 BuildRequires:  pkgconfig(lalpulsar)
 BuildRequires:  pkgconfig(lalsimulation)
 BuildRequires:  pkgconfig(libmetaio)
+# SECTION For tests (python3 only)
+BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module healpy >= 1.9.1}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %if %{with octave}
 BuildRequires:  octave-lal
 BuildRequires:  octave-lalburst
@@ -69,13 +77,13 @@ BuildRequires:  octave-lalpulsar
 BuildRequires:  octave-lalsimulation
 BuildRequires:  pkgconfig(octave)
 %endif
+Requires:       %{name}-data = %{version}
 Requires:       python-lal
 Requires:       python-lalframe
 Requires:       python-lalinspiral
 Requires:       python-lalmetaio
 Requires:       python-lalpulsar
 Requires:       python-lalsimulation
-Requires:       %{name}-data = %{version}
 
 %python_subpackages
 
@@ -93,8 +101,8 @@ that use the LAL Inference library.
 %package -n %{name}-devel
 Summary:        Development files for LAL Inference
 Group:          Development/Libraries/C and C++
-Requires:       %{shlib} = %{version}
 Requires:       %{name}-data = %{version}
+Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(gsl)
 Requires:       pkgconfig(lal)
 Requires:       pkgconfig(lalburst)
@@ -112,8 +120,7 @@ that use the LAL Inference library.
 %package -n %{name}-data
 Summary:        Data files for lalinference
 Group:          Productivity/Scientific/Physics
-Provides:       python2-lalinference-data
-Provides:       python3-lalinference-data
+Provides:       %{python_module lalinference-data}
 
 %description -n %{name}-data
 This package provides the data files for lalinference.
@@ -138,7 +145,7 @@ This package provides the necessary files for using LAL Inference with octave.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run %%configure with all python flavors
 export PYTHON=%{_bindir}/$python
 mkdir ../$python
 cp -pr ./ ../$python  
@@ -151,7 +158,7 @@ popd
 }
 
 %install
-%{python_expand # py2 and py3 make_install
+%{python_expand # install for all python flavors
 export PYTHON=%{_bindir}/$python
 pushd ../$python
 %make_install
@@ -201,6 +208,15 @@ sed -E -i "1 s|^#\!\s*%{_bindir}/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
+%check
+%{python_expand # check for all python flavors
+export PYTHON=%{_bindir}/$python
+pushd ../$python
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+%make_build check
+popd
+}
+
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
 
@@ -224,7 +240,9 @@ sed -E -i "1 s|^#\!\s*%{_bindir}/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir
 %endif
 
 %files %{python_files}
-%python3_only %{_bindir}/*
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+%{_bindir}/*
+%endif
 %{python_sitearch}/*
 
 %files -n %{name}-data
