@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 18 23:00:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Encoder: add support for multithreading #1248
+  * Encoder: add support for generation of PLT markers #1246
+  * Encoder: single-threaded performance improvements in forward DWT for 5-3 and 9-7 (and other improvements) #1253
+  * Encoder: support IMF profiles #1235
+  * Many bug fixes (including security fixes)
+
+- drop 024b8407392cb0b8.patch, 05f9b91e60debda0.patch,
+  21399f6b7d318fcd.patch, 3aef207f90e937d4.patch,
+  4cb1f663049aab96.patch: upstream
+
+-------------------------------------------------------------------
 Fri Jan 31 16:21:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix several security relevant bugs:
