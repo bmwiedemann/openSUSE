@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaql
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/yaql
 Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-1.1.3.tar.gz
+# rebased from https://opendev.org/openstack/yaql/commit/0b006f07226138ef26ab8296494f1dc1c09908e2.patch
+Patch1:         0b006f07226138ef26ab8296494f1dc1c09908e2.patch
 BuildRequires:  openstack-macros
 # for testing
 BuildRequires:  python3-Sphinx
