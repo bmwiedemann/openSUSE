@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 24 16:08:26 UTC 2021 - psimons@suse.com
+
+- Update unix-compat to version 0.5.3.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
