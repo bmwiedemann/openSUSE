@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.56.0
+Version:        4.56.2
 Release:        0
 Summary:        An extensible progress meter
 License:        MPL-2.0 AND MIT
@@ -43,16 +43,17 @@ BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+Enhances:       python-ipython
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tqdm}
-BuildRequires:  python3-ipython
-BuildRequires:  python3-ipywidgets
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+%if ! 0%{?_with_ringdisabled}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
+%endif
 # /SECTION
 %endif
 %python_subpackages

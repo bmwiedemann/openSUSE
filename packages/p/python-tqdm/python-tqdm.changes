@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 15 22:55:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test pandas at all in Ring1 staging
+
+-------------------------------------------------------------------
+Sun Feb 14 14:25:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.56.2
+  * fix attribute errors when disabled (#1126)
+  * add tests
+- Changes in 4.56.1
+  * fix repr() & format_dict when disabled (#1113 <- #624)
+  * rename __repr__() => __str__()
+  * minor documentation updates (#1113)
+  * add & update tests
+- Test numpy only for non python36 flavor (Numpy 1.20 in TW dropped
+  Python 3.6, NEP 29), tests are automatically skipped if not
+  installed.
+- Remove unused and untested python3 flavor BuildRequirements in
+  test build: ipython, ipykernel
+- Enhance IPython
+
+-------------------------------------------------------------------
 Mon Feb  1 09:11:40 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Simplify the rich supplements in the bash completions package
