@@ -11381,9 +11381,9 @@ unsorted:
   - liblalburst6: [x86_64] 
   - liblalframe11: [x86_64] 
   - liblalinference21: [x86_64] 
-  - liblalinspiral15: [x86_64] 
+  - liblalinspiral16: [x86_64] 
   - liblalmetaio8: [x86_64] 
-  - liblalpulsar21: [x86_64] 
+  - liblalpulsar23: [x86_64] 
   - liblalsimulation23: [x86_64] 
   - liblalsupport14: [x86_64] 
   - liblammps0 
@@ -17297,13 +17297,6 @@ unsorted:
   - octave-forge-tisean 
   - octave-forge-tsa 
   - octave-forge-vrml 
-  - octave-lalburst: [x86_64] 
-  - octave-lalframe: [x86_64] 
-  - octave-lalinference: [x86_64] 
-  - octave-lalinspiral: [x86_64] 
-  - octave-lalmetaio: [x86_64] 
-  - octave-lalpulsar: [x86_64] 
-  - octave-lalsimulation: [x86_64] 
   - octave-mathgl 
   - octave-nlopt_optimize 
   - octave-openEMS 
@@ -19846,6 +19839,8 @@ unsorted:
   - plasma-wayland-protocols 
   - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
+  - plasma5-firewall 
+  - plasma5-firewall-lang 
   - plasma5-nano 
   - plasma5-nano-lang 
   - plasma5-phone-components 
@@ -20806,7 +20801,6 @@ unsorted:
   - python3-hyper 
   - python3-img-proof 
   - python3-img-proof-tests 
-  - python3-img2pdf: [i586] 
   - python3-imobiledevice 
   - python3-impacket 
   - python3-influxdb 
@@ -20829,12 +20823,6 @@ unsorted:
   - python3-kopano 
   - python3-labelImg 
   - python3-lalapps: [x86_64] 
-  - python3-lalburst: [x86_64] 
-  - python3-lalinference: [x86_64] 
-  - python3-lalinspiral: [x86_64] 
-  - python3-lalmetaio: [x86_64] 
-  - python3-lalpulsar: [x86_64] 
-  - python3-lalsimulation: [x86_64] 
   - python3-lash 
   - python3-lasso 
   - python3-ldappool 
@@ -20988,7 +20976,6 @@ unsorted:
   - python3-paraview 
   - python3-pcp 
   - python3-piexif 
-  - python3-pikepdf: [i586] 
   - python3-plist 
   - python3-plplot 
   - python3-pocketsphinx 
@@ -22383,7 +22370,7 @@ unsorted:
   - python36-imageio-ffmpeg 
   - python36-imagesize 
   - python36-imbox 
-  - python36-img2pdf: [x86_64] 
+  - python36-img2pdf 
   - python36-iminuit 
   - python36-immutables 
   - python36-importlib-metadata 
@@ -22528,7 +22515,6 @@ unsorted:
   - python36-kwant: [x86_64] 
   - python36-l20n 
   - python36-labels 
-  - python36-lalframe: [x86_64] 
   - python36-lancet-ioam 
   - python36-langdetect 
   - python36-langtable 
@@ -22882,7 +22868,7 @@ unsorted:
   - python36-pifpaf 
   - python36-pika 
   - python36-pika-pool 
-  - python36-pikepdf: [x86_64] 
+  - python36-pikepdf 
   - python36-pilkit 
   - python36-pingparsing 
   - python36-pip 
@@ -25191,7 +25177,7 @@ unsorted:
   - python38-imageio-ffmpeg 
   - python38-imagesize 
   - python38-imbox 
-  - python38-img2pdf: [x86_64] 
+  - python38-img2pdf 
   - python38-iminuit 
   - python38-immutables 
   - python38-importlab 
@@ -25335,7 +25321,13 @@ unsorted:
   - python38-l20n 
   - python38-labels 
   - python38-lal: [x86_64] 
+  - python38-lalburst: [x86_64] 
   - python38-lalframe: [x86_64] 
+  - python38-lalinference: [x86_64] 
+  - python38-lalinspiral: [x86_64] 
+  - python38-lalmetaio: [x86_64] 
+  - python38-lalpulsar: [x86_64] 
+  - python38-lalsimulation: [x86_64] 
   - python38-lancet-ioam 
   - python38-langdetect 
   - python38-langtable 
@@ -25678,7 +25670,7 @@ unsorted:
   - python38-pifpaf 
   - python38-pika 
   - python38-pika-pool 
-  - python38-pikepdf: [x86_64] 
+  - python38-pikepdf 
   - python38-pilkit 
   - python38-pingparsing 
   - python38-pip-api 
@@ -26850,6 +26842,8 @@ unsorted:
   - qprint 
   - qps 
   - qps-lang 
+  - qqc2-breeze-style 
+  - qqc2-breeze-style-devel 
   - qqc2-desktop-style-devel 
   - qqwing 
   - qqwing-devel 
