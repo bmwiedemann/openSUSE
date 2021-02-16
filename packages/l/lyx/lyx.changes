@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  9 13:40:43 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add texlive-cprotect and texlive-doublestroke, needed to build
+  the userguide from within LyX
+
+-------------------------------------------------------------------
+Sun Feb  7 11:42:40 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add BuildRequires: mythes-devel to build with system mythes
+
+-------------------------------------------------------------------
 Tue Dec 29 20:00:24 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.3.6.1:

@@ -46,6 +46,7 @@ BuildRequires:  fontpackages-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hunspell-devel
 BuildRequires:  libboost_headers-devel
+BuildRequires:  mythes-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  update-desktop-files
@@ -109,7 +110,9 @@ Recommends:     texlive-zhmetrics
 Recommends:     xindy
 # Some stuff needed for LyX's documentation:
 Recommends:     texlive-braket
+Recommends:     texlive-cprotect
 Recommends:     texlive-diagbox
+Recommends:     texlive-doublestroke
 Recommends:     texlive-picinpar
 Recommends:     texlive-shapepar
 Recommends:     texlive-sidecap
