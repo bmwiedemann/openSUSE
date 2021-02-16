@@ -28,6 +28,8 @@ URL:            https://linphone.org/technical-corner/mediastreamer2/overview
 Source:         https://github.com/BelledonneCommunications/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch0:         mediastreamer2-fix-pkgconfig.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  bcmatroska2-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
