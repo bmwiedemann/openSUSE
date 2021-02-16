@@ -105,4 +105,13 @@
     <comment></comment>
     <requestid>841331</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b026bf28d7935343d0eb96f0bda219b2</srcmd5>
+    <version>20.3.0</version>
+    <time>1613511344</time>
+    <user>dimstar_suse</user>
+    <comment>- u_gcc11.patch
+  * fixes build against gcc11 (boo#1181871)</comment>
+    <requestid>870902</requestid>
+  </revision>
 </revisionlist>

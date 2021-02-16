@@ -1,0 +1,11 @@
+--- MediaSDK-intel-mediasdk-20.3.0/_studio/mfx_lib/mctf_package/mctf/src/mctf_common.cpp.orig	2021-02-10 14:12:52.933078000 +0100
++++ MediaSDK-intel-mediasdk-20.3.0/_studio/mfx_lib/mctf_package/mctf/src/mctf_common.cpp	2021-02-10 14:14:46.421417000 +0100
+@@ -45,6 +45,8 @@
+ #include <climits>
+ #include <cmath>
+ #include "cmrt_cross_platform.h"
++// needed for GCC11 (boo#1181871)
++#include <limits>
+ 
+ using std::min;
+ using  std::max;
