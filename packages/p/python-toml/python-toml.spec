@@ -1,7 +1,7 @@
 #
 # spec file for package python-toml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
+# python36-numpy is no longer available in Tumbleweed (NEP 29), tests are automatically skipped if not installed
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
 %python_subpackages
 

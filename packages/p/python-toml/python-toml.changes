@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 14 15:07:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test NumPy with python36 flavor (NumPy 1.20 in TW dropped
+  Python 3.6, NEP 29), tests are automatically skipped if not
+  installed.
+
+-------------------------------------------------------------------
 Thu Nov 19 19:41:13 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update to 0.10.2:
