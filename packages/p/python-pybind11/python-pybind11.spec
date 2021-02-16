@@ -25,7 +25,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11
 Source:         https://github.com/pybind/pybind11/archive/v%{version}.tar.gz#/pybind11-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
