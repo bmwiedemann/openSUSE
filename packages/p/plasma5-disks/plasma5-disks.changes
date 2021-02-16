@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Update .gitignore file
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Add clang-format target
+  * add test blob for internal smartctl timeout
+  * use std::chrono for durations
+  * bump smartctl timeout in helper (kde#428844)
+  * add json fixture for bad smart status on failing disk
+  * actually erase devices (kde#428746)
+  * Remove unused implemented method
+  * fix device type check for freebsd
+  * replace open-fstat dance with lstat
+  * fix device type check for freebsd
+  * replace open-fstat dance with lstat
+  * make O_PATH optional-ish
+  * add missing include for freebsd
+  * pass device names to the helper
+  * make O_PATH optional-ish
+  * add missing include for freebsd
+  * pass device names to the helper
+  * add request queuing to kauth smartctl
+
+-------------------------------------------------------------------
 Fri Jan 15 17:39:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
