@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Mon Feb 15 07:43:50 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add do-not-installl-os-version.patch. Don't install deepin os information 
+
+-------------------------------------------------------------------
+Tue Feb  9 10:20:28 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove obsolete build recipe constructs.
+
+-------------------------------------------------------------------
+Tue Aug 13 08:29:06 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use suse information in lightdm-deepin-greeter (add-suse-info.patch) 
+
+-------------------------------------------------------------------
+Sat Jul 20 13:44:38 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2019.07.10, Deepin version is 15.11 
+
+-------------------------------------------------------------------
+Fri Apr 19 01:40:57 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2019.04.03, Deepin version is 15.10 
+
+-------------------------------------------------------------------
+Fri Mar 23 08:38:57 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2018.03.19
+  * Add dde-desktop-watermask.json and watermark_logo.svg
+
+-------------------------------------------------------------------
+Sat Dec  2 13:18:33 UTC 2017 - hillwood@opensuse.org
+
+- Update to 15.5 (2017.11.1)
+  * Remove depends friendly-recovery
+  * Update /etc/lsb-release
+
+-------------------------------------------------------------------
+Sun Nov 12 07:52:50 UTC 2017 - hillwood@opensuse.org
+
+- Update to 15.5 Beta (2016.13.2)
+  * Add .clog.toml 
+- Add Group tag.
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.
