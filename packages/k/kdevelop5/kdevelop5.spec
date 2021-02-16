@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define rname   kdevelop
 %define libkdev_major 56
 Name:           kdevelop5
-Version:        5.6.1
+Version:        5.6.2
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source0:        https://download.kde.org/stable/%{rname}/%{version}/src/%{rname}
 BuildRequires:  kdevelop5-pg-qt
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
-BuildRequires:  llvm-clang-devel
+BuildRequires:  clang-devel
 BuildRequires:  okteta-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  subversion-devel
