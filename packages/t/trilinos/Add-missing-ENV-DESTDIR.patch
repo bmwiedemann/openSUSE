@@ -1,0 +1,46 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Oct 14 00:59:53 2020 +0200
+Subject: Add missing $ENV{DESTDIR}
+Patch-mainline: Not yet
+Git-commit: 3a49d9a801aff312a831d5835061d2705587264c
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ .../installation/set_installed_group_and_permissions.cmake.in     | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+diff --git a/cmake/tribits/core/installation/set_installed_group_and_permissions.cmake.in b/cmake/tribits/core/installation/set_installed_group_and_permissions.cmake.in
+index 4e54447..304065f 100644
+--- a/cmake/tribits/core/installation/set_installed_group_and_permissions.cmake.in
++++ b/cmake/tribits/core/installation/set_installed_group_and_permissions.cmake.in
+@@ -59,7 +59,7 @@ ENDFUNCTION()
+ # Executable script
+ #
+ 
+-IF (EXISTS "${projectInstallBaseDir}")
++IF (EXISTS "$ENV{DESTDIR}${projectInstallBaseDir}")
+ 
+   EXECUTE_PROCESS(COMMAND whoami
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+@@ -80,10 +80,10 @@ IF (EXISTS "${projectInstallBaseDir}")
+     SET(CMAKE_INSTALL_PREFIX "${dirPath}")
+   ELSE()
+     # Non-recursive set of the group and permissions
+-    SET_DIR_OWNER_AND_PERMS("${dirPath}" "")
++    SET_DIR_OWNER_AND_PERMS("$ENV{DESTDIR}${dirPath}" "")
+     FOREACH(subDirEle ${projectSubdirPathsArrayLessOne})
+       SET(dirPath "${dirPath}/${subDirEle}")
+-      SET_DIR_OWNER_AND_PERMS("${dirPath}" "")
++      SET_DIR_OWNER_AND_PERMS("$ENV{DESTDIR}${dirPath}" "")
+     ENDFOREACH()
+     # Append last subdir which gives CMAKE_INSTALL_PREFIX
+     LIST(GET projectSubdirPathsArray -1 lastSubdir)
+@@ -91,7 +91,7 @@ IF (EXISTS "${projectInstallBaseDir}")
+  ENDIF()
+ 
+   # Recursive set of group and permsisions on CMAKE_INSTALL_PREFIX
+-  SET_DIR_OWNER_AND_PERMS("${CMAKE_INSTALL_PREFIX}" "-R")
++  SET_DIR_OWNER_AND_PERMS("$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}" "-R")
+ 
+ ELSE()
+ 
