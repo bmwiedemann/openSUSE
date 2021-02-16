@@ -71,4 +71,23 @@
     <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 611889 from kukuk)</comment>
     <requestid>612609</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6e2468a19bb8ab5e22eea3d4a28ee4f7</srcmd5>
+    <version>0.99.9</version>
+    <time>1613511305</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.99.9:
+  - add API fjson_object_get_uint()
+  - add API fjson_object_array_del_idx()
+  - bugfix for dangling pointer that causes segfault
+    The other functions assume that the memory is either set to NULL or a valid
+    json object. The array_list_del_idx function only moves the elements, but
+    does not set the pointer to null, which causes the same pointer to remain
+    in the list (outside of arr-&gt;length). Then, when array_list_put_idx is
+    called, the array_list_expand_internal leaps out, meaning that it has not
+    set the indices outside of the requested length to 0. array_list_put_idx
+    finds the pointer, tries to free it and a double free will be incurred,
+    because the actual element is still in the list.</comment>
+    <requestid>870788</requestid>
+  </revision>
 </revisionlist>

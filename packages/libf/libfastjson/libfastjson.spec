@@ -1,7 +1,7 @@
 #
 # spec file for package libfastjson
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define somajor 4
 Name:           libfastjson
-Version:        0.99.8
+Version:        0.99.9
 Release:        0
 Summary:        Fast JSON parsing library, a fork of json-c
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/rsyslog/libfastjson
-Source:         http://download.rsyslog.com/libfastjson/%{name}-%{version}.tar.gz
+URL:            https://github.com/rsyslog/libfastjson
+Source:         https://download.rsyslog.com/libfastjson/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A fast JSON parsing library, a fork of json-c, developed by the rsyslog team
@@ -59,10 +58,10 @@ using the libfastjson library
 
 %build
 %configure --disable-static --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -72,12 +71,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libfastjson%{somajor} -p /sbin/ldconfig
 
 %files -n libfastjson%{somajor}
-%defattr(-,root,root)
 %license COPYING
 %{_libdir}/libfastjson.so.%{somajor}*
 
 %files -n libfastjson-devel
-%defattr(-,root,root)
 %doc AUTHORS
 %license COPYING
 %{_libdir}/libfastjson.so

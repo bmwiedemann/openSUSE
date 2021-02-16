@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 10 08:17:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.99.9:
+  - add API fjson_object_get_uint()
+  - add API fjson_object_array_del_idx()
+  - bugfix for dangling pointer that causes segfault
+    The other functions assume that the memory is either set to NULL or a valid
+    json object. The array_list_del_idx function only moves the elements, but
+    does not set the pointer to null, which causes the same pointer to remain
+    in the list (outside of arr->length). Then, when array_list_put_idx is
+    called, the array_list_expand_internal leaps out, meaning that it has not
+    set the indices outside of the requested length to 0. array_list_put_idx
+    finds the pointer, tries to free it and a double free will be incurred,
+    because the actual element is still in the list.
+
+-------------------------------------------------------------------
 Thu May 24 16:08:09 CEST 2018 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]
