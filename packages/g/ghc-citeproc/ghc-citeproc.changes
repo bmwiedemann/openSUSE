@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb  2 09:34:13 UTC 2021 - psimons@suse.com
+
+- Update citeproc to version 0.3.0.7.
+  ## 0.3.0.7
+
+    * Remove check for ASCII in case transform code.
+      Previously we weren't doing case transform on words
+      containing non-ASCII characters.
+
+-------------------------------------------------------------------
+Sun Jan 31 13:49:51 UTC 2021 - psimons@suse.com
+
+- Update citeproc to version 0.3.0.6.
+  ## 0.3.0.6
+
+    * Fix infinite loop in `fixPunct` (#49).  In a few rare cases
+      `fixPunct` would hang.
+
+-------------------------------------------------------------------
+Sun Jan 24 16:09:24 UTC 2021 - psimons@suse.com
+
+- Update citeproc to version 0.3.0.5.
+  ## 0.3.0.5
+
+    * Add a space between "no date" term and disambiguator
+      if the long form is used (#47).
+
+-------------------------------------------------------------------
 Mon Jan 18 09:06:54 UTC 2021 - psimons@suse.com
 
 - Update citeproc to version 0.3.0.4.
