@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyrsistent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,10 @@ URL:            http://github.com/tobgu/pyrsistent/
 Source:         https://files.pythonhosted.org/packages/source/p/pyrsistent/pyrsistent-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 %python_subpackages
 
 %description
@@ -59,12 +56,15 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%pytest_arch
+%pytest_arch -ra
 
 %files %{python_files}
 %license LICENCE.mit
-%doc CHANGES.txt README README.rst
-%{python_sitearch}/*
+%doc CHANGES.txt README.rst
+%pycache_only %{python_sitearch}/__pycache__/_pyrsistent*
+%{python_sitearch}/_pyrsistent*
+%{python_sitearch}/pvectorc*
+%{python_sitearch}/pyrsistent
+%{python_sitearch}/pyrsistent-%{version}*-info
 
 %changelog
