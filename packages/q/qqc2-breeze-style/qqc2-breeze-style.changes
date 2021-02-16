@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Feb 11 18:23:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Set mobile text handles and actions popup Z positions to 999
+  * [ComboBox] Fix missing component crash and clean up code
+  * Fix wrong property for low power spinner size in BusyIndicator
+  * Add mobile text actions menu and text selection handles
+
+-------------------------------------------------------------------
+Sat Jan 23 13:27:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit

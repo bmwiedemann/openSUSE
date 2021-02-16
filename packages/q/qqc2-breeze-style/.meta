@@ -1,0 +1,8 @@
+<package name="qqc2-breeze-style" project="openSUSE:Factory">
+  <title>A Qt Quick Controls 2 Style for Desktop UIs</title>
+  <description>A Qt Quick Controls 2 style engine that uses the desktop style
+to draw controls with QStyle.
+
+</description>
+  <devel project="KDE:Frameworks5" package="qqc2-breeze-style"/>
+</package>
