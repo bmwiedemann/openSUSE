@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb 15 23:26:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.1
+  * dask: avoid redundant scattering of large arguments to make a
+    more efficient use of the network resources and avoid crashing
+    dask with "OSError: [Errno 55] No buffer space available" or
+    "ConnectionResetError: [Errno 104] connection reset by
+    peer".
+- Changees in 1.0.0
+  * Make joblib.hash and joblib.Memory caching system compatible
+    with numpy >= 1.20.0. Also make it explicit in the
+    documentation that users should now expect to have their joblib.
+    Memory cache invalidated when either joblib or a third party
+    library involved in the cached values definition is upgraded.
+    In particular, users updating joblib to a release that includes
+    this fix will see their previous cache invalidated if they
+    contained reference to numpy objects.
+  * Remove deprecated check_pickle argument in delayed.
+- Changes in 0.17.0
+  * Fix a spurious invalidation of Memory.cache'd functions called
+    with Parallel under Jupyter or IPython.
+  * Bump vendored loky to 2.9.0 and cloudpickle to 1.6.0. In
+    particular this fixes a problem to add compat for Python 3.9.
+- Don't require optional NumPy for python36 tests in TW, because
+  NumPy 1.20 dropped support for Python 3.6 (NEP 29)
+- Drop joblib-disable-unrelialble-tests.patch, they are already
+  used in pytest deselection parameter.
+  * Do the same for disable_test_on_big_endian.patch.
+
+-------------------------------------------------------------------
 Sun Dec  6 21:37:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - BuildRequire threadpoolctl for all python3 flavors
