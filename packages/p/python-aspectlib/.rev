@@ -29,4 +29,14 @@
 </comment>
     <requestid>796582</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4f23d98c408a708b0dedd652f037698a</srcmd5>
+    <version>1.5.2</version>
+    <time>1613511299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+  * Fixed broken import on Python 3.9.
+  * Remove some debug leftover prints from `v1.5.0`.</comment>
+    <requestid>870729</requestid>
+  </revision>
 </revisionlist>
