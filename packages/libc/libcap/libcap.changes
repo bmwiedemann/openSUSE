@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  9 23:16:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.48:
+  * More uniform use of $(MAKE) in Makefiles
+  * No longer include symlinks in the git tree 
+  * Provide support for make GOLANG=no ...
+  * Provide support for pointing at a specific build of the go binary
+  * camelCase the contrib/seccomp/explore.go program
+  * A number of documentation fixes to man pages and source code comments
+  * Last use of GO major version 0
+  
+-------------------------------------------------------------------
 Wed Jan 27 07:53:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.47:
