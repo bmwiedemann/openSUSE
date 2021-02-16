@@ -1,7 +1,7 @@
 #
 # spec file for package psi+
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.4.1513+0
+%define version_unconverted 1.5.1477+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.4.1513+0
+Version:        1.5.1477+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        GPL-2.0-or-later AND Apache-2.0
@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hunspell-devel
 BuildRequires:  libXScrnSaver-devel
+BuildRequires:  libgpg-error-devel
 BuildRequires:  libidn-devel
 BuildRequires:  libotr-devel
 BuildRequires:  libproxy-devel
@@ -44,6 +45,7 @@ BuildRequires:  ninja
 BuildRequires:  openssl-devel
 BuildRequires:  tar
 BuildRequires:  update-desktop-files
+BuildRequires:  usrsctp-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Concurrent)
@@ -354,6 +356,7 @@ other resources for Psi+.
 
 %build
 %cmake \
+	-DPRODUCTION=ON \
 	-DCHAT_TYPE=WEBENGINE \
 	-DENABLE_PLUGINS=ON \
 	-DINSTALL_PLUGINS_SDK=ON
@@ -369,8 +372,6 @@ rm -f %{buildroot}%{_datadir}/psi-plus/COPYING
 rm -f %{buildroot}%{_datadir}/psi-plus/README.html
 
 %fdupes $RPM_BUILD_ROOT/%{_datadir}
-
-dos2unix ChangeLog.Psi+.txt
 
 %files plugins-juickplugin
 %defattr(-,root,root)
@@ -490,7 +491,7 @@ dos2unix ChangeLog.Psi+.txt
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog.Psi+.txt README README.html TODO
+%doc README README.html TODO
 %license COPYING 3rdparty/qite/LICENSE
 %{_bindir}/psi-plus
 %{_datadir}/applications/psi-plus.desktop

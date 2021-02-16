@@ -625,4 +625,36 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>840381</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>fd4d4096ebaf56967b1497e27e1cf755</srcmd5>
+    <version>1.5.1477+0</version>
+    <time>1613463541</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1477+3
+  * Don't crash if webkit theme requests not existing icon
+  * Christmas edition.. jingle bells.. jingle bells..
+  * libpsi relinked
+  * iris relinked
+  * Fix loading of themes in webkit and webengine builds of Psi
+  * Fix build of webkit version of Psi
+  * Update cmake script for version calc
+  * Tiny fix in INSTALL
+  * Update documentation
+  * Clean up source tree
+  * Removed support of qmake based builds
+  * Remove outdated documentation.
+  * Added a workaround for user toolitips wrong rendering with Qt 5.15
+  * Add app version to QApplication object
+  * Use notification service to show muc join errors
+  * Never &quot;.&quot; in &lt;summary&gt; and add missing &quot;+&quot; (#602)
+  * Add AkariXB bot (#604)
+  * jabber: to xmpp: (#603)
+  * Added bundled usrsctp
+  * Added closing &lt;/div&gt;
+  * Return icon size in the very end of the size computation function (easier to debug)
+  * Remove unused Prosody stuff
+  * More excludes for the pre-commit hook
+  * Fixed crash on profile change</comment>
+    <requestid>869196</requestid>
+  </revision>
 </revisionlist>
