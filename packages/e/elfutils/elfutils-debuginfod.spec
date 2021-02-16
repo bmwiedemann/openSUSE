@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.182
+Version:        0.183
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
-Patch0:         config-do-not-define-DEBUGINFOD_URLS-environment-var.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
