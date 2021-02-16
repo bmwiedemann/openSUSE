@@ -60,4 +60,17 @@
 - Run spec-cleaner</comment>
     <requestid>754299</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4d2e5599b09a9b661a0670adedc2d79e</srcmd5>
+    <version>4.1.0</version>
+    <time>1613511307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0
+  * Support for abstract XML Schema types. The corresponding C++
+    classes now have _clone() declared pure virtual which
+    prevents construction of their instances.
+- Drop 0001-Fix-build-with-GCC10.patch. Merged upstream.
+- Rebase xsdcxx-rename.patch (forwarded request 870798 from cgiboudeaux)</comment>
+    <requestid>870799</requestid>
+  </revision>
 </revisionlist>

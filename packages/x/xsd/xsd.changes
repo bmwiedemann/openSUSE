@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 10 08:34:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.1.0
+  * Support for abstract XML Schema types. The corresponding C++
+    classes now have _clone() declared pure virtual which
+    prevents construction of their instances.
+- Drop 0001-Fix-build-with-GCC10.patch. Merged upstream.
+- Rebase xsdcxx-rename.patch
+
+-------------------------------------------------------------------
 Thu Dec  5 09:03:23 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add 0001-Fix-build-with-GCC10.patch (boo#1158369)

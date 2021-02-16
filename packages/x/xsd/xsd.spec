@@ -1,7 +1,7 @@
 #
 # spec file for package xsd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           xsd
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        W3C XML schema to C++ data binding compiler
 # http://www.codesynthesis.com/products/xsd/license.xhtml
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Development/Languages/C and C++
 URL:            https://www.codesynthesis.com/products/xsd/
-Source0:        http://www.codesynthesis.com/download/xsd/4.0/%{name}-%{version}+dep.tar.bz2
+Source0:        https://codesynthesis.com/~boris/tmp/xsd/%{version}.a11/%{name}-%{version}.a11+dep.tar.bz2
 Source99:       xsd-rpmlintrc
 # Rename xsd to xsdcxx
 Patch0:         xsdcxx-rename.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-GCC10.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  ghostscript
 BuildRequires:  libxerces-c-devel > 2.8.0
 BuildRequires:  m4
 Requires:       libxerces-c-devel
@@ -59,7 +58,7 @@ Requires:       xsd
 This package contains API documentation for xsd.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}+dep
+%autosetup -p1 -n %{name}-%{version}.a11+dep
 
 %build
 make verbose=1 CXXFLAGS="%{optflags}" %{?_smp_mflags}
