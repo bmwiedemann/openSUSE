@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb 16 14:41:27 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Remove /etc/ld.so.conf file that existed for non-HPC, non-MPI.
+  It is no longer needed $_lib/trilinos no longer exists.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:34:50 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.
+
+-------------------------------------------------------------------
+Wed Oct 14 05:25:56 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to version 13.0.0
+  For information on changes consult the release notes of
+  its sub-packages.
+- Update patches:
+  * Replace: reproducible.patch by
+    Make-kokkos-build-reproducible.patch
+  * Remove: reproducible-docs.patch,
+    no longer applicable
+  * Remove: Fix-Makefiles-for-gmake-4.3.patch,
+    no longer applicable
+  * Remove: trilinos-11.14.3-no-return-in-non-void.patch,
+    int main() -> void main() conversion makes no sense.
+  * Add: Add-missing-ENV-DESTDIR.patch
+    DESTDIR isn't taken into account.
+
+-------------------------------------------------------------------
 Fri Sep 11 06:22:46 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439).

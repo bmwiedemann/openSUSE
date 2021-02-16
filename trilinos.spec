@@ -1,7 +1,7 @@
 #
 # spec file for package trilinos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@
 
 # Base package name
 %define pname trilinos
-%define ver 12.14.1
-%define ver_exp 12-14-1
-%define so_ver 12
+%define ver 13.0.0
+%define ver_exp 13-0-0
+%define so_ver 13
 %define PNAME %(echo %{pname} | tr [a-z] [A-Z])
 %define _ver %(echo %{ver} | tr . _)
 %define openblas_vers 0.3.6
@@ -36,7 +36,7 @@ ExcludeArch:    i586 s390 s390x ppc armv7l
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
-%if !%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 %if 0%{?sle_version:1} && 0%{?sle_version} < 150300
@@ -400,13 +400,8 @@ License:        LGPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            http://trilinos.sandia.gov/index.html
 Source0:        https://github.com/trilinos/Trilinos/archive/trilinos-release-%{ver_exp}.tar.gz
-# PATCH-FIX-UPSTREAM trilinos-11.4.3-no-return-in-non-void.patch
-Patch0:         trilinos-11.14.3-no-return-in-non-void.patch
-Patch1:         Fix-Makefiles-for-gmake-4.3.patch
-# PATCH-FIX-UPSTREAM 
-Patch2:         reproducible.patch
-# PATCH-FIX-UPSTREAM 
-Patch3:         reproducible-docs.patch
+Patch0:         Make-kokkos-build-reproducible.patch
+Patch1:         Add-missing-ENV-DESTDIR.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
@@ -499,9 +494,9 @@ Requires:       %{compiler_family}%{?c_f_ver}-compilers-hpc
 Requires:       %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc
 # Fix this once boost is available as a HPC version
 #Requires:       boost-%%{compiler_family}-hpc
-Requires:       libhdf5%{hpc_package_name_tail} >= 1.8.8
-Requires:       libnetcdf%{hpc_package_name_tail}
-Requires:       libopenblas-%{compiler_family}-hpc
+%{requires_eq libhdf5%{hpc_package_name_tail}}
+%{requires_eq libnetcdf%{hpc_package_name_tail}}
+%{requires_eq libopenblas-%{compiler_family}-hpc}
 Requires:       lua-lmod >= 7.6.1
 %endif
 
@@ -548,9 +543,9 @@ Requires:       %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc
 # Fix this once boost is available as a HPC version
 #Requires:       boost-%%{compiler_family}-hpc
 Requires:       %libname = %version
-Requires:       hdf5%{hpc_package_name_tail}-devel
-Requires:       libopenblas-%{compiler_family}-hpc-devel
-Requires:       netcdf%{hpc_package_name_tail}-devel
+%{requires_eq hdf5%{hpc_package_name_tail}-devel}
+%{requires_eq libopenblas-%{compiler_family}-hpc-devel}
+%{requires_eq netcdf%{hpc_package_name_tail}-devel}
 # hpc
 %endif
 Obsoletes:      %{name} <= %version
@@ -575,7 +570,6 @@ needed for development.
 %setup -q -n  Trilinos-trilinos-release-%{ver_exp}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 # https://en.opensuse.org/openSUSE:Build_system_recipes#cmake
@@ -623,7 +617,8 @@ HDF5_LIB=%{p_libdir}
         -DCMAKE_SKIP_RPATH:BOOL=ON                                      \
         -DTrilinos_INSTALL_LIB_DIR:PATH=%{p_libdir}                     \
 %if %{without hpc} && %{without mpi}
-	-DTrilinos_INSTALL_INCLUDE_DIR:PATH=include/%{pname}   	        \
+        -DTrilinos_INSTALL_INCLUDE_DIR:PATH=include/%{pname}            \
+        -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{p_includedir}/%{pname}        \
 %endif
         -DTrilinos_VERBOSE_CONFIGURE:BOOL=ON                            \
         -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=OFF                         \
@@ -756,12 +751,6 @@ depends-on %{?with_mpi:p}hdf5
 depends-on %{?with_mpi:p}netcdf
 #depends-on boost
 EOF
-# hpc
-%else
- %if %{without mpi}
-mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
-echo "%{_libdir}/%{name}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}.conf
- %endif
 %endif
 
 # cleanup
@@ -792,13 +781,10 @@ done
 %files -n %{libname}
 %doc README RELEASE_NOTES
 %license LICENSE Copyright.txt
-%dir %{p_libdir}
+%{?with_hpc:%dir %{p_libdir}}
 %{?hpc_dirs}
 %{?hpc_modules_files}
 %{p_libdir}/*.so.*
-%if %{without mpi} && %{without hpc}
-%config %{_sysconfdir}/ld.so.conf.d/%{name}.conf
-%endif
 
 %files devel
 %{p_includedir}
@@ -830,7 +816,6 @@ This package contains the Trilinos HTML documentation.
 
 %prep
 %setup -q -n  Trilinos-trilinos-release-%{ver_exp}
-%patch3 -p1
 
 %build
 # Build the doc

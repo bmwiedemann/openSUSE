@@ -216,4 +216,13 @@
   all variants of netcdf. (forwarded request 833999 from eeich)</comment>
     <requestid>834000</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3bf1a4489d86be936fa7cd526ff7f18b</srcmd5>
+    <version>13.0.0</version>
+    <time>1613511409</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove /etc/ld.so.conf file that existed for non-HPC, non-MPI.
+  It is no longer needed $_lib/trilinos no longer exists. (forwarded request 872910 from eeich)</comment>
+    <requestid>872911</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,32 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Oct 14 07:25:08 2020 +0200
+Subject: Make kokkos build reproducible
+Patch-mainline: Not yet
+Git-commit: dae04f951684ece236b948050b57b2fca0d0c4bd
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ packages/kokkos/Makefile.kokkos | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+diff --git a/packages/kokkos/Makefile.kokkos b/packages/kokkos/Makefile.kokkos
+index 320d398..12f570b 100644
+--- a/packages/kokkos/Makefile.kokkos
++++ b/packages/kokkos/Makefile.kokkos
+@@ -448,9 +448,14 @@ kokkos_append_header = $(shell echo $1 >> $(KOKKOS_INTERNAL_CONFIG_TMP))
+ # Do not append first line
+ tmp := $(shell echo "/* ---------------------------------------------" > KokkosCore_config.tmp)
+ tmp := $(call kokkos_append_header,"Makefile constructed configuration:")
+-tmp := $(call kokkos_append_header,"$(shell date)")
+-tmp := $(call kokkos_append_header,"----------------------------------------------*/")
+ 
++tmp := $(call kokkos_append_header,"----------------------------------------------*/")
++ifdef SOURCE_DATE_EPOCH
++    BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" 2>/dev/null || date -u)
++else
++    BUILD_DATE ?= $(shell date)
++endif
++tmp := $(call kokkos_append_header,"$(BUILD_DATE)")
+ tmp := $(call kokkos_append_header,'\#if !defined(KOKKOS_MACROS_HPP) || defined(KOKKOS_CORE_CONFIG_H)')
+ tmp := $(call kokkos_append_header,'\#error "Do not include $(KOKKOS_CONFIG_HEADER) directly; include Kokkos_Macros.hpp instead."')
+ tmp := $(call kokkos_append_header,'\#else')
