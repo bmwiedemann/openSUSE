@@ -1,7 +1,7 @@
 #
 # spec file for package python-geventhttpclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geventhttpclient
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        HTTP client library for gevent
 License:        MIT
@@ -58,6 +58,8 @@ APIs like Twitter's.
 
 %prep
 %autosetup -p1 -n geventhttpclient-%{version}
+# don't try to set this nonexistent attribute -- gh#gwik/geventhttpclient#137
+sed -i '/sock.last_seen_sni/ d' src/geventhttpclient/tests/test_ssl.py
 
 %build
 %python_build

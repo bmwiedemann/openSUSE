@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 16 14:50:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.5
+  * Don't auto parse query string. Add params keyword argument.
+- don't try to set a nonexistend attribute for a test
+  gh#gwik/geventhttpclient#137
+
+-------------------------------------------------------------------
 Mon Dec 14 00:36:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix condition around BuildRequirement
