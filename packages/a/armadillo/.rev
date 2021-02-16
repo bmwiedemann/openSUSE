@@ -1165,4 +1165,12 @@
 - Update to version 10.2.0</comment>
     <requestid>865320</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>042358b211504abba0c87f20cd858627</srcmd5>
+    <version>10.2.1</version>
+    <time>1613511608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872767</requestid>
+  </revision>
 </revisionlist>
