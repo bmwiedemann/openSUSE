@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 20:15:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.5:
+  * Source fix for old gcc versions
+
+-------------------------------------------------------------------
 Sat Dec 19 10:46:36 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.4:

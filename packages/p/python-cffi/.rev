@@ -313,4 +313,13 @@
   * no upstream changelog provided</comment>
     <requestid>856979</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8119f34c746cec337f1d3c2c6d57f215</srcmd5>
+    <version>1.14.5</version>
+    <time>1613511237</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.5:
+  * Source fix for old gcc versions</comment>
+    <requestid>871527</requestid>
+  </revision>
 </revisionlist>
