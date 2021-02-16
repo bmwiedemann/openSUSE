@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 22:17:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.28
+  * Upstream does not provide a changelog
+
+-------------------------------------------------------------------
 Tue Jan 19 20:30:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - build without pandoc on 32bit platforms 
