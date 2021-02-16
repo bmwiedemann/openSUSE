@@ -7,4 +7,12 @@
     <comment>Please add this to Factory. It's a backend used in many WebRTC deployments (e.g. Nextcloud signaling server).</comment>
     <requestid>858112</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>083bb52317f86c943132b1297babda31</srcmd5>
+    <version>0.10.10</version>
+    <time>1613463566</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>872670</requestid>
+  </revision>
 </revisionlist>
