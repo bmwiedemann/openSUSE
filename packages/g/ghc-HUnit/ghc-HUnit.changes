@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 20 08:38:24 UTC 2021 - psimons@suse.com
+
+- Update HUnit to version 1.6.2.0.
+  #### 1.6.2.0
+
+  - Add support for GHC 7.0.* and 7.2.*
+
+  #### 1.6.1.0
+
+  - Add `Test.HUnit.Text.runTestTTAndExit`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
