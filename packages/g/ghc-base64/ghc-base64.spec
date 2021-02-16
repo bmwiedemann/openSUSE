@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-base64
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name base64
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.2.2
+Version:        0.4.2.3
 Release:        0
-Summary:        Fast RFC 4648-compliant Base64 encoding
+Summary:        A modern RFC 4648-compliant Base64 library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
@@ -44,9 +43,8 @@ BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
-RFC 4648-compliant padded and unpadded base64 and base64url encoding and
-decoding. This library provides performant encoding and decoding primitives, as
-well as support for textual values.
+RFC 4648-compliant Base64 with an eye towards performance and modernity
+(additional support for RFC 7049 standards).
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -60,7 +58,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

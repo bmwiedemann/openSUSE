@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 27 19:35:33 UTC 2021 - psimons@suse.com
+
+- Update base64 to version 0.4.2.3.
+  ## 0.4.2.3
+
+  * Minor release for stackage, limiting memory usage in test suites.
+  * Transition to Github Actions CI
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
