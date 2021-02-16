@@ -1,8 +1,8 @@
-Index: b/deps/libev/ev_iouring.c
+Index: gevent-21.1.2/deps/libev/ev_iouring.c
 ===================================================================
---- a/deps/libev/ev_iouring.c
-+++ b/deps/libev/ev_iouring.c
-@@ -213,6 +213,9 @@ iouring_sqe_get (EV_P)
+--- gevent-21.1.2.orig/deps/libev/ev_iouring.c
++++ gevent-21.1.2/deps/libev/ev_iouring.c
+@@ -286,6 +286,9 @@ iouring_sqe_get (EV_P)
    return EV_SQES + (tail & EV_SQ_VAR (ring_mask));
  }
  
@@ -12,8 +12,8 @@ Index: b/deps/libev/ev_iouring.c
  inline_size
  struct io_uring_sqe *
  iouring_sqe_submit (EV_P_ struct io_uring_sqe *sqe)
-@@ -260,6 +263,8 @@ iouring_internal_destroy (EV_P)
-   if (ev_is_active (&iouring_tfd_w  )) ev_ref (EV_A); ev_io_stop (EV_A_ &iouring_tfd_w  );
+@@ -330,6 +333,8 @@ iouring_internal_destroy (EV_P)
+     }
  }
  
 +#pragma GCC diagnostic pop

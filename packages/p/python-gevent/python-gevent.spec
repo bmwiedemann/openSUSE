@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define modversion 20.9.0
+%define modversion 21.1.2
 %define modname gevent
 Name:           python-gevent
-Version:        20.9.0
+Version:        21.1.2
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -147,6 +147,9 @@ export TRAVIS=1
 # for Appveyor that we also need in obs for "wait_threads() failed to cleanup 1 threads"
 export APPVEYOR=1
 export LANG=en_US.UTF-8
+# Relax the crypto policies for the test-suite
+export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
+export OPENSSL_CONF=''
 # don't bother with python2 tests
 %{python_expand if [ "$python" != "python2" ]; then
     PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m gevent.tests --ignore network_tests.txt

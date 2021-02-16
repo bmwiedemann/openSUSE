@@ -543,4 +543,12 @@
     <comment>- mock dependency was actually not needed at all (forwarded request 855335 from mcepl)</comment>
     <requestid>855348</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2fe7aa744dd7c19e607b431ae326b0b8</srcmd5>
+    <version>21.1.2</version>
+    <time>1613511232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871408</requestid>
+  </revision>
 </revisionlist>
