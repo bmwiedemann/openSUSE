@@ -1,7 +1,39 @@
 -------------------------------------------------------------------
+Fri Jan 29 12:29:58 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.1
+  * Remove qt5multimedia 
+  * add DApplication::globalApplication
+  * Fix bugs
+
+-------------------------------------------------------------------
+Tue Sep 15 07:20:02 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.2.13
+  * Support Qt 5.15, drop dtkwidget-qt-5_15.patch
+  * Fix bugs
+  * Add some widgets
+  * Update translations
+
+-------------------------------------------------------------------
 Tue Jun 16 14:56:35 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add dtkwidget-qt-5_15.patch, Support Qt 5.15 
+
+-------------------------------------------------------------------
+Mon Apr 27 12:30:35 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.0
+  * Switch to LGPLv3 license
+  * Fix bug18561,press 'F1' can't open help window while open two 
+    dde-file-manager windows
+  * Fix bug-18362 DTabBar move tab failed
+  * Fix bug-18903, settingsDialog adjust scrollArea right margin
+  * Fix bug-20975 DSettingsDialog with DButtonBox reset crash 
+  * Disabled DlineEdit show context menu
+  * And fix many other bugs
+  * Update many apis
+
 
 -------------------------------------------------------------------
 Sun Aug  4 09:13:32 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
