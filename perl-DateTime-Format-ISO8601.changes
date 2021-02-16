@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 16 10:22:08 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+  0.16     2021-02-14
+
+  - Add support for YYYYMMDDThhmm[+-]hhmm and YYYY-MM-DDThh:mm+hh:mm
+    formats. Based on GH #13 from lbjw.
+
+-------------------------------------------------------------------
 Sun Oct 25 03:07:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.15
