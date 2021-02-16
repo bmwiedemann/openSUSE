@@ -80,7 +80,8 @@ Obsoletes:      python-jupyter_ipython-doc-pdf < %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ipython-iptest = %{version}}
-BuildRequires:  %{python_module matplotlib}
+# python36-matplotlib is not in Tumbleweed anymore because NumPy 1.20 dropped Python 3.6 (NEP 29)
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)} 
 %endif
 %if !%{with test}
 BuildRequires:  desktop-file-utils
@@ -127,14 +128,18 @@ following main features:
 This package provides the last version that supports Python 3.6
 
 %package iptest
-Summary:        Tools for testing packages that rely in %{name}
+Summary:        Tools for testing packages that rely on %{name}
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-Pygments
 Requires:       python-ipykernel
 Requires:       python-nbformat
 Requires:       python-nose >= 0.10.1
+%if "%{python_flavor}" != "python36"
+# python36-numpy is not in Tumbleweed anymore because NumPy 1.20 dropped Python 3.6 (NEP 29)
+# ipython tests requiring matplotlib and numpy are skipped if they are not available.
 Requires:       python-numpy
+%endif
 Requires:       python-requests
 Requires:       python-testpath
 Provides:       python-ipython-iptest = %{version}

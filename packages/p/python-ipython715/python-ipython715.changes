@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 13 23:12:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't require python36-numpy for iptest and don't install
+  python36-matplotlib for testing, following NEP 29, both are not
+  available in Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Feb  1 23:34:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Backport Jedi 0.18 support ipython-jedi018.patch
