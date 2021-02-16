@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Feb 11 08:46:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add /usr/share/man/uk dir to file list for lang sub package 
+
+-------------------------------------------------------------------
+Wed Feb 10 17:32:06 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix directory for Ukrainian man pages translations.
+- Move localized man pages to lang package.
+- Remove obsolete conditionals.
+- Remove obsolete --enable-oomem option.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Feb 10 10:09:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-3.3.17
+  * library: Incremented to 8:3:0
+    (no removals or additions, internal changes only)
+  * all: properly handle utf8 cmdline translations         issue #176
+  * kill: Pass int to signalled process                    merge #32
+  * pgrep: Pass int to signalled process                   merge #32
+  * pgrep: Check sanity of SG_ARG_MAX                      issue #152
+  * pgrep: Add older than selection                        merge #79
+  * pidof: Quiet mode                                      merge #83
+  * pidof: show worker threads                             Redhat #1803640
+  * ps.1: Mention stime alias                              issue #164
+  * ps: check also match on truncated 16 char comm names
+  * ps: Add exe output option                              Redhat #1399206
+  * ps: A lot more sorting available                       merge #99
+  * pwait: New command waits for a process                 merge #97
+  * sysctl: Match systemd directory order                  Debian #950788
+  * sysctl: Document directory order                       Debian #951550
+  * top: ensure config file backward compatibility         Debian #951335
+  * top: add command line 'e' for symmetry with 'E'        issue #165
+  * top: add '4' toggle for two abreast cpu display        issue #172
+  * top: add '!' toggle for combining multiple cpus
+  * top: fix potential SEGV involving -p switch            merge #114
+  * vmstat: Wide mode gives wider proc columns             merge #48
+  * watch: Add environment variable for interval           merge #62
+  * watch: Add no linewrap option                          issue #182
+  * watch: Support more colors                             merge #106,#109
+  * free,uptime,slabtop: complain about extra ops          issue #181
+- Remove now obsolete upstream patches
+  * procps-check-sanity-of-SC_ARG_MAX.patch
+  * procps-ng-3e1c00d0.patch
+- Port patches
+  * procps-ng-3.3.10-integer-overflow.patch
+  * procps-ng-3.3.10-large_pcpu.patch
+  * procps-ng-3.3.8-accuracy.dif
+  * procps-ng-3.3.8-bnc634840.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+
+-------------------------------------------------------------------
 Tue Feb  2 21:44:58 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Package translations in procps-lang.

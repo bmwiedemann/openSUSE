@@ -5,7 +5,7 @@
 
 --- Makefile.am
 +++ Makefile.am	2018-04-04 12:28:14.937957527 +0000
-@@ -164,7 +164,7 @@ else
+@@ -171,7 +171,7 @@ else
  slabtop_LDADD = $(LDADD) @NCURSES_LIBS@
  endif
  
@@ -16,7 +16,7 @@
  if BUILD_SKILL
 --- configure.ac
 +++ configure.ac	2018-04-04 12:29:23.364676155 +0000
-@@ -169,8 +169,16 @@ else
+@@ -194,8 +194,16 @@ else
    else
      WATCH_NCURSES_LIBS="$NCURSES_LIBS"
    fi

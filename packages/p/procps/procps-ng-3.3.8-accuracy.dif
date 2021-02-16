@@ -6,7 +6,7 @@
 
 --- ps/common.h
 +++ ps/common.h	2018-04-04 11:14:33.915688098 +0000
-@@ -302,6 +302,7 @@ extern int             running_only;
+@@ -303,6 +303,7 @@ extern int             running_only;
  extern int             screen_cols;
  extern int             screen_rows;
  extern time_t          seconds_since_boot;
