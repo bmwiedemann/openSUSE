@@ -4,11 +4,11 @@ Date: Mon, 14 Sep 2015 18:53:34 +0200
 Subject: [PATCH] client: fail on script pre-init error (bsc#912098)
 References: bsc#912098
 
-diff --git a/client/dhclient.c b/client/dhclient.c
-index b438629..82d6ed5 100644
---- a/client/dhclient.c
-+++ b/client/dhclient.c
-@@ -632,7 +632,8 @@ main(int argc, char **argv) {
+Index: dhcp-4.4.2/client/dhclient.c
+===================================================================
+--- dhcp-4.4.2.orig/client/dhclient.c
++++ dhcp-4.4.2/client/dhclient.c
+@@ -882,7 +882,8 @@ main(int argc, char **argv) {
  		 * in case somebody cares.
  		 */
  		script_init(NULL, "NBI", NULL);
@@ -18,8 +18,8 @@ index b438629..82d6ed5 100644
  
  		/*
  		 * If we haven't been asked to persist, waiting for new
-@@ -644,6 +645,8 @@ main(int argc, char **argv) {
- 			exit(0);
+@@ -894,6 +895,8 @@ main(int argc, char **argv) {
+ 			finish(0);
  		}
  	} else if (!release_mode && !exit_mode) {
 +		unsigned int failed = 0;
@@ -27,7 +27,7 @@ index b438629..82d6ed5 100644
  		/* Call the script with the list of interfaces. */
  		for (ip = interfaces; ip; ip = ip->next) {
  			/*
-@@ -665,7 +668,16 @@ main(int argc, char **argv) {
+@@ -915,7 +918,16 @@ main(int argc, char **argv) {
  							    "alias_",
  							    ip->client->alias);
  			}
@@ -45,6 +45,3 @@ index b438629..82d6ed5 100644
  		}
  	}
  
--- 
-2.1.4
-

@@ -1,7 +1,7 @@
 #
 # spec file for package dhcp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,25 @@
 #
 
 
-%if 0%{?usrmerged}
-%define sbindir %_sbindir
-%else
-%define sbindir /sbin
-%endif
-
-%define isc_version   4.3.6-P1
+%define isc_version   4.4.2
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%if 0%{?usrmerged}
+%define sbindir %{_sbindir}
+%else
+%define sbindir /sbin
+%endif
 Name:           dhcp
-Version:        4.3.5
+Version:        4.4.2
 Release:        0
 Summary:        Common Files Used by ISC DHCP Software
-License:        BSD-3-Clause
+License:        MPL-2.0
 Group:          Productivity/Networking/Boot/Servers
-URL:            http://www.isc.org/software/dhcp
-Source0:        dhcp-%{isc_version}.tar.gz
-Source1:        dhcp-%{isc_version}.tar.gz.asc
+URL:            https://www.isc.org/software/dhcp
+Source0:        https://ftp.isc.org/isc/dhcp/%{isc_version}/dhcp-%{isc_version}.tar.gz
+Source1:        https://ftp.isc.org/isc/dhcp/%{isc_version}/dhcp-%{isc_version}.tar.gz.asc
 Source2:        %{name}.keyring
 #
 Source10:       dhcpd.script
@@ -79,8 +78,6 @@ Patch9:         0009-dhcp-4.2.6-close-on-exec.patch
 Patch10:        0010-dhcp-4.2.2-quiet-dhclient.patch
 # PATCH-FIX-OPENSUSE dhcp-4.2.x-chown-server-leases bnc#868253
 Patch12:        0012-dhcp-4.2.x-chown-server-leases.bnc868253.patch
-# PATCH-FIX-SLE dhcp-4.2.x-dhcpv6-decline-on-DAD-failure bnc#872609
-Patch13:        0013-dhcp-4.2.x-dhcpv6-decline-on-DAD-failure.872609.patch
 # PATCH-FIX-SLE dhclient6-unsigned-lifetimes-for-script bsc#926159
 Patch14:        0014-dhclient6-unsigned-lifetimes-for-script-bsc-926159.patch
 # PATCH-FIX-SLE Expose-next-server-DHCPv4-option-to-dhclient-script bsc#928390
@@ -94,7 +91,6 @@ Patch18:        0018-client-fail-on-script-pre-init-error-bsc-912098.patch
 # PATCH-FIX-SLE dhcp-4.2.4-P1-interval bsc#947780
 Patch20:        0020-dhcp-4.x.x-fixed-improper-lease-duration-checking.patch
 Patch21:        0021-dhcp-ip-family-symlinks.patch
-Patch22:        dhcp-CVE-2019-6470.patch
 BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  libtool
@@ -108,14 +104,14 @@ BuildRequires:  sysuser-tools
 Summary:        ISC DHCP Server
 Group:          Productivity/Networking/Boot/Servers
 Requires:       dhcp = %{version}
+Requires(post): %fillup_prereq
+%systemd_ordering
 %if 0%{?suse_version} < 1500
 Requires:       net-tools
 %endif
-Requires(post): %fillup_prereq
-%systemd_ordering
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
-%sysusers_requires
+# %sysusers_requires
 %else
 Requires(pre):  shadow
 %endif
@@ -137,11 +133,11 @@ Requires:       net-tools
 Summary:        ISC DHCP Relay Agent
 Group:          Productivity/Networking/Boot/Servers
 Requires:       dhcp = %{version}
+Requires(post): %fillup_prereq
+%systemd_ordering
 %if 0%{?suse_version} < 1500
 Requires:       net-tools
 %endif
-Requires(post): %fillup_prereq
-%systemd_ordering
 
 %package devel
 Summary:        Header Files and Libraries for dhcpctl API
@@ -199,7 +195,6 @@ with the Internet Software Consortium (ISC) dhcpctl API.
 %patch9
 %patch10 -p1
 %patch12 -p1
-%patch13 -p1
 %patch14
 %patch15 -p1
 %patch16
@@ -207,7 +202,6 @@ with the Internet Software Consortium (ISC) dhcpctl API.
 %patch18 -p1
 %patch20
 %patch21
-%patch22
 ##
 find . -type f -name \*.cat\* -exec rm -f {} \;
 dos2unix contrib/ms2isc/*
@@ -242,16 +236,14 @@ LDFLAGS="-Wl,-z,relro,-z,now -pie"
 FFLAGS="$CFLAGS"
 CXXFLAGS="$CFLAGS"
 export CFLAGS LDFLAGS FFLAGS CXXFLAGS
-#
-#libtoolize --force
-#autoreconf -f -i
-#
 %configure \
 	--enable-dhcpv6 \
 	--enable-failover \
 	--enable-paranoia \
 	--enable-early-chroot \
-	--enable-secs-byteorder \
+	--disable-libtool \
+	--enable-log-pid \
+	--enable-binary-leases \
 	--with-ldap \
 	--with-ldapcrypto \
 	--with-cli-pid-file=%{_localstatedir}/run/dhclient.pid \
@@ -264,12 +256,12 @@ export CFLAGS LDFLAGS FFLAGS CXXFLAGS
 	--with-srv6-lease-file=%{_localstatedir}/lib/dhcp6/db/dhcpd6.leases
 #
 : building bind sources
-make -j1 -C bind all
+%make_build -j1 -C bind all
 cat bind/configure.log
 cat bind/build.log
 cat bind/install.log
 : building dhcp sources
-make %{?_smp_mflags}
+%make_build
 %if 0%{?suse_version} >= 1330
 %sysusers_generate_pre %{SOURCE47} dhcp-server
 %endif
@@ -397,7 +389,7 @@ for l in lib/lib*.a ; do
 done
 popd
 # move also all dhcp-devel files to dhcp subdirectories
-mv %{buildroot}%{_includedir}/{dhcpctl,isc-dhcp,omapip} \
+mv %{buildroot}%{_includedir}/{dhcpctl,omapip} \
    %{buildroot}%{_includedir}/dhcp/
 mv %{buildroot}%{_libdir}/lib*.* \
    %{buildroot}%{_libdir}/dhcp/
