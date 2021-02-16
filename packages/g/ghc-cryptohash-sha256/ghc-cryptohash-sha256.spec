@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cryptohash-sha256
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name cryptohash-sha256
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.101.0
+Version:        0.11.102.0
 Release:        0
 Summary:        Fast, pure and practical SHA-256 implementation
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
@@ -63,13 +62,6 @@ conforming to [RFC6234](https://tools.ietf.org/html/rfc6234),
 [RFC4231](https://tools.ietf.org/html/rfc4231),
 [RFC5869](https://tools.ietf.org/html/rfc5869), et al..
 
-=== Packages in the 'cryptohash-*' family
-
-- <https://hackage.haskell.org/package/cryptohash-md5 cryptohash-md5> -
-<https://hackage.haskell.org/package/cryptohash-sha1 cryptohash-sha1> -
-<https://hackage.haskell.org/package/cryptohash-sha256 cryptohash-sha256> -
-<https://hackage.haskell.org/package/cryptohash-sha512 cryptohash-sha512>
-
 === Relationship to the 'cryptohash' package and its API
 
 This package has been originally a fork of 'cryptohash-0.11.7' because the
@@ -98,7 +90,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

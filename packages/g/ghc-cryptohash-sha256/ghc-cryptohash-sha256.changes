@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 25 09:35:35 UTC 2021 - psimons@suse.com
+
+- Update cryptohash-sha256 to version 0.11.102.0.
+  ## 0.11.102.0
+
+   - Add Eq instance for Ctx
+   - Add start and startlazy producing Ctx
+   - Introduce new `use-cbits` cabal flag in order to
+     add support for FFI-less `cryptohash-sha256-pure` pass-thru
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
