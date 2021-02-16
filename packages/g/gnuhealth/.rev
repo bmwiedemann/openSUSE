@@ -390,4 +390,12 @@
     <comment></comment>
     <requestid>858174</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e5231f790a6185464495adf5fee6327d</srcmd5>
+    <version>3.8.0</version>
+    <time>1613511582</time>
+    <user>dimstar_suse</user>
+    <comment>python_dependency_generator removed - unreliable</comment>
+    <requestid>872747</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2014-2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,18 @@
 
 
 %define         t_version %(rpm -q --qf '%%{VERSION}' trytond)
-%define         majorver 3.6
+%define         majorver 3.8
 Name:           gnuhealth
 
-Version:        %{majorver}.5
+Version:        %{majorver}.0
 Release:        0
-
-# List of additional build dependencies
-BuildRequires:  fdupes
-BuildRequires:  python3-rpm-macros
-BuildRequires:  python3-setuptools
-
-# For the variables:
-BuildRequires:  trytond
-
 URL:            https://health.gnu.org
+Summary:        A Health and Hospital Information System
+License:        GPL-3.0-or-later
+Group:          Productivity/Office/Management
+
 Source0:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
+##%Source0:        %{name}-%{version}.tar.gz
 Source1:        GNUHealth.README.openSUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
@@ -43,11 +39,12 @@ Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
 Patch0:         shebang.diff
 
-BuildArch:      noarch
-
-Summary:        A Health and Hospital Information System
-License:        GPL-3.0-or-later
-Group:          Productivity/Office/Management
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
+BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-setuptools
+# For the variables:
+BuildRequires:  trytond
 
 Requires:       bsdtar
 Requires:       proteus
@@ -77,6 +74,7 @@ Requires:       trytond_purchase_request
 Requires:       trytond_stock
 Requires:       trytond_stock_lot
 Requires:       trytond_stock_supply
+BuildArch:      noarch
 
 # additional suggestion for a useable editor
 Suggests:       nano
@@ -84,6 +82,8 @@ Suggests:       nano
 Suggests:       gnuhealth-client
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%{?systemd_ordering}
 
 %description
 GNU Health is the Hospital Information System adopted by the United
@@ -94,7 +94,6 @@ This is the server component of GNU Health.
 You would need the GNU Health Client as well, on the same or a different machine. 
 You may use the Tryton Client either
 See https://en.opensuse.org/GNUHealth_on_openSUSE for instructions
-
 
 %package -n %{name}-orthanc
 Summary:        Integration module for Orthanc
@@ -115,14 +114,14 @@ cp %{S:2} .
 %build
 for i in h*; do
   cd $i
-  python3 setup.py build
+  %python3_build
   cd ..
 done
 
 %install
 for i in h*; do
   cd $i
-  python3 setup.py install --prefix=%_prefix --root=%buildroot 
+  %python3_install --prefix=%_prefix --root=%buildroot 
   cd ..
 done
 
@@ -202,6 +201,6 @@ EOF
 %license COPYING
 %exclude %{python3_sitelib}/%{name}_orthanc*
 %exclude %{python3_sitelib}/trytond/modules/health_orthanc*
-%{python_sitelib}/*
+%{python3_sitelib}/*
 
 %changelog
