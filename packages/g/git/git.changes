@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 10 11:33:12 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- git 2.30.1
+  * Bugfix release
+  * "git stash" did not work well in a sparsely checked out working
+    tree.
+  * Newline characters in the host and path part of git:// URL are
+    now forbidden.
+
+-------------------------------------------------------------------
 Tue Dec 29 19:30:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.30.0:

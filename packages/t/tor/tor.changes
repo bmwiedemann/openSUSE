@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 16 07:49:14 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.5.6
+  * https://lists.torproject.org/pipermail/tor-announce/2021-February/000214.html
+  * Introduce a new MetricsPort HTTP interface
+  * Support IPv6 in the torrc Address option
+  * Add event-tracing library support for USDT and LTTng-UST
+  * Try to read N of N bytes on a TLS connection
+- Drop upstream tor-practracker.patch
+
+-------------------------------------------------------------------
 Fri Feb  5 08:16:39 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.4.7

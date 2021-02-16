@@ -1,7 +1,7 @@
 #
 # spec file for package avahi-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,9 @@
 %if %{build_glib2}
 %define debug_package_requires libavahi-ui%{avahi_ui_sover} = %{version}-%{release}
 %endif
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define oldpython python
 Name:           avahi-qt5
 Version:        0.8
 Release:        0
@@ -83,10 +86,6 @@ BuildRequires:  libexpat-devel
 # libtool is needed to build all variants: bootstrap is unconditional in the build section
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-# Even if we are not building python bindings, we need python to build service types database:
-BuildRequires:  python3-dbm
-BuildRequires:  python3-dbus-python
-BuildRequires:  python3-devel
 BuildRequires:  translation-update-upstream
 # FIXME: on upgrade, ensure to verify if -DGTK_DISABLE_DEPRECATED=1 can remain in avahi=ui/Makefile.am (GtkStock deprecated with GTK+ 3.9.10).
 %if !%{build_glib2} && !%{build_mono} && !%{build_qt5}
@@ -101,12 +100,8 @@ BuildRequires:  dbus-1-devel
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  libevent-devel >= 2.1.5
-BuildRequires:  python3-dbm
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
-# For python bindings and utilities:
-#BuildRequires:  python3-dbus-python
-#Requires:       dbus-1
 Requires:       nss-mdns
 Requires(pre):  shadow
 #
@@ -140,6 +135,27 @@ BuildRequires:  dbus-1-devel
 BuildRequires:  libavahi-devel = %{version}
 BuildRequires:  pkgconfig(Qt5Core)
 Requires:       libavahi-client%{avahi_client_sover} >= %{version}
+%endif
+%if %{build_core}
+BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module dbus-python}
+BuildRequires:  python-rpm-macros
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+# Same defaults for all build targets
+%define python_sitelib %python3_sitelib
+%define python_files() -n python3-%{**}
+%endif
+%else
+# Even if we don't install the python bindings outside of build_core, we need the default python3 to build the service types database:
+%define pythons python3
+BuildRequires:  python3-dbm
+BuildRequires:  python3-dbus-python
+# avoid error from unused python_subpackages
+%define python_files() -n python3-%{**}
 %endif
 
 %description
@@ -224,6 +240,26 @@ Howl compatibility layer for Avahi.
 Avahi is an implementation of the DNS Service Discovery and Multicast DNS
 specifications for Zeroconf Computing.
 
+%if 0%{?python_subpackage_only}
+%package -n python-avahi
+Summary:        A set of Avahi utilities written in Python
+Group:          Development/Languages/Python
+Requires:       %{name} = %{version}
+Requires:       python-Twisted
+Requires:       python-dbm
+Requires:       python-dbus-python
+# Old name used for <= 10.3:
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       avahi-python = %{version}
+Obsoletes:      %{oldpython}-avahi < %{version}
+Obsoletes:      avahi-python < %{version}
+%endif
+
+%description -n python-avahi
+Avahi is an implementation of the DNS Service Discovery and Multicast
+DNS specifications for Zeroconf Computing.
+
+%else
 %package -n python3-avahi
 Summary:        A set of Avahi utilities written in Python
 Group:          Development/Languages/Python
@@ -234,11 +270,12 @@ Requires:       python3-dbus-python
 # Old name used for <= 10.3:
 Provides:       avahi-python = %{version}
 Obsoletes:      avahi-python < %{version}
-Obsoletes:      python-avahi
+Obsoletes:      python-avahi < %{version}
 
 %description -n python3-avahi
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
+%endif
 
 %package autoipd
 Summary:        IPv4LL Service for Zeroconf and Bonjour
@@ -365,6 +402,7 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -372,13 +410,10 @@ Requires:       python3-avahi = %{version}
 Requires:       python3-gobject
 Requires(post): coreutils
 Requires(postun): coreutils
-# Old name used for <= 10.3:
-Provides:       avahi-python = %{version}
-Obsoletes:      avahi-python < %{version}
-Obsoletes:      python-avahi-gtk
+Provides:       %{oldpython}-avahi-gtk = %{version}
+Obsoletes:      %{oldpython}-avahi-gtk < %{version}
 # Provide split-provides for update from <= 11.0:
-Provides:       python-avahi:%{_bindir}/avahi-bookmarks
-Obsoletes:      python-avahi < %{version}
+Provides:       %{oldpython}-avahi:%{_bindir}/avahi-discover
 
 %description -n python3-avahi-gtk
 Avahi is an implementation of the DNS Service Discovery and Multicast
@@ -502,9 +537,9 @@ sed -i "s:-DGTK_DISABLE_DEPRECATED=1::" avahi-ui/Makefile.am
 %build
 autoreconf -f -i
 intltoolize -f
-export PYTHON=%{_bindir}/python3
+%{python_expand # configure for every python flavor
+export PYTHON=%{_bindir}/$python
 %configure\
-	--libexecdir=%{_prefix}/lib\
 	--disable-static\
         --with-distro=suse\
 %if %{build_core}
@@ -547,6 +582,10 @@ export PYTHON=%{_bindir}/python3
 	--with-avahi-priv-access-group=avahi\
 	--with-autoipd-user=avahi-autoipd\
 	--with-autoipd-group=avahi-autoipd
+
+cp -r avahi-python avahi-python-%{$python_bin_suffix}
+}
+
 %if %{build_glib2} && !%{build_core}
 for DIR in avahi-glib avahi-gobject avahi-ui avahi-discover-standalone avahi-python man ; do
 cd $DIR
@@ -558,6 +597,13 @@ done
 cd avahi-sharp
 %make_build
 cd ../avahi-ui-sharp
+%endif
+%if %{build_core}
+%{python_expand # build for every python flavor
+cd avahi-python-%{$python_bin_suffix}
+%make_build
+cd ..
+}
 %endif
 %make_build
 
@@ -586,6 +632,13 @@ cd ..
 %make_build install-pkgconfigDATA DESTDIR=%{buildroot}
 %endif
 %if %{build_core}
+%{python_expand # install for every python flavor
+cd avahi-python-%{$python_bin_suffix}
+%make_install
+cd ..
+}
+%python_clone -a %{buildroot}%{_bindir}/avahi-bookmarks
+%python_clone -a %{buildroot}%{_mandir}/man1/avahi-bookmarks.1
 # do not remove this unless you plan to fix _all_ the references to
 # it. all (multiple) previous attempts have failed already
 #rm "%{buildroot}/%{_libdir}/libavahi-common.la"
@@ -736,6 +789,21 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %desktop_database_post
 
 %if %{build_core}
+%if 0%{?python_subpackage_only}
+# this is rewritten by python_subpackages into the appropriate flavor
+%post -n python-avahi
+%python_install_alternative avahi-bookmarks avahi-bookmarks.1
+
+%postun -n python-avahi
+%python_uninstall_alternative avahi-bookmarks
+%else
+%post -n python3-avahi
+%python_install_alternative avahi-bookmarks avahi-bookmarks.1
+
+%postun -n python3-avahi
+%python_uninstall_alternative avahi-bookmarks
+%endif
+
 %files
 %license LICENSE
 %doc docs/*
@@ -794,14 +862,10 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %files -n libhowl%{avahi_libhowl_sover}
 %{_libdir}/libhowl.so.*
 
-%files -n python3-avahi
-%{_bindir}/avahi-bookmarks
-%{_mandir}/man1/avahi-bookmarks.1%{ext_man}
-%dir %{python3_sitelib}/avahi
-%{python3_sitelib}/avahi/__init__.py*
-%dir %{python3_sitelib}/avahi/__pycache__
-%{python3_sitelib}/avahi/__pycache__/__init__*
-%{python3_sitelib}/avahi/ServiceTypeDatabase.py
+%files %{python_files avahi}
+%python_alternative %{_bindir}/avahi-bookmarks
+%python_alternative %{_mandir}/man1/avahi-bookmarks.1%{ext_man}
+%{python_sitelib}/avahi
 
 %files autoipd
 %doc avahi-autoipd/README.SUSE

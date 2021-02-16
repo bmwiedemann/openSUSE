@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-loader
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Only pick versions released as /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.2.165
+Version:        1.2.169
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0

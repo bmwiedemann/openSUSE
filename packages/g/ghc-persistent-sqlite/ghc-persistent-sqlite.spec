@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent-sqlite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name persistent-sqlite
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.11.0.0
+Version:        2.11.1.0
 Release:        0
 Summary:        Backend for the persistent library using sqlite3
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-microlens-th-devel
 BuildRequires:  ghc-monad-logger-devel
+BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-persistent-devel
 BuildRequires:  ghc-resource-pool-devel
 BuildRequires:  ghc-resourcet-devel
@@ -50,6 +51,7 @@ BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-fast-logger-devel
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-persistent-template-devel
 BuildRequires:  ghc-persistent-test-devel
 BuildRequires:  ghc-system-fileio-devel

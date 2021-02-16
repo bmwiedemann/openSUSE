@@ -1,7 +1,7 @@
 #
 # spec file for package srt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.srtalliance.org
 Source0:        https://github.com/Haivision/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -75,7 +77,7 @@ needed to develop applications with Secure Reliable Transport
 
 %install
 %cmake_install
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
 %post -n libsrt%{sover} -p /sbin/ldconfig
 %postun -n libsrt%{sover} -p /sbin/ldconfig

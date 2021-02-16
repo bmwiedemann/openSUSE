@@ -1,5 +1,5 @@
 #
-# spec file for package python39-core
+# spec file for package python39
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.9.0
+%define         folderversion 3.9.1
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -88,7 +88,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -297,8 +297,9 @@ Provides:       %{python_pkg_name}-typing = %{version}
 Provides:       %{python_pkg_name}-xml = %{version}
 %if %{primary_interpreter}
 Provides:       python3-asyncio = %{version}
-Provides:       python3-base = %{version}
 Obsoletes:      python3-asyncio < %{version}
+Provides:       python3-base = %{version}
+Obsoletes:      python3-base < %{version}
 Provides:       python3-typing = %{version}
 Obsoletes:      python3-typing < %{version}
 Provides:       python3-xml = %{version}

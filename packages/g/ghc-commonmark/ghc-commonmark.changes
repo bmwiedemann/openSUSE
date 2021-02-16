@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  8 05:04:23 UTC 2021 - psimons@suse.com
+
+- Update commonmark to version 0.1.1.4.
+  ## 0.1.1.4
+
+  * Fix build with GHC 9.0.1 (Simon Jakobi, #72).
+
+-------------------------------------------------------------------
 Tue Jan 12 10:53:27 UTC 2021 - psimons@suse.com
 
 - Update commonmark to version 0.1.1.3.

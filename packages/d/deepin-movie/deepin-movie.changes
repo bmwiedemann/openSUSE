@@ -1,8 +1,36 @@
 -------------------------------------------------------------------
+Tue Feb  2 13:05:19 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.6.165
+  * Opimize ui
+- Drop deepin-movie-reborn-add-pkgconfig-check.patch, fixed by upsteam
+- Add libavformat-version-check.patch, fixed build on new ffmpeg
+- Add Fix-library-link.patch, fix library link error and add this 
+  includedir for ffmpeg
+
+-------------------------------------------------------------------
+Sat Jan 30 15:25:19 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Drop deepin-movie-Qt-5_15.patch 
+
+-------------------------------------------------------------------
+Thu Jun 25 02:33:24 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.6.29
+  * Fix bug on aarch64
+  * Fix bug(24212)
+
+-------------------------------------------------------------------
 Wed Jun 24 14:55:45 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add deepin-movie-Qt-5_15.patch
   * Support Qt 5.15
+
+-------------------------------------------------------------------
+Tue May  5 10:31:24 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.6.28
+  * Use new dtk apis
 
 -------------------------------------------------------------------
 Fri Mar 20 03:02:04 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>

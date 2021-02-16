@@ -129,4 +129,31 @@
   * Fix dtk-settings binary location for libdtkcore-bin package</comment>
     <requestid>786658</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f486f0178f43ae76327e3da3c356c6c9</srcmd5>
+    <version>5.4.0</version>
+    <time>1613511377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.0
+  * Fix correct tools output message typo 
+  * Fix memory leak in dsettings
+  * Fix bug for desktop
+
+- Update version to 5.2.2.5
+  * Fix bugs
+  * Add class DThreadUtils 
+  * Fix ID in os-release
+
+- Update version to 5.2.0
+  * Switch to LGPLv3 license
+  * Fix bug-20975 DSettings::reset emit too many valueChanged
+  * Fix ix tow tag on same commit
+  * Support get installed memory size from lshw
+  * Fix stderr warning from deepin-os-release tool
+  * Add personal edition support and check
+  * Add class template argument for overrideVfptrFun
+  * Support override global vtable of class
+  * Add ddeDisplayName() for DDE applications (forwarded request 869736 from hillwood)</comment>
+    <requestid>869743</requestid>
+  </revision>
 </revisionlist>

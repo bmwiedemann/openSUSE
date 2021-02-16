@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jan 27 19:36:03 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210127.
+  git-annex (8.20210127) upstream; urgency=medium
+
+    * Added mincopies configuration. This is like numcopies, but is
+      enforced even more strictly. While numcopies can be violated in
+      concurrent drop situations involving special remotes that do not
+      support locking, mincopies cannot be. The default value has always
+      been 1, but now it can be set to higher values if desired.
+    * Behavior change: When numcopies is set to 0, git-annex used to drop
+      content without requiring any copies. Now to get that (highly unsafe)
+      behavior, mincopies also needs to be set to 0.
+    * Behavior change: git-annex trust now needs --force, since unconsidered
+      use of trusted repositories can lead to data loss.
+    * Behavior change: --trust and --trust-glacier options no longer overrides
+      trust, since that can lead to data loss, which should never be enabled
+      by an option other than --force.
+    * add: Significantly speed up adding lots of non-large files to git,
+      by disabling the annex smudge filter when running git add.
+    * add --force-small: Run git add rather than updating the index itself,
+      so any other smudge filters than the annex one that may be enabled will
+      be used.
+    * Fix --time-limit, which got broken in several ways by some optimisations
+      in version 8.20201007.
+    * When syncing changes back from an adjusted branch to the basis branch,
+      include deletions of submodules.
+      Thanks, Kyle Meyer for the patch.
+    * Bug fix: export with -J could fail when two files had the same content.
+    * Bug fix: Fix tilde expansion in ssh urls when the tilde is the last
+      character in the url.
+      Thanks, Grond for the patch.
+    * Avoid crashing when there are remotes using unparseable urls.
+      Including the non-standard URI form that git-remote-gcrypt uses for rsync.
+    * Directory special remotes with importtree=yes now avoid unncessary
+      hashing when inodes of files have changed, as happens whenever a FAT
+      filesystem gets remounted.
+    * Fix a bug that prevented git-annex init from working in a submodule.
+    * Fix a bug in view filename generation when a metadata value ended with
+      "/" (or ":" or "\" on Windows)
+    * adjust: Fix some bad behavior when unlocked files use URL keys.
+    * smudge: Fix some bad behavior when git add is run on an unlocked
+      file that used an URL key.
+    * Added GETGITREMOTENAME to external special remote protocol.
+    * Windows: Work around win32 length limits when dealing with lock files.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 27 Jan 2021 11:09:25 -0400
+
+-------------------------------------------------------------------
 Tue Dec 29 21:16:10 UTC 2020 - psimons@suse.com
 
 - Update git-annex to version 8.20201129.

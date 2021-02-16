@@ -828,4 +828,24 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>867186</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>546b83377ca0b70c3a727f735cff8169</srcmd5>
+    <version>0.183</version>
+    <time>1613511309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.183:
+  debuginfod: New thread-busy metric and more detailed error metrics.
+              New --fdcache-mintmp and tracking of filesystem freespace.
+              New increased webapi concurrency while grooming.
+  debuginfod-client: DEBUGINFOD_SONAME macro added to debuginfod.h which
+                     can be used to dlopen the libdebuginfod.so library.
+                     New function debuginfod_set_verbose_fd and
+                     DEBUGINFOD_VERBOSE environment variable.
+  config: profile.sh and profile.csh won't export DEBUGINFOD_URLS unless
+          configured --enable-debuginfod-urls[=URLS]
+  elflint, readelf: Recognize SHF_GNU_RETAIN.
+                    Handle SHT_X86_64_UNWIND as valid relocation target.
+- Remove config-do-not-define-DEBUGINFOD_URLS-environment-var.patch patch. (forwarded request 870255 from marxin)</comment>
+    <requestid>870809</requestid>
+  </revision>
 </revisionlist>

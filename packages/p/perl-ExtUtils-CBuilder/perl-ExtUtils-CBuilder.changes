@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 14 03:07:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.280236
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+  0.280236 - 2021-02-12
+
+    Fix:
+
+    - Remove image-base generation on Win32/gcc and instead use GCC's built-in
+      `--enable-auto-image-base` linker option.
+
+-------------------------------------------------------------------
 Mon Nov  2 03:07:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.280235

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 10 12:49:06 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require libzypp plugin only if zypper is used (Required for e.g.
+  image based systems).
+
+-------------------------------------------------------------------
 Wed Aug 19 09:01:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

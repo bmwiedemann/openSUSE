@@ -4,18 +4,18 @@
  2 files changed, 14 insertions(+)
 
 --- sysctl.8
-+++ sysctl.8	2018-04-04 11:38:10.173667994 +0000
++++ sysctl.8	2021-02-10 10:05:27.781748090 +0000
 @@ -81,6 +81,8 @@ directories in the following list in giv
  Once a file of a given filename is loaded, any file of the same name
  in subsequent directories is ignored.
  .br
 +/boot/sysctl.conf-<kernelversion>
 +.br
- /run/sysctl.d/*.conf
- .br
  /etc/sysctl.d/*.conf
+ .br
+ /run/sysctl.d/*.conf
 --- sysctl.c
-+++ sysctl.c	2018-04-04 11:36:32.515463365 +0000
++++ sysctl.c	2021-02-10 10:04:25.290952318 +0000
 @@ -39,6 +39,7 @@
  #include <string.h>
  #include <sys/stat.h>
@@ -30,8 +30,8 @@
  	unsigned di, i;
 +	struct utsname uts;
  	const char *dirs[] = {
- 		"/run/sysctl.d",
  		"/etc/sysctl.d",
+ 		"/run/sysctl.d",
 @@ -685,6 +687,16 @@ static int PreloadSystem(void)
  	}
  	qsort(cfgs, ncfgs, sizeof(struct cfg *), sortpairs);

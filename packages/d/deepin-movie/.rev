@@ -55,4 +55,12 @@
   * Support Qt 5.15 (forwarded request 816858 from hillwood)</comment>
     <requestid>816864</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b08857d1081c67cc67a030877c228b7</srcmd5>
+    <version>5.7.6.165</version>
+    <time>1613511390</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 870085 from hillwood)</comment>
+    <requestid>870086</requestid>
+  </revision>
 </revisionlist>

@@ -63,4 +63,12 @@
     <comment>Automatic update of haskell stack in oSUSE:Factory</comment>
     <requestid>864467</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a30ee45aa6320cad8656c548b08a5c25</srcmd5>
+    <version>1.20.4</version>
+    <time>1613511473</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>870471</requestid>
+  </revision>
 </revisionlist>

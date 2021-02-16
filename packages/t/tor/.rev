@@ -797,4 +797,18 @@ nicer version with try-reload-or-restart</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>871675</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>f601c0c98783a0ee6f20d4bac3b92b7d</srcmd5>
+    <version>0.4.5.6</version>
+    <time>1613511655</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to new stable version tor 0.4.5.6
+  * https://lists.torproject.org/pipermail/tor-announce/2021-February/000214.html
+  * Introduce a new MetricsPort HTTP interface
+  * Support IPv6 in the torrc Address option
+  * Add event-tracing library support for USDT and LTTng-UST
+  * Try to read N of N bytes on a TLS connection
+- Drop upstream tor-practracker.patch</comment>
+    <requestid>872835</requestid>
+  </revision>
 </revisionlist>

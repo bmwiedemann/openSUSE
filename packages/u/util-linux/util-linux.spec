@@ -152,6 +152,8 @@ Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE: Avoid sulogin failing on not existing or not functional console devices
 Patch3:         util-linux-sulogin4bsc1175514.patch
+# PATCH-FIX-UPSTREAM util-linux-libmount-dont-use-symfollow.patch boo1181750 ailin.nemui@gmail.com -- libmount: don't use "symfollow" for helpers on user mounts https://github.com/karelzak/util-linux/issues/1193
+Patch4:         util-linux-libmount-dont-use-symfollow.patch
 #
 %if %build_util_linux
 Supplements:    filesystem(minix)
@@ -541,7 +543,7 @@ export CXXFLAGS="%{optflags} -D_GNU_SOURCE"
 #
 # SUSE now supports only systemd based system. We do not build
 # sysvinit-only versions of UTIL_LINUX_SYSTEMD_SOURCES utilities.
-AUTOPOINT=true autoreconf -vfi
+AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
 %configure \
   --disable-silent-rules \
   --docdir=%{_docdir}/%{_name} \

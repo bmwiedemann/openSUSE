@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 13 03:06:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.070
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.070   2021-02-12
+          - fix #66 remove -flto=auto (Makefile.PL)
+          - fix #65 typo in docs (lib/Crypt/Cipher.pm)
+          - bundled libtomcrypt update branch:develop (commit:910d6252 2021-01-19)
+
+-------------------------------------------------------------------
 Wed Aug 26 03:07:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.069

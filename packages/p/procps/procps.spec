@@ -26,15 +26,14 @@
 %bcond_without  pidof
 %bcond_without  nls
 Name:           procps
-Version:        3.3.16
+Version:        3.3.17
 Release:        0
 Summary:        The ps utilities for /proc
-#Alternate:     https://gitlab.com/procps-ng/procps/repository/archive.tar.bz2?ref=v%{version}
-#Also:          http://gitorious.org/procps/
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Monitoring
-URL:            http://sf.net/projects/procps-ng/
+URL:            https://sf.net/projects/procps-ng/
 Source:         http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
+#Alternate:     https://gitlab.com/procps-ng/procps/repository/archive.tar.bz2?ref=v%{version}
 Source1:        procps-rpmlintrc
 Patch0:         procps-ng-3.3.9-watch.patch
 Patch1:         procps-v3.3.3-ia64.diff
@@ -61,10 +60,6 @@ Patch31:        procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
 Patch32:        procps-ng-3.3.10-errno.patch
 # PATCH-FEATURE-SUSE -- Let upstream pmap behave simialr to old suse pmap
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
-# PATCH-FIX-UPSTREAM -- "ps -C" does not allow anymore an argument longer than 15 characters
-Patch34:        procps-ng-3e1c00d0.patch
-Patch35:        procps-check-sanity-of-SC_ARG_MAX.patch
-
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -74,24 +69,13 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  screen
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libsystemd)
 Provides:       ps = %{version}-%{release}
 Obsoletes:      ps < %{version}-%{release}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %ifarch ia64 x86_64 ppc64 ppc %{sparc}
 BuildRequires:  libnuma-devel
 %endif
-%if 0%{?suse_version} >= 1230
-BuildRequires:  pkgconfig(libsystemd)
-%endif
-%if 0%{?suse_version} < 1230
-Requires(post): %fillup_prereq
-Requires(post): %insserv_prereq
-Requires(postun): %insserv_prereq
-%endif
-
-%if %{with nls}
 %lang_package
-%endif
 
 %description
 The procps package contains a set of system utilities that provide
@@ -133,7 +117,7 @@ The procps library can be used to read informations out from /proc
 the process information pseudo-file system.
 
 %prep
-%setup -q -n %{name}-ng-%{version}
+%setup -q
 %patch0
 %patch1
 %patch3 -b .trcate
@@ -143,10 +127,10 @@ the process information pseudo-file system.
 %patch11
 %patch12
 %patch13 -b .column
-%patch14
+%patch14 -b .ovrflw
 %patch15
 %patch16
-%patch17
+%patch17 -b .sysctl
 %patch18
 %patch19
 %patch20
@@ -155,13 +139,8 @@ the process information pseudo-file system.
 %patch31 -p1
 %patch32
 %patch33 -b .pmap4us
-%patch34 -p1
-%patch35 -p1
 
 %build
-#
-#
-#
 test -s .tarball-version || echo %{version} > .tarball-version
 #./autogen.sh
 autoreconf -fiv
@@ -183,7 +162,6 @@ export LFS_CFLAGS="$(getconf LFS_CFLAGS)"
     --enable-watch8bit	\
     --enable-shared	\
     --enable-skill	\
-    --enable-oomem	\
     --enable-w-from	\
     --enable-sigwinch	\
     --enable-wide-percent \
@@ -191,14 +169,10 @@ export LFS_CFLAGS="$(getconf LFS_CFLAGS)"
     --enable-w-from	\
     --enable-libselinux	\
     --with-pic=yes	\
-%if 0%{?suse_version} > 1230
     --with-systemd	\
-%else
-    --without-systemd \
-%endif
     --with-gnu-ld \
     --disable-modern-top
-make %{?_smp_mflags}
+%make_build
 
 LD_LIBRARY_PATH=$PWD/proc/.libs \
 ./pmap $$ || {
@@ -282,9 +256,9 @@ ln -s /bin/pgrep   %{buildroot}%{_bindir}/pgrep
 ln -s /bin/pkill   %{buildroot}%{_bindir}/pkill
 ln -s /sbin/sysctl %{buildroot}%{_sbindir}/sysctl
 %endif
-%if %{with nls}
-%find_lang procps-ng
-%endif
+
+%find_lang procps-ng --with-man --all-name
+echo '%%dir %%{_mandir}/uk' >> procps-ng.lang
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -364,6 +338,7 @@ test $error = no || exit 1
 %{_bindir}/pidof
 %endif
 %{_bindir}/pmap
+%{_bindir}/pwait
 %{_bindir}/pwdx
 %{_bindir}/skill
 %{_bindir}/slabtop
@@ -373,26 +348,27 @@ test $error = no || exit 1
 %{_bindir}/vmstat
 %{_bindir}/w
 %{_bindir}/watch
-%{_mandir}/man1/free.1%{ext_man}
-%{_mandir}/man1/pgrep.1%{ext_man}
+%{_mandir}/man1/free.1%{?ext_man}
+%{_mandir}/man1/pgrep.1%{?ext_man}
 %if %{with pidof}
-%{_mandir}/man1/pidof.1%{ext_man}
+%{_mandir}/man1/pidof.1%{?ext_man}
 %endif
-%{_mandir}/man1/pkill.1%{ext_man}
-%{_mandir}/man1/pmap.1%{ext_man}
-%{_mandir}/man1/procps.1%{ext_man}
-%{_mandir}/man1/ps.1%{ext_man}
-%{_mandir}/man1/pwdx.1%{ext_man}
-%{_mandir}/man1/skill.1%{ext_man}
-%{_mandir}/man1/slabtop.1%{ext_man}
-%{_mandir}/man1/snice.1%{ext_man}
-%{_mandir}/man1/tload.1%{ext_man}
-%{_mandir}/man1/top.1%{ext_man}
-%{_mandir}/man1/w.1%{ext_man}
-%{_mandir}/man1/watch.1%{ext_man}
-%{_mandir}/man5/sysctl.conf.5%{ext_man}
-%{_mandir}/man8/vmstat.8%{ext_man}
-%{_mandir}/man8/sysctl.8%{ext_man}
+%{_mandir}/man1/pkill.1%{?ext_man}
+%{_mandir}/man1/pmap.1%{?ext_man}
+%{_mandir}/man1/procps.1%{?ext_man}
+%{_mandir}/man1/ps.1%{?ext_man}
+%{_mandir}/man1/pwait.1%{?ext_man}
+%{_mandir}/man1/pwdx.1%{?ext_man}
+%{_mandir}/man1/skill.1%{?ext_man}
+%{_mandir}/man1/slabtop.1%{?ext_man}
+%{_mandir}/man1/snice.1%{?ext_man}
+%{_mandir}/man1/tload.1%{?ext_man}
+%{_mandir}/man1/top.1%{?ext_man}
+%{_mandir}/man1/w.1%{?ext_man}
+%{_mandir}/man1/watch.1%{?ext_man}
+%{_mandir}/man5/sysctl.conf.5%{?ext_man}
+%{_mandir}/man8/vmstat.8%{?ext_man}
+%{_mandir}/man8/sysctl.8%{?ext_man}
 
 %files devel
 %defattr (-,root,root,755)
@@ -412,16 +388,14 @@ test $error = no || exit 1
 %{_includedir}/proc/whattime.h
 %{_libdir}/libprocps.so
 %{_libdir}/pkgconfig/libprocps.pc
-%{_mandir}/man3/openproc.3%{ext_man}
-%{_mandir}/man3/readproc.3%{ext_man}
-%{_mandir}/man3/readproctab.3%{ext_man}
+%{_mandir}/man3/openproc.3%{?ext_man}
+%{_mandir}/man3/readproc.3%{?ext_man}
+%{_mandir}/man3/readproctab.3%{?ext_man}
 
 %files -n %{libname}
 %defattr (-,root,root,755)
 %{_libdir}/libprocps.so.%{somajor}*
 
-%if %{with nls}
-%files lang -f procps-ng.lang 
-%endif
+%files lang -f procps-ng.lang
 
 %changelog

@@ -1,7 +1,7 @@
 name:          lens-aeson
 category:      Numeric
 version:       1.1
-x-revision: 3
+x-revision: 4
 license:       MIT
 cabal-version: >= 1.8
 license-file:  LICENSE
@@ -82,7 +82,7 @@ test-suite doctests
   else
     build-depends:
       base,
-      doctest        >= 0.11.1 && < 0.18,
+      doctest        >= 0.11.1 && < 0.19,
       generic-deriving,
       lens-aeson,
       semigroups     >= 0.9,

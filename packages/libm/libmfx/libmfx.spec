@@ -1,7 +1,7 @@
 #
 # spec file for package libmfx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/Intel-Media-SDK/MediaSDK
 Source0:        https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-%{version}.tar.gz
 Patch0:         cmake-sle12.patch
+Patch1:         u_gcc11.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++

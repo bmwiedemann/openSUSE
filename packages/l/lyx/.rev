@@ -837,4 +837,12 @@
   now part of release</comment>
     <requestid>859999</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>3dfd869ea1b78d4d718f19a516850a85</srcmd5>
+    <version>2.3.6.1</version>
+    <time>1613511659</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>872849</requestid>
+  </revision>
 </revisionlist>

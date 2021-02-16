@@ -20,7 +20,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.4.7
+Version:        0.4.5.6
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ Source5:        defaults-torrc
 Source6:        tor-master.service
 Patch0:         tor-0.2.5.x-logrotate.patch
 Patch1:         fix-test.patch
-Patch2:         tor-practracker.patch
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pwdutils
@@ -77,10 +76,7 @@ strength of the anonymity provided. Tor is not presently suitable
 for high-stakes anonymity.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure \
@@ -146,7 +142,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
 
 %files
 %license LICENSE
-%doc README ChangeLog doc/HACKING doc/*.html
+%doc README ChangeLog doc/HACKING doc/man/*.html
 %{_mandir}/man*/*
 %{_bindir}/*
 %dir %{_datadir}/%{name}

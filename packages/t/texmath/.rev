@@ -398,4 +398,12 @@ texmath changes:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>861607</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6af5099eb6ed2d5241f2887d76e1481e</srcmd5>
+    <version>0.12.1.1</version>
+    <time>1613511563</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in factory</comment>
+    <requestid>870888</requestid>
+  </revision>
 </revisionlist>

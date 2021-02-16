@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 19 12:44:54 UTC 2021 - psimons@suse.com
+
+- Update zip to version 1.7.0.
+  ## Zip 1.7.0
+
+  * Set user permissions on linux platform as follows: if an existing file is
+    added, use its permissions; if an entry is generated from a bytestring or
+    a stream, use 0600. This behavior mimics the zip utility.
+
+-------------------------------------------------------------------
 Tue Jan  5 12:06:37 UTC 2021 - psimons@suse.com
 
 - Update zip to version 1.6.0 revision 1.

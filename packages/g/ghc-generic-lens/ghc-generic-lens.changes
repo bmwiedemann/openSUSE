@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 27 19:35:24 UTC 2021 - psimons@suse.com
+
+- Update generic-lens to version 2.1.0.0.
+  ## generic-lens-2.1.0.0 (2021-01-25)
+  - Bump to generic-lens-core-2.1.0.0
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

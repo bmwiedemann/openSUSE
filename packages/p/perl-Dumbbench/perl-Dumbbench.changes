@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 16 03:07:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.501
+   see /usr/share/doc/packages/perl-Dumbbench/Changes
+
+  0.501 2021-02-15T16:39:38Z
+  	* Align the rates and precision separately (Github #4). This changes
+  	the data structure that cmpthese returns by inserting a column in
+  	each row.
+
+-------------------------------------------------------------------
 Mon Jul 16 06:53:40 UTC 2018 - coolo@suse.com
 
 - initial package 0.111

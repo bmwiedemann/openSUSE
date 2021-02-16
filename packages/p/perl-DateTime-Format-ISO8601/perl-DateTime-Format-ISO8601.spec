@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-ISO8601
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-DateTime-Format-ISO8601
-Version:        0.15
-Release:        0
 %define cpan_name DateTime-Format-ISO8601
+Name:           perl-DateTime-Format-ISO8601
+Version:        0.16
+Release:        0
 Summary:        Parses ISO8601 formats
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DateTime) >= 1.45
@@ -57,11 +55,12 @@ Parses almost all ISO8601 date and time formats. ISO8601 time-intervals
 will be supported in a later release.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -72,8 +71,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md Todo
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md Todo
 %license LICENSE
 
 %changelog

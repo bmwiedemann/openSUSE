@@ -20,6 +20,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# https://numpy.org/neps/nep-0029-deprecation_policy.html
+%define skip_python36 1
 %ifarch aarch64 x86_64 ppc64le
 %bcond_without onednn
 %else

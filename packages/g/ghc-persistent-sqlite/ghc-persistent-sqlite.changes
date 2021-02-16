@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  8 05:05:42 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.11.1.0.
+  ##  2.11.1.0
+
+  * Add `checkForeignKeys` operation to verify no foreign key constraints are
+    violated by the database contents.
+  * Fix the migration for primary keys that was broken in 2.11.0.0
+    [#1184](https://github.com/yesodweb/persistent/issues/1184)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

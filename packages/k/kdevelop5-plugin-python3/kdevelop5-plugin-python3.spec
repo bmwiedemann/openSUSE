@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5-plugin-python3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define rname kdev-python
 Name:           kdevelop5-plugin-python3
-Version:        5.6.1
+Version:        5.6.2
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later

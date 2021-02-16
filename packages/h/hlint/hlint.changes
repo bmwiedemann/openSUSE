@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 18 09:07:13 UTC 2021 - psimons@suse.com
+
+- Update hlint to version 3.2.7.
+  3.2.7, released 2021-01-16
+      #1202, add missing parentheses for Avoid Lambda
+      #1201, allow matching through the & operator (similar to $)
+      #1196, fix removed parens with operator sections in some cases
+
+-------------------------------------------------------------------
 Mon Jan  4 11:06:26 UTC 2021 - psimons@suse.com
 
 - Update hlint to version 3.2.6.

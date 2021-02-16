@@ -1,0 +1,25 @@
+From a6387266bbb8615589e75b4f4b73c278d61d36cc Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 10 Feb 2021 10:51:15 +0100
+Subject: [PATCH] Fix build with GCC 11.
+
+The 'limits' header must be included explicitly.
+---
+ src/utils/mkv_reader.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/utils/mkv_reader.cpp b/src/utils/mkv_reader.cpp
+index 5d5a32c3..372f3009 100644
+--- a/src/utils/mkv_reader.cpp
++++ b/src/utils/mkv_reader.cpp
+@@ -20,6 +20,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <cwchar>
++#include <limits>
+ #include <list>
+ #include <memory>
+ #include <vector>
+-- 
+2.30.0
+

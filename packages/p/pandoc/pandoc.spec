@@ -1,7 +1,7 @@
 #
 # spec file for package pandoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.11.3.2
+Version:        2.11.4
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -226,7 +226,6 @@ cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 1.3'
 %{_datadir}/%{name}-%{version}/data/dzslides/template.html
 %{_datadir}/%{name}-%{version}/data/epub.css
 %{_datadir}/%{name}-%{version}/data/init.lua
-%{_datadir}/%{name}-%{version}/data/jats.csl
 %{_datadir}/%{name}-%{version}/data/odt/Configurations2/accelerator/current.xml
 %{_datadir}/%{name}-%{version}/data/odt/META-INF/manifest.xml
 %{_datadir}/%{name}-%{version}/data/odt/Thumbnails/thumbnail.png

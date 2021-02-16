@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 29 18:22:44 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.0:
+  + Allow customize each corner radius for rectangle shape.
+  + Bump gettext version.
+  + Rotate Skew demo.
+  + Let goo_canvas_pointer_grab take NULL.
+  + Change the ABI from goocanvas-2.0 to goocanvas-3.0.
+- Update subpackages names following upstreams so/API bump.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:13:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

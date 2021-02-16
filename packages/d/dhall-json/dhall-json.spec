@@ -1,7 +1,7 @@
 #
 # spec file for package dhall-json
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name dhall-json
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        Convert between Dhall and JSON or YAML
 License:        BSD-3-Clause

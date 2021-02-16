@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 10 13:16:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_gcc11.patch
+  * fixes build against gcc11 (boo#1181871)
+
+-------------------------------------------------------------------
 Sat Oct 10 20:29:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.3.0:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  9 23:26:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * One new API, libevdev_disable_property()
+  * Kernel 5.8 changed the SW_MAX define from 0x0f to 0x10. In some niche cases
+    this causes issues if libevdev and the software build against
+    different headers and thus end up with different values 
+  * include: sync event codes with kernel 5.10
+  * Fix included license to the "always intended" MIT license
+
+-------------------------------------------------------------------
 Sun Aug 16 01:38:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.9.1

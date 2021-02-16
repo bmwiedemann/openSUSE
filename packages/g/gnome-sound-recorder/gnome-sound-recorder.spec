@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-sound-recorder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnome-sound-recorder
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        Sound Recorder
 License:        BSD-3-Clause AND LGPL-2.0-or-later

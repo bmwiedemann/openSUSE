@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  8 05:04:43 UTC 2021 - psimons@suse.com
+
+- Update data-fix to version 0.3.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

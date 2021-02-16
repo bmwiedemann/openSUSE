@@ -1177,4 +1177,41 @@ So let's try to package them and see what happens.
 There are also man pages translations but they doesn't get installed automatically for some reason + it's probably already provided by manpages-l10n (https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/6) so let's keep it that way. (forwarded request 868776 from 1Antoine1)</comment>
     <requestid>868827</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>a3cd6fb0d5520f7ec29c48f2bb3c29b1</srcmd5>
+    <version>3.3.17</version>
+    <time>1613511366</time>
+    <user>dimstar_suse</user>
+    <comment>- Add /usr/share/man/uk dir to file list for lang sub package 
+
+- Fix directory for Ukrainian man pages translations.
+- Move localized man pages to lang package.
+- Remove obsolete conditionals.
+- Remove obsolete --enable-oomem option.
+- Run spec-cleaner.
+
+- Update to procps-ng-3.3.17
+  * library: Incremented to 8:3:0
+    (no removals or additions, internal changes only)
+  * all: properly handle utf8 cmdline translations         issue #176
+  * kill: Pass int to signalled process                    merge #32
+  * pgrep: Pass int to signalled process                   merge #32
+  * pgrep: Check sanity of SG_ARG_MAX                      issue #152
+  * pgrep: Add older than selection                        merge #79
+  * pidof: Quiet mode                                      merge #83
+  * pidof: show worker threads                             Redhat #1803640
+  * ps.1: Mention stime alias                              issue #164
+  * ps: check also match on truncated 16 char comm names
+  * ps: Add exe output option                              Redhat #1399206
+  * ps: A lot more sorting available                       merge #99
+  * pwait: New command waits for a process                 merge #97
+  * sysctl: Match systemd directory order                  Debian #950788
+  * sysctl: Document directory order                       Debian #951550
+  * top: ensure config file backward compatibility         Debian #951335
+  * top: add command line 'e' for symmetry with 'E'        issue #165
+  * top: add '4' toggle for two abreast cpu display        issue #172
+  * top: add '!' toggle for combining multiple cpus
+  * top: fix potential SEGV involving -p switch            merge #114</comment>
+    <requestid>871141</requestid>
+  </revision>
 </revisionlist>

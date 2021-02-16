@@ -1,7 +1,7 @@
 #
 # spec file for package subversion
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,7 @@
 %bcond_with	python_ctypes
 %bcond_with	all_regression_tests
 Name:           subversion
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Subversion version control system
 License:        Apache-2.0

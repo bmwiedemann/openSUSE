@@ -19,7 +19,7 @@
 %global pkg_name wai-extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
@@ -36,31 +36,27 @@ BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-cookie-devel
 BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-fast-logger-devel
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http2-devel
 BuildRequires:  ghc-iproute-devel
 BuildRequires:  ghc-network-devel
-BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-streaming-commons-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-vault-devel
-BuildRequires:  ghc-void-devel
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-logger-devel
 BuildRequires:  ghc-word8-devel
-BuildRequires:  ghc-zlib-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-zlib-devel
 %endif
 
 %description

@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsmaintenance
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        btrfs-defrag-plugin.sh
 BuildRequires:  pkgconfig(systemd)
 Requires:       btrfsprogs
-Requires:       libzypp(plugin:commit)
+Requires:       (libzypp(plugin:commit) if zypper)
 Supplements:    btrfsprogs
 BuildArch:      noarch
 %{?systemd_ordering}

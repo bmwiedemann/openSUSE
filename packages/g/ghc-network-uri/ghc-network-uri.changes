@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  8 05:05:56 UTC 2021 - psimons@suse.com
+
+- Update network-uri to version 2.6.4.1.
+  # network-uri-2.6.4.1 (2021-02-07)
+  * Fix: Restore "Safe" designation which was accidentally removed.
+
+  # network-uri-2.6.4.0 (2021-02-07)
+  * Add compatibility with GHC 9.0.1.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

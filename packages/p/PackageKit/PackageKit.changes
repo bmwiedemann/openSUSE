@@ -5,6 +5,12 @@ Sat Jan 30 12:28:21 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
   obsolete cnf is unacceptable.
 
 -------------------------------------------------------------------
+Fri Jan 29 21:30:49 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fix from upstream to have DNF backend force dup for updates
+  + Patch: PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch
+
+-------------------------------------------------------------------
 Wed Jan 27 09:03:50 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-reset-update-mode-after-get-updates.patch:

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  3 10:33:11 UTC 2021 - wbauer@tmo.at
+
+- Update to 5.6.2
+  * Adapt to change of formerly private KTextEditor::View signal
+    configChanged
+  * skip test_gdb on windows, apparently it breaks the windows CI
+  * Polish menu before creating platform window
+
+-------------------------------------------------------------------
+Fri Jan  1 23:05:07 UTC 2021 - Cameron Rapp <camspam@redhyena.net>
+
+- Update obsolete BuildRequires: llvm-clang-devel -> clang-devel.
+
+-------------------------------------------------------------------
 Wed Dec  9 20:39:52 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.6.1

@@ -8,9 +8,11 @@ Merged fixed close-on-exec patch (bnc#732910)
 References: bnc#732910
 Signed-off-by: Marius Tomaschewski <mt@suse.de>
 
+Index: client/clparse.c
+===================================================================
 --- client/clparse.c.orig
 +++ client/clparse.c
-@@ -262,7 +262,7 @@ int read_client_conf_file (const char *n
+@@ -265,7 +265,7 @@ int read_client_conf_file (const char *n
  	int token;
  	isc_result_t status;
  
@@ -19,7 +21,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		return uerr2isc (errno);
  
  	cfile = NULL;
-@@ -338,7 +338,7 @@ void read_client_leases ()
+@@ -341,7 +341,7 @@ void read_client_leases ()
  
  	/* Open the lease file.   If we can't open it, just return -
  	   we can safely trust the server to remember our state. */
@@ -28,9 +30,11 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		return;
  
  	cfile = NULL;
+Index: client/dhclient.c
+===================================================================
 --- client/dhclient.c.orig
 +++ client/dhclient.c
-@@ -565,7 +565,7 @@ main(int argc, char **argv) {
+@@ -683,7 +683,7 @@ main(int argc, char **argv) {
  		long temp;
  		int e;
  
@@ -39,7 +43,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  			e = fscanf(pidfd, "%ld\n", &temp);
  			oldpid = (pid_t)temp;
  
-@@ -3403,7 +3403,7 @@ void rewrite_client_leases ()
+@@ -3642,7 +3642,7 @@ void rewrite_client_leases ()
  
  	if (leaseFile != NULL)
  		fclose (leaseFile);
@@ -48,7 +52,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  	if (leaseFile == NULL) {
  		log_error ("can't create %s: %m", path_dhclient_db);
  		return;
-@@ -3598,7 +3598,7 @@ write_duid(struct data_string *duid)
+@@ -3837,7 +3837,7 @@ write_duid(struct data_string *duid)
  		return DHCP_R_INVALIDARG;
  
  	if (leaseFile == NULL) {	/* XXX? */
@@ -57,7 +61,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		if (leaseFile == NULL) {
  			log_error("can't create %s: %m", path_dhclient_db);
  			return ISC_R_IOERROR;
-@@ -3643,7 +3643,7 @@ write_client6_lease(struct client_state
+@@ -3882,7 +3882,7 @@ write_client6_lease(struct client_state
  		return DHCP_R_INVALIDARG;
  
  	if (leaseFile == NULL) {	/* XXX? */
@@ -66,7 +70,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		if (leaseFile == NULL) {
  			log_error("can't create %s: %m", path_dhclient_db);
  			return ISC_R_IOERROR;
-@@ -3802,7 +3802,7 @@ int write_client_lease (client, lease, r
+@@ -4041,7 +4041,7 @@ int write_client_lease (client, lease, r
  		return 1;
  
  	if (leaseFile == NULL) {	/* XXX */
@@ -75,6 +79,8 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		if (leaseFile == NULL) {
  			log_error ("can't create %s: %m", path_dhclient_db);
  			return 0;
+Index: common/bpf.c
+===================================================================
 --- common/bpf.c.orig
 +++ common/bpf.c
 @@ -94,7 +94,7 @@ int if_register_bpf (info)
@@ -86,9 +92,11 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		if (sock < 0) {
  			if (errno == EBUSY) {
  				continue;
+Index: common/dlpi.c
+===================================================================
 --- common/dlpi.c.orig
 +++ common/dlpi.c
-@@ -813,7 +813,7 @@ dlpiopen(const char *ifname) {
+@@ -817,7 +817,7 @@ dlpiopen(const char *ifname) {
  	}
  	*dp = '\0';
  	
@@ -97,6 +105,8 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  }
  
  /*
+Index: common/nit.c
+===================================================================
 --- common/nit.c.orig
 +++ common/nit.c
 @@ -75,7 +75,7 @@ int if_register_nit (info)
@@ -108,9 +118,11 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  	if (sock < 0)
  		log_fatal ("Can't open NIT device for %s: %m", info -> name);
  
+Index: common/resolv.c
+===================================================================
 --- common/resolv.c.orig
 +++ common/resolv.c
-@@ -44,7 +44,7 @@ void read_resolv_conf (parse_time)
+@@ -43,7 +43,7 @@ void read_resolv_conf (parse_time)
  	struct domain_search_list *dp, *dl, *nd;
  	isc_result_t status;
  
@@ -119,6 +131,8 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		log_error ("Can't open %s: %m", path_resolv_conf);
  		return;
  	}
+Index: common/upf.c
+===================================================================
 --- common/upf.c.orig
 +++ common/upf.c
 @@ -71,7 +71,7 @@ int if_register_upf (info)
@@ -130,9 +144,11 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		if (sock < 0) {
  			if (errno == EBUSY) {
  				continue;
+Index: omapip/trace.c
+===================================================================
 --- omapip/trace.c.orig
 +++ omapip/trace.c
-@@ -138,10 +138,10 @@ isc_result_t trace_begin (const char *fi
+@@ -136,10 +136,10 @@ isc_result_t trace_begin (const char *fi
  		return DHCP_R_INVALIDARG;
  	}
  
@@ -145,7 +161,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  				     0600);
  	}
  
-@@ -429,7 +429,7 @@ void trace_file_replay (const char *file
+@@ -427,7 +427,7 @@ void trace_file_replay (const char *file
  	isc_result_t result;
  	int len;
  
@@ -154,10 +170,12 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  	if (!traceinfile) {
  		log_error("Can't open tracefile %s: %m", filename);
  		return;
+Index: relay/dhcrelay.c
+===================================================================
 --- relay/dhcrelay.c.orig
 +++ relay/dhcrelay.c
-@@ -659,13 +659,14 @@ main(int argc, char **argv) {
- 
+@@ -783,13 +783,14 @@ main(int argc, char **argv) {
+ 		/* Create the pid file. */
  		if (no_pid_file == ISC_FALSE) {
  			pfdesc = open(path_dhcrelay_pid,
 -				      O_CREAT | O_TRUNC | O_WRONLY, 0644);
@@ -173,6 +191,8 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  				if (!pf)
  					log_error("Can't fdopen %s: %m",
  						  path_dhcrelay_pid);
+Index: server/confpars.c
+===================================================================
 --- server/confpars.c.orig
 +++ server/confpars.c
 @@ -118,7 +118,7 @@ isc_result_t read_conf_file (const char
@@ -184,18 +204,20 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		if (leasep) {
  			log_error ("Can't open lease database %s: %m --",
  				   path_dhcpd_db);
+Index: server/db.c
+===================================================================
 --- server/db.c.orig
 +++ server/db.c
-@@ -1081,7 +1081,7 @@ void db_startup (testp)
+@@ -1105,7 +1105,7 @@ void db_startup (int test_mode)
+ 	* Therefore, in test mode we need to point db_file to a disposable
+ 	* file to protect the original lease file. */
+ 	current_db_path = (test_mode ? "/dev/null" : path_dhcpd_db);
+-	db_file = fopen (current_db_path, "a");
++	db_file = fopen (current_db_path, "ae");
+ 	if (!db_file) {
+ 		log_fatal ("Can't open %s for append.", current_db_path);
  	}
- #endif
- 	if (!testp) {
--		db_file = fopen (path_dhcpd_db, "a");
-+		db_file = fopen (path_dhcpd_db, "ae");
- 		if (!db_file)
- 			log_fatal ("Can't open %s for append.", path_dhcpd_db);
- 		expire_all_pools ();
-@@ -1129,7 +1129,7 @@ int new_lease_file ()
+@@ -1154,7 +1154,7 @@ int new_lease_file (int test_mode)
  		     path_dhcpd_db) >= sizeof newfname)
  		log_fatal("new_lease_file: lease file path too long");
  
@@ -204,7 +226,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  	if (db_fd < 0) {
  		log_error ("Can't create new lease file: %m");
  		return 0;
-@@ -1154,7 +1154,7 @@ int new_lease_file ()
+@@ -1179,7 +1179,7 @@ int new_lease_file (int test_mode)
  	}
  #endif /* PARANOIA */
  
@@ -213,9 +235,11 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		log_error("Can't fdopen new lease file: %m");
  		close(db_fd);
  		goto fdfail;
+Index: server/dhcpd.c
+===================================================================
 --- server/dhcpd.c.orig
 +++ server/dhcpd.c
-@@ -760,7 +760,7 @@ main(int argc, char **argv) {
+@@ -880,7 +880,7 @@ main(int argc, char **argv) {
  	 */
  	if ((lftest == 0) && (no_pid_file == ISC_FALSE)) {
  		/*Read previous pid file. */
@@ -224,7 +248,7 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  			status = read(i, pbuf, (sizeof pbuf) - 1);
  			close(i);
  			if (status > 0) {
-@@ -878,7 +878,7 @@ main(int argc, char **argv) {
+@@ -990,7 +990,7 @@ main(int argc, char **argv) {
  	 * appropriate.
  	 */
  	if (no_pid_file == ISC_FALSE) {
@@ -233,9 +257,11 @@ Signed-off-by: Marius Tomaschewski <mt@suse.de>
  		if (i >= 0) {
  			sprintf(pbuf, "%d\n", (int) getpid());
  			IGNORE_RET(write(i, pbuf, strlen(pbuf)));
+Index: server/ldap.c
+===================================================================
 --- server/ldap.c.orig
 +++ server/ldap.c
-@@ -1446,7 +1446,7 @@ ldap_start (void)
+@@ -1447,7 +1447,7 @@ ldap_start (void)
  
    if (ldap_debug_file != NULL && ldap_debug_fd == -1)
      {

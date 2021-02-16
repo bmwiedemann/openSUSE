@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vector
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name vector
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.1.2
+Version:        0.12.2.0
 Release:        0
 Summary:        Efficient Arrays
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 16 15:37:33 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to v0.0.6 which support lua54 and Leap/SLE15.3 
+
+-------------------------------------------------------------------
 Tue Mar 17 10:24:37 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - removed last remaing %is_opensuse (jsc#SLE-11639) 

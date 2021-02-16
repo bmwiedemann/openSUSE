@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 10 20:09:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop configure --libexecdir variable as it does not appear
+  to be used by the source archive.
+
+-------------------------------------------------------------------
+Sun Jan 31 23:54:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Build python bindings subpackages for all flavors
+  * use the python-rpm-macros singlespec system: The macro
+    %python_subpackages together with %python_subpackage_only
+    creates the pythonXY-avahi bindings package for all python
+    flavors on Tumbleweed (currently python36, python38)
+  * Put the avahi-bookmarks command under updates-alternatives
+    control to avoid package conflicts between flavors
+  * outside of build_core, the build continues to use but not
+    install everything in the primary python3 flavor.
+  * For distros without multiple python3 flavors and/or older
+    python-rpm-macros, the status quo is unchanged.
+
+-------------------------------------------------------------------
 Wed Sep  2 10:11:46 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use sover variables all over the spec file

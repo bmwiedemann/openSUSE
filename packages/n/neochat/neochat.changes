@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 15 00:33:01 UTC 2021 - Tomas Cech <sleep_walker@opensuse.org>
+
+- Add missing require libqt5-qtquickcontrols again.
+
+-------------------------------------------------------------------
 Sat Jan 16 10:14:57 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Adjust spec file to conform to the KDE team's guidelines

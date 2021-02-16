@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-weeder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 sed -i -e 's#dhall .* \^>= 1.33.0#dhall < 2#' weeder.cabal
+sed -i -e 's#generic-lens .* \^>= 2.0.0.0#generic-lens < 3#' weeder.cabal
 
 %build
 %ghc_lib_build

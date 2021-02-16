@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 10 09:52:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 11 (boo#1181920)
+  * 0001-Fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
 Fri Jan 22 12:49:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim redundancies from the description.

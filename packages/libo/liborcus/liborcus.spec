@@ -1,7 +1,7 @@
 #
 # spec file for package liborcus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         GCC11_build_fixes.patch
 BuildRequires:  coreutils
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig
@@ -83,7 +85,7 @@ Provides:       %{name}-python3 = %{version}
 Python 3 bindings for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} < 1500

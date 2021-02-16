@@ -19,7 +19,7 @@
 %global pkg_name libmpd
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.3.0
+Version:        0.10.0.0
 Release:        0
 Summary:        An MPD client library
 License:        MIT

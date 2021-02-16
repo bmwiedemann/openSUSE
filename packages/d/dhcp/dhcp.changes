@@ -1,4 +1,208 @@
 -------------------------------------------------------------------
+Sun Jan 24 13:20:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.2:
+  * Please note that that ISC DHCP is now licensed under the Mozilla Public
+  License, MPL 2.0.
+
+  In general, the areas of focus for ISC DHCP 4.4 were:
+
+  1. Dynamic DNS additions
+  2. dhclient improvements
+  3. Support for dynamic shared libraries
+
+  * Added the interface name to socket initialization failure log messages.
+    Prior to this the log messages stated only the error reason without
+    stating the target interface.
+  * Corrected buffer pointer logic in dhcrelay functions that manipulate
+    agent relay options. Thanks to Thomas Imbert of MSRC Vulnerabilities
+    & Mitigations for reporting the issue.
+  * Corrected unresolved symbol errors building relay_unittests when
+    configured to build using libtool.
+  * A new configuration parameter, ping-cltt-secs (v4 operation only), has
+    been added to allow the user to specify the number of seconds that must
+    elapse since CLTT before a ping check is conducted.  Prior to this, the
+    value was hard coded at 60 seconds.  Please see the server man pages for
+    a more detailed discussion.
+  * A new configuration parameter, ping-timeout-ms (v4 operation only),
+    has been added that allows the user to specify the amount of time
+    the server waits for a ping-check response in milliseconds rather
+    than in seconds (via ping-timeout). When greater than zero, the value
+    of ping-timeout-ms will override the value of ping-timeout.  Thanks
+    to Jay Doran from Bluecat Networks for suggesting this feature.
+  * An experimental tool called, Keama (KEA Migration Assistant), which helps
+    translate ISC DHCP configurations to Kea configurations, is now included
+    in the distribution.
+  * Corrected a misuse of the BIND9 DDNS API which caused DDNS updates to be
+    carried out over TCP rather than UDP. The coding error was exposed by
+    migration to BIND9 9.11.  Thanks to Jinmei Tatuya at Infoblox for
+    reporting the issue.
+  * Bind9 now defaults to requiring python to build. The Makefile for
+    building Bind9 when bundled with ISC DHCP was modified to turn off
+    this dependency.
+  * Corrected a dual-stack mixed-mode issue that occurs when both
+    ddns-guard-id-must-match and ddns-other-guard-is-dynamic
+    are enabled and that caused the server to incorrectly interpret
+    the presence of a guard record belonging to another client as
+    a case of no guard record at all.  Thanks to Fernando Soto
+    from BlueCat Networks for reporting this issue.
+  * Corrected a compilation issue that occurred when building without DNS
+    update ability (e.g. by undefining NSUPDATE).
+  * Corrected an issue that was causing the server, when running in
+    DHPCv4 mode, to segfault when class lease limits are reached.
+    Thanks to Peter Nagy at Porion-Digital for reporting the matter
+    and submitting a patch.
+  * Made minor changes to eliminate warnings when compiled with GCC 9.
+    Thanks to Brett Neumeier for bringing the matter to our attention.
+  * Fixed potential memory leaks in parser error message generation
+    spotted by Coverity, CIDs: 1448191, 1448193, 1448194, 1448195
+  * Updated URL of IEEE oui.txt in contrib/dhcp-lease-list.pl. Thanks
+    to Tommy Smith for contributing the patch.
+  * Fixed define flags when using SO_BINDTODEVICE. Thanks to Joe LeVeque for
+    reporting the issue.
+  * Applied a patch from OpenBSD to always set the scope id of outbound
+    DHPCv6 packets.  Note this change only applies when compiling under
+    OpenBSD.  Thanks to Brad Smith at OpenBSD from bringing it to our
+    attention.
+  * Modified dhclient to not discard config file leases that are
+    duplicates of server-provided leases and to retain such leases
+    after they have been used as the fallback active lease and
+    DHCP service has been restored.  This allows them to be used
+    more than once during the lifetime of a dhclient instance.
+    This applies to DHCPv4 operation only.
+  * Corrected a number of reference counter and zero-length buffer leaks.
+    Thanks to Christopher Ertl of MSRC Vulnerabilities & Mitigations for
+    pointing them out.
+  * Closed a small window of time between the installation of graceful
+    shutdown signal handlers and application context startup, during which
+    the receipt of shutdown signal would cause a REQUIRE() assertion to
+    occur.  Note this issue is only visible when compiling with
+    ENABLE_GENTLE_SHUTDOWN defined.
+  * Corrected a buffer overflow that can occur when retrieving zone
+    names that are more than 255 characters in length.
+  * The "d" domain name option format was incorrectly handled as text
+    instead of RFC 1035 wire format. Thanks to Jay Doran at BlueCat Networks
+    for reporting this issue.
+  * Improved the error message issued when a host declaration has both
+    a uid and a dhcp-client-identifier. Server configuration parsing will
+    now fail if a host declaration specifies more than one uid.
+  * Updated developer's documentation on building and running unit tests.
+    Removed support for --with-atf=bind as BIND9 no longer bundles in ATF
+    source.
+  * Fixed a syntax error in ldap.c which cropped up under Ubuntu
+    18.04.1/gcc 7.4.0. Thanks to Charles Hedrick for pointing it out.
+  * Added clarification to dhcp-options.5 section on ip-address values
+    describing the first-use DNS resolution of options with hostnames as
+    values (e.g. next-server).
+  * The option format for the server option omapi-key was changed to a
+    format type 'k' (key name); while server options ldap-port and
+    ldap-init-retry were changed to 'L' (unsigned 32-bit integer). These
+    three options were inadvertantly broken when the 'd' format content
+    was changed to comply with RFC 1035 wire format (see Gitlab #2).
+  * A delayed-ack value of 0 (the default), now correctly disables the delayed
+    feature.  A change in 4.4.0 prohibited lease updates marking leases active
+    from be written to the lease file when delayed-ack is 0. This in turn,
+    caused servers to lose active lease assignments upon restart.
+  ! Option reference count was not correctly decremented in error path
+    when parsing buffer for options. Reported by Felix Wilhelm, Google
+    Security Team.
+    CVE: CVE-2018-5733
+  ! Corrected an issue where large sized 'X/x' format options were causing
+    option handling logic to overwrite memory when expanding them to human
+    readable form. Reported by Felix Wilhelm, Google Security Team.
+    CVE: CVE-2018-5732
+  * Added use of new Bind9 compatibility header files, that are now necessary
+    to supply type definitions for primitive data types, removed from Bind9
+    proper.  Altered util/bind.sh to pull from Bind9 repo on gitlab.
+  * Duplicate address detection when binding to a new IPv6 address was added
+    to the following dhclient scripts: linux,freebsd,netbsd,openbsd, and macos.
+    The scripts will check for DAD errors after binding to a new IPv6 address
+    for at most --dad-wait-time seconds.  If a DAD error is detected the script
+    will exit with a value of 3, instructing dhclient to decline the address. If
+    dad-wait-time is zero (the default), DAD error checking is not peformed.
+  * Support for sending and receiving additional DHCP4 options has been added
+    to both the dhcpd and dhclient.  Specifically: option codes 93,94, and 97
+    (RFC 4578); code 150 (RFC 5859); and codes 209,219, and 211 (RFC 5071).
+    Beyond configuring, sending, requesting, and receiving these options neither
+    server nor client apply any additional logic based on their values.
+    Thanks to Peter Lewis for requesting this change.
+  * Added clarifying text to dhcpd.conf.5 explaining the class match expressions
+    cannot rely on the results of executable statements.
+  * Fixed a bug which causes dhcpd and dhclient to crash on certain
+    systems when given relative path names for lease or pid files on
+    the command line.  Affected systems are those on which the C library
+    function, realpath() does not support a second parameter value of
+    NULL (see manpages for realpath(3)).
+  * Fixed a build issue when building with embedded BIND9 under OpenBSD that
+    was causing BIND9 build to not generate dns/enumclass.h and dns/enumtype.h.
+  * Added <dhcp>/m4/README to the distribution tarball.  Some versions of
+    ac_local() treat the absence of the m4 subdirectory as error rather than
+    warning.  This was causing the call to autoreconf, necessary for building
+    with libtool, to fail.
+  * Added experimental support for relay port (draft-ietf-dhc-relay-port-10.txt)
+    feature for DHCPv4, DHCPv6 and DHCPv4-over-DHCPv6.  Relay port has to be
+    enabled at compile time via --enable-relay-port and is fully backward
+    compatible (i.e. works with previous implementations of servers and relays
+    using the standard ports).  A new --rp <relay-port> command line option
+    specifies to dhcrelay an alternate source port for upstream (i.e. toward
+    the server) messages.  Thanks to Naiming Shen and Enke Chen of Cisco
+    systems for submitting these patches.
+  * Added --release-on-roam to dhcpd server. When enabled and the server detects
+    that a DHCPv6 client (IAID+DUID) has roamed to a new network, it will release
+    the pre-existing leases on the old network and emit a log statement similar
+    to the following:
+
+        "Client: <id> roamed to new network, releasing lease: <address>"
+
+    The server will carry out all of the same steps that would normally occur
+    when a client explicitly releases a lease.  This behavior is disabled by
+    default and may only be specified globally. Prior to this the server renders
+    the leases unavailable until they expire or the server is restarted. Clients
+    that need leases in multiple networks must supply a unique IAID in each IA.
+    When release-on-roam is disabled (the default) the server maintains the
+    prior behavior of making such leases unavailable until they expire or the
+    server is restarted. Clients that need leases in multiple networks must
+    supply a unique IAID in each IA.  This parameter may only be specified at
+    the global level.  Thanks to Fernando Soto from BlueCat Networks for
+    suggesting this change.
+  * Support for delayed-ack is now compiled in by default. Prior to this
+    it had to be enabled at compile time via --enable-delayed-acks. The
+    default value for delayed-ack, however, has been changed from 28 to 0
+    (i.e. disabled).  This was done to minimize the impact on users not
+    currently using the feature.  Please note that the delayed-ack feature
+    is not currently compatible with support for DHPCv4-over-DHCPv6 so
+    when a 4to6 port command line argument enables this in the server the
+    delayed-ack value is reset to 0.
+  * Added to the server (-6) a new statement, local-address6, which specifies
+    the source address of packets sent by the server. An additional flag,
+    bind-local-address6, disabled by default, binds the service socket to
+    to local-address6. Note that bind-local-address does not work with direct
+    clients: a relay has to forward packets to the server using the
+    local-address6 destination.
+  * The server now recognizes environment variables PATH_DHCPD_DB and
+    PATH_DHCPD_PID.  These had been incorrectly compiled out of the code
+    unless DHCPv6 support was disabled. Additionally, the server man
+    pages were corrected to accurately reflect how the server chooses
+    file names (see lease-file-name and pid-file-name statements). Thanks
+    to Fernando Soto at Bluecat Networks for bringing this matter to our
+    attention.
+  * Removed an "Impossible condition" error upon exit in the dhcpd server that
+    has been shutdown via OMAPI. This condition was only apparent under Solaris
+    when building with --enable-use-sockets and --enable-ipv4-pktinfo.
+  * Corrected some minor Coverity issues: CID 1426059, 1426058, and 1426057.
+  * Added missing text to dhclient.8 and expanded release note coverage
+    for --address-prefix-len changes.
+- remove dhcp-CVE-2019-6470.patch,
+  0013-dhcp-4.2.x-dhcpv6-decline-on-DAD-failure.872609.patch: merged upstream
+- 0006-dhcp-4.3.2-dhclient-send-hostname-or-fqdn.patch
+  0009-dhcp-4.2.6-close-on-exec.patch
+  0016-infiniband-support.patch
+  0018-client-fail-on-script-pre-init-error-bsc-912098.patch
+   0021-dhcp-ip-family-symlinks.patch: refresh against newer code base
+- build with --enable-log-pid (log pid) and enable-binary-leases (faster
+  binary looup for large leases files)
+
+-------------------------------------------------------------------
 Tue Nov 17 13:56:54 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

@@ -195,4 +195,12 @@ http://lists.opensuse.org/opensuse-factory/2014-10/msg00153.html</comment>
 </comment>
     <requestid>831373</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>421a033cc98133680ec07d8b518e1864</srcmd5>
+    <version>0.5</version>
+    <time>1613511357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870950</requestid>
+  </revision>
 </revisionlist>

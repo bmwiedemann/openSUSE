@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 29 12:20:31 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.0
+  * Fix correct tools output message typo 
+  * Fix memory leak in dsettings
+  * Fix bug for desktop
+
+-------------------------------------------------------------------
+Tue Sep 15 06:00:59 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.2.5
+  * Fix bugs
+  * Add class DThreadUtils 
+  * Fix ID in os-release
+
+-------------------------------------------------------------------
+Mon Apr 27 03:14:34 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.0
+  * Switch to LGPLv3 license
+  * Fix bug-20975 DSettings::reset emit too many valueChanged
+  * Fix ix tow tag on same commit
+  * Support get installed memory size from lshw
+  * Fix stderr warning from deepin-os-release tool
+  * Add personal edition support and check
+  * Add class template argument for overrideVfptrFun
+  * Support override global vtable of class
+  * Add ddeDisplayName() for DDE applications
+
+-------------------------------------------------------------------
 Sun Aug  4 09:24:50 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2.1.1

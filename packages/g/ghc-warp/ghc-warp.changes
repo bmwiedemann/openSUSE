@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  4 10:33:08 UTC 2021 - psimons@suse.com
+
+- Update warp to version 3.3.14.
+  ## 3.3.14
+
+  * Drop support for GHC < 8.2.
+  * Fix header length calculation for `settingsMaxTotalHeaderLength`
+    [#838](https://github.com/yesodweb/wai/pull/838)
+  * UTF-8 encoding in `exceptionResponseForDebug`.
+    [#836](https://github.com/yesodweb/wai/pull/836)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

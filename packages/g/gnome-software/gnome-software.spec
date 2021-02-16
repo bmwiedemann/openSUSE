@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-software
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define gs_plugin_api 13
-%define _version 3_38_0
+%define _version 3_38_1
 Name:           gnome-software
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -63,9 +63,9 @@ BuildRequires:  pkgconfig(sysprof-4)
 BuildRequires:  pkgconfig(sysprof-capture-4)
 BuildRequires:  pkgconfig(xmlb) >= 0.1.7
 # boo#1090042
+Requires:       PackageKit
 Requires:       fwupd
 Requires:       iso-codes
-Requires:       PackageKit
 Requires:       (libzypp-plugin-appdata if PackageKit-backend-zypp)
 Recommends:     flatpak
 # bsc#1178768

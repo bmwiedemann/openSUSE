@@ -1,8 +1,8 @@
 #
 # spec file for package dtkwidget
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 #
 
 
-%define libver 2
+%define libver 5
+%define apiver 5.0.0
 
 Name:           dtkwidget
-Version:        2.1.1
+Version:        5.4.1
 Release:        0
 Summary:        Deepin graphical user interface library
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dtkwidget
 Source0:        https://github.com/linuxdeepin/dtkwidget/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM dtkwidget-fix-lost-pkgconfig.patch hillwood@opensuse.org - fix lost pkgconfig
 Patch0:         dtkwidget-fix-lost-pkgconfig.patch
-# PATCH-FIX-UPSTEAM dtkwidget-qt-5_15.patch hillwood@opensuse.org - Support Qt 5.15
-Patch1:         dtkwidget-qt-5_15.patch 
 BuildRequires:  fdupes
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-private-headers-devel
@@ -38,18 +37,17 @@ BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qtmultimedia-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(dframeworkdbus)
-BuildRequires:  pkgconfig(dtkcore)
+BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
+BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
-Recommends:     %{name}-lang = %{name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -59,6 +57,7 @@ work on Deepin.
 %package -n lib%{name}%{libver}
 Summary:        Libraries for dtkwidget
 Group:          System/Libraries
+Recommends:     %{name}-lang
 
 %description -n lib%{name}%{libver}
 The dtkwidget-devel package contains the header files and developer
@@ -78,9 +77,6 @@ docs for dtkcore.
 %prep
 %setup -q
 %patch0 -p1
-%if 0%{?suse_version} > 1500
-%patch1 -p1
-%endif
 
 %build
 # sed -i "s/lrelease/lrelease-qt5/g" tools/translate_generation.*
@@ -103,15 +99,15 @@ rm -rf %{buildroot}/usr/tests
 
 %files
 %defattr(-,root,root,-)
-%doc README.md CHANGELOG.md
-%license LICENSE
-%{_libdir}/libdtk-2.0.6
+%{_libdir}/libdtk-%{apiver}
 
 %files -n lib%{name}%{libver}
 %defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so.*
 
 %files devel
+%doc README.md CHANGELOG.md
+%license LICENSE
 %defattr(-,root,root,-)
 %dir %{_includedir}/libdtk-*
 %{_includedir}/libdtk-*/DWidget
@@ -125,6 +121,6 @@ rm -rf %{buildroot}/usr/tests
 
 %files lang
 %defattr(-,root,root,-)
-%{_datadir}//libdtk-2.0.6
+%{_datadir}/libdtk-%{apiver}
 
 %changelog

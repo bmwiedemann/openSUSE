@@ -4,8 +4,8 @@
  2 files changed, 18 insertions(+), 3 deletions(-)
 
 --- w.1
-+++ w.1	2018-06-05 07:04:14.040265663 +0000
-@@ -36,6 +36,9 @@ and a "w \-u".
++++ w.1	2021-02-10 09:47:10.894888530 +0000
+@@ -40,6 +40,9 @@ and a
  \fB\-s\fR, \fB\-\-short\fR
  Use the short format.  Don't print the login time, JCPU or PCPU times.
  .TP
@@ -16,8 +16,8 @@
  Toggle printing the
  .B from
 --- w.c
-+++ w.c	2018-06-05 07:04:14.040265663 +0000
-@@ -379,7 +379,7 @@ static const proc_t *getproc(const utmp_
++++ w.c	2021-02-10 09:51:09.750284453 +0000
+@@ -394,7 +394,7 @@ static const proc_t *getproc(const utmp_
  }
  
  static void showinfo(utmp_t * u, int formtype, int maxcmd, int from,
@@ -26,7 +26,7 @@
  {
  	unsigned long long jcpu;
  	int ut_pid_found;
-@@ -409,7 +409,13 @@ static void showinfo(utmp_t * u, int for
+@@ -424,7 +424,13 @@ static void showinfo(utmp_t * u, int for
  	strncpy(uname, u->ut_user, UT_NAMESIZE);
  
  	if (formtype) {
@@ -40,8 +40,8 @@
 +		printf("%-*.*s%-*.*s", userlen + 1, userlen, uname, utlnlen + 1, utlnlen, u->ut_line);
  		if (from)
  			print_from(u, ip_addresses, fromlen);
- 		print_logintime(u->ut_time, stdout);
-@@ -459,6 +465,7 @@ static void __attribute__ ((__noreturn__
+ #ifdef HAVE_UTMPX_H
+@@ -478,6 +484,7 @@ static void __attribute__ ((__noreturn__
  	fputs(_(" -h, --no-header     do not print header\n"),out);
  	fputs(_(" -u, --no-current    ignore current process username\n"),out);
  	fputs(_(" -s, --short         short format\n"),out);
@@ -49,7 +49,7 @@
  	fputs(_(" -f, --from          show remote hostname field\n"),out);
  	fputs(_(" -o, --old-style     old style output\n"),out);
  	fputs(_(" -i, --ip-addr       display IP address instead of hostname (if possible)\n"), out);
-@@ -495,6 +502,7 @@ int main(int argc, char **argv)
+@@ -514,6 +521,7 @@ int main(int argc, char **argv)
  		{"no-header", no_argument, NULL, 'h'},
  		{"no-current", no_argument, NULL, 'u'},
  		{"short", no_argument, NULL, 's'},
@@ -57,7 +57,7 @@
  		{"from", no_argument, NULL, 'f'},
  		{"old-style", no_argument, NULL, 'o'},
  		{"ip-addr", no_argument, NULL, 'i'},
-@@ -516,7 +524,7 @@ int main(int argc, char **argv)
+@@ -535,7 +543,7 @@ int main(int argc, char **argv)
  #endif
  
  	while ((ch =
@@ -66,7 +66,7 @@
  		switch (ch) {
  		case 'h':
  			header = 0;
-@@ -527,6 +535,10 @@ int main(int argc, char **argv)
+@@ -546,6 +554,10 @@ int main(int argc, char **argv)
  		case 's':
  			longform = 0;
  			break;

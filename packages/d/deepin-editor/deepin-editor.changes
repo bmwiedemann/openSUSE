@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  3 14:53:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.0.32
+  * Add many new feature
+  * Update ui design
+- Drop deepin-editor-qt-5_15.patch, fixed by upstream
+- Add Use-librares-system-default.patch, use enca and uchardet in
+  system default
+
+-------------------------------------------------------------------
 Thu Jun 25 02:48:37 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add deepin-editor-Qt-5_15.patch

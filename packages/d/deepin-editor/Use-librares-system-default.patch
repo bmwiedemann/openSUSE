@@ -1,0 +1,65 @@
+diff -Nur deepin-editor-5.9.0.32/src/CMakeLists.txt deepin-editor-5.9.0.32-new/src/CMakeLists.txt
+--- deepin-editor-5.9.0.32/src/CMakeLists.txt	2021-01-20 10:56:32.000000000 +0800
++++ deepin-editor-5.9.0.32-new/src/CMakeLists.txt	2021-02-03 21:58:15.662944628 +0800
+@@ -35,6 +35,10 @@
+ find_package(DFrameworkdbus REQUIRED)
+ find_package(Qt5Xml REQUIRED)
+ find_package(Qt5Svg REQUIRED)
++
++pkg_check_modules(ENCA REQUIRED enca)
++pkg_check_modules(UCHARDET REQUIRED uchardet)
++
+ include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
+ 
+ # Tell CMake to create the executable
+@@ -49,13 +53,13 @@
+     ${DFrameworkdbus_LIBRARIES}
+     ${Qt5Xml_LIBRARIES}
+     ${Qt5Svg_LIBRARIES}
++    uchardet
++    enca
+     KF5::Codecs
+     KF5::SyntaxHighlighting
+     ${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libcharset.a
+     ${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libiconv.a
+-    ${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libenca.a
+     -lm
+-    ${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libuchardet.a
+ )
+ 
+ set(CMAKE_INSTALL_PREFIX /usr)
+diff -Nur deepin-editor-5.9.0.32/test/CMakeLists.txt deepin-editor-5.9.0.32-new/test/CMakeLists.txt
+--- deepin-editor-5.9.0.32/test/CMakeLists.txt	2021-01-20 10:56:32.000000000 +0800
++++ deepin-editor-5.9.0.32-new/test/CMakeLists.txt	2021-02-03 22:02:19.238211229 +0800
+@@ -46,8 +46,6 @@
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/include)
+ link_libraries(${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libcharset.a)
+ link_libraries(${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libiconv.a)
+-link_libraries(${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libenca.a)
+-link_libraries(${CMAKE_CURRENT_SOURCE_DIR}/../third/lib/lib/libuchardet.a)
+ 
+ set(PROJECT_NAME_TEST
+     ${PROJECT_NAME}_test)
+@@ -90,6 +88,8 @@
+     Qt5::Widgets
+     Qt5::DBus
+     Qt5::Test
++    uchardet
++    enca
+     ${Qt5Widgets_LIBRARIES}
+     ${Qt5DBus_LIBRARIES}
+     ${Qt5Concurrent_LIBRARIES}
+diff -Nur deepin-editor-5.9.0.32/third/CMakeLists.txt deepin-editor-5.9.0.32-new/third/CMakeLists.txt
+--- deepin-editor-5.9.0.32/third/CMakeLists.txt	2021-01-20 10:56:32.000000000 +0800
++++ deepin-editor-5.9.0.32-new/third/CMakeLists.txt	2021-02-03 21:41:57.841725874 +0800
+@@ -1,8 +1,8 @@
+ #install iconv
+ execute_process(COMMAND bash "${CMAKE_CURRENT_SOURCE_DIR}/iconv_install.sh" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+ #install enca
+-execute_process(COMMAND bash "${CMAKE_CURRENT_SOURCE_DIR}/enca_install.sh" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
++# execute_process(COMMAND bash "${CMAKE_CURRENT_SOURCE_DIR}/enca_install.sh" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+ #install uchardet
+-execute_process(COMMAND bash "${CMAKE_CURRENT_SOURCE_DIR}/uchartdet_install.sh" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
++# execute_process(COMMAND bash "${CMAKE_CURRENT_SOURCE_DIR}/uchartdet_install.sh" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ 

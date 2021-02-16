@@ -1,7 +1,7 @@
 #
 # spec file for package zile
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           zile
-Version:        2.4.14
+Version:        2.4.15
 Release:        0
 Summary:        Lightweight Emacs Clone
 License:        GPL-3.0-only
 Group:          Productivity/Text/Editors
-Url:            https://www.gnu.org/software/zile/
+URL:            https://www.gnu.org/software/zile/
 Source0:        https://ftp.gnu.org/gnu/zile/zile-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/zile/zile-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
@@ -74,7 +74,7 @@ This package contains the documentation and the man page for %{name}.
   --disable-debug \
   --disable-silent-rules \
   --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -84,21 +84,23 @@ install -Dp -m 0644 "%{SOURCE3}" "%{buildroot}%{_datadir}/applications/%{name}.d
 install -Dp -m 0644 "%{SOURCE4}" "%{buildroot}%{_datadir}/pixmaps/%{name}.png"
 %suse_update_desktop_file "%{name}" Utility TextEditor
 
+%if 0%{?suse_version} < 1330
 %post
 %desktop_database_post
+%endif
 
+%if 0%{?suse_version} < 1330
 %postun
 %desktop_database_postun
+%endif
 
 %files
-%defattr(-,root,root)
 %{_bindir}/zile
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{_mandir}/man1/zile.1%{ext_man}
+%{_mandir}/man1/zile.1%{?ext_man}
 
 %files doc
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}
 
 %changelog
