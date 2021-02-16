@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  8 21:26:29 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.4.11 with security fix:
+  Fix cross-site scripting (XSS) via HTML messages with malicious CSS content
+
+-------------------------------------------------------------------
 Fri Jan 22 17:46:59 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - add PHP version to Requires: and Recommends: to make sure the same
