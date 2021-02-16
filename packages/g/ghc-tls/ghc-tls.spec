@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tls
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name tls
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        TLS/SSL protocol native implementation (Server and Client)
 License:        BSD-3-Clause
