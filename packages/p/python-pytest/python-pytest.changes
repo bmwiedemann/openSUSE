@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 14 20:30:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't require python36-numpy for testing, because Tumbleweed
+  cannot provide python36-numpy any longer: NumPy 1.20 dropped
+  Python 3.6 support. The tests are skipped automatically.
+
+-------------------------------------------------------------------
+Thu Feb 11 14:07:38 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 6.2.2
+  * #8152: Fixed "(<Skipped instance>)" being shown as a skip reason in the 
+    verbose test summary line when the reason is empty.
+  * #8249: Fix the faulthandler plugin for occasions when running with 
+    twisted.logger and using pytest --capture=no.
+
+-------------------------------------------------------------------
 Tue Jan  5 14:50:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.2.1

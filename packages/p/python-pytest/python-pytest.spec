@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
@@ -59,7 +59,7 @@ BuildRequires:  %{python_module hypothesis >= 3.56}
 # nose is really not REQUIRED, the test suite skips over particular
 # tests, when the package is not available.
 # BuildRequires:  %%{python_module nose}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest >= %{version}}
