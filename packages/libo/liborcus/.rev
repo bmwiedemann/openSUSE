@@ -316,4 +316,12 @@
   * match up with ixion 0.16 release</comment>
     <requestid>841729</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>9a667434f5e908d663e3372ef9046934</srcmd5>
+    <version>0.16.1</version>
+    <time>1613511318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870828</requestid>
+  </revision>
 </revisionlist>

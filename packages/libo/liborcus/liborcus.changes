@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  9 16:52:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes to fix build with GCC 11 (boo#1181872):
+  * GCC11_build_fixes.patch
+
+-------------------------------------------------------------------
 Wed Oct 14 09:01:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.16.1:
