@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-ghc-lib-parser-ex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name ghc-lib-parser-ex
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        8.10.0.17
+Version:        8.10.0.19
 Release:        0
 Summary:        Algorithms on GHC parse trees
 License:        BSD-3-Clause

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  8 05:05:21 UTC 2021 - psimons@suse.com
+
+- Update ghc-lib-parser-ex to version 8.10.0.19.
+  ## 8.10.0.18 released 2021-02-06
+  - Update to ghc-8.10.4.
+
+  ## 9.0.0.1 released 2021-02-05
+  - Upgrade Cabal defaults flag to 9.0.1
+
+  ## 9.0.0.0 released 2021-02-05
+  - Update to ghc-9.0.1
+
+  ## 0.20210201 released 2021-02-01
+  - Update to `ghc-lib-0.20210201`
+
+  ## 0.20210101 released 2021-01-01
+  - Update to `ghc-lib-0.20210101`
+
+-------------------------------------------------------------------
 Tue Dec 22 12:59:21 UTC 2020 - psimons@suse.com
 
 - Update ghc-lib-parser-ex to version 8.10.0.17.
