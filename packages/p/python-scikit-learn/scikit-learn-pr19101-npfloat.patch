@@ -1,0 +1,23 @@
+From e7ef22c3ba2334cb3b476e95d7c083cf6b48ce56 Mon Sep 17 00:00:00 2001
+From: Guillaume Lemaitre <g.lemaitre58@gmail.com>
+Date: Mon, 4 Jan 2021 10:57:03 +0100
+Subject: [PATCH] TST explicit convert array to float that will contains np.nan
+ [scipy-dev]
+
+---
+ sklearn/metrics/tests/test_common.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sklearn/metrics/tests/test_common.py b/sklearn/metrics/tests/test_common.py
+index 767228d46078..181baf19de3c 100644
+--- a/sklearn/metrics/tests/test_common.py
++++ b/sklearn/metrics/tests/test_common.py
+@@ -198,7 +198,7 @@ def precision_recall_curve_padded_thresholds(*args, **kwargs):
+     return np.array([
+         precision,
+         recall,
+-        np.pad(thresholds,
++        np.pad(thresholds.astype(np.float64),
+                pad_width=(0, pad_threshholds),
+                mode='constant',
+                constant_values=[np.nan])

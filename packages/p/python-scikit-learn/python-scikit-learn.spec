@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-# SciPy 1.6.0 dropped Python 3.6 support, NumPy 1.20 will do, too.
+# SciPy 1.6.0 and NumPy 1.20 dropped Python 3.6 support.
 %define         skip_python36 1
 %bcond_with extratest
 Name:           python-scikit-learn
@@ -28,6 +28,8 @@ Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM  scikit-learn-pr19101-npfloat.patch gh#scikit-learn/scikit-learn#19101
+Patch0:         https://github.com/scikit-learn/scikit-learn/pull/19101.patch#/scikit-learn-pr19101-npfloat.patch
 BuildRequires:  %{python_module Cython >= 0.28.5}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module joblib >= 0.11}
