@@ -1,8 +1,8 @@
 #
 # spec file for package dtkcore
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017-2018 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 #
 
 
-%define libver 2
+%define libver 5
+%define apiver 5.0.0
 
 Name:           dtkcore
-Version:        2.1.1
+Version:        5.4.0
 Release:        0
 Summary:        Deepin Tool Kit Core
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-only
 Group:          System/GUI/Other
-Url:            https://github.com/linuxdeepin/dtkcore
+URL:            https://github.com/linuxdeepin/dtkcore
 Source0:        https://github.com/linuxdeepin/dtkcore/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  libqt5-linguist
@@ -64,17 +65,17 @@ You shoud firstly read the "Deepin Application Specification".
 %prep
 %setup -q
 sed -i 's/system(lrelease/system(lrelease-qt5/g' src/dtk_translation.prf
+sed -i 's|#!/usr/bin/env python|#!/usr/bin/python3|g' tools/script/dtk-license.py
+sed -i 's|#!env python|#!/usr/bin/python3|g' tools/script/dtk-translate.py
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
         PREFIX=%{_prefix} \
         LIB_INSTALL_DIR=%{_libdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake5_install
-# mkdir -p %{buildroot}%{_libdir}/qt5
-# mv %{buildroot}/mkspecs %{buildroot}%{_libdir}/qt5/
 # Remove useless files
 rm -rf %{buildroot}/usr/tests
 
@@ -85,9 +86,8 @@ rm -rf %{buildroot}/usr/tests
 %defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
 %license LICENSE
-# %dir %{_libexecdir}/dtk2
-# %{_libexecdir}/dtk2/*
-%{_libdir}/libdtk-2.0.6
+%{_libdir}/libdtk-%{apiver}
+%{_datadir}/glib-2.0/schemas/com.deepin.dtk.gschema.xml
 
 %files -n lib%{name}%{libver}
 %defattr(-,root,root,-)
@@ -97,7 +97,7 @@ rm -rf %{buildroot}/usr/tests
 %defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/dtkcore.pc
-%{_includedir}/libdtk-2.0.6
+%{_includedir}/libdtk-%{apiver}
 %dir %{_libdir}/qt5
 %dir %{_libdir}/qt5/mkspecs
 %{_libdir}/qt5/mkspecs/features
