@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 12 20:03:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  * no release notes
+
+-------------------------------------------------------------------
+Thu Jan 21 23:47:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix test for multi-version python.
+- Disable builds for python3.6 since astropy is not available
+  for python < 3.7.
+
+-------------------------------------------------------------------
+Mon Jan 18 14:51:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave bindings, since octave >= 6 isn't supported.
+
+-------------------------------------------------------------------
 Sun Oct 25 18:36:35 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update URL.

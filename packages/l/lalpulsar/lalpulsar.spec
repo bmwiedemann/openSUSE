@@ -1,7 +1,7 @@
 #
 # spec file for package lalpulsar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,15 @@
 #
 
 
-%define shlib lib%{name}21
-%bcond_without octave
+%define shlib lib%{name}23
+# octave >= 6 is not supported
+%bcond_with octave
+
+# astropy and numy unsupported for python < 3.7 in TW
+%define skip_python36 1
+
 Name:           lalpulsar
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
@@ -29,8 +34,8 @@ Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{versi
 # PATCH-FIX-UPSTREAM lalpulsar-printf-type-mismatch.patch badshah400@gmail.com -- Fix type mismatch when passing variables to printf
 Patch0:         lalpulsar-printf-type-mismatch.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -52,8 +57,8 @@ BuildRequires:  octave-lal
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
-BuildRequires:  python3-astropy
-BuildRequires:  python3-pytest
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -157,10 +162,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %check
-export PYTHON=%{_bindir}/python3
-pushd ../python3_build
+%{python_expand export PYTHON=$python
+pushd ../${PYTHON}_build
 %make_build check
 popd
+}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
