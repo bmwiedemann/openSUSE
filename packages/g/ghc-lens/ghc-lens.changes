@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb  8 19:13:43 UTC 2021 - psimons@suse.com
+
+- Update lens to version 4.19.2 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Jan 31 13:49:07 UTC 2021 - psimons@suse.com
+
+- Update lens to version 4.19.2 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Jan 20 08:35:33 UTC 2021 - psimons@suse.com
+
+- Update lens to version 4.19.2 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
