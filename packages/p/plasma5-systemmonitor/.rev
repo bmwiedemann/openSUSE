@@ -7,4 +7,12 @@
     <comment>New part of Plasma 5.21</comment>
     <requestid>846398</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a41d18931edeb592ba2575cba2fd876</srcmd5>
+    <version>5.21.0</version>
+    <time>1613463526</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
+    <requestid>872114</requestid>
+  </revision>
 </revisionlist>

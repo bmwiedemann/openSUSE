@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Layout tables correctly in rtl case
+  * Improve dragging in rtl mode
+  * Fix crashes relating to PageDialog (kde#432147)
+  * Always open a dialog when it's loaded
+  * Make table header height equal to Kirigami list item height
+  * Remove rangeToX values from History page
+  * ProcessSortFilter: Check if any column has been set rather than only uid
+  * Use the correct total memory sensor for Application Details
+  * Port ApplicationDetails to use HistoryProxySource
+  * Use view color as background color for Application Details pane
+  * Set a proper icon for the "search" actions in table faces
+  * Create TreeDecoration dynamically
+  * Use a Loader for deferring creation of dialogs in main files
+
+-------------------------------------------------------------------
+Thu Jan 21 21:32:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Thu Nov  5 19:53:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Use suse_update_desktop_file to fix build on Leap

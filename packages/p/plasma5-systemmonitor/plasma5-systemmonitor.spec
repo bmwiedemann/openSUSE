@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-systemmonitor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,27 @@
 %define kf5_version 5.73.0
 %bcond_without lang
 Name:           plasma5-systemmonitor
-Version:        5.20.0
+Version:        5.21.0
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma-systemmonitor/plasma-systemmonitor-%{version}.tar.xz
+Source0:        plasma-systemmonitor-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma-systemmonitor/plasma-systemmonitor-%{version}.tar.xz.sig
+Source1:        plasma-systemmonitor-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
@@ -46,12 +48,11 @@ BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  update-desktop-files
+Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kitemmodels-imports
 Requires:       knewstuff-imports
 Requires:       kquickcharts
-Requires:       kdeclarative-components
 Requires:       libqt5-qtquickcontrols2
 Requires:       qqc2-desktop-style
 
