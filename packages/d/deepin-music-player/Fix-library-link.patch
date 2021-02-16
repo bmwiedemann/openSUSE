@@ -1,0 +1,18 @@
+diff -Nur deepin-music-6.0.1.91/music/libdmusic/CMakeLists.txt deepin-music-6.0.1.91-new/music/libdmusic/CMakeLists.txt
+--- deepin-music-6.0.1.91/music/libdmusic/CMakeLists.txt	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/libdmusic/CMakeLists.txt	2021-01-29 21:05:56.047335260 +0800
+@@ -19,11 +19,11 @@
+ set_target_properties(dmusic PROPERTIES VERSION 1.0.0 SOVERSION 1.0)
+ 
+ #使用第三方库需要用到的一个包
+-find_package(PkgConfig REQUIRED)
++find_package(PkgConfig REQUIRED libavcodec)
+ 
+ #检查第三方库(这里检查了名字为dtkwidget的库和名字为dtkgui的库)，然后取名3rd_lib
+ pkg_check_modules(3rd_lib REQUIRED
+-        dtkwidget dtkgui
++        dtkwidget dtkgui libavcodec
+         )
+ #添加第三方库的所有文件夹路径到工程中来(注意 *_INCLUDE_DIRS)
+ target_include_directories(${CMD_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS})
+ 

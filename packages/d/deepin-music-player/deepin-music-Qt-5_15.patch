@@ -1,17 +1,17 @@
-diff -Nur deepin-music-5.0.1/src/music-player/view/lyricwidget.cpp deepin-music-5.0.1-new/src/music-player/view/lyricwidget.cpp
---- deepin-music-5.0.1/src/music-player/view/lyricwidget.cpp	2019-06-01 14:20:13.000000000 +0800
-+++ deepin-music-5.0.1-new/src/music-player/view/lyricwidget.cpp	2020-06-17 20:34:12.950660815 +0800
-@@ -29,6 +29,7 @@
- #include <QHBoxLayout>
- #include <QListView>
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/lyricwidget.cpp deepin-music-6.0.1.91-new/music/music-player/view/lyricwidget.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/lyricwidget.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/lyricwidget.cpp	2021-01-29 21:10:10.514333644 +0800
+@@ -28,6 +28,7 @@
  #include <QPainter>
-+#include <QPainterPath>
  #include <QResizeEvent>
  #include <QPaintEvent>
++#include <QPainterPath>
  #include <QStringListModel>
-diff -Nur deepin-music-5.0.1/src/music-player/view/widget/cover.cpp deepin-music-5.0.1-new/src/music-player/view/widget/cover.cpp
---- deepin-music-5.0.1/src/music-player/view/widget/cover.cpp	2019-06-01 14:20:13.000000000 +0800
-+++ deepin-music-5.0.1-new/src/music-player/view/widget/cover.cpp	2020-06-17 20:34:40.078624269 +0800
+ #include <QAbstractItemDelegate>
+ 
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/cover.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/cover.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/cover.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/cover.cpp	2021-01-29 22:14:47.222688022 +0800
 @@ -23,6 +23,7 @@
  
  #include <QDebug>
@@ -20,9 +20,75 @@ diff -Nur deepin-music-5.0.1/src/music-player/view/widget/cover.cpp deepin-music
  #include <QGraphicsDropShadowEffect>
  
  static auto borderPenWidth = 1.0;
-diff -Nur deepin-music-5.0.1/src/music-player/view/widget/soundvolume.cpp deepin-music-5.0.1-new/src/music-player/view/widget/soundvolume.cpp
---- deepin-music-5.0.1/src/music-player/view/widget/soundvolume.cpp	2019-06-01 14:20:13.000000000 +0800
-+++ deepin-music-5.0.1-new/src/music-player/view/widget/soundvolume.cpp	2020-06-17 20:35:00.610598544 +0800
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/delegate/musiclistdatadelegate.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/delegate/musiclistdatadelegate.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/delegate/musiclistdatadelegate.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/delegate/musiclistdatadelegate.cpp	2021-01-29 22:16:58.338306819 +0800
+@@ -22,6 +22,7 @@
+ #include "musiclistdatadelegate.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QDebug>
+ #include <QDate>
+ #include <QEvent>
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/delegate/musicsearchlistdelegate.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/delegate/musicsearchlistdelegate.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/delegate/musicsearchlistdelegate.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/delegate/musicsearchlistdelegate.cpp	2021-01-29 22:17:25.110228989 +0800
+@@ -25,6 +25,7 @@
+ #include <DHiDPIHelper>
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QTextDocument>
+ #include <QStyleOptionViewItem>
+ #include <QTextCursor>
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/delegate/playitemdelegate.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/delegate/playitemdelegate.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/delegate/playitemdelegate.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/delegate/playitemdelegate.cpp	2021-01-29 22:17:57.626106765 +0800
+@@ -26,6 +26,7 @@
+ #include <QFont>
+ #include <DGuiApplicationHelper>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QStandardItemModel>
+ 
+ #include <musicmeta.h>
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/musicpixmapbutton.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/musicpixmapbutton.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/musicpixmapbutton.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/musicpixmapbutton.cpp	2021-01-29 22:21:32.385261987 +0800
+@@ -23,6 +23,7 @@
+ 
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QRect>
+ 
+ MusicPixmapButton::MusicPixmapButton(QWidget *parent)
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/musictitleimage.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/musictitleimage.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/musictitleimage.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/musictitleimage.cpp	2021-01-29 22:22:04.981133779 +0800
+@@ -22,6 +22,7 @@
+ #include "musictitleimage.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ MusicTitleImageWidget::MusicTitleImageWidget(QWidget *parent)
+     : DWidget( parent)
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/soundpixmapbutton.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/soundpixmapbutton.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/soundpixmapbutton.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/soundpixmapbutton.cpp	2021-01-29 22:25:51.928241116 +0800
+@@ -19,6 +19,7 @@
+ 
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QRect>
+ 
+ SoundPixmapButton::SoundPixmapButton(QWidget *parent)
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/soundvolume.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/soundvolume.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/soundvolume.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/soundvolume.cpp	2021-01-29 22:22:25.209054216 +0800
 @@ -23,6 +23,7 @@
  
  #include <QDebug>
@@ -31,3 +97,36 @@ diff -Nur deepin-music-5.0.1/src/music-player/view/widget/soundvolume.cpp deepin
  #include <QWheelEvent>
  #include <QGraphicsDropShadowEffect>
  #include <QVBoxLayout>
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/tooltips.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/tooltips.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/tooltips.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/tooltips.cpp	2021-01-29 22:22:50.108956273 +0800
+@@ -33,6 +33,7 @@
+ #include <QHBoxLayout>
+ #include <QLabel>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QGraphicsDropShadowEffect>
+ #include <QPropertyAnimation>
+ #include <QGraphicsOpacityEffect>
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/waveform.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/waveform.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/waveform.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/waveform.cpp	2021-01-29 22:23:16.244853467 +0800
+@@ -26,6 +26,7 @@
+ #include <QPaintEvent>
+ #include <QApplication>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QAudioBuffer>
+ #include <QAudioFormat>
+ #include <QWidget>
+diff -Nur deepin-music-6.0.1.91/music/music-player/view/widget/waveformscale.cpp deepin-music-6.0.1.91-new/music/music-player/view/widget/waveformscale.cpp
+--- deepin-music-6.0.1.91/music/music-player/view/widget/waveformscale.cpp	2020-11-12 20:55:12.000000000 +0800
++++ deepin-music-6.0.1.91-new/music/music-player/view/widget/waveformscale.cpp	2021-01-29 22:23:42.904748611 +0800
+@@ -27,6 +27,7 @@
+ #include <QEvent>
+ #include <QPaintEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ #include <mediameta.h>
+ 
