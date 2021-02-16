@@ -1319,6 +1319,9 @@ unsorted:
   - boost-gnu-openmpi3-hpc: [x86_64] 
   - boost-gnu-openmpi3-hpc-devel: [x86_64] 
   - boost-gnu-openmpi3-hpc-python3: [x86_64] 
+  - boost-gnu-openmpi4-hpc: [x86_64] 
+  - boost-gnu-openmpi4-hpc-devel: [x86_64] 
+  - boost-gnu-openmpi4-hpc-python3: [x86_64] 
   - boost-jam 
   - boost1_75_0-doc-html 
   - boost1_75_0-doc-pdf 
@@ -1338,8 +1341,14 @@ unsorted:
   - boost_1_75_0-gnu-openmpi3-hpc: [x86_64] 
   - boost_1_75_0-gnu-openmpi3-hpc-devel: [x86_64] 
   - boost_1_75_0-gnu-openmpi3-hpc-python3: [x86_64] 
+  - boost_1_75_0-gnu-openmpi4-hpc: [x86_64] 
+  - boost_1_75_0-gnu-openmpi4-hpc-devel: [x86_64] 
+  - boost_1_75_0-gnu-openmpi4-hpc-python3: [x86_64] 
   - booth 
   - booth-test 
+  - bootiso 
+  - bootiso-bash-completion 
+  - bootiso-zsh-completion 
   - bootsplash-branding-KDE 
   - bootsplash-branding-upstream 
   - borgbackup 
@@ -1884,6 +1893,7 @@ unsorted:
   - cinnamon-settings-daemon-devel 
   - cinnamon-settings-daemon-lang 
   - cinnamon-theme-adapta 
+  - cinnamon-theme-matcha 
   - cinnamon-theme-plata 
   - cint-devel 
   - citra: [x86_64] 
@@ -5574,6 +5584,7 @@ unsorted:
   - gnome-shell-search-provider-gnote 
   - gnome-shell-search-provider-lollypop 
   - gnome-shell-theme-adapta 
+  - gnome-shell-theme-matcha 
   - gnome-shell-theme-plata 
   - gnome-software-devel 
   - gnome-sound-recorder 
@@ -6086,6 +6097,7 @@ unsorted:
   - gtk2-metatheme-elementary 
   - gtk2-metatheme-equinox 
   - gtk2-metatheme-greybird 
+  - gtk2-metatheme-matcha 
   - gtk2-metatheme-mint 
   - gtk2-metatheme-nimbus 
   - gtk2-metatheme-numix 
@@ -6120,6 +6132,7 @@ unsorted:
   - gtk3-metatheme-e17gtk 
   - gtk3-metatheme-elementary 
   - gtk3-metatheme-greybird 
+  - gtk3-metatheme-matcha 
   - gtk3-metatheme-mint 
   - gtk3-metatheme-numix 
   - gtk3-metatheme-paper 
@@ -6961,6 +6974,8 @@ unsorted:
   - jansi-javadoc 
   - jansi-native 
   - jansi-native-javadoc 
+  - janus-gateway 
+  - janus-gateway-devel 
   - jarjar 
   - jarjar-javadoc 
   - jasper 
@@ -7362,7 +7377,6 @@ unsorted:
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_cms 
-  - jupyter-jupyter_console 
   - jupyter-jupyter_contrib_core 
   - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_dashboards 
@@ -7807,6 +7821,8 @@ unsorted:
   - knights-lang 
   - knock 
   - knockd 
+  - knot 
+  - knot-devel 
   - knotifications-devel 
   - knotifications-devel-32bit: [x86_64] 
   - knotifyconfig-devel 
@@ -8112,6 +8128,7 @@ unsorted:
   - ladspa-zam-plugins 
   - laf-plugin 
   - laf-plugin-javadoc 
+  - lagrange 
   - lal-devel: [x86_64] 
   - lalapps: [x86_64] 
   - lalburst-devel: [x86_64] 
@@ -8581,11 +8598,11 @@ unsorted:
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_10-1 
-  - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
+  - libMagick++-7_Q16HDRI5-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
-  - libMagickCore-7_Q16HDRI8-32bit: [x86_64] 
-  - libMagickWand-7_Q16HDRI8-32bit: [x86_64] 
+  - libMagickCore-7_Q16HDRI9-32bit: [x86_64] 
+  - libMagickWand-7_Q16HDRI9-32bit: [x86_64] 
   - libMathMLSolver0_3 
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
@@ -10038,6 +10055,7 @@ unsorted:
   - libdns1611-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
+  - libdnssec8 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-20_0: [x86_64] 
   - libdrm-devel: [i586] # devel package of dvd:libdrm2 
@@ -11264,7 +11282,7 @@ unsorted:
   - libkdecoration2-devel 
   - libkdecoration2-devel-32bit: [x86_64] 
   - libkdecorations2-5-32bit: [x86_64] 
-  - libkdecorations2private7-32bit: [x86_64] 
+  - libkdecorations2private8-32bit: [x86_64] 
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdsoap-server1_9_0 
@@ -11335,6 +11353,7 @@ unsorted:
   - libknet1-crypto-plugins-all 
   - libknet1-devel 
   - libknet1-plugins-all 
+  - libknot11 
   - libkokkos3: [x86_64] 
   - libkolabxml-devel 
   - libkomparediff2-devel 
@@ -11963,6 +11982,7 @@ unsorted:
   - libnormaliz3 
   - libnoson2 
   - libnotcurses++2 
+  - libnotcurses-core2 
   - libnotcurses2 
   - libnotify-devel 
   - libnotify-devel-32bit: [x86_64] 
@@ -12294,7 +12314,7 @@ unsorted:
   - libpapi 
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
-  - libpapi_6_0_0-hpc 
+  - libpapi_6_0_0_1-hpc 
   - libparaview5_8 
   - libpari-gmp-tls7 
   - libparlatype-devel 
@@ -12476,7 +12496,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler106-32bit: [x86_64] 
+  - libpoppler107-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -12550,6 +12570,7 @@ unsorted:
   - libpt2_10_11-plugins-avc 
   - libpt2_10_11-plugins-pulse 
   - libptexenc1 
+  - libptl1 
   - libptscotch-gnu-mpich-hpc 
   - libptscotch-gnu-mvapich2-hpc 
   - libptscotch-gnu-openmpi1-hpc 
@@ -12587,7 +12608,6 @@ unsorted:
   - libpython3_8-1_0-32bit: [x86_64] 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
-  - libqaccessibilityclient-qt5-0 
   - libqaccessibilityclient-qt5-devel 
   - libqalculate-devel 
   - libqb-devel 
@@ -13559,6 +13579,8 @@ unsorted:
   - libt3widget2 
   - libt3window-devel 
   - libt3window0 
+  - libta-devel 
+  - libta_lib0 
   - libtachyon-0_99b6 
   - libtachyon-devel 
   - libtag-devel 
@@ -13841,6 +13863,7 @@ unsorted:
   - libusbmuxd-tools 
   - libusrp-3_4_4+git_20190808-0 
   - libusrp-devel 
+  - libusrsctp2 
   - libustr-1_0-1 
   - libustr-1_0-1-32bit: [x86_64] 
   - libustr-devel 
@@ -14464,6 +14487,7 @@ unsorted:
   - libzopflipng1 
   - libzrtpcpp-devel 
   - libzrtpcpp4 
+  - libzscanner3 
   - libzsolve0 
   - libzstd-devel 
   - libzstd-devel-32bit: [x86_64] 
@@ -14849,7 +14873,6 @@ unsorted:
   - lua53-penlight-doc 
   - lua53-say 
   - lua53-zlib 
-  - lua54 
   - lua54-alt-getopt 
   - lua54-argparse 
   - lua54-busted 
@@ -14880,7 +14903,6 @@ unsorted:
   - lua54-luaposix 
   - lua54-luarocks 
   - lua54-luasec 
-  - lua54-luasocket 
   - lua54-luasocket-devel 
   - lua54-luasql 
   - lua54-luassert 
@@ -15481,6 +15503,7 @@ unsorted:
   - metacity-devel 
   - metacity-lang 
   - metacity-theme-adapta 
+  - metacity-theme-matcha 
   - metacity-theme-plata 
   - metacity-tools 
   - metaio-devel 
@@ -15498,6 +15521,7 @@ unsorted:
   - metatheme-e17gtk-common 
   - metatheme-elementary-common 
   - metatheme-greybird-common 
+  - metatheme-matcha-common 
   - metatheme-mint-common 
   - metatheme-numix-common 
   - metatheme-paper-common 
@@ -16564,6 +16588,8 @@ unsorted:
   - nettle 
   - netty 
   - netty-javadoc 
+  - netty-jni-util 
+  - netty-jni-util-sources 
   - netty-poms 
   - netty-tcnative 
   - netty-tcnative-javadoc 
@@ -16672,6 +16698,7 @@ unsorted:
   - noson-devel 
   - notary 
   - notcurses++-devel 
+  - notcurses-core-devel 
   - notcurses-demos 
   - notcurses-devel 
   - notejot 
@@ -17270,7 +17297,6 @@ unsorted:
   - octave-forge-tisean 
   - octave-forge-tsa 
   - octave-forge-vrml 
-  - octave-lal: [x86_64] 
   - octave-lalburst: [x86_64] 
   - octave-lalframe: [x86_64] 
   - octave-lalinference: [x86_64] 
@@ -17438,6 +17464,7 @@ unsorted:
   - openbox-gnome 
   - openbox-kde 
   - openbox-theme-adapta 
+  - openbox-theme-matcha 
   - openbox-theme-plata 
   - openbsc 
   - openbsc-bs11-utils 
@@ -17921,9 +17948,9 @@ unsorted:
   - papi-devel-static 
   - papi-hpc 
   - papi-hpc-devel 
-  - papi_6_0_0-hpc 
-  - papi_6_0_0-hpc-devel 
-  - papi_6_0_0-hpc-devel-static 
+  - papi_6_0_0_1-hpc 
+  - papi_6_0_0_1-hpc-devel 
+  - papi_6_0_0_1-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
   - paps 
@@ -17995,6 +18022,8 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
+  - patterns-cinnamon-cinnamon 
+  - patterns-cinnamon-cinnamon_basis 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -18244,6 +18273,7 @@ unsorted:
   - pencil 
   - pentaho-libxml-javadoc 
   - pentaho-reporting-flow-engine-javadoc 
+  - pentobi 
   - percona-toolkit 
   - perf 
   - perftest 
@@ -19620,6 +19650,7 @@ unsorted:
   - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
+  - php7-memcache 
   - php7-memcached 
   - php7-odbc 
   - php7-opcache 
@@ -19675,6 +19706,7 @@ unsorted:
   - php8-intl 
   - php8-ldap 
   - php8-mbstring 
+  - php8-memcache 
   - php8-mysql 
   - php8-odbc 
   - php8-opcache 
@@ -19787,6 +19819,7 @@ unsorted:
   - plank-metatheme-elementary 
   - plank-theme-adapta 
   - plank-theme-elementary 
+  - plank-theme-matcha 
   - plank-theme-plata 
   - plantuml 
   - plasma-applet-weather-widget 
@@ -19899,7 +19932,6 @@ unsorted:
   - plplot-driver-xwin 
   - plplot-java 
   - plplot-lua 
-  - plplot-octave 
   - plplot-python3-qt 
   - plplot-tcltk-devel 
   - plplot-tcltk-libs 
@@ -20338,6 +20370,7 @@ unsorted:
   - pstoedit 
   - pstoedit-devel 
   - pthread-stubs-devel 
+  - ptl-devel 
   - ptokax 
   - ptpd 
   - ptscotch-gnu-mpich-hpc 
@@ -20478,7 +20511,6 @@ unsorted:
   - python-cliff-doc 
   - python-cloud-sptheme-doc 
   - python-congressclient-doc 
-  - python-cotyledon-doc 
   - python-curses 
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
@@ -20690,7 +20722,6 @@ unsorted:
   - python3-coconut 
   - python3-concurrentloghandler 
   - python3-congressclient 
-  - python3-cotyledon 
   - python3-csvkit 
   - python3-ctypeslib2 
   - python3-dbus-presage 
@@ -20739,7 +20770,6 @@ unsorted:
   - python3-framel 
   - python3-freezerclient 
   - python3-futurist 
-  - python3-gabbi 
   - python3-gcemetadata 
   - python3-gdcm 
   - python3-geis 
@@ -20776,7 +20806,7 @@ unsorted:
   - python3-hyper 
   - python3-img-proof 
   - python3-img-proof-tests 
-  - python3-img2pdf 
+  - python3-img2pdf: [i586] 
   - python3-imobiledevice 
   - python3-impacket 
   - python3-influxdb 
@@ -20790,7 +20820,6 @@ unsorted:
   - python3-jfscripts 
   - python3-jirafs 
   - python3-jsonpath-rw-ext 
-  - python3-kasa 
   - python3-kea 
   - python3-keras2onnx: [x86_64] 
   - python3-keystoneauth1 
@@ -20809,7 +20838,6 @@ unsorted:
   - python3-lash 
   - python3-lasso 
   - python3-ldappool 
-  - python3-ldas-tools-al-swig 
   - python3-ldb-32bit: [x86_64] 
   - python3-ldb-devel 
   - python3-ldns 
@@ -20868,7 +20896,6 @@ unsorted:
   - python3-libvoikko 
   - python3-libvshadow 
   - python3-libvslvm 
-  - python3-ligo-lw: [x86_64] 
   - python3-lilv 
   - python3-linstor-client 
   - python3-lldb: [x86_64] 
@@ -20918,7 +20945,6 @@ unsorted:
   - python3-ntp 
   - python3-obexftp 
   - python3-octaviaclient 
-  - python3-onnx 
   - python3-onnxconverter-common 
   - python3-openbabel 
   - python3-opencv 
@@ -20962,7 +20988,7 @@ unsorted:
   - python3-paraview 
   - python3-pcp 
   - python3-piexif 
-  - python3-pikepdf 
+  - python3-pikepdf: [i586] 
   - python3-plist 
   - python3-plplot 
   - python3-pocketsphinx 
@@ -20970,7 +20996,6 @@ unsorted:
   - python3-policycoreutils: [i586] 
   - python3-poppler-qt5 
   - python3-poppler-qt5-devel 
-  - python3-postorius 
   - python3-pre-commit 
   - python3-prelude-correlator 
   - python3-presage 
@@ -21027,7 +21052,6 @@ unsorted:
   - python3-sorl-thumbnail 
   - python3-spglib 
   - python3-sphinx-autodoc-typehints 
-  - python3-sphinx-feature-classification 
   - python3-sphinxbase 
   - python3-sphinxbase5 
   - python3-splinter 
@@ -21060,6 +21084,7 @@ unsorted:
   - python3-vapoursynth 
   - python3-vdirsyncer 
   - python3-virtualbox: [x86_64] 
+  - python3-virtualenvwrapper 
   - python3-vtk 
   - python3-vtk-openmpi1 
   - python3-vtk-openmpi2 
@@ -21158,7 +21183,6 @@ unsorted:
   - python36-Keras-Preprocessing: [x86_64] 
   - python36-Kivy 
   - python36-Kivy-devel 
-  - python36-LTTL 
   - python36-Lektor 
   - python36-Levenshtein 
   - python36-Logbook 
@@ -21192,7 +21216,6 @@ unsorted:
   - python36-Protego 
   - python36-PsyLab 
   - python36-PubChemPy 
-  - python36-Pweave 
   - python36-PyAudio 
   - python36-PyAutoGUI 
   - python36-PyBindGen 
@@ -21313,7 +21336,6 @@ unsorted:
   - python36-addict 
   - python36-aeidon 
   - python36-aenum 
-  - python36-afdko 
   - python36-affine 
   - python36-agate 
   - python36-agate-dbf 
@@ -21422,7 +21444,6 @@ unsorted:
   - python36-av 
   - python36-avocado-plugins-vt 
   - python36-avro 
-  - python36-awkward 
   - python36-awpa 
   - python36-aws-sam-translator 
   - python36-aws-xray-sdk 
@@ -21773,7 +21794,6 @@ unsorted:
   - python36-chardet 
   - python36-charset-normalizer 
   - python36-chart-studio 
-  - python36-chartify 
   - python36-check-manifest 
   - python36-cheroot 
   - python36-chest 
@@ -21804,7 +21824,6 @@ unsorted:
   - python36-cluster 
   - python36-cluster-preflight-check 
   - python36-cma 
-  - python36-cmapfile 
   - python36-cmarkgfm 
   - python36-cmd2 
   - python36-cmdln 
@@ -21876,7 +21895,6 @@ unsorted:
   - python36-cstruct 
   - python36-csv23 
   - python36-ctypescrypto 
-  - python36-cu2qu 
   - python36-cufflinks 
   - python36-curio 
   - python36-curses 
@@ -21903,7 +21921,6 @@ unsorted:
   - python36-databases 
   - python36-dataclasses 
   - python36-datadiff 
-  - python36-datashader 
   - python36-dateparser 
   - python36-dateutils 
   - python36-datrie 
@@ -21920,7 +21937,6 @@ unsorted:
   - python36-decorator 
   - python36-deepdiff 
   - python36-deepmerge 
-  - python36-defcon 
   - python36-defusedxml 
   - python36-delegator 
   - python36-delegator.py 
@@ -22083,7 +22099,6 @@ unsorted:
   - python36-drms 
   - python36-dropbox 
   - python36-dtaidistance 
-  - python36-dtaidistance-devel 
   - python36-duckduckgo2 
   - python36-dukpy 
   - python36-dukpy-kovidgoyal 
@@ -22107,7 +22122,6 @@ unsorted:
   - python36-eliot 
   - python36-email-reply-parser 
   - python36-email_validator 
-  - python36-emcee 
   - python36-emoji 
   - python36-empy 
   - python36-enaml 
@@ -22150,7 +22164,6 @@ unsorted:
   - python36-fasteners 
   - python36-fastimport 
   - python36-fastnumbers 
-  - python36-fastparquet 
   - python36-fastremap 
   - python36-fb-re2 
   - python36-fedmsg 
@@ -22208,9 +22221,6 @@ unsorted:
   - python36-fluidity-sm 
   - python36-flup 
   - python36-folium 
-  - python36-fontMath 
-  - python36-fontParts 
-  - python36-fontPens 
   - python36-forbiddenfruit 
   - python36-formats 
   - python36-freeipa 
@@ -22238,7 +22248,6 @@ unsorted:
   - python36-gcsfs-fuse 
   - python36-gear 
   - python36-ged4py 
-  - python36-genfire 
   - python36-genson 
   - python36-genty 
   - python36-geographiclib 
@@ -22252,7 +22261,6 @@ unsorted:
   - python36-getmac 
   - python36-gevent 
   - python36-geventhttpclient 
-  - python36-ggplot 
   - python36-girder-client 
   - python36-git-pw 
   - python36-git-url-parse 
@@ -22320,7 +22328,6 @@ unsorted:
   - python36-h5py-openmpi3 
   - python36-h5py-openmpi4 
   - python36-hammett 
-  - python36-hankel 
   - python36-hanzidentifier 
   - python36-happybase 
   - python36-hashids 
@@ -22356,7 +22363,6 @@ unsorted:
   - python36-hupper 
   - python36-husl 
   - python36-hvac 
-  - python36-hvplot 
   - python36-hyperframe 
   - python36-hyperlink 
   - python36-hypothesis 
@@ -22377,9 +22383,9 @@ unsorted:
   - python36-imageio-ffmpeg 
   - python36-imagesize 
   - python36-imbox 
+  - python36-img2pdf: [x86_64] 
   - python36-iminuit 
   - python36-immutables 
-  - python36-importlab 
   - python36-importlib-metadata 
   - python36-importlib-resources 
   - python36-imread 
@@ -22391,7 +22397,6 @@ unsorted:
   - python36-iniconfig 
   - python36-inifile 
   - python36-iniparse 
-  - python36-intake 
   - python36-interrogate 
   - python36-intervals 
   - python36-intervaltree 
@@ -22523,7 +22528,6 @@ unsorted:
   - python36-kwant: [x86_64] 
   - python36-l20n 
   - python36-labels 
-  - python36-lal: [x86_64] 
   - python36-lalframe: [x86_64] 
   - python36-lancet-ioam 
   - python36-langdetect 
@@ -22536,7 +22540,6 @@ unsorted:
   - python36-lazr.uri 
   - python36-lazy 
   - python36-lazy-object-proxy 
-  - python36-lazyarray 
   - python36-ldap 
   - python36-ldap3 
   - python36-ldapdomaindump 
@@ -22583,7 +22586,6 @@ unsorted:
   - python36-loguru 
   - python36-logutils 
   - python36-logzero 
-  - python36-lscsoft-glue 
   - python36-lupa 
   - python36-lws 
   - python36-lxml 
@@ -22713,7 +22715,6 @@ unsorted:
   - python36-netifaces 
   - python36-netmiko 
   - python36-netpbmfile 
-  - python36-nibabel 
   - python36-nine 
   - python36-nltk 
   - python36-nocasedict 
@@ -22762,7 +22763,6 @@ unsorted:
   - python36-oauthlib 
   - python36-objgraph 
   - python36-oci-sdk 
-  - python36-oct2py 
   - python36-octave-kernel 
   - python36-odfpy 
   - python36-odorik 
@@ -22851,7 +22851,6 @@ unsorted:
   - python36-pathtools 
   - python36-pathvalidate 
   - python36-patiencediff 
-  - python36-patsy 
   - python36-pbkdf2 
   - python36-pbr 
   - python36-pdd 
@@ -22883,6 +22882,7 @@ unsorted:
   - python36-pifpaf 
   - python36-pika 
   - python36-pika-pool 
+  - python36-pikepdf: [x86_64] 
   - python36-pilkit 
   - python36-pingparsing 
   - python36-pip 
@@ -22917,8 +22917,6 @@ unsorted:
   - python36-poetry 
   - python36-poetry-core 
   - python36-polib 
-  - python36-pomegranate 
-  - python36-pomegranate-devel 
   - python36-pontos 
   - python36-pony 
   - python36-pook 
@@ -22950,7 +22948,6 @@ unsorted:
   - python36-proselint 
   - python36-proto-plus 
   - python36-protobuf 
-  - python36-psautohint 
   - python36-pscript 
   - python36-psutil 
   - python36-psychtoolbox 
@@ -22979,8 +22976,6 @@ unsorted:
   - python36-py3c 
   - python36-py3dns 
   - python36-py3status 
-  - python36-pyDOE2 
-  - python36-pyFFTW 
   - python36-pyLibravatar 
   - python36-pyModis 
   - python36-pyOCD 
@@ -23036,7 +23031,6 @@ unsorted:
   - python36-pydot 
   - python36-pydot3 
   - python36-pydotplus 
-  - python36-pydub 
   - python36-pyeapi 
   - python36-pyee 
   - python36-pyelftools 
@@ -23116,18 +23110,15 @@ unsorted:
   - python36-pyparsing 
   - python36-pyperclip 
   - python36-pyperf 
-  - python36-pypet 
   - python36-pypipegraph 
   - python36-pypiserver 
   - python36-pypng 
   - python36-pyppeteer 
-  - python36-pyprel 
   - python36-pyprimes 
   - python36-pyproj 
   - python36-pypsexec 
   - python36-pypuppetdb 
   - python36-pyqt-builder 
-  - python36-pyqtgraph 
   - python36-pyquery 
   - python36-pyrad 
   - python36-pyramid 
@@ -23136,7 +23127,6 @@ unsorted:
   - python36-pyramid-mako 
   - python36-pyreadstat 
   - python36-pyroma 
-  - python36-pyroomacoustics 
   - python36-pyroute2 
   - python36-pyrsistent 
   - python36-pysaml2 
@@ -23157,7 +23147,6 @@ unsorted:
   - python36-pysolr 
   - python36-pyspnego 
   - python36-pysrt 
-  - python36-pyssim 
   - python36-pystache 
   - python36-pysvn 
   - python36-pytaglib 
@@ -23362,7 +23351,6 @@ unsorted:
   - python36-qrcode 
   - python36-qscintilla-qt5 
   - python36-qscintilla-qt5-sip 
-  - python36-qsymm 
   - python36-qt3d-qt5 
   - python36-qt3d-qt5-api 
   - python36-qt3d-qt5-doc 
@@ -23503,11 +23491,7 @@ unsorted:
   - python36-schedule 
   - python36-schema 
   - python36-scikit-build 
-  - python36-scikit-dsp-comm 
   - python36-scikit-hep-testdata 
-  - python36-scikit-sound 
-  - python36-scikit-sparse: [x86_64] 
-  - python36-scikit-umfpack: [x86_64] 
   - python36-scour 
   - python36-scp 
   - python36-screeninfo 
@@ -23537,7 +23521,6 @@ unsorted:
   - python36-setuptools-wheel 
   - python36-setuptools_scm 
   - python36-setuptools_scm_git_archive 
-  - python36-sfs 
   - python36-sge-pygame 
   - python36-sgmllib3k 
   - python36-sgp4 
@@ -23588,11 +23571,11 @@ unsorted:
   - python36-sox 
   - python36-spake2 
   - python36-spark_parser 
-  - python36-sparse 
   - python36-speaklater 
   - python36-spec 
   - python36-sphinx-argparse 
   - python36-sphinx-bootstrap-theme 
+  - python36-sphinx-feature-classification 
   - python36-sphinx-issues 
   - python36-sphinx-jsonschema 
   - python36-sphinx-removed-in 
@@ -23644,7 +23627,6 @@ unsorted:
   - python36-stomp.py 
   - python36-stomper 
   - python36-straight-plugin 
-  - python36-streamz 
   - python36-strict-rfc3339 
   - python36-strictyaml 
   - python36-structlog 
@@ -23656,7 +23638,6 @@ unsorted:
   - python36-suds-jurko 
   - python36-suntime 
   - python36-sure 
-  - python36-svgpathtools: [x86_64] 
   - python36-svgwrite 
   - python36-svneverever 
   - python36-swapper 
@@ -23669,7 +23650,6 @@ unsorted:
   - python36-tableprint 
   - python36-tables 
   - python36-tablib 
-  - python36-tabpy 
   - python36-tabulate 
   - python36-tap.py 
   - python36-targetcli-fb 
@@ -23683,7 +23663,6 @@ unsorted:
   - python36-template-remover 
   - python36-tempora 
   - python36-tenacity 
-  - python36-tensorpac 
   - python36-termcolor 
   - python36-terminado 
   - python36-terminaltables 
@@ -23705,7 +23684,6 @@ unsorted:
   - python36-textile 
   - python36-texttable 
   - python36-textwrap3 
-  - python36-thLib 
   - python36-thespian 
   - python36-thewalrus: [x86_64] 
   - python36-threadpoolctl 
@@ -23787,8 +23765,6 @@ unsorted:
   - python36-ua-parser 
   - python36-uamqp 
   - python36-ucsmsdk 
-  - python36-ufoLib2 
-  - python36-ufoProcessor 
   - python36-ufonormalizer 
   - python36-ujson 
   - python36-uncertainties 
@@ -23839,9 +23815,7 @@ unsorted:
   - python36-virtkey 
   - python36-virtualenv 
   - python36-virtualenv-clone 
-  - python36-virtualenvwrapper 
   - python36-visitor 
-  - python36-vispy 
   - python36-vistir 
   - python36-visvis 
   - python36-vncdotool 
@@ -23881,7 +23855,6 @@ unsorted:
   - python36-wheezy.template 
   - python36-whichcraft 
   - python36-whitenoise 
-  - python36-whois_similarity_distance 
   - python36-wikipedia 
   - python36-wirerope 
   - python36-wiring 
@@ -23900,7 +23873,6 @@ unsorted:
   - python36-wxPython-lang 
   - python36-xapian 
   - python36-xapp 
-  - python36-xarray 
   - python36-xattr 
   - python36-xcffib 
   - python36-xdg 
@@ -23951,7 +23923,6 @@ unsorted:
   - python36-zetup 
   - python36-zhon 
   - python36-zict 
-  - python36-zignal 
   - python36-zipp 
   - python36-zipstream 
   - python36-zodbpickle 
@@ -24947,7 +24918,6 @@ unsorted:
   - python38-drms 
   - python38-dropbox 
   - python38-dtaidistance 
-  - python38-dtaidistance-devel 
   - python38-duckduckgo2 
   - python38-dukpy 
   - python38-dukpy-kovidgoyal 
@@ -25221,6 +25191,7 @@ unsorted:
   - python38-imageio-ffmpeg 
   - python38-imagesize 
   - python38-imbox 
+  - python38-img2pdf: [x86_64] 
   - python38-iminuit 
   - python38-immutables 
   - python38-importlab 
@@ -25344,6 +25315,7 @@ unsorted:
   - python38-k5test 
   - python38-kafka-python 
   - python38-kaitaistruct 
+  - python38-kasa 
   - python38-kazoo 
   - python38-keepalive 
   - python38-kerberos 
@@ -25378,6 +25350,7 @@ unsorted:
   - python38-ldap3 
   - python38-ldapdomaindump 
   - python38-ldaptor 
+  - python38-ldas-tools-al-swig 
   - python38-leather 
   - python38-lesscpy 
   - python38-leveldb 
@@ -25396,6 +25369,7 @@ unsorted:
   - python38-libsass 
   - python38-libusb1 
   - python38-license-expression 
+  - python38-ligo-lw 
   - python38-ligo-segments 
   - python38-ligotimegps 
   - python38-limnoria 
@@ -25597,6 +25571,7 @@ unsorted:
   - python38-oic 
   - python38-oiffile 
   - python38-onionshare 
+  - python38-onnx 
   - python38-opcodes 
   - python38-openapi-codec 
   - python38-openapi-core 
@@ -25703,6 +25678,7 @@ unsorted:
   - python38-pifpaf 
   - python38-pika 
   - python38-pika-pool 
+  - python38-pikepdf: [x86_64] 
   - python38-pilkit 
   - python38-pingparsing 
   - python38-pip-api 
@@ -25745,6 +25721,7 @@ unsorted:
   - python38-portend 
   - python38-portpicker 
   - python38-positional 
+  - python38-postorius 
   - python38-power 
   - python38-poyo 
   - python38-pprintpp 
@@ -26381,6 +26358,7 @@ unsorted:
   - python38-spec 
   - python38-sphinx-argparse 
   - python38-sphinx-bootstrap-theme 
+  - python38-sphinx-feature-classification 
   - python38-sphinx-issues 
   - python38-sphinx-jsonschema 
   - python38-sphinx-removed-in 
@@ -26623,7 +26601,6 @@ unsorted:
   - python38-virtkey 
   - python38-virtualenv 
   - python38-virtualenv-clone 
-  - python38-virtualenvwrapper 
   - python38-visitor 
   - python38-vispy 
   - python38-vistir 
@@ -28907,7 +28884,6 @@ unsorted:
   - systemd-rpm-macros 
   - systemd-ui 
   - systemd-zram-service 
-  - systemsettings5-devel 
   - systemtap 
   - systemtap-docs 
   - systemtap-dtrace 
@@ -37533,6 +37509,7 @@ unsorted:
   - usnic_tools: [x86_64] 
   - usrp-firmware 
   - usrp-tools 
+  - usrsctp-devel 
   - usx2yloader 
   - utempter-devel 
   - utempter-devel-32bit: [x86_64] 
@@ -38232,6 +38209,7 @@ unsorted:
   - xfsprogs-devel 
   - xfwm4-branding-upstream 
   - xfwm4-theme-adapta 
+  - xfwm4-theme-matcha 
   - xfwm4-theme-plata 
   - xgalaga++ 
   - xgalaga-sdl 
