@@ -82,7 +82,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
 
 --- a/Lib/test/_test_multiprocessing.py
 +++ b/Lib/test/_test_multiprocessing.py
-@@ -1521,6 +1521,7 @@ class _TestCondition(BaseTestCase):
+@@ -1546,6 +1546,7 @@ class _TestCondition(BaseTestCase):
                  success.value = True
  
      @unittest.skipUnless(HAS_SHAREDCTYPES, 'needs sharedctypes')
@@ -90,7 +90,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
      def test_waitfor_timeout(self):
          # based on test in test/lock_tests.py
          cond = self.Condition()
-@@ -2411,6 +2412,7 @@ class _TestPool(BaseTestCase):
+@@ -2436,6 +2437,7 @@ class _TestPool(BaseTestCase):
          self.assertEqual(get(), 49)
          self.assertTimingAlmostEqual(get.elapsed, TIMEOUT1)
  
@@ -98,7 +98,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
      def test_async_timeout(self):
          res = self.pool.apply_async(sqr, (6, TIMEOUT2 + 1.0))
          get = TimingWrapper(res.get)
-@@ -4564,6 +4566,7 @@ class TestWait(unittest.TestCase):
+@@ -4682,6 +4684,7 @@ class TestWait(unittest.TestCase):
          sem.release()
          time.sleep(period)
  
@@ -108,7 +108,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  
 --- a/Lib/test/test_asyncio/test_events.py
 +++ b/Lib/test/test_asyncio/test_events.py
-@@ -266,6 +266,7 @@ class EventLoopTestsMixin:
+@@ -270,6 +270,7 @@ class EventLoopTestsMixin:
      # Note: because of the default Windows timing granularity of
      # 15.6 msec, we use fairly long sleep times here (~100 msec).
  
@@ -116,16 +116,16 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
      def test_run_until_complete(self):
          t0 = self.loop.time()
          self.loop.run_until_complete(asyncio.sleep(0.1))
-@@ -293,7 +294,7 @@ class EventLoopTestsMixin:
+@@ -294,7 +295,7 @@ class EventLoopTestsMixin:
+ 
+         self.loop.call_later(0.1, callback, 'hello world')
          self.loop.run_forever()
-         t1 = time.monotonic()
-         self.assertEqual(results, ['hello world'])
--        self.assertTrue(0.08 <= t1-t0 <= 0.8, t1-t0)
+-        self.assertEqual(results, ['hello world'])
 +        self.assertTrue(0.08 <= t1-t0 <= 5.0, t1-t0)
  
      def test_call_soon(self):
          results = []
-@@ -478,6 +479,7 @@ class EventLoopTestsMixin:
+@@ -481,6 +482,7 @@ class EventLoopTestsMixin:
          self.assertEqual(caught, 1)
  
      @unittest.skipUnless(hasattr(signal, 'SIGALRM'), 'No SIGALRM')
@@ -135,7 +135,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
          caught = 0
 --- a/Lib/test/test_buffer.py
 +++ b/Lib/test/test_buffer.py
-@@ -2504,6 +2504,7 @@ class TestBufferProtocol(unittest.TestCa
+@@ -2509,6 +2509,7 @@ class TestBufferProtocol(unittest.TestCa
          a = ndarray(items, shape=[2, 2, 2], format="b")
          check(memoryview(a), vsize(base_struct + 3 * per_dim))
  
