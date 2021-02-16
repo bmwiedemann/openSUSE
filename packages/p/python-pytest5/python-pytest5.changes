@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 14 20:35:39 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- *Really* fix the conditional to work on all distros using
+  python-rpm-macros with singlspec rewriting.
+- Don't require python36-numpy for testing, because Tumbleweed
+  cannot provide python36-numpy any longer: NumPy 1.20 dropped
+  Python 3.6 support (NEP 29). The tests are skipped automatically.
+
+-------------------------------------------------------------------
 Thu Jan 28 21:09:10 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Fix the conditional to work with new python-rpm-macros

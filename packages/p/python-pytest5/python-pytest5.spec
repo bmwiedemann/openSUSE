@@ -62,7 +62,7 @@ BuildRequires:  %{python_module mock}
 # nose is really not REQUIRED, the test suite skips over particular
 # tests, when the package is not available.
 # BuildRequires:  %%{python_module nose}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest-forked}
@@ -72,7 +72,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
 %endif
-%if %{?python3_version_nodots} < 36
+%if 0%{?python_version_nodots} < 36
 Requires:       python-pathlib2 >= 2.2.0
 %endif
 %python_subpackages
