@@ -1,7 +1,7 @@
 #
 # spec file for package airspy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,13 +21,14 @@
 %define airspy_group    airspy
 %define libname lib%{name}%{sover}
 Name:           airspy
-Version:        1.0.9
+Version:        1.0.9+git1611947482.70520c9
 Release:        0
 Summary:        Support programs for Airspy
 License:        GPL-2.0-or-later
 URL:            http://www.airspy.com
 #Git-Clone:     https://github.com/airspy/airspyone_host.git
-Source:         https://github.com/airspy/airspyone_host/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:        https://github.com/airspy/airspyone_host/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -60,7 +61,7 @@ Requires:       %{libname} = %{version}
 Library headers for airspy driver.
 
 %prep
-%setup -q -n airspyone_host-%{version}
+%setup -q -n airspy-%{version}
 
 # HACK: set udev group to airspy
 sed -i "s/plugdev/airspy/g" airspy-tools/52-airspy.rules
@@ -91,7 +92,7 @@ getent group %{airspy_group} >/dev/null || groupadd -r %{airspy_group}
 %udev_rules_update
 
 %files
-%defattr(-,root,root)
+%license airspy-tools/LICENSE.md
 %doc README.md
 %{_bindir}/airspy_gpio
 %{_bindir}/airspy_gpiodir
@@ -103,15 +104,13 @@ getent group %{airspy_group} >/dev/null || groupadd -r %{airspy_group}
 %{_bindir}/airspy_spiflash
 
 %files -n %{libname}
-%defattr(-,root,root)
+%license libairspy/LICENSE.md
 %{_libdir}/libairspy.so.*
 
 %files udev
-%defattr(-,root,root)
 %{_udevrulesdir}/52-airspy.rules
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libairspy.so
 %{_includedir}/libairspy
 %{_libdir}/pkgconfig/libairspy.pc

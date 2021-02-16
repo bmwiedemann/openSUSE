@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 15 19:58:34 UTC 2021 - mardnh@gmx.de
+
+- Update to version v1.0.9+git1611947482.70520c9:
+  * Removed unnecessary optimization flags from CMakeLists.txt files
+  * airspy_open_device() bugfix: use the code in airspy_list_device()
+  * better paramater bound checking for set gain functions
+
+-------------------------------------------------------------------
 Fri Apr 10 06:49:46 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - Use ninja as cmake builder for potential speedup
