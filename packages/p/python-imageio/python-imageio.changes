@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 15 19:25:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.9.0
+  Fixed
+  * More robust loading of FEI SEM data (#529 by jon-lab).
+  * Fix webcam not working on Win10 (#525).
+  Added
+  * Add a few standard images useful to 3D visualization.
+  * The timeout used in HTTP requests can now be set with an
+    environment variable (#534 by Johann Neuhauser).
+  * The DICOM plugin can now used gdcm for compressed transfer
+    formats.
+  * Better support for itk/sitk plugins (#530 by Jonathan Daniel).
+  * Test coverage and CI for ARM (#518 by odidev).
+- Skip python36 build: NumPy 1.20 dropped suport for Python 3.6
+  making python36-numpy unavailable in Tumbleweed (NEP 29)
+- Suggest the extras, you can test what we have in openSUSE with
+  `osc build --with test_extras`
+
+-------------------------------------------------------------------
 Mon May 25 10:59:24 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

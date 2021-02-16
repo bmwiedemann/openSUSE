@@ -1,7 +1,7 @@
 #
 # spec file for package python-imageio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# NEP29: python36-numpy is no longer available in Tumbleweed, because NumPy 1.20 dropped support for it
+%define skip_python36 1
+%bcond_with test_extras
 Name:           python-imageio
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause
@@ -27,7 +30,6 @@ URL:            https://imageio.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/i/imageio/imageio-%{version}.tar.gz
 Source1:        python-imageio-rpmlintrc
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module imageio-ffmpeg}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
@@ -35,11 +37,26 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
-Requires:       python-imageio-ffmpeg
 Requires:       python-numpy
+Recommends:     python-imageio-ffmpeg
+Suggests:       python-astropy
+# not in openSUSE (yet)
+Suggests:       python-simpleitk
+# alternative is not singlespec
+Suggests:       python3-itk
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+# GDAL is not (yet) singlespec
+Suggests:       python3-GDAL
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     libfreeimageplus3
+%if %{with test_extras}
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module imageio-ffmpeg}
+# BuildRequires:  %%{python_module simpleitk} # (non simple python3-itk does not work on 32-bit, don't bother testing that)
+BuildRequires:  python3-GDAL
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -70,7 +87,9 @@ export IMAGEIO_NO_INTERNET=1
 
 %check
 export IMAGEIO_NO_INTERNET=1
-%pytest -k "not test_fei_file_fail and not test_ffmpeg and not test_series_unclosed and not test_import_dependencies"
+# ffmpeg: plain openSUSE does not have the right codecs to test this"
+donttest="test_ffmpeg"
+%pytest -ra -k "not ($donttest)"
 
 %post
 %python_install_alternative imageio_remove_bin
