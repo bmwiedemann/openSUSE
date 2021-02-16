@@ -1,0 +1,5 @@
+<package name="qt5integration" project="openSUSE:Factory">
+  <title>qt5integration</title>
+  <description></description>
+  <devel project="X11:Deepin" package="qt5integration"/>
+</package>
