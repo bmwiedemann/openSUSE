@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.19.5
-%define _ver 1_19_5
+%define ver 1.20.1
+%define _ver 1_20_1
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -43,6 +43,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 %{?with_hpc:%{hpc_requires}}
 %bcond_with ringdisabled
 %if %{without hpc}
@@ -76,10 +77,8 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-# # PATCH-FIX-SLE fix-py34-tests.patch -- python 3.4 support
-Patch3:         fix-py34-tests.patch
-Patch4:         s390x.patch
 BuildRequires:  %{python_module Cython >= 0.29.21}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis >= 5.12.0}
 BuildRequires:  %{python_module pytest >= 5.4.2}
@@ -161,11 +160,6 @@ This package contains files for developing applications using numpy.
 %setup -q -n numpy-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch3 -p1
-%ifarch s390x ppc ppc64
-# TestF{77,90}ReturnCharacter are broken on all big-endian architectures (#11831)
-%patch4 -p1
-%endif
 # Fix non-executable scripts
 sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},ma/{setup,bench},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
 sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
@@ -253,6 +247,7 @@ EOF
 %if %{without hpc}
 export PATH="%{buildroot}%{_bindir}:$PATH"
 mkdir testing
+cp numpy/conftest.py testing/
 pushd testing
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
@@ -261,10 +256,23 @@ test_failok+=" or test_structured_object_item_setting"
 %ifarch ppc64 ppc64le
 test_failok+=" or test_generalized_sq"
 %endif
+# these tests fail on big endian gh#numpy/numpy#11831
+%ifarch s390x ppc ppc64
+test_failok+=" or TestF77ReturnCharacter"
+test_failok+=" or TestF90ReturnCharacter"
+%endif
+%ifarch %ix86
+# (arm 32-bit seems okay here)
+# gh#numpy/numpy#18387 
+test_failok+=" or test_pareto"
+# gh#numpy/numpy#18388
+test_failok+=" or test_float_remainder_overflow"
+%endif
 %{python_expand # for all python3 flavors
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
-testcall="pytest-%{$python_bin_suffix} -n auto %{buildroot}%{$python_sitearch}/numpy"
+$python -c 'from numpy import _pytesttester as ptt; ptt._show_numpy_info()'
+testcall="pytest-%{$python_bin_suffix} -n auto -c ../pytest.ini %{buildroot}%{$python_sitearch}/numpy"
 [ -n "$test_failok" ] && ${testcall} -k "${test_failok:4}" || true
 ${testcall} ${test_failok:+-k "not (${test_failok:4})"}
 rm -Rf %{buildroot}%{$python_sitearch}/numpy/.pytest_cache
@@ -292,7 +300,8 @@ popd
 %{python_sitearch}/numpy-%{version}-py*.egg-info
 %license %{python_sitearch}/numpy/LICENSE.txt
 %exclude %{python_sitearch}/numpy/core/include/
-%exclude %{python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
+%exclude %{python_sitearch}/numpy/distutils/mingw/*.c
+%exclude %{python_sitearch}/numpy/distutils/checks/*.c
 %exclude %{python_sitearch}/numpy/f2py/src/
 %exclude %{python_sitearch}/numpy/core/lib/libnpymath.a
 %exclude %{python_sitearch}/numpy/random/lib/libnpyrandom.a
@@ -308,7 +317,8 @@ popd
 %exclude %{p_python_sitearch}/numpy/core/include/
 %exclude %{p_python_sitearch}/numpy/core/lib/libnpymath.a
 %exclude %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
-%exclude %{p_python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
+%exclude %{p_python_sitearch}/numpy/distutils/mingw/*.c
+%exclude %{p_python_sitearch}/numpy/distutils/checks/*.c
 %exclude %{p_python_sitearch}/numpy/f2py/src/
 %endif
 
@@ -325,7 +335,8 @@ popd
 %license LICENSE.txt
 %if %{without hpc}
 %{python_sitearch}/numpy/core/include/
-%{python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
+%{python_sitearch}/numpy/distutils/mingw/*.c
+%{python_sitearch}/numpy/distutils/checks/*.c
 %{python_sitearch}/numpy/f2py/src/
 %{python_sitearch}/numpy/core/lib/libnpymath.a
 %{python_sitearch}/numpy/random/lib/libnpyrandom.a
@@ -333,7 +344,8 @@ popd
 %{p_python_sitearch}/numpy/core/include/
 %{p_python_sitearch}/numpy/core/lib/libnpymath.a
 %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
-%{p_python_sitearch}/numpy/distutils/mingw/gfortran_vs2003_hack.c
+%{p_python_sitearch}/numpy/distutils/mingw/*.c
+%{p_python_sitearch}/numpy/distutils/checks/*.c
 %{p_python_sitearch}/numpy/f2py/src/
 %endif
 

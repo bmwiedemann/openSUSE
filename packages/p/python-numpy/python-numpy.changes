@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Feb 10 12:19:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.20.1
+  * The distutils bug that caused problems with downstream projects
+    is fixed.
+  * The random.shuffle regression is fixed.
+- Higlights for 1.20.0:
+  * Annotations for NumPy functions. This work is ongoing and 
+    improvements can be expected pending feedback from users.
+  * Wider use of SIMD to increase execution speed of ufuncs. Much 
+    work has been done in introducing universal functions that 
+    will ease use of modern features across different hardware 
+    platforms. This work is ongoing.
+  * Preliminary work in changing the dtype and casting 
+    implementations in order to provide an easier path to 
+    extending dtypes. This work is ongoing but enough has been 
+    done to allow experimentation and feedback.
+  * Extensive documentation improvements comprising some 185 PR 
+    merges. This work is ongoing and part of the larger project to 
+    improve NumPy’s online presence and usefulness to new users.
+  * Further cleanups related to removing Python 2.7. This improves 
+    code readability and removes technical debt.
+  * Preliminary support for the upcoming Cython 3.0.
+- Full release notes at
+  https://numpy.org/doc/stable/release/1.20.0-notes.html
+- Now requires Python >= 3.7 (NEP 29)
+  * Drop fix-py34-tests.patch
+  * Skip python36 build
+- Drop s390x.patch -- The patch was applied for all big endian
+  architectures. Mark those tests appropriately in the check
+  section instead.  gh#numpy/numpy#11831
+- Skip two tests on ix86: gh#numpy/numpy#18387 gh#numpy/numpy#18388
+
+-------------------------------------------------------------------
 Sat Jan 16 21:39:13 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Move flaky tests to test_failok
