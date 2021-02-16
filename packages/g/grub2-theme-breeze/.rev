@@ -623,4 +623,12 @@
     <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
     <requestid>860620</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>284a87ffdd853d3cf6edde069aa2eabe</srcmd5>
+    <version>5.21.0</version>
+    <time>1613463514</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
+    <requestid>872079</requestid>
+  </revision>
 </revisionlist>
