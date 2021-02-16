@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Jan 29 12:36:08 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.0
+  * Fix default display right angle
+  * Fix DToolTip control, also modified to rounded corner values
+  * fix: fallback to parent theme for the windowRadius property
+  * add github action 
+
+-------------------------------------------------------------------
+Tue Sep 15 06:14:12 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.2.4
+  * Fix function name typo and default waitTime
+  * Add windowFromPoint Api
+  * remove link the librsvg-2.0
+  * remove libqt5x11extras5-dev depend
+
+-------------------------------------------------------------------
+Mon Apr 27 12:29:35 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.0
+  * Add many apis
+  * Switch to LGPLv3 license
+
+-------------------------------------------------------------------
+Fri Mar 20 14:14:50 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 2.1.1 
