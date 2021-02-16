@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipykernel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipykernel
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -27,9 +27,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipykernel = %{version}
 Requires:       python-ipython >= 5.0.0
@@ -53,10 +53,11 @@ BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module nose_warnings_filters}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado >= 4.2}
 BuildRequires:  %{python_module traitlets >= 4.1.0}
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 # typing is only built-in for later versions of python
 %if 0%{?suse_version} <= 1320
@@ -94,7 +95,9 @@ This package provides the jupyter components.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# These tests expect jedi 0.17.2 return messages, but we use patches to support jedi 0.18 in ipython715
+# and ipython 7.20 fixed its support for jedi 0.18 gh#ipython/ipykernel#578 gh#ipython/ipykernel#579
+%pytest -ra -k "not (test_complete or test_inspect)"
 
 %files %{python_files}
 %doc README.md docs/changelog.rst

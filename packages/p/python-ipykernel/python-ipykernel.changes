@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 13 23:21:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.4.3
+  * Rework wait_for_ready logic.
+- Don't test with python36-numpy because it is no more (NEP 29)
+- Skip two completion tests due to newer jedi support in ipython
+  gh#ipython/ipykernel#578 gh#ipython/ipykernel#579
+
+-------------------------------------------------------------------
 Wed Feb  3 22:39:49 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - BuildRequire jupyter-jupyter_core-filesystem for the macro
