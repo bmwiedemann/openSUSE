@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hxt-charproperties
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name hxt-charproperties
 Name:           ghc-%{pkg_name}
-Version:        9.4.0.0
+Version:        9.5.0.0
 Release:        0
 Summary:        Character properties and classes for XML and Unicode
 License:        MIT
@@ -30,9 +30,9 @@ ExcludeArch:    %{ix86}
 
 %description
 Character properties defined by XML and Unicode standards. These modules
-contain predicates for Unicode blocks and char proprties and character
-predicates defined by XML. Supported Unicode version is 12.1.0 9.3.0.2:
-Supported Unicode version 9.0.0.
+contain predicates for Unicode blocks, char properties and character predicates
+defined by XML. Supported Unicode version is 13.0.0 9.4.0.0: Supported Unicode
+version 12.1.0 9.3.0.2: Supported Unicode version 9.0.0.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
