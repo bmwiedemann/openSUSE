@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWavelets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# no python36-numpy in Tumbleweed (NEP 29)
+%define         skip_python36 1
 Name:           python-PyWavelets
 Version:        1.1.1
 Release:        0
@@ -28,16 +30,15 @@ URL:            https://github.com/PyWavelets/pywt
 Source0:        https://files.pythonhosted.org/packages/source/P/PyWavelets/PyWavelets-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.9.1}
+BuildRequires:  %{python_module numpy-devel >= 1.13.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-numpy >= 1.9.1
+Requires:       python-numpy >= 1.13.3
 Provides:       python-PyWavelets-doc = %{version}
 Obsoletes:      python-PyWavelets-doc < %{version}
 %python_subpackages
@@ -74,21 +75,14 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %python_install
-
-%{python_expand pushd %{buildroot}%{$python_sitearch}
 # Fix wrong-script-interpreter
-sed -i "s|#!%{_bindir}/env python|#!%__$python|" pywt/tests/*.py
-# Deduplicating files can generate a RPMLINT warning for pyc mtime
-$python -m compileall -d %{$python_sitearch} pywt/tests/
-$python -O -m compileall -d %{$python_sitearch} pywt/tests/
-%fdupes .
-popd
-}
+%python_expand sed -i "s|#!%{_bindir}/env python.*$|#!%{_bindir}$python|" %{buildroot}%{$python_sitearch}/pywt/tests/*.py
+%python_compileall
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 mkdir temp
 mv pywt temp/pywt
-export PYTHONDONTWRITEBYTECODE=1
 # Accuracy is platform-dependent
 %pytest_arch --ignore=temp -k 'not test_accuracy_precomputed_cwt' %{buildroot}%{$python_sitearch}/pywt/
 mv temp/pywt pywt
