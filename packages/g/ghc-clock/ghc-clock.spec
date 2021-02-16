@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-clock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name clock
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8
+Version:        0.8.2
 Release:        0
 Summary:        High-resolution clock functions: monotonic, realtime, cputime
 License:        BSD-3-Clause
@@ -72,6 +72,9 @@ Fixes for older Linux build failures introduced by new Linux-specific clocks by
 Mario Longobardi on 2016-04-18.
 
 Refreshment release in 2019-04 after numerous contributions.
+
+Refactoring for Windows, Mac implementation consistence by Alexander Vershilov
+on 2021-01-16.
 
 [Version Scheme] Major-'/R/'-ewrite . New-'/F/'-unctionality .
 '/I/'-mprovementAndBugFixes . '/P/'-ackagingOnly
