@@ -19,21 +19,22 @@
 %define sover 0_1
 
 Name:           deepin-movie
-Version:        3.2.24.3
+Version:        5.7.6.165
 Release:        0
 Summary:        Deepin Video Players
 License:        GPL-3.0-or-later AND OpenSSL
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/linuxdeepin/deepin-movie-reborn
 Source:         https://github.com/linuxdeepin/deepin-movie-reborn/archive/%{version}/%{name}-reborn-%{version}.tar.gz
-# PATCH-FIX-UPSTEAM deepin-movie-reborn-add-pkgconfig-check.patch hillwood@opensuse.org - fix lost pkgconfig check
-Patch0:         %{name}-reborn-add-pkgconfig-check.patch
+# PATCH-FIX-UPSTEAM Fix-library-link.patch hillwood@opensuse.org
+# fix library link error and add this includedir for ffmpeg
+Patch0:         Fix-library-link.patch
 # PATCH-FIX-UPSTEAM deepin-movie-add-qthelper.patch hillwood@opensuse.org
 # qthelper.hpp was removed from mpv project, move this api in this project.
-Patch1:         %{name}-add-qthelper.patch
-# PATCH-FIX-UPSTEAM deepin-movie-qt-5_15.patch hillwood@opensuse.org - Support Qt 5.15
-Patch2:         %{name}-Qt-5_15.patch
-BuildRequires:  dtkcore
+Patch1:         deepin-movie-add-qthelper.patch
+# PATCH-FIX-UPSTEAM libavformat-version-check.patch hillwood@opensuse.org - fix build on new ffmpeg
+Patch2:         libavformat-version-check.patch
+BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  fdupes
 BuildRequires:  glslang-devel
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -43,10 +44,12 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(dtkcore)
-BuildRequires:  pkgconfig(dtkwidget)
+BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
+BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dvdnav)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavresample)
@@ -92,13 +95,9 @@ deepin movie.
 %lang_package
 
 %prep
-%setup -q -n %{name}-reborn-%{version}
-%patch0 -p1
-%patch1 -p1
-%if 0%{?suse_version} > 1500
-%patch2 -p1
-%endif
-sed -i 's,/usr/lib/dtk2/dtk-settings-tool,/usr/bin/dtk-settings-tool,g' src/CMakeLists.txt
+%autosetup -p1 -n %{name}-reborn-%{version}
+sed -i '/#include <DPalette>/a #include <QPainterPath>' src/widgets/{tip,toolbutton}.h
+sed -i 's/Exec=deepin-movie/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-movie/g' src/%{name}.desktop
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release
@@ -124,6 +123,7 @@ sed -i 's,/usr/lib/dtk2/dtk-settings-tool,/usr/bin/dtk-settings-tool,g' src/CMak
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/glib-2.0/schemas/com.deepin.deepin-movie.gschema.xml
 
 %files -n libdmr%{sover}
 %defattr(-,root,root)
