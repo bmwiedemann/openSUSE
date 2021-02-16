@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  9 22:49:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.2:
+  + Fix build reproducibility.
+  + Fix parsing of UTF-16 surrogate pairs.
+  + Ignore UTF-8 BOM.
+
+-------------------------------------------------------------------
 Fri Sep 11 17:43:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.0:
