@@ -1,7 +1,7 @@
 #
-# spec file for package backward-cpp-headers
+# spec file for package backward-cpp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           backward-cpp
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Stack trace printer for C++
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/bombela/backward-cpp
+URL:            https://github.com/bombela/backward-cpp
 Source:         https://github.com/bombela/backward-cpp/archive/v%{version}.tar.gz#/backward-cpp-%{version}.tar.gz
-Patch0:         GNUInstallDirs.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -40,8 +39,7 @@ Group:          Development/Libraries/C and C++
 Development files for backward-cpp, a stack trace printer for C++.
 
 %prep
-%setup -q -n backward-cpp-%{version}
-%patch0 -p1
+%autosetup -n backward-cpp-%{version}
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR=%{_libdir}
