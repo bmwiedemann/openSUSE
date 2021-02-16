@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 10 10:05:24 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.14.1
+  * Fix non-deterministic generation of mergeinfo
+  * Fix invalid SQL quoting in working copy upgrade system
+  * Convert filename for editor from UTF-8 to the locale's encoding
+  * Make the hot-backup.py script work with Python 3
+  * Fix an uninitialized read in FSFS
+  * Fix a potential NULL dereference in the config file parser (bsc#1181687, CVE-2020-17525)
+- Rebase subversion-no-build-date.patch
+
+-------------------------------------------------------------------
 Tue Dec  1 14:33:34 UTC 2020 - pgajdos@suse.com
 
 - use system apache rpm macros
