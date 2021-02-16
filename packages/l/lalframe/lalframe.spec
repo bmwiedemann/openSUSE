@@ -1,7 +1,7 @@
 #
 # spec file for package lalframe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,13 @@
 #
 
 
+# NEP 29: python36-numpy and co. in TW are no more
+%define skip_python36 1
 %define shlib lib%{name}11
-%bcond_without octave
+# No support for octave >= 6
+%bcond_with octave
 Name:           lalframe
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 Summary:        LSC Algorithm Frame Library for gravitational wave data analysis
 License:        GPL-2.0-or-later
@@ -27,9 +30,9 @@ Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/lalframe-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal >= 6.21.0}
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module numpy >= 1.7}
+BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -38,17 +41,18 @@ BuildRequires:  pkgconfig(framecppc)
 BuildRequires:  pkgconfig(framel)
 BuildRequires:  pkgconfig(lal) >= 6.21.0
 Requires:       python-lal
-Requires:       python-numpy
+Requires:       python-numpy >= 1.7
 ExcludeArch:    %{ix86}
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-xml
 %endif
 %if %{with octave}
-BuildRequires:  octave-lal >= 6.21.0
+BuildRequires:  octave-lal >= 7.1.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
-BuildRequires:  python3-pytest
+BuildRequires:  %{python_module ligo-segments}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -143,10 +147,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
-%ifpython3
 %check
+%{python_expand # check all flavors
+export PYTHON=$python
+pushd ../${PYTHON}_build
 %make_build check
-%endif
+}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
