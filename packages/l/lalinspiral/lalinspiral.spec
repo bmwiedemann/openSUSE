@@ -1,7 +1,7 @@
 #
 # spec file for package lalinspiral
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,13 @@
 #
 
 
-%define shlib lib%{name}15
-%bcond_without octave
+%define shlib lib%{name}16
+# NEP 29: python36-numpy and co. in TW are no more
+%define skip_python36 1
+# octave >= 6 not supported
+%bcond_with octave
 Name:           lalinspiral
-Version:        1.10.1
+Version:        2.0.1
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
@@ -28,46 +31,44 @@ URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module glue}
-BuildRequires:  %{python_module lal >= 6.21.0}
-BuildRequires:  %{python_module lalburst}
-BuildRequires:  %{python_module lalframe}
-BuildRequires:  %{python_module lalmetaio}
-BuildRequires:  %{python_module lalsimulation >= 1.10.0}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module lalburst >= 1.5.3}
+BuildRequires:  %{python_module lalframe >= 1.5.0}
+BuildRequires:  %{python_module lalmetaio >= 2.0.0}
+BuildRequires:  %{python_module lalsimulation >= 2.5.0}
+BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module scipy}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal) >= 6.21.0
-BuildRequires:  pkgconfig(lalburst)
-BuildRequires:  pkgconfig(lalframe)
-BuildRequires:  pkgconfig(lalmetaio)
-BuildRequires:  pkgconfig(lalsimulation) >= 1.10.0
+BuildRequires:  pkgconfig(lal) >= 7.1.0
+BuildRequires:  pkgconfig(lalburst) >= 1.5.3
+BuildRequires:  pkgconfig(lalframe) >= 1.5.0
+BuildRequires:  pkgconfig(lalmetaio) >= 2.0.0
+BuildRequires:  pkgconfig(lalsimulation) >= 2.5.0
 Requires:       python-glue
-Requires:       python-lal >= 6.21.0
-Requires:       python-lalburst
-Requires:       python-lalframe
-Requires:       python-lalmetaio
-Requires:       python-lalsimulation >= 1.10.0
-Requires:       python-numpy
-Requires:       python-scipy
+Requires:       python-lal >= 7.1.0
+Requires:       python-lalburst >= 1.5.3
+Requires:       python-lalframe >= 1.5.0
+Requires:       python-lalmetaio >= 2.0.0
+Requires:       python-lalsimulation >= 2.5.0
+Requires:       python-numpy >= 1.7
 ExcludeArch:    %{ix86}
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-xml
 %endif
 %if %{with octave}
-BuildRequires:  octave-lal >= 6.21.0
-BuildRequires:  octave-lalburst
-BuildRequires:  octave-lalframe
-BuildRequires:  octave-lalmetaio
-BuildRequires:  octave-lalsimulation >= 1.10.0
+BuildRequires:  octave-lal >= 7.1.0
+BuildRequires:  octave-lalburst >= 1.5.3
+BuildRequires:  octave-lalframe >= 1.5.0
+BuildRequires:  octave-lalmetaio >= 2.0.0
+BuildRequires:  octave-lalsimulation >= 2.5.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests (python3 only)
-BuildRequires:  python3-pytest
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -171,10 +172,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %check
-pushd ../python3_build
+%{python_expand export PYTHON=$python
+pushd ../${PYTHON}_build
 export LD_LIBRARY_PATH+=%{buildroot}%{_libdir}
 %make_build check
 popd
+}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
