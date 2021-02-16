@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 15 14:02:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * remove use of dead proeprties
+  * More familiar behavior for the App Drawer
+  * Use loop instead of recursion
+  * Fix logic error in f19f629b4ba85
+  * add back panels if they disappeared
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Fri Jan 15 17:49:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov

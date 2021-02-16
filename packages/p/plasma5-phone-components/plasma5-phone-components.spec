@@ -23,7 +23,7 @@
 
 %bcond_without lang
 Name:           plasma5-phone-components
-Version:        5.20.5
+Version:        5.21.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz
+Source:         plasma-phone-components-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz.sig
+Source1:        plasma-phone-components-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -53,6 +53,8 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.1.90
+# Forced on startup
+Requires:       qqc2-breeze-style
 # QML imports
 Requires:       bluez-qt-imports
 Requires:       kactivities5-imports
@@ -87,10 +89,6 @@ Plasma shell and components targeted for phones.
   %kf5_find_lang
 %endif
 
-  # I have no idea what that's doing here.
-  rm -r %{buildroot}%{_datadir}/sounds/sitter
-  rmdir %{buildroot}%{_datadir}/sounds
-
   # Wut?
   sed -i '#touch /tmp/simplelogin_starting#d' %{buildroot}%{_kf5_bindir}/kwinwrapper
 
@@ -112,7 +110,7 @@ Plasma shell and components targeted for phones.
 %dir %{_kf5_plasmadir}/look-and-feel/
 %{_kf5_plasmadir}/look-and-feel/org.kde.plasma.phone/
 %dir %{_kf5_plasmadir}/shells
-%{_kf5_plasmadir}/shells/org.kde.plasma.phone/
+%{_kf5_plasmadir}/shells/org.kde.plasma.phoneshell/
 %dir %{_kf5_plasmadir}/plasmoids/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.activities/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.krunner/
@@ -126,12 +124,15 @@ Plasma shell and components targeted for phones.
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.homescreen.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.taskpanel.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phone.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phoneshell.desktop
+%{_kf5_notifydir}/plasma_phone_components.notifyrc
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/applets/
 %{_kf5_plugindir}/plasma/applets/plasma_applet_phonepanel.so
 %{_kf5_plugindir}/plasma/applets/plasma_containment_phone_homescreen.so
 %{_kf5_plugindir}/plasma/applets/plasma_containment_phone_taskpanel.so
 %{_kf5_appstreamdir}/org.kde.plasma.phone.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.phoneshell.appdata.xml
 %{_kf5_appstreamdir}/org.kde.phone.activities.appdata.xml
 %{_kf5_appstreamdir}/org.kde.phone.krunner.appdata.xml
 

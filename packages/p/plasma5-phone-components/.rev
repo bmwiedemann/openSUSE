@@ -15,4 +15,12 @@
     <comment>Add compatibility with qml-autoreqprov (forwarded request 865265 from Vogtinator)</comment>
     <requestid>865278</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af3588f2c3aebbe78a5f5e5878ab9560</srcmd5>
+    <version>5.21.0</version>
+    <time>1613463539</time>
+    <user>dimstar_suse</user>
+    <comment>5.21.0 respins (forwarded request 872544 from Vogtinator)</comment>
+    <requestid>872554</requestid>
+  </revision>
 </revisionlist>
