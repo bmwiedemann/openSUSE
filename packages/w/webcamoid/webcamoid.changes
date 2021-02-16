@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 16 12:32:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.8.0
+  * Added option for blurring outside detected face in
+    FaceDetect plugin
+  * Added public method for detecteding face rectangles in
+    FaceDetect plugin
+  * Fixed some minor bugs when capturing from camera.
+
+-------------------------------------------------------------------
 Sat Mar 28 18:29:16 UTC 2020 - Bogdano Arendartchuk <BArendartchuk@suse.com>
 
 - require libqt5-qtquickcontrols and libqt5-qtquickcontrols2

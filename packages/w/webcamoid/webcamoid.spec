@@ -1,7 +1,7 @@
 #
 # spec file for package webcamoid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           webcamoid
-Version:        8.7.1
+Version:        8.8.0
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later
