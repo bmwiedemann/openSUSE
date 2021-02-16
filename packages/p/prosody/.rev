@@ -331,4 +331,37 @@
   * util.indexedbheap: Fix heap data structure corruption, causing some timers to fail after a reschedule (fixes #1572)</comment>
     <requestid>839107</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e3bf9db78cd3fde3f552bafc8fedb9ef</srcmd5>
+    <version>0.11.8</version>
+    <time>1613511641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.8:
+  Security:
+  * mod_saslauth: Disable ‘tls-unique’ channel binding with TLS 1.3 (#1542)
+  Fixes and improvements:
+  * net.websocket.frames: Improve websocket masking performance by using the new util.strbitop
+  * util.strbitop: Library for efficient bitwise operations on strings
+  Minor changes:
+  * MUC: Correctly advertise whether the subject can be changed (#1155)
+  * MUC: Preserve disco ‘node’ attribute (or lack thereof) in responses (#1595)
+  * MUC: Fix logic bug causing unnecessary presence to be sent (#1615)
+  * mod_bosh: Fix error if client tries to connect to component (#425)
+  * mod_bosh: Pick out the ‘wait’ before checking it instead of earlier
+  * mod_pep: Advertise base PubSub feature (#1632)
+  * mod_pubsub: Fix notification stanza type setting (#1605)
+  * mod_s2s: Prevent keepalives before client has established a stream
+  * net.adns: Fix bug that sent empty DNS packets (#1619)
+  * net.http.server: Don’t send Content-Length on 1xx/204 responses (#1596)
+  * net.websocket.frames: Fix length calculation bug (#1598)
+  * util.dbuffer: Make length API in line with Lua strings
+  * util.dbuffer: Optimize substring operations
+  * util.debug: Fix locals being reported under wrong stack frame in some cases
+  * util.dependencies: Fix check for Lua bitwise operations library (#1594)
+  * util.interpolation: Fix combination of filters and fallback values #1623
+  * util.promise: Preserve tracebacks
+  * util.stanza: Reject ASCII control characters (#1606)
+  * timers: Ensure timers can’t block other processing (#1620)</comment>
+    <requestid>872807</requestid>
+  </revision>
 </revisionlist>
