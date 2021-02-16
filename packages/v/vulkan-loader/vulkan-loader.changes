@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 10 14:03:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.169
+  * loader: Do not return OOM when layer count is 0
+
+-------------------------------------------------------------------
+Wed Jan 27 21:56:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.166
+  * No user-visible changes
+
+-------------------------------------------------------------------
 Tue Dec 29 12:32:48 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.165:
