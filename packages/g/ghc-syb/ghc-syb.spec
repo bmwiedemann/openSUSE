@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-syb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name syb
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.1
+Version:        0.7.2.1
 Release:        0
 Summary:        Scrap Your Boilerplate
 License:        BSD-3-Clause
@@ -29,9 +29,10 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
 %endif
 
 %description
