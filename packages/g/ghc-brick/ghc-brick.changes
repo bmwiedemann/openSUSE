@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Feb  8 05:05:28 UTC 2021 - psimons@suse.com
+
+- Update brick to version 0.60.2.
+  0.60.2
+  ------
+
+  Bug fixes:
+   * Widgets reported as `clickable` are now reported as clickable even
+     when their renderings are cached with `cached` (#307; thanks Hari
+     Menon)
+
+-------------------------------------------------------------------
+Wed Feb  3 20:26:11 UTC 2021 - psimons@suse.com
+
+- Update brick to version 0.60.1.
+  0.60.1
+  ------
+
+  Bug fixes:
+   * `table []` no longer raises `TEUnequalRowSizes`.
+
+  0.60
+  ----
+
+  New features:
+   * Added `Brick.Widgets.Table` to support drawing basic tables. See
+     `programs/TableDemo.hs` for a demonstration (`cabal new-run -f demos
+     brick-table-demo`).
+
+-------------------------------------------------------------------
+Fri Jan 29 10:26:08 UTC 2021 - psimons@suse.com
+
+- Update brick to version 0.59.
+  0.59
+  ----
+
+  API changes:
+   * `Brick.Widgets.List` got `listMoveToBeginning` and `listMoveToEnd`
+     functions
+   * `Extent`: removed the unused `extentOffset` field
+
+  Bug fixes:
+   * Fixed a crash in the border rewriting code that attempted to rewrite
+     empty images (#305) (thanks @dmwit)
+
+-------------------------------------------------------------------
 Tue Dec 29 21:16:36 UTC 2020 - psimons@suse.com
 
 - Update brick to version 0.58.1.
