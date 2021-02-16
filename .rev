@@ -366,4 +366,12 @@
     <comment>New stable release, I assume this should be ok for current old stable GNOME too (forwarded request 833843 from iznogood)</comment>
     <requestid>834306</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ce557e3f38d28c22bd0628223b43909b</srcmd5>
+    <version>1.6.2</version>
+    <time>1613511341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870856</requestid>
+  </revision>
 </revisionlist>

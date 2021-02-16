@@ -1,7 +1,7 @@
 #
 # spec file for package json-glib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           json-glib
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Library for JavaScript Object Notation format
 License:        LGPL-2.1-or-later
@@ -28,9 +28,9 @@ URL:            http://live.gnome.org/JsonGlib
 Source0:        https://download.gnome.org/sources/json-glib/1.6/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
-BuildRequires:  gtk-doc
 BuildRequires:  glib2-devel >= 2.54
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
