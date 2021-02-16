@@ -77,4 +77,12 @@
     <comment>- removed last remaing %is_opensuse (jsc#SLE-11639) (forwarded request 785874 from mslacken)</comment>
     <requestid>785875</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83f2c41ec9303ac77ea134cb5d6117cb</srcmd5>
+    <version>0.0.6</version>
+    <time>1613511670</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to v0.0.6 which support lua54 and Leap/SLE15.3</comment>
+    <requestid>872869</requestid>
+  </revision>
 </revisionlist>

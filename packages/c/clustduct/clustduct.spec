@@ -1,7 +1,7 @@
 #
 # spec file for package clustduct
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 %bcond_with pdfdoc
 
 Name:           clustduct
-Version:        0.0.5
+Version:        0.0.6
 Release:        0
 Summary:        Framework which connects a genders database to dnsmasq
 License:        BSD-3-Clause
 Group:          System/Management
-Source0:        clustduct-%{version}.tar.xz
+Source0:        https://github.com/mslacken/clustduct/archive/v%{version}.tar.gz#/clustduct-%{version}.tar.gz
 Source1:        clustduct-rpmlintrc
 URL:            https://github.com/mslacken/clustduct   
 BuildRequires:  autoconf-archive
@@ -42,9 +42,9 @@ BuildRequires:  texlive-latex
 %endif
 Requires:       bc
 Requires:       dnsmasq
+Requires:       dolly
 Requires:       genders
 Requires:       lua-genders
-Requires:       lua53-luaposix
 %ifarch x86_64
 Requires:       grub2-x86_64-efi
 Requires:       shim
