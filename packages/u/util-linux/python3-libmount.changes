@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 10 23:18:39 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- libmount: don't use "symfollow" for helpers on user mounts
+  (boo#1181750, util-linux-libmount-dont-use-symfollow.patch)
+
+-------------------------------------------------------------------
+Tue Feb  9 11:19:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Override GTKDOCIZE with /bin/true so we can run autoreconf
+  without needing gtk-doc as a dependency.
+
+-------------------------------------------------------------------
 Thu Feb  4 02:17:39 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Merge package with SLE15 SP3 and openSUSE Leap 15.3:
