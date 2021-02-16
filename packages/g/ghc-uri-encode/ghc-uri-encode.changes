@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  3 20:26:04 UTC 2021 - psimons@suse.com
+
+- Update uri-encode to version 1.5.0.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
