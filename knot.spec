@@ -91,7 +91,7 @@ BuildRequires:  systemd-devel
 Obsoletes:      knot2 < %{version}
 
 %description
-Knot DNS is a high-performance authoritative DNS server implementation.
+Knot DNS is an implementation of an authoritative DNS server.
 
 %package devel
 Group:          Development/Libraries/C and C++
@@ -99,7 +99,7 @@ Requires:       knot = %{version}
 #
 Summary:        Development files for the knot libraries
 %description devel
-Knot DNS is a high-performance authoritative DNS server implementation.
+Knot DNS is an implementation of an authoritative DNS server.
 
 Development files for knot.
 
@@ -108,7 +108,7 @@ Group:          System/Libraries
 #
 Summary:        Shared library from knot: libdnssec
 %description -n %{libdnssec}
-Knot DNS is a high-performance authoritative DNS server implementation.
+Knot DNS is an implementation of an authoritative DNS server.
 
 This package holds the shared library libdnssec from knot.
 
@@ -117,7 +117,7 @@ Group:          System/Libraries
 #
 Summary:        Shared library from knot: libknot
 %description -n %{libknot}
-Knot DNS is a high-performance authoritative DNS server implementation.
+Knot DNS is an implementation of an authoritative DNS server.
 
 This package holds the shared library libknot from knot.
 
@@ -126,18 +126,16 @@ Group:          System/Libraries
 #
 Summary:        Shared library from knot 2: libzscanner
 %description -n %{libzscanner}
-Knot DNS is a high-performance authoritative DNS server implementation.
+Knot DNS is an implementation of an authoritative DNS server.
 
 This package holds the shared library libzscanner from knot.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %configure \
-  --sysconfdir=%{_sysconfdir} \
   --libexecdir=%{_libexecdir}/%{pkg_name} \
-  --localstatedir=%{_localstatedir} \
   --includedir=%{_includedir}/knot/ \
   --disable-static \
   --enable-recvmmsg=yes \
@@ -168,7 +166,7 @@ This package holds the shared library libzscanner from knot.
   --with-module-whoami=shared \
   --with-bash-completions=/etc/bash_completion.d \
   --disable-silent-rules
-make %{?_smp_mflags} STRIP="/bin/true"
+%make_build STRIP="/bin/true"
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags} STRIP="/bin/true"
@@ -229,7 +227,6 @@ fi
 %postun -n %{libzscanner} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %dir %attr(750,root,root) %{_sysconfdir}/%{pkg_name}
 %config(noreplace) %{_sysconfdir}/%{pkg_name}/%{pkg_name}.conf
 %{_sbindir}/*
@@ -245,19 +242,15 @@ fi
 %ghost %dir %(751,knot,knot) /run/knot
 
 %files -n %{libdnssec}
-%defattr(-,root,root)
 %{_libdir}/libdnssec.so.*
 
 %files -n %{libknot}
-%defattr(-,root,root)
 %{_libdir}/libknot.so.*
 
 %files -n %{libzscanner}
-%defattr(-,root,root)
 %{_libdir}/libzscanner.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/knot/
 %{_libdir}/libdnssec.so
 %{_libdir}/libknot.so
