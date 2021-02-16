@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Feb 14 17:15:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 22.0.3
+  * Fix fork-safety bug in garbage collection thread (regression
+    in 20.0) when using subprocesses.
+- Changes in 22.0.1
+  * Fix type of Frame.bytes for non-copying recvs with CFFI
+    backend (regression in 21.0)
+- Changes in 22.0.0
+  * This is a major release due to changes in wheels and building
+    on Windows. Code changes from 21.0 are minimal.
+  * Some typing fixes
+  * Bump bundled libzmq to 4.3.4
+- Relevant Changes in 21.0
+  * pyzmq 21 is a major version bump because of dropped support
+    for old Pythons and some changes in packaging. CPython users
+    should not face major compatibility issues if installation
+    works at all :) PyPy users may see issues with the new
+    implementation of send/recv. If you do, please report them!
+  The big changes are:
+  * drop support for Python 3.5. Python >= 3.6 is required
+  * mypy type stubs, which should improve static analysis of
+    pyzmq, especially for dynamically defined attributes such as
+    zmq constants. These are new! Let us know if you find any
+    issues.
+  * support for zero-copy and sending bufferables with cffi
+    backend. This is experimental! Please report issues.
+  Packaging updates:
+  * Require Python >= 3.6, required for good type annotation
+    support
+  * rework cffi backend in setup.py
+  New features:
+  * zero-copy support in CFFI backend (send(copy=False) now does
+    something).
+  * Support sending any buffer-interface-providing objects in CFFI
+    backend.
+  Bugs fixed:
+  * Errors during teardown of asyncio Sockets
+- Don't test numpy on python36 flavor, because python36-numpy is
+  no longer available in Tumbleweed (NEP 29)
+- Make sure we use the Cython backend, not CFFI, wich is for PyPy.
+  * fixes gh#zeromq/pyzmq#1431 and gh#zeromq/pyzmq#1432
+- Remove skip_test_tracker.patch
+- Got an oom error on the build service: Require at least 8GB of
+  RAM through _constraints file
+
+-------------------------------------------------------------------
 Wed Nov 25 16:26:52 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to version 20.0.0:
