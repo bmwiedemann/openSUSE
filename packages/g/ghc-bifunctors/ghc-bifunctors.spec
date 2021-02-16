@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bifunctors
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name bifunctors
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.5.9
+Version:        5.5.10
 Release:        0
 Summary:        Collection Haskell 98 bifunctors, bifoldables and bitraversables
 License:        BSD-2-Clause
