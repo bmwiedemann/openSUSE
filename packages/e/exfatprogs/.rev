@@ -68,4 +68,22 @@
 - jsc#SLE-16156: Add exfatprogs to SLE</comment>
     <requestid>834916</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b2bdb0b6f535336a084af967dee666e2</srcmd5>
+    <version>1.1.0</version>
+    <time>1613511302</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to tar.xz tarball
+- Add signature checking for the tarball
+
+- Update to version 1.1.0
+  * fsck.exfat: recover corrupted boot region.
+  * exfatlabel: Print or Set volume label and serial.
+  * dump.exfat: Show the on-disk metadata information
+    and the statistics.
+  * set _FILE_OFFSET_BITS=64 for Android build.
+- Add dump.exfat binary and manpage to %files section
+- Add exfatlabel binary and manpaeg to %files section</comment>
+    <requestid>870776</requestid>
+  </revision>
 </revisionlist>

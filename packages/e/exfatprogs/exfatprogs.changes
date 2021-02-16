@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 10 07:03:06 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Switch to tar.xz tarball
+- Add signature checking for the tarball
+
+-------------------------------------------------------------------
+Tue Feb  9 22:48:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.1.0
+  * fsck.exfat: recover corrupted boot region.
+  * exfatlabel: Print or Set volume label and serial.
+  * dump.exfat: Show the on-disk metadata information
+    and the statistics.
+  * set _FILE_OFFSET_BITS=64 for Android build.
+- Add dump.exfat binary and manpage to %files section
+- Add exfatlabel binary and manpaeg to %files section
+
+-------------------------------------------------------------------
 Fri Sep 11 11:33:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - jsc#SLE-16156: Add exfatprogs to SLE

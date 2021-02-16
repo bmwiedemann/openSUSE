@@ -1,7 +1,7 @@
 #
 # spec file for package exfatprogs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           exfatprogs
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        Utilities for exFAT file system maintenance
 License:        GPL-2.0-or-later
 URL:            https://github.com/exfatprogs/exfatprogs
-Source0:        https://github.com/exfatprogs/exfatprogs/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/exfatprogs/exfatprogs/releases/download/%{version}/exfatprogs-%{version}.tar.xz
+Source1:        https://github.com/exfatprogs/exfatprogs/releases/download/%{version}/exfatprogs-%{version}.tar.xz.asc
+Source1000:     exfatprogs.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -59,9 +61,13 @@ autoreconf -fi
 %files
 %license COPYING
 %doc README.md
+%{_mandir}/man8/dump.exfat.8%{?ext_man}
+%{_mandir}/man8/exfatlabel.8%{?ext_man}
 %{_mandir}/man8/fsck.exfat.8%{?ext_man}
 %{_mandir}/man8/mkfs.exfat.8%{?ext_man}
 %{_mandir}/man8/tune.exfat.8%{?ext_man}
+%{_sbindir}/dump.exfat
+%{_sbindir}/exfatlabel
 %{_sbindir}/fsck.exfat
 %{_sbindir}/mkfs.exfat
 %{_sbindir}/tune.exfat
