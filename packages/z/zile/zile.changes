@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 10 12:04:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.15:
+  * Ensure term.h matches [n]curses[w].h (fix #58880).
+  * Fix a potential crash in the Lisp “interpreter”.
+  * Build-related fixes
+  * Some code clean-up, including a simplification to the calling convention
+  * Update some docstrings to match Emacs 27.1.
+- remove obsolete post install scripts for current distros
+
+-------------------------------------------------------------------
 Sat Oct 27 19:16:03 UTC 2018 - sean@suspend.net
 
 - Update to version 2.4.14:
