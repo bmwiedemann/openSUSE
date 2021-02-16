@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  2 09:30:26 UTC 2021 - psimons@suse.com
+
+- Update io-streams to version 1.5.2.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
