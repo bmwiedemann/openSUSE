@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb 15 22:53:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.0:
+  * New features:
+    - iminuit.minimize: Keyword method now accepts "migrad" and
+      "simplex".
+    - iminuit.minimize: Keyword option now supports keyword "stra"
+      to set Minuit.strategy.
+    - iminuit.minimize: OptimizeResult.message now states if
+      errors are not reliable.
+  * Minuit now supports functions wrapped with functools.partial.
+  * Upgrade Minuit2 C++ code in ROOT to latest master with
+    following improvements:
+    - improvement of seed when using an analytical gradient.
+    - fix of last minimum state added twice to vector of minimum
+      states in some cases (saves a bit of memory).
+  * Documentation improvements.
+  * Updated tutorial about automatic differentiation, added
+    comparison of numba.njit and jax.jit.
+- Changes from version 2.3.0:
+  * New features: iminuit.cost.BinnedNLL and
+    iminuit.cost.ExtendedBinnedNLL now support weighted binned
+    data.
+  * Bug-fixes: FMin.edm_goal now remains unchanged if Minuit.hesse
+    is run after Minuit.migrad.
+  * Other: Update to cibuildwheels-1.8.0 and workflow
+    simplification.
+
+-------------------------------------------------------------------
 Mon Dec 28 02:08:11 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.1:
