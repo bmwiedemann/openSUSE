@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Feb 11 18:23:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Port some foreach
+  * Port away from Plasma::PluginLoader::listEngineInfo
+  * Don't filter engines with NoDisplay when listing
+  * Bump required KF5 version
+  * Port to Plasma::PluginLoader::listDataEngineMetaData
+  * Require C++17
+  * Remove dead code
+  * removed explicit contentHeight
+  * Use KPluginMetaData instead of KPluginInfo
+  * Remove outdated install file
+  * Fix Connections warnings
+  * [cuttlefish] Fix a few cases of using ambiguous context property units
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * [cuttlefish] Refactor Screenshot logic
+  * [themeexplorer] Drop writing X-KDE-PluginInfo-Depends
+  * [cuttlefish] Refactor icon montage
+  * [cuttlefish] Fix ResponsivePreview icon sizes
+  * [cuttlefix] Fix Dual Montage icon size
+  * [cuttlefish] Fix icon preview sizes
+  * [cuttlefish] Use Gridlayout to simplify delegate repetition
+  * [cuttlefish] Fix icon preview sizes
+  * Refactor main view to make better use of QQC2 API
+  * Use QQC2 ToolBar correctly
+  * Remove unnecessary spacing to the right of the main view's scrollbar
+  * Port to new connection syntax
+  * Port custom toolbars to QQC2 Toolbar
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5
