@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandas
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,76 +28,76 @@
 %bcond_with test
 %endif
 Name:           python-pandas%{psuffix}
-Version:        1.1.4
+Version:        1.2.2
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
-Source99:       pandas-pytest.ini
-BuildRequires:  %{python_module Cython >= 0.28.2}
-# test requirements
+BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy >= 1.15.4}
-BuildRequires:  %{python_module numpy-devel >= 1.15.4}
-BuildRequires:  %{python_module openpyxl}
-BuildRequires:  %{python_module pyperclip}
+BuildRequires:  %{python_module devel >= 3.7.1}
+BuildRequires:  %{python_module numpy >= 1.16.5}
+BuildRequires:  %{python_module numpy-devel >= 1.16.5}
+BuildRequires:  %{python_module python-dateutil >= 2.7.3}
+BuildRequires:  %{python_module pytz >= 2017.3}
 BuildRequires:  %{python_module setuptools >= 24.2.0}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-Cython >= 0.28.2
-Requires:       python-numpy >= 1.15.4
+Requires:       python-numpy >= 1.16.5
 Requires:       python-python-dateutil >= 2.7.3
-Requires:       python-pytz >= 2015.4
+Requires:       python-pytz >= 2017.3
+Recommends:     python-numexpr >= 2.6.8
 Recommends:     python-Bottleneck >= 1.2.1
-Recommends:     python-Jinja2
-Recommends:     python-PyMySQL >= 0.7.11
-Recommends:     python-QtPy
-Recommends:     python-SQLAlchemy >= 1.1.4
-Recommends:     python-XlsxWriter >= 0.9.8
-Recommends:     python-beautifulsoup4 >= 4.6.0
-Recommends:     python-blosc
-Recommends:     python-fastparquet >= 0.2.1
-Recommends:     python-gcsfs >= 0.6.0
-Recommends:     python-html5lib
-Recommends:     python-lxml >= 3.8.0
-Recommends:     python-matplotlib >= 2.2.2
-Recommends:     python-numexpr >= 2.6.2
-Recommends:     python-openpyxl >= 2.4.8
-Recommends:     python-pandas-gbq >= 1.2.0
-Recommends:     python-psycopg2
-Recommends:     python-pyarrow >= 0.9.0
-Recommends:     python-pyperclip
-Recommends:     python-pyreadstat
-Recommends:     python-qt5
-Recommends:     python-scipy >= 1.2.0
-Recommends:     python-tables >= 3.4.3
-Recommends:     python-xarray >= 0.8.2
-Recommends:     python-xlrd >= 1.1.0
-Recommends:     python-xlwt >= 1.2.0
-Recommends:     python-zlib
-Recommends:     xclip
-Recommends:     xsel
+Suggests:       python-beautifulsoup4 >= 4.6.0
+Suggests:       python-blosc >= 1.17.0
+Suggests:       python-fastparquet >= 0.4.0
+Suggests:       python-fsspec >= 0.7.4
+Suggests:       python-gcsfs >= 0.6.0
+Suggests:       python-html5lib >= 1.0.1
+Suggests:       python-Jinja2 >= 2.10
+Suggests:       python-lxml >= 4.3.0
+Suggests:       python-matplotlib >= 2.2.3
+Suggests:       python-numba >= 0.46.0
+Suggests:       python-openpyxl >= 2.6.0
+Suggests:       python-pandas-gbq >= 0.12.0
+Suggests:       python-psycopg2 >= 2.7
+Suggests:       python-pyarrow >= 0.15.0
+Suggests:       python-PyMySQL >= 0.8.1
+Suggests:       python-pyreadstat
+Suggests:       python-qt5
+Suggests:       python-QtPy
+Suggests:       python-s3fs >= 0.4.0
+Suggests:       python-scipy >= 1.12.0
+Suggests:       python-SQLAlchemy >= 1.3.0
+Suggests:       python-tables >= 3.5.1
+Suggests:       python-tabulate >= 0.8.3
+Suggests:       python-xarray >= 0.8.2
+Suggests:       python-xlrd >= 1.2.0
+Suggests:       python-xlsb >= 1.0.6
+Suggests:       python-XlsxWriter >= 1.0.2
+Suggests:       python-zlib
+Suggests:       xclip
+Suggests:       xsel
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
 %if %{with test}
+BuildRequires:  %{python_module Bottleneck >= 1.2.1}
 BuildRequires:  %{python_module SQLAlchemy >= 1.1.4}
 BuildRequires:  %{python_module XlsxWriter >= 0.9.8}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module lxml >= 3.8.0}
-BuildRequires:  %{python_module openpyxl >= 2.4.8}
+BuildRequires:  %{python_module lxml >= 4.3.0}
+BuildRequires:  %{python_module numexpr >= 2.6.8}
+BuildRequires:  %{python_module openpyxl >= 2.6.0}
 BuildRequires:  %{python_module pandas = %{version}}
-BuildRequires:  %{python_module pytest >= 4.0.2}
+BuildRequires:  %{python_module pytest >= 5.0.1}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module python-dateutil >= 2.7.3}
-BuildRequires:  %{python_module pytz >= 2015.4}
-BuildRequires:  %{python_module xlrd >= 1.1.0}
-BuildRequires:  %{python_module xlwt >= 1.2.0}
+BuildRequires:  %{python_module xlrd >= 1.2.0}
+BuildRequires:  xclip
 BuildRequires:  xvfb-run
 %endif
 %python_subpackages
@@ -123,8 +124,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_install
 %{python_expand sed -i -e 's|"python", "-c",|"%{__$python}", "-c",|' %{buildroot}%{$python_sitearch}/pandas/tests/io/test_compression.py
 %fdupes %{buildroot}%{$python_sitearch}
-# can be removed for pandas >= 1.1 https://github.com/pandas-dev/pandas/pull/35146
-install %{SOURCE99} %{buildroot}%{$python_sitearch}/pandas/pytest.ini
 }
 %endif
 
@@ -138,29 +137,39 @@ export PYTHONDONTWRITEBYTECODE=1
 # https://github.com/pytest-dev/pytest/issues/920
 # https://github.com/pytest-dev/pytest/issues/1075
 export PYTHONHASHSEED=1
-# tries to compile stuff in buildroot test_oo_optimizable
+# tries to compile stuff in system sitearch
 SKIP_TESTS+=" or test_oo_optimizable"
-# tries to import system pandas, not the freshly build on
-SKIP_TESTS+=" or test_missing_required_dependency"
+# dtypes not as expected
+# https://github.com/pandas-dev/pandas/issues/39096
+# https://github.com/pandas-dev/pandas/issues/36579
+SKIP_TESTS+=" or (test_misc and test_memory_usage and series and empty and index)"
 %ifarch %{ix86}
-# https://github.com/pandas-dev/pandas/issues/29712
-SKIP_TESTS+=" or test_raw_roundtrip"
 # overflows on i586
 SKIP_TESTS+=" or test_encode_non_c_locale"
 # fails on i586 (was gcc10-skip-one-test.patch)
 SKIP_TESTS+=" or test_merge_on_ints_floats_warning"
 %endif
+if [ $(getconf LONG_BIT) -eq 32 ]; then
 # https://github.com/pandas-dev/pandas/issues/31856
-[ $(getconf LONG_BIT) = "32" ] && SKIP_TESTS+=" or test_maybe_promote_int_with_int"
+SKIP_TESTS+=" or test_maybe_promote_int_with_int"
+# rounding error
+SKIP_TESTS+=" or (test_rolling_quantile_interpolation_options and data1 and linear and 0.1)"
+fi
 %ifnarch x86_64
 # run the slow tests only on x86_64
 %define test_fast --skip-slow --skip-db
 %endif
 %{python_expand $python -c 'import pandas; print(pandas.__path__); print(pandas.show_versions())'
+# -n 4: The test collection consumes a lot of memory per worker. Sync with constraints file
+# cache: can't just say no cacheprovider, because one test checks for the --lf option of pytest-cache
+# --skip-* arguments: Upstreams custom way to skip marked tests. These do not use pytest.mark.
+# clipboard marker: not set up properly in build service
 # need to specify test path directly instead of --pyargs pandas in order
-# to find pytest.ini and all conftest.py files
-xvfb-run pytest-%{$python_bin_suffix} -v -n auto %{?test_fast} \
-                                      -p no:cacheprovider \
+# to find all conftest.py files https://github.com/pytest-dev/pytest/issues/1596
+xvfb-run pytest-%{$python_bin_suffix} -v -n 4 \
+                                      -o cache_dir=$PWD/.pytest_cache --cache-clear \
+                                      --skip-network %{?test_fast} \
+                                      -m "not clipboard" \
                                       -k "not (${SKIP_TESTS:4})" \
                                       %{$python_sitearch}/pandas
 }

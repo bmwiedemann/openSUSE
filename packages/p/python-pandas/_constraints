@@ -3,5 +3,6 @@
     <physicalmemory>
       <size unit="M">8000</size>
     </physicalmemory>
-  </hardware>
+    <processors>4</processors>
+  </hardware>  
 </constraints>

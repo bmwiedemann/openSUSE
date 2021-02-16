@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Feb 14 20:53:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.2.2
+  * https://pandas.pydata.org/docs/whatsnew/v1.2.2.html
+  * fixed regressions and bugfixes
+- Update to version 1.2.1
+  * https://pandas.pydata.org/docs/whatsnew/v1.2.1.html
+  * fixed regressions and bugfixes
+  * Calling NumPy ufuncs on non-aligned DataFrames
+  * The deprecated attributes _AXIS_NAMES and _AXIS_NUMBERS of 
+    DataFrame and Series will no longer show up in dir or inspect.
+    getmembers calls (GH38740)
+  * Bumped minimum fastparquet version to 0.4.0 to avoid 
+    AttributeError from numba (GH38344)
+  * Bumped minimum pymysql version to 0.8.1 to avoid test failures 
+    (GH38344)
+  * Added reference to backwards incompatible check_freq arg of 
+    testing.assert_frame_equal() and testing.assert_series_equal() 
+    in pandas 1.1.0 whats new (GH34050)
+- Update to version 1.2.0
+  * https://pandas.pydata.org/docs/whatsnew/v1.2.0.html
+  * WARNING:   
+      The xlwt package for writing old-style .xls excel files is
+    no longer maintained. The xlrd package is now only for reading 
+    old-style .xls files.
+      Previously, the default argument engine=None to read_excel() 
+    would result in using the xlrd engine in many cases, including 
+    new Excel 2007+ (.xlsx) files. If openpyxl is installed, many 
+    of these cases will now default to using the openpyxl engine. 
+    See the read_excel() documentation for more details.
+      Thus, it is strongly encouraged to install openpyxl to read 
+    Excel 2007+ (.xlsx) files. Please do not report issues when 
+    using ``xlrd`` to read ``.xlsx`` files. This is no longer 
+    supported, switch to using openpyxl instead.    
+      Attempting to use the xlwt engine will raise a FutureWarning 
+    unless the option io.excel.xls.writer is set to "xlwt". While 
+    this option is now deprecated and will also raise a     
+    FutureWarning, it can be globally set and the warning 
+    suppressed. Users are recommended to write .xlsx files using 
+    the openpyxl engine instead.
+  Enhancements
+  * Optionally disallow duplicate labels
+  * Passing arguments to fsspec backends
+  * Support for binary file handles in to_csv
+  * Support for short caption and table position in to_latex
+  * Change in default floating precision for read_csv and 
+    read_table
+  * Experimental nullable data types for float data
+  * Index/column name preservation when aggregating
+  * GroupBy supports EWM operations directly
+  Deprecations
+  * https://pandas.pydata.org/docs/whatsnew/v1.2.0.html#deprecations
+- Skip python36 build: New minimum supported Python is 3.7.1
+- Only Suggest instead of Recommend optional dependencies. Nobody
+  wants to pull in all of those packages by default.
+- Remove pandas-pytest.ini
+- Rework test deselection
+- Limit to 4 pytest-xdist workers, as collection consumes a lot of
+  memory
+
+-------------------------------------------------------------------
 Fri Oct 30 22:30:53 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.1.4:
