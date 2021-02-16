@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 16 11:04:18 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.6.2 (no ChangeLog entry for this version)
+
+-------------------------------------------------------------------
+Tue Feb 16 08:27:32 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.6.1
+  * Astroid version has been set as < 2.5 (#4093)
+
+-------------------------------------------------------------------
 Thu Dec 17 21:43:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip the failing test for unused imports on python36 flavor

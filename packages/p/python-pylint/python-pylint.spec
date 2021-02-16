@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without tests
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.6.0
+Version:        2.6.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
