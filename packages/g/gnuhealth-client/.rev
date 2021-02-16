@@ -137,4 +137,12 @@
     <comment>remove __pycache__ from plugins (boo#1178453)</comment>
     <requestid>846845</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e1b345e022e62c9eeade5f56ab08a071</srcmd5>
+    <version>3.8.1</version>
+    <time>1613511580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872716</requestid>
+  </revision>
 </revisionlist>
