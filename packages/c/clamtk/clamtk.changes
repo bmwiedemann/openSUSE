@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 12 09:45:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.07:
+  + Update to look for additional information during update to know
+    when finished.
+  + Update dates to 2021.
+- Add 0001-Do-not-inject-no-separator-into-window-decoration.patch:
+  Do not add no-separator to window decoration (boo#1182151).
+
+-------------------------------------------------------------------
 Fri Sep 25 09:56:42 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 6.06:
