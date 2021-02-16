@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Feb 11 18:23:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * typo fix
+
+-------------------------------------------------------------------
+Sun Jan 31 15:38:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add support for qml-autoreqprov
+
+-------------------------------------------------------------------
+Fri Jan 22 16:46:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit

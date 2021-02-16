@@ -1,0 +1,64 @@
+From 07811d9a53edcf1e9406897b4d6b8eee6562a56f Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 22 Jan 2021 17:29:02 +0100
+Subject: [PATCH] Introduce cmake options to disable backends
+
+Some distros only ship either firewalld or UFW, so provide an option to disable
+building and installing backends.
+---
+ CMakeLists.txt              | 14 ++++++++++++--
+ kcm/backends/CMakeLists.txt |  8 ++++++--
+ 2 files changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7d6fced..abad8d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,6 +14,18 @@ set(QT_MIN_VERSION "5.14.0")
+ set(CMAKE_AUTOMOC TRUE)
+ set(CMAKE_AUTORCC TRUE)
+ 
++#-----------------------------------------------------------------------------
++#                                OPTIONS
++#-----------------------------------------------------------------------------
++
++include(FeatureSummary)
++
++option(BUILD_FIREWALLD_BACKEND "Build the firewalld backend" ON)
++add_feature_info(FIREWALLD_BACKEND ${BUILD_FIREWALLD_BACKEND} "Build the FirewallD backend")
++
++option(BUILD_UFW_BACKEND "Build the Uncomplicated Firewall (UFW) backend" ON)
++add_feature_info(UFW_BACKEND ${BUILD_UFW_BACKEND} "Build the Uncomplicated Firewall (UFW) backend")
++
+ #-----------------------------------------------------------------------------
+ #                              DEPENDENCIES
+ #-----------------------------------------------------------------------------
+@@ -36,8 +48,6 @@ include(KDEInstallDirs)
+ include(KDECompilerSettings)
+ include(KDECMakeSettings)
+ 
+-include(FeatureSummary)
+-
+ find_package(KF5 REQUIRED COMPONENTS 
+     CoreAddons
+     KCMUtils
+diff --git a/kcm/backends/CMakeLists.txt b/kcm/backends/CMakeLists.txt
+index acc3f71..63920e0 100644
+--- a/kcm/backends/CMakeLists.txt
++++ b/kcm/backends/CMakeLists.txt
+@@ -1,6 +1,10 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
+-add_subdirectory(firewalld)
+-add_subdirectory(ufw)
++if(BUILD_FIREWALLD_BACKEND)
++    add_subdirectory(firewalld)
++endif()
++if(BUILD_UFW_BACKEND)
++    add_subdirectory(ufw)
++endif()
+ 
+ add_subdirectory(netstat)
+-- 
+2.25.1
+
