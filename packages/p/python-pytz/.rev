@@ -322,4 +322,13 @@
   * update to IANA 2020e timezone release</comment>
     <requestid>859293</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a51cda02a7bf5bc8982f87689b413bdf</srcmd5>
+    <version>2021.1</version>
+    <time>1613511295</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.1:
+  * update to IANA 2021a timezone release</comment>
+    <requestid>870711</requestid>
+  </revision>
 </revisionlist>
