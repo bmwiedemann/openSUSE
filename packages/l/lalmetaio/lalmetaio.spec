@@ -1,7 +1,7 @@
 #
 # spec file for package lalmetaio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 %define shlib lib%{name}8
-%if 0%{?suse_version} >= 1550
-%bcond_without octave
-%else
+# NEP 29: python36-numpy and co. in TW are no more
+%define skip_python36 1
+# octave >= 6 not supported
 %bcond_with    octave
-%endif
 Name:           lalmetaio
-Version:        1.6.1
+Version:        2.0.1
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later
@@ -31,11 +30,10 @@ Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
 #Git-Clone:     https://git.ligo.org/lscsoft/lalsuite.git
-Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal >= 6.21.0}
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module numpy >= 1.7}
+BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -43,17 +41,17 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python-xml
 %endif
 BuildRequires:  swig
-BuildRequires:  pkgconfig(lal) >= 6.21.0
+BuildRequires:  pkgconfig(lal) >= 7.1.0
 BuildRequires:  pkgconfig(libmetaio)
 %if %{with octave}
+BuildRequires:  octave-lal >= 7.1.0
 BuildRequires:  pkgconfig(octave)
-BuildRequires:  octave-lal >= 6.21.0
 %endif
 # SECTION For tests
-BuildRequires:  python3-pytest
+BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-lal >= 6.21.0
-Requires:       python-numpy
+Requires:       python-lal >= 7.1.0
+Requires:       python-numpy >= 1.7
 ExcludeArch:    %{ix86}
 
 %python_subpackages
@@ -149,9 +147,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %check
-pushd ../python3_build
-make %{?_smp_mflags} check
+%{python_expand PYTHON=$python
+pushd ../${PYTHON}_build
+%make_build check
 popd
+}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
