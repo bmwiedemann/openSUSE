@@ -1,7 +1,7 @@
 #
 # spec file for package python-greenlet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-greenlet
-Version:        0.4.17
+Version:        1.0.0
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
 Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
+Source9:        python-greenlet-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -55,7 +56,9 @@ This package contains header files required for C modules development.
 %build
 export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"
 %python_build
-cd doc && make html && rm _build/html/.buildinfo
+
+export PYTHONPATH=$PWD/src
+cd docs && make html && rm _build/html/.buildinfo
 
 %install
 %python_install
@@ -66,8 +69,8 @@ export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"
 %python_exec setup.py -q test
 
 %files %{python_files}
-%doc AUTHORS NEWS README.rst
-%doc doc/_build/html/
+%doc AUTHORS CHANGES.rst README.rst
+%doc docs/_build/html/
 %license LICENSE*
 %{python_sitearch}/greenlet*
 
