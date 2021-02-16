@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-F77
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-ExtUtils-F77
-Version:        1.24
-Release:        0
 %define cpan_name ExtUtils-F77
+Name:           perl-ExtUtils-F77
+Version:        1.26
+Release:        0
 Summary:        Simple interface to F77 libs
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/K/KG/KGB/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Which)
@@ -44,7 +42,7 @@ subroutines on your system. Basically one must add a list of Fortran
 runtime libraries. The problem is their location and name varies with each
 OS/compiler combination! It was originally developed to make building and
 installation of the PGPLOT module easier, which links to the pgplot Fortran
-graphics library. It is now used by a numnber of perl modules.
+graphics library. It is now used by a number of perl modules.
 
 This module tries to implement a simple 'rule-of-thumb' database for
 various flavours of UNIX systems. A simple self-documenting Perl database
@@ -58,19 +56,25 @@ compiler which can be gfortran, g77, g95 or fort77 (in that order based on
 usage) and then find the appropriate link libraries automatically. (This is
 the 'Generic' 'GNU' database entry in the code.)
 
+The target compiler can be explicitly overriden by setting the environment
+variable F77, e.g.
+
+ % setenv F77 "x86_64-pc-linux-gnu-gfortran"
+ % perl -MExtUtils::F77 -e 'print ExtUtils::F77->compiler, "\n"'
+
 The library list which the module returns can be explicitly overridden by
 setting the environment variable F77LIBS, e.g.
 
   % setenv F77LIBS "-lfoo -lbar"
-  % perl -MExtUtils::F77 -e 'print ExtUtils::F77->compiler, "\n"'
+  % perl -MExtUtils::F77 -e 'print ExtUtils::F77->runtime, "\n"'
   ...
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -81,7 +85,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc CHANGES README
 %license COPYING
 
