@@ -35,7 +35,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.20
+Version:        0.3.21
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -235,6 +235,9 @@ Group:          Development/Libraries/C and C++
 Recommends:     %{name} >= %{version}-%{release}
 Requires:       %{libpipewire} >= %{version}-%{release}
 Conflicts:      pulseaudio
+# Provide the pulseaudio symbol (not obsolete), so that users that
+# want to experiment with the drop-in replacement can do so
+Provides:       pulseaudio
 
 # Virtual Provides to support swapping between PipeWire-PA and PA
 #Provides:       pulseaudio-daemon
@@ -272,10 +275,6 @@ export CC=gcc-9
 
 %install
 %meson_install
-#do not install alsa card paths, profile-sets configuration files and udev rules which upstream installs "so that we don't have to rely on the pulseaudio ones"
-
-rm -fr %{buildroot}%{_datadir}/alsa-card-profile/mixer
-
 mkdir -p %{buildroot}%{_sysconfdir}/alsa/conf.d/
 cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/50-pipewire.conf
@@ -382,26 +381,25 @@ fi
 %{_libdir}/gstreamer-1.0/libgstpipewire.so
 
 %files tools
+%{_bindir}/pw-cat
 %{_bindir}/pw-cli
 %{_bindir}/pw-dot
 %{_bindir}/pw-dump
-%{_bindir}/pw-mon
-%{_bindir}/pw-profiler
-%{_bindir}/pw-cat
-%{_bindir}/pw-dump
-%{_bindir}/pw-play
-%{_bindir}/pw-record
 %{_bindir}/pw-metadata
 %{_bindir}/pw-mididump
 %{_bindir}/pw-midiplay
 %{_bindir}/pw-midirecord
+%{_bindir}/pw-mon
+%{_bindir}/pw-play
+%{_bindir}/pw-profiler
+%{_bindir}/pw-record
 %{_bindir}/pw-reserve
-%{_mandir}/man1/pw-cli.1%{ext_man}
-%{_mandir}/man1/pw-mon.1%{ext_man}
 %{_mandir}/man1/pw-cat.1%{ext_man}
+%{_mandir}/man1/pw-cli.1%{ext_man}
 %{_mandir}/man1/pw-dot.1%{ext_man}
 %{_mandir}/man1/pw-metadata.1%{ext_man}
 %{_mandir}/man1/pw-mididump.1%{ext_man}
+%{_mandir}/man1/pw-mon.1%{ext_man}
 %{_mandir}/man1/pw-profiler.1%{ext_man}
 
 %files spa-tools
@@ -494,6 +492,9 @@ fi
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
 %config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-alsa
 %{_udevrulesdir}/90-pipewire-alsa.rules
+%dir %{_datadir}/alsa-card-profile
+%dir %{_datadir}/alsa-card-profile/mixer
+%{_datadir}/alsa-card-profile/mixer/*
 
 %files lang -f %{name}.lang
 

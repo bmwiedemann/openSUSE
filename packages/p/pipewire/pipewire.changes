@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Feb  3 17:02:31 UTC 2021 - Dominik Schmidt <dev@dominik-schmidt.de>
+
+- Update to version 0.3.21:
+  * Highlights
+    + Many PulseAudio compatibility fixes. Handling of corked
+      streams, the prebuf setting, seek modes and stream flags
+      are now implemented correctly.
+    + Ports and Profiles are now managed by the session manager
+      and can save and restore previous settings.
+      ALSA device handling has been tweaked for maximum
+      compatibility at the expense of latency. There are tuning
+      options in the config file.
+    + Improved Bluetooth support. HSP is disabled by default
+      because it is old and deprecated and in some cases causes
+      conflicts with the newer HFP profile. Codec switching is
+      now implemented as well.
+      PipeWire accepts donations with liberapay now.
+  * PipeWire improvements
+    + Improve draining in pw-stream.
+      pw-stream now uses busy metadata by default. This makes sure
+      that no writer can write to buffers when readers are still
+      busy.
+    + Fix handling of empty array/choice instead of failing.
+    + Fix crashes when creating properties from empty strings.
+    + Make it possible to pass an array to module-access
+      access.allowed variables
+    + Fix small bug in argument parsing in pw-cat
+  * Session-manager
+    + Restore route volumes in all cases, also when switching
+      routes.
+    + Use a default route volume for unknown routes instead of
+      letting the system decide on a default.
+      Improve profile handling. Don't try to restore unavailable
+      profiles. Implement the profile switching in the session
+      manager now.
+    + Fix handling of Virtual sources as defaults.
+    + Handle port switching in the session manager. Implement
+      save and restore of default ports per profile.
+  * GStreamer
+    + Fix a crash with zero SPA_PARAM_BUFFERS_size
+  * Device support
+    + v4l2-source will now respect the requested memory types.
+    + ALSA buffering has been tweaked. USB devices should have
+      less XRuns by default. Parameters can be tweaked to
+      decrease the latency on capable devices. Also fix a case
+      where a quantum change would cause an xrun.
+    + Fix mute in bluetooth devices
+      bluetooth devices are not paused in idle anymore for
+      improved compatibility.
+    + Codec switching for bluetooth is implemented along with
+      config options to select the codecs manually.
+    + HSP for bluetooth is now disabled by default. Most devices
+      support the newer HFP profile and some devices fail when
+      both are available.
+    + Reduce the amount of events the ALSA plugins emit by bundling
+      them.
+  * PulseAudio server
+    + Implement the suspend command
+    + Fixes volume in sample info
+    + Fix playback of samples, sometimes samples would be clipped
+      short. Also implement the target sink for the sample.
+    + Use rate match to feed samples. This way the latency can
+      be kept to a minimum.
+    + Latency has been tuned some more, more closely emulating
+      pulseaudio behaviour.
+    + Improve default sink/source handling. Make sure all events
+      are sent correctly when defaults change.
+    + Handle underrun better without causing sync issues. Make sure
+      to pause in corked state.
+    + Implement rewind due to seeks, fixes GStreamer seeking.
+- Do not remove alsa-card-profiles, they are required
+
+-------------------------------------------------------------------
+Wed Feb  3 15:32:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide pulseaudio by pipewire-pulseaudio: there are various
+  packages in the distro that require pulseaudio, but essentially,
+  they should be happy with pipewire-pulseaudio as a replacement.
+  Do not provide the symbol though, as we do not (yet) want to
+  automatically migrate users over.
+
+-------------------------------------------------------------------
 Thu Jan 21 12:12:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pkgconfig(ldacBT-abr) and pkgconfig(ldacBT-enc)
@@ -598,6 +680,8 @@ Fri Sep 18 05:32:09 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
     + Fix compatibility:
       - linphone (ALSA SIGFPE when _status() is called
         before _prepare()).
+- Includes fix for a division by 0 error (boo#1176515):
+  * 0021-alsa-protect-against-SIGPFE.patch
 - Add patch from upstream to fix audio stutters in discord and probably
   other applications when using alsa directly.
   * 0001-alsa-dont-change-the-resampler-delay-value.patch
