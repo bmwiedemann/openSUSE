@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 22:13:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test the optional numpy support on python36 flavor,
+  because due to NEP 29, python36-numpy is removed from TW 
+
+-------------------------------------------------------------------
 Mon Dec  7 12:34:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Replace obsolete pytest-runner with %pytest macro to avoid

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cairocffi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/cairocffi
 Source:         https://files.pythonhosted.org/packages/source/c/cairocffi/cairocffi-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.1.0}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module xcffib >= 0.3.2}
@@ -36,6 +35,7 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Requires:       cairo
 Requires:       python
 Requires:       python-cffi >= 1.1.0
@@ -80,7 +80,9 @@ sed -i -e 's/pytest-runner$/pytest/' \
 %python_expand %fdupes %{buildroot}%{$python_sitearch} 
 
 %check
-%pytest --pyargs cairocffi
+# Don't test with NumPy in the python36 flavor, because python36-numpy is not in TW anymore
+python36_ignore="--ignore %{buildroot}%{python36_sitelib}/cairocffi/test_numpy.py"
+%pytest --pyargs cairocffi ${$python_ignore}
 
 %files %{python_files}
 %license LICENSE
