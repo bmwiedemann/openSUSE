@@ -1068,4 +1068,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   as a separate package. bsc#1181641 bsc#1181677</comment>
     <requestid>868782</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>eda37ca5e4f125d1e5d8fd6792639a1d</srcmd5>
+    <version>20.10.3_ce</version>
+    <time>1613511372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872225</requestid>
+  </revision>
 </revisionlist>
