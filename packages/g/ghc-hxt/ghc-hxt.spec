@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hxt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name hxt
 Name:           ghc-%{pkg_name}
-Version:        9.3.1.18
+Version:        9.3.1.21
 Release:        0
 Summary:        A collection of tools for processing XML with Haskell
 License:        MIT
@@ -52,7 +52,11 @@ arrow approach for processing XML. Since version 9 the toolbox is partitioned
 into various (sub-)packages. This package contains the core functionality,
 hxt-curl, hxt-tagsoup, hxt-relaxng, hxt-xpath, hxt-xslt, hxt-regex-xmlschema
 contain the extensions. hxt-unicode contains encoding and decoding functions,
-hxt-charproperties char properties for unicode and XML.
+hxt-charproperties char properties for unicode and XML. Changes from 9.3.1.20:
+ghc 8.10 and 9.0 compatibility, tuple picker up to 24-tuples, Either instance
+for xpickle
+
+Changes from 9.3.1.19: ghc-8.8.2 compatibility
 
 Changes from 9.3.1.15: Bug in quoting PI instructions in showXmlTrees fixed
 
