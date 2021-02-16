@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 12 15:58:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.7
+  * no changelog
+- Skip python36 build in TW, because python36-numpy and co. are no
+  more.
+
+-------------------------------------------------------------------
+Thu Jan 21 23:51:14 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix testing for multi-version python.
+
+-------------------------------------------------------------------
+Mon Jan 18 14:52:45 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave bindings, since octave >= 6 isn't supported.
+
+-------------------------------------------------------------------
 Sun Oct 25 18:39:08 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update URL.
