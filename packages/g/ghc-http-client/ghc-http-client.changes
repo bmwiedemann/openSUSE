@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  5 15:47:40 UTC 2021 - psimons@suse.com
+
+- Update http-client to version 0.7.5.
+  ## 0.7.5
+
+  * Force closing connections in case of exceptions throwing [#454](https://github.com/snoyberg/http-client/pull/454).
+
+-------------------------------------------------------------------
 Wed Jan 13 15:28:50 UTC 2021 - psimons@suse.com
 
 - Update http-client to version 0.7.4.
