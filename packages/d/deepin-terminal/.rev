@@ -39,4 +39,20 @@
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 829996 from gmbr3)</comment>
     <requestid>830429</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e3983e24684e7a66e1129eeb2382b3f</srcmd5>
+    <version>5.0.4.3</version>
+    <time>1613511387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.4.3
+  * Fix issues on VTE 0.60+ 
+  * Fix blur offset in new KWin 
+  * Fix: crash if distribution.info is missing 
+  * feat: use GTK menu if deepin-menu is not available to use
+  * feat: add support for `allow_hyperlink` which can be enabled from config
+  * feat: basic wayland support
+  * feat: support distribution.info file for deepin/DDE variant distributions
+- Drop deepin-terminal-system-vte.patch, fixed by upsteam (forwarded request 869768 from hillwood)</comment>
+    <requestid>869769</requestid>
+  </revision>
 </revisionlist>
