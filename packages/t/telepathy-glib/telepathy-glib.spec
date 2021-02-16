@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-glib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           telepathy-glib
-Version:        0.24.1
+Version:        0.24.2
 Release:        0
 Summary:        GObject-based library for the Telepathy D-Bus API
 License:        LGPL-2.1-or-later
@@ -25,6 +25,7 @@ Group:          Development/Languages/C and C++
 URL:            http://telepathy.freedesktop.org/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-glib/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+
 BuildRequires:  gtk-doc >= 1.17
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
@@ -81,12 +82,14 @@ The telepathy-glib library is a GObject-based C binding for the
 Telepathy D-Bus API.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --disable-static \
-        --enable-vala-bindings
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	--enable-vala-bindings \
+	%{nil}
+%make_build
 
 %install
 %make_install

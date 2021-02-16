@@ -656,4 +656,12 @@ Wanted for 13.1 (forwarded request 201347 from dimstar)</comment>
     <comment>- Drop python-xml BuildRequires: the installation is using python3. (forwarded request 853071 from dimstar)</comment>
     <requestid>853261</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>1169a0b9feeeda6de9e13cc339583c7b</srcmd5>
+    <version>0.24.2</version>
+    <time>1613511338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870855</requestid>
+  </revision>
 </revisionlist>
