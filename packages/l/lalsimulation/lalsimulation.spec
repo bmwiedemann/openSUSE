@@ -1,7 +1,7 @@
 #
 # spec file for package lalsimulation
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,42 @@
 #
 
 
+# NEP 29: python36-numpy and co. in TW are no more
+%define skip_python36 1
 %define shlib liblalsimulation23
-%bcond_without octave
+# octave >= 6 not supported
+%bcond_with octave
 Name:           lalsimulation
-Version:        2.2.1
+Version:        2.5.0
 Release:        0
 Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal >= 6.22.0}
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module numpy >= 1.7}
+BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
 BuildRequires:  help2man
-BuildRequires:  lal-devel >= 6.22.0
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-xml
 %endif
-BuildRequires:  swig >= 3.0.7
+BuildRequires:  swig >= 3.0.10
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(lal) >= 7.1.0
 BuildRequires:  pkgconfig(zlib)
 %if %{with octave}
+BuildRequires:  octave-lal >= 7.1.0
 BuildRequires:  pkgconfig(octave)
-BuildRequires:  octave-lal >= 6.22.0
 %endif
 # SECTION For tests
-BuildRequires:  python3-pytest
+BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-lal >= 6.22.0
-Requires:       python-numpy
-Requires:       python-six
+Requires:       python-lal >= 7.1.0
+Requires:       python-numpy >= 1.7
 # FOR PYTHON PACKAGE
 Requires:       lalsimulation-data = %{version}
 ExcludeArch:    %{ix86}
@@ -70,11 +71,11 @@ This package provides the shared library for LALSimulation.
 
 %package -n %{name}-devel
 Summary:        Headers and source files for building against LALSimulation
+Requires:       %{name}-data = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(gsl)
 Requires:       pkgconfig(lal)
 Requires:       pkgconfig(zlib)
-Requires:       %{name}-data = %{version}
 
 %description -n %{name}-devel
 This package provides the header and sources for coding against LALSimulation.
@@ -88,8 +89,8 @@ lalsimulation.
 
 %package -n octave-lalsimulation
 Summary:        Octave bindings for LALSimulation
-Requires:       octave-lal
 Requires:       %{name}-data = %{version}
+Requires:       octave-lal
 %requires_eq    octave-cli
 
 %description -n octave-lalsimulation
@@ -156,9 +157,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %check
-pushd ../python3_build
-make %{?_smp_mflags} check || cat test/python/test-suite.log
+%{python_expand export PYTHON=$python
+pushd ../${PYTHON}_build
+%make_build check
 popd
+}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
