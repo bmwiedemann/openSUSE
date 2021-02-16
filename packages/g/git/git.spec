@@ -1,7 +1,7 @@
 #
 # spec file for package git
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %endif
 
 Name:           git
-Version:        2.30.0
+Version:        2.30.1
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
