@@ -72,4 +72,85 @@
     <comment>Staging:I py2</comment>
     <requestid>784832</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8cbb17b3b86cf605d17ebc6f46f374a2</srcmd5>
+    <version>2.0.0</version>
+    <time>1613511278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  * Major release: the serialized JSON format now preserves
+    dictionary identity, which is a subtle change in the
+    serialized format. (#351)
+  * Dictionary identity is now preserved. For example, if the same
+    dictionary appears twice in a list, the reconstituted list
+    will now contain two references to the same dictionary. (#255)
+    (+332)
+- Changes in v1.5.2
+  * Patch release to avoid the change in behavior from the
+    preservation of dict identity. The next release will be
+    v2.0.0. (#351)
+  * This relese does not include the performance improvements from
+    v1.5.1.
+  * Pandas DataFrame objects with multilevel columns are now
+    supported. (#346) (+347)
+  * Numpy 1.20 is now officially supported. (#336)
+  * Python 3.9 is now officially supported. (+348)
+  * Achieved a small speedup for _get_flattener by merging type
+    checks. (+349)
+- Changes in v1.5.1
+  * The performance of the unpickler was drastically improved by
+    avoiding tag checks for basic Python types. (+340)
+  * decode() documentation improvements. (+341)
+  * Serialization of Pandas DataFrame objects that contain
+    timedelta64[ns] dtypes are now supported. (+330) (#331)
+  * Dictionary identity is now preserved. For example, if the same
+    dictionary appears twice in a list, the reconstituted list
+    will now contain two references to the same dictionary. (#255)
+    (+332)
+  * Unit tests were added to ensure that sklearn.tree.
+    DecisionTreeClassifier objects are properly serialized. (#155)
+    (+344)
+  * The is_reducible() utility function used by encode() is now 4x
+    faster! Objects that provide __getstate__(), __setstate__(),
+    and __slots__ benefit most from these improvements. (+343)
+  * Improved pickler flatten()/encode() performance. (+345)
+- Changes in v1.5.0
+  * Previous versions of jsonpickle with make_refs=False would
+    emit null when encountering an object it had already seen when
+    traversing objects. All instances of the object are now
+    serialized. While this is arguably an improvement in the vast
+    majority of scenarios, it is a change in behavior and is thus
+    considered a minor-level change. (#333) (#334) (#337) (+338)
+  * Multiple enums are now serialized correctly with
+    make_refs=False. (#235)
+- Changes in v1.4.2
+  * Use importlib.metadata from the stdlib on Python 3.8. (+305)
+    (#303)
+  * Micro-optimize type checks to use a set for lookups. (+327)
+  * Documentation improvements.
+- Changes in v1.4.1
+  * Patch release for Python 3.8 importlib_metadata support. (#300)
+- Changes in v1.4
+  * Python 3.8 support. (#292)
+  * jsonpickle.encode now supports the standard indent and
+    separators arguments, and passes them through to the active
+    JSON backend library. (#183)
+  * We now include a custom handler for array.array objects. (#199)
+  * Dict key order is preserved when pickling dictionaries on
+    Python3. (#193)
+  * Improved serialization of dictionaries with non-string keys.
+    Previously, using an enum that was both the key and a value in
+    a dictionary could end up with incorrect references to other
+    objects. The references are now properly maintained for dicts
+    with object keys that are also referenced in the dict's
+    values. (#286)
+  * Improved serialization of pandas.Series objects. (#287)
+- Don't test numpy and pandas in python36 flavor, because
+  they are no longer available on Tumbleweed (NEP 29)
+- Test some extras, but not in lettered staging if they are not
+  in Ring1.
+- Drop PR292-Python38.patch merged upstream
+</comment>
+    <requestid>872816</requestid>
+  </revision>
 </revisionlist>
