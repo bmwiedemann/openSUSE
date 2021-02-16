@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 13 00:38:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix split-provides for python3-avahi-gtk: avahi-python is
+  provided/obsoleted by the primary python38-avahi package.
+  avahi-discover is the only extra file provided here, not 
+  avahi-bookmarks
+
+-------------------------------------------------------------------
 Mon Aug 31 10:21:27 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.8

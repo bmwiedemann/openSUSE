@@ -1020,4 +1020,14 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847170</requestid>
   </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>3a9b6c7ba14e81cee0f4a6262be77013</srcmd5>
+    <version>0.8</version>
+    <time>1613511369</time>
+    <user>dimstar_suse</user>
+    <comment>Please give it a look.
+- Drop configure --libexecdir variable as it does not appear
+  to be used by the source archive. (forwarded request 871002 from jengelh)</comment>
+    <requestid>871200</requestid>
+  </revision>
 </revisionlist>
