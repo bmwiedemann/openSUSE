@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  8 19:13:37 UTC 2021 - psimons@suse.com
+
+- Update hpack to version 0.34.4.
+  ## Changes in 0.34.4
+    - Render `default-extensions` / `other-extensions` line-separated
+    - Compatibility with `Cabal-3.4.0.0`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
