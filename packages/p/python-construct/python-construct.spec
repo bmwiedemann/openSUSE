@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,26 +26,30 @@
 %endif
 %define skip_python2 1
 Name:           python-construct%{?psuffix}
-Version:        2.10.56
+Version:        2.10.60
 Release:        0
 Summary:        A declarative parser/builder for binary data
 License:        MIT
 URL:            https://github.com/construct/construct
-Source:         https://github.com/construct/construct/archive/v%{version}.tar.gz
+Source:         https://github.com/construct/construct/archive/v%{version}.tar.gz#/construct-%{version}.tar.gz
 Patch0:         split_debug.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-arrow
+Recommends:     python-cloudpickle
+Recommends:     python-lz4
 Recommends:     python-numpy
 Recommends:     python-ruamel.yaml
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module arrow}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module cloudpickle}
+BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.yaml}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
 %python_subpackages
 
@@ -80,7 +84,9 @@ rm -rf tests/deprecated_gallery
 %if %{with test}
 # local source dir is needed for tests
 export PYTHONPATH=$(pwd)
-%pytest --benchmark-disable
+# Don't test with NumPy in the python36 flavor, because python36-numpy is not in TW anymore
+python36_donttest="numpy or test_overall_parse or test_overall_build"
+%pytest --benchmark-disable ${$python_donttest:+ -k "not (${$python_donttest})"}
 %endif
 
 %if %{without test}

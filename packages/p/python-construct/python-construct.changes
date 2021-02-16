@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 13 22:25:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.10.60
+  * no changelog
+- Skip NumPy tests on pyhton36 flavor. Due to NEP29, python36-numpy 
+  is being dropped in TW, but it is just optional for construct.
+
+-------------------------------------------------------------------
 Tue Jun 23 14:27:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add source dir to PYTHONPATH just as upstream does.

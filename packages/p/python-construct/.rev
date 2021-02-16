@@ -131,4 +131,12 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
     <comment></comment>
     <requestid>816628</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cfee6772c7d16169ae887bd56295bef8</srcmd5>
+    <version>2.10.60</version>
+    <time>1613511243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872041</requestid>
+  </revision>
 </revisionlist>
