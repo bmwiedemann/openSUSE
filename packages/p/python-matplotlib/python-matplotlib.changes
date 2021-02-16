@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 23:43:09 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 build. Due to NEP 29 there is no python36-numpy in
+  Tumbleweed anymore.
+
+-------------------------------------------------------------------
 Sat Jan 30 05:58:22 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.3.4:

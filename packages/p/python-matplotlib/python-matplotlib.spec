@@ -16,8 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+# NEP 29: Numpy 1.20 dropped Python 3.6. No python36-numpy in TW anymore.
+%define         skip_python36 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -56,7 +58,7 @@ BuildRequires:  qhull-devel >= 2003.1
 Requires:       python-Cycler >= 0.10
 Requires:       python-Pillow >= 6.2
 Requires:       python-kiwisolver >= 1.0.1
-Requires:       python-numpy >= 1.7.1
+Requires:       python-numpy >= 1.15
 Requires:       python-pyparsing > 2.2.1
 Requires:       python-python-dateutil >= 2.7
 Requires:       python-pytz
