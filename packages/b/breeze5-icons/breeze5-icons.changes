@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:45:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * new telegram-panel icons
+  * Use correct style for align-horizontal-left-out icons (kde#432273)
+  * Add new kickoff icons Matches the appearance of current kickoff (kde#431883)
+  * Add rating-half, 100% opacity for rating-unrated, Text color for rating in dark theme
+  * Remove KeePassXC icons (kde#431593)
+  * Fix @3x icons (kde#431475)
+  * add neochat icon
+
+-------------------------------------------------------------------
 Wed Jan  6 14:19:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add subpackage with breeze-icons.rcc just for Kexi
