@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Add a "first" method to ChartDataSource and use it in Legend (kde#432426)
+
+-------------------------------------------------------------------
 Wed Jan  6 10:47:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
