@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Feb 12 00:13:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.0:
+  * A new NVECTOR implementation based on the SYCL abstraction layer has been added
+    targeting Intel GPUs. At present the only SYCL compiler supported is the DPC++
+    (Intel oneAPI) compiler. See the SYCL NVECTOR section in the user guide for
+    more details. This module is considered experimental and is subject to major
+    changes even in minor releases.
+  * A new SUNMatrix and SUNLinearSolver implementation were added to interface with
+    the MAGMA linear algebra library. Both the matrix and the linear solver support
+    general dense linear systems as well as block diagonal linear systems, and both
+    are targeted at GPUs (AMD or NVIDIA).
+  * Fixed a bug in the SUNDIALS CMake which caused an error if the
+    CMAKE_CXX_STANDARD and SUNDIALS_RAJA_BACKENDS options were not provided.
+  * Fixed some compiler warnings when using the IBM XL compilers.
+  * A new NVECTOR implementation based on the AMD ROCm HIP platform has been added.
+    This vector can target NVIDIA or AMD GPUs. See HIP NVECTOR section in the user
+    guide for more details. This module is considered experimental and is subject
+    to change from version to version.
+  * The RAJA NVECTOR implementation has been updated to support the HIP backend in
+    addition to the CUDA backend. Users can choose the backend when configuring
+    SUNDIALS by using the `SUNDIALS_RAJA_BACKENDS` CMake variable. This module
+    remains experimental and is subject to change from version to version.
+ *  A new optional operation, `N_VGetDeviceArrayPointer`, was added to the N_Vector
+    API. This operation is useful for N_Vectors that utilize dual memory spaces,
+    e.g. the native SUNDIALS CUDA N_Vector.
+ *  The SUNMATRIX_CUSPARSE and SUNLINEARSOLVER_CUSOLVERSP_BATCHQR implementations
+    no longer require the SUNDIALS CUDA N_Vector. Instead, they require that the
+    vector utilized provides the `N_VGetDeviceArrayPointer` operation, and that the
+    pointer returned by `N_VGetDeviceArrayPointer` is a valid CUDA device pointer.
+- Minor refreshing of sundials-link-pthread.patch to apply cleanly
+  against updated sources.
+
+-------------------------------------------------------------------
 Wed Dec  2 12:59:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package sundials
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,7 +105,7 @@ ExclusiveArch:  do_not_build
 %define shlib_nvec libsundials_nvec5%{?my_suffix}
 
 Name:           %{package_name}
-Version:        5.5.0
+Version:        5.7.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -123,7 +123,7 @@ BuildRequires:  lapack-devel
 BuildRequires:  suitesparse-devel
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
-%if 0%{?suse_version} >= 1550 && %{flavor} != "mvapich2"
+%if 0%{?suse_version} >= 1550 && "%{flavor}" != "mvapich2"
 # hackish workaround for multiple openmpX-config all providing openmpX-runtime-config
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-config
 %endif
