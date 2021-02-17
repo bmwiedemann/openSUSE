@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 15 13:10:57 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.0.14
+  * Add many new apis
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Tue Apr 28 05:41:54 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.1.0.0
+  * Update apis
+  * Fix bugs
+  * Add some features.
+- Drop migrate-to-python3.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Thu Jan 30 16:00:20 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Migrate to python3, add migrate-to-python3.patch 
