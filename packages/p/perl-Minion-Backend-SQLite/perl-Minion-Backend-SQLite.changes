@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 17 03:09:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.0.4
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  v5.0.4    2021-02-16 13:30:11 EST
+    - Use Mojo::Promise in tests instead of the deprecated and decored Mojo::IOLoop::Delay (#17, Stefan Adams)
+
+-------------------------------------------------------------------
 Mon Aug  3 03:10:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.0.3
