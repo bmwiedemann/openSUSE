@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 17 03:11:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.01
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.01  2021-02-16
+    - Added EXPERIMENTAL color attribute to Mojo::Log.
+    - Added EXPERIMENTAL MOJO_LOG_COLOR environment variable to Mojo::Log.
+    - Fixed Windows support of network_contains function in Mojo::Util. (jberger)
+
+-------------------------------------------------------------------
 Mon Feb 15 03:07:36 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.0
