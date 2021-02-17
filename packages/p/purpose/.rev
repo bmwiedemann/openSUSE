@@ -370,4 +370,12 @@
     <comment></comment>
     <requestid>868161</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ca54347565f30a780fb7ccb323b8f82e</srcmd5>
+    <version>5.79.0</version>
+    <time>1613581918</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.79 (forwarded request 871084 from cgiboudeaux)</comment>
+    <requestid>871736</requestid>
+  </revision>
 </revisionlist>
