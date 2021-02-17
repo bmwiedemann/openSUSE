@@ -1,7 +1,7 @@
 #
 # spec file for package xournalpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(lua) >= 5.3
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
