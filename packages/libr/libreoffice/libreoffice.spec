@@ -28,8 +28,8 @@
 %else
 %bcond_with lto
 %endif
-# Enable the kde integration on openSUSE and SLE15-SP3 only
-%if 0%{?is_opensuse} || 0%{?sle_version} == 150300
+# Enable the kde integration on openSUSE and SLE15-SP3 or newer
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150300
 %bcond_without kdeintegration
 %else
 %bcond_with kdeintegration
@@ -134,8 +134,8 @@ BuildRequires:  hyphen-devel
 BuildRequires:  icu
 BuildRequires:  java-devel >= 9.0
 BuildRequires:  junit4
-BuildRequires:  libBox2D-devel
 BuildRequires:  libbase
+BuildRequires:  libbox2d-devel
 BuildRequires:  libcppunit-devel >= 1.14.0
 BuildRequires:  liberation-fonts
 BuildRequires:  libexif
