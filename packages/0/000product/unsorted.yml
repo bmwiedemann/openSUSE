@@ -2650,6 +2650,7 @@ unsorted:
   - deco 
   - deepin-calendar 
   - deepin-calendar-lang 
+  - deepin-desktop-base 
   - deepin-editor 
   - deepin-editor-lang 
   - deepin-gettext-tools 
@@ -2657,7 +2658,6 @@ unsorted:
   - deepin-movie 
   - deepin-movie-devel 
   - deepin-movie-lang 
-  - deepin-music-libnetease-meta-search 
   - deepin-music-player 
   - deepin-music-player-lang 
   - deepin-system-monitor 
@@ -2895,6 +2895,8 @@ unsorted:
   - dtdinst 
   - dtkcore 
   - dtkcore-devel 
+  - dtkgui 
+  - dtkgui-devel 
   - dtkwidget 
   - dtkwidget-devel 
   - dtkwidget-lang 
@@ -5762,6 +5764,8 @@ unsorted:
   - goobox-lang 
   - goocanvas-devel 
   - goocanvas-lang 
+  - goocanvas2-devel 
+  - goocanvas2-lang 
   - google-alegreya-fonts 
   - google-allerta-fonts 
   - google-anonymouspro-fonts 
@@ -9976,8 +9980,6 @@ unsorted:
   - libdbus-c++-devel 
   - libdbus-c++-glib-1-1 
   - libdbus-c++-glib-devel 
-  - libdbusextended-qt5-1 
-  - libdbusextended-qt5-devel 
   - libdbusmenu-glib-devel 
   - libdbusmenu-glib-doc 
   - libdbusmenu-gtk2-devel 
@@ -10043,7 +10045,6 @@ unsorted:
   - libdmr0_1 
   - libdmtx-devel 
   - libdmtx0-32bit: [x86_64] 
-  - libdmusic1 
   - libdmx-devel 
   - libdmx-devel-32bit: [x86_64] 
   - libdmx1-32bit: [x86_64] 
@@ -10076,8 +10077,9 @@ unsorted:
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
   - libdruntime-ldc94 
-  - libdtkcore2 
-  - libdtkwidget2 
+  - libdtkcore5 
+  - libdtkgui5 
+  - libdtkwidget5 
   - libdtkwm2 
   - libduktape206 
   - libdv 
@@ -10670,6 +10672,7 @@ unsorted:
   - libgomp1-gcc9 
   - libgomp1-gcc9-32bit: [x86_64] 
   - libgoocanvas-2_0-9 
+  - libgoocanvas-3_0-9 
   - libgoocanvasmm-2_0-6 
   - libgoocanvasmm-devel 
   - libgooglepinyin-devel 
@@ -11766,8 +11769,6 @@ unsorted:
   - libmpir23 
   - libmpirxx8 
   - libmplex2-2_0-0-32bit: [x86_64] 
-  - libmpris-qt5-1 
-  - libmpris-qt5-devel 
   - libmpv1 
   - libmpx2-gcc7 
   - libmpx2-gcc7-32bit: [x86_64] 
@@ -13658,8 +13659,6 @@ unsorted:
   - libtidyp-devel 
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
-  - libtiger-devel 
-  - libtiger5 
   - libtiled1 
   - libtimelineDecoder23: [x86_64] 
   - libtimelineDecoder23-opencl: [x86_64] 
@@ -13718,13 +13717,13 @@ unsorted:
   - libtrilinos-gnu-openmpi2-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi3-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi4-hpc: [x86_64] 
-  - libtrilinos12: [x86_64] 
-  - libtrilinos12-openmpi2: [x86_64] 
-  - libtrilinos_12_14_1-gnu-mpich-hpc: [x86_64] 
-  - libtrilinos_12_14_1-gnu-mvapich2-hpc: [x86_64] 
-  - libtrilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
-  - libtrilinos_12_14_1-gnu-openmpi3-hpc: [x86_64] 
-  - libtrilinos_12_14_1-gnu-openmpi4-hpc: [x86_64] 
+  - libtrilinos13: [x86_64] 
+  - libtrilinos13-openmpi2: [x86_64] 
+  - libtrilinos_13_0_0-gnu-mpich-hpc: [x86_64] 
+  - libtrilinos_13_0_0-gnu-mvapich2-hpc: [x86_64] 
+  - libtrilinos_13_0_0-gnu-openmpi2-hpc: [x86_64] 
+  - libtrilinos_13_0_0-gnu-openmpi3-hpc: [x86_64] 
+  - libtrilinos_13_0_0-gnu-openmpi4-hpc: [x86_64] 
   - libtrng4-22 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
@@ -19791,7 +19790,6 @@ unsorted:
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
   - pipewire-modules-32bit: [x86_64] 
-  - pipewire-pulseaudio 
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
@@ -20183,6 +20181,7 @@ unsorted:
   - pound-doc 
   - povray 
   - povray-doc 
+  - powercap 
   - powerd 
   - powerline 
   - powerline-docs 
@@ -20675,7 +20674,6 @@ unsorted:
   - python3-asyncssh 
   - python3-audit: [i586] 
   - python3-automaton 
-  - python3-avahi 
   - python3-avahi-gtk 
   - python3-avocado 
   - python3-avocado-plugins-glib 
@@ -20726,7 +20724,6 @@ unsorted:
   - python3-dfVFS 
   - python3-django-attachments 
   - python3-django-braces 
-  - python3-django-cacheops 
   - python3-django-haystack 
   - python3-django-push-notifications 
   - python3-django-q 
@@ -21242,7 +21239,6 @@ unsorted:
   - python36-PyTrie 
   - python36-PyTweening 
   - python36-PyVirtualDisplay 
-  - python36-PyWavelets 
   - python36-PyWebDAV3 
   - python36-PyWebDAV3-GNUHealth 
   - python36-PyX 
@@ -21429,6 +21425,7 @@ unsorted:
   - python36-autoray 
   - python36-autoupgrade-ng 
   - python36-av 
+  - python36-avahi 
   - python36-avocado-plugins-vt 
   - python36-avro 
   - python36-awpa 
@@ -21695,7 +21692,6 @@ unsorted:
   - python36-blinker 
   - python36-blist 
   - python36-blockdiag 
-  - python36-blosc 
   - python36-bloscpack 
   - python36-blue 
   - python36-blurb 
@@ -21981,6 +21977,7 @@ unsorted:
   - python36-django-axes 
   - python36-django-bootstrap3 
   - python36-django-bootstrap4 
+  - python36-django-cacheops 
   - python36-django-ckeditor 
   - python36-django-classy-tags 
   - python36-django-codemod 
@@ -22366,7 +22363,6 @@ unsorted:
   - python36-ifconfig-parser 
   - python36-ijson 
   - python36-imagecodecs 
-  - python36-imageio 
   - python36-imageio-ffmpeg 
   - python36-imagesize 
   - python36-imbox 
@@ -22594,15 +22590,6 @@ unsorted:
   - python36-markdown2 
   - python36-marshmallow 
   - python36-marshmallow-enum 
-  - python36-matplotlib 
-  - python36-matplotlib-cairo 
-  - python36-matplotlib-gtk3 
-  - python36-matplotlib-latex 
-  - python36-matplotlib-qt5 
-  - python36-matplotlib-testdata 
-  - python36-matplotlib-tk 
-  - python36-matplotlib-web 
-  - python36-matplotlib-wx 
   - python36-mautrix 
   - python36-maxminddb 
   - python36-mbstrdecoder 
@@ -22732,12 +22719,6 @@ unsorted:
   - python36-numcodecs 
   - python36-numericalunits 
   - python36-numexpr 
-  - python36-numpy 
-  - python36-numpy-devel 
-  - python36-numpy-gnu-hpc 
-  - python36-numpy-gnu-hpc-devel 
-  - python36-numpy_1_19_5-gnu-hpc 
-  - python36-numpy_1_19_5-gnu-hpc-devel 
   - python36-numpydoc 
   - python36-nwdiag 
   - python36-nxapi-plumbing 
@@ -22800,7 +22781,6 @@ unsorted:
   - python36-pampy 
   - python36-pamqp 
   - python36-pan-python 
-  - python36-pandas 
   - python36-pandas-datareader 
   - python36-pandas-ext 
   - python36-pandocfilters 
@@ -23727,7 +23707,6 @@ unsorted:
   - python36-trio 
   - python36-trustme 
   - python36-tsk 
-  - python36-tvm: [x86_64] 
   - python36-tweepy 
   - python36-twine 
   - python36-twitter.common.finagle-thrift 
@@ -24255,6 +24234,7 @@ unsorted:
   - python38-autoray 
   - python38-autoupgrade-ng 
   - python38-av 
+  - python38-avahi 
   - python38-avocado-plugins-vt 
   - python38-avro 
   - python38-awkward 
@@ -24799,6 +24779,7 @@ unsorted:
   - python38-django-axes 
   - python38-django-bootstrap3 
   - python38-django-bootstrap4 
+  - python38-django-cacheops 
   - python38-django-ckeditor 
   - python38-django-classy-tags 
   - python38-django-codemod 
@@ -25020,6 +25001,7 @@ unsorted:
   - python38-flower 
   - python38-fluent 
   - python38-flufl.testing 
+  - python38-fluidity-sm 
   - python38-flup 
   - python38-folium 
   - python38-fontMath 
@@ -25106,6 +25088,7 @@ unsorted:
   - python38-grpcio-tools 
   - python38-gscholar 
   - python38-gspread 
+  - python38-gssapi 
   - python38-gsw 
   - python38-guessit 
   - python38-guzzle_sphinx_theme 
@@ -25194,6 +25177,7 @@ unsorted:
   - python38-intervals 
   - python38-intervaltree 
   - python38-invocations 
+  - python38-invoke 
   - python38-iocapture 
   - python38-ipdb 
   - python38-iptables 
@@ -25346,6 +25330,7 @@ unsorted:
   - python38-leather 
   - python38-lesscpy 
   - python38-leveldb 
+  - python38-lexicon 
   - python38-lfdfiles 
   - python38-lhafile 
   - python38-lib3to6 
@@ -25542,8 +25527,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_19_5-gnu-hpc 
-  - python38-numpy_1_19_5-gnu-hpc-devel 
+  - python38-numpy_1_20_1-gnu-hpc 
+  - python38-numpy_1_20_1-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -25614,6 +25599,7 @@ unsorted:
   - python38-parallax 
   - python38-param 
   - python38-parameterized 
+  - python38-paramiko 
   - python38-paramiko-expect 
   - python38-parfive 
   - python38-parse 
@@ -26860,6 +26846,7 @@ unsorted:
   - qt-fsarchiver 
   - qt-fsarchiver-lang 
   - qt5ct 
+  - qt5integration 
   - qt6-3d-devel 
   - qt6-3d-docs-html 
   - qt6-3d-docs-qch 
@@ -37040,12 +37027,12 @@ unsorted:
   - trilinos-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-openmpi3-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-openmpi4-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-hpc-doc: [x86_64] 
+  - trilinos_13_0_0-gnu-mpich-hpc-devel: [x86_64] 
+  - trilinos_13_0_0-gnu-mvapich2-hpc-devel: [x86_64] 
+  - trilinos_13_0_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos_13_0_0-gnu-openmpi3-hpc-devel: [x86_64] 
+  - trilinos_13_0_0-gnu-openmpi4-hpc-devel: [x86_64] 
+  - trilinos_13_0_0-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
   - trivy 
@@ -37237,6 +37224,7 @@ unsorted:
   - typelib-1_0-GoVirt-1_0 
   - typelib-1_0-Gom-1_0 
   - typelib-1_0-GooCanvas-2_0 
+  - typelib-1_0-GooCanvas-3_0 
   - typelib-1_0-Govf-0_1 
   - typelib-1_0-Granite-1_0 
   - typelib-1_0-GrlNet-0_3 
