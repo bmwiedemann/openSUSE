@@ -61,4 +61,12 @@
     <comment>- Migrate to python3, add migrate-to-python3.patch (forwarded request 768840 from hillwood)</comment>
     <requestid>768841</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7051662cf0f35ae8a881a90c68e10d75</srcmd5>
+    <version>5.3.0.14</version>
+    <time>1613581936</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop migrate-to-python3.patch, fixed by upstream (forwarded request 872823 from hillwood)</comment>
+    <requestid>872824</requestid>
+  </revision>
 </revisionlist>
