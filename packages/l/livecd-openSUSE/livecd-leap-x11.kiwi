@@ -131,8 +131,6 @@
     <ignore name="patterns-base-apparmor_opt"/>
     <package name="aaa_base" replaces="patterns-base-enhanced_base_opt"/>
     <ignore name="patterns-base-enhanced_base_opt"/>
-    <package name="aaa_base" replaces="patterns-base-update_test"/>
-    <ignore name="patterns-base-update_test"/>
     <package name="aaa_base" replaces="patterns-fonts-fonts_opt"/>
     <ignore name="patterns-fonts-fonts_opt"/>
     <package name="aaa_base" replaces="patterns-desktop-imaging_opt"/>
@@ -228,8 +226,6 @@
     <ignore name="strace"/>
     <package name="aaa_base" replaces="tcsh"/>
     <ignore name="tcsh"/>
-    <package name="aaa_base" replaces="update-test-*"/>
-    <ignore name="update-test-*"/>
     <package name="aaa_base" replaces="usbmuxd"/>
     <ignore name="usbmuxd"/>
     <package name="aaa_base" replaces="gnome-keyring-pam"/>

@@ -35,7 +35,6 @@ buildignore patterns-gnome-gnome_imaging_opt
 buildignore patterns-gnome-gnome_office_opt
 buildignore patterns-base-apparmor_opt
 buildignore patterns-base-enhanced_base_opt
-buildignore patterns-base-update_test
 buildignore patterns-fonts-fonts_opt
 buildignore patterns-desktop-imaging_opt
 buildignore patterns-kde-kde_utilities_opt
@@ -102,7 +101,6 @@ buildignore xorg-x11-fonts-legacy
 
 buildignore strace
 buildignore tcsh
-buildignore update-test-*
 buildignore usbmuxd
 
 # This would otherwise create a password prompt

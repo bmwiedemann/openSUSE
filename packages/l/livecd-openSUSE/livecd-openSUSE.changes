@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 17 14:31:06 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Don't blacklist update_test pattern, hard dep on
+  Leap and fortunately small enough
+
+-------------------------------------------------------------------
 Fri Feb 12 13:45:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Drop insserv, ignore patterns-base-x11_enhanced. On TW,
