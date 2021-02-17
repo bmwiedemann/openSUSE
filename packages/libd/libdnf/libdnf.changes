@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 13 17:23:23 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport another fix for adding controls to installonlypkgs
+  + Patch: 0001-context-Fix-dnf_package_is_installonly-RhBug-1928056.patch
+
+-------------------------------------------------------------------
+Sat Feb 13 16:58:25 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch to move directory for dnf state data to /usr/lib/sysimage
+ + Patch: libdnf-0.58.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+
+-------------------------------------------------------------------
+Fri Feb 12 13:30:06 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fixes to add controls for installonlypkgs and protected_packages
+  + Patch: 0001-context-Support-config-file-option-installonlypkgs.patch
+  + Patch: 0002-context-Support-config-file-option-protected_package.patch
+
+-------------------------------------------------------------------
 Tue Feb  2 23:40:40 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 0.58.0

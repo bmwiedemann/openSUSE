@@ -42,6 +42,9 @@ Url:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
+Patch0001:      0001-context-Support-config-file-option-installonlypkgs.patch
+Patch0002:      0002-context-Support-config-file-option-protected_package.patch
+Patch0003:      0001-context-Fix-dnf_package_is_installonly-RhBug-1928056.patch
 
 # Fixes proposed upstream
 
@@ -52,6 +55,8 @@ Patch1000:      libdnf-0.48.0-with-static-libsolvext.patch
 Patch1001:      libdnf-0.54.2-Switch-default-reposdir-to-etc-dnf-repos.d.patch
 ## Switch allow_vendor_change off by default
 Patch1002:      libdnf-0.55.0-Switch-allow_vendor_change-off.patch
+## Migrate DNF persistent state directory to /usr/lib/sysimage
+Patch1003:      libdnf-0.58.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc

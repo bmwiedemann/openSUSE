@@ -1,0 +1,55 @@
+From 1c0627ae37742dce3e3ba08c1f37fe739f862082 Mon Sep 17 00:00:00 2001
+From: Jaroslav Rohel <jrohel@redhat.com>
+Date: Fri, 12 Feb 2021 12:47:17 +0100
+Subject: [PATCH] [context] Fix: dnf_package_is_installonly (RhBug:1928056)
+
+The previous implementation of "dnf_package_is_installonly" incorrectly used
+the "dnf_context_get_installonly_pkgs" function. Instead of the required
+argument - a pointer to "context" - it passed NULL.
+The old version of "dnf_context_get_installonly_pkgs" with NULL happened
+to work even though according to the documentation it requires a pointer
+to "context". But, after its update, the problem came.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1928056
+---
+ libdnf/dnf-package.cpp | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/libdnf/dnf-package.cpp b/libdnf/dnf-package.cpp
+index 5d5521b4..9eef6a57 100644
+--- a/libdnf/dnf-package.cpp
++++ b/libdnf/dnf-package.cpp
+@@ -41,6 +41,7 @@
+ #include <memory>
+ 
+ #include "catch-error.hpp"
++#include "dnf-context.hpp"
+ #include "dnf-package.h"
+ #include "dnf-types.h"
+ #include "dnf-utils.h"
+@@ -655,15 +656,13 @@ dnf_package_is_downloaded(DnfPackage *pkg)
+ gboolean
+ dnf_package_is_installonly(DnfPackage *pkg)
+ {
+-    const gchar **installonly_pkgs;
+-    const gchar *pkg_name;
+-    guint i;
+-
+-    installonly_pkgs = dnf_context_get_installonly_pkgs(NULL);
+-    pkg_name = dnf_package_get_name(pkg);
+-    for (i = 0; installonly_pkgs[i] != NULL; i++) {
+-        if (g_strcmp0(pkg_name, installonly_pkgs[i]) == 0)
+-            return TRUE;
++    if (auto * pkg_name = dnf_package_get_name(pkg)) {
++        auto & mainConf = libdnf::getGlobalMainConfig();
++        for (auto & inst_only_pkg_name : mainConf.installonlypkgs().getValue()) {
++            if (inst_only_pkg_name == pkg_name) {
++                return TRUE;
++            }
++        }
+     }
+     return FALSE;
+ }
+-- 
+2.29.2
+

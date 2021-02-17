@@ -440,4 +440,20 @@
   + Patch: 0001-context-Sync-missing-arches-from-DNF.patch</comment>
     <requestid>868790</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8ce151fb22c7f0851e0470d7321b84bc</srcmd5>
+    <version>0.58.0</version>
+    <time>1613581793</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport another fix for adding controls to installonlypkgs
+  + Patch: 0001-context-Fix-dnf_package_is_installonly-RhBug-1928056.patch
+
+- Add patch to move directory for dnf state data to /usr/lib/sysimage
+ + Patch: libdnf-0.58.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+
+- Backport fixes to add controls for installonlypkgs and protected_packages
+  + Patch: 0001-context-Support-config-file-option-installonlypkgs.patch
+  + Patch: 0002-context-Support-config-file-option-protected_package.patch</comment>
+    <requestid>871993</requestid>
+  </revision>
 </revisionlist>
