@@ -29,7 +29,7 @@ Source:         https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}
 Source1:        README.Gsettings-overrides
 # PATCH-FIX-OPENSUSE cinnamon-wheel-and-sbin-path sor.alexei@meowr.ru -- Make full sbin paths and use wheel as a sudo group.
 Patch1:         %{name}-wheel-and-sbin-path.patch
-# PATCH-FIX-OPENSUSE cinnamon-settings-native.patch andythe_great@pm.me -- Remove foreign configuration tools and add openSUSE's native.
+# PATCH-FIX-OPENSUSE cinnamon-settings-native.patch andythe_great@pm.me shenlebantongying@gmail.com -- Remove foreign configuration tools and add openSUSE's native.
 Patch2:         %{name}-settings-native.patch
 # PATCH-FIX-OPENSUSE cinnamon-settings-xscreensaver-path.patch boo#960165 sor.alexei@meowr.ru -- Fix xscreensaver configs path.
 Patch3:         %{name}-settings-xscreensaver-path.patch
@@ -38,6 +38,8 @@ Patch4:         %{name}-favourite-applications.patch
 # PATCH-FEATURE-OPENSUSE cinnamon-fallback-icewm.patch sor.alexei@meowr.ru -- Use IceWM as fallback.
 Patch7:         %{name}-fallback-icewm.patch
 # For gnome-background-properties.
+# PATCH-FIX-OPENSUSE support_yast_settings.patch shenlebantongying@gmail.com gh#linuxmint/cinnamon#9590 -- Fix cinnamon-settings cannot invoke YaST commands.
+Patch8:         support_yast_settings.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-data-openSUSE-extra
 BuildRequires:  fdupes
@@ -172,6 +174,7 @@ GSettings and applications used by the MIME system.
 %patch3 -p1
 %patch4 -p1
 %patch7 -p1
+%patch8 -p1
 cp -a %{SOURCE1} .
 
 for file in files%{_datadir}/%{name}/%{name}-settings/bin/*.py files%{_datadir}/%{name}/%{name}-looking-glass/*.py \
