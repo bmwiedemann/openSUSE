@@ -52,4 +52,14 @@
   + Default to user confirmation like DNF</comment>
     <requestid>868793</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aac3335adf217e2e7c9288e396f8be6c</srcmd5>
+    <version>3.7.1</version>
+    <time>1613581787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.1
+  + Bump minimum version of libdnf to 0.56.0
+  + Fix download subcommand to build with glib2 2.44.0</comment>
+    <requestid>871460</requestid>
+  </revision>
 </revisionlist>
