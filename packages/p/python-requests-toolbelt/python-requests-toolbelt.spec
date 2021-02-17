@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-toolbelt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,10 @@ rm -v tests/test_multipart_encoder.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Relax the crypto policies for the test-suite
+export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
+export OPENSSL_CONF=''
+
 %pytest
 
 %files %{python_files}

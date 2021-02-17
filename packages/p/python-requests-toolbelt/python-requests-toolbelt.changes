@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 16:08:10 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Relax the crypto policies for the test-suite
+
+-------------------------------------------------------------------
 Mon Dec 14 00:35:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix condition around BuildRequirement
