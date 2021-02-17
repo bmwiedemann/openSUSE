@@ -1,0 +1,45 @@
+From caa4bbba51cf470986944820ea773163084da0b7 Mon Sep 17 00:00:00 2001
+From: Patrick Steuer <patrick.steuer@de.ibm.com>
+Date: Tue, 19 Jan 2021 14:29:57 +0100
+Subject: [PATCH] A slot ID has nothing to do with the number of slots
+
+Signed-off-by: Patrick Steuer <patrick.steuer@de.ibm.com>
+---
+ usr/sbin/pkcscca/pkcscca.c | 14 --------------
+ 1 file changed, 14 deletions(-)
+
+diff --git a/usr/sbin/pkcscca/pkcscca.c b/usr/sbin/pkcscca/pkcscca.c
+index c09f16b3..aa74eeb8 100644
+--- a/usr/sbin/pkcscca/pkcscca.c
++++ b/usr/sbin/pkcscca/pkcscca.c
+@@ -1973,7 +1973,6 @@ int migrate_wrapped_keys(CK_SLOT_ID slot_id, char *userpin, int masterkey)
+ {
+     CK_FUNCTION_LIST *funcs;
+     CK_KEY_TYPE key_type = 0;
+-    CK_ULONG slot_count;
+     CK_SESSION_HANDLE sess;
+     CK_RV rv;
+     struct key_count count = { 0, 0, 0, 0, 0, 0, 0 };
+@@ -1985,19 +1984,6 @@ int migrate_wrapped_keys(CK_SLOT_ID slot_id, char *userpin, int masterkey)
+         return 2;
+     }
+ 
+-    rv = funcs->C_GetSlotList(TRUE, NULL_PTR, &slot_count);
+-    if (rv != CKR_OK) {
+-        p11_error("C_GetSlotList", rv);
+-        exit_code = 3;
+-        goto finalize;
+-    }
+-
+-    if (slot_id >= slot_count) {
+-        print_error("%lu is not a valid slot ID.", slot_id);
+-        exit_code = 4;
+-        goto finalize;
+-    }
+-
+     rv = funcs->C_OpenSession(slot_id, CKF_RW_SESSION |
+                               CKF_SERIAL_SESSION, NULL_PTR, NULL_PTR, &sess);
+     if (rv != CKR_OK) {
+-- 
+2.26.2
+

@@ -41,6 +41,8 @@ Source3:        openCryptoki-rpmlintrc
 Patch1:         ocki-3.11-remove-make-install-chgrp.patch
 Patch2:         ocki-3.15.1-Added-error-message-handling-for-p11sak-remove-key-c.patch
 Patch3:         ocki-3.15.1-Fix-compiling-with-c.patch
+Patch4:         ocki-3.15.1-A-slot-ID-has-nothing-to-do-with-the-number-of-slots.patch
+Patch5:         ocki-3.15.1-SOFT-Fix-problem-with-C_Get-SetOperationState-and-di.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -131,6 +133,8 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 cp %{SOURCE2} .
 
