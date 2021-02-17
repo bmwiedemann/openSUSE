@@ -1,7 +1,7 @@
 #
 # spec file for package Box2D
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,60 +13,51 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_ver 2_3_1
+%define major 2
+%define libname libbox2d
 Name:           Box2D
-Version:        2.3.1
+Version:        2.4.1
 Release:        0
 Summary:        A 2D Physics Engine for Games
-License:        Zlib
+License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://box2d.org/
-Source0:        https://github.com/erincatto/Box2D/archive/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://box2d.org/
+Source0:        https://github.com/erincatto/box2d/archive/v%{version}.tar.gz#/box2d-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM Box2D-fix-version-2.3.1.patch -- already fixed upstream
-Patch0:         %{name}-fix-version-2.3.1.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake >= 3
-BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-%endif
+BuildRequires:  glew-devel
+BuildRequires:  libX11-devel
+BuildRequires:  libXcursor-devel
+BuildRequires:  libXi-devel
+BuildRequires:  libXinerama-devel
+BuildRequires:  libXrandr-devel
+BuildRequires:  libglfw-devel
 
 %description
 Box2D is an open source C++ engine for simulating rigid bodies in 2D.
 
-%package -n lib%{name}%{so_ver}
+%package -n %{libname}%{major}
 Summary:        A 2D Physics Engine for Games
 Group:          System/Libraries
 
-%description -n lib%{name}%{so_ver}
+%description -n %{libname}%{major}
 Box2D is an open source C++ engine for simulating rigid bodies in 2D.
 
-%package -n lib%{name}-devel
+%package -n %{libname}-devel
 Summary:        A 2D Physics Engine for Games
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{so_ver} = %{version}
+Requires:       %{libname}%{major} = %{version}
 
-%description -n lib%{name}-devel
-Box2D is an open source C++ engine for simulating rigid bodies in 2D.
-
-%package doc
-Summary:        A 2D Physics Engine for Games
-Group:          Documentation/Other
-BuildArch:      noarch
-
-%description doc
+%description -n %{libname}-devel
 Box2D is an open source C++ engine for simulating rigid bodies in 2D.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
-dos2unix Changes.txt License.txt Readme.txt
-%patch0
+%setup -q -n box2d-%{version}
 
 %build
 %cmake \
@@ -76,32 +67,23 @@ dos2unix Changes.txt License.txt Readme.txt
     -DBOX2D_BUILD_STATIC=OFF \
     -DBOX2D_BUILD_EXAMPLES=OFF \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
-make VERBOSE=1 %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
-%if 0%{?suse_version}
-%fdupes -s %{buildroot}%{_datadir}/doc/%{name}/Documentation/API/html
-%endif
 
-%post -n lib%{name}%{so_ver} -p /sbin/ldconfig
+%post -n %{libname}%{major} -p /sbin/ldconfig
+%postun -n %{libname}%{major} -p /sbin/ldconfig
 
-%postun -n lib%{name}%{so_ver} -p /sbin/ldconfig
+%files -n %{libname}%{major}
+%license LICENSE
+%doc README.md
+%{_libdir}/%{libname}.so.%{major}
+%{_libdir}/%{libname}.so.%{version}
 
-%files -n lib%{name}%{so_ver}
-%defattr(-,root,root,-)
-%{_libdir}/lib%{name}.so.*
-
-%files -n lib%{name}-devel
-%defattr(-,root,root,-)
-%{_includedir}/%{name}
-%{_libdir}/lib%{name}.so
-%{_libdir}/%{name}
-%{_libdir}/cmake/%{name}
-
-%files doc
-%defattr(-,root,root,-)
-%doc Changes.txt License.txt Readme.txt
-%{_datadir}/doc/%{name}/
+%files -n %{libname}-devel
+%{_includedir}/box2d
+%{_libdir}/%{libname}.so
+%{_libdir}/cmake/box2d
 
 %changelog
