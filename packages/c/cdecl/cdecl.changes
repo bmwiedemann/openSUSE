@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 10 14:41:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.5.1
+  * A function as a parameter is now automatically converted to a
+    pointer to function per 6.3.2.1(4) of the C standard.
+
+-------------------------------------------------------------------
 Sat Feb  6 00:23:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.5

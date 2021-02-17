@@ -258,4 +258,12 @@
     <comment>- Update to release 9.5</comment>
     <requestid>869924</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4b6821f4a2a0781a02a5109229b88b28</srcmd5>
+    <version>9.5.1</version>
+    <time>1613581986</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>873172</requestid>
+  </revision>
 </revisionlist>
