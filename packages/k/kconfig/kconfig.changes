@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Fix kconfig_compiler doxygen formatting
+  * Refactor window geometry save/restore code to be less fragile
+  * Fix restoring window size when closed while maximized (kde#430521)
+  * Remove dead cmake code
+  * KConfig: preserve the milliseconds component of QDateTime
+  * Adapt to Qt6 text codec changes
+  * Port to QRecursiveMutex
+  * Fix window positioning regression due to incorrect fallback in fallback
+
+-------------------------------------------------------------------
 Wed Jan  6 10:47:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
