@@ -71,4 +71,12 @@
     <comment></comment>
     <requestid>869861</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>775d48de9a101b10bf19dd0f6520fca8</srcmd5>
+    <version>5.2.0</version>
+    <time>1613581775</time>
+    <user>dimstar_suse</user>
+    <comment>Trivial update to add bug numbers to changelog comment.</comment>
+    <requestid>872981</requestid>
+  </revision>
 </revisionlist>
