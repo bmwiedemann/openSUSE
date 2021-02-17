@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  8 15:06:54 MST 2021 - carnold@suse.com
+
+- Fixes for PV PXE booting (jsc#SLE-11885)
+    Fix read of pxelinux.cfg/default after downloading
+    Accept PVOPS kernels as PV bootable kernels
+- Version 0.10.11
+
+-------------------------------------------------------------------
 Thu Oct 22 15:10:30 MDT 2020 - carnold@suse.com
 
 - jsc#SLE-11885 - vm-install: sync SLE and openSUSE Leap

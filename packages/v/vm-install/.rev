@@ -1337,4 +1337,12 @@
     <comment>Trivial changelog adjustment to use Jira Epic number and not Jira Dev task number</comment>
     <requestid>844907</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>ab46cc6fa311dd95df7c05aab9948a0f</srcmd5>
+    <version>0.10.11</version>
+    <time>1613581715</time>
+    <user>dimstar_suse</user>
+    <comment>A couple fixes related to jsc#SLE-11885 PV PXE booting</comment>
+    <requestid>870525</requestid>
+  </revision>
 </revisionlist>

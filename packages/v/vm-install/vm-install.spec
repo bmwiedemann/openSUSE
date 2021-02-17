@@ -1,7 +1,7 @@
 #
 # spec file for package vm-install
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@ BuildRequires:  update-desktop-files
 %endif
 # For directory ownership:
 BuildRequires:  yast2
-Version:        0.10.10
+Version:        0.10.11
 Release:        0
 Summary:        Tool to Define a Virtual Machine and Install Its Operating System
 License:        GPL-2.0-only
 Group:          System/Emulators/PC
-Source0:        %{name}-0.10.10.tar.bz2
+Source0:        %{name}-0.10.11.tar.bz2
 Source1:        vm-install.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       kdump
