@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Too many changes since 5.78.0, only listing bugfixes:
+  * Don't manually call reverseTwinsChanged when destructing FormLayout (kde#431419)
+  * Don't consider Synthetized mouse events as Mouse (kde#431542)
+  * correctly update header size (kde#429235)
+  * [controls/OverlaySheet]: Respect Layout.maximumWidth (kde#431089)
+  * [controls/ListItemDragHandle] Fix wrong arrangement on no-scrolling case (kde#431214)
+
+-------------------------------------------------------------------
 Wed Jan  6 10:47:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0

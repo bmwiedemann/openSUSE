@@ -13,11 +13,11 @@ References: boo#1167690, kde#419008
  src/kirigamiplugin.h   |  5 -----
  2 files changed, 38 deletions(-)
 
-diff --git a/src/kirigamiplugin.cpp b/src/kirigamiplugin.cpp
-index acdefbc4..4670eb86 100644
---- a/src/kirigamiplugin.cpp
-+++ b/src/kirigamiplugin.cpp
-@@ -50,33 +50,6 @@ class CopyHelperPrivate : public QObject
+Index: kirigami2-5.56.0git.20210118T122536~4ea74c86/src/kirigamiplugin.cpp
+===================================================================
+--- kirigami2-5.56.0git.20210118T122536~4ea74c86.orig/src/kirigamiplugin.cpp	2021-01-18 11:25:36.000000000 +0100
++++ kirigami2-5.56.0git.20210118T122536~4ea74c86/src/kirigamiplugin.cpp	2021-01-19 09:48:47.310333643 +0100
+@@ -51,33 +51,6 @@
          }
  };
  
@@ -30,7 +30,7 @@ index acdefbc4..4670eb86 100644
 -    bool eventFilter(QObject *receiver, QEvent *event) override
 -    {
 -        if (event->type() == QEvent::LanguageChange && receiver == QCoreApplication::instance()) {
--            emit languageChangeEvent();
+-            Q_EMIT languageChangeEvent();
 -        }
 -        return QObject::eventFilter(receiver, event);
 -    }
@@ -51,7 +51,7 @@ index acdefbc4..4670eb86 100644
  QUrl KirigamiPlugin::componentUrl(const QString &fileName) const
  {
      for (const QString &style : qAsConst(m_stylesFallbackChain)) {
-@@ -266,10 +239,4 @@ void KirigamiPlugin::registerTypes(const char *uri)
+@@ -279,10 +252,4 @@
      qmlProtectModule(uri, 2);
  }
  
@@ -62,11 +62,11 @@ index acdefbc4..4670eb86 100644
 -}
 -
  #include "kirigamiplugin.moc"
-diff --git a/src/kirigamiplugin.h b/src/kirigamiplugin.h
-index 22279421..caa95f1e 100644
---- a/src/kirigamiplugin.h
-+++ b/src/kirigamiplugin.h
-@@ -20,9 +20,7 @@ class KirigamiPlugin : public QQmlExtensionPlugin
+Index: kirigami2-5.56.0git.20210118T122536~4ea74c86/src/kirigamiplugin.h
+===================================================================
+--- kirigami2-5.56.0git.20210118T122536~4ea74c86.orig/src/kirigamiplugin.h	2021-01-18 11:25:36.000000000 +0100
++++ kirigami2-5.56.0git.20210118T122536~4ea74c86/src/kirigamiplugin.h	2021-01-19 09:48:47.310333643 +0100
+@@ -24,9 +24,7 @@
      Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
  
  public:
@@ -76,7 +76,7 @@ index 22279421..caa95f1e 100644
  
  #ifdef KIRIGAMI_BUILD_TYPE_STATIC
      static KirigamiPlugin& getInstance()
-@@ -39,9 +37,6 @@ public:
+@@ -46,9 +44,6 @@
      }
  #endif
  
@@ -86,6 +86,3 @@ index 22279421..caa95f1e 100644
  private:
      QUrl componentUrl(const QString &fileName) const;
      QString resolveFilePath(const QString &path) const
--- 
-2.26.2
-
