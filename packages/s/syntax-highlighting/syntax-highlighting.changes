@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 16 11:14:57 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.79.1
+  * Breeze Light: restore original black color for Control Flow
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Too many changes since 5.78.0, only listing bugfixes:
+  * Bash, Zsh: fix cmd;; in a case (kde#430668)
+  * email.xml: Detect nested comments and escaped characters (kde#425345)
+  * Bash: fix } in ${!xy*} and more Parameter Expansion
+
+-------------------------------------------------------------------
 Wed Jan  6 10:48:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
