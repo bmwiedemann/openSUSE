@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 17 15:02:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  * Client window titles (controlled by the theme attributes
+    'title_height', 'title_color', 'title_font')
+  * New command 'help' for live documentation on the object tree
+  * New 'watch' command that emits hooks when attribute values change.
+  * The 'lock_tag' attribute is now writable.
+  * New 'geometry' attribute for monitors.
+  * New dependencies: xft, freetype
+  Bug fixes:
+  * Correctly interpret _NET_WM_STRUT. This fixes panels that leave
+    a bit of space between the panel and the monitor edge and also
+    panels between two monitors.
+  * Correctly handling minimized clients when removing a tag.
+  * Preserve stacking order when changing the floating state of a tag
+  * Update frame objects correctly in the commands 'mirror' and 'rotate'
+
+-------------------------------------------------------------------
 Mon Jan  4 09:47:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.1:

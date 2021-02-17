@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
@@ -28,8 +28,10 @@ Source1:        https://herbstluftwm.org/tarballs/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.desktop
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.1
+BuildRequires:  freetype-devel
 BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  glib2-devel
+BuildRequires:  libXft-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-utils
@@ -101,11 +103,11 @@ install -D -m0644  %{SOURCE2} %{buildroot}%{_datadir}/xsessions/%{name}.desktop
 
 # We use the normal doc convention for this instead.
 # INSTALL is not shipped.
-rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE,BUGS}
+rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE}
 
 %files
 %license LICENSE
-%doc BUGS NEWS
+%doc NEWS
 %dir %{_datadir}/doc/%{name}/
 %{_datadir}/doc/%{name}/herbstclient.html
 %{_datadir}/doc/%{name}/%{name}-tutorial.html
