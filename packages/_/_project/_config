@@ -449,7 +449,7 @@ Prefer: notification-daemon
 Prefer: nodejs10 nodejs10-devel npm10
 
 # have choice for libpulse.so.0 needed by wine-32bit: apulse-32bit libpulse0-32bit - prefering the 'original'
-Prefer: libpulse0-32bit libsane1-32bit
+Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
 Prefer: vtk-java python3-vtk python36-vtk python38-vtk
