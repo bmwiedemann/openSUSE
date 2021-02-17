@@ -23,7 +23,7 @@
 Name:           dtkgui
 Version:        5.4.0
 Release:        0
-Summary:        Deepin Toolkit gui
+Summary:        Deepin Toolkit GUI
 License:        LGPL-3.0
 Group:          System/GUI/Other
 Url:            https://github.com/linuxdeepin/dtkgui
@@ -38,17 +38,16 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Deepin Toolkit, gui module for DDE look and feel
+A GUI module for DDE look and feel for the Deepin Toolkit.
 
 %package -n lib%{name}%{libver}
-Summary:        Deepin Toolkit gui libraries
+Summary:        Deepin Toolkit GUI libraries
 Group:          System/Libraries
 
 %description -n lib%{name}%{libver}
-Deepint Tool Kit (Dtk) gui is the base devlopment tool of all C++/Qt Developer work 
+Deepint Tool Kit (Dtk) GUI is the base devlopment tool of all C++/Qt developer work 
 on Deepin.
 
 %package devel
@@ -60,10 +59,10 @@ Requires:       lib%{name}%{libver} = %{version}
 The dtkgui-devel package contains the header files and developer
 docs for dtkgui.
 
-You shoud firstly read the "Deepin Application Specification".
+You should first read the "Deepin Application Specification".
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 qmake-qt5 DEFINES+=QT_NO_DEBUG_OUTPUT \
@@ -80,7 +79,6 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 %postun -n lib%{name}%{libver} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %dir %{_libdir}/libdtk-%{apiver}
@@ -91,11 +89,9 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 # %config %{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 
 %files -n lib%{name}%{libver}
-%defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{_includedir}/libdtk-%{apiver}/DGui
@@ -105,4 +101,3 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 %{_libdir}/qt5/mkspecs/modules/qt_lib_%{name}.pri
 
 %changelog
-
