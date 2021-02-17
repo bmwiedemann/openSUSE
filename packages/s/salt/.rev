@@ -1667,4 +1667,28 @@ let build start it or we will get libvirt errors.
 - Fix pkg states when DEB package has &quot;all&quot; arch</comment>
     <requestid>862930</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>d982b973923052f9715379da7e8c619a</srcmd5>
+    <version>3002.2</version>
+    <time>1613581770</time>
+    <user>dimstar_suse</user>
+    <comment>- virt: search for grub.xen path
+- Xen spicevmc, DNS SRV records backports:
+  Fix virtual network generated DNS XML for SRV records
+  Don't add spicevmc channel to xen VMs
+- virt UEFI fix: virt.update when efi=True
+- Added:
+  * virt-uefi-fix-backport-312.patch
+  * 3002.2-xen-spicevmc-dns-srv-records-backports-314.patch
+  * open-suse-3002.2-xen-grub-316.patch
+
+- Do not crash when unexpected cmd output at listing patches (bsc#1181290)
+- Added:
+  * do-not-crash-when-unexpected-cmd-output-at-listing-p.patch
+
+- Fix behavior for &quot;onlyif/unless&quot; when multiple conditions (bsc#1180818)
+- Added:
+  * fix-onlyif-unless-when-multiple-conditions-bsc-11808.patch</comment>
+    <requestid>871386</requestid>
+  </revision>
 </revisionlist>

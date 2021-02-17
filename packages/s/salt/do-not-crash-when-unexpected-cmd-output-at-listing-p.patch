@@ -1,0 +1,130 @@
+From cec95ba8f9b561d7ca4c66be9483e4b9386cb741 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 25 Jan 2021 12:15:59 +0000
+Subject: [PATCH] Do not crash when unexpected cmd output at listing
+ patches (bsc#1181290)
+
+Add unit tests to cover unexpected output when listing patches
+---
+ salt/modules/yumpkg.py            | 20 ++++++++--
+ tests/unit/modules/test_yumpkg.py | 63 +++++++++++++++++++++++++++++++
+ 2 files changed, 80 insertions(+), 3 deletions(-)
+
+diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
+index df174e737d..82adbbd59d 100644
+--- a/salt/modules/yumpkg.py
++++ b/salt/modules/yumpkg.py
+@@ -3291,10 +3291,17 @@ def _get_patches(installed_only=False):
+ 
+     cmd = [_yum(), "--quiet", "updateinfo", "list", "all"]
+     ret = __salt__["cmd.run_stdout"](cmd, python_shell=False, env={"SALT_RUNNING": "1"})
++    parsing_errors = False
++
+     for line in salt.utils.itertools.split(ret, os.linesep):
+-        inst, advisory_id, sev, pkg = re.match(
+-            r"([i|\s]) ([^\s]+) +([^\s]+) +([^\s]+)", line
+-        ).groups()
++        try:
++            inst, advisory_id, sev, pkg = re.match(
++                r"([i|\s]) ([^\s]+) +([^\s]+) +([^\s]+)", line
++            ).groups()
++        except Exception:  # pylint: disable=broad-except
++            parsing_errors = True
++            continue
++
+         if advisory_id not in patches:
+             patches[advisory_id] = {
+                 "installed": True if inst == "i" else False,
+@@ -3305,6 +3312,13 @@ def _get_patches(installed_only=False):
+             if inst != "i":
+                 patches[advisory_id]["installed"] = False
+ 
++    if parsing_errors:
++        log.warning(
++            "Skipped some unexpected output while running '{}' to list patches. Please check output".format(
++                " ".join(cmd)
++            )
++        )
++
+     if installed_only:
+         patches = {k: v for k, v in patches.items() if v["installed"]}
+     return patches
+diff --git a/tests/unit/modules/test_yumpkg.py b/tests/unit/modules/test_yumpkg.py
+index b97e82d307..96d3f12b17 100644
+--- a/tests/unit/modules/test_yumpkg.py
++++ b/tests/unit/modules/test_yumpkg.py
+@@ -383,6 +383,69 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+                     _patch in patches["my-fake-patch-installed-1234"]["summary"]
+                 )
+ 
++    def test_list_patches_with_unexpected_output(self):
++        """
++        Test patches listin with unexpected output from updateinfo list
++
++        :return:
++        """
++        yum_out = [
++            "Update notice RHBA-2014:0722 (from rhel7-dev-rhel7-rpm-x86_64) is broken, or a bad duplicate, skipping.",
++            "You should report this problem to the owner of the rhel7-dev-rhel7-rpm-x86_64 repository.",
++            'To help pinpoint the issue, please attach the output of "yum updateinfo --verbose" to the report.',
++            "Update notice RHSA-2014:1971 (from rhel7-dev-rhel7-rpm-x86_64) is broken, or a bad duplicate, skipping.",
++            "Update notice RHSA-2015:1981 (from rhel7-dev-rhel7-rpm-x86_64) is broken, or a bad duplicate, skipping.",
++            "Update notice RHSA-2015:0067 (from rhel7-dev-rhel7-rpm-x86_64) is broken, or a bad duplicate, skipping",
++            "i my-fake-patch-not-installed-1234 recommended    spacewalk-usix-2.7.5.2-2.2.noarch",
++            "  my-fake-patch-not-installed-1234 recommended    spacewalksd-5.0.26.2-21.2.x86_64",
++            "i my-fake-patch-not-installed-1234 recommended    suseRegisterInfo-3.1.1-18.2.x86_64",
++            "i my-fake-patch-installed-1234 recommended        my-package-one-1.1-0.1.x86_64",
++            "i my-fake-patch-installed-1234 recommended        my-package-two-1.1-0.1.x86_64",
++        ]
++
++        expected_patches = {
++            "my-fake-patch-not-installed-1234": {
++                "installed": False,
++                "summary": [
++                    "spacewalk-usix-2.7.5.2-2.2.noarch",
++                    "spacewalksd-5.0.26.2-21.2.x86_64",
++                    "suseRegisterInfo-3.1.1-18.2.x86_64",
++                ],
++            },
++            "my-fake-patch-installed-1234": {
++                "installed": True,
++                "summary": [
++                    "my-package-one-1.1-0.1.x86_64",
++                    "my-package-two-1.1-0.1.x86_64",
++                ],
++            },
++        }
++
++        with patch.dict(yumpkg.__grains__, {"osarch": "x86_64"}), patch.dict(
++            yumpkg.__salt__,
++            {"cmd.run_stdout": MagicMock(return_value=os.linesep.join(yum_out))},
++        ):
++            patches = yumpkg.list_patches()
++            self.assertFalse(patches["my-fake-patch-not-installed-1234"]["installed"])
++            self.assertTrue(
++                len(patches["my-fake-patch-not-installed-1234"]["summary"]) == 3
++            )
++            for _patch in expected_patches["my-fake-patch-not-installed-1234"][
++                "summary"
++            ]:
++                self.assertTrue(
++                    _patch in patches["my-fake-patch-not-installed-1234"]["summary"]
++                )
++
++            self.assertTrue(patches["my-fake-patch-installed-1234"]["installed"])
++            self.assertTrue(
++                len(patches["my-fake-patch-installed-1234"]["summary"]) == 2
++            )
++            for _patch in expected_patches["my-fake-patch-installed-1234"]["summary"]:
++                self.assertTrue(
++                    _patch in patches["my-fake-patch-installed-1234"]["summary"]
++                )
++
+     def test_latest_version_with_options(self):
+         with patch.object(yumpkg, "list_pkgs", MagicMock(return_value={})):
+ 
+-- 
+2.29.2
+
+
