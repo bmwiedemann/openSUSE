@@ -96,6 +96,13 @@ Group:          System/Packages
 This contains the built YAML manifests used to install kubevirt into a
 kubernetes installation with kubectl apply.
 
+%package        tests
+Summary:        Kubevirt functional tests
+Group:          System/Packages
+
+%description    tests
+The package provides Kubevirt end-to-end tests.
+
 
 %prep
 %autosetup -p1
@@ -148,6 +155,7 @@ KUBEVIRT_SOURCE_DATE_EPOCH="$(date -r LICENSE +%s)" \
 KUBEVIRT_GIT_COMMIT='v%{version}' \
 KUBEVIRT_GIT_VERSION='v%{version}' \
 KUBEVIRT_GIT_TREE_STATE="clean" \
+build_tests="true" \
 ./hack/build-go.sh install \
 	cmd/virtctl \
 	cmd/virt-api \
@@ -173,6 +181,7 @@ install -p -m 0755 _out/cmd/virt-handler/virt-handler %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/csv-generator/csv-generator %{buildroot}%{_bindir}/
+install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
 
 mkdir -p %{buildroot}%{_datadir}/kube-virt
 cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
@@ -181,6 +190,7 @@ cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
 # that uses the CaaSP privileged PSP. It can be used with CaaSP-based
 # Kubernetes clusters.
 install -m 644 %{S:1} %{buildroot}/%{_datadir}/kube-virt/manifests/release/
+install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt
 
 %files virtctl
 %license LICENSE
@@ -224,5 +234,12 @@ install -m 644 %{S:1} %{buildroot}/%{_datadir}/kube-virt/manifests/release/
 %doc README.md
 %dir %{_datadir}/kube-virt
 %{_datadir}/kube-virt/manifests
+
+%files tests
+%license LICENSE
+%doc README.md
+%dir %{_datadir}/kube-virt
+%{_bindir}/virt-tests
+%{_datadir}/kube-virt/default-config.json
 
 %changelog
