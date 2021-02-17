@@ -718,4 +718,12 @@
   * Add plugin for AV1 Image File Format (AVIF)</comment>
     <requestid>862421</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>feeaaaafc4c3506a4028ca78911452b4</srcmd5>
+    <version>5.79.0</version>
+    <time>1613581861</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.79 (forwarded request 871084 from cgiboudeaux)</comment>
+    <requestid>871701</requestid>
+  </revision>
 </revisionlist>

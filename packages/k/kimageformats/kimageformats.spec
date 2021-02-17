@@ -19,7 +19,7 @@
 %if 0%{?suse_version} > 1500
 %define with_avif 1
 %endif
-%define _tar_path 5.78
+%define _tar_path 5.79
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kimageformats
-Version:        5.78.0
+Version:        5.79.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -86,6 +86,7 @@ environments.
 %files
 %license LICENSES/*
 %dir %{_kf5_plugindir}/imageformats
+%{_kf5_plugindir}/imageformats/kimg_ani.so
 %if 0%{?with_avif}
 %{_kf5_plugindir}/imageformats/kimg_avif.so
 %endif
@@ -101,6 +102,7 @@ environments.
 %{_kf5_plugindir}/imageformats/kimg_tga.so
 %{_kf5_plugindir}/imageformats/kimg_xcf.so
 %dir %{_kf5_servicesdir}/qimageioplugins
+%{_kf5_servicesdir}/qimageioplugins/ani.desktop
 %if 0%{?with_avif}
 %{_kf5_servicesdir}/qimageioplugins/avif.desktop
 %endif

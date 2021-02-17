@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Simplify portion of NCLX color profile code
+  * [imagedump] Add "list MIME type" (-m) option
+  * Fix crash with malformed files
+  * ani: Make sure riffSizeData is of the correct size before doing the quint32_le cast dance
+  * Add missing includes
+  * Add plugin for animated Windows cursors (ANI)
+
+-------------------------------------------------------------------
 Mon Jan 11 18:18:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop baselibs.conf. Nothing requires the -32bit package
