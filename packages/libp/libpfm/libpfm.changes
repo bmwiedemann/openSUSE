@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 11 16:57:49 UTC 2021 - Tony Jones <tonyj@suse.com>
+
+- Update to version v4.11.0
+
+  * Major updates:
+      AMD Zen1 core PMU updates
+      AMD Zen2 core PMU support
+      Intel Icelake core PMU support
+      support to report if events are speculative
+      support for Extended PEBS events on Icelake
+      Intel Tremont core PMU support
+      ARM Neoverse N1 core PMU support
+      s390 event table updates
+      Marvell TX2 core and uncore updates
+      Intel CascadeLakeX uncore PMU support
+
+  * Various other event table updates and bug fixes
+
+  * Drop following patches (upstream):
+      0001-s390-cpumf-add-IBM-z14-ZR1-support.patch
+      0001-s390-cpumf-add-support-for-counter-second-version-nu.patch
+      0001-s390-cpumf-add-support-for-machine-type-8561.patch
+      add-thunderx2-dmc-events-and-ccpi-events.patch
+      moved-tx2-uncore-event-to-separate-file.patch
+      removed-extra-fields-from-tx2_unc_data_t.patch
+      thunderx2-uncore-support.patch
+      update-cavium-thunderx2-with-now-public-events.patch
+
+-------------------------------------------------------------------
 Sun Nov 22 00:18:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix the python subpackage generation
