@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Add missing include
+  * Remove unused include
+  * Fix regression caused due to porting from operator+ to operator| (kde#431493)
+- Drop upstream patch:
+  * kcompletion/0001-Fix-regression-caused-due-to-porting-from-operator-t.patch
+
+-------------------------------------------------------------------
 Mon Jan 25 22:29:28 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Add upstream patch to fix Okular search bar no longer closed
