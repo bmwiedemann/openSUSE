@@ -1,7 +1,7 @@
 #
 # spec file for package git-delta
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-delta
-Version:        0.4.4
+Version:        0.5.1
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT
@@ -36,17 +36,7 @@ Delta provides language syntax-highlighting, within-line insertion/deletion dete
 %define cargo_registry $(pwd)/vendor
 %{cargo_prep}
 
-# For ppc64, aarch64 and riscv64, there is a hook running, that touches this file, which is checksummed
-%ifarch aarch64 ppc64 ppc64le riscv64
-cp $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.sub $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.sub.save
-cp $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.guess $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.guess.save
-%endif
-
 %build
-%ifarch aarch64 ppc64 ppc64le riscv64
-mv $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.sub.save $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.sub
-mv $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.guess.save $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.guess
-%endif
 %cargo_build
 
 %check

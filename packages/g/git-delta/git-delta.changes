@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jan  8 09:05:59 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.5.1
+  * This release is primarily to make delta build on Apple Silicon/ARM 
+    for Homebrew. 
+  * It also fixes an inconsistency whereby the line number was not 
+    displayed in the hunk header if line-numbers was active.
+
+- Update to version 0.5.0
+  * This release introduces a cosmetic change to delta output: 
+    the line number (when full line-numbers mode is not active) 
+    is now displayed in the hunk header line, along with the hunk 
+    header code fragment, and optionally a file path.
+
+    Use hunk-header-style to configure it:
+      --hunk-header-style <hunk-header-style>
+        Style (foreground, background, attributes) for the hunk-header. 
+        See STYLES section. Special attributes 'file' and 'line-number' 
+        can be used to include the file path, and number of first 
+        hunk line, in the hunk header. If included in the hunk header, 
+        'file' and 'line-number' are styled according to 'file-style' 
+        and 'hunk-header-decoration-style' respectively. 
+        The style 'omit' can be used to remove the hunk header section
+        from the output [default: line-number syntax]
+    If you are displaying the file path in the hunk header, you may 
+    want to get rid of the main file line. 
+    Use file-style = <my-file-color> omit to set the color of the file 
+    in the hunk header while deactivating the main file section.
+  * The release also fixes a bug that was introduced in the last release 
+    when using delta as a unified diff replacement, 
+    i.e. delta file_a file_b.
+  * delta 0.4.5 binary release messes up terminal on Ubuntu 20 04
+  * delta 0.4.5 binary release does not run on macOS 10.11 (El Capitan)
+  * ReadMe can now use latest less.exe (instead of forked version)
+  * bump-homebrew-formula GitHub CD action is not working
+  * closed: Is it possible to show the file path in the hunk header?
+  * side-by-side alignment incorrect when tabs present
+
+- Update to version 0.4.5
+  * Creatied CI and CD workflows for Delta in GitHub actions
+  * delta shall have non-zero status code if there were any matches 
+    found
+  * Expose max_buffered_lines as configurable option
+  * Some theme options are not working with --color-only enabled
+  * Calculate code coverage
+  * Switch from Travis to GitHub actions
+  * delta does not recognize Git's copy detection
+  * Empty lines highlight plus-marker as whitespace-error
+  * PAGER= does nothing
+  * Add a test that enforces clippy and rustfmt compliance
+  * Dimmed-zebra doesn't show whether line is removed vs. added
+  * Windows Terminal Preview 1.4: Hyperlinks not working
+  * closed: Is it possible to not use hunk header and see absolute 
+            (true) not relative line numbers?
+  * closed: Is it possible to show the file path in the hunk header?
+  * Markdown coloring problem 
+
+-------------------------------------------------------------------
 Wed Oct 14 08:27:19 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Name the installed binary `delta`, as upstream calls it, as
