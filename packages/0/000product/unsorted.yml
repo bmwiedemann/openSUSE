@@ -21,7 +21,6 @@ unsorted:
   - Bear 
   - Botan 
   - Botan-doc 
-  - Box2D-doc 
   - CSXCAD-devel 
   - CSXCAD-matlab 
   - Cadence 
@@ -7433,6 +7432,7 @@ unsorted:
   - jwt_verify_lib-source 
   - jxrlib 
   - jxrlib-devel 
+  - jxrlib-devel-32bit: [x86_64] 
   - jython 
   - jython-demo 
   - jython-javadoc 
@@ -8044,6 +8044,7 @@ unsorted:
   - kubernetes1.20-scheduler: [x86_64] 
   - kubevirt-container-disk: [x86_64] 
   - kubevirt-manifests: [x86_64] 
+  - kubevirt-tests: [x86_64] 
   - kubevirt-virt-api: [x86_64] 
   - kubevirt-virt-controller: [x86_64] 
   - kubevirt-virt-handler: [x86_64] 
@@ -8391,9 +8392,6 @@ unsorted:
   - libAppStreamQt-devel 
   - libArcus-devel 
   - libArcus3 
-  - libBox2D-devel 
-  - libBox2D-devel-32bit: [x86_64] 
-  - libBox2D2_3_1-32bit: [x86_64] 
   - libBulletFileLoader2_89 
   - libBulletInverseDynamicsUtils2_89 
   - libBulletWorldImporter2_89 
@@ -9564,6 +9562,9 @@ unsorted:
   - libbotan-2-17-32bit: [x86_64] 
   - libbotan-devel 
   - libbotan-devel-32bit: [x86_64] 
+  - libbox2d-devel 
+  - libbox2d-devel-32bit: [x86_64] 
+  - libbox2d2-32bit: [x86_64] 
   - libbpf-devel 
   - libbpf0 
   - libbraiding-devel 
@@ -11248,6 +11249,7 @@ unsorted:
   - libjpeg8-devel 
   - libjpeg8-devel-32bit: [x86_64] 
   - libjpegxr0 
+  - libjpegxr0-32bit: [x86_64] 
   - libjpgalleg44-devel 
   - libjpgalleg4_4 
   - libjpgalleg4_4-32bit: [x86_64] 
@@ -11624,7 +11626,7 @@ unsorted:
   - libmbedx509-1 
   - libmbedx509-1-32bit: [x86_64] 
   - libmbim-devel 
-  - libmca_common_dstore1 
+  - libmca_common_dstore1: [x86_64] 
   - libmcpp0 
   - libmd-devel 
   - libmd0 
@@ -12453,7 +12455,7 @@ unsorted:
   - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmempool1: [x86_64] 
   - libpmi0: [x86_64] 
-  - libpmix2 
+  - libpmix2: [x86_64] 
   - libpnetcdf-gnu-mpich-hpc: [x86_64] 
   - libpnetcdf-gnu-mvapich2-hpc: [x86_64] 
   - libpnetcdf-gnu-openmpi2-hpc: [x86_64] 
@@ -16947,6 +16949,7 @@ unsorted:
   - ntl-devel 
   - ntl-doc 
   - ntp 
+  - ntp-dcf77-tools 
   - ntp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - ntpsec 
   - ntpsec-doc 
@@ -19790,6 +19793,7 @@ unsorted:
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
   - pipewire-modules-32bit: [x86_64] 
+  - pipewire-pulseaudio 
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
@@ -19959,11 +19963,11 @@ unsorted:
   - pmemkv-devel: [x86_64] 
   - pmemkv-python: [x86_64] 
   - pmidi 
-  - pmix 
-  - pmix-devel 
-  - pmix-headers 
-  - pmix-mca-params 
-  - pmix-plugins 
+  - pmix: [x86_64] 
+  - pmix-devel: [x86_64] 
+  - pmix-headers: [x86_64] 
+  - pmix-mca-params: [x86_64] 
+  - pmix-plugins: [x86_64] 
   - pnetcdf-devel-data: [x86_64] 
   - pnetcdf-doc: [x86_64] 
   - pnetcdf-gnu-mpich-hpc: [x86_64] 
@@ -21028,7 +21032,6 @@ unsorted:
   - python3-selinux: [i586] 
   - python3-senlinclient 
   - python3-shaptools 
-  - python3-sherpa: [x86_64] 
   - python3-smbus 
   - python3-snimpy 
   - python3-social-auth-app-django 
@@ -24137,6 +24140,7 @@ unsorted:
   - python38-addict 
   - python38-aeidon 
   - python38-aenum 
+  - python38-aesara 
   - python38-afdko 
   - python38-affine 
   - python38-agate 
@@ -26288,6 +26292,7 @@ unsorted:
   - python38-sgp4 
   - python38-sh 
   - python38-shellingham 
+  - python38-sherpa: [x86_64] 
   - python38-shijian 
   - python38-shinyutils 
   - python38-shodan 
