@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 06:50:12 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- baselibs.conf: added biarch lib and devel package for Wine 6.2+
+
+-------------------------------------------------------------------
 Fri May 15 09:55:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use proper cmake macros for building

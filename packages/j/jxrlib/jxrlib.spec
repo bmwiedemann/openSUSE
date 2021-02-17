@@ -1,7 +1,7 @@
 #
 # spec file for package jxrlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source0:        %{name}_1_1.zip
 # Use CMake to build to facilitate creation of shared libraries
 # See https://jxrlib.codeplex.com/workitem/13
 Source1:        CMakeLists.txt
+# need 32bit flavors for Wine 6.2+
+Source2:        baselibs.conf
 # Fix various warnings, upstreamable
 # See https://jxrlib.codeplex.com/workitem/13
 Patch0:         jxrlib_warnings.patch
