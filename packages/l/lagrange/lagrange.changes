@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 17 03:10:02 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
 Sun Feb 14 17:13:00 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.1.3

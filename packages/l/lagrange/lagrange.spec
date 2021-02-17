@@ -43,7 +43,7 @@ page outlines.
 %setup -q
 
 %build
-%cmake
+%cmake -DTFDN_ENABLE_SSE41=NO
 %cmake_build
 
 %install
