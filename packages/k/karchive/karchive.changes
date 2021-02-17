@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:45:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Adapt to Qt6 QTextCodec changes
+
+-------------------------------------------------------------------
 Wed Jan  6 10:47:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
