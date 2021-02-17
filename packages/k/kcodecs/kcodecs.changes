@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Compile benchmark tests, but don't run them automatically with ctest
+  * Remove the usage of non-UTF-8 string literals
+
+-------------------------------------------------------------------
 Wed Jan  6 10:47:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
