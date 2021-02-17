@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 14:48:46 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Install 'raspberrypi-eeprom' package on Raspberry Pi image (jsc#SLE-13566)
+
+-------------------------------------------------------------------
 Wed Jan 27 08:33:04 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Simplify multi-arch profiles using a new kiwi feature

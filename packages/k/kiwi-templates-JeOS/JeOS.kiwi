@@ -324,6 +324,7 @@
         <package name="kernel-default-base"/>
     </packages>
     <packages type="image" profiles="RaspberryPi">
+        <package name="raspberrypi-eeprom" arch="aarch64"/>
         <package name="raspberrypi-firmware" arch="aarch64"/>
         <package name="raspberrypi-firmware-config" arch="aarch64"/>
         <package name="raspberrypi-firmware-dt" arch="aarch64"/>
