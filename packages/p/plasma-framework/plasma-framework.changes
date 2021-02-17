@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Too many changes since 5.78.0, only listing bugfixes:
+  * widgets>lineedit.svg: fix pixel misalignment woes (kde#432422)
+  * Add RESET to globalShortcut property (kde#431006)
+
+-------------------------------------------------------------------
 Wed Jan  6 10:48:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
