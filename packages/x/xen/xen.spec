@@ -130,7 +130,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.14.1_08
+Version:        4.14.1_11
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -169,7 +169,15 @@ Source10183:    xen_maskcalc.py
 Source99:       baselibs.conf
 # Upstream patches
 Patch1:         5fca3b32-tools-libs-ctrl-fix-dumping-of-ballooned-guest.patch
-Patch36001:     xsa360.patch
+Patch2:         5fedf9f4-x86-hpet_setup-fix-retval.patch
+Patch3:         5ff458f2-x86-vPCI-tolerate-disabled-MSI-X-entry.patch
+Patch4:         5ff71655-x86-dpci-EOI-regardless-of-masking.patch
+Patch5:         5ffc58e8-x86-ACPI-dont-overwrite-FADT.patch
+Patch6:         600999ad-x86-dpci-do-not-remove-pirqs-from.patch
+Patch7:         600ab341-x86-vioapic-EOI-check-IRR-before-inject.patch
+Patch8:         6011bbc7-x86-timer-fix-boot-without-PIT.patch
+Patch9:         6013e4bd-memory-bail-from-page-scrub-when-CPU-offline.patch
+Patch10:        6013e546-x86-HVM-reorder-domain-init-error-path.patch
 # libxc
 Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
 Patch301:       libxc-sr-readv_exact.patch
@@ -214,7 +222,7 @@ Patch410:       ignore-ip-command-script-errors.patch
 Patch420:       suspend_evtchn_lock.patch
 Patch422:       stubdom-have-iovec.patch
 Patch423:       vif-route.patch
-Patch424:       gcc10-fixes.patch
+Patch424:       gcc11-fixes.patch
 # Other bug fixes or features
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
@@ -427,7 +435,15 @@ Authors:
 %setup -q -n %xen_build_dir -a 1 -a 5 -a 6 -a 57
 # Upstream patches
 %patch1 -p1
-%patch36001 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 # libxc
 %patch300 -p1
 %patch301 -p1

@@ -1,5 +1,8 @@
-From: Roger Pau Monne <roger.pau@citrix.com>
-Subject: x86/dpci: do not remove pirqs from domain tree on unbind
+# Commit 58427889f5a420cc5226f88524b3228f90b72a58
+# Date 2021-01-21 16:11:41 +0100
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/dpci: do not remove pirqs from domain tree on unbind
 
 A fix for a previous issue removed the pirqs from the domain tree when
 they are unbound in order to prevent shared pirqs from triggering a
@@ -18,6 +21,7 @@ remove it from the domain pirq tree.
 This is XSA-360.
 
 Fixes: 5b58dad089 ('x86/pass-through: avoid double IRQ unbind during domain cleanup')
+Reported-by: Samuel Verschelde <samuel.verschelde@vates.fr>
 Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
 Reviewed-by: Jan Beulich <jbeulich@suse.com>
 

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 10 12:52:00 MST 2021 - carnold@suse.com
+
+- bsc#1181921 - GCC 11: xen package fails
+  gcc11-fixes.patch
+- Drop gcc10-fixes.patch
+
+-------------------------------------------------------------------
+Tue Feb  2 05:37:27 MST 2021 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  5fedf9f4-x86-hpet_setup-fix-retval.patch
+  5ff458f2-x86-vPCI-tolerate-disabled-MSI-X-entry.patch
+  5ff71655-x86-dpci-EOI-regardless-of-masking.patch
+  5ffc58e8-x86-ACPI-dont-overwrite-FADT.patch
+  600999ad-x86-dpci-do-not-remove-pirqs-from.patch (Replaces xsa360.patch)
+  600ab341-x86-vioapic-EOI-check-IRR-before-inject.patch
+  6013e4bd-memory-bail-from-page-scrub-when-CPU-offline.patch
+  6013e546-x86-HVM-reorder-domain-init-error-path.patch
+- bsc#1180491 - "Panic on CPU 0: IO-APIC + timer doesn't work!"
+  6011bbc7-x86-timer-fix-boot-without-PIT.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 08:46:20 MST 2021 - carnold@suse.com
 
 - bsc#1181254 - VUL-0: xen: IRQ vector leak on x86 (XSA-360)

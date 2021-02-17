@@ -2558,4 +2558,12 @@
     <comment>Fix for security bug bsc#1181254 - VUL-0: xen: IRQ vector leak on x86 (XSA-360)</comment>
     <requestid>866148</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>8a264d0f7f27cd35f95d2d71e2a911f7</srcmd5>
+    <version>4.14.1_11</version>
+    <time>1613581727</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1181921 - GCC 11: xen package fails</comment>
+    <requestid>871003</requestid>
+  </revision>
 </revisionlist>
