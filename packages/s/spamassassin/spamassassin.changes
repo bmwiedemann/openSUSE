@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 11:25:16 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Relax the crypto policies for the test-suite. This will allow the
+  tests that use certificates with small key lengths to pass.
+
+-------------------------------------------------------------------
 Wed Dec 23 16:05:26 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Require perl(Mail::SpamAssassin) instead of perl-spamassassin

@@ -1,7 +1,7 @@
 #
 # spec file for package spamassassin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,8 +68,8 @@ BuildRequires:  netcfg
 BuildRequires:  re2c
 BuildRequires:  wget >= 1.8.2
 #
-Requires:       spamassassin-spamc = %{sa_version}
 Requires:       re2c
+Requires:       spamassassin-spamc = %{sa_version}
 Requires:       (curl >= 7.2.14 or wget >= 1.8.2)
 Requires:       perl(Archive::Tar) >= 1.23
 Requires:       perl(Error)
@@ -235,6 +235,9 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" \
 
 %check
 %if %{with test}
+# Relax the crypto policies for the test-suite
+export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
+export OPENSSL_CONF=''
 %make_build -j1 test
 %endif
 
