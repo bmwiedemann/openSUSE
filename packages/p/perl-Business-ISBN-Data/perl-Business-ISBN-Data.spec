@@ -18,7 +18,7 @@
 
 %define cpan_name Business-ISBN-Data
 Name:           perl-Business-ISBN-Data
-Version:        20210112.001
+Version:        20210112.006
 Release:        0
 Summary:        Data pack for Business::ISBN
 License:        Artistic-2.0
@@ -33,10 +33,13 @@ BuildRequires:  perl(Test::More) >= 1
 
 %description
 You don't need to load this module yourself in most cases. Business::ISBN
-will load it when it loads.
+will load it when it loads. You must use Business::ISBN 3.005 or later
+because the data structure changed slightly to fix a bug with ISBN13
+prefixes.
 
 These data are generated from the _RangeMessage.xml_ file provided by the
-ISBN Agency. You can retrieve this yourself at
+ISBN Agency. The distributed version matches the date in the version for
+this module. You can retrieve this yourself at
 https://www.isbn-international.org/range_file_generation. This file is
 included as part of the distribution and should be installed at
 _~lib/Business/ISBN/Data/RangeMessage.xml_.
@@ -48,8 +51,8 @@ earlier) data without having to install something new or wait for an update
 to this module.
 
 If the default _RangeMessage.xml_ or your alternate one is not available,
-the module falls back to data included in _Data.pm_. However, that data is
-likely to be older data. If it does not find that file, it looks for
+the module falls back to data included in _Data.pm_. However, that data are
+likely to be older. If it does not find that file, it looks for
 _RangeMessage.xml_ in the current directory.
 
 The data are in '%Business::ISBN::country_data' (although the "country"
@@ -58,6 +61,7 @@ part is historical). If you want to see where the data are from, check
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

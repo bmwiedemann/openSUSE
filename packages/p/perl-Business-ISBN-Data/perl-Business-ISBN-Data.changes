@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Feb 17 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20210112.006
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20210112.006 2021-02-16T04:08:08Z
+  	* Fix testing bug. This module needs Business::ISBN 3.005 to match
+  	the data structures. Prior to that, Business::ISBN had a bug with
+  	ISBN13.
+  20210112.005_03 2021-02-15T17:43:08Z
+  	* I think the CPAN Tester failures are using older versions of
+  	Business::ISBN (older than 3.005 all seem to fail). I assumed they
+  	started fresh, but I guess not. Require a recent version in the
+  	default_data test.
+  20210112.005_02 2021-02-14T05:07:05Z
+  	* Try harder to see what's going on in CPAN Testers
+  20210112.005_01 2021-02-13T12:40:28Z
+  	* Try harder to figure out these test failures
+
+-------------------------------------------------------------------
+Sun Feb 14 03:06:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20210112.005
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+-------------------------------------------------------------------
+Thu Feb 11 03:06:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20210112.004
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20210112.004 2021-02-10T04:29:32Z
+  	* Test the default data.
+  	* Add a note about packaging RangeMessage.xml (adapted from gwyn17)
+
+-------------------------------------------------------------------
+Wed Feb 10 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20210112.003
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20210112.003 2021-02-09T22:42:53Z
+  	* The default data had a problem because I used the same hash key
+  	twice in the default data (Github #7). Found by gwyn17.
+
+-------------------------------------------------------------------
+Mon Feb  8 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20210112.002
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20210112.002 2021-02-07T05:46:20Z
+  	* Don't try to load a data file if there are no data files
+  	(Github #6)
+
+-------------------------------------------------------------------
 Wed Jan 20 03:07:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20210112.001
