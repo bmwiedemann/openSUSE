@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 17 11:32:56 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- add xml-security-c-2.0.2-xalan-1.12.patch to fix build with xalan
+  1.12 [bsc#1179556]
+- re-enable xalan support 
+
+-------------------------------------------------------------------
 Tue Dec  1 13:42:56 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Run spec-cleaner

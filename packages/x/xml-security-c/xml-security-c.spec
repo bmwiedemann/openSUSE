@@ -1,7 +1,7 @@
 #
 # spec file for package xml-security-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://santuario.apache.org/
 Source0:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2
 Source1:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM marguerite@opensuse.org - 'bool' can't be converted to pointer in c++11
+Patch0:         xml-security-c-2.0.2-xalan-1.12.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libxalan-c-devel >= 1.11
 BuildRequires:  libxerces-c-devel >= 3.2
@@ -86,11 +86,11 @@ This package includes files needed for development with xml-security-c.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %configure \
-  --disable-static \
-  --without-xalan
+  --disable-static
 %make_build
 
 %install
