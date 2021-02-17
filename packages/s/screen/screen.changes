@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 12 15:37:48 CET 2021 - mls@suse.de
+
+- Fix double width combining char handling that could lead
+  to a segfault [bnc#1182092]
+  new patch: combchar.diff
+
+-------------------------------------------------------------------
 Mon Nov 30 13:38:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %_tmpfilesdir instead of hardcoding a path for

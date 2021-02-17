@@ -501,4 +501,12 @@ Changelog updated and bug reported upstream here: https://savannah.gnu.org/bugs/
     <comment></comment>
     <requestid>853291</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>8f690f91aed8e93a7ff360fc7b3fef34</srcmd5>
+    <version>4.8.0</version>
+    <time>1613581789</time>
+    <user>dimstar_suse</user>
+    <comment>Fix double width combining char handling that could lead to a segfault [bnc#1182092]</comment>
+    <requestid>871482</requestid>
+  </revision>
 </revisionlist>

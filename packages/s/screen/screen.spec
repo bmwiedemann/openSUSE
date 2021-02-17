@@ -1,7 +1,7 @@
 #
 # spec file for package screen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=sc
 Source4:        screen.pam
 Patch0:         global_screenrc.patch
 Patch6:         libtinfo.diff
+Patch7:         combchar.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
@@ -67,6 +68,7 @@ Documentation: man page
 %patch0
 # libtinfo.diff
 %patch6
+%patch7
 
 %build
 sh ./autogen.sh
