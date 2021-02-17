@@ -215,4 +215,12 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
     <comment>Add system-user-ntp</comment>
     <requestid>868678</requestid>
   </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>f810d75ccab0a1d505cf89f811fefe23</srcmd5>
+    <version>20170617</version>
+    <time>1613581731</time>
+    <user>dimstar_suse</user>
+    <comment>Try again</comment>
+    <requestid>871210</requestid>
+  </revision>
 </revisionlist>
