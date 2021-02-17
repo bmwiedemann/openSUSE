@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Feb 16 00:06:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add %{name}-rpmlintrc file to disarm errors for devel files in
+  non-devel package; the C files are necessary for aesara working.

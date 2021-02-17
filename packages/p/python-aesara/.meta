@@ -1,0 +1,12 @@
+<package name="python-aesara" project="openSUSE:Factory">
+  <title>Effeciently evaluate expressions involving multi-dimensional arrays</title>
+  <description>Aesara is a Python library that allows you to define, optimize, and efficiently
+evaluate mathematical expressions involving multi-dimensional arrays. It can
+use GPUs and perform efficient symbolic differentiation.
+
+This is a fork of the original (and no longer maintained) Theano library.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-aesara"/>
+  <url>https://github.com/pymc-devs/aesara</url>
+</package>
