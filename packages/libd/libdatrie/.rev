@@ -181,4 +181,12 @@
   - Fix reported segfault on full-range alpha map.</comment>
     <requestid>829642</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d200def3c129ebf045b9a200eb1a030a</srcmd5>
+    <version>0.2.13</version>
+    <time>1613581772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871391</requestid>
+  </revision>
 </revisionlist>

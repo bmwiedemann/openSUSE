@@ -1,7 +1,7 @@
 #
 # spec file for package libdatrie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libdatrie
-Version:        0.2.12
+Version:        0.2.13
 Release:        0
 Summary:        Double-Array Trie Library
 License:        LGPL-2.1-only
@@ -67,8 +67,6 @@ autoreconf -fiv
 %install
 %make_install
 rm -f %{buildroot}%{_libdir}/libdatrie.la
-# This is not installed where it should
-mv %{buildroot}%{_datadir}/doc/libdatrie/README.migration %{buildroot}%{_docdir}/libdatrie/
 
 %post -n libdatrie1 -p /sbin/ldconfig
 %postun -n libdatrie1 -p /sbin/ldconfig
@@ -79,11 +77,12 @@ mv %{buildroot}%{_datadir}/doc/libdatrie/README.migration %{buildroot}%{_docdir}
 %{_libdir}/libdatrie.so.1*
 
 %files devel
+%doc README.migration
+%doc %{_docdir}/libdatrie
 %{_bindir}/trietool*
 %{_mandir}/man*/trietool*.1%{?ext_man}
 %{_includedir}/datrie/
 %{_libdir}/libdatrie.so
 %{_libdir}/pkgconfig/datrie-0.2.pc
-%doc %{_docdir}/libdatrie/
 
 %changelog
