@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  5 09:28:17 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.10.2
+  * Allow "nonempty" as a mount option, for backwards
+    compatibility with fusermount 2. The option has no effect
+    since mounting over non-empty directories is allowed by default.
+  * FUSE filesystems can now be mounted underneath EXFAT
+    mountpoints.
+
+-------------------------------------------------------------------
 Mon Dec  7 10:32:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.10.1

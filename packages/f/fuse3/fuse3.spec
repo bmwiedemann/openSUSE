@@ -1,7 +1,7 @@
 #
 # spec file for package fuse3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fuse3
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause
