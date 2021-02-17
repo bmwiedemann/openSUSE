@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 17 14:55:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.8:
+  * be symmetric about differences, A - B := -(B - A) for A < B
+  * fix security issue when reading TZMAP_DIR from environment
+  * fix printing of negative 0 (-0)
+  * fix issue with tzdata transitions in files with leap second
+  * adjustments that are now cut off at expiration time (#121)
+- Drop dateutils-remove-deprecated-header.patch: not needed anymore
+
+-------------------------------------------------------------------
 Sat Dec 19 00:28:09 UTC 2020 - malcolmlewis@opensuse.org
 
 - Add dateutils-remove-deprecated-header.patch: Remove deprecated

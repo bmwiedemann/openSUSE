@@ -1,7 +1,7 @@
 #
 # spec file for package dateutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dateutils
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        Command line date and time utilities
 License:        BSD-3-Clause
@@ -25,8 +25,6 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/hroptatyr/dateutils/
 Source0:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.asc
-#PATCH-FIX-OPENSUSE dateutils-remove-deprecated-header.patch malcolmlewis@opensuse.org -- Remove deprecated glibc sysctl.h header.
-Patch0:         dateutils-remove-deprecated-header.patch
 BuildRequires:  octave-devel
 BuildRequires:  pkgconfig
 BuildRequires:  timezone

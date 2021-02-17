@@ -277,4 +277,18 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
     <comment></comment>
     <requestid>860151</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4fcee17dde2b8da153907a93fc1d0360</srcmd5>
+    <version>0.4.8</version>
+    <time>1613581987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.8:
+  * be symmetric about differences, A - B := -(B - A) for A &lt; B
+  * fix security issue when reading TZMAP_DIR from environment
+  * fix printing of negative 0 (-0)
+  * fix issue with tzdata transitions in files with leap second
+  * adjustments that are now cut off at expiration time (#121)
+- Drop dateutils-remove-deprecated-header.patch: not needed anymore</comment>
+    <requestid>873182</requestid>
+  </revision>
 </revisionlist>
