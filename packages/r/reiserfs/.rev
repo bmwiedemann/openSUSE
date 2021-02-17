@@ -324,4 +324,12 @@ Changelog fixed to work around osc pretending to be a version control system whi
     <comment></comment>
     <requestid>698199</requestid>
   </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>e9728659d0dc87519e4ab7b0dd12ccf2</srcmd5>
+    <version>3.6.27</version>
+    <time>1613581778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871411</requestid>
+  </revision>
 </revisionlist>

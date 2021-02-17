@@ -1,7 +1,7 @@
 #
 # spec file for package reiserfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ BuildRequires:  linux-kernel-headers
 BuildRequires:  pkg-config
 BuildRequires:  xz
 # Git-url:	git://git.kernel.org/pub/scm/linux/kernel/git/jeffm/reiserfsprogs.git
-Url:            https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs
+URL:            https://www.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs
 Conflicts:      libreiserfs-progs
 Supplements:    filesystem(reiserfs)
 Version:        3.6.27
@@ -100,10 +100,10 @@ cd ${RPM_BUILD_ROOT}/sbin
 %{_libdir}/libreiserfscore.a
 %{_libdir}/libreiserfscore.la
 %{_libdir}/libreiserfscore.so
-%{_libdir}/libreiserfscore.so.0
 
 %files -n libreiserfscore0
 %defattr(-, root, root)
+%{_libdir}/libreiserfscore.so.0
 %{_libdir}/libreiserfscore.so.0.0.0
 
 %post -n libreiserfscore0 -p /sbin/ldconfig

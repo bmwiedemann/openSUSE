@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 22:27:49 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Move soname link to library package
+
+-------------------------------------------------------------------
 Fri Apr 26 11:26:19 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use %make_build.
