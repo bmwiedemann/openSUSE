@@ -1,7 +1,7 @@
 #
 # spec file for package python-sherpa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-sherpa
-Version:        4.12.1
+Version:        4.13.0
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
@@ -28,6 +29,8 @@ Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sher
 Patch1:         reproducible.patch
 # PATCH-FIX-UPSTREAM - https://github.com/sherpa/sherpa/issues/970
 Patch2:         sherpa-fix-aarch64.patch
+# PATCH-FIX-UPSTREAM sherpa-numpy-1.20.patch badshah400@gmail.com - Fix test errors with numpy 1.20 [https://github.com/sherpa/sherpa/pull/1092]
+Patch3:         sherpa-numpy-1.20.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
