@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 17 09:05:37 UTC 2021 - rombert@apache.org
+
+- Update to version 0.13.1:
+  * Version 0.13.1
+  * Repair macos build (#61)
+  * Version 0.13.0
+  * Use fixed version of image in Github test actions
+  * Add option to disable namespace validation (#60)
+  * Build arm64 binary on macos-10.15
+  * Run tests for pull requests
+
+-------------------------------------------------------------------
 Wed Feb  3 23:58:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Make summary usable.
