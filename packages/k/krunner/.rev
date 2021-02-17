@@ -685,4 +685,12 @@
 - Too many changes to list here.</comment>
     <requestid>861993</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c879000e68ffef15749b122ec323e70b</srcmd5>
+    <version>5.79.0</version>
+    <time>1613581891</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.79 (forwarded request 871084 from cgiboudeaux)</comment>
+    <requestid>871721</requestid>
+  </revision>
 </revisionlist>
