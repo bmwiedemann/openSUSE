@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 15:49:07 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Relax the crypto policies for the test-suite
+
+-------------------------------------------------------------------
 Fri Dec 11 00:02:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add twisted-pr1369-remove-pyopenssl-npn.patch to support 

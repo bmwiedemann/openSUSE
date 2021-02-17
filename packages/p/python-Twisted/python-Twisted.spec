@@ -1,7 +1,7 @@
 #
 # spec file for package python-Twisted
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,6 +130,11 @@ rm %{buildroot}%{_bindir}/mailmail %{buildroot}%{_mandir}/man1/mailmail.1
 export LANG=en_US.UTF-8
 export PATH=%{buildroot}%{_bindir}:$PATH
 export PYTHONDONTWRITEBYTECODE=1
+
+# Relax the crypto policies for the test-suite
+export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
+export OPENSSL_CONF=''
+
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m twisted.trial twisted
 
 %post
