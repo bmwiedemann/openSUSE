@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Too many changes since 5.78.0, only listing bugfixes:
+  * [Vimode] Do not switch view when changing case (~ command) (kde#432056)
+  * Increase maximum indentation width to 200 (kde#432283)
+  * Only show bookmark chars error when in vimode (kde#424172)
+  * Retain replacement text as long as the power search bar is not closed (kde#338111)
+  * Allow "Dynamic Word Wrap Align Indent" to be disabled (kde#430987)
+  * [Vimode]Fix search inside fold ranges (kde#376934)
+  * [Vimode] Fix Macro Completion Replay (kde#334032)
+
+-------------------------------------------------------------------
 Wed Jan  6 10:48:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
