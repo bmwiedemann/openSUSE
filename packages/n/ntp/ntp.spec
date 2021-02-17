@@ -58,6 +58,7 @@ Patch27:        ntp-netlink.patch
 Patch29:        ntp-pathfind.patch
 Patch30:        ntp-move-kod-file.patch
 Patch33:        ntp-sntp-libevent.patch
+Patch34:        testdcf-gude.diff
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
@@ -68,11 +69,12 @@ BuildRequires:  openssl-devel
 BuildRequires:  pps-tools-devel
 %endif
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  systemd-rpm-macros
+%systemd_ordering
 Requires:       /bin/logger
 Requires:       timezone
 Requires(pre):  %fillup_prereq
-Requires(pre):  shadow
+Requires(pre):  user(ntp)
 Requires(post): /usr/bin/base64
 Requires(post): /usr/bin/gawk
 Suggests:       logrotate
@@ -112,6 +114,18 @@ What about NTP? Understanding and using the Network Time Protocol (A
 first try on a non-technical Mini-HOWTO and FAQ on NTP). Edited by
 Ulrich Windl and David Dalton.
 
+%package dcf77-tools
+Summary:        DCF77 related tools
+Group:          Hardware/Other
+
+%description dcf77-tools
+DCF77 related programs.
+
+There are currently two tools:
+  * testdcf, a simple DCF77 raw impulse test program.
+  * dcfd, a simple DCF77 raw impulse receiver with NTP loopfilter
+    mechanics for synchronisation.
+
 %prep
 %setup -q
 # unpack ntp-faq
@@ -131,6 +145,7 @@ cp %{SOURCE12} .
 %patch29
 %patch30
 %patch33
+%patch34 -p1
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}
@@ -222,17 +237,25 @@ install -m 644 %{S:13} %{buildroot}/%{_mandir}/man8
 install -d %{buildroot}%{_localstatedir}/log/
 touch %{buildroot}%{_localstatedir}/log/ntp
 #
+# statsdir
+#
+install -d %{buildroot}%{_localstatedir}/log/ntpstats
+#
 # service xml
 #
 install -m 755 scripts/ntp-wait/ntp-wait %{buildroot}%{_sbindir}/
 install -d %{buildroot}/var/lib/ntp
 install -m 644 /dev/null %{buildroot}/var/lib/ntp/kod
 
+#
+# DCF77 tools
+#
+install -d %{buildroot}%{_bindir}/
+install -m 755 parseutil/testdcf %{buildroot}%{_bindir}/
+install -m 755 parseutil/dcfd %{buildroot}%{_bindir}/
+
+
 %pre
-getent group ntp >/dev/null || %{_sbindir}/groupadd -r ntp
-getent passwd ntp >/dev/null || %{_sbindir}/useradd -r -o -g ntp -u 74 \
-	-s /bin/false -c "NTP daemon" -d %{_localstatedir}/lib/ntp ntp
-%{_sbindir}/usermod -g ntp ntp 2>/dev/null || :
 test -L %{_localstatedir}/run/ntp  || rm -rf %{_localstatedir}/run/ntp && :
 %service_add_pre ntp.service ntpd.service
 %service_add_pre ntp-wait.service
@@ -351,8 +374,8 @@ if [ ! -f %{_localstatedir}/log/ntp ]; then
 fi
 %service_add_post ntpd.service
 %service_add_post ntp-wait.service
-if [ ! -e "%{_localstatedir}/lib/systemd/migrated/ntpd" ]; then
-  touch %{_localstatedir}/lib/systemd/migrated/ntpd
+if [ -e "%{_localstatedir}/lib/systemd/migrated/ntp" ]; then
+  mv "%{_localstatedir}/lib/systemd/migrated/ntp" "%{_localstatedir}/lib/systemd/migrated/ntpd"
 fi
 
 %postun
@@ -388,9 +411,13 @@ fi
 %{_fillupdir}/*
 %attr(0755,ntp,root) %{_localstatedir}/lib/ntp%{_localstatedir}/run/ntp
 %ghost %config(noreplace) %{_localstatedir}/log/ntp
-/var/lib/ntp
+%attr(0755,ntp,ntp) %dir %{_localstatedir}/log/ntpstats
 
 %files doc
 %doc %{_docdir}/ntp-doc
+
+%files dcf77-tools
+%{_bindir}/dcfd
+%{_bindir}/testdcf
 
 %changelog

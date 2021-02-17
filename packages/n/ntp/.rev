@@ -1189,4 +1189,27 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment></comment>
     <requestid>844219</requestid>
   </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>8f6ea1627c231b550a01a713e57158c5</srcmd5>
+    <version>4.2.8p15</version>
+    <time>1613581934</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1181788: Make the code for the service name change robust to
+  the simplified systemd-sysv-convert script.
+- Fix systemd dependencies.
+
+- Package statsdir /var/log/ntpstats/
+- Let system-user-ntp handle the user/group generation 
+- Introduce subpackage dcf77-tools
+  * testdcf, a simple DCF77 raw impulse test program
+  * dcfd, a simple DCF77 raw impulse receiver 
+- Add patch testdcf-gude.diff
+  * Improves testdcf's compatibility with GUDE DCF77 receivers
+
+- Silence an OpenSSL version warning (bsc#992038,bsc#1125401
+- removal of ntp.firewall, since SuSEfirewall2 has been replaced by
+- Drop the omc config ntp.xml fate#301838:
+- Update to 4.2.8p12 (bsc#1111853):</comment>
+    <requestid>871212</requestid>
+  </revision>
 </revisionlist>

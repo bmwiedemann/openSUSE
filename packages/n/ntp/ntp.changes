@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb  8 12:50:47 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1181788: Make the code for the service name change robust to
+  the simplified systemd-sysv-convert script.
+- Fix systemd dependencies.
+
+-------------------------------------------------------------------
+Fri Jan  8 21:36:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Package statsdir /var/log/ntpstats/
+- Let system-user-ntp handle the user/group generation 
+- Introduce subpackage dcf77-tools
+  * testdcf, a simple DCF77 raw impulse test program
+  * dcfd, a simple DCF77 raw impulse receiver 
+- Add patch testdcf-gude.diff
+  * Improves testdcf's compatibility with GUDE DCF77 receivers
+
+-------------------------------------------------------------------
 Tue Oct 13 09:59:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace old specfile constructs. Do not suppress errors from
@@ -70,7 +88,7 @@ Thu Jun 25 13:56:55 UTC 2020 - Reinhard Max <max@suse.com>
   * ntp-4.2.6p2-ntpq-speedup-782060.patch
   * ntp-daemonize.patch
   * ntp-reproducible.patch
-- Silence an OpenSSL version warning (bsc#992038,
+- Silence an OpenSSL version warning (bsc#992038,bsc#1125401
   ntp-openssl-version.patch).
 
 -------------------------------------------------------------------
@@ -87,7 +105,7 @@ Tue Jan 28 15:25:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Wed Jul 24 13:13:56 UTC 2019 - matthias.gerstner@suse.com
 
-- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+- removal of ntp.firewall, since SuSEfirewall2 has been replaced by
   firewalld, see [1].
 
   [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
@@ -102,7 +120,7 @@ Fri Jul 12 11:09:37 UTC 2019 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Thu Jun  6 09:29:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Drop the omc config fate#301838:
+- Drop the omc config ntp.xml fate#301838:
   * it is obsolete since SLE11
 
 -------------------------------------------------------------------
@@ -145,7 +163,7 @@ Mon Dec 10 10:03:56 UTC 2018 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Tue Sep 11 12:24:52 UTC 2018 - max@suse.com
 
-- Update to 4.2.8p12
+- Update to 4.2.8p12 (bsc#1111853):
   * CVE-2018-12327, bsc#1098531: fixed stack buffer overflow in
     the openhost() command-line call of NTPQ/NTPDC.
   * Add further tweaks to improve the fix for CVE-2018-7170,
