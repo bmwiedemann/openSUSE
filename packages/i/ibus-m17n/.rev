@@ -189,4 +189,13 @@
   * New translation: es (Spanish) 100% (forwarded request 862995 from wsxy162)</comment>
     <requestid>863096</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>42f38d737da34d2263595c5b55183606</srcmd5>
+    <version>1.4.4</version>
+    <time>1613581978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.4.4
+  * Update translations (forwarded request 873125 from hillwood)</comment>
+    <requestid>873128</requestid>
+  </revision>
 </revisionlist>
