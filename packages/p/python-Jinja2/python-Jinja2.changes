@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  9 15:42:40 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
+
+- update to 2.11.3  
+  * Improve the speed of the urlize filter by reducing regex backtracking. 
+    Email matching requires a word character at the start of the domain part
+    and only word characters in the TLD (CVE-2020-28493 bsc#1181944).  
+
+-------------------------------------------------------------------
 Mon May  4 09:35:51 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
 
-- update to 2.11.1
+- update to 2.11.2
   * Fix a bug that caused callable objects with __getattr__, like
     :class:~unittest.mock.Mock to be treated as a
     :func:contextfunction. :issue:1145
