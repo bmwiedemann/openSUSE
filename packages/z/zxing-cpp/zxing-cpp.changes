@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  9 07:50:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.1.1. No changelog available.
+- Drop fix-pkg-config-file.patch. Merged upstream
+- Add 0001-Fix-build-with-GCC-11.patch to fix GCC 11 build
+  issues (boo#1181915)
+
+-------------------------------------------------------------------
 Fri Jan 15 00:29:36 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Use %cmake_build instead of %make_jobs

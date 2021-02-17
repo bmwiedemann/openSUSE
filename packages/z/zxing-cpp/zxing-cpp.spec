@@ -1,7 +1,7 @@
 #
 # spec file for package zxing-cpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           zxing-cpp
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Library for processing 1D and 2D barcodes
 License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.1
@@ -26,7 +26,8 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        https://github.com/nu-book/zxing-cpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         fix-pkg-config-file.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

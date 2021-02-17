@@ -1,0 +1,24 @@
+From 4766de0a8e6f780a04b03776d0c0380cb85935b8 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 9 Feb 2021 09:14:00 +0100
+Subject: [PATCH] Fix build with GCC 11
+
+---
+ core/src/Pattern.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/core/src/Pattern.h b/core/src/Pattern.h
+index 97093f0..87f340e 100644
+--- a/core/src/Pattern.h
++++ b/core/src/Pattern.h
+@@ -21,6 +21,7 @@
+ #include <cmath>
+ #include <cstddef>
+ #include <cstdint>
++#include <limits>
+ #include <numeric>
+ #include <vector>
+ 
+-- 
+2.30.0
+
