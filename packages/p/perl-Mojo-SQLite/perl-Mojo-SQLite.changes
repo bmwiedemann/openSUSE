@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 17 03:10:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.005
+   see /usr/share/doc/packages/perl-Mojo-SQLite/Changes
+
+  3.005     2021-02-15 21:47:59 EST
+    - Add query_p, select_p, insert_p, update_p, delete_p Mojo::Promise-returning methods to Mojo::SQLite::Database.
+      These are for API compatibility with Mojo::Pg and do not provide non-blocking query functionality. (#20, Stefan Adams)
+    - Use Mojo::Promise in tests instead of the deprecated and decored Mojo::IOLoop::Delay (#20, Stefan Adams)
+
+-------------------------------------------------------------------
 Tue Jul 28 09:47:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.004
