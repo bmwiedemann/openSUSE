@@ -1,7 +1,7 @@
 #
 # spec file for package phonon4qt5-backend-vlc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _phonon4qt5_version 4.10.60
 %bcond_without lang
 Name:           phonon4qt5-backend-vlc
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Phonon VLC Backend
 License:        LGPL-2.1-or-later

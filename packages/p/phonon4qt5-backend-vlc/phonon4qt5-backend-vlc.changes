@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 16 10:10:32 UTC 2021 - wbauer@tmo.at
+
+- Update to 0.11.2
+  * Assert that the internal player object doesn't freakishly fail
+    to allocate.
+  * Fully shutdown Phonon's PulseSupport upon destruction of
+    MediaObjects to prevent a randomly occurring shutdown race
+    resulting in a crash somewhere between the threaded pulseaudio
+    mainloop inside libvlc and the glib mainloop inside Phonon.
+    This was a somewhat common crash on application quit usually
+    presenting as a failed assert inside pulsecore/fdsem.c.
+
+-------------------------------------------------------------------
 Thu Sep 26 13:02:55 UTC 2019 - wbauer@tmo.at
 
 - Update to 0.11.1
