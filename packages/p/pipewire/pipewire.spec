@@ -235,9 +235,6 @@ Group:          Development/Libraries/C and C++
 Recommends:     %{name} >= %{version}-%{release}
 Requires:       %{libpipewire} >= %{version}-%{release}
 Conflicts:      pulseaudio
-# Provide the pulseaudio symbol (not obsolete), so that users that
-# want to experiment with the drop-in replacement can do so
-Provides:       pulseaudio
 
 # Virtual Provides to support swapping between PipeWire-PA and PA
 #Provides:       pulseaudio-daemon

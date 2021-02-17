@@ -196,4 +196,14 @@
     <comment></comment>
     <requestid>872802</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3cbd6b4b85f220a7e8b2e761295f00b3</srcmd5>
+    <version>0.3.21</version>
+    <time>1613581388</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the pulseaudio provides from pipewire-pulseaudio:
+  We first need to ensure our KDE patterns (and others) become
+  smart enough to favor pulseaudio until we are ready for the
+  switch.</comment>
+  </revision>
 </revisionlist>

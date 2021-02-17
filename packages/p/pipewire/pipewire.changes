@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 17 17:02:06 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove the pulseaudio provides from pipewire-pulseaudio:
+  We first need to ensure our KDE patterns (and others) become
+  smart enough to favor pulseaudio until we are ready for the
+  switch.
+
+-------------------------------------------------------------------
 Wed Feb  3 17:02:31 UTC 2021 - Dominik Schmidt <dev@dominik-schmidt.de>
 
 - Update to version 0.3.21:
