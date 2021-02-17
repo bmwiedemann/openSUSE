@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb 17 03:42:25 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.65.2:
+  * Release v3.65.2
+  * Add help in self:release about obtaining a token from the GitHub CLI
+  * Fix activity log in PHP 8 (#1036)
+  * Replace http->tcp and https->ssl in proxy URLs (#1037)
+  * Bump drush/drush from 8.4.5 to 8.4.6 (#1029)
+  * Release v3.65.1
+  * Add a default timeout to all requests
+  * Fix incomplete activity list example
+  * Support a relative update download path
+
+-------------------------------------------------------------------
+Tue Feb 02 01:40:35 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.65.0:
+  * Release v3.65.0
+  * Rename the backup --unsafe option to --live (#1026)
+  * Add "plain" format option for table commands (#1021)
+  * Remove the restriction on deleting the main environment
+  * Remove us-2 from available region examples (#1025)
+  * Release v3.64.6
+  * integrations: Pass the user-supplied token for creating webhooks (#1023)
+  * Bump stecman/symfony-console-completion from 0.10.1 to 0.11.0
+  * Configure composer updates with Dependabot (#1022)
+  * Release v3.64.5
+  * Fix HTTP access username validation to match the API
+  * Reduce environment list indent from 3 to 2 spaces
+  * Remove patch version notes from manifest.json
+
+-------------------------------------------------------------------
 Tue Dec 22 22:30:22 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.64.4:
