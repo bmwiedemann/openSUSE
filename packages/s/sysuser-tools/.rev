@@ -118,4 +118,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:sysuser-tools revision:613f17785b319b452209c6b619588671, using expand</comment>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>038053444a57fde74e59c63a147cc10b</srcmd5>
+    <version>3.0</version>
+    <time>1613581794</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't abort on unbound first argument (forwarded request 872279 from kukuk)</comment>
+    <requestid>872280</requestid>
+  </revision>
 </revisionlist>
