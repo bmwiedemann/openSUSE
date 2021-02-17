@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  8 08:46:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * 1 column lower limit on mobile 2 elsewhere
+  * allow single column items
+  * KeySequenceItem: Assign empty string on clear instead of undefined (kde#432106)
+  * typo--
+  * Disambiguate selected vs hovered states for GridDelegate (kde#406914)
+  * Use Single mode by default
+  * GridDelegate: remove hover animations
+
+-------------------------------------------------------------------
 Wed Jan  6 10:47:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.78.0
