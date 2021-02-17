@@ -1,7 +1,7 @@
 #
 # spec file for package mpfr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz
 Source1:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch:          mpfr-4.1.0-p7.diff
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 
@@ -67,6 +68,7 @@ based on the GMP multiple-precision library.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %configure \

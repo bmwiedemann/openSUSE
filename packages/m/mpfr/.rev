@@ -490,4 +490,12 @@
 - Remove mpfr-4.0.2-p6.patch and floating-point-format-no-lto.patch</comment>
     <requestid>820814</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>375dba15fc617520dfcf622e7a39d39f</srcmd5>
+    <version>4.1.0</version>
+    <time>1613581785</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cummulative patch mpfr-4.1.0-p7.diff fixing various bugs.</comment>
+    <requestid>871455</requestid>
+  </revision>
 </revisionlist>

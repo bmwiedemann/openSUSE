@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 08:05:33 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add cummulative patch mpfr-4.1.0-p7.diff fixing various bugs.
+
+-------------------------------------------------------------------
 Mon Jul 13 07:05:45 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to mpfr 4.1.0
