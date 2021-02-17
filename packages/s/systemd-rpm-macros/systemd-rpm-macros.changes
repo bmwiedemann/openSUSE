@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Feb 12 11:46:17 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Bump version to 10
+
+-------------------------------------------------------------------
+Fri Feb 12 11:02:57 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Make upstream %systemd_{pre,post,preun,postun} aliases to their SUSE
+  counterparts
+
+  Packagers can now choose to use the upstream or the SUSE variants
+  indifferently. For consistency the SUSE variants should be preferred
+  since almost all SUSE packages already use them but the upstream
+  versions might be usefull in certain cases where packages need to
+  support multiple distros based on RPM.
+
+-------------------------------------------------------------------
+Fri Feb 12 10:23:35 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Improve the logic used to apply the presets (bsc#1177039)
+
+  Before presests were applied at a) package installation b) new units
+  introduced via a package update (but after making sure that it was
+  not a SysV initscript being converted).
+
+  The problem is that a) didn't handle package a renaming or split
+  properly since the package with the new name is installed rather
+  being updated and therefore the presets were applied even if they
+  were already with the old name.
+
+  We now cover this case (and the other ones) by applying presets only
+  if the units are new and the services are not being migrated. This
+  regardless of whether this happens during an install or an update.
+
+-------------------------------------------------------------------
 Mon Nov 23 20:33:21 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Bump version to 9

@@ -497,4 +497,32 @@
   have been fixed. These options are not needed anymore.</comment>
     <requestid>850414</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f9508e6bd64c8ac3448938608297273f</srcmd5>
+    <version>10</version>
+    <time>1613581782</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version to 10
+
+- Make upstream %systemd_{pre,post,preun,postun} aliases to their SUSE
+  counterparts
+  Packagers can now choose to use the upstream or the SUSE variants
+  indifferently. For consistency the SUSE variants should be preferred
+  since almost all SUSE packages already use them but the upstream
+  versions might be usefull in certain cases where packages need to
+  support multiple distros based on RPM.
+
+- Improve the logic used to apply the presets (bsc#1177039)
+  Before presests were applied at a) package installation b) new units
+  introduced via a package update (but after making sure that it was
+  not a SysV initscript being converted).
+  The problem is that a) didn't handle package a renaming or split
+  properly since the package with the new name is installed rather
+  being updated and therefore the presets were applied even if they
+  were already with the old name.
+  We now cover this case (and the other ones) by applying presets only
+  if the units are new and the services are not being migrated. This
+  regardless of whether this happens during an install or an update.</comment>
+    <requestid>871420</requestid>
+  </revision>
 </revisionlist>
