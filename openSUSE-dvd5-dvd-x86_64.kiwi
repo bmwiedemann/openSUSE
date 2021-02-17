@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210215" schemaversion="4.1">
+<image name="OBS__openSUSE___20210216" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210215</productvar>
+      <productvar name="VERSION">20210216</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210215,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210216,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210215/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210216/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1859,7 +1859,7 @@
       <repopackage name="libgnome-menu-3-0"/>
       <repopackage name="libgnomekbd-lang"/>
       <repopackage name="libgnomekbd8"/>
-      <repopackage name="libgnomesoftware-3_38_0"/>
+      <repopackage name="libgnomesoftware-3_38_1"/>
       <repopackage name="libgnomesu"/>
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
@@ -3821,6 +3821,7 @@
       <repopackage name="pinfo"/>
       <repopackage name="pipewire"/>
       <repopackage name="pipewire-modules"/>
+      <repopackage name="pipewire-pulseaudio"/>
       <repopackage name="pipewire-spa-plugins-0_2"/>
       <repopackage name="pipewire-spa-tools"/>
       <repopackage name="pipewire-tools"/>
@@ -4013,7 +4014,6 @@
       <repopackage name="python38-flufl.bounce"/>
       <repopackage name="python38-flufl.i18n"/>
       <repopackage name="python38-flufl.lock"/>
-      <repopackage name="python38-fluidity-sm"/>
       <repopackage name="python38-future"/>
       <repopackage name="python38-gevent"/>
       <repopackage name="python38-geventhttpclient"/>
@@ -4024,7 +4024,6 @@
       <repopackage name="python38-gobject-Gdk"/>
       <repopackage name="python38-gpg"/>
       <repopackage name="python38-greenlet"/>
-      <repopackage name="python38-gssapi"/>
       <repopackage name="python38-gst"/>
       <repopackage name="python38-gunicorn"/>
       <repopackage name="python38-h2"/>
@@ -4035,7 +4034,6 @@
       <repopackage name="python38-importlib-metadata"/>
       <repopackage name="python38-importlib-resources"/>
       <repopackage name="python38-incremental"/>
-      <repopackage name="python38-invoke"/>
       <repopackage name="python38-ipaddr"/>
       <repopackage name="python38-jedi"/>
       <repopackage name="python38-Jinja2"/>
@@ -4043,7 +4041,6 @@
       <repopackage name="python38-lazr.config"/>
       <repopackage name="python38-lazr.delegates"/>
       <repopackage name="python38-ldap" arch="x86_64"/>
-      <repopackage name="python38-lexicon"/>
       <repopackage name="python38-libvirt-python"/>
       <repopackage name="python38-libxml2"/>
       <repopackage name="python38-linux-procfs"/>
@@ -4068,7 +4065,6 @@
       <repopackage name="python38-ordered-set"/>
       <repopackage name="python38-outcome"/>
       <repopackage name="python38-packaging"/>
-      <repopackage name="python38-paramiko"/>
       <repopackage name="python38-parso"/>
       <repopackage name="python38-passlib"/>
       <repopackage name="python38-patiencediff"/>
