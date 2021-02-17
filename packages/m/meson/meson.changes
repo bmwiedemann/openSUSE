@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  4 13:35:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Conflict with rpm-build < 4.15: meson uses internal macros
+  defined by RPM 4.15 and later.
+
+-------------------------------------------------------------------
 Sat Jan 16 13:05:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.2:

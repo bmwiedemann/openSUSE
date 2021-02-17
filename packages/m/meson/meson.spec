@@ -127,6 +127,8 @@ BuildRequires:  mono-core
 BuildRequires:  wxWidgets-devel
 %endif
 %endif
+# meson makes use of macros that were only defined with rpm 4.15
+Conflicts:      rpm-build < 4.15
 
 %description
 Meson is a build system designed to optimise programmer productivity.
