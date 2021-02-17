@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 16 15:44:56 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to v3.2.3
+  * Fix thread conflict in event notification - PR #1967
+  * Finalize: set hostname in global to NULL to avoid segfault
+    in apps that call init/finalize multiple times - PR #2001
+  * Silence unnecessary error log message - PR #1669
+  * Fixed crash of dstore locks destructor - PR #1776
+  * Add option to bypass local-only fence optimization - PR #1825
+  * Increase timeout in test case - PR #1830
+  * Fix server/get for gds=hash - PR #1990
+  * Remove stale config command - PR #1933
+  * Modex size reductions - PR #1402/#1403/#1421/#1423
+  * Sync 3.2 branch with master - PR #1832
+        New attributes:
+            PMIX_HOSTNAME_ALIASES
+            PMIX_HOSTNAME_KEEP_FQDN
+            PMIX_GET_REFRESH_CACHE
+            PMIX_REQUIRED_KEY
+        Removed PMIX_VALUE_COMPRESSED_STRING_UNPACK macro from pmix_common.h
+        New frameworks
+            pcompress - Compression methods - PR #1139
+            psquash - Flexible integer packing - PR #1423
+        New components
+            preg/compress - regular expression methods - PR #1139
+        Modified string representations produced by PMIx_generate_regex
+        and PMIx_generate_ppn. - PR #1422
+       Fixed dmodex support and PMIx_Get behavior - Issue #1586
+       Removed --with-pmix-symbol-rename configure option - PR #1748
+  * Expose PMIX_REGEX constant per v3.2 standard - PR #1848
+  * Fix immediate flag behavior at the server - PR #1885
+  For futher details, check
+  - For Issues: https://github.com/openpmix/openpmix/issues/<ID>
+  - For PRs: https://github.com/openpmix/openpmix/pull/<ID>
+
+-------------------------------------------------------------------
 Fri Apr 10 11:00:28 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Mark header and config packages 'noarch' (boo#1170259).

@@ -1,7 +1,7 @@
 #
 # spec file for package pmix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 #
 
 Name:           pmix
-Version:        3.1.5
+Version:        3.2.3
 Release:        0
 Summary:        Process Management Interface for MPI
 License:        BSD-3-Clause
@@ -37,10 +37,14 @@ BuildRequires:  libpsm2-devel
 %endif
 BuildRequires:  libtool
 BuildRequires:  munge-devel
+BuildRequires:  pandoc
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pmix-runtime-config
 Recommends:     pmix-mca-params
+%ifarch i586 %armv7
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 The Process Management Interface (PMI) has been used for quite some time as a
@@ -150,6 +154,10 @@ make check
 %{_bindir}/plookup
 %{_bindir}/pmix_info
 %{_bindir}/pps
+#%%{_bindir}/pattrs
+#%%{_bindir}/pmixcc
+#%%{_bindir}/pquery
+%{_libdir}/pkgconfig/pmix.pc
 
 %files -n pmix-mca-params
 %config %{_sysconfdir}/pmix-mca-params.conf
