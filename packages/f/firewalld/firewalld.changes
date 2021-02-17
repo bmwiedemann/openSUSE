@@ -112,7 +112,7 @@ Sun Aug 16 17:09:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Aug 12 13:48:37 UTC 2020 - mrostecki@suse.com
 
-- Update to version 0.7.5:
+- Update to version 0.7.5 (jsc#SLE-12281):
   * release: v0.7.5
   * chore(translation): merge from master
   * fix(cli): add ipset type hash:mac is incompatible with the family parameter Fixes: rhbz1541077
