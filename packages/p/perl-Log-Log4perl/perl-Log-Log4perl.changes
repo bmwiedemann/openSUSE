@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  7 03:10:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+  1.54 2021-02-06
+  - set real versions for some modules - thanks @eserte for report
+
+-------------------------------------------------------------------
 Fri Sep 18 03:10:44 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.53
