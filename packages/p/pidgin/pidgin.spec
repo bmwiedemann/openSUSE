@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch1:         pidgin-nonblock-gwim.patch
 Patch2:         pidgin-fix-perl-build.patch
 # PATCH-FIX-SLE pidgin-use-default-alsa.patch bsc#886670 tiwai@suse.de -- Use ALSA as a default for avoiding broken volume control.
 Patch3:         pidgin-use-default-alsa.patch
+# PATCH-FIX-OPENSUSE pidgin-always-enable-intltool.patch mgorse@suse.com -- always enable intltool, needed for autoconf 2.71.
+Patch4:         pidgin-always-enable-intltool.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -219,6 +221,7 @@ translation-update-upstream
 %if 0%{?sle_version} >= 120000 && !0%{?is_opensuse}
 %patch3 -p1
 %endif
+%patch4 -p1
 
 cp -f %{SOURCE3} %{name}-prefs.xml
 

@@ -996,4 +996,12 @@
     <comment>- Update to version 2.14.1.</comment>
     <requestid>813808</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>2c70a6f23ed5a8ac1959fba60f97ac2f</srcmd5>
+    <version>2.14.1</version>
+    <time>1613581790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871484</requestid>
+  </revision>
 </revisionlist>
