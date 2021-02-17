@@ -1,0 +1,122 @@
+commit 7cf60006ce1e9898b960d7810f146ac6c89f6bb0
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Tue Feb 9 14:57:22 2021 -0700
+
+    qemu: Fix swtpm device with aarch64
+    
+    Starting a VM with swtpm device fails with qemu-system-aarch64.
+    E.g. with TPM device config
+    
+         <tpm model='tpm-tis'>
+           <backend type='emulator' version='2.0'/>
+          </tpm>
+    
+    QEMU reports the following error
+    
+    error: internal error: process exited while connecting to monitor:
+    2021-02-07T05:15:35.378927Z qemu-system-aarch64: -device
+    tpm-tis,tpmdev=tpm-tpm0,id=tpm0: 'tpm-tis' is not a valid device model name
+    
+    Indeed the TPM device name is 'tpm-tis-device' [1][2] for aarch64,
+    versus the shorter 'tpm-tis' for x86. The devices are the same from
+    a functional POV, i.e. they both emulate a TPM device conforming to
+    the TIS specification. Account for the unfortunate name difference
+    when building the TPM device option in qemuBuildTPMDevStr(). Also
+    include a test case for 'tpm-tis-device'.
+    
+    [1] https://qemu.readthedocs.io/en/latest/specs/tpm.html
+    [2] https://github.com/qemu/qemu/commit/c294ac327ca99342b90bd3a83d2cef9b447afaa7
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Andrea Bolognani <abologna@redhat.com>
+
+diff --git a/src/qemu/qemu_command.c b/src/qemu/qemu_command.c
+index d27d5eb55b..5fe4e618fe 100644
+--- a/src/qemu/qemu_command.c
++++ b/src/qemu/qemu_command.c
+@@ -9230,6 +9230,9 @@ qemuBuildTPMDevStr(const virDomainDef *def,
+     g_auto(virBuffer) buf = VIR_BUFFER_INITIALIZER;
+     const char *model = virDomainTPMModelTypeToString(tpm->model);
+ 
++    if (tpm->model == VIR_DOMAIN_TPM_MODEL_TIS && def->os.arch == VIR_ARCH_AARCH64)
++        model = "tpm-tis-device";
++
+     virBufferAsprintf(&buf, "%s,tpmdev=tpm-%s,id=%s",
+                       model, tpm->info.alias, tpm->info.alias);
+ 
+diff --git a/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args b/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args
+new file mode 100644
+index 0000000000..94a083d816
+--- /dev/null
++++ b/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args
+@@ -0,0 +1,37 @@
++LC_ALL=C \
++PATH=/bin \
++HOME=/tmp/lib/domain--1-aarch64test \
++USER=test \
++LOGNAME=test \
++XDG_DATA_HOME=/tmp/lib/domain--1-aarch64test/.local/share \
++XDG_CACHE_HOME=/tmp/lib/domain--1-aarch64test/.cache \
++XDG_CONFIG_HOME=/tmp/lib/domain--1-aarch64test/.config \
++QEMU_AUDIO_DRV=none \
++/usr/bin/qemu-system-aarch64 \
++-name guest=aarch64test,debug-threads=on \
++-S \
++-object secret,id=masterKey0,format=raw,\
++file=/tmp/lib/domain--1-aarch64test/master-key.aes \
++-machine virt,accel=tcg,usb=off,dump-guest-core=off,gic-version=2,\
++memory-backend=mach-virt.ram \
++-cpu cortex-a15 \
++-m 1024 \
++-object memory-backend-ram,id=mach-virt.ram,size=1073741824 \
++-overcommit mem-lock=off \
++-smp 1,sockets=1,cores=1,threads=1 \
++-uuid 496d7ea8-9739-544b-4ebd-ef08be936e8b \
++-display none \
++-no-user-config \
++-nodefaults \
++-chardev socket,id=charmonitor,fd=1729,server,nowait \
++-mon chardev=charmonitor,id=monitor,mode=control \
++-rtc base=utc \
++-no-shutdown \
++-no-acpi \
++-boot strict=on \
++-tpmdev emulator,id=tpm-tpm0,chardev=chrtpm \
++-chardev socket,id=chrtpm,path=/dev/test \
++-device tpm-tis-device,tpmdev=tpm-tpm0,id=tpm0 \
++-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,\
++resourcecontrol=deny \
++-msg timestamp=on
+diff --git a/tests/qemuxml2argvdata/aarch64-tpm.xml b/tests/qemuxml2argvdata/aarch64-tpm.xml
+new file mode 100644
+index 0000000000..d338a20f17
+--- /dev/null
++++ b/tests/qemuxml2argvdata/aarch64-tpm.xml
+@@ -0,0 +1,15 @@
++<domain type="qemu">
++  <name>aarch64test</name>
++  <uuid>496d7ea8-9739-544b-4ebd-ef08be936e8b</uuid>
++  <memory>1048576</memory>
++  <vcpu placement='static'>1</vcpu>
++  <os>
++    <type arch="aarch64" machine="virt">hvm</type>
++  </os>
++  <devices>
++    <emulator>/usr/bin/qemu-system-aarch64</emulator>
++    <tpm model='tpm-tis'>
++      <backend type='emulator' version='2.0'/>
++    </tpm>
++  </devices>
++</domain>
+diff --git a/tests/qemuxml2argvtest.c b/tests/qemuxml2argvtest.c
+index d324921271..82cf503dd0 100644
+--- a/tests/qemuxml2argvtest.c
++++ b/tests/qemuxml2argvtest.c
+@@ -2478,6 +2478,7 @@ mymain(void)
+     DO_TEST_CAPS_LATEST("tpm-emulator-tpm2-enc");
+     DO_TEST_CAPS_LATEST("tpm-emulator-tpm2-pstate");
+     DO_TEST_CAPS_LATEST_PPC64("tpm-emulator-spapr");
++    DO_TEST_CAPS_ARCH_LATEST("aarch64-tpm", "aarch64");
+ 
+     DO_TEST_PARSE_ERROR("pci-domain-invalid", NONE);
+     DO_TEST_PARSE_ERROR("pci-bus-invalid", NONE);

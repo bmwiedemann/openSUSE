@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 11 17:21:23 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix swtpm device with aarch64
+  7cf60006-qemu-swtpm-aarch64.patch,
+  afb823fc-qemu-validate-swtpm.patch
+  bsc#1181893
+
+-------------------------------------------------------------------
+Tue Feb  9 18:49:11 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- build: Fix generation of virtproxyd socket files
+  e3d60f76-fix-socket-file-gen.patch
+  boo#1181838
+
+-------------------------------------------------------------------
 Fri Jan 29 17:54:25 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Revert "Add libvirtd dependency to virt-guest-shutdown.target"

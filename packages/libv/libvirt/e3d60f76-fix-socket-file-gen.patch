@@ -1,0 +1,34 @@
+commit e3d60f761c7fc1c254e39ea8e42161698c0ee7b5
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Tue Feb 9 08:55:41 2021 -0700
+
+    build: Fix generation of virtproxyd socket files
+    
+    The various virtproxyd socket files are generated with invalid syntax,
+    e.g. from virtproxyd.socket
+    
+    [Unit]
+    Description=Libvirt proxy local socket
+    Before=virtproxyd.service
+    libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket
+    
+    Note the missing 'Conflicts=' in the last line. Fix it by prepending
+    'Conflicts=' to libvirtd_socket_conflicts when adding virtproxyd
+    to virt_daemon_units.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+Index: libvirt-7.0.0/src/remote/meson.build
+===================================================================
+--- libvirt-7.0.0.orig/src/remote/meson.build
++++ libvirt-7.0.0/src/remote/meson.build
+@@ -230,7 +230,7 @@ if conf.has('WITH_REMOTE')
+       'name': 'Libvirt proxy',
+       'sockprefix': 'libvirt',
+       'sockets': [ 'main', 'ro', 'admin', 'tcp', 'tls' ],
+-      'deps': libvirtd_socket_conflicts,
++      'deps': 'Conflicts=' + libvirtd_socket_conflicts,
+     }
+ 
+     openrc_init_files += {
