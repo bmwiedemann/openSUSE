@@ -1,7 +1,7 @@
 #
 # spec file for package bump2version
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module testfixtures >= 6.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Obsoletes:      bumpversion <= 0.6.0
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -54,17 +56,25 @@ This package obsoletes bumpversion.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/bump2version
+%python_clone -a %{buildroot}%{_bindir}/bumpversion
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_usage_string_fork: bumpversion is not in PATH
 %pytest -k 'not test_usage_string_fork'
 
+%post
+%{python_install_alternative bump2version bumpversion}
+
+%postun
+%python_uninstall_alternative bump2version
+
 %files %{python_files}
 %doc README.md
 %license LICENSE.rst
-%python3_only %{_bindir}/bumpversion
-%python3_only %{_bindir}/bump2version
+%python_alternative %{_bindir}/bump2version
+%python_alternative %{_bindir}/bumpversion
 %{python_sitelib}/*
 
 %changelog
