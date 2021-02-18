@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-autoar
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-autoar
-Version:        0.2.4
+Version:        0.3.0
 Release:        0
 Summary:        Automatic archives creating and extracting library
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-autoar
-Source0:        https://download.gnome.org/sources/gnome-autoar/0.2/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-autoar/0.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
