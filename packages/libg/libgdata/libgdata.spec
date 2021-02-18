@@ -1,7 +1,7 @@
 #
 # spec file for package libgdata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 # Update baselibs.conf when changing this
 %define _sover 22
 Name:           libgdata
-Version:        0.17.13
+Version:        0.18.0
 Release:        0
 Summary:        GLib-based library for accessing online service APIs using the GData protocol
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://live.gnome.org/libgdata
-Source:         https://download.gnome.org/sources/libgdata/0.17/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/libgdata/0.18/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gobject-introspection-devel

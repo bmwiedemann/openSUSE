@@ -483,4 +483,12 @@
     <comment>update to 0.17.13 (forwarded request 832123 from dimstar)</comment>
     <requestid>832501</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>167e175d07d61955d4505450b8d7df4c</srcmd5>
+    <version>0.18.0</version>
+    <time>1613677149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872507</requestid>
+  </revision>
 </revisionlist>
