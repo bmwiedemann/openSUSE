@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>850755</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e44db12f1ca3b917ac12ef8f543e9f77</srcmd5>
+    <version>0.8.14</version>
+    <time>1613677206</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from python3_only to python_alternative for the snimpy script
+  and its manual page.</comment>
+    <requestid>867027</requestid>
+  </revision>
 </revisionlist>

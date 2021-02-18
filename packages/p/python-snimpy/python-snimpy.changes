@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 27 04:21:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch from python3_only to python_alternative for the snimpy script
+  and its manual page.
+
+-------------------------------------------------------------------
 Wed Jul 29 10:43:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.8.14

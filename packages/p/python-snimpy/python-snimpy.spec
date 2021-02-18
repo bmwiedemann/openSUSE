@@ -1,7 +1,7 @@
 #
 # spec file for package python-snimpy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,6 +45,8 @@ Requires:       python-cffi >= 1.0.0
 Requires:       python-pycryptodomex
 Requires:       python-pysnmp >= 4
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -80,15 +82,23 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_clone -a %{buildroot}%{_bindir}/snimpy
+%python_clone -a %{buildroot}%{_mandir}/man1/snimpy.1
 
 %check
 %python_exec -m unittest discover tests -v
 
+%post
+%python_install_alternative snimpy snimpy.1
+
+%postun
+%python_uninstall_alternative snimpy snimpy.1
+
 %files %{python_files}
 %license docs/license.rst
 %doc AUTHORS.rst README.rst
-%python3_only %{_bindir}/snimpy
-%python3_only %{_mandir}/man1/snimpy.1%{ext_man}
+%python_alternative %{_bindir}/snimpy
+%python_alternative %{_mandir}/man1/snimpy.1%{ext_man}
 %{python_sitearch}/snimpy*
 
 %changelog
