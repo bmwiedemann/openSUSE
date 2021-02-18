@@ -2229,4 +2229,12 @@
     <comment>New stable release (forwarded request 862038 from iznogood)</comment>
     <requestid>862313</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>afd4f254eac9545e32b2d82476b9c3d8</srcmd5>
+    <version>3.38.3</version>
+    <time>1613677171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872517</requestid>
+  </revision>
 </revisionlist>

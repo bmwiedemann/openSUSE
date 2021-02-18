@@ -17,7 +17,7 @@
 
 
 Name:           gnome-terminal
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
