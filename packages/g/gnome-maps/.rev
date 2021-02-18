@@ -456,4 +456,12 @@
     <comment>New stable release (forwarded request 861995 from iznogood)</comment>
     <requestid>862312</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6e45df3a0486b6a2a8851a659562c487</srcmd5>
+    <version>3.38.4</version>
+    <time>1613677159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872513</requestid>
+  </revision>
 </revisionlist>
