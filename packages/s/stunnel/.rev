@@ -193,4 +193,13 @@
     <comment></comment>
     <requestid>866942</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>80ceaa99be2e62849b37bead992966ee</srcmd5>
+    <version>5.57</version>
+    <time>1613677191</time>
+    <user>dimstar_suse</user>
+    <comment>Add boo Number:
+Do not replace the active config file: boo#1182376</comment>
+    <requestid>873188</requestid>
+  </revision>
 </revisionlist>
