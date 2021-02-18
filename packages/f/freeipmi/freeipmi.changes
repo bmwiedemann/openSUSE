@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 14 16:58:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeipmi 1.6.7:
+  * Do not require IPMI access when running ipmi-fru with the 
+    --fru-file option
+  * Minor documentation updates
+- the following fixes were upstreamed:
+  * Fix default permissions of various config and system files,
+    drop 1103311-service-files-mode.patch
+
+-------------------------------------------------------------------
 Sun Sep  6 13:23:00 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 1.6.6

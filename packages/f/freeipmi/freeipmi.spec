@@ -1,7 +1,7 @@
 #
 # spec file for package freeipmi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2003-2008 FreeIPMI Core Team
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,17 +37,15 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.6
+Version:        1.6.7
 Release:        %{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
 Source4:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
 Source5:        %{name}.keyring
-Patch0:         1103311-service-files-mode.patch
 Summary:        FreeIPMI
 License:        GPL-3.0-or-later
 Group:          System/Management
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
@@ -182,17 +180,8 @@ This package contains the libfreeipmi library.
 
 %prep
 %setup -q -n %{name}-%{srcversion}
-%patch0 -p1
 
 %build
-%if 0%{?suse_version} >= 1110
-aclocal -I config
-autoheader
-libtoolize --force --automake --copy
-autoconf
-automake --gnu --include-deps --copy --add-missing
-%endif
-
 # simple .spec expressions for SLE10
 
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version}
