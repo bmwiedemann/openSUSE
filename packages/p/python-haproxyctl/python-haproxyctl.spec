@@ -52,20 +52,27 @@ cp %{SOURCE1} .
 
 %install
 %python_install
+%python_clone -a  %{buildroot}%{_bindir}/haproxyctl
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-mkdir -p %{buildroot}%{_datadir}/%{name}/
-cp -a conf %{buildroot}%{_datadir}/%{name}/
+%{python_expand mkdir -p %{buildroot}%{_datadir}/$python-haproxyctl/
+cp -a conf %{buildroot}%{_datadir}/$python-haproxyctl/}
 
 %check
 %{python_expand $python -m unittest discover -s haproxy/tests}
 
+%post
+%python_install_alternative haproxyctl
+
+%postun
+%python_uninstall_alternative haproxyctl
+
 %files %{python_files}
 %doc README.md
 %license gpl-3.0.txt
-%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{python_flavor}-haproxyctl
 %{python_sitelib}/*
-%{_bindir}/haproxyctl
-%{_datadir}/%{name}/*
+%python_alternative %{_bindir}/haproxyctl
+%{_datadir}/%{python_flavor}-haproxyctl/*
 
 %changelog
