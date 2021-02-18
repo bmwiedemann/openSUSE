@@ -1,8 +1,58 @@
 -------------------------------------------------------------------
 Tue Feb  9 15:33:51 UTC 2021 - Christian Goll <cgoll@suse.com>
 
-- updated to version 8.4.20 which works with lua54 
-
+- updated to version 8.4.20 which works with lua54
+  * (8.4.20)
+    + Adding wV field to MName and MT class (Merged wV branch)
+    + This allows users to tell how (if any) default is set.
+  * (8.4.19)
+    + MasterControl:unsetenv(name) also clears stack if it exists.
+    + Issue #490: use old way of following readlink as "readlink -f" is not
+      universal.
+  * (8.4.18)
+    + Issue #481 (and PR #488) are merged in. New configure options to specify
+      where lua and luac executables exist (--with-lua= and --with-luac=).
+      It is also possible to use --with-luaSuffix=.
+      Both --with-lua= and --with-luac= must be specified if one is specified
+      The option --with-luaSuffix= can not be used with --with-lua or
+      --with-luac
+    + PR #489 is merged in. This fixes bug with "module --terse keyword"
+  * (8.4.17)
+    + If python exists on system use $PYTHON -mjson.tool on the generation
+      of *.json files from update_lmod_system_spider_cache_files script.
+      Note $PYTHON is found by looking for python3, python or python2
+    + Added TCL module function require-fullname to match requireFullName
+      in Lua.
+    + Do not check $cache_type twice, use $ext = lua for lua like operations
+      in update spider cache script.
+  * (8.4.16)
+    + Issue #483: Added hidden file to spider tests. Showing that it works
+      correctly.
+    + Fixed bug where providedByT (a.k.a. Extensions) was always
+      printed when doing "ml keyword ..."
+    + Added lua module function requireFullName()
+  * (8.4.15)
+    + Issue #480: Fix the try_load() function to ignore failure to be found but
+      report broken modules.
+  * (8.4.14)
+    + Issue #480: make "module try-add <module_name>" ignore failure to be
+      found but report broken modules.
+  * (8.4.13)
+    + Issue #479: Reworked MRC to fill mrcMpathT with mrc entries for each
+      directory in $MODULEPATH. Then walk each mpath directory for hidden,
+      global aliases, and module aliases
+  * (8.4.12)
+    + Make --nx only remove extensions from ml avail not spider. Make it a
+      configure option.
+  * (8.4.11)
+    + Issue #476: Move mrcT.mpath to separate table mrcMpathT
+    + Issue #477: Support finding real modules names with a version called
+      "default"
+    + Show extensions from hidden modules when doing (module --show_hidden
+      avail)
+    + Add option (--nx, --no_extensions) to not print extensions when doing
+      "ml avail".
+    
 -------------------------------------------------------------------
 Fri Oct 30 13:39:44 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 

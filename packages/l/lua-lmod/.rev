@@ -269,4 +269,41 @@
     <comment></comment>
     <requestid>870629</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8e433b97b8e171c446ce7bde34724c7e</srcmd5>
+    <version>8.4.20</version>
+    <time>1613677195</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 8.4.20 which works with lua54
+  * (8.4.20)
+    + Adding wV field to MName and MT class (Merged wV branch)
+    + This allows users to tell how (if any) default is set.
+  * (8.4.19)
+    + MasterControl:unsetenv(name) also clears stack if it exists.
+    + Issue #490: use old way of following readlink as &quot;readlink -f&quot; is not
+      universal.
+  * (8.4.18)
+    + Issue #481 (and PR #488) are merged in. New configure options to specify
+      where lua and luac executables exist (--with-lua= and --with-luac=).
+      It is also possible to use --with-luaSuffix=.
+      Both --with-lua= and --with-luac= must be specified if one is specified
+      The option --with-luaSuffix= can not be used with --with-lua or
+      --with-luac
+    + PR #489 is merged in. This fixes bug with &quot;module --terse keyword&quot;
+  * (8.4.17)
+    + If python exists on system use $PYTHON -mjson.tool on the generation
+      of *.json files from update_lmod_system_spider_cache_files script.
+      Note $PYTHON is found by looking for python3, python or python2
+    + Added TCL module function require-fullname to match requireFullName
+      in Lua.
+    + Do not check $cache_type twice, use $ext = lua for lua like operations
+      in update spider cache script.
+  * (8.4.16)
+    + Issue #483: Added hidden file to spider tests. Showing that it works
+      correctly.
+    + Fixed bug where providedByT (a.k.a. Extensions) was always
+      printed when doing &quot;ml keyword ...&quot;
+    + Added lua module function requireFullName()</comment>
+    <requestid>873195</requestid>
+  </revision>
 </revisionlist>
