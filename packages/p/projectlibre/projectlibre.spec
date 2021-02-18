@@ -1,7 +1,7 @@
 #
 # spec file for package projectlibre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           projectlibre
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Project Management Tool
 License:        CPAL-1.0
 Group:          Productivity/Office/Management
 URL:            https://www.projectlibre.org
-Source0:        https://downloads.sourceforge.net/project/%{name}/ProjectLibre/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}.png
 Source3:        x-%{name}.desktop
+BuildRequires:  ant
 BuildRequires:  update-desktop-files
 Requires:       java >= 1.6.0
 BuildArch:      noarch
@@ -40,12 +41,17 @@ network diagrams and Earned Value Costing.
 %setup -q
 
 %build
+#Set the file encoding for source files
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=cp1252
+cd projectlibre_build/
+ant clean
+ant
 
 %install
 export NO_BRP_CHECK_BYTECODE_VERSION=true
 mkdir -p %{buildroot}%{_datadir}/%{name}/lib
-install -Dm0755 lib/*.jar %{buildroot}%{_datadir}/%{name}/lib/
-install -Dm0755 %{name}.jar %{buildroot}%{_datadir}/%{name}/
+install -Dm0755 projectlibre_contrib/*.jar %{buildroot}%{_datadir}/%{name}/lib/
+install -Dm0755 projectlibre_build/dist/%{name}.jar %{buildroot}%{_datadir}/%{name}/
 
 # startscript
 cat > %{name} << EOF
@@ -65,7 +71,8 @@ install -Dm0755 %{name} %{buildroot}%{_bindir}/%{name}
 %suse_update_desktop_file -i %{name}
 
 %files
-%license license/license.txt
+%license projectlibre_build/license/*
+%doc projectlibre_build/doc/*
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png

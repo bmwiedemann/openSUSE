@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  2 16:53:37 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.9.3 - no changelog
+  revert spec file to earlier version using ant build
+  ran spec-cleaner on it
+  
+-------------------------------------------------------------------
 Mon Jul  6 18:53:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.9.2. No changelog.
