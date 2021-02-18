@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  9 21:07:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add subpackage pps-udev
+  * grant group "ntp" permission to the /dev/pps* devices
+
+-------------------------------------------------------------------
 Tue Oct 20 07:11:40 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Make sure optflags are honored
