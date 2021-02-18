@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.30.4
+Version:        2.30.5
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -46,8 +46,6 @@ Source99:       webkit2gtk3.keyring
 Patch0:         no-forced-sse.patch
 # PATCH-FIX-UPSTREAM webkit-font-scaling.patch https://bugs.webkit.org/show_bug.cgi?id=218450 badshah400@gmail.com -- Fix system font scaling not applied to 'font-size: XXXpt'
 Patch1:         webkit-font-scaling.patch
-# PATCH-FIX-UPSTREAM gir-multilib.patch -- Fix multilib conflict in gir files
-Patch2:         gir-multilib.patch
 
 # Below patches are for 15.0/15.1 only
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
@@ -283,7 +281,6 @@ A small test browswer from webkit, useful for testing features.
 %setup -q -n webkitgtk-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %patch100 -p1
 %patch101 -p1

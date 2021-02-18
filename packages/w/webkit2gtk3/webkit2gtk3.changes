@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 13 18:06:17 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.30.5:
+  + Bring back the WebKitPluginProcess installation that was
+    removed by mistake.
+  + Fix RunLoop objects leaked in worker threads.
+  + Fix aarch64 llint build with JIT disabled.
+  + Use Internet Explorer quirk for Google Docs.
+- Drop gir-multilib.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Jan 20 10:47:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gir-multilib.patch: Fix multilib conflict in gir files.
