@@ -455,4 +455,13 @@
 - Fix a typo.</comment>
     <requestid>868791</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>110e286f6dcdcd61f989073f77625060</srcmd5>
+    <version>4.6.0</version>
+    <time>1613677100</time>
+    <user>dimstar_suse</user>
+    <comment>- Migrate DNF persistent state data to /usr/lib/sysimage/dnf
+  + Patch: dnf-4.6.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch</comment>
+    <requestid>871994</requestid>
+  </revision>
 </revisionlist>

@@ -30,6 +30,8 @@
 
 %global py3pluginpath %{python3_sitelib}/dnf-plugins
 
+%global persistdir %{_prefix}/lib/sysimage/%{name}
+
 # YUM v3 has been removed from openSUSE Tumbleweed as of 20191119
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %bcond_with as_yum
@@ -56,6 +58,14 @@ License:        GPL-2.0-or-later AND GPL-2.0-only
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/dnf
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+
+# Backports from upstream
+
+# Fixes proposed upstream
+
+# openSUSE specific fixes
+## Migrate DNF persistent state directory to /usr/lib/sysimage
+Patch1001:      dnf-4.6.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
 
 BuildRequires:  bash-completion
 BuildRequires:  cmake
@@ -208,7 +218,9 @@ mkdir -p %{buildroot}%{confdir}/repos.d
 mkdir -p %{buildroot}%{confdir}/vars
 mkdir -p %{buildroot}%{pluginconfpath}
 mkdir -p %{buildroot}%{py3pluginpath}
-mkdir -p %{buildroot}%{_sharedstatedir}/dnf
+mkdir -p %{buildroot}%{persistdir}
+mkdir -p %{buildroot}%{_sharedstatedir}
+ln -sf %{persistdir} %{buildroot}%{_sharedstatedir}/%{name}
 mkdir -p %{buildroot}%{_localstatedir}/log
 mkdir -p %{buildroot}%{_var}/cache/dnf
 touch %{buildroot}%{_localstatedir}/log/%{name}.log
@@ -274,10 +286,11 @@ popd
 %ghost %{_localstatedir}/log/%{name}.librepo.log
 %ghost %{_localstatedir}/log/%{name}.rpm.log
 %ghost %{_localstatedir}/log/%{name}.plugin.log
-%dir %{_sharedstatedir}/%{name}
-%ghost %{_sharedstatedir}/%{name}/groups.json
-%ghost %{_sharedstatedir}/%{name}/yumdb
-%ghost %{_sharedstatedir}/%{name}/history
+%dir %{persistdir}
+%ghost %{persistdir}/groups.json
+%ghost %{persistdir}/yumdb
+%ghost %{persistdir}/history
+%ghost %{_sharedstatedir}/%{name}
 %{_datadir}/bash-completion/completions/dnf
 %{_mandir}/man5/dnf.conf.5.*
 %{_tmpfilesdir}/dnf.conf
@@ -341,6 +354,30 @@ popd
 
 %postun automatic
 %systemd_postun_with_restart %{name}-automatic.timer %{name}-automatic-notifyonly.timer %{name}-automatic-download.timer %{name}-automatic-install.timer
+
+%pretrans -n %{name}-data -p <lua>
+-- Migrate DNF state data to /usr/lib/sysimage if it is still in /var/lib
+oldpersistdir = "%{_sharedstatedir}/%{name}"
+newpersistdir = "%{persistdir}"
+chkoldst = posix.stat(oldpersistdir)
+chknewst = posix.stat(newpersistdir)
+if chkoldst and chkoldst.type == "directory" then
+  if chknewst then
+    rmst = os.execute("rm -rf " .. newpersistdir)
+  end
+  status = os.execute("mv " .. oldpersistdir .. " " .. newpersistdir)
+  if status then
+    posix.symlink(oldpersistdir, newpersistdir)
+  end
+end
+
+%post -n %{name}-data
+# Complete migration of DNF state data to /usr/lib/sysimage
+if [ ! -L "%{_sharedstatedir}/%{name}" ]; then
+   if [ -d "%{persistdir}" ]; then
+      ln -sr %{persistdir} %{_sharedstatedir}/%{name}
+   fi
+fi
 
 %if %{with as_yum}
 %pretrans -n %{yum_subpackage_name} -p <lua>
