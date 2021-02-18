@@ -1,7 +1,7 @@
 #
 # spec file for package sane-backends
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,19 +50,19 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        SANE (Scanner Access Now Easy) Scanner Drivers
 License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-Version:        1.0.31
+Version:        1.0.32
 Release:        0
 URL:            http://www.sane-project.org/
 # On https://gitlab.com/sane-project/backends/-/releases
-# there are two links, the first one is called "Source code (tar.gz)" that pints to
+# there are two links, the first one is called "Source code (tar.gz)" that pointed to
 # https://gitlab.com/sane-project/backends/-/archive/1.0.31/backends-1.0.31.tar.gz
-# and the second one is called "sane-backends-1.0.31.tar.gz" that pints to
+# and the second one is called "sane-backends-1.0.31.tar.gz" that pointed to
 # https://gitlab.com/sane-project/backends/uploads/8bf1cae2e1803aefab9e5331550e5d5d/sane-backends-1.0.31.tar.gz
-# The first one "backends-1.0.31.tar.gz" does not build, as it does not contain a prebuilt configure script,
+# The first one "backends-1.0.31.tar.gz" did not build, as it does not contain a prebuilt configure script,
 # and autoconf fails as it requires a complete git clone, see https://gitlab.com/sane-project/backends/issues/248
-# We use the second one "sane-backends-1.0.31.tar.gz" that is a dist tarball with a prebuilt configure script via
-# wget https://gitlab.com/sane-project/backends/uploads/8bf1cae2e1803aefab9e5331550e5d5d/sane-backends-1.0.31.tar.gz
-Source0:        sane-backends-1.0.31.tar.gz
+# We use the second one "sane-backends-1.0.32.tar.gz" that is a dist tarball with a prebuilt configure script via
+# wget https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz
+Source0:        sane-backends-1.0.32.tar.gz
 # Source100... is SUSE specific stuff:
 # Source102 is the OpenSLP registration file for the saned:
 Source102:      sane.reg
@@ -361,13 +361,6 @@ install -m644 autoconfig.rules %{buildroot}%{_udevrulesdir}/56-sane-backends-aut
 # to place a paper on the scanner) so that both kind of devices
 # should usually require the same kind of security.
 sed -i -e 's/GROUP="scanner"/GROUP="lp"/' tools/udev/libsane.rules
-# Regarding ATTRS{} (formerly SYSFS{}) versus ATTR{} see the Novell/Suse Bugzilla bug
-# https://bugzilla.novell.com/show_bug.cgi?id=436085#c0
-# but for SCSI scanners "ATTRS" is mandatory see the Novell/Suse Bugzilla bug
-# https://bugzilla.novell.com/show_bug.cgi?id=681146#c20
-# so that "ATTRS" is replaced by "ATTR" only for USB scanners.
-# Upstream: https://gitlab.com/sane-project/backends/-/issues/341
-sed -i -e '/^LABEL="libsane_usb_rules_begin"/,/^LABEL="libsane_usb_rules_end"/s/ATTRS/ATTR/g' tools/udev/libsane.rules
 # Disable entries for USB scanners which are "unsupported"
 # but keep the entries for models for which the support status
 # is "complete", "good", "basic", "minimal", "untested"
@@ -399,9 +392,6 @@ do if grep -q "^ATTR.idVendor.==$m" tools/udev/libsane.rules
         sed -i -e "/^ATTR.idVendor.==$m/Is/^ATTR/# ATTR/" tools/udev/libsane.rules
    fi
 done
-# Add an entry for "SCSI processor EPSON Perfection1640",
-# see https://bugzilla.novell.com/show_bug.cgi?id=681146#c43
-sed -i -e '/^# Epson Perfection 636S /i# Epson Perfection 1640\nKERNEL=="sg[0-9]*", ATTRS{type}=="3", ATTRS{vendor}=="EPSON", ATTRS{model}=="Perfection1640", MODE="0664", GROUP="lp", ENV{libsane_matched}="yes"' tools/udev/libsane.rules
 # Install the udev rules file:
 install -m644 tools/udev/libsane.rules %{buildroot}%{_udevrulesdir}/55-libsane.rules
 # Service files:

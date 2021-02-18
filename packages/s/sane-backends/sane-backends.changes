@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Mon Feb 15 13:57:16 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove udev rules mangling for USB devices (ATTR vs ATTRS) (!510)
+- Do no add SCSI id twice for EPSON Perfection 1640SU (!509)
+
+-------------------------------------------------------------------
+Mon Feb 15 14:05:32 CET 2021 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.32
+  Changes since 1.0.31
+  see https://gitlab.com/sane-project/backends/-/blob/master/NEWS
+  Numbers of the form '(#NNN)' usually mean upstream issues like
+  https://gitlab.com/sane-project/backends/-/issues/NNN and numbers
+  of the form '(!MMM)' usually mean upstream merge requests like
+  https://gitlab.com/sane-project/backends/-/merge_requests/MMM
+  Backends
+  * all backends now respect the 'local_only' parameter when 'true'
+    is passed to 'sane_get_devices()' in that they do not actively
+    go out looking for networked devices (!502)
+  * 'artec_eplus48u': fixes configuration for AstraSlim SE (!545)
+  * 'avision': adds the AV186+ and AV188 as supported (!532)
+  * 'avision': fixes doubled height issue (#402)
+  * 'avision': fixes a debug message and compiler warning (!515)
+  * 'canon_dr': adds support for the DR-C120 and DR-C130 (#175)
+  * 'canon_dr': adds support for uploading of fine calibration
+    uploads
+  * 'canon_dr': enables fine calibration for the P-208
+  * 'canon_dr': improves DR-C225 support (#431)
+  * 'canon_lide70': adds support for document scanning
+    on the Canon LiDE 600(F), thanks to a hardware donation
+    by Georg Sauthoff
+  * 'dll': fixes a memory leak (!537)
+  * 'epson2': adds support for the ET-2600 (#395)
+  * 'epson2': adds autofocus support for devices
+    that support it (!531)
+  * 'epson2': fixes brightness support for DS-G20000/12000XL (!529)
+  * 'epson2': fixes an unchecked return value issue (!526)
+  * 'escl': adds support for brightness, threshold, sharpen
+    and contrast options (!527, !528)
+  * 'escl': adds support for LaserJet FLowMFP M578
+    and MFP M630 (#424)
+  * 'escl': adds support for DeskJet 2710, 2723 (!519)
+    and 3760 (!554)
+  * 'escl': adds support for the PIXMA TS-5351 (!544)
+    and MG5765 (!517)
+  * 'escl': adds support for the Brother HL-L258DW (!517)
+  * 'escl': fixes Avahi device discovery (!536)
+  * 'escl': fixes crashes for devices without a flatbed (!554)
+  * 'escl': fixes segfaults in option handling (!557)
+  * 'escl': fixes sleep mode (!577)
+  * 'escl': fixes builds without libpoppler-glib-dev (#422)
+  * 'escl': fixes a memory issue in its capability handling (#425)
+  * 'fujitsu': fixes brightness/contrast for the iX500
+  * 'fujitsu': fixes memory corruption for duplex scans
+  * 'genesys': disables support for CanoScan 4400F to prevent
+    possible physical damage (#436)
+  * 'gt68xx': fixes scan cancellation logic (#356)
+  * 'pixma': adds untested support for models
+    released in 2020 (!553)
+  * 'pixma': adds support for ADF scans on the i-SENSYS MF260
+  * 'pixma': adds support for PIXMA M340 buttons
+    and ADF status (!513)
+  * 'pixma': adds an option to control when to calibrate (#321)
+  * 'pixma': fixes support for the MX492 (!548)
+  * 'pixma': fixes ADF support for the MX490 Series
+  * 'pixma': fixes max resolution for ADF scans
+    on the PIXMA M320 (#364)
+  * 'pixma': fixes compile errors when libxml2
+    is not available (#345)
+  * 'plustek': fixes CanoScanN650u discovery (#137)
+  * 'test': fixes several memory leaks (!537)
+  Frontends
+  * 'saned': add support for listening on a custom
+    or ephemeral port via a new '-p'/'--port' option (!549)
+  * 'scanimage': fixes crashes for multi-pass
+    and handheld scans (#408)
+  * 'scanimage': fixes a memory leak (!551)
+  * 'scanimage': fixes option handling
+    for non-compliant backends (#362)
+  Documentation
+  * updates our copy of the GPL with the FSF's current postal
+    address. This changes references to the Library GPL (LGPL-2.0)
+    into refs to the Lesser GPL (LGPL-2.1) but does *not* affect
+    the licensing of our backends (#320).
+  * source code now points to the Free Software Foundation's
+    website for copies of the GPL and LGPL (#320)
+  * updates translations for British English and Ukrainian
+  * adds a pointer to our Ubuntu PPA for pre-built binaries
+  * adds SCSI IDs for the EPSON Perfection 1640SU (!509)
+  * fixes a boat-load of spelling mistakes (!516, thanks @marschap)
+  * updates description files for 'scangearmp2'
+    and 'utsushi' external  backends
+  Build
+  * removes support for 'automake' maintainer mode (!522)
+  * removes 'sane' subdirectory from the lock directory
+    to fix issues when the lock directory is on 'tmpfs' (#363)
+  * adds support for builds using GitLab "source" tarballs (#248)
+  * fixes static link scenarios (#124)
+  * fixes 'python' invocations to use the detected program (!525)
+  * disables 'genesys' testsuite when that backend
+    is not built (#354)
+  * suppresses warnings about obsolete autoconf macros (#122)
+  * fixes availability of sane-backends.pot file inputs (#344)
+  * fixes 'configure.ac' for use with 'autoconf-2.70' (#409)
+  * removes CVS keywords from the source to ease use
+    by downstreams that still use CVS (!547)
+  Miscellaneous
+  * udev rules now trigger on all events other
+    than 'remove' (!541). This aims to address a kernel API change
+    introduced in 4.14. The new behaviour may slow down udev's
+    processing of kernel events when still using our plain 'udev'
+    or 'udev+acl' rules, even though these have been optimized
+    slightly (#341).  If that bothers you, now is a good time
+    to switch to our 'udev+hwdb' rules in combination with
+    the 'hwdb' database if you have not done so already.
+
+-------------------------------------------------------------------
 Wed Sep 23 11:56:03 CEST 2020 - jsmeix@suse.de
 
 - Upgraded to sane-backends version 1.0.31
@@ -1610,8 +1727,8 @@ Thu Jan 10 15:09:23 CET 2002 - freitag@suse.de
 -------------------------------------------------------------------
 Tue Jan  8 20:34:39 CET 2002 - egmont@suselinux.hu
 
-- changed `adjustscannerperm' to `sane' in init script
-- removed bogus `probe' entry from the same script
+- changed 'adjustscannerperm' to 'sane' in init script
+- removed bogus 'probe' entry from the same script
 
 -------------------------------------------------------------------
 Wed Nov 21 01:44:23 CET 2001 - bjacke@suse.de
