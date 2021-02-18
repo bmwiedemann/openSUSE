@@ -17,6 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# IMPORTANT: This package is for python <= 3.6 only. If your package depends on
+# python-aiocontextvars, make sure to only require it for these versions.
+# Have a look into your upstream's setup.py or setup.cfg, they do the same.
 %if 0%{suse_version} <= 1500
 %define pythons python3
 %else

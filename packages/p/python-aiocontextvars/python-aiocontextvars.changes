@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 22 13:18:16 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Revert last change. This package is for python < 3.7 only. 
+
+-------------------------------------------------------------------
+Fri Jan 22 11:41:55 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable Python 3.8 builds as aiocontextvars is required for
+  the opentelemetry-api package which builds on Python 3.8
+
+-------------------------------------------------------------------
 Wed Jan 20 21:29:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Change conditional for pythons definition for Leap as it need to
