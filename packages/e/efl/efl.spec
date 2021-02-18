@@ -68,14 +68,13 @@
 %{?!icon_theme_cache_create_ghost:%define icon_theme_cache_create_ghost() touch %{buildroot}%{_datadir}/icons/%{1}/icon-theme.cache}
 %{?!icon_theme_cache_post:%define icon_theme_cache_post() gtk-update-icon-cache %{_datadir}/icons/$1 &> /dev/null || :}
 Name:           efl
-Version:        1.24.3
+Version:        1.25.1
 Release:        0
 # TODO: split package to separate packages and specify licenses correctly
 Summary:        Enlightenment Foundation Libraries - set of libraries used (not only) by E17
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
 URL:            https://git.enlightenment.org/core/efl.git
 Source:         https://download.enlightenment.org/rel/libs/efl/%{name}-%{version}.tar.xz
-# Do not enable NEON on armv6/armv7
 Patch1:         efl-no-neon.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
@@ -712,9 +711,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/ecore-x-1/
 %{_includedir}/eldbus-1/
 %{_includedir}/elementary-1
-%if 0%{?luajit_present}
-%{_includedir}/elua-1/
-%endif
 %{_includedir}/edje-1/
 %{_includedir}/eet-1/
 %{_includedir}/eeze-1/

@@ -400,4 +400,40 @@ Also includes sleep_walkers full set of changes to build wayland support for fac
     <comment></comment>
     <requestid>839669</requestid>
   </revision>
+  <revision rev="46" vrev="24">
+    <srcmd5>a5cf545fd4c96fd4bff3507340a8427e</srcmd5>
+    <version>unknown</version>
+    <time>1613677111</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.25.1
+  * This time around we do not have bigger changes to cover here. For the full list please look at the NEWS file, if you are interested in the details. As usual we have been working on fixing bugs, optimising our code for speed and memory footprint and adding new features.
+- split out ecore_imf-module-scim to reduce dependencies of base efl package
+- Disable NEON on armv6/7:
+  * efl-no-neon.patch
+- 1.24.3
+  * evas - csd and wl csd - fix alpha zeroing to avoid framespace junk
+  * evas - genetic update regions smart merge - merge v adjacent regions
+  * efreet - handle runtime relocation right with default XDG_DATA_DIRS
+  * edje: fix animation memory leak.
+  * canvas vg: fix dangling vector containers.
+  * evas vg: clean up dangling instances
+  * canvas vg: fix vector file data memory leak.
+  * efl gfx_path: fix memory leak.
+  * efl_ui_image: fixed elm_image_preload_disabled_set api is not working when it is called before file set
+- 1.24.2
+  * evas_vg_shape: return NULL in evas_vg_shape_add when the parent of shape is NULL
+  * efl_ui_image: fix to call &quot;clicked&quot; smart callback when there is no img
+  * ecore-x - ensure we fully look at all xkb events and refresh all binds
+  * evas_vg_container: return NULL in evas_vg_container_add when the parent of container is NULL
+  * build: ensure we set ENABLE_LUA_OLD when using a lua interpreter
+- 1.24.1 Release
+   * edje - don't set font sizes less than 1
+   * ecore_evas_x - fix maximize/unmaximize request corner case
+   * ecore_evas: only define these eina errors once
+   * exactness: remove no longer needed _evas_new()
+   * exactness_player: do not test for delay_ms
+   * evas + gl - fix callback-to-app-changes-state issue with pixel data
+</comment>
+    <requestid>872228</requestid>
+  </revision>
 </revisionlist>

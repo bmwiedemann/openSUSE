@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 06:43:54 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- 1.25.1
+  * This time around we do not have bigger changes to cover here. For the full list please look at the NEWS file, if you are interested in the details. As usual we have been working on fixing bugs, optimising our code for speed and memory footprint and adding new features.
+
+-------------------------------------------------------------------
 Thu Sep  3 10:34:14 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
 
 - split out ecore_imf-module-scim to reduce dependencies of base efl package
@@ -10,7 +16,7 @@ Mon Aug 31 15:26:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
   * efl-no-neon.patch
 
 -------------------------------------------------------------------
-Wed Aug  5 00:41:17 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+Wed Aug  5 00:41:17 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - 1.24.3
   * evas - csd and wl csd - fix alpha zeroing to avoid framespace junk
