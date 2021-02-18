@@ -33,10 +33,7 @@ BuildRequires:  dbus-1-devel
 %else
 BuildRequires:  pkgconfig(dbus-1)
 %endif
-%if "%{flavor}" == "lua53"
-Provides:       lua-%{mod_name} = %{version}
-Obsoletes:      lua-%{mod_name} < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
