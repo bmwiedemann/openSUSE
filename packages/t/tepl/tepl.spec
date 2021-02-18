@@ -1,7 +1,7 @@
 #
 # spec file for package tepl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define api_ver 5
 %define lib_ver %{api_ver}-0
 Name:           tepl
-Version:        5.0.1
+Version:        5.1.1
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Projects/Tepl
-Source:         https://download.gnome.org/sources/tepl/5.0/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/tepl/5.1/%{name}-%{version}.tar.xz
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.53
