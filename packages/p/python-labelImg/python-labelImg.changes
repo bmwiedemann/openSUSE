@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  2 08:24:03 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.8.4:
+  * Various bugfixes
+- Fix packaging for Tumbleweed with multiple python versions
+
+-------------------------------------------------------------------
 Tue Feb 25 09:19:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix package name
