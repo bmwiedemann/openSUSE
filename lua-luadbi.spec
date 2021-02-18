@@ -35,6 +35,7 @@ BuildRequires:  postgresql-devel
 BuildRequires:  postgresql-server-devel
 BuildRequires:  sqlite3-devel
 Requires:       %{flavor}
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
