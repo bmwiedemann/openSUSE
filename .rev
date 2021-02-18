@@ -571,4 +571,13 @@
 - Add filter options for product listing and bash completion for new flags</comment>
     <requestid>872417</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>a6825b772ba20df19d915c1a7a59ecd6</srcmd5>
+    <version>2.6.6</version>
+    <time>1613677306</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix rpath build issues
+- Resubmit version 2.6.6</comment>
+    <requestid>873453</requestid>
+  </revision>
 </revisionlist>
