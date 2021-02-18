@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mpl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
+%define eggver 0.12
 Name:           python-pytest-mpl
-Version:        0.11
+Version:        0.12.0
 Release:        0
-Summary:        pytest plugin for testing Matplotlib figures
+Summary:        Pytest plugin for testing Matplotlib figures
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matplotlib/pytest-mpl
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-mpl/pytest-mpl-%{version}.tar.gz
+# get the test reference data from the GitHub archive
+Source:         https://github.com/matplotlib/pytest-mpl/archive/v%{version}.tar.gz#/pytest-mpl-%{version}-gh.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -59,6 +63,7 @@ This is a pytest plugin to help with testing figures output from Matplotlib.
 %files %{python_files}
 %doc CHANGES.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_mpl
+%{python_sitelib}/pytest_mpl-%{eggver}*-info
 
 %changelog
