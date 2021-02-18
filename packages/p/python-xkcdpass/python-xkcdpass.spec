@@ -1,7 +1,7 @@
 #
 # spec file for package python-xkcdpass
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@ Source:         https://files.pythonhosted.org/packages/cc/3a/065130b94cb57cbbd7
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python3-base
-Requires:       python-setuptools
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -41,25 +41,31 @@ inspired by XKCD 936 (https://xkcd.com/936/)
 
 %prep
 %setup -q -n xkcdpass-%{version}
+# Remove the shebang
+sed -i -e '1d' xkcdpass/xkcd_password.py
 
 %build
-%{python_build}
-
-%check
-%{pytest}
+%python_build
 
 %install
-%{python_install}
+%python_install
+%python_clone -a %{buildroot}%{_bindir}/xkcdpass
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Remove the shebang
-sed -i -e '1d' %{buildroot}%{python_sitelib}/xkcdpass/xkcd_password.py
+%check
+%pytest
 
-%fdupes %{buildroot}%{python_sitelib}
+%post
+%python_install_alternative xkcdpass
+
+%postun
+%python_uninstall_alternative xkcdpass
 
 %files %{python_files}
 %license LICENSE*
 %doc README.rst
-%{_bindir}/xkcdpass
-%{python_sitelib}/*
+%python_alternative %{_bindir}/xkcdpass
+%{python_sitelib}/xkcdpass
+%{python_sitelib}/xkcdpass-%{version}*-info
 
 %changelog
