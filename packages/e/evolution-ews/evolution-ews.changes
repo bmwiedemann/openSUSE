@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 12 17:09:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.4:
+  + e-ews-notification: Add thread safety around get_events thread.
+  + Bugs fixed: glgo#GNOME/evolution-ews#140,
+    glgo#GNOME/evolution-ews#141.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  8 14:06:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.3:
