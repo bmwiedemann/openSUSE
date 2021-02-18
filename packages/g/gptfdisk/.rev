@@ -182,4 +182,12 @@
     <comment>- Remove old specfile constructs.</comment>
     <requestid>832354</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>47dfe8e21aff88de76adb086d4cbb9bf</srcmd5>
+    <version>1.0.6</version>
+    <time>1613677104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872010</requestid>
+  </revision>
 </revisionlist>

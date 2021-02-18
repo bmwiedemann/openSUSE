@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  9 22:56:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.6
+  * Fixed bug that could cause segfault if GPT header claimed partition
+    entries are oversized. See:
+    https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0256
+  * Fixed bug that could cause a crash if a badly-formatted MBR disk was
+    read. See:
+    https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0308
+  * Renamed the partition type "Freedesktop $BOOT" to "XBOOTLDR partition".
+  * Added several more Freedesktop partition table type codes (0x8312 through
+    0x831C).
+  * Fixed type code definition in diskio-unix.cc that prevented 32-bit builds
+    from correctly handling disks over 4 TiB in size.
+  * Minor tweaks to get the software to compile on FreeBSD; that seems to have
+    fallen into disrepair.
+
+-------------------------------------------------------------------
 Fri Sep  4 15:29:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile constructs.
