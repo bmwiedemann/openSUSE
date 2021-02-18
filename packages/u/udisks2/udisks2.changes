@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb 12 00:00:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.2:
+  * udiskslinuxblock: Survive a missing /etc/crypttab
+  * lvm2: Fix leaking BDLVMVDOPooldata
+  * tests: Test modules that are actually enabled during build
+  * build: Exclude VDO module from distcheck build
+  * udisksfstabentry: Add udisks_fstab_entry_has_opt()
+  * udiskslinuxblock: Reflect fstab "noauto" mount option in HintAuto
+  * udiskslinuxblock: Update hints after fstab change
+  * tests: Add tests for Block hints
+  * udiskslinuxfilesystemhelpers: Make TakeOwnership() race free
+  * tests: Extend filesystem test_take_ownership tests with symlinks
+  * mount options: Allow 'nosymfollow' mount option for unprivileged mounts
+  * udisksstate: Silence the block device busy messages on cleanup lock
+  * udev: Distinguish mmcblk-class device types
+  * udev: Propagate mmcblk disk attributes to mmcblk_boot devices
+  * udiskslinuxdrive: Tweak the 'removable'/'ejectable' hints for mmcblk-class devices
+  * udiskslinuxblock: Tweak the hints for mmcblk-class devices
+  * udisksdaemonutil: Refactor udisks_daemon_util_trigger_uevent() out of UDisksLinuxBlockObject
+  * udiskslinuxmanager: Trigger uevent after loop device setup
+  * tests: Remove scsi_debug serial number checks
+  * tests: Skip zram tests if zram module is already loaded
+  * treewide: Fix typos
+  * AUTHORS: Add tbzatek as the maintainer
+  * tests: Do not use nilfs2 as an example of non-resizable FS
+  * Memory leak fixes
+  * doc: Update config file path
+- drop udisks2-Fix-memory-leaks.patch, udisks2-lvm2-Fix-leaking-BDLVMVDOPooldata.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Dec 19 16:16:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bugfix patches:

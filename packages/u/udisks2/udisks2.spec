@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,13 @@
 %define libblockdev_version 2.19
 
 Name:           udisks2
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/storaged-project/udisks
 Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar.bz2
-Patch0:         udisks2-Fix-memory-leaks.patch
-Patch1:         udisks2-lvm2-Fix-leaking-BDLVMVDOPooldata.patch
-
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 0.6.2
