@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Feb 17 08:44:18 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.1.4
+  - SELinux: Fix syncing of SELinux attributes when using overlays
+  - SELinux: Tag the overlay directory itself (again)
+
+-------------------------------------------------------------------
+Mon Feb 15 13:10:39 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.1.3
+  - Fix overlay syncing on SELinux systems
+  - Fix resuming transactions where the parent does not exist any more
+
+-------------------------------------------------------------------
+Fri Feb 12 12:29:27 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.1.2
+  - libtukit: Report when application was terminated due to a signal, and
+    return the signal number as a return value. This will cause the
+    transaction to be aborted when called via `execute`.
+  - libtukit: Set PATH variable for internal commands to fixed value to
+    find the helper applications, as in some environments such as PolicyKit
+    PATH wouldn't be set.
+  - Fix compiler warnings
+
+-------------------------------------------------------------------
+Tue Feb  9 21:15:52 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.1.1
+  - Fix hang in tukit on aarch64 [bsc#1181844]
+  - Prevent deletion of snapshots when resuming a snapshot where no
+    transaction is open
+  - Make tukit work in non-dbus environments [boo#1181934]
+
+-------------------------------------------------------------------
+Tue Feb  2 13:53:20 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.1.0
+  - t-u: Support installing RPMs from the user's directory again
+  - Adapt selfupdate to new packaging
+  - Implement signal handling
+  - Remove empty text files
+
+-------------------------------------------------------------------
+Mon Feb  1 09:20:44 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Add libselinux build time dependency
+- Remove RPM version check
+
+-------------------------------------------------------------------
+Mon Feb  1 08:36:36 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Fix libstdc++ filesystem ABI incompatibility by using newer gcc
+  version on old distributions. [boo#1181582]
+
+-------------------------------------------------------------------
+Thu Jan 28 14:25:53 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Rework packaging based on Fedora packaging to separate all the
+  components to remove the intrinsic requirement for Zypper
+
+-------------------------------------------------------------------
+Wed Jan 27 10:13:53 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.0.0
+  - This release changes the internal structure, but should be
+    identical to the previous release feature wise.
+  - Major parts of the previous Bash only application have been
+    rewritten in C++ with the goal to provide an API around
+    transactions; the transactional-update script is using that
+    new interface internally already, however the API should
+    be considered experimental for now - if you are interested to
+    use it, please notify us in
+    https://github.com/openSUSE/transactional-update/issues/52
+  - A new tool called "tukit" provides a C++ tool that can be
+    wrapped by scripts to leverage the functionality. Please
+    consider it experimental for now, the commands may still change.
+  - Bugfixes:
+    - Implement support for system offline update [boo#1180808]
+    - Add statistics files to update environment [boo#1173282]
+
+-------------------------------------------------------------------
 Mon Nov  9 08:30:54 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Version 2.38.3

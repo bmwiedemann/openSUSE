@@ -658,4 +658,14 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1181934</comment>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>7d2b6bab9353601c74c81b995f13e7a9</srcmd5>
+    <version>3.1.4</version>
+    <time>1613677180</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.1.4
+  - SELinux: Fix syncing of SELinux attributes when using overlays
+  - SELinux: Tag the overlay directory itself (again)</comment>
+    <requestid>873083</requestid>
+  </revision>
 </revisionlist>
