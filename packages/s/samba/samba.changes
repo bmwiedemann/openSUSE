@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 26 15:15:08 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.13.4
+  * Work around special SMB2 IOCTL response behavior of NetApp Ontap
+    7.3.7; (bso#14607);
+  * Temporary DFS share setup doesn't set case parameters in the same
+    way as a regular share definition does; (bso#14612);
+  * lib: Avoid declaring zero-length VLAs in various messaging functions;
+    (bso#14605);
+  * Do not create an empty DB when accessing a sam.ldb; (bso#14579);
+  * vfs_fruit may close wrong backend fd; (bso#14596);
+  * Temporary DFS share setup doesn't set case parameters in the same way
+    as a regular share definition does; (bso#14612);
+  * vfs_virusfilter: Allocate separate memory for config char*; (bso#14606);
+  * vfs_fruit may close wrong backend fd; (bso#14596);
+  * Work around special SMB2 IOCTL response behavior of NetApp Ontap 7.3.7;
+    (bso#14607);
+  * The cache directory for the user gencache should be created recursively;
+    (bso#14601);
+  * Be more flexible with repository names in CentOS 8 test environments;
+    (bso#14594);
+
+-------------------------------------------------------------------
+Mon Dec 28 09:41:57 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Uninstalling samba-client: Failed to disable unit, cifs.service
+  does not exists; (bsc#1180388);
+
+-------------------------------------------------------------------
 Wed Dec 16 11:30:25 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.13.3

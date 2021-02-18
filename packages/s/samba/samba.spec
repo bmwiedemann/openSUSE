@@ -170,7 +170,7 @@ BuildRequires:  liburing-devel
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.13.3+git.181.fc4672a5b81
+Version:        4.13.4+git.187.5ad4708741a
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1412,7 +1412,9 @@ fi
 %endif
 
 %preun client
+%if 0%{?suse_version} < 1221
 %{?stop_on_removal:%{stop_on_removal %cifs_init_script}}
+%endif
 
 %post client
 /sbin/ldconfig
@@ -1938,7 +1940,6 @@ exit 0
 %{_libdir}/samba/libsmb-transport-samba4.so
 %{_libdir}/samba/libsmbclient-raw-samba4.so
 %{_libdir}/samba/libsmbd-base-samba4.so
-%{_libdir}/samba/libsmbd-conn-samba4.so
 %{_libdir}/samba/libsmbd-shim-samba4.so
 %{_libdir}/samba/libsmbldaphelper-samba4.so
 %{_libdir}/samba/libsmbpasswdparser-samba4.so
