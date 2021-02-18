@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 17 13:40:16 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- generate-tarball.sh: use safe temporary directory, avoid accidental deletion
+  of *.jar, *.class in CWD.
+
+-------------------------------------------------------------------
 Thu Nov 21 19:33:41 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.0.3

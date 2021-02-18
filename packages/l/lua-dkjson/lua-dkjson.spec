@@ -30,6 +30,7 @@ BuildRequires:  %{flavor}-devel
 BuildArch:      noarch
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-dkjson
 ExclusiveArch:  do_not_build

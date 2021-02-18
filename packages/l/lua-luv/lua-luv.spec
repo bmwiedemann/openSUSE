@@ -36,6 +36,7 @@ BuildRequires:  cmake
 %endif
 %bcond_with public_lib
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

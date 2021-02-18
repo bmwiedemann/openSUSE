@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykeepass
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pykeepass
-Version:        3.2.1
+Version:        4.0.0
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-URL:            https://github.com/pschmitt/pykeepass
-Source:         https://github.com/pschmitt/pykeepass/archive/%{version}.tar.gz#/pykeepass-%{version}.tar.gz
+URL:            https://github.com/libkeepass/pykeepass
+Source:         https://github.com/libkeepass/pykeepass/archive/%{version}.tar.gz#/pykeepass-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-pykeepass-fix-version.patch badshah400@gmail.com -- Fix version so that egg-infos don't end up with the wrong version; patch taken from upstream commit
+Patch0:         python-pykeepass-fix-version.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -51,7 +53,7 @@ BuildRequires:  %{python_module python-dateutil}
 This library allows you to write entries to a KeePass database
 
 %prep
-%setup -q -n pykeepass-%{version}
+%autosetup -p1 -n pykeepass-%{version}
 sed -i '1{/^#!.*env python/d}' pykeepass/pykeepass.py pykeepass/kdbx_parsing/kdbx*.py
 
 %build

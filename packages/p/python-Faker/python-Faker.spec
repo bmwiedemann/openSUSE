@@ -20,7 +20,7 @@
 %define oldpython python
 %global skip_python2 1
 Name:           python-Faker
-Version:        5.3.0
+Version:        6.3.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT

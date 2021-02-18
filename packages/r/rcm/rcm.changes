@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 18 06:41:43 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.3.4
+  * BUGFIX: Globs no longer expand permanently (Edd Salkield).
+  * BUGFIX: Show $ for symlinked dirs in `lsrc -F` (Mathias Michel).
+  * Feature: All symlinks in input are rejected (Mat M).
+  * Packaging improvements (Stephen Groat, Martin Frost, Link Dupont).
+
+-------------------------------------------------------------------
 Sun Jul 15 18:04:02 UTC 2018 - develop7@develop7.info
 
 - drop source service

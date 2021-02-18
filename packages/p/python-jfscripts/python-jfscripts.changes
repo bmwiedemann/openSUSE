@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 29 04:19:55 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python_alternative for all shipped scripts instead of python3_only. 
+
+-------------------------------------------------------------------
 Sat Mar 21 10:24:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.5.0

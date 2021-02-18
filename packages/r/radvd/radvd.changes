@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 29 10:09:21 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 2.19
+  * bug fixes
+  * cleanups
+- Modify the patches becuase of version updating
+  * radvd-configure.patch and radvd-systemd.patch
+- Update radvd.keyring for signing source code
+
+-------------------------------------------------------------------
 Wed Aug 19 09:13:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix invalid usage of %{_libexecdir}.

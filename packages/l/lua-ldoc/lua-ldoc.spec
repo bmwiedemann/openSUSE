@@ -28,10 +28,7 @@ Source:         https://github.com/stevedonovan/LDoc/archive/%{version}.tar.gz#/
 BuildRequires:  %{flavor}-devel
 BuildArch:      noarch
 Requires:       %{flavor}
-%if "%{flavor}" == "lua53"
-Provides:       lua-ldoc = %{version}
-Obsoletes:      lua-ldoc < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-ldoc
 ExclusiveArch:  do_not_build

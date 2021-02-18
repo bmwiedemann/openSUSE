@@ -26,11 +26,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://non.tuxfamily.org/
 Source0:        non-ntk-%{version}.tar.bz2
-# script to create source tarball from git
-# sh non-snapshot.sh $(rev)
-Source1:        non-ntk-snapshot.sh
 # no desktop file in tarball
-Source2:        non-ntk-1.3.0-fluid.desktop
+Source1:        non-ntk-1.3.0-fluid.desktop
 # sent upstream via email
 Patch1:         non-ntk-1.3.0-fsf.patch
 Patch2:         non-ntk-unused-shlib.patch
@@ -92,7 +89,7 @@ LDFLAGS="%{?__global_ldflags}" ./waf -v configure --prefix=%{_prefix} \
 %install
 ./waf -v install --destdir=%{buildroot}
 install -d -m 0755 %{buildroot}%{_datadir}/applications
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/ntk-fluid.desktop
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/ntk-fluid.desktop
 rm %{buildroot}%{_libdir}/libntk*.a*
 
 %if 0%{?suse_version}

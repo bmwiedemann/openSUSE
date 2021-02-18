@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  6 14:27:59 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add qtstyleplugins-gtksettings.patch: Align Qt with GTK settings
+  a bit better.
+- Add qtstyleplugins-fix-deprecations.patch: Fix various Qt deprecations.
+- Remove fix-build-qt5.15.patch: merge into
+  qtstyleplugins-fix-deprecations.patch (not distinct enough).
+
+-------------------------------------------------------------------
 Tue Jun  9 07:58:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Amend patch to fix issues with platform themes providing an

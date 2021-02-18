@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  9 23:31:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.1:
+  * Improved alext.h's detection of standard types.
+  * Improved slightly the local source position when the listener and source
+    are near each other.
+  * Improved click/pop prevention for sounds that stop prematurely.
+  * Fixed compilation for Windows ARM targets with MSVC.
+  * Fixed ARM NEON detection on Windows.
+  * Fixed CoreAudio capture when the requested sample rate doesn't match the
+    system configuration.
+  * Fixed OpenSL capture desyncing from the internal capture buffer.
+  * Fixed sources missing a batch update when applied after quickly restarting
+    the source.
+  * Fixed missing source stop events when stopping a paused source.
+  * Added capture support to the experimental Oboe backend.
+
+-------------------------------------------------------------------
 Sat Jan 16 21:46:31 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - new version 1.21.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pre-commit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Requires:       python-identify >= 1.0.0
 Requires:       python-nodeenv >= 0.11.1
 Requires:       python-toml
 Requires:       python-virtualenv >= 20.0.8
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
@@ -46,8 +48,8 @@ BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module virtualenv >= 20.0.8}
+BuildRequires:  %{pythons}
 BuildRequires:  git-core
-BuildRequires:  python3
 # /SECTION
 %python_subpackages
 
@@ -64,6 +66,9 @@ sed -i 's|^#!%{_bindir}/env python|#!%{_bindir}/python|' pre_commit/resources/ho
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/pre-commit
+%python_clone -a %{buildroot}%{_bindir}/pre-commit-validate-manifest
+%python_clone -a %{buildroot}%{_bindir}/pre-commit-validate-config
 
 %check
 export GIT_AUTHOR_NAME=test GIT_COMMITTER_NAME=test \
@@ -87,10 +92,20 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or conda or test_perl_hook or test_local_perl_ad
 git init .
 %pytest -k "not ($EXCLUDED_TESTS)"
 
+%post
+%python_install_alternative pre-commit
+%python_install_alternative pre-commit-validate-config
+%python_install_alternative pre-commit-validate-manifest
+
+%postun
+%python_uninstall_alternative pre-commit
+%python_uninstall_alternative pre-commit-validate-config
+%python_uninstall_alternative pre-commit-validate-manifest
+
 %files %{python_files}
-%{_bindir}/pre-commit-validate-manifest
-%{_bindir}/pre-commit
-%{_bindir}/pre-commit-validate-config
+%python_alternative %{_bindir}/pre-commit-validate-manifest
+%python_alternative %{_bindir}/pre-commit
+%python_alternative %{_bindir}/pre-commit-validate-config
 %{python_sitelib}/pre_commit
 %{python_sitelib}/pre_commit-%{version}-py*.egg-info
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 17 11:57:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.22
+  * another important but small fix for Python 3.9
+  * Merge branch 'nested_interrupts_returns'
+- Drop hard numpy requirement, don't test on python36
+
+-------------------------------------------------------------------
 Fri Jan 17 12:49:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.9.18

@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-ceph-containers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Patterns for the Ceph containers
 License:        MIT
 Group:          Metapackages
-Url:            http://en.opensuse.org/Patterns
+URL:            http://en.opensuse.org/Patterns
 Source:         %name-rpmlintrc
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 
@@ -35,34 +35,35 @@ not make sense.
 Summary:        Ceph base
 Group:          Metapackages
 Provides:       pattern() = ceph_base
-Provides:       pattern-icon() = yast-iscsi-client
 Provides:       pattern-category() = Containers
+Provides:       pattern-icon() = yast-iscsi-client
 Provides:       pattern-order() = 3000
 Provides:       pattern-visible()
+Requires:       ca-certificates
 Requires:       ceph
 Requires:       ceph-base
 Requires:       ceph-common
 Requires:       ceph-fuse
-Requires:       cephadm
 Requires:       ceph-grafana-dashboards
+Requires:       ceph-iscsi
 Requires:       ceph-mds
 Requires:       ceph-mgr
-Requires:       ceph-mgr-rook
 Requires:       ceph-mgr-cephadm
 Requires:       ceph-mgr-dashboard
 Requires:       ceph-mgr-diskprediction-local
+Requires:       ceph-mgr-rook
 Requires:       ceph-mon
 Requires:       ceph-osd
 Requires:       ceph-prometheus-alerts
 Requires:       ceph-radosgw
-Requires:       ceph-iscsi
-Requires:       rbd-mirror
-Requires:       rbd-nbd
-Requires:       ca-certificates
+Requires:       cephadm
 Requires:       e2fsprogs
+Requires:       gptfdisk
 Requires:       kmod
 Requires:       lvm2
-Requires:       gptfdisk
+Requires:       rbd-mirror
+Requires:       rbd-nbd
+Requires:       tcmu-runner-handler-rbd
 
 %description ceph_base
 This provides the base for the Ceph, Rook, Ceph CSI driver packages and containers.
@@ -83,4 +84,3 @@ echo 'This file marks the pattern ceph-base to be installed.' >%buildroot/usr/sh
 %{_docdir}/patterns-ceph-containers/ceph_base.txt
 
 %changelog
-

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 18 15:49:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro for default lua versioning
+
+-------------------------------------------------------------------
 Thu Jan 14 10:19:27 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix previous commit (Add bit32.so)

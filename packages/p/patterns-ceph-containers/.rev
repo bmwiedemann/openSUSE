@@ -26,4 +26,12 @@
     <comment>drop nfs-ganesha</comment>
     <requestid>868461</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>160ca3bc7e1e9d7692f7c7d0f43dab0a</srcmd5>
+    <version>1.0</version>
+    <time>1613677098</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1175862</comment>
+    <requestid>871631</requestid>
+  </revision>
 </revisionlist>

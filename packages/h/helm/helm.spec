@@ -1,7 +1,7 @@
 #
 # spec file for package helm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define git_dirty clean
 
 Name:           helm
-Version:        3.4.2
+Version:        3.5.2
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0

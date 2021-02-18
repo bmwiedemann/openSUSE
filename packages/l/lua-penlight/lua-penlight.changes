@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 18 16:02:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro for default lua versioning
+
+-------------------------------------------------------------------
 Tue Jul  7 20:02:42 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add lua54.patch adding compatiblity with Lua 5.4

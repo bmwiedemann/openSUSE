@@ -1,7 +1,7 @@
 #
 # spec file for package swappy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           swappy
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Wayland compositor screenshot editor
 License:        MIT

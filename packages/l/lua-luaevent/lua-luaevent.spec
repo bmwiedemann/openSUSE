@@ -29,6 +29,7 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  libevent-devel >= 1.4
 Requires:       %{flavor}
 Requires:       %{flavor}-luasocket
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

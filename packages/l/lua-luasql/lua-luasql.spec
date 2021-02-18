@@ -25,6 +25,7 @@
 %define lua_incdir	%{_includedir}/lua%{flavor_ver}
 %define lua_noarchdir	%{_datadir}/lua/%{flavor_ver}
 
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

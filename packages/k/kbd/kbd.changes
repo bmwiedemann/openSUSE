@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 18 07:29:33 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 2.4.0:
+  * po: Update cs and sr translations (from translationproject.org)
+  * libkfont: Use only KDFONTOP
+  * Added support for a few derivatives of neo
+  * Fix use-after-free of pipe_cmd
+  * Update solar24x32 font
+  * vlock's pam config added to destination directory
+  * Update sun12x22.psfu
+  * libkeymap: unify non/unicode accent_table generation
+  * libkeymap: note about --unicode use
+  * libkeymap: remove last ushort
+  * fi.map: use newly added deadkeys
+  * Do not install internal library
+  * Additional deadkeys
+- Remove kbd-1.15.2-setfont-no-cruft.patch
+  The old ioctls were finally dropped.
+
+-------------------------------------------------------------------
 Fri Oct 16 09:58:12 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

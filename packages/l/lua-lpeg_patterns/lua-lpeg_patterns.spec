@@ -31,10 +31,7 @@ BuildRequires:  lua-macros
 Requires:       %{flavor}-lpeg
 Requires:       %{flavor}
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-lpeg_patterns = %{version}
-Obsoletes:      lua-lpeg_patterns < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-lpeg_patterns
 ExclusiveArch:  do_not_build

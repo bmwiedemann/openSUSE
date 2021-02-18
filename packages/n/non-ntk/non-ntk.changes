@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 18 12:26:33 UTC 2021 - Edgar Aichinger <edogawa@aon.at>
+
+- remove non-ntk-snapshot.sh from package sources (bsc #1182396)
+  (unused leftover from original fedora package, we don't do snapshot packaging anyways)
+  
+-------------------------------------------------------------------
 Wed Jul  1 06:46:31 UTC 2020 - Edgar Aichinger <edogawa@aon.at>
 
 - update to version 1.3.1000

@@ -118,4 +118,13 @@
   For futher details, check</comment>
     <requestid>873091</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fd02b9b001f734a5fe502792a424e41b</srcmd5>
+    <version>3.2.3</version>
+    <time>1613677277</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires: for pandoc:
+  Not needed and not available for SLE.</comment>
+    <requestid>873303</requestid>
+  </revision>
 </revisionlist>

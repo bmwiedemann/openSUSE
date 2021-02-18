@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Feb 17 12:31:07 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.16.0
+  * See: https://ensmallen.org/docs.html#ensmallen-2160-severely-dented-can-of-polyurethane
+- Drop _service file
+- Fix cmake install
+- Clean-up spec file
+- Enable tests
+
+-------------------------------------------------------------------
+Sat Dec  5 16:40:16 UTC 2020 - Markus Kolb <novell@tower-net.de>
+
+- Update to version 2.15.1
+  * See https://ensmallen.org/docs.html#ensmallen-2151-why-cant-i-manage-to-grow-any-plants
+
+-------------------------------------------------------------------
+Fri Jul  3 16:23:38 UTC 2020 - Markus Kolb <novell@tower-net.de>
+
+- Update to version 2.12.1 
+
+-------------------------------------------------------------------
+Wed Mar 11 22:08:28 UTC 2020 - Markus Kolb <novell@tower-net.de>
+
+- Update to version 2.11.4
+  * Updated 02-disable-ensmallen-test.patch
+  * There is /usr/share/cmake/ensmallen
+
+-------------------------------------------------------------------
+Mon Nov  4 21:37:05 UTC 2019 - Markus Kolb <novell@tower-net.de>
+
+- Release ensmallen 2.10.3
+

@@ -17,7 +17,7 @@
 
 
 Name:           openal-soft
-Version:        1.21.0
+Version:        1.21.1
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND MIT

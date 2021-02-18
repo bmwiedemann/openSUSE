@@ -1,6 +1,7 @@
 #
 # spec file for package python-jfscripts
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -32,6 +34,8 @@ Requires:       python-PyPDF2
 Requires:       python-sphinx-argparse
 Requires:       python-termcolor
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -57,20 +61,43 @@ find jfscripts/ -name "*.py" -exec sed -i 's|#! %{_bindir}/env python3|#!%{_bind
 %python_expand cd %{buildroot}%{_bindir} && find . -name "*.py" -exec sh -c 'mv $0 `basename "$0" .py`' '{}' \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 rm -f %{buildroot}%{_bindir}/_current_flavor
+# Prepare for update-alternatives usage
+for p in dns-ipv6-prefix extract-pdftext find-dupes-by-size image-into-pdf \
+    list-files mac-to-eui64 pdf-compress ; do
+    %python_clone -a %{buildroot}%{_bindir}/$p
+done
 
 #%%check
 # Upstream does not provide any tests
 
+%post
+%python_install_alternative dns-ipv6-prefix
+%python_install_alternative extract-pdftext
+%python_install_alternative find-dupes-by-size
+%python_install_alternative image-into-pdf
+%python_install_alternative list-files
+%python_install_alternative mac-to-eui64
+%python_install_alternative pdf-compress
+
+%postun
+%python_uninstall_alternative dns-ipv6-prefix
+%python_uninstall_alternative extract-pdftext
+%python_uninstall_alternative find-dupes-by-size
+%python_uninstall_alternative image-into-pdf
+%python_uninstall_alternative list-files
+%python_uninstall_alternative mac-to-eui64
+%python_uninstall_alternative pdf-compress
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/dns-ipv6-prefix
-%python3_only %{_bindir}/extract-pdftext
-%python3_only %{_bindir}/find-dupes-by-size
-%python3_only %{_bindir}/list-files
-%python3_only %{_bindir}/mac-to-eui64
-%python3_only %{_bindir}/pdf-compress
-%python3_only %{_bindir}/image-into-pdf
+%python_alternative %{_bindir}/dns-ipv6-prefix
+%python_alternative %{_bindir}/extract-pdftext
+%python_alternative %{_bindir}/find-dupes-by-size
+%python_alternative %{_bindir}/list-files
+%python_alternative %{_bindir}/mac-to-eui64
+%python_alternative %{_bindir}/pdf-compress
+%python_alternative %{_bindir}/image-into-pdf
 %{python_sitelib}/jfscripts*
 
 %changelog

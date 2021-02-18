@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tableauserverclient
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Python library for working with the Tableau Server REST API
 License:        MIT
 URL:            https://github.com/tableau/server-client-python
-Source:         https://github.com/tableau/server-client-python/archive/v%{version}.tar.gz#/tableauserverclient-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/t/tableauserverclient/tableauserverclient-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,8 +42,7 @@ BuildRequires:  %{python_module requests-mock >= 1.0}
 A Python module for working with the Tableau Server REST API.
 
 %prep
-%setup -q -n server-client-python-%{version}
-touch test/__init__.py
+%setup -q -n tableauserverclient-%{version}
 
 %build
 %python_build
@@ -53,11 +52,11 @@ touch test/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest test/test_*.py
+%pytest
 
 %files %{python_files}
 %doc README.md
-%license LICENSE LICENSE.versioneer
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog

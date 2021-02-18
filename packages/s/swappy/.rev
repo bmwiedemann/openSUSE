@@ -17,4 +17,26 @@
   * text: properly handle utf-8 chars (717ab0c), closes #43</comment>
     <requestid>820629</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d152df84b85c002493f1f4e6c1d14762</srcmd5>
+    <version>1.3.0</version>
+    <time>1613677274</time>
+    <user>dimstar_suse</user>
+    <comment>- Updat to 1.3.0:
+  Features:
+  * cli: add configure options for filename save (597f005)
+  * i18n: add brazilian portuguese translations (4a0eb82)
+  * i18n: add german translations (b4be847)
+  * i18n: add turkish translations (c8419da)
+  Bug Fixes:
+  * application: unlink temp file coming from stdin (c24e56a), closes #80
+  * blur: optimize blur to only render after commit (27fcece)
+  * blur: rgb24 is properly handled (c04ed63)
+  * clipboard: wl-copy mimetype should be png (a931acb), closes #68
+  * notification: notification shows the image icon (eb53e5c)
+  * ui: adjust rendering surface with proper scaling (9b72571), closes #54
+  * ui: commit state before copying or saving (46e5854), closes #52
+  * ui: compute window sizes and buffers properly (5bcffdb), closes #56</comment>
+    <requestid>873299</requestid>
+  </revision>
 </revisionlist>

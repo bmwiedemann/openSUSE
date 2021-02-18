@@ -17,7 +17,7 @@
 
 
 Name:           kustomize
-Version:        3.9.2
+Version:        3.10.0
 Release:        0
 Summary:        Customization of kubernetes YAML configurations
 License:        Apache-2.0

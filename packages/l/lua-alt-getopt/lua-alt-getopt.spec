@@ -17,7 +17,8 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define mod_name lua-alt-getopt
+%define mod_name alt-getopt
+%define rname lua-alt-getopt
 %define upversion 0.8.0
 Version:        0.8.1
 Release:        0
@@ -25,15 +26,16 @@ Summary:        Process application arguments the same way as getopt_long
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/cheusov/lua-alt-getopt
-Source:         https://github.com/cheusov/%{mod_name}/archive/%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+Source:         https://github.com/cheusov/%{rname}/archive/%{upversion}.tar.gz#/%{rname}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
+%lua_provides
 %if "%{flavor}" == ""
-Name:           lua-alt-getopt
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-alt-getopt
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description
@@ -43,7 +45,7 @@ getopt_long(3) functions do.  The main goal is compatibility
 with SUS "Utility Syntax Guidelines" guidelines 3-13.
 
 %prep
-%setup -q -n %{mod_name}-%{upversion}
+%setup -q -n %{rname}-%{upversion}
 
 %build
 /bin/true

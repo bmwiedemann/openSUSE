@@ -30,6 +30,7 @@ Source:         http://matthewwild.co.uk/projects/luaexpat/%{mod_name}-%{version
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libexpat-devel
 Requires:       %{flavor}
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

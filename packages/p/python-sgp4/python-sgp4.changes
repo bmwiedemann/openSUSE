@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 17 20:47:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to Version 2.16
+  * Fixed ``days2mdhms()`` rounding to always match TLE epoch.
+- Changes in Version 2.15
+  * Fixed parsing of the ``satnum`` TLE field in the Python
+    fallback code, when the field has a leading space
+  * added OMM export routine.
+- skip python36 (NEP 29, NumPy 1.20)
+
+-------------------------------------------------------------------
 Sat Jan  2 00:26:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 2.14

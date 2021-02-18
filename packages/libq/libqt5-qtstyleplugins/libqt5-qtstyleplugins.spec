@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtstyleplugins
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,13 @@ Name:           libqt5-qtstyleplugins
 Version:        5.0.0+git20170311
 Release:        0
 Summary:        Qt 5 Style Plugins
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
-Group:          Development/Libraries/X11
-Url:            https://qt.io/
+License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
+URL:            https://qt.io/
 Source:         %{_name}-opensource-src-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE (for now)
-Patch1:         fix-build-qt5.15.patch
+# PATCH-FIX-OPENSUSE qtstyleplugins-gtksettings.patch sor.alexei@meowr.ru -- Align Qt with GTK settings a bit better.
+Patch0:         qtstyleplugins-gtksettings.patch
+# PATCH-FIX-OPENSUSE qtstyleplugins-fix-deprecations.patch -- Fix various Qt deprecations.
+Patch1:         qtstyleplugins-fix-deprecations.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{qt_version}
 BuildRequires:  libQt5Gui-private-headers-devel >= %{qt_version}
@@ -52,9 +53,8 @@ This package contains additional style plugins.
 %if %{with gtk2}
 %package platformtheme-gtk2
 Summary:        Qt 5 gtk2 plugin
-Group:          Development/Libraries/C and C++
 %requires_eq    libQt5Gui5
-Supplements:    packageand(libQt5Gui5:libgtk-2_0-0)
+Supplements:    (libQt5Gui5 and libgtk-2_0-0)
 
 %description platformtheme-gtk2
 Qt 5 plugin for better integration with gtk-based desktop enviroments.
@@ -62,7 +62,6 @@ Qt 5 plugin for better integration with gtk-based desktop enviroments.
 
 %package devel
 Summary:        Qt 5 Style Plugins Development Files
-Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 %if %{with gtk2}
 Requires:       %{name}-platformtheme-gtk2 = %{version}
@@ -76,7 +75,7 @@ You need this package, if you want to compile programs with qtstyleplugins.
 
 %build
 %qmake5
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %qmake5_install
@@ -92,7 +91,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun platformtheme-gtk2 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %dir %{_libqt5_libdir}/qt5/plugins/styles/
 %{_libqt5_libdir}/qt5/plugins/styles/*.so
 %if %{with gtk2}
@@ -101,7 +99,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{with gtk2}
 %files platformtheme-gtk2
-%defattr(-,root,root)
 %dir %{_libqt5_libdir}/qt5/plugins/platformthemes/
 %{_libqt5_libdir}/qt5/plugins/platformthemes/libqgtk2.so
 %dir %{_libqt5_libdir}/qt5/plugins/styles/
@@ -109,7 +106,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
 %files devel
-%defattr(-,root,root)
 %{_libqt5_libdir}/cmake/Qt5Widgets/Qt5Widgets_*StylePlugin.cmake
 %if %{with gtk2}
 %{_libqt5_libdir}/cmake/Qt5Gui/Qt5Gui_*ThemePlugin.cmake

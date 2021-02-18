@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 18 13:32:16 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 6.3.0: 
+  * Add sk_SK automotive provider.
+  * Add current_country, current_country_code and administrative_unit
+  * Fix pyfloat returning zeros when positive=True.
+  * Add currency names for th_TH.
+  * Add new currency provider pricetag()
+  * Update th_TH Lorem text provider's punctuations, reduce size of word list
+  * Synchronize cs_CZ and sk_SK address provider and split postcodes
+  * Add address, bank, geo and person provider for en_IE
+  * Add person provider for ga_IE
+  * Add elements caching and other optimizations.
+  * Add use_weighting parameter for improved performance.
+  * Add da_DK address provider.
+
+-------------------------------------------------------------------
 Wed Jan  6 04:50:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.3.0:

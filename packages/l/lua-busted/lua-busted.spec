@@ -61,6 +61,7 @@ Requires:       unzip
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

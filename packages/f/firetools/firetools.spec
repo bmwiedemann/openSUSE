@@ -1,7 +1,7 @@
 #
-# spec file for package firejail
+# spec file for package firetools
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,16 +20,16 @@ Name:           firetools
 Version:        0.9.62
 Release:        0
 Summary:        GUI for Firajail security sandbox
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Security
-Url:            https://firejail.wordpress.com/
+URL:            https://firejail.wordpress.com/
 Source0:        https://downloads.sourceforge.net/project/firejail/firetools/firetools-%{version}.tar.xz
 Source1:        https://downloads.sourceforge.net/project/firejail/firetools/firetools-%{version}.tar.xz.asc
 Patch:          firetools-0.9.62-fail_linking.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  automake
-BuildRequires:  autoconf
 Requires:       firejail >= 0.9.40
 
 %description
@@ -40,10 +40,10 @@ Firetools is the graphical user interface of Firejail security sandbox.
 
 %build
 %configure --docdir=%{_docdir}/%{name} --with-qmake=`which qmake-qt5`
-make %{?_smp_mflags} VERBOSE=1
+%make_build VERBOSE=1
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 rm %{buildroot}%{_docdir}/%{name}/COPYING
 
 %files

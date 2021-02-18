@@ -1,25 +1,14 @@
-Index: radvd-2.18/redhat/systemd/radvd.service
-===================================================================
---- radvd-2.18.orig/redhat/systemd/radvd.service
-+++ radvd-2.18/redhat/systemd/radvd.service
-@@ -4,10 +4,9 @@ After=network-online.target
+--- radvd-2.19/redhat/systemd/radvd.service.orig	2021-01-29 17:55:55.894674187 +0800
++++ radvd-2.19/redhat/systemd/radvd.service	2021-01-29 17:56:28.194647566 +0800
+@@ -4,9 +4,8 @@
  Wants=network-online.target
  
  [Service]
 -EnvironmentFile=/etc/sysconfig/radvd
 -ExecStart=/usr/sbin/radvd $OPTIONS
 -Type=forking
--PIDFile=/var/run/radvd/radvd.pid
 +EnvironmentFile=-/etc/sysconfig/radvd
 +ExecStart=/usr/sbin/radvd --nodaemon $RADVD_OPTIONS
-+PIDFile=/run/radvd/radvd.pid
+ PIDFile=/run/radvd/radvd.pid
  ExecReload=/bin/kill -HUP $MAINPID
  
- [Install]
-Index: radvd-2.18/redhat/systemd/radvd-tmpfs.conf
-===================================================================
---- radvd-2.18.orig/redhat/systemd/radvd-tmpfs.conf
-+++ radvd-2.18/redhat/systemd/radvd-tmpfs.conf
-@@ -1 +1 @@
--d	/var/run/radvd	0755 radvd radvd
-+d	/run/radvd	0755 radvd radvd

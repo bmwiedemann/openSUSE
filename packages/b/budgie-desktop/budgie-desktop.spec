@@ -28,11 +28,13 @@ URL:            https://getsol.us/solus/experiences/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
 Patch:          desktop-override.patch
+Patch1:         fullscreen-tracking.patch
+Patch2:         GNOME-40.patch
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
+BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7) or pkgconfig(libmutter-8))
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -60,8 +62,6 @@ Requires:       gnome-control-center
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       ibus
-Requires:       typelib-1_0-Budgie-1_0
-Requires:       typelib-1_0-PeasGtk-1_0
 Recommends:     gnome-software
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
@@ -74,6 +74,7 @@ Budgie Desktop is the flagship desktop for the Solus Operating System.
 Summary:        Introspection bindings for the Budgie Desktop
 Group:          System/Libraries 
 Requires:       %{name} = %{version}-%{release}
+Requires:       typelib(PeasGtk) = 1.0
 
 %description -n typelib-1_0-Budgie-1_0
 This package provides GObject Introspection files required for
@@ -84,7 +85,7 @@ GObject Introspection bindings.
 Summary:        Development files for the Budgie Desktop
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}-%{release}
-Requires:       typelib-1_0-Budgie-1_0 = %{version}-%{release}
+Requires:       typelib(Budgie) = 1.0
 
 %description devel
 This package provides development files required for software to be

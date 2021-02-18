@@ -1,7 +1,7 @@
 #
 # spec file for package lua-messagepack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Requires:       %{flavor}
 Provides:       %{flavor}-MessagePack = %{version}-%{release}
 Obsoletes:      %{flavor}-NessagePack <= %{version}-%{release}
 BuildArch:      noarch
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-messagepack
 ExclusiveArch:  do_not_build

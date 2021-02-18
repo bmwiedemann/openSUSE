@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 18 13:58:03 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1613656670.2413c666d:
+  * Fix remove link configuration for "Untracked" groups in /admin/assets
+  * Dependency cron 2021-02-18
+  * Improve help of openqa-clone-job script
+  * Make host names used by internal clients configurable
+  * Avoid Perl warning when client.conf contains unknown value
+  * Apply tidy to t/ui/27-plugin_obs_rsync_status_details.t
+  * The CI package has been updated to 9.01 already
+  * Remove dependency to Mojo::Log::Colored as it is not Mojolicious 9 compatible
+  * Fix Mojolicious 9.0 compatibility
+  * Stabilize t/ui/27-plugin_obs_rsync_status_details
+  * Add qemu-tools to worker container image
+  * Fix worker container to allow job executions relying on KVM
+  * Dependency cron 2021-02-16
+  * t: Bump timeout for t/ui/27-plugin_obs_rsync_status_details after observed acceptable failure
+  * Provide more retries for "unstable" tests after recent failures
+  * Fix broken lookup of paths in coverage reports
+  * Mark code which only runs when t/full-stack.t fails as uncoverable
+  * Remove invisible WIP logos from logo.svg
+
+-------------------------------------------------------------------
 Sun Feb 14 15:55:25 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1613318110.525d96fca:

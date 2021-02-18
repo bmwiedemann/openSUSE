@@ -18,6 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define libmpack_version 1.0.5
+%define mod_name mpack
 Version:        1.0.6
 Release:        0
 Summary:        Implementation of MessagePack for Lua 5.1
@@ -37,11 +38,12 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 BuildRequires:  libtool
 Requires:       %{flavor}
+%lua_provides
 %if "%{flavor}" == ""
-Name:           lua-mpack
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-mpack
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description

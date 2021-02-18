@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 17 16:53:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add fullscreen-tracking.patch: fix tracking issues
+- Add GNOME-40.patch: support for GNOME 40
+- Tweaked dependencies on typelibs
+- Updated BuildRequires:
+  * pkgconfig(libmutter-6/7) >> pkgconfig(libmutter-6/7/8)
+
+-------------------------------------------------------------------
 Thu Feb 11 09:08:58 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.2+481e9bd2:

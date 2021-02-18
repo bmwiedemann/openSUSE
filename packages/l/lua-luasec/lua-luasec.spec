@@ -17,23 +17,25 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define modname luasec
+%define mod_name luasec
 Version:        0.9
 Release:        0
 Summary:        A Lua binding for OpenSSL
 License:        MIT
 URL:            https://github.com/brunoos/luasec
-Source:         https://github.com/brunoos/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+Source:         https://github.com/brunoos/%{mod_name}/archive/v%{version}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-luasocket
 BuildRequires:  libopenssl-devel
 Requires:       %{flavor}
 Requires:       %{flavor}-luasocket
+%lua_provides
 %if "%{flavor}" == ""
-Name:           lua-%{modname}
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-%{modname}
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description
@@ -42,7 +44,7 @@ It takes an already established TCP connection and creates a secure
 session between the peers.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n %{mod_name}-%{version}
 
 %build
 make %{?_smp_mflags} linux \

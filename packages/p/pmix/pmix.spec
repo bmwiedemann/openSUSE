@@ -37,7 +37,6 @@ BuildRequires:  libpsm2-devel
 %endif
 BuildRequires:  libtool
 BuildRequires:  munge-devel
-BuildRequires:  pandoc
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pmix-runtime-config

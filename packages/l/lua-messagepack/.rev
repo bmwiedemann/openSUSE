@@ -23,4 +23,15 @@
     <comment>- Add lua54 as new build target</comment>
     <requestid>819792</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>34492bf3c948fdc334825bbcb8dbb6dd</srcmd5>
+    <version>0.3.3</version>
+    <time>1613677345</time>
+    <user>dimstar_suse</user>
+    <comment>- It would be better to rename the package to MessagePack, but
+  certainly RPMs must be called same as the package in OBS.
+- Use %lua_provides macro for default lua versioning
+</comment>
+    <requestid>873530</requestid>
+  </revision>
 </revisionlist>

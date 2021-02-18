@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 14 15:40:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.0
+  * support for user key pass phrase
+  * add a space at the end of the OTP prompt
+  * modify memory allocation in the tunnel configuration structure
+  * openfortivpn returns the PPP exit status
+  * print SSL socket options in log
+
+-------------------------------------------------------------------
 Wed Sep  9 18:34:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.15.0

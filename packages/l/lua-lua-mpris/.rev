@@ -86,4 +86,12 @@ mpv which can be used to control the media player using dbus</comment>
 - Run spec-cleaner</comment>
     <requestid>819782</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a38429bc3191d2ef7c5c9782bd602a4d</srcmd5>
+    <version>0.0+git20191025.2b12542</version>
+    <time>1613677365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873537</requestid>
+  </revision>
 </revisionlist>

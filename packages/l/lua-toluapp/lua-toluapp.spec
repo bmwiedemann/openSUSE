@@ -52,6 +52,7 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons >= 2.3.0
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

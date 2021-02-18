@@ -39,6 +39,7 @@ BuildRequires:  %{flavor}-markdown
 Requires:       %{flavor}
 Requires:       %{flavor}-luafilesystem
 BuildArch:      noarch
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>787365</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>37c9e5e798594baa7401929ae859d2e8</srcmd5>
+    <version>0.5.0</version>
+    <time>1613677260</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_alternative for all shipped scripts instead of python3_only.</comment>
+    <requestid>867616</requestid>
+  </revision>
 </revisionlist>

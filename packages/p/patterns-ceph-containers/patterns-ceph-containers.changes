@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 10:15:48 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Added tcmu-runner-handler-rbd to ceph_base (bsc#1175862) 
+
+-------------------------------------------------------------------
 Mon Feb  1 19:17:23 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Drop all nfs-ganesha packages from ceph-base:

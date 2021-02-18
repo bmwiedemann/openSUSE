@@ -1,7 +1,7 @@
 #
 # spec file for package radvd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,16 @@
 %endif
 
 Name:           radvd
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        Router ADVertisement Daemon for IPv6
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Routing
 URL:            http://v6web.litech.org/radvd
-Source0:        http://www.litech.org/radvd/dist/%{name}-%{version}.tar.xz
+Source0:        https://radvd.litech.org/dist/%{name}-%{version}.tar.xz
 Source2:        sysconfig.radvd
 Source3:        system-user-radvd.conf
-Source42:       http://www.litech.org/radvd/dist/%{name}-%{version}.tar.xz.asc
+Source42:       https://radvd.litech.org/dist/%{name}-%{version}.tar.xz.asc
 Source43:       %{name}.keyring
 Patch1:         0001-run-as-user-radvd-by-default.diff
 Patch2:         radvd-configure.patch

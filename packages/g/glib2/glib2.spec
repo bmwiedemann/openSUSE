@@ -19,7 +19,7 @@
 %bcond_without     systemtap
 %bcond_without gtk_doc
 Name:           glib2
-Version:        2.66.6
+Version:        2.66.7
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later

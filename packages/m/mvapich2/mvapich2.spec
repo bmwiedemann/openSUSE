@@ -1,7 +1,7 @@
 #
-# spec file for package mvapich2
+# spec file for package %{package_name}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -254,6 +254,9 @@ Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
 Patch5:         fix-missing-return-code.patch
 Patch6:         wrapper-revert-ldflag-order-change.patch
+Patch7:         mvapich2-fix-double-free.patch
+Patch8:         mvapich2-remove-deprecated-sys_siglist.patch
+
 ## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch50:        0001-Drop-real128.patch
@@ -393,6 +396,8 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch4 -p1
 %patch5
 %patch6
+%patch7
+%patch8
 
 # Only apply these patches on Armv7
 %ifarch armv7hl
@@ -461,7 +466,7 @@ rm -f %{buildroot}%{p_libdir}/libfmpich.la \
       %{buildroot}%{p_libdir}/libopa.la \
       %{buildroot}%{p_libdir}/libmpi.la \
       %{buildroot}%{p_libdir}/libmpicxx.la \
-      %{buildroot}%{p_libdir}/libmpifort.la 
+      %{buildroot}%{p_libdir}/libmpifort.la
 install -m 0755 -d %{buildroot}%{_datadir}/doc/%{name}
 install -m 0644 COPYRIGHT* %{buildroot}%{_datadir}/doc/%{name}
 install -m 0644 CHANGE* %{buildroot}%{_datadir}/doc/%{name}
@@ -519,9 +524,9 @@ module-whatis "URL: %{url}"
 
 set     version                     %{version}
 
-prepend-path    PATH                %{hpc_prefix}/bin
-prepend-path    MANPATH             %{hpc_prefix}/man
-prepend-path    LD_LIBRARY_PATH     %{hpc_prefix}/%_lib
+prepend-path    PATH                %{hpc_bindir}
+prepend-path    MANPATH             %{hpc_mandir}
+prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
 prepend-path    MODULEPATH          %{hpc_modulepath}
 prepend-path    MPI_DIR             %{hpc_prefix}
 %{hpc_modulefile_add_pkgconfig_path}
@@ -577,7 +582,7 @@ fi
 %hpc_mpi_dirs
 %hpc_modules_files
 %endif
-%doc %{_datadir}/doc/%{name}/COPYRIGHT* 
+%doc %{_datadir}/doc/%{name}/COPYRIGHT*
 %doc %{_datadir}/doc/%{name}/CHANGE*
 %dir %{p_prefix}
 %dir %{p_bindir}
@@ -596,7 +601,7 @@ fi
 %files doc
 %defattr(-, root, root)
 %doc %{_datadir}/doc/%{name}
-%exclude /%{_datadir}/doc/%{name}/COPYRIGHT* 
+%exclude /%{_datadir}/doc/%{name}/COPYRIGHT*
 %exclude /%{_datadir}/doc/%{name}/CHANGE*
 
 %files devel

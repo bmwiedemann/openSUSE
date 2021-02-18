@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %if "%{flavor}" == "test"
-%define flavor lua51
+%define flavor lua54
 %bcond_without test
 %else
 %bcond_with test
@@ -35,6 +35,7 @@ Source:         https://github.com/leafo/%{mod_name}/archive/v%{version}.tar.gz#
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
+%lua_provides
 %if %{with test}
 BuildRequires:  %{flavor}-busted
 %endif

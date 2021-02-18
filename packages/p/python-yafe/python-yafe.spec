@@ -1,7 +1,7 @@
 #
 # spec file for package python-yafe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# NEP 29: NumPy 1.20 dropped support for Python 3.6, python36-numpy no longer in Tumbleweed
+%define         skip_python36 1
 Name:           python-yafe
 Version:        1.0.3
 Release:        0
@@ -32,9 +34,7 @@ Requires:       python-numpy
 Recommends:     python-xarray
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-randomly}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module xarray}
@@ -47,6 +47,8 @@ scientific experiments.
 
 %prep
 %setup -q -n yafe-%{version}
+# don't check code coverage
+sed -i '/^\s*--cov/ d' setup.cfg
 
 %build
 %python_build
@@ -61,6 +63,7 @@ scientific experiments.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/yafe
+%{python_sitelib}/yafe-%{version}*-info
 
 %changelog

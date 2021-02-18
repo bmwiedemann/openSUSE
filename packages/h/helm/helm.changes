@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Feb 05 01:47:42 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.5.2:
+  * Upgrade to oras v0.9.0 (#9269)
+  * Adding missing replace directive for oras
+  * chore(go.mod): bump Masterminds/{spring,goutils} and deislabs/oras
+  * fix(*): Validate metadata semver and printable characters
+  * Fix dep build with OCI based charts
+  * bump version to
+  * Adding apiserver to mod/sum
+  * Reduce linting severity for users of out-of-date kubernetes (#8608)
+  * Bumping kubernetes to 1.20.1
+  * Add explanatory comments to action.List and action.History
+  * Address error on deletion of old dependencies
+  * Fixed bug - The flags --cert-file/--key-file where ignored when --insecure-skip-tls-verify flag is set (#9070)
+  * Replace Helm Hub with Artifact Hub (#8626)
+  * fix(pkg/chartutil): Remove warning for nils
+  * Updating to sprig 3.2.0
+  * Updating to Kuberentes 1.20 packages
+  * Bump github.com/Masterminds/semver/v3 from 3.1.0 to 3.1.1 (#9109)
+  * Bump github.com/Masterminds/squirrel from 1.4.0 to 1.5.0 (#9108)
+  * Bump github.com/lib/pq from 1.8.0 to 1.9.0 (#9107)
+  * Remove OCI boolean from  struct
+  * Clean up imports and add doc comments
+  * Implement `helm pull` for OCI registries
+  * Adds the option kube-cafile and env variable HELM_KUBECAFILE for a overwrite of the certificate authority file
+  * Builds with go 1.15
+  * Updating to Kubernetes 1.19.4 package versions
+  * Add CodeQL Security Scanning
+  * Fix test
+  * Fixes #9083
+  * [COMMENT]fix comment
+  * Fix typo
+  * fix: ingress path issue
+  * Revert "Add support to judge whether desired version is available or not"
+  * Cleanup tempfiles introduced by unit tests under pkg/
+  * bump actions/stale to v3.0.14
+  * increase number of operations per run to 100
+  * feat(helm): Allow generating markdown docs headers
+  * chore(comp): Remove unnecessary completion code
+  * Added tests for PR 8948
+  * add unittes for 'helm dep build' with --skip-refresh flag.
+  * Updating to k8s 1.19.3 based packages
+  * lint: lint all documents in a multi-doc yaml file
+  * fix(helm): flag descriptions start with lowercase
+  * List either incubator or stable.
+  * add waitwithjobs instead of changing wait api
+  * add wait-for-jobs flag
+  * fix style conformance
+  * fix test-style error
+  * add test cases
+  * helm upgrade with --wait support jobs in manifest to be completed
+  * completion: move to native zshCompletion
+  * Add remaining tests in TestDependentChartAliases
+  * Clarifies action needed to list new stable repo
+  * feat: Allow helm test to run a subset of tests
+  * Fix that the invalid version number of the helm package command will escape
+  * Updating descriptions
+  * Add support to judge whether desired version is available or not
+  * Add test case for LoadFiles
+  * Fixes Error: could not find protocol handler for
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * helm search supports semver pre version numbers starting with 0
+  * added test for https://github.com/helm/helm/pull/8913 related to https://github.com/helm/helm/issues/8621
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * feat(test): Adapt completion tests to Cobra 1.1
+  * Bump github.com/spf13/cobra from 1.0.0 to 1.1.1
+  * Update err message to use the regex pattern directly
+  * Fix the lint error message for valid names
+  * do not check YAML if nothing was parsed
+  * fix(test): display error message
+  * bump version to v3.4.0
+  * Skip tests when running helm template
+  * Add --skip-refresh option in helm dep build
+  * Adjusted import
+  * Reuse kube-client
+  * fix(helm): allow skipping manifests in tests directories
+  * prepare testdata
+  * Bugfix: panic when chart contains requirements.lock
+
+-------------------------------------------------------------------
 Wed Dec 09 21:58:44 UTC 2020 - dmueller@suse.com
 
 - Update to version 3.4.2:

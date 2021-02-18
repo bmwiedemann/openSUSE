@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %if "%{flavor}" == "test"
-%define flavor lua51
+%define flavor lua54
 %bcond_without test
 %else
 %bcond_with test
@@ -48,20 +48,17 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # optionally BuildRequires:  %%{flavor}-lnotify
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-moonscript = %{version}
-Obsoletes:      lua-moonscript < %{version}
-%endif
+%lua_provides
+%if ! %{with test}
 %if "%{flavor}" == ""
-Name:           lua-moonscript
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-%if %{with test}
+Name:           %{flavor}-%{mod_name}
+%endif
+%else
 Name:           %{flavor}-moonscript-test
 BuildRequires:  %{flavor}-busted
-%else
-Name:           %{flavor}-moonscript
-%endif
 %endif
 
 %description

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 18 04:46:04 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Re-add mvapich2-fix-double-free.patch as the bug was
+  somehow be reintroduced (bsc#1144000)
+- Add mvapich2-remove-deprecated-sys_siglist.patch to
+  fix compilation errors with newer glibc
+
+-------------------------------------------------------------------
+Sun Nov 29 13:44:44 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- HPC: Fix environment module settings for MANPATH. 
+
+-------------------------------------------------------------------
 Sat Jul 25 07:03:57 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - For HPC builds check for gnu compiler suite version >= 10 and

@@ -31,10 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 Requires:       %{flavor}
 Requires:       %{flavor}-lua-dbus
-%if "%{flavor}" == "lua51"
-Provides:       lua-%{mod_name} = %{version}
-Obsoletes:      lua-%{mod_name} < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

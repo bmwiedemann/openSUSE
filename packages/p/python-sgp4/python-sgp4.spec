@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-sgp4
-Version:        2.14
+Version:        2.16
 Release:        0
 Summary:        Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
 License:        MIT

@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>870701</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>30ff58dc238d4e0b1b628362ae98d7c2</srcmd5>
+    <version>0.9.62</version>
+    <time>1613677265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>873238</requestid>
+  </revision>
 </revisionlist>

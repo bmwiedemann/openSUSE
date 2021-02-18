@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 11 13:33:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.66.7:
+  + Fix various regressions caused by rushed security fixes in
+    2.66.6.
+  + Fix a silent integer truncation when calling
+    `g_byte_array_new_take()` for byte arrays bigger than
+    `G_MAXUINT`.
+  + Disallow using currently-undefined D-Bus connection or server
+    flags to prevent forward-compatibility problems with new
+    security-sensitive flags likely to be released in GLib 2.68.
+  + Bugs fixed: glgo#GNOME/GLib!1933, glgo#GNOME/GLib!1943,
+    glgo#GNOME/GLib!1944, glgo#GNOME/GLib!1945.
+
+-------------------------------------------------------------------
 Fri Feb  5 10:59:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.66.6:

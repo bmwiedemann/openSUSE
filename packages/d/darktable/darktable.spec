@@ -18,6 +18,24 @@
 
 %bcond_with clang
 
+%if 0%{?fedora_version} >= 33
+%bcond_without use_intree_lua
+%else
+%bcond_with    use_intree_lua
+%endif
+
+%if %{with use_intree_lua}
+%define _dont_use_intree_lua OFF
+%else
+%define _dont_use_intree_lua ON
+%endif
+
+%if 0%{?suse_version} || 0%{?fedora_version} >= 33
+%bcond_without cmake_macros
+%else
+%bcond_with    cmake_macros
+%endif
+
 %if 0%{?suse_version} || 0%{?fedora_version} >= 33
 %bcond_without cmake_macros
 %else
@@ -136,11 +154,19 @@ BuildRequires:  xz
 # libraries deps
 BuildRequires:  cups-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libxml2-devel
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libxml-2.0)
 #
-BuildRequires:  lua-devel >= 5.3
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(lua5.3)
+%else
+BuildRequires:  pkgconfig(lua)
+%endif
+%if 0%{?fedora_version} == 31
 BuildRequires:  pugixml-devel
+%else
+BuildRequires:  pkgconfig(pugixml)
+%endif
 #
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(GraphicsMagick)
@@ -260,7 +286,9 @@ rm -rf src/external/CL src/external/OpenCL
 sed -i -e 's, \"external/CL/\*\.h\" , ,' src/CMakeLists.txt
 
 # Remove bundled lua
+%if %{without use_intree_lua}
 rm -rf src/external/lua/
+%endif
 
 %build
 %global cmake_options \\\
@@ -292,7 +320,7 @@ export _OPENCL_INCLUDE_DIR=$(clang -print-search-dirs | awk -F= '/^libra/ {print
 #suse branch
 %cmake \
   -DCLANG_OPENCL_INCLUDE_DIR=${_OPENCL_INCLUDE_DIR} \
-  -DDONT_USE_INTERNAL_LUA=ON \
+  -DDONT_USE_INTERNAL_LUA=%{_dont_use_intree_lua} \
   %ifarch aarch64
   -DTESTBUILD_OPENCL_PROGRAMS=OFF \
   %endif
@@ -308,7 +336,7 @@ export _OPENCL_INCLUDE_DIR=$(clang -print-search-dirs | awk -F= '/^libra/ {print
 mkdir %{_target_platform}
 pushd %{_target_platform}
 %cmake \
-  -DDONT_USE_INTERNAL_LUA=ON \
+  -DDONT_USE_INTERNAL_LUA=%{_dont_use_intree_lua} \
   %ifarch aarch64
   -DTESTBUILD_OPENCL_PROGRAMS=OFF \
   %endif

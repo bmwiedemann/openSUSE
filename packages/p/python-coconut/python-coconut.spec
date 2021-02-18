@@ -1,7 +1,7 @@
 #
 # spec file for package python-coconut
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# coconut is a programming language, not a python module
+%define pythons python3
 Name:           python-coconut
 Version:        1.4.1
 Release:        0

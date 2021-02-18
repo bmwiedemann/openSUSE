@@ -29,15 +29,12 @@ Source:         https://github.com/Olivine-Labs/mediator_lua/archive/v%{upversio
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-mediator_lua = %{version}
-Obsoletes:      lua-mediator_lua < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
-Name:           lua-mediator_lua
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-mediator_lua
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description

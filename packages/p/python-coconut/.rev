@@ -50,4 +50,12 @@
   * add support for python 3.8</comment>
     <requestid>730676</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f7b247ef3689815cfd3e5a37640de198</srcmd5>
+    <version>1.4.1</version>
+    <time>1613677295</time>
+    <user>dimstar_suse</user>
+    <comment>- skip multi-version build, this is a compiler not a python module</comment>
+    <requestid>873397</requestid>
+  </revision>
 </revisionlist>

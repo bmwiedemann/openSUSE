@@ -28,6 +28,7 @@ Source:         https://github.com/brimworks/lua-zlib/archive/v%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  zlib-devel
 Requires:       %{flavor}
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

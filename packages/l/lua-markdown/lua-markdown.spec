@@ -28,15 +28,12 @@ Source:         https://github.com/mpeterv/markdown/archive/%{upversion}.tar.gz#
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
-%if "%{flavor}" == "lua53"
-Provides:       lua-markdown = %{version}
-Obsoletes:      lua-markdown < %{version}
-%endif
+%lua_provides
 %if "%{flavor}" == ""
-Name:           lua-markdown
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-markdown
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description

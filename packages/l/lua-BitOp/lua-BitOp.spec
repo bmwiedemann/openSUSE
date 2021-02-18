@@ -34,6 +34,7 @@ Source:         http://bitop.luajit.org/download/LuaBitOp-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 Requires:       %{flavor}
+%lua_provides
 Obsoletes:      %{name}-doc < %{version}-%{release}
 Provides:       %{name}-doc = %{version}-%{release}
 
