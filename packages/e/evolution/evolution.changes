@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 12 17:09:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.4:
+  + e-editor.js: Correct variable name in
+    EvoEditor.InsertSignature().
+  + Fix a memory leak when quoting headers for message replies.
+  + Bugs fixed: glgo#GNOME/evolution#1157,
+    glgo#GNOME/evolution#1314, glgo#GNOME/evolution#1330.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  8 14:02:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.3:
