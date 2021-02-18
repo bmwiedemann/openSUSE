@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 14 15:08:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + libdocument:
+    - Fix parameter type in gtk-doc.
+    - Stop trusting phsyical dimensions from monitors.
+  + libview:
+    - Fix support for HiDPI in link preview.
+    - Forgo setting device offset on page surfaces.
+  + pdf: Keep same visual appearance between displayed and copied
+    text.
+
+-------------------------------------------------------------------
 Mon Jan 25 10:26:18 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:
