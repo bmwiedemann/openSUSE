@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 12 17:08:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.4:
+  + CamelFolder: Cancel save of the changes early in the dispose().
+  + AlarmNotify:
+    - The e_alarm_notify_activate() can be called multiple times.
+    - Stop using g_application_register().
+    - The XDG_CURRENT_DESKTOP env is a list.
+  + Bug Fixes: glgo#GNOME/evolution-data-server#293,
+    glgo#GNOME/evolution-data-server#296,
+    glgo#GNOME/evolution-data-server#298,
+    glgo#GNOME/evolution-data-server#299,
+    glgo#GNOME/evolution-data-server#300.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  8 13:58:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.3:
