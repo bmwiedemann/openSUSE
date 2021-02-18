@@ -1,7 +1,7 @@
 #
 # spec file for package sensors
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,10 @@ Patch7:         lm_sensors-3.4.0-sensors-detect-add-ftsteutates-support.patch
 Patch8:         lm_sensors-3.5.0-libsensors-fix-soname.patch
 #PATCH-FEATURE-UPSTREAM add ftsteutates support
 Patch9:         lm_sensors-3.6.0-sensors-detect-fix-driver-for-w83677hgi.patch
+#PATCH-FIX-UPSTREAM Deal gracefully with unreadable fan inputs
+Patch10:        pwmconfig-handle-fan-input-error.patch
+#PATCH-FIX-UPSTREAM Further raise the fan threshold
+Patch11:        pwmconfig-raise-fan-threshold.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  rrdtool-devel
@@ -114,6 +118,8 @@ sense to the user.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 RPM_OPT_FLAGS="%{optflags}"

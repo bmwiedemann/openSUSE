@@ -853,4 +853,16 @@
     <comment>Point owners of Nuvoton W83677HG-I and compatible chipsets to the nct6775 driver, as support was just removed from the w83627ehf driver (bsc#1169316)</comment>
     <requestid>803015</requestid>
   </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>969b64437763a6e9b0f4aaa11750a39d</srcmd5>
+    <version>3.6.0</version>
+    <time>1613677117</time>
+    <user>dimstar_suse</user>
+    <comment>- pwmconfig-handle-fan-input-error.patch: pwmconfig: Deal
+  gracefully with unreadable fan inputs (boo#1181890).
+- pwmconfig-raise-fan-threshold.patch: pwmconfig: Further raise the
+  fan threshold (boo#1181890).
+</comment>
+    <requestid>872259</requestid>
+  </revision>
 </revisionlist>

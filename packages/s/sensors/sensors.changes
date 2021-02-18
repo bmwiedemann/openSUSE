@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 11 14:41:45 UTC 2021 - Jean Delvare <jdelvare@suse.com>
+
+- pwmconfig-handle-fan-input-error.patch: pwmconfig: Deal
+  gracefully with unreadable fan inputs (boo#1181890).
+- pwmconfig-raise-fan-threshold.patch: pwmconfig: Further raise the
+  fan threshold (boo#1181890).
+
+-------------------------------------------------------------------
 Tue May 12 09:12:56 UTC 2020 - Jean Delvare <jdelvare@suse.com>
 
 - lm_sensors-3.6.0-sensors-detect-fix-driver-for-w83677hgi.patch:
