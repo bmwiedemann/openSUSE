@@ -24,16 +24,14 @@
 %define legacy_folders amiga,atari,i386,include,mac,ppc,sun
 
 Name:           kbd
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
 License:        GPL-2.0-or-later
 Group:          System/Console
 URL:            http://kbd-project.org/
-# repack_kbd.sh on ftp://ftp.altlinux.org/pub/people/legion/kbd/kbd-%%{version}.tar.xz
-# or
-#  repack_kbd.sh on ftp://ftp.kernel.org/pub/linux/utils/kbd/kbd-%%{version}.tar.xz
+# repack_kbd.sh on https://www.kernel.org/pub/linux/utils/kbd/kbd-%%{version}.tar.xz
 Source:         %{name}-%{version}-repack.tar.xz
 Source1:        kbd_fonts.tar.bz2
 Source2:        suse-add.tar.bz2
@@ -55,7 +53,6 @@ Patch0:         kbd-1.15.2-prtscr_no_sigquit.patch
 Patch2:         kbd-1.15.2-unicode_scripts.patch
 Patch3:         kbd-1.15.2-docu-X11R6-xorg.patch
 Patch4:         kbd-1.15.2-sv-latin1-keycode10.patch
-Patch5:         kbd-1.15.2-setfont-no-cruft.patch
 Patch6:         kbd-1.15.2-dumpkeys-C-opt.patch
 Patch9:         kbd-2.0.2-comment-typo-qwerty.patch
 Patch10:        kbd-2.0.2-doshell-reference.patch
@@ -123,7 +120,6 @@ cp -fp %{SOURCE22} .
 %patch2
 %patch3
 %patch4 -p1
-%patch5 -p1
 %patch6
 %patch9
 %patch10
@@ -189,9 +185,6 @@ install -m 644 fonts/*/* $K/consolefonts/
 # Now call kbd install
 echo "# Now call kbd install DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir}"
 make DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir} install
-# This is an internal library, these files have no use outside kbd.
-rm %{buildroot}%{_libdir}/libtswrap.la
-rm %{buildroot}%{_libdir}/libtswrap.so*
 # ln -s iso01-12x22.psfu $K/consolefonts/suse12x22.psfu
 install -m 644 data/consolefonts/README* $DOC/fonts/
 mkdir -p $DOC/doc/
@@ -282,6 +275,7 @@ install -m 755 fbtest      %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_libexecdir}/%{name}
 install -m 755 numlockbios %{buildroot}%{_libexecdir}/%{name}
 %endif
+rm -rf %{buildroot}%{_sysconfdir}/pam.d
 install -d %{buildroot}%{_distconfdir}/pam.d
 install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/vlock
 install -m 644 %{SOURCE12} %{buildroot}%{_mandir}/man8/
