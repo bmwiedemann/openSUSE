@@ -1,7 +1,7 @@
 #
-# spec file for package kwant
+# spec file for package python-kwant
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # PACKAGE DOES NOT SUPPORT PYTHON2
 %define skip_python2 1
+%define skip_python36 1
 
 %define modname kwant
 
