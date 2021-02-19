@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 22 13:20:29 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.0.3
+  * Fixed bug #1930: No local variables with trigger and xdebug_break()
+  * Fixed bug #1931: xdebug_info() output misses configuration settings
+    if phpinfo() has been called
+  * Fixed bug #1932: One line in multi-line string concatenation is not
+    covered
+  * Fixed bug #1940: Wrong type used for showing GC Stats reports
+- Xdebug can not be tested with 'make test'
+
+-------------------------------------------------------------------
 Tue Feb 16 18:12:33 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use _multibuild to also build for php8
