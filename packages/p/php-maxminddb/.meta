@@ -1,0 +1,7 @@
+<package name="php-maxminddb" project="openSUSE:Factory">
+  <title>PHP extension providing access to maxminddb databases</title>
+  <description>This extension provides access to maxminddb databases and is a drop-in replacement for MaxMind\Db\Reader.
+  </description>
+  <devel project="server:php:extensions" package="php-maxminddb"/>
+  <url>https://github.com/maxmind/MaxMind-DB-Reader-php</url>
+</package>
