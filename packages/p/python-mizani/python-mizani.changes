@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 18 09:14:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.7.2
+  * Fixed bug in :func:`~mizani.bounds.rescale_max` to properly
+    handle values whose maximum is zero.
+- Skip python36 build: NumPy 1.20 in Tumbleweed dropped support
+  for Python 3.6 (NEP 29)
+- SciPy is not a runtime requirement
+
+-------------------------------------------------------------------
 Fri Jul 10 09:01:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.7.1
