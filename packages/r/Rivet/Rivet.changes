@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Sat Nov 28 15:38:14 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.3:
+  * Add consistently 'RIVET_'-prefixed versions of the CTOR and
+    PLUGIN macros, to be the preferred future form from 3.2.0
+    onwards.
+  * Add LHCB_2016_I1454404 (W/Z at 8 TeV), and LHCB_2015_I1396331
+    & LHCB_2016_I1490663 (open charm).
+  * Add an explicit configure test and override variable for the
+    cython executable.
+  * Use more numerically robust x and y definitions in
+    DISKinematics
+  * Relax some restrictions on Sphericity calculation.
+  * Backport master-branch tolerance of no-beam events and no-xsec
+    runs to 3.1.x.
+  * Add a --no-downloads flag to rivet-mkanalysis.
+  * Add a GROOM option to MC_JETS.
+  * Add LHCB_2018_I1662483 (forward dilepton top-pair production
+    cross-section)
+  * Add mixed-arithmetic-type min(n1,n2) and max(n1,n2) functions,
+    using std::common_type.
+  * Adding CMS_2018_I1620050 (dileptonic ttbar at 13 TeV) and
+    CMS_2019_I1744604 (t-channel single top at 13 TeV).
+  * Move the experiment-specific smearing functions into
+    ExptSmearingFunctions.hh, with SmearingFunctions.hh retained
+    for UI simplicity and backward compatibility.
+  * Improve the ATLAS Run 2 MET smearing function to incorporate
+    the Run 2 linearity and resolution dependences.
+  * Refine the ATLAS and CMS MET functions to avoid a peak at
+    MET=0 from negative Gaussian smearing.
+  * Add mT plot to MC_WINC
+  * Use options for MC_VINC, MC_VJETS, MC_VKTSPLITTINGS
+  * Add a list of fastjet::Transformer to FastJets, to be applied
+    in order. Transformers don't currently have a comparison
+    operator, so if this list is non-empty, we have to report the
+    projection as non-equivalent and recompute duplicates -- for
+    now -- but it works, and we can feed back that improvement
+    (again).
+  * Tidy jet distance measure enums, introducing convenience AKT,
+    CA, and CAMBRIDGE aliases.
+  * Add missing 'inline' declarations to all high-level filter
+    functions.
+  * Add missing (i)discard/selectIfAll high-level filtering
+    functions.
+  * Correct logical bugs in (i)selectIfAnyDeltaR/Phi function
+    logic: it's not just the equivalent of the discard versions.
+  * Submission of ATLAS_2019_I1750330
+  * Add bare-lepton origin position to DressedLepton constructors.
+  * Add aspace() and l/rpad() utility functions.
+  * Rename the little-used in-place sortBy() functions to
+    isortBy() cf. ifilter() and friends, since the behaviour
+    should not change wildly just based on the constness status of
+    an argument.
+  * Add JADE_1985_I213948 gamma, pi0 and eta spectra at 14, 22.5
+    and 34.4 GeV
+  * Update rivet-diffhepdata-all to check local directory for
+    analysis.json
+  * Add L3_1990_I298078 jet rates at MZ
+  * Add L3_1991_I314407 pi0 and charged particle spectra
+  * Add L3_1994_I374698 pi0 and eta spectra
+  * Add missing jet rates to L3_2004_I652683
+  * Add DELPHI_2000_I531568 p pbar correlations
+  * Add L3_2008_I825820 event shapes at 197 GeV
+  * Add ALEPH_2001_I555653  tau polarization at LEP I
+  * Add DELPHI_2008_I763352 tau polarization at LEP II
+  * Add MAC_1987_I245571    tau polarization at 29 GeV
+  * Add AMY_1990_I298238    tau polarization at 57 GeV
+  * Add VENUS_1997_I440852  tau polarization at 58 GeV
+  * Add DELPHI_2000_I511443 tau polarization at LEP I
+  * Add OPAL_2001_I554583   tau polarization at LEP I
+  * Add L3_1998_I467929     tau polarization at LEP I
+  * Add client-side plot display filtering and and -m/-M pattern
+    (un)matching fags to rivet-mkhtml.
+  * Add BELLE_2018_I1621272 B->D*- tau+ nu_tau
+  * Add BESIII_2019_I1702549 D_S+ -> K0 e+ nu_e
+  * Add BELLE_2019_I1724068 B0->D*- tau+ nu_tau
+  * Fix Clang 12.0 compiler warnings
+  * Add BABAR_2008_I781294 Lambda_c+ -> Xi- pi+ K+
+  * Add BESIII_2020_I1817739 e+e- > omega pi0, omega eta
+  * Add BESIII_2020_I1791570 J/Psi, psi(2S) -> Sigma+, Sigmabar-
+  * Add plot to BESIII_2019_I1691850
+  * Add SND_2020_I1809286 e+e-> pi+pi-pi0
+  * Add BELLE_2020_I1796822 B+- > pi+pi- ell nu
+  * Add BESIII_2020_I1814783 e+e- -> Sigma+-Sigmabar-+
+  * Add CLEOII_1997_I446031 e+e- > e+e- pi0/eta/eta'
+  * Create bash completion dir in $prefix/etc if it doesn't exist.
+  * Fix bug where path wasn't set for booking of scatters
+  * Submission of ATLAS_2019_I1762584, ATLAS_2019_I1772062 and
+    ATLAS_2019_I1759875
+  * Add BELLE_2020_I1789775 e+e- > D_s D_s2
+  * Add BELLE_2019_I1762826 e+e- > D_s D_s1(2536)
+  * Add warnings and physicality checks to PartonicTops
+  * Submission of ATLAS_2020_I1803608
+  * Fix bug related to (de)selection of weight subsets
+  * Make Event class aware of selected weight subsets
+  * Added self-guided Rivet "truth analysis" tutorial
+  * Allow user to specify nominal weight. Also do not write out
+    weight name it skip weights is selected
+  * Add SND_2020_I1806118 e+e- > K+K-pi0
+- Move bash completion helper to standard bash_completion dir
+  (BuildRequires: bash-completion for proper dir ownership).
+- Add Rivet-analysis-compilation.patch: Fix compilation of
+  analyses; patch taken from upstream.
+
+-------------------------------------------------------------------
 Tue Jul 14 20:43:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.2:

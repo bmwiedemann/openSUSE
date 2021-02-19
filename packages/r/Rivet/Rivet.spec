@@ -1,7 +1,7 @@
 #
 # spec file for package Rivet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define so_name lib%{name}-3_1_2
+%define so_name lib%{name}-3_1_3
 Name:           Rivet
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
@@ -26,8 +26,11 @@ Group:          Productivity/Scientific/Physics
 URL:            https://rivet.hepforge.org/
 Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
+# PATCH-FIX-UPSTREAM Rivet-analysis-compilation.patch badshah400@gmail.com -- Fix analysis compilation errors; patch taken from upstream git commit
+Patch1:         Rivet-analysis-compilation.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  YODA-devel >= 1.8.0
+BuildRequires:  bash-completion
 BuildRequires:  doxygen
 BuildRequires:  fastjet-contrib-devel
 BuildRequires:  fastjet-devel
@@ -142,7 +145,7 @@ export PYTHON_VERSION=%{py3_ver}
            --with-hepmc3-libpath=%{_libdir}/ \
            --with-hepmc3-incpath=%{_includedir}/ \
            --docdir=%{_docdir}/%{name}/
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -165,6 +168,9 @@ chmod -x %{buildroot}%{_datadir}/Rivet/ALICE_2012_I1126966.info \
         %{buildroot}%{_datadir}/Rivet/ALICE_2014_I1243865.info \
         %{buildroot}%{_datadir}/Rivet/STAR_2017_I1510593.{info,plot}
 sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbib.py
+
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mv %{buildroot}%{_prefix}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/bash-completion/completions/
 
 %fdupes %{buildroot}%{_datadir}/Rivet/
 
@@ -191,6 +197,7 @@ sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbi
 %exclude %{_bindir}/rivet-buildplugin
 %{python3_sitearch}/rivet/
 %{python3_sitearch}/rivet-*egg-info
+%{_datadir}/bash-completion/completions/*
 
 %files plugins
 %license COPYING
