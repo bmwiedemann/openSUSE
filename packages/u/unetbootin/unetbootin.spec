@@ -16,7 +16,7 @@
 #
 
 
-%define rev 700
+%define rev 702
 Name:           unetbootin
 Version:        0.0.%{rev}
 Release:        0
