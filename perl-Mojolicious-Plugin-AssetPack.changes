@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 19 09:38:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.11
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-AssetPack/Changes
+
+  2.11 2021-02-19T10:23:04+0900
+   - Use 'partial(1)->to' instead of 'detour' which was deprecated in Mojolicious 9.0
+     Contributor: Marius Kittler
+
+-------------------------------------------------------------------
 Sat Dec 12 03:07:39 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.10
