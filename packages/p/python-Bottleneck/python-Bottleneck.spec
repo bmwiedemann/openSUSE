@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-Bottleneck
 Version:        1.3.2
 Release:        0
 Summary:        A collection of fast NumPy array functions
 License:        BSD-2-Clause AND BSD-3-Clause
-URL:            http://berkeleyanalytics.com/bottleneck/
+URL:            https://github.com/pydata/bottleneck
 Source0:        https://files.pythonhosted.org/packages/source/B/Bottleneck/Bottleneck-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
@@ -49,7 +50,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 %pytest_arch %{buildroot}%{$python_sitearch}/bottleneck/tests/
 
 %files %{python_files}

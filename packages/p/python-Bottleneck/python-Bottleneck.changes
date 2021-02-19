@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 17 22:59:05 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 build: NumPy 1.20 in Tumbleweed does not provide
+  python36-numpy anymore (NEP 29).
+
+-------------------------------------------------------------------
 Mon Mar 30 07:02:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Require numpy 1.16.0, removing Python 2 support which provides
