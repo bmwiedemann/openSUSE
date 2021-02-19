@@ -1,7 +1,7 @@
 #
 # spec file for package irrlicht
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 #
 %define  sover 1_8
+%define  libver 1.8
+%define  libfullver %{libver}.4
 Name:           irrlicht
-Version:        1.8.4
+Version:        %{libfullver}
 Release:        0
 Summary:        A realtime 3D engine
 License:        Zlib
 Group:          Development/Libraries/C and C++
-Url:            http://irrlicht.sourceforge.net/
+URL:            http://irrlicht.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/irrlicht/%{name}-%{version}.zip
 # PATCH-FIX-OPENSUSE irrlicht-1.7.9.3629-config.patch -- use system libraries http://irrlicht.sourceforge.net/phpBB2/viewtopic.php?t=24076
 Patch0:         irrlicht-1.7.9.3629-config.patch
 # PATCH-FIX-UPSTREAM irrlicht-1.8-directionlight.patch
 Patch1:         irrlicht-1.8-directionlight.patch
+# PATCH-FIX-UPSTREAM fixes build
+Patch2:         irrlicht-1.8.4-remove-sys-sysctl.h.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -96,6 +100,7 @@ commercial 3D engines.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 sed -i 's/\r//' readme.txt
 iconv -o readme.txt.iso88591 -f iso88591 -t utf8 readme.txt
@@ -103,7 +108,7 @@ mv readme.txt.iso88591 readme.txt
 # We don't use any of this. Deleting it to be sure we are using system headers
 rm -rf source/Irrlicht/jpeglib source/Irrlicht/zlib source/Irrlicht/libpng
 for i in include/*.h doc/upgrade-guide.txt source/Irrlicht/*.cpp source/Irrlicht/*.h; do
-  	sed -i 's/\r//' $i
+	sed -i 's/\r//' $i
 	chmod -x $i
 	touch -r changes.txt $i
 done
@@ -127,8 +132,8 @@ make -C source/Irrlicht INSTALL_DIR=%{buildroot}%{_libdir} install \
      ZLIBOBJ= JPEGLIBOBJ= LIBPNGOBJ=
 # Cleaning up after the really bad installer...
 pushd %{buildroot}%{_libdir}
-ln -s -f libIrrlicht.so.1.8.0 libIrrlicht.so.1.8
-ln -s -f libIrrlicht.so.1.8 libIrrlicht.so
+ln -s -f libIrrlicht.so.%{libfullver} libIrrlicht.so.%{libver}
+ln -s -f libIrrlicht.so.%{libver} libIrrlicht.so
 popd
 # End Makefile mess cleanup
 install -d %{buildroot}%{_datadir}/irrlicht
