@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 09:57:22 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build (irrlicht-1.8.4-remove-sys-sysctl.h.patch)
+- fix library link versions
+
+-------------------------------------------------------------------
 Wed Feb 14 15:27:32 UTC 2018 - crrodriguez@opensuse.org
 
 - Do not BuildRequire xorg-x11-devel or Mesa-devel 

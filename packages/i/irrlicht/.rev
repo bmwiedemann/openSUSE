@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>580959</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ead22d338aac0b7520c6c5f2565dc6ff</srcmd5>
+    <version>1.8.4</version>
+    <time>1613774724</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build (irrlicht-1.8.4-remove-sys-sysctl.h.patch)
+- fix library link versions
+</comment>
+    <requestid>873705</requestid>
+  </revision>
 </revisionlist>
