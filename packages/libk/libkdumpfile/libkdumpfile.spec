@@ -1,7 +1,7 @@
 #
 # spec file for package libkdumpfile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 
 # There was no Python single-spec before SLE15
-%if %{defined python_subpackages}
+%if %{defined python_module}
 %define new_python_macros 1
 %else
 %define new_python_macros 0
