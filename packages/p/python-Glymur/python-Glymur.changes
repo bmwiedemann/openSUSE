@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 11 00:02:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- NEP 29: NumPy dropped Python 3.6 -- skip python36 build in TW
+- Make importlib_resources conditional for Python < 3.7 (SLE/Leap)
+
+-------------------------------------------------------------------
+Sat Jan 23 12:18:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.9.3
+  * Qualify on Python 3.9
+  * Qualify on OpenJPEG 2.4.0
+  * Add support for multithreaded writes.
+- Always require importlib_resources for tests: the new python36 
+  flavor on TW needs it, the python38 flavor is okay with it being 
+  installed.
+
+-------------------------------------------------------------------
 Tue Jul 14 16:55:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't install tests

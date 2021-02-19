@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glymur
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# NEP 29: NumPy dropped Python 3.6
+%define         skip_python36 1
 Name:           python-Glymur
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
@@ -36,13 +38,12 @@ Requires(postun): update-alternatives
 Recommends:     python-lxml
 BuildArch:      noarch
 # SECTION test requirements
+# (importlib_resources for Leap's Python 3.6)
+BuildRequires:  %{python_module importlib_resources if %python-base < 3.7}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module numpy >= 1.7.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-image}
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module importlib_resources}
-%endif
 # /SECTION
 %python_subpackages
 
@@ -57,10 +58,11 @@ Python interface to the OpenJPEG library
 
 %install
 %python_install
-# don't install tests
-rm -rf %{buildroot}%{python_sitelib}/tests
 %python_clone -a %{buildroot}%{_bindir}/jp2dump
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand # don't install tests
+rm -rf %{buildroot}%{$python_sitelib}/tests
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %pytest
@@ -76,6 +78,6 @@ rm -rf %{buildroot}%{python_sitelib}/tests
 %license LICENSE.txt
 %python_alternative %{_bindir}/jp2dump
 %{python_sitelib}/glymur*
-%{python_sitelib}/Glymur*
+%{python_sitelib}/Glymur-%{version}*-info
 
 %changelog
