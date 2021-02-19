@@ -19,13 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-topy
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Tool for fixing typos in text using regular expressions
 License:        MIT AND CC-BY-SA-4.0
 Group:          Development/Languages/Python
 URL:            https://github.com/intgr/topy
 Source:         https://github.com/intgr/topy/archive/%{version}.tar.gz#/topy-%{version}.tar.gz
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module regex >= 2016.07.14}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,11 +37,6 @@ Requires:       python-regex >= 2016.07.14
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module regex >= 2016.07.14}
-# /SECTION
 %python_subpackages
 
 %description
