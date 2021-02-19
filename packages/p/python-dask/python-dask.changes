@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 17 21:51:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Run the full test suite: use rootdir conftest.py
+  * importable optional dependencies are skipped automatically
+  * can use network marker to skip network tests
+- Don't package and test -dataframe and -array for python36 flavor,
+  because python36-numpy and depending packages were dropped from
+  Tumbleweed with version 1.20.
+- Skip more distributed tests occasionally failing
+
+-------------------------------------------------------------------
 Mon Feb  8 14:24:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2020.2.0

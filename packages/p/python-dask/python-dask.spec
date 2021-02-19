@@ -31,7 +31,7 @@ Version:        2021.2.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
-URL:            https://github.com/ContinuumIO/dask/
+URL:            https://dask.org
 Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.6}
@@ -72,19 +72,19 @@ BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module mimesis}
 BuildRequires:  %{python_module multipledispatch}
-BuildRequires:  %{python_module numpy >= 1.15.1}
-BuildRequires:  %{python_module pandas >= 0.25.0}
 BuildRequires:  %{python_module partd >= 0.3.10}
-# pytest-xdist is not a hard requirement for testing, but this avoids a hang of
-# pytest on i586 after successfully passing the test suite
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tables}
 BuildRequires:  %{python_module toolz >= 0.8.2}
-BuildRequires:  %{python_module zarr}
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
+BuildRequires:  %{python_module numpy >= 1.15.1 if (%python-base without python36-base)}
+BuildRequires:  %{python_module pandas >= 0.25.0 if (%python-base without python36-base)}
+BuildRequires:  %{python_module tables if (%python-base without python36-base)}
+BuildRequires:  %{python_module zarr if (%python-base without python36-base)}
+# pytest-xdist is not a hard requirement for testing, but this avoids a hang of
+# pytest on i586 after successfully passing the test suite
+BuildRequires:  %{python_module pytest-xdist}
 %endif
 %python_subpackages
 
@@ -100,12 +100,14 @@ A minimal task scheduling abstraction and parallel arrays.
 %package all
 Summary:        All dask components
 Requires:       %{name} = %{version}
-Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
-Requires:       %{name}-dataframe = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       %{name}-dot = %{version}
 Requires:       %{name}-multiprocessing = %{version}
+%if "%python_flavor" != "python36"
+Requires:       %{name}-array = %{version}
+Requires:       %{name}-dataframe = %{version}
+%endif
 
 %description all
 A minimal task scheduling abstraction and parallel arrays.
@@ -115,7 +117,12 @@ A minimal task scheduling abstraction and parallel arrays.
 * dask.async is a shared-memory asynchronous scheduler that efficiently
   executes dask dependency graphs on multiple cores.
 
+%if "%python_flavor" == "python36"
+This package pulls in all the optional dask components, except for dataframe
+and array, because NumPy does not support Python 3.6 anymore.
+%else
 This package pulls in all the optional dask components.
+%endif
 
 %package array
 Summary:        Numpy-like array data structure for dask
@@ -254,19 +261,21 @@ This package contains the multiprocessing interface.
 
 %if %{with test}
 %check
-# SECTION These tests need network:
-donttest="test_await"
-donttest+=" or test_serializable_groupby_agg"
-donttest+=" or test_persist"
-donttest+=" or test_local_get_with_distributed_active"
-donttest+=" or test_local_scheduler"
-# /SECTION
 # different seed or mimesis version
-donttest+=" or (test_datasets and test_deterministic)"
+donttest="(test_datasets and test_deterministic)"
 # distributed/pytest-asyncio cancer is spreading
 # https://github.com/dask/distributed/pull/4212 and https://github.com/pytest-dev/pytest-asyncio/issues/168
-donttest+="or test_annotations_blockwise_unpack"
-%pytest -ra dask/tests -k "not ($donttest)" -n auto
+donttest+="or (test_distributed and test_annotations_blockwise_unpack)"
+donttest+="or (test_distributed and test_persist)"
+donttest+="or (test_distributed and test_local_get_with_distributed_active)"
+donttest+="or (test_distributed and test_serializable_groupby_agg)"
+donttest+="or (test_distributed and test_await)"
+# NEP 29: There is no python36-dask-dataframe or -array because Tumbleweed dropped python36-numpy with 1.20
+python36_ignore="--ignore dask/dataframe --ignore dask/array"
+python36_donttest=" or (test_distributed and test_to_hdf)"
+# https://github.com/dask/dask/issues/7170 -- skip in any case
+sed -i 's/from dask.array.numpy_compat import _numpy_120/_numpy_120 = True/' dask/tests/test_distributed.py
+%pytest -ra -m "not network" -k "not ($donttest ${$python_donttest})" -n auto ${$python_ignore}
 %endif
 
 %if !%{with test}
@@ -288,17 +297,21 @@ donttest+="or test_annotations_blockwise_unpack"
 %files %{python_files all}
 %license LICENSE.txt
 
+%if "%python_flavor" != "python36"
 %files %{python_files array}
 %license LICENSE.txt
 %{python_sitelib}/dask/array/
+%endif
 
 %files %{python_files bag}
 %license LICENSE.txt
 %{python_sitelib}/dask/bag/
 
+%if "%python_flavor" != "python36"
 %files %{python_files dataframe}
 %license LICENSE.txt
 %{python_sitelib}/dask/dataframe/
+%endif
 
 %files %{python_files distributed}
 %license LICENSE.txt

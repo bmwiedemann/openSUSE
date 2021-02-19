@@ -1194,4 +1194,18 @@
     <comment></comment>
     <requestid>870416</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>976ecedf4f1333b3a6dc2bdb9ad66a9b</srcmd5>
+    <version>2021.2.0</version>
+    <time>1613774718</time>
+    <user>dimstar_suse</user>
+    <comment>- Run the full test suite: use rootdir conftest.py
+  * importable optional dependencies are skipped automatically
+  * can use network marker to skip network tests
+- Don't package and test -dataframe and -array for python36 flavor,
+  because python36-numpy and depending packages were dropped from
+  Tumbleweed with version 1.20.
+- Skip more distributed tests occasionally failing</comment>
+    <requestid>873709</requestid>
+  </revision>
 </revisionlist>
