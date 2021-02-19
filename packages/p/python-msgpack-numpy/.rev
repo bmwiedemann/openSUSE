@@ -33,4 +33,12 @@ required by python-intake</comment>
     <comment></comment>
     <requestid>841148</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2f346fca6985d4e8b54f3dfe5eff3a84</srcmd5>
+    <version>0.4.7.1</version>
+    <time>1613774647</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (no numpy)</comment>
+    <requestid>873579</requestid>
+  </revision>
 </revisionlist>

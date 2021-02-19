@@ -1,7 +1,7 @@
 #
 # spec file for package python-openmesh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python36 1
 Name:           python-openmesh
 Version:        1.1.3
 Release:        0
-License:        BSD-3-Clause
 Summary:        A data structure for representing and manipulating polygon meshes
-Url:            https://www.graphics.rwth-aachen.de:9000/OpenMesh/openmesh-python
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://www.graphics.rwth-aachen.de:9000/OpenMesh/openmesh-python
 Source:         https://files.pythonhosted.org/packages/source/o/openmesh/openmesh-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes

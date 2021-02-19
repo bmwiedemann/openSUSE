@@ -16,6 +16,7 @@
 #
 
 
+%global pythons python3
 Name:           sshuttle
 Version:        1.0.5
 Release:        0

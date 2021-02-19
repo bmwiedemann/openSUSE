@@ -1,7 +1,7 @@
 #
 # spec file for package torrentinfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009 Pascal Bleser <guru@unixtech.be>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ Source1:        %{name}.changes
 Patch0:         torrentinfo-fix_man.patch
 # PATCH-FIX-UPSTREAM torrentinfo-fix_tests_py3.patch
 Patch1:         torrentinfo-fix_tests_py3.patch
-BuildRequires:  python3
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-pytest
@@ -43,11 +42,7 @@ of the whole torrent, information on each file within the torrent, and a
 full hierarchical dump of the torrent file's contents.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{SOURCE1} '+%%Y-%%m-%%d')
-sed -e "s/__DATE__/$FAKE_BUILDDATE/" -i doc/conf.py
+%autosetup -p1
 
 %build
 python3 setup.py build
@@ -60,8 +55,8 @@ install -Dm0644 doc/_build/man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %check
 # https://github.com/Fuuzetsu/torrentinfo/issues/17
 sed -i '/import nose/d' test/tests.py
-export PYTHONPATH=src
-%pytest test/tests.py
+PYTHONPATH=src:%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 \
+ pytest -v test/tests.py
 
 %files
 %doc README.md

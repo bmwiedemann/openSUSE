@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
+Patch0:         https://github.com/Delgan/loguru/commit/31cf758ee9d22dbfa125f38153782fe20ac9dce5.patch#/pytest-6.2-excepthooks.patch
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -46,6 +47,7 @@ which dispatches log messages to configured handlers.
 
 %prep
 %setup -q -n loguru-%{version}
+%patch0 -p1
 
 %build
 %python_build

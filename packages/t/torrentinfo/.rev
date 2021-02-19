@@ -15,4 +15,12 @@
     <comment>- remove dependency on nose, use %pytest macro (forwarded request 818488 from pgajdos)</comment>
     <requestid>818492</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1bc0d439e2341a2483d1033d5813f8d5</srcmd5>
+    <version>1.8.6</version>
+    <time>1613774674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873626</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,27 @@
+From 253ef7e5f5aaa6c32a44b8bd27db435acd808f72 Mon Sep 17 00:00:00 2001
+From: Dirk Mueller <dirk@dmllr.de>
+Date: Fri, 19 Feb 2021 01:16:30 +0100
+Subject: [PATCH] Add missing sys import on python 3.6
+
+Otherwise this failure occurs on test native_mb_python_tag:0
+
+   File "rpmbuild/BUILD/xdoctest-0.15.4/setup.py", line 173, in native_mb_python_tag
+     if sys.version_info[:2] >= (3, 8):
+
+   UnboundLocalError: local variable 'sys' referenced before assignment
+---
+ setup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index f1be6fe..7814d8b 100755
+--- a/setup.py
++++ b/setup.py
+@@ -170,6 +170,7 @@ def native_mb_python_tag(plat_impl=None, version_info=None):
+             else:
+                 abi = 'm'
+         else:
++            import sys
+             if sys.version_info[:2] >= (3, 8):
+                 # bpo-36707: 3.8 dropped the m flag
+                 abi = ''

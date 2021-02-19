@@ -1,7 +1,7 @@
 #
 # spec file for package python-xdoctest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xdoctest
-Version:        0.13.0
+Version:        0.15.4
 Release:        0
 Summary:        Enhanced Python builtin doctest module
 License:        Apache-2.0
 URL:            https://github.com/Erotemic/xdoctest
 Source:         https://github.com/Erotemic/xdoctest/archive/%{version}.tar.gz#/xdoctest-%{version}.tar.gz
+Patch0:         https://github.com/Erotemic/xdoctest/pull/97.patch
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,6 +41,7 @@ A rewrite of the builtin doctest module with a pytest plugin.
 
 %prep
 %setup -q -n xdoctest-%{version}
+%autopatch -p1
 sed -i '1{/^#!/d}' xdoctest/__main__.py
 sed -i 's/--ignore-glob=setup.py//' pytest.ini
 
@@ -58,7 +60,7 @@ sed -i 's/--ignore-glob=setup.py//' pytest.ini
 %python_uninstall_alternative xdoctest
 
 %check
-mkdir ~/bin
+mkdir -p ~/bin
 export PATH=$PATH:~/bin
 export PYTHONDONTWRITEBYTECODE=1
 # Python 2 on openSUSE 15.x gets confused if buildroot installed copy is in PYTHONPATH

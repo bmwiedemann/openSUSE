@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 19 00:09:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- only build for main python3 version, this is not a module 
+
+-------------------------------------------------------------------
 Mon Jan  4 08:41:19 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.5:

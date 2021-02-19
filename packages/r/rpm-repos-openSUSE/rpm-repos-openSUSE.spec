@@ -187,6 +187,15 @@ sed -e 's/@DIST_ARCH@/zsystems/g' -i %{buildroot}%{_sysconfdir}/yum.repos.d/open
 
 # ==== Primary Leap repository configuration ====
 
+%if 0%{?sle_version} >= 150300
+# Setup for main SLE/Leap arches
+#ifarch ix86 x86_64 aarch64 power64 s390x
+install %{S:11} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
+install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
+
+# TODO: Add "Step" repos for arm and riscv64
+
+%else
 # Setup for primary arches
 %ifarch %{ix86} x86_64
 install %{S:11} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
@@ -211,6 +220,8 @@ sed -e 's/@DIST_ARCH@/riscv/g' -i %{buildroot}%{_sysconfdir}/yum.repos.d/opensus
 
 %ifarch s390x
 sed -e 's/@DIST_ARCH@/zsystems/g' -i %{buildroot}%{_sysconfdir}/yum.repos.d/opensuse-leap-oss.repo
+%endif
+
 %endif
 
 %endif

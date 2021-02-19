@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 18 23:03:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no numpy) 
+
+-------------------------------------------------------------------
 Sat Oct 10 19:05:16 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
