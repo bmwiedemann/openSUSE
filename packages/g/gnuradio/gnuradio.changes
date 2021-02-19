@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 15 12:35:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- LTO segfaults on %arm, so disable it - boo#1182440
+
+-------------------------------------------------------------------
 Mon Dec 14 09:24:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Drop obsolete "Obsoletes: libgnuradio0"

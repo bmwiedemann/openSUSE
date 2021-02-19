@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch %{arm}
+# boo#1182440
+%define _lto_cflags %{nil}
+%endif
 
 %bcond_without docs
 
