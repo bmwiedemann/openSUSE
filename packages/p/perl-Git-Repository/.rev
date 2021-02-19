@@ -7,4 +7,13 @@
     <comment>Initial submit to Factory</comment>
     <requestid>823133</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10206d39b32e7205d7470d450216bd0a</srcmd5>
+    <version>1.324</version>
+    <time>1613774699</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build issues with git 2.30 (git-2.30.0.patch)
+</comment>
+    <requestid>873662</requestid>
+  </revision>
 </revisionlist>
