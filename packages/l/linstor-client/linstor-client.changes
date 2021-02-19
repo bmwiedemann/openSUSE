@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 26 06:23:29 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1181397, update to 1.6.1
+ * Fix reconnect on timeout error in interactive mode
+ * Fix incorrect resource toggle-disk short option -dflt -> --dflt
+ * Toggle disk storage pool options are now optional
+ * node list now shows DELETING and EVICTED nodes
+ * Added diskless placement and additional placement count for auto-place
+ * Added node restore command for evicted nodes
+ * depend on python-linstor v1.6.0
+ * migrate: remove unused AllowLargerVolumeSize property
+ * fix incorrect use of argparse.ArgumentTypeError
+ * drbd-options: add units to error message
+ * Allow setting options via environment variables, prefix is `LS_CLIENT_`
+ * Added error-report delete command
+ * Commandline choices(enums) are now mostly case insensitive
+
+-------------------------------------------------------------------
 Tue Sep 22 07:28:50 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1176790, update to 1.3.0

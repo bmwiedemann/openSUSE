@@ -1,7 +1,7 @@
 #
 # spec file for package linstor-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define python_linstor 1.6
 Name:           linstor-client
-Version:        1.3.0
+Version:        1.6.1
 Release:        0
 Summary:        DRBD distributed resource management utility
 License:        GPL-3.0-only
@@ -27,14 +28,21 @@ URL:            https://github.com/LINBIT/linstor-client
 Source:         http://www.linbit.com/downloads/linstor/%{name}-%{version}.tar.gz
 Patch1:         change-location-of-bash-completion.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module linstor >= %{version}}
+BuildRequires:  %{python_module linstor >= %{python_linstor}}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       %{python_module linstor >= %{version}}
+Requires:       %{python_module linstor >= %{python_linstor}}
 %python_subpackages
 
 %description
 This client program communicates to a linstor controller node which manages the DRBD9 resources.
+
+%package -n linstor
+Summary:        Binaries of linstor client
+Group:          Productivity/Clustering/HA
+
+%description -n linstor
+Binaries of linstor client
 
 %prep
 %setup -q
@@ -55,9 +63,9 @@ sed -i '/^#!/d' linstor_client_main.py \
 
 %files %{python_files}
 %{python_sitelib}
-# FIXME: with python3_only, binaries only exist in python3-linstor-client
-%python3_only %{_bindir}/linstor
-%python3_only %{_mandir}/man8/linstor*
-%python3_only %{_datadir}/bash-completion/completions/linstor
+
+%files -n linstor
+%{_bindir}/linstor
+%{_datadir}/bash-completion/completions/linstor
 
 %changelog
