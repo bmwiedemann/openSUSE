@@ -1,0 +1,49 @@
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Fri, 19 Feb 2021 08:02:45 +0100
+Subject: runtime/POSIX: fix failures with glibc-2.33
+Patch-mainline: submitted, pr #1385
+References: stat
+
+commit 8ed005daf0ab of glibc-2.33 (Remove stat wrapper functions, move
+them to exported symbols) removed renames of `__fxstat`, `__xstat`, and
+`__lxstat` to `__fxstat64`, `__xstat64`, and `__lxstat64`, respectively.
+
+But we relied on the renames to build `fd_64.c` properly. With glibc
+2.33, we now see link failures of the POSIX runtime:
+error: Linking globals named '__xstat': symbol multiply defined!
+
+Rename the functions using `__REDIRECT_NTH` in the code as
+`__USE_FILE_OFFSET64` case (which we define at the top of the file by
+`#define _FILE_OFFSET_BITS 64`) did exactly that.
+
+Fixes #1384.
+
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ runtime/POSIX/fd_64.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/runtime/POSIX/fd_64.c b/runtime/POSIX/fd_64.c
+index eec41f113024..c8796475aca8 100644
+--- a/runtime/POSIX/fd_64.c
++++ b/runtime/POSIX/fd_64.c
+@@ -73,6 +73,16 @@ int openat(int fd, const char *pathname, int flags, ...) {
+   return __fd_openat(fd, pathname, flags, mode);
+ }
+ 
++/* removed in glibc 2.33 */
++#ifdef __REDIRECT_NTH
++extern int __REDIRECT_NTH(__fxstat, (int __ver, int __fildes,
++			struct stat *__stat_buf), __fxstat64);
++extern int __REDIRECT_NTH (__xstat, (int __ver, const char *__filename,
++			struct stat *__stat_buf), __xstat64);
++extern int __REDIRECT_NTH (__lxstat, (int __ver, const char *__filename,
++			struct stat *__stat_buf), __lxstat64);
++#endif
++
+ off64_t lseek(int fd, off64_t offset, int whence) {
+   return __fd_lseek(fd, offset, whence);
+ }
+-- 
+2.30.1
+

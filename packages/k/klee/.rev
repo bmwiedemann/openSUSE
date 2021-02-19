@@ -1137,4 +1137,21 @@ build with uclibc</comment>
 - Go with regular release for now, but leave _service files intact. (forwarded request 862450 from aaronpuchert)</comment>
     <requestid>862477</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>02c9f94b47fa3c3d8a55357ef6c4fe4c</srcmd5>
+    <version>2.2+20210216</version>
+    <time>1613774721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+20210216:
+  * Executor: remove obsolete special case for __cxa_{re,}throw
+  * add klee_messages for C++ exception handling support
+  * add ifdefs for C++ exception handling
+  * renaming 'libcxx' -&gt; 'libc++'
+  * posix runtime: getcwd: check malloc and set errno
+  * posix runtime: remove dead branch
+  * klee-libc: simplify mempcpy
+  * fix cflags for runtime build types
+- add 0001-runtime-POSIX-fix-failures-with-glibc-2.33.patch</comment>
+    <requestid>873704</requestid>
+  </revision>
 </revisionlist>

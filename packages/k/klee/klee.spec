@@ -31,14 +31,14 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.2
+Version:        2.2+20210216
 Release:        0
 URL:            http://klee.github.io/
-Source0:        https://github.com/klee/klee/archive/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
-
+Patch0:         0001-runtime-POSIX-fix-failures-with-glibc-2.33.patch
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
 BuildRequires:  gperftools-devel
@@ -68,8 +68,7 @@ infrastructure, and available under the UIUC open source license. For more
 information on what KLEE is and what it can do, see the OSDI 2008 paper. 
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 mkdir -p build/test/
 cp %{SOURCE2} build/test/

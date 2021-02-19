@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 19 07:15:02 UTC 2021 - jslaby@suse.cz
+
+- Update to version 2.2+20210216:
+  * Executor: remove obsolete special case for __cxa_{re,}throw
+  * add klee_messages for C++ exception handling support
+  * add ifdefs for C++ exception handling
+  * renaming 'libcxx' -> 'libc++'
+  * posix runtime: getcwd: check malloc and set errno
+  * posix runtime: remove dead branch
+  * klee-libc: simplify mempcpy
+  * fix cflags for runtime build types
+- add 0001-runtime-POSIX-fix-failures-with-glibc-2.33.patch
+
+-------------------------------------------------------------------
 Sun Dec 13 14:44:36 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update version to 2.2: the biggest changes are C++ exception
