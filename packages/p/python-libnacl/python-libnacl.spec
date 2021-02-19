@@ -1,7 +1,7 @@
 #
 # spec file for package python-libnacl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libnacl
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Python bindings for libsodium based on ctypes
 License:        Apache-2.0
 URL:            https://github.com/saltstack/libnacl
-Source0:        https://github.com/saltstack/libnacl/archive/v%{version}.tar.gz
+Source0:        https://github.com/saltstack/libnacl/archive/v%{version}.tar.gz#/libnacl-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

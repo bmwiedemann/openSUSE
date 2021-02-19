@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 18 20:17:07 UTC 2021 - Niels Abspoel <aboe76@gmail.com>
+
+- Revert libsodium requirement back to libsodium23
+
+-------------------------------------------------------------------
+Mon Feb  1 23:12:44 UTC 2021 - Niels Abspoel <aboe76@gmail.com>
+
+- Update to 1.7.2
+* remove encoding parameter json.loads for python 3.9 compatibility
+* implement functions for equal-comparison and hashing keys
+* improved spec file
+
+-------------------------------------------------------------------
 Tue Mar  3 13:12:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.7.1

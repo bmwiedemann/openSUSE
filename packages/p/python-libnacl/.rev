@@ -154,4 +154,12 @@
  * Add Crypto_box_easy</comment>
     <requestid>781216</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c939d0ba79c006923b654b6af19e4574</srcmd5>
+    <version>1.7.2</version>
+    <time>1613774610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873706</requestid>
+  </revision>
 </revisionlist>
