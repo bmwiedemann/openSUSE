@@ -366,4 +366,14 @@
     <comment></comment>
     <requestid>864089</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>535b7c7fcbb6d33ae01ac60ce47572a0</srcmd5>
+    <version>3.3.1</version>
+    <time>1613774614</time>
+    <user>dimstar_suse</user>
+    <comment>- veusz should need primary python3 binary
+
+- %ifpython3 does not work with multi-build python</comment>
+    <requestid>873658</requestid>
+  </revision>
 </revisionlist>

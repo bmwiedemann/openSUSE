@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:04:32 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- veusz should need primary python3 binary
+
+-------------------------------------------------------------------
+Mon Feb  8 09:19:21 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- %ifpython3 does not work with multi-build python
+
+-------------------------------------------------------------------
 Mon Jan 18 12:56:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable for python36: dependency python-astropy does not build.

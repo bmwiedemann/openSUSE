@@ -40,18 +40,16 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
+Requires:       python-numpy
+Requires:       python-qt5
+Recommends:     python-astropy
+Recommends:     python-h5py
+Recommends:     veusz
+ExcludeArch:    i586
 # SECTION For Tests
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module h5py}
 # /SECTION
-Requires:       python-numpy
-Requires:       python-qt5
-Recommends:     python-h5py
-Recommends:     python-astropy
-ExcludeArch:    i586
-%ifpython3
-Recommends:     veusz
-%endif
 %python_subpackages
 
 %description
@@ -111,17 +109,17 @@ desktop-file-install -m 0644 \
 # move icon files to /usr/share/pixmaps/veusz
 %python_expand install -m 0644 %{SOURCE3} %{buildroot}%{$python_sitearch}/veusz/icons/veusz_256.png
 mkdir -p %{buildroot}%{_datadir}/pixmaps/veusz
-ln -s %{python3_sitearch}/veusz/icons %{buildroot}%{_datadir}/pixmaps/veusz
+ln -s %{python_sitearch}/veusz/icons %{buildroot}%{_datadir}/pixmaps/veusz
 
 # hardlink main veusz icon also into hicolor-icon-theme dir (for desktop file)
 for size in 16 32 48 64 128 256; do
     odir=%{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps
     mkdir -p $odir
-    ln -s %{python3_sitearch}/veusz/icons/veusz_${size}.png ${odir}/veusz.png
+    ln -s %{python_sitearch}/veusz/icons/veusz_${size}.png ${odir}/veusz.png
 done
 odir=%{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 mkdir -p $odir
-ln -s %{python3_sitearch}/veusz/icons/veusz.svg $odir/veusz.svg
+ln -s %{python_sitearch}/veusz/icons/veusz.svg $odir/veusz.svg
 
 # install man pages
 mkdir -p %{buildroot}%{_mandir}/man1
