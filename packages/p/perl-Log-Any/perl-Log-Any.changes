@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 18 03:07:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.709
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.709     2021-02-17 15:16:20-06:00 America/Chicago
+
+      [Added]
+
+      - Added "Log::Any->has_consumer" for the rare case where one needs
+        to know if a consumer has already been configured.
+
+-------------------------------------------------------------------
 Tue Jan 14 03:08:57 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.708
