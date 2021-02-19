@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 19 06:18:20 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.2.5.
+  * No changelog given.
+- Skip python36 because numpy no longer support it.
+
+-------------------------------------------------------------------
 Wed Aug 19 10:39:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix source url to fetch from github
