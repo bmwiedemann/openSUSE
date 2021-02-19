@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>843017</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>37c9af625b3f76b3c85951cd97fc89f8</srcmd5>
+    <version>0.100</version>
+    <time>1613774712</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build
+</comment>
+    <requestid>873699</requestid>
+  </revision>
 </revisionlist>
