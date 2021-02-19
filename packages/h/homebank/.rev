@@ -289,4 +289,64 @@
     has same name (forwarded request 838785 from polslinux)</comment>
     <requestid>839599</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e24b70ab87b13f69e8be7742829f1e90</srcmd5>
+    <version>5.5</version>
+    <time>1613774991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.5:
+  * new   : your accounts added cleared column
+  * new   : target xfer dialog add a match ratio column
+  * new   : added checking and savings account type
+  * new   : added tooltip on 'your accounts' to show last reconciled
+    date, minimun/maximum remaining
+  * new   : trend time, added average value and line into the graph
+  * change: your accounts renamed bank column to reconciled
+  * change: statistics report renamed the 'Balance' term with a more
+    accurate 'Total'
+  * change: statistics report added a compare Exp. &amp; Inc. checkbox
+    to clarify the interface
+  * wish  : #1911838 integrate fr_CA categories (included with wish)
+  * wish  : #1909694 duplicate auto assignment find
+  * wish  : #1909590 include one decimal digit in the fuel average
+  * wish  : #1900281 homebank Stats Rept - Subcategory heading
+  * wish  : #1898277 add a &quot;today&quot; button/calendar option when adding
+    new transactions
+  * wish  : #1897810 search or sort assignment rules
+  * wish  : #1897696 red text in budget report for negative results
+  * wish  : #1894425 Add switch inside app to change dark/light theme
+  * wish  : #1893854 shortcut for scheduled main window button
+  * wish  : #1892606 graph legend text not smaller than windows font
+  * wish  : #1891878 your accounts add remaining before overdraft
+  * wish  : #1890024 add a high limit for saving accounts
+  * wish  : #1887212 internal xfer detection day gap manual preference
+  * wish  : #1884376 payee multimatch for autocompletion
+  * wish  : #1882876 category/payee separate usage count for
+    transaction and overall usage
+  * wish: : #1882456 txn dialog to order popover category by type
+  * wish  : #1870390 statistic report - sum/total as last row
+  * wish  : #1866456 import option to invert expense/income for
+    credit card account
+  * wish  : #1857636 Allow showing only short/medium-term scheduled
+    operations in the main window's overview
+  * wish  : #1847622 txn status display to button and/or add icon
+  * wish  : #1846928 top spending max items configurable
+  * wish  : #1846822 your accounts column choose + add cleared
+  * wish  : #1581863 on main window, accounts have 'Reconciled date'
+  * wish  : #1565386 ability to set time interval for the Balance report
+  * wish  : # 300380 add direct print + pdf/png/ps export mostly
+    for report/graph
+  * bugfix: #1911805 the decimal digits of the Belarusian ruble is
+    indicated incorrectly
+  * bugfix: #1909323 windows: crash importing an OFX file with
+    info + add to info
+  * bugfix: #1903437 date column in transaction list can be empty
+  * bugfix: #1898408 split window does not provide 8 decimal places
+    for cryptocurrency
+  * bugfix: #1898294 time unit is not translated 'Manage
+    scheduled/template transactions' dialog
+  * bugfix: #1895478 ofx file marked as invalid if empty line at top
+- Remove obsolete (0%{?suse_version} &lt; 1330) stuff from spec file (forwarded request 871989 from Kieltux)</comment>
+    <requestid>873924</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package homebank
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           homebank
-Version:        5.4.3
+Version:        5.5
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
@@ -33,10 +33,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26
-# We need the %%mime_database_* macros
-%if 0%{?suse_version} < 1330
-BuildRequires:  shared-mime-info
-%endif
 
 %description
 HomeBank is an application to manage personal accounts at home. The main
@@ -65,18 +61,6 @@ rm -r %{buildroot}%{_datadir}/mime-info
 # Remove duplicate file
 rm %{buildroot}%{_datadir}/%{name}/datas/ChangeLog
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-%endif
-
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
@@ -85,10 +69,6 @@ rm %{buildroot}%{_datadir}/%{name}/datas/ChangeLog
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/mime/packages/%{name}.xml
-# own dir on older version of openSUSE
-%if 0%{?suse_version} < 1320
-%dir %{_datadir}/appdata/
-%endif
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
