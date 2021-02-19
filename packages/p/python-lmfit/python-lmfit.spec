@@ -1,7 +1,7 @@
 #
 # spec file for package python-lmfit
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-lmfit
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Least-Squares Minimization with Bounds and Constraints
 License:        MIT AND BSD-3-Clause
@@ -28,9 +29,9 @@ Source:         https://files.pythonhosted.org/packages/source/l/lmfit/lmfit-%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asteval >= 0.9.16
-Requires:       python-numpy >= 1.16
-Requires:       python-scipy >= 1.2
+Requires:       python-asteval >= 0.9.21
+Requires:       python-numpy >= 1.18
+Requires:       python-scipy >= 1.3
 Recommends:     python-dill
 Recommends:     python-emcee
 Recommends:     python-matplotlib
@@ -38,10 +39,10 @@ Recommends:     python-pandas
 Recommends:     python-uncertainties >= 3.0.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module asteval >= 0.9.16}
-BuildRequires:  %{python_module numpy >= 1.16}
+BuildRequires:  %{python_module asteval >= 0.9.21}
+BuildRequires:  %{python_module numpy >= 1.18}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.2}
+BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module uncertainties >= 3.0.1}
 # /SECTION
 %python_subpackages
@@ -77,7 +78,16 @@ sed -i -e '/^#!\//, 1d' lmfit/jsonutils.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-python3 -c "import sys, lmfit, numpy, scipy, asteval, uncertainties, six;print('Python: {}\n\nlmfit: {}, scipy: {}, numpy: {}, asteval: {}, uncertainties: {}, six: {}'.format(sys.version, lmfit.__version__, scipy.__version__, numpy.__version__, asteval.__version__, uncertainties.__version__, six.__version__))"
+%{python_exec -c "import sys, lmfit, numpy, scipy, asteval, uncertainties, six;
+print('Python: {}\n\n'
+'lmfit: {}, scipy: {}, numpy: {}, asteval: {}, uncertainties: {}, six: {}'.format(
+    sys.version,
+    lmfit.__version__,
+    scipy.__version__,
+    numpy.__version__,
+    asteval.__version__,
+    uncertainties.__version__,
+    six.__version__))"}
 
 cat << 'EOF' >> testexample.py
 import numpy as np
@@ -109,8 +119,7 @@ EOF
 
 cat testexample.py
 
-python3 testexample.py
-
+%python_exec testexample.py
 
 # We don't care about speed, and test_itercb is architecture-specific
 # test_model_nan_policy - fails on non x86_64
@@ -120,6 +129,7 @@ python3 testexample.py
 %files %{python_files}
 %doc README.rst THANKS.txt
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/lmfit
+%{python_sitelib}/lmfit-%{version}*-info
 
 %changelog
