@@ -1,7 +1,7 @@
 #
 # spec file for package crmsh
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,9 +36,9 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        4.2.0+git.1611201540.a1006e39
+Version:        4.3.0+git.20210219.811c32f0
 Release:        0
-Url:            http://crmsh.github.io
+URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -103,24 +103,24 @@ Summary:        Test package for crmsh
 Group:          %{pkg_group}
 Requires:       crmsh
 %if %{with regression_tests}
-Requires(post):  mailx
-Requires(post):  procps
-Requires(post):  python3-python-dateutil
-Requires(post):  python3-tox
-Requires(post):  python3-parallax
-Requires(post):  pacemaker
+Requires(post): mailx
+Requires(post): procps
+Requires(post): python3-python-dateutil
+Requires(post): python3-tox
+Requires(post): python3-parallax
+Requires(post): pacemaker
 %if 0%{?suse_version} > 1110
 BuildArch:      noarch
 %endif
 %if 0%{?suse_version}
-Requires(post):  libglue-devel
+Requires(post): libglue-devel
 %else
-Requires(post):  cluster-glue-libs-devel
+Requires(post): cluster-glue-libs-devel
 %endif
 %if 0%{?fedora_version}
-Requires(post):  PyYAML
+Requires(post): PyYAML
 %else
-Requires(post):  python3-PyYAML
+Requires(post): python3-PyYAML
 %endif
 %endif
 

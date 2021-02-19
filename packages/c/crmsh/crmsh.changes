@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:30:58 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+git.20210219.811c32f0:
+  * Dev: unittest: adjust unit test for analyze sublevel
+  * Dev: doc: add analyze and preflight_check help messages in doc
+  * Dev: analyze: Add analyze sublevel and put preflight_check in it
+
+-------------------------------------------------------------------
+Tue Feb 09 08:54:36 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1612860179.982502ba:
+  * Dev: utils: change default file mod as 644 for str2file function
+
+-------------------------------------------------------------------
+Fri Jan 29 01:59:06 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1611885080.8dea33ff:
+  * Dev: unittest: adjust unittest for error message when raise ClaimLockError
+  * Dev: hb_report: Detect if any ocfs2 partitions exist
+  * Dev: lock: give more specific error message when raise ClaimLockError
+
+-------------------------------------------------------------------
+Tue Jan 26 06:31:07 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1611641933.1ccbf10a:
+  * Dev: unittest: unit test for lsof_ocfs2_device function
+  * Fix: hb_report: run lsof with specific ocfs2 device(bsc#1180688)
+
+-------------------------------------------------------------------
+Mon Jan 25 03:06:19 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1611543254.8c7eb168:
+  * Fix: Replace mktemp() to mkstemp() for security
+  * Dev: unit test cases for preflight check ASR SBD feature utils.py
+  * Fix: Remove the duplicate --cov-report html in tox.
+  * Dev: unit test cases for preflight check ASR SBD feature check.py and task.py
+  * Fix: fix some lint issues.
+  * Fix: Replace utils.msg_info to task.info
+  * Fix: Solve a circular import error of utils.py
+
+-------------------------------------------------------------------
 Thu Jan 21 06:36:49 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1611201540.a1006e39:
