@@ -3,13 +3,19 @@ set -e
 
 name=relaxngcc
 version="$(sed -n 's/Version:\s*//p' *.spec)"
+pkgdir=`cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd`
+
+tmpdir=`mktemp -d`
+trap 'rm -r "$tmpdir"' EXIT
+pushd "$tmpdir" >/dev/null
 
 # RETRIEVE
-wget "http://prdownloads.sourceforge.net/${name}/${name}-20031218.zip"
+wget "https://prdownloads.sourceforge.net/${name}/${name}-20031218.zip"
 
-rm -rf tarball-tmp
-mkdir -p tarball-tmp
-cd tarball-tmp
+treeroot="$tmpdir/tree"
+mkdir "$tmpdir/tree"
+pushd "$treeroot" >/dev/null
+
 unzip "../${name}-20031218.zip"
 
 # CLEAN TARBALL
@@ -22,6 +28,4 @@ rm */src/relaxngcc/javabody/*.java
 
 mv ${name}-20031218 ${name}-${version}
 
-tar cJf "../${name}-${version}.tar.xz" *
-cd ..
-rm -r tarball-tmp "${name}-20031218.zip"
+tar cJf "$pkgdir/${name}-${version}.tar.xz" *
