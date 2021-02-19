@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 12 02:11:00 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.1.2:
+  * Fixed the Compatibility issue between v3.4.0 and v4.1.1 (CGNS-214).
+  * Change a wrong check in cg_poly_element_read to load older CGNS
+    file section with CGNS 4.x API (CGNS-219).
+
+-------------------------------------------------------------------
 Tue Apr  7 15:30:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix last change (typo in spec file, should be %_lib not %lib).

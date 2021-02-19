@@ -18,7 +18,7 @@
 
 %define libname libcgns4_1
 Name:           cgns
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        CFD General Notation System
 License:        Zlib
