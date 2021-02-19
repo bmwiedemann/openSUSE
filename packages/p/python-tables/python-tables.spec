@@ -1,7 +1,7 @@
 #
 # spec file for package python-tables
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-tables
 Version:        3.6.1
 Release:        0
@@ -30,8 +31,10 @@ Patch0:         Never-use-the-msse2-flag-explicitly.patch
 Patch1:         https://github.com/PyTables/PyTables/pull/810.patch#/PyTables-pr810-tostring.patch
 # PATCH-FIX-UPSTREAM PyTables-compat-numpy119.patch -- https://github.com/PyTables/PyTables/commit/fdd87f + typo fix.
 Patch2:         PyTables-compat-numpy119.patch
-# PATCH-FIX-UPSTREAM PyTables-skip-test_vlarray.patch -- gh#PyTables/PyTablse#845
+# PATCH-FIX-UPSTREAM PyTables-skip-test_vlarray.patch -- gh#PyTables/PyTables#845
 Patch3:         PyTables-skip-test_vlarray.patch
+# PATCH-FIX-UPSTREAM tables-pr862-lowercasefdtype.patch -- gh#PyTables/PyTables#862
+Patch4:         tables-pr862-lowercasefdtype.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numexpr >= 2.6.2}

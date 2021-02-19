@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 17 22:16:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: python36-numpy was dropped in Tumbleweed
+  due to NEP 29
+- Add tables-pr862-lowercasefdtype.patch to support NumPy 1.20
+  gh#PyTables/PyTables#862 
+
+-------------------------------------------------------------------
 Thu Dec 24 13:47:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove mock requirement
