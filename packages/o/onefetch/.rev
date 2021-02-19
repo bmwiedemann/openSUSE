@@ -150,4 +150,13 @@
   * [misc] add CLI option to switch true colors on/off</comment>
     <requestid>863053</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0b2f2007c037542b1b5214342393a4b</srcmd5>
+    <version>2.9.1</version>
+    <time>1613774577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.1:
+  * [misc]  Update dependencies and fix serde related build failure</comment>
+    <requestid>864014</requestid>
+  </revision>
 </revisionlist>

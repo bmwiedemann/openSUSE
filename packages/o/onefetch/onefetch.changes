@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 18 08:54:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.1:
+  * [misc]  Update dependencies and fix serde related build failure
+
+-------------------------------------------------------------------
 Thu Jan 14 10:00:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.0:
