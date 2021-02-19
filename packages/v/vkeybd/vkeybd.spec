@@ -1,7 +1,7 @@
 #
 # spec file for package vkeybd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -49,7 +49,7 @@ make COPTFLAGS="%{optflags}" \
 make DESTDIR=%{buildroot} PREFIX=%{_prefix} install
 make DESTDIR=%{buildroot} MAN_DIR=%{_mandir} install-man
 make DESTDIR=%{buildroot} PREFIX=%{_prefix} install-desktop
-ln -sf vkeybd_48x48.png %{buildroot}%{_datadir}/pixmaps/
+ln -sf vkeybd_48x48.png %{buildroot}%{_datadir}/pixmaps/vkeybd.png
 %suse_update_desktop_file vkeybd AudioVideo Music
 
 %files

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 19 12:51:49 CET 2021 - tiwai@suse.de
+
+- Fix broken symlink of icon file that broke the TW build
+
+-------------------------------------------------------------------
 Tue Apr  3 11:33:52 UTC 2018 - tchvatal@suse.com
 
 - Format with spec-cleaner
