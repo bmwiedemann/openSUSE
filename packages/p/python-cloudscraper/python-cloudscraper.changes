@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 28 16:03:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 1.2.56:
+  Arm race continues!
+  Not supporting Python 2 any more.
+- Use tarball from GitHub, the one on PyPI doesn't have tests. :'(
+
+-------------------------------------------------------------------
 Thu Jan  7 11:06:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.2.52 "This will all end in tears; I just know it."

@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname cloudscraper
+%define skip_python2 1
 Name:           python-cloudscraper
-Version:        1.2.52
+Version:        1.2.56
 Release:        0
 Summary:        A Python module to bypass Cloudflare's anti-bot page
 License:        MIT
 URL:            https://github.com/venomous/cloudscraper
-Source0:        https://files.pythonhosted.org/packages/source/c/cloudscraper/cloudscraper-%{version}.tar.gz
-Source1:        cloudscraper-tests.tar.xz
+Source:         https://github.com/VeNoMouS/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -47,7 +48,7 @@ BuildArch:      noarch
 A Python module to bypass Cloudflare's anti-bot page.
 
 %prep
-%autosetup -p1 -a 1 -n cloudscraper-%{version}
+%autosetup -p1 -n cloudscraper-%{version}
 
 %build
 %python_build

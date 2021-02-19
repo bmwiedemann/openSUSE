@@ -15,4 +15,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>863725</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f728c69591d01e8eebd50c8e3acbb905</srcmd5>
+    <version>1.2.56</version>
+    <time>1613774730</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.2.56:
+  Arm race continues!
+  Not supporting Python 2 any more.
+- Use tarball from GitHub, the one on PyPI doesn't have tests. :'(
+</comment>
+    <requestid>873718</requestid>
+  </revision>
 </revisionlist>
