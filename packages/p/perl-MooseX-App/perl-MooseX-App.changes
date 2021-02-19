@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 16 09:29:50 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+-  fixes boo#1181616
+   addded 0000_reproducible_bash_completion.patch.
+   Sort options in bash completion to get reproducible builds. 
+-  added 0001_fix_testing_for_Moose_2.2014.patch
+   fixes https://github.com/maros/MooseX-App/issues/62
+
+-------------------------------------------------------------------
 Tue May 14 05:15:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.41
