@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jan 26 06:30:51 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1181397, update to 1.11.1
+ * Improved error messages for incorrect property values
+ * Fix incorrect triggers for auto-tiebreaker (adding node/delete node)
+ * Fix auto-tiebreaker looking for wrong storage pools
+ * Fix loading of resource if external metadata property is used
+ * Fixed incorrect loading of property keys in ETCD-database
+ * Toggle-disk now tries to resolve the storage pool from already deployed resources
+ * Fixed missing rollback if a resource-group spawn failed
+ * Added REST-API paths for retrieving property info:
+   `properties/info`, `properties/info/all`
+ * Added autoplace for tiebreaker and a new client
+   notation `--auto-place +1`
+ * Check if node resource inUse or last diskful before
+   deleting on node delete
+ * Do not return error if a resource already exists (now returns an INFO)
+ * Fixed missing property resolving objects while building
+   the DRBD config
+ * Fixed bug with file based storage pools
+ * Fixed node lost db integrity issues
+ * Fixed several issues with the auto-evict feature
+ * Added auto-evict feature
+ * ETCD prefix is now configurable (migration only works now
+   starting from version 1.4.3)
+ * Block IO can now be throttled also by iops
+ * Fixed REST-API single snapshot filtering
+ * Fixed drbd-events2 parsing race condition
+ * Fixed toggle-disk doesn't work if an unrelated node is offline
+ * Fixed race-condition in auto-tiebreaker
+ * Fixed usage of wait for snapshot-shipping
+ * Added auto-"unplace", automatically removes resources if
+   they exceed the replica count if `DrbdOptions/auto-unplace` is set
+ * Added error-report deletion API
+ * Expose DRBD promotion_score and may_promote via REST-API
+   and server sent events
+ * Prometheus metrics are now mostly cached and much faster to query
+ * Send SD_NOTIFY READY to systemd if services are ready
+ * OpenFlex resource are now correctly limited to 32 characters
+ * Fix etcd modify net-interface (incorrect serialization)
+ * Fix autoplacer also toggling diskless resources
+ * Fix snapshot-shipping with more than 1 volume definitions
+ * Fix zfs create options handling
+ * Fixed recaching of lvm-filter
+ * Fix missing client answer if drbd device doesn't become ready
+   in reasonable time
+ * REST-API v1.6.0
+
+-------------------------------------------------------------------
 Tue Sep 22 08:06:36 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1176790, update to 1.8.0

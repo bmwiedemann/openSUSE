@@ -1,7 +1,7 @@
 #
 # spec file for package linstor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define LS_PREFIX %{_datadir}/linstor-server
 %define FIREWALLD_SERVICES %{_libexecdir}/firewalld/services
 Name:           linstor
-Version:        1.8.0
+Version:        1.11.1
 Release:        0
 Summary:        DRBD replicated volume manager
 License:        GPL-2.0-or-later
