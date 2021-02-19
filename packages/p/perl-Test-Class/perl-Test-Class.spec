@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Class
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Test-Class
-Version:        0.50
-Release:        0
 %define cpan_name Test-Class
+Name:           perl-Test-Class
+Version:        0.52
+Release:        0
 Summary:        Easily create test classes in an xUnit/JUnit style
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-Class/
-Source0:        http://www.cpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(MRO::Compat) >= 0.11
@@ -48,26 +46,24 @@ Requires:       perl(Try::Tiny)
 Test::Class provides a simple way of creating classes and objects to test
 your code in an xUnit style.
 
-Built using the Test::Builder manpage, it was designed to work with other
-Test::Builder based modules (the Test::More manpage, the Test::Differences
-manpage, the Test::Exception manpage, etc.).
+Built using Test::Builder, it was designed to work with other Test::Builder
+based modules (Test::More, Test::Differences, Test::Exception, etc.).
 
 _Note:_ This module will make more sense, if you are already familiar with
-the "standard" mechanisms for testing perl code. Those unfamiliar with the
-Test::Harness manpage, the Test::Simple manpage, the Test::More manpage and
-friends should go take a look at them now. the Test::Tutorial manpage is a
-good starting point.
+the "standard" mechanisms for testing perl code. Those unfamiliar with
+Test::Harness, Test::Simple, Test::More and friends should go take a look
+at them now. Test::Tutorial is a good starting point.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -75,7 +71,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
