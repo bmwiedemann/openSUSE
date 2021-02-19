@@ -103,4 +103,14 @@
   now. (forwarded request 795350 from eeich)</comment>
     <requestid>795351</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>9dff94639b046eb8d8da6a351bf21566</srcmd5>
+    <version>2.12</version>
+    <time>1613774746</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert service_del_postun -n to service_del_postun_without_restart.
+- Fix build issues on older products due to the introduction of
+  %license. (forwarded request 873757 from eeich)</comment>
+    <requestid>873758</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mrsh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,9 @@
 
 %if 0%{?suse_version} >= 1230
 %define have_systemd 1
+%endif
+%if 0%{?sle_version:1} && 0%{?sle_version} < 120300
+%define licensedir %_datarootdir/licenses
 %endif
 
 Name:           mrsh
@@ -120,6 +123,7 @@ done
 sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrlogind
 sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrshd
 %endif
+%{?licensedir:mkdir -p %{buildroot}/%licensedir}
 %fdupes -s %{buildroot}
 
 %pre server
@@ -134,24 +138,33 @@ sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrshd
 %restart_on_update xinetd
 %endif
 
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} > 120100
-%define service_arg 1
-%endif
-
 %preun server
-%if 0%{?have_systemd}
-%service_del_preun %{?service_arg:-n} mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service
+%if (0%{?suse_version} > 1320 || 0%{?sle_version} > 120100) && 0%{?suse_version} < 1500
+ %{service_del_preun -n mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service}
+%else
+ %if 0%{?have_systemd}
+  %{service_del_preun mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service}
+ %endif
 %endif
 
 %postun server
-%if 0%{?have_systemd}
-%service_del_postun %{?service_arg:-n} mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service
+%if 0%{?suse_version} > 1500
+ %{service_del_postun_without_restart mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service}
 %else
-%restart_on_update xinetd
+ %if (0%{?suse_version} > 1320 || 0%{?sle_version} > 120100)
+  %{service_del_postun mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service}
+ %else
+  %if 0%{?have_systemd}
+   %{service_del_postun mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service}}
+  %else
+   %restart_on_update xinetd
+  %endif
+ %endif
 %endif
 
 %files
 %doc NEWS README ChangeLog
+%{?licensedir:%dir %licensedir}
 %license COPYING DISCLAIMER DISCLAIMER.UC
 %{_mandir}/man1/mrcp.1*
 %{_mandir}/man1/mrsh.1*
@@ -161,7 +174,7 @@ sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrshd
 %{_bindir}/mrlogin
 
 %files server
-%doc %{basename %{S:1}}
+%doc %{basename: %{S:1}}
 %{!?have_systemd:%attr(644,root,root) %config(noreplace) /etc/xinetd.d/mrshd}
 %{!?have_systemd:%attr(644,root,root) %config(noreplace) /etc/xinetd.d/mrlogind}
 %attr(644,root,root) %config(noreplace) /etc/pam.d/mrsh

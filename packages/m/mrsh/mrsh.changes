@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 19 07:23:11 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Convert service_del_postun -n to service_del_postun_without_restart.
+- Fix build issues on older products due to the introduction of
+  %license.
+
+-------------------------------------------------------------------
 Sat Apr 18 10:12:46 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Remove previous workaround as chkstat from the updated
