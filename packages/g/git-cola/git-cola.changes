@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb 19 09:23:32 UTC 2021 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 3.9
+- Usability, bells and whistles
+* The startup dialog now detects when Recent and Favorite repositories no
+  longer exist on disk, and offers to remove these entries when selected.
+  https://github.com/git-cola/git-cola/pull/1089
+* The startup dialog now includes a simpler and more condensed folder view
+  that can be used for selecting Favorites and Recent repositories.
+  https://github.com/git-cola/git-cola/pull/1086
+* The "Commit" menu now includes an "Undo Last Commit" action.
+  https://github.com/git-cola/git-cola/issues/890
+* The "Reset" menu was revamped to expose all of Git's reset modes alongside a
+  new "Restore Worktree" action that updates the worktree using "git read-tree".
+  https://github.com/git-cola/git-cola/issues/890
+- Translations
+* Updated Polish translation.
+  https://github.com/git-cola/git-cola/pull/1107
+* Updated Japanese translation.
+  https://github.com/git-cola/git-cola/pull/1098
+* Updated Brazilian translation.
+  https://github.com/git-cola/git-cola/pull/1091
+- Packaging
+* The ``--use-env-python`` option for ``setup.py`` is now Python3 compatible.
+  https://github.com/git-cola/git-cola/issues/1102
+
+-------------------------------------------------------------------
 Tue Nov 10 21:14:54 UTC 2020 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 3.8
