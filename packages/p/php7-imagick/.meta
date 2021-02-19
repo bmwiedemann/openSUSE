@@ -1,7 +1,0 @@
-<package name="php7-imagick" project="openSUSE:Factory">
-  <title>Wrapper to the ImageMagick/GraphicsMagick library.</title>
-  <description>Imagick is a native php extension to create and modify images using the ImageMagick API.
-This extension requires ImageMagick</description>
-  <devel project="server:php:extensions:php7" package="php7-imagick"/>
-  <url>https://pecl.php.net/package/imagick</url>
-</package>
