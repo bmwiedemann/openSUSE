@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 14:36:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: With NumPy 1.20, Tumbleweed no longer 
+  provides a python36-numpy (NEP 29)
+
+-------------------------------------------------------------------
 Sat Apr 18 21:05:04 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.1.0:

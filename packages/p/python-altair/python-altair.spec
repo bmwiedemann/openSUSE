@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-altair
 Version:        4.1.0
 Release:        0
@@ -34,7 +35,6 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module vega_datasets}
@@ -45,7 +45,6 @@ Requires:       python-entrypoints
 Requires:       python-jsonschema
 Requires:       python-numpy
 Requires:       python-pandas
-Requires:       python-six
 Requires:       python-toolz
 Requires:       python-typing
 Recommends:     python-jupyter_ipython
@@ -68,15 +67,7 @@ seamlessly display client-side renderings in the Jupyter notebook.
 
 %install
 %python_install
-
-# Deduplicating files can generate a RPMLINT warning for pyc mtime
-%{python_expand \
-$python    -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/altair/vega/v3/
-$python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/altair/vega/v3/
-$python    -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/altair/vega/v4/
-$python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/altair/vega/v4/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # disable tests that require network
@@ -86,6 +77,6 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 %doc README.md
 %license LICENSE
 %{python_sitelib}/altair/
-%{python_sitelib}/altair-%{version}-py*.egg-info/
+%{python_sitelib}/altair-%{version}*-info/
 
 %changelog
