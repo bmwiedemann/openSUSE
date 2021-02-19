@@ -1,7 +1,7 @@
 #
 # spec file for package SHERPA-MC
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 
 Name:           SHERPA-MC
-Version:        2.2.10
+Version:        2.2.11
 Release:        0
 Summary:        MC event generator for Simulation of High-Energy Reactions of PArticles
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -29,8 +29,6 @@ URL:            https://sherpa-team.gitlab.io/
 Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM SHERPA-MC-no-return-in-non-void-function.patch badshah400@gmail.com -- Fix a non-void (bool) function that was not returning any data to return "true"
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
-# PATCH-FIX-UPSTREAM SHERPA-MC-build-with-recent-glibc.patch badshah400@gmail.com -- Fix build problem with very new glibc; patch taken from upstream git
-Patch1:         SHERPA-MC-build-with-recent-glibc.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel
@@ -41,6 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  gcc-fortran >= 6
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pythia-devel
 BuildRequires:  python3-devel
@@ -134,9 +133,7 @@ written in C++.
 This package provides the python extensions for Sherpa.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 # REMOVE HASHBANGS FROM FILES NOT TO BE INSTALLED TO EXEC PATH
 sed -E -i "1{s|#!/bin/env python2||}"     MODEL/UFO/test.py
