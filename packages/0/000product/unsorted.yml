@@ -56,7 +56,6 @@ unsorted:
   - GraphicsMagick 
   - GraphicsMagick-devel 
   - HSAIL-Tools 
-  - Hawck 
   - HepMC-devel 
   - HepMC-doc 
   - HepMC2-devel 
@@ -3108,6 +3107,7 @@ unsorted:
   - enlightenment-theme-upstream 
   - enlightenment-x-dark-icon-theme 
   - enscript 
+  - ensmallen-devel 
   - entangle 
   - entangle-doc 
   - entangle-lang 
@@ -5700,6 +5700,9 @@ unsorted:
   - go1.15 
   - go1.15-doc 
   - go1.15-race: [x86_64] 
+  - go1.16 
+  - go1.16-doc 
+  - go1.16-race: [x86_64] 
   - go1.4 
   - go1.4-doc 
   - go1.4-race: [x86_64] 
@@ -13759,6 +13762,7 @@ unsorted:
   - libttsmimic0 
   - libtty-devel 
   - libtty1 
+  - libtukit-devel 
   - libtun6-0 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
@@ -20214,6 +20218,7 @@ unsorted:
   - ppp-modem 
   - pps-tools 
   - pps-tools-devel 
+  - pps-udev 
   - ppsspp 
   - ppsspp-common 
   - ppsspp-headless 
@@ -20701,7 +20706,6 @@ unsorted:
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_75_0 
   - python3-botan 
-  - python3-bump2version 
   - python3-caca 
   - python3-caffe 
   - python3-caffe-gnu-hpc 
@@ -20791,7 +20795,6 @@ unsorted:
   - python3-gr-iqbal 
   - python3-gv 
   - python3-h5netcdf 
-  - python3-haproxyctl 
   - python3-hawkey 
   - python3-hdf5storage 
   - python3-heatclient 
@@ -20812,7 +20815,6 @@ unsorted:
   - python3-ironicclient 
   - python3-itk 
   - python3-jenkins-job-builder 
-  - python3-jfscripts 
   - python3-jirafs 
   - python3-jsonpath-rw-ext 
   - python3-kea 
@@ -20822,7 +20824,6 @@ unsorted:
   - python3-keystonemiddleware 
   - python3-kiwi 
   - python3-kopano 
-  - python3-labelImg 
   - python3-lalapps: [x86_64] 
   - python3-lash 
   - python3-lasso 
@@ -20984,7 +20985,6 @@ unsorted:
   - python3-policycoreutils: [i586] 
   - python3-poppler-qt5 
   - python3-poppler-qt5-devel 
-  - python3-pre-commit 
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
@@ -21031,9 +21031,7 @@ unsorted:
   - python3-scikit-umfpack: [i586] 
   - python3-selinux: [i586] 
   - python3-senlinclient 
-  - python3-shaptools 
   - python3-smbus 
-  - python3-snimpy 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
   - python3-sorl-thumbnail 
@@ -21081,7 +21079,6 @@ unsorted:
   - python3-xapian-haystack 
   - python3-xcaplib 
   - python3-xcb-proto-devel 
-  - python3-xkcdpass 
   - python3-xrootd 
   - python3-yang 
   - python3-yappi 
@@ -21722,6 +21719,7 @@ unsorted:
   - python36-bugzilla 
   - python36-bugzillatools 
   - python36-build 
+  - python36-bump2version 
   - python36-buttplug 
   - python36-bytecode 
   - python36-cPyparsing 
@@ -22317,6 +22315,7 @@ unsorted:
   - python36-hammett 
   - python36-hanzidentifier 
   - python36-happybase 
+  - python36-haproxyctl 
   - python36-hashids 
   - python36-hatch 
   - python36-hawkauthlib 
@@ -22437,6 +22436,7 @@ unsorted:
   - python36-jeepney 
   - python36-jellyfish 
   - python36-jenkinsapi 
+  - python36-jfscripts 
   - python36-jgraph 
   - python36-jinja2-fsloader 
   - python36-jinja2-pluralize 
@@ -22513,6 +22513,7 @@ unsorted:
   - python36-kubernetes 
   - python36-kwant: [x86_64] 
   - python36-l20n 
+  - python36-labelImg 
   - python36-labels 
   - python36-lancet-ioam 
   - python36-langdetect 
@@ -22898,6 +22899,7 @@ unsorted:
   - python36-poyo 
   - python36-pprintpp 
   - python36-praatio 
+  - python36-pre-commit 
   - python36-precis-i18n 
   - python36-precise-runner 
   - python36-preggy 
@@ -23168,7 +23170,6 @@ unsorted:
   - python36-pytest-metadata 
   - python36-pytest-mock 
   - python36-pytest-mpi 
-  - python36-pytest-mpl 
   - python36-pytest-openfiles 
   - python36-pytest-ordering 
   - python36-pytest-parallel 
@@ -23492,8 +23493,8 @@ unsorted:
   - python36-setuptools_scm_git_archive 
   - python36-sge-pygame 
   - python36-sgmllib3k 
-  - python36-sgp4 
   - python36-sh 
+  - python36-shaptools 
   - python36-shellingham 
   - python36-shijian 
   - python36-shinyutils 
@@ -23527,6 +23528,7 @@ unsorted:
   - python36-smmap 
   - python36-smpplib 
   - python36-sniffio 
+  - python36-snimpy 
   - python36-snowballstemmer 
   - python36-snuggs 
   - python36-socketIO-client-nexus 
@@ -23849,6 +23851,7 @@ unsorted:
   - python36-xerox 
   - python36-xhtml2pdf 
   - python36-xkbgroup 
+  - python36-xkcdpass 
   - python36-xlrd 
   - python36-xlwt 
   - python36-xmldiff 
@@ -23867,7 +23870,6 @@ unsorted:
   - python36-xvfbwrapper 
   - python36-xxhash 
   - python36-yacron 
-  - python36-yafe 
   - python36-yamldoc 
   - python36-yamllint 
   - python36-yamlloader 
@@ -24531,6 +24533,7 @@ unsorted:
   - python38-bugzilla 
   - python38-bugzillatools 
   - python38-build 
+  - python38-bump2version 
   - python38-buttplug 
   - python38-bytecode 
   - python38-cPyparsing 
@@ -25111,6 +25114,7 @@ unsorted:
   - python38-hankel 
   - python38-hanzidentifier 
   - python38-happybase 
+  - python38-haproxyctl 
   - python38-hashids 
   - python38-hatch 
   - python38-hawkauthlib 
@@ -25231,6 +25235,7 @@ unsorted:
   - python38-jeepney 
   - python38-jellyfish 
   - python38-jenkinsapi 
+  - python38-jfscripts 
   - python38-jgraph 
   - python38-jinja2-fsloader 
   - python38-jinja2-pluralize 
@@ -25307,6 +25312,7 @@ unsorted:
   - python38-kubernetes 
   - python38-kwant: [x86_64] 
   - python38-l20n 
+  - python38-labelImg 
   - python38-labels 
   - python38-lal: [x86_64] 
   - python38-lalburst: [x86_64] 
@@ -25708,6 +25714,7 @@ unsorted:
   - python38-poyo 
   - python38-pprintpp 
   - python38-praatio 
+  - python38-pre-commit 
   - python38-precis-i18n 
   - python38-precise-runner 
   - python38-preggy 
@@ -26291,6 +26298,7 @@ unsorted:
   - python38-sgmllib3k 
   - python38-sgp4 
   - python38-sh 
+  - python38-shaptools 
   - python38-shellingham 
   - python38-sherpa: [x86_64] 
   - python38-shijian 
@@ -26324,6 +26332,7 @@ unsorted:
   - python38-smbprotocol 
   - python38-smmap 
   - python38-smpplib 
+  - python38-snimpy 
   - python38-snowballstemmer 
   - python38-snuggs 
   - python38-socketIO-client-nexus 
@@ -26653,6 +26662,7 @@ unsorted:
   - python38-xerox 
   - python38-xhtml2pdf 
   - python38-xkbgroup 
+  - python38-xkcdpass 
   - python38-xlrd 
   - python38-xlwt 
   - python38-xmldiff 
@@ -27820,7 +27830,6 @@ unsorted:
   - ruby3.0-rubygem-rubyforge 
   - ruby3.0-rubygem-rubyntlm 
   - ruby3.0-rubygem-rubyzip 
-  - ruby3.0-rubygem-rubyzip-1.3 
   - ruby3.0-rubygem-safe_yaml 
   - ruby3.0-rubygem-sass 
   - ruby3.0-rubygem-sass-listen 
