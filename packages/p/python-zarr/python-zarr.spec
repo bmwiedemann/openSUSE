@@ -18,6 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python2 1
+# Requires numpy: NEP 29, NumPy 1.20 in TW dropped Python 3.6 support
+%define skip_python36 1
 Name:           python-zarr
 Version:        2.6.1
 Release:        0
