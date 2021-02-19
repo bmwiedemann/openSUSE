@@ -1,7 +1,7 @@
 #
 # spec file for package python-h5py
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,17 +54,20 @@
 %define my_libdir  %{my_prefix}/%{_lib}
 %define my_incdir  %{my_prefix}/include
 %define my_suffix  -%{mpi_flavor}%{?mpi_vers}
+%define my_sitearch_in_expand %{my_libdir}/python%{$python_version}/site-packages
 %else
 %define my_prefix  %{_prefix}
 %define my_bindir  %{_bindir}
 %define my_libdir  %{_libdir}
 %define my_incdir  %{_includedir}
 %define my_datadir %{_datadir}
+%define my_sitearch_in_expand %{$python_sitearch}
 %endif
 # /SECTION MPI DEFINITIONS
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           %{pname}%{?my_suffix}
 Version:        3.1.0
 Release:        0
@@ -75,20 +78,30 @@ URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE python-h5py-relax-dependency-versions.patch badshah400@gmail.com -- Build against newer version of numpy
 Patch0:         python-h5py-relax-dependency-versions.patch
-BuildRequires:  %{python_module cached-property}
-BuildRequires:  %{python_module Cython >= 0.23}
+BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.12}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  hdf5%{?my_suffix}-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module Cython >= 0.29.14 if (%python-base >= 3.8)}
+BuildRequires:  %{python_module Cython >= 0.29.15 if (%python-base >= 3.9)}
+BuildRequires:  %{python_module cached-property if (%python-base < 3.8)}
+BuildRequires:  %{python_module numpy-devel >= 1.17.5 if (%python-base >= 3.8)}
+BuildRequires:  %{python_module numpy-devel >= 1.19.3 if (%python-base >= 3.9)}
 Requires:       hdf5%{?my_suffix}
+%if 0%{python_version_nodots} >= 39
+Requires:       python-numpy >= 1.19.3
+%else
+%if 0%{python_version_nodots} >= 38
+Requires:       python-numpy >= 1.17.5
+%else
 Requires:       python-numpy >= 1.12
-Requires:       python-six
+%endif
+%endif
 %requires_eq    libhdf5%{?my_suffix}
 %if %python_version_nodots < 38
 Requires:       python-cached-property
@@ -127,21 +140,23 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %else
 %python_install
 %endif
-%python_expand %fdupes %{buildroot}%{my_libdir}/python%{python_version}/site-packages/h5py/
+%python_expand %fdupes %{buildroot}%{my_sitearch_in_expand}/h5py/
 
 %check
-# Offset test fails on 32-bit
+%{python_expand # Offset test fails on 32-bit
 %if %{with mpi}
 source %{my_bindir}/mpivars.sh
 %endif
 export LD_LIBRARY_PATH=%{my_libdir}
-export PYTHONPATH=%{buildroot}%{my_libdir}/python%{python_version}/site-packages
+export PYTHONPATH=%{buildroot}%{my_sitearch_in_expand}
 export PYTHONDONTWRITEBYTECODE=1
+pytest-%{$python_bin_suffix} %{buildroot}%{my_sitearch_in_expand}/h5py/ \
 %ifarch %{ix86}
-pytest-%{python_version} %{buildroot}%{my_libdir}/python%{python_version}/site-packages/h5py/ %{?with_mpi:-k 'not test_float_round_tripping'}%{!?with_mpi:-k 'not (TestMPI or test_float_round_tripping)'}
+        %{?with_mpi:-k 'not test_float_round_tripping'}%{!?with_mpi:-k 'not (TestMPI or test_float_round_tripping)'}
 %else
-pytest-%{python_version} %{buildroot}%{my_libdir}/python%{python_version}/site-packages/h5py/ %{!?with_mpi:-k 'not TestMPI'}
+        %{!?with_mpi:-k 'not TestMPI'}
 %endif
+}
 
 %files %{python_files}
 %license lzf/LICENSE.txt
@@ -149,8 +164,11 @@ pytest-%{python_version} %{buildroot}%{my_libdir}/python%{python_version}/site-p
 %if %{with mpi}
 %dir %{my_libdir}/python%{python_version}
 %dir %{my_libdir}/python%{python_version}/site-packages
+%{my_libdir}/python%{python_version}/site-packages/h5py
+%{my_libdir}/python%{python_version}/site-packages/h5py-%{version}*-info
+%else
+%{python_sitearch}/h5py/
+%{python_sitearch}/h5py-%{version}*-info
 %endif
-%{my_libdir}/python%{python_version}/site-packages/h5py/
-%{my_libdir}/python%{python_version}/site-packages/h5py-%{version}-py*.egg-info
 
 %changelog

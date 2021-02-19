@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 18 19:40:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build. NumPy 1.20 in Tumbleweed dropped support for
+  Python 3.6 (NEP 29)
+- Fix sitearch handling between regular and mpi builds suitable for
+  singlespec with multiple python3 flavors
+- Refine requirement versions based on Python version
+
+-------------------------------------------------------------------
 Wed Jan 20 13:26:43 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add runtime dependency cached-property based on Python version
