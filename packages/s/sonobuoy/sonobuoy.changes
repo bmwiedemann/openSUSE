@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Feb 19 07:21:20 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Update to version 0.20.0:
+  * Release 0.20 (#1198)
+  * Use "stale" label for stale bot (#1200)
+  * Blog annoucing vision and roadmap
+  * Add Docker Hub rate limit workaround (#1194)
+  * Dynamically determine image of plugins (#1192)
+  * Create codeql-analysis.yaml (#1193)
+  * Use Kramdown instead of Redcarpet
+  * Update Jekyll and therefore Kramdown
+  * Update Jekyll
+  * Remove contributors section
+  * go 1.15 + unit test + lint/sync workflows (#1186)
+  * Add StaleBot (#1184)
+  * Deterministic TagPair assertion of custom registry (#1183)
+  * Add golangci-lint on GitHub Actions with fixes (#1179)
+  * Adding cluster inventory plugin doc
+  * Release for Kubernetes 1.19.0
+  * Prepare for v0.18.5 release
+  * Fix formatting on docs pages
+  * Upgrade Kubernetes client libraries to 0.18.5 (#1138)
+  * Update args.go (#1127)
+  * Bump kramdown from 1.17.0 to 2.3.0 in /site
+  * Update gem kramdown for site generation
+  * Prepare v0.18.4 release (#1148)
+  * Remove use of gcr.io/google-containers (#1146)
+  * Use latest Sonobuoy webinar as the overview video (#1144)
+  * Replace use of master in Windows Dockerfile (#1143)
+  * Replace MasterURL with AggregatorURL in WorkerConfig (#1141)
+  * Remove unused config file handling from worker (#1142)
+  * Remove insensitive language from old docs (#1140)
+  * Remove use of "master" in labels and names (#1139)
+  * Remove alias for aggregator command (#1137)
+  * Bump to k8s.io/* to v0.17.7 and tidy deps (#1135)
+  * Replace use of whitelist with allow/allow list (#1132)
+- Fix %install, create /usr/bin/
+- Use -buildmode=pie
+
+-------------------------------------------------------------------
 Sat Jun 13 14:04:24 UTC 2020 - dmueller@suse.com
 
 - Update to version 0.18.3:

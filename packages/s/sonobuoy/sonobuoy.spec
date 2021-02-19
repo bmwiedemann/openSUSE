@@ -1,7 +1,7 @@
 #
 # spec file for package sonobuoy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define project github.com/vmware-tanzu/sonobuoy
 Name:           sonobuoy
-Version:        0.18.3
+Version:        0.20.0
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0
@@ -47,11 +47,11 @@ rm -rf $HOME/go/src/%{project}/*
 cp -avr * $HOME/go/src/%{project}
 
 cd $HOME/go/src/%{project}
-CGO_ENABLED=0 go build -o sonobuoy -ldflags="-s -w -X %{project}/pkg/buildinfo.Version=v%{version}" %{project}
+CGO_ENABLED=0 go build -o sonobuoy -buildmode=pie -ldflags="-s -w -X %{project}/pkg/buildinfo.Version=v%{version}" %{project}
 
 %install
 cd $HOME/go/src/%{project}
-install -m755 sonobuoy %{buildroot}/%{_bindir}/sonobuoy
+install -Dm755 sonobuoy %{buildroot}/%{_bindir}/sonobuoy
 
 %files
 %doc README.md
