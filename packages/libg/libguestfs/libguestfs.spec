@@ -1,7 +1,7 @@
 #
 # spec file for package libguestfs
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needsbinariesforbuild
 
 
-Version:        1.42.0
+Version:        1.44.0
 Release:        0
 %{ocaml_preserve_bytecode}
 
@@ -102,6 +102,7 @@ BuildRequires:  dhcp-client
 BuildRequires:  libjansson-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
+BuildRequires:  python3-devel
 BuildRequires:  qemu-tools
 BuildRequires:  readline-devel
 BuildRequires:  supermin >= 5.1.6
@@ -137,24 +138,23 @@ BuildRequires:  hivex-devel
 BuildRequires:  gtk2-devel
 %endif
 #
-Url:            http://libguestfs.org/
+URL:            http://libguestfs.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Compatibility package for guestfs-tools
 # Upstream patches
 License:        GPL-2.0-only
 Group:          System/Filesystems
-Patch1:         31e6b187-po-Remove-virt-v2v-related-dependency-from-POTFILES-ml..patch
-Patch2:         7265f08c-lib-remove-extra-LIBS-from-pkg-config-file.patch
 
 # Pending upstram review
 Patch50:        0001-Introduce-a-wrapper-around-xmlParseURI.patch
 Patch51:        0002-common-extract-UTF-8-conversion-function.patch
 Patch52:        0003-inspector-rpm-summary-and-description-may-not-be-utf.patch
+Patch53:        0004-python-include-dirs.patch
 # Our patches
 Patch100:       appliance.patch
 Patch101:       netconfig.patch
 
-Source0:        http://download.libguestfs.org/1.42-stable/libguestfs-%{version}.tar.gz
+Source0:        https://download.libguestfs.org/1.44-stable/libguestfs-%{version}.tar.gz
 Source3:        libguestfs.rpmlintrc
 Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
@@ -304,25 +304,7 @@ Allows lua scripts to directly use libguestfs.
 #
 
 %if %{with python_bindings}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%package -n python2-libguestfs
-Summary:        Python 2 bindings for libguestfs
-License:        GPL-2.0-only
-Group:          Development/Languages/Python
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python
-BuildRequires:  python-devel
-BuildRequires:  python-rpm-macros
-%define _configure_python --enable-python
-#
-Obsoletes:      libguestfs-python < %{version}
-Obsoletes:      python-libguestfs < %{version}
-Provides:       python-libguestfs = %{version}
-
-%description -n python2-libguestfs
-Allows Python 2 scripts to directly use libguestfs.
-
+%{?!python_module:%define python_module() python3-%{**}}
 %package -n python3-libguestfs
 Summary:        Python 3 bindings for libguestfs
 License:        GPL-2.0-only
@@ -457,9 +439,7 @@ Recommends:     mkisofs
 Recommends:     genisoimage
 %endif
 Recommends:     ldmtool
-%if ! 0%{?is_opensuse}
 Recommends:     guestfs-winsupport
-%endif
 
 Summary:        Virtual machine needed for libguestfs
 License:        GPL-2.0-only
@@ -471,7 +451,6 @@ Obsoletes:      libguestfs-data < %{version}
 libguestfs needs for it's run a virtual machine image.
 This package provides such an image, an initrd and a kernel.
 
-%if ! 0%{?is_opensuse}
 %package -n guestfs-winsupport
 Summary:        Windows guest support in libguestfs
 License:        GPL-2.0-or-later
@@ -483,8 +462,6 @@ BuildRequires:  rsync
 
 %description -n guestfs-winsupport
 Provides the needed pieces for libguestfs to handle Windows guests.
-
-%endif
 
 %package devel
 Summary:        Development files for libguestfs
@@ -560,11 +537,11 @@ It can import a variety of guest operating systems from libvirt-managed hosts.
 %prep
 : _ignore_exclusive_arch '%{?_ignore_exclusive_arch}'
 %setup -q -a 789653
-%patch1 -p1
-%patch2 -p1
+#%setup -q -a 1 -a 2 -a 789653
 %patch50 -p1
 %patch51 -p1
 %patch52 -p1
+%patch53 -p1
 %patch100 -p1
 %patch101 -p1
 
@@ -597,6 +574,14 @@ then
 	export PYTHON_EXT_SUFFIX=.so
 fi
 
+# Defines these if using --with-distro=SUSE with configure
+export HAVE_RPM_TRUE=
+export HAVE_RPM_FALSE="#"
+export HAVE_DPKG_TRUE="#"
+export HAVE_DPKG_FALSE="#"
+export HAVE_PACMAN_TRUE="#"
+export HAVE_PACMAN_FALSE="#"
+
 #sed -i '1 s@^.*@#!/bin/sh -x@' configure
 %configure \
 	--docdir=%{guestfs_docdir} \
@@ -616,7 +601,8 @@ fi
 	%{_configure_ruby} \
 	--disable-rpath \
 	--disable-static \
-    --with-distro=SUSE
+	--with-distro=SUSE
+
 #Workaround an autotools bug
 make -j1 -C builder index-parse.c
 # 'INSTALLDIRS' ensures that perl libs are installed in the vendor dir instead of the site dir
@@ -663,12 +649,6 @@ mv t %{name}.files
 pushd python
 sed -i -e "s:libraries=:library_dirs=['%{buildroot}/%{_libdir}'], libraries=:" setup.py
 make stamp-extra-files
-# Build needs libguestfs library to be installed
-
-# HACKY! Change config.h for python2
-echo '#define HAVE_PYSTRING_ASSTRING 1' >> config.h
-%python2_build
-%python2_install
 
 # HACKY! Change config.h for python3
 sed 's/\(#define HAVE_PYSTRING_ASSTRING 1\)/\/* \1 *\//' -i config.h
@@ -688,16 +668,6 @@ touch %{name}.lang
 %find_lang %{name}
 
 # Appliance NTFS files
-%if 0%{?is_opensuse}
-mkdir -p %{buildroot}/tmp/etc/alternatives
-pushd %{buildroot}/tmp/etc/alternatives
-ln -s /sbin/mount.ntfs-3g mount.ntfs
-popd
-pushd %{buildroot}/tmp
-tar -czf %{buildroot}/%{_libdir}/guestfs/supermin.d/zz-ntfs-symlink.tar.gz etc
-popd
-rm -rf %{buildroot}/tmp
-%else
 # Just copy the content of the ntfs packages
 mkdir winsupport
 for pkg in $(rpm -qa | grep ntfs); do
@@ -715,7 +685,6 @@ cat > %{buildroot}%{_libdir}/guestfs/supermin.d/zz-packages-winsupport << EOF
 libfuse2
 hwinfo
 EOF
-%endif
 
 mkdir -p %{buildroot}/tmp/usr/bin
 cp %{S:100} %{buildroot}/tmp/usr/bin
@@ -750,14 +719,9 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %{_libdir}/guestfs/supermin.d/packages
 %{_libdir}/guestfs/supermin.d/zz-scripts.tar.gz
 
-%if 0%{?is_opensuse}
-%{_libdir}/guestfs/supermin.d/zz-ntfs-symlink.tar.gz
-%else
-
 %files -n guestfs-winsupport
 %defattr(-,root,root)
 %{_libdir}/guestfs/supermin.d/zz-*winsupport*
-%endif
 
 %if %{with ocaml_bindings}
 %files -n ocaml-libguestfs
@@ -797,9 +761,6 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %endif
 #
 %if %{with python_bindings}
-%files -n python2-libguestfs
-%defattr(-,root,root)
-%{python2_sitearch}/*
 
 %files -n python3-libguestfs
 %defattr(-,root,root)

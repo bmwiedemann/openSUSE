@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jan 12 05:38:44 MST 2021 - carnold@suse.com
+
+- Modify Source0 to point at the correct url for the source.
+  libguestfs.spec
+
+-------------------------------------------------------------------
+Mon Jan 11 11:42:51 MST 2021 - carnold@suse.com
+
+- Update to version 1.44.0
+  * The minimum version of Python required is 3.6.
+  * Python bindings no longer use deprecated
+    "PyEval_ThreadsInitialized".
+  * Python bindings now include type hints (Sam Eiderman).
+  * Erlang bindings now use libei instead of liberl_interface
+    (Sergei Golovan).
+  * virt-get-kernel(1) can now find uncompressed kernels
+    (Pino Toscano).
+  * virt-sysprep(1) now regenerates the guest certificate store
+    when a certificate is removed from the guest (Pino Toscano).
+  * virt-sysprep(1) can now remove IPA enrollment files and
+    Kerberos keytabs
+    (Pino Toscano, Christian Heimes and François Cami).
+  * "cryptsetup-open" and "cryptsetup-close" replace "luks-open",
+    luks-open-ro and luks-close. The new APIs add support for
+    BitLocker encryption.
+  * "lvm-canonical-lv" no longer produces a noisy error message
+    when called with a non-LV parameter.
+  * Various other bug fixes
+- Drop
+   bfd08867-golang-Fix-path-to-include-guestfs.h..patch
+   dbfab7d3-build-fix-includedir-in-uninstalled-libguestfs.pc.patch
+
+-------------------------------------------------------------------
+Tue Oct 20 14:01:16 MDT 2020 - carnold@suse.com
+
+- Drop is_opensuse references to remove differences between Leap
+  and SLES packaging
+  libguestfs.spec
+
+-------------------------------------------------------------------
+Tue Oct  6 14:07:12 MDT 2020 - carnold@suse.com
+
+- Update to version 1.43.2
+  * Bug fix release
+  * Updated language files
+  0004-python-include-dirs.patch
+- Added upstream bug fixes
+  dbfab7d3-build-fix-includedir-in-uninstalled-libguestfs.pc.patch
+  bfd08867-golang-Fix-path-to-include-guestfs.h..patch
+
+-------------------------------------------------------------------
+Mon Jul 20 17:16:28 MDT 2020 - carnold@suse.com
+
+- Update to version 1.43.1
+  * Drop support for python 2
+  * builder: New templates added
+  * sysprep: ca-certificates: request system CA store update
+  * Various other bug fixes
+- Drop
+  31e6b187-po-Remove-virt-v2v-related-dependency-from-POTFILES-ml..patch
+  7265f08c-lib-remove-extra-LIBS-from-pkg-config-file.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 15:48:08 MDT 2020 - carnold@suse.com
 
 - bsc#1172818 - libguestfs: inconsistent LIBGUESTFS_PATH
