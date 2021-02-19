@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 23 18:32:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.5.25
+  * Fix Github Issue gh#mpenning/ciscoconfparse#195
+  * merge PR gh#mpenning/ciscoconfparse#194
+  * fix multiple unreported bugs in ccp_util.L4Object()
+- Drop remove-mock.patch and test-lists.patch fixed upstream
+
+-------------------------------------------------------------------
 Fri Jan 22 15:01:09 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.5.24

@@ -19,16 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ciscoconfparse
-Version:        1.5.24
+Version:        1.5.25
 Release:        0
 Summary:        Library for parsing, querying and modifying Cisco IOS-style configurations
 License:        GPL-3.0-or-later
 URL:            https://github.com/mpenning/ciscoconfparse
 Source:         https://files.pythonhosted.org/packages/source/c/ciscoconfparse/ciscoconfparse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove-mock.patch -- gh#mpenning/ciscoconfparse#194
-Patch0:         remove-mock.patch
-# PATCH-FIX-UPSTREAM test-lists.patch -- gh#mpenning/ciscoconfparse#195
-Patch1:         test-lists.patch
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module passlib}
