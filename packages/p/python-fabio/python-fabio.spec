@@ -1,7 +1,7 @@
 #
 # spec file for package python-fabio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %define packagename fabio
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fabio
-Version:        0.10.2
+Version:        0.11.0
 Release:        0
 Summary:        Image IO for images produced by 2D X-ray detectors
-License:        MIT AND  LGPL-3.0-or-later AND  GPL-2.0+ AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
 URL:            https://github.com/silx-kit/fabio
 Source:         https://github.com/silx-kit/fabio/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_test_brukerimage.py_assertionerror.patch andythe_great@pm.me gh#silx-kit/fabio#398 -- Fix test_brukerimage.py failed with AssertionError.
-Patch0:         fix_test_brukerimage.py_assertionerror.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
@@ -46,15 +45,18 @@ Requires:       python-numpy >= 1.19.1
 Requires:       python-qt5
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+# This package does not support 32 bit arch.
+ExcludeArch:    i586 %{arm}
 %python_subpackages
 
 %description
 FabIO is an I/O library for images produced by 2D X-ray detectors.
 
 %prep
-%setup -q -n %{packagename}-%{version}
-%patch0 -p1
+%autosetup -n %{packagename}-%{version}
+# Fix W: non-executable-script
+grep -ElRZ '*.py' . | xargs -0 -l sed -i '/^#!/d'
 
 %build
 %python_build
@@ -63,14 +65,16 @@ FabIO is an I/O library for images produced by 2D X-ray detectors.
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/fabio-convert
 %python_clone -a %{buildroot}%{_bindir}/fabio_viewer
+%python_clone -a %{buildroot}%{_bindir}/eiger2cbf
+%python_clone -a %{buildroot}%{_bindir}/eiger2crysalis
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%prepare_alternative fabio-convert fabio_viewer
+%prepare_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis
 
 %post
-%python_install_alternative fabio-convert fabio_viewer
+%python_install_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis
 
 %postun
-%python_uninstall_alternative fabio-convert fabio_viewer
+%python_uninstall_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis
 
 %check
 # Does not support pytest
@@ -81,6 +85,8 @@ FabIO is an I/O library for images produced by 2D X-ray detectors.
 %license copyright
 %python_alternative %{_bindir}/fabio-convert
 %python_alternative %{_bindir}/fabio_viewer
+%python_alternative %{_bindir}/eiger2cbf
+%python_alternative %{_bindir}/eiger2crysalis
 %{python_sitearch}/*egg-info
 %{python_sitearch}/%{packagename}
 
