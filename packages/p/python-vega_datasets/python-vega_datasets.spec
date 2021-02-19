@@ -1,7 +1,7 @@
 #
 # spec file for package python-vega_datasets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-vega_datasets
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A Python package for offline access to Vega datasets
 License:        MIT
@@ -51,10 +53,11 @@ A Python package for offline access to vega datasets.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand BUILDROOT=%{buildroot}%{$python_sitelib} pytest-%{$python_bin_suffix} vega_datasets/tests
+%pytest vega_datasets/tests
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/vega_datasets
+%{python_sitelib}/vega_datasets-%{version}*-info
 
 %changelog

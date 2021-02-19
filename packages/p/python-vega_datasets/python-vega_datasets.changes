@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 19 14:29:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.0
+  * Change urls to use jsDelivr (a fast CDN) with a fixed version
+    number, instead of GitHub. This fixes the URLs broken by the
+    vega-datasets 2.0 release. 
+- Skip python36: Pandas is no longer available for the TW python36
+  flavor (NEP 29, NumPy 1.20)
+
+-------------------------------------------------------------------
 Tue Jan 28 20:17:49 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.8.0
