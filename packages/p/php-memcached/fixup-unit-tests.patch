@@ -1,0 +1,10 @@
+--- tests/expire.phpt	2019-12-03 23:13:53.000000000 +0100
++++ tests/expire.phpt	2021-01-20 15:25:35.742135691 +0100
+@@ -1,7 +1,5 @@
+ --TEST--
+ Memcached store, fetch & touch expired key
+---XFAIL--
+-https://code.google.com/p/memcached/issues/detail?id=275
+ --SKIPIF--
+ <?php
+ $min_version = "1.4.8";
