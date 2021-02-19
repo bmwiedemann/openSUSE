@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlite-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,34 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-sqlite-utils
-Version:        2.16
+Version:        3.5
 Release:        0
 Summary:        Python CLI tool and library for manipulating SQLite databases
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/simonw/sqlite-utils
 Source:         https://files.pythonhosted.org/packages/source/s/sqlite-utils/sqlite-utils-%{version}.tar.gz
+BuildRequires:  %{python_module click-default-group}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sqlite-fts4}
+BuildRequires:  %{python_module tabulate}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-click-default-group
+Requires:       python-sqlite-fts4
 Requires:       python-tabulate
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module click-default-group}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tabulate}
-BuildRequires:  %pythons
-# /SECTION
 %python_subpackages
 
 %description
@@ -51,8 +53,6 @@ CLI tool and Python utility functions for manipulating SQLite databases.
 
 %prep
 %setup -q -n sqlite-utils-%{version}
-sed -i '/setup_requires=/d;s/"black"//' setup.py
-rm tests/test_black.py
 
 %build
 %python_build
