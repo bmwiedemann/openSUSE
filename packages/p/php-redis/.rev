@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5740162490a949ad5edd522fb6f58363</srcmd5>
+    <version>5.3.3</version>
+    <time>1613774971</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-redis to php-redis</comment>
+    <requestid>873888</requestid>
+  </revision>
+</revisionlist>
