@@ -26,13 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/lebigot/uncertainties/
 Source:         https://files.pythonhosted.org/packages/source/u/uncertainties/uncertainties-%{version}.tar.gz
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module tools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Requires:       python-future
 BuildArch:      noarch
 %if 0%{?suse_version}
@@ -58,12 +58,14 @@ sed -i -e '/^#!\//, 1d' uncertainties/lib1to2/test_1to2.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# no python36-numpy
+python36_ignore="--ignore uncertainties/unumpy"
+%pytest ${$python_ignore}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/uncertainties/
-%{python_sitelib}/uncertainties-%{version}-py*.egg-info
+%{python_sitelib}/uncertainties-%{version}*-info
 
 %changelog
