@@ -1,4 +1,465 @@
 -------------------------------------------------------------------
+Wed Dec  9 08:08:36 UTC 2020 - munix9@googlemail.com
+
+- Fix Factory/Tumbleweed build with wine >= 6
+  (probably related to boo#1179734)
+
+-------------------------------------------------------------------
+Sat Nov 21 11:34:22 UTC 2020 - munix9@googlemail.com
+
+- Update to version 2.2.0:
+  * Fix GCC4 compatibility in clang
+  * Fix strict build for >= or < qt 5.15
+  * Final compatibility fixes
+  * A few more GCC4 compat fixes
+  * Fix juce_audio_basics for GCC4 compatibility
+  * Fix a build warning against Qt 5.15
+  * Fix juce_gui_basics to be GCC4 compatible
+  * Use master branch in linux build script
+  * Set TARGET_MACHINE var in makefile, even if target OS already set Fixes #1266
+  * Fix typo
+  * Add i486 and i586 to archs supported by juce
+  * Clean unzipfx of previous build Fixes #1267
+  * Add extra dev libs in linux build, for vst3 support
+  * Update linux build package
+  * Update linux build packages
+  * Prevent assertion on getUniquePluginName() for short plugin names
+  * Fix previous commit
+  * only try to use lv2 modgui under linux
+  * Fix memory leaks in LV2 stuff
+  * Set NATIVE_PLUGIN_USES_CONTROL_VOLTAGE flag on C relevant plugins
+  * Fix CarlaNative.h for strict compiler mode
+  * Remove a useless "<br>" in macOS README
+  * Ignore "-psn_" prefixed CLI args on macOS
+  * Allow to use dark theme/mode on newer macOS
+  * Drop the RC suffix
+  * Reload plugin parameters after loading project in carla-plugin Fixes #1217
+  * Allow to use canvas cut operations without prior window focus Fixes #1176
+  * Ignore mouse wheel events when dragging canvas around
+  * canvas: Only "drop" connection drag for mouse release of left button Fixes #1206
+  * Implement custom plugin ui title on bridges Fixes #1219
+  * Prevent assertion when jack driver not running in multi-client mode
+  * Fix plugins having wrong id when switched around in patchbay mode Closes #1259
+  * Better/faster detection for libmagic (when present)
+  * Match macos local env with build script
+  * Set 2.2-RC3 version for win/mac builds
+  * Fix strict build
+  * Fixup macOS README, mentioning new plugin situation
+  * Set version as 2.2.0-RC3
+  * Do not enable all 64 max buses for AU plugins
+  * Tweaks for a proper macOS 10.12 build
+  * Only set special plugin ui flags under windows, not wine/bridges
+  * Fix warnings, print error code if win32 process start fails
+  * Do not put plugin UIs on top in Windows; Fix window type Fixes #1116
+  * Do not allow capture logs on windows, even if enabled
+  * Give custom message in about page when liblo/osc is not enabled
+  * Better compatibility with msys2
+  * Bump linux script download
+  * Packaging xycontroller in linux binary builds
+  * Double-resolution tick for carla-lv2 plugin
+  * Prevent bad vst host from giving carla-plugin invalid time values See #1236
+  * Clear current project filename on engine stop Fixes #1243
+  * Fix oddities with MIDI learn Closes #1248
+  * Fix win32 packing
+  * Fix xycontroller scene not sending all values
+  * Generate macos app data for xycontroller-ui
+  * Set version as 2.2.0-RC2 for packaging
+  * Tweak windows packing script
+  * patchcanvas: check validity of a few object's parentItems
+  * Fix strict build
+  * Alternative way to handle juce message thread in carla-plugin Fixes #1244 Fixes #1136
+  * Bring juce UIs to front when shown
+  * Re-link vst plugin objects when internal static libs change
+  * Bump version to 2.1-RC2
+  * Disable OSC by default on macos
+  * Don't hide juce desktop window before deletion, fixes VST3 crashes
+  * Forgot to revert a previous change; cleanup
+  * Alternative, cleaner approach to JUCE run loop on carla-plugin Fixes #1238
+  * Replace some XFlush calls with XSync
+  * Carefully handle lv2 ui child window, fixes crash with some x42 uis Fixes #1128
+  * Compress canvas clipboard image saving (as PNG) Closes #1078
+  * Use a dedicated folder for macos 10.12 builds
+  * Build macos plugin packages
+  * Fix build with old compilers
+  * Remove incomplete, unused patchcanvas c++ stuff
+  * Replace hacky midi-pattern temporary-note-flag with midi-queue
+  * Finalize XY controller plugin
+  * XYController fixup, params work now
+  * Add WIP XYController UI
+  * Proper way to (un)define the value
+  * Minor fix
+  * Pass the extra wine include flags when building dgl
+  * Another wine build fix
+  * Add include paths used in wine-devel-dev package
+  * Allow winehq-stable to build jackbridge
+  * Alternative/better way to find all audio ports in juce plugins
+  * Dont try to build C++ frontend code, we will not use it after all
+  * Add a simple midi queue class code
+  * internal plugins: Allow to notify UI of MIDI events
+  * Fix pipe UI message with empty value
+  * Fix build
+  * Add initial DSP code for xycontroller
+  * ScalableDial: Use PNG file for image 2
+  * Add carla_fillFloatsWithSingleValue util function
+  * Re-add dial_02 resources
+  * Fix listing LV2 plugins on Windows
+  * Select text in search entry also when focusing via shortcut
+  * Fix typo
+  * midi pattern: prevent parameter changes when ui opens up
+  * midi pattern: Do not delete notes when changing number of measures
+  * midi pattern: quick&dirty note audition, fix octave offset
+  * MIDI file/pattern: do not lose any RT events during save
+  * Cleanup
+  * midi pattern: Keep playback position while changing BPM Fixes #1210
+  * Fix MIDI pattern missing notes at the edges, improve MIDI performance
+  * Set version for linux scripts too
+  * Set 0 prefix for osx builds
+  * Tweaks to windows build script
+  * Fix regression, missing notes on new plugins
+  * Version used by unzipfx needs final 0 suffix
+  * Update linux scripts
+  * A few more fixes for macos 10.8 build
+  * Fix build with last commit
+  * Fixup juce with macos 10.8, enable it again
+  * Set version for osx builds, disable juce on 10.8 for now
+  * Bump version on the windows scripts
+  * Correct usage of LV2 options interface to change plugin block size
+  * Add option to disabling sending notes to plugins (reverse on)
+  * Fix MIDI file removing channel bit from 0-velocity note "on"s
+  * Fixup RackListWidget::dragLeaveEvent
+  * Fix strict build
+  * Add unused PluginParameterData::getFinalValueWithMidiDelta()
+  * Store the raw MIDI value in EngineControlEvent, for future use
+  * Fix zero-velocity note-ons on MIDI files
+  * carla-jack-multi should always show canvas Hiding for ladish is useless since ladish does not support multi-client anyway
+  * Remove X-NSM-capable from main carla desktop file, forcing variants
+  * Show canvas tab in jack-single or multi modes under NSM
+  * Name the newly added desktop files
+  * Bump version to 2.1.95 aka 2.2-RC1
+  * Add desktop files with hidden status for all carla variants
+  * Skip MIDI learn status when cloning or renaming plugin
+  * Fix strict build
+  * Increase lfo max value, so we can get real slow
+  * Convert control parameter events into MIDI CCs to send to bridges
+  * Implement MIDI CC and CV source parameter changes for bridges
+  * Fix internal client build
+  * Use a custom flag so our CV ports appear as CV right away
+  * Do not give MIDI learn option for output or read-only parameters
+  * Fix bridge build with previous commit
+  * Initial implementation of MIDI learn (per plugin, not global)
+  * Fix typo in MIDI CC list, leading to wrong Balance CC value
+  * Show current mapped type+value directly together with parameter No more right clicking needed to find this info
+  * Always use maximum amount of channels for VST2 plugins Fixes #1184 Fixes #1106
+  * Don't use water namespace in CachedPlugins.cpp
+  * Don't use water namespace in CarlaDssiUtils.cpp
+  * Fix old macos build
+  * Only load default state on LV2 plugins that request such feature
+  * Copy lv2 state path contents when cloning plugin
+  * Fix water File::copyDirectoryTo() to take into account symlinks
+  * Better handling of LV2 temporary state, for clone and rename
+  * Dont recreate symlinks; Add single quotes around debug paths
+  * Symlink for LV2 abstract paths on request; Cleaner debug prints
+  * More work for LV2 state path, symlinks and move/copy when needed
+  * Check for state:threadSafeRestore on lv2 plugins; More debug paths
+  * Keep current edit-dialog tab state while reloading parameters
+  * carla-plugin: fix a few actions leading to inconsistent state
+  * Skip inline redraw requests if engine mode has no patchbay
+  * Some debug messages to help catch future issues
+  * Fix recursion when using carla-patchbay under JACk with lv2 midnam
+  * Fix default name for sfz with sfizz tricks
+  * Ignore requests to hide UI if lv2 plugin uses files only
+  * Add test code to replace sfz files with lv2 sfizz (disabled for now)
+  * Add recently added jack-app MIDI support in client side, to stay in sync
+  * Fix removing plugin in carla-rack plugin mode
+  * Add a 12400x9600 canvas size Fixes #1197
+  * Add debug prints regarding profile file/folder
+  * carla-lv2: better handling of state make-path
+  * Better handling of LV2 state paths, WIP
+  * carla-plugin: force qt to use xcb backend if going to embed UI
+  * Make lv2 state makePath return a unique path per plugin
+  * carla-plugin: only request UI parameter changes if UI is visible
+  * carla-plugin: define an lv2:Project
+  * One more build fix
+  * Fix build with previous commit
+  * Use --whole-archive for internal static libs
+  * Go back to previous way of specifying export symbols on macOS
+  * Stop building carla-native-plugin test binary
+  * Fix SF2 default polyphony Fixes #881
+  * Add a few more details to lv2 plugin version, passes lv2lint
+  * carla-plugin: Only export exactly the symbols that we need
+  * Update juce stuff
+  * Start experimenting with embed-ui API, for use in external tools
+  * Clear canvas selection when deleting plugin, fixing assertions
+  * Update juce sources to stable juce6 release (DISTRHO version)
+  * Fix missing MIDI CC in jack-apps (was missing implementation)
+  * Better support for NSM jack-apps: projects and non optional gui Fixes #1188
+  * Add some safeties around invalid connection-id Need to investigate this more deeply later on
+  * Allow all MIDI options in jack-apps
+  * Interposer: also ignore XNextEvent for NSM
+  * interposer: Better handling of destroyed windows, skip for some
+  * Fix missing ports if client uuid fetch fails Error case was returning instead of continuing
+  * Do not set client prefix from CLI if using NSM (let NSM handle it)
+  * Fix rtaudio crash when there are no system input ports
+  * Fix strict bridge build
+  * Final tweaks for internal/external patchbay usage and projects
+  * Skip graph CV source reconfigure when loading plugin state
+  * Graph: Fix wrong buffer being cleared for unconnected cv ins
+  * Tweaks to loading external patchbay data into internal one
+  * Only care about client name prefix in multi-client mode
+  * Add --cnprefix arg, for client name prefix; Set it also when needed
+  * Don't rely on jack metadata callback being there for positions
+  * Don't print message if client prefix conversion matches original
+  * Be smarter about giving idle time during load, making it faster
+  * Better error reporting regarding missing clients during load
+  * Handle client name prefix during jack client rename
+  * Convert from and to client name prefix as needed
+  * Load canvas positions before loading connections
+  * JACK: Be able to load canvas positions regardless of client prefix
+  * Require that client name prefix include at least 1 dot
+  * Reserve '/' character in plugin names (needed for client prefix)
+  * Raise limit of plugins that can be loaded
+  * Do not ask to quit carla if running under NSM show-gui server
+  * One more pylint fix
+  * Prevent visibility change events from messing with canvas pos
+  * Fix frontend a bit for late messages just before closing
+  * Fix strict build
+  * Make sure to refresh canvas after project finishes loading
+  * print warning when loading legacy canvas group pos file; fix lint
+  * Always load patchbay connections when importing a carla project This ignores SM, as it should for this specific case
+  * Load old canvas group pos file when project is imported (as needed)
+  * Don't load old canvas json for 2.2 projects; Prevent load on close
+  * Fix SFZ rescan adding all files again each time Fixes #906
+  * Fix previous commit
+  * sfzero: fix crash on multi-line c-style comments Fixes #1183
+  * Implement LV2_STATE__freePath
+  * Use state free-path in carla-lv2 whenever possible
+  * Update pre-included lv2 state.h header
+  * Nicely stop async event loop for modguis
+  * Fix build without liblo
+  * Fix modguis for carla host changes and new tornado
+  * Allow to change plugin window title dynamically
+  * Fully implement carla_set_custom_ui_title
+  * Make settings tab-like section slightly bigger
+  * Split/Join groups automatically based on host messages Fixes #1177
+  * Fix callback recursion on carla-plugin patchbay group moves
+  * Fix bridges build yet yet again
+  * Fix bridges build once again
+  * Make the previous changes backwards compatible
+  * Use jack client prefic when renaming clients too
+  * Allow to set custom prefix for jack clients, use it under NSM
+  * Fix bridges build
+  * carla-lv2: First attempt at getting project dir from host
+  * Better handle lv2 map/make path, now based on project dir
+  * Fix carla-plugin never deleting plugins
+  * Add API to know current project folder
+  * Better handle case of JACK server stop (or killed)
+  * Fix useless assertion when deactivating client for final cleanup
+  * Run plugin idle() ourselves when engine is not running
+  * plugin-bridge: give host idle time while waiting for parameter text
+  * plugin-bridge: send back empty/null responses when plugin disabled
+  * GUI: Don't check for engine running before stop action
+  * NSM/jack-app: Catch "/nsm/server/stop" and use it to hide GUI
+  * Support custom "/nsm/gui/client/save" for jack-apps
+  * NSM: use server-control instead of server_control
+  * libjack: an attempt to make all needed symbols visible
+  * Make add-jack interposer work for builds without X11
+  * Always flush console output if debug on
+  * Fix false positives regarding jack meta-data and internal clients
+  * Don't use newlocale stuff on macOS Fixes #1174
+  * JACK: prevent recursion on patchbay group position changes
+  * Fix windows build (typo on previous commits)
+  * libjack: implement type filter in jack_get_ports
+  * libjack: fix under clang and maybe other systems
+  * ChildProcess: use vfork, kill child process when parent dies
+  * Cleanup ChildProcess code
+  * Fix a build warning
+  * Handle case of NSM server not supporting optional-gui
+  * jack-as-plugin: send gui show/hide depending on app's NSM support
+  * Fix strict build warnings against clang
+  * libjack: clean memory correctly in case of error
+  * Ignore one assertion regarding JACK meta-data (false positive)
+  * Fix strict build
+  * Fix for some missing scalable icons
+  * libjack: a few more fixes (when carla is not running)
+  * Fix for dumb compilers
+  * Remove pipe utils hack for haiku, no longer needed
+  * Fix strict build
+  * More libjack work, basic support for UUIDs
+  * Fix jack-as-plugin flags for debugging
+  * Correct and modify a few debug messages
+  * Fix carla-rack under NSM
+  * libjack: Implement client name uuid stuff
+  * Fix crash with libjack port search requests
+  * Fix typo
+  * Manage visibility state for NSM, starts hidden
+  * Implement NSM :optional-gui:
+  * Fix % issue in about dialog Closes #1169
+  * Fix unzipfx tmppath suffix
+  * Fix VST plugin Closes #1170
+  * Fix build under haiku
+  * Being nitpicky on whitespace
+  * Fix external-ui internal plugins with the latest changes
+  * Fix carla-plugin Closes #1166
+  * Fix CI
+  * More pylint corrections
+  * Rename cursors; Cleanup CanvasPreviewFrame class
+  * Fixup for pylint
+  * Use base for CI scripts
+  * pylint3 needs at least 18.04
+  * Start checking python code with pylint, adjust some already
+  * Fixup the assertion added in the previous commit
+  * Fix usage without jack meta-data support
+  * Fix JACK internal client build
+  * Adjust the (incomplete) C++ port to latest API changes
+  * Fix OSC handling method check for long strings
+  * Fixup calf skin
+  * Fixup ScalableDial to be compatible with old pixmaps
+  * Make LEDButton compatible with old pixmaps
+  * Make ScalableButton compatible with old pixmaps
+  * Fix up new scripts to work system-wide, and install them by default
+  * Add script to test carla-osc usage locally
+  * Add script used to test carla-plugin as standalone
+  * New internal CLI arg "--osc-gui="
+  * Fix carla-control not handling CLI arg for custom address
+  * Fix carla-control adding more than 1 plugin
+  * Fix a couple of issues with carla-plugin
+  * Avoid comparing shared_ptr directly to nullptr
+  * Fix bridge build
+  * Fix typo
+  * Backwards compatible std::shared_ptr
+  * Fix build, partially
+  * Improve performance of inline display rendering
+  * patchcanvas: Fix some groupos with inline display becoming too small
+  * patchcanvas: Fix ports text width calculation
+  * Change the way plugins are deleted, ensure they are not being used
+  * Fully Scalable UI Part 2
+  * Fix wrong custom dial arcs value and add fix from #1126
+  * Fully Scalable UI Part 1
+  * Fix wrong assertion with size 1 MIDI messages in carla-patchbay Closes #1099
+  * Add missing QPainterPath include
+  * VST2: Fix creation of a rack when one of the parameters is a NaN
+  * Add new files from juce
+  * Update JUCE
+  * Fix strict build
+  * Fix build
+  * Check for updated program names during audioMasterUpdateDisplay
+  * Fix bridged discovery build
+  * Add action to copy canvas as image to clipboard
+  * Tweak code for canvas group positions See #1139
+  * Fix build in some systems
+  * Tweak previous commit to work under plugin bridges too
+  * Try to load vst2 plugin again if first time plugin blows up
+  * Fix for vst2 plugins that crash on init
+  * Force discovery to be in "C" (english) so we can parse errors
+  * Ignore errors from non-native vst3 files
+  * Use newlocale methods in CarlaScopedLocale to be thread-safe
+  * Pass DLS/GIG files into fluidsynth if version is recent enough
+  * Fixup icons Closes #972
+  * Some attention to inline display
+  * Protect *all* metadata access, even in bridge mode
+  * Protect jack metadata usage with a mutex; other position fixes
+  * Change an error message
+  * Protect backend from a few late calls after engine close request
+  * Add new CARLA_CUSTOM_SAFE_ASSERT
+  * Fix a const variable
+  * fix incorrect base conversion for midi CC numbers
+  * Make pixmapkeyboard right-click menu a bit better
+  * Typo
+  * Manually create image save dialog so we can tweak values Fixes #597
+  * Make canvas ports and groups ignore middle mouse clicks Fixes #1085
+  * Ignore Carla-VST resize requests if not using embed gui
+  * Set correct Carla-VST UI size based on scale factor Closes #1057
+  * Fix for dumb compilers
+  * Add 2x and 4x zoom save image actions, compress output
+  * Try to fix old gcc build
+  * Use CARLA_CATCH_UNWIND in the base utils
+  * Small fixups for jack engine
+  * Save pluginId as part of the patchbay positions
+  * Fix for old compilers
+  * Fix bridges build
+  * Fix small oddities in internal patchbay mode; Cleanup
+  * Bump version a tiny bit
+  * Allow drag&drop in canvas area
+  * Fix canvas groups getting stuck out of screen with last commits
+  * Listen to canvas group position changes over JACK metadata and OSC
+  * Add jackbridge_uuid_unparse
+  * First go at backend-side canvas positions; Safer jack callbacks
+  * Fix build with EXTERNAL_PLUGINS=false
+  * Fixup macOS 10.12 packaging
+  * Disable patchcanvas basic eye-candy (box shadow) causes crashes
+  * Fix for CI
+  * Fix ttl not generated in Windows builds
+  * Fix an hardcoded value in waitForAsyncObject
+  * Fix win32 build using old win64 mingw
+  * Fix missing ALSA engine driver support in Linux builds Closes #1115
+  * Add "Find plugin in patchbay" right-click option
+  * Only build juce for certain archs; Report if using vst3 support
+  * Update JUCE
+  * Fix strict build
+  * Fix for some juce-based plugins having 0 audio ports Closes #1084
+  * Adjust UI a bit for logs tab, also I was wrong :P
+  * Workaround build issue with old 32bit mingw Sort of testing
+  * Add Save, Clear and toggle autoscroll to the Logs tab (#1129)
+  * Fix static CarlaParameterInfo cleanup Fixes #1105
+  * Fix LV2 UI not showing up if host supports touch Fixes #1104
+  * Initial go at category filters
+  * Fix JUCE compilation on Linux with DEBUG=true (#1125)
+  * Allow to drag&drop vst3 folders for any OS
+  * Inform VST2 and JUCE plugins about UI scale factor
+  * discovery: print category for LADSPA and DSSI (based on name)
+  * Fix build without juce
+  * VST discovery: assume midi inputs = 1 if plugin is synth
+  * Fix typo
+  * Use new JUCE init stuff for discovery, set category for JUCE format
+  * Move standalone juce init/idle/cleanup to new file, expose an API
+  * Use "-Wa,-mbig-obj" for juce debug builds, cleanup Closes #1122
+  * Use -fno-common in build flags so we can early catch gcc-10 issues
+  * Update Travis syntax (#1114)
+  * Xcursor not needed as library, only the headers
+  * xcursor is needed for juce
+  * fix rpath specification in pc files to use a csv instead of equals sign (fixes errors when linking on macos)
+  * Yet another CI fix
+  * Initializing juce is not needed for carla-vst linux build
+  * Fix linux-juce-strict CI
+  * CI tweaks
+  * Revert a few things regarding CarlaProcessUtils
+  * Final build fix
+  * I want emails
+  * Fix Windows build
+  * Fixup for CI
+  * Add personal script to copy juce stuff
+  * Bring back just vst2 support
+  * Sync JUCE with DISTRHO, move mingw-std-threads into modules/
+  * Use ScopedAbortCatcher to avoid crashing with u-he vst3 plugins
+  * Split CarlaProcessUtils in hpp/cpp, add ScopedAbortCatcher
+  * Use JUCE by default on linux if supported; Cleanup config a bit
+  * Quick way to get mingw to build
+  * Do not use JUCE for vst2 handling, for now
+  * Final details for scanning etc vst3 linux stuff Closes #1094
+  * Fixup build with new juce
+  * Fixup and cleanup carla-discovery for new juce, also vst3 linux
+  * Enable juce vst3 support under linux, and disable vst2 (internal)
+  * Tweak build flags for new juce
+  * Actually update vst3sdk
+  * Build juce_gui_extra under linux
+  * Update vst3sdk and juce
+  * Fix previous commit
+  * Replace wine function check for Z:\usr\ folder check
+  * Fixup windows definition files and CI
+  * Do not use wine for native win32 builds
+  * Specify windows library definitions for carla plugins
+  * Fix list of exported symbols for libcarla-native-plugin.dylib
+  * Allow to customize pkg-config
+  * WIP stuff
+  * discovery: print category as a string, for internal plugins too
+  * discovery: print category for vst plugins (#1073)
+  * Fix strict build
+  * Only standalone should call carla_engine_idle
+  * Allow carla-plugin to have full access to Host API
+  * Fix build
+  * Host API calls now require handle as first argument
+
+-------------------------------------------------------------------
 Mon Sep 28 14:52:01 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Enabled liblo for Tumbleweed.

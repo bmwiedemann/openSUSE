@@ -168,4 +168,14 @@
 </comment>
     <requestid>838406</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e8f714593d7ddc17ad16986ed7c7e061</srcmd5>
+    <version>2.2.0</version>
+    <time>1613774555</time>
+    <user>dimstar_suse</user>
+    <comment>Fix Factory/Tumbleweed build with wine &gt;= 6
+  (probably related to boo#1179734)
+@licensedigger has seen fit to delay this package again after I purged the offending files from the tarball via a _service file after the last long delay. This means Factory carla won't build until wine boo#1179734 is fixed</comment>
+    <requestid>854813</requestid>
+  </revision>
 </revisionlist>

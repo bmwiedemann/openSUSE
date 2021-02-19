@@ -29,12 +29,12 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param> and
 #<param name="versionformat">2.1.1</param> to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        An audio plugin host
 License:        GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            https://kxstudio.linuxaudio.org/Applications:Carla
+URL:            https://kx.studio/Applications:Carla
 #https://github.com/falkTX/Carla/archive/v%%{version}.tar.gz#/
 
 Source0:        %{name}-%{version}.tar.xz
@@ -46,7 +46,7 @@ Patch0:         carla-systemlibs.patch
 Patch1:         carla-remove-pkgconf-rpath.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-BuildRequires:  filesystem
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtbase-devel
 # for extra native plugins
 BuildRequires:  non-ntk-fluid
@@ -76,10 +76,12 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 #Wine
 #!BuildIgnore:  sane-backends-32bit
+BuildRequires:  freetype2-devel-32bit
 BuildRequires:  gcc-32bit
 BuildRequires:  gcc-c++-32bit
 BuildRequires:  glibc-devel-32bit
 BuildRequires:  libX11-devel-32bit
+BuildRequires:  libXext-devel-32bit
 BuildRequires:  libstdc++-devel-32bit
 %if 0%{?suse_version} >= 1550
 BuildRequires:  mingw32-cross-gcc
@@ -153,7 +155,7 @@ export CXXFLAGS=`echo $CXXFLAGS | sed s/\-flto=auto//`
 echo $CFLAGS
 echo $CXXFLAGS
 make --trace win32 CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
-make --trace wine32 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
+make --trace wine32 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-L/usr/lib/wine"
 %endif
 
 %install
@@ -183,10 +185,9 @@ cp %{S:2} .
 
 %files
 %license doc/GPL.txt doc/LGPL.txt LICENSE.TurtleTests bsd-2-clause.txt
-%doc INSTALL.md README.md doc/Carla-TestCases
+%doc README.md doc/Carla-TestCases
 %{_bindir}/*
-%dir %{_libdir}/carla
-%{_libdir}/carla/*
+%{_libdir}/carla
 %exclude %{_libdir}/carla/carla-bridge-posix32
 %exclude %{_libdir}/carla/carla-discovery-posix32
 %if 0%{?suse_version} >= 1550
@@ -195,12 +196,10 @@ cp %{S:2} .
 %exclude %{_libdir}/carla/carla-discovery-win32.exe
 %endif
 %dir %{_libdir}/lv2
-%dir %{_libdir}/lv2/carla.lv2
-%{_libdir}/lv2/carla.lv2/*
-%dir %{_datadir}/carla
-%{_datadir}/carla/*
+%{_libdir}/lv2/carla.lv2
+%{_datadir}/carla
 %{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor/
+%{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/mime/packages/carla.xml
 %{_localstatedir}/adm/update-messages/%{name}-warning
 
@@ -209,7 +208,7 @@ cat %{_localstatedir}/adm/update-messages/%{name}-warning
 
 %files vst
 %dir %{_libdir}/vst
-%dir %{_libdir}/vst/carla.vst
+%{_libdir}/vst/carla.vst
 %{_libdir}/carla/carla-bridge-posix32
 %{_libdir}/carla/carla-discovery-posix32
 %if 0%{?suse_version} >= 1550
@@ -217,11 +216,9 @@ cat %{_localstatedir}/adm/update-messages/%{name}-warning
 %{_libdir}/carla/carla-bridge-win32.exe
 %{_libdir}/carla/carla-discovery-win32.exe
 %endif
-%{_libdir}/vst/carla.vst/*
 
 %files devel
-%dir %{_includedir}/carla
-%{_includedir}/carla/*
+%{_includedir}/carla
 %{_libdir}/pkgconfig/*
 
 %changelog
