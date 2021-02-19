@@ -403,7 +403,7 @@ Prefer: PackageKit-backend-zypp
 Prefer: libftdi-devel
 
 # have choice for tensorflow: tensorflow tensorflow2 tensorflow2_2_1_0-gnu-hpc tensorflow2_2_1_0-gnu-mvapich2-hpc tensorflow2_2_1_0-gnu-openmpi2-hpc
-Prefer: tensorflow
+Prefer: tensorflow2
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
 Prefer: -python3-sip4 -python3-sip4-devel
