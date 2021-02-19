@@ -61,4 +61,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>832543</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a80b1355ff2c81dde1bacbb224cd0df8</srcmd5>
+    <version>1.0.4</version>
+    <time>1613774768</time>
+    <user>dimstar_suse</user>
+    <comment>- Added mtree-stat-mtime.patch
+    + Fixes build issue with struct stat &quot;st_mtimespec&quot; field</comment>
+    <requestid>873859</requestid>
+  </revision>
 </revisionlist>

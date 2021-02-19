@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 17:26:27 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Added mtree-stat-mtime.patch
+    + Fixes build issue with struct stat "st_mtimespec" field 
+
+-------------------------------------------------------------------
 Sat Aug 29 17:57:09 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Add note to description about newer NetBSD port "nmtree" 

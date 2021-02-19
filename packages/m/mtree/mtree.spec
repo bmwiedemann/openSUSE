@@ -1,7 +1,7 @@
 #
 # spec file for package mtree
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Archie L. Cobbs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/archiecobbs/mtree-port
 Source:         https://github.com/archiecobbs/mtree-port/archive/%{version}.tar.gz
+Patch0:         %{name}-stat-mtime.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libopenssl-devel
@@ -42,6 +43,7 @@ is also available in the package "nmtree".
 
 %prep
 %setup -q -n mtree-port-%{version}
+%autopatch -p1
 
 %build
 ./autogen.sh
