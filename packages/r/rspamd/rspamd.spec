@@ -26,7 +26,7 @@
 %bcond_with    systemd
 %endif
 
-%ifarch x86_64
+%ifarch %{ix86} x86_64
   %if 0%{?suse_version} > 1500
     %bcond_without hyperscan
   %endif
