@@ -1,8 +1,8 @@
 #
 # spec file for package python-emoji
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Matthias Bach <marix@marix.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-emoji
-Version:        0.6.0
+Version:        1.2.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
@@ -44,6 +43,8 @@ Example:
 Python is 👍
 >> print(emoji.emojize('Python is :thumbsup:', use_aliases=True))
 Python is 👍
+
+By default, the language is English (``language='en'``) but Spanish (``'es'``), Portuguese (``'pt'``) and Italian (``'it'``) are also supported.
 
 %prep
 %setup -q -n emoji-%{version}
