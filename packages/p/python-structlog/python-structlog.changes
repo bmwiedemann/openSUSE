@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:07:55 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.1.0:
+  * structlog.threadlocal.wrap_dict() now has a correct type
+    annotation. #290
+  * Fix isolation in structlog.contextvars. #302
+  * The default configuration and loggers are pickleable again. #301
+  * structlog.dev.ConsoleRenderer will now look for a logger_name
+     key if no logger key is set. #295
+
+-------------------------------------------------------------------
 Mon Jan  4 11:16:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 20.2.0:

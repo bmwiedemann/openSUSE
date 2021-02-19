@@ -20,7 +20,7 @@
 # because of acyncio for tests
 %define skip_python2 1
 Name:           python-structlog
-Version:        20.2.0
+Version:        21.1.0
 Release:        0
 Summary:        Structured Logging for Python
 License:        Apache-2.0 OR MIT

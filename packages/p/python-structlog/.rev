@@ -107,4 +107,18 @@
     Concretely this is useful with orjson which returns bytes. #271</comment>
     <requestid>860146</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9bd7941eb296ce050c04850962201f80</srcmd5>
+    <version>21.1.0</version>
+    <time>1613774701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.1.0:
+  * structlog.threadlocal.wrap_dict() now has a correct type
+    annotation. #290
+  * Fix isolation in structlog.contextvars. #302
+  * The default configuration and loggers are pickleable again. #301
+  * structlog.dev.ConsoleRenderer will now look for a logger_name
+     key if no logger key is set. #295</comment>
+    <requestid>873660</requestid>
+  </revision>
 </revisionlist>
