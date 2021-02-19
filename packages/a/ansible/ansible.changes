@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:40:14 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.18
+  * CVE-2021-20228 where default and fallback values for no_log parameters
+    to modules were not previously masked.
+  * CVE-2021-20178 where several parameters to the snmp_facts module were
+    logged and displayed despite containing sensitive information.
+  * CVE-2021-20180 where several parameters to the
+    bitbucket_pipeline_variable were logged and displayed despite
+    containing sensitive information.
+  * CVE-2021-20191 which addresses a number of modules whose parameters
+    were logged and displayed despite containing sensitive
+    information. For the full list of affected modules, refer to the
+    changelog linked below.
+  
+-------------------------------------------------------------------
 Tue Jan 19 00:48:05 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to version 2.9.17 with minor changes and a few bug fixes
