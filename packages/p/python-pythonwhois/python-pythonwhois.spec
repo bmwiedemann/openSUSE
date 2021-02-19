@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythonwhois
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,9 +37,7 @@ BuildRequires:  unzip
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython3
 Conflicts:      perl-Net-Whois-Raw
-%endif
 %python_subpackages
 
 %description

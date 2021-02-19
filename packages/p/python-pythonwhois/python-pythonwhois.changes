@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 12 12:55:17 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- get rid of %ifpython3
+
+-------------------------------------------------------------------
 Wed May 20 07:26:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
