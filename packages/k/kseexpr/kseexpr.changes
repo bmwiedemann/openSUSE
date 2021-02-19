@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Jan 13 12:42:40 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Initial package
+- Add Fix-translation-lookup-in-stock-Linux-deployments.patch to
+  fix loading the translations (kde#429782)
+- Add Fix-possible-compiler-error.patch to fix compiler errors on
+  i586 (kde#431436)
+
