@@ -551,4 +551,17 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
     <comment></comment>
     <requestid>830347</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>6f69a66158058161f7e53440f84af0fe</srcmd5>
+    <version>6.1.0</version>
+    <time>1613774560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.1.0.
+- Add BuildRequires: sundials-devel to enable sundials based solvers; also add libsundials*.so to Requires for octave-cli to resolve between multiple providers coming from serial and different parallel flavours of sundials.
+- Update api version to 55 in keeping with upstream.
+- Minor adjustment of patches to fix line offsets.
+- Drop external pkgconfig file: octave now installs its own.
+- Link duplicate files in %{_datadir} using fdupes.</comment>
+    <requestid>862002</requestid>
+  </revision>
 </revisionlist>

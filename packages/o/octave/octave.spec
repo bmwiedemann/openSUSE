@@ -16,9 +16,9 @@
 #
 
 
-%define apiver  v53
+%define apiver  v55
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 5.2.0
+%define pkg_ver 6.1.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
@@ -58,7 +58,6 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://www.octave.org/
 Source:         https://ftp.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
-Source2:        octave.pc.in
 Source3:        octave.macros
 # PATCH-FIX-OPENSUSE
 Patch0:         octave_tools_pie.patch
@@ -73,6 +72,7 @@ BuildRequires:  libtool
 BuildRequires:  %{blas_library}-devel
 BuildRequires:  bison
 BuildRequires:  dejagnu
+BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -96,6 +96,7 @@ BuildRequires:  qhull-devel
 BuildRequires:  qrupdate-devel
 BuildRequires:  readline-devel
 BuildRequires:  suitesparse-devel
+BuildRequires:  sundials-devel
 BuildRequires:  termcap
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(zlib)
@@ -164,6 +165,10 @@ Summary:        Command-line user interface for Octave
 Group:          Productivity/Scientific/Math
 Requires:       makeinfo
 Requires(pre):  update-alternatives
+# SECTION Resolve degeneracy between multiple libsundials{_ida}.so providers from serial and parallel flavours of sundials
+Requires:       libsundials3
+Requires:       libsundials_ida5
+# /SECTION
 %if %{with native_graphics}
 Recommends:     epstool
 Recommends:     pstoedit
@@ -233,12 +238,7 @@ export QCOLLECTIONGENERATOR=qhelpgenerator-qt5
   --disable-docs \
   --enable-openmp
 
-make %{?_smp_mflags}
-
-# .pc file
-cp %{SOURCE2} octave.pc
-sed -i 's:@VERSION@:%{src_ver}:' octave.pc
-sed -i 's:@LIB@:%{_lib}:' octave.pc
+%make_build
 
 %install
 %make_install
@@ -256,9 +256,6 @@ mkdir -p %{buildroot}/%{_datadir}/%{name}/packages
 # Documentation
 install -Dm 644 -t %{buildroot}%{_mandir}/man1/ doc/*/*.1
 install -Dm 644 -t %{buildroot}%{_infodir} doc/*/*.info doc/*/*.info-*
-# .pc file
-mkdir -p %{buildroot}/%{_libdir}/pkgconfig
-cp octave.pc %{buildroot}/%{_libdir}/pkgconfig
 # Remove icons with huge size, we have scalable SVGs
 rm -rf %{buildroot}/%{_datadir}/icons/hicolor/1024x1024
 # gui related fixes
@@ -271,6 +268,8 @@ rm -rf %{buildroot}/%{_datadir}/applications/
 install -Dm 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm/macros.octave
 # increase stack size set by the JVM, affects the whole octave process
 echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
+
+%fdupes %{buildroot}%{_datadir}/octave/
 
 %check
 # Increase stack limits. OpenBLAS tests are run after some JVM test, and OpenBLAS

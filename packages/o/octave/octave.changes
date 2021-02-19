@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  2 11:58:24 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.1.0:
+  * Long list of changes, see
+    https://www.gnu.org/software/octave/NEWS-6.1.html
+- Add BuildRequires: sundials-devel to enable sundials based
+  solvers; also add libsundials*.so to Requires for octave-cli to
+  resolve between multiple providers coming from serial and
+  different parallel flavours of sundials.
+- Update api version to 55 in keeping with upstream.
+- Minor adjustment of patches to fix line offsets.
+- Drop external pkgconfig file: octave now installs its own.
+- Link duplicate files in %{_datadir} using fdupes.
+
+-------------------------------------------------------------------
 Thu Aug 20 09:01:26 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use memoryperjob constraint instead of %limit_build macro.

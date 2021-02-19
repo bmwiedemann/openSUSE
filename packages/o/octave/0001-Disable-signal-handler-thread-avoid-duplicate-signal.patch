@@ -32,11 +32,11 @@ indeterminism, and also fixes https://savannah.gnu.org/bugs/?54607
  liboctave/wrappers/signal-wrappers.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/liboctave/wrappers/signal-wrappers.c b/liboctave/wrappers/signal-wrappers.c
-index 90ba890..d838555 100644
---- a/liboctave/wrappers/signal-wrappers.c
-+++ b/liboctave/wrappers/signal-wrappers.c
-@@ -699,7 +699,7 @@ signal_watcher (void *arg)
+Index: octave-6.1.0/liboctave/wrappers/signal-wrappers.c
+===================================================================
+--- octave-6.1.0.orig/liboctave/wrappers/signal-wrappers.c
++++ octave-6.1.0/liboctave/wrappers/signal-wrappers.c
+@@ -709,7 +709,7 @@ signal_watcher (void *arg)
  void
  octave_create_interrupt_watcher_thread (octave_sig_handler *handler)
  {
@@ -45,6 +45,3 @@ index 90ba890..d838555 100644
    pthread_t sighandler_thread_id;
  
    if (pthread_create (&sighandler_thread_id, 0, signal_watcher, handler))
--- 
-2.25.0
-
