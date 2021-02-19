@@ -217,10 +217,11 @@ sleep 5
 # This is to allow use of pytest-error-for-skips and pytest-instafail,
 # used to see problems even when tests hang.
 # test_multiple_start_stop is occasional failures on most platforms
+# test_pause_resume is occasional failures on aarch64
 pytest_k_list="test_openal or test_pulse or test_arb or \
   test_multitexture or test_clock or test_get_animation_no_video or \
   leif_fork or test_load_privatefont or test_load_privatefont_from_list or test_directsound_listener or \
-  test_gdiplus_loading or test_quartz_loading or test_quicktime_loading or test_multiple_start_stop"
+  test_gdiplus_loading or test_quartz_loading or test_quicktime_loading or test_multiple_start_stop or test_pause_resume"
 
 %if %{without gtk2}
 pytest_k_list="$pytest_k_list or test_gdkpixbuf2 or test_gdkpixbuf2_loading"

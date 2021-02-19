@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 19 10:52:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop test_pause_resume test as it is unstable, especially on aarch64
+
+-------------------------------------------------------------------
 Thu Jan 28 23:14:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.14:
