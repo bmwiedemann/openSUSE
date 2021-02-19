@@ -1,7 +1,7 @@
 #
 # spec file for package python-oiffile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %define packagename oiffile
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-oiffile
 Version:        2020.9.18
@@ -28,8 +29,8 @@ Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/oiffile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module numpy >= 1.15}
-BuildRequires:  %{python_module tifffile >= 2020.6.3}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tifffile >= 2020.6.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.15

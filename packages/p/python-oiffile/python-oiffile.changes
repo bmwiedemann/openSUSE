@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:32:28 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Skip python36 because python-numpy does not support it.
+
+-------------------------------------------------------------------
 Thu Nov 26 06:52:36 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2020.9.18.
