@@ -1,7 +1,7 @@
 #
 # spec file for package sisctrl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Version:        0.0.20051202
 Release:        0
 # src/sisctrlext.c is licensed under the GPL-2.0 "only". Hence the below license
 Summary:        SiS Display Control Panel
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/X11/Utilities
-Url:            http://www.winischhofer.net/
+URL:            http://www.winischhofer.net/
 Source:         %{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE sisctrl.diff bnc#218755 bnc#483401 -- Add missing return value - Define functions, which don't return anything, as void - Fix build by linking with libm - Fix rpmlint warning "no-return-in-nonvoid-function"
 Patch0:         sisctrl.diff
@@ -31,6 +31,7 @@ BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
 BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)

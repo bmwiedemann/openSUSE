@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 10:29:51 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added "pkgconfig(gdk-pixbuf-xlib-2.0)" in order to fix build on
+  factory/Tumbleweed
+
+-------------------------------------------------------------------
 Thu Dec  7 20:03:20 UTC 2017 - crrodriguez@opensuse.org
 
 - Remove build dependency on xorg-x11-devel 
