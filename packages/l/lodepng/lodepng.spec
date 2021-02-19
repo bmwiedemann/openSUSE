@@ -1,7 +1,7 @@
 #
 # spec file for package lodepng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _libver %(echo %{version}|sed 's/0~git/r/')
 Name:           lodepng
-Version:        0~git207
+Version:        0~git208
 Release:        0
 Summary:        PNG encoder and decoder
 License:        Zlib
@@ -74,7 +74,7 @@ includedir=${prefix}/include
 
 Name: lodepng
 Description: PNG encoder and decoder library
-Version: 0~git207
+Version: 0~git208
 Libs: -L${libdir} -llodepng
 Cflags: -I${includedir}
 EOF
