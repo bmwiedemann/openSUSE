@@ -1,7 +1,7 @@
 #
 # spec file for package gmsh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define libver 4_5
+%define libver 4_7
 %bcond_with static_lib
 %bcond_with pdf_doc
 Name:           gmsh
-Version:        4.5.6
+Version:        4.7.1
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later
@@ -30,28 +30,16 @@ Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
 Patch2:         gmsh-3.0.5-add-shebang-to-onelab.patch
-# PATCH-FIX-UPSTREAM -- fix build with GCC 10
-Patch3:         move-globals-to-mmg3d-c.patch
-# PATCH-FIX-UPSTREAM -- fix build with GCC 10
-Patch4:         0001-MMG3D-Remove-some-duplicated-variables-from-global-s.patch
-# PATCH-FIX-UPSTREAM -- fix build with GCC 10
-Patch5:         0002-Remove-non-namespaced-endcod-function-duplicates-MMG.patch
-# PATCH-FIX-UPSTREAM -- fix build with GCC 10
-Patch6:         0003-Define-global-variables-mostly-used-by-MMG_analar-in.patch
 BuildRequires:  Mesa-devel
-BuildRequires:  bison
-BuildRequires:  blas-devel
 BuildRequires:  cgns-devel >= 3.4.0
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
-BuildRequires:  flex
 BuildRequires:  fltk-devel >= 1.1.7
 BuildRequires:  gcc-c++
 BuildRequires:  gl2ps-devel >= 1.4.1
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  hdf5-devel
-BuildRequires:  lapack-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  makeinfo
@@ -153,14 +141,7 @@ and post-processor.
 This package contains the public gmsh API for Python.
 
 %prep
-%setup -q -n %{name}-%{version}-source
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n %{name}-%{version}-source
 
 %build
 %cmake \
@@ -174,12 +155,12 @@ This package contains the public gmsh API for Python.
   -DGMSH_HOST=OBS \
 
 # build libs/binaries
-%make_build all
+%cmake_build all
 
 # build documentation
-%make_build info html
+%cmake_build info html
 %if %{with pdf_doc}
-%make_build pdf
+%cmake_build pdf
 %endif
 
 %install

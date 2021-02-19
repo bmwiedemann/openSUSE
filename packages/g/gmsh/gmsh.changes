@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jan 15 13:31:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.7.1:
+  * small bug fixes and improvements.
+- Update to 4.7.0:
+  * API errors now throw exceptions with the last error message
+    (instead of an integer error code)
+  * API functions now print messages on the terminal by default, and
+    throw exceptions on all errors unless in interactive mode
+  * new API functions to retrieve "homogeneous" model-based data
+    (for improved Python performance), to set interpolation matrices
+    for high-order datasets, to assign "automatic" transfinite
+    meshing constraints and to pass native (C++, C, Python or
+    Julia) mesh size callback
+  * added option to save high-order periodic nodes info
+  * added support for scripted window splitting
+  * improved VTK reader
+  * new MatrixOfInertia command
+  * uniformized commands, options and field option names to match
+    the documented terminology (CharacteristicLength -> MeshSize,
+    geometry Line -> Curve, ...; old names are still accepted, but
+    deprecated)
+  * improved handling of complex periodic cases
+  * removed bundled Mmg3D and added support for stock Mmg 5
+  * Gmsh now requires C++11 and CMake 3.1, and uses Eigen by default
+    instead of Blas/Lapack for dense linear algebra
+  * small bug fixes.
+  * Incompatible API changes: new optional argument to
+    geo/addCurveLoop
+- Update to 4.6.0:
+  * new options to only generate initial 2D or 3D meshes (without node
+    insertion), and to only mesh non-meshed entities
+  * added ability to only remesh parts of discrete models
+  * added support for mesh size fields and embedded points and
+    surfaces in HXT
+  * improved reparametrization and partitioning code
+  * new OCC API functions to reduce the number of synchronizations
+    for complex models
+  * new OCC spline surface interfaces; new functions and options
+    to control the first tag of entities, nodes and elements
+  * fixed duplicated entities in STEP output
+  * improved mesh subdivision and high-order pipeline
+  * MED output now preserves node and element tags
+  * small bug fixes.
+  * Incompatible API changes: new optional arguments to mesh/clear,
+    mesh/createTopology, mesh/createGeometry, occ/addThruSections,
+    mesh/getPeriodicNodes; new arguments to mesh/getBasisFunctions;
+    removed mesh/preallocateBasisFunctions,
+    mesh/precomputeBasisFunctions and
+    mesh/getBasisFunctionsForElements;
+    renamed occ/setMeshSize as occ/mesh/setSize
+- Drop upstream patches:
+  * move-globals-to-mmg3d-c.patch
+  * 0001-MMG3D-Remove-some-duplicated-variables-from-global-s.patch
+  * 0002-Remove-non-namespaced-endcod-function-duplicates-MMG.patch
+  * 0003-Define-global-variables-mostly-used-by-MMG_analar-in.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 23:07:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix failing build due to GCC10 catching redefinitions, add
