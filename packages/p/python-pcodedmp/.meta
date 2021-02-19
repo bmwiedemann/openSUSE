@@ -1,0 +1,10 @@
+<package name="python-pcodedmp" project="openSUSE:Factory">
+  <title>A VBA p-code disassembler</title>
+  <description>Disassemble p-code of VBA code in OLE2 documents.
+
+Supports VBA5 (Office 97, MacOffice 98), VBA6 (Office 2000 to Office 2009) and VBA7 (Office 2010 and higher).
+
+</description>
+  <devel project="devel:languages:python" package="python-pcodedmp"/>
+  <url>https://github.com/bontchev/pcodedmp</url>
+</package>
