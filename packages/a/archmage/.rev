@@ -7,4 +7,12 @@
     <comment>New package</comment>
     <requestid>839489</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c790a63bf54c7309628b4cb2e16ae44b</srcmd5>
+    <version>0.4.2.1</version>
+    <time>1613774676</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python singlespec</comment>
+    <requestid>873786</requestid>
+  </revision>
 </revisionlist>
