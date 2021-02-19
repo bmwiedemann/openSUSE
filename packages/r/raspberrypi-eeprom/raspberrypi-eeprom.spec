@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} < 1550
 %define _firmwaredir /lib/firmware
 %endif
 
 Name:           raspberrypi-eeprom
-Version:        0.0~2020.09.03.65~gb9c255d
+Version:        0.0~2020.09.03.75~g3129546
 Release:        0
 Summary:        Raspberry Pi 4 EEPROM firmware
 License:        SUSE-Firmware
@@ -29,12 +30,14 @@ URL:            https://github.com/raspberrypi/rpi-eeprom
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         add-suse-config.patch
 Patch1:         dont-use-env.patch
+Patch2:         rpi-eeprom-update-Use-tr-instead-of-strings.patch
 Provides:       rpi-eeprom
 Supplements:    modalias(of:N*T*Cbrcm%2Cbcm2711*C*)
 Requires:       raspberrypi-firmware >= 2021.01.21
 Requires:       raspberrypi-firmware-dt >= 2020.12.07
 Provides:       rpi-eeprom-config = %{version}
 Obsoletes:      rpi-eeprom-config < %{version}
+Requires:       pciutils
 Requires:       raspberrypi-eeprom-firmware
 BuildArch:      noarch
 
@@ -43,7 +46,6 @@ First stage bootloader packages for Raspberry Pi 4
 
 %package firmware
 Summary:        Raspberry Pi 4 EEPROM firmware blobs
-License:        SUSE-Firmware
 Group:          System/Boot
 Provides:       raspberrypi-firmware-eeprom = %{version}
 Obsoletes:      raspberrypi-firmware-eeprom < %{version}

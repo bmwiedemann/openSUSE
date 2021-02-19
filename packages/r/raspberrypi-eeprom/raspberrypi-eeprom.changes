@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 19 10:07:06 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add 'pciutils' as a requirement. 'rpi-eeprom-update' uses lspci.
+  (bsc#1182437)
+- Update to version 0.0~2020.09.03.65~gb9c255d: Simplifies code by removing
+  legacy functions.
+- Add patch: "rpi-eeprom-update-Use-tr-instead-of-strings.patch" to avoid the
+  dependency with binutils. (bsc#1182437)
+
+-------------------------------------------------------------------
 Thu Feb  4 14:17:12 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Fix 'Supplements:' in spec file, as per
