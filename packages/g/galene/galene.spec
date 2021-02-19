@@ -1,4 +1,6 @@
 #
+# spec file for package galene
+#
 # Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -9,10 +11,11 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
- 
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
-# 
+#
 # nodebuginfo
+
 
 # Remove stripping of Go binaries.
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
@@ -27,24 +30,25 @@
 %bcond_without  apparmor
 
 Name:           galene
-Version:        0.2
+Version:        0.3
 Release:        0
-License:        MIT
 Summary:        Galène videoconferencing server
-Url:            https://galene.org/
+License:        MIT
 Group:          Development/Languages/Other
+URL:            https://galene.org/
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}.service
 Source3:        %{name}.sysconfig
 Source4:        ice-servers.json
 Source5:        apparmor-usr.sbin.galene
-BuildRequires:  filesystem
+Patch1:         galene-html-sendselect-default.patch
 BuildRequires:  fdupes
+BuildRequires:  filesystem
 BuildRequires:  go >= 1.14
 BuildRequires:  systemd-rpm-macros
-Requires:       filesystem
 Requires:       fdupes
+Requires:       filesystem
 Requires(pre): %fillup_prereq
 %if %{with apparmor}
 %if 0%{?suse_version} <= 1315
@@ -65,6 +69,7 @@ deployed with moderate server resources.
  
 %prep
 %setup -qa1
+%patch1 -p0
 
 %build
 go build \
@@ -120,6 +125,7 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %service_del_postun %{name}.service
 
 %files
+%doc CHANGES
 %doc README
 %doc README.FRONTEND
 %doc README.PROTOCOL
