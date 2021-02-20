@@ -1,7 +1,7 @@
 #
 # spec file for package python-ligo-segments
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
+%define skip_python2 1
 Name:           python-ligo-segments
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
-License:        GPL-3.0
 Summary:        Representations of semi-open intervals
-Url:            https://git.ligo.org/lscsoft/ligo-segments
+License:        GPL-3.0-only
 Group:          Development/Languages/Python
-Source:         http://software.igwn.org/lscsoft/source/ligo-segments-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+URL:            https://git.ligo.org/lscsoft/ligo-segments
+Source:         https://files.pythonhosted.org/packages/source/l/ligo-segments/ligo-segments-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE python-ligo-segments-disable-lal-tests.patch badshah400@gmail.com -- Disable tests requiring lal to avoid circular build dependency on lal (which also requires python-ligo-segments)
+Patch0:         python-ligo-segments-disable-lal-tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
+# SECTION For tests
+BuildRequires:  %{python_module pytest}
+# /SECTION
 BuildRequires:  fdupes
 Requires:       python-six
 
 %python_subpackages
 
 %description
-ligo-segments defines the segment, segmentlist, and segmentlistdict objects for manipulating semi-open intervals.
+ligo-segments defines the segment, segmentlist, and segmentlistdict objects for
+manipulating semi-open intervals.
 
 %prep
-%setup -q -n ligo-segments-%{version}
+%autosetup -p1 -n ligo-segments-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -45,8 +53,21 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%check
+%{python_expand export PYTHON=$python
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=%{buildroot}%{$python_sitearch}
+cp -r test test-%{$python_bin_suffix}
+pushd test-%{$python_bin_suffix}
+%make_build check
+popd
+}
+
 %files %{python_files}
-%doc LICENSE README.rst
-%{python_sitearch}/*
+%doc README.rst
+%license LICENSE
+%{python_sitearch}/ligo/
+%{python_sitearch}/ligo_segments-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/ligo_segments-%{version}-py%{python_version}-nspkg.pth
 
 %changelog
