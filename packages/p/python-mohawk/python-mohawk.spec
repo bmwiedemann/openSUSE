@@ -1,8 +1,7 @@
 #
 # spec file for package python-mohawk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017 The openSUSE Project.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +54,7 @@ authorization scheme.
 
 %if %{with test}
 %check
-%python_exec setup.py test
+%pyunittest
 %endif
 
 %files %{python_files}
