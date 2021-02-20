@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue Jan 19 12:28:32 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.4.2:
+  * See https://krita.org/en/item/krita-4-4-2-released/
+  * New implementation of SVG Mesh Gradients and Mesh transforms
+  * New gradient fill layer type and new Gradient Editor
+  * Improved Halftone Filter
+  * New Paste Shape Style Action
+  * A Toolbar Button for Wraparound Mode
+  * Six new brushes meant to show off the new RGBA brush tip
+    feature
+  * Improved HiDPI rendering (kde#411118)
+  * Files with names starting with a number are now autosaved
+    correctly
+  * Make it possible to load EXR files with non-ascii characters in
+    the path
+  * Disable making the background black for a semi-transparent EXR
+    file (kde#427720)
+  * The PressureIn sensor now works correctly in combination with
+    the Hue color expression (kde#426234)
+  * The speed smoothing algorithm no longer creates blobby lines
+    (kde#363364, kde#375360)
+  * The colorsmudge brush now blends when there is a selection
+    active (kde#423851)
+  * The brush outline no longer snaps when switching between two
+    images with a different zoom level (kde#427094)
+  * Onion skins are hidden when playing an animation (kde#426246)
+  * Fix converting an animated transparency mask to a paint layer
+    (kde#419223)
+  * The default shortcuts for changing the mode in the selection
+    tools have been removed: they are replaced by ctrl/shift/alt
+    modifiers. The actions still exist, so you can configure
+    single-key shortcuts in Krita's shortcut settings dialog.
+  * The magnetic selection tool now has buttons to confirm or
+    discard a selection
+  * An issue where moving a selection would jump was fixed
+    (kde#426949)
+  * A Fit to Height zoom shortcut was added (kde#410929)
+  * The screentone generator's defaults were improved
+  * File layers that are dragged and dropped now have a proper name
+    (kde#427235)
+  * The popup palette now has a clear color history button
+  * The report bug dialog now provides the system information and
+    usage logs in an easy to copy/paste manner
+  * Blacklisted resources that contain a \ in the filename were
+    ignored (kde#421575)
+  * Displays are shown by name in the color management settings page
+    (kde#412943)
+  * Fix showing custom icons for user-defined templates (kde#395894)
+  * The fill layer dialog and seexpr widgets were polished
+  * The x/y position spin boxes in the move tool options were fixed
+    (kde#420329, kde#423452)
+  * Add default letter spacing for the text shape
+  * Add support for user-installed color schemes
+  * All dialogs and message boxes are now correctly parented to the
+    main window
+  * Make it possible to export groups as merged layers
+  * Fix kerning handling in the text editor
+  * Add support for color opacity in the text editor (kde#342303)
+  * Fix cropping the transform mask when moving the masked layer
+  * Improve switching between SVG source and rich text editor
+    (kde#424213)
+  * Fix issues with the brush outline getting stuck when the brush
+    size is smaller than 0 (kde#427751)
+  * Improve the Python plugin importer so action files get imported
+    correctly (kde#429262)
+  * Fix tearing of patterns when scrolling in the resource chooser
+  * The rectangle and ellipse tool now have default shortcuts:
+    Shift+R and Shift+J, respectively
+  * Allow the Select Similar Color selection tool to pick from a
+    set of layers, make it work correctly with image bounds and
+    handle transparent layers correctly (kde#428441)
+  * Fix the isometric grid so it is drawn correctly
+  * The outline selection tool was renamed to freehand selection tool
+    (kde#425894)
+  * The gradient map filter was improved and made faster
+  * Fix a lot of memory leaks
+  * Improve performance by removing a bottleneck when transforming
+    internal colors to and from QColor
+  * Fix a race condition in the Comics Manager plugin (kde#426701)
+  * Fix the fill layers updating too many times
+  * Fix random crashes when changing screentone fill layer parameters
+    (kde#428014)
+  * Fix a crash in the Square Gradient strategy
+  * Fix a crash when converting SVG source to rich text or back
+  * Fix an assert when trying to liquify transform an empty layer
+    (kde#428685)
+  * Fix an assert when creating a new layer from the visible layers
+    while the active layer is hidden (kde#428683)
+  * Make the Select Similar selection tool multithreaded
+- Drop Upgrade-C++-standard-to-14-if-Boost-ge-1.75.patch, merged
+  upstream
+- Build with kseexpr-devel to enable the integration of Disney
+  Animation's SeExpr expression language
+- Drop python-sip-devel BuildRequires and rely on python-qt5-devel
+  pulling it in, to avoid a possible version mismatch (SIP4 vs.
+  SIP5)
+
+-------------------------------------------------------------------
 Thu Jan  7 19:19:56 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Upgrade-C++-standard-to-14-if-Boost-ge-1.75.patch to fix
