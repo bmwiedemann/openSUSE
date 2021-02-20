@@ -762,7 +762,7 @@
     <package name="grilo-plugins-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="groff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="groff-full" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="gromit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="gromit-mpx" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="grub2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grub2-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2-branding-openSUSE -->
     <package name="grub2-i386-pc" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -5224,6 +5224,8 @@
     <package name="gtk2-theming-engine-adwaita-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gtk2-tools-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="guestfs-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="guestfs-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="guestfs-winsupport" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gvim" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hdjmod-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hexchat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5297,6 +5299,7 @@
     <package name="libcanberra-gtk2-module-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcanberra0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcom_err2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libconfig11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5480,6 +5483,13 @@
     <package name="pam_ssh-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-Class-Inspector" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-File-ShareDir" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-Params-Util" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-String-ShellQuote" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-Sys-Guestfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-Win-Hivex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-libintl-perl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pmdk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="powertop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="powertop-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5492,6 +5502,8 @@
     <package name="python38-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-evtx" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-hexdump" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-pybind11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
