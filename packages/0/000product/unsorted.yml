@@ -74,8 +74,6 @@ unsorted:
   - J7Z-kf5 
   - Jamulus 
   - KEALib-devel 
-  - LHAPDF-devel 
-  - LHAPDF-doc 
   - LiE 
   - LiE-doc 
   - LibVNCServer-devel 
@@ -1570,7 +1568,6 @@ unsorted:
   - c_count 
   - ca-certificates-cacert 
   - ca-certificates-steamtricks 
-  - caasp-cli 
   - cabal-install: [x86_64] 
   - cabal-plan: [x86_64] 
   - cabal2spec: [x86_64] 
@@ -3592,7 +3589,6 @@ unsorted:
   - fontweak 
   - forge-parent 
   - forkbomb 
-  - forked-daapd 
   - forkstat 
   - forkstat-bash-completion 
   - form 
@@ -5930,6 +5926,7 @@ unsorted:
   - gromacs-devel 
   - gromacs-doc 
   - gromacs-openmpi2 
+  - gromit 
   - groovy 
   - groovy-ant 
   - groovy-bootstrap 
@@ -6210,7 +6207,6 @@ unsorted:
   - gudev-sharp 
   - gudev-sharp-devel 
   - guess-changelog: [x86_64] 
-  - guestfs-tools: [x86_64] 
   - guestfsd: [x86_64] 
   - guice-assistedinject 
   - guice-bom 
@@ -6408,7 +6404,6 @@ unsorted:
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic: [i586] 
   - health-checker-testing 
-  - heapster 
   - heaptrack-devel 
   - hedgewars 
   - hedgewars-data 
@@ -6534,6 +6529,7 @@ unsorted:
   - humanity-icon-theme 
   - hunspell-devel 
   - hunspell-devel-32bit: [x86_64] 
+  - hw-probe 
   - hwinfo-devel 
   - hwloc 
   - hwloc-data 
@@ -7949,6 +7945,8 @@ unsorted:
   - kryo 
   - kryo-javadoc 
   - kscreenlocker-devel 
+  - kseexpr-devel 
+  - kseexpr-lang 
   - kservice-32bit: [x86_64] 
   - kservice-devel 
   - kservice-devel-32bit: [x86_64] 
@@ -8013,7 +8011,6 @@ unsorted:
   - kubernetes-controller-manager-minus1: [x86_64] 
   - kubernetes-coredns: [x86_64] 
   - kubernetes-coredns-minus1: [x86_64] 
-  - kubernetes-dns 
   - kubernetes-etcd: [x86_64] 
   - kubernetes-etcd-minus1: [x86_64] 
   - kubernetes-node-image-pause 
@@ -8580,9 +8577,9 @@ unsorted:
   - libKPropertyWidgets3-4 
   - libKPublicTransport1 
   - libKReport3-4 
+  - libKSeExpr4_0_1_0 
   - libLASi-devel 
   - libLASi2 
-  - libLHAPDF-6_3_0 
   - libLLVM10 
   - libLLVM10-32bit: [x86_64] 
   - libLLVM11-32bit: [x86_64] 
@@ -8881,7 +8878,7 @@ unsorted:
   - libQuotient-devel 
   - libQuotient0_6 
   - libRaTools0 
-  - libRivet-3_1_2 
+  - libRivet-3_1_3 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL-devel 
   - libSDL-devel-32bit: [x86_64] 
@@ -10054,6 +10051,7 @@ unsorted:
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
+  - libdnf-plugin-txnupd 
   - libdnf2 
   - libdnnl1: [x86_64] 
   - libdns1611-32bit: [x86_64] 
@@ -10628,7 +10626,7 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
-  - libgmsh4_5 
+  - libgmsh4_7 
   - libgnome-desktop-3-19-32bit: [x86_64] 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
@@ -11504,7 +11502,8 @@ unsorted:
   - liblockdev1-32bit: [x86_64] 
   - liblockfile-devel 
   - liblockfile1 
-  - liblodepng-r207 
+  - liblodepng-r207: [x86_64] 
+  - liblodepng-r208: [i586] 
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
@@ -14566,6 +14565,7 @@ unsorted:
   - linphone 
   - linphone-cli 
   - linssid 
+  - linstor 
   - linstor-common 
   - linstor-controller 
   - linstor-satellite 
@@ -18399,7 +18399,7 @@ unsorted:
   - perl-Class-Factory-Util 
   - perl-Class-ISA 
   - perl-Class-Inner 
-  - perl-Class-Inspector 
+  - perl-Class-Inspector: [i586] 
   - perl-Class-Load 
   - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
@@ -18650,7 +18650,7 @@ unsorted:
   - perl-File-Remove 
   - perl-File-Rsync 
   - perl-File-Share 
-  - perl-File-ShareDir 
+  - perl-File-ShareDir: [i586] 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -18691,7 +18691,6 @@ unsorted:
   - perl-Git-Version-Compare 
   - perl-Glib 
   - perl-Glib-Object-Introspection 
-  - perl-Gnome2-Canvas 
   - perl-Gnome2-VFS 
   - perl-Gnome2-Wnck 
   - perl-GnuPG-Interface 
@@ -19071,7 +19070,7 @@ unsorted:
   - perl-Pango 
   - perl-Params-Classify 
   - perl-Params-Coerce 
-  - perl-Params-Util 
+  - perl-Params-Util: [i586] 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-CPAN-Packages 
@@ -19216,7 +19215,7 @@ unsorted:
   - perl-String-Format 
   - perl-String-Formatter 
   - perl-String-RewritePrefix 
-  - perl-String-ShellQuote 
+  - perl-String-ShellQuote: [i586] 
   - perl-String-ToIdentifier-EN 
   - perl-String-Trim 
   - perl-String-Truncate 
@@ -19243,7 +19242,6 @@ unsorted:
   - perl-Syntax-Keyword-Junction 
   - perl-Syntax-Keyword-Try 
   - perl-Sys-CPU 
-  - perl-Sys-Guestfs: [x86_64] 
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
   - perl-Sys-MemInfo 
@@ -19463,7 +19461,7 @@ unsorted:
   - perl-Web-MREST 
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
-  - perl-Win-Hivex 
+  - perl-Win-Hivex: [i586] 
   - perl-Wx 
   - perl-X11-Protocol-Other 
   - perl-XML-Atom 
@@ -19529,7 +19527,7 @@ unsorted:
   - perl-indirect 
   - perl-lib-relative 
   - perl-libconfigfile 
-  - perl-libintl-perl 
+  - perl-libintl-perl: [i586] 
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
@@ -19681,6 +19679,7 @@ unsorted:
   - php7-zip 
   - php7-zlib 
   - php8 
+  - php8-APCu 
   - php8-bcmath 
   - php8-bz2 
   - php8-calendar 
@@ -19699,12 +19698,17 @@ unsorted:
   - php8-ftp 
   - php8-gd 
   - php8-gettext 
+  - php8-gmagick 
   - php8-gmp 
+  - php8-ice 
   - php8-iconv 
   - php8-intl 
   - php8-ldap 
+  - php8-lzf 
+  - php8-maxminddb 
   - php8-mbstring 
   - php8-memcache 
+  - php8-memcached: [x86_64] 
   - php8-mysql 
   - php8-odbc 
   - php8-opcache 
@@ -19716,8 +19720,11 @@ unsorted:
   - php8-pgsql 
   - php8-phar 
   - php8-posix 
+  - php8-psr 
   - php8-readline 
+  - php8-redis 
   - php8-shmop 
+  - php8-smbclient 
   - php8-snmp 
   - php8-soap 
   - php8-sockets 
@@ -19729,6 +19736,8 @@ unsorted:
   - php8-test 
   - php8-tidy 
   - php8-tokenizer 
+  - php8-uuid 
+  - php8-xdebug 
   - php8-xmlreader 
   - php8-xmlwriter 
   - php8-xsl 
@@ -20652,7 +20661,6 @@ unsorted:
   - python2-aexpect 
   - python2-appindicator 
   - python2-libfwsi 
-  - python2-libguestfs: [x86_64] 
   - python2-pip 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
@@ -20660,13 +20668,11 @@ unsorted:
   - python3-Arcus 
   - python3-GDAL 
   - python3-GitgExt 
-  - python3-Glymur 
   - python3-Hamlib 
   - python3-HepMC 
   - python3-HyperKitty 
   - python3-Keras: [x86_64] 
   - python3-Keras-examples: [x86_64] 
-  - python3-LHAPDF 
   - python3-MapProxy 
   - python3-OpenImageIO 
   - python3-PyCBC 
@@ -20723,7 +20729,6 @@ unsorted:
   - python3-concurrentloghandler 
   - python3-congressclient 
   - python3-csvkit 
-  - python3-ctypeslib2 
   - python3-dbus-presage 
   - python3-debtcollector 
   - python3-deltarpm 
@@ -20854,7 +20859,6 @@ unsorted:
   - python3-libfwnt 
   - python3-libfwsi 
   - python3-libixion 
-  - python3-libkdumpfile 
   - python3-liblnk 
   - python3-libluksde 
   - python3-libmodulemd 
@@ -20908,7 +20912,6 @@ unsorted:
   - python3-mautrix-telegram 
   - python3-minidb 
   - python3-mistralclient 
-  - python3-mizani 
   - python3-mlt 
   - python3-monascaclient 
   - python3-monitoring-plugins-http_json 
@@ -21041,7 +21044,6 @@ unsorted:
   - python3-spyder-notebook 
   - python3-spyder-terminal 
   - python3-spyder-unittest 
-  - python3-sqlite-utils: [x86_64] 
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
@@ -21095,7 +21097,6 @@ unsorted:
   - python36-Babel 
   - python36-Beaker 
   - python36-BitVector 
-  - python36-Bottleneck 
   - python36-Brotli 
   - python36-CCColUtils 
   - python36-CacheControl 
@@ -21348,7 +21349,6 @@ unsorted:
   - python36-alembic 
   - python36-allpairspy 
   - python36-alsa 
-  - python36-altair 
   - python36-altair-widgets 
   - python36-altgraph 
   - python36-amqp 
@@ -21375,6 +21375,7 @@ unsorted:
   - python36-apsw 
   - python36-ara 
   - python36-arabic-reshaper 
+  - python36-archmage 
   - python36-arf 
   - python36-argcomplete 
   - python36-argh 
@@ -21420,7 +21421,6 @@ unsorted:
   - python36-autodocsumm 
   - python36-autoflake 
   - python36-autopep8 
-  - python36-autoray 
   - python36-autoupgrade-ng 
   - python36-av 
   - python36-avahi 
@@ -21894,9 +21894,7 @@ unsorted:
   - python36-dash-table 
   - python36-dask 
   - python36-dask-all 
-  - python36-dask-array 
   - python36-dask-bag 
-  - python36-dask-dataframe 
   - python36-dask-distributed 
   - python36-dask-dot 
   - python36-dask-multiprocessing 
@@ -22137,7 +22135,6 @@ unsorted:
   - python36-extras 
   - python36-extratools 
   - python36-ez_setup 
-  - python36-fabio 
   - python36-factory_boy 
   - python36-fake-useragent 
   - python36-fakeredis 
@@ -22301,15 +22298,9 @@ unsorted:
   - python36-guzzle_sphinx_theme 
   - python36-gvm-tools 
   - python36-gwosc 
-  - python36-gwyfile 
   - python36-gyp 
   - python36-h11 
   - python36-h2 
-  - python36-h5py 
-  - python36-h5py-openmpi1 
-  - python36-h5py-openmpi2 
-  - python36-h5py-openmpi3 
-  - python36-h5py-openmpi4 
   - python36-hammett 
   - python36-hanzidentifier 
   - python36-happybase 
@@ -22372,7 +22363,6 @@ unsorted:
   - python36-importlib-metadata 
   - python36-importlib-resources 
   - python36-imread 
-  - python36-imreg 
   - python36-incremental 
   - python36-infinity 
   - python36-inflect 
@@ -22470,7 +22460,6 @@ unsorted:
   - python36-jupyter-client 
   - python36-jupyter-contrib-nbextensions 
   - python36-jupyter-core 
-  - python36-jupyter-datatables 
   - python36-jupyter-jupyterlab-server 
   - python36-jupyter-nbutils 
   - python36-jupyter-packaging 
@@ -22509,7 +22498,6 @@ unsorted:
   - python36-kombu 
   - python36-korean-lunar-calendar 
   - python36-kubernetes 
-  - python36-kwant: [x86_64] 
   - python36-l20n 
   - python36-labelImg 
   - python36-labels 
@@ -22538,6 +22526,7 @@ unsorted:
   - python36-libarchive 
   - python36-libarchive-c 
   - python36-libcst 
+  - python36-libkdumpfile 
   - python36-liblarch 
   - python36-liblarch-gtk 
   - python36-libnacl 
@@ -22557,11 +22546,11 @@ unsorted:
   - python36-lineup-widget 
   - python36-link-traits 
   - python36-linstor 
+  - python36-linstor-client 
   - python36-linux-procfs 
   - python36-lit 
   - python36-llvmlite 
   - python36-lmdb 
-  - python36-lmfit 
   - python36-lml 
   - python36-localzone 
   - python36-locket 
@@ -22636,7 +22625,6 @@ unsorted:
   - python36-msal 
   - python36-msal-extensions 
   - python36-msgpack 
-  - python36-msgpack-numpy 
   - python36-msk 
   - python36-msm 
   - python36-msoffcrypto-tool 
@@ -22689,7 +22677,6 @@ unsorted:
   - python36-netaddr 
   - python36-netifaces 
   - python36-netmiko 
-  - python36-netpbmfile 
   - python36-nine 
   - python36-nltk 
   - python36-nocasedict 
@@ -22737,8 +22724,8 @@ unsorted:
   - python36-odorik 
   - python36-ogr 
   - python36-oic 
-  - python36-oiffile 
   - python36-olefile 
+  - python36-oletools 
   - python36-onionshare 
   - python36-opcodes 
   - python36-openapi-codec 
@@ -22752,7 +22739,6 @@ unsorted:
   - python36-opengl 
   - python36-opengl-accelerate 
   - python36-openidc-client 
-  - python36-openmesh 
   - python36-openpyxl 
   - python36-openqa_client 
   - python36-openqa_review 
@@ -22821,6 +22807,7 @@ unsorted:
   - python36-patiencediff 
   - python36-pbkdf2 
   - python36-pbr 
+  - python36-pcodedmp 
   - python36-pdd 
   - python36-pdfkit 
   - python36-pdfminer.six 
@@ -23582,7 +23569,7 @@ unsorted:
   - python36-spotipy 
   - python36-spyder-kernels 
   - python36-sqlalchemy-migrate 
-  - python36-sqlite-utils: [i586] 
+  - python36-sqlite-fts4 
   - python36-sqlitedict 
   - python36-sqlparse 
   - python36-sqlsoup 
@@ -23617,7 +23604,6 @@ unsorted:
   - python36-systemd 
   - python36-tableauserverclient 
   - python36-tableprint 
-  - python36-tables 
   - python36-tablib 
   - python36-tabulate 
   - python36-tap.py 
@@ -23648,7 +23634,6 @@ unsorted:
   - python36-testtools 
   - python36-text-unidecode 
   - python36-textX 
-  - python36-textdistance 
   - python36-textfsm 
   - python36-textile 
   - python36-texttable 
@@ -23771,7 +23756,6 @@ unsorted:
   - python36-vcver 
   - python36-vcversioner 
   - python36-vega 
-  - python36-vega_datasets 
   - python36-venusian 
   - python36-venusian-doc 
   - python36-verboselogs 
@@ -23785,7 +23769,6 @@ unsorted:
   - python36-virtualenv-clone 
   - python36-visitor 
   - python36-vistir 
-  - python36-visvis 
   - python36-vncdotool 
   - python36-vobject 
   - python36-voila 
@@ -23881,7 +23864,6 @@ unsorted:
   - python36-yq 
   - python36-yt 
   - python36-zake 
-  - python36-zarr 
   - python36-zc.buildout 
   - python36-zc.customdoctests 
   - python36-zc.lockfile 
@@ -23979,6 +23961,7 @@ unsorted:
   - python38-GitPython 
   - python38-Glances 
   - python38-Gloo 
+  - python38-Glymur 
   - python38-GooCalendar 
   - python38-GooseMPL 
   - python38-GridDataFormats 
@@ -24197,6 +24180,7 @@ unsorted:
   - python38-apsw 
   - python38-ara 
   - python38-arabic-reshaper 
+  - python38-archmage 
   - python38-arf 
   - python38-argcomplete: [i586] 
   - python38-argh 
@@ -24687,6 +24671,7 @@ unsorted:
   - python38-cstruct 
   - python38-csv23 
   - python38-ctypescrypto 
+  - python38-ctypeslib2 
   - python38-cu2qu 
   - python38-cufflinks 
   - python38-curio 
@@ -24933,7 +24918,7 @@ unsorted:
   - python38-evdev 
   - python38-eventlet 
   - python38-evilunit 
-  - python38-evtx 
+  - python38-evtx: [i586] 
   - python38-exam 
   - python38-execnet 
   - python38-executing 
@@ -24945,7 +24930,7 @@ unsorted:
   - python38-extratools 
   - python38-ez_setup 
   - python38-ezdxf 
-  - python38-fabio 
+  - python38-fabio: [x86_64] 
   - python38-factory_boy 
   - python38-fake-useragent 
   - python38-fakeredis 
@@ -25122,7 +25107,7 @@ unsorted:
   - python38-hepunits 
   - python38-hetzner 
   - python38-hetznercloud 
-  - python38-hexdump 
+  - python38-hexdump: [i586] 
   - python38-hide-code 
   - python38-hkdf 
   - python38-hl7apy 
@@ -25269,7 +25254,6 @@ unsorted:
   - python38-jupyter-client 
   - python38-jupyter-contrib-nbextensions 
   - python38-jupyter-core 
-  - python38-jupyter-datatables 
   - python38-jupyter-jupyterlab-server 
   - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
@@ -25345,6 +25329,7 @@ unsorted:
   - python38-libarchive 
   - python38-libarchive-c 
   - python38-libcst 
+  - python38-libkdumpfile 
   - python38-liblarch 
   - python38-liblarch-gtk 
   - python38-libnacl 
@@ -25363,6 +25348,7 @@ unsorted:
   - python38-lineup-widget 
   - python38-link-traits 
   - python38-linstor 
+  - python38-linstor-client 
   - python38-lit 
   - python38-llvmlite 
   - python38-lmdb 
@@ -25424,6 +25410,7 @@ unsorted:
   - python38-missingno 
   - python38-mistune 
   - python38-mitmproxy 
+  - python38-mizani 
   - python38-moban 
   - python38-moban-ansible 
   - python38-mock 
@@ -25555,6 +25542,7 @@ unsorted:
   - python38-ogr 
   - python38-oic 
   - python38-oiffile 
+  - python38-oletools 
   - python38-onionshare 
   - python38-onnx 
   - python38-opcodes 
@@ -25634,6 +25622,7 @@ unsorted:
   - python38-patsy 
   - python38-pbkdf2 
   - python38-pbr 
+  - python38-pcodedmp 
   - python38-pdd 
   - python38-pdfkit 
   - python38-pdfminer.six 
@@ -26386,7 +26375,8 @@ unsorted:
   - python38-spotipy 
   - python38-spyder-kernels 
   - python38-sqlalchemy-migrate 
-  - python38-sqlite-utils: [i586] 
+  - python38-sqlite-fts4 
+  - python38-sqlite-utils 
   - python38-sqlitedict 
   - python38-sqlparse 
   - python38-sqlsoup 
@@ -27123,7 +27113,6 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - radiotray-ng 
   - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
