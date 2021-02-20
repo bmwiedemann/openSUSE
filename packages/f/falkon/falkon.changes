@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 20 10:12:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- switch to openssl build here - can't see how an inprocess mix
+  of openssl (which qt is built against) and this would work
+  otherwise 
+
+-------------------------------------------------------------------
 Thu Jun  4 12:28:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch 0001-Fix-build-with-Qt-5.15.patch

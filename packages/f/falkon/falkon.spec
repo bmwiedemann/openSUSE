@@ -1,7 +1,7 @@
 #
 # spec file for package falkon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright © 2015 Mariusz Fik <fisiu@opensuse.org>
 # Copyright © 2019 Markus S. <kamikazow@opensuse.org>
 #
@@ -43,7 +43,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  ki18n-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qttools-devel
-BuildRequires:  libressl-devel
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons) >= 5.54.0
@@ -156,7 +156,8 @@ rm -vrf %{buildroot}%{_kf5_plugindir}/falkon/qml/helloqml/
 /sbin/ldconfig
 
 %files
-%doc CHANGELOG COPYING README.md
+%doc CHANGELOG README.md
+%license COPYING
 %exclude %{_kf5_plugindir}/falkon/GnomeKeyringPasswords.so
 %exclude %{_kf5_plugindir}/falkon/KDEFrameworksIntegration.so
 %{_kf5_appstreamdir}/org.kde.falkon.appdata.xml
