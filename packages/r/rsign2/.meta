@@ -1,0 +1,6 @@
+<package name="rsign2" project="openSUSE:Factory">
+  <title>rsign2</title>
+  <description>Rust implementation of Minisign, a tool to sign files and verify signatures.</description>
+  <devel project="security" package="rsign2"/>
+  <url>https://github.com/jedisct1/rsign2</url>
+</package>
