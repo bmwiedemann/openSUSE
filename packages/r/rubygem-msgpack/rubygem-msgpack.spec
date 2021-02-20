@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-msgpack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-msgpack
-Version:        1.3.3
+Version:        1.4.2
 Release:        0
 %define mod_name msgpack
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel}
+BuildRequires:  %{rubydevel >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            http://msgpack.org/
@@ -52,7 +52,7 @@ unlike JSON, it is very fast and small.
 
 %install
 %gem_install \
-  --doc-files="ChangeLog LICENSE README.rdoc" \
+  --doc-files="ChangeLog LICENSE README.md" \
   -f
 %gem_cleanup
 
