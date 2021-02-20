@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 17:07:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (FontTools requires scipy) 
+
+-------------------------------------------------------------------
 Tue May 26 08:00:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove not needed deps for testing
