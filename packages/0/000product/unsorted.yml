@@ -74,6 +74,8 @@ unsorted:
   - J7Z-kf5 
   - Jamulus 
   - KEALib-devel 
+  - LHAPDF-devel 
+  - LHAPDF-doc 
   - LiE 
   - LiE-doc 
   - LibVNCServer-devel 
@@ -7482,17 +7484,17 @@ unsorted:
   - kanidm-server: [x86_64] 
   - kanidm-unixd-clients: [x86_64] 
   - kanjipad 
-  - kanku: [x86_64] 
-  - kanku-cli: [x86_64] 
-  - kanku-common: [x86_64] 
-  - kanku-common-server: [x86_64] 
-  - kanku-dispatcher: [x86_64] 
-  - kanku-doc: [x86_64] 
-  - kanku-scheduler: [x86_64] 
-  - kanku-triggerd: [x86_64] 
-  - kanku-urlwrapper: [x86_64] 
-  - kanku-web: [x86_64] 
-  - kanku-worker: [x86_64] 
+  - kanku 
+  - kanku-cli 
+  - kanku-common 
+  - kanku-common-server 
+  - kanku-dispatcher 
+  - kanku-doc 
+  - kanku-scheduler 
+  - kanku-triggerd 
+  - kanku-urlwrapper 
+  - kanku-web 
+  - kanku-worker 
   - kapidox 
   - kapman 
   - kapman-lang 
@@ -8580,6 +8582,7 @@ unsorted:
   - libKSeExpr4_0_1_0 
   - libLASi-devel 
   - libLASi2 
+  - libLHAPDF-6_3_0 
   - libLLVM10 
   - libLLVM10-32bit: [x86_64] 
   - libLLVM11-32bit: [x86_64] 
@@ -20820,7 +20823,6 @@ unsorted:
   - python3-itk 
   - python3-jenkins-job-builder 
   - python3-jirafs 
-  - python3-jsonpath-rw-ext 
   - python3-kea 
   - python3-keras2onnx: [x86_64] 
   - python3-keystoneauth1 
@@ -20900,7 +20902,6 @@ unsorted:
   - python3-logreduce 
   - python3-lttngust 
   - python3-magic-wormhole 
-  - python3-magic-wormhole-transit-relay 
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
   - python3-mailman-web 
@@ -21014,10 +21015,8 @@ unsorted:
   - python3-pytest-server-fixtures 
   - python3-pytest-subtesthack 
   - python3-pytest-translations 
-  - python3-python-datamatrix: [i586] 
   - python3-python-jenkins 
   - python3-python-pseudorandom: [i586] 
-  - python3-python-qdatamatrix 
   - python3-python-qnotifications 
   - python3-python-redis-lock 
   - python3-renderspec 
@@ -21166,6 +21165,7 @@ unsorted:
   - python36-Keras-Preprocessing: [x86_64] 
   - python36-Kivy 
   - python36-Kivy-devel 
+  - python36-LHAPDF 
   - python36-Lektor 
   - python36-Levenshtein 
   - python36-Logbook 
@@ -21393,7 +21393,6 @@ unsorted:
   - python36-astor 
   - python36-astral 
   - python36-astroid 
-  - python36-astropy-helpers 
   - python36-asttokens 
   - python36-astunparse 
   - python36-asv 
@@ -22569,6 +22568,7 @@ unsorted:
   - python36-macholib 
   - python36-magic 
   - python36-magic-wormhole-mailbox-server 
+  - python36-magic-wormhole-transit-relay 
   - python36-magicalimport 
   - python36-mailman3-fedmsg-plugin 
   - python36-main-wrapper 
@@ -22640,7 +22640,6 @@ unsorted:
   - python36-munkres 
   - python36-musicbrainzngs 
   - python36-mutagen 
-  - python36-mutatorMath 
   - python36-mutt-ics 
   - python36-mygpoclient 
   - python36-mypy 
@@ -23209,7 +23208,7 @@ unsorted:
   - python36-python-crfsuite 
   - python36-python-crontab 
   - python36-python-daemon 
-  - python36-python-datamatrix: [x86_64] 
+  - python36-python-datamatrix 
   - python36-python-dateutil 
   - python36-python-dbusmock 
   - python36-python-docs-theme 
@@ -23244,6 +23243,7 @@ unsorted:
   - python36-python-prctl 
   - python36-python-pseudorandom: [x86_64] 
   - python36-python-ptrace 
+  - python36-python-qdatamatrix 
   - python36-python-qpid-proton 
   - python36-python-qprogedit 
   - python36-python-rapidjson 
@@ -23578,7 +23578,6 @@ unsorted:
   - python36-sshpubkeys 
   - python36-sshtunnel 
   - python36-statsd 
-  - python36-statsmodels 
   - python36-stem 
   - python36-stomp.py 
   - python36-stomper 
@@ -23977,6 +23976,7 @@ unsorted:
   - python38-Keras-Preprocessing: [x86_64] 
   - python38-Kivy 
   - python38-Kivy-devel 
+  - python38-LHAPDF 
   - python38-LTTL 
   - python38-Lektor 
   - python38-Levenshtein 
@@ -25371,6 +25371,7 @@ unsorted:
   - python38-macholib 
   - python38-magic 
   - python38-magic-wormhole-mailbox-server 
+  - python38-magic-wormhole-transit-relay 
   - python38-magicalimport 
   - python38-mailman3-fedmsg-plugin 
   - python38-mailmanclient 
@@ -26020,7 +26021,7 @@ unsorted:
   - python38-python-crfsuite 
   - python38-python-crontab 
   - python38-python-daemon 
-  - python38-python-datamatrix: [x86_64] 
+  - python38-python-datamatrix 
   - python38-python-dbusmock 
   - python38-python-docs-theme 
   - python38-python-dotenv 
@@ -26051,6 +26052,7 @@ unsorted:
   - python38-python-prctl 
   - python38-python-pseudorandom: [x86_64] 
   - python38-python-ptrace 
+  - python38-python-qdatamatrix 
   - python38-python-qpid-proton 
   - python38-python-qprogedit 
   - python38-python-rapidjson 
@@ -27319,8 +27321,6 @@ unsorted:
   - rmt-server: [x86_64] 
   - rmt-server-config: [x86_64] 
   - rmt-server-pubcloud: [x86_64] 
-  - rnd_jue 
-  - rnd_jue-data 
   - robin-map-devel 
   - robinhood: [x86_64] 
   - robinhood-tests: [x86_64] 
@@ -27372,6 +27372,7 @@ unsorted:
   - rrdtool-doc 
   - rscsi 
   - rshim 
+  - rsign2 
   - rsnapshot 
   - rsocket 
   - rsocket-32bit: [x86_64] 
