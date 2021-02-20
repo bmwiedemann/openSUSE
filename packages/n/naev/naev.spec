@@ -17,14 +17,13 @@
 
 
 Name:           naev
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        2D action RPG space game
 License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Other
 URL:            http://naev.org/
-Source0:        %{name}-%{version}-source.tar.gz
-Source1:        %{name}-%{version}-overlay.tar.gz
+Source:         %{name}-%{version}-source.tar.gz
 BuildRequires:  SDL2-devel
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
@@ -47,7 +46,7 @@ a large variety of equipment and a large galaxy to explore. The game is
 open-ended, letting you proceed at your own pace.
 
 %prep
-%autosetup -b1
+%autosetup
 
 %build
 # Remove 'docs' directory - fails in configure script, not needed for gameplay

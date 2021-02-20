@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 18 21:56:44 UTC 2021 - D B <buckyballreaction@gmail.com>
+
+- Update to 0.8.2
+  * Gameplay
+    - Fixed duplicate rewards from pirate ship-stealing missions. (Sorry.)
+    - Fixed the Advanced Nebula Research mission's failure condition in case you don't stick with the transport ship. (Sorry.)
+    - Fixed the "The one with the Runaway" mission so the captured drone doesn't appear back in space.
+  * Engine
+    - Fixed a bug loading games with short (1-character) names.
+    - Tweaked chances of seeing Spaceport Bar missions.
+    - Updated German translation.
+    - Fixed "configure" script when the system has a "cxsparse" library and no "csparse".
+    - Fixed source .tar.gz so ./configure is immediately usable again. (Note: 0.9.x will use Meson for builds.)
+- Removed naev-0.8.1-overlay.tar.gz
+
+-------------------------------------------------------------------
 Wed Feb  3 22:17:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile
