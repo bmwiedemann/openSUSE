@@ -1,7 +1,7 @@
 #
 # spec file for package krita
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,13 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Upgrade-C++-standard-to-14-if-Boost-ge-1.75.patch
 %ifnarch %{arm} aarch64
 # causes build failure on ARM currently
 BuildRequires:  OpenColorIO-devel
@@ -42,6 +40,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
 BuildRequires:  giflib-devel
 BuildRequires:  gsl-devel
+BuildRequires:  kseexpr-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
@@ -60,7 +59,6 @@ BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-sip-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5Archive)
