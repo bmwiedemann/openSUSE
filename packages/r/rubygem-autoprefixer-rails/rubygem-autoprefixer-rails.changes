@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  6 11:46:57 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 10.2.4.0
+
+  * Fixed transition-property warnings (by @Sheraff).
+
+-------------------------------------------------------------------
 Wed Jan 20 07:34:44 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 10.2.0.0
