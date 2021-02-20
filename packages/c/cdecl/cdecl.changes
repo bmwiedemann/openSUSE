@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 20 10:17:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.6
+  * More constructor & destructor warning checks
+  * Type redefinition error now includes existing type
+
+-------------------------------------------------------------------
 Wed Feb 10 14:41:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.5.1
