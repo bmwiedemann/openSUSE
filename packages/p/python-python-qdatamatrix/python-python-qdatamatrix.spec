@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-qdatamatrix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-python-qdatamatrix
-Version:        0.1.18
+Version:        0.1.29
 Release:        0
-License:        GPL-3.0-or-later
 Summary:        A PyQt4/PyQt5 widget for viewing and editing a DataMatrix object
-Url:            https://github.com/smathot/python-qdatamatrix
+License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/open-cogsci/python-qdatamatrix
 Source:         https://files.pythonhosted.org/packages/source/p/python-qdatamatrix/python-qdatamatrix-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/smathot/python-qdatamatrix/master/copyright
-BuildRequires:  python-rpm-macros
+Source1:        https://raw.githubusercontent.com/open-cogsci/python-qdatamatrix/master/copyright
+Source2:        https://raw.githubusercontent.com/open-cogsci/python-qdatamatrix/master/example.py
+BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module QtPy}
+BuildRequires:  %{python_module fastnumbers}
 BuildRequires:  %{python_module python-datamatrix}
+# QtPy has a number of possible backends, none of them mandatory, use PyQt5 for the build
+BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  xvfb-run
+Requires:       python-PrettyTable
 Requires:       python-QtPy
 Requires:       python-python-datamatrix
+Recommends:     python-fastnumbers
 BuildArch:      noarch
 
 %python_subpackages
@@ -43,6 +53,8 @@ view and edit a DataMatrix object.
 %prep
 %setup -q -n python-qdatamatrix-%{version}
 cp %{SOURCE1} .
+# don't run the event loop on the example
+sed '/app.exec_/ d' %{SOURCE2} > example.py
 
 %build
 %python_build
@@ -51,8 +63,16 @@ cp %{SOURCE1} .
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+xvfb-run $python example.py
+# wait before we start the next xvfb-run
+sleep 5
+}
+
 %files %{python_files}
 %license copyright
-%{python_sitelib}/*
+%{python_sitelib}/qdatamatrix
+%{python_sitelib}/python_qdatamatrix-%{version}*-info
 
 %changelog
