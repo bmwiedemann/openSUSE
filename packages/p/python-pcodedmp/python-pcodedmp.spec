@@ -24,8 +24,8 @@ Summary:        A VBA p-code disassembler
 License:        GPL-3.0-only
 URL:            https://github.com/bontchev/pcodedmp
 Source:         https://files.pythonhosted.org/packages/source/p/pcodedmp/pcodedmp-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module oletools >= 0.54}
 # /SECTION
@@ -36,9 +36,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Disassemble p-code of VBA code in OLE2 documents.
+Disassembler for p-code of VBA code in OLE2 documents.
 
-Supports VBA5 (Office 97, MacOffice 98), VBA6 (Office 2000 to Office 2009) and VBA7 (Office 2010 and higher).
+It supports VBA5 (Office 97, MacOffice 98), VBA6 (Office 2000 to
+Office 2009) and VBA7 (Office 2010 and higher).
 
 %prep
 %setup -q -n pcodedmp-%{version}
