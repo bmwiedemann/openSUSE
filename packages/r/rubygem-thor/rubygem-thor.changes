@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  6 11:37:41 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.1.0
+
+  * Don't use ANSI colors when terminal is dumb.
+  * Ensure default option/argument is not erroneously aliased.
+  * Fixes a bug in the calculation of the print_wrapped method.
+  * Obey `:mute` and `options[:quiet]` in `Shell#say`.
+  * Support Ruby 3.0.
+  * Add force option to the `gsub_file` action.
+
+-------------------------------------------------------------------
 Fri Dec 20 04:28:59 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.0.1
