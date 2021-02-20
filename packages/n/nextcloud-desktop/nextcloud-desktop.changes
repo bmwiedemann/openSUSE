@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 20 10:24:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.3:
+  - desktop#2884 [stable-3.1] Add support for Hirsute
+  - desktop#2920 [stable-3.1] Validate sensitive URLs to onle allow http(s) schemes.
+  - desktop#2926 [stable-3.1] Validate the providers ssl certificate
+  - desktop#2939 Bump release to 3.1.3
+
+-------------------------------------------------------------------
 Thu Jan 28 17:31:58 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.1.2
