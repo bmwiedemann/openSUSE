@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  6 11:34:39 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 5.2.1
+
+  * Bugfixes
+    * Fix TCP cork/uncork operations to work with ssl clients ([#2550])
+    * Require rack/common_logger explicitly if :verbose is true ([#2547])
+    * MiniSSL::Socket#write - use data.byteslice(wrote..-1) ([#2543])
+    * Set `@env[CONTENT_LENGTH]` value as string. ([#2549])
+
+-------------------------------------------------------------------
 Fri Dec 11 03:18:21 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
   ## 5.1.1 / 2020-12-10
