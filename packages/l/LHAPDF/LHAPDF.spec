@@ -1,7 +1,7 @@
 #
 # spec file for package LHAPDF
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
 %python_subpackages
 
@@ -91,7 +93,7 @@ This package provides the API documentation for LHAPDF in HTML format.
 %patch -P 1 -p1
 
 %build
-autoreconf -fi
+autoreconf -fvi
 %{python_expand # Necessary to run %%configure with both py2 and py3
 export PYTHON=%{_bindir}/$python
 mkdir ../$python
@@ -99,17 +101,22 @@ cp -pr ./ ../$python
 pushd ../$python
 %configure --disable-static --docdir=%{_docdir}/%{name}/
 %make_build
+# Build doc only for one flavour, viz., which provides the default python3
+if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
+%make_build doxy
+fi
 popd
 }
-pushd ../python3
-%make_build doxy
-popd
 
 %install
 %{python_expand # py2 and py3 make_install
 export PYTHON=%{_bindir}/$python
 pushd ../$python
 %make_install
+if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
+mkdir -p %{buildroot}%{_docdir}/%{name}
+cp -pr doc/doxygen %{buildroot}%{_docdir}/%{name}/
+fi
 popd
 }
 
@@ -118,28 +125,36 @@ sed -E -i "s|#! /usr/bin/env bash|#! /bin/bash|" %{buildroot}%{_bindir}/lhapdf-c
 
 find %{buildroot}%{_libdir}/ -name "*.la" -delete
 
+%python_clone -a %{buildroot}%{_bindir}/%{execname}
+
 %post   -n %{so_name} -p /sbin/ldconfig
 %postun -n %{so_name} -p /sbin/ldconfig
 
+%post
+%python_install_alternative %{execname}
+
+%postun
+%python_uninstall_alternative %{execname}
+
 %files -n %{so_name}
-%defattr(-, root, root)
+%license COPYING
 %{_libdir}/libLHAPDF-%version.so
 
 %files -n %{name}-devel
 %doc AUTHORS ChangeLog
 %license COPYING
-%{_bindir}/%{execname}-*
+%{_bindir}/%{execname}-config
 %{_datadir}/%{name}/
 %{_includedir}/%{name}
 %{_libdir}/libLHAPDF.so
 %{_libdir}/pkgconfig/%{execname}.pc
 
 %files %{python_files}
-%python3_only %{_bindir}/%{execname}
+%python_alternative %{_bindir}/%{execname}
 %{python_sitearch}/*.egg-info
 %{python_sitearch}/*.so
 
 %files -n %{name}-doc
-%doc ../python3/doc/doxygen
+%doc %{_docdir}/%{name}/
 
 %changelog
