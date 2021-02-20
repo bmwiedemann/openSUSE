@@ -1,7 +1,7 @@
 #
 # spec file for package wlgreet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           wlgreet
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        Raw wayland greeter for greetd
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Management
 URL:            https://git.sr.ht/~kennylevinsen/wlgreet
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
-BuildRequires:  rust
 BuildRequires:  cargo
+BuildRequires:  rust
 BuildRequires:  rust-packaging
 Recommends:     greetd
 

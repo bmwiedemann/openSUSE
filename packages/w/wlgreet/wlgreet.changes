@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 20 17:10:49 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to 0.3. This release is a minor maintenance release, 
+fixing an issue with layer-shell and with IPC.
+  * Update Cargo.lock
+  * Workaround for recent layer-shell impl changes
+  * Read result for CancelSession properly
+  * Update greetd_ipc dependency 
+
+-------------------------------------------------------------------
 Mon Sep  7 15:53:41 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Initial wlgreet package version 0.2
