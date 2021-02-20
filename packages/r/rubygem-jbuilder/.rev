@@ -184,4 +184,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838043</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5f1eb166216942d4a792ad9f628a7f4f</srcmd5>
+    <version>2.11.2</version>
+    <time>1613855525</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 869938 from mschnitzer)</comment>
+    <requestid>869948</requestid>
+  </revision>
 </revisionlist>
