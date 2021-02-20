@@ -1,7 +1,7 @@
 #
 # spec file for package csound
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -159,7 +159,7 @@ export CXXFLAGS="%{optflags} -std=c++11"
 %endif
        -DNEED_PORTTIME:BOOL=OFF \
        -DRPM_LUAVER:STRING=%{luaver} \
-%if %{_lib} == "lib64"
+%if "%{_lib}" == "lib64"
        -DUSE_LIB64:BOOL=ON
 %else
        -DUSE_LIB64:BOOL=OFF

@@ -223,4 +223,12 @@
     <comment>@babelworx Removed unused util/new_srconv.c from sources to fix licensing.</comment>
     <requestid>819908</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4e3426ddbc336a9fe48cb727107223e6</srcmd5>
+    <version>6.14.0+git20200601</version>
+    <time>1613855565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873984</requestid>
+  </revision>
 </revisionlist>

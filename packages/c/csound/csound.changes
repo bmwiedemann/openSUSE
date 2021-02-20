@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 20 07:59:29 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Added quotes to %{_lib} conditional to satisfy new rpmlint.
+
+-------------------------------------------------------------------
 Fri Jul 10 08:45:28 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Removed unused util/new_srconv.c from sources to fix licensing.
