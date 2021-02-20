@@ -1,7 +1,7 @@
 #
 # spec file for package kanku
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,90 +12,91 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %define kanku_user   kankurun
 %define kanku_group  kanku
 %define kanku_vardir /var/lib/kanku/
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.10.0
+Version:        0.10.2
 Release:        0
-License:        GPL-3.0
+License:        GPL-3.0-only
 Summary:        Development and continuous integration
-Url:            https://github.com/M0ses/kanku
+URL:            https://github.com/M0ses/kanku
 Group:          Productivity/Networking/Web/Utilities
 Source:         %{name}-%{version}.tar.xz
 BuildArch:      noarch
-BuildRequires:  perl-macros
 BuildRequires:  fdupes
+BuildRequires:  perl-macros
 BuildRequires:  systemd-rpm-macros
 
-
 # perl requires for %check
-BuildRequires: perl(Const::Fast)
-BuildRequires: perl(Test::Simple)
-BuildRequires: perl(YAML::PP)
-BuildRequires: perl(Config::Tiny)
-BuildRequires: perl(Path::Class)
-BuildRequires: perl(Sys::Virt)
-BuildRequires: perl(Moose)
-BuildRequires: perl(Log::Log4perl)
-BuildRequires: perl(MooseX::App)
-BuildRequires: perl(MooseX::Singleton)
-BuildRequires: perl(Dancer2::Plugin::REST)
-BuildRequires: perl(Expect)
-BuildRequires: perl(Net::SSH2)
-BuildRequires: perl(Net::IP)
-BuildRequires: perl(Net::OBS::Client)
-BuildRequires: perl(XML::Structured)
-BuildRequires: perl(DBIx::Class::Migration)
-BuildRequires: perl(Template)
-BuildRequires: perl(Template::Plugin::Filter::ANSIColor)
-BuildRequires: perl(Config::Tiny)
-BuildRequires: perl(Dancer2::Plugin::DBIC)
-BuildRequires: perl(Dancer2::Plugin::Auth::Extensible)
-BuildRequires: perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
-BuildRequires: perl(File::HomeDir)
-BuildRequires: perl(JSON::XS)
-BuildRequires: perl(DBIx::Class)
-BuildRequires: perl(DBIx::Class::Migration)
-BuildRequires: perl(DBIx::Class::Fixtures)
-BuildRequires: perl(File::LibMagic)
-BuildRequires: perl(IO::Uncompress::UnXz)
-BuildRequires: perl(Plack)
-BuildRequires: perl(Dancer2)
-BuildRequires: perl(Dancer2::Plugin::REST)
-BuildRequires: perl(XML::XPath)
-BuildRequires: perl(Term::ReadKey)
-BuildRequires: perl(IPC::Run)
-BuildRequires: perl(IO::Interactive)
+BuildRequires:  perl(Const::Fast)
+BuildRequires:  perl(Config::Tiny)
+BuildRequires:  perl(Config::Tiny)
+BuildRequires:  perl(DBIx::Class)
+BuildRequires:  perl(DBIx::Class::Fixtures)
+BuildRequires:  perl(DBIx::Class::Migration)
+BuildRequires:  perl(DBIx::Class::Migration)
+BuildRequires:  perl(Dancer2)
+BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible)
+BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
+BuildRequires:  perl(Dancer2::Plugin::DBIC)
+BuildRequires:  perl(Dancer2::Plugin::REST)
+BuildRequires:  perl(Dancer2::Plugin::REST)
+BuildRequires:  perl(Expect)
+BuildRequires:  perl(File::HomeDir)
+BuildRequires:  perl(File::LibMagic)
+BuildRequires:  perl(IO::Interactive)
+BuildRequires:  perl(IO::Uncompress::UnXz)
+BuildRequires:  perl(IPC::Run)
+BuildRequires:  perl(JSON::XS)
+BuildRequires:  perl(Log::Log4perl)
+BuildRequires:  perl(Moose)
+BuildRequires:  perl(MooseX::App)
+BuildRequires:  perl(MooseX::Singleton)
+BuildRequires:  perl(Net::IP)
+BuildRequires:  perl(Net::OBS::Client)
+BuildRequires:  perl(Net::SSH2)
+BuildRequires:  perl(Path::Class)
+BuildRequires:  perl(Plack)
+BuildRequires:  perl(Sys::Virt)
+BuildRequires:  perl(Template)
+BuildRequires:  perl(Template::Plugin::Filter::ANSIColor)
+BuildRequires:  perl(Term::ReadKey)
+BuildRequires:  perl(Test::Simple)
+BuildRequires:  perl(XML::Structured)
+BuildRequires:  perl(XML::XPath)
+BuildRequires:  perl(YAML::PP)
 # DBD::SQLite is also provided by perl-DBD-SQLite-Amalgamation
 # but perl-DBD-SQLite-Amalgamation is breaks with SQL syntax errors
 # at job_histroy_sub table
-BuildRequires: perl-DBD-SQLite
-BuildRequires: perl(LWP::UserAgent)
-BuildRequires: perl(LWP::Protocol::https)
-BuildRequires: perl(Mail::Sendmail)
-BuildRequires: perl(Archive::Cpio)
-BuildRequires: perl(Dancer2)
-BuildRequires: perl(Dancer2::Plugin)
-BuildRequires: perl(Dancer2::Plugin::REST)
-BuildRequires: perl(Dancer2::Plugin::DBIC)
-BuildRequires: perl(Dancer2::Plugin::WebSocket)
-BuildRequires: perl(Dancer2::Plugin::Auth::Extensible)
-BuildRequires: perl(Net::AMQP::RabbitMQ)
-BuildRequires: perl(UUID)
-BuildRequires: libvirt-daemon
-BuildRequires: desktop-file-utils
-BuildRequires: shared-mime-info
-Requires: kanku-cli
-Requires: kanku-web
-Requires: kanku-worker
-Requires: kanku-scheduler
-Requires: kanku-dispatcher
-Requires: kanku-triggerd
+BuildRequires:  perl-DBD-SQLite
+BuildRequires:  desktop-file-utils
+BuildRequires:  libvirt-daemon
+BuildRequires:  shared-mime-info
+BuildRequires:  perl(Archive::Cpio)
+BuildRequires:  perl(Dancer2)
+BuildRequires:  perl(Dancer2::Plugin)
+BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible)
+BuildRequires:  perl(Dancer2::Plugin::DBIC)
+BuildRequires:  perl(Dancer2::Plugin::REST)
+BuildRequires:  perl(Dancer2::Plugin::WebSocket)
+BuildRequires:  perl(LWP::Protocol::https)
+BuildRequires:  perl(LWP::UserAgent)
+BuildRequires:  perl(Mail::Sendmail)
+BuildRequires:  perl(Net::AMQP::RabbitMQ)
+BuildRequires:  perl(UUID)
+Requires:       kanku-cli
+Requires:       kanku-dispatcher
+Requires:       kanku-scheduler
+Requires:       kanku-triggerd
+Requires:       kanku-web
+Requires:       kanku-worker
 
 %description
 kanku is a utility for integration of kiwi images built
@@ -128,62 +129,64 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-triggerd
 %exclude /usr
 
 %package common
-Summary: Common files for kanku
+Summary:        Common files for kanku
 
-Recommends: osc 
-Recommends: perl(IO::Uncompress::UnXz)
-Recommends: apache2
-Recommends: perl(YAML::PP::LibYAML)
-Requires: libvirt-daemon-qemu libvirt-daemon-config-network libvirt-daemon-config-nwfilter
-Requires: sudo
-Requires: perl(DBIx::Class::Fixtures)
-Requires: perl(Test::Simple)
-Requires: perl(YAML::PP)
-Requires: perl(Config::Tiny)
-Requires: perl(Path::Class)
-Requires: perl(Sys::Virt)
-Requires: perl(Moose)
-Requires: perl(MooseX::App)
-Requires: perl(Dancer2::Plugin::REST)
-Requires: perl(MooseX::Singleton)
-Requires: perl(Expect)
-Requires: perl(Net::SSH2)
-Requires: perl(Net::IP)
-Requires: perl(Net::OBS::Client)
-Requires: perl(XML::Structured)
-Requires: perl(DBIx::Class::Migration)
-Requires: perl(Template)
-Requires: perl(Log::Log4perl)
-Requires: perl(Config::Tiny)
-Requires: perl(Dancer2::Plugin::DBIC)
-Requires: perl(Dancer2::Plugin::Auth::Extensible)
-Requires: perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
-Requires: perl(File::HomeDir)
-Requires: perl(Template::Plugin::Filter::ANSIColor)
-Requires: perl(JSON::XS)
-Requires: perl(DBIx::Class)
-Requires: perl(DBIx::Class::Migration)
-Requires: perl(Template::Plugin::Filter::ANSIColor)
-Requires: perl(File::LibMagic)
-Requires: perl(IO::Uncompress::UnXz)
-Requires: perl-Plack
-Requires: perl(Dancer2)
-Requires: perl(Dancer2::Plugin::REST)
-Requires: perl(XML::XPath)
-Requires: perl(Term::ReadKey)
-Requires: perl(IPC::Run)
-Requires: perl(Const::Fast)
+Recommends:     apache2
+Recommends:     osc
+Recommends:     perl(IO::Uncompress::UnXz)
+Recommends:     perl(YAML::PP::LibYAML)
+Requires:       libvirt-daemon-config-network
+Requires:       libvirt-daemon-config-nwfilter
+Requires:       libvirt-daemon-qemu
+Requires:       perl-Plack
+Requires:       sudo
+Requires:       perl(Config::Tiny)
+Requires:       perl(Config::Tiny)
+Requires:       perl(Const::Fast)
+Requires:       perl(DBIx::Class)
+Requires:       perl(DBIx::Class::Fixtures)
+Requires:       perl(DBIx::Class::Migration)
+Requires:       perl(DBIx::Class::Migration)
+Requires:       perl(Dancer2)
+Requires:       perl(Dancer2::Plugin::Auth::Extensible)
+Requires:       perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
+Requires:       perl(Dancer2::Plugin::DBIC)
+Requires:       perl(Dancer2::Plugin::REST)
+Requires:       perl(Dancer2::Plugin::REST)
+Requires:       perl(Expect)
+Requires:       perl(File::HomeDir)
+Requires:       perl(File::LibMagic)
+Requires:       perl(IO::Uncompress::UnXz)
+Requires:       perl(IPC::Run)
+Requires:       perl(JSON::XS)
+Requires:       perl(Log::Log4perl)
+Requires:       perl(Moose)
+Requires:       perl(MooseX::App)
+Requires:       perl(MooseX::Singleton)
+Requires:       perl(Net::IP)
+Requires:       perl(Net::OBS::Client)
+Requires:       perl(Net::SSH2)
+Requires:       perl(Path::Class)
+Requires:       perl(Sys::Virt)
+Requires:       perl(Template)
+Requires:       perl(Template::Plugin::Filter::ANSIColor)
+Requires:       perl(Template::Plugin::Filter::ANSIColor)
+Requires:       perl(Term::ReadKey)
+Requires:       perl(Test::Simple)
+Requires:       perl(XML::Structured)
+Requires:       perl(XML::XPath)
+Requires:       perl(YAML::PP)
 # DBD::SQLite is also provided by perl-DBD-SQLite-Amalgamation
 # but perl-DBD-SQLite-Amalgamation is breaks with SQL syntax errors
 # at job_histroy_sub table
-Requires: perl-DBD-SQLite
-Requires: perl(LWP::Protocol::https)
-Requires: perl(Mail::Sendmail)
-Requires: perl(Archive::Cpio)
-Requires: perl(UUID)
-Requires: logrotate
+Requires:       perl-DBD-SQLite
+Requires:       logrotate
+Requires:       perl(Archive::Cpio)
+Requires:       perl(LWP::Protocol::https)
+Requires:       perl(Mail::Sendmail)
+Requires:       perl(UUID)
 
-Conflicts: perl-DBD-SQLite-Amalgamation
+Conflicts:      perl-DBD-SQLite-Amalgamation
 
 %description common
 common config and lib files used in kanku
@@ -289,15 +292,15 @@ common config and lib files used in kanku
 /usr/lib/kanku/lib/Kanku/Test/
 
 %package cli
-Summary: Command line client for kanku
-Requires: kanku-common
-Requires: libvirt-client
-Requires(pre): libvirt-daemon libvirt-daemon-driver-qemu
-Requires(pre): sudo
-Requires: perl(Net::AMQP::RabbitMQ)
-Requires: perl(IO::Interactive)
-Requires: (perl(Passwd::Keyring::KDEWallet) if kwalletd5)
-Requires: (perl(Passwd::Keyring::Gnome) if gnome-keyring)
+Summary:        Command line client for kanku
+Requires:       kanku-common
+Requires:       libvirt-client
+Requires(pre):  libvirt-daemon libvirt-daemon-driver-qemu
+Requires(pre):  sudo
+Requires:       (perl(Passwd::Keyring::Gnome) if gnome-keyring)
+Requires:       (perl(Passwd::Keyring::KDEWallet) if kwalletd5)
+Requires:       perl(IO::Interactive)
+Requires:       perl(Net::AMQP::RabbitMQ)
 
 %description cli
 Command line client for kanku, mainly used for setup tasks
@@ -313,17 +316,17 @@ and in developer mode.
 /etc/bash_completion.d/kanku.sh
 
 %package common-server
-Summary: Common server files or settings for kanku
-Requires(pre): libvirt-daemon libvirt-daemon-driver-qemu
+Summary:        Common server files or settings for kanku
+Requires(pre):  libvirt-daemon libvirt-daemon-driver-qemu
 
 %if 0%{?fedora}
-Requires(pre): shadow-utils
+Requires(pre):  shadow-utils
 %else
-Requires(pre): shadow
+Requires(pre):  shadow
 %endif
 
 %description common-server
-This package contains common server files, settings and dependencies 
+This package contains common server files, settings and dependencies
 for the kanku server components like kanku-worker, kanku-dispatcher,
 kanku-web, kanku-scheduler and kanku-triggerd.
 
@@ -340,20 +343,20 @@ getent passwd %{kanku_user} >/dev/null || useradd -r -g %{kanku_group} -G libvir
 %ghost %dir %attr(755, kankurun, kanku) /run/kanku
 
 %package web
-Summary: WebUI for kanku
-Requires: kanku-common
-Requires: kanku-common-server
-Requires: perl(Dancer2::Plugin::WebSocket)
-Requires: perl(Twiggy)
-Requires: perl(Mail::Message::Body::String)
-Requires: perl(Mail::Transport::Send)
-Requires: perl(Net::AMQP::RabbitMQ)
-Requires: perl(Template::Plugin::JSON::Escape)
-Requires: perl(UUID)
+Summary:        WebUI for kanku
+Requires:       kanku-common
+Requires:       kanku-common-server
+Requires:       perl(Dancer2::Plugin::WebSocket)
+Requires:       perl(Mail::Message::Body::String)
+Requires:       perl(Mail::Transport::Send)
+Requires:       perl(Net::AMQP::RabbitMQ)
+Requires:       perl(Template::Plugin::JSON::Escape)
+Requires:       perl(Twiggy)
+Requires:       perl(UUID)
 %if 0%{?fedora}
-Requires: server(smtp)
+Requires:       server(smtp)
 %else
-Requires: smtp_daemon
+Requires:       smtp_daemon
 %endif
 
 %description web
@@ -406,17 +409,23 @@ WebUI for kanku using perl Dancer
 /usr/lib/kanku/lib/Kanku/REST
 
 %package worker
-Summary: Worker daemon for kanku
+Summary:        Worker daemon for kanku
 
-Requires: kanku-common
-Requires: kanku-common-server
-Requires: perl(Net::AMQP::RabbitMQ)
-Requires: perl(UUID)
-Requires: perl(Sys::CPU)
-Requires: perl(Sys::LoadAvg)
-Requires: perl(Sys::MemInfo)
+Requires:       kanku-common
+Requires:       kanku-common-server
+Requires:       perl(Net::AMQP::RabbitMQ)
+Requires:       perl(Sys::CPU)
+Requires:       perl(Sys::LoadAvg)
+Requires:       perl(Sys::MemInfo)
+Requires:       perl(UUID)
+%if "%{_arch}" == "x86_64" || "%{_arch}" == "i686"
+Requires:       qemu-kvm
+%endif
+%if "%{_arch}" == "aarch64"
+Requires:       qemu-arm
+%endif
 # apache2 is only needed for delivering console logs
-Recommends: apache2 
+Recommends:     apache2
 
 %description worker
 A remote worker for kanku based on RabbitMQ.
@@ -438,13 +447,13 @@ A remote worker for kanku based on RabbitMQ.
 /usr/lib/kanku/lib/Kanku/Daemon/Worker.pm
 
 %package dispatcher
-Summary: Dispatcher daemon for kanku
+Summary:        Dispatcher daemon for kanku
 
-Requires: kanku-common
-Requires: kanku-common-server
-Requires: perl(Net::AMQP::RabbitMQ)
-Requires(pre): sudo
-Recommends: rabbitmq-server
+Requires:       kanku-common
+Requires:       kanku-common-server
+Requires:       perl(Net::AMQP::RabbitMQ)
+Requires(pre):  sudo
+Recommends:     rabbitmq-server
 
 %description dispatcher
 A dispatcher for kanku based on RabbitMQ.
@@ -467,9 +476,9 @@ A dispatcher for kanku based on RabbitMQ.
 /usr/share/kanku/views/notifier/
 
 %package scheduler
-Summary: Scheduler daemon for kanku
-Requires: kanku-common
-Requires: kanku-common-server
+Summary:        Scheduler daemon for kanku
+Requires:       kanku-common
+Requires:       kanku-common-server
 
 %description scheduler
 A scheduler for kanku based on RabbitMQ.
@@ -490,9 +499,9 @@ A scheduler for kanku based on RabbitMQ.
 %{_sbindir}/rckanku-scheduler
 
 %package triggerd
-Summary: Trigger daemon for kanku
-Requires: kanku-common
-Requires: kanku-common-server
+Summary:        Trigger daemon for kanku
+Requires:       kanku-common
+Requires:       kanku-common-server
 
 %description triggerd
 A triggerd for kanku based on RabbitMQ.
@@ -514,9 +523,8 @@ A triggerd for kanku based on RabbitMQ.
 /usr/lib/kanku/lib/Kanku/Daemon/TriggerD.pm
 /usr/lib/kanku/lib/Kanku/Listener/RabbitMQ.pm
 
-
 %package doc
-Summary: Documentation files for kanku
+Summary:        Documentation files for kanku
 
 %description doc
 This package contains the documentation files for kanku.
@@ -525,11 +533,11 @@ This package contains the documentation files for kanku.
 %{_defaultdocdir}/kanku/
 
 %package urlwrapper
-Summary: Url wrapper for kanku:// urls
-Requires: kanku-cli
-Requires: desktop-file-utils
-Requires: shared-mime-info
-Obsoletes: kanku-url-wrapper
+Summary:        Url wrapper for kanku:// urls
+Requires:       desktop-file-utils
+Requires:       kanku-cli
+Requires:       shared-mime-info
+Obsoletes:      kanku-url-wrapper
 
 %description urlwrapper
 A URL wrapper to start kanku from kanku:// urls in the browser.

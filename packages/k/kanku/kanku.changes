@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 13 12:18:01 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.2:
+  * [dist] fixed typo in spec
+  * [dist] fixed spec for i686
+  * [dist] added default-vm.tt2.i686
+  * [util] improved terminal handling in VM::Console for Debian Unstable
+  * [dist] added debian files to extract via service
+  * [dist] removed debian files - use DEBTRANSFORM
+  * [dist] updated debian changelog
+  * [setup] fixed network_name in distributed setup
+  * [dist] fixed missing quotes for _arch
+  * removed TODOs and added req for qemu
+  * [dist] imported changes in spec file from jengelh
+
+-------------------------------------------------------------------
 Thu Jan 28 10:03:59 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - removed TODO's from spec file 

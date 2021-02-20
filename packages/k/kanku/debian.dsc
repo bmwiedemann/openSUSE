@@ -2,7 +2,7 @@ Format: 1.0
 Source: kanku
 Binary: kanku
 Architecture: any
-Version: 0.10.0
+Version: 0.10.2
 Maintainer: unknown <unknown@debian.org>
 Standards-Version: 3.8.2
 Homepage: https://github.com/M0ses/kanku
