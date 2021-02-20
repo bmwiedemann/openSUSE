@@ -69,4 +69,12 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>860077</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3b46eb0e08eb756c5a2b89d4dadaeeba</srcmd5>
+    <version>0.12.2</version>
+    <time>1613855537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873933</requestid>
+  </revision>
 </revisionlist>

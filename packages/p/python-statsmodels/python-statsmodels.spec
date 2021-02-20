@@ -26,8 +26,9 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-statsmodels%{psuffix}
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
