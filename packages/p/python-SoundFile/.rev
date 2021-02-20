@@ -61,4 +61,12 @@
     <comment>- Fix pytest dependency</comment>
     <requestid>781459</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5b358047705f667261915ee32bf64f86</srcmd5>
+    <version>0.10.3.post1</version>
+    <time>1613855541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873929</requestid>
+  </revision>
 </revisionlist>

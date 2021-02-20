@@ -1,7 +1,7 @@
 #
 # spec file for package python-SoundFile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 %define         oldpython python
 Name:           python-SoundFile
 Version:        0.10.3.post1
 Release:        0
 Summary:        An audio library based on libsndfile, CFFI and NumPy
 License:        BSD-3-Clause
-URL:            https://github.com/bastibe/PySoundFile
+URL:            https://github.com/bastibe/python-soundfile
 Source:         https://files.pythonhosted.org/packages/source/S/SoundFile/SoundFile-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 0.6}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libsndfile1
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Requires:       libsndfile1
 Requires:       python-cffi >= 0.6
 Recommends:     python-numpy
@@ -64,7 +63,9 @@ represents audio data as NumPy arrays.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not read_int_data_from_float_file'
+# don't test if we don't have optional numpy installed
+python36_ignore="--ignore tests/test_pysoundfile.py"
+%pytest -k 'not read_int_data_from_float_file' ${$python_ignore}
 
 %files %{python_files}
 %doc README.rst

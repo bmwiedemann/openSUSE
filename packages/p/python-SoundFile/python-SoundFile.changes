@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 19 17:24:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't install and test optional numpy on python36 flavor,
+  because NumPy 1.20 on Tumbleweed does not support Python 3.6
+  anymore (NEP 29)
+
+-------------------------------------------------------------------
 Wed Mar  4 11:07:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix pytest dependency
