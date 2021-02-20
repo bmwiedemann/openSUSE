@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 13 09:04:17 UTC 2021 - Anthony Rabbito <hello@anthonyrabbito.com>
+
+- Added if condition in spec if on a SUSE version use mkisofs, instead of genisoimage 
+
+-------------------------------------------------------------------
 Wed Jan  6 14:26:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner run 
