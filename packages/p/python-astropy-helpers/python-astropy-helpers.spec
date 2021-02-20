@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy-helpers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,28 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-astropy-helpers
 Version:        4.0.1
 Release:        0
 Summary:        Utilities for building and installing Astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/astropy-helpers
-Source:         https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-%{version}.tar.gz
+# get the test suite
+Source:         %{url}/archive/v%{version}.tar.gz#/astropy-helpers-%{version}-gh.tar.gz
 Source100:      python-astropy-helpers-rpmlintrc
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module Sphinx >= 1.7}
 BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.7
-Requires:       python-numpy
-Requires:       python-numpydoc
+Recommends:     python-sphinx-astropy
+Recommends:     python-Cython
+Recommends:     python-numpy
+Recommends:     python-numpydoc
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,15 +65,21 @@ shipped with some projects to bootstrap setuptools.
 
 %install
 %python_install
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/astropy_helpers
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/astropy_helpers
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_compileall
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export OPENMP_EXPECTED=True
+git config --global user.email 'abuild@obs'
+git config --global user.nme 'abuild on OBS'
+# we don't have (and need) sphinx-astropy to build the docs.
+# Note that extension helpers, superseeding astropy-helpers dropped sphinx-astropy
+%pytest --ignore build -k "not test_build_docs"
 
 %files %{python_files}
 %license LICENSE.rst
 %doc README.rst CHANGES.rst
-%{python_sitelib}/*
+%{python_sitelib}/astropy_helpers
+%{python_sitelib}/astropy_helpers-%{version}*-info
 
 %changelog

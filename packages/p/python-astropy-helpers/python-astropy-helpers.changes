@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 19 16:43:02 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 build. Neither Astropy 4.2 nor NumPy 1.20 present
+  in Tumbleweed provide a python36 flavor (NEP 29)
+- Use GitHub archive for test suite.
+
+-------------------------------------------------------------------
 Thu Jan 30 14:38:16 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.0.1
