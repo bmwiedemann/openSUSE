@@ -27,11 +27,7 @@ Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
-%if 0%{?suse_version} > 1520
-BuildRequires:  gcc9-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hidapi-hidraw)
@@ -52,7 +48,7 @@ BuildRequires:  pkgconfig(sfml-system)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch:    %arm ppc64 ppc64le
+ExcludeArch:    %arm ppc64 ppc64le %ix86
 
 %description
 Dolphin is an emulator for running GameCube and Wii games on Windows, Linux,
@@ -64,10 +60,6 @@ RetroArch/libretro front-end.
 %setup -q
 
 %build
-%if 0%{?suse_version} > 1520
-export CC=gcc-9
-export CXX=g++-9
-%endif
 mkdir build
 cd build
 cmake .. \

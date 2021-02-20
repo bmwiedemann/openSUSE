@@ -23,4 +23,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838471</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ae376e6df20647a8baccdf186ee7f556</srcmd5>
+    <version>0~git20200831</version>
+    <time>1613855600</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not lock to GCC9: use whatever gcc version the distro
+  provides. This essentially changes Tumbleweed to use gcc 10.
+- Exclude i586 builds: since the introduction to Tumbleweed, this
+  package has not had a single successful build on i586: so no loss
+  to reclare it unavailable. (forwarded request 871355 from dimstar)</comment>
+    <requestid>874051</requestid>
+  </revision>
 </revisionlist>
