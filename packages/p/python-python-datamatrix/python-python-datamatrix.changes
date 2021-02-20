@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 19 16:15:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.1
+  * operations.group(): convert group-key to int
+  * Fixes compatibility with some versions of NumPy which don't
+    consider np.in64 to be int
+- Changes in 0.11.0
+  * Slightly improve compatibility with pandas further
+- Drop python-python-datamatrix-remove-nose.patch merged upstream
+  gh#open-cogsci/python-datamatrix#10
+- Don't install and test optional but unavailable dependencies
+  on python36 flavor (NEP 29)
+
+-------------------------------------------------------------------
 Wed Jul  1 12:53:51 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.10.17
