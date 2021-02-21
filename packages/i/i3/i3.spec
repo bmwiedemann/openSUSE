@@ -1,7 +1,7 @@
 #
 # spec file for package i3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           i3
-Version:        4.19
+Version:        4.19.1
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
@@ -96,7 +96,7 @@ install -D -m 0644 %{SOURCE1} %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 %files
 %license LICENSE
 %doc RELEASE-NOTES-%{version}
-%{_mandir}/man1/i3*
+%{_mandir}/man1/i3*.1%{?ext_man}
 %{_bindir}/i3
 %{_bindir}/i3-dump-log
 %{_bindir}/i3-with-shmlog
