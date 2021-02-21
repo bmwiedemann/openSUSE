@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Feb 13 18:15:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Disable build on Python 2 as the build fails with the latest version.
+
+-------------------------------------------------------------------
+Tue Feb  9 06:44:47 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.0:
+ - lru_cache(maxsize=None) => functools.cache
+
+-------------------------------------------------------------------
+Wed Feb  3 16:46:58 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.9.0:
+ - Document correct minimum version for PEP 604
+ - fix propagation of --keep-mock
+ - Add --keep-runtime-typing
+
+-------------------------------------------------------------------
+Sun Jan 31 17:48:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.8.0:
+ - genericize future import detection
+ - rewrite pep585 generic builtins
+ - move py2 compat fixer to plugins
+ - move %-format rewrite to a plugin
+ - move py3+ base class removal to plugins
+ - move lru_cache rewrite to a plugin
+ - move six decorator removal to a plugin
+ - move six.b / six.ensure_binary to a plugin
+ - move __metaclass__ = test checker to a plugin
+ - move io.open rewriting to a plugin
+ - move simple six attrs to a plugin
+ - move typing pep585 rewrite to a plugin
+ - move default encoding to a plugin
+ - move native literals to a plugin
+ - move versioned branches rewrite to a plugin
+ - move open mode fix to a plugin
+ - move os error alias rename to a plugin
+ - move six calls / metaclass rewrites to plugins
+ - settings in separate class
+ - move mock rewrite to a plugin
+ - refactor Py3Plus scope management
+ - move super and yield from to a legacy plugin
+ - combine six_b into six_calls plugin
+ - replace typing.Text with str
+ - rewrite pep604 (+ add --py310-plus)
+ - document PEP 604 rewrites
+
+-------------------------------------------------------------------
 Sat Jan 23 15:25:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Use python_clone and alternatives to provide the executable.

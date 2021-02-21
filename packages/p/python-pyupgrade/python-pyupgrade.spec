@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyupgrade
-Version:        2.7.4
+Version:        2.10.0
 Release:        0
 Summary:        A tool to automatically upgrade syntax for newer versions
 License:        MIT
@@ -42,7 +43,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-A tool to automatically upgrade syntax for newer versions.
+A tool to automatically upgrade syntax for newer versions of the Python
+programming language.
 
 %prep
 %setup -q -n pyupgrade-%{version}
