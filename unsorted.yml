@@ -21675,7 +21675,6 @@ unsorted:
   - python36-binary 
   - python36-binaryornot 
   - python36-bindep 
-  - python36-biopython 
   - python36-biplist 
   - python36-bitarray 
   - python36-bitstring 
@@ -22519,7 +22518,6 @@ unsorted:
   - python36-lesscpy 
   - python36-leveldb 
   - python36-lexicon 
-  - python36-lfdfiles 
   - python36-lhafile 
   - python36-lib3to6 
   - python36-libarchive 
@@ -23638,7 +23636,6 @@ unsorted:
   - python36-texttable 
   - python36-textwrap3 
   - python36-thespian 
-  - python36-thewalrus: [x86_64] 
   - python36-threadpoolctl 
   - python36-three-merge 
   - python36-threevis 
@@ -37872,6 +37869,7 @@ unsorted:
   - weston 
   - weston-devel 
   - wev 
+  - wf-recorder 
   - wget2 
   - wgetpaste 
   - when-command 
