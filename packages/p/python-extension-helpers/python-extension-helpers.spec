@@ -1,7 +1,7 @@
 #
 # spec file for package python-extension-helpers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,15 @@ License:        BSD-3-Clause
 URL:            https://github.com/astropy/extension-helpers
 Source:         https://files.pythonhosted.org/packages/source/e/extension-helpers/extension-helpers-%{version}.tar.gz
 Source100:      python-extension-helpers-rpmlintrc
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module numpy-devel if (%python-base without python36-base)}
+# /SECTION
 Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
