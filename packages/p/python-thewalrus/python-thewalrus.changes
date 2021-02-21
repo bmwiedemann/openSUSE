@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  8 14:35:31 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Disable build for python 3.6 because numpy does not support it.
+
+-------------------------------------------------------------------
 Thu Nov 26 07:51:50 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 0.14.0.
