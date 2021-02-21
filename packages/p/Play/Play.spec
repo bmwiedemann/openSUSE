@@ -1,7 +1,7 @@
 #
 # spec file for package Play
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Play
-Version:        0~git20201003
+Version:        0~git20210216
 Release:        0
 Summary:        Play! - PlayStation 2 Emulator
 License:        MIT

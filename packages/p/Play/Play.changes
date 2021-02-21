@@ -1,4 +1,424 @@
 -------------------------------------------------------------------
+Tue Feb 16 14:50:51 UTC 2021 - guillaume.gardet@opensuse.org
+
+- Update to version 0~git20210216:
+  * Update Dependencies submodule.
+  * Upper and lower affected registers code works the same now.
+  * Style fix.
+  * First shot at non hack fix for GoW FMAC stall situation.
+  * Add per element stall check for lower ops.
+  * Add another test that represents the real issue with GoW.
+  * Add another stall test.
+  * Add single point of definition for monospaced font used in debugger.
+  * Fix formatting.
+  * Resize column to fit contents in RegView page.
+  * Improve size formulae once again.
+  * Initialize variables.
+  * Remove some hardcoded values.
+  * Improve size formula.
+  * Update address when scroll position changes.
+  * WIP: Use sizeHintForColumn to improve performance.
+  * Improve formatting.
+  * Set monospaced font.
+  * Initialize some variables.
+  * fix windows libretro s3 upload name
+  * fix windows aws upload
+  * fix short_hash on windows builds
+  * cleanup
+  * Force fetching tags
+  * remove appveyor build
+  * rename CI action name
+  * Fix build
+  * Github Actions CI: add PsfPlayer windows build
+  * Github Actions CI: add windows build
+  * Set correct defaults for SMODE, DISPLAY 1 and 2.
+  * correctly use initialisation flag
+  * Another 2 glCheckFramebufferStatus calls
+  * remove assertion code in release
+  * Fix flag pipe display.
+  * Remove dead code.
+  * Fix namespace.
+  * Handle case of removing non-empty directory.
+  * Close frame debugger when closing the main window.
+  * Remove extra version specifiers in CDROM file path.
+  * Fix contents of address view not being visible after closing window.
+  * Clamp some input vectors.
+  * Merge ADD code in a single function.
+  * Added some NaN related utils.
+  * Redraw after changing active unit, as cell size could change, this also fixes incorrect cell size if we set byte per line to auto
+  * framedebugger: StepVu1: add menu option & keyboard shortcut(F10)
+  * let Qt handle Cell sizes
+  * Add some warnings.
+  * Change register name display.
+  * Remove strange logic.
+  * Add padding in AOT_BLOCK_KEY to align pointers on 8 bytes.
+  * Fix warnings.
+  * Adjust SPU transfer throttling.
+  * Make frame debugger an orphan.
+  * Change how feature toggles are applied.
+  * Update Framework submodule.
+  * Force fetching tags, fixes version names in GitHub Action builds.
+  * Code style fixes.
+  * Use fixed width font in regview.
+  * Rename VU column headers.
+  * Make VU's disassembly instruction columns resizable.
+  * show threadsView widget and the threadsView is is shown
+  * framedebugger: scale different modes
+  * fix heighlight scaling
+  * Add some prints to help debugging.
+  * Add warning when module can't be registered.
+  * Add more functions.
+  * Formatting fixes.
+  * Refine IOPRP version detection.
+  * Improve formatting.
+  * Create some directories inside our HDD upon startup.
+  * Try getting directory first on Getstat.
+  * Add stubs for Remove/Rmdir.
+  * Fix assert.
+  * Use proper function name.
+  * Rename CreateDirectory to MakeDirectory.
+  * Implement Seek64.
+  * Add missing include.
+  * Seek uses a signed offset.
+  * Move files.
+  * Seems to be possible to write to partitions.
+  * Add basic mount/umount support for HDDs.
+  * Devices don't support directory creation by default.
+  * Handle some more DevCtls.
+  * Improve DevCtl logging again.
+  * Use generic reply.
+  * Add HDD directory.
+  * Remove unused struct.
+  * Call IOMAN's Dopen.
+  * Use generic reply.
+  * Start using GENERICREPLY to clean up code.
+  * Add Chstat.
+  * Implement MkDir.
+  * Add Dclose/Dread.
+  * Add DevCtl definitions.
+  * Implement AllocLoadMemory in MODLOAD.
+  * Add bcmp.
+  * Use GetPtr in memcmp.
+  * Update warning message.
+  * Add flag combo.
+  * Implement Sync.
+  * Implement Write.
+  * Set warning.
+  * Add Format.
+  * Register HDD device.
+  * Add Ioctl2.
+  * Add HardDiskDevice.
+  * Fix structure name.
+  * Respond to some HDD DevCtls.
+  * Add missing cases.
+  * scale framebuffer dump appropriately
+  * simplify finding next/previous kicks
+  * syntax cleanup
+  * scroll to kickdraw packet when moving from one to another
+  * highlight draw kicks
+  * showEvent doesnt seem to propgate correctly to children of QMdiSubWindow
+  * cleanup: using QMdiArea as parent for Non-QMdiSubWindow widget is technically invalid
+  * Set alpha buffer size.
+  * Fix loading of ee_functions on macOS.
+  * Remove Win32 Debugger Code
+  * move Win32 Debug files that are still being used by PsfPlayer
+  * silence warning
+  * Cleanup: string formatting
+  * Cleanup: remove deadcode
+  * syntax cleanup
+  * cleanup
+  * use instruction mapping to prepare disasm view
+  * expose mapping range
+  * limit EE dis view to instruction maps
+  * merge target/comment column and colour the text
+  * Qt commits seppuku if we dont set a min column size or an inital column size
+  * change ee debugger address access
+  * use enum
+  * Fix CQtMemoryViewModel address calculation
+  * Fix OSX Build
+  * allow unsetting comments
+  * fix address to column calculation
+  * show comments in disasm view
+  * fix typo, incorrectly incremented address by 4
+  * syntax cleanup
+  * trigger show/resize Event
+  * fix Qt MemoryViewTable display
+  * Fix double declaration, caused by rebase
+  * give I-Mn & I-Op a fixed size
+  * fix style
+  * disasmwnd dont scroll if address is in view
+  * use same font in disasm view
+  * set size the same as win32 version
+  * fix memory view display... will need to re-review the view's code
+  * hide regs view header
+  * fix: functionview double click crash, only item with addresses can be clicked
+  * fix framedebugger crash
+  * cleanup
+  * add cmd option to open framedebugger
+  * cleanup
+  * attach action to save button
+  * fix segfault when attempting to access model before its initialised
+  * only swap buffer when window is exposed
+  * cleanup
+  * cleanup
+  * fix debugger build on linux
+  * code style fixes
+  * cleanup
+  * use qt signals to avoid non-ui-thead access to ui
+  * refresh view when its exposed
+  * simplify QTableView to QTableView
+  * simplify CRegViewWnd to QTabWidget
+  * simplify CCallStackWnd to QListWidget
+  * simplify CMemoryViewMIPSWnd to QWidget
+  * simplify CDisAsmWnd to QTableView
+  * cmake cleanup
+  * fix typo
+  * set display mode
+  * move Framedebugger to Qt
+  * use base class type to make it more generic
+  * move move surface format to its own static function, so it can be used in the frame debugger as well
+  * make CDisAsmWnd a QWidget to make it more re-usable
+  * move OpenGL Framedebugger GSH to Qt
+  * move platform agnoist source
+  * disable Win32 Framedebugger... we're going to now starting Qt debugger, and slowly port it over
+  * move few qt creation to qt creator
+  * cleanup
+  * abstract Memory viewer
+  * cleanup
+  * cleanup
+  * replace MessageBeep(); with Qt's equivalent QApplication::beep();
+  * cleanup
+  * QWidget can only parent 1 layout, silence Qt warning
+  * Code style fixes.
+  * ELFProgramView place an empty widget to take the free space
+  * small fixes
+  * Add Qt ELFView
+  * QtMemoryViewModel can dynamically change getByte and data size
+  * make memory model more generic
+  * Code style fixes.
+  * add icon to QtDebugger, since QtDebugger is no longer a child of MainWindow, we must give it its own icon
+  * save view layout, when windows is getting closed, and only if the main debugger view visible, if its not visible it will report all children and invisible as well
+  * cleanup
+  * remove QtDebugger parent, to allow it to have its own taskbar icon
+  * set correct memory size for disAsm
+  * revert back to unique pointer, release pointer early, to avoid segfault when trying to save tags
+  * cleanup
+  * cleanup
+  * Replace FunctionsView's QTableView with QTreeWidget to allow item grouping
+  * remove redundant 'this->' pointer
+  * rename function for consistancy
+  * cleanup
+  * cleanup
+  * Code style fixes.
+  * typo fix
+  * add debug keyboard shortcuts
+  * fix: setup history before use
+  * Add arrow key shortcuts to Disassembler view
+  * make RegView non-editable
+  * fix: using wrong variable name
+  * QtDisAsmTableModel cleanup
+  * cleanup
+  * enable debug action menu
+  * DisAsmWnd.cpp cleanup
+  * DisAsmWnd.cpp use QMessageBox
+  * add Qt MemoryViewMIPSWnd
+  * re-enable Disassembly view layout
+  * cleanup
+  * add Registers view menu action
+  * rename regview to Registers
+  * cleanup
+  * DisAsm add breakpoint toggle
+  * add DisAsm OnCopy
+  * Add DisAsmWnd selection
+  * cleanup
+  * add context menu to DisAsmWnd
+  * restructure DisAsm
+  * resize scrope icon, add arrow
+  * rogue include...merge back
+  * initial Qt DisAsm
+  * use Qt debugger on window
+  * allow list select via double click
+  * fix: crash when no item is selected
+  * cleanup
+  * update title to reflect current active chip
+  * save/load layout position
+  * cleanup
+  * enable debug for VU0/1 IOP
+  * dont show window on start
+  * enable window focus
+  * enable more code
+  * more menu action
+  * enable signals
+  * cleanup
+  * cleanup
+  * finish ReanalyzeEe(...) reimplementation
+  * enable AssembleJAL(...) menu action
+  * enable FindWordValue(...) menu action
+  * update table behaviour
+  * add button/click events to FunctionsView
+  * CThreadsViewWnd cleanu merge back
+  * add QtDialogListWidget, threadCallStackViewWnd's replacement
+  * cleanup
+  * cleanup
+  * we dont want to set a min size, change min size to resize
+  * make CRegViewWnd QMdiSubWindow, this fixed layout menu action for CRegViewWnd
+  * add doubleclick to CallStackWnd
+  * enable layout config config seems to only apply correctly to RegView, need to look into it
+  * enable few calls
+  * set actions to some of "Virtual Machine" toolbar items
+  * populate toolbar menu
+  * replace Debugger(QDockWidget) with QtDebugger(QMainWindow) as QMainWindow has its own toolbar menu
+  * add double click to CThreadsViewWnd
+  * CAddressListViewWnd Qt initial implementation
+  * add CQtGenericTableModel::getItem(...)
+  * cleanup
+  * initial CFunctionsView support
+  * initial CThreadsViewWnd implementation
+  * create generic table model
+  * add title to RegView window
+  * this is causing infinite loop
+  * initial Qt CCallStackWnd implementation
+  * Convert Debug menu over to use QT
+  * syntax cleanup
+  * flip texture coordinates
+  * use SendGSCall to access mailbox
+  * fix texture colouring
+  * disbale code on GLES, GLES doesnt support GL_BGRA or glGetTexImage, these can be worked around using GL_RGBA, and attaching texture to debugger and reading with glReadPixels, however since these functions are use only in frame debugger, there is no need for a workaround
+  * Framedebugger replace DirectX with OpenGl
+  * update CGSH_OpenGL to match CGSH_Direct3D9
+  * Add an explanation for the delay thing.
+  * Save/load new member state.
+  * Change how we report FIFO contents when FDR is on.
+  * Update Framework submodule.
+  * Code style fixes.
+  * Set channel state when transitioning from KEY_ON to STOPPED.
+  * Add key-on/key-off SPU test.
+  * Fix build.
+  * Move generic test infra in CTest.
+  * Add SPU test.
+  * Cleanup.
+  * Update Framework submodule.
+  * Add missing include.
+  * Fix Windows build.
+  * Remove loop in favor of intrinsic.
+  * Code style fixes.
+  * Add switch to enable/disable widescreen on Android.
+  * Add switch to enable/disable widescreen on iOS.
+  * Change ratios.
+  * Add option to resize window to specific sizes.
+  * Add widescreen mode.
+  * Update CodeGen submodule.
+  * syntax clean up
+  * we need to ensure the VM is paused before continuing
+  * Initialize atomic variable.
+  * use PauseAsync in the libretro core
+  * Add PauseAsync to PS2VM
+  * set m_flipped flag on flush, otherwise ProcessSingleFrame() would never return
+  * Add values to prevent reading out of bounds.
+  * Add missing blending formulae.
+  * Set IRQ address earlier in SampleReader.
+  * Use a different minImageCount on macOS.
+  * MoltenVK now supports Vulkan 1.1.
+  * Fix shader compilation warning.
+  * Update MoltenVK path on macOS.
+  * VulkanSDK is a DMG on macOS.
+  * Upgrade VulkanSDK version.
+  * Fix warning.
+  * Fix reset staying disabled after loading a game.
+  * Make bootable loading behavior coherent.
+  * Don't prevent starting game if we can't update the bootable database.
+  * Github action: disable signing/uploading setups when user doesnt have them setup, e.g in forks
+  * Use proper frequency for HSYNC based timers.
+  * Use nice enums instead of meaningless constants.
+  * upload artifacts to github
+  * fix cue/bin path concat on windows S3, on windows the path will look like /s3/bucket\game.bin so aws s3 can't find the game
+  * Fix some CMake minimum version warnings.
+  * Run workflows on pull requests.
+  * Code style fix.
+  * Remove ObjCMemberFunctionPointer.
+  * Update Dependencies submodule.
+  * Actions: Missing Checkout.
+  * Actions: Build iOS.
+  * Remove iOS build from Travis.
+  * Actions: Cache Android NDK.
+  * Move some variables.
+  * Don't sign APKs on pull requests.
+  * Remove Android build from TravisCI.
+  * Actions: Android build.
+  * Rename scripts.
+  * Actions: Cache Qt on macOS.
+  * Remove Linux x86-64 build from TravisCI.
+  * Build Linux x86-64 on GitHub Actions.
+  * Rename workflow.
+  * Remove macOS config in TravisCI.
+  * Build macOS on GitHub Actions.
+  * Code style fixes.
+  * Make the job succeed if nothing has changed.
+  * Remove formatting from Travis.
+  * Add clang-format action.
+  * Code style fixes.
+  * Attach exception handler to GS thread on macOS/iOS.
+  * Handle DMA transfers with 0 QWC
+  * Display VU addresses associated with register writes.
+  * Update tests.
+  * Preserve W component of FD in OPMSUB.
+  * Remove unused include.
+  * Flush Q pipeline when setting register through CTC2.
+  * Clear BUSDIR upon GS reset.
+  * update vulkan sdk download link
+  * Implement texture clamping in shader on OpenGL.
+  * Add pause/resume action to MainWindow.
+  * Hide cursor when in fullscreen mode.
+  * Add wait state for CdSync.
+  * Preserve LO/HI registers when context switching on IOP.
+  * Implement PEXEH.
+  * Clarify comments.
+  * Rework various hardware timer functions.
+  * Handle invalid threads in WakeupThread gracefully.
+  * Update Android Gradle Tools version.
+  * Remove game specific hack.
+  * Don't care for mode on reading files from optical media
+  * review fix - move code to better respect ordering
+  * Implement FileNotFoundException in CIoman
+  * Add warning for invalid VIF commands
+  * Implement GS BUSDIR register
+  * Filter out SSBUS register access
+  * Add some missing EE DMAC ASR register interactions
+  * Implement DMACMAN calls 33, 34 and 35
+  * Implement 2000 blend mode. Used by BGDA
+  * Implement IOP DPCR2
+  * Misc VIF fixes
+  * Implement VIF ERR register
+  * Add more warnings
+  * Update Framework submodule.
+  * Wait for flip to be complete when finishing.
+  * Code style fix.
+  * Fix frame debugger.
+  * Simplify GS handler's interface.
+  * Fix problems with non threaded GS (libretro)
+  * Don't flip when VM is running.
+  * Don't wait for flip to complete.
+  * Submit register write buffer before reading image data.
+  * Write batching v3.
+  * Write batching v2.
+  * Implement FreeHardTimer in TIMRMAN.
+  * Update Android signing process.
+  * Upgrade Android build tools version.
+  * Update Framework submodule.
+  * Update Gradle plugin version.
+  * Tweak idle loop detection.
+  * Throttle all SPU voice transfers.
+  * Add some logging for SetEffectAttr.
+  * Fix build.
+  * Code style fix.
+  * Use supported disc image extensions list.
+  * Add function to obtain supported disc image extensions.
+  * Add cue sheet support.
+  * Reorganise code.
+  * Reorganise disc image format code.
+  * Remove -msse -msse2 for TARGET_PLATFORM_UNIX_ARM
+
+-------------------------------------------------------------------
 Tue Oct  6 14:32:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 with openGL ES:
