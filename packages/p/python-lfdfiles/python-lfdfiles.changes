@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 14 16:41:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no tifffile as it uses scipy) 
+
+-------------------------------------------------------------------
 Thu Nov 26 07:06:44 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2020.9.18.
