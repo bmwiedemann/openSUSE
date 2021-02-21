@@ -202,4 +202,14 @@
 Do not replace the active config file: boo#1182376</comment>
     <requestid>873188</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3cea5fa4033c38fc233933aabdf1c9f3</srcmd5>
+    <version>5.58</version>
+    <time>1613942073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.58:
+  *  Security bugfixes
+     -  The &quot;redirect&quot; option was fixed to properly handle unauthenticated requests (thx to Martin Stein). boo#1182529</comment>
+    <requestid>874110</requestid>
+  </revision>
 </revisionlist>
