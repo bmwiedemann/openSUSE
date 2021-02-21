@@ -42,4 +42,13 @@
     <comment>- Update to version 0.80.0:</comment>
     <requestid>862205</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6668750f264897362b0ded17829e86fc</srcmd5>
+    <version>0.81.0</version>
+    <time>1613942058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.81.0:
+  * Require go1.16 or newer (forwarded request 874064 from jfkw)</comment>
+    <requestid>874066</requestid>
+  </revision>
 </revisionlist>

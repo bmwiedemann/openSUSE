@@ -22,7 +22,7 @@
 # Project name when using go tooling.
 %define project github.com/gohugoio/hugo
 Name:           hugo
-Version:        0.80.0
+Version:        0.81.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
@@ -31,7 +31,7 @@ URL:            https://github.com/gohugoio/hugo
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.14
+BuildRequires:  go >= 1.16
 
 %description
 Hugo is a static HTML and CSS website generator written in Go. It is optimized

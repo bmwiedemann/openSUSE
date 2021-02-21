@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Feb 20 16:56:33 UTC 2021 - jkowalczyk@suse.com
+
+- Update to version 0.81.0:
+  * Require go1.16 or newer
+  * tpl: Make the build green again
+  * docs: Regen CLI docs
+  * docs: Regen docs helper
+  * Squashed 'docs/' changes from ef9c4913c..d343ebf71
+  * tpl: Regenerate internal templates
+  * tpl: Update date logic of opengraph and schema internal templates
+  * build: Add arm64 to Darwinextended build and add vendorInfo
+  * Update Travis, GitHub, CircleCI and Snap to Go 1.16 (only)
+  * tpl: Add temporary patch to fix template data race
+  * Pull in latest Go 1.16 template source
+  * Add breaking tests for "map read and map write in templates"
+  * Pull in latest Go template source
+  * Expand template newline testcase to commands
+  * Add a test case for Go 1.16 template action newlines
+  * tpl/internal: Synch Go templates fork with Go 1.16dev
+  * deps: Update github.com/tdewolff/minify/v2 v2.6.2 => v2.9.13
+  * build(deps): bump github.com/frankban/quicktest from 1.11.2 to 1.11.3
+  * build(deps): bump github.com/getkin/kin-openapi from 0.32.0 to 0.39.0
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.36.33 to 1.37.11
+  * build(deps): bump github.com/sanity-io/litter from 1.3.0 to 1.5.0
+  * build(deps): bump github.com/olekukonko/tablewriter from 0.0.4 to 0.0.5
+  * deps: Update to esbuild v0.8.46
+  * modules: Add config option modules.vendorClosest
+  * js: Fix potential path issue on Windows
+  * build(deps): bump google.golang.org/api from 0.26.0 to 0.40.0
+  * Change version string format and add VendorInfo to help with issue triaging
+  * modules: Allow absolute paths for any modules resolved via project replacement
+  * modules: Throw an error running hugo mod vendor on mountless module
+  * Fix some humanize issues
+  * commands: Add PowerShell completion support
+  * Refer to mage instead of make in comment regarding commitHash
+  * markup/goldmark: Fix handling of legacy attribute config
+  * markup/goldmark: Add attributes support for blocks (tables etc.)
+  * deps: Update to Goldmark v1.3.2
+  * Update to Dart Sass Protocol beta6
+  * tpl/embedded: Exclude pages without Permalink from sitemap
+  * langs/i18n: Support translation files with suffix *.yml
+  * Refactor: Write to stdout by default
+  * Refactor: Remove powershell support
+  * Feat: Add zsh, fish and powershell completion support
+  * github: Enable NPM tests on Windows
+  * deps: Update to esbuild v0.8.39
+  * Trim whitespace in elements written to hugo_stats.json
+  * tpl/data: Add default user-agent header for getJSON requests
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.35.0 to 1.36.33
+  * docs: Remove mention of a file size limit for readFile
+  * tpl/os: remove 1mb limit for readFile.
+  * js: Add Inject config option
+  * tpl: Fix race condition in text template baseof
+  * js: Add Shims option
+  * Fix nilpointer in js.Build error handling
+  * Squashed 'docs/' changes from 1de7a358c..ef9c4913c
+  * build(deps): bump github.com/spf13/afero from 1.4.1 to 1.5.1
+  * pipes: Add external source map support to js.Build and Babel
+  * tpl: Fix metrics hint tracking
+  * tpl: Do not return errors in substr for out-of-bounds cases
+  * tpl: Add missing test scenario for strings.Substr
+  * deps: Update go-org to v1.4.0
+  * rst: Adjust log level
+
+-------------------------------------------------------------------
 Fri Jan 08 03:59:25 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 0.80.0:
