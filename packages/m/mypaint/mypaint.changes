@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 20 01:05:11 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: python-rpm-macros and use python3 macros to
+  build app only for the system python3.
+
+-------------------------------------------------------------------
 Mon Sep  7 10:25:49 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

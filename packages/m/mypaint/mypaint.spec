@@ -1,7 +1,7 @@
 #
 # spec file for package mypaint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           mypaint
 Version:        2.0.1
 Release:        0
@@ -31,7 +30,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  librsvg
 BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairo-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
@@ -65,10 +63,10 @@ pencils, ink, or paint.
 %autosetup -p1
 
 %build
-%python_build 
+%python3_build 
 
 %install
-%python_install
+%python3_install
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}/lib/%{name}/
