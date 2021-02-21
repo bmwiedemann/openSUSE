@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sun Feb 21 14:25:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.2
+  * The fix that motivates this patch release is @henryiii’s repair
+    of the SDist distribution: PR #720. The addition of dlpack
+    wasn’t included in the source distribution, so pip install
+    awkward without an available wheel was failing due to not
+    having all the headers it needed to compile.
+  * Also fixed jagged slices: issue #723, PRs #725 and #729, as
+    well as a segfault in ak.flatten: issue #724, PR #726.
+- Release 1.1.1
+  * New patch release motivated by a bug discovered in Uproot’s
+    tests: PR #719. (From now on, Uproot will test Awkward release
+    candidates.)
+  * Also, #717 adds an optional behavior argument to every function
+    that takes a highlevel=True/False.
+  * Also from now on, only critical bug-fixes (like this one) will
+    be patch releases and other updates will all go into release
+    candidates for the next non-patch release (e.g. 1.2.0,
+    [scheduled for 2021-04-01](https://github.com/scikit-hep/
+    awkward-1.0#roadmap)).
+- Release 1.1.0
+  * Updates to Arrow 3.0. PR #709.
+  * Can now read and write Parquet datasets (conventions for sets
+    of multiple files): PR #706, fixes #368 (old!).
+  * Also, Python 2 can use ellipsis because we have pybind11 2.6
+    now: PR #707, fixes #705.
+  * remove deprecated features
+  * Fixed #689, the dimension of arrays returned by empty slices:
+    PR #691.
+  * @ianna fixed tuple-building in ArrayBuilder to guard against
+    specifying a nonexistent slot and segfaulting: #697.
+  * Added [ak.materialized](https://awkward-array.readthedocs.io/
+    en/latest/_auto/ak.materialized.html) to force-materialize
+    arrays (opposite of [ak.virtual](https://awkward-array.
+    readthedocs.io/en/latest/_auto/ak.virtual.html)) because
+    debugging very lazy deferments is hard.
+  * Can now use np.newaxis to give one array the same number of
+    dimensions as another for slicing (which closes #492).
+  * Fixed ak.min/ak.max with axis != None for partitioned data.
+  * Fixed a bug that affected boolean-masking of partitioned data.
+  * Reducing over-materialization of virtual arrays: PRs #643,
+    #644, #657, added Form-aware lazy Parquet: #688
+  * Fixed ak.from_buffers to allow unreachable elements: PR #673
+  * Developed the AwkwardForth VM: PRs #683, #648, #653, #661,
+    #664, #672
+  * Removed right-broadcasting from all operations except those
+    that require it for NumPy compliance: #656, #680
+  * @ianna improved sorting: PRs #639, #687, added complex numbers
+    support: PRs #652
+  * @trickarcher generalized CuPy interop to JAX: PRs #645, #662
+  * @reikdas cleaned up developer scripts: PRs #665, #666, #667
+  * @henryiii added more code quality tests: PRs #675, #681, #682,
+    #677, #676, #685, #683
+- Somehow the missing python-devel BuildRequires was okay until
+  recently.
+
+-------------------------------------------------------------------
 Sun Feb 14 14:10:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (numbas requires scipy) 

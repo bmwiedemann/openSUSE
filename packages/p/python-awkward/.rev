@@ -31,4 +31,12 @@
     <comment>- skip python 3.6 (numbas requires scipy)</comment>
     <requestid>872168</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6769dc3f3fec9b42d9b79db67797579d</srcmd5>
+    <version>1.1.2</version>
+    <time>1613942093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874157</requestid>
+  </revision>
 </revisionlist>

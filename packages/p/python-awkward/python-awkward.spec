@@ -20,16 +20,17 @@
 %global modname awkward
 %global skip_python36 1
 Name:           python-awkward
-Version:        1.0.2
+Version:        1.1.2
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
-URL:            https://github.com/scikit-hep/awkward-1.0
+URL:            https://awkward-array.org/
 Source:         https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
 # PATCH-FETAURE-OPENSUSE awkward-cmake-build-with-RelWithDebInfo.patch badshah400@gmail.com -- Set CMAKE_BUILD_TYPE to RelWithDebInfo by default instead of Release
 Patch0:         awkward-cmake-build-with-RelWithDebInfo.patch
 # PATCH-FEATURE-OPENSUSE awkward-correct-includedir.patch badshah400#gmail.com -- Make awkward.config return the correct includedir where we move the header files to
 Patch1:         awkward-correct-includedir.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -37,6 +38,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.13.1
 Recommends:     python-numba
+Recommends:     python-pandas
+Recommends:     python-cupy
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module numpy >= 1.13.1}
@@ -96,7 +99,8 @@ fi
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch
+# test-cuda: we don't have python-cupy yet
+%pytest_arch --ignore tests-cuda/
 
 %files %{python_files}
 %doc README.md
