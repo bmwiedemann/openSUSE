@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Feb 16 18:17:10 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- fix for the issue #92 (Requested output format 'v4l2' is not a suitable output format)
+  *adding missing libavdevice-devel dependency to be able to use v4l2loopback
+
+-------------------------------------------------------------------
+Fri Apr 17 11:25:38 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update to version v0.2.1
+  * Improved documentation
+  * Fixed long recordings (>1h10m) (#78)
+- Update to v0.2
+  * Addition of manpage and help options #35
+  * Conversion to RGB to YUV with the help of OpenCL (the latter being optional) #30 #32
+  * Option to set muxer and pixel format #43 #53
+  * Support for loopback devices: #43 #53
+  * Update to newer avcodec_send_frame API #47
+- Add opencl dependency for new OpenCL feature
+- Add scdoc for man
+- spec switched to %meson macros
+
+-------------------------------------------------------------------
+Thu May 16 19:36:14 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- Initial Release
