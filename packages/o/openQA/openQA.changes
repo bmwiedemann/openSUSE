@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 21 00:23:31 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1613737964.fe7c1907f:
+  * Run starvation protection test with fixed priority offset
+  * Add tests for the scheduler's starvation protection
+  * Add test for so far uncovered error cases of scheduler
+  * Improve comments in scheduler code
+  * Make offset for scheduler's starvation protection configurable
+  * t: Mark uncoverable statements in 25-downloader.t
+  * t: Mark uncoverable statements in 01-test-utilities.t
+
+-------------------------------------------------------------------
 Thu Feb 18 13:58:03 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1613656670.2413c666d:
