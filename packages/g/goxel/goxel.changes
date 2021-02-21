@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 21 11:40:43 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Install upstream appdata and desktop file.
+- Avoid non-standard icon sizes
+- Fix non-standard-group Unspecified
+- Update URL
+
+-------------------------------------------------------------------
 Fri Dec 25 18:57:51 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 0.10.7

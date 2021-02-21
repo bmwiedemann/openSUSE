@@ -1,7 +1,7 @@
 #
 # spec file for package goxel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,9 @@ Version:        0.10.7
 Release:        0
 Summary:        Voxel graphics editor
 License:        GPL-3.0-only
-URL:            https://github.com/guillaumechereau/goxel
-Source0:        https://github.com/guillaumechereau/goxel/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.desktop
-BuildRequires:  ImageMagick
-BuildRequires:  desktop-file-utils
+Group:          Productivity/Graphics/3D Editors
+URL:            https://goxel.xyz/
+Source:         https://github.com/guillaumechereau/goxel/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
@@ -57,29 +55,22 @@ export LDFLAGS
 scons mode=release
 
 %install
-install -D -m755 %{name} %{buildroot}%{_bindir}/%{name}
+%make_install PREFIX=%{_prefix}
 
-install -d %{buildroot}%{_datadir}/icons/hicolor/{48x48,256x256,1024x1024}/apps
-install -m644 icon.png %{buildroot}%{_datadir}/icons/hicolor/1024x1024/apps/%{name}.png
-convert icon.png -resize 48x48 %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
-convert icon.png -resize 256x256 %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
+# PATCH-FIX-UPSTREAM https://github.com/guillaumechereau/goxel/pull/229
+chmod +x %{buildroot}%{_bindir}/%{name}
 
-# Install desktop icon
-mkdir -p %{buildroot}%{_datadir}/applications
-install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications
+sed -i 's/\${SNAP}\/icon.png/%{name}/g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+# PATCH-FIX-UPSTREAM https://github.com/guillaumechereau/goxel/pull/228
+%suse_update_desktop_file -r %{name} Graphics 3DGraphics
 
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%dir /usr/share/icons/hicolor/1024x1024
-%dir /usr/share/icons/hicolor/1024x1024/apps
-%{_datadir}/icons/hicolor/1024x1024/apps/%{name}.png
-%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/metainfo/io.github.guillaumechereau.Goxel.appdata.xml
 
 %changelog
