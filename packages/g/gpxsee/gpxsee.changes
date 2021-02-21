@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 21 10:48:37 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.7
+  * Fixed broken marker date/coordinates when time graphs are
+    selected.
+  * Fixed window geometry save/restore.
+  * Improved Full-screen layout.
+
+-------------------------------------------------------------------
+Sun Feb 14 22:41:55 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.6
+  * Added support for Locus/OsmAnd/RMaps SQLite maps.
+  * Add Coordinates display option to position info.
+  * Minor AQM maps display fix.
+
+-------------------------------------------------------------------
 Mon Feb  8 21:42:21 CET 2021 - tumic@cbox.cz
 
 - Update to version 8.5

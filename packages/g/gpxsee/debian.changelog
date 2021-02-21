@@ -1,3 +1,20 @@
+gpxsee (8.7) stable; urgency=low
+
+  * Fixed broken marker date/coordinates when time graphs are
+    selected.
+  * Fixed window geometry save/restore.
+  * Improved Full-screen layout.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 21 Feb 2021 10:52:22 +0100
+
+gpxsee (8.6) stable; urgency=low
+
+  * Added support for Locus/OsmAnd/RMaps SQLite maps.
+  * Add Coordinates display option to position info.
+  * Minor AQM maps display fix.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 14 Feb 2021 22:47:45 +0100
+
 gpxsee (8.5) stable; urgency=medium
 
   * Fixed crash on areas/polygons (introduced in 8.2).
