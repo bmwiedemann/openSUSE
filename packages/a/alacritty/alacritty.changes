@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 20 22:34:40 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.7.2
+  * shell completions: remove obsolete options
+  * shell compeltions: add the -o/-option setting
+  * fix: Crash due to assertion failure on 32-bit architectures
+  * fix: Segmentation fault on shutdown with Wayland
+  * fix: Incorrect estimated DPR with Wayland
+  * fix: Consecutive clipboard stores dropped on Wayland until the
+    application is refocused
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Sat Jan 16 20:44:50 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Make use of mktemp in revendor_source.sh script so we don't have a

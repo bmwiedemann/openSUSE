@@ -17,7 +17,7 @@
 
 
 Name:           alacritty
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -70,7 +70,7 @@ The official zsh completion script for alacritty.
 %prep
 %autosetup -a1
 %define cargo_registry $(pwd)/vendor
-%cargo_prep
+%{cargo_prep}
 
 %ifarch aarch64 ppc64le riscv64
 # Remove checksum of config.guess and config.sub since aarch64 and ppc64le modify them
@@ -83,7 +83,7 @@ sed -i -e 's#"config.guess":"e0c1d7ef8ce964fb57c35e7704ae8661d7e4ca87d6a3c18950e
 
 %build
 export CARGO_NET_OFFLINE=true
-%cargo_build
+%{cargo_build}
 
 %install
 mkdir -p "%{buildroot}%{_bindir}"

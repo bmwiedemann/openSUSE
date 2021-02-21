@@ -152,4 +152,21 @@
     <comment></comment>
     <requestid>863749</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a771fa367c805e251af668fa1aa9f199</srcmd5>
+    <version>0.7.2</version>
+    <time>1613942061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2
+  * shell completions: remove obsolete options
+  * shell compeltions: add the -o/-option setting
+  * fix: Crash due to assertion failure on 32-bit architectures
+  * fix: Segmentation fault on shutdown with Wayland
+  * fix: Incorrect estimated DPR with Wayland
+  * fix: Consecutive clipboard stores dropped on Wayland until the
+    application is refocused
+- ran spec-cleaner
+</comment>
+    <requestid>874070</requestid>
+  </revision>
 </revisionlist>
