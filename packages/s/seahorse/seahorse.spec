@@ -1,7 +1,7 @@
 #
 # spec file for package seahorse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seahorse
-Version:        3.38.0.1
+Version:        3.38.1
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.1-only
