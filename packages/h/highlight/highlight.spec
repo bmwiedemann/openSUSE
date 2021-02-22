@@ -1,7 +1,7 @@
 #
 # spec file for package highlight
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        3.60
+Version:        3.62
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
@@ -27,10 +27,6 @@ URL:            http://www.andre-simon.de/
 Source0:        http://www.andre-simon.de/zip/%{name}-%{version}.tar.bz2
 Source1:        http://www.andre-simon.de/zip/%{name}-%{version}.tar.bz2.asc
 Source99:       highlight.keyring
-# PATCH-FIX-OPENSUSE highlight-3.45-fix-doc-dir.patch
-Patch0:         highlight-3.45-fix-doc-dir.patch
-# PATCH-FIX-OPENSUSE highlight-3.59-use_optflags.patch
-Patch1:         highlight-3.59-use_optflags.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
@@ -65,15 +61,19 @@ This package provides graphical interface for %{name}.
 dos2unix extras/pandoc/* extras/themes-resources/base16/*
 
 %build
-%make_build OPTFLAGS="%{optflags}" cli
+export CFLAGS="%{optflags}"
+%make_build cli
+
 %if %{with gui}
 # Don't call gui and cli targets in the same make invocation
 # as it leads to concurrency issues.
-%make_build OPTFLAGS="%{optflags}" gui
+%make_build gui                 \
+  doc_dir="%{_docdir}/%{name}/" \
+  QMAKE="qmake-qt5 QMAKE_CXXFLAGS=\"%{optflags}\""
 %endif
 
 %install
-%makeinstall \
+%makeinstall doc_dir="%{_docdir}/%{name}/" \
 %if %{with gui}
   install-gui
 %suse_update_desktop_file -G "Text converter" -r %{name} Utility TextEditor

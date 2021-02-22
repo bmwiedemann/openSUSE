@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 19 21:27:57 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 3.62:
+  * Fixed `--list-scripts` output.
+
+-------------------------------------------------------------------
+Wed Feb 17 21:36:15 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 3.61:
+  * Added `--syntax-supported` option
+  * Fixed indentation of Plain TeX output
+- Drop makefile patches since build can actually be configured
+  without them:
+  * highlight-3.45-fix-doc-dir.patch
+  * highlight-3.59-use_optflags.patch
+
+-------------------------------------------------------------------
 Mon Dec 21 18:53:47 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 3.60:

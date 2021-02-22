@@ -625,4 +625,21 @@
     getStyleDefinition to public (gl#saalen/highlight#173).</comment>
     <requestid>857903</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>32c52c2e2abb0d99a3ec6a4242054d11</srcmd5>
+    <version>3.62</version>
+    <time>1614000195</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 3.62:
+  * Fixed `--list-scripts` output.
+- Update to version 3.61:
+  * Added `--syntax-supported` option
+  * Fixed indentation of Plain TeX output
+- Drop makefile patches since build can actually be configured
+  without them:
+  * highlight-3.45-fix-doc-dir.patch
+  * highlight-3.59-use_optflags.patch
+</comment>
+    <requestid>874193</requestid>
+  </revision>
 </revisionlist>
