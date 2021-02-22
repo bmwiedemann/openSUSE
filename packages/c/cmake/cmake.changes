@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 15 21:53:23 UTC 2021 - Christoph G <foss@grueninger.de>
+
+- Update to CMake 3.19.5
+  * FindBoost: Add support for Boost 1.75
+  * FindCUDAToolkit: Restore use of CUDA_PATH environment variable
+
+-------------------------------------------------------------------
 Wed Feb 10 06:38:12 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - A quick note that tumbleweed isn't affeted by bsc#1181680 which
