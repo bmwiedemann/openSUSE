@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 21 14:47:03 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.42 run tests with valgrind and fixed some bugs
+  shown.
+- implemented ags_notation_to_raw_midi() and
+  ags_notation_from_raw_midi().
+- improved AgsServer response.
+- fixed ref-count of AgsAudioApplicationContext and
+  AgsXorgApplicationContext.
+- fixed uninitialized buffer of AgsFxPeakChannel
+- fixed AgsOscConnection and AgsOscClient uninitialized, leaked
+  and use after free errors.
+- fixed ref-count of ags_recycling_position()
+- fixed .pc files
+- minor improvements.
+
+-------------------------------------------------------------------
 Tue Feb  9 10:37:41 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.35 fixed bad bug related to serialization of
