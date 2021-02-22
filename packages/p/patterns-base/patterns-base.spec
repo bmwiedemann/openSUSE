@@ -124,6 +124,9 @@ Provides:       pattern-visible()
 Requires:       pattern() = minimal_base
 
 Requires:       aaa_base
+%if %{with betatest}
+Requires:       aaa_base-malloccheck
+%endif
 Requires:       bash
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
@@ -654,9 +657,6 @@ Provides:       pattern-icon() = pattern-software-management
 Provides:       pattern-order() = 1360
 Provides:       pattern-visible()
 %obsolete_legacy_pattern sw_management
-%if %{with betatest}
-Requires:       pattern() = update_test
-%endif
 # Zypper is the basic sw_management stack for *SUSE
 Requires:       zypper
 %if 0%{?sle_version}
@@ -717,9 +717,6 @@ Requires:       update-test-optional
 Requires:       update-test-reboot-needed
 Requires:       update-test-security
 Requires:       update-test-trivial
-%if %{with betatest}
-Requires:       aaa_base-malloccheck
-%endif
 
 %description update_test
 Packages used for testing that the update stack works.  These tiny packages do not have any functionality themselves.

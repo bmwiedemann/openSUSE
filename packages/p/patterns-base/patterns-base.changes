@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 17 14:24:50 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Don't pull in update_test pattern from sw_management
+- Move aaa_base-malloccheck from update_test to base
+
+-------------------------------------------------------------------
 Tue Jan 26 09:20:12 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - bootloader pattern should not require a base pattern
