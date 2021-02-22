@@ -50,7 +50,7 @@ License:        LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            http://www.avahi.org/
 Source:         http://avahi.org/download/%{_name}-%{version}.tar.gz
-# From http://packages.debian.org/sid/avahi-daemon http://ftp.debian.org/debian/pool/main/a/avahi/avahi_0.6.31-1.debian.tar.gz
+# From http://packages.debian.org/sid/avahi-daemon http://ftp.debian.org/debian/pool/main/a/avahi/avahi_0.8-3.debian.tar.xz
 Source1:        avahi-daemon-check-dns.sh
 # Copy of glib-2.0.m4 from glib2-devel to not depend on glib2-devel.
 Source4:        avahi-glib-gettext.m4
@@ -103,6 +103,7 @@ BuildRequires:  libevent-devel >= 2.1.5
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 Requires:       nss-mdns
+Requires:       sudo
 Requires(pre):  shadow
 #
 # mDNSResponder was used for <= 10.2:

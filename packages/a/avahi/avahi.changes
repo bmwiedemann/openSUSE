@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 16 22:37:35 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update avahi-daemon-check-dns.sh from Debian. Our previous
+  version relied on ifconfig, route, and init.d.
+- Rebase avahi-daemon-check-dns-suse.patch, and drop privileges
+  when invoking avahi-daemon-check-dns.sh (boo#1180827
+  CVE-2021-26720).
+- Add sudo to requires: used to drop privileges.
+
+
+-------------------------------------------------------------------
 Wed Feb 10 20:09:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop configure --libexecdir variable as it does not appear

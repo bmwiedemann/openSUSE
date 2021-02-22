@@ -1030,4 +1030,17 @@
   to be used by the source archive. (forwarded request 871002 from jengelh)</comment>
     <requestid>871200</requestid>
   </revision>
+  <revision rev="137" vrev="3">
+    <srcmd5>b2e8dda899acfdd42c09c88018817ed8</srcmd5>
+    <version>0.8</version>
+    <time>1614001180</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update avahi-daemon-check-dns.sh from Debian. Our previous
+  version relied on ifconfig, route, and init.d.
+- Rebase avahi-daemon-check-dns-suse.patch, and drop privileges
+  when invoking avahi-daemon-check-dns.sh (boo#1180827
+  CVE-2021-26720).
+- Add sudo to requires: used to drop privileges. (forwarded request 872987 from mgorse)</comment>
+    <requestid>873919</requestid>
+  </revision>
 </revisionlist>
