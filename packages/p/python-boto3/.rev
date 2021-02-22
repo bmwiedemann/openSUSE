@@ -472,4 +472,12 @@
     <comment></comment>
     <requestid>851841</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6f754c8d057bcafe195008fc117dfba8</srcmd5>
+    <version>1.17.9</version>
+    <time>1614001162</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 873403 from glaubitz)</comment>
+    <requestid>873552</requestid>
+  </revision>
 </revisionlist>
