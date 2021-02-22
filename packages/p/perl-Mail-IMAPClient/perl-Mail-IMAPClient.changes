@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 19 17:48:58 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.43
+   see /usr/share/doc/packages/perl-Mail-IMAPClient/Changes
+
+  version 3.43: Tue Feb 16 16:53:26 UTC 2021
+  	- admin: update copyright, move from rt.cpan.org (retired) to github
+  	- rt.cpan.org#132720: compress: Readmethod: avoid false-positive EOF
+  	  [Eric Wong]
+  	- rt.cpan.org#129920: Parsing headers fails under special condition
+  	  [Jens Berthold]
+  	- rt.cpan.org#132654: avoid cyclic reference on ->compress
+  	  [Eric Wong]
+  	- rt.cpan.org#132380: append_string can fail to match APPENDUID in response
+  	  [Radomír Polách]
+  	- rt.cpan.org#133496: allow for undocumented BODYSTRUCTURE extensions
+  	  [Rhesa Rozendaal]
+
+-------------------------------------------------------------------
 Sat Nov 30 14:55:27 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert changes file to proper UTF-8 format: new
