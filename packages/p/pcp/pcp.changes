@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Feb 14 21:43:28 UTC 2021 - David Disseldorp <ddiss@suse.com>
+
+- Spec file fixes and cleanups
+  + disable pcp-export-zabbix-agent to avoid conflicting /etc/zabbix/
+    ownership.
+  + fix unversioned Provides
+  + remove unused python2 build logic and unconditionally enable python3
+  + 0009-remove-rundir-install.patch
+- Add SUSE specific dejavu-fonts dependency for pcp-gui sans
+- Disable pcp-pmda-libvirt to avoid build dependency loop
+
+-------------------------------------------------------------------
+Wed Feb 10 11:03:13 UTC 2021 - David Disseldorp <ddiss@suse.com>
+
+- Drop unnecessary %pre/%post recursive chown calls; (bsc#1152533)
+- Changelog for patches carried as part of 5.2.2 source tarball:
+  + build-drop-old-config-file-transition-code-from-rpm-.patch
+  + 0007-pmdas-perf-Add-cpunumber-option-for-dynamic-perf-eve.patch
+  + 0008-pmdas-perf-Add-support-for-hv_24x7-nest-events-on-mu.patch
+  + 0009-qa-perfevent-Test-hv_24x7-events-on-multinode.patch
+
+-------------------------------------------------------------------
+Thu Nov 19 11:39:51 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Upgrade to 5.2.2; (jsc#SLE-16929)
+  + improvements to client tools and utilities
+  + new pmdabpftrace monitoring agent
+  + pmdaperfevent enhancements
+  + pmproxy, libpcp_web and libpcp hardening and improvements
+  + assorted bug fixes
+  + obsolete pcp-manager discovery service, now provided by pmfind
+  + improved FHS compliance
+- Remove upstreamed:
+  + 0001-Add-missing-includes-in-Qt-5.15-beta2.patch
+- Rebase against upstream (faeb2507f):
+  + 0001-Install-libraries-without-exec-permission.patch
+- Fix build with -fno-common; (bsc#1160411)
+- Merge upstream build-time tmpdir fixes
+  + 0007-pmns-Make-drop-duplicate-if-else.patch
+  + 0008-fixes-for-GH-1140-PCP_TMPFILE_DIR-used-in-build.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 11:33:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not mangle libexecdir: the distro defaults are right in all
@@ -14,6 +56,22 @@ Fri Mar 27 09:43:05 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch (submitted to upstream) to fix missing includes with Qt 5.15:
   * 0001-Add-missing-includes-in-Qt-5.15-beta2.patch
+
+-------------------------------------------------------------------
+Wed Feb 26 10:57:30 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- hv24x7 support (bsc#1155054 ltc#182081).
+  + 0007-pmdas-perf-Add-cpunumber-option-for-dynamic-perf-eve.patch
+  + 0008-pmdas-perf-Add-support-for-hv_24x7-nest-events-on-mu.patch
+  + 0009-qa-perfevent-Test-hv_24x7-events-on-multinode.patch
+
+-------------------------------------------------------------------
+Fri Jan 24 15:56:53 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Fix for security advisory CVE-2019-3696; (bsc#1153921)
+  + code change already carried
+- Fix for security advisory CVE-2019-3695; (bsc#1152763)
+  + build-drop-old-config-file-transition-code-from-rpm-.patch
 
 -------------------------------------------------------------------
 Thu Dec 19 14:41:01 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>

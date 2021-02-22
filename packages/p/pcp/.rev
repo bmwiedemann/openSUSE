@@ -544,4 +544,41 @@ This is needed so that the rpm hack to update config.sub works (forwarded reques
     <comment></comment>
     <requestid>828935</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>6836e9e1af3b6e68a9cbc2bfd741efc5</srcmd5>
+    <version>5.2.2</version>
+    <time>1614000189</time>
+    <user>RBrownSUSE</user>
+    <comment>- Spec file fixes and cleanups
+  + disable pcp-export-zabbix-agent to avoid conflicting /etc/zabbix/
+    ownership.
+  + fix unversioned Provides
+  + remove unused python2 build logic and unconditionally enable python3
+  + 0009-remove-rundir-install.patch
+- Add SUSE specific dejavu-fonts dependency for pcp-gui sans
+- Disable pcp-pmda-libvirt to avoid build dependency loop
+
+- Drop unnecessary %pre/%post recursive chown calls; (bsc#1152533)
+- Changelog for patches carried as part of 5.2.2 source tarball:
+  + build-drop-old-config-file-transition-code-from-rpm-.patch
+  + 0007-pmdas-perf-Add-cpunumber-option-for-dynamic-perf-eve.patch
+  + 0008-pmdas-perf-Add-support-for-hv_24x7-nest-events-on-mu.patch
+  + 0009-qa-perfevent-Test-hv_24x7-events-on-multinode.patch
+
+- Upgrade to 5.2.2; (jsc#SLE-16929)
+  + improvements to client tools and utilities
+  + new pmdabpftrace monitoring agent
+  + pmdaperfevent enhancements
+  + pmproxy, libpcp_web and libpcp hardening and improvements
+  + assorted bug fixes
+  + obsolete pcp-manager discovery service, now provided by pmfind
+  + improved FHS compliance
+- Remove upstreamed:
+  + 0001-Add-missing-includes-in-Qt-5.15-beta2.patch
+- Rebase against upstream (faeb2507f):
+  + 0001-Install-libraries-without-exec-permission.patch
+- Fix build with -fno-common; (bsc#1160411)
+- Merge upstream build-time tmpdir fixes</comment>
+    <requestid>873360</requestid>
+  </revision>
 </revisionlist>
