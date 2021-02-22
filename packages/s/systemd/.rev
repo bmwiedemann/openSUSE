@@ -5252,4 +5252,22 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>869763</requestid>
   </revision>
+  <revision rev="325" vrev="2">
+    <srcmd5>c484d2e6f4d9c28dbb36bd7accc9caaf</srcmd5>
+    <version>246.10</version>
+    <time>1614001171</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add 0001-conf-parser-introduce-early-drop-ins.patch
+  Introduce early configuration drop-in file. This type of drop-ins
+  are reserved for vendor own purposes only and should never been used
+  by users. It might be removed in the future without any notice.
+
+- Drop use of %systemd_postun in %postun
+  This macro is supposed to operate on units but it was used without
+  passing any parameters. This call was probably used for issuing a
+  daemon-reload but the following calls to
+  %systemd_postun_with_restart imply that already. So let's simply
+  drop it.</comment>
+    <requestid>873790</requestid>
+  </revision>
 </revisionlist>

@@ -175,6 +175,7 @@ Patch6:         0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
 Patch7:         0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
 Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 Patch9:         0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+Patch10:        0001-conf-parser-introduce-early-drop-ins.patch
 Patch11:        0011-core-disable-session-keyring-per-system-sevice-entir.patch
 Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 
@@ -875,10 +876,10 @@ if [ "$(readlink -f %{_sysconfdir}/systemd/system/tmp.mount)" = "%{_datadir}/sys
 fi
 
 %postun
-%systemd_postun
-# Avoid restarting logind until fixed upstream (issue #1163)
+# daemon-reload is implied by %systemd_postun_with_restart
 %systemd_postun_with_restart systemd-journald.service
 %systemd_postun_with_restart systemd-timesyncd.service
+# Avoid restarting logind until fixed upstream (issue #1163)
 
 %pre -n udev%{?mini}
 # New installations uses the last compat symlink generation number

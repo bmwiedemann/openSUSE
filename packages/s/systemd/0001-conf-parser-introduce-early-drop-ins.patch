@@ -1,0 +1,362 @@
+From 3709cf5ba88e1cb9c737e524168b83a0964ef5db Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Fri, 22 Jan 2021 14:57:08 +0100
+Subject: [PATCH 1/1] conf-parser: introduce 'early' drop-ins
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As formerly known as "downstream conf file drop-ins should never override main
+user conf file".
+
+Previously all drop-ins, including those shipped by downstream, shipped in
+/usr, could override user's main configuration file (located in /etc) because
+the main file was always parsed first.
+
+This was problematic for downstreams because their customization should never
+override the users one in general. Therefore the only way to make this logic
+usable was by teaching users to never use the main conf files and to put all
+theirs settings in drop-ins with a higher priority than the one downsteam would
+use. However customizing the defaults through the main conf file is something
+very well established since a long time hence this is not something
+conceivable.
+
+This patch reworks the way we parse configuration files by introducing "early"
+conf files (idea from Zbigniew Jędrzejewski-Szmek), which always have a
+priority lower than the main config file and hence other conf file drop-ins
+too.
+
+Early conf files can be located in any locations where regular conf snippets
+can be installed and are sorted between them using the same sorting rules that
+apply to other conf files. A conf file is considered as an early one if its
+filename is prefixed with "__" (double underscore).
+
+Hence for example, drop-in "/usr/lib/systemd/logind.conf.d/__99-foo.conf" will
+always be parsed before:
+
+  /etc/systemd/logind.conf
+  /etc/systemd/logind.conf.d/00-foo.conf
+  /usr/lib/systemd/logind.conf.d/00-foo.conf
+
+This change isn't backwards-compatible, but the '__' prefix is something that
+is unlikely used. Hence the risk should be very low.
+
+Unfortunately upstream is not seing this problem as a serious one and accept
+that vendors' configuration files can take precedence over the main
+configuration files (placed in /etc). See the following links for the
+related discussions:
+
+  https://github.com/systemd/systemd/issues/2121 (initial issue report)
+  https://github.com/systemd/systemd/pull/17161  (first attempt to solve this issue)
+  https://github.com/systemd/systemd/pull/18347  (introduction of early drop-in)
+
+Since SUSE heavily relies on drop-ins to customize some of the upstream default
+settings, there was no other choice than to diverge from upstream in this
+regard.
+
+But it should be noted that these early drop-ins are strictly reserved for SUSE
+own purpose only. IOW users should never use them and early drop-ins should
+never be created in /etc but only in /usr. We reserve the right to change or
+drop this feature at any time.
+
+Fixes: #2121
+---
+ src/shared/conf-parser.c    |  57 ++++++++++++--
+ src/test/test-conf-parser.c | 149 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 198 insertions(+), 8 deletions(-)
+
+diff --git a/src/shared/conf-parser.c b/src/shared/conf-parser.c
+index 0fec79f3d7..daf55d2358 100644
+--- a/src/shared/conf-parser.c
++++ b/src/shared/conf-parser.c
+@@ -423,6 +423,7 @@ int config_parse(const char *unit,
+ 
+ static int config_parse_many_files(
+                 const char *conf_file,
++                char **early_files,
+                 char **files,
+                 const char *sections,
+                 ConfigItemLookup lookup,
+@@ -431,19 +432,27 @@ static int config_parse_many_files(
+                 void *userdata,
+                 usec_t *ret_mtime) {
+ 
+-        usec_t mtime = 0;
++        usec_t t, mtime = 0;
+         char **fn;
+         int r;
+ 
++        STRV_FOREACH(fn, early_files) {
++                r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &t);
++                if (r < 0)
++                        return r;
++                if (t > mtime) /* Find the newest */
++                        mtime = t;
++        }
++
+         if (conf_file) {
+-                r = config_parse(NULL, conf_file, NULL, sections, lookup, table, flags, userdata, &mtime);
++                r = config_parse(NULL, conf_file, NULL, sections, lookup, table, flags, userdata, &t);
+                 if (r < 0)
+                         return r;
++                if (t > mtime) /* Find the newest */
++                        mtime = t;
+         }
+ 
+         STRV_FOREACH(fn, files) {
+-                usec_t t;
+-
+                 r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &t);
+                 if (r < 0)
+                         return r;
+@@ -457,6 +466,28 @@ static int config_parse_many_files(
+         return 0;
+ }
+ 
++static int config_parse_split_conf_files(char **files, char ***early_files, char ***late_files) {
++        char **f;
++
++        assert(files);
++        assert(early_files);
++        assert(late_files);
++
++        STRV_FOREACH(f, files) {
++                char ***s, *p;
++
++                p = strdup(*f);
++                if (!p)
++                        return log_oom();
++
++                s = startswith(basename(*f), "__") ? early_files : late_files;
++                if (strv_push(s, p) < 0)
++                        return log_oom();
++        }
++
++        return 0;
++}
++
+ /* Parse each config file in the directories specified as nulstr. */
+ int config_parse_many_nulstr(
+                 const char *conf_file,
+@@ -468,14 +499,19 @@ int config_parse_many_nulstr(
+                 void *userdata,
+                 usec_t *ret_mtime) {
+ 
+-        _cleanup_strv_free_ char **files = NULL;
++        _cleanup_strv_free_ char **files = NULL, **early_files = NULL, **late_files = NULL;
+         int r;
+ 
+         r = conf_files_list_nulstr(&files, ".conf", NULL, 0, conf_file_dirs);
+         if (r < 0)
+                 return r;
+ 
+-        return config_parse_many_files(conf_file, files, sections, lookup, table, flags, userdata, ret_mtime);
++        r = config_parse_split_conf_files(files, &early_files, &late_files);
++        if (r < 0)
++                return r;
++
++        return config_parse_many_files(conf_file, early_files, late_files, sections,
++                                       lookup, table, flags, userdata, ret_mtime);
+ }
+ 
+ /* Parse each config file in the directories specified as strv. */
+@@ -490,8 +526,8 @@ int config_parse_many(
+                 void *userdata,
+                 usec_t *ret_mtime) {
+ 
++        _cleanup_strv_free_ char **files = NULL, **early_files = NULL, **late_files = NULL;
+         _cleanup_strv_free_ char **dropin_dirs = NULL;
+-        _cleanup_strv_free_ char **files = NULL;
+         const char *suffix;
+         int r;
+ 
+@@ -504,7 +540,12 @@ int config_parse_many(
+         if (r < 0)
+                 return r;
+ 
+-        return config_parse_many_files(conf_file, files, sections, lookup, table, flags, userdata, ret_mtime);
++        r = config_parse_split_conf_files(files, &early_files, &late_files);
++        if (r < 0)
++                return r;
++
++        return config_parse_many_files(conf_file, early_files, late_files, sections,
++                                       lookup, table, flags, userdata, ret_mtime);
+ }
+ 
+ #define DEFINE_PARSER(type, vartype, conv_func)                         \
+diff --git a/src/test/test-conf-parser.c b/src/test/test-conf-parser.c
+index 07edc17f92..bb82923319 100644
+--- a/src/test/test-conf-parser.c
++++ b/src/test/test-conf-parser.c
+@@ -5,6 +5,9 @@
+ #include "fs-util.h"
+ #include "log.h"
+ #include "macro.h"
++#include "mkdir.h"
++#include "path-util.h"
++#include "rm-rf.h"
+ #include "string-util.h"
+ #include "strv.h"
+ #include "tmpfile-util.h"
+@@ -385,6 +388,149 @@ static void test_config_parse(unsigned i, const char *s) {
+         }
+ }
+ 
++static void setup_conf_files(const char *root, bool is_main, char **conf_files, char ***ret_conf_dirs) {
++        char **path;
++
++        /* If 'is_main' is true then 'conf_files' should only contain an entry
++         * for the main conf file. */
++        if (is_main)
++                assert_se(strv_length(conf_files) <= 1);
++
++        STRV_FOREACH(path, conf_files) {
++                _cleanup_free_ char *abspath = NULL;
++                _cleanup_fclose_ FILE *f = NULL;
++
++                abspath = path_join(root, *path);
++                assert_se(abspath);
++
++                (void) mkdir_parents(abspath, 0755);
++
++                f = fopen(abspath, "w");
++                assert_se(f);
++                fprintf(f,
++                        "[Section]\n"
++                        "name=%s\n",
++                        *path);
++
++                if (!is_main)
++                        fprintf(f,
++                                "%s=%s\n",
++                                startswith(basename(*path), "__") ? "early" : "late",
++                                *path);
++
++                if (ret_conf_dirs) {
++                        char *d;
++
++                        assert_se((d = dirname_malloc(abspath)));
++                        assert_se(strv_push(ret_conf_dirs, d) == 0);
++                }
++        }
++
++        if (ret_conf_dirs) {
++                strv_uniq(*ret_conf_dirs);
++                strv_sort(*ret_conf_dirs);
++        }
++}
++
++static void test_config_parse_many_one(bool nulstr, const char *main, char **conf_files,
++                                       const char *name, const char *early, const char *late) {
++
++        _cleanup_free_ char *parsed_name = NULL, *parsed_early = NULL, *parsed_late = NULL;
++        _cleanup_strv_free_ char **conf_dirs = NULL;
++        _cleanup_free_ char *conf_dirs_nulstr = NULL;
++        char *conf_file;
++        char *tmp_dir;
++        size_t size;
++        int r;
++
++        const ConfigTableItem items[] = {
++                { "Section", "name",  config_parse_string, 0, &parsed_name},
++                { "Section", "late",  config_parse_string, 0, &parsed_late},
++                { "Section", "early", config_parse_string, 0, &parsed_early},
++        };
++
++        tmp_dir = strdupa("/tmp/test-conf-parser-XXXXXX");
++        assert_se(mkdtemp(tmp_dir));
++
++        setup_conf_files(tmp_dir, true, STRV_MAKE(main), NULL);
++        setup_conf_files(tmp_dir, false, conf_files, &conf_dirs);
++
++        conf_file = main ? strjoina(tmp_dir, "/", main) : NULL;
++
++        if (nulstr) {
++                r = strv_make_nulstr(conf_dirs, &conf_dirs_nulstr, &size);
++                assert_se(r == 0);
++
++                r = config_parse_many_nulstr(conf_file, conf_dirs_nulstr,
++                                             "Section\0",
++                                             config_item_table_lookup, items,
++                                             CONFIG_PARSE_WARN,
++                                             NULL,
++                                             NULL);
++        } else {
++                r = config_parse_many(conf_file, (const char * const*) conf_dirs, "",
++                                      "Section\0",
++                                      config_item_table_lookup, items,
++                                      CONFIG_PARSE_WARN,
++                                      NULL,
++                                      NULL);
++        }
++
++        assert_se(r == 0);
++        assert_se((!name && !parsed_name) || streq(name, parsed_name));
++        assert_se((!late && !parsed_late) || streq(late, parsed_late));
++        assert_se((!early && !parsed_early) || streq(early, parsed_early));
++
++        assert_se(rm_rf(tmp_dir, REMOVE_ROOT|REMOVE_PHYSICAL) == 0);
++}
++
++static void test_config_parse_many(bool nulstr) {
++        test_config_parse_many_one(nulstr, NULL, NULL, NULL, NULL, NULL);
++
++        test_config_parse_many_one(nulstr,
++                                   "dir/main.conf", NULL,
++                                   "dir/main.conf", NULL, NULL);
++
++        test_config_parse_many_one(nulstr,
++                                   NULL, STRV_MAKE("dir1/50-foo.conf"),
++                                   "dir1/50-foo.conf", NULL, "dir1/50-foo.conf");
++
++        test_config_parse_many_one(nulstr,
++                                   NULL, STRV_MAKE("dir1/__50-foo.conf"),
++                                   "dir1/__50-foo.conf", "dir1/__50-foo.conf", NULL);
++
++        test_config_parse_many_one(nulstr,
++                                   NULL, STRV_MAKE("dir1/10-foo.conf", "dir1/50-bar.conf"),
++                                   "dir1/50-bar.conf", NULL, "dir1/50-bar.conf");
++
++        test_config_parse_many_one(nulstr,
++                                   NULL, STRV_MAKE("dir1/50-foo.conf", "dir2/10-bar.conf"),
++                                   "dir1/50-foo.conf", NULL, "dir1/50-foo.conf");
++
++        test_config_parse_many_one(nulstr,
++                                   NULL, STRV_MAKE("dir1/10-foo.conf", "dir2/10-foo.conf"),
++                                   "dir1/10-foo.conf", NULL, "dir1/10-foo.conf");
++
++        /* Early conf files should never override the main one whatever their
++         * priority/location. */
++        test_config_parse_many_one(nulstr,
++                                   "dir/10-main.conf",
++                                   STRV_MAKE("dir1/__10-foo.conf", "dir2/__99-foo.conf"),
++                                   "dir/10-main.conf", "dir2/__99-foo.conf", NULL);
++
++        /* Late conf files always take precendence over the early conf files
++         * and the main one. */
++        test_config_parse_many_one(nulstr,
++                                   "dir/50-main.conf", STRV_MAKE("dir1/10-foo.conf"),
++                                   "dir1/10-foo.conf", NULL, "dir1/10-foo.conf");
++
++        test_config_parse_many_one(nulstr,
++                                   "dir/10-main.conf",
++                                   STRV_MAKE("dir1/__10-foo.conf", "dir2/__99-foo.conf",
++                                             "dir2/10-foo.conf"),
++                                   "dir2/10-foo.conf", "dir2/__99-foo.conf", "dir2/10-foo.conf");
++}
++
+ int main(int argc, char **argv) {
+         unsigned i;
+ 
+@@ -407,5 +553,8 @@ int main(int argc, char **argv) {
+         for (i = 0; i < ELEMENTSOF(config_file); i++)
+                 test_config_parse(i, config_file[i]);
+ 
++        test_config_parse_many(true);
++        test_config_parse_many(false);
++
+         return 0;
+ }
+-- 
+2.26.2
+
