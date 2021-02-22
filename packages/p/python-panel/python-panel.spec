@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+%define skip_python36 1 
 %define modname panel
 Name:           python-panel%{psuffix}
 Version:        0.10.2
