@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -169,7 +169,6 @@ getent passwd %{PKG_USER} >/dev/null || useradd -r -g %{PKG_GROUP} -s %{_sbindir
 %{_docdir}/%{name}/HELP
 %{_docdir}/%{name}/NEWS
 %{_docdir}/%{name}/README
-%{_docdir}/%{name}/README.DAEMON
 %{_docdir}/%{name}/README.SUSE
 %{_docdir}/%{name}/README.polkit
 %{_docdir}/%{name}/SECURITY
