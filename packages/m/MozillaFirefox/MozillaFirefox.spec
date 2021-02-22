@@ -30,8 +30,8 @@
 # major 69
 # mainver %major.99
 %define major          85
-%define mainver        %major.0.1
-%define orig_version   85.0.1
+%define mainver        %major.0.2
+%define orig_version   85.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -431,7 +431,7 @@ echo "export MOZ_TELEMETRY_REPORTING=1"
 echo ""
 cat << EOF
 %else
-%ifarch aarch64 %arm
+%ifarch aarch64 %arm ppc64 ppc64le
 %limit_build -m 2000
 %endif
 cat << EOF > $MOZCONFIG
