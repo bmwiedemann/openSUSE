@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 17 20:47:26 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp3-zkey-Fix-APQN-property-names.patch
+  (bsc#1182113)
+  Problem:  The KMS configuration property names to store the CCA and
+            EP11 APQNs are incorrect, i.e. swapped.
+  Solution: Correct the KMS configuration property names.
+
+-------------------------------------------------------------------
 Thu Jan 28 21:23:35 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Moved %dir %{_libdir}/zkey and %{_libdir}/zkey/zkey-ekmfweb.so

@@ -97,6 +97,7 @@ Patch7:         s390-tools-sles15sp3-01-genprotimg-abort-if-one-of-the-recursive
 Patch8:         s390-tools-sles15sp3-02-genprotimg-fix-two-memory-leaks.patch
 Patch9:         s390-tools-sles15sp3-03-genprotimg-require-argument-for-ramdisk-and-parmfile.patch
 Patch10:        s390-tools-sles15sp3-04-genprotimg-add-host-key-document-verification-suppor.patch
+Patch11:        s390-tools-sles15sp3-zkey-Fix-APQN-property-names.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch

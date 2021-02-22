@@ -1,0 +1,49 @@
+Subject: [PATCH] [BZ 189965] zkey: Fix APQN property names
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Description:   zkey: Fix KMS plugin configuration to store APQNs correctly.
+Symptom:       When a KMS plugin is configured with APQNs, the set of 
+               APQNs is stored per card type, i.e. the set of CCA APQNs and
+               the set of EP11 APQNs is stored separately in the KMS
+               plugin configuration file. Unfortunately, the names of the
+               configuration properties are swapped, so that CCA APQNs are
+               stored as EP11 APQNs, and vice versa.
+               This does not cause any malfunction as of today, however 
+               if this is fixed later, while a KMS plugin configuration
+               already exists, then the KMS plugin will fail to work once
+               the fix is applied. A KMS plugin reconfiguration would then
+               be needed to make the plugin work again.
+Problem:       The KMS configuration property names to store the CCA and
+               EP11 APQNs are incorrect, i.e. swapped.
+Solution:      Correct the KMS configuration property names.
+Reproduction:  Configure a KMS plugin with APQNs and check the KMS config
+               file.
+Upstream-ID:   07d181e29b484108bce5ea07c1561ffb62a1b56e
+Problem-ID:    189965
+
+Upstream-Description:
+
+              zkey: Fix APQN property names
+
+              Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/kms.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/zkey/kms.c
++++ b/zkey/kms.c
+@@ -46,8 +46,8 @@
+ #define KMS_CONFIG_PROP_KMS		"kms"
+ #define KMS_CONFIG_PROP_KMS_CONFIG	"config"
+ #define KMS_CONFIG_PROP_APQNS		"apqns"
+-#define KMS_CONFIG_PROP_CCA_APQNS	"ep11_apqns"
+-#define KMS_CONFIG_PROP_EP11_APQNS	"cca_apqns"
++#define KMS_CONFIG_PROP_CCA_APQNS	"cca_apqns"
++#define KMS_CONFIG_PROP_EP11_APQNS	"ep11_apqns"
+ #define KMS_CONFIG_LOCAL		"local"
+ 
+ #define KMS_KEY_PROP_NAME		"zkey-name"
