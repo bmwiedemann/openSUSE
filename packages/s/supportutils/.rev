@@ -138,4 +138,12 @@
     <comment>GDPR and logs for power (forwarded request 870330 from jrecord)</comment>
     <requestid>870331</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>896052f56589dd1bf522c5f229c796fb</srcmd5>
+    <version>3.1.14</version>
+    <time>1614000192</time>
+    <user>RBrownSUSE</user>
+    <comment>PAM and NVMe (forwarded request 873384 from jrecord)</comment>
+    <requestid>873385</requestid>
+  </revision>
 </revisionlist>
