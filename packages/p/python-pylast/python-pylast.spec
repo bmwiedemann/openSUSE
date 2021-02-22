@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylast
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pylast
-Version:        3.3.0
+Version:        4.1.0
 Release:        0
 Summary:        A python interface to Last.fm
 License:        Apache-2.0
