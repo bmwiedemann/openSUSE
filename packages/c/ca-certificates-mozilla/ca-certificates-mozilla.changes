@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  9 13:11:37 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.46 state of the Mozilla NSS Certificate store (bsc#1181994)
+- Added new root CAs:
+  - NAVER Global Root Certification Authority
+- Removed old root CA:
+  - GeoTrust Global CA
+  - GeoTrust Primary Certification Authority
+  - GeoTrust Primary Certification Authority - G3
+  - GeoTrust Universal CA
+  - GeoTrust Universal CA 2
+  - thawte Primary Root CA
+  - thawte Primary Root CA - G2
+  - thawte Primary Root CA - G3
+  - VeriSign Class 3 Public Primary Certification Authority - G4
+  - VeriSign Class 3 Public Primary Certification Authority - G5
+
+-------------------------------------------------------------------
 Mon Oct 19 09:09:39 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.44 state of the Mozilla NSS Certificate store (bsc#1177864)

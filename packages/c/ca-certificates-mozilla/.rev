@@ -632,4 +632,12 @@
   - Trustwave Global ECC P384 Certification Authority (forwarded request 842509 from msmeissn)</comment>
     <requestid>842510</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b0529932e7e90d0f35ea29a912041c46</srcmd5>
+    <version>2.46</version>
+    <time>1614000156</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>872848</requestid>
+  </revision>
 </revisionlist>

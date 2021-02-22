@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-mozilla
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
 # http://hg.mozilla.org/projects/nss/file/default/lib/ckfw/builtins/nssckbi.h
-Version:        2.44
+Version:        2.46
 Release:        0
 Summary:        CA certificates for OpenSSL
 License:        MPL-2.0
@@ -55,7 +55,8 @@ URL:            https://www.mozilla.org
 #   accidentally included!
 Source:         http://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/certdata.txt
 Source1:        http://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/nssckbi.h
-Source10:       https://src.fedoraproject.org/rpms/ca-certificates/raw/master/f/certdata2pem.py
+#Source10:       https://src.fedoraproject.org/rpms/ca-certificates/raw/master/f/certdata2pem.py
+Source10:       certdata2pem.py
 Source11:       %{name}.COPYING
 Source12:       compareoldnew
 BuildRequires:  ca-certificates
