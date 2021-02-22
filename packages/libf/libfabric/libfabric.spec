@@ -1,7 +1,7 @@
 #
 # spec file for package libfabric
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 #
-%define git_ver .0.6c51de3d7817
+%define git_ver .0.0c28dc5a5083
 
 Name:           libfabric
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
-License:        GPL-2.0-only OR BSD-2-Clause
+License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
@@ -56,7 +56,6 @@ Group:          System/Libraries
 %description -n libfabric%{lib_major}
 libfabric provides a user-space API to access high-performance fabric
 services, such as RDMA. This package contains the runtime library.
-
 
 %package        devel
 Summary:        Development files for the libfabric library

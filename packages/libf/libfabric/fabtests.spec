@@ -1,7 +1,7 @@
 #
 # spec file for package fabtests
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver .0.6c51de3d7817
+%define git_ver .0.0c28dc5a5083
 
 Name:           fabtests
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Test suite for libfabric API
 License:        BSD-2-Clause OR GPL-2.0-only
