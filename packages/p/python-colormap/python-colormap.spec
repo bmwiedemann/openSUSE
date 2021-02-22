@@ -1,7 +1,7 @@
 #
 # spec file for package python-colormap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-colormap
 Version:        1.0.3
 Release:        0
@@ -32,11 +33,10 @@ Requires:       python-easydev
 Requires:       python-matplotlib
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module easydev}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose-cov}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -49,6 +49,10 @@ the test_colormap can be used to visually test a new colormap.
 
 %prep
 %setup -q -n colormap-%{version}
+# We don't want the pytest addopts for coverage. Nothing relevant in there
+rm setup.cfg
+# matplotlib depends on numpy anyway, use that as replacement for easydev.easytest using nose
+sed -i 's/from easydev.easytest import assert_list_almost_equal/from numpy.testing import assert_almost_equal as assert_list_almost_equal/' test/test_colors.py
 
 %build
 %python_build
@@ -56,6 +60,9 @@ the test_colormap can be used to visually test a new colormap.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
