@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-orange-widget-base
-Version:        4.3.0
+Version:        4.11.0
 Release:        0
 Summary:        Base Widget for Orange Canvas
 License:        GPL-3.0-or-later

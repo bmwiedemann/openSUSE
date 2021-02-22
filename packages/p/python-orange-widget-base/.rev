@@ -23,4 +23,12 @@
     <comment>- pytest-xvfb will exit 1 due to I/O errors, work around that using grep.</comment>
     <requestid>867409</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40ecc91d5bc1842edd5b7d0efcadb096</srcmd5>
+    <version>4.11.0</version>
+    <time>1614001197</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>874176</requestid>
+  </revision>
 </revisionlist>
