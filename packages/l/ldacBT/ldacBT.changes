@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 18 08:12:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Exclude building in big-endian architectures (s390 s390x ppc64)
+  since ldacBT requires a little-endian cpu to build.
+
+-------------------------------------------------------------------
 Thu Jan 28 10:50:33 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - adapt baselibs.conf to only ship 32bit library, not devel.

@@ -29,6 +29,7 @@ Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
+ExcludeArch:    s390 s390x ppc64
 
 %description
 LDAC is an audio coding technology developed by Sony.
