@@ -19,8 +19,8 @@
 %define debug_build    0
 %define asan_build     0
 %define maj            7
-%define mfr_version    %{maj}.0.10
-%define mfr_revision   62
+%define mfr_version    %{maj}.0.11
+%define mfr_revision   0
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        9
@@ -82,6 +82,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4) >= 4.0.3
 BuildRequires:  pkgconfig(libwebp)

@@ -2958,4 +2958,17 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * the distributed pixel cache now properly deserializes the image attributes.</comment>
     <requestid>870506</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>3bc7e5c86323100166ec62414109b810</srcmd5>
+    <version>7.0.11.0</version>
+    <time>1614000151</time>
+    <user>RBrownSUSE</user>
+    <comment>- version update to 7.0.11.0
+  * bump minor version #
+  * allow reading multichannel PSD files with 1 or 2 channels.
+  * respect masks when computing SSIM metric (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/3212).
+- build against libraw [bsc#1182229]</comment>
+    <requestid>872768</requestid>
+  </revision>
 </revisionlist>
