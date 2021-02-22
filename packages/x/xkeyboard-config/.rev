@@ -792,4 +792,13 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
 - adjusted n_suse-ctrl-alt-bksp-terminate.patch</comment>
     <requestid>840022</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>54ce84f8ff06fde803c50809be9f9c3c</srcmd5>
+    <version>2.32</version>
+    <time>1614000144</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.32
+  * latest bugfix release</comment>
+    <requestid>872753</requestid>
+  </revision>
 </revisionlist>
