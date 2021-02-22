@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Feb 13 08:13:00 UTC 2021 - doug@uq.edu.au
+
+- Update to version 1.8.6:
+- Changes from version 1.8.4:
+  * Fix for make check warning that prevented RPMs from being
+    built.
+- Changes from version 1.8.2:
+  * Updated translations.
+  * Update strings for new dialog design in gnome-shell.
+    e.g use "Password" instead of "Password:".
+  * Use /usr/share/metainfo for AppData files.
+  * Move D-Bus policy file to /usr/share/dbus-1/system.d/.
+  * Add --with-nm-ipsec-nss-dir configure switch for Libreswan NSS
+    database location with default value of /var/lib/ipsec/nss.
+  * Do not add broken route to VPN gateway IP address.
+  * Add back import/export capability.
+  * update default PPPD_PLUGIN_DIR to ${libdir}/pppd/2.4.8.
+  * Fix for user certificate password flags for connection editor.
+ - Changes from version 1.8.0:
+  * Fixes for user certificate support.
+  * Provide --enable-libreswan-dh2 configure switch for older
+    versions of Libreswan or those built with USE_DH2.
+  * KDE plasma-nm compatibility for "Gateway ID".
+- Use --enable-libreswan-dh2 configure switch.
+- D-Bus policy file location is now /usr/share/dbus-1/system.d.
+- AppData file location is now /usr/share/metainfo.
+  
+-------------------------------------------------------------------
 Fri May  1 09:09:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set the path for the VPN service name file correctly to

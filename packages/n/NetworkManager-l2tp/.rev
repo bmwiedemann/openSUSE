@@ -64,4 +64,34 @@
   %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799448 from dimstar)</comment>
     <requestid>799488</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b5389f0875db95e3ba248b6b5a6d22e</srcmd5>
+    <version>1.8.6</version>
+    <time>1614001177</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.8.6:
+- Changes from version 1.8.4:
+  * Fix for make check warning that prevented successful RPM build.
+- Changes from version 1.8.2:
+  * Updated translations.
+  * Update strings for new dialog design in gnome-shell.
+    e.g use &quot;Password&quot; instead of &quot;Password:&quot;.
+  * Use /usr/share/metainfo for AppData files.
+  * Move D-Bus policy file to /usr/share/dbus-1/system.d/.
+  * Add --with-nm-ipsec-nss-dir configure switch for Libreswan NSS
+    database location with default value of /var/lib/ipsec/nss.
+  * Do not add broken route to VPN gateway IP address.
+  * Add back import/export capability.
+  * update default PPPD_PLUGIN_DIR to ${libdir}/pppd/2.4.8.
+  * Fix for user certificate password flags for connection editor.
+ - Changes from version 1.8.0:
+  * Fixes for user certificate support.
+  * Provide --enable-libreswan-dh2 configure switch for older
+    versions of Libreswan or those built with USE_DH2.
+  * KDE plasma-nm compatibility for &quot;Gateway ID&quot;.
+- Use --enable-libreswan-dh2 configure switch.
+- D-Bus policy file location is now /usr/share/dbus-1/system.d.
+- AppData file location is now /usr/share/metainfo. (forwarded request 871745 from dkosovic)</comment>
+    <requestid>873916</requestid>
+  </revision>
 </revisionlist>

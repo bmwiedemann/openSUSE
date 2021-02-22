@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-l2tp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
 Name:           NetworkManager-l2tp
-Version:        1.8.0
+Version:        1.8.6
 Release:        0
 Summary:        NetworkManager VPN support for L2TP and L2TP/IPsec
 License:        GPL-2.0-or-later
@@ -62,6 +62,7 @@ This package contains software for integrating L2TP and L2TP/IPsec
 %build
 %configure\
 	--disable-static \
+	--enable-libreswan-dh2 \
 	--with-pppd-plugin-dir=%{pppd_plugin_dir} \
 	--with-dist-version=%{version}-%{release} \
 	%{nil}
@@ -92,11 +93,11 @@ fi
 %{_libdir}/NetworkManager/libnm-vpn-plugin-l2tp.so
 %{_libexecdir}/nm-l2tp-service
 %{_vpnservicedir}/nm-l2tp-service.name
-%{_sysconfdir}/dbus-1/system.d/nm-l2tp-service.conf
+%{_datadir}/dbus-1/system.d/nm-l2tp-service.conf
 %{pppd_plugin_dir}/nm-l2tp-pppd-plugin.so
 
 %files gnome
-%{_datadir}/appdata/network-manager-l2tp.metainfo.xml
+%{_datadir}/metainfo/network-manager-l2tp.metainfo.xml
 %{_libdir}/NetworkManager/libnm-vpn-plugin-l2tp-editor.so
 %{_libexecdir}/nm-l2tp-auth-dialog
 
