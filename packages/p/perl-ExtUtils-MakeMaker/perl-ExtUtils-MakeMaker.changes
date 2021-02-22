@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 18 03:06:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.60
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.60    Wed 17 Feb 10:45:47 GMT 2021
+      No changes since v7.59_01
+  7.59_01 Tue  2 Feb 09:47:29 GMT 2021
+      Bug fixes:
+      - Don't allow hyphens in parsed versions
+      Test fixes:
+      - Use correct hint file name in hints.t
+
+-------------------------------------------------------------------
 Tue Dec 22 03:09:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.58
