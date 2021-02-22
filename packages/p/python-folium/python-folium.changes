@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 21 19:13:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.1
+  * Minor bugfix on the version number in the source distribution
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29)
+- Drop tests.tar.gz
+  * 0.12.1 is not released as sdist on PyPI. Use the GitHub archive
+    directly and tell setuptools_scm to use an explicit version
+
+-------------------------------------------------------------------
 Sun Jan 10 18:50:46 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.12.0:
