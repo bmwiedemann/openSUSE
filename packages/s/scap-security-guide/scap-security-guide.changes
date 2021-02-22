@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sun Feb  7 10:42:34 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- added Redhat, Debian, Ubuntu products, split off into seperate
+  packages for size.
+
+-------------------------------------------------------------------
+Wed Feb  3 23:55:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions, modernize specfile constructs.
+
+-------------------------------------------------------------------
+Wed Feb  3 14:07:22 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.54 version
+
+-------------------------------------------------------------------
+Wed Feb  3 10:23:50 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.53 version, adjusted some things.
+
+-------------------------------------------------------------------
+Tue May 14 11:55:47 UTC 2019 - Brice DEKANY <brice.dekany@suse.com>
+
+- New specfile
+- build for openSUSE + Backport
+
+-------------------------------------------------------------------
+Tue May 14 11:27:26 UTC 2019 - Brice DEKANY <brice.dekany@suse.com>
+
+- Switch to new formating from ComplianceAsCode
+- Project is now hosted by github.com/openSUSE
+
+-------------------------------------------------------------------
+Fri Mar 16 12:12:56 UTC 2018 - brice.dekany@suse.com
+
+- Add a first batch of SEVERITY CAT II Rules
+-------------------------------------------------------------------
+Wed Jan 17 10:14:09 UTC 2018 - brice.dekany@suse.com
+
+- Add fixes for SEVERITY CAT I 
+
+-------------------------------------------------------------------
+Thu Jan  4 21:05:16 UTC 2018 - brice.dekany@suse.com
+
+- Initial version of xccdf for Severty CAT I
