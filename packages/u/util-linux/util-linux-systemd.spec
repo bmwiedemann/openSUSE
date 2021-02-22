@@ -126,7 +126,7 @@ BuildRequires:  libmount-devel
 %endif
 %endif
 #END SECOND STAGE DEPENDENCIES
-Version:        2.36.1
+Version:        2.36.2
 Release:        0
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
 Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-%{version}.tar.xz
@@ -152,8 +152,6 @@ Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE: Avoid sulogin failing on not existing or not functional console devices
 Patch3:         util-linux-sulogin4bsc1175514.patch
-# PATCH-FIX-UPSTREAM util-linux-libmount-dont-use-symfollow.patch boo1181750 ailin.nemui@gmail.com -- libmount: don't use "symfollow" for helpers on user mounts https://github.com/karelzak/util-linux/issues/1193
-Patch4:         util-linux-libmount-dont-use-symfollow.patch
 #
 %if %build_util_linux
 Supplements:    filesystem(minix)

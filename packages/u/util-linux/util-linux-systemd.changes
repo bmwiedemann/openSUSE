@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb 16 19:33:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.36.2:
+  * agetty: tty eol defaults to REPRINT
+  * fsck.cramfs: fix fsck.cramfs crashes on blocksizes > 4K
+  * lib/caputils: add fall back for last cap using prctl.
+  * lib/signames: change license to public domain
+  * libfdisk:
+    * (dos) fix last possible sector calculation
+    * (script) ignore empty values for start and size
+    * ignore 33553920 byte optimal I/O size
+  * libmount:
+    * add vboxsf, virtiofs to pseudo filesystems
+    * do not canonicalize ZFS source dataset
+    * don't use "symfollow" for helpers on user mounts (boo#1181750,
+      obsoletes util-linux-libmount-dont-use-symfollow.patch)
+    * fix /{etc,proc}/filesystems use
+  * login: use full tty path for PAM_TTY
+  * lsblk: read SCSI_IDENT_SERIAL also from udev
+  * rfkill: stop execution when rfkill device cannot be opened
+  * setpriv: allow using [-+]all for capabilities.
+  * su: use full tty path for PAM_TTY
+  * switch_root: check if mount point to move even exists
+  * umount:
+    * ignore --no-canonicalize,-c for non-root users
+    * Show the 'r' option in the help menu
+  * Code cleanups and documentation improvements.
+  * Translation updates.
+
+-------------------------------------------------------------------
 Wed Feb 10 23:18:39 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - libmount: don't use "symfollow" for helpers on user mounts
