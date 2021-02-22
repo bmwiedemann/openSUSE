@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 21 19:36:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29)
+- Drop unused test files de405.bsp de421.bsp
+
+-------------------------------------------------------------------
 Mon Nov 16 14:06:39 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - update to 2.15

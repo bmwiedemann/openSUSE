@@ -1,7 +1,7 @@
 #
 # spec file for package python-jplephem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-jplephem
 Version:        2.15
 Release:        0
@@ -26,10 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/brandon-rhodes/python-jplephem/
 Source:         https://github.com/brandon-rhodes/python-jplephem/archive/v%{version}.tar.gz#/python-jplephem-%{version}.tar.gz
 # Test files
-Source10:       http://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de405.bsp
-Source11:       http://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp
-Source12:       http://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de430.bsp
-Source13:       ftp://ssd.jpl.nasa.gov/pub/eph/planets/test-data/430/testpo.430
+Source10:       http://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de430.bsp
+Source11:       ftp://ssd.jpl.nasa.gov/pub/eph/planets/test-data/430/testpo.430
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -49,8 +48,6 @@ Solar System body.  It only needs NumPy <http://www.numpy.org/>`.
 %setup -q -n python-jplephem-%{version}
 cp %{SOURCE10} ci
 cp %{SOURCE11} ci
-cp %{SOURCE12} ci
-cp %{SOURCE13} ci
 
 %build
 %python_build
