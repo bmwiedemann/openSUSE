@@ -339,4 +339,12 @@
     <comment>- Update to release 7.10</comment>
     <requestid>858098</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bb751e37825a8069664908bd34e0e1c2</srcmd5>
+    <version>7.11</version>
+    <time>1614001190</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 7.11</comment>
+    <requestid>873926</requestid>
+  </revision>
 </revisionlist>

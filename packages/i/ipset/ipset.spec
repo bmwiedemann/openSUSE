@@ -1,7 +1,7 @@
 #
 # spec file for package ipset
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define ipset_build_kmp 0
 %endif
 Name:           ipset
-Version:        7.10
+Version:        7.11
 Release:        0
 Summary:        Netfilter ipset administration utility
 License:        GPL-2.0-only

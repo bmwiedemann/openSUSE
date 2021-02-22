@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 21:23:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.11
+  * Argument parsing buffer overflow in ipset_parse_argv fixed
+
+-------------------------------------------------------------------
 Sun Dec 20 15:37:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.10
