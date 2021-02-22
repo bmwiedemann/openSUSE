@@ -382,4 +382,14 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
   * Ship test suite in source dist</comment>
     <requestid>841414</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0345f188024a33613bf1717bca96cb7a</srcmd5>
+    <version>0.19.0</version>
+    <time>1614001163</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 0.19.0:
+  * auth: parse headers using pyparsing instead of regexp
+  * auth: WSSE token needs to be string not bytes</comment>
+    <requestid>873569</requestid>
+  </revision>
 </revisionlist>
