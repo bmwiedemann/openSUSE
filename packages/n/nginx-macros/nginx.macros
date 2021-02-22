@@ -16,11 +16,6 @@
 %ngx_doc_dir    %{_docdir}/%{name}
 
 %ngx_conditionals \
-%if 0%{?suse_version} != 1315 || 0%{?is_opensuse} \
-%bcond_without ngx_libatomic \
-%else \
-%bcond_with    ngx_libatomic \
-%endif \
 %if 0%{?suse_version} > 1220 \
 %bcond_without ngx_http2 \
 %bcond_without ngx_pcre_jit \
@@ -86,9 +81,6 @@
   --with-pcre                                     \\\
   %if %{with ngx_pcre_jit}                          \
   --with-pcre-jit                                 \\\
-  %endif                                            \
-  %if %{with ngx_libatomic}                         \
-  --with-libatomic                                \\\
   %endif                                            \
   %if %{with ngx_google_perftools}                  \
   --with-google_perftools_module                  \\\

@@ -7,4 +7,12 @@
     <comment>needed for nginx</comment>
     <requestid>848878</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e5df7be7a5b0175566cadaabb5d19cc6</srcmd5>
+    <version>0.0.1</version>
+    <time>1614000173</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>873321</requestid>
+  </revision>
 </revisionlist>
