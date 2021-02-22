@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Feb 21 15:50:44 CET 2021 - nine@detonation.org
+
+- update to version 2021.02
+  * Switch spawnprocasync to use a separate arg for the program name
+  * Stub some Archetypes methods expected by Rakudo
+  * Don't bind an int attribute to 0 directly after construction
+  * Improve error message for erroneous <.panic()> syntax
+  * Fix sprintf() with *-specified negative width argument
+  * Start up REPL if "-" given *and* STDIN is a tty
+  * Make HLL::Compiler.execute_stage easier to call from Raku
+  * Give NQPClassHOW a submethod_table method for better compatibility
+  * Dump a QAST::Block's name, too for easier debugging
+  * MoarVM: Allow for explicitly marking the mainline_frame in the bytecode
+  * Add a nested compiler's load_dependency_tasks to the outer compiler's
+  * Add frames created by a nested compiler to the outer comp unit
+  * Allow more interesting constants in NQP
+  * Simplify Cursor!cursor_pass
+  * Micro optimize !cursor_fail
+  * Simplify braid initialization in cursor_init
+  * Introduce / use !cursor_pass_quick
+  * Make sure cursor_pass_quick also reset bstack
+  * Tweaks to regex compiler API
+  * Remove reliance in a $*W object in alt NFA gen
+  * NQP_HOME env var should override a static NQP home
+  * map nqp::setthreadname op to give current thread a name
+  * Register a plain HLL::Compiler object under the 'HLL' name
+  * Support for typechecking against Raku roles
+  * Add a HLL::SysConfig class
+  * Add missing debug type name for easier debuggin
+  * Make mixins concurrency safe
+  * Fix parallel compilation occasionally losing frames
+  * Fix "no such attribute" errors on mixin created by concurrent code
+
+-------------------------------------------------------------------
 Wed May 13 12:50:37 CEST 2020 - nine@detonation.org
 
 - update to version 2020.05
