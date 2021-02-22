@@ -39,4 +39,15 @@
   * ui: compute window sizes and buffers properly (5bcffdb), closes #56</comment>
     <requestid>873299</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3bd2a2417d8134ef55f83b53ef22da20</srcmd5>
+    <version>1.3.1</version>
+    <time>1614001270</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.3.1:
+  * chore(script): add sign-post-release helper script
+  * chore(readme): prettify readme file
+  * docs(readme): add instructions to build i18n</comment>
+    <requestid>874288</requestid>
+  </revision>
 </revisionlist>
