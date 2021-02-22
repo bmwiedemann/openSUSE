@@ -33,7 +33,7 @@ BuildRequires:  memkind-devel >= 1.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  pmdk-tools >= 1.8
 BuildRequires:  pkgconfig(RapidJSON)
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le
 
 %description
 pmemkv is a local/embedded key-value datastore optimized for persistent memory.
