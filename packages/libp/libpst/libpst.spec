@@ -1,7 +1,7 @@
 #
 # spec file for package libpst
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2008 Bharath Acharya
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libpst
-Version:        0.6.71
+Version:        0.6.75
 Release:        0
 Summary:        Library and utilities for reading Personal Storage Table files
 License:        GPL-2.0-or-later
