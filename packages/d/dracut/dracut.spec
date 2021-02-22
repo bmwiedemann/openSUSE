@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        051+suse.85.g04886430
+Version:        052+suse.93.g7bfaa6d9
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -57,7 +57,6 @@ Requires:       util-linux >= 2.21
 Requires:       xz
 # We use 'btrfs fi usage' that was not present before
 Conflicts:      btrfsprogs < 3.18
-Recommends:     logrotate
 Obsoletes:      mkinitrd < 2.8.2
 Provides:       mkinitrd = 2.8.2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -157,9 +156,6 @@ ln -s %{_sbindir}/installkernel %{buildroot}/sbin/installkernel
 
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
-mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
-install -m 0644 dracut.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/dracut
-
 %if 0%{?suse_version}
 #rm -f %%{buildroot}/%%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
 #ln -s %%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-suse.sh %%{buildroot}/%%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
@@ -243,9 +239,6 @@ fi
 %defattr(-,root,root,0755)
 %license COPYING
 
-# Use systemd-analyze instead, does not need dracut support
-%{dracutlibdir}/modules.d/00bootchart
-
 %{dracutlibdir}/modules.d/00mksh
 %{dracutlibdir}/modules.d/02caps
 %{dracutlibdir}/modules.d/00dash
@@ -262,8 +255,7 @@ fi
 %defattr(-,root,root,0755)
 %license COPYING
 %doc README.md README.cross README.generic README.kernel
-%doc README.modules README.testsuite
-%doc HACKING TODO AUTHORS NEWS dracut.html dracut.png dracut.svg
+%doc HACKING.md NEWS.md AUTHORS dracut.html dracut.png dracut.svg
 %{_bindir}/dracut
 %{_bindir}/lsinitrd
 %{_sbindir}/installkernel
@@ -322,14 +314,23 @@ fi
 %{dracutlibdir}/modules.d/00bash
 %{dracutlibdir}/modules.d/00systemd
 %{dracutlibdir}/modules.d/00warpclock
+%{dracutlibdir}/modules.d/01systemd-ask-password
+%{dracutlibdir}/modules.d/01systemd-coredump
 %{dracutlibdir}/modules.d/01systemd-initrd
+%{dracutlibdir}/modules.d/01systemd-modules-load
+%{dracutlibdir}/modules.d/01systemd-repart
+%{dracutlibdir}/modules.d/01systemd-sysctl
+%{dracutlibdir}/modules.d/01systemd-sysusers
 %{dracutlibdir}/modules.d/02systemd-networkd
+
 %{dracutlibdir}/modules.d/03modsign
 %{dracutlibdir}/modules.d/03rescue
 %{dracutlibdir}/modules.d/04watchdog
 %{dracutlibdir}/modules.d/04watchdog-modules
-%{dracutlibdir}/modules.d/06dbus
+%{dracutlibdir}/modules.d/06dbus-broker
+%{dracutlibdir}/modules.d/06dbus-daemon
 %{dracutlibdir}/modules.d/06rngd
+%{dracutlibdir}/modules.d/09dbus
 %{dracutlibdir}/modules.d/10i18n
 %{dracutlibdir}/modules.d/30convertfs
 %{dracutlibdir}/modules.d/35network-legacy
@@ -399,7 +400,6 @@ fi
 %{dracutlibdir}/modules.d/99suse
 %{dracutlibdir}/modules.d/99suse-initrd
 %{dracutlibdir}/modules.d/99uefi-lib
-%config(noreplace) %{_sysconfdir}/logrotate.d/dracut
 %attr(0640,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log
 %dir %{_unitdir}/initrd.target.wants
 %dir %{_unitdir}/sysinit.target.wants

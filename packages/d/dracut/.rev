@@ -1880,4 +1880,14 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * prepare usrmerge (boo#1029961)</comment>
     <requestid>868682</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>652d52f23eba56067b4da579a223df6d</srcmd5>
+    <version>052+suse.93.g7bfaa6d9</version>
+    <time>1614002311</time>
+    <user>RBrownSUSE</user>
+    <comment>The changelog being just a dump of messy git commits is still not very
+helpful, but it's already better without the pollution of duplicate entries
+and stuff that has no relevance to the end user (i.e CI related commits) (forwarded request 873336 from dimstar)</comment>
+    <requestid>873425</requestid>
+  </revision>
 </revisionlist>

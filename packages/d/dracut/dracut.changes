@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Feb 17 15:59:02 UTC 2021 - daniel.molkentin@suse.com
+
+- Update to version 052+suse.93.g7bfaa6d9:
+  * fix(dbus-daemon): make sure that dbus.socket is stopped before switch root (bsc#1181167)
+
+-------------------------------------------------------------------
+Wed Feb 17 14:29:54 UTC 2021 - daniel.molkentin@suse.com
+
+- Update to version 052+suse.91.gb30dce3c:
+  * chore: update suse/dracut.spec
+
+-------------------------------------------------------------------
+Wed Feb 17 13:33:22 UTC 2021 - daniel.molkentin@suse.com
+
+- Update to version 052+suse.88.gc78b4ac8:
+  * fix(i18n): get rid of `eval` calls
+  * fix(i18n): create the keyboard symlinks again
+  * docs: update NEWS.md and AUTHORS
+  * chore: add `CONTRIBUTORS` target to Makefile
+  * fix: shellcheck across multipl emodules
+  * docs: fix dracut.cmdline.7
+  * fix: update dbus module directory in spec file
+  * fix: add sdaskpw and sdsyctl to spec file
+  * fix: cosmetic comment fixes
+  * feat(systemd-ask-password): introducing systemd-ask-password module
+  * Revert "nbd: use systemd-run to start nbd-client"
+  * dmsquash-live-root: squashfs in bare device
+  * feat(systemd-sysctl): introducing systemd-sysctl module
+  * fix: adding missing efi paths
+  * fix: correct the squash quirk
+  * feat(systemd-modules-load): introducing systemd-modules-load module
+  * fix(shutdown): add timeout to umount calls
+  * fix: revise all module checks
+  * fix: add missing line continuation
+  * fix: BuildRequiring git-core is enough in dracut.spec
+  * fix(kernel-modules): add reset controllers for arm
+  * 35network-legacy: discard pointless RTNETLINK message
+  * fix(plymouth): install binaries with dependencies
+  * fix: correct the line continuation
+  * fix(dbus-daemon): use uid/gid from sysroot is dracutsysrootdir is set
+  * fix(network-manager): allow override network manager version
+  * feat(dracut.sh): allow overriding the systemctl command for sysroot
+  * fix: use find_binary
+  * fix(dracut.sh): don't override path with foreign sysroot
+  * fix: quote globbing in module-setup.sh for inst_multiple
+  * fix(dracut-install): allow globbing for multiple sources
+  * Fix bad ls parsing
+  * fix: move ldconfig after library workaround
+  * feat(kernel-modules): add driver memory
+  * feat(systemd-repart): introducing systemd-repart module
+  * feat(dbus-daemon): introducing the dbus-daemon module
+  * feat(dbus-broker): introducing the dbus-broker module
+  * feat(dbus): introducing a meta module for dbus
+  * fix(network-legacy): silent check for leaseinfo
+  * 95nfs: fix rpc.statd installation
+  * fix: do not set cmdline for uefi images unless asked
+  * feat(network-legacy): send dhcp in parallel on all devices
+  * fix(mdraid): remove offroot
+  * fix(mdraid): add grow continue service
+  * fix(spec): add new systemd-coredump module to spec
+  * fix(watchdog): replace return with echo
+  * feat(systemd-coredump): introducing systemd-coredump module
+  * prepare usrmerge (boo#1029961)
+  * test: incr. disk size for TEST 35 ISCSI-MULTI
+  * fix(skipcpio): edit skipcpio.c: strstr -> memmem
+  * fix(1007): adding shared keyring mode to type unit
+  * feat(systemd-sysusers): introducing systemd-sysuser module
+  * feat(systemd-sysusers): introducing systemd-sysuser module
+  * fix(1001): use efivars fs over the deprecated sysfs entries
+  * fix(kernel-network-modules): also install modules from mdio subdirectory
+  * fix(06dbus): do not hardcode path to dbus utils
+  * fix(06dbus): do not hardcode path to systemd unit
+  * fix(dracut-init.sh): make inst_libdir_file work with dracutsysrootdir set
+  * fix(99squash): use kernel config instead of modprobe to check modules
+  * fix(dracut-functions.sh): check kernel config from $dracutsysrootdir
+  * fix(90kernel-modules): install generic crypto modules with hostonly unset
+  * feat: add addional global variables
+  * fix: add a missing efi support
+  * chore(removal): eliminate bootchart module
+  * feat: add addional global variables
+  * feat(cli): add --no-uefi option
+  * chore(github): add CODEOWNERS file
+  * chore(cleanup): remove logrotate file
+  * fix(35network-manager): avoid restarting NetworkManager
+  * chore: Add configuration for vim
+  * chore: Add editorconfig
+  * chore: Editors
+  * test(conventional): add Conventional Commits PR github action
+  * docs(development): add HACKING.md
+
+-------------------------------------------------------------------
 Tue Feb 02 14:42:09 UTC 2021 - daniel.molkentin@suse.com
 
 - Update to version 051+suse.85.g04886430:
