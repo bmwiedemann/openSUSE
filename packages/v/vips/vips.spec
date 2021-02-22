@@ -1,7 +1,7 @@
 #
 # spec file for package vips
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define short_version_ 8_10
 %define somajor 42
 Name:           vips
-Version:        8.10.2
+Version:        8.10.5
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only

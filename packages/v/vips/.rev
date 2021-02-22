@@ -454,4 +454,12 @@
   * fix build with libheif save but no load [estepnv] (forwarded request 854497 from gladiac)</comment>
     <requestid>856035</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>22f1d8b28f14756700d0657465b08c61</srcmd5>
+    <version>8.10.5</version>
+    <time>1614001247</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874260</requestid>
+  </revision>
 </revisionlist>

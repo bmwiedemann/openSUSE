@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Feb 07 13:52:53 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 8.10.5
+  * fix potential /0 in animated webp load [lovell]
+  * fix spng detection
+  * fix vips7 webp load [barryspearce]
+  * fix out of bounds exif read in heifload
+  * fix out of bounds read in tiffload
+  * fix tiffsave region shrink mode [imgifty]
+  * add missing flushes on write to target [harukizaemon]
+  * hide info messages you could get with some older glibs [kleisauke]
+  * fix --no-strip on dzsave with icc-profiles [altert]
+  * relax heic is_a rules [hisham]
+  * better GraphicsMagick image write [bfriesen]
+  * add missing read loops to spng, heif, giflib and ppm load [kleisauke]
+  * block zero width or height images from imagemagick load [Koen1999]
+  * check for overflow in gifload height [lovell]
+  * fix msb_first default in ppm load and save [ewelot]
+  * force binary mode on win for connection read / write [Alreiber]
+  * better testing for output to target [barryspearce]
+  * ppmload_source was missing is_a [ewelot]
+  * improve webpload rounding and blending behaviour [lovell]
+  * fix range clip in int32 -> unsigned casts [ewelot]
+  * fix precision error in clip of float -> int casts [ewelot]
+  * fix load of HEIC images with 0 length metadata [ddennedy-gpsw]
+  * revise rounding in reduce [kleisauke]
+
+-------------------------------------------------------------------
 Thu Dec 10 09:54:59 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to vips 8.10.2
