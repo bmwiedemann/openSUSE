@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Feb  8 21:53:59 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- added the _service file for updating sources with single command
+- Mercurial 5.7
+  This is a regularly-scheduled quarterly feature release.
+
+  + New Features
+    * There is a new config section for templates used by hg commands. It
+      is called `[command-templates]`. Some existing config options have
+      been deprecated in favor of config options in the new
+      section. These are: `ui.logtemplate` to `command-templates.log`,
+      `ui.graphnodetemplate` to `command-templates.graphnode`,
+      `ui.mergemarkertemplate` to `command-templates.mergemarker`,
+      `ui.pre-merge-tool-output-template` to
+      `command-templates.pre-merge-tool-output`.
+    * There is a new set of config options for the template used for the
+      one-line commit summary displayed by various commands, such as 
+      `hg rebase`. The main one is `command-templates.oneline-summary`. That
+      can be overridden per command with
+      `command-templates.oneline-summary.<command>`, where `<command>`
+      can be e.g. `rebase`. As part of this effort, the default format
+      from `hg rebase` was reorganized a bit.
+    * `hg purge` is now a core command using `--confirm` by default.
+    * `hg strip`, from the strip extension, is now a core command, 
+      `hg debugstrip`. The extension remains for compatibility.
+    * `hg diff` and `hg extdiff` now support `--from <rev>` and `--to <rev>`
+      arguments as clearer alternatives to `-r <revs>`. `-r <revs>` has been
+      deprecated.
+    * The memory footprint per changeset during pull/unbundle
+      operations has been further reduced.
+    * There is a new internal merge tool called `internal:mergediff` (can
+      be set as the value for the `merge` config in the `[ui]`
+      section). It resolves merges the same was as `internal:merge` and
+      `internal:merge3`, but it shows conflicts differently. Instead of
+      showing 2 or 3 snapshots of the conflicting pieces of code, it
+      shows one snapshot and a diff. This may be useful when at least one
+      side of the conflict is similar to the base. The new marker style
+      is also supported by "premerge" as
+      `merge-tools.<tool>.premerge=keep-mergediff`.
+    * External hooks are now called with `HGPLAIN=1` preset.  This has the side
+      effect of ignoring aliases, templates, revsetaliases, and a few other config
+      options in any `hg` command spawned by the hook.  The previous behavior
+      can be restored by setting HGPLAINEXCEPT appropriately in the parent process.
+      See `hg help environment` for the list of items, and how to set it.
+    * The `branchmap` cache is updated more intelligently and can be
+      significantly faster for repositories with many branches and changesets.
+    * The `rev-branch-cache` is now updated incrementally whenever changesets
+      are added.
+  + New Experimental Features
+    * `experimental.single-head-per-branch:public-changes-only` can be used
+      restrict the single head check to public revision. This is useful for
+      overlay repository that have both a publishing and non-publishing view
+      of the same storage.
+  + Backwards Compatibility Changes
+    * `--force-lock` and `--force-wlock` options on `hg debuglock` command are
+      renamed to `--force-free-lock` and `--force-free-wlock` respectively.
+  + Internal API Changes
+    * `changelog.branchinfo` is deprecated and will be removed after 5.8.
+      It is superseded by `changelogrevision.branchinfo`.
+
+-------------------------------------------------------------------
 Sat Dec  5 17:17:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mercurial 5.6.1:
