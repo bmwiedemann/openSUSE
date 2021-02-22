@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb 21 13:26:03 CET 2021 - nine@detonation.org
+
+- update to version 2021.02
+
++ Introduce new hash implementation based on Robin Hood Hash
++ Fixed serveral memory leaks
++ Fixed several segfaults
++ Improvements to the debug server
++ Fix MVM_file_isexecutable() when being root
++ Give io loop thread and spesh thread a name
++ Several improvements to spesh
++ Introduce the setthreadname op
++ Fix case insensitive string matching with an empty string
++ Fix CStruct handling of inlined attributes
++ Don't obliterate lib_name in exception text of NativeCall
++ Allow for explicitly marking the mainline_frame in the bytecode
++ Possibly fix MVM_panic from entering GC during spesh
++ Fix some possible double frees
++ Add methods WHICH and raku to MAST::Frame for easier debugging
++ JIT compile some more ops
+
+
+-------------------------------------------------------------------
 Wed May 13 12:39:51 CEST 2020 - nine@detonation.org
 
 - update to version 2020.05
