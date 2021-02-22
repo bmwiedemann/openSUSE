@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 11 16:13:14 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Replace tentative fix with upstreamed fix [swo#26881]:
+  Remove:
+  * gdb-fix-assert-in-process-event-stop-test.patch
+  Add:
+  * gdb-fix-internal-error-in-process_event_stop_test.patch
+  * gdb-breakpoints-handle-glibc-with-debuginfo-in-create_exception_master_breakpoint.patch
+
+-------------------------------------------------------------------
+Thu Feb 11 15:07:12 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix license [bsc#1180786].
+
+-------------------------------------------------------------------
 Wed Dec  9 07:56:36 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Backport from master [jsc#13656]:

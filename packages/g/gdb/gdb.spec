@@ -1,7 +1,7 @@
 #
-# spec file for package gdb
+# spec file for package gdb-testresults
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 RedHat
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,7 +54,7 @@ ExclusiveArch:  do_not_build
 
 %if %{build_main}
 Summary:        A GNU source-level debugger for C, C++, Fortran and other languages
-License:        SUSE-Public-Domain
+License:        GPL-3.0-only WITH GCC-exception-3.1 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Development/Languages/C and C++
 %endif
 %if %{build_testsuite}
@@ -283,7 +283,6 @@ Patch1003:      gdb-testsuite-ada-pie.patch
 Patch1500:      gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch
 Patch1501:      gdb-fortran-fix-print-dynamic-array.patch
 Patch1502:      gdb-don-t-return-non-existing-path-in-debuginfod-source-query.patch
-Patch1503:      gdb-fix-assert-in-process-event-stop-test.patch
 Patch1504:      gdb-fix-filename-in-not-in-executable-format-error.patch
 Patch1505:      gdb-handle-no-upper-bound-in-value-subscript.patch
 Patch1506:      gdb-fortran-handle-dw-at-string-length-with-loclistptr.patch
@@ -308,11 +307,13 @@ Patch2007:      gdb-fix-section-matching-in-find_pc_sect_compunit.patch
 Patch2008:      gdb-symtab-fix-language-of-frame-without-debug-info.patch
 Patch2009:      gdb-testsuite-fix-failure-in-gdb-base-step-over-no-symbols-exp.patch
 Patch2010:      gdb-powerpc-remove-512-bytes-region-limit-if-2nd-dawr-is-avaliable.patch
+Patch2011:      gdb-fix-internal-error-in-process_event_stop_test.patch
+Patch2012:      gdb-breakpoints-handle-glibc-with-debuginfo-in-create_exception_master_breakpoint.patch
 
 # Testsuite patches
 
 Patch2500:      gdb-testsuite-fix-gdb-server-ext-run-exp-for-obs.patch
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 Patch2501:      gdb-testsuite-disable-selftests-for-factory.patch
 %endif
 
@@ -360,7 +361,7 @@ Requires:       %{python}-base
 BuildRequires:  %{python}-devel
 %endif	# 0%{!?_without_python:1}
 %global have_libdebuginfod 0
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 %ifarch %{ix86} x86_64 aarch64 armv7l ppc64 ppc64le s390x
 %global have_libdebuginfod 1
 %endif
@@ -527,7 +528,7 @@ and printing their data.
 
 %package -n gdbserver
 Summary:        A standalone server for GDB (the GNU source-level debugger)
-License:        GPL-3.0-or-later AND GPL-3.0-with-GCC-exception AND LGPL-2.1-or-later AND LGPL-3.0-or-later
+License:        GPL-3.0-only WITH GCC-exception-3.1 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 
 %description -n gdbserver
@@ -558,7 +559,7 @@ This package provides INFO, HTML and PDF user manual for GDB.
 
 %if %{build_testsuite}
 %description
-Results from running the GDB testsuite. 
+Results from running the GDB testsuite.
 %endif
 
 %prep
@@ -693,7 +694,6 @@ find -name "*.info*"|xargs rm -f
 %patch1500 -p1
 %patch1501 -p1
 %patch1502 -p1
-%patch1503 -p1
 %patch1504 -p1
 %patch1505 -p1
 %patch1506 -p1
@@ -716,9 +716,11 @@ find -name "*.info*"|xargs rm -f
 %patch2008 -p1
 %patch2009 -p1
 %patch2010 -p1
+%patch2011 -p1
+%patch2012 -p1
 
 %patch2500 -p1
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 %patch2501 -p1
 %endif
 
@@ -768,7 +770,7 @@ export CFLAGS="$RPM_OPT_FLAGS"
 
 # Add your -Wno-x/-Wno-error=y options here:
 for opt in -Wno-error=odr; do
-  # checking for acceptance of -Wno-foo is a bit wieldy: GCC doesn't 
+  # checking for acceptance of -Wno-foo is a bit wieldy: GCC doesn't
   # warn about unknown -Wno- flags, _except_ if there are other
   # diagnostics as well, so let's force an uninitialized use warning
   # and grep for the diagnostic about the -Wno flag:
@@ -1249,7 +1251,7 @@ cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/man1/gstack.1
 %if 0%{?el5:1}
 rm -f $RPM_BUILD_ROOT%{_infodir}/annotate.info*
 rm -f $RPM_BUILD_ROOT%{_infodir}/gdb.info*
-%endif # 0%{?el5:1} 
+%endif # 0%{?el5:1}
 # -j1: There is some race resulting in:
 # /usr/bin/texi2dvi: texinfo.tex appears to be broken, quitting.
 make -j1 -C gdb/doc install DESTDIR=$RPM_BUILD_ROOT
