@@ -1,7 +1,7 @@
 #
 # spec file for package transfig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,34 +45,15 @@ Requires:       ghostscript-fonts-std
 Requires:       ghostscript-library
 Requires:       netpbm
 Requires:       texlive-epstopdf
-Version:        3.2.7b
+Version:        3.2.8
 Release:        0
 Summary:        Graphic Converter
 #Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%{version}.tar.xz/download#/fig2dev-%{version}.tar.xz
 License:        MIT
 Group:          Productivity/Graphics/Convertors
 Source:         fig2dev-%{version}.tar.xz
-Patch0:         transfig-3.2.6.dif
-Patch1:         CVE-2019-19555.patch
-Patch2:         transfig.3.2.5-binderman.dif
-Patch3:         transfig.3.2.5d-mediaboxrealnb.dif
+Patch0:         transfig-3.2.8.dif
 Patch4:         transfig-fix-afl.patch
-Patch5:         CVE-2019-19746.patch
-Patch6:         c379fe.patch
-Patch7:         CVE-2019-19797.patch
-Patch8:         00cded.patch
-Patch9:         d70e4b.patch
-Patch10:        d6a10d.patch
-Patch11:        acccc8.patch
-Patch12:        e3cee2.patch
-Patch13:        421afa.patch
-Patch14:        2f8d1a.patch
-Patch15:        4d4e1f.patch
-Patch16:        3165d8.patch
-Patch17:        639c36.patch
-Patch18:        100e27.patch
-Patch19:        3065eb.patch
-Patch20:        ca48cc.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        fig2dev-3.2.6a-RGBFILE.patch
@@ -113,27 +94,8 @@ Authors:
 %setup -q -n fig2dev-%{version}
 find -type f | xargs -r chmod a-x,go-w
 %patch0 -p0 -b .0
-%patch1 -p0 -b .sec
-%patch2 -p0 -b .bm
-%patch3 -p0 -b .mbox
 %patch4 -p1 -b .afl
-%patch5 -p0 -b .sec2
-%patch6 -p0 -b .sec3
-%patch7 -p0 -b .sec4
-%patch8 -p0 -b .sec5
-%patch9 -p0 -b .sec6
-%patch10 -p0 -b .sec7
-%patch11 -p0 -b .sec8
-%patch12 -p0 -b .sec9
-%patch13 -p0 -b .sec10
-%patch14 -p0 -b .sec11
-%patch15 -p0 -b .sec12
-%patch16 -p0 -b .sec13
-%patch17 -p0 -b .sec14
-%patch18 -p0 -b .sec15
-%patch19 -p0 -b .sec16
-%patch20 -p0 -b .sec17
-%patch43 -p2 -b .mpdf
+%patch43 -p1 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
 %patch45 -p1 -b .p45
 

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Feb 12 09:50:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to fig2dev version 3.2.8 (Patchlevel 8 (Dec 2020)
+  o Use deflate to embed image data into eps output, often substantially
+    reducing file size.
+  o Embed pdf files into ps output by converting the pdf to eps.
+  o Allow negative arrow widths. This might be useful for asymmetric arrow
+    tips, which can thus be mirrored around the corresponding line.
+  Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  o Reject negative text font sizes. Fixes ticket #86.
+  o Allow fig files ending without previous eol character. Fixes #83, #84.
+  o Accept text and ellipse angles only within -2*pi to 2*pi. Fixes #76.
+  o Allow -1 as default TeX font, not only 0. Fixes #71, #75, #81.
+  o Do not allow ASCII NUL anywhere in input. Fixes #65, #68, #73, #80.
+  o Use getline() to improve input scanning.
+    Fixes tickets #58, #59, #61, #62, #67, #78, #79, #82.
+  o Correctly scan embedded pdfs for /MediaBox value.
+  o Convert polygons having too few points to polylines. Ticket #56.
+  o Reject huge arrow types causing integer overflow. Ticket #57.
+  o Allow Fig v2 text strings ending with multiple ^A. Ticket #55.
+  o Embed images in pdfs with their original compression type, i.e., leave
+    the gs switch "-dAutoFilterColorImages" at its default value "true".
+- This update includes the fixes for
+  bsc#1159293 - CVE-2019-19797: transfig,xfig: out-of-bounds write in
+                read_colordef in read.c
+  bsc#1161698 - CVE-2019-19555: transfig,xfig: stack-based buffer
+                overflow because of an incorrect sscanf
+  bsc#1159130 - CVE-2019-19746: transfig,xfig: segmentation fault and
+                out-of-bounds write because of an integer overflow via
+                a large arrow type
+  and many more
+- Port and rename patch transfig-3.2.6.dif which is now transfig-3.2.8.dif
+- Remove patches now obsolete
+  * 00cded.patch
+  * 100e27.patch
+  * 2f8d1a.patch
+  * 3065eb.patch
+  * 3165d8.patch
+  * 421afa.patch
+  * 4d4e1f.patch
+  * 639c36.patch
+  * CVE-2019-19555.patch
+  * CVE-2019-19746.patch
+  * CVE-2019-19797.patch
+  * acccc8.patch
+  * c379fe.patch
+  * ca48cc.patch
+  * d6a10d.patch
+  * d70e4b.patch
+  * e3cee2.patch
+  * transfig.3.2.5-binderman.dif
+  * transfig.3.2.5d-mediaboxrealnb.dif
+- Port patches
+  * fig2dev-3.2.6-fig2mpdf.patch
+  * fig2dev-3.2.6a-RGBFILE.patch
+
+
+-------------------------------------------------------------------
 Wed Sep 30 10:48:31 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream security patches/commits

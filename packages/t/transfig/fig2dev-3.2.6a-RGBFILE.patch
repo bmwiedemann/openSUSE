@@ -9,7 +9,7 @@ Subject: rgb.txt can not be located via FIG2DEV_RGBFILE environment variable.
 
 --- a/fig2dev/colors.c
 +++ b/fig2dev/colors.c	2019-10-29 11:03:32.206632962 +0000
-@@ -731,8 +731,13 @@ read_colordb(void)
+@@ -730,8 +730,13 @@ read_colordb(void)
  	FILE		*fp;
  #define MAX_LINE	100
  	char		s[MAX_LINE], s1[MAX_LINE];
