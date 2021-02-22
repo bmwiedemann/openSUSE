@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 15 18:16:26 UTC 2021 - lduncan@suse.com
+
+- Update to version libaio0.3.112+29.696a5e6483ba:
+  * Fix test issue with gcc-11 (bsc#1181869)
+  * harness: Skip the test if io_pgetevents() is not implemented
+  * harness: Print better error messages on error conditions in 22.t
+  * harness: Fix PROT_WRITE mmap check
+  * harness: fix read into PROT_WRITE mmap test
+  * harness: skip 22.p if async_poll isn't supported
+  * harness: Handle -ENOTSUP from io_submit() with RWF_NOWAIT
+  * harness: Add fallback code for filesystems not supporting O_DIRECT
+  * harness: add support for skipping tests
+  * harness: Make the test exit with a code matching the pass/fail state
+
+-------------------------------------------------------------------
 Tue Aug 27 08:41:21 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 -  Add _constraints for PowerPC to avoid OOM at build time

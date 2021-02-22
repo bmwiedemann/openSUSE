@@ -1,7 +1,7 @@
 #
 # spec file for package libaio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define lname	libaio1
 Name:           libaio
-Version:        0.3.112
+Version:        0.3.112+29.696a5e6483ba
 Release:        0
 Summary:        Linux-Native Asynchronous I/O Access Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://pagure.io/libaio
-Source:         https://releases.pagure.org/libaio/libaio-%{version}.tar.gz
+Source:         libaio-%{version}.tar.xz
 Source2:        baselibs.conf
 
 %description
