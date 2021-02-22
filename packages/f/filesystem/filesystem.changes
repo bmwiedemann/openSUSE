@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 10 18:34:25 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add Ukrainian to the list of localized man directories.
+
+-------------------------------------------------------------------
 Mon Feb  1 14:23:11 CET 2021 - ro@suse.de
 
 - add /usr/etc/skel/.cache with perm 0700 (boo#1181011)
