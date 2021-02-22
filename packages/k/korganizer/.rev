@@ -439,4 +439,13 @@
     <comment>20.12.2 release</comment>
     <requestid>869376</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>eac853339f0486531b07d0506ddecbbb</srcmd5>
+    <version>20.12.2</version>
+    <time>1614000153</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add patch to allow creating custom pages:
+  * 0001-Look-for-designer-qt5-on-openSUSE.patch (forwarded request 872759 from cgiboudeaux)</comment>
+    <requestid>872769</requestid>
+  </revision>
 </revisionlist>

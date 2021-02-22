@@ -28,7 +28,9 @@ License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-Patch1:         korgac-autostart-default.patch
+Patch0:         korgac-autostart-default.patch
+# PATCH-FIX-OPENSUSE -- use 'designer-qt5' on openSUSE
+Patch1:         0001-Look-for-designer-qt5-on-openSUSE.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
@@ -89,8 +91,7 @@ KOrganizer is a calendar application for KDE.
 %endif
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

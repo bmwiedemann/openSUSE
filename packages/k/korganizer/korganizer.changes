@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 16 09:27:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to allow creating custom pages:
+  * 0001-Look-for-designer-qt5-on-openSUSE.patch
+
+-------------------------------------------------------------------
 Wed Feb  3 08:29:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
