@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb 21 21:06:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.6
+  * change numpy.bool to numpy.bool_ and numpy.float to
+    numpy.float_ (float and bool are deprecated in numpy 1.20,
+    issue #1065)
+ * clean up docstrings so that they work with latest pdoc.
+ * update cython numpy API to remove deprecation warnings.
+ * Add "fromcdl" and "tocdl" Dataset methods for import/export of
+   CDLvia ncdump/ncgen called externally via the subprocess module
+   (issue #1078).
+ * remove python 2.7 support.
+ * broadcast data (if possible) to conform to variable shape when
+   writing to a slice (issue #1083).
+- Release 1.5.5
+ * have setup.py always try use nc-config first to find paths to
+   netcdf and hdf5 libraries and headers. Don't use pkg-config to
+   find HDF5 if HDF5 env vars are set (or read from setup.cfg).
+ * Change MIT license text to standard OSI wording (PR #1046).
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29)
+
+-------------------------------------------------------------------
 Tue Dec  8 13:05:52 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Drop wrong hdf4 requirements

@@ -1,7 +1,7 @@
 #
 # spec file for package python-netCDF4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-netCDF4
-Version:        1.5.4
+Version:        1.5.6
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT
@@ -96,7 +98,7 @@ popd
 
 %files %{python_files}
 %doc Changelog README.md
-%license COPYING
+%license LICENSE
 %python_alternative %{_bindir}/nc3tonc4
 %python_alternative %{_bindir}/nc4tonc3
 %python_alternative %{_bindir}/ncinfo
