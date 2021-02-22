@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 10:57:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.8.2:
+  * Calc can now correctly compile without CUSTOM being defined
+
+-------------------------------------------------------------------
 Tue Feb 16 11:21:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.12.8.1:

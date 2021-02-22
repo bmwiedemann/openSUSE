@@ -175,4 +175,13 @@
     <comment></comment>
     <requestid>872832</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f2fd65fafc95b905591f968f064699ea</srcmd5>
+    <version>2.12.8.2</version>
+    <time>1614001272</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.12.8.2:
+  * Calc can now correctly compile without CUSTOM being defined</comment>
+    <requestid>874289</requestid>
+  </revision>
 </revisionlist>

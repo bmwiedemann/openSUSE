@@ -19,7 +19,7 @@
 %define soname 2
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.12.8.1
+Version:        2.12.8.2
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
