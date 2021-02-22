@@ -64,4 +64,15 @@
     <comment></comment>
     <requestid>867167</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>376dd76adc6db8e4509179e51a4e32b0</srcmd5>
+    <version>11.0.1</version>
+    <time>1614000131</time>
+    <user>RBrownSUSE</user>
+    <comment>- Don't use gold and ThinLTO on ppc64le because of boo#1181621.
+- Fix-missing-include.patch: fix build with GCC 11. (boo#1181875)
+- CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch:
+  Fix target component lookup. (boo#1180748)</comment>
+    <requestid>872681</requestid>
+  </revision>
 </revisionlist>

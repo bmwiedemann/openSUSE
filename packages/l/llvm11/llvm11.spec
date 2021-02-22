@@ -39,7 +39,8 @@
 
 # LLVM currently doesn't build with Gold on ppc
 # Gold is not supported on riscv64
-%ifarch ppc riscv64
+# Don't use gold on ppc64le because of boo#1181621.
+%ifarch ppc ppc64le riscv64
 %bcond_with gold
 %else
 %bcond_without gold
@@ -54,7 +55,8 @@
 %endif
 
 # Disabled on aarch64 because the build hangs. (boo#1178070)
-%ifarch %{arm} ppc64 ppc64le x86_64 %{ix86} s390x
+# Disabled on ppc64le because we can't use gold. (boo#1181621)
+%ifarch %{arm} ppc64 x86_64 %{ix86} s390x
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
@@ -132,6 +134,10 @@ Patch28:        Sema-Introduce-BuiltinAttr-per-declaration-builtin-n.patch
 Patch29:        Sema-Handle-objc_super-special-lookup-when-checking-.patch
 Patch30:        Recognize-setjmp-and-friends-as-builtins-even-if-jmp.patch
 Patch31:        Don-t-reject-calls-to-MinGW-s-unusual-_setjmp-declar.patch
+# Fix build with GCC 11. (boo#1181875)
+Patch32:        Fix-missing-include.patch
+# Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
+Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -553,6 +559,8 @@ This package contains the development files for Polly.
 %patch22 -p1
 %patch24 -p1
 %patch27 -p2
+%patch32 -p2
+%patch33 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1
@@ -1079,6 +1087,10 @@ pushd build
 
 # On armv6l, fpext frem(12.0f, 5.0f) to double = inf for some reason.
 sed -i '1i; XFAIL: armv6' ../test/ExecutionEngine/frem.ll
+# On ppc64le, this test fails with "free(): invalid pointer" since we're using ld.bfd (boo#1181621).
+%ifarch ppc64le
+rm ../test/tools/llvm-cov/multithreaded-report.test
+%endif
 # Tests are disabled on ppc because of sporadic hangs. Also some tests fail.
 %ifnarch ppc
 python3 bin/llvm-lit -sv test/

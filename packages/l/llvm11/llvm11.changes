@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 14 22:28:42 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Don't use gold and ThinLTO on ppc64le because of boo#1181621.
+- Fix-missing-include.patch: fix build with GCC 11. (boo#1181875)
+- CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch:
+  Fix target component lookup. (boo#1180748)
+
+-------------------------------------------------------------------
 Wed Jan 27 01:53:59 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Revert changes that broke the ABI (boo#1181326).
