@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 18 13:36:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 0.38 :
+  * Fix issue with DHCP v6 Rapid Commit option check.
+  * Fix issue with handling RFC8018/RFC1423 padding.
+  * Fix issue with D-Bus filter messages with no interfaces set.
+  * Add support for PKCS#12 certification loading.
+
+-------------------------------------------------------------------
 Sun Jan 10 13:48:39 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
 
 - Update to release 0.36
