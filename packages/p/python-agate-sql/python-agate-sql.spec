@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-sql
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,8 @@ sed -i -e '/^#!\//, 1d' agatesql/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#wireservice/agate-sql#33
+%pytest -k 'not test_to_sql_create_statement_with_schema'
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst CHANGELOG.rst

@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>847907</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>27c054bda9fb49e8181c729ec8412a27</srcmd5>
+    <version>0.5.5</version>
+    <time>1614001201</time>
+    <user>RBrownSUSE</user>
+    <comment>- Switch off the failing test_to_sql_create_statement_with_schema
+  test (gh#wireservice/agate-sql#33, bsc#1181270).
+</comment>
+    <requestid>874183</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 21 20:46:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch off the failing test_to_sql_create_statement_with_schema
+  test (gh#wireservice/agate-sql#33, bsc#1181270).
+
+-------------------------------------------------------------------
 Tue Nov 10 13:45:33 UTC 2020 - Marketa Calabkova <mmachova@suse.com>
 
 - update to 0.5.5
