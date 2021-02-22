@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 18 16:44:25 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- source correct suse.vimrc file (boo#1182324)
+
+-------------------------------------------------------------------
 Mon Jan 26 11:30:34 UTC 2021 - Dimitis Karakasilis <DKarakasilis@suse.com>
 
 Updated to version 8.2.2411, fixes the following problems

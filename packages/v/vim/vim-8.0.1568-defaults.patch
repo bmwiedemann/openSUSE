@@ -31,4 +31,4 @@ Index: vim-8.2.2411/runtime/defaults.vim
  endif
 +
 +" include SUSE tweaks
-+ru suse.vim
++ru suse.vimrc
