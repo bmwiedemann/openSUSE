@@ -26,3 +26,4 @@
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module
+skip_doc: precious.toml|azure-pipelines.yml
