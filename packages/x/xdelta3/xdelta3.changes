@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 12 08:45:25 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Do not build with profiling for ppc64 & s390x to avoid build failure
+  for those big-endian arches; this is a bypass only for bug
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1182016
+
+-------------------------------------------------------------------
 Fri Jan 29 08:50:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Run tests using upstrem test wrapper

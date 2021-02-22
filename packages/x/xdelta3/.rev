@@ -122,4 +122,14 @@
 - Small packaging updates (forwarded request 867685 from pluskalm)</comment>
     <requestid>868892</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>78c680277ea6295e9fa674cd01385f73</srcmd5>
+    <version>3.1.0</version>
+    <time>1614000168</time>
+    <user>RBrownSUSE</user>
+    <comment>- Do not build with profiling for ppc64 &amp;amp; s390x to avoid build failure
+  for those big-endian arches; this is a bypass only for bug
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1182016 (forwarded request 871477 from michel_mno)</comment>
+    <requestid>873292</requestid>
+  </revision>
 </revisionlist>

@@ -47,6 +47,9 @@ stored in RFC3284 (VCDIFF) format.
 
 %build
 %configure
+%ifarch ppc64 s390x
+%define do_profiling 0
+%endif
 %if %{do_profiling}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" CXXFLAGS="%{optflags} %{cflags_profile_generate}"
   ./xdelta3 test
