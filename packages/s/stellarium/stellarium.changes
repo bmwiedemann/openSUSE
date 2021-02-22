@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 15 13:05:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove duplicated desktop file
+- Remove zero length files
+
+-------------------------------------------------------------------
 Tue Dec 29 14:26:15 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - The patch to fix the excessive memory use by lconvert was backported

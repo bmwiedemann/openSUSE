@@ -1,7 +1,7 @@
 #
 # spec file for package stellarium
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,10 @@ export QT_HASH_SEED=0
 %suse_update_desktop_file -c stellarium Stellarium "Planetarium in your computer" stellarium stellarium Science Astronomy
 mkdir -p %{buildroot}%{_datadir}/%{name}/data/script_internet_update
 %fdupes %{buildroot}%{_datadir}/%{name}
+# remove duplicated desktop file
+rm -f %{buildroot}%{_datadir}/applications/stellarium.desktop
+# remove all zero size files
+find %{buildroot}%{_datadir}/%{name}/skycultures -type f -size 0 -delete
 
 #%%find_lang %%{name}
 #%%find_lang %%{name}-skycultures
