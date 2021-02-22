@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 18 09:24:00 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Nettle 3.7.1:
+  * Fix bug in chacha counter update logic (ppc64 and ppc64el)
+  * Restore support for big-endian ARM platforms
+  * Fix corner case bug in ECDSA verify, it would produce incorrect
+    result in the unlikely case of an all-zero message hash
+  * Support for pbkdf2_hmac_sha384 and pbkdf2_hmac_sha512
+  * Remove poorly performing ARM Neon code for doing single-block
+    Salsa20 and Chacha
+
+-------------------------------------------------------------------
 Mon Jan  4 20:39:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Nettle 3.7:
