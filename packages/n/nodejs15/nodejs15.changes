@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 17 17:33:25 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- relax OpenSSL cipher suite policies for unit tests
+ 
+-------------------------------------------------------------------
 Fri Feb  5 14:56:36 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 15.8.0:

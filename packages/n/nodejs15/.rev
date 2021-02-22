@@ -44,4 +44,12 @@
     + implement basic secure heap support</comment>
     <requestid>869789</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c576ae2976a884a649a75f68636fb92a</srcmd5>
+    <version>15.8.0</version>
+    <time>1614002274</time>
+    <user>RBrownSUSE</user>
+    <comment>- relax OpenSSL cipher suite policies for unit tests</comment>
+    <requestid>873206</requestid>
+  </revision>
 </revisionlist>

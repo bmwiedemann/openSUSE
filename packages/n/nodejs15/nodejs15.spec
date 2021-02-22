@@ -832,6 +832,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
 export LDFLAGS="%{?build_ldflags}"
 
+# Relax the crypto policies for the test-suite
+export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
+export OPENSSL_CONF=''
+
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
 export CXX=%{?cpp_exec}
