@@ -1,7 +1,7 @@
 #
 # spec file for package charliecloud
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           charliecloud
-Version:        0.21
+Version:        0.22
 Release:        0
 Summary:        User-defined software stacks (UDSS) for HPC centers
 License:        Apache-2.0

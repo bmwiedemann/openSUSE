@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 22 09:06:46 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.22.
+  - “ch-image” can now push images to a registry, with the “push” subcommand
+  - As a reminder, “ch-grow” has been renamed to “ch-image”. 
+    The old name still works but will be removed in 0.23.
+  - ch-image: new subcommand “delete”
+  - ch-image pull:
+    * now keeps some metadata from pulled image
+    * now works with public images in nVidia NGC registry
+    * setuid/setgid bits in pulled image now cleared
+    * performance improvements for images with many whiteouts
+  - ch-image build:
+    * environment variables now kept from base image
+    * SHELL instruction now supported 
+  - several scripts now work correctly if image name contains slash
+  - “sudo make install” now works correctly with restrictive umasks
+  - miscellaneous bug fixes and improvements
+
+-------------------------------------------------------------------
 Mon Dec 21 11:54:45 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.21.
