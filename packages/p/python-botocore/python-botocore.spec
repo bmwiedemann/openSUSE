@@ -1,7 +1,7 @@
 #
 # spec file for package python-botocore
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,15 @@
 %define skip_python2 1
 %endif
 Name:           python-botocore
-Version:        1.19.25
+Version:        1.20.9
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
 URL:            https://github.com/boto/botocore
 Source:         https://files.pythonhosted.org/packages/source/b/botocore/botocore-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#boto/botocore#2134 mcepl@suse.com
-# Port test suite from nose to pytest (mostly just plain unittest)
-Patch0:         remove_nose.patch
 BuildRequires:  %{python_module jmespath < 1.0.0}
 BuildRequires:  %{python_module jmespath >= 0.7.1}
-BuildRequires:  %{python_module python-dateutil <= 3.0.0}
+BuildRequires:  %{python_module python-dateutil < 3.0.0}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urllib3 < 1.27}
@@ -41,7 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jmespath < 1.0.0
 Requires:       python-jmespath >= 0.7.1
-Requires:       python-python-dateutil <= 3.0.0
+Requires:       python-python-dateutil < 3.0.0
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-requests
 Requires:       python-six
@@ -49,14 +46,14 @@ Requires:       python-urllib3 < 1.27
 Requires:       python-urllib3 >= 1.25.4
 BuildArch:      noarch
 %if 0%{?suse_version} <= 1315
-# We need the ssl module, which is delivers by python and not python-base
+# We need the ssl module, which is provided by python and not python-base
 BuildRequires:  python
 %endif
 # SECTION Testing requirements
 BuildRequires:  %{python_module mock >= 1.3.0}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pluggy >= 0.7}
 BuildRequires:  %{python_module py >= 1.5.0}
-BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 # /SECTION
@@ -67,7 +64,6 @@ A low-level interface to a growing number of Amazon Web Services.
 
 %prep
 %setup -q -n botocore-%{version}
-%autopatch -p1
 
 # remove bundled cacert.pem
 rm botocore/cacert.pem
@@ -86,7 +82,7 @@ sed -i 's/botocore\.vendored\.//' botocore/*.py tests/functional/*.py tests/inte
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/unit
+%python_expand nosetests-%{$python_bin_suffix} -v tests/unit
 
 %files %{python_files}
 %doc README.rst

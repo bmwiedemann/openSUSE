@@ -1,4 +1,366 @@
 -------------------------------------------------------------------
+Thu Feb 18 14:10:23 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.20.9 (bsc#1182421, bsc#1182422, jsc#ECO-3352, jsc#PM-2485)
+  * api-change:``devops-guru``: Update devops-guru client to latest version
+  * api-change:``codebuild``: Update codebuild client to latest version
+- from version 1.20.8
+  * api-change:``lightsail``: Update lightsail client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+  * api-change:``kinesis-video-archived-media``: Update kinesis-video-archived-media
+    client to latest version
+  * api-change:``config``: Update config client to latest version
+  * api-change:``pinpoint``: Update pinpoint client to latest version
+  * api-change:``redshift-data``: Update redshift-data client to latest version
+  * api-change:``workmailmessageflow``: Update workmailmessageflow client to latest version
+  * api-change:``mediatailor``: Update mediatailor client to latest version
+- from version 1.20.7
+  * api-change:``personalize-events``: Update personalize-events client to latest version
+  * api-change:``eks``: Update eks client to latest version
+  * api-change:``iam``: Update iam client to latest version
+  * api-change:``codepipeline``: Update codepipeline client to latest version
+  * api-change:``detective``: Update detective client to latest version
+  * api-change:``macie2``: Update macie2 client to latest version
+  * api-change:``wafv2``: Update wafv2 client to latest version
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``appsync``: Update appsync client to latest version
+  * api-change:``rds``: Update rds client to latest version
+- from version 1.20.6
+  * api-change:``databrew``: Update databrew client to latest version
+  * api-change:``rds``: Update rds client to latest version
+- from version 1.20.5
+  * api-change:``quicksight``: Update quicksight client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+  * api-change:``qldb-session``: Update qldb-session client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``gamelift``: Update gamelift client to latest version
+- from version 1.20.4
+  * api-change:``dataexchange``: Update dataexchange client to latest version
+  * api-change:``cloudtrail``: Update cloudtrail client to latest version
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``ivs``: Update ivs client to latest version
+  * api-change:``macie2``: Update macie2 client to latest version
+  * api-change:``globalaccelerator``: Update globalaccelerator client to latest version
+  * api-change:``iotsitewise``: Update iotsitewise client to latest version
+  * api-change:``elasticache``: Update elasticache client to latest version
+- from version 1.20.3
+  * api-change:``macie``: Update macie client to latest version
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``organizations``: Update organizations client to latest version
+- from version 1.20.2
+  * api-change:``quicksight``: Update quicksight client to latest version
+  * api-change:``appflow``: Update appflow client to latest version
+  * api-change:``emr-containers``: Update emr-containers client to latest version
+  * api-change:``dlm``: Update dlm client to latest version
+  * api-change:``athena``: Update athena client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.20.1
+  * api-change:``lambda``: Update lambda client to latest version
+  * api-change:``codebuild``: Update codebuild client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``ce``: Update ce client to latest version
+  * api-change:``databrew``: Update databrew client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+  * api-change:``workmail``: Update workmail client to latest version
+  * api-change:``auditmanager``: Update auditmanager client to latest version
+  * api-change:``compute-optimizer``: Update compute-optimizer client to latest version
+  * api-change:``iotsitewise``: Update iotsitewise client to latest version
+- from version 1.20.0
+  * api-change:``appmesh``: Update appmesh client to latest version
+  * api-change:``application-autoscaling``: Update application-autoscaling client to latest version
+  * api-change:``lookoutvision``: Update lookoutvision client to latest version
+  * api-change:``organizations``: Update organizations client to latest version
+  * feature:Python: Dropped support for Python 3.4 and 3.5
+  * api-change:``s3control``: Update s3control client to latest version
+  * api-change:``rds-data``: Update rds-data client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+  * api-change:``route53``: Update route53 client to latest version
+  * api-change:``location``: Update location client to latest version
+  * enhancement:s3: Amazon S3 now supports AWS PrivateLink, providing direct
+    access to S3 via a private endpoint within your virtual private network.
+  * api-change:``iotwireless``: Update iotwireless client to latest version
+- from version 1.19.63
+  * api-change:``macie2``: Update macie2 client to latest version
+  * api-change:``connect``: Update connect client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+- from version 1.19.62
+  * api-change:``wellarchitected``: Update wellarchitected client to latest version
+  * api-change:``managedblockchain``: Update managedblockchain client to latest version
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``databrew``: Update databrew client to latest version
+  * bugfix:Validator: Fix showing incorrect max-value in error message for
+    range and length value validation
+  * api-change:``iot``: Update iot client to latest version
+  * api-change:``robomaker``: Update robomaker client to latest version
+- from version 1.19.61
+  * api-change:``elasticache``: Update elasticache client to latest version
+  * api-change:``customer-profiles``: Update customer-profiles client to latest version
+  * api-change:``sesv2``: Update sesv2 client to latest version
+  * api-change:``accessanalyzer``: Update accessanalyzer client to latest version
+  * api-change:``lightsail``: Update lightsail client to latest version
+  * api-change:``es``: Update es client to latest version
+- from version 1.19.60
+  * api-change:``backup``: Update backup client to latest version
+- from version 1.19.59
+  * api-change:``greengrassv2``: Update greengrassv2 client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+  * api-change:``lexv2-runtime``: Update lexv2-runtime client to latest version
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``lexv2-models``: Update lexv2-models client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.19.58
+  * api-change:``kafka``: Update kafka client to latest version
+  * api-change:``resourcegroupstaggingapi``: Update resourcegroupstaggingapi
+    client to latest version
+- from version 1.19.57
+  * api-change:``acm-pca``: Update acm-pca client to latest version
+  * api-change:``chime``: Update chime client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.19.56
+  * api-change:``sns``: Update sns client to latest version
+- from version 1.19.55
+  * api-change:``pinpoint``: Update pinpoint client to latest version
+  * api-change:``cognito-identity``: Update cognito-identity client to latest version
+  * api-change:``s3control``: Update s3control client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+- from version 1.19.54
+  * api-change:``frauddetector``: Update frauddetector client to latest version
+  * api-change:``personalize``: Update personalize client to latest version
+- from version 1.19.53
+  * api-change:``appstream``: Update appstream client to latest version
+  * api-change:``auditmanager``: Update auditmanager client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``elasticache``: Update elasticache client to latest version
+  * api-change:``lightsail``: Update lightsail client to latest version
+- from version 1.19.52
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``kms``: Update kms client to latest version
+- from version 1.19.51
+  * api-change:``devops-guru``: Update devops-guru client to latest version
+  * api-change:``codepipeline``: Update codepipeline client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.19.50
+  * api-change:``autoscaling``: Update autoscaling client to latest version
+  * api-change:``transfer``: Update transfer client to latest version
+  * api-change:``autoscaling-plans``: Update autoscaling-plans client to latest version
+- from version 1.19.49
+  * api-change:``ce``: Update ce client to latest version
+  * api-change:``application-autoscaling``: Update application-autoscaling
+    client to latest version
+- from version 1.19.48
+  * api-change:``healthlake``: Update healthlake client to latest version
+  * api-change:``cloudsearch``: Update cloudsearch client to latest version
+- Add python-nose to BuildRequires
+- Drop python-pytest from BuildRequires
+- Drop patch which no longer applies but hasn't been merged upstream yet
+  + remove_nose.patch
+- Switch testsuite invocation back to python-nose
+
+-------------------------------------------------------------------
+Sat Jan  2 15:41:25 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 1.19.47
+  * api-change:servicecatalog: Update servicecatalog client to 
+    latest version
+- Changes in 1.19.46
+  * api-change:macie2: Update macie2 client to latest version
+  * api-change:elasticache: Update elasticache client to latest 
+    version
+- Changes in 1.19.45
+  * api-change:acm-pca: Update acm-pca client to latest version
+  * api-change:apigatewayv2: Update apigatewayv2 client to latest 
+    version
+- Changes in 1.19.44
+  * api-change:cloudfront: Update cloudfront client to latest 
+    version
+- Changes in 1.19.43
+  * api-change:compute-optimizer: Update compute-optimizer client 
+    to latest version
+  * api-change:resource-groups: Update resource-groups client to 
+    latest version
+  * api-change:dms: Update dms client to latest version
+- Changes in 1.19.42
+  * api-change:ssm: Update ssm client to latest version
+  * api-change:iotwireless: Update iotwireless client to latest 
+    version
+  * api-change:rds: Update rds client to latest version
+  * api-change:glue: Update glue client to latest version
+  * api-change:ce: Update ce client to latest version
+  * api-change:connect: Update connect client to latest version
+  * api-change:elasticache: Update elasticache client to latest 
+    version
+- Changes in 1.19.41
+  * api-change:config: Update config client to latest version
+  * api-change:ec2: Update ec2 client to latest version
+  * api-change:glue: Update glue client to latest version
+  * api-change:batch: Update batch client to latest version
+  * api-change:managedblockchain: Update managedblockchain client 
+    to latest version
+  * api-change:service-quotas: Update service-quotas client to 
+    latest version
+  * api-change:s3: Update s3 client to latest version
+  * api-change:connectparticipant: Update connectparticipant 
+    client to latest version
+  * api-change:securityhub: Update securityhub client to latest 
+    version
+  * api-change:qldb-session: Update qldb-session client to latest 
+    version
+  * api-change:outposts: Update outposts client to latest version
+  * api-change:servicecatalog-appregistry: Update servicecatalog-
+    appregistry client to latest version
+  * api-change:dms: Update dms client to latest version
+  * api-change:apigateway: Update apigateway client to latest 
+    version
+- Changes in 1.19.40
+  * api-change:rds: Update rds client to latest version
+  * bugfix:SSO: Fixed timestamp format for SSO credential 
+    expirations
+  * api-change:personalize-runtime: Update personalize-runtime 
+    client to latest version
+  * api-change:ec2: Update ec2 client to latest version
+- Changes in 1.19.39
+  * api-change:ec2: Update ec2 client to latest version
+  * api-change:servicecatalog: Update servicecatalog client to 
+    latest version
+  * api-change:dlm: Update dlm client to latest version
+  * api-change:kms: Update kms client to latest version
+  * api-change:route53resolver: Update route53resolver client to 
+    latest version
+  * api-change:sqs: Update sqs client to latest version
+  * api-change:config: Update config client to latest version
+  * api-change:imagebuilder: Update imagebuilder client to latest 
+    version
+  * api-change:route53: Update route53 client to latest version
+- Changes in 1.19.38
+  * api-change:ce: Update ce client to latest version
+  * api-change:amp: Update amp client to latest version
+  * api-change:location: Update location client to latest version
+  * api-change:wellarchitected: Update wellarchitected client to 
+    latest version
+  * api-change:quicksight: Update quicksight client to latest 
+    version
+- Changes in 1.19.37
+  * api-change:iotwireless: Update iotwireless client to latest 
+   version
+  * api-change:lambda: Update lambda client to latest version
+  * api-change:greengrassv2: Update greengrassv2 client to latest 
+    version
+  * api-change:ssm: Update ssm client to latest version
+  * api-change:iotdeviceadvisor: Update iotdeviceadvisor client to 
+    latest version
+  * api-change:iot: Update iot client to latest version
+  * api-change:iotanalytics: Update iotanalytics client to latest 
+    version
+  * api-change:amp: Update amp client to latest version
+  * api-change:iotfleethub: Update iotfleethub client to latest 
+    version
+- Changes in 1.19.36
+  * api-change:ec2: Update ec2 client to latest version
+  * api-change:globalaccelerator: Update globalaccelerator client 
+    to latest version
+  * api-change:devops-guru: Update devops-guru client to latest 
+    version
+- Changes in 1.19.35
+  * api-change:guardduty: Update guardduty client to latest 
+    version
+  * api-change:iotsitewise: Update iotsitewise client to latest 
+    version
+  * api-change:autoscaling: Update autoscaling client to latest 
+    version
+  * api-change:cloudwatch: Update cloudwatch client to latest 
+    version
+  * api-change:pi: Update pi client to latest version
+  * api-change:cloudtrail: Update cloudtrail client to latest 
+    version
+- Changes in 1.19.34
+  * api-change:networkmanager: Update networkmanager client to 
+    latest version
+  * api-change:kendra: Update kendra client to latest version
+  * api-change:ec2: Update ec2 client to latest version
+- Changes in 1.19.33
+  * api-change:globalaccelerator: Update globalaccelerator client 
+    to latest version
+  * api-change:ec2: Update ec2 client to latest version
+  * api-change:redshift: Update redshift client to latest version
+- Changes in 1.19.32
+  * api-change:ecr: Update ecr client to latest version
+  * api-change:sagemaker: Update sagemaker client to latest 
+    version
+  * api-change:kendra: Update kendra client to latest version
+  * api-change:quicksight: Update quicksight client to latest 
+    version
+  * api-change:auditmanager: Update auditmanager client to latest 
+    version
+  * api-change:sagemaker-runtime: Update sagemaker-runtime client 
+    to latest version
+  * api-change:sagemaker-edge: Update sagemaker-edge client to 
+    latest version
+  * api-change:forecast: Update forecast client to latest version
+  * api-change:healthlake: Update healthlake client to latest 
+    version
+  * api-change:emr-containers: Update emr-containers client to 
+    latest version
+- Changes in 1.19.31
+  * api-change:dms: Update dms client to latest version
+  * api-change:servicecatalog-appregistry: Update servicecatalog-
+    appregistry client to latest version
+- Changes in 1.19.30
+  * api-change:ssm: Update ssm client to latest version
+  * api-change:ec2: Update ec2 client to latest version
+  * api-change:workspaces: Update workspaces client to latest 
+    version
+  * api-change:license-manager: Update license-manager client to 
+    latest version
+  * api-change:lambda: Update lambda client to latest version
+  * api-change:ds: Update ds client to latest version
+  * api-change:kafka: Update kafka client to latest version
+  * api-change:medialive: Update medialive client to latest 
+    version
+  * api-change:rds: Update rds client to latest version
+- Changes in 1.19.29
+  * api-change:license-manager: Update license-manager client to 
+    latest version
+  * api-change:compute-optimizer: Update compute-optimizer client 
+    to latest version
+  * api-change:amplifybackend: Update amplifybackend client to 
+    latest version
+  * api-change:batch: Update batch client to latest version
+- Changes in 1.19.28
+  * api-change:customer-profiles: Update customer-profiles client 
+    to latest version
+- Changes in 1.19.27
+  * api-change:sagemaker-featurestore-runtime: Update sagemaker-
+    featurestore-runtime client to latest version
+  * api-change:ecr-public: Update ecr-public client to latest 
+    version
+  * api-change:honeycode: Update honeycode client to latest 
+    version
+  * api-change:eks: Update eks client to latest version
+  * api-change:amplifybackend: Update amplifybackend client to 
+    latest version
+  * api-change:lambda: Update lambda client to latest version
+  * api-change:sagemaker: Update sagemaker client to latest 
+    version
+  * api-change:lookoutvision: Update lookoutvision client to 
+    latest version
+  * api-change:ec2: Update ec2 client to latest version
+  * api-change:connect: Update connect client to latest version
+  * api-change:connect-contact-lens: Update connect-contact-lens 
+    client to latest version
+  * api-change:profile: Update profile client to latest version
+  * api-change:s3: Update s3 client to latest version
+  * api-change:appintegrations: Update appintegrations client to 
+    latest version
+  * api-change:ds: Update ds client to latest version
+  * api-change:devops-guru: Update devops-guru client to latest 
+    version
+- Changes in 1.19.26
+  * api-change:ec2: Update ec2 client to latest version 
+- Unpin upper versions
+- Refresh remove_nose.patch
+  
+-------------------------------------------------------------------
 Mon Nov 30 11:10:10 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.19.25
