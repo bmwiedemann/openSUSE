@@ -68,8 +68,10 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.10
+%ifnarch s390 s390x ppc64
 BuildRequires:  pkgconfig(ldacBT-abr)
 BuildRequires:  pkgconfig(ldacBT-enc)
+%endif
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)

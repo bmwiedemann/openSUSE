@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 18 09:30:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- ldacBT only builds on little endian architectures, so we can't
+  buildrequire it on big endian systems like s390, s390x or ppc64.
+
+-------------------------------------------------------------------
 Wed Feb 17 17:02:06 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Remove the pulseaudio provides from pipewire-pulseaudio:

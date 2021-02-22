@@ -206,4 +206,12 @@
   smart enough to favor pulseaudio until we are ready for the
   switch.</comment>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>25c5b3c365660d973fd41a21b840b58c</srcmd5>
+    <version>0.3.21</version>
+    <time>1614001181</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 873351 from alarrosa)</comment>
+    <requestid>873920</requestid>
+  </revision>
 </revisionlist>
