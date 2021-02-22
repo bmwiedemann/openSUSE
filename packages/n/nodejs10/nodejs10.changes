@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 17 17:38:30 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- relax OpenSSL cipher suite policies for unit tests
+ 
+-------------------------------------------------------------------
+Thu Feb 11 16:20:49 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.23.3:
+  * crypto: fix crash when calling digest after piping
+  * deps: reland npm upgrade to 6.14.11
+  * test: add test that verifies crypto stream pipeline
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Feb  2 12:37:22 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 10.23.2:

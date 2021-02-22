@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs10
-Version:        10.23.2
+Version:        10.23.3
 Release:        0
 
 %define node_version_number 10
@@ -337,7 +337,7 @@ Requires:       nodejs10 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.14.10
+Provides:       npm(npm) = 6.14.11
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -491,7 +491,7 @@ Provides:       bundled(node-imurmurhash) = 0.1.4
 Provides:       bundled(node-infer-owner) = 1.0.4
 Provides:       bundled(node-inflight) = 1.0.6
 Provides:       bundled(node-inherits) = 2.0.4
-Provides:       bundled(node-ini) = 1.3.5
+Provides:       bundled(node-ini) = 1.3.8
 Provides:       bundled(node-init-package-json) = 1.10.3
 Provides:       bundled(node-ip) = 1.1.5
 Provides:       bundled(node-ip-regex) = 2.1.0
@@ -966,6 +966,10 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type -fno-strict-aliasing"
 export LDFLAGS="%{?build_ldflags}"
+
+# Relax the crypto policies for the test-suite
+export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
+export OPENSSL_CONF=''
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}

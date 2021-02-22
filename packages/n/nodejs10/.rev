@@ -451,4 +451,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>870526</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>57f9a26e933447d15f3f9dee0693c055</srcmd5>
+    <version>10.23.3</version>
+    <time>1614002284</time>
+    <user>RBrownSUSE</user>
+    <comment>- relax OpenSSL cipher suite policies for unit tests
+ 
+
+- New upstream LTS version 10.23.3:
+  * crypto: fix crash when calling digest after piping
+  * deps: reland npm upgrade to 6.14.11
+  * test: add test that verifies crypto stream pipeline
+- versioned.patch: refreshed</comment>
+    <requestid>873210</requestid>
+  </revision>
 </revisionlist>
