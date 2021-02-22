@@ -1,6 +1,7 @@
 #
 # spec file for package drpm
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,19 +39,19 @@ Name:           drpm
 Version:        0.4.1
 Release:        0
 Summary:        A small library for fetching information from DeltaRPM packages
-Group:          System/Packages
 License:        LGPL-2.1-or-later
+Group:          System/Packages
 URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 
-BuildRequires:  rpm-devel
-BuildRequires:  zlib-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  xz-devel
-BuildRequires:  openssl-devel
-BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
 BuildRequires:  cmake >= 2.8
+BuildRequires:  gcc-c++
+BuildRequires:  libbz2-devel
+BuildRequires:  openssl-devel
+BuildRequires:  pkg-config
+BuildRequires:  rpm-devel
+BuildRequires:  xz-devel
+BuildRequires:  zlib-devel
 %if %{with tests}
 BuildRequires:  libcmocka-devel >= 1.0
 %endif
@@ -60,7 +61,8 @@ BuildRequires:  pkgconfig(libzstd)
 
 %if 0%{?suse_version} > 1500
 # valgrind behaves oddly on SUSE Linux 15
-%ifnarch s390
+# aarch64 fails on m_debuginfo/readdwarf.c:2544 (copy_convert_CfiExpr_tree): Assertion 'Unimplemented functionality' failed.
+%ifnarch s390 aarch64
 BuildRequires:  valgrind
 %endif
 %endif
@@ -91,7 +93,7 @@ This package provides a C interface (drpm.h) for the drpm library.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo %{?!with_tests:-DENABLE_TESTS=0} -DWITH_ZSTD:BOOL=%{?with_zstd:ON}%{!?with_zstd:OFF}
+%cmake %{?!with_tests:-DENABLE_TESTS=0} -DWITH_ZSTD:BOOL=%{?with_zstd:ON}%{!?with_zstd:OFF}
 %make_build
 
 %install

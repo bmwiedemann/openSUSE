@@ -15,4 +15,12 @@
     <comment>- Disable zstd for Leap 15.1 and lower due to broken zstd</comment>
     <requestid>732265</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bc41ff3995e898a0f0d1d631f5e0253f</srcmd5>
+    <version>0.4.1</version>
+    <time>1614001174</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873852</requestid>
+  </revision>
 </revisionlist>
