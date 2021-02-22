@@ -1,7 +1,7 @@
 #
 # spec file for package python-py
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,21 @@
 %bcond_with test
 %endif
 Name:           python-py%{psuffix}
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Library with cross-python path, ini-parsing, io, code, log facilities
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/py
 Source:         https://files.pythonhosted.org/packages/source/p/py/py-%{version}.tar.gz
+# https://github.com/pytest-dev/py/pull/222
+Patch0:         pr_222.patch
+BuildRequires:  %{python_module apipkg}
+BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+Requires:       python-apipkg
+Requires:       python-iniconfig
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Obsoletes:      %{oldpython}-py-docs
@@ -57,11 +63,13 @@ the following tools and modules:
 
 %prep
 %setup -q -n py-%{version}
+%patch0 -p1
 
 rm -rf py.egg-info
 rm -f tox.ini
 # https://github.com/pytest-dev/py/issues/162
 rm -f testing/log/test_warning.py
+rm -r py/_vendored_packages
 
 %build
 %python_build
@@ -75,10 +83,9 @@ rm -f testing/log/test_warning.py
 %check
 %if %{with test}
 export LANG=en_US.UTF-8
-# the passing is because upstream does not care about the results for now and
-# pinned pytest 3 in the repo (as this module is deprecated)
+# In addition to PR 222, there are other tests failing due to changes in pytest 5 & 6
 # https://github.com/pytest-dev/py/issues/209
-%pytest || :
+%pytest -k 'not (test_getdimensions or test_format_excinfo or test_excinfo_repr or test_excinfo_str or test_syntaxerror_rerepresentation or test_len or test_power or test_comments)'
 %endif
 
 %if !%{with test}

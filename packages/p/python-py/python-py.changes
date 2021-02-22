@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 19 15:21:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.10.0
+  * Fix a regular expression DoS vulnerability in the py.path.svnwc
+    SVN blame functionality (CVE-2020-29651)
+
+-------------------------------------------------------------------
+Sat Oct 17 11:43:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Devendor apipkg and iniconfig
+- Add pr_222.patch to activate test suite
+
+-------------------------------------------------------------------
 Mon Jun 29 08:51:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.9.0
