@@ -605,4 +605,14 @@
   * multiple camera support improvements (forwarded request 844032 from dirkmueller)</comment>
     <requestid>844046</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>d739d767a99da54c08cc485ca103f57a</srcmd5>
+    <version>0.20.2</version>
+    <time>1614000164</time>
+    <user>RBrownSUSE</user>
+    <comment>- baselibs required by ImageMagick
+- added sources
+  + baselibs.conf</comment>
+    <requestid>873641</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libraw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,8 @@ License:        CDDL-1.0 OR LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
-Source:         https://www.libraw.org/data/%tar_name-%version.tar.gz
+Source0:        https://www.libraw.org/data/%tar_name-%version.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
