@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -419,11 +419,14 @@ rm -f  %{buildroot}%{_datadir}/plymouth/plymouthd.conf
 if [ ! -e /.buildenv ]; then
    [ -f %{_localstatedir}/lib/plymouth/boot-duration ] || cp -f %{_datadir}/plymouth/default-boot-duration %{_localstatedir}/lib/plymouth/boot-duration
 fi
-%service_add_post
 
 %postun
 %{?regenerate_initrd_post}
-%service_del_postun
+%if 0%{?suse_version} > 1500
+%service_del_postun_without_restart
+%else
+%systemd_postun
+%endif
 if [ $1 -eq 0 ]; then
     rm -f %{_libdir}/plymouth/default.so
     rm -f /boot/initrd-plymouth.img
@@ -432,6 +435,12 @@ fi
 %posttrans
 %{?regenerate_initrd_posttrans}
 
+%if 0%{?suse_version} > 1500
+%ldconfig_scriptlets -n libply-boot-client%{soversion}
+%ldconfig_scriptlets -n libply-splash-core%{soversion}
+%ldconfig_scriptlets -n libply-splash-graphics%{soversion}
+%ldconfig_scriptlets -n libply%{soversion}
+%else
 %post -n libply-boot-client%{soversion} -p /sbin/ldconfig
 %postun -n libply-boot-client%{soversion} -p /sbin/ldconfig
 %post -n libply-splash-core%{soversion} -p /sbin/ldconfig
@@ -440,6 +449,8 @@ fi
 %postun -n libply-splash-graphics%{soversion} -p /sbin/ldconfig
 %post -n libply%{soversion} -p /sbin/ldconfig
 %postun -n libply%{soversion} -p /sbin/ldconfig
+%endif
+
 %post theme-spinfinity
 if [ $1 -eq 1 ]; then
   set -x

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 13 14:25:36 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix broken use of %service_add_post and %service_del_postun. Without
+  any services specified, the first is a no-op, the latter will only
+  execute systemctl daemon-reload (boo#1179849).
+- Use %ldconfig_scriptlets macro in Tumbleweed
+
+-------------------------------------------------------------------
 Mon Feb  1 15:18:48 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Disable plymouth-ignore-serial-console.patch:
