@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 17 12:17:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Relax the crypto policies for the test-suite. This allows the
+  tests using certificates with small key lengths to pass.
+
+-------------------------------------------------------------------
 Thu Dec 17 09:16:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.31:

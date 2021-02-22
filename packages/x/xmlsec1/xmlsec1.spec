@@ -1,7 +1,7 @@
 #
 # spec file for package xmlsec1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Library providing support for "XML Signature" and "XML Encryption" standards
 License:        MIT
 URL:            https://www.aleksey.com/xmlsec/
-Source0:        http://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.tar.gz
+Source0:        https://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.tar.gz
 Source99:       xmlsec1-rpmlintrc
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
@@ -156,6 +156,8 @@ mv %{buildroot}%{_datadir}/doc/xmlsec1/* __tmp_doc
 rmdir %{buildroot}%{_datadir}/doc/xmlsec1
 
 %check
+# Relax the crypto policies for the test-suite
+export GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null
 %make_build -j1 check check-keys check-dsig check-enc
 
 %post -n %{libname} -p /sbin/ldconfig
