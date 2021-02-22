@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 15 15:20:24 UTC 2021 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- package testsuite in a separate RPM (boo#1182235)
+	
+-------------------------------------------------------------------
 Wed Apr 15 13:24:42 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.44:

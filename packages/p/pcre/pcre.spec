@@ -1,7 +1,7 @@
 #
 # spec file for package pcre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -131,6 +131,13 @@ The PCRE library is a set of functions that implement regular
 expression pattern matching using the same syntax and semantics
 as Perl 5.
 
+%package testsuite
+Summary:        Tests for libpcre
+Group:          Development/Libraries/C and C++
+
+%description testsuite
+This package contains the testsuite part of the PCRE library.
+
 %package tools
 Summary:        A library for Perl-compatible regular expressions
 Group:          Productivity/Text/Utilities
@@ -181,6 +188,19 @@ mkdir -p %{buildroot}/%{_defaultdocdir}
 mv %{buildroot}%{_datadir}/doc/pcre %{buildroot}/%{_defaultdocdir}/pcre-doc
 #empty dependecy_libs
 find %{buildroot} -type f -name "*.la" -delete -print
+#testsuite files
+%define testsuitedir %{buildroot}/%{_libexecdir}/%{name}/testsuite
+mkdir -p %{testsuitedir}
+cp Makefile %{testsuitedir}
+cp -r testdata %{testsuitedir}
+cp .libs/pcrecpp_unittest %{testsuitedir}
+cp .libs/pcre_jit_test %{testsuitedir}
+cp .libs/pcre_scanner_unittest %{testsuitedir}
+cp .libs/pcre_stringpiece_unittest %{testsuitedir}
+cp .libs/pcregrep %{testsuitedir}
+cp .libs/pcretest %{testsuitedir}
+cp RunTest %{testsuitedir}
+cp RunGrepTest %{testsuitedir}
 
 %check
 # RunTest test 2 needs lots of stack, if it ever segfaults
@@ -196,6 +216,15 @@ ulimit -s $((16*1024))
 %postun -n libpcrecpp0 -p /sbin/ldconfig
 %post -n libpcreposix0 -p /sbin/ldconfig
 %postun -n libpcreposix0 -p /sbin/ldconfig
+
+%preun testsuite
+if [ "$1" = 0 ]; then
+   rm -f %{_libexecdir}/%{name}/testsuite/testNinputgrep
+   rm -f %{_libexecdir}/%{name}/testsuite/teststderrgrep
+   rm -f %{_libexecdir}/%{name}/testsuite/testtemp1grep
+   rm -f %{_libexecdir}/%{name}/testsuite/testtemp2grep
+   rm -f %{_libexecdir}/%{name}/testsuite/testtrygrep
+fi
 
 %files -n libpcre1
 %license COPYING LICENCE
@@ -236,5 +265,9 @@ ulimit -s $((16*1024))
 
 %files devel-static
 %{_libdir}/*.a
+
+%files testsuite
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/testsuite
 
 %changelog
