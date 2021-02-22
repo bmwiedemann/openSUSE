@@ -47,4 +47,18 @@
     <comment>require minimum jdk8</comment>
     <requestid>767908</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54b269525b3721ba364af8f07731802e</srcmd5>
+    <version>3.1.53</version>
+    <time>1614001229</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to version 3.1.53
+- build with maven-local
+- Removed patches:
+  * hbci4java-jdk10.patch
+  * hbci4java-jdk9.patch
+    + not needed with maven build
+</comment>
+    <requestid>874246</requestid>
+  </revision>
 </revisionlist>

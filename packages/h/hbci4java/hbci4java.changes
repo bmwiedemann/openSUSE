@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 17 11:04:50 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to version 3.1.53
+- build with maven-local
+- Removed patches:
+  * hbci4java-jdk10.patch
+  * hbci4java-jdk9.patch
+    + not needed with maven build
+
+-------------------------------------------------------------------
 Tue Jan 28 06:11:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Require java-devel >= 1.8 in order to support nativeheaders

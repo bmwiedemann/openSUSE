@@ -1,7 +1,7 @@
 #
 # spec file for package hbci4java
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,68 +17,63 @@
 
 
 Name:           hbci4java
-Summary:        Java online banking client using the HBCI standard
-License:        GPL-2.0-only AND LGPL-2.1-only
-Group:          Productivity/Office/Finance
-Version:        2.5.12.hibiscus.2.6.18
+Version:        3.1.53
 Release:        0
-URL:            https://github.com/willuhn/hbci4java
-Source:         https://github.com/willuhn/hibiscus/raw/V_2_6_18_BUILD_361/lib.src/hbci4java-2.5.12-src.zip
-# extracted from https://github.com/willuhn/hbci4java
-Source1:        build.xml
-Source2:        cryptalgs4java.zip
-Source3:        chipcard.zip
-Patch0:         hbci4java-jdk9.patch
-Patch1:         hbci4java-jdk10.patch
-Patch2:         signed-char.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ant
+Summary:        Java online banking client using the HBCI standard
+License:        LGPL-2.1-only
+Group:          Productivity/Office/Finance
+URL:            https://github.com/hbci4j/%{name}
+Source:         https://github.com/hbci4j/%{name}/archive/hbci4j-core-%{version}.tar.gz
+Patch0:         signed-char.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  unzip
+BuildRequires:  java-devel >= 8
+BuildRequires:  maven-local
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+BuildRequires:  mvn(org.glassfish.jaxb:jaxb-runtime)
+BuildRequires:  mvn(org.jvnet.jaxb2.maven2:maven-jaxb22-plugin)
 
 %description
-Fork of HBCI4Java for Hibiscus, that contains support for
-chipTAN, smsTAN, HHD, SEPA and other fixes/enhancements.
+Fork of HBCI4Java that contains support for chipTAN,
+smsTAN, HHD, SEPA and other fixes/enhancements.
 
 %package javadoc
 Summary:        Javadoc for %{name}
-Group:          Development/Libraries/Java
+Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description javadoc
-Developer documentation of HBCI4Java for Hibiscus.
+Developer documentation of HBCI4Java.
 
 %prep
-%setup -q -c %{name}-%{version} -a 2 -a 3
-cp %{S:1} .
+%setup -q -n %{name}-hbci4j-core-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
+
+# remove prebuilt binaries
+rm server/*-bin.zip
+rm chipcard/lib/*
+
+# No need of this plugins for rpm build
+%pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :nexus-staging-maven-plugin
 
 %build
 pushd chipcard
-make
+%make_build
 popd
 
-%ant dist
+%{mvn_build} -f
 
 %install
-mkdir -p %{buildroot}%{_libdir}/hbci4java
-install chipcard/lib/*.so %{buildroot}%{_libdir}/hbci4java
-cp -r dist/jar/* %{buildroot}%{_libdir}/hbci4java
+%mvn_install
+install -Dm0644 chipcard/lib/*.so %{buildroot}%{_jnidir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}
 
-mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -r doc/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
+%files -f .mfiles
+%license LICENSE
+%{_jnidir}/%{name}
 
-%clean
-%ant clean
-
-%files
-%defattr(-,root,root)
-%{_libdir}/hbci4java
-
-%files javadoc
-%defattr(-,root,root)
-%{_javadocdir}/%{name}-%{version}
+%files javadoc -f .mfiles-javadoc
+%license LICENSE
 
 %changelog
