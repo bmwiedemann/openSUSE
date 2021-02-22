@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb 07 08:14:24 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 4.7.0
+  * Compatibility notes
+    - Note file contents are now exported as DESCRIPTION in iCal exports
+    - The item deletion menu has been redesigned
+    - The systemdialogs option has been removed from the configuration
+  * New features:
+    - Support for advanced recurrence rules
+    - Repeat counts are accepted in the UI as an alternative to repetition
+      end dates for recurrent items
+    - The :previous and :next commands can be used to jump to the previous/next
+      occurrence of the currently selected recurrent item.
+    - Various improvements in iCal imports
+    - Notes are now displayed in the item view dialog
+  * Bug fixes
+    - Fixed formatting of DTSTART for recurrent events
+    - Improvements in hook execution
+    - Checks to make sure the config and data dirs exist
+
+-------------------------------------------------------------------
 Sun Aug 16 17:27:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.6.0:
