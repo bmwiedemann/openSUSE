@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 18 08:19:01 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Fix grub's requoted kernel parameters (bsc#1181111)
+  * 0001-libkmod-config-revamp-kcmdline-parsing-into-a-state-.patch
+  * 0002-libkmod-config-re-quote-option-from-kernel-cmdline.patch
+
+-------------------------------------------------------------------
 Thu Feb  4 08:55:08 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix tests to not test disabled features. Disable zstd again.
-  + kmod-populate-modules-Use-more-bash-more-quotes.patch
-  + kmod-testsuite-compress-modules-if-feature-is-enabled.patch
-  + kmod-also-test-xz-compression.patch
+  * kmod-populate-modules-Use-more-bash-more-quotes.patch
+  * kmod-testsuite-compress-modules-if-feature-is-enabled.patch
+  * kmod-also-test-xz-compression.patch
 
 -------------------------------------------------------------------
 Fri Jan 29 11:54:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -36,7 +43,7 @@ Tue Jan 12 16:04:41 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 - Update usr-lib-modprobe.patch to upstream submission (boo#1180821).
 
 - Require libxslt-tools for xsltproc and use local stylesheet.
-  + no-stylesheet-download.patch
+  * no-stylesheet-download.patch
 
 -------------------------------------------------------------------
 Fri Nov  6 11:41:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
@@ -72,7 +79,7 @@ Wed May 27 23:31:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
   * Use PKCS#7 instead of CMS for parsing module signature to be
     compatible with LibreSSL and OpenSSL < 1.1.0.
   * Teach modinfo to parse modules.builtin.modinfo. When using
-    Linux kernel >= v5.2~rc1, it is possible to get module
+    Linux kernel >= v5.2~rc1, it is possible to get module
     information from this new file.
 
 -------------------------------------------------------------------

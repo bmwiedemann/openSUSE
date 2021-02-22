@@ -38,6 +38,8 @@ Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
 Patch8:         no-stylesheet-download.patch
 Patch9:         0001-Fix-modinfo-F-always-shows-name-for-built-ins.patch
+Patch10:        0001-libkmod-config-revamp-kcmdline-parsing-into-a-state-.patch
+Patch11:        0002-libkmod-config-re-quote-option-from-kernel-cmdline.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook5-xsl-stylesheets

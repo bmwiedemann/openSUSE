@@ -559,4 +559,12 @@
     <comment></comment>
     <requestid>870619</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>e825ecc983c2fc6116b79061a62b5a4e</srcmd5>
+    <version>28</version>
+    <time>1614000184</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix grub's requoted kernel parameters (bsc#1181111)</comment>
+    <requestid>873347</requestid>
+  </revision>
 </revisionlist>
