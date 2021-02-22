@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 21 18:19:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Another package not available in python36: bokeh
+- Now that the (previously still lingering) python36-numpy package
+  really has been purged from the dependency tree, it became
+  apparent that it is assumed to be present in some tests.
+  * gh#dask/distributed#4529
+  * Add importorskip-numpy-tests.patch
+
+-------------------------------------------------------------------
 Mon Feb 15 11:56:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Unskip python36 build. Just skip installing optional 

@@ -34,6 +34,8 @@ License:        BSD-3-Clause
 URL:            https://distributed.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/d/distributed/distributed-%{version}.tar.gz
 Source99:       python-distributed-rpmlintrc
+# PATCH-FIX-UPSTREAM importorskip-numpy-tests.patch -- gh#dask/distributed#4529
+Patch0:         importorskip-numpy-tests.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -58,12 +60,12 @@ Requires:       python-tornado >= 6.0.3
 Requires:       python-zict >= 0.1.3
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module click >= 6.6}
 BuildRequires:  %{python_module cloudpickle >= 1.5.0}
 BuildRequires:  %{python_module dask-all >= 2021.2.0}
 # need built extension
+BuildRequires:  %{python_module contextvars if %python-base < 3.7}
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
@@ -80,6 +82,7 @@ BuildRequires:  %{python_module toolz >= 0.8.2}
 BuildRequires:  %{python_module tornado >= 5 if %python-base < 3.8}
 BuildRequires:  %{python_module tornado >= 6.0.3 if %python-base >= 3.8}
 BuildRequires:  %{python_module zict >= 0.1.3}
+BuildRequires:  %{python_module bokeh if (%python-base without python36-base)}
 BuildRequires:  %{python_module sparse if (%python-base without python36-base)}
 %endif
 %python_subpackages
@@ -90,7 +93,7 @@ extends both the concurrent.futures and dask APIs to moderate sized
 clusters.
 
 %prep
-%setup -q -n distributed-%{version}
+%autosetup -p1 -n distributed-%{version}
 # gh#dask/distributed#4467
 sed -i 's/raise pytest.skip(reason=/raise pytest.skip(/' distributed/tests/test_core.py
 

@@ -1,0 +1,196 @@
+Index: distributed-2021.2.0/distributed/protocol/tests/test_collection.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/protocol/tests/test_collection.py
++++ distributed-2021.2.0/distributed/protocol/tests/test_collection.py
+@@ -1,7 +1,7 @@
+ import pytest
+ from distributed.protocol import serialize, deserialize
+ import pandas as pd
+-import numpy as np
++np = pytest.importorskip("numpy")
+ 
+ 
+ @pytest.mark.parametrize("collection", [tuple, dict, list])
+Index: distributed-2021.2.0/distributed/protocol/tests/test_keras.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/protocol/tests/test_keras.py
++++ distributed-2021.2.0/distributed/protocol/tests/test_keras.py
+@@ -1,4 +1,4 @@
+-import numpy as np
++np = pytest.importorskip("numpy")
+ from numpy.testing import assert_allclose
+ import pytest
+ 
+Index: distributed-2021.2.0/distributed/protocol/tests/test_numpy.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/protocol/tests/test_numpy.py
++++ distributed-2021.2.0/distributed/protocol/tests/test_numpy.py
+@@ -1,6 +1,6 @@
+ from zlib import crc32
+ 
+-import numpy as np
++np = pytest.importorskip("numpy")
+ import pytest
+ 
+ from distributed.protocol import (
+Index: distributed-2021.2.0/distributed/protocol/tests/test_pandas.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/protocol/tests/test_pandas.py
++++ distributed-2021.2.0/distributed/protocol/tests/test_pandas.py
+@@ -1,4 +1,4 @@
+-import numpy as np
++np = pytest.importorskip("numpy")
+ import pandas as pd
+ import pytest
+ 
+Index: distributed-2021.2.0/distributed/protocol/tests/test_serialize.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/protocol/tests/test_serialize.py
++++ distributed-2021.2.0/distributed/protocol/tests/test_serialize.py
+@@ -3,7 +3,7 @@ import copy
+ import pickle
+ 
+ import msgpack
+-import numpy as np
++np = pytest.importorskip("numpy")
+ import pytest
+ from tlz import identity
+ 
+Index: distributed-2021.2.0/distributed/protocol/tests/test_sparse.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/protocol/tests/test_sparse.py
++++ distributed-2021.2.0/distributed/protocol/tests/test_sparse.py
+@@ -1,4 +1,4 @@
+-import numpy as np
++np = pytest.importorskip("numpy")
+ from numpy.testing import assert_allclose
+ import pytest
+ 
+Index: distributed-2021.2.0/distributed/tests/test_actor.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/tests/test_actor.py
++++ distributed-2021.2.0/distributed/tests/test_actor.py
+@@ -426,7 +426,7 @@ async def test_load_balance_map(c, s, *w
+ @gen_cluster(client=True, nthreads=[("127.0.0.1", 1)] * 4, Worker=Nanny)
+ async def bench_param_server(c, s, *workers):
+     import dask.array as da
+-    import numpy as np
++    np = pytest.importorskip("numpy")
+ 
+     x = da.random.random((500000, 1000), chunks=(1000, 1000))
+     x = x.persist()
+Index: distributed-2021.2.0/distributed/tests/test_client.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/tests/test_client.py
++++ distributed-2021.2.0/distributed/tests/test_client.py
+@@ -5522,7 +5522,7 @@ async def test_client_active_bad_port():
+ def test_turn_off_pickle(direct):
+     @gen_cluster()
+     async def test(s, a, b):
+-        import numpy as np
++        np = pytest.importorskip("numpy")
+ 
+         async with Client(
+             s.address, asynchronous=True, serializers=["dask", "msgpack"]
+@@ -5560,7 +5560,7 @@ def test_turn_off_pickle(direct):
+ 
+ @gen_cluster()
+ async def test_de_serialization(s, a, b):
+-    import numpy as np
++    np = pytest.importorskip("numpy")
+ 
+     c = await Client(
+         s.address,
+@@ -5581,7 +5581,7 @@ async def test_de_serialization(s, a, b)
+ 
+ @gen_cluster()
+ async def test_de_serialization_none(s, a, b):
+-    import numpy as np
++    np = pytest.importorskip("numpy")
+ 
+     c = await Client(s.address, asynchronous=True, deserializers=["msgpack"])
+     try:
+@@ -6420,7 +6420,7 @@ async def test_annotations_retries(c, s,
+ async def test_annotations_blockwise_unpack(c, s, a, b):
+     da = pytest.importorskip("dask.array")
+     from dask.array.utils import assert_eq
+-    import numpy as np
++    np = pytest.importorskip("numpy")
+ 
+     # A flaky doubling function -- need extra args because it is called before
+     # application to establish dtype/meta.
+Index: distributed-2021.2.0/distributed/tests/test_collections.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/tests/test_collections.py
++++ distributed-2021.2.0/distributed/tests/test_collections.py
+@@ -11,7 +11,7 @@ import dask.bag as db
+ from distributed.client import wait
+ from distributed.utils_test import gen_cluster
+ from distributed.utils_test import client, cluster_fixture, loop  # noqa F401
+-import numpy as np
++np = pytest.importorskip("numpy")
+ import pandas as pd
+ 
+ PANDAS_VERSION = LooseVersion(pd.__version__)
+Index: distributed-2021.2.0/distributed/tests/test_nanny.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/tests/test_nanny.py
++++ distributed-2021.2.0/distributed/tests/test_nanny.py
+@@ -7,8 +7,6 @@ import random
+ import sys
+ import multiprocessing as mp
+ 
+-import numpy as np
+-
+ import pytest
+ from tlz import valmap, first
+ from tornado.ioloop import IOLoop
+@@ -201,6 +199,7 @@ async def test_random_seed(c, s, a, b):
+         assert x != y
+ 
+     await check_func(lambda a, b: random.randint(a, b))
++    np = pytest.importorskip("numpy")
+     await check_func(lambda a, b: np.random.randint(a, b))
+ 
+ 
+Index: distributed-2021.2.0/distributed/tests/test_pubsub.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/tests/test_pubsub.py
++++ distributed-2021.2.0/distributed/tests/test_pubsub.py
+@@ -37,7 +37,7 @@ async def test_speed(c, s, a, b):
+             #     print(a, b, i)
+         return n
+ 
+-    import numpy as np
++    np = pytest.importorskip("numpy")
+ 
+     x = np.random.random(1000)
+ 
+Index: distributed-2021.2.0/distributed/tests/test_utils.py
+===================================================================
+--- distributed-2021.2.0.orig/distributed/tests/test_utils.py
++++ distributed-2021.2.0/distributed/tests/test_utils.py
+@@ -10,7 +10,6 @@ import sys
+ from time import sleep
+ import traceback
+ 
+-import numpy as np
+ import pytest
+ from tornado.ioloop import IOLoop
+ 
+@@ -271,6 +270,7 @@ def test_ensure_bytes():
+ 
+ 
+ def test_ensure_bytes_ndarray():
++    np = pytest.importorskip("numpy")
+     result = ensure_bytes(np.arange(12))
+     assert isinstance(result, bytes)
+ 
+@@ -283,6 +283,7 @@ def test_ensure_bytes_pyarrow_buffer():
+ 
+ 
+ def test_nbytes():
++    np = pytest.importorskip("numpy")
+     def check(obj, expected):
+         assert nbytes(obj) == expected
+         assert nbytes(memoryview(obj)) == expected
