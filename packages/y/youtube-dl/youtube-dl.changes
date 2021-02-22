@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 21 23:26:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.02.22
+  * vimeo: Add support for unlisted video source format extraction
+  * youtube: Fix uploader extraction in flat playlist mode
+
+-------------------------------------------------------------------
+Wed Feb 10 16:02:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.02.10
+  * youtube: Add support for phone/tablet JS player
+  * youtube: Extract ABR and VBR
+
+-------------------------------------------------------------------
 Wed Feb  3 22:12:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.02.04
