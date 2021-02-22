@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 21 21:01:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29)
+
+-------------------------------------------------------------------
 Sun Jan 17 23:33:01 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix macro expansion for pytest call
