@@ -29,7 +29,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Provides:       pmemkv-python-%{version}-%{release}
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le
 %{?systemd_ordering}
 # This software does not compile with gcc 7 or earliear.
 # When SLES moves to gcc 8 or later as default compiler
