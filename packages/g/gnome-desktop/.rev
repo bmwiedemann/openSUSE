@@ -1228,4 +1228,13 @@
     <comment>New stable release (forwarded request 861778 from iznogood)</comment>
     <requestid>862309</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>79483ae5f76616b89cecddd842c9fcaf</srcmd5>
+    <version>3.38.4</version>
+    <time>1614001178</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 3.38.4:
+  + Updated translations. (forwarded request 872969 from iznogood)</comment>
+    <requestid>873917</requestid>
+  </revision>
 </revisionlist>
