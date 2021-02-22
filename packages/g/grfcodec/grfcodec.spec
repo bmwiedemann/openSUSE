@@ -1,7 +1,7 @@
 #
 # spec file for package grfcodec
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,11 @@ Name:           grfcodec
 Version:        6.0.6
 Release:        0
 Summary:        A suite of programs to modify Transport Tycoon Deluxe's GRF files
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            http://dev.openttdcoop.org/projects/grfcodec/
-Source:         http://binaries.openttd.org/extra/grfcodec/%{version}/grfcodec-%{version}-source.tar.xz
+URL:            https://github.com/OpenTTD/grfcodec
+Source:         https://github.com/OpenTTD/grfcodec/archive/%{version}.tar.gz
+Patch0:         https://github.com/OpenTTD/grfcodec/commit/bb692b2c723c5e87cc8f89f445928e97594d5b8f.patch
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
@@ -45,7 +46,7 @@ a format correcter and linter for the NFO language. NFO and PCX
 or PNG files are encoded to form GRF files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 CXXFLAGS="%{optflags}" make %{?_smp_mflags}
