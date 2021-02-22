@@ -36,6 +36,7 @@ Requires:       curl
 Requires:       openssl
 Requires:       unzip
 BuildArch:      noarch
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

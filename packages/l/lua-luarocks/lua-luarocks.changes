@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 18 15:56:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro for default lua versioning
+
+-------------------------------------------------------------------
 Sun Jul 12 14:20:58 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 3.3.1
