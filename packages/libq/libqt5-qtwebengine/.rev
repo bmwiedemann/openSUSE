@@ -649,4 +649,15 @@
   * chromium-glibc-2.33.patch</comment>
     <requestid>872643</requestid>
   </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>375d9b86e25af06eed2f09b1ee9fc0a3</srcmd5>
+    <version>5.15.2</version>
+    <time>1614000160</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add patch to fix sandbox with glibc 2.33 on 32bit:
+  * sandbox-statx-futex_time64.patch
+
+- Relax constraints for armv6 and armv7</comment>
+    <requestid>873181</requestid>
+  </revision>
 </revisionlist>

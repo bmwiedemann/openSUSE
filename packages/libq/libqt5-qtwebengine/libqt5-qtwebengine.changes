@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 17 13:19:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix sandbox with glibc 2.33 on 32bit:
+  * sandbox-statx-futex_time64.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 09:52:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax constraints for armv6 and armv7
+
+-------------------------------------------------------------------
 Mon Feb 15 16:28:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix sandbox with glibc 2.33 (boo#1182233):

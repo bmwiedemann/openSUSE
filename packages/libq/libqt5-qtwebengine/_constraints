@@ -11,4 +11,18 @@
   </physicalmemory>
   <processors>4</processors>
  </hardware>
+ <overwrite>
+  <conditions>
+   <arch>armv6l</arch>
+   <arch>armv7l</arch>
+  </conditions>
+  <hardware>
+   <memory>
+     <size unit="G">9</size>
+   </memory>
+   <physicalmemory>
+    <size unit="G">8</size>
+   </physicalmemory>
+  </hardware>
+ </overwrite>
 </constraints>
