@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.5.3
+Version:        1.5.6
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -44,8 +44,6 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
-# PATCH-FIX-UPSTREAM fwupd-bsc1179790-disable-hintsystem.patch bsc#1179790 glin@suse.com Do not use the Block.HintSystem boolean for ESP filtering
-Patch3:         fwupd-bsc1179790-disable-hintsystem.patch
 
 BuildRequires:  dejavu-fonts
 %if %{with fish_support}
@@ -348,6 +346,9 @@ fi
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
+%if %{with efi_fw_update}
+%{_datadir}/fwupd/uefi-capsule-ux.tar.xz
+%endif
 
 %files -n dfu-tool
 %{_bindir}/dfu-tool
@@ -370,9 +371,6 @@ fi
 %{_libdir}/girepository-1.0/FwupdPlugin-1.0.typelib
 
 %files lang -f %{name}.lang
-%if %{with efi_fw_update}
-%{_datadir}/locale/*/LC_IMAGES/
-%endif
 
 %files devel
 %doc %{_datadir}/gtk-doc/html/fwupd/

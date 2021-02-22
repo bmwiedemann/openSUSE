@@ -1,7 +1,7 @@
-diff --git a/plugins/uefi/fu-uefi-common.c b/plugins/uefi/fu-uefi-common.c
+diff --git a/plugins/uefi-capsule/fu-uefi-common.c b/plugins/uefi-capsule/fu-uefi-common.c
 index 6cd55672..6a710cdb 100644
---- a/plugins/uefi/fu-uefi-common.c
-+++ b/plugins/uefi/fu-uefi-common.c
+--- a/plugins/uefi-capsule/fu-uefi-common.c
++++ b/plugins/uefi-capsule/fu-uefi-common.c
 @@ -227,9 +227,13 @@ fu_uefi_get_esp_path_for_os (const gchar *base)
  	g_autofree gchar *esp_path = NULL;
  	g_autoptr(GError) error_local = NULL;

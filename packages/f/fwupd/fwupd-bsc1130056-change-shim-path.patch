@@ -12,8 +12,8 @@ Signed-off-by: Gary Lin <glin@suse.com>
 
 Index: fwupd-1.5.2/plugins/uefi/fu-uefi-bootmgr.c
 ===================================================================
---- fwupd-1.5.2.orig/plugins/uefi/fu-uefi-bootmgr.c
-+++ fwupd-1.5.2/plugins/uefi/fu-uefi-bootmgr.c
+--- fwupd-1.5.2.orig/plugins/uefi-capsule/fu-uefi-bootmgr.c
++++ fwupd-1.5.2/plugins/uefi-capsule/fu-uefi-bootmgr.c
 @@ -274,7 +274,8 @@ fu_uefi_bootmgr_bootnext (FuDevice *devi
  	secure_boot = fu_efivar_secure_boot_enabled ();
  	if (secure_boot) {

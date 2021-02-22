@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Feb 18 14:04:13 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.6:
+  New features:
+    * Add SBAT metadata to the fwupd EFI binary
+    * Add support for GD32VF103 as found in the Longan Nano
+    * Add support for RMI PS2 devices
+    * Add support for the System76 Keyboard
+    * Allow downloading firmware from IPFS
+    * Install the UX data into a single .tar.xz file
+    * Add a plugin to update PixArt RF devices
+    * Add new hardware to use the elantp and rts54hid plugins
+    * Allow specifying more than one VendorID for a device
+    * Detect the AMD TSME encryption state for HSI-4
+    * Detect the AMI PK test key is not installed for HSI-1
+    * Add Maple Ridge Thunderbolt firmware parsing support
+    * Add --no-remote-check to ignore checking for download remotes
+    * Allow creating FMAP and Synaptics firmware using builder.xml
+  Fixes:
+    * Add support for the Starlabs LabTop L4
+    * Allow using an external ESP again
+    * Ask the user to reboot when required if downgrading
+    * Be more paranoid when parsing ASCII buffers and devices
+    * Check if the fwupd BootXXXX entry exists on failure
+    * Clear the pending flag if restarting the system
+    * Do not allow flashing using flashrom if BLE is enabled
+    * Do not allow Lenovo hardware to install multiple capsules
+    * Do not parse the OptionROM image
+    * Do not show Unknown [***] for every client connection
+    * Fix dnload wBlockNum wraparound for ST devices
+    * Fix OOM when using large ArchiveSizeMax values
+    * Fix several crashes spotted by AddressSanitizer
+    * Fix several places where the Goodix MOC plugin could crash
+    * Include the PCR0 to the report metadata
+    * Report the lockdown status from UEFI and SuperIO plugins
+    * Show a console warning if the system clock is not set
+    * Fix flashing a fingerprint reader that is in use
+    * Fix several critical warnings when parsing invalid firmware
+    * Fix updating DFU devices that use DNLOAD_BUSY
+    * Ignore the legacy UEFI OVMF dummy GUID
+    * Make libfwupd more thread safe to fix a crash in gnome-software
+    * Never show unprintable chars from invalid firmware in the logs
+    * Allow using fwupdtool as non-root for firmware commands
+    * Do not trust the Block.HintSystem boolean for ESP filtering
+    * Fix a memory leak when parsing Synaptics firmware
+    * Fix a possible crash when reading the Goodix MOC USB request
+    * Fix crashes when parsing invalid FMAP, DMC, Solokey and Synaptics images
+- Deprecate fwupd-bsc1179790-disable-hintsystem.patch
+
+-------------------------------------------------------------------
 Mon Dec 14 09:58:47 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fwupd-bsc1179790-disable-hintsystem.patch to remove
