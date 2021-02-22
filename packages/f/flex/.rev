@@ -296,4 +296,12 @@
     <comment>Enabling PGO</comment>
     <requestid>724214</requestid>
   </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>0ada165410b49dad3a7cfafb28e05d9d</srcmd5>
+    <version>2.6.4</version>
+    <time>1614000118</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update project url</comment>
+    <requestid>872347</requestid>
+  </revision>
 </revisionlist>

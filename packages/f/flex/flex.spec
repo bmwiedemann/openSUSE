@@ -1,7 +1,7 @@
 #
 # spec file for package flex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Fast Lexical Analyzer Generator
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
-URL:            http://flex.sourceforge.net/
+URL:            https://github.com/westes/flex
 Source:         https://github.com/westes/flex/releases/download/v%{version}/flex-%{version}.tar.gz
 Source1:        lex-wrapper.sh
 Source2:        README.SUSE
@@ -74,17 +74,17 @@ autoreconf -fi
 %configure \
   --docdir=%{_docdir}/%{name}
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   # do not run profiling in parallel for reproducible builds (boo#1040589 boo#1102408)
   make CFLAGS="%{optflags} %{cflags_profile_generate}" check
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}"
+  %make_build CFLAGS="%{optflags}"
 %endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
