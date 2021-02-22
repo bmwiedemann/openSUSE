@@ -1,7 +1,7 @@
 #
 # spec file for package mpg123
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,8 @@ and output libraries.
 
 %package -n libsyn123-%{sover}
 Summary:        MPEG audio decoder library
+Recommends:     (%{name}-pulse if pulseaudio)
+Recommends:     (%{name}-jack if jack)
 
 %description -n libsyn123-%{sover}
 The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
@@ -92,7 +94,6 @@ This package contains the plugin for openal output support.
 
 %package pulse
 Summary:        Pulseaudio Support for %{name}
-Supplements:    pulseaudio
 
 %description pulse
 The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
@@ -103,7 +104,6 @@ This package contains the plugin for Pulseaudio output support.
 
 %package jack
 Summary:        Jack Support for %{name}
-Supplements:    jack
 
 %description jack
 The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
