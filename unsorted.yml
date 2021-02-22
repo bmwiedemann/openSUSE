@@ -12868,6 +12868,7 @@ unsorted:
   - libraw1394-devel 
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
+  - libraw20-32bit: [x86_64] 
   - libraylib351 
   - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
@@ -15916,6 +15917,7 @@ unsorted:
   - mpg123-openal-32bit: [x86_64] 
   - mpg123-portaudio 
   - mpg123-portaudio-32bit: [x86_64] 
+  - mpg123-pulse 
   - mpg123-pulse-32bit: [x86_64] 
   - mpg123-sdl 
   - mpg123-sdl-32bit: [x86_64] 
@@ -16683,9 +16685,6 @@ unsorted:
   - nodejs10: [x86_64] 
   - nodejs10-devel 
   - nodejs10-docs 
-  - nodejs14: [x86_64] 
-  - nodejs14-devel: [x86_64] 
-  - nodejs14-docs: [x86_64] 
   - nodejs15-devel: [x86_64] 
   - nodejs15-docs: [x86_64] 
   - noisetorch 
@@ -16933,7 +16932,6 @@ unsorted:
   - npkg 
   - npm-default 
   - npm10: [x86_64] 
-  - npm14: [x86_64] 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -17921,6 +17919,7 @@ unsorted:
   - pam_script 
   - pam_snapper 
   - pam_u2f 
+  - pam_unix-32bit: [x86_64] 
   - pam_userpass 
   - pam_userpass-32bit: [x86_64] 
   - pam_wrapper 
@@ -18120,14 +18119,12 @@ unsorted:
   - pcp-export-pcp2spark 
   - pcp-export-pcp2xml 
   - pcp-export-pcp2zabbix 
-  - pcp-export-zabbix-agent 
   - pcp-gui 
   - pcp-import-collectl2pcp 
   - pcp-import-ganglia2pcp 
   - pcp-import-iostat2pcp 
   - pcp-import-mrtg2pcp 
   - pcp-import-sar2pcp 
-  - pcp-manager 
   - pcp-pmda-activemq 
   - pcp-pmda-apache 
   - pcp-pmda-bash 
@@ -18148,6 +18145,7 @@ unsorted:
   - pcp-pmda-haproxy 
   - pcp-pmda-infiniband 
   - pcp-pmda-json 
+  - pcp-pmda-lio 
   - pcp-pmda-lmsensors 
   - pcp-pmda-logger 
   - pcp-pmda-lustre 
@@ -18156,19 +18154,23 @@ unsorted:
   - pcp-pmda-memcache 
   - pcp-pmda-mic 
   - pcp-pmda-mounts 
+  - pcp-pmda-mssql: [x86_64] 
   - pcp-pmda-mysql 
   - pcp-pmda-named 
+  - pcp-pmda-netcheck 
   - pcp-pmda-netfilter 
   - pcp-pmda-news 
   - pcp-pmda-nfsclient 
   - pcp-pmda-nginx 
   - pcp-pmda-nutcracker 
   - pcp-pmda-nvidia-gpu 
+  - pcp-pmda-openmetrics 
+  - pcp-pmda-openvswitch 
   - pcp-pmda-oracle 
   - pcp-pmda-pdns 
   - pcp-pmda-perfevent 
   - pcp-pmda-postfix 
-  - pcp-pmda-prometheus 
+  - pcp-pmda-rabbitmq 
   - pcp-pmda-redis 
   - pcp-pmda-roomtemp 
   - pcp-pmda-rpm 
@@ -18189,11 +18191,11 @@ unsorted:
   - pcp-pmda-zswap 
   - pcp-system-tools 
   - pcp-testsuite 
-  - pcp-webapi 
   - pcp-zeroconf 
   - pcre-devel 
   - pcre-devel-static 
   - pcre-doc 
+  - pcre-testsuite 
   - pcre-tools 
   - pcre2-devel 
   - pcre2-devel-static 
@@ -19711,7 +19713,7 @@ unsorted:
   - php8-maxminddb 
   - php8-mbstring 
   - php8-memcache 
-  - php8-memcached: [x86_64] 
+  - php8-memcached 
   - php8-mysql 
   - php8-odbc 
   - php8-opcache 
@@ -20685,7 +20687,6 @@ unsorted:
   - python3-SoapySDR 
   - python3-YODA 
   - python3-aexpect 
-  - python3-agate-sql 
   - python3-apns2 
   - python3-arpack-ng: [x86_64] 
   - python3-asyncssh 
@@ -21324,6 +21325,7 @@ unsorted:
   - python36-agate-excel 
   - python36-agate-lookup 
   - python36-agate-remote 
+  - python36-agate-sql 
   - python36-agate-stats 
   - python36-aina 
   - python36-aiobotocore 
@@ -21694,7 +21696,6 @@ unsorted:
   - python36-bobo 
   - python36-bobodoctestumentation 
   - python36-bokcolmaps 
-  - python36-bokeh 
   - python36-boltons 
   - python36-boolean.py 
   - python36-booleanOperations 
@@ -21817,7 +21818,6 @@ unsorted:
   - python36-coloredlogs 
   - python36-colorlog 
   - python36-colorlover 
-  - python36-colormap 
   - python36-colorspacious 
   - python36-colour 
   - python36-combi 
@@ -22198,7 +22198,6 @@ unsorted:
   - python36-flufl.testing 
   - python36-fluidity-sm 
   - python36-flup 
-  - python36-folium 
   - python36-forbiddenfruit 
   - python36-formats 
   - python36-freeipa 
@@ -22290,7 +22289,6 @@ unsorted:
   - python36-gspread 
   - python36-gssapi 
   - python36-gst 
-  - python36-gsw 
   - python36-guessit 
   - python36-gunicorn 
   - python36-guzzle_sphinx_theme 
@@ -22431,7 +22429,6 @@ unsorted:
   - python36-jmespath 
   - python36-joblib 
   - python36-josepy 
-  - python36-jplephem 
   - python36-jsbeautifier 
   - python36-jsmin 
   - python36-json-rpc 
@@ -22670,7 +22667,6 @@ unsorted:
   - python36-neovim-remote 
   - python36-nest-asyncio 
   - python36-net-snmp 
-  - python36-netCDF4 
   - python36-netaddr 
   - python36-netifaces 
   - python36-netmiko 
@@ -22744,7 +22740,6 @@ unsorted:
   - python36-openwrt-luci-rpc 
   - python36-opt-einsum 
   - python36-orange-canvas-core 
-  - python36-orange-widget-base 
   - python36-ordered-namespace 
   - python36-ordered-set 
   - python36-orderedmultidict 
@@ -22769,7 +22764,6 @@ unsorted:
   - python36-pandas-datareader 
   - python36-pandas-ext 
   - python36-pandocfilters 
-  - python36-panel 
   - python36-panflute 
   - python36-papermill 
   - python36-parallax 
@@ -22989,7 +22983,6 @@ unsorted:
   - python36-pyelftools 
   - python36-pyemd 
   - python36-pyenchant 
-  - python36-pyerfa 
   - python36-pyface 
   - python36-pyfakefs 
   - python36-pyfeyn 
@@ -23594,7 +23587,6 @@ unsorted:
   - python36-svgwrite 
   - python36-svneverever 
   - python36-swapper 
-  - python36-swifter 
   - python36-sybil 
   - python36-sympy 
   - python36-system_hotkey 
@@ -24128,6 +24120,7 @@ unsorted:
   - python38-agate-excel 
   - python38-agate-lookup 
   - python38-agate-remote 
+  - python38-agate-sql 
   - python38-agate-stats 
   - python38-aina 
   - python38-aiobotocore 
@@ -24169,7 +24162,6 @@ unsorted:
   - python38-anyjson 
   - python38-anymarkup-core 
   - python38-apache-libcloud 
-  - python38-apipkg 
   - python38-apiron 
   - python38-application 
   - python38-applicationinsights 
@@ -25157,7 +25149,6 @@ unsorted:
   - python38-infinity 
   - python38-inflect 
   - python38-inflection 
-  - python38-iniconfig 
   - python38-inifile 
   - python38-iniparse 
   - python38-intake 
@@ -28077,6 +28068,10 @@ unsorted:
   - scamper 
   - scanmem 
   - scantailor 
+  - scap-security-guide 
+  - scap-security-guide-debian 
+  - scap-security-guide-redhat 
+  - scap-security-guide-ubuntu 
   - scap-workbench 
   - scap-workbench-doc 
   - scat 
@@ -29015,6 +29010,7 @@ unsorted:
   - terminology-theme-upstream 
   - terminus 
   - terminus-lang 
+  - terminus-ttf-fonts 
   - termit 
   - termrec 
   - termsyn-bitmap-fonts 
