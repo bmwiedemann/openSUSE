@@ -1,0 +1,21 @@
+diff -urN Linux-PAM-1.5.1.orig/modules/pam_unix/Makefile.in Linux-PAM-1.5.1/modules/pam_unix/Makefile.in
+--- Linux-PAM-1.5.1.orig/modules/pam_unix/Makefile.in	2020-11-25 17:57:14.000000000 +0100
++++ Linux-PAM-1.5.1/modules/pam_unix/Makefile.in	2021-02-12 14:33:38.159412343 +0100
+@@ -155,7 +155,7 @@
+          $(am__cd) "$$dir" && rm -f $$files; }; \
+   }
+ LTLIBRARIES = $(securelib_LTLIBRARIES)
+-pam_unix_la_DEPENDENCIES = $(top_builddir)/libpam/libpam.la
++pam_unix_la_DEPENDENCIES = 
+ am_pam_unix_la_OBJECTS = bigcrypt.lo pam_unix_acct.lo pam_unix_auth.lo \
+ 	pam_unix_passwd.lo pam_unix_sess.lo support.lo passverify.lo \
+ 	yppasswd_xdr.lo md5_good.lo md5_broken.lo
+@@ -654,7 +654,7 @@
+ 
+ pam_unix_la_LDFLAGS = -no-undefined -avoid-version -module \
+ 	$(am__append_1)
+-pam_unix_la_LIBADD = $(top_builddir)/libpam/libpam.la \
++pam_unix_la_LIBADD = -lpam \
+ 	@LIBCRYPT@ @LIBSELINUX@ @TIRPC_LIBS@ @NSL_LIBS@
+ 
+ securelib_LTLIBRARIES = pam_unix.la

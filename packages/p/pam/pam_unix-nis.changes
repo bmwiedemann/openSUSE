@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Feb 18 22:16:58 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing conflicts for pam_unix 
+
+-------------------------------------------------------------------
+Tue Feb 16 10:27:27 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix split provides and BuildRequires 
+- Makefile-pam_unix-nis.diff: Link pam_unix-nis.so against outside
+  pam library
+
+-------------------------------------------------------------------
+Fri Feb 12 13:44:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- standalone pam_unix with NIS support 

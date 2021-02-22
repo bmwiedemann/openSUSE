@@ -81,12 +81,12 @@ Requires(post): permissions
 Recommends:     login_defs-support-for-pam >= 1.3.1
 %if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(libeconf)
-BuildRequires:  pkgconfig(libnsl)
-BuildRequires:  pkgconfig(libtirpc)
 %endif
 %if %{enable_selinux}
 BuildRequires:  libselinux-devel
 %endif
+Requires:       pam_unix.so
+Suggests:       pam_unix
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(shadow)
 Requires(pre):  user(root)
@@ -96,6 +96,17 @@ Requires(pre):  user(root)
 PAM (Pluggable Authentication Modules) is a system security tool that
 allows system administrators to set authentication policies without
 having to recompile programs that do authentication.
+
+%package -n pam_unix
+Summary:        PAM module for standard UNIX authentication
+Group:          System/Libraries
+Provides:       pam_unix.so
+Conflicts:      pam_unix-nis
+
+%description -n pam_unix
+This package contains the pam_unix module, which does the standard
+UNIX authentication against the passwd and shadow database. This
+module does not contain NIS support.
 
 %package extra
 Summary:        PAM module to authenticate against a separate database
@@ -409,11 +420,6 @@ done
 %{pamdir}/pam_timestamp.so
 %{pamdir}/pam_tty_audit.so
 %{pamdir}/pam_umask.so
-%{pamdir}/pam_unix.so
-%{pamdir}/pam_unix_acct.so
-%{pamdir}/pam_unix_auth.so
-%{pamdir}/pam_unix_passwd.so
-%{pamdir}/pam_unix_session.so
 %{pamdir}/pam_usertype.so
 %{pamdir}/pam_warn.so
 %{pamdir}/pam_wheel.so
@@ -427,6 +433,14 @@ done
 %verify(not mode) %attr(4755,root,shadow) %{sbindir}/unix2_chkpwd
 %attr(0700,root,root) %{sbindir}/unix_update
 %{_unitdir}/pam_namespace.service
+
+%files -n pam_unix
+%defattr(-,root,root,755)
+%{pamdir}/pam_unix.so
+%{pamdir}/pam_unix_acct.so
+%{pamdir}/pam_unix_auth.so
+%{pamdir}/pam_unix_passwd.so
+%{pamdir}/pam_unix_session.so
 
 %files extra
 %defattr(-,root,root,755)

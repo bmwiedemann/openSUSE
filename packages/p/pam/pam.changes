@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 18 22:16:43 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing conflicts for pam_unix-nis
+
+-------------------------------------------------------------------
+Tue Feb 16 10:27:04 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Split out pam_unix module and build without NIS support
+
+-------------------------------------------------------------------
 Fri Nov 27 09:10:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to 1.5.1

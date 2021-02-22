@@ -937,4 +937,23 @@
     <comment></comment>
     <requestid>856633</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>1f0f699c213246fcc72ffc0244c8b177</srcmd5>
+    <version>1.5.1</version>
+    <time>1614000162</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add missing conflicts for pam_unix-nis
+
+- Split out pam_unix module and build without NIS support
+
+
+- Add missing conflicts for pam_unix 
+
+- Fix split provides and BuildRequires 
+- Makefile-pam_unix-nis.diff: Link pam_unix-nis.so against outside
+  pam library
+
+- standalone pam_unix with NIS support</comment>
+    <requestid>873577</requestid>
+  </revision>
 </revisionlist>
