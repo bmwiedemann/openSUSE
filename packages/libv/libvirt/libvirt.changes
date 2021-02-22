@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 17 15:11:25 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Add virtio related options to vsock
+  8a4b8996-conf-move-virDomainCheckVirtioOptions.patch,
+  c05f0066-conf-drop-empty-virDomainNetDefPostParse.patch,
+  19d4e467-conf-improve-virDomainVirtioOptionsCheckABIStability.patch,
+  bd112c9e-qemu-virtio-options-vsock.patch
+  bsc#1182365
+
+-------------------------------------------------------------------
 Thu Feb 11 17:21:23 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Fix swtpm device with aarch64

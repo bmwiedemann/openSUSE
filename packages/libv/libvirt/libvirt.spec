@@ -295,6 +295,10 @@ Patch0:         32c5e432-revert-f035f53b.patch
 Patch1:         e3d60f76-fix-socket-file-gen.patch
 Patch2:         7cf60006-qemu-swtpm-aarch64.patch
 Patch3:         afb823fc-qemu-validate-swtpm.patch
+Patch4:         8a4b8996-conf-move-virDomainCheckVirtioOptions.patch
+Patch5:         c05f0066-conf-drop-empty-virDomainNetDefPostParse.patch
+Patch6:         19d4e467-conf-improve-virDomainVirtioOptionsCheckABIStability.patch
+Patch7:         bd112c9e-qemu-virtio-options-vsock.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

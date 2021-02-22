@@ -11,11 +11,11 @@ Date:   Tue Feb 9 15:47:30 2021 -0700
     Signed-off-by: Jim Fehlig <jfehlig@suse.com>
     Reviewed-by: Andrea Bolognani <abologna@redhat.com>
 
-diff --git a/src/qemu/qemu_validate.c b/src/qemu/qemu_validate.c
-index a70737327e..bf4901bf89 100644
---- a/src/qemu/qemu_validate.c
-+++ b/src/qemu/qemu_validate.c
-@@ -4299,6 +4299,12 @@ qemuValidateDomainDeviceDefTPM(virDomainTPMDef *tpm,
+Index: libvirt-7.0.0/src/qemu/qemu_validate.c
+===================================================================
+--- libvirt-7.0.0.orig/src/qemu/qemu_validate.c
++++ libvirt-7.0.0/src/qemu/qemu_validate.c
+@@ -4251,6 +4251,12 @@ qemuValidateDomainDeviceDefTPM(virDomain
  
      switch (tpm->model) {
      case VIR_DOMAIN_TPM_MODEL_TIS:

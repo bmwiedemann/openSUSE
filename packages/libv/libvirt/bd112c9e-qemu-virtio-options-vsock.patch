@@ -1,0 +1,326 @@
+commit bd112c9e0f7523b90bf1362cf60deea7db05a32b
+Author: Boris Fiuczynski <fiuczy@linux.ibm.com>
+Date:   Wed Jan 27 19:46:59 2021 +0100
+
+    qemu: Add virtio related options to vsock
+    
+    Add virtio related options iommu, ats and packed as driver element attributes
+    to vsock devices. Ex:
+    
+     <vsock model='virtio'>
+       <cid auto='no' address='3'/>
+       <driver iommu='on'/>
+     </vsock>
+    
+    Signed-off-by: Boris Fiuczynski <fiuczy@linux.ibm.com>
+    Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-7.0.0/docs/formatdomain.rst
+===================================================================
+--- libvirt-7.0.0.orig/docs/formatdomain.rst
++++ libvirt-7.0.0/docs/formatdomain.rst
+@@ -7414,6 +7414,8 @@ devices <#elementsVirtioTransitional>`__
+ attribute ``address`` of the ``cid`` element specifies the CID assigned to the
+ guest. If the attribute ``auto`` is set to ``yes``, libvirt will assign a free
+ CID automatically on domain startup. :since:`Since 4.4.0`
++The optional ``driver`` element allows to specify virtio options, see
++`Virtio-specific options <#elementsVirtio>`__  for more details. :since:`Since 7.1.0`
+ 
+ ::
+ 
+Index: libvirt-7.0.0/docs/schemas/domaincommon.rng
+===================================================================
+--- libvirt-7.0.0.orig/docs/schemas/domaincommon.rng
++++ libvirt-7.0.0/docs/schemas/domaincommon.rng
+@@ -4883,6 +4883,11 @@
+         <optional>
+           <ref name="alias"/>
+         </optional>
++        <optional>
++          <element name="driver">
++            <ref name="virtioOptions"/>
++          </element>
++        </optional>
+       </interleave>
+     </element>
+   </define>
+Index: libvirt-7.0.0/src/conf/domain_conf.c
+===================================================================
+--- libvirt-7.0.0.orig/src/conf/domain_conf.c
++++ libvirt-7.0.0/src/conf/domain_conf.c
+@@ -2456,6 +2456,7 @@ virDomainVsockDefFree(virDomainVsockDefP
+ 
+     virObjectUnref(vsock->privateData);
+     virDomainDeviceInfoClear(&vsock->info);
++    VIR_FREE(vsock->virtio);
+     VIR_FREE(vsock);
+ }
+ 
+@@ -15624,6 +15625,11 @@ virDomainVsockDefParseXML(virDomainXMLOp
+     if (virDomainDeviceInfoParseXML(xmlopt, node, &vsock->info, flags) < 0)
+         return NULL;
+ 
++    if (virDomainVirtioOptionsParseXML(virXPathNode("./driver", ctxt),
++                                       &vsock->virtio) < 0)
++        return NULL;
++
++
+     return g_steal_pointer(&vsock);
+ }
+ 
+@@ -22806,6 +22812,9 @@ virDomainVsockDefCheckABIStability(virDo
+         return false;
+     }
+ 
++    if (!virDomainVirtioOptionsCheckABIStability(src->virtio, dst->virtio))
++        return false;
++
+     if (!virDomainDeviceInfoCheckABIStability(&src->info, &dst->info))
+         return false;
+ 
+@@ -27994,6 +28003,7 @@ virDomainVsockDefFormat(virBufferPtr buf
+     g_auto(virBuffer) childBuf = VIR_BUFFER_INIT_CHILD(buf);
+     g_auto(virBuffer) attrBuf = VIR_BUFFER_INITIALIZER;
+     g_auto(virBuffer) cidAttrBuf = VIR_BUFFER_INITIALIZER;
++    g_auto(virBuffer) drvAttrBuf = VIR_BUFFER_INITIALIZER;
+ 
+     if (vsock->model) {
+         virBufferAsprintf(&attrBuf, " model='%s'",
+@@ -28010,6 +28020,9 @@ virDomainVsockDefFormat(virBufferPtr buf
+ 
+     virDomainDeviceInfoFormat(&childBuf, &vsock->info, 0);
+ 
++    virDomainVirtioOptionsFormat(&drvAttrBuf, vsock->virtio);
++
++    virXMLFormatElement(&childBuf, "driver", &drvAttrBuf, NULL);
+     virXMLFormatElement(buf, "vsock", &attrBuf, &childBuf);
+ }
+ 
+Index: libvirt-7.0.0/src/conf/domain_conf.h
+===================================================================
+--- libvirt-7.0.0.orig/src/conf/domain_conf.h
++++ libvirt-7.0.0/src/conf/domain_conf.h
+@@ -2542,6 +2542,7 @@ struct _virDomainVsockDef {
+     virTristateBool auto_cid;
+ 
+     virDomainDeviceInfo info;
++    virDomainVirtioOptionsPtr virtio;
+ };
+ 
+ struct _virDomainVirtioOptions {
+Index: libvirt-7.0.0/src/conf/domain_validate.c
+===================================================================
+--- libvirt-7.0.0.orig/src/conf/domain_validate.c
++++ libvirt-7.0.0/src/conf/domain_validate.c
+@@ -1450,6 +1450,15 @@ virDomainMemoryDefValidate(const virDoma
+ }
+ 
+ 
++static bool
++virDomainVsockIsVirtioModel(const virDomainVsockDef *vsock)
++{
++    return (vsock->model == VIR_DOMAIN_VSOCK_MODEL_VIRTIO ||
++            vsock->model == VIR_DOMAIN_VSOCK_MODEL_VIRTIO_TRANSITIONAL ||
++            vsock->model == VIR_DOMAIN_VSOCK_MODEL_VIRTIO_NON_TRANSITIONAL);
++}
++
++
+ static int
+ virDomainVsockDefValidate(const virDomainVsockDef *vsock)
+ {
+@@ -1459,6 +1468,10 @@ virDomainVsockDefValidate(const virDomai
+         return -1;
+     }
+ 
++    if (!virDomainVsockIsVirtioModel(vsock) &&
++        virDomainCheckVirtioOptions(vsock->virtio) < 0)
++        return -1;
++
+     return 0;
+ }
+ 
+Index: libvirt-7.0.0/src/qemu/qemu_command.c
+===================================================================
+--- libvirt-7.0.0.orig/src/qemu/qemu_command.c
++++ libvirt-7.0.0/src/qemu/qemu_command.c
+@@ -9731,6 +9731,9 @@ qemuBuildVsockDevStr(virDomainDefPtr def
+     virBufferAsprintf(&buf, ",id=%s", vsock->info.alias);
+     virBufferAsprintf(&buf, ",guest-cid=%u", vsock->guest_cid);
+     virBufferAsprintf(&buf, ",vhostfd=%s%u", fdprefix, priv->vhostfd);
++
++    qemuBuildVirtioOptionsStr(&buf, vsock->virtio);
++
+     if (qemuBuildDeviceAddressStr(&buf, def, &vsock->info, qemuCaps) < 0)
+         return NULL;
+ 
+Index: libvirt-7.0.0/src/qemu/qemu_validate.c
+===================================================================
+--- libvirt-7.0.0.orig/src/qemu/qemu_validate.c
++++ libvirt-7.0.0/src/qemu/qemu_validate.c
+@@ -4200,6 +4200,9 @@ qemuValidateDomainDeviceDefVsock(const v
+                                               "vsock"))
+         return -1;
+ 
++    if (qemuValidateDomainVirtioOptions(vsock->virtio, qemuCaps) < 0)
++        return -1;
++
+     return 0;
+ }
+ 
+Index: libvirt-7.0.0/tests/qemuxml2argvdata/vhost-vsock-ccw-iommu.s390x-latest.args
+===================================================================
+--- /dev/null
++++ libvirt-7.0.0/tests/qemuxml2argvdata/vhost-vsock-ccw-iommu.s390x-latest.args
+@@ -0,0 +1,42 @@
++LC_ALL=C \
++PATH=/bin \
++HOME=/tmp/lib/domain--1-QEMUGuest1 \
++USER=test \
++LOGNAME=test \
++XDG_DATA_HOME=/tmp/lib/domain--1-QEMUGuest1/.local/share \
++XDG_CACHE_HOME=/tmp/lib/domain--1-QEMUGuest1/.cache \
++XDG_CONFIG_HOME=/tmp/lib/domain--1-QEMUGuest1/.config \
++QEMU_AUDIO_DRV=none \
++/usr/bin/qemu-system-s390x \
++-name guest=QEMUGuest1,debug-threads=on \
++-S \
++-object secret,id=masterKey0,format=raw,\
++file=/tmp/lib/domain--1-QEMUGuest1/master-key.aes \
++-machine s390-ccw-virtio,accel=tcg,usb=off,dump-guest-core=off,\
++memory-backend=s390.ram \
++-cpu qemu \
++-m 214 \
++-object memory-backend-ram,id=s390.ram,size=224395264 \
++-overcommit mem-lock=off \
++-smp 1,sockets=1,cores=1,threads=1 \
++-uuid c7a5fdbd-edaf-9455-926a-d65c16db1809 \
++-display none \
++-no-user-config \
++-nodefaults \
++-chardev socket,id=charmonitor,fd=1729,server,nowait \
++-mon chardev=charmonitor,id=monitor,mode=control \
++-rtc base=utc \
++-no-shutdown \
++-boot strict=on \
++-blockdev '{"driver":"host_device","filename":"/dev/HostVG/QEMUGuest1",\
++"node-name":"libvirt-1-storage","auto-read-only":true,"discard":"unmap"}' \
++-blockdev '{"node-name":"libvirt-1-format","read-only":false,"driver":"raw",\
++"file":"libvirt-1-storage"}' \
++-device virtio-blk-ccw,devno=fe.0.0000,drive=libvirt-1-format,id=virtio-disk0,\
++bootindex=1 \
++-device virtio-balloon-ccw,id=balloon0,devno=fe.0.0001 \
++-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,\
++resourcecontrol=deny \
++-device vhost-vsock-ccw,id=vsock0,guest-cid=4,vhostfd=6789,iommu_platform=on,\
++devno=fe.0.0002 \
++-msg timestamp=on
+Index: libvirt-7.0.0/tests/qemuxml2argvdata/vhost-vsock-ccw-iommu.xml
+===================================================================
+--- /dev/null
++++ libvirt-7.0.0/tests/qemuxml2argvdata/vhost-vsock-ccw-iommu.xml
+@@ -0,0 +1,37 @@
++<domain type='qemu'>
++  <name>QEMUGuest1</name>
++  <uuid>c7a5fdbd-edaf-9455-926a-d65c16db1809</uuid>
++  <memory unit='KiB'>219136</memory>
++  <currentMemory unit='KiB'>219136</currentMemory>
++  <vcpu placement='static'>1</vcpu>
++  <os>
++    <type arch='s390x' machine='s390-ccw-virtio'>hvm</type>
++    <boot dev='hd'/>
++  </os>
++  <cpu mode='custom' match='exact' check='none'>
++    <model fallback='forbid'>qemu</model>
++  </cpu>
++  <clock offset='utc'/>
++  <on_poweroff>destroy</on_poweroff>
++  <on_reboot>restart</on_reboot>
++  <on_crash>destroy</on_crash>
++  <devices>
++    <emulator>/usr/bin/qemu-system-s390x</emulator>
++    <disk type='block' device='disk'>
++      <driver name='qemu' type='raw'/>
++      <source dev='/dev/HostVG/QEMUGuest1'/>
++      <target dev='hda' bus='virtio'/>
++      <address type='ccw' cssid='0xfe' ssid='0x0' devno='0x0000'/>
++    </disk>
++    <controller type='pci' index='0' model='pci-root'/>
++    <memballoon model='virtio'>
++      <address type='ccw' cssid='0xfe' ssid='0x0' devno='0x0001'/>
++    </memballoon>
++    <panic model='s390'/>
++    <vsock model='virtio'>
++      <cid auto='no' address='4'/>
++      <address type='ccw' cssid='0xfe' ssid='0x0' devno='0x0002'/>
++      <driver iommu='on'/>
++    </vsock>
++  </devices>
++</domain>
+Index: libvirt-7.0.0/tests/qemuxml2argvtest.c
+===================================================================
+--- libvirt-7.0.0.orig/tests/qemuxml2argvtest.c
++++ libvirt-7.0.0/tests/qemuxml2argvtest.c
+@@ -3400,6 +3400,7 @@ mymain(void)
+     DO_TEST_CAPS_LATEST("vhost-vsock-auto");
+     DO_TEST_CAPS_ARCH_LATEST("vhost-vsock-ccw", "s390x");
+     DO_TEST_CAPS_ARCH_LATEST("vhost-vsock-ccw-auto", "s390x");
++    DO_TEST_CAPS_ARCH_LATEST("vhost-vsock-ccw-iommu", "s390x");
+ 
+     DO_TEST_CAPS_VER("launch-security-sev", "2.12.0");
+     DO_TEST_CAPS_VER("launch-security-sev-missing-platform-info", "2.12.0");
+Index: libvirt-7.0.0/tests/qemuxml2xmloutdata/vhost-vsock-ccw-iommu.s390x-latest.xml
+===================================================================
+--- /dev/null
++++ libvirt-7.0.0/tests/qemuxml2xmloutdata/vhost-vsock-ccw-iommu.s390x-latest.xml
+@@ -0,0 +1,37 @@
++<domain type='qemu'>
++  <name>QEMUGuest1</name>
++  <uuid>c7a5fdbd-edaf-9455-926a-d65c16db1809</uuid>
++  <memory unit='KiB'>219136</memory>
++  <currentMemory unit='KiB'>219136</currentMemory>
++  <vcpu placement='static'>1</vcpu>
++  <os>
++    <type arch='s390x' machine='s390-ccw-virtio'>hvm</type>
++    <boot dev='hd'/>
++  </os>
++  <cpu mode='custom' match='exact' check='none'>
++    <model fallback='forbid'>qemu</model>
++  </cpu>
++  <clock offset='utc'/>
++  <on_poweroff>destroy</on_poweroff>
++  <on_reboot>restart</on_reboot>
++  <on_crash>destroy</on_crash>
++  <devices>
++    <emulator>/usr/bin/qemu-system-s390x</emulator>
++    <disk type='block' device='disk'>
++      <driver name='qemu' type='raw'/>
++      <source dev='/dev/HostVG/QEMUGuest1'/>
++      <target dev='hda' bus='virtio'/>
++      <address type='ccw' cssid='0xfe' ssid='0x0' devno='0x0000'/>
++    </disk>
++    <controller type='pci' index='0' model='pci-root'/>
++    <memballoon model='virtio'>
++      <address type='ccw' cssid='0xfe' ssid='0x0' devno='0x0001'/>
++    </memballoon>
++    <panic model='s390'/>
++    <vsock model='virtio'>
++      <cid auto='no' address='4'/>
++      <address type='ccw' cssid='0xfe' ssid='0x0' devno='0x0002'/>
++      <driver iommu='on'/>
++    </vsock>
++  </devices>
++</domain>
+Index: libvirt-7.0.0/tests/qemuxml2xmltest.c
+===================================================================
+--- libvirt-7.0.0.orig/tests/qemuxml2xmltest.c
++++ libvirt-7.0.0/tests/qemuxml2xmltest.c
+@@ -1402,6 +1402,8 @@ mymain(void)
+             QEMU_CAPS_CCW);
+     DO_TEST("vhost-vsock-ccw-auto", QEMU_CAPS_DEVICE_VHOST_VSOCK,
+             QEMU_CAPS_CCW);
++    DO_TEST_CAPS_ARCH_LATEST("vhost-vsock-ccw-iommu", "s390x");
++
+ 
+     DO_TEST_CAPS_LATEST("vhost-user-fs-fd-memory");
+     DO_TEST_CAPS_LATEST("vhost-user-fs-hugepages");

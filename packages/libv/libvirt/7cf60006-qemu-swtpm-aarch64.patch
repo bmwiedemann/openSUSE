@@ -30,11 +30,11 @@ Date:   Tue Feb 9 14:57:22 2021 -0700
     Signed-off-by: Jim Fehlig <jfehlig@suse.com>
     Reviewed-by: Andrea Bolognani <abologna@redhat.com>
 
-diff --git a/src/qemu/qemu_command.c b/src/qemu/qemu_command.c
-index d27d5eb55b..5fe4e618fe 100644
---- a/src/qemu/qemu_command.c
-+++ b/src/qemu/qemu_command.c
-@@ -9230,6 +9230,9 @@ qemuBuildTPMDevStr(const virDomainDef *def,
+Index: libvirt-7.0.0/src/qemu/qemu_command.c
+===================================================================
+--- libvirt-7.0.0.orig/src/qemu/qemu_command.c
++++ libvirt-7.0.0/src/qemu/qemu_command.c
+@@ -9163,6 +9163,9 @@ qemuBuildTPMDevStr(const virDomainDef *d
      g_auto(virBuffer) buf = VIR_BUFFER_INITIALIZER;
      const char *model = virDomainTPMModelTypeToString(tpm->model);
  
@@ -44,11 +44,10 @@ index d27d5eb55b..5fe4e618fe 100644
      virBufferAsprintf(&buf, "%s,tpmdev=tpm-%s,id=%s",
                        model, tpm->info.alias, tpm->info.alias);
  
-diff --git a/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args b/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args
-new file mode 100644
-index 0000000000..94a083d816
+Index: libvirt-7.0.0/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args
+===================================================================
 --- /dev/null
-+++ b/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args
++++ libvirt-7.0.0/tests/qemuxml2argvdata/aarch64-tpm.aarch64-latest.args
 @@ -0,0 +1,37 @@
 +LC_ALL=C \
 +PATH=/bin \
@@ -87,11 +86,10 @@ index 0000000000..94a083d816
 +-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,\
 +resourcecontrol=deny \
 +-msg timestamp=on
-diff --git a/tests/qemuxml2argvdata/aarch64-tpm.xml b/tests/qemuxml2argvdata/aarch64-tpm.xml
-new file mode 100644
-index 0000000000..d338a20f17
+Index: libvirt-7.0.0/tests/qemuxml2argvdata/aarch64-tpm.xml
+===================================================================
 --- /dev/null
-+++ b/tests/qemuxml2argvdata/aarch64-tpm.xml
++++ libvirt-7.0.0/tests/qemuxml2argvdata/aarch64-tpm.xml
 @@ -0,0 +1,15 @@
 +<domain type="qemu">
 +  <name>aarch64test</name>
@@ -108,11 +106,11 @@ index 0000000000..d338a20f17
 +    </tpm>
 +  </devices>
 +</domain>
-diff --git a/tests/qemuxml2argvtest.c b/tests/qemuxml2argvtest.c
-index d324921271..82cf503dd0 100644
---- a/tests/qemuxml2argvtest.c
-+++ b/tests/qemuxml2argvtest.c
-@@ -2478,6 +2478,7 @@ mymain(void)
+Index: libvirt-7.0.0/tests/qemuxml2argvtest.c
+===================================================================
+--- libvirt-7.0.0.orig/tests/qemuxml2argvtest.c
++++ libvirt-7.0.0/tests/qemuxml2argvtest.c
+@@ -2476,6 +2476,7 @@ mymain(void)
      DO_TEST_CAPS_LATEST("tpm-emulator-tpm2-enc");
      DO_TEST_CAPS_LATEST("tpm-emulator-tpm2-pstate");
      DO_TEST_CAPS_LATEST_PPC64("tpm-emulator-spapr");
