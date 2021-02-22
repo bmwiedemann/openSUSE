@@ -1,7 +1,7 @@
 #
 # spec file for package python-bokeh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-# Tests fail due to missing git data,
-# and building the JS from source doesn't work (tested as of version 2.2.0)
+# tests suite disabled by default. See below.
 %bcond_with    tests
 
-# PACKAGE NO LONGER SUPPORTS PYTHON2
 %define skip_python2 1
-
+%define skip_python36 1
 Name:           python-bokeh
 Version:        2.2.3
 Release:        0
@@ -30,32 +28,36 @@ Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
 URL:            https://github.com/bokeh/bokeh/
 Source:         https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
+BuildRequires:  %{python_module Jinja2 >= 2.7}
+BuildRequires:  %{python_module Pillow >= 7.1.0}
+BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy >= 1.11.3}
+BuildRequires:  %{python_module packaging >= 16.8}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tornado >= 5.1}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with tests}
-BuildRequires:  %{python_module Jinja2 >= 2.7}
-BuildRequires:  %{python_module Pillow >= 4.0}
-BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module numpy >= 1.11.3}
-BuildRequires:  %{python_module packaging >= 16.8}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module selenium}
-BuildRequires:  %{python_module tornado >= 5}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+# Note: If you manage to activate the test suite, try to patch external mock out.
+BuildRequires:  %{python_module mock}
 %endif
 # /SECTION
 BuildConflicts: python-buildservice-tweak
 Requires:       python-Jinja2 >= 2.7
-Requires:       python-Pillow >= 4.0
+Requires:       python-Pillow >= 7.1.0
 Requires:       python-PyYAML >= 3.10
 Requires:       python-numpy >= 1.11.3
 Requires:       python-packaging >= 16.8
 Requires:       python-python-dateutil >= 2.1
-Requires:       python-selenium
-Requires:       python-tornado >= 5
+Requires:       python-tornado >= 5.1
 Requires:       python-typing_extensions >= 3.7.4
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -88,7 +90,9 @@ with interactivity over large or streaming datasets.
 
 %if %{with tests}
 %check
-%python_exec setup.py test
+# Running the test suite (with datafiles from the GitHub archive) fails 
+# due to missing server/client setups, chromedriver, selenium etc.
+%pytest --no-js
 %endif
 
 %post
