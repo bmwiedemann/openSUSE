@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 20 10:16:36 UTC 2021 - info@paolostivanin.com
+
+- Update to version 1.19.6:
+  * Bump c/containers/storage v1.24.6
+  * Don't fail copy to emptydir
+  * Workaround for RHEL gating test failure
+  * Fix config-flags-verification test on F33
+  * Fix bud capabilities test
+  * Stop overriding the location of the blob info cache
+  * Fix caching layers with build args
+  * Vendor in latest containers/image and common
+
+-------------------------------------------------------------------
 Fri Feb 12 08:54:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.19.4:
