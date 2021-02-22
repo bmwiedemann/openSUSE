@@ -1672,4 +1672,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>868789</requestid>
   </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>e5f06b04e1e6e88b8327c9956c4e58ea</srcmd5>
+    <version>10.5.8</version>
+    <time>1614000129</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>872662</requestid>
+  </revision>
 </revisionlist>

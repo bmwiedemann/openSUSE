@@ -68,4 +68,5 @@ main.upgrade_MDEV-19650                          : since 10.5.8 - x86_64
 main.upgrade_MDEV-23102-1                        : since 10.5.8 - x86_64
 main.upgrade_MDEV-23102-2                        : since 10.5.8 - x86_64
 main.mysql_upgrade_to_100502                     : since 10.5.8 - x86_64
-
+sys_vars.profiling_history_size_basic            : since 10.5.8 - x86_64
+sys_vars.old_alter_table_basic                   : since 10.5.8 - x86_64
