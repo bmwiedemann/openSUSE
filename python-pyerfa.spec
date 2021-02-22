@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{suse_version} <= 1500
 # use the bundled ERFA in Leap <=15.X, because the system provided one is too old
 %bcond_with systemlibs
@@ -23,10 +24,10 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define erfaversion 1.7.1
-# upstream dropped python2 support, no pytest doctestplus for python2
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-pyerfa
-Version:        1.7.1.1
+Version:        1.7.2
 Release:        0
 Summary:        Python bindings for ERFA
 License:        BSD-3-Clause

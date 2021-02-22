@@ -31,4 +31,12 @@
     <comment>Update, dropped python2 support which is needed to build on Leap/Backports</comment>
     <requestid>864043</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34cc5c0df5351bc0dbddaeec59a8c024</srcmd5>
+    <version>1.7.2</version>
+    <time>1614001204</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874189</requestid>
+  </revision>
 </revisionlist>
