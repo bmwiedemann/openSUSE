@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 22 08:13:13 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.7.1
+  - Bug Fixes
+    - Accommodate /sys/fs/selinux mount changes on kernel 5.9+.
+    - Fix loop devices file descriptor leak when shared loop devices 
+      is enabled.
+    - Use MaxLoopDevices variable from config file in all appropriate 
+      locations.
+    - Use -buildmode=default (non pie) on ppc64le to prevent crashes 
+      when using plugins.
+    - Remove spurious warning in parseTokenSection()
+    - e2e test fixes for new kernels, new unsquashfs version.
+    - Show correct web URI for detached builds against alternate remotes.
+
+-------------------------------------------------------------------
 Wed Jan  6 15:22:52 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 3.7.0
