@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 21 23:22:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210222
+  * --filter only run jobs where the filter is true. The filter
+    can contain replacement strings and Perl code such as: '{1} <
+    {2}+1'.
+  * --template takes a text file as a template with replacement
+    strings. Then it replaces the replacement strings and saves
+    it under a new filename.
+  * --plus implements {0%} {0#} replacement string for zero
+    padded slot and sequence.
+
+-------------------------------------------------------------------
 Thu Feb  4 09:36:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20210122
