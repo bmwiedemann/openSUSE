@@ -25,11 +25,10 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/hroptatyr/dateutils/
 Source0:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.asc
+Source2:        %{name}.keyring
 BuildRequires:  octave-devel
 BuildRequires:  pkgconfig
 BuildRequires:  timezone
-Requires(post): info
-Requires(pre):  info
 
 %description
 Dateutils are a bunch of tools that revolve around fiddling with dates
@@ -54,7 +53,7 @@ Dateutils can be used from within matlab or ocatave.
 %build
 %configure \
   --enable-contrib
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -62,60 +61,15 @@ rm -rf %{buildroot}%{_datadir}/doc/dateutils
 rm -rf %{buildroot}%{_libdir}/octave/site/oct/*/dateutils/tzconv.la
 
 %check
-make %{?_smp_mflags} check
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info*
-
-%postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info*
+%make_build check
 
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/dadd
-%{_bindir}/dconv
-%{_bindir}/ddiff
-%{_bindir}/dgrep
-%{_bindir}/dround
-%{_bindir}/dseq
-%{_bindir}/dsort
-%{_bindir}/dtest
-%{_bindir}/dzone
-%{_bindir}/dateadd
-%{_bindir}/dateconv
-%{_bindir}/datediff
-%{_bindir}/dategrep
-%{_bindir}/dateround
-%{_bindir}/dateseq
-%{_bindir}/datesort
-%{_bindir}/datetest
-%{_bindir}/datezone
-%{_bindir}/strptime
-%dir %{_datadir}/dateutils/
-%{_datadir}/dateutils/locale
-%{_datadir}/dateutils/*.tzmcc
+%{_bindir}/*
+%{_datadir}/dateutils/
+%{_mandir}/man1/*
 %{_infodir}/%{name}.info%{?ext_info}
-%{_mandir}/man1/%{name}.1%{?ext_man}
-%{_mandir}/man1/dadd.1%{?ext_man}
-%{_mandir}/man1/dconv.1%{?ext_man}
-%{_mandir}/man1/ddiff.1%{?ext_man}
-%{_mandir}/man1/dgrep.1%{?ext_man}
-%{_mandir}/man1/dround.1%{?ext_man}
-%{_mandir}/man1/dseq.1%{?ext_man}
-%{_mandir}/man1/dsort.1%{?ext_man}
-%{_mandir}/man1/dtest.1%{?ext_man}
-%{_mandir}/man1/dzone.1%{?ext_man}
-%{_mandir}/man1/dateadd.1%{?ext_man}
-%{_mandir}/man1/dateconv.1%{?ext_man}
-%{_mandir}/man1/datediff.1%{?ext_man}
-%{_mandir}/man1/dategrep.1%{?ext_man}
-%{_mandir}/man1/dateround.1%{?ext_man}
-%{_mandir}/man1/dateseq.1%{?ext_man}
-%{_mandir}/man1/datesort.1%{?ext_man}
-%{_mandir}/man1/datetest.1%{?ext_man}
-%{_mandir}/man1/datezone.1%{?ext_man}
-%{_mandir}/man1/strptime.1%{?ext_man}
 
 %files octave
 %dir %{_libdir}/octave/site/oct/*/dateutils/

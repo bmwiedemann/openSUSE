@@ -291,4 +291,12 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
 - Drop dateutils-remove-deprecated-header.patch: not needed anymore</comment>
     <requestid>873182</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a382193517da7ff9a522247c1cc8a614</srcmd5>
+    <version>0.4.8</version>
+    <time>1614001241</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874254</requestid>
+  </revision>
 </revisionlist>
