@@ -541,4 +541,14 @@
     https://cgit.freedesktop.org/libreoffice/dictionaries/log/</comment>
     <requestid>859435</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>0a35c23e99d0c287bdf69375f3a1ba08</srcmd5>
+    <version>20201230</version>
+    <time>1614000170</time>
+    <user>RBrownSUSE</user>
+    <comment>- use github repo [bsc#1182375]
+- modified sources
+  % update.sh</comment>
+    <requestid>873301</requestid>
+  </revision>
 </revisionlist>

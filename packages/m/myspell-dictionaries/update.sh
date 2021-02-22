@@ -326,7 +326,7 @@ fi
 if [ $DOWNLOAD == "yes" ]; then 
   echo '--- Download current git version'
   rm -rf $GIT_DIR
-  git clone --depth 30 git://anongit.freedesktop.org/libreoffice/$GIT_DIR
+  git clone --depth 30 https://github.com/LibreOffice/$GIT_DIR.git
   pushd $GIT_DIR
   git log > ../REMOVE_GIT_LOG
   popd
