@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 12 18:38:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.25:
+  + Settings: Make cursor aspect ratio setting work.
+  + Broadway:
+    - Fix touchscreen event handling.
+    - Support Android / Chrome on-screen keyboard.
+  + Wayland:
+    - Avoid crashes with tablet input.
+    - Add api to support clients with subsurfaces better.
+  + Inspector: Make the inspector available in non-debug builds.
+  + Theme:
+    - Make scrollbars larger.
+    - Disable shadows on maximized, fullscreen and tiled windows.
+  + Printing: Support Avahi-discovered printers better.
+  + Input:
+    - Show preedit for compose sequences.
+    - Support long compose sequences.
+    - Support compose sequences producing multiple characters.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Dec  7 20:37:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.24:

@@ -1,7 +1,7 @@
 #
 # spec file for package gtk3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,7 @@
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.24
+Version:        3.24.25
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
