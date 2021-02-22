@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 14 16:48:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU tar 1.34:
+  * Fix extraction over pipe
+  * Fix memory leak in read_header
+  * Fix extraction when . and .. are unreadable
+  * Gracefully handle duplicate symlinks when extracting
+  * Re-initialize supplementary groups when switching to user
+    privileges
+
+-------------------------------------------------------------------
 Sat Jan  9 07:40:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU tar 1.33:

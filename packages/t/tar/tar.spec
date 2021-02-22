@@ -19,7 +19,7 @@
 # For correct subpackages docs installation into tar doc directory
 %global _docdir_fmt %{name}
 Name:           tar
-Version:        1.33
+Version:        1.34
 Release:        0
 Summary:        GNU implementation of ((t)ape (ar)chiver)
 License:        GPL-3.0-or-later
@@ -40,7 +40,7 @@ Patch3:         %{name}-ignore_lone_zero_blocks.patch
 #https://bugzilla.opensuse.org/show_bug.cgi?id=918487
 Patch4:         %{name}-recursive--files-from.patch
 Patch5:         add_readme-tests.patch
-BuildRequires:  automake
+BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
 Recommends:     %{name}-rmt = %{version}
