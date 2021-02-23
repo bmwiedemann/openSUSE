@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandas-datareader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,32 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
+# ONLINE tests only, disable by default
+%bcond_with test
 Name:           python-pandas-datareader
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Data readers extracted from the pandas codebase
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/pandas-datareader
 Source:         https://files.pythonhosted.org/packages/source/p/pandas-datareader/pandas-datareader-%{version}.tar.gz
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pandas >= 0.21}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.3.0}
+BuildRequires:  %{python_module pandas >= 0.23}
+BuildRequires:  %{python_module requests >= 2.19.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module versioneer}
+%if %{with test}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wrapt}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
-Requires:       python-pandas >= 0.21
-Requires:       python-requests >= 2.3.0
+Requires:       python-pandas >= 0.23
+Requires:       python-requests >= 2.19.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,8 +60,14 @@ Remote data access for pandas. Works for multiple versions of pandas.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# ONLINE tests only
-#%%pytest
+%if %{with test}
+# ONLINE tests only, run with `rpmbuild --with=test ..` outside of obs, if you dare.
+%pytest
+%else
+pushd ..
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c 'import pandas_datareader'
+popd 
+%endif
 
 %files %{python_files}
 %doc README.rst

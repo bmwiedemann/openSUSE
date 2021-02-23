@@ -43,4 +43,12 @@
   * Immediate deprecation of Robinhood for quotes and historical data</comment>
     <requestid>736051</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5d53b4ad2b98406fb3ae4b233c264cf2</srcmd5>
+    <version>0.9.0</version>
+    <time>1614108051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874337</requestid>
+  </revision>
 </revisionlist>
