@@ -76,11 +76,6 @@ LOCAL_REPO_MAP=(
 # TEMPORARY! FOR NOW WE REQUIRE THESE LOCALLY TO DO WORK ON PACKAGE
 REQUIRED_LOCAL_REPO_MAP=(
     ~/git/qemu-opensuse
-    ~/git/qemu-seabios
-    ~/git/qemu-ipxe
-    ~/git/qemu-sgabios
-    ~/git/qemu-keycodemapdb
-    ~/git/qemu-qboot
 )
 
 PATCH_PATH_MAP=(

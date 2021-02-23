@@ -1,6 +1,6 @@
 From: Bruce Rogers <brogers@suse.com>
 Date: Mon, 25 Jan 2021 21:05:05 -0700
-Subject: spice-app: avoid crash when core spice module isn't loaded
+Subject: spice-app: avoid crash when core spice module doesn't loaded
 
 When qemu is built with modules, but a given module doesn't load
 qemu should handle that gracefully. When ui-spice-core.so isn't
@@ -15,7 +15,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/ui/spice-app.c b/ui/spice-app.c
-index 026124ef56a0ef26fbe3cf0a1aba..8ded9024a376da5c4802c1f87fd7 100644
+index 026124ef56a0ef26fbe3cf0a1aba..4325ac2d9c5403e8d77099825fc3 100644
 --- a/ui/spice-app.c
 +++ b/ui/spice-app.c
 @@ -129,6 +129,7 @@ static void spice_app_atexit(void)
@@ -32,8 +32,8 @@ index 026124ef56a0ef26fbe3cf0a1aba..8ded9024a376da5c4802c1f87fd7 100644
      }
 +    list = qemu_find_opts("spice");
 +    if (list == NULL) {
-+        error_report("spice-app missing spice support\n");
-+	exit(1);
++        error_report("spice-app missing spice support");
++        exit(1);
 +    }
  
      type_register(&char_vc_type_info);
