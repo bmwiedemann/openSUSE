@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 22 11:44:25 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- kernel-source.build-modules.sh: choose safe CWD while executing the build to
+  prevent files being created in unsafe locations. Use new SUSE naming
+  convention and rely on /etc/os-release, since /etc/SuSE-release no longer
+  exists.
+
+-------------------------------------------------------------------
 Fri Feb  5 08:41:48 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - use stock 1.8.7 from openafs.org
