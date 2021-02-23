@@ -20,7 +20,7 @@
 %define sover   0
 %define libname lib%{name}%{sover}
 Name:           zbar
-Version:        0.23.1
+Version:        0.23.90
 Release:        0
 Summary:        Bar code reader
 License:        LGPL-2.0-or-later
@@ -28,10 +28,6 @@ Group:          Productivity/Other
 URL:            https://github.com/mchehab/zbar
 Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
-# PATCH-FIX-UPSTREAM -- https://github.com/mchehab/zbar/pull/63
-Patch0:         0001-Create-correct-pkconfig-file-for-zbar-qt5.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/mchehab/zbar/commit/a133aea7880bbb56d75535e534716d0e16a3b61a
-Patch1:         0002-get-rid-of-gettext_h.patch
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
@@ -43,6 +39,7 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libv4l2)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -100,6 +97,13 @@ This package contains all necessary include files, libraries,
 configuration files and development tools needed to compile and link
 applications using the zbar-qt library.
 
+%package -n python3-zbar
+Summary:        Python3 module for ZBar
+Group:          Development/Languages/Python
+
+%description -n python3-zbar
+This package contains the module to use ZBar from python3.
+
 %prep
 %autosetup -p1
 
@@ -111,7 +115,7 @@ test -x "$(type -p gcc-8)" && export CC=$_
   --docdir=%{_docdir}/%{name} \
   --disable-static \
   --without-java \
-  --with-python=no \
+  --with-python=python3 \
   --without-gtk
 %make_build
 
@@ -164,5 +168,8 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 %{_includedir}/%{name}/QZBar*.h
 %{_libdir}/libzbarqt.so
 %{_libdir}/pkgconfig/zbar-qt.pc
+
+%files -n python3-zbar
+%{python3_sitearch}/zbar.so
 
 %changelog
