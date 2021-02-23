@@ -303,4 +303,16 @@
   them to avoid dangling symlinks in the devel package.</comment>
     <requestid>854087</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3ab219f6932da0a1e8d69804b06afe6d</srcmd5>
+    <version>9.5.25</version>
+    <time>1614107879</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+- Upgrade to version 9.5.25
+  * https://www.postgresql.org/docs/9.5/release-9-5-25.html
+  * Reindexing might be needed after applying this update.</comment>
+    <requestid>873907</requestid>
+  </revision>
 </revisionlist>

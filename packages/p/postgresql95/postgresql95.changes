@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 19 15:30:08 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+-------------------------------------------------------------------
+Fri Feb 12 12:35:02 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 9.5.25
+  * https://www.postgresql.org/docs/9.5/release-9-5-25.html
+  * Reindexing might be needed after applying this update.
+
+-------------------------------------------------------------------
 Fri Nov 20 11:51:37 UTC 2020 - Reinhard Max <max@suse.com>
 
 - bsc#1178961: %ghost the symlinks to pg_config and ecpg.
