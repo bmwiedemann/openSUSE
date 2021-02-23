@@ -540,4 +540,16 @@
   them to avoid dangling symlinks in the devel package.</comment>
     <requestid>854085</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>99c6118fb5ae4913b571e3290d5d7844</srcmd5>
+    <version>10.16</version>
+    <time>1614107867</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+- Upgrade to version 10.16:
+  * https://www.postgresql.org/docs/10/release-10-16.html
+  * Reindexing might be needed after applying this update.</comment>
+    <requestid>873817</requestid>
+  </revision>
 </revisionlist>

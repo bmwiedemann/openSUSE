@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql10
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 10.15
+%define pgversion 10.16
 %define pgmajor 10
 %define pgsuffix %pgmajor
 %define buildlibs 0
@@ -72,7 +72,11 @@ BuildRequires:  tcl-devel
 BuildRequires:  timezone
 BuildRequires:  zlib-devel
 %bcond_without  selinux
+%if %pgmajor > 10 || 0%{?suse_version} <= 1500
 %bcond_without  icu
+%else
+%bcond_with icu
+%endif
 %if  !%buildlibs
 BuildRequires:  %libecpg
 BuildRequires:  %libpq
