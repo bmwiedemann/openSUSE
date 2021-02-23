@@ -1,7 +1,7 @@
 #
 # spec file for package elilo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,7 @@ BuildRequires:  perl(Pod::Man)
 
 Name:           elilo
 Summary:        EFI Linux Loader
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Boot
 Version:        3.16
 Release:        0
@@ -39,7 +39,7 @@ PreReq:         /usr/bin/perl perl(Pod::Usage) perl(Getopt::Long)
 %ifarch ia64
 PreReq:         perl(File::Compare)
 %endif
-Url:            http://elilo.sourceforge.net/
+URL:            http://elilo.sourceforge.net/
 #ource:         http://downloads.sourceforge.net/elilo/elilo-3.16-all.tar.gz
 Source:         elilo-%{version}-source.tar.xz
 Source1:        elilo.pl
@@ -57,6 +57,7 @@ Patch6:         elilo-textmenu-disable-print-devices.diff
 Patch7:         elilo-high_base_mem.diff
 Patch10:        elilo-de-debianify.diff
 Patch11:        eliloalt-no-date.diff
+Patch12:        elilo-binutils-2.36-fix.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -75,6 +76,7 @@ The EFI Linux boot loader.
 %patch7 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 # work around b0rked 'Str'-ops in newer 'gnu-efi' ... :-(
 find . -type f -name '*.[ch]' -print0 | xargs -0rn 1 \
   perl -pi -e 's{Str(Chr|n(X?Cpy|Cat))}{eliloStr$1}g'
