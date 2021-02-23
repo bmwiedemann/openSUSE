@@ -74,7 +74,7 @@ Mon Mar 11 05:26:57 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 -------------------------------------------------------------------
 Thu Jan 24 04:34:37 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- go1.11.5 (released 2019/01/23) security release fixes CVE-2019-6486.
+- go1.11.5 (released 2019/01/23) security release fixes CVE-2019-6486 (bsc#1123013).
   * go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384
 
 -------------------------------------------------------------------

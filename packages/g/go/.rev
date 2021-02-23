@@ -915,4 +915,12 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
   Refs boo#1175132 go1.15 release tracking (forwarded request 873021 from jfkw)</comment>
     <requestid>873027</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>bc09ff20f2855724c6d0a267a437680f</srcmd5>
+    <version>1.15</version>
+    <time>1614274043</time>
+    <user>RBrownSUSE</user>
+    <comment>Restore changelog ref to bsc#1123013 (forwarded request 874753 from jfkw)</comment>
+    <requestid>874754</requestid>
+  </revision>
 </revisionlist>
