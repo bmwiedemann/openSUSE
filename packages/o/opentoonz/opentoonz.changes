@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 20:36:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use usb-1.0 dependency instead of deprecated usb-0.1 
+
+-------------------------------------------------------------------
 Wed Oct 14 17:01:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix the factory build:

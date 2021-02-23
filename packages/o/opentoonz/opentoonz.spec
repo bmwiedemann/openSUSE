@@ -1,7 +1,7 @@
 #
 # spec file for package opentoonz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libusb-devel
 BuildRequires:  openblas-devel
 BuildRequires:  pkgconfig
 # needed to setup startup script paths
@@ -67,6 +66,7 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libmypaint)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)

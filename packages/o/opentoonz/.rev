@@ -87,4 +87,12 @@
   * 0001-System-depend-code-deduplication.patch</comment>
     <requestid>841809</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>aa2d5643d4db669b388b616bfeb7dd80</srcmd5>
+    <version>1.4.0</version>
+    <time>1614108087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874439</requestid>
+  </revision>
 </revisionlist>
