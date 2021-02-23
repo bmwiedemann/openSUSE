@@ -7,7 +7,8 @@ addFilter("statically-linked-binary .*/grub2/*/kernel.img")
 addFilter("unstripped-binary-or-object .*/grub2/*/.*.mod")
 # TODO: s390 Experts: is this sensible?!
 addFilter("s390x: W: executable-stack")
-#
+# We need to provide compatibility sym-links in noarch package
 addFilter("suse-filelist-forbidden-noarch")
+addFilter("filelist-forbidden-noarch")
 #
 addFilter('arch-independent-package-contains-binary-or-object')

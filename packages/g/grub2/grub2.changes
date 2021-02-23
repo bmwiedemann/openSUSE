@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 22 12:49:48 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix build error in binutils 2.36 (bsc#1181741)
+  * 0001-Fix-build-error-in-binutils-2.36.patch
+- Fix executable stack in grub-emu (bsc#1181696)
+  * 0001-emu-fix-executable-stack-marking.patch
+
+-------------------------------------------------------------------
+Thu Feb 18 05:21:29 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Restore compatibilty sym-links
+  * grub2.spec
+- Use rpmlintrc to filter out rpmlint 2.0 error (bsc#1179044)
+  * grub2.rpmlintrc
+
+-------------------------------------------------------------------
 Wed Jan 27 04:13:32 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Complete Secure Boot support on aarch64 (jsc#SLE-15020)
