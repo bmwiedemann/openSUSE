@@ -1,8 +1,0 @@
-<package name="rubygem-amqp" project="openSUSE:Factory">
-  <title>AMQP client implementation in Ruby/EventMachine</title>
-  <description>An implementation of the AMQP protocol in Ruby/EventMachine for writing clients to the RabbitMQ message broker
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-amqp"/>
-  <url>http://amqp.rubyforge.org/</url>
-</package>
