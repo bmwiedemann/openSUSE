@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 16 10:41:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.4:
+  + User Accounts:
+    - Properly handle claiming errors if we're already claiming.
+    - Always call EnrollStop on enrollment complete.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan  7 21:42:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.3:
