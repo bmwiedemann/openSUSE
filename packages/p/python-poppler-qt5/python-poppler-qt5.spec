@@ -24,7 +24,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-%define pythons python3
 Name:           python-poppler-qt5
 Version:        0.75.0
 Release:        0
@@ -32,6 +31,8 @@ Summary:        Python binding to poppler-qt5
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/python-poppler-qt5/
+# The newer version 21.1.0 fails to build
+# See: https://github.com/frescobaldi/python-poppler-qt5/issues/43
 Source0:        https://files.pythonhosted.org/packages/source/p/python-poppler-qt5/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM poppler-qt5-pr33-sip5.patch gh#frescobaldi/python-poppler-qt5#33 -- support SIP5
 Patch1:         https://github.com/frescobaldi/python-poppler-qt5/pull/33.patch#/poppler-qt5-pr33-sip5.patch
@@ -73,6 +74,8 @@ python packages using python-poppler
 
 %prep
 %autosetup -p1
+# use the aliased keyword for subprocess.check_call() that is also known by Python 3.6 gh#frescobaldi/python-poppler-qt5#44
+sed -i 's/text=True/universal_newlines=True/' project.py
 
 %build
 %if 0%{?use_sip4}
