@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:47:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.04
+   see /usr/share/doc/packages/perl-Mojo-Log-Colored/Changes
+
+  0.04 2021-02-20T21:04:20Z
+
+      - Automatically honour Mojolicious 9 breaking change in default log format based on
+        installed Mojo version
+
+-------------------------------------------------------------------
 Sat May 23 03:08:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.03
