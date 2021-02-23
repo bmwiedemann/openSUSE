@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyFxA
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -46,9 +46,6 @@ Requires:       python-six >= 1.14
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython3
-Requires:       python-setuptools
-%endif
 %python_subpackages
 
 %description

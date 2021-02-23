@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 14:42:08 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Drop broken %ifpython3 macro, we don't need setuptools during runtime
+
+-------------------------------------------------------------------
 Tue Sep 22 18:46:00 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 0.7.7:
