@@ -35,20 +35,22 @@ BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qtmultimedia-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig(gsettings-qt)
+Requires:       deepin-desktop-base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer work 
+Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer work
 on Deepin.
 
-You shoud read the [Deepin Application Specification](doc/Specification) firstly.
+You shoud read the [Deepin Application Specification](doc/Specification)
+firstly.
 
 %package -n lib%{name}%{libver}
 Summary:        Deepin Toolkit Core libraries
 Group:          System/Libraries
 
 %description -n lib%{name}%{libver}
-Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer work 
+Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer work
 on Deepin.
 
 %package devel
