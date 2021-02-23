@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 10:49:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Enable aruco module (recognize markers to detect camera pose)
+
+-------------------------------------------------------------------
 Sat Jan  2 16:30:59 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.5.1, highlights below, for details check
