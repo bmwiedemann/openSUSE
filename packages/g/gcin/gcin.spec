@@ -1,7 +1,7 @@
 #
 # spec file for package gcin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -185,7 +185,7 @@ rm -rf scripts/modify-XIM
 sed -i "s/modify-XIM//" scripts/Makefile
 
 %build
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
 sed -e "s,^LIB='lib',LIB=lib64," -i configure
 %endif
 CFLAGS="%{optflags}" %configure --prefix=/usr --use_i18n=Y \
