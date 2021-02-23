@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 19 15:30:08 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+-------------------------------------------------------------------
+Wed Feb 10 13:16:32 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 13.2:
+  * https://www.postgresql.org/docs/13/release-13-2.html
+  * Updating stored views and reindexing might be needed after
+    applying this update.
+  * CVE-2021-3393, bsc#1182040: Fix information leakage in
+    constraint-violation error messages.
+  * CVE-2021-20229, bsc#1182039: Fix failure to check per-column
+    SELECT privileges in some join queries.
+  * Obsoletes postgresql-icu68.patch.
+
+-------------------------------------------------------------------
 Mon Dec 14 16:19:05 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add postgresql-icu68.patch: fix build with ICU 68

@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql13
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 13.1
+%define pgversion 13.2
 %define pgmajor 13
 %define pgsuffix %pgmajor
 %define buildlibs 1
@@ -72,7 +72,11 @@ BuildRequires:  tcl-devel
 BuildRequires:  timezone
 BuildRequires:  zlib-devel
 %bcond_without  selinux
+%if %pgmajor > 10 || 0%{?suse_version} <= 1500
 %bcond_without  icu
+%else
+%bcond_with icu
+%endif
 %if  !%buildlibs
 BuildRequires:  %libecpg
 BuildRequires:  %libpq
@@ -145,7 +149,6 @@ Patch4:         postgresql-plperl-keep-rpath.patch
 Patch6:         postgresql-testsuite-int8.sql.patch
 Patch8:         postgresql-testsuite-keep-results-file.patch
 Patch9:         postgresql-var-run-socket.patch
-Patch10:        postgresql-icu68.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -453,7 +456,6 @@ touch -r configure tmp
 %patch6
 %patch8 -p1
 %patch9
-%patch10 -p1
 touch -r tmp configure
 rm tmp
 find src/test/ -name '*.orig' -delete

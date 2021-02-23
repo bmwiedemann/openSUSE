@@ -58,4 +58,22 @@
     <comment></comment>
     <requestid>861016</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47b9fb279d8bcf1d855de42769f711d8</srcmd5>
+    <version>13.2</version>
+    <time>1614107874</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+- Upgrade to version 13.2:
+  * https://www.postgresql.org/docs/13/release-13-2.html
+  * Updating stored views and reindexing might be needed after
+    applying this update.
+  * CVE-2021-3393, bsc#1182040: Fix information leakage in
+    constraint-violation error messages.
+  * CVE-2021-20229, bsc#1182039: Fix failure to check per-column
+    SELECT privileges in some join queries.
+  * Obsoletes postgresql-icu68.patch.</comment>
+    <requestid>873842</requestid>
+  </revision>
 </revisionlist>
