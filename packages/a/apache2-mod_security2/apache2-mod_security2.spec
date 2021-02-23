@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_security2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define tarballname   modsecurity-%{version}
 %define usrsharedir %{_datadir}/%{name}
 Name:           apache2-mod_security2
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        Web Application Firewall for apache httpd
 License:        Apache-2.0
@@ -34,6 +34,8 @@ Source7:        empty.conf
 Patch0:         apache2-mod_security2-no_rpath.diff
 Patch1:         modsecurity-fixes.patch
 Patch2:         apache2-mod_security2_tests_conf.patch
+# https://github.com/SpiderLabs/ModSecurity/issues/2514
+Patch3:         modsecurity-2.9.3-input_filtering_errors.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  apache2-prefork
@@ -43,7 +45,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  libcurl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
-BuildRequires:  lua-devel
+BuildRequires:  lua53-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl-libwww-perl
 BuildRequires:  pkgconfig
@@ -68,6 +70,7 @@ mv -v SpiderLabs* rules
 %patch0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 # aclocal only works with newer distributions
@@ -120,7 +123,7 @@ mv %{buildroot}/%{usrsharedir}/rules/modsecurity_crs_10_setup.conf.example \
 %{apache_sysconfdir}/mod_security2.d/README-SUSE-mod_security2.txt
 %{apache_sysconfdir}/mod_security2.d/empty.conf
 %{usrsharedir}
-%doc README.TXT CHANGES LICENSE NOTICE authors.txt
+%doc README.md CHANGES LICENSE NOTICE authors.txt
 %doc doc/README.txt
 %doc doc/README-SUSE-mod_security2.txt
 %doc rules/util/regression-tests
