@@ -25,6 +25,12 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 
+%if 0%{?usrmerged}
+%bcond_without usrmerged
+%else
+%bcond_with usrmerged
+%endif
+
 %bcond_with build_all
 %define build_main 1
 %define build_utils %{with build_all}
@@ -83,6 +89,9 @@ BuildRequires:  zlib-devel
 %if "%flavor" == "i686"
 ExclusiveArch:  i586 i686
 BuildArch:      i686
+%endif
+%if %{with usrmerged} && %{build_main}
+Provides:       /sbin/ldconfig
 %endif
 
 %define __filter_GLIBC_PRIVATE 1
@@ -407,8 +416,16 @@ for -static linking.  You don't need these, unless you link statically,
 which is highly discouraged.
 
 
+
+
+
+
+
+
+
 # makedb requires libselinux. We add this program in a separate
 # package so that glibc does not require libselinux.
+
 %package extra
 Summary:        Extra binaries from GNU C Library
 License:        LGPL-2.1-or-later
@@ -420,6 +437,15 @@ The glibc-extra package contains some extra binaries for glibc that
 are not essential but recommend to use.
 
 makedb: A program to create a database for nss
+
+%package usrmerge-bootstrap-helper
+Summary:        Internal usrmerge bootstrap helper
+License:        LGPL-2.1-or-later
+Requires:       glibc = %{version}
+Requires:       this-is-only-for-build-envs
+
+%description usrmerge-bootstrap-helper
+Internal usrmerge bootstrap helper
 
 %lang_package
 %endif
@@ -568,6 +594,9 @@ profile="--disable-profile"
 %ifarch armv7hl ppc ppc64 ppc64le i686 x86_64 sparc sparc64 s390 s390x
 	--enable-multi-arch \
 %endif
+%ifarch aarch64
+	--enable-memory-tagging \
+%endif
 %ifarch mipsel
 	--without-fp \
 %endif
@@ -640,13 +669,78 @@ make %{?_smp_mflags} -C cc-base -k check || {
 make %{?_smp_mflags} -C cc-base check-abi
 %endif
 
+%define rtldlib %{_lib}
+# Each architecture has a different name for the dynamic linker:
+%ifarch %arm
+%ifarch armv6hl armv7hl
+%define rtld_name ld-linux-armhf.so.3
+# Keep compatibility link
+%define rtld_oldname ld-linux.so.3
+%else
+%define rtld_name ld-linux.so.3
+%endif
+%endif
+%ifarch ia64
+%define rtld_name ld-linux-ia64.so.2
+%endif
+%ifarch ppc s390 mips hppa m68k
+%define rtld_name ld.so.1
+%endif
+%ifarch ppc64
+%define rtld_name ld64.so.1
+%endif
+%ifarch ppc64le
+%define rtld_name ld64.so.2
+%endif
+%ifarch s390x
+%define rtldlib lib
+%define rtld_name ld64.so.1
+%endif
+%ifarch x86_64
+%define rtld_name ld-linux-x86-64.so.2
+%endif
+%ifarch %ix86 %sparc
+%define rtld_name ld-linux.so.2
+%endif
+%ifarch aarch64
+%define rtldlib lib
+%define rtld_name ld-linux-aarch64.so.1
+%endif
+%ifarch riscv64
+%define rtldlib lib
+%define rtld_name ld-linux-riscv64-lp64d.so.1
+%endif
+
+%if %{with usrmerged}
+%define rootsbindir %{_sbindir}
+%define slibdir %{_libdir}
+%define rtlddir %{_prefix}/%{rtldlib}
+%else
+%define rootsbindir /sbin
+%define slibdir /%{_lib}
+%define rtlddir /%{rtldlib}
+%endif
+
 %install
 %if !%{build_testsuite}
+
+%if %{with usrmerged}
+mkdir -p %{buildroot}%{_libdir}
+ln -s %{buildroot}%{_libdir} %{buildroot}/%{_lib}
+%if "%{rtldlib}" != "%{_lib}"
+mkdir -p %{buildroot}%{rtlddir}
+ln -s %{buildroot}%{rtlddir} %{buildroot}/%{rtldlib}
+%endif
+mkdir -p %{buildroot}%{_sbindir}
+ln -s %{buildroot}%{_sbindir} %{buildroot}/sbin
+%endif
+
 %ifarch riscv64
 mkdir -p %{buildroot}%{_libdir}
 ln -s . %{buildroot}%{_libdir}/lp64d
-mkdir -p %{buildroot}/%{_lib}
-ln -s . %{buildroot}/%{_lib}/lp64d
+%if "%{slibdir}" != "%{_libdir}"
+mkdir -p %{buildroot}%{slibdir}
+ln -s . %{buildroot}%{slibdir}/lp64d
 %endif
 %endif
 
@@ -715,7 +809,7 @@ cd manpages; make install_root=%{buildroot} install; cd ..
 %ifnarch i686
 cp nscd/nscd.conf %{buildroot}/etc
 mkdir -p %{buildroot}/etc/init.d
-ln -sf /sbin/service %{buildroot}/usr/sbin/rcnscd
+ln -sf %{rootsbindir}/service %{buildroot}%{_sbindir}/rcnscd
 mkdir -p %{buildroot}/run/nscd
 mkdir -p %{buildroot}/var/lib/nscd
 %endif
@@ -745,7 +839,7 @@ touch %{buildroot}/etc/ld.so.cache
 # Don't look at ldd! We don't wish a /bin/sh requires
 chmod 644 %{buildroot}%{_bindir}/ldd
 
-rm -f %{buildroot}/sbin/sln
+rm -f %{buildroot}%{rootsbindir}/sln
 
 # Remove the buildflags tracking section and the build-id
 for o in %{buildroot}/%{_libdir}/crt[1in].o %{buildroot}/%{_libdir}/lib*_nonshared.a; do
@@ -759,9 +853,9 @@ mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 644 %{SOURCE21} %{buildroot}/usr/lib/systemd/system
 %endif
 
-%ifarch armv6hl armv7hl
+%if 0%{?rtld_oldname:1}
 # Provide compatibility link
-ln -s ld-%{libversion}.so %{buildroot}/lib/ld-linux.so.3
+ln -s %{slibdir}/ld-%{libversion}.so %{buildroot}%{rtlddir}/%{rtld_oldname}
 %endif
 
 # Move getconf to %{_libexecdir}/getconf/ to avoid cross device link
@@ -770,8 +864,8 @@ ln -s %{_libexecdir}/getconf/getconf %{buildroot}%{_bindir}/getconf
 
 %if !%{build_utils}
 # Remove unwanted files (packaged in glibc-utils)
-rm -f %{buildroot}/%{_lib}/libmemusage*
-rm -f %{buildroot}/%{_lib}/libpcprofile*
+rm -f %{buildroot}%{slibdir}/libmemusage*
+rm -f %{buildroot}%{slibdir}/libpcprofile*
 rm -f %{buildroot}%{_bindir}/memusage*
 rm -f %{buildroot}%{_bindir}/mtrace
 rm -f %{buildroot}%{_bindir}/pcprofiledump
@@ -798,22 +892,22 @@ ln -s %{_prefix}/share/misc/Makefile.makedb %{buildroot}/var/lib/misc/Makefile
 
 # LSB
 %ifarch %ix86
-ln -sf /%{_lib}/ld-linux.so.2 $RPM_BUILD_ROOT/%{_lib}/ld-lsb.so.3
+ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb.so.3
 %endif
 %ifarch x86_64
-ln -sf /%{_lib}/ld-linux-x86-64.so.2 $RPM_BUILD_ROOT/%{_lib}/ld-lsb-x86-64.so.3
+ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-x86-64.so.3
 %endif
 %ifarch ppc
-ln -sf /%{_lib}/ld.so.1 $RPM_BUILD_ROOT/%{_lib}/ld-lsb-ppc32.so.3
+ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-ppc32.so.3
 %endif
 %ifarch ppc64
-ln -sf /%{_lib}/ld64.so.1 $RPM_BUILD_ROOT/%{_lib}/ld-lsb-ppc64.so.3
+ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-ppc64.so.3
 %endif
 %ifarch s390
-ln -sf /%{_lib}/ld.so.1 $RPM_BUILD_ROOT/%{_lib}/ld-lsb-s390.so.3
+ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-s390.so.3
 %endif
 %ifarch s390x
-ln -sf /%{_lib}/ld64.so.1 $RPM_BUILD_ROOT/%{_lib}/ld-lsb-s390x.so.3
+ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-s390x.so.3
 %endif
 
 %else
@@ -824,14 +918,45 @@ make %{?_smp_mflags} install_root=%{buildroot} install -C cc-base \
   subdirs='malloc debug elf'
 cd manpages; make install_root=%{buildroot} install; cd ..
 # Remove unwanted files
-rm -f %{buildroot}/%{_lib}/ld*.so* %{buildroot}/%{_lib}/lib[!mp]*
-rm -f %{buildroot}/lib/ld*.so*
+rm -f %{buildroot}%{slibdir}/ld*.so* %{buildroot}%{slibdir}/lib[!mp]*
+%if "%{rtlddir}" != "%{slibdir}"
+rm -f %{buildroot}%{rtlddir}/ld*.so*
+%endif
 rm -f %{buildroot}%{_libdir}/lib*
 rm -f %{buildroot}%{_bindir}/{catchsegv,ldd*,sprof}
 rm -rf %{buildroot}%{_mandir}/man*
-rm -rf %{buildroot}/sbin %{buildroot}%{_includedir}
+rm -rf %{buildroot}%{rootsbindir} %{buildroot}%{_includedir}
 %ifarch riscv64
-rm %{buildroot}/%{_lib}/lp64d %{buildroot}%{_libdir}/lp64d
+rm %{buildroot}%{_libdir}/lp64d
+%if "%{slibdir}" != "%{_libdir}"
+rm %{buildroot}%{slibdir}/lp64d
+%endif
+%endif
+
+%endif
+
+%endif
+
+%if %{with usrmerged}
+
+rm %{buildroot}/%{_lib}
+%if "%{rtldlib}" != "%{_lib}"
+rm %{buildroot}/%{rtldlib}
+%endif
+rm %{buildroot}/sbin
+
+%if %{build_main}
+mkdir -p %{buildroot}/%{_lib}
+cp %{buildroot}%{slibdir}/libc.so.6 %{buildroot}/%{_lib}
+mkdir -p %{buildroot}/%{rtldlib}
+cp %{buildroot}%{rtlddir}/%{rtld_name} %{buildroot}/%{rtldlib}
+mkdir -p %{buildroot}/sbin
+cp %{buildroot}%{rootsbindir}/ldconfig %{buildroot}/sbin
+strip %{buildroot}/%{_lib}/libc.so.6 %{buildroot}/%{rtldlib}/%{rtld_name}
+strip %{buildroot}/sbin/ldconfig
+%ifarch riscv64
+ln -s . %{buildroot}/%{_lib}/lp64d
+%endif
 %endif
 
 %endif
@@ -861,16 +986,16 @@ libraries = { "libc.so.6", "libc.so.6.1", "libm.so.6", "libm.so.6.1",
 	      "librt.so.1", "libpthread.so.0", "libthread_db.so.1" }
 remove_dirs = {
 %ifarch i586
-  "/%{_lib}/i686/",
+  "%{slibdir}/i686/",
 %endif
 %ifarch ppc ppc64
-  "/%{_lib}/power4/", "/%{_lib}/ppc970/",
-  "/%{_lib}/power5/", "/%{_lib}/power5+/",
-  "/%{_lib}/power6/", "/%{_lib}/power6x/",
-  "/%{_lib}/power7/",
-  "/%{_lib}/ppc-cell-be/",
+  "%{slibdir}/power4/", "%{slibdir}/ppc970/",
+  "%{slibdir}/power5/", "%{slibdir}/power5+/",
+  "%{slibdir}/power6/", "%{slibdir}/power6x/",
+  "%{slibdir}/power7/",
+  "%{slibdir}/ppc-cell-be/",
 %endif
-  "/%{_lib}/tls/"
+  "%{slibdir}/tls/"
 }
 for i, remove_dir in ipairs(remove_dirs) do
   for j, library in ipairs(libraries) do
@@ -885,15 +1010,15 @@ for i, remove_dir in ipairs(remove_dirs) do
     os.remove(file)
   end
 end
-if posix.access("/sbin/ldconfig", "x") then
-  exec("/sbin/ldconfig", "-X")
+if posix.access("%{rootsbindir}/ldconfig", "x") then
+  exec("%{rootsbindir}/ldconfig", "-X")
 end
 if posix.utime("%{_libdir}/gconv/gconv-modules.cache") then
   exec("/usr/sbin/iconvconfig", "-o", "%{_libdir}/gconv/gconv-modules.cache",
        "--nostdlib", "%{_libdir}/gconv")
 end
 
-%postun -p /sbin/ldconfig
+%postun -p %{rootsbindir}/ldconfig
 
 %post locale-base
 /usr/sbin/iconvconfig
@@ -906,7 +1031,7 @@ end
 
 %pre -n nscd
 getent group nscd >/dev/null || %{_sbindir}/groupadd -r nscd
-getent passwd nscd >/dev/null || %{_sbindir}/useradd -r -g nscd -c "User for nscd" -s /sbin/nologin -d /run/nscd nscd
+getent passwd nscd >/dev/null || %{_sbindir}/useradd -r -g nscd -c "User for nscd" -s %{rootsbindir}/nologin -d /run/nscd nscd
 %service_add_pre nscd.service
 
 %preun -n nscd
@@ -945,94 +1070,66 @@ exit 0
 %doc %{_mandir}/man1/gencat.1.gz
 %doc %{_mandir}/man1/getconf.1.gz
 %doc %{_mandir}/man5/*
-/%{_lib}/ld-%{libversion}.so
 
-# Each architecture has a different name for the dynamic linker:
-%ifarch %arm
-%ifarch armv6hl armv7hl
-/%{_lib}/ld-linux-armhf.so.3
-# Keep compatibility link
-/%{_lib}/ld-linux.so.3
-%else
-/%{_lib}/ld-linux.so.3
+%{slibdir}/ld-%{libversion}.so
+%{slibdir}/%{rtld_name}
+%if "%{rtlddir}" != "%{slibdir}"
+%{rtlddir}/%{rtld_name}
 %endif
-%endif
-%ifarch ia64
-/%{_lib}/ld-linux-ia64.so.2
-%endif
-%ifarch ppc s390 mips hppa m68k
-/%{_lib}/ld.so.1
-%endif
-%ifarch ppc64
-/%{_lib}/ld64.so.1
-%endif
-%ifarch ppc64le
-/%{_lib}/ld64.so.2
-%endif
-%ifarch s390x
-/lib/ld64.so.1
-/%{_lib}/ld64.so.1
-%endif
-%ifarch x86_64
-/%{_lib}/ld-linux-x86-64.so.2
-%endif
-%ifarch %ix86 %sparc
-/%{_lib}/ld-linux.so.2
-%endif
-%ifarch aarch64
-/lib/ld-linux-aarch64.so.1
-/%{_lib}/ld-linux-aarch64.so.1
-%endif
-%ifarch riscv64
-/lib/ld-linux-riscv64-lp64d.so.1
-/%{_lib}/ld-linux-riscv64-lp64d.so.1
-/%{_lib}/lp64d
-%{_libdir}/lp64d
+%if 0%{?rtld_oldname:1}
+%{rtlddir}/%{rtld_oldname}
 %endif
 %ifarch %ix86 x86_64 ppc ppc64 s390 s390x
 # LSB
-/%{_lib}/*-lsb*.so.3
+%{slibdir}/*-lsb*.so.3
 %endif
 
-/%{_lib}/libBrokenLocale-%{libversion}.so
-/%{_lib}/libBrokenLocale.so.1
-/%{_lib}/libSegFault.so
-/%{_lib}/libanl-%{libversion}.so
-/%{_lib}/libanl.so.1
-/%{_lib}/libc-%{libversion}.so
-/%{_lib}/libc.so.6*
-/%{_lib}/libdl-%{libversion}.so
-/%{_lib}/libdl.so.2*
-/%{_lib}/libm-%{libversion}.so
-/%{_lib}/libm.so.6*
-%ifarch x86_64
-/%{_lib}/libmvec-%{libversion}.so
-/%{_lib}/libmvec.so.1
+%ifarch riscv64
+%{_libdir}/lp64d
+%if "%{slibdir}" != "%{_libdir}"
+%{slibdir}/lp64d
 %endif
-/%{_lib}/libnsl-%{libversion}.so
-/%{_lib}/libnsl.so.1
-/%{_lib}/libnss_compat-%{libversion}.so
-/%{_lib}/libnss_compat.so.2
-/%{_lib}/libnss_db-%{libversion}.so
-/%{_lib}/libnss_db.so.2
-/%{_lib}/libnss_dns-%{libversion}.so
-/%{_lib}/libnss_dns.so.2
-/%{_lib}/libnss_files-%{libversion}.so
-/%{_lib}/libnss_files.so.2
-/%{_lib}/libnss_hesiod-%{libversion}.so
-/%{_lib}/libnss_hesiod.so.2
-/%{_lib}/libpthread-%{libversion}.so
-/%{_lib}/libpthread.so.0
-/%{_lib}/libresolv-%{libversion}.so
-/%{_lib}/libresolv.so.2
-/%{_lib}/librt-%{libversion}.so
-/%{_lib}/librt.so.1
-/%{_lib}/libthread_db-1.0.so
-/%{_lib}/libthread_db.so.1
-/%{_lib}/libutil-%{libversion}.so
-/%{_lib}/libutil.so.1
+%endif
+
+%{slibdir}/libBrokenLocale-%{libversion}.so
+%{slibdir}/libBrokenLocale.so.1
+%{slibdir}/libSegFault.so
+%{slibdir}/libanl-%{libversion}.so
+%{slibdir}/libanl.so.1
+%{slibdir}/libc-%{libversion}.so
+%{slibdir}/libc.so.6*
+%{slibdir}/libdl-%{libversion}.so
+%{slibdir}/libdl.so.2*
+%{slibdir}/libm-%{libversion}.so
+%{slibdir}/libm.so.6*
+%ifarch x86_64
+%{slibdir}/libmvec-%{libversion}.so
+%{slibdir}/libmvec.so.1
+%endif
+%{slibdir}/libnsl-%{libversion}.so
+%{slibdir}/libnsl.so.1
+%{slibdir}/libnss_compat-%{libversion}.so
+%{slibdir}/libnss_compat.so.2
+%{slibdir}/libnss_db-%{libversion}.so
+%{slibdir}/libnss_db.so.2
+%{slibdir}/libnss_dns-%{libversion}.so
+%{slibdir}/libnss_dns.so.2
+%{slibdir}/libnss_files-%{libversion}.so
+%{slibdir}/libnss_files.so.2
+%{slibdir}/libnss_hesiod-%{libversion}.so
+%{slibdir}/libnss_hesiod.so.2
+%{slibdir}/libpthread-%{libversion}.so
+%{slibdir}/libpthread.so.0
+%{slibdir}/libresolv-%{libversion}.so
+%{slibdir}/libresolv.so.2
+%{slibdir}/librt-%{libversion}.so
+%{slibdir}/librt.so.1
+%{slibdir}/libthread_db-1.0.so
+%{slibdir}/libthread_db.so.1
+%{slibdir}/libutil-%{libversion}.so
+%{slibdir}/libutil.so.1
 %dir %attr(0700,root,root) /var/cache/ldconfig
-/sbin/ldconfig
+%{rootsbindir}/ldconfig
 %{_bindir}/gencat
 %{_bindir}/getconf
 %{_bindir}/getent
@@ -1078,7 +1175,24 @@ exit 0
 %{_bindir}/sprof
 %{_includedir}/*
 %{_libdir}/*.o
-%{_libdir}/*.so
+%{_libdir}/libBrokenLocale.so
+%{_libdir}/libanl.so
+%{_libdir}/libc.so
+%{_libdir}/libdl.so
+%{_libdir}/libm.so
+%ifarch x86_64
+%{_libdir}/libmvec.so
+%endif
+%{_libdir}/libnss_compat.so
+%{_libdir}/libnss_db.so
+%{_libdir}/libnss_dns.so
+%{_libdir}/libnss_files.so
+%{_libdir}/libnss_hesiod.so
+%{_libdir}/libpthread.so
+%{_libdir}/libresolv.so
+%{_libdir}/librt.so
+%{_libdir}/libthread_db.so
+%{_libdir}/libutil.so
 # These static libraries are needed even for shared builds
 %{_libdir}/libc_nonshared.a
 %{_libdir}/libg.a
@@ -1167,13 +1281,24 @@ exit 0
 %files lang -f libc.lang
 %endif
 
+%if %{with usrmerged}
+%files usrmerge-bootstrap-helper
+%defattr(-,root,root)
+/sbin/ldconfig
+/%{_lib}/libc.so.6
+/%{rtldlib}/%{rtld_name}
+%ifarch riscv64
+/%{_lib}/lp64d
+%endif
+%endif
+
 %endif
 
 %if %{build_utils}
 %files -n glibc-utils
 %defattr(-,root,root)
-/%{_lib}/libmemusage.so
-/%{_lib}/libpcprofile.so
+%{slibdir}/libmemusage.so
+%{slibdir}/libpcprofile.so
 %dir %{_libdir}/audit
 %{_libdir}/audit/sotruss-lib.so
 %{_bindir}/memusage
