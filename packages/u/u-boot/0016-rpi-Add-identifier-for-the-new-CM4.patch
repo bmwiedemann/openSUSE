@@ -1,6 +1,6 @@
-From 16c55dcf5b5f757f7847204e010c1fbbde1c9875 Mon Sep 17 00:00:00 2001
+From b47e23c6f7a461ff3943d17ff7b6f23af27d5130 Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Date: Wed, 18 Nov 2020 16:48:39 +0100
+Date: Tue, 12 Jan 2021 13:55:20 +0100
 Subject: [PATCH] rpi: Add identifier for the new CM4
 
 The Raspberry Pi Foundation released the new Compute Module 4 which we
@@ -12,6 +12,8 @@ IO board has an Ethernet port. But that might not be the case when using
 custom ones.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reviewed-by: Peter Robinson <pbrobinson@gmail.com>
+Tested-by: Peter Robinson <pbrobinson@gmail.com>
 ---
  board/raspberrypi/rpi/rpi.c | 5 +++++
  1 file changed, 5 insertions(+)

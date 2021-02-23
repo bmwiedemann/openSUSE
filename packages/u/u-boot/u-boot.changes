@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Feb 16 19:58:28 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+Fix boot for BananaPi R2 (bsc#1180732).
+Speed up boot time for RPi2.
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2021.01
+* Patches added:
+  0032-configs-BPI-R2-Disable-EFI-Grub-wor.patch
+  0033-configs-RPi2-Disable-EFI-Grub-worka.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 17:10:57 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Add qemu-riscv64spl
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2021.01
+* Patches added:
+  0031-efi_loader-Avoid-emitting-efi_var_b.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 16:17:09 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Drop pcm051rev3 for Phytec Wega board 
+
+-------------------------------------------------------------------
+Mon Feb 15 12:10:19 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Fix binary extension for sunxi based boards
+
+-------------------------------------------------------------------
+Thu Feb 11 08:10:45 UTC 2021 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Add Pinephone
+
+-------------------------------------------------------------------
+Wed Jan 27 11:10:45 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Fix documentation location 
+
+-------------------------------------------------------------------
+Wed Jan 27 10:34:51 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+Update to v2021.01.
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2021.01
+* Patches dropped:
+  0028-usb-xhci-xhci_bulk_tx-Don-t-BUG-whe.patch
+  0029-Revert-Fix-data-abort-caused-by-mis.patch
+  0030-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
+  0031-pci-brcmstb-Cleanup-controller-stat.patch
+* Patches added:
+  0028-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
+  0029-pci-brcmstb-Cleanup-controller-stat.patch
+  0030-fs-btrfs-Select-SHA256-in-Kconfig.patch
+
+-------------------------------------------------------------------
 Tue Jan 19 12:50:57 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 Fix USB in RPi4 and RPi400 (jsc@OPENSUSE-13 bsc#1180336)

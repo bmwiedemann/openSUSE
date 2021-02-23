@@ -1,6 +1,6 @@
-From 71105045bc57b3fa5a9970d98c59f56ab06cbf80 Mon Sep 17 00:00:00 2001
+From c9ac0a0da12755016d1fbfe2a31bab0ddcdddfda Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Date: Thu, 19 Nov 2020 17:15:31 +0100
+Date: Tue, 12 Jan 2021 13:55:26 +0100
 Subject: [PATCH] dm: Introduce dev_phys_to_bus()/dev_bus_to_phys()
 
 These functions, instead of relying on hard-coded platform-specific
@@ -14,13 +14,7 @@ device model.
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Reviewed-by: Simon Glass <sjg@chromium.org>
 Reviewed-by: Stefan Roese <sr@denx.de>
-
----
-Changes since v4:
- - Introduce macros for !DM case to make API usage cleaner
-
-Changes since v2:
- - Use CONFIG_DM_DMA
+Tested-by: Peter Robinson <pbrobinson@gmail.com>
 ---
  include/phys2bus.h | 17 +++++++++++++++++
  1 file changed, 17 insertions(+)

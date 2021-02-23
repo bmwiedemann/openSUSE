@@ -1,0 +1,23 @@
+From b35caa4e303fa4ad75fe55e803c5f7414b301d78 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Tue, 16 Feb 2021 20:54:07 +0100
+Subject: [PATCH] configs: BPI-R2: Disable EFI Grub workaround
+
+The EFI Grub workaround on BananaPi R2 slows down the boot process to
+the point, that the watchdog will trigger a reboot before the kernel can
+reset it. Fix this by disabeling the workaround.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ configs/mt7623n_bpir2_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configs/mt7623n_bpir2_defconfig b/configs/mt7623n_bpir2_defconfig
+index d36ff560cf..fb20cb1832 100644
+--- a/configs/mt7623n_bpir2_defconfig
++++ b/configs/mt7623n_bpir2_defconfig
+@@ -53,3 +53,4 @@ CONFIG_TIMER=y
+ CONFIG_MTK_TIMER=y
+ CONFIG_WDT_MTK=y
+ CONFIG_LZMA=y
++# CONFIG_EFI_GRUB_ARM32_WORKAROUND is not set

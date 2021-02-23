@@ -1,6 +1,6 @@
-From 79de6d0785678f2f7c14566ee4e526ef180634a5 Mon Sep 17 00:00:00 2001
+From ce6a449a4b8721a295915187e5fa9fab0b686b3b Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Date: Tue, 17 Nov 2020 17:50:33 +0100
+Date: Tue, 12 Jan 2021 13:55:21 +0100
 Subject: [PATCH] pci: pcie-brcmstb: Fix inbound window configurations
 
 So far we've assumed a fixed configuration for inbound windows as we had
@@ -17,6 +17,7 @@ firmware load operation, which is handled by the co-processor after
 u-boot has correctly configured the PCIe controller).
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Tested-by: Peter Robinson <pbrobinson@gmail.com>
 ---
  drivers/pci/pcie_brcmstb.c | 12 +++++-------
  1 file changed, 5 insertions(+), 7 deletions(-)

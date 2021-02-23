@@ -1,6 +1,6 @@
-From 1c7fb1ce2ac1c98d3a0747020751b6062530bfce Mon Sep 17 00:00:00 2001
+From f169928dad5b95413fefc3749e54a39bf481c401 Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Date: Mon, 14 Dec 2020 21:04:04 +0100
+Date: Tue, 12 Jan 2021 13:55:27 +0100
 Subject: [PATCH] dm: test: Add test case for
  dev_phys_to_bus()/dev_bus_to_phys()
 
@@ -9,11 +9,7 @@ test to validate dev_phys_to_bus()/dev_bus_to_phys().
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Reviewed-by: Simon Glass <sjg@chromium.org>
-
----
-Changes since v3:
- - Use ut_assertok() instead of ut_assert(!func())
- - Use ut_assert_addr()
+Tested-by: Peter Robinson <pbrobinson@gmail.com>
 ---
  test/dm/Makefile   |  1 +
  test/dm/phys2bus.c | 37 +++++++++++++++++++++++++++++++++++++
@@ -21,11 +17,11 @@ Changes since v3:
  create mode 100644 test/dm/phys2bus.c
 
 diff --git a/test/dm/Makefile b/test/dm/Makefile
-index 3cf5c0f2ca..bc955ad291 100644
+index 5c52d8b6ea..ac86abaa88 100644
 --- a/test/dm/Makefile
 +++ b/test/dm/Makefile
-@@ -13,6 +13,7 @@ obj-$(CONFIG_UT_DM) += test-uclass.o
- # subsystem you must add sandbox tests here.
+@@ -16,6 +16,7 @@ obj-$(CONFIG_UT_DM) += test-uclass.o
+ 
  obj-$(CONFIG_UT_DM) += core.o
  obj-$(CONFIG_UT_DM) += read.o
 +obj-$(CONFIG_UT_DM) += phys2bus.o

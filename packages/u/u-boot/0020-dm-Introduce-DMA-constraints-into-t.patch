@@ -1,6 +1,6 @@
-From 8d35d23d658c1a50b591f67951a5c24890687fea Mon Sep 17 00:00:00 2001
+From d327db89d06e0532645a2ec5151aaca7299939fd Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Date: Thu, 19 Nov 2020 17:17:24 +0100
+Date: Tue, 12 Jan 2021 13:55:24 +0100
 Subject: [PATCH] dm: Introduce DMA constraints into the core device model
 
 Calculating the DMA offset between a bus address space and CPU's every
@@ -13,23 +13,7 @@ it.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Reviewed-by: Simon Glass <sjg@chromium.org>
-
----
-Changes since v4:
- - Use macros to access dma_offset
-
-Changes since v3:
- - Comment functions and struct variables
- - Correct typos
-
-Changes since v2:
- - Return/Fail on error
- - Add config option
- - use ulong instead for u64 for dev->dma_offset
-
-Changes since v1:
- - Update commit message so as to explain better the reasoning behind
-   this
+Tested-by: Peter Robinson <pbrobinson@gmail.com>
 ---
  drivers/core/Kconfig  | 10 ++++++++++
  drivers/core/device.c | 41 +++++++++++++++++++++++++++++++++++++++++
@@ -37,10 +21,10 @@ Changes since v1:
  3 files changed, 64 insertions(+)
 
 diff --git a/drivers/core/Kconfig b/drivers/core/Kconfig
-index 00d1d80dc3..ea90cecc86 100644
+index ffae6f9795..295cf2dd00 100644
 --- a/drivers/core/Kconfig
 +++ b/drivers/core/Kconfig
-@@ -99,6 +99,16 @@ config SPL_DM_SEQ_ALIAS
+@@ -113,6 +113,16 @@ config SPL_DM_SEQ_ALIAS
  	  numbered devices (e.g. serial0 = &serial0). This feature can be
  	  disabled if it is not required, to save code space in SPL.
  
@@ -58,10 +42,10 @@ index 00d1d80dc3..ea90cecc86 100644
  	bool "Support register maps"
  	depends on DM
 diff --git a/drivers/core/device.c b/drivers/core/device.c
-index 355dbd147a..d41dab88da 100644
+index 4b3dcb3b37..788ce6046a 100644
 --- a/drivers/core/device.c
 +++ b/drivers/core/device.c
-@@ -402,6 +402,43 @@ fail:
+@@ -421,6 +421,43 @@ fail:
  	return ret;
  }
  
@@ -83,7 +67,7 @@ index 355dbd147a..d41dab88da 100644
 +	u64 size = 0;
 +	int ret;
 +
-+	if (!CONFIG_IS_ENABLED(DM_DMA) || !parent || !dev_of_valid(parent))
++	if (!CONFIG_IS_ENABLED(DM_DMA) || !parent || !dev_has_of_node(parent))
 +		return 0;
 +
 +	/*
@@ -105,7 +89,7 @@ index 355dbd147a..d41dab88da 100644
  int device_probe(struct udevice *dev)
  {
  	const struct driver *drv;
-@@ -463,6 +500,10 @@ int device_probe(struct udevice *dev)
+@@ -482,6 +519,10 @@ int device_probe(struct udevice *dev)
  			goto fail;
  	}
  
@@ -117,7 +101,7 @@ index 355dbd147a..d41dab88da 100644
  	if (ret)
  		goto fail;
 diff --git a/include/dm/device.h b/include/dm/device.h
-index 953706cf52..9d4670424b 100644
+index 5bef484247..b27889af01 100644
 --- a/include/dm/device.h
 +++ b/include/dm/device.h
 @@ -138,6 +138,8 @@ enum {
