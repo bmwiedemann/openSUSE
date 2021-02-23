@@ -163,4 +163,19 @@
     <comment></comment>
     <requestid>861012</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9a20a41b79b233484d6133fce09f674d</srcmd5>
+    <version>11.11</version>
+    <time>1614107870</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+Upgrade to version 11.11:
+  * https://www.postgresql.org/docs/11/release-11-11.html  
+  * Reindexing might be needed after applying this update.
+  * CVE-2021-3393, bsc#1182040: Fix information leakage in
+    constraint-violation error messages.
+  * Obsoletes postgresql-icu68.patch.</comment>
+    <requestid>873820</requestid>
+  </revision>
 </revisionlist>
