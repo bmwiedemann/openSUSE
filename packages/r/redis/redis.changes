@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 23:30:08 UTC 2021 - Jan Zerebecki <jzerebecki@suse.com>
+
+- Enable TLS support and add BuildRequires libopenssl-devel (bsc#1181830)
+- Make tests run by adding BuildRequires tcl and procps
+
+-------------------------------------------------------------------
 Tue Jan 12 20:05:52 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - HTTPS download link for source

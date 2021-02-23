@@ -41,11 +41,15 @@ Patch0:         %{name}-conf.patch
 Patch1:         getMcontextEip-return-value.patch
 Patch3:         reproducible.patch
 Patch4:         ppc-atomic.patch
+BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  procps
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  tcl
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+# there is no tcl-tls package yet, which is said to be needed for testing tls support
 Recommends:     logrotate
 %sysusers_requires
 
@@ -67,7 +71,7 @@ echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0
 
 %build
 export HOST=OBS # for reproducible builds
-%make_build CFLAGS="%{optflags}" BUILD_WITH_SYSTEMD=yes
+%make_build CFLAGS="%{optflags}" BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 %sysusers_generate_pre %{SOURCE9} redis
 
 %install
@@ -116,7 +120,8 @@ The test suite often fails to start a server, with
 'child process exited abnormally' -- sometimes it works.
 ---------------------------------------------------
 EOF
-%make_build test || true
+# Variable assignments need to match in all make invocations, otherwise it might recomplie. See https://github.com/redis/redis/issues/7337
+%make_build test CFLAGS="%{optflags}" BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes || true
 
 %pre -f redis.pre
 %service_add_pre redis.target redis@.service redis-sentinel.target redis-sentinel@.service
