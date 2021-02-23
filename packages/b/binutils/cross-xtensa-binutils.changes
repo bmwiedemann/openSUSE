@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Thu Feb  4 08:40:53 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump 2.36 branch diff.
+
+-------------------------------------------------------------------
+Wed Feb  3 08:39:37 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update 2.36 branch diff which should fix PR27311 completely.
+  It fixes also PR27284.
+- Remove temporary fix 0001-PR27311-ld.bfd-symbol-from-plugin-undefined-referenc.patch.
+
+-------------------------------------------------------------------
+Tue Feb  2 13:07:22 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add temporary upstream fix for PR27311
+  0001-PR27311-ld.bfd-symbol-from-plugin-undefined-referenc.patch.
+
+-------------------------------------------------------------------
+Sun Jan 24 16:56:39 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to binutils 2.36:
+   New features in the Assembler:
+    General:
+     * When setting the link order attribute of ELF sections, it is now
+       possible to use a numeric section index instead of symbol name.
+     * Added a .nop directive to generate a single no-op instruction in
+       a target neutral manner.  This instruction does have an effect on
+       DWARF line number generation, if that is active.
+     * Removed --reduce-memory-overheads and --hash-size as gas now
+       uses hash tables that can be expand and shrink automatically.
+     X86/x86_64:
+       * Add support for AVX VNNI, HRESET, UINTR, TDX, AMX and Key
+         Locker instructions. 
+       * Support non-absolute segment values for lcall and ljmp.
+       * Add {disp16} pseudo prefix to x86 assembler.
+       * Configure with --enable-x86-used-note by default for Linux/x86.
+     ARM/AArch64:
+       * Add support for Cortex-A78, Cortex-A78AE and Cortex-X1,
+         Cortex-R82, Neoverse V1, and Neoverse N2 cores.
+       * Add support for ETMv4 (Embedded Trace Macrocell), ETE (Embedded
+         Trace Extension), TRBE (Trace Buffer Extension), CSRE (Call
+         Stack Recorder Extension) and BRBE (Branch Record Buffer
+         Extension) system registers.
+       * Add support for Armv8-R and Armv8.7-A ISA extensions.
+       * Add support for DSB memory nXS barrier, WFET and WFIT
+         instruction for Armv8.7.
+       * Add support for +csre feature for -march. Add CSR PDEC
+         instruction for CSRE feature in AArch64.
+       * Add support for +flagm feature for -march in Armv8.4 AArch64.
+       * Add support for +ls64 feature for -march in Armv8.7
+         AArch64. Add atomic 64-byte load/store instructions for this
+         feature. 
+       * Add support for +pauth (Pointer Authentication) feature for
+         -march in AArch64.
+    New features in the Linker:
+      * Add --error-handling-script=<NAME> command line option to allow
+        a helper script to be invoked when an undefined symbol or a
+        missing library is encountered.  This option can be suppressed
+        via the configure time switch: --enable-error-handling-script=no.
+      * Add -z x86-64-{baseline|v[234]} to the x86 ELF linker to mark
+        x86-64-{baseline|v[234]} ISA level as needed.
+      * Add -z unique-symbol to avoid duplicated local symbol names.
+      * The creation of PE format DLLs now defaults to using a more
+        secure set of DLL characteristics.
+      * The linker now deduplicates the types in .ctf sections.  The new 
+         command-line option --ctf-share-types describes how to do this:
+         its default value, share-unconflicted, produces the most compact
+         output.
+      * The linker now omits the "variable section" from .ctf sections
+        by default, saving space.  This is almost certainly what you
+        want unless you are working on a project that has its own
+        analogue of symbol tables that are not reflected in the ELF
+        symtabs.
+  New features in other binary tools:
+      * The ar tool's previously unused l modifier is now used for
+        specifying dependencies of a static library. The arguments of
+        this option (or --record-libdeps long form option) will be
+        stored verbatim in the __.LIBDEP member of the archive, which
+        the linker may read at link time.
+      * Readelf can now display the contents of LTO symbol table
+        sections when asked to do so via the --lto-syms command line
+        option.
+      * Readelf now accepts the -C command line option to enable the
+        demangling of symbol names.  In addition the --demangle=<style>,
+        --no-demangle, --recurse-limit and --no-recurse-limit options
+        are also now availale.
+- Includes fixes for these CVEs:
+  bnc#1179898 aka CVE-2020-16590 aka PR25821
+  bnc#1179899 aka CVE-2020-16591 aka PR25822
+  bnc#1179900 aka CVE-2020-16592 aka PR25823
+  bnc#1179901 aka CVE-2020-16593 aka PR25827
+  bnc#1179902 aka CVE-2020-16598 aka PR25840
+  bnc#1179903 aka CVE-2020-16599 aka PR25842
+  bnc#1180451 aka CVE-2020-35493 aka PR25307
+  bnc#1180454 aka CVE-2020-35496 aka PR25308
+  bnc#1180461 aka CVE-2020-35507 aka PR25308
+- Rebase the following patches:
+ * binutils-fix-relax.diff
+ * binutils-revert-nm-symversion.diff
+ * binutils-revert-plt32-in-branches.diff
+- Add missing dependency on bc (ld.gold testsuite uses it).
+- Use --enable-obsolete for cross builds as ia64 is deprecated now.
+- Add binutils-2.36-branch.diff.gz.
+
+-------------------------------------------------------------------
+Fri Dec  4 14:52:54 UTC 2020 - Michael Matz <matz@suse.com>
+
+- Add binutils-fix-relax.diff to fix linking relaxation problems
+  with old object files hitting some enterprise software. [bsc#1179341]
+
+-------------------------------------------------------------------
+Mon Nov 23 13:58:56 UTC 2020 - Michael Matz <matz@suse.com>
+
+- Update binutils-2.35-branch.diff.gz to commit 1c5243df:
+  * Fixes PR26520, aka [bsc#1179036], a problem in addr2line with
+    certain DWARF variable descriptions.
+  * Also fixes PR26711, PR26656, PR26655, PR26929, PR26808, PR25878,
+    PR26740, PR26778, PR26763, PR26685, PR26699, PR26902, PR26869,
+    PR26711 
+  * The above includes fixes for dwo files produced by modern dwp,
+    fixing several problems in the DWARF reader.
+
+-------------------------------------------------------------------
 Mon Oct 12 11:51:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Reapply spec file cleanup from format_spec_file
@@ -25,6 +148,8 @@ Tue Sep 15 12:14:55 UTC 2020 - matz@suse.com
 - Toolchain module update for SLE15 [jsc#ECO-2373]
 - Includes changes that were SLE-only in binutils-add-z15-name.diff
   for [bsc#1160590, jsc#SLE-7903 aka jsc#SLE-7464]
+- Amend binutils-revert-plt32-in-branches.diff to adjust also new
+  testcases.
 
 -------------------------------------------------------------------
 Sat Aug 15 08:42:59 UTC 2020 - Martin Liška <mliska@suse.cz>

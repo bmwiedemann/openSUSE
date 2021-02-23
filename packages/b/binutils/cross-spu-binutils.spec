@@ -1,7 +1,7 @@
 #
 # spec file for package cross-spu-binutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@ Name:           cross-spu-binutils
 ExcludeArch:    spu
 %define cross 1
 %define TARGET spu
+BuildRequires:  bc
 BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  flex
@@ -36,7 +37,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.35.1
+Version:        2.36
 Release:        0
 #
 # RUN_TESTS
@@ -52,6 +53,7 @@ Release:        0
 %else
 # XXX check again
 # XXX disabled because gold is seriously broken for now
+# Note that some gold tests fail due to gcc-PIE which leads PIE executables
 %define	make_check_handling	true
 %endif
 # let make check fail anyway if RUN_TESTS was requested
@@ -84,7 +86,7 @@ Source5:        binutils.keyring
 Source1:        pre_checkin.sh
 Source2:        README.First-for.SUSE.packagers
 Source3:        baselibs.conf
-Patch1:         binutils-2.35-branch.diff.gz
+Patch1:         binutils-2.36-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -101,6 +103,7 @@ Patch37:        binutils-revert-plt32-in-branches.diff
 Patch38:        binutils-fix-invalid-op-errata.diff
 Patch39:        binutils-revert-nm-symversion.diff
 Patch40:        binutils-fix-abierrormsg.diff
+Patch41:        binutils-fix-relax.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -192,6 +195,7 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %patch38
 %patch39 -p1
 %patch40 -p1
+%patch41 -p1
 %patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
@@ -278,7 +282,8 @@ cd build-dir
 %if "%{TARGET}" != "mips"
 	--enable-default-hash-style=both \
 %endif
-	--enable-shared
+	--enable-shared \
+	--enable-obsolete
 make %{?_smp_mflags} all-bfd TARGET-bfd=headers
 # force reconfiguring (???)
 rm bfd/Makefile
@@ -334,6 +339,7 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
   --with-system-zlib \
   --disable-nls \
   --enable-new-dtags \
+	--enable-obsolete \
 %if %{suse_version} <= 1320
   --disable-x86-relax-relocations \
 %endif
@@ -506,6 +512,8 @@ fi;
 %{_prefix}/%{HOST}/bin/*
 %{_prefix}/%{HOST}/lib/ldscripts
 %{_libdir}/ldscripts
+%dir %{_libdir}/bfd-plugins
+%{_libdir}/bfd-plugins/libdep.so
 %{_bindir}/*
 %ghost %_sysconfdir/alternatives/ld
 %ifarch %gold_archs

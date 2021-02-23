@@ -6,10 +6,10 @@ Index: ld/testsuite/ld-selective/selective.exp
      {A::foo() B::foo() dropme1() dropme2()} {*-*-*}}
  }
  
--set cflags "-w -O -ffunction-sections -fdata-sections $NOSANTIZE_CFLAGS"
--set cxxflags "-fno-exceptions -fno-rtti $NOSANTIZE_CFLAGS"
-+set cflags "-w -O -ffunction-sections -fdata-sections -fno-unit-at-a-time $NOSANTIZE_CFLAGS"
-+set cxxflags "-fno-exceptions -fno-rtti -fno-unit-at-a-time $NOSANTIZE_CFLAGS"
+-set cflags "-w -O -ffunction-sections -fdata-sections $NOSANITIZE_CFLAGS $NOLTO_CFLAGS"
+-set cxxflags "-fno-exceptions -fno-rtti $NOSANITIZE_CFLAGS $NOLTO_CFLAGS"
++set cflags "-w -O -ffunction-sections -fdata-sections -fno-unit-at-a-time $NOSANITIZE_CFLAGS $NOLTO_CFLAGS"
++set cxxflags "-fno-exceptions -fno-rtti -fno-unit-at-a-time $NOSANITIZE_CFLAGS $NOLTO_CFLAGS"
  set ldflags "--gc-sections -Bstatic"
  
  if [istarget mips*-*] {

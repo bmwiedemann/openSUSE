@@ -1912,4 +1912,12 @@ contain it.
   DWARF line number tables, should they be enabled. (forwarded request 848022 from marxin)</comment>
     <requestid>848118</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>c7c985333949e7526b5e0cca188ccd92</srcmd5>
+    <version>2.36</version>
+    <time>1614107857</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump 2.36 branch diff. (forwarded request 869133 from marxin)</comment>
+    <requestid>869232</requestid>
+  </revision>
 </revisionlist>
