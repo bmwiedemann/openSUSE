@@ -1,0 +1,13 @@
+diff --git a/Unpack.pm b/Unpack.pm
+index d5354ac..1cc7348 100644
+--- a/Unpack.pm
++++ b/Unpack.pm
+@@ -1662,7 +1662,7 @@ sub _unused_pathname
+       ## try to come up with a very similar name, just different suffix.
+       ## be compatible with path name shortening in unpack()
+       my $test_path = $wanted_path . '._';
+-      for my $i ('', 1..999)
++      for my $i ('', 1..99999)
+         {
+ 	  # All our mime detectors work on file contents, rather than on suffixes.
+ 	  # Thus messing with the suffix should be okay here.
