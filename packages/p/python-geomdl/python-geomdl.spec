@@ -1,7 +1,7 @@
 #
 # spec file for package python-geomdl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define archivename NURBS-Python
 %define packagename geomdl
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geomdl
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Object-oriented B-Spline and NURBS evaluation library
 License:        MIT
