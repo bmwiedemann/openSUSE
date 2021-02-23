@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 17 06:14:41 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated Intel CPU Microcode to 20210216 official release. (bsc#1182347 bsc#1179224)
+
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | SKX-SP         | H0/M0/U0 | 06-55-04/b7 | 02006a08 | 02006a0a | Xeon Scalable
+  | SKX-D          | M1       | 06-55-04/b7 | 02006a08 | 02006a0a | Xeon D-21xx
+  | CLX-SP         | B0       | 06-55-06/bf | 04003003 | 04003006 | Xeon Scalable Gen2
+  | CLX-SP         | B1       | 06-55-07/bf | 05003003 | 05003006 | Xeon Scalable Gen2
+
+-------------------------------------------------------------------
 Thu Nov 19 16:46:11 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated Intel CPU Microcode to 20201118 official release. (bsc#1178971)
