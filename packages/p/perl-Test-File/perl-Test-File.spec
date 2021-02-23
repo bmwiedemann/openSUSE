@@ -18,7 +18,7 @@
 
 %define cpan_name Test-File
 Name:           perl-Test-File
-Version:        1.444
+Version:        1.446
 Release:        0
 Summary:        Test file attributes
 License:        Artistic-2.0

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:48:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.446
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.446 2021-02-20T21:18:48Z
+  	* Better cygwin detection, from Achim Gratz
+
+-------------------------------------------------------------------
+Wed Feb 17 03:13:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.445
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.445 2021-02-16T08:57:34Z
+  	* Get the tests to pass under Cygwin (Github #17, from Slaven Rezić)
+
+-------------------------------------------------------------------
 Thu Jan  7 03:10:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.444
