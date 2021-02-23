@@ -1,7 +1,7 @@
 #
 # spec file for package brickv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,19 +18,20 @@
 
 
 Name:           brickv
-Version:        2.4.16
+Version:        2.4.17
 Release:        0
 Summary:        Tinkerforge Brick Viewer
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            http://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickv/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  iso-codes
 BuildRequires:  mobile-broadband-provider-info
-BuildRequires:  python3-qt5
-BuildRequires:  python3-rpm-macros
-BuildRequires:  python3-setuptools
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3
 BuildRequires:  update-desktop-files
 Requires:       python3-pytz
 Requires:       python3-qt5

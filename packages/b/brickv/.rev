@@ -63,4 +63,15 @@
     <comment></comment>
     <requestid>855586</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a46757c04491e214d38e5001cd6e44aa</srcmd5>
+    <version>2.4.17</version>
+    <time>1614108031</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt build recipe to python 3 parallel installation support
+- Update to new upstream version 2.4.17:
+  - Add support for Performance DC Bricklet and Servo Bricklet 2.0
+</comment>
+    <requestid>874416</requestid>
+  </revision>
 </revisionlist>
