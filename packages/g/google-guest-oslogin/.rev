@@ -31,4 +31,14 @@
     <comment>- Add Bugzilla references (bsc#1179031, bsc#1179032) (forwarded request 850478 from glaubitz)</comment>
     <requestid>850504</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>949783cd9079603a260a6b306f08a831</srcmd5>
+    <version>20210108.00</version>
+    <time>1614108026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210108.00
+  * Update logic in the cache_refresh binary (#52)
+  * remove old unused workflow files (#49) (forwarded request 862594 from glaubitz)</comment>
+    <requestid>862627</requestid>
+  </revision>
 </revisionlist>

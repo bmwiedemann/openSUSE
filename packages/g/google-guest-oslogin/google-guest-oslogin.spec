@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-oslogin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           google-guest-oslogin
-Version:        20200925.00
+Version:        20210108.00
 Release:        0
 Summary:        Google Cloud Guest OS Login
 License:        Apache-2.0
