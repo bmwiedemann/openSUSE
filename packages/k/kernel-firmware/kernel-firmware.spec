@@ -59,6 +59,7 @@ Source1011:     fwtopics.py
 Source1012:     check-topic.py
 Source1013:     update-aliases.py
 Source1014:     README.build
+Patch1:         Revert-brcm-rpi4-boardflags3-bit.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
@@ -5770,6 +5771,7 @@ various USB WiFi / Ethernet drivers.
 
 %prep
 %setup -q
+%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

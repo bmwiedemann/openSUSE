@@ -1406,4 +1406,14 @@ SR 184278 -- creates ucode-intel, which contains the ucode from microcode_ctl fo
     <comment></comment>
     <requestid>870624</requestid>
   </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>db70db9a5268eed1a55d227893a678bf</srcmd5>
+    <version>20210208</version>
+    <time>1614107887</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct the RPi4 brcm config to recover the WiFi breakage
+  (bsc#1182320):
+  Revert-brcm-rpi4-boardflags3-bit.patch (forwarded request 872902 from tiwai)</comment>
+    <requestid>872903</requestid>
+  </revision>
 </revisionlist>
