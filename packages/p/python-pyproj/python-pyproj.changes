@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:26:50 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable Python 3.6 as numpy is not available anymore for 3.6.
+  See NEP29: https://numpy.org/neps/nep-0029-deprecation_policy.html
+
+-------------------------------------------------------------------
 Tue Feb  9 23:23:49 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix malformed Cython requirement
