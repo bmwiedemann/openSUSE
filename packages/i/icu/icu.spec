@@ -1,7 +1,7 @@
 #
 # spec file for package icu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu67
-%define amajor   67
-%define aversion 67
+%define lname	libicu68
+%define amajor   68
+%define aversion 68
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,7 +26,7 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        67.1
+Version:        68.2
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
@@ -34,11 +34,11 @@ Group:          Development/Libraries/C and C++
 URL:            http://icu-project.org/
 
 #Git-Clone:	https://github.com/unicode-org/icu.git
-Source:         https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-docs.zip.asc
-Source5:        %name.keyring
+Source:         https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-docs.zip.asc
+Source99:       icu.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
 Patch6:         icu-error-reporting.diff
@@ -49,7 +49,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Provides:       bundled(timezone) = 2020d
 
 %description
 ICU is a set of C and C++ libraries that provide extensive Unicode and locale
@@ -58,7 +58,7 @@ sensitive collation, date and time formatting, support for many locales,
 message catalogs and resources, message formatting, normalization, number and
 currency formatting, time zone support, transliteration, and word, line, and
 sentence breaking.
-/
+
 This subpackage contains the runtime programs for interacting with ICU.
 
 %package -n %lname
@@ -140,6 +140,7 @@ unzip %SOURCE3
 popd
 
 %build
+SUSE_ASNEEDED=0
 cd source
 mkdir -p data/out/tmp # build procedure forgets to do this on its own
 export CXXFLAGS="%optflags -DICU_DATA_DIR=\\\"%_datadir/icu/%version/\\\""
@@ -149,7 +150,7 @@ export CFLAGS="$CXXFLAGS"
 	--enable-shared \
 	--disable-samples \
 	--with-data-packaging=archive
-make %{?_smp_mflags} VERBOSE=1
+%make_build VERBOSE=1
 # Build the other endianess, too.
 pushd data/
 %if %be_platform
@@ -169,7 +170,7 @@ cp -a license.html readme.html "%buildroot/%_docdir/%name/"
 find . -name CVS -type d -exec rm -Rf "{}" "+"
 cd source
 
-make DESTDIR="%buildroot" install %{?_smp_mflags}
+%make_install
 cp data/out/icudt*.dat "%buildroot/%_datadir/icu/%version/"
 
 #
@@ -224,7 +225,6 @@ ICU_DATA="%buildroot/%_datadir/icu/%version" make check %{?_smp_mflags} VERBOSE=
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/derb
 %_bindir/gen*
 %_bindir/icuinfo
@@ -241,23 +241,19 @@ ICU_DATA="%buildroot/%_datadir/icu/%version" make check %{?_smp_mflags} VERBOSE=
 %_docdir/%name/readme.html
 
 %files -n %lname
-%defattr(-, root, root)
 %_libdir/libicu*.so.*
 
 %files -n libicu%aversion-bedata
-%defattr(-,root,root)
 %dir %_datadir/icu
 %dir %_datadir/icu/%version
 %_datadir/icu/%version/icudt%{amajor}b.dat
 
 %files -n libicu%aversion-ledata
-%defattr(-,root,root)
 %dir %_datadir/icu
 %dir %_datadir/icu/%version
 %_datadir/icu/%version/icudt%{amajor}l.dat
 
 %files -n libicu-devel
-%defattr(-, root, root)
 %_libdir/libicu*.so
 %_includedir/unicode/
 %dir %_libdir/icu/
@@ -272,7 +268,6 @@ ICU_DATA="%buildroot/%_datadir/icu/%version" make check %{?_smp_mflags} VERBOSE=
 %_datadir/icu/%version/config/
 
 %files -n libicu-doc
-%defattr(-,root,root)
 %dir %_docdir/%name/
 %_docdir/%name/html/
 

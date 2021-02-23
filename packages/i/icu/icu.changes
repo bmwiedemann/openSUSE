@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb 18 08:02:44 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Fix pthread dependency issue (boo#1182252).
+
+-------------------------------------------------------------------
+Fri Dec 25 21:45:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 68.2
+  * Fix memory problem in FormattedStringBuilder
+  * Fix assertion when setKeywordValue w/ long value.
+  * Fix UBSan breakage on 8bit of rbbi
+  * fix int32_t overflow in listFormat
+  * Fix memory handling in MemoryPool::operator=()
+  * Fix memory leak in AliasReplacer
+
+-------------------------------------------------------------------
+Sat Nov  7 10:27:11 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add back icu.keyring, see https://unicode-org.atlassian.net/browse/ICU-21361 
+
+-------------------------------------------------------------------
+Thu Oct 29 10:52:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 68.1
+  * CLDR 38
+  * Measurement unit preferences
+  * PluralRules selection for ranges of numbers
+  * Locale ID canonicalization now conforms to the CLDR spec
+    including edge cases
+  * DateIntervalFormat supports output options such as capitalization
+  * Measurement units are normalized in skeleton string output
+  * Time zone data (tzdata) version 2020d
+
+-------------------------------------------------------------------
 Sun May 31 16:50:18 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Add the provides for libicu to Make .Net core can install 
