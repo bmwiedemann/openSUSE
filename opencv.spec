@@ -121,6 +121,14 @@ The Open Computer Vision Library is a collection of algorithms and sample code
 for various computer vision problems. The library is compatible with IPL and
 utilizes Intel Integrated Performance Primitives for better performance.
 
+%package -n libopencv_aruco%{soname}
+Summary:        Pattern grid detection libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+
+%description -n libopencv_aruco%{soname}
+Pattern grid detectiion libraries for OpenCV
+
 %package -n libopencv_face%{soname}
 Summary:        Face detection libraries for OpenCV
 License:        BSD-3-Clause
@@ -262,7 +270,7 @@ This package contains the documentation and examples for the OpenCV library.
 %setup -q -a 1
 
 # Only copy over modules we need
-mv opencv_contrib-%{version}/modules/{face,tracking,optflow,plot,shape,superres,videostab,ximgproc} modules/
+mv opencv_contrib-%{version}/modules/{aruco,face,tracking,optflow,plot,shape,superres,videostab,ximgproc} modules/
 cp opencv_contrib-%{version}/LICENSE LICENSE.contrib
 
 # Remove Windows specific files
@@ -359,6 +367,8 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 
 %post -n %{libname}%{soname} -p /sbin/ldconfig
 %postun -n %{libname}%{soname} -p /sbin/ldconfig
+%post -n libopencv_aruco%{soname} -p /sbin/ldconfig
+%postun -n libopencv_aruco%{soname} -p /sbin/ldconfig
 %post -n libopencv_face%{soname} -p /sbin/ldconfig
 %postun -n libopencv_face%{soname} -p /sbin/ldconfig
 %post -n libopencv_highgui%{soname} -p /sbin/ldconfig
@@ -406,6 +416,9 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %{_libdir}/libopencv_stitching.so.*
 %{_libdir}/libopencv_tracking.so.*
 %{_libdir}/libopencv_video.so.*
+
+%files -n libopencv_aruco%{soname}
+%{_libdir}/libopencv_aruco.so.*
 
 %files -n libopencv_face%{soname}
 %{_libdir}/libopencv_face.so.*
