@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 14:12:23 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add an onie flavor including various scripts for installing it.
+  See README.onie for details
+
+-------------------------------------------------------------------
 Wed Jan 20 14:34:15 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Update kiwi schemaversion to 7.2

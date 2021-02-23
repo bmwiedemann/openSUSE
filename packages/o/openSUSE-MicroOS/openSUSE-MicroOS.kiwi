@@ -37,6 +37,7 @@
             <requires profile="Vagrant_aarch64"/>
         </profile>
         <profile name="SelfInstall" description="Self Installing Image" arch="x86_64"/>
+        <profile name="onie" description="ONIE Installer Image" arch="x86_64"/>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64">
             <requires profile="kvm-and-xen_x86_64"/>
@@ -155,6 +156,38 @@
                 <volume name="usr/local"/>
             </systemdisk>
             <size unit="G">20</size>
+        </type>
+    </preferences>
+    <preferences profiles="onie">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="qcow2"
+            firmware="uefi"
+            kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
+            bootpartition="false"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="grub2" console="serial" serial_line="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1" />
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="var" copy_on_write="false"/>
+                <volume name="boot/grub2/i386-pc"/>
+                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+            </systemdisk>
         </type>
     </preferences>
     <preferences profiles="kvm-and-xen_aarch64">
@@ -595,6 +628,7 @@
     </packages>
     <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant_x86_64,Vagrant_aarch64">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
+        <!-- On ONIE, the installer does the partitioning and salt is used for configuration -->
         <package name="ignition-dracut"/>
         <package name="combustion"/>
         <package name="growpart-generator"/>
@@ -676,6 +710,12 @@
     <packages type="image" profiles="Vagrant,Vagrant_x86_64,Vagrant_aarch64">
         <!-- vagrant-libvirt uses nfs for synced folders -->
         <package name="nfs-client"/>
+    </packages>
+    <packages type="image" profiles="onie">
+        <package name="patterns-microos-hardware"/>
+        <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
+        <package name="salt-minion"/>
+        <archive name="onie.tar.gz"/>
     </packages>
     <packages type="image" profiles="SelfInstall">
         <package name="dracut-kiwi-oem-repart"/>
