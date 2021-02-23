@@ -1024,4 +1024,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
     <requestid>872110</requestid>
   </revision>
+  <revision rev="122" vrev="31">
+    <srcmd5>b62b7056c35727e768cf969a55068184</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1614107994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873149</requestid>
+  </revision>
 </revisionlist>

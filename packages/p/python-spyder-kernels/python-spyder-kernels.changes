@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 22 17:55:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.2
+  * Warn when comm call creates text output, by @impact27
+  * Increase minimal required version of ipykernel, by @ccordoba12
+  * Better test for non-interactive context, by @juliangilbey
+  * Fix assignment detection in exclamation mark mode (Pdb), by
+    @impact27
+  * Fix recursive debugger, by @impact27
+
+-------------------------------------------------------------------
 Mon Feb 15 12:57:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - NEP29: python36-numpy in Tumbleweed is no more.

@@ -216,4 +216,41 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>777581</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>503918464de664fcf8b7a3bc5408b5c8</srcmd5>
+    <version>2.9.3</version>
+    <time>1614108101</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.9.3
+ * Enable optimization for large stream input by default on IIS
+   [Issue #1299 - @victorhora, @zimmerle]
+ * Allow 0 length JSON requests.
+   [Issue #1822 - @allanbomsft, @zimmerle, @victorhora, @marcstern]
+ * Include unanmed JSON values in unnamed ARGS
+   [Issue #1577, #1576 - @marcstern, @victorhora, @zimmerle]
+ * Fix buffer size for utf8toUnicode transformation
+   [Issue #1208 - @katef, @victorhora]
+ * Fix sanitizing JSON request bodies in native audit log format
+   [p0pr0ck5, @victorhora]
+ * IIS: Update Wix installer to bundle a supported CRS version (3.0)
+   [@victorhora, @zimmerle]
+ * IIS: Update dependencies for Windows build
+   [Issue #1848 - @victorhora, @hsluoyz]
+ * IIS: Set SecStreamInBodyInspection by default on IIS builds (#1299)
+   [Issue #1299 - @victorhora]
+ * IIS: Update modsecurity.conf
+   [Issue #788 - @victorhora, @brianclark]
+ * Add sanity check for a couple malloc() and make code more resilient
+   [Issue #979 - @dogbert2, @victorhora, @zimmerl]
+ * Fix NetBSD build by renaming the hmac function to avoid conflicts
+   [Issue #1241 - @victorhora, @joerg, @sevan]
+ * IIS: Windows build, fix duplicate YAJL dir in script
+   [Issue #1612 - @allanbomsft, @victorhora]
+ * IIS: Remove body prebuffering due to no locking in modsecProcessRequest
+   [Issue #1917 - @allanbomsft, @victorhora]
+ * Fix mpm-itk / mod_ruid2 compatibility
+   [Issue #712 - @ju5t , @derhansen, @meatlayer, @victorhora]
+ * Code cosmetics: checks if actionset is not null before use it</comment>
+    <requestid>874491</requestid>
+  </revision>
 </revisionlist>

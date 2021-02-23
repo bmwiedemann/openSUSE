@@ -7,4 +7,19 @@
     <comment>Rename php7-xdebug to php-xdebug</comment>
     <requestid>873897</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1cae59acd73ce08bdce2915fae9a151</srcmd5>
+    <version>3.0.3</version>
+    <time>1614108056</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Xdebug 3.0.3
+  * Fixed bug #1930: No local variables with trigger and xdebug_break()
+  * Fixed bug #1931: xdebug_info() output misses configuration settings
+    if phpinfo() has been called
+  * Fixed bug #1932: One line in multi-line string concatenation is not
+    covered
+  * Fixed bug #1940: Wrong type used for showing GC Stats reports
+- Xdebug can not be tested with 'make test'</comment>
+    <requestid>874332</requestid>
+  </revision>
 </revisionlist>

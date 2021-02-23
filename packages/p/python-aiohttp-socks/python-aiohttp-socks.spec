@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-socks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aiohttp-socks
-Version:        0.3.4
+Version:        0.5.5
 Release:        0
 Summary:        SOCKS proxy connector for aiohttp
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/romis2012/aiohttp-socks
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp_socks/aiohttp_socks-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

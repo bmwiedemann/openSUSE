@@ -37,8 +37,6 @@ Source3:        sddmtheme.diff
 # Diff between /usr/share/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 # and /usr/share/plasma/look-and-feel/org.openSUSE.desktop/contents/layouts/org.kde.plasma.desktop-layout.js
 Source5:        layout.diff
-# Script to update all .diff files from a system with this package installed
-Source100:      update_diffs.sh
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

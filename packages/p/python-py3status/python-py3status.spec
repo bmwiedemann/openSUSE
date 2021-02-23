@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3status
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3status
 Version:        3.28
@@ -36,11 +35,9 @@ Requires:       python-setuptools
 Recommends:     i3status
 Recommends:     python-gevent >= 1.1
 Recommends:     python-pyudev >= 0.21.0
-BuildArch:      noarch
-%ifpython3
 Provides:       py3status = %{version}
 Obsoletes:      py3status < %{version}
-%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description

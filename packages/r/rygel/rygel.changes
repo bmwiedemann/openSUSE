@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 20 11:48:46 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.40.1:
+  + Server: Set albumArtUri on Videos to provide thumbnails for the
+    PS4
+  + MediaExport: Strip xml suffix when generating titles from
+    filenames
+  + Documentation: Fix generation and install location
+  + Tracker3: Add section to the default configuration file
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan  4 13:36:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update/correct the description of

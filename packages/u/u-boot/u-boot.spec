@@ -84,7 +84,7 @@
 %define is_a64 1
 %define is_armv8 1
 %define sunxi_spl 1
-%define binext .itb
+%define binext .img
 %endif
 
 %if "%target" == "mt7623nbpir2"
@@ -95,13 +95,18 @@
 %define is_h5 1
 %define is_armv8 1
 %define sunxi_spl 1
-%define binext .itb
+%define binext .img
 %endif
 %if "%target" == "pineh64"
 %define is_h6 1
 %define is_armv8 1
 %define sunxi_spl 1
-%define binext .itb
+%define binext .img
+%endif
+%if "%target" == "pinephone"
+%define is_armv8 1
+%define is_a64 1
+%define sunxi_spl 1
 %endif
 %if "%target" == "bananapi" || "%target" == "cubieboard" || "%target" == "cubieboard2" || "%target" == "cubietruck" || "%target" == "melea1000" || "%target" == "a10-olinuxino-lime" || "%target" == "a13-olinuxino" || "%target" == "a13-olinuxinom" || "%target" == "a20-olinuxino-lime" || "%target" == "a20-olinuxino-lime2" || "%target" == "a20-olinuxinomicro" || "%target" == "nanopineo" || "%target" == "orangepipc" || "%target" == "hyundaia7hd" || "%target" == "lamobor1" || "%target" == "bananapim2plush3" || "%target" == "bananapim2zero" || "%target" == "orangepizero"
 %define is_armv7 1
@@ -126,7 +131,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "omap3beagle" || "%target" == "omap4panda" || "%target" == "am335xevm" || "%target" == "pcm051rev3"
+%if "%target" == "omap3beagle" || "%target" == "omap4panda" || "%target" == "am335xevm"
 %define x_loader 1
 %define is_armv7 1
 %define binext .img
@@ -161,9 +166,9 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifivefu540"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "qemu-riscv64spl" || "%target" == "sifivefu540"
 %define is_riscv64 1
-%if "%target" == "sifivefu540"
+%if "%target" == "qemu-riscv64spl" || "%target" == "sifivefu540"
 %define binext .itb
 %endif
 %endif
@@ -171,7 +176,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2020.10
+%define archive_version 2021.01
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -203,7 +208,7 @@ ExclusiveArch:  do_not_build
 %endif
 %bcond_with uboot_atf
 %bcond_with uboot_atf_pine64
-Version:        2020.10
+Version:        2021.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -242,10 +247,12 @@ Patch0024:      0024-xhci-translate-virtual-addresses-in.patch
 Patch0025:      0025-mmc-Introduce-mmc_phys_to_bus-mmc_b.patch
 Patch0026:      0026-configs-rpi4-Enable-DM_DMA-across-a.patch
 Patch0027:      0027-video-arm-rpi-Add-brcm-bcm2711-hdmi.patch
-Patch0028:      0028-usb-xhci-xhci_bulk_tx-Don-t-BUG-whe.patch
-Patch0029:      0029-Revert-Fix-data-abort-caused-by-mis.patch
-Patch0030:      0030-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
-Patch0031:      0031-pci-brcmstb-Cleanup-controller-stat.patch
+Patch0028:      0028-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
+Patch0029:      0029-pci-brcmstb-Cleanup-controller-stat.patch
+Patch0030:      0030-fs-btrfs-Select-SHA256-in-Kconfig.patch
+Patch0031:      0031-efi_loader-Avoid-emitting-efi_var_b.patch
+Patch0032:      0032-configs-BPI-R2-Disable-EFI-Grub-wor.patch
+Patch0033:      0033-configs-RPi2-Disable-EFI-Grub-worka.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -256,6 +263,7 @@ BuildRequires:  flex
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  swig
 BuildRequires:  pkgconfig(sdl)
 Conflicts:      u-boot-loader
@@ -323,6 +331,9 @@ BuildRequires:  zynqmp-dts
 # For mountpoint
 Requires(post): util-linux
 %endif
+%if "%{name}" == "u-boot-qemu-riscv64spl"
+BuildRequires:  opensbi >= 0.7
+%endif
 %if "%{name}" == "u-boot-sifivefu540"
 BuildRequires:  opensbi-sifivefu540 >= 0.7
 %endif
@@ -368,6 +379,7 @@ This package contains:
 mkimage- a tool that creates kernel bootable images for U-Boot.
 
 %else
+
 %package doc
 Summary:        Documentation for the U-Boot Firmware
 Group:          Documentation/Other
@@ -393,9 +405,14 @@ make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only
 export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/u-boot.changes | tail -n 1 | cut -d- -f1 )" +%s)
 %if 0%{?is_a64} || 0%{?is_h5}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_a64/bl31.bin
+export SCP=/dev/null
 %endif
 %if 0%{?is_h6}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h6/bl31.bin
+export SCP=/dev/null
+%endif
+%if "%{name}" == "u-boot-qemu-riscv64spl"
+export OPENSBI=%{_datadir}/opensbi/opensbi.bin
 %endif
 %if "%{name}" == "u-boot-sifivefu540"
 export OPENSBI=%{_datadir}/opensbi/opensbi-sifive-fu540.bin
@@ -440,12 +457,6 @@ make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" \
      all u-boot.itb
 %else
      all
-%endif
-
-%ifarch aarch64
-%if %sunxi_spl == 1
-cat spl/sunxi-spl.bin u-boot.itb > u-boot-sunxi-with-spl.bin
-%endif
 %endif
 
 %if "%{name}" == "u-boot-snow" || "%{name}" == "u-boot-spring"
@@ -560,7 +571,7 @@ echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.tx
 %if "%{name}" == "u-boot-rpi4" || "%{name}" == "u-boot-rpiarm64"
 echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootconfig.txt
 %endif
-%if "%{name}" == "u-boot-sifivefu540"
+%if "%{name}" == "u-boot-qemu-riscv64spl" || "%{name}" == "u-boot-sifivefu540"
 install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 %endif
 
@@ -584,6 +595,7 @@ fi
 %if %tools_only
 %files tools
 %else
+
 %files
 %endif
 %defattr(-,root,root)
@@ -606,9 +618,11 @@ fi
 %files doc
 %defattr(-,root,root)
 # Generic documents
-%doc doc/README.JFFS2 doc/README.JFFS2_NAND doc/README.commands
-%doc doc/README.autoboot doc/README.commands doc/README.console doc/README.dns
-%doc doc/README.hwconfig doc/README.nand doc/README.NetConsole doc/README.serial_multi
+%doc doc/develop/index.rst
+%doc doc/usage/index.rst doc/usage/netconsole.rst
+%doc doc/README.JFFS2 doc/README.JFFS2_NAND
+%doc doc/README.autoboot doc/README.console doc/README.dns
+%doc doc/README.hwconfig doc/README.nand doc/README.serial_multi
 %doc doc/README.SNTP doc/README.standalone doc/README.update doc/README.usb
 %doc doc/README.video doc/README.VLAN doc/README.silent doc/README.POST
 # Copy some useful kermit scripts as well

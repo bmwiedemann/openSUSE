@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:48:58 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Add some mandatory values in the DB and PAS templates for S4HANA
+  to avoid executions without them in the extra_parameters field 
+
+-------------------------------------------------------------------
 Mon Feb 15 12:34:27 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Give the option to mount /sapmnt folder locally without using

@@ -17,7 +17,7 @@
 
 
 Name:           vorta
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ Patch0:         fix-dependencies.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-APScheduler
+BuildRequires:  python3-APScheduler < 4.0
 BuildRequires:  python3-QDarkStyle
 BuildRequires:  python3-appdirs
 BuildRequires:  python3-keyring
@@ -44,7 +44,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools-git
 BuildRequires:  update-desktop-files
 Requires:       borgbackup
-Requires:       python3-APScheduler
+Requires:       python3-APScheduler < 4.0
 Requires:       python3-QDarkStyle
 Requires:       python3-appdirs
 Requires:       python3-keyring

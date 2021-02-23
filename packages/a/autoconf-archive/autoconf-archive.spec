@@ -1,7 +1,7 @@
 #
 # spec file for package autoconf-archive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           autoconf-archive
-Version:        2019.01.06
+Version:        2021.02.19
 Release:        0
 Summary:        A Collection of macros for GNU autoconf
 License:        GPL-3.0+ WITH Autoconf-exception-3.0
@@ -26,8 +26,6 @@ Source0:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.
 Source1:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.tar.xz.sig
 # http://wwwkeys.pgp.net:11371/pks/lookup?op=get&search=0x99089D72
 Source2:        %{name}.keyring
-Requires(post): info
-Requires(pre):  info
 BuildArch:      noarch
 
 %description
@@ -59,12 +57,6 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}/%{_datadir}/%{name}/
 # install via macro later
 rm -v %{buildroot}%{_docdir}/%{name}/COPYING*
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/autoconf-archive.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/autoconf-archive.info%{ext_info}
 
 %files
 %license COPYING*

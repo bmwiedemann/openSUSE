@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Unpack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,8 @@ Patch2:         https://patch-diff.githubusercontent.com/raw/jnweiger/perl-File-
 Patch3:         https://patch-diff.githubusercontent.com/raw/jnweiger/perl-File-Unpack/pull/9.diff
 Patch4:         https://patch-diff.githubusercontent.com/raw/jnweiger/perl-File-Unpack/pull/10.diff
 Patch5:         https://patch-diff.githubusercontent.com/raw/jnweiger/perl-File-Unpack/pull/11.diff
-Url:            https://github.com/jnweiger/perl-File-Unpack
+Patch6:         https://patch-diff.githubusercontent.com/raw/jnweiger/perl-File-Unpack/pull/12.diff
+URL:            https://github.com/jnweiger/perl-File-Unpack
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  perl(Test::CheckManifest)
@@ -189,6 +190,7 @@ ships with the File::Unpack perl module.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

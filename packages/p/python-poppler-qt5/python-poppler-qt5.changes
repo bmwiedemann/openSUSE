@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 23 11:37:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Reinstate multiversion build. The only fix needed was
+  gh#frescobaldi/python-poppler-qt5#44
+
+-------------------------------------------------------------------
+Thu Feb  4 11:53:00 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add not why we do not use multiversion for this package
+- Add note why we do not update to 21.1.0
+
+-------------------------------------------------------------------
 Thu Jan 21 10:49:11 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Limit build set to python3 (remove skip python2), so that the

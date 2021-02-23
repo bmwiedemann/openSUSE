@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 21 18:19:09 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Skip python36.
+- Update to version 5.3.1.
+  * Fix Evaluate Curves and Surfaces outside domain limits
+  * Jupyter and Plotly renderer support 
+
+-------------------------------------------------------------------
 Thu Nov 12 12:46:49 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 5.3.0

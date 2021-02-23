@@ -156,4 +156,12 @@
   * Add ddeDisplayName() for DDE applications (forwarded request 869736 from hillwood)</comment>
     <requestid>869743</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7e22ed8a97ac7845b8f68a7a75ec7259</srcmd5>
+    <version>5.4.0</version>
+    <time>1614108095</time>
+    <user>dimstar_suse</user>
+    <comment>- Need deepin-desktop-base (forwarded request 874463 from hillwood)</comment>
+    <requestid>874464</requestid>
+  </revision>
 </revisionlist>

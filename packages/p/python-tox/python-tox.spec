@@ -142,7 +142,7 @@ donttest+=" or test_build_backend_without_submodule"
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
 source testenv-%{$python_bin_suffix}/bin/activate
-pip install ./tox*.whl
+pip install ./build/tox*.whl
 python -B -m pytest -v -m "not network" -k "not (${donttest:4})" -n auto
 deactivate
 }

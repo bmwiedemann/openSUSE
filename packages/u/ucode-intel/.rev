@@ -703,4 +703,18 @@
  - CVE-2020-8695: Fixed Intel RAPL sidechannel attack (SGX) INTEL-SA-00389 (bsc#1170446)</comment>
     <requestid>849467</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>04c6363fe7ea5683d642d53a026c4416</srcmd5>
+    <version>20210216</version>
+    <time>1614107990</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated Intel CPU Microcode to 20210216 official release. (bsc#1182347 bsc#1179224)
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | SKX-SP         | H0/M0/U0 | 06-55-04/b7 | 02006a08 | 02006a0a | Xeon Scalable
+  | SKX-D          | M1       | 06-55-04/b7 | 02006a08 | 02006a0a | Xeon D-21xx
+  | CLX-SP         | B0       | 06-55-06/bf | 04003003 | 04003006 | Xeon Scalable Gen2
+  | CLX-SP         | B1       | 06-55-07/bf | 05003003 | 05003006 | Xeon Scalable Gen2</comment>
+    <requestid>873142</requestid>
+  </revision>
 </revisionlist>

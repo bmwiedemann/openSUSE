@@ -17,7 +17,7 @@
 
 
 Name:           rygel
-Version:        0.40.0
+Version:        0.40.1
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later

@@ -1677,4 +1677,41 @@
 - Bump version: 9.23.8 → 9.23.9</comment>
     <requestid>868394</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>1856bf629ff66b5c142196ce9755e536</srcmd5>
+    <version>9.23.16</version>
+    <time>1614107913</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.15 → 9.23.16
+
+- Fix lsblk flags to get sorted output
+  This commit modifies the lsblk command flags to get a sorted output
+  according to the disk layout.
+  This is related to 176c7eab commita and it fixes bsc#1182264
+
+- Fixed kiwi-systemdeps-filesystems requires
+  The filesystems requires list also contains low level
+  tools to manage partitions, loops and subsystems. The tools
+  to manage LUKS(cryptsetup) are missing and imho belongs there
+  along with the LVM tools which are listed
+
+- Add strong typing for filesystem classes
+  This commit strong typing for FileSystem* classes.
+  Part of #1644
+
+- Added ca-certificates-mozilla to build tests
+  ca-certificates-mozilla provides the issuer CERT to allow
+  for https repo connections. The standard ca-certificates is
+  not enough on suse/leap/sles based integration tests
+
+- Fixed packaging metadata for pypi
+  Include the README as long description in the metadata
+  for pypi. The change causes the description on pypi.org
+  to show the ReST rendered README instead of a message
+  that the author of the module hasn't provided a description
+
+- Delete legacy oem build test from leap
+  The legacy custom kiwi boot test will only continue</comment>
+    <requestid>873030</requestid>
+  </revision>
 </revisionlist>

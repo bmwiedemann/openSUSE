@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-photos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-photos
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        Photo viewer for GNOME
 License:        GPL-3.0-or-later
@@ -121,7 +121,6 @@ rm %{buildroot}%{_datadir}/doc/%{name}/{ARTISTS,AUTHORS,NEWS,README}
 %{_datadir}/tracker/domain-ontologies/org.gnome.Photos.rule
 %{_datadir}/tracker/miners/org.gnome.Photos.Tracker1.Miner.Extract.service
 %{_datadir}/tracker/miners/org.gnome.Photos.Tracker1.Miner.Files.service
-
 
 %files -n gnome-shell-search-provider-gnome-photos
 # Own dirs so we don't have to depend on gnome-shell.

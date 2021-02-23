@@ -108,6 +108,22 @@ if [ "$(findmnt -snT / -o SOURCE)" != "$(findmnt -snT /var -o SOURCE)" ]; then
 	gawk -i inplace '$2 == "/var" { $4 = $4",x-growpart.grow,x-systemd.growfs" } { print $0 }' /etc/fstab
 fi
 EOF
+
+# ONIE additions
+if [[ "$kiwi_profiles" == *"onie"* ]]; then
+	systemctl enable onie-adjust-boottype
+	# For testing:
+	echo root:linux | chpasswd
+	systemctl enable salt-minion
+
+	cat >>/etc/fstab.script <<"EOF"
+# Grow the root filesystem. / is mounted read-only, so use /var instead.
+gawk -i inplace '$2 == "/var" { $4 = $4",x-growpart.grow,x-systemd.growfs" } { print $0 }' /etc/fstab
+# Remove the entry for the EFI partition
+gawk -i inplace '$2 != "/boot/efi"' /etc/fstab
+EOF
+fi
+
 chmod a+x /etc/fstab.script
 
 # To make x-systemd.growfs work from inside the initrd

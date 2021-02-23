@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 18 16:17:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Make sure we pull in the libraries we need for dlopen, by
+  following the symlinks from the .so symlinks with the
+  requires_file macro.
+
+-------------------------------------------------------------------
 Tue Jan 26 14:58:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.2.1 

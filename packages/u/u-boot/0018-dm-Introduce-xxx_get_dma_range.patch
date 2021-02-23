@@ -1,6 +1,6 @@
-From 7b53f3bae226443173c035d99c2fb67d994be285 Mon Sep 17 00:00:00 2001
+From c655ed2fd2cfa3a70783402a4cab78bbd0277858 Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Date: Tue, 17 Nov 2020 17:49:54 +0100
+Date: Tue, 12 Jan 2021 13:55:22 +0100
 Subject: [PATCH] dm: Introduce xxx_get_dma_range()
 
 Add the following functions to get a specific device's DMA ranges:
@@ -14,17 +14,7 @@ spaces.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Reviewed-by: Simon Glass <sjg@chromium.org>
-
----
-Changes since v2:
- - Return ENOENT instead of ENODEV
- - Refcount of nodes
-
-Changes since v1:
- - Fix wrong arguments in of_get_dma_range()'s call to of_translate_dma_address()
- - Fix build in SPL/TPL and no LIBFDT supprt
- - Add missing declaration in 'core/read.c'
- - Address Matthias' comments
+Tested-by: Peter Robinson <pbrobinson@gmail.com>
 ---
  common/fdt_support.c   | 73 +++++++++++++++++++++++++++++++++++++++
  drivers/core/of_addr.c | 78 ++++++++++++++++++++++++++++++++++++++++++
@@ -37,10 +27,10 @@ Changes since v1:
  8 files changed, 234 insertions(+)
 
 diff --git a/common/fdt_support.c b/common/fdt_support.c
-index a565b470f8..023757bd0e 100644
+index 5ae75df3c6..bf855d26c8 100644
 --- a/common/fdt_support.c
 +++ b/common/fdt_support.c
-@@ -1347,6 +1347,79 @@ u64 fdt_translate_dma_address(const void *blob, int node_offset,
+@@ -1342,6 +1342,79 @@ u64 fdt_translate_dma_address(const void *blob, int node_offset,
  	return __of_translate_address(blob, node_offset, in_addr, "dma-ranges");
  }
  
@@ -210,10 +200,10 @@ index ca34d84922..703bc3e3f5 100644
  		const __be32 *addrp, u64 size, unsigned int flags,
  		const char *name, struct resource *r)
 diff --git a/drivers/core/ofnode.c b/drivers/core/ofnode.c
-index d02d8d33fe..d4e69b0074 100644
+index a68076bf35..15470d4875 100644
 --- a/drivers/core/ofnode.c
 +++ b/drivers/core/ofnode.c
-@@ -888,6 +888,15 @@ u64 ofnode_translate_dma_address(ofnode node, const fdt32_t *in_addr)
+@@ -911,6 +911,15 @@ u64 ofnode_translate_dma_address(ofnode node, const fdt32_t *in_addr)
  		return fdt_translate_dma_address(gd->fdt_blob, ofnode_to_offset(node), in_addr);
  }
  
@@ -230,10 +220,10 @@ index d02d8d33fe..d4e69b0074 100644
  {
  	if (ofnode_is_np(node))
 diff --git a/drivers/core/read.c b/drivers/core/read.c
-index 86f3f88170..333e011fef 100644
+index 076125824c..0994fbd979 100644
 --- a/drivers/core/read.c
 +++ b/drivers/core/read.c
-@@ -337,6 +337,12 @@ u64 dev_translate_dma_address(const struct udevice *dev, const fdt32_t *in_addr)
+@@ -338,6 +338,12 @@ u64 dev_translate_dma_address(const struct udevice *dev, const fdt32_t *in_addr)
  	return ofnode_translate_dma_address(dev_ofnode(dev), in_addr);
  }
  
@@ -275,10 +265,10 @@ index 3fa1ffce81..ee21d5cf4f 100644
   * of_get_address() - obtain an address from a node
   *
 diff --git a/include/dm/ofnode.h b/include/dm/ofnode.h
-index 8df2facf99..d1be553b37 100644
+index ced7f6ffb2..dc3dd84d9f 100644
 --- a/include/dm/ofnode.h
 +++ b/include/dm/ofnode.h
-@@ -915,6 +915,22 @@ u64 ofnode_translate_address(ofnode node, const fdt32_t *in_addr);
+@@ -939,6 +939,22 @@ u64 ofnode_translate_address(ofnode node, const fdt32_t *in_addr);
   */
  u64 ofnode_translate_dma_address(ofnode node, const fdt32_t *in_addr);
  
@@ -302,10 +292,10 @@ index 8df2facf99..d1be553b37 100644
   * ofnode_device_is_compatible() - check if the node is compatible with compat
   *
 diff --git a/include/dm/read.h b/include/dm/read.h
-index 67db94adfc..6ee7099bd4 100644
+index 0585eb1228..46e902c57d 100644
 --- a/include/dm/read.h
 +++ b/include/dm/read.h
-@@ -662,6 +662,21 @@ u64 dev_translate_address(const struct udevice *dev, const fdt32_t *in_addr);
+@@ -664,6 +664,21 @@ u64 dev_translate_address(const struct udevice *dev, const fdt32_t *in_addr);
  u64 dev_translate_dma_address(const struct udevice *dev,
  			      const fdt32_t *in_addr);
  
@@ -327,7 +317,7 @@ index 67db94adfc..6ee7099bd4 100644
  /**
   * dev_read_alias_highest_id - Get highest alias id for the given stem
   * @stem:	Alias stem to be examined
-@@ -1002,6 +1017,12 @@ static inline u64 dev_translate_dma_address(const struct udevice *dev,
+@@ -1004,6 +1019,12 @@ static inline u64 dev_translate_dma_address(const struct udevice *dev,
  	return ofnode_translate_dma_address(dev_ofnode(dev), in_addr);
  }
  
@@ -341,7 +331,7 @@ index 67db94adfc..6ee7099bd4 100644
  {
  	if (!CONFIG_IS_ENABLED(OF_LIBFDT))
 diff --git a/include/fdt_support.h b/include/fdt_support.h
-index 9684cffe80..963c917445 100644
+index dbbac0fb6a..46eb1dbbb2 100644
 --- a/include/fdt_support.h
 +++ b/include/fdt_support.h
 @@ -260,6 +260,20 @@ u64 fdt_translate_address(const void *blob, int node_offset,

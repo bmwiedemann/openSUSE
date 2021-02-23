@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:52:28 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Disabled Python 2 builds
+- Update to v3.0.1
+  * See https://github.com/gmr/pamqp/blob/master/docs/changelog.rst
+
+-------------------------------------------------------------------
 Tue Jun  9 07:24:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest

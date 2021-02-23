@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 18 20:52:58 UTC 2021 - Gordon Schulz <gordon@gordonschulz.de>
+
+- Update to version 0.6.0
+  * This release brings a new and more convenient way to change delta 
+    options in a one-off git command: using git -c. Here's an example:
+
+    git -c delta.line-numbers=false -c delta.max-line-distance=0.8 show
+
+    One note: while quotes around color hex codes are required in 
+    gitconfig, they can be omitted in the git -c context
+
+    git -c delta.plus-style='syntax "#aa0000"'
+    git -c delta.plus-style='syntax #aa0000'
+  * Hunk header misaligned in some cases
+  * Delta does not respect git -c
+  * Can't disable line numbering from command line
+  * Support for Apple Silicon/ARM64
+
+-------------------------------------------------------------------
 Fri Jan  8 09:05:59 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to version 0.5.1

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 17 09:49:55 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libgcrypt 1.9.2:
+  * Fix building with --disable-asm on x86
+  * Check public key for ECDSA verify operation
+  * Make sure gcry_get_config (NULL) returns a nul-terminated
+    string
+  * Fix a memory leak in the ECDH code
+  * Fix a reading beyond end of input buffer in SHA2-avx2
+- remove obsolete texinfo packaging macros
+
+-------------------------------------------------------------------
 Tue Feb  2 01:06:47 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.9.1

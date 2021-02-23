@@ -398,4 +398,22 @@ this has necessary adjustments for openssl w/o sslv2; needed for Factory! (forwa
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>864616</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>c1598a027f377119f7c796a58e4e43b8</srcmd5>
+    <version>0.37.1</version>
+    <time>1614108008</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 293_sslv23_padding.patch to avoid using RSA_SSLV23_PADDING
+  (gl#m2crypto/m2crypto#293, gh#openssl/openssl#14216).
+- OpenSSL allows the verificaton to continue on
+  UNABLE_TO_VERIFY_LEAF_SIGNATURE
+  * This unifies the behaviour of a single certificate with an
+    unknown CA certificate with a self-signed certificate.
+- Add python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch
+  (Thanks for Debian,
+  https://salsa.debian.org/python-team/packages/m2crypto/-/commit/e0e9ad5cfff8)
+- Add source signature file
+</comment>
+    <requestid>873811</requestid>
+  </revision>
 </revisionlist>

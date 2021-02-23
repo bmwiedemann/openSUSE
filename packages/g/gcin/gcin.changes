@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 23 06:09:46 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix the build failure due to the comparison of bare words
+
+-------------------------------------------------------------------
 Fri Dec  4 16:25:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build the qt4 subpackage for Leap 15.3 or newer

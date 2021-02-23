@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 15:02:05 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Drop broken %ifpython3 macro
+
+-------------------------------------------------------------------
 Wed Apr 15 09:16:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.28:

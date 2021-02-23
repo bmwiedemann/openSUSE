@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 10 12:58:56 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to rdma-core v31.3
+  - No release notes available
+- Fix patch to systemd-modules-load script (bsc#1178539)
+- Drop srp_daemon-Fix-systemd-dependency.patch as it was merged upstream
+
+-------------------------------------------------------------------
 Fri Jan 22 13:17:42 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add srp_daemon-Fix-systemd-dependency.patch to make sure srp_daemon

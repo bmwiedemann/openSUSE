@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 11:44:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix wheel location when custom installing into test venv.
+
+-------------------------------------------------------------------
 Sun Jan 17 20:03:10 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update requirements

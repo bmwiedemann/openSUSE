@@ -29,6 +29,8 @@ Source:         milou-%{version}.tar.xz
 Source1:        milou-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-launching-empty-query.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

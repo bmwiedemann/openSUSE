@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 15 17:51:29 CET 2021 - ro@suse.de
+
+- fix apparmor profile to allow /run as well as /var/run 
+
+-------------------------------------------------------------------
 Thu Feb  4 16:35:12 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
 
 - added nrpe-4.0.4-silence_wrong_package_version_messages.patch

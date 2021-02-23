@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 17 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.202
+   see /usr/share/doc/packages/perl-Business-ISMN/Changes
+
+  1.202 2021-02-16T12:43:17Z
+  	* Freshen distro, add Github Actions
+
+-------------------------------------------------------------------
 Thu Nov  8 06:04:08 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.201

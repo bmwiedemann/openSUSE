@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruffus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruffus
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Python computational pipeline management package
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cgat-developers/ruffus
 Source:         https://files.pythonhosted.org/packages/source/r/ruffus/ruffus-%{version}.tar.gz
-# https://github.com/cgat-developers/ruffus/pull/114
-Patch0:         pr_114.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,8 +40,8 @@ The Ruffus module is a way to add support for running computational pipelines.
 
 %prep
 %setup -q -n ruffus-%{version}
-%patch0 -p1
-
+# gh#cgat-developers/ruffus#123
+rm ruffus/test/test_functions_with_extras.py
 rm ruffus/test/*.cmd
 
 sed -i -e '/^#!\//, 1d' ruffus/*.py
@@ -62,11 +60,13 @@ chmod a-x ruffus/test/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 pushd ruffus/test
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+%{python_expand # yes, the test files need to be called in separate pytest calls
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+export PYTHONDONTWRITEBYTECODE=1
 for f in test_*.py; do
-pytest-%{$python_bin_suffix} $f
+[ $f -ef test_with_logger.py ] && continue # segfault on obs server (not local)
+pytest-%{$python_bin_suffix} -v $f
 done
 for f in check_*.py; do
 $python $f
@@ -77,6 +77,7 @@ popd
 %files %{python_files}
 %doc CHANGES.TXT README.rst
 %license LICENSE.TXT
-%{python_sitelib}/*
+%{python_sitelib}/ruffus
+%{python_sitelib}/ruffus-%{version}*-info
 
 %changelog

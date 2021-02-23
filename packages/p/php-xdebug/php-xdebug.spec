@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
@@ -84,7 +84,6 @@ EOF
 # check if the extension can be loaded
 %{__php} --no-php-ini --define zend_extension=%{buildroot}%{php_extdir}/%{pkg_name}.so \
     --modules | grep Xdebug
-%make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
 
 %files
 %license LICENSE

@@ -116,4 +116,12 @@
   tests since single quotes mess with the pytest macro.</comment>
     <requestid>836145</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7ad8450ce6be6a51652735c999b56a3c</srcmd5>
+    <version>0.7.7</version>
+    <time>1614108078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874411</requestid>
+  </revision>
 </revisionlist>

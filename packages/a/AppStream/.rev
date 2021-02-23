@@ -217,4 +217,12 @@ Features:
     <comment></comment>
     <requestid>862279</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8db4b8f50c5f322c5fbce8442d1ec7cb</srcmd5>
+    <version>0.14.1</version>
+    <time>1614107933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.1: (forwarded request 873077 from dimstar)</comment>
+    <requestid>873084</requestid>
+  </revision>
 </revisionlist>

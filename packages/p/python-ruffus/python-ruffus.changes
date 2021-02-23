@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 22 17:16:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.8.4
+  * compatibility with gevent 1.5 
+- remove unknown failing test file -- gh#cgat-developers/ruffus#123
+- drop pr_114.patch merged upstream
+
+-------------------------------------------------------------------
 Thu Jan 30 15:52:25 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Tests require full python

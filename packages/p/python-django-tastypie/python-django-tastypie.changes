@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 09:39:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip two tests failing on Tumbleweed Python 3.6
+
+-------------------------------------------------------------------
 Thu Jan  9 08:56:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.14.3:

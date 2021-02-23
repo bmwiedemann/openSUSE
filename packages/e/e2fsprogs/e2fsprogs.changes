@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb 18 14:44:00 UTC 2021 - Jan Kara <jack@suse.cz>
+
+- Remove autoreconf (and resulting dependencies) from the spec file. The
+  upstream configure script should be fine.
+
+-------------------------------------------------------------------
+Tue Feb 16 17:31:25 UTC 2021 - Jan Kara <jack@suse.cz>
+
+- Update to 1.46.1:
+  * Fix setting extended attributes in libext2fs and debugfs
+  * Fix e2fsck to accept large_dir directories greater than 4G
+  * Fix fast commit support on big endian architectures
+  * Fix mke2fs -d to correctly import a small file stored using inline_data
+    feature and which has ACL or extended attribute
+  * Various compilation fixes
+  * Speedup bitmap loading for large filesystems using multiple threads
+  * Speedup mke2fs for bigalloc filesystems
+  * E2fsck fixes when rehashing directories
+  * Fix e2fsck crashes on maliciously corrupted filesystems
+  * Fix e2fsck handling of duplicated case-folded file names
+  * Implement hashed directory support in libext2fs
+  * Support for fast commit feature
+  * Support for combination of casefolding and encryption
+  * Support for stable inodes feature
+  * Add support for per-inode DAX flag
+  * Fix tune2fs to unlock MMP on failure
+  * Fix e2fsck buffer overflow when scanning directory blocks
+  * Fix resize2fs overflowing block group descriptors with 1k block size
+- delete e2fsprogs-1.45.2-gettext.patch - it was merged upstream
+- Add autoconf-archive to build requirements
+- Fix installation of info files for older distros
+
+-------------------------------------------------------------------
 Thu Jan 28 15:02:08 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix usage of info macros on openSUSE, we use file triggers today

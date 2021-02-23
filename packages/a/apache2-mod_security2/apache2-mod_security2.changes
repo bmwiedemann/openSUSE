@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Feb 23 07:49:57 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.9.3
+ * Enable optimization for large stream input by default on IIS
+   [Issue #1299 - @victorhora, @zimmerle]
+ * Allow 0 length JSON requests.
+   [Issue #1822 - @allanbomsft, @zimmerle, @victorhora, @marcstern]
+ * Include unanmed JSON values in unnamed ARGS
+   [Issue #1577, #1576 - @marcstern, @victorhora, @zimmerle]
+ * Fix buffer size for utf8toUnicode transformation
+   [Issue #1208 - @katef, @victorhora]
+ * Fix sanitizing JSON request bodies in native audit log format
+   [p0pr0ck5, @victorhora]
+ * IIS: Update Wix installer to bundle a supported CRS version (3.0)
+   [@victorhora, @zimmerle]
+ * IIS: Update dependencies for Windows build
+   [Issue #1848 - @victorhora, @hsluoyz]
+ * IIS: Set SecStreamInBodyInspection by default on IIS builds (#1299)
+   [Issue #1299 - @victorhora]
+ * IIS: Update modsecurity.conf
+   [Issue #788 - @victorhora, @brianclark]
+ * Add sanity check for a couple malloc() and make code more resilient
+   [Issue #979 - @dogbert2, @victorhora, @zimmerl]
+ * Fix NetBSD build by renaming the hmac function to avoid conflicts
+   [Issue #1241 - @victorhora, @joerg, @sevan]
+ * IIS: Windows build, fix duplicate YAJL dir in script
+   [Issue #1612 - @allanbomsft, @victorhora]
+ * IIS: Remove body prebuffering due to no locking in modsecProcessRequest
+   [Issue #1917 - @allanbomsft, @victorhora]
+ * Fix mpm-itk / mod_ruid2 compatibility
+   [Issue #712 - @ju5t , @derhansen, @meatlayer, @victorhora]
+ * Code cosmetics: checks if actionset is not null before use it
+   [Issue #1556 - @marcstern, @zimmerle, @victorhora]
+ * Only generate SecHashKey when SecHashEngine is On
+   [Issue #1671 - @dmuey, @monkburger, @zimmerle]
+ * Docs: Reformat README to Markdown and update dependencies
+   [Issue #1857 - @hsluoyz, @victorhora]
+ * IIS: no lock on ProcessRequest. No reload of config.
+   [Issue #1826 - @allanbomsft]
+ * IIS: buffer request body before taking lock
+   [Issue #1651 - @allanbomsft]
+ * good practices: Initialize variables before use it
+   [Issue #1889 - Marc Stern]
+ * Let body parsers observe SecRequestBodyNoFilesLimit
+   [Issue #1613 - @allanbomsft]
+ * potential off by one in parse_arguments
+   [Issue #1799 - @tinselcity, @zimmerle]
+ * Fix utf-8 character encoding conversion
+   [Issue #1794 - @tinselcity, @zimmerle]
+ * Fix ip tree lookup on netmask content
+   [Issue #1793 - @tinselcity, @zimmerle]
+ * IIS: set overrideModeDefault to Allow so that individual websites can
+   add <ModSecurity ...> to their web.config file
+   [Issue #1781 - @default-kramer]
+ * modsecurity.conf-recommended: Fix spelling
+   [Issue #1721 - @padraigdoran]
+ * build: fix when multiple lines for curl version
+   [Issue #1771 - @Artistan]
+ * Fix arabic charset in unicode_mapping file
+   [Issue #1619 - @alaa-ahmed-a]
+ * Optionally preallocates memory when SecStreamInBodyInspection is on
+   [Issue #1366 - @allanbomsft, @zimmerle]
+ * Fixed typo in build_yajl.bat
+   [Issue #1366 - @allanbomsft]
+ * Fixes SecConnWriteStateLimit
+   [Issue #1545 - @nicjansma]
+ * Added "empy chunk" check
+   [Issue #1347, #1446 - @gravagli, @bostrt, @zimmerle]
+ * Add capture action to @detectXSS operator
+   [Issue #1488, #1482 - @victorhora]
+ * Fix for wildcard operator when loading conf files on Nginx / IIS
+   [Issue #1486, #1285 - @victorhora and @thierry-f-78]
+ * Set of fixies to make windows build workable with the buildbots
+   [Commit 94fe3 - @zimmerle]
+ * Uses LOG_NO_STOPWATCH instead of DLOG_NO_STOPWATCH
+   [Issue #1510 - @marcstern]
+ * Adds missing headers
+   [Issue #1454 - @devnexen]
+- modified patches
+  % modsecurity-fixes.patch (fix crash caused by our patch)
+    [bsc#1180830]
+- added patches
+  + modsecurity-2.9.3-input_filtering_errors.patch
+    [bsc#1180830]
+
+-------------------------------------------------------------------
 Wed Feb 12 10:26:15 UTC 2020 - pgajdos@suse.com
 
 - removing %apache_test_* macros, do not test module just by

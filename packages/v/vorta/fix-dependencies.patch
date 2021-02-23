@@ -15,5 +15,5 @@ Index: vorta-0.6.22/setup.cfg
 -  pyqt5
    peewee
    python-dateutil
-   apscheduler
+   apscheduler < 4.0
 

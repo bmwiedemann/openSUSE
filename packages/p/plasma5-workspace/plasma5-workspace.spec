@@ -42,6 +42,10 @@ Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-libkworkspace-Interim-fix-for-the-logout-issue.patch
+Patch2:         0001-locations-runner-Fix-absolute-filepath-arguments.patch
+Patch3:         0001-locations-runner-Fix-empty-list-on-invalid-shell-quo.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

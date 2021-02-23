@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 23 03:56:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.5:
+  * Fix asyncio DeprecationWarning: The loop argument is deprecated
+  * Make deprecated API (SocksConnector etc) available again
+  * Misc fixes, remove deprecated API (SocksConnector etc)
+  * Fix cancellation handling
+  * Improve timeouts handling
+  * First use ipv4 when resolving hostnames
+  * Change the default value of the family parameter to AF_UNSPEC
+  * Make it compatible with aiohttp 2.x again 
+
+-------------------------------------------------------------------
 Thu Jan 16 16:21:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.3.4

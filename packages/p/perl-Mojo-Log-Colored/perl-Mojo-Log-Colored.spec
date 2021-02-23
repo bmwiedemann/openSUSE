@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-Log-Colored
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Mojo-Log-Colored
-Version:        0.03
-Release:        0
 %define cpan_name Mojo-Log-Colored
+Name:           perl-Mojo-Log-Colored
+Version:        0.04
+Release:        0
 Summary:        Colored Mojo logging
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
@@ -50,7 +48,7 @@ output would also be colored. That does not make a lot of sense, so you
 don't want to do that. Use this for development, not production.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL --installdirs=vendor
@@ -64,7 +62,6 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes minil.toml README.md
 %license LICENSE
 

@@ -2416,4 +2416,12 @@ for more fun options (forwarded request 147495 from coolo)</comment>
     ISO-20220-JP-3 character set using the iconv function has been fixed. (forwarded request 868599 from Andreas_Schwab)</comment>
     <requestid>868600</requestid>
   </revision>
+  <revision rev="245" vrev="2">
+    <srcmd5>57db9b72f1e33dd5a134659a04021080</srcmd5>
+    <version>2.33</version>
+    <time>1614108001</time>
+    <user>dimstar_suse</user>
+    <comment>- Prepare for usrmerge (bsc#1029961) (forwarded request 873391 from Andreas_Schwab)</comment>
+    <requestid>873392</requestid>
+  </revision>
 </revisionlist>

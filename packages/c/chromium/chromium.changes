@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 17 11:41:49 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 88.0.4324.182 bsc#1182358
+  - CVE-2021-21149: Stack overflow in Data Transfer.
+  - CVE-2021-21150: Use after free in Downloads.
+  - CVE-2021-21151: Use after free in Payments.
+  - CVE-2021-21152: Heap buffer overflow in Media.
+  - CVE-2021-21153: Stack overflow in GPU Process. 
+  - CVE-2021-21154: Heap buffer overflow in Tab Strip.
+  - CVE-2021-21155: Heap buffer overflow in Tab Strip.
+  - CVE-2021-21156: Heap buffer overflow in V8.
+  - CVE-2021-21157: Use after free in Web Sockets.  
+
+-------------------------------------------------------------------
 Mon Feb 15 07:53:24 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add chromium-glibc-2.33.patch: fix Sandbox with glibc 2.33

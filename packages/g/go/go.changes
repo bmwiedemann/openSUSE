@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 16 22:41:18 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to current stable go1.15
+  Refs boo#1175132 go1.15 release tracking
+
+-------------------------------------------------------------------
 Tue Jun 30 17:15:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Enable for riscv64

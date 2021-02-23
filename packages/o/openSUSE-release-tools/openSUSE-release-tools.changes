@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 15 14:39:49 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210215.e68b5e0b:
+  * Fix repo state error handling in pkglistgen
+
+-------------------------------------------------------------------
 Wed Feb 03 08:06:18 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210203.2caa5a9e:

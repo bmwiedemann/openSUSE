@@ -33,7 +33,7 @@
   /usr/lib/nagios/plugins/check_contentage     px,
   /usr/lib/nagios/plugins/** ux,
   /bin/bash rix,
-  /var/run/nrpe/nrpe.pid rw,
+  /{,var/}run/nrpe/nrpe.pid rw,
   /proc/sys/crypto/fips_enabled r,
   /etc/hosts.allow r,
   /etc/hosts.deny r,

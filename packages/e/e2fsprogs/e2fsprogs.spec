@@ -28,8 +28,6 @@ Supplements:    filesystem(ext2) filesystem(ext3) filesystem(ext4)
 %else
 %bcond_with systemd
 %endif
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  libblkid-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
@@ -68,7 +66,7 @@ Conflicts:      libcom_err2-mini
 Conflicts:      libcom_err-mini-devel
 %endif
 #
-Version:        1.45.6
+Version:        1.46.1
 Release:        0
 Summary:        Utilities for the Second Extended File System
 License:        GPL-2.0-only
@@ -91,8 +89,6 @@ Source5:        https://thunk.org/tytso/tytso-key.asc#/%{name}.keyring
 Patch3:         libcom_err-compile_et_permissions.patch
 Patch4:         e2fsprogs-1.42-implicit_fortify_decl.patch
 Patch5:         e2fsprogs-1.42-ext2fsh_implicit.patch
-# PATCH-FIX-UPSTREAM e2fsprogs-1.45.2-gettext.patch -- Support gettext 0.20
-Patch6:         e2fsprogs-1.45.2-gettext.patch
 # Do not suppress make commands
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -256,14 +252,10 @@ Development files for the com_err error message display library. Static librarie
 %patch3 -p1
 %patch4
 %patch5
-%patch6 -p1
 cp %{SOURCE2} .
-# Don't use intl/ subdirectory as it's deprecated since gettext 0.20
-rm -r intl
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-autoreconf --force --install
 %configure \
   --with-root-prefix=''   \
   --enable-elf-shlibs \
@@ -329,7 +321,9 @@ done
 %post
 /sbin/ldconfig
 %if ! %{build_mini}
-%install_info --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz || :
+%if 0%{?suse_version} <= 1530
+%install_info --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz
+%endif
 %{?regenerate_initrd_post}
 %endif
 
@@ -347,7 +341,9 @@ done
 %preun -n e2fsprogs-scrub-mini
 %else
 %preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz || :
+%if 0%{?suse_version} <= 1530
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz
+%endif
 %preun -n e2fsprogs-scrub
 %endif
 %service_del_preun e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service

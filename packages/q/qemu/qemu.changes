@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 17 02:06:20 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix uninitialized variable in ipxe driver code (boo#1181922)
+  ath5k-Add-missing-AR5K_EEPROM_READ-in-at.patch
+- Add a few improvements to the git-based package workflow scripts
+
+-------------------------------------------------------------------
+Tue Feb 16 17:10:53 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Include additional upstream patches designated as stable material
+  and reviewed for applicability to include here
+  blockjob-Fix-crash-with-IOthread-when-bl.patch
+  monitor-Fix-assertion-failure-on-shutdow.patch
+  qemu-nbd-Use-SOMAXCONN-for-socket-listen.patch
+  qemu-storage-daemon-Enable-object-add.patch
+
+-------------------------------------------------------------------
 Mon Feb  8 20:53:03 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Switch the modules qemu-ui-display-gpu and qemu-ui-display-gpu-pci

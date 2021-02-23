@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  8 10:46:24 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use _multibuild for building all flavors.
+- Remove unused makeinfo build dependency.
+- Omit all build steps from base flavor, it just packages
+  various documentation files.
+- Remove deprecated stuff from spec file.
+
+-------------------------------------------------------------------
 Mon Dec  7 09:17:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use defined gcc version for all architectures

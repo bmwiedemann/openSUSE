@@ -1,6 +1,6 @@
-From 2fc18b303627de11d9c397a9cc3f6c678dc063a8 Mon Sep 17 00:00:00 2001
+From e9db4aca83892ceba98c7712b91e31ada2ae2010 Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Date: Mon, 16 Nov 2020 11:25:11 +0100
+Date: Tue, 12 Jan 2021 13:55:19 +0100
 Subject: [PATCH] rpi: Add identifier for the new RPi400
 
 The Raspberry Pi Foundation released the new RPi400 which we want to
@@ -8,12 +8,8 @@ detect, so we can enable Ethernet on it and know the correct device tree
 file name.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-
----
-
-Changes since v1:
- - The RPi Foundation introduced a RPi400 specific device tree, so use
-   that file name instead of the fallback (RPi4b).
+Reviewed-by: Peter Robinson <pbrobinson@gmail.com>
+Tested-by: Peter Robinson <pbrobinson@gmail.com>
 ---
  board/raspberrypi/rpi/rpi.c | 5 +++++
  1 file changed, 5 insertions(+)

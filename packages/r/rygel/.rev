@@ -669,4 +669,19 @@
   rygel-plugin-gstreamer-renderer, it is now based on playbin3. (forwarded request 860268 from iznogood)</comment>
     <requestid>860464</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a0cb91decae601f3cb92c550cf3ac20e</srcmd5>
+    <version>0.40.1</version>
+    <time>1614108064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.40.1:
+  + Server: Set albumArtUri on Videos to provide thumbnails for the
+    PS4
+  + MediaExport: Strip xml suffix when generating titles from
+    filenames
+  + Documentation: Fix generation and install location
+  + Tracker3: Add section to the default configuration file
+  + Updated translations. (forwarded request 874006 from iznogood)</comment>
+    <requestid>874393</requestid>
+  </revision>
 </revisionlist>

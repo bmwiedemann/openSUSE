@@ -22,7 +22,7 @@
 %define libsoname %{name}%{libsover}
 %define cavs_dir %{_libexecdir}/%{name}/cavs
 Name:           libgcrypt
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -117,7 +117,6 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libsoname} = %{version}
 Requires:       glibc-devel
 Requires:       libgpg-error-devel >= 1.27
-Requires(post): %{install_info_prereq}
 
 %description devel
 Libgcrypt is a general purpose library of cryptographic building
@@ -145,7 +144,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{libsoname} = %{version}
 Requires:       libgpg-error-devel >= 1.27
-Requires(post): %{install_info_prereq}
 
 %description hmac256
 Libgcrypt is a general purpose library of cryptographic building
@@ -217,11 +215,6 @@ install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/gcrypt/random.conf
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/gcrypt.info.gz
-
-%preun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/gcrypt.info.gz
 
 %files -n %{libsoname}
 %license COPYING.LIB

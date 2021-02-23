@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0631893d114c5a22eedb365856bf8e7f</srcmd5>
+    <version>0.4.1</version>
+    <time>1614108132</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of aiomisc, which is a dep of many aio* packages</comment>
+    <requestid>874607</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,27 @@
+From df4a62c3d79129be7ae716455f9afb07eeace3c8 Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Mon, 22 Feb 2021 14:36:46 +0100
+Subject: [PATCH] Fix launching empty query
+
+If the query is prefixed with a space the launched entry should not be
+added to the history, in case there is nothing after the query the trimmed string would be empty.
+---
+ lib/runnerresultsmodel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/runnerresultsmodel.cpp b/lib/runnerresultsmodel.cpp
+index df7ebc9..eb4b9ee 100644
+--- a/lib/runnerresultsmodel.cpp
++++ b/lib/runnerresultsmodel.cpp
+@@ -191,7 +191,7 @@ void RunnerResultsModel::setQueryString(const QString &queryString)
+     m_hasMatches = false;
+     if (queryString.isEmpty()) {
+         clear();
+-    } else {
++    } else if (!queryString.trimmed().isEmpty()) {
+         m_resetTimer.start();
+         m_manager->launchQuery(queryString, m_runner);
+         setQuerying(true);
+-- 
+2.25.1
+

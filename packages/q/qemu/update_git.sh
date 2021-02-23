@@ -387,7 +387,7 @@ rm -rf $BUNDLE_DIR
 	rm $i
     done
     if [[ "$NUMBERED_PATCHES" = "0" ]]; then
-        for i in [0-9]*.patch; do
+        for i in [0-9][0-9][0-9][0-9]*-*.patch; do
             osc rm --force "$i"
         done
 # make sure that w/out the numbered prefixes, the patchnames are all unique
@@ -408,8 +408,10 @@ rm -rf $BUNDLE_DIR
     fi
     if [ "$FIVE_DIGIT_POTENTIAL" = "0" ]; then
         CHECK_PREFIX="0"
+        NUMBERED_PATCH_RE="^[[:digit:]]{4}-.*[.]patch$"
     else
         CHECK_PREFIX="00"
+        NUMBERED_PATCH_RE="^[[:digit:]]{5}-.*[.]patch$"
     fi
     for i in $CHECK_DIR/*; do
         BASENAME=$(basename $i)
@@ -435,11 +437,6 @@ rm -rf $BUNDLE_DIR
             let TOTAL_COUNT+=1
         fi
     done
-    if [ "$FIVE_DIGIT_POTENTIAL" = "0" ]; then
-        NUMBERED_PATCH_RE="^[[:digit:]]{4}-.*[.]patch$"
-    else
-        NUMBERED_PATCH_RE="^[[:digit:]]{5}-.*[.]patch$"
-    fi
     for i in *.patch; do
 	if [[ "$i" =~ $NUMBERED_PATCH_RE ]]; then
             if [[ "$NUMBERED_PATCHES" = "1" ]]; then
@@ -496,7 +493,9 @@ rm -rf $BUNDLE_DIR
     for package in qemu; do
         while IFS= read -r line; do
             if [ "$line" = "PATCH_FILES" ]; then
-                for i in [0-9]*-*.patch; do
+# Here (and other places below) we try to get ONLY the numbered patches, but it's possible some ACTUAL patch name actually starts with multiple digits, but EXTREMELY unlikely
+# TODO: do this better!
+                for i in [0-9][0-9][0-9][0-9]*-*.patch; do
                     NUM=${i%%-*}
 		    DIV=$((10#$NUM/$PATCH_RANGE))
 		    REM=$((10#$NUM%$PATCH_RANGE))
@@ -524,7 +523,7 @@ rm -rf $BUNDLE_DIR
                     fi
                 done
             elif [ "$line" = "PATCH_EXEC" ]; then
-                for i in [0-9]*-*.patch; do
+                for i in [0-9][0-9][0-9][0-9]*-*.patch; do
 		    S=$(grep "^Include-If: " $i) || true
                     NUM=${i%%-*}
                     if [ "$S" != "" ]; then
@@ -574,7 +573,7 @@ rm -rf $BUNDLE_DIR
         fi
     done
     if [[ "$NUMBERED_PATCHES" = "0" ]]; then
-        rm -f [0-9]*-*.patch
+        rm -f [0-9][0-9][0-9][0-9]*-*.patch
     fi
     if [ -e qemu.changes.deleted ]; then
         rm -f qemu.changes.deleted
@@ -583,9 +582,9 @@ rm -rf $BUNDLE_DIR
         rm -f qemu.changes.added
     fi
 # Decide if there is a better way to handle the no change case:
-    if [[ "0" = "$(expr $CHANGED_COUNT + $DELETED_COUNT + $ADDED_COUNT)" ]]; then
-        osc revert bundles.tar.xz
-    fi
+#BFR if [[ "0" = "$(expr $CHANGED_COUNT + $DELETED_COUNT + $ADDED_COUNT)" ]]; then
+#BFR        osc revert bundles.tar.xz
+#BFR    fi
     echo "git patch summary"
     echo "  unchanged: $UNCHANGED_COUNT"
     echo "    changed: $CHANGED_COUNT"

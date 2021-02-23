@@ -25,12 +25,12 @@
 %define with_pyverbs 0
 %endif
 
-%define         git_ver .0.526d559740c7
+%define         git_ver .0.b7b09d201046
 Name:           rdma-core
-Version:        31.0
+Version:        31.3
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
-License:        GPL-2.0-only OR BSD-2-Clause
+License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Productivity/Networking/Other
 
 %define efa_so_major    1
@@ -70,7 +70,6 @@ Patch1:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
 Patch2:         Revert-Update-kernel-headers.patch
 Patch3:         disable-rdma-interface-renaming.patch
 Patch4:         cxgb3-nes-fix-declaration-of-free_context.patch
-Patch5:         srp_daemon-Fix-systemd-dependency.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -416,7 +415,6 @@ easy, object-oriented access to IB verbs.
 %patch2
 %patch3
 %patch4
-%patch5
 
 %build
 
@@ -443,7 +441,7 @@ easy, object-oriented access to IB verbs.
          -DCMAKE_INSTALL_MANDIR:PATH=%{_mandir} \
          -DCMAKE_INSTALL_SYSCONFDIR:PATH=%{_sysconfdir} \
          -DCMAKE_INSTALL_SYSTEMD_SERVICEDIR:PATH=%{_unitdir} \
-         -DCMAKE_INSTALL_SYSTEMD_BINDIR:PATH=%{_libexecdir}/systemd \
+         -DCMAKE_INSTALL_SYSTEMD_BINDIR:PATH=%{_prefix}/lib/systemd \
          -DCMAKE_INSTALL_INITDDIR:PATH=%{_initddir} \
          -DCMAKE_INSTALL_RUNDIR:PATH=%{_rundir} \
          -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}-%{version} \

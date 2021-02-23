@@ -16,6 +16,8 @@
 #
 
 
+%define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -86,6 +88,11 @@ BuildRequires:  pkgconfig(libsystemd)
 %else
 Requires(pre):  %insserv_prereq
 %endif
+%requires_file %{_libdir}/libipset.so
+%requires_file %{_libdir}/libip6tc.so
+%requires_file %{_libdir}/libip4tc.so
+%requires_file %{_libdir}/libnl-3.so
+%requires_file %{_libdir}/libnl-genl-3.so
 
 %description
 This project provides facilities for load balancing and high-availability to
