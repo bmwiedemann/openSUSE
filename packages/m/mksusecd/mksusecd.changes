@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Feb 22 15:34:35 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#53
+- handle .ko.xz modules (bsc#1182573)
+- 1.78
+
+--------------------------------------------------------------------
 Fri Sep 25 10:39:23 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#52
