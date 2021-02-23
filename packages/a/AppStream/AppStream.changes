@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Feb 17 10:03:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.14.1:
+  + Features:
+    - Switch back from Soup to cURL for HTTP(S).
+    - validator: Check a few more things on requires/recommends
+      items.
+    - Only download the first bytes of a file when checking URLs
+      for validity.
+  + Specification: spec: Officially mark <mimetypes/> tag as
+    deprecated.
+  + Bugfixes:
+    - qt: Return better errors in AppStream::Metadata.
+    - Do not automatically clean up errors that will be propagated.
+    - Remove overall extern "C" to make very new (2.67+) GLib
+      versions happy.
+    - ascli: Don’t use GNU C extension type names.
+    - build: Use c11 rather than gnu11 and define vendor extensions
+      separately.
+- Changes from version 0.14.0:
+  + Features:
+    - news-to-metainfo: Interpret placeholder release dates as
+      denoting a dev version.
+    - Make as_utils_build_data_id public API.
+    - Add AsReview for attaching user reviews to software
+      components.
+    - Add a branch element to component data-IDs.
+    - utils: Add data-ID hashing and matching functions.
+    - utils: Make as_gstring_replace public API.
+    - Add branch info to on-disk cached components.
+    - content-rating: Add as_content_rating_add_attribute API.
+    - Rename INPUTMETHOD component kind enum to INPUT_METHOD.
+    - Add "cabinet" bundle type for firmware deployments.
+    - Make AsTokenMatch public API.
+    - Add function to AsScreenshot to get image closest to
+      preferred size.
+    - Allow AsComponent to directly ingest desktop-entry data.
+    - Make as_pool_build_search_tokens API public.
+    - Add "origin" token match.
+    - Make as_component_add_provided_item API public.
+    - Add some useful image dimension constants.
+    - compose: Add blur function from asglib.
+    - Add more efficient load_from_bytes method to AsComponent.
+  + Updated translations.
+- Drop fix-build-gcc7.patch: no longer applicable.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libcurl)
+  BuildRequires: follow upstreams switch back to cURL.
+
+-------------------------------------------------------------------
 Mon Jan 11 07:58:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Disable vala bindings, fails to build on Leap 15.2 because
