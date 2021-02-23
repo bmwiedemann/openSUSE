@@ -1,7 +1,7 @@
 #
 # spec file for package strace
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        5.10
+Version:        5.11
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ Source:         https://github.com/strace/strace/releases/download/v%{version}/%
 Source2:        https://github.com/strace/strace/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
+Patch0:         strace-readelf-debug-dump-info-wide-output-changes-in-2.36.patch
 BuildRequires:  haveged
 BuildRequires:  libacl-devel
 BuildRequires:  libaio-devel
@@ -58,6 +59,7 @@ and processes can be seen.  Child processes can also be tracked.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # Make sure LTO doesn't break mpers.sh
@@ -89,9 +91,8 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 
 %files
 %defattr(-,root,root)
-%doc CREDITS README README-linux-ptrace NEWS
+%doc CREDITS README doc/README-linux-ptrace NEWS
 %{_bindir}/strace
-%{_bindir}/strace-graph
 %{_bindir}/strace-log-merge
 %{_mandir}/man1/strace.1%{ext_man}
 %{_mandir}/man1/strace-log-merge.1%{ext_man}

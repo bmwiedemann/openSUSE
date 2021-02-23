@@ -1203,4 +1203,12 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
       lock_getres_time64 syscalls to %clock trace class. (forwarded request 855728 from AndreasSchwab)</comment>
     <requestid>855729</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>8b635bf8f3aa4fe0d90ab39315831a56</srcmd5>
+    <version>5.11</version>
+    <time>1614107865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873344</requestid>
+  </revision>
 </revisionlist>
