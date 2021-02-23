@@ -17,7 +17,7 @@
 
 
 Name:           git-delta
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT
