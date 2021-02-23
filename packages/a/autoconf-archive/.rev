@@ -199,4 +199,18 @@ Use SUSE- proprietary extension until license accepted upstream. autoconf-archiv
     <comment></comment>
     <requestid>739898</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a7ab9fbe1aac5df7b90d4eac5e50e6be</srcmd5>
+    <version>2021.02.19</version>
+    <time>1614108013</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.02.19:
+  * The macros AX_CHECK_PCRE2 and AX_PROG_ROBOT have been added. Many other
+    macros have received updates.
+
+- Drop info Requires(pre|post) and usage of install_info and
+  install_info_delete in the pre/post scriptlets: info files are
+  handled by file triggers.</comment>
+    <requestid>874166</requestid>
+  </revision>
 </revisionlist>
