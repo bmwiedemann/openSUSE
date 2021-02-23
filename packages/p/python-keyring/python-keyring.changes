@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 16 09:47:10 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- On SLE/Leap, set the egg version on %prep to the package version
+  since it's not being set automatically.
+
+-------------------------------------------------------------------
 Wed Sep 30 12:35:11 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fold -tests package into mail package again

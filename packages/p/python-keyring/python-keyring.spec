@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyring
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,10 @@ from python. It can be used in any application that needs safe password storage.
 %prep
 %setup -q -n keyring-%{version}
 %patch -p1
+%if 0%{?sle_version}
+# keyring is not setting the egg version correctly without this:
+sed -i -e '1a version=%{version}' setup.cfg
+%endif
 # For rpmlint warning: remove shebang from python library:
 sed -i '/^#!/d' keyring/cli.py
 sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini
