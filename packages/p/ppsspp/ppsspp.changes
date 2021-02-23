@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Mon Feb 15 16:46:24 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.2~git20210215:
+  * Headless: Add test paths for CMake on Windows.
+  * CMake: Correct headless build on Windows.
+  * CMake: Correct build on Windows.
+  * Update gradle. Enable automatic debug symbol upload for release builds.
+  * libretro: Remove "Unsafe FuncReplacements" option. See #12322
+  * Fix many symbols on jpn0.pgf.
+  * Windows: Fix some const type conversion warnings.
+  * Windows: Make InputDevice destructor virtual.
+  * GPU: Fix a type comparison warning.
+  * Windows: Use CommonWindows more consistently.
+  * Windows: Fix some format warnings.
+  * Windows: Add some missing override specifiers.
+  * Common: Include unistd.h before ctime on mingw.
+  * Common: Fix AVX check on mingw/lower targets.
+  * Build: Use ws2_32 and iphlpapi names directly.
+  * Windows: Fix improper case or missing includes.
+  * Debugger: Invalidate when using memory APIs.
+  * Debugger: Option to skip mem hacks in memory dump.
+  * mipsjit: Fix basic compilation.
+  * Jit: Fix compilation of FakeJit.
+  * Savedata: Show save icons with proper aspect ratio.
+  * Savedata: Show corrupted data more clearly.
+  * PPGe: Decimate early if kernel alloc fails.
+  * GPU: Force texture invalidation for ZHP minimap.
+  * Sas: Minor clenaup.
+  * CoreTiming: Ensure we never idle into the past.
+  * Common: Maintain C++11 support in sign extend.
+  * Common: Sign extend w/func not chained casts.
+  * Vertex cache minihash: Round up the starting address to a multiple of 4.
+  * jpge.cpp: Remove malloc.h include
+  * Update ext/jpge
+  * Dialog: Simulate volatile memory lock behavior.
+  * Dialog: Manage status only through accessors.
+  * Power: expose volatile memory lock/unlock funcs.
+  * HLE: Hook Worms text render copy func.
+  * Vulkan: Remove #10097 hack for newer AMD drivers.
+
+-------------------------------------------------------------------
+Sun Feb 14 11:06:11 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.2~git20210214:
+  * Update version to 1.11.2
+  * compat.ini: GachiTora requires block transfer
+  * Android: Ensure shutdown waits for render.
+  * Build: Cache Qt during Actions run.
+  * Build: Allow on actions test branch.
+  * Don't assert on invalid format in CwCheat.
+  * Io: Truncate reads/writes to valid memory.
+  * Update lang submodule
+  * Add some checks trying to prevent creation of 0 sized textures.
+  * GPU: Force reinterpret off without copy image.
+  * Revert (partially) "compat.ini: Add Split/Second to [ReinterpretFramebuffers]. See #13957"
+  * Some GLSL compilers are very particular about the sign of shift operands..
+
+-------------------------------------------------------------------
+Thu Feb 11 22:08:36 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.1~git20210211:
+  * Update version to 1.11.1
+  * Slight simplification in LogoScreen
+  * Update README.md for 1.11.1
+  * Fix lobby issue on The Warriors, probably also fix similar issue on other games too.
+  * Update zh_CN and zh_TW
+  * Windows recvfrom doesn't support MSG_TRUNC, so we're using dummy buffer with max size as alternative for peeking actual size of the next pending message.
+  * Fix frozen (0 FPS) issue on Kao Challengers and Asterix & Obelix XX (probably also fix other games from the same developer with similar issue) https://github.com/hrydgard/ppsspp/issues/14103
+  * Assorted paranoid cleanups, inspired by #14082
+  * Remove a completely unnecessary check in BackgroundAudio.cpp that caused glitching at 44.1khz.
+  * Update lang submodule (it_IT updates)
+  * SaveState: Prevent crash on bad cookie marker.
+  * Rename the new warmup variable from #14091
+  * Only allow sceMpegGetAvcAu warmup for God Eater Series
+  * Remove now-redundant check
+  * GL: Call CreateDeviceObjects *after* updating render_.
+  * Buildfix
+  * Cause the correct type of exception. Never ignore EXEC_ADDR exceptions.
+  * Handle exec addr errors better - don't let IgnoreBadMemoryAccesses skip dispatcher exceptions.
+  * Add more games to ReportSmallMemStick
+  * PPGe: Decimate text images properly.
+
+-------------------------------------------------------------------
+Mon Feb 08 00:59:28 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11~git20210207:
+  * Update version to 1.11
+  * Do the title screen animation by accumulator instead, to avoid a long first frame breaking it.
+  * Update lang,pspautotests submodules
+  * Run the link script, fixups
+  * Run the link script
+  * Removing hleDelayResult from internal adhoc functions to prevent waking up thread that supposed to be blocked by the outer HLE.
+  * Updated some Logs to help finding the location of the call to debug.
+  * PPGe: Clear text allocations on shutdown.
+  * PPGe: Fallback to atlas text on alloc fail.
+  * Debugger: Populate funcs if disassembly open early.
+  * Fix jpn0.pgf characters position.
+  * Fix possible race condition issue.
+  * Moving hleDelayResult from internal function of SetSocketAlert to prevent waking up HLE-blocked thread
+  * Minor renaming
+  * We don't really need to allocate a buffer when using MSG_TRUNC on recvfrom
+  * More stuff in README.md
+  * More from unknown and sum2012
+  * List fixed games. Thanks sum2012
+  * Address initial feedback by iota97
+  * Update README.md for 1.11
+
+-------------------------------------------------------------------
+Sun Feb 07 00:39:08 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.10.3~git20210205:
+  * Windows: Prevent crash on null symbol map.
+  * Core: Reset state properly on CPU init failure.
+  * Make a couple of UI animations refresh rate independent
+  * UI: Correct developer tools test run.
+  * Updated PdpStat to prevent rcv_sb_cc from exceeding the buffer size arg (since we use larger buffer size to prevent micro stutters or disconnection issue due to too many dropped packets with small buffer size). TODO: May need to improve it to be able to calculate the correct size if there are multiple datagram messages
+  * Fix possible lock issue during AdhocMatchingStart
+  * (.gitlab-ci.yml) Add linux-i686 and windows-i686 targets (+ prevent creation of 'null' file when building Windows libretro cores)
+
+-------------------------------------------------------------------
+Tue Feb 02 11:13:54 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.10.3~git20210201:
+  * Updated PdpStat and PtpStat
+  * vertexjit: Only save extra regs on x64.
+  * Core: Assert debug stats remain positive.
+  * vertexjit: Correct saved registers on x64.
+  * Core: Maintain frame dump disc ID in SFO.
+  * Loaders: Prevent errors on 0 byte reads.
+  * Have the flat shading workaround obey the driver workarounds checkbox
+  * Fix minor rendering glitch in PPSSPP's menus on iOS
+  * Add checkbox to enable/disable driver bug workarounds.
+  * Add a new command in developer tools to list and load framedumps from framedump.ppsspp.org/repro/
+  * Framedump test screen. Downloads a list of framedumps.
+
+-------------------------------------------------------------------
+Sun Jan 31 14:59:15 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.10.3~git20210131:
+  * Ge: Restore saved context when ending a list.
+  * Ge: Improve some logging and memchecks.
+  * Mpeg:Only allow firmware >= 6 for warmup
+  * Vulkan: Fix image layout issues after compute shader uploads.
+  * Io: Consistently use LE values of ISO entries.
+  * Only force the log level if it set via an argv
+  * jit: Be very clear on sign extension.
+  * Core: Correct branch analysis truncation.
+  * Fix Apple gpu detection
+  * Attempt to fix #14022
+  * Fix logging flags
+  * x64Emitter: Fix unaligned store UBSAN errors
+  * Fix left shift of negative value in MIPSCodeUtils
+  * Minimize the Adreno shader compiler bug repro test
+  * Fix connection issue on Dynasty Warriors (Shin Sangoku Musou) games when playing with more than 2 players.
+  * jit: Make branch shift more obvious.
+  * Fix alignment issues in ISOFileSystem
+  * Fix Russian characters ltn8~15.pgf
+  * CMake: Fix UBSAN link error
+  * CMake: Rename USE_ADDRESS_SANITIZER to USE_ASAN
+  * CMake: Add USE_UBSAN
+  * Try to build fix on non-windows
+  * Mpeg:Only allow firmware >= 3 for warmup
+  * (.gitlab-ci.yml) Add windows-x64 target
+  * FindFFmpeg: Fix a few issues
+  * gitlab ci change requested by m4xw
+  * Fix Greek characters ltn0~7.pgf
+  * Specify MaxScale=2 for the new MMPX texture scaling shader
+  * Vulkan: Allow tex shaders to specify a max scale.
+  * Vulkan: Add MMPX upscaling texture shader.
+  * Remove duplicates from ThreadManForKernel
+  * Mp3: Correct logging for init.
+  * Updated GameMode initial data sync, in case remote players aren't listening yet when sending initial data (fix Pocket Pool)
+  * Mp3: Always keep sample rate from original mp3.
+  * Add back XCode TARGETED_DEVICE_FAMILY config line
+  * Mp3: Allow decode without pcm pointer.
+  * Mp3: Correct error handling for newer sdk versions.
+  * GLES: Remove direct khrplatform.h header include.
+  * Add header information
+  * sceMp3Init:Add layerBits and versionBits information
+  * Don't allow ForcedFirstConnect hack when using PtpConnect within PtpOpen to prevent returning result from blocking PtpConnect instead of result of PtpOpen.
+  * Reporting: Expose CRC queue methods for other uses.
+  * D3D9: Don't allow separate alpha clears.
+  * GPU: Respect stencil write mask for 5551 buffers.
+  * GE: Better naming of render passes for color reinterpret
+  * Io: Don't allow async close while async busy.
+  * Fix duplicate shader version in the flat shader test
+  * OpenGL fragment shader gen: Fix precision inconsistency for v_color0/1.
+
+-------------------------------------------------------------------
 Sun Jan 24 14:20:20 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version 1.10.3~git20210124:
