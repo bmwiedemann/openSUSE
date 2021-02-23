@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 17 09:41:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210129:
+  * wireless-regdb: Update regulatory rules for Ukraine (UA)
+  * wireless-regdb: update CNAF regulation url for ES
+
+-------------------------------------------------------------------
 Mon Dec 14 12:47:27 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - leverage %{_firmwaredir} to install firmware into correct location (boo#1029961)

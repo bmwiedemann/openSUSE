@@ -1,7 +1,7 @@
 #
 # spec file for package wireless-regdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wireless-regdb
-Version:        20201120
+Version:        20210129
 Release:        0
 Summary:        802.11 regulatory domain database
 License:        ISC
@@ -43,10 +43,10 @@ frequency ranges for 802.11 wireless drivers.
 %doc README
 %{_firmwaredir}/regulatory.db
 %{_firmwaredir}/regulatory.db.p7s
-%dir /usr/lib/crda
-/usr/lib/crda/regulatory.bin
-%dir /usr/lib/crda/pubkeys
-/usr/lib/crda/pubkeys/*pem
+%dir %{_prefix}/lib/crda
+%{_prefix}/lib/crda/regulatory.bin
+%dir %{_prefix}/lib/crda/pubkeys
+%{_prefix}/lib/crda/pubkeys/*pem
 %{_mandir}/man5/regulatory.db.5%{?ext_man}
 %{_mandir}/man5/regulatory.bin.5%{?ext_man}
 
