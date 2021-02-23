@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 15:03:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: With NumPy 1.20, Tumbleweed no longer
+  provides a python36-pandas (NEP 29)
+
+-------------------------------------------------------------------
 Fri Jan 29 16:56:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Build wheel from source
