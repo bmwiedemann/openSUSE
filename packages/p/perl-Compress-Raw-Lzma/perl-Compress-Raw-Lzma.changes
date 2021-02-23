@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 21 03:07:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.101
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.101 20 February 2021
+
+        * fix version numbers in meta files
+
+-------------------------------------------------------------------
 Fri Jan  8 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.100
