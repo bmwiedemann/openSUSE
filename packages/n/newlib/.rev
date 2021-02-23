@@ -124,4 +124,12 @@
 - Remove unused configure flag --with-multilib-list. Newlib's configure</comment>
     <requestid>853584</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cbf7adad68a259c25b19c361966e4d57</srcmd5>
+    <version>3.3.0</version>
+    <time>1614108083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874423</requestid>
+  </revision>
 </revisionlist>
