@@ -1,7 +1,472 @@
 -------------------------------------------------------------------
+Tue Feb 16 15:34:09 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.15 → 9.23.16
+
+-------------------------------------------------------------------
+Mon Feb 15 17:59:51 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Fix lsblk flags to get sorted output
+
+  This commit modifies the lsblk command flags to get a sorted output
+  according to the disk layout.
+
+  This is related to 176c7eab commita and it fixes bsc#1182264
+
+-------------------------------------------------------------------
+Mon Feb 15 16:44:47 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed kiwi-systemdeps-filesystems requires
+
+  The filesystems requires list also contains low level
+  tools to manage partitions, loops and subsystems. The tools
+  to manage LUKS(cryptsetup) are missing and imho belongs there
+  along with the LVM tools which are listed
+
+-------------------------------------------------------------------
+Mon Feb 15 15:55:49 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Add strong typing for filesystem classes
+
+  This commit strong typing for FileSystem* classes.
+
+  Part of #1644
+
+-------------------------------------------------------------------
+Mon Feb 15 13:36:17 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added ca-certificates-mozilla to build tests
+
+  ca-certificates-mozilla provides the issuer CERT to allow
+  for https repo connections. The standard ca-certificates is
+  not enough on suse/leap/sles based integration tests
+
+-------------------------------------------------------------------
+Sat Feb 13 22:33:36 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed packaging metadata for pypi
+
+  Include the README as long description in the metadata
+  for pypi. The change causes the description on pypi.org
+  to show the ReST rendered README instead of a message
+  that the author of the module hasn't provided a description
+
+-------------------------------------------------------------------
+Sat Feb 13 17:56:55 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Delete legacy oem build test from leap
+
+  The legacy custom kiwi boot test will only continue
+  to exist on tumbleweed without any warranty
+
+-------------------------------------------------------------------
+Fri Feb 12 15:19:22 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Include a note about rpm's curl requirement to import remote keys
+
+  This commits add a note in the KIWI installation page to warn users rpm
+  requires curl utility in order to import remote keys from a URI.
+
+  Fixes #1680
+
+-------------------------------------------------------------------
+Fri Feb 12 15:19:21 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.14 → 9.23.15
+
+-------------------------------------------------------------------
+Fri Feb 12 15:17:52 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation
+
+  Mention the cross arch build capability of the boxbuild
+  command. Also update the example box used in the self
+  container build chapter
+
+-------------------------------------------------------------------
+Fri Feb 12 11:21:03 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Allow to specify OBS credentials in runtime config
+
+  In preparation to the new obs kiwi plugin this commit adds
+  an opportunity to store obs credentials such that the plugin
+  could also be used in a non-interactive way
+
+-------------------------------------------------------------------
+Fri Feb 12 11:06:35 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add strong typing for the following API methods
+
+  kiwi/storage/device_provider
+  kiwi/storage/disk
+  kiwi/storage/loop_device
+  kiwi/storage/luks_device
+  kiwi/storage/mapped_device
+
+  This references issue #1644
+
+-------------------------------------------------------------------
+Fri Feb 12 10:41:56 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update build_status helper for box plugin
+
+  The suse box has been renamed to tumbleweed
+
+-------------------------------------------------------------------
+Fri Feb 12 10:19:53 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation
+
+  Fixed link list to integration tests
+
+-------------------------------------------------------------------
+Fri Feb 12 10:16:50 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added rawhide test status to build_status helper
+
+-------------------------------------------------------------------
+Fri Feb 12 10:15:50 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added Fedora Rawhide integration tests
+
+-------------------------------------------------------------------
+Thu Feb 11 22:20:25 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Followup fix for RuntimeConfig refactor
+
+  The refactor of the RuntimeConfig made sure the runtime config
+  file is read in only once. But if the file exists and is empty
+  after yaml.safe_load like in the kiwi package provided
+  /etc/kiwi.yml which contains all config options as comments,
+  the code still reads in the file with every new instance of
+  RuntimeConfig. This commit fixes this condition
+
+-------------------------------------------------------------------
+Thu Feb 11 17:35:44 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed test-image-vagrant for Leap
+
+  Use the correct release package
+
+-------------------------------------------------------------------
+Thu Feb 11 17:35:20 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed test-image-docker-derived for Leap
+
+  Use the right derived from location
+
+-------------------------------------------------------------------
+Thu Feb 11 17:21:47 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed test-image-docker for Leap
+
+  Nothing provides grub
+
+-------------------------------------------------------------------
+Thu Feb 11 17:16:52 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Delete test-image-pxe from leap tests
+
+  We don't continue development of netboot code. Thus there is
+  only one test for the old netboot system on TW. People are
+  advised to move to oem remote deployment or the kis type
+  using custom(non kiwi) dracut extensions
+
+-------------------------------------------------------------------
+Thu Feb 11 17:04:47 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- test-image-MicroOS does not build for leap
+
+  Looks like this concept is not available on Leap
+
+-------------------------------------------------------------------
+Thu Feb 11 16:59:49 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added integration tests for Leap
+
+-------------------------------------------------------------------
+Thu Feb 11 15:54:02 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation
+
+  Location for integration tests has changed
+
+-------------------------------------------------------------------
+Thu Feb 11 15:49:39 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Deleted x86/suse integration tests
+
+-------------------------------------------------------------------
+Thu Feb 11 15:30:51 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Moving x86/suse -> x86/tumbleweed
+
+  This is in fact a copy of the build-tests for x86/suse
+  to x86/tumbleweed. Once the tests in OBS are building
+  x86/suse and the respective project will be deleted
+
+-------------------------------------------------------------------
+Thu Feb 11 15:23:18 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Deleted s390/suse integration tests
+
+-------------------------------------------------------------------
+Thu Feb 11 15:20:22 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Moving s390/suse -> s390/tumbleweed
+
+  This is in fact a copy of the build-tests for s390/suse
+  to s390/tumbleweed. Once the tests in OBS are building
+  s390/suse and the respective project will be deleted
+
+-------------------------------------------------------------------
+Thu Feb 11 15:16:34 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Delete ppc/suse from build_status helper
+
+-------------------------------------------------------------------
+Thu Feb 11 15:14:09 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Deleted ppc/suse integration tests
+
+-------------------------------------------------------------------
+Thu Feb 11 15:11:21 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Moving ppc/suse -> ppc/tumbleweed
+
+  This is in fact a copy of the build-tests for ppc/suse
+  to ppc/tumbleweed. Once the tests in OBS are building
+  ppc/suse and the respective project will be deleted
+
+-------------------------------------------------------------------
+Thu Feb 11 13:35:46 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed Debian integration test
+
+  The test was not using the Staging kiwi to build
+
+-------------------------------------------------------------------
+Thu Feb 11 13:08:20 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Deleted arm/suse integration tests
+
+-------------------------------------------------------------------
+Thu Feb 11 13:01:48 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Moving arm/suse -> arm/tumbleweed
+
+  This is in fact a copy of the build-tests for arm/suse
+  to arm/tumbleweed. Once the tests in OBS are building
+  arm/suse and the respective project will be deleted
+
+-------------------------------------------------------------------
+Thu Feb 11 12:51:59 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Update tuples to enforce type hints
+
+-------------------------------------------------------------------
+Thu Feb 11 11:46:20 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed use of BIOS grub image on ISO media
+
+  Not all systems (e.g Debian) creates the boot/grub|grub2 directory.
+  In kiwi when we need to create a custom grub image because we did
+  not find the distro provided one, an earlyboot.cfg file is created
+  and embedded into the grub image. The locaton to store that file
+  is below boot/grub|grub2. However if the directory does not exist
+  the build will fail as with the current Debian Live integration
+  test.
+
+-------------------------------------------------------------------
+Thu Feb 11 11:29:13 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added debian integration tests to build_status
+
+  The debian build tests were not taken into account by
+  the build_status helper
+
+-------------------------------------------------------------------
+Thu Feb 11 11:23:31 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Moved ARM fedora integration test to latest stable
+
+-------------------------------------------------------------------
+Thu Feb 11 10:28:28 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update suse build tests
+
+  Deleted old and obsolete configuration setup. Use generic
+  description information as much as possible
+
+-------------------------------------------------------------------
+Thu Feb 11 10:12:24 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Move fedora integration tests to stable release
+
+  Instead of building against the rolling release (rawhide)
+  we build the integration tests for non suse tests against
+  the stable release of distributions. The reason is except
+  for suse we don't have influence and resources on the
+  distribution development and sometimes facing the problem
+  that we can only sit and pray for a self healing of the
+  rolling distro releases. From a kiwi release perspective
+  this blocks us too often
+
+-------------------------------------------------------------------
+Thu Feb 11 09:20:08 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed tbz integration test
+
+  It seems /bin/sh has been moved into a file provides that
+  cannot be solved by the obs solver. Therefore a package
+  providing it needs to be added explicitly.
+
+-------------------------------------------------------------------
+Thu Feb 11 09:13:28 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.13 → 9.23.14
+
+-------------------------------------------------------------------
+Wed Feb 10 22:27:50 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Remove files or folders that conflict with debootstrap
+
+  This commit makes use of Path.wipe method instead of os.unlink. This way
+  we are certain the path is removed regardless being a directory or a
+  file.
+
+  fixes #1718
+
+-------------------------------------------------------------------
+Wed Feb 10 15:59:19 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Clean some copy and paste leftover from doc strings
+
+-------------------------------------------------------------------
+Tue Feb 09 18:47:37 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed ramdisk deployment from install ISO
+
+  The dracut mount hook is only called if NO root= information
+  is provided from the cmdline. In a PXE deployment this is the
+  case but in an install ISO deployment not. This commit re-adds
+  the sysroot mount generator approach but only applies on the
+  condition rd.kiwi.ramdisk is set and root= is specified. Only
+  in this case we know config.bootoptions is present in the
+  initrd and will not be provided from an outside service
+
+-------------------------------------------------------------------
+Tue Feb 09 15:35:33 CET 2021 - Christian Goll <Christian.Goll@gmail.com>
+
+- Added dolly support
+
+  Allow dolly as alternative download protocol
+
+-------------------------------------------------------------------
+Tue Feb 09 13:08:40 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.12 → 9.23.13
+
+-------------------------------------------------------------------
+Sun Feb 07 19:50:03 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Refactor RuntimeConfig class
+
+  The former implementation read the runtime config file every
+  time a new RuntimeConfig instance was created. The runtime
+  config is however static during the runtime of an image build
+  process and not supposed to change. Therefore the file should
+  be read in once and any new instance of RuntimConfig should
+  just use what has been read in at the first invocation. This
+  commit refactors the RuntimeConfig class to hold an application
+  global RUNTIME_CONFIG variable and allows to reread the
+  config on explicit request.
+
+-------------------------------------------------------------------
+Sat Feb 06 17:14:42 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added option to setup OBS API server in config
+
+  Allow to specify the open build service API server
+  in the kiwi runtime configuration file
+
+-------------------------------------------------------------------
+Sat Feb 06 16:56:26 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Allow to specify config file on the command line
+
+  The optional kiwi runtime config file (kiwi.yml) could
+  only be read from ~/.config/kiwi/config.yml or /etc/kiwi.yml
+  This commits adds the global option --config which allows
+  to specify a custom runtime configuration as well.
+
+-------------------------------------------------------------------
+Fri Feb 05 16:51:13 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed detection for pacman repo type
+
+  grep the directory listing for a .db.sig metadata file
+  to identify a pacman repo
+
+-------------------------------------------------------------------
+Fri Feb 05 12:02:45 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup CliTask doc strings and code duplication
+
+  Introduce a tuple method to handle arguments with [n]
+  comma separated elements. Also fix method docstrings
+  with wrong type information.
+
+-------------------------------------------------------------------
+Fri Feb 05 11:58:43 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed typing for add_repository in XMLState class
+
+  mypy reported further issues on XMLState class which
+  are fixed by this commit
+
+-------------------------------------------------------------------
+Fri Feb 05 11:55:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed type annotations and docs for Uri class
+
+  The constructor used a wrong type for the repo_type variable
+  and the doc string for the class was invalid
+
+-------------------------------------------------------------------
+Fri Feb 05 11:36:48 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added get_repo_type method to SolverRepository
+
+  In preparation of a plugin to handle external service
+  repositories a method to check for the repository type
+  was added. The detection is based on a search for a
+  specific metadata file which is an indicator for the
+  type of a repository.
+
+-------------------------------------------------------------------
+Fri Feb 05 11:29:38 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update manual pages
+
+  The system build and prepare commands have received options
+  which were not mentioned in the manual pages. This commit
+  updates the pages to be in line with the code
+
+-------------------------------------------------------------------
 Mon Feb 01 16:16:22 CET 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.11 → 9.23.12
+
+-------------------------------------------------------------------
+Mon Feb 01 09:29:16 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed debootstrap device node conflict
+
+  debootstrap creates its own device node tree and fails
+  if a node it creates itself already exists. This commit
+  introduces a list of conflicting device nodes and deletes
+  them prior kiwi calling debootstrap. This Fixes #1675
 
 -------------------------------------------------------------------
 Sun Jan 31 16:01:42 CET 2021 - Marcus Schäfer <ms@suse.de>

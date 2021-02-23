@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.23.12
+Version:        9.23.16
 Provides:       kiwi-schema = 7.3
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -245,6 +245,7 @@ Requires:       squashfs-tools
 Requires:       lvm2
 Requires:       parted
 Requires:       kpartx
+Requires:       cryptsetup
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
 
 %description -n kiwi-systemdeps-filesystems
