@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 23 18:09:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.7.3
+  * Possible Breaking Changes
+    + This removes the profile_slug from the default archive name
+      and prefix. This change only applies to new backup profiles.
+      So if you use the same repo for multiple projects on the
+      same hostname, be sure to check your prune prefix as well.
+      The new default archive name is:
+      {hostname}-{now:%Y-%m-%d-%H%M%S}
+  * New Features
+    + Add mount option override checkbox. By @samuel-w (#682)
+    + Add custom options to borg create command.
+      By @samuel-w (#677)
+    + Add rename action. By @samuel-w and @m3nu (#864)
+    + Give option to break repository lock. By @samuel-w (#863)
+  * Bugfixes
+    + Remove support for deprecated macOS XML wifi list. (#868)
+    + Catch more possible SSH key parsing errors. (#789)
+    + Improve cancelling Borg process (#786)
+    + Add QTimer to ensure background jobs are scheduled correctly.
+      (#780)
+    + Fix corrupted archive table list during refresh if sorting
+      is enabled. By @rblenis (#784)
+- Rebase patch:
+  * fix-dependencies.patch
+
+-------------------------------------------------------------------
 Tue Feb  9 12:35:06 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.7.2
