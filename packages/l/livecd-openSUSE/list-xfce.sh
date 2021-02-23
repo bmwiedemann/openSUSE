@@ -42,4 +42,4 @@ install xreader-plugin-pdfdocument
 install alsa-firmware
 
 # From x11_enhanced, but that pattern can't be installed
-[ "$distro" = "tumbleweed" ] && install opensuse-welcome
+install opensuse-welcome

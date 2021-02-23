@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 23 10:52:12 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde, list-xfce: opensuse-welcome is also for Leap now
+
+-------------------------------------------------------------------
 Wed Feb 17 14:31:06 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Don't blacklist update_test pattern, hard dep on
