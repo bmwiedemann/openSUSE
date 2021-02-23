@@ -54,7 +54,7 @@
 %if 0%{?sle_version} < 150300
 %define default_node_ver 12
 %else
-%define default_node_ver NODEJS_LTS
+%define default_node_ver %NODEJS_LTS
 %endif
 # SLE-15 variants
 %endif

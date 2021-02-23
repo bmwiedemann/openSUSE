@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  9 15:15:46 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Fix typo in Requires
+
+-------------------------------------------------------------------
 Tue Jan 19 11:33:38 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - set nodejs14 as default for sle15-sp3+
