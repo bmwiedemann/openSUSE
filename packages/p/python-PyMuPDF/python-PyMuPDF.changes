@@ -1,4 +1,221 @@
 -------------------------------------------------------------------
+Mon Feb  8 06:24:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove doc sub-package, fixing builds
+- Switch to using PyPI, adding COPYING from upstream
+- Update URL
+- Add build dependency openSUSE-release, needed by setup.py
+- Remove fix-library-linking.patch no longer needed
+- Fix %check for single-spec
+- Update to v1.18.8
+  * Fixed a memory leak in Page.insert_image when inserting
+    images from files or memory
+  * pathlib.Path objects should now correctly handle file path
+    hierarchies
+- from v1.18.7
+  * Added an experimental Document.subset_fonts which reduces
+    the size of eligible fonts based on their use by text in the PDF
+  * Document.convert_to_pdf now also supports PDF documents
+  * Renamed Document.write to Document.tobytes for greater clarity.
+    But the deprecated name remains available for some time.
+  * Document.tobytes` now supports linearized PDF output
+  * Document.save` now also supports writing to Python file objects.
+    In addition, the open function now supports Python file objects.
+  * Fixed issue #844.
+  * Fixed issue #838.
+  * More logic for better support of OCR-ed text output
+    (Tesseract, ABBYY).
+  * Fixed issue #818.
+  * Fixed issue #814.
+  * Added Document.get_page_labels which returns a list of page
+    label definitions of a PDF.
+  * Added :meth:`Document.has_annots and Document.has_links to check
+    whether these object types are present anywhere in a PDF.
+  * Added expert low-level functions to simplify inquiry and
+    modification of PDF object sources: 
+    + Document.xref_get_keys lists the keys of object `xref`
+    + Document.xref_get_key returns type and content of a key
+    + Document.xref_set_key modifies the key's value
+  * Added parameter thumbnails to Document.scrub to also allow
+    removing page thumbnail images
+  * Improved documentation for how to add valid text marker
+    annotations for non-horizontal text
+- from v1.18.6
+  * Introduced Python type hinting
+  * Fixed issue #812.
+  * Invalid document metadata previously prevented opening some
+    documents at all. This error has been removed.
+  * Text search and text extraction will make no rectangle
+    containment checks at all if the default clip=None is used.
+  * Fixed issue #785.
+  * Corrected a parameter check error.
+  * Added an option to set the desired line height for text boxes
+  * Changed text position retrieval to better cope with Tesseract's
+    glyphless font.
+  * Added an option to choose the prefix of new annotations,
+    fields and links for providing unique annotation ids
+  * Added getting and setting color and text properties for
+    Table of Contents items for PDFs
+  * Added PDF page label handling: Page.get_label() returns the
+    page label, Document.get_page_numbers return all page numbers
+    having a specified label, and Document.set_page_labels adds
+    or updates a PDF's page label definition.
+- from v1.18.5
+  * Apart from several fixes, this version also focusses on several
+    minor, but important feature improvements.
+    Among the latter is a more precise computation of proper line
+    heights and insertion points for writing / inserting text.
+    As opposed to using font-agnostic constants, these values are
+    now taken from the font's properties.
+  * By using "small glyph heights" option, the full page text can
+    be extracted.
+  * Fixed issue #768.
+  * Fixed issue #750.
+  * The "dict", "rawdict" and corresponding JSON output variants
+    now have two new span keys: "ascender" and "descender".
+    These floats represent special font properties which can be
+    used to compute bboxes of spans or characters of exactly
+    fontsize height (as opposed to the default line height).
+    An example algorithm is shown in section "Span Dictionary"
+    here. Also improved the detection and correction of
+    ill-specified ascender / descender values encountered
+    in some fonts.
+  * Added a new, experimental Tools.set_small_glyph_heights. This
+    method sets or unsets a global parameter to always compute
+    bboxes with fontsize height. If "on", text searching and all
+    text extractions will returned rectangles, bboxes and quads
+    with a smaller height.
+  * Fixed issue #728.
+  * Changed fill color logic of 'Polyline' annotations: this
+    parameter now only pertains to line end symbols --
+    the annotation itself can no longer have a fill color
+  * Changed Page.getImageBbox to also compute the bbox if the image
+    is contained in an XObject.
+  * Changed Shape.insertTextbox, resp. Page.insertTextbox, resp.
+    TextWriter.fillTextbox to respect font's properties "ascender" /
+    "descender" when computing line height and insertion point.
+    This should no longer lead to line overlaps for multi-line output.
+    These methods used to ignore font specifics and used constant
+    values instead.
+- from v1.18.4
+  * Adds several features to support PDF Optional Content, including
+    OCMDs (Optional Content Membership Dictionaries) with the full
+    scope of "visibility expressions" (PDF key /VE), text insertions
+    (including the TextWriter class) and drawings.
+  * Freetext annotations now support an uncolored rectangle when
+    fill_color=None.
+  * UTF-8 encoding errors are now handled for HTML / XML Page.getText.
+  * Empty values are no longer stored in the PDF /Info metadata
+    dictionary.
+  * Added new methods Document.set_oc and Document.get_oc to set or
+    get optional content references for existing image and form
+    XObjects. These methods are similar to the same-named methods
+    of Annot.
+  * Added Document.set_ocmd, Document.get_ocmd for handling OCMDs.
+  * Added Optional Content support for text insertion and drawing.
+  * Added new method Page.deleteWidget, which deletes a form field
+    from a page. This is analogous to deleting annotations.
+  * Added support for Popup annotations. This includes defining
+    the Popup rectangle and setting the Popup to open or closed.
+    Methods / attributes Annot.set_popup, Annot.set_open,
+    Annot.has_popup, Annot.is_open, Annot.popup_rect, Annot.popup_xref
+  * Annot methods and attributes converted to lower case with
+    underscores, while keeping UPPERCASE for the constants.
+    Old names will remain available to prevent code breaks, but they
+    will no longer be mentioned in the documentation.
+- from v1.18.3
+  * Introduces support for PDF's Optional Content concept.
+    This includes several new Document methods for inquiring and setting
+    optional content status and adding optional content
+    configurations and groups. In addition, images, form XObjects
+    and annotations now can be bound to optional content specifications.
+  * Fixed issue #714.
+  * Fixed issue #711.
+  * If a PDF user password, but no owner password is supplied nor
+    present, then the user password is also used as the owner password.
+  * Fixed expand and deflate parameters of methodsDocument.save
+    and Document.write. Individual image and font compression should
+    now finally work.
+- from v1.18.2
+  * Contains some interesting improvements for text searching: any
+    number of search hits is now returned and the hit_max parameter
+    was removed. The new clip parameter in addition allows to restrict
+    the search area. Searching now detects hyphenations at line breaks
+    and accordingly finds hyphenated words.
+  * If using quads=False in text searching, then overlapping rectangles
+    on the same line are joined. Previously, parts of the search string,
+    which belonged to different "marked content" items, each generated
+    their own rectangle -- just as if occurring on separate lines.
+  * Added Document.isRepaired, which is true if the PDF was
+    repaired on open.
+  * Added Document.setXmlMetadata which either updates or creates
+    PDF XML metadata
+  * Added Document.getXmlMetadata returns PDF XML metadata.
+  * Changed creation of PDF documents: they will now always carry a
+    PDF identification (/ID field) in the document trailer
+  * Changed Page.searchFor: a new parameter clip is accepted to
+    restrict the search to this rectangle. Correspondingly, the
+    attribute TextPage.rect is now respected by TextPage.search.
+  * Changed parameter hit_max in Page.searchFor and TextPage.search
+    is now obsolete: methods will return all hits.
+  * Changed character selection criteria in Page.getText: a character
+    is now considered to be part of a clip if its bbox is fully
+    contained. Before this, a non-empty intersection was sufficient.
+  * Changed Document.scrub to support a new option redact_images.
+- from v1.18.1
+  * Detects and recovers from more cyclic resource dependencies
+    in PDF pages and for the first time reports them in the
+    MuPDF warnings store.
+  * Fixed issue #686.
+  * Added opacity options for the Shape class: Stroke and fill
+    colors can now be set to some transparency value.
+    This means that all Page draw methods, methods
+    Page.insertText, Page.insertTextbox, Shape.finish,
+    Shape.insertText, and Shape.insertTextbox support two
+    new parameters: stroke_opacity and fill_opacity.
+  * Added new parameter mask to Page.insertImage for
+    optionally providing an external image mask
+  * Added Annot.soundGet for extracting the sound of an audio
+    annotation.
+- from v1.18.0
+  * Supports MuPDF v1.18
+  * An upstream bug occurred occasionally for some pages only
+    and seems to be fixed now: page layout should no longer
+    be ruined in these cases.
+  * Unsuccessful storage allocations should now always lead to
+    exceptions (circumvention of an upstream bug intermittently
+    crashing the interpreter).
+  * Pixmap size is now based on size_t instead of int in C and
+    should be correct even for extremely large pixmaps
+  * Specification of dashes for PDF drawing insertion should now
+    correctly reflect the PDF spec
+  * A memory leakage in Page.insert_pdf has been removed
+  * Added keyword "images" to Page.apply_redactions for
+    fine-controlling the handling of images
+  * Added Annot.getText and Annot.getTextbox, which offer
+    the same functionality as the Page versions
+  * Added key "number" to the block dictionaries of Page.getText /
+    Annot.getText for options "dict" and "rawdict"
+  * Added glyph_name_to_unicode and unicode_to_glyph_name.
+    Both functions do not really connect to a specific font and
+    are now independently available, too.
+    The data are now based on the Adobe Glyph List.
+  * Added convenience functions adobe_glyph_names and
+    adobe_glyph_unicodes which return the respective available data
+  * Added Page.getDrawings which returns details of drawing
+    operations on a document page. Works for all document types
+  * Improved performance of Document.insert_pdf.
+    Multiple object copies are now also suppressed across multiple
+    separate insertions from the same source. This saves time,
+    memory and target file size. Previously this mechanism was only
+    active within each single method execution. The feature can also
+    be suppressed with the new method bool parameter final=1,
+    which is the default.
+  * For PNG images created from pixmaps, the resolution (dpi) is
+    now automatically set from the respective Pixmap.xres and
+    Pixmap.yres values
+
+-------------------------------------------------------------------
 Wed Sep 23 12:34:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.17.4:
