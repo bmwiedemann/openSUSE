@@ -1,6 +1,0 @@
-<package name="cross-arm-none-newlib-devel" project="openSUSE:Factory">
-  <title>newlib</title>
-  <description>C standard library for embedded devices.</description>
-  <devel project="openSUSE:Factory" package="newlib"/>
-  <bcntsynctag>newlib</bcntsynctag>
-</package>
