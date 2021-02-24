@@ -39,7 +39,7 @@ for line in watchtail(sys.stdin):
         continue
     if change['project'] != 'openSUSE:Factory':
         continue
-    time.sleep(max([0, change["time"]+30-time.time()]))
+    time.sleep(max([0, change["time"]+300-time.time()]))
     package = change['package']
     commitdate = datetime.datetime.utcfromtimestamp(int(change["time"])).strftime("%Y-%m-%dT%H:%M:%S")
     if 'rev' in change:
