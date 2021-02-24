@@ -181,7 +181,7 @@ FileProvides: /sbin/ifup wicked-service
 Preinstall: aaa_base attr bash coreutils diffutils
 Preinstall: filesystem fillup glibc grep
 Preinstall: libbz2-1 libgcc_s1 libncurses6 pam
-Prefer: -pam-unix-nis
+Prefer: -pam_unix-nis
 Preinstall: permissions rpm rpm-config-SUSE sed tar libz1 libselinux1
 Preinstall: libgcrypt20 libgpg-error0
 Preinstall: liblzma5 libcap2 libacl1 libattr1
