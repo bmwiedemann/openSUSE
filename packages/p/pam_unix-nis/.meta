@@ -1,0 +1,6 @@
+<package name="pam_unix-nis" project="openSUSE:Factory">
+  <title>A Security Tool that Provides Authentication for Applications</title>
+  <description>PAM (Pluggable Authentication Modules) is a system security tool that
+allows system administrators to set authentication policies without
+having to recompile programs that do authentication.</description>
+</package>
