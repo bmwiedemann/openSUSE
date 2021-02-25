@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 25 10:00:28 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com>
+
+- Fix bsc#1182704 and use https:// prefix instead of git://
+
+-------------------------------------------------------------------
 Mon Sep  8 13:48:17 UTC 2014 - jengelh@inai.de
 
 - Stop producing lomt-raleway-fonts subrpm, since we have a better,

@@ -1,7 +1,7 @@
 #
 # spec file for package lomt-fonts
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Fonts from the League Of Movable Type project
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://theleagueofmoveabletype.com/
+URL:            http://theleagueofmoveabletype.com/
 
 Source:         LOMT.tar.xz
 Source2:        LOMT-create.sh

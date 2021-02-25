@@ -3,7 +3,7 @@
 # Creates the LOMT tarball from all the single repositories.
 #
 
-url="git://github.com/theleagueof";
+url="https://github.com/theleagueof";
 fonts="league-gothic blackout knewave ostrich-sans fanwood linden-hill
 	league-script-number-one raleway prociono orbitron
 	goudy-bookletter-1911 sorts-mill-goudy chunk sniglet junction";
