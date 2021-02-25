@@ -1,7 +1,7 @@
 #
 # spec file for package python-hug
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 # Tag/Release for 2.6.1 is missing on GitHub: https://github.com/hugapi/hug/issues/854
 %define revision 9758507d5a0dbe9926e463b133ec9c5f44298b15
 Name:           python-hug
@@ -45,6 +46,8 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module requests}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -59,15 +62,22 @@ The hug library helps to create Python APIs for multiple interfaces.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/hug
 
 %check
 # exclude tests failing most probably due to different library versions (hug uses falcon==2.0.0
 %pytest -k 'not test_transform and not test_hug_post and not test_marshmallow_schema and not test_marshmallow_custom_context and not test_validate_route_args_negative_case and not test_request and not test_datagram_request'
 
+%post
+%python_install_alternative hug
+
+%postun
+%python_uninstall_alternative hug
+
 %files %{python_files}
 %doc ARCHITECTURE.md CHANGELOG.md FAQ.md README.md documentation/
 %license LICENSE
 %{python_sitelib}/*
-%{_bindir}/hug
+%python_alternative %{_bindir}/hug
 
 %changelog
