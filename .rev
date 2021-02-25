@@ -619,4 +619,13 @@
   * acpi-pmtt-fix-infinite-loops-when-length-is-incorrectly-zero.diff</comment>
     <requestid>865888</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>c80c59f3c7b8e8cd21eeccd32612c02e</srcmd5>
+    <version>21.02.00</version>
+    <time>1614274191</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 21.02.00:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>874975</requestid>
+  </revision>
 </revisionlist>
