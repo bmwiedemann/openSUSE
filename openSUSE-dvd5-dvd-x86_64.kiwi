@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210222" schemaversion="4.1">
+<image name="OBS__openSUSE___20210223" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210222</productvar>
+      <productvar name="VERSION">20210223</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210222,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210223,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210222/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210223/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1867,7 +1867,6 @@
       <repopackage name="libgnomesu"/>
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
-      <repopackage name="libgnustep-base1_27"/>
       <repopackage name="libgnutls-dane0" arch="x86_64"/>
       <repopackage name="libgnutls30"/>
       <repopackage name="libgnutls30-32bit" arch="x86_64"/>
@@ -1998,8 +1997,8 @@
       <repopackage name="libICE-devel" arch="x86_64"/>
       <repopackage name="libICE6"/>
       <repopackage name="libICE6-32bit" arch="x86_64"/>
-      <repopackage name="libicu67"/>
-      <repopackage name="libicu67-ledata"/>
+      <repopackage name="libicu68"/>
+      <repopackage name="libicu68-ledata"/>
       <repopackage name="libid3tag0"/>
       <repopackage name="libidn12"/>
       <repopackage name="libidn2-0"/>
@@ -2441,7 +2440,6 @@
       <repopackage name="libnumbertext-1_0-0"/>
       <repopackage name="libnumbertext-data"/>
       <repopackage name="liboauth0"/>
-      <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
       <repopackage name="libofa0"/>
@@ -4274,23 +4272,17 @@
       <repopackage name="ruby2.7-rubygem-activemodel-6.0"/>
       <repopackage name="ruby2.7-rubygem-activerecord-5.2"/>
       <repopackage name="ruby2.7-rubygem-activerecord-6.0"/>
-      <repopackage name="ruby2.7-rubygem-activerecord-deprecated_finders"/>
       <repopackage name="ruby2.7-rubygem-activestorage-5.2"/>
       <repopackage name="ruby2.7-rubygem-activestorage-6.0"/>
       <repopackage name="ruby2.7-rubygem-activesupport-5.2"/>
       <repopackage name="ruby2.7-rubygem-activesupport-6.0"/>
       <repopackage name="ruby2.7-rubygem-addressable"/>
-      <repopackage name="ruby2.7-rubygem-addressable-2_3"/>
       <repopackage name="ruby2.7-rubygem-aes_key_wrap"/>
       <repopackage name="ruby2.7-rubygem-afm"/>
       <repopackage name="ruby2.7-rubygem-airbrussh"/>
       <repopackage name="ruby2.7-rubygem-amq-protocol"/>
-      <repopackage name="ruby2.7-rubygem-amqp"/>
       <repopackage name="ruby2.7-rubygem-archive-tar-minitar"/>
       <repopackage name="ruby2.7-rubygem-arel"/>
-      <repopackage name="ruby2.7-rubygem-arel-3_0"/>
-      <repopackage name="ruby2.7-rubygem-arel-6"/>
-      <repopackage name="ruby2.7-rubygem-arel-7"/>
       <repopackage name="ruby2.7-rubygem-arel-8"/>
       <repopackage name="ruby2.7-rubygem-Ascii85"/>
       <repopackage name="ruby2.7-rubygem-asciidoctor"/>
@@ -4386,7 +4378,6 @@
       <repopackage name="ruby2.7-rubygem-equalizer"/>
       <repopackage name="ruby2.7-rubygem-erubi"/>
       <repopackage name="ruby2.7-rubygem-erubis"/>
-      <repopackage name="ruby2.7-rubygem-erubis-2_6"/>
       <repopackage name="ruby2.7-rubygem-eventmachine"/>
       <repopackage name="ruby2.7-rubygem-exception_notification"/>
       <repopackage name="ruby2.7-rubygem-excon"/>
@@ -4577,6 +4568,7 @@
       <repopackage name="ruby2.7-rubygem-public_suffix"/>
       <repopackage name="ruby2.7-rubygem-public_suffix-3.1"/>
       <repopackage name="ruby2.7-rubygem-puma"/>
+      <repopackage name="ruby2.7-rubygem-puma-4"/>
       <repopackage name="ruby2.7-rubygem-puma_worker_killer"/>
       <repopackage name="ruby2.7-rubygem-pundit"/>
       <repopackage name="ruby2.7-rubygem-rack"/>
@@ -4610,7 +4602,6 @@
       <repopackage name="ruby2.7-rubygem-rb-kqueue"/>
       <repopackage name="ruby2.7-rubygem-rdiscount"/>
       <repopackage name="ruby2.7-rubygem-rdoc-4"/>
-      <repopackage name="ruby2.7-rubygem-RedCloth"/>
       <repopackage name="ruby2.7-rubygem-regexp_parser"/>
       <repopackage name="ruby2.7-rubygem-responders"/>
       <repopackage name="ruby2.7-rubygem-rest-client"/>
@@ -5185,13 +5176,11 @@
       <repopackage name="umbrello"/>
       <repopackage name="umbrello-lang"/>
       <repopackage name="un-fonts"/>
-      <repopackage name="unar"/>
       <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
       <repopackage name="unclutter" arch="x86_64"/>
       <repopackage name="unison"/>
       <repopackage name="units"/>
-      <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
       <repopackage name="unzip-doc"/>
       <repopackage name="update-alternatives"/>

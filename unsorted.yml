@@ -10651,6 +10651,7 @@ unsorted:
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_8_0 
+  - libgnustep-base1_27 
   - libgnutls-dane-devel 
   - libgnutls-dane0: [i586] 
   - libgnutls-devel 
@@ -11113,8 +11114,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit: [x86_64] 
   - libicu-doc 
-  - libicu67-32bit: [x86_64] 
-  - libicu67-bedata 
+  - libicu68-32bit: [x86_64] 
+  - libicu68-bedata 
   - libid3tag-devel 
   - libid3tag0-32bit: [x86_64] 
   - libidl-devel 
@@ -12035,6 +12036,7 @@ unsorted:
   - liboauth0-32bit: [x86_64] 
   - libobby-0_4-1 
   - libobjc2-devel 
+  - libobjc4 
   - libobjc4-32bit: [x86_64] 
   - libobjc4-gcc10 
   - libobjc4-gcc10-32bit: [x86_64] 
@@ -12123,6 +12125,7 @@ unsorted:
   - libopencsg1 
   - libopencv3_4 
   - libopencv4_5 
+  - libopencv_aruco4_5 
   - libopencv_face4_5 
   - libopencv_highgui4_5 
   - libopencv_imgcodecs4_5 
@@ -17920,6 +17923,8 @@ unsorted:
   - pam_snapper 
   - pam_u2f 
   - pam_unix-32bit: [x86_64] 
+  - pam_unix-nis 
+  - pam_unix-nis-32bit: [x86_64] 
   - pam_userpass 
   - pam_userpass-32bit: [x86_64] 
   - pam_wrapper 
@@ -20485,7 +20490,6 @@ unsorted:
   - python-M2Crypto-doc 
   - python-OpenColorIO 
   - python-OpenColorIO-devel 
-  - python-PyMuPDF-doc 
   - python-SQLAlchemy-doc 
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
@@ -20681,7 +20685,6 @@ unsorted:
   - python3-MapProxy 
   - python3-OpenImageIO 
   - python3-PyCBC 
-  - python3-PyMuPDF 
   - python3-Rivet 
   - python3-SHERPA-MC 
   - python3-SoapySDR 
@@ -20740,12 +20743,10 @@ unsorted:
   - python3-dfVFS 
   - python3-django-attachments 
   - python3-django-braces 
-  - python3-django-haystack 
   - python3-django-push-notifications 
   - python3-django-q 
   - python3-django-redis 
   - python3-django-storages 
-  - python3-django-tastypie 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -20986,8 +20987,6 @@ unsorted:
   - python3-pocketsphinx 
   - python3-pocketsphinx5 
   - python3-policycoreutils: [i586] 
-  - python3-poppler-qt5 
-  - python3-poppler-qt5-devel 
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
@@ -21026,7 +21025,6 @@ unsorted:
   - python3-rpmdeplint 
   - python3-rpmfluff 
   - python3-rrdtool 
-  - python3-ruffus 
   - python3-rust2rpm 
   - python3-saharaclient 
   - python3-scikit-umfpack: [i586] 
@@ -21035,7 +21033,6 @@ unsorted:
   - python3-smbus 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
-  - python3-sorl-thumbnail 
   - python3-spglib 
   - python3-sphinx-autodoc-typehints 
   - python3-sphinxbase 
@@ -21076,7 +21073,6 @@ unsorted:
   - python3-vtk-openmpi3 
   - python3-watchman 
   - python3-websockify 
-  - python3-xapian-haystack 
   - python3-xcaplib 
   - python3-xcb-proto-devel 
   - python3-xrootd 
@@ -21085,6 +21081,7 @@ unsorted:
   - python3-yaql 
   - python3-yui 
   - python3-z3 
+  - python3-zbar 
   - python36 
   - python36-32bit: [x86_64] 
   - python36-APScheduler 
@@ -21221,6 +21218,7 @@ unsorted:
   - python36-PyMeeus 
   - python36-PyMeta3 
   - python36-PyMsgBox 
+  - python36-PyMuPDF 
   - python36-PyMySQL 
   - python36-PyNaCl 
   - python36-PyNamecheap 
@@ -21997,6 +21995,7 @@ unsorted:
   - python36-django-grappelli 
   - python36-django-gravatar2 
   - python36-django-guardian 
+  - python36-django-haystack 
   - python36-django-health-check 
   - python36-django-import-export 
   - python36-django-invitations 
@@ -22007,6 +22006,7 @@ unsorted:
   - python36-django-jsonfield 
   - python36-django-localflavor 
   - python36-django-mailer 
+  - python36-django-mathfilters 
   - python36-django-minio-storage 
   - python36-django-model-utils 
   - python36-django-money 
@@ -22039,7 +22039,9 @@ unsorted:
   - python36-django-settings-toml 
   - python36-django-silk 
   - python36-django-sortedm2m 
+  - python36-django-tables2 
   - python36-django-tagging 
+  - python36-django-tastypie 
   - python36-django-threadedcomments 
   - python36-django-timezone-field 
   - python36-django-treebeard 
@@ -22232,7 +22234,6 @@ unsorted:
   - python36-geojson 
   - python36-geolib 
   - python36-geolinks 
-  - python36-geomdl 
   - python36-geomet 
   - python36-geopy 
   - python36-getmac 
@@ -22761,7 +22762,6 @@ unsorted:
   - python36-pampy 
   - python36-pamqp 
   - python36-pan-python 
-  - python36-pandas-datareader 
   - python36-pandas-ext 
   - python36-pandocfilters 
   - python36-panflute 
@@ -22866,6 +22866,8 @@ unsorted:
   - python36-pontos 
   - python36-pony 
   - python36-pook 
+  - python36-poppler-qt5 
+  - python36-poppler-qt5-devel 
   - python36-port-for 
   - python36-portalocker 
   - python36-portend 
@@ -23061,7 +23063,6 @@ unsorted:
   - python36-pypng 
   - python36-pyppeteer 
   - python36-pyprimes 
-  - python36-pyproj 
   - python36-pypsexec 
   - python36-pypuppetdb 
   - python36-pyqt-builder 
@@ -23145,6 +23146,7 @@ unsorted:
   - python36-pytest-metadata 
   - python36-pytest-mock 
   - python36-pytest-mpi 
+  - python36-pytest-mypy 
   - python36-pytest-openfiles 
   - python36-pytest-ordering 
   - python36-pytest-parallel 
@@ -23419,6 +23421,7 @@ unsorted:
   - python36-ruamel.yaml.clib 
   - python36-ruamel.yaml.cmd 
   - python36-ruamel.yaml.convert 
+  - python36-ruffus 
   - python36-runthis-sphinxext 
   - python36-rustcfg 
   - python36-s3fs 
@@ -23510,6 +23513,7 @@ unsorted:
   - python36-socketIO-client-nexus 
   - python36-socketpool 
   - python36-softlayer 
+  - python36-sorl-thumbnail 
   - python36-sortedcollections 
   - python36-sortedcontainers 
   - python36-sortinghat 
@@ -23633,6 +23637,7 @@ unsorted:
   - python36-threevis 
   - python36-thrift 
   - python36-thriftpy2 
+  - python36-timeout-decorator 
   - python36-tinyarray 
   - python36-tinycss2 
   - python36-tinydb 
@@ -23743,7 +23748,6 @@ unsorted:
   - python36-vcrpy 
   - python36-vcver 
   - python36-vcversioner 
-  - python36-vega 
   - python36-venusian 
   - python36-venusian-doc 
   - python36-verboselogs 
@@ -23811,6 +23815,7 @@ unsorted:
   - python36-wxPython 
   - python36-wxPython-lang 
   - python36-xapian 
+  - python36-xapian-haystack 
   - python36-xapp 
   - python36-xattr 
   - python36-xcffib 
@@ -24018,6 +24023,7 @@ unsorted:
   - python38-PyMeeus 
   - python38-PyMeta3 
   - python38-PyMsgBox 
+  - python38-PyMuPDF 
   - python38-PyMySQL 
   - python38-PyNamecheap 
   - python38-PyOgg 
@@ -24783,6 +24789,7 @@ unsorted:
   - python38-django-grappelli 
   - python38-django-gravatar2 
   - python38-django-guardian 
+  - python38-django-haystack 
   - python38-django-health-check 
   - python38-django-import-export 
   - python38-django-invitations 
@@ -24794,6 +24801,7 @@ unsorted:
   - python38-django-localflavor 
   - python38-django-mailer 
   - python38-django-mailman3 
+  - python38-django-mathfilters 
   - python38-django-minio-storage 
   - python38-django-model-utils 
   - python38-django-money 
@@ -24826,7 +24834,9 @@ unsorted:
   - python38-django-settings-toml 
   - python38-django-silk 
   - python38-django-sortedm2m 
+  - python38-django-tables2 
   - python38-django-tagging 
+  - python38-django-tastypie 
   - python38-django-threadedcomments 
   - python38-django-timezone-field 
   - python38-django-treebeard 
@@ -25680,6 +25690,8 @@ unsorted:
   - python38-pontos 
   - python38-pony 
   - python38-pook 
+  - python38-poppler-qt5 
+  - python38-poppler-qt5-devel 
   - python38-port-for 
   - python38-portalocker 
   - python38-portend 
@@ -25955,6 +25967,7 @@ unsorted:
   - python38-pytest-mock 
   - python38-pytest-mpi 
   - python38-pytest-mpl 
+  - python38-pytest-mypy 
   - python38-pytest-openfiles 
   - python38-pytest-ordering 
   - python38-pytest-parallel 
@@ -26216,6 +26229,7 @@ unsorted:
   - python38-ruamel.yaml.clib 
   - python38-ruamel.yaml.cmd 
   - python38-ruamel.yaml.convert 
+  - python38-ruffus 
   - python38-runthis-sphinxext 
   - python38-rustcfg 
   - python38-s3fs 
@@ -26315,6 +26329,7 @@ unsorted:
   - python38-socketIO-client-nexus 
   - python38-socketpool 
   - python38-softlayer 
+  - python38-sorl-thumbnail 
   - python38-sortedcollections 
   - python38-sortinghat 
   - python38-sounddevice 
@@ -26450,6 +26465,7 @@ unsorted:
   - python38-thrift 
   - python38-thriftpy2 
   - python38-tifffile 
+  - python38-timeout-decorator 
   - python38-tinyarray 
   - python38-tinycss2 
   - python38-tinydb 
@@ -26630,6 +26646,7 @@ unsorted:
   - python38-wxPython 
   - python38-wxPython-lang 
   - python38-xapian 
+  - python38-xapian-haystack 
   - python38-xapp 
   - python38-xarray 
   - python38-xattr 
@@ -27444,7 +27461,6 @@ unsorted:
   - ruby3.0-doc 
   - ruby3.0-doc-ri 
   - ruby3.0-rubygem-Ascii85 
-  - ruby3.0-rubygem-RedCloth 
   - ruby3.0-rubygem-abstract 
   - ruby3.0-rubygem-abstract_method 
   - ruby3.0-rubygem-actioncable-5.2 
@@ -27460,22 +27476,16 @@ unsorted:
   - ruby3.0-rubygem-activemodel-5.2 
   - ruby3.0-rubygem-activerecord-5.2 
   - ruby3.0-rubygem-activerecord-6.0 
-  - ruby3.0-rubygem-activerecord-deprecated_finders 
   - ruby3.0-rubygem-activestorage-5.2 
   - ruby3.0-rubygem-activestorage-6.0 
   - ruby3.0-rubygem-activesupport-5.2 
   - ruby3.0-rubygem-addressable 
-  - ruby3.0-rubygem-addressable-2_3 
   - ruby3.0-rubygem-aes_key_wrap 
   - ruby3.0-rubygem-afm 
   - ruby3.0-rubygem-airbrussh 
   - ruby3.0-rubygem-amq-protocol 
-  - ruby3.0-rubygem-amqp 
   - ruby3.0-rubygem-archive-tar-minitar 
   - ruby3.0-rubygem-arel 
-  - ruby3.0-rubygem-arel-3_0 
-  - ruby3.0-rubygem-arel-6 
-  - ruby3.0-rubygem-arel-7 
   - ruby3.0-rubygem-arel-8 
   - ruby3.0-rubygem-asciidoctor 
   - ruby3.0-rubygem-ast 
@@ -27561,7 +27571,6 @@ unsorted:
   - ruby3.0-rubygem-em-websocket 
   - ruby3.0-rubygem-equalizer 
   - ruby3.0-rubygem-erubis 
-  - ruby3.0-rubygem-erubis-2_6 
   - ruby3.0-rubygem-eventmachine 
   - ruby3.0-rubygem-exception_notification 
   - ruby3.0-rubygem-excon 
@@ -27743,6 +27752,7 @@ unsorted:
   - ruby3.0-rubygem-pry-doc 
   - ruby3.0-rubygem-public_suffix 
   - ruby3.0-rubygem-public_suffix-3.1 
+  - ruby3.0-rubygem-puma-4 
   - ruby3.0-rubygem-puma_worker_killer 
   - ruby3.0-rubygem-pundit 
   - ruby3.0-rubygem-rack-1_3 
@@ -37398,6 +37408,7 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
+  - unar 
   - unbound-devel 
   - unbound-munin 
   - unclutter: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
@@ -37428,6 +37439,7 @@ unsorted:
   - unmass 
   - unoconv 
   - unpaper 
+  - unrar_wrapper 
   - unshield 
   - unshield-devel 
   - unzip-rcc 
