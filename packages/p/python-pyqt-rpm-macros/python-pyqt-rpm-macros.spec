@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyqt-rpm-macros
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           python-pyqt-rpm-macros
-Version:        0.0.3
+Version:        0.1
 Release:        0
 Summary:        RPM macros for building PyQt packages
 License:        WTFPL
-URL:            https://en.opensuse.org/openSUSE:Packaging_PyQt5_and_SIP
+URL:            https://en.opensuse.org/openSUSE:Packaging_PyQt_and_SIP
 Source0:        macros.pyqt
 Source1:        LICENSE
 Requires:       fdupes
@@ -31,7 +31,7 @@ Requires:       (python-sip-devel or python3-sip-devel)
 BuildArch:      noarch
 
 %description
-This package provides some macros for using SIP4 or SIP5 to build PyQt5 packages
+This package provides some macros for using SIP v[456] to build PyQt[56] packages
 
 %prep
 cp %{SOURCE1} .

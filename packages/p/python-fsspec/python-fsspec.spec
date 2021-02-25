@@ -34,9 +34,13 @@ License:        BSD-3-Clause
 URL:            https://github.com/intake/filesystem_spec
 Source:         https://files.pythonhosted.org/packages/source/f/fsspec/fsspec-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib_metadata
+%endif
 Suggests:       python-adlfs
 Suggests:       python-aiohttp
 Suggests:       python-pyarrow
@@ -58,8 +62,6 @@ BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pytest}
@@ -68,6 +70,8 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module s3fs}
 BuildRequires:  %{python_module smbprotocol}
 BuildRequires:  %{python_module zstandard}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module panel if (%python-base without python36-base)}
 # cannot test git and http in the same installation (?)
 # BuildRequires:  %%{python_module pygit2}
 # BuildRequires:  git-core
@@ -79,6 +83,8 @@ A specification for pythonic filesystems.
 
 %prep
 %setup -q -n fsspec-%{version}
+# don't test nonexistent python36-numpy
+sed -i -e '/^import numpy as np/ d' -e '/^import pytest/ a np = pytest.importorskip("numpy")' fsspec/tests/test_spec.py
 
 %build
 %python_build

@@ -497,4 +497,20 @@
     <comment></comment>
     <requestid>818039</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>3682524d7cad57798faf2d74e815370f</srcmd5>
+    <version>20201107</version>
+    <time>1614273942</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 20201107:
+  * This release falls on the 20th anniversary of the first release of
+    FontForge back in 2000. It brings a wide range of minor tweaks and bug
+    fixes for the user interface and file format handlers and a special splash
+    screen to commemorate the big day
+- fix-glossary.patch, support-sphinx3.patch: drop (upstream)
+- remove get-source.sh: the binaries that needed to be repackaged
+  are no longer in the upstream release tarball
+- fix-return-statement.patch: refresh against new release (forwarded request 873998 from dirkmueller)</comment>
+    <requestid>874239</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:35:29 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Generate and install localized man pages:
+  * Add tilix-1.9.4-localized-man.patch
+  * Add po4a as build requirement
+- Run test in check section.
+
+-------------------------------------------------------------------
 Thu Feb 11 19:15:18 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 1.9.4

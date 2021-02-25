@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 23 18:12:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Refine the optional test dependencies. We want to test python39 
+  in the future.
+
+-------------------------------------------------------------------
+Sat Feb 20 05:07:31 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-enable Python 3.6 builds without optional dependencies
+- Add test dependencies lxml, pandas and pygraphviz
+
+-------------------------------------------------------------------
 Mon Feb  1 14:05:38 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Disable python36 build for good. Next up is SciPy 1.6.0 dropping

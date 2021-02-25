@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python36 1
 Name:           python-ufoLib2
-Version:        0.8.0
+Version:        0.11.1
 Release:        0
 Summary:        UFO font processing library
 License:        Apache-2.0
@@ -31,16 +30,25 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-FontTools >= 4.13.0
-Requires:       python-attrs >= 19.3.0
-Suggests:       python-lxml
-Suggests:       python-typing_extensions
-BuildArch:      noarch
-# SECTION test requirements
+# SECTION install_requires
 BuildRequires:  %{python_module FontTools >= 4.0.0}
 BuildRequires:  %{python_module attrs >= 19.2.0}
+# via fonttools[ufo]
+BuildRequires:  %{python_module fs >= 2.2.0}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+Requires:       python-FontTools >= 4.0.0
+Requires:       python-attrs >= 19.2.0
+Requires:       python-fs >= 2.2.0
+%if 0%{?python_version_nodots} < 38
+Requires:       python-typing_extensions
+%endif
+# /SECTION
+# SECTION test requirements
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 # /SECTION
+Suggests:       python-lxml
+BuildArch:      noarch
 %python_subpackages
 
 %description

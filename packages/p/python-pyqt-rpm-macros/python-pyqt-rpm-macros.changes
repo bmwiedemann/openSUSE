@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 19 23:54:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to version 0.1
+- Add PyQt6 support
+- Add link to wiki in macros file
+- Remove python-rpm-macros interpreter workaround. The
+  inconsistency never made it into a released package.
+
+-------------------------------------------------------------------
 Wed Dec  2 16:55:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove --debug flag for sip v5 builds. Mitigates boo#1179214

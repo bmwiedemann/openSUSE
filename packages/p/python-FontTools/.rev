@@ -62,4 +62,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment>- Switch from brotlipy to Brotli (bsc#1175303) (forwarded request 827753 from mcalabkova)</comment>
     <requestid>828948</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba8dd48ce0ad5aff5880ed6031e80788</srcmd5>
+    <version>4.19.1</version>
+    <time>1614274015</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873070</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,60 @@
+--------------------------------------------------------------------
+Sat Feb 19 17:18:00 UTC 2021 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.2.3
+  * Switched crypto store to use SQLite to prevent it from getting corrupted all the time.
+  * Added macOS builds (both x86 and arm64)
+  * Allowed password login to servers with both SSO and password login enabled.
+
+-------------------------------------------------------------------
+Sat Nov 11 16:54:00 UTC 2020 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.2.1
+  * Moved help into a modal (partially done by @wvffle in #223)
+  * Fixed choosing a login flow when logging in
+  * Fixed edits by different users than the original message sender being rendered
+  * Fixed panic when rendering empty code block
+  * Fixed panic in /open command (thanks to @dec05eba in #226)
+  * Fixed command autocompletion (thanks to @wvffle in #222)
+
+-------------------------------------------------------------------
+Sat Oct 23 15:19:00 UTC 2020 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.2.0
+  * Added interactive device verification support (#161, only outgoing requests currently)
+  * Added option to show inline link target as text (thanks to @r3k2 in #189)
+  * Added /edit command as an alternative to ↑/↓ (#200)
+  * Added support for importing and exporting message decryption keys (#159)
+  * Added command for uploading files (#62, started by @wvffle in #206)
+  * Added parameter autocompletion for some commands (mostly the new crypto and upload commands, but also /download and /open)
+  * Fixed autocompleting HTML pills when markdown is disabled (#190)
+  * Fixed editing the same message many times (#195)
+  * Fixed mangled comment newlines in code blocks (#120, thanks to @wvffle in #214)
+
+-------------------------------------------------------------------
+Sat Jun 25 11:13:19 UTC 2020 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.1.2
+  * Fixed panic when clicking Shift+Tab on the first item of the fuzzy room search dialog (#182)
+  * Fixed panic when rendering m.room.canonical_alias events with no prev_content (#181)
+  * Fixed rendering displayname changes
+
+-------------------------------------------------------------------
+Tue Oct 01 09:23:34 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.0.1.git~20190726.7012564:
+  * Add badge and link for GitLab CI to readme
+  * Update tcell
+  * Add .gitlab-ci.yml
+  * Update tcell
+  * Possibly fix displaying displaynames of left users
+  * Fix or break some history related things
+  * Cache canonical alias in room list so tab completing wouldn't load state from disk
+  * Add initial support for rendering replies
+  * Wrap events in custom struct to add gomuks-specific fields
+  * Only ping if displayname has spaces/punctuation characters around it. Fixes #96
+
+-------------------------------------------------------------------
+Tue Oct  1 09:00:21 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 

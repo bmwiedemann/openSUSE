@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:45:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update GNOME-40.patch: Fix vapigen warnings for 6,7 & 8 alpha
+
+-------------------------------------------------------------------
 Wed Feb 17 16:53:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add fullscreen-tracking.patch: fix tracking issues

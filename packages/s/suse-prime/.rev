@@ -508,4 +508,13 @@ Latest changes:
 - adjusted specfile to new release</comment>
     <requestid>832818</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>35f769fed8d339f910a74b21a28d86ea</srcmd5>
+    <version>0.7.16</version>
+    <time>1614274119</time>
+    <user>RBrownSUSE</user>
+    <comment>- SUSEPrime-0.7.16
+  * README.md: document how to reenable HDMI audio support (issue#60)</comment>
+    <requestid>874821</requestid>
+  </revision>
 </revisionlist>

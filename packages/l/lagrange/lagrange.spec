@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define app_id fi.skyjake.Lagrange
 Name:           lagrange
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
@@ -25,13 +26,14 @@ URL:            https://gmi.skyjake.fi/lagrange
 Source0:        https://git.skyjake.fi/skyjake/lagrange/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  libunistring-devel
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  update-desktop-files
 
 %description
 Lagrange is a desktop GUI client for browsing Geminispace. It offers modern

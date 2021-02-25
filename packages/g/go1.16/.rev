@@ -7,4 +7,12 @@
     <comment>- go1.16 (released 2021-02-16) Go 1.16 is a major release of Go.</comment>
     <requestid>873220</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b9b03dca92753156ca637398276ca0e4</srcmd5>
+    <version>1.16</version>
+    <time>1614274050</time>
+    <user>RBrownSUSE</user>
+    <comment>- gcc6-go.patch fix typo go-7 to go-6 for bootstrap on SLE-12 gcc6 (forwarded request 874739 from jfkw)</comment>
+    <requestid>874740</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lazarus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define sover   1
 Name:           lazarus
-Version:        2.0.10
+Version:        2.0.12
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
 License:        GPL-2.0-only AND LGPL-2.0-only AND MPL-1.1
 Group:          Development/Languages/Other
 URL:            http://www.lazarus.freepascal.org/
-Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}-2.tar.gz
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM http://mantis.freepascal.org/view.php?id=31364
 Source1:        https://raw.githubusercontent.com/hughsie/fedora-appstream/developerapps/appdata-extra/desktop/lazarus.appdata.xml
 Source90:       %{name}-rpmlintrc

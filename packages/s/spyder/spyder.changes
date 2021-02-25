@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 24 10:32:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- The apps dialog segfault is back. (QtAwesome, qtwebengine?)
+
+-------------------------------------------------------------------
+Mon Feb 22 17:49:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.2.2
+  * Improve performance when typing in the editor.
+  * Make variable explorer work for kernels started in remote
+    servers.
+- Drop spyder-pr14514-fix-pandas120.patch merged upstream
+
+-------------------------------------------------------------------
 Mon Feb 15 15:54:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add spyder-pr14514-fix-pandas120.patch to work with pandas 1.2

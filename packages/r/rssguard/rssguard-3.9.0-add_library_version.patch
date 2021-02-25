@@ -1,0 +1,84 @@
+Index: rssguard-3.9.0/src/librssguard/librssguard.pro
+===================================================================
+--- rssguard-3.9.0.orig/src/librssguard/librssguard.pro
++++ rssguard-3.9.0/src/librssguard/librssguard.pro
+@@ -1,7 +1,10 @@
+ TEMPLATE = lib
+ 
++include(../../pri/vars.pri)
++include(../../pri/defs.pri)
++
+ unix|mac|os2 {
+-  TARGET = rssguard
++  TARGET = rssguard-$$APP_VERSION
+ }
+ else {
+   TARGET = librssguard
+@@ -10,9 +13,6 @@ else {
+ MSG_PREFIX  = "librssguard"
+ APP_TYPE    = "core library"
+ 
+-include(../../pri/vars.pri)
+-include(../../pri/defs.pri)
+-
+ message($$MSG_PREFIX: Shadow copy build directory \"$$OUT_PWD\".)
+ message($$MSG_PREFIX: $$APP_NAME version is: \"$$APP_VERSION\".)
+ message($$MSG_PREFIX: Detected Qt version: \"$$QT_VERSION\".)
+@@ -25,6 +25,19 @@ include(../../pri/build_opts.pri)
+ DEFINES *= RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+ CONFIG += unversioned_libname unversioned_soname skip_target_version_ext
+ 
++# create pkgconfig file
++unix {
++CONFIG += create_pc create_prl no_install_prl
++QMAKE_PKGCONFIG_NAME = rssguard
++QMAKE_PKGCONFIG_FILE = $$QMAKE_PKGCONFIG_NAME
++QMAKE_PKGCONFIG_DESCRIPTION = Bindings for librssguard
++QMAKE_PKGCONFIG_PREFIX = $$PREFIX
++QMAKE_PKGCONFIG_LIBDIR = $$LIBDIR
++QMAKE_PKGCONFIG_INCDIR = $$headers.path
++QMAKE_PKGCONFIG_VERSION = $$APP_VERSION
++QMAKE_PKGCONFIG_CFLAGS = -I\${includedir}
++}
++
+ RESOURCES += ../../resources/sql.qrc \
+              ../../resources/rssguard.qrc
+ 
+Index: rssguard-3.9.0/src/rssguard/rssguard.pro
+===================================================================
+--- rssguard-3.9.0.orig/src/rssguard/rssguard.pro
++++ rssguard-3.9.0/src/rssguard/rssguard.pro
+@@ -44,7 +44,7 @@ INCLUDEPATH +=  $$PWD/../librssguard \
+ DEPENDPATH += $$PWD/../librssguard
+ 
+ win32: LIBS += -L$$OUT_PWD/../librssguard/ -llibrssguard
+-unix: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
++unix: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard-$$APP_VERSION
+ os2: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
+ 
+ win32 {
+Index: rssguard-3.9.0/pri/install.pri
+===================================================================
+--- rssguard-3.9.0.orig/pri/install.pri
++++ rssguard-3.9.0/pri/install.pri
+@@ -54,14 +54,17 @@ unix:!mac:!android {
+   appdata.files = ../../resources/desktop/$${APP_REVERSE_NAME}.appdata.xml
+   appdata.path = $$quote($$PREFIX/share/metainfo/)
+ 
+-  lib.files = $$OUT_PWD/../librssguard/librssguard.so
+-  lib.path = $$quote($$PREFIX/lib/)
++  lib.files = $$OUT_PWD/../librssguard/librssguard-$${APP_VERSION}.so
++  lib.path = $$quote($$LIBDIR/)
+   lib.CONFIG = no_check_exist
+ 
++  pkgconfig.files = $$OUT_PWD/../librssguard/rssguard.pc
++  pkgconfig.path = $$quote($$LIBDIR/pkgconfig/)
++
+   desktop_icon.files = ../../resources/graphics/$${TARGET}.png
+   desktop_icon.path = $$quote($$PREFIX/share/icons/hicolor/512x512/apps/)
+ 
+-  INSTALLS += target lib desktop_file desktop_icon appdata
++  INSTALLS += target lib pkgconfig desktop_file desktop_icon appdata
+   
+   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
+ }

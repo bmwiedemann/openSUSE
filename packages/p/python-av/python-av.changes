@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 18:33:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.0.3
+  * packaging and formatting (no relevant changes for openSUSE)
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29)
+
+-------------------------------------------------------------------
 Sat Aug 15 08:35:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add missing runtime dependency on numpy

@@ -18,7 +18,7 @@
 
 %define sover   5
 Name:           dav1d
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause
@@ -63,7 +63,8 @@ Group:          System/Libraries
 %autosetup -p1
 
 %build
-%meson
+# disabling xxhash until it can be built properly
+%meson -Dxxhash_muxer=disabled
 %meson_build
 
 %install

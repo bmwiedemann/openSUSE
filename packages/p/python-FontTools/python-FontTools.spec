@@ -1,7 +1,7 @@
 #
 # spec file for package python-FontTools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
+%bcond_without test
 %define psuffix -test
 %else
 %define psuffix %{nil}
+%bcond_with test
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-FontTools%{psuffix}
-Version:        4.13.0
+Version:        4.19.1
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -38,34 +40,32 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-Brotli >= 1.0.1
-Requires:       python-fs >= 2.4.11
-Requires:       python-lxml >= 4.0
-Requires:       python-scipy >= 1.5.1
-Requires:       python-sympy
-Requires:       python-unicodedata2 >= 13.0.0
-Requires:       python-zopfli >= 0.1.6
+Recommends:     python-Brotli >= 1.0.1
+Recommends:     python-fs >= 2.4.11
+Recommends:     python-lxml >= 4.0
+Recommends:     python-scipy >= 1.5.1
+Recommends:     python-sympy
+Recommends:     python-unicodedata2 >= 13.0.0
+Recommends:     python-zopfli >= 0.1.6
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-reportlab
 BuildArch:      noarch
-%if "%{flavor}" == "test"
-BuildRequires:  zip
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.0.1}
 BuildRequires:  %{python_module fs >= 2.4.11}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.5.1}
 BuildRequires:  %{python_module sympy}
 BuildRequires:  %{python_module ufoLib2 >= 0.6.2}
 BuildRequires:  %{python_module zopfli >= 0.1.6}
+# TW does not have python36-scipy anymore (NEP 29). Tests are automatically skipped.
+BuildRequires:  %{python_module scipy >= 1.5.1 if (%python-base without python36-base)}
 %endif
-# /SECTION
-%ifpython3
-Obsoletes:      fonttools < %{version}
-Provides:       fonttools = %{version}
-Provides:       python-fonttools = %{version}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Obsoletes:      fonttools < %{version}-%{release}
+Provides:       fonttools = %{version}-%{release}
 %endif
+Provides:       python-fonttools = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -97,24 +97,13 @@ cp %{SOURCE1} Tests/cu2qu/data/curves.json
 rm %{buildroot}%{_bindir}/fonttools
 %endif
 
-%if "%{flavor}" == "test"
+%if %{with test}
 %check
-ufodir='Tests/ufoLib/testdata/TestFont1 (UFO3).ufo'
-if [ ! -e "${ufodir}z" ]; then
-  # they forgot to ship Tests/ufoLib/testdata/TestFont1 (UFO3).ufoz
-  pushd $(dirname "$ufodir")
-  name=$(basename "$ufodir")
-  zip -r "${name}z" "$name"
-  popd
-else
-  echo "this can be removed (including zip buildrequires)"
-  exit 1
-fi
 export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1
-%pytest
+%pytest -ra
+%endif
 
-%else
+%if "%{flavor}" != "test"
 %post
 %python_install_alternative ttx ttx.1
 %python_install_alternative pyftsubset
@@ -128,12 +117,12 @@ export PYTHONDONTWRITEBYTECODE=1
 %files %{python_files}
 %license LICENSE LICENSE.external
 %doc README.rst NEWS.rst
-%{python_sitelib}/*
 %python_alternative %{_bindir}/pyftmerge
 %python_alternative %{_bindir}/pyftsubset
 %python_alternative %{_bindir}/ttx
 %python_alternative %{_mandir}/man1/ttx.1%{?ext_man}
-
+%{python_sitelib}/fontTools
+%{python_sitelib}/fonttools-%{version}*-info
 %endif
 
 %changelog

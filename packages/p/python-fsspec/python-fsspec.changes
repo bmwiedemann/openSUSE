@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:55:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update python36 requirements. Don't try to test nonexistent
+  optional python36-numpy and -panel
+
+-------------------------------------------------------------------
 Mon Jan  4 17:59:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Test in _multibuild in order to break build dependency cycles

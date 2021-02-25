@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8cc3899349d7d3ba4e4b4eaa65638ad</srcmd5>
+    <version>2.3</version>
+    <time>1614273996</time>
+    <user>RBrownSUSE</user>
+    <comment>Required to build some u-boot flavors for some Arm boards</comment>
+    <requestid>861401</requestid>
+  </revision>
+</revisionlist>

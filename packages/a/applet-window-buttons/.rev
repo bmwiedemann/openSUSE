@@ -87,4 +87,13 @@
   * never hide buttons for AlwaysVisible visibility state</comment>
     <requestid>774193</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fa7a3b42bd8867b5083a201138844847</srcmd5>
+    <version>0.8.1</version>
+    <time>1614274077</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add fix-build-plasma-5.21.patch to fix compilation with Plasma
+  5.21</comment>
+    <requestid>874782</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,15 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
                      self.linenos[t].append((self.filename, tag, lineno))
                  else:
                      self.linenos[t] = [ (self.filename, tag, lineno) ]
-@@ -200,7 +200,7 @@ class XMLDocument(object):
+@@ -135,6 +135,7 @@ msgstr ""
+             if translation == k:
+                 translation = ""
+             out.write("msgstr \"%s\"\n\n" % (translation))
++        out.close()
+ 
+ class XMLDocument(object):
+     def __init__(self, filename, app):
+@@ -200,7 +201,7 @@ class XMLDocument(object):
              tree = ctxt.doc()
              newnode = tree.getRootElement()
          except:
@@ -28,7 +36,7 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
              return text
  
          self.normalizeNode(newnode)
-@@ -326,7 +326,7 @@ class XMLDocument(object):
+@@ -326,7 +327,7 @@ class XMLDocument(object):
                  pass
  
              content = '<%s>%s</%s>' % (starttag, text, endtag)
@@ -37,7 +45,7 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
  
              newnode = None
              try:
-@@ -338,7 +338,7 @@ class XMLDocument(object):
+@@ -338,7 +339,7 @@ class XMLDocument(object):
                  pass
  
              if not newnode:
@@ -46,7 +54,7 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
                  return
  
              newelem = newnode.getRootElement()
-@@ -352,9 +352,10 @@ class XMLDocument(object):
+@@ -352,9 +353,10 @@ class XMLDocument(object):
  
                  if node:
                      copy = newelem.copyNodeList()
@@ -59,7 +67,15 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
  
              else:
                  # In practice, this happens with tags such as "<para>    </para>" (only whitespace in between)
-@@ -470,7 +471,7 @@ class XMLDocument(object):
+@@ -463,14 +465,14 @@ class XMLDocument(object):
+             norm_outtxt = self.normalizeString(outtxt, self.app.isSpacePreserveNode(node))
+             translation = self.app.getTranslation(norm_outtxt)
+         else:
+-            translation = outtxt.decode('utf-8')
++            translation = outtxt
+ 
+         starttag = self.startTagForNode(node)
+         endtag = self.endTagForNode(node)
  
          worth = self.worthOutputting(node)
          if not translation:
@@ -68,7 +84,16 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
              if worth and self.app.options.get('mark_untranslated'):
                  node.setLang('C')
  
-@@ -577,8 +578,8 @@ class Main(object):
+@@ -555,7 +557,7 @@ class Main(object):
+         elif output == '-':
+             self.out = sys.stdout
+         else:
+-            self.out = file(output, 'w')
++            self.out = open(output, 'w')
+ 
+     def load_mode(self, modename):
+         try:
+@@ -577,8 +579,8 @@ class Main(object):
                  raise IOError("Unable to read file '%s'" % xmlfile)
              try:
                  doc = XMLDocument(xmlfile, self)
@@ -79,7 +104,7 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
                  sys.exit(1)
              self.current_mode.preProcessXml(doc.doc, self.msg)
              doc.generate_messages()
-@@ -590,14 +591,14 @@ class Main(object):
+@@ -590,14 +592,14 @@ class Main(object):
              raise IOError("Unable to read file '%s'" % xmlfile)
          try:
              doc = XMLDocument(xmlfile, self)
@@ -97,7 +122,7 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
          self.gt = gettext.GNUTranslations(mfile)
          self.gt.add_fallback(NoneTranslations())
          # Has preProcessXml use cases for merge?
-@@ -619,16 +620,16 @@ class Main(object):
+@@ -619,16 +621,16 @@ class Main(object):
              raise IOError("Unable to read file '%s'" % xmlfile)
          try:
              doc = XMLDocument(xmlfile, self)
@@ -118,7 +143,7 @@ Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
              sys.exit(1)
          doc.generate_messages()
          self.output_po()
-@@ -663,7 +664,7 @@ class Main(object):
+@@ -663,7 +665,7 @@ class Main(object):
          if not text or text.strip() == '':
              return text
          if self.gt:

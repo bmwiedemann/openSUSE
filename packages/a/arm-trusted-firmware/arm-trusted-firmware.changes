@@ -1,0 +1,359 @@
+-------------------------------------------------------------------
+Sat Oct 17 01:03:28 UTC 2020 - Andreas Färber <afaerber@suse.de>
+
+- Fix BUILD_MESSAGE_TIMESTAMP (don't try parsing deleted .changes)
+- Clean up rpi4 build
+- Drop comments to avoid RPM errors about %else and %endif end of line
+- Update mv-ddr-marvell from mv_ddr-atf-mainline branch to mv-ddr-devel 14.0.0
+* Add mv-ddr.diff (from d:A:F:Contrib:MacchiatoBin) to fix a warning treated as error
+* Add a _service to clarify its origin and facilitate future updates
+- Update A3700-utils-marvell from armada-18.12 to armada-18.12-fixed branch
+* Drop A3700_utils-TBB-Split-INCDIR-from-LIBDIR.patch (merged)
+* Drop A3700_utils-TBB-Fix-building-for-Crypto-6.0-and-later.patch (merged)
+* Actually apply A3700_utils-drop-git.patch (output cleanup)
+- Build and package A3700 utils as part of -tools (non-noarch, ensure PIE)
+- Build the tools for all architectures again
+- Add binaries-marvell from binaries-marvell-armada-SDK10.0.1.0 branch
+- Add a80x0_mcbin and extend a3700 to build and package all needed files
+* Suppress OP-TEE for now, as it fails to initialize
+
+-------------------------------------------------------------------
+Fri Oct 16 23:35:20 UTC 2020 - Andreas Färber <afaerber@suse.de>
+
+- Build fixes for a3700 and a80x0_mcbin
+
+-------------------------------------------------------------------
+Thu Jul  2 17:18:45 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4 
+
+-------------------------------------------------------------------
+Thu Apr 23 12:25:49 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable debug on imx8mq to fix build
+
+-------------------------------------------------------------------
+Thu Apr 23 09:59:49 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.3:
+  * Add support for Armv8.4-SecEL2 extension through the SPCI defined SPMD/SPMC components.
+  * Build option to support EL2 context save and restore in the secure world (CTX_INCLUDE_EL2_REGS).
+  * Add support for SMCCC v1.2 (introducing the new SMCCC_ARCH_SOC_ID SMC). 
+    Note that the support is compliant, but the SVE registers save/restore will be done as part of future S-EL2/SPM development.
+  * Enhanced BL2 bootloader flow to load secure partitions based on firmware configuration data (fconf).
+  * Changes necessary to support SEPARATE_NOBITS_REGION feature
+  * TSP and BL2_AT_EL3: Add Position Independent Execution PIE support
+  * Enable MTE support
+  * Enable Link Time Optimization in GCC
+  * Add CPU support:
+    - cortex-a57: Enable higher performance non-cacheable load forwarding
+    - Hercules: Workaround for Errata 1688305
+    - Klein: Support added for Klein CPU
+    - Matterhorn: Support added for Matterhorn CPU
+  * Full changelog:  https://trustedfirmware-a.readthedocs.io/en/latest/change-log.html#version-2-3
+
+-------------------------------------------------------------------
+Sat Feb  1 21:01:01 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Initial implementation for Marvel A3700 platform
+
+-------------------------------------------------------------------
+Thu Oct 24 10:53:55 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch to _multibuild system
+- Update to 2.2:
+* Enable Pointer Authentication (PAuth) support for Secure World
+    - Adds support for ARMv8.3-PAuth in BL1 SMC calls and BL2U 
+      image for firmware updates.
+  * Enable Memory Tagging Extension (MTE) support in both secure 
+    and non-secure worlds
+    - Adds support for the new Memory Tagging Extension arriving
+      in ARMv8.5. MTE support is now enabled by default on 
+      systems that support it at EL0.
+    - To enable it at ELx for both the non-secure and the secure
+      world, the compiler flag CTX_INCLUDE_MTE_REGS includes 
+      register saving and restoring when necessary in order to 
+      prevent information leakage between the worlds.
+  * Add support for Branch Target Identification (BTI)
+  * Full changelog: https://trustedfirmware-a.readthedocs.io/en/latest/change-log.html#version-2-2
+- Drop upstreamed patches:
+  * arm-trusted-firmware_hikey960_race.patch
+  * arm-trusted-firmware_poplar_mmc_dma.patch
+  * arm-trusted-firmware_zynqmp_ipi.patch
+
+-------------------------------------------------------------------
+Wed Sep  4 22:19:57 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Add zynqmp
+* arm-trusted-firmware_zynqmp_ipi.patch
+
+-------------------------------------------------------------------
+Thu Aug  1 07:02:12 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add initial bits for a80x0_mcbin support for MacchiatoBin
+
+-------------------------------------------------------------------
+Sun Jun 16 16:00:26 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- rpi3: By now building okay with OP-TEE
+- rpi3: Replace dependency on deprecated bootstrap code with U-Boot
+- rpi3: Change installation location (adopted from u-boot-rpi3)
+- poplar: Fix eMMC DMA FIFO breaking U-Boot eMMC access
+  (https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/1230)
+  arm-trusted-firmware_poplar_mmc_dma.patch
+- poplar: Build for both 2 GiB and 1 GiB boards (b96o#834)
+
+-------------------------------------------------------------------
+Sat Jun  8 18:19:24 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Add imxmq and imxmm
+
+-------------------------------------------------------------------
+Sat Jun  8 15:47:29 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Fix build date by escaping %S (which expanded to %SOURCE).
+- hikey960: Avoid a race condition (boo#1134788)
+  arm-trusted-firmware_hikey960_race.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 13:51:40 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2.1:
+  * Add ARMv8.3 pointer authentication in the normal and secure worlds
+  * Cortex-Axx workarounds for erratums
+  * New platforms
+  * Full changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/about/docs/change-log.rst#version-2-1
+- Remove outdated patch:
+  * hikey960.diff
+
+-------------------------------------------------------------------
+Thu Mar 28 23:06:55 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- rpi3: Package armstub8.bin, fip.bin, bl1.bin, bl2.bin
+
+-------------------------------------------------------------------
+Sun Nov 11 16:56:46 UTC 2018 - afaerber@suse.de
+
+- pre_checkin.sh: Fix package names for sun50i_{a64,h6}
+
+-------------------------------------------------------------------
+Sun Nov  4 15:16:20 UTC 2018 - afaerber@suse.de
+
+- Add imx8qm, imx8qx, sun50i_a64, sun50i_h6
+
+-------------------------------------------------------------------
+Sun Nov  4 14:29:26 UTC 2018 - afaerber@suse.de
+
+- Update to v2.0
+* Drop upstream patches
+  arm-trusted-firmware_cve-2018-3639_smccc_rename.patch
+  arm-trusted-firmware_cve-2018-3639_smccc_return.patch
+  arm-trusted-firmware_cve-2018-3639_rename.patch
+  arm-trusted-firmware_cve-2018-3639_static.patch
+  arm-trusted-firmware_cve-2018-3639_static_aarch32.patch
+  arm-trusted-firmware_cve-2018-3639_dynamic.patch
+* fip_create wrapper is no longer built (use fiptool instead)
+* Set BL33 for qemu
+
+-------------------------------------------------------------------
+Sun Jun  3 18:48:01 UTC 2018 - afaerber@suse.de
+
+- Conditionally enable OP-TEE as BL32
+
+-------------------------------------------------------------------
+Sun Jun  3 17:39:05 UTC 2018 - afaerber@suse.de
+
+- Add rpi3
+
+-------------------------------------------------------------------
+Sun Jun  3 05:53:57 UTC 2018 - afaerber@suse.de
+
+- Set BUILD_MESSAGE_TIMESTAMP for reproducible builds
+- Simplify tegra packaging, reusing %target_soc
+
+-------------------------------------------------------------------
+Fri Jun  1 09:09:14 UTC 2018 - afaerber@suse.de
+
+- Address CVE-2018-3639 (bsc#1085308)
+  arm-trusted-firmware_cve-2018-3639_smccc_rename.patch
+  arm-trusted-firmware_cve-2018-3639_smccc_return.patch
+  arm-trusted-firmware_cve-2018-3639_rename.patch
+  arm-trusted-firmware_cve-2018-3639_static.patch
+  arm-trusted-firmware_cve-2018-3639_static_aarch32.patch
+  arm-trusted-firmware_cve-2018-3639_dynamic.patch
+
+-------------------------------------------------------------------
+Thu May 31 23:32:12 UTC 2018 - afaerber@suse.de
+
+- hikey960.diff: Fix assertion on HiKey 960 (b9o#739)
+
+-------------------------------------------------------------------
+Thu May 31 19:21:09 UTC 2018 - afaerber@suse.de
+
+- Package bl2 for hikey and hikey960
+
+-------------------------------------------------------------------
+Mon May 21 01:13:15 UTC 2018 - afaerber@suse.de
+
+- Add tegra186
+
+-------------------------------------------------------------------
+Mon May 21 00:25:58 UTC 2018 - afaerber@suse.de
+
+- Package poplar_layout.h header for l-loader in devel package
+
+-------------------------------------------------------------------
+Sun May 20 20:15:00 UTC 2018 - afaerber@suse.de
+
+- Build recovery version of poplar, too
+
+-------------------------------------------------------------------
+Sun May 20 18:44:14 UTC 2018 - afaerber@suse.de
+
+- Adopt %license
+- Add poplar
+- Prepare tegra186
+
+-------------------------------------------------------------------
+Sun May 20 17:13:47 UTC 2018 - afaerber@suse.de
+
+- Update to v1.5
+* Dropped upstream patches:
+  arm-trusted-firmware_pie_1.patch
+  arm-trusted-firmware_pie_2.patch
+  arm-trusted-firmware_fiptool_pad.patch
+  arm-trusted-firmware_fiptool_pad_useafterfree.patch
+  arm-trusted-firmware_fiptool_pad_hikey.patch
+  arm-trusted-firmware_fiptool_pad_hikey960.patch
+  arm-trusted-firmware_cve-2017-5715_a57_a72.patch
+  arm-trusted-firmware_cve-2017-5715_a73_a75.patch
+  arm-trusted-firmware_cve-2017-5715_pfr0.patch
+  arm-trusted-firmware_cve-2017-5715_errata_format.patch
+  arm-trusted-firmware_cve-2017-5715_errata_output.patch
+  arm-trusted-firmware_cve-2017-5715_platforms.patch
+  arm-trusted-firmware_cve-2017-5715_bpiall.patch
+  arm-trusted-firmware_cve-2017-5715_smccc.patch
+  arm-trusted-firmware_cve-2017-5715_psci.patch
+  arm-trusted-firmware_cve-2017-5715_runtime_exceptions.patch
+  arm-trusted-firmware_cve-2017-5715_smccc_v1.1.patch
+
+-------------------------------------------------------------------
+Sat Feb 10 16:46:15 UTC 2018 - afaerber@suse.de
+
+- Apply fiptool patches to tools package, too (b9o#633)
+- Prepare for detecting PIE support (gh#ARM-software/tf-issues#519)
+  arm-trusted-firmware_pie_1.patch
+  arm-trusted-firmware_pie_2.patch
+
+-------------------------------------------------------------------
+Sat Feb 10 11:05:00 UTC 2018 - afaerber@suse.de
+
+- Implement SMCCC v1.1 (bsc#1074741)
+  arm-trusted-firmware_cve-2017-5715_platforms.patch
+  arm-trusted-firmware_cve-2017-5715_bpiall.patch
+  arm-trusted-firmware_cve-2017-5715_smccc.patch
+  arm-trusted-firmware_cve-2017-5715_psci.patch
+  arm-trusted-firmware_cve-2017-5715_runtime_exceptions.patch
+  arm-trusted-firmware_cve-2017-5715_smccc_v1.1.patch
+
+-------------------------------------------------------------------
+Sat Jan 27 13:10:47 UTC 2018 - afaerber@suse.de
+
+- Pad HiKey FIP to avoid hanging fastboot transfer (b9o#633)
+  arm-trusted-firmware_fiptool_pad.patch
+  arm-trusted-firmware_fiptool_pad_useafterfree.patch
+  arm-trusted-firmware_fiptool_pad_hikey.patch
+  arm-trusted-firmware_fiptool_pad_hikey960.patch
+
+-------------------------------------------------------------------
+Sat Jan 27 05:41:01 UTC 2018 - afaerber@suse.de
+
+- Add CVE-2017-5715 output (bsc#1074741)
+  arm-trusted-firmware_cve-2017-5715_errata_format.patch
+  arm-trusted-firmware_cve-2017-5715_errata_output.patch
+
+-------------------------------------------------------------------
+Mon Jan 22 02:03:03 UTC 2018 - afaerber@suse.de
+
+- Use debug builds
+
+-------------------------------------------------------------------
+Fri Jan 12 00:47:57 UTC 2018 - afaerber@suse.de
+
+- rk3399: Don't require cross binutils (let cross gcc choose which)
+
+-------------------------------------------------------------------
+Fri Jan 12 00:07:40 UTC 2018 - afaerber@suse.de
+
+- hikey960: Build fip and require EDK2 for SCP_BL2 and BL33
+- Refresh CVE-2017-5715 patches (bsc#1074741)
+  Drop arm-trusted-firmware_cve-2017-5715_ic_iallu.patch
+  Add arm-trusted-firmware_cve-2017-5715_pfr0.patch
+- Suppress debuginfo for firmware
+
+-------------------------------------------------------------------
+Sun Jan  7 18:07:45 UTC 2018 - afaerber@suse.de
+
+- Make noarch so that it can be exported
+
+-------------------------------------------------------------------
+Sun Jan  7 16:26:58 UTC 2018 - afaerber@suse.de
+
+- hikey: Build fip and require EDK2 for SCP_BL2
+- Add tegra210
+
+-------------------------------------------------------------------
+Sun Jan  7 14:13:53 UTC 2018 - afaerber@suse.de
+
+- Add hikey960
+
+-------------------------------------------------------------------
+Sun Jan  7 14:04:14 UTC 2018 - afaerber@suse.de
+
+- Add hikey
+- Clean up pre_checkin.sh
+- Don't package bl31.bin for Rockchip, we need bl31.elf only
+
+-------------------------------------------------------------------
+Fri Jan  5 06:05:48 UTC 2018 - afaerber@suse.de
+
+- Require arm-none gcc for RK3399
+
+-------------------------------------------------------------------
+Fri Jan  5 01:42:30 UTC 2018 - afaerber@suse.de
+
+- Address CVE-2017-5715 (bsc#1074741)
+  arm-trusted-firmware_cve-2017-5715_a57_a72.patch
+  arm-trusted-firmware_cve-2017-5715_a73_a75.patch
+  arm-trusted-firmware_cve-2017-5715_ic_iallu.patch
+
+-------------------------------------------------------------------
+Wed Jan  3 16:06:42 UTC 2018 - matwey.kornilov@gmail.com
+
+- Return lost doc files
+
+-------------------------------------------------------------------
+Tue Jan  2 18:42:17 UTC 2018 - matwey.kornilov@gmail.com
+
+- Package bl31.elf
+
+-------------------------------------------------------------------
+Tue Jan  2 18:25:45 UTC 2018 - matwey.kornilov@gmail.com
+
+- acknowledgements.md renamed to acknowledgements.rst
+
+-------------------------------------------------------------------
+Thu Dec 28 17:06:51 UTC 2017 - matwey.kornilov@gmail.com
+
+- Version 1.4
+
+-------------------------------------------------------------------
+Mon Dec 26 06:57:57 UTC 2016 - afaerber@suse.de
+
+- Update to v1.3 final
+
+-------------------------------------------------------------------
+Sat Oct  8 15:28:50 UTC 2016 - afaerber@suse.de
+
+- Initial
+

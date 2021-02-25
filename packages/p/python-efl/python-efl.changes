@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 24 23:02:40 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Fix conflicts and provides for docs packages
+
+-------------------------------------------------------------------
+Wed Feb 10 04:15:45 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Only create docs and examples packages once
+
+-------------------------------------------------------------------
+Sun Nov  8 23:12:46 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Update to 1.25.0
+  * Sync with the latest efl release 
+
+-------------------------------------------------------------------
 Thu Jun 25 09:25:48 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix _constraints

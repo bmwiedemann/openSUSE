@@ -250,4 +250,12 @@
 - Run spec-cleaner (forwarded request 823631 from elimat)</comment>
     <requestid>823667</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>80448fa5a6834de3574f1f7533c4039a</srcmd5>
+    <version>0.17.3</version>
+    <time>1614274136</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update default config file to match v0.17 (forwarded request 874872 from polslinux)</comment>
+    <requestid>874874</requestid>
+  </revision>
 </revisionlist>

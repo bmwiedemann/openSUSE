@@ -7,4 +7,15 @@
     <comment>MPI plugin for pytest</comment>
     <requestid>854640</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1a7e710e29a089feef232fb010fcaec</srcmd5>
+    <version>0.4</version>
+    <time>1614274048</time>
+    <user>RBrownSUSE</user>
+    <comment>- Disable most of the test suite. The offending code not working
+  with pytest 6.2 is in the test suite, not the plugin code itself
+  gh#aragilar/pytest-mpi#17
+</comment>
+    <requestid>874732</requestid>
+  </revision>
 </revisionlist>

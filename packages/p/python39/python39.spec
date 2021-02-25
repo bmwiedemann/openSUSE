@@ -1,5 +1,5 @@
 #
-# spec file for package python39
+# spec file for package python39-core
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.9.1
+%define         folderversion 3.9.2
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -88,7 +88,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -127,27 +127,15 @@ Patch08:        python-3.3.0b1-fix_date_time_compiler.patch
 Patch09:        python-3.3.0b1-test-posix_fadvise.patch
 # Raise timeout value for test_subprocess
 Patch15:        subprocess-raise-timeout.patch
-# skip some tests only for PowerPC
-Patch23:        skip_random_failing_tests.patch
 Patch25:        python3-imp-returntype.patch
-# PATCH-FIX-UPSTREAM CVE-2019-5010-null-defer-x509-cert-DOS.patch bnc#1122191 mcepl@suse.com
-# https://github.com/python/cpython/pull/11569
-# Fix segfault in ssl's cert parser
-Patch27:        CVE-2019-5010-null-defer-x509-cert-DOS.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
 Patch29:        bpo-31046_ensurepip_honours_prefix.patch
-# PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
-# Fix wrong misalignment of pointer to vectorcallfunc
-Patch31:        bsc1167501-invalid-alignment.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch32:        sphinx-update-removed-function.patch
 # PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
 # SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
 Patch33:        no-skipif-doctests.patch
-# PATCH-FIX-UPSTREAM CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch bsc#1181126 mcepl@suse.com
-# buffer overflow in PyCArg_repr in _ctypes/callproc.c, which may lead to remote code execution
-Patch34:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -387,18 +375,12 @@ other applications.
 %patch08 -p1
 %patch09 -p1
 %patch15 -p1
-%ifarch ppc ppc64 ppc64le
-%patch23 -p1
-%endif
 %patch25 -p1
-%patch27 -p1
 %patch29 -p1
-%patch31 -p1
 %patch32 -p1
-%if 0%{?suse_version} <= 1500
+# %%if 0%%{?suse_version} <= 1500
 %patch33 -p1
-%endif
-%patch34 -p1
+# %%endif
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mpi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,8 +57,9 @@ mpi plugin for pytest to collect information from openmpi-based tests.
 export PATH=${PATH}:%{_libdir}/mpi/gcc/openmpi2/bin
 source %{_libdir}/mpi/gcc/openmpi2/bin/mpivars.sh
 # include `-p pytester` as pytester needs to be manually activated (see https://pytest-mpi.readthedocs.io/en/latest/contributing.html)
-# Also see gh#aragilar/pytest-mpi#14 for two failing tests disabled here
-%pytest -v -p pytester -k 'not test_mpi_with_mpi and not test_mpi_only_mpi'
+# our pytest version does not like the subclassing of _pytest.Testdir. This disables almost the entire test suite
+# gh#aragilar/pytest-mpi#17
+%pytest -v -p pytester -k "not (test_fixtures or (test_markers and (with_mpi or only_mpi or under_mpi)))"
 
 %files %{python_files}
 %doc README.md

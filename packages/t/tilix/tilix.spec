@@ -27,6 +27,8 @@ URL:            https://github.com/gnunn1/tilix
 Source0:        https://github.com/gnunn1/tilix/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gnome-ssh-agent.patch gh#gnunn1/tilix#870
 Patch0:         gnome-ssh-agent.patch
+# PATCH-FIX-UPSTREAM tilix-1.9.4-localized-man.patch -- https://github.com/gnunn1/tilix/pull/2006
+Patch1:         tilix-1.9.4-localized-man.patch
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -34,6 +36,7 @@ BuildRequires:  ldc
 BuildRequires:  ldc-phobos-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  po4a
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dconf)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -84,7 +87,16 @@ cp -a source/x11/LICENSE LICENSE-source-x11
 %install
 %meson_install
 
-%find_lang %{name} %{?no_lang_C}
+%find_lang %{name} %{?no_lang_C} --with-man
+
+# Some localized man directories are not provided by filesystem package yet
+for locale in en_GB hr nb_NO oc pt_PT ro sr tr zh_Hant; do
+  echo "%%dir %{_mandir}/${locale}" >> %{name}.lang
+  echo "%%dir %{_mandir}/${locale}/man1" >> %{name}.lang
+done
+
+%check
+%meson_test
 
 %files
 %license LICENSE*

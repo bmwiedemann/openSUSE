@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 23 22:07:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable most of the test suite. The offending code not working
+  with pytest 6.2 is in the test suite, not the plugin code itself
+  gh#aragilar/pytest-mpi#17
+
+-------------------------------------------------------------------
 Fri Dec  4 13:23:28 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

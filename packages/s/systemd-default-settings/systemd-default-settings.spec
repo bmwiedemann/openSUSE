@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-default-settings
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           systemd-default-settings
 URL:            https://github.com/openSUSE/systemd-default-settings
-Version:        0.5
+Version:        0.7
 Release:        0
 Summary:        Customization of systemd default settings for SUSE distributions
 License:        GPL-2.0-or-later
@@ -71,6 +71,18 @@ Installing this package restores some of the upstream default settings
 by uninstalling all drop-ins shipped by %{name} and its branding sub
 package.
 
+%package branding-SLE-Micro
+Summary:        Specific customization of systemd defaults settings for SLE-Micro
+Group:          System/Base
+Requires:       %{name} = %{version}-%{release}
+Supplements:    packageand(%{name}:branding-SLE-Micro)
+Provides:       %{name}-branding = %{version}-%{release}
+Conflicts:      otherproviders(%{name}-branding)
+
+%description branding-SLE-Micro
+This package overrides some of the upstream default settings to make
+them better suited for SLE-Micro distributions.
+
 %prep
 %setup -q
 
@@ -80,9 +92,10 @@ package.
 %make_install
 
 find %{buildroot} -name \*.d -type d -printf "%%%%dir /%%P\n" >SUSE.list
-find %{buildroot} -name 20-defaults-SUSE.conf -printf "/%%P\n" >>SUSE.list
-find %{buildroot} -name 25-defaults-SLE.conf -printf "/%%P\n" >SLE.list
-find %{buildroot} -name 25-defaults-openSUSE.conf -printf "/%%P\n" >openSUSE.list
+find %{buildroot} -name \*-defaults-SUSE.conf -printf "/%%P\n" >>SUSE.list
+find %{buildroot} -name \*-defaults-SLE.conf -printf "/%%P\n" >SLE.list
+find %{buildroot} -name \*-defaults-openSUSE.conf -printf "/%%P\n" >openSUSE.list
+find %{buildroot} -name \*-defaults-SLE-Micro.conf -printf "/%%P\n" >SLE-Micro.list
 
 %post
 # Reloading PID1 is probably not enough as some changes will require
@@ -101,6 +114,9 @@ find %{buildroot} -name 25-defaults-openSUSE.conf -printf "/%%P\n" >openSUSE.lis
 %defattr(-,root,root)
 
 %files branding-upstream
+%defattr(-,root,root)
+
+%files branding-SLE-Micro -f SLE.list -f SLE-Micro.list
 %defattr(-,root,root)
 
 %changelog

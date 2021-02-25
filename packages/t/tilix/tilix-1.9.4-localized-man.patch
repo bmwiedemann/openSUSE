@@ -1,0 +1,69 @@
+From eac94ef9b00ab09db6c31ad112ecff07d8fa3ee1 Mon Sep 17 00:00:00 2001
+From: Antoine Belvire <antoine.belvire@opensuse.org>
+Date: Wed, 24 Feb 2021 18:32:23 +0100
+Subject: [PATCH] Add meson target for man page translations
+
+Add a new meson custom which allows to generate and install man page
+translations using `meson build` and `meson install` when po4a is
+available.
+
+This is a naive conversion of install-man-pages.sh.
+---
+ data/man/meson.build | 26 +++++++++++++++++++++++++-
+ data/meson.build     |  4 +---
+ 2 files changed, 26 insertions(+), 4 deletions(-)
+
+diff --git a/data/man/meson.build b/data/man/meson.build
+index 1681e5cb..e4462128 100644
+--- a/data/man/meson.build
++++ b/data/man/meson.build
+@@ -1 +1,25 @@
+-install_man('tilix')
+\ No newline at end of file
++install_man('tilix.1')
++
++po4a = find_program('po4a-translate', required: false)
++
++if po4a.found()
++
++    locales = [ 'ca', 'cs', 'de', 'en_GB', 'es', 'fr', 'hr',
++                'it', 'nb_NO', 'nl', 'oc', 'pl', 'pt_BR', 'pt',
++                'pt_PT', 'ro', 'ru', 'sr', 'tr', 'uk', 'zh_Hant' ]
++
++    foreach locale : locales
++        custom_target('man_' + locale,
++            output: locale,
++            input: [ 'tilix.1', 'po/' + locale + '.man.po' ],
++            command: [ po4a, '--keep', '0',
++                             '--format', 'man',
++                             '--master', '@INPUT0@',
++                             '--po', '@INPUT1@',
++                             '--localized', '@OUTPUT@/man1/tilix.1'],
++            install: true,
++            install_dir: get_option('mandir')
++        )
++    endforeach
++
++endif
+diff --git a/data/meson.build b/data/meson.build
+index 81e9b410..4a8d1710 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -1,3 +1,4 @@
++subdir('man')
+ 
+ # install the icons
+ install_data(
+@@ -20,9 +21,6 @@ desktop_file = i18n.merge_file(
+     install_dir: appdir
+ )
+ 
+-# Install manual page
+-install_man(['man/tilix.1'])
+-
+ # Validate desktop file
+ desktop_file_validate = find_program('desktop-file-validate', required: false)
+ if desktop_file_validate.found()
+-- 
+2.30.1
+

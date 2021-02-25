@@ -279,4 +279,12 @@
    in authorized keys and config files. When this option is disabled (the default),</comment>
     <requestid>823202</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a5f7b8398facc5f2949e4ee61e225e8b</srcmd5>
+    <version>2.5.0</version>
+    <time>1614274023</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874533</requestid>
+  </revision>
 </revisionlist>

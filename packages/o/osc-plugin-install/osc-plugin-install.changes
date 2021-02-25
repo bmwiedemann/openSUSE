@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb 22 15:24:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't do singlespec.
+  * Depend on python3-certifi directly
+  * Just in case: also provide python3-osc-plugin-install
+  * Keep the original package name
+
+-------------------------------------------------------------------
+Mon Feb 15 14:16:28 UTC 2021 - Oliver Kurz <okurz@suse.com>
+
+- Fix build for multiple python3 variants
+
+-------------------------------------------------------------------
+Thu Oct 22 08:49:38 UTC 2020 - Oliver Kurz <okurz@suse.com>
+
+- Change package to single-spec to fix missing dependencies on python3 variants on openSUSE Tumbleweed
+
+-------------------------------------------------------------------
+Tue Oct 13 19:55:09 UTC 2020 - okurz@suse.com
+
+- Update to version 0.27:
+  * turn seen.keys() dictionary to a list
+  * fix some python3 incompatibility
+  * decode IO reads as they are byteslike objects now.
+
+-------------------------------------------------------------------
 Tue Jul 16 07:03:02 UTC 2019 - okurz@suse.com
 
 - Update to version 0.26:

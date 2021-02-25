@@ -1,7 +1,7 @@
 #
-# spec file for package osc-plugin
+# spec file for package osc-plugin-install
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (C) 2012,2013, jw@suse.de, Novell Inc., openSUSE.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,39 +27,41 @@
 %define name_ext -test
 %endif
 
-%define         orig_name osc-plugin-install
+%define oscplugindir %{_prefix}/lib/osc-plugins
+%define orig_name osc-plugin-install
 Name:           %{orig_name}%{?name_ext}
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        Plugin to make package installation easier
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Other
-Url:            https://github.com/openSUSE/%{name}
+URL:            https://github.com/openSUSE/%{name}
 Source:         https://raw.githubusercontent.com/openSUSE/%{name}/master/osc-install.py
 %if 0%{?_test}
-BuildRequires:  %{orig_name}
+BuildRequires:  %{orig_name} == %{version}
 BuildRequires:  expect
 %if 0%{?suse_version} >= 1330
-BuildRequires:  python-certifi
+BuildRequires:  python3-certifi
 %endif
 %else
 # Needed for directory ownership
 BuildRequires:  osc
 Requires:       osc
 %if 0%{?!fedora_version:1} && 0%{?!centos_version:1} && 0%{?!scientificlinux_version:1} && 0%{?!rhel_version:1}
-Recommends:     rpm-python rpmdevtools
+Recommends:     rpm-python
+Recommends:     rpmdevtools
 %endif
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%define oscplugindir %{_prefix}/lib/osc-plugins
+Provides:       python3-%{orig_name} = %{version}-%{release}
 
 %description
 This osc plugin extends osc with the subcommand 'osc install'.
 The main effort of this plugin is to free the end-user of the sometimes tedious
 task to look up the correct repository URL to be used with zypper.
-Dependencies are resolved across projects, just as the online one-click mechanism 
-would do. 
+Dependencies are resolved across projects, just as the online one-click mechanism
+would do.
 The plugin can also guess the best matching platform for your system.
 
 Example usage:
@@ -87,6 +89,7 @@ expect -f test_osc_in
 # disable debug packages in package test to prevent error about missing files
 %define debug_package %{nil}
 %else
+
 %install
 install -D -m0644 %{S:0} %{buildroot}%{oscplugindir}/osc-install.py
 

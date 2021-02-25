@@ -78,7 +78,8 @@ BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(speexdsp)
-%if 0%{?is_opensuse}
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
+# enable ITU G.729 Annex A/B speech codec only in Tumbleweed
 BuildRequires:  pkgconfig(libbcg729)
 %endif
 # keep until libbrotli-devel bug is fixed

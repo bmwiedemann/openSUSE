@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        20.0.7
+Version:        21.0.0
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -85,8 +85,8 @@ Requires:       php-posix
 Requires:       php-zip
 #
 %if 0%{?fedora_version} || 0%{?rhel} || 0%{?rhel_version} || 0%{?centos_version}
-Requires:       php < 7.5.0
-Requires:       php >= 7.2.0
+Requires:       php < 8.1.0
+Requires:       php >= 7.3.0
 Requires:       php-process
 Requires:       php-xml
 Recommends:     sqlite
@@ -280,6 +280,11 @@ fi
 if [ -s %{statedir}/occ_maintenance_mode_during_nextcloud_install ]; then
 echo "%{name}: occ maintenance:repair (fix possible errors)"
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
+echo "%{name}: occ db:add-missing-* (add missing db things)"
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mimetype:update-db" || true
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-columns" || true
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-indices" || true
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-primary-keys" || true
 echo "%{name}: occ update apps"
 su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
 echo "%{name}: occ upgrade"

@@ -85,4 +85,12 @@
     <comment>- updated to v0.0.6 which support lua54 and Leap/SLE15.3</comment>
     <requestid>872869</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f503ee6def8f4dbc7ca714743334bbd3</srcmd5>
+    <version>0.0.6</version>
+    <time>1614274041</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>874691</requestid>
+  </revision>
 </revisionlist>

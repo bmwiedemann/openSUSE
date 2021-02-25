@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 12 20:13:47 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Recurse directories when looking for python plugins
+  (boo#1180362).
+
+-------------------------------------------------------------------
 Mon Jan 25 08:33:24 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Make graphviz/dot only required for runtime debugging an

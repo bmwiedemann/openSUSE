@@ -228,4 +228,13 @@
     <comment></comment>
     <requestid>873197</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>7108e1d3a1b9e6b2e5d9e6ac10ede820</srcmd5>
+    <version>10.5.2+481e9bd2</version>
+    <time>1614274035</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update GNOME-40.patch: Fix vapigen warnings for 6,7 &amp; 8 alpha
+</comment>
+    <requestid>874727</requestid>
+  </revision>
 </revisionlist>

@@ -16,8 +16,6 @@
 #
 
 
-%define build_tar_ball 1
-
 %define x_prefix %{_libdir}/%{name}
 
 %if 0%{?suse_version} > 1500
@@ -56,6 +54,14 @@ Patch9:         fix-smesh-vtk9.patch
 Patch10:        0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/6bd39e8a90e65d81
 Patch11:        0001-Gui-skip-ci-fix-Wodr.patch
+# PATCH-FIX-UPSTREAM -- Rebased https://github.com/FreeCAD/FreeCAD/commit/fd9cdb9de9d06ebd
+Patch12:        0001-Part-Import-skip-ci-disable-use-of-Message_ProgressI.patch
+# PATCH-FIX-UPSTREAM -- Rebased https://github.com/FreeCAD/FreeCAD/commit/063515f65007c116
+Patch13:        0001-import-Hotfix-for-build-failure-from-bad-debug-code.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/50957037764de76b
+Patch14:        0001-add-missing-std-namespace-to-build-on-Debian-10.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/8be2c08141f0275e
+Patch15:        0001-partdesign-fix-failing-tapered-hole-test.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -64,7 +70,6 @@ BuildRequires:  Coin-devel
 BuildRequires:  libboost_filesystem-devel >= 1.55
 BuildRequires:  libboost_graph-devel >= 1.55
 BuildRequires:  libboost_program_options-devel >= 1.55
-BuildRequires:  libboost_python3-devel >= 1.55
 BuildRequires:  libboost_regex-devel >= 1.55
 %if %{without boost_signals2}
 BuildRequires:  libboost_signals-devel >= 1.55
@@ -73,16 +78,10 @@ BuildRequires:  libboost_system-devel >= 1.55
 BuildRequires:  libboost_thread-devel >= 1.55
 
 BuildRequires:  cmake
-BuildRequires:  dos2unix
 BuildRequires:  double-conversion-devel
-BuildRequires:  doxygen
 BuildRequires:  eigen3-devel
-BuildRequires:  f2c
 BuildRequires:  fdupes
-BuildRequires:  freeglut-devel
-BuildRequires:  gcc-fortran
 BuildRequires:  glew-devel
-BuildRequires:  graphviz
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
 # We use the internal smesh version with fixes atm
@@ -104,6 +103,8 @@ BuildRequires:  sqlite3-devel
 # Qt5 & python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-matplotlib
+BuildRequires:  python3-pybind11-devel
+BuildRequires:  python3-pycxx-devel
 BuildRequires:  python3-pyside2-devel
 BuildRequires:  python3-vtk
 BuildRequires:  python3-xml
@@ -144,12 +145,9 @@ BuildRequires:  qt5-qtbase-devel
 %endif
 
 BuildRequires:  swig
-BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  vtk-devel
 BuildRequires:  zlib-devel
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 # we need to ensure to have the minimum version from build env
 Requires:       libopencascade7 >= %(/bin/bash -c 'rpm -q --qf "%%{version}" libopencascade7')
 
@@ -172,25 +170,26 @@ Requires:       %{name} = %{version}
 This package contains the files needed for development with FreeCAD.
 
 %prep
-%if %{build_tar_ball}
 %setup -q
-%else
-mv %_sourcedir/%name-%version %_builddir/%name-%version
-%setup -q -D -T 0
-%endif
 %autopatch -p1
 
 # fix env-script-interpreter
 sed -i '1c#!%{__python3}' \
-        src/Mod/Test/testmakeWireString.py \
-        src/Mod/Robot/MovieTool.py
+        src/Mod/Robot/MovieTool.py \
+        src/Mod/Test/testmakeWireString.py
 
-# Fix "wrong-file-end-of-line-encoding" rpmlint warning
-sed -i 's/\r$//' ChangeLog.txt
+# Fix "non-executable-script" rpmlint warning
+chmod 755 src/Mod/Robot/MovieTool.py \
+          src/Mod/Test/testmakeWireString.py \
+          src/Mod/Test/unittestgui.py
 
 # Fix "wrong-script-end-of-line-encoding" rpmlint warning
+sed -i 's/\r$//' src/Mod/Part/MakeBottle.py
+sed -i 's/\r$//' src/Mod/PartDesign/Scripts/FilletArc.py
+sed -i 's/\r$//' src/Mod/PartDesign/Scripts/Parallelepiped.py
 sed -i 's/\r$//' src/Mod/PartDesign/Scripts/Spring.py
 sed -i 's/\r$//' src/Mod/Robot/MovieTool.py
+sed -i 's/\r$//' src/Mod/Test/unittestgui.py
 
 # Remove 3rd party libs
 rm src/3rdparty/Pivy -fr
@@ -211,15 +210,19 @@ rm src/3rdparty/Pivy-0.5 -fr
   -DPYTHON_EXECUTABLE=/usr/bin/python3 \
   -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2/ \
   -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2/ \
+  -DFREECAD_USE_PYBIND11:BOOL=ON \
   -DBUILD_ENABLE_CXX_STD:STRING="C++17" \
   -DBUILD_QT5=ON \
+  -DFREECAD_USE_QT_DIALOG:BOOL=ON \
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
   -DBUILD_OPENSCAD:BOOL=ON \
-  -DBUILD_FEM_NETGEN:BOOL=OFF \
   -DFREECAD_USE_EXTERNAL_SMESH=OFF \
+  -DBUILD_FLAT_MESH:BOOL=ON \
   -DBUILD_SMESH:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
   -DBUILD_MESH_PART:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
   -DBUILD_FEM:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
+  -DBUILD_FEM_NETGEN:BOOL=OFF \
+  -DBUILD_FEM_VTK:BOOL=ON \
   -Wno-dev \
   ..
 
@@ -227,11 +230,6 @@ rm src/3rdparty/Pivy-0.5 -fr
 
 %install
 %cmake_install
-
-# Fix "non-executable-script" rpmlint warning
-chmod 755 %{buildroot}%{x_prefix}/Mod/Robot/MovieTool.py \
-          %{buildroot}%{x_prefix}/Mod/Test/testmakeWireString.py \
-          %{buildroot}%{x_prefix}/Mod/Test/unittestgui.py
 
 # Move icons, mimeinfo, metainfo to the correct location
 mv %{buildroot}%{x_prefix}/share/* %{buildroot}%{_datadir}/
@@ -258,12 +256,6 @@ rm -f html/installdox
 mkdir -p %{buildroot}%{_docdir}/%{name}-devel
 #cp -a html/ %%{buildroot}%%{_docdir}/%%{name}-devel/
 
-# Correct line endings
-dos2unix %{buildroot}%{x_prefix}/Mod/PartDesign/Scripts/FilletArc.py
-dos2unix %{buildroot}%{x_prefix}/Mod/PartDesign/Scripts/Parallelepiped.py
-dos2unix %{buildroot}%{x_prefix}/Mod/Test/unittestgui.py
-dos2unix %{buildroot}%{x_prefix}/Mod/Part/MakeBottle.py
-
 # Link binaries
 mkdir -p %{buildroot}/usr/bin
 ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCAD
@@ -278,8 +270,8 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 
 %files
 %license LICENSE
-%doc ChangeLog.txt README.md
-%{_bindir}/FreeCAD*
+%doc README.md
+%{_bindir}/FreeCAD{,Cmd}
 %doc %{_docdir}/%{name}/
 %{_libdir}/%{name}
 %{_datadir}/%{name}/

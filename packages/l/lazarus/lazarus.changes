@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 24 11:57:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.12.
+  * For a complete list of changes see:
+    https://wiki.freepascal.org/Lazarus_2.0_fixes_branch#Fixes_for_2.0.12_.28merged.29
+- Refreshed lazarus-Makefile_patch.diff
+
+-------------------------------------------------------------------
 Fri Sep  4 13:20:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Lazarus released a new 2.0.10 tarball (2.0.10-2) which just

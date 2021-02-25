@@ -1,23 +1,19 @@
-Index: NetworkManager-1.27.90/src/dns/nm-dns-manager.c
+Index: NetworkManager-1.29.90/src/core/dns/nm-dns-manager.c
 ===================================================================
---- NetworkManager-1.27.90.orig/src/dns/nm-dns-manager.c
-+++ NetworkManager-1.27.90/src/dns/nm-dns-manager.c
-@@ -559,9 +559,17 @@ dispatch_netconfig(NMDnsManager *     se
+--- NetworkManager-1.29.90.orig/src/core/dns/nm-dns-manager.c
++++ NetworkManager-1.29.90/src/core/dns/nm-dns-manager.c
+@@ -611,6 +611,14 @@ dispatch_netconfig(NMDnsManager *     se
      gssize               l;
      nm_auto_free_gstring GString *str = NULL;
  
 +    if (!g_file_test (NETCONFIG_PATH, G_FILE_TEST_IS_EXECUTABLE)) {
-+    	g_set_error_literal (error,
-+        		     NM_MANAGER_ERROR,
-+                             NM_MANAGER_ERROR_FAILED,
-+                             NETCONFIG_PATH " is not executable");
-+        return SR_NOTFOUND;
++       g_set_error_literal (error,
++                            NM_MANAGER_ERROR,
++                            NM_MANAGER_ERROR_FAILED,
++                            NETCONFIG_PATH " is not executable");
++       return SR_NOTFOUND;
 +    }
 +
      pid = run_netconfig(self, error, &fd);
      if (pid <= 0)
--        return SR_NOTFOUND;
-+        return SR_ERROR;
- 
-     str = g_string_new("");
- 
+         return SR_NOTFOUND;

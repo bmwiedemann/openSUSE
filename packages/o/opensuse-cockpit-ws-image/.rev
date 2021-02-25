@@ -23,4 +23,13 @@
     <comment>- Document that you need to pull first before using RUNLABEL</comment>
     <requestid>842518</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>900574aa4f0479449bf4f8de2e8406dd</srcmd5>
+    <version>1.0.0</version>
+    <time>1614274143</time>
+    <user>RBrownSUSE</user>
+    <comment>- Removed obsoleted dashboard
+</comment>
+    <requestid>874894</requestid>
+  </revision>
 </revisionlist>

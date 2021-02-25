@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 14:51:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Drop broken %ifpython3 macro
+
+-------------------------------------------------------------------
 Wed Jan 20 10:40:18 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add note that this package is not PyPI 'pycxx'

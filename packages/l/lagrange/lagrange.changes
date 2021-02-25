@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 22 19:21:14 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.1.4
+  - Fixed feed entry highlight/read status issue in the sidebar.
+  - Fixed Gopher menu links that contain spaces.
+  - Fixed vertical alignment of short pages: top banner is excluded because it
+    is not part of the content.
+
+
+-------------------------------------------------------------------
 Wed Feb 17 03:10:02 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid compile-time CPU-detection (boo#1100677)

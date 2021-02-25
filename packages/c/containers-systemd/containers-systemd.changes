@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 22 14:39:31 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210222.f3de7fa:
+  * Rewrite based on podman changes
+  * Correct TimeoutStopSec to 70
+  * Replace KillMode=none with TimeoutStopSec
+
+-------------------------------------------------------------------
 Fri Feb 05 10:43:04 UTC 2021 - kukuk@suse.com
 
 - Update to version 0.0+git20210205.a4b07b6:

@@ -25,4 +25,12 @@
     <comment>- skip python 3.6 build (no FontTools as it needs scipy)</comment>
     <requestid>871629</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b61214cce643c075f3596d815abd790</srcmd5>
+    <version>0.11.1</version>
+    <time>1614274021</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874529</requestid>
+  </revision>
 </revisionlist>

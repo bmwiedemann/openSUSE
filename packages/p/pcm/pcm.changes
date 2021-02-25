@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Feb 20 10:49:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202101:
+* Add Comet Lake support
+* Add Tiger Lake support
+* Add support for additional Icelake cpu model
+* Support Linux resctrl driver for RDT Metrics (see ENVVAR_README.md)
+* Improve robustness in handling rare core event overflows
+* A few fixes for c_example
+* Support using Linux perf API for core PMU for systems with offlined cores
+* Add -i parameter to more tools
+* support select metrics in virtual machines with vPMU support (e.g. AWS virtualized instances with arch_perfmon flag). Screenshot of grafana dashboard with PCM data from a c5.9xlarge virtualized AWS instance
+* pcm-iio: fix VT-d events on SKX
+* pcm-memory: make -pmm/-pmem the default option on systems with PMM/PMem support
+* pcm-tsx: update events for ICL and SKL, allow collection of up to 8 events
+* pcm-raw: support fixed PMU counters
+* fix UBOX MSR addresses for Jaketown/Ivytown
+* support Icelake client CPUs
+* new pcm-raw utility: to program arbitrary core and uncore events by specifying raw register event ID encoding
+* pcm-memory: support -all option to show channels event if they do not have any traffic (inactive memory channels)
+* pcm-memory: csv output for Near Memory hit rate (in PMem Memory Mode)
+* pcm-memory: show memory channels with PMM but w/o DRAM DIMMs
+* unfreeze counters using global uncore counter control register during uncore PMU initialization (some other tools freeze using global control before exit)
+
+-------------------------------------------------------------------
 Thu Aug 27 12:12:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 202007:

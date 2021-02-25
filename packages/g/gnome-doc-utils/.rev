@@ -439,4 +439,13 @@
     <comment></comment>
     <requestid>772649</requestid>
   </revision>
+  <revision rev="62" vrev="17">
+    <srcmd5>1d27d561c9f0de00ff5c0f3bf3546b78</srcmd5>
+    <version>0.20.10</version>
+    <time>1614273985</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update gnome-doc-utils-port-python3.patch based on the patch used
+  by Fedora (https://src.fedoraproject.org/rpms/gnome-doc-utils). (forwarded request 873898 from dimstar)</comment>
+    <requestid>874391</requestid>
+  </revision>
 </revisionlist>

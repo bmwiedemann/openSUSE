@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:05:09 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build and tests with OCCT 7.5, add
+  0001-Part-Import-skip-ci-disable-use-of-Message_ProgressI.patch
+  0001-import-Hotfix-for-build-failure-from-bad-debug-code.patch
+  0001-partdesign-fix-failing-tapered-hole-test.patch
+- Add 0001-add-missing-std-namespace-to-build-on-Debian-10.patch
+- Cleanup specfile:
+  * Use system PyCXX, drop unused libboost_python3
+  * Drop some unused dependencies
+  * Remove ChangeLog.txt, not updated since version 0.14
+
+-------------------------------------------------------------------
 Mon Jan  4 22:02:50 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with latest GCC, add 0001-Gui-skip-ci-fix-Wodr.patch

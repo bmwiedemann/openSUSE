@@ -18,15 +18,13 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM spyder-pr14514-fix-pandas120.patch -- gh#spyder-ide/spyder/14514
-Patch0:         https://github.com/spyder-ide/spyder/pull/14514.patch#/spyder-pr14514-fix-pandas120.patch
 Source1:        spyder-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,7 +54,7 @@ Requires:       python3-psutil >= 5.3
 Requires:       python3-pygments >= 2.0
 Requires:       python3-pylint >= 1.0
 Requires:       python3-pyls-black >= 0.4.6
-Requires:       python3-pyls-spyder >= 0.3.0
+Requires:       python3-pyls-spyder >= 0.3.2
 Requires:       python3-python-language-server >= 0.36.2
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
@@ -64,7 +62,7 @@ Requires:       python3-qt5 >= 5.5
 Requires:       python3-qtconsole >= 5.0.1
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 1.10.1
+Requires:       python3-spyder-kernels >= 1.10.2
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -220,11 +218,7 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%setup -q -n spyder-%{version}
-%autopatch -p1
-
-# add appdata to installable files
-sed -i "\|data_files.*share/applications.*,$| a \                      ('share/metainfo', ['scripts/spyder.appdata.xml'])," setup.py
+%autosetup -p1 -n spyder-%{version}
 
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
@@ -287,8 +281,10 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # Upstream splits the tests into slow and fast ones.
 # Add all tests which must be skipped into $donttest.
-# Tests marked with (* no CI) are skipped on upstreams CI too with given reason
-# "It fails on CIs".
+# - Tests marked with (* no CI) are skipped on upstreams CI too with given reason
+#   "It fails on CIs".
+# - Test marked with (* tested live) are skipped after making sure the tested
+#   functionality still works in a real desktop environment
 
 # (* no CI) the click/tab press is not sent by the bot
 donttest+=" or test_tab_copies_find_to_replace"
@@ -307,9 +303,6 @@ donttest+=" or test_run_python_script_in_terminal"
 donttest+=" or test_range_indicator_visible_on_hover_only"
 # we are not on conda env
 donttest+=" or test_status_bar_conda_interpreter_status"
-# segfaults
-donttest+=" or test_apps_dialog"
-donttest+=" or test_copy_path"
 # too flaky for OBS
 donttest+=" or test_update_decorations_when_scrolling"
 # occational fail
@@ -321,7 +314,16 @@ donttest+=" or test_maininterpreter_page"
 donttest+=" or (test_objectexplorer_collection_types and params0)"
 %endif
 # flaky
-donttest+=" or test_pdb_multiline"
+donttest+=" or (test_ipythonconsole and test_pdb_multiline)"
+# These tests are testing against buggy behavior in Qt 5.12. We have newer Qt in Tumbleweed.
+# https://github.com/spyder-ide/spyder/issues/12663
+donttest+=" or (test_codeeditor and test_editor_backspace_char)"
+donttest+=" or (test_codeeditor and test_editor_backspace_selection)"
+donttest+=" or (test_codeeditor and test_editor_delete_char)"
+donttest+=" or (test_codeeditor and test_qtbug35861)"
+donttest+=" or (test_shortcuts and test_select_all_shortcut)"
+# (* tested live) segfault (QtAwesome?)
+donttest+=" or test_apps_dialog"
 
 # tests marked slow:
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)
@@ -329,9 +331,9 @@ donttest+=" or (test_introspection and test_completions)"
 # test_update.py would require network connections
 donttest+=" or (test_update and not test_no_update)"
 # runs into timeout on obs
-#donttest+=" or test_hide_widget_completion"
 donttest+=" or (test_editor_and_outline and test_empty_file)"
 donttest+=" or test_class_func_selector"
+donttest+=" or test_console_working_directory"
 # tries to download stuff
 donttest+=" or test_kite_install"
 # no warnings returned here. PyLS/LSP problem? It works in the installed application, though.
@@ -349,8 +351,8 @@ donttest+=" or test_hide_widget_completion"
 donttest+=" or test_mainwindow"
 
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
-python3 runtests.py -k "not (${donttest:4})" --timeout 1800
-python3 runtests.py --run-slow -k "not (${donttest:4})" --timeout 1800
+python3 runtests.py -k "not (${donttest:4})" --timeout 1800 -ra
+python3 runtests.py --run-slow -k "not (${donttest:4})" --timeout 1800 -ra
 %endif
 
 %files
@@ -372,7 +374,7 @@ python3 runtests.py --run-slow -k "not (${donttest:4})" --timeout 1800
 %{_datadir}/icons/hicolor/scalable/apps/spyder.svg
 %{_datadir}/icons/hicolor/128x128/apps/spyder.png
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/spyder.appdata.xml
+%{_datadir}/metainfo/org.spyder_ide.spyder.appdata.xml
 
 %files dicom
 %license LICENSE.txt

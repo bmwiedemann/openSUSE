@@ -1,27 +1,7 @@
-Index: fontforge-20200314/gdraw/ggdkdraw.c
+Index: fontforge-20201107/fontforgeexe/cvimportdlg.c
 ===================================================================
---- fontforge-20200314.orig/gdraw/ggdkdraw.c
-+++ fontforge-20200314/gdraw/ggdkdraw.c
-@@ -2333,6 +2333,7 @@ static void GGDKDrawSyncThread(GDisplay
- static GWindow GGDKDrawPrinterStartJob(GDisplay *UNUSED(gdisp), void *UNUSED(user_data), GPrinterAttrs *UNUSED(attrs)) {
-     Log(LOGERR, " ");
-     assert(false);
-+    return (GWindow)0L;
- }
- 
- static void GGDKDrawPrinterNextPage(GWindow UNUSED(w)) {
-@@ -2343,6 +2344,7 @@ static void GGDKDrawPrinterNextPage(GWin
- static int GGDKDrawPrinterEndJob(GWindow UNUSED(w), int UNUSED(cancel)) {
-     Log(LOGERR, " ");
-     assert(false);
-+    return 0;
- }
- 
- 
-Index: fontforge-20200314/fontforgeexe/cvimportdlg.c
-===================================================================
---- fontforge-20200314.orig/fontforgeexe/cvimportdlg.c
-+++ fontforge-20200314/fontforgeexe/cvimportdlg.c
+--- fontforge-20201107.orig/fontforgeexe/cvimportdlg.c
++++ fontforge-20201107/fontforgeexe/cvimportdlg.c
 @@ -710,6 +710,7 @@ static int GFD_Options(GGadget *g, GEven
  	_ImportParamsDlg(ImportParamsState());
  	d->opts_shown = true;

@@ -238,4 +238,15 @@
   * Add container-nfs-service files</comment>
     <requestid>869722</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3ef4e0e3b8f84568a19dc01e2880d526</srcmd5>
+    <version>0.0+git20210222.f3de7fa</version>
+    <time>1614273979</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.0+git20210222.f3de7fa:
+  * Rewrite based on podman changes
+  * Correct TimeoutStopSec to 70
+  * Replace KillMode=none with TimeoutStopSec</comment>
+    <requestid>874368</requestid>
+  </revision>
 </revisionlist>

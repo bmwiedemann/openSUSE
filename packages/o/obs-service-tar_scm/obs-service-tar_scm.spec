@@ -1,5 +1,5 @@
 #
-# spec file for package obs-service-tar_scm-test
+# spec file for package obs-service-tar_scm
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -111,8 +111,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.20.1606128060.135ac94
-Version:        0.10.20.1606128060.135ac94
+%define version_unconverted 0.10.21.1612422695.2fdf897
+Version:        0.10.21.1612422695.2fdf897
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later

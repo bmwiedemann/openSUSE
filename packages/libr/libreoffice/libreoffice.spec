@@ -103,6 +103,8 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch4:         use-comphelper.patch
 # Bug 1177955 - LO-L3: SmartArt: text wrongly aligned, background boxes not quite right,...
 Patch10:        bsc1177955.diff
+# Bug 1174465 - LO-L3: Impress in TW (7.0.0.0-beta2) messes up bullet points
+Patch11:        bsc1174465.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -963,6 +965,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch4 -p1
 %patch10 -p1
+%patch11 -p1
 %patch990 -p1
 %patch991 -p1
 

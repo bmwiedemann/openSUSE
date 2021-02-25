@@ -22,13 +22,13 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.28.0
+Version:        1.30.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.28/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.30/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -116,7 +116,7 @@ Obsoletes:      dhcdbd < 1.14
 Obsoletes:      libnm-glib-vpn1
 Obsoletes:      libnm-glib4
 Obsoletes:      libnm-util2
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 NetworkManager attempts to keep an active network connection available
@@ -280,8 +280,8 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_datadir}/dbus-1/interfaces/org.freedesktop.NetworkManager.*
 %{_datadir}/polkit-1/actions/org.freedesktop.NetworkManager.policy
 %attr(0700,root,root) %{_localstatedir}/lib/NetworkManager
-%{_mandir}/man1/nm-online.1%{ext_man}
-%{_mandir}/man1/nmcli.1%{ext_man}
+%{_mandir}/man1/nm-online.1%{?ext_man}
+%{_mandir}/man1/nmcli.1%{?ext_man}
 %{_mandir}/man1/nmtui.1%{?ext_man}
 %{_mandir}/man1/nmtui-connect.1%{?ext_man}
 %{_mandir}/man1/nmtui-edit.1%{?ext_man}
@@ -290,11 +290,12 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_mandir}/man5/NetworkManager.conf.5%{?ext_man}
 %{_mandir}/man5/nm-settings.5%{?ext_man}
 %{_mandir}/man5/nm-system-settings.conf.5%{?ext_man}
-%{_mandir}/man5/nm-settings-dbus.5%{ext_man}
-%{_mandir}/man5/nm-settings-nmcli.5%{ext_man}
+%{_mandir}/man5/nm-settings-dbus.5%{?ext_man}
+%{_mandir}/man5/nm-settings-nmcli.5%{?ext_man}
 %{_mandir}/man7/nm-openvswitch.7%{?ext_man}
 %{_mandir}/man7/nmcli-examples.7%{?ext_man}
-%{_mandir}/man8/NetworkManager.8%{ext_man}
+%{_mandir}/man8/NetworkManager.8%{?ext_man}
+%{_mandir}/man8/nm-cloud-setup.8%{?ext_man}
 %{_mandir}/man8/nm-initrd-generator.8%{ext_man}
 %dir %{_libdir}/NetworkManager
 %dir %{_libdir}/NetworkManager/%{version}

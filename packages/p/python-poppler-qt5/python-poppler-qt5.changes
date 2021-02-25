@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 23 17:10:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 21.1.0
+  * Most new Qt5 api methods added upto poppler-qt5 21.01 (WB)
+  * Deprecated C API calls updated (woodlandhunter)
+  * Add support for building with SIP v5 (#41, Dmitry Shachnev)
+- Drop patches merged upstream
+  * poppler-qt5-pr33-sip5.patch
+  * poppler-qt5-pr41-sip5.patch
+- Add python-poppler-qt5-mapqvector.patch
+  gh#frescobaldi/python-poppler-qt5#45
+- Reinstate the skip for python2
+
+-------------------------------------------------------------------
 Tue Feb 23 11:37:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Reinstate multiversion build. The only fix needed was

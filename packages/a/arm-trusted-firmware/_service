@@ -1,0 +1,37 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git</param>
+    <param name="scm">git</param>
+    <param name="filename">mv-ddr-marvell-armada-atf</param>
+    <param name="versionformat">mainline</param>
+    <param name="revision">refs/heads/mv_ddr-armada-atf-mainline</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*mv-ddr-marvell*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/MarvellEmbeddedProcessors/binaries-marvell.git</param>
+    <param name="scm">git</param>
+    <param name="filename">binaries-marvell</param>
+    <param name="versionformat">10.0.1.0</param>
+    <param name="revision">refs/heads/binaries-marvell-armada-SDK10.0.1.0</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*binaries-marvell*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell.git</param>
+    <param name="scm">git</param>
+    <param name="filename">A3700-utils-marvell</param>
+    <param name="versionformat">18.12</param>
+    <param name="revision">refs/heads/A3700_utils-armada-18.12-fixed</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*A3700-utils-marvell*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

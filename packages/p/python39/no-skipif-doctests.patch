@@ -179,7 +179,7 @@ unchanged:
        >>> turtle.pos()
        (440.00,-0.00)
 @@ -665,7 +643,6 @@ Tell Turtle's state
-    orientation which depends on the mode - "standard"/"world" or "logo").
+    orientation which depends on the mode - "standard"/"world" or "logo".
  
     .. doctest::
 -      :skipif: _tkinter is None
@@ -267,7 +267,7 @@ unchanged:
        >>> turtle.penup()
        >>> turtle.isdown()
 @@ -917,7 +884,6 @@ Color control
-     newly set pencolor.
+    newly set pencolor.
  
     .. doctest::
 -      :skipif: _tkinter is None
@@ -275,7 +275,7 @@ unchanged:
         >>> colormode()
         1.0
 @@ -966,7 +932,6 @@ Color control
-     with the newly set fillcolor.
+    with the newly set fillcolor.
  
     .. doctest::
 -      :skipif: _tkinter is None
@@ -283,7 +283,7 @@ unchanged:
         >>> turtle.fillcolor("violet")
         >>> turtle.fillcolor()
 @@ -1005,7 +970,6 @@ Color control
-     with the newly set colors.
+    with the newly set colors.
  
     .. doctest::
 -      :skipif: _tkinter is None
@@ -347,7 +347,7 @@ unchanged:
        >>> turtle.shape()
        'classic'
 @@ -1195,7 +1152,6 @@ Appearance
-    resizemode("user") is called by :func:`shapesize` when used with arguments.
+    ``resizemode("user")`` is called by :func:`shapesize` when used with arguments.
  
     .. doctest::
 -      :skipif: _tkinter is None
@@ -563,7 +563,7 @@ unchanged:
        >>> def f():
        ...     fd(50)
 @@ -1824,7 +1754,6 @@ Using screen events
-    named turtle:
+    named ``turtle``:
  
     .. doctest::
 -      :skipif: _tkinter is None

@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 36
-%define ver 20.11.3
+%define ver 20.11.4
 %define _ver _20_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -134,7 +134,7 @@ Source1:        slurm-rpmlintrc
 Patch0:         Remove-rpath-from-build.patch
 Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
-Patch3:         check-for-lipmix.so.MAJOR.patch
+Patch3:         load-pmix-major-version.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -148,6 +148,8 @@ Recommends:     %{name}-munge = %version
 Requires(pre):  %{name}-node = %{version}
 Recommends:     %{name}-doc = %{version}
 Recommends:     %{name}-config-man = %{version}
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -556,14 +558,15 @@ mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
 %endif
 
 %build
+autoreconf
 %define _lto_cflags %{nil}
 [ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
-export CPPFLAGS=-DPMIX_SO=%{pmix_so}
 %configure --enable-shared \
            --disable-static \
            --without-rpath \
            --without-datawarp \
            --with-shared-libslurm \
+           --with-pmix=/usr/ \
 %if 0%{?build_slurmrestd}
            --enable-slurmrestd \
 %endif

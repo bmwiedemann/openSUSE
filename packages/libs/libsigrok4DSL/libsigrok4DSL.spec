@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrok4DSL
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           libsigrok4DSL
-Version:        1.01
+Version:        1.12
 Release:        0
 %define sover   1
 %define libname %{name}%{sover}
 Summary:        API for talking to DSLogic analyzer hardware
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            https://www.dreamsourcelab.com
+URL:            https://www.dreamsourcelab.com
 Source0:        https://github.com/DreamSourceLab/DSView/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake

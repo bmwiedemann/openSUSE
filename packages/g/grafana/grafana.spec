@@ -1,7 +1,7 @@
 #
 # spec file for package grafana
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        7.3.1
+Version:        7.3.6
 Release:        0
 Summary:        The open-source platform for monitoring and observability.
 License:        Apache-2.0

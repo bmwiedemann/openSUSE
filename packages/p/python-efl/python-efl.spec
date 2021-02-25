@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-efl
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Python bindings of evas
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -72,19 +72,23 @@ Python bindings of the Enlightenment Foundation Libraries (efl).
 Python bindings of the Enlightenment Foundation Libraries (efl).
 
 %if 0%{?suse_version}
-%package doc
+%package -n python-efl-doc
 Summary:        Documentation for python-efl
 Group:          Documentation/HTML
 BuildRequires:  %{python_module Sphinx}
+Provides:       python3-efl-doc
+Conflicts:      otherproviders(python3-efl-doc)
 
-%description doc
+%description -n python-efl-doc
 HTML formated documentation for python-efl module.
 
-%package examples
+%package -n python-efl-examples
 Summary:        Examples of python-efl usage
 Group:          Documentation/Other
+Provides:       python3-efl-examples
+Conflicts:      otherproviders(python3-efl-examples)
 
-%description examples
+%description -n python-efl-examples
 Some examples of usage of python-efl.
 %endif
 
@@ -141,10 +145,10 @@ rm -r "%{buildroot}/%{_docdir}/%{name}/"
 %{python_sitearch}/*
 %exclude %{_docdir}/python3-efl/html/
 
-%files %{python_files doc}
+%files -n python-efl-doc
 %{_docdir}/python3-efl
 
-%files  %{python_files examples}
+%files -n python-efl-examples
 %{_datadir}/python3-efl
 %endif
 

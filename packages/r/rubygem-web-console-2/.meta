@@ -1,6 +1,0 @@
-<package name="rubygem-web-console-2" project="openSUSE:Factory">
-  <title>web-console</title>
-  <description>A debugging tool for your Ruby on Rails applications.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-web-console-2"/>
-  <url>https://github.com/rails/web-console</url>
-</package>

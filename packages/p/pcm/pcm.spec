@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202007
+Version:        202101
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause
@@ -43,6 +43,7 @@ sed -e 's:-O0 -g3 -Wall:%{optflags}:g' \
 %build
 export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
+%{!?make_build:%define make_build %{__make} -O %{?_smp_mflags}}
 %make_build
 
 %install
@@ -68,6 +69,7 @@ export CXXFLAGS="%{optflags} -fPIC"
 %{_sbindir}/pcm-bw-histogram
 %{_sbindir}/pcm-daemon
 %{_sbindir}/pcm-sensor-server
+%{_sbindir}/pcm-raw
 %dir %{_datadir}/pcm
 %{_datadir}/pcm/opCode.txt
 

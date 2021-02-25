@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Feb 16 20:17:22 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to 0.12.0
+  https://github.com/restic/restic/releases/tag/v0.12.0
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md.
+
+  Fixes:
+  * #1681: Make mount not create missing mount point directory
+  * #1800: Ignore no data available filesystem error during backup
+  * #2563: Report the correct owner of directories in FUSE mounts
+  * #2688: Make backup and tag commands separate tags by comma
+  * #2739: Make the cat command respect the --no-lock option
+  * #3087: The --use-fs-snapshot option now works on windows/386
+  * #3100: Do not require gs bucket permissions when running init
+  * #3111: Correctly detect output redirection for backup command on Windows
+  * #3151: Don't create invalid snapshots when backup is interrupted
+  * #3166: Improve error handling in the restore command
+  * #3232: Correct statistics for overlapping targets
+  * #3014: Fix sporadic stream reset between rclone and restic
+  * #3152: Do not hang until foregrounded when completed in background
+  * #3249: Improve error handling in gs backend
+
+  Changes:
+  * #3095: Deleting files on Google Drive now moves them to the trash
+
+  Enhancements:
+  * #2186: Allow specifying percentage in check --read-data-subset
+  * #2453: Report permanent/fatal backend errors earlier
+  * #2528: Add Alibaba/Aliyun OSS support in the s3 backend
+  * #2706: Configurable progress reports for non-interactive terminals
+  * #2944: Add backup options --files-from-{verbatim,raw}
+  * #3083: Allow usage of deprecated S3 ListObjects API
+  * #3147: Support additional environment variables for Swift authentication
+  * #3191: Add release binaries for MIPS architectures
+  * #909:  Back up mountpoints as empty directories
+  * #3250: Add several more error checks
+  * #2718: Improve prune performance and make it more customizable
+  * #2495: Add option to let backup trust mtime without checking ctime
+  * #2941: Speed up the repacking step of the prune command
+  * #3006: Speed up the rebuild-index command
+  * #3048: Add more checks for index and pack files in the check command
+  * #2433: Make the dump command support zip format
+  * #3099: Reduce memory usage of check command
+  * #3106: Parallelize scan of snapshot content in copy and prune
+  * #3130: Parallelize reading of locks and snapshots
+  * #3254: Enable HTTP/2 for backend connections
+
+-------------------------------------------------------------------
 Mon Dec 21 10:48:03 UTC 2020 - Gordon Schulz <gordon@gordonschulz.de>
 
 - Update to 0.11.0

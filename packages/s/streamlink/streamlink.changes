@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb 18 22:14:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * BREAKING: dropped support for Python 2 and Python 3.5 (#3232, #3269)
+  * BREAKING: updated the Python version of the Windows installer to 3.8 (#3330)
+  * Users of Windows 7 will need their system to be fully upgraded.
+  * BREAKING: removed all deprecated CLI arguments (#3277, #3349)
+  * BREAKING: replaced various subtitle muxing CLI arguments with --mux-subtitles (#3324)
+  * BREAKING: sideloading faulty plugins will now raise an Exception (#3366)
+  * BREAKING: changed trace logging timestamp format (#3273)
+  * BREAKING/API: removed deprecated Session compat options (#3349)
+  * BREAKING/API: removed deprecated custom Logger and LogRecord (#3273)
+  * BREAKING/API: removed deprecated parameters from HLSStream.parse_variant_playlist (#3347)
+  * BREAKING/API: removed plugin.api.support_plugin (#3398)
+  * Added: new plugin for pluto.tv (#3363)
+  * Added: support for HLS master playlist URLs to --stream-url / --json (#3300)
+  * Added: --ffmpeg-fout for changing the output format of muxed streams (#2892)
+  * Added: --ffmpeg-copyts and --ffmpeg-start-at-zero (#3404, #3413)
+  * Added: --streann-url for iframe referencing (#3356)
+  * Added: --niconico-timeshift-offset (#3425)
+  * Fixed: duplicate stream names in DASH inputs (#3410)
+  * Fixed: youtube live playback (#3268, #3372, #3428)
+  * Fixed: --twitch-disable-reruns (#3375)
+  * Fixed: various plugins issues (see detailed changelog down below)
+  * Changed: {filename} variable in --player-args / -a to {playerinput} and made both optional (#3313)
+  * Changed: and fixed streamlinkrc config file in the Windows installer (#3350)
+  * Changed: MPV’s automated --title argument to --force-media-title (#3405)
+  * Changed: HTML documentation theme to furo (#3335)
+  * Removed: plugins for skai, kingkong, ellobo, trt/trtspor, tamago, streamme, metube, cubetv, willax
+
+-------------------------------------------------------------------
 Sat Dec  5 21:23:03 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 1.7.0:

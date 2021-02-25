@@ -1,7 +1,7 @@
 #
 # spec file for package aide
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aide
-Version:        0.16.2
+Version:        0.17.3
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later
@@ -28,10 +28,8 @@ Source2:        aide-cron_daily.sh
 Source3:        aide-test.sh
 Source42:       https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz.asc
 Source43:       aide.keyring
-Patch1:         aide-0.16.1-as-needed.patch
-Patch3:         aide-xattr-in-libc.patch
-Patch4:         aide-dynamic.patch
-Patch5:         aide-define_hash_use_gcrypt.patch
+Patch1:         aide-0.17.3-as-needed.patch
+Patch2:         aide-xattr-in-libc.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  curl-devel
@@ -54,9 +52,7 @@ Simple AIDE test script for externalized testing.
 %prep
 %setup -q
 %patch1 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch2 -p1
 
 %build
 autoreconf -fiv
@@ -84,7 +80,16 @@ install -m 700 %{SOURCE3} %{buildroot}%{_bindir}/
 mkdir -p doc/examples%{_sysconfdir}/cron.daily/
 cp -a %{SOURCE2} doc/examples%{_sysconfdir}/cron.daily/aide.sh
 
+%post
+if ! grep -q "database_in" %{_sysconfdir}/aide.conf ; then
+  # with the 0.17 update some backward incompatible changes were made to the config file. Therefore, we have to adapt those parameters, otherwise the program will fail
+  sed -i 's/database=/database_in=/' %{_sysconfdir}/aide.conf
+  sed -i '/verbose=/d' %{_sysconfdir}/aide.conf
+  sed -i 's/\t/ /g' %{_sysconfdir}/aide.conf
+fi
+
 %check
+rm -rf %{_localstatedir}/tmp/aide-test
 mkdir %{_localstatedir}/tmp/aide-test
 export TESTDIR=%{_localstatedir}/tmp/aide-test
 %make_build DESTDIR=$TESTDIR install
@@ -92,19 +97,26 @@ install -m 700 -d $TESTDIR%{_localstatedir}/lib/aide
 install -m 700 -d $TESTDIR%{_sysconfdir}
 install -m 600    %{SOURCE1} $TESTDIR%{_sysconfdir}/aide.conf.new
 sed -e "s#%{_localstatedir}/lib/aide#$TESTDIR%{_localstatedir}/lib/aide#g" <$TESTDIR%{_sysconfdir}/aide.conf.new >$TESTDIR%{_sysconfdir}/aide.conf
+if ! grep -q "database_in" %{_sysconfdir}/aide.conf ; then
+  # with the 0.17 update some backward incompatible changes were made to the config file. Therefore, we have to adapt those parameters, otherwise the program will fail
+  sed -i 's/database=/database_in=/' $TESTDIR%{_sysconfdir}/aide.conf
+  sed -i '/verbose=/d' $TESTDIR%{_sysconfdir}/aide.conf
+  sed -i 's/\t/ /g' $TESTDIR%{_sysconfdir}/aide.conf
+fi
+$TESTDIR/usr/bin/aide -D -c $TESTDIR%{_sysconfdir}/aide.conf
 sleep 2
 sync
 sleep 2
 
 $TESTDIR/usr/bin/aide -c $TESTDIR%{_sysconfdir}/aide.conf --init
 mv $TESTDIR%{_localstatedir}/lib/aide/aide.db.new $TESTDIR%{_localstatedir}/lib/aide/aide.db
-$TESTDIR/usr/bin/aide -c $TESTDIR%{_sysconfdir}/aide.conf --check --verbose
+$TESTDIR/usr/bin/aide -c $TESTDIR%{_sysconfdir}/aide.conf --check --log-level=info
 
 rm -rf $TESTDIR
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README doc/manual* doc/examples
+%doc AUTHORS ChangeLog NEWS README doc/examples
 %{_bindir}/aide
 /%{_mandir}/man1/aide.1.gz
 /%{_mandir}/man5/aide.conf.5.gz

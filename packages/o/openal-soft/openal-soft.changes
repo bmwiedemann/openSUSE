@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 17 15:49:21 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- fix gcc11 build (openal-soft-gcc11.diff)
+
+-------------------------------------------------------------------
 Tue Feb  9 23:31:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.1:

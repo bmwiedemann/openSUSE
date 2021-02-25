@@ -1,7 +1,7 @@
 #
 # spec file for package fontforge
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,17 @@
 
 
 Name:           fontforge
-Version:        20200314
+Version:        20201107
 Release:        0
 Summary:        A Font Editor
 License:        GPL-3.0-or-later
-URL:            http://fontforge.org/
-#       Source: https://github.com/fontforge/fontforge/archive/%%{version}.tar.gz
-#           see bug 926061, fontforge-*-repacked.tar.xz does not contain fontforge-*/win/gold/libX11-*.noarch.rpm
-Source0:        fontforge-%{version}-repacked.tar.xz
-Source1:        get-source.sh
-# workardound for bug 930076, imho upstream should fix this
+URL:            https://fontforge.org/
+Source0:        https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
+# workaround for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
 Patch1:         fix-return-statement.patch
 Patch2:         fix-sphinx-doc.patch
-# gh#fontforge/fontforge#4269
-Patch3:         support-sphinx3.patch
-# taken from gh#fontforge/fontforge#4284
-Patch4:         fix-glossary.patch
 Patch5:         add-bitmap-transform-support.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
@@ -107,8 +100,6 @@ to develop applications that use FontForge libraries.
 %if %{?suse_version} < 1550
 %patch2 -p1
 %endif
-%patch3 -p1
-%patch4 -p1
 %patch5 -p1
 
 %build

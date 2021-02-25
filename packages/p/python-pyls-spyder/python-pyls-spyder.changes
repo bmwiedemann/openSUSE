@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 22 20:20:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.3.2
+  * Fix code blocks regular expression
+  * Ensure that block comments start by 4 dashes or number signs
+  * Fix code folding of cells
+
+-------------------------------------------------------------------
 Sat Dec 19 22:55:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.3.0

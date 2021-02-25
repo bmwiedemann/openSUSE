@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 21 03:12:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.15  2021-02-20
+    - Improved Mojolicious::Plugin::Status to log if server is not supported.
+    - Improved template design.
+
+-------------------------------------------------------------------
 Tue Feb  9 03:07:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.14

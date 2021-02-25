@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 24 04:42:02 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.5:
+  * Fix rich replies handling.
+  * Support abbreviated aka Reddit-style type specifiers in 
+    Matrix URIs (e.g., matrix:r/quotient:matrix.org) 
+
+-------------------------------------------------------------------
 Sat Jan 16 15:40:44 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Actually disable e2ee

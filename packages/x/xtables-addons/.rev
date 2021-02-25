@@ -587,4 +587,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>871545</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b44543851b5df1ae555c7db06750d812</srcmd5>
+    <version>3.16</version>
+    <time>1614274055</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 3.16
+  * i586 platform build fix</comment>
+    <requestid>874742</requestid>
+  </revision>
 </revisionlist>

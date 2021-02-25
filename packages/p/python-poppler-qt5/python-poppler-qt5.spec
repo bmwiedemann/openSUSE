@@ -22,22 +22,18 @@
 %{?!use_sip4:%define use_sip4 1}
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-poppler-qt5
-Version:        0.75.0
+Version:        21.1.0
 Release:        0
 Summary:        Python binding to poppler-qt5
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/python-poppler-qt5/
-# The newer version 21.1.0 fails to build
-# See: https://github.com/frescobaldi/python-poppler-qt5/issues/43
 Source0:        https://files.pythonhosted.org/packages/source/p/python-poppler-qt5/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM poppler-qt5-pr33-sip5.patch gh#frescobaldi/python-poppler-qt5#33 -- support SIP5
-Patch1:         https://github.com/frescobaldi/python-poppler-qt5/pull/33.patch#/poppler-qt5-pr33-sip5.patch
-# PATCH-FIX-UPSTREAM poppler-qt5-pr41-sip5.patch gh#frescobaldi/python-poppler-qt5#41 -- use SIP5
-Patch2:         https://github.com/frescobaldi/python-poppler-qt5/pull/41.patch#/poppler-qt5-pr41-sip5.patch
+# PATCH-FIX-UPSTREAM python-poppler-qt5-mapqvector.patch -- gh#frescobaldi/python-poppler-qt5#45
+Patch0:         https://github.com/frescobaldi/python-poppler-qt5/pull/45.patch#/python-poppler-qt5-mapqvector.patch
 BuildRequires:  %{python_module qt5-devel}
 %if 0%{?use_sip4}
 BuildRequires:  %{python_module sip4-devel}

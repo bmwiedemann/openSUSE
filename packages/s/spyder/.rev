@@ -215,4 +215,18 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>872593</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>06d16a285341c626ae4ca5c9d7a04002</srcmd5>
+    <version>4.2.2</version>
+    <time>1614274027</time>
+    <user>RBrownSUSE</user>
+    <comment>- The apps dialog segfault is back. (QtAwesome, qtwebengine?)
+- Update to version 4.2.2
+  * Improve performance when typing in the editor.
+  * Make variable explorer work for kernels started in remote
+    servers.
+- Drop spyder-pr14514-fix-pandas120.patch merged upstream
+</comment>
+    <requestid>874824</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:49:16 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import 0.7
+
+  2a61f77 Convert our configuration file dropins into 'early' ones
+
+-------------------------------------------------------------------
+Wed Feb 17 08:40:19 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import 0.6
+
+  d3fab7c Introduce SLE-Micro branding
+
+-------------------------------------------------------------------
 Thu Nov 26 16:04:48 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Fix typo introduced by the previous change (bsc#1179183)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyqt-builder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/pyqt
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{pythons >= 3.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.5
 Requires:       python-sip-devel >= 5.5
+Requires:       python-wheel
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-PyQt-builder = %{version}
@@ -59,6 +58,7 @@ sip-install or pip can then be used to build and install the project.
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pyqt-bundle
+%python_clone -a %{buildroot}%{_bindir}/pyqt-qt-wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,7 +69,7 @@ $python -c 'import pyqtbuild'
 }
 
 %post
-%python_install_alternative pyqt-bundle
+%python_install_alternative pyqt-bundle pyqt-qt-wheel
 
 %postun
 %python_uninstall_alternative pyqt-bundle
@@ -78,6 +78,7 @@ $python -c 'import pyqtbuild'
 %license LICENSE*
 %doc README NEWS ChangeLog
 %python_alternative %{_bindir}/pyqt-bundle
+%python_alternative %{_bindir}/pyqt-qt-wheel
 %{python_sitelib}/pyqtbuild
 %{python_sitelib}/PyQt_builder-%{version}*-info
 

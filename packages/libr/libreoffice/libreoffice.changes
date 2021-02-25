@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 19 13:35:18 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1174465 - LO-L3: Impress in TW (7.0.0.0-beta2) messes up bullet points
+  * bsc1174465.diff
+
+-------------------------------------------------------------------
 Fri Feb 12 08:07:45 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Adjust to new Box2D and enable KDE on SLE15SP3 or newer

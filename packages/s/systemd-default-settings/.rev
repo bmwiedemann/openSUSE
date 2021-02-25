@@ -50,4 +50,16 @@
     <comment>- Fix typo introduced by the previous change (bsc#1179183)</comment>
     <requestid>851121</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60f4c284c511ab68b418a4f3a036b3e0</srcmd5>
+    <version>0.7</version>
+    <time>1614273992</time>
+    <user>RBrownSUSE</user>
+    <comment>- Import 0.7
+  2a61f77 Convert our configuration file dropins into 'early' ones
+
+- Import 0.6
+  d3fab7c Introduce SLE-Micro branding</comment>
+    <requestid>874410</requestid>
+  </revision>
 </revisionlist>

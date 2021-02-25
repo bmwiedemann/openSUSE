@@ -1,0 +1,37 @@
+From b084e4340f6cad03b7182c2ffe87d8e21610e9a3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 23 Feb 2021 18:15:05 +0100
+Subject: [PATCH] add missing std:: namespace to build on Debian 10
+
+---
+ src/Mod/Raytracing/App/RayFeature.cpp | 1 +
+ src/Mod/TechDraw/App/Geometry.cpp     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/Mod/Raytracing/App/RayFeature.cpp b/src/Mod/Raytracing/App/RayFeature.cpp
+index cdd2cb6dc1..235a986851 100644
+--- a/src/Mod/Raytracing/App/RayFeature.cpp
++++ b/src/Mod/Raytracing/App/RayFeature.cpp
+@@ -36,6 +36,7 @@
+ 
+ 
+ using namespace Raytracing;
++using namespace std;
+ 
+ PROPERTY_SOURCE(Raytracing::RayFeature, Raytracing::RaySegment)
+ 
+diff --git a/src/Mod/TechDraw/App/Geometry.cpp b/src/Mod/TechDraw/App/Geometry.cpp
+index 123be79795..16e7487eec 100644
+--- a/src/Mod/TechDraw/App/Geometry.cpp
++++ b/src/Mod/TechDraw/App/Geometry.cpp
+@@ -75,6 +75,7 @@
+ 
+ using namespace TechDrawGeometry;
+ using namespace TechDraw;
++using namespace std;
+ 
+ // Collection of Geometric Features
+ Wire::Wire()
+-- 
+2.30.1
+

@@ -1,0 +1,14 @@
+diff --git a/wtmi/sys_init/Makefile b/wtmi/sys_init/Makefile
+index 3037e7c..9237eb4 100644
+--- a/wtmi/sys_init/Makefile
++++ b/wtmi/sys_init/Makefile
+@@ -51,8 +51,7 @@ ECHO     = @echo
+ SED      = @sed
+ 
+ LOCAL_VERSION_STRING	?= -armada
+-BUILD_STRING		:= $(shell git log -n 1 --pretty=format:"%h")
+-VERSION_STRING		:= $(LOCAL_VERSION_STRING)-$(BUILD_STRING)
++VERSION_STRING		:= $(LOCAL_VERSION_STRING)
+ 
+ CPUOPTS  = -mthumb -mcpu=cortex-m3 -mlittle-endian
+ BINPATH  = build

@@ -28,6 +28,7 @@ Source1:        libopenalcompat.c
 Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM openal-no-autospawn.diff
 Patch0:         openal-no-autospawn.diff
+Patch1:         openal-soft-gcc11.diff
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -130,8 +131,7 @@ also facilitates streaming audio, multi-channel buffers, and audio
 capture.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # License conflict with the rest of the stack, and we don't use it (Android backend)
 rm -v alc/backends/opensl.cpp
 

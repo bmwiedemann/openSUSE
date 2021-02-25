@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 10 07:47:00 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.21.1612422695.2fdf897:
+  * fixes boo#1127353
+  * fixes boo#1168573
+  * activate pylint3.8 and fixed false positives
+  * don`t sanitize version if versionrewrite_pattern is set
+
+-------------------------------------------------------------------
 Mon Feb 01 09:16:58 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.20.1606128060.135ac94:
@@ -136,8 +145,25 @@ Thu Aug 22 11:25:57 UTC 2019 - FSchreiner@suse.com
 -------------------------------------------------------------------
 Wed Jun 05 14:47:42 UTC 2019 - FSchreiner@suse.com
 
+- Fixes boo#1138377
 - Update to version 0.10.9.1559745964.22c86cd:
   * [dist] python3 for SLE12 and openSUSE 42.3
+  * [dist] enable python3 in SLE >= 12
+  * fix encoding error for surrogates
+  * glibc-common was used up to FC23 and RHEL7
+  * Compile python files before install
+  * change order in GNUMakefile to prefer python3
+  * More thorought spec file cleanup
+  * predefine python version in spec file for GNUMAkefile
+  * [dist] spec file: python3 only and multidist
+  * Git also uses the LANGUAGE variable
+  * centos_version and rhel_version are triple digits
+  * Minimize diff with the version in openSUSE:Tools
+  * Fix the logic to pick the locale package on Fedora
+  * Forgot the guard 0 in one conditional
+  * Require packages to get the en_US.UTF-8 locales
+  * enforce bytes for cpio file list
+
 
 -------------------------------------------------------------------
 Tue Jun 04 11:42:50 UTC 2019 - FSchreiner@suse.com

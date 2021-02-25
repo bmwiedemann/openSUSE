@@ -1,7 +1,7 @@
 #
 # spec file for package tcpflow
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Sebastien Braun.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           tcpflow
-Version:        1.5.0
+Version:        1.6.1
 Release:        0
 Summary:        Program for capturing and collecting TCP streams
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            http://afflib.org/software/tcpflow
+URL:            http://afflib.org/software/tcpflow
 Source:         http://www.digitalcorpora.org/downloads/tcpflow/%{name}-%{version}.tar.gz
 
 %if 0%{?suse_version} > 1325

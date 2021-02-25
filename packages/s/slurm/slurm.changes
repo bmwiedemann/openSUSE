@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb 23 16:24:16 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Udpate to 20.11.04
+ * Fix node selection for advanced reservations with features.
+ * mpi/pmix: Handle pipe failure better when using ucx.
+ * mpi/pmix: include PMIX_NODEID for each process entry.
+ * Fix job getting rejected after being requeued on same node that died.
+ * job_submit/lua - add "network" field.
+ * Fix situations when a reoccuring reservation could erroneously skip a
+   period.
+ * Ensure that a reservations [pro|epi]log are ran on reoccuring reservations.
+ * Fix threads-per-core memory allocation issue when using CR_CPU_MEMORY.
+ * Fix scheduling issue with --gpus.
+ * Fix gpu allocations that request --cpus-per-task.
+ * mpi/pmix: fixed print messages for all PMIXP_* macros
+ * Add mapping for XCPU to --signal option.
+ * Fix regression in 20.11 that prevented a full pass of the main scheduler
+   from ever executing.
+ * Work around a glibc bug in which "0" is incorrectly printed as "nan"
+   which will result in corrupted association state on restart.
+ * Fix regression in 20.11 which made slurmd incorrectly attempt to find the
+   parent slurmd address when not applicable and send incorrect reverse*tree
+   info to the slurmstepd.
+ * Fix cgroup ns detection when using containers (e.g. LXC or Docker).
+ * scrontab - change temporary file handling to work with emacs. 
+- Removed check-for-lipmix.so.MAJOR.patch
+- Added: load-pmix-major-version.patch
+
+
+-------------------------------------------------------------------
 Wed Jan 20 10:13:23 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to 20.11.03

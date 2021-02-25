@@ -1976,4 +1976,12 @@ General:
     <comment>fix bsc#1180614</comment>
     <requestid>867528</requestid>
   </revision>
+  <revision rev="125" vrev="6">
+    <srcmd5>a394cb3819575e2de77568f7e248f8d3</srcmd5>
+    <version>2.10.22</version>
+    <time>1614273946</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874257</requestid>
+  </revision>
 </revisionlist>

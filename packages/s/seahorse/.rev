@@ -837,4 +837,13 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment></comment>
     <requestid>872854</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>633b80ed298edebc1e5d68e5c2cab70c</srcmd5>
+    <version>3.38.1</version>
+    <time>1614273990</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add 153.patch: key-manager: Make sure to update after unlocking
+  (boo#1179003). (forwarded request 874259 from dimstar)</comment>
+    <requestid>874395</requestid>
+  </revision>
 </revisionlist>

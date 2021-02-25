@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 19 19:56:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.8.0
+  * Added the (as yet undocumented) pyqt-qt-wheel utility.
+  * chrpath and install_name_tool are no longer required when
+    bundling Qt v5.15 or later.
+- Changes in v1.7.0
+  * Added support for PyQt6, PyQt6-3D and PyQt6-NetworkAuth to
+    pyqt-bundle.
+
+-------------------------------------------------------------------
 Tue Nov 24 14:54:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.6.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycxx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,10 +78,10 @@ of Python extension modules in C++.
 
 %build
 %python_build
-%ifpython3
-rm -r Doc/Python2 && mv Doc/Python3 Doc/Python
-%else
+%ifpython2
 rm -r Doc/Python3 && mv Doc/Python2 Doc/Python
+%else
+rm -r Doc/Python2 && mv Doc/Python3 Doc/Python
 %endif
 
 %install

@@ -1832,4 +1832,14 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>871518</requestid>
   </revision>
+  <revision rev="234" vrev="2">
+    <srcmd5>c8093ff02362807f42efb4659a76f870</srcmd5>
+    <version>2.66.7</version>
+    <time>1614273989</time>
+    <user>RBrownSUSE</user>
+    <comment>- disable irrelevant warnings
+- use macros in spec file
+- simplify trigger code (forwarded request 874124 from yecril71pl)</comment>
+    <requestid>874394</requestid>
+  </revision>
 </revisionlist>

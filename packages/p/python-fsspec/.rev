@@ -100,4 +100,12 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>862045</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b4e3e5cee6c0f4e28c0090b8fc37742e</srcmd5>
+    <version>0.8.5</version>
+    <time>1614274020</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874528</requestid>
+  </revision>
 </revisionlist>

@@ -275,7 +275,7 @@ rm %{buildroot}%{_libdir}/gimp/2.0/*/*.*a
 echo "%%defattr(-,root,root)" >plugins.list
 echo "%%defattr(-,root,root)" >plugins-python.list
 for PLUGIN in %{buildroot}%{_libdir}/gimp/2.0/plug-ins/* ; do
-    if grep -q '^#!.*python' $PLUGIN ; then
+    if grep -qr '^#!.*python' $PLUGIN ; then
 	echo "${PLUGIN#%{buildroot}}" >>plugins-python.list
     else
 	echo "${PLUGIN#%{buildroot}}" >>plugins.list

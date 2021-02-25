@@ -1,7 +1,7 @@
 #
 # spec file for package python-av
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-av
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
-URL:            https://github.com/mikeboers/PyAV
+URL:            https://github.com/PyAV-Org/PyAV
 Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -38,7 +39,6 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavutil)
 Requires:       python-numpy
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages

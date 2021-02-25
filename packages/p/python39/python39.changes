@@ -1,3 +1,21 @@
+-------------------------------------------------------------------
+Fri Feb 19 16:58:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.9.2:
+  - bpo#42938 (bsc#1181126): Avoid static buffers when computing
+    the repr of ctypes.c_double and ctypes.c_longdouble
+    values. This issue was assigned CVE-2021-3177.
+  - bpo#42967 (bso#1182379): Fix web cache poisoning
+    vulnerability by defaulting the query args separator to &,
+    and allowing the user to choose a custom separator. This
+    issue was assigned CVE-2021-23336.
+- Upstreamed patches were removed:
+  - CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
+  - bsc1167501-invalid-alignment.patch
+  - skip_random_failing_tests.patch
+  - CVE-2019-5010-null-defer-x509-cert-DOS.patch
+
+-------------------------------------------------------------------
 Tue Feb  9 01:37:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add Obsoletes for python3-base when primary interpreter is set to

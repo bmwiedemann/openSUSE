@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 19 15:11:44 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Enable ITU G.729 Annex A/B speech codec for  Tumbleweed only
+
+-------------------------------------------------------------------
 Sat Jan 30 06:54:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.4.3:

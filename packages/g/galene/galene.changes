@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:43:48 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- installation of AppArmor profile truly optional
+- dropped version check for AppArmor dependencies
+
+-------------------------------------------------------------------
 Thu Feb 18 22:29:53 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - added CHANGES

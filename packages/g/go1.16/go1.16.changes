@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 18 23:21:47 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- gcc6-go.patch fix typo go-7 to go-6 for bootstrap on SLE-12 gcc6
+
+-------------------------------------------------------------------
 Tue Feb 16 22:42:14 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.16 (released 2021-02-16) Go 1.16 is a major release of Go.

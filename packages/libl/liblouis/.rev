@@ -399,4 +399,41 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment>Push GNOME 3.38</comment>
     <requestid>847247</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>93dac3ce4ec91bf0abb8aac2dcf499e8</srcmd5>
+    <version>3.16.1</version>
+    <time>1614273983</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.16.1:
+  ** New features
+  - A new opcode ~noemphchars~ was added. This gives you more control
+    over the placement and scope of various emphasis indicators. Thanks
+    to Bert Frees.
+  ** Bug fixes
+  - Fix an endless loop when using =compbrlAtCursor= thanks to Bert
+    Frees
+  ** Braille table improvements
+  - Improvements to US EBAE conformance with BANA emphasis guidelines
+    thanks to Benetech.org
+  - Fixed a problem with apostrophe in Malayalam thanks to Jake Kyle
+  - Improvements to contraction use in UEB thanks to James Bowden. In
+    particular the checkmark (U+2713) is added, the emdash (U+2014) is
+    fixed, the right single quote used as apostrophe between letters is
+    fixed and finally some more accented letters have been added.
+  - Improvements to Urdu Braille and Malayalam thanks to Jake Kyle
+  - Add characters for Bashkir and Uzbek languages to the Russian
+    computer braille table. Thanks to Andrey Yakuboy.
+  - New table for Bashkir uncontracted braille thanks to Rustam
+    Churagulov and Gabidullin Yunir.
+  - Updated =&lt;= and =&gt;= symbols in the Arabic tables thanks to Ikrami
+    Ahmad.
+  - Improvements to Dutch thanks to Bert Frees.
+    - Every word part in a capitalized compound word counts in the
+      length of a passage.
+    - ~begcapsphrase~ is allowed to start in a word preceded by
+      punctuation.
+  - Improved translation of ligatures in UEB thanks to Bert Frees.
+  - Multiple improvements to the Russian literary braille thanks to (forwarded request 873553 from dirkmueller)</comment>
+    <requestid>874390</requestid>
+  </revision>
 </revisionlist>
