@@ -1,7 +1,7 @@
 #
 # spec file for package lightly
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define kf5_ver 5.66.0
 Name:           lightly
-Version:        0.4
+Version:        0.4.1
 Release:        0
 Summary:        A modern style for qt applications
 License:        GPL-2.0-or-later
 URL:            https://github.com/Luwx/Lightly
 Source0:        https://github.com/Luwx/Lightly/archive/v%{version}.tar.gz#/Lightly-%{version}.tar.gz
 BuildRequires:  cmake >= 3.0
+BuildRequires:  extra-cmake-modules >= %{kf5_ver}
+BuildRequires:  gcc-c++
 BuildRequires:  cmake(KDecoration2)
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_ver}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_ver}
@@ -35,18 +38,17 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  extra-cmake-modules >= %{kf5_ver}
-BuildRequires:  gcc-c++
-Requires:       breeze5-icons
-Requires:       breeze5-cursors
 Requires:       %{name}-decoration
 Requires:       %{name}-style
+Requires:       breeze5-cursors
+Requires:       breeze5-icons
 
 %description
 Lightly is a fork of breeze theme style that aims to be visually modern and minimalistic.
 
 %package        decoration
 Summary:        Lightly kdecoration theme
+
 %description    decoration
 Lightly is a fork of breeze theme style that aims to be visually modern and minimalistic.
 
@@ -55,6 +57,7 @@ This package contains the kdecoration theme of Lightly.
 %package        style
 Summary:        Lightly kstyle theme and color schemes
 Requires:       kconf_update5
+
 %description    style
 Lightly is a fork of breeze theme style that aims to be visually modern and minimalistic.
 
@@ -62,6 +65,7 @@ This package contains the kstyle theme and color schemes of Lightly.
 
 %package -n     liblightlycommon5-5
 Summary:        Lightly support code
+
 %description -n liblightlycommon5-5
 Lightly is a fork of breeze theme style that aims to be visually modern and minimalistic.
 
