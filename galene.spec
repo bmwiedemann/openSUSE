@@ -22,11 +22,6 @@
 # Project name when using go tooling.
 %define project github.com/jech/galene
 
-%if 0%{?suse_version} > 1320
-%bcond_without  apparmor_reload
-%else
-%bcond_with     apparmor_reload
-%endif
 %bcond_without  apparmor
 
 Name:           galene
@@ -51,16 +46,9 @@ Requires:       fdupes
 Requires:       filesystem
 Requires(pre): %fillup_prereq
 %if %{with apparmor}
-%if 0%{?suse_version} <= 1315
-BuildRequires:  apparmor-profiles
-Recommends:     apparmor-profiles
-%else
 BuildRequires:  apparmor-abstractions
-Recommends:     apparmor-abstractions
-%endif
-%if %{with apparmor_reload}
 BuildRequires:  apparmor-rpm-macros
-%endif
+Recommends:     apparmor-abstractions
 %endif
 
 %description
@@ -114,7 +102,7 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %post
 %service_add_post %{name}.service
 %{fillup_only galene}
-%if %{with apparmor} && %{with apparmor_reload}
+%if %{with apparmor}
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.sbin.galene
 %endif
 
@@ -148,7 +136,10 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %{_unitdir}/%{name}.service
 %dir %attr(0750, root, %{name}) %{_sysconfdir}/%{name}
 %config %attr(0640, root, %{name}) %{_sysconfdir}/%{name}/ice-servers.json.example
+%if %{with apparmor}
+%dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.sbin.galene
+%endif
 %dir %attr(0750, root, %{name}) %{_sharedstatedir}/%{name}
 %dir %attr(0570, %{name}, root) %{_sharedstatedir}/%{name}/groups
 %dir %attr(0750, %{name}, %{name}) %{_sharedstatedir}/%{name}/recordings
