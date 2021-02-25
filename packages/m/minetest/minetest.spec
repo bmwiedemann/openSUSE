@@ -1,7 +1,7 @@
 #
 # spec file for package minetest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,11 @@
 
 %define minetestuser %{name}
 %define minetestgroup %{name}
-%if 0%{?suse_version} >= 1500 || (0%{?sle_version} > 120100 && 0%{?is_opensuse})
 %bcond_without leveldb
 %bcond_without redis
 %bcond_without postgresql
-%else
-%bcond_with leveldb
-%bcond_with redis
-%bcond_with postgresql
-%endif
 Name:           minetest
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0
@@ -42,11 +36,6 @@ Patch0:         minetest-fix-luajit-include-path.patch
 # PATCH-FIX-OPENSUSE old-desktopfile-standard.patch dmueller@suse.com -- build without 'PrefersNonDefaultGPU' option in desktopfile on Leap 15.2 and below
 Patch1:         old-desktopfile-standard.patch
 BuildRequires:  cmake
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
-BuildRequires:  desktop-file-utils
-%else
-BuildRequires:  desktop-file-utils >= 0.25
-%endif
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -60,6 +49,8 @@ BuildRequires:  irrlicht-devel
 BuildRequires:  libXxf86vm-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  ncurses-devel
+# Needed for symlink checking
+BuildRequires:  opengl-games-utils
 BuildRequires:  pkgconfig
 BuildRequires:  spatialindex-devel
 BuildRequires:  systemd-rpm-macros
@@ -76,30 +67,29 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
-Requires:       %{name}-data = %{version}
-Requires:       opengl-games-utils
-Provides:       minetest-runtime = %{version}
-Recommends:     %{name}-lang
-Recommends:     minetest-game
+%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
+BuildRequires:  desktop-file-utils
+%else
+BuildRequires:  desktop-file-utils >= 0.25
+%endif
 %if %{with leveldb}
 BuildRequires:  leveldb-devel
 %endif
 %if %{with redis}
-%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hiredis)
-%else
-BuildRequires:  hiredis-devel
-%endif
 %endif
 %if %{with postgresql}
 BuildRequires:  postgresql-devel
-%if 0%{?suse_version} > 1500
 # Workaround for CMake's FindPostgreSQL.cmake depending on internal
 # server headers even if just building a client application.
 BuildRequires:  postgresql-server-devel
 %endif
-%endif
+Requires:       %{name}-data = %{version}
+Requires:       opengl-games-utils
+Recommends:     %{name}-lang
+Recommends:     minetest-game
+Provides:       minetest-runtime = %{version}
 
 %description
 An infinite-world block sandbox game and a game engine, inspired by
@@ -113,8 +103,8 @@ License:        LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       %{name}-data = %{version}
 Requires(pre):  shadow
-Provides:       minetest-runtime = %{version}
 Recommends:     minetest-game
+Provides:       minetest-runtime = %{version}
 %{?systemd_requires}
 
 %description -n %{name}server
@@ -206,16 +196,6 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/
 
 %post
 desktop-file-validate %{_datadir}/applications/net.minetest.minetest.desktop
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
-%if 0%{?suse_version} < 1500
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %pre -n %{name}server
 getent group %{name} > /dev/null || %{_sbindir}/groupadd -r %{minetestgroup}

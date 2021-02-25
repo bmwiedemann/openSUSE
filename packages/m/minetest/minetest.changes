@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 24 18:02:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed build on current Factory (checking symlinks)
+- Update to version 5.4.0
+  * Full log: https://dev.minetest.net/Changelog#5.3.0_.E2.86.92_5.4.0
+  * Removed support for bumpmapping, generated normal maps
+    and parallax occlusion
+  * By default, the crosshair will now change to an "X" when
+    pointing to objects
+  * Prevent players accessing inventories of other players
+  * Prevent interacting with items out of the hotbar
+  * Prevent players from being able to modify ItemStack meta
+
+-------------------------------------------------------------------
 Tue Sep  8 11:16:27 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - added patch to build .desktop file without 'PrefersNonDefaultGPU'
