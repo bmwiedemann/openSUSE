@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb 25 07:20:11 UTC 2021 - idonmez@suse.com
+
+- Update to version 0.33.0+git.20210223T124404.09d7c75bfe:
+  * vo_gpu: libplacebo: require v2.72.0
+  * appveyor: Use MSYS2's spirv-cross package instead of building it
+  * appveyor: use latest build image for fixed MSYS2 installation
+  * msg: fix really-quiet option to only affect terminal output
+  * mac: add ability to toggle visibility on all workspaces from menubar
+  * command: add label for on-all-workspaces command
+  * mac: support --on-all-workspaces option
+  * vo_gpu: don't abort() if plane tex creation fails
+  * filters/auto_filters: switch from scaletempo to scaletempo2
+  * af_scaletempo2: fix crash for speed >= 16
+  * travis: fix macOS VMs with older homebrew versions
+  * mac: only update touch bar items when necessary
+  * mac: use custom touch bar item and slider instead of a touch bar slider
+  * vo_gpu: vaapi: export plane pitch properly
+  * DOCS: fix cplugins information in libmpv.rst.
+  * demuxer/demux_mf: add support for more image codecs
+  * man: update deband-threshold default
+  * vo_gpu: lower default deband threshold
+  * vo_wlshm: support big endian systems
+  * README: update libass dependency harfbuzz as non-optional
+  * manpage: fix PDF build
+  * docs: Fix an old style parameter reference
+  * umpv: remove unused imports
+  * stream_lavf: support rtsps
+  * player: make resetting of track selection to "auto" work
+  * mac: fix dangling pointers
+  * mac: drop build support for swift versions earlier than version 4.1
+  * mac: fix usage of temporary pointers
+  * manpage: document off-by-one loop-file behavior
+
+-------------------------------------------------------------------
 Sun Jan 03 20:06:44 UTC 2021 - idonmez@suse.com
 
 - Update to version 0.33.0+git.20210103T120530.1251f7bbf9:

@@ -1242,4 +1242,41 @@
   * build: fail configure if --lua is specified and Lua isn't found</comment>
     <requestid>859998</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>4ada11defaa3659a0682430099563e64</srcmd5>
+    <version>0.33.0+git.20210223T124404.09d7c75bfe</version>
+    <time>1614274197</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.33.0+git.20210223T124404.09d7c75bfe:
+  * vo_gpu: libplacebo: require v2.72.0
+  * appveyor: Use MSYS2's spirv-cross package instead of building it
+  * appveyor: use latest build image for fixed MSYS2 installation
+  * msg: fix really-quiet option to only affect terminal output
+  * mac: add ability to toggle visibility on all workspaces from menubar
+  * command: add label for on-all-workspaces command
+  * mac: support --on-all-workspaces option
+  * vo_gpu: don't abort() if plane tex creation fails
+  * filters/auto_filters: switch from scaletempo to scaletempo2
+  * af_scaletempo2: fix crash for speed &gt;= 16
+  * travis: fix macOS VMs with older homebrew versions
+  * mac: only update touch bar items when necessary
+  * mac: use custom touch bar item and slider instead of a touch bar slider
+  * vo_gpu: vaapi: export plane pitch properly
+  * DOCS: fix cplugins information in libmpv.rst.
+  * demuxer/demux_mf: add support for more image codecs
+  * man: update deband-threshold default
+  * vo_gpu: lower default deband threshold
+  * vo_wlshm: support big endian systems
+  * README: update libass dependency harfbuzz as non-optional
+  * manpage: fix PDF build
+  * docs: Fix an old style parameter reference
+  * umpv: remove unused imports
+  * stream_lavf: support rtsps
+  * player: make resetting of track selection to &quot;auto&quot; work
+  * mac: fix dangling pointers
+  * mac: drop build support for swift versions earlier than version 4.1
+  * mac: fix usage of temporary pointers
+  * manpage: document off-by-one loop-file behavior</comment>
+    <requestid>874983</requestid>
+  </revision>
 </revisionlist>

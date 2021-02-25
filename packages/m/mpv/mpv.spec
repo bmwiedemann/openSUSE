@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.20
 %define lname   libmpv1
 Name:           mpv
-Version:        0.33.0+git.20210103T120530.1251f7bbf9
+Version:        0.33.0+git.20210223T124404.09d7c75bfe
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libiso9660)
 BuildRequires:  pkgconfig(libkms)
-BuildRequires:  pkgconfig(libplacebo) >= 1.18.0
+BuildRequires:  pkgconfig(libplacebo) >= 2.72.0
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libswresample) >= 3.0.100
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
