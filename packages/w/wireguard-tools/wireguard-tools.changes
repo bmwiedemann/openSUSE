@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 23 20:12:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210223
+  * embeddable-wg-library: sync latest from netlink.h
+  * completion: add help and syncconf completions
+  * sticky-sockets: do not use SO_REUSEADDR
+  * man: LOG_LEVEL variables changed name
+  * ipc: do not use fscanf with trailing \n
+  * ipc: read trailing responses after set operation
+
+-------------------------------------------------------------------
 Thu Aug 27 08:41:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 1.0.20200827

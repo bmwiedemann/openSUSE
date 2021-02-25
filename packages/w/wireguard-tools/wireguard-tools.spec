@@ -1,7 +1,7 @@
 #
 # spec file for package wireguard-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           wireguard-tools
-Version:        1.0.20200827
+Version:        1.0.20210223
 Release:        0
 Summary:        WireGuard userspace tools
 License:        GPL-2.0-only
