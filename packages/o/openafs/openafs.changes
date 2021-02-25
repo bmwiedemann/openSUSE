@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:38:07 UTC 2021 - Michael Meffie <mmeffie@sinenomine.net>
+
+- fix building of perl module AFS::ukernel  
+
+-------------------------------------------------------------------
 Mon Feb 22 11:44:25 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - kernel-source.build-modules.sh: choose safe CWD while executing the build to

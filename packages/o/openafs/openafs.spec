@@ -126,7 +126,11 @@ BuildRequires:  krb5-devel
 BuildRequires:  libtirpc-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
+%if 0%{?suse_version} < 1120
+BuildRequires:  perl-macros
+%endif
 BuildRequires:  pkg-config
+BuildRequires:  swig
 
 %if 0%{?suse_version} < 1210
 Requires(post): %insserv_prereq
@@ -366,7 +370,8 @@ export PATH_KRB5_CONFIG=%{krb5_config}
     --sysconfdir=%{_sysconfdir} \
     --mandir=%{_mandir} \
     --with-afs-sysname=$afs_sysname \
-    --disable-kernel-module
+    --disable-kernel-module \
+    --with-swig
 
 make CCFLAGS="$CFLAGS" XCFLAGS="$CFLAGS" PAM_CFLAGS="$CFLAGS" KOPTS="$CFLAGS" all_nolibafs
 make CCFLAGS="$CFLAGS" XCFLAGS="$CFLAGS" PAM_CFLAGS="$CFLAGS" KOPTS="$CFLAGS" only_libafs_tree
@@ -385,7 +390,7 @@ for flavor in %flavors_to_build; do
     pushd obj/$flavor
     find . -name "*.c" -exec sed -i '/MODULE_LICENSE(/a MODULE_INFO(retpoline, "Y");' "{}" "+"
     ./configure  --with-linux-kernel-build=/usr/src/linux-obj/%{_target_cpu}/$flavor --with-linux-kernel-headers=/usr/src/linux \
-        --disable-transarc-paths
+        --disable-transarc-paths --without-swig
     export EXTRA_CFLAGS='-DVERSION=\"%version\"'
     export LINUX_MAKE_ARCH="ARCH=%{_arch}"
     make
@@ -503,6 +508,12 @@ cp -p %{buildroot}/%{_mandir}/man8/afsd.8 %{buildroot}/%{_mandir}/man8/afsd.fuse
 mv %{buildroot}/%{_libdir}/afs/* %{buildroot}/%{_libdir}/openafs
 mv %{buildroot}/%{_libdir}/*.* %{buildroot}/%{_libdir}/openafs
 rm -rf %{buildroot}/%{_libdir}/afs
+
+# move perl module to perl vendor library path
+mkdir -p %{buildroot}/%{perl_vendorlib}/AFS
+mv %{buildroot}/%{_libdir}/perl/AFS/ukernel.pm %{buildroot}/%{perl_vendorlib}/AFS/ukernel.pm
+mkdir -p %{buildroot}%{perl_vendorarch}
+mv %{buildroot}/%{_libdir}/perl/ukernel.so %{buildroot}/%{perl_vendorarch}/ukernel.so
 
 # firewalld
 
@@ -949,6 +960,9 @@ fi
 %{_includedir}/openafs/
 %{_libdir}/openafs/libafshcrypto.so
 %{_libdir}/openafs/librokenafs.so
+%{perl_vendorarch}/ukernel.so
+%dir %{perl_vendorlib}/AFS
+%{perl_vendorlib}/AFS/ukernel.pm
 
 %files  kernel-source 
 %defattr(-,root,root)
