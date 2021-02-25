@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Feb 24 16:27:54 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Updated to version 3.14.4 (jsc#SLE-14959)
+  * versionToTuple: ignore leading strings in package versions.
+      i.e 5.3.3consortium -> 5.3.3
+  * Add error checks for integer overflow for
+    MatSeqXAIJSetPreallocation when the user provides nnz[].
+    Otherwise PetscMalloc() can produce error messages with requests to
+    absurds amount of memory.
+    Improve the error message for PetscIntMultError() and other casting
+    routines and add more seealso entries to the manual pages.
+  * Update dmlocalts.c to prevent zeroing out of locX_t after being computed
+    in TSComputeIJacobian_DMLocal.
+  * nargs.Arg: Remove interactiveness; provide useful error when key is not
+    found.
+  * DMPlexLandau: fix implicit conversion.
+  * Allow users to mistaken use openmpi or mpich when setting mpi or mpi-dir
+    and consistently use local variable 'name'
+  * Consume -help in PetscOptionsSetValue() so it can be set from RC file etc.
+  * Enable search patterns to have 'src*' at start.
+  * Fix Matlab int32 to match changed changes in PETSc data types.
+  * Generate error instead of crashing when estimating eigenvalues for
+    Chebyshev, no right hand side vector is available and the user requested
+    to not use a noisy right hand side.
+  * Fix pcmgsetlevels() for Fortran to properly convert the C MPI communictors
+    to Fortran.
+  * Fix PCMGSetLevels_MG() to support the use of MPI_COMM_NULL for
+    communicators that that live on a subset of the orginal communicator.
+  *  Add additional documentation material to PCMGSetLevels() explaining how
+     one must handle the restriction and interpolation operations that move
+     between different levels which have a different number of MPI ranks.
+  * Call PetscCUDAInitializeCheck() in
+    MatConvert_SeqAIJ_SeqAIJCUSPARSE since it uses cuSparse().
+  * Missing this sometimes produces errors in the CU tests, but other times
+    it passes. I don't understand why it is not needed.
+  * checkbadSource now prints line numbers of where it finds problems.
+  * Add support to Fortran interface for PCASMGetSubKSP() and PCGASMGetSubKSP()
+    to use PETSC_NULL_INT for first two arguments.
+  * Missing define in landaucu.cu.
+  * Fix for PCView_BJacobi() case when neither if case is statisfied.
+  * DMCreateInterpolation() requires a custom Fortran stub because it RETURNS
+    an optional vector.
+  * Add -da_refine to manual page for DMDASetRefinementFactor().
+  * AIJMKL: cannot print a scalar in case of complex.
+  * Fix memory leaks in TSTrajectoryCreate_Memory() and possibly bugs
+  * Don't generate an error if the user does not free all objects while using
+    SuperLU_DIST.
+  * -ksp_view -ksp_type gmres -pc_type gasm fails on one process. Fixed by
+    removing special case handling of size 1 that tried to reuse
+    orginal viewer as subviewer which does not work.
+  * Add KSPGMRESSetBreakdownTolerance() and -ksp_gmres_breakdown_tolerance
+    - to restore old GMRES behaviour for MOOSE.
+  * Fix bug introduced by PCASMSetSubMatType() when MAT_REUSE_MATRIX is
+    used with a different type of pmat compared to pmat[i].
+  * Always destroy previously created pmat[i] and use   MAT_INITIAL_MATRIX
+  * Clarify integers set with to ISCreateBlock() and ISBlockSetIndices() in
+    manual pages.
+  * Remove ierr = VecSetInf(ksp->vec_sol);CHKERRQ(ierr); from
+    KSPSetUp_Chebyshev() since ksp->vec_sol may not yet exist and it is not
+    needed since VecSetInf(ksp->vec_sol) is set in KSPSolve() just before
+    the actual solve if ksp->reason = KSP_DIVERGED_PC_FAILED.
+  * Remove mention of DMDAGetLocalInfoF90() since it does not exist, Fortran
+    version has same name as C version.
+  * MATSHELL: matrix sizes may not be known at creation time.
+  * Pass PetscDrawSetSave() and PetscDrawSetSaveFinalImage() to
+    PetscViewerGetSubViewer_Draw(). Otherwise MatView() on parallel matrices,
+    for example, will not generate an image file.
+  * config MPI: fix type of self.libdir (which is passed to os.path.join).
+  * MUMPS: add -DBLR_MT when configuring --with-openmp.
+  * missing PDIPM and typo in BQNLS for fortran imports.
+  * Fixed issue where scalapack matrix is created with a communicator different
+    from MPI_COMM_WORLD.
+  * Fix PetscErrorCode typos in Fortran stubs.
+  * Remove interface declarations for functions that don't exist.
+  * SNESMultiblock: add back into build (had been missing -  still untested).
+  * MATDAAD: remove vestigial references to deleted DAAD.
+  * Fix device atomics with 64-bit indices and prefer long long over int64_t
+  * petsc4py.py: set download-petsc4py-commit to None to overcome missing key
+    error.
+  * petsc4py: Update Cython build
+      * Set `language_level` to `3str` if supported (Cython >= 0.29)
+      * Initial preparations for upcoming release Cython 3.0
+      * Require Cython >= 0.24, older versions do not longer work
+  * Improve python-related entries in configure --help.
+      * add missing --download-petsc4py option.
+      * remove python options other than --with-python-exec
+        which have no effect.
+      * move --with-python-exec to PETSc section.
+  * PetscPythonFindLibrary: One more way to get pythonlib.
+    Hotfix for case when LDLIBRARY yields libpython<version>.a
+    erroneously.
+  * SLEPc: pass PYTHONPATH for slepc4py.
+  * Add manual page for MATMPIDENSE.
+  * Fix outdated mention of "-snes_ksp_ew_conv" in users manual.
+  * Improve manual pages for MatGetValuesLocal() and MatGetValues() to clarify
+    what values may be obtained with these routines.
+  * Add to manual pages the use of call XXXView(x,0) from the debugger.
+  * KSPGCR: add man pages for setting and getting restart.
+  * Put the docs for -snes_test_jacobian in SNESSetFromOptions() instead of
+    hidden away in developer routine.
+  * Improve clarity of docs for PETSC_VIEWER_SOCKET with Matlab.
+- Refactored patches:
+  * petsc-3.3-p2-no-rpath.patch
+  * petsc-3.7-fix-pastix-detection.patch
+
+-------------------------------------------------------------------
 Fri Feb  5 20:18:20 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439).

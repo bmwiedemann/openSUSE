@@ -273,4 +273,12 @@
 - Add openmpi4 flavors. (forwarded request 869850 from eeich)</comment>
     <requestid>869851</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5d54e201e3adebef285f9cda4211a4ed</srcmd5>
+    <version>3.14.4</version>
+    <time>1614274205</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875061</requestid>
+  </revision>
 </revisionlist>

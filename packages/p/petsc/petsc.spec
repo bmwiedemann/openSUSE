@@ -1,5 +1,5 @@
 #
-# spec file for package petsc
+# spec file for package %{package_name}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.14.1
-%define _vers 3_14_1
+%define vers 3.14.4
+%define _vers 3_14_4
 %define so_ver 3
 %define openblas_vers 0.3.6
 
@@ -534,8 +534,7 @@ yet supported by %{?is_opensuse:open}SUSE.
 %prep
 
 %setup -q -n petsc-%{version}
-%patch0 -p1 -b .rpath
-%patch1 -p1 -b .pastix-detect
+%autopatch -p1
 
 # Fix shebangs in packaged scripts
 find src lib config -type f -iname \*.py -exec sed -i \
