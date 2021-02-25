@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 25 10:27:35 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- bugfix release 1.6.3 (changes since 1.6.1)
+  * docs: Add waffle 1.6.3 release notes
+  * docs: Add waffle 1.6.2 release notes
+  * meson: Fix meson build if bash-completion not found
+  * meson: always install bash-completion file
+  * meson: do not replace datadir for bash completion
+  * wflinfo: use glGetStringi() only when available
+  * gitlab-ci: update to latest ci-template
+  * apple: hide GL deprecation warnings
+  * tests/gl_basic_test: fix SURFACELESS_EGL only build
+  * gbm: don't pass invalid arguments to gbm_surface_create_with_modifiers
+  * cmocka: don't require librt, when it's not unavailable
+
+-------------------------------------------------------------------
 Tue Jan 19 11:37:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Use current cmake macros
