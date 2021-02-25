@@ -149,6 +149,7 @@
   bsc#1179395: '20210223'
   bsc#1179416: '20201129'
   bsc#1179417: '20201129'
+  bsc#1181835: '20210223'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
   gh#os-autoinst/os-autoinst-distri-opensuse#11865: '20210131'
@@ -287,7 +288,7 @@
   poo#88107: '20210128'
   poo#88438: '20210222'
   poo#88440: '20210203'
-  poo#88455: '20210222'
+  poo#88455: '20210223'
   poo#88470: '20210212'
   poo#88489: '20210210'
   poo#88511: '20210209'
@@ -334,7 +335,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210223</value>
+    <value>20210225</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
