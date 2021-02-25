@@ -20,7 +20,6 @@ Name:           libdnf-plugin-txnupd
 Version:        0.1.0
 Release:        0
 Summary:        Plugin for libdnf to implement transactional updates
-
 License:        LGPL-2.1-or-later
 URL:            https://code.opensuse.org/microos/libdnf-plugin-txnupd
 # TODO: Use once releases are enabled on code.o.o
@@ -28,7 +27,14 @@ URL:            https://code.opensuse.org/microos/libdnf-plugin-txnupd
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  meson
-BuildRequires:  gcc-c++
+
+# We need at least GCC 10
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+BuildRequires:  gcc10-c++
+%else
+BuildRequires:  gcc-c++ >= 10
+%endif
+
 BuildRequires:  pkgconfig(libdnf) >= 0.58
 BuildRequires:  pkgconfig(tukit) >= 3.1.2
 
@@ -57,6 +63,7 @@ This package contains the plugin to implement transactional updates
 as a libdnf plugin. This plugin hooks into the DNF "context" for
 Micro DNF and PackageKit to enable this functionality in normal use.
 
+
 %prep
 %autosetup -p1
 
@@ -65,6 +72,12 @@ sed -e "s/'libdnf', version : '>=0.60'/'libdnf', version : '>=0.58'/" -i meson.b
 
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+# Where GCC 10 is the alternate compiler, use that
+export CC=gcc-10
+export CXX=g++-10
+%endif
+
 %meson
 %meson_build
 
@@ -82,5 +95,6 @@ echo "%{name}" > %{buildroot}%{_sysconfdir}/dnf/protected.d/txnupd.conf
 %doc README.md
 %{_libdir}/libdnf/plugins/txnupd.so
 %{_sysconfdir}/dnf/protected.d/txnupd.conf
+
 
 %changelog

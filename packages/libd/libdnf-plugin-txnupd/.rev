@@ -7,4 +7,12 @@
     <comment>Initial packaging for openSUSE</comment>
     <requestid>873593</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>717435c45dbfd034bb29fa5252ae228b</srcmd5>
+    <version>0.1.0</version>
+    <time>1614274186</time>
+    <user>RBrownSUSE</user>
+    <comment>- Use GCC 10 on openSUSE Leap 15</comment>
+    <requestid>874953</requestid>
+  </revision>
 </revisionlist>
