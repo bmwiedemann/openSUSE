@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 24 20:06:54 UTC 2021 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.89
+  + Fix a regression when writing objects larger than 10 GB during periodic
+    dirty data flush (on by default).
+  + Propagate S3 errors to errno more accurately
+  + Allow writing > 5 GB single-part objects supported by some non-AWS S3
+  + Allow configuration of multipart copy size and limit to 5 GB
+  + Allow configuration of multipart upload threshold and reduce default to
+    25 MB
+  + Set default stat timeout to 900 seconds correctly
+  + Fix data corruption while updating metadata with use_cache
+
+-------------------------------------------------------------------
 Mon Jan 11 16:48:54 UTC 2021 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.88
