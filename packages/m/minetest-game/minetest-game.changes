@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 24 18:22:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Dropped rpmlintrc
+- Update to 5.4.0:
+  * Add crafting guide
+  * Added 5 wood variants of Mese Post Light
+  * Add environment sounds for lava and active furnace
+  * Change several block sounds
+  * Fix players sleeping in an occupied bed
+  * Fix 'sleepwalking' in bed
+  * Fix sleeping player flying off the bed when damaged and flying
+    far away from the bed after death
+  * Fix sleeping player being immobilized and bed undiggable after
+    death
+  * Fix furnace infotext not always updating when removing item
+  * New translation: Slovak, Brazilian Portuguese and
+    Lojban (admittedly not a very good translation)
+  * Update existing translations
+
+-------------------------------------------------------------------
 Tue Sep  8 12:23:43 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Changed requirement for minetest-runtime to greater or equal,

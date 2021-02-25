@@ -1,7 +1,7 @@
 #
 # spec file for package minetest-game
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           minetest-game
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Minetest Game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC-BY-3.0 AND CC0-1.0
 Group:          Amusements/Games/3D/Simulation
 URL:            https://minetest.net/
 Source0:        https://github.com/minetest/minetest_game/archive/%{version}/minetest_game-%{version}.tar.gz
-Source99:       minetest-game-rpmlintrc
 BuildRequires:  fdupes
-BuildArch:      noarch
 Requires:       minetest-runtime >= %{version}
+BuildArch:      noarch
 
 %description
 The main game for the Minetest game engine.
