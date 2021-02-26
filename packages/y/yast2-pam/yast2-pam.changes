@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 15 11:03:27 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.4
+
+-------------------------------------------------------------------
 Wed Oct 14 12:42:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix initialize of packager to not break command line
