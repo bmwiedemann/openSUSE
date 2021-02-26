@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 11:03:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix lua naming
+
+-------------------------------------------------------------------
 Thu Feb 11 09:52:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %lua_provides: add the lua-mod_name provides/obsoletes to

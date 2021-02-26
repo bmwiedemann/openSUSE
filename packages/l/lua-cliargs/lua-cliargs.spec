@@ -17,7 +17,8 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define mod_name lua_cliargs
+%define mod_name luacliargs
+%define rname lua_cliargs
 %define upversion 3.0-2
 Version:        3.02
 Release:        0
@@ -25,7 +26,7 @@ Summary:        Command-line argument parsing module for Lua
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/amireh/lua_cliargs
-Source:         https://github.com/amireh/lua_cliargs/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+Source:         https://github.com/amireh/lua_cliargs/archive/v%{upversion}.tar.gz#/%{rname}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
@@ -44,7 +45,7 @@ notations and argument types.
 cliargs allows you to define required, optional, and flag arguments.
 
 %prep
-%setup -q -n %{mod_name}-%{upversion}
+%setup -q -n %{rname}-%{upversion}
 
 %build
 /bin/true
