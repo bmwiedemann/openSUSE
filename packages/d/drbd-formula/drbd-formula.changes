@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 24 08:30:45 UTC 2021 - nick wang <nwang@suse.com>
+
+- Version bump 0.4.1
+  * Support different backing device per node
+  (bsc#1179529)
+
+-------------------------------------------------------------------
 Tue Jan 19 13:44:20 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.4.0

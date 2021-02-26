@@ -19,7 +19,7 @@
 # See also https://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           drbd-formula
-Version:        0.4.0+git.1611073587.55c0dfd
+Version:        0.4.1+git.1614327740.f74a33a
 Release:        0
 Summary:        DRBD deployment salt formula
 License:        Apache-2.0
