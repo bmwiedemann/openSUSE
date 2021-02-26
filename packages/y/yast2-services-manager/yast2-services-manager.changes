@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 15 09:06:09 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.6
+
+-------------------------------------------------------------------
 Thu Aug 27 09:43:49 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Re-enable service table sorting (bsc#1165388, bsc#1174615).
