@@ -20,7 +20,7 @@
 %define         skip_python2 1
 
 Name:           python-grpcio-tools
-Version:        1.34.1
+Version:        1.35.0
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
@@ -50,6 +50,7 @@ This package provides a python-based Protobuf code generator for gRPC.
 sed -i "1{/\/usr\/bin\/env python/d}" grpc_tools/protoc.py
 
 %build
+%define _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 %python_build
 
