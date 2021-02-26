@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-ncurses
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,33 @@
 
 
 Name:           libyui-ncurses
-Version:        2.57.2
+
+# DO NOT manually bump the version here; instead, use   rake version:bump
+Version:        4.0.2
 Release:        0
-Source:         %{name}-%{version}.tar.bz2
 
-%define so_version 14
-%define bin_name %{name}%{so_version}
+%define         so_version 15
+%define         libyui_devel_version libyui-devel >= 4.0.1
+%define         bin_name %{name}%{so_version}
 
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
-BuildRequires:  cmake >= 2.8
-BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-
-# YLabel::setAutoWrap()
-%define libyui_devel_version libyui-devel >= 3.10.0
 BuildRequires:  %{libyui_devel_version}
+BuildRequires:  boost-devel
+BuildRequires:  cmake >= 3.10
+BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 
 URL:            http://github.com/libyui/
-Summary:        Libyui - Character Based User Interface
+Summary:        Libyui - NCurses (text based) user interface
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Group:          System/Libraries
+Source:         %{name}-%{version}.tar.bz2
 
 %description
-This package contains the character based (ncurses) user interface
-component for libYUI.
+This package contains the NCurses (text based) user interface
+component for libyui.
 
 
 %package -n %{bin_name}
+Summary:        Libyui - NCurses (text based) user interface
 
 Requires:       glibc-locale
 Requires:       libyui%{so_version}
@@ -57,55 +52,42 @@ Provides:       yast2-ncurses = 2.42.0
 Obsoletes:      yast2-ncurses < 2.42.0
 Provides:       yui_backend = %{so_version}
 
-URL:            http://github.com/libyui/
-Summary:        Libyui - Character Based User Interface
-Group:          System/Libraries
-
 %description -n %{bin_name}
-This package contains the character based (ncurses) user interface
-component for libYUI.
-
+This package contains the NCurses (text based) user interface
+component for libyui.
 
 
 %package devel
+Summary:        Libyui - Header fles for the NCurses (text based) user interface
 
-Requires:       %{libyui_devel_version}
-%if 0%{?suse_version} > 1325
-Requires:       libboost_headers-devel
-%else
-Requires:       boost-devel
-%endif
 Requires:       %{bin_name} = %{version}
+Requires:       %{libyui_devel_version}
+Requires:       boost-devel
 Requires:       glibc-devel
 Requires:       libstdc++-devel
 Requires:       ncurses-devel
 
-URL:            http://github.com/libyui/
-Summary:        Libyui-ncurses header files
-Group:          Development/Languages/C and C++
-
 %description devel
-This package contains the character based (ncurses) user interface
-component for libYUI.
+This package contains the header files for the NCurses
+(text based) user interface component for libyui.
 
+This package is not needed to develop libyui-based applications,
+only to develop extensions for libyui-ncurses.
 
-This can be used independently of YaST for generic (C++) applications.
-This package has very few dependencies.
 
 %package tools
 
-URL:            http://github.com/libyui/
-Summary:        Libyui-ncurses tools
+Summary:        Libyui - tools for the NCurses (text based) user interface
+Requires:       screen
 # conflict with libyui-ncurses8, /usr/bin/libyui-terminal was originally there
-Group:          System/Libraries
 Conflicts:      %{name}8
 
-Requires:       screen
-
 %description tools
-Character based (ncurses) user interface component for libYUI.
+This package contains tools for the NCurses (text based)
+user interface component for libyui:
 
 libyui-terminal - useful for testing on headless machines
+
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -115,39 +97,30 @@ libyui-terminal - useful for testing on headless machines
 export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
 export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
 
-./bootstrap.sh %{_prefix}
-
 mkdir build
 cd build
 
 %if %{?_with_debug:1}%{!?_with_debug:0}
-cmake .. \
-        -DYPREFIX=%{_prefix} \
-        -DDOC_DIR=%{_docdir} \
-        -DLIB_DIR=%{_lib} \
-        -DCMAKE_BUILD_TYPE=RELWITHDEBINFO
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"
 %else
-cmake .. \
-        -DYPREFIX=%{_prefix} \
-        -DDOC_DIR=%{_docdir} \
-        -DLIB_DIR=%{_lib} \
-        -DCMAKE_BUILD_TYPE=RELEASE
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELEASE"
 %endif
+
+cmake .. \
+ -DDOC_DIR=%{_docdir} \
+ -DLIB_DIR=%{_lib} \
+ $CMAKE_OPTS
 
 make %{?jobs:-j%jobs}
 
 %install
 cd build
 make install DESTDIR="$RPM_BUILD_ROOT"
-install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/yui
+install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0644 ../COPYING* $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 
-%clean
-rm -rf "$RPM_BUILD_ROOT"
-
 %post -n %{bin_name} -p /sbin/ldconfig
-
 %postun -n %{bin_name} -p /sbin/ldconfig
 
 %files -n %{bin_name}
@@ -162,9 +135,6 @@ rm -rf "$RPM_BUILD_ROOT"
 %dir %{_docdir}/%{bin_name}
 %{_libdir}/yui/lib*.so
 %{_prefix}/include/yui
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/cmake/%{name}
-%{_datadir}/libyui
 
 %files tools
 %defattr(-,root,root)

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb 11 13:34:20 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added keyboard shortcuts:
+    Ctrl-D Shift-G - start the debugger
+    Ctrl-D Shift-C - start the configuration console
+    (jsc#PM-1895, jsc#SLE-16263)
+- CMake fix: do not create the include/yui symlink if it already
+  exists
+- 4.0.2
+
+-------------------------------------------------------------------
+Thu Feb  4 10:19:11 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- In tables with nested items, only open/close branches with [Space],
+  don't also send an "Activated" event (bsc#1181789)
+- 4.0.1
+
+-------------------------------------------------------------------
+Mon Feb  1 14:59:06 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- New CMake build environment (bsc#1181653)
+- Bumped SO version to 15
+- 4.0.0
+
+-------------------------------------------------------------------
+Mon Feb  1 14:11:33 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Block processing the idle loop after calling the closeUI()
+  method (bsc#1181647)
+
+  The terminal was actually still used by the UI after that
+  call and there was a race condition if the started application
+  after the call also used the terminal.
+- 2.57.3
+
+-------------------------------------------------------------------
 Wed Oct 28 16:23:14 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Explicitly set item and line index in NCMultiSelectionBox and
