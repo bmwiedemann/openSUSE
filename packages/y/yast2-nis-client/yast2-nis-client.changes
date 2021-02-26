@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 17 22:12:29 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.6
+
+-------------------------------------------------------------------
 Thu Nov 19 14:39:37 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Do not ask for package installation when CLI help is called
