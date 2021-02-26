@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 25 21:50:43 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.13.1.
+  * Fix arities of VM opcodes for some floating-point operations
+    that could cause memory corruption.
+
+-------------------------------------------------------------------
 Sun Feb  7 22:48:00 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.13.0.

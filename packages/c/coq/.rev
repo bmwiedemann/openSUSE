@@ -164,4 +164,14 @@
     <comment></comment>
     <requestid>870152</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>91d5036134b0f050c301b5b3b7599e58</srcmd5>
+    <version>8.13.1</version>
+    <time>1614373194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.13.1.
+  * Fix arities of VM opcodes for some floating-point operations
+    that could cause memory corruption.</comment>
+    <requestid>875244</requestid>
+  </revision>
 </revisionlist>
