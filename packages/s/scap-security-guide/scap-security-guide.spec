@@ -1,7 +1,7 @@
 #
-# spec file for package openscap-content-stig
+# spec file for package scap-security-guide
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if ! (0%{?fedora} || 0%{?rhel} > 5)
 %if "%{_vendor}" == "debbuild"
@@ -41,75 +42,73 @@
 %endif
 
 Name:           scap-security-guide
-Version:	0.1.54
-Release:	0
-License:	BSD-3-Clause
-Summary:	XCCDF files for SUSE Linux and openSUSE
-Url:		https://github.com/ComplianceAsCode/content
+Version:        0.1.54
+Release:        0
+Summary:        XCCDF files for SUSE Linux and openSUSE
+License:        BSD-3-Clause
+Group:          Productivity/Security
+URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
-Packager:       Uyuni packagers <uyuni-devel@lists.opensuse.org>
-Group:          admin
 %else
-Group:		Productivity/Security
 %endif
-Source:		https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-BuildRequires:	cmake
+Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+BuildRequires:  cmake
 
 %if "%{_vendor}" == "debbuild"
 %{!?_licensedir:%global license %%doc}
 BuildRequires:  libopenscap8
-BuildRequires:	libxslt1.1
-BuildRequires:	libxml2-utils
-BuildRequires:	xsltproc
+BuildRequires:  libxml2-utils
+BuildRequires:  libxslt1.1
+BuildRequires:  xsltproc
 %else
-BuildRequires:	libxslt
-BuildRequires:	openscap-utils
+BuildRequires:  libxslt
+BuildRequires:  openscap-utils
 %endif
 
 %if 0%{?rhel} == 8
-BuildRequires:	python3
+BuildRequires:  python3
 %endif
 
 %if 0%{?suse_version}
-BuildRequires:	python3-xml
+BuildRequires:  python3-xml
 %endif
 
 %if 0%{?rhel} == 7
-BuildRequires:	PyYAML
+BuildRequires:  PyYAML
 %else
 %if 0%{?rhel} == 8
-BuildRequires:	python3-pyyaml
+BuildRequires:  python3-pyyaml
 %else
 %if "%{_vendor}" == "debbuild"
-BuildRequires:	python3-yaml
+BuildRequires:  python3-yaml
 %else
-BuildRequires:	python3-PyYAML
+BuildRequires:  python3-PyYAML
 %endif
 %endif
 %endif
 
 %if 0%{?rhel} == 7
-BuildRequires:	python-jinja2
+BuildRequires:  python-jinja2
 %else
 %if 0%{?rhel} == 8
-BuildRequires:	python3-jinja2
+BuildRequires:  python3-jinja2
 %else
 %if "%{_vendor}" == "debbuild"
-BuildRequires:	python3-jinja2
+BuildRequires:  python3-jinja2
 %else
-BuildRequires:	python3-Jinja2
+BuildRequires:  python3-Jinja2
 %endif
 %endif
 %endif
 
-BuildRequires:	libxml2
-BuildRequires:	expat
+BuildRequires:  expat
+BuildRequires:  libxml2
 # not on SLES currently
 %if 0%{?is_opensuse} || 0%{?fedora} || "%{_vendor}" == "debbuild"
-BuildRequires:	ansible
+BuildRequires:  ansible
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:	noarch
+BuildArch:      noarch
 
 %description
 Security Content Automation Protocol (SCAP) Security Guide for SUSE Linux.
@@ -120,8 +119,8 @@ Language), CPE (Common Platform Enumeration) and DS (Data Stream)
 files to run a compliance test on SLE12, SLE15 and openSUSE
 
 %package redhat
-Conflicts: scap-security-guide
-Summary:	XCCDF files for RHEL, CentOS, Fedora and ScientificLinux
+Summary:        XCCDF files for RHEL, CentOS, Fedora and ScientificLinux
+Group:          Productivity/Security
 
 %description redhat
 Security Content Automation Protocol (SCAP) Security Guide for Redhat/Fedora/CentOS/OracleLinux/ScientificLinux.
@@ -132,7 +131,8 @@ Language), CPE (Common Platform Enumeration) and DS (Data Stream)
 files to run a compliance test on various Redhat products, CentOS, Oracle Linux, Fedora and ScientificLinux.
 
 %package debian
-Summary:	XCCDF files for Debian
+Summary:        XCCDF files for Debian
+Group:          Productivity/Security
 
 %description debian
 Security Content Automation Protocol (SCAP) Security Guide for Debian.
@@ -143,7 +143,8 @@ Language), CPE (Common Platform Enumeration) and DS (Data Stream)
 files to run a compliance test on Debian.
 
 %package ubuntu
-Summary:	XCCDF files for Ubuntu
+Summary:        XCCDF files for Ubuntu
+Group:          Productivity/Security
 
 %description ubuntu
 Security Content Automation Protocol (SCAP) Security Guide for Ubuntu.
@@ -255,7 +256,6 @@ cd build/
 %{_datadir}/xml/scap/ssg/content/*-rh*
 %{_datadir}/xml/scap/ssg/content/*-centos*
 %{_datadir}/xml/scap/ssg/content/*-sl7*
-
 
 %files debian
 %if "%{_vendor}" != "debbuild"

@@ -9,4 +9,12 @@
 (compared to last, build also other vendor flavors interesting for SUSE Manager / Uyuni)</comment>
     <requestid>873460</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f9791d36d5670e3da6a7caf4abdefeb</srcmd5>
+    <version>0.1.54</version>
+    <time>1614373206</time>
+    <user>dimstar_suse</user>
+    <comment>- remove redhat conflict.</comment>
+    <requestid>875317</requestid>
+  </revision>
 </revisionlist>
