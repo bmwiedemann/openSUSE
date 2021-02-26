@@ -17,7 +17,8 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define mod_name    MessagePack
+%define mod_name messagepack
+%define rname MessagePack
 Version:        0.3.3
 Release:        0
 Summary:        MessagePack is an efficient binary serialization format
@@ -28,14 +29,14 @@ Source:         https://github.com/fperrad/lua-MessagePack/archive/%{version}.ta
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 Provides:       %{flavor}-MessagePack = %{version}-%{release}
-Obsoletes:      %{flavor}-NessagePack <= %{version}-%{release}
+Obsoletes:      %{flavor}-MessagePack < %{version}-%{release}
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
-Name:           lua-messagepack
+Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-messagepack
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description
@@ -46,7 +47,7 @@ It's a pure Lua implementation, without dependency.
 And it's really fast with LuaJIT.
 
 %prep
-%setup -q -n lua-%{mod_name}-%{version}
+%setup -q -n lua-%{rname}-%{version}
 
 %build
 :

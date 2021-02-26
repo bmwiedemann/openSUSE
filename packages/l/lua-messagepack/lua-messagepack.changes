@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 11:06:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix lua naming
+
+-------------------------------------------------------------------
 Thu Feb 18 18:02:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - It would be better to rename the package to MessagePack, but
