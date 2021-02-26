@@ -721,6 +721,8 @@ unsorted:
   - aria2-devel 
   - arm-ml-examples: [x86_64] 
   - arm-ml-examples-data: [x86_64] 
+  - arm-trusted-firmware 
+  - arm-trusted-firmware-tools 
   - armadillo-devel 
   - armadillo-devel-32bit: [x86_64] 
   - armadillo-doc 
@@ -5759,6 +5761,7 @@ unsorted:
   - goldendict 
   - goldendict-lang 
   - gom-devel 
+  - gomuks 
   - goobox 
   - goobox-lang 
   - goocanvas-devel 
@@ -9649,7 +9652,6 @@ unsorted:
   - libcap-ng-utils 
   - libcap-ng0-32bit: [x86_64] 
   - libcap-progs 
-  - libcap2-32bit: [x86_64] 
   - libcapi20 
   - libcapi20-3 
   - libcapi20-devel 
@@ -10551,7 +10553,7 @@ unsorted:
   - libgeners0 
   - libgensio0 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos-3_9_0 
+  - libgeos-3_9_1 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -12393,12 +12395,12 @@ unsorted:
   - libpetsc3-openmpi2 
   - libpetsc3-openmpi3 
   - libpetsc3-openmpi4 
-  - libpetsc_3_14_1-gnu-mpich-hpc 
-  - libpetsc_3_14_1-gnu-mvapich2-hpc 
-  - libpetsc_3_14_1-gnu-openmpi1-hpc 
-  - libpetsc_3_14_1-gnu-openmpi2-hpc 
-  - libpetsc_3_14_1-gnu-openmpi3-hpc 
-  - libpetsc_3_14_1-gnu-openmpi4-hpc 
+  - libpetsc_3_14_4-gnu-mpich-hpc 
+  - libpetsc_3_14_4-gnu-mvapich2-hpc 
+  - libpetsc_3_14_4-gnu-openmpi1-hpc 
+  - libpetsc_3_14_4-gnu-openmpi2-hpc 
+  - libpetsc_3_14_4-gnu-openmpi3-hpc 
+  - libpetsc_3_14_4-gnu-openmpi4-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -13122,7 +13124,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_8_4 
+  - librssguard-3_9_0 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14795,6 +14797,7 @@ unsorted:
   - lua51-argparse 
   - lua51-bit32 
   - lua51-busted 
+  - lua51-cjson 
   - lua51-cliargs 
   - lua51-compat-5.3 
   - lua51-copas 
@@ -14841,6 +14844,7 @@ unsorted:
   - lua53-alt-getopt 
   - lua53-argparse 
   - lua53-busted 
+  - lua53-cjson 
   - lua53-cliargs 
   - lua53-compat-5.3 
   - lua53-copas 
@@ -14887,6 +14891,7 @@ unsorted:
   - lua54-alt-getopt 
   - lua54-argparse 
   - lua54-busted 
+  - lua54-cjson 
   - lua54-cliargs 
   - lua54-compat-5.3 
   - lua54-copas 
@@ -19580,18 +19585,18 @@ unsorted:
   - petsc-openmpi2-devel 
   - petsc-openmpi3-devel 
   - petsc-openmpi4-devel 
-  - petsc_3_14_1-gnu-mpich-hpc-devel 
-  - petsc_3_14_1-gnu-mpich-hpc-saws 
-  - petsc_3_14_1-gnu-mvapich2-hpc-devel 
-  - petsc_3_14_1-gnu-mvapich2-hpc-saws 
-  - petsc_3_14_1-gnu-openmpi1-hpc-devel 
-  - petsc_3_14_1-gnu-openmpi1-hpc-saws 
-  - petsc_3_14_1-gnu-openmpi2-hpc-devel 
-  - petsc_3_14_1-gnu-openmpi2-hpc-saws 
-  - petsc_3_14_1-gnu-openmpi3-hpc-devel 
-  - petsc_3_14_1-gnu-openmpi3-hpc-saws 
-  - petsc_3_14_1-gnu-openmpi4-hpc-devel 
-  - petsc_3_14_1-gnu-openmpi4-hpc-saws 
+  - petsc_3_14_4-gnu-mpich-hpc-devel 
+  - petsc_3_14_4-gnu-mpich-hpc-saws 
+  - petsc_3_14_4-gnu-mvapich2-hpc-devel 
+  - petsc_3_14_4-gnu-mvapich2-hpc-saws 
+  - petsc_3_14_4-gnu-openmpi1-hpc-devel 
+  - petsc_3_14_4-gnu-openmpi1-hpc-saws 
+  - petsc_3_14_4-gnu-openmpi2-hpc-devel 
+  - petsc_3_14_4-gnu-openmpi2-hpc-saws 
+  - petsc_3_14_4-gnu-openmpi3-hpc-devel 
+  - petsc_3_14_4-gnu-openmpi3-hpc-saws 
+  - petsc_3_14_4-gnu-openmpi4-hpc-devel 
+  - petsc_3_14_4-gnu-openmpi4-hpc-saws 
   - pfsglview 
   - pfstools-devel 
   - pfstools-exr 
@@ -20541,6 +20546,8 @@ unsorted:
   - python-djvulibre-doc 
   - python-doc 
   - python-doc-pdf 
+  - python-efl-doc 
+  - python-efl-examples 
   - python-fastcluster-doc 
   - python-fedmsg-base 
   - python-fedmsg-doc 
@@ -20692,7 +20699,6 @@ unsorted:
   - python3-aexpect 
   - python3-apns2 
   - python3-arpack-ng: [x86_64] 
-  - python3-asyncssh 
   - python3-audit: [i586] 
   - python3-automaton 
   - python3-avahi-gtk 
@@ -20764,9 +20770,6 @@ unsorted:
   - python3-dtfabric 
   - python3-ec2imgutils 
   - python3-ec2metadata 
-  - python3-efl 
-  - python3-efl-doc 
-  - python3-efl-examples 
   - python3-enforce-pep8 
   - python3-espressomd 
   - python3-evemu 
@@ -20810,7 +20813,6 @@ unsorted:
   - python3-hiredis 
   - python3-hivex 
   - python3-httpie 
-  - python3-hug 
   - python3-hyper 
   - python3-img-proof 
   - python3-img-proof-tests 
@@ -21399,6 +21401,7 @@ unsorted:
   - python36-async_generator 
   - python36-async_timeout 
   - python36-asyncpg 
+  - python36-asyncssh 
   - python36-asynctest 
   - python36-atlassian-python-api 
   - python36-atom 
@@ -21421,7 +21424,6 @@ unsorted:
   - python36-autoflake 
   - python36-autopep8 
   - python36-autoupgrade-ng 
-  - python36-av 
   - python36-avahi 
   - python36-avocado-plugins-vt 
   - python36-avro 
@@ -22015,6 +22017,7 @@ unsorted:
   - python36-django-nose 
   - python36-django-oauth-toolkit 
   - python36-django-oidc-provider 
+  - python36-django-oscar 
   - python36-django-pandas 
   - python36-django-parler 
   - python36-django-perf-rec 
@@ -22097,6 +22100,7 @@ unsorted:
   - python36-editdistance 
   - python36-editdistance-devel 
   - python36-efilter 
+  - python36-efl 
   - python36-elasticsearch 
   - python36-elasticsearch-dsl 
   - python36-elementpath 
@@ -22671,6 +22675,7 @@ unsorted:
   - python36-netaddr 
   - python36-netifaces 
   - python36-netmiko 
+  - python36-networkx 
   - python36-nine 
   - python36-nltk 
   - python36-nocasedict 
@@ -23711,6 +23716,7 @@ unsorted:
   - python36-ua-parser 
   - python36-uamqp 
   - python36-ucsmsdk 
+  - python36-ufoLib2 
   - python36-ufonormalizer 
   - python36-ujson 
   - python36-uncertainties 
@@ -23901,7 +23907,7 @@ unsorted:
   - python38-BTrees 
   - python38-BTrees-devel 
   - python38-BitVector 
-  - python38-Bottleneck 
+  - python38-Bottleneck: [i586] 
   - python38-Brotli 
   - python38-CCColUtils 
   - python38-CacheControl 
@@ -24199,6 +24205,7 @@ unsorted:
   - python38-asv 
   - python38-async_timeout 
   - python38-asyncpg 
+  - python38-asyncssh 
   - python38-atlassian-python-api 
   - python38-atom 
   - python38-atomicwrites 
@@ -24810,6 +24817,7 @@ unsorted:
   - python38-django-nose 
   - python38-django-oauth-toolkit 
   - python38-django-oidc-provider 
+  - python38-django-oscar 
   - python38-django-pandas 
   - python38-django-parler 
   - python38-django-perf-rec 
@@ -24889,6 +24897,7 @@ unsorted:
   - python38-editdistance 
   - python38-editdistance-devel 
   - python38-efilter 
+  - python38-efl 
   - python38-elasticsearch 
   - python38-elasticsearch-dsl 
   - python38-elementpath 
@@ -25125,6 +25134,7 @@ unsorted:
   - python38-httpretty 
   - python38-httpsig_cffi 
   - python38-httptools 
+  - python38-hug 
   - python38-humanfriendly 
   - python38-humanhash3 
   - python38-humanize 
@@ -25517,7 +25527,7 @@ unsorted:
   - python38-numba-devel 
   - python38-numcodecs 
   - python38-numericalunits 
-  - python38-numexpr 
+  - python38-numexpr: [i586] 
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
@@ -25584,7 +25594,7 @@ unsorted:
   - python38-pampy 
   - python38-pamqp 
   - python38-pan-python 
-  - python38-pandas 
+  - python38-pandas: [i586] # suggested by dvd:suggested:patterns-server-directory_server 
   - python38-pandas-datareader 
   - python38-pandas-ext 
   - python38-pandocfilters 
@@ -26255,7 +26265,7 @@ unsorted:
   - python38-scikit-sound 
   - python38-scikit-sparse: [x86_64] 
   - python38-scikit-umfpack: [x86_64] 
-  - python38-scipy: [i586] 
+  - python38-scipy: [i586] # suggested by dvd:suggested:patterns-server-directory_server 
   - python38-scipy-gnu-hpc: [x86_64] 
   - python38-scipy_1_6_0-gnu-hpc: [x86_64] 
   - python38-scp 
@@ -27453,7 +27463,6 @@ unsorted:
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-ruby-shadow-doc 
   - ruby2.7-rubygem-ruby_dep-doc 
-  - ruby2.7-rubygem-ruby_dep-doc-1_3 
   - ruby2.7-rubygem-unicorn-doc 
   - ruby2.7-rubygem-unicorn-testsuite 
   - ruby3.0-devel 
@@ -27461,7 +27470,6 @@ unsorted:
   - ruby3.0-doc 
   - ruby3.0-doc-ri 
   - ruby3.0-rubygem-Ascii85 
-  - ruby3.0-rubygem-abstract 
   - ruby3.0-rubygem-abstract_method 
   - ruby3.0-rubygem-actioncable-5.2 
   - ruby3.0-rubygem-actioncable-6.0 
@@ -27486,7 +27494,6 @@ unsorted:
   - ruby3.0-rubygem-amq-protocol 
   - ruby3.0-rubygem-archive-tar-minitar 
   - ruby3.0-rubygem-arel 
-  - ruby3.0-rubygem-arel-8 
   - ruby3.0-rubygem-asciidoctor 
   - ruby3.0-rubygem-ast 
   - ruby3.0-rubygem-atomic 
@@ -27523,7 +27530,6 @@ unsorted:
   - ruby3.0-rubygem-cheetah 
   - ruby3.0-rubygem-chef-utils 
   - ruby3.0-rubygem-childprocess 
-  - ruby3.0-rubygem-childprocess-0_6 
   - ruby3.0-rubygem-childprocess-2.0 
   - ruby3.0-rubygem-ci_reporter 
   - ruby3.0-rubygem-cleanroom 
@@ -27533,7 +27539,6 @@ unsorted:
   - ruby3.0-rubygem-coffee-script 
   - ruby3.0-rubygem-coffee-script-source 
   - ruby3.0-rubygem-colorator 
-  - ruby3.0-rubygem-colorator-0 
   - ruby3.0-rubygem-colored 
   - ruby3.0-rubygem-colorize 
   - ruby3.0-rubygem-columnize 
@@ -27558,7 +27563,6 @@ unsorted:
   - ruby3.0-rubygem-diffy 
   - ruby3.0-rubygem-dig_rb 
   - ruby3.0-rubygem-docile 
-  - ruby3.0-rubygem-docile-1_1 
   - ruby3.0-rubygem-domain_name 
   - ruby3.0-rubygem-dry-configurable 
   - ruby3.0-rubygem-dry-container 
@@ -27581,7 +27585,6 @@ unsorted:
   - ruby3.0-rubygem-fake_ftp 
   - ruby3.0-rubygem-fake_ftp-0_1 
   - ruby3.0-rubygem-faraday 
-  - ruby3.0-rubygem-faraday-0_12 
   - ruby3.0-rubygem-faraday-net_http 
   - ruby3.0-rubygem-faraday_middleware 
   - ruby3.0-rubygem-faraday_middleware-multi_json 
@@ -27619,8 +27622,6 @@ unsorted:
   - ruby3.0-rubygem-hashicorp-checkpoint 
   - ruby3.0-rubygem-hashie 
   - ruby3.0-rubygem-highline 
-  - ruby3.0-rubygem-highline-1_6 
-  - ruby3.0-rubygem-highline-1_7 
   - ruby3.0-rubygem-hike 
   - ruby3.0-rubygem-hike-1_2 
   - ruby3.0-rubygem-hitimes 
@@ -27632,9 +27633,6 @@ unsorted:
   - ruby3.0-rubygem-http_accept_language 
   - ruby3.0-rubygem-http_parser.rb 
   - ruby3.0-rubygem-httpclient 
-  - ruby3.0-rubygem-i18n-0_6 
-  - ruby3.0-rubygem-i18n-0_9 
-  - ruby3.0-rubygem-i18n-1.1 
   - ruby3.0-rubygem-ice_nine 
   - ruby3.0-rubygem-inifile 
   - ruby3.0-rubygem-ipaddress 
@@ -27643,7 +27641,6 @@ unsorted:
   - ruby3.0-rubygem-jekyll-sass-converter 
   - ruby3.0-rubygem-jekyll-watch 
   - ruby3.0-rubygem-jmespath 
-  - ruby3.0-rubygem-journey-1_0 
   - ruby3.0-rubygem-jquery-rails 
   - ruby3.0-rubygem-jquery-ui-rails 
   - ruby3.0-rubygem-js-routes 
@@ -27652,7 +27649,6 @@ unsorted:
   - ruby3.0-rubygem-json-schema 
   - ruby3.0-rubygem-json_pure 
   - ruby3.0-rubygem-jwt 
-  - ruby3.0-rubygem-jwt-1_5 
   - ruby3.0-rubygem-kgio 
   - ruby3.0-rubygem-kramdown 
   - ruby3.0-rubygem-kramdown-parser-gfm 
@@ -27663,14 +27659,12 @@ unsorted:
   - ruby3.0-rubygem-lightbox2 
   - ruby3.0-rubygem-liquid 
   - ruby3.0-rubygem-liquid-4 
-  - ruby3.0-rubygem-listen 
   - ruby3.0-rubygem-little-plugger 
   - ruby3.0-rubygem-locale 
   - ruby3.0-rubygem-log4r 
   - ruby3.0-rubygem-logging 
   - ruby3.0-rubygem-lolcat 
   - ruby3.0-rubygem-mail 
-  - ruby3.0-rubygem-mail-2_5 
   - ruby3.0-rubygem-manpages 
   - ruby3.0-rubygem-marcel 
   - ruby3.0-rubygem-mercenary 
@@ -27693,7 +27687,6 @@ unsorted:
   - ruby3.0-rubygem-mobileesp_converted 
   - ruby3.0-rubygem-mocha 
   - ruby3.0-rubygem-moneta 
-  - ruby3.0-rubygem-moneta-0_7 
   - ruby3.0-rubygem-multi_json 
   - ruby3.0-rubygem-multi_xml 
   - ruby3.0-rubygem-multipart-post 
@@ -27703,15 +27696,11 @@ unsorted:
   - ruby3.0-rubygem-mysql2 
   - ruby3.0-rubygem-net-ldap 
   - ruby3.0-rubygem-net-scp 
-  - ruby3.0-rubygem-net-scp-1_1 
   - ruby3.0-rubygem-net-scp-1_2 
   - ruby3.0-rubygem-net-sftp 
   - ruby3.0-rubygem-net-ssh 
-  - ruby3.0-rubygem-net-ssh-4_1 
-  - ruby3.0-rubygem-net-ssh-5.1 
   - ruby3.0-rubygem-net-ssh-gateway 
   - ruby3.0-rubygem-net-ssh-multi 
-  - ruby3.0-rubygem-net-ssh-multi-1_1 
   - ruby3.0-rubygem-netrc 
   - ruby3.0-rubygem-nori 
   - ruby3.0-rubygem-oauth 
@@ -27722,7 +27711,6 @@ unsorted:
   - ruby3.0-rubygem-omniauth-google-oauth2 
   - ruby3.0-rubygem-omniauth-oauth 
   - ruby3.0-rubygem-omniauth-oauth2 
-  - ruby3.0-rubygem-open4 
   - ruby3.0-rubygem-openid_connect 
   - ruby3.0-rubygem-optimist 
   - ruby3.0-rubygem-orm_adapter 
@@ -27755,15 +27743,11 @@ unsorted:
   - ruby3.0-rubygem-puma-4 
   - ruby3.0-rubygem-puma_worker_killer 
   - ruby3.0-rubygem-pundit 
-  - ruby3.0-rubygem-rack-1_3 
-  - ruby3.0-rubygem-rack-1_4 
   - ruby3.0-rubygem-rack-1_6 
   - ruby3.0-rubygem-rack-2.0 
   - ruby3.0-rubygem-rack-accept 
-  - ruby3.0-rubygem-rack-cache-1_2 
   - ruby3.0-rubygem-rack-oauth2 
   - ruby3.0-rubygem-rack-protection 
-  - ruby3.0-rubygem-rack-ssl-1_3 
   - ruby3.0-rubygem-rails-5.2 
   - ruby3.0-rubygem-rails-6.0 
   - ruby3.0-rubygem-rails-deprecated_sanitizer 
@@ -27776,7 +27760,6 @@ unsorted:
   - ruby3.0-rubygem-rake-compiler 
   - ruby3.0-rubygem-rb-kqueue 
   - ruby3.0-rubygem-rdiscount 
-  - ruby3.0-rubygem-rdoc-4 
   - ruby3.0-rubygem-regexp_parser 
   - ruby3.0-rubygem-responders 
   - ruby3.0-rubygem-rest-client 
@@ -27786,7 +27769,6 @@ unsorted:
   - ruby3.0-rubygem-rice 
   - ruby3.0-rubygem-ronn 
   - ruby3.0-rubygem-rouge 
-  - ruby3.0-rubygem-rouge-1 
   - ruby3.0-rubygem-rpm 
   - ruby3.0-rubygem-rspec 
   - ruby3.0-rubygem-rspec-3_5 
@@ -27834,10 +27816,6 @@ unsorted:
   - ruby3.0-rubygem-sinatra 
   - ruby3.0-rubygem-slim 
   - ruby3.0-rubygem-slop 
-  - ruby3.0-rubygem-slop-3 
-  - ruby3.0-rubygem-slop-3_3 
-  - ruby3.0-rubygem-sprockets-2_1 
-  - ruby3.0-rubygem-sprockets-2_2 
   - ruby3.0-rubygem-sprockets-3.7 
   - ruby3.0-rubygem-sprockets-helpers 
   - ruby3.0-rubygem-sshkit 
@@ -27851,8 +27829,6 @@ unsorted:
   - ruby3.0-rubygem-text 
   - ruby3.0-rubygem-text-hyphen 
   - ruby3.0-rubygem-thor-0_19 
-  - ruby3.0-rubygem-tilt-1_1 
-  - ruby3.0-rubygem-tilt-1_4 
   - ruby3.0-rubygem-timers 
   - ruby3.0-rubygem-tmuxinator 
   - ruby3.0-rubygem-tomlrb 
@@ -27869,23 +27845,18 @@ unsorted:
   - ruby3.0-rubygem-unicode-display_width 
   - ruby3.0-rubygem-unicode-display_width-1 
   - ruby3.0-rubygem-unicorn-worker-killer 
-  - ruby3.0-rubygem-url_safe_base64 
   - ruby3.0-rubygem-vagrant-spec 
   - ruby3.0-rubygem-vagrant_cloud 
   - ruby3.0-rubygem-validate_email 
   - ruby3.0-rubygem-validate_url 
   - ruby3.0-rubygem-virtus 
   - ruby3.0-rubygem-warden 
-  - ruby3.0-rubygem-web-console-2 
   - ruby3.0-rubygem-webfinger 
-  - ruby3.0-rubygem-webmock-1_2 
   - ruby3.0-rubygem-webmock-2_3 
   - ruby3.0-rubygem-websocket 
   - ruby3.0-rubygem-websocket-driver 
-  - ruby3.0-rubygem-websocket-driver-0_6 
   - ruby3.0-rubygem-websocket-extensions 
   - ruby3.0-rubygem-winrm 
-  - ruby3.0-rubygem-winrm-2_1 
   - ruby3.0-rubygem-winrm-elevated 
   - ruby3.0-rubygem-winrm-fs 
   - ruby3.0-rubygem-xdg 
@@ -28857,6 +28828,7 @@ unsorted:
   - system-user-prometheus 
   - system-user-uuidd 
   - systemd-coredump 
+  - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
   - systemd-journal-remote 
