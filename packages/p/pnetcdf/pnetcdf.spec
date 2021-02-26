@@ -1,7 +1,7 @@
 #
-# spec file for package pnetcdf
+# spec file for package %package_name
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname pnetcdf
-%define ver 1.12.1
-%define _ver 1_12_1
+%define ver 1.12.2
+%define _ver 1_12_2
 %define sonum 4
 %define libname libpnetcdf
 # no burst buffering
@@ -570,7 +570,7 @@ unset CC CXX F77 F90 FC
 #sed -ie "s@#! /bin/sh@#! /bin/sh -x@" ./configure
 %hpc_configure --with-mpi=$MPI_DIR --enable-shared \
 	       %{?with_b_buff:--enable-burst-buffering}
-%make_build FFLAGS+=-std=legacy 
+%make_build FFLAGS+=-std=legacy
 %endif
 
 mkdir shared
