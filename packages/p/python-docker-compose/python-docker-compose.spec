@@ -42,7 +42,12 @@ BuildRequires:  %{python_module texttable >= 0.9.1}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} >= 1500
+Requires:       (docker or podman >= 3.0)
+Suggests:       podman >= 3.0
+%else
 Requires:       docker
+%endif
 Requires:       python-PySocks >= 1.5.6
 Requires:       python-PyYAML >= 3.10
 Requires:       python-cached-property >= 1.2.0

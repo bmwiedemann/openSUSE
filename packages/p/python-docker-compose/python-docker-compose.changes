@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 25 10:32:51 UTC 2021 - Duncan Mac-Vicar <dmacvicar@suse.com>
+
+- Reintroduce container runtime requirement accepting both podman
+  and docker. 
+
+-------------------------------------------------------------------
+Wed Feb 24 12:34:31 UTC 2021 - Duncan Mac-Vicar <dmacvicar@suse.com>
+
+- Remove requirement on the docker package.
+  docker-compose uses the API and can use podman >= 3.0 compatible
+  API as well.
+
+-------------------------------------------------------------------
 Thu Jan 28 10:49:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Since we have alternatives for the docker-compose script, drop the

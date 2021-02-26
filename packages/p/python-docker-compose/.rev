@@ -157,4 +157,12 @@
   if python2 guard for Provides/Obsoletes docker-compose. (bsc#1181497)</comment>
     <requestid>867433</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>fa3fbd89263031da384e0cc24dc6c20d</srcmd5>
+    <version>1.26.2</version>
+    <time>1614373158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875166</requestid>
+  </revision>
 </revisionlist>
