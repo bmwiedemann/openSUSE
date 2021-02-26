@@ -2,7 +2,7 @@ Index: config.sample.inc.php
 ===================================================================
 --- config.sample.inc.php.orig
 +++ config.sample.inc.php
-@@ -12,13 +12,56 @@
+@@ -10,13 +10,56 @@
  declare(strict_types=1);
  
  /**
@@ -60,7 +60,7 @@ Index: config.sample.inc.php
   */
  $i = 0;
  
-@@ -26,44 +69,153 @@ $i = 0;
+@@ -24,44 +67,153 @@ $i = 0;
   * First server
   */
  $i++;
@@ -254,28 +254,28 @@ Index: libraries/vendor_config.php
  /**
   * Directory where cache files are stored.
   */
--define('TEMP_DIR', ROOT_PATH . 'tmp/');
-+define('TEMP_DIR', '@tmpdir@/');
+-define('TEMP_DIR', ROOT_PATH . 'tmp' . DIRECTORY_SEPARATOR);
++define('TEMP_DIR', '@tmpdir@' . DIRECTORY_SEPARATOR);
  
  /**
   * Path to changelog file, can be gzip compressed. Useful when you want to
   * have documentation somewhere else, eg. /usr/share/doc.
   */
 -define('CHANGELOG_FILE', ROOT_PATH . 'ChangeLog');
-+define('CHANGELOG_FILE', '@docdir@/ChangeLog');
++define('CHANGELOG_FILE', '@docdir@' . DIRECTORY_SEPARATOR . 'ChangeLog');
  
  /**
   * Path to license file. Useful when you want to have documentation somewhere
   * else, eg. /usr/share/doc.
   */
 -define('LICENSE_FILE', ROOT_PATH . 'LICENSE');
-+define('LICENSE_FILE', '@docdir@/LICENSE');
++define('LICENSE_FILE', '@docdir@' . DIRECTORY_SEPARATOR . 'LICENSE');
  
  /**
   * Directory where SQL scripts to create/upgrade configuration storage reside.
   */
--define('SQL_DIR', ROOT_PATH . 'sql/');
-+define('SQL_DIR', '@docdir@/sql/');
+-define('SQL_DIR', ROOT_PATH . 'sql' . DIRECTORY_SEPARATOR);
++define('SQL_DIR', '@docdir@' . DIRECTORY_SEPARATOR . 'sql' . DIRECTORY_SEPARATOR);
  
  /**
   * Directory where configuration files are stored.
@@ -283,7 +283,7 @@ Index: libraries/vendor_config.php
   * define used further in this file.
   */
 -define('CONFIG_DIR', ROOT_PATH);
-+define('CONFIG_DIR', '@sysconfdir@/');
++define('CONFIG_DIR', '@sysconfdir@' . DIRECTORY_SEPARATOR);
  
  /**
   * Filename of a configuration file.

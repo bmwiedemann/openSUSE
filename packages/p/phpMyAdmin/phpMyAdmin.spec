@@ -1,7 +1,7 @@
 #
 # spec file for package phpMyAdmin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define apache_group    nogroup
 %endif
 Name:           phpMyAdmin
-Version:        5.0.4
+Version:        5.1.0
 Release:        0
 Summary:        Administration of MySQL over the web
 License:        GPL-2.0-or-later
@@ -99,8 +99,8 @@ Summary:        Apache configuration for %{name}
 Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2
-Requires:       apache2
 Requires:       %{name}
+Requires:       apache2
 Requires(post): %{_sbindir}/a2enmod
 Requires(post): %{_sbindir}/a2enflag
 Requires(post): php
@@ -128,9 +128,6 @@ for file in *.orig .buildinfo .gitkeep .travis.yml .weblate .jshintrc .eslintrc.
   find . -type f -name $file -delete
 done
 
-# set proper shebang
-sed -i 's/env php/php/' vendor/phpmyadmin/sql-parser/bin/*-query
-
 # permissions
 find . -type d -exec chmod 755 {} \;
 find . ! -name '*.sh' ! -name '*-query' -type f -exec chmod 644 {} \;
@@ -140,7 +137,7 @@ find . ! -name '*.sh' ! -name '*-query' -type f -exec chmod 644 {} \;
 %install
 #%%{__install} -d -m0750 $RPM_BUILD_ROOT%%{_sysconfdir}/%%{name}
 install -d -m0755 %{buildroot}%{ap_docroot}/%{name}
-cp -dR *.css *.php *.ico *.yml js libraries locale themes templates vendor \
+cp -dR *.css *.php *.ico *.txt js libraries locale themes templates vendor \
   %{buildroot}%{ap_docroot}/%{name}
 # install config to config dir
 install -D -m0640 %{buildroot}%{ap_docroot}/%{name}/config.sample.inc.php \
@@ -268,10 +265,7 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/config.inc.php
 %dir %{ap_docroot}/%{name}
 %exclude %{ap_docroot}/%{name}/locale/*/LC_MESSAGES/phpmyadmin.mo
-%exclude %{ap_docroot}/%{name}/vendor/paragonie/random_compat/build-phar.sh
 %exclude %{ap_docroot}/%{name}/vendor/phpmyadmin/sql-parser/locale/*/LC_MESSAGES/sqlparser.mo
-%exclude %{ap_docroot}/%{name}/vendor/twig/twig/drupal_test.sh
-%attr (755,root,root) %{ap_docroot}/%{name}/vendor/phpmyadmin/sql-parser/bin/*-query
 
 %files apache
 %config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
