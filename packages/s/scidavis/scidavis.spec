@@ -1,7 +1,7 @@
 #
 # spec file for package scidavis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Quentin Denis <quentin@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,14 +29,18 @@ Source0:        https://github.com/highperformancecoder/scidavis/archive/2.3.0.t
 Source1:        scidavis-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Adapt-scidavis-for-openSUSE.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Adapt-scidavis-for-Leap.patch
 BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  liborigin-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
+%if 0%{?suse_version} >= 1550
 BuildRequires:  python3-sip4
 BuildRequires:  python3-sip4-devel
+%endif
 BuildRequires:  qwt-devel
 BuildRequires:  qwtplot3d-devel
 BuildRequires:  zlib-devel
@@ -63,6 +67,9 @@ QtiPlot, Labplot and Gnuplot.
 %prep
 %setup -q
 %patch0 -p1
+%if 0%{?suse_version} < 1550
+%patch1 -p1
+%endif
 
 %build
 export PYTHON=python3

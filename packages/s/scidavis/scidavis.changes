@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 23 11:03:17 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to set the sip directory to the one used in SLE/Leap
+  * 0001-Adapt-scidavis-for-Leap.patch
+
+-------------------------------------------------------------------
 Thu Dec 10 08:03:55 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.3.0
