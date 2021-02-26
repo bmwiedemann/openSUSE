@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 15 17:44:17 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Handle a special keyboard shortcut for starting the installation
+  console (jsc#PM-1895, jsc#SLE-16263)
+- 4.3.12
+
+-------------------------------------------------------------------
 Thu Nov 19 10:13:01 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Removed Requires / BuildRequires to libyui (build failure)
