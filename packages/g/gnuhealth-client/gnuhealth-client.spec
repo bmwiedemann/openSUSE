@@ -45,7 +45,20 @@ BuildRequires:  update-desktop-files
 
 Requires:       gobject-introspection
 Requires:       opencv
-%{?python_enable_dependency_generator}
+Requires:       python3-GooCalendar >= 0.5
+Requires:       python3-cairo
+Requires:       python3-chardet
+Requires:       python3-dateutil
+Requires:       python3-gnupg
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
+Requires:       python3-gobject-cairo
+Requires:       python3-numpy
+Requires:       python3-opencv
+Requires:       python3-pytz
+Requires:       python3-setuptools
+Requires:       python3-simplejson
+Requires:       python3-xml
 
 BuildArch:      noarch
 
