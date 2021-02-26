@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 15 07:43:53 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.3
+
+-------------------------------------------------------------------
 Mon Aug 10 16:48:09 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(sysconfig) into the spec file
