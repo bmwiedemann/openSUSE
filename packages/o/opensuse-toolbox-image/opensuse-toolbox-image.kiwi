@@ -48,6 +48,7 @@
     <package name="ltrace"/>
     <package name="traceroute"/>
     <package name="iputils"/>
+    <package name="socat"/>
     <package name="supportutils"/>
     <package name="tcpdump"/>
     <package name="vim"/>

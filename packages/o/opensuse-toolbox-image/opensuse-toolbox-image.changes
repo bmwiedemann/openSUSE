@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 25 17:44:43 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add socat to the container
+
+-------------------------------------------------------------------
 Tue May 12 12:10:09 UTC 2020 - Olaf Kirch <okir@okir.suse.com>
 
 - Add container-support-utils
