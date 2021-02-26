@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Fri Feb 26 12:26:46 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#799
+- added CI based on Leap since Tumbleweed is currently broken
+- 4.3.89
+
+--------------------------------------------------------------------
+Thu Feb 4 08:33:12 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#798
+- handle logical partitions in Pool::create_partitions
+- 4.3.88
+
+--------------------------------------------------------------------
+Mon Feb 1 10:56:10 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#797
+- added function to calculate size of underlying devices of MD RAID
+- added unit tests
+- updated documentation
+- 4.3.87
+
+--------------------------------------------------------------------
 Fri Jan 29 13:36:24 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#796
