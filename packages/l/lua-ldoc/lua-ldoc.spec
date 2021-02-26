@@ -17,14 +17,15 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define mod_name LDoc
+%define mod_name ldoc
+%define rname LDoc
 Version:        1.4.6
 Release:        0
 Summary:        LuaDoc-compatible documentation generation system
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/stevedonovan/LDoc
-Source:         https://github.com/stevedonovan/LDoc/archive/%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+Source:         https://github.com/stevedonovan/LDoc/archive/%{version}.tar.gz#/%{rname}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildArch:      noarch
 Requires:       %{flavor}
@@ -43,7 +44,7 @@ to render comments, as well as integrated readme documentation
 and pretty-printed example files.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%setup -q -n %{rname}-%{version}
 
 %build
 /bin/true
