@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ecs-init
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define short_name amazon-ecs
 Name:           amazon-ecs-init
-Version:        1.18.0
+Version:        1.50.1
 Release:        0
 Summary:        Amazon EC2 Container Service Initialization
 License:        Apache-2.0
@@ -29,14 +29,12 @@ Source1:        %{short_name}.service
 Patch0:         reproducible.patch
 BuildRequires:  go
 BuildRequires:  pkgconfig(systemd)
-%if 0%{?is_opensuse}
-Requires:       docker >= 1.6.0
-%else
 # We cannot handle cross module dependencies properly, i.e. one module can
-# onlyd depend on one other module, instead of having a one to many
-# dependency construct.
+# only depend on one other module, instead of having a one to many
+# dependency construct. While docker is a hard requirement this cannot be
+# expressed here and we use Recommends. AS we want to have openSUSE and SLE
+# behave in the same way openSUSE has to suffer the same "brokenness"
 Recommends:     docker >= 1.6.0
-%endif
 Requires:       systemd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 x86_64 aarch64
