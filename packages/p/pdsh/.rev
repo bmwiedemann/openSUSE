@@ -340,4 +340,13 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
 - Simplify convoluted condition - no need for Leap 42.2 support. (forwarded request 867407 from eeich)</comment>
     <requestid>867414</requestid>
   </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>57dcf2f3b8e4e93204d728ab1f9cad90</srcmd5>
+    <version>2.34</version>
+    <time>1614373176</time>
+    <user>dimstar_suse</user>
+    <comment>- Add an explicit Conflicts: when pdsh is rebuilt for a
+  non-default version of Slurm. (forwarded request 875190 from eeich)</comment>
+    <requestid>875192</requestid>
+  </revision>
 </revisionlist>

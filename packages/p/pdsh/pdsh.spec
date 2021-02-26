@@ -76,6 +76,7 @@ Requires:       %pname = %{version}
 Enhances:       slurm%{?_slurm_version}
 %if 0%{?_slurm_version:1}
 Provides:       %{pname}-slurm = %{version}
+Conflicts:      %{pname}-slurm
 %endif
 
 %description -n %{pname}-slurm%{?_slurm_version}
