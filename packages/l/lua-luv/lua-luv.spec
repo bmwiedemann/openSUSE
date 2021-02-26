@@ -36,7 +36,6 @@ BuildRequires:  cmake
 %endif
 %bcond_with public_lib
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
@@ -55,6 +54,7 @@ Source:         https://github.com/luvit/%{mod_name}/archive/%{upver}.tar.gz#/%{
 Patch0:         skip-failing-test.patch
 BuildRequires:  libuv-devel
 BuildRequires:  lua-macros
+%lua_provides
 %if 0%{?suse_version} && "%{flavor}" == "lua"
 ExclusiveArch:  do_not_build
 %endif

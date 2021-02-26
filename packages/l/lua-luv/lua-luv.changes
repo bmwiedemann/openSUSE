@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 11:05:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix placement of %lua_provides
+
+-------------------------------------------------------------------
 Thu Feb 18 15:59:51 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning
