@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 18 16:18:21 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon Aug 10 12:40:23 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(dns-server) into the spec file
