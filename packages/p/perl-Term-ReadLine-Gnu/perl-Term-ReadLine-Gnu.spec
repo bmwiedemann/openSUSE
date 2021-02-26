@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Term-ReadLine-Gnu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Term-ReadLine-Gnu
 Name:           perl-Term-ReadLine-Gnu
-Version:        1.37
+Version:        1.40
 Release:        0
 Summary:        Perl extension for the GNU Readline/History Library
 License:        Artistic-1.0 OR GPL-1.0-or-later
