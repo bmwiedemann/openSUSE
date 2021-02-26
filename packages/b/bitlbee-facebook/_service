@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionprefix">1.2.1+git</param>
+    <param name="versionprefix">1.2.2+git</param>
     <param name="url">https://github.com/bitlbee/bitlbee-facebook.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git*</param>

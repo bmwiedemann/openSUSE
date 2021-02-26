@@ -87,4 +87,17 @@
     (gh#bitlbee/bitlbee-facebook#197)</comment>
     <requestid>871240</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c4af59aa85fe320a774f5e55751d39eb</srcmd5>
+    <version>1.2.2+git.1614281748.a31ccbe</version>
+    <time>1614373189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2+git.1614281748.a31ccbe:
+  * configure: drop the unnecessary AC_PROG_CC macro check (#211)
+  * Release 1.2.2
+  * configure: change obsolete AC_PROG_CC_C99 for AC_PROG_CC
+  * Force sync_interval to the new default if it's 5 minutes or lower
+  * Replace travis with github actions, fix OBS (#210)</comment>
+    <requestid>875229</requestid>
+  </revision>
 </revisionlist>

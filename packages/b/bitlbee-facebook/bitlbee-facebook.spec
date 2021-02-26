@@ -18,7 +18,7 @@
 
 %define from_checkout 1
 Name:           bitlbee-facebook
-Version:        1.2.1+git.1611145185.49ea312
+Version:        1.2.2+git.1614281748.a31ccbe
 Release:        0
 Summary:        The Facebook protocol plugin for bitlbee
 License:        GPL-2.0-only

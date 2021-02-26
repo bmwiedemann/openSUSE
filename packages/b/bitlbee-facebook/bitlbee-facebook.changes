@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 25 19:42:23 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 1.2.2+git.1614281748.a31ccbe:
+  * configure: drop the unnecessary AC_PROG_CC macro check (#211)
+  * Release 1.2.2
+  * configure: change obsolete AC_PROG_CC_C99 for AC_PROG_CC
+  * Force sync_interval to the new default if it's 5 minutes or lower
+  * Replace travis with github actions, fix OBS (#210)
+
+-------------------------------------------------------------------
 Thu Feb 04 14:08:56 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 1.2.1+git.1611145185.49ea312:
