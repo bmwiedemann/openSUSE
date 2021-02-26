@@ -1,7 +1,0 @@
----
-:preamble: |-
-  BuildRequires: file-devel
-:sources:
-  - rubygem-ruby-filemagic-rpmlintrc
-:post_install: |-
-  rm %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_full_name}/test/pylink
