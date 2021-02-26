@@ -274,4 +274,12 @@
     <comment>- Update to release 9.6</comment>
     <requestid>873994</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2eefd52519b9d1a36d0b51d863bd5d60</srcmd5>
+    <version>9.7</version>
+    <time>1614373354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.7</comment>
+    <requestid>875515</requestid>
+  </revision>
 </revisionlist>
