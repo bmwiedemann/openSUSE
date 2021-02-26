@@ -70,7 +70,22 @@ sed -i -e 's@-Wall -fPIC -fexceptions -frtti@%{optflags} -fPIC -frtti@' Makefile
 %make_build
 
 %install
-%python_install
+# Using install does not automatically expand to python36 and python38.
+# So manually install it.
+
+%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
+install -d -m 755 %{buildroot}%{_libdir}/python2.7/site-packages/%{packagename}
+install -p -m 644 Source/pysvn/__init__.py %{buildroot}%{_libdir}/python2.7/site-packages/%{packagename}
+install -p -m 755 Source/pysvn/_pysvn.so %{buildroot}%{_libdir}/python2.7/site-packages/%{packagename}
+%endif
+
+install -d -m 755 %{buildroot}%{python36_sitearch}/%{packagename}
+install -p -m 644 Source/pysvn/__init__.py %{buildroot}%{python36_sitearch}/%{packagename}
+install -p -m 755 Source/pysvn/_pysvn.so %{buildroot}%{python36_sitearch}/%{packagename}
+
+install -d -m 755 %{buildroot}%{python38_sitearch}/%{packagename}
+install -p -m 644 Source/pysvn/__init__.py %{buildroot}%{python38_sitearch}/%{packagename}
+install -p -m 755 Source/pysvn/_pysvn.so %{buildroot}%{python38_sitearch}/%{packagename}
 
 %fdupes %{buildroot}%{python_sitearch}/%{packagename}*
 
@@ -86,6 +101,6 @@ popd
 %files %{python_files}
 %license LICENSE.txt
 %doc Docs Examples
-%{python_sitearch}/pysvn*
+%{python_sitearch}/%{packagename}
 
 %changelog

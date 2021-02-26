@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 23 17:46:13 UTC 2021 - andy great <andythe_great@pm.me>
+
+- In reference to pysvn in Fedora package, use manual install 
+  instead of %python_install, the pysvn dev recommend to use it.
+- Should fix bsc#1182048.  
+
+-------------------------------------------------------------------
 Sat Feb  6 06:07:30 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Fix build fail on TW.
