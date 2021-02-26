@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 25 18:52:07 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.1.1
+  - First launch experience improvements
+  - Allow logins to servers requiring SSO
+  - Display stickers
+  - Allow editing messages
+  - Multimodal mode to open a room into a new window
+  - New chat commands
+  - Better Plasma integration
+
+-------------------------------------------------------------------
 Mon Feb 15 00:33:01 UTC 2021 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Add missing require libqt5-qtquickcontrols again.

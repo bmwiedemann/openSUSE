@@ -19,7 +19,7 @@
 %define _kf5_version 5.76.0
 %bcond_without  lang
 Name:           neochat
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        GPL-3.0-or-later AND GPL-3.0-only AND BSD-2-Clause
@@ -88,8 +88,9 @@ messaging.
 %doc README*
 %{_kf5_bindir}/neochat
 %{_kf5_applicationsdir}/org.kde.neochat.desktop
-%dir %{_kf5_iconsdir}/hicolor/scalable/apps
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.neochat.svg
+%dir %{_kf5_iconsdir}/hicolor/*
+%dir %{_kf5_iconsdir}/hicolor/*/apps
+%{_kf5_iconsdir}/hicolor/*/apps/org.kde.neochat*.svg
 %{_kf5_appstreamdir}/org.kde.neochat.appdata.xml
 %{_kf5_notifydir}/neochat.notifyrc
 

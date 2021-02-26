@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>872799</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>29f76f894dbf3653a3e038a926624aa7</srcmd5>
+    <version>1.1.1</version>
+    <time>1614373184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1
+  - First launch experience improvements
+  - Allow logins to servers requiring SSO
+  - Display stickers
+  - Allow editing messages
+  - Multimodal mode to open a room into a new window
+  - New chat commands
+  - Better Plasma integration
+</comment>
+    <requestid>875222</requestid>
+  </revision>
 </revisionlist>
