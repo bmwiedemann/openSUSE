@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 18 17:15:33 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Add SELinux options (jsc#SMO-20, jsc#SLE-17342).
+- 4.3.9
+
+-------------------------------------------------------------------
 Mon Jan 11 14:12:26 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Add option to control file to specify default ntp servers
