@@ -1,8 +1,0 @@
-<package name="rubygem-owncloud-admin" project="openSUSE:Factory">
-  <title>ownCloud administration</title>
-  <description>Command line tool for installing and administering ownCloud
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-owncloud-admin"/>
-  <url>https://github.com/opensuse/owncloud-admin</url>
-</package>
