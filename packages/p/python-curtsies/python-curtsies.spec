@@ -1,7 +1,7 @@
 #
 # spec file for package python-curtsies
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,14 +43,10 @@ BuildRequires:  python2-typing
 %endif
 %if %{python_version_nodots} < 35
 BuildRequires:  python3-typing
+Requires:       python-typing
 %endif
 %ifpython2
 Requires:       python-typing
-%endif
-%ifpython3
-%if %{python3_version_nodots} < 35
-Requires:       python-typing
-%endif
 %endif
 %python_subpackages
 
