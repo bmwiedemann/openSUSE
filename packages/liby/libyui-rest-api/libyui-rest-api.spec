@@ -16,31 +16,27 @@
 #
 
 
-%define so_version 14
-%define bin_name %{name}%{so_version}
-%define libyui_devel_version libyui-devel >= 3.10.1
-
 Name:           libyui-rest-api
-Version:        0.5.12
+
+# DO NOT manually bump the version here; instead, use   rake version:bump
+Version:        4.0.0
 Release:        0
-Summary:        Libyui - REST API plugin, the shared part
-License:        LGPL-2.1-only OR LGPL-3.0-only
-Group:          System/Libraries
-URL:            http://github.com/libyui/libyui-rest-api
-Source:         %{name}-%{version}.tar.bz2
+
+%define         so_version 15
+%define         bin_name %{name}%{so_version}
+%define         libyui_devel_version libyui-devel >= 3.10.1
 
 BuildRequires:  %{libyui_devel_version}
-BuildRequires:  cmake >= 2.8
+BuildRequires:  boost-devel
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libmicrohttpd-devel
 
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_test-devel
-%else
-BuildRequires:  boost-devel
-%endif
+Summary:        Libyui - REST API plugin, the shared part
+License:        LGPL-2.1-only OR LGPL-3.0-only
+URL:            http://github.com/libyui
+Source:         %{name}-%{version}.tar.bz2
 
 %description
 This package provides a libyui REST API plugin.
@@ -48,10 +44,9 @@ This package provides a libyui REST API plugin.
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API, it is designed for automated tests.
 
+
 %package -n %{bin_name}
 Summary:        Libyui - REST API plugin, the shared part
-Group:          System/Libraries
-URL:            http://github.com/libyui/libyui-rest-api
 Requires:       libyui%{so_version}
 Requires:       yui_backend = %{so_version}
 Provides:       %{name} = %{version}
@@ -62,22 +57,17 @@ This package provides a libyui REST API plugin.
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API, it is designed for automated tests.
 
+
 %package devel
-Summary:        Libyui header files
-Group:          Development/Languages/C and C++
-URL:            http://github.com/libyui/
+Summary:        Libyui - REST API header files
+
 Requires:       %{bin_name} = %{version}
 Requires:       %{libyui_devel_version}
+Requires:       boost-devel
 Requires:       glibc-devel
 Requires:       jsoncpp-devel
 Requires:       libmicrohttpd-devel
 Requires:       libstdc++-devel
-%if 0%{?suse_version} > 1325
-Requires:       libboost_headers-devel
-Requires:       libboost_test-devel
-%else
-Requires:       boost-devel
-%endif
 
 %description devel
 This package provides a libyui REST API plugin.
@@ -89,29 +79,31 @@ This is a development subpackage.
 
 %build
 
-export CFLAGS="%{optflags} -DNDEBUG"
-export CXXFLAGS="%{optflags} -DNDEBUG"
+mkdir build
+cd build
 
-./bootstrap.sh %{_prefix}
+export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
+export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
 
-# NOTE: %%cmake changes the CWD to "build" which is later expected by
-# %%cmake_build, be careful when running additional commands later...
-%cmake  -DYPREFIX=%{_prefix} \
-        -DDOC_DIR=%{_docdir} \
-        -DLIB_DIR=%{_lib} \
 %if %{?_with_debug:1}%{!?_with_debug:0}
-        -DCMAKE_BUILD_TYPE=RELWITHDEBINFO
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"
 %else
-        -DCMAKE_BUILD_TYPE=RELEASE
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELEASE"
 %endif
 
-%cmake_build
+cmake .. \
+ -DDOC_DIR=%{_docdir} \
+ -DLIB_DIR=%{_lib} \
+ $CMAKE_OPTS
+
+make %{?jobs:-j%jobs}
 
 %install
-%cmake_install
-install -m0755 -d %{buildroot}/%{_docdir}/%{bin_name}/
+cd build
+make install DESTDIR="$RPM_BUILD_ROOT"
 install -m0755 -d %{buildroot}/%{_libdir}/yui
-install -m0644 COPYING* %{buildroot}/%{_docdir}/%{bin_name}/
+install -m0755 -d %{buildroot}/%{_docdir}/%{bin_name}/
+install -m0644 ../COPYING* %{buildroot}/%{_docdir}/%{bin_name}/
 
 %post -n %{bin_name} -p /sbin/ldconfig
 %postun -n %{bin_name} -p /sbin/ldconfig
@@ -126,7 +118,5 @@ install -m0644 COPYING* %{buildroot}/%{_docdir}/%{bin_name}/
 %dir %{_docdir}/%{bin_name}
 %{_libdir}/yui/lib*.so
 %{_includedir}/yui
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/cmake/%{name}
 
 %changelog
