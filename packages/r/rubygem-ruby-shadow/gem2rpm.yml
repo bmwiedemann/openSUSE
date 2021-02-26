@@ -1,4 +1,0 @@
-:license: SUSE-Public-Domain
-
-:post_install: |-
-  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/ -name "*.[h|c]" -exec rm {} \;
