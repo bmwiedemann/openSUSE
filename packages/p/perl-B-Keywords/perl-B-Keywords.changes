@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 23 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.22 2021-02-22 09:42:18 rurban
+    - add try/catch by Tom Wyant
+
+-------------------------------------------------------------------
 Wed Dec 18 03:07:09 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.21
