@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,74 +17,66 @@
 
 
 Name:           libyui-qt
+
 # DO NOT manually bump the version here; instead, use   rake version:bump
-Version:        2.56.4
+Version:        4.0.3
 Release:        0
-Source:         %{name}-%{version}.tar.bz2
 
-%define so_version 14
-%define bin_name %{name}%{so_version}
+%define         so_version 15
+%define         libyui_devel_version libyui-devel >= 4.0.1
+%define         bin_name %{name}%{so_version}
 
-BuildRequires:  boost-devel
-BuildRequires:  cmake >= 2.8
+BuildRequires:  cmake >= 3.10
+BuildRequires:  fontconfig-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 
-%define libyui_devel_version libyui-devel >= 3.10.0
-BuildRequires:  %{libyui_devel_version}
-BuildRequires:  fontconfig-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+
+BuildRequires:  %{libyui_devel_version}
 Provides:       yui_backend = %{so_version}
 
-URL:            http://github.com/libyui/
-Summary:        Libyui - Qt User Interface
+Summary:        Libyui - Qt (graphical) user interface
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Group:          System/Libraries
+URL:            http://github.com/libyui/
+Source:         %{name}-%{version}.tar.bz2
 
 %description
-This package contains the Qt user interface
-component for libYUI.
+This package contains the Qt (graphical) user interface component
+for libyui.
 
 
 %package -n %{bin_name}
+Summary:        Libyui - Qt (graphical) user interface
 
 Requires:       libyui%{so_version}
 Provides:       %{name} = %{version}
 Provides:       yast2-qt = %{version}
 Obsoletes:      yast2-qt < 2.51.0
 
-URL:            http://github.com/libyui/
-Summary:        Libyui - Qt User Interface
-Group:          System/Libraries
-
 %description -n %{bin_name}
-This package contains the Qt user interface
-component for libYUI.
-
+This package contains the Qt (graphical) user interface component
+for libyui.
 
 
 %package devel
+Summary:        Libyui - Header files for the Qt (graphical) user interface
 
 Requires:       %{bin_name} = %{version}
 Requires:       %{libyui_devel_version}
 Requires:       fontconfig-devel
 
-URL:            http://github.com/libyui/
-Summary:        Libyui-qt header files
-Group:          Development/Languages/C and C++
-
 %description devel
-This package contains the Qt user interface
-component for libYUI.
+This package contains the header files for the Qt based
+user interface component for libyui.
 
-
-This can be used independently of YaST for generic (C++) applications.
-This package has very few dependencies.
+This package is not needed to develop libyui-based applications,
+only to develop extensions for libyui-qt.
 
 
 %prep
@@ -95,39 +87,30 @@ This package has very few dependencies.
 export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
 export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
 
-./bootstrap.sh %{_prefix}
-
 mkdir build
 cd build
 
 %if %{?_with_debug:1}%{!?_with_debug:0}
-cmake .. \
-        -DYPREFIX=%{_prefix} \
-        -DDOC_DIR=%{_docdir} \
-        -DLIB_DIR=%{_lib} \
-        -DCMAKE_BUILD_TYPE=RELWITHDEBINFO
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"
 %else
-cmake .. \
-        -DYPREFIX=%{_prefix} \
-        -DDOC_DIR=%{_docdir} \
-        -DLIB_DIR=%{_lib} \
-        -DCMAKE_BUILD_TYPE=RELEASE
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELEASE"
 %endif
+
+cmake .. \
+ -DDOC_DIR=%{_docdir} \
+ -DLIB_DIR=%{_lib} \
+ $CMAKE_OPTS
 
 make %{?jobs:-j%jobs}
 
 %install
 cd build
 make install DESTDIR="$RPM_BUILD_ROOT"
-install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/yui
+install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0644 ../COPYING* $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 
-%clean
-rm -rf "$RPM_BUILD_ROOT"
-
 %post -n %{bin_name} -p /sbin/ldconfig
-
 %postun -n %{bin_name} -p /sbin/ldconfig
 
 %files -n %{bin_name}
@@ -139,10 +122,7 @@ rm -rf "$RPM_BUILD_ROOT"
 
 %files devel
 %defattr(-,root,root)
-%dir %{_docdir}/%{bin_name}
 %{_libdir}/yui/lib*.so
-%{_prefix}/include/yui
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/cmake/%{name}
+%{_includedir}/yui/qt
 
 %changelog
