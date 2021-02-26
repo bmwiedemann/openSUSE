@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 11 09:30:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 2.4:
+  * changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/tree/docs/change-log.rst#n7
+- Replace mv-ddr-marvell-armada-atf-mainline.tar.gz with 
+  mv-ddr-marvell-mv-ddr-devel.tar.gz to match the upstream requirements
+- Drop upstream patch:
+  * mv-ddr.diff
+
+-------------------------------------------------------------------
 Sat Oct 17 01:03:28 UTC 2020 - Andreas Färber <afaerber@suse.de>
 
 - Fix BUILD_MESSAGE_TIMESTAMP (don't try parsing deleted .changes)

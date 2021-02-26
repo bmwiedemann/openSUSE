@@ -47,10 +47,10 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.3
+Version:        2.4
 Release:        0
-%define srcversion 2.3
-%define mv_ddr_ver armada-atf-mainline
+%define srcversion 2.4
+%define mv_ddr_ver mv-ddr-devel
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver 18.12
 Summary:        Arm Trusted Firmware-A
@@ -61,7 +61,6 @@ Source:         https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snap
 Source1:        mv-ddr-marvell-%{mv_ddr_ver}.tar.gz
 Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
-Patch100:       mv-ddr.diff
 Patch150:       A3700_utils-drop-git.patch
 %if "%{platform}" != ""
 #!BuildIgnore: gcc-PIE
@@ -183,9 +182,6 @@ This package contains fiptool.
 %else
 %setup -q -n trusted-firmware-a-%{srcversion} -a 1 -a 3
 %endif
-pushd mv-ddr-marvell-%{mv_ddr_ver}
-%patch100 -p1
-popd
 %else
 %if "%{platform}" == ""
 %setup -q -n trusted-firmware-a-%{srcversion} -a 2
@@ -297,6 +293,9 @@ make \
      BL33=/boot/ARMADA_EFI.fd \
 %else
      BL33=/boot/u-boot.bin \
+%endif
+%if "%{platform}" == "a3700" || "%{platform}" == "a80x0_mcbin"
+     mrvl_flash \
 %endif
      all fip
 %if "%{platform}" == "a3700"
