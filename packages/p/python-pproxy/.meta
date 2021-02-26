@@ -1,0 +1,5 @@
+<package name="python-pproxy" project="openSUSE:Factory">
+  <title></title>
+  <description>Proxy server that can tunnel among remote servers by regex rules</description>
+  <devel project="devel:languages:python" package="python-pproxy"/>
+</package>
