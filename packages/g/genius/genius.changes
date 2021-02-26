@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 19 12:43:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.26:
+  + The range boxes in the plot dialog are now evalued rather than
+    being spin boxes, so that one can use arbitrary genius
+    expressions there.
+  + Always spawn a new instance, none of this uniqueness nonsense.
+  + Various fixes stemming from the port to GTK3 and from various
+    new compiler warnings.
+  + File chooser dialogs are now native.
+  + Fix saving of settings in the presence of old style settings
+    directories.
+  + Set default gtksourceview colorscheme to "kate" as "classic" is
+    hard to see in dark mode. It can be set in the config file (no
+    GUI currently).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar  6 18:51:12 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 1.0.25:
