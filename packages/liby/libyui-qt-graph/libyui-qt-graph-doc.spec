@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-graph-doc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,64 +16,56 @@
 #
 
 
-%define parent libyui-qt-graph
-%define so_version 14
+%define         parent libyui-qt-graph
+%define         so_version 15
 
 Name:           %{parent}-doc
-Version:        2.46.6
-Release:        0
-Source:         %{parent}-%{version}.tar.bz2
 
+# DO NOT manually bump the version here; instead, use   rake version:bump
+Version:        4.0.1
+Release:        0
 BuildArch:      noarch
 
-BuildRequires:  cmake >= 2.8
+BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  graphviz-gnome
+BuildRequires:  graphviz
 BuildRequires:  libyui-devel >= 3.9.0
-BuildRequires:  texlive-latex
 
-URL:            http://github.com/libyui/
 Summary:        Libyui-qt-graph documentation
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Group:          Documentation/HTML
+URL:            http://github.com/libyui/
+Source:         %{parent}-%{version}.tar.bz2
 
 %description
-This package contains the Qt graph
-component for libYUI.
+This package contains the Qt graph component for libyui.
 
-
-This package provides the documentation. (HTML & PDF)
+This package provides HTML class documentation.
 
 
 %prep
-
 %setup -n %{parent}-%{version}
 
 %build
 
-export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
-export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
-
-./bootstrap.sh %{_prefix}
-
 mkdir build
 cd build
-cmake .. \
-        -DDOC_DIR=%{_docdir} \
-        -DDOCS_ONLY=ON
 
-make %{?jobs:-j%jobs} docs
+cmake .. \
+  -DBUILD_DOC=on \
+  -DBUILD_SRC=off \
+  -DDOC_DESTDIR=$RPM_BUILD_ROOT
+
+# No "make doc" here: This would only duplicate the doxygen call
 
 %install
+
 cd build
-make install DESTDIR="$RPM_BUILD_ROOT"
+make install-doc
+# This implicitly includes "make doc" unconditionally
 
-%fdupes -s $RPM_BUILD_ROOT/%_docdir/%{parent}%{so_version}
-
-%clean
-rm -rf "$RPM_BUILD_ROOT"
+%fdupes -s %{buildroot}/%{_docdir}/%{parent}%{so_version}
 
 %files
 %defattr(-,root,root)
