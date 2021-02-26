@@ -20,7 +20,7 @@
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
 Name:           python-grpcio
-Version:        1.34.1
+Version:        1.35.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -32,6 +32,7 @@ Patch0:         python-grpcio-disable-boring-ssl.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -39,6 +40,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
+Requires:       ca-certificates
 Requires:       python-six >= 1.5.2
 Suggests:       python-enum34 >= 1.0.4
 Suggests:       python-futures >= 2.2.0
@@ -53,6 +55,7 @@ connected systems.
 %autosetup -p1 -n grpcio-%{version}
 
 %build
+%define _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
 export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=true
@@ -62,6 +65,8 @@ export GRPC_PYTHON_BUILD_SYSTEM_CARES=true
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+# a symlink to the shared system certificates is used
+%python_expand ln -sf %{_localstatedir}/lib/ca-certificates/ca-bundle.pem %{buildroot}%{$python_sitearch}/grpc/_cython/_credentials/roots.pem
 
 %files %{python_files}
 %doc README.md
