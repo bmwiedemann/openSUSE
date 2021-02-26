@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-x11
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-x11
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -35,7 +35,7 @@ Requires:       yast2-theme >= 4.1.7
 Summary:        YaST2 - X11 support
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            http://github.com/yast/yast-x11/
+URL:            http://github.com/yast/yast-x11/
 Supplements:    packageand(yast2-installation:xorg-x11-server)
 Obsoletes:      sax2-tools <= 8.1
 
@@ -54,6 +54,7 @@ This package contains the programs and files for YaST2 X11 support.
 %files
 %defattr(-,root,root)
 
+%{yast_ybindir}/active_window
 %{yast_ybindir}/testX
 %{yast_ybindir}/set_videomode
 /usr/sbin/xkbctrl

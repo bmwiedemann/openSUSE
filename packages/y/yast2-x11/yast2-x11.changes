@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  5 09:35:45 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "active_window" for switching the current X window
+  (or restoring back the previously active window)
+  (jsc#PM-1895, jsc#SLE-16263)
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Nov 29 15:33:42 UTC 2018 - lslezak@suse.cz
 
 - Explicitly depend on the new yast2-theme, the old yast2_theme
