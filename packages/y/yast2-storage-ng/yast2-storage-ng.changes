@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Feb 25 16:26:55 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Improved mechanism to detect whether _netdev is needed for a
+  given disk: use its driver as extra criterion (bsc#1176140).
+- 4.3.46
+
+-------------------------------------------------------------------
+Thu Feb 25 09:20:13 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: extended the text of the help to cover the new menu
+  and the general navigation (related to bsc#1181590).
+- 4.3.45
+
+-------------------------------------------------------------------
+Fri Feb 19 13:21:35 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: ask for recursively unmounting affected devices when
+  deleting a device (bsc#1171310).
+- 4.3.44
+
+-------------------------------------------------------------------
+Thu Feb 11 14:16:57 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: in general, collapse branches of the tables only if
+  they contain Btrfs snapshots (related to bsc#1181464).
+- 4.3.43
+
+-------------------------------------------------------------------
+Thu Feb  4 14:17:09 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: stop offering LVM pools as possible base devices
+  for bcache devices and for multi-device btrfs (bsc#1170044).
+- 4.3.42
+
+-------------------------------------------------------------------
 Thu Jan 28 17:07:25 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - AutoYaST UI: improved visualization of some partition sections
