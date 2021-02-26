@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 25 16:24:53 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1614239222.751e3210d:
+  * Dependency cron 2021-02-25
+  * Mark t/ui/27-plugin_obs_rsync_status_details.t as stable again
+  * Test aborting cleanup early if there's still sufficient free disk space
+  * Configure "early-abort" for cleanup via free percentage
+  * Add "early-abort" in asset/results cleanup jobs based on df-output
+  * Mock Git in t/ui/12-needle-edit.t
+  * Show form for commit message only if Git is enabled
+  * Test specifying a custom commit message to save a needle
+  * Allow specifying a custom commit message in needle editor
+  * Use codecov-bash to upload coverage reports
+  * Fix local upload for larger assets
+
+-------------------------------------------------------------------
 Tue Feb 23 08:02:50 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1613993204.ea2110d1c:
