@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-configuration-management
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-configuration-management
-Version:        4.3.4
+Version:        4.3.5
 Release:        0
 URL:            https://github.com/yast/yast-migration
 Summary:        YaST2 - YaST Configuration Management

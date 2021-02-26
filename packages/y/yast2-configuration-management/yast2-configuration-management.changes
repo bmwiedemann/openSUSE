@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 18 15:39:36 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.5
+
+-------------------------------------------------------------------
 Sat Oct 10 08:47:44 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Clean-up the libzypp's raw cache before running the finish client
