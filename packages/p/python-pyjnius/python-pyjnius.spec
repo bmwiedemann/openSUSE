@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python38
 Name:           python-pyjnius
 Version:        1.3.0
 Release:        0
@@ -55,16 +56,17 @@ ls build/pyjnius.jar
 
 %install
 %python_install
-%{python_expand rm %{buildroot}%{$python_sitearch}/setup_sdist.py %{buildroot}%{$python_sitearch}/__pycache__/setup_sdist.*
+%{python_expand rm -f %{buildroot}%{$python_sitearch}/setup_sdist.py %{buildroot}%{$python_sitearch}/__pycache__/setup_sdist.*
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
 %check
-export PYTHONPATH=${PWD}
-export CLASSPATH=${PWD}/build/pyjnius.jar:${PWD}/build/test-classes:%{buildroot}%{_libdir}/python3.8/site-packages/jnius/src:%{buildroot}%{_libdir}/python3.8/site-packages/jnius/:
 
 mv jnius /tmp/jnius
-%pytest_arch
+%{python_expand export CLASSPATH=${PWD}/build/pyjnius.jar:${PWD}/build/test-classes:%{buildroot}%{$python_sitearch}/jnius/src:%{buildroot}%{$python_sitearch}/jnius/:
+export PYTHONPATH=${PWD}:%{buildroot}%{$python_sitearch}
+$python -m pytest
+}
 mv /tmp/jnius .
 
 %files %{python_files}
