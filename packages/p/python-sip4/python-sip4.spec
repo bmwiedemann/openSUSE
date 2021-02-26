@@ -1,7 +1,7 @@
 #
-# spec file for package python-sip
+# spec file for package python-sip4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{suse_version} < 1550
-# Build the PyQt4 and PyQt5 modules only for older distros. 
-%bcond_without pyqt_modules
+
+%if 0%{?suse_version} < 1550
+# Build the PyQt4.sip module only for older distros.
+%bcond_without pyqt4_module
 %else
-#The python-qt5-sip provides the correct PyQt5 module for sip5 enabled distros
-%bcond_with pyqt_modules
+%bcond_with pyqt4_module
 %endif
+
+# The python-qt5-sip provides the correct PyQt5 module for sip5 enabled distros,
+# including SLE/Leap build targets now
+%bcond_with pyqt5_module
 
 %define python_sip_api 12.7
 %define mname sip
@@ -34,7 +38,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{pname}
-Version:        4.19.24
+Version:        4.19.25
 Release:        0
 Summary:        SIP tool to use python sip bindings - legacy version 4
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
@@ -51,14 +55,14 @@ BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{name}-common = %{version}
-Provides:       python-sip(api) = %{python_sip_api}
 Provides:       python-%{mname} = %{version}-%{release}
+Provides:       python-sip(api) = %{python_sip_api}
 Obsoletes:      python-%{mname} < %{version}-%{release}
 %ifpython2
 Provides:       %{oldpython}-%{mname} = %{version}-%{release}
 Obsoletes:      %{oldpython}-%{mname} < %{version}-%{release}
 %endif
-%if %{with pyqt_modules}
+%if %{with pyqt5_module}
 Conflicts:      python-qt5-sip
 %endif
 %python_subpackages
@@ -84,6 +88,8 @@ Provides:       python-%{mname}-bin = %{version}-%{release}
 Provides:       python-%{mname}-devel = %{version}-%{release}
 Obsoletes:      python-%{mname}-bin < %{version}-%{release}
 Obsoletes:      python-%{mname}-devel < %{version}-%{release}
+Conflicts:      python-%{mname}-impl
+Provides:       python-%{mname}-impl = %{version}-%{release}
 %ifpython2
 Provides:       %{oldpython}-%{mname}-bin = %{version}-%{release}
 Provides:       %{oldpython}-%{mname}-devel = %{version}-%{release}
@@ -103,7 +109,6 @@ own sip bindings.
 %package -n python-%{pname}-doc
 Summary:        SIP tool to create python bindings -- common documentation
 Group:          Development/Libraries/Python
-Provides:       %{python_module %{mname}-doc = %{version}-%{release}}
 Provides:       %{python_module %{pname}-doc = %{version}-%{release}}
 BuildArch:      noarch
 
@@ -119,7 +124,6 @@ and python3 versions of sip.
 %package -n python-%{pname}-common
 Summary:        SIP tool to create python bindings -- common files
 Group:          Development/Libraries/Python
-Provides:       %{python_module %{mname}-common = %{version}-%{release}}
 Provides:       %{python_module %{pname}-common = %{version}-%{release}}
 BuildArch:      noarch
 
@@ -167,9 +171,14 @@ sed -i 's/"doc" directory/"doc" directory of package %{$python_prefix}-sip-devel
 popd
 }
 
-%if %{with pyqt_modules}
-for P in PyQt4 PyQt5; do
-echo "YESSIR"
+for P in \
+%if %{with pyqt4_module}
+PyQt4 \
+%endif
+%if %{with pyqt5_module}
+PyQt5 \
+%endif
+; do
 %{python_expand mkdir build_${P}_%{$python_bin_suffix}
 pushd build_${P}_%{$python_bin_suffix}
 
@@ -187,7 +196,6 @@ make %{?_smp_mflags}
 popd
 }
 done
-%endif
 
 %install
 
@@ -199,14 +207,19 @@ popd
 sed -i 's,%{_bindir}/sip,%{_bindir}/sip-%{$python_bin_suffix},' %{buildroot}%{$python_sitearch}/sipconfig.py
 }
 
-%if %{with pyqt_modules}
-for P in PyQt4 PyQt5; do
+for P in \
+%if %{with pyqt4_module}
+PyQt4 \
+%endif
+%if %{with pyqt5_module}
+PyQt5 \
+%endif
+; do
 %{python_expand pushd build_${P}_%{$python_bin_suffix}/siplib
 %make_install
 popd
 }
 done
-%endif
 
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
 
@@ -226,11 +239,7 @@ echo "%%requires_python_sip_api Requires: %{python2_prefix}-sip(api) = %%python_
 grep '%%requires_%{python3_prefix}_sip_api'  %{buildroot}%{_rpmconfigdir}/macros.d/macros.*-sip4 || \
   echo "%%requires_%{python3_prefix}_sip_api Requires: %{python_prefix}-sip(api) = %%python_sip_api_ver" >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.python_all-sip4
 %endif
-
-%{python_expand # TODO replace with python_compileall as soon as it is available
-$python -m compileall %{buildroot}%{$python_sitearch}
-$python -O -m compileall %{buildroot}%{$python_sitearch}
-}
+%{?python_compileall}
 %python_clone -a %{buildroot}/%{_bindir}/sip
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 mkdir -p %{buildroot}%{_datadir}/sip
@@ -246,9 +255,11 @@ mkdir -p %{buildroot}%{_datadir}/sip
 %doc ChangeLog NEWS
 %doc build_%{python_bin_suffix}/README
 %{python_sitearch}/sip.so
-%if %{with pyqt_modules}
+%if %{with pyqt4_module}
 %dir %{python_sitearch}/PyQt4
 %{python_sitearch}/PyQt4/sip.so
+%endif
+%if %{with pyqt5_module}
 %dir %{python_sitearch}/PyQt5
 %{python_sitearch}/PyQt5/sip.so
 %endif
@@ -258,9 +269,11 @@ mkdir -p %{buildroot}%{_datadir}/sip
 %license LICENSE*
 %{_rpmconfigdir}/macros.d/macros.%{python_prefix}-sip4
 %python_alternative %{_bindir}/sip
-%if %{with pyqt_modules}
+%if %{with pyqt4_module}
 %dir %{python_sitearch}/PyQt4
 %{python_sitearch}/PyQt4/sip.pyi
+%endif
+%if %{with pyqt5_module}
 %dir %{python_sitearch}/PyQt5
 %{python_sitearch}/PyQt5/sip.pyi
 %endif

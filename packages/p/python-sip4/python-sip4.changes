@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 26 18:47:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.19.25
+  * Added support for Py_ssize_t
+- Prepare for a python-sip metapackage
+- PyQt5 on SLE/Leap now also uses the SIPv5 build. Don't provide
+  the PyQt5.sip module for those either
+
+-------------------------------------------------------------------
 Sun Nov 15 23:56:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Conflict with python-qt5-sip in distros where we still provide
