@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 26 09:47:17 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Select patterns during auto installation even when not using the
+  confirm mode (related to jsc#SMO-20 and bsc#1182543).
+- 4.3.69
+
+-------------------------------------------------------------------
+Mon Feb 15 15:08:35 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.68
+
+-------------------------------------------------------------------
 Mon Feb  1 09:09:15 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - AutoYaST UI: fixed field Mount Options (fstopt) in the
