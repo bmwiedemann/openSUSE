@@ -31,4 +31,15 @@
   - Added &quot;-X&quot; flag to derive XML tag names from column headers</comment>
     <requestid>626956</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>030b79db7d9069b0270e96ccc3f1a876</srcmd5>
+    <version>1.1.0</version>
+    <time>1614373167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.0
+  - Added support for format strings containing column names
+
+- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>875174</requestid>
+  </revision>
 </revisionlist>

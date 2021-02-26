@@ -1,7 +1,7 @@
 #
 # spec file for package csvprintf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright 2010 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           csvprintf
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        Simple CSV file parser for the UNIX command line
 License:        Apache-2.0
-Group:          Productivity/Text/Utilities
-Source:         %{name}-%{version}.tar.gz
-Url:            http://csvprintf.googlecode.com/
+Group:          Productivity/File utilities
+Source:         https://archie-public.s3.amazonaws.com/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/archiecobbs/csvprintf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc
 BuildRequires:  make
@@ -34,14 +34,14 @@ Requires:       xsltproc
 %description
 %{name} is a simple UNIX command line utility for parsing CSV files.
 
-%{name} works just like the printf(1) command line utility. You
-supply a printf(1) format string on the command line and each record
-in the CSV file is formatted accordingly. Each format specifier in
-the format string contains a column accessor to specify which CSV
-column to use, so for example '%%3$d' would format the third column
-as a decimal value.
+%{name} works like the printf(1) command line utility: you supply a
+printf(1) format string on the command line, and each row of the CSV file
+is split into arguments and formatted accordingly. The format specifiers
+in the format string contain numeric or symbolic column accessors to
+specify which CSV column to format.
 
-%{name} can also convert CSV files into XML documents and back.
+%{name} can also convert CSV files into XML documents. The xml2csv
+command converts XML documents so generated back into CSV files.
 
 %prep
 %setup -q
