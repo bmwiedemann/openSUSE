@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 18 14:42:44 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.8
+
+-------------------------------------------------------------------
 Wed Sep 30 10:49:56 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not import SuSEFirewall2 anymore as the support was dropped

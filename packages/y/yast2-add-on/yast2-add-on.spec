@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-add-on
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-add-on
-Version:        4.3.7
+Version:        4.3.8
 Release:        0
 Summary:        YaST2 - Add-On media installation code
 License:        GPL-2.0-only
