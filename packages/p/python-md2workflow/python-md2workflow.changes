@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 04:11:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop ifpython3 guard for the Provides for md2workflow 
+
+-------------------------------------------------------------------
 Tue Oct  6 07:47:58 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Remove lutoslawski and staging envs for suse jira 

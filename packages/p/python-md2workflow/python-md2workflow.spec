@@ -1,7 +1,7 @@
 #
 # spec file for package python-md2workflow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,9 +41,7 @@ Requires:       python-md2workflow-common
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython3
 Provides:       md2workfow = %{version}
-%endif
 %python_subpackages
 
 %description
