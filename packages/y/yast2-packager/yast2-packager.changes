@@ -1,3 +1,19 @@
+Fri Feb 19 14:07:15 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+-------------------------------------------------------------------
+
+- Show correct number of downloaded packages in log (bsc#1180278)
+- Fix crash when installation proposal require pattern and such
+  pattern is not available in any repository (found during testing
+  jsc#SLE-17427)
+- 4.3.14
+
+-------------------------------------------------------------------
+Mon Feb 15 20:07:15 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.13
+
 -------------------------------------------------------------------
 Fri Jan 15 12:11:32 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
