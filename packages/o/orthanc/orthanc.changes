@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb 25 20:31:58 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.9.1
+* The "dicom-as-json" attachments are not explicitly stored anymore to improve performance
+* If the storage area doesn't support range reading, or if "StorageCompression"
+  is enabled, a new type of attachment "dicom-until-pixel-data" is generated
+* New metadata automatically computed at the instance level: "PixelDataOffset"
+* New configuration option related to networking:
+  - "Timeout" in "DicomModalities" to set DICOM SCU timeout on a per-modality basis
+  - "Timeout" in "OrthancPeers" to set HTTP client timeout on a per-peer basis
+* API version upgraded to 11
+* BREAKING CHANGES:
+  - External applications should not call "/instances/.../attachments/dicom-as-json" anymore,
+    and should use "/instances/.../tags" instead
+  - "/instances/.../tags" route does not report the tags after "Pixel Data" (7fe0,0010) anymore
+* "/peers/{id}/store-straight": Synchronously send the DICOM instance in POST body to the peer
+* New arguments in the REST API:
+  - "Timeout" in "/modalities/.../query"
+  - "Timeout" in "/modalities/.../storage-commitment"
+  - "Timeout" in "/queries/.../answers/.../query-{studies|series|instances}"
+* New value in enumeration: OrthancPluginDicomToJsonFlags_StopAfterPixelData
+* New value in enumeration: OrthancPluginDicomToJsonFlags_SkipGroupLengths
+* Improved precision of floating-point numbers in DICOM-as-JSON and DICOM summary
+* Optimization in C-STORE SCP by avoiding an unnecessary DICOM parsing
+* Fix build on big-endian architectures
+* Handle public tags with "UN" value representation and containing a string (cf. DICOM CP 246)
+* The numbering of sequences in Orthanc Explorer now uses the DICOM convention (starts at 1)
+* Possibility to generate a static library containing the Orthanc Framework
+
+-------------------------------------------------------------------
 Fri Jan 29 16:58:24 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.9.0
