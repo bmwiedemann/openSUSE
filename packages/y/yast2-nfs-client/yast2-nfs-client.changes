@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 18 15:16:03 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.3
+
+-------------------------------------------------------------------
 Mon Aug 10 17:10:07 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(nfs) into the spec file
