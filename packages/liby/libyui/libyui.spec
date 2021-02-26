@@ -1,7 +1,7 @@
 #
 # spec file for package libyui
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,130 +17,91 @@
 
 
 Name:           libyui
-Version:        3.12.2
+
+# DO NOT manually bump the version here; instead, use   rake version:bump
+Version:        4.0.1
 Release:        0
-Source:         %{name}-%{version}.tar.bz2
 
-%define so_version 14
-%define bin_name %{name}%{so_version}
+%define         so_version 15
+%define         bin_name %{name}%{so_version}
 
-# optionally build with code coverage reporting,
-# this uses debug build, do not use in production!
-%bcond_with coverage
-
-BuildRequires:  cmake >= 2.8
+BuildRequires:  boost-devel
+BuildRequires:  cmake >= 3.17
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  pkg-config
 
-%if %{with coverage}
-# normally the coverage feature should not be used out of CI
-# but to be on the safe side...
-BuildRequires:  lcov
-%endif
-
-URL:            http://github.com/libyui/
-Summary:        GUI-abstraction library
+Summary:        GUI abstraction library
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Group:          System/Libraries
+URL:            http://github.com/libyui/
+Source:         %{name}-%{version}.tar.bz2
 
 %description
 This is the user interface engine that provides the abstraction from
 graphical user interfaces (Qt, Gtk) and text based user interfaces
 (ncurses).
 
-Originally developed for YaST, it can now be used independently of
+Originally developed for YaST, it can also be used independently of
 YaST for generic (C++) applications. This package has very few
 dependencies.
 
+
 %package -n %{bin_name}
+Summary:        Libyui - GUI abstraction library
 
 Provides:       yast2-libyui = 2.42.0
 Obsoletes:      yast2-libyui < 2.42.0
 Requires:       yui_backend = %{so_version}
-
-URL:            http://github.com/libyui/
-Summary:        Libyui - GUI-abstraction library
-Group:          System/Libraries
 
 %description -n %{bin_name}
 This is the user interface engine that provides the abstraction from
 graphical user interfaces (Qt, Gtk) and text based user interfaces
 (ncurses).
 
-Originally developed for YaST, it can now be used independently of
+Originally developed for YaST, it can also be used independently of
 YaST for generic (C++) applications. This package has very few
 dependencies.
 
-%package devel
 
-%if 0%{?suse_version} > 1325
-Requires:       libboost_headers-devel
-Requires:       libboost_test-devel
-%else
-Requires:       boost-devel
-%endif
+%package devel
+Summary:        Libyui header files and examples
+
 Requires:       %{bin_name} = %{version}
+Requires:       boost-devel
 Requires:       glibc-devel
 Requires:       libstdc++-devel
 
-URL:            http://github.com/libyui/
-Summary:        Libyui header files
-Group:          Development/Languages/C and C++
-
 %description devel
-This is the user interface engine that provides the abstraction from
-graphical user interfaces (Qt, Gtk) and text based user interfaces
-(ncurses).
 
-Originally developed for YaST, it can now be used independently of
-YaST for generic (C++) applications. This package has very few
-dependencies.
+This package contains header files and examples for developing C++
+applications based on libyui, the user interface engine that provides
+the abstraction from graphical user interfaces (Qt, Gtk) and text
+based user interfaces (ncurses).
 
-This can be used independently of YaST for generic (C++) applications.
-This package has very few dependencies.
 
 %prep
 %setup -q -n %{name}-%{version}
 
 %build
 
-./bootstrap.sh
 mkdir build
 cd build
 
-%if %{with coverage}
-CMAKE_OPTS="-DCMAKE_BUILD_TYPE=DEBUG -DENABLE_CODE_COVERAGE=ON"
-# the debug build type is incompatible with the default $RPM_OPT_FLAGS,
-# do not use them
-export CFLAGS="-DNDEBUG $(getconf LFS_CFLAGS)"
-export CXXFLAGS="-DNDEBUG $(getconf LFS_CFLAGS)"
-%else
 export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
 export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
+
 %if %{?_with_debug:1}%{!?_with_debug:0}
 CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"
 %else
 CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELEASE"
 %endif
-%endif
 
 cmake .. \
-        -DYPREFIX=%{_prefix} \
-        -DDOC_DIR=%{_docdir} \
-        -DLIB_DIR=%{_lib} \
-        $CMAKE_OPTS
+ -DDOC_DIR=%{_docdir} \
+ -DLIB_DIR=%{_lib} \
+ $CMAKE_OPTS
 
 make %{?jobs:-j%jobs}
-
-%check
-cd build
-make test
-%if %{with coverage}
-# generate code coverage data
-make coverage
-%endif
 
 %install
 cd build
@@ -149,17 +110,11 @@ install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/yui
 install -m0644 ../COPYING* $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 
-%clean
-rm -rf "$RPM_BUILD_ROOT"
-
 %post -n %{bin_name} -p /sbin/ldconfig
-
 %postun -n %{bin_name} -p /sbin/ldconfig
 
 %files -n %{bin_name}
 %defattr(-,root,root)
-%dir %{_libdir}/yui
-%dir %{_datadir}/libyui
 %{_libdir}/lib*.so.*
 %doc %dir %{_docdir}/%{bin_name}
 %license %{_docdir}/%{bin_name}/COPYING*
@@ -168,10 +123,11 @@ rm -rf "$RPM_BUILD_ROOT"
 %defattr(-,root,root)
 %dir %{_docdir}/%{bin_name}
 %{_libdir}/lib*.so
-%{_prefix}/include/yui
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/cmake/%{name}
+%{_includedir}/yui
+%dir %{_datadir}/libyui
 %{_datadir}/libyui/buildtools
 %doc %{_docdir}/%{bin_name}/examples
+%{_libdir}/pkgconfig/%{name}.pc
+# %{_libdir}/cmake/%{name}
 
 %changelog
