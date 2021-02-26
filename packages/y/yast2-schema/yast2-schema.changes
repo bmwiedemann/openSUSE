@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 10 13:45:45 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add the 'virt_bridge_proposal' element to the networking section
+  in order to permit to disable the proposal of the bridge network
+  configuration for virtualization (bsc#1178603).
+- 4.3.18
+
+-------------------------------------------------------------------
 Tue Feb  2 07:39:54 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Add the 'lladdr' element to the networking interface section

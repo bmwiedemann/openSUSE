@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.3.17
+Version:        4.3.18
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -58,8 +58,8 @@ BuildRequires:  yast2-iscsi-client
 BuildRequires:  yast2-kdump
 BuildRequires:  yast2-mail >= 4.3.3
 BuildRequires:  yast2-tftp-server >= 4.1.7
-# interface section 'lladdr' element
-BuildRequires:  yast2-network >= 4.3.43
+# networking section 'virt_bridge_proposal' element
+BuildRequires:  yast2-network >= 4.3.46
 BuildRequires:  yast2-nfs-client
 BuildRequires:  yast2-nfs-server
 BuildRequires:  yast2-nis-client
