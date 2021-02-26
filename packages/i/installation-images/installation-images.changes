@@ -1,4 +1,104 @@
 --------------------------------------------------------------------
+Thu Feb 25 14:26:30 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#460
+- go back to plymouth-theme-tribar (bsc#1182755)
+- adjust spec file
+- 16.47
+
+--------------------------------------------------------------------
+Tue Feb 23 09:08:16 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#459
+- fix adapting grub.cfg for different architectures (bsc#1182593)
+- 16.46
+
+--------------------------------------------------------------------
+Mon Feb 22 11:44:59 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#458
+- Do not use shim on aarch64 for SLE Micro (based on SP2)
+- 16.45
+
+--------------------------------------------------------------------
+Fri Feb 19 17:30:02 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#457
+- fix kernel & initrd location for x86_64 (bsc#1182239)
+- 16.44
+
+--------------------------------------------------------------------
+Fri Feb 19 16:19:54 UTC 2021 - wfeldt@opensuse.org
+
+- fix library dependency check
+- 16.43
+
+--------------------------------------------------------------------
+Fri Feb 19 13:07:05 UTC 2021 - wfeldt@opensuse.org
+
+- drop linuxefi/initrdefi on x86_64
+
+--------------------------------------------------------------------
+Fri Feb 19 12:56:10 UTC 2021 - wfeldt@opensuse.org
+
+- enable shim on aarch64
+
+--------------------------------------------------------------------
+Thu Feb 18 18:11:55 UTC 2021 - wfeldt@opensuse.org
+
+- unify all EFI-using grub configurations into a single config file
+  (bsc#1182239)
+
+--------------------------------------------------------------------
+Thu Feb 18 17:03:55 UTC 2021 - wfeldt@opensuse.org
+
+- Use one grub.cfg for all ARM architectures
+
+--------------------------------------------------------------------
+Thu Feb 18 15:35:54 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#455
+- allow wildcards in modinfo firmware names (bsc#1180336)
+- 16.42
+
+--------------------------------------------------------------------
+Thu Feb 18 13:59:59 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#454
+- spec: no longer have ports project for Leap since 15.3
+- 16.41
+
+--------------------------------------------------------------------
+Thu Feb 18 13:58:41 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#452
+- remove some obsolete parts from installation-images (bsc#1182291)
+- rewrite check_libs script
+- fix zenworks image build
+- 16.40
+
+--------------------------------------------------------------------
+Tue Feb 16 15:59:53 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#453
+- Add kernel modules necessary for Raspberry Pi 4 (bsc#1180336)
+- 16.39
+
+--------------------------------------------------------------------
+Tue Feb 16 08:35:06 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#449
+- etc: update module.config to match 5.11 (bsc#1182301)
+- 16.38
+
+--------------------------------------------------------------------
+Wed Feb 10 13:39:16 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#451
+- Replace Raleway fonts by Poppins (jsc#SLE-14772)
+- 16.37
+
+--------------------------------------------------------------------
 Mon Feb 1 09:21:18 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#448

@@ -63,11 +63,7 @@ ExclusiveArch:  do_not_build
 %if "%{the_version}" == ""
 %error "bad version string"
 %endif
-%ifarch %arm aarch64 ppc64 ppc64le
-%define net_repo https://download.opensuse.org/ports/%{the_arch}/distribution/leap/%{the_version}/repo/oss/
-%else
 %define net_repo https://download.opensuse.org/distribution/leap/%{the_version}/repo/oss
-%endif
 %else
 %define with_exfat 1
 %ifarch %arm aarch64 ppc64 ppc64le
@@ -93,6 +89,10 @@ ExclusiveArch:  do_not_build
 %if 0%{?sle_version}
 %ifnarch %ix86
 %define theme SMO
+%endif
+# SMO is built based on 15-SP2, which does not include shim for aarch64
+%ifarch aarch64
+%define with_shim 0
 %endif
 %endif
 %endif
@@ -438,7 +438,7 @@ BuildRequires:  perl-XML-Simple
 BuildRequires:  perl-solv
 BuildRequires:  pinentry
 BuildRequires:  python3-websockify
-BuildRequires:  raleway-fonts
+BuildRequires:  google-poppins-fonts
 BuildRequires:  samba
 BuildRequires:  snapper
 BuildRequires:  suse-module-tools
@@ -456,12 +456,7 @@ BuildRequires:  plymouth
 BuildRequires:  plymouth-branding
 BuildRequires:  plymouth-plugin-script
 BuildRequires:  plymouth-scripts
-# SLE needs to stay with tribar
-%if 0%{?is_opensuse}
-BuildRequires:  plymouth-branding-openSUSE
-%else
 BuildRequires:  plymouth-theme-tribar
-%endif
 %endif
 BuildRequires:  klogd
 BuildRequires:  ltrace
@@ -632,6 +627,9 @@ BuildRequires:  raspberrypi-firmware
 BuildRequires:  raspberrypi-firmware-config
 BuildRequires:  raspberrypi-firmware-dt
 BuildRequires:  u-boot-rpiarm64
+%if %with_shim
+BuildRequires:  shim
+%endif
 %endif
 %ifarch %arm
 BuildRequires:  grub2-arm-efi
@@ -653,7 +651,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.36
+Version:        16.47
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
