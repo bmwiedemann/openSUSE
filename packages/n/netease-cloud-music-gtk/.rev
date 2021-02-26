@@ -50,4 +50,21 @@
  + Fix bug.</comment>
     <requestid>862795</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b888aef7afaec16c0256bb1627298b21</srcmd5>
+    <version>1.2.1</version>
+    <time>1614373199</time>
+    <user>dimstar_suse</user>
+    <comment>- Updata to version 1.2.1:
+ + Change the size of cached images.
+ + Repair the problem of cloud disk music playback error.
+ + Optimize FM playback logic.
+ + Adopt [Title-Artist.lrc] naming format for lyric files.
+ + Improve Mpris support.
+ + Update NetEase cloud interface, abandon LINUXAPI.
+ + Change the default play and cache music to aac format..
+ + Optimize icon.
+ + Fix bug.</comment>
+    <requestid>875254</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 26 02:51:00 UTC 2021 - gmg 137 <gmg137@live.com>
+
+- Updata to version 1.2.1:
+ + Change the size of cached images.
+ + Repair the problem of cloud disk music playback error.
+ + Optimize FM playback logic.
+ + Adopt [Title-Artist.lrc] naming format for lyric files.
+ + Improve Mpris support.
+ + Update NetEase cloud interface, abandon LINUXAPI.
+ + Change the default play and cache music to aac format..
+ + Optimize icon.
+ + Fix bug.
+
+-------------------------------------------------------------------
 Wed Jan 13 05:09:51 UTC 2021 - gmg 137 <gmg137@live.com>
 
 - Updata to version 1.2.0:
