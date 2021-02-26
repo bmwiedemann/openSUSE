@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-firewall
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firewall
-Version:        4.3.9
+Version:        4.3.10
 Release:        0
 Summary:        YaST2 - Firewall Configuration
 License:        GPL-2.0-only
