@@ -23,4 +23,21 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860879</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7dfb7c086a51cc821fa6bf960c709f64</srcmd5>
+    <version>1.0.13</version>
+    <time>1614373350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.13
+  * Add Cupertino layout (gxo#apps/xfce4-panel-profiles#7)
+  * Add Redmond 7 layout (gxo#apps/xfce4-panel-profiles#8)
+  * Add Xfce 4.16 layout
+  * Updated existing templates to support Xfce 4.16
+  * Makefile.in.in: remove bashisms
+  * Enabled exporting Whisker menu configuration
+    (gxo#apps/xfce4-panel-profiles#11)
+  * Translation Updates
+</comment>
+    <requestid>875510</requestid>
+  </revision>
 </revisionlist>

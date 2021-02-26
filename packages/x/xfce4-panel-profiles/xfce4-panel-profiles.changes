@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 22 13:31:48 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.0.13
+  * Add Cupertino layout (gxo#apps/xfce4-panel-profiles#7)
+  * Add Redmond 7 layout (gxo#apps/xfce4-panel-profiles#8)
+  * Add Xfce 4.16 layout
+  * Updated existing templates to support Xfce 4.16
+  * Makefile.in.in: remove bashisms
+  * Enabled exporting Whisker menu configuration
+    (gxo#apps/xfce4-panel-profiles#11)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Dec 31 06:03:10 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed Libxfce4ui.patch
