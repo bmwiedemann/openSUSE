@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-kdump
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-kdump
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        Configuration of kdump
 License:        GPL-2.0-only

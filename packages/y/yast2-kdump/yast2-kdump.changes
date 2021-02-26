@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 18 15:37:11 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.4
+
+-------------------------------------------------------------------
 Mon Nov 30 15:50:47 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Do not show a warning when running in a HVM Xen guest
