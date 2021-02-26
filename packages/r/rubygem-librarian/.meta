@@ -1,5 +1,0 @@
-<package name="rubygem-librarian" project="openSUSE:Factory">
-  <title>Librarian</title>
-  <description>A framework for writing bundlers, which are tools that resolve, fetch, install, and isolate a project's dependencies, in Ruby.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-librarian"/>
-</package>
