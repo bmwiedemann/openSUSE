@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 15 07:34:12 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon Aug 10 17:31:10 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(nfs-server) into the spec file
