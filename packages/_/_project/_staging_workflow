@@ -105,7 +105,6 @@
   <staging_project name="openSUSE:Factory:Staging:adi:71"/>
   <staging_project name="openSUSE:Factory:Staging:adi:91"/>
   <staging_project name="openSUSE:Factory:Staging:adi:116"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:52"/>
   <staging_project name="openSUSE:Factory:Staging:adi:154"/>
   <staging_project name="openSUSE:Factory:Staging:adi:165"/>
   <staging_project name="openSUSE:Factory:Staging:adi:166"/>
@@ -140,22 +139,15 @@
   <staging_project name="openSUSE:Factory:Staging:adi:170"/>
   <staging_project name="openSUSE:Factory:Staging:adi:173"/>
   <staging_project name="openSUSE:Factory:Staging:adi:184"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:195"/>
   <staging_project name="openSUSE:Factory:Staging:adi:196"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:198"/>
   <staging_project name="openSUSE:Factory:Staging:adi:201"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:203"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:204"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:205"/>
   <staging_project name="openSUSE:Factory:Staging:adi:206"/>
   <staging_project name="openSUSE:Factory:Staging:adi:207"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:208"/>
   <staging_project name="openSUSE:Factory:Staging:adi:209"/>
   <staging_project name="openSUSE:Factory:Staging:adi:210"/>
   <staging_project name="openSUSE:Factory:Staging:adi:211"/>
   <staging_project name="openSUSE:Factory:Staging:adi:212"/>
   <staging_project name="openSUSE:Factory:Staging:adi:4"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:5"/>
   <staging_project name="openSUSE:Factory:Staging:adi:6"/>
   <staging_project name="openSUSE:Factory:Staging:adi:8"/>
   <staging_project name="openSUSE:Factory:Staging:adi:12"/>
@@ -164,4 +156,12 @@
   <staging_project name="openSUSE:Factory:Staging:adi:28"/>
   <staging_project name="openSUSE:Factory:Staging:adi:30"/>
   <staging_project name="openSUSE:Factory:Staging:adi:36"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:40"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:43"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:45"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:48"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:50"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:55"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:58"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:62"/>
 </workflow>
