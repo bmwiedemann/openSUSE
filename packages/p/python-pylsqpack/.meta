@@ -1,0 +1,5 @@
+<package name="python-pylsqpack" project="openSUSE:Factory">
+  <title></title>
+  <description>Python ls-qpack QPACK library</description>
+  <devel project="devel:languages:python" package="python-pylsqpack"/>
+</package>
