@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 23 07:42:44 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.6
+  New features:
+  * Implement read support for Scid binary database (*.si4)
+  * Spray fields in pen mode by pressing alt+Left Mouse
+  * Add option to hide special annotations in view
+  * Show variation arrows
+  * Engine draws an arrow for its best move
+  * Support online chess.com / lichess data access
+  * Scroll through game with ChartWidget
+  * Display eval annotations in the chart (%eval)
+  * Open file from scratchpad / Drag file names to scratchpad
+  * Visualization training
+  * Indicate Draw percentage in OpeningTree
+  Bug fixes:
+  * Opening tree - switching between Database and Filter did not
+    trigger tree update
+  * Display of symbolic pieces in OpeningTreeWidget and
+    variation list
+  * Hotkeys are not serialized properly
+  * Duplicate hotkeys for menus with same name
+  * Do not ask to save clipboard
+  * Dark theme handling
+  Changed:
+  * Raise scratchpad when New or Open is invoked
+  * Resize text fonts with Ctrl+ Ctrl- or Ctrl+Alt+Wheel
+  * Increase max size for writable databases
+  * Disable Raise of game list after filtering
+- Switch to github tarball (which is complete of dependencies)
+- Switch to cmake build
+- Drop chessx-translations.patch (no longer necessary)
+- Reworked chessx-install.patch and chessx-use_system_quazip.patch
+  for cmake
+- Switch to _service to remedy to incomplete upstream tarball
+
+-------------------------------------------------------------------
 Thu Dec 24 09:23:23 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Updated the conditional of quazip devel package for Leap 15.3

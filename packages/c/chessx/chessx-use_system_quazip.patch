@@ -1,109 +1,91 @@
-Index: chessx-1.5.4/chessx.pro
+Index: chessx-1.5.6-lw/CMakeLists.txt
 ===================================================================
---- chessx-1.5.4.orig/chessx.pro
-+++ chessx-1.5.4/chessx.pro
-@@ -39,7 +39,6 @@ static { # Everything below takes effect
-     message("Static build.")
- }
+--- chessx-1.5.6-lw.orig/CMakeLists.txt
++++ chessx-1.5.6-lw/CMakeLists.txt
+@@ -15,6 +15,7 @@ option(ENABLE_SCID_SUPPORT "Enable suppo
+ if(UNIX AND NOT APPLE)
+   set(LINUX TRUE)
+   include(GNUInstallDirs)
++  include(FindPkgConfig)
+ endif()
  
--DEFINES += QUAZIP_STATIC
- DEFINES += QT_NO_CAST_TO_ASCII
- DEFINES *= QT_USE_QSTRINGBUILDER
+ add_subdirectory(dep)
+@@ -45,6 +46,13 @@ find_package(Qt5 REQUIRED
+   Test
+ ) 
  
-@@ -156,22 +155,6 @@ HEADERS += src/database/board.h \
-     src/gui/engineoptionlist.h \
-     src/gui/helpbrowser.h \
-     src/database/downloadmanager.h \
--    src/quazip/zip.h \
--    src/quazip/unzip.h \
--    src/quazip/quazipnewinfo.h \
--    src/quazip/quazipfileinfo.h \
--    src/quazip/quazipfile.h \
--    src/quazip/quazipdir.h \
--    src/quazip/quazip.h \
--    src/quazip/quazip_global.h \
--    src/quazip/quaziodevice.h \
--    src/quazip/quagzipfile.h \
--    src/quazip/quacrc32.h \
--    src/quazip/quachecksum32.h \
--    src/quazip/quaadler32.h \
--    src/quazip/JlCompress.h \
--    src/quazip/ioapi.h \
--    src/quazip/crypt.h \
-     src/gui/toolmainwindow.h \
-     src/gui/playerlistwidget.h \
-     src/gui/qled.h \
-@@ -321,16 +304,6 @@ SOURCES += src/database/board.cpp \
-     src/gui/engineoptionlist.cpp \
-     src/gui/helpbrowser.cpp \
-     src/database/downloadmanager.cpp \
--    src/quazip/quazipnewinfo.cpp \
--    src/quazip/quazipfile.cpp \
--    src/quazip/quazipdir.cpp \
--    src/quazip/quazip.cpp \
--    src/quazip/quaziodevice.cpp \
--    src/quazip/quagzipfile.cpp \
--    src/quazip/quacrc32.cpp \
--    src/quazip/quaadler32.cpp \
--    src/quazip/qioapi.cpp \
--    src/quazip/JlCompress.cpp \
-     src/gui/toolmainwindow.cpp \
-     src/gui/playerlistwidget.cpp \
-     src/gui/qled.cpp \
-@@ -401,8 +374,6 @@ SOURCES += src/database/board.cpp \
-     src/gui/historylabel.cpp \
-     src/database/streamdatabase.cpp \
-     src/database/refcount.cpp \
--    src/quazip/unzip.cpp \
--    src/quazip/zip.cpp \
-     src/database/arenabook.cpp \
-     src/gui/gamelistsortmodel.cpp \
-     src/gui/listwidgetex.cpp
-@@ -412,8 +383,25 @@ INCLUDEPATH += src/database
- INCLUDEPATH += src/guess
- INCLUDEPATH += src/gui
- INCLUDEPATH += src/dialogs
--INCLUDEPATH += src/quazip
--INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
++if(LINUX)
++  pkg_search_module(QUAZIP quazip1-qt5 quazip)
++  if(QUAZIP_FOUND)
++    pkg_check_modules(ZLIB REQUIRED zlib)
++  endif()
++endif()
 +
-+CONFIG += link_pkgconfig
-+packagesExist(quazip1-qt5) {
-+  HAVE_QUAZIP = yes
-+  PKGCONFIG += quazip1-qt5
-+  message("Using quazip1-qt5")
-+}
-+packagesExist(quazip) {
-+  !defined(HAVE_QUAZIP, var) {
-+    HAVE_QUAZIP = yes
-+    PKGCONFIG += quazip
-+    DEFINES += USE_QUAZIP5
-+    message("Using quazip")
-+  }
-+}
-+
-+!defined(HAVE_QUAZIP, var) {
-+  error("Need at least one of quazip1-qt5 or quazip")
-+}
+ # TODO: enable warnings
+ # CONFIG += warn_on
  
- win32 {
-     # DEFINES += ZLIB_WINAPI
-Index: chessx-1.5.4/src/gui/mainwindow.cpp
+@@ -110,13 +118,19 @@ add_executable(chessx WIN32
+ 
+ target_link_libraries(chessx PRIVATE
+   qt_config
+-  quazip
+   bitboard
+   board
+   eco
+   gui
+ )
+ 
++if(NOT QUAZIP_FOUND)
++  target_link_libraries(chessx PRIVATE quazip)
++else()
++  target_link_libraries(chessx PRIVATE ${QUAZIP_LIBRARIES})
++endif()
++
++
+ if (CMAKE_HOST_APPLE)
+   # Make macOS bundle instead of bare executable
+   set_target_properties(chessx PROPERTIES
+Index: chessx-1.5.6-lw/src/CMakeLists.txt
 ===================================================================
---- chessx-1.5.4.orig/src/gui/mainwindow.cpp
-+++ chessx-1.5.4/src/gui/mainwindow.cpp
-@@ -43,8 +43,13 @@
- #include "output.h"
- #include "pgndatabase.h"
- #include "playerlistwidget.h"
--#include "quazip.h"
--#include "quazipfile.h"
-+#ifndef USE_QUAZIP5
-+#include <quazip/quazip.h>
-+#include <quazip/quazipfile.h>
-+#else
-+#include <quazip5/quazip.h>
-+#include <quazip5/quazipfile.h>
-+#endif
- #include "savedialog.h"
- #include "settings.h"
- #include "style.h"
+--- chessx-1.5.6-lw.orig/src/CMakeLists.txt
++++ chessx-1.5.6-lw/src/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(quazip)
++if(NOT QUAZIP_FOUND)
++  add_subdirectory(quazip)
++endif()
+ 
+ add_library(bitboard STATIC
+   database/bitboard.cpp
+@@ -433,11 +435,17 @@ target_include_directories(gui
+     gui
+ )
+ 
++if(QUAZIP_FOUND)
++  target_include_directories(gui
++  PUBLIC
++    ${QUAZIP_INCLUDE_DIRS}
++  )
++endif()
++
+ target_link_libraries(gui
+   PRIVATE
+     qt_config
+     eco
+-    quazip
+     Qt5::PrintSupport
+     Qt5::Svg
+   PUBLIC
+@@ -446,6 +454,12 @@ target_link_libraries(gui
+     Qt5::Xml
+ )
+ 
++if(NOT QUAZIP_FOUND)
++  target_link_libraries(gui PRIVATE quazip)
++else()
++  target_link_libraries(gui PRIVATE ${QUAZIP_LIBRARIES} ${ZLIB_LIBRARIES})
++endif()
++
+ if (ENABLE_SOUNDS)
+   target_compile_definitions(gui
+     PRIVATE

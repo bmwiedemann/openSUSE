@@ -1,7 +1,7 @@
 #
 # spec file for package chessx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,33 @@
 
 
 Name:           chessx
-Version:        1.5.4
+Version:        1.5.6
 Release:        0
 Summary:        Chess database
 License:        GPL-2.0-only
 Group:          Amusements/Games/Board/Chess
 URL:            http://chessx.sourceforge.net
-Source0:        https://sourceforge.net/projects/chessx/files/chessx/%{version}/chessx-%{version}.tgz
-# PATCH-FIX-UPSTREAM chessx-translations.patch aloisio@gmx.com -- remove unused translations
-Patch0:         chessx-translations.patch
+# was https://sourceforge.net/projects/chessx/files/chessx/%%{version}/chessx-%%{version}.tar.gz
+# using _service until https://sourceforge.net/p/chessx/bugs/287/ is fixed
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM chessx-install.patch aloisio@gmx.com -- make install work on linux
 Patch1:         chessx-install.patch
 # PATCH-FEATURE-OPENSUSE chessx-use_system_quazip.patch
 Patch2:         chessx-use_system_quazip.patch
+BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5TextToSpeech)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5TextToSpeech)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200
 BuildRequires:  pkgconfig(quazip1-qt5)
 %else
@@ -63,20 +66,14 @@ analyze a collection of chess games.
 * Observe and play games on FICS
 
 %prep
-%autosetup -N
-%patch0 -p1
-%patch1 -p1
-%if (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
-%patch2 -p1
-%endif
-chmod -x data/images/circle_*.svg
+%autosetup -p1
 
 %build
-%qmake5
-%make_build
+%cmake
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 find %{buildroot} -size 0 -delete
 %fdupes %{buildroot}
 

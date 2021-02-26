@@ -1,27 +1,27 @@
-Index: chessx-1.5.4/chessx.pro
+Index: chessx-1.5.6-lw/CMakeLists.txt
 ===================================================================
---- chessx-1.5.4.orig/chessx.pro
-+++ chessx-1.5.4/chessx.pro
-@@ -546,6 +546,22 @@ macx {
-     data/timeseal/mac/timeseal
- }
+--- chessx-1.5.6-lw.orig/CMakeLists.txt
++++ chessx-1.5.6-lw/CMakeLists.txt
+@@ -12,6 +12,11 @@ option(ENABLE_SOUNDS "Enable sounds (req
+ option(ENABLE_TTS "Enable text-to-speech (requires Qt5::TextToSpeech)" ON)
+ option(ENABLE_SCID_SUPPORT "Enable support for Scid database format (*.si4)" ON)
  
-+unix:!macx {
-+  isEmpty(PREFIX) {
-+    PREFIX = /usr
-+  }
-+  target.path = $$PREFIX/bin
-+  desktop.path = $$PREFIX/share/applications
-+  desktop.files = unix/chessx.desktop
-+  icon.path = $$PREFIX/share/pixmaps
-+  icon.files = data/images/chessx.png
-+  data.path = $$PREFIX/share/chessx
-+  data.files = data
-+  lang.path = $$PREFIX/share/chessx/data/lang
-+  lang.files = i18n/*.qm
-+  INSTALLS += target desktop icon data lang
-+}
++if(UNIX AND NOT APPLE)
++  set(LINUX TRUE)
++  include(GNUInstallDirs)
++endif()
 +
- win32 {
-   OTHER_FILES += \
-     src/chessx.rc \
+ add_subdirectory(dep)
+ 
+ # common definitions to use with Qt
+@@ -149,3 +154,10 @@ if (ENABLE_TESTING)
+   add_subdirectory(tests/unittests)
+ endif()
+ 
++if(LINUX)
++  install(TARGETS chessx DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR})
++  install(FILES unix/chessx.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/applications)
++  install(FILES data/images/chessx.png DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/pixmaps)
++  install(DIRECTORY data DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/chessx)
++  install(FILES ${TRANSLATIONS_BIN_FILES} DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/chessx/data/lang)
++endif()
