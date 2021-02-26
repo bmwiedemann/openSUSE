@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mumps
-%define ver 5.2.1
+%define ver 5.3.5
 %define so_ver 5
 %define openblas_vers 0.3.6
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -181,7 +181,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_family mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver 
+%undefine mpi_ver
 %bcond_without hpc
 %endif
 
@@ -236,7 +236,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_family mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver 
+%undefine mpi_ver
 %bcond_without hpc
 %endif
 
@@ -291,7 +291,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_family mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver 
+%undefine mpi_ver
 %bcond_without hpc
 %endif
 
@@ -346,7 +346,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_family mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver 
+%undefine mpi_ver
 %bcond_without hpc
 %endif
 
@@ -401,7 +401,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_family mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver 
+%undefine mpi_ver
 %bcond_without hpc
 %endif
 
@@ -421,7 +421,7 @@ ExclusiveArch:  do_not_build
 
 %{?mpi_family:%{bcond_without mpi}}%{!?mpi_family:%{bcond_with mpi}}
 
-# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15 
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
 %if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi" || "%{mpi_ver}" != "1"
 %define mpi_ext %{?mpi_ver}
 %endif
@@ -474,7 +474,6 @@ Release:        0
 URL:            http://mumps.enseeiht.fr/
 Source0:        http://mumps.enseeiht.fr/MUMPS_%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source1:        Makefile.inc
-Patch1:         Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch
 %if %{without hpc}
 BuildRequires:  gcc-fortran
 %{?with_scotch:BuildRequires:  %{scotch}%{?with_mpi:-%{mpi_family}%{?mpi_ext}}-devel}
@@ -499,7 +498,6 @@ MUMPS implements a direct solver for large sparse linear systems, with a
 particular focus on symmetric positive definite matrices.  It can
 operate on distributed matrices e.g. over a cluster.  It has Fortran and
 C interfaces, and can interface with ordering tools such as Scotch.
-
 
 %package -n %{libname}
 Summary:        A MUltifrontal Massively Parallel Sparse direct Solver
@@ -657,7 +655,7 @@ matlab and scilab extensions are provided in /usr/share/doc/packages/mumps.
 
 %prep
 %setup -q -n %{PNAME}_%{version}
-%patch1 -p1
+#%%patch1 -p1
 
 %build
 
@@ -739,7 +737,7 @@ make %{?_smp_mflags} alllib
 
 %{!?with_mpi:cp -P libseq/libmpiseq*.a lib/}
 
-mkdir lib/tmp; cd lib/tmp; 
+mkdir lib/tmp; cd lib/tmp;
 %define LORDERINGS -lpord%{?PLAT} %{?scotch:-l%{scotch}}
 %if %{without mpi}
   rm -f *.o; ar -x ../libmpiseq%{?PLAT}.a
@@ -850,6 +848,7 @@ rm -rf examples/*.o examples/*simpletest examples/*_save_restore examples/c_exam
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 %else
+
 %post -n %{libname}
 /sbin/ldconfig -N %{my_libdir}
 

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Feb 25 09:48:50 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to version 5.3.5, changes are
+  * Fixed 2x2 pivots bug from 5.3.4 release in MPI LDLT factorization
+  * Fixed ICNTL(8)=-2 option during analysis (code and documentation)
+  * Fixed a rare bug (segfault) related to dynamic storage management on numerically difficult matrices
+  * Fixed a rare deadlock in BLR for symmetric matrices
+  * Fixed an uninitialized variable (which could lead to incorrect -19 error)
+  * Minor fix in userguide (CNTL(1) vs. ICNTL(1) in ICNTL(36) description)
+  * Fixed a possible runtime issue during solve, related to "TO_PROCESS" array 
+  * Assume ilp64 MPI interface only applies to Fortran in c_example.c
+  * Note on gfortran-10 compilation added
+  * Avoid intent on pointers (F2003-only)
+  * More robust multithreading for matrix reformatting (arrowheads)
+  * Fixed ICNTL(31) interpretation in case of repeated analysis
+  * Fixed multiple mpif.h inclusion (distributed rhs, ifort+openmpi)
+  * Fixed computation of effectively used memory statistics
+  * Improved multithreaded performance of BLR backward solve
+  * Fixed return code in build_mumps_int_def.c + openmp compilation (pgi)
+  * Forbid a loop vectorization in [sdcz]sol_c.F (segfault with ifort) 
+  * New feature: distributed right-hand sides
+  * Improved time for arrowheads construction (single MPI case, mainly)
+  * C interface: ability to know if MUMPS_INT is 64-bit from include file
+  * Improved BLR performance when CNTL(1)=0.0 and ICNTL(36)=1
+  * Fixed INFO(34),INFO(35),INFO(37),INFO(38) on processes with rank > 0
+  * More portable MPI_IS_IN_PLACE feature in libseq
+  * Fixed determinant computation when Cholesky ScaLapack is used
+  * Information on advancement (flops done) on each MPI process
+  * Allow rhs_sparse and irhs_sparse to be unassociated if nz_rhs=0
+  * Fixed INFO(30) and INFO(31) computation on MPI processes with rank > 0
+  * OMP collapsed loops: avoid FIRSTPRIVATE on internal loop bound (for pgi)
+  * Fix for compilers not freeing local allocatable arrays (64-bit metis)
+  * Fixed RINFO(5-6) and RINFOG(15-16) metrics (entries=>bytes)
+  * C interface: A_ELT/SCHUR/RHS/REDRHS/RHS_loc/SOL_loc may exceed 2^31 entries
+  * Local Schur (ICNTL(19)=2 or 3) may now exceed 2^31 entries
+  * Fixed internal dynamic storage of blocks with more than 2^31 entries
+  * Fixed a bug in the parallel analysis that limited scalability 
+
+- removed Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch
+  * functionaltiy is included upstream
+
+-------------------------------------------------------------------
 Fri Feb  5 20:31:13 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Disable openmpi4 builds for SLE/Leap < 15.3.
