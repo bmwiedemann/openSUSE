@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-installation
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.3.24
+Version:        4.3.28
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -36,12 +36,16 @@ BuildRequires:  yast2-ruby-bindings >= 4.0.6
 BuildRequires:  yast2-xml
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
-# Yast::OSRelease.ReleaseVersionHumanReadable
-BuildRequires:  yast2 >= 4.2.56
+# Yast2::FsSnapshotStore::IOError
+BuildRequires:  yast2 >= 4.3.53
 # Y2Packager::MediumType
 BuildRequires:  yast2-packager >= 4.2.27
 # CIOIgnore
 BuildRequires:  yast2-bootloader
+# For selinux classes
+BuildRequires:  yast2-security
+# For firewall widgets
+BuildRequires:  yast2-firewall
 # using /usr/bin/udevadm
 BuildRequires:  yast2-storage-ng >= 4.2.71
 # Y2Network::NtpServer
@@ -79,8 +83,8 @@ Requires:       yast2-proxy
 # Systemd default target and services. This version supports
 # writing settings in the first installation stage.
 Requires:       yast2-services-manager >= 3.2.1
-# UI::Wizards::Layout
-Requires:       yast2 >= 4.3.16
+# Yast2::FsSnapshotStore::IOError
+Requires:       yast2 >= 4.3.53
 # Y2Network::NtpServer
 Requires:       yast2-network >= 4.2.55
 # for AbortException and handle direct abort
