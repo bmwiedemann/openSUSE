@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbconvert
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define doc_ver 5.6.1
+%define doc_ver 6.0.7
 Name:           python-nbconvert
-Version:        5.6.1
+Version:        6.0.7
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause
@@ -27,6 +27,9 @@ URL:            https://github.com/jupyter/nbconvert
 Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbconvert-%{version}.tar.gz
 Source1:        https://media.readthedocs.org/pdf/nbconvert/%{doc_ver}/nbconvert.pdf
 Source2:        https://media.readthedocs.org/htmlzip/nbconvert/%{doc_ver}/nbconvert.zip
+# PATCH-FIX-UPSTREAM skip_network_tests.patch gh#jupyter/nbconvert#1526 mcepl@suse.com
+# Skip tests requiring network access
+Patch0:         skip_network_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,11 +64,13 @@ BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module jupyter-client >= 5.3.1}
 BuildRequires:  %{python_module jupyter-core}
+BuildRequires:  %{python_module jupyterlab-pygments}
 BuildRequires:  %{python_module mistune >= 0.7.4}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nbclient}
 BuildRequires:  %{python_module nbformat >= 4.4}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pandocfilters >= 1.4.1}
+BuildRequires:  %{python_module pyppeteer}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module tornado >= 4.0}
@@ -122,7 +127,8 @@ Obsoletes:      %{python_module jupyter_nbconvert-doc < %{version}}
 Documentation and help files for Jupyter's notebook converter.
 
 %prep
-%setup -q -n nbconvert-%{version}
+%autosetup -p1 -n nbconvert-%{version}
+
 cp %{SOURCE1} .
 unzip %{SOURCE2} -d docs
 mv docs/nbconvert-* docs/html
@@ -148,13 +154,10 @@ cp -r docs/html %{buildroot}%{_docdir}/jupyter-nbconvert/
 pushd docs
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
-# test_run_notebooks disabled until IPython 7 incompatibility in tests fixed.
-# test_run_all_notebooks disabled temporarily as it fails with py3.8
-# See https://github.com/jupyter/nbconvert/issues/898
-# parallel notebooks don't work reliably on python 2.x
+export JUPYTER_PATH=%{buildroot}%{_datadir}/jupyter
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -B -m ipykernel.kernelspec --user
-pytest-%{$python_bin_suffix} -v --pyargs -k 'not (test_run_all_notebooks or test_svg_handling or test_run_notebooks or test_parallel_notebooks or test_many_parallel_notebooks)' nbconvert
+pytest-%{$python_bin_suffix} -v -k 'not network' --pyargs nbconvert
 }
 popd
 
@@ -167,6 +170,8 @@ popd
 %files -n jupyter-nbconvert
 %license LICENSE
 %{_bindir}/jupyter-nbconvert
+%dir %{_datadir}/jupyter/nbconvert
+%{_datadir}/jupyter/nbconvert/templates
 
 %files -n jupyter-nbconvert-latex
 %license LICENSE
