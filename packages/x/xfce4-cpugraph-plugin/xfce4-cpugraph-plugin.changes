@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 24 18:20:06 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.3
+  * Add support for per-core history graphs
+  * Enable user-defined spacing between per-core history graphs
+  * Use an exponential function when painting the grid
+    in non-linear mode
+  * Improve performance of current CPU usage bars
+  * Improve LED rendering performance
+  * Improve grid rendering performance
+  * Enumerate CPU cores from 0 (instead of 1) to match Linux
+    command-line tools
+  * Ensure that the bars and the history cannot be disabled at
+    the same time
+  * Slightly better handling of colors
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Feb 14 22:05:58 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.2.2

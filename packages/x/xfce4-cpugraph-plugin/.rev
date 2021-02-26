@@ -47,4 +47,26 @@
 </comment>
     <requestid>872608</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>25593f2619fecee8894e67fba3b1f44d</srcmd5>
+    <version>1.2.3</version>
+    <time>1614373352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3
+  * Add support for per-core history graphs
+  * Enable user-defined spacing between per-core history graphs
+  * Use an exponential function when painting the grid
+    in non-linear mode
+  * Improve performance of current CPU usage bars
+  * Improve LED rendering performance
+  * Improve grid rendering performance
+  * Enumerate CPU cores from 0 (instead of 1) to match Linux
+    command-line tools
+  * Ensure that the bars and the history cannot be disabled at
+    the same time
+  * Slightly better handling of colors
+  * Translation Updates
+</comment>
+    <requestid>875511</requestid>
+  </revision>
 </revisionlist>
