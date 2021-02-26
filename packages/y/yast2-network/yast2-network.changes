@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Feb 26 06:41:17 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improve wireless devices configuration UX (bsc#1177834):
+  - Reorganize the widgets, to make the UI easier to understand.
+  - Add a list of wireless networks which displays additional
+    information like Mode, Channel, Rate, Signal and
+    Security method.
+  - Pre-select the authentication method depending on the
+    selected network.
+- Fix initialization of the "AP ScanMode" field.
+- 4.3.50
+
+-------------------------------------------------------------------
+Mon Feb 22 13:53:49 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Added AutoYaST interfaces section errors reporting (bsc#1174353,
+  bsc#1178107).
+- 4.3.49
+
+-------------------------------------------------------------------
+Mon Feb 22 09:32:34 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Improve the AutoYaST interfaces reader handling better the IP
+  Addresses configuration. (bsc#1174353, bsc#1178107)
+- 4.3.48
+
+-------------------------------------------------------------------
+Fri Feb 19 10:28:29 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.47
+
+-------------------------------------------------------------------
+Wed Feb 10 10:30:53 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Allow to disable the proposal of the bridge network configuration
+  for virtualization in the installation summary or by the new
+  'virt_bridge_proposal' AutoYaST option (bsc#1178603)
+- 4.3.46
+
+-------------------------------------------------------------------
+Tue Feb  9 08:18:26 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix for not present interfaces when deciding whether
+  the "Scan Network" button should be disabled or not during a
+  wireless configuration (bsc#1177834).
+- 4.3.45
+
+-------------------------------------------------------------------
 Thu Feb  4 15:05:25 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Cache the hardware netcards information in order to speed up the
