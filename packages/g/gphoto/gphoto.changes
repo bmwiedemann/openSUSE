@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 21 12:12:23 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.5.27 release
+  * fixed cdk detection
+  * adjust range detection for filenames containing or starting with -
+
+-------------------------------------------------------------------
 Sun Oct 11 17:55:44 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.5.26 release

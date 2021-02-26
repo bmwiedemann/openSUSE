@@ -1,7 +1,7 @@
 #
 # spec file for package gphoto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            http://gphoto.sourceforge.net
 Summary:        A Digital Camera Utility
 License:        GPL-2.0-or-later
 Group:          Hardware/Camera
-Version:        2.5.26
+Version:        2.5.27
 Release:        0
 Source0:        https://downloads.sourceforge.net/project/gphoto/gphoto/%{version}/%{name}2-%{version}.tar.bz2
 Source1:        https://downloads.sourceforge.net/project/gphoto/gphoto/%{version}/%{name}2-%{version}.tar.bz2.asc

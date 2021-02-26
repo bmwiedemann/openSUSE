@@ -433,4 +433,14 @@
 - upstreamed fix-exif.patch</comment>
     <requestid>841076</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>43aa355cd8201d9e25dd1428fe49ced8</srcmd5>
+    <version>2.5.27</version>
+    <time>1614373256</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.27 release
+  * fixed cdk detection
+  * adjust range detection for filenames containing or starting with -</comment>
+    <requestid>875385</requestid>
+  </revision>
 </revisionlist>
