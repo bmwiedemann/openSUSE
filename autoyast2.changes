@@ -1,6 +1,4 @@
 -------------------------------------------------------------------
-<<<<<<< Updated upstream
-=======
 Fri Feb 26 09:47:17 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Select patterns during auto installation even when not using the
@@ -29,7 +27,6 @@ Thu Jan 28 16:54:47 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 - 4.3.66
 
 -------------------------------------------------------------------
->>>>>>> Stashed changes
 Thu Jan 14 14:38:35 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Upgrade: Checking if a valid base product has been selected for

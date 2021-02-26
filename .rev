@@ -2330,8 +2330,6 @@
     <comment>submit new version 4.3.65</comment>
     <requestid>864067</requestid>
   </revision>
-<<<<<<< Updated upstream
-=======
   <revision rev="296" vrev="1">
     <srcmd5>d43aa63a23e27b7daf6efac300e64b71</srcmd5>
     <version>4.3.67</version>
@@ -2348,5 +2346,4 @@
     <comment>submit new version 4.3.69</comment>
     <requestid>875325</requestid>
   </revision>
->>>>>>> Stashed changes
 </revisionlist>
