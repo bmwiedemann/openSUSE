@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           bumblebee-status
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Modular, theme-able status line generator for the i3 window manager
 License:        MIT
@@ -45,6 +45,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-yubico}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module suntime}
@@ -98,7 +99,6 @@ Recommends:     gnome-system-monitor
 Recommends:     iputils
 # wireless-tools provides iwgetid, used by core module nic
 Recommends:     wireless-tools
-Recommends:     bumblebee-status-theme-powerline = %{version}
 Recommends:     bumblebee-status-module-caffeine = %{version}
 Recommends:     bumblebee-status-module-indicator = %{version}
 Recommends:     bumblebee-status-module-layout = %{version}
@@ -110,8 +110,41 @@ Recommends:     bumblebee-status-module-sensors = %{version}
 Recommends:     bumblebee-status-module-sun = %{version}
 Recommends:     bumblebee-status-module-title = %{version}
 Recommends:     bumblebee-status-module-xrandr = %{version}
+Recommends:     bumblebee-status-theme-powerline = %{version}
+Suggests:       bumblebee-status-module-alsa = %{version}
+Suggests:       bumblebee-status-module-arandr = %{version}
+Suggests:       bumblebee-status-module-brightness = %{version}
+Suggests:       bumblebee-status-module-cmus = %{version}
+Suggests:       bumblebee-status-module-deadbeef = %{version}
+Suggests:       bumblebee-status-module-deezer = %{version}
+Suggests:       bumblebee-status-module-docker-ps = %{version}
+Suggests:       bumblebee-status-module-duns = %{version}
+Suggests:       bumblebee-status-module-git = %{version}
+Suggests:       bumblebee-status-module-hddtemp = %{version}
+Suggests:       bumblebee-status-module-layout-xkbswitch = %{version}
+Suggests:       bumblebee-status-module-libvirt = %{version}
+Suggests:       bumblebee-status-module-mocp = %{version}
+Suggests:       bumblebee-status-module-mpd = %{version}
+Suggests:       bumblebee-status-module-notmuch = %{version}
+Suggests:       bumblebee-status-module-nvidia-prime = %{version}
+Suggests:       bumblebee-status-module-octoprint = %{version}
 Suggests:       bumblebee-status-module-progress = %{version}
+Suggests:       bumblebee-status-module-redshift = %{version}
+Suggests:       bumblebee-status-module-smartstatus = %{version}
+Suggests:       bumblebee-status-module-speedtest = %{version}
+Suggests:       bumblebee-status-module-spotify = %{version}
+Suggests:       bumblebee-status-module-taskwarrior = %{version}
+Suggests:       bumblebee-status-module-vault = %{version}
+Suggests:       bumblebee-status-module-vpn = %{version}
+Suggests:       bumblebee-status-module-watson = %{version}
+Suggests:       bumblebee-status-module-yubikey = %{version}
 BuildArch:      noarch
+# SECTION missing dependencies
+#Suggests:       bumblebee-status-module-nvidia = %{version}
+#Suggests:       bumblebee-status-module-pihole = %{version}
+#Suggests:       bumblebee-status-module-twmn = %{version}
+#Suggests:       bumblebee-status-module-zfs = %{version}
+# /SECTION
 
 %description
 bumblebee-status is a modular, themeable status line generator for the i3 window manager.
@@ -834,7 +867,7 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/contrib/notmuch_count.py
 
 %files module-octoprint
-%{_datadir}/%{name}/bumblebee/modules/contrib/octoprint.py  
+%{_datadir}/%{name}/bumblebee/modules/contrib/octoprint.py
 
 %files module-pihole
 %{_datadir}/%{name}/bumblebee/modules/contrib/pihole.py

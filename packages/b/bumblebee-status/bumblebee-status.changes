@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 25 11:14:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add explicit BR for pyusb to fix Leap builds
+- Add Suggests for all modules
+
+-------------------------------------------------------------------
+Thu Feb 25 10:16:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.2:
+  * make configuration file name configurable (#764)
+  * Support for spotifyd (#752)
+  * add /usr/share/ as theme directory (#753)
+  * playerctl improvements
+
+-------------------------------------------------------------------
 Mon Jan 18 13:15:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update use-python-3.patch
