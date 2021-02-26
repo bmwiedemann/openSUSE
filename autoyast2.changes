@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+<<<<<<< Updated upstream
+=======
+Fri Feb 26 09:47:17 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Select patterns during auto installation even when not using the
+  confirm mode (related to jsc#SMO-20 and bsc#1182543).
+- 4.3.69
+
+-------------------------------------------------------------------
+Mon Feb 15 15:08:35 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.68
+
+-------------------------------------------------------------------
+Mon Feb  1 09:09:15 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST UI: fixed field Mount Options (fstopt) in the
+  partitioning section (bsc#1181577).
+- 4.3.67
+
+-------------------------------------------------------------------
+Thu Jan 28 16:54:47 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST UI: added drive types CT_NFS and CT_TMPFS to the
+  partitioning section (part of jsc#SLE-11308).
+- 4.3.66
+
+-------------------------------------------------------------------
+>>>>>>> Stashed changes
 Thu Jan 14 14:38:35 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Upgrade: Checking if a valid base product has been selected for
