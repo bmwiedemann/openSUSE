@@ -1,5 +1,0 @@
-<package name="rubygem-deep_merge" project="openSUSE:Factory">
-  <title>Merge deeply nested hashes</title>
-  <description>Recursively merge hashes. Now works with Ruby 1.9 and ActiveSupport.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-deep_merge"/>
-</package>
