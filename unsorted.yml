@@ -5805,7 +5805,6 @@ unsorted:
   - google-oauth-java-client-parent 
   - google-oauth-java-client-servlet 
   - google-osconfig-agent 
-  - google-poppins-fonts 
   - google-quiche-source 
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
@@ -11817,12 +11816,12 @@ unsorted:
   - libmumps5-openmpi2: [x86_64] 
   - libmumps5-openmpi3: [x86_64] 
   - libmumps5-openmpi4: [x86_64] 
-  - libmumps_5_2_1-gnu-mpich-hpc: [x86_64] 
-  - libmumps_5_2_1-gnu-mvapich2-hpc: [x86_64] 
-  - libmumps_5_2_1-gnu-openmpi1-hpc: [x86_64] 
-  - libmumps_5_2_1-gnu-openmpi2-hpc: [x86_64] 
-  - libmumps_5_2_1-gnu-openmpi3-hpc: [x86_64] 
-  - libmumps_5_2_1-gnu-openmpi4-hpc: [x86_64] 
+  - libmumps_5_3_5-gnu-mpich-hpc: [x86_64] 
+  - libmumps_5_3_5-gnu-mvapich2-hpc: [x86_64] 
+  - libmumps_5_3_5-gnu-openmpi1-hpc: [x86_64] 
+  - libmumps_5_3_5-gnu-openmpi2-hpc: [x86_64] 
+  - libmumps_5_3_5-gnu-openmpi3-hpc: [x86_64] 
+  - libmumps_5_3_5-gnu-openmpi4-hpc: [x86_64] 
   - libmunge2 
   - libmunge2-32bit: [x86_64] 
   - libmunit0suse0 
@@ -12475,11 +12474,12 @@ unsorted:
   - libpnetcdf4-openmpi1: [x86_64] 
   - libpnetcdf4-openmpi2: [x86_64] 
   - libpnetcdf4-openmpi3: [x86_64] 
-  - libpnetcdf_1_12_1-gnu-mpich-hpc: [x86_64] 
-  - libpnetcdf_1_12_1-gnu-mvapich2-hpc: [x86_64] 
-  - libpnetcdf_1_12_1-gnu-openmpi2-hpc: [x86_64] 
-  - libpnetcdf_1_12_1-gnu-openmpi3-hpc: [x86_64] 
-  - libpnetcdf_1_12_1-gnu-openmpi4-hpc: [x86_64] 
+  - libpnetcdf4-openmpi4: [x86_64] 
+  - libpnetcdf_1_12_2-gnu-mpich-hpc: [x86_64] 
+  - libpnetcdf_1_12_2-gnu-mvapich2-hpc: [x86_64] 
+  - libpnetcdf_1_12_2-gnu-openmpi2-hpc: [x86_64] 
+  - libpnetcdf_1_12_2-gnu-openmpi3-hpc: [x86_64] 
+  - libpnetcdf_1_12_2-gnu-openmpi4-hpc: [x86_64] 
   - libpng12-0: [x86_64] 
   - libpng12-compat-devel 
   - libpng12-compat-devel-32bit: [x86_64] 
@@ -14445,7 +14445,7 @@ unsorted:
   - libyui-ncurses-pkg-devel 
   - libyui-ncurses-pkg-doc 
   - libyui-ncurses-rest-api-devel 
-  - libyui-ncurses-rest-api14 
+  - libyui-ncurses-rest-api15 
   - libyui-ncurses-tools 
   - libyui-qt-devel 
   - libyui-qt-doc 
@@ -14454,9 +14454,9 @@ unsorted:
   - libyui-qt-pkg-devel 
   - libyui-qt-pkg-doc 
   - libyui-qt-rest-api-devel 
-  - libyui-qt-rest-api14 
+  - libyui-qt-rest-api15 
   - libyui-rest-api-devel 
-  - libyui-rest-api14 
+  - libyui-rest-api15 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -16137,30 +16137,30 @@ unsorted:
   - mumps-scotch-devel: [x86_64] 
   - mumps-scotch-devel-static: [x86_64] 
   - mumps-scotch-examples: [x86_64] 
-  - mumps_5_2_1-gnu-mpich-hpc-devel: [x86_64] 
-  - mumps_5_2_1-gnu-mpich-hpc-devel-static: [x86_64] 
-  - mumps_5_2_1-gnu-mpich-hpc-doc: [x86_64] 
-  - mumps_5_2_1-gnu-mpich-hpc-examples: [x86_64] 
-  - mumps_5_2_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - mumps_5_2_1-gnu-mvapich2-hpc-devel-static: [x86_64] 
-  - mumps_5_2_1-gnu-mvapich2-hpc-doc: [x86_64] 
-  - mumps_5_2_1-gnu-mvapich2-hpc-examples: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi1-hpc-devel: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi1-hpc-devel-static: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi1-hpc-doc: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi1-hpc-examples: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi2-hpc-devel-static: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi2-hpc-doc: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi2-hpc-examples: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi3-hpc-devel: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi3-hpc-devel-static: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi3-hpc-doc: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi3-hpc-examples: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi4-hpc-devel: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi4-hpc-devel-static: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi4-hpc-doc: [x86_64] 
-  - mumps_5_2_1-gnu-openmpi4-hpc-examples: [x86_64] 
+  - mumps_5_3_5-gnu-mpich-hpc-devel: [x86_64] 
+  - mumps_5_3_5-gnu-mpich-hpc-devel-static: [x86_64] 
+  - mumps_5_3_5-gnu-mpich-hpc-doc: [x86_64] 
+  - mumps_5_3_5-gnu-mpich-hpc-examples: [x86_64] 
+  - mumps_5_3_5-gnu-mvapich2-hpc-devel: [x86_64] 
+  - mumps_5_3_5-gnu-mvapich2-hpc-devel-static: [x86_64] 
+  - mumps_5_3_5-gnu-mvapich2-hpc-doc: [x86_64] 
+  - mumps_5_3_5-gnu-mvapich2-hpc-examples: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi1-hpc-devel: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi1-hpc-devel-static: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi1-hpc-doc: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi1-hpc-examples: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi2-hpc-devel: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi2-hpc-devel-static: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi2-hpc-doc: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi2-hpc-examples: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi3-hpc-devel: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi3-hpc-devel-static: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi3-hpc-doc: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi3-hpc-examples: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi4-hpc-devel: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi4-hpc-devel-static: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi4-hpc-doc: [x86_64] 
+  - mumps_5_3_5-gnu-openmpi4-hpc-examples: [x86_64] 
   - munge 
   - munge-devel 
   - munge-devel-32bit: [x86_64] 
@@ -20023,22 +20023,25 @@ unsorted:
   - pnetcdf-openmpi3: [x86_64] 
   - pnetcdf-openmpi3-devel: [x86_64] 
   - pnetcdf-openmpi3-devel-static: [x86_64] 
-  - pnetcdf_1_12_1-gnu-mpich-hpc: [x86_64] 
-  - pnetcdf_1_12_1-gnu-mpich-hpc-devel: [x86_64] 
-  - pnetcdf_1_12_1-gnu-mpich-hpc-devel-static: [x86_64] 
-  - pnetcdf_1_12_1-gnu-mvapich2-hpc: [x86_64] 
-  - pnetcdf_1_12_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - pnetcdf_1_12_1-gnu-mvapich2-hpc-devel-static: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi2-hpc: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi2-hpc-devel-static: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi3-hpc: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi3-hpc-devel: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi3-hpc-devel-static: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi4-hpc: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi4-hpc-devel: [x86_64] 
-  - pnetcdf_1_12_1-gnu-openmpi4-hpc-devel-static: [x86_64] 
-  - pnetcdf_1_12_1-hpc-doc: [x86_64] 
+  - pnetcdf-openmpi4: [x86_64] 
+  - pnetcdf-openmpi4-devel: [x86_64] 
+  - pnetcdf-openmpi4-devel-static: [x86_64] 
+  - pnetcdf_1_12_2-gnu-mpich-hpc: [x86_64] 
+  - pnetcdf_1_12_2-gnu-mpich-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_2-gnu-mpich-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_2-gnu-mvapich2-hpc: [x86_64] 
+  - pnetcdf_1_12_2-gnu-mvapich2-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_2-gnu-mvapich2-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi2-hpc: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi2-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi2-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi3-hpc: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi3-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi3-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi4-hpc: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi4-hpc-devel: [x86_64] 
+  - pnetcdf_1_12_2-gnu-openmpi4-hpc-devel-static: [x86_64] 
+  - pnetcdf_1_12_2-hpc-doc: [x86_64] 
   - png++-devel 
   - pngcheck 
   - pngcrush 
@@ -21001,7 +21004,6 @@ unsorted:
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
-  - python3-pyjnius 
   - python3-pymod2pkg 
   - python3-pynest2d 
   - python3-pypandoc: [i586] 
@@ -21338,6 +21340,7 @@ unsorted:
   - python36-aiohttp-theme 
   - python36-aiohttp_cors 
   - python36-aioitertools 
+  - python36-aioquic 
   - python36-aioredis 
   - python36-aioresponses 
   - python36-aiorpcX 
@@ -22617,8 +22620,6 @@ unsorted:
   - python36-more-itertools 
   - python36-moreorless 
   - python36-moto 
-  - python36-mpi4py 
-  - python36-mpi4py-devel 
   - python36-mplcursors 
   - python36-mpmath 
   - python36-mrcz 
@@ -22881,6 +22882,7 @@ unsorted:
   - python36-power 
   - python36-poyo 
   - python36-pprintpp 
+  - python36-pproxy 
   - python36-praatio 
   - python36-pre-commit 
   - python36-precis-i18n 
@@ -22930,6 +22932,7 @@ unsorted:
   - python36-py3c 
   - python36-py3dns 
   - python36-py3status 
+  - python36-py7zr 
   - python36-pyLibravatar 
   - python36-pyModis 
   - python36-pyOCD 
@@ -23033,6 +23036,7 @@ unsorted:
   - python36-pylru 
   - python36-pyls-black 
   - python36-pyls-spyder 
+  - python36-pylsqpack 
   - python36-pylzma 
   - python36-pymacaroons 
   - python36-pymacaroons-pynacl 
@@ -24145,6 +24149,7 @@ unsorted:
   - python38-aiohttp-theme 
   - python38-aiohttp_cors 
   - python38-aioitertools 
+  - python38-aioquic 
   - python38-aioredis 
   - python38-aioresponses 
   - python38-aiorpcX 
@@ -25711,6 +25716,7 @@ unsorted:
   - python38-power 
   - python38-poyo 
   - python38-pprintpp 
+  - python38-pproxy 
   - python38-praatio 
   - python38-pre-commit 
   - python38-precis-i18n 
@@ -25756,6 +25762,7 @@ unsorted:
   - python38-py3c 
   - python38-py3dns 
   - python38-py3status 
+  - python38-py7zr 
   - python38-pyDOE2 
   - python38-pyFFTW 
   - python38-pyLibravatar 
@@ -25834,6 +25841,7 @@ unsorted:
   - python38-pyinotify 
   - python38-pyipp 
   - python38-pyjavaproperties 
+  - python38-pyjnius 
   - python38-pyjokes 
   - python38-pyjsparser 
   - python38-pyjwkest 
@@ -25854,6 +25862,7 @@ unsorted:
   - python38-pylru 
   - python38-pyls-black 
   - python38-pyls-spyder 
+  - python38-pylsqpack 
   - python38-pylzma 
   - python38-pymacaroons 
   - python38-pymacaroons-pynacl 
@@ -27140,6 +27149,7 @@ unsorted:
   - rainbow-bash-completion 
   - rainbow-zsh-completion 
   - rakudo 
+  - raleway-fonts 
   - rang-devel 
   - ranger 
   - rapid-photo-downloader 
@@ -27457,11 +27467,7 @@ unsorted:
   - ruby2.7-doc-ri 
   - ruby2.7-rubygem-gettext-setup 
   - ruby2.7-rubygem-listen-doc-3_1 
-  - ruby2.7-rubygem-omniauth-gitlab 
-  - ruby2.7-rubygem-omniauth-oauth 
-  - ruby2.7-rubygem-pry_debug 
   - ruby2.7-rubygem-rspec-rails-3.9 
-  - ruby2.7-rubygem-ruby-shadow-doc 
   - ruby2.7-rubygem-ruby_dep-doc 
   - ruby2.7-rubygem-unicorn-doc 
   - ruby2.7-rubygem-unicorn-testsuite 
@@ -27496,34 +27502,20 @@ unsorted:
   - ruby3.0-rubygem-arel 
   - ruby3.0-rubygem-asciidoctor 
   - ruby3.0-rubygem-ast 
-  - ruby3.0-rubygem-atomic 
   - ruby3.0-rubygem-attr_required 
   - ruby3.0-rubygem-autoprefixer-rails 
   - ruby3.0-rubygem-axiom-types 
   - ruby3.0-rubygem-backport 
   - ruby3.0-rubygem-base32 
   - ruby3.0-rubygem-bcrypt 
-  - ruby3.0-rubygem-bcrypt-ruby 
   - ruby3.0-rubygem-bcrypt_pbkdf 
   - ruby3.0-rubygem-benchmark 
   - ruby3.0-rubygem-bindata 
   - ruby3.0-rubygem-binding_of_caller 
-  - ruby3.0-rubygem-bootstrap-sass 
-  - ruby3.0-rubygem-buff-extensions 
-  - ruby3.0-rubygem-buff-ignore 
-  - ruby3.0-rubygem-buff-ruby_engine 
   - ruby3.0-rubygem-bundler 
   - ruby3.0-rubygem-bundler-audit 
-  - ruby3.0-rubygem-bunny 
   - ruby3.0-rubygem-capistrano 
-  - ruby3.0-rubygem-capistrano-harrow 
-  - ruby3.0-rubygem-capistrano-stats 
   - ruby3.0-rubygem-celluloid 
-  - ruby3.0-rubygem-celluloid-essentials 
-  - ruby3.0-rubygem-celluloid-extras 
-  - ruby3.0-rubygem-celluloid-fsm 
-  - ruby3.0-rubygem-celluloid-pool 
-  - ruby3.0-rubygem-celluloid-supervision 
   - ruby3.0-rubygem-cfa 
   - ruby3.0-rubygem-cfa_grub2 
   - ruby3.0-rubygem-changelog_generator 
@@ -27531,28 +27523,19 @@ unsorted:
   - ruby3.0-rubygem-chef-utils 
   - ruby3.0-rubygem-childprocess 
   - ruby3.0-rubygem-childprocess-2.0 
-  - ruby3.0-rubygem-ci_reporter 
-  - ruby3.0-rubygem-cleanroom 
   - ruby3.0-rubygem-coderay 
   - ruby3.0-rubygem-coercible 
   - ruby3.0-rubygem-coffee-rails 
   - ruby3.0-rubygem-coffee-script 
   - ruby3.0-rubygem-coffee-script-source 
   - ruby3.0-rubygem-colorator 
-  - ruby3.0-rubygem-colored 
-  - ruby3.0-rubygem-colorize 
-  - ruby3.0-rubygem-columnize 
   - ruby3.0-rubygem-commander 
   - ruby3.0-rubygem-cool.io 
   - ruby3.0-rubygem-crack 
   - ruby3.0-rubygem-css_parser 
-  - ruby3.0-rubygem-cssmin 
-  - ruby3.0-rubygem-daemons 
   - ruby3.0-rubygem-debase 
   - ruby3.0-rubygem-debase-ruby_core_source 
   - ruby3.0-rubygem-debug_inspector 
-  - ruby3.0-rubygem-debugger-linecache 
-  - ruby3.0-rubygem-deep_merge 
   - ruby3.0-rubygem-delayed_job 
   - ruby3.0-rubygem-delayed_job_active_record 
   - ruby3.0-rubygem-descendants_tracker 
@@ -27561,7 +27544,6 @@ unsorted:
   - ruby3.0-rubygem-devise_ldap_authenticatable 
   - ruby3.0-rubygem-diff-lcs 
   - ruby3.0-rubygem-diffy 
-  - ruby3.0-rubygem-dig_rb 
   - ruby3.0-rubygem-docile 
   - ruby3.0-rubygem-domain_name 
   - ruby3.0-rubygem-dry-configurable 
@@ -27579,19 +27561,13 @@ unsorted:
   - ruby3.0-rubygem-exception_notification 
   - ruby3.0-rubygem-excon 
   - ruby3.0-rubygem-execjs 
-  - ruby3.0-rubygem-extlib 
   - ruby3.0-rubygem-factory_girl 
-  - ruby3.0-rubygem-factory_girl_rails 
-  - ruby3.0-rubygem-fake_ftp 
   - ruby3.0-rubygem-fake_ftp-0_1 
   - ruby3.0-rubygem-faraday 
   - ruby3.0-rubygem-faraday-net_http 
   - ruby3.0-rubygem-faraday_middleware 
-  - ruby3.0-rubygem-faraday_middleware-multi_json 
   - ruby3.0-rubygem-fast_gettext 
   - ruby3.0-rubygem-fast_gettext-1.1 
-  - ruby3.0-rubygem-fast_xs 
-  - ruby3.0-rubygem-fastercsv 
   - ruby3.0-rubygem-flog 
   - ruby3.0-rubygem-fluentd 
   - ruby3.0-rubygem-fog-core 
@@ -27611,38 +27587,30 @@ unsorted:
   - ruby3.0-rubygem-globalid 
   - ruby3.0-rubygem-gpgme 
   - ruby3.0-rubygem-grape 
-  - ruby3.0-rubygem-gravatar_image_tag 
   - ruby3.0-rubygem-gssapi 
   - ruby3.0-rubygem-gyoku 
   - ruby3.0-rubygem-haml 
   - ruby3.0-rubygem-haml-rails 
-  - ruby3.0-rubygem-has_mobile_views 
   - ruby3.0-rubygem-hashdiff 
   - ruby3.0-rubygem-hashery 
   - ruby3.0-rubygem-hashicorp-checkpoint 
   - ruby3.0-rubygem-hashie 
   - ruby3.0-rubygem-highline 
-  - ruby3.0-rubygem-hike 
-  - ruby3.0-rubygem-hike-1_2 
   - ruby3.0-rubygem-hitimes 
   - ruby3.0-rubygem-hoe 
   - ruby3.0-rubygem-hpricot 
   - ruby3.0-rubygem-html2haml 
   - ruby3.0-rubygem-http-accept-1.7 
   - ruby3.0-rubygem-http-cookie 
-  - ruby3.0-rubygem-http_accept_language 
   - ruby3.0-rubygem-http_parser.rb 
   - ruby3.0-rubygem-httpclient 
   - ruby3.0-rubygem-ice_nine 
   - ruby3.0-rubygem-inifile 
-  - ruby3.0-rubygem-ipaddress 
   - ruby3.0-rubygem-jaro_winkler 
   - ruby3.0-rubygem-jekyll 
   - ruby3.0-rubygem-jekyll-sass-converter 
   - ruby3.0-rubygem-jekyll-watch 
-  - ruby3.0-rubygem-jmespath 
   - ruby3.0-rubygem-jquery-rails 
-  - ruby3.0-rubygem-jquery-ui-rails 
   - ruby3.0-rubygem-js-routes 
   - ruby3.0-rubygem-json 
   - ruby3.0-rubygem-json-jwt 
@@ -27653,12 +27621,11 @@ unsorted:
   - ruby3.0-rubygem-kramdown 
   - ruby3.0-rubygem-kramdown-parser-gfm 
   - ruby3.0-rubygem-launchy 
-  - ruby3.0-rubygem-levenshtein 
-  - ruby3.0-rubygem-librarian 
   - ruby3.0-rubygem-libyui-rake 
   - ruby3.0-rubygem-lightbox2 
   - ruby3.0-rubygem-liquid 
   - ruby3.0-rubygem-liquid-4 
+  - ruby3.0-rubygem-listen 
   - ruby3.0-rubygem-little-plugger 
   - ruby3.0-rubygem-locale 
   - ruby3.0-rubygem-log4r 
@@ -27668,11 +27635,9 @@ unsorted:
   - ruby3.0-rubygem-manpages 
   - ruby3.0-rubygem-marcel 
   - ruby3.0-rubygem-mercenary 
-  - ruby3.0-rubygem-metaclass 
   - ruby3.0-rubygem-micromachine 
   - ruby3.0-rubygem-mime 
   - ruby3.0-rubygem-mime-types 
-  - ruby3.0-rubygem-mime-types-1 
   - ruby3.0-rubygem-mime-types-data 
   - ruby3.0-rubygem-mimemagic 
   - ruby3.0-rubygem-mini_magick 
@@ -27684,7 +27649,6 @@ unsorted:
   - ruby3.0-rubygem-mixlib-config 
   - ruby3.0-rubygem-mixlib-log 
   - ruby3.0-rubygem-mixlib-shellout 
-  - ruby3.0-rubygem-mobileesp_converted 
   - ruby3.0-rubygem-mocha 
   - ruby3.0-rubygem-moneta 
   - ruby3.0-rubygem-multi_json 
@@ -27700,22 +27664,18 @@ unsorted:
   - ruby3.0-rubygem-net-sftp 
   - ruby3.0-rubygem-net-ssh 
   - ruby3.0-rubygem-net-ssh-gateway 
-  - ruby3.0-rubygem-net-ssh-multi 
   - ruby3.0-rubygem-netrc 
   - ruby3.0-rubygem-nori 
   - ruby3.0-rubygem-oauth 
   - ruby3.0-rubygem-oauth2 
   - ruby3.0-rubygem-omniauth 
   - ruby3.0-rubygem-omniauth-github 
-  - ruby3.0-rubygem-omniauth-gitlab 
   - ruby3.0-rubygem-omniauth-google-oauth2 
-  - ruby3.0-rubygem-omniauth-oauth 
   - ruby3.0-rubygem-omniauth-oauth2 
   - ruby3.0-rubygem-openid_connect 
   - ruby3.0-rubygem-optimist 
   - ruby3.0-rubygem-orm_adapter 
   - ruby3.0-rubygem-os 
-  - ruby3.0-rubygem-owncloud-admin 
   - ruby3.0-rubygem-packaging_rake_tasks 
   - ruby3.0-rubygem-paint 
   - ruby3.0-rubygem-parallel 
@@ -27750,22 +27710,20 @@ unsorted:
   - ruby3.0-rubygem-rack-protection 
   - ruby3.0-rubygem-rails-5.2 
   - ruby3.0-rubygem-rails-6.0 
-  - ruby3.0-rubygem-rails-deprecated_sanitizer 
   - ruby3.0-rubygem-rails-i18n 
-  - ruby3.0-rubygem-rails_stdout_logging 
   - ruby3.0-rubygem-railties-5.2 
   - ruby3.0-rubygem-rainbow 
   - ruby3.0-rubygem-raindrops 
   - ruby3.0-rubygem-rake-12_0 
   - ruby3.0-rubygem-rake-compiler 
+  - ruby3.0-rubygem-rb-fsevent 
+  - ruby3.0-rubygem-rb-inotify 
   - ruby3.0-rubygem-rb-kqueue 
   - ruby3.0-rubygem-rdiscount 
   - ruby3.0-rubygem-regexp_parser 
   - ruby3.0-rubygem-responders 
   - ruby3.0-rubygem-rest-client 
-  - ruby3.0-rubygem-restility 
   - ruby3.0-rubygem-reverse_markdown 
-  - ruby3.0-rubygem-rgen 
   - ruby3.0-rubygem-rice 
   - ruby3.0-rubygem-ronn 
   - ruby3.0-rubygem-rouge 
@@ -27787,15 +27745,12 @@ unsorted:
   - ruby3.0-rubygem-rubocop-ast 
   - ruby3.0-rubygem-ruby-augeas 
   - ruby3.0-rubygem-ruby-dbus 
-  - ruby3.0-rubygem-ruby-filemagic 
   - ruby3.0-rubygem-ruby-libvirt 
   - ruby3.0-rubygem-ruby-openid 
   - ruby3.0-rubygem-ruby-progressbar 
   - ruby3.0-rubygem-ruby-rc4 
   - ruby3.0-rubygem-ruby2_keywords 
-  - ruby3.0-rubygem-ruby_dig 
   - ruby3.0-rubygem-ruby_parser 
-  - ruby3.0-rubygem-rubyforge 
   - ruby3.0-rubygem-rubyntlm 
   - ruby3.0-rubygem-rubyzip 
   - ruby3.0-rubygem-safe_yaml 
@@ -27804,11 +27759,9 @@ unsorted:
   - ruby3.0-rubygem-sass-rails-5.1 
   - ruby3.0-rubygem-sassc-2.2 
   - ruby3.0-rubygem-sdoc 
-  - ruby3.0-rubygem-securecompare 
   - ruby3.0-rubygem-serverengine 
   - ruby3.0-rubygem-sexp_processor 
   - ruby3.0-rubygem-sigdump 
-  - ruby3.0-rubygem-simple_oauth 
   - ruby3.0-rubygem-simplecov 
   - ruby3.0-rubygem-simplecov-html 
   - ruby3.0-rubygem-simplecov_json_formatter 
@@ -27819,21 +27772,17 @@ unsorted:
   - ruby3.0-rubygem-sprockets-3.7 
   - ruby3.0-rubygem-sprockets-helpers 
   - ruby3.0-rubygem-sshkit 
-  - ruby3.0-rubygem-stackdeck 
   - ruby3.0-rubygem-stomp 
   - ruby3.0-rubygem-strptime 
   - ruby3.0-rubygem-swd 
-  - ruby3.0-rubygem-systemu 
   - ruby3.0-rubygem-temple 
   - ruby3.0-rubygem-terminal-table 
   - ruby3.0-rubygem-text 
-  - ruby3.0-rubygem-text-hyphen 
   - ruby3.0-rubygem-thor-0_19 
   - ruby3.0-rubygem-timers 
   - ruby3.0-rubygem-tmuxinator 
   - ruby3.0-rubygem-tomlrb 
   - ruby3.0-rubygem-treetop 
-  - ruby3.0-rubygem-treetop-1_4 
   - ruby3.0-rubygem-trollop 
   - ruby3.0-rubygem-ttfunk 
   - ruby3.0-rubygem-tzinfo 
@@ -27844,7 +27793,6 @@ unsorted:
   - ruby3.0-rubygem-unf_ext 
   - ruby3.0-rubygem-unicode-display_width 
   - ruby3.0-rubygem-unicode-display_width-1 
-  - ruby3.0-rubygem-unicorn-worker-killer 
   - ruby3.0-rubygem-vagrant-spec 
   - ruby3.0-rubygem-vagrant_cloud 
   - ruby3.0-rubygem-validate_email 
@@ -27870,9 +27818,6 @@ unsorted:
   - rubygem-docker-api-testsuite 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
-  - rubygem-ruby-fcgi 
-  - rubygem-ruby-fcgi-doc 
-  - rubygem-ruby-fcgi-testsuite 
   - runawk 
   - runawk-examples 
   - runc: [i586] 
