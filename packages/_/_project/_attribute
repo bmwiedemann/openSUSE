@@ -130,7 +130,7 @@
   boo#1180317: '20210103'
   boo#1180358: '20210223'
   boo#1180740: '20210115'
-  boo#1180754: '20210226'
+  boo#1180754: '20210227'
   boo#1180853: '20210111'
   boo#1181038: '20210223'
   boo#1181497: '20210127'
@@ -302,7 +302,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = devel:languages:rust:crates devel:kanku devel:languages:javascript
+devel-whitelist = devel:languages:rust:crates devel:kanku devel:languages:javascript devel:sap
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -336,7 +336,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210226</value>
+    <value>20210227</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -589,10 +589,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210226'
+    <value>failed: ''
 published: '20210223'
 publishing: '20210223'
-testing: '20210226'
+testing: '20210227'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
