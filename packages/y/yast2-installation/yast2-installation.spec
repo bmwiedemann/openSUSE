@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.3.28
+Version:        4.3.29
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -121,6 +121,8 @@ Conflicts:      yast2-registration < 3.2.3
 Conflicts:      yast2-mouse < 2.18.0
 # new autoinst_files_finish call
 Conflicts:      autoyast2 < 4.3.26
+# moved security_finish client
+Conflicts:      yast2-security < 4.3.11
 
 Obsoletes:      yast2-installation-devel-doc
 
