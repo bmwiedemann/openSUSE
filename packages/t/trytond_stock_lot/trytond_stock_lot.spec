@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_stock_lot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define majorver 5.0
 Name:           trytond_stock_lot
 Version:        %{majorver}.2
@@ -23,8 +24,10 @@ Release:        0
 Summary:        The "stock_lot" module of the Tryton ERP system
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
-URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
+Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+URL:            http://www.tryton.org/
 # List of additional build dependencies
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
