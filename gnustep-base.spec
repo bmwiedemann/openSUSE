@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ URL:            http://www.gnustep.org/
 Source:         ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM gnustep-base-1.27.0-fix-compilation-icu68.patch -- https://github.com/gnustep/libs-base/pull/163
+Patch0:         gnustep-base-1.27.0-fix-compilation-icu68.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-objc
 BuildRequires:  gmp-devel
@@ -91,7 +93,7 @@ This package contains include files for developing applications
 using the GNUstep Base Library.
 
 %prep
-%autosetup
+%autosetup -p1
 find . -type f -name "*.swp" -delete
 
 %build

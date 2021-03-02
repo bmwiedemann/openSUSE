@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 27 12:38:59 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add gnustep-base-1.27.0-fix-compilation-icu68.patch: Fix build
+  against ICU 68.
+
+-------------------------------------------------------------------
 Tue Apr 14 10:37:04 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.27.0
