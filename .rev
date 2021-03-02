@@ -208,4 +208,12 @@
 - Remove fsarchiver-attr.patch: upstreamed</comment>
     <requestid>623111</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>85df96e3bb7699a9ae14fa15675eca6f</srcmd5>
+    <version>0.8.6</version>
+    <time>1614684891</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875954</requestid>
+  </revision>
 </revisionlist>

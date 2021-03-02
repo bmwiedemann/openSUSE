@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  1 08:25:19 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.6:
+  * Add support for EXT4 fast_commit feature
+  * Add support for XFS features inobtcount and bigtime
+  * Fix handling of compression options on the command line
+  * Specify device as the last argument in mkfs calls
+
+-------------------------------------------------------------------
 Mon Jul 16 10:50:25 UTC 2018 - mpluskal@suse.com
 
 - Use pkgconfig style dependencies
