@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytesseract
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytesseract
-Version:        0.3.4
+Version:        0.3.7
 Release:        0
 Summary:        Python wrapper for Google's Tesseract-OCR
-License:        GPL-3.0-only
+License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/madmaze/python-tesseract
 # https://github.com/madmaze/pytesseract/issues/262
