@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Feb 28 18:51:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.45:
+  * Fix some input option not getting saved.
+  * Limit busywaits to the full client. This lowers the cpu consumption of
+    q2ded considerably.
+  * Rework the build system to be more distribution friendly.
+  * Fix some corner cases of broken IPv6 connectivity.
+  * Fix qport colliding between several Yamagi Quake II clients.
+  * Keyboard keys unknown to Yamagi Quake II can now be bound.
+  * Adaptive vsync is now supported by setting r_vsync to 1.
+  * Implement coop_pickup_weapons. When set to 1, a weapon may be picked up by
+    coop players if the player doesn`t have the weapon in their inventory or no
+    other player has already picked it up.
+  * In coop elevators wait for coop_elevator_delay seconds.
+  * If cl_anglekick is set 1 angle kicks are ignored. This breaks the gameplay
+    a little bit, but helps against motion sickness. This cvar is cheat
+    protected.
+  * Add listmaps command and autocompletion for maps. (by JBerg)
+  * Make wait in scripts wait for 17 ms. This fixes some movement makros.
+  * Support for Haiku. (by David Carlier)
+  * Add a mods submenu. (by earth-metal)
+  * Add the vstr command and nextdemo cvar. Ported from ioquake3. (by Denis Pauk) 
+
+-------------------------------------------------------------------
 Fri Oct 16 20:49:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.44

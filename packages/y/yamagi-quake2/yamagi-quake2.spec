@@ -1,7 +1,7 @@
 #
 # spec file for package yamagi-quake2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,13 @@
 
 
 Name:           yamagi-quake2
-Version:        7.44
+Version:        7.45
 Release:        0
 Summary:        Enhanced Quake 2 Source Port
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Shoot
-URL:            http://www.yamagi.org/quake2/
-Source:         http://deponie.yamagi.org/quake2/quake2-%{version}.tar.xz
-Source99:       %{name}.changes
+URL:            https://www.yamagi.org/quake2/
+Source:         https://deponie.yamagi.org/quake2/quake2-%{version}.tar.xz
 Source100:      yamagi-quake2.appdata.xml
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
@@ -49,12 +48,9 @@ retexturing packs and HUD scaling.
 
 %prep
 %setup -q -n quake2-%{version}
-# Fix usage of __DATE__ macro to prevent build in excess
-modified="$(sed -n '/^ *$/n;/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-sed -i "s/__DATE__/${DATE}/g" src/game/savegame/savegame.c src/common/header/common.h
 
 %build
+export SOURCE_DATE_EPOCH=$(date +%s -r CHANGELOG)
 %cmake \
     -DSYSTEMWIDE_SUPPORT=ON
 make %{_smp_mflags}
