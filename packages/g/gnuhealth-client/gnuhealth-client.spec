@@ -25,13 +25,15 @@ Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
-Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
+Source:         https://ftp.gnu.org/pub/gnu/health/%{name}-%{version}.tar.gz
 ##urce:         %{name}-%{version}.tar.gz
 ##urce1:        %{name}-plugins-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-latest.tar.gz
 Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-latest.tar.gz
 Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-latest.tar.gz
 Source4:        %{name}.desktop
+Source5:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz.sig
+Source6:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 
 BuildRequires:  fdupes
 BuildRequires:  python3-Babel
