@@ -1,9 +1,0 @@
-<package name="xbase" project="openSUSE:Factory">
-  <title>XBase Compatible C++ Class Library</title>
-  <description>This is an XBase (dBase and FoxPro, for example) compatible C++ class
-library.
-
-This package contains header files, a library, some command line tools,
-and developer documentation.</description>
-  <devel project="server:database" package="xbase"/>
-</package>
