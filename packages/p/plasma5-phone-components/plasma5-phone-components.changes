@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:52:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * Tweak app drawer behavior
+  * enable the drag handler only when the containment has focus
+  * Close sliding panel as soon as it's off the screen for no delay
+  * Cancel sliding panel animations on touch so it's more responsive
+  * respect max favorite count when dropping
+
+-------------------------------------------------------------------
 Mon Feb 15 14:02:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.0

@@ -23,4 +23,12 @@
     <comment>5.21.0 respins (forwarded request 872544 from Vogtinator)</comment>
     <requestid>872554</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fc09c60f958ab0d27149aa97d4eb3060</srcmd5>
+    <version>5.21.1</version>
+    <time>1614684706</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Plasma 5.21.1</comment>
+    <requestid>875043</requestid>
+  </revision>
 </revisionlist>
