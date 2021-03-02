@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:52:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * [platforms/drm] accept both keypress and keyrelease event in filter
+  * Fix build
+  * [platforms/drm] only enable output on key press not release
+  * Create Xcursor sprites with correct format
+  * Fix crash on pasting too soon after copying from XWayland
+  * effects/wobblywindows: Allow model geometry and real geometry get out of sync (kde#433187)
+  * effects/wobblywindows: Refactor the update loop
+  * x11: Introduce an envvar to force software vsync (kde#433094)
+  * x11: Introduce an envvar to prevent sync'ing to vblanks
+  * Properly clean up DrmGpu
+  * inputmethod: honour SNI disabled state
+  * Sprinkle static keywords
+  * x11: Properly detect whether swap events have to disabled
+  * inputmethod: toggle the inputmethod if we get second show request
+
+-------------------------------------------------------------------
 Mon Feb 15 14:02:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.0
