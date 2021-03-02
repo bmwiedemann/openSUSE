@@ -1,7 +1,7 @@
 #
 # spec file for package grc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           grc
-Version:        1.11.3
+Version:        1.12
 Release:        0
 Summary:        Generic colouriser for everything
 License:        GPL-2.0-or-later
@@ -35,19 +35,19 @@ logfiles or commands output.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p1
 
 %build
 # Nothing to build.
 
 %install
 # fix wrong wrong-script-interpreter
-find . -name 'grc' -exec sed -i "s|#! %{_bindir}/env python3$|#!/usr/bin/python3|" {} +
-find . -name 'grcat' -exec sed -i "s|#! %{_bindir}/env python3$|#!/usr/bin/python3|" {} +
+find . -name 'grc' -exec sed -i "s|#! %{_bindir}/env python3$|#!%{_bindir}/python3|" {} +
+find . -name 'grcat' -exec sed -i "s|#! %{_bindir}/env python3$|#!%{_bindir}/python3|" {} +
 install -Dm 0755 grc %{buildroot}%{_bindir}/grc
 install -Dm 0755 grcat %{buildroot}%{_bindir}/grcat
 install -Dm 0644 grc.conf %{buildroot}%{_sysconfdir}/grc.conf
-install -Dm 0644 grc.bashrc %{buildroot}%{_sysconfdir}/profile.d/grc.bash
+install -Dm 0644 grc.sh %{buildroot}%{_sysconfdir}/profile.d/grc.bash
 install -Dm 0644 grc.1 %{buildroot}%{_mandir}/man1/grc.1
 install -Dm 0644 grcat.1 %{buildroot}%{_mandir}/man1/grcat.1
 mkdir -p %{buildroot}%{_datadir}/grc/
@@ -55,8 +55,8 @@ install -m 0644 colourfiles/conf.* %{buildroot}%{_datadir}/grc/
 install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/grc/
 
 %files
-%defattr(-,root,root)
-%doc COPYING CREDITS README.markdown TODO Regexp.txt debian/changelog debian/copyright
+%license COPYING debian/copyright
+%doc CREDITS README.markdown TODO Regexp.txt debian/changelog
 %config(noreplace) %{_sysconfdir}/grc.conf
 %config %{_sysconfdir}/profile.d/grc.bash
 %{_bindir}/grc*
