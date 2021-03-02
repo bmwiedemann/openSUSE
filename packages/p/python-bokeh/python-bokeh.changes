@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Sat Feb 27 11:27:05 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.3.0
+  * bugfixes:
+    - #1426 Mixins have vectorized properties which doesn't make sense outside glyphs
+    - #6781 HoverTool.renderers accept List(Renderer) but supports only List(GlyphRenderer)
+    - #8489 [component: bokehjs] Graphical bugs with webgl and time series data with NaN points
+    - #9951 [BUG] Impossible to use tuples as colors
+    - #10136 [component: bokehjs] Arrows - 'white background' under the arrow
+    - #10218 [component: server] [BUG] Periodic callback don't stop in Django
+    - #10339 [component: tests] examples' tests fail because headless browser doesn't start in time
+    - #10407 [component: bokehjs] [BUG] Select is not updated upon setting value after changing the options
+    - #10411 [component: examples] [BUG] issues with latex_example_full
+    - #10452 [component: bokehjs] [BUG] MultiChoice disabled attribute is not working
+    - #10454 [component: bokehjs] LabelSet does not display with categorical coordinates
+    - #10457 [component: bokehjs] [BUG]Reverse Y axis range with circle 
+    - #10458 [component: bokehjs] [BUG]multi_line doesn't support hover.
+    - #10468 [component: bokehjs] [BUG] `DateSlider` and `DateRangeSlider` ignore `format` set to an instance of `TickFormatter`
+    - #10481 [component: bokehjs] [BUG] Unable to use CustomJS callback on HoverTool with GraphRenderer
+    - #10484 [component: docs] Typo in https://docs.bokeh.org/en/latest/docs/user_guide/embed.html#autoload-scripts
+    - #10498 [component: bokehjs] [BUG] GridBox not rebuilt when changing cols or rows attributes
+    - #10506 [component: bokehjs] [FEATURE] Hiding hex number from color swatch in hover tool
+    - #10507 [component: bokehjs] [BUG] Cannot disable MultiSelect in 2.2.1
+    - #10536 [component: server] Bad `super` call in "contexts.py"
+    - #10541 [component: bokehjs] [BUG]Slope annotation is not drawn with gradient of 0
+    - #10559 [component: bokehjs] [BUG] Modifying a tooltip may result in errors
+    - #10575 [component: bokehjs] [BUG] Whiskers do not appear in categorical plots?
+    - #10581 [component: docs] [BUG] Outdated example for CustomJSHover
+    - #10589 [component: bokehjs] [BUG] multi_line is rendered incorrectly when used with a view with filters
+    - #10594 [component: bokehjs] [BUG] Whiskers `base` have reduced precision
+    - #10595 [component: docs] [BUG] Minor Typo in Gallery documentation.
+    - #10603 [component: build] [BUG] 2.3.0dev2 introduced an erroneous dependency on "python_abi 3.9.* *_cp39"
+    - #10604 [component: bokehjs] quote (') from networkx index node are translated to (&#x27;)
+    - #10611 [component: bokehjs] bokehjs' unit tests fail after recent changes
+    - #10613 [component: docs] Add TOC to reference doc
+    - #10643 [component: bokehjs] [BUG] 2.3.0dev5 - Using a widget as a parameter in its own js callback throws 'Maximum call stack size exceeded' on JS side
+    - #10666 [component: bokehjs] [BUG] Webgl perf regressions in branch-2.3
+    - #10668 [BUG] Warnings about integrity checks when using CDN resources with extension
+    - #10670 [component: bokehjs] [BUG] PolyEditTool vertices are not redrawn on data source update
+    - #10675 [component: bokehjs] [BUG] ScientificFormatter shows 0 as 0.000e+00
+    - #10695 [component: bokehjs] [BUG] MultiChoice options covered up by DataTable
+    - #10697 [component: bokehjs] [BUG] ScientificFormatter error formatting negative numbers
+    - #10702 [component: bokehjs] [BUG] TextAreaInput value_input no change event detected
+    - #10721 [component: build] CI is failing with ModuleNotFoundError: No module named 'bokeh'
+    - #10725 [component: bokehjs] [BUG] SVG backend mirrors image in plot
+    - #10738 [component: bokehjs] [BUG] MultiLine datetime precision loss
+    - #10754 [component: bokehjs] [BUG] Hover indices broken 
+    - #10755 [component: bokehjs] Unequal length columns cause size mismatch error
+    - #10784 [component: bokehjs] [FEATURE] Differential re-rendering of updated plots
+    - #10809 [component: bokehjs] [BUG]figure labels missing after updating the CDS
+    - #10819 [component: docs] [BUG] Example in LabelSet documentation doesn't seem to be correct
+    - #10826 [component: bokehjs] SVG canvas doesn't implement `ctx.fill(fill_rule)`
+    - #10837 [component: bokehjs] Public style/**/*.d.ts are not robust enough for path mapping
+    - #10841 [BUG] Ensure non-nullable properties in JS are validated in Python
+    - #10851 [BUG] Layout regressions
+    - #10852 [component: bokehjs] [BUG] Lasso tool does not render
+    - #10853 [component: bokehjs] [BUG] Ajax and Server sent examples broken  
+    - #10855 [component: bokehjs] Only main glyphs has signals connected in `GlyphRenderer`
+    - #10875 [component: docs] [BUG] Marker docs require updating 
+    - #10879 [component: docs] [BUG] Link to export_svg() in export.rst is broken
+    - #10880 [BUG] ProxyToolbar.logo: expected a value of type str, got None
+    - #10913 [BUG] Error while testing 2.3.0dev13 with Dask
+    - #10924 [component: docs] [BUG]Custom Widget Example fails to load (2.3.0rc2)
+    - #10647 [component: bokehjs] [Spinner] Avoid twice incrementation with laptop pad
+    - #10701 Fix backwards compatibility alias for InspectTool
+    - #10760 [component: tests] Manually quote arguments to npx
+    - #10860 [component: bokehjs] Resolve IE compatibility issues
+  * features:
+    - #2230 [component: bokehjs] expose tap and hover tool hit radius
+    - #3674 Add DataModel base class
+    - #5618 [component: bokehjs] CategoricalColorMapper ColorBar
+    - #5676 [component: bokehjs] Encode colors as 32 bit integers by default
+    - #6835 [component: bokehjs] Vectorized Arrow Heads
+    - #7845 Allow both tap and doubletap gestures with TapTool
+    - #8169 [component: bokehjs] Line break in categorical axis labels
+    - #8954 [component: bokehjs] Adding support for superscript exponents
+    - #9169 [FEATURE] SVG export for gridplot
+    - #9847 [component: bokehjs] Add support for ES module entrypoint
+    - #9929 [component: bokehjs] Add hatch rendering to Box Annotation
+    - #10203 [component: bokehjs] [FEATURE] line_dash vectorizable where appropriate
+    - #10295 [component: bokehjs] [FEATURE] Let AutocompleteInput accept input not present in completion list
+    - #10472 [component: bokehjs] [FEATURE] Auto-ranging in network graphs
+    - #10505 [component: bokehjs] Add button_type with no border
+    - #10576 [FEATURE] 'transparent' as an alias for `rgba(0, 0, 0, 0)`
+    - #10599 [component: bokehjs] [BUG] BokehJS minimal example is not working
+    - #10612 [component: bokehjs] Hovertool does not work for dynamically added glyphs
+    - #10637 [component: bokehjs] Need "Edges" only inspected policy for graphs
+    - #10662 [component: bokehjs] [FEATURE]Allow naming (title) of Tools
+    - #10798 [component: server] [FEATURE] Support Tornado WebSocket compression on server
+    - #10824 [component: bokehjs] Add Hatch Patterns for Glyphs
+    - #10836 [component: bokehjs] [FEATURE] Add new star marker
+    - #10323 [component: bokehjs] Add support for smooth curve glyphs
+    - #10493 Accurate color bar ticking with eqhist mapping
+    - #10624 [component: bokehjs] Auto-generate index.ts based on tsconfig's input patterns
+    - #10640 Implement grad and turn CSS-based angle units
+    - #10734 [component: bokehjs] Add support for Less/CSS to extensions
+    - #10847 [component: bokehjs] Add star marker - webgl extension
+  * many more tasks
+
+-------------------------------------------------------------------
 Sun Feb 21 17:02:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: With NumPy 1.20, python36-numpy is no
