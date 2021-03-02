@@ -1,7 +1,7 @@
 #
 # spec file for package gti
 #
-# Copyright (c) 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
 Name:           gti
-Version:	1.6.1
-Release:	0
-License:	MIT
-Summary:	ASCII art punishmet for misspelling git
-Url:		http://r-wos.org/hacks/gti
-Group:		Amusements/Toys/Other
-Source:         https://github.com/rwos/gti/archive/v1.6.1.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:	gcc
-Recommends:      git-core
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Version:        1.7.0
+Release:        0
+Summary:        ASCII art punishmet for misspelling git
+License:        MIT
+Group:          Amusements/Toys/Other
+URL:            https://r-wos.org/hacks/gti
+Source:         https://github.com/rwos/gti/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
+Recommends:     git-core
 
 %description
 Program which will show you ASCII art car driving across the terminal when you
@@ -38,21 +36,15 @@ Similar to sl (steam locomotive).
 %setup -q
 
 %build
-
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}" STRIP=false
 
 %install
-mkdir -p %buildroot/usr/bin
-%makeinstall PREFIX=%buildroot/usr/bin
-
-%clean
-%{?buildroot:%__rm -rf "%{buildroot}"}
+mkdir -p %{buildroot}%{_bindir}
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc README.md 
+%doc README.md
 %{_bindir}/gti
 %{_mandir}/man*/*
 
 %changelog
-
