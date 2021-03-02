@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar  1 08:30:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Updaet to 21.02.27:
+  New:
+  * Added a file naming dialog for Export > From > Each Playlist Item > Export File.
+  * Added the ability to repair a near future version project file.
+    (Version 21.04 is expected to change the project file in a manner incompatible with
+    previous versions.)
+  * Added an error dialog when trying to open a far future version project file.
+  Changes:
+  * Upgraded JACK audio library on Windows to version 1.9.17.
+  Fixes:
+  * Fixed a possible crash using a PNG with alpha channel (transparency) especially with
+    a Size, Position & Rotate filter (broke in version 20.06).
+  * Fixed seeking video in some files particularly AVCHD (broke in v21.01).
+  * Fixed changing Properties > Video > Color Range does not work (broke in v21.01).
+  * Fixed selecting text with the mouse in various filter numeric fields (broke in
+    v21.01).
+  * Fixed difficult to enter some numbers in various filter numeric fields (broke in
+    v21.01).
+  * Fixed unable to make tracks as short as before (broke in v21.01).
+  * Fixed time bar in Timeline & Keyframes hidden on vertical scroll and not clickable
+    (broke in v21.01).
+  * Fixed scroll bars in Timeline & Keyframes may clash with clips or keyframes making
+    them difficult to use (regression in v21.01).
+  * Fixed keyframes disappear when changing selected clips on various filters (broke in
+    v21.01)
+  * Fixed appending to the timeline may change the current track.
+  * Fixed Properties > Extract sub-clip on a file with cover art.
+  * Fixed File > Export Frame on a clip with a Text: Rich filter.
+  * Fixed toggle Properties > Image sequence may deadlock on high frame rate video mode
+    or break playback.
+  * Fixed Timeline > Merge with next clip may move other clips on the track.
+  * Fixed undo a trim in point on Timeline may shift other clips on the track.
+  * Fixed undo after trim in point to create a 1 frame transition may delete the clip.
+  * Fixed right-click in Playlist icons view mode breaks multiple selection on Windows.
+  * Fixed Properties > Convert after Timeline > Detach Audio makes video black.
+  * Fixed some keyboard shortcuts may be broken when not using Settings > Language > 
+    English (United States).
+  * Fixed possible crash on Windows due to not loading the packaged DLL over one in a
+    system folder or in %PATH%.
+  * Fixed a crash when selecting a missing video clip.
+  * Fixed unicode in Text: Rich > Save As followed by Open.
+
+-------------------------------------------------------------------
 Tue Feb  2 12:00:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 21.01.29:
