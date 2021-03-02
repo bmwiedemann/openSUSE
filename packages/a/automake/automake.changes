@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 23 20:56:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- make generated autoconf makefiles reproducible (bsc#1182604):
+  add automake-reproducible.patch 
+
+-------------------------------------------------------------------
 Sun Jan 17 18:42:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add fix-testsuite-failures-with-autoconf270.patch to fix compatibility

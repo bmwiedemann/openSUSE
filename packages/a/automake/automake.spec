@@ -42,8 +42,8 @@ Source3:        automake-rpmlintrc
 Patch1:         https://git.savannah.gnu.org/cgit/automake.git/patch/?id=ccb57553e3433df3e52e534e6f87915db23ff9a5#/fix-testsuite-failures-with-autoconf270.patch
 Patch2:         automake-require_file.patch
 Patch3:         automake-1.13.4-fix-primary-prefix-invalid-couples-test.patch
+Patch4:         automake-reproducible.patch
 Patch5:         0001-correct-parameter-parsing-in-test-driver-script.patch
-
 Patch100:       automake-suse-vendor.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  bison
@@ -88,11 +88,7 @@ definitions (with rules occasionally thrown in).  The generated
 
 %prep
 %setup -q -n automake-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch5 -p1
-%patch100 -p1
+%autopatch -p1
 
 %build
 sh bootstrap

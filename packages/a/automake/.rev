@@ -486,4 +486,13 @@
 - remove automake-testsuite-vala-gcc10.patch (upstream)</comment>
     <requestid>863898</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f895becbbf4bed7ea7a2d77db5870b08</srcmd5>
+    <version>1.16.3</version>
+    <time>1614684323</time>
+    <user>RBrownSUSE</user>
+    <comment>- make generated autoconf makefiles reproducible (bsc#1182604):
+  add automake-reproducible.patch</comment>
+    <requestid>874730</requestid>
+  </revision>
 </revisionlist>
