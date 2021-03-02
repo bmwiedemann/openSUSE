@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  1 04:18:57 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- drop fcitx-libpinyin-0.5.3-libpinyin-2.4.92.patch
+  and model19.text.tar.gz
+  * can not use libpinyin data for libzhuyin
+- add fcitx-libpinyin-libpinyin-2.4.92-database_format.patch
+
+-------------------------------------------------------------------
 Thu Nov 12 15:07:05 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - fix with libpinyin 2.4.93
