@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 28 18:42:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.5
+  Closed issues:
+  * Use of std::atomic can slow down multithreaded tests #452
+  * Stack buffer overflow in String constructor #460
+  Merged pull requests:
+  * Fix compilation on case-sensitive filesystems #463
+  * Use function-like macros for prefixless macro names #462
+  * Implement a multi lane atomic for assertion counts
+- Update to version 2.4.4
+  * combine the same tests for different build configurations from
+    multiple shared objects without having symbol clashes #436
+
+-------------------------------------------------------------------
 Tue Dec 15 19:25:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.2
