@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  1 10:19:24 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add fix for JPEG markers starting with 0x00
+  (Image-Size-3.300_Fix_JPEG_00_Markers.patch)
+
+-------------------------------------------------------------------
 Fri Apr 17 10:12:00 UTC 2015 - schwab@linux-m68k.org
 
 - endian.patch: use proper endian-agnostic extractor

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Image-Size
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cpan_name Image-Size
 Name:           perl-Image-Size
 Version:        3.300
 Release:        0
-#Upstream: Artistic-1.0 or GPL-1.0+
-%define cpan_name Image-Size
-Summary:        Read the Dimensions of an Image in Several Popular Formats
-License:        LGPL-2.1 or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Image-Size/
-Source0:        http://www.cpan.org/authors/id/R/RJ/RJRAY/%{cpan_name}-%{version}.tar.gz
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
+Summary:        Read the dimensions of an image in several popular formats
+License:        LGPL-2.1-only OR Artistic-1.0
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJRAY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         endian.patch
+# PATCH-FIX-UPSTREAM do not fail on JPEG files with 0x00XX markers
+Patch1:         Image-Size-3.300_Fix_JPEG_00_Markers.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.42
+BuildRequires:  perl(Module::Build) >= 0.420000
 BuildRequires:  perl(Test::More) >= 0.80
-Requires:       perl(Module::Build) >= 0.28
+Requires:       perl(Module::Build) >= 0.280000
 Requires:       perl(Test::More) >= 0.80
 Recommends:     perl(Compress::Zlib) >= 2
 %{perl_requires}
@@ -47,16 +47,15 @@ file name, so multiple calls on the same file name (such as images used in
 bulleted lists, for example) do not result in repeated computations.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version} -p1
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -64,7 +63,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc ChangeLog ChangeLog.xml etc ex imgsize README README.textile
+%doc ChangeLog ChangeLog.xml imgsize README README.textile
 
 %changelog
