@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-libzhuyin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define sover 13
 
 Name:           ibus-libzhuyin
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Zhuyin engine based on libzhuyin for IBus
 License:        GPL-2.0-only
 Group:          System/I18n/Chinese
-Url:            https://github.com/libzhuyin/ibus-libzhuyin
-Source:         https://excellmedia.dl.sourceforge.net/project/libzhuyin/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/libzhuyin/ibus-libzhuyin
+Source:         https://github.com/libzhuyin/ibus-libzhuyin/releases/download/%{version}/ibus-libzhuyin-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel

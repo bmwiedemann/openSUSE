@@ -111,4 +111,12 @@
     <comment>* add need-tone option (forwarded request 736449 from hillwood)</comment>
     <requestid>736450</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>25c4e16c5fbdf970c97046fa048ff249</srcmd5>
+    <version>1.10.0</version>
+    <time>1614684848</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875857</requestid>
+  </revision>
 </revisionlist>
