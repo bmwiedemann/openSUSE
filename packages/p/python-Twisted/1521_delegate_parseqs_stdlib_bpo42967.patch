@@ -1,0 +1,97 @@
+From df79d69adea5c819bb104861dccf1bbe25851644 Mon Sep 17 00:00:00 2001
+From: Thomas Grainger <tagrain@gmail.com>
+Date: Sun, 21 Feb 2021 11:54:25 +0000
+Subject: [PATCH 1/2] delegate to stdlib parse qs
+
+---
+ src/twisted/web/http.py                    | 27 +---------------------
+ src/twisted/web/newsfragments/10096.bugfix |  1 +
+ 2 files changed, 2 insertions(+), 26 deletions(-)
+ create mode 100644 src/twisted/web/newsfragments/10096.bugfix
+
+--- a/src/twisted/web/http.py
++++ b/src/twisted/web/http.py
+@@ -70,12 +70,12 @@ from io import BytesIO as StringIO
+ 
+ try:
+     from urlparse import (
+-        ParseResult as ParseResultBytes, urlparse as _urlparse)
++        ParseResult as ParseResultBytes, urlparse as _urlparse, parse_qs)
+     from urllib import unquote
+     from cgi import parse_header as _parseHeader
+ except ImportError:
+     from urllib.parse import (
+-        ParseResultBytes, urlparse as _urlparse, unquote_to_bytes as unquote)
++        ParseResultBytes, urlparse as _urlparse, parse_qs)
+ 
+     def _parseHeader(line):
+         # cgi.parse_header requires a str
+@@ -191,33 +191,6 @@ def urlparse(url):
+     return ParseResultBytes(scheme, netloc, path, params, query, fragment)
+ 
+ 
+-
+-def parse_qs(qs, keep_blank_values=0, strict_parsing=0):
+-    """
+-    Like C{cgi.parse_qs}, but with support for parsing byte strings on Python 3.
+-
+-    @type qs: C{bytes}
+-    """
+-    d = {}
+-    items = [s2 for s1 in qs.split(b"&") for s2 in s1.split(b";")]
+-    for item in items:
+-        try:
+-            k, v = item.split(b"=", 1)
+-        except ValueError:
+-            if strict_parsing:
+-                raise
+-            continue
+-        if v or keep_blank_values:
+-            k = unquote(k.replace(b"+", b" "))
+-            v = unquote(v.replace(b"+", b" "))
+-            if k in d:
+-                d[k].append(v)
+-            else:
+-                d[k] = [v]
+-    return d
+-
+-
+-
+ def datetimeToString(msSinceEpoch=None):
+     """
+     Convert seconds since epoch to HTTP datetime string.
+--- /dev/null
++++ b/src/twisted/web/newsfragments/10096.bugfix
+@@ -0,0 +1 @@
++delegate to urllib.parse:parse_qs in twisted.web.http:parse_qs to avoid CVE-2021-23336 and the associated CI failures
+--- a/src/twisted/web/server.py
++++ b/src/twisted/web/server.py
+@@ -19,9 +19,9 @@ import copy
+ import os
+ import re
+ try:
+-    from urllib import quote
++    from urllib import quote, unquote_to_bytes as _unquote_to_bytes
+ except ImportError:
+-    from urllib.parse import quote as _quote
++    from urllib.parse import quote as _quote, unquote_to_bytes as _unquote_to_bytes
+ 
+     def quote(string, *args, **kwargs):
+         return _quote(
+@@ -37,7 +37,6 @@ from twisted.spread.pb import Copyable,
+ from twisted.internet import address, interfaces
+ from twisted.internet.error import AlreadyCalled, AlreadyCancelled
+ from twisted.web import iweb, http, util
+-from twisted.web.http import unquote
+ from twisted.python import reflect, failure, components
+ from twisted import copyright
+ from twisted.web import resource
+@@ -219,7 +218,7 @@ class Request(Copyable, http.Request, co
+ 
+         # Resource Identification
+         self.prepath = []
+-        self.postpath = list(map(unquote, self.path[1:].split(b'/')))
++        self.postpath = [_unquote_to_bytes(v) for v in self.path[1:].split(b"/")]
+ 
+         # Short-circuit for requests whose path is '*'.
+         if self.path == b'*':
