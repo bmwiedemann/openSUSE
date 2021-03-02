@@ -64,4 +64,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>868174</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>503551d266a9f2c83ad3f404518786b6</srcmd5>
+    <version>5.0.3</version>
+    <time>1614684792</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 875666 from AndreasStieger)</comment>
+    <requestid>875731</requestid>
+  </revision>
 </revisionlist>
