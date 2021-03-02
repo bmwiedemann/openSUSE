@@ -1381,4 +1381,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>add bluez-test-2to3.diff to get rid of python2 dependency (forwarded request 867144 from seife)</comment>
     <requestid>867146</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>b2c95548cbf048eb07ae622bf2e5befc</srcmd5>
+    <version>5.56</version>
+    <time>1614684331</time>
+    <user>RBrownSUSE</user>
+    <comment>update to 5.56 (forwarded request 874930 from seife)</comment>
+    <requestid>874931</requestid>
+  </revision>
 </revisionlist>

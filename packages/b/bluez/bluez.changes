@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 24 20:25:23 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 5.56:
+  * Fix issue with setting AVDTP disconnect timer.
+  * Fix issue with AVDTP not sending GetCapabilities.
+  * Fix issue with AVDTP connecting using streaming mode.
+  * Fix issue with handling A2DP and remote SEP disappearing.
+  * Fix issue with handling session of A2DP channels.
+  * Fix issue with GATT and handling device removal.
+  * Fix issue with GATT not accepting multiple requests.
+  * Fix issue with HID report value callback registration.
+  * Add support for new advertising management command.
+  * Add support for battery D-Bus interface.
+  * removed obsolete bccmd
+
+-------------------------------------------------------------------
 Wed Jan 27 08:48:16 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add bluez-test-2to3.diff to get rid of python2 dependency

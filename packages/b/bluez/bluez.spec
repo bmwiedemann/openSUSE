@@ -27,7 +27,7 @@
 # contributions via pull requests are welcome!
 #
 Name:           bluez
-Version:        5.55
+Version:        5.56
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -346,11 +346,9 @@ touch -r %{SOURCE0} $UM
 %{_bindir}/meshctl
 %{_bindir}/mesh-cfgclient
 %endif
-%{_bindir}/bccmd
 %{_prefix}/lib/udev/
 %{_mandir}/man1/btattach.1%{?ext_man}
 %{_mandir}/man8/bluetoothd.8%{?ext_man}
-%{_mandir}/man1/bccmd.1%{?ext_man}
 %{_mandir}/man1/hid2hci.1%{?ext_man}
 %{_mandir}/man1/l2ping.1%{?ext_man}
 %{_mandir}/man1/rctest.1%{?ext_man}
