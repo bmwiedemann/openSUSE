@@ -1,5 +1,0 @@
-<package name="python-vncdotool" project="openSUSE:Factory">
-  <title></title>
-  <description>Command line VNC client</description>
-  <devel project="devel:languages:python" package="python-vncdotool"/>
-</package>
