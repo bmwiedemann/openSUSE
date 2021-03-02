@@ -180,4 +180,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>870426</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>94b3a5a5bbe2d4da5261020dc7bab504</srcmd5>
+    <version>5.0.12</version>
+    <time>1614684805</time>
+    <user>RBrownSUSE</user>
+    <comment>add upstream signing key and validate source signature (forwarded request 875672 from AndreasStieger)</comment>
+    <requestid>875736</requestid>
+  </revision>
 </revisionlist>
