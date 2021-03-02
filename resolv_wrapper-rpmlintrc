@@ -1,9 +1,0 @@
-# This is a special library only for testing purposes. You cannot link this
-# library. It is only inteded to be used with LD_PRELOAD. This package is
-# the devel package.
-#
-# Learn more at http://cwrap.org
-#
-addFilter("shlib-policy-name-error")
-addFilter("shared-lib-calls-exit")
-addFilter("devel-file-in-non-devel-package")
