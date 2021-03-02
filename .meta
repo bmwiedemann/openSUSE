@@ -1,8 +1,0 @@
-<package name="sonic-visualiser" project="openSUSE:Factory">
-  <title>Sonic Visualiser is an application for viewing and analysing the contents of music audio files.</title>
-  <description>
-The aim of Sonic Visualiser is to be the first program you reach for when want to study a musical recording rather than simply listen to it.
-  </description>
-  <devel project="multimedia:apps" package="sonic-visualiser"/>
-  <url>http://www.sonicvisualiser.org/</url>
-</package>
