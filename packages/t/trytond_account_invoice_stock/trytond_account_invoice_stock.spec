@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_account_invoice_stock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
+Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
 Requires:       trytond
