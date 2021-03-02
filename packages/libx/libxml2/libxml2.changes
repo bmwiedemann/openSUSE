@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 23 11:00:00 UTC 2021 - Teemu Mannermaa <wicked@iki.fi>
+
+- Fails to build against Python 3.9:
+  * Add upstream commit that fixes the issue
+    https://github.com/GNOME/libxml2/commit/e4fb36841800038c289997432ca547c9bfef9db1
+- Add patch libxml2-python39.patch
+
+-------------------------------------------------------------------
 Thu Dec 17 10:19:33 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1161521, CVE-2019-20388]
