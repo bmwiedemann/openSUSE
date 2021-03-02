@@ -1,7 +1,7 @@
 #
 # spec file for package bzflag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           bzflag
-Version:        2.4.20
+Version:        2.4.22
 Release:        0
 Summary:        3D Networked Multiplayer Tank Battle Game
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL-devel
+BuildRequires:  libSDL2-devel
 BuildRequires:  libcares-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  ncurses-devel
@@ -108,8 +108,8 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_datadir}/pixmaps/bzflag.png
 %fdupes %{buildroot}
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING PORTING README DEVINFO
+%license COPYING
+%doc AUTHORS PORTING README DEVINFO
 %doc README.Linux misc/bzfs.conf ChangeLog
 %{_datadir}/%{name}/
 %{_datadir}/%{name}/scripts/
