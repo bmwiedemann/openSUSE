@@ -25,9 +25,9 @@
 %define with_pyverbs 0
 %endif
 
-%define         git_ver .0.b7b09d201046
+%define         git_ver .0.2504c0bab0a8
 Name:           rdma-core
-Version:        31.3
+Version:        33.1
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -65,11 +65,11 @@ Source3:        prebuilt-pandoc.tgz
 Source4:        rdma-core-rpmlintrc
 Source5:        gen-pandoc.sh
 Source6:        get_build.py
-Patch0:         Revert-libnes-Remove-libnes-from-rdma-core.patch
-Patch1:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
-Patch2:         Revert-Update-kernel-headers.patch
-Patch3:         disable-rdma-interface-renaming.patch
-Patch4:         cxgb3-nes-fix-declaration-of-free_context.patch
+Patch0:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+Patch1:         Revert-Update-kernel-headers.patch
+Patch2:         disable-rdma-interface-renaming.patch
+Patch3:         cxgb3-fix-declaration-of-free_context.patch
+Patch4:         cxgb3-fix-support-for-new-uquery-API.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -203,7 +203,6 @@ Obsoletes:      libipathverbs-rdmav2 < %{version}-%{release}
 Obsoletes:      libmlx4-rdmav2 < %{version}-%{release}
 Obsoletes:      libmlx5-rdmav2 < %{version}-%{release}
 Obsoletes:      libmthca-rdmav2 < %{version}-%{release}
-Obsoletes:      libnes-rdmav2 < %{version}-%{release}
 Obsoletes:      libocrdma-rdmav2 < %{version}-%{release}
 Obsoletes:      librxe-rdmav2 < %{version}-%{release}
 %if 0%{?dma_coherent}
@@ -233,7 +232,6 @@ Device-specific plug-in ibverbs userspace drivers are included:
 - libmlx4: Mellanox ConnectX-3 InfiniBand HCA
 - libmlx5: Mellanox Connect-IB/X-4+ InfiniBand HCA
 - libmthca: Mellanox InfiniBand HCA
-- libnes: NetEffect RNIC
 - libocrdma: Emulex OneConnect RDMA/RoCE Device
 - libqedr: QLogic QL4xxx RoCE HCA
 - librxe: A software implementation of the RoCE protocol
@@ -405,8 +403,6 @@ Pyverbs is a Cython-based Python API over libibverbs, providing an
 easy, object-oriented access to IB verbs.
 
 %prep
-# Make sure LTO is disable as rdma-core fails to compile with LTO enabled
-%define _lto_cflags %{nil}
 %setup -q -n  %{name}-%{version}%{git_ver}
 #Extract prebuilt pandoc file in the buildlib directory
 (cd buildlib && tar xf %{S:3})
@@ -475,12 +471,6 @@ mkdir -p %{buildroot}%{_udevrulesdir}
 mkdir -p %{buildroot}%{dracutlibdir}/modules.d/05rdma
 mkdir -p %{buildroot}%{sysmodprobedir}
 mkdir -p %{buildroot}%{_unitdir}
-
-# SRIOV service
-install -D -m0644 redhat/rdma.sriov-vfs %{buildroot}/%{_sysconfdir}/rdma/sriov-vfs
-install -D -m0755 redhat/rdma.sriov-init %{buildroot}%{_libexecdir}/rdma-set-sriov-vf
-install -D -m0644 suse/rdma.sriov-rules %{buildroot}%{_udevrulesdir}/98-rdma-sriov.rules
-install -D -m0644 suse/rdma.sriov-service %{buildroot}%{_unitdir}/rdma-sriov.service
 
 # Port type setup for mlx4 dual port cards
 install -D -m0644 redhat/rdma.mlx4.conf %{buildroot}/%{_sysconfdir}/rdma/mlx4.conf
@@ -589,6 +579,8 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 
 %post -n rdma-ndd
 %service_add_post rdma-ndd.service
+# we ship udev rules, so trigger an update.
+%{_bindir}/udevadm trigger --subsystem-match=infiniband --action=change || true
 
 %postun -n rdma-ndd
 %service_del_postun rdma-ndd.service
@@ -610,7 +602,6 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %config(noreplace) %{_sysconfdir}/rdma/modules/opa.conf
 %config(noreplace) %{_sysconfdir}/rdma/modules/rdma.conf
 %config(noreplace) %{_sysconfdir}/rdma/modules/roce.conf
-%config(noreplace) %{_sysconfdir}/rdma/sriov-vfs
 %if 0%{?dma_coherent}
 %config(noreplace) %{_sysconfdir}/modprobe.d/mlx4.conf
 %endif
@@ -618,7 +609,6 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %config(noreplace) %{_sysconfdir}/udev/rules.d/70-persistent-ipoib.rules
 %{_unitdir}/rdma-hw.target
 %{_unitdir}/rdma-load-modules@.service
-%{_unitdir}/rdma-sriov.service
 %dir %{dracutlibdir}
 %dir %{dracutlibdir}/modules.d
 %dir %{dracutlibdir}/modules.d/05rdma
@@ -629,9 +619,7 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %{_udevrulesdir}/90-rdma-hw-modules.rules
 %{_udevrulesdir}/90-rdma-ulp-modules.rules
 %{_udevrulesdir}/90-rdma-umad.rules
-%{_udevrulesdir}/98-rdma-sriov.rules
 %{sysmodprobedir}/50-libmlx4.conf
-%{_libexecdir}/rdma-set-sriov-vf
 %{_libexecdir}/mlx4-setup.sh
 %{_libexecdir}/truescale-serdes.cmds
 %license COPYING.*

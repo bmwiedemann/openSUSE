@@ -1,0 +1,101 @@
+commit e8b7609a257e2fd31bc5909913205f88ae9b458c
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Feb 19 09:10:10 2021 +0100
+
+    cxgb3: fix support for new uquery API
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git providers/cxgb3/iwch.c providers/cxgb3/iwch.c
+index 2bfca4f58f21..25ce55461a5d 100644
+--- providers/cxgb3/iwch.c
++++ providers/cxgb3/iwch.c
+@@ -78,7 +78,7 @@ static const struct verbs_match_ent hca_table[] = {
+ static void iwch_free_context(struct ibv_context *ibctx);
+ 
+ static const struct verbs_context_ops iwch_ctx_common_ops = {
+-	.query_device = iwch_query_device,
++	.query_device_ex = iwch_query_device,
+ 	.query_port = iwch_query_port,
+ 	.alloc_pd = iwch_alloc_pd,
+ 	.dealloc_pd = iwch_free_pd,
+@@ -178,6 +178,19 @@ static void iwch_uninit_device(struct verbs_device *verbs_device)
+ 	free(dev);
+ }
+ 
++static int _ibv_get_fw_ver(char *value, size_t len, struct verbs_sysfs_dev *sysfs_dev)
++{
++
++	/*
++	 * NOTE: This can only be called by a driver inside the dev_list_lock,
++	 * ie during context setup or otherwise.
++	 */
++	assert(pthread_mutex_trylock(&dev_list_lock) != 0);
++
++	return (ibv_read_ibdev_sysfs_file(value, len, sysfs_dev, "fw_ver") <= 0);
++}
++
++
+ static bool iwch_device_match(struct verbs_sysfs_dev *sysfs_dev)
+ {
+ 	char value[32], *cp;
+@@ -191,7 +204,7 @@ static bool iwch_device_match(struct verbs_sysfs_dev *sysfs_dev)
+ 	 * Verify that the firmware major number matches.  Major number
+ 	 * mismatches are fatal.  Minor number mismatches are tolerated.
+ 	 */
+-	if (ibv_get_fw_ver(value, sizeof(value), sysfs_dev))
++	if (_ibv_get_fw_ver(value, sizeof(value), sysfs_dev))
+ 		return false;
+ 
+ 	cp = strtok(value+1, ".");
+diff --git providers/cxgb3/iwch.h providers/cxgb3/iwch.h
+index c7d85d3aab2e..c228197bd483 100644
+--- providers/cxgb3/iwch.h
++++ providers/cxgb3/iwch.h
+@@ -143,7 +143,8 @@ static inline unsigned long long_log2(unsigned long x)
+ }
+ 
+ extern int iwch_query_device(struct ibv_context *context,
+-			     struct ibv_device_attr *attr);
++			     const struct ibv_query_device_ex_input *input,
++			     struct ibv_device_attr_ex *attr, size_t attr_size);
+ extern int iwch_query_port(struct ibv_context *context, uint8_t port,
+ 			   struct ibv_port_attr *attr);
+ 
+diff --git providers/cxgb3/verbs.c providers/cxgb3/verbs.c
+index 39a44192e29c..35cde9199279 100644
+--- providers/cxgb3/verbs.c
++++ providers/cxgb3/verbs.c
+@@ -42,23 +42,27 @@
+ #include "iwch.h"
+ #include "iwch-abi.h"
+ 
+-int iwch_query_device(struct ibv_context *context, struct ibv_device_attr *attr)
++int iwch_query_device(struct ibv_context *context,
++		      const struct ibv_query_device_ex_input *input,
++		      struct ibv_device_attr_ex *attr, size_t attr_size)
+ {
+-	struct ibv_query_device cmd;
++	struct ib_uverbs_ex_query_device_resp resp;
++	size_t resp_size = sizeof(resp);
+ 	uint64_t raw_fw_ver;
+ 	unsigned major, minor, sub_minor;
+ 	int ret;
+ 
+-	ret = ibv_cmd_query_device(context, attr, &raw_fw_ver, &cmd, 
+-	  			   sizeof cmd);
++	ret = ibv_cmd_query_device_any(context, input, attr, attr_size, &resp,
++				       &resp_size);
+ 	if (ret)
+ 		return ret;
+ 
++	raw_fw_ver = resp.base.fw_ver;
+ 	major = (raw_fw_ver >> 32) & 0xffff;
+ 	minor = (raw_fw_ver >> 16) & 0xffff;
+ 	sub_minor = raw_fw_ver & 0xffff;
+ 
+-	snprintf(attr->fw_ver, sizeof attr->fw_ver,
++	snprintf(attr->orig_attr.fw_ver, sizeof(attr->orig_attr.fw_ver),
+ 		 "%d.%d.%d", major, minor, sub_minor);
+ 
+ 	return 0;

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:23:46 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to rdma-core v33.1
+  - No release notes available
+  - Drop support for libnes
+- Drop support for libnes by removing patch:
+  - Revert-libnes-Remove-libnes-from-rdma-core.patch
+- Refresh patches against latest sources:
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - cxgb3-nes-fix-declaration-of-free_context.patch has been replaced by
+    cxgb3-fix-declaration-of-free_context.patch
+- Add patches for cxgb3 support against newest API
+  - cxgb3-fix-support-for-new-uquery-API.patch
+- Enable LTO support
+- Trigger udevadm in rdma-ndd %post (bsc#1182391)
+
+-------------------------------------------------------------------
 Wed Feb 10 12:58:56 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to rdma-core v31.3

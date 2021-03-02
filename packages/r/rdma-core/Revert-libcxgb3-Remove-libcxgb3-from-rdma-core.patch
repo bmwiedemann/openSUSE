@@ -1,4 +1,4 @@
-commit 46e6822db968a7749dd20269afd30e1793936498
+commit 2f56b7b7737d603c408117b88c60be29019818e4
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Fri Jan 10 09:07:51 2020 +0100
 
@@ -7,10 +7,10 @@ Date:   Fri Jan 10 09:07:51 2020 +0100
     This reverts commit 36588f5844af4ef1e5b0d6ad002fa1adf9032653.
 
 diff --git CMakeLists.txt CMakeLists.txt
-index b3ff156956a0..5adddc0160d3 100644
+index 5579b5a187c0..66eb0b2fbc4b 100644
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -615,6 +615,7 @@ add_subdirectory(librdmacm/man)
+@@ -648,6 +648,7 @@ add_subdirectory(librdmacm/man)
  # Providers
  if (HAVE_COHERENT_DMA)
  add_subdirectory(providers/bnxt_re)
@@ -19,7 +19,7 @@ index b3ff156956a0..5adddc0160d3 100644
  add_subdirectory(providers/efa)
  add_subdirectory(providers/efa/man)
 diff --git MAINTAINERS MAINTAINERS
-index 8030891d96a4..e47b97b2ff70 100644
+index 948c3a7fb53f..050113e1f60a 100644
 --- MAINTAINERS
 +++ MAINTAINERS
 @@ -51,6 +51,11 @@ M:	Devesh Sharma  <Devesh.sharma@broadcom.com>
@@ -35,7 +35,7 @@ index 8030891d96a4..e47b97b2ff70 100644
  M:	Steve Wise <swise@opengridcomputing.com>
  S:	Supported
 diff --git README.md README.md
-index 24eee90cb8b7..565b97a908dd 100644
+index b649c6f2bc0f..b31d448264e5 100644
 --- README.md
 +++ README.md
 @@ -15,6 +15,7 @@ under the providers/ directory. Support for the following Kernel RDMA drivers
@@ -47,10 +47,10 @@ index 24eee90cb8b7..565b97a908dd 100644
   - hfi1.ko
   - hns-roce.ko
 diff --git debian/control debian/control
-index 738b2d6da39d..1e002808cc40 100644
+index a423e4f8a4d2..33677170a22a 100644
 --- debian/control
 +++ debian/control
-@@ -93,6 +93,7 @@ Description: User space provider drivers for libibverbs
+@@ -91,6 +91,7 @@ Description: User space provider drivers for libibverbs
   This package contains the user space verbs drivers:
   .
    - bnxt_re: Broadcom NetXtreme-E RoCE HCAs
@@ -59,7 +59,7 @@ index 738b2d6da39d..1e002808cc40 100644
    - efa: Amazon Elastic Fabric Adapter
    - hfi1verbs: Intel Omni-Path HFI
 diff --git debian/copyright debian/copyright
-index db4951993bd8..c6d798d4c30e 100644
+index 3bf582b46e06..5c90b2550cf0 100644
 --- debian/copyright
 +++ debian/copyright
 @@ -148,7 +148,8 @@ Files: providers/bnxt_re/*
@@ -73,7 +73,7 @@ index db4951993bd8..c6d798d4c30e 100644
  License: BSD-MIT or GPL-2
  
 diff --git kernel-boot/rdma-description.rules kernel-boot/rdma-description.rules
-index 4ea59ba1977b..bb33dce40bd6 100644
+index 48a7cede9bc8..57bb8f1273cd 100644
 --- kernel-boot/rdma-description.rules
 +++ kernel-boot/rdma-description.rules
 @@ -22,6 +22,7 @@ DRIVERS=="ib_qib", ENV{ID_RDMA_INFINIBAND}="1"
@@ -83,13 +83,13 @@ index 4ea59ba1977b..bb33dce40bd6 100644
 +DRIVERS=="cxgb3", ENV{ID_RDMA_IWARP}="1"
  DRIVERS=="cxgb4", ENV{ID_RDMA_IWARP}="1"
  DRIVERS=="i40e", ENV{ID_RDMA_IWARP}="1"
- DRIVERS=="nes", ENV{ID_RDMA_IWARP}="1"
+ 
 diff --git kernel-boot/rdma-hw-modules.rules kernel-boot/rdma-hw-modules.rules
-index da4bbe363ac4..dde0ab8dacac 100644
+index 95eaf7206702..a9b5350aa79c 100644
 --- kernel-boot/rdma-hw-modules.rules
 +++ kernel-boot/rdma-hw-modules.rules
-@@ -8,6 +8,7 @@ SUBSYSTEM!="net", GOTO="rdma_hw_modules_end"
- # RDMA.
+@@ -9,6 +9,7 @@ SUBSYSTEM!="net", GOTO="rdma_hw_modules_net_end"
+ 
  ENV{ID_NET_DRIVER}=="be2net", RUN{builtin}+="kmod load ocrdma"
  ENV{ID_NET_DRIVER}=="bnxt_en", RUN{builtin}+="kmod load bnxt_re"
 +ENV{ID_NET_DRIVER}=="cxgb3", RUN{builtin}+="kmod load iw_cxgb3"
@@ -97,10 +97,10 @@ index da4bbe363ac4..dde0ab8dacac 100644
  ENV{ID_NET_DRIVER}=="hns", RUN{builtin}+="kmod load hns_roce"
  ENV{ID_NET_DRIVER}=="i40e", RUN{builtin}+="kmod load i40iw"
 diff --git libibverbs/verbs.h libibverbs/verbs.h
-index d873f6d07327..8b580d101ce2 100644
+index da782f2ad2f2..a528b49a4fea 100644
 --- libibverbs/verbs.h
 +++ libibverbs/verbs.h
-@@ -2156,6 +2156,7 @@ struct ibv_device **ibv_get_device_list(int *num_devices);
+@@ -2190,6 +2190,7 @@ struct ibv_device **ibv_get_device_list(int *num_devices);
  
  struct verbs_devices_ops;
  extern const struct verbs_device_ops verbs_provider_bnxt_re;
@@ -3091,10 +3091,10 @@ index 000000000000..39a44192e29c
 +	}
 +}
 diff --git redhat/rdma-core.spec redhat/rdma-core.spec
-index e0b143364991..8909ae2a86b4 100644
+index 1bdc4872a233..af0a2e69e3ea 100644
 --- redhat/rdma-core.spec
 +++ redhat/rdma-core.spec
-@@ -128,6 +128,8 @@ Summary: A library and drivers for direct userspace use of RDMA (InfiniBand/iWAR
+@@ -147,6 +147,8 @@ Summary: A library and drivers for direct userspace use of RDMA (InfiniBand/iWAR
  Requires(post): /sbin/ldconfig
  Requires(postun): /sbin/ldconfig
  Requires: %{name}%{?_isa} = %{version}-%{release}
@@ -3103,7 +3103,7 @@ index e0b143364991..8909ae2a86b4 100644
  Provides: libcxgb4 = %{version}-%{release}
  Obsoletes: libcxgb4 < %{version}-%{release}
  Provides: libefa = %{version}-%{release}
-@@ -160,6 +162,7 @@ fast path operations.
+@@ -177,6 +179,7 @@ fast path operations.
  
  Device-specific plug-in ibverbs userspace drivers are included:
  
@@ -3111,23 +3111,8 @@ index e0b143364991..8909ae2a86b4 100644
  - libcxgb4: Chelsio T4 iWARP HCA
  - libefa: Amazon Elastic Fabric Adapter
  - libhfi1: Intel Omni-Path HFI
-diff --git redhat/rdma.kernel-init redhat/rdma.kernel-init
-index c7444a1c8d77..6f50e72fcc3b 100644
---- redhat/rdma.kernel-init
-+++ redhat/rdma.kernel-init
-@@ -125,6 +125,10 @@ load_hardware_modules()
- 	load_modules mlx5_ib
- 	RC+=$?
-     fi
-+    if is_loaded cxgb3 -a ! is_loaded iw_cxgb3; then
-+	load_modules iw_cxgb3
-+	RC+=$?
-+    fi
-     if is_loaded cxgb4 -a ! is_loaded iw_cxgb4; then
- 	load_modules iw_cxgb4
- 	RC+=$?
 diff --git suse/rdma-core.spec suse/rdma-core.spec
-index a32d8f9cb966..4113f2f6a390 100644
+index 63f8699ade18..082515dc11c3 100644
 --- suse/rdma-core.spec
 +++ suse/rdma-core.spec
 @@ -182,6 +182,7 @@ RDMA core development libraries and headers.
@@ -3138,7 +3123,7 @@ index a32d8f9cb966..4113f2f6a390 100644
  Obsoletes:      libcxgb4-rdmav2 < %{version}-%{release}
  Obsoletes:      libefa-rdmav2 < %{version}-%{release}
  Obsoletes:      libhfi1verbs-rdmav2 < %{version}-%{release}
-@@ -211,6 +212,7 @@ fast path operations.
+@@ -209,6 +210,7 @@ fast path operations.
  
  Device-specific plug-in ibverbs userspace drivers are included:
  

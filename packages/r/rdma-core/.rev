@@ -473,4 +473,24 @@
     <comment></comment>
     <requestid>873122</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f713737cd6961aca0f1d5a5fca83c56f</srcmd5>
+    <version>33.1</version>
+    <time>1614684439</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to rdma-core v33.1
+  - No release notes available
+  - Drop support for libnes
+- Drop support for libnes by removing patch:
+  - Revert-libnes-Remove-libnes-from-rdma-core.patch
+- Refresh patches against latest sources:
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - cxgb3-nes-fix-declaration-of-free_context.patch has been replaced by
+    cxgb3-fix-declaration-of-free_context.patch
+- Add patches for cxgb3 support against newest API
+  - cxgb3-fix-support-for-new-uquery-API.patch
+- Enable LTO support
+- Trigger udevadm in rdma-ndd %post (bsc#1182391)</comment>
+    <requestid>874835</requestid>
+  </revision>
 </revisionlist>
