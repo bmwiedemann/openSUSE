@@ -1,0 +1,5 @@
+<package name="ibus-sunpinyin" project="openSUSE:Factory">
+  <title>ibus-sunpinyin</title>
+  <description>A statistical language model based Chinese input method.</description>
+  <devel project="M17N" package="ibus-sunpinyin"/>
+</package>
