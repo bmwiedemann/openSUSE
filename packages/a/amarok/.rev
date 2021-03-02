@@ -1117,4 +1117,25 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment>new snapshot</comment>
     <requestid>858096</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>f0e93e20f7fd38986b53ed4fb405ac74</srcmd5>
+    <version>2.9.75git.20210220T172242~b94c362c1d</version>
+    <time>1614684432</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.9.70git.20210220T172242~b94c362c1d:
+  * replace QModelIndex.child to remove deprecated functions from Qt 5.8
+  * Replace functions deprecated in Qt 5.7 and earlier
+  * Properly use KLocalizedString for dynamic placeholder replacement
+  * typo fixes
+  * Use more secure URL
+  * Don't use deprecated headers
+  * Add CMake module used by release script
+  * Bump plugin version to 74 in preparation for 2.9.71
+  * Add multiplier 2 to the size of generated play-pause
+    button and volume dial pixmaps.
+  * Smoothen the rendering of play/pause button, volume
+    dial and main toolbar's previous and next buttons on scaled UIs
+- Update translations</comment>
+    <requestid>874790</requestid>
+  </revision>
 </revisionlist>

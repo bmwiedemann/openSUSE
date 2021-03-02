@@ -1,7 +1,7 @@
 #
 # spec file for package amarok
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-# Leap 15.1 compatibility
-%{!?_kf5_knsrcfilesdir: %global _kf5_knsrcfilesdir %{_kf5_configdir}}
 Name:           amarok
-Version:        2.9.70git.20201222T022603~89d13c15ad
+Version:        2.9.75git.20210220T172242~b94c362c1d
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -35,22 +33,13 @@ Patch2:         disable-web-plugins-by-default.patch
 Patch3:         0001-Work-around-QTBUG-75797-for-openQA.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  fftw-devel
 BuildRequires:  gdk-pixbuf-devel
-BuildRequires:  libcurl-devel
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libgpod-devel >= 0.7.0
 BuildRequires:  liblastfm-qt5-devel
-BuildRequires:  libmtp-devel >= 1.0.0
-BuildRequires:  libmygpo-qt5-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libmysqld-devel
-BuildRequires:  libofa-devel
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  libxml2-devel
 BuildRequires:  loudmouth-devel
 BuildRequires:  mysql
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
@@ -80,7 +69,9 @@ BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Mygpo-qt5)
 BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
@@ -93,16 +84,23 @@ BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libgpod-1.0)
+BuildRequires:  pkgconfig(libmtp) >= 1.0.0
+BuildRequires:  pkgconfig(libofa)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:  pkgconfig(zlib)
 # needed by the context view
 Requires:       kirigami2
-Requires:       libqt5-qtquickcontrols
+Requires:       libqt5-qtquickcontrols2
 Requires:       libtag-extras1 >= 1.0
 Recommends:     %{name}-lang = %{version}
 Recommends:     (gstreamer-plugins-ugly if phonon4qt5-backend-gstreamer)

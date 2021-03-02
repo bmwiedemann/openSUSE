@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 24 08:50:43 UTC 2021 - christophe@krop.fr
+
+- Update to version 2.9.70git.20210220T172242~b94c362c1d:
+  * replace QModelIndex.child to remove deprecated functions from Qt 5.8
+  * Replace functions deprecated in Qt 5.7 and earlier
+  * Properly use KLocalizedString for dynamic placeholder replacement
+  * typo fixes
+  * Use more secure URL
+  * Don't use deprecated headers
+  * Add CMake module used by release script
+  * Bump plugin version to 74 in preparation for 2.9.71
+  * Add multiplier 2 to the size of generated play-pause
+    button and volume dial pixmaps.
+  * Smoothen the rendering of play/pause button, volume
+    dial and main toolbar's previous and next buttons on scaled UIs
+- Update translations
+
+-------------------------------------------------------------------
 Tue Dec 22 09:12:56 UTC 2020 - christophe@krop.fr
 
 - Update to version 2.9.70git.20201222T022603~89d13c15ad:
