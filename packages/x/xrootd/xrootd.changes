@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 22 21:49:32 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12.7:
+  * [XrdHttp] Fix empty PUT.
+  * [XrdTpc] Do not call Write() on flush.
+  * [XrdTpc] Avoid using invalid object in multi-stream.
+  * [XrdTpc] Always check and fail on error.
+  * [XrdTpc] Catch all negative return values not just SFS_ERROR.
+  * [XrdTpc] Fix the return value of `Stream::Write`
+  * [XrdTpc] Always populate error buffer with messages.
+  * [XrdTpc] Factor out recursive writes.
+  * [XrdTpc] Do not allow partial buffer writes.
+  * [XrdTpc] Adjust buffer size based on number of streams.
+- Add xrootd-build-with-glibc2.33.patch: Fix build with glibc
+  2.33; patch taken from upstream commit [gh#xrootd/xrootd#1315].
+
+-------------------------------------------------------------------
 Thu May 28 21:02:06 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.12.1:

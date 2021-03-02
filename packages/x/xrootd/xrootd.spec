@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define __builder ninja
 
 Name:           xrootd
-Version:        4.12.1
+Version:        4.12.7
 Release:        0
 %define plugver 4
 Summary:        An eXtended Root Daemon
@@ -36,6 +36,8 @@ Group:          System/Daemons
 URL:            http://xrootd.org/
 Source0:        https://github.com/xrootd/xrootd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      xrootd-rpmlintrc
+# PATCH-FIX-UPSTREAM xrootd-build-with-glibc2.33.patch gh#xrootd/xrootd#1315 badshah400@gmail.com -- Fix build with glibc 2.33; patch taken from upstream commit
+Patch0:         xrootd-build-with-glibc2.33.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -294,7 +296,7 @@ This package provides the python 3 bindings for XRootD.
 
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

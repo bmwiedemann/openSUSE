@@ -151,4 +151,14 @@
     <comment></comment>
     <requestid>810692</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>84cda711aa751ae5fbc1cdbb4dc0b9a2</srcmd5>
+    <version>4.12.7</version>
+    <time>1614684958</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.12.7.
+- Add xrootd-build-with-glibc2.33.patch: Fix build with glibc 2.33; patch taken from upstream commit [gh#xrootd/xrootd#1315].
+</comment>
+    <requestid>876080</requestid>
+  </revision>
 </revisionlist>
