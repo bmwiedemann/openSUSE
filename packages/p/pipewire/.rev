@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54c57cbb3d47cfc94540216a31fb4e30</srcmd5>
+    <version>0.1.9</version>
+    <time>1527934306</time>
+    <user>dimstar_suse</user>
+    <comment>New package, currently maintained by the GNOME team</comment>
+    <requestid>613231</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bdae556a991b5e144cf202bef9ee93d2</srcmd5>
+    <version>0.2.2</version>
+    <time>1539756601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636242</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>31cb2877062de4ce84f3a07c47a7cad8</srcmd5>
+    <version>0.2.5</version>
+    <time>1554114643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689302</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ac66a7849a8fbc7497abb7ae5a81a91c</srcmd5>
+    <version>0.2.5</version>
+    <time>1556393254</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696525</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6c66e62849b6fa950afdfe7fc73b7ae8</srcmd5>
+    <version>0.2.6</version>
+    <time>1558938584</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.2.6 (forwarded request 704834 from dimstar)</comment>
+    <requestid>705212</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b57dce4ffba412a2580eaad6b772b7fd</srcmd5>
+    <version>0.2.7</version>
+    <time>1573419308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.7:
+  + Add support for alsa-lib 1.1.9 which changed the include path
+  + Improve error checking and reporting in the protocol
+  + deviceprovider: fix probing without starting
+  + add sentinel to some functions
+  + compiler fixes for musl
+  + Revert object tree permission checks that broke things, this is
+    probably not a good idea (and the tree of objects is going to
+    be removed later) (forwarded request 745986 from favogt)</comment>
+    <requestid>746221</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88131f03f767257493afe2063c06a4fd</srcmd5>
+    <version>0.3.1+48</version>
+    <time>1585261869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787534</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3f5a44e81b1dab82ad59da74f0c379e</srcmd5>
+    <version>0.3.2</version>
+    <time>1586247613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790690</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>71c01aa4b4ddaaa36cc960193ffb9754</srcmd5>
+    <version>0.3.5</version>
+    <time>1590506069</time>
+    <user>maxlin_factory</user>
+    <comment> (forwarded request 807933 from alarrosa)</comment>
+    <requestid>807946</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>53b82975ae10fcc558850a0718a4e2f2</srcmd5>
+    <version>0.3.6</version>
+    <time>1593458072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817296</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>02c422ee0518d2b5ba4dc8f7a95b67c7</srcmd5>
+    <version>0.3.6</version>
+    <time>1594383149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819442</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0e8cd0b89d887c2eeafef9f31183fd5f</srcmd5>
+    <version>0.3.6</version>
+    <time>1595576987</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 821248 from alarrosa)</comment>
+    <requestid>821839</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8b2b50cf30a5c5a5d2861c2412d9ca42</srcmd5>
+    <version>0.3.8</version>
+    <time>1597220443</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 824635 from dimstar)</comment>
+    <requestid>824808</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eaeb8f61d290e3245d29b870f8070978</srcmd5>
+    <version>0.3.9</version>
+    <time>1598167233</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 826292 from dimstar)</comment>
+    <requestid>828179</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d0bd3589a6e38bc59aec06aab73cab5</srcmd5>
+    <version>0.3.10</version>
+    <time>1599343137</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 829937 from alarrosa)</comment>
+    <requestid>831451</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>63cd90997a2cfda7d27f62bab8f044e1</srcmd5>
+    <version>0.3.11</version>
+    <time>1601043906</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 835423 from dimstar)</comment>
+    <requestid>836040</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1f08f536b128a5e59d48b908e726419b</srcmd5>
+    <version>0.3.13</version>
+    <time>1602762475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.13:
+  * PipeWire improvements
+    + Add pw-reserve tool to reserve or monitor a device on DBus.
+    + Install spa-resample, a tool to resample a file.
+    + Install spa-acp-tool, a tool to inspect the card profile.
+    + Various fixes and improvements
+    + Fix a bug in pw-stream where a capture stream could run out
+      of buffers and become silent.
+    + Rework the processing loops in the adapter and stream. There
+      is now less latency in PulseAudio and ALSA layers.
+  * Session manager improvements
+    + Improve the device reservation code. We now try to acquire
+      the device using the dbus device reservation API before we
+      probe the device. This avoids conflicts with a running
+      PulseAudio where devices would disappear (because they were
+      locked by the other process).
+    + Don't fail on invalid input from the config files.
+    + Audio devices now have the same name as what PulseAudio
+      would assign.
+  * Device support
+    + v4l2: try to use the format before enumerating the size and
+      framerate. Some drivers don't check the format and might now
+      work better.
+    + v4l2: Fall back to MMAP when EXPBUF fails. Fix MMAP access,
+      just export the fd and the mapoffset. This should make more
+      devices work.
+    + Fix crash in ALSA Card Profile (ACP) code.
+    + ACP: fix selection of default profile. Prefer any possibly
+      available profile over 'Off'. This makes some card at least
+      start with something. (forwarded request 841457 from alarrosa)</comment>
+    <requestid>841554</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>617bb408f7ce436de087afe8ef9d9439</srcmd5>
+    <version>0.3.15</version>
+    <time>1605783426</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847256</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5d02cea813b6ba2d7280bca0c4a5a679</srcmd5>
+    <version>0.3.20</version>
+    <time>1612182323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865497</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>60bd61d24b0c33365003debd0ef918da</srcmd5>
+    <version>0.3.21</version>
+    <time>1613511374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872802</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3cbd6b4b85f220a7e8b2e761295f00b3</srcmd5>
+    <version>0.3.21</version>
+    <time>1613581388</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the pulseaudio provides from pipewire-pulseaudio:
+  We first need to ensure our KDE patterns (and others) become
+  smart enough to favor pulseaudio until we are ready for the
+  switch.</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>25c5b3c365660d973fd41a21b840b58c</srcmd5>
+    <version>0.3.21</version>
+    <time>1614001181</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 873351 from alarrosa)</comment>
+    <requestid>873920</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>535ee584cf62bebba42290b2b054864c</srcmd5>
+    <version>0.3.22</version>
+    <time>1614684391</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875335</requestid>
+  </revision>
+</revisionlist>

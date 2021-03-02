@@ -1,0 +1,4 @@
+# .so files in pipewire-libjack and pipewire-libpulse aren't
+# really devel files
+addFilter("devel-file-in-non-devel-package.*/jack/libjack")
+addFilter("devel-file-in-non-devel-package.*/pulse/libpulse")
