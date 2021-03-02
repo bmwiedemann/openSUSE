@@ -1,5 +1,0 @@
-<package name="sound-juicer" project="openSUSE:Factory">
-  <title>Clean and Lean GNOME CD Ripper</title>
-  <description>GStreamer-based CD ripping tool. Saves audio CDs to Ogg/vorbis.</description>
-  <devel project="GNOME:Factory" package="sound-juicer"/>
-</package>

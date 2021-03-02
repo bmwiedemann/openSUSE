@@ -1,6 +1,0 @@
-<package name="ocaml-re" project="openSUSE:Factory">
-  <title>Pure OCaml regular expressions</title>
-  <description>Pure OCaml regular expressions, with support for Perl and POSIX-style strings</description>
-  <devel project="devel:languages:ocaml" package="ocaml-re"/>
-  <url>https://github.com/ocaml/ocaml-re</url>
-</package>

@@ -1,9 +1,0 @@
-<package name="ViTables" project="openSUSE:Factory">
-  <title>ViTables: the PyTables GUI</title>
-  <description>
-
-ViTables is a GUI for PyTables (a hierarchical database package designed to efficently manage very large amounts of data) . It allows to open arbitrarely large PyTables and HDF5 files and browse its data and metadata in a variety of ways.
-
-  </description>
-  <devel project="devel:languages:python:numeric" package="ViTables"/>
-</package>

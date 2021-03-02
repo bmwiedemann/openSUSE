@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl-bdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,10 @@ Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       libsasl2-3
 BuildRequires:  db-devel
 BuildRequires:  krb5-mini-devel
+BuildRequires:  libsasl2-3
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  opie
@@ -52,49 +54,49 @@ Conflicts:      cyrus-sasl
 %package      gssapi
 Summary:        Plugin for the GSSAPI SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-gssapi
 
 %package      crammd5
 Summary:        Plugin for the CRAMMD5 SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-crammd5
 
 %package      digestmd5
 Summary:        Plugin for the DIGESTMD5 SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-digestmd5
 
 %package      otp
 Summary:        Plugin for the OTP SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-otp
 
 %package      plain
 Summary:        Plugin for the PLAIN SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-plain
 
 %package      ntlm
 Summary:        Plugin for the NTLM SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-ntlm
 
 %package      gs2
 Summary:        Plugin for the GS2 SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-gs2
 
 %package      scram
 Summary:        Plugin for the SCRAM SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
+Requires:       cyrus-sasl-bdb = %{version}
 Conflicts:      cyrus-sasl-scram
 
 %package      devel

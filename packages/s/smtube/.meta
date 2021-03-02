@@ -1,7 +1,0 @@
-<package name="smtube" project="openSUSE:Factory">
-  <title>Small Youtube Browser</title>
-  <description>SMTube is an application that allows to browse, search and play YouTube videos. Videos are played back with a media player (by default SMPlayer) instead of a flash player, this allows better performance, particularly with HD content.
-
-The performance of the flash or html5 player in a web browser is bad... You'll get much better results by using a real media player: smoother playback, no flickering, no frame drops and HD video in fullscreen, even in old computers. With SMTube you can choose the media player to play your favorite YouTube videos.</description>
-  <devel project="multimedia:apps" package="smtube"/>
-</package>

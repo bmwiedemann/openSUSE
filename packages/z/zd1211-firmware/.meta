@@ -1,5 +1,0 @@
-<package name="zd1211-firmware" project="openSUSE:Factory">
-  <title>Firmware for ZD1211 USB WLAN sticks</title>
-  <description>Firmware for USB WLAN sticks based on the ZyDAS ZD1211 chip</description>
-  <devel project="hardware" package="zd1211-firmware"/>
-</package>

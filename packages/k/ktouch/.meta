@@ -1,5 +1,0 @@
-<package name="ktouch" project="openSUSE:Factory">
-  <title>Touch Typing Tutor</title>
-  <description>A KDE program that helps you to learn and practice touch typing.</description>
-  <devel project="KDE:Applications" package="ktouch"/>
-</package>

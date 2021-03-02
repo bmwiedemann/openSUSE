@@ -1,8 +1,0 @@
-<package name="rubygem-omniauth" project="openSUSE:Factory">
-  <title>Rack middleware for standardized multi-provider authentication</title>
-  <description>OmniAuth is an authentication framework that that separates the concept of authentiation from the concept of identity, providing simple hooks for any application to have one or multiple authentication providers for a user.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-omniauth"/>
-  <url>http://github.com/intridea/omniauth</url>
-</package>

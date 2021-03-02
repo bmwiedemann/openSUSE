@@ -1,7 +1,0 @@
-<package name="corosync" project="openSUSE:Factory">
-  <title>The Corosync Cluster Engine and Application Programming Interfaces</title>
-  <description>This package contains the Corosync Cluster Engine Executive, several
-default APIs and libraries, default configuration files, and an init
-script.</description>
-  <devel project="network:ha-clustering:Factory" package="corosync"/>
-</package>

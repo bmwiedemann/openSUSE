@@ -1,5 +1,0 @@
-<package name="python-pymarc" project="openSUSE:Factory">
-  <title>python-pymarc</title>
-  <description>Read, write and modify MARC bibliographic data</description>
-  <devel project="devel:languages:python" package="python-pymarc"/>
-</package>

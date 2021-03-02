@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 26 08:29:43 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210226.daeb191:
+  * Set trap only after option parsing (#22)
+
+-------------------------------------------------------------------
+Thu Feb 25 15:53:06 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210225.5c541c8:
+  * Check sub{u,g}id if rootless, and fail early if they're not setup
+  * Fix creating a container with a specific name with `-c`
+
+-------------------------------------------------------------------
+Mon Feb 08 09:03:18 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210208.a720b25:
+  * Alleviate the need for zypper in the user toolbox script
+  * Consolidate logging and help debugging of the user toolbox's script
+  * Export machine-id and IPC inside the toolbox (IPC, user only)
+  * Fix (more) formatting...
+
+-------------------------------------------------------------------
 Wed Feb 03 10:33:22 UTC 2021 - kukuk@suse.com
 
 - Update to version 2.1+git20210203.a669e3a:

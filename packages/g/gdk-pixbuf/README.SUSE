@@ -1,8 +1,0 @@
-README for bi-architecture 64 bit platforms users
-=================================================
-
-The gdk-pixbuf loaders are different, based on the architecture of
-the package. To update the cache of gdk-pixbuf loaders, run:
-
- + for 32 bit version: /usr/bin/gdk-pixbuf-query-loaders
- + for 64 bit version: /usr/bin/gdk-pixbuf-query-loaders-64

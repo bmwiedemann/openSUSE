@@ -1,5 +1,0 @@
-<package name="python-rednose" project="openSUSE:Factory">
-  <title>Nosetests plugin for adding colour</title>
-  <description>Rednose is a nosetests plugin for adding colour (and readability) to nosetest console results.</description>
-  <devel project="devel:languages:python" package="python-rednose"/>
-</package>

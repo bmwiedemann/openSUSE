@@ -1,5 +1,0 @@
-<package name="python-pylev" project="openSUSE:Factory">
-  <title></title>
-  <description>A pure Python Levenshtein implementation</description>
-  <devel project="devel:languages:python" package="python-pylev"/>
-</package>

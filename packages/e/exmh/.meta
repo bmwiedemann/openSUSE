@@ -1,8 +1,0 @@
-<package name="exmh" project="openSUSE:Factory">
-  <title>Front-End for nmh Written in tcl/tk</title>
-  <description>Exmh is an X user interface for NMH mail. NMH provides a set of UNIX
-commands that manage folders and mail messages. NMH has many features
-as a result of several years of availability. Exmh provides a graphical
-interface to many of these features, but not everything.</description>
-  <devel project="server:mail" package="exmh"/>
-</package>

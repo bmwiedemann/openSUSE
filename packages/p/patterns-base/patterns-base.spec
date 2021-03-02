@@ -177,6 +177,8 @@ Recommends:     issue-generator
 Suggests:       xz
 # if anything wants to recommend an MTA, openSUSE defaults to postfix (boo#1136078)
 Suggests:       postfix
+# we have two providers for 'pulseaudio' - prefer the real one for the time being
+Suggests:       pulseaudio
 
 %description base
 This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
@@ -518,6 +520,8 @@ Suggests:       cracklib-dict-full
 # needed as soon as you want to do kerberos authentication
 Suggests:       cyrus-sasl-gssapi
 Suggests:       delayacct-utils
+# Hint for zypper to prefer ed over busybox-ed
+Suggests:       ed
 Suggests:       groff
 Suggests:       hfsutils
 # bnc#388570

@@ -1,3 +1,0 @@
-#this is java package, not shared library - ignore shlib warnings
-addFilter("shlib-policy-nonversioned-dir .*")
-addFilter("shlib-policy-missing-lib")

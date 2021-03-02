@@ -1,6 +1,0 @@
-<package name="cogl" project="openSUSE:Factory">
-  <title>An object oriented GL/GLES Abstraction/Utility Layer</title>
-  <description>Cogl is a small open source library for using 3D graphics hardware to draw
-pretty pictures.</description>
-  <devel project="GNOME:Factory" package="cogl"/>
-</package>

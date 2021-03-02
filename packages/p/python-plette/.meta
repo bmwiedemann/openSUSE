@@ -1,5 +1,0 @@
-<package name="python-plette" project="openSUSE:Factory">
-  <title></title>
-  <description>Structured Pipfile and Pipfile.lock models</description>
-  <devel project="devel:languages:python" package="python-plette"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="fuse-overlayfs" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="filesystems" package="fuse-overlayfs"/>
-</package>

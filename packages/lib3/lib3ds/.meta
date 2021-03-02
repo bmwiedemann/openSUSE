@@ -1,7 +1,0 @@
-<package name="lib3ds" project="openSUSE:Factory">
-  <title>Import and Export of Autodesk 3DS Files</title>
-  <description>Lib3ds is a free alternative to Autodesk's 3DS File Toolkit for
-handling 3DS files. Its main goal is to simplify the creation of 3DS
-import and export filters.</description>
-  <devel project="graphics" package="lib3ds"/>
-</package>

@@ -17,31 +17,38 @@
 
 
 Name:           cockpit-podman
-Version:        26
+Version:        28.1
 Release:        0
 Summary:        Cockpit component for Podman containers
 License:        LGPL-2.1-or-later
 URL:            https://github.com/cockpit-project/cockpit-podman
-Source:         https://github.com/cockpit-project/cockpit-podman/releases/download/%{version}/cockpit-podman-%{version}.tar.gz
+Source:         https://github.com/cockpit-project/cockpit-podman/archive/%{version}.tar.gz#/cockpit-podman-%{version}.tar.gz
+Source10:       package-lock.json
+Source11:       node_modules.spec.inc
+%include %_sourcedir/node_modules.spec.inc
+Patch1:         fix_dependencies.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 Requires:       cockpit-bridge >= 138
 Requires:       cockpit-shell >= 138
 Requires:       podman >= 2.0.4
 #
-BuildRequires:  gcc-c++
-BuildRequires:  nodejs-devel
-BuildRequires:  npm
+BuildRequires:  cockpit-devel >= 237
+BuildRequires:  local-npm-registry
+BuildRequires:  sassc
 BuildRequires:  translate-toolkit
 
 %description
 Cockpit component for managing Podman containers
 
 %prep
-%setup -q -n %name
+%autosetup -p1
+local-npm-registry %{_sourcedir} install --with=dev
 
 %build
-# Nothing to build
+cp -r %{_datadir}/cockpit/devel/lib src/lib
+
+npm run build
 
 %install
 %make_install

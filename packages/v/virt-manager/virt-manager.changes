@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 24 14:10:01 MST 2021 - acho@suse.com
+
+- bsc#1178926 - Unable to find any master var for loader
+  /usr/share/qemu/{bios.bin, bios-256k.bin}
+  virtman-legacy-bios-support.patch
+
+-------------------------------------------------------------------
 Mon Jan 25 14:32:10 MST 2021 - carnold@suse.com
 
 - bsc#1180897 - SLES15 SP2: VM does not boot after virt-install

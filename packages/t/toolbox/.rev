@@ -104,4 +104,23 @@
   * Check existence of volume directories (#15)</comment>
     <requestid>868896</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a6a5ae50e406a1c3f219e6e49a418e0f</srcmd5>
+    <version>2.1+git20210226.daeb191</version>
+    <time>1614684388</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.1+git20210226.daeb191:
+  * Set trap only after option parsing (#22)
+
+- Update to version 2.1+git20210225.5c541c8:
+  * Check sub{u,g}id if rootless, and fail early if they're not setup
+  * Fix creating a container with a specific name with `-c`
+
+- Update to version 2.1+git20210208.a720b25:
+  * Alleviate the need for zypper in the user toolbox script
+  * Consolidate logging and help debugging of the user toolbox's script
+  * Export machine-id and IPC inside the toolbox (IPC, user only)
+  * Fix (more) formatting...</comment>
+    <requestid>875299</requestid>
+  </revision>
 </revisionlist>

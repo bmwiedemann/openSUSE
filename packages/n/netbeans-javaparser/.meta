@@ -1,5 +1,0 @@
-<package name="netbeans-javaparser" project="openSUSE:Factory">
-  <title>NetBeans Java Parser</title>
-  <description>Java parser to analyse Java source files inside of the NetBeans IDE</description>
-  <devel project="Java:packages" package="netbeans-javaparser"/>
-</package>

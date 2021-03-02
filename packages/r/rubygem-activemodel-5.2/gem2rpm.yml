@@ -1,8 +1,0 @@
----
-:version_suffix: '-5.2'
-
-:preamble: |-
-    %if 0%{?suse_version} && 0%{?suse_version} < 1330
-    %define rb_build_versions ruby25 ruby26
-    %define rb_build_ruby_abis ruby:2.5.0 ruby:2.6.0
-    %endif

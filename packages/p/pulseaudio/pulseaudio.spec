@@ -106,6 +106,9 @@ Provides:       libpulsecore9 = 0.9.15
 Obsoletes:      libpulsecore7 < 0.9.13
 Provides:       libpulsecore7 = 0.9.13
 
+Provides:       pulseaudio-daemon
+Conflicts:      pulseaudio-daemon
+
 %description
 pulseaudio is a networked sound server for Linux, other Unix like
 operating systems and Microsoft Windows. It is intended to be an
@@ -285,7 +288,7 @@ pulseaudio library.
 %package utils
 Summary:        PulseAudio utilities
 Group:          System/Sound Daemons
-Requires:       %{name} = %{version}
+Requires:       pulseaudio-daemon
 Requires:       libpulse%{soname} = %{version}
 Requires:       libpulse-mainloop-glib%{soname} = %{version}
 

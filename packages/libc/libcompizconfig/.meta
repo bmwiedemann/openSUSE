@@ -1,7 +1,0 @@
-<package name="libcompizconfig" project="openSUSE:Factory">
-  <title>CompizConfig plugin(ccp) required for compizconfig-settings-manager(ccsm)</title>
-  <description>CompizConfig plugin(ccp) required for
-compizconfig-settings-manager(ccsm).
-</description>
-  <devel project="X11:Compiz" package="libcompizconfig"/>
-</package>

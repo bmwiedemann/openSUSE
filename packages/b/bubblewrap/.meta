@@ -1,5 +1,0 @@
-<package name="bubblewrap" project="openSUSE:Factory">
-  <title>bubblewrap</title>
-  <description>Unprivileged sandboxing tool</description>
-  <devel project="Virtualization:containers" package="bubblewrap"/>
-</package>

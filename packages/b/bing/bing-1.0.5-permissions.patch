@@ -1,8 +1,0 @@
---- Makefile
-+++ Makefile
-@@ -29,4 +29,4 @@
- 
- install: bing bing.8
- 	$(INSTALL) -m 644 bing.8 $(MANDIR)/man8
--	$(INSTALL) -m 4555 -o root -g root bing $(BINDIR)
-+	$(INSTALL) -m 4555 bing $(BINDIR)

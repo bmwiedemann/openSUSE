@@ -1,6 +1,0 @@
-<package name="yast2-slp" project="openSUSE:Factory">
-  <title>YaST2 - SLP Agent and Browser</title>
-  <description>This modules enables YaST modules to register services with SLP.
-Additionally, it offers a simple browser of SLP registered services.</description>
-  <devel project="YaST:Head" package="yast2-slp"/>
-</package>

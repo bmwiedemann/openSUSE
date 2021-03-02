@@ -1,6 +1,0 @@
-<package name="jcuber" project="openSUSE:Factory">
-  <title>Java reader library</title>
-  <description>Java Cube Reader Library is a native Java library for reading of a multi-dimensional performance space consisting of the dimensions (i) performance metric, (ii) call path, and (iii) system resource.
-Each dimension can be represented as a tree, where non-leaf nodes of the tree can be collapsed or expanded to achieve the desired level of granularity.</description>
-  <devel project="Java:packages" package="jcuber"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="nfs-utils" project="openSUSE:Factory">
-  <title>Support Utilities for Kernel nfsd</title>
-  <description>This package contains the NFS utilities. You can tune the number of
-server threads via the sysconfig variable USE_KERNEL_NFSD_NUMBER. For
-quota over NFS support, install the quota package.</description>
-  <devel project="Base:System" package="nfs-utils"/>
-</package>

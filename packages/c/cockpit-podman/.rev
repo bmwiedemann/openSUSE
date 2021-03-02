@@ -32,4 +32,17 @@
   https://github.com/cockpit-project/cockpit-podman/releases/tag/26 (forwarded request 866027 from lnussel)</comment>
     <requestid>866028</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>faca3d2ebaff53b4ca3b41a9c3458af4</srcmd5>
+    <version>28.1</version>
+    <time>1614684358</time>
+    <user>RBrownSUSE</user>
+    <comment>- new version 28.1
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/28.1
+- use upstream sources without bundled and pre-built dist since
+  we want to rebuild it
+- use local-npm-registry for building
+- fix_dependencies.patch: fix build dependencies</comment>
+    <requestid>875125</requestid>
+  </revision>
 </revisionlist>

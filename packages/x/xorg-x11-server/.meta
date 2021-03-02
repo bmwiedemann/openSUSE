@@ -1,5 +1,0 @@
-<package name="xorg-x11-server" project="openSUSE:Factory">
-  <title>X.Org Server</title>
-  <description>This package contains the X.Org Server.</description>
-  <devel project="X11:XOrg" package="xorg-x11-server"/>
-</package>

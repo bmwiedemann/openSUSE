@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.4:
+  * Bug fix: Early SCSI commands from sg-linux.c were not logged
+  * New API call burn_drive_set_speed_exact()
+  * New API call burn_nominal_slowdown()
+
+-------------------------------------------------------------------
 Mon Apr 27 17:49:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.2.pl01

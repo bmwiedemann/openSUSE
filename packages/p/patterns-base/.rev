@@ -579,4 +579,14 @@
     <comment></comment>
     <requestid>873922</requestid>
   </revision>
+  <revision rev="67" vrev="13">
+    <srcmd5>65ad3e6e2c712720eee014366993c4b3</srcmd5>
+    <version>20200505</version>
+    <time>1614684348</time>
+    <user>RBrownSUSE</user>
+    <comment>Add bugzilla reference
+
+  pipewire-pulseaudio (boo#1182730). (forwarded request 875000 from alarrosa)</comment>
+    <requestid>875003</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,0 @@
-<package name="telepathy-glib" project="openSUSE:Factory">
-  <title>Libraries for adding telepathy support to applications that use glib</title>
-  <description>This package contains the libraries that make it easier to use some
-telepathy functionality from applications that use glib.</description>
-  <devel project="GNOME:Factory" package="telepathy-glib"/>
-</package>

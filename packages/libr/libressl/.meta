@@ -1,5 +1,0 @@
-<package name="libressl" project="openSUSE:Factory">
-  <title>libressl: openssl fork done by openbsd</title>
-  <description></description>
-  <devel project="security:tls" package="libressl"/>
-</package>

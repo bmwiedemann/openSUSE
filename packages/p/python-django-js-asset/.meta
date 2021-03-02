@@ -1,7 +1,0 @@
-<package name="python-django-js-asset" project="openSUSE:Factory">
-  <title>Script tag with additional attributes for django.formsMedia</title>
-  <description>Insert a script tag via forms.Media containing additional
-attributes (such as id and data-* for CSP-compatible data
-injection.)</description>
-  <devel project="devel:languages:python:django" package="python-django-js-asset"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="metamath" project="openSUSE:Factory">
-  <title>Metamath formal proof verifier and proof assistant</title>
-  <description>The Metamath language is a language to write theorems and formal proofs for them. The Metamath program can parse files in the Metamath language and verify the proofs.</description>
-  <devel project="science" package="metamath"/>
-</package>

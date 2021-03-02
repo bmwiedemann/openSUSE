@@ -1,7 +1,7 @@
 #
 # spec file for package python-breathe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-breathe
-Version:        4.24.1
+Version:        4.27.0
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause

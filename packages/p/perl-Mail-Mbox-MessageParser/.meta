@@ -1,7 +1,0 @@
-<package name="perl-Mail-Mbox-MessageParser" project="openSUSE:Factory">
-  <title>A fast and simple mbox folder reader</title>
-  <description>Mail::Mbox::MessageParser is a feature-poor but very fast mbox parser.
-It uses the best of three strategies for parsing a mailbox: either
-using cached folder information, GNU grep, or highly optimized Perl.</description>
-  <devel project="devel:languages:perl" package="perl-Mail-Mbox-MessageParser"/>
-</package>

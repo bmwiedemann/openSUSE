@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,7 +112,6 @@ Conflicts:      cyrus-sasl-devel-bdb
 %package -n libsasl2-3
 Summary:        Simple Authentication and Security Layer (SASL) library
 Group:          System/Libraries
-Conflicts:      libsasl2-3-bdb
 
 %description
 This is the Cyrus SASL API. It can be used on the client or server side
@@ -218,7 +217,7 @@ find "%buildroot" -type f -name "*.la" -print -delete
 #Convert password file from berkely into gdbm
 #In %pre the existing file will be dumped out
 if [ -e /etc/sasldb2 ]; then
-cat <<EOF > /tmp/saslpw.awk
+cat <<EOF > /var/adm/update-scripts/saslpw.awk
 {
         split(\$0,b,/\\\00/)
         if( b[3] == "userPassword" ) {
@@ -233,7 +232,8 @@ cat <<EOF > /tmp/saslpw.awk
         }
 }
 EOF
-db_dump -p /etc/sasldb2 | gawk -f /tmp/saslpw.awk > /var/adm/update-scripts/saslpwd
+db_dump -p /etc/sasldb2 | gawk -f /var/adm/update-scripts/saslpw.awk > /var/adm/update-scripts/saslpwd
+rm -f /var/adm/update-scripts/saslpw.awk
 mv /etc/sasldb2 /etc/sasldb2-back
 fi
 
@@ -241,6 +241,7 @@ fi
 if [ -e /var/adm/update-scripts/saslpwd ]; then
         chmod 755 /var/adm/update-scripts/saslpwd
         /var/adm/update-scripts/saslpwd
+	rm -f /var/adm/update-scripts/saslpwd
 fi
 
 %post   -n %lname -p /sbin/ldconfig

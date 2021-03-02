@@ -1,7 +1,0 @@
-<package name="gup" project="openSUSE:Factory">
-  <title>Group Update Program for INN and C-News</title>
-  <description>A Group Update Program that accepts commands by mail to edit a
-newsgroup subscription file.  It can be used by news systems such as
-INN and C-News.</description>
-  <devel project="server:mail" package="gup"/>
-</package>

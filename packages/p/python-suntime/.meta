@@ -1,5 +1,0 @@
-<package name="python-suntime" project="openSUSE:Factory">
-  <title>python-suntime</title>
-  <description>Python sunset and sunrise time calculation</description>
-  <devel project="devel:languages:python" package="python-suntime"/>
-</package>

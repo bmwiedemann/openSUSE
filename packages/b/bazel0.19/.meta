@@ -1,5 +1,0 @@
-<package name="bazel0.19" project="openSUSE:Factory">
-  <title>bazel build system for tensorflow</title>
-  <description></description>
-  <devel project="science:machinelearning" package="bazel0.19"/>
-</package>

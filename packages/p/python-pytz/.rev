@@ -331,4 +331,12 @@
   * update to IANA 2021a timezone release</comment>
     <requestid>870711</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>c4f2b76729cd3dff9b42eaa800472ecd</srcmd5>
+    <version>2021.1</version>
+    <time>1614684411</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874722</requestid>
+  </revision>
 </revisionlist>

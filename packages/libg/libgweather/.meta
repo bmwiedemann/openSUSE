@@ -1,5 +1,0 @@
-<package name="libgweather" project="openSUSE:Factory">
-  <title>Library to get online weather information</title>
-  <description>This is a library to download weather information from online sources.</description>
-  <devel project="GNOME:Factory" package="libgweather"/>
-</package>

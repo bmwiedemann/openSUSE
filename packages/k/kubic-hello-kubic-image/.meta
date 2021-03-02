@@ -1,5 +1,0 @@
-<package name="kubic-hello-kubic-image" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:kubic:containers" package="kubic-hello-kubic-image"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="python-pathvalidate" project="openSUSE:Factory">
-  <title>Python library to sanitize/validate a string such as filenames</title>
-  <description>pathvalidate is a Python library to sanitize/validate a string such as
-filenames/file-paths/etc.
-
-</description>
-  <devel project="devel:languages:python" package="python-pathvalidate"/>
-  <url>https://github.com/thombashi/pathvalidate</url>
-</package>

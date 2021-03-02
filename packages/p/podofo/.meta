@@ -1,5 +1,0 @@
-<package name="podofo" project="openSUSE:Factory">
-  <title>Tools to work with PDF files</title>
-  <description>Command line tools for working with PDF files.</description>
-  <devel project="graphics" package="podofo"/>
-</package>

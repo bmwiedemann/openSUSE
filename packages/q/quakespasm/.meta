@@ -1,5 +1,0 @@
-<package name="quakespasm" project="openSUSE:Factory">
-  <title>quakespasm</title>
-  <description>The Quakespasm engine, a modern version of the Quake 1 engine which tries to stay close to stock.</description>
-  <devel project="games" package="quakespasm"/>
-</package>

@@ -1,7 +1,7 @@
 #
 # spec file for package xscreensaver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xscreensaver
-Version:        5.44
+Version:        5.45
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -66,6 +66,7 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-x11-2.0)
 BuildRequires:  pkgconfig(libglade-2.0)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(x11)
@@ -250,17 +251,18 @@ done
 %{_bindir}/xscreensaver-command
 %{_bindir}/xscreensaver-demo
 %{_bindir}/xscreensaver-gl-helper
+%{_bindir}/xscreensaver-systemd
 %{_datadir}/applications/xscreensaver-properties.desktop
 %{_datadir}/pixmaps/xscreensaver.xpm
-%dir %{_datadir}/xscreensaver/
-%{_datadir}/xscreensaver/glade/
+%dir %{_datadir}/xscreensaver
+%{_datadir}/xscreensaver/ui
+%dir %{_prefix}/lib/X11/app-defaults
+%{_prefix}/lib/X11/app-defaults/XScreenSaver
 %{_mandir}/man1/xscreensaver.*
 %{_mandir}/man1/xscreensaver-command.*
 %{_mandir}/man1/xscreensaver-demo.*
 %{_mandir}/man6/xscreensaver-gl-helper.*
 %{_mandir}/man1/xscreensaver-systemd.*
-%dir %{_datadir}/X11/app-defaults/
-%{_datadir}/X11/app-defaults/XScreenSaver
 %config %{_sysconfdir}/pam.d/xscreensaver
 %dir %{_sysconfdir}/xscreensaver/
 %config %{_sysconfdir}/xscreensaver/README

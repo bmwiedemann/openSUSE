@@ -1742,4 +1742,12 @@
     <comment>Fixes for bsc#1180897 - Xen PV ISO installs, and bsc#1181350 - aarch64 openQA test failure.</comment>
     <requestid>866982</requestid>
   </revision>
+  <revision rev="221" vrev="7">
+    <srcmd5>8fc984184ae064c7d54b6e0250001b11</srcmd5>
+    <version>3.2.0</version>
+    <time>1614684379</time>
+    <user>RBrownSUSE</user>
+    <comment>Fix for bsc#1178926 installing with legacy bios</comment>
+    <requestid>875162</requestid>
+  </revision>
 </revisionlist>

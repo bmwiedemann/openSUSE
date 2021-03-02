@@ -1,9 +1,0 @@
-[Unit]
-Description=Find a connected eth interface and create an ifcfg for it
-
-[Service]
-ExecStart=/bin/bash -c "/usr/sbin/network-autoconfig >> /var/log/network-autoconfig 2>&1"
-ExecStartPost=/usr/bin/systemctl disable network-autoconfig
-
-[Install]
-WantedBy=network-pre.target

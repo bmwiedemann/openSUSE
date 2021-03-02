@@ -1,8 +1,0 @@
-Xserver module update mechanism
--------------------------------
-
-If any corresponding Xserver module is found below
-"/usr/lib/xorg/modules/updates/" ("/usr/lib64/xorg/modules/updates/"
-on biarch 32/64 bit platforms) it will be favored over the one in
-"/usr/lib/xorg/modules/" ("/usr/lib64/xorg/modules/" on biarch 32/64
-bit platforms).

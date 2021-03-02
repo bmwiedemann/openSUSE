@@ -1,7 +1,0 @@
-<package name="perl-CursesWidgets" project="openSUSE:Factory">
-  <title>CursesWidgets Perl module</title>
-  <description>NOTE:  This is **NOT** backwards compatible with the pre-1.99 versions.
-       This is entirely OO-based, hence any older scripts relying on the
-       old versions will need to be rewritten.</description>
-  <devel project="devel:languages:perl" package="perl-CursesWidgets"/>
-</package>

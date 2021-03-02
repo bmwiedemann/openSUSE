@@ -1,7 +1,0 @@
-<package name="sqliteman" project="openSUSE:Factory">
-  <title>sqliteman</title>
-  <description>The best Sqlite3 GUI tool for developers
-in the world. No joking here (or just a bit only) - it
-contains the most complette feature set of all tools available.</description>
-  <devel project="server:database" package="sqliteman"/>
-</package>

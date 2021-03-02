@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 25 09:46:34 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to release 2.3.0
+  Noteworthy changes:
+  * Websocket support for proxy connections
+  * Progressive codec improvements. Reduces graphical glitches against windows
+    and ogon servers
+  * Fixed +glyph-cache, now working properly without disconnects
+  * Huge file support in clipboard
+  * XWayland support for xfreerdp (keyboard grabbing)
+  * Improved wlfreerdp (wayland client)
+  * Option to allow keyboard scancodes to be remapped manually
+  * Improved mouse wheel behaviour when scrolling
+  * Improved dynamic channel behaviour, more stable event detection
+  * New connection state PubSub notification: Clients can now monitor current
+    connection state
+
+  Fixes:
+  * gh#FreeRDP/FreeRDP/6626: Fixed parsing of FastGlyph order.
+    gh#FreeRDP/FreeRDP/6624: Added support for xwayland keyboard grab
+    gh#FreeRDP/FreeRDP/6492: Added clipboard CB_HUGE_FILE_SUPPORT_ENABLED flag
+    gh#FreeRDP/FreeRDP/6428: Improve NLA error code logging.
+    gh#FreeRDP/FreeRDP/6416: Http gateway message support
+    gh#FreeRDP/FreeRDP/6753: List of pull requests to backport for stable-next
+
+- Added freerdp-rpmlintrc to supress a false positive as gethostbyname() is
+  a windows-function call not a unix one.
+ 
+-------------------------------------------------------------------
 Mon Jul 20 14:22:07 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to release 2.2.0 (boo#1174321)

@@ -1,5 +1,0 @@
-<package name="ocaml-migrate-parsetree" project="openSUSE:Factory">
-  <title>Convert OCaml parsetrees between different versions</title>
-  <description>This library converts parsetrees, outcometree and ast mappers between different OCaml versions. High-level functions help making PPX rewriters independent of a compiler version.</description>
-  <devel project="devel:languages:ocaml" package="ocaml-migrate-parsetree"/>
-</package>

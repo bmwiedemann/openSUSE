@@ -1,3 +1,0 @@
-# it's a false positive on any platform other than x86_64
-addFilter("^\w+\.(?!x86_64)[^:]+: W: missing-call-to-chdir-with-chroot.+tup$")
-

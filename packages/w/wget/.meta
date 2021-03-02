@@ -1,6 +1,0 @@
-<package name="wget" project="openSUSE:Factory">
-  <title>A Tool for Mirroring FTP and HTTP Servers</title>
-  <description>Wget enables you to retrieve WWW documents or FTP files from a server.
-This can be done in script files or via the command line.</description>
-  <devel project="network:utilities" package="wget"/>
-</package>

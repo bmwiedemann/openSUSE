@@ -1,3 +1,7 @@
+References: bsc#1180897
+Removing the cdrom iso file from the device prevents booting
+with a qemu error.
+
 Index: virt-manager-3.2.0/virtinst/install/installer.py
 ===================================================================
 --- virt-manager-3.2.0.orig/virtinst/install/installer.py

@@ -1398,4 +1398,12 @@ WANTED for 13.1 - Part of the BLUEZ5 stack (forwarded request 202417 from dimsta
   The original bug has been already fixed in the upstream commit 764eabd10. (forwarded request 867784 from tiwai)</comment>
     <requestid>867785</requestid>
   </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>d7472a9ec7f2c4bdcb85b2df41c73c99</srcmd5>
+    <version>14.2</version>
+    <time>1614684381</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875171</requestid>
+  </revision>
 </revisionlist>

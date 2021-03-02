@@ -1,7 +1,7 @@
 #
 # spec file for package python-Paste
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,8 @@ Suggests:       python-python-openid
 Provides:       %{oldpython}-paste = %{version}
 Obsoletes:      %{oldpython}-paste < %{version}
 %endif
-%ifpython3
-Suggests:       python3-python3-openid
+%if %{python_version_nodots} >= 30
+Suggests:       python-python3-openid
 %endif
 %python_subpackages
 

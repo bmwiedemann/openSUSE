@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 24 21:55:30 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 5.6:
+  * A search match gets highlighted (in black on yellow by
+    default), in addition to placing the cursor at the start of
+    the matchA. The color combination can be changed with 
+    'set highlightcolor'. By default the cursor is hidden until the
+    next keystroke, but it can be forced on with --showcursor / 
+    'set showcursor'.
+  * Option --markmatch / 'set markmatch' has been removed
+  * Cursor position and character code are displayed in the
+    minibar only when option --constantshow / 'set constantshow'
+    is used, and their display can be toggled with M-C
+  * The state flags are displayed in the minibar only when option
+    --stateflags / 'set stateflags' is used
+
+-------------------------------------------------------------------
 Thu Jan 14 20:15:25 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 5.5:

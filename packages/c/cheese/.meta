@@ -1,6 +1,0 @@
-<package name="cheese" project="openSUSE:Factory">
-  <title>Webcam Booth for GNOME</title>
-  <description>Cheese is an application to take photos and videos with your webcam,
-with fun graphical effects.</description>
-  <devel project="GNOME:Factory" package="cheese"/>
-</package>

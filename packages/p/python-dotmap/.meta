@@ -1,5 +1,0 @@
-<package name="python-dotmap" project="openSUSE:Factory">
-  <title>python-dotmap</title>
-  <description>Python ordered, dynamically-expandable dot-access dictionary</description>
-  <devel project="devel:languages:python" package="python-dotmap"/>
-</package>

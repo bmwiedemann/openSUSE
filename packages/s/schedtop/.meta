@@ -1,8 +1,0 @@
-<package name="schedtop" project="openSUSE:Factory">
-  <title>Displays Scheduler Statistics</title>
-  <description>This utility will process statistics from /proc/schedstat such that the
-busiest stats will bubble up to the top.  It can alternately be sorted by
-the largest stat, or by name.  Stats can be included or excluded based on
-reg-ex pattern matching.</description>
-  <devel project="devel:openSUSE:Factory" package="schedtop"/>
-</package>

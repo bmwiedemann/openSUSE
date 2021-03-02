@@ -1,7 +1,0 @@
-<package name="ibus-table-extraphrase" project="openSUSE:Factory">
-  <title>Extra phrases for IBus-table based IME</title>
-  <description>provide Chinese extra phrases for ibus-table based IME,
-such as ibus-table-zhengma, ibus-table-wubi, ibus-table-cangjie5,
-ibus-table-erbi and etc.</description>
-  <devel project="M17N" package="ibus-table-extraphrase"/>
-</package>

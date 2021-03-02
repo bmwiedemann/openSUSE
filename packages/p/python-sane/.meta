@@ -1,8 +1,0 @@
-<package name="python-sane" project="openSUSE:Factory">
-  <title>A Python interface to the SANE scanner and frame grabber interface</title>
-  <description>The SANE module provides an interface to the SANE scanner and frame grabber interface for Linux.  This module has been split out from Pillow since version 2.7.0.
-
-</description>
-  <devel project="devel:languages:python" package="python-sane"/>
-  <url>https://github.com/python-pillow/Sane</url>
-</package>

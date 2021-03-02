@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 24 12:10:22 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.0.11:
+  * CVE-2021-21309: Avoid 32-bit overflows when proto-max-bulk-len
+    is set high (boo#1182657)
+  * Fix handling of threaded IO and CLIENT PAUSE (failover), could
+    lead to data loss or a crash
+  * Fix the selection of a random element from large hash tables
+  * Fix broken protocol in client tracking tracking-redir-broken message
+  * XINFO able to access expired keys on a replica
+  * Fix broken protocol in redis-benchmark when used with -a or
+    --dbnum 
+  * Avoid assertions (on older kernels) when testing arm64 CoW bug
+  * CONFIG REWRITE should honor umask settings
+  * Fix firstkey,lastkey,step in COMMAND command for some commands
+  * RM_ZsetRem: Delete key if empty, the bug could leave empty
+    zset keys 
+
+-------------------------------------------------------------------
+Wed Feb 24 11:42:17 UTC 2021 - Jan Zerebecki <jzerebecki@suse.com>
+
+- Switch systemd type of the sentinel service from notify to simple. This can
+  be reverted when updating to 6.2 which fixes
+  https://github.com/redis/redis/issues/7284 .
+
+-------------------------------------------------------------------
 Fri Feb 12 23:30:08 UTC 2021 - Jan Zerebecki <jzerebecki@suse.com>
 
 - Enable TLS support and add BuildRequires libopenssl-devel (bsc#1181830)

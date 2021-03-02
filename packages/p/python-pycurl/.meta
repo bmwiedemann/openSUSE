@@ -1,5 +1,0 @@
-<package name="python-pycurl" project="openSUSE:Factory">
-  <title></title>
-  <description>This module provides bindings for the cURL library.</description>
-  <devel project="devel:languages:python" package="python-pycurl"/>
-</package>

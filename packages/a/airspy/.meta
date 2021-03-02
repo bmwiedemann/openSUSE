@@ -1,5 +1,0 @@
-<package name="airspy" project="openSUSE:Factory">
-  <title>AirSpy</title>
-  <description>A tiny and efficient software defined radio.</description>
-  <devel project="hardware:sdr" package="airspy"/>
-</package>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 25 15:41:49 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to version 2.0.26:
+  * conn_sock: do not fail on EAGAIN
+  * fix segfault from a double freed pointer
+  * Fix a bug where conmon could never spawn a container, because
+    a disagreement between the caller and itself on where the attach
+    socket was.
+  * improve --full-attach to ignore the socket-dir directly. that
+    means callers don't need to specify a socket dir at all (and
+    can remove it)
+  * add full-attach option to allow callers to not truncate a very
+    long path for the attach socket
+  * close only opened FDs
+  * set locale to inherit environment
+
+-------------------------------------------------------------------
 Tue Jan 12 08:10:52 UTC 2021 - sgrunert@suse.com
 
 - Update to version 2.0.22:

@@ -1,3 +1,0 @@
-addFilter("script-without-shebang .*/runtime/doc/makehtml.awk")
-addFilter("script-without-shebang .*/runtime/doc/maketags.awk")
-addFilter("script-without-shebang .*/runtime/macros/less.bat")

@@ -1,5 +1,0 @@
-<package name="cura-fdm-materials" project="openSUSE:Factory">
-  <title>FDM Material database</title>
-  <description>FDM Material database for cura</description>
-  <devel project="science" package="cura-fdm-materials"/>
-</package>

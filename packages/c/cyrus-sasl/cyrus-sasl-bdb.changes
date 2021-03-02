@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 25 18:03:26 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- Fix build: Do not build libsasl2-3 in the bdb package. This will
+  not be linked to berkely db. libsasl2-3 is now defined as
+  %BuildRequires and %Requires
+
+-------------------------------------------------------------------
 Tue Dec  8 13:33:33 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
 - Remove Berkeley DB dependency (JIRA#SLE-12190)
-  The pacakges cyrus-sasl and cyrus-sasl-saslauthd are build
+  The packages cyrus-sasl and cyrus-sasl-saslauthd are built
   without Berkely DB support. gdbm will be used instead of BDB.
-  The pacakges cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are build
+  The packages cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are built
   with Berkely DB support.
 - Update to 2.1.27
   * Added support for OpenSSL 1.1

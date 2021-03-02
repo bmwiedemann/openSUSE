@@ -1,6 +1,0 @@
-<package name="libaom" project="openSUSE:Factory">
-  <title>AV1 codec library</title>
-  <description>This is a library for AOMedia Video 1 (AV1), an open, royalty-free video
-coding format designed for video transmissions over the Internet.</description>
-  <devel project="multimedia:libs" package="libaom"/>
-</package>

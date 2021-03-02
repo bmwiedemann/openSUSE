@@ -1,6 +1,0 @@
-from Config import *
-
-addFilter("vim-data.* devel-file-in-non-devel-package")
-addFilter("vim-data.* file-not-in-%lang")
-addFilter("vim-base.* package-with-huge-docs")
-

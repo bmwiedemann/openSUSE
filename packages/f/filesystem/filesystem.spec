@@ -16,6 +16,8 @@
 #
 
 
+%define nvr %{name}-%{version}-%{release}
+
 Name:           filesystem
 Summary:        Basic Directory Layout
 License:        MIT
@@ -23,6 +25,10 @@ Group:          System/Fhs
 Version:        %(echo %suse_version | cut -b-2).%(echo %suse_version | cut -b3)
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?usrmerged}
+# XXX libsolv never sees the rpmlib provides fulfilled
+Requires(pre):  (compat-usrmerge-tools or rpmlib(X-CheckUnifiedSystemdir))
+%endif
 Requires:       group(root)
 Requires:       user(root)
 URL:            https://build.opensuse.org/package/show/openSUSE:Factory/filesystem
@@ -40,6 +46,8 @@ the home directories of system users.
 
 %prep
 %setup -c -n filesystem -T
+cp %{SOURCE0} .
+cp %{SOURCE1} .
 
 %build
 
@@ -73,22 +81,38 @@ function create_dir () {
 mkdir -p $RPM_BUILD_ROOT
 # generic directories first
 echo "%%defattr(-,root,root)" > filesystem.list
-{
-    cat %{SOURCE0}
 %ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
-    cat %{SOURCE64}
+cat %{SOURCE64} >> directory.list
 %endif
-} | while read MOD OWN GRP NAME ; do
+%if 0%{?usrmerged}
+cat >> filesystem.links << EOF
+usr/bin   /bin
+usr/sbin  /sbin
+usr/lib   /lib
+%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+usr/lib64 /lib64
+%endif
+EOF
+%else
+cat >> directory.list << EOF
+0755 root root /bin
+0755 root root /lib
+0755 root root /sbin
+%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+0755 root root /lib64
+%endif
+EOF
+%endif
+cat >> directory.list <<EOF 
+0755 root root %{?usrmerged:/usr}/lib/modules
+0755 root root %{_firmwaredir}
+EOF
+while read MOD OWN GRP NAME ; do
     create_dir $MOD $OWN $GRP $NAME
-done
+done < directory.list
 # ghost files next
 cat %{SOURCE3} | while read MOD OWN GRP NAME ; do
-%ifarch s390 s390x
-    case $NAME in
-	/media/floppy|/media/cdrom) continue ;;
-    esac
-%endif
-    create_dir $MOD $OWN $GRP $NAME "%%verify(not mode) %%ghost "
+    create_dir $MOD $OWN $GRP $NAME "%%ghost "
 done
 # arch specific leftovers
 for march in \
@@ -149,7 +173,7 @@ case $SRC in
     esac
     ;;
 esac
-done < %{SOURCE1}
+done < filesystem.links
 # Create the locale directories:
 while read LANG ; do
   create_dir 0755 root root /usr/share/locale/$LANG/LC_MESSAGES
@@ -237,6 +261,26 @@ if posix.stat("/var/lock.rpmsave.tmpx") then
   os.execute("mv /var/lock.rpmsave.tmpx/* /var/lock")
   os.remove("/var/lock.rpmsave.tmpx")
 end
+%if 0%{?usrmerged}
+needmigrate = false
+local dirs = {"/bin",
+  "/sbin",
+%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+  "/lib64",
+%endif
+  "/lib" }
+for i in pairs(dirs) do
+  local t = posix.stat(dirs[i], "type")
+  if t == nil then
+    posix.symlink("usr"..dirs[i], dirs[i])
+  elseif t == "directory" then
+    needmigrate = true
+  end
+end
+if needmigrate then
+    assert(os.execute("/usr/libexec/convertfs"))
+end
+%endif
 posix.mkdir("/proc")
 posix.chmod("/proc", 0555)
 posix.mkdir("/sys")

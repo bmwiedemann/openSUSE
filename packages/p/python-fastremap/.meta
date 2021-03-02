@@ -1,5 +1,0 @@
-<package name="python-fastremap" project="openSUSE:Factory">
-  <title>python-fastremap</title>
-  <description>Remap, mask, renumber, and in-place transpose numpy arrays</description>
-  <devel project="devel:languages:python:numeric" package="python-fastremap"/>
-</package>

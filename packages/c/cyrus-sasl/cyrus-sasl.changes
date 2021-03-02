@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  8 11:32:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- CVE-2020-8032: cyrus-sasl: Local privilege escalation to root
+  due to insecure tmp file usage. (bsc#1180669)
+  Use /var/adm/update-scripts/ instead of /tmp. Clean up temporary
+  files.
+
+-------------------------------------------------------------------
 Tue Dec  8 13:33:33 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
 - Remove Berkeley DB dependency (JIRA#SLE-12190)
-  The pacakges cyrus-sasl and cyrus-sasl-saslauthd are build
+  The packages cyrus-sasl and cyrus-sasl-saslauthd are built
   without Berkely DB support. gdbm will be used instead of BDB.
-  The pacakges cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are build
+  The packages cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are built
   with Berkely DB support.
 - Update to 2.1.27
   * Added support for OpenSSL 1.1

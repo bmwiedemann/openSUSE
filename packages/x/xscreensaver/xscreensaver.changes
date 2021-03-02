@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 24 00:47:32 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 5.45:
+  * New hacks, covid19, headroom, sphereeversion and beats.
+  * Shader updates to hypertorus.
+  * No more image-loading pause in glslideshow.
+  * BSOD supports GNOME.
+  * Image loaders support SVG.
+  * xscreensaver-systemd now allows video players to request that
+    the screen not blank.
+  * -log implies -verbose -no-capture-stderr.
+  * Glade -> GtkBuilder.
+  * Various bug fixes.
+
+-------------------------------------------------------------------
 Sat Mar 28 18:32:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.44:

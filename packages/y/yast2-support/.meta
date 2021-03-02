@@ -1,6 +1,0 @@
-<package name="yast2-support" project="openSUSE:Factory">
-  <title>YaST2 - Support Inquiries</title>
-  <description>This module allows you to collect system information for installation
-support in a standardized format.</description>
-  <devel project="YaST:Head" package="yast2-support"/>
-</package>

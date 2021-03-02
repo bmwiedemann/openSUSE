@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 24 10:51:08 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- new version 28.1
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/28.1
+- use upstream sources without bundled and pre-built dist since
+  we want to rebuild it
+- use local-npm-registry for building
+- fix_dependencies.patch: fix build dependencies
+
+-------------------------------------------------------------------
 Fri Jan 22 14:13:05 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - new version 26

@@ -1,9 +1,0 @@
-<package name="obs-service-source_validator" project="openSUSE:Factory">
-  <title>An OBS source service: running all the osc source-validator checks</title>
-  <description>This is a source service for openSUSE Build Service.
-
-This service runs all checks from osc-source_validator. This can be used
-to guarantee that all checks succeed also on the service side. This plugin can be
-used via project wide defined services.</description>
-  <devel project="openSUSE:Tools" package="obs-service-source_validator"/>
-</package>

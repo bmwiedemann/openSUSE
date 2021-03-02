@@ -1,8 +1,0 @@
-<package name="kicad-footprints" project="openSUSE:Factory">
-  <title>Footprints libraries for KiCad</title>
-  <description>KiCad is an open source (GPL) software for the creation of electronic schematic
-diagrams and printed circuit with up to 32 copper layers and additional techinical layers.
-
-This is the footprints package for KiCad.</description>
-  <devel project="electronics" package="kicad-footprints"/>
-</package>

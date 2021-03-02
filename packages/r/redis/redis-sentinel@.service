@@ -4,7 +4,7 @@ After=network.target
 PartOf=redis-sentinel.target
 
 [Service]
-Type=notify
+Type=simple
 User=redis
 Group=redis
 PrivateTmp=true

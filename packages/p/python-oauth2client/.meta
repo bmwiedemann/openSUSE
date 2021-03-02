@@ -1,5 +1,0 @@
-<package name="python-oauth2client" project="openSUSE:Factory">
-  <title>Python OAuth2 Client</title>
-  <description>This is a Python library for accessing resources protected by OAuth 2.0.</description>
-  <devel project="devel:languages:python" package="python-oauth2client"/>
-</package>

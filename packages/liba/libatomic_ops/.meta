@@ -1,5 +1,0 @@
-<package name="libatomic_ops" project="openSUSE:Factory">
-  <title>libatomic-ops-devel</title>
-  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
-  <devel project="devel:libraries:c_c++" package="libatomic_ops"/>
-</package>

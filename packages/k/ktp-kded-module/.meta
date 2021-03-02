@@ -1,5 +1,0 @@
-<package name="ktp-kded-module" project="openSUSE:Factory">
-  <title>KDED module that manages the telepathy interactions with the KDE Desktop</title>
-  <description>This module sits in KDED and takes care of various bits of system integration like setting user to auto-away or handling connection errors.</description>
-  <devel project="KDE:Applications" package="ktp-kded-module"/>
-</package>

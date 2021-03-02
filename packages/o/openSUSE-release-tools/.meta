@@ -1,8 +1,0 @@
-<package name="openSUSE-release-tools" project="openSUSE:Factory">
-  <title>openSUSE-release-tools</title>
-  <description>Tools to aid in staging and release work for openSUSE/SUSE
-
-The toolset consists of a variety of stand-alone scripts, review bots, osc
-plugins, and automation aids.</description>
-  <devel project="openSUSE:Tools" package="openSUSE-release-tools"/>
-</package>

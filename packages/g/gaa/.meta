@@ -1,9 +1,0 @@
-<package name="gaa" project="openSUSE:Factory">
-  <title>GAA Argument Analyzer and Code Generator</title>
-  <description>
-  GAA is a code generator that turns GAA language expressions into C
-  code which then analyze the arguments and creates program help
-  descriptions.
-  </description>
-  <devel project="devel:tools" package="gaa"/>
-</package>

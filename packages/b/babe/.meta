@@ -1,5 +1,0 @@
-<package name="babe" project="openSUSE:Factory">
-  <title>babe</title>
-  <description>Babe Media Player</description>
-  <devel project="KDE:Extra" package="babe"/>
-</package>

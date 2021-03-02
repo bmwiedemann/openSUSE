@@ -1,5 +1,0 @@
-<package name="libpipeline" project="openSUSE:Factory">
-  <title>A pipeline manipulation library</title>
-  <description>libpipeline is a C library for setting up and running pipelines of processes, without needing to involve shell command-line parsing which is often error-prone and insecure.  This alleviates programmers of the need to laboriously construct pipelines using lower-level primitives such as fork(2) and execve(2)</description>
-  <devel project="Base:System" package="libpipeline"/>
-</package>

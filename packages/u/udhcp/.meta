@@ -1,6 +1,0 @@
-<package name="udhcp" project="openSUSE:Factory">
-  <title>Micro DHCP client / server</title>
-  <description>Udhcp is a small dhcp client / server mainly used to support Xen
-para-virtualized PXE booting.</description>
-  <devel project="network" package="udhcp"/>
-</package>

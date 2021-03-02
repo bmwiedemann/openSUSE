@@ -1,5 +1,0 @@
-<package name="tsung" project="openSUSE:Factory">
-  <title></title>
-  <description>Tsung is an open-source multi-protocol distributed load testing tool</description>
-  <devel project="benchmark" package="tsung"/>
-</package>

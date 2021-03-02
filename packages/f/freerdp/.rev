@@ -435,4 +435,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>821928</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4b0ee902ada48a6b5076637c6721e6e4</srcmd5>
+    <version>2.3.0</version>
+    <time>1614684365</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875136</requestid>
+  </revision>
 </revisionlist>

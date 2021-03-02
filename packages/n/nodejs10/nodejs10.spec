@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs10
-Version:        10.23.3
+Version:        10.24.0
 Release:        0
 
 %define node_version_number 10
@@ -250,7 +250,7 @@ BuildRequires:  openssl-devel >= %{openssl_req_ver}
 
 %endif
 %else
-Provides:       bundled(openssl) = 1.1.1i
+Provides:       bundled(openssl) = 1.1.1j
 %endif
 
 %if ! 0%{with intree_cares}

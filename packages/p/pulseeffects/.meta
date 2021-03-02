@@ -1,9 +1,0 @@
-<package name="pulseeffects" project="openSUSE:Factory">
-  <title>Audio effects for Pulseaudio applications</title>
-  <description>PulseEffects is a limiter, compressor, reverberation, stereo equalizer and auto volume
-effects for Pulseaudio applications.
-
-</description>
-  <devel project="multimedia:apps" package="pulseeffects"/>
-  <url>https://github.com/wwmm/pulseeffects</url>
-</package>

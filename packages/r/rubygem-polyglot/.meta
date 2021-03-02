@@ -1,9 +1,0 @@
-<package name="rubygem-polyglot" project="openSUSE:Factory">
-  <title>Allows custom language loaders for specified file extensions</title>
-  <description>Allows custom language loaders for specified file extensions to be hooked into
-require
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-polyglot"/>
-  <url>http://polyglot.rubyforge.org</url>
-</package>

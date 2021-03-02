@@ -1,4 +1,0 @@
-# These links are needed. We should probably use unversioned libraries.
-addFilter("devel-file-in-non-devel-package")
-# This is not an error. rpmlint cannot handle %() properly.
-addFilter("specfile-error")

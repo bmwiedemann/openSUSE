@@ -67,6 +67,7 @@ Patch157:       virtman-fix-restore-vm-menu-selection.patch
 Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
 Patch160:       virtman-show-no-firmware-for-xenpv.patch
+Patch161:       virtman-legacy-bios-support.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -198,6 +199,7 @@ machine).
 %patch158 -p1
 %patch159 -p1
 %patch160 -p1
+%patch161 -p1
 %patch170 -p1
 %patch171 -p1
 %patch172 -p1

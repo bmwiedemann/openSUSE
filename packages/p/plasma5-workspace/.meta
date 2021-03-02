@@ -1,5 +1,0 @@
-<package name="plasma5-workspace" project="openSUSE:Factory">
-  <title>plasma5-workspace</title>
-  <description></description>
-  <devel project="KDE:Frameworks5" package="plasma5-workspace"/>
-</package>

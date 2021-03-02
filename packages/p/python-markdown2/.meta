@@ -1,9 +1,0 @@
-<package name="python-markdown2" project="openSUSE:Factory">
-  <title>A fast and complete implementation of Markdown in Python</title>
-  <description>Markdown2 is a fast and complete Python implementation of Markdown.
-It was written to closely match the behaviour of the original
-Perl-implemented Markdown.pl. Markdown2 also comes with a number of
-extensions (called &quot;extras&quot;) for things like syntax coloring, tables,
-header-ids.</description>
-  <devel project="devel:languages:python" package="python-markdown2"/>
-</package>

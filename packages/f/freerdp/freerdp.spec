@@ -1,7 +1,7 @@
 #
 # spec file for package freerdp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,14 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           freerdp
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
+Source1:        freerdp-rpmlintrc
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -195,7 +196,7 @@ export CFLAGS="%{optflags} -fPIE -pie"
 	-DCHANNEL_URBDRC=ON \
 	-DCHANNEL_URBDRC_CLIENT=ON
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 cd build

@@ -18,7 +18,7 @@
 
 %define _version 5
 Name:           nano
-Version:        5.5
+Version:        5.6
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
@@ -56,7 +56,7 @@ the Pico text editor while also offering a few enhancements.
 # - set hunspell as the default spell-checker
 # - enable syntax highlighting by default
 sed -e 's/^#.*set speller.*$/set speller "hunspell"/' \
-    -e 's|^# \(include "/usr/share/nano/\*.nanorc"\)|\1|' \
+    -e 's|^# \(include "%{_datadir}/nano/\*.nanorc"\)|\1|' \
     %{SOURCE3} doc/sample.nanorc > ./nanorc
 
 %install

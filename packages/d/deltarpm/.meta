@@ -1,9 +1,0 @@
-<package name="deltarpm" project="openSUSE:Factory">
-  <title>Tools to Create and Apply deltarpms</title>
-  <description>This package contains tools to create and apply deltarpms. A deltarpm
-contains the difference between an old and a new version of an RPM,
-which makes it possible to recreate the new RPM from the deltarpm and
-the old one. You do not need to have a copy of the old RPM, because
-deltarpms can also work with installed RPMs.</description>
-  <devel project="Base:System" package="deltarpm"/>
-</package>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:48:58 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.24.0:
+  * CVE-2021-22883: HTTP2 'unknownProtocol' cause Denial of Service
+    by resource exhaustion (bsc#1182619)
+  * CVE-2021-22884: DNS rebinding in --inspect (bsc#1182620)
+  * CVE-2021-23840: OpenSSL - Integer overflow in CipherUpdate
+    (bsc#1182333)
+
+-------------------------------------------------------------------
 Wed Feb 17 17:38:30 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - relax OpenSSL cipher suite policies for unit tests

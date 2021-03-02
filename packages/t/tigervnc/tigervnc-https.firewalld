@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>VNC over HTTPS</short>
-  <description>The xvnc-novnc servers a web-based VNC viewer over HTTPS. Allows accessing VNC using any modern browser. It displays VNC display :1.</description>
-  <port protocol="tcp" port="5801"/>
-</service>
-

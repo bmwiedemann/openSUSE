@@ -18,7 +18,7 @@
 
 # Ensure you update the tzdata_version for any minor version increase
 # otherwise the update python library has the incorrect timezone data.
-%define tzdata_version 2020e
+%define tzdata_version 2021a
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytz

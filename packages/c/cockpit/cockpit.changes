@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 24 17:03:41 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- new version 238.1
+  https://cockpit-project.org/blog/cockpit-238.html
+  https://cockpit-project.org/blog/cockpit-237.html
+- No longer recompress tarball at buildtime
+
+-------------------------------------------------------------------
+Thu Feb  4 16:18:13 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Rebuild from git leveraging local-npm-registry (needs
+  cockpit-redhatfont.diff)
+
+-------------------------------------------------------------------
+Fri Jan 22 15:38:53 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 236
+  https://cockpit-project.org/blog/cockpit-236.html
+
+-------------------------------------------------------------------
 Fri Jan 22 08:53:25 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - new version 235

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 25 15:32:55 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Let pulseaudio-utils require any pulseaudio-daemon provider
+  so parecord and the other utils can be used with other
+  pulseaudio implementations
+
+-------------------------------------------------------------------
+Thu Feb 25 10:48:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Provide pulseaudio-daemon capability so pipewire-pulseaudio can
+  also provide that capability instead of providing 'pulseaudio'
+  itself which makes it difficult to recommend the pulseaudio
+  package (boo#1182730).
+
+-------------------------------------------------------------------
 Fri Jan 29 20:15:24 CET 2021 - tiwai@suse.de
 
 - Drop the bad patch: pulseaudio-wrong-memset.patch

@@ -554,4 +554,26 @@
   fix_libpq-fe_include.diff  for fixing including libpq-fe.h</comment>
     <requestid>858433</requestid>
   </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>fc8dc71b5e1c2fd0cd5ad72c2c5e91e9</srcmd5>
+    <version>2.1.27</version>
+    <time>1614684395</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix build: Do not build libsasl2-3 in the bdb package. This will
+  not be linked to berkely db. libsasl2-3 is now defined as
+  %BuildRequires and %Requires
+
+  The packages cyrus-sasl and cyrus-sasl-saslauthd are built
+  The packages cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are built
+  The packages cyrus-sasl and cyrus-sasl-saslauthd are built
+  The packages cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are built
+- CVE-2020-8032: cyrus-sasl: Local privilege escalation to root
+  due to insecure tmp file usage. (bsc#1180669)
+  Use /var/adm/update-scripts/ instead of /tmp. Clean up temporary
+  files.
+
+  The packages cyrus-sasl and cyrus-sasl-saslauthd are built
+  The packages cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are built</comment>
+    <requestid>875610</requestid>
+  </revision>
 </revisionlist>

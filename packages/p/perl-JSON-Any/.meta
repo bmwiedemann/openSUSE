@@ -1,9 +1,0 @@
-<package name="perl-JSON-Any" project="openSUSE:Factory">
-  <title>Wrapper Class for the various JSON classes</title>
-  <description>Wrapper Class for the various JSON classes.
-
-This module will provide a coherent API to bring together the various JSON
-modules currently on CPAN. This module will allow you to code to any JSON API
-and have it work regardless of which JSON module is actually installed.</description>
-  <devel project="devel:languages:perl" package="perl-JSON-Any"/>
-</package>

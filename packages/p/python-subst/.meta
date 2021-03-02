@@ -1,5 +1,0 @@
-<package name="python-subst" project="openSUSE:Factory">
-  <title></title>
-  <description>Utility to replace one string into another in given list of files</description>
-  <devel project="devel:languages:python" package="python-subst"/>
-</package>

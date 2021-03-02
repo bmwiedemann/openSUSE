@@ -1,9 +1,0 @@
-<package name="fortune" project="openSUSE:Factory">
-  <title>Random Saying</title>
-  <description>Fortune displays a random text string from a set of files in a certain
-format.
-
-This occurs each time you start a login shell. To get this feature just
-uncomment the respective lines in the user's .profile.</description>
-  <devel project="Base:System" package="fortune"/>
-</package>

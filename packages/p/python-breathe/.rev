@@ -140,4 +140,26 @@
     <comment></comment>
     <requestid>854518</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>945444e20f0116747e38804b41941e38</srcmd5>
+    <version>4.27.0</version>
+    <time>1614684334</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 4.27.0:
+  * Add various specifiers to functions and variables. #628
+  * Add multiply inherited class for PHP objects. #630
+  * Initial support for table rendering. #632
+  * Add rendering of \section, \subsection and \subsubsection. #635
+  * Sphinx 3.5 compatibility. #640
+  * Fix linking to sections. #639
+  * Add table examples to documentation. #638
+  * Fix doxygenfile causing duplicate IDs for unspecified sections. #622
+  * Fixes for doxygenfunction (friend keyword, friend class, arg checks). #623
+  * Add test for ellipsis ('...') in args. #610
+  * Sphinx 3.4.x compatibility. #617
+  * Adapt friendclass to Doxygen 1.9. #618
+  * Add support for \parblock parsing and rendering. #603
+  * Allow lookup in doxygenfunction without writing param names. #606</comment>
+    <requestid>874949</requestid>
+  </revision>
 </revisionlist>

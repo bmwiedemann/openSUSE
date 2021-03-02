@@ -1,7 +1,0 @@
-<package name="hostap-utils" project="openSUSE:Factory">
-  <title>Tools for Prism2 cards</title>
-  <description>This package contains various tools for configuring Prism2 cards driven
-by the HostAP kernel module. In particular, it contains a utility to
-query and flash firmware of Prism2 adapters.</description>
-  <devel project="Base:System" package="hostap-utils"/>
-</package>

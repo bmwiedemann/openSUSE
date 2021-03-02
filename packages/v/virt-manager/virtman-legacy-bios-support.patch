@@ -1,0 +1,88 @@
+References: bsc#1178926
+
+When we choose /usr/share/qemu/bios.bin or /usr/share/qemu/bios-256k.bin
+in Customize configuration before install, show this error message:
+
+Unable to complete install: 'operation failed: unable to find any master var store for loader: /usr/share/qemu/bios.bin'
+
+Traceback (most recent call last):
+  File "/usr/share/virt-manager/virtManager/asyncjob.py", line 65, in cb_wrapper
+    callback(asyncjob, *args, **kwargs)
+  File "/usr/share/virt-manager/virtManager/createvm.py", line 2081, in _do_async_install
+    installer.start_install(guest, meter=meter)
+  File "/usr/share/virt-manager/virtinst/install/installer.py", line 721, in start_install
+    domain = self._create_guest(
+  File "/usr/share/virt-manager/virtinst/install/installer.py", line 669, in _create_guest
+    domain = self.conn.createXML(install_xml or final_xml, 0)
+  File "/usr/lib64/python3.8/site-packages/libvirt.py", line 4347, in createXML
+    raise libvirtError('virDomainCreateXML() failed')
+libvirt.libvirtError: operation failed: unable to find any master var store for loader: /usr/share/qemu/bios.bin
+
+This patch check the loader if it is include bios.bin and bios-256k.bin.
+
+Signed-off-by: Yu-Chen, Cho <acho suse com>
+--
+v2:
+Fixed tabs vs spaces issues.
+
+v1:
+Check the loader if it is include bios.bin and bios-256k.bin.
+---
+ virtManager/object/domain.py | 18 +++++++++---------
+ virtinst/guest.py            | 13 +++++++++++++
+ 2 files changed, 22 insertions(+), 9 deletions(-)
+
+Index: virt-manager-3.2.0/virtManager/object/domain.py
+===================================================================
+--- virt-manager-3.2.0.orig/virtManager/object/domain.py
++++ virt-manager-3.2.0/virtManager/object/domain.py
+@@ -671,16 +671,16 @@ class vmmDomain(vmmLibvirtObject):
+ 
+         if loader != _SENTINEL:
+             if loader is None:
+-                # Implies seabios, aka the default, so clear everything
+-                guest.os.loader = None
+-                guest.os.loader_ro = None
+-                guest.os.loader_type = None
+-                guest.os.nvram = None
+-                guest.os.nvram_template = None
++                # Implies the default, so clear everything
++                guest.set_legacy_path(None)
+             else:
+-                # Implies UEFI
+-                guest.set_uefi_path(loader)
+-                guest.disable_hyperv_for_uefi()
++                if "bios.bin" in loader or "bios-256k.bin" in loader:
++                    # Implies Custom: seabios, not UEFI
++                    guest.set_legacy_path(loader)
++                else:
++                    # Implies UEFI
++                    guest.set_uefi_path(loader)
++                    guest.disable_hyperv_for_uefi()
+ 
+         if nvram != _SENTINEL:
+             guest.os.nvram = nvram
+Index: virt-manager-3.2.0/virtinst/guest.py
+===================================================================
+--- virt-manager-3.2.0.orig/virtinst/guest.py
++++ virt-manager-3.2.0/virtinst/guest.py
+@@ -569,6 +569,19 @@ class Guest(XMLBuilder):
+                         self.os.machine)
+                 self.os.machine = "q35"
+ 
++    def set_legacy_path(self, path):
++        """
++        Configure legacy BIOS for QEMU.
++        """
++        self.os.loader = path
++        if (path):
++            self.os.loader_ro = True
++        else:
++            self.os.loader_ro = None
++        self.os.loader_type = None
++        self.os.nvram = None
++        self.os.nvram_template = None
++
+     def disable_hyperv_for_uefi(self):
+         # UEFI doesn't work with hyperv bits for some OS
+         if not self.is_uefi():

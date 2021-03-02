@@ -1,9 +1,0 @@
-<package name="libpaper1" project="openSUSE:Factory">
-  <title>Library to handle papers</title>
-  <description>This package contains a simple library for use by programs needing to
-handle papers. It lets program automatically recognize a lot of
-different papers with their properties (actually their size).
-</description>
-  <devel project="Education" package="libpaper1"/>
-  <url>http://packages.debian.org/unstable/source/libpaper</url>
-</package>

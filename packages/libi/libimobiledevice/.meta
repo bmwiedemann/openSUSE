@@ -1,7 +1,0 @@
-<package name="libimobiledevice" project="openSUSE:Factory">
-  <title>Native protocols library for iPhone, iPod Touch and iPad</title>
-  <description>libimobiledevice is a software library that talks the protocols to support 
-iPhone, iPod Touch and iPad devices. Unlike other projects, it does not depend
-on using any existing `.dll` or `.so` libraries from Apple.</description>
-  <devel project="hardware" package="libimobiledevice"/>
-</package>

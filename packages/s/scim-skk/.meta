@@ -1,5 +1,0 @@
-<package name="scim-skk" project="openSUSE:Factory">
-  <title>SKK Input Method Engine for SCIM</title>
-  <description>SKK Input Method Engine for SCIM</description>
-  <devel project="M17N" package="scim-skk"/>
-</package>

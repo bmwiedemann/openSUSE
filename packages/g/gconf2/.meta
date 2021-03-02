@@ -1,9 +1,0 @@
-<package name="gconf2" project="openSUSE:Factory">
-  <title>GNOME Configuration Database System</title>
-  <description>GConf is a configuration database system for storing application
-preferences. It supports default or mandatory settings set by the
-administrator, and changes to the database are instantly applied to all
-running applications. It is written for the GNOME desktop but doesn't
-require it.</description>
-  <devel project="GNOME:Factory" package="gconf2"/>
-</package>

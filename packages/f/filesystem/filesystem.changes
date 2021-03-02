@@ -4,6 +4,14 @@ Wed Feb 10 18:34:25 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 - Add Ukrainian to the list of localized man directories.
 
 -------------------------------------------------------------------
+Mon Feb  8 17:36:52 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961):
+  * Decide at build time whether file lists for usrmerge or legacy
+    should be created.
+  * convert file system in %pre if needed
+
+-------------------------------------------------------------------
 Mon Feb  1 14:23:11 CET 2021 - ro@suse.de
 
 - add /usr/etc/skel/.cache with perm 0700 (boo#1181011)

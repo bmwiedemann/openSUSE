@@ -4,7 +4,7 @@ Index: virt-manager-3.2.0/virtinst/guest.py
 ===================================================================
 --- virt-manager-3.2.0.orig/virtinst/guest.py
 +++ virt-manager-3.2.0/virtinst/guest.py
-@@ -691,6 +691,8 @@ class Guest(XMLBuilder):
+@@ -704,6 +704,8 @@ class Guest(XMLBuilder):
              self.type != "kvm"):
              log.warning(  # pragma: no cover
                      "KVM acceleration not available, using '%s'", self.type)

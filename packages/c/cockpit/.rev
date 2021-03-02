@@ -96,4 +96,21 @@
 - new version 232</comment>
     <requestid>867727</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bd2f9fab1a29acd6ffdfb651bf5c5820</srcmd5>
+    <version>238.1</version>
+    <time>1614684368</time>
+    <user>RBrownSUSE</user>
+    <comment>- new version 238.1
+  https://cockpit-project.org/blog/cockpit-238.html
+  https://cockpit-project.org/blog/cockpit-237.html
+- No longer recompress tarball at buildtime
+
+- Rebuild from git leveraging local-npm-registry (needs
+  cockpit-redhatfont.diff)
+
+- new version 236
+  https://cockpit-project.org/blog/cockpit-236.html</comment>
+    <requestid>875154</requestid>
+  </revision>
 </revisionlist>

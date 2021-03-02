@@ -1,6 +1,0 @@
-<package name="libkexiv2" project="openSUSE:Factory">
-  <title>Library to manipulate picture meta data</title>
-  <description>Libkexiv2 is a wrapper around Exiv2 library to manipulate pictures
-metadata.</description>
-  <devel project="KDE:Applications" package="libkexiv2"/>
-</package>
