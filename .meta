@@ -1,7 +1,0 @@
-<package name="yaz" project="openSUSE:Factory">
-  <title>Z39.50/SRW/SRU Programs</title>
-  <description>This package contains both a test-server and clients (normal &amp; ssl) for
-the ANSI/NISO Z39.50 protocol for Information Retrieval.  SRW and SRU
-clients and servers are also supported.</description>
-  <devel project="Publishing" package="yaz"/>
-</package>
