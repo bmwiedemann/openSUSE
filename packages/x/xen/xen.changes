@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb 26 14:00:00 CET 2021 - jbeulich@suse.com
+
+- bsc#1177204 - L3-Question: conring size for XEN HV's with huge
+  memory to small. Inital Xen logs cut
+  5ffc58c4-ACPI-reduce-verbosity-by-default.patch
+- Upstream bug fixes (bsc#1027519)
+  601d4396-x86-EFI-suppress-ld-2-36-debug-info.patch
+  602bd768-page_alloc-only-flush-after-scrubbing.patch
+  602cfe3d-IOMMU-check-if-initialized-before-teardown.patch
+  602e5a8c-gnttab-never-permit-mapping-transitive-grants.patch
+  602e5abb-gnttab-bypass-IOMMU-when-mapping-own-grant.patch
+  6037b02e-x86-EFI-suppress-ld-2-36-base-relocs.patch
+- bsc#1181921 - GCC 11: xen package fails
+  gcc11-fixes.patch
+
+-------------------------------------------------------------------
+Tue Feb 23 10:00:26 MST 2021 - carnold@suse.com
+
+- bsc#1182576 - L3: XEN domU crashed on resume when using the xl
+  unpause command
+  602ffae9-tools-libs-light-fix-xl-save--c-handling.patch
+
+-------------------------------------------------------------------
+Thu Feb 18 11:42:54 MST 2021 - carnold@suse.com
+
+- Start using the %autosetup macro to simplify patch management
+  xen.spec
+
+-------------------------------------------------------------------
 Wed Feb 10 12:52:00 MST 2021 - carnold@suse.com
 
 - bsc#1181921 - GCC 11: xen package fails

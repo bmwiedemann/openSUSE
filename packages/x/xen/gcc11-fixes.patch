@@ -138,18 +138,6 @@ x86_emulate/x86_emulate.c:736:9: note: in expansion of macro 'copy_VEX'
  static void tboot_gen_frametable_integrity(const uint8_t key[TB_KEY_SIZE],
                                             vmac_t *mac)
  {
---- xen-4.14.1-testing/xen/crypto/rijndael.c.orig	2021-02-10 11:41:50.018507672 -0700
-+++ xen-4.14.1-testing/xen/crypto/rijndael.c	2021-02-10 11:42:42.206506404 -0700
-@@ -860,6 +860,9 @@ rijndaelKeySetupDec(u32 rk[/*4*(Nr + 1)*
- 
- #endif /* NEED_RIJNDAEL_DECRYPT */
- 
-+#if __GNUC__ >= 11
-+#pragma GCC diagnostic ignored "-Warray-parameter="
-+#endif
- void
- rijndaelEncrypt(const u32 rk[/*4*(Nr + 1)*/], int Nr, const u8 pt[16],
-     u8 ct[16])
 --- xen-4.14.1-testing/xen/arch/x86/x86_emulate/x86_emulate.c.orig	2021-02-10 11:56:52.302485758 -0700
 +++ xen-4.14.1-testing/xen/arch/x86/x86_emulate/x86_emulate.c	2021-02-10 11:57:58.338484154 -0700
 @@ -722,6 +722,9 @@ union vex {
@@ -162,3 +150,15 @@ x86_emulate/x86_emulate.c:736:9: note: in expansion of macro 'copy_VEX'
  #define copy_VEX(ptr, vex) ({ \
      if ( !mode_64bit() ) \
          (vex).reg |= 8; \
+--- xen-4.14.1-testing/xen/include/crypto/rijndael.h	2021-02-10 11:41:50.018507672 -0700
++++ xen-4.14.1-testing/xen/include/crypto/rijndael.h	2021-02-26 11:42:42.206506404 +0100
+@@ -52,7 +52,7 @@
+ 
+ int	rijndaelKeySetupEnc(unsigned int [], const unsigned char [], int);
+ int	rijndaelKeySetupDec(unsigned int [], const unsigned char [], int);
+-void	rijndaelEncrypt(const unsigned int [], int, const unsigned char [],
+-	    unsigned char []);
++void	rijndaelEncrypt(const unsigned int [], int, const unsigned char [16],
++	    unsigned char [16]);
+ 
+ #endif /* __RIJNDAEL_H */

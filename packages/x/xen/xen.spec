@@ -130,26 +130,27 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.14.1_11
+Version:        4.14.1_12
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
 Source0:        xen-4.14.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
-Source5:        ipxe.tar.bz2
-Source6:        mini-os.tar.bz2
+Source2:        ipxe.tar.bz2
+Source3:        mini-os.tar.bz2
+Source4:        xen-utils-0.1.tar.bz2
 Source9:        xen.changes
 Source10:       README.SUSE
 Source11:       boot.xen
 Source12:       boot.local.xenU
 Source13:       xen-supportconfig
-Source15:       logrotate.conf
+Source14:       logrotate.conf
 Source21:       block-npiv-common.sh
 Source22:       block-npiv
 Source23:       block-npiv-vport
-Source26:       init.xen_loop
-Source29:       block-dmmd
+Source24:       block-dmmd
+Source28:       init.xen_loop
 # Xen API remote authentication sources
 Source30:       etc_pam.d_xen-api
 Source31:       xenapiusers
@@ -160,7 +161,6 @@ Source36:       xen2libvirt.py
 # Systemd service files
 Source41:       xencommons.service
 Source42:       xen-dom0-modules.service
-Source57:       xen-utils-0.1.tar.bz2
 Source10172:    xendomains-wait-disks.sh
 Source10173:    xendomains-wait-disks.LICENSE
 Source10174:    xendomains-wait-disks.README.md
@@ -172,12 +172,20 @@ Patch1:         5fca3b32-tools-libs-ctrl-fix-dumping-of-ballooned-guest.patch
 Patch2:         5fedf9f4-x86-hpet_setup-fix-retval.patch
 Patch3:         5ff458f2-x86-vPCI-tolerate-disabled-MSI-X-entry.patch
 Patch4:         5ff71655-x86-dpci-EOI-regardless-of-masking.patch
-Patch5:         5ffc58e8-x86-ACPI-dont-overwrite-FADT.patch
-Patch6:         600999ad-x86-dpci-do-not-remove-pirqs-from.patch
-Patch7:         600ab341-x86-vioapic-EOI-check-IRR-before-inject.patch
-Patch8:         6011bbc7-x86-timer-fix-boot-without-PIT.patch
-Patch9:         6013e4bd-memory-bail-from-page-scrub-when-CPU-offline.patch
-Patch10:        6013e546-x86-HVM-reorder-domain-init-error-path.patch
+Patch5:         5ffc58c4-ACPI-reduce-verbosity-by-default.patch
+Patch6:         5ffc58e8-x86-ACPI-dont-overwrite-FADT.patch
+Patch7:         600999ad-x86-dpci-do-not-remove-pirqs-from.patch
+Patch8:         600ab341-x86-vioapic-EOI-check-IRR-before-inject.patch
+Patch9:         6011bbc7-x86-timer-fix-boot-without-PIT.patch
+Patch10:        6013e4bd-memory-bail-from-page-scrub-when-CPU-offline.patch
+Patch11:        6013e546-x86-HVM-reorder-domain-init-error-path.patch
+Patch12:        601d4396-x86-EFI-suppress-ld-2-36-debug-info.patch
+Patch13:        602bd768-page_alloc-only-flush-after-scrubbing.patch
+Patch14:        602cfe3d-IOMMU-check-if-initialized-before-teardown.patch
+Patch15:        602e5a8c-gnttab-never-permit-mapping-transitive-grants.patch
+Patch16:        602e5abb-gnttab-bypass-IOMMU-when-mapping-own-grant.patch
+Patch17:        602ffae9-tools-libs-light-fix-xl-save--c-handling.patch
+Patch18:        6037b02e-x86-EFI-suppress-ld-2-36-base-relocs.patch
 # libxc
 Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
 Patch301:       libxc-sr-readv_exact.patch
@@ -432,99 +440,8 @@ Authors:
 %endif
 
 %prep
-%setup -q -n %xen_build_dir -a 1 -a 5 -a 6 -a 57
-# Upstream patches
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-# libxc
-%patch300 -p1
-%patch301 -p1
-%patch302 -p1
-%patch303 -p1
-%patch304 -p1
-%patch305 -p1
-%patch306 -p1
-%patch307 -p1
-%patch308 -p1
-%patch309 -p1
-%patch310 -p1
-%patch311 -p1
-%patch312 -p1
-%patch313 -p1
-%patch314 -p1
-%patch315 -p1
-%patch316 -p1
-%patch317 -p1
-%patch318 -p1
-%patch319 -p1
-%patch320 -p1
-%patch321 -p1
-%patch322 -p1
-%patch323 -p1
-%patch324 -p1
-%patch325 -p1
-%patch326 -p1
-# Our platform specific patches
-%patch400 -p1
-%patch401 -p1
-%patch402 -p1
-%patch403 -p1
-%patch404 -p1
-%patch405 -p1
-%patch406 -p1
-%patch407 -p1
-%patch408 -p1
-%patch409 -p1
-%patch410 -p1
-# Needs to go upstream
-%patch420 -p1
-%patch422 -p1
-%patch423 -p1
-%patch424 -p1
-# Other bug fixes or features
-%patch451 -p1
-%patch452 -p1
-%patch453 -p1
-%patch454 -p1
-%patch456 -p1
-%patch457 -p1
-%patch458 -p1
-%patch459 -p1
-%patch461 -p1
-%patch462 -p1
-%patch463 -p1
-%patch464 -p1
-%patch465 -p1
-%patch466 -p1
-%patch467 -p1
-%patch468 -p1
-%patch469 -p1
-%patch470 -p1
-%patch471 -p1
-# python3 conversion patches
-%patch500 -p1
-%patch501 -p1
-%patch502 -p1
-# Hypervisor and PV driver Patches
-%patch600 -p1
-%patch601 -p1
-%patch602 -p1
-%patch603 -p1
-%patch604 -p1
-%patch621 -p1
-%patch623 -p1
-%patch624 -p1
-# Build patches
-%patch99996 -p1
-%patch99999 -p1
+%setup -q -n %xen_build_dir -a 1 -a 2 -a 3 -a 4
+%autosetup -D -T -n %xen_build_dir -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -935,7 +852,7 @@ for name in vtpm-platforms.txt crashdb.txt xenpaging.txt \
 done
 
 mkdir -p %{buildroot}/etc/modprobe.d
-install -m644 %SOURCE26 %{buildroot}/etc/modprobe.d/xen_loop.conf
+install -m644 %SOURCE28 %{buildroot}/etc/modprobe.d/xen_loop.conf
 
 # xen-utils
 make -C tools/xen-utils-0.1 install DESTDIR=%{buildroot} XEN_INTREE_BUILD=yes XEN_ROOT=$PWD
@@ -951,7 +868,7 @@ install -m644 tools/xentrace/formats %{buildroot}/etc/xen/examples/xentrace_form
 
 # Scripts
 rm -f %{buildroot}/etc/xen/scripts/block-*nbd
-install -m755 %SOURCE21 %SOURCE22 %SOURCE23 %SOURCE29 %{buildroot}/etc/xen/scripts/
+install -m755 %SOURCE21 %SOURCE22 %SOURCE23 %SOURCE24 %{buildroot}/etc/xen/scripts/
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %SOURCE13 %{buildroot}/usr/lib/supportconfig/plugins/xen
 
@@ -961,7 +878,7 @@ install -m644 %SOURCE30 %{buildroot}/etc/pam.d/xen-api
 install -m644 %SOURCE31 %{buildroot}/etc/xen/
 
 # Logrotate
-install -m644 -D %SOURCE15 %{buildroot}/etc/logrotate.d/xen
+install -m644 -D %SOURCE14 %{buildroot}/etc/logrotate.d/xen
 
 # Directories
 mkdir -p %{buildroot}/var/lib/xenstored

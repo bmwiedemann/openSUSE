@@ -2566,4 +2566,12 @@
     <comment>Fix for bsc#1181921 - GCC 11: xen package fails</comment>
     <requestid>871003</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>59e0cdb38ab53de15890f0d80046a5d6</srcmd5>
+    <version>4.14.1_12</version>
+    <time>1614684488</time>
+    <user>RBrownSUSE</user>
+    <comment>Fixes for bsc#1177204, bsc#1182576 and other upstream fixes</comment>
+    <requestid>875549</requestid>
+  </revision>
 </revisionlist>
