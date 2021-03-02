@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>afs3-vlserver</short>
-  <description>OpenAFS volume location database (VLDB)</description>
-  <port protocol="udp" port="7003"/>
-</service>

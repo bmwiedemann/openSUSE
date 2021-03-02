@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>afs3-volser</short>
-  <description>OpenAFS volume managment server (volserver)</description>
-  <port protocol="udp" port="7005"/>
-</service>
