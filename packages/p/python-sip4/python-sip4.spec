@@ -88,8 +88,6 @@ Provides:       python-%{mname}-bin = %{version}-%{release}
 Provides:       python-%{mname}-devel = %{version}-%{release}
 Obsoletes:      python-%{mname}-bin < %{version}-%{release}
 Obsoletes:      python-%{mname}-devel < %{version}-%{release}
-Conflicts:      python-%{mname}-impl
-Provides:       python-%{mname}-impl = %{version}-%{release}
 %ifpython2
 Provides:       %{oldpython}-%{mname}-bin = %{version}-%{release}
 Provides:       %{oldpython}-%{mname}-devel = %{version}-%{release}
