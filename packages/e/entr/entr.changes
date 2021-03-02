@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 28 12:49:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.8
+  * Set a maximum of 2^19 watches to guard against absurd file
+    open limits on MacOS.
+  * Use control sequences to clear the display and specify '-c'
+    twice to erase the scrollback buffer.
+
+-------------------------------------------------------------------
 Fri Jan 29 23:43:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7:
