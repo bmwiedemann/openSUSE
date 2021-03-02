@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Mar  1 22:43:49 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 2.2.0:
+  * Added
+    - Added pkg-config charls.pc file to help in detect the CharLS
+      library (see #76)
+    - Added standard CMake variable BUILD_SHARED_LIBS as an option
+      to make it visible in the CMake GUI (see #66)
+    - The PowerPC Little Endian (ppc64le) platform has been added
+      as supported architecture
+  * Fixed
+    - Fixed #21, Building with UBSAN, will report runtime error:
+      left shift of 4031 by 63 places cannot be represented in type
+      'long int'
+    - Fixed #25, CharLS fails to read LSE marker segment after
+      first SOS segment
+    - Fixed #26, CharLS should only use the valid bits from the
+      passed input buffer
+    - Fixed #36, CharLS should remain stable from bad input
+      (several issues found by fuzzy testing)
+    - Fixed #60, Visual Studio 2015 C++ compiler cannot compile
+      certain constexpr constructions
+    - Fixed #62, Missing includes in jpegls_error.cpp when using
+      libc++ (and not libstdc++)
+    - Fixed #70, The C and C++ sample don't swap the pixels from a
+      .bmp file horizontal
+    - Fixed #79, Wrong JPEG-LS encoding when stride is non-default
+      (stride != 0), component count > 1 and interleave_mode is none
+  * Changed
+    - The API has been extended with additional annotations to
+      assist the static analyzer in the MSVC and GCC/clang
+      compilers
+    - The size check for a Start Of Scan (SOS) segment is now exact
+      for improved compatibility with fuzzy testing
+    - The minimum support version of CMake is now 3.13 (was 3.9),
+      3.13 is needed for add_link_options
+    - The Windows static library and DLL are now compiled with the
+      Control Flow Guard (/guard:cf) option enabled for enhanced
+      security
+    - The .NET adapter has been upgraded to .NET 5 and moved to its
+      own repository This has been done to make it possible to have
+      different release cycles.
+  * Removed
+    - The legacy methods JpegLsEncodeStream, JpegLsDecodeStream and
+      JpegLsReadHeaderStream have been removed as exported methods.
+      These methods were not part of the public API and only used
+      by by the charlstest application
+- Added pkgconfig build requires.
+
+-------------------------------------------------------------------
 Sun Aug  9 06:35:48 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.1.0. 

@@ -1,7 +1,7 @@
 #
 # spec file for package CharLS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 2
 Name:           CharLS
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        A JPEG-LS library
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/team-charls/charls/
 Source0:        https://github.com/team-charls/charls/archive/%{version}.tar.gz#/charls-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1320
 BuildRequires:  gcc-c++
 %else
@@ -62,12 +63,14 @@ open source and commercial JPEG LS implementations.
 %setup -q -n charls-%{version}
 
 %build
+%if 0%{?suse_version} <= 1320
 test -x "$(type -p gcc-5)" && export CC=gcc-5
 test -x "$(type -p g++-5)" && export CXX=g++-5
 test -x "$(type -p gcc-6)" && export CC=gcc-6
 test -x "$(type -p g++-6)" && export CXX=g++-6
 test -x "$(type -p gcc-7)" && export CC=gcc-7
 test -x "$(type -p g++-7)" && export CXX=g++-7
+%endif
 %cmake \
  -DBUILD_SHARED_LIBS=ON \
  -DBUILD_TESTING=ON
@@ -85,9 +88,11 @@ ctest .
 
 %files devel
 %license LICENSE.md
-%doc README.md
+%doc CHANGELOG.md README.md
 %{_includedir}/charls/
 %{_libdir}/*.so
+%{_libdir}/cmake/charls/
+%{_libdir}/pkgconfig/*.pc
 
 %files -n libcharls%{so_ver}
 %{_libdir}/libcharls.so.%{so_ver}*
