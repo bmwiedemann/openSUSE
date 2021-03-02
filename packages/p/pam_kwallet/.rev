@@ -652,4 +652,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
     <requestid>872101</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>b873b42ed45724e878cd0139118a5cd2</srcmd5>
+    <version>5.21.1</version>
+    <time>1614684695</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Plasma 5.21.1</comment>
+    <requestid>875031</requestid>
+  </revision>
 </revisionlist>
