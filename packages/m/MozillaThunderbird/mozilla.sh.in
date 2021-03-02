@@ -1,0 +1,149 @@
+#!/bin/sh
+#
+# ***** BEGIN LICENSE BLOCK *****
+# Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#
+# The contents of this file are subject to the Mozilla Public License Version
+# 1.1 (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+# http://www.mozilla.org/MPL/
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+# The Original Code is mozilla.org Code.
+#
+# The Initial Developer of the Original Code is
+# Netscape Communications Corporation.
+# Portions created by the Initial Developer are Copyright (C) 1998
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s):
+#    Wolfgang Rosenauer <wolfgang.rosenauer@suse.de>
+#                       <wr@rosenauer.org>
+#
+# Alternatively, the contents of this file may be used under the terms of
+# either the GNU General Public License Version 2 or later (the "GPL"), or
+# the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+# in which case the provisions of the GPL or the LGPL are applicable instead
+# of those above. If you wish to allow use of your version of this file only
+# under the terms of either the GPL or the LGPL, and not to allow others to
+# use your version of this file under the terms of the MPL, indicate your
+# decision by deleting the provisions above and replace them with the notice
+# and other provisions required by the GPL or the LGPL. If you do not delete
+# the provisions above, a recipient may use your version of this file under
+# the terms of any one of the MPL, the GPL or the LGPL.
+#
+# ***** END LICENSE BLOCK *****
+
+##
+## Usage:
+##
+## $ mozilla [args]
+##
+## This script is meant to run a mozilla program from the mozilla
+## rpm installation.
+##
+## The script will setup all the environment voodoo needed to make
+## mozilla work.
+
+cmdname=`basename $0`
+
+##
+## Variables
+##
+MOZ_DIST_BIN="%PREFIX"
+MOZ_DIST_LIB="%PROGDIR"
+MOZ_APPNAME="%APPNAME"
+MOZ_PROGRAM="$MOZ_DIST_LIB/$MOZ_APPNAME-bin"
+
+MOZ_APP_LAUNCHER="$MOZ_DIST_LIB/$MOZ_APPNAME.sh"
+if [ "$0" = "$MOZ_APP_LAUNCHER" ]; then
+  [ -h "/usr/bin/$MOZ_APPNAME" ] && \
+   _link=$(readlink -f "/usr/bin/$MOZ_APPNAME")
+  if [ "$_link" = "$MOZ_APP_LAUNCHER" ]; then
+    export MOZ_APP_LAUNCHER="/usr/bin/$MOZ_APPNAME"
+  fi
+else
+  export MOZ_APP_LAUNCHER="/usr/bin/$MOZ_APPNAME"
+fi
+
+mozilla_lib=`file $MOZ_PROGRAM`
+LIB=lib
+echo $mozilla_lib | grep -q -E 'ELF.64-bit.*(x86-64|S/390|PowerPC)' && LIB=lib64
+
+BROWSER_PLUGIN_DIR=/usr/$LIB/browser-plugins
+if [ ! -d $BROWSER_PLUGIN_DIR ]; then
+  BROWSER_PLUGIN_DIR=/opt/netscape/plugins
+fi
+
+MOZILLA_FIVE_HOME="$MOZ_DIST_LIB"
+export MOZILLA_FIVE_HOME
+LD_LIBRARY_PATH=$MOZ_DIST_LIB${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH
+
+# needed for SUN Java under Xorg >= 7.2
+export LIBXCB_ALLOW_SLOPPY_LOCK=1
+
+# disable Gnome crash dialog (doesn't make sense anyway)
+export GNOME_DISABLE_CRASH_DIALOG=1
+
+# Wayland
+# Only supported on newer systems
+WAYLAND_SUPPORTED=%WAYLAND_SUPPORTED
+
+# $XDG_SESSION_TYPE should contain either x11 or wayland
+if [ $WAYLAND_SUPPORTED -eq 1 ] && [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  export MOZ_ENABLE_WAYLAND=1
+fi
+
+##
+if [ -z "$MOZ_PLUGIN_PATH" ]; then
+  export MOZ_PLUGIN_PATH=$BROWSER_PLUGIN_DIR
+else
+  # make sure that BROWSER_PLUGIN_DIR is in MOZ_PLUGIN_PATH
+  echo "$MOZ_PLUGIN_PATH" | grep "$BROWSER_PLUGIN_DIR" 2>&1 >/dev/null
+  _retval=$?
+  if [ ${_retval} -ne 0 ]; then
+    export MOZ_PLUGIN_PATH=$MOZ_PLUGIN_PATH:$BROWSER_PLUGIN_DIR
+  fi
+fi
+
+moz_debug=0
+script_args=""
+pass_arg_count=0
+while [ $# -gt $pass_arg_count ]
+do
+  case "$1" in
+    -d | --debugger)
+      moz_debugger=$2;
+      if [ "${moz_debugger}" != "" ]; then
+        shift 2
+        moz_debug=1
+      else
+        echo "-d requires an argument"
+        exit 1
+      fi
+      ;;
+    *)
+      # Move the unrecognized argument to the end of the list.
+      arg="$1"
+      shift
+      set -- "$@" "$arg"
+      pass_arg_count=`expr $pass_arg_count + 1`
+      ;;
+  esac
+done
+
+if [ $moz_debug -eq 1 ]; then
+  tmpfile=`mktemp /tmp/mozargs.XXXXXX` || { echo "Cannot create temporary file" >&2; exit 1; }
+  trap " [ -f \"$tmpfile\" ] && /bin/rm -f -- \"$tmpfile\"" 0 1 2 3 13 15
+  echo "set args ${1+"$@"}" > $tmpfile
+  echo "run" >> $tmpfile
+  echo "$moz_debugger $MOZ_PROGRAM -x $tmpfile"
+  exec $moz_debugger "$MOZ_PROGRAM" -x $tmpfile
+else
+  exec $MOZ_PROGRAM "$@"
+fi

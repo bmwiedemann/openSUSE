@@ -1,0 +1,10 @@
+PRODUCT="thunderbird"
+CHANNEL="esr78"
+VERSION="78.8.0"
+VERSION_SUFFIX=""
+PREV_VERSION="78.7.1"
+PREV_VERSION_SUFFIX=""
+#SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
+RELEASE_REPO="https://hg.mozilla.org/releases/comm-esr78"
+RELEASE_TAG="d801a94f25867ca5f2f3488c4700532351987999"
+RELEASE_TIMESTAMP="20210217204255"

@@ -1,0 +1,46 @@
+# HG changeset patch
+# User Mike Hommey <mh+mozilla@glandium.org>
+# Date 1526871862 -32400
+#      Mon May 21 12:04:22 2018 +0900
+# Node ID 74a0c200d7f748a3fe46bb22a38625b074da8e26
+# Parent  0bf4a038a7129aa6bfd7bb27e7455ab649344ac5
+Bug 1463035 - Remove MOZ_SIGNAL_TRAMPOLINE. r?darchons
+
+For some reason, GNU as is not happy with the assembly generated after
+bug 1238661 anymore on Debian armel.
+
+OTOH, as mentioned in bug 1238661 comment 4, we actually don't need this
+workaround anymore, so let's just kill it.
+
+diff -r 0bf4a038a712 -r 74a0c200d7f7 mozglue/baseprofiler/core/platform-linux-android.cpp
+--- a/mozglue/baseprofiler/core/platform-linux-android.cpp	Tue May 21 14:49:58 2019 +0200
++++ b/mozglue/baseprofiler/core/platform-linux-android.cpp	Mon May 21 12:04:22 2018 +0900
+@@ -60,7 +60,6 @@
+ #include <stdarg.h>
+ 
+ #include "prenv.h"
+-#include "mozilla/LinuxSignal.h"
+ #include "mozilla/PodOperations.h"
+ #include "mozilla/DebugOnly.h"
+ 
+@@ -271,7 +270,7 @@
+ 
+   // Request profiling signals.
+   struct sigaction sa;
+-  sa.sa_sigaction = MOZ_SIGNAL_TRAMPOLINE(SigprofHandler);
++  sa.sa_sigaction = SigprofHandler;
+   sigemptyset(&sa.sa_mask);
+   sa.sa_flags = SA_RESTART | SA_SIGINFO;
+   if (sigaction(SIGPROF, &sa, &mOldSigprofHandler) != 0) {
+diff -r 0bf4a038a712 -r 74a0c200d7f7 tools/profiler/core/platform-linux-android.cpp
+--- a/tools/profiler/core/platform-linux-android.cpp	Tue May 21 14:49:58 2019 +0200
++++ b/tools/profiler/core/platform-linux-android.cpp	Mon May 21 12:04:22 2018 +0900
+@@ -263,7 +263,7 @@
+ 
+   // Request profiling signals.
+   struct sigaction sa;
+-  sa.sa_sigaction = MOZ_SIGNAL_TRAMPOLINE(SigprofHandler);
++  sa.sa_sigaction = SigprofHandler;
+   sigemptyset(&sa.sa_mask);
+   sa.sa_flags = SA_RESTART | SA_SIGINFO;
+   if (sigaction(SIGPROF, &sa, &mOldSigprofHandler) != 0) {
