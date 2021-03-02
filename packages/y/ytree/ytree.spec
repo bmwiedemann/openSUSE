@@ -1,7 +1,7 @@
 #
 # spec file for package ytree
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ytree
-Version:        2.02
+Version:        2.03
 Release:        0
 Summary:        A filemanager similar to XTree
 License:        GPL-2.0-only

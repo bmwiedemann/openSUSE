@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,10 +41,8 @@ BuildRequires:  python3-CairoSVG
 Requires:       python-lxml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
-%ifpython3
 Recommends:     python-CairoSVG
-%endif
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
@@ -72,7 +70,7 @@ mv %{buildroot}%{_bindir}/pygal_gen.py %{buildroot}%{_bindir}/pygal_gen
 %python_clone -a %{buildroot}%{_bindir}/pygal_gen
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative pygal_gen

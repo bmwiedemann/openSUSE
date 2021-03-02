@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 22 01:50:38 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.24
+
+- Upstream update to 1.5.24
+  * Add GTK4 IM module (currently disabled for openSUSE)
+  * Search engine name directly
+  * Update IBusInputPurpose and IBusInputHints in ibustypes.h
+  * Warn deprecated IBus XKB engines /w dialog
+    - Workaround for boo#1177545
+  * Update simple.xml
+  * Fix arguments in GLib.DBusSignalCallback for Vala 0.50
+  * Fix to build emoji-*.dict in CLDR 38
+  * Fix build environments
+  * Hide IBus Preferences from AppStream
+- Drop vala-0.50.patch, merged by upstream
+- Remove old "Obsoletes" for ibus-gnome-shell and libibus-1_0-0
+
+-------------------------------------------------------------------
 Mon Feb  8 14:37:27 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Fix the invalid desktop file for auto start (boo#1178447)

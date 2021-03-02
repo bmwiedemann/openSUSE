@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycups
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%global skip_python2 1
 Name:           python-pycups
-Version:        1.9.74
+Version:        2.0.1
 Release:        0
 Summary:        Python Bindings for CUPS
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            http://cyberelk.net/tim/software/pycups/
-Source:         https://files.pythonhosted.org/packages/source/p/pycups/pycups-%{version}.tar.bz2
+Source:         https://files.pythonhosted.org/packages/source/p/pycups/pycups-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -33,10 +33,6 @@ BuildRequires:  python-rpm-macros
 # need to avoid cycle as cups-devel wants us (boo#1172407)
 #!BuildIgnore: cups-rpm-helper
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%ifpython2
-Obsoletes:      %{oldpython}-cups < %{version}
-Provides:       %{oldpython}-cups = %{version}
-%endif
 Obsoletes:      python-cups < %{version}
 Provides:       python-cups = %{version}
 %python_subpackages

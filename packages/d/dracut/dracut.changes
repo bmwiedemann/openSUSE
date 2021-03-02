@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 23 15:26:36 UTC 2021 - daniel.molkentin@suse.com
+
+- Update to version 053+suse.90.gb89b6347:
+  Highlights: https://github.com/dracutdevs/dracut/releases/tag/053
+  dracut.sh:
+    unfreeze /boot on exit (d87ae137)
+    proper return code for inst_multiple in dracut-init.sh (d437970c)
+  fcoe:
+    rename rd.nofcoe to rd.fcoe (6f7823bc)
+    rd.nofcoe=0 should disable fcoe (805b46c2)
+  i18n:
+    get rid of eval calls (5387ed24), backported for 052 downstream
+    create the keyboard symlinks again (9e1c7f3d), backported for 052 downstream
+  network-manager:
+    run as a service if systemd module is present (c17c5b76)
+    rework how NM is started in debug mode (34c73b33)
+    drm: skip empty modalias files in drm module setup (c3f24184)
+
+-------------------------------------------------------------------
 Wed Feb 17 15:59:02 UTC 2021 - daniel.molkentin@suse.com
 
 - Update to version 052+suse.93.g7bfaa6d9:
@@ -14,11 +33,12 @@ Wed Feb 17 14:29:54 UTC 2021 - daniel.molkentin@suse.com
 Wed Feb 17 13:33:22 UTC 2021 - daniel.molkentin@suse.com
 
 - Update to version 052+suse.88.gc78b4ac8:
+  Highlights: https://github.com/dracutdevs/dracut/releases/tag/052
   * fix(i18n): get rid of `eval` calls
   * fix(i18n): create the keyboard symlinks again
   * docs: update NEWS.md and AUTHORS
   * chore: add `CONTRIBUTORS` target to Makefile
-  * fix: shellcheck across multipl emodules
+  * fix: shellcheck across multiple modules
   * docs: fix dracut.cmdline.7
   * fix: update dbus module directory in spec file
   * fix: add sdaskpw and sdsyctl to spec file

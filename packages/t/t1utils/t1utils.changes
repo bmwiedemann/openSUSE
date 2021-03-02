@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 21 05:44:27 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Update to 1.42 to fix t1asm seg fault in lilypond's Factory build
+  See: boo#1182596 and
+  https://github.com/kohler/lcdf-typetools/issues/8
+
+-------------------------------------------------------------------
 Mon Aug 24 18:18:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.41:

@@ -585,4 +585,14 @@ Please add to Staging:E (which has the openCV 4.1.0 SR)
     <comment></comment>
     <requestid>815966</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>08770785789e193402827905ae3c672e</srcmd5>
+    <version>3.4.10</version>
+    <time>1614692504</time>
+    <user>RBrownSUSE</user>
+    <comment>- Use the python2/python3 macros only when the corresponding 
+  binaries are installed, needed by new python-rpm-macros
+</comment>
+    <requestid>874425</requestid>
+  </revision>
 </revisionlist>

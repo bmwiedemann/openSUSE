@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 10:40:53 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Revert last commit and fix bug boo#1181402 with a proper patch:
+  * fix-aliasing-aarch64.patch
+
+-------------------------------------------------------------------
 Thu Jan 28 22:41:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - build with -fno-strict-aliasing on aarch64 to workaround (bsc#1181402)

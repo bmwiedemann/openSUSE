@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  2 07:42:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.3
+  New Drivers
+  * Add Ericcson IPOS Support
+  * Adtran Telnet Support
+  Performance Improvements
+  * Juniper Performance Improvements
+  * Cisco ASA Performance Improvements
+  Bugs and Enhancements
+  * Improve Authentication Exception Handling
+  * FIX Cryptography Lib Change Issue
+
+-------------------------------------------------------------------
 Thu Oct  1 17:50:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.2

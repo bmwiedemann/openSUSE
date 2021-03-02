@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 22 20:20:43 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- systemd requires aaa_base >= 13.2
+
+  This dependency is required because 'systemctl
+  {is-enabled,enable,disable} <initscript>" ends up calling
+  systemd-sysv-install which in its turn calls "chkconfig
+  --no-systemctl".
+
+  aaa_base package has a weird versioning but the '--no-systemctl'
+  option has been introduced starting from SLE12-SP2-GA, which shipped
+  version "13.2+git20140911.61c1681".
+
+  Spotted in bsc#1180083.
+
+-------------------------------------------------------------------
 Fri Feb 19 13:34:01 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Add 0001-conf-parser-introduce-early-drop-ins.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package sc-controller
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sc-controller
-Version:        0.4.8.1.20201002
+Version:        0.4.8.2.20210225
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
 Requires:       python3-evdev
 Requires:       python3-gobject-Gdk
+Requires:       python3-pycairo
 Requires:       python3-pylibacl
 Requires:       python3-setuptools
 

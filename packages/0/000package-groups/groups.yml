@@ -321,7 +321,7 @@ dvd:
   - icewm-config-upstream
   - icewm-lite
   - lifecycle-data-openSUSE
-  - mokutil: [x86_64]
+  - mokutil: [x86_64,aarch64]
   - openafs-client
   - pcsc-acr38
   - pcsc-asedriveiiie-usb

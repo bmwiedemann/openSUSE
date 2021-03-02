@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 09:44:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.17
+  * New (sub-)tool: `libinput analyze recording`
+  * Support for tap-and-drag with two and three fingers
+  * Wacom's AES tablets no longer have smoothing enabled
+
+-------------------------------------------------------------------
 Thu Jan 14 08:29:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Limit the dep libinput-debug-gui -> libinput-tools only to

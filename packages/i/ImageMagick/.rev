@@ -2971,4 +2971,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - build against libraw [bsc#1182229]</comment>
     <requestid>872768</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>c19da466e933b9e608cdfca7bfab702e</srcmd5>
+    <version>7.0.11.1</version>
+    <time>1614692524</time>
+    <user>RBrownSUSE</user>
+    <comment>- version update to 7.0.11.1
+  * bump minor version #
+  * allow reading multichannel PSD files with 1 or 2 channels.
+  * respect masks when computing SSIM metric (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/3212).</comment>
+    <requestid>874504</requestid>
+  </revision>
 </revisionlist>

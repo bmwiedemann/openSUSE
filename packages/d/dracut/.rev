@@ -1890,4 +1890,29 @@ helpful, but it's already better without the pollution of duplicate entries
 and stuff that has no relevance to the end user (i.e CI related commits) (forwarded request 873336 from dimstar)</comment>
     <requestid>873425</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>e6dc0e36d6ee863b359e4bb384fc5eb2</srcmd5>
+    <version>053+suse.90.gb89b6347</version>
+    <time>1614692576</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 053+suse.90.gb89b6347:
+  Highlights: https://github.com/dracutdevs/dracut/releases/tag/053
+  dracut.sh:
+    unfreeze /boot on exit (d87ae137)
+    proper return code for inst_multiple in dracut-init.sh (d437970c)
+  fcoe:
+    rename rd.nofcoe to rd.fcoe (6f7823bc)
+    rd.nofcoe=0 should disable fcoe (805b46c2)
+  i18n:
+    get rid of eval calls (5387ed24), backported for 052 downstream
+    create the keyboard symlinks again (9e1c7f3d), backported for 052 downstream
+  network-manager:
+    run as a service if systemd module is present (c17c5b76)
+    rework how NM is started in debug mode (34c73b33)
+    drm: skip empty modalias files in drm module setup (c3f24184)
+
+  Highlights: https://github.com/dracutdevs/dracut/releases/tag/052
+  * fix: shellcheck across multiple modules</comment>
+    <requestid>874632</requestid>
+  </revision>
 </revisionlist>

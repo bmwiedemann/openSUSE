@@ -48,6 +48,9 @@ Source12:       nginx-munin.zip
 Source13:       gsa-munin.zip
 Source14:       munin-cron.timer
 Source15:       munin-cron.service
+Source16:       http://downloads.munin-monitoring.org/%{name}/stable/%{version}/%{name}-%{version}.tar.gz.asc
+# 0x910846ADEE4C5D67C19B3E6F0A24C05998BA4133
+Source17:       munin.keyring
 Patch1:         perl526.patch
 BuildRequires:  firewall-macros
 BuildRequires:  html2text

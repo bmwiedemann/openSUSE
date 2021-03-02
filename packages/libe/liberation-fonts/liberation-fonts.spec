@@ -1,7 +1,7 @@
 #
 # spec file for package liberation-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           liberation-fonts
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Liberation Fonts
 License:        SUSE-Liberation
 Group:          System/X11/Fonts
 URL:            https://fedorahosted.org/liberation-fonts/
-Source:         https://github.com/liberationfonts/liberation-fonts/files/5722233/liberation-fonts-ttf-2.1.2.tar.gz
+Source:         https://github.com/liberationfonts/liberation-fonts/files/6026893/liberation-fonts-ttf-2.1.3.tar.gz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  fontpackages-devel
 Provides:       locale(bg;el;ru;bg)
@@ -36,7 +36,7 @@ Free fonts which are metric compatible to "Arial", "Times New Roman"
 and "Courier New".
 
 %prep
-%setup -q -n %{name}-ttf-%{version}
+%autosetup -n %{name}-ttf-%{version}
 
 %build
 

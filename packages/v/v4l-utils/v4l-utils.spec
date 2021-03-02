@@ -1,7 +1,7 @@
 #
 # spec file for package v4l
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -187,6 +187,7 @@ qv4l2 is a test control and streaming test application for video4linux.
 %patch2 -p1
 
 %build
+export CXXFLAGS="-std=c++14 %{optflags}"
 autoreconf -vfi
 %configure \
   --disable-static \
@@ -199,6 +200,7 @@ autoreconf -vfi
   --with-udevdir=%{_udevdir}
 
 %if "%{flavor}" == "qv4l2"
+export CXXFLAGS="-std=c++14 %{optflags}"
 %make_build -C utils/libmedia_dev
 %make_build -C utils/libv4l2util
 %make_build -C utils/qv4l2
@@ -241,7 +243,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_sysconfdir}/rc_keymaps/
 %config(noreplace) %{_sysconfdir}/rc_maps.cfg
 %{_udevdir}/rc_keymaps
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200 && 0%{?is_opensuse}
 %dir %{_unitdir}/systemd-udevd.service.d
 %{_unitdir}/systemd-udevd.service.d/50-rc_keymap.conf
 %endif

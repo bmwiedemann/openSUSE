@@ -1,7 +1,7 @@
 #
 # spec file for package opencv3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,8 +219,12 @@ rm -f doc/packaging.txt
       -DPYTHON_DEFAULT_EXECUTABLE=%{_bindir}/python3 \
 %endif
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
+%if %{with python2}
       -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
+%endif
+%if %{with python3}
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
+%endif
       -DWITH_JASPER=OFF \
 
 make %{?_smp_mflags} VERBOSE=1

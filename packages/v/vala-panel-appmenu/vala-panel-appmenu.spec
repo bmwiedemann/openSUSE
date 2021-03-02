@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.44
+BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbamf3) >= 0.5.0
@@ -291,8 +292,9 @@ rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 
 %files -n appmenu-registrar
 %defattr(-,root,root)
-%dir %{_libexecdir}/vala-panel
-%{_libexecdir}/vala-panel/appmenu-registrar
+%dir %{_prefix}/libexec
+%dir %{_prefix}/libexec/vala-panel
+%{_prefix}/libexec/vala-panel/appmenu-registrar
 %{_datadir}/dbus-1/services/com.canonical.AppMenu.Registrar.service
 
 %files -n xfce4-panel-plugin-appmenu

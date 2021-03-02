@@ -957,4 +957,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>870310</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>1a223b8935fc8496a27de5d931dd4aa1</srcmd5>
+    <version>1.5.24</version>
+    <time>1614692514</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874459</requestid>
+  </revision>
 </revisionlist>

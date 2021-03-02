@@ -25,7 +25,7 @@
 %endif
 
 Name:           ibus
-Version:        1.5.23
+Version:        1.5.24
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -59,8 +59,6 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
-# PATCH-FIX-UPSTREAM Fix build with vala 0.50 - gh#ibus/ibus#2265
-Patch13:        vala-0.50.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -99,7 +97,6 @@ Requires:       python3-gobject-Gdk
 # versions to 3.0 only.
 Requires:       typelib-1_0-Gtk-3_0
 Provides:       locale(ja;ko;zh)
-Obsoletes:      ibus-gnome-shell
 %if %{with_wayland}
 BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
 %endif
@@ -117,7 +114,6 @@ the text cursor.
 %package -n libibus-1_0-5
 Summary:        IBus libraries
 Group:          System/Libraries
-Obsoletes:      libibus-1_0-0
 
 %description -n libibus-1_0-5
 This package contains the libraries for IBus
@@ -197,7 +193,6 @@ cp -r %{SOURCE11} .
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
-%patch13 -p1
 
 %build
 autoreconf -fi

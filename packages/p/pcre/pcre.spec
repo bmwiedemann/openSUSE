@@ -158,9 +158,10 @@ as Perl 5.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # Available JIT archs see sljit/sljitConfig.h
+%global jit_archs %{ix86} x86_64 %{arm} aarch64 ppc ppc64 ppc64le mips sparc
 autoreconf -fiv
 %configure \
-%ifarch %{ix86} x86_64 %{arm} aarch64 ppc ppc64 ppc64le mips sparc
+%ifarch %{jit_archs}
   --enable-jit \
 %endif
   --enable-static \
@@ -194,7 +195,9 @@ mkdir -p %{testsuitedir}
 cp Makefile %{testsuitedir}
 cp -r testdata %{testsuitedir}
 cp .libs/pcrecpp_unittest %{testsuitedir}
+%ifarch %{jit_archs}
 cp .libs/pcre_jit_test %{testsuitedir}
+%endif
 cp .libs/pcre_scanner_unittest %{testsuitedir}
 cp .libs/pcre_stringpiece_unittest %{testsuitedir}
 cp .libs/pcregrep %{testsuitedir}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  2 08:04:41 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- libjpeg24.diff added to fix build error with openjpeg 2.4 
+
+-------------------------------------------------------------------
 Fri Jan 15 00:41:52 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Use %cmake_build rather then %make_jobs

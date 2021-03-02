@@ -446,7 +446,7 @@ test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 
 %files -n system-user-ntp
 %defattr(-,root,root)
-%dir %attr(0750,ntp,ntp) %{_localstatedir}/lib/ntp
+%dir %attr(0755,root,root) %{_localstatedir}/lib/ntp
 %{_sysusersdir}/system-user-ntp.conf
 
 %changelog

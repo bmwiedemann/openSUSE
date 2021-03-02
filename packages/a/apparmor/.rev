@@ -2101,4 +2101,12 @@ libapparmor:
     <comment>- merge libapparmor.changes into apparmor.changes (forwarded request 871276 from cboltz)</comment>
     <requestid>871277</requestid>
   </revision>
+  <revision rev="150" vrev="5">
+    <srcmd5>6fde087d0338474b75db884fbeb00672</srcmd5>
+    <version>3.0.1</version>
+    <time>1614692501</time>
+    <user>RBrownSUSE</user>
+    <comment>- avoid file listed twice error (forwarded request 874370 from lnussel)</comment>
+    <requestid>874417</requestid>
+  </revision>
 </revisionlist>

@@ -54,14 +54,5 @@ export RPM_OPT_FLAGS
 %doc %{_defaultdocdir}/%{name}
 %{_bindir}/*
 %{_mandir}/*/*.1%{?ext_man}
-%doc %lang(de) %dir %{_mandir}/de
-%doc %lang(es) %dir %{_mandir}/es
-%doc %lang(fr) %dir %{_mandir}/fr
-%doc %lang(nl) %dir %{_mandir}/nl
-%doc %lang(pl) %dir %{_mandir}/pl
-%doc %lang(pt_BR) %dir %{_mandir}/pt_BR
-%doc %lang(sv) %dir %{_mandir}/sv
-%doc %lang(uk) %dir %{_mandir}/uk
-%doc %lang(zh_CN) %dir %{_mandir}/zh_CN
 
 %changelog

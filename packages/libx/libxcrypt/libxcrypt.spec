@@ -1,7 +1,7 @@
 #
 # spec file for package libxcrypt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           libxcrypt
-Version:        4.4.17
+Version:        4.4.18
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
-License:        GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/besser82/%{name}
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -40,7 +40,7 @@ Openwall Linux, 'crypt_rn', 'crypt_ra', 'crypt_gensalt',
 
 %package -n libcrypt1
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
-License:        LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-2-Clause AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Libraries
 # Compatibility provides to help the transition from libowcrypt.so.1
 # to libcrypt.so.1, which provides all symbols of the former
@@ -63,7 +63,7 @@ Openwall Linux, 'crypt_rn', 'crypt_ra', 'crypt_gensalt',
 
 %package devel
 Summary:        Development files for %{name}
-License:        LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-2-Clause AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 Requires:       libcrypt1 = %{version}
 Requires:       pkgconfig
@@ -76,7 +76,7 @@ developing applications that use %{name}.
 
 %package devel-static
 Summary:        Static library for -static linking with %{name}
-License:        GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       glibc-devel-static
@@ -87,7 +87,6 @@ Conflicts:      glibc-devel-static < 2.28
 This package contains the libxcrypt static libraries for -static
 linking.  You don't need this, unless you link statically, which
 is highly discouraged.
-
 
 %prep
 %autosetup -p 1

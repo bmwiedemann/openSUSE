@@ -77,4 +77,13 @@
   * Salt string compatibility with generic implementations (forwarded request 831254 from Andreas_Schwab)</comment>
     <requestid>831255</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>44804741228a2ba926823f3edbd2f872</srcmd5>
+    <version>4.4.18</version>
+    <time>1614692494</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.4.18
+  * Fix conversion error in lib/alg-gost3411-core.c (forwarded request 874286 from Andreas_Schwab)</comment>
+    <requestid>874287</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 23 11:47:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Fixed several heap overflow bugs in the `ReadData` functions of
+    various data type classes. This fixes CVE-2021-3405. 
+
+-------------------------------------------------------------------
 Tue Jan  5 09:53:07 UTC 2021 - aloisio@gmx.com
 
 - Update to version 1.4.1

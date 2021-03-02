@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 23 16:19:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch testing to pytest, it is just more convenient to debug.
+- Add tests_overcome_bpo42967.patch to overcome changes in Python
+  interpreter after fixing bpo#42967 (gh#gruns/furl#135).
+
+-------------------------------------------------------------------
 Thu Mar  5 12:33:35 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.1.0

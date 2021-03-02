@@ -4,5 +4,5 @@
 GTK+ widget set.  Just about anything you can write in C with GTK+ you
 can write in python with PyGTK (within reason), but with all of
 python's benefits.</description>
-  <devel project="devel:languages:python" package="python-gtk"/>
+  <devel project="GNOME:Factory" package="python-gtk"/>
 </package>

@@ -40,6 +40,9 @@ Patch8:         no-test_successResultOfWithFailureHasTraceback.patch
 Patch9:         twisted-pr1369-remove-pyopenssl-npn.patch
 # PATCH-FIX-UPSTRAM gh#twisted/twisted#1487 https://twistedmatrix.com/trac/ticket/10061
 Patch10:        twisted-pr1487-increase-ffdh-keysize.patch
+# PATCH-FIX-UPSTREAM 1521_delegate_parseqs_stdlib_bpo42967.patch https://twistedmatrix.com/trac/ticket/10096 mcepl@suse.com
+# overcome incompatibility with the solution for bpo#42967.
+Patch0:         1521_delegate_parseqs_stdlib_bpo42967.patch
 BuildRequires:  %{python_module Automat >= 0.3.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
@@ -81,7 +84,7 @@ Requires:       python-pyserial >= 3.0
 Requires:       python-service_identity >= 18.1.0
 Requires:       python-zope.interface >= 4.4.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -99,8 +102,7 @@ on event-based network programming and multiprotocol integration.
 This package contains the documentation for python-Twisted
 
 %prep
-%setup -q -n %{modname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build
@@ -142,7 +144,7 @@ export OPENSSL_CONF=''
 for f in cftp ckeygen conch pyhtmlizer tkconch trial twist; do
   (update-alternatives --quiet --list $f 2>&1 >/dev/null) && update-alternatives --remove-all $f
 done
-%{python_install_alternative twistd cftp ckeygen conch pyhtmlizer tkconch trial twist 
+%{python_install_alternative twistd cftp ckeygen conch pyhtmlizer tkconch trial twist
                              twistd.1 cftp.1 ckeygen.1 conch.1 pyhtmlizer.1 tkconch.1 trial.1}
 
 %postun

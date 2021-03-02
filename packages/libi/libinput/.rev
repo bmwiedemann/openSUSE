@@ -842,4 +842,12 @@ Peter Hutterer (3):
     <comment></comment>
     <requestid>863070</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>5ad1078bce08651a3c4039c584536aa5</srcmd5>
+    <version>1.17.0</version>
+    <time>1614692554</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 1.17</comment>
+    <requestid>874555</requestid>
+  </revision>
 </revisionlist>

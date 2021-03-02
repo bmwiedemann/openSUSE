@@ -1,5 +1,5 @@
 #
-# spec file for package python38
+# spec file for package python38-core
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -87,7 +87,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.7
+Version:        3.8.8
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -149,14 +149,8 @@ Patch28:        bpo36302-sort-module-sources.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
 Patch29:        bpo-31046_ensurepip_honours_prefix.patch
-# PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
-# Fix wrong misalignment of pointer to vectorcallfunc
-Patch31:        bsc1167501-invalid-alignment.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch32:        sphinx-update-removed-function.patch
-# PATCH-FIX-UPSTREAM CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch bsc#1181126 mcepl@suse.com
-# buffer overflow in PyCArg_repr in _ctypes/callproc.c, which may lead to remote code execution
-Patch33:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -402,7 +396,6 @@ other applications.
 %patch07 -p1
 %patch08 -p1
 %patch09 -p1
-# %%patch12 -p1
 %patch15 -p1
 %ifarch ppc ppc64 ppc64le
 %patch23 -p1
@@ -412,9 +405,7 @@ other applications.
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
-%patch31 -p1
 %patch32 -p1
-%patch33 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

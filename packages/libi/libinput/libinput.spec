@@ -17,16 +17,14 @@
 
 
 %global flavor @BUILD_FLAVOR@%nil
-
 %if "%flavor" == ""
-Name:           libinput
 %bcond_without  completion
 %bcond_with     documentation
 %bcond_with     debug_gui
 %endif
 
 %if "%flavor" == "extra"
-Name:           libinput-extra
+%define xsuffix -extra
 %bcond_with     completion
 # no python3-recommonmark
 %bcond_with     documentation
@@ -38,7 +36,8 @@ Name:           libinput-extra
 
 %define lname	libinput10
 %define pname	libinput
-Version:        1.16.4
+Name:           libinput%{?xsuffix}
+Version:        1.17.0
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT

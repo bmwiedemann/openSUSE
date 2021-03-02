@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 10:41:24 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.18
+  * Fix conversion error in lib/alg-gost3411-core.c
+
+-------------------------------------------------------------------
 Tue Sep  1 14:47:37 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Add compatibility provides for SLE15

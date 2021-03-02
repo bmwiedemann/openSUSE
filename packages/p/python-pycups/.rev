@@ -39,4 +39,20 @@
     <comment></comment>
     <requestid>849838</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ab6b578b2c1f263205d8c9a440ea31b</srcmd5>
+    <version>2.0.1</version>
+    <time>1614692564</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.0.1:
+  * pypi required .tar.gz
+  * cups.require couldn't handle version bigger than 1
+  * dropped macros for older CUPS &lt; 2.0.0
+  * dropped Python 2 support and its related macros
+  * update license headers
+  * thread did not hold GIL when called Py_XDECREF() from destroy_TLS(), causing SIGSEGV(Fedora bug #1816107)
+  * fixed several compiler warnings
+  * fix silent error on Connection.printFiles() (patch by Wilbert Berendsen)</comment>
+    <requestid>874580</requestid>
+  </revision>
 </revisionlist>

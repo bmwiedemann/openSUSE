@@ -19,13 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.3.22
+Version:        1.3.23
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
 URL:            https://www.sqlalchemy.org
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLAlchemy-%{version}.tar.gz
 Source1:        SQLAlchemy.keyring
+# PATCH-FIX-UPSTREAM tests_overcome_bpo42967.patch gh#sqlalchemy/sqlalchemy#5969 mcepl@suse.com
+# over effects of bpo#42967, which forbade mixing amps and
+# semicolons in query strings as separators.
+Patch0:         tests_overcome_bpo42967.patch
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -65,7 +69,7 @@ This package contains HTML documentation, including tutorials and API
 reference for python-SQLAlchemy.
 
 %prep
-%setup -q -n SQLAlchemy-%{version}
+%autosetup -p1 -n SQLAlchemy-%{version}
 
 rm -rf doc/build # Remove unnecessary scripts for building documentation
 sed -i 's/\r$//' examples/dynamic_dict/dynamic_dict.py

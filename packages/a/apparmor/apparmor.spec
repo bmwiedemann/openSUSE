@@ -505,9 +505,6 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %license parser/COPYING.GPL
 %doc parser/README
 %{sbindir}/apparmor_parser
-%if !0%{?usrmerged}
-/sbin/apparmor_parser
-%endif
 %{_bindir}/aa-enabled
 %{_bindir}/aa-exec
 %{_bindir}/aa-features-abi

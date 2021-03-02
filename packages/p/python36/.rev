@@ -2936,4 +2936,12 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>867797</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8c02d03317bda02f36f517f1d307d090</srcmd5>
+    <version>3.6.13</version>
+    <time>1614692590</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874684</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Search-Elasticsearch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
+%define cpan_name Search-Elasticsearch
 Name:           perl-Search-Elasticsearch
-Version:        7.30
+Version:        7.711001
 Release:        0
 #Upstream:  This is free software, licensed under: The Apache License, Version 2.0, January 2004
-%define cpan_name Search-Elasticsearch
 Summary:        The official client for Elasticsearch
 License:        Apache-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/EZ/EZIMUEL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Any::URI::Escape)
@@ -93,11 +91,11 @@ powerful open source, distributed real-time search and analytics engine for
 the cloud. You can read more about it on at http://www.elastic.co.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -108,7 +106,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

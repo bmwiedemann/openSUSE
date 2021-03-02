@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  1 17:27:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with glibc >= 2.32:
+  * 0001-Replace-sys_siglist-with-strsignal.patch
+- Drop obsolete conditions
+
+-------------------------------------------------------------------
 Mon Aug 17 16:42:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - skip group verify on v4l-conf

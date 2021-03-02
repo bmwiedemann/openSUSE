@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 20:46:12 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Copy pcre_jit_test only if jit is enabled
+
+-------------------------------------------------------------------
 Mon Feb 15 15:20:24 UTC 2021 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - package testsuite in a separate RPM (boo#1182235)

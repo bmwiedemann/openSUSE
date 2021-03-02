@@ -427,4 +427,12 @@
     <comment>- build with -fno-strict-aliasing on aarch64 to workaround (bsc#1181402)</comment>
     <requestid>867587</requestid>
   </revision>
+  <revision rev="48" vrev="12">
+    <srcmd5>c960e129a3a818a722481c9b26554244</srcmd5>
+    <version>1.99.8</version>
+    <time>1614692512</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874435</requestid>
+  </revision>
 </revisionlist>

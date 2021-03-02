@@ -223,4 +223,12 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
     <comment>Try again</comment>
     <requestid>871210</requestid>
   </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>d445aa8f79cfc53b2965559d69e5795d</srcmd5>
+    <version>20170617</version>
+    <time>1614692496</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874356</requestid>
+  </revision>
 </revisionlist>

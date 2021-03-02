@@ -1,7 +1,7 @@
 #
 # spec file for package XyGrib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 Dr. Axel Braun
 # Copyright (c) 2018 Dominig ar Foll (Intel Open Source)
 #
@@ -29,6 +29,7 @@ Source0:        https://github.com/opengribs/%{name}/archive/v%{version}.tar.gz#
 Source1:        %{name}.png
 Source2:        %{name}.desktop
 Patch0:         QPainter.patch 
+Patch1:         libjpeg24.diff
 BuildRequires:  cmake
 BuildRequires:  libnova-devel
 BuildRequires:  libpng-devel
@@ -62,6 +63,7 @@ found on OpenSkiron.org.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 cp %{S:1} %{S:2} .
 
 %build

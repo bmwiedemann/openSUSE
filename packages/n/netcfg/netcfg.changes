@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 18 07:40:58 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- services-create.pl: Switch to https (bsc#1182395)
+
+-------------------------------------------------------------------
 Mon May 18 07:58:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Create /etc/exports.d directory (boo#1094328)

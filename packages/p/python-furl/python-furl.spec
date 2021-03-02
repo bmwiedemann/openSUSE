@@ -1,7 +1,7 @@
 #
 # spec file for package python-furl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,10 @@ License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/gruns/furl
 Source:         https://files.pythonhosted.org/packages/source/f/furl/furl-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tests_overcome_bpo42967.patch gh#gruns/furl#135 mcepl@suse.com
+# With fix for bpo#42967, it is not possible to separate
+# parameters of URL query with semicolon
+Patch0:         tests_overcome_bpo42967.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,6 +38,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module orderedmultidict >= 1.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.8.0}
 # /SECTION
 %python_subpackages
@@ -42,8 +47,9 @@ BuildRequires:  %{python_module six >= 1.8.0}
 furl is a Python library for parsing and manipulating URLs.
 
 %prep
-%setup -q -n furl-%{version}
-chmod -x README.md
+%autosetup -p1 -n furl-%{version}
+
+chmod -x *.md
 
 %build
 %python_build
@@ -53,7 +59,7 @@ chmod -x README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest -vv
 
 %files %{python_files}
 %doc README.md

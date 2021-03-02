@@ -635,4 +635,12 @@
  * Several internal code generation issues regarding temporary variables were resolved</comment>
     <requestid>819616</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>149133efe2308153f5a0b82c022e7816</srcmd5>
+    <version>0.29.22</version>
+    <time>1614692551</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874544</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  2 07:48:31 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- use apache-rpm-macros
+
+-------------------------------------------------------------------
 Tue May 26 08:52:08 UTC 2015 - dgutu@suse.com
 
 - Changed xsp dependency version because it was bogus

@@ -1,7 +1,7 @@
 #
 # spec file for package xawtv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source1:        xawtv.desktop
 Source2:        motv.desktop
 # PATCH-FIX-OPENSUSE v4l-conf_non-position-independent-executable_fix.patch asterios.dramis@gmail.com -- Fix non-position-independent-executable rpmlint warning for v4l-conf
 Patch0:         v4l-conf_non-position-independent-executable_fix.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Replace-sys_siglist-with-strsignal.patch
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel
 BuildRequires:  gcc-c++
@@ -65,11 +67,7 @@ Requires:       v4l-conf
 Recommends:     pia
 Suggests:       lirc
 Conflicts:      xaw3dd
-%if 0%{?suse_version} > 1210
-BuildRequires:  desktop-file-utils
-%else
 BuildRequires:  update-desktop-files
-%endif
 
 %description
 xawtv is an X11 application for watching TV with your Linux box. It supports
@@ -147,6 +145,7 @@ as well.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -160,13 +159,8 @@ mkdir -p %{buildroot}%{_datadir}/pixmaps
 install -pm 0644 contrib/xawtv48x48.xpm  %{buildroot}%{_datadir}/pixmaps/xawtv.xpm
 install -pm 0644 contrib/xawtv48x48.xpm  %{buildroot}%{_datadir}/pixmaps/motv.xpm
 
-%if 0%{?suse_version} > 1210
-desktop-file-install %{SOURCE1}
-desktop-file-install %{SOURCE2}
-%else
 %suse_update_desktop_file -i xawtv
 %suse_update_desktop_file -i motv
-%endif
 
 %verifyscript -n v4l-conf
 %verify_permissions -e %{_bindir}/v4l-conf

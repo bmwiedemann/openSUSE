@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 23 11:54:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * pypi required .tar.gz
+  * cups.require couldn't handle version bigger than 1
+  * dropped macros for older CUPS < 2.0.0
+  * dropped Python 2 support and its related macros
+  * update license headers
+  * thread did not hold GIL when called Py_XDECREF() from destroy_TLS(), causing SIGSEGV(Fedora bug #1816107)
+  * fixed several compiler warnings
+  * fix silent error on Connection.printFiles() (patch by Wilbert Berendsen)
+
+-------------------------------------------------------------------
 Sat Nov 21 10:49:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Let the python-rpm-macros take care of the correct python3

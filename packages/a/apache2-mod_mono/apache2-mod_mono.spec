@@ -17,12 +17,8 @@
 
 
 Name:           apache2-mod_mono
-%define apxs /usr/sbin/apxs2
-%define apache2_sysconfdir %(%{apxs} -q SYSCONFDIR)/conf.d
 Obsoletes:      mod_mono < 2.10
 %define modname mod_mono
-%define apache2_libexecdir %(%{apxs} -q LIBEXECDIR)
-%define apache_mmn        %(MMN=$(%{apxs} -q LIBEXECDIR)_MMN; test -x $MMN && $MMN)
 Url:            http://www.mono-project.com/
 Version:        3.12
 Release:        0
@@ -34,6 +30,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       mod_mono = %{version}-%{release}
 # This must be manually entered according to xsp's protocol version
 Requires:       xsp >= 3.0.11
+BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  libtool
 BuildRequires:  mono-devel
@@ -57,12 +54,12 @@ into Apache, run the command "a2enmod mono" as root.
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT APXS_SYSCONFDIR="%{apache2_sysconfdir}"
+make install DESTDIR=$RPM_BUILD_ROOT APXS_SYSCONFDIR="%{apache_sysconfdir}"
 
 %files
 %defattr(-,root,root)
-%{apache2_libexecdir}/*
-%config %{apache2_sysconfdir}/*
+%{apache_libexecdir}/*
+%config %{apache_sysconfdir}/*
 %{_mandir}/man8/mod_mono.8*
 
 %changelog

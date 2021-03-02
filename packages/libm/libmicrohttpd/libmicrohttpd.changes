@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 29 13:25:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 0.9.72:
+  * improved performance with stay-alive HTTP and HTTPS connections
+  * bug fixes
+- remove deprecated texinfo macros
+
+-------------------------------------------------------------------
+Sat Jul  4 17:40:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 0.9.71:
+  * Fix buffer overflow issue in URL parser [boo#1173718]
+  * Fixed PostProcessor bug
+  * Documentation and example fixes  
+
+-------------------------------------------------------------------
 Sun Feb  9 10:15:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.9.70:

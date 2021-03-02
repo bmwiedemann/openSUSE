@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 11 23:10:58 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove localized man directories from file list: Already provided
+  by filesystem.
+
+-------------------------------------------------------------------
 Thu Oct 15 19:37:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 7.4.2:

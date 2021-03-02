@@ -5270,4 +5270,20 @@ handle manual pages that consist only of a .so directive such as
   drop it.</comment>
     <requestid>873790</requestid>
   </revision>
+  <revision rev="326" vrev="3">
+    <srcmd5>b8b879604c3ca18c95e95b1767149a70</srcmd5>
+    <version>246.10</version>
+    <time>1614692517</time>
+    <user>RBrownSUSE</user>
+    <comment>- systemd requires aaa_base &gt;= 13.2
+  This dependency is required because 'systemctl
+  {is-enabled,enable,disable} &lt;initscript&gt;&quot; ends up calling
+  systemd-sysv-install which in its turn calls &quot;chkconfig
+  --no-systemctl&quot;.
+  aaa_base package has a weird versioning but the '--no-systemctl'
+  option has been introduced starting from SLE12-SP2-GA, which shipped
+  version &quot;13.2+git20140911.61c1681&quot;.
+  Spotted in bsc#1180083.</comment>
+    <requestid>874480</requestid>
+  </revision>
 </revisionlist>

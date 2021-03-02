@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 18:17:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add 1521_delegate_parseqs_stdlib_bpo42967.patch to overcome
+  effects of bpo#42967, which forbade mixing amps and semicolons
+  in query strings as separators
+  (https://twistedmatrix.com/trac/ticket/10096).
+
+-------------------------------------------------------------------
 Thu Feb 11 15:49:07 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Relax the crypto policies for the test-suite

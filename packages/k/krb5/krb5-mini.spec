@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-mini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           krb5-mini
-Version:        1.18.3
+Version:        1.19.1
 Release:        0
 Summary:        MIT Kerberos5 implementation and libraries with minimal dependencies
 License:        MIT
-URL:            https://web.mit.edu/kerberos/www/
-Source0:        https://web.mit.edu/kerberos/dist/krb5/1.18/krb5-%{version}.tar.gz
-Source1:        https://web.mit.edu/kerberos/dist/krb5/1.18/krb5-%{version}.tar.gz.asc
+URL:            https://kerberos.org/dist/
+Source0:        https://kerberos.org/dist/krb5/1.19/krb5-%{version}.tar.gz
+Source1:        https://kerberos.org/dist/krb5/1.19/krb5-%{version}.tar.gz.asc
 Source2:        krb5.keyring
 Source3:        vendor-files.tar.bz2
 Source4:        baselibs.conf

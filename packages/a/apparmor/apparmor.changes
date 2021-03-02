@@ -4,6 +4,11 @@ Thu Feb 11 18:18:46 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 - merge libapparmor.changes into apparmor.changes
 
 -------------------------------------------------------------------
+Mon Feb  8 17:19:19 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- avoid file listed twice error
+
+-------------------------------------------------------------------
 Tue Feb  2 18:35:17 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - define %_pamdir for <= 15.x to fix the build on those releases

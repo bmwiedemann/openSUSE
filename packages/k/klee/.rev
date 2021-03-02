@@ -1154,4 +1154,12 @@ build with uclibc</comment>
 - add 0001-runtime-POSIX-fix-failures-with-glibc-2.33.patch</comment>
     <requestid>873704</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7972db57f07bf1057d4c3e2ed2966b86</srcmd5>
+    <version>2.2+20210222</version>
+    <time>1614684995</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>876179</requestid>
+  </revision>
 </revisionlist>

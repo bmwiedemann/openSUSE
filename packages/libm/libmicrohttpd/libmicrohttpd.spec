@@ -20,7 +20,7 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        0.9.70
+Version:        0.9.72
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
@@ -79,8 +79,6 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       pkgconfig >= 0.9.0
 Requires:       pkgconfig(gnutls) >= 2.8.6
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description devel
 Headers, pkg-config files, so link and other development files for %{name}
@@ -101,7 +99,7 @@ Headers, pkg-config files, so link and other development files for %{name}
   --disable-static \
   --disable-examples
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -112,17 +110,10 @@ rm -v %{buildroot}%{_infodir}/%{name}_performance_data.png
 # Parallel execution of tests fail
 # Tests randomly fail so keep them in log for inspection rather than for valid
 # verification of anything.
-make -j1 check || :
+%make_build -j1 check || :
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/libmicrohttpd.info%{ext_info}
-%install_info --info-dir=%{_infodir} %{_infodir}/libmicrohttpd-tutorial.info%{ext_info}
-
-%preun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libmicrohttpd.info%{ext_info}
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libmicrohttpd-tutorial.info%{ext_info}
 
 %files -n %{libname}
 %license COPYING

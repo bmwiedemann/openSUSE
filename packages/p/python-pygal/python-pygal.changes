@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 14:22:14 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Drop broken %ifpython3
+
+-------------------------------------------------------------------
 Thu Aug 27 15:15:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add patch pytest6.patch

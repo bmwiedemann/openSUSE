@@ -87,7 +87,7 @@
 %bcond_with profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.6.12
+Version:        3.6.13
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -99,15 +99,12 @@ Source3:        README.SUSE
 Source7:        macros.python3
 Source8:        import_failed.py
 Source9:        import_failed.map
-Source10:       pre_checkin.sh
 Source11:       skipped_tests.py
 Source12:       idle3.desktop
 Source13:       idle3.appdata.xml
-
 # Fixed bundled wheels
 Source20:       setuptools-44.1.1-py2.py3-none-any.whl
 Source21:       pip-20.2.3-py2.py3-none-any.whl
-
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
@@ -171,13 +168,6 @@ Patch38:        faulthandler_stack_overflow_on_GCC10.patch
 Patch39:        ignore_pip_deprec_warn.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch40:        sphinx-update-removed-function.patch
-# PATCH-FIX-UPSTREAM CVE-2020-27619-no-eval-http-content.patch bsc#1178009 mcepl@suse.com
-# No longer call eval() on content received via HTTP in the CJK codec tests
-Patch41:        CVE-2020-27619-no-eval-http-content.patch
-# PATCH-FIX-UPSTREAM CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch bsc#1181126 mcepl@suse.com
-# buffer overflow in PyCArg_repr in _ctypes/callproc.c, which may lead to remote code execution
-Patch42:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
-
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -442,8 +432,6 @@ other applications.
 %patch38 -p1
 %patch39 -p1
 %patch40 -p1
-%patch41 -p1
-%patch42 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -480,7 +468,7 @@ TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 
 cd Doc
 sed -i "s/^today = .*/today = '$TODAY_DATE'/" conf.py
-make %{?_smp_mflags} -j1 html
+%make_build -j1 html
 
 # Build also devhelp files
 sphinx-build -a -b devhelp . build/devhelp
@@ -517,14 +505,14 @@ sed -e 's/-fprofile-correction//' -i Makefile.pre.in
     --enable-loadable-sqlite-extensions
 
 # prevent make from trying to rebuild PYTHON_FOR_GEN stuff
-make -t Python/Python-ast.c \
+%make_build -t Python/Python-ast.c \
         Include/Python-ast.h \
         Objects/typeslots.inc \
         Python/opcode_targets.h \
         Include/opcode.h
 
 %if %{with general}
-make %{?_smp_mflags}
+%make_build
 %endif
 %if %{with base}
 %if %{with profileopt}
@@ -533,7 +521,7 @@ make %{?_smp_mflags}
     target=all
 %endif
 LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH \
-    make %{?_smp_mflags} $target
+    %make_build $target
 %endif
 %endif
 
@@ -577,7 +565,7 @@ export PYTHONPATH="$(pwd -P)/Lib"
 # Use timeout, like make target buildbottest
 # We cannot run tests parallel, because osc build environment doesn’t
 # have /dev/shm
-make %{?_smp_mflags} -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=3000"
+%make_build -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=3000"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
 %endif

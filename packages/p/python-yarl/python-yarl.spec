@@ -1,7 +1,7 @@
 #
 # spec file for package python-yarl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/yarl/
 Source:         https://files.pythonhosted.org/packages/source/y/yarl/yarl-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tests_overcome_bpo42967.patch bsc#[0-9]+ mcepl@suse.com
+# Overcome effects of bpo#42967, which forbade mixing amps and
+# semicolons in query strings as separators.
+Patch0:         tests_overcome_bpo42967.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module idna >= 2.0}
@@ -46,7 +50,7 @@ Requires:       python-typing_extensions >= 3.7.4
 The module provides a URL class for url parsing and changing.
 
 %prep
-%setup -q -n yarl-%{version}
+%autosetup -p1 -n yarl-%{version}
 
 %build
 export CFLAGS="%{optflags}"

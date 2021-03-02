@@ -36,6 +36,8 @@ Patch2:         ddr_1998-check-nofail-noxattr.diff
 Patch3:         ddr_1998-sysrandom.diff
 Patch4:         ddr_1998-testhole.diff
 Patch5:         ddr_1998-ossl11-warn.diff
+# boo#1181402
+Patch6:         fix-aliasing-aarch64.patch
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
 BuildRequires:  libopenssl-devel
@@ -131,10 +133,6 @@ autoconf
 touch .dep
 
 OPT_FLAGS="%{optflags}"
-%ifarch aarch64
-OPT_FLAGS+=" -fno-strict-aliasing"
-%endif
-
 %make_build RPM_OPT_FLAGS="$OPT_FLAGS" LIBDIR=%{_libdir} LIB=%{_lib}
 
 %install

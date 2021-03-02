@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:45:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.28
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.28      2021-02-19 16:22:13Z
+      - fix warnings during HTTP::Config->match #62 (GH#152) (Viťas Strádal)
+
+-------------------------------------------------------------------
 Wed Jan  6 03:06:58 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.27

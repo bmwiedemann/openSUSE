@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 23 17:23:15 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Remove %is_opensuse from spec file (jsc#SLE-11640)
+  This will build hp-scan-utils package on SLE, too, where it
+  has unsatisfiable dependencies.
+
+-------------------------------------------------------------------
+Sun Feb 14 22:34:21 UTC 2021 - Stephan Hemeier <Sauerlandlinux@gmx.de>
+
+  * add hplip-missing-drivers.patch (lp#1843592)
+    Now working:
+    HP Laserjet Professional P1102w
+    HP LaserJet 100 ColorMFP M175nw
+    HP Laserjet CP 1025nw
+
+-------------------------------------------------------------------
 Fri Jan  8 20:52:43 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to 3.20.11 

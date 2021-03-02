@@ -17,7 +17,7 @@
 
 
 Name:           t1utils
-Version:        1.41
+Version:        1.42
 Release:        0
 Summary:        A collection of simple type-1 font manipulation programs
 License:        ISC

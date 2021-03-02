@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 12 09:41:04 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Revert /var/lib/ntp to the ownership and permissions it had in
+  the ntp package. It should be owned by root and not be writable
+  by the ntp user, because it is the base of ntpd's chroot
+  envoronment and the ntp user is not supposed to log in anyway.
+
+-------------------------------------------------------------------
 Thu Jan 14 16:30:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - system-user-tss.conf: Remove group entry, not needed and did

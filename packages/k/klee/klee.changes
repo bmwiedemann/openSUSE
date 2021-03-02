@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 23 07:33:34 UTC 2021 - jslaby@suse.cz
+
+- Update to version 2.2+20210222:
+  * runtime/POSIX: fix failures with glibc-2.33
+- remove 0001-runtime-POSIX-fix-failures-with-glibc-2.33.patch
+
+-------------------------------------------------------------------
 Fri Feb 19 07:15:02 UTC 2021 - jslaby@suse.cz
 
 - Update to version 2.2+20210216:

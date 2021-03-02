@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 23 10:03:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210221:
+  * Add noticeable.news (#1216)
+  * CI: remove "labels" config from tld-update.yml workflow. (#1215)
+  * util: gTLD data autopull updates for 2021-02-20T20:31:36 UTC (#1214)
+  * Update .my in ICANN section (#1213)
+  * Add edgecompute.app (#1212)
+  * tools: improved newgtlds.go, removed replace-between. (#1204)
+  * Update PSL for broader use-cases for northflank.app and code.run domains. (#1210)
+  * Added eurodir.ru (#1207)
+
+-------------------------------------------------------------------
 Thu Feb 11 11:56:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210211:

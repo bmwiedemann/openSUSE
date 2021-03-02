@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 21 22:22:50 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Force C++14 as the code is not C++17 ready. Fixes GCC 11 build
+  (boo#1181884).
+- Don't exclude /usr/lib/udev/systemd-udevd.service.d/50-rc_keymap.conf
+  for Leap 15.3.
+
+-------------------------------------------------------------------
 Tue Sep  8 13:37:47 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Exclude /usr/lib/udev/systemd-udevd.service.d/50-rc_keymap.conf

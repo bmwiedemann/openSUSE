@@ -787,4 +787,20 @@ Now with build cycle removed.</comment>
   * gTLD autopull: 2021-02-07 (#1203)</comment>
     <requestid>871196</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4c7d7b946a489c57f7a5ab8c134bdfe9</srcmd5>
+    <version>20210221</version>
+    <time>1614692532</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 20210221:
+  * Add noticeable.news (#1216)
+  * CI: remove &quot;labels&quot; config from tld-update.yml workflow. (#1215)
+  * util: gTLD data autopull updates for 2021-02-20T20:31:36 UTC (#1214)
+  * Update .my in ICANN section (#1213)
+  * Add edgecompute.app (#1212)
+  * tools: improved newgtlds.go, removed replace-between. (#1204)
+  * Update PSL for broader use-cases for northflank.app and code.run domains. (#1210)
+  * Added eurodir.ru (#1207)</comment>
+    <requestid>874527</requestid>
+  </revision>
 </revisionlist>

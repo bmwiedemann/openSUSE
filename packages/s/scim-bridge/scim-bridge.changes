@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  2 08:21:34 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- fix provides/obsoletes in baselibs.conf
+
+-------------------------------------------------------------------
 Thu Nov 26 16:48:21 CET 2020 - tiwai@suse.de
 
 - Move the startup snippet to /usr/etc/X11/xim.d for TW

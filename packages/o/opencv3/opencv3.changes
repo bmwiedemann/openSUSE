@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 21 09:42:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Use the python2/python3 macros only when the corresponding 
+  binaries are installed, needed by new python-rpm-macros
+
+-------------------------------------------------------------------
 Fri Jun 19 12:27:16 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 3.4.10

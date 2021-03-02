@@ -84,6 +84,7 @@ Patch401:       hplip-orblite-return-null.diff
 Patch402:       hplip-change-pgp-server.patch
 # boo#1107711
 Patch403:       Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
+Patch500:       hplip-missing-drivers.patch
 BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod qt5-devel}
 BuildRequires:  %{pymod xml}
@@ -319,7 +320,7 @@ This sub-package is only required by developers.
 %patch401 -p1
 %patch402 -p1
 %patch403 -p1
-
+%patch500 -p1
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
     xargs -n 1 sed -i '1s,^#!\(%{_bindir}/env python\|%{_bindir}/python\),#!%{pyexe},'
@@ -395,24 +396,6 @@ sed -i 's|ppd/hpcups/\*.ppd.gz ||g' Makefile
 
 %install
 %make_install
-
-# SLE does not provide python-pillow (PIL) (bsc#1131613) and thus has no hp-scan
-# and related library code.
-# We can't use --disable-scan-build, as that would disable the SANE
-# backend, too.
-# On openSUSE, these files go into the hplip-scan package (see below).
-# Remove these before running pyX_compile
-%if !0%{?is_opensuse}
-rm -f %{buildroot}%{_datadir}/hplip/scan.py \
-      %{buildroot}%{_datadir}/hplip/uiscan.py \
-      %{buildroot}%{_datadir}/hplip/base/imageprocessing.py \
-      %{buildroot}%{_datadir}/hplip/ui5/scandialog.py \
-      %{buildroot}%{_bindir}/hp-scan \
-      %{buildroot}%{_bindir}/hp-uiscan \
-      %{buildroot}%{_datadir}/applications/hp-uiscan.desktop \
-      %{buildroot}%{_libdir}/python%{pyver}/site-packages/scanext.*
-rm -rf %{buildroot}%{_datadir}/hplip/scan
-%endif
 
 # Make and install Python compiled bytecode files
 %py3_compile %{buildroot}%{_datadir}/hplip
@@ -555,9 +538,7 @@ set -x
 popd
 # Replace the invalid Desktop categories
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/hplip.desktop System HardwareSettings
-%if 0%{?is_opensuse}
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/hp-uiscan.desktop System HardwareSettings
-%endif
 
 # Let suse_update_desktop_file add X-SuSE-translate key to /etc/xdg/autostart/hplip-systray.desktop
 # so that we can update its translations with translation-only packages.
@@ -675,7 +656,6 @@ exit 0
 
 # The scanning utils depend on PIL and python3-scikit-image,
 # which are not available in SLE
-%if 0%{?is_opensuse}
 %files scan-utils
 %{_datadir}/applications/hp-uiscan.desktop
 %{_libdir}/python%{pyver}/site-packages/scanext.*
@@ -690,7 +670,6 @@ exit 0
 %{_datadir}/hplip/__pycache__/scan.*
 %{_datadir}/hplip/base/__pycache__/imageprocessing.*
 %{_datadir}/hplip/ui5/__pycache__/scandialog.*
-%endif
 
 %files hpijs
 %config %{_sysconfdir}/hp/

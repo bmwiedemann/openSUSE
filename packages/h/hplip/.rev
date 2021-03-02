@@ -1172,4 +1172,20 @@
 - Update to 3.20.9 (jsc#SLE-17024)</comment>
     <requestid>862275</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>237021c467f25ae38e73c2a6cf0729a4</srcmd5>
+    <version>3.20.11</version>
+    <time>1614692594</time>
+    <user>RBrownSUSE</user>
+    <comment>- Remove %is_opensuse from spec file (jsc#SLE-11640)
+  This will build hp-scan-utils package on SLE, too, where it
+  has unsatisfiable dependencies.
+
+  * add hplip-missing-drivers.patch (lp#1843592)
+    Now working:
+    HP Laserjet Professional P1102w
+    HP LaserJet 100 ColorMFP M175nw
+    HP Laserjet CP 1025nw</comment>
+    <requestid>874884</requestid>
+  </revision>
 </revisionlist>

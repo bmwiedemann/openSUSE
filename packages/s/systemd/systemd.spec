@@ -118,6 +118,7 @@ Provides:       systemd = %{version}-%{release}
 %else
 # the buildignore is important for bootstrapping
 #!BuildIgnore:  udev
+Requires:       aaa_base >= 13.2
 Requires:       dbus-1 >= 1.4.0
 Requires:       kbd
 Requires:       kmod >= 15
@@ -275,8 +276,6 @@ Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): /usr/bin/systemctl
 
-Conflicts:      systemd < 39
-Conflicts:      aaa_base < 11.5
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
 Conflicts:      dracut < 044.1

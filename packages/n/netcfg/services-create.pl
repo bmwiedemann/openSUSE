@@ -6,7 +6,7 @@ use XML::LibXML::Reader;
 
 binmode( STDOUT, 'utf8:' );
 
-my $portsurl = 'http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml';
+my $portsurl = 'https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml';
 my $servicesfile = 'services.new';
 my $reader = XML::LibXML::Reader->new(location => $portsurl)
          or die "cannot read $portsurl\n";

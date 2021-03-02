@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 22 19:14:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * Make :class:`~sybil.parsers.doctest.DocTestParser` more
+    permissive with respect to tabs in documents. Tabs that aren't
+    in the doctest block not longer cause parsing of the document to
+    fail.
+- Release 2.0.0
+  * Drop support for nose.
+  * Handle encoded data returned by doctest execution on Python 2.
+
+-------------------------------------------------------------------
 Thu Aug 27 15:29:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.0

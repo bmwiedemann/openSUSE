@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Feb 19 17:34:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+Update to 3.6.13, final release of 3.6 branch:
+  * Security
+    - bpo#42967 (bsc#1182379, CVE-2021-23336): Fix web cache
+      poisoning vulnerability by defaulting the query args
+      separator to &, and allowing the user to choose a custom
+      separator.
+    - bpo#42938 (bsc#1181126, CVE-2021-3177): Avoid static
+      buffers when computing the repr of ctypes.c_double and
+      ctypes.c_longdouble values.
+    - bpo#42103: Prevented potential DoS attack via CPU and RAM
+      exhaustion when processing malformed Apple Property List
+      files in binary format.
+    - bpo#42051: The plistlib module no longer accepts entity
+      declarations in XML plist files to avoid XML
+      vulnerabilities. This should not affect users as entity
+      declarations are not used in regular plist files.
+    - bpo#40791: Add volatile to the accumulator variable in
+      hmac.compare_digest, making constant-time-defeating
+      optimizations less likely.
+  * Core and Builtins
+    - bpo#35560: Fix an assertion error in format() in debug
+      build for floating point formatting with “n” format, zero
+      padding and small width. Release build is not impacted.
+      Patch by Karthikeyan Singaravelan.
+  * Library
+    - bpo#42103: InvalidFileException and RecursionError are now
+      the only errors caused by loading malformed binary Plist
+      file (previously ValueError and TypeError could be raised
+      in some specific cases).
+  * Tests
+    - bpo#42794: Update test_nntplib to use offical group name of
+      news.aioe.org for testing. Patch by Dong-hee Na.
+    - bpo#41944: Tests for CJK codecs no longer call eval() on
+      content received via HTTP.
+- Patches removed, because they were included in the upstream
+  tarball:
+  - CVE-2020-27619-no-eval-http-content.patch
+  - CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
+
+-------------------------------------------------------------------
 Fri Jan 29 17:22:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
