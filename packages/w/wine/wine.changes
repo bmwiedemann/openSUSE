@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  1 06:31:02 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- 6.3_fix.patch: temporary fix for a 6.3 regression
+
+-------------------------------------------------------------------
+Sat Feb 27 08:21:52 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 6.3 development release
+  - Better debugger support in the NT syscall interface.
+  - WineGStreamer library converted to PE.
+  - Still more WinRT support in WIDL.
+  - Optional support for build IDs.
+  - Various bug fixes.
+- update staging to 6.3 release
+
+-------------------------------------------------------------------
 Sat Feb 13 07:27:45 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 6.2 development release

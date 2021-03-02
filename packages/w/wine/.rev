@@ -3864,4 +3864,20 @@
 - update staging to 6.1 release</comment>
     <requestid>871602</requestid>
   </revision>
+  <revision rev="332" vrev="1">
+    <srcmd5>c28082b48908717f8aba6040242f50be</srcmd5>
+    <version>6.3</version>
+    <time>1614684806</time>
+    <user>RBrownSUSE</user>
+    <comment>- 6.3_fix.patch: temporary fix for a 6.3 regression
+
+- Updated to 6.3 development release
+  - Better debugger support in the NT syscall interface.
+  - WineGStreamer library converted to PE.
+  - Still more WinRT support in WIDL.
+  - Optional support for build IDs.
+  - Various bug fixes.
+- update staging to 6.3 release</comment>
+    <requestid>875887</requestid>
+  </revision>
 </revisionlist>

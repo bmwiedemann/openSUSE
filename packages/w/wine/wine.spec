@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 6.2
-Version:        6.2
+%define realver 6.3
+Version:        6.3
 Release:        0
 
 %if "%{flavor}" != ""
@@ -139,7 +139,7 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-#Patch0:         patch.txt
+Patch0:         6.3_fix.patch
 Recommends:     wine-gecko >= 2.47.2
 Conflicts:      wine-gecko < 2.47.2
 Recommends:     wine-mono >= 5.1.1
@@ -158,7 +158,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 6.2
+%define staging_version 6.3
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -216,7 +216,7 @@ libraries.
 
 %prep
 %setup -q -n wine-%{realver}
-#patch0 -p1
+%patch0 -p1
 #
 cp %{S:3} .
 #
