@@ -130,4 +130,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>868167</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>b7321e61fc485b5c4ae4c2a61e2fc666</srcmd5>
+    <version>5.0.10</version>
+    <time>1614684776</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 875659 from AndreasStieger)</comment>
+    <requestid>875724</requestid>
+  </revision>
 </revisionlist>

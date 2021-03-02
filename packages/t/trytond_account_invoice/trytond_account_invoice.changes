@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 27 19:10:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
 Sun Jan 24 16:30:55 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Adaption to new python macros
