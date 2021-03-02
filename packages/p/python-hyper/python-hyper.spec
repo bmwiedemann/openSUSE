@@ -38,11 +38,9 @@ BuildRequires:  %{python_module hyperframe >= 3.2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 3.0}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module rfc3986 >= 1.1.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module virtualenv >= 14.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-brotlipy >= 0.7.0
@@ -86,7 +84,8 @@ wanted http.client.
 %check
 # test_HTTPConnection_with_custom_context - TLS 1.3 does not support h2
 # test_useful_error_with_no_protocol test_goaway_frame_PROTOCOL_ERROR test_goaway_frame_HTTP_1_1_REQUIRED test_goaway_frame_invalid_error_code - httplib update changed error messages reported
-%python_exec setup.py pytest --addopts="test/ -k 'not (rpmfail_getaddrinfo or test_HTTPConnection_with_custom_context or test_useful_error_with_no_protocol or test_goaway_frame_PROTOCOL_ERROR or test_goaway_frame_HTTP_1_1_REQUIRED or test_goaway_frame_invalid_error_code)'"
+# test_we_can_read_from_the_socket and test_connection_no_window_update_on_zero_length_data_frame fail due to updated dependencies
+%pytest -rs -k 'not (rpmfail_getaddrinfo or test_HTTPConnection_with_custom_context or test_useful_error_with_no_protocol or test_goaway_frame_PROTOCOL_ERROR or test_goaway_frame_HTTP_1_1_REQUIRED or test_goaway_frame_invalid_error_code or test_we_can_read_from_the_socket or test_connection_no_window_update_on_zero_length_data_frame)' test/
 
 %post
 %python_install_alternative hyper
