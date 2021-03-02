@@ -1,6 +1,0 @@
-<package name="yast2-ruby-bindings" project="openSUSE:Factory">
-  <title>Ruby bindings for the YaST platform</title>
-  <description>The bindings allow YaST modules to be written using the Ruby language
-and also Ruby scripts can use YaST agents, APIs and modules.</description>
-  <devel project="YaST:Head" package="yast2-ruby-bindings"/>
-</package>
