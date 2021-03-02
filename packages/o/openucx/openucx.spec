@@ -1,7 +1,7 @@
 #
 # spec file for package openucx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -154,7 +154,7 @@ export UCX_CFLAGS="$UCX_CFLAGS -mno-sse -mno-sse2"
 		 --disable-debug --disable-assertions \
 		 --disable-params-check \
 		 --with-rc --with-ud --with-dc \
-		 --with-mlx5-dv --with-rdmacm 
+		 --with-mlx5-dv --with-rdmacm
 
 # Override BASE_CFLAGS to disable Werror (boo#1121267)
 make %{?_smp_mflags} V=1 BASE_CFLAGS="-g -Wall"

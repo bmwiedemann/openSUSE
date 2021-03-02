@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 24 16:34:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update openucx-s390x-support.patch to fix mmap syscall on s390x (bsc#1182691)
+
+-------------------------------------------------------------------
 Mon Oct  5 13:21:34 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v1.9.0 (jsc#SLE-15163)
