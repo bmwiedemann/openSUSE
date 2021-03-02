@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 28 20:32:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add testdbf_converted.csv to fix a test failure since
+  agate-dbf 0.2.2 -- gh#wireservice/csvkit#1073
+- Make rpmlint happy by expanding the u-a install scripts early.
+  (Keep all the cli commands as their own u-a master links.)
+
+-------------------------------------------------------------------
 Wed May 27 09:36:51 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

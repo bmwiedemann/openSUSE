@@ -1,7 +1,7 @@
 #
 # spec file for package python-csvkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,8 @@ Summary:        A library of utilities for working with CSV
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/csvkit
-Source:         https://files.pythonhosted.org/packages/source/c/csvkit/csvkit-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/csvkit/csvkit-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/wireservice/csvkit/5f22e664121b13d9ff005a9206873a8f97431dca/examples/testdbf_converted.csv
 BuildRequires:  %{python_module SQLAlchemy >= 0.9.3}
 BuildRequires:  %{python_module Sphinx >= 1.0.7}
 BuildRequires:  %{python_module aenum}
@@ -58,6 +59,10 @@ Aaron Bycoffe.
 %setup -q -n csvkit-%{version}
 # find and remove unneeded shebangs
 find csvkit -name "*.py" | xargs sed -i '1 {/^#!/ d}'
+# agate-dbf >= 0.2.2 creates uppercase fieldnames for this example file -- gh#wireservice/csvkit#1073
+%if %{pkg_vcmp python3-agate-dbf >= 0.2.2}
+cp %{SOURCE1} examples/testdbf_converted.csv
+%endif
 
 %build
 %python_build
@@ -74,33 +79,22 @@ export LANG=en_US.UTF-8
 %python_exec -m unittest discover -s tests/ -v
 
 %post
-for b in %{binaries}; do
-  %python_install_alternative $b
-done
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_install_alternative " .. b))
+end}
 
 %postun
-for b in %{binaries}; do
-  %python_uninstall_alternative $b
-done
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_uninstall_alternative " .. b))
+end}
 
 %files %{python_files}
 %license COPYING
 %doc AUTHORS.rst CHANGELOG.rst README.rst
-%python_alternative %{_bindir}/csvclean
-%python_alternative %{_bindir}/csvcut
-%python_alternative %{_bindir}/csvformat
-%python_alternative %{_bindir}/csvgrep
-%python_alternative %{_bindir}/csvjoin
-%python_alternative %{_bindir}/csvjson
-%python_alternative %{_bindir}/csvlook
-%python_alternative %{_bindir}/csvpy
-%python_alternative %{_bindir}/csvsort
-%python_alternative %{_bindir}/csvsql
-%python_alternative %{_bindir}/csvstack
-%python_alternative %{_bindir}/csvstat
-%python_alternative %{_bindir}/in2csv
-%python_alternative %{_bindir}/sql2csv
-%{python_sitelib}/csvkit-%{version}-py*.egg-info
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_alternative %{_bindir}/" .. b))
+end}
+%{python_sitelib}/csvkit-%{version}*-info
 %{python_sitelib}/csvkit/
 
 %changelog
