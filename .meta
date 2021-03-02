@@ -1,7 +1,0 @@
-<package name="xfburn" project="openSUSE:Factory">
-  <title>A simple CD/DVD burning tool based on libburnia libraries</title>
-  <description>Xfburn is a simple CD/DVD burning tool based on libburnia libraries.
-It can blank CD-RWs, burn and create iso images, as well as burn
-personal compositions of data to either CD or DVD.</description>
-  <devel project="X11:xfce" package="xfburn"/>
-</package>
