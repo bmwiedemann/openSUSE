@@ -913,4 +913,12 @@
   * 0001-Fix-launching-empty-query.patch (forwarded request 874340 from Vogtinator)</comment>
     <requestid>874341</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>11c6a022c9813085655fe51d5c1d4a19</srcmd5>
+    <version>5.21.1</version>
+    <time>1614684558</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Plasma 5.21.1</comment>
+    <requestid>875029</requestid>
+  </revision>
 </revisionlist>
