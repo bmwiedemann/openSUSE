@@ -1,7 +1,7 @@
 #
 # spec file for package liberasurecode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libsoname liberasurecode1
 Name:           liberasurecode
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Erasure Code API library with pluggable Erasure Code backends
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://github.com/openstack/liberasurecode
 Source0:        https://github.com/openstack/liberasurecode/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -55,13 +56,13 @@ Development files for the Unified Erasure Coding interface.
 %build
 ./autogen.sh
 %configure --disable-static --disable-mmi
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make test
+%make_build test
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
@@ -70,7 +71,7 @@ make test
 %if 0%{?suse_version} > 1315
 %license COPYING
 %else
-%doc COPYING
+%license COPYING
 %endif
 %doc ChangeLog README.md
 %{_libdir}/libXorcode.so.*
