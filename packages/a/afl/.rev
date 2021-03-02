@@ -790,4 +790,41 @@
     - added NO_SPLICING compile option and makefile define (forwarded request 855999 from msmeissn)</comment>
     <requestid>856003</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3d07e873b06b3441070e7b6eb6bb5924</srcmd5>
+    <version>3.10c</version>
+    <time>1614684892</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.10c
+  - Mac OS ARM64 support                                                                                                                                                                     
+  - Android support fixed and updated by Joey Jiaojg - thanks!                                                                                                                               
+  - New selective instrumentation option with __AFL_COVERAGE_* commands                                                                                                                      
+    to be placed in the source code.                                                                                                                                                         
+    Check out instrumentation/README.instrument_list.md                                                                                                                                      
+  - afl-fuzz                                                                                                                                                                                 
+    - Making AFL_MAP_SIZE (mostly) obsolete - afl-fuzz now learns on                                                                                                                         
+      start the target map size                                                                                                                                                              
+    - upgraded cmplog/redqueen: solving for floating point, solving                                                                                                                          
+      transformations (e.g. toupper, tolower, to/from hex, xor,                                                                                                                              
+      arithmetics, etc.). This is costly hence new command line option                                                                                                                       
+      `-l` that sets the intensity (values 1 to 3). Recommended is 2.                                                                                                                        
+    - added `AFL_CMPLOG_ONLY_NEW` to not use cmplog on initial seeds                                                                                                                         
+      from `-i` or resumes (these have most likely already been done)                                                                                                                        
+    - fix crash for very, very fast targets+systems (thanks to mhlakhani                                                                                                                     
+      for reporting)                                                                                                                                                                         
+    - on restarts (`-i`)/autoresume (AFL_AUTORESUME) the stats are now                                                                                                                       
+      reloaded and used, thanks to Vimal Joseph for this patch!                                                                                                                              
+    - changed the meaning of '+' of the '-t' option, it now means to                                                                                                                         
+      auto-calculate the timeout with the value given being the max                                                                                                                          
+      timeout. The original meaning of skipping timeouts instead of                                                                                                                          
+      abort is now inherent to the -t option.                                                                                                                                                
+    - if deterministic mode is active (`-D`, or `-M` without `-d`) then                                                                                                                      
+      we sync after every queue entry as this can take very long time                                                                                                                        
+      otherwise                                                                                                                                                                              
+    - added minimum SYNC_TIME to include/config.h (30 minutes default)                                                                                                                       
+    - better detection if a target needs a large shared map                                                                                                                                  
+    - fix for `-Z`                                                                                                                                                                           
+    - fixed a few crashes</comment>
+    <requestid>875949</requestid>
+  </revision>
 </revisionlist>
