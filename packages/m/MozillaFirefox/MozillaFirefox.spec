@@ -29,9 +29,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          85
-%define mainver        %major.0.2
-%define orig_version   85.0.2
+%define major          86
+%define mainver        %major.0
+%define orig_version   86.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -101,7 +101,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.29
-BuildRequires:  mozilla-nss-devel >= 3.60.1
+BuildRequires:  mozilla-nss-devel >= 3.61
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -112,7 +112,7 @@ BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
 BuildRequires:  rust >= 1.47
-BuildRequires:  rust-cbindgen >= 0.15.0
+BuildRequires:  rust-cbindgen >= 0.16.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
@@ -175,7 +175,7 @@ Source9:        firefox.js
 Source11:       firefox.1
 Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/5e54f4a/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/4503820/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
 Source17:       firefox-search-provider.ini
@@ -202,7 +202,6 @@ Patch14:        mozilla-bmo1568145.patch
 Patch15:        mozilla-bmo1504834-part1.patch
 Patch16:        mozilla-bmo1504834-part2.patch
 Patch17:        mozilla-bmo1504834-part3.patch
-Patch18:        mozilla-bmo1554971.patch
 Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
@@ -217,8 +216,8 @@ Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires(post):   coreutils shared-mime-info desktop-file-utils
-Requires(postun): shared-mime-info desktop-file-utils
+Requires(post): coreutils shared-mime-info desktop-file-utils
+Requires(postun):shared-mime-info desktop-file-utils
 Requires:       %{name}-branding >= 68
 %requires_ge    mozilla-nspr
 %requires_ge    mozilla-nss
@@ -299,16 +298,6 @@ Supplements:    packageand(%{name}:branding-upstream)
 %description branding-upstream
 This package provides upstream look and feel for %{appname}.
 
-%if %crashreporter
-%package buildsymbols
-Summary:        Breakpad buildsymbols for %{appname}
-Group:          Development/Debug
-
-%description buildsymbols
-This subpackage contains the Breakpad created and compatible debugging
-symbols meant for upload to Mozilla's crash collector database.
-%endif
-
 %if !%{with only_print_mozconfig}
 %prep
 %if %localize
@@ -341,7 +330,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
-%patch18 -p1
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
@@ -706,18 +694,6 @@ FIN
 # fdupes
 %fdupes %{buildroot}%{progdir}
 %fdupes %{buildroot}%{_datadir}
-# create breakpad debugsymbols
-%if %crashreporter
-SYMBOLS_NAME="firefox-%{version}-` echo '%{release}' | sed 's@\.[^\.]\+$@@' `.%{_arch}-%{suse_version}-symbols"
-make buildsymbols \
-  SYMBOL_INDEX_NAME="$SYMBOLS_NAME.txt" \
-  SYMBOL_FULL_ARCHIVE_BASENAME="$SYMBOLS_NAME-full" \
-  SYMBOL_ARCHIVE_BASENAME="$SYMBOLS_NAME"
-if [ -e dist/*symbols.zip ]; then
-  mkdir -p %{buildroot}%{_datadir}/mozilla/
-  cp dist/*symbols.zip %{buildroot}%{_datadir}/mozilla/
-fi
-%endif
 
 %clean
 rm -rf %{buildroot}
@@ -811,11 +787,5 @@ exit 0
 %files branding-upstream
 %defattr(-,root,root)
 %dir %{progdir}
-
-%if %crashreporter
-%files buildsymbols
-%defattr(-,root,root)
-%{_datadir}/mozilla/*.zip
-%endif
 
 %changelog

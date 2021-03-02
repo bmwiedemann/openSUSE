@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Feb 21 18:14:12 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 86.0
+  * requires NSS >= 3.61
+  * requires rust-cbindgen >= 0.16.0
+  * Firefox now supports simultaneously watching multiple videos in
+    Picture-in-Picture.
+  * Total Cookie Protection to Strict Mode
+  * https://www.mozilla.org/en-US/firefox/86.0/releasenotes
+  MSFA 2021-07 (bsc#1182614)
+  * CVE-2021-23969 (bmo#1542194)
+    Content Security Policy violation report could have contained
+    the destination of a redirect
+  * CVE-2021-23970 (bmo#1681724)
+    Multithreaded WASM triggered assertions validating separation
+    of script domains
+  * CVE-2021-23968 (bmo#1687342)
+    Content Security Policy violation report could have contained
+    the destination of a redirect
+  * CVE-2021-23974 (bmo#1528997, bmo#1683627)
+    noscript elements could have led to an HTML Sanitizer bypass
+  * CVE-2021-23971 (bmo#1678545)
+    A website's Referrer-Policy could have been be overridden,
+    potentially resulting in the full URL being sent as a Referrer
+  * CVE-2021-23976 (bmo#1684627)
+    Local spoofing of web manifests for arbitrary pages in
+    Firefox for Android
+  * CVE-2021-23977 (bmo#1684761)
+    Malicious application could read sensitive data from Firefox
+    for Android's application directories
+  * CVE-2021-23972 (bmo#1683536)
+    HTTP Auth phishing warning was omitted when a redirect is
+    cached
+  * CVE-2021-23975 (bmo#1685145)
+    about:memory Measure function caused an incorrect pointer
+    operation
+  * CVE-2021-23973 (bmo#1690976)
+    MediaError message property could have leaked information
+    about cross-origin resources
+  * CVE-2021-23978 (bmo#1682928, bmo#1687391, bmo#1687597, bmo#786797)
+    Memory safety bugs fixed in Firefox 86 and Firefox ESR 78.8
+  * CVE-2021-23979 (bmo#1663222, bmo#1666607, bmo#1672120, bmo#1678463,
+    bmo#1678927, bmo#1679560, bmo#1681297, bmo#1681684, bmo#1683490,
+    bmo#1684377, bmo#1684902)
+    Memory safety bugs fixed in Firefox 86
+- updated create-tar.sh (bsc#1182357)
+- removed obsolete mozilla-bmo1554971.patch
+- remove buildsymbols subpackage
+  * we haven't done anything with it for years
+  * mozilla is collecting those from our debuginfo packages
+  * would require a local dump_syms tool
+
+-------------------------------------------------------------------
 Wed Feb 17 18:40:41 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 85.0.2

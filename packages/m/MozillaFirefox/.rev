@@ -4836,4 +4836,41 @@
     <comment></comment>
     <requestid>873231</requestid>
   </revision>
+  <revision rev="330" vrev="1">
+    <srcmd5>020e00dda87b88e2b888f05a90ddd770</srcmd5>
+    <version>86.0</version>
+    <time>1614684441</time>
+    <user>RBrownSUSE</user>
+    <comment>- Mozilla Firefox 86.0
+  * requires NSS &gt;= 3.61
+  * requires rust-cbindgen &gt;= 0.16.0
+  * Firefox now supports simultaneously watching multiple videos in
+    Picture-in-Picture.
+  * Total Cookie Protection to Strict Mode
+  * https://www.mozilla.org/en-US/firefox/86.0/releasenotes
+  MSFA 2021-07 (bsc#1182614)
+  * CVE-2021-23969 (bmo#1542194)
+    Content Security Policy violation report could have contained
+    the destination of a redirect
+  * CVE-2021-23970 (bmo#1681724)
+    Multithreaded WASM triggered assertions validating separation
+    of script domains
+  * CVE-2021-23968 (bmo#1687342)
+    Content Security Policy violation report could have contained
+    the destination of a redirect
+  * CVE-2021-23974 (bmo#1528997, bmo#1683627)
+    noscript elements could have led to an HTML Sanitizer bypass
+  * CVE-2021-23971 (bmo#1678545)
+    A website's Referrer-Policy could have been be overridden,
+    potentially resulting in the full URL being sent as a Referrer
+  * CVE-2021-23976 (bmo#1684627)
+    Local spoofing of web manifests for arbitrary pages in
+    Firefox for Android
+  * CVE-2021-23977 (bmo#1684761)
+    Malicious application could read sensitive data from Firefox
+    for Android's application directories
+  * CVE-2021-23972 (bmo#1683536)
+    HTTP Auth phishing warning was omitted when a redirect is</comment>
+    <requestid>874847</requestid>
+  </revision>
 </revisionlist>

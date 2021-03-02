@@ -1,6 +1,6 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  41df71ef2798d6bd6a67cfc4c4f26b8d41b8ccca
+# Parent  07b5ae8ccc4806fcc5ad74e32a2d3fb2b9d605d0
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
@@ -114,10 +114,8 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
 diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
 --- a/build/unix/mozconfig.unix
 +++ b/build/unix/mozconfig.unix
-@@ -1,16 +1,25 @@
+@@ -1,14 +1,23 @@
  . "$topsrcdir/build/mozconfig.common"
- 
- TOOLTOOL_DIR=${TOOLTOOL_DIR:-$topsrcdir}
  
  if [ -n "$FORCE_GCC" ]; then
      CC="$MOZ_FETCHES_DIR/gcc/bin/gcc"
@@ -126,8 +124,8 @@ diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
 +    if [ -n "$MOZ_PGO" ]; then
 +        if [ -z "$USE_ARTIFACT" ]; then
 +            ac_add_options --enable-lto
-+        fi
-+        export AR="$topsrcdir/gcc/bin/gcc-ar"
++	fi
++	export AR="$topsrcdir/gcc/bin/gcc-ar"
 +        export NM="$topsrcdir/gcc/bin/gcc-nm"
 +        export RANLIB="$topsrcdir/gcc/bin/gcc-ranlib"
 +    fi
@@ -135,11 +133,11 @@ diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
      # We want to make sure we use binutils and other binaries in the tooltool
      # package.
      mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$PATH"
-     ac_add_options --with-clang-path=$MOZ_FETCHES_DIR/clang/bin/clang
  else
-     CC="$MOZ_FETCHES_DIR/clang/bin/clang"
-     CXX="$MOZ_FETCHES_DIR/clang/bin/clang++"
- 
+     # For some builds we don't want to have Clang based static-analysis activated
+     if [ -z "$DISABLE_CLANG_PLUGIN" ]; then
+         export ENABLE_CLANG_PLUGIN=1
+     fi
 diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz.build
 --- a/extensions/spellcheck/src/moz.build
 +++ b/extensions/spellcheck/src/moz.build

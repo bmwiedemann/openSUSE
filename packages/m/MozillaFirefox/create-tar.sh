@@ -239,9 +239,9 @@ else
   fi
   if [ ! -d $PRODUCT-$VERSION ]; then
     echo "cloning new $BRANCH..."
-    hg clone http://hg.mozilla.org/$BRANCH $PRODUCT-$VERSION
+    hg clone https://hg.mozilla.org/$BRANCH $PRODUCT-$VERSION
     if [ "$PRODUCT" = "thunderbird" ]; then
-      hg clone http://hg.mozilla.org/releases/comm-$CHANNEL $PRODUCT-$VERSION/comm
+      hg clone https://hg.mozilla.org/releases/comm-$CHANNEL $PRODUCT-$VERSION/comm
     fi
   fi
   pushd $PRODUCT-$VERSION || exit 1
@@ -258,7 +258,7 @@ else
   [ "$FF_RELEASE_TAG" == "default" ] || hg update -r $FF_RELEASE_TAG
   # get repo and source stamp
   REV=$(hg -R . parent --template="{node|short}\n")
-  SOURCE_REPO=$(hg showconfig paths.default 2>/dev/null | head -n1 | sed -e "s/^ssh:/http:/")
+  SOURCE_REPO=$(hg showconfig paths.default 2>/dev/null | head -n1 | sed -e "s/^ssh:/https:/")
   TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
   if [ "$PRODUCT" = "thunderbird" ]; then
@@ -308,7 +308,7 @@ if [ $LOCALES_CHANGED -ne 0 ]; then
             hg pull
             popd || exit 1
           else
-            hg clone "http://hg.mozilla.org/l10n-central/$locale" "l10n/$locale"
+            hg clone "https://hg.mozilla.org/l10n-central/$locale" "l10n/$locale"
           fi
           [ "$RELEASE_TAG" == "default" ] || hg -R "l10n/$locale" up -C -r "$changeset"
           ;;
