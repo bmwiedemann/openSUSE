@@ -1,7 +1,7 @@
 #
 # spec file for package dtkwm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define sover 2
+%define sover 5
 
 Name:           dtkwm
 Version:        2.0.12
@@ -71,7 +71,7 @@ Header files and libraries for %{name}.
 %build
 %qmake5 PREFIX=%{_prefix} \
         LIB_INSTALL_DIR=%{_libdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake5_install

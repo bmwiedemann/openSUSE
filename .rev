@@ -33,4 +33,12 @@
 - Fix build on new version dtkcore, add set-DTK_MODULE_NAME.patch (forwarded request 786654 from hillwood)</comment>
     <requestid>786655</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9172f12e03c8cfc3e26012b4e5b9d464</srcmd5>
+    <version>2.0.12</version>
+    <time>1614684851</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update dtk api version to 5.0.0 (forwarded request 875859 from hillwood)</comment>
+    <requestid>875860</requestid>
+  </revision>
 </revisionlist>
