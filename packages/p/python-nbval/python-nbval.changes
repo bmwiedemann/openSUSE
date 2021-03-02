@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 26 22:34:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test numpy and matplotlib with Python 3.6: There is no
+  python36-numpy and python36-matplotlib in TW. (NEP 29) 
+
+-------------------------------------------------------------------
 Thu Dec 17 12:12:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.9.6

@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbval
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Requires:       python-jupyter-client
 Requires:       python-nbdime
 Requires:       python-nbformat
 Requires:       python-pytest >= 2.8
-Requires:       python-six
 Recommends:     python-matplotlib
 Recommends:     python-pytest-cov
 Recommends:     python-pytest-timeout
@@ -49,7 +48,6 @@ BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-client}
-BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nbdime}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module notebook}
@@ -57,8 +55,8 @@ BuildRequires:  %{python_module pyinotify}
 BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sympy}
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-nbval = %{version}
@@ -92,8 +90,14 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# see dodo.py
-%pytest tests/ --nbval --current-env --sanitize-with tests/sanitize_defaults.cfg --ignore tests/ipynb-test-samples
+python36_donttest="(sample_notebook and 9) or (test_coalesce and 5)"
+# see dodo.py for call signature
+%{pytest tests/ --nbval \
+                --current-env \
+                --sanitize-with tests/sanitize_defaults.cfg \
+                --ignore tests/ipynb-test-samples \
+                ${$python_donttest:+ -k "not (${$python_donttest})"}
+}
 
 %files %{python_files}
 %doc README.md
