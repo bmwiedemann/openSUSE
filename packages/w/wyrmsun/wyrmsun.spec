@@ -17,7 +17,7 @@
 
 
 Name:           wyrmsun
-Version:        4.1.2
+Version:        4.1.4
 Release:        0
 Summary:        Strategy game based on history, mythology and fiction
 License:        GPL-2.0-only AND CC-BY-SA-3.0

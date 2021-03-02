@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Feb 28 15:20:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.4
+  * AI
+    + Fixed issue which resulted in AI players being able to hire
+      units from any civilization from mercenary camps (no matter
+      the civilization of the mercenary faction itself).
+  * Maps
+    + Fixed freeze/crash when starting the Southern Baltic map.
+    + Fixed issue which caused settlement territories to not be
+      generated on certain custom maps.
+  * Miscellaneous
+    + Fixed a potential crash cause when processing triggers.
+    + Fixed issue which caused certain site positions (e.g. that
+      where the Hlesey revealer should be created for the
+      Thunraz's Servant scenario) to not be saved in a save game.
+    + Fixed issue which could mistakenly cause under certain
+      circumstances a removed settlement site to be saved (when
+      saving a game) as the settlement head unit for a settlement,
+      instead of the town hall which had been built on top of it.
+    + The preferences.txt file is now saved in AppData instead of
+      in the Documents folder.
+    + Improved save/load performance and memory usage for player
+      tile exploration.
+    + Improved the performance of the database parsing and image
+      scaling.
+  * Resources
+    + Added checks to prevent the stored resource quantity from
+      becoming negative.
+  * Units
+    + Added Hobgoblin Warrior unit.
+
+-------------------------------------------------------------------
+Thu Jan 28 21:37:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.3
+  * AI
+  + Fixed issue which made the AI be able to take quests even if
+    it didn't have a town hall.
+  * Items
+  - Fixed issue which allowed magic prefixes to be generated as
+    suffixes and vice-versa.
+  * Interface
+  - Renamed the "Quests" screen to "Legacy Quests", to better
+    reflect that these are missions in an old format, and which are
+    supposed to be eventually updated to the Scenario mode.
+  - Fixed interface issues (e.g. incorrect button placement) which
+    occurred after enabling the 2x scaled mode without restarting.
+  - Added terrain-only minimap mode.
+  - Added settlement territories (including non-land) minimap mode.
+  * Map Editor
+  - Fixed crash which could occur when clicking on the "OK" button
+    in the player properties dialog.
+  - Fixed the position of the editor tile tooltip in the
+    bottom-left in the 2x scaled mode.
+  * Multiplayer
+  - Fixed a potential desync cause due to floating point operations.
+  * Scenarios
+  - Fixed crash when picking the option to seek an alliance with the
+    Hersings in the Haimadala's Progeny scenario.
+  * Units
+  - When randomly moving, people-averse fauna units will no longer
+    enter a tile with an owner if their current tile is in an
+    unowned one. In effect, this means that e.g. wyrms will not
+    wander into settled areas if they start off in an unsettled
+    one until their starting area itself is settled.
+
+-------------------------------------------------------------------
 Sun Jan 17 21:46:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.2
