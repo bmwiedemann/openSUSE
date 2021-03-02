@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 22 09:02:36 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.4.0
+  * add squash_to_uid and squash_to_gid
+  * add squash_to_root mount option.
+  * honor option "volatile".
+  * when writing mode to xattr, create files with mode 0755.
+  * support ID mapping when using xattr permissions.
+  * allow opening not accessible but still referenced files.
+  * invalidate directory cache on create/rename.
+  * fix segfault if no mountpoint specified
+  * fix file_exists_at musl compatibility
+  * introduce extended attribute to override gid/uid/mode.
+  * support writing uid/gid/mode to an extended attribute.
+  * fix a memory leak, where inodes are maintained in memory
+    even if not needed.
+
+-------------------------------------------------------------------
 Sun Aug 16 15:05:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - udpate to 1.1.2 (bsc#1175821)
