@@ -1,5 +1,0 @@
-<package name="libecpint" project="openSUSE:Factory">
-  <title>Efficient evaluation of integrals over ab initio effective core potentials</title>
-  <description>Libecpint is a C++ library for the efficient evaluation of integrals over ab initio effective core potentials, using a mixture of generated, recursive code and Gauss-Chebyshev quadrature. It is designed to be standalone and generic.</description>
-  <devel project="science" package="libecpint"/>
-</package>
