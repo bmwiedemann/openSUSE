@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  1 07:13:58 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31.4
+
+  What's new in notmuch 0.31.4
+  =========================
+
+  Library
+  -------
+
+  Fix include bug triggered by glib 2.67.
+
+  Test
+  ----
+
+  Fix race condition in T568-lib-thread.
+
+-------------------------------------------------------------------
 Mon Jan  4 15:32:48 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.31.3
