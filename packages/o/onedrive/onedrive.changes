@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 01 07:28:32 UTC 2021 - egotthold@suse.com
+
+- Update to version 2.4.10:
+  * Release files for 2.4.10 (#1283)
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Support sync_list matching full path root wildcard with exclusions to simplify sync_list configuration (#1273)
+  * Use correct path offset for sync_list exclusion matching (#1269)
+  * Revert the config & logpath change and check correct input entry (#1270)
+  * Update USAGE.md
+  * Fix logging output when handing downloaded files (#1267)
+  * Revert "Fix logging output when handing downloaded new files (#1265)"
+  * Fix logging output when handing downloaded new files (#1265)
+  * Dockerfile config for arm64 (#1259)
+  * Correctly handle '~' when present in 'log_dir' configuration option (#1258)
+  * Update README.md
+  * Improve upload handling of files for SharePoint sites (#1250)
+  * Adding TOC to USAGE.md (#1244)
+  * Use correct driveId value to query for changes when using --single-directory (#1235)
+  * Search all distinct drive id's rather than just default drive id for --get-file-link (#1230)
+  * Rename Office365.md to SharePoint-Shared-Libraries.md (#1232)
+  * Support new file maximum upload size of 250GB (#1233)
+  * Fix alpine build so it uses the same alpine version (#1226)
+  * Catch database assertion when item path cannot be calculated (#1217)
+  * Update Docker.md
+  * Add new config option to rate limit connection to OneDrive (#1210)
+  * Add upload speed metrics when files are uploaded (#1209)
+  * Release 2.4.10 Dev Prep (#1207)
+  * Release files for 2.4.9 (#1204)
+  * Fixed 2 typos in advanced-usage.md (#1201)
+  * Fix application crash with --get-O365-drive-id when API response is restricted (#1198)
+  * Fix Alpine Docker build (#1197)
+  * Fix application crash when calculating the path length due to invalid UTF characters (#1193)
+  * Add Docker environment variable to allow --logout for re-authentication (#1187)
+  * Improve application startup when using --monitor when there is no network connection to the OneDrive API (#1188)
+  * Fix typo in advanced-usage.md (#1181)
+  * Fix crash when unable to read a local file due to file permissions (Issue #1178) (#1179)
+  * Add debug log output for configured API URL's (#1177)
+  * Remove duplicate code for error output functions and enhance error logging output (#1170)
+  * Handle case where API provided deltaLink generates a further API error (#1175)
+  * Release 2.4.9 Dev Prep (#1168)
+
+-------------------------------------------------------------------
 Tue Dec 01 06:33:45 UTC 2020 - egotthold@suse.com
 
 - Update to version 2.4.8:

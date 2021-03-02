@@ -1,7 +1,7 @@
 #
 # spec file for package onedrive
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.8
+Version:        2.4.10
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -120,7 +120,7 @@ install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 %files
 %defattr(-,root,root)
 %license LICENSE
-%doc USAGE.md Office365.md INSTALL.md Docker.md CHANGELOG.md config README.md BusinessSharedFolders.md LICENSE advanced-usage.md
+%doc USAGE.md SharePoint-Shared-Libraries.md INSTALL.md Docker.md CHANGELOG.md config README.md BusinessSharedFolders.md LICENSE advanced-usage.md
 %config(noreplace) %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}
