@@ -118,7 +118,6 @@ unsorted:
   - Modules 
   - Modules-doc 
   - MozillaFirefox-branding-upstream: [x86_64] 
-  - MozillaFirefox-buildsymbols 
   - MozillaFirefox-devel 
   - MozillaFirefox-translations-other 
   - MozillaThunderbird-translations-other 
@@ -1787,10 +1786,6 @@ unsorted:
   - cephfs-shell: [x86_64] 
   - cephfs-top: [x86_64] 
   - cereal-devel 
-  - cert-manager 
-  - cert-manager-cainjector 
-  - cert-manager-controller 
-  - cert-manager-webhook 
   - certbot-systemd-timer 
   - certmonger 
   - certstrap: [i586] 
@@ -2022,6 +2017,7 @@ unsorted:
   - coccinelle 
   - cockpit 
   - cockpit-bridge: [i586] 
+  - cockpit-devel 
   - cockpit-doc 
   - cockpit-kdump 
   - cockpit-machines 
@@ -8953,7 +8949,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_3_5 
+  - libSimGearCore-2020_3_6 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -10085,7 +10081,7 @@ unsorted:
   - libdtkcore5 
   - libdtkgui5 
   - libdtkwidget5 
-  - libdtkwm2 
+  - libdtkwm5 
   - libduktape206 
   - libdv 
   - libdv-devel 
@@ -10652,7 +10648,6 @@ unsorted:
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_8_0 
-  - libgnustep-base1_27 
   - libgnutls-dane-devel 
   - libgnutls-dane0: [i586] 
   - libgnutls-devel 
@@ -12037,7 +12032,6 @@ unsorted:
   - liboauth0-32bit: [x86_64] 
   - libobby-0_4-1 
   - libobjc2-devel 
-  - libobjc4 
   - libobjc4-32bit: [x86_64] 
   - libobjc4-gcc10 
   - libobjc4-gcc10-32bit: [x86_64] 
@@ -14429,12 +14423,12 @@ unsorted:
   - libyder1_4 
   - libykclient-devel 
   - libykclient3 
-  - libykcs11-1 
+  - libykcs11-2 
   - libykcs11-devel 
   - libykpers-1-1 
   - libykpers-devel 
   - libykpiv-devel 
-  - libykpiv1 
+  - libykpiv2 
   - libyubikey-devel 
   - libyubikey-tools 
   - libyubikey0 
@@ -18569,6 +18563,7 @@ unsorted:
   - perl-Devel-CoreStack 
   - perl-Devel-Cover 
   - perl-Devel-Cover-Report-Codecov 
+  - perl-Devel-Cover-Report-Codecovbash 
   - perl-Devel-Cycle 
   - perl-Devel-Declare 
   - perl-Devel-FindPerl 
@@ -20285,6 +20280,7 @@ unsorted:
   - prison-qt5-devel-32bit: [x86_64] 
   - privoxy-doc 
   - procdump 
+  - procenv 
   - procmeter 
   - procmeter-devel 
   - procps-devel 
@@ -20744,7 +20740,6 @@ unsorted:
   - python3-coconut 
   - python3-concurrentloghandler 
   - python3-congressclient 
-  - python3-csvkit 
   - python3-dbus-presage 
   - python3-debtcollector 
   - python3-deltarpm 
@@ -20802,7 +20797,6 @@ unsorted:
   - python3-gobject2 
   - python3-gobject2-devel 
   - python3-gom 
-  - python3-google-cloud-speech: [x86_64] 
   - python3-google-cloud-storage 
   - python3-google-resumable-media 
   - python3-gpiod 
@@ -20816,7 +20810,6 @@ unsorted:
   - python3-hiredis 
   - python3-hivex 
   - python3-httpie 
-  - python3-hyper 
   - python3-img-proof 
   - python3-img-proof-tests 
   - python3-imobiledevice 
@@ -21290,6 +21283,7 @@ unsorted:
   - python36-WSGIProxy2 
   - python36-WSME 
   - python36-WTForms 
+  - python36-Wand 
   - python36-WeasyPrint 
   - python36-WebOb 
   - python36-WebTest 
@@ -21772,7 +21766,6 @@ unsorted:
   - python36-cfgdiff 
   - python36-cfgv 
   - python36-cfscrape 
-  - python36-cftime 
   - python36-chai 
   - python36-chainmap 
   - python36-chardet 
@@ -21806,7 +21799,6 @@ unsorted:
   - python36-cloudpickle 
   - python36-cloudscraper 
   - python36-cluster 
-  - python36-cluster-preflight-check 
   - python36-cma 
   - python36-cmarkgfm 
   - python36-cmd2 
@@ -21877,6 +21869,7 @@ unsorted:
   - python36-cssutils 
   - python36-cstruct 
   - python36-csv23 
+  - python36-csvkit 
   - python36-ctypescrypto 
   - python36-cufflinks 
   - python36-curio 
@@ -22270,7 +22263,7 @@ unsorted:
   - python36-google-auth-oauthlib 
   - python36-google-cloud-core 
   - python36-google-cloud-kms 
-  - python36-google-cloud-speech: [i586] 
+  - python36-google-cloud-speech 
   - python36-google-cloud-translate 
   - python36-google-pasta 
   - python36-googleapis-common-protos 
@@ -22342,6 +22335,7 @@ unsorted:
   - python36-hupper 
   - python36-husl 
   - python36-hvac 
+  - python36-hyper 
   - python36-hyperframe 
   - python36-hyperlink 
   - python36-hypothesis 
@@ -22388,7 +22382,6 @@ unsorted:
   - python36-ipyevents 
   - python36-ipykernel 
   - python36-ipyleaflet 
-  - python36-ipympl 
   - python36-ipyparallel 
   - python36-ipyscales 
   - python36-ipysheet 
@@ -24096,6 +24089,7 @@ unsorted:
   - python38-WSGIProxy2 
   - python38-WSME 
   - python38-WTForms 
+  - python38-Wand 
   - python38-WeasyPrint 
   - python38-WebOb 
   - python38-WebTest 
@@ -24608,7 +24602,6 @@ unsorted:
   - python38-cloudpickle 
   - python38-cloudscraper 
   - python38-cluster 
-  - python38-cluster-preflight-check 
   - python38-cma 
   - python38-cmapfile 
   - python38-cmarkgfm 
@@ -24677,6 +24670,7 @@ unsorted:
   - python38-cssutils 
   - python38-cstruct 
   - python38-csv23 
+  - python38-csvkit 
   - python38-ctypescrypto 
   - python38-ctypeslib2 
   - python38-cu2qu 
@@ -25068,7 +25062,7 @@ unsorted:
   - python38-google-auth-oauthlib 
   - python38-google-cloud-core 
   - python38-google-cloud-kms 
-  - python38-google-cloud-speech: [i586] 
+  - python38-google-cloud-speech 
   - python38-google-cloud-translate 
   - python38-google-pasta 
   - python38-googleapis-common-protos 
@@ -25148,6 +25142,7 @@ unsorted:
   - python38-husl 
   - python38-hvac 
   - python38-hvplot 
+  - python38-hyper 
   - python38-hypothesis 
   - python38-hypothesis-auto 
   - python38-hypothesis-fspaths 
@@ -27561,7 +27556,6 @@ unsorted:
   - ruby3.0-rubygem-exception_notification 
   - ruby3.0-rubygem-excon 
   - ruby3.0-rubygem-execjs 
-  - ruby3.0-rubygem-factory_girl 
   - ruby3.0-rubygem-fake_ftp-0_1 
   - ruby3.0-rubygem-faraday 
   - ruby3.0-rubygem-faraday-net_http 
@@ -27663,10 +27657,8 @@ unsorted:
   - ruby3.0-rubygem-net-scp-1_2 
   - ruby3.0-rubygem-net-sftp 
   - ruby3.0-rubygem-net-ssh 
-  - ruby3.0-rubygem-net-ssh-gateway 
   - ruby3.0-rubygem-netrc 
   - ruby3.0-rubygem-nori 
-  - ruby3.0-rubygem-oauth 
   - ruby3.0-rubygem-oauth2 
   - ruby3.0-rubygem-omniauth 
   - ruby3.0-rubygem-omniauth-github 
@@ -37325,7 +37317,6 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
-  - unar 
   - unbound-devel 
   - unbound-munin 
   - unclutter: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
@@ -37356,7 +37347,6 @@ unsorted:
   - unmass 
   - unoconv 
   - unpaper 
-  - unrar_wrapper 
   - unshield 
   - unshield-devel 
   - unzip-rcc 

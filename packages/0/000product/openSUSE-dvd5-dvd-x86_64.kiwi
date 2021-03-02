@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210227" schemaversion="4.1">
+<image name="OBS__openSUSE___20210302" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210227</productvar>
+      <productvar name="VERSION">20210302</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210227,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210302,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210227/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210302/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -961,6 +961,7 @@
       <repopackage name="ibus-m17n"/>
       <repopackage name="ibus-mozc"/>
       <repopackage name="ibus-mozc-candidate-window"/>
+      <repopackage name="ibus-sunpinyin"/>
       <repopackage name="ibus-table"/>
       <repopackage name="ibus-table-chinese-array"/>
       <repopackage name="ibus-table-chinese-cangjie"/>
@@ -1869,6 +1870,7 @@
       <repopackage name="libgnomesu"/>
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
+      <repopackage name="libgnustep-base1_27"/>
       <repopackage name="libgnutls-dane0" arch="x86_64"/>
       <repopackage name="libgnutls30"/>
       <repopackage name="libgnutls30-32bit" arch="x86_64"/>
@@ -2442,6 +2444,7 @@
       <repopackage name="libnumbertext-1_0-0"/>
       <repopackage name="libnumbertext-data"/>
       <repopackage name="liboauth0"/>
+      <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
       <repopackage name="libofa0"/>
@@ -4356,7 +4359,6 @@
       <repopackage name="ruby2.7-rubygem-exception_notification"/>
       <repopackage name="ruby2.7-rubygem-excon"/>
       <repopackage name="ruby2.7-rubygem-execjs"/>
-      <repopackage name="ruby2.7-rubygem-factory_girl"/>
       <repopackage name="ruby2.7-rubygem-fake_ftp-0_1"/>
       <repopackage name="ruby2.7-rubygem-faraday"/>
       <repopackage name="ruby2.7-rubygem-faraday-net_http"/>
@@ -4464,12 +4466,10 @@
       <repopackage name="ruby2.7-rubygem-net-scp-1_2"/>
       <repopackage name="ruby2.7-rubygem-net-sftp"/>
       <repopackage name="ruby2.7-rubygem-net-ssh"/>
-      <repopackage name="ruby2.7-rubygem-net-ssh-gateway"/>
       <repopackage name="ruby2.7-rubygem-netrc"/>
       <repopackage name="ruby2.7-rubygem-nio4r"/>
       <repopackage name="ruby2.7-rubygem-nokogiri"/>
       <repopackage name="ruby2.7-rubygem-nori"/>
-      <repopackage name="ruby2.7-rubygem-oauth"/>
       <repopackage name="ruby2.7-rubygem-oauth2"/>
       <repopackage name="ruby2.7-rubygem-omniauth"/>
       <repopackage name="ruby2.7-rubygem-omniauth-github"/>
@@ -5073,11 +5073,13 @@
       <repopackage name="umbrello"/>
       <repopackage name="umbrello-lang"/>
       <repopackage name="un-fonts"/>
+      <repopackage name="unar"/>
       <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
       <repopackage name="unclutter" arch="x86_64"/>
       <repopackage name="unison"/>
       <repopackage name="units"/>
+      <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
       <repopackage name="unzip-doc"/>
       <repopackage name="update-alternatives"/>
