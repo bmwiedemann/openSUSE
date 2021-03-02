@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 01 15:35:07 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1614612897.75967767:
+  * tools: Update Tumbleweed based new dev image
+  * Fix missing dependency for 'cpio'
+  * t: Fix check for 'cpio' producing warning if cpio not installed
+  * Allow following test execution when running check targets via ninja
+  * Clarify where the path come from when init needles failed
+
+-------------------------------------------------------------------
 Wed Feb 24 12:50:16 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1614171005.a4459c0c:
