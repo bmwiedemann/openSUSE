@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 28 09:56:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1
+  * Overhaul of the recognition of quadratic coefficients using LLL:
+  * Choose FPLLL-4, FPLLL-5 or PARI/GP according to availability.
+  * For PARI/GP versions from 2.13 on, use the half-gcd function for
+    preconditioning the matrix passed to LLL.
+
+-------------------------------------------------------------------
 Thu Sep 24 22:35:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.0g87 (53bba6332)

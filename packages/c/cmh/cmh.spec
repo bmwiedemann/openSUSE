@@ -1,7 +1,7 @@
 #
 # spec file for package cmh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,24 @@
 
 Name:           cmh
 %define lname   libcmh0
-Version:        1.0g87
+Version:        1.1.0
 Release:        0
 Summary:        Igusa (genus 2) class polynomial computation
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://www.multiprecision.org/cmh/
-Source:         %name-%version.tar.xz
-#Source:         http://www.multiprecision.org/downloads/name-version.tar.gz
-#Source2:        http://www.multiprecision.org/downloads/name-version.tar.gz.asc
+Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
+#Source2:        http://www.multiprecision.org/downloads/name-version.tar.gz.asc http 500
 Source3:        %name.keyring
 BuildRequires:  automake
 BuildRequires:  fplll-devel >= 4
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  gmp-devel >= 5
-BuildRequires:  mpfr-devel >= 3
+BuildRequires:  libtool
 BuildRequires:  mpc-devel >= 1
+BuildRequires:  mpfr-devel >= 3
 BuildRequires:  mpfrcx-devel >= 0.4.2
-BuildRequires:  pari-devel
+BuildRequires:  pari-devel >= 2.9
 BuildRequires:  pari-gp
 BuildRequires:  xz
 
