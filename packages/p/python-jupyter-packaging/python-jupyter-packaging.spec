@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-packaging
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jupyter-packaging
-Version:        0.4.0
+Version:        0.7.12
 Release:        0
 Summary:        Jupyter Packaging Utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter-packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-packaging/jupyter-packaging-%{version}.tar.gz
-# fix tests https://github.com/jupyter/jupyter-packaging/pull/32
-Patch0:         which-finds-python-executable.patch
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-packaging
 %python_subpackages
 
 %description
@@ -42,7 +42,6 @@ with and without accompanying JavaScript packages
 %setup -q -n jupyter-packaging-%{version}
 sed -i 's/\r$//' README.md
 sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
-%patch0 -p1
 
 %build
 %python_build
@@ -52,7 +51,8 @@ sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_install and test_datafiles_install call pip which wants to check the online cache
+%pytest -k "not (test_install or test_datafiles_install)"
 
 %files %{python_files}
 %doc README.md

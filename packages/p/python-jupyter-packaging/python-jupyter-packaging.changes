@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  1 10:12:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.12
+  * no newer release notes
+- Release 0.6
+  * Move data files to the correct place on develop install #41
+- Release 0.5
+  * Update readme to mention pep 518 #36
+  * Add handling of data_files in develop mode and add test. #35
+- Drop which-finds-python-executable.patch merged upstream
+
+-------------------------------------------------------------------
 Tue May  5 15:04:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add patch which-finds-python-executable.patch to fix tests
