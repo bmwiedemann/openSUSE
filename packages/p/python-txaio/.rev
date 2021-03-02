@@ -94,4 +94,14 @@
     <comment></comment>
     <requestid>863999</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>23a9ee13253505c36620c226955f6591</srcmd5>
+    <version>21.2.1</version>
+    <time>1614684968</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 21.2.1:
+  - fix: update minimum dependencies (here, and in other crossbar packages) in an
+    attempt to tame the new pip dep resolver madness.</comment>
+    <requestid>876089</requestid>
+  </revision>
 </revisionlist>

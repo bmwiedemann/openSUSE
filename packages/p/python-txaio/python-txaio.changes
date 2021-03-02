@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  2 00:23:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.2.1:
+  - fix: update minimum dependencies (here, and in other crossbar packages) in an
+    attempt to tame the new pip dep resolver madness.
+
+-------------------------------------------------------------------
 Mon Jan 18 00:21:11 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - update to 20.12.1
