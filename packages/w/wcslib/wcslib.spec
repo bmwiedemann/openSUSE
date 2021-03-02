@@ -1,7 +1,7 @@
 #
 # spec file for package wcslib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libver  7
 Name:           wcslib
-Version:        7.3.1
+Version:        7.4
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
@@ -45,7 +45,7 @@ WCSLIB is a C library, supplied with a full set of Fortran wrappers, that
 implements the "World Coordinate System" (WCS) standard in FITS (Flexible Image
 Transport System).
 
-%package        devel
+%package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       cfitsio-devel
@@ -55,11 +55,11 @@ Recommends:     %{name}-doc
 Provides:       libwcs-devel = %{version}
 Obsoletes:      libwcs-devel <= 5.15
 
-%description    devel
+%description devel
 This package contains libraries and header files for developing
 applications that use %{name}.
 
-%package        doc
+%package doc
 Summary:        Documentation for %{name} library
 # libwcs-doc was last used in version 5.15
 Group:          Documentation/Other
@@ -67,10 +67,10 @@ Provides:       libwcs-doc = %{version}
 Obsoletes:      libwcs-doc <= 5.15
 BuildArch:      noarch
 
-%description    doc
+%description doc
 This package contains documentation and help files for %{name} library.
 
-%package        tools
+%package tools
 Summary:        Tools for %{name}
 Group:          Productivity/Scientific/Other
 Requires:       libwcs%{libver} = %{version}
@@ -78,7 +78,7 @@ Requires:       libwcs%{libver} = %{version}
 Provides:       libwcs-tools = %{version}
 Obsoletes:      libwcs-tools <= 5.15
 
-%description    tools
+%description tools
 This package contains tools for working with files created or
 opened with %{name}.
 
