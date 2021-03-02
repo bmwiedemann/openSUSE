@@ -152,8 +152,6 @@ export CXXFLAGS="$CFLAGS"
 
 %install
 b="%buildroot"
-# work around "Argument list too long"
-ln -s "%buildroot" "b"
 %cmake_install
 
 pushd "$b/usr"
