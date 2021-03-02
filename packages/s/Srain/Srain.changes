@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 28 09:48:32 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.0
+  Features:
+  * Switch build system from Make to Meson
+  * Add ``/quote`` command for sending special IRC commands
+  * Add support for hiding server buffer
+  Bug fixes:
+  * Fix an use-after-free BUG
+  * Fix implicit declaration error on some systems
+- Switch build to meson
+- Drop Srain-no_implicit_declarations.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sun Oct  4 08:29:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1.3

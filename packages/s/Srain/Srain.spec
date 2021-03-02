@@ -1,7 +1,7 @@
 #
 # spec file for package Srain
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,21 @@
 
 
 Name:           Srain
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
 URL:            https://srain.im
 Source:         https://github.com/SrainApp/srain/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Srain-no_implicit_declarations.patch
-Patch0:         Srain-no_implicit_declarations.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson >= 0.45.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48.2
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libconfig) >= 1.7
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  python3-Sphinx
+BuildRequires:  pkgconfig(appstream)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.39.3
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.15
+BuildRequires:  pkgconfig(libconfig) >= 1.5
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(openssl)
@@ -45,13 +43,15 @@ IRC client written in GTK3+.
 
 %prep
 %autosetup -p1 -n srain-%{version}
+# remove unnecessary file
+rm -f data/themes/meson.build
 
 %build
-%configure --disable-debug
-%make_build
+%meson -Ddoc_builders=man
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang srain
 
 %files
@@ -64,8 +64,10 @@ IRC client written in GTK3+.
 %{_bindir}/srain
 %{_datadir}/applications/im.srain.%{name}.desktop
 %{_datadir}/icons/hicolor/128x128/apps/im.srain.%{name}.png
+%{_datadir}/icons/hicolor/128x128/apps/im.srain.%{name}.Red.png
 %{_datadir}/metainfo/im.srain.%{name}.metainfo.xml
 %{_datadir}/srain/themes/*.css
+%{_mandir}/man1/srain.1%{?ext_man}
 
 %files lang -f srain.lang
 
