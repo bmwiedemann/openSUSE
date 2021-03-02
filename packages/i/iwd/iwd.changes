@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 25 20:36:16 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- Update to version 1.12:
+  * Fix issue with handling retry roaming without higher RSSI.
+  * Fix issue with WPA3, OWE and FILS authentication handling.
+  * Fix issue with handling locally generated deauth frames.
+  * Fix issue with quick scanning and connect interaction.
+  * Add support for diagnostic D-Bus interfaces.
+
+-------------------------------------------------------------------
 Sun Jan 10 15:40:46 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
 
 - Update to version 1.11:
