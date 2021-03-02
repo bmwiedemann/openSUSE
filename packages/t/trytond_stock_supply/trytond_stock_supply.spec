@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_stock_supply
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         majorver 5.0
 Name:           trytond_stock_supply
 Version:        %{majorver}.6
@@ -25,6 +26,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
+Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 # List of additional build dependencies
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
