@@ -2,7 +2,7 @@ From: Bruce Rogers <brogers@suse.com>
 Date: Thu, 3 Dec 2020 16:48:13 -0700
 Subject: usb: Help compiler out to avoid a warning on x86 compilation
 
-Include-If: %ifarch %arm %ix86
+Include-If: %ifarch %arm %ix86 ppc
 
 There is an assert present which already should give the compiler
 enough information about the value of i as used in the snprintf,

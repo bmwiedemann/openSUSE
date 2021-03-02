@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 19 15:10:56 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix issue of virtio-9p-ccw having been mistakenly dropped from
+  qemu (bsc#1182496)
+  hw-s390x-fix-build-for-virtio-9p-ccw.patch
+
+-------------------------------------------------------------------
+Thu Feb 18 16:41:28 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Tweaked some spec file details to be again compatible with quilt
+  setup using the spec file as input
+- Remove BuildRequires that were added in anticipation of building
+  ovmf within this package. We have not taken that route
+
+-------------------------------------------------------------------
 Wed Feb 17 02:06:20 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Fix uninitialized variable in ipxe driver code (boo#1181922)

@@ -1,5 +1,5 @@
 #
-# spec file for package qemu%{name_suffix}
+# spec file for package qemu-linux-user
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -76,15 +76,14 @@
 %define liburing_min_version 0.3
 %endif
 
-# qemu, qemu-linux-user, and qemu-testsuite "flavors" enabled via OBS Multibuild
-%define flavor @BUILD_FLAVOR@%{nil}
-%if "%flavor" == ""
+# qemu, qemu-linux-user, and qemu-testsuite "flavors" are enabled via OBS Multibuild
+%global flavor @BUILD_FLAVOR@%{nil}
 %define name_suffix %{nil}
-%else
-%define name_suffix -%flavor
+%if "%flavor" == "testsuite"
+%define name_suffix -testsuite
 %endif
-
 %if "%flavor" == "linux-user"
+%define name_suffix -linux-user
 %define summary_string CPU emulator for user space
 %else
 %define summary_string Machine emulator and virtualizer
@@ -156,62 +155,63 @@ Patch00021:     qemu-nbd-Use-SOMAXCONN-for-socket-listen.patch
 Patch00022:     qemu-storage-daemon-Enable-object-add.patch
 Patch00023:     blockjob-Fix-crash-with-IOthread-when-bl.patch
 Patch00024:     monitor-Fix-assertion-failure-on-shutdow.patch
-Patch00025:     XXX-dont-dump-core-on-sigabort.patch
-Patch00026:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00027:     qemu-cvs-gettimeofday.patch
-Patch00028:     qemu-cvs-ioctl_debug.patch
-Patch00029:     qemu-cvs-ioctl_nodirection.patch
-Patch00030:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00031:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00032:     linux-user-binfmt-support-host-binaries.patch
-Patch00033:     linux-user-Fake-proc-cpuinfo.patch
-Patch00034:     linux-user-use-target_ulong.patch
-Patch00035:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00036:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00037:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00038:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00039:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00040:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00041:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00042:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00043:     increase-x86_64-physical-bits-to-42.patch
-Patch00044:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00045:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00046:     Make-installed-scripts-explicitly-python.patch
-Patch00047:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00048:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00049:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00050:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00051:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00052:     tests-change-error-message-in-test-162.patch
-Patch00053:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00054:     configure-only-populate-roms-if-softmmu.patch
-Patch00055:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00056:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00057:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00058:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00059:     docs-add-SUSE-support-statements-to-html.patch
-Patch00060:     s390x-Fix-stringop-truncation-issue-repo.patch
-Patch00061:     Revert-qht-constify-qht_statistics_init.patch
-Patch00062:     qht-Revert-some-constification-in-qht.c.patch
-Patch00063:     meson-install-ivshmem-client-and-ivshmem.patch
-Patch00064:     Revert-roms-efirom-tests-uefi-test-tools.patch
-Patch00065:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
-Patch00066:     roms-Makefile-add-cross-file-to-qboot-me.patch
-Patch00067:     usb-Help-compiler-out-to-avoid-a-warning.patch
-Patch00068:     module-for-virtio-gpu-pre-load-module-to.patch
-Patch00069:     spice-app-avoid-crash-when-core-spice-mo.patch
-Patch00070:     qom-handle-case-of-chardev-spice-module-.patch
+Patch00025:     spice-app-avoid-crash-when-core-spice-mo.patch
+Patch00026:     hw-s390x-fix-build-for-virtio-9p-ccw.patch
+Patch00027:     XXX-dont-dump-core-on-sigabort.patch
+Patch00028:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00029:     qemu-cvs-gettimeofday.patch
+Patch00030:     qemu-cvs-ioctl_debug.patch
+Patch00031:     qemu-cvs-ioctl_nodirection.patch
+Patch00032:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00033:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00034:     linux-user-binfmt-support-host-binaries.patch
+Patch00035:     linux-user-Fake-proc-cpuinfo.patch
+Patch00036:     linux-user-use-target_ulong.patch
+Patch00037:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00038:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00039:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00040:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00041:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00042:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00043:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00044:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00045:     increase-x86_64-physical-bits-to-42.patch
+Patch00046:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00047:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00048:     Make-installed-scripts-explicitly-python.patch
+Patch00049:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00050:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00051:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00052:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00053:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00054:     tests-change-error-message-in-test-162.patch
+Patch00055:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00056:     configure-only-populate-roms-if-softmmu.patch
+Patch00057:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00058:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00059:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00060:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00061:     docs-add-SUSE-support-statements-to-html.patch
+Patch00062:     s390x-Fix-stringop-truncation-issue-repo.patch
+Patch00063:     Revert-qht-constify-qht_statistics_init.patch
+Patch00064:     qht-Revert-some-constification-in-qht.c.patch
+Patch00065:     meson-install-ivshmem-client-and-ivshmem.patch
+Patch00066:     Revert-roms-efirom-tests-uefi-test-tools.patch
+Patch00067:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
+Patch00068:     roms-Makefile-add-cross-file-to-qboot-me.patch
+Patch00069:     usb-Help-compiler-out-to-avoid-a-warning.patch
+Patch00070:     module-for-virtio-gpu-pre-load-module-to.patch
+Patch00071:     qom-handle-case-of-chardev-spice-module-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
 Patch01002:     enable-cross-compilation-on-ARM.patch
 Patch01003:     build-be-explicit-about-mx86-used-note-n.patch
 # Patches applied in roms/ipxe/:
-Patch02000:     stub-out-the-SAN-req-s-in-int13.patch
-Patch02001:     ipxe-Makefile-fix-issues-of-build-reprod.patch
-Patch02002:     help-compiler-out-by-initializing-array.patch
-Patch02003:     ath5k-Add-missing-AR5K_EEPROM_READ-in-at.patch
+Patch02000:     ath5k-Add-missing-AR5K_EEPROM_READ-in-at.patch
+Patch02001:     stub-out-the-SAN-req-s-in-int13.patch
+Patch02002:     ipxe-Makefile-fix-issues-of-build-reprod.patch
+Patch02003:     help-compiler-out-by-initializing-array.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
@@ -224,7 +224,6 @@ Patch11000:     qboot-add-cross.ini-file-to-handle-aarch.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-# ========================================================================
 # Common BuildRequires listed here:
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -248,8 +247,9 @@ provides programs to run user space binaries and libraries meant for another
 architecture. The syscall interface is intercepted and execution below the
 syscall layer occurs on the native hardware and operating system.
 
+# above section is for qemu-linux-user
 # ------------------------------------------------------------------------
-%else # ! qemu-linux-user
+%else
 %if %{build_x86_firmware_from_source}
 BuildRequires:  acpica
 %endif
@@ -259,14 +259,6 @@ BuildRequires:  binutils-devel
 %endif
 BuildRequires:  bison
 BuildRequires:  brlapi-devel
-%ifnarch %{ix86} aarch64 %arm
-BuildRequires:  cross-aarch64-binutils
-BuildRequires:  cross-aarch64-gcc%gcc_version
-%endif
-%ifnarch %{ix86} %arm
-BuildRequires:  cross-arm-binutils
-BuildRequires:  cross-arm-gcc%gcc_version
-%endif
 %if %{build_x86_firmware_from_source}
 %ifnarch %{ix86} x86_64
 # We must cross-compile on non-x86*
@@ -327,21 +319,18 @@ BuildRequires:  pkgconfig(liburing) >= %liburing_min_version
 %endif
 BuildRequires:  lzfse-devel
 BuildRequires:  multipath-tools-devel
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.13
-BuildRequires:  pkgconfig(lzo2)
-BuildRequires:  pkgconfig(vdeplug)
-BuildRequires:  pkgconfig(xkbcommon)
-%if %{build_x86_firmware_from_source}
-BuildRequires:  nasm
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.13
+BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.12.3
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(vdeplug)
+BuildRequires:  pkgconfig(xkbcommon)
 %{?systemd_ordering}
 %if %{kvm_available}
 BuildRequires:  pkgconfig(udev)
@@ -423,7 +412,6 @@ Obsoletes:      qemu-audio-oss < %{qemuver}
 Obsoletes:      qemu-audio-sdl < %{qemuver}
 Obsoletes:      qemu-ui-sdl < %{qemuver}
 
-# ------------------------------------------------------------------------
 %define generic_qemu_description QEMU provides full machine emulation and cross architecture usage. It closely\
 integrates with KVM and Xen virtualization, allowing for excellent performance.\
 Many options are available for defining the emulated environment, including\
@@ -967,7 +955,8 @@ merges anonymous (private) pages (not pagecache ones).
 
 This package provides a service file for starting and stopping KSM.
 
-%else # qemu
+# above section is for qemu
+%else
 BuildRequires:  bc
 BuildRequires:  qemu-arm = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
@@ -1011,10 +1000,13 @@ BuildRequires:  qemu-x86 = %{qemuver}
 %description
 This package records qemu testsuite results and represents successful testing.
 
-%endif # ! qemu-testsuite
-%endif # ! qemu-linux-user
+# above section is for qemu-testsuite
+%endif
+# above section is for qemu and qemu-testsuite
+%endif
 
 # ========================================================================
+
 %prep
 %setup -q -n %{srcname}-%{expand:%%(SV=%{srcver};echo ${SV%%%%+git*})}
 %patch00000 -p1
@@ -1076,32 +1068,33 @@ This package records qemu testsuite results and represents successful testing.
 %patch00056 -p1
 %patch00057 -p1
 %patch00058 -p1
-%if %{legacy_qemu_kvm}
 %patch00059 -p1
-%endif
 %patch00060 -p1
+%if %{legacy_qemu_kvm}
 %patch00061 -p1
+%endif
 %patch00062 -p1
 %patch00063 -p1
 %patch00064 -p1
 %patch00065 -p1
-%ifarch aarch64
 %patch00066 -p1
-%endif
-%ifarch %arm %ix86
 %patch00067 -p1
-%endif
+%ifarch aarch64
 %patch00068 -p1
+%endif
+%ifarch %arm %ix86 ppc
 %patch00069 -p1
+%endif
 %patch00070 -p1
+%patch00071 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
 %patch01003 -p1
-%if 0%{?patch-possibly-applied-elsewhere}
 %patch02000 -p1
-%endif
+%if 0%{?patch-possibly-applied-elsewhere}
 %patch02001 -p1
+%endif
 %patch02002 -p1
 %patch02003 -p1
 %patch03000 -p1
@@ -1197,9 +1190,11 @@ efi-vmxnet3.rom}
 %{?x86_default_built_firmware} %{?x86_extra_built_firmware} \
 %{?x86_64_only_default_built_firmware} %{?x86_64_only_extra_built_firmware} }
 
-%endif # ! qemu-linux-user
+# above section is for qemu and qemu-testsuite
+%endif
 
 # ========================================================================
+
 %build
 
 # non-x86 archs still seem to have some issues with Link Time Optimization
@@ -1354,8 +1349,9 @@ cd %blddir
 %endif
 	--enable-xfsctl \
         --enable-xkbcommon \
+# above section is for qemu and qemu-testsuite
 # ------------------------------------------------------------------------
-%else # qemu-linux-user
+%else
 	--without-default-devices \
 	--disable-system --enable-linux-user \
 	--disable-tools --disable-guest-agent \
@@ -1402,7 +1398,9 @@ cd %blddir
 	--disable-vnc \
 	--disable-vvfat \
         --disable-xkbcommon \
-%endif # qemu-linux-user
+
+# above section is for qemu-linux-user
+%endif
 
 %if "%{name}" == "qemu"
 
@@ -1528,7 +1526,8 @@ make %{?_smp_mflags} -C %srcdir/roms slof
 make %{?_smp_mflags} -C %srcdir/roms opensbi64-generic CROSS_COMPILE=
 %endif
 
-%endif # qemu
+# above section is for qemu
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-testsuite"
 
@@ -1563,7 +1562,7 @@ make %{?_smp_mflags} tests/qtest/qom-test V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 make %{?_smp_mflags} check-report.tap V=1
 
-%endif # qemu-testsuite
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -1594,9 +1593,10 @@ make %{?_smp_mflags} V=1
 %define qemu_arch s390x
 %endif
 
-%endif # qemu-linux-user
+%endif
 
 # ========================================================================
+
 %check
 cd %blddir
 %if "%{name}" == "qemu-testsuite"
@@ -1607,7 +1607,7 @@ export QEMU_IO_PROG=%_bindir/qemu-io
 export QEMU_NBD_PROG=%_bindir/qemu-nbd
 make %{?_smp_mflags} check-block V=1
 
-%endif # qemu-testsuite
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -1618,7 +1618,7 @@ make %{?_smp_mflags} check-block V=1
 make %{?_smp_mflags} check-softfloat
 %endif
 
-%endif # qemu-linux-user
+%endif
 
 # ========================================================================
 
@@ -1629,7 +1629,7 @@ cd %blddir
 
 install -D -m 0644 check-report.tap %{buildroot}%_datadir/qemu/check-report.tap
 
-%endif # qemu-testsuite
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -1673,7 +1673,7 @@ ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensa-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensaeb-binfmt
 %fdupes -s %{buildroot}
 
-%endif # qemu-linux-user
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu"
 
@@ -1827,9 +1827,11 @@ if [ ! -f %{_datadir}/%name/skiboot.lid.qemu ] ; then
    update-alternatives --remove skiboot.lid %{_datadir}/%name/skiboot.lid.qemu
 fi
 
-%endif # qemu
+# above section is for qemu
+%endif
 
 # ========================================================================
+
 %files
 %defattr(-, root, root)
 %doc README.rst VERSION
@@ -2372,7 +2374,8 @@ fi
 %defattr(-, root, root)
 %{_unitdir}/ksm.service
 
-%endif # qemu
+# above section is for qemu
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -2413,12 +2416,12 @@ fi
 %_bindir/qemu-*-binfmt
 %_sbindir/qemu-binfmt-conf.sh
 
-%endif # qemu-linux-user
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-testsuite"
 
 %_datadir/qemu/check-report.tap
 
-%endif # qemu-testsuite
+%endif
 
 %changelog

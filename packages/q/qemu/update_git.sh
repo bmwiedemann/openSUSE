@@ -32,6 +32,15 @@ set -e
 
 source ./config.sh
 
+# TODO: Here we should validate the variables that should be set in config.sh
+
+# Zero based numbering, so we subtract 1 here:
+if (( (REPO_COUNT * PATCH_RANGE) - 1 > 9999 )); then
+    FIVE_DIGIT_POTENTIAL=1
+else
+    FIVE_DIGIT_POTENTIAL=0
+fi
+
 declare -A COMMIT_IDS_BY_SUBMODULE_PATH
 
 # Get version info from the packages' tarball - decode and do some checks
@@ -596,7 +605,11 @@ rm -rf $CMP_DIR
 rm -rf checkdir
 
 osc service localrun format_spec_file
+# First, make the results of the older format_spec_file look like what I believe is the intended output
+# And then change the somewhat broken output of the new format_spec_file to what I believe is
+# the intended output
 sed -i 's/^# spec file for package qemu$/# spec file for package qemu%{name_suffix}/g' qemu.spec
+sed -i 's/^# spec file for package qemu-linux-user$/# spec file for package qemu%{name_suffix}/g' qemu.spec
 }
 
 #==============================================================================

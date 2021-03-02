@@ -76,15 +76,14 @@
 %define liburing_min_version 0.3
 %endif
 
-# qemu, qemu-linux-user, and qemu-testsuite "flavors" enabled via OBS Multibuild
-%define flavor @BUILD_FLAVOR@%{nil}
-%if "%flavor" == ""
+# qemu, qemu-linux-user, and qemu-testsuite "flavors" are enabled via OBS Multibuild
+%global flavor @BUILD_FLAVOR@%{nil}
 %define name_suffix %{nil}
-%else
-%define name_suffix -%flavor
+%if "%flavor" == "testsuite"
+%define name_suffix -testsuite
 %endif
-
 %if "%flavor" == "linux-user"
+%define name_suffix -linux-user
 %define summary_string CPU emulator for user space
 %else
 %define summary_string Machine emulator and virtualizer
@@ -133,7 +132,6 @@ PATCH_FILES
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-# ========================================================================
 # Common BuildRequires listed here:
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -157,8 +155,9 @@ provides programs to run user space binaries and libraries meant for another
 architecture. The syscall interface is intercepted and execution below the
 syscall layer occurs on the native hardware and operating system.
 
+# above section is for qemu-linux-user
 # ------------------------------------------------------------------------
-%else # ! qemu-linux-user
+%else
 %if %{build_x86_firmware_from_source}
 BuildRequires:  acpica
 %endif
@@ -168,14 +167,6 @@ BuildRequires:  binutils-devel
 %endif
 BuildRequires:  bison
 BuildRequires:  brlapi-devel
-%ifnarch %{ix86} aarch64 %arm
-BuildRequires:  cross-aarch64-binutils
-BuildRequires:  cross-aarch64-gcc%gcc_version
-%endif
-%ifnarch %{ix86} %arm
-BuildRequires:  cross-arm-binutils
-BuildRequires:  cross-arm-gcc%gcc_version
-%endif
 %if %{build_x86_firmware_from_source}
 %ifnarch %{ix86} x86_64
 # We must cross-compile on non-x86*
@@ -236,21 +227,18 @@ BuildRequires:  pkgconfig(liburing) >= %liburing_min_version
 %endif
 BuildRequires:  lzfse-devel
 BuildRequires:  multipath-tools-devel
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.13
-BuildRequires:  pkgconfig(lzo2)
-BuildRequires:  pkgconfig(vdeplug)
-BuildRequires:  pkgconfig(xkbcommon)
-%if %{build_x86_firmware_from_source}
-BuildRequires:  nasm
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.13
+BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.12.3
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(vdeplug)
+BuildRequires:  pkgconfig(xkbcommon)
 %{?systemd_ordering}
 %if %{kvm_available}
 BuildRequires:  pkgconfig(udev)
@@ -332,7 +320,6 @@ Obsoletes:      qemu-audio-oss < %{qemuver}
 Obsoletes:      qemu-audio-sdl < %{qemuver}
 Obsoletes:      qemu-ui-sdl < %{qemuver}
 
-# ------------------------------------------------------------------------
 %define generic_qemu_description QEMU provides full machine emulation and cross architecture usage. It closely\
 integrates with KVM and Xen virtualization, allowing for excellent performance.\
 Many options are available for defining the emulated environment, including\
@@ -876,7 +863,8 @@ merges anonymous (private) pages (not pagecache ones).
 
 This package provides a service file for starting and stopping KSM.
 
-%else # qemu
+# above section is for qemu
+%else
 BuildRequires:  bc
 BuildRequires:  qemu-arm = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
@@ -920,10 +908,13 @@ BuildRequires:  qemu-x86 = %{qemuver}
 %description
 This package records qemu testsuite results and represents successful testing.
 
-%endif # ! qemu-testsuite
-%endif # ! qemu-linux-user
+# above section is for qemu-testsuite
+%endif
+# above section is for qemu and qemu-testsuite
+%endif
 
 # ========================================================================
+
 %prep
 %setup -q -n %{srcname}-%{expand:%%(SV=%{srcver};echo ${SV%%%%+git*})}
 PATCH_EXEC
@@ -1016,9 +1007,11 @@ efi-vmxnet3.rom}
 %{?x86_default_built_firmware} %{?x86_extra_built_firmware} \
 %{?x86_64_only_default_built_firmware} %{?x86_64_only_extra_built_firmware} }
 
-%endif # ! qemu-linux-user
+# above section is for qemu and qemu-testsuite
+%endif
 
 # ========================================================================
+
 %build
 
 # non-x86 archs still seem to have some issues with Link Time Optimization
@@ -1173,8 +1166,9 @@ cd %blddir
 %endif
 	--enable-xfsctl \
         --enable-xkbcommon \
+# above section is for qemu and qemu-testsuite
 # ------------------------------------------------------------------------
-%else # qemu-linux-user
+%else
 	--without-default-devices \
 	--disable-system --enable-linux-user \
 	--disable-tools --disable-guest-agent \
@@ -1221,7 +1215,9 @@ cd %blddir
 	--disable-vnc \
 	--disable-vvfat \
         --disable-xkbcommon \
-%endif # qemu-linux-user
+
+# above section is for qemu-linux-user
+%endif
 
 %if "%{name}" == "qemu"
 
@@ -1347,7 +1343,8 @@ make %{?_smp_mflags} -C %srcdir/roms slof
 make %{?_smp_mflags} -C %srcdir/roms opensbi64-generic CROSS_COMPILE=
 %endif
 
-%endif # qemu
+# above section is for qemu
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-testsuite"
 
@@ -1382,7 +1379,7 @@ make %{?_smp_mflags} tests/qtest/qom-test V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 make %{?_smp_mflags} check-report.tap V=1
 
-%endif # qemu-testsuite
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -1413,9 +1410,10 @@ make %{?_smp_mflags} V=1
 %define qemu_arch s390x
 %endif
 
-%endif # qemu-linux-user
+%endif
 
 # ========================================================================
+
 %check
 cd %blddir
 %if "%{name}" == "qemu-testsuite"
@@ -1426,7 +1424,7 @@ export QEMU_IO_PROG=%_bindir/qemu-io
 export QEMU_NBD_PROG=%_bindir/qemu-nbd
 make %{?_smp_mflags} check-block V=1
 
-%endif # qemu-testsuite
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -1437,7 +1435,7 @@ make %{?_smp_mflags} check-block V=1
 make %{?_smp_mflags} check-softfloat
 %endif
 
-%endif # qemu-linux-user
+%endif
 
 # ========================================================================
 
@@ -1448,7 +1446,7 @@ cd %blddir
 
 install -D -m 0644 check-report.tap %{buildroot}%_datadir/qemu/check-report.tap
 
-%endif # qemu-testsuite
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -1492,7 +1490,7 @@ ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensa-binfmt
 ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensaeb-binfmt
 %fdupes -s %{buildroot}
 
-%endif # qemu-linux-user
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu"
 
@@ -1646,9 +1644,11 @@ if [ ! -f %{_datadir}/%name/skiboot.lid.qemu ] ; then
    update-alternatives --remove skiboot.lid %{_datadir}/%name/skiboot.lid.qemu
 fi
 
-%endif # qemu
+# above section is for qemu
+%endif
 
 # ========================================================================
+
 %files
 %defattr(-, root, root)
 %doc README.rst VERSION
@@ -2191,7 +2191,8 @@ fi
 %defattr(-, root, root)
 %{_unitdir}/ksm.service
 
-%endif # qemu
+# above section is for qemu
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
@@ -2232,12 +2233,12 @@ fi
 %_bindir/qemu-*-binfmt
 %_sbindir/qemu-binfmt-conf.sh
 
-%endif # qemu-linux-user
+%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-testsuite"
 
 %_datadir/qemu/check-report.tap
 
-%endif # qemu-testsuite
+%endif
 
 %changelog

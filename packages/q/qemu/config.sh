@@ -24,16 +24,57 @@ GIT_DIR=/dev/shm/qemu-factory-git-dir
 CMP_DIR=/dev/shm/qemu-factory-cmp-dir
 BUNDLE_DIR=/dev/shm/qemu-factory-bundle-dir
 
-# For the following, use 1 or 0 as needed
+# In following, use 1 or 0 as needed (representing true or false respectively)
 NUMBERED_PATCHES=0
 
 PATCH_RANGE=1000
 REPO_COUNT=36
 
+# This tracks the git submodule path within the superproject (1st entry)
+PATCH_PATH_MAP=(
+    ""
+    "roms/seabios/"
+    "roms/ipxe/"
+    "roms/sgabios/"
+    "roms/edk2/"
+    "roms/skiboot/"
+    "roms/SLOF/"
+    "roms/openbios/"
+    "ui/keycodemapdb/"
+    "slirp/"
+    "roms/u-boot/"
+    "roms/qboot/"
+    "dtc/"
+    "roms/opensbi/"
+    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/"
+    "capstone/"
+    "roms/qemu-palcode/"
+    "roms/seabios-hppa/"
+    "roms/u-boot-sam460ex/"
+    "roms/QemuMacDrivers/"
+    "meson/"
+    "tests/fp/berkeley-softfloat-3/"
+    "tests/fp/berkeley-testfloat-3/"
+    "roms/edk2/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3/"
+    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/boringssl/"
+    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/krb5/"
+    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/pyca-cryptography/"
+    "roms/edk2/BaseTools/Source/C/BrotliCompress/brotli/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/"
+    "roms/edk2/MdeModulePkg/Universal/RegularExpressionDxe/oniguruma/"
+    "roms/edk2/UnitTestFrameworkPkg/Library/CmockaLib/cmocka/"
+    "roms/vbootrom/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/esaxx/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/libdivsufsort/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/esaxx/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/libdivsufsort/"
+)
+
 # Perhaps we need to instead use the terminal local dirname as the index
 # and store the ~/git/ as a separate VARIABLE
 # This way, we only have one big array instead of two
 # BUT STILL WE NEED TO START WITH THE DATA STORED SOMEWHERE!!!!!!
+# (order must correspond to PATCH_PATH_MAP)
 LOCAL_REPO_MAP=(
     ~/git/qemu-opensuse
     ~/git/qemu-seabios
@@ -77,50 +118,3 @@ LOCAL_REPO_MAP=(
 REQUIRED_LOCAL_REPO_MAP=(
     ~/git/qemu-opensuse
 )
-
-PATCH_PATH_MAP=(
-    ""
-    "roms/seabios/"
-    "roms/ipxe/"
-    "roms/sgabios/"
-    "roms/edk2/"
-    "roms/skiboot/"
-    "roms/SLOF/"
-    "roms/openbios/"
-    "ui/keycodemapdb/"
-    "slirp/"
-    "roms/u-boot/"
-    "roms/qboot/"
-    "dtc/"
-    "roms/opensbi/"
-    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/"
-    "capstone/"
-    "roms/qemu-palcode/"
-    "roms/seabios-hppa/"
-    "roms/u-boot-sam460ex/"
-    "roms/QemuMacDrivers/"
-    "meson/"
-    "tests/fp/berkeley-softfloat-3/"
-    "tests/fp/berkeley-testfloat-3/"
-    "roms/edk2/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3/"
-    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/boringssl/"
-    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/krb5/"
-    "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/pyca-cryptography/"
-    "roms/edk2/BaseTools/Source/C/BrotliCompress/brotli/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/"
-    "roms/edk2/MdeModulePkg/Universal/RegularExpressionDxe/oniguruma/"
-    "roms/edk2/UnitTestFrameworkPkg/Library/CmockaLib/cmocka/"
-    "roms/vbootrom/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/esaxx/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/libdivsufsort/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/esaxx/"
-    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/libdivsufsort/"
-
-)
-
-# Zero based numbering, so we subtract 1 here:
-if (( (REPO_COUNT * PATCH_RANGE) - 1 > 9999 )); then
-    FIVE_DIGIT_POTENTIAL=1
-else
-    FIVE_DIGIT_POTENTIAL=0
-fi
