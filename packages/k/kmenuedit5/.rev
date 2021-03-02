@@ -874,4 +874,12 @@
     <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
     <requestid>872087</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>aa8ca4bec632d380b79d4f386f52a867</srcmd5>
+    <version>5.21.1</version>
+    <time>1614684531</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Plasma 5.21.1</comment>
+    <requestid>875017</requestid>
+  </revision>
 </revisionlist>
