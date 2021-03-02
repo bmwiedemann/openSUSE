@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymisp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define misp_objects_revision c234a4b36dac02f4a6b0b800cf90b5bce404a474
+%define misp_objects_revision 2b1c3532dccad651f960ff71defdbc422c40ef0c
 Name:           python-pymisp
-Version:        2.4.135.3
+Version:        2.4.138
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -33,21 +33,28 @@ Source1:        https://github.com/MISP/misp-objects/archive/%{misp_objects_revi
 #Source:         https://files.pythonhosted.org/packages/source/p/pymisp/pymisp-%%{version}.tar.gz
 # packaging tool
 Source2:        update-misp-objects.sh
+Source3:        python-pymisp-doc-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonschema
+Requires:       python-oletools
 Requires:       python-python-dateutil
 Requires:       python-requests
+Recommends:     python-extract-msg >= 0.28.0
 Recommends:     %{name}-doc
 Recommends:     python-magic
+Recommends:     python-reportlab
 Suggests:       python-pydeep
 BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module oletools}
+BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-magic}
+BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
 # /SECTION
@@ -92,7 +99,9 @@ popd
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+# requires optional dependencies which we don't have (extract_msg, RTFDE etc.)
+rm tests/test_emailobject.py
+%pytest
 
 %files %{python_files}
 %doc README.md
