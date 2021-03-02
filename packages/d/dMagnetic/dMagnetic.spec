@@ -1,7 +1,7 @@
 #
 # spec file for package dMagnetic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dMagnetic
-Version:        0.28
+Version:        0.30
 Release:        0
 Summary:        An interpreter for Magnetic Scrolls games
 License:        BSD-2-Clause

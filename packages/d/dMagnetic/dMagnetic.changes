@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  1 07:12:35 UTC 2021 - Enno Gotthold <egotthold@suse.com>
+
+- Update to 0.30
+  This is a code cleanup release. It includes lots of bug fixes. For example:
+  A picture from 'Fish!' was missing. What a shame. In addtion to this, I also
+  took the liberty of cleaning up the website a little bit. Hope you like it.
+- Update to 0.29
+  Welcome to the "Night before Christmas" Release of dMagnetic! This one allows
+  players to use ATR images from the AtariXL and Atari800 releases of the games.
+  In addtition to this, a new graphics vmode has been added: UTF. It works on
+  more terminals than the sixel mode and allows more people to enjoy the
+  beautiful pictures! 
+
+-------------------------------------------------------------------
 Sun Dec 20 14:38:18 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28:
