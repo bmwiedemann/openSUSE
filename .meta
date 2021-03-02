@@ -1,6 +1,0 @@
-<package name="yast2-samba-client" project="openSUSE:Factory">
-  <title>YaST2 - Samba Client Configuration</title>
-  <description>This package contains the YaST2 component for configuration of an SMB
-workgroup/domain and authentication against an SMB domain.</description>
-  <devel project="YaST:Head" package="yast2-samba-client"/>
-</package>
