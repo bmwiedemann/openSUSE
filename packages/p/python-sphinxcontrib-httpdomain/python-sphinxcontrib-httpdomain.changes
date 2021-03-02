@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  1 20:57:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python2 build - no longer builds and none of the rest of sphinx
+  is built for python2
+
+-------------------------------------------------------------------
 Tue Feb  9 07:55:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Bump {Build,}Require to tornado5. 

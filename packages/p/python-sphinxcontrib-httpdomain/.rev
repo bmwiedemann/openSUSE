@@ -170,4 +170,13 @@
     <comment>- Bump {Build,}Require to tornado5.</comment>
     <requestid>870414</requestid>
   </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>a63d7999a9015db2b99a5a6181e296fe</srcmd5>
+    <version>1.7.0</version>
+    <time>1614684945</time>
+    <user>RBrownSUSE</user>
+    <comment>- skip python2 build - no longer builds and none of the rest of sphinx
+  is built for python2</comment>
+    <requestid>876055</requestid>
+  </revision>
 </revisionlist>
