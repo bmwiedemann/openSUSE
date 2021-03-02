@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 23 16:29:31 UTC 2021 - Reinhard Max <max@suse.com>
+
+- The bind plugin does not need bind-devel.
+
+-------------------------------------------------------------------
 Sun Dec 20 19:26:08 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add mqtt plugin

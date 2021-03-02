@@ -1,7 +1,7 @@
 #
 # spec file for package collectd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2005-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -68,7 +68,6 @@ Patch11:        avoid-pg-config.patch
 BuildRequires:  apache2
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  bind-devel
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
