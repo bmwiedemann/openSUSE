@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 27 06:18:05 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.8.1:
+  - Fix search by url
+  - Updated translations
+  - Fix videoIdFromUrl
+  - Fix missing name signal
+  - Remove json debug
+  - Cleanup
+
+-------------------------------------------------------------------
 Fri Feb 19 17:12:50 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.8:
