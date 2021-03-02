@@ -37,6 +37,8 @@ Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
+Source8:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz.sig
+Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 Patch0:         shebang.diff
 
 BuildRequires:  fdupes
