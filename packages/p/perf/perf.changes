@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  2 06:05:56 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- add:
+  * 0001-perf-annotate-Fix-jump-parsing-for-C-code.patch
+    (bsc#1182888)
+  * 0001-perf-symbols-Resolve-symbols-against-debug-file-firs.patch
+    (bsc#1180610)
+
+-------------------------------------------------------------------
 Thu Nov 19 06:31:30 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
 
 - pass GTK2=1 to make (needed after 4751bddd3f98)

@@ -461,4 +461,16 @@
   Delete patch: 0001-perf-fix-off-by-ones-in-memset-after-realloc.patch</comment>
     <requestid>849332</requestid>
   </revision>
+  <revision rev="57" vrev="66">
+    <srcmd5>c6321ca5ee51909c33740bef7e26a70e</srcmd5>
+    <version>MACRO</version>
+    <time>1614684973</time>
+    <user>RBrownSUSE</user>
+    <comment>- add:
+  * 0001-perf-annotate-Fix-jump-parsing-for-C-code.patch
+    (bsc#1182888)
+  * 0001-perf-symbols-Resolve-symbols-against-debug-file-firs.patch
+    (bsc#1180610)</comment>
+    <requestid>876132</requestid>
+  </revision>
 </revisionlist>
