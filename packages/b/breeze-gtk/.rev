@@ -748,4 +748,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
     <requestid>872076</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>1f6d4540509989eb8c26585fa53874bb</srcmd5>
+    <version>5.21.1</version>
+    <time>1614684506</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Plasma 5.21.1</comment>
+    <requestid>875006</requestid>
+  </revision>
 </revisionlist>
