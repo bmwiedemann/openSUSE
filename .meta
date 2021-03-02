@@ -1,5 +1,0 @@
-<package name="sdl-ball" project="openSUSE:Factory">
-  <title>sdl-ball</title>
-  <description>SDL-Ball is a Free/OpenSource brick-breaking game with pretty graphics. It is written in C++ using SDL and OpenGL.</description>
-  <devel project="games" package="sdl-ball"/>
-</package>
