@@ -18,7 +18,7 @@ Wed Jan  9 00:52:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Jan  8 12:32:04 CET 2019 - tiwai@suse.de
 
-- Update to alsa-oss 1.1.8:
+- Update to alsa-oss 1.1.8 (bsc#1181571):
   Fix the build with the recent glibc
 - Remove obsoleted patch:
   remove-libio.patch:

@@ -230,4 +230,12 @@
     <comment></comment>
     <requestid>751233</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>f0135e600851cd21d5c85f8c34914cbe</srcmd5>
+    <version>1.1.8</version>
+    <time>1614684353</time>
+    <user>RBrownSUSE</user>
+    <comment>Just updating the changelog for armv7l enablement (bsc#1181571)</comment>
+    <requestid>875117</requestid>
+  </revision>
 </revisionlist>

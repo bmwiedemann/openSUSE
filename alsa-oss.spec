@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-oss
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        LD_PRELOAD-able library that translates OSS into ALSA calls
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://www.alsa-project.org/
+URL:            http://www.alsa-project.org/
 Source:         ftp://ftp.alsa-project.org/pub/oss-lib/alsa-oss-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  alsa-devel
