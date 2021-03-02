@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb 28 15:07:42 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- added patch to restore functionality (via CMake), change Cflags
+  (restore-pkg-config-functionality.patch)
+- Update to version 1.9.3
+  * 1.9.3 fixes a critical ordering issue
+    in RTreenearestNeighbor sorting
+- Update to version 1.9.2
+  * 1.9.2 is a quick release of 1.9.1 to fix some
+    override declarations that were too aggressive and caused
+    the wrong methods to be called.
+- Update to version 1.9.1
+  * Expose Index_Contains_id and Index_Contains_obj in C API
+- Update to version 1.9.0
+  * Add flush function to each index type
+  * Expose internal Nodes of query for RTree types
+  * Fix unnecessary locking calls in pthread on Linux
+  * Fix Node::reinsertData selection criteria
+  * Correct findLeastEnlargement to always return a correct value
+  * Update the root MBR during condenseTree
+  * Fix adjustTree during R*-tree reinserts
+
+-------------------------------------------------------------------
 Mon Dec 28 09:54:41 UTC 2015 - mpluskal@suse.com
 
 - Install license

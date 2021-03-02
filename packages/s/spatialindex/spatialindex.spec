@@ -1,7 +1,7 @@
 #
 # spec file for package libspatialindex
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,17 @@
 # See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 
 Name:           spatialindex
-Version:        1.8.5
+Version:        1.9.3
 Release:        0
 Summary:        A library for spatial indexing
 License:        MIT
 Group:          Productivity/Graphics/Other
-Url:            https://libspatialindex.github.io
-Source0:        http://download.osgeo.org/libspatialindex/spatialindex-src-%{version}.tar.bz2
-Source1:        http://download.osgeo.org/libspatialindex/spatialindex-src-%{version}.tar.bz2.md5
+Url:            https://libspatialindex.org/
+Source0:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2
+Source1:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2.sha512sum
+# PATCH-FIX-OPENSUSE restore-pkg-config-functionality.patch -- pkg-config: restore functionality (via CMake), change Cflags
+Patch0:         restore-pkg-config-functionality.patch
+BuildRequires:  cmake
 BuildRequires:  make
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -69,14 +72,14 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n %{name}-src-%{version}
+%patch0 -p1
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-make install DESTDIR=%{buildroot}
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
+%cmake_install
 
 %post -n lib%{name}4 -p /sbin/ldconfig
 
