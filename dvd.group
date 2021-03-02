@@ -905,6 +905,7 @@
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-mozc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-mozc-candidate-window" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="ibus-sunpinyin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-cangjie" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2005,6 +2006,7 @@
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgnustep-base1_27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgnutls30-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgoa-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2356,6 +2358,7 @@
     <package name="libnumbertext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnumbertext-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3964,7 +3967,6 @@
     <package name="ruby2.7-rubygem-exception_notification" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-excon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-execjs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-factory_girl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-fake_ftp-0_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-faraday" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-faraday-net_http" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4072,12 +4074,10 @@
     <package name="ruby2.7-rubygem-net-scp-1_2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-net-sftp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-net-ssh" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-net-ssh-gateway" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-netrc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-nori" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-oauth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-omniauth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-omniauth-github" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4671,10 +4671,12 @@
     <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:un-fonts -->
+    <package name="unar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="unbound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unison" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="units" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="unrar_wrapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="unzip-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
