@@ -1,5 +1,0 @@
-<package name="python-cluster-preflight-check" project="openSUSE:Factory">
-  <title>python-cluster-preflight-check</title>
-  <description>python-cluster-preflight-check by its name targets to simulate cluster failures and to verify some key configuration right before it turns to production. Cluster failure simulation can go wild and the results can be different, even could be wrongly interpreted by different people. This tool standardizes the correct steps as the simple CLI. It is carefully designed with the proper steps and must not change any configuration to harm the production.</description>
-  <devel project="network:ha-clustering:Factory" package="python-cluster-preflight-check"/>
-</package>
