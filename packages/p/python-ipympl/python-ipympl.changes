@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  1 10:06:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Remove unused tarball source
+
+-------------------------------------------------------------------
+Fri Feb 26 22:09:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.6.3 w/ labextension v0.8.3
+  * Fix JupyterLab 2 support #296
+  * Fix plt.pause() behaviour #291
+- Release 0.6.0
+  * Add support for JupyterLab 3
+- Use the Wheel as it bundles the js stuff.
+- Enable test with example notebook and pytest --nbval
+- No requirement on jupyterlab or notebook: The user can decide
+  how to use this widget with either or.
+- Skip python36 build: python36-matplotlib is not available in TW
+
+-------------------------------------------------------------------
 Sat Sep 19 15:15:16 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

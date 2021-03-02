@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipympl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define labver  0.7.4
-%define mainver 0.5.8
+%define         skip_python36 1
+%define labver  0.8.3
+%define mainver 0.6.3
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{mainver}
@@ -28,24 +29,28 @@ Summary:        Matplotlib Jupyter Extension
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matplotlib/ipympl
-Source:         https://files.pythonhosted.org/packages/source/i/ipympl/ipympl-%{mainver}.tar.gz
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module ipywidgets >= 7.5.0}
+Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipympl/ipympl-%{mainver}-py2.py3-none-any.whl
+Source1:        https://raw.githubusercontent.com/matplotlib/ipympl/master/examples/ipympl.ipynb
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module ipykernel >= 4.7}
+BuildRequires:  %{python_module ipywidgets >= 7.6.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
-BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module matplotlib-web}
+BuildRequires:  %{python_module nbval}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
-BuildRequires:  npm
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 Requires:       python-ipykernel >= 4.7
-Requires:       python-ipython
-Requires:       python-ipywidgets >= 7.5.0
+Requires:       python-ipywidgets >= 7.6.0
 Requires:       python-matplotlib >= 2.0.0
+Requires:       python-matplotlib-web
 Provides:       python-jupyter_ipympl = %{mainver}
 Obsoletes:      python-jupyter_ipympl < %{mainver}
 Provides:       jupyter-ipympl = %{mainver}
+Suggests:       python-jupyterlab
+Suggests:       python-notebook
 BuildArch:      noarch
 %python_subpackages
 
@@ -80,35 +85,37 @@ Jupyter extension to display matplotlib plots in a widget.
 
 This package provides the JupyterLab extension.
 
-After installation you must run:
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
-
 %prep
-%setup -q -n ipympl-%{mainver}
+%setup -q -c ipympl-%{mainver} -D -T
+%python_expand mkdir -p build; cp %{SOURCE0} build/
+cp %{SOURCE1} .
 
 %build
-%python_build
+:
 
 %install
-%python_install
-
+%pyproject_install
 %jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
+cp %{buildroot}%{python3_sitelib}/ipympl-%{mainver}.dist-info/LICENSE .
+
+%check
+%pytest --nbval ipympl.ipynb
 
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/ipympl/
-%{python_sitelib}/ipympl-%{mainver}-py*.egg-info
+%{python_sitelib}/ipympl-%{mainver}.dist-info
 
 %files -n jupyter-ipympl
 %license LICENSE
-%doc README.md
 %{_jupyter_nbextension_dir}/jupyter-matplotlib
 %config %{_jupyter_nb_notebook_confdir}/jupyter-matplotlib.json
 
 %files -n jupyter-ipympl-jupyterlab
 %license LICENSE
-%{_jupyter_labextensions_dir}/jupyter-matplotlib-%{labver}.tgz
+%dir %{_jupyter_prefix}/labextensions
+%{_jupyter_prefix}/labextensions/jupyter-matplotlib
 
 %changelog
