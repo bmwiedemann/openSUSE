@@ -1,8 +1,8 @@
 #
 # spec file for package python-ospd
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ospd
-Version:        20.8.0
+Version:        20.8.1
 Release:        0
 Summary:        A base class for the OSP (Open Scanner Protocol)
-License:        GPL-2.0-or-later
+License:        AGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://www.openvas.org
 Source:         https://github.com/greenbone/ospd/archive/v%{version}.tar.gz#/ospd-%{version}.tar.gz

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar  2 07:39:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.8.1
+  Added
+  * Add debug level log messages. #373
+  Changed
+  * Improve logging for unsatisfied vts dependencies.
+  * Do not use busy wait when waiting for the openvas scan process
+    to finish.
+  * The description field of the systemd ospd-openvas.service file
+    was updated.
+  * Improve logging for unexpected data in script_xref tags.
+  Fixed
+  * Fix nvticache name when for stable version from sources.
+  * Fix stop scan during preferences handling, before spawining
+    OpenVAS.
+  * Fix alive test preferences when a non default method is
+    selected.
+  * Check for empty vts preferences list.
+  * Fix progress calculation when the host count differs from the
+    target string count.
+
+-------------------------------------------------------------------
 Tue Aug 11 17:53:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use %pytest for running the unittest-based testsuite
