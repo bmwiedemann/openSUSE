@@ -1,7 +1,7 @@
 #
 # spec file for package podman
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,17 +22,16 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        2.2.1
+Version:        3.0.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/containers/libpod
+URL:            https://github.com/containers/libpod
 Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source3:        %{name}-rpmlintrc
 Source4:        README.SUSE.SLES
-Patch0:         varlink.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
@@ -48,24 +47,24 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
+BuildRequires:  golang(API) = 1.13
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  golang(API) = 1.13
 # Build fails with PIE enabled on ppc64le due to boo#1098017
 %ifarch ppc64le
 #!BuildIgnore: gcc-PIE
 %endif
 Recommends:     apparmor-parser
 Recommends:     apparmor-abstractions
+Requires:       catatonit
 Requires:       cni
 Requires:       cni-plugins
 Requires:       conmon
+Requires:       fuse-overlayfs
 Requires:       iptables
 Requires:       libcontainers-common >= 20200727
 Requires:       runc >= 1.0.0~rc4
 Requires:       slirp4netns >= 0.4.0
-Requires:       catatonit
-Requires:       fuse-overlayfs
 Requires:       timezone
 Recommends:     %{name}-cni-config = %{version}
 Suggests:       katacontainers
@@ -84,7 +83,6 @@ skopeo, as they all share the same datastore backend.
 
 %prep
 %setup -q
-%patch0 
 
 %package cni-config
 Summary:        Basic CNI configuration for podman
