@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libhangul)
 BuildRequires:  pkgconfig(python3)
 Requires:       python3-gobject
+Requires:       ibus
 # Make sure there is a font available. Pango 1.44 requires
 # a scalable font. However, since scalable-font-ko does not
 # pull the current default Korean font, Noto Sans KR, thereby
