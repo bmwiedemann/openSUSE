@@ -258,7 +258,6 @@ ln -s /sbin/sysctl %{buildroot}%{_sbindir}/sysctl
 %endif
 
 %find_lang procps-ng --with-man --all-name
-echo '%%dir %%{_mandir}/uk' >> procps-ng.lang
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

@@ -1214,4 +1214,12 @@ There are also man pages translations but they doesn't get installed automatical
   * top: fix potential SEGV involving -p switch            merge #114</comment>
     <requestid>871141</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>c0ecf6deb04c127d2b0da9001b0de261</srcmd5>
+    <version>3.3.17</version>
+    <time>1614684436</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874798</requestid>
+  </revision>
 </revisionlist>

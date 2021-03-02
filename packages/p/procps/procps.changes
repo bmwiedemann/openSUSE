@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 18:57:37 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove /usr/share/man/uk dir to file list for lang sub package:
+  It's now provided by filesystem.
+
+-------------------------------------------------------------------
 Thu Feb 11 08:46:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add /usr/share/man/uk dir to file list for lang sub package 
