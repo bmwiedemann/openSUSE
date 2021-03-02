@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:52:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * Correct usage of preferredHeight
+  * Use more appropriate delete and download icons in compact app delegate
+  * Remove weird padding at the bottom of resource lists
+  * pk: make sure search queries eventually finish (kde#432384)
+  * Properly show the pointing hand on screenshot thumbnails
+  * Show the correct screenshot when clicking it (kde#433123)
+  * pk: Improve updates progress when doing an offline update
+  * Don't truncate reviews in compact mode (kde#433078)
+  * notifier: Reduce the unattended updates idle timeout to 15'
+  * Increase maximum width of review dialog to a sane size (kde#432807)
+
+-------------------------------------------------------------------
 Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.0
