@@ -1,7 +1,7 @@
 #
 # spec file for package python-cftime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# no numpy for Python 3.6
+%define skip_python36 1
 Name:           python-cftime
-Version:        1.2.0
+Version:        1.4.1
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT
@@ -55,7 +57,7 @@ rm setup.cfg
 %python_expand PYTHONPATH="%{buildroot}%{$python_sitearch}" py.test-%{$python_bin_suffix} -v
 
 %files %{python_files}
-%license COPYING
+%license LICENSE
 %doc README.md
 %{python_sitearch}/*
 

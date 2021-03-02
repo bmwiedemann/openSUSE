@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Mar  2 05:51:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.1:
+ 
+ * Restore use of calendar-specific sub-classes in `cftime.num2date`,
+   `cftime.datetime.__add__`, and `cftime.datetime.__sub__`.  The use of them 
+   will be removed in a later release.
+ * add 'fromordinal' static method to create a cftime.datetime instance
+   from a julian day ordinal and calendar (inverse of 'toordinal').
+ * `cftime.date2num` will now always return an array of integers, if the units
+   and times allow.  Previously this would only be true if the units were
+   'microseconds' (PR #225).  In other circumstances, as before, `cftime.date2num`
+   will return an array of floats.
+ * Rewrite of julian day/calendar functions (_IntJulianDayToCalendar and 
+   _IntJulianDayFromCalendar) to remove GPL'ed code.  cftime license
+   changed to MIT (to be consistent with netcdf4-python). 
+ * Added datetime.toordinal() (returns julian day, kwarg 'fractional'
+   can be used to include fractional day).
+ * cftime.datetime no longer uses calendar-specific sub-classes.
+ * fix for issue #211 (PR #212) bug in masked array handling in date2num)
+ * switch from travis/appveyor to github actions for CI/CD (PR #215).
+ * switch to cython language_level=3 (no more support for python 2) (PR #217).
+ * add __init__.py to test dir so pytest coverage works again. Add Coveralls
+   step to github actions workflow to upload coverage data to coveralls.io (PR
+   #217).
+ * move package under 'src' directory so cftime can be imported
+   from install dir (PR #218 - see
+   https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-structure).
+ * zero pad years in strtime (issue #194)
+ * have cftime.datetime constuctor create 'calendar-aware' instances (default is
+   'standard' calendar, if calendar='' or None the instance is not calendar aware and some
+   methods, like dayofwk, dayofyr, __add__ and __sub__, will not work). Fixes issue #198.
+   The calendar specific sub-classes are now deprecated, but remain for now
+   as stubs that just instantiate the base class and override __repr__.
+ * update regex in _cpdef _parse_date so reference years with more than four
+   digits can be handled. 
+ * Change default calendar in cftime.date2num from 'standard' to None
+   (calendar associated with first input datetime object is used).
+ * add `cftime.datetime.tzinfo=None` for compatibility with python datetime
+   (issue #208).
+ * num2date uses 'proleptic_gregorian' scheme when basedate is post-Gregorian but date is pre-Gregorian
+   (issue #182).
+ * fix 1.2.0 regression (date2num no longer works with numpy scalar array inputs, issue #185).
+ * Fix for issue #187 (have date2num round to the nearest second when within 1
+   microsecond).
+ * Fix for issue #189 (leap years calculated incorrectly for negative years in
+   proleptic_gregorian calendar).
+- No longer build for Python 3.6, due to no NumPy.
+- Correct license file name.
+
+-------------------------------------------------------------------
 Thu Jul  9 04:32:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.2.0:
