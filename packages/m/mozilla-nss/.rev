@@ -2276,4 +2276,12 @@
 - removed obsolete ppc-old-abi-v3.patch</comment>
     <requestid>867003</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>98a3e4b85b7d4d4e91aaaf1f05b35826</srcmd5>
+    <version>3.61</version>
+    <time>1614684494</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875778</requestid>
+  </revision>
 </revisionlist>

@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.60
+%global nss_softokn_fips_version 3.61
 %define NSPR_min_version 4.29
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.60.1
+Version:        3.61
 Release:        0
-%define underscore_version 3_60_1
+%define underscore_version 3_61
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -68,6 +68,7 @@ Patch24:        nss-fips-use-strong-random-pool.patch
 Patch25:        nss-fips-detect-fips-mode-fixes.patch
 Patch26:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
 Patch27:        nss-fips-aes-keywrap-post.patch
+Patch28:        nss-btrfs-sqlite.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -223,6 +224,7 @@ cd nss
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch28 -p1
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins
@@ -259,6 +261,7 @@ export LIBDIR=%{_libdir}
 %ifarch x86_64 s390x ppc64 ppc64le ia64 aarch64 riscv64
 export USE_64=1
 %endif
+export NSS_DISABLE_GTESTS=1
 export NSS_USE_SYSTEM_SQLITE=1
 #export SQLITE_LIB_NAME=nsssqlite3
 MAKE_FLAGS="BUILD_OPT=1"
@@ -396,6 +399,7 @@ install -m 644 %{SOURCE9} %{buildroot}%{nssdbdir}
 %postun -n libfreebl3 -p /sbin/ldconfig
 %post -n libsoftokn3 -p /sbin/ldconfig
 %postun -n libsoftokn3 -p /sbin/ldconfig
+
 %post sysinit
 /sbin/ldconfig
 # make sure the current config is enabled

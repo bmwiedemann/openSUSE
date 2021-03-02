@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 28 12:01:32 UTC 2021 - Sasi Olin <hel@lcp.world>
+
+- Add nss-btrfs-sqlite.patch to address bmo#1690232
+
+-------------------------------------------------------------------
+Sun Feb 21 14:46:47 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.61
+  * required for Firefox 86
+  * bmo#1682071 - Fix issue with IKE Quick mode deriving incorrect key
+                  values under certain conditions.
+  * bmo#1684300 - Fix default PBE iteration count when NSS is compiled
+                  with NSS_DISABLE_DBM.
+  * bmo#1651411 - Improve constant-timeness in RSA operations.
+  * bmo#1677207 - Upgrade Google Test version to latest release.
+  * bmo#1654332 - Add aarch64-make target to nss-try.
+
+-------------------------------------------------------------------
 Sun Jan 24 09:55:03 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.60.1
