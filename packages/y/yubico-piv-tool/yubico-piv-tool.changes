@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Feb 28 18:33:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * ykpiv: Increased SO version
+  * ykpiv: Fixed minor memory leaks
+  * ykpiv: Improved error handling
+  * ykpiv: Improved handling of PCSC card validation
+  * ykcs11: Updated Cryptoki version
+  * ykcs11: Support for CKM_ECDH1_DERIVE mechanism info
+  * ykcs11: Support for destroying ECDH derived keys
+  * ykcs11: Improved handling of PIN after device re-connection
+  * ykcs11: Improved debug logging
+  * cmd: Improved parsing of certificate Distinguished Name to allow an escape character
+  * cmd: Warning to discourage generating RSA1024 keys
+  * build: Use of platform standard installation path when building yubico-piv-tool
+  * tests: Improved testing
+  * Replaced building with autotool with building with cmake
+  * Security update for YSA-2020-02
+  * ykpiv: Fixed potential memory leaks
+  * ykpiv: Use PIN-protected MGMT key if the device is configured that way
+  * ykpiv: Added attestation to CSR if requested
+  * ykpiv: Fixed compatibility with LibreSSL
+  * ykcs11: Improved handling of error codes
+  * ykcs11: Improved handling of examples in the PKCS11 specifications
+  * ykcs11: Added the possibility to have debug output as a runtime setting
+  * ykcs11: Added support to unblock PIN with PUK
+  * ykcs11: Make C_SetPIN backwards compatible while also allowing unblock PIN
+  * tests: Improved tests 
+- run tests
+- add pthread-link.patch
+
+-------------------------------------------------------------------
 Sun Mar  1 00:11:08 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Version 2.0.0

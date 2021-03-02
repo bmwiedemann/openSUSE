@@ -1,7 +1,7 @@
 #
 # spec file for package yubico-piv-tool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover  1
+%define sover  2
 Name:           yubico-piv-tool
-Version:        2.0.0
+Version:        2.2.0
 Release:        0
 Summary:        Yubico YubiKey NEO CCID Manager
 License:        BSD-2-Clause
@@ -26,8 +26,12 @@ Group:          Productivity/Networking/Security
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/yubico-piv-tool/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/yubico-piv-tool/Releases/%{name}-%{version}.tar.gz.sig
+Patch1:         pthread-link.patch
+BuildRequires:  c++_compiler
 BuildRequires:  check-devel
-BuildRequires:  libtool
+BuildRequires:  cmake
+BuildRequires:  gengetopt
+BuildRequires:  help2man
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  valgrind
@@ -76,14 +80,18 @@ Yubikey NEO PKCS#11 applet library.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
-%configure --disable-static --with-backend=pcsc
-make %{?_smp_mflags} V=1
+%cmake -DBUILD_STATIC_LIB=OFF
+%cmake_build
+
+%check
+cd build
+make test
 
 %install
-%make_install INSTALL="install -p"
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
 
 %post -n libykpiv%{sover} -p /sbin/ldconfig
 %postun -n libykpiv%{sover} -p /sbin/ldconfig
@@ -92,7 +100,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc NEWS ChangeLog README
+%doc NEWS README
 %{_bindir}/%{name}
 %{_mandir}/man1/*
 
