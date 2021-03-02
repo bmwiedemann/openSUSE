@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  1 23:29:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.03.02
+  * youtube: fix get_video_info request
+  * zdf: Rework extractors
+
+-------------------------------------------------------------------
 Sun Feb 21 23:26:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.02.22
