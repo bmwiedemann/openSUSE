@@ -207,4 +207,15 @@
 - Use tar.xz archive</comment>
     <requestid>862087</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f3ddf67ba172d6be52969e06b0ee32a5</srcmd5>
+    <version>7.040</version>
+    <time>1614684739</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 7.0.40:
+  * A number of small updates across several fonts.
+    For details see:
+    https://github.com/alerque/libertinus/releases/tag/v7.040</comment>
+    <requestid>875584</requestid>
+  </revision>
 </revisionlist>
