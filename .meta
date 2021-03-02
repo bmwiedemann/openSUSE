@@ -1,9 +1,0 @@
-<package name="trytond" project="openSUSE:Factory">
-  <title>Trytond is the server of the OpenSource ERP system tryton</title>
-  <description>Tryton is a three-tiers  high-level general purpose application platform under the license GPL-3 written in Python and using PostgreSQL as database engine.
-
-It is the core base of a complete business solution providing modularity, scalability and security.
-
-This package contains the server of the Tryton Project</description>
-  <devel project="Application:ERP:GNUHealth:Factory" package="trytond"/>
-</package>
