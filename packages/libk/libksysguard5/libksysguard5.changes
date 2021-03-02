@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:52:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * Guard against null configloader in destructor (kde#433431)
+  * Add method CGroupDataModel::isAvailable
+  * Don't emit dataChanged for invalid indices
+
+-------------------------------------------------------------------
 Thu Feb 11 18:23:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.0
