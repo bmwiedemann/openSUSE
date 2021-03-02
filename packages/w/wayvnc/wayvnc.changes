@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 28 20:53:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+  * PAM Authentication, thanks to Nicholas Sica.
+  * Faking of modifiers to match keyboard symbols not found at the current shift
+  * QEMU extended key event, which uses key codes instead of key symbols. This
+    bypasses the need for reverse keyboard symbol mapping for clients that
+    support the extension, so the server doesn't need to know about keyboard
+    layouts.
+  * Xkb config parameters have been added. 
+
+-------------------------------------------------------------------
 Thu Aug  6 21:47:06 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
 
 - Update to version 0.2.0

@@ -1,7 +1,7 @@
 #
 # spec file for package wayvnc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wayvnc
-Version:        0.2.0
+Version:        0.4.0
 Release:        0
 Summary:        A VNC server for wlroots based Wayland compositors
 License:        ISC
@@ -34,8 +34,10 @@ BuildRequires:  libpixman-1-0-devel
 BuildRequires:  libuv-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  meson
-BuildRequires:  neatvnc-devel >= 0.2.0
+BuildRequires:  neatvnc-devel >= 0.4.0
+BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  scdoc
 BuildRequires:  wayland-devel
 
 %description
@@ -58,5 +60,6 @@ The Wayland session may be a headless one, so it is also possible to run wayvnc 
 %license COPYING
 %doc README.md
 %{_bindir}/wayvnc
+%{_mandir}/man1/wayvnc.1%{?ext_man}
 
 %changelog
