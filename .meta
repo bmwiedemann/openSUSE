@@ -1,5 +1,0 @@
-<package name="snapper" project="openSUSE:Factory">
-  <title>Tool for filesystem snapshot management</title>
-  <description>This package contains snapper, a tool for filesystem snapshot management.</description>
-  <devel project="filesystems:snapper" package="snapper"/>
-</package>
