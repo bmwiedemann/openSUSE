@@ -1,6 +1,0 @@
-<package name="python-fuse" project="openSUSE:Factory">
-  <title>Python bindings for FUSE</title>
-  <description>Python bindings for FUSE (User space File System)</description>
-  <devel project="devel:languages:python" package="python-fuse"/>
-  <url>http://fuse.sf.net/</url>
-</package>
