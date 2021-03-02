@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           qqc2-breeze-style
-Version:        5.21.0
+Version:        5.21.1
 Release:        0
 Summary:        Breeze Style for Qt Quick Controls 2
 License:        LGPL-2.1-only OR LGPL-3.0-only
