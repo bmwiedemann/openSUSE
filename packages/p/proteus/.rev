@@ -142,4 +142,12 @@
     <comment>bugfix release</comment>
     <requestid>847930</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>df69db90459ad367c07f67620b14ec9e</srcmd5>
+    <version>5.0.8</version>
+    <time>1614684770</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 875656 from AndreasStieger)</comment>
+    <requestid>875721</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package proteus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
+Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 # List of additional build dependencies
 BuildRequires:  fdupes
 BuildRequires:  python3-devel
