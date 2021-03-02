@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-autorelabel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,9 @@ mkdir -p %{buildroot}%{_libexecdir}/selinux/
 mkdir -p %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_systemdgeneratordir}
 install -m 755 -p %{SOURCE1} %{buildroot}%{_libexecdir}/selinux/
+%if 0%{?suse_version} <= 1500
+sed -i 's/libexec/lib/' %{SOURCE2}
+%endif
 install -m 644 -p %{SOURCE2} %{buildroot}%{_unitdir}/
 install -m 644 -p %{SOURCE3} %{buildroot}%{_unitdir}/
 install -m 644 -p %{SOURCE4} %{buildroot}%{_unitdir}/
