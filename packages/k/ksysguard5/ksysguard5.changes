@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:52:08 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * Force device statistics refresh rate to be always one second (kde#433063)
+
+-------------------------------------------------------------------
 Mon Feb 15 14:02:53 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.0

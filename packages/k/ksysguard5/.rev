@@ -962,4 +962,12 @@ Wed Sep  3 21:20:56 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>5.21.0 respins (forwarded request 872544 from Vogtinator)</comment>
     <requestid>872551</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>564198aa0404341e661152489480e919</srcmd5>
+    <version>5.21.1</version>
+    <time>1614684540</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Plasma 5.21.1</comment>
+    <requestid>875021</requestid>
+  </revision>
 </revisionlist>
