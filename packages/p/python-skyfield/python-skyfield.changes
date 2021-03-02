@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 28 22:58:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix boo#1182424: Use https url of the Hipparcos catalog
+
+-------------------------------------------------------------------
 Fri Jan  1 23:53:33 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.35

@@ -183,4 +183,12 @@ research-grade positions for planets and Earth satellites.</comment>
     <comment></comment>
     <requestid>859766</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>68fceb88277913ad16eccfe36669c7a2</srcmd5>
+    <version>1.35</version>
+    <time>1614684831</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix boo#1182424: Use https url of the Hipparcos catalog</comment>
+    <requestid>875838</requestid>
+  </revision>
 </revisionlist>
