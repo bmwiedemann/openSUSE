@@ -7,4 +7,12 @@
     <comment>New package to enable OpenImageIO &gt; 2.0.0 to build to enable OpenShadingLanguage to be updated and build with LLVM10.</comment>
     <requestid>795971</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a3f1f69082a0a45f53832d26d3263103</srcmd5>
+    <version>0.6.3</version>
+    <time>1614684751</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875631</requestid>
+  </revision>
 </revisionlist>

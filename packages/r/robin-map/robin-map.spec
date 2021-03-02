@@ -1,7 +1,7 @@
 #
 # spec file for package robin-map
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           robin-map
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        C++ implementation of a fast hash map and hash set using robin hood hashing
 License:        MIT
 URL:            https://github.com/Tessil/robin-map
 Source0:        https://github.com/Tessil/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-
-BuildArch:      noarch
-
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildArch:      noarch
 
 %description
 The robin-map library is a C++ implementation of a fast hash map and hash set
@@ -36,7 +34,6 @@ deletion to resolve collisions.
 
 *** This is a header only library. ***
 The package you want is %{name}-devel.
-
 
 %package devel
 Summary:        %{summary}
@@ -58,20 +55,16 @@ page also gives some advices on which hash table structure you should try for
 your use case (useful if you are a bit lost with the multiple hash tables
 implementations in the tsl namespace).
 
-
 %prep
 %autosetup -p1
 # rpmlint complains about the downloaded file's permissions
-chmod 0644 %{S:0}
-
+chmod 0644 %{SOURCE0}
 
 %build
 %cmake
 
-
 %install
 %cmake_install
-
 
 %files devel
 %license LICENSE
@@ -79,6 +72,5 @@ chmod 0644 %{S:0}
 %dir %{_datadir}/cmake/tsl-robin-map
 %{_datadir}/cmake/tsl-%{name}/*.cmake
 %{_includedir}/tsl/
-
 
 %changelog

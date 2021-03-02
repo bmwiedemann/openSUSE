@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Feb 27 14:07:52 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.6.3:
+  * Fix gh#Tessil/robin-map#26: Raise the maximum possible size of
+    the hash table when using the prime_growth_policy on a  64-bit
+    platform.
+  * Fix gh#Tessil/robin-map#31: When min_load_factor() > 0, the
+    clear() method will also reset the bucket_count of the hash
+    table to 0.
+  * Fix shrink when min_load_factor is set and a range erase with
+    end() as last is called. The m_try_skrink_on_next_insert was
+    not correctly set.
+  * Fix gh#Tessil/robin-map#33: The value function of a const
+    iterator can now be called and returns a mutable reference to
+    the underlying value_type.
+- Ran spec-cleaner.
+
+-------------------------------------------------------------------
 Sun Apr 19 12:19:18 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Created robin-map package from Fedora source rpm to enable
