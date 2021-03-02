@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-bdd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-bdd
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        BDD for pytest
 License:        MIT
@@ -80,9 +80,14 @@ sed -i '/tox/d' setup.py
 
 %check
 export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1
-# test_generate_with_quotes and test_unicode_characters require ptyest-bdd binary which we handle with u-a
-%pytest -k 'not test_generate_with_quotes and not test_unicode_characters'
+%{python_expand #  provide the u-a controlled command in PATH
+mkdir -p build/testbin
+ln -s %{buildroot}%{_bindir}/pytest-bdd-%{$python_bin_suffix} build/testbin/pytest-bdd
+}
+export PATH=$PWD/build/testbin:$PATH
+# test_at_in_scenario: the result footer looks slightly different
+# test_step_trace: unraisable exception in the obs environment
+%pytest -k "not (test_at_in_scenario or test_step_trace)" -ra
 
 %post
 %python_install_alternative pytest-bdd

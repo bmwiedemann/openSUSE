@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 26 20:50:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 4.0.2
+  * Fix a bug that prevents using comments in the Examples:
+    section. (youtux) 
+- provide the correct u-a conrolled command to the tests
+- Skip failing tests: test_at_scenario and test_step_trace
+
+-------------------------------------------------------------------
 Wed Sep 23 09:31:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 4.0.1
