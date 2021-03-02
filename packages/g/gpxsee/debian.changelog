@@ -1,3 +1,9 @@
+gpxsee (8.8) stable; urgency=low
+
+  * Fixed disappearing marker with some graphs combinations.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 01 Mar 2021 00:40:10 +0100
+
 gpxsee (8.7) stable; urgency=low
 
   * Fixed broken marker date/coordinates when time graphs are
