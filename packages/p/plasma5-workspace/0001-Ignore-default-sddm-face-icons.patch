@@ -1,0 +1,29 @@
+From 846222c0dac6747256fd3d474db174643e84fee0 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 1 Oct 2016 19:22:36 +0200
+Subject: [PATCH] Ignore default sddm face icons
+
+They are not compatible with the theme
+---
+ lookandfeel/contents/components/UserList.qml | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+Index: plasma-workspace-5.15.80git.20200820T102416~bcaf3886d/lookandfeel/contents/components/UserList.qml
+===================================================================
+--- plasma-workspace-5.15.80git.20200820T102416~bcaf3886d.orig/lookandfeel/contents/components/UserList.qml	2020-08-20 18:24:16.000000000 +0200
++++ plasma-workspace-5.15.80git.20200820T102416~bcaf3886d/lookandfeel/contents/components/UserList.qml	2020-08-20 21:38:45.160535922 +0200
+@@ -47,7 +47,13 @@
+     interactive: count > 1
+ 
+     delegate: UserDelegate {
+-        avatarPath: model.icon || ""
++        avatarPath: {
++            var incompatible = /\/usr\/share\/sddm\/faces\/((root)?)\.face\.icon$/
++            if (!model.icon || incompatible.test(model.icon))
++                return ""
++
++            return model.icon
++        }
+         iconSource: model.iconName || "user-identity"
+         fontSize: view.fontSize
+ 
