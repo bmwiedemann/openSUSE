@@ -1,0 +1,65 @@
+--- a/yarl/_url.py
++++ b/yarl/_url.py
+@@ -1,4 +1,5 @@
+ import functools
++import inspect
+ import sys
+ import warnings
+ from collections.abc import Mapping, Sequence
+@@ -142,7 +143,7 @@ class URL:
+     _PATH_UNQUOTER = _Unquoter(unsafe="+")
+     _QS_UNQUOTER = _Unquoter(qs=True)
+ 
+-    def __new__(cls, val="", *, encoded=False, strict=None):
++    def __new__(cls, val="", *, encoded=False, strict=None, separator='&'):
+         if strict is not None:  # pragma: no cover
+             warnings.warn("strict parameter is ignored")
+         if type(val) is cls:
+@@ -157,6 +158,8 @@ class URL:
+         else:
+             raise TypeError("Constructor parameter should be str")
+ 
++        cls.qs_sep = separator
++
+         if not encoded:
+             if not val[1]:  # netloc
+                 netloc = ""
+@@ -551,7 +554,12 @@ class URL:
+         Empty value if URL has no query part.
+ 
+         """
+-        ret = MultiDict(parse_qsl(self.raw_query_string, keep_blank_values=True))
++        if 'separator' in inspect.signature(parse_qsl).parameters:
++            qs_dict = parse_qsl(self.raw_query_string,
++                                keep_blank_values=True, separator=self.qs_sep)
++        else:
++            qs_dict = parse_qsl(self.raw_query_string, keep_blank_values=True)
++        ret = MultiDict(qs_dict)
+         return MultiDictProxy(ret)
+ 
+     @property
+@@ -988,7 +996,12 @@ class URL:
+     def update_query(self, *args, **kwargs):
+         """Return a new URL with query part updated."""
+         s = self._get_str_query(*args, **kwargs)
+-        new_query = MultiDict(parse_qsl(s, keep_blank_values=True))
++        if 'separator' in inspect.signature(parse_qsl).parameters:
++            qs_dict = parse_qsl(s, keep_blank_values=True,
++                                separator=self.qs_sep)
++        else:
++            qs_dict = parse_qsl(s, keep_blank_values=True)
++        new_query = MultiDict(qs_dict)
+         query = MultiDict(self.query)
+         query.update(new_query)
+ 
+--- a/tests/test_url_query.py
++++ b/tests/test_url_query.py
+@@ -63,7 +63,7 @@ def test_ampersand_as_value():
+ 
+ 
+ def test_semicolon_as_separator():
+-    u = URL("http://127.0.0.1/?a=1;b=2")
++    u = URL("http://127.0.0.1/?a=1;b=2", separator=';')
+     assert len(u.query) == 2
+ 
+ 
