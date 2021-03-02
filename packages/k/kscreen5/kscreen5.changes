@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 23 14:52:08 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * [kded] Fix selecting OSD action by keyboard (kde#432481)
+
+-------------------------------------------------------------------
 Thu Feb 11 18:23:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.0
