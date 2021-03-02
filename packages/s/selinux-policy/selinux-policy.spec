@@ -33,9 +33,9 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20210111
+Version:        20210223
 Release:        0
-Source:         fedora-policy.%{version}.tar.bz2
+Source:         fedora-policy-%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
 
 Source10:       modules-targeted-base.conf
@@ -384,7 +384,7 @@ fi;
 exit 0
 
 %prep
-%setup -n fedora-policy
+%setup -n fedora-policy-%{version}
 %patch001 -p1
 %patch002 -p1
 %patch003 -p1

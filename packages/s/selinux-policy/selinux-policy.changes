@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 13:53:40 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20210223
+- Change name of tar file to a more common schema to allow
+  parallel installation of several source versions
+- Adjust fix_init.patch
+
+-------------------------------------------------------------------
 Mon Jan 11 09:29:18 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20210111
