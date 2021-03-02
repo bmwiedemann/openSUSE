@@ -33,9 +33,9 @@
 
 %define major_ver 4.14
 %define qt5_version 5.14.0
-%define tar_version 4.14.0
+%define tar_version 4.14.1
 Name:           libqt5-creator
-Version:        4.14.0
+Version:        4.14.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -51,14 +51,10 @@ URL:            https://www.qt.io/ide/
 Source:         https://download.qt.io/official_releases/qtcreator/%{major_ver}/%{tar_version}/qt-creator-opensource-src-%{tar_version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # Patches 0-10 are upstream changes
-Patch0:         0001-cmake-build-Don-t-install-highlighting-files-when-us.patch
-Patch1:         0001-Fix-compilation-of-ClangFormat-plugin-against-LLVM-w.patch
-Patch2:         0001-Fix-a-link-error-when-building-the-qmldesigner-plugi.patch
-Patch3:         cmake-build-use-gnuinstalldirs.patch
+Patch0:         0001-Fix-a-link-error-when-building-the-qmldesigner-plugi.patch
 # Patches 10-20 are openSUSE changes
 Patch10:        fix-application-output.patch
 Patch11:        0001-Disable-some-plugins.patch
-Patch12:        0001-Don-t-rely-on-clang-include-and-binary-copies.patch
 ##
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme

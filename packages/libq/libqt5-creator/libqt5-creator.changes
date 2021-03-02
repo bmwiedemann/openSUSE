@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 26 09:22:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.14.1
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.14.1.md
+- Drop patches:
+  * cmake-build-use-gnuinstalldirs.patch
+  * 0001-Don-t-rely-on-clang-include-and-binary-copies.patch
+  * 0001-cmake-build-Don-t-install-highlighting-files-when-us.patch
+  * 0001-Fix-compilation-of-ClangFormat-plugin-against-LLVM-w.patch
+- Rebase 0001-Disable-some-plugins.patch
+
+-------------------------------------------------------------------
 Sun Jan 31 13:16:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
