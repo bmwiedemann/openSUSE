@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 13:21:19 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.158.0
+  - Add nfs remount support
+  - Allow containers to execmod on nfs, samba and cephs remote shares
+  - Allow confined users to send dbus messages to container_runtime
+
+-------------------------------------------------------------------
 Mon Jan 11 10:40:32 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.154.0
