@@ -263,7 +263,6 @@
     <packagelist relationship="requires">
       <package name="MozillaFirefox"/>
       <package name="MozillaFirefox-devel"/>
-      <package name="MozillaFirefox-buildsymbols"/>
       <package name="MozillaFirefox-translations-common"/>
       <package name="MozillaFirefox-translations-other"/>
       <package name="libmozjs-78-0"/>
