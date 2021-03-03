@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  1 23:07:52 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.7.2, for details see include NEWS file or
+  https://www.sigrok.org/blog/sigrok-cli-072-released
+- Spec file cleanup, remove unused autotools dependencies.
+
+-------------------------------------------------------------------
 Sun Mar 22 14:46:45 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.7.1

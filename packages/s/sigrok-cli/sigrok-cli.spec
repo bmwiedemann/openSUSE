@@ -1,7 +1,7 @@
 #
 # spec file for package sigrok-cli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,12 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 
 Name:           sigrok-cli
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 URL:            https://sigrok.org
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  glib2-devel
 BuildRequires:  libsigrok-devel >= 0.4.0
 BuildRequires:  libsigrokdecode-devel >= 0.4.0
-BuildRequires:  libtool
 Source0:        https://sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
 
 %description
@@ -46,10 +43,8 @@ for scripting purposes.
 %setup -q
 
 %build
-#./autogen.sh
-autoreconf -fiv
 %configure
-make %{?smp_mflags}
+%make_build
 
 %install
 %make_install
