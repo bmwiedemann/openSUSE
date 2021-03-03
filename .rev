@@ -41,4 +41,12 @@
   * Support Qt 5.15 (forwarded request 816971 from hillwood)</comment>
     <requestid>816972</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f8ab47273cf395fcea95aa37a4ef76b</srcmd5>
+    <version>5.8.0.9</version>
+    <time>1614792814</time>
+    <user>RBrownSUSE</user>
+    <comment>- Don't install polkit profiles, install deepin-system-monitor-root.desktop (forwarded request 873451 from hillwood)</comment>
+    <requestid>873452</requestid>
+  </revision>
 </revisionlist>

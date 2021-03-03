@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-system-monitor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           deepin-system-monitor
-Version:        1.5.2
+Version:        5.8.0.9
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
@@ -25,60 +25,77 @@ Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
 Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
-# PATCH-FIX-UPSTEAM Fix-redefinition-error.patch hillwood@opensuse.org - Fix redefinition of 'struct std::hash<QString>' error
-Patch0:         Fix-redefinition-error.patch
-# PATCH-FIX-UPSTEAM deepin-system-monitor-Qt-5_15.patch hillwood@opensuse.org - Support Qt 5.15
-Patch1:         %{name}-Qt-5_15.patch
+Source2:        %{name}-root.desktop
 BuildRequires:  appstream-glib
+BuildRequires:  deepin-gettext-tools
 BuildRequires:  desktop-file-utils
 BuildRequires:  dtkcore
 BuildRequires:  fdupes
+BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libcap-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(dtkwidget)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
+BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwm)
+BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xtst)
 Requires:       hicolor-icon-theme
+Requires:       qt5integration
 Recommends:     %{name}-lang
 
 %description
-deepin-system-monitor is a simple process and system monitor for the
-Deepin Desktop.
+deepin-system-monitor is a simple process and system monitor for the Deepin
+Desktop.
 
 %lang_package
 
 %prep
 %setup -q
-%patch0 -p1
+sed -i 's/Exec=deepin-music/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-system-monitor/g' \
+translations/desktop/%{name}.desktop
+
 %if 0%{?suse_version} > 1500
-%patch1 -p1
+# Workaround build failure with GCC 10
+sed -e 's|print_err|print_err_system|g' -i src/process/system_stat.cpp
+sed -e 's|print_err|print_err_process|g' -i src/process/process_stat.cpp
+sed -e 's|print_err|print_err_desktop|g' -i src/process/desktop_entry_stat.cpp
 %endif
-sed -i 's/lrelease/lrelease-qt5/g' translations/translate_generation.sh
 
 %build
-%qmake5 PREFIX=%{_prefix}
-make %{?_smp_mflags}
+%cmake
+%make_build
 
 %install
-%qmake5_install
+%cmake_install
 install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/
+
+# Should be reviewed by security team first, workaround boo#1181886
+rm -rf %{buildroot}%{_datadir}/polkit-1
 
 %suse_update_desktop_file -r %{name} QT System Monitor
-%fdupes %{buildroot}
+%suse_update_desktop_file -r %{name}-root QT System Monitor
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %defattr(-,root,root,-)
@@ -87,10 +104,15 @@ install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/applications/%{name}-root.desktop
+# %dir %{_datadir}/polkit-1
+# %dir %{_datadir}/polkit-1/actions
+# %{_datadir}/polkit-1/actions/com.deepin.pkexec.%{name}.policy
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/scalable/apps/deepin-system-monitor.svg
 
 %files lang
 %defattr(-,root,root,-)
-%{_datadir}/%{name}/
+%{_datadir}/%{name}
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  4 14:45:58 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.0.9
+  * Use new dtk apis
+  * The new ui design
+- Drop deepin-system-monitor-Qt-5_15.patch, fixed by upstream
+- Drop Fix-redefinition-error.patch, merged by upstream
+- Don't install polkit profiles, install deepin-system-monitor-root.desktop
+  instead. Workaround boo#1181886
+
+-------------------------------------------------------------------
 Thu Jun 25 07:32:37 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add deepin-system-monitor-Qt-5_15.patch
