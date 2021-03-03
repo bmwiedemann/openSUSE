@@ -18,4 +18,12 @@ This should be in SLES (jsc#10894), but we don't have it in Factory yet.
     <comment></comment>
     <requestid>849083</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5703106ad0d44d565e15a84eabfb215d</srcmd5>
+    <version>0.4</version>
+    <time>1614792916</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876416</requestid>
+  </revision>
 </revisionlist>

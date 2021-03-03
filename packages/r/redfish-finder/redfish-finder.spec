@@ -1,7 +1,7 @@
 #
 # spec file for package redfish-finder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ Group:          System/Management
 URL:            https://github.com/nhorman/redfish-finder
 Source0:        redfish-finder-0.4.tar.gz
 Patch0:         python_path.patch
+# PATCH-FIX_UPSTREAM: https://github.com/nhorman/redfish-finder/pull/3
+Patch1:         fix_parsing_HostConfig_for_dhcp.patch
+
 BuildRequires:  python3
 Requires:       NetworkManager
 Requires:       dmidecode
@@ -40,6 +43,7 @@ canonically accessible via the hostname redfish-localhost
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 #noop here

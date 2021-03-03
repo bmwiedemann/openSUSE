@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  3 08:31:35 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix parsing HostConfig for DHCP (bsc#1182765)
+
+- Added:
+  * fix_parsing_HostConfig_for_dhcp.patch
+
+-------------------------------------------------------------------
 Tue Nov 17 12:04:46 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Do not build for s390x and ppc64le
