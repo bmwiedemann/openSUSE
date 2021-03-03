@@ -1,0 +1,92 @@
+From 50f063f61eec3a99565db5f964970a872b642b27 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 11 Dec 2020 22:33:52 +0800
+Subject: [PATCH 41/46] squash! Add secureboot support on efi chainloader
+
+Use grub_efi_get_secureboot to get secure boot status
+---
+ grub-core/loader/efi/chainloader.c | 54 ++----------------------------
+ 1 file changed, 2 insertions(+), 52 deletions(-)
+
+diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
+index 8272df3cd..559247abf 100644
+--- a/grub-core/loader/efi/chainloader.c
++++ b/grub-core/loader/efi/chainloader.c
+@@ -46,6 +46,7 @@
+ 
+ #ifdef SUPPORT_SECURE_BOOT
+ #include <grub/efi/pe32.h>
++#include <grub/efi/sb.h>
+ #endif
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+@@ -282,57 +283,6 @@ grub_secure_validate (void *data, grub_efi_uint32_t size)
+   return 0;
+ }
+ 
+-static grub_efi_boolean_t
+-grub_secure_mode (void)
+-{
+-  grub_efi_guid_t efi_var_guid = GRUB_EFI_GLOBAL_VARIABLE_GUID;
+-  grub_uint8_t *data;
+-  grub_size_t datasize;
+-
+-  data = grub_efi_get_variable ("SecureBoot", &efi_var_guid, &datasize);
+-
+-  if (data)
+-    {
+-      grub_dprintf ("chain", "SecureBoot: %d, datasize %d\n", (int)*data, (int)datasize);
+-    }
+-
+-  if (data && (datasize == 1))
+-    {
+-      if (*data != 1)
+-        {
+-          grub_dprintf ("chain", "secure boot not enabled\n");
+-          return 0;
+-        }
+-    }
+-  else
+-    {
+-      grub_dprintf ("chain", "unknown secure boot status\n");
+-      return 0;
+-    }
+-
+-  grub_free (data);
+-
+-  data = grub_efi_get_variable ("SetupMode", &efi_var_guid, &datasize);
+-
+-  if (data)
+-    {
+-      grub_dprintf ("chain", "SetupMode: %d, datasize %d\n", (int)*data, (int)datasize);
+-    }
+-
+-  if (data && (datasize == 1))
+-    {
+-      if (*data == 1)
+-        {
+-          grub_dprintf ("chain", "platform in setup mode\n");
+-          return 0;
+-        }
+-    }
+-
+-  grub_free (data);
+-
+-  return 1;
+-}
+-
+ static grub_efi_boolean_t
+ read_header (void *data, grub_efi_uint32_t size, pe_coff_loader_image_context_t *context)
+ {
+@@ -837,7 +787,7 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+ 
+ #ifdef SUPPORT_SECURE_BOOT
+   /* FIXME is secure boot possible also with universal binaries? */
+-  if (debug_secureboot || (grub_secure_mode() && grub_secure_validate ((void *)address, fsize)))
++  if (debug_secureboot || (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED && grub_secure_validate ((void *)address, fsize)))
+     {
+       grub_file_close (file);
+       grub_loader_set (grub_secureboot_chainloader_boot, grub_secureboot_chainloader_unload, 0);
+-- 
+2.26.2
+

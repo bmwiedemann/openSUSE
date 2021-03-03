@@ -1,0 +1,26 @@
+From 5673c583f3987350a51e39b64260a84342d9592a Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 11 Dec 2020 22:39:54 +0800
+Subject: [PATCH 42/46] squash! grub2-efi-chainload-harder
+
+Use grub_efi_get_secureboot to get secure boot status
+---
+ grub-core/loader/efi/chainloader.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
+index 559247abf..7a910db44 100644
+--- a/grub-core/loader/efi/chainloader.c
++++ b/grub-core/loader/efi/chainloader.c
+@@ -799,7 +799,7 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+ 		       boot_image, fsize,
+ 		       &image_handle);
+ #ifdef SUPPORT_SECURE_BOOT
+-  if (status == GRUB_EFI_SECURITY_VIOLATION && !grub_secure_mode())
++  if (status == GRUB_EFI_SECURITY_VIOLATION && grub_efi_get_secureboot () != GRUB_EFI_SECUREBOOT_MODE_ENABLED)
+     {
+       /* If it failed with security violation while not in secure boot mode,
+          the firmware might be broken. We try to workaround on that by forcing
+-- 
+2.26.2
+

@@ -1,0 +1,90 @@
+From a0659724e8fb6ddc9b6db68973e50637cf781605 Mon Sep 17 00:00:00 2001
+From: Javier Martinez Canillas <javierm@redhat.com>
+Date: Thu, 3 Dec 2020 16:01:49 +0100
+Subject: [PATCH 06/46] efi: Only register shim_lock verifier if shim_lock
+ protocol is found and SB enabled
+
+The shim_lock module registers a verifier to call shim's verify, but the
+handler is registered even when the shim_lock protocol was not installed.
+
+This doesn't cause a NULL pointer dereference in shim_lock_write() because
+the shim_lock_init() function just returns GRUB_ERR_NONE if sl isn't set.
+
+But in that case there's no point to even register the shim_lock verifier
+since won't do anything. Additionally, it is only useful when Secure Boot
+is enabled.
+
+Finally, don't assume that the shim_lock protocol will always be present
+when the shim_lock_write() function is called, and check for it on every
+call to this function.
+
+Reported-by: Michael Chang <mchang@suse.com>
+Reported-by: Peter Jones <pjones@redhat.com>
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/commands/efi/shim_lock.c | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/grub-core/commands/efi/shim_lock.c b/grub-core/commands/efi/shim_lock.c
+index d8f52d721..f7f3109d6 100644
+--- a/grub-core/commands/efi/shim_lock.c
++++ b/grub-core/commands/efi/shim_lock.c
+@@ -20,6 +20,7 @@
+ 
+ #include <grub/dl.h>
+ #include <grub/efi/efi.h>
++#include <grub/efi/sb.h>
+ #include <grub/err.h>
+ #include <grub/file.h>
+ #include <grub/misc.h>
+@@ -28,7 +29,6 @@
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+ static grub_efi_guid_t shim_lock_guid = GRUB_EFI_SHIM_LOCK_GUID;
+-static grub_efi_shim_lock_protocol_t *sl;
+ 
+ /* List of modules which cannot be loaded if UEFI secure boot mode is enabled. */
+ static const char * const disabled_mods[] = {"iorw", "memrw", "wrmsr", NULL};
+@@ -43,9 +43,6 @@ shim_lock_init (grub_file_t io, enum grub_file_type type,
+ 
+   *flags = GRUB_VERIFY_FLAGS_SKIP_VERIFICATION;
+ 
+-  if (!sl)
+-    return GRUB_ERR_NONE;
+-
+   switch (type & GRUB_FILE_TYPE_MASK)
+     {
+     case GRUB_FILE_TYPE_GRUB_MODULE:
+@@ -100,6 +97,11 @@ shim_lock_init (grub_file_t io, enum grub_file_type type,
+ static grub_err_t
+ shim_lock_write (void *context __attribute__ ((unused)), void *buf, grub_size_t size)
+ {
++  grub_efi_shim_lock_protocol_t *sl = grub_efi_locate_protocol (&shim_lock_guid, 0);
++
++  if (sl == NULL)
++    return grub_error (GRUB_ERR_ACCESS_DENIED, N_("shim_lock protocol not found"));
++
+   if (sl->verify (buf, size) != GRUB_EFI_SUCCESS)
+     return grub_error (GRUB_ERR_BAD_SIGNATURE, N_("bad shim signature"));
+ 
+@@ -115,12 +117,13 @@ struct grub_file_verifier shim_lock =
+ 
+ GRUB_MOD_INIT(shim_lock)
+ {
+-  sl = grub_efi_locate_protocol (&shim_lock_guid, 0);
+-  grub_verifier_register (&shim_lock);
++  grub_efi_shim_lock_protocol_t *sl = grub_efi_locate_protocol (&shim_lock_guid, 0);
+ 
+-  if (!sl)
++  if (sl == NULL || grub_efi_get_secureboot () != GRUB_EFI_SECUREBOOT_MODE_ENABLED)
+     return;
+ 
++  grub_verifier_register (&shim_lock);
++
+   grub_dl_set_persistent (mod);
+ }
+ 
+-- 
+2.26.2
+
