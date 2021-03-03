@@ -1,0 +1,21 @@
+--- libntp/ssl_init.c.orig
++++ libntp/ssl_init.c
+@@ -67,18 +67,6 @@ ssl_init(void)
+ void
+ ssl_check_version(void)
+ {
+-	u_long	v;
+-
+-	v = OpenSSL_version_num();
+-	if ((v ^ OPENSSL_VERSION_NUMBER) & ~0xff0L) {
+-		msyslog(LOG_WARNING,
+-		    "OpenSSL version mismatch. Built against %lx, you have %lx",
+-		    (u_long)OPENSSL_VERSION_NUMBER, v);
+-		fprintf(stderr,
+-		    "OpenSSL version mismatch. Built against %lx, you have %lx\n",
+-		    (u_long)OPENSSL_VERSION_NUMBER, v);
+-	}
+-
+ 	INIT_SSL();
+ }
+ 

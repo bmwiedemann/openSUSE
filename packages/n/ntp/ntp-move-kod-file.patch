@@ -1,0 +1,70 @@
+--- html/sntp.html.orig
++++ html/sntp.html
+@@ -47,7 +47,7 @@
+   <dt><tt>-g <i>delay</i>, --gap <i>delay</i></tt></dt>
+   <dd>Specify the <i>delay</i> in milliseconds between outgoing queries, defaulting to 50.  <tt>sntp</tt> sends queries to all provided hostnames/addresses in short succession, and by default terminates once the first valid response is received.  With multiple time sources provided, all but one will not be used.  To limit the number of queries whose responses will not be used, each query is separated from the preceding one by <i>delay</i> milliseconds, to allow time for responses to earlier queries to be received.  A larger <i>delay</i> reduces the query load on the time sources, increasing the time to receive a valid response if the first source attempted is slow or unreachable.</dd>
+   <dt><tt>-K <i>kodfile</i>, --kod <i>kodfile</i></tt></dt>
+-  <dd>Specifies the filename <i>kodfile</i> to be used for the persistent history of KoD (Kiss Of Death, or rate-limiting) responses received from servers.  The default is <tt>/var/db/ntp-kod</tt>.  If the file does not exist, a warning message will be displayed.  The file will not be created.  Note that the short option is <tt>-K</tt>, an uppercase letter K.</dd>
++  <dd>Specifies the filename <i>kodfile</i> to be used for the persistent history of KoD (Kiss Of Death, or rate-limiting) responses received from servers.  The default is <tt>/var/lib/ntp/kod</tt>.  If the file does not exist, a warning message will be displayed.  The file will not be created.  Note that the short option is <tt>-K</tt>, an uppercase letter K.</dd>
+   <dt><tt>-k <i>keyfile</i>, --keyfile <i>keyfile</i></tt></dt>
+   <dd>Specifies the filename <i>keyfile</i> used with the <tt>-a</tt>/<tt>--authentication</tt> option.  The format of the file is described on the <a href="keygen.html"><tt>ntp-keygen</tt> page</a>.</dd>
+   <dt><tt>-l <i>logfile</i>, --filelog <i>logfile</i></tt></dt>
+--- sntp/sntp.1sntpman.orig
++++ sntp/sntp.1sntpman
+@@ -154,7 +154,7 @@ The default
+ \f\*[I-Font]file\-name\f[]
+ for this option is:
+ .ti +4
+- /var/db/ntp-kod
++ /var/lib/ntp/kod
+ .sp
+ Specifies the filename to be used for the persistent history of KoD
+ responses received from servers.  If the file does not exist, a
+--- sntp/sntp.man.in.orig
++++ sntp/sntp.man.in
+@@ -154,7 +154,7 @@ The default
+ \f\*[I-Font]file\-name\f[]
+ for this option is:
+ .ti +4
+- /var/db/ntp-kod
++ /var/lib/ntp/kod
+ .sp
+ Specifies the filename to be used for the persistent history of KoD
+ responses received from servers.  If the file does not exist, a
+--- sntp/sntp-opts.c.orig
++++ sntp/sntp-opts.c
+@@ -111,10 +111,15 @@ static char const sntp_opt_strs[2552] =
+ /*  1436 */ "The gap (in milliseconds) between time requests\0"
+ /*  1484 */ "GAP\0"
+ /*  1488 */ "gap\0"
+-/*  1492 */ "KoD history filename\0"
+-/*  1513 */ "KOD\0"
+-/*  1517 */ "kod\0"
+-/*  1521 */ "/var/db/ntp-kod\0"
++/*
++ * Dirty hack!! We "steal" four bytes from the description string to
++ * make space for a longer path name without messing up the indexes of
++ * subsequent options.
++ */
++/*  1492 */ "KoD history file\0"
++/*  1509 */ "KOD\0"
++/*  1513 */ "kod\0"
++/*  1517 */ "/var/lib/ntp/kod\0..."
+ /*  1537 */ "Look in this file for the key specified with -a\0"
+ /*  1585 */ "KEYFILE\0"
+ /*  1593 */ "keyfile\0"
+@@ -282,11 +287,11 @@ static int const aIpv6CantList[] = {
+ /** Descriptive text for the kod option */
+ #define KOD_DESC      (sntp_opt_strs+1492)
+ /** Upper-cased name for the kod option */
+-#define KOD_NAME      (sntp_opt_strs+1513)
++#define KOD_NAME      (sntp_opt_strs+1509)
+ /** Name string for the kod option */
+-#define KOD_name      (sntp_opt_strs+1517)
++#define KOD_name      (sntp_opt_strs+1513)
+ /** The compiled in default value for the kod option argument */
+-#define KOD_DFT_ARG   (sntp_opt_strs+1521)
++#define KOD_DFT_ARG   (sntp_opt_strs+1517)
+ /** Compiled in flag settings for the kod option */
+ #define KOD_FLAGS     (OPTST_DISABLED \
+         | OPTST_SET_ARGTYPE(OPARG_TYPE_FILE))

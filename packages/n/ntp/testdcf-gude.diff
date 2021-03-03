@@ -1,0 +1,265 @@
+--- a/parseutil/testdcf.c.orig	2015-06-29 21:38:01.000000000 +0200
++++ b/parseutil/testdcf.c	2016-06-08 10:16:23.478480393 +0200
+@@ -67,7 +67,8 @@
+ 
+ typedef struct clocktime clocktime_t;
+ 
+-static char type(unsigned int);
++static char type(unsigned int, unsigned int);
++static void usage(void);
+ 
+ #define TIMES10(_X_) (((_X_) << 3) + ((_X_) << 1))
+ 
+@@ -129,7 +130,7 @@
+  * 59		      - usually missing (minute indication), except for leap insertion
+  */
+ 
+-static char revision[] = "4.10";
++static char revision[] = "4.11 (d)";
+ 
+ static struct rawdcfcode
+ {
+@@ -291,11 +292,12 @@
+ 
+ static char
+ type(
+-	unsigned int c
++	unsigned int c,
++	unsigned int thresh
+ 	)
+ {
+ 	c ^= 0xFF;
+-	return (c >= 0xF);
++	return (c > thresh);
+ }
+ 
+ static const char *wday[8] =
+@@ -314,48 +316,106 @@
+ 
+ #define LINES (24-2)	/* error lines after which the two headlines are repeated */
+ 
++#if defined(TIOCMBIC) && defined(TIOCMBIS)
++#ifdef TIOCM_RTS
++#define RTSOPT "|--rts={0,1}"
++#else
++#define RTSOPT ""
++#endif
++#ifdef TIOCM_DTR
++#define DTROPT "|--dtr={0,1}"
++#else
++#define DTROPT ""
++#endif
++#else
++#define DTROPT ""
++#define RTSOPT ""
++#endif
++
++static void
++usage(void) {
++	fprintf(stderr, "usage: testdcf [-f|-t|-ft|-tf%s%s|--type=[0,1]] <device>\n", RTSOPT, DTROPT);
++}
++
+ int
+ main(
+ 	int argc,
+ 	char *argv[]
+ 	)
+ {
+-	if ((argc != 2) && (argc != 3))
+-	{
+-		fprintf(stderr, "usage: %s [-f|-t|-ft|-tf] <device>\n", argv[0]);
+-		exit(1);
+-	}
+-	else
+-	{
+-		unsigned char c;
+-		char *file;
+-		int fd;
+-		int offset = 15;
+-		int trace = 0;
+-		int errs = LINES+1;
+-
+-		/*
+-		 * SIMPLE(!) argument "parser"
+-		 */
+-		if (argc == 3)
+-		{
+-			if (strcmp(argv[1], "-f") == 0)
+-			    offset = 0;
+-			if (strcmp(argv[1], "-t") == 0)
+-			    trace = 1;
+-			if ((strcmp(argv[1], "-ft") == 0) ||
+-			    (strcmp(argv[1], "-tf") == 0))
++	int aidx=1;
++	unsigned char c;
++	char *file = NULL;
++	int fd;
++	int offset = 0;
++	int trace = 0;
++	int errs = LINES+1;
++	int modem_set_bits = TIOCM_DTR;
++	int modem_clear_bits = TIOCM_RTS;
++	int baudrate = B50;
++	int debug_raw = 0;
++	unsigned char thresh_raw = 0x1F;
++
++	do {
++		if (argv[aidx] && argv[aidx][0]=='-') {
++			if (strcmp(argv[aidx], "-f") == 0)
++			{
++				offset = 15;
++			} else if (strcmp(argv[aidx], "-t") == 0)
+ 			{
+-				offset = 0;
+ 				trace = 1;
++			} else if ((strcmp(argv[aidx], "-ft") == 0) ||
++				   (strcmp(argv[aidx], "-tf") == 0))
++			{
++				offset = 15;
++				trace = 1;
++#if defined(TIOCMBIS) && defined(TIOCMBIC) && defined(TIOCM_RTS)
++			} else if ((strncmp(argv[aidx], "--rts=", 6) == 0) &&
++				   (strlen(argv[aidx]) == 7)) {
++				if (argv[aidx][6] == '1') {
++					modem_set_bits   |= TIOCM_RTS;
++					modem_clear_bits &= ~TIOCM_RTS;
++				} else {
++					modem_set_bits   &= ~TIOCM_RTS;
++					modem_clear_bits |= TIOCM_RTS;
++				}
++#endif
++#if defined(TIOCMBIS) && defined(TIOCMBIC) && defined(TIOCM_DTR)
++			} else if ((strncmp(argv[aidx], "--dtr=", 6) == 0) &&
++				   (strlen(argv[aidx]) == 7)) {
++				if (argv[aidx][6] == '1') {
++					modem_set_bits   |= TIOCM_DTR;
++					modem_clear_bits &= ~TIOCM_DTR;
++				} else {
++					modem_set_bits   &= ~TIOCM_DTR;
++					modem_clear_bits |= TIOCM_DTR;
++				}
++#endif
++			} else if ((strncmp(argv[aidx], "--type=", 7) == 0) &&
++                                   (strlen(argv[aidx]) == 8)) {
++                              if (argv[aidx][7] == '1') {
++                                // mouseCLOCK USB v2.0
++                                baudrate = B4800;
++                              } else {
++                                // mouseCLOCK standart
++                                baudrate = B50;
++                              }
++			} else if (strcmp(argv[aidx], "-d") == 0) {
++				debug_raw = 1;
++			} else if (strncmp(argv[aidx], "--thresh=", 9) == 0) {
++				sscanf(argv[aidx] + 9, "%d", &thresh_raw);
++			} else {
++				usage();
++				return(0);
+ 			}
+-			file = argv[2];
+-		}
+-		else
+-		{
+-			file = argv[1];
++		} else {
++			file = argv[aidx];
+ 		}
++		aidx++;
++	} while (aidx < argc);
+ 
++	if (file)
++	{
+ 		fd = open(file, O_RDONLY);
+ 		if (fd == -1)
+ 		{
+@@ -365,9 +425,6 @@
+ 		else
+ 		{
+ 			int i;
+-#ifdef TIOCM_RTS
+-			int on = TIOCM_RTS;
+-#endif
+ 			struct timeval t, tt, tlast;
+ 			char buf[61];
+ 			clocktime_t clock_time;
+@@ -392,8 +449,8 @@
+ 			term.c_oflag = 0;
+ 			term.c_lflag = 0;
+ 
+-			cfsetispeed(&term, B50);
+-			cfsetospeed(&term, B50);
++			cfsetispeed(&term, baudrate);
++			cfsetospeed(&term, baudrate);
+ 
+ 			if (tcsetattr(fd, TCSANOW, &term) == -1)
+ 			{
+@@ -405,14 +462,23 @@
+ 			while (ioctl(fd, I_POP, 0) == 0)
+ 			    ;
+ #endif
+-#if defined(TIOCMBIC) && defined(TIOCM_RTS)
+-			if (ioctl(fd, TIOCMBIC, (caddr_t)&on) == -1)
+-			{
+-				perror("TIOCM_RTS");
++
++#if defined(TIOCMBIS) && defined(TIOCMBIC)
++                        if ((modem_set_bits==TIOCM_DTR) && (modem_clear_bits==TIOCM_RTS))
++                        	printf ("\n\E[37;40m\033[1m  setting \E[32;40mRTS/DTR\E[37;40m\033[1m for GudeADS \E[33;40m\033[1mExpert mouseCLOCK %s\033[0m...\n\n",
++                                        (baudrate==B50)?"":"USB v2.0");
++
++			/* set RTS / DTR if needed */
++			if (modem_set_bits | modem_clear_bits) {
++				if (ioctl(fd, TIOCMBIS, &modem_set_bits) == -1) {
++					perror("TIOCMBIS");
++				}
++				if (ioctl(fd, TIOCMBIC, &modem_clear_bits) == -1) {
++					perror("TIOCMBIC");
++				}
+ 			}
+ #endif
+-
+-			printf("  DCF77 monitor %s - Copyright (C) 1993-2005, Frank Kardel\n\n", revision);
++			printf("  DCF77 monitor %s - Copyright (C) 1993-2006, Frank Kardel\n\n", revision);
+ 
+ 			clock_time.hour = 0;
+ 			clock_time.minute = 0;
+@@ -445,6 +511,12 @@
+ 					printf("  %s", &"---------------RADMLS1248124P124812P1248121241248112481248P\n"[offset]);
+ 					errs = 0;
+ 				}
++				
++				
++				if (debug_raw)
++				{
++					printf ("%5i: %3i \n", (t.tv_sec * 1000 + t.tv_usec / 1000), c ^ 0xFF);
++				}
+ 
+ 				if (t.tv_sec > 1 ||
+ 				    (t.tv_sec == 1 &&
+@@ -468,7 +540,7 @@
+ 					if (((c^0xFF)+1) & (c^0xFF))
+ 					    buf[0] = '?';
+ 					else
+-					    buf[0] = type(c) ? '#' : '-';
++					    buf[0] = type(c, thresh_raw) ? '#' : '-';
+ 
+ 					for ( i = 1; i < 60; i++)
+ 					    buf[i] = '.';
+@@ -480,7 +552,7 @@
+ 					if (((c^0xFF)+1) & (c^0xFF))
+ 					    buf[i] = '?';
+ 					else
+-					    buf[i] = type(c) ? '#' : '-';
++					    buf[i] = type(c, thresh_raw) ? '#' : '-';
+ 
+ 					printf("%c %.*s ", pat[i % (sizeof(pat)-1)], 59 - offset, &buf[offset]);
+ 				}
+@@ -516,6 +588,8 @@
+ 			}
+ 			close(fd);
+ 		}
++	} else {
++		usage();
+ 	}
+ 	return 0;
+ }
