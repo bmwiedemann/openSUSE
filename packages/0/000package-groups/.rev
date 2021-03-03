@@ -1068,4 +1068,10 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Include mokutil on aarch64 which is now required: https://openqa.opensuse.org/tests/1651717#step/start_install/3</comment>
     <requestid>876218</requestid>
   </revision>
+  <revision rev="148" vrev="146">
+    <srcmd5>0a63c755051d617bc01bc8b0cb912efb</srcmd5>
+    <version>unknown</version>
+    <time>1614752547</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

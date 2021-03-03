@@ -13,6 +13,7 @@ BuildFlags: genmetaalgo:1
 ExpandFlags: macroserial:20210202
 
 ExpandFlags: kiwi-nobasepackages
+ExpandFlags: docker-nobasepackages
 
 PublishFlags: ympdist:openSUSE%20Tumbleweed
 

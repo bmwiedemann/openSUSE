@@ -114,7 +114,7 @@
   boo#1178050: '20201030'
   boo#1178096: '20201106'
   boo#1178451: '20201123'
-  boo#1178453: '20210227'
+  boo#1178453: '20210302'
   boo#1178527: '20210131'
   boo#1178534: '20201108'
   boo#1179003: '20210223'
@@ -130,16 +130,16 @@
   boo#1180317: '20210103'
   boo#1180358: '20210227'
   boo#1180740: '20210115'
-  boo#1180754: '20210227'
+  boo#1180754: '20210302'
   boo#1180853: '20210111'
   boo#1181038: '20210223'
   boo#1181497: '20210127'
   boo#1182233: '20210225'
-  boo#1182240: '20210227'
+  boo#1182240: '20210302'
   boo#1182247: '20210227'
   boo#1182507: '20210222'
   boo#1182544: '20210227'
-  boo#1182775: '20210227'
+  boo#1182775: '20210302'
   boo#1182894: '20210227'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
@@ -152,7 +152,7 @@
   bsc#1179416: '20201129'
   bsc#1179417: '20201129'
   bsc#1181835: '20210227'
-  bsc#1182891: '20210227'
+  bsc#1182891: '20210302'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
   gh#os-autoinst/os-autoinst-distri-opensuse#11865: '20210131'
@@ -592,10 +592,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210302'
 published: '20210227'
 publishing: '20210227'
-testing: '20210227'
+testing: '20210302'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
