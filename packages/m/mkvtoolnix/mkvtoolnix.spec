@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        53.0.0
+Version:        54.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -33,12 +33,15 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  file-devel
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc8-c++
+%endif
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_filesystem-devel >= 1.60.0
+BuildRequires:  jpcre2-devel
 BuildRequires:  libboost_headers-devel >= 1.60.0
-BuildRequires:  libboost_system-devel >= 1.60.0
 BuildRequires:  libxslt-tools
 BuildRequires:  nlohmann_json-devel
 BuildRequires:  pkgconfig
@@ -46,6 +49,7 @@ BuildRequires:  po4a
 BuildRequires:  pugixml-devel
 BuildRequires:  ruby >= 1.9
 BuildRequires:  shared-mime-info
+BuildRequires:  utfcpp-devel
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.9.0
@@ -57,8 +61,8 @@ BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fmt) >= 6.1.0
 BuildRequires:  pkgconfig(libcmark)
-BuildRequires:  pkgconfig(libebml) >= 1.4.1
-BuildRequires:  pkgconfig(libmatroska) >= 1.6.1
+BuildRequires:  pkgconfig(libebml) >= 1.4.2
+BuildRequires:  pkgconfig(libmatroska) >= 1.6.3
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(vorbis)
@@ -83,6 +87,9 @@ This package contains the graphical user interface for the mkvtoolnix utils.
 rm -rf lib/{boost,libebml,libmatroska,nlohmann-json,pugixml,fmt}
 
 %build
+export CXX=g++
+test -x "$(type -p g++-8)" && export CXX=g++-8
+export CXXFLAGS="%{optflags} -I%{_include}/utf8cpp"
 %configure --disable-update-check --enable-debug --enable-optimization
 rake --verbose %{?_smp_mflags} V=1
 

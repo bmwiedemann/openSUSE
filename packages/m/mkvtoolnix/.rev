@@ -1098,4 +1098,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>868013</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>b76e427cc0466b0695fb4ad6b06ea4d1</srcmd5>
+    <version>54.0.0</version>
+    <time>1614792816</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875528</requestid>
+  </revision>
 </revisionlist>
