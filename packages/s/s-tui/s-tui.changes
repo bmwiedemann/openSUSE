@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 28 16:22:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  Bug fixes and stability
+  * Wrong reporting of duplicated values in CSV.
+  * Error messages printed to screen.
+
+-------------------------------------------------------------------
 Sat Jul 11 17:16:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.2
