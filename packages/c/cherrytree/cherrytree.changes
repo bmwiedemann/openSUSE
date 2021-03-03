@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Feb 26 22:53:30 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.31+1:
+  * Fix for building with ninja/cmake generator for ninja
+    (-GNinja).
+  * Amsys2 script to prepare standalone folder added user-style.xml
+    required for user custom styles(themes).
+  * Added few more icons as selectable for custom node icon,
+   (gh#giuspen/cherrytree#1514).
+  * Preferences dialog menu languages added flags,
+    (gh#giuspen/cherrytree#1511)
+  * Fixed import from keepnote missing images,
+    (gh#giuspen/cherrytree#1516).
+  * Added button to reset the two user style schemes to the default
+    palettes.
+  * Fix cmake install target, (gh#giuspen/cherrytree#1521).
+  * Two user style schemes, one with a light default and one with
+    a dark default.
+  * Reworked pref dialog tab themes to make room for second user
+    style scheme.
+  * Independent style scheme for plain text and code.
+  * Working on user theme editor, (gh#giuspen/cherrytree#1362).
+  * Split pref dlg source file for upcoming work on theme editor.
+  * Removed default global shortcut Ctrl+Delete to delete tree node
+    because overrides text editor standard,
+    (gh#giuspen/cherrytree#1513).
+  * Insert special symbols chenged from submenu items to dialog,
+    (gh#giuspen/cherrytree#1503).
+  * Renamed filesystem path methods .string_native() and
+    .string_unix().
+  * New unit test for export to html.
+  * New unit test for export to pdf.
+    + unit test for export to txt; unit tests now in 3 binaries
+      'run_tests_no_x', 'run_tests_with_x_1', 'run_tests_with_x_2'.
+  * Implemented 'format clone' at cursor which can be applied with
+    existing 'format latest', (gh#giuspen/cherrytree#600).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Sun Jan 31 01:47:32 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.30+7:
