@@ -906,4 +906,12 @@
   + Streamline openSSL integration</comment>
     <requestid>845297</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>7b1507b7d04f73d3307dd2a5bd0c8c2c</srcmd5>
+    <version>5.6.0</version>
+    <time>1614792936</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876517</requestid>
+  </revision>
 </revisionlist>
