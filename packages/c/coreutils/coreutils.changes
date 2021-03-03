@@ -399,6 +399,10 @@ Tue Jul  3 23:20:18 UTC 2018 - mail@bernhard-voelker.de
   wc avoids redundant processing of ASCII text in multibyte locales,
   which is especially significant on macOS.
 
+  ** Build-related
+
+  Adjust to glibc >= 2.28  (bsc#1182550, jsc#SLE-13520, jsc#SLE-13756)
+
 - Refresh patches (line number changes only):
   * coreutils-build-timeout-as-pie.patch
   * coreutils-disable_tests.patch
