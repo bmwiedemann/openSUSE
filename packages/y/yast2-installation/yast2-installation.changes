@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  2 11:09:17 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not write selinux and polkit default rules during upgrade
+  (bsc#1182894)
+- 4.3.30
+
+-------------------------------------------------------------------
 Mon Mar  1 10:41:52 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - move properly security finish client (bsc#1182821)
