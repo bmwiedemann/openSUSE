@@ -1,0 +1,39 @@
+From 5a64e896a56ef602bb86242bbac01e4319f12cbe Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Tue, 9 Feb 2021 15:26:07 +0100
+Subject: [PATCH] tests/gnutls-cli-debug.sh: don't unset system priority
+ settings
+
+When the test is exercised, GNUTLS_SYSTEM_PRIORITY_FILE is set in many
+places, such as TESTS_ENVIRONMENT tests/Makefile.am or a packaging
+system that runs the test in a restricted environment.  Unsetting it
+after a temporary use forces the remaining part of the test to use the
+default system priority, which might not be the intention of the user.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ tests/gnutls-cli-debug.sh | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/tests/gnutls-cli-debug.sh b/tests/gnutls-cli-debug.sh
+index a73910dea6..3c3e2214e5 100755
+--- a/tests/gnutls-cli-debug.sh
++++ b/tests/gnutls-cli-debug.sh
+@@ -184,13 +184,11 @@ cat <<_EOF_ > ${TMPFILE}
+ tls-disabled-cipher = CAMELLIA-128-CBC
+ tls-disabled-cipher = CAMELLIA-256-CBC
+ _EOF_
+-export GNUTLS_SYSTEM_PRIORITY_FILE="${TMPFILE}"
+ 
++GNUTLS_SYSTEM_PRIORITY_FILE="${TMPFILE}" \
+ timeout 1800 datefudge "2017-08-9" \
+ "${DCLI}" -p "${PORT}" localhost >$OUTFILE 2>&1 || fail ${PID} "gnutls-cli-debug run should have succeeded!"
+ 
+-unset GNUTLS_SYSTEM_PRIORITY_FILE
+-
+ kill ${PID}
+ wait
+ 
+-- 
+GitLab
+

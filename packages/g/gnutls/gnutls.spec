@@ -1,7 +1,7 @@
 #
 # spec file for package gnutls
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,19 +28,26 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.6.15
+Version:        3.7.0
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.gnutls.org/
-Source0:        ftp://ftp.gnutls.org/gcrypt/gnutls/v3.6/%{name}-%{version}.tar.xz
-Source1:        ftp://ftp.gnutls.org/gcrypt/gnutls/v3.6/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source0:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/%{name}-%{version}.tar.xz
+Source1:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/%{name}-%{version}.tar.xz.sig
+Source2:        gnutls.keyring
 Source3:        baselibs.conf
-Patch1:         gnutls-3.5.11-skip-trust-store-tests.patch
-Patch4:         gnutls-3.6.6-set_guile_site_dir.patch
-Patch6:         gnutls-temporarily_disable_broken_guile_reauth_test.patch
+Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
+Patch1:         gnutls-3.6.6-set_guile_site_dir.patch
+Patch2:         gnutls-temporarily_disable_broken_guile_reauth_test.patch
+Patch3:         gnutls-FIPS-TLS_KDF_selftest.patch
+#PATCH-FIX-UPSTREAM gitlab.com/gnutls/gnutls/issues/1131
+Patch4:         gnutls-ignore-duplicate-certificates.patch
+#PATCH-FIX-UPSTREAM gitlab.com/gnutls/gnutls/issues/1135
+Patch5:         gnutls-test-fixes.patch
+#PATCH-FIX-UPSTREAM bsc#1171565 gitlab.com/gnutls/gnutls/merge_requests/1387
+Patch6:         gnutls-gnutls-cli-debug.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -50,7 +57,7 @@ BuildRequires:  gcc-c++
 # The test suite calls /usr/bin/ss from iproute2. It's our own duty to ensure we have it present
 BuildRequires:  iproute2
 BuildRequires:  libidn2-devel
-BuildRequires:  libnettle-devel >= 3.4.1
+BuildRequires:  libnettle-devel >= 3.6
 BuildRequires:  libtasn1-devel >= 4.9
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
@@ -78,6 +85,9 @@ BuildRequires:  libunbound-devel
 %endif
 %if %{with guile}
 BuildRequires:  guile-devel
+%endif
+%if 0%{?suse_version} && ! 0%{?sle_version}
+Requires:       crypto-policies
 %endif
 
 %description
@@ -159,6 +169,7 @@ Requires(pre):  %{install_info_prereq}
 %description -n libgnutlsxx-devel
 Files needed for software development using gnutls.
 
+%if %{with guile}
 %package guile
 Summary:        Guile wrappers for gnutls
 License:        LGPL-2.1-or-later
@@ -167,11 +178,15 @@ Requires:       guile
 
 %description guile
 GnuTLS Wrappers for GNU Guile, a dialect of Scheme.
+%endif
 
 %prep
 %autosetup -p1
 
+echo "SYSTEM=NORMAL" >> tests/system.prio
+
 %build
+%define _lto_cflags %{nil}
 export LDFLAGS="-pie"
 export CFLAGS="%{optflags} -fPIE"
 export CXXFLAGS="%{optflags} -fPIE"
@@ -182,7 +197,9 @@ export CXXFLAGS="%{optflags} -fPIE"
         --disable-static \
         --disable-rpath \
         --disable-silent-rules \
-	--with-default-trust-store-dir=%{_localstatedir}/lib/ca-certificates/pem \
+        --with-default-trust-store-dir=%{_localstatedir}/lib/ca-certificates/pem \
+        --with-system-priority-file=%{_sysconfdir}/crypto-policies/back-ends/gnutls.config \
+        --with-default-priority-string="@SYSTEM" \
         --with-sysroot=/%{?_sysroot} \
 %if %{without tpm}
         --without-tpm \
@@ -193,7 +210,8 @@ export CXXFLAGS="%{optflags} -fPIE"
         --disable-libdane \
 %endif
         --enable-fips140-mode \
-	%{nil}
+        %{nil}
+
 make %{?_smp_mflags}
 
 # the hmac hashes:
@@ -235,7 +253,8 @@ rm -rf %{buildroot}%{_datadir}/doc/gnutls
 
 %check
 %if ! 0%{?qemu_user_space_build}
-make %{?_smp_mflags} check || {
+#make %%{?_smp_mflags} check || {
+make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
     find -name test-suite.log -print -exec cat {} +
     exit 1
 }
@@ -330,8 +349,19 @@ make %{?_smp_mflags} check || {
 
 %if %{with guile}
 %files guile
+%if 0%{?suse_version} > 1550
+%{_libdir}/guile/3.0/guile-gnutls*.so*
+%{_libdir}/guile/3.0/site-ccache
+%{_libdir}/guile/3.0/site-ccache/gnutls
+%{_libdir}/guile/3.0/site-ccache/gnutls.go
+%{_libdir}/guile/3.0/site-ccache/gnutls/extra.go
+%{_datadir}/guile/gnutls
+%{_datadir}/guile/gnutls.scm
+%{_datadir}/guile/gnutls/extra.scm
+%else
 %{_libdir}/guile/*
 %{_datadir}/guile/gnutls*
+%endif
 %endif
 
 %changelog

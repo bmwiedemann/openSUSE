@@ -1416,4 +1416,41 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>841380</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>1c9523f4c66881d13578923df69b5976</srcmd5>
+    <version>3.7.0</version>
+    <time>1614792802</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix the test suite for tests/gnutls-cli-debug.sh [bsc#1171565]
+  * Don't unset system priority settings in gnutls-cli-debug.sh
+  * Upstream: gitlab.com/gnutls/gnutls/merge_requests/1387
+- Add gnutls-gnutls-cli-debug.patch
+
+- Fix: Test certificates in tests/testpkcs11-certs have expired
+  * Upstream bug: gitlab.com/gnutls/gnutls/issues/1135
+- Add gnutls-test-fixes.patch
+
+- gnutls_x509_trust_list_verify_crt2: ignore duplicate certificates
+  * Upstream bug: https://gitlab.com/gnutls/gnutls/issues/1131
+- Add gnutls-ignore-duplicate-certificates.patch
+
+- Update to 3.7.0
+  * Depend on nettle 3.6
+  * Added a new API that provides a callback function to retrieve
+    missing certificates from incomplete certificate chains
+  * Added a new API that provides a callback function to output the
+    complete path to the trusted root during certificate chain
+	verification
+  * OIDs exposed as gnutls_datum_t no longer account for the
+    terminating null bytes, while the data field is null terminated.
+    The affected API functions are: gnutls_ocsp_req_get_extension,
+    gnutls_ocsp_resp_get_response, and gnutls_ocsp_resp_get_extension
+  * Added a new set of API to enable QUIC implementation
+  * The crypto implementation override APIs deprecated in 3.6.9 are
+    now no-op
+  * Added MAGMA/KUZNYECHIK CTR-ACPKM and CMAC support
+  * Support for padlock has been fixed to make it work with Zhaoxin CPU
+  * The maximum PIN length for PKCS #11 has been increased from 31</comment>
+    <requestid>873444</requestid>
+  </revision>
 </revisionlist>

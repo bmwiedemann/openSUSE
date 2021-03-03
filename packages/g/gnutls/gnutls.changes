@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Feb 10 12:08:05 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the test suite for tests/gnutls-cli-debug.sh [bsc#1171565]
+  * Don't unset system priority settings in gnutls-cli-debug.sh
+  * Upstream: gitlab.com/gnutls/gnutls/merge_requests/1387
+- Add gnutls-gnutls-cli-debug.patch
+
+-------------------------------------------------------------------
+Wed Feb 10 11:17:51 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix: Test certificates in tests/testpkcs11-certs have expired
+  * Upstream bug: gitlab.com/gnutls/gnutls/issues/1135
+- Add gnutls-test-fixes.patch
+
+-------------------------------------------------------------------
+Mon Feb  8 18:05:56 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- gnutls_x509_trust_list_verify_crt2: ignore duplicate certificates
+  * Upstream bug: https://gitlab.com/gnutls/gnutls/issues/1131
+- Add gnutls-ignore-duplicate-certificates.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 23:33:15 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.7.0
+  * Depend on nettle 3.6
+  * Added a new API that provides a callback function to retrieve
+    missing certificates from incomplete certificate chains
+  * Added a new API that provides a callback function to output the
+    complete path to the trusted root during certificate chain
+	verification
+  * OIDs exposed as gnutls_datum_t no longer account for the
+    terminating null bytes, while the data field is null terminated.
+    The affected API functions are: gnutls_ocsp_req_get_extension,
+    gnutls_ocsp_resp_get_response, and gnutls_ocsp_resp_get_extension
+  * Added a new set of API to enable QUIC implementation
+  * The crypto implementation override APIs deprecated in 3.6.9 are
+    now no-op
+  * Added MAGMA/KUZNYECHIK CTR-ACPKM and CMAC support
+  * Support for padlock has been fixed to make it work with Zhaoxin CPU
+  * The maximum PIN length for PKCS #11 has been increased from 31
+    bytes to 255 bytes
+- Remove patch fixed upstream:
+  * gnutls-FIPS-use_2048_bit_prime_in_DH_selftest.patch
+- Add version guards for the crypto-policies package
+- Fix threading bug in libgnutls [bsc#1173434]
+  * Upstream bug: gitlab.com/gnutls/gnutls/issues/1044
+
+-------------------------------------------------------------------
+Thu Dec 17 17:16:08 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Require the crypto-policies package [bsc#1180051]
+
+-------------------------------------------------------------------
+Tue Nov 24 15:43:02 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Use the centralized crypto policy profile (jsc#SLE-15832)
+
+-------------------------------------------------------------------
+Tue Nov 10 11:25:02 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- FIPS: Use 2048 bit prime in DH selftest (bsc#1176086)
+  * add gnutls-FIPS-use_2048_bit_prime_in_DH_selftest.patch
+- FIPS: Add TLS KDF selftest (bsc#1176671)
+  * add gnutls-FIPS-TLS_KDF_selftest.patch
+
+-------------------------------------------------------------------
 Mon Oct 12 11:54:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Escape rpm command %%expand when used in comment.
