@@ -1,7 +1,7 @@
 #
 # spec file for package hostapd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without  apparmor
+
 Name:           hostapd
 Version:        2.9
 Release:        0
@@ -29,6 +31,7 @@ Source1:        https://w1.fi/releases/hostapd-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        config
 Source4:        hostapd.service
+Source5:        apparmor-usr.sbin.hostapd
 Patch1:         CVE-2019-16275.patch
 Patch2:         CVE-2020-12695.patch
 BuildRequires:  libnl3-devel
@@ -38,6 +41,11 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
+%if %{with apparmor}
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
+Recommends:     apparmor-abstractions
+%endif
 
 %description
 hostapd is a user space daemon for access point and authentication
@@ -74,12 +82,20 @@ install -m 644 hostapd.vlan %{buildroot}%{_sysconfdir}
 install -m 600 hostapd.wpa_psk %{buildroot}%{_sysconfdir}
 install -m 644 hostapd.8 %{buildroot}/%{_mandir}/man8
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/hostapd.service
+%if %{with apparmor}
+# AppArmor profile
+mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
+install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.hostapd
+%endif
 
 %pre
 %service_add_pre hostapd.service
 
 %post
 %service_add_post hostapd.service
+%if %{with apparmor}
+%apparmor_reload %{_sysconfdir}/apparmor.d/usr.sbin.hostapd
+%endif
 
 %preun
 %service_del_preun hostapd.service
@@ -89,6 +105,10 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/hostapd.service
 
 %files
 %config(noreplace) %{_sysconfdir}/hostapd.*
+%if %{with apparmor}
+%dir %{_sysconfdir}/apparmor.d
+%config %{_sysconfdir}/apparmor.d/usr.sbin.hostapd
+%endif
 %{_sbindir}/*
 %license COPYING
 %doc hostapd/ChangeLog hostapd/README hostapd/wired.conf hostapd/hostapd.conf

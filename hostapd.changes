@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:33:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added AppArmor profile (source apparmor-usr.sbin.hostapd)
+
+-------------------------------------------------------------------
 Tue Sep 29 12:52:10 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add CVE-2020-12695.patch -- UPnP SUBSCRIBE misbehavior in hostapd WPS AP
