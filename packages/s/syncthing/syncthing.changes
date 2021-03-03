@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  3 09:45:30 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.14.0
+  * This release adds configurable device and folder defaults.
+  * The output format of the /rest/db/browse endpoint has changed. 
+
+-------------------------------------------------------------------
 Wed Feb  3 19:37:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.1:
