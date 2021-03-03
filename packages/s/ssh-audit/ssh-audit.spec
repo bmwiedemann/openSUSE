@@ -1,7 +1,7 @@
 #
 # spec file for package ssh-audit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ssh-audit
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        SSH server auditing
 License:        MIT
@@ -57,9 +57,6 @@ sed -i -e '/^#!\//, 1d' src/ssh_audit/ssh_audit.py
 %python3_install
 %fdupes %{buildroot}%{python3_sitelib}
 install -D -p -m0644 ssh-audit.1 %{buildroot}%{_mandir}/man1/ssh-audit.1
-
-%check
-%pytest
 
 %files
 %license LICENSE

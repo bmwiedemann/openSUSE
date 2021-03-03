@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  1 08:59:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  * Added multi-threaded scanning support.
+  * Added version check for OpenSSH user enumeration
+    (CVE-2018-15473).
+  * Added deprecation note to host key types based on SHA-1.
+  * Added extra warnings for SSHv1.
+  * Added built-in hardened OpenSSH v8.5 policy.
+  * Upgraded warnings to failures for host key types based on SHA-1
+  * Fixed crash when receiving unexpected response during host key
+    test.
+  * Fixed hang against older Cisco devices during host key test &
+    gex test.
+  * Fixed improper termination while scanning multiple targets when
+    one target returns an error.
+  * Dropped support for Python 3.5 (which reached EOL in Sept.2020)
+  * Added 1 new key exchange: sntrup761x25519-sha512@openssh.com.
+
+-------------------------------------------------------------------
 Fri Oct 30 19:27:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1
