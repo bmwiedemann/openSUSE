@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 23 10:06:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no numpy) 
+
+-------------------------------------------------------------------
 Tue May 26 06:34:17 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
