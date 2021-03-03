@@ -1,7 +1,7 @@
 #
 # spec file for package gtkd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,27 +20,17 @@
 %define gtkd_minor  9
 %define gtkd_bugfix 0
 %define sover  0
-# DMD is available only on x86*. Use LDC otherwise.
-# For Tumbleweed move to use LDC
-%if 0%{?suse_version} > 1500
-%bcond_with dcompiler_dmd
-%endif
-%if 0%{?suse_version} < 1550
-%ifarch %{ix86} x86_64
-%bcond_without dcompiler_dmd
-%else
-%bcond_with dcompiler_dmd
-%endif
-%endif
 Name:           gtkd
 Version:        3.9.0
 Release:        0
 Summary:        D binding and OO wrapper for GTK+
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Other
-URL:            http://gtkd.org/
+URL:            https://gtkd.org/
 Source:         https://github.com/gtkd-developers/GtkD/archive/v%{version}/gtkd-%{version}.tar.gz
 Patch1:         fix-build.patch
+BuildRequires:  ldc
+BuildRequires:  ldc-phobos-devel
 BuildRequires:  pkgconfig
 Requires:       Mesa-libGL1
 Requires:       atk
@@ -61,13 +51,6 @@ Requires:       libpeasd-%{gtkd_major}-%{sover} = %{version}
 Requires:       libvted-%{gtkd_major}-%{sover} = %{version}
 Requires:       pango
 Requires:       vte
-%if %{with dcompiler_dmd}
-BuildRequires:  dmd
-BuildRequires:  phobos-devel
-%else
-BuildRequires:  ldc
-BuildRequires:  ldc-phobos-devel
-%endif
 
 %description
 GTK+ is a highly usable, feature rich toolkit for creating graphical user
@@ -135,12 +118,8 @@ This package contains the header files for GtkD a D binding and OO wrapper of GT
 sed -i 's|ldconfig|/sbin/ldconfig|g' GNUmakefile
 
 %build
-make %{?_smp_mflags} \
-%if %{with dcompiler_dmd}
-    DC=dmd \
-%else
+%make_build \
     DC=ldmd2 \
-%endif
     CC=gcc libdir=%{?_lib} DCFLAGS='-O -release -inline -boundscheck=off -w -g' \
     shared-gstreamer \
     shared-gtkd \

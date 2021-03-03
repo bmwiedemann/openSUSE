@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  9 20:05:18 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- use LDC for all architectures and for all openSUSE targets.
+  LDC have better multiarch support and better to just maintain one d-compiler.
+
+-------------------------------------------------------------------
 Tue Aug 20 21:18:32 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
 
 - Add patch: fix-build.patch to fix pkgconfig files installing in correct path 
