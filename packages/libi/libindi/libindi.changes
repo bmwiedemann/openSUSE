@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  1 13:23:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.9:
+  + Fix paramount home and sidereal rate
+  + Added labels for USB and Dew
+  + Add entry for star adventurer
+  + Add motor rate and current to the config save
+  + Add CEM26 and GEM28. Migrate CEM40 and GEM45 drivers to
+    iOptronv3 commands and remove parking restrictions
+  + Add preliminary support to inquire pier side for Paramount
+  + Add support to Pegasus Micro 
+  + Updates to DDW driver
+  + Increment version for SkyWAtcher Alt-Az
+  + Add support for AZEQ6
+  + Fix celestrongps guide rate scaling
+  + Various small fixes
+
+-------------------------------------------------------------------
 Mon Jan 11 07:51:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.8:
