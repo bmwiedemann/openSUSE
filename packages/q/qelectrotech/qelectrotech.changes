@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  2 22:28:25 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 0.80:
+  * Lots of changes (see ChangeLog).
+- Added new build requirement sqlite-devel >= 3.0.
+
+-------------------------------------------------------------------
 Tue Jul 14 18:36:33 UTC 2020 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 0.70:

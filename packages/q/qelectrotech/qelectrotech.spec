@@ -1,8 +1,8 @@
 #
 # spec file for package qelectrotech
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Asterios Dramis <asterios.dramis@gmail.com>.
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 #
 
 
-%define src 0.7.0
+%define src 0.8.0
 Name:           qelectrotech
-Version:        0.70
+Version:        0.80
 Release:        0
-Summary:        Application to design electric diagrams
+Summary:        Application to Design Electric Diagrams
 License:        GPL-2.0-or-later AND CC-BY-3.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://qelectrotech.org/
@@ -32,6 +32,7 @@ BuildRequires:  kcoreaddons-devel
 BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
+BuildRequires:  sqlite-devel >= 3.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -65,8 +66,8 @@ sed -e s,%{_prefix}/local/,%{_prefix}/, \
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
-sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" sources/aboutqet.cpp
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" sources/aboutqet.cpp
+sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" sources/machine_info.h
+sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" sources/machine_info.h
 
 %build
 %qmake5
@@ -95,7 +96,7 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" sources/aboutqet.cpp
 %endif
 
 %files -f %{name}.lang
-%doc CREDIT ChangeLog README
+%doc CREDIT ChangeLog README README.md
 %license %{_defaultdocdir}/%{name}/ELEMENTS.LICENSE
 %license %{_defaultdocdir}/%{name}/LICENSE
 %{_bindir}/qelectrotech
