@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Fri Feb 19 01:11:53 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.11: https://github.com/samtools/htslib/releases/tag/1.11
+  * Features and Updates
+    - Support added for remote reference files.
+    - Added tabix --separate-regions option
+    - Added tabix --cache option to set a BGZF block cache size.
+    - Improved error checking in tabix and added a --verbosity option
+    - A note about the maximum chromosome length usable with TBI
+      indexes has been added to the tabix manual page.
+    - New method vcf_open_mode() changes the opening mode of a variant
+      file based on its file extension.
+    - The VCF parser has been made faster and easier to maintain.
+    - bcf_record_check() has been made faster
+    - The VCF parser now recognises the <NON_REF> symbolic allele produced by GATK.
+    - Support has been added for simultaneous reading of unindexed
+      VCF/BCF files when using the synced_bcf_reader interface.
+    - The VCF and BCF readers will now attempt to fix up invalid INFO/END tags
+    - The htsFile interface can now detect the crypt4gh encrypted format
+    - hts_srand48() now seeds the same POSIX-standard sequences of pseudo-random
+      numbers regardless of platform, including on OpenBSD where plain srand48()
+      produces a different cryptographically-strong non-deterministic sequence.
+    - Iterators now work with 64 bit positions.
+    - Improved the speed of range queries when using BAI indexes by making better
+      use of the linear index data included in the file.
+    - Alignments which consume no reference bases are now considered to have length 1.
+    - A bam_set_seqi() function to modify a single base in the BAM structure has been added.
+    - Writing SAM format is around 30% faster.
+    - Added sam_format_aux1() which converts a BAM aux tag to a SAM format string.
+    - bam_aux_update_str() no longer requires NUL-terminated strings.
+    - It is now possible to use external plug-ins in language bindings
+      that dynamically load HTSlib.
+    - bgzf_close(), and therefore hts_close(), will now return non-zero when
+      closing a BGZF handle on which errors have been detected.
+    - Added a special case to the kt_fisher_exact() test for when the table
+      probability is too small to be represented in a double.
+    - Improved error diagnostics in the CRAM decoder (#1042), BGZF (#1049),
+      the VCF and BCF readers (#1059), and the SAM parser (#1073).
+    - ks_resize() now allocates 1.5 times the requested size when it needs to
+      expand a kstring instead of rounding up to the next power of two.
+  * Bug fixes
+    - Fixed hfile_libcurl breakage when using libcurl 7.69.1 or later.
+    - Fixed overflows kroundup32() and kroundup_size_t() which caused them to return
+      zero when rounding up values where the most significant bit was set.
+    - Fixed missing return parameter value in idx_test_and_fetch().
+    - Fixed crashes due to inconsistent selection between BGZF and plain (hFILE)
+      interfaces when reading files.
+    - Added and/or fixed byte swapping code for big-endian platforms.
+    - Fixed a problem with multi-threaded on-the-fly indexes which would occasionally
+      write virtual offsets pointing at the end of a BGZF block.
+    - In sam_hdr_create(), free newly allocated SN strings when encountering an error.
+    - Prevent double free in case of idx_test_and_fetch() failure.
+    - In the header, link a new PG line only to valid chains. Prevents an explosive
+      growth of PG lines on headers where PG lines are already present but not linked
+      together correctly.
+    - Also in the header, when calling sam_hdr_update_line(), update target arrays
+      only when the name or length is changed.
+    - Fixed buffer overflows in CRAM MD5 calculation triggered by files with invalid
+      compression headers, or files with embedded references that were one byte too short.
+    - Fix mpileup regression between 1.9 and 1.10 where overlap detection was incorrectly
+      skipped on reads where RNEXT, PNEXT and TLEN were set to the "unavailable" values
+      ("*", 0, 0 in SAM).
+    - kputs() now checks for null pointer in source string.
+    - Fix potential bcf_update_alleles() crash on 0 alleles.
+    - Added bcf_unpack() calls to some bcf_update functions to fix a bug where updates
+      made after a call to bcf_dup() could be lost.
+    - Error message typo "Number=R" instead of "Number=G" fixed in bcf_remove_allele_set().
+    - Fixed crashes that could occur in BCF files that use IDX= header annotations to
+      create a sparse set of CHROM, FILTER or FORMAT indexes, and include records that
+      use one of the missing index values.
+    - Fixed potential integer overflows in the VCF parser and ensured that the total
+      length of FORMAT fields cannot go over 2Gbytes.
+    - Download index files atomically in idx_test_and_fetch(). This prevents corruption
+      when running parallel jobs on S3 files.
+    - The pileup constructor callback is now given the copy of the bam1_t struct made
+      by pileup instead of the original one passed to bam_plp_push().
+    - Fixed possible error in code_sort() on negative CRAM Huffman code length.
+    - Fixed possible undefined shift in cram_byte_array_stop_decode_init().
+    - Fixed a bug where range queries to the end of a given reference would return
+      incorrect results on CRAM files.
+    - Fixed an integer overflow in cram_read_slice().
+    - Fixed a memory leak on failure in cram_decode_slice().
+    - Fixed a regression which caused cram_transcode_rg() to fail, resulting in a
+      crash in "samtools cat" on CRAM files.
+    - Fixed an undersized string reallocation in the threaded SAM reader which caused
+      it to crash when reading SAM files with very long lines. Numerous memory allocation
+      checks have also been added.
+
+
+-------------------------------------------------------------------
 Mon Feb 10 16:49:36 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Include baselibs.conf as source file.

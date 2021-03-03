@@ -1,7 +1,7 @@
 #
 # spec file for package libhts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           libhts
-Version:        1.10.2
-%define   sonum 3
+Version:        1.11
 Release:        0
+%define   sonum 3
 Summary:        C library for high-throughput sequencing data formats
 License:        MIT
 Group:          Productivity/Scientific/Other
