@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-oscfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fuse-oscfs
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A FUSE file system for accessing Open Build Service instances
 License:        GPL-2.0-or-later

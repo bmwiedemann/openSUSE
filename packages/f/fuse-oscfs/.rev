@@ -21,4 +21,16 @@
     operating on larger files.</comment>
     <requestid>777996</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>202f950dded2af5170b34bb848a5c6ea</srcmd5>
+    <version>0.7.2</version>
+    <time>1614792948</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version v0.7.2:
+  * obs getBuildlog(): return plain binary data instead of utf8 decoded string
+  * types: avoid encoding content during read() which can change the content size
+  * types: actually import sys to avoid error during error handling
+  * unicode handling: only use `unicode` on Python2</comment>
+    <requestid>876542</requestid>
+  </revision>
 </revisionlist>
