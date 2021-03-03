@@ -1,0 +1,5 @@
+<package name="lxpanel" project="openSUSE:Factory">
+  <title>LXPanel (desktop panel)</title>
+  <description>LXPanel (desktop panel)</description>
+  <devel project="X11:lxde" package="lxpanel"/>
+</package>
