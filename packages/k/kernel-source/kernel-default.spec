@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.10
-%define patchversion 5.10.16
+%define srcversion 5.11
+%define patchversion 5.11.2
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.10.16
+Version:        5.11.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g11381f3
+Release:        <RELEASE>.gee0b277
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-11381f36fbc45631c56f8d0c85c2ccf2cd57ec01
-Provides:       kernel-srchash-11381f36fbc45631c56f8d0c85c2ccf2cd57ec01
+Provides:       kernel-%build_flavor-base-srchash-ee0b277e036ac6832c4219283961bc990f56901d
+Provides:       kernel-srchash-ee0b277e036ac6832c4219283961bc990f56901d
 # END COMMON DEPS
-Provides:       %name-srchash-11381f36fbc45631c56f8d0c85c2ccf2cd57ec01
+Provides:       %name-srchash-ee0b277e036ac6832c4219283961bc990f56901d
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -1018,7 +1018,9 @@ done | add_dirs_to_filelist >%my_builddir/kernel-devel.files
 sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/Symbols[.]list$' -e '/ipa-clones[.]list$'| \
 add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 
-{   cd %buildroot
+{   echo %ghost /boot/$image$suffix
+    echo %ghost /boot/initrd$suffix
+    cd %buildroot
     for f in boot/*; do
         if test -L "$f"; then
             echo "%%ghost /$f"

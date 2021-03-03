@@ -17,8 +17,8 @@
 # icecream 0
 
 
-%define srcversion 5.10
-%define patchversion 5.10.16
+%define srcversion 5.11
+%define patchversion 5.11.2
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.10.16
+Version:        5.11.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g11381f3
+Release:        <RELEASE>.gee0b277
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-11381f36fbc45631c56f8d0c85c2ccf2cd57ec01
+Provides:       %name-srchash-ee0b277e036ac6832c4219283961bc990f56901d
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -268,6 +268,10 @@ perl "%_sourcedir/group-source-files.pl" \
 popd
 
 find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
+# OBS checks don't like /usr/bin/env in script interpreter lines
+grep -Elr '^#! */usr/bin/env ' %{buildroot}/usr/src/linux* | while read f; do
+    sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
+done
 # kernel-source and kernel-$flavor-devel are built independently, but the
 # shipped sources (/usr/src/linux/) need to be older than generated files
 # (/usr/src/linux-obj). We rely on the git commit timestamp to not point into

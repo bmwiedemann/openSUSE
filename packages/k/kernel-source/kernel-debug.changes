@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Fri Feb 26 11:10:58 CET 2021 - jslaby@suse.cz
+
+- Linux 5.11.2 (bsc#1012628).
+- KVM: Use kvm_pfn_t for local PFN variable in
+  hva_to_pfn_remapped() (bsc#1012628).
+- mm: provide a saner PTE walking API for modules (bsc#1012628).
+- KVM: do not assume PTE is writable after follow_pfn
+  (bsc#1012628).
+- KVM: x86: Zap the oldest MMU pages, not the newest
+  (bsc#1012628).
+- hwmon: (dell-smm) Add XPS 15 L502X to fan control blacklist
+  (bsc#1012628).
+- arm64: tegra: Add power-domain for Tegra210 HDA (bsc#1012628).
+- Bluetooth: btusb: Some Qualcomm Bluetooth adapters stop working
+  (bsc#1012628).
+- ntfs: check for valid standard information attribute
+  (bsc#1012628).
+- usb: quirks: add quirk to start video capture on ELMO L-12F
+  document camera reliable (bsc#1012628).
+- USB: quirks: sort quirk entries (bsc#1012628).
+- HID: make arrays usage and value to be the same (bsc#1012628).
+- bpf: Fix truncation handling for mod32 dst reg wrt zero
+  (bsc#1012628).
+- commit 6fd6105
+
+-------------------------------------------------------------------
+Fri Feb 26 10:12:28 CET 2021 - mkubecek@suse.cz
+
+- config: refresh
+- fix misspelled USB gadget debugging options
+- commit 20be8e3
+
+-------------------------------------------------------------------
+Wed Feb 24 16:36:03 CET 2021 - oneukum@suse.com
+
+- Update config files. Update config files. Enable USB_GADGET(jsc#SLE-14042)
+- supported.conf:
+  After discussion what the feature request implied, it was
+  decided that gadget mode is also needed on x86_64
+- commit 4adcbc0
+
+-------------------------------------------------------------------
+Wed Feb 24 14:09:57 CET 2021 - msuchanek@suse.de
+
+- macros.kernel-source: Use spec_install_pre for certificate installation (boo#1182672).
+  Since rpm 4.16 files installed during build phase are lost.
+- commit d0b887e
+
+-------------------------------------------------------------------
+Wed Feb 24 00:11:36 CET 2021 - mkubecek@suse.cz
+
+- update mainline references
+- update mainline references:
+  patches.suse/drm-bail-out-of-nouveau_channel_new-if-channel-init-.patch
+  patches.suse/floppy-reintroduce-O_NDELAY-fix.patch
+  patches.suse/media-uvcvideo-Accept-invalid-bFormatIndex-and-bFram.patch
+- commit 4eacbc9
+
+-------------------------------------------------------------------
+Tue Feb 23 18:12:58 CET 2021 - jslaby@suse.cz
+
+- Linux 5.11.1 (bsc#1012628).
+- Xen/x86: don't bail early from clear_foreign_p2m_mapping()
+  (bsc#1012628).
+- Xen/x86: also check kernel mapping in set_foreign_p2m_mapping()
+  (bsc#1012628).
+- Xen/gntdev: correct dev_bus_addr handling in
+  gntdev_map_grant_pages() (bsc#1012628).
+- Xen/gntdev: correct error checking in gntdev_map_grant_pages()
+  (bsc#1012628).
+- xen/arm: don't ignore return errors from set_phys_to_machine
+  (bsc#1012628).
+- xen-blkback: don't "handle" error by BUG() (bsc#1012628).
+- xen-netback: don't "handle" error by BUG() (bsc#1012628).
+- xen-scsiback: don't "handle" error by BUG() (bsc#1012628).
+- xen-blkback: fix error handling in xen_blkbk_map()
+  (bsc#1012628).
+- tty: protect tty_write from odd low-level tty disciplines
+  (bsc#1012628).
+- Bluetooth: btusb: Always fallback to alt 1 for WBS
+  (bsc#1012628).
+- commit 3652ea1
+
+-------------------------------------------------------------------
+Mon Feb 22 12:03:41 CET 2021 - mbrugger@suse.com
+
+- arm: Update config files.
+  Set CONFIG_WATCHDOG_SYSFS to true (bsc#1182560)
+- commit 702d1a3
+
+-------------------------------------------------------------------
+Mon Feb 22 11:16:23 CET 2021 - msuchanek@suse.de
+
+- rpm/kernel-subpackage-build: Workaround broken bot
+  (https://github.com/openSUSE/openSUSE-release-tools/issues/2439)
+- commit b74d860
+
+-------------------------------------------------------------------
+Wed Feb 17 10:52:06 CET 2021 - nsaenzjulienne@suse.de
+
+- Update config files: Set reset-raspberrypi as builtin (bsc#1180336)
+  This driver is needed in order to boot through USB. Ideally the kernel
+  module should be selected by dracut, but it's not. So make it builtin
+  until the relevant dracut fixes are available.
+- commit 8186eab
+
+-------------------------------------------------------------------
+Tue Feb 16 10:22:15 CET 2021 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- move patches on the way to mainline into respective section
+  patches.suse/drm-bail-out-of-nouveau_channel_new-if-channel-init-.patch
+  patches.suse/media-uvcvideo-Accept-invalid-bFormatIndex-and-bFram.patch
+  patches.suse/media-dvb-usb-Fix-memory-leak-at-error-in-dvb_usb_de.patch
+  patches.suse/media-dvb-usb-Fix-use-after-free-access.patch
+  patches.suse/media-pwc-Use-correct-device-for-DMA.patch
+- commit 8309a4e
+
+-------------------------------------------------------------------
+Mon Feb 15 20:23:21 CET 2021 - msuchanek@suse.de
+
+- kernel-binary.spec: Add back initrd and image symlink ghosts to
+  filelist (bsc#1182140).
+  Fixes: 76a9256314c3 ("rpm/kernel-{source,binary}.spec: do not include ghost symlinks (boo#1179082).")
+- commit 606c9d1
+
+-------------------------------------------------------------------
+Mon Feb 15 14:38:16 CET 2021 - tiwai@suse.de
+
+- rpm/post.sh: Avoid purge-kernel for the first installed kernel (bsc#1180058)
+- commit c29e77d
+
+-------------------------------------------------------------------
+Mon Feb 15 08:07:01 CET 2021 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/drm-bail-out-of-nouveau_channel_new-if-channel-init-.patch.
+- Refresh
+  patches.suse/media-uvcvideo-Accept-invalid-bFormatIndex-and-bFram.patch.
+  Update upstream status.
+- commit 1916d9d
+
+-------------------------------------------------------------------
+Sun Feb 14 23:47:22 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.11 final
+- refresh configs
+- commit 253d8c6
+
+-------------------------------------------------------------------
 Sat Feb 13 17:19:54 CET 2021 - jslaby@suse.cz
 
 - Linux 5.10.16 (bsc#1012628).
@@ -92,13 +242,13 @@ Fri Feb 12 15:31:50 CET 2021 - tiwai@suse.de
 - Update config files: enable CONFIG_SERIAL_DEV_CTRL_TTYPORT on x86 (bsc#1182035)
   For supporting MS Surface devices. This required CONFIG_SERIAL_DEV_BUS
   to be built-in. Also this allowed CONFIG_BT_HCIUART_BCM=y as well.
-- commit 2d8fb7a
+- commit 52688e6
 
 -------------------------------------------------------------------
 Fri Feb 12 15:27:56 CET 2021 - tiwai@suse.de
 
 - media: pwc: Use correct device for DMA (bsc#1181133).
-- commit 4a7417d
+- commit 721eebd
 
 -------------------------------------------------------------------
 Fri Feb 12 15:26:57 CET 2021 - tiwai@suse.de
@@ -110,7 +260,7 @@ Fri Feb 12 15:26:57 CET 2021 - tiwai@suse.de
 Fri Feb 12 09:18:21 CET 2021 - nsaenzjulienne@suse.de
 
 - Update config files: armv7hl: Set ledtrig-default-on as builtin (bsc#1182128)
-- commit d24d9b2
+- commit fa9dd94
 
 -------------------------------------------------------------------
 Thu Feb 11 18:31:44 CET 2021 - fdmanana@suse.com
@@ -123,7 +273,7 @@ Thu Feb 11 18:31:44 CET 2021 - fdmanana@suse.com
 Thu Feb 11 15:29:59 CET 2021 - nsaenzjulienne@suse.de
 
 - Update config files: Set ledtrig-default-on as builtin (bsc#1182128)
-- commit 7119d5a
+- commit 7800832
 
 -------------------------------------------------------------------
 Thu Feb 11 14:37:16 CET 2021 - oneukum@suse.com
@@ -131,7 +281,7 @@ Thu Feb 11 14:37:16 CET 2021 - oneukum@suse.com
 - Update config files. Enable DWC3 on x86_64
   DWC3 is now needed on x86_64, too, with the added benefit
   of making x86_64 and ARM64 closer (jsc#SLE-14042)
-- commit 7cc21b5
+- commit ad4ea5b
 
 -------------------------------------------------------------------
 Wed Feb 10 09:41:17 CET 2021 - jslaby@suse.cz
@@ -364,6 +514,13 @@ Mon Feb  8 17:26:30 CET 2021 - matwey.kornilov@gmail.com
   When compiled as 'm' there are lots of errors related to clk and no host mmc
   controler initialized.
 - commit 52fdc54
+
+-------------------------------------------------------------------
+Sun Feb  7 23:11:01 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.11-rc7
+- refresh configs
+- commit 68cabb0
 
 -------------------------------------------------------------------
 Sun Feb  7 16:07:09 CET 2021 - jslaby@suse.cz
@@ -732,6 +889,18 @@ Thu Feb  4 07:01:34 CET 2021 - jslaby@suse.cz
 - commit 3527948
 
 -------------------------------------------------------------------
+Sun Jan 31 23:32:11 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.11-rc6
+- eliminated 1 patch
+  - patches.suse/iwlwifi-dbg-Don-t-touch-the-tlv-data.patch
+- refresh
+  - patches.suse/acpi_thermal_passive_blacklist.patch
+- update configs
+  - LEDS_RT8515=m
+- commit 8d79a70
+
+-------------------------------------------------------------------
 Sat Jan 30 20:15:49 CET 2021 - jslaby@suse.cz
 
 - Linux 5.10.12 (bsc#1012628).
@@ -790,6 +959,22 @@ Sat Jan 30 16:50:45 CET 2021 - afaerber@suse.com
   The Ten64 board with NXP LS1088A SoC is documented to have Arm SP805 based
   watchdogs, so let's enable the driver for it.
 - commit a0c37a5
+
+-------------------------------------------------------------------
+Fri Jan 29 08:59:18 CET 2021 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- move to "almost mainline" section:
+  patches.suse/floppy-reintroduce-O_NDELAY-fix.patch
+- commit 26dd464
+
+-------------------------------------------------------------------
+Thu Jan 28 12:07:05 CET 2021 - mgorman@suse.de
+
+- series.conf: Move performance-related tuning parameters to separate section
+  This is in preparation for syncing between SLE-specific tunable changes and
+  the master tunings.
+- commit 1019feb
 
 -------------------------------------------------------------------
 Thu Jan 28 11:34:53 CET 2021 - msuchanek@suse.de
@@ -1150,6 +1335,17 @@ Tue Jan 26 18:07:19 CET 2021 - tiwai@suse.de
 - commit 87d962b
 
 -------------------------------------------------------------------
+Mon Jan 25 06:35:26 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.11-rc5
+- eliminated 3 patches
+  - patches.suse/fs-cachefs-Drop-superfluous-readpages-aops-NULL-chec.patch
+  - patches.suse/irq-export-irq_check_status_bit-symbol.patch
+  - patches.suse/x86-xen-fix-nopvspin-build-error.patch
+- refresh configs
+- commit 1a51baa
+
+-------------------------------------------------------------------
 Sat Jan 23 16:43:57 CET 2021 - jslaby@suse.cz
 
 - Linux 5.10.10 (bsc#1012628).
@@ -1248,7 +1444,10 @@ Thu Jan 21 12:33:01 CET 2021 - tiwai@suse.de
 - media: dvb-usb: Fix use-after-free access (bsc#1181104).
 - media: dvb-usb: Fix memory leak at error in
   dvb_usb_device_init() (bsc#1181104).
-- commit 807ed8c
+- media: dvb-usb: Fix use-after-free access (bsc#1181104).
+- media: dvb-usb: Fix memory leak at error in
+  dvb_usb_device_init() (bsc#1181104).
+- commit 8c718c9
 
 -------------------------------------------------------------------
 Wed Jan 20 12:12:12 CET 2021 - msuchanek@suse.de
@@ -1517,6 +1716,29 @@ Wed Jan 20 08:22:39 CET 2021 - jslaby@suse.cz
 - commit b7732a5
 
 -------------------------------------------------------------------
+Mon Jan 18 08:33:31 CET 2021 - mkubecek@suse.cz
+
+- update patch metadata
+- update upstream reference:
+  patches.suse/iwlwifi-dbg-Don-t-touch-the-tlv-data.patch
+- commit e7f6170
+
+-------------------------------------------------------------------
+Mon Jan 18 08:29:37 CET 2021 - mkubecek@suse.cz
+
+- x86/xen: fix 'nopvspin' build error.
+  (fix x86_64/debug and i586/debug builds)
+- commit 813e08e
+
+-------------------------------------------------------------------
+Mon Jan 18 06:28:37 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.11-rc4
+- update configs
+  - KPROBE_EVENTS_ON_NOTRACE=n (new on arm*, ppc64)
+- commit 41414a9
+
+-------------------------------------------------------------------
 Sun Jan 17 15:55:16 CET 2021 - jslaby@suse.cz
 
 - Linux 5.10.8 (bsc#1012628).
@@ -1688,6 +1910,14 @@ Sun Jan 17 15:55:16 CET 2021 - jslaby@suse.cz
   (bsc#1012628).
 - Update config files.
 - commit 8611168
+
+-------------------------------------------------------------------
+Thu Jan 14 15:54:13 CET 2021 - dmueller@suse.com
+
+- arm*: config: Disable CONFIG_CRYPTO_USER_API_ENABLE_OBSOLETE (bsc#1180928)
+  We don't need those deprecated ciphers to be enabled, as nothing
+  should be using them
+- commit 936fdc1
 
 -------------------------------------------------------------------
 Wed Jan 13 13:21:20 CET 2021 - nsaenzjulienne@suse.de
@@ -1953,6 +2183,15 @@ Wed Jan 13 06:30:49 CET 2021 - jslaby@suse.cz
 - commit 1ca962e
 
 -------------------------------------------------------------------
+Mon Jan 11 06:54:38 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.11-rc3
+- update configs
+  - NULL_TTY=m
+  - AQTION=m (also on other architectures than x86_64 and arm64)
+- commit 840b25f
+
+-------------------------------------------------------------------
 Sun Jan 10 09:48:22 CET 2021 - jslaby@suse.cz
 
 - Linux 5.10.6 (bsc#1012628).
@@ -1997,11 +2236,39 @@ Sat Jan  9 12:51:37 CET 2021 - mbrugger@suse.com
 - commit a930122
 
 -------------------------------------------------------------------
+Sat Jan  9 12:33:50 CET 2021 - mbrugger@suse.com
+
+- regulator: mt6323: Add OF match table (bsc#1180731).
+- regulator: mt6358: Add OF match table (bsc#1180731).
+- regulator: mt6360: Add OF match table (bsc#1180731).
+- commit b8fd94e
+
+-------------------------------------------------------------------
 Fri Jan  8 15:01:36 CET 2021 - tiwai@suse.de
 
 - drm: bail out of nouveau_channel_new if channel init fails
   (CVE-2020-25639 bsc#1176846).
-- commit 4739e43
+- commit c1cbbd6
+
+-------------------------------------------------------------------
+Thu Jan  7 21:12:05 CET 2021 - mkubecek@suse.cz
+
+- irq: export irq_check_status_bit symbol.
+  Fix aarch64 builds.
+- commit 74f9771
+
+-------------------------------------------------------------------
+Thu Jan  7 01:16:04 CET 2021 - mkubecek@suse.cz
+
+- config: refresh arm configs
+- now available: DEBUG_INFO_BTF_MODULES=y
+- commit e9c4359
+
+-------------------------------------------------------------------
+Thu Jan  7 01:10:59 CET 2021 - mkubecek@suse.cz
+
+- iwlwifi: dbg: Don't touch the tlv data (bsc#1180344).
+- commit cba8ab9
 
 -------------------------------------------------------------------
 Wed Jan  6 19:20:56 CET 2021 - jslaby@suse.cz
@@ -2119,6 +2386,15 @@ Wed Jan  6 19:16:56 CET 2021 - jslaby@suse.cz
 - commit 3bb334e
 
 -------------------------------------------------------------------
+Wed Jan  6 00:09:56 CET 2021 - dmueller@suse.com
+
+- config.conf: Reenable armv6hl/armv7hl/arm64
+- Update config files:
+  * Settings copied from x86_64 update
+  * arm specific options are =m except if debug or test, =y otherwise
+- commit 1fc3034
+
+-------------------------------------------------------------------
 Tue Jan  5 15:29:49 CET 2021 - tiwai@suse.de
 
 - Revert "drm/amd/display: Fixed Intermittent blue screen on
@@ -2131,6 +2407,12 @@ Tue Jan  5 12:46:30 CET 2021 - tiwai@suse.de
 - ALSA: hda/hdmi: Fix incorrect mutex unlock in
   silent_stream_disable() (bsc#1180543).
 - commit 010df91
+
+-------------------------------------------------------------------
+Mon Jan  4 06:56:34 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.11-rc2
+- commit b4a462c
 
 -------------------------------------------------------------------
 Wed Dec 30 14:10:15 CET 2020 - jslaby@suse.cz
@@ -3342,11 +3624,153 @@ Wed Dec 30 13:26:17 CET 2020 - jslaby@suse.cz
 - commit 84f94bc
 
 -------------------------------------------------------------------
+Mon Dec 28 10:12:46 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.11-rc1
+- eliminated 63 patches (61 stable, 2 other)
+  - patches.kernel.org/*
+  - patches.suse/clk-bcm-dvp-add-module_device_table.patch
+  - patches.suse/drm-amdgpu-only-set-DP-subconnector-type-on-DP-and-e.patch
+- disable ARM architectures (need config update)
+- refresh
+  - patches.suse/btrfs-fs-super.c-add-new-super-block-devices-super_block_d.patch
+  - patches.suse/btrfs-btrfs-use-the-new-VFS-super_block_dev.patch
+    (renamed to patches.suse/btrfs-use-the-new-VFS-super_block_dev.patch
+    to ease frequent refreshes)
+  - patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  - patches.suse/supported-flag
+- new config options:
+  - Processor type and features
+    - CONFIG_XEN_PVHVM_GUEST=y
+    - CONFIG_X86_SGX=n
+  - General architecture-dependent options
+    - CONFIG_SECCOMP_CACHE_DEBUG=n
+  - Memory Management options
+    - CONFIG_GUP_TEST=n
+  - Networking support
+    - CONFIG_NFT_REJECT_NETDEV=n
+    - CONFIG_BRIDGE_CFM=n
+    - CONFIG_NET_DSA_TAG_HELLCREEK=n
+    - CONFIG_CAN_M_CAN_PCI=n
+    - CONFIG_NFC_S3FWRN82_UART=n
+  - File systems
+    - CONFIG_PSTORE_DEFAULT_KMSG_BYTES=10240
+    - CONFIG_CIFS_SWN_UPCALL=n
+  - Cryptographic API
+    - CONFIG_CRYPTO_DEV_QAT_4XXX=n
+  - Library routines
+    - CONFIG_DMA_MAP_BENCHMARK=n
+  - Kernel hacking
+    - CONFIG_DEBUG_KMAP_LOCAL_FORCE_MAP=n
+    - CONFIG_FTRACE_RECORD_RECURSION=n
+    - CONFIG_RING_BUFFER_VALIDATE_TIME_DELTAS=n
+  - Memory Technology Device (MTD) support
+    - CONFIG_MTD_NAND_ECC_SW_HAMMING=y
+    - CONFIG_MTD_SPI_NOR_SWP_DISABLE=n
+    - CONFIG_MTD_SPI_NOR_SWP_DISABLE_ON_VOLATILE=y
+    - CONFIG_MTD_SPI_NOR_SWP_KEEP=n
+  - Block devices
+    - CONFIG_DM_MULTIPATH_IOA=n
+    - CONFIG_ZRAM_DEF_COMP_LZORLE=y
+  - Network device support
+    - CONFIG_MHI_NET=n
+    - CONFIG_NET_DSA_HIRSCHMANN_HELLCREEK=n
+    - CONFIG_USB_RTL8153_ECM=m
+  - Input device support
+    - CONFIG_INPUT_DA7280_HAPTICS=n
+    - CONFIG_AMD_SFH_HID=n
+  - Pin controllers
+    - CONFIG_PINCTRL_ALDERLAKE=n
+    - CONFIG_PINCTRL_ELKHARTLAKE=n
+    - CONFIG_PINCTRL_LAKEFIELD=n
+  - Hardware Monitoring support
+    - CONFIG_SENSORS_CORSAIR_PSU=n
+    - CONFIG_SENSORS_LTC2992=n
+    - CONFIG_SENSORS_MAX127=n
+    - CONFIG_SENSORS_PM6764TR=n
+    - CONFIG_SENSORS_Q54SJ108A2=n
+    - CONFIG_SENSORS_SBTSI=n
+  - Multimedia support
+    - CONFIG_VIDEO_OV02A10=n
+    - CONFIG_VIDEO_OV9734=n
+    - CONFIG_VIDEO_CCS=n
+  - Sound card support
+    - CONFIG_SND_SOC_ADI=n
+    - CONFIG_SND_SOC_FSL_XCVR=n
+    - CONFIG_SND_SOC_SOF_BAYTRAIL_SUPPORT=n
+    - CONFIG_SND_SOC_SOF_ALDERLAKE_SUPPORT=n
+    - CONFIG_SND_SOC_ADAU1372_I2C=n
+    - CONFIG_SND_SOC_ADAU1372_SPI=n
+    - CONFIG_SND_SOC_PCM5102A=n
+    - CONFIG_SND_SOC_SIMPLE_MUX=n
+    - CONFIG_SND_SOC_NAU8315=n
+    - CONFIG_SND_SOC_LPASS_WSA_MACRO=n
+    - CONFIG_SND_SOC_LPASS_VA_MACRO=n
+    - CONFIG_SND_SOC_ADI_AXI_I2S=m
+    - CONFIG_SND_SOC_ADI_AXI_SPDIF=m
+  - X86 Platform Specific Device Drivers
+    - CONFIG_UV_SYSFS=n
+    - CONFIG_AMD_PMC=n
+    - CONFIG_DELL_WMI_SYSMAN=n
+    - CONFIG_INTEL_PMT_CLASS=n
+    - CONFIG_INTEL_PMT_TELEMETRY=n
+    - CONFIG_INTEL_PMT_CRASHLOG=n
+  - Misc drivers
+    - CONFIG_MHI_BUS_PCI_GENERIC=n
+    - CONFIG_SERIAL_BCM63XX=n
+    - CONFIG_MIPI_I3C_HCI=n
+    - CONFIG_PTP_1588_CLOCK_OCP=n
+    - CONFIG_MFD_INTEL_PMT=n
+    - CONFIG_EDAC_IGEN6=n
+    - CONFIG_INTEL_IDXD_SVM=n
+    - CONFIG_LCD2S=n
+    - CONFIG_VDPA_SIM_NET=n
+    - CONFIG_EXTCON_USBC_TUSB320=n
+    - CONFIG_PWM_DWC=n
+    - CONFIG_USB4_DMA_TEST=n
+    - CONFIG_SURFACE_PLATFORMS=y
+    - CONFIG_SURFACE_GPE=n
+  - OF dependent drivers (i386, ppc64/ppc64le, riscv64)
+    - MTD_NAND_INTEL_LGM=m
+    - PINCTRL_MICROCHIP_SGPIO=n
+    - REGULATOR_DA9121=m
+    - REGULATOR_PF8X00=m
+    - DRM_PANEL_ABT_Y030XX067A=n
+    - DRM_PANEL_NOVATEK_NT36672A=n
+    - DRM_PANEL_SAMSUNG_SOFEF00=n
+    - DRM_PANEL_TDO_TL070WSH30=n
+    - DRM_LONTIUM_LT9611UXC=n
+    - DRM_ANALOGIX_ANX7625=n
+    - RTC_DRV_GOLDFISH=m
+    - LITEX_SOC_CONTROLLER=n
+    - PWM_ATMEL_TCB=m
+  - i386
+    - PWM_INTEL_LGM=m
+    - DEBUG_KMAP_LOCAL=n
+  - s390x
+    - DEBUG_USER_ASCE=n
+  - riscv64
+    - IRQ_TIME_ACCOUNTING
+    - POWER_RESET_REGULATOR=y
+- commit acbbbf7
+
+-------------------------------------------------------------------
+Mon Dec 28 00:04:41 CET 2020 - mkubecek@suse.cz
+
+- rpm: drop /usr/bin/env in interpreter specification
+  OBS checks don't like /usr/bin/env in script interpreter lines but upstream
+  developers tend to use it. A proper solution would be fixing the depedency
+  extraction and drop the OBS check error but that's unlikely to happen so
+  that we have to work around the problem on our side and rewrite the
+  interpreter lines in scripts before collecting files for packages instead.
+- commit 0ec5324
+
+-------------------------------------------------------------------
 Sun Dec 27 13:04:45 CET 2020 - tiwai@suse.de
 
 - media: uvcvideo: Accept invalid bFormatIndex and bFrameIndex
   values (bsc#1180117).
-- commit b9a0c5f
+- commit 8684dfe
 
 -------------------------------------------------------------------
 Sun Dec 27 12:59:33 CET 2020 - tiwai@suse.de
