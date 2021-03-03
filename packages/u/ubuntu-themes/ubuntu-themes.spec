@@ -122,11 +122,18 @@ mkdir -p %{buildroot}%{_datadir}/themes/ %{buildroot}%{_datadir}/icons/
 for theme in Ambiance Radiance; do
     cp -a $theme %{buildroot}%{_datadir}/themes/$theme
 done
-for icons in ubuntu-mono-dark ubuntu-mono-light LoginIcons; do
-    cp -a $icons %{buildroot}%{_datadir}/icons/$icons
-    # %%icon_theme_cache_create_ghost fails to work here.
-    touch %{buildroot}%{_datadir}/icons/$icons/icon-theme.cache
+for i in ubuntu-mono-dark ubuntu-mono-light LoginIcons; do
+    mkdir -p %{buildroot}%{_datadir}/icons/$i
+    for icon in $(find $i -type f); do
+      real_icon=$(readlink -f $icon)
+      d=$(dirname $icon)
+      mkdir -p %{buildroot}%{_datadir}/icons/${d}
+      cp -r ${real_icon} %{buildroot}%{_datadir}/icons/${icon}
+    done
 done
+%icon_theme_cache_create_ghost ubuntu-mono-dark
+%icon_theme_cache_create_ghost ubuntu-mono-light
+%icon_theme_cache_create_ghost LoginIcons
 %fdupes %{buildroot}%{_datadir}/themes/Ambiance/
 %fdupes %{buildroot}%{_datadir}/themes/Radiance/
 %fdupes %{buildroot}%{_datadir}/icons/
@@ -155,9 +162,11 @@ done
 
 %files -n ubuntu-mono-icon-theme
 %license COPYING
-%ghost %{_datadir}/icons/ubuntu-mono-*/icon-theme.cache
+%ghost %{_datadir}/icons/ubuntu-mono-dark/icon-theme.cache
+%ghost %{_datadir}/icons/ubuntu-mono-light/icon-theme.cache
 %ghost %{_datadir}/icons/LoginIcons/icon-theme.cache
-%{_datadir}/icons/ubuntu-mono*/
+%{_datadir}/icons/ubuntu-mono-dark
+%{_datadir}/icons/ubuntu-mono-light
 %{_datadir}/icons/LoginIcons/
 
 %changelog
