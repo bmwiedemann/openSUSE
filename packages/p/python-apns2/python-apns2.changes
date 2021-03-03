@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 26 15:42:17 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_122.patch to fix builds
+
+-------------------------------------------------------------------
+Fri Feb 26 14:26:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.7.2:
+  - Updated sandbox URL (#93)
+  - Do not ignore custom JWT lifetime when using TokenCredentials
+    (#108)
+  - Fix determination of push type for empty notifications with
+    badge 0 (#109)
+  - LICENSE and test/eckey.pem included in source tarball (#110
+    #111)
+  - Changing DEFAULT_TOKEN_LIFETIME from 3600 to 2700 (#113)
+  - Added upper constraint for PyJWT (<2.0.0)
+- Removed additional sources as they were included in the
+  upstream tarball.
+
+-------------------------------------------------------------------
 Tue Jun 30 09:26:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add unpackaged LICENSE and test/eckey.pem file

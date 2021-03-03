@@ -1,7 +1,7 @@
 #
 # spec file for package python-apns2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-apns2
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Python library for the HTTP/2 Apple Push Notification Service
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Pr0Ger/PyAPNs2
 Source0:        https://files.pythonhosted.org/packages/source/a/apns2/apns2-%{version}.tar.gz
-# LICENSE gh#Pr0Ger/PyAPNs2#110 mcepl@suse.com
-# Missing LICENSE file
-Source1:        https://raw.githubusercontent.com/Pr0Ger/PyAPNs2/master/LICENSE
-# eckey.pem gh#Pr0Ger/PyAPNs2#111 mcepl@suse.com
-# Unpackaged file breaks test_token_expiration test
-Source2:        https://raw.githubusercontent.com/Pr0Ger/PyAPNs2/master/test/eckey.pem
+# Subset of https://github.com/Pr0Ger/PyAPNs2/pull/122.patch
+Patch0:         pr_122.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,9 +49,7 @@ A python library for interacting with the Apple Push Notification Service
 via HTTP/2 protocol.
 
 %prep
-%setup -q -n apns2-%{version}
-cp %{SOURCE1} .
-cp %{SOURCE2} test/
+%autosetup -p1 -n apns2-%{version}
 
 %build
 %python_build
