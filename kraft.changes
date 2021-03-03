@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb 28 10:01:42 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Add patch keepemptyparts.patch to fix build with older qt versions. 
+
+-------------------------------------------------------------------
+Sat Feb 27 20:59:13 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 0.96
+  * Found new MIT licensed icons to avoid uncertainess with CC license.
+  * Allow to use the "add new" button in the doc editor to add new
+    catalog templates. It presets the correct chapter.
+
+  * Fix: Use the xmlArchivePath correctly (#80)
+  * Fix: Handling of Cancel button in template to doc dialog.
+  * Fix: Convert newlines in the items to <br> for the weasyprint doc
+         generation.
+  * Fix: In Followup document: If the standard text for pre and post
+         text of the target document type is empty, the one from the
+         source document is copied over instead. (#91)
+
+-------------------------------------------------------------------
 Fri Aug 28 16:13:26 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 0.95

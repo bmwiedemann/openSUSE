@@ -154,4 +154,12 @@
 - Removed patch Switch-erml2pdf.py-to-Python-3.patch</comment>
     <requestid>830739</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>98948e9086f6d0055328802615d66ae5</srcmd5>
+    <version>0.96</version>
+    <time>1614792958</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876553</requestid>
+  </revision>
 </revisionlist>
