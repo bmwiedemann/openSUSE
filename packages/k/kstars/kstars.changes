@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  1 13:20:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.2:
+  * Quick fix for meridian message box crash
+  * Improve solve failure alignment message
+  * Fix Guider capture/reacquire timeout handling
+  * Protect from focuser loss, ensure autofocus stop from button.
+  * Save Align accuracy. Add focus position to Analyze focus info box.
+  * Only debayer images that originally have single channel in the fits header.
+  * PAA fix issue with rotation, adjust test.
+  * When in meridian flip, ignore focus state changes
+  * Fix Capture aborting exposure of Focus
+  * New polar-alignment scheme
+  * https://invent.kde.org/education/kstars/-/blob/master/ChangeLog
+
+-------------------------------------------------------------------
 Fri Jan 15 17:38:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
