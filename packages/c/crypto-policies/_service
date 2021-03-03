@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://gitlab.com/redhat-crypto/fedora-crypto-policies.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">05203d21f6d0ea9bbdb351e4600f1e273720bb8e</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

@@ -1,0 +1,13 @@
+Index: fedora-crypto-policies-master/Makefile
+===================================================================
+--- fedora-crypto-policies-master.orig/Makefile
++++ fedora-crypto-policies-master/Makefile
+@@ -45,8 +45,6 @@ check:
+ 	tests/openssl.pl
+ 	tests/gnutls.pl
+ 	tests/nss.py
+-	tests/java.pl
+-	tests/krb5.py
+ 	top_srcdir=. tests/update-crypto-policies.sh
+ 
+ test: check runpylint

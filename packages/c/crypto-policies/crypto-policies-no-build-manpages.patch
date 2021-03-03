@@ -1,0 +1,32 @@
+Index: fedora-crypto-policies-master/Makefile
+===================================================================
+--- fedora-crypto-policies-master.orig/Makefile	2020-09-23 08:49:28.000000000 +0200
++++ fedora-crypto-policies-master/Makefile	2020-11-12 10:00:52.418204054 +0100
+@@ -60,8 +60,8 @@ clean:
+ 	rm -rf output
+ 
+ %: %.txt
+-	asciidoc -v -d manpage -b docbook $<
+-	xsltproc --nonet -o $@ /etc/asciidoc/docbook-xsl/manpage.xsl $@.xml
++	# asciidoc -v -d manpage -b docbook $<
++	# xsltproc --nonet -o $@ /etc/asciidoc/docbook-xsl/manpage.xsl $@.xml
+ 
+ dist:
+ 	rm -rf crypto-policies && git clone . crypto-policies && rm -rf crypto-policies/.git/ && tar -czf crypto-policies-git$(VERSION).tar.gz crypto-policies && rm -rf crypto-policies
+Index: fedora-crypto-policies-master
+===================================================================
+--- fedora-crypto-policies-master.orig/Makefile
++++ fedora-crypto-policies-master/Makefile
+@@ -21,9 +21,9 @@ install: $(MANPAGES)
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man7
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man8
+ 	mkdir -p $(DESTDIR)$(BINDIR)
+-	install -p -m 644 $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
+-	install -p -m 644 $(MAN8PAGES) $(DESTDIR)$(MANDIR)/man8
+-	install -p -m 755 $(SCRIPTS) $(DESTDIR)$(BINDIR)
++# install -p -m 644 $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
++# install -p -m 644 $(MAN8PAGES) $(DESTDIR)$(MANDIR)/man8
++# install -p -m 755 $(SCRIPTS) $(DESTDIR)$(BINDIR)
+ 	mkdir -p $(DESTDIR)$(DIR)/
+ 	install -p -m 644 default-config $(DESTDIR)$(DIR)
+ 	install -p -m 644 output/reload-cmds.sh $(DESTDIR)$(DIR)

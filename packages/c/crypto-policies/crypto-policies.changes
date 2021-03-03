@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Thu Feb 25 12:05:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20210225.05203d2:
+  * Disable DTLS0.9 protocol in the DEFAULT policy.
+  * policies/FIPS: insignificant reformatting
+  * policygenerators/libssh: respect ssh_certs
+  * policies/modules/OSPP: tighten to follow RHEL 8
+  * crypto-policies(7): drop not-reenableable comment
+  * follow up on disabling RC4
+
+-------------------------------------------------------------------
+Thu Feb 25 11:59:44 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove not needed scripts: fips-finish-install fips-mode-setup
+
+-------------------------------------------------------------------
+Wed Feb 24 16:22:08 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Disable DTLS0.9 protocol in GnuTLS DEFAULT policy. [bsc#1180938]
+  * The minimum DTLS protocol version in the DEFAULT and FUTURE
+    policies is DTLS1.2.
+  * Fixed upstream: 05203d21f6d0ea9bbdb351e4600f1e273720bb8e
+
+-------------------------------------------------------------------
+Wed Feb 17 12:36:05 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20210213.5c710c0: [bsc#1180938]
+  * setup_directories(): perform safer creation of directories
+  * save_config(): avoid re-opening output file for each iteration
+  * save_config(): break after first match to avoid unnecessary stat() calls
+  * CryptoPolicy.parse(): actually stop parsing line on syntax error
+  * ProfileConfig.parse_string(): correctly extended subpolicies
+  * Exclude RC4 from LEGACY
+  * Introduce rc4_md5_in_krb5 to narrow AD_SUPPORT
+  * code style: fix 'not in' membership testing
+  * pylintrc: tighten up a bit
+  * formatting: avoid long lines
+  * formatting: use f-strings instead of format()
+  * formatting: reformat all python code with autopep8
+  * nss: postponing the version check again, to 3.61
+  * Revert "Unfortunately we have to keep ignoring the openssh check for sk-"
+
+-------------------------------------------------------------------
+Tue Feb  9 10:50:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use tar_scm service, not obs_scm: With crypto-policies entering
+  Ring0 (distro bootstrap) we want to be sure to keep the buildtime
+  deps as low as possible.
+- Add python3-base BuildRequires: previously, OBS' tar service
+  pulled this in for us.
+
+-------------------------------------------------------------------
+Mon Feb  8 11:45:38 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add a BuildIgnore for crypto-policies
+
+-------------------------------------------------------------------
+Mon Feb  8 11:22:31 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Use gzip instead of xz in obscpio and sources
+
+-------------------------------------------------------------------
+Fri Feb  5 10:57:46 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Do not build the manpages to avoid build cycles
+- Add crypto-policies-no-build-manpages.patch
+
+-------------------------------------------------------------------
+Tue Feb  2 17:38:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to use a proper git source _service:
+  + To update, one just needs to update the commit/revision in the
+    _service file and run `osc service dr`.
+  + The version of the package is defined by the commit date of the
+    revision, followed by the abbreviated git hash (The same
+    revision used before results thus in a downgrade to 20210118,
+    but as this is a alltime new package, this is acceptable.
+
+-------------------------------------------------------------------
+Tue Feb  2 12:33:19 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to git version 20210127
+  * Bump Python requirement to 3.6
+  * Output sigalgs required by nss >=3.59
+  * Do not require bind during build
+  * Break build cycles with openssl and gnutls
+
+-------------------------------------------------------------------
+Thu Jan 21 14:44:07 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to git version 20210118
+  * Output sigalgs required by nss >=3.59
+  * Bump Python requirement to 3.6
+  * Kerberos 5: Fix policy generator to account for macs
+  * Add AES-192 support (non-TLS scenarios)
+  * Add documentation of the --check option
+
+-------------------------------------------------------------------
+Thu Jan 21 14:42:13 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the man pages generation
+- Add crypto-policies-asciidoc.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 09:56:42 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Test only supported modules
+- Add crypto-policies-test_supported_modules_only.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 10:50:36 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Add crypto-policies-typos.patch to fix some typos
+
+-------------------------------------------------------------------
+Thu Nov 12 08:20:19 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Initial packaging, git version 20200918 (jsc#SLE-15832)
