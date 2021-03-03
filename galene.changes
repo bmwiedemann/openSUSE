@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 02 23:40:09 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.3.2:
+  * Fixed compatibility with versions of Go earlier than 1.15.
+  * Fixed a race condition in the disk writer.
+
+-------------------------------------------------------------------
 Fri Feb 26 20:06:42 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.3.1:
