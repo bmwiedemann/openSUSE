@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42a751f7bfe5debc3fe792fe6d73cc5e</srcmd5>
+    <version>2.4.1</version>
+    <time>1603821601</time>
+    <user>dimstar_suse</user>
+    <comment>Roland MT-32 emulator.
+Need for dosbox and aplaymidi for play MT-32 sound.</comment>
+    <requestid>844139</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da17265d9fa24d11ba02e2637c5e87ee</srcmd5>
+    <version>2.4.1</version>
+    <time>1606726426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851684</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f616309fe10c1e92a4269a894292aca3</srcmd5>
+    <version>2.4.2</version>
+    <time>1614792885</time>
+    <user>RBrownSUSE</user>
+    <comment>- Updated to 2.4.2.
+  * Added mode &quot;Hide to tray on close&quot;.
+  * Added support for integration with the JACK audio kit.
+  * Improved the MIDI recording function.</comment>
+    <requestid>876339</requestid>
+  </revision>
+</revisionlist>

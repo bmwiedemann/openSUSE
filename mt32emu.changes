@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Mar  3 02:42:55 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 2.4.2.
+  * Added mode "Hide to tray on close".
+  * Added support for integration with the JACK audio kit.
+  * Improved the MIDI recording function.
+
+-------------------------------------------------------------------
+Sun Nov 29 15:43:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Used pkgconfig wherever possible.
+
+-------------------------------------------------------------------
+Wed Oct 21 17:34:21 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Initialization mt32emu 2.4.1.
