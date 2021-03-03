@@ -1010,4 +1010,12 @@
     <comment>- Update _constraints for armv6/armv7 (forwarded request 873644 from Guillaume_G)</comment>
     <requestid>873921</requestid>
   </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>7e29c72686db0d572796fa26fd04a29b</srcmd5>
+    <version>2.30.5</version>
+    <time>1614792886</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876240</requestid>
+  </revision>
 </revisionlist>
