@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Mar  2 22:48:01 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200302
+
+  - Highlights
+
+    * Added a lot of icons for KMyMoney #1629
+    * Returned classic icon for Nautilus, Thunar, Nemo, and Dolphin
+      file managers #2555 #2567
+    * Returned old Telegram tray icons #2477
+    * Updated shape of folders #2570
+
+  - Added icons
+
+    * Alarm Clock Applet (app and tray icons)
+    * AntiMicroX (tray icon)
+    * Authenticator (Flathub) #2007
+    * Break Timer (Flathub) #2007
+    * Butter
+    * Chiaki (Flathub) #2007
+    * Citra (Flathub) #2007
+    * Curtail #2551
+    * DeltaChat (app and tray icons) #2575
+    * Deluge (Flathub) #2007
+    * Droidcam #2536
+    * Fcitx 5 (Flathub) #2007
+    * FlameRobin #2544
+    * Frescobaldi (Flathub) #2007
+    * Geeqie (Flathub) #2007
+    * GeForce Now Electron (Flathub) #2007
+    * Ghidra (Flathub) #2007
+    * GitQlient
+    * Granatier (Flathub) #2007
+    * GTA 3 & GTA Vice City
+    * Guitarix (Flathub) #2007
+    * homerun (actions icon)
+    * Jamulus (Flathub) #2007
+    * Kame Editor #2542
+    * KBlackbox (Flathub) #2007
+    * Logisim Evolution (Flathub) #2007
+    * Lutris (tray icon)
+    * MegaBasterd (Flathub) #2007
+    * Moonlight (AppImage)
+    * Obsidian #2007 #2534
+    * OCaml #2538
+    * OnionShare (Flathub) #2007
+    * OpenJDK 15 #2564
+    * PDF Arranger (Flathub) #2007
+    * Plasma System Settings #2550
+    * PopcornTime-Ru
+    * Popout3D (Flathub) #2007
+    * Posterazor #2547
+    * ProtonVPN Linux GUI (app and tray icons) #2537
+    * regexxer #2543
+    * SC Controller (tray icons and AppImage symlink)
+    * Standard Notes (Flathub) #2007
+    * Stremio (Flathub) #2007
+    * Thorium Reader #2539
+    * TikTok (Web App)
+    * Toggl Track (Flathub) #2007
+    * TorrServer
+    * UnCiv (Flathub) #2007
+    * Webfont Kit Generator #2552
+    * Whatsapp for Linux #2574
+    * Wiz Note (Flathub) #2007
+    * Xfe #2525
+    * Xfimage #2526
+    * Xfpack #2527
+    * Xfwrite #2528
+    * Zenmap (Flathub) #2007
+
+  - Updated icons
+
+    * office-chart-* actions icons
+    * QJoyPad (tray icon)
+    * Terminal emulators (Terminal, Terminal SU, Xfce Terminal) #2545
+    * System Software Install
+
+  - Changes and fixes
+
+    * Added 64px trash-bin icons to fix scaling
+    * Added symlinks for many varied mimetypes #2568
+    * Fixed rendering of Joplin icon
+    * Fixed monochrome trash-bin icons alongside color icons in the
+      sidebar of file managers
+    * Removed system-software-install from 22x22/actions and
+      24x24/actions
+    * Returned accent color on indicator-messages-new icon #2540
+
+  - Others
+
+    * Added SVGO 2.0.0+ config. SVGO v1 support was dropped!
+
+-------------------------------------------------------------------
 Tue Feb  2 01:05:35 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version  20200201
