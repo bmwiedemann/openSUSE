@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  2 22:43:16 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 21.03:
+  * Implemented FACT_FLAG_MANAGEDATA
+  * Implemented the CUEPLAY and CUESTOP notification types
+  * Added support for XACT 3.0 content
+  * Added support for WaveBanks with endian-swapped PCM data
+
+-------------------------------------------------------------------
 Sun Feb  7 20:42:08 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 21.02:

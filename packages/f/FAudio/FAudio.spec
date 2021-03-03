@@ -16,9 +16,9 @@
 #
 
 
-%define realver 2102
+%define realver 2103
 Name:           FAudio
-Version:        21.02
+Version:        21.03
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
