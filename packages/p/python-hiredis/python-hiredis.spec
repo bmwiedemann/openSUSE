@@ -1,7 +1,7 @@
 #
 # spec file for package python-hiredis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hiredis
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Python wrapper for hiredis
 License:        BSD-3-Clause
 URL:            https://github.com/redis/hiredis-py
 Source:         https://github.com/redis/hiredis-py/archive/v%{version}.tar.gz
 Patch0:         0001-Use-system-libhiredis.patch
-Patch1:         fix_build_dir_in_tests.patch
 Patch2:         drop-vendor-sources.patch
+Patch3:         hiredis1.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  hiredis-devel >= 0.13.3
+BuildRequires:  hiredis-devel >= 1.0.0
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
@@ -49,7 +49,9 @@ Python wrapper for hiredis C connector.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec test.py
+%python_exec setup.py build_ext --inplace
+export PYTHONPATH=%{buildroot}%{$python_sitearch}
+%python_exec test.py -v
 
 %files %{python_files}
 %license COPYING

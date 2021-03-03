@@ -1,0 +1,188 @@
+From 9084152f624e8e593b4e86ddf8bd13329fdfc043 Mon Sep 17 00:00:00 2001
+From: Illia Volochii <illia.volochii@gmail.com>
+Date: Mon, 1 Mar 2021 20:48:33 +0200
+Subject: [PATCH] Bump hiredis from 0.13.3 to 1.0.0
+
+---
+ setup.py       |  2 +-
+ src/reader.c   | 64 +++++++++++++++++++++++++++++++++++++++++++-------
+ test/reader.py | 36 ++++++++++++++++++++++++++++
+ vendor/hiredis |  2 +-
+ 4 files changed, 93 insertions(+), 11 deletions(-)
+
+Index: hiredis-py-1.1.0/src/reader.c
+===================================================================
+--- hiredis-py-1.1.0.orig/src/reader.c
++++ hiredis-py-1.1.0/src/reader.c
+@@ -69,8 +69,26 @@ static void *tryParentize(const redisRea
+     PyObject *parent;
+     if (task && task->parent) {
+         parent = (PyObject*)task->parent->obj;
+-        assert(PyList_CheckExact(parent));
+-        PyList_SET_ITEM(parent, task->idx, obj);
++        switch (task->parent->type) {
++            case REDIS_REPLY_MAP:
++                if (task->idx % 2 == 0) {
++                    /* Set a temporary item to save the object as a key. */
++                    PyDict_SetItem(parent, obj, Py_None);
++                } else {
++                    /* Pop the temporary item and set proper key and value. */
++                    PyObject *last_item = PyObject_CallMethod(parent, "popitem", NULL);
++                    PyObject *last_key = PyTuple_GetItem(last_item, 0);
++                    PyDict_SetItem(parent, last_key, obj);
++                }
++                break;
++            case REDIS_REPLY_SET:
++                assert(PyAnySet_CheckExact(parent));
++                PySet_Add(parent, obj);
++                break;
++            default:
++                assert(PyList_CheckExact(parent));
++                PyList_SET_ITEM(parent, task->idx, obj);
++        }
+     }
+     return obj;
+ }
+@@ -131,14 +149,28 @@ static void *createStringObject(const re
+             Py_INCREF(obj);
+         }
+     } else {
++        if (task->type == REDIS_REPLY_VERB) {
++            /* Skip 4 bytes of verbatim type header. */
++            memmove(str, str+4, len);
++            len -= 4;
++        }
+         obj = createDecodedString(self, str, len);
+     }
+     return tryParentize(task, obj);
+ }
+ 
+-static void *createArrayObject(const redisReadTask *task, int elements) {
++static void *createArrayObject(const redisReadTask *task, size_t elements) {
+     PyObject *obj;
+-    obj = PyList_New(elements);
++    switch (task->type) {
++        case REDIS_REPLY_MAP:
++            obj = PyDict_New();
++            break;
++        case REDIS_REPLY_SET:
++            obj = PySet_New(NULL);
++            break;
++        default:
++            obj = PyList_New(elements);
++    }
+     return tryParentize(task, obj);
+ }
+ 
+@@ -148,28 +180,42 @@ static void *createIntegerObject(const r
+     return tryParentize(task, obj);
+ }
+ 
++static void *createDoubleObject(const redisReadTask *task, double value, char *str, size_t le) {
++    PyObject *obj;
++    obj = PyFloat_FromDouble(value);
++    return tryParentize(task, obj);
++}
++
+ static void *createNilObject(const redisReadTask *task) {
+     PyObject *obj = Py_None;
+     Py_INCREF(obj);
+     return tryParentize(task, obj);
+ }
+ 
++static void *createBoolObject(const redisReadTask *task, int bval) {
++    PyObject *obj;
++    obj = PyBool_FromLong((long)bval);
++    return tryParentize(task, obj);
++}
++
+ static void freeObject(void *obj) {
+     Py_XDECREF(obj);
+ }
+ 
+ redisReplyObjectFunctions hiredis_ObjectFunctions = {
+     createStringObject,  // void *(*createString)(const redisReadTask*, char*, size_t);
+-    createArrayObject,   // void *(*createArray)(const redisReadTask*, int);
++    createArrayObject,   // void *(*createArray)(const redisReadTask*, size_t);
+     createIntegerObject, // void *(*createInteger)(const redisReadTask*, long long);
++    createDoubleObject,  // void *(*createDoubleObject)(const redisReadTask*, double, char*, size_t);
+     createNilObject,     // void *(*createNil)(const redisReadTask*);
++    createBoolObject,    // void *(*createBoolObject)(const redisReadTask*, int);
+     freeObject           // void (*freeObject)(void*);
+ };
+ 
+ static void Reader_dealloc(hiredis_ReaderObject *self) {
+     // we don't need to free self->encoding as the buffer is managed by Python
+     // https://docs.python.org/3/c-api/arg.html#strings-and-buffers
+-    redisReplyReaderFree(self->reader);
++    redisReaderFree(self->reader);
+     Py_XDECREF(self->protocolErrorClass);
+     Py_XDECREF(self->replyErrorClass);
+ 
+@@ -293,7 +339,7 @@ static PyObject *Reader_feed(hiredis_Rea
+       goto error;
+     }
+ 
+-    redisReplyReaderFeed(self->reader, (char *)buf.buf + off, len);
++    redisReaderFeed(self->reader, (char *)buf.buf + off, len);
+     PyBuffer_Release(&buf);
+     Py_RETURN_NONE;
+ 
+@@ -312,8 +358,8 @@ static PyObject *Reader_gets(hiredis_Rea
+         return NULL;
+     }
+ 
+-    if (redisReplyReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
+-        errstr = redisReplyReaderGetError(self->reader);
++    if (redisReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
++        errstr = redisReaderGetError(self->reader);
+         /* protocolErrorClass might be a callable. call it, then use it's type */
+         err = createError(self->protocolErrorClass, errstr, strlen(errstr));
+         if (err != NULL) {
+Index: hiredis-py-1.1.0/test/reader.py
+===================================================================
+--- hiredis-py-1.1.0.orig/test/reader.py
++++ hiredis-py-1.1.0/test/reader.py
+@@ -118,6 +118,42 @@ class ReaderTest(TestCase):
+     self.reader.feed((":%d\r\n" % value).encode("ascii"))
+     self.assertEquals(value, self.reply())
+ 
++  def test_float(self):
++    value = -99.99
++    self.reader.feed(b",%f\r\n" % value)
++    self.assertEqual(value, self.reply())
++
++  def test_boolean_true(self):
++    self.reader.feed(b"#t\r\n")
++    self.assertTrue(self.reply())
++
++  def test_boolean_false(self):
++    self.reader.feed(b"#f\r\n")
++    self.assertFalse(False, self.reply())
++
++  def test_none(self):
++    self.reader.feed(b"_\r\n")
++    self.assertIsNone(self.reply())
++
++  def test_set(self):
++    self.reader.feed(b"~3\r\n+tangerine\r\n_\r\n,10.5\r\n")
++    self.assertEqual({b"tangerine", None, 10.5}, self.reply())
++
++  def test_dict(self):
++    self.reader.feed(b"%2\r\n+radius\r\n,4.5\r\n+diameter\r\n:9\r\n")
++    self.assertEqual({b"radius": 4.5, b"diameter": 9}, self.reply())
++
++  def test_vector(self):
++    self.reader.feed(b">4\r\n+pubsub\r\n+message\r\n+channel\r\n+message\r\n")
++    self.assertEqual(
++      [b"pubsub", b"message", b"channel", b"message"], self.reply()
++    )
++
++  def test_verbatim_string(self):
++    value = b"text"
++    self.reader.feed(b"=8\r\ntxt:%s\r\n" % value)
++    self.assertEqual(value, self.reply())
++
+   def test_status_string(self):
+     self.reader.feed(b"+ok\r\n")
+     self.assertEquals(b"ok", self.reply())

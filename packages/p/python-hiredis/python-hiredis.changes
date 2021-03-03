@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  1 09:48:43 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.1.0
+  * Allow "encoding" and "errors" attributes to be updated at runtime (see #96)
+- Drop fix_build_dir_in_tests.patch
+- Add hiredis1.patch to fix build with hiredis 1.0.0
+
+-------------------------------------------------------------------
 Thu Jan 16 08:54:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.1:
