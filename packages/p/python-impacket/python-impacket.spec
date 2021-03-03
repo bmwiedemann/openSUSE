@@ -1,7 +1,7 @@
 #
 # spec file for package python-impacket
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -124,8 +124,8 @@ sed -e '/^#!\//, 1d' -i \
 %python_clone -a %{buildroot}%{_bindir}/impacket-wmipersist
 %python_clone -a %{buildroot}%{_bindir}/impacket-wmiquery
 #
-%python_expand rm %{buildroot}%{_datadir}/doc/impacket/LICENSE
-%python_expand rm %{buildroot}%{_datadir}/doc/impacket/README.md
+%python_expand rm -f %{buildroot}%{_datadir}/doc/impacket/LICENSE
+%python_expand rm -f %{buildroot}%{_datadir}/doc/impacket/README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 #
 %python_expand rm %{buildroot}%{_bindir}/_current_flavor
