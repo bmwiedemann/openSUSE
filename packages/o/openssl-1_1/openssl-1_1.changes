@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:01:01 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.1.1j
+  * Fixed the X509_issuer_and_serial_hash() function. It attempts
+    to create a unique hash value based on the issuer and serial
+    number data contained within an X509 certificate. However it
+    was failing to correctly handle any errors that may occur
+    while parsing the issuer field [bsc#1182331, CVE-2021-23841]
+  * Fixed the RSA_padding_check_SSLv23() function and the
+    RSA_SSLV23_PADDING padding mode to correctly check for
+    rollback attacks.
+  * Fixed the EVP_CipherUpdate, EVP_EncryptUpdate and
+    EVP_DecryptUpdate functions. Previously they could overflow the
+    output length argument in some cases where the input length is
+    close to the maximum permissable length for an integer on the
+    platform. In such cases the return value from the function call
+    would be 1 (indicating success), but the output length value
+    would be negative. This could cause applications to behave
+    incorrectly or crash. [bsc#1182333, CVE-2021-23840]
+  * Fixed SRP_Calc_client_key so that it runs in constant time.
+    The previous implementation called BN_mod_exp without setting
+    BN_FLG_CONSTTIME. This could be exploited in a side channel
+    attack to recover the password. Since the attack is local host
+    only this is outside of the current OpenSSL threat model and
+    therefore no CVE is assigned.
+- Rebase patches:
+  * openssl-1.1.1-fips.patch
+  * openssl-1.1.0-issuer-hash.patch
+  * openssl-1.1.1-evp-kdf.patch
+
+-------------------------------------------------------------------
+Sat Feb  6 14:44:12 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Removed patch because it was causing problems with other servers.
+  * openssl-zero-pad-DHE-public-key.patch
+  * bsc#1181796
+
+-------------------------------------------------------------------
+Thu Feb  4 18:23:17 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Zero pad the DHE public key in ClientKeyExchange for interoperability with
+  Windows Server 2019.
+  * openssl-zero-pad-DHE-public-key.patch
+  * bsc#1181796
+  * sourced from https://github.com/openssl/openssl/pull/12331/files
+
+-------------------------------------------------------------------
+Fri Jan 22 09:05:41 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add version guards for the crypto-policies
+
+-------------------------------------------------------------------
+Wed Jan 20 15:59:01 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Disable test_srp subsection from 90-test_sslapi.t test
+- Use SECLEVEL 2 in 80-test_ssl_new.t
+- Add patches:
+  * openssl-1_1-use-seclevel2-in-tests.patch
+  * openssl-1_1-disable-test_srp-sslapi.patch
+
+-------------------------------------------------------------------
+Fri Jan  8 17:49:33 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Allow SHA1 in SECLEVEL 2 in non-FIPS mode
+- Add openssl-1_1-seclevel.patch
+
+-------------------------------------------------------------------
+Thu Dec 17 17:16:08 UTC 2020 - Pedro Monreal <pmonreal@suse.com> 
+
+- Require the crypto-policies package [bsc#1180051]
+
+-------------------------------------------------------------------
+Tue Dec  8 15:43:32 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1i (bsc#1179491)
+  * Fixed NULL pointer deref in GENERAL_NAME_cmp (CVE-2020-1971)
+- Refresh openssl-1.1.1-fips-post-rand.patch
+
+-------------------------------------------------------------------
 Thu Nov 19 10:54:53 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Use the centralized crypto policy profile (jsc#SLE-15832)

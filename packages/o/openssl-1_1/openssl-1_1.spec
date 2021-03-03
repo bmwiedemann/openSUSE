@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1h
+Version:        1.1.1j
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -87,7 +87,14 @@ Patch47:        openssl-unknown_dgst.patch
 Patch50:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
 Patch51:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
 Patch52:        openssl-1.1.1-system-cipherlist.patch
+# PATCH-FIX-OPENSUSE jsc#SLE-15832 Centralized Crypto Compliance Configuration
+Patch53:        openssl-1_1-seclevel.patch
+Patch54:        openssl-1_1-use-seclevel2-in-tests.patch
+Patch55:        openssl-1_1-disable-test_srp-sslapi.patch
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} && ! 0%{?sle_version}
+Requires:       crypto-policies
+%endif
 Conflicts:      ssl
 Provides:       ssl
 Provides:       openssl(cli)
@@ -211,8 +218,10 @@ make all %{?_smp_mflags}
 %check
 export MALLOC_CHECK_=3
 export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
+#export HARNESS_VERBOSE=1
 LD_LIBRARY_PATH=`pwd` make test -j1
-# show cyphers
+
+# show ciphers
 gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{buildroot}%{_libdir} -lssl -lcrypto
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ./showciphers
 
@@ -234,21 +243,21 @@ pushd %{buildroot}/%{_mandir}
 #for i in man?/*\ *; do mv -v "$i" "${i// /_}"; done
 which readlink &>/dev/null || function readlink { ( set +x; target=$(file $1 2>/dev/null); target=${target//* }; test -f $target && echo $target; ) }
 for i in man?/*; do
-	if test -L $i ; then
-	    LDEST=`readlink $i`
-	    rm -f $i ${i}ssl
-	    ln -sf ${LDEST}ssl ${i}ssl
-	else
-	    mv $i ${i}ssl
+    if test -L $i ; then
+        LDEST=`readlink $i`
+        rm -f $i ${i}ssl
+        ln -sf ${LDEST}ssl ${i}ssl
+    else
+        mv $i ${i}ssl
         fi
-	case "$i" in
-	    *.1)
-		# these are the pages mentioned in openssl(1). They go into the main package.
-		echo %doc %{_mandir}/${i}ssl%{?ext_man} >> $OLDPWD/filelist;;
-	    *)
-		# the rest goes into the openssl-doc package.
-		echo %doc %{_mandir}/${i}ssl%{?ext_man} >> $OLDPWD/filelist.doc;;
-	esac
+    case "$i" in
+        *.1)
+        # these are the pages mentioned in openssl(1). They go into the main package.
+        echo %doc %{_mandir}/${i}ssl%{?ext_man} >> $OLDPWD/filelist;;
+        *)
+        # the rest goes into the openssl-doc package.
+        echo %doc %{_mandir}/${i}ssl%{?ext_man} >> $OLDPWD/filelist.doc;;
+    esac
 done
 popd
 
