@@ -18,7 +18,7 @@
 
 %define _sonum  1_1
 Name:           openssl
-Version:        1.1.1h
+Version:        1.1.1j
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 # Yes there is no license but to not confuse people keep it aligned to the pkg
@@ -29,7 +29,7 @@ Source0:        README.SUSE
 Source99:       baselibs.conf
 BuildRequires:  libopenssl%{_sonum} = %{version}
 Requires:       openssl-%{_sonum} = %{version}
-# the debuginfo package is now openssl-%{_sonum}-debuginfo (boo#1040172)
+# the debuginfo package is now openssl-%%{_sonum}-debuginfo (boo#1040172)
 Obsoletes:      openssl-debuginfo
 BuildArch:      noarch
 
