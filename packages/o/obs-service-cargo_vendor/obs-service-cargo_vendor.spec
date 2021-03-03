@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-cargo_vendor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Version:        0.4.0~git0.d4f314f
 Release:        0
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  python3
+Requires:       cargo
 Requires:       gzip
 Requires:       tar
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
