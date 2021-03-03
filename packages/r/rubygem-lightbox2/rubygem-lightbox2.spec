@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-lightbox2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-lightbox2
-Version:        2.11.1.1
+Version:        2.11.3
 Release:        0
 %define mod_name lightbox2
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/mschnitzer/lightbox2-rubygem
+URL:            https://github.com/mschnitzer/lightbox2-rubygem
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        lightbox2 for Ruby on Rails
