@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  1 08:30:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.25
+  * Remove deprecated siginterrupt call, replace with SA_RESTART
+    flag.
+
+-------------------------------------------------------------------
 Mon Aug 17 20:22:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0..02.24
