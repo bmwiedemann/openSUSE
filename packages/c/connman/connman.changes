@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 12 13:16:04 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.39 (bsc#1181751):
+  * Fix issue with scanning state synchronization and iwd.
+  * Fix issue with invalid key with 4-way handshake offloading.
+  * Fix issue with DNS proxy length checks to prevent buffer overflow. (CVE-2021-26675)
+  * Fix issue with DHCP leaking stack data via uninitialized variable. (CVE-2021-26676)
+
+-------------------------------------------------------------------
 Tue Feb 18 17:57:00 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.38:

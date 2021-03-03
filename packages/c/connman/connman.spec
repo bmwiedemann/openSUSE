@@ -1,7 +1,7 @@
 #
 # spec file for package connman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define tist_working		1
 %endif
 Name:           connman
-Version:        1.38
+Version:        1.39
 Release:        0
 Summary:        Connection Manager
 License:        GPL-2.0-only

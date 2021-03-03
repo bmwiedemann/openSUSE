@@ -192,4 +192,16 @@
     <comment></comment>
     <requestid>775510</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b44fa82c4775f01b867dff3b89ec4f0</srcmd5>
+    <version>1.39</version>
+    <time>1614792902</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.39 (bsc#1181751):
+  * Fix issue with scanning state synchronization and iwd.
+  * Fix issue with invalid key with 4-way handshake offloading.
+  * Fix issue with DNS proxy length checks to prevent buffer overflow. (CVE-2021-26675)
+  * Fix issue with DHCP leaking stack data via uninitialized variable. (CVE-2021-26676)</comment>
+    <requestid>876388</requestid>
+  </revision>
 </revisionlist>
