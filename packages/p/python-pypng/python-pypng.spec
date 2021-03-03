@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,10 @@ URL:            https://github.com/drj11/pypng
 Source:         https://files.pythonhosted.org/packages/source/p/pypng/pypng-%{version}.tar.gz
 Patch0:         pr_106.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

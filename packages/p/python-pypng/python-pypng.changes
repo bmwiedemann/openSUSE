@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 21:28:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Only test optional numpy when availalbe: python36-numpy is not
+
+-------------------------------------------------------------------
 Fri Sep 11 11:22:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove test module from runtime package with pr_106.patch
