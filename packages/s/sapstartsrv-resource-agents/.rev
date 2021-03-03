@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7110ec2ea14c18d4b0176564324a4c68</srcmd5>
+    <version>0.9.0+git.1614267979.e1f82bf</version>
+    <time>1614792845</time>
+    <user>RBrownSUSE</user>
+    <comment>First package version of `sapstartsrv-resource-agents`. This package is a resource agent to manage `sapstartsrv` service which is needed to control SAP environments using different mounting points.
+
+Set this package as the &quot;devel&quot; package please</comment>
+    <requestid>876013</requestid>
+  </revision>
+</revisionlist>
