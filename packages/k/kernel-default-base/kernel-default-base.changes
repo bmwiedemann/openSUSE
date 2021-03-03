@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 22 15:19:32 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add squashfs for kiwi installiso support (bsc#1182341)
+
+-------------------------------------------------------------------
+Mon Feb 22 10:48:16 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add fuse (boo#1182507)
+
+-------------------------------------------------------------------
 Thu Feb 11 09:06:20 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add modules which got lost when migrating away from supported.conf
