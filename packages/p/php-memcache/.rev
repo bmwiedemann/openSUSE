@@ -7,4 +7,15 @@
     <comment>Following packaging standards for rpmlintrc naming convention</comment>
     <requestid>872595</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f4016644df05880b788ccd265e03f31</srcmd5>
+    <version>4.0.5.2</version>
+    <time>1614792892</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix random failures in php7 unit test
+  + fixup-unit-test-040.patch
+  
+</comment>
+    <requestid>876378</requestid>
+  </revision>
 </revisionlist>

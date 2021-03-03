@@ -19,13 +19,9 @@
 %global flavor @BUILD_FLAVOR@%nil
 %if "%{flavor}" == ""
 %define php_name php
-ExclusiveArch: do-not-build
+ExclusiveArch:  do-not-build
 %else
 %define php_name %flavor
-%endif
-
-%if 0%{?suse_version} <= 1500 && "%{flavor}" == "php8"
-ExclusiveArch:  do-not-build
 %endif
 
 %define php_extdir  %(%{__php_config} --extension-dir)
@@ -35,10 +31,11 @@ ExclusiveArch:  do-not-build
 Name:           %{php_name}-%{pkg_name}
 %if "%{php_name}" == "php8"
 Version:        8.0
+Release:        0
 %else
 Version:        4.0.5.2
-%endif
 Release:        0
+%endif
 Summary:        PHP Memcache client Extension
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
@@ -47,6 +44,7 @@ Source0:        https://pecl.php.net/get/%{pkg_name}-4.0.5.2.tgz
 Source1:        https://pecl.php.net/get/%{pkg_name}-8.0.tgz
 Source10:       php-memcache-rpmlintrc
 Patch1:         fixup-unit-tests.patch
+Patch2:         fixup-unit-test-040.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{php_name}-cli
 %endif
@@ -70,6 +68,7 @@ via memcache.
 %setup -q -n %{pkg_name}-%{version} -T -b 1
 %else
 %setup -q -n %{pkg_name}-%{version}
+%patch2
 %endif
 %patch1
 

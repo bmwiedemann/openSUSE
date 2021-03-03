@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 23 15:58:58 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix random failures in php7 unit test
+  + fixup-unit-test-040.patch
+  
+-------------------------------------------------------------------
 Fri Jan 29 19:13:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change to 'more complete' multibuild: build all flavors (php7 and
