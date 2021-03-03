@@ -1,7 +1,7 @@
 #
 # spec file for package fakechroot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.1-only AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL
 Group:          Development/Tools/Building
 URL:            https://github.com/dex4er/fakechroot/wiki
 Source0:        https://github.com/dex4er/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+# Patch from:   https://github.com/dex4er/fakechroot/pull/85
+Patch0:         %{name}-glibc-233.patch
 
 %description
 fakechroot runs a command in an environment where it is possible to use the
@@ -39,7 +41,7 @@ These wrapper functions are in a shared library called libfakechroot.so, which
 can be loaded through the LD_PRELOAD mechanism of the dynamic loader.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -61,13 +63,13 @@ can be loaded through the LD_PRELOAD mechanism of the dynamic loader.
 %doc scripts/restoremode.sh scripts/savemode.sh
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/*
-%{_bindir}/env.fakechroot
-%{_bindir}/fakechroot
-%{_bindir}/ldd.fakechroot
-%dir %{_libdir}/fakechroot
-%{_libdir}/fakechroot/libfakechroot.la
-%{_libdir}/fakechroot/libfakechroot.so
-%{_sbindir}/chroot.fakechroot
-%{_mandir}/man1/fakechroot.1%{?ext_man}
+%{_bindir}/env.%{name}
+%{_bindir}/%{name}
+%{_bindir}/ldd.%{name}
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/lib%{name}.la
+%{_libdir}/%{name}/lib%{name}.so
+%{_sbindir}/chroot.%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

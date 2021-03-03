@@ -59,4 +59,13 @@
   * Can be compiled with gcc 7.1 -Wformat-truncation.</comment>
     <requestid>800637</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5c6e2dc0916f4be620e007fbb8a30ed8</srcmd5>
+    <version>2.20.1</version>
+    <time>1614792872</time>
+    <user>RBrownSUSE</user>
+    <comment>- add fakechroot-glibc-233.patch to fix glibc 2.33 compatibility
+</comment>
+    <requestid>876287</requestid>
+  </revision>
 </revisionlist>

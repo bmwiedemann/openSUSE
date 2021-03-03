@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  2 18:44:36 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- add fakechroot-glibc-233.patch to fix glibc 2.33 compatibility
+
+-------------------------------------------------------------------
 Wed May  6 08:55:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.20.1
