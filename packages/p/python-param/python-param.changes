@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 26 20:32:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test optional numpy with python36, but include optional 
+  jsonschema and (non python36) pandas for testing instead.
+
+-------------------------------------------------------------------
 Fri Jan 29 04:27:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove %ifpython3 guard for the %check section.

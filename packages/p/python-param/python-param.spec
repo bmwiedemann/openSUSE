@@ -30,12 +30,16 @@ Source100:      python-param-rpmlintrc
 # PATCH-FEATURE-UPSTREAM denose.patch gh#holoviz/param#423 mcepl@suse.com
 # Remove nose dependency
 Patch0:         denose.patch
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 Recommends:     python-numpy
+Recommends:     python-pandas
+Recommends:     python-jsonschema
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,7 +70,7 @@ echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.
 
 %check
 # Exclusion documented in gh#holoviz/param#423
-%pytest -k 'not test_abstract_class' tests/*/*.py
+%pytest -k 'not test_abstract_class' tests/*/*.py -ra
 %{python_expand # make sure the correct version is reported. Other packages depend on it.
 PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -c '

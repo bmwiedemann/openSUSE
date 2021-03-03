@@ -148,4 +148,12 @@
     <comment>- Remove %ifpython3 guard for the %check section.</comment>
     <requestid>867617</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d8e7ee6c974a5c99802e308ee7acff5c</srcmd5>
+    <version>1.10.1</version>
+    <time>1614792824</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875538</requestid>
+  </revision>
 </revisionlist>
