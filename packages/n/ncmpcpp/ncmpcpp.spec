@@ -17,7 +17,7 @@
 
 
 Name:           ncmpcpp
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Music Player Daemon Client
 License:        GPL-2.0-only

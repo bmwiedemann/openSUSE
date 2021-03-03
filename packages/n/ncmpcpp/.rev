@@ -50,4 +50,12 @@
 - gcc 10 compat fixed</comment>
     <requestid>864069</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aeb56bcbdc4f98d3cf43753d79f4042c</srcmd5>
+    <version>0.9.2</version>
+    <time>1614792870</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876283</requestid>
+  </revision>
 </revisionlist>
