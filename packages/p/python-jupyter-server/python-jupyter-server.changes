@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Thu Feb 25 20:54:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.4.1:
+  - Update README.md #425
+  - Solve UnboundLocalError in launch_browser() #421
+  - Add file_to_run to server extension docs #420
+  - Remove outdated reference to _jupyter_server_extension_paths
+    in docs #419
+  - Add Tests to Distribution #416
+  - Enable extensions to control the file_to_run #415
+  - add missing template for view.html #414
+  - Remove obsoleted asyncio-patch fixture #412
+  - Emit deprecation warning on old name #411
+  - Correct logging message position #410
+  - Update 1.3.0 Changelog to include broken 1.2.3 PRs #408
+  - [Gateway] Track only this server's kernels #407
+  - Update manager.py: more descriptive warnings when extensions
+    fail to load #396
+
+-------------------------------------------------------------------
+Sun Feb 14 18:05:36 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.0:
+  * Special case ExtensionApp that starts the ServerApp #401 (afshin)
+  * only use deprecated notebook_dir config if root_dir is not set
+    #400 (minrk)
+  * Use async kernel manager by default #399 (kevin-bates)
+  * Revert Session.username default value change #398 (mwakaba2)
+  * Re-enable default_url in ExtensionApp #393 (afshin)
+  * Enable notebook ContentsManager in jupyter_server #392 (afshin)
+  * Use jupyter_server_config.json as config file in the update
+    password api #390 (echarles)
+  * Increase culling test idle timeout #388 (kevin-bates)
+
+-------------------------------------------------------------------
+Mon Feb  1 22:48:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.2.3
+  * for the full changelog between 0.2.1 and 1.2.3 see
+    https://github.com/jupyter-server/jupyter_server/blob/master/CHANGELOG.md
+  * 1.0.6: Fix open redirect vulnerability GHSA-grfj-wjv9-4f9v
+    (CVE-2020-26232) 
+  * 1.0: Added new extension manager API for handling server 
+    extensions
+  * 1.0: Dropped support for Python 3.5. (296)
+  * 1.0: Removed ipykernel as a dependency of jupyter_server.
+  * 0.3: (#194) The bundlerextension entry point was removed.
+- Merge the jupyter-jupyter_server package into the python
+  packages using update-alternatives. It contained only the script
+  entrypoints.
+- Fix testsuite by providing the correct entrypoints in PATH
+
+-------------------------------------------------------------------
+Tue Jun  9 07:13:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict us to pytest4 as the tests work with pytest5 too
+
+-------------------------------------------------------------------
+Thu Apr 23 10:50:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 deps from the spec
+
+-------------------------------------------------------------------
+Wed Jan 15 15:25:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.1
+  + Added
+    * pytest-plugin for Jupyter Server.
+- Update to 0.2.0
+  + Added
+    * `extension` submodule
+  + Changed
+    * `jupyter serverextension <command>` entrypoint has been changed to `jupyter server extension <command>`.
+    * `toggle_jupyter_server` and `validate_jupyter_server` function no longer take a Logger object as an argument.
+    * Changed testing framework from nosetests to pytest
+    * Added Github actions as a testing framework along side Travis and Azure
+  + Removed
+    * Removed the option to update `root_dir` trait in FileContentsManager and MappingKernelManager in ServerApp
+  + Fixed
+    * Synced Jupyter Server with Notebook PRs in batches (ended on 2019-09-27)
+  + Security
+    * Added a "secure_write to function for cookie/token saves
+
+-------------------------------------------------------------------
+Tue Nov 12 17:38:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+- jupyter_client renamed to jupyter-client
+- jupyter_core renamed to jupyter-core
+
+-------------------------------------------------------------------
+Sun Aug 11 01:27:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.1
+  * Fix extension_name validation
+  * Remove 'coded redirect' to default_url
+  * Fix default_url redirect with default 'main' handler
+  * pass extension_name to only extension app handlers
+
+-------------------------------------------------------------------
+Sun Jul 28 20:33:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.0
+  * Update jupyter_client
+  * Removed Python 3.4 from the matrix
+  * fix bug from empty argv in extension app
+  * refactor extension testing to handle server instances
+  * add initial tests for extensionapp
+  * rearrange initialization steps for sanity
+  * add extension config as an attribute of the ExtensionApp
+  * pass extension traits to extension handlers as `config` property
+  * handler sources extension name from extension app object
+  * allow application to generate config
+  * Added control channel to ZMQChannelsHandler
+  * make extension handlers and settings configurable
+  * properly handle generate-config command
+  * working command line configuration, help, version, etc.
+  * add server extension submodule to jupyter_server
+  * remove notebook templates and replace with simple server templates
+  * Add localhost to list of default local_hostnames
+
+-------------------------------------------------------------------
+Wed Jun 12 20:07:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.0.5
+  * Remove bundler endpoints
+
+-------------------------------------------------------------------
+Wed May 22 21:53:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Remove selenium test dependency, it isn't really needed for the
+  tests and doesn't work on ARM.
+
+-------------------------------------------------------------------
+Thu May  2 18:13:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version
