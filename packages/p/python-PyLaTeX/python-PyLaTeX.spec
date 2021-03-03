@@ -25,6 +25,8 @@ Summary:        A Python library for creating LaTeX files and snippets
 License:        MIT
 URL:            https://github.com/JelteF/PyLaTeX
 Source:         https://github.com/JelteF/PyLaTeX/archive/v%{version}.tar.gz#/PyLaTeX-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE skip-optional-dependencies-test.patch -- skip testing optional dependencies if not available
+Patch0:         skip-optional-dependencies-test.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -65,12 +67,12 @@ Recommends:     tex(tikz.sty)
 Recommends:     tex(xcolor.sty)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module ordered-set}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module quantities}
 BuildRequires:  texlive-latex
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module quantities  if (%python-base without python36-base)}
 BuildRequires:  tex(amsmath.sty)
 BuildRequires:  tex(booktabs.sty)
 BuildRequires:  tex(cleveref.sty)
@@ -107,7 +109,7 @@ BuildRequires:  tex(xcolor.sty)
 PyLaTeX is a Python library for creating and compiling LaTeX files.
 
 %prep
-%setup -q -n PyLaTeX-%{version}
+%autosetup -p1 -n PyLaTeX-%{version}
 
 %build
 %python_build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 26 20:15:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Some optional dependencies not available for the python36 flavor:
+  * add skip-optional-dependencies-test.patch
+  * don't install numpy, matplotlib and quantities for python36
+    (NumPy 1.20 does not provide a Python 3.6 build on TW: NEP 29)
+
+-------------------------------------------------------------------
 Sun Jan 10 18:05:44 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.4.1.
