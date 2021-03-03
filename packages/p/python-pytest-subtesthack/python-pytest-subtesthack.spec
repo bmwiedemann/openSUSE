@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-subtesthack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-subtesthack
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
-License:        SUSE-Public-Domain
 Summary:        A hack to explicitly set up and tear down fixtures
-Url:            https://github.com/untitaker/pytest-subtesthack/
+License:        SUSE-Public-Domain
 Group:          Development/Languages/Python
+URL:            https://github.com/untitaker/pytest-subtesthack/
 Source:         https://github.com/untitaker/pytest-subtesthack/archive/%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-pytest
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-pytest
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
