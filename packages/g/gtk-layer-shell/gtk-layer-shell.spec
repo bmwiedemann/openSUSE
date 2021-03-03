@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-layer-shell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtk-layer-shell
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Library to create desktop components for Wayland
 License:        MIT AND LGPL-3.0-or-later AND GPL-3.0-or-later

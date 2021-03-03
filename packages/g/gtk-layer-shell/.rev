@@ -117,4 +117,18 @@
   * Compat: bump supported GTK to v3.24.24</comment>
     <requestid>855561</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4aa935c838a14307c64df4e4291179b1</srcmd5>
+    <version>0.6.0</version>
+    <time>1614792920</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.6.0:
+  * Layer Shell: support protocol version 4
+  * API: support on-demand keyboard interactivity on protocol version 4
+  * API: deprecate gtk_layer_set_keyboard_interactivity() in favor of
+    gtk_layer_set_keyboard_mode()
+  * API: add gtk_layer_get_protocol_version()
+  * Compat bump supported GTK to v3.24.26</comment>
+    <requestid>876427</requestid>
+  </revision>
 </revisionlist>

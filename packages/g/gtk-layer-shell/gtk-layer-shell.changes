@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  3 09:18:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Layer Shell: support protocol version 4
+  * API: support on-demand keyboard interactivity on protocol version 4
+  * API: deprecate gtk_layer_set_keyboard_interactivity() in favor of
+    gtk_layer_set_keyboard_mode()
+  * API: add gtk_layer_get_protocol_version()
+  * Compat bump supported GTK to v3.24.26
+
+-------------------------------------------------------------------
 Sun Dec 13 10:12:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.2:
