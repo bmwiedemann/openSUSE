@@ -1,0 +1,14 @@
+Index: libsoup-2.72.0/tests/ssl-test.c
+===================================================================
+--- libsoup-2.72.0.orig/tests/ssl-test.c
++++ libsoup-2.72.0/tests/ssl-test.c
+@@ -370,6 +370,9 @@ do_tls_interaction_test (void)
+ 
+ 	SOUP_TEST_SKIP_IF_NO_TLS;
+ 
++	g_test_skip ("Not reliable? See https://gitlab.gnome.org/GNOME/libsoup/issues/120");
++	return;
++
+ 	service = g_threaded_socket_service_new (1);
+ 	address = g_inet_socket_address_new_from_string ("127.0.0.1", 0);
+ 	g_socket_listener_add_address (G_SOCKET_LISTENER (service), address,

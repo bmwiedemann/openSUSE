@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 26 16:32:26 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Run the regression tests using GnuTLS NORMAL priority
+
+-------------------------------------------------------------------
+Mon Feb  8 13:58:50 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Disable tls_interaction-test until resolved upstream
+  * See https://gitlab.gnome.org/GNOME/libsoup/issues/120
+- Add libsoup-skip-tls_interaction-test.patch
+
+-------------------------------------------------------------------
+Mon Feb  8 13:07:03 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix tests: fix SSL test with glib-networking >= 2.65.90
+  * See https://gitlab.gnome.org/GNOME/libsoup/issues/201
+- Add libsoup-fix-SSL-test.patch
+- Remove patches:
+  * libsoup-disable-ssl-tests.patch
+  * libsoup-disable-hsts-tests.patch
+
+-------------------------------------------------------------------
 Thu Nov 12 14:30:45 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable sysprof integration: this causes a nasty build cycle.

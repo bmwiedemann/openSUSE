@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,10 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
 Source0:        https://download.gnome.org/sources/libsoup/2.72/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
-# PATCH-FIX-OPENSUSE libsoup-disable-hsts-tests.patch mgorse@suse.com -- disable hsts tests.
-Patch0:         libsoup-disable-hsts-tests.patch
-# PATCH-FIX-OPENSUSE libsoup-disable-ssl-tests.patch glgo#GNOME/libsoup#188 -- Disable ssl tests
-Patch2:         libsoup-disable-ssl-tests.patch
-
+# PATCH-FIX-UPSTREAM tests: fix SSL test with glib-networking >= 2.65.90
+Patch0:         libsoup-fix-SSL-test.patch
+# PATCH-FIX-OPENSUSE disable tls_interaction-test https://gitlab.gnome.org/GNOME/libsoup/issues/120
+Patch1:         libsoup-skip-tls_interaction-test.patch
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
@@ -124,16 +122,18 @@ translation-update-upstream po libsoup
 
 %build
 %meson \
-	-Dgssapi=enabled \
-	-Dkrb5_config="$(which krb5-config)" \
-	-Dvapi=enabled \
-	-Dgtk_doc=true \
-	-Dntlm=disabled \
-        -Dsysprof=disabled \
-	%{nil}
+    -Dgssapi=enabled \
+    -Dkrb5_config="$(which krb5-config)" \
+    -Dvapi=enabled \
+    -Dgtk_doc=true \
+    -Dntlm=disabled \
+    -Dsysprof=disabled \
+    %{nil}
 %meson_build
 
 %check
+# Run the regression tests using GnuTLS NORMAL priority
+export G_TLS_GNUTLS_PRIORITY=NORMAL
 %meson_test
 
 %install
