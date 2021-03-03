@@ -300,4 +300,12 @@ provides).</comment>
 - Modernise go building for runc now that it has go.mod.</comment>
     <requestid>869059</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>3f896bf634fe97deefa4d50af2c44e14</srcmd5>
+    <version>1.0.0~rc93</version>
+    <time>1614792890</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876335</requestid>
+  </revision>
 </revisionlist>
