@@ -260,4 +260,13 @@ Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</c
     <comment></comment>
     <requestid>825722</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>66215c02df1791505910732feb8d4dc8</srcmd5>
+    <version>0.9.19</version>
+    <time>1614792859</time>
+    <user>RBrownSUSE</user>
+    <comment>- replaced goocanvas-devel by pkgconfig(goocanvas-2.0) to use the right
+  goocanvas. (forwarded request 876219 from msmeissn)</comment>
+    <requestid>876226</requestid>
+  </revision>
 </revisionlist>

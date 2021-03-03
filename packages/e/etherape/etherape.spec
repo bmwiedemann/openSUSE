@@ -1,7 +1,7 @@
 #
 # spec file for package etherape
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,11 @@ Source0:        https://prdownloads.sourceforge.net/etherape/%{name}-%{version}.
 Patch0:         etherape-0.9.12-desktop.patch
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
-BuildRequires:  goocanvas-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(goocanvas-2.0)
 BuildRequires:  pkgconfig(popt)
 %if 0%{?is_opensuse}
 BuildRequires:  autoconf-archive

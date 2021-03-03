@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  2 12:13:45 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- replaced goocanvas-devel by pkgconfig(goocanvas-2.0) to use the right
+  goocanvas.
+
+-------------------------------------------------------------------
 Tue Jul 21 14:30:47 UTC 2020 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 0.9.19.
