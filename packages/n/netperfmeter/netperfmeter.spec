@@ -1,7 +1,7 @@
 #
 # spec file for package netperfmeter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           netperfmeter
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
