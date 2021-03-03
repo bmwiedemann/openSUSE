@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Mar  3 12:29:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- pass --disable-defaultflags to avoid breakage of our gcc-PIE profile (->
+  resulted in non-position-independent executable).
+
+-------------------------------------------------------------------
+Wed Mar  3 11:51:40 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to upstream version 1.1.0:
+  * Added:
+    - Configure option for ptpm tests
+    - Configure script AX_CHECK_ENABLE_DEBUG
+    - Option for setting tcti on executable
+    - TCTI-env variable used by default
+    - Support for parent key passwords
+    - openssl.cnf sample file
+  * Changed:
+    - Fix several build system, autotools and testing related issues
+      Now adhere to CFLAGS conventions
+    - Include pkg-config dependecy on libtss2-mu in order to work with tpm2-tss 2.3
+    - Enables parallel testing of integration tests:
+      Make integration tests use TPM simulator; instead of first TPM it finds
+      Use of different port numbers for TCP based tests
+    - Fix EC param info (using named curve format)
+    - Use tpm2-tools 4.X stable branch for integration tests
+    - Use libtss2-tctildr.so instead of custom code for tcti setup
+    - Fix manpages for -P/--parent option and correct engine name
+    - Fix TCTI env variable handling
+    - Set parent handle to OWNER
+
+-------------------------------------------------------------------
 Thu Apr 23 08:30:46 UTC 2020 - matthias.gerstner@suse.com
 
 - remove conditional pandoc BuildRequires for openSUSE. Nothing much is gained

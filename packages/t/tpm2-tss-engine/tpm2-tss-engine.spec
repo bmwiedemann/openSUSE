@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-tss-engine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Find out where that is.
 %define _ENGINE_DIR %(pkg-config --variable=enginesdir libcrypto)
 Name:           tpm2-tss-engine
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        OpenSSL Engine for TPM2 devices
 License:        BSD-3-Clause
@@ -73,8 +73,8 @@ It supports RSA decryption and signatures as well as ECDSA signatures.
 %build
 
 autoreconf -fvi
-%configure --with-enginesdir=%{_ENGINE_DIR} --disable-static
-make %{?_smp_mflags}
+%configure --with-enginesdir=%{_ENGINE_DIR} --disable-static --disable-defaultflags
+make V=1 %{?_smp_mflags}
 
 %install
 %make_install bash_completiondir=%{_bashcompletionsdir}
