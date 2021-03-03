@@ -94,4 +94,12 @@
 - Add patch fix-test-imports.patch to fix the test suite.</comment>
     <requestid>818481</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d4fc4dc359609692e7e140a0a83988c0</srcmd5>
+    <version>1.4.3</version>
+    <time>1614792821</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875537</requestid>
+  </revision>
 </revisionlist>
