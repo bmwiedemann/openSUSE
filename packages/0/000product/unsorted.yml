@@ -2865,6 +2865,7 @@ unsorted:
   - dracut-sshd 
   - dracut-tools 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -7912,6 +7913,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -11051,7 +11053,6 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhiredis1_0_0 
   - libhivex0: [i586] 
   - libhmac-devel 
   - libhmac-tools 
@@ -14398,7 +14399,7 @@ unsorted:
   - libxtrxdsp0 
   - libxtrxll-devel 
   - libxtrxll0 
-  - libxy4 
+  - libxy3 
   - libyajl-devel 
   - libyajl-devel-32bit: [x86_64] 
   - libyajl-devel-static 
@@ -14771,7 +14772,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -17436,11 +17437,14 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -20696,7 +20700,6 @@ unsorted:
   - python3-SoapySDR 
   - python3-YODA 
   - python3-aexpect 
-  - python3-apns2 
   - python3-arpack-ng: [x86_64] 
   - python3-audit: [i586] 
   - python3-automaton 
@@ -20747,7 +20750,6 @@ unsorted:
   - python3-dfVFS 
   - python3-django-attachments 
   - python3-django-braces 
-  - python3-django-push-notifications 
   - python3-django-q 
   - python3-django-redis 
   - python3-django-storages 
@@ -20807,13 +20809,11 @@ unsorted:
   - python3-hawkey 
   - python3-hdf5storage 
   - python3-heatclient 
-  - python3-hiredis 
   - python3-hivex 
   - python3-httpie 
   - python3-img-proof 
   - python3-img-proof-tests 
   - python3-imobiledevice 
-  - python3-impacket 
   - python3-influxdb 
   - python3-injector 
   - python3-inspektor 
@@ -21010,7 +21010,6 @@ unsorted:
   - python3-pytest-listener 
   - python3-pytest-pyramid-server 
   - python3-pytest-server-fixtures 
-  - python3-pytest-subtesthack 
   - python3-pytest-translations 
   - python3-python-jenkins 
   - python3-python-pseudorandom: [i586] 
@@ -21046,7 +21045,6 @@ unsorted:
   - python3-stevedore 
   - python3-stp 
   - python3-sunpy 
-  - python3-superpaper 
   - python3-susepubliccloudinfo 
   - python3-sushy 
   - python3-swiftclient 
@@ -21367,6 +21365,7 @@ unsorted:
   - python36-apache-libcloud 
   - python36-apipkg 
   - python36-apiron 
+  - python36-apns2 
   - python36-appdirs 
   - python36-application 
   - python36-applicationinsights 
@@ -22022,6 +22021,7 @@ unsorted:
   - python36-django-picklefield 
   - python36-django-pipeline 
   - python36-django-polymorphic 
+  - python36-django-push-notifications 
   - python36-django-pyscss 
   - python36-django-qsessions 
   - python36-django-registration 
@@ -22188,7 +22188,6 @@ unsorted:
   - python36-fleming 
   - python36-flex 
   - python36-flexmock 
-  - python36-flexx 
   - python36-flickrapi 
   - python36-flit 
   - python36-flit-core 
@@ -22312,6 +22311,7 @@ unsorted:
   - python36-hetznercloud 
   - python36-hexdump 
   - python36-hide-code 
+  - python36-hiredis 
   - python36-hkdf 
   - python36-hl7apy 
   - python36-holidays 
@@ -22358,6 +22358,7 @@ unsorted:
   - python36-img2pdf 
   - python36-iminuit 
   - python36-immutables 
+  - python36-impacket 
   - python36-importlib-metadata 
   - python36-importlib-resources 
   - python36-imread 
@@ -23090,7 +23091,6 @@ unsorted:
   - python36-pysmb 
   - python36-pysmbc 
   - python36-pysmi 
-  - python36-pysndfile 
   - python36-pysnmp 
   - python36-pysofaconventions 
   - python36-pysolr 
@@ -23172,6 +23172,7 @@ unsorted:
   - python36-pytest-socket 
   - python36-pytest-spec 
   - python36-pytest-sphinx 
+  - python36-pytest-subtesthack 
   - python36-pytest-subtests 
   - python36-pytest-sugar 
   - python36-pytest-super-check 
@@ -24174,6 +24175,7 @@ unsorted:
   - python38-anymarkup-core 
   - python38-apache-libcloud 
   - python38-apiron 
+  - python38-apns2 
   - python38-application 
   - python38-applicationinsights 
   - python38-apptools 
@@ -24825,6 +24827,7 @@ unsorted:
   - python38-django-picklefield 
   - python38-django-pipeline 
   - python38-django-polymorphic 
+  - python38-django-push-notifications 
   - python38-django-pyscss 
   - python38-django-qsessions 
   - python38-django-registration 
@@ -25163,6 +25166,7 @@ unsorted:
   - python38-img2pdf 
   - python38-iminuit 
   - python38-immutables 
+  - python38-impacket 
   - python38-importlab 
   - python38-imread 
   - python38-imreg 
@@ -26005,6 +26009,7 @@ unsorted:
   - python38-pytest-socket 
   - python38-pytest-spec 
   - python38-pytest-sphinx 
+  - python38-pytest-subtesthack 
   - python38-pytest-subtests 
   - python38-pytest-sugar 
   - python38-pytest-super-check 
@@ -26420,6 +26425,7 @@ unsorted:
   - python38-subst 
   - python38-suds-jurko 
   - python38-suntime 
+  - python38-superpaper 
   - python38-sure 
   - python38-svgpathtools: [x86_64] 
   - python38-svgwrite 
@@ -27429,7 +27435,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -27880,6 +27886,7 @@ unsorted:
   - sanlock-devel 
   - saphanabootstrap-formula 
   - sapnwbootstrap-formula 
+  - sapstartsrv-resource-agents 
   - sar2 
   - sar2-data 
   - sarg 
