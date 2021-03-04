@@ -7913,7 +7913,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -17437,14 +17436,14 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSEway 
-  - openafs 
+  - openafs: [x86_64] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
+  - openafs-client: [x86_64] 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
+  - openafs-kmp-default: [x86_64] 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
