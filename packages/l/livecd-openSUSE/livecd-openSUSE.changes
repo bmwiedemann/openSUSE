@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  4 11:18:15 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- More size reduction:
+  * Drop unneeded kernel binary
+  * Stop writing /var/log/config.log
+  * Exclude networking from the initrd
+
+-------------------------------------------------------------------
 Tue Feb 23 10:52:12 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-kde, list-xfce: opensuse-welcome is also for Leap now

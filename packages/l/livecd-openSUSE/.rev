@@ -1135,4 +1135,12 @@
     <comment>- list-kde, list-xfce: opensuse-welcome is also for Leap now (forwarded request 874575 from favogt)</comment>
     <requestid>874576</requestid>
   </revision>
+  <revision rev="141" vrev="141">
+    <srcmd5>473ad01a38a174e268a299b167037ee2</srcmd5>
+    <version>unknown</version>
+    <time>1614859927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876731</requestid>
+  </revision>
 </revisionlist>

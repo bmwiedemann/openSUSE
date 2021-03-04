@@ -16,9 +16,6 @@ test -f /.profile && . /.profile
 
 set -euxo pipefail
 
-exec | tee /var/log/config.log
-exec 2>&1
-
 pl=$(rpmqpack | grep release-livecd-)
 
 # Get the flavor from the installed (openSUSE|Leap)-release-livecd- RPM
@@ -53,6 +50,15 @@ done
 echo '# multipath needs to be excluded from dracut as it breaks os-prober' > /etc/dracut.conf.d/no-multipath.conf
 echo 'omit_dracutmodules+=" multipath "' >> /etc/dracut.conf.d/no-multipath.conf
 
+if [ "$desktop" = "x11" ]; then
+	# Forcibly exclude networking support
+	sed -i 's/echo network rootfs-block/echo rootfs-block/' /usr/lib/dracut/modules.d/90kiwi-live/module-setup.sh
+	echo 'omit_dracutmodules+=" network "' >> /etc/dracut.conf.d/no-network.conf
+
+	# Work around https://github.com/OSInside/kiwi/issues/1751
+	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
+fi
+
 cd /
 
 # Import keys for installation
@@ -79,6 +85,9 @@ rm -rf /usr/share/doc/packages/*
 
 # Save more than 200 MiB by removing this, not very useful for lives
 rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress}
+
+# Not needed, boo#1166406
+rm /boot/vmlinux*.[gx]z
 
 # Add repos from /etc/YaST2/control.xml
 add-yast-repos
