@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  4 15:29:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add %sysusers_requires: we are creating users in pre, thus need
+  to ensure to have the tooling ready prior to package installation
+  (boo#1183047).
+
+-------------------------------------------------------------------
 Mon Mar  1 11:04:37 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Use sysuser-tools for creation of the wsdd user and group

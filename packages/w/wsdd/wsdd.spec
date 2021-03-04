@@ -30,13 +30,14 @@ Source4:        sysconfig.%{name}
 Source5:        %{name}.conf
 Source6:        %{name}-user.conf
 Patch1:         %{name}-shebang.patch
-BuildRequires:  sysuser-tools
 BuildRequires:  firewall-macros
 BuildRequires:  python3
+BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 Supplements:    samba
 Supplements:    samba-ad-dc
 BuildArch:      noarch
+%sysusers_requires
 
 %description
 wsdd implements a Web Service Discovery host daemon. This enables (Samba) hosts,
