@@ -1279,6 +1279,7 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kreversi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5057,7 +5058,9 @@
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.10.16-1-default needed by openafs-kmp-default-1.8.7_k5.10.16_1-4.1.i586-->
+    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5121,7 +5124,6 @@
     <package name="jhbuild" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="jhbuild-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krfb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

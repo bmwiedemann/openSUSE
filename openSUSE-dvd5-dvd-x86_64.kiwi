@@ -1340,7 +1340,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client" arch="x86_64"/>
+      <repopackage name="krb5-client"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
