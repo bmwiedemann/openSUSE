@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  4 22:54:17 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.36.1:
+  * Core: back-port: add env var protection for google-c2p
+    resolver (gh#grpc/grpc#25569).
+
+-------------------------------------------------------------------
 Thu Feb 25 09:59:16 UTC 2021 - munix9@googlemail.com
 
 - Update to version 1.35.0:
