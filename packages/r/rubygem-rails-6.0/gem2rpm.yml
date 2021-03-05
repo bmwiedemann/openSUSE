@@ -80,9 +80,9 @@
     Recommends: git
     Recommends: nodejs
     Recommends: yarn
-    Recommends: %{rubygem puma >= 4.1}
+    Recommends: %{rubygem puma:4.1}
     Recommends: %{rubygem sass-rails >= 6.0.0}
-    Recommends: %{rubygem webpacker >= 4.0}
+    Recommends: %{rubygem webpacker:4.0}
     Recommends: %{rubygem turbolinks >= 5.0.0}
     Recommends: %{rubygem jbuilder >= 2.7}
     Recommends: %{rubygem bootsnap >= 1.4.2}
