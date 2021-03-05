@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 04 16:02:33 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1614711054.7b334c37:
+  * Simplify the CMake invocation within the convenience Makefile
+  * Create symlinks by default in convenience Makefile
+
+-------------------------------------------------------------------
 Mon Mar 01 15:35:07 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1614612897.75967767:
