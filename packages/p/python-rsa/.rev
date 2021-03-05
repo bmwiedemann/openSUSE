@@ -164,4 +164,14 @@
   * Declare &amp; test support for Python 3.9</comment>
     <requestid>867594</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6996a38c0de8664b5e3f86b5f923f046</srcmd5>
+    <version>4.7.2</version>
+    <time>1614948188</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 4.7.2:
+  * Fix picking/unpickling issue introduced in 4.7
+  * Fix threading issue introduced in 4.7</comment>
+    <requestid>876092</requestid>
+  </revision>
 </revisionlist>

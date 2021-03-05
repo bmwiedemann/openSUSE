@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  2 00:30:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.2:
+  * Fix picking/unpickling issue introduced in 4.7
+  * Fix threading issue introduced in 4.7 
+
+-------------------------------------------------------------------
 Thu Jan 28 23:02:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7:
