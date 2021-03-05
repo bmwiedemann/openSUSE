@@ -1,7 +1,7 @@
 #
 # spec file for package pasystray
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,11 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libpulse-simple)
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
+%else
+Requires:       pulseaudio-daemon
+%endif
 Suggests:       paman
 Suggests:       paprefs
 Suggests:       pavucontrol

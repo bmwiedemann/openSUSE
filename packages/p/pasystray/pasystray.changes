@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 25 14:39:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Keep Requires: pulseaudio when building on SLE/Leap before 15.3.
+
+-------------------------------------------------------------------
+Thu Feb 25 11:36:32 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require the pulseaudio-daemon capability instead of the
+  pulseaudio package, so alternative implementations can be used
+  (boo#1182730).
+
+-------------------------------------------------------------------
 Tue Oct  8 15:22:06 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 
 - Drop dependency on avahi-ui
