@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  3 14:47:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Create subpackages for bash- and zsh-completion
+- Use correct upstream URL
+
+-------------------------------------------------------------------
 Wed Apr 15 13:48:06 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.2:

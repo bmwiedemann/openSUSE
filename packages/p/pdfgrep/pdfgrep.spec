@@ -1,7 +1,7 @@
 #
 # spec file for package pdfgrep
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Search in pdf files for strings matching a regular expression
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Utilities
-URL:            http://pdfgrep.sourceforge.net/
+URL:            https://pdfgrep.org/
 Source:         https://pdfgrep.org/download/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel >= 1.0.0
@@ -41,6 +41,26 @@ Features:
 + optional case insensitivity.
 + count occurrences.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          Productivity/Networking/Security
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
+%package zsh-completion
+Summary:        ZSH completion for %{name}
+Group:          Productivity/Networking/Security
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+zsh shell completions for %{name}.
+
 %prep
 %setup -q
 
@@ -57,7 +77,13 @@ Features:
 %doc AUTHORS NEWS.md README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files bash-completion
 %{_datadir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_%{name}
 
 %changelog

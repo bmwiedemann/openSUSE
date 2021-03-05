@@ -30,4 +30,12 @@
   * Bugfix: Actually stop searching after first match with `-q`</comment>
     <requestid>794205</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>418a257584d21f31d1ef3a8a156377e0</srcmd5>
+    <version>2.1.2</version>
+    <time>1614948439</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876677</requestid>
+  </revision>
 </revisionlist>
