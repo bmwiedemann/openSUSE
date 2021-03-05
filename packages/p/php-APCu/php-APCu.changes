@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar  4 10:10:35 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.20
+  * Fix deadlocks when other apcu_* functions are used inside apcu_entry().
+    It should now be safe to use any functions inside the apcu_entry()
+    callback.
+  * Fix division by zero exception in apc.php.
+  * Fix handling of references in PHP 8 if "default" serializer is used
+    (which is not the default).
+  * Fix string reuse handling if "default" serializer is used (which is
+    not the default).
+  * Check for failures when acquiring read locks to report problems
+    earlier (write locks were already checked previously).
+  * Adjust tests for current PHP 8.1 development branch.
+  * Remove *_api.h headers. Use apc_cache.h instead of apc_cache_api.h etc.
+
+-------------------------------------------------------------------
 Wed Feb 17 19:19:47 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use _multibuild to also build for php8

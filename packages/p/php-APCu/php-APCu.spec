@@ -1,7 +1,7 @@
 #
 # spec file for package php-APCu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.1.19
+Version:        5.1.20
 Release:        0
 Summary:        APCu - APC User Cache
 License:        PHP-3.01
