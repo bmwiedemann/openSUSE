@@ -78,4 +78,12 @@
   * removed explicit version checks of dependencies such as serpent</comment>
     <requestid>786813</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c259a7d86983233fe6d0e72014f5ba28</srcmd5>
+    <version>4.80</version>
+    <time>1614948259</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875298</requestid>
+  </revision>
 </revisionlist>

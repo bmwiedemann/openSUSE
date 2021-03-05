@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyro4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-Pyro4
-Version:        4.79
+Version:        4.80
 Release:        0
 Summary:        Distributed object middleware for Python (RPC)
 License:        MIT
@@ -98,7 +98,8 @@ skip+=" or testLookupUnixsockParsing"
 skip+=" or testLookupInvalidHmac"
 skip+=" or testLookupAndRegister"
 skip+=" or testDaemonPyroObj"
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:./tests/PyroTests py.test-%{$python_bin_suffix} -v -k "not ($skip)"
+export PYTHONPATH=${PWD}/tests/PyroTests
+%pytest -rs -v -k "not ($skip)"
 
 %post
 %{python_install_alternative pyro4-check-config pyro4-flameserver pyro4-httpgateway pyro4-ns pyro4-nsc pyro4-test-echoserver}
