@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  4 21:20:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.5.1
+  * Maintenance release
+    See: https://github.com/FRRouting/frr/blob/stable/7.5/changelog-auto.in
+
+-------------------------------------------------------------------
 Fri Jan  8 08:08:08 UTC 2021 - olaf@aepfle.de
 
 - Requires libyang 1.0.184
