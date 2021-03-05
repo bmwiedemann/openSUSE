@@ -2,7 +2,7 @@
 # spec file for package libdnf
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global libsolv_version 0.7.7
+
+%global libsolv_version 0.7.17
 %global libmodulemd_version 2.12.0
-%global librepo_version 1.12.0
+%global librepo_version 1.13.0
 %global dnf_conflict 4.3.0
 %global swig_version 3.0.12
 
@@ -33,18 +34,15 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.58.0
+Version:        0.60.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/rpm-software-management/%{name}
+URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
-Patch0001:      0001-context-Support-config-file-option-installonlypkgs.patch
-Patch0002:      0002-context-Support-config-file-option-protected_package.patch
-Patch0003:      0001-context-Fix-dnf_package_is_installonly-RhBug-1928056.patch
 
 # Fixes proposed upstream
 
@@ -153,6 +151,20 @@ Obsoletes:      python2-hawkey < 0.24.1
 This package provides the Python 3 bindings for %{name} through
 the hawkey interface.
 
+%package repo-config-zypp
+Summary:        Enables Zypper repository configuration for DNF
+Group:          System/Packages
+# We're compatible with any SUSE Linux distribution
+Requires:       (product(SUSE_SLE) or suse-release)
+# Only one instance of this package may be installed at a time...
+Provides:       rpm-repos-openSUSE
+Conflicts:      rpm-repos-openSUSE
+
+%description repo-config-zypp
+This package allows libdnf and all consumers to be able to reuse
+repository configuration files set for Zypper.
+
+
 %lang_package
 
 
@@ -186,9 +198,15 @@ popd
 %endif
 
 %install
-  %cmake_install
+%cmake_install
 
 %find_lang %{name}
+
+# For repo-config-zypp subpackage
+mkdir -p %{buildroot}%{_sysconfdir}/zypp/repos.d
+ln -sr %{buildroot}%{_sysconfdir}/zypp/repos.d %{buildroot}%{_sysconfdir}/distro.repos.d
+
+
 
 %post -n %{libname} -p /sbin/ldconfig
 
@@ -216,5 +234,11 @@ popd
 
 %files -n python3-hawkey
 %{python3_sitearch}/hawkey/
+
+%files repo-config-zypp
+# Co-own the zypp repos dir
+%dir %{_sysconfdir}/zypp
+%dir %{_sysconfdir}/zypp/repos.d
+%{_sysconfdir}/distro.repos.d
 
 %changelog

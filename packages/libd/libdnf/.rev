@@ -456,4 +456,53 @@
   + Patch: 0002-context-Support-config-file-option-protected_package.patch</comment>
     <requestid>871993</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>767147ac12a9da8055b6d00046b0bfa6</srcmd5>
+    <version>0.60.0</version>
+    <time>1614948247</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix dependency for repo-config-zypp subpackage to work with SLE
+
+- Update to 0.60.0
+  + Fix repo.fresh() implementation
+  + Fix: Fully set ssl in newHandle function
+  + [conf] Add options for working with certificates used with proxy
+  + Apply proxy certificate options
+  + lock: Switch return-if-fail to assert to quiet gcc -fanalyzer
+  + build-sys: Clean up message about Python bindings
+  + Modify module NSVCA parsing - context definition (rh#1926771)
+  + [context] Fix: dnf_package_is_installonly (rh#1928056)
+  + Fix problematic language
+  + Add getApplicablePackages to advisory and isApplicable to advisorymodule
+  + Keep isAdvisoryApplicable to preserve API
+  + Run ModulePackageContainerTest tests in tmpdir, merge interdependent
+  + [context] Support config file option &quot;proxy_auth_method&quot;, defaults &quot;any&quot;
+  + Properly handle multiple collections in updateinfo.xml (rh#1804234)
+  + Support main config file option &quot;installonlypkgs&quot;
+  + Support main config file option &quot;protected_packages&quot;
+- Drop patches now part of this release
+  + Patch: 0001-context-Support-config-file-option-installonlypkgs.patch
+  + Patch: 0002-context-Support-config-file-option-protected_package.patch
+  + Patch: 0001-context-Fix-dnf_package_is_installonly-RhBug-1928056.patch
+  + Patch: 0001-Fix-librepo-version-required-in-CMakeList.txt-1.12.0.patch
+  + Patch: 0002-Fix-Fully-set-ssl-in-newHandle-function.patch
+  + Patch: 0003-conf-Add-options-for-working-with-certificates-used-.patch
+  + Patch: 0004-Apply-proxy-certificate-options.patch
+  + Patch: 0001-Deduplicate-code-create-Repo-Impl-stringToProxyAuthM.patch
+  + Patch: 0002-context-Support-config-file-option-proxy_auth_method.patch
+
+- Backport more fixes for using certs for repo authorization
+  + Patch: 0001-Deduplicate-code-create-Repo-Impl-stringToProxyAuthM.patch
+  + Patch: 0002-context-Support-config-file-option-proxy_auth_method.patch
+
+- Add repo-config-zypp subpackage to allow easily using Zypper
+  repository configuration
+
+- Backport support for using certificates for repository authorization
+  + Patch: 0001-Fix-librepo-version-required-in-CMakeList.txt-1.12.0.patch
+  + Patch: 0002-Fix-Fully-set-ssl-in-newHandle-function.patch
+  + Patch: 0003-conf-Add-options-for-working-with-certificates-used-.patch
+  + Patch: 0004-Apply-proxy-certificate-options.patch</comment>
+    <requestid>876232</requestid>
+  </revision>
 </revisionlist>
