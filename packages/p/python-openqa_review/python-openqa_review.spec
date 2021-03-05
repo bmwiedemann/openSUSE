@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file for package python-openqa_review%{?name_ext}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define         binaries openqa-review openqa-review-daily-email openqa-review-sles-ha tumblesle-release openqa-review-functional_yast_concise
 %define         oldpython python
 Name:           python-%{short_name}%{?name_ext}
-Version:        1.20.2
+Version:        1.20.4
 Release:        0
 Summary:        A review helper script for openQA
 License:        MIT
@@ -60,7 +60,7 @@ Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-sortedcontainers
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch

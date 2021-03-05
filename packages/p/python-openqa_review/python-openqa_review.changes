@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 05 09:40:21 UTC 2021 - okurz@suse.com
+
+- Update to version 1.20.4:
+  * Change comments to not private when adding comments
+  * Fix readout of custom softfail references
+  * Adapt parsing of soft-failure details on openQA >= 4.5.1528009330.e68ebe2b-3956-gfac9d6dc2
+
+-------------------------------------------------------------------
 Mon Aug 03 12:26:03 UTC 2020 - okurz@suse.com
 
 - Update to version 1.20.2:
