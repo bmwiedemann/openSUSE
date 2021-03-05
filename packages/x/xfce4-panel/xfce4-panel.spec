@@ -20,7 +20,7 @@
 %define libname_gtk3 libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.16.1
+Version:        4.16.2
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -176,9 +176,9 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %files
 %if %{with git}
-%doc AUTHORS NEWS docs/README.gtkrc-2.0
+%doc AUTHORS NEWS README.md
 %else
-%doc AUTHORS ChangeLog NEWS docs/README.gtkrc-2.0
+%doc AUTHORS ChangeLog NEWS README.md
 %endif
 %license COPYING COPYING.LIB
 %{_bindir}/xfce4-panel
