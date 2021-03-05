@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar  2 03:09:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.85
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.85  2021-03-01
+    -  Test fixes
+           Missed some tests that were failing.
+
+  6.84  2021-03-01
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2021a).
+
+    -  Language fixes
+           Corrections and additions to Italian. Patch supplied by Leo
+           Cacciari (GitHub #33)
+
+-------------------------------------------------------------------
 Tue Dec  1 03:09:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.83
