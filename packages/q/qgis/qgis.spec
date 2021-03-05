@@ -1,7 +1,7 @@
 #
-# spec file for package qgis
+# spec file for package qgis-ltr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,25 @@
 #
 
 
+%define is_ltr 0
+
 %bcond_without grass
+%if %is_ltr
+Name:           qgis-ltr
+%else
 Name:           qgis
-Version:        3.14.16
+%endif
+Version:        3.18.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Visualization/Other
 URL:            https://qgis.org/
-Source:         https://qgis.org/downloads/%{name}-%{version}.tar.bz2
-Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
+Source:         https://qgis.org/downloads/qgis-%{version}.tar.bz2
+Source1:        https://qgis.org/downloads/qgis-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
-# PATCH-FIX-UPSTREAM https://github.com/qgis/QGIS/pull/37842 Get rid of SIP deprecated functions (support sip5)
-Patch0:         https://github.com/qgis/QGIS/pull/37842.patch#/qgis-pr37842-sip5.patch
+Patch1:         fix-fastcgi-include.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -46,6 +51,7 @@ BuildRequires:  libQt5Sql5-sqlite
 BuildRequires:  libexiv2-devel
 BuildRequires:  libqscintilla_qt5-devel
 BuildRequires:  libspatialindex-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  pkgconfig
@@ -138,7 +144,11 @@ Requires:       python3-termcolor
 Recommends:     %{name}-sample-data
 Recommends:     apache2-mod_fcgid
 Recommends:     gpsbabel
+%if %is_ltr
+Conflicts:      qgis
+%else
 Conflicts:      qgis-ltr
+%endif
 Conflicts:      qgis-master
 Obsoletes:      qgis2
 %if %{with grass}
@@ -151,16 +161,16 @@ BuildRequires:  memory-constraints
 %package devel
 Summary:        Development Libraries for QGIS
 Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
 Requires:       python3-qt5-devel
-Requires:       qgis = %{version}
 %if %{with grass}
 %package plugin-grass
 Summary:        GRASS Support Libraries for QGIS
 Group:          Productivity/Graphics/Visualization/Other
+Requires:       %{name} = %{version}
 Requires:       grass > 7.0
 Requires:       grass-doc
-Requires:       qgis = %{version}
-Obsoletes:      qgis-plugin-grass < %{version}
+Obsoletes:      %{name}-plugin-grass < %{version}
 
 %description plugin-grass
 GRASS plugin for QGIS required to interface with GRASS system.
@@ -186,7 +196,7 @@ Development packages for QGIS, including the C header files.
 QGIS sample data with raster, vector, gps files and a GRASS location from the Alaska area.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n qgis-%{version}
 # Remove bad env and python version in grass plugin
 sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
 sed -i 's,^#!%{_bindir}/env python3$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
@@ -215,6 +225,7 @@ export PATH=$PATH:$QTDIR/bin
   -DWITH_SERVER=TRUE \
   -DWITH_SERVER_PLUGINS=TRUE \
   -DWITH_POSTGRESQL=TRUE \
+  -DFCGI_INCLUDE_DIR=%{_includedir}/fastcgi \
   -DPOSTGRES_LIBRARY=%{_libdir}/libpq.so \
   -DPOSTGRES_INCLUDE_DIR=%{_includedir}/pgsql \
   -DQGIS_PLUGIN_SUBDIR=%{_lib}/qgis \

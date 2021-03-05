@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 24 13:41:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.18.0:
+  * Changelog: https://www.qgis.org/en/site/forusers/visualchangelog318/index.html
+- Drop upstreamed patch:
+  * qgis-fix-return.patch
+- Fix fastcgi include:
+  * fix-fastcgi-include.patch
+
+-------------------------------------------------------------------
+Wed Feb 24 13:13:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.16.4
+- Update spec file to ease future move from qgis to qgis-ltr
+
+-------------------------------------------------------------------
+Thu Jan 21 10:03:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.16.3
+- Drop upstream patch:
+  * qgis-pr37842-sip5.patch
+
+-------------------------------------------------------------------
 Fri Dec 11 16:12:46 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add BuildRequires: pkgconfig(Qt5WebKitWidgets) to explicitly

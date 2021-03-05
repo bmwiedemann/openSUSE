@@ -1,0 +1,11 @@
+--- qgis-3.18.0/src/server/qgis_map_serv.cpp.orig	2021-02-24 17:05:17.609036243 +0100
++++ qgis-3.18.0/src/server/qgis_map_serv.cpp	2021-02-24 17:05:31.697185106 +0100
+@@ -23,7 +23,7 @@
+ #include "qgsfcgiserverrequest.h"
+ #include "qgsapplication.h"
+ 
+-#include <fcgi_stdio.h>
++#include <fastcgi/fcgi_stdio.h>
+ #include <cstdlib>
+ 
+ #include <QFontDatabase>
