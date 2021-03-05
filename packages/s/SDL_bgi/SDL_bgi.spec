@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_bgi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           SDL_bgi
-%define sover   5
+%define sover   6
 %define lname	libSDL_bgi-suse%sover
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with SDL backend
 License:        Zlib AND GPL-2.0-or-later
@@ -88,5 +88,6 @@ rm -v "%buildroot/%_includedir/graphics.h"
 %_defaultdocdir/%name/
 %_includedir/*
 %_libdir/libSDL_bgi.so
+%_mandir/man3/*
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  4 09:17:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.3
+  * modified getscreensize() behaviour
+  * added setwintitle()
+
+-------------------------------------------------------------------
 Wed Nov 11 11:55:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.2
