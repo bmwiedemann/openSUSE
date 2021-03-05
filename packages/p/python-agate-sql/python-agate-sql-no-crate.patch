@@ -1,7 +1,5 @@
-Index: agate-sql-0.5.4/tests/test_agatesql.py
-===================================================================
---- agate-sql-0.5.4.orig/tests/test_agatesql.py	2019-03-16 17:22:33.000000000 +0100
-+++ agate-sql-0.5.4/tests/test_agatesql.py	2019-04-17 13:38:17.158819021 +0200
+--- a/tests/test_agatesql.py
++++ b/tests/test_agatesql.py
 @@ -149,7 +149,7 @@ class TestSQL(agate.AgateTestCase):
  );''')  # noqa
  

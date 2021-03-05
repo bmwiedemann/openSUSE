@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-agate-sql
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        SQL read/write support for agate
 License:        MIT
@@ -58,8 +58,7 @@ sed -i -e '/^#!\//, 1d' agatesql/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#wireservice/agate-sql#33
-%pytest -k 'not test_to_sql_create_statement_with_schema'
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst CHANGELOG.rst

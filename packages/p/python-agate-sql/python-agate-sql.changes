@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  5 09:57:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.5.6:
+  - Fix test that fails in specific environments.
+
+-------------------------------------------------------------------
 Sun Feb 21 20:46:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch off the failing test_to_sql_create_statement_with_schema
