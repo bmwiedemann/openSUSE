@@ -33,4 +33,13 @@
   % php8.rpmlintrc</comment>
     <requestid>869260</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>75029bf3a133c1814d711b0dd4204677</srcmd5>
+    <version>8.0.3</version>
+    <time>1614948482</time>
+    <user>RBrownSUSE</user>
+    <comment>- updated to 8.0.3: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.3</comment>
+    <requestid>876815</requestid>
+  </revision>
 </revisionlist>
