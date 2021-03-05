@@ -31,4 +31,12 @@
     <comment>TID000019825 TID000019786 (forwarded request 869583 from jrecord)</comment>
     <requestid>869584</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8c09ff1dcb2fafd421157c027af3c2f4</srcmd5>
+    <version>1.0.1</version>
+    <time>1614948462</time>
+    <user>RBrownSUSE</user>
+    <comment>New security and TID patterns (forwarded request 876726 from jrecord)</comment>
+    <requestid>876727</requestid>
+  </revision>
 </revisionlist>
