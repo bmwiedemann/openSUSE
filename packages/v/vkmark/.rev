@@ -50,4 +50,14 @@
 </comment>
     <requestid>813427</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>297788b4e0073458cab5b4334d5835d3</srcmd5>
+    <version>2017.08+git.20210301</version>
+    <time>1614948442</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2017.08+git.20210301:
+  * doc: Document new Vulkan device related flags in man page
+  * core: Allow selecting the Vulkan device to run on</comment>
+    <requestid>876687</requestid>
+  </revision>
 </revisionlist>

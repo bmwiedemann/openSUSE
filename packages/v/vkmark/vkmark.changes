@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  4 08:14:49 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20210301:
+  * doc: Document new Vulkan device related flags in man page
+  * core: Allow selecting the Vulkan device to run on
+
+-------------------------------------------------------------------
 Fri May 22 07:09:01 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2017.08+git.20200521:
