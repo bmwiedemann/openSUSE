@@ -134,7 +134,8 @@ Preinstall: liblua5_4-5
 
 FileProvides: /bin/bash bash
 FileProvides: /bin/csh tcsh
-FileProvides: /bin/hostname hostname
+FileProvides: /bin/hostname hostname busybox-hostname
+FileProvides: /usr/bin/hostname hostname busybox-hostname
 FileProvides: /bin/logger util-linux-systemd
 FileProvides: /sbin/netconfig sysconfig-netconfig
 FileProvides: /sbin/setcap libcap-progs
@@ -239,6 +240,7 @@ Support: post-build-checks
 Support: rpmlint-Factory
 # Add hostname so that OBS/build will have a chance to identify the hostname (instead of localhost)
 Support: hostname
+Prefer: -busybox-hostname
 # remove build-compare support to disable "same result" package dropping
 Support: build-compare
 
