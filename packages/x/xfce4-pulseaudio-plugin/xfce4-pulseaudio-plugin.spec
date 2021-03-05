@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-pulseaudio-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,7 +44,11 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.42
 BuildRequires:  pkgconfig(keybinder-3.0) >= 0.2.2
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.20
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
+%else
+Requires:       pulseaudio-daemon
+%endif
 Requires:       xfce4-panel >= %{panel_version}
 Recommends:     %{name}-lang = %{version}
 Recommends:     pavucontrol
