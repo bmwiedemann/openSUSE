@@ -347,4 +347,15 @@
    https://tools.ietf.org/html/draft-west-cookie-incrementalism-00</comment>
     <requestid>783693</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3a84968cdd1ae9313662f74d3ee2abc8</srcmd5>
+    <version>1.8.7</version>
+    <time>1614948191</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.8.7:
+  - Decoding deflate-encoded responses now supports data which is packed in
+    a zlib container as it is supposed to be. The old, non-standard behaviour
+    is still supported.</comment>
+    <requestid>876093</requestid>
+  </revision>
 </revisionlist>

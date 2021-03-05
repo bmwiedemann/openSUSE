@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  2 00:33:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.7:
+  - Decoding deflate-encoded responses now supports data which is packed in
+    a zlib container as it is supposed to be. The old, non-standard behaviour
+    is still supported.
+
+-------------------------------------------------------------------
 Wed Mar 11 08:52:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.8.6:
