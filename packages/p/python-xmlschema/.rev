@@ -121,4 +121,28 @@
 </comment>
     <requestid>847574</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>52a5325b69ebf60132aa81508f80d561</srcmd5>
+    <version>1.5.1</version>
+    <time>1614948302</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.5.1:
+  * Optimize NamespaceView read-only mapping
+  * Add experimental XML data bindings with a DataBindingConverter
+  * Add experimental PythonGenerator for static codegen with Jinja2
+  * Add DataElement class for creating objects with schema bindings
+  * Add DataElementConverter for decode to structured objects
+  * Add an experimental abstract base class for building jinja2 based
+    code generators (jinja2 as an optional dependency)
+  * Add decoding of binary datatypes (xs:hexBinary and xs:base64Binary)
+  * Fix encoding from string values for some builtin datatypes
+    (decimal, binary, duration and datetime)
+  * Include the pull request #220 (fix xml.etree import)
+  * Additional tests for schema components
+  * Fix for issues #213, #214, #215 and #218
+  * Code cleaning and optimizations on schema components
+  * Reducing and grouping helper functions
+- Update remove_shebang.patch to also drop the shebang from a second file.</comment>
+    <requestid>875850</requestid>
+  </revision>
 </revisionlist>
