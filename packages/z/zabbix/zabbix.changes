@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Mar  4 21:23:58 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.28
+- New Features and Improvements
+  + ZBXNEXT-6364 Removed long lists of cloned objects from host and template full clone forms
+  + ZBXNEXT-6307 Added ability to read properties from a file
+- Bug Fixes
+  + ZBX-18966 Fixed interface related errors when changing proxy type from passive to active
+  + ZBX-18886 Implemented proper resource cleanup when sender terminates by signal
+  + ZBX-18825 Fixed last year period calculation in service availability report daily mode
+  + ZBX-18845 Fixed 'UserParameter' possible buffer overrun
+  + ZBX-18449 Reworked trigger API validation
+  + ZBX-18887 Fixed user session expiration when notification checks are performed in background
+  + ZBX-18309 Fixed reading log files with NULL character in log line
+  + ZBX-18931 Fixed PHP runtime errors in CLineGraphDraw.php
+  + ZBX-18872 Fixed system.sw.os[name] for cases without quotation mark in /etc/os-release
+  + ZBX-18885 Fixed SNMP agent item not accepting values that are bigger than 2KB
+  + ZBX-18942 Fixed missing SID valiadion in authentication update route
+  + ZBX-18893 Changed frontend config file permissions to 0600
+  + ZBX-18884 Fixed crash in web monitoring and web.page.* keys
+    when encoding non ASCII characters in URL
+  + ZBX-18865 Fixed dbConditionInt (db.inc.php) returning wrong result in rare cases
+  + ZBX-16216 Fixed semaphore not being cleaned up when stopping Zabbix agent
+  + ZBX-18556 Fixed gaps in time labels of classic graphs related to DST transitions
+  + ZBX-18644 Replaced deprecated gethostbyname function with getaddrinfo
+  + ZBX-18802 Fixed close problem task to be deleted when problem event is deleted
+  + ZBX-17865 Fixed displaying of long problem names on problems and event pages
+  + ZBX-18796 Improved update performance of the preprocessing
+    rules in item.update() and itemprototype.update() methods
+  + ZBX-18623 Fixed the global search showing number of objects that user has no permissions
+  + ZBX-18784 Fixed memory leak when handling vmware events
+  + ZBX-18761 Fixed possible heap overflow issues in IPC commonications
+    when deserializing huge text values
+  + ZBX-18755 Fixed possibility of out of memory error when replacing string in mail,
+    calculated checks, actions and when linking template
+  + ZBX-18486 Fixed screen inheritance from a linked template in the full clone case
+  + ZBX-18660 Fixed SNMP index returning as a number instead of string if there is a backslash
+  + ZBX-17703 Fixed problem negative duration for timed triggers in case of database disconnect
+  + ZBX-18694 Fixed crash when PSK connection is configured but PSK or PSK identity is empty
+  + ZBX-18662 Improved pollers, unreachable pollers, Java pollers and pingers to use less memory
+  + ZBX-18423 Fixed inconsistent macro expansion with Oracle DB compared with other databases
+  + ZBX-18219 Fixed custom multiplier preprocessing step validation to accept a string with macros
+  + ZBX-18422 Fixed "server is not running" warning message width
+  + ZBX-18688 Fixed schema name didnt show when available only postgresql 
+
+-------------------------------------------------------------------
 Fri Jan 15 08:30:14 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.27
