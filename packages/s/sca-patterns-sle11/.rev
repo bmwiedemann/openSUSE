@@ -55,4 +55,12 @@
     <comment>Updated Package</comment>
     <requestid>856088</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>23798ca129220e2c7166536a6fd4b8a0</srcmd5>
+    <version>1.3.1</version>
+    <time>1614948454</time>
+    <user>RBrownSUSE</user>
+    <comment>New Security Patterns (forwarded request 876716 from jrecord)</comment>
+    <requestid>876717</requestid>
+  </revision>
 </revisionlist>
