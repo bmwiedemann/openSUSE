@@ -1,7 +1,7 @@
 #
 # spec file for package octave
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define apiver  v55
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 6.1.0
+%define pkg_ver 6.2.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot

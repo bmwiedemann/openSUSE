@@ -564,4 +564,13 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
 - Link duplicate files in %{_datadir} using fdupes.</comment>
     <requestid>862002</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>cd21e3e0dcde668e0eabef3e8cb184b0</srcmd5>
+    <version>6.2.0</version>
+    <time>1614948487</time>
+    <user>RBrownSUSE</user>
+    <comment>Update to version 6.2.0
+</comment>
+    <requestid>876816</requestid>
+  </revision>
 </revisionlist>
