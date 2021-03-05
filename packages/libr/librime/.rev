@@ -220,4 +220,13 @@
   and no other packages require it (forwarded request 870781 from tiwai)</comment>
     <requestid>870782</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3e0d4d8e2c1e28f35347a0f509f4c8ff</srcmd5>
+    <version>1.7.1</version>
+    <time>1614948411</time>
+    <user>RBrownSUSE</user>
+    <comment>- install private headers for plugins
+</comment>
+    <requestid>876579</requestid>
+  </revision>
 </revisionlist>

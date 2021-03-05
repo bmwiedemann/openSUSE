@@ -27,7 +27,6 @@ Source:         https://github.com/rime/librime/archive/%{version}.tar.gz#/%{nam
 BuildRequires:  capnproto >= 0.7.0
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  glog-devel
 BuildRequires:  googletest-devel
 BuildRequires:  leveldb-devel
 BuildRequires:  libboost_filesystem-devel
@@ -84,11 +83,23 @@ Mainly it's about to express your thinking with your keystrokes.
 
 This package is the development headers of Rime.
 
+%package private-devel
+Summary:        Private headers for rime
+Group:          Development/Libraries/C and C++
+Requires:       librime-devel = %{version}
+
+%description private-devel
+This package provides private headers of Rime to build plugins.
+
 %prep
 %setup -q
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake -DCMAKE_BUILD_TYPE=Release \
+  -DINSTALL_PRIVATE_HEADERS=On \
+  -DENABLE_EXTERNAL_PLUGINS=On \
+  -DBUILD_MERGED_PLUGINS=On \
+  -DENABLE_LOGGING=Off
 %cmake_build
 
 %install
@@ -114,5 +125,8 @@ This package is the development headers of Rime.
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/rime.pc
 %{_datadir}/cmake/rime/
+
+%files private-devel
+%{_includedir}/rime
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  3 04:27:29 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- install private headers for plugins
+
+-------------------------------------------------------------------
 Wed Feb 10 08:53:08 CET 2021 - tiwai@suse.de
 
 - Drop baselibs.conf, as the dependencies are missing on 32bit arch
