@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  1 03:09:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.08
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.08      2021-02-28 18:08:32Z
+      - added URI::nntps (GH#82)
+
+-------------------------------------------------------------------
 Sat Jan 30 15:24:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.07:

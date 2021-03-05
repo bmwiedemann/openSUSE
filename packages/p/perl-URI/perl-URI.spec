@@ -18,12 +18,12 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.07
+Version:        5.08
 Release:        0
 Summary:        Uniform Resource Identifiers (absolute and relative)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -81,7 +81,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md uri-test
+%doc Changes CONTRIBUTING.md README uri-test
 %license LICENSE
 
 %changelog
