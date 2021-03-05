@@ -1,8 +1,8 @@
 #
 # spec file for package gcompris-qt
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Source2:        https://share.kde.org/index.php/s/YjKzYs1bgDsOo5V/download#/%{na
 Source3:        gcompris-qt-rpmlintrc
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  libBox2D-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
@@ -60,7 +59,6 @@ Requires:       libQt5Svg5 >= 5.7.0
 Requires:       libqt5-qtgraphicaleffects >= 5.7.0
 Requires:       libqt5-qtquickcontrols >= 5.7.0
 Requires:       qml-box2d
-Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-voices = %{version}
 Provides:       gcompris = 17.10
 Obsoletes:      gcompris < 17.10
@@ -87,19 +85,7 @@ BuildArch:      noarch
 This package contains the bundle of activities for %{name}.
 More than 100 activities are available.
 
-%package lang
-# FIXME: consider using %%lang_package macro
-Summary:        Translation files for %{name}
-Group:          Amusements/Teaching/Other
-Requires:       %{name} = %{version}
-Obsoletes:      %{name}-translations < %{version}-%{release}
-Provides:       %{name}-translations = %{version}-%{release}
-BuildArch:      noarch
-
-%description lang
-This package contains the bundle of translations for %{name}.
-More than 30 languages are available, and allow you to run
-GCompris in different languages and play activities.
+%lang_package
 
 %prep
 %setup -q

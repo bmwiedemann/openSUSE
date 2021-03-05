@@ -148,4 +148,19 @@
     - Gravity (forwarded request 849562 from bruno_friedmann)</comment>
     <requestid>849966</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8f675818e71e58e9f815b9040bc25c5d</srcmd5>
+    <version>1.0</version>
+    <time>1614948541</time>
+    <user>RBrownSUSE</user>
+    <comment>- Remove unused libbox2d-devel buildrequires deps. libbox2d is 
+  offered by qml-box2d
+- Packaging Update copyright year
+- Update Box2D build dependency name.
+- Use lang_package macro: Manual declaration with &quot;Obsoletes&quot; and
+  &quot;Provides&quot; to ensure upgrade path after package renaming is no
+  longer relevant (package was renamed in 2016).
+</comment>
+    <requestid>876949</requestid>
+  </revision>
 </revisionlist>

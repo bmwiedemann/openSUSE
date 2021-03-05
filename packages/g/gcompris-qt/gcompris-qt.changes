@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  1 08:26:23 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Remove unused libbox2d-devel buildrequires deps. libbox2d is 
+  offered by qml-box2d
+- Packaging Update copyright year
+
+-------------------------------------------------------------------
+Sun Feb 28 21:33:31 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update Box2D build dependency name.
+- Use lang_package macro: Manual declaration with "Obsoletes" and
+  "Provides" to ensure upgrade path after package renaming is no
+  longer relevant (package was renamed in 2016).
+
+-------------------------------------------------------------------
 Thu Nov 19 19:18:40 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 1.0 20 years birthday edition
