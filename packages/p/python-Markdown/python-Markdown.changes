@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 25 21:02:24 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.3.4: bug-fix release
+  * Properly parse unclosed tags in code spans (#1066)
+  * Properly parse processing instructions in md_in_html (#1070)
+  * Properly parse code spans in md_in_html (#1069)
+  * Preserve text immediately before an admonition (#1092)
+  * Simplified regex for HTML placeholders (#928) addressing (#932)
+  * Ensure permalinks and anchorlinks are not restricted by
+    toc_depth (#1107)
+
+-------------------------------------------------------------------
 Sun Oct 25 21:47:36 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.3.3: bug-fix release
