@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Feb 28 19:21:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.2
+  New features
+  * Added a "Keyboard controls" tab to the options menu, to allow
+    customizing key bindings for in-game controls. On first launch,
+    key bindings from the original game are imported (if present).
+  * Added the Duke Nukem 3D teaser screen that appears after
+    beating episode 4.
+  * Added the "hype" message shown when launching the game for the
+    first time.
+  * Added switch to intro/demo sequence after sitting on the main
+    menu without any input for a while.
+  Enhancements
+  * Temporary quick saving: Press F5 to quick save, F7 to load. On
+    a gamepad, press "back" (small button left of Xbox
+    button/Dualshock touchpad/...) to quick save, and load via the
+    in-game menu. For now, quick saves are not stored on disk,
+    meaning quitting or finishing the current level will delete the
+    last quick save. Permanently storing quick saves is planned for
+    a future update. Quick saving is an optional enhancement that
+    needs to be enabled in the options menu first.
+  * Improved menu navigation: Pressing ESC (or button B on a
+    gamepad) while on the saved game name entry goes back to the
+    save slot selection, instead of leaving the menu entirely like
+    in the original.
+  Bug fixes
+  * Duke's ship was incorrectly drawn behind other objects like
+    item boxes.
+  * Fixed sporadic time skips that could occur on some platforms
+    (e.g. Odroid Go Advance).
+  * Fixed incorrect starting position for rockets fired downwards
+    by the player while hanging on a pipe.
+  * Fixed incorrect rocket smoke position for downwards-facing
+    rockets fired by Duke.
+  * Fixed a discrepancy in behavior for the Blue Guard
+  * Fixed a player control discrepancy: It was possible to fire a
+    shot during the first frame of a jump and during landing,
+    which is not possible in the original.
+  * Player movement now more accurately matches the original with
+    regards to changing direction while looking up/crouching/aiming
+    down from a pipe.
+* Drop patch (included upstream):
+  * b413133c6b6e7837a4204f347cdaeccd41e187dc.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 13:33:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix build on aarch64 and %arm:

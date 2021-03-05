@@ -1,10 +1,10 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 61148f9..8a5dcce 100644
+index df743e7..3fe6330 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -61,7 +61,7 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Emscripten")
-         "SHELL:-s USE_BOOST_HEADERS=1"
-     )
+@@ -49,7 +49,7 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Emscripten")
+ 
+     rigel_define_wasm_targets_for_dependencies()
  else()
 -    set(Boost_USE_STATIC_LIBS ON)
 +    #set(Boost_USE_STATIC_LIBS ON)
