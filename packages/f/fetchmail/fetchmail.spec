@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fetchmail
-Version:        6.4.15
+Version:        6.4.16
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
@@ -85,14 +85,14 @@ ACLOCAL="aclocal -I m4 -I m4-local" autoreconf -fvi
 %build
 export CFLAGS="%{optflags} -fPIE"
 %configure \
-	--enable-POP2 \
-	--enable-RPA \
-	--enable-NTLM \
-	--enable-SDPS \
-	--enable-opie \
-	--with-kerberos5 \
-        --with-gssapi \
-	--with-ssl=%{_prefix}
+    --enable-POP2 \
+    --enable-RPA \
+    --enable-NTLM \
+    --enable-SDPS \
+    --enable-opie \
+    --with-kerberos5 \
+    --with-gssapi \
+    --with-ssl=%{_prefix}
 %make_build LDFLAGS="-pie"
 %sysusers_generate_pre %{SOURCE9} fetchmail
 

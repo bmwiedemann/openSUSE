@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  1 07:51:03 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- update to 6.4.16:
+  * fetchmail's --configdump, and fetchmailconf, lacked support for
+    the sslcertfile option.
+  * fetchmail --version [fetchmail -V] now queries and prints the
+    SSL/TLS library's "SSL default trusted certificate" file or
+    directory (mind the word "default"), where the OpenSSL-compatible
+    TLS implementation will look for trusted root, meaning
+    certification authority (CA), certificates.
+  * fetchmail --version now prints version of the OpenSSL library
+    that it was compiled against, and that it is using at runtime,
+    and also the OPENSSL_DIR and OPENSSL_ENGINES_DIR (if available).
+
+-------------------------------------------------------------------
 Mon Jan  4 10:28:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.15:
