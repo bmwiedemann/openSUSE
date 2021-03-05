@@ -91,4 +91,21 @@
 </comment>
     <requestid>868244</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>43ac5a6c78a6caa8f319ce57c8eecfd7</srcmd5>
+    <version>0.5.3</version>
+    <time>1614948502</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.5.3
+  * Use old style menu alignment (gxo#apps/mousepad#97,
+    gxo#apps/mousepad!77)
+  * Add a keybinding to reset font size
+  * Fix inverted return value of scroll event handler
+  * Various small improvements regarding accels
+  * Block the right signal handler for tooltip updates
+  * A clarification about action groups
+  * Translation Updates
+</comment>
+    <requestid>876902</requestid>
+  </revision>
 </revisionlist>
