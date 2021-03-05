@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 23 23:31:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 0.4.12:
+  - add a minimalist parser for Pocket Word .psw and .pwi files 
+
+-------------------------------------------------------------------
 Thu Jun 18 11:32:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.11:

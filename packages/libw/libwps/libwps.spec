@@ -1,7 +1,7 @@
 #
 # spec file for package libwps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define libname libwps-0_4-4
 Name:           libwps
-Version:        0.4.11
+Version:        0.4.12
 Release:        0
 Summary:        Library for the Microsoft Works text and spreadsheet formats
 License:        LGPL-2.1-or-later AND MPL-2.0+
 URL:            http://libwps.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/libwps/libwps/libwps-%{version}/libwps-%{version}.tar.xz
+Source:         https://downloads.sourceforge.net/project/libwps/libwps/libwps-%{version}/libwps-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  xz
