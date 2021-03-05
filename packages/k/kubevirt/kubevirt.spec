@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.37.0
+Version:        0.38.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        kubevirt-psp-caasp.yaml
 Source100:      %{name}-rpmlintrc
 Patch0:         dont-build-virtctl-darwin.patch
+Patch1:         dont-use-bazel-in-build-manifests.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

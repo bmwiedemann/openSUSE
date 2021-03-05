@@ -1,4 +1,215 @@
 -------------------------------------------------------------------
+Wed Mar 03 13:58:24 UTC 2021 - vasily.ulyanov@suse.com
+
+- Update to version 0.38.1:
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../kubevirt/WORKSPACE -dry-run=false
+  * Expose field name 'ipFamily' for k8s < 1.20
+  * Bump k8s deps to 0.20.2
+  * verify that VMIs can be started with images not owned by qemu provided by FS PVC
+  * change ownership of the image provided by a filesystem PVC to qemu
+  * virt-launcher's FSGroup functional test is obsolete
+  * virt-controller: Remove FSGroup from Pod
+  * cloudinit.GenerateLocalData: defer removal of temp files
+  * rpm: update `make rpm-deps`
+  * launcher / handler rpm: add tar as pod dependency
+  * cloudinit.GenerateLocalData: drop ineffectual assignment
+  * tests/config_test: fix ineffectual assignment to err
+  * pkg/virt-handler/migration-proxy/migration-proxy_test: fix ineffectual assignment to err
+  * tests/replicaset_test: fix ineffectual assignment to err
+  * pkg/virt-launcher/virtwrap/access-credentials/access_credentials_test: fix ineffectual assignment to err
+  * tests/vnc_test: fix ineffectual assignment to err
+  * pkg/virt-handler/isolation/isolation_test: fix ineffectual assignment to err
+  * pkg/virt-controller/watch/migration: fix ineffectual assignment to err
+  * tools/vms-generator/utils/utils: fix ineffectual assignment to err
+  * tests/vmi_gpu_test: fix ineffectual assignment to err
+  * pkg/virt-handler/cache/cache_test:fix ineffectual assignment to err
+  * pkg/virt-launcher/virtwrap/manager_test:fix ineffectual assignment to err
+  * multus, tests: assert error does not happen
+  * Bump bazeldnf to v0.0.15
+  * pkg/virt-handler/cmd-client/client_test:fix ineffectual assignment to err
+  * pkg/virt-operator/creation/components/secrets_test: fix ineffectual assignment to err
+  * tests/infra_test.go: fix ineffectual assignment to err
+  * tests/vmipreset_test: fix ineffectual assignment to err
+  * func tests, multus: getting the kubevirtClient must be done first
+  * func tests, multus: execute BeforeAll before BeforeEach
+  * document the interface between hostdev device plugins and kubevirt
+  * Refactor methods to reduce their Cognitive Complexity
+  * Define a constant instead of duplicating literal
+  * Refactor method to reduce its Cognitive Complexity
+  * Define a constant instead of duplicating literals
+  * Refactor method to reduce its Cognitive Complexity
+  * Add a nested comment indicating about an empty function
+  * Define a constant instead of duplicating a literal
+  * Refactor methods to reduce their Cognitive Complexity
+  * Increase subresource pod test execution timeout
+  * Add Nvidia as a KubeVirt ADOPTOR
+  * ipv4, network tests: refactor the masquerade test table
+  * controller, virtinformers: Define the unexpected error once
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../kubevirt/WORKSPACE -dry-run=false
+  * Converter: Handle 'float' memory
+  * Tests: Ensure cpu/memory in requests/limits allow int/float
+  * virt-launcher: Support (non-)transitional virtio-balloon
+  * rpm: Bump libvirt and QEMU
+  * tests/utils: fix ineffectual assignment to ok
+  * tests/utils: fix ineffectual assignment to err
+  * tests/utils: fix ineffectual assignment to scale
+  * pkg/container-disk/container-disk_test: fix ineffectual assignment to path
+  * pkg/virt-launcher/virtwrap/network/common: fix ineffectual assignment to err
+  * tests/vm_test: fix ineffectual assignment to err
+  * tests/vm_watch_test: fix ineffectual assignment to cmdName
+  * pkg/virt-handler/hotplug-disk/mount_test: fix ineffectual assignment to err
+  * pkg/virt-handler/hotplug-disk/mount_test: fix ineffectual assignment to res
+  * tests/reporter/kubernetes: fix ineffectual assignment to err
+  * pkg/virt-launcher/virtwrap/access-credentials: fix ineffectual assignment to err
+  * pkg/virt-launcher/virtwrap/access-credentials: fix ineffectual assignment to output
+  * pkg/virt-handler/vm_test: fix ineffectual assignment to err
+  * tools/util/marshaller: fix ineffectual assignment to err
+  * pkg/virt-handler/device-manager/mediated_device_test: fix ineffectual assignment to err
+  * tests/restore_test: fix ineffectual assignment to restore
+  * removing trello reference as its no longer used
+  * Adjust e2e test which checks for the scsi controller
+  * consider scsi controllers in virtio version decisions
+  * Bump kubevirtci, now hosted on quay.io
+  * network: BindMechanism receiver name consistency
+  * MacvtapBindMechanism.loadCachedInterface fix arg name
+  * Clean error message for not migratable VMI
+  * Fix detection of previous release version in operator func test
+  * Alert when less than 2 KVM nodes available
+  * Fix a datavolume collision
+  * Remove danielBelenky from reviewers
+  * KubeVirt is now released on quay.io only
+  * [virt-operator] load new certificates earlier
+  * Keepalive function for travis to prevent timeout due to inactivity on stdout
+  * Fix limits/requests to accept int again
+  * network: rename NetworkInterface and PodInterface
+  * network: drop NetworkInterface.Unplug
+  * network: eliminate mocking of SetupPodNetworkPhase2
+  * network: make SetupPodNetworkPhase1 into a constant function
+  * network: rename {Bridge,Masquerade,Macvtap,Slirp}PodInterface
+  * network: rename getNetworkClass
+  * network: rename getNetworkInterfaceFactory
+  * fix review English phrasing
+  * virt-api/webhooks: test newly-renamed function
+  * virt-api/webhooks: simplify and rename ServiceAccount-matching function
+  * split sync resources into multiple functions and files
+  * tests: Test guest restart after migration
+  * Normalize DNS search domains to lower-case
+  * Revert "Fix typos in log output"
+  * tests: After migration test is not invoked
+  * virt-launcher: [masquerade] pass a MAC to the vm accroding to the spec only
+  * virt-launcher: [masquerade] Stop filtering dhcp reuqests by vm MAC
+  * Example code for gosec fix
+  * Update gosec.md
+  * guidelines for using gosec analysis tool
+  * docs/devel/networking: unbreak URL
+  * Add virtctl image-upload usage for WaitForFirstConsumer DVs
+  * Add error message on virtctl image-upload to WaitForFirstConsumer DataVolume
+  * bump bazeldnf
+  * Fix typos in log output
+  * Extend isolation test to cover IsMounted method
+  * Wrap mountinfo parsing common code into a function
+  * start virt-launchers with a non-default log verbosity
+  * change virt-controller log verbosity on relevant config changes
+  * change virt-api log verbosity on relevant config changes
+  * change virt-handlers log verbosity on relevant config changes
+  * add default log verbosity values to cluster config
+  * allow registering multiple callbacks for config changes
+  * add a logVerbosity struct to set KubeVirt components log verbosity
+  * Remove travis-ci logic for pushing to quay app registery
+  * Make mutating webhooks required
+  * Bump bazeldnf to a version with its own ldd implementation
+  * Add tests
+  * Fix typo
+  * Fix some typo in docs
+  * Add alert for insufficient number of nodes with KVM resources
+  * Remove dockerhub-related travis jobs and credentials
+  * Make `make build-functest` work without nested bazel invocation
+  * Compile template-manifestor with bazel
+  * Invoke shfmt from bazel
+  * Add gofmt to our vendor tree
+  * kubevirtci, Bump kubevirtci
+  * Bump bazeldnf to 0.0.10 to better deal with bad repomd mirrors
+  * Allow setting user local bazelrc settings.
+  * Update Quay credentials in travis config
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../kubevirt/WORKSPACE -dry-run=false
+  * tests: make client in hello world job UDP wait for response
+  * wait for host responding to ping, in some cases the first two pings fail, now instead we wait for a specific amount of time
+  * Increase time to wait for failed connection
+  * virt-controller: increase the number of VMI controller threads
+  * sriov, tests: xfail vlan test
+  * network: simplify getNetworkInterfaceFactory
+  * network: drop long-unused plugFunction
+  * network: drop long-unused qemuArgCacheFile
+  * network: rename constant to primaryPodInterfaceName
+  * network: drop global podInterfaceName variable
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../kubevirt/WORKSPACE -dry-run=false
+  * add vi-minimal to base packages for containers
+  * Additional hotplug functional tests
+  * Add unit test for PCI address parsing
+  * Escape dot '\.' in PCI_ADDRESS_PATTERN
+  * Move ParsePciAddress function to hardware utils
+  * Bump bazeldnf to fix rpm verification
+  * Drop references to kubevirt-host-device-plugin-config cfgMap
+  * Check if block devices are ready. If not ensure that the block device major and minor is allowed in the virt-launcher pod. Enable functional tests that were failing due to permission issues
+  * Reviewers update: Adding EdDev as a code reviewer
+  * virt-launcher/handler: move Macvtap discovery of MTU and target
+  * virt-launcher/handler: Macvtap shouldn't use vif cache
+  * Fix Open Shift SCC permissions to allow attachment pods to use host network. Fix selinux to be on container level instead of pod level.
+  * Use the array value instead of a new variable when possible
+  * eliminate the usage of interface address in decorateConfig()
+  * allocate new variable and don't use the originsl s.domain.Spec.Devices.Interfaces
+  * fix some tabs/spaces mess
+  * Fix memory aliasing in for loop - taking the address of loop variable is dangerous
+  * ENV VAR for client-go scheme registration version
+  * Give kubevirt pods more time to become ready
+  * Fix PV selector for windos and rhel PVCs
+  * Make storage tests fit for parallel execution
+  * Use the new nfsserver library in the migration tests
+  * Create windows and rhel PV within the corresponding tests
+  * Prepare our framework in utils for parallel storage test execution
+  * Move nfs server rendering to its own package and adjust memory requests
+  * Add a ginkgo matcher library especially for kubevirt
+  * Prepare image provider for parallel execution
+  * Code Review edits
+  * Bump kubevirtci
+  * Stick with virtio model on the ballooning device
+  * Tablet input device only exists as virtio 1.0
+  * virtio-serial controllers need the model set too
+  * Add virtio-transitional e2e test
+  * Extract converter into its own subpackage
+  * Unit test for choosing virtio-transitional
+  * Make the converter aware of virtio model preferences
+  * Add a global VMI flag to the API to fall back to virtio_transitional
+  * tests, xfail: Change XFail API to wrap the expected failure
+  * Don't override the e2e kubevirt config by default in the e2e tests
+  * virt-launcher/handler: remove the tap device from the VIF cache
+  * Use virt-handler image as base for multus tests
+  * Explicitly build libvirt-devel tars
+  * Remove no longer needed go_library definition
+  * Allow qemu to bind to privileged ports for slirp
+  * Docuement how RPM verification can be done
+  * Add a RPM verification target
+  * Bump to bazeldnf with improved RPM verification
+  * fix logos dependency
+  * Add GPG keys to repo.yaml
+  * Update RPMs
+  * Avoid dependency flipping
+  * add ps binary
+  * Update dependency update documentation
+  * Remove old libvirt-devel dependencies in WORKSPACE
+  * Prepare binary containers for bazeldnf built content
+  * Start using bazeldnf RPMs for building and testing
+  * Add RPMs
+  * Add repo.yaml files
+  * Add a script to resolve RPM dependencies
+  * Document new kubevirt handling of WaitForFirstConsumer DataVolumes
+  * Fix support for camelCase userData and networkData labels
+  * virt-launcher: Remove unused arg from GetDomainSpecWithRuntimeInfo
+  * Extend VMI count metric to include osinfo
+  * fix: change url and label name for "good-first-issue" on CONTRIBUTING.md
+  Added patch: dont-use-bazel-in-build-manifests.patch
+
+-------------------------------------------------------------------
 Mon Feb 15 13:40:14 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add building of virt-tests
@@ -905,6 +1116,12 @@ Wed Oct 07 14:08:47 UTC 2020 - jfehlig@suse.com
   * Added e2e test for unused memory metric
   * Fix virtctl build for linux-amd64
   * Adds new metric kubevirt_vmi_memory_unused_bytes
+
+-------------------------------------------------------------------
+Wed Sep 30 22:45:01 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Preparation for initial submission to SLE15 SP2
+  jsc#ECO-2411
 
 -------------------------------------------------------------------
 Tue Sep 15 16:02:05 UTC 2020 - dmueller@suse.com
