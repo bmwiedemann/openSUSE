@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>820548</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>038b7e6e6c97a0f70edb3be87d04468d</srcmd5>
+    <version>1.1.2</version>
+    <time>1614948507</time>
+    <user>RBrownSUSE</user>
+    <comment>
+- Update to version 1.1.2
+  * Check whether the seat exists before ungrabbing it
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * fix for no dialog after screenlock issue
+    (gxo#panel-plugins/xfce4-time-out-plugin#13)
+  * Remove GSourceFunc casts
+    (gxo#panel-plugins/xfce4-time-out-plugin!2)
+  * Translation Updates</comment>
+    <requestid>876904</requestid>
+  </revision>
 </revisionlist>

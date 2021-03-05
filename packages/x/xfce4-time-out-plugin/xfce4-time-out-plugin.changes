@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  1 09:35:01 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.1.2
+  * Check whether the seat exists before ungrabbing it
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * fix for no dialog after screenlock issue
+    (gxo#panel-plugins/xfce4-time-out-plugin#13)
+  * Remove GSourceFunc casts
+    (gxo#panel-plugins/xfce4-time-out-plugin!2)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Jul  9 10:16:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.1.1
