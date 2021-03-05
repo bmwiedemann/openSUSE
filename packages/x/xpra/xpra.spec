@@ -1,7 +1,7 @@
 #
 # spec file for package xpra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -60,7 +60,11 @@ BuildRequires:  pkgconfig(xtst)
 Requires:       dbus-1-x11
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
+%else
+Requires:       pulseaudio-daemon
+%endif
 Requires:       pulseaudio-utils
 Requires:       python3-Pillow
 Requires:       python3-cairo
