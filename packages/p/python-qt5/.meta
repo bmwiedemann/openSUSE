@@ -1,0 +1,5 @@
+<package name="python-qt5" project="openSUSE:Factory">
+  <title>Python bindings for Qt5</title>
+  <description>This package contains Python bindings for Qt5.</description>
+  <devel project="KDE:Qt5" package="python-qt5"/>
+</package>
