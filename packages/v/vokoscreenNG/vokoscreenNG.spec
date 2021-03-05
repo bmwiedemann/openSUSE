@@ -40,7 +40,11 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 
 Requires:       gstreamer >= 1.12.5
 Requires:       libQt5Core5 >= 5.9.4
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
+%else
+Requires:       pulseaudio-daemon
+%endif
 # Required for vorbis and opus audio
 Requires:       gstreamer-plugins-base
 # Required for mkv, avi, webm, mp4, vp8 video and flac audio
