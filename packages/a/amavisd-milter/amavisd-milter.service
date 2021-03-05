@@ -1,0 +1,14 @@
+[Unit]
+Description=Amavisd Milter
+Requires=amavis.service
+Before=mail-transfer-agent.target
+
+[Service]
+PIDFile=/var/spool/amavis/amavisd-milter.pid
+ExecStart=/usr/sbin/amavisd-milter
+ExecReload=/usr/bin/kill -HUP $MAINPID
+User=vscan
+Group=vscan
+
+[Install]
+WantedBy=multi-user.target

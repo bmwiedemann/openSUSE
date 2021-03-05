@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c796750b9402a7bc2d3c32c876d6d97e</srcmd5>
+    <version>1.7.1</version>
+    <time>1614948433</time>
+    <user>RBrownSUSE</user>
+    <comment>- Initial release of amavisd-milter (unbundled from amavisd-new)
+- Update to version 1.7.1
+  * An empty sender must always be enclosed in angle brackets.
+- Update to version 1.7.0
+  * Fork after initializing milter socket.
+  * Use client_name if available instead of hostname passed to xxfi_connect.
+  * Generate amamvisd-milter.8 from AMAVISD-MILTER.md.
+  * Fixed compiler warnings.
+  * Converted indentation to spaces only.
+  * Removed obsoleted file amavisd-milter.spec.</comment>
+    <requestid>876603</requestid>
+  </revision>
+</revisionlist>
