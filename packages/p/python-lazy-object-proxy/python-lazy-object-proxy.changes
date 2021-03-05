@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 08:46:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Drop broken %ifpython3 macro
+
+-------------------------------------------------------------------
 Sun Dec 20 09:34:39 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.2:

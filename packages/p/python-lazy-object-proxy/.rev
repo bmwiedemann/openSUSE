@@ -71,4 +71,12 @@
   * Removed Python 2.7 Windows wheels</comment>
     <requestid>857112</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5170e8e8a3f386a9cf681b99e8a5b458</srcmd5>
+    <version>1.5.2</version>
+    <time>1614948263</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875445</requestid>
+  </revision>
 </revisionlist>

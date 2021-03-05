@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazy-object-proxy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools_scm >= 3.3.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Obsoletes:      python-lazy_object_proxy < %{version}-%{release}
+Provides:       python-lazy_object_proxy = %{version}-%{release}
 %if %{with test}
 BuildRequires:  %{python_module lazy-object-proxy = %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -48,10 +50,6 @@ BuildRequires:  %{python_module pytest}
 %ifpython2
 Obsoletes:      %{oldpython}-lazy_object_proxy < %{version}
 Provides:       %{oldpython}-lazy_object_proxy = %{version}
-%endif
-%ifpython3
-Obsoletes:      python3-lazy_object_proxy < %{version}-%{release}
-Provides:       python3-lazy_object_proxy = %{version}-%{release}
 %endif
 %python_subpackages
 
