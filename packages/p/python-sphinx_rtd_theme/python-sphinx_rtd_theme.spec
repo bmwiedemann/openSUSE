@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx_rtd_theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        0.4.3
+Version:        0.5.1
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
 License:        MIT AND Apache-2.0 AND OFL-1.1
@@ -54,6 +54,14 @@ if you're just trying to use it on your project outside of that site.
 %prep
 %setup -q -n sphinx_rtd_theme-%{version}
 dos2unix OFL-License.txt
+
+# We cannot build the Javascript from source at this time, due to many missing
+# dependencies.  Convince the build script to skip building the Javascript and
+# go on to the python.
+mkdir -p build/lib/%{srcname}/static/js
+cp -p sphinx_rtd_theme/static/js/badge_only.js build/lib/%{srcname}/static/js
+cp -p sphinx_rtd_theme/static/js/theme.js build/lib/%{srcname}/static/js
+sed -i "/'build_py'/d" setup.py
 
 %build
 %python_build

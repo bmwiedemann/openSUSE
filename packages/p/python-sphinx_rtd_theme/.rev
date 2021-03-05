@@ -83,4 +83,13 @@
 - Enable tests</comment>
     <requestid>708169</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8df6ee03e8d87cae88955d8d7348798a</srcmd5>
+    <version>0.5.1</version>
+    <time>1614948195</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 0.5.1 
+  * no upstream changelog available</comment>
+    <requestid>876094</requestid>
+  </revision>
 </revisionlist>
