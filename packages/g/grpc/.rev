@@ -240,4 +240,12 @@ put together with abseil-cpp</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>875555</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b7bbc23a1b5b38286a15ec9fe7d76d08</srcmd5>
+    <version>1.36.1</version>
+    <time>1614948448</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.36.1:</comment>
+    <requestid>876704</requestid>
+  </revision>
 </revisionlist>

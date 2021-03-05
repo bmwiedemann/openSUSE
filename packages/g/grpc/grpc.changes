@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar  4 09:53:13 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.36.1: 
+  * Core:
+  * Remove unnecessary internal pollset set in c-ares DNS resolver
+  * Support Default Root Certs in Tls Credentials
+  * back-port: add env var protection for google-c2p resolver
+  * C++:
+  * Move third party identity C++ api out of experimental namespace
+  * refactor!: change error_details functions to templates
+  * Support ServerContext for callback API
+  * PHP:
+  * support for PSM security
+  * fixed segfault on reused call object
+  * fixed phpunit 8 warnings
+  * Python:
+  * Implement Python Client and Server xDS Creds
+  * Ruby:
+  * Drop support for ruby 2.3
+
+-------------------------------------------------------------------
 Fri Feb 19 23:32:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove unused "b" symlink (no longer used since openSUSE
