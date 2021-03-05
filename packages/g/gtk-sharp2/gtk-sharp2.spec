@@ -83,6 +83,7 @@ This package contains Mono bindings for glib.
 Summary:        Mono bindings for glade
 License:        LGPL-2.1-only
 Group:          System/GUI/GNOME
+Requires:       libglade-2_0-0
 
 %description -n glade-sharp2
 This package contains Mono bindings for glade.
