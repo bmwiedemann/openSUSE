@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 27 03:06:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.070
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.070 2021/02/26
+  - changed bugtracker in Makefile.PL to github, away from obsolete rt.cpan.org
+  2.069 2021/01/22
+  - IO::Socket::Utils CERT_asHash and CERT_create now support subject and issuer
+    with multiple same parts (like multiple OU). In this case an array ref instead
+    of a scalar is used as hash value.
+    https://github.com/noxxi/p5-io-socket-ssl/issues/95
+
+-------------------------------------------------------------------
 Mon May  4 17:49:31 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - updated to 2.068
