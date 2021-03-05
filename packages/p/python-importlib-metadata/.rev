@@ -39,4 +39,41 @@ It does NOT conflict with python38 standard library (see upstream description)</
     interface. Method is still private.</comment>
     <requestid>866399</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a33b5fbb55bb1d94225dad14d7f68738</srcmd5>
+    <version>3.7.0</version>
+    <time>1614948182</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.7.0:
+  * #131: Added ``packages_distributions`` to conveniently
+    resolve a top-level package or module to its distribution(s).
+  * #284: Introduces new ``EntryPoints`` object, a tuple of
+    ``EntryPoint`` objects but with convenience properties for
+    selecting and inspecting the results:
+    - ``.select()`` accepts ``group`` or ``name`` keyword
+      parameters and returns a new ``EntryPoints`` tuple
+      with only those that match the selection.
+    - ``.groups`` property presents all of the group names.
+    - ``.names`` property presents the names of the entry points.
+    - Item access (e.g. ``eps[name]``) retrieves a single
+      entry point by name.
+    ``entry_points`` now accepts &quot;selection parameters&quot;,
+    same as ``EntryPoint.select()``.
+    ``entry_points()`` now provides a future-compatible
+    ``SelectableGroups`` object that supplies the above interface
+    but remains a dict for compatibility.
+    In the future, ``entry_points()`` will return an
+    ``EntryPoints`` object, but provide for backward
+    compatibility with a deprecated  ``__getitem__``
+    accessor by group and a ``get()`` method.
+    If passing selection parameters to ``entry_points``, the
+    future behavior is invoked and an ``EntryPoints`` is the
+    result.
+    Construction of entry points using
+    ``dict([EntryPoint, ...])`` is now deprecated and raises
+    an appropriate DeprecationWarning and will be removed in
+    a future version.
+  * #280: ``entry_points`` now only returns entry points for</comment>
+    <requestid>876090</requestid>
+  </revision>
 </revisionlist>

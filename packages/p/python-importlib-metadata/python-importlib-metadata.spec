@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-importlib-metadata%{psuffix}
-Version:        3.4.0
+Version:        3.7.0
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
