@@ -1,7 +1,7 @@
 #
 # spec file for package bcm43xx-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,14 +87,21 @@ install -c -m 0644 %{SOURCE4562} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4563} %{buildroot}%{_firmwaredir}/brcm/
 ln -s brcmfmac43456-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
 ln -s brcmfmac43456-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
-# Used by bluez (hciattach)
-install -c -m 0644 %{SOURCE4309} %{buildroot}%{_firmwaredir}/
-install -c -m 0644 %{SOURCE4559} %{buildroot}%{_firmwaredir}/
+
+# serdev configured RPi Bluetooth driver expects the firmware files to be
+# stored in '/lib/firmware/brcm'
+install -c -m 0644 %{SOURCE4309} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4559} %{buildroot}%{_firmwaredir}/brcm/
+# Symlinks for compatibility with deprecated hciattach
+ln -s brcm/BCM4345C0.hcd %{buildroot}%{_firmwaredir}/BCM4345C0.hcd
+ln -s brcm/BCM43430A1.hcd %{buildroot}%{_firmwaredir}/BCM43430A1.hcd
 
 %files
 %license LICENCE.broadcom_bcm43xx LICENCE.cypress
 %{_firmwaredir}/BCM43430A1.hcd
 %{_firmwaredir}/BCM4345C0.hcd
+%{_firmwaredir}/brcm/BCM43430A1.hcd
+%{_firmwaredir}/brcm/BCM4345C0.hcd
 %{_firmwaredir}/brcm/brcmfmac4329-sdio.solidrun,cubox-i-dl.txt
 %{_firmwaredir}/brcm/brcmfmac4330-sdio.solidrun,cubox-i-q.txt
 %{_firmwaredir}/brcm/brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt

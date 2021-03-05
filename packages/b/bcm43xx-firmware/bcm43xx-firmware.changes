@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  1 13:18:58 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Cater for old and new ways of configuring bluetooth on RPi. Users of
+  'hciattach' expect the firmware in '/lib/firmware' while users of the serdev
+  configured bluetooth setups will expect it in '/lib/firmware/brcm'
+  (bsc#1177189).
+
+-------------------------------------------------------------------
 Mon Nov 30 10:29:24 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce firmware file for RPi Compute Module 4
