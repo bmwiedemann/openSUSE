@@ -1,0 +1,5 @@
+<package name="krunvm" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="krunvm"/>
+</package>
