@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sat Feb 27 04:40:58 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Set all services to disabled
+
+-------------------------------------------------------------------
+Thu Feb 18 07:54:29 UTC 2021 - dmacvicar@suse.com
+
+- Update to version v0.1.4:
+  * libkrun: Put env vars values between quotes
+  * init: Fix format warning in printf()
+  * init: Compile with -Wall
+  * Makefile: Have init.c as a prerequisite of init
+  * init: Fix the perror() messages
+  * examples: Introduce the "rootfs" make target
+  * README: Mention the C Library static on requirements
+  * libkrun: Fix type of arguments mapped_volumes and port_map
+  * libkrun: Add support for setting RLIMITs in the guests
+  * README.md: Add instructions for building under macOS
+
+-------------------------------------------------------------------
+Thu Feb 18 00:01:04 UTC 2021 - Duncan Mac-Vicar <duncan@mac-vicar.eu>
+
+- Initial package for 0.1.4
+  Based on Fedora package from Sergio Lopez <slp@redhat.com>
+

@@ -1,0 +1,5 @@
+<package name="libkrun" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="libkrun"/>
+</package>
