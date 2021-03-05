@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d930955b2c2965bcdb3ff00622941a10</srcmd5>
+    <version>3.2.1</version>
+    <time>1614948515</time>
+    <user>RBrownSUSE</user>
+    <comment>needed for Rails 6.0 (boo#1177517)</comment>
+    <requestid>876907</requestid>
+  </revision>
+</revisionlist>

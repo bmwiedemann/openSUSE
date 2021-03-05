@@ -1,0 +1,7 @@
+---
+:version_suffix: -3.2
+:preamble: |-
+    %if 0%{?suse_version} > 1500
+    %define rb_build_versions     ruby27
+    %define rb_build_ruby_abis    ruby:2.7.0
+    %endif
