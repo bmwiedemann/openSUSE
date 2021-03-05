@@ -79,4 +79,12 @@
     <comment>Updates for version 1.0.2 (forwarded request 871298 from jrecord)</comment>
     <requestid>871300</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a64722db912a9cd6b0021d974429c778</srcmd5>
+    <version>1.0.2</version>
+    <time>1614948457</time>
+    <user>RBrownSUSE</user>
+    <comment>New security and TID patterns (forwarded request 876719 from jrecord)</comment>
+    <requestid>876720</requestid>
+  </revision>
 </revisionlist>
