@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  4 09:21:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.2.3
+  * Fix a very visible bug with Kite installation.
+  * Make Find pane to correctly highlight results in the editor.
+  * Don't show "No such comm" message when restaring kernels.
+- Explicitly limit upper version if Jedi and Parso
+
+-------------------------------------------------------------------
 Wed Feb 24 10:32:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - The apps dialog segfault is back. (QtAwesome, qtwebengine?)

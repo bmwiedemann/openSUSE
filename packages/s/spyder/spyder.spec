@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -42,13 +42,11 @@ Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-intervaltree
 Requires:       python3-ipython >= 7.6.0
-Requires:       python3-jedi >= 0.17.2
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keyring >= 17.0.0
 Requires:       python3-nbconvert >= 4.0
 Requires:       python3-numpydoc >= 0.6.0
-Requires:       python3-parso >= 0.7.0
-Requires:       python3-pexpect >= 0.4.4
+Requires:       python3-pexpect >= 4.4.0
 Requires:       python3-pickleshare >= 0.4
 Requires:       python3-psutil >= 5.3
 Requires:       python3-pygments >= 2.0
@@ -66,6 +64,8 @@ Requires:       python3-spyder-kernels >= 1.10.2
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
+Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.18)
+Requires:       (python3-parso >= 0.7.0 with python3-parso < 0.8)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -108,7 +108,6 @@ BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-flaky
 BuildRequires:  python3-intervaltree
 BuildRequires:  python3-ipython >= 7.6.0
-BuildRequires:  python3-jedi >= 0.17.2
 BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keyring >= 17.0.0
 BuildRequires:  python3-matplotlib >= 2.0.0
@@ -118,7 +117,6 @@ BuildRequires:  python3-nbconvert >= 4.0
 BuildRequires:  python3-numpydoc >= 0.6.0
 BuildRequires:  python3-opengl
 BuildRequires:  python3-pandas >= 1.1.1
-BuildRequires:  python3-parso >= 0.7.0
 BuildRequires:  python3-pexpect >= 4.4.0
 BuildRequires:  python3-pickleshare >= 0.4
 BuildRequires:  python3-psutil >= 5.3
@@ -147,6 +145,8 @@ BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
 BuildRequires:  python3-watchdog
 BuildRequires:  xdpyinfo
+BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.18)
+BuildRequires:  (python3-parso >= 0.7.0 with python3-parso < 0.8)
 %endif
 
 %description
@@ -228,6 +228,9 @@ sed -i 's/\r$//' LICENSE.txt CHANGELOG.md
 sed -i -e '/^#!\//, 1d' spyder/app/restart.py
 sed -i -e '/^#!\//, 1d' spyder/utils/external/github.py
 sed -i -e '/^#!\//, 1d' spyder/plugins/ipythonconsole/scripts/conda-activate.sh
+
+# macOS specific script
+rm spyder/utils/check-git.sh
 
 # remove pinned dependencies where OpenSUSE already has newer versions
 # that triggers an annoying warning on startup

@@ -229,4 +229,16 @@ rename the package from spyder3 to spyder.
 </comment>
     <requestid>874824</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>09a59e79fd5964ef0cb0aa43e8fdafc8</srcmd5>
+    <version>4.2.3</version>
+    <time>1614948451</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.2.3
+  * Fix a very visible bug with Kite installation.
+  * Make Find pane to correctly highlight results in the editor.
+  * Don't show &quot;No such comm&quot; message when restaring kernels.
+- Explicitly limit upper version if Jedi and Parso</comment>
+    <requestid>876706</requestid>
+  </revision>
 </revisionlist>
