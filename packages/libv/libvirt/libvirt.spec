@@ -141,7 +141,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -190,7 +190,7 @@ BuildRequires:  qemu-tools
 %endif
 BuildRequires:  bash-completion-devel >= 2.0
 BuildRequires:  fdupes
-BuildRequires:  glib2-devel >= 2.48
+BuildRequires:  glib2-devel >= 2.56
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgnutls-devel
@@ -291,17 +291,10 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         32c5e432-revert-f035f53b.patch
-Patch1:         e3d60f76-fix-socket-file-gen.patch
-Patch2:         7cf60006-qemu-swtpm-aarch64.patch
-Patch3:         afb823fc-qemu-validate-swtpm.patch
-Patch4:         8a4b8996-conf-move-virDomainCheckVirtioOptions.patch
-Patch5:         c05f0066-conf-drop-empty-virDomainNetDefPostParse.patch
-Patch6:         19d4e467-conf-improve-virDomainVirtioOptionsCheckABIStability.patch
-Patch7:         bd112c9e-qemu-virtio-options-vsock.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
+Patch102:       libxl-default-pcistub-name.patch
 # Need to go upstream
 Patch150:       libvirt-power8-models.patch
 Patch151:       ppc64le-canonical-name.patch
@@ -1440,6 +1433,7 @@ fi
 %doc %{_mandir}/man8/libvirtd.8*
 %doc %{_mandir}/man8/virtlogd.8*
 %doc %{_mandir}/man8/virtlockd.8*
+%doc %{_mandir}/man8/virtproxyd.8*
 %doc %{_mandir}/man7/virkey*.7*
 %if %{with_apparmor}
 %dir %{_sysconfdir}/apparmor.d
@@ -1486,6 +1480,7 @@ fi
 %{_sbindir}/rcvirtinterfaced
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_interface.so
+%doc %{_mandir}/man8/virtinterfaced.8*
 
 %files daemon-driver-network
 %{_fillupdir}/sysconfig.virtnetworkd
@@ -1510,6 +1505,7 @@ fi
 %dir %{_prefix}/lib/firewalld/zones/
 %{_prefix}/lib/firewalld/zones/libvirt.xml
 %endif
+%doc %{_mandir}/man8/virtnetworkd.8*
 
 %files daemon-driver-nodedev
 %{_fillupdir}/sysconfig.virtnodedevd
@@ -1524,6 +1520,7 @@ fi
 %{_sbindir}/rcvirtnodedevd
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nodedev.so
+%doc %{_mandir}/man8/virtnodedevd.8*
 
 %files daemon-driver-nwfilter
 %{_fillupdir}/sysconfig.virtnwfilterd
@@ -1539,6 +1536,7 @@ fi
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/nwfilter/
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nwfilter.so
+%doc %{_mandir}/man8/virtnwfilterd.8*
 
 %files daemon-driver-secret
 %{_fillupdir}/sysconfig.virtsecretd
@@ -1553,6 +1551,7 @@ fi
 %{_sbindir}/rcvirtsecretd
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_secret.so
+%doc %{_mandir}/man8/virtsecretd.8*
 
 %files daemon-driver-storage
 
@@ -1574,6 +1573,7 @@ fi
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_fs.so
 %dir %{_libdir}/%{name}/storage-file
 %{_libdir}/%{name}/storage-file/libvirt_storage_file_fs.so
+%doc %{_mandir}/man8/virtstoraged.8*
 
 %files daemon-driver-storage-disk
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_disk.so
@@ -1639,7 +1639,8 @@ fi
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/%{name}/
 %dir %attr(0731, tss, tss) %{_localstatedir}/log/swtpm/%{name}/qemu/
 %{_bindir}/virt-qemu-run
-%{_mandir}/man1/virt-qemu-run.1*
+%doc %{_mandir}/man1/virt-qemu-run.1*
+%doc %{_mandir}/man8/virtqemud.8*
 %endif
 
 %if %{with_lxc}
@@ -1666,6 +1667,7 @@ fi
 %{_libdir}/%{name}/connection-driver/libvirt_driver_lxc.so
 %{_bindir}/virt-create-rootfs
 %doc %{_mandir}/man1/virt-create-rootfs.1*
+%doc %{_mandir}/man8/virtlxcd.8*
 %endif
 
 %if %{with_libxl}
@@ -1690,6 +1692,7 @@ fi
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/libxl/
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_libxl.so
+%doc %{_mandir}/man8/virtxend.8*
 %endif
 
 %if %{with_vbox}
@@ -1706,6 +1709,7 @@ fi
 %{_sbindir}/virtvboxd
 %{_sbindir}/rcvirtvboxd
 %{_libdir}/%{name}/connection-driver/libvirt_driver_vbox.so
+%doc %{_mandir}/man8/virtvboxd.8*
 %endif
 
 %if %{with_qemu}

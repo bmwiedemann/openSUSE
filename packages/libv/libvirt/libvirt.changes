@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar  1 23:06:57 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Fix node device detach when driver unspecified
+  libxl-default-pcistub-name.patch
+  boo#1182885
+- spec: Bump minimum glib version to 2.56
+
+-------------------------------------------------------------------
+Mon Mar  1 15:27:37 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.1.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - bsc#1182367, bsc#1182515
+  - Dropped patches:
+    32c5e432-revert-f035f53b.patch,
+    e3d60f76-fix-socket-file-gen.patch,
+    7cf60006-qemu-swtpm-aarch64.patch,
+    afb823fc-qemu-validate-swtpm.patch,
+    8a4b8996-conf-move-virDomainCheckVirtioOptions.patch,
+    c05f0066-conf-drop-empty-virDomainNetDefPostParse.patch,
+    19d4e467-conf-improve-virDomainVirtioOptionsCheckABIStability.patch,
+    bd112c9e-qemu-virtio-options-vsock.patch
+
+-------------------------------------------------------------------
+Sat Feb 20 00:51:09 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Remove old initscript patching of libvirt-guests.sh
+  Modified suse-libvirt-guests-service.patch
+  boo#1182494
+
+-------------------------------------------------------------------
 Wed Feb 17 15:11:25 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Add virtio related options to vsock

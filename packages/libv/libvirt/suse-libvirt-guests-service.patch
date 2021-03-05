@@ -1,17 +1,10 @@
 Adjust libvirt-guests service to conform to SUSE standards
 
-Index: libvirt-7.0.0/tools/libvirt-guests.sh.in
+Index: libvirt-7.1.0/tools/libvirt-guests.sh.in
 ===================================================================
---- libvirt-7.0.0.orig/tools/libvirt-guests.sh.in
-+++ libvirt-7.0.0/tools/libvirt-guests.sh.in
-@@ -16,14 +16,13 @@
- # License along with this library.  If not, see
- # <http://www.gnu.org/licenses/>.
- 
-+. /etc/rc.status
-+rc_reset
-+
- sysconfdir="@sysconfdir@"
+--- libvirt-7.1.0.orig/tools/libvirt-guests.sh.in
++++ libvirt-7.1.0/tools/libvirt-guests.sh.in
+@@ -20,10 +20,6 @@ sysconfdir="@sysconfdir@"
  localstatedir="@localstatedir@"
  libvirtd="@sbindir@"/libvirtd
  
@@ -22,151 +15,23 @@ Index: libvirt-7.0.0/tools/libvirt-guests.sh.in
  # Source gettext library.
  # Make sure this file is recognized as having translations: _("dummy")
  . "@bindir@"/gettext.sh
-@@ -43,9 +42,11 @@ test -f "$sysconfdir"/sysconfig/libvirt-
+@@ -43,7 +39,11 @@ test -f "$sysconfdir"/sysconfig/libvirt-
      . "$sysconfdir"/sysconfig/libvirt-guests
  
  LISTFILE="$localstatedir"/lib/libvirt/libvirt-guests
 -VAR_SUBSYS_LIBVIRT_GUESTS="$localstatedir"/lock/subsys/libvirt-guests
--
--RETVAL=0
 +if [ -d "$localstatedir"/lock/subsys ]; then
 +    VAR_SUBSYS_LIBVIRT_GUESTS="$localstatedir"/lock/subsys/libvirt-guests
 +else
 +    VAR_SUBSYS_LIBVIRT_GUESTS="$localstatedir"/lock/libvirt-guests
 +fi
  
- # retval COMMAND ARGUMENTS...
- # run command with arguments and convert non-zero return value to 1 and set
-@@ -53,7 +54,7 @@ RETVAL=0
- retval() {
-     "$@"
-     if [ $? -ne 0 ]; then
--        RETVAL=1
-+        rc_failed 1
-         return 1
-     else
-         return 0
-@@ -82,6 +83,26 @@ run_virsh_c() {
-     ( export LC_ALL=C; run_virsh "$@" )
- }
+ RETVAL=0
  
-+await_daemon_up()
-+{
-+    uri=$1
-+    i=1
-+    rets=10
-+    run_virsh $uri list > /dev/null 2>&1
-+    while test $? -ne 0 && test $i -lt $rets; do
-+       sleep 1
-+       echo -n .
-+        i=$(($i + 1))
-+       run_virsh $uri list > /dev/null 2>&1
-+    done
-+    if [ $i -eq $rets ]; then
-+       eval_gettext "libvirt-guests unable to connect to URI: $uri"
-+       echo
-+       return 1
-+    fi
-+    return 0
-+}
-+
- # test_connect URI
- # check if URI is reachable
- test_connect()
-@@ -108,7 +129,7 @@ list_guests() {
-     local list="$(run_virsh_c "$uri" list --uuid $persistent)"
- 
-     if [ $? -ne 0 ]; then
--        RETVAL=1
-+        rc_failed 1
-         return 1
-     fi
- 
-@@ -134,7 +155,7 @@ guest_is_on() {
- 
-     guest_running="false"
-     if [ $? -ne 0 ]; then
--        RETVAL=1
-+        rc_failed 1
-         return 1
-     fi
- 
-@@ -190,6 +211,13 @@ start() {
- 
-         test_connect "$uri" || continue
- 
-+        await_daemon_up $uri
-+        if [ $? -ne 0 ]; then
-+            eval_gettext "Ignoring guests on $uri URI, can't connect"
-+            echo
-+            continue
-+        fi
-+
-         eval_gettext "Resuming guests on \$uri URI..."; echo
-         for guest in $list; do
-             local name="$(guest_name "$uri" "$guest")"
-@@ -418,7 +446,7 @@ shutdown_guests_parallel()
-             timeout=$(($timeout - 1))
-             if [ $timeout -le 0 ]; then
-                 eval_gettext "Timeout expired while shutting down domains"; echo
--                RETVAL=1
-+                rc_failed 1
-                 return
-             fi
-         else
-@@ -449,7 +477,7 @@ stop() {
-         if [ $SHUTDOWN_TIMEOUT -lt 0 ]; then
-             gettext "SHUTDOWN_TIMEOUT must be equal or greater than 0"
-             echo
--            RETVAL=6
-+            rc_failed 6
-             return
-         fi
-     fi
-@@ -499,14 +527,14 @@ stop() {
-                 if [ $? -ne 0 ]; then
-                     eval_gettext "Failed to list persistent guests on \$uri"
-                     echo
--                    RETVAL=1
-+                    rc_failed 1
-                     set +f
-                     return
-                 fi
-             else
-                 gettext "Failed to list transient guests"
-                 echo
--                RETVAL=1
-+                rc_failed 1
-                 set +f
-                 return
-             fi
-@@ -567,14 +595,13 @@ gueststatus() {
- rh_status() {
-     if [ -f "$LISTFILE" ]; then
-         gettext "stopped, with saved guests"; echo
--        RETVAL=3
-+        rc_failed 3
-     else
-         if [ -f "$VAR_SUBSYS_LIBVIRT_GUESTS" ]; then
-             gettext "started"; echo
--            RETVAL=0
-         else
-             gettext "stopped, with no saved guests"; echo
--            RETVAL=3
-+            rc_failed 3
-         fi
-     fi
- }
-@@ -619,4 +646,4 @@ case "$1" in
-         usage
-         ;;
- esac
--exit $RETVAL
-+rc_exit
-Index: libvirt-7.0.0/tools/libvirt-guests.sysconf
+Index: libvirt-7.1.0/tools/libvirt-guests.sysconf
 ===================================================================
---- libvirt-7.0.0.orig/tools/libvirt-guests.sysconf
-+++ libvirt-7.0.0/tools/libvirt-guests.sysconf
+--- libvirt-7.1.0.orig/tools/libvirt-guests.sysconf
++++ libvirt-7.1.0/tools/libvirt-guests.sysconf
 @@ -1,9 +1,14 @@
 +## Path: System/Virtualization/libvirt-guests
  # Customizations for the libvirt-guests.service systemd unit

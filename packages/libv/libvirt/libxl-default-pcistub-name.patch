@@ -1,0 +1,33 @@
+commit 844c278ad2a957592ba9fbf93c6aa076a2b3d216
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon Mar 1 15:41:44 2021 -0700
+
+    libxl: Fix node device detach when driver unspecified
+    
+    Commit 887dd0d331 caused a small regression in NodeDeviceDetach in the libxl
+    driver when the 'driver' parameter is not specified. E.g.
+    
+    error: Failed to detach device pci_0000_0a_10_0
+    error: An error occurred, but the cause is unknown
+    
+    If the driver name is not specified, NULL is passed to
+    virDomainDriverNodeDeviceDetachFlags, in which case virPCIDeviceSetStubDriver
+    is never called to set the stub to pciback. Fix it by setting the driver to
+    "xen" if it is not specified when invoking NodeDeviceDetach.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+
+diff --git a/src/libxl/libxl_driver.c b/src/libxl/libxl_driver.c
+index 75a8d46af0..348434ca72 100644
+--- a/src/libxl/libxl_driver.c
++++ b/src/libxl/libxl_driver.c
+@@ -5777,6 +5777,9 @@ libxlNodeDeviceDetachFlags(virNodeDevicePtr dev,
+ 
+     virCheckFlags(0, -1);
+ 
++    if (!driverName)
++        driverName = "xen";
++
+     if (driverName && STRNEQ(driverName, "xen")) {
+         virReportError(VIR_ERR_INVALID_ARG,
+                        _("unsupported driver name '%s'"), driverName);
