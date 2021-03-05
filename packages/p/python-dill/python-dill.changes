@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 26 23:46:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add 07e24913.patch to fix s390x and ppc64
+
+-------------------------------------------------------------------
+Fri Feb 26 04:58:06 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.3.3
+  * See https://github.com/uqfoundation/dill/compare/dill-0.3.2...dill-0.3.3
+- from v0.3.2
+  * See https://github.com/uqfoundation/dill/compare/dill-0.3.1.1...dill-0.3.2
+
+-------------------------------------------------------------------
 Sun Dec  6 23:05:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Require dbm for all python3 flavors in Tumbleweed

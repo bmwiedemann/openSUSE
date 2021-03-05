@@ -1,7 +1,7 @@
 #
 # spec file for package python-dill
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dill
-Version:        0.3.1.1
+Version:        0.3.3
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/uqfoundation/dill
-Source:         https://files.pythonhosted.org/packages/source/d/dill/dill-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/dill/dill-%{version}.zip
+Patch0:         https://github.com/uqfoundation/dill/commit/07e24913.patch
 BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 %if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module dbm}
 %else
@@ -53,6 +55,7 @@ session in a single command.
 
 %prep
 %setup -q -n dill-%{version}
+%patch0 -p1
 find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %build
@@ -70,7 +73,7 @@ find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 export PYTHONDONTWRITEBYTECODE=1
 # Creative; copied from .travis.yml
 failed=0
-for test in tests/*.py; do
+for test in tests/test_*.py; do
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python $test || failed=1
 done
 exit $failed
