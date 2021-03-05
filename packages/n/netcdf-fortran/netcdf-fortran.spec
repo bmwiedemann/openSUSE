@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf-fortran
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -377,7 +377,7 @@ working with NetCDF files.
 Summary:        Shared libraries for the NetCDF scientific data format
 Group:          System/Libraries
 %{?hpc_requires}
-Requires:       libnetcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc
+%{requires_eq libnetcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc}
 
 %description -n %{libname}%{hpc_package_name_tail %_ver}
 NetCDF is a set of software libraries and self-describing, 
@@ -421,7 +421,7 @@ Requires:       libcurl-devel >= 7.18.0
 Requires:       pkgconfig
 Requires:       zlib-devel >= 1.2.5
 %{?hpc_requires_devel}
-Requires:       netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
+%{requires_eq netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel}
 
 %description devel
 NetCDF is a set of software libraries and self-describing, 
@@ -438,7 +438,7 @@ Summary:        Static development files for %{name}
 Group:          Development/Libraries/Parallel
 Requires:       %{name}-devel = %{version}
 #Requires:       hdf-devel
-Requires:       hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel >= 1.8.8
+%{requires_eq hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel}
 Requires:       libcurl-devel >= 7.18.0
 Requires:       zlib-devel >= 1.2.5
 
