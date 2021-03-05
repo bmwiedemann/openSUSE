@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  4 22:36:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.3:
+  * Output: Account for multiple annotations
+    [gh#CastXML/CastXML#194].
+
+-------------------------------------------------------------------
 Fri Jan 15 23:10:56 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.2:
