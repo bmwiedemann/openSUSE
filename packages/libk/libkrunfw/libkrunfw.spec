@@ -1,0 +1,85 @@
+#
+# spec file for package libkrunfw
+#
+# Copyright (c) 2021 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           libkrunfw
+Version:        0.7
+Release:        0
+Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
+License:        LGPL-2.1-only AND GPL-2.0-only
+URL:            https://github.com/containers/libkrunfw
+Source0:        libkrunfw-%{version}.tar.gz
+Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.10.tar.xz
+BuildRequires:  bc
+BuildRequires:  binutils
+BuildRequires:  bison
+BuildRequires:  flex
+BuildRequires:  gcc
+BuildRequires:  git-core
+BuildRequires:  hmaccalc
+BuildRequires:  hostname
+BuildRequires:  libelf-devel
+BuildRequires:  net-tools
+BuildRequires:  patchelf
+BuildRequires:  python3-pyelftools
+
+%description
+A dynamic library bundling a Linux kernel in a convenient storage format
+
+%package -n libkrunfw0
+Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
+
+%description -n libkrunfw0
+libkrunfw is a library bundling a Linux kernel in a dynamic library in a way that can be easily consumed by libkrun.
+
+By having the kernel bundled in a dynamic library, libkrun can leave to the linker the work of mapping the sections into the process, and then directly inject those mappings into the guest without any kind of additional work nor processing.
+
+%package devel
+Summary:        Development library for libkrunfw
+Requires:       libkrunfw0
+
+%description devel
+This package includes the development files for libkrunfw
+
+%prep
+%autosetup -S git
+mkdir tarballs
+cp %{SOURCE1} tarballs/
+
+%build
+%make_build
+
+%install
+%make_install PREFIX=%{_prefix}
+
+mv %{buildroot}%{_libdir}/libkrunfw.so %{buildroot}%{_libdir}/libkrunfw.so.0.0.0
+patchelf --set-soname libkrunfw.so.0 %{buildroot}%{_libdir}/libkrunfw.so.0.0.0
+
+ln -s %{_libdir}/libkrunfw.so.0.0.0 %{buildroot}%{_libdir}/libkrunfw.so.0
+ln -s %{_libdir}/libkrunfw.so.0.0.0 %{buildroot}%{_libdir}/libkrunfw.so
+
+%post -n libkrunfw0 -p /sbin/ldconfig
+%postun -n libkrunfw0 -p /sbin/ldconfig
+
+%files -n libkrunfw0
+%{_libdir}/libkrunfw.so.0.0.0
+%{_libdir}/libkrunfw.so.0
+
+%files devel
+%{_libdir}/libkrunfw.so
+
+%changelog
