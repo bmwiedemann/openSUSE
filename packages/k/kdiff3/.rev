@@ -244,4 +244,23 @@
     <comment></comment>
     <requestid>831684</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f2bcc78b09c11c2ee8207f878d295d9a</srcmd5>
+    <version>1.8.5</version>
+    <time>1614948307</time>
+    <user>RBrownSUSE</user>
+    <comment>- Use a _service file to exclude the windows_installer folder.
+
+- Update to 1.8.5:
+  * Fix url handling for drag and drop (kde#417189)
+  * Fix regression in handling paste from clipboard to blank diff
+    window (kde#426823)
+  * Fix link detection via KIO
+  * Drop custom event filter in OpenDialog. We now use
+    FileNameLineEdit instead as in the main window.
+  * Fix url/path handling bugs for remote files
+  * Don't ignore stat errors unless it tells us the file was not
+    found</comment>
+    <requestid>876932</requestid>
+  </revision>
 </revisionlist>

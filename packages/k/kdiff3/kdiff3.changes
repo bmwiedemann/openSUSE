@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  5 09:03:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use a _service file to exclude the windows_installer folder.
+
+-------------------------------------------------------------------
+Fri Jan 22 06:40:24 UTC 2021 - wbauer@tmo.at
+
+- Update to 1.8.5:
+  * Fix url handling for drag and drop (kde#417189)
+  * Fix regression in handling paste from clipboard to blank diff
+    window (kde#426823)
+  * Fix link detection via KIO
+  * Drop custom event filter in OpenDialog. We now use
+    FileNameLineEdit instead as in the main window.
+  * Fix url/path handling bugs for remote files
+  * Don't ignore stat errors unless it tells us the file was not
+    found
+
+-------------------------------------------------------------------
 Thu Sep  3 11:53:51 UTC 2020 - wbauer@tmo.at
 
 - Update to 1.8.4:

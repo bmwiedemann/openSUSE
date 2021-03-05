@@ -1,7 +1,7 @@
 #
 # spec file for package kdiff3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %bcond_without lang
 Name:           kdiff3
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 URL:            http://kdiff3.sourceforge.net/
-Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+# Drop the _service file and restore the line below for the next release
+# Source0:        https://download.kde.org/stable/%%{name}/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        kdiff3-lang.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -58,7 +61,7 @@ KDiff3 is a program that:
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1 -a1
 
 %build
   %cmake_kf5 -d build
