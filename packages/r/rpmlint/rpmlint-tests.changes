@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 26 09:10:31 UTC 2021 - coolo@suse.com
+
+- Update to version 84.87+git20210226.d6b66e2:
+  * GitHub Actions: work around the missing
+  * GitHub Actions: work around the missing `groupadd`
+  * rclink2: fix test reference output
+  * polkit: adjust polkit frobnicate action name
+
+-------------------------------------------------------------------
 Fri Jul 31 10:28:58 UTC 2020 - matthias.gerstner@suse.com
 
 - Update of rpmlint-tests to version 84.87+git20200724.ef05f7e:

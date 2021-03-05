@@ -204,6 +204,7 @@ setOption('StandardGroups', (
     'oinstall',
     'openvswitch',
     'orthanc',
+    'otobo',
     'otrs',
     'ovirtagent',
     'pcp',
@@ -427,6 +428,7 @@ setOption('StandardUsers', (
     'openvswitch',
     'oracle',
     'orthanc'
+    'otobo',
     'otrs',
     'ovirtagent',
     'partimag',
@@ -942,6 +944,8 @@ setOption("PAMModules.WhiteList", (
     "pam_malcontent.so",
     # pam (bsc#1171562)
     "pam_faillock.so",
+    # sssd gssapi extension (bsc#1182509)
+    "pam_sss_gss.so"
 ))
 
 # Output filters

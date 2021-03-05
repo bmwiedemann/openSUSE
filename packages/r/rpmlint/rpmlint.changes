@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Feb 26 10:49:52 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Add accept-licenses-with-plus.patch to accept any license ending
+  with a + (as indicated in the SPDX syntax)
+
+-------------------------------------------------------------------
+Fri Feb 26 09:12:17 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Remove licenses ending with + from valid license array
+
+-------------------------------------------------------------------
+Mon Feb 22 13:26:48 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- whitelist pam_sss_gss.so PAM module (bsc#1182509)
+
+-------------------------------------------------------------------
+Wed Feb  3 21:24:59 UTC 2021 - chris@computersalat.de
+
+- add 'otobo' group/id
+
+-------------------------------------------------------------------
+Mon Feb  1 10:15:50 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Update valid spdx license exceptions
+- Allow the + version of all valid licenses (to avoid having to fix
+  the parser)
+
+-------------------------------------------------------------------
 Fri Jan 15 11:42:10 UTC 2021 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
 
 - Fix a typo in suse-branding-wrong-branding-supplement

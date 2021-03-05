@@ -11,7 +11,7 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
 ===================================================================
 --- rpmlint-rpmlint-1.11.orig/TagsCheck.py
 +++ rpmlint-rpmlint-1.11/TagsCheck.py
-@@ -140,6 +140,34 @@ DEFAULT_VALID_LICENSES = (
+@@ -140,6 +140,50 @@ DEFAULT_VALID_LICENSES = (
      'Shareware',
  )
  
@@ -20,6 +20,7 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
 +    'Autoconf-exception-2.0',
 +    'Autoconf-exception-3.0',
 +    'Bison-exception-2.2',
++    'Bootloader-exception',
 +    'CLISP-exception-2.0',
 +    'Classpath-exception-2.0',
 +    'DigiRule-FOSS-exception',
@@ -28,11 +29,26 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
 +    'Font-exception-2.0',
 +    'GCC-exception-2.0',
 +    'GCC-exception-3.1',
++    'GPL-3.0-linking-exception',
++    'GPL-3.0-linking-source-exception',
++    'GPL-CC-1.0',
++    'LGPL-3.0-linking-exception',
++    'LLVM-exception',
 +    'LZMA-exception',
 +    'Libtool-exception',
++    'Linux-syscall-note',
 +    'Nokia-Qt-exception-1.1',
 +    'OCCT-exception-1.0',
++    'OCaml-LGPL-linking-exception',
++    'OpenJDK-assembly-exception-1.0',
++    'PS-or-PDF-font-exception-20170817',
++    'Qt-GPL-exception-1.0',
++    'Qt-LGPL-exception-1.1',
 +    'Qwt-exception-1.0',
++    'SHL-2.0',
++    'SHL-2.1',
++    'Swift-exception',
++    'Universal-FOSS-exception-1.0',
 +    'WxWindows-exception-3.1',
 +    'eCos-exception-2.0',
 +    'freertos-exception-2.0',
@@ -46,7 +62,7 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
  BAD_WORDS = {
      'alot': 'a lot',
      'accesnt': 'accent',
-@@ -408,6 +436,7 @@ VALID_GROUPS = Config.getOption('ValidGr
+@@ -408,6 +452,7 @@ VALID_GROUPS = Config.getOption('ValidGr
  if VALID_GROUPS is None:  # get defaults from rpm package only if it's not set
      VALID_GROUPS = Pkg.get_default_valid_rpmgroups()
  VALID_LICENSES = Config.getOption('ValidLicenses', DEFAULT_VALID_LICENSES)
@@ -54,7 +70,7 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
  INVALID_REQUIRES = map(re.compile, Config.getOption('InvalidRequires', DEFAULT_INVALID_REQUIRES))
  packager_regex = re.compile(Config.getOption('Packager'))
  changelog_version_regex = re.compile(r'[^>]([^ >]+)\s*$')
-@@ -422,6 +451,7 @@ lib_package_regex = re.compile(r'(?:^(?:
+@@ -422,6 +467,7 @@ lib_package_regex = re.compile(r'(?:^(?:
  leading_space_regex = re.compile(r'^\s+')
  pkg_config_regex = re.compile(r'^/usr/(?:lib\d*|share)/pkgconfig/')
  license_regex = re.compile(r'\(([^)]+)\)|\s(?:and|or|AND|OR)\s')
@@ -62,7 +78,7 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
  invalid_version_regex = re.compile(r'([0-9](?:rc|alpha|beta|pre).*)', re.IGNORECASE)
  # () are here for grouping purpose in the regexp
  forbidden_words_regex = re.compile(r'(%s)' % Config.getOption('ForbiddenWords'), re.IGNORECASE)
-@@ -795,6 +825,10 @@ class TagsCheck(AbstractCheck.AbstractCh
+@@ -795,6 +841,10 @@ class TagsCheck(AbstractCheck.AbstractCh
  #                 printWarning(pkg, 'package-provides-itself')
  #                 break
  
@@ -73,7 +89,7 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
          def split_license(license):
              return (x.strip() for x in
                      (l for l in license_regex.split(license) if l))
-@@ -805,7 +839,17 @@ class TagsCheck(AbstractCheck.AbstractCh
+@@ -805,7 +855,17 @@ class TagsCheck(AbstractCheck.AbstractCh
          else:
              valid_license = True
              if rpm_license not in VALID_LICENSES:
@@ -92,7 +108,7 @@ Index: rpmlint-rpmlint-1.11/TagsCheck.py
                      if l1 in VALID_LICENSES:
                          continue
                      for l2 in split_license(l1):
-@@ -1092,6 +1136,11 @@ your specfile.''',
+@@ -1092,6 +1152,11 @@ your specfile.''',
  '''The value of the License tag was not recognized.  Known values are:
  "%s".''' % '", "'.join(VALID_LICENSES),
  

@@ -62,6 +62,7 @@ Patch72:        rpmlint-slpp-NUM-NUM.patch
 Patch77:        suse-rpmlint-all-pie.patch
 Patch78:        add-check-for-a-non-zero-.text-segment-in-.a-archive.patch
 Patch79:        rpm415-workaround.diff
+Patch80:        accept-licenses-with-plus.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  obs-service-format_spec_file
 BuildRequires:  python3-flake8
@@ -118,9 +119,9 @@ cut '-d	' -f1 %{_prefix}/lib/obs/service/format_spec_file.files/licenses_changes
   sed -i -e "s/\(#VALIDLICENSES\)/\1\n	'$l',/" licenses.config
 done
 # add some deprecated licenses we allow for now
-for l in AGPL-3.0 AGPL-3.0+ GFDL-1.1 GFDL-1.1+ GFDL-1.2 GFDL-1.2+ GFDL-1.3 GFDL-1.3+ GPL-3.0-with-GCC-exception \
+for l in AGPL-3.0 GFDL-1.1 GFDL-1.2 GFDL-1.3 GPL-3.0-with-GCC-exception \
    GPL-2.0-with-classpath-exception GPL-2.0-with-font-exception SUSE-LGPL-2.1+-with-GCC-exception SUSE-NonFree \
-   GPL-1.0+ GPL-1.0 GPL-2.0+ GPL-2.0 GPL-3.0+ GPL-3.0 LGPL-2.0 LGPL-2.0+ LGPL-2.1+ LGPL-2.1 LGPL-3.0+ LGPL-3.0; do
+   GPL-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0; do
   sed -i -e "s/\(#VALIDLICENSES\)/\1\n  '$l',/" licenses.config
 done
 install -m 644  licenses.config %{buildroot}/%{_sysconfdir}/rpmlint/
