@@ -1,0 +1,148 @@
+From 5aa14ef2279bb9d09d55f93e69c6fbd7d31e4b82 Mon Sep 17 00:00:00 2001
+From: Vsevolod Stakhov <vsevolod@highsecure.ru>
+Date: Fri, 26 Feb 2021 13:40:22 +0000
+Subject: [PATCH] [Minor] Check for Lua 5.4
+
+Issue: #3656
+---
+ CMakeLists.txt | 37 +++++++++++++++++++++++++------------
+ 1 file changed, 25 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a218e28fd..4b4538dd3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -157,27 +157,40 @@ ELSE(ENABLE_LUAJIT MATCHES "ON")
+ 
+ 	IF (NOT WITH_LIBLUA)
+ 		ProcessPackage(LIBLUA LIBRARY	"lua"
+-				"lua-5.2"
+-				LIB_SUFFIXES	"lua5.2"
++				"lua-5.4"
++				LIB_SUFFIXES	"lua5.4"
+ 				INCLUDE lua.h INCLUDE_SUFFIXES
+-				"include/lua-5.2"
+-				"include/lua5.2"
+-				"include/lua52"
++				"include/lua-5.4"
++				"include/lua5.4"
++				"include/lua54"
+ 				"include/lua"
+ 				ROOT ${LUA_ROOT}
+-				MODULES lua52
++				MODULES lua54
+ 				OPTIONAL)
+-
+ 		IF (NOT WITH_LIBLUA)
+ 			ProcessPackage(LIBLUA LIBRARY	"lua"
+-					"lua-5.1"
++					"lua-5.2"
++					LIB_SUFFIXES	"lua5.2"
+ 					INCLUDE lua.h INCLUDE_SUFFIXES
+-					"include/lua-5.1"
+-					"include/lua5.1"
+-					"include/lua51"
++					"include/lua-5.2"
++					"include/lua5.2"
++					"include/lua52"
+ 					"include/lua"
+ 					ROOT ${LUA_ROOT}
+-					MODULES lua51)
++					MODULES lua52
++					OPTIONAL)
++
++			IF (NOT WITH_LIBLUA)
++				ProcessPackage(LIBLUA LIBRARY	"lua"
++						"lua-5.1"
++						INCLUDE lua.h INCLUDE_SUFFIXES
++						"include/lua-5.1"
++						"include/lua5.1"
++						"include/lua51"
++						"include/lua"
++						ROOT ${LUA_ROOT}
++						MODULES lua51)
++			ENDIF()
+ 		ENDIF()
+ 	ENDIF()
+ ENDIF(ENABLE_LUAJIT MATCHES "ON")
+From 25a8f48d565a0450aed3417c88dbeeecdad11532 Mon Sep 17 00:00:00 2001
+From: Vsevolod Stakhov <vsevolod@highsecure.ru>
+Date: Wed, 3 Mar 2021 17:17:46 +0000
+Subject: [PATCH] [Minor] More Lua 5.4 compatibility
+
+Issue: #3656
+---
+ src/lua/lua_thread_pool.c              | 4 ++++
+ test/rspamd_lua_pcall_vs_resume_test.c | 6 ++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/src/lua/lua_thread_pool.c b/src/lua/lua_thread_pool.c
+index 1fa584c51..8220bb3ff 100644
+--- a/src/lua/lua_thread_pool.c
++++ b/src/lua/lua_thread_pool.c
+@@ -239,7 +239,11 @@ lua_do_resume_full (lua_State *L, gint narg, const gchar *loc)
+ #if LUA_VERSION_NUM < 502
+ 	return lua_resume (L, narg);
+ #else
++	#if LUA_VERSION_NUM >= 504
++	return lua_resume (L, from, nargs, NULL);
++	#else
+ 	return lua_resume (L, NULL, narg);
++	#endif
+ #endif
+ }
+ 
+diff --git a/test/rspamd_lua_pcall_vs_resume_test.c b/test/rspamd_lua_pcall_vs_resume_test.c
+index eb945b92f..c06283de1 100644
+--- a/test/rspamd_lua_pcall_vs_resume_test.c
++++ b/test/rspamd_lua_pcall_vs_resume_test.c
+@@ -56,6 +56,8 @@ test_resume(lua_State *L, gint function_call)
+ 		lua_rawgeti (L, LUA_REGISTRYINDEX, function_call);
+ #if LUA_VERSION_NUM < 502
+ 		lua_resume (L, 0);
++#elif LUA_VERSION_NUM >= 504
++		lua_resume (L, NULL, 0, NULL);
+ #else
+ 		lua_resume (L, NULL, 0);
+ #endif
+@@ -82,6 +84,8 @@ test_resume_get_thread(gint function_call)
+ 		lua_rawgeti (ent->lua_state, LUA_REGISTRYINDEX, function_call);
+ #if LUA_VERSION_NUM < 502
+ 		lua_resume (ent->lua_state, 0);
++#elif LUA_VERSION_NUM >= 504
++		lua_resume (ent->lua_state, NULL, 0, NULL);
+ #else
+ 		lua_resume (ent->lua_state, NULL, 0);
+ #endif
+@@ -110,6 +114,8 @@ test_resume_get_new_thread(gint function_call)
+ 		lua_rawgeti (ent->lua_state, LUA_REGISTRYINDEX, function_call);
+ #if LUA_VERSION_NUM < 502
+ 		lua_resume (ent->lua_state, 0);
++#elif LUA_VERSION_NUM >= 504
++		lua_resume (ent->lua_state, NULL, 0, NULL);
+ #else
+ 		lua_resume (ent->lua_state, NULL, 0);
+ #endif
+From fa5a0679bd5d3e2146d2c6d3c70ed6d4447f3925 Mon Sep 17 00:00:00 2001
+From: Vsevolod Stakhov <vsevolod@highsecure.ru>
+Date: Thu, 4 Mar 2021 14:59:40 +0000
+Subject: [PATCH] [Minor] Fix misprint
+
+Issue: #3656
+---
+ src/lua/lua_thread_pool.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lua/lua_thread_pool.c b/src/lua/lua_thread_pool.c
+index 8220bb3ff..89a516a27 100644
+--- a/src/lua/lua_thread_pool.c
++++ b/src/lua/lua_thread_pool.c
+@@ -240,7 +240,7 @@ lua_do_resume_full (lua_State *L, gint narg, const gchar *loc)
+ 	return lua_resume (L, narg);
+ #else
+ 	#if LUA_VERSION_NUM >= 504
+-	return lua_resume (L, from, nargs, NULL);
++	return lua_resume (L, NULL, narg, NULL);
+ 	#else
+ 	return lua_resume (L, NULL, narg);
+ 	#endif

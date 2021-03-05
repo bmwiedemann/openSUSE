@@ -31,4 +31,12 @@
     <comment>Fix i586 build</comment>
     <requestid>873722</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f7148df799aef012476fd9c51949c91a</srcmd5>
+    <version>2.7</version>
+    <time>1614948561</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876970</requestid>
+  </revision>
 </revisionlist>

@@ -67,11 +67,13 @@ Source0:        https://github.com/rspamd/rspamd/archive/%{version}/%{name}-%{ve
 Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
+# PATCH-FIX-UPSTREAM - https://github.com/rspamd/rspamd/issues/3656
+Patch2:         rspamd-add-lua-5.4.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan
 %endif
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.12
 BuildRequires:  curl-devel
 BuildRequires:  db-devel
 BuildRequires:  file-devel
@@ -163,6 +165,7 @@ This package holds the client tools (rspamc and rspamadm)
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %if 0%{?force_gcc_version}

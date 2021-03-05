@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  2 11:04:58 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build with lua 5.4:
+  * rspamd-add-lua-5.4.patch
+
+-------------------------------------------------------------------
 Fri Feb 19 01:02:52 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix i586 build
