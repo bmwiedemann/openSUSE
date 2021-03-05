@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar  3 07:31:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.3.1.1
+  * bugfix in interface-stack-status (triggered when --name did
+    not match)
+
+-------------------------------------------------------------------
+Sat Feb 13 13:52:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.3.1
+  * add mode license-status for cisco
+  * split Bluecat in AddressManager and DnsDhcpServer
+  * do not use cpmCPUMemoryHCCommitted, except if you want mem
+    usage > 100%
+  * check the memory of all members in a cisco stack only if
+    there are > 1 members
+  * check the memory of all members in a cisco stack
+  * bugfix in Bluecat jvm
+
+-------------------------------------------------------------------
 Tue Jan 19 08:05:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.1
