@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Laurent Bigonville <bigon@debian.org>, License GPL-2.0+
 #
@@ -59,10 +59,10 @@ Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 # https://github.com/hashicorp/vagrant/pull/12097
 Patch10:        0010-Update-rake-to-13.0.patch
-# https://github.com/hashicorp/vagrant/pull/12147
-Patch11:        0011-Remove-not-required-bcrypt_pbkdf-gem.patch
 # https://github.com/hashicorp/vagrant/pull/12148
-Patch12:        0012-Bump-listen-gem-version-and-remove-ruby_dep.patch
+Patch11:        0011-Bump-listen-gem-version-and-remove-ruby_dep.patch
+# https://github.com/hashicorp/vagrant/pull/12216
+Patch12:        0012-Bump-bcrypt_pbkdf-version.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -91,6 +91,9 @@ BuildRequires:  %{ruby:2 >= 2.5}
 #
 #
 BuildRequires:  %{rubygem bundler}
+# PATCHED
+#  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
+BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #  s.add_dependency "childprocess", "~> 4.0.0"
 BuildRequires:  %{rubygem childprocess:4.0 }
 #  s.add_dependency "ed25519", "~> 1.2.4"
@@ -177,8 +180,9 @@ BuildRequires:  fdupes
 # Runtime dependencies
 #===============================================================================
 
-#
-#
+# PATCHED
+#  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
+Requires:       %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #    s.add_dependency "childprocess", "~> 4.0.0"
 Requires:       %{rubygem childprocess:4.0}
 #   s.add_dependency "ed25519", "~> 1.2.4"
