@@ -17,14 +17,14 @@
 
 
 Name:           fish
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
 Group:          System/Shells
 URL:            https://fishshell.com/
-Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.gz
-Patch0:         fix-pc-file-paths.patch
+Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
+Source1:        https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz.asc
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -52,7 +52,6 @@ This package contains development files for the fish shell.
 
 %prep
 %setup -q
-%autopatch -p1
 
 # fix E: env-script-interpreter
 find share/tools -type f -name *.py -exec sed -i -r '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} +
@@ -93,6 +92,8 @@ fi
 %{_datadir}/doc/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1%{?ext_man}
+%{_datadir}/applications/fish.desktop
+%{_datadir}/pixmaps/fish.png
 
 %files devel
 %{_datadir}/pkgconfig/fish.pc

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Mar  1 15:43:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0:
+  * Undo and redo support for the command-line editor and pager search
+  * Builtins can now output before all data is read
+  * Prompts will now be truncated instead of replaced with "> "
+  * Better errors with "test"
+  * A new theme for the documentation and Web-based configuration
+  * fish --no-execute will no longer complain about unknown commands
+    or non-matching wildcards
+  * string match --regex now integrates named PCRE2 capture groups
+    as fish variables
+  * Globs and other expansions are limited to 512,288 results
+  * A new "fish for bash users" documentation page gives a quick overview
+    of the scripting differences between bash and fish 
+  * Range limits in index range expansions like $x[$start..$end]
+    may be omitted: $start and $end default to 1 and -1 
+  * the type, _ (gettext), . (source) and : (no-op) functions
+    are now implemented builtins for performance purposes
+  * The output for set --show has been shortened
+  * string sub has a new --end option to specify the end index of
+    a substring 
+  * string trim now also trims vertical tabs by default
+  * string repeat now handles multiple arguments, repeating each one
+  * The true and false builtins ignore any arguments
+  * status gained new dirname and basename convenience subcommands
+  * jobs now shows continued child processes correctly
+  * A new fish_status_to_signal function for transforming exit statuses
+    to signal names has been added
+  * fish -c now reads the remaining arguments into $argv
+  * The pwd command supports the long options --logical and --physical
+  * https://github.com/fish-shell/fish-shell/releases/tag/3.2.0
+- Remove fix-pc-file-paths.patch
+-------------------------------------------------------------------
 Mon Feb  8 00:14:35 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - pc file contained references to /usr/local (boo#1181888)
