@@ -52,4 +52,22 @@
     <comment></comment>
     <requestid>821888</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8328dcf950ff65186956c5be7e1df2d9</srcmd5>
+    <version>1.13.1</version>
+    <time>1614959540</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors.
+- Add Fix-code-to-be-python3-compliant.patch:
+  * Remove python2 code and dependencies.
+  * Removed &amp; Automated: fix_python_shebang.patch
+  * Make python3 the default for TW and SLE/Leap 15
+- Do not mark template files for HPC as %config.
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.</comment>
+    <requestid>876983</requestid>
+  </revision>
 </revisionlist>

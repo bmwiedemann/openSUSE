@@ -1,7 +1,7 @@
 #
 # spec file for package adios
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,9 @@ ExcludeArch:    s390 s390x
 %if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
 
 # this is a non-HPC build
 %if "%{flavor}" == "openmpi"
@@ -56,6 +59,13 @@ ExcludeArch:    s390 s390x
 %{?DisOMPI3}
 %global mpi_flavor openmpi
 %define mpi_ver 3
+%bcond_with hpc
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%{?DisOMPI4}
+%global mpi_flavor openmpi
+%define mpi_ver 4
 %bcond_with hpc
 %endif
 
@@ -84,6 +94,15 @@ ExcludeArch:    s390 s390x
 %undefine c_f_ver
 %global mpi_flavor openmpi
 %define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%undefine c_f_ver
+%global mpi_flavor openmpi
+%define mpi_ver 4
 %endif
 
 %if "%{flavor}" == "gnu-mvapich2-hpc"
@@ -127,6 +146,15 @@ ExcludeArch:    s390 s390x
 %define mpi_ver 3
 %endif
 
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor openmpi
+%define mpi_ver 4
+%endif
+
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
 %bcond_without hpc
 %define compiler_family gnu
@@ -165,6 +193,15 @@ ExcludeArch:    s390 s390x
 %define c_f_ver 8
 %global mpi_flavor openmpi
 %define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor openmpi
+%define mpi_ver 4
 %endif
 
 %if "%{flavor}" == "gnu8-mvapich2-hpc"
@@ -207,6 +244,15 @@ ExcludeArch:    s390 s390x
 %define mpi_ver 3
 %endif
 
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor openmpi
+%define mpi_ver 4
+%endif
+
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
 %bcond_without hpc
 %define compiler_family gnu
@@ -218,6 +264,55 @@ ExcludeArch:    s390 s390x
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 9
+%global mpi_flavor mpich
+%endif
+#
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_ver 1
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_ver 2
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor mvapich2
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
 %global mpi_flavor mpich
 %endif
 
@@ -246,9 +341,6 @@ ExclusiveArch:  do_not_build
  %define pkg_skeldir %{hpc_prefix}/etc/skel/
  %define package_name   %{hpc_package_name %{_vers}}
  %define libname(l:s:)   lib%{pname}%{-l*}%{hpc_package_name_tail %{?_vers}}
-# This will avoid rpmlint errors when non-python3 scripts are detected.
-# It needs to be addressed at some point. This needs to come after hpc_init.
- %undefine _hpc_python3
 %else
  %global pkg_suffix %{?mpi_flavor:-%{mpi_flavor}%{?mpi_ext}}
  %define pkg_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
@@ -262,6 +354,10 @@ ExclusiveArch:  do_not_build
  %define libname(l:s:)   lib%{pname}%{!-l:%{-s:-}}%{-l*}%{-s*}%{?pkg_suffix}
 %endif
 
+%if 0%{?suse_version} >= 1500
+%define my_py_version 3
+%endif
+
 Name:           %{package_name}
 Version:        %{vers}
 Release:        0
@@ -271,13 +367,13 @@ Group:          Productivity/Scientific/Other
 URL:            https://www.olcf.ornl.gov/center-projects/adios/
 Source0:        https://users.nccs.gov/~pnorbert/adios-%{version}.tar.gz
 Patch0:         adios-correct-func-ret.patch
-Patch1:         fix_python_shebang.patch
+Patch1:         Fix-code-to-be-python3-compliant.patch
 %{?with_hpc:BuildRequires:  suse-hpc >= 0.3}
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
 BuildRequires:  liblz4-devel
-BuildRequires:  python
+BuildRequires:  python%{?my_py_version}
 BuildRequires:  zlib-devel
 %if %{without hpc}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
@@ -293,8 +389,8 @@ BuildRequires:  lua-lmod
 BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
 %{hpc_requires}
 %endif  # ?hpc
-Requires:       python2-PyYAML
-Requires:       python2-xml
+Requires:       python%{?my_py_version}-PyYAML
+Requires:       python%{?my_py_version}-xml
 
 %description
 The Adaptable IO System (ADIOS) provides a way for scientists to
@@ -319,9 +415,9 @@ Requires:       netcdf%{?pkg_suffix}-devel
 Provides:       %{pname}%-openmpi-devel
 %endif
 %else # hpc
-Requires:       hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
+%{requires_eq hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel}
 Requires:       lua-lmod
-Requires:       netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
+%{requires_eq netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel}
 %hpc_requires_devel
 %endif  # ?hpc
 
@@ -415,6 +511,9 @@ make V=1 %{?_smp_mflags}
 %{hpc_setup}
 %endif
 %make_install
+for i in %{buildroot}/%{pkg_bindir}/{skel,*.py} %{buildroot}/%{pkg_libdir}/python/*.py; do
+    sed -e '1s@^\(#!.*\)\(python\)[23]*\( *.*\)@\1\2%{?my_py_version}\3@' -e '1s@/\env @/@' -i $i
+done
 %fdupes -s %{buildroot}/%{pkg_skeldir}/templates
 
 %if %{with hpc}
@@ -467,7 +566,7 @@ EOF
 %{hpc_modules_files}
 %endif
 %{pkg_bindir}
-%config %{pkg_sysconfdir}/*
+%{!?with_hpc:%config} %{pkg_sysconfdir}/*
 %dir %{pkg_prefix}/etc
 %{pkg_skeldir}
 %{pkg_libdir}/python

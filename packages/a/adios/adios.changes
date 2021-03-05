@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  5 20:38:28 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors.
+- Add Fix-code-to-be-python3-compliant.patch:
+  * Remove python2 code and dependencies.
+  * Removed & Automated: fix_python_shebang.patch
+  * Make python3 the default for TW and SLE/Leap 15
+- Do not mark template files for HPC as %config.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:03:57 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.
+
+-------------------------------------------------------------------
 Mon Jul 20 12:16:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Adapt to HPC module netcdf naming change (boo#1174291).
