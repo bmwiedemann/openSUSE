@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  5 09:41:07 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix chainloading windows on dual boot machine (bsc#1183073)
+  * 0001-Add-chainloaded-image-as-shim-s-verifiable-object.patch
+
+-------------------------------------------------------------------
 Fri Feb 26 06:52:18 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - VUL-0: grub2,shim: implement new SBAT method (bsc#1182057)
