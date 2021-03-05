@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
@@ -33,7 +33,7 @@ Requires:       python-sip-devel >= 5.5
 Requires:       python-wheel
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Provides:       python-PyQt-builder = %{version}
+Provides:       python-PyQt-builder = %{version}-%{release}
 BuildArch:      noarch
 # SECTION Test Requirements
 BuildRequires:  %{python_module sip-devel >= 5.5}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 25 11:07:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.9.0
+  * Added support for PyQtNetworkAuth.
+  * Added support for creating Qt5 wheels.
+  * The default minimum glibc version for Qt6 is now v2.28.
+
+-------------------------------------------------------------------
 Fri Feb 19 19:56:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.8.0
