@@ -460,4 +460,19 @@
   * Add github workflow.</comment>
     <requestid>862257</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>351c1ea56cede629ae4f3ed81db13373</srcmd5>
+    <version>2.2.0+git.20210304.4c7f4cd</version>
+    <time>1614948464</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.1.0+git.20210304.4c7f4cd:
+  * Bump to v2.2.0.
+  * Do not detect c++ std when --clang-delta-std is used.
+  * Add check for test case paths.
+  * Add --clang-delta-preserve-routine cvise option.
+  * Ensuring test inputs are copied into the build folder #43
+  * Adding a 'preserve-routine' flag to clang_delta #43
+  * Do not fail fast.</comment>
+    <requestid>876737</requestid>
+  </revision>
 </revisionlist>

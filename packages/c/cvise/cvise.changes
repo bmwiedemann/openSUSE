@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 04 12:54:33 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1.0+git.20210304.4c7f4cd:
+  * Bump to v2.2.0.
+  * Do not detect c++ std when --clang-delta-std is used.
+  * Add check for test case paths.
+  * Add --clang-delta-preserve-routine cvise option.
+  * Ensuring test inputs are copied into the build folder #43
+  * Adding a 'preserve-routine' flag to clang_delta #43
+  * Do not fail fast.
+
+-------------------------------------------------------------------
 Mon Jan 11 10:55:16 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.0.0+git.20210111.972f4ba:
