@@ -24,4 +24,12 @@
   * Fix formatting of Python 3 class names in summary diff</comment>
     <requestid>750650</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3272c92920ec433ddc0ee3b3dbe896ce</srcmd5>
+    <version>0.9</version>
+    <time>1614948285</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875641</requestid>
+  </revision>
 </revisionlist>
