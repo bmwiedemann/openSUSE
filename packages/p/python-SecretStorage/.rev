@@ -84,4 +84,14 @@
   * Python ≥ 3.6 and Jeepney ≥ 0.6 are now required.</comment>
     <requestid>868467</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7d52f2cfab599f597474753df28a7ca4</srcmd5>
+    <version>3.3.1</version>
+    <time>1614948186</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.3.1:
+  * Fixed a deprecation warning from cryptography module.
+  * Added a :PEP:`561` ``py.typed`` file to declare typing support.</comment>
+    <requestid>876091</requestid>
+  </revision>
 </revisionlist>
