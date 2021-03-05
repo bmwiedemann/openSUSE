@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 20 11:05:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.812
+ - Improved Source File Finding
+  - Mypy 0.800 changed how mypy finds modules if you run mypy as mypy directory/ or mypy -p package. Mypy started looking for source files in directories without a __init__.py file. This is often the expected behavior, and it avoids excluding some files that should be type checked.
+    However, this caused issues for some users, such as when using mypy . to type check all files under the current directory. Mypy could now try to type check files inside nested virtual environments and node_modules directories, which is usually not desirable. This could result in mypy needlessly complaining about duplicate module names, in particular.
+    Now mypy will skip directories named site-packages or node_modules, and any directory beginning with a dot (such as .git) when recursively looking for files to check.
+    This doesn’t affect how mypy resolves imports — it only affects when mypy is given a directory or a package to type check. You can override the exclusions by explicitly passing the files on the command line.
+ - Excluding Paths
+  - Mypy now supports the --exclude regex command line option to exclude paths matching a regular expression when searching for files to type check. For example, mypy --exclude '/setup\.py$' skips all setup.py files. This lets you exclude additional paths that mypy started finding after mypy 0.800 changed module finding behavior, as discussed above.
+  - You can also specify this in the config file (exclude=regex). The option expects forward slashes as directory separators on all platforms, including Windows, for consistency.
+
+-------------------------------------------------------------------
 Mon Jan 25 22:16:46 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Provide the toolname only for the primary python3 flavor in order

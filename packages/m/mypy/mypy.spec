@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           mypy
-Version:        0.800
+Version:        0.812
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
