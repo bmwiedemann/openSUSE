@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  3 17:27:01 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- build without PIE on PPC64 platform
+
+-------------------------------------------------------------------
 Tue Mar 02 23:40:09 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.3.2:

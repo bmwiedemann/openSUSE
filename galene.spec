@@ -60,9 +60,11 @@ deployed with moderate server resources.
 %patch1 -p0
 
 %build
-go build \
-   -mod=vendor \
-   -buildmode=pie ;
+%ifarch ppc64
+go build -mod=vendor
+%else
+go build -mod=vendor -buildmode=pie
+%endif
 
 %install
 %fdupes %{buildroot}/%{_prefix}
