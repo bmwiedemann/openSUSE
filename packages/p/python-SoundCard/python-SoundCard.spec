@@ -1,7 +1,7 @@
 #
 # spec file for package python-SoundCard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%if 0%{suse_version} >= 1550
+%define         skip_python36 1
+%endif
 Name:           python-SoundCard
 Version:        0.4.0
 Release:        0
@@ -32,7 +35,11 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
+%else
+Requires:       pulseaudio-daemon
+%endif
 Requires:       python-cffi
 Requires:       python-numpy
 BuildArch:      noarch

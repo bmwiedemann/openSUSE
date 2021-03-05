@@ -55,4 +55,12 @@
   * adds compatibility with Windows 7</comment>
     <requestid>821996</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b39dc0fd9f72fb80521883d6a49669e0</srcmd5>
+    <version>0.4.0</version>
+    <time>1614948333</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875346</requestid>
+  </revision>
 </revisionlist>

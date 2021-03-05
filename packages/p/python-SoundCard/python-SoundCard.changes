@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 26 11:08:45 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build the python36 flavor on TW since numpy is a build
+  dependency and it doesn't support python 3.6 anymore.
+
+-------------------------------------------------------------------
+Thu Feb 25 11:38:10 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require the pulseaudio-daemon capability instead of the
+  pulseaudio package, so alternative implementations can be used
+  (boo#1182730).
+
+-------------------------------------------------------------------
 Tue Jul 21 05:39:41 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.0:
