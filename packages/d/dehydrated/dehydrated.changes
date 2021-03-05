@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  3 15:42:18 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Clarified new default settings. KEY_ALGO=secp384r1. Please consult
+  README.maintainer for details and how to return to RSA-based certificate
+  issuance. (jsc#ECO-3435, jsc#SLE-15909)
+- Added a note about ACMEv1 deprecation
+- Added a note on new ACME providers and the new non-URL provider syntax
+
+  See README.maintainer for details.
+
+-------------------------------------------------------------------
 Thu Dec 10 16:01:01 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Update to dehydrated 0.7.0 (JSC#SLE-15909)

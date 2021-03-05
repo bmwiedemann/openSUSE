@@ -162,6 +162,65 @@ Limitations & Ceveats
 Upgrade Notes
 =============
 
+v0.7.0
+------
+
+Key Algorithm
+~~~~~~~~~~~~~
+
+If you are upgrading from dehydrated <= 0.6.5, the new default for
+new installations changes from
+
+    KEY_ALGO=rsa
+
+to
+
+    KEY_ALGO=secp384r1
+
+This switches the algorithm for newly issued certificates from RSA
+to the elliptic curve (EC) based secp384r1 algorithm. While both are
+considered sufficiently compatible to current software in public
+environments and SUSE supports EC even in SLES 12, some 3rd party software
+and/or appliances may still not yet be compatible with EC algorithms.
+In these environments, the KEY_ALGO setting needs to be set to "rsa"
+manually. If you are receiving errors about an invalid key length,
+comment out the KEYSIZE option.
+
+Extended use of the CA variable / New ACME providers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Starting with 0.7.0, dehydrated supports additional, commercial certificate
+providers that use the ACME protocol to automatically issue certificates.
+
+The CA config variable, which so far expected a URL to a ACME API endpoint can
+now contain the following shorthand service strings instead, which are
+internally converted to the API URLs and hence are equivalent:
+
+* LetsEncrypt: "letsencrypt" (staging environment: "letsencrypt-test")
+* BuyPass: "buypass" (test environment: "buypass-test")
+* ZeroSSL: "zerossl"
+
+LetsEncrypt remains the default provider. If you prefer to use the URL instead,
+you can continue to do so.
+
+Note: ZeroSSL requires additional the options EAB_KID and EAB_HMAC_KEY to be
+set. Please consult the ZeroSSL documentation fore more information.
+
+ACME v1 deprecation
+~~~~~~~~~~~~~~~~~~~
+
+The upstream project has deprecated ACME v1 in favor of the IETF-
+blessed [1] ACME v2 protocol. While dehydrated still supports v1-based
+verification flows, future versions might no longer do. If you are using a
+custom ACME endpoint URL, you can check compliance with the ACME v2 protocol by
+consulting your ACME service provider's documentation. Verify by setting API=2
+in the config file and then running "dehydrated --cron".
+
+[1] https://tools.ietf.org/html/rfc8555
+
+v0.3.1
+------
+
 If you are upgrading from letsencrypt.sh, note that you need to move
 /etc/letsencrypt.sh to /etc/dehydrated and chown it to the "dehydrated"
 user.
