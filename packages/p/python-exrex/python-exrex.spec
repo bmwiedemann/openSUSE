@@ -1,7 +1,7 @@
 #
 # spec file for package python-exrex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define revision fd1e21ffc7c16fd5637a5c440224766417e840f9
+%define skip_python2 1
 Name:           python-exrex
-Version:        0.10.5
+Version:        0.10.5+git119
 Release:        0
 Summary:        Irregular methods for regular expressions
 License:        AGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/asciimoo/exrex
-Source:         https://files.pythonhosted.org/packages/source/e/exrex/exrex-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM add-license.patch
-Patch0:         https://github.com/asciimoo/exrex/pull/32.patch#/add-license.patch
+#Source:         https://files.pythonhosted.org/packages/source/e/exrex/exrex-%%{version}.tar.gz
+Source:         https://github.com/asciimoo/exrex/archive/%{revision}.tar.gz#/exrex-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-setup-encoding.patch
+Patch0:         https://github.com/asciimoo/exrex/pull/53.patch#/fix-setup-encoding.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,10 +40,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Exrex is a command line tool and python module that generates all or random matching strings to a given regular expression and more.
+A command line tool and python module that generates all or random matching strings to a given regular expression and more.
 
 %prep
-%setup -q -n exrex-%{version}
+%setup -q -n exrex-%{revision}
 sed -i '1s/^#!.*//' exrex.py
 %patch0 -p1
 
@@ -54,7 +57,8 @@ rm %{buildroot}%{_bindir}/exrex.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no upstream tests
+%{python_expand # comment
+LANG=C.UTF-8 PYTHONPATH=%{buildroot}%{$python_sitelib} $python ./tests.py}
 
 %post
 %python_install_alternative exrex
@@ -65,6 +69,7 @@ rm %{buildroot}%{_bindir}/exrex.py
 %files %{python_files}
 %{python_sitelib}/*
 %license COPYING
+%doc README.md doc/
 %python_alternative %{_bindir}/exrex
 
 %changelog
