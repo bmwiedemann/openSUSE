@@ -321,12 +321,16 @@ Patch712:       0009-script-Avoid-a-use-after-free-when-redefining-a-func.patch
 # overflows in initrd size handling
 Patch713:       0010-linux-Fix-integer-overflows-in-initrd-size-handling.patch
 Patch714:       0001-kern-mm.c-Make-grub_calloc-inline.patch
+# bsc#1174421 VUL-0: CVE-2020-15705: grub2: linuxefi: fail kernel validation
+# without shim protocol
+Patch715:       0001-linuxefi-fail-kernel-validation-without-shim-protoco.patch
 Patch716:       0002-cmdline-Provide-cmdline-functions-as-module.patch
 # bsc#1172745 L3: SLES 12 SP4 - Slow boot of system after updated kernel -
 # takes 45 minutes after grub to start loading kernel
 Patch717:       0001-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
 Patch718:       0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
 Patch719:       0001-Unify-the-check-to-enable-btrfs-relative-path.patch
+Patch720:       0001-shim_lock-Disable-GRUB_VERIFY_FLAGS_DEFER_AUTH-if-se.patch
 Patch721:       0001-efi-linux-provide-linux-command.patch
 # Improve the error handling when grub2-install fails with short mbr gap
 # (bsc#1176062)
@@ -339,58 +343,11 @@ Patch732:       0003-Make-grub_error-more-verbose.patch
 Patch733:       0004-arm-arm64-loader-Better-memory-allocation-and-error-.patch
 Patch734:       0005-Make-linux_arm_kernel_header.hdr_offset-be-at-the-ri.patch
 Patch735:       0006-efi-Set-image-base-address-before-jumping-to-the-PE-.patch
+Patch736:       0007-linuxefi-fail-kernel-validation-without-shim-protoco.patch
 Patch737:       0008-squash-Add-support-for-Linux-EFI-stub-loading-on-aar.patch
 Patch738:       0009-squash-Add-support-for-linuxefi.patch
 Patch739:       0001-Fix-build-error-in-binutils-2.36.patch
 Patch740:       0001-emu-fix-executable-stack-marking.patch
-# Boothole2
-Patch741:       0001-include-grub-i386-linux.h-Include-missing-grub-types.patch
-Patch742:       0002-efi-Make-shim_lock-GUID-and-protocol-type-public.patch
-Patch743:       0003-efi-Return-grub_efi_status_t-from-grub_efi_get_varia.patch
-Patch744:       0004-efi-Add-a-function-to-read-EFI-variables-with-attrib.patch
-Patch745:       0005-efi-Add-secure-boot-detection.patch
-Patch746:       0006-efi-Only-register-shim_lock-verifier-if-shim_lock-pr.patch
-Patch747:       0007-verifiers-Move-verifiers-API-to-kernel-image.patch
-Patch748:       0008-efi-Move-the-shim_lock-verifier-to-the-GRUB-core.patch
-Patch749:       0009-kern-Add-lockdown-support.patch
-Patch750:       0010-kern-lockdown-Set-a-variable-if-the-GRUB-is-locked-d.patch
-Patch751:       0011-efi-Lockdown-the-GRUB-when-the-UEFI-Secure-Boot-is-e.patch
-Patch752:       0012-efi-Use-grub_is_lockdown-instead-of-hardcoding-a-dis.patch
-Patch753:       0013-acpi-Don-t-register-the-acpi-command-when-locked-dow.patch
-Patch754:       0014-mmap-Don-t-register-cutmem-and-badram-commands-when-.patch
-Patch755:       0015-commands-Restrict-commands-that-can-load-BIOS-or-DT-.patch
-Patch756:       0016-commands-setpci-Restrict-setpci-command-when-locked-.patch
-Patch757:       0017-commands-hdparm-Restrict-hdparm-command-when-locked-.patch
-Patch758:       0018-gdb-Restrict-GDB-access-when-locked-down.patch
-Patch759:       0019-loader-xnu-Don-t-allow-loading-extension-and-package.patch
-Patch760:       0020-dl-Only-allow-unloading-modules-that-are-not-depende.patch
-Patch761:       0021-usb-Avoid-possible-out-of-bound-accesses-caused-by-m.patch
-Patch762:       0022-lib-arg-Block-repeated-short-options-that-require-an.patch
-Patch763:       0023-commands-menuentry-Fix-quoting-in-setparams_prefix.patch
-Patch764:       0024-kern-parser-Fix-resource-leak-if-argc-0.patch
-Patch765:       0025-kern-parser-Fix-a-memory-leak.patch
-Patch766:       0026-kern-parser-Introduce-process_char-helper.patch
-Patch767:       0027-kern-parser-Introduce-terminate_arg-helper.patch
-Patch768:       0028-kern-parser-Refactor-grub_parser_split_cmdline-clean.patch
-Patch769:       0029-kern-buffer-Add-variable-sized-heap-buffer.patch
-Patch770:       0030-kern-parser-Fix-a-stack-buffer-overflow.patch
-Patch771:       0031-util-mkimage-Remove-unused-code-to-add-BSS-section.patch
-Patch772:       0032-util-mkimage-Use-grub_host_to_target32-instead-of-gr.patch
-Patch773:       0033-util-mkimage-Always-use-grub_host_to_target32-to-ini.patch
-Patch774:       0034-util-mkimage-Unify-more-of-the-PE32-and-PE32-header-.patch
-Patch775:       0035-util-mkimage-Reorder-PE-optional-header-fields-set-u.patch
-Patch776:       0036-util-mkimage-Improve-data_size-value-calculation.patch
-Patch777:       0037-util-mkimage-Refactor-section-setup-to-use-a-helper.patch
-Patch778:       0038-util-mkimage-Add-an-option-to-import-SBAT-metadata-i.patch
-Patch779:       0039-grub-install-common-Add-sbat-option.patch
-Patch780:       0040-shim_lock-Only-skip-loading-shim_lock-verifier-with-.patch
-Patch781:       0041-squash-Add-secureboot-support-on-efi-chainloader.patch
-Patch782:       0042-squash-grub2-efi-chainload-harder.patch
-Patch783:       0043-squash-Don-t-allow-insmod-when-secure-boot-is-enable.patch
-Patch784:       0044-squash-kern-Add-lockdown-support.patch
-Patch785:       0045-squash-Add-support-for-Linux-EFI-stub-loading-on-aar.patch
-Patch786:       0046-squash-verifiers-Move-verifiers-API-to-kernel-image.patch
-Patch787:       0001-Add-chainloaded-image-as-shim-s-verifiable-object.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -707,10 +664,12 @@ swap partition while in resuming
 %patch712 -p1
 %patch713 -p1
 %patch714 -p1
+%patch715 -p1
 %patch716 -p1
 %patch717 -p1
 %patch718 -p1
 %patch719 -p1
+%patch720 -p1
 %patch721 -p1
 %patch722 -p1
 %patch723 -p1
@@ -720,57 +679,11 @@ swap partition while in resuming
 %patch733 -p1
 %patch734 -p1
 %patch735 -p1
+%patch736 -p1
 %patch737 -p1
 %patch738 -p1
 %patch739 -p1
 %patch740 -p1
-%patch741 -p1
-%patch742 -p1
-%patch743 -p1
-%patch744 -p1
-%patch745 -p1
-%patch746 -p1
-%patch747 -p1
-%patch748 -p1
-%patch749 -p1
-%patch750 -p1
-%patch751 -p1
-%patch752 -p1
-%patch753 -p1
-%patch754 -p1
-%patch755 -p1
-%patch756 -p1
-%patch757 -p1
-%patch758 -p1
-%patch759 -p1
-%patch760 -p1
-%patch761 -p1
-%patch762 -p1
-%patch763 -p1
-%patch764 -p1
-%patch765 -p1
-%patch766 -p1
-%patch767 -p1
-%patch768 -p1
-%patch769 -p1
-%patch770 -p1
-%patch771 -p1
-%patch772 -p1
-%patch773 -p1
-%patch774 -p1
-%patch775 -p1
-%patch776 -p1
-%patch777 -p1
-%patch778 -p1
-%patch779 -p1
-%patch780 -p1
-%patch781 -p1
-%patch782 -p1
-%patch783 -p1
-%patch784 -p1
-%patch785 -p1
-%patch786 -p1
-%patch787 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15
@@ -876,30 +789,16 @@ PXE_MODULES="efinet tftp http"
 CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
 
 %ifarch x86_64
-CD_MODULES="${CD_MODULES} linuxefi" 
+CD_MODULES="${CD_MODULES} shim_lock linuxefi" 
 %else
 CD_MODULES="${CD_MODULES} linux" 
 %endif
 
-# SBAT metadata
-%if 0%{?is_opensuse} == 1
-distro_id="opensuse"
-distro_name="The openSUSE Project"
-%else
-distro_id="sle"
-distro_name="SUSE Linux Enterprise"
-%endif
-upstream_sbat=1
-distro_sbat=1
-echo "sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md" > sbat.csv
-echo "grub,${upstream_sbat},Free Software Foundation,grub,%{version},https://www.gnu.org/software/grub/" >> sbat.csv
-echo "grub.${distro_id},${distro_sbat},${distro_name},%{name},%{version},mail:security-team@suse.de" >> sbat.csv
-
 GRUB_MODULES="${CD_MODULES} ${FS_MODULES} ${PXE_MODULES} ${CRYPTO_MODULES} mdraid09 mdraid1x lvm serial"
-./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= --sbat sbat.csv \
+./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= \
 		-d grub-core ${GRUB_MODULES}
 %ifarch x86_64
-./grub-mkimage -O %{grubefiarch} -o grub-tpm.efi --prefix= --sbat sbat.csv \
+./grub-mkimage -O %{grubefiarch} -o grub-tpm.efi --prefix= \
 		-d grub-core ${GRUB_MODULES} tpm
 %endif
 

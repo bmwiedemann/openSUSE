@@ -2063,4 +2063,12 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>876987</requestid>
   </revision>
+  <revision rev="236" vrev="26">
+    <srcmd5>3e797e98b65feee774bf56fd23239760</srcmd5>
+    <version>2.04</version>
+    <time>1614959536</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to pre-boothole2-fix - dualboot support broken; can't chainload windows</comment>
+    <requestid>877254</requestid>
+  </revision>
 </revisionlist>
