@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 04 17:18:45 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.17:
+  * Fix an issue with playback (glgo#World/lollypop#2717).
+  * Fix a crash when moving tracks in playback
+    (glgo#World/lollypop#2700).
+  * Fix a crash when updating smart playlist
+    (glgo#World/lollypop#2738).
+  * Fix application not starting occasionally
+    (glgo#World/lollypop#2730).
+  * Fix a crash when searching online (glgo#World/lollypop#2719,
+    glgo#World/lollypop#2722).
+- Move _service from tar_scm to obs_scm and obscpio format.
+
+-------------------------------------------------------------------
 Fri Feb 05 17:46:04 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.16:

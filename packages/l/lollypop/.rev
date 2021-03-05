@@ -1607,4 +1607,22 @@
     Internet access.</comment>
     <requestid>869825</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>fe293f7dd1491f00734d6467571420b4</srcmd5>
+    <version>1.4.17</version>
+    <time>1614948479</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.4.17:
+  * Fix an issue with playback (glgo#World/lollypop#2717).
+  * Fix a crash when moving tracks in playback
+    (glgo#World/lollypop#2700).
+  * Fix a crash when updating smart playlist
+    (glgo#World/lollypop#2738).
+  * Fix application not starting occasionally
+    (glgo#World/lollypop#2730).
+  * Fix a crash when searching online (glgo#World/lollypop#2719,
+    glgo#World/lollypop#2722).
+- Move _service from tar_scm to obs_scm and obscpio format.</comment>
+    <requestid>876801</requestid>
+  </revision>
 </revisionlist>
