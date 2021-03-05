@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 25 11:33:35 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require the pulseaudio-daemon capability instead of the
+  pulseaudio package, so alternative implementations can be used
+  (boo#1182730).
+
+-------------------------------------------------------------------
 Thu Mar 19 09:49:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 20.2.4

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pulsectl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,11 +29,15 @@ Source:         https://files.pythonhosted.org/packages/source/p/pulsectl/pulsec
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       pulseaudio >= 5.0
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
+Requires:       pulseaudio
+%else
+Requires:       pulseaudio-daemon
+%endif
 Requires:       python-setuptools
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  libpulse-devel >= 5.0
+BuildRequires:  libpulse-devel
 BuildRequires:  pulseaudio
 BuildRequires:  pulseaudio-utils
 %endif
