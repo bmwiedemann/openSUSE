@@ -1,7 +1,7 @@
 #
 # spec file for package xfdashboard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 0
 Name:           xfdashboard
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        GNOME shell like dashboard for Xfce
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ Patch0:         xfdashboard-desktop-category.diff
 # PATCH-FIX-OPENSUSE xfdashboard-desktopfile-without-binary.diff dap.darkness@gmail.com -- fixes "W: desktopfile-without-binary".
 Patch2:         xfdashboard-desktopfile-without-binary.diff
 
+BuildRequires:  appstream-glib
 BuildRequires:  clutter-devel
 BuildRequires:  fdupes
 BuildRequires:  libtool
@@ -107,6 +108,8 @@ gzip -c9 %{SOURCE9} | tee -a %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
 %fdupes -s %{buildroot}%{_datadir}/themes/%{name}-*
 %find_lang %{name} %{?no_lang_C}
 
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
+
 %post -n libxfdashboard%{so_ver} -p /sbin/ldconfig
 %postun -n libxfdashboard%{so_ver} -p /sbin/ldconfig
 
@@ -116,11 +119,11 @@ gzip -c9 %{SOURCE9} | tee -a %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
 %{_bindir}/%{name}*
 %{_mandir}/man1/%{name}*.1.gz
 %{_datadir}/%{name}
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications/%{name}-settings.desktop
-%{_sysconfdir}/xdg/autostart/%{name}-autostart.desktop
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/org.xfce.%{name}.metainfo.xml
+%{_datadir}/applications/org.xfce.%{name}.desktop
+%{_datadir}/applications/org.xfce.%{name}-settings.desktop
+%{_sysconfdir}/xdg/autostart/org.xfce.%{name}-autostart.desktop
 %{_datadir}/icons/hicolor/*/apps/org.xfce.xfdashboard.*
 %{_datadir}/themes/%{name}
 %{_libdir}/%{name}

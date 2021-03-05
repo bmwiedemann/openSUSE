@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  5 09:45:08 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 0.8.1
+  * Fixed bug to release an so far unreleased GIcon object at dispose
+    function of XfdashboardLabel
+  * Moved AppInfo to AppStream metainfo 
+
+-------------------------------------------------------------------
 Wed Dec 23 16:49:22 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.8.0
