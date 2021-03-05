@@ -31,4 +31,16 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659531</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>22baa0752963972e269af1fb2f7c1270</srcmd5>
+    <version>1.4.3</version>
+    <time>1614948493</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.4.3:
+  * LilyPond: take in account width and staffsize from metadata
+  * Autodetect gregorio executables 
+  * Fix metavars example
+  * Documentation fixes</comment>
+    <requestid>876830</requestid>
+  </revision>
 </revisionlist>
