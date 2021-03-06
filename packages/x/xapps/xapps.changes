@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  5 15:18:27 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 2.0.7.
+  * Don't build the gtk module for lib-only builds (flatpak).
+  * xapp-favorites.c: Don't crash trying to remove a previously-removed favorite.
+  * favorite-vfs-file-monitor.c: When handling folder updates, send out removals before additions.
+  * xapp-util: Add a function to check whether the session is fully active.
+  * xapp-sn-watcher.c: Skip the startup delay if the session has not finished loading.
+
+-------------------------------------------------------------------
 Thu Jan 14 10:23:03 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.0.6.
