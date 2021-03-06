@@ -596,4 +596,12 @@
   * i586 platform build fix</comment>
     <requestid>874742</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>da94662846cf139a184600f61425fc85</srcmd5>
+    <version>3.17</version>
+    <time>1615061961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.17</comment>
+    <requestid>877365</requestid>
+  </revision>
 </revisionlist>
