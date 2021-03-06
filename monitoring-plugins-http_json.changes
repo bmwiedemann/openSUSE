@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  2 08:23:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Don't build with python36
+- Update to version 2.1.1
+  * Always load system default CA files.
+  * Fix conditional check on empty data.
+- Update to version 2.1
+  * Empty JSON return values are now handled.
+  * Scripts tries to parse and apply rules on HTTPErrors (50*)
+- remove extra download of icinga2_check_command_definition.conf
+  it's now part of the release tarball
+
+-------------------------------------------------------------------
 Fri Jul 03 08:11:34 UTC 2020 - mliska@suse.cz
 
 - Update to version 2.1+git.1593763135.c23ebac:
