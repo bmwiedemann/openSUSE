@@ -1,7 +1,7 @@
 #
 # spec file for package xed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xed
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        A text editor with highlighting
 License:        GPL-2.0-or-later

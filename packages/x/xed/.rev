@@ -238,4 +238,15 @@
 </comment>
     <requestid>859453</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2e444db360267c8f95cd98cd2ea0773e</srcmd5>
+    <version>2.8.4</version>
+    <time>1615061941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.4.
+  * fixup! cleanup: remove code dropped in commit 67892da099357e24b3fd3c31fa758947b1dfc47a
+  * l10n: Update translations
+</comment>
+    <requestid>877314</requestid>
+  </revision>
 </revisionlist>
