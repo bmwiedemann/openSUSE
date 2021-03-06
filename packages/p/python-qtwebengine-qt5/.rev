@@ -74,4 +74,12 @@ Required for python-AnyQt</comment>
 </comment>
     <requestid>846245</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f777f78bfb5e8d530a903132fd2ca68a</srcmd5>
+    <version>5.15.3</version>
+    <time>1615061911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875739</requestid>
+  </revision>
 </revisionlist>

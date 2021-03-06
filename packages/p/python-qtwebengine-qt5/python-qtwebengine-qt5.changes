@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 26 09:50:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.15.3
+  * Sync release with PyQt5
+- Switch all distros to SIP v5+
+- Disable Python 2 build
+
+-------------------------------------------------------------------
+Tue Nov 24 20:02:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 5.15.2
+  * Build system changes 
+
+-------------------------------------------------------------------
 Tue Sep 15 17:29:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Use sip5 where available
