@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  2 15:57:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- BuildConflict on python3-sip-devel >= 6 because the build expects
+  the sip5 executable (or even older sip from SIP v4), which was
+  removed in SIP v6. A simple BuildRequire python3-sip-devel < 6
+  would result in a parallel install of SIPv4 and SIPv6, which do
+  not conflict per se.  Because CMake sees the SIPv6 modules, it
+  assumes sip5 to be present, does not look for the old sip command
+  and fails.
+
+-------------------------------------------------------------------
 Tue Jan 19 12:28:32 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 4.4.2:
