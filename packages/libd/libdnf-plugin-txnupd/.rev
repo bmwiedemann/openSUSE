@@ -15,4 +15,18 @@
     <comment>- Use GCC 10 on openSUSE Leap 15</comment>
     <requestid>874953</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>edd93d94454e0ecd73fcbe5db38eb2b8</srcmd5>
+    <version>0.1.2</version>
+    <time>1615061920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.2
+  + Add handling for externally invoked transactional updates
+
+- Update to 0.1.1
+  + Disable protection of the running kernel in transactions
+
+- Update libdnf build dependency to require 0.60+</comment>
+    <requestid>877295</requestid>
+  </revision>
 </revisionlist>

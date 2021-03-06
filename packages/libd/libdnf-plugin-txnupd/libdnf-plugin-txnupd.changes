@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  5 19:50:03 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.1.2
+  + Add handling for externally invoked transactional updates
+
+-------------------------------------------------------------------
+Thu Mar  4 13:44:04 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.1.1
+  + Disable protection of the running kernel in transactions
+
+-------------------------------------------------------------------
+Tue Mar  2 04:02:59 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update libdnf build dependency to require 0.60+
+
+-------------------------------------------------------------------
 Thu Feb 25 04:10:34 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Use GCC 10 on openSUSE Leap 15

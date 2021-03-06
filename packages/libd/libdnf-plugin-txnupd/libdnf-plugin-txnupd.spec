@@ -17,7 +17,7 @@
 
 
 Name:           libdnf-plugin-txnupd
-Version:        0.1.0
+Version:        0.1.2
 Release:        0
 Summary:        Plugin for libdnf to implement transactional updates
 License:        LGPL-2.1-or-later
@@ -35,7 +35,7 @@ BuildRequires:  gcc10-c++
 BuildRequires:  gcc-c++ >= 10
 %endif
 
-BuildRequires:  pkgconfig(libdnf) >= 0.58
+BuildRequires:  pkgconfig(libdnf) >= 0.60
 BuildRequires:  pkgconfig(tukit) >= 3.1.2
 
 # To keep OBS and rpmlint from complaining about directory ownership
@@ -66,9 +66,6 @@ Micro DNF and PackageKit to enable this functionality in normal use.
 
 %prep
 %autosetup -p1
-
-# Fix libdnf dependency for openSUSE to account for backported fixes
-sed -e "s/'libdnf', version : '>=0.60'/'libdnf', version : '>=0.58'/" -i meson.build
 
 
 %build
