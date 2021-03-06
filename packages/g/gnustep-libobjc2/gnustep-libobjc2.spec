@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-libobjc2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,19 @@
 %define _oname  libobjc2
 %define libname libobjc4_6
 Name:           gnustep-libobjc2
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        GNUstep Objective-C Runtime
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/gnustep/libobjc2
-Source:         https://github.com/gnustep/libobjc2/archive/%{version}.tar.gz#/%{_oname}-%{version}.tar.gz
+Source:         https://github.com/gnustep/libobjc2/archive/v%{version}/%{_oname}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gnustep-make
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-clang
+BuildRequires:  robin-map-devel
 
 %description
 The GNUstep Objective-C runtime is designed as a drop-in replacement for the
@@ -69,6 +70,9 @@ to develop applications with the GNUstep Objective-C runtime.
 
 %prep
 %setup -q -n %{_oname}-%{version}
+# Add link to build against system's robin-map-devel
+mkdir third_party/robin-map/include
+ln -s %{_includedir}/tsl third_party/robin-map/include/tsl
 
 %build
 # clang does not support lto yet
@@ -107,5 +111,6 @@ popd
 %{_includedir}/Block.h
 %{_includedir}/Block_private.h
 %{_libdir}/libobjc.so
+%{_libdir}/pkgconfig/libobjc.pc
 
 %changelog
