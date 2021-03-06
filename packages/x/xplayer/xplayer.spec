@@ -1,7 +1,7 @@
 #
 # spec file for package xplayer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with zeitgeist
 Name:           xplayer
-Version:        2.2.8
+Version:        2.4.0
 Release:        0
 Summary:        Generic media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -104,7 +104,6 @@ seek and volume controls, and complete keyboard navigation.
 Summary:        Plugins for xplayer media player
 Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name} = %{version}
-Requires:       libpeas-loader-python3
 # Brasero plugin.
 Recommends:     brasero
 # BBC iPlayer plugin.

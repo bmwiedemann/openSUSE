@@ -203,4 +203,14 @@
 </comment>
     <requestid>855385</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c5b7efe598f71e26a32dbe0fee8b0c25</srcmd5>
+    <version>2.4.0</version>
+    <time>1615061944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0.
+  * Packaging: Move thumbnailer and audio-preview to a new package
+</comment>
+    <requestid>877315</requestid>
+  </revision>
 </revisionlist>
