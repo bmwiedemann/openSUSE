@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 28 14:04:35 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Fix cinnamon-favourite-applications.patch, YaST desktop renamed. 
+
+-------------------------------------------------------------------
 Tue Feb  9 19:24:25 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Add support_yast_settings.patch gh#linuxmint/cinnamon#9590 to fix
