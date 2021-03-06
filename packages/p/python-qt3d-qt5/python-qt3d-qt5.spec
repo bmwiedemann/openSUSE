@@ -1,7 +1,7 @@
 #
 # spec file for package python-qt3d-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,12 @@
 %define have_qt3danimation 1
 %endif
 
-%if 0%{suse_version} < 1550
-%define use_sip4 1
-%endif
-
 %define oldpython python
 %define mname qt3d-qt5
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-%{mname}
-Version:        5.15.1
+Version:        5.15.3
 Release:        0
 Summary:        Python bindings for the Qt5 3D framework
 License:        GPL-3.0-only
@@ -40,7 +37,10 @@ Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtchart/intro
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt3D/PyQt3D-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-devel}
+BuildRequires:  %{python_module sip-devel >= 5.3}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
@@ -50,15 +50,8 @@ BuildRequires:  pkgconfig(Qt53DExtras)
 BuildRequires:  pkgconfig(Qt53DInput)
 BuildRequires:  pkgconfig(Qt53DLogic)
 BuildRequires:  pkgconfig(Qt53DRender)
-%if 0%{?use_sip4}
-BuildRequires:  %{python_module sip4-devel >= 4.19.4}
-Requires:       python-sip(api) = %{python_sip_api_ver}
-%else
-BuildRequires:  %{python_module pyqt-builder}
-BuildRequires:  %{python_module sip-devel >= 5.3}
-%requires_eq    python-qt5-sip
-%endif
-%requires_ge    python-qt5
+Requires:       python-qt5 >= %{version}
+Requires:       python-qt5-sip
 
 %python_subpackages
 
@@ -102,6 +95,8 @@ This package provides %{name} examples.
 
 %install
 %pyqt_install
+# replace CRLF line endings in example resources in order to make rpmlint happy.
+find examples/assets -type f -print0 | xargs -0 dos2unix 
 %pyqt_install_examples %mname
 
 %files %{python_files}

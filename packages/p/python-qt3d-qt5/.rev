@@ -69,4 +69,12 @@ This is for backports derived from Factory. No effect on Tumbleweed.</comment>
 </comment>
     <requestid>846248</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a712ec931cf9a2ee0262ae0c760ff892</srcmd5>
+    <version>5.15.3</version>
+    <time>1615061916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875745</requestid>
+  </revision>
 </revisionlist>
