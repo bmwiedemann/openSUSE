@@ -21,14 +21,12 @@
 # NEP 29: Numpy 1.20 dropped support for Python 3.6, python36-numpy is removed from Tumbleweed. xarray will follow on next release
 %define         skip_python36 1
 Name:           python-xarray
-Version:        0.16.2
+Version:        0.17.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
 URL:            https://github.com/pydata/xarray
 Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM xarray-pr4884-dask2021.patch gh#pydata/xarray#4884
-Patch0:         xarray-pr4884-dask2021.patch
 BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module numpy-devel >= 1.14}
 BuildRequires:  %{python_module pandas >= 0.25}
