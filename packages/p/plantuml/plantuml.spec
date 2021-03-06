@@ -1,7 +1,7 @@
 #
 # spec file for package plantuml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,78 +17,84 @@
 
 
 Name:           plantuml
-Version:        1.2020.19
+Version:        1.2021.1
 Release:        0
 Summary:        Java UML Tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
-URL:            http://plantuml.sourceforge.net
-Source0:        https://github.com/plantuml/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            http://plantuml.com/
+Source0:        http://downloads.sourceforge.net/plantuml/%{name}-lgpl-%{version}.tar.gz
 Source1:        %{name}.script
-Source2:        %{name}.xml
-Source10:       example01.uml
-Source11:       example02.uml
-Source20:       http://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf
+Source10:       http://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf
+Patch0:         remove-non-ascii-char.patch
 BuildRequires:  ant
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  java-devel >= 1.5
-BuildRequires:  jpackage-utils
-BuildRequires:  libxslt
-BuildRequires:  unzip
-Requires:       dejavu-fonts
+BuildRequires:  fdupes
+BuildRequires:  javapackages-local
+BuildRequires:  xmvn-install
 Requires:       java >= 1.8.0
-Requires:       jpackage-utils
-Conflicts:      java-1_5_0-gcj-compat
+Requires:       javapackages-tools
 BuildArch:      noarch
 
 %description
-PlantUML is a program allowing to draw UML diagrams, using a simple human readable text description.
+PlantUML is a program allowing to draw UML diagrams, using a simple
+and human readable text description. It is extremely useful for code
+documenting, sketching project architecture during team conversations
+and so on.
 
-PlantUML supports the following diagram types:
-   - sequence diagram
-   - use case diagram
-   - class diagram
-   - activity diagram
-   - component diagram
-   - state diagram
+PlantUML supports the following diagram types
+  - sequence diagram
+  - use case diagram
+  - class diagram
+  - activity diagram
+  - component diagram
+  - state diagram
 
-Output images can be generated in PNG, in SVG or LaTeX format.  PlantUML also supports generation of ASCII art diagrams (only for sequence diagrams).
+%package javadoc
+Summary:        Javadoc for %{name}
+Group:          Productivity/Publishing/Other
+
+%description javadoc
+This package contains the API documentation for %{name}.
+
 
 %prep
-%setup -q
-# Replace placeholder strings:
+%setup -q -c -n plantuml
+%patch0 -p1
 cp %{SOURCE1} %{name}
-cp %{SOURCE2} .
-cp %{SOURCE10} %{SOURCE11} .
-cp %{SOURCE20} .
+cp %{SOURCE10} .
+# only contains a single line pointing to website
+rm README
 
 %build
-%{ant} \
-  -Dant.build.javac.source=1.6 \
-  -Dant.build.javac.target=1.6
+ant
 
-# Building Manpages and HTML:
-DB=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/
-xsltproc $DB/manpages/docbook.xsl %{name}.xml
-xsltproc --output %{name}.html $DB/html/docbook.xsl %{name}.xml
+# build javadoc
+export CLASSPATH=$(build-classpath ant):plantuml.jar
+%javadoc -source 1.8 -encoding UTF-8 -Xdoclint:none -d javadoc $(find src -name "*.java") -windowtitle "PlantUML %{version}"
 
 %install
+# Set jar location
+%mvn_file net.sourceforge.%{name}:%{name} %{name}
+# Configure maven depmap
+%mvn_artifact net.sourceforge.%{name}:%{name}:%{version} %{name}.jar
+%mvn_install -J javadoc
+
 install -m 755 -d %{buildroot}%{_bindir}/
 install -m 755 -d %{buildroot}%{_javadir}
-install -m 755 -d %{buildroot}%{_mandir}/man1
 install -m 755 %{name} %{buildroot}%{_bindir}/%{name}
-install -m 644 %{name}.1  %{buildroot}%{_mandir}/man1/
 
 # Install jar file
 cp %{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
 (cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
 
-%files
-%license license.txt
-%doc example*.uml *.pdf *.html
-%{_javadir}/%{name}.jar
+%fdupes %{buildroot}%{_datadir}
+
+%files -f .mfiles
+%{_bindir}/plantuml
 %{_javadir}/%{name}-%{version}.jar
-%{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{?ext_man}
+%license COPYING
+
+%files javadoc -f .mfiles-javadoc
+%license COPYING
 
 %changelog
