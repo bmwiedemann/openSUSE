@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  6 17:19:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.8
+  * extern "C" using declarations are now supported.
+  * The help for pseudo-English now correctly includes auto as a
+    storage class for C++98 and C++03.
+
+-------------------------------------------------------------------
 Fri Feb 26 19:03:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.7
