@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtdatavis3d-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,12 @@
 #
 
 
-%if 0%{suse_version} < 1550
-%define use_sip4 1
-%endif
-
 %define oldpython python
 %define mname qtdatavis3d-qt5
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-%{mname}
-Version:        5.15.1
+Version:        5.15.3
 Release:        0
 Summary:        Python bindings for the Qt5 Data Visualization library
 License:        GPL-3.0-only
@@ -32,21 +29,15 @@ Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualization/intro
 Source:         https://files.pythonhosted.org/packages/source/P/PyQtDataVisualization/PyQtDataVisualization-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-devel}
+BuildRequires:  %{python_module sip-devel >= 5.3}
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5DataVisualization)
-%if 0%{?use_sip4}
-BuildRequires:  %{python_module sip4-devel >= 4.19.1}
-Requires:       python-sip(api) = %{python_sip_api_ver}
-%else
-BuildRequires:  %{python_module pyqt-builder}
-BuildRequires:  %{python_module sip-devel >= 5.3}
-%requires_eq    python-qt5-sip
-%endif
-Requires:       python-qt5
-
+Requires:       python-qt5 >= %{version}
+Requires:       python-qt5-sip
 %python_subpackages
 
 %description
