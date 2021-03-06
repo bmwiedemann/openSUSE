@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(systemd)
 Recommends:     docker >= 1.6.0
 Requires:       systemd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 The Amazon EC2 Container Service initialization will start the ECS agent.
