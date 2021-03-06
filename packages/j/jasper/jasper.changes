@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  5 15:42:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.26:
+  * Fix JP2 decoder bug that can cause a null pointer dereference
+    for some invalid CDEF boxes. (#268)
+
+-------------------------------------------------------------------
 Mon Feb  8 09:02:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.25:
