@@ -106,6 +106,7 @@
     <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="amavisd-milter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-new" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="amavisd-new-docs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="amtk-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4034,6 +4035,7 @@
     <package name="ruby2.7-rubygem-liquid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-liquid-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-listen-3.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-listen-3_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-little-plugger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4114,6 +4116,7 @@
     <package name="ruby2.7-rubygem-public_suffix-3.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-puma" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-puma-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-puma-4.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-puma_worker_killer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pundit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4193,6 +4196,7 @@
     <package name="ruby2.7-rubygem-slim" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-slop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-sprockets-3.7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-sprockets-helpers" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4237,6 +4241,7 @@
     <package name="ruby2.7-rubygem-webfinger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-webmock-2_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-webpacker-4.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket-driver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket-extensions" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4265,23 +4270,26 @@
     <package name="ruby3.0-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-loofah" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-method_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-puma" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-puma-4.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-railties-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rb-fsevent" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rb-inotify" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-semantic_range" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4292,7 +4300,7 @@
     <package name="ruby3.0-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-webpacker-4.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
