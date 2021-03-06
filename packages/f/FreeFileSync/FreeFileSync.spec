@@ -1,7 +1,7 @@
 #
 # spec file for package FreeFileSync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.4
+Version:        11.7
 Release:        0
 Summary:        Free backup software to synchronize files and folders
 License:        GPL-3.0-or-later

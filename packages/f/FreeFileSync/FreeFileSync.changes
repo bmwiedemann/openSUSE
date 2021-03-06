@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Mar  2 22:17:33 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.7
+  - Detect moved files on FTP (if server supports MLSD)
+  - Allow installation only for current or all user(s) (Linux)
+  - Added application uninstaller: uninstall.sh (Linux)
+  - Use login user config path when running as root (macOS, Linux)
+  - Fixed detection of moved files with unstable device IDs (macOS, Linux)
+  - Strict checking for duplicate file IDs
+  - Avoid EINVAL invalid argument error when using F_PREALLOCATE (macOS)
+  - Restore input focus after closing log panel
+  - Double-click on file to open Google Drive web interface
+  - Fixed alpha channel image scaling glitch
+  - Fixed recycle bin folders being created recursively
+  - Fixed thread count status message fluctuation
+  - Don't quit FreeFileSync when parent terminal is closed (SIGHUP)
+  - Fixed "Operation not supported" error when setting directory locks
+  - Show folder picker despite SHCreateItemFromParsingName() error
+  - Work around "OLE received a packet with an invalid header" error
+- Changes from 11.6
+  - New FreeFileSync installer (Linux)
+  - New auto-updater for the Donation Edition (macOS, Linux)
+  - Support reading FTP file symlinks
+  - Added context menu option "Edit with FreeFileSync" (Linux, KDE)
+  - Support starting via symlink (macOS)
+  - Command line support with "freefilesync" symlink 
+    in /usr/local/bin (macOS)
+  - Fixed starting via symlink found by PATH (Linux)
+  - Preserve keyboard focus when starting sync via F9
+  - Don't show relative parent path if folder does not exist
+  - Added high-resolution application icons (Linux, macOS)
+  - Work around "500 'HELP' command unrecognized" FTP error
+  - Fixed menu bar icon not being removed immediately (macOS Big Sur)
+  - Don't allow folder names ending with dot character (Windows)
+  - Mitigate ERROR_ALREADY_ASSIGNED: Local Device Name Already 
+    in Use [Wnetaddconnection2]
+  - Fixed startup failure when app folder contains back quote char (macOS)
+  - Fixed network card not found error on virtual machine (KVM Linux)
+  - Fixed RTL layout direction in popup dialogs
+- Changes from 11.5
+  - New configuration context menu option to delete from disk
+  - Start auto retry delay at time of error instead of reporting
+  - Added error details to status message before retry
+  - Improved color scheme to better integrate with system colors
+  - Keep partial SFTP results after network failure
+  - Fixed incorrect panel font (macOS Big Sur)
+  - Fixed SFTP retry not working after network drop
+  - Fixed crash on exit with floating panels (macOS Big Sur)
+  - Fixed auto-close option not being remembered
+  - Fixed installer high-DPI scaling issues
+  - Fixed mouse hover issues with grid column header
+  - Fixed menu bar icons not showing (Linux)
+  - Removed redundant GUI layout recalculations
+  - Keep correct panel sizes after log panel maximize
+  - Support modern folder picker in installer
+  - Don't raise progress dialog after sync when resuming from systray
+
+-------------------------------------------------------------------
 Fri Dec 11 07:53:28 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 11.4
