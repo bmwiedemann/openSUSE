@@ -22,8 +22,10 @@
 %define _buildshell /bin/bash
 %define import_path github.com/lxc/lxd
 
+%define lxd_optdir /opt/lxd
+
 Name:           lxd
-Version:        4.11
+Version:        4.12
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -67,6 +69,17 @@ Requires:       rsync
 Requires:       squashfs
 Requires:       tar
 Requires:       xz
+# Needed for VM support.
+Requires:       qemu-ovmf-x86_64
+BuildRequires:  qemu-ovmf-x86_64
+# QEMU spice became a separate package for QEMU 5.2, which is not in Leap 15.2.
+# But it exists in Tumbleweed so only require this in Tumbleweed.
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150300
+Requires:       qemu-ui-spice-core
+%else
+Requires:       qemu-ui-spice-app
+%endif
+Requires:       qemu-x86
 # Storage backends -- we don't recommend ZFS since it's not *technically* a
 # blessed configuration.
 Recommends:     lvm2
@@ -158,7 +171,12 @@ export GOPATH="$GOPATH:$PKGDIR/_dist"
 mkdir bin
 for mainpkg in "${mainpkgs[@]}"
 do
+	# Make sure all binaries *except* "lxc" have an lxd- prefix.
 	binary="$(basename "$mainpkg")"
+	if  ( echo "$binary" | grep -Eqv '^lx[cd].*$' )
+	then
+		binary="lxd-$binary"
+	fi
 	(
 		# We need to link against our particular dylib deps.
 		export \
@@ -231,6 +249,7 @@ done
 mkdir man
 ./bin/lxc manpage man/
 
+# Final sanity-check during build.
 pushd bin/
 for bin in *
 do
@@ -283,6 +302,15 @@ install -D -m 0644 %{S:201} %{buildroot}%{_sysconfdir}/dnsmasq.d/60-lxd.conf
 install -d -m 0711 %{buildroot}%{_localstatedir}/lib/%{name}
 install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 
+# In order for VM support in LXD to function, you need to have OVMF configured
+# in the way it expects. In particular, LXD depends on specific filenames for
+# the firmware files so we create fake ones with symlinks.
+export OVMF_DIR="%{buildroot}%{lxd_optdir}/ovmf"
+mkdir -p "$OVMF_DIR"
+ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-code.bin "$OVMF_DIR/OVMF_CODE.fd"
+ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-vars.bin "$OVMF_DIR/OVMF_VARS.ms.fd"
+ln -s %{_datarootdir}/qemu/ovmf-x86_64-vars.bin "$OVMF_DIR/OVMF_VARS.fd"
+
 %fdupes %{buildroot}
 
 %pre
@@ -331,12 +359,14 @@ grep -q '^root:' /etc/subgid || \
 %defattr(-,root,root)
 %doc AUTHORS README.md doc/
 %license COPYING
-%{_bindir}/*
+%{_bindir}/lx{c,d}*
 %{_mandir}/man*/*
 %{_libdir}/%{name}
 
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
+
+%{lxd_optdir}
 
 %dir %{_localstatedir}/lib/%{name}
 %dir %{_localstatedir}/log/%{name}

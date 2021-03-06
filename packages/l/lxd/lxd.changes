@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar  5 16:31:52 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.12. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-12-has-been-released/10424
+  boo#1183111
+
+  + Initial Network ACLs support (OVN-only)
+  + Project restricted certificates
+  + Server configuration options now supported at the project level
+  + Configuration option for Ceph features
+  * Projects now supported by lxd init --dump and --preseed
+  * Initial auto-generated REST-API documentation
+
+  + VM: Stateful stop and stateful snapshots for virtual machines
+- Updated packaging to support VMs, though note that LXD's usage of QEMU causes
+  issues with QEMU 5.2 on openSUSE (because of how we package it). See
+  <https://github.com/lxc/lxd/issues/8416> for more details. bsc#1181549
+- Prefix all binaries with lxd- if they don't start with "lx[cd]". This is to
+  avoid having cases like lxd-generate where there's a binary in /usr/bin that
+  has a super-generic name.
+
+-------------------------------------------------------------------
 Fri Feb  5 07:41:04 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.11. The full upstream changelog is available from:
