@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-http_json
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %define modname monitoring-plugins-http_json
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           monitoring-plugins-http_json
-Version:        2.1+git.1593763135.c23ebac
+Version:        2.1.1
 Release:        0
 Summary:        Plugin for Nagios which checks json values from a given HTTP endpoint
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://github.com/drewkerrigan/nagios-http-json
-Source:         %{modname}-%{version}.tar.xz
-Source1:        https://raw.githubusercontent.com/bb-Ricardo/nagios-http-json/next-release/contrib/icinga2_check_command_definition.conf
+Source:         https://github.com/drewkerrigan/nagios-http-json/archive/v%{version}.tar.gz#/nagios-http-json-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  nagios-rpm-macros
@@ -41,15 +41,15 @@ HTTP endpoint against argument specified rules and determines the
 status and performance data for that service.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n nagios-http-json-%{version}
 sed -i -e '1{s:^#!\s*/usr/bin/env python:#!%{_bindir}/python:}' *.py
-cp %{SOURCE1} .
 
 %build
 /bin/true
 
 %install
 install -Dpm 0755 check_http_json.py %{buildroot}%{nagios_plugindir}/check_http_json
+%python_clone -a %{buildroot}%{nagios_plugindir}/check_http_json
 
 %check
 # There are no tests upstream, don’t pretend there are.
@@ -57,9 +57,9 @@ install -Dpm 0755 check_http_json.py %{buildroot}%{nagios_plugindir}/check_http_
 %files %{python_files}
 %license LICENSE
 %doc README.md docs
-%doc icinga2_check_command_definition.conf
+%doc contrib/icinga2_check_command_definition.conf
 %dir %{nagios_libdir}
 %dir %{nagios_plugindir}
-%{nagios_plugindir}/check_http_json
+%python_alternative %{nagios_plugindir}/check_http_json
 
 %changelog
