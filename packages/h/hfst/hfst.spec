@@ -1,7 +1,7 @@
 #
 # spec file for package hfst
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           hfst
-Version:        3.15.2
+Version:        3.15.4
 Release:        0
 Summary:        Helsinki Finite-State Transducer Technology
 License:        GPL-3.0-or-later AND GPL-3.0-only AND GPL-2.0-or-later AND GPL-2.0-only AND GPL-3.0-only AND Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://hfst.github.io/
 
-Source:         https://github.com/hfst/hfst/releases/download/v%version/hfst-%version.tar.gz
+Source:         https://github.com/hfst/hfst/releases/download/v%version/hfst-%version.tar.bz2
 Patch1:         hfst-wrong-flags.diff
 Patch2:         hfst-split-libs.diff
 Patch3:         hfst-nodate.diff
