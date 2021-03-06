@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.9.0
+Version:        5.12.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -93,6 +93,7 @@ BuildRequires:  python3-Pygments >= 2.2.0
 BuildRequires:  python3-apsw >= 3.9.2
 # upstream use python-beautifulsoup4 4.7.1
 BuildRequires:  python3-beautifulsoup4 >= 4.6.0
+BuildRequires:  python3-cchardet >= 2.1.7
 BuildRequires:  python3-chardet >= 3.0.4
 BuildRequires:  python3-css-parser >= 1.0.6
 # upstream use python-dateutil 2.8.0
@@ -138,6 +139,7 @@ BuildRequires:  python3-soupsieve >= 1.9.1
 BuildRequires:  python3-speechd >= 0.10.1
 BuildRequires:  python3-webencodings >= 0.5.1
 # upstream use python-zeroconf 0.21.3
+BuildRequires:  python3-py7zr >= 0.11.1
 BuildRequires:  python3-zeroconf >= 0.19.1
 #
 Requires:       chmlib >= 0.40
@@ -154,6 +156,7 @@ Requires:       python3-Pillow >= 5.0.0
 Requires:       python3-Pygments >= 2.1.3
 Requires:       python3-apsw >= 3.9.2
 Requires:       python3-beautifulsoup4 >= 4.6.0
+Requires:       python3-cchardet >= 2.1.7
 Requires:       python3-chardet >= 3.0.4
 Requires:       python3-css-parser >= 1.0.6
 Requires:       python3-dateutil >= 2.7.3
@@ -180,6 +183,7 @@ Requires:       python3-setuptools >= 23.1.0
 Requires:       python3-six >= 1.10.0
 Requires:       python3-soupsieve >= 1.9.1
 #Requires:       python3-unrardll >= 0.1.3
+Requires:       python3-py7zr >= 0.11.1
 Requires:       python3-speechd >= 0.10.1
 Requires:       python3-webencodings >= 0.5.1
 Requires:       python3-zeroconf >= 0.19.1

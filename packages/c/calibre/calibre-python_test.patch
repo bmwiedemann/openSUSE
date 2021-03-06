@@ -1,7 +1,8 @@
-diff -Pdpru calibre-4.8.0.orig/bypy/linux/__main__.py calibre-4.8.0/bypy/linux/__main__.py
---- calibre-4.8.0.orig/bypy/linux/__main__.py	2020-01-03 02:29:53.000000000 +0100
-+++ calibre-4.8.0/bypy/linux/__main__.py	2020-01-09 13:03:50.736696348 +0100
-@@ -35,7 +35,7 @@ qt_get_dll_path = partial(get_dll_path,
+Index: calibre-5.10.0/bypy/linux/__main__.py
+===================================================================
+--- calibre-5.10.0.orig/bypy/linux/__main__.py
++++ calibre-5.10.0/bypy/linux/__main__.py
+@@ -36,7 +36,7 @@ qt_get_dll_path = partial(get_dll_path,
  
  def binary_includes():
      return [
@@ -10,10 +11,11 @@ diff -Pdpru calibre-4.8.0.orig/bypy/linux/__main__.py calibre-4.8.0/bypy/linux/_
  
          j(PREFIX, 'private', 'mozjpeg', 'bin', x) for x in ('jpegtran', 'cjpeg')] + [
          ] + list(map(
-diff -Pdpru calibre-4.8.0.orig/src/calibre/test_build.py calibre-4.8.0/src/calibre/test_build.py
---- calibre-4.8.0.orig/src/calibre/test_build.py	2020-01-03 02:29:53.000000000 +0100
-+++ calibre-4.8.0/src/calibre/test_build.py	2020-01-09 12:23:16.317405009 +0100
-@@ -261,9 +261,10 @@ class BuildTest(unittest.TestCase):
+Index: calibre-5.10.0/src/calibre/test_build.py
+===================================================================
+--- calibre-5.10.0.orig/src/calibre/test_build.py
++++ calibre-5.10.0/src/calibre/test_build.py
+@@ -369,9 +369,10 @@ class BuildTest(unittest.TestCase):
          from calibre.gui2.win_file_dialogs import test
          test()
  
@@ -25,5 +27,5 @@ diff -Pdpru calibre-4.8.0.orig/src/calibre/test_build.py calibre-4.8.0/src/calib
 +#        from calibre.utils.unrar import test_basic
 +#        test_basic()
  
-     @unittest.skipUnless(iswindows, 'WPD is windows only')
-     def test_wpd(self):
+     def test_7z(self):
+         from calibre.utils.seven_zip import test_basic

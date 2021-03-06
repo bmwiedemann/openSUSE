@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Fri Feb 26 06:37:58 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.12.0
+  * New Features
+    - E-book viewer: When searching start the search from the
+      current position, jumping to the first match at or after the
+      current page
+    - E-book viewer: Have the Table of Contents view automatically
+      scroll to keep the chapter being read currently visible
+    - Various improvements to the calibre template language, see 
+      https://www.mobileread.com/forums/showthread.php?t=337573
+    - Edit book: File browser: Show total size of items in category
+      when hovering over category with mouse
+    - Kobo driver: Add support for latest firmware and also an
+      option to choose the color used for cover letterboxing
+  * Bug Fixes
+    - E-book viewer: Fix selection popup bar sometimes going off
+      screen when dragging up to the top line of text
+    - Get books: Update the Biblio and Chitanka stores for website
+      changes
+    - Edit book: Fix editing of JavaScript files not working
+
+-------------------------------------------------------------------
+Fri Feb 12 06:44:32 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.11.0
+  * New Features
+    - Edit book: Add a tool to split the tag at the current cursor
+      position, creating a new tag with the same style and class
+      attributes. To add the tool go to the Toolbars section in the
+      editor preferences
+    - E-book viewer: Show the URL when hovering over external links
+    - E-book viewer: Redesign the reference mode to also work on 
+      touch screens without a mouse. Now in reference mode 
+      paragraph numbers are displayed for all paragraphs
+    - Edit book: Allow Ctrl-clicking on class names to jump to the
+      first style rule that matches the tag and class
+    - Content server: When browsing highlights for a book allow
+      selecting multiple highlights to delete or export quickly
+    - Allow creating keyboard shortcuts to copy show and view URLs
+      for selected books to clipboard
+    - calibredb: Add a timeout option to control the timeout when 
+      connecting to the calibre server
+  * Bug Fixes
+    - Content server: Fix dragging selection handles not working in
+      Safari
+    - E-book viewer: Fix links with a href of "#" not working
+    - E-book viewer: Hide the controls when clicking the back or 
+      forward buttons
+    - E-book viewer: When jumping to a highlight using the 
+      highlights panel, the back button should return to position 
+      before jump
+    - E-book viewer: Fix incorrect tooltip when hovering over 
+      a section title in the search results list
+    - HTMLZ Output: Fix a regression in calibre 5 that broke 
+      creating HTMLZ documents when using the option to place CSS 
+      inline
+
+-------------------------------------------------------------------
+Fri Jan 22 17:18:22 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.10.1
+  * Bug Fixes
+    - Fixes a regression in 5.10.0 that broke conversion when
+      including metadata as a jacket page and using long text 
+      custom columns
+
+-------------------------------------------------------------------
+Fri Jan 22 11:22:02 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.10.0
+  * New Features
+    - Bulk metadata edit: Add a new control to compress the cover
+      image files for all selected books
+    - Add support for the CB7 comic file file format
+    - E-book viewer: Allow adding a button to the selection bar
+      that copies thecurrently selected text along with a 
+      calibre:// URL to show the text in the book
+    - Conversion: Insert metadata: Allow showing identifiers such
+      as ISBN in the jacket page template
+    - Conversion: Insert metadata: Allow hiding entries in the 
+      jacket template when they are not present in the metadata
+    - calibre-server --manage-users: Add a scriptable interface: 
+      calibre-server --manage-users -- help
+    - E-book viewer: Add keyboard shortcuts to copy the current
+      location to the clipboard
+    - E-book viewer: Highlight all currently visible Table of
+      Contents entries, not just the first
+    - Add a new tweak under Preferences->Tweaks->Author sort name
+      algorithm to optionally recognizecommon surname prefixes such
+      as von, van, de, etc. when generating sort names.
+  * Bug Fixes
+    - E-book viewer: Move read aloud pop-up bar to the bottom of
+      the screen in flow mode
+    - E-book viewer: Fix scrolling with two fingers on touch pad on
+      macOS not smooth
+    - PDF Output: When converting fixed layout input documents fix
+      anchors inserted for navigation sometimes being rendered as
+      blue boxes
+    - Edit book: Remove unused CSS: Fix selectors that don't match
+      from CSS rules containing multiple selectors not being
+      removed
+    - Bulk metadata download: Fix series number not being changes
+      if the series is the same as the existing series
+    - E-book viewer: Fix a regression that caused non-HTML
+      descriptions to not be displayed in the metadata page
+    - E-book viewer: Fix clock being displayed in 24 hr format on 
+      some systems even though system locale is set to use 12 hr
+      format.
+    - Bulk metadata edit: Fix regression that inverted the meaning
+      of the case sensitivity setting in the Search & replace tab
+    - calibredb list: Fix incorrect output when redirecting to file
+
+-------------------------------------------------------------------
 Fri Jan  8 10:09:46 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.9.0
