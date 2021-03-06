@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  5 03:07:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000043
+   see /usr/share/doc/packages/perl-LWP-ConsoleLogger/Changes
+
+  0.000043  2021-03-04 19:00:40Z
+      - Ensure that a silent logger is actually silent (GH#21) (Olaf Alders)
+
+-------------------------------------------------------------------
 Tue Jan 19 06:55:33 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - initial package 0.000042

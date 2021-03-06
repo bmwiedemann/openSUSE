@@ -7,4 +7,12 @@
     <comment>new dependency for perl-Net-OBS-Client</comment>
     <requestid>867060</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c71392749da8a9f1faf64b2eb8a4e0a7</srcmd5>
+    <version>0.000043</version>
+    <time>1615061969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877381</requestid>
+  </revision>
 </revisionlist>
