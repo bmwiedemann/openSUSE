@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           libebur128
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        A library implementing the EBU R128 loudness standard
 License:        MIT
