@@ -110,6 +110,7 @@
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
       <repopackage name="amarok"/>
+      <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
       <repopackage name="amavisd-new-docs"/>
       <repopackage name="amtk-5-lang"/>
@@ -4423,6 +4424,7 @@
       <repopackage name="ruby2.7-rubygem-liquid"/>
       <repopackage name="ruby2.7-rubygem-liquid-4"/>
       <repopackage name="ruby2.7-rubygem-listen"/>
+      <repopackage name="ruby2.7-rubygem-listen-3.2"/>
       <repopackage name="ruby2.7-rubygem-listen-3_1"/>
       <repopackage name="ruby2.7-rubygem-little-plugger"/>
       <repopackage name="ruby2.7-rubygem-locale"/>
@@ -4503,6 +4505,7 @@
       <repopackage name="ruby2.7-rubygem-public_suffix-3.1"/>
       <repopackage name="ruby2.7-rubygem-puma"/>
       <repopackage name="ruby2.7-rubygem-puma-4"/>
+      <repopackage name="ruby2.7-rubygem-puma-4.1"/>
       <repopackage name="ruby2.7-rubygem-puma_worker_killer"/>
       <repopackage name="ruby2.7-rubygem-pundit"/>
       <repopackage name="ruby2.7-rubygem-rack"/>
@@ -4582,6 +4585,7 @@
       <repopackage name="ruby2.7-rubygem-slim"/>
       <repopackage name="ruby2.7-rubygem-slop"/>
       <repopackage name="ruby2.7-rubygem-spring"/>
+      <repopackage name="ruby2.7-rubygem-spring-watcher-listen"/>
       <repopackage name="ruby2.7-rubygem-sprockets"/>
       <repopackage name="ruby2.7-rubygem-sprockets-3.7"/>
       <repopackage name="ruby2.7-rubygem-sprockets-helpers"/>
@@ -4626,6 +4630,7 @@
       <repopackage name="ruby2.7-rubygem-webfinger"/>
       <repopackage name="ruby2.7-rubygem-webmock-2_3"/>
       <repopackage name="ruby2.7-rubygem-webpacker"/>
+      <repopackage name="ruby2.7-rubygem-webpacker-4.0"/>
       <repopackage name="ruby2.7-rubygem-websocket"/>
       <repopackage name="ruby2.7-rubygem-websocket-driver"/>
       <repopackage name="ruby2.7-rubygem-websocket-extensions"/>
@@ -4654,23 +4659,26 @@
       <repopackage name="ruby3.0-rubygem-ffi"/>
       <repopackage name="ruby3.0-rubygem-i18n"/>
       <repopackage name="ruby3.0-rubygem-jbuilder"/>
+      <repopackage name="ruby3.0-rubygem-listen"/>
       <repopackage name="ruby3.0-rubygem-loofah"/>
       <repopackage name="ruby3.0-rubygem-method_source"/>
       <repopackage name="ruby3.0-rubygem-msgpack"/>
       <repopackage name="ruby3.0-rubygem-nio4r"/>
       <repopackage name="ruby3.0-rubygem-nokogiri"/>
-      <repopackage name="ruby3.0-rubygem-puma"/>
+      <repopackage name="ruby3.0-rubygem-puma-4.1"/>
       <repopackage name="ruby3.0-rubygem-rack"/>
       <repopackage name="ruby3.0-rubygem-rack-proxy"/>
       <repopackage name="ruby3.0-rubygem-rack-test-0_6"/>
       <repopackage name="ruby3.0-rubygem-rails-dom-testing"/>
       <repopackage name="ruby3.0-rubygem-rails-html-sanitizer"/>
       <repopackage name="ruby3.0-rubygem-railties-6.0"/>
+      <repopackage name="ruby3.0-rubygem-rb-fsevent"/>
+      <repopackage name="ruby3.0-rubygem-rb-inotify"/>
       <repopackage name="ruby3.0-rubygem-sass-rails"/>
       <repopackage name="ruby3.0-rubygem-sassc"/>
       <repopackage name="ruby3.0-rubygem-sassc-rails"/>
-      <repopackage name="ruby3.0-rubygem-semantic_range"/>
       <repopackage name="ruby3.0-rubygem-spring"/>
+      <repopackage name="ruby3.0-rubygem-spring-watcher-listen"/>
       <repopackage name="ruby3.0-rubygem-sprockets"/>
       <repopackage name="ruby3.0-rubygem-sprockets-rails"/>
       <repopackage name="ruby3.0-rubygem-sqlite3"/>
@@ -4681,7 +4689,7 @@
       <repopackage name="ruby3.0-rubygem-turbolinks-source"/>
       <repopackage name="ruby3.0-rubygem-tzinfo-1.2"/>
       <repopackage name="ruby3.0-rubygem-web-console"/>
-      <repopackage name="ruby3.0-rubygem-webpacker"/>
+      <repopackage name="ruby3.0-rubygem-webpacker-4.0"/>
       <repopackage name="ruby3.0-rubygem-zeitwerk"/>
       <repopackage name="rubygem-passenger"/>
       <repopackage name="rubygem-passenger-apache2"/>

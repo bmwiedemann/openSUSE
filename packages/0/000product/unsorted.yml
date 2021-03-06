@@ -334,6 +334,9 @@ unsorted:
   - adios-gnu-openmpi3-hpc 
   - adios-gnu-openmpi3-hpc-devel 
   - adios-gnu-openmpi3-hpc-devel-static 
+  - adios-gnu-openmpi4-hpc 
+  - adios-gnu-openmpi4-hpc-devel 
+  - adios-gnu-openmpi4-hpc-devel-static 
   - adios-openmpi1 
   - adios-openmpi1-devel 
   - adios-openmpi1-devel-static 
@@ -343,6 +346,9 @@ unsorted:
   - adios-openmpi3 
   - adios-openmpi3-devel 
   - adios-openmpi3-devel-static 
+  - adios-openmpi4 
+  - adios-openmpi4-devel 
+  - adios-openmpi4-devel-static 
   - adios_1_13_1-gnu-mpich-hpc 
   - adios_1_13_1-gnu-mpich-hpc-devel 
   - adios_1_13_1-gnu-mpich-hpc-devel-static 
@@ -358,6 +364,9 @@ unsorted:
   - adios_1_13_1-gnu-openmpi3-hpc 
   - adios_1_13_1-gnu-openmpi3-hpc-devel 
   - adios_1_13_1-gnu-openmpi3-hpc-devel-static 
+  - adios_1_13_1-gnu-openmpi4-hpc 
+  - adios_1_13_1-gnu-openmpi4-hpc-devel 
+  - adios_1_13_1-gnu-openmpi4-hpc-devel-static 
   - adlmidi 
   - adlmidi-tools 
   - adminer 
@@ -7942,6 +7951,7 @@ unsorted:
   - kross-ruby 
   - krunner-devel 
   - krunner-devel-32bit: [x86_64] 
+  - krunvm: [x86_64] 
   - krusader-doc 
   - kryo 
   - kryo-javadoc 
@@ -8912,7 +8922,7 @@ unsorted:
   - libSDL_Pango1 
   - libSDL_Pango1-32bit: [x86_64] 
   - libSDL_bgi-devel 
-  - libSDL_bgi-suse5 
+  - libSDL_bgi-suse6 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
@@ -10053,6 +10063,7 @@ unsorted:
   - libdnet1 
   - libdnf-devel 
   - libdnf-plugin-txnupd 
+  - libdnf-repo-config-zypp 
   - libdnf2 
   - libdnnl1: [x86_64] 
   - libdns1611-32bit: [x86_64] 
@@ -10726,7 +10737,7 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc14 
+  - libgrpc15 
   - libgrpc_plugin_support1 
   - libgrss-devel 
   - libgrss0 
@@ -11364,6 +11375,10 @@ unsorted:
   - libkomparediff2-devel 
   - libkonkretcmpi0 
   - libkpmcore7 
+  - libkrun-devel: [x86_64] 
+  - libkrun0: [x86_64] 
+  - libkrunfw-devel: [x86_64] 
+  - libkrunfw0: [x86_64] 
   - libksane-devel 
   - libksba-devel 
   - libkscreen2-devel 
@@ -13105,6 +13120,7 @@ unsorted:
   - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
+  - librime-private-devel 
   - librime1 
   - librk0 
   - librlog-devel 
@@ -13836,7 +13852,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb14 
+  - libupb15 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -18247,6 +18263,8 @@ unsorted:
   - pdf2djvu-lang 
   - pdf2svg 
   - pdfgrep 
+  - pdfgrep-bash-completion 
+  - pdfgrep-zsh-completion 
   - pdfquirk 
   - pdftk 
   - pdns 
@@ -18719,6 +18737,7 @@ unsorted:
   - perl-Gtk2-ImageView 
   - perl-Gtk2-Unique 
   - perl-Gtk3 
+  - perl-Gtk3-ImageView 
   - perl-Gtk3-SimpleList 
   - perl-Guard 
   - perl-HTML-Clean 
@@ -21256,7 +21275,6 @@ unsorted:
   - python36-Send2Trash 
   - python36-Shapely 
   - python36-SimpleWebSocketServer 
-  - python36-SoundCard 
   - python36-SoundFile 
   - python36-SpeechRecognition 
   - python36-Sphinx 
@@ -27624,7 +27642,6 @@ unsorted:
   - ruby3.0-rubygem-lightbox2 
   - ruby3.0-rubygem-liquid 
   - ruby3.0-rubygem-liquid-4 
-  - ruby3.0-rubygem-listen 
   - ruby3.0-rubygem-little-plugger 
   - ruby3.0-rubygem-locale 
   - ruby3.0-rubygem-log4r 
@@ -27697,6 +27714,7 @@ unsorted:
   - ruby3.0-rubygem-pry-doc 
   - ruby3.0-rubygem-public_suffix 
   - ruby3.0-rubygem-public_suffix-3.1 
+  - ruby3.0-rubygem-puma 
   - ruby3.0-rubygem-puma-4 
   - ruby3.0-rubygem-puma_worker_killer 
   - ruby3.0-rubygem-pundit 
@@ -27713,8 +27731,6 @@ unsorted:
   - ruby3.0-rubygem-raindrops 
   - ruby3.0-rubygem-rake-12_0 
   - ruby3.0-rubygem-rake-compiler 
-  - ruby3.0-rubygem-rb-fsevent 
-  - ruby3.0-rubygem-rb-inotify 
   - ruby3.0-rubygem-rb-kqueue 
   - ruby3.0-rubygem-rdiscount 
   - ruby3.0-rubygem-regexp_parser 
@@ -27756,6 +27772,7 @@ unsorted:
   - ruby3.0-rubygem-sass-rails-5.1 
   - ruby3.0-rubygem-sassc-2.2 
   - ruby3.0-rubygem-sdoc 
+  - ruby3.0-rubygem-semantic_range 
   - ruby3.0-rubygem-serverengine 
   - ruby3.0-rubygem-sexp_processor 
   - ruby3.0-rubygem-sigdump 
@@ -27798,6 +27815,7 @@ unsorted:
   - ruby3.0-rubygem-warden 
   - ruby3.0-rubygem-webfinger 
   - ruby3.0-rubygem-webmock-2_3 
+  - ruby3.0-rubygem-webpacker 
   - ruby3.0-rubygem-websocket 
   - ruby3.0-rubygem-websocket-driver 
   - ruby3.0-rubygem-websocket-extensions 
@@ -28021,9 +28039,6 @@ unsorted:
   - scidavis-lang 
   - scim-32bit: [x86_64] 
   - scim-anthy 
-  - scim-bridge 
-  - scim-bridge-gtk2 
-  - scim-bridge-gtk2-32bit: [x86_64] 
   - scim-canna 
   - scim-chewing 
   - scim-devel 
