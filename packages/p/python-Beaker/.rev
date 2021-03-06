@@ -249,4 +249,12 @@
   on nose to pytest (gh#bbangert/beaker#192).</comment>
     <requestid>822305</requestid>
   </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>535a14ddecb56fe1b29ccaec2e9098b6</srcmd5>
+    <version>1.11.0</version>
+    <time>1615061939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877313</requestid>
+  </revision>
 </revisionlist>

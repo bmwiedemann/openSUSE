@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  5 09:13:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Replace broken %ifpython3 macro
+
+-------------------------------------------------------------------
 Wed Jul 22 20:24:19 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add denose.patch, which ports the package from the dependency

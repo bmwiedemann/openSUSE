@@ -1,7 +1,7 @@
 #
 # spec file for package python-Beaker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,8 +62,8 @@ Requires:       python-funcsigs
 Provides:       %{oldpython}-beaker = %{version}
 Obsoletes:      %{oldpython}-beaker < %{version}
 %endif
-%ifpython3
-Requires:       python3-dbm
+%if %{python_version_nodots} >= 30
+Requires:       python-dbm
 %endif
 %python_subpackages
 
