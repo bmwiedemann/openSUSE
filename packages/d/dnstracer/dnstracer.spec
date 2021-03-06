@@ -1,7 +1,7 @@
 #
 # spec file for package dnstracer
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dnstracer
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Trace a DNS record to its start of authority
 License:        BSD-2-Clause
 Group:          Productivity/Networking/DNS/Utilities
-Url:            http://www.mavetju.org/unix/dnstracer.php
-Source:         http://www.mavetju.org/download/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://www.mavetju.org/unix/dnstracer.php
+Source:         https://www.mavetju.org/download/dnstracer-%{version}.tar.bz2
 
 %description
 Dnstracer determines where a given Domain Name Server (DNS) gets its
@@ -32,19 +31,20 @@ information from, and follows the chain of DNS servers back to the
 servers which know the data.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
-%configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-%make_install
+install -m 755 -d "%{buildroot}/%{_bindir}" 
+install -m 755 -d "%{buildroot}/%{_mandir}/man8" 
+%make_install PREFIX="%{buildroot}/%{_prefix}" MANPREFIX="%{buildroot}/%{_mandir}/man8"
 
 %files
-%defattr(-,root,root)
-%doc CHANGES CONTACT LICENSE README
+%license LICENSE
+%doc CHANGES CONTACT README
 %{_bindir}/%{name}
-%{_mandir}/man8/%{name}.8%{ext_man}
+%{_mandir}/man8/%{name}.8%{?ext_man}
 
 %changelog

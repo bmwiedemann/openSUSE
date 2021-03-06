@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  5 12:59:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10:
+  - Add support for EDNS0 (extra big packets)
+  - Add support for querying of ANY records.
+  - Add represention of SRV, RP records.
+
+-------------------------------------------------------------------
 Mon May 15 18:53:20 UTC 2017 - mardnh@gmx.de
 
 - Fix License
