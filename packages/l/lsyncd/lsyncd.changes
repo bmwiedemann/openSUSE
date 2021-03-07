@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  7 07:41:20 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use %%cmake macros
+
+-------------------------------------------------------------------
+Sun Mar  7 06:35:23 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Rebase lsyncd-lua.patch and add fix for implicit declaration of
+  function lua_objlen - renamed to lua_rawlen in 5.2
+- Run spec-cleaner
+- Remove insserv configuration and lsyncd-init.d
+
+-------------------------------------------------------------------
 Sun Jul 29 11:21:00 UTC 2018 - jengelh@inai.de
 
 - Replace %__-type macro indirections. Use %_smp_mflags for
