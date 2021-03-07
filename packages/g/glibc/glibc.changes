@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  2 11:57:15 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Disable x86 ISA level for now (bsc#1182522, BZ #27318)
+- nss-revert-api.patch: Workaround for nss-compat brokeness (bsc#1182247,
+  BZ #27416)
+
+-------------------------------------------------------------------
+Mon Mar  1 16:43:55 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Fix build of utils flavor for usrmerge
+
+-------------------------------------------------------------------
 Thu Feb 18 11:29:12 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Prepare for usrmerge (bsc#1029961)

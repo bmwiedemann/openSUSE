@@ -2424,4 +2424,14 @@ for more fun options (forwarded request 147495 from coolo)</comment>
     <comment>- Prepare for usrmerge (bsc#1029961) (forwarded request 873391 from Andreas_Schwab)</comment>
     <requestid>873392</requestid>
   </revision>
+  <revision rev="246" vrev="3">
+    <srcmd5>11fa913258f46f4524553ba20db6deb8</srcmd5>
+    <version>2.33</version>
+    <time>1615126775</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable x86 ISA level for now (bsc#1182522, BZ #27318)
+- nss-revert-api.patch: Workaround for nss-compat brokeness (bsc#1182247,
+  BZ #27416) (forwarded request 876230 from Andreas_Schwab)</comment>
+    <requestid>876231</requestid>
+  </revision>
 </revisionlist>

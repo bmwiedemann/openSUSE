@@ -200,6 +200,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ###
 # Patches that upstream will not accept
 ###
+# PATCH-FIX-OPENSUSE Work around for nss-compat brokeness
+Patch1:         nss-revert-api.patch
 
 ###
 # openSUSE specific patches - won't go upstream
@@ -415,18 +417,9 @@ The glibc-devel-static package contains the C library static libraries
 for -static linking.  You don't need these, unless you link statically,
 which is highly discouraged.
 
-
-
-
-
-
-
-
-
+%package extra
 # makedb requires libselinux. We add this program in a separate
 # package so that glibc does not require libselinux.
-
-%package extra
 Summary:        Extra binaries from GNU C Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
@@ -452,6 +445,7 @@ Internal usrmerge bootstrap helper
 
 %prep
 %setup -n glibc-%{version} -q -a 4
+%patch1 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
@@ -584,6 +578,8 @@ profile="--enable-profile"
 %else
 profile="--disable-profile"
 %endif
+# Disable x86 ISA level support for now (bsc#1182522)
+export libc_cv_include_x86_isa_level=no
 ../configure \
 	CFLAGS="$conf_cflags" BUILD_CFLAGS="$conf_cflags" \
 	CC="$BuildCC" CXX="$BuildCCplus" \
@@ -922,7 +918,11 @@ rm -f %{buildroot}%{slibdir}/ld*.so* %{buildroot}%{slibdir}/lib[!mp]*
 %if "%{rtlddir}" != "%{slibdir}"
 rm -f %{buildroot}%{rtlddir}/ld*.so*
 %endif
+%if "%{_libdir}" != "%{slibdir}"
 rm -f %{buildroot}%{_libdir}/lib*
+%else
+rm -f %{buildroot}%{_libdir}/lib*.a
+%endif
 rm -f %{buildroot}%{_bindir}/{catchsegv,ldd*,sprof}
 rm -rf %{buildroot}%{_mandir}/man*
 rm -rf %{buildroot}%{rootsbindir} %{buildroot}%{_includedir}
