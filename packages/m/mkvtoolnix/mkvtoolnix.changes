@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Mar  6 19:21:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 55.0.0
+  Bug fixes:
+  * MKVToolNix GUI: multiplexer: the user can now configure what
+    to do when using the "Add source files" button independently
+    of the setting for what happens when files are dragged &
+    dropped onto the GUI. The same options are available, but
+    they're distinct settings, allowing for different use cases.
+  * MKVToolNix GUI: multiplexer: deriving the track language
+    from file names doesn't use one big regular expression of all
+    enabled languages anymore. Instead, the file name is split
+    into parts on a list of characters (such as `.` or
+    `(` and `)`; configurable in the preferences). This prevents
+    the regular expression becoming too big for the regular
+    expression library to handle when many languages are enabled.
+  * MKVToolNix GUI: preferences: the language lists for
+    "deriving track languages" and "enabling items by language"
+    always included all the ISO 639-3 languages, even if those
+    weren't enabled in the "often-used languages" pane.
+  Other changes:
+  * mkvmerge, MKVToolNix GUI multiplexer: the functionality for
+    changing the length of the NALU "size" field for AVC/H.264
+    and HEVC/H.265 tracks has been removed. The corresponding
+    command-line option will continue to be recognized by
+    mkvmerge as not to break existing third-party applications,
+    but it won't actually do anything.
+
+-------------------------------------------------------------------
 Fri Feb 26 19:46:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version  54.0.0
