@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 07 00:02:34 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1614955627.711a5797:
+  * testapi: Add convenience function "enter_cmd"
+  * Catch incorrect use of '&' at end of script_run calls
+  * testapi: Add optional "lf" parameter to type_string
+  * Handle already present '&' terminator in "script_run" gracefully
+
+-------------------------------------------------------------------
 Thu Mar 04 16:02:33 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1614711054.7b334c37:
