@@ -1,7 +1,7 @@
 #
 # spec file for package tesseract
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tesseract
 Version:        2018_02_01
 Release:        0
-Url:            http://tesseract.gg/
 Summary:        First-person shooter with cooperative in-game map editing
 License:        Zlib
 Group:          Amusements/Games/3D/Shoot
+URL:            http://tesseract.gg/
 Source:         %{name}-%{version}.tar.xz
 Source1:        tesseract.desktop
 Source2:        tesseract.png
 Source3:        update.sh
 BuildRequires:  Mesa-devel
-BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Tesseract is a first-person shooter game focused on instagib deathmatch
@@ -70,8 +68,8 @@ This package provides the data files for the Tesseract game.
 rm -r bin_unix
 mkdir -p bin_unix
 cd src
-make CXXFLAGS="-Wall -fsigned-char %{optflags}" CFLAGS="%{optflags}"
-make install
+%make_build CXXFLAGS="-Wall -fsigned-char %{optflags}" CFLAGS="%{optflags}"
+%make_build install
 cd ../bin_unix
 mv *client client
 mv *server server
@@ -91,7 +89,7 @@ cd \$TESSERACT_DIR
 exec bin_unix/client "\$@"
 EOT
 chmod 755 %{buildroot}%{_bindir}/%{name}-game
-ln -sf ../lib/%{name}/bin_unix/server %{buildroot}%{_bindir}/%{name}-server
+ln -sf %{_libexecdir}/%{name}/bin_unix/server %{buildroot}%{_bindir}/%{name}-server
 
 # copy data files
 cp -a media/ config/ %{buildroot}%{_libexecdir}/tesseract/
@@ -105,16 +103,7 @@ cp %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/
 
 %fdupes -s %{buildroot}%{_libexecdir}/tesseract/media/
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
-%defattr(-,root,root)
 %{_bindir}/%{name}-game
 %dir %{_libexecdir}/%{name}
 %dir %{_libexecdir}/%{name}/bin_unix
@@ -123,13 +112,11 @@ cp %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/
 %{_datadir}/icons/hicolor/64x64/apps/tesseract.png
 
 %files server
-%defattr(-,root,root)
 %{_bindir}/%{name}-server
 %dir %{_libexecdir}/%{name}/bin_unix
 %{_libexecdir}/%{name}/bin_unix/server
 
 %files data
-%defattr(-,root,root)
 %doc doc/dev/*
 %dir %{_libexecdir}/tesseract
 %{_libexecdir}/tesseract/media

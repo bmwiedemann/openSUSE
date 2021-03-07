@@ -1,4 +1,12 @@
 #! /bin/bash
+tput setaf 9
+echo This script downloads source code via unencrypted svn://.
+echo Unfortunately upstream does not provide a secure download as of today.
+echo Please check if this has changed, and switch to https:// if possible.
+echo
+tput sgr0
+echo Press enter to proceed.
+read
 
 NAME=tesseract
 svn co svn://svn.tuxfamily.org/svnroot/tesseract/main ${NAME}_
