@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  6 22:58:58 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- Fix build for Leap 15.3
+  * add build dependency for librsvg-2.0 (was not discovered by pkgconfig)
+  * Add patch: 0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
+    just used for Leap. Disable appdata.xml generation since we have to old
+	version of appstream
+  * add uk lang folder for man pages (different from Factory)
+  * add com.gexperts.Tilix.appdata.xml file for Leap since we can't generate it 
+
+-------------------------------------------------------------------
 Tue Feb 23 19:35:29 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Generate and install localized man pages:
