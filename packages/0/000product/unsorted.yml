@@ -11,9 +11,6 @@ unsorted:
   - 4ti2-devel 
   - 6tunnel 
   - 7kaa 
-  - ASL 
-  - ASL-devel 
-  - ASL-doc 
   - AppCSXCAD 
   - AppStream-devel 
   - AppStream-doc 
@@ -476,7 +473,7 @@ unsorted:
   - alure-devel 
   - amanda 
   - amarok-lang 
-  - amazon-ecs-init 
+  - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent 
   - aml-devel 
   - amsynth 
@@ -9261,7 +9258,6 @@ unsorted:
   - libasan6-32bit: [x86_64] 
   - libasan6-gcc10 
   - libasan6-gcc10-32bit: [x86_64] 
-  - libaslcommon0 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
   - libasn1c-devel 
@@ -19861,6 +19857,7 @@ unsorted:
   - plank-theme-matcha 
   - plank-theme-plata 
   - plantuml 
+  - plantuml-javadoc 
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
   - plasma-framework-32bit: [x86_64] 
@@ -20933,7 +20930,6 @@ unsorted:
   - python3-mistralclient 
   - python3-mlt 
   - python3-monascaclient 
-  - python3-monitoring-plugins-http_json 
   - python3-morecvutils 
   - python3-moretools 
   - python3-mox3 
@@ -25454,6 +25450,7 @@ unsorted:
   - python38-moksha-common 
   - python38-moksha-hub 
   - python38-mongoengine 
+  - python38-monitoring-plugins-http_json 
   - python38-monotonic 
   - python38-moreorless 
   - python38-moto 
