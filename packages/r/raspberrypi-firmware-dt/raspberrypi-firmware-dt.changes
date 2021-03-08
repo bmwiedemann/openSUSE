@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  1 13:14:11 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce enable-bt-overlay.dts (bsc#1182759)
+
+-------------------------------------------------------------------
 Wed Jan 27 11:51:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce disable-v3d-overlay.dts, in order to be able to selectively disable
