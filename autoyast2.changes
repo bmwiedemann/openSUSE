@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  4 14:15:24 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Import the security settings after importing the bootloader
+  configuration (bsc#1183042).
+- 4.3.70
+
+-------------------------------------------------------------------
 Fri Feb 26 09:47:17 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Select patterns during auto installation even when not using the

@@ -2346,4 +2346,12 @@
     <comment>submit new version 4.3.69</comment>
     <requestid>875325</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>3d2cb960b4ca7986e76f6a2df49fe2f8</srcmd5>
+    <version>4.3.70</version>
+    <time>1615212958</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.70</comment>
+    <requestid>876940</requestid>
+  </revision>
 </revisionlist>
