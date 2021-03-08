@@ -17,18 +17,22 @@
 
 
 %define lname libKPimImportWizard5
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-import-wizard
-Version:        20.12.1
+Version:        21.04.0
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -52,18 +56,16 @@ BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5MessageCore)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(Qt5Gui) >= 5.10.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5Keychain)
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Assistant to import PIM data from other applications into Akonadi for use in KDE PIM applications.
+Assistant to import PIM data from other applications into Akonadi for use in
+KDE PIM applications.
 
 %package -n %{lname}
 Summary:        Assistant to import PIM data
@@ -81,12 +83,13 @@ Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 
 %description devel
-This package contains development headers to build new import plugins for KDE PIM.
+This package contains development headers to build new import plugins for
+KDE PIM applications.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
@@ -99,24 +102,23 @@ This package contains development headers to build new import plugins for KDE PI
   %{kf5_find_htmldocs}
 %endif
 %suse_update_desktop_file -u org.kde.akonadiimportwizard    Network Email
-rm -rf %{buildroot}%{_libdir}/libimportwizard.so
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/importwizard.categories
-%{_kf5_debugdir}/importwizard.renamecategories
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_plugindir}/importwizard
 %dir %{_kf5_sharedir}/importwizard
 %dir %{_kf5_sharedir}/importwizard/pics
 %dir %{_kf5_sharedir}/kconf_update/
+%doc %lang(en) %{_kf5_htmldir}/en/importwizard/
 %{_kf5_applicationsdir}/org.kde.akonadiimportwizard.desktop
 %{_kf5_bindir}/akonadiimportwizard
-%doc %lang(en) %{_kf5_htmldir}/en/importwizard/
+%{_kf5_debugdir}/importwizard.categories
+%{_kf5_debugdir}/importwizard.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kontact-import-wizard.png
 %{_kf5_plugindir}/importwizard/*.so
 %{_kf5_sharedir}/importwizard/pics/step1.png
@@ -129,10 +131,10 @@ rm -rf %{buildroot}%{_libdir}/libimportwizard.so
 %files devel
 %dir %{_includedir}/KPim
 %dir %{_kf5_includedir}/KPim
+%{_includedir}/KPim/importwizard_version.h
 %{_kf5_cmakedir}/KPimImportWizard/
 %{_kf5_includedir}/KPim/ImportWizard/
 %{_kf5_includedir}/KPim/importwizard/
-%{_includedir}/KPim/importwizard_version.h
 %{_kf5_libdir}/libKPimImportWizard.so
 
 %if %{with lang}

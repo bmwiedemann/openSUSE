@@ -431,4 +431,28 @@
     <comment>KDE Applications 20.12.1</comment>
     <requestid>861097</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>2c0cc026d2ed4885fd9575f0f53e0a33</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707268</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869239</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>86797decb707cd2b7f651e323679d2f0</srcmd5>
+    <version>20.12.3</version>
+    <time>1615212639</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877010</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>69b5ce206e625c009e83631abab8fb70</srcmd5>
+    <version>21.04.0</version>
+    <time>1619298434</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04</comment>
+    <requestid>887575</requestid>
+  </revision>
 </revisionlist>
