@@ -44,4 +44,23 @@
   * Translation Updates (forwarded request 868831 from mauriziogalli)</comment>
     <requestid>868874</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3a36dbcd90988dbc0948f6ffe823ecd</srcmd5>
+    <version>1.2.5</version>
+    <time>1615213121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5
+  - Adjust CPU icon color according to frequency
+  - Use 99th percentile as the max frequency when adjusting icon color
+  - Display text using a drawing area instead of using a label with CSS
+  - Enable font color reset
+  - Disable font settings when not displaying text
+  - Switch to symbolic close icons
+  - Bump required version of Xfce UI to 4.14
+  - Compute max_freq and min_freq when calculating avg/min/max
+  - Delete font name from RC file if using the default font
+  - Code cleanups, fixes and minor optimizations
+  - Translation Updates (forwarded request 876933 from mauriziogalli)</comment>
+    <requestid>877534</requestid>
+  </revision>
 </revisionlist>

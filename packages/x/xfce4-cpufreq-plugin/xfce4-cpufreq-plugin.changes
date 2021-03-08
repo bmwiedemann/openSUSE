@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar  5 09:10:41 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.2.5
+  - Adjust CPU icon color according to frequency
+  - Use 99th percentile as the max frequency when adjusting icon color
+  - Display text using a drawing area instead of using a label with CSS
+  - Enable font color reset
+  - Disable font settings when not displaying text
+  - Switch to symbolic close icons
+  - Bump required version of Xfce UI to 4.14
+  - Compute max_freq and min_freq when calculating avg/min/max
+  - Delete font name from RC file if using the default font
+  - Code cleanups, fixes and minor optimizations
+  - Translation Updates
+
+-------------------------------------------------------------------
 Wed Feb  3 07:23:46 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 1.2.4
