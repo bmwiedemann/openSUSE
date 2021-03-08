@@ -18,17 +18,15 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.11
+Version:        1.4.12
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
-#PATCH-FIX-UPSTREAM fix_upstream_2195_spice_plugin.patch jweberhofer@weberhofer.at -- fix for older opensuse versions
-Patch0:         fix_upstream_2195_spice_plugin.patch
-#PATCH-FIX-UPSTREAM fix_upstream_2196_older_glib_issue.patch  jweberhofer@weberhofer.at -- fix for buildng with older glib versions
-Patch1:         fix_upstream_2196_older_glib_issue.patch
+# PATCH-FIX-UPSTREAM upstream_build_fixes.patch
+Patch0:         upstream_build_fixes.patch
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  ed

@@ -552,4 +552,41 @@
     <comment></comment>
     <requestid>870294</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>15d73884b5588ae5414a0e38db9d19f8</srcmd5>
+    <version>1.4.12</version>
+    <time>1615213206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.4.12
+  * New features:
+    - Multi-monitor support !2184 (merged) @antenore
+    - Adding SSH certificate authentication !2208 (merged) @antenore
+  * Improvements
+    - Improved spelling, fixed typos
+    - Some refactoring and fixes for 1.4.11 !2198 (merged) @antenore
+    - Revert &quot;rdp/event: Fix wheel value for GDK_SCROLL_DOWN events&quot;
+      !2199 (merged) @pnowack
+    - Resolve &quot;Left-handed mouse support&quot; !2200 (merged) @antenore
+    - Rafactoring: GResource based UI elements !2201 (merged) @antenore
+    - Refactoring SSH themes !2205 (merged) @antenore
+    - Removing legacy audio settings !2207 (merged) @antenore
+    - Refactoring SSH tunnel authentication. #2414 (closed) !2211 (merged) @antenore
+    - Improve pre-connection FreeRDP channel initializations !2212 (merged) @antenore
+  * Fixes
+    - Invalid connection option &quot;:port&quot; removed !2193 (merged) @kingu
+    - Add ifdefs for SPICE version less then 0.38 
+      (fix #2408 (closed)) !2195 (merged) @hadogenes
+    - Fix for #2408 (closed) building with older SPICE libraries
+      !2194 (merged) @jweberhofer
+    - Ignoring GLib functions if on versions older than 2.56 !2196 (merged) @antenore
+    - Fixing compiler errors related to Python plugin support on master
+      !2178 (merged) @ToolsDevler
+    - Fixes for multi-monitor and Weblate !2202 (merged) @antenore
+    - Fixing memory leaks and minor bugs !2206 (merged) @antenore
+- Added  upstream_build_fixes.patch to fix several build issues on wayland
+- Removed patches fix_upstream_2196_older_glib_issue.patch
+  and fix_upstream_2195_spice_plugin.patch
+</comment>
+    <requestid>877707</requestid>
+  </revision>
 </revisionlist>
