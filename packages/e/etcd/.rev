@@ -206,4 +206,17 @@
     <comment></comment>
     <requestid>861699</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d2d1db7d951b27c163cf094f494a032</srcmd5>
+    <version>3.4.15</version>
+    <time>1615212944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.15:
+  * version: 3.4.15
+  * [Backport-3.4] etcdserver/api/etcdhttp: log successful etcd server side health check in debug level
+  * etcdserver: Fix 64 KB websocket notification message limit
+  * vendor: bump gorilla/websocket
+  * pkg/fileutil: fix F_OFD_ constants</comment>
+    <requestid>876798</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 03 13:50:06 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 3.4.15:
+  * version: 3.4.15
+  * [Backport-3.4] etcdserver/api/etcdhttp: log successful etcd server side health check in debug level
+  * etcdserver: Fix 64 KB websocket notification message limit
+  * vendor: bump gorilla/websocket
+  * pkg/fileutil: fix F_OFD_ constants
+
+-------------------------------------------------------------------
 Fri Jan 08 12:29:16 UTC 2021 - rbrown@suse.com
 
 - Update to version 3.4.14:
