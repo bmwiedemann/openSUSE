@@ -170,7 +170,7 @@ BuildRequires:  liburing-devel
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.13.4+git.187.5ad4708741a
+Version:        4.13.4+git.199.be6e11f5ab2
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -187,7 +187,7 @@ Requires(pre):  /usr/bin/getent
 Requires(pre):  /usr/sbin/groupadd
 Requires:       system-user-nobody
 Requires:       coreutils
-Requires:       grep
+Requires:       /usr/bin/grep
 %if 0%{?suse_version} > 1220
 Requires:       %{fillup_prereq}
 %endif
@@ -257,7 +257,6 @@ Requires:       /sbin/chkconfig
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 Requires:       coreutils
-%{?systemd_requires}
 Requires:       cifs-utils
 
 %description client
@@ -397,7 +396,7 @@ Requires(pre):  %{insserv_prereq}
 Requires(pre): coreutils
 Requires(pre): /bin/mktemp
 Requires(pre): /usr/bin/killall
-Requires(pre): sed
+Requires(pre): /usr/bin/sed
 
 %description -n ctdb
 ctdb is the clustered database used by Samba
@@ -1027,6 +1026,8 @@ CONFIGURE_OPTIONS="\
 %if 0%{?suse_version} > 1220
 	--enable-avahi \
 	--with-systemd \
+	--with-systemddir=%{_unitdir} \
+	--systemd-install-services \
 %endif
 	--with-shared-modules=%{auth_modules},%{vfs_modules},%{pdb_modules},%{idmap_modules} \
 %if %with_mitkrb5
@@ -1174,14 +1175,15 @@ startScripts="smb nmb winbind"
 %endif
 %if 0%{?suse_version} > 1220
 for srv_name in nmb smb winbind; do
-	install -m 0644 -p systemd/${srv_name}.service %{buildroot}/%{_unitdir}
 	ln -s service %{buildroot}/%{_sbindir}/rc${srv_name}
 done
 %if %{with_dc}
-	install -m 0644 -p systemd/samba-ad-dc.service %{buildroot}/%{_unitdir}
 	ln -s service %{buildroot}/%{_sbindir}/rcsamba-ad-dc
 %endif
-install -m 0644 systemd/sysconfig.* %{buildroot}%{_fillupdir}
+rm %{buildroot}/%{_sysconfdir}/sysconfig/samba
+install -m 0644 systemd/sysconfig.samba %{buildroot}%{_fillupdir}
+install -m 0644 systemd/sysconfig.samba-winbind %{buildroot}%{_fillupdir}
+install -m 0644 systemd/sysconfig.samba-ad-dc %{buildroot}%{_fillupdir}
 install -m 0644 -p ../systemd/samba.conf.tmp %{buildroot}/%{_tmpfilesdir}/samba.conf
 %else
 for script in ${startScripts}; do
@@ -1387,7 +1389,7 @@ then
 fi
 
 %service_add_post nmb.service smb.service
-%{_bindir}/systemd-tmpfiles --create %{_tmpfilesdir}/samba.conf
+%tmpfiles_create samba.conf
 %fillup_only
 %endif
 
@@ -1512,6 +1514,7 @@ fi
 %post ad-dc
 /sbin/ldconfig
 %service_add_post samba-ad-dc.service
+%{fillup_only -ans samba ad-dc}
 
 %postun ad-dc
 /sbin/ldconfig
@@ -1547,7 +1550,7 @@ else
 fi
 %if 0%{?suse_version} > 1220
 %service_add_post winbind.service
-%{_bindir}/systemd-tmpfiles --create %{_tmpfilesdir}/samba.conf
+%tmpfiles_create samba.conf
 %{fillup_only -ans samba winbind}
 %endif
 
@@ -1617,7 +1620,7 @@ exit 0
 %if 0%{?suse_version} > 1220
 %{fillup_only -n ctdb}
 %service_add_post ctdb.service
-%{_bindir}/systemd-tmpfiles --create %{_tmpfilesdir}/ctdb.conf || :
+%tmpfiles_create ctdb.conf
 %else
 %{fillup_and_insserv -n ctdb}
 %endif
@@ -2424,6 +2427,7 @@ exit 0
 
 %if %{with_dc}
 %files ad-dc
+%{_fillupdir}/sysconfig.samba-ad-dc
 %{_unitdir}/samba-ad-dc.service
 %{_bindir}/samba-tool
 %{_sbindir}/samba

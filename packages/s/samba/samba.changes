@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  1 12:09:56 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Spec file fixes around systemd and requires; (bsc#1182830);
+- Align systemd service unit files with upstream provided ones.
+
+-------------------------------------------------------------------
 Tue Jan 26 15:15:08 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.13.4
