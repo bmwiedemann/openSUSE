@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>811865</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7324067799d204f2ea138db090e4eae2</srcmd5>
+    <version>1.0.2</version>
+    <time>1615213099</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.0.2 (forwarded request 876846 from jgwang)</comment>
+    <requestid>877359</requestid>
+  </revision>
 </revisionlist>
