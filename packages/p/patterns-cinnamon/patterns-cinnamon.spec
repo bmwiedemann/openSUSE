@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-cinnamon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Patterns for Installation (Cinnamon)
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
@@ -77,12 +77,12 @@ Recommends:     gnome-calendar
 Recommends:     gnome-calculator
 Recommends:     gnome-disk-utility
 Recommends:     gnome-font-viewer
+Recommends:     hypnotix
 
 # Replaced by blueberry
 # Recommends:     gnome-bluetooth
 
 # Missing on openSUSE
-# Recommends:     hypnotix
 # Recommends:     drawing
 
 %description cinnamon
@@ -114,8 +114,8 @@ Obsoletes:      patterns-openSUSE-cinnamon_basis < %{version}
 #
 Requires:       cinnamon
 Requires:       cinnamon-control-center
-Requires:       cinnamon-session
 Requires:       cinnamon-screensaver
+Requires:       cinnamon-session
 Requires:       cinnamon-settings-daemon
 Requires:       cjs
 
