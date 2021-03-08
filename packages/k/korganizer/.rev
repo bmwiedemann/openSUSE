@@ -448,4 +448,12 @@
   * 0001-Look-for-designer-qt5-on-openSUSE.patch (forwarded request 872759 from cgiboudeaux)</comment>
     <requestid>872769</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>3dd419dff4fbdf4f6a35caf9524c5fe0</srcmd5>
+    <version>20.12.3</version>
+    <time>1615212791</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877149</requestid>
+  </revision>
 </revisionlist>
