@@ -87,4 +87,16 @@
     <comment></comment>
     <requestid>873736</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f55dcf0ef6300b393497f28b0967c7c</srcmd5>
+    <version>1.5.15</version>
+    <time>1615213160</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.15:
+  - shapes.Circle segment calculation will always use a minimum of 14 segments.
+  - shapes.Arc is now made from line segments, and by default has unconnected ends.
+  - Windows - Use the internal keystate to determine the mod shift rather than relying on GetKeyState
+    which relies on another event that may be called after WM_INPUT.</comment>
+    <requestid>877643</requestid>
+  </revision>
 </revisionlist>

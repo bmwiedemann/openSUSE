@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  8 09:10:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.15:
+  - shapes.Circle segment calculation will always use a minimum of 14 segments.
+  - shapes.Arc is now made from line segments, and by default has unconnected ends.
+  - Windows - Use the internal keystate to determine the mod shift rather than relying on GetKeyState
+    which relies on another event that may be called after WM_INPUT.
+
+-------------------------------------------------------------------
 Fri Feb 19 10:52:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop test_pause_resume test as it is unstable, especially on aarch64
