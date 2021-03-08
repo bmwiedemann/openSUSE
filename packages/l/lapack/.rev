@@ -404,4 +404,12 @@ An alternative would be to use the older manpages or to pre-generate them.
   * remove fortran-only -std=legacy opt from CFLAGS (forwarded request 840488 from StefanBruens)</comment>
     <requestid>841039</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3a92e567168ec4f4396b7a85ad1143dc</srcmd5>
+    <version>3.9.0</version>
+    <time>1615212893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876617</requestid>
+  </revision>
 </revisionlist>

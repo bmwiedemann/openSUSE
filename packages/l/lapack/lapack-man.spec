@@ -1,7 +1,7 @@
 #
 # spec file for package lapack-man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           lapack-man
 %define _name   lapack
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Manpages for LAPACK and BLAS
 License:        BSD-3-Clause
 Group:          Documentation/Other
 URL:            http://www.netlib.org/lapack/
-Source0:        http://www.netlib.org/lapack/%{_name}-%{version}.tar.gz
+Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/lapack-%{version}.tar.gz
 BuildRequires:  doxygen >= 1.7
 BuildRequires:  fdupes
 # Merged blas-man into lapack-man with 3.8.0 update

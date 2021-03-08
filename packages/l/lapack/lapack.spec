@@ -1,7 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,22 @@
 
 
 Name:           lapack
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Linear Algebra Package
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            http://www.netlib.org/lapack/
-Source0:        http://www.netlib.org/lapack/%{name}-%{version}.tar.gz
+Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/lapack-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch1:         lapack-3.2.2.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/489a2884c22e.patch
+Patch2:         Fix-MinGW-build-error.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/d168b4d2ae67.patch
+Patch3:         Fix-some-minor-inconsistencies-in-LAPACKE_czgesvdq.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/ea2a102d3827.patch
+Patch4:         Avoid-out-of-bounds-accesses-in-complex-EIG-tests.patch
+
 BuildRequires:  gcc-fortran
 BuildRequires:  python3-base
 BuildRequires:  update-alternatives
@@ -172,7 +179,7 @@ Obsoletes:      libcblas3 == 20110120
 
 %description -n libcblas3
 This library provides a native C interface to BLAS routines available
-at www.netlib.org/blas to facilitate usage of BLAS functionality 
+at www.netlib.org/blas to facilitate usage of BLAS functionality
 for C programmers.
 
 %package     -n cblas-devel
@@ -197,12 +204,17 @@ statically, which is highly discouraged.
 
 %prep
 %setup -q
-%patch1
+%autopatch -p1
 sed -i -e '1 s@env python@python3@' lapack_testing.py
 
 %build
+# Increase stack size, required for xeigtstz, see
+# https://github.com/Reference-LAPACK/lapack/issues/335
+# Remove for lapack > 3.9
+ulimit -s 16384
+
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%global optflags_f %{optflags} -std=legacy
+%global optflags_f %{optflags}
 case "$RPM_ARCH" in
     i[0-9]86) PRECFLAGS="-ffloat-store" ;;
     *)        PRECFLAGS="" ;;
@@ -212,8 +224,7 @@ cp make.inc.example make.inc
 
 make cleanlib %{?_smp_mflags}
 make %{?_smp_mflags} blaslib \
-  OPTS="%{optflags_f} -fPIC" \
-  NOOPT="%{optflags_f} -O0 -fPIC"
+  FFLAGS="%{optflags_f} -fPIC"
 mkdir tmp
 ( cd tmp; ar x ../librefblas.a )
 gfortran -shared -Wl,-soname=libblas.so.3 -o libblas.so.%{version} tmp/*.o
@@ -221,8 +232,8 @@ ln -s libblas.so.%{version} libblas.so
 rm -rf tmp
 
 make blas_testing \
-  OPTS="%{optflags_f} $PRECFLAGS" \
-  NOOPT="%{optflags_f} $PRECFLAGS -O0"
+  FFLAGS="%{optflags_f} $PRECFLAGS" \
+  FFLAGS_NOOPT="%{optflags_f} $PRECFLAGS -O0"
 if grep -B15 -A15 FAIL BLAS/*.out; then
   echo
   echo "blas_testing FAILED"
@@ -231,21 +242,18 @@ fi
 mv librefblas.a libblas.a
 
 make %{?_smp_mflags} cblaslib \
-  CFLAGS="%{optflags} -fPIC -DADD_ " \
-  LINKER=gfortran
+  CFLAGS="%{optflags} -fPIC -DADD_ "
 mkdir tmp
 ( cd tmp; ar x ../libcblas.a )
 gfortran -shared -Wl,-soname=libcblas.so.3 -o libcblas.so.%{version} tmp/*.o -L. -lblas
 ln -s libcblas.so.%{version} libcblas.so
 rm -rf tmp
 make %{?_smp_mflags} cblas_testing \
-  CFLAGS="%{optflags} -fPIC" \
-  LINKER=gfortran
+  CFLAGS="%{optflags} -fPIC"
 grep -B15 -A15 FAIL TESTING/*.out && false
 
 make %{?_smp_mflags} lapacklib \
-  OPTS="%{optflags_f} -fPIC" \
-  NOOPT="%{optflags_f} -O0 -fPIC"
+  FFLAGS="%{optflags_f} -fPIC"
 mkdir tmp
 ( cd tmp; ar x ../liblapack.a )
 gfortran -shared -Wl,-soname=liblapack.so.3 -o liblapack.so.%{version} tmp/*.o -L. -lblas
@@ -254,18 +262,16 @@ rm -rf tmp
 
 cd LAPACKE
 make %{?_smp_mflags} lapacke \
-  CFLAGS="%{optflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE" \
-  LINKER=gfortran
+  CFLAGS="%{optflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
 mkdir tmp
 ( cd tmp; ar x ../../liblapacke.a )
-gfortran -shared -Wl,-soname=liblapacke.so.3 -o liblapacke.so.%{version} tmp/*.o
+gfortran -shared -Wl,-soname=liblapacke.so.3 -o liblapacke.so.%{version} tmp/*.o -L.. -llapack
 ln -s liblapacke.so.%{version} liblapacke.so
 rm -rf tmp
 cd ..
 
 make lapack_testing \
-  OPTS="%{optflags_f} $PRECFLAGS" \
-  NOOPT="%{optflags_f} $PRECFLAGS -O0"
+  FFLAGS="%{optflags_f} $PRECFLAGS"
 if grep -B15 -A15 FAIL TESTING/*.out; then
   echo
   echo "lapack_testing FAILED"
