@@ -25,7 +25,7 @@ Name:           mailutils
 Version:        3.8
 Release:        0
 Summary:        GNU Mailutils
-License:        LGPL-3.0-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://mailutils.org/
 Source:         ftp://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz
@@ -68,14 +68,14 @@ BuildRequires:  pkgconfig(libgsasl)
 BuildRequires:  pkgconfig(python3)
 Requires:       guile = %(rpm -q --queryformat '%%{VERSION}' guile-devel)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if 0
 # Seems not compatible with original radius (missing debug.h)
 BuildRequires:  freeradius-server-devel
 %endif
 %if %{with set_user_identity}
 Requires(post): permissions
-Requires(verify): permissions
+Requires(verify):permissions
 %endif
 # Hard requirement as mimeview uses /usr/share/cups/mime/mime.types
 Requires:       cups
@@ -238,7 +238,7 @@ CXX=g++
 #
 # In frm/frm.h wrong definition of MB_LEN_MAX if not defined
 #
-CFLAGS="-Wall %{optflags} -D_GNU_SOURCE -DMB_LEN_MAX=16 -fno-strict-aliasing"
+CFLAGS="-Wall %{optflags} -fexceptions -D_GNU_SOURCE -DMB_LEN_MAX=16 -fno-strict-aliasing"
 CXXFLAGS="-Wall %{optflags} -D_GNU_SOURCE -DMB_LEN_MAX=16 -fno-strict-aliasing"
 export PATH CC CXX CFLAGS CXXFLAGS
 %configure --enable-ipv6	\
@@ -264,7 +264,7 @@ export PATH CC CXX CFLAGS CXXFLAGS
     CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" \
     DEFAULT_CUPS_CONFDIR=%{_datarootdir}/cups/mime
 
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 
 %install
 PATH="$PWD/bin:$PATH"

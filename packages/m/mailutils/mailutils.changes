@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  3 11:51:06 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- mailutils, or any C code that uses pthread_cleanup_* routines
+  needs -fexeceptions in CFLAGS.
+
+-------------------------------------------------------------------
 Wed Jan 27 12:22:54 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - remove obsolete info macros (boo#1152105)

@@ -168,4 +168,13 @@
 - prepare usrmerge (boo#1029961) (forwarded request 867516 from lnussel)</comment>
     <requestid>867652</requestid>
   </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>d1b4d1c3ebf6df74e43da7749ee5e9f5</srcmd5>
+    <version>3.8</version>
+    <time>1615212906</time>
+    <user>dimstar_suse</user>
+    <comment>- mailutils, or any C code that uses pthread_cleanup_* routines
+  needs -fexeceptions in CFLAGS. (forwarded request 876611 from elvigia)</comment>
+    <requestid>876688</requestid>
+  </revision>
 </revisionlist>
