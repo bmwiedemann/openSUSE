@@ -157,51 +157,52 @@ Patch00023:     blockjob-Fix-crash-with-IOthread-when-bl.patch
 Patch00024:     monitor-Fix-assertion-failure-on-shutdow.patch
 Patch00025:     spice-app-avoid-crash-when-core-spice-mo.patch
 Patch00026:     hw-s390x-fix-build-for-virtio-9p-ccw.patch
-Patch00027:     XXX-dont-dump-core-on-sigabort.patch
-Patch00028:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00029:     qemu-cvs-gettimeofday.patch
-Patch00030:     qemu-cvs-ioctl_debug.patch
-Patch00031:     qemu-cvs-ioctl_nodirection.patch
-Patch00032:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00033:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00034:     linux-user-binfmt-support-host-binaries.patch
-Patch00035:     linux-user-Fake-proc-cpuinfo.patch
-Patch00036:     linux-user-use-target_ulong.patch
-Patch00037:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00038:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00039:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00040:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00041:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00042:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00043:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00044:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00045:     increase-x86_64-physical-bits-to-42.patch
-Patch00046:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00047:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00048:     Make-installed-scripts-explicitly-python.patch
-Patch00049:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00050:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00051:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00052:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00053:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00054:     tests-change-error-message-in-test-162.patch
-Patch00055:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00056:     configure-only-populate-roms-if-softmmu.patch
-Patch00057:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00058:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00059:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00060:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00061:     docs-add-SUSE-support-statements-to-html.patch
-Patch00062:     s390x-Fix-stringop-truncation-issue-repo.patch
-Patch00063:     Revert-qht-constify-qht_statistics_init.patch
-Patch00064:     qht-Revert-some-constification-in-qht.c.patch
-Patch00065:     meson-install-ivshmem-client-and-ivshmem.patch
-Patch00066:     Revert-roms-efirom-tests-uefi-test-tools.patch
-Patch00067:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
-Patch00068:     roms-Makefile-add-cross-file-to-qboot-me.patch
-Patch00069:     usb-Help-compiler-out-to-avoid-a-warning.patch
-Patch00070:     module-for-virtio-gpu-pre-load-module-to.patch
-Patch00071:     qom-handle-case-of-chardev-spice-module-.patch
+Patch00027:     hw-s390x-modularize-virtio-gpu-ccw.patch
+Patch00028:     XXX-dont-dump-core-on-sigabort.patch
+Patch00029:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00030:     qemu-cvs-gettimeofday.patch
+Patch00031:     qemu-cvs-ioctl_debug.patch
+Patch00032:     qemu-cvs-ioctl_nodirection.patch
+Patch00033:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00034:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00035:     linux-user-binfmt-support-host-binaries.patch
+Patch00036:     linux-user-Fake-proc-cpuinfo.patch
+Patch00037:     linux-user-use-target_ulong.patch
+Patch00038:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00039:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00040:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00041:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00042:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00043:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00044:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00045:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00046:     increase-x86_64-physical-bits-to-42.patch
+Patch00047:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00048:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00049:     Make-installed-scripts-explicitly-python.patch
+Patch00050:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00051:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00052:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00053:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00054:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00055:     tests-change-error-message-in-test-162.patch
+Patch00056:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00057:     configure-only-populate-roms-if-softmmu.patch
+Patch00058:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00059:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00060:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00061:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00062:     docs-add-SUSE-support-statements-to-html.patch
+Patch00063:     s390x-Fix-stringop-truncation-issue-repo.patch
+Patch00064:     Revert-qht-constify-qht_statistics_init.patch
+Patch00065:     qht-Revert-some-constification-in-qht.c.patch
+Patch00066:     meson-install-ivshmem-client-and-ivshmem.patch
+Patch00067:     Revert-roms-efirom-tests-uefi-test-tools.patch
+Patch00068:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
+Patch00069:     roms-Makefile-add-cross-file-to-qboot-me.patch
+Patch00070:     usb-Help-compiler-out-to-avoid-a-warning.patch
+Patch00071:     module-for-virtio-gpu-pre-load-module-to.patch
+Patch00072:     qom-handle-case-of-chardev-spice-module-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -364,7 +365,9 @@ Recommends:     qemu-block-curl
 Recommends:     qemu-ksm = %{qemuver}
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
-%ifnarch s390x
+%ifarch s390x
+Recommends:     qemu-hw-s390x-virtio-gpu-ccw
+%else
 Recommends:     qemu-hw-display-qxl
 Recommends:     qemu-hw-display-virtio-gpu
 Recommends:     qemu-hw-display-virtio-gpu-pci
@@ -709,6 +712,7 @@ Summary:        Virtio-gpu driver for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Requires:       qemu-hw-display-virtio-gpu
 Provides:       %name:%_datadir/%name/forsplits/11
 %{qemu_module_conflicts}
 
@@ -725,6 +729,18 @@ Provides:       %name:%_datadir/%name/forsplits/12
 
 %description hw-display-virtio-vga
 This package contains a virtio vga driver for QEMU
+
+%package hw-s390x-virtio-gpu-ccw
+Summary:        S390x virtio-gpu driver for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+Requires:       qemu-hw-display-virtio-gpu
+Provides:       %name:%_datadir/%name/forsplits/13
+%{qemu_module_conflicts}
+
+%description hw-s390x-virtio-gpu-ccw
+This package contains an s390x virtio gpu driver for QEMU
 
 %package hw-usb-redirect
 Summary:        USB redirection support for QEMU
@@ -1070,23 +1086,24 @@ This package records qemu testsuite results and represents successful testing.
 %patch00058 -p1
 %patch00059 -p1
 %patch00060 -p1
-%if %{legacy_qemu_kvm}
 %patch00061 -p1
-%endif
+%if %{legacy_qemu_kvm}
 %patch00062 -p1
+%endif
 %patch00063 -p1
 %patch00064 -p1
 %patch00065 -p1
 %patch00066 -p1
 %patch00067 -p1
-%ifarch aarch64
 %patch00068 -p1
-%endif
-%ifarch %arm %ix86 ppc
+%ifarch aarch64
 %patch00069 -p1
 %endif
+%ifarch %arm %ix86 ppc
 %patch00070 -p1
+%endif
 %patch00071 -p1
+%patch00072 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1750,7 +1767,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
 
 install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13
+for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16
 do
   ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
 done
@@ -1855,7 +1872,9 @@ fi
 %dir %_datadir/%name
 %dir %_datadir/%name/firmware
 %dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/13
+%_datadir/%name/forsplits/14
+%_datadir/%name/forsplits/15
+%_datadir/%name/forsplits/16
 %_datadir/%name/forsplits/pkg-split.txt
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
@@ -2213,6 +2232,14 @@ fi
 %_datadir/%name/forsplits/12
 %dir %_libdir/%name
 %_libdir/%name/hw-display-virtio-vga.so
+
+%files hw-s390x-virtio-gpu-ccw
+%defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/13
+%dir %_libdir/%name
+%_libdir/%name/hw-s390x-virtio-gpu-ccw.so
 
 %files hw-usb-redirect
 %defattr(-, root, root)

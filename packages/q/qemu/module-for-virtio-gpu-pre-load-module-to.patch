@@ -28,10 +28,10 @@ index 944d403cbd1535cc121af76a94f2..4b42dd285eeac1ba12e5c9e18ac0 100644
  
  #endif
 diff --git a/qom/object.c b/qom/object.c
-index 10653552334549241cd5672d7a02..6f301fec34d103b0b07bc41d107c 100644
+index 8b8cd1bdc9d176af921315b9cc2f..588f09ae22ba33bd6c3298995fc6 100644
 --- a/qom/object.c
 +++ b/qom/object.c
-@@ -516,6 +516,18 @@ static void object_initialize_with_type(Object *obj, size_t size, TypeImpl *type
+@@ -566,6 +566,18 @@ static void object_initialize_with_type(Object *obj, size_t size, TypeImpl *type
      object_post_init_with_type(obj, type);
  }
  

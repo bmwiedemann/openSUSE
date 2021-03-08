@@ -4,6 +4,14 @@
 
 # The next few VARIABLES are to be edited as required:
 
+# Here is the git repo which tracks a separate upstream git based project
+# We take this approach so we can have our own tags and branches, and store
+# the patches in git for others to access outside of the bundle.
+PACKAGE_MAIN_GIT_REPO=https://github.com/openSUSE/qemu.git
+
+# This is the upstream for the PACKAGE_MAIN_GIT_REPO
+UPSTREAM_GIT_REPO=https://gitlab.com/qemu-project/qemu.git
+
 # The following specifies the upstream tag or commit upon which our patchqueue
 # gets rebased. The special value LATEST may be used to "automatically" track
 # the upstream development tree in the master branch
@@ -28,9 +36,8 @@ BUNDLE_DIR=/dev/shm/qemu-factory-bundle-dir
 NUMBERED_PATCHES=0
 
 PATCH_RANGE=1000
-REPO_COUNT=36
 
-# This tracks the git submodule path within the superproject (1st entry)
+# This array tracks all git submodule paths within the superproject (1st entry)
 PATCH_PATH_MAP=(
     ""
     "roms/seabios/"
@@ -70,11 +77,7 @@ PATCH_PATH_MAP=(
     "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/libdivsufsort/"
 )
 
-# Perhaps we need to instead use the terminal local dirname as the index
-# and store the ~/git/ as a separate VARIABLE
-# This way, we only have one big array instead of two
-# BUT STILL WE NEED TO START WITH THE DATA STORED SOMEWHERE!!!!!!
-# (order must correspond to PATCH_PATH_MAP)
+# (order and count must correspond to PATCH_PATH_MAP)
 LOCAL_REPO_MAP=(
     ~/git/qemu-opensuse
     ~/git/qemu-seabios
@@ -112,9 +115,4 @@ LOCAL_REPO_MAP=(
     ~/git/qemu-edk2-BrotliCustomDecompressLib-brotli-research-libdivsufsort
     ~/git/qemu-edk2-BrotliCompress-brotli-research-esaxx
     ~/git/qemu-edk2-BrotliCompress-brotli-research-libdivsufsort
-)
-
-# TEMPORARY! FOR NOW WE REQUIRE THESE LOCALLY TO DO WORK ON PACKAGE
-REQUIRED_LOCAL_REPO_MAP=(
-    ~/git/qemu-opensuse
 )

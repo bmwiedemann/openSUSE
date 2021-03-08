@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar  3 17:18:39 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Add patch from IBM to improve modularization situation on s390
+  where a new qemu module, hw-s390x-virtio-gpu-ccw.so, and a
+  corresponding new qemu-hw-s390x-virtio-gpu-ccw subpackage, is
+  split out (this parallels the hw-display-virtio-gpu-pci.so module).
+  Split-provides file is also used to track this functionality
+  splitout. Both the packages supplying the above mentioned modules
+  now have a Requires on the qemu-hw-display-virtio-gpu package. It
+  is anticipated that this change is going in upstream as well, and
+  if done differently the plan is to update to the upstream
+  implementation if possible (bsc#1181103)
+  hw-s390x-modularize-virtio-gpu-ccw.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 15:31:46 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Added a few more usability improvements for our git packaging
+  workflow
+
+-------------------------------------------------------------------
 Fri Feb 19 15:10:56 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Fix issue of virtio-9p-ccw having been mistakenly dropped from

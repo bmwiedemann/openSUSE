@@ -272,7 +272,9 @@ Recommends:     qemu-block-curl
 Recommends:     qemu-ksm = %{qemuver}
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
-%ifnarch s390x
+%ifarch s390x
+Recommends:     qemu-hw-s390x-virtio-gpu-ccw
+%else
 Recommends:     qemu-hw-display-qxl
 Recommends:     qemu-hw-display-virtio-gpu
 Recommends:     qemu-hw-display-virtio-gpu-pci
@@ -617,6 +619,7 @@ Summary:        Virtio-gpu driver for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Requires:       qemu-hw-display-virtio-gpu
 Provides:       %name:%_datadir/%name/forsplits/11
 %{qemu_module_conflicts}
 
@@ -633,6 +636,18 @@ Provides:       %name:%_datadir/%name/forsplits/12
 
 %description hw-display-virtio-vga
 This package contains a virtio vga driver for QEMU
+
+%package hw-s390x-virtio-gpu-ccw
+Summary:        S390x virtio-gpu driver for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+Requires:       qemu-hw-display-virtio-gpu
+Provides:       %name:%_datadir/%name/forsplits/13
+%{qemu_module_conflicts}
+
+%description hw-s390x-virtio-gpu-ccw
+This package contains an s390x virtio gpu driver for QEMU
 
 %package hw-usb-redirect
 Summary:        USB redirection support for QEMU
@@ -1567,7 +1582,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
 
 install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13
+for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16
 do
   ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
 done
@@ -1672,7 +1687,9 @@ fi
 %dir %_datadir/%name
 %dir %_datadir/%name/firmware
 %dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/13
+%_datadir/%name/forsplits/14
+%_datadir/%name/forsplits/15
+%_datadir/%name/forsplits/16
 %_datadir/%name/forsplits/pkg-split.txt
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
@@ -2030,6 +2047,14 @@ fi
 %_datadir/%name/forsplits/12
 %dir %_libdir/%name
 %_libdir/%name/hw-display-virtio-vga.so
+
+%files hw-s390x-virtio-gpu-ccw
+%defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/13
+%dir %_libdir/%name
+%_libdir/%name/hw-s390x-virtio-gpu-ccw.so
 
 %files hw-usb-redirect
 %defattr(-, root, root)

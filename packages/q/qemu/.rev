@@ -2367,4 +2367,12 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
     <comment></comment>
     <requestid>874877</requestid>
   </revision>
+  <revision rev="198" vrev="10">
+    <srcmd5>d247a8f1e1c62edfa02a884430b131b9</srcmd5>
+    <version>5.2.0</version>
+    <time>1615212896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876626</requestid>
+  </revision>
 </revisionlist>
