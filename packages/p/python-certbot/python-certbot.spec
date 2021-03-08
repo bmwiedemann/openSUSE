@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-certbot
-Version:        1.11.0
+Version:        1.13.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -29,12 +29,11 @@ Source1:        https://files.pythonhosted.org/packages/source/c/certbot/certbot
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module acme >= 1.8.0}
 BuildRequires:  %{python_module configargparse >= 0.9.3}
-BuildRequires:  %{python_module configobj}
-BuildRequires:  %{python_module cryptography >= 1.2.3}
+BuildRequires:  %{python_module configobj >= 5.0.6}
+BuildRequires:  %{python_module cryptography >= 2.1.4}
 BuildRequires:  %{python_module distro >= 1.0.1}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module josepy >= 1.1.0}
-BuildRequires:  %{python_module parsedatetime >= 1.3}
+BuildRequires:  %{python_module parsedatetime >= 2.4}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
@@ -46,11 +45,11 @@ BuildRequires:  python-rpm-macros
 Requires:       python-acme >= 1.8.0
 Requires:       python-configargparse >= 0.9.3
 Requires:       python-configobj
-Requires:       python-cryptography >= 1.2.3
+Requires:       python-cryptography >= 2.1.4
 Requires:       python-distro >= 1.0.1
 Requires:       python-future
 Requires:       python-josepy >= 1.1.0
-Requires:       python-parsedatetime >= 1.3
+Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
 Requires:       python-pytz
 Requires:       python-setuptools
@@ -61,14 +60,6 @@ Requires(postun): update-alternatives
 Provides:       certbot = %{version}
 Obsoletes:      certbot < %{version}
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-mock
-BuildRequires:  python2-typing
-%endif
-%ifpython2
-Requires:       python-mock
-Requires:       python-typing
-%endif
 %python_subpackages
 
 %description

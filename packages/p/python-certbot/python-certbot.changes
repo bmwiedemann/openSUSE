@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  8 08:22:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.13.0
+  * The `--preferred-chain` flag now only checks the Issuer Common Name of the
+    topmost (closest to the root) certificate in the chain, instead of checking
+    every certificate in the chain.
+    See [#8577](https://github.com/certbot/certbot/issues/8577).
+  * Support for Python 2 has been removed.
+  * CLI flags `--os-packages-only`, `--no-self-upgrade`, `--no-bootstrap` and `--no-permissions-check`,
+    which are related to certbot-auto, are deprecated and will be removed in a future release.
+  * Certbot no longer conditionally depends on an external mock module. Certbot's
+    test API will continue to use it if it is available for backwards
+    compatibility, however, this behavior has been deprecated and will be removed
+    in a future release.
+  * Certbot and all of its components no longer depend on the library `six`.
+  * The update of certbot-auto itself is now disabled on all RHEL-like systems.
+
+-------------------------------------------------------------------
 Fri Jan  8 10:19:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to version 1.11.0
