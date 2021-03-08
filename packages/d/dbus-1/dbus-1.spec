@@ -131,14 +131,12 @@ cp %{SOURCE5} bus/sysusers.d/dbus.conf
 %install
 %make_install
 
-mkdir -p %{buildroot}/lib/dbus-1/system-services
 # dbus-launch, too
 mv -f %{buildroot}/%{_bindir}/dbus-launch %{buildroot}%{_bindir}/dbus-launch.nox11
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service  %{buildroot}/%{_sbindir}/rcdbus
 install -d %{buildroot}/run/dbus
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
-mkdir -p %{buildroot}/lib/dbus-1/system-services
 
 for i in %{_sysconfdir}/dbus-1/session.d %{_sysconfdir}/dbus-1/system.d \
        %{_datadir}/dbus-1/interfaces %{_datadir}/dbus-1/services \
@@ -206,8 +204,6 @@ fi
 
 %files
 %dir %{_localstatedir}/lib/dbus
-%dir /lib/dbus-1
-%dir /lib/dbus-1/system-services
 %dir %{_libexecdir}/dbus-1/
 %license COPYING
 %doc AUTHORS NEWS README

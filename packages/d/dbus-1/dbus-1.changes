@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  4 07:50:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- retire /lib/dbus-1/system-services as it's deprecated
+
+-------------------------------------------------------------------
 Fri Oct 16 08:50:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
