@@ -5,7 +5,7 @@ set -xEeuo pipefail
 #ROOK_REPO="github.com/rook/rook"
 #ROOK_REV="v1.4.0"
 ROOK_REPO="github.com/SUSE/rook"
-ROOK_REV="suse-release-1.4"
+ROOK_REV="suse-release-1.5"
 
 if ! command -V go;
 then
@@ -79,9 +79,10 @@ tar -C "$GOPATH_ROOK/.." -czf rook-$VERSION.tar.gz rook/
 # update spec file versions
 #sed -i "s/^Version:.*/Version:        $RELEASE/" rook.spec
 sed -i "s/^Version:.*/Version:        $VERSION/" rook.spec
-sed -i "s/^%global rook_container_version .*/%global rook_container_version ${RELEASE}.$GIT_COMMIT_NUM  # this is updated by update-tarball.sh/" rook.spec
+sed -i "s/^%global rook_container_version .*/%global rook_container_version ${RELEASE}/" rook.spec
 
-# make vendor tarball
+# make vendor tarball (any existing rook directory must be removed first)
+[ -d ./rook ] && rm -rf ./rook
 osc -A https://api.suse.de service disabledrun
 
 echo "Finished successfully!"

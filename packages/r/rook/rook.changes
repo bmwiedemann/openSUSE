@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed Mar  3 15:27:27 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to v1.5.7
+  * Ceph
+    * CSI Troubleshooting Guide (#7157)
+    * Print device information in OSD prepare logs (#7194)
+    * Expose vault curl error in the OSD init container for KCS configurations (#7193)
+    * Prevent re-using a device to configure an OSD on PVC from a previous cluster (#7170)
+    * Remove crash collector if all Ceph pods moved off a node (#7160)
+    * Add helm annotation to keep CRDs in the helm chart during uninstall (#7162)
+    * Bind mgr modules to all interfaces instead of pod ip (#7151)
+    * Check for orchestration cancellation while waiting for all OSDs to start (#7112)
+    * Skip pdb reconcile on create and delete events (#7155)
+    * Silence harmless errors in log when the operator is still initializing (#7056)
+    * Add --extra-create-metadata flag to the CSI driver (#7147)
+    * Add deviceClass to the object store schema (#7132)
+    * Simplify the log-collector container name (#7133)
+    * Skip csi detection if CSI is disabled (#6866)
+    * Remove Rook pods stuck in terminating state on a failed node (#6999)
+    * Timeout for rgw configuration to prevent stuck object store when no healthy OSDs (#7075)
+    * Update lib bucket provisioner for OBCs (#7086)
+
+- Drop csi-images-SUSE.patch
+
+-------------------------------------------------------------------
+Wed Nov 18 01:47:48 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Derive CSI and sidecar image versions from code defaults rather
+  than images found in the build service
+
+-------------------------------------------------------------------
+Fri Nov  6 18:24:07 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Update to v1.4.7
+  * Ceph
+    * Log warning about v14.2.13 being an unsupported Ceph version due to
+      errors creating new OSDs (#6545)
+    * Disaster recovery guide for PVCs (#6452)
+    * Set the deviceClass for OSDs in non-PVC clusters (#6545)
+    * External cluster script to fail if prometheus port is not default (#6504)
+    * Remove the osd pvc from the osd purge job (#6533)
+    * External cluster script added additional checks for monitoring
+      endpoint (#6473)
+    * Ignore Ceph health error MDS_ALL_DOWN during reconciliation (#6494)
+    * Add optional labels to mon pods (#6515)
+    * Assert type for logging errors before using it (#6503)
+    * Check for orphaned mon resources with every reconcile (#6493)
+    * Update the mon PDBs if the maxUnavailable changed (#6469)
+  * NFS
+    * Update documentation and examples (#6455)
+
+-------------------------------------------------------------------
+Wed Oct 28 16:27:15 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Drop OFFSET from cephcsi image tag 
+
+-------------------------------------------------------------------
+Mon Oct 26 20:33:31 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Update helm chart to use appropriate version prefix for the final registry
+  destination (e.g. registry.suse.com or registry.opensuse.org)
+- Improve consistency with image tags
+
+-------------------------------------------------------------------
+Tue Oct 20 00:00:54 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Update to v1.4.6
+  * Support IPv6 single-stack (#6283)
+  * Only start a single CSI provisioner in single-node test clusters (#6437)
+  * Raw mode OSD on LV-backed PVC (#6184)
+  * Capture ceph-volume detailed log in non-pvc scenario on failure (#6426)
+  * Add --upgrade option to external cluster script (#6392)
+  * Capture stderr when executing ceph commands and write to log (#6395)
+  * Reduce the retry count for the bucket health check for more accurate
+    status (#6408)
+  * Prevent closing of monitoring channel more than once (#6369)
+  * Check underlying block status for encrypted OSDs (#6367)
+- Add 'latest' and appVersion tags to helm chart
+- Include sample manifests in helm chart
+
+-------------------------------------------------------------------
+Fri Oct  9 16:08:41 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Set the helm chart version to the rook version
+
+-------------------------------------------------------------------
+Tue Oct  6 21:01:06 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Minor fix to helm chart to ensure SemVer formatting 
+- Fix typo in sample cluster.yaml
+
+-------------------------------------------------------------------
+Tue Oct  6 06:43:15 UTC 2020 - Joshua Hesketh <jhesketh@suse.com>
+
+- Update the operator.yaml ConfigMap to reflect the default SUSE images
+  that are used rather than upstreams.
+- Fix indentation of patch tabs to match original
+
+-------------------------------------------------------------------
 Fri Oct  2 15:27:40 UTC 2020 - Mike Latimer <mlatimer@suse.com>
 
 - Update to v1.4.5

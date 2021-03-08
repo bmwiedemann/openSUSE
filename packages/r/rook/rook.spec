@@ -1,7 +1,7 @@
 #
 # spec file for package rook
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.4.5+git5.ge3c837f8
+Version:        1.5.7+git4.gae949004e
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -34,14 +34,12 @@ Source99:       update-tarball.sh
 # upstream source is updated without the package maintainers knowing. Patches reduce user error when
 # creating a new SUSE release branch of Rook.
 
-# Change CSI images to SUSE specific values.
-Patch0:         csi-images-SUSE.patch
 # Change the default FlexVolume dir path to support Kubic.
-Patch1:         flexvolume-dir.patch
+Patch0:         flexvolume-dir.patch
 
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
-ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le
+ExclusiveArch:  x86_64 aarch64
 %endif
 
 # Go and spec requirements
@@ -56,13 +54,6 @@ BuildRequires:  grep
 
 # Ceph version is needed to set correct container tag in manifests
 BuildRequires:  ceph
-# ceph-csi and sidecars are needed to update versions in manifest/chart
-BuildRequires:  ceph-csi
-BuildRequires:  csi-external-attacher
-BuildRequires:  csi-external-provisioner
-BuildRequires:  csi-external-resizer
-BuildRequires:  csi-external-snapshotter
-BuildRequires:  csi-node-driver-registrar
 
 # Rook runtime requirements - referenced from packages installed in Rook images
 # From images/ceph/Dockerfile
@@ -143,7 +134,7 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 [-test.run 'TestCeph'].
 
 ################################################################################
-# The tasty, meaty build section
+# Build section
 ################################################################################
 %define _buildshell /bin/bash
 
@@ -155,11 +146,8 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 tar zxf %{SOURCE1}
 
 %patch0 -p1
-%patch1 -p1
 
-# determine image names to use in manifests depending on the base os type
-# %CEPH_VERSION%, and all CSI sidecar versions are replaced at build time by _service
-%global rook_container_version 1.4.5.5  # this is updated by update-tarball.sh
+# Determine registry to use in manifests depending on the base os type
 %if 0%{?is_opensuse}
 %define registry registry.opensuse.org/opensuse
 %else # is SES
@@ -170,23 +158,31 @@ tar zxf %{SOURCE1}
 %endif
 %endif
 
+# Replace default registry and paths in all required files
 %define spec_go pkg/operator/ceph/csi/spec.go
-%define chart_yaml cluster/charts/rook-ceph/Chart.yaml
 %define values_yaml cluster/charts/rook-ceph/values.yaml
-sed -i -e "s|\(.*\)SUSE_REGISTRY\(.*\)|\1%{registry}\2|" %{spec_go}
-sed -i -e "s|\(.*\)SUSE_REGISTRY\(.*\)|\1%{registry}\2|" %{chart_yaml}
-sed -i -e "s|\(.*\)SUSE_REGISTRY\(.*\)|\1%{registry}\2|" %{values_yaml}
-
-%global rook_image       %{registry}/rook/ceph:%{rook_container_version}.%{release}
-%global ceph_image       %{registry}/ceph/ceph:%CEPH_VERSION%
-%global ceph_csi_image   %{registry}/cephcsi/cephcsi:v%CSI_VERSION%.%CSI_OFFSET%
-%global csi_reg_image    %{registry}/cephcsi/csi-node-driver-registrar:v%CSI_REG_VERSION%
-%global csi_prov_image   %{registry}/cephcsi/csi-provisioner:v%CSI_PROV_VERSION%
-%global csi_attach_image %{registry}/cephcsi/csi-attacher:v%CSI_ATTACH_VERSION%
-%global csi_snap_image   %{registry}/cephcsi/csi-snapshotter:v%CSI_SNAP_VERSION%
-%global csi_resize_image %{registry}/cephcsi/csi-resizer:v%CSI_RESIZE_VERSION%
+%define operator_yaml cluster/examples/kubernetes/ceph/operator.yaml
+for file in %{spec_go} %{values_yaml} %{operator_yaml}; do
+sed -i -e "s|\(.*\)quay.io.*\/\(.*\)|\1%{registry}/cephcsi/\2|" $file
+sed -i -e "s|\(.*\)k8s.gcr.io.*\/\(.*\)|\1%{registry}/cephcsi/\2|" $file
+done
+sed -i -e "s|\(.*\)repository: rook\(.*\)|\1repository: %{registry}/rook\2|" %{values_yaml}
 
 %build
+# Setup images and versions for use in linker flags
+%define spec_go pkg/operator/ceph/csi/spec.go
+ceph_csi_image=$(sed -ne "s|.*DefaultCSIPluginImage.*= \"\(.*cephcsi:.*\)\"|\1|p" %{spec_go})
+csi_reg_image=$(sed -ne "s|.*DefaultRegistrarImage.*= \"\(.*registrar:.*\)\"|\1|p" %{spec_go})
+csi_prov_image=$(sed -ne "s|.*DefaultProvisionerImage.*= \"\(.*provisioner:.*\)\"|\1|p" %{spec_go})
+csi_attach_image=$(sed -ne "s|.*DefaultAttacherImage.* \"\(.*attacher:.*\)\"|\1|p" %{spec_go})
+csi_snap_image=$(sed -ne "s|.*DefaultSnapshotterImage.* \"\(.*snapshotter:.*\)\"|\1|p" %{spec_go})
+csi_resize_image=$(sed -ne "s|.*DefaultResizerImage.* \"\(.*resizer:.*\)\"|\1|p" %{spec_go})
+#  %CEPH_VERSION% is replaced at build time by _service
+#  rook_container_version is updated by update-tarball.sh:
+%global rook_container_version 1.5.7
+%global rook_image       %{registry}/rook/ceph:%{rook_container_version}
+%global ceph_image       %{registry}/ceph/ceph:%CEPH_VERSION%
+%global ceph_csi_image   $ceph_csi_image
 
 # remove symbols unsupported by k8s (+) from version
 version_full=%{version}
@@ -196,14 +192,12 @@ version_noplus="${version_full//[+]/_}"
 linker_flags=(
     # Set Rook version - absolutely required
     "-X" "github.com/rook/rook/pkg/version.Version=%{version_parsed}"
-    # CSI images only known at build time, so use a linker flag instead of patch
-    # NOTE - This currently doesn't seem to work without also patching spec.go
-    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultCSIPluginImage=%{ceph_csi_image}"
-    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultRegistrarImage=%{csi_reg_image}"
-    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultProvisionerImage=%{csi_prov_image}"
-    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultAttacherImage=%{csi_attach_image}"
-    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultSnapshotterImage=%{csi_snap_image}"
-    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultResizerImage=%{csi_resize_image}"
+    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultCSIPluginImage=${ceph_csi_image}"
+    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultRegistrarImage=${csi_reg_image}"
+    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultProvisionerImage=${csi_prov_image}"
+    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultAttacherImage=${csi_attach_image}"
+    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultSnapshotterImage=${csi_snap_image}"
+    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultResizerImage=${csi_resize_image}"
 )
 build_flags=("-ldflags" "${linker_flags[*]}" "-mod=vendor")
 
@@ -268,7 +262,10 @@ version_noplus="${version_full//[+]/_}"
 %global version_parsed "${version_noplus}-%{release}"
 # strip off everything following + for the helm appVersion
 %global helm_appVersion "${version_full%+*}"
-%global helm_version "%{helm_appVersion}_%{RELEASE}"
+%global helm_version "%{helm_appVersion}-%{RELEASE}"
+# Set chart registry prefix for BuildTag
+registry_prefix=%{registry}
+registry_prefix=${registry_prefix#*/}/charts
 
 # Check Rook version is properly set
 rook_bin="$rook_bin_location"rook
@@ -294,8 +291,10 @@ fi
 ################################################################################
 # set rook, ceph and ceph-csi container versions
 sed -i -e "s|image: .*|image: %{ceph_image}|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/cluster*
-sed -i -e "s|image: .*|image: %{rook_image}|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/toolbox*
+sed -i -e "s|image: .*|image: %{rook_image}|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/direct-mount*
+sed -i -e "s|image: .*|image: %{rook_image}|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/osd-purge*
 sed -i -e "s|image: .*|image: %{rook_image}|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/operator*
+sed -i -e "s|image: .*|image: %{rook_image}|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/toolbox*
 sed -i -e "s|/usr/local/bin/toolbox.sh|%{_bindir}/toolbox.sh|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/toolbox*
 
 # Install the helm charts
@@ -303,7 +302,13 @@ sed -i -e "s|/usr/local/bin/toolbox.sh|%{_bindir}/toolbox.sh|g" %{buildroot}%{_d
 %define values_yaml "%{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator/values.yaml"
 mkdir -p %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator
 cp -pr cluster/charts/rook-ceph/* %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator
-sed -i -e "1 i\#!BuildTag: rook-ceph:"%{helm_version} %{chart_yaml}
+# Copy example manifests to chart directory
+mkdir %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator/examples
+cp -pr %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/*  %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator/examples
+# Registry tags should include "latest", appVersion and helm chart version
+for tag in latest %{helm_appVersion} %{helm_version}; do
+sed -i -e "1 i\#!BuildTag: ${registry_prefix}/rook-ceph:"${tag} %{chart_yaml}
+done
 # appVersion should being with a 'v', even though the image tag currently does not
 sed -i -e "/apiVersion/a appVersion: v%{helm_appVersion}" %{chart_yaml}
 sed -i -e "s|\(version: \).*|\1%{helm_version}|" %{chart_yaml}
