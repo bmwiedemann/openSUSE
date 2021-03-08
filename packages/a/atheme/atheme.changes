@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar  7 18:21:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Redownload atheme-services-v7.2.11.tar.xz
+  because they changed it
+
+-------------------------------------------------------------------
+Sun Feb 28 09:46:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.11
+  * Add a preliminary Turkish translation
+  * Add HMAC-MD5 verify-only support to crypto/pbkdf2v2
+  * modules/chanserv/akick: fix unload crash with akicks that
+    have timeouts
+  * modules/nickserv/multimark: use IRC case canonicalisation
+    for restored nicks
+  * modules/nickserv/multimark: forbid unloading due to the
+    potential for data loss
+  * CA_ constants: include CA_EXEMPT (+e) where appropriate
+- Drop atheme-serno.diff (no longer applies)
+
+-------------------------------------------------------------------
 Mon Sep 14 07:58:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix misuse of %_libexecdir for /usr/lib/tmpfiles

@@ -200,4 +200,12 @@
     <comment>- Fix misuse of %_libexecdir for /usr/lib/tmpfiles [boo#1174075]</comment>
     <requestid>834239</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>001f889e819e2376f18cb35271d711ab</srcmd5>
+    <version>7.2.11</version>
+    <time>1615213117</time>
+    <user>dimstar_suse</user>
+    <comment>- Redownload atheme-services-v7.2.11.tar.xz because they changed it</comment>
+    <requestid>877532</requestid>
+  </revision>
 </revisionlist>
