@@ -1537,4 +1537,19 @@
 - team: enable ipv6 on ports when nsna_ping linkwatch is used (bsc#959556)</comment>
     <requestid>838810</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>8ad129498bdce6d1be8d29e161a9b7db</srcmd5>
+    <version>0.6.65</version>
+    <time>1615212933</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.65
+- ifconfig: differentiate if to re-trigger dad on address updates (bsc#1177215)
+- client: parse sysctl files in the correct order (bsc#1181186)
+- ifup: fix for set up with unenslave from unconfigured master (boo#954329)
+- rpm: prepare for new builds using usrmerged rpm macro (boo#1029961)
+- rpm: Let wicked-service also provide service(network)
+- cleanup: remove obsolete use-nanny=false (gh#openSUSE/wicked#815)
+- dbus: add variant container, generic object-path and uint32 array macros</comment>
+    <requestid>876766</requestid>
+  </revision>
 </revisionlist>

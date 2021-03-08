@@ -1,7 +1,7 @@
 #
 # spec file for package wicked
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.64
+Version:        0.6.65
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_64 = %{version}-%{release}
+Provides:       libwicked-0_6_65 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -62,8 +62,7 @@ Obsoletes:      libwicked-0-6 < %{version}
 
 %bcond_with     wicked_devel
 
-# Note: nanny use is enabled by default
-%bcond_without  use_nanny
+# Note: teamd is enabled by default
 %bcond_without  use_teamd
 
 # Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -124,6 +123,7 @@ Group:          System/Management
 Requires(pre):  %name = %{version}
 Requires:       sysconfig >= 0.81.0
 Provides:       /sbin/ifup
+Provides:       service(network)
 Provides:       sysvinit(network)
 Conflicts:      otherproviders(/sbin/ifup)
 Obsoletes:      sysconfig-network
@@ -160,7 +160,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_64 = %{version}-%{release}
+Requires:       libwicked-0_6_65 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -185,9 +185,6 @@ export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS"
 %if %{without rfc4361_cid}
 	--disable-dhcp4-rfc4361-cid	\
 %endif
-%if %{without use_nanny}
-	--disable-nanny-use		\
-%endif
 %if %{without use_teamd}
 	--disable-teamd			\
 %endif
@@ -205,14 +202,18 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR=${RPM_BUILD_ROOT}
+%if !0%{?usrmerged}
 # install /sbin/{ifup,ifown,ifstatus,ifprobe} links
-%if "%_sbindir" != "/sbin"
 %__mkdir_p -m 0755 ${RPM_BUILD_ROOT}/sbin
 %__ln_s %_sbindir/ifup	${RPM_BUILD_ROOT}/sbin/ifup
 %endif
-%__ln_s %_sbindir/ifup	${RPM_BUILD_ROOT}/sbin/ifdown
-%__ln_s %_sbindir/ifup	${RPM_BUILD_ROOT}/sbin/ifstatus
-%__ln_s %_sbindir/ifup  ${RPM_BUILD_ROOT}/sbin/ifprobe
+for i in ifdown ifstatus ifprobe; do
+%if !0%{?usrmerged}
+%__ln_s ifup ${RPM_BUILD_ROOT}/sbin/$i
+%else
+%__ln_s ifup ${RPM_BUILD_ROOT}%{_sbindir}/$i
+%endif
+done
 # remove libwicked.a and la
 %__rm -f ${RPM_BUILD_ROOT}%_libdir/libwicked*.*a
 # create reboot-persistent (leases) store directory
@@ -383,12 +384,16 @@ fi
 %_unitdir/wickedd-pppd@.service
 %attr(0600,root,root) %config /etc/sysconfig/network/ifcfg-lo
 %_sbindir/ifup
-%if "%_sbindir" != "/sbin"
+%if !0%{?usrmerged}
 /sbin/ifup
-%endif
 /sbin/ifdown
 /sbin/ifstatus
 /sbin/ifprobe
+%else
+%_sbindir/ifdown
+%_sbindir/ifstatus
+%_sbindir/ifprobe
+%endif
 %_sbindir/rcwickedd-nanny
 %_sbindir/rcwickedd-dhcp6
 %_sbindir/rcwickedd-dhcp4
@@ -406,12 +411,16 @@ fi
 %_sbindir/rcnetwork
 %attr(0600,root,root) %config /etc/sysconfig/network/ifcfg-lo
 %_sbindir/ifup
-%if "%_sbindir" != "/sbin"
+%if !0%{?usrmerged}
 /sbin/ifup
-%endif
 /sbin/ifdown
 /sbin/ifstatus
 /sbin/ifprobe
+%else
+%_sbindir/ifdown
+%_sbindir/ifstatus
+%_sbindir/ifprobe
+%endif
 
 %endif
 

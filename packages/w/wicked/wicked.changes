@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  4 13:35:33 UTC 2021 - mt@suse.com
+
+- version 0.6.65
+- ifconfig: differentiate if to re-trigger dad on address updates (bsc#1177215)
+- client: parse sysctl files in the correct order (bsc#1181186)
+- ifup: fix for set up with unenslave from unconfigured master (boo#954329)
+- rpm: prepare for new builds using usrmerged rpm macro (boo#1029961)
+- rpm: Let wicked-service also provide service(network)
+- cleanup: remove obsolete use-nanny=false (gh#openSUSE/wicked#815)
+- dbus: add variant container, generic object-path and uint32 array macros
+
+-------------------------------------------------------------------
 Wed Sep 30 16:37:00 UTC 2020 - rtorreromarijnissen@suse.com
 
 - version 0.6.64
