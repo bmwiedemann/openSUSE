@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  5 13:19:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch off failing tests test_nts_token_performance and
+  test_connection_initialization
+  (https://datastax-oss.atlassian.net/browse/PYTHON-1273, bsc#1182585).
+
+-------------------------------------------------------------------
 Wed Jun 10 10:41:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose

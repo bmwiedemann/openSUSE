@@ -136,4 +136,15 @@
     <comment></comment>
     <requestid>813213</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>5854494d5ebad8270013c61b878e0973</srcmd5>
+    <version>3.23.0</version>
+    <time>1615213130</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off failing tests test_nts_token_performance and
+  test_connection_initialization
+  (https://datastax-oss.atlassian.net/browse/PYTHON-1273, bsc#1182585).
+</comment>
+    <requestid>877566</requestid>
+  </revision>
 </revisionlist>

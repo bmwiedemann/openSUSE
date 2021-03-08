@@ -1,7 +1,7 @@
 #
 # spec file for package python-cassandra-driver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module geomet >= 0.1}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pure-sasl}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module scales}
 BuildRequires:  %{python_module setuptools}
@@ -86,7 +87,8 @@ export CASS_DRIVER_NO_EXTENSIONS=1
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH="$(pwd)" $python -m unittest discover -v
+# https://datastax-oss.atlassian.net/browse/PYTHON-1273
+%pytest -k 'not (test_connection_initialization or test_nts_token_performance)'
 
 %files %{python_files}
 %license LICENSE
