@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 22 11:20:40 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to version 0.6.3
+- drop dont-require-rarian.patch
+- drop bless-0.6.2-Range-ambiguous-reference.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 15:41:41 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 0.6.2

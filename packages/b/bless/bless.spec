@@ -1,7 +1,7 @@
 #
 # spec file for package bless
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,22 @@
 
 
 Name:           bless
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Gtk#-based Hex-editor written in C#
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://github.com/afrantzis/bless
 Source:         https://github.com/afrantzis/bless/archive/v%{version}/%{name}-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM jbicha@debian.org - build without scrollkeeper/rarian
-Patch0:         dont-require-rarian.patch
-#PATCH-FIX-UPSTREAM Fix building error CS0104: 'Range' is an ambiguous reference
-Patch1:         bless-0.6.2-Range-ambiguous-reference.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson >= 0.46
+BuildRequires:  nunit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glade-sharp-2.0)
-BuildRequires:  pkgconfig(gtk-sharp-2.0)
+BuildRequires:  pkgconfig(glade-sharp-2.0) >= 2.8
+BuildRequires:  pkgconfig(gtk-sharp-2.0) >= 2.8
 BuildRequires:  pkgconfig(mono)
 
 %description
@@ -62,42 +60,28 @@ This package contains the documentation.
 
 %prep
 %setup -q
-%patch -p1
-%patch1 -p1
-./autogen.sh
-# Fix Build for Mono 4.0
-sed -i 's/gmcs/mcs/' configure builder/ModuleBuilder.cs
-#autoreconf -fi
 
 %build
-%configure --without-scrollkeeper
-sed -i 's/$(MKDIR_P)/mkdir -p/' po/Makefile
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-%suse_update_desktop_file -r bless Utility TextEditor
-rm %{buildroot}%{_datadir}/doc/bless/INSTALL
-%fdupes %{buildroot}%{_datadir}
+%meson_install
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
+%check
+#System.InvalidCastException:
+#%%meson_test
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %{_bindir}/bless
 %{_libdir}/bless
 %{_datadir}/applications/bless.desktop
+%{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/bless
-%{_datadir}/pixmaps/*
 
 %files doc
-%{_datadir}/doc/bless/
-%{_datadir}/doc/bless/user/
-%{_datadir}/doc/bless/user/figures/
+%doc %{_datadir}/help/C/%{name}/
 
 %changelog
