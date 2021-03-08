@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  5 11:13:41 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patch:
+  * Update-weather-API-endpoint.patch
+
+-------------------------------------------------------------------
+Thu Mar  4 06:09:40 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- No code change since 20.12.2
+
+-------------------------------------------------------------------
 Wed Feb  3 08:27:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
