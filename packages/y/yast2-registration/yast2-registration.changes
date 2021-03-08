@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  5 13:36:44 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Allow registering system again during firstboot stage
+  (bsc#1182149).
+- 4.3.21
+
+-------------------------------------------------------------------
 Mon Feb 15 17:39:06 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapted unit test to recent changes in Yast::Report (related to
