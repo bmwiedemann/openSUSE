@@ -18,7 +18,7 @@
 
 
 Name:           rclone
-Version:        1.54.0
+Version:        1.54.1
 Release:        0
 Summary:        Rsync for cloud storage
 License:        MIT
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.xz
 # cd <folder>; go mod vendor ; tar cf vendor.tar.xz vendor
 Source1:        vendor.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.14
+BuildRequires:  go >= 1.16
 
 %description
 rsync for cloud storage. rclone is a command line program to sync files and
