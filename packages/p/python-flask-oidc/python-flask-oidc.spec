@@ -67,15 +67,23 @@ It has been tested with:
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/oidc-register
 
 %check
 %python_exec setup.py test
+
+%post
+%python_install_alternative oidc-register
+
+%postun
+%python_uninstall_alternative oidc-register
+
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/flask_oidc/
 %{python_sitelib}/*.egg-info/
-%python3_only %{_bindir}/oidc-register
+%python_alternative %{_bindir}/oidc-register
 
 %changelog
