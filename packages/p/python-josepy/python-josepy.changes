@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  8 08:39:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Dropped support for Python 2.7.
+  * Added support for EC keys.
+
+-------------------------------------------------------------------
 Wed Jan  6 12:37:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:

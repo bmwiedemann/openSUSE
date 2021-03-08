@@ -73,4 +73,14 @@
   * Deprecated support for Python 3.5.</comment>
     <requestid>860717</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6e08a7ebb561c14a0cb5c2899d3367e7</srcmd5>
+    <version>1.7.0</version>
+    <time>1615213148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Dropped support for Python 2.7.
+  * Added support for EC keys.</comment>
+    <requestid>877589</requestid>
+  </revision>
 </revisionlist>

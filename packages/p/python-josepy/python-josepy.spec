@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libname josepy
+%global skip_python2 1
 Name:           python-%{libname}
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
