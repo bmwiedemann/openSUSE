@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,18 +29,14 @@
 %bcond_without docs
 %bcond_with plugin
 Name:           icedtea-web
-Version:        1.8
+Version:        1.8.4
 Release:        0
 Summary:        Java Web Start implementation
 License:        GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Languages/Java
-URL:            https://icedtea.classpath.org
-Source0:        http://icedtea.classpath.org/download/source/icedtea-web-%{version}.tar.gz
+URL:            https://github.com/AdoptOpenJDK/IcedTea-Web
+Source0:        https://github.com/AdoptOpenJDK/IcedTea-Web/archive/icedtea-web-%{version}.tar.gz#/IcedTea-Web-icedtea-web-%{version}.tar.gz
 Patch0:         icedtea-web-suse-desktop-files.patch
-Patch1000:      CVE-2019-10181.patch
-Patch1001:      CVE-2019-10182_1.patch
-Patch1002:      CVE-2019-10182_2.patch
-Patch1003:      CVE-2019-10185.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -104,12 +100,8 @@ and plugin implementation.
 %endif
 
 %prep
-%setup -q -n icedtea-web-%{version}
+%setup -q -n IcedTea-Web-icedtea-web-%{version}
 %patch0 -p1
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
 
 %if %{with docs}
 rm -f netx/net/sourceforge/jnlp/util/WindowsDesktopEntry.java

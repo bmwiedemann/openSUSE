@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 21 12:59:46 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.8.4
+  * No changelog, check:
+    https://github.com/AdoptOpenJDK/IcedTea-Web/releases
+- According to https://github.com/AdoptOpenJDK/IcedTea-Web/pull/345,
+  CVE 2019-{10181,10182,10185} are all fixed
+  * Remove CVE-2019-10181.patch
+  * Remove CVE-2019-10182_1.patch
+  * Remove CVE-2019-10182_2.patch
+  * Remove CVE-2019-10185.patch
+- Project migrated to Github: changed URL and Source
+
+-------------------------------------------------------------------
 Thu Jun 11 07:17:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.8.0
