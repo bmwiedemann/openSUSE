@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  3 09:32:29 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the 'iface' element to the AutoYaST schema (bsc#1182193).
+- 4.3.3
+
+-------------------------------------------------------------------
 Mon Aug 10 15:54:00 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(iscsi-client) into the spec file
