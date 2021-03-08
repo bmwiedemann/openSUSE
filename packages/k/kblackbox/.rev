@@ -880,4 +880,12 @@
     <comment>20.12.2 release</comment>
     <requestid>869288</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>b2eb6dcc9d1fc8343cb9a2698f77ae5b</srcmd5>
+    <version>20.12.3</version>
+    <time>1615213068</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877060</requestid>
+  </revision>
 </revisionlist>
