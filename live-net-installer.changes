@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  8 09:24:31 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add some more runtime dependencies which yast2-storage is missing
+
+-------------------------------------------------------------------
 Wed Feb  3 09:58:04 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Stop packagekitd before starting the installation (boo#1181606)

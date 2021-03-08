@@ -43,9 +43,23 @@ Requires:       util-linux
 Requires:       xdg-utils
 Requires:       yast2-installation
 # yast2-installation should require this, but it doesn't
+Requires:       bcache-tools
 Requires:       btrfsprogs
-Requires:       lvm2
+Requires:       cryptsetup
+Requires:       device-mapper
+Requires:       dmraid
+Requires:       e2fsprogs
+Requires:       exfat-utils
+Requires:       fcoe-utils
+Requires:       mdadm
+Requires:       multipath-tools
+Requires:       ntfs-3g
+Requires:       ntfsprogs
+Requires:       nvme-cli
+Requires:       open-iscsi
+Requires:       quota
 Requires:       snapper
+Requires:       xfsprogs
 
 %description
 This package contains files that allow starting the installer from a

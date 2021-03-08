@@ -112,4 +112,12 @@
     <comment>- Stop packagekitd before starting the installation (boo#1181606)</comment>
     <requestid>868884</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>ff0703d451f414b0273b5860d9733229</srcmd5>
+    <version>1.0</version>
+    <time>1615213199</time>
+    <user>dimstar_suse</user>
+    <comment>- Add some more runtime dependencies which yast2-storage is missing</comment>
+    <requestid>877649</requestid>
+  </revision>
 </revisionlist>
