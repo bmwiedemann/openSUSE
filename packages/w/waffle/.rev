@@ -84,4 +84,20 @@
   * cmocka: don't require librt, when it's not unavailable</comment>
     <requestid>875071</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f73cfdcbeafef4796c1563e521721d1</srcmd5>
+    <version>1.7.0</version>
+    <time>1615213136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.0
+  * wayland: Support for the xdg-shell protocol.
+  * surfaceless: Implement window resize
+  * GLX/WGL: Behave correctly in the presence of ARB_create_context
+  * tests: Rework and extend test suite
+  * cmake: Bump requirement to 2.8.12
+  * man: Spelling and associated fixes.
+  * GBM: Pass valid arguments to gbm_surface_create_with_modifiers
+  * apple: Build fixes</comment>
+    <requestid>877573</requestid>
+  </revision>
 </revisionlist>

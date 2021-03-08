@@ -20,7 +20,7 @@
 %define _minorVersion 0
 %define libname lib%{name}-%{_majorVersion}-%{_minorVersion}
 Name:           waffle
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        C library defering selection of GL API and window system until runtime
 License:        BSD-2-Clause
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-client) >= 1.10
 BuildRequires:  pkgconfig(wayland-egl) >= 9.1
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.12
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 
