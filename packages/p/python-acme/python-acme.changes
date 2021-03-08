@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  8 08:06:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.13.0
+  * Support for Python 2 has been removed.
+  * The acme library no longer depends on the security extras from 
+    requests which was needed to support SNI in TLS requests when 
+    using old versions of Python 2.
+  * When revoking a certificate by --cert-name, it is no longer 
+    necessary to specify the --server if the certificate was 
+    obtained from a non-default ACME server.
+
+-------------------------------------------------------------------
 Fri Jan  8 10:19:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to version 1.11.0

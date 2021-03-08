@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define libname acme
 Name:           python-%{libname}
-Version:        1.11.0
+Version:        1.13.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -27,31 +28,24 @@ URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  %{python_module cryptography >= 1.2.3}
+BuildRequires:  %{python_module cryptography >= 2.1.4}
 BuildRequires:  %{python_module josepy >= 1.1.0}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pyOpenSSL >= 0.15.1}
+BuildRequires:  %{python_module pyOpenSSL >= 17.3.0}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.6.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.3.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module tox}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography >= 1.2.3
+Requires:       python-cryptography >= 2.1.4
 Requires:       python-josepy >= 1.1.0
-Requires:       python-pyOpenSSL >= 0.15.1
+Requires:       python-pyOpenSSL >= 17.3.0
 Requires:       python-pyRFC3339
 Requires:       python-pytz
 Requires:       python-requests >= 2.6.0
 Requires:       python-requests-toolbelt >= 0.3.0
-Requires:       python-six >= 1.9.0
-%ifpython2
-Requires:       python-mock
-%endif
 BuildArch:      noarch
 %if %{?suse_version} < 1500
 BuildRequires:  %{python_module devel}

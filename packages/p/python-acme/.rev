@@ -537,4 +537,19 @@
 </comment>
     <requestid>861638</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>186392a6700d9bb76c2576e48987bbc5</srcmd5>
+    <version>1.13.0</version>
+    <time>1615213163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.13.0
+  * Support for Python 2 has been removed.
+  * The acme library no longer depends on the security extras from 
+    requests which was needed to support SNI in TLS requests when 
+    using old versions of Python 2.
+  * When revoking a certificate by --cert-name, it is no longer 
+    necessary to specify the --server if the certificate was 
+    obtained from a non-default ACME server.</comment>
+    <requestid>877591</requestid>
+  </revision>
 </revisionlist>
