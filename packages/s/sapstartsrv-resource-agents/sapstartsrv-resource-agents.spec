@@ -25,7 +25,7 @@ License:        GPL-2.0
 Group:          Productivity/Clustering/HA
 AutoReqProv:    on
 Summary:        Resource agent for SAP instance specific sapstartsrv service
-Version:        0.9.0+git.1614267979.e1f82bf
+Version:        0.9.0+git.1615189486.815e798
 Release:        0
 Url:            https://github.com/SUSE/SAPStartSrv-resourceAgent
 
@@ -87,16 +87,10 @@ pytest tests
 
 %files
 %defattr(-,root,root)
-%if 0%{?sle_version:1} && 0%{?sle_version} < 120300
-%doc README.md LICENSE
-%doc %{_mandir}/man7/*.7.gz
-%doc %{_mandir}/man8/*.8.gz
-%else
 %doc README.md
-%doc %{_mandir}/man7/*.7.gz
-%doc %{_mandir}/man8/*.8.gz
 %license LICENSE
-%endif
+%{_mandir}/man7/*.7.gz
+%{_mandir}/man8/*.8.gz
 %dir %{ocf_dir}
 %dir %{ocf_dir}/resource.d
 %defattr(755,root,root,-)
