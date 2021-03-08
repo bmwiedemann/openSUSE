@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  4 06:09:39 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * Switch from QGLWidget to QOpenGLWidget (kde#403323)
+  * Use Quality level when saving JPEG images
+
+-------------------------------------------------------------------
 Wed Feb  3 08:27:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
