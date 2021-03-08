@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        20.12.2
+Version:        20.12.3
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
 Source101:      kdeconnect-kde-firewalld.xml
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Don-t-escape-notification-title-text.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
