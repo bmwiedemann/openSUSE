@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  3 12:30:43 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 15.11.0:
+  * crypto: make FIPS related options always awailable
+    (note: don't forget to install the appropriate FIPS patterns
+     as otherwise openssl will refuse)
+  * errors: remove experimental from --enable-source-maps
+
+- nodejs-libpath.patch, versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Feb 23 14:41:30 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 15.10.0:

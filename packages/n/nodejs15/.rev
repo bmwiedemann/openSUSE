@@ -75,4 +75,17 @@
   * tls: add ability to get cert/peer cert as X509Certificate object</comment>
     <requestid>874672</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f249a7686894e142933bc32aaedecca8</srcmd5>
+    <version>15.11.0</version>
+    <time>1615212915</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 15.11.0:
+  * crypto: make FIPS related options always awailable
+    (note: don't forget to install the appropriate FIPS patterns
+     as otherwise openssl will refuse)
+  * errors: remove experimental from --enable-source-maps
+- nodejs-libpath.patch, versioned.patch: refreshed</comment>
+    <requestid>876698</requestid>
+  </revision>
 </revisionlist>
