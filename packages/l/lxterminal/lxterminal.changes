@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  7 12:21:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lxterminal 0.4.0:
+  * Fixed word-wise selection issue when running on gtk3
+  * Fixed URL highlighting feature broken after updating libvte to
+    0.60
+  * Added new "Bold is bright" feature and setting
+  * Added new "Visual bell" feature and setting
+  * A few translation updates
+
+-------------------------------------------------------------------
 Sat Jul  4 08:11:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lxterminal 0.3.2 (boo#1113553):
