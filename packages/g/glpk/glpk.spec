@@ -1,7 +1,7 @@
 #
 # spec file for package glpk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   40
 %define lname   libglpk%{sover}
 Name:           glpk
-Version:        4.65
+Version:        5.0
 Release:        0
 Summary:        GNU Linear Programming Kit
 License:        GPL-3.0-only
@@ -34,6 +34,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  libiodbc-devel
 BuildRequires:  libmariadb-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  texlive
 
 %description
@@ -66,9 +67,7 @@ callable library.
 %package doc
 Summary:        GNU Linear Programming Kit
 Group:          Documentation/Other
-%if 0%{?suse_version} >= 1120 || 0%{?fedora_version}
 BuildArch:      noarch
-%endif
 
 %description doc
 The GLPK package is intended for solving large-scale linear
@@ -101,6 +100,21 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+# creates support file for pkg-config
+mkdir -p %{buildroot}/%{_libdir}/pkgconfig
+tee %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc << "EOF"
+prefix=%{_prefix}
+exec_prefix=${prefix}
+libdir=${exec_prefix}/%{_lib}
+includedir=${prefix}/include
+
+Name: %{name}
+Description: GNU Linear Programming Kit
+Version: %{version}
+Libs: -lglpk
+Cflags: -I${includedir}
+EOF
+
 %check
 make %{?_smp_mflags} check
 
@@ -117,6 +131,7 @@ make %{?_smp_mflags} check
 %files devel
 %{_includedir}/*
 %{_libdir}/libglpk.so
+%{_libdir}/pkgconfig/%{name}.pc
 
 %files doc
 %doc ChangeLog NEWS README

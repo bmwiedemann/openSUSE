@@ -223,4 +223,12 @@
     <comment>- Enable PGO during build</comment>
     <requestid>769675</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d5f4458aeb7251ba2a88116f883783bf</srcmd5>
+    <version>5.0</version>
+    <time>1615212980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865662</requestid>
+  </revision>
 </revisionlist>
