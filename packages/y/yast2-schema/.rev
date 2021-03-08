@@ -495,4 +495,12 @@
     <comment>submit new version 4.3.18</comment>
     <requestid>870923</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c44c8ab5e0b73dc1c0b608731ada4013</srcmd5>
+    <version>4.3.20</version>
+    <time>1615212891</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.20</comment>
+    <requestid>876576</requestid>
+  </revision>
 </revisionlist>

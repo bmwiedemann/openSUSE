@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.3.18
+Version:        4.3.20
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -47,19 +47,21 @@ BuildRequires:  yast2-bootloader >= 4.3.12
 BuildRequires:  yast2-configuration-management >= 4.3.0
 BuildRequires:  yast2-country >= 4.3.0
 BuildRequires:  yast2-dhcp-server >= 4.3.0
-BuildRequires:  yast2-dns-server >= 4.3.0
+# allow 'zone' instead of 'listentry'
+BuildRequires:  yast2-dns-server >= 4.3.3
 BuildRequires:  yast2-firewall >= 4.3.0
 BuildRequires:  yast2-firstboot >= 4.3.0
 BuildRequires:  yast2-ftp-server >= 4.3.0
 BuildRequires:  yast2-geo-cluster >= 4.3.0
 BuildRequires:  yast2-http-server
 BuildRequires:  yast2-installation
-BuildRequires:  yast2-iscsi-client
+BuildRequires:  yast2-tftp-server >= 4.1.7
+# add 'iface' element
+BuildRequires:  yast2-iscsi-client >= 4.3.3
 BuildRequires:  yast2-kdump
 BuildRequires:  yast2-mail >= 4.3.3
-BuildRequires:  yast2-tftp-server >= 4.1.7
-# networking section 'virt_bridge_proposal' element
-BuildRequires:  yast2-network >= 4.3.46
+# add 'bridge_forward_delay' element
+BuildRequires:  yast2-network >= 4.3.51
 BuildRequires:  yast2-nfs-client
 BuildRequires:  yast2-nfs-server
 BuildRequires:  yast2-nis-client
