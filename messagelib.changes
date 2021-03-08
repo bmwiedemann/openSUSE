@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  4 06:11:53 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * mail-thread-ignored and mail-thread-watched exist in breeze-icons.
+  * Use "enter" for searching next element
+  * Exclude loading stylesheet
+  * Fix Bug 431218 - mail viewer loads external fonts even with external refs disabled (kde#431218)
+- Dropped patches, now upstream:
+  * 0001-Fix-Bug-431218-mail-viewer-loads-external-fonts-even.patch
+  * 0002-Exclude-loading-stylesheet.patch
+
+-------------------------------------------------------------------
 Wed Feb  3 08:30:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
