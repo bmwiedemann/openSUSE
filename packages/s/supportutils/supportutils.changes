@@ -1,12 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar  3 14:12:42 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove net-tools from requires, it does not contain any tool
+  anymore used by supportutils pr#96
+
+-------------------------------------------------------------------
+Tue Mar  2 14:45:38 UTC 2021 - Mike Latimer mlatimer@suse.com
+
+- Collect logs for power specific components (using iprconfig) pr#94 (bsc#1182950)
+  + Additional nvme information
+  + Additional kdump configuration and logs
+
+-------------------------------------------------------------------
 Tue Feb 16 20:10:28 UTC 2021 - jason.record@gmail.com
 
 - Additions to version 3.1.14
-  + [powerpc] Collect logs for power specific components (HNV) #88 (bsc#1181911)
+  + [powerpc] Collect logs for power specific components (HNV) pr#88 (bsc#1181911)
   + Updated pam.txt documentation explaining GDPR
-  + ha.txt: Fix pacemaker.log location for SLE15 #90
-  + supportconfig: use readlink /proc/<pid>/cwd to get cwd list instead of lsof #91
-  + supportconfig: sssd_info consistency #93
+  + ha.txt: Fix pacemaker.log location for SLE15 pr#90
+  + supportconfig: use readlink /proc/<pid>/cwd to get cwd list instead of lsof pr#91
+  + supportconfig: sssd_info consistency pr#93
   + Includes NVMe information with OPTION_NVME=1 in nvme.txt (bsc#1176370, SLE-15932)
 
 -------------------------------------------------------------------

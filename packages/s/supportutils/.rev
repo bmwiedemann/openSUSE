@@ -146,4 +146,12 @@
     <comment>PAM and NVMe (forwarded request 873384 from jrecord)</comment>
     <requestid>873385</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>e17ff57cd465c1aa79a8d5575179f717</srcmd5>
+    <version>3.1.14</version>
+    <time>1615212886</time>
+    <user>dimstar_suse</user>
+    <comment>Newest with NVMe and other tools (forwarded request 876569 from jrecord)</comment>
+    <requestid>876571</requestid>
+  </revision>
 </revisionlist>

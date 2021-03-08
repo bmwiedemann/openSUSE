@@ -29,7 +29,6 @@ Source:         %{name}-%{version}.tar.gz
 Requires:       iproute2
 Requires:       kmod-compat
 Requires:       ncurses-utils
-Requires:       net-tools
 Requires:       sysfsutils
 Requires:       tar
 Requires:       util-linux-systemd
