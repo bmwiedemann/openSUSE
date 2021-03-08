@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  7 14:17:36 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.2.2
+  - Stability improvements.
+  - Whitespace is no longer normalized when using the monospace body setting.
+  - Fixed issues with percent-encoded Gopher paths.
+
+-------------------------------------------------------------------
 Sat Feb 27 18:14:15 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.2.1
