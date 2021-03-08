@@ -471,4 +471,12 @@
     <comment>20.12.2 release</comment>
     <requestid>869238</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>71c3ef02b4a7e02eaf32168404904ad3</srcmd5>
+    <version>20.12.3</version>
+    <time>1615212635</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877009</requestid>
+  </revision>
 </revisionlist>
