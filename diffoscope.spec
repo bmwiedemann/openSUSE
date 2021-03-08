@@ -1,7 +1,7 @@
 #
 # spec file for package diffoscope
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diffoscope
-Version:        113
+Version:        168
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
@@ -28,16 +28,25 @@ Source1:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2.asc
 Source2:        diffoscope.keyring
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.7
+BuildRequires:  python3-curses
 BuildRequires:  python3-libarchive-c
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-magic
 BuildRequires:  python3-setuptools
+Requires:       python3-curses
 Requires:       python3-libarchive-c
 Requires:       python3-python-magic
 Requires:       python3-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # Tools required for proper function of this program
+# in extras_require
+Recommends:     python3-distro
+Recommends:     python3-argcomplete
+Recommends:     python3-progressbar
+Recommends:     python3-defusedxml
+Recommends:     python3-jsondiff
 # for getfacl
 Suggests:       acl
 # for ar, readelf, objcopy and objdump
@@ -102,6 +111,7 @@ debbindiff.
 
 %prep
 %setup -q
+sed -i '0,/#!\/usr\/bin\/env/ d' diffoscope/main.py
 
 %build
 %python3_build
@@ -124,7 +134,7 @@ if [ "$1" = 0 ] ; then
 fi
 
 %check
-# 7 tests fail 130 skipped due to missing tools, needs more investigation
+# 3 tests fail 177 skipped due to missing tools, needs more investigation
 py.test-%{python3_bin_suffix} -v || :
 
 %files
