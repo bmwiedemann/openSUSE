@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  4 18:14:43 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Require util-linux-systemd for %post scripts (findmnt) (boo#1182998) 
+
+-------------------------------------------------------------------
 Thu Feb 25 16:15:46 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update commonver to 0.35.1

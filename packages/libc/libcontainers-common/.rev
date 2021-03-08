@@ -268,4 +268,12 @@
     <comment></comment>
     <requestid>875203</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>8da622c4e1b70f0580b2e4549129620d</srcmd5>
+    <version>20210112</version>
+    <time>1615212950</time>
+    <user>dimstar_suse</user>
+    <comment>- Require util-linux-systemd for %post scripts (findmnt) (boo#1182998)</comment>
+    <requestid>876808</requestid>
+  </revision>
 </revisionlist>

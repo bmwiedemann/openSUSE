@@ -51,7 +51,7 @@ Provides:       libcontainers-image
 Provides:       libcontainers-storage
 Obsoletes:      libcontainers-image
 Obsoletes:      libcontainers-storage
-Requires(post): util-linux
+Requires(post): util-linux-systemd
 Requires(post): grep
 BuildArch:      noarch
 
