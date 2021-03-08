@@ -415,4 +415,28 @@
     <comment>KDE Applications 20.12.0</comment>
     <requestid>855088</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4e1f338688d71a68d2beca4d9a27fb49</srcmd5>
+    <version>20.12.1</version>
+    <time>1610303952</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.1</comment>
+    <requestid>861095</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>5dba2eb6e60b586d555b206a5009ab13</srcmd5>
+    <version>20.12.2</version>
+    <time>1612707441</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.2 release</comment>
+    <requestid>869237</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b937303144a0f57b7f84e346a5fb4c91</srcmd5>
+    <version>20.12.3</version>
+    <time>1615212996</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877015</requestid>
+  </revision>
 </revisionlist>
