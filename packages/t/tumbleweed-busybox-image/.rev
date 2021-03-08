@@ -141,4 +141,13 @@
 </comment>
     <requestid>867219</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>89cafedbdf8538976236263a1e89db0c</srcmd5>
+    <version>1.0.0</version>
+    <time>1615212947</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure su is really working
+- Use /bin/sh instead of bash as login shell (bash is not installed) (forwarded request 876799 from kukuk)</comment>
+    <requestid>876800</requestid>
+  </revision>
 </revisionlist>

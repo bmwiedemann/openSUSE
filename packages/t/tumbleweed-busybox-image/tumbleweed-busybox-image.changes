@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  4 14:54:59 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make sure su is really working
+- Use /bin/sh instead of bash as login shell (bash is not installed)
+
+-------------------------------------------------------------------
 Tue Dec  1 09:42:43 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Make use of ExpandFlags: kiwi-nobasepackages:
