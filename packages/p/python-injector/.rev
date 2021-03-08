@@ -46,4 +46,12 @@
   * Added forward return type reference support to provider methods</comment>
     <requestid>792593</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>818dd3d9dbd8cbe9eadac282694b8d70</srcmd5>
+    <version>0.18.3</version>
+    <time>1615212987</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequires on the dataclasses module if using python 3.6</comment>
+    <requestid>867347</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-injector
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  ((python3-dataclasses and python3-base < 3.7) or (python36-dataclasses and python36-base))
 Requires:       python
 Requires:       python-typing_extensions >= 3.7.4
 BuildArch:      noarch

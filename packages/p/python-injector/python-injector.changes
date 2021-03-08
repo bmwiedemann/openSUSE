@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 28 04:00:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequires on the dataclasses module if using python 3.6 
+
+-------------------------------------------------------------------
 Thu Apr  9 05:21:45 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.18.3:
