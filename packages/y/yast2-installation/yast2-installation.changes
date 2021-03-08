@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  4 13:49:52 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added special installer configuration dialog
+  (jsc#PM-1895, jsc#SLE-16263)
+
+  - Can be started from the initial language selection dialog
+    using an "hambuger" button  (openSUSE Tumbleweed only)
+  - Or in any dialog using a keyboard shortcut:
+    - Ctrl+Alt+Shift+C in graphical (Qt) UI
+    - Ctrl+D Shift+C in text mode (ncurses)
+
+- 4.3.31
+
+-------------------------------------------------------------------
 Tue Mar  2 11:09:17 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Do not write selinux and polkit default rules during upgrade
