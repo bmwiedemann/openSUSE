@@ -16,8 +16,6 @@
 #
 
 
-%define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -45,7 +43,7 @@
 %bcond_without json
 
 Name:           keepalived
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
@@ -88,11 +86,6 @@ BuildRequires:  pkgconfig(libsystemd)
 %else
 Requires(pre):  %insserv_prereq
 %endif
-%requires_file %{_libdir}/libipset.so
-%requires_file %{_libdir}/libip6tc.so
-%requires_file %{_libdir}/libip4tc.so
-%requires_file %{_libdir}/libnl-3.so
-%requires_file %{_libdir}/libnl-genl-3.so
 
 %description
 This project provides facilities for load balancing and high-availability to
@@ -119,6 +112,7 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
 #  --enable-dbus-create-instance \
 %configure \
   --disable-silent-rules \
+  --docdir=%{_defaultdocdir}/%{name}/ \
   --enable-bfd \
   %if %{with json}
   --enable-json \
@@ -152,13 +146,12 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-log-file \
   --enable-routes \
   --enable-iptables \
-  --enable-dynamic-linking \
-  --enable-libiptc \
-  --enable-libiptc-dynamic \
+  --disable-dynamic-linking \
+  --disable-libiptc-dynamic \
+  --disable-libipset-dynamic \
+  --disable-libnl-dynamic \
   --enable-libipset \
-  --enable-libipset-dynamic \
   --enable-libnl \
-  --enable-libnl-dynamic \
   --enable-stacktrace \
   --enable-json
 make %{?_smp_mflags}
@@ -177,6 +170,9 @@ ln -s /etc/init.d/keepalived %{buildroot}%{_sbindir}/rckeepalived
 
 chmod -R o= %{buildroot}/etc/keepalived
 rm -rv %{buildroot}/etc/keepalived/samples/ %{buildroot}/etc/sysconfig/keepalived
+cp -rv \
+  AUTHOR ChangeLog CONTRIBUTORS README doc/samples/ doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt \
+  %{buildroot}%{_defaultdocdir}/%{name}/
 
 %check
 # A build could silently have LVS support disabled if the kernel includes can't
@@ -219,10 +215,7 @@ getent passwd %{name} >/dev/null || \
 %files
 %defattr(-,root,root)
 %license COPYING
-%doc AUTHOR ChangeLog CONTRIBUTORS README
-%doc %{_datadir}/doc/keepalived/
-%doc doc/samples/
-%doc doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt
+%doc %{_defaultdocdir}/%{name}/
 %dir  %{_sysconfdir}/keepalived
 %dir %attr(-,keepalived,keepalived) %{_var}/lib/%{name}
 %{_fillupdir}/sysconfig.%{name}

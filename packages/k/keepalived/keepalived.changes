@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  7 00:34:36 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.2.2
+  https://www.keepalived.org/release-notes/Release-2.2.2.html
+- change how we install documentation to avoid duplicated files
+- Link all the files for ipset, iptables, libnl instead of dlopen.
+  Drop the previous workaround for generating requires for the
+  dlopen-ed libaries.
+- remove unsupported configure option: --enable-libiptc
+
+-------------------------------------------------------------------
 Thu Feb 18 16:17:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Make sure we pull in the libraries we need for dlopen, by
@@ -8,7 +19,7 @@ Thu Feb 18 16:17:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Jan 26 14:58:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 2.2.1 
+- Update to 2.2.1
   https://www.keepalived.org/release-notes/Release-2.2.1.html
   https://www.keepalived.org/release-notes/Release-2.2.0.html
   https://www.keepalived.org/release-notes/Release-2.1.5.html
