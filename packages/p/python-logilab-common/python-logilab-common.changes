@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  8 08:40:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * feature: add tox helpers to make pipy and debian releases
+  * fix: use TypedDict if python version > 3.8 only, otherwise use a Dict
+         (TypedDict were imported from typing_extension 3.7.4, which is not
+         available on debian buste 
+
+-------------------------------------------------------------------
 Sat Dec 19 13:21:12 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - updadate to 1.8.0:

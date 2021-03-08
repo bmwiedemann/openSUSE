@@ -54,4 +54,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>858758</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a2e24f65cb9d2631b13c8d068f12c1b</srcmd5>
+    <version>1.8.1</version>
+    <time>1615213151</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.1:
+  * feature: add tox helpers to make pipy and debian releases
+  * fix: use TypedDict if python version &gt; 3.8 only, otherwise use a Dict
+         (TypedDict were imported from typing_extension 3.7.4, which is not
+         available on debian buste</comment>
+    <requestid>877590</requestid>
+  </revision>
 </revisionlist>
