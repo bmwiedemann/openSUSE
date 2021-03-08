@@ -535,4 +535,12 @@
     <comment>20.12.2 release</comment>
     <requestid>869342</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a8d5419b864dbb0dfe1e22cee834c7a2</srcmd5>
+    <version>20.12.3</version>
+    <time>1615212747</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877116</requestid>
+  </revision>
 </revisionlist>
