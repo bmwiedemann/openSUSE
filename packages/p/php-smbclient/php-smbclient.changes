@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 28 22:52:22 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- ftruncate implemented on smb_streams
+
+-------------------------------------------------------------------
 Fri Feb 19 18:59:18 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Mention rpmlintrc file in spec

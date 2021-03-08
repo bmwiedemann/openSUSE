@@ -7,4 +7,12 @@
     <comment>Rename php7-smbclient to php-smbclient</comment>
     <requestid>873901</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a6966123572fb99d014187bc84422a40</srcmd5>
+    <version>1.0.6</version>
+    <time>1615213123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877538</requestid>
+  </revision>
 </revisionlist>
