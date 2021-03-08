@@ -1,0 +1,208 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac6c9e63af1e4ea37cdb8d2ba0958ce2</srcmd5>
+    <version>0.26.1</version>
+    <time>1537971076</time>
+    <user>dimstar_suse</user>
+    <comment>Split certbot with tests</comment>
+    <requestid>636320</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23fc13e631a029c95ad018f05e892788</srcmd5>
+    <version>0.28.0</version>
+    <time>1542580379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649943</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7cb91e820f6218ae0d1601161fb2184f</srcmd5>
+    <version>0.30.2</version>
+    <time>1549140550</time>
+    <user>coolo</user>
+    <comment>- Update to 0.30.2:
+  * Lockstep update together with the main package</comment>
+    <requestid>669800</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>38bdc5154cfdb6aeda0303131b752a07</srcmd5>
+    <version>0.31.0</version>
+    <time>1549916841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673127</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>772a3110b4796631ca14c28268f55412</srcmd5>
+    <version>0.32.0</version>
+    <time>1552986047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686072</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>31ea5d5f3f1cae0f9d57d299dbe24e5f</srcmd5>
+    <version>0.34.2</version>
+    <time>1559580643</time>
+    <user>dimstar_suse</user>
+    <comment>up</comment>
+    <requestid>705633</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2060098bab55e09445819af9f9bd23d9</srcmd5>
+    <version>0.35.1</version>
+    <time>1560862813</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.35.1
+  * sync with main certbot package</comment>
+    <requestid>710539</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8cc8bec08b16a592d2972565ba33964c</srcmd5>
+    <version>0.36.0</version>
+    <time>1563456133</time>
+    <user>dimstar_suse</user>
+    <comment>version bump</comment>
+    <requestid>716067</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d4191e2796056ca4750be5f027d50cdd</srcmd5>
+    <version>0.36.0</version>
+    <time>1564414087</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>718494</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2caa6717e2d6e7f663d3c26447762947</srcmd5>
+    <version>0.37.2</version>
+    <time>1567010101</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.37.2
+  * sync with main certbot package</comment>
+    <requestid>726460</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>49b2eed99018e8d1693102a5c6a4defc</srcmd5>
+    <version>0.38.0</version>
+    <time>1568379563</time>
+    <user>lnussel_factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>730173</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7b11246ccaf349f537884134ac9a885f</srcmd5>
+    <version>0.39.0</version>
+    <time>1570020995</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.</comment>
+    <requestid>734587</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>860eb4529d38a399138e0a36e5a0b47d</srcmd5>
+    <version>0.39.0</version>
+    <time>1572542072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739167</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>febf8955604479c1d94896268e8598d6</srcmd5>
+    <version>0.40.1</version>
+    <time>1573774161</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>748676</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9286c7c56312fedf5680f55164304bbc</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069565</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0
+  * sync with main certbot package</comment>
+    <requestid>760666</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8c2292ef345057e451f694c68520253e</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636941</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>766019</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b9492c938ad58436c4239149598cf634</srcmd5>
+    <version>1.2.0</version>
+    <time>1582725807</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>778048</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6bf58d28fa006fd08551a9bc431f00a9</srcmd5>
+    <version>1.3.0</version>
+    <time>1583949321</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>783858</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5dc6045004304047f6652a6c4a98f7f9</srcmd5>
+    <version>1.4.0</version>
+    <time>1589491627</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>805544</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9d0722c8a3874cd845f5f8b8c25b5c21</srcmd5>
+    <version>1.5.0</version>
+    <time>1591881391</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>813519</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0bc0f4f723e4c29c930bb9518c7af2c5</srcmd5>
+    <version>1.6.0</version>
+    <time>1594818169</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>820660</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>15800ea940297981383be3b911cf075e</srcmd5>
+    <version>1.7.0</version>
+    <time>1598030088</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0
+  * Sync with main certbot package.</comment>
+    <requestid>828484</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>65a3b78c40c3d52b80d94409463ede5b</srcmd5>
+    <version>1.9.0</version>
+    <time>1602073191</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>839994</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a9c1ab7dae5f84a5bb6c5f0f37db537a</srcmd5>
+    <version>1.11.0</version>
+    <time>1610123954</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>861651</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3e0305062dafe480d2f7a4a41804d5fa</srcmd5>
+    <version>1.13.0</version>
+    <time>1615213194</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>877606</requestid>
+  </revision>
+</revisionlist>
