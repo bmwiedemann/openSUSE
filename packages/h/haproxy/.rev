@@ -1034,4 +1034,12 @@
     <comment>- Update to version 2.3.5+git0.5902ad99b:</comment>
     <requestid>869992</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>2c77871772798274a213585bc5f4684c</srcmd5>
+    <version>2.3.6+git0.7851701ed</version>
+    <time>1615212884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.6+git0.7851701ed:</comment>
+    <requestid>876563</requestid>
+  </revision>
 </revisionlist>

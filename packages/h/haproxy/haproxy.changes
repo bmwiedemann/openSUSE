@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Mar 03 15:17:18 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.6+git0.7851701ed:
+  * [RELEASE] Released version 2.3.6
+  * BUG/MINOR: http-ana: Don't increment HTTP error counter on read error/timeout
+  * BUG/MINOR: mux-h2: Fix typo in scheme adjustment
+  * DOC: spoe: Add a note about fragmentation support in HAProxy
+  * BUG/MEDIUM: spoe: Kill applets if there are pending connections and nbthread > 1
+  * BUG/MINOR: connection: Use the client's dst family for adressless servers
+  * BUG/MINOR: tcp-act: Don't forget to set the original port for IPv4 set-dst rule
+  * BUG/MINOR: http-ana: Only consider dst address to process originalto option
+  * BUG/MINOR: mux-h1: Immediately report H1C errors from h1_snd_buf()
+  * BUG/MINOR: stats: fix compare of no-maint url suffix
+  * CLEANUP: muxes: Remove useless if condition in show_fd function
+  * BUG/MINOR: ssl: potential null pointer dereference in ckchs_dup()
+  * BUG/MEDIUM: resolvers: Reset address for unresolved servers
+  * BUG/MEDIUM: resolvers: Reset server address and port for obselete SRV records
+  * BUG/MINOR: resolvers: new callback to properly handle SRV record errors
+  * BUG/MINOR: resolvers: Only renew TTL for SRV records with an additional record
+  * BUG/MINOR: resolvers: Fix condition to release received ARs if not assigned
+  * BUG/MINOR: fd: properly wait for !running_mask in fd_set_running_excl()
+  * BUG/MINOR: proxy: wake up all threads when sending the hard-stop signal
+  * BUG/MEDIUM: cli/shutdown sessions: make it thread-safe
+  * BUG/MEDIUM: proxy: use thread-safe stream killing on hard-stop
+  * BUG/MEDIUM: vars: make functions vars_get_by_{name,desc} thread-safe
+  * BUG/MINOR: sample: secure convs that accept base64 string and var name as args
+  * MINOR: Configure the `cpp` userdiff driver for *.[ch] in .gitattributes
+  * BUG/MINOR: ssl/cli: potential null pointer dereference in "set ssl cert"
+  * BUG/MEDIUM: mux-h1: Fix handling of responses to CONNECT other than 200-ok
+  * BUG/MINOR: server: Be sure to cut the last parsed field of a server-state line
+  * BUG/MINOR: server: Init params before parsing a new server-state line
+  * BUG/MINOR: http-rules: Always replace the response status on a return action
+  * BUG/MEDIUM: spoe: Resolve the sink if a SPOE logs in a ring buffer
+  * BUG/MEDIUM: lists: Avoid an infinite loop in MT_LIST_TRY_ADDQ().
+  * DOC: explain the relation between pool-low-conn and tune.idle-pool.shared
+  * BUILD: ssl: introduce fine guard for OpenSSL specific SCTL functions
+  * BUG/MINOR: sample: Always consider zero size string samples as unsafe
+  * BUG/MEDIUM: checks: don't needlessly take the server lock in health_adjust()
+  * BUG/MINOR: checks: properly handle wrapping time in __health_adjust()
+  * BUG/MINOR: session: atomically increment the tracked sessions counter
+  * BUG/MINOR: server: Remove RMAINT from admin state when loading server state
+  * CLEANUP: channel: fix comment in ci_putblk.
+  * DOC: tune: explain the origin of block size for ssl.cachesize
+  * BUG/MINOR: server: Don't call fopen() with server-state filepath set to NULL
+  * BUG/MINOR: cfgparse: do not mention "addr:port" as supported on proxy lines
+  * BUG/MINOR: stats: revert the change on ST_CONVDONE
+  * BUG/MEDIUM: config: don't pick unset values from last defaults section
+  * CLEANUP: deinit: release global and per-proxy server-state variables on deinit
+  * BUG/MINOR: server: Fix server-state-file-name directive
+  * BUG/MINOR: backend: hold correctly lock when killing idle conn
+  * BUG/MINOR: tools: Fix a memory leak on error path in parse_dotted_uints()
+  * BUG/MINOR: server: re-align state file fields number
+  * BUG/MEDIUM: mux-h1: Always set CS_FL_EOI for response in MSG_DONE state
+  * BUG/MINOR: http-ana: Don't increment HTTP error counter on internal errors
+  * BUG/MINOR: intops: fix mul32hi()'s off-by-one
+  * BUILD: ssl: guard SSL_CTX_set_msg_callback with SSL_CTRL_SET_MSG_CALLBACK macro
+  * BUILD: ssl: guard SSL_CTX_add_server_custom_ext with special macro
+  * BUILD: ssl: fix typo in HAVE_SSL_CTX_ADD_SERVER_CUSTOM_EXT macro
+  * MINOR: check: do not ignore a connection header for http-check send
+
+-------------------------------------------------------------------
 Sat Feb 06 16:29:34 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.3.5+git0.5902ad99b:
