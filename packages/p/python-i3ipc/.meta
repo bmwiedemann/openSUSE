@@ -1,0 +1,5 @@
+<package name="python-i3ipc" project="openSUSE:Factory">
+  <title>python-i3ipc</title>
+  <description>Python library for i3 WM extensions</description>
+  <devel project="devel:languages:python" package="python-i3ipc"/>
+</package>
