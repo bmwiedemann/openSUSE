@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  8 04:51:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 9.1.1:
+  * Add HostBrowser.update_hosts (#476)
+  * Handle audio groups removed from known host (#475)
+  * Remove useless pylint and flake8 directives (#472)
+  * BREAKING CHANGE: Update discovery to support a list of known hosts (#469)
+  * Catch errors thrown by select call (#471)
+  * Fix some strings mangled by black formatting (#470)
+  * Fix MultiZoneControllerListener (#468)
+  * Expose volume_control_type (#461)
+  * Move ReceiverController to its own module (#460)
+  * Infer contentType from playQueue items (#457) @maykar
+  * Remove unintended 'async' from listener interfaces (#453)
+  * Update BubbleUPNP example (#451)
+  * Refactor listeners and controllers as ABCs (#450)
+  * Add more google devices to consts (#448) @theychx
+  * Make current_time optional when loading or queing media (#446)
+
+-------------------------------------------------------------------
 Wed Jan 27 03:47:43 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.7.2:

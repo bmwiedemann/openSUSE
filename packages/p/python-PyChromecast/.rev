@@ -184,4 +184,27 @@
 - Correct egg-info filename to build in the multi-python new world order.</comment>
     <requestid>867026</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>47161fa46d1411406bc2a4eb0069071f</srcmd5>
+    <version>9.1.1</version>
+    <time>1615213127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.1.1:
+  * Add HostBrowser.update_hosts (#476)
+  * Handle audio groups removed from known host (#475)
+  * Remove useless pylint and flake8 directives (#472)
+  * BREAKING CHANGE: Update discovery to support a list of known hosts (#469)
+  * Catch errors thrown by select call (#471)
+  * Fix some strings mangled by black formatting (#470)
+  * Fix MultiZoneControllerListener (#468)
+  * Expose volume_control_type (#461)
+  * Move ReceiverController to its own module (#460)
+  * Infer contentType from playQueue items (#457) @maykar
+  * Remove unintended 'async' from listener interfaces (#453)
+  * Update BubbleUPNP example (#451)
+  * Refactor listeners and controllers as ABCs (#450)
+  * Add more google devices to consts (#448) @theychx
+  * Make current_time optional when loading or queing media (#446)</comment>
+    <requestid>877546</requestid>
+  </revision>
 </revisionlist>
