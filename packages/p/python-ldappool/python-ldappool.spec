@@ -27,9 +27,11 @@ URL:            https://git.openstack.org/cgit/openstack/ldappool
 Source:         https://files.pythonhosted.org/packages/source/l/ldappool/ldappool-%{version}.tar.gz
 BuildRequires:  %{python_module ldap >= 3.0.0}
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testresources}
-BuildRequires:  %{python_module testtools}
+# SECTION stestr is only available for primary python3 flavor (openstack package)
+BuildRequires:  python3-stestr
+BuildRequires:  python3-testresources
+BuildRequires:  python3-testtools
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PrettyTable
@@ -62,7 +64,7 @@ sed -i 's/PrettyTable<0.8,>=0.7.2/prettytable>=0.7.2/' requirements.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

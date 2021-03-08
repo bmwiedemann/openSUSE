@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 25 22:34:03 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- OpenStack package -- test on primary python3 only.
+
+-------------------------------------------------------------------
 Tue Nov 24 04:44:26 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove upper pin on PrettyTable dependency
