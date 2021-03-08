@@ -1611,4 +1611,16 @@
 </comment>
     <requestid>871499</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>70728f00fe879bcd25b7b4f7a0c8c9d7</srcmd5>
+    <version>4.16.5</version>
+    <time>1615213208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.5
+  * Emergency release on the thunar 4.16 branch, since the fix for 
+    Issue #47 can cause high I/O in some cases (gxo#xfce/thunar#526)
+  * Revert &quot;Bookmarks no longer need an existing file 
+    (gxo#xfce/thunar#47)&quot; (forwarded request 877699 from mauriziogalli)</comment>
+    <requestid>877700</requestid>
+  </revision>
 </revisionlist>
