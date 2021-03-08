@@ -1,7 +1,7 @@
 #
 # spec file for package branding-openSUSE
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -204,6 +204,11 @@ popd
 %install
 %make_install
 
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}/%{_distconfdir}
+mv %{buildroot}/%{_sysconfdir}/SUSE-brand %{buildroot}/%{_distconfdir}
+%endif
+
 # gfxboot themes will soon get a make install - promised by snwint
 # gfxboot should use a link /etc/bootsplash/theme -> /usr/share/bootsplash
 # like splashy
@@ -265,7 +270,11 @@ gfxboot --update-theme %{theme_name}
 
 %files
 %license LICENSE
+%if 0%{?suse_version} >= 1550
+%{_distconfdir}/SUSE-brand
+%else
 %config %{_sysconfdir}/SUSE-brand
+%endif
 
 %files -n wallpaper-branding-%{theme_name}
 %license LICENSE
