@@ -1,4 +1,28 @@
 --------------------------------------------------------------------
+Fri Mar 5 12:11:42 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#249
+- Revert "default to using zram"
+- 7.0.29
+
+--------------------------------------------------------------------
+Fri Mar 5 09:09:25 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#247
+- fix buffer overflow when setting up loop device (bsc#1180161)
+- adjust last remaining dubious strcpy use
+- 7.0.28
+
+--------------------------------------------------------------------
+Wed Mar 3 16:03:47 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#246
+- default to using zram
+- document install.inf entry
+- support using zram device as root file system (jsc#PM-2253)
+- 7.0.27
+
+--------------------------------------------------------------------
 Thu Jan 21 13:52:52 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#245
