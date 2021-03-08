@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  4 06:11:55 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * presentation: Show better the status of the "playing" button (kde#432416)
+  * pdf: Fix InPlace text annotations being loaded as linked (kde#432009, kde#432932)
+
+-------------------------------------------------------------------
 Wed Feb  3 08:30:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
