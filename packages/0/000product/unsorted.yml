@@ -20844,7 +20844,6 @@ unsorted:
   - python3-lalapps: [x86_64] 
   - python3-lash 
   - python3-lasso 
-  - python3-ldappool: [x86_64] 
   - python3-ldb-32bit: [x86_64] 
   - python3-ldb-devel 
   - python3-ldns 
@@ -22524,7 +22523,7 @@ unsorted:
   - python36-ldap 
   - python36-ldap3 
   - python36-ldapdomaindump 
-  - python36-ldappool: [i586] 
+  - python36-ldappool 
   - python36-ldaptor 
   - python36-leather 
   - python36-lesscpy 
@@ -25345,7 +25344,7 @@ unsorted:
   - python38-ldap: [i586] 
   - python38-ldap3 
   - python38-ldapdomaindump 
-  - python38-ldappool: [i586] 
+  - python38-ldappool 
   - python38-ldaptor 
   - python38-ldas-tools-al-swig 
   - python38-leather 
@@ -26795,6 +26794,7 @@ unsorted:
   - qemu-audio-alsa 
   - qemu-audio-pa 
   - qemu-extra 
+  - qemu-hw-s390x-virtio-gpu-ccw 
   - qemu-ivshmem-tools 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug: [x86_64] 
