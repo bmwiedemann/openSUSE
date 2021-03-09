@@ -317,6 +317,7 @@ Ignore: dummy-release:this-is-only-for-build-envs
 Ignore: erlang-rebar-obs:this-is-only-for-build-envs
 Ignore: ghc-bootstrap-helpers:this-is-only-for-build-envs
 Ignore: ghc-bootstrap:this-is-only-for-build-envs
+Ignore: ghostscript-mini:this-is-only-for-build-envs
 Ignore: harfbuzz-bootstrap:this-is-only-for-build-envs
 Ignore: jdk-bootstrap:this-is-only-for-build-envs
 Ignore: libsystemd0-mini:this-is-only-for-build-envs
