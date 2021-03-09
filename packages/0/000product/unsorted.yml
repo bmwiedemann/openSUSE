@@ -8490,7 +8490,6 @@ unsorted:
   - libIlmImfUtil-2_5-25 
   - libIlmImfUtil-2_5-25-32bit: [x86_64] 
   - libIlmThread-2_5-25-32bit: [x86_64] 
-  - libImath-2_5-25 
   - libImath-2_5-25-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
@@ -20793,7 +20792,6 @@ unsorted:
   - python3-fityk 
   - python3-flake8-comprehensions 
   - python3-flake8-future-import 
-  - python3-flask-oidc 
   - python3-framel 
   - python3-freezerclient 
   - python3-futurist 
@@ -20830,14 +20828,12 @@ unsorted:
   - python3-img-proof-tests 
   - python3-imobiledevice 
   - python3-influxdb 
-  - python3-injector 
   - python3-inspektor 
   - python3-ipa_hbac 
   - python3-ironic-inspector-client 
   - python3-ironicclient 
   - python3-itk 
   - python3-jenkins-job-builder 
-  - python3-jirafs 
   - python3-kea 
   - python3-keras2onnx: [x86_64] 
   - python3-keystoneauth1 
@@ -20848,7 +20844,7 @@ unsorted:
   - python3-lalapps: [x86_64] 
   - python3-lash 
   - python3-lasso 
-  - python3-ldappool 
+  - python3-ldappool: [x86_64] 
   - python3-ldb-32bit: [x86_64] 
   - python3-ldb-devel 
   - python3-ldns 
@@ -22193,6 +22189,7 @@ unsorted:
   - python36-flaky 
   - python36-flasgger 
   - python36-flask-jwt-extended 
+  - python36-flask-oidc 
   - python36-flask-peewee 
   - python36-flask-restplus 
   - python36-flask-restx 
@@ -22382,6 +22379,7 @@ unsorted:
   - python36-iniconfig 
   - python36-inifile 
   - python36-iniparse 
+  - python36-injector 
   - python36-interrogate 
   - python36-intervals 
   - python36-intervaltree 
@@ -22441,6 +22439,7 @@ unsorted:
   - python36-jinja2-pluralize 
   - python36-jinja2-time 
   - python36-jira 
+  - python36-jirafs 
   - python36-jmespath 
   - python36-joblib 
   - python36-josepy 
@@ -22525,6 +22524,7 @@ unsorted:
   - python36-ldap 
   - python36-ldap3 
   - python36-ldapdomaindump 
+  - python36-ldappool: [i586] 
   - python36-ldaptor 
   - python36-leather 
   - python36-lesscpy 
@@ -24999,6 +24999,7 @@ unsorted:
   - python38-flaky 
   - python38-flasgger 
   - python38-flask-jwt-extended 
+  - python38-flask-oidc 
   - python38-flask-peewee 
   - python38-flask-restplus 
   - python38-flask-restx 
@@ -25188,6 +25189,7 @@ unsorted:
   - python38-inflection 
   - python38-inifile 
   - python38-iniparse 
+  - python38-injector 
   - python38-intake 
   - python38-interrogate 
   - python38-intervals 
@@ -25249,6 +25251,7 @@ unsorted:
   - python38-jinja2-pluralize 
   - python38-jinja2-time 
   - python38-jira 
+  - python38-jirafs 
   - python38-jmespath 
   - python38-joblib 
   - python38-josepy 
@@ -25342,6 +25345,7 @@ unsorted:
   - python38-ldap: [i586] 
   - python38-ldap3 
   - python38-ldapdomaindump 
+  - python38-ldappool: [i586] 
   - python38-ldaptor 
   - python38-ldas-tools-al-swig 
   - python38-leather 
