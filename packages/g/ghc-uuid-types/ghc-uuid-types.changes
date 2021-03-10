@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 20 00:22:44 UTC 2021 - psimons@suse.com
+
+- Update uuid-types to version 1.0.4.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
+Sun Feb 14 14:46:20 UTC 2021 - psimons@suse.com
+
+- Update uuid-types to version 1.0.3 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

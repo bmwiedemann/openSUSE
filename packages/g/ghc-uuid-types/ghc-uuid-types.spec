@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-uuid-types
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name uuid-types
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Type definitions for Universally Unique Identifiers
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-bytestring-devel
@@ -36,17 +35,20 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-ghc-byteorder-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
-This library contains type definitions for Universally Unique Identifiers and
-basic conversion functions. See <http://en.wikipedia.org/wiki/UUID> for the
-general idea.
+This library contains type definitions for <https://en.wikipedia.org/wiki/UUID
+Universally Unique Identifiers (UUID)> (as specified in
+<http://tools.ietf.org/html/rfc4122 RFC 4122>) and basic conversion functions.
+
+See also the <https://hackage.haskell.org/package/uuid 'uuid' package>
+providing a high-level API for managing the different UUID versions.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -60,7 +62,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -81,6 +82,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGES
+%doc ChangeLog.md
 
 %changelog
