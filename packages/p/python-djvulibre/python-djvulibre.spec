@@ -1,7 +1,7 @@
 #
 # spec file for package python-djvulibre
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-djvulibre
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Python Support for the DjVu Image Format
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ URL:            http://jwilk.net/software/python-djvulibre
 Source0:        https://files.pythonhosted.org/packages/source/p/python-djvulibre/%{name}-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/p/python-djvulibre/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  %{python_module Cython >= 0.19}
+BuildRequires:  %{python_module Cython >= 0.19.1}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}

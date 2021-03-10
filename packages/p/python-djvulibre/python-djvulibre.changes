@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  8 13:48:17 UTC 2021 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.8.6.
+  * Fix build failure with Python 3.10.
+    + Require Cython >= 0.19.1 for Python 2.X.
+    + Drop support for Python 3.2 (and earlier 3.X versions).
+  * Fix build failure with Cython >= 3.0.
+  * Fix excessive memory use in djvu2png.
+  * Fix typo in an error message.
+  * Use HTTPS for cython.org URL.
+  * Improve the test suite.
+  * Improve the build system:
+    + Improve error handling.
+    + Declare build-dependencies.
+
+-------------------------------------------------------------------
 Mon Nov  4 13:13:44 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.8.5.
