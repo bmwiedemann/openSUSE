@@ -1664,4 +1664,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>872758</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>18cd4c56affa575eeeaee56896ceb0bd</srcmd5>
+    <version>3.19.6</version>
+    <time>1615362444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875245</requestid>
+  </revision>
 </revisionlist>

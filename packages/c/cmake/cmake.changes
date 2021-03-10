@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 25 19:22:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.19.6:
+  * The cmake-presets(7) feature no longer allows comments in
+    CMakePresets.json or CMakeUserPresets.json files. This was
+    mistakenly allowed by the implementation in 3.19.0 to 3.19.5
+
+-------------------------------------------------------------------
 Mon Feb 15 21:53:23 UTC 2021 - Christoph G <foss@grueninger.de>
 
 - Update to CMake 3.19.5
