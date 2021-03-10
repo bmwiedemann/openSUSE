@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 22 10:11:12 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.29 (no changelog) 
+
+-------------------------------------------------------------------
 Wed Feb 10 09:52:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with GCC 11 (boo#1181920)
