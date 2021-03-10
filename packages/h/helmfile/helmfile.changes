@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar  9 16:01:14 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.138.7
+  * 8ed8a9e (HEAD, tag: v0.138.7, origin/master, origin/HEAD, master)
+    allow to access oci repos without auth (#1711)
+  * 14a83e7 Update reference for helm-secrets to latest maintained
+    fork (#1676)
+  * bf9f36b refactor: simplify pull channel from #1706 (#1707)
+  * 3215eaf panic with clear message (#1709)
+  * 927bd30 Update README.md to show current CLI Output (#1712)
+
+- v0.138.6
+  * 247ae91 (HEAD, tag: v0.138.6, origin/master, origin/HEAD, master)
+    Disable darwin/386 build to avoid release failure
+
+- v0.138.5
+  * 97f0e59: Update README.md (#1677)
+
+-------------------------------------------------------------------
 Sat Feb 13 11:28:22 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.138.4
