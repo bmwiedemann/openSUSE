@@ -1,7 +1,0 @@
-etc/logrotate.d/kopano
-var/lib/kopano/empty/
-usr/lib/tmpfiles.d/
-usr/share/doc/kopano/example-config/apparmor.d/*.aa
-usr/share/man/man5/kopano-coredump.5
-usr/share/man/man7/kopano.7
-usr/share/man/man7/mapi.7
