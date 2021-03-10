@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  4 18:18:59 UTC 2021 - psimons@suse.com
+
+- Update blaze-markup to version 0.8.2.8.
+  - 0.8.2.8 (2021-03-04)
+      * Bump `base` upper bound to 4.16
+      * Bump `tasty` upper bound to 1.5
+      * Bump `bytestring` upper bound to 0.12
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

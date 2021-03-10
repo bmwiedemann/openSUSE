@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-blaze-markup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name blaze-markup
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.2.7
+Version:        0.8.2.8
 Release:        0
 Summary:        A blazingly fast markup combinator library for Haskell
 License:        BSD-3-Clause

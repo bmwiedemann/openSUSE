@@ -173,4 +173,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>update haskell stack in openSUS</comment>
     <requestid>857259</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bfa5f3ec680115e97f1b24a789fe6223</srcmd5>
+    <version>0.8.2.8</version>
+    <time>1615362972</time>
+    <user>dimstar_suse</user>
+    <comment>automated update for haskell stack</comment>
+    <requestid>877976</requestid>
+  </revision>
 </revisionlist>
