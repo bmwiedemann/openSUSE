@@ -251,4 +251,12 @@
   + Add automatic module metadata handling for repos (rh#1795936)</comment>
     <requestid>819088</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>22d1ac21455a94c505f89743ba1dd708</srcmd5>
+    <version>0.16.0</version>
+    <time>1615362450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875378</requestid>
+  </revision>
 </revisionlist>

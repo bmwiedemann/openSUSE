@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 26 07:16:58 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- removed %is_opensuse (CtLG)
+- disabled drpm for SLE/Leap 15.3 
+
+-------------------------------------------------------------------
 Tue Jul  7 01:12:50 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.16.0

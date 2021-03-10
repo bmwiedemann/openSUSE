@@ -1,7 +1,7 @@
 #
 # spec file for package createrepo_c
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%if 0%{?is_opensuse} || 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1330
 # Enable Python bindings on openSUSE
 %bcond_without python3
 %bcond_without tests
@@ -26,14 +26,14 @@
 %bcond_with tests
 %endif
 
-%if (0%{?is_opensuse} && 0%{?sle_version} >= 150200) || 0%{?suse_version} >= 1550
+%if 0%{?sle_version} >= 160000 || 0%{?suse_version} >= 1550
 # Enable enhanced DeltaRPM support
 %bcond_without drpm
 %else
 %bcond_with drpm
 %endif
 
-%if (0%{?is_opensuse} && 0%{?sle_version} >= 150100) || 0%{?suse_version} >= 1550
+%if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
 %bcond_without zchunk
 %bcond_without libmodulemd
 %else
@@ -65,7 +65,7 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 %if %{with python3}
 BuildRequires:  python3-devel
 %endif
-%if 0%{?is_opensuse} || 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1330
 BuildRequires:  python-rpm-macros
 %endif
 BuildRequires:  bash-completion
@@ -110,7 +110,7 @@ Obsoletes:      createrepo < 0.11.0
 Provides:       createrepo = %{version}-%{release}
 %else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 
 Provides:       createrepo-implementation
@@ -205,6 +205,7 @@ if [ -e %{_sysconfdir}/alternatives/createrepo ]; then
   update-alternatives --remove createrepo %{_bindir}/createrepo_c
 fi
 %else
+
 %post
 update-alternatives --install \
   %{_bindir}/createrepo createrepo %{_bindir}/createrepo_c  20 \
