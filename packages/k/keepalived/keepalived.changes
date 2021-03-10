@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  8 17:44:29 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop linux-4.15.patch: No longer needed as it was a backport from
+  upstream
+- Cleanup configure options after consultation with upstream:
+  - --enable-regex-timers is for debugging purposes
+  - --enable-snmp-checker and --enable-snmp-vrrp are enabled by
+    --enable-snmp
+  - --enable-snmp-rfcv2 and --enable-snmp-rfcv3 anre enabled by
+    --enable-snmp-rfc
+  - --enable-stacktrace is definitely a debugging option
+- on systems where we have nftables support we will only ship with
+  nftables support (>= 15.0) and use iptables support only on older
+  distributions.
+
+-------------------------------------------------------------------
 Sun Mar  7 00:34:36 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.2.2

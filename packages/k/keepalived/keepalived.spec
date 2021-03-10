@@ -52,8 +52,6 @@ URL:            http://www.keepalived.org/
 Source:         http://www.keepalived.org/software/%{name}-%{version}.tar.gz
 Source2:        keepalive-rpmlintrc
 Patch1:         keepalive-init.patch
-# PATCH-FIX-UPSTREAM: https://github.com/acassen/keepalived/commit/947248af144bcab6376ccddab8dc40f313b14281.patch
-Patch2:         linux-4.15.patch
 BuildRequires:  file-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
@@ -102,7 +100,6 @@ resilient infrastructures.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p0
 chmod 644 doc/samples/*
 
 %build
@@ -118,20 +115,19 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-json \
   %endif
   --enable-snmp \
-  --enable-snmp-checker \
-  --enable-snmp-vrrp \
   --enable-snmp-rfc \
-  --enable-snmp-rfcv2 \
-  --enable-snmp-rfcv3 \
   %if %{with dbus}
   --enable-dbus \
   %endif
   %if %{with keepalived_regex}
   --enable-regex \
-  --enable-regex-timers \
   %endif
   %if %{with keepalived_nftables}
   --enable-nftables \
+  --disable-iptables \
+  %else
+  --enable-iptables \
+  --enable-libipset \
   %endif
   %if %{with systemd}
   --enable-systemd \
@@ -145,14 +141,11 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-hardening \
   --enable-log-file \
   --enable-routes \
-  --enable-iptables \
   --disable-dynamic-linking \
   --disable-libiptc-dynamic \
   --disable-libipset-dynamic \
   --disable-libnl-dynamic \
-  --enable-libipset \
   --enable-libnl \
-  --enable-stacktrace \
   --enable-json
 make %{?_smp_mflags}
 
