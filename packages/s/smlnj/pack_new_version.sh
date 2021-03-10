@@ -32,7 +32,7 @@ cd $PKG_NAME
 echo "Getting SMLNJ source tarballs for v$version"
 
 for f in $files; do
-  curl -s http://smlnj.cs.uchicago.edu/dist/working/$version/$f -C - -L -o $f &
+  curl -s https://smlnj.org/dist/working/$version/$f -C - -L -o $f &
 done
 
 echo -n "Waiting for downloads to complete... "
