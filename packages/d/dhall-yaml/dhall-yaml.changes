@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 13 11:44:35 UTC 2021 - psimons@suse.com
+
+- Update dhall-yaml to version 1.2.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jan 28 20:34:05 UTC 2021 - psimons@suse.com
 
 - Update dhall-yaml to version 1.2.5.
