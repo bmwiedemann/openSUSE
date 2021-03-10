@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  2 09:34:41 UTC 2021 - psimons@suse.com
+
+- Update cassava to version 0.5.2.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Feb 19 23:02:56 UTC 2021 - psimons@suse.com
+
+- Update cassava to version 0.5.2.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
