@@ -19,19 +19,18 @@
 %global pkg_name lens
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.19.2
+Version:        5.0.1
 Release:        0
 Summary:        Lenses, Folds and Traversals
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/5.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-assoc-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-bifunctors-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-containers-devel
@@ -41,6 +40,8 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-free-devel
 BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-indexed-traversable-devel
+BuildRequires:  ghc-indexed-traversable-instances-devel
 BuildRequires:  ghc-kan-extensions-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-parallel-devel
@@ -48,10 +49,12 @@ BuildRequires:  ghc-profunctors-devel
 BuildRequires:  ghc-reflection-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroupoids-devel
+BuildRequires:  ghc-strict-devel
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-th-abstraction-devel
+BuildRequires:  ghc-these-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
@@ -61,11 +64,6 @@ ExcludeArch:    %{ix86}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-generic-deriving-devel
-BuildRequires:  ghc-nats-devel
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-simple-reflect-devel
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
@@ -168,7 +166,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

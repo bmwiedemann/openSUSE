@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Feb 24 18:57:20 UTC 2021 - psimons@suse.com
+
+- Update lens to version 5.0.1.
+  5.0.1 [2021.02.24]
+  ------------------
+  * Fix a bug in which `makeLenses` could produce ill kinded optics for
+    poly-kinded datatypes in certain situations.
+
+-------------------------------------------------------------------
+Fri Feb 19 23:03:14 UTC 2021 - psimons@suse.com
+
+- Update lens to version 5.
+  5 [2021.02.17]
+  --------------
+  * Support building with GHC 9.0.
+  * Remove the `Swapped` type class in favor of `Swap` from the `assoc` package.
+  * Remove the `Strict` type class in favor of `Strict` from the `strict` package.
+
+    The `swapped`, `strict` and `lazy` isomorphisms are now defined using "new" type classes.
+
+    Users which define own instances of old type classes are advised to
+    define instances of the new ones.
+
+    ```haskell
+    import qualified Data.Bifunctor.Swap as Swap
+    import qualified Control.Lens        as Lens
+
+    instance Swap.Swap MyType where
+      swap = ...
+
+    #if !MIN_VERSION_lens(4,20,0)
+    instance Lens.Swapped MyType where
+      swapped = iso Swap.swap Swap.swap
+    #endif
+    ```
+  * The `FunctorWithIndex`, `FoldableWithIndex` and `TraversableWithIndex` type classes
+    have been migrated to a new package,
+    [`indexed-traversable`](https://hackage.haskell.org/package/indexed-traversable).
+
+    The `imapped`, `ifolded` and `itraversed` methods are now top-level functions.
+    If you are not defining these methods in your instances,
+    you don't need to change your definitions.
+
+    Beware: the `optics-core` package (versions <0.4) defines similar classes,
+    and will also migrate to use `indexed-traversable` classes. Therefore, you
+    might get duplicate instance errors if your package defines both.
+
+    If you define your own `FunctorWithIndex` etc. instances,
+    we recommend that you depend directly on the `indexed-traversable` package.
+    If you want to continue support `lens-4` users, you may write
+
+    ```haskell
+    -- from indexed-traversable
+    import Data.Functor.WithIndex
+
+    -- from lens
+    import qualified Control.Lens as L
+
+    -- your (indexed) container
+    data MySeq a = ...
+
+    -- indexed-traversable instance
+    instance FunctorWithIndex     Int MySeq where imap = ...
+    instance FoldableWithIndex    Int MySeq where ifoldMap = ...
+    instance TraversableWithIndex Int MySeq where itraverse = ...
+
+    -- lens <5 instance, note the !
+    #if !MIN_VERSION_lens(5,0,0)
+    instance L.FunctorWithIndex     Int MySeq where imap = imap
+    instance L.FoldableWithIndex    Int MySeq where ifoldMap = ifoldMap
+    instance L.TraversableWithIndex Int MySeq where itraverse = itraverse
+    #endif
+    ```
+
+    In other words, always provide `indexed-traversable` instances.
+    If your package depends on `lens` and allows `lens-4`,
+    you should additionally provide instances for `lens-4` type classes
+    that can reuse the `indexed-traversable` instances.
+
+  * Make the functions in `Control.Lens.TH` work more robustly with poly-kinded
+    data types. This can cause a breaking change under certain situations:
+    * TH-generated optics for poly-kinded data types are now much more likely to
+      mention kind variables in their definitions, which will require enabling
+      the `PolyKinds` extension at use sites in order to typecheck.
+    * Because TH-generated optics now quantify more kind variables than they did
+      previously, this can affect the order of visible type applications.
+  * Generalize the types of `generic` and `generic1` to allow type-changing
+    updates. If you wish to use the old, more restricted types of these
+    functions, use `simple . generic` or `simple . generic1` instead.
+  * Add `Control.Lens.Profunctor` with conversion functions to and from
+    profunctor optic representation.
+  * Add `Control.Lens.Review.reviewing`, which is like `review` but with a more
+    polymorphic type.
+  * Mark `Control.Lens.Equality` as Trustworthy.
+  * The build-type has been changed from `Custom` to `Simple`.
+    To achieve this, the `doctests` test suite has been removed in favor of using [`cabal-docspec`](https://github.com/phadej/cabal-extras/tree/master/cabal-docspec) to run the doctests.
+  * Use `alterF` in `At (HashMap k)` instance implementation.
+  * Use `alterF` in `At` and `Contains` instances for `Set`, `IntSet`, and
+    `HashSet`.
+  * Avoid re-inserting keys already present in `ix` for `Set`, `IntSet`,
+    and `HashSet`. For `Set` and `HashSet`, this changes the semantics
+    slightly; if the user-supplied key is `==` to one already present in
+    the set, then the latter will not be replaced in the result.
+  * Consume `()` values lazily in `Control.Lens.At`.
+
+-------------------------------------------------------------------
 Mon Feb  8 19:13:43 UTC 2021 - psimons@suse.com
 
 - Update lens to version 4.19.2 revision 5.
