@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  1 11:03:32 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.345:
+  + Updated pci, usb and vendor ids.
+  + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160
+
+-------------------------------------------------------------------
 Tue Feb  2 09:46:14 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.344:

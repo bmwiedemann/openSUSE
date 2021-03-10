@@ -387,4 +387,14 @@
   + Updated pci, usb and vendor ids.</comment>
     <requestid>868574</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9638187d622efc8fa30819a4cbd20a3b</srcmd5>
+    <version>0.345</version>
+    <time>1615362543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.345:
+  + Updated pci, usb and vendor ids.
+  + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160</comment>
+    <requestid>876694</requestid>
+  </revision>
 </revisionlist>
