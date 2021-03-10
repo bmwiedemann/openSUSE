@@ -1,11 +1,10 @@
 #!/bin/sh
 
-COOKIE=$(mcookie)
-DASDFILE=/tmp/dasd.list.${COOKIE}
-DETFILE=/tmp/detach.disks.${COOKIE}
-KEEPFILE=/tmp/keep.disks.${COOKIE}
-NICFILE=/tmp/nic.list.${COOKIE}
-FAILFILE=/tmp/error.${COOKIE}
+DASDFILE=/tmp/dasd.list.$(mcookie)
+DETFILE=/tmp/detach.disks.$(mcookie)
+KEEPFILE=/tmp/keep.disks.$(mcookie)
+NICFILE=/tmp/nic.list.$(mcookie)
+FAILFILE=/tmp/error.$(mcookie)
 
 function expand_RANGE(){
 local RANGE=${1}

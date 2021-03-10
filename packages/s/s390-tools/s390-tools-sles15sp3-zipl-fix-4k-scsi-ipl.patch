@@ -1,0 +1,64 @@
+Subject: [PATCH] [BZ 191696] zipl: fix reading 4k disk's geometry
+From: Stefan Haberland <sth@linux.ibm.com>
+
+Description:   zipl: fix IPL on 4K SCSI disks
+Symptom:       IPL is not working when bootloader is installed
+               on a SCSI disk with 4k physical blocksize without using
+               a devicemapper target.
+Problem:       The getgeo ioctl that is used reports the partition
+               start in multiple of 512 byte sectors but the blocksize
+               that is used is the physical blocksize of 4k and
+               therefore the calculated partition start does not
+               match. For device mapper targets the zipl-helper script
+               is used that adjusts the partition start correctly to
+               the physical blocksize.
+Solution:      Adjust the partition start depending on the physical
+               blocksize. 
+Reproduction:  Use zipl to install a bootloader on a SCSI disk with 4k
+               physical blocksize and without usage of a device mapper
+               target. 
+Upstream-ID:   4a3957fab5696cc410c5b495956859a424e3552a
+Problem-ID:    191696
+
+Upstream-Description:
+
+              zipl: fix reading 4k disk's geometry
+
+              On 4k SCSI disks zipl stores wrong values to 'scsi_mbr.program_table_pointer',
+              which makes system unbootable.
+              This happens in 'zipl/src/disk.c:656':
+
+              ```
+              /* Convert file system block to physical */
+              *physical = mapped * phy_per_fs + subblock;
+              /* Add partition start */
+              *physical += info->geo.start;
+
+              ```
+
+              So 'hd_geometry.start' should be adjusted before being used.
+
+              Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1918723
+              Closes: https://github.com/ibm-s390-linux/s390-tools/pull/107
+              Signed-off-by: Nikita Dubrovskii <nikita@linux.ibm.com>
+              Reviewed-by: Stefan Haberland <sth@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Stefan Haberland <sth@linux.ibm.com>
+---
+ zipl/src/disk.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/zipl/src/disk.c
++++ b/zipl/src/disk.c
+@@ -444,6 +444,9 @@ type_determined:
+ 	}
+ 	/* Convert device size to size in physical blocks */
+ 	data->phy_blocks = devsize / (data->phy_block_size / 512);
++	/* Adjust start on SCSI according to block_size. device-mapper devices are skipped */
++	if (data->type == disk_type_scsi && target->targetbase == NULL)
++		data->geo.start = data->geo.start / (data->phy_block_size / 512);
+ 	if (data->partnum != 0)
+ 		data->partition = stats.st_rdev;
+ 	/* Try to get device name */

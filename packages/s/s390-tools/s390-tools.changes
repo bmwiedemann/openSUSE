@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar  8 20:52:57 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp3-zipl-fix-4k-scsi-ipl.patch (bsc#1183039)
+  IPL is not working when bootloader is installed on a SCSI disk
+  with 4k physical blocksize without using a devicemapper target.
+- Added s390-tools-sles15sp3-remove-no-pie-link-arguments.patch so
+  that we can build on systems with binutils 2.36 and higher. Without
+  this, the build fails because that version of the ld command
+  doesn't recognize "-no-pie" an acceptable argument.
+- Updated the mkdump.pl script to make the name of the temporary
+  configuration file in /tmp/ unpredictable. (bsc#1182876)
+
+-------------------------------------------------------------------
+Sat Feb 27 23:07:46 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Updated detach_disks.sh to not use predictable temporary file
+  names. (bsc#1182777, CVE-2021-25316)
+- Made for the following changes for bsc#1182816:
+  * Updated s390-tools-sles15sp3-Format-devices-in-parallel.patch to
+    change all instances of the progress bar from printing "#" to
+    printing the process number of the DASD volume being formatted.
+  * Updated s390-tools-sles15sp3-Implement-Y-yast_mode.patch to print
+    out the numbder of cylinders in a device, as was done in the
+    prior versions of this patch, but was missed when modifying it
+    for SLES15 SP3.
+  * Added s390-tools-sles15sp3-check-return-code-from-util_file_read_l.patch
+    because otherwise a warning message from dasdfmt is being generated
+    that could interfere with YaST properly processing the progress
+    of the formatting process.
+
+-------------------------------------------------------------------
 Wed Feb 17 20:47:26 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Added s390-tools-sles15sp3-zkey-Fix-APQN-property-names.patch

@@ -101,6 +101,15 @@ index e7fc501..07c674b 100644
  			for (i = barlength + 1; i <= 33; i++)
  				printf("-");
  			printf("|%3d%%", p_new);
+@@ -311,7 +318,7 @@
+ 	}
+ 
+ 	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
+-		printf("#");
++		printf("%d|", g.procnum);
+ 		fflush(stdout);
+ 		hashcount++;
+ 	}
 @@ -1560,7 +1568,11 @@
  	char *reqsize_param_str = NULL;
  	char *hashstep_str      = NULL;

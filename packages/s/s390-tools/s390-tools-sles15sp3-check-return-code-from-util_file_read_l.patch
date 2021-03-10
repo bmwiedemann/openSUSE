@@ -1,0 +1,12 @@
+--- a/libdasd/dasd_sys.c	2020-10-28 10:31:59.000000000 -0400
++++ b/libdasd/dasd_sys.c	2021-02-27 17:41:04.937023501 -0500
+@@ -218,7 +218,8 @@
+ 		return 0;
+ 
+ 	path = util_path_sysfs("bus/ccw/devices/%s/host_access_count", busid);
+-	util_file_read_l(&value, 10, path);
++	if (util_file_read_l(&value, 10, path) == -1)
++		value=0;
+ 	free(path);
+ 
+ 	return value;

@@ -43,7 +43,7 @@ my $UDEVADM = "/sbin/udevadm";
 my $ZGETDUMP = "/sbin/zgetdump";
 
 # temporary DASD device configuration file for Zipl
-my $MDPATH = "/tmp/mvdump.conf";
+my $MDPATH = "/tmp/mvdump.conf.".`mcookie`;
 # zFCP dump dir, without a leading '/'
 my $ZFCP_DUMP_DIR = "mydumps";
 
@@ -386,11 +386,9 @@ sub setup_dasddump
 	prepare_dasd(@devices);
 
 	# create zipl device configuration file
-	my $md_path = "/tmp/mvdump.conf";
-	
 	# don't create files in debug mode
 	unless ($OPT_DEBUG) {
-		open(my $file, ">", $md_path) or exit_with("Unable to access $md_path: $!.", 15);
+		open(my $file, ">", $MDPATH) or exit_with("Unable to access $MDPATH: $!.", 15);
 		for my $device (@devices) {
 			print{$file}("${device}1\n");
 		}
@@ -398,7 +396,7 @@ sub setup_dasddump
 	}
 
 	print("Creating dump record.\n");
-	run_cmd("${ZIPL} -V -n -M $md_path");
+	run_cmd("${ZIPL} -V -n -M $MDPATH");
 
 	cleanup();
 }
