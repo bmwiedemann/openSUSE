@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 09 10:09:06 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210309.0a14640:
+  * Add note about GCDA pass to README page.
+  * Add experimental GCDA reduction pass.
+
+-------------------------------------------------------------------
+Tue Mar 09 08:22:24 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.2.0+git.20210309.3f80c31:
+  * Bump to v2.3.0.
+  * Port to LLVM 12 (tested with 12.0.0 rc2).
+
+-------------------------------------------------------------------
+Mon Mar 08 15:30:07 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.2.0+git.20210308.de9373b:
+  * Remove temporary files in working directory.
+
+-------------------------------------------------------------------
 Thu Mar 04 12:54:33 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1.0+git.20210304.4c7f4cd:

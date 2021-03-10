@@ -475,4 +475,21 @@
   * Do not fail fast.</comment>
     <requestid>876737</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>adf7c5bc72d9281237137c2cf0da59a8</srcmd5>
+    <version>2.3.0+git.20210309.0a14640</version>
+    <time>1615363001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20210309.0a14640:
+  * Add note about GCDA pass to README page.
+  * Add experimental GCDA reduction pass.
+
+- Update to version 2.2.0+git.20210309.3f80c31:
+  * Bump to v2.3.0.
+  * Port to LLVM 12 (tested with 12.0.0 rc2).
+
+- Update to version 2.2.0+git.20210308.de9373b:
+  * Remove temporary files in working directory.</comment>
+    <requestid>877950</requestid>
+  </revision>
 </revisionlist>
