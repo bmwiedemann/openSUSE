@@ -92,8 +92,6 @@ systems.
 %meson_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
-mkdir "%{buildroot}/sbin"
-ln -s "%{_sbindir}/mount.fuse3" "%{buildroot}/sbin/"
 
 # Remove unneeded stuff
 rm -r %{buildroot}%{_prefix}/lib/udev
@@ -118,7 +116,6 @@ rm -r %{buildroot}%{_initddir}
 %config %{_sysconfdir}/fuse3.conf
 %{_mandir}/man1/fusermount3.1%{?ext_man}
 %{_mandir}/man8/mount.fuse3.8%{?ext_man}
-/sbin/mount.*
 
 %files -n libfuse3-3
 %{_libdir}/libfuse3.so.3*
