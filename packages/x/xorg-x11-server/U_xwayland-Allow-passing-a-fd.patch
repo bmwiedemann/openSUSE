@@ -1,0 +1,82 @@
+From 7ad1d0d384085fb480e00547c22a3e8a14b514ea Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Sat, 20 Jul 2019 00:16:43 +0200
+Subject: [PATCH] xwayland: Allow passing a fd for set up clients
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This FD also triggers the "wait for WM_S0" paths, so that the
+compositor may set up a "maintenance line" for Xwayland, for
+services that are essential to run before any client (eg. xrdb).
+Those services would use this FD, disguised as an extra display
+connection.
+
+This -initfd can be seen as a generalization of -wm, a Wayland
+compositor may use -initfd to launch its WM and any other clients
+that should start up, or it may use -wm as a dedicated connection for
+the WM and optionally use -initfd for the misc. startup clients.
+
+If either of -wm or -initfd is passed, Xwayland will expect a selection
+notification on WM_S0 before incorporating the FDs in -listen to the
+poll list.
+
+Also, correct a minor typo in the listenfd argument output,
+give â†’ given.
+
+Signed-off-by: Carlos Garnacho <carlosg@gnome.org>
+---
+ hw/xwayland/xwayland.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/hw/xwayland/xwayland.c b/hw/xwayland/xwayland.c
+index 111d4fafd..3983a114c 100644
+--- orig-xorg-server-1.20.5/hw/xwayland/xwayland.c	2019-05-30 20:27:34.000000000 +0200
++++ xorg-server-1.20.5/hw/xwayland/xwayland.c	2019-09-16 17:26:47.771777034 +0200
+@@ -95,7 +95,8 @@
+ {
+     ErrorF("-rootless              run rootless, requires wm support\n");
+     ErrorF("-wm fd                 create X client for wm on given fd\n");
+-    ErrorF("-listen fd             add give fd as a listen socket\n");
++    ErrorF("-initfd fd             add given fd as a listen socket for initialization clients\n");
++    ErrorF("-listenfd fd           add given fd as a listen socket\n");
+     ErrorF("-eglstream             use eglstream backend for nvidia GPUs\n");
+ }
+ 
++static int init_fd = -1;
+ static int wm_fd = -1;
+ static int listen_fds[5] = { -1, -1, -1, -1, -1 };
+ static int listen_fd_count = 0;
+@@ -148,6 +150,11 @@ ddxProcessArgument(int argc, char *argv[], int i)
+         wm_fd = atoi(argv[i + 1]);
+         return 2;
+     }
++    else if (strcmp(argv[i], "-initfd") == 0) {
++        CHECK_FOR_REQUIRED_ARGUMENTS(1);
++        init_fd = atoi(argv[i + 1]);
++        return 2;
++    }
+     else if (strcmp(argv[i], "-shm") == 0) {
+         return 1;
+     }
+@@ -1287,10 +1294,14 @@ InitOutput(ScreenInfo * screen_info, int argc, char **argv)
+ 
+     LocalAccessScopeUser();
+ 
+-    if (wm_fd >= 0) {
+-        TimerSet(NULL, 0, 1, add_client_fd, NULL);
++    if (wm_fd >= 0 || init_fd >= 0) {
++        if (wm_fd >= 0)
++            TimerSet(NULL, 0, 1, add_client_fd, NULL);
++        if (init_fd >= 0)
++            ListenOnOpenFD(init_fd, FALSE);
+         AddCallback(&SelectionCallback, wm_selection_callback, NULL);
+-    } else if (listen_fd_count > 0) {
++    }
++    else if (listen_fd_count > 0) {
+         listen_on_fds();
+     }
+ }
+-- 
+2.22.0
+
