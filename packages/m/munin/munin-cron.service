@@ -4,4 +4,5 @@ Documentation=man:munin-cron(8)
 
 [Service]
 Type=oneshot
+User=munin
 ExecStart=/usr/bin/munin-cron
