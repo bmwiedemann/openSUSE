@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  5 14:10:11 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  * Fix bsc#1178407: fuser does not show open kvm storage image files
+    such as qcow2 files. Patch from Ali Abdallah <ali.abdallah@suse.com>
+
+-------------------------------------------------------------------
 Thu Jan 14 15:48:53 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Now with 23.3 peekfd is build even for aarch64 

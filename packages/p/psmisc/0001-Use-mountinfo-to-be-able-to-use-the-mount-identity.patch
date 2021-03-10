@@ -16,16 +16,19 @@ On BtrFS stat(2) on binary does not see subvol dev
 
 Allow not unique mounts as well as not unique mountpoint
 
+Fuser does not show open kvm storage image files
+such as qcow2 files. Patch from Ali Abdallah <ali.abdallah@suse.com>
+
 Signed-off-by: Werner Fink <werner@suse.de>
 ---
  configure.ac  |   15 +
- src/fuser.c   |  643 ++++++++++++++++++++++++++++++++++++++++++++--------------
+ src/fuser.c   |  646 ++++++++++++++++++++++++++++++++++++++++++++--------------
  src/fuser.h   |   27 +-
  src/timeout.c |    5 
- 4 files changed, 530 insertions(+), 160 deletions(-)
+ 4 files changed, 534 insertions(+), 159 deletions(-)
 
 --- configure.ac
-+++ configure.ac	2021-01-14 11:14:51.192122696 +0000
++++ configure.ac	2021-03-05 13:57:45.175585808 +0000
 @@ -44,6 +44,19 @@ if test "$enable_timeout_stat" = "static
  fi
  AM_CONDITIONAL([WANT_TIMEOUT_STAT], [test "$enable_timeout_stat" = "static"])
@@ -56,7 +59,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
 --- src/fuser.c
-+++ src/fuser.c	2021-01-14 11:22:51.546798981 +0000
++++ src/fuser.c	2021-03-05 14:03:20.189518326 +0000
 @@ -32,6 +32,10 @@
  #include <stdlib.h>
  #include <string.h>
@@ -434,32 +437,37 @@ Signed-off-by: Werner Fink <werner@suse.de>
  	char *dirpath;
  	char filepath[PATH_MAX];
  
-@@ -1594,11 +1703,29 @@ check_dir(const pid_t pid, const char *d
+@@ -1594,11 +1703,34 @@ check_dir(const pid_t pid, const char *d
  			}
  			for (dev_tmp = dev_head; dev_tmp != NULL;
  			     dev_tmp = dev_tmp->next) {
 -				if (thedev != dev_tmp->device)
++				int subvol_found = 0;
++
 +				if (thedev != dev_tmp->device) {
 +					struct subvol *vol_tmp;
-+					int found = 0;
 +
 +					for (vol_tmp = dev_tmp->vol; vol_tmp != NULL;
 +					     vol_tmp = vol_tmp->next) {
 +						/* Check for BtrFS sub volumes as well */
 +						if (thedev == vol_tmp->device) {
-+							found++;
++							subvol_found++;
 +							break;
 +						}
 +					}
 +
-+					if (!found)
++					if (!subvol_found)
 +						continue;
 +				}
 +
 +				if (get_fdinfo(pid, direntry->d_name, &fd) != 0)
 +					continue;
-+				if (fd.mnt_id != dev_tmp->mnt_id)
++
++				if (subvol_found && fd.mnt_id != dev_tmp->mnt_id)
++					continue;
++				else if (thedev != dev_tmp->device)
  					continue;
++
  				if (access == ACCESS_FILE
 -				    && (lstat(filepath, &lst) == 0)
 -				    && (lst.st_mode & S_IWUSR)) {
@@ -467,7 +475,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  					add_matched_proc(dev_tmp->name,
  							 pid, uid,
  							 ACCESS_FILEWR |
-@@ -1620,9 +1747,10 @@ check_dir(const pid_t pid, const char *d
+@@ -1620,9 +1752,10 @@ check_dir(const pid_t pid, const char *d
  					continue;
  				}
  				if (st.st_ino == ino_tmp->inode) {
@@ -480,7 +488,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  						add_matched_proc(ino_tmp->name,
  								 pid, uid,
  								 ACCESS_FILEWR |
-@@ -1651,31 +1779,54 @@ check_map(const pid_t pid, const char *f
+@@ -1651,31 +1784,54 @@ check_map(const pid_t pid, const char *f
  	FILE *fp;
  	unsigned long long tmp_inode;
  	unsigned int tmp_maj, tmp_min;
@@ -545,7 +553,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  	}
  	fclose(fp);
  }
-@@ -1699,6 +1850,7 @@ static uid_t getpiduid(const pid_t pid)
+@@ -1699,6 +1855,7 @@ static uid_t getpiduid(const pid_t pid)
   * fill_unix_cache : Create a list of Unix sockets
   *   This list is used later for matching purposes
   */
@@ -553,7 +561,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  {
  	FILE *fp;
-@@ -1715,6 +1867,8 @@ void fill_unix_cache(struct unixsocket_l
+@@ -1715,6 +1872,8 @@ void fill_unix_cache(struct unixsocket_l
  	while (fgets(line, BUFSIZ, fp) != NULL) {
  		char *path;
  		char *scanned_path = NULL;
@@ -562,7 +570,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  		if (sscanf(line, "%*x: %*x %*x %*x %*x %*d %llu %ms",
  			   &scanned_inode, &scanned_path) != 2) {
  			if (scanned_path)
-@@ -1730,6 +1884,8 @@ void fill_unix_cache(struct unixsocket_l
+@@ -1730,6 +1889,8 @@ void fill_unix_cache(struct unixsocket_l
  			free(path);
  			continue;
  		}
@@ -571,7 +579,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  		if ((newsocket = (struct unixsocket_list *)
  		     malloc(sizeof(struct unixsocket_list))) == NULL) {
  			free(path);
-@@ -1738,6 +1894,7 @@ void fill_unix_cache(struct unixsocket_l
+@@ -1738,6 +1899,7 @@ void fill_unix_cache(struct unixsocket_l
  		newsocket->sun_name = strdup(scanned_path);
  		newsocket->inode = st.st_ino;
  		newsocket->dev = st.st_dev;
@@ -579,7 +587,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  		newsocket->net_inode = scanned_inode;
  		newsocket->next = *unixsocket_head;
  		*unixsocket_head = newsocket;
-@@ -1750,6 +1907,7 @@ void fill_unix_cache(struct unixsocket_l
+@@ -1750,6 +1912,7 @@ void fill_unix_cache(struct unixsocket_l
  /*
   * Free up the list of Unix sockets
   */
@@ -587,7 +595,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  void clear_unix_cache(struct unixsocket_list **unixsocket_head)
  {
  	while(*unixsocket_head != NULL) {
-@@ -1921,34 +2079,21 @@ scan_mounts(struct names *names_head, st
+@@ -1921,34 +2084,21 @@ scan_mounts(struct names *names_head, st
  {
  	struct device_list *dev_tmp;
  	struct inode_list *ino_tmp;
@@ -630,7 +638,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  				add_special_proc(dev_tmp->name, PTYPE_MOUNT, 0,
  						 find_mountp);
  		}
-@@ -1960,7 +2105,6 @@ scan_mounts(struct names *names_head, st
+@@ -1960,7 +2110,6 @@ scan_mounts(struct names *names_head, st
  						 find_mountp);
  		}
  	}
@@ -638,7 +646,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  }
  
  static void
-@@ -2013,16 +2157,44 @@ scan_swaps(struct names *names_head, str
+@@ -2013,16 +2162,44 @@ scan_swaps(struct names *names_head, str
  	fclose(fp);
  }
  
@@ -687,7 +695,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  {
  	list_t *ptr, *tmp;
  
-@@ -2033,72 +2205,247 @@ static void clear_mntinfo(void)
+@@ -2033,72 +2210,247 @@ static void clear_mntinfo(void)
  	}
  }
  
@@ -747,7 +755,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
 +				mntinf->dev = st.st_dev;	/* stat(2) on binary does not see subvol dev */
 +			}
 +		}
-+	}
+ 	}
 +#else
 +	if ((mnt = fopen(PROC_MOUNTS, "r")) == (FILE *) 0)
 +		return;
@@ -768,11 +776,16 @@ Signed-off-by: Werner Fink <werner@suse.de>
 +			if (st.st_rdev != 0 && mntinf->dev != st.st_rdev)
 +				mntinf->vol = st.st_rdev;
 +		}
- 	}
++	}
 +#endif
  	fclose(mnt);
 +}
-+
+ 
+-	/* Sort mount points accordingly to the reverse mount order */
+-	initial(&sort);
+-	for (mid = 1; mid <= max; mid++) {
+-		list_t *ptr, *tmp;
+-		list_for_each_safe(ptr, tmp, &mntinfo) {
 +static int
 +get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info)
 +{
@@ -862,12 +875,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
 +	int ret = -1;
 +
 +	*mountinfo = NULL;
- 
--	/* Sort mount points accordingly to the reverse mount order */
--	initial(&sort);
--	for (mid = 1; mid <= max; mid++) {
--		list_t *ptr, *tmp;
--		list_for_each_safe(ptr, tmp, &mntinfo) {
++
 +#if defined(HAS_NAME_TO_HANDLE_AT)
 +	if (mnt_id >= 0) {
 +		list_t *ptr;
@@ -980,7 +988,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  /*
   * Determine device of links below /proc/
   */
-@@ -2106,8 +2453,7 @@ static int mntstat(const char *path, str
+@@ -2106,8 +2458,7 @@ static int mntstat(const char *path, str
  {
  	char name[PATH_MAX + 1];
  	const char *use;
@@ -990,7 +998,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  
  	if ((use = realpath(path, name)) == NULL || *use != '/')
  	{
-@@ -2119,27 +2465,26 @@ static int mntstat(const char *path, str
+@@ -2119,27 +2470,26 @@ static int mntstat(const char *path, str
  		errno = 0;
  		return stat(path, buf);
  	}
@@ -1037,7 +1045,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  #endif				/* WITH_MOUNTINFO_LIST */
  
 --- src/fuser.h
-+++ src/fuser.h	2021-01-14 11:16:13.262529434 +0000
++++ src/fuser.h	2021-03-05 13:57:45.215585084 +0000
 @@ -37,10 +37,16 @@ struct procs {
  #define PTYPE_KNFSD 2
  #define PTYPE_SWAP 3
@@ -1116,7 +1124,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  #define PROC_MOUNTS "/proc/mounts"
  #define PROC_SWAPS "/proc/swaps"
 --- src/timeout.c
-+++ src/timeout.c	2021-01-14 11:14:51.196122619 +0000
++++ src/timeout.c	2021-03-05 13:57:45.215585084 +0000
 @@ -67,9 +67,6 @@
  # ifndef  constructor
  #  define constructor		__constructor__
