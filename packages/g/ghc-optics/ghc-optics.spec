@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-optics
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name optics
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Optics as an abstract interface
 License:        BSD-3-Clause
