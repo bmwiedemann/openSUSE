@@ -28,7 +28,7 @@ Source:         %{mod_name}-%{version}.tar.xz
 Patch0:         luasocket-makefile.patch
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
-%lua_provides
+%lua_provides -e
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

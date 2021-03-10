@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 11:02:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix provides naming
+
+-------------------------------------------------------------------
 Wed Jan 27 15:57:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro
