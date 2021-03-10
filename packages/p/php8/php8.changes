@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  9 07:03:44 UTC 2021 - pgajdos@suse.com
+
+- <IfModule mod_php.c> instead of <IfModule mod_php8.c> [bsc#1183180]
+- modified sources
+  % mod_php8.conf
+
+-------------------------------------------------------------------
 Thu Mar  4 19:44:21 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.0.3: This is a bug fix release. See
