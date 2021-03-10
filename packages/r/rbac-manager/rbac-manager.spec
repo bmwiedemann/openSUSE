@@ -1,7 +1,7 @@
 #
 # spec file for package rbac-manager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 
 Name:           rbac-manager
-Version:        0.9.2
+Version:        0.9.4
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/reactiveops/rbac-manager
+URL:            https://github.com/FairwindsOps/rbac-manager
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 

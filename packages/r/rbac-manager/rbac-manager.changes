@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 26 15:34:51 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 0.9.4
+  - Fix case where rbac-manager doesn't handle the namespace
+    that does not exist and is later created
+  - Fix case where rules for non-existing namespaces will be
+    ignored forever
+  - Bump sigs.k8s.io/controller-runtime from 0.5.1 to 0.5.2
+  - Bump sigs.k8s.io/controller-runtime from 0.5.2 to 0.6.0
+  - Update x/text to 0.3.3 for CVE
+  - update yaml manifest to v0.9.2
+  - Bump sigs.k8s.io/controller-runtime from 0.1.11 to 0.5.1
+  - using numeric user in Dockerfile for PSP
+
+-------------------------------------------------------------------
 Tue Mar  3 14:38:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.9.2
