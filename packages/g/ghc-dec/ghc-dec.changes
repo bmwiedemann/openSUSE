@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 21 12:48:14 UTC 2021 - psimons@suse.com
+
+- Update dec to version 0.0.4.
+  ## 0.0.4
+
+  - Mark module as explicitly `Safe`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
