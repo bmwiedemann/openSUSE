@@ -1,0 +1,10 @@
+[Unit]
+Description=noVNC Web Server
+Requires=xvnc.target
+After=xvnc.target
+
+[Service]
+ExecStart=/usr/lib/vnc/with-vnc-key.sh /usr/bin/websockify --key /etc/vnc/tls.key --cert /etc/vnc/tls.cert --web /usr/share/novnc --inetd localhost:5901
+User=vnc
+StandardInput=socket
+StandardError=syslog

@@ -1,0 +1,13 @@
+Index: tigervnc-1.10.1/common/rfb/Security.cxx
+===================================================================
+--- tigervnc-1.10.1.orig/common/rfb/Security.cxx
++++ tigervnc-1.10.1/common/rfb/Security.cxx
+@@ -52,7 +52,7 @@ static LogWriter vlog("Security");
+ #ifdef HAVE_GNUTLS
+ StringParameter Security::GnuTLSPriority("GnuTLSPriority",
+   "GnuTLS priority string that controls the TLS session’s handshake algorithms",
+-  "NORMAL");
++  "@SYSTEM");
+ #endif
+ 
+ Security::Security()

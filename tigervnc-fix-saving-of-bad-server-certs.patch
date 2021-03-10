@@ -1,0 +1,60 @@
+From dbad687182ae9093efaf096a069eeafc18b22973 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Mon, 30 Dec 2019 10:24:11 +0100
+Subject: [PATCH 1/2] Fix saving of bad server certificates
+
+This check is completely backwards and it is currently unknown how
+this ever worked.
+---
+ common/rfb/CSecurityTLS.cxx | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/common/rfb/CSecurityTLS.cxx b/common/rfb/CSecurityTLS.cxx
+index aa1910909..c1a00212a 100644
+--- a/common/rfb/CSecurityTLS.cxx
++++ b/common/rfb/CSecurityTLS.cxx
+@@ -416,8 +416,9 @@ void CSecurityTLS::checkSession()
+   delete [] certinfo;
+ 
+   if (gnutls_x509_crt_export(crt, GNUTLS_X509_FMT_PEM, NULL, &out_size)
+-      == GNUTLS_E_SHORT_MEMORY_BUFFER)
+-    throw AuthFailureException("Out of memory");
++      != GNUTLS_E_SHORT_MEMORY_BUFFER)
++    throw AuthFailureException("certificate issuer unknown, and certificate "
++                               "export failed");
+ 
+   // Save cert
+   out_buf =  new char[out_size];
+
+From 6208f47dcbf68ff1e751b0b526bb643f0da867a6 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Mon, 30 Dec 2019 10:26:12 +0100
+Subject: [PATCH 2/2] Remove unneeded memory checks
+
+new throws an exception on allocation errors rather than return NULL.
+---
+ common/rfb/CSecurityTLS.cxx | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/common/rfb/CSecurityTLS.cxx b/common/rfb/CSecurityTLS.cxx
+index c1a00212a..5c303a37c 100644
+--- a/common/rfb/CSecurityTLS.cxx
++++ b/common/rfb/CSecurityTLS.cxx
+@@ -396,8 +396,6 @@ void CSecurityTLS::checkSession()
+   vlog.debug("%s", info.data);
+ 
+   certinfo = new char[len];
+-  if (certinfo == NULL)
+-    throw AuthFailureException("Out of memory");
+ 
+   snprintf(certinfo, len, "This certificate has been signed by an unknown "
+                           "authority:\n\n%s\n\nDo you want to save it and "
+@@ -422,8 +420,6 @@ void CSecurityTLS::checkSession()
+ 
+   // Save cert
+   out_buf =  new char[out_size];
+-  if (out_buf == NULL)
+-    throw AuthFailureException("Out of memory");
+ 
+   if (gnutls_x509_crt_export(crt, GNUTLS_X509_FMT_PEM, out_buf, &out_size) < 0)
+     throw AuthFailureException("certificate issuer unknown, and certificate "
