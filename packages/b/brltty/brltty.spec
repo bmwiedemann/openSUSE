@@ -18,12 +18,12 @@
 
 %{!?tcl_version: %global tcl_version %(echo 'puts $tcl_version' | tclsh)}
 %{!?tcl_sitearch: %global tcl_sitearch %{_libdir}/tcl/tcl%{tcl_version}}
-%define api_version 0.8.1
+%define api_version 0.8.2
 %define sover 0_8
 %define soname libbrlapi%{sover}
 
 Name:           brltty
-Version:        6.2
+Version:        6.3
 Release:        0
 # FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
@@ -33,7 +33,6 @@ URL:            https://brltty.app/
 
 Source0:        https://brltty.app/archive/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
-Patch0:         brltty-fix-install-dirs.patch
 
 BuildRequires:  bison
 BuildRequires:  doxygen
@@ -439,6 +438,7 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_datadir}/polkit-1/actions/org.a11y.brlapi.policy
 %{_datadir}/polkit-1/rules.d/org.a11y.brlapi.rules
 %{_libdir}/brltty/
+%{_libexecdir}/brltty/
 %{_mandir}/man1/brltty.1*
 %{_mandir}/man1/eutp.1.gz
 %{_prefix}/lib/sysusers.d/%{name}.conf
@@ -496,6 +496,7 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_includedir}/brltty/
 %{_includedir}/brlapi*.h
 %{_libdir}/libbrlapi.so
+%{_libdir}/pkgconfig/brltty.pc
 %doc %{_mandir}/man3/brlapi_*
 
 %files -n brlapi-java
