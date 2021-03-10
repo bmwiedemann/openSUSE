@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 09 11:48:15 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.4.2+20210305.926b554:
+- sbd-inquisitor: take the defaults for the options set in sysconfig with empty strings (bsc#1183259)
+
+-------------------------------------------------------------------
+Tue Mar 09 11:45:02 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.4.2+20210305.57b84b5:
+- sbd-inquisitor: prevent segfault if no command is supplied (bsc#1183237)
+
+-------------------------------------------------------------------
+Thu Mar 04 07:01:54 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.4.2+20210304.488a5b9:
+- sbd-inquisitor,sbd-md: make watchdog warning messages more understandable (bsc#1182648)
+- sbd-inquisitor: calculate the default timeout for watchdog warning based on the watchdog timeout consistently (bsc#1182648)
+- sbd-inquisitor: ensure the timeout for watchdog warning specified with `-5` option is respected (bsc#1182648)
+- sbd-common: ensure the default timeout for watchdog warning is about 3/5 of the default watchdog timeout (bsc#1182648)
+
+-------------------------------------------------------------------
 Fri Jan 29 13:19:29 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - sbd-inquisitor: downgrade the warning about SBD_SYNC_RESOURCE_STARTUP to notice (bsc#1180966)

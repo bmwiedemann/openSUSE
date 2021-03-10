@@ -443,4 +443,12 @@ the sources.</comment>
     <comment> (forwarded request 868347 from yan_gao)</comment>
     <requestid>868348</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>778a13d7c4147a165387ab4f2bd4bff1</srcmd5>
+    <version>1.4.2+20210305.926b554</version>
+    <time>1615363055</time>
+    <user>dimstar_suse</user>
+    <comment>- sbd-inquisitor: take the defaults for the options set in sysconfig with empty strings (bsc#1183259) (forwarded request 878114 from yan_gao)</comment>
+    <requestid>878115</requestid>
+  </revision>
 </revisionlist>
