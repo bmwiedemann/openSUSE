@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 03 01:34:52 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- LMDB 0.9.28 Release (2021/02/04)
+  * ITS#8662 add -a append option to mdb_load
+- LMDB 0.9.27 Release (2020/10/26)
+  * ITS#9376 fix repeated DUPSORT cursor deletes
+- LMDB 0.9.26 Release (2020/08/11)
+  * ITS#9278 fix robust mutex cleanup for FreeBSD
+- LMDB 0.9.25 Release (2020/01/30)
+  * ITS#9068 fix mdb_dump/load backslashes in printable content
+  * ITS#9118 add MAP_NOSYNC for FreeBSD
+  * ITS#9155 free mt_spill_pgs in non-nested txn on end
+
+-------------------------------------------------------------------
 Sat Mar 21 23:12:06 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - copy the pkg config support from the fedora package 

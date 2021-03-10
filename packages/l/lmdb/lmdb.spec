@@ -1,7 +1,7 @@
 #
 # spec file for package lmdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@ Name:           lmdb
 Summary:        Lightning Memory-Mapped Database Manager
 License:        OLDAP-2.8
 Group:          Productivity/Databases/Tools
-%define lname liblmdb-0_9_24
-Version:        0.9.24
+%define lname liblmdb-0_9_28
+Version:        0.9.28
 Release:        0
-Url:            https://symas.com/mdb/
+URL:            https://symas.com/mdb/
 
 #Git-Clone:	git://git.openldap.org/openldap mdb.master
 Source:         https://github.com/LMDB/lmdb/archive/LMDB_%version.tar.gz
