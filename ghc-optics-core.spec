@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-optics-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name optics-core
 Name:           ghc-%{pkg_name}
-Version:        0.3.0.1
+Version:        0.4
 Release:        0
 Summary:        Optics as an abstract interface: core definitions
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-indexed-profunctors-devel
+BuildRequires:  ghc-indexed-traversable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
