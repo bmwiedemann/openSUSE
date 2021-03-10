@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  2 15:01:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * Revert "[kstyle]: Add double-ringed focus for text fields" (kde#430944,kde#430943,kde#433421)
+  * Start the window drag from the QStyle (kde#433178)
+
+-------------------------------------------------------------------
 Tue Feb 23 14:52:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.1
