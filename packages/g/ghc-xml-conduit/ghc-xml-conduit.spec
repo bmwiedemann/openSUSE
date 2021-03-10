@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-xml-conduit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name xml-conduit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.0.0
+Version:        1.9.1.0
 Release:        0
 Summary:        Pure-Haskell utilities for dealing with XML with the conduit package
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-blaze-markup-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-conduit-extra-devel
 BuildRequires:  ghc-containers-devel
