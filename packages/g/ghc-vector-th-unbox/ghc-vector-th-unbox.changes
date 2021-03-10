@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 10:03:17 UTC 2021 - psimons@suse.com
+
+- Update vector-th-unbox to version 0.2.1.9.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
