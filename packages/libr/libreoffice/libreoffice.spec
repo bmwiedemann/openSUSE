@@ -46,7 +46,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        7.1.0.3
+Version:        7.1.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -101,10 +101,13 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/f14b83b38d35a585976ef5d422754d8e0d0266a6 ucp: fix call to getComponentContext
 Patch4:         use-comphelper.patch
-# Bug 1177955 - LO-L3: SmartArt: text wrongly aligned, background boxes not quite right,...
-Patch10:        bsc1177955.diff
 # Bug 1174465 - LO-L3: Impress in TW (7.0.0.0-beta2) messes up bullet points
 Patch11:        bsc1174465.diff
+# Bug 1181644 - LO-L3: Text changes are reproducibly lost (PPTX, SmartArt)
+Patch12:        bsc1181644.diff
+#  Bug 1176547 - Image shown with different aspect ratio (and different clipping), some colored instead of grey, one horizontally mirrored
+Patch13:        bsc1176547_1.diff
+Patch14:        bsc1176547_2.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -964,8 +967,10 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch4 -p1
-%patch10 -p1
 %patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
 %patch990 -p1
 %patch991 -p1
 

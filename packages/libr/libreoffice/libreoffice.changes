@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  1 11:04:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.1.1.2 (fixes bsc#1182790)
+  * 7.1.1 final release
+- Drop merged patch bsc1177955.diff
+- Fix bsc#1176547 - Image shown with different aspect ratio
+  * bsc1176547_1.diff
+  * bsc1176547_2.diff
+
+-------------------------------------------------------------------
+Fri Feb 26 15:00:29 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1181644 - LO-L3: Text changes are reproducibly lost (PPTX, SmartArt)
+  * bsc1181644.diff
+
+-------------------------------------------------------------------
 Fri Feb 19 13:35:18 UTC 2021 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1174465 - LO-L3: Impress in TW (7.0.0.0-beta2) messes up bullet points
