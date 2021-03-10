@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 13 11:43:59 UTC 2021 - psimons@suse.com
+
+- Update pipes-safe to version 2.3.3.
+  Upstream has not updated the file "changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
