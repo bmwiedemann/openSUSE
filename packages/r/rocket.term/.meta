@@ -1,0 +1,9 @@
+<package name="rocket.term" project="openSUSE:Factory">
+  <title>Text based chat client for the Rocket.chat messaging solution</title>
+  <description>
+  rocket.term is a text based client for Rocket.chat that runs in your
+  terminal. It aims for a simple and productive user interface to participate
+  in Rocket.cat communication.
+  </description>
+  <devel project="network" package="rocket.term"/>
+</package>
