@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 20 00:07:52 UTC 2021 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.2.
+  5.2.2 [2021.02.17]
+  ------------------
+  * Add `hoistCoyoneda` to `Data.Functor.Contravariant.Coyoneda`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
