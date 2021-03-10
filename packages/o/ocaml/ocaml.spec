@@ -63,7 +63,7 @@
 %bcond_with ocaml_make_testsuite
 
 Name:           ocaml
-Version:        4.11.1
+Version:        4.11.2
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
@@ -76,7 +76,7 @@ BuildRequires:  autoconf
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml-rpm-macros >= 20210209
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
@@ -245,7 +245,7 @@ mkdir META
 pushd "$_"
 tee bigarray <<_META_
 requires = "unix"
-version = "OCaml %{version}"
+version = "%{version}"
 description = "Large statically allocated arrays"
 directory = "^"
 browse_interfaces = " Unit name: Bigarray "
@@ -258,7 +258,7 @@ _META_
 #
 tee bytes <<_META_
 name="bytes"
-version = "OCaml %{version}"
+version = "%{version}"
 description="dummy backward-compatibility package for mutable strings"
 requires=""
 _META_
@@ -266,13 +266,13 @@ _META_
 tee compiler-libs <<_META_
 # The compiler itself
 requires = ""
-version = "OCaml %{version}"
+version = "%{version}"
 description = "compiler-libs support library"
 directory= "+compiler-libs"
 
 package "common" (
   requires = "compiler-libs"
-  version = "OCaml %{version}"
+  version = "%{version}"
   description = "Common compiler routines"
   archive(byte) = "ocamlcommon.cma"
   archive(native) = "ocamlcommon.cmxa"
@@ -280,7 +280,7 @@ package "common" (
 
 package "bytecomp" (
   requires = "compiler-libs.common"
-  version = "OCaml %{version}"
+  version = "%{version}"
   description = "Bytecode compiler"
   archive(byte) = "ocamlbytecomp.cma"
   archive(native) = "ocamlbytecomp.cmxa"
@@ -288,7 +288,7 @@ package "bytecomp" (
 
 package "optcomp" (
   requires = "compiler-libs.common"
-  version = "OCaml %{version}"
+  version = "%{version}"
   description = "Native-code compiler"
   archive(byte) = "ocamloptcomp.cma"
   archive(native) = "ocamloptcomp.cmxa"
@@ -297,7 +297,7 @@ package "optcomp" (
 
 package "toplevel" (
   requires = "compiler-libs.bytecomp"
-  version = "OCaml %{version}"
+  version = "%{version}"
   description = "Toplevel interactions"
   archive(byte) = "ocamltoplevel.cma"
   archive(native) = "ocamltoplevel.cmxa"
@@ -306,7 +306,7 @@ _META_
 #
 tee dynlink <<_META_
 requires = ""
-version = "OCaml %{version}"
+version = "%{version}"
 description = "Dynamic loading and linking of object files"
 directory = "^"
 browse_interfaces = " Unit name: Dynlink Unit name: Dynlinkaux "
@@ -316,7 +316,7 @@ _META_
 #
 tee ocamldoc <<_META_
 requires = "compiler-libs"
-version = "OCaml %{version}"
+version = "%{version}"
 description = "ocamldoc plugin interface"
 directory= "^ocamldoc"
 _META_
@@ -324,7 +324,7 @@ _META_
 tee raw_spacetime <<_META_
 requires = ""
 description = "Support library for the spacetime profiler"
-version = "OCaml %{version}"
+version = "%{version}"
 directory = "^"
 browse_interfaces = ""
 archive(byte) = "raw_spacetime_lib.cma"
@@ -332,9 +332,18 @@ archive(native) = "raw_spacetime_lib.cmxa"
 plugin(byte) = "raw_spacetime_lib.cma"
 plugin(native) = "raw_spacetime_lib.cmxs"
 _META_
+%if 0
+#
+# conflicts with ocaml-result.rpm
+tee result <<_META_
+version = "%{version}"
+description = ""
+requires = ""
+_META_
+%endif
 #
 tee seq <<_META_
-version = "OCaml %{version}"
+version = "%{version}"
 description = ""
 requires = ""
 _META_
@@ -342,7 +351,7 @@ _META_
 tee stdlib <<_META_
 requires = ""
 description = "Standard library"
-version = "OCaml %{version}"
+version = "%{version}"
 directory = "^"
 browse_interfaces = " Unit name: Arg Unit name: Array Unit name: ArrayLabels Unit name: Buffer Unit name: Bytes Unit name: BytesLabels Unit name: Callback Unit name: CamlinternalFormat Unit name: CamlinternalFormatBasics Unit name: CamlinternalLazy Unit name: CamlinternalMod Unit name: CamlinternalOO Unit name: Char Unit name: Complex Unit name: Digest Unit name: Filename Unit name: Format Unit name: Gc Unit name: Genlex Unit name: Hashtbl Unit name: Int32 Unit name: Int64 Unit name: Lazy Unit name: Lexing Unit name: List Unit name: ListLabels Unit name: Map Unit name: Marshal Unit name: MoreLabels Unit name: Nativeint Unit name: Obj Unit name: Oo Unit name: Parsing Unit name: Pervasives Unit name: Printexc Unit name: Printf Unit name: Queue Unit name: Random Unit name: Scanf Unit name: Set Unit name: Sort Unit name: Stack Unit name: StdLabels Unit name: Stream Unit name: String Unit name: StringLabels Unit name: Sys Unit name: Weak "
 _META_
@@ -350,7 +359,7 @@ _META_
 tee str <<_META_
 requires = ""
 description = "Regular expressions and string processing"
-version = "OCaml %{version}"
+version = "%{version}"
 directory = "^"
 browse_interfaces = " Unit name: Str "
 archive(byte) = "str.cma"
@@ -360,7 +369,7 @@ plugin(native) = "str.cmxs"
 _META_
 #
 tee threads <<_META_
-version = "OCaml %{version}"
+version = "%{version}"
 description = "Multi-threading"
 requires(mt,mt_vm) = "threads.vm"
 requires(mt,mt_posix) = "threads.posix"
@@ -375,7 +384,7 @@ package "vm" (
   directory = "+vmthreads"
   exists_if = "threads.cma"
   archive(byte,mt,mt_vm) = "threads.cma"
-  version = "OCaml %{version}"
+  version = "%{version}"
 )
 
 package "posix" (
@@ -385,24 +394,24 @@ package "posix" (
   exists_if = "threads.cma"
   archive(byte,mt,mt_posix) = "threads.cma"
   archive(native,mt,mt_posix) = "threads.cmxa"
-  version = "OCaml %{version}"
+  version = "%{version}"
 )
 package "none" (
   error = "threading is not supported on this platform"
-  version = "OCaml %{version}"
+  version = "%{version}"
 )
 _META_
 #
 tee uchar <<_META_
 description = "Unicode characters."
-version = "OCaml %{version}"
+version = "%{version}"
 directory = "^"
 _META_
 #
 tee unix <<_META_
 requires = ""
 description = "Unix system calls"
-version = "OCaml %{version}"
+version = "%{version}"
 directory = "^"
 browse_interfaces = " Unit name: Unix Unit name: UnixLabels "
 archive(byte) = "unix.cma"

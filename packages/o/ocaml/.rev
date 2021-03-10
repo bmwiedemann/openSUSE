@@ -744,4 +744,13 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
   (boo#1179051). (forwarded request 850943 from marxin)</comment>
     <requestid>850945</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>6ac80e6971d513e05e3c8104a96dd44d</srcmd5>
+    <version>4.11.2</version>
+    <time>1615362467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.11.2
+  See included Changes for benefits and breaking changes</comment>
+    <requestid>875439</requestid>
+  </revision>
 </revisionlist>
