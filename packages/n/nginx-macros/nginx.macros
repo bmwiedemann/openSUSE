@@ -14,17 +14,10 @@
 %ngx_tmp_uwsgi  %{ngx_home}/uwsgi/
 %ngx_user_group nginx
 %ngx_doc_dir    %{_docdir}/%{name}
+%ngx_pid_path   /run/nginx.pid
+%ngx_lock_path  /run/nginx.lock
 
 %ngx_conditionals \
-%if 0%{?suse_version} > 1220 \
-%bcond_without ngx_http2 \
-%bcond_without ngx_pcre_jit \
-%bcond_without systemd \
-%else \
-%bcond_with    ngx_http2 \
-%bcond_with    ngx_pcre_jit \
-%bcond_with    systemd \
-%endif \
 %bcond_with    ngx_cpp_test \
 %bcond_with    ngx_google_perftools \
 %{nil}
@@ -51,9 +44,7 @@
   --with-file-aio                                 \\\
   --with-ipv6                                     \\\
   --with-http_ssl_module                          \\\
-  %if %{with ngx_http2}                             \
   --with-http_v2_module                           \\\
-  %endif                                            \
   --with-http_realip_module                       \\\
   --with-http_addition_module                     \\\
   --with-http_xslt_module=dynamic                 \\\
@@ -79,21 +70,15 @@
   --with-stream_realip_module                     \\\
   --with-stream_ssl_preread_module                \\\
   --with-pcre                                     \\\
-  %if %{with ngx_pcre_jit}                          \
   --with-pcre-jit                                 \\\
-  %endif                                            \
   %if %{with ngx_google_perftools}                  \
   --with-google_perftools_module                  \\\
   %endif                                            \
   %if %{with ngx_cpp_test}                          \
   --with-cpp_test_module                          \\\
   %endif                                            \
-  %if 0%{?suse_version} > 1220                      \
   --with-cc-opt="%{optflags} -fPIC -D_GNU_SOURCE" \\\
   --with-ld-opt="-Wl,-z,relro,-z,now -pie"        \\\
-  %else                                             \
-  --with-cc-opt="%{optflags}"                     \\\
-  %endif                                            \
   --with-compat
 
 
