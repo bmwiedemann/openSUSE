@@ -75,4 +75,12 @@
     <comment></comment>
     <requestid>661775</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>60788b551da0b716f0e762edb4973b03</srcmd5>
+    <version>0.5.3</version>
+    <time>1615362457</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.5.3 (forwarded request 874974 from jgwang)</comment>
+    <requestid>875387</requestid>
+  </revision>
 </revisionlist>

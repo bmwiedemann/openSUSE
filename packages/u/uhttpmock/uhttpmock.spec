@@ -1,7 +1,7 @@
 #
 # spec file for package uhttpmock
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           uhttpmock
-Version:        0.5.1
+Version:        0.5.3
 Release:        0
 Summary:        HTTP web service mocking library
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
-Url:            https://gitlab.com/uhttpmock/uhttpmock
+URL:            https://gitlab.com/uhttpmock/uhttpmock
 Source0:        https://tecnocode.co.uk/downloads/uhttpmock/%{name}-%{version}.tar.xz
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
