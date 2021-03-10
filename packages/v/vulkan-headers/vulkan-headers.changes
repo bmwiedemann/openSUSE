@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 26 21:35:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.170.0
+  * New VK_KHR_synchronization2 extension.
+
+-------------------------------------------------------------------
 Wed Feb 10 14:02:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.169
