@@ -1,7 +1,7 @@
 #
 # spec file for package libcaca
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Patch10:        libcaca-ncurses6.patch
 Patch11:        libcaca-variable-type.patch
 Patch12:        Bug1120502-add_cast_to_prevent_overflow.patch
 Patch13:        Bug1143286_libcaca_configure_ac_chg_for_lto.patch
+Patch14:        libcaca-bsc1182731-prevent-overflow.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -142,6 +143,7 @@ drawing, triangle filling and sprite blitting.
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 RUBY="ruby-`echo %{rb_ver} | sed 's|\.[^\.]*$||'`"
 find . -type f -exec sed -i "s|ruby-1.9|$RUBY|" \{\} \;
 pushd python

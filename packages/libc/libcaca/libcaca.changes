@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 26 13:58:41 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- More overflow prevention of multiplying large ints
+  [bsc#1182731, CVE-2021-3410, libcaca-bsc1182731-prevent-overflow.patch]
+
+-------------------------------------------------------------------
 Tue Mar 10 15:20:55 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - The contents of libcaca-prevent-overflow.patch
