@@ -1,7 +1,7 @@
 #
 # spec file for package bindfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bindfs
-Version:        1.14.8
+Version:        1.15.1
 Release:        0
 Summary:        Filesystem for mapping directories with alternate permissions
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://bindfs.org/
 #Git-Clone:	https://github.com/mpartel/bindfs
 Source:         https://bindfs.org/downloads/%name-%version.tar.gz
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(fuse) >= 2.6.0
+BuildRequires:  pkgconfig(fuse3) >= 3.10.2
 
 %description
 bindfs is a FUSE filesystem for mounting a directory to another
@@ -39,7 +39,7 @@ mountpoint can be altered using various rules.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

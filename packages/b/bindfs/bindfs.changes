@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 26 19:51:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.1
+  * Support for libfuse3.
+  * Fixed non-zero exit code when unable to chdir into source dir.
+  * Pass through "-o fsname" to FUSE.
+
+-------------------------------------------------------------------
 Fri Oct  2 22:10:14 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.8
