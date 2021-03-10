@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 20 00:07:40 UTC 2021 - psimons@suse.com
+
+- Update intern to version 0.9.4.
+  0.9.4 [2021.02.17]
+  ------------------
+  * Export `identity` from `Data.Interned.IntSet`.
+
+-------------------------------------------------------------------
 Mon Jan 11 10:06:22 UTC 2021 - psimons@suse.com
 
 - Update intern to version 0.9.3 revision 1.
