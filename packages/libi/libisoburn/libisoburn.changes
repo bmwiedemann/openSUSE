@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:20:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.4:
+  * Bug fix: -report_system_area as_mkisofs misrepresented GPT with appended
+    partition and forced boot flag as -part_like_isohybrid
+  * Bug fix: Boot catalog could get a wrong name if cat_path= is explicitely
+    given but not containing a slash character
+  * New helper script xorriso-dd-target
+  * New command -truncate_overwritable
+  * Switched to usage of libjte-2.0.0
+  * New -jigdo parameters "checksum_algorithm", "demand_checksum", "-checksum-list"
+  * New -as mkisofs options "-jigdo-checksum-algorithm", "-checksum-list", "-jigdo-force-checksum"
+  * New -read_speed prefixes "soft_force:" and "soft_corr:"
+  * New -check_media option data_to="-" for standard output
+  * New -zisofs parameters version_2=, block_size_v2=, max_bpt=, max_bpt_f=,
+    bpt_target=, bpt_free_ratio=, by_magic=v2, susp_z2=
+  * New -as mkisofs options --zisofs-version-2, --zisofs2-susp-z2,
+    --zisofs2-susp-zf
+  * Enabled recognition of zisofs by magic without zlib support
+  * New -osirrox option sparse= controls extraction into sparse files
+  * New libisoburn extension options isoburn_ropt_map_joliet_stripped and
+    isoburn_ropt_map_joliet_unmapped
+  * New command -joliet_map
+  * New command -extract_boot_images
+  * New API call isoburn_ropt_get_tree_loaded() 
+
+-------------------------------------------------------------------
 Thu Aug 20 13:42:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.2:

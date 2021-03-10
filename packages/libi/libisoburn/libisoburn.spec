@@ -1,7 +1,7 @@
 #
 # spec file for package libisoburn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,22 @@
 
 %define so_ver 1
 Name:           libisoburn
-Version:        1.5.2
+Version:        1.5.4
 Release:        0
 Summary:        Frontend for libburn and libisofs
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-URL:            http://libburnia-project.org/
-Source0:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
+URL:            https://libburnia-project.org/
+Source0:        https://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
 BuildRequires:  libburn-devel
 BuildRequires:  libisofs-devel
+BuildRequires:  libjte-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1320 || (0%{?is_opensuse} && 0%{?sle_version} >= 120300)
-BuildRequires:  libjte-devel
-%endif
 
 %description
 Libisoburn is a frontend for libraries libburn and libisofs which enables
@@ -168,10 +166,13 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %{_bindir}/xorrecord
 %{_bindir}/xorriso
 %{_bindir}/xorrisofs
+%{_bindir}/xorriso-dd-target
 %{_mandir}/man1/xorriso.1%{?ext_man}
+%{_mandir}/man1/xorriso-dd-target.1%{?ext_man}
 %{_mandir}/man1/xorrisofs.1%{?ext_man}
 %{_mandir}/man1/xorrecord.1%{?ext_man}
 %{_infodir}/xorriso.info%{?ext_info}
+%{_infodir}/xorriso-dd-target.info%{?ext_info}
 %{_infodir}/xorrisofs.info%{?ext_info}
 %{_infodir}/xorrecord.info%{?ext_info}
 
