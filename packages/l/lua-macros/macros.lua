@@ -13,9 +13,15 @@
 %lua_incdir %{_includedir}/lua%{lua_version}
 
 # Lua default version
-%lua_provides \
+# -e: Exclude lua prefix
+%lua_provides(e) \
 %if "%{flavor}" == "lua54" \
+%if 0%{?-e:1} \
+Provides: %{mod_name} = %{version}-%{release} \
+Obsoletes: %{mod_name} < %{version}-%{release} \
+%else \
 Provides: lua-%{mod_name} = %{version}-%{release} \
 Obsoletes: lua-%{mod_name} < %{version}-%{release} \
+%endif \
 %endif \
 %{nil}

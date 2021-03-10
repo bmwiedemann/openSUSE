@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 26 15:54:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add -e (exclude) option
+
+-------------------------------------------------------------------
 Wed Jan 27 15:51:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add lua_provides macro for default lua naming
