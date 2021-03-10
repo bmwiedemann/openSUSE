@@ -11,15 +11,14 @@
 
 set -e
 
-GIT_TREE=git://github.com/openSUSE/u-boot.git
+GIT_TREE=https://github.com/openSUSE/u-boot.git
 GIT_LOCAL_TREE=~/src/opensuse/u-boot
 GIT_BRANCH=tumbleweed-2021.01
 GIT_UPSTREAM_TAG=v2021.01
-GIT_DIR=/dev/shm/u-boot-factory-git-dir
-CMP_DIR=/dev/shm/u-boot-factory-cmp-dir
+GIT_DIR=`mktemp -d -p /dev/shm`
+CMP_DIR=`mktemp -d -p /dev/shm`
 
-rm -rf $GIT_DIR
-rm -rf $CMP_DIR
+trap 'rm -rf "$GIT_DIR" "$CMP_DIR"' EXIT
 
 if [ -d "$GIT_LOCAL_TREE" ] || [ -L "$GIT_LOCAL_TREE" ]; then
     echo "Processing $GIT_BRANCH branch of local git tree, using tag:" \
@@ -57,7 +56,6 @@ fi
 UBOOT_VERSION="${UBOOT_VERSION}${UBOOT_EXTRAVERSION}"
 echo "U-Boot version: $UBOOT_VERSION"
 
-rm -rf $GIT_DIR
 
 (
     CHANGED_COUNT=0
@@ -70,9 +68,10 @@ rm -rf $GIT_DIR
 # Process patches to eliminate useless differences: limit file names to 40 chars
 # before extension and remove git signature. ('32' below gets us past dir prefix)
     for i in $CMP_DIR/*; do
+        base=`basename "$i"`
         # format-patch may append a signature, which per default contains the git version
         # wipe everything starting from the signature tag
-        sed '/^-- $/Q' $i > $CMP_DIR/${i:32:40}.patch
+        sed '/^-- $/Q' $i > $CMP_DIR/${base:0:40}.patch
         rm $i
     done
 
@@ -127,8 +126,6 @@ rm -rf $GIT_DIR
     echo "    deleted: $DELETED_COUNT"
     echo "      added: $ADDED_COUNT"
 )
-
-rm -rf $CMP_DIR
 
 echo "Updating patch list"
 # Handle patch list automatically in spec file

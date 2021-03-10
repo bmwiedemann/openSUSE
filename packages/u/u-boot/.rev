@@ -1643,4 +1643,19 @@ boundary checks.
     <comment></comment>
     <requestid>873079</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>90b82898c527aae22f29484440524c6d</srcmd5>
+    <version>2021.01</version>
+    <time>1615362546</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix confname assignment for zynqmp and zynq case (bsc#1182962)
+- Guard 'export BL31' for sun50i_h6 and sun50i_a64 with
+  '%{with uboot_atf}' condition (bsc#1182962)
+- update_git.sh: use safe tmp directories, use authenticated https://
+  procotol.
+- Build with arm-trusted-firmware for Tumbleweed
+- Drop unused uboot_atf_pine64 option
+</comment>
+    <requestid>876781</requestid>
+  </revision>
 </revisionlist>

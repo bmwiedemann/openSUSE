@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar  4 14:59:52 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Fix confname assignment for zynqmp and zynq case (bsc#1182962)
+
+-------------------------------------------------------------------
+Thu Mar  4 10:51:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Guard 'export BL31' for sun50i_h6 and sun50i_a64 with
+  '%{with uboot_atf}' condition (bsc#1182962)
+
+-------------------------------------------------------------------
+Mon Mar  1 13:13:54 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update_git.sh: use safe tmp directories, use authenticated https://
+  procotol.
+
+-------------------------------------------------------------------
+Mon Mar  1 09:36:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build with arm-trusted-firmware for Tumbleweed
+- Drop unused uboot_atf_pine64 option
+
+-------------------------------------------------------------------
 Tue Feb 16 19:58:28 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 Fix boot for BananaPi R2 (bsc#1180732).

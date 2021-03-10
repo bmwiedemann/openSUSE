@@ -206,8 +206,12 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
+%if 0%{?suse_version} > 1500
+# arm-trusted-firmware is only in Tumbleweed
+%bcond_without uboot_atf
+%else
 %bcond_with uboot_atf
-%bcond_with uboot_atf_pine64
+%endif
 Version:        2021.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
@@ -404,11 +408,15 @@ make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only
 %else
 export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/u-boot.changes | tail -n 1 | cut -d- -f1 )" +%s)
 %if 0%{?is_a64} || 0%{?is_h5}
+%if %{with uboot_atf}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_a64/bl31.bin
+%endif
 export SCP=/dev/null
 %endif
 %if 0%{?is_h6}
+%if %{with uboot_atf}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h6/bl31.bin
+%endif
 export SCP=/dev/null
 %endif
 %if "%{name}" == "u-boot-qemu-riscv64spl"
@@ -429,10 +437,12 @@ cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
 
 %if %{is_zynq}
 confname="xilinx_zynq_virt_defconfig"
-%elif %{is_zynqmp}
+%else
+%if %{is_zynqmp}
 confname="xilinx_zynqmp_virt_defconfig"
 %else
 confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\n" && print;')
+%endif
 %endif
 
 %if "%target" == "avnetultra96rev1"
