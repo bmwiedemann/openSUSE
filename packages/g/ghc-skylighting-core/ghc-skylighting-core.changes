@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar  2 09:33:06 UTC 2021 - psimons@suse.com
+
+- Update skylighting-core to version 0.10.4.
+  ## 0.10.4
+
+    * Move from hxt to xml-conduit for XML parsing.
+
+      This gives about a 4X speedup in parsing syntax definitions.
+      It also reduces the pandoc build dependency footprint, as we
+      depend on xml-conduit anyway and now no longer need to compile
+      HXT and its dependencies.
+
+      There are improvements in accuracy as well: the change to
+      xml-conduit improved parsing for one of the prolog rules;
+      a matcher that should have been for tab characters had been set for a
+      space instead.
+
+    * Removed some unnecessary build-depends in skylighting-extract.
+
+-------------------------------------------------------------------
+Tue Feb 23 18:12:03 UTC 2021 - psimons@suse.com
+
+- Update skylighting-core to version 0.10.3.
+  ## 0.10.3
+
+    * Add support for raku (#114).
+
+    * Reimplement PR #40 and add haskell.xml.patch (#116).
+
+    * Update syntax definitions: actionscript ada asp awk bash
+      bibtex boo c cmake cpp cs d elm email fasm fsharp glsl
+      gnuassembler go haskell haskell idris isocpp
+      javascript julia latex lilypond makefile mediawiki metafont
+      mustache objectivec objectivecpp octave opencl perl php
+      php powershell prolog purebasic raku rest ruby sed
+      spdx-comments sql-mysql sql-postgresql sql typescript
+      verilog vhdl.
+
+    * Fix php.xml.patch so it applies again.
+
+-------------------------------------------------------------------
 Fri Dec 18 09:18:53 UTC 2020 - psimons@suse.com
 
 - Update skylighting-core to version 0.10.2.
