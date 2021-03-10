@@ -1,7 +1,7 @@
 #
 # spec file for package python-audioread
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-audioread
-Version:        2.1.8
+Version:        2.1.9
 Release:        0
 Summary:        Wrapper for audio decoding via selectable backends
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/sampsyo/audioread
+URL:            https://github.com/sampsyo/audioread
 Source0:        https://github.com/beetbox/audioread/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module pytest-runner}

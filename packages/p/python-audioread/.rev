@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>720014</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e31b44fcc7caa609674d17e4901e034d</srcmd5>
+    <version>2.1.9</version>
+    <time>1615363014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.9:
+  * Work correctly with GStreamer 1.18 and later (thanks to @ssssam)</comment>
+    <requestid>877828</requestid>
+  </revision>
 </revisionlist>
