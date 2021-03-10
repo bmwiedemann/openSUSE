@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 26 09:38:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Allow package downgrade in "build_dependencies:install" task
+  (bsc#1182795)
+- 1.4.15
+
+-------------------------------------------------------------------
 Wed Dec  2 09:09:34 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Do not check license in vector images (needed for jsc#SLE-16313).
