@@ -1,6 +1,7 @@
 #
 # spec file for package golang-github-lusitaniae-apache_exporter
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Templating vars to simplify and standardize Prometheus exporters spec files
 %define	githubrepo    github.com/lusitaniae/apache_exporter
@@ -24,15 +26,16 @@
 Name:           golang-github-lusitaniae-apache_exporter
 Version:        0.7.0
 Release:        0
-License:        MIT
 Summary:        Apache Exporter for Prometheus
-Url:            http://%{githubrepo}
+License:        MIT
 Group:          System/Management
+URL:            http://%{githubrepo}
 Source:         %{upstreamname}-%{version}.tar.gz
 Source1:        %{targetname}.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+BuildRequires:  golang(API) = 1.15
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 Requires(pre):  shadow

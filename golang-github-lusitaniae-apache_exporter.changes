@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  8 09:40:42 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require building with Go 1.15
+
+-------------------------------------------------------------------
 Wed Jan  1 15:04:14 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to upstream release 0.7.0
