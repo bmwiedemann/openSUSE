@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Feb 28 13:00:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.3
+  [Common] bugfixes:
+  * Some extension loader headers did not prevent default
+    OpenGL header inclusion.
+  [X11] bugfixes:
+  * IME input of CJK was broken for “C” locale.
+  * Xlib errors caused by other parts of the application could be
+    reported as GLFW errors.
+  * A handle race condition could cause a BadWindow error.
+  * XKB path used keysyms instead of physical locations for
+    non-printable keys.
+  * Function keys were mapped to GLFW_KEY_UNKNOWN for some layout
+    combinaitons.
+  * Keys pressed simultaneously with others were not always
+    reported.
+  [Wayland] bugfixes:
+  * Repeated keys could be reported with NULL window.
+  * Retrieving partial framebuffer size would segfault.
+  * Scrolling offsets were inverted compared to other platforms.
+  * Client-Side Decorations were destroyed in the wrong worder.
+  * Monitors physical size could report zero.
+
+-------------------------------------------------------------------
 Wed Aug 26 08:43:06 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Require pkgconfig(gl) for the devel package to supply needed
