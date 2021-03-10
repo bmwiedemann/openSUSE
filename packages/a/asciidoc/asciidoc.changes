@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  1 20:43:56 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to version 9.1.0
+  * Can specify a line range when using the include macro.
+  * Setting the SGML_CATALOG_FILES environment variable will set --catalogs
+    on xmllint within a2x.
+
+-------------------------------------------------------------------
 Sun Jan 24 14:42:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.5:
