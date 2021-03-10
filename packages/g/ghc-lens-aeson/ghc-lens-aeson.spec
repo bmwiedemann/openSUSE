@@ -17,20 +17,17 @@
 
 
 %global pkg_name lens-aeson
-%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1
+Version:        1.1.1
 Release:        0
 Summary:        Law-abiding lenses for aeson
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-lens-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
@@ -38,12 +35,6 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-generic-deriving-devel
-BuildRequires:  ghc-semigroups-devel
-BuildRequires:  ghc-simple-reflect-devel
-%endif
 
 %description
 Law-abiding lenses for aeson.
@@ -60,16 +51,12 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-
-%check
-%cabal_test
 
 %post devel
 %ghc_pkg_recache
