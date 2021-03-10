@@ -1469,4 +1469,41 @@
     * Canon EOS 1D X Mark III, R5, R6</comment>
     <requestid>841075</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>31e71f696440aab48823dd3ec3c9db4b</srcmd5>
+    <version>2.5.27</version>
+    <time>1615362454</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.27 release 
+  ptp2:
+  * report filesizes larger than 4GB correctly
+  * download files larger than 4GB
+  * empty ptp strings are reported as &quot;&quot;, not as NULL
+  * report more MTP object properties
+  * Nikon
+    * download of files larger than 4GB using getpartial object method
+    * handle new application mode
+    * handle new eventex fetcher on Z series
+    * fixed movie on recent Z series
+    * report liveview and movie prohibit conditions, as errors and also in configuration tree
+    * some Nikon 1 V1 enhancements (the first camera of the 1 series is a bit special)
+  * report filesize &gt; 4GB correctly, if possible
+  * Canon EOS:
+    * EOS M6 Mark 2 is actually more like a EOS DSLR and fully capable, added some work
+    * Handle OLCINFO for M6 Mark 2 and EOS R5 and new cameras
+    * added current list of autoexposuremode to expose also Fv and friends
+    * Canon Liveview size is encoded in &quot;output&quot; (PC / MOBILE / MOBILE2 variants are the different livesizes), try to expose seperately as &quot;liveviewsize&quot;
+    * decode more options, nickname, eosmoviemode (color/bw), strobofiring, eventmode, flashcharged, oneshotrawon
+    * bugfixes
+  * Sony Alpha:
+    * report f-numbers enum with fixed list
+    * fixed liveview taking on a new model
+  * Panasonic
+    * implement liveviewsize
+    * implement movie recording ( using --set-config movie=1/0 )
+    * more doc and minor fixes
+  * ptp/ip: allow building on Windows
+  * New IDS:</comment>
+    <requestid>875384</requestid>
+  </revision>
 </revisionlist>
