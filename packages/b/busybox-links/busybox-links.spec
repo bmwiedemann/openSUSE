@@ -588,9 +588,15 @@ echo -e "%{_bindir}/ash" > filelist-sh.txt
 touch used/ash
 echo -e "%{_bindir}/hush" >> filelist-sh.txt
 touch used/hush
-echo -e "/bin/sh\n%{_bindir}/sh" >> filelist-sh.txt
+%if !0%{?usrmerged}
+echo "/bin/sh" >> filelist-sh.txt
+%endif
+echo -e "%{_bindir}/sh" >> filelist-sh.txt
 touch used/sh
-echo -e "/sbin/loadkmap\n%{_sbindir}/loadfont" >> filelist-kbd.txt
+%if !0%{?usrmerged}
+echo -e "/sbin/loadkmap" >> filelist-kbd.txt
+%endif
+echo -e "%{_sbindir}/loadfont" >> filelist-kbd.txt
 touch used/loadkmap used/loadfont
 
 echo -e "/usr/sbin/addgroup\n/usr/sbin/adduser\n/usr/sbin/delgroup\n/usr/sbin/deluser" >> filelist-shadow.txt
@@ -629,7 +635,9 @@ rm %{buildroot}%{_bindir}/busybox
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 #ln -sf %{_bindir}/busybox %{buildroot}%{_sysconfdir}/alternatives/sh
 ln -sf %{_sysconfdir}/alternatives/sh %{buildroot}%{_bindir}/sh
+%if !0%{?usrmerged}
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
+%endif
 cp -av %{_bindir}/zgrep %{buildroot}%{_bindir}
 cp -av %{_bindir}/zmore %{buildroot}%{_bindir}
 sed -e 's|PAGER-more|PAGER-less|g' %{buildroot}%{_bindir}/zmore > %{buildroot}%{_bindir}/zless
