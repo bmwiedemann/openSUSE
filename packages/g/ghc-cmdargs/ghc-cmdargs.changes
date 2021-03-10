@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 14 14:44:57 UTC 2021 - psimons@suse.com
+
+- Update cmdargs to version 0.10.21.
+  0.10.21, released 2021-02-14
+      Handle GHC 9.0 optimisations
+      Remove support for GHC 7.4 to 7.8
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

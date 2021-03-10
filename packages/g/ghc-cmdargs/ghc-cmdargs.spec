@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cmdargs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name cmdargs
 Name:           ghc-%{pkg_name}
-Version:        0.10.20
+Version:        0.10.21
 Release:        0
 Summary:        Command line argument processing
 License:        BSD-3-Clause
