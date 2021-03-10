@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Feb 27 12:04:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refreshed spec-file via spec-cleaner and manual optimizations.
+  * Droped obsolete conditional constructs.
+  * Removed pkg_name macro.
+
+-------------------------------------------------------------------
+Wed Feb 17 00:02:08 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Drop nginx_upstream_check module, there is no support for dynamic
+  loading upstream and the module seems kind of unmaintained.
+- Removed patch check_1.9.2+.patch.
+
+-------------------------------------------------------------------
+Tue Feb 16 23:40:16 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.19.7
+  * https://nginx.org/en/CHANGES
+  * Change: connections handling in HTTP/2 has been changed to
+    better match HTTP/1.x; the "http2_recv_timeout",
+    "http2_idle_timeout", and "http2_max_requests" directives have
+    been removed, the "keepalive_timeout" and "keepalive_requests"
+    directives should be used instead.
+  * Change: the "http2_max_field_size" and "http2_max_header_size"
+    directives have been removed, the "large_client_header_buffers"
+    directive should be used instead.
+  * Feature: now, if free worker connections are exhausted, nginx
+    starts closing not only keepalive connections, but also
+    connections in lingering close.
+  * Bugfix: "zero size buf in output" alerts might appear in logs
+    if an upstream server returned an incorrect response during
+    unbuffered proxying; the bug had appeared in 1.19.1.
+  * Bugfix: HEAD requests were handled incorrectly if the "return"
+    directive was used with the "image_filter" or "xslt_stylesheet"
+    directives.
+  * Bugfix: in the "add_trailer" directive.
+- Since we only target sle 12 and above we can skip all
+  conditionals which apply to suse_version before 1315
+
+  With changes in nginx itself we will drop support for sysvinit.
+  http2, libatomic support and pcre_jit will always be on now.
+  and we build all binaries with PIE now.
+- Moved the last 2 path macros from nginx.spec to the macros file.
+  (pid and lock path)
+
+-------------------------------------------------------------------
 Wed Dec 23 07:18:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.19.6
