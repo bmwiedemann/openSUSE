@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 25 23:48:25 UTC 2021 - psimons@suse.com
+
+- Update semialign to version 1.2.
+  # 1.2
+
+  - Migrate `SemialignWithIndex` and `ZipWithIndex` to this package,
+    using `FunctorWithIndex` from `indexed-traversable`.
+  - Add `RepeatWithIndex` type-class.
+  - Poly-kinded instances (notably `Tagged`)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

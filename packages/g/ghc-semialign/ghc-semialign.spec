@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-semialign
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name semialign
 Name:           ghc-%{pkg_name}
-Version:        1.1.0.1
+Version:        1.2
 Release:        0
 Summary:        Align and Zip type-classes from the common Semialign ancestor
 License:        BSD-3-Clause
@@ -27,6 +27,8 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-indexed-traversable-devel
+BuildRequires:  ghc-indexed-traversable-instances-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroupoids-devel
 BuildRequires:  ghc-tagged-devel
