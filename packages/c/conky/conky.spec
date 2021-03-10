@@ -1,7 +1,7 @@
 #
 # spec file for package conky
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with    xmms2
 %endif
 Name:           conky
-Version:        1.11.6
+Version:        1.12.1
 Release:        0
 Summary:        A System Monitor
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
