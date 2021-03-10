@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  6 08:31:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.11
+  * tc: skip actions that don't have options attribute when
+    printing
+  * ip route: Print "trap" nexthop indication
+  * dcb: new utility
+
+-------------------------------------------------------------------
 Wed Jan 27 18:25:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.10
@@ -6,6 +15,11 @@ Wed Jan 27 18:25:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
   * ss: add support to expose various inet sockopts
   * ss: add support for XDP statistics
   * bridge: mdb: add support for source address
+
+-------------------------------------------------------------------
+Fri Dec  4 09:49:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- missed /usr/bin/ip link in usrmerge
 
 -------------------------------------------------------------------
 Sat Oct 17 11:23:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>

@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        5.10.0
+Version:        5.11
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -29,8 +29,8 @@ URL:            https://wiki.linuxfoundation.org/networking/iproute2
 #DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
 #Git-Clone:	git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2
 #Git-Mirror:    https://github.com/shemminger/iproute2
-Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.xz
-Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.sign
+Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.xz
+Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.sign
 Source9:        %name.keyring
 Patch1:         adjust-installation-directories-for-openSUSE-SLE.patch
 Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
@@ -44,12 +44,9 @@ BuildRequires:  flex
 BuildRequires:  libelf-devel
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  xz
-%define with_xt 1
-%if 0%{?with_xt}
 BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(xtables) >= 1.4.11
-%endif
 Provides:       %name-doc = %version
 Provides:       iproute = %version-%release
 Provides:       %name(xfrm6_raw) = %version-%release
@@ -94,12 +91,12 @@ broadcasting due to limited standard size (512..1024 entries,
 depending on type) of the kernel ARP cache.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %name-%version.0
 
 find . -name *.orig -delete
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
 # build with -fPIC. For details see
 # https://bugzilla.novell.com/show_bug.cgi?id=388021
 xt_libdir="$(pkg-config xtables --variable=xtlibdir)"
@@ -111,18 +108,20 @@ xt_cflags="$(pkg-config xtables --cflags)"
 
 %install
 b="%buildroot"
-install -d "$b"/{etc/,sbin/,usr/{bin,sbin,share/man/man{3,8}}}
-install -d "$b"/{/usr/include,%_libdir,/usr/share}
+mkdir -p "$b/usr/bin" "$b/usr/sbin" "$b/sbin"
 %make_install MODDESTDIR="$b/%_libdir/tc"
 
-# We have m_xt
+# We have m_xt instead
 rm -f "$b/%_libdir/tc/m_ipt.so"
+
 install -pm0644 "lib/libnetlink.a" "$b/%_libdir/"
 chmod -x "$b/%_libdir/libnetlink.a"
 install -pm0644 "include/libnetlink.h" "$b/%_includedir/"
 chmod -x "$b/%_includedir/libnetlink.h"
-%if !0%{?usrmerged}
-ln -s "%_sbindir/ip" "$b/sbin"
+%if 0%{?usrmerged}
+ln -sf "%_sbindir/ip" "$b/%_bindir/ip"
+%else
+ln -s "%_sbindir/ip" "$b/sbin/"
 mkdir -p "$b/bin"
 ln -sf "%_sbindir/ip" "$b/bin/ip"
 %endif
@@ -142,7 +141,9 @@ cp -an README* examples/bpf "$b/%_docdir/%name/"
 %_bindir/ss
 %_sbindir/*
 %exclude %_sbindir/arpd
-%if !0%{?usrmerged}
+%if 0%{?usrmerged}
+%_bindir/ip
+%else
 /sbin/*
 /bin/ip
 %endif
