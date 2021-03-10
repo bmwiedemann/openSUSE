@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  4 06:11:51 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * Fix GeoNames web service URL, is now api.geonames.org (kde#432598)
+  * Provide BUILD_TOUCH option to force install of touch variant
+
+-------------------------------------------------------------------
 Wed Feb  3 08:30:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
