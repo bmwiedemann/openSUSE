@@ -1,7 +1,7 @@
 #
 # spec file for package jeos-firstboot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jeos-firstboot
-Version:        0.0+git20200827.e920a15
+Version:        1.0.0
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -74,10 +74,14 @@ cp -a files/* %{buildroot}
 %dir %{_datadir}/defaults/
 %{_datadir}/defaults/jeos-firstboot.conf
 %dir %{_datadir}/jeos-firstboot
+%dir %{_datadir}/jeos-firstboot/modules
+%{_sbindir}/jeos-config
 %{_sbindir}/jeos-firstboot
 %{_sbindir}/jeos-firstboot-snapshot
+%{_datadir}/jeos-firstboot/jeos-firstboot-dialogs
+%{_datadir}/jeos-firstboot/jeos-firstboot-functions
 
 %files rpiwifi
-%{_datadir}/jeos-firstboot/raspberrywifi
+%{_datadir}/jeos-firstboot/modules/raspberrywifi
 
 %changelog

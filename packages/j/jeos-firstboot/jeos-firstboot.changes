@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  1 14:56:29 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Fix git url in _service
+
+-------------------------------------------------------------------
+Thu Feb 25 11:54:04 UTC 2021 - jeos-internal@suse.de
+
+- Update to version 1.0.0:
+  * Use race-free DBus API to silence systemd (bsc#1119382)
+  * Implement separate configuration for wifi (bsc#1156775)
+  * Major refactoring and final version of jeos-config (bsc#1181957)
+
+-------------------------------------------------------------------
 Thu Aug 27 09:22:58 UTC 2020 - jeos-internal@suse.de
 
 - Update to version 0.0+git20200827.e920a15:

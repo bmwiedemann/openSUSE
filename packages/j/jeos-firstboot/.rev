@@ -389,4 +389,17 @@
   * Drop the info dialog about glibc-locale (jsc#SLE-15348)</comment>
     <requestid>829940</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>eed80fa1a159ddd056928511afc612b4</srcmd5>
+    <version>1.0.0</version>
+    <time>1615362536</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix git url in _service
+
+- Update to version 1.0.0:
+  * Use race-free DBus API to silence systemd (bsc#1119382)
+  * Implement separate configuration for wifi (bsc#1156775)
+  * Major refactoring and final version of jeos-config (bsc#1181957)</comment>
+    <requestid>876019</requestid>
+  </revision>
 </revisionlist>
