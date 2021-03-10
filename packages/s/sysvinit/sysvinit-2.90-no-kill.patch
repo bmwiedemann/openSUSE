@@ -43,7 +43,7 @@
   *	Read the proc filesystem.
   *	CWD must be /proc to avoid problems if / is affected by the killing (ie depend on fuse).
   */
-@@ -683,6 +715,26 @@ int readproc(int do_stat)
+@@ -676,6 +708,26 @@ int readproc(int do_stat)
  		p->nfs = 0;
  
  		switch (do_stat) {

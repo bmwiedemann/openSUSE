@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 22 16:00:28 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 2.99:
+  * Mostly typo and just better documentation and easier to read
+    code comments
+
+-------------------------------------------------------------------
+Wed Nov 25 15:04:42 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Tue Nov 17 11:26:22 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to sysvinit 2.98:

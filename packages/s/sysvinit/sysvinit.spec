@@ -1,7 +1,7 @@
 #
 # spec file for package sysvinit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,17 @@
 #
 
 
+%if 0%{?usrmerged}
+%define sbindir %_sbindir
+%define bindir %_bindir
+%else
+%define sbindir /sbin
+%define bindir /bin
+%endif
+
 Name:           sysvinit
 %define KPVER  2.23
-%define SIVER  2.98
+%define SIVER  2.99
 %define START  0.65
 Version:        %{SIVER}
 Release:        0
@@ -105,23 +113,30 @@ popd
   rm -vf %{buildroot}/usr/include/initreq.h
 # pidof is part of procps-ng; let's remove the symlinks to killproc5 here
 rm -f %{buildroot}{/sbin,/bin,%{_mandir}/man8}/pidof{,.8}
+%if 0%{?usrmerged}
+# it's all hardcoded in Makefiles so move here
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sbindir}
+mv %{buildroot}/bin/* %{buildroot}%{_bindir}
+mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
+%endif
 
 %files tools
 %defattr (-,root,root,755)
 %license COPYING COPYRIGHT
 %doc doc/Propaganda doc/Changelog doc/killproc
-/bin/usleep
-/bin/fsync
-/sbin/fstab-decode
-/sbin/checkproc
-/sbin/pidofproc
-/sbin/killproc
-/sbin/killall5
-/sbin/startproc
-/sbin/rvmtab
-/sbin/vhangup
-/sbin/mkill
-/sbin/start_daemon
+%{bindir}/usleep
+%{bindir}/fsync
+%{sbindir}/fstab-decode
+%{sbindir}/checkproc
+%{sbindir}/pidofproc
+%{sbindir}/killproc
+%{sbindir}/killall5
+%{sbindir}/startproc
+%{sbindir}/rvmtab
+%{sbindir}/vhangup
+%{sbindir}/mkill
+%{sbindir}/start_daemon
 %{_bindir}/startpar
 %doc %{_mandir}/man1/usleep.1.gz
 %doc %{_mandir}/man1/fsync.1.gz

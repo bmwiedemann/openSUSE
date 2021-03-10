@@ -1417,4 +1417,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853762</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>9f917ad487cbedca49da5bcd1cd2fbc1</srcmd5>
+    <version>2.99</version>
+    <time>1615362510</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare usrmerge (boo#1029961)
+
+This is not strictly mandatory at this point as there are no compat symlinks.
+So just for consistency. (forwarded request 875922 from lnussel)</comment>
+    <requestid>875937</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package powerd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?usrmerged}
+%define sbindir %_sbindir
+%else
+%define sbindir /sbin
+%endif
 
 Name:           powerd
 Version:        2.0.2
@@ -50,9 +56,9 @@ than a specified number of minutes.
   RPM_OPT_FLAGS="${RPM_OPT_FLAGS} $(getconf LFS_CFLAGS) -pipe"
   CC=%__cc
   export RPM_OPT_FLAGS CC
-  %configure --prefix= --bindir='$(DESTDIR)/sbin' \
+  %configure --prefix= --bindir='$(DESTDIR)%{sbindir}' \
 	--mandir='$(DESTDIR)%{_mandir}' \
-	--sbindir='$(DESTDIR)/sbin'
+	--sbindir='$(DESTDIR)%{sbindir}'
   make %{?_smp_mflags} CFLAGS="-I. $RPM_OPT_FLAGS -DWITH_SYSVINIT"
 
 %install
@@ -71,7 +77,7 @@ than a specified number of minutes.
   echo '#    systemctl start  powerd.service' >> %{buildroot}/etc/powerd.conf
   mkdir -p %{buildroot}/%{_unitdir}
   install -m 0644 %{S:2} %{buildroot}/%{_unitdir}/powerd.service
-  ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcpowerd
+  ln -sf service %{buildroot}%{_sbindir}/rcpowerd
 
 %pre
 %service_add_post powerd.service
@@ -89,8 +95,8 @@ than a specified number of minutes.
 %defattr (-,root,root,755)
 %license COPYING
 %doc README SUPPORTED FAQ powerd.conf.monitor powerd.conf.peer
-/sbin/powerd
-/sbin/detectups
+%{sbindir}/powerd
+%{sbindir}/detectups
 %{_sbindir}/rcpowerd
 %config /etc/powerd.conf
 %attr(0644,root,root) %{_unitdir}/powerd.service
