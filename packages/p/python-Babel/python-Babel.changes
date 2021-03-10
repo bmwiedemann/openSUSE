@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  5 10:31:45 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Substitute broken %ifpython3 macro
+
+-------------------------------------------------------------------
 Wed Dec 16 23:03:10 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - removed obsolete patches
