@@ -1,0 +1,5 @@
+<package name="wofi" project="openSUSE:Factory">
+  <title>Wofi</title>
+  <description>Wofi is a launcher/menu program for wlroots based wayland compositors such as sway</description>
+  <devel project="X11:Wayland" package="wofi"/>
+</package>
