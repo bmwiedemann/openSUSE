@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  4 06:10:10 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Too many changes since 20.12.2, only listing bugfixes:
+  * Fix recursive search broken on cancel. (kde#433773)
+  * Titler: update tab order (kde#433590)
+  * Transcode job: don't silently overwrite exported files. (kde#433623)
+  * Do not allow zero for values of a project profile (framrate, framesize,…) (kde#432016)
+  * Fix invisible text cursor in title editor #165 and other minor tweaks (kde#403941)
+
+-------------------------------------------------------------------
 Wed Feb  3 08:28:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
