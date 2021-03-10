@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 24 14:00:08 UTC 2021 - Coly Li <colyli@suse.com>
+
+- bcache-tools: Update super block version in bch_set_feature_*
+  routines (jsc#SLE-9807)
+  0028-bcache-tools-Update-super-block-version-in-bch_set_f.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 14:20:48 UTC 2021 - Coly Li <colyli@suse.com>
 
 - bcache.h: fix typo from SUUP to SUPP (jsc#SLE-9807)

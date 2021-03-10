@@ -52,6 +52,7 @@ Patch24:        0024-bcache-tools-display-obsoleted-bucket-size-configura.patch
 Patch25:        0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
 Patch26:        0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
 Patch27:        0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
+Patch28:        0028-bcache-tools-Update-super-block-version-in-bch_set_f.patch
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)
