@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 19 23:03:07 UTC 2021 - psimons@suse.com
+
+- Update fast-logger to version 3.0.3.
+  ## 3.0.3
+
+  * Dropping support of GHC 7.x.
+  * Add `ToLogStr` instance for `ShortByteString`. Add lower bound on
+    `bytestring` dependency to ensure that `bytestring` exports
+    `Data.ByteString.Short`.
+
+  ## 3.0.2
+
+  * Fixing documentation.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
