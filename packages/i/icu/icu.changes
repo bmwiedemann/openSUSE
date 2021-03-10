@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  1 13:37:17 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Drop SUSE_ASNEEDED as the issue was in binutils (boo#1182252).
+
+-------------------------------------------------------------------
 Thu Feb 18 08:02:44 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Fix pthread dependency issue (boo#1182252).

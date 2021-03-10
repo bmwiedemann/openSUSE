@@ -140,7 +140,6 @@ unzip %SOURCE3
 popd
 
 %build
-SUSE_ASNEEDED=0
 cd source
 mkdir -p data/out/tmp # build procedure forgets to do this on its own
 export CXXFLAGS="%optflags -DICU_DATA_DIR=\\\"%_datadir/icu/%version/\\\""
