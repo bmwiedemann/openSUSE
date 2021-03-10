@@ -99,8 +99,11 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
+cabal-tweak-dep-ver 'optics-core' '^>= 0.3' '^>= 0.4'
+cabal-tweak-dep-ver 'semialign' '^>= 1.1' '^>= 1.2'
 
 %build
+%define cabal_configure_options -fexe
 %ghc_lib_build
 
 %install
