@@ -24,4 +24,41 @@
   language mo files from.</comment>
     <requestid>865106</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ec94020be51af13a918e5f26e88d9978</srcmd5>
+    <version>2020.9.25</version>
+    <time>1615363068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.9.25:
+  * [general]
+    + #112: switch to a calendar versioning scheme
+    + #242: introduce the &quot;imdbID&quot; key with the actual imdbID for movies and
+      persons
+    + #247: use html escape
+    + #257: fix exception formatting string (courtesy of miigotu)
+    + #262: remove obsolete Feature key from setup.py
+    + #265: imdb.helpers.resizeImage function to manipulate image URLs
+    + #267: update regex to support imdbIndex without a year
+    + #275: update che path for Creator
+    + #284: use derived loggers (courtesy of jsynowiec)
+    + #282: use correct escape sequence for regular expressions
+  * [http]
+    + #134: fix movie awards parser
+    + #228: fix goofs parser
+    + #229: introduce the &quot;original title&quot; key
+    + #230: get_keyword method is now paginated
+    + #234: parse person awards (thanks to Volkan Yalcin)
+    + #237: fix quotes parser
+    + #241: introduce recommendations parser
+    + #244: fix parser for persons filmography
+    + #245: ability to fetch information about a single season
+    + #260: parsers for top rated tv show, top rated indian movies, most
+      popular tv shows and movies
+    + #273: ability to parse movie lists (courtesy of Stein van Broekhoven)
+  * [sql]
+    + #270: introduce a progress bar importing s3 dataset
+    + #278: fix access to s3 tables
+- Update docs and license sections</comment>
+    <requestid>878087</requestid>
+  </revision>
 </revisionlist>

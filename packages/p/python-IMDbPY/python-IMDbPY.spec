@@ -19,11 +19,10 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-IMDbPY
-Version:        6.8
+Version:        2020.9.25
 Release:        0
 Summary:        Python package to access the IMDb's database
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://imdbpy.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/I/IMDbPY/IMDbPY-%{version}.tar.gz
 Patch0:         do_not_install_scripts.patch
@@ -69,8 +68,8 @@ copy of the whole database.
 %python_uninstall_alternative imdbpy
 
 %files %{python_files}
-%doc README.rst docs/Changelog.rst
-%license docs/GPL.txt docs/LICENSE.txt
+%doc README.rst CHANGELOG.txt
+%license LICENSE.txt
 %python_alternative %{_bindir}/imdbpy
 %{python_sitelib}/IMDbPY-%{version}-py%{python_version}.egg-info
 %{python_sitelib}/imdb
