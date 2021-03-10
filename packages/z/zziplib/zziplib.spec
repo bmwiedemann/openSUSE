@@ -1,7 +1,7 @@
 #
 # spec file for package zziplib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libzzip-0-13
 Name:           zziplib
-Version:        0.13.71
+Version:        0.13.72
 Release:        0
 Summary:        ZIP Compression Library
 License:        LGPL-2.1-or-later
@@ -27,14 +27,11 @@ URL:            http://zziplib.sourceforge.net
 Source0:        https://github.com/gdraheim/zziplib/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch0:         zziplib-0.13.62.patch
-Patch1:         zziplib-0.13.62-wronglinking.patch
-Patch2:         zziplib-largefile.patch
 Patch8:         bsc1154002-prevent-unnecessary-perror.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
+BuildRequires:  zip
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -64,22 +61,16 @@ ZZipLib.
 %prep
 %setup -q
 %patch0
-%patch1
-%patch2
 %patch8 -p1
 # do not bother with html docs saving us python2 dependency
 sed -i -e 's:docs ::g' Makefile.am
 
 %build
-autoreconf -fiv
-%configure \
-  --with-largefile \
-  --enable-frame-pointer \
-  --disable-static
-make %{?_smp_mflags}
+%cmake -DZZIP_TESTCVE=OFF
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 rm -f docs/Make* docs/zziplib-manpages.ar
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -99,5 +90,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/*.m4
+%{_mandir}/man3/__zzip_*.3%{?ext_man}
+%{_mandir}/man3/zzip_*.3%{?ext_man}
 
 %changelog
