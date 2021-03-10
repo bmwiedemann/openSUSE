@@ -17,7 +17,7 @@
 
 
 Name:           suse-prime
-Version:        0.7.16
+Version:        0.7.17
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops
 License:        SUSE-Public-Domain

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  8 16:04:02 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.7.17
+  * prime-select.sh: user_logout_waiter() only wait for session
+    logout when displayamanger is still running (boo#1182667)
+
+-------------------------------------------------------------------
 Wed Feb 24 10:47:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.7.16
