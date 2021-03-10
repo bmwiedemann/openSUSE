@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 26 09:43:39 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- update to 0.13.0:
+  * Use multi-arch Docker images in the Kubernetes manifest
+  * Accept existing XMRF policies and update them intead of raising errors
+  * Add --no-sanity-check to iptables-wrapper-installer.sh for architectures other than amd64
+  * Use "docker manifest" to publish multi-arch Docker images
+  * Add NET_RAW capability to support cri-o
+  * remove glide
+  * switch to go modules
+  * Add and implement iptables-wrapper-installer.sh from https://github.com/kubernetes-sigs/iptables-wrappers
+  * documentation: set priorityClassName to system-node-critical
+  * Added a hint for firewall rules
+  * Disabling ipv6 accept_ra explicitely on the created interface
+  * use alpine 3.12 everywhere
+  * windows: replace old netsh (rakelkar/gonetsh) with powershell commands
+  * fix CVE-2019-14697
+  * Bugfix: VtepMac would be empty when lease re-acquire for windows
+  * Use stable os and arch label for node
+  * doc(awsvpc): correct the required permissions 
+
+-------------------------------------------------------------------
 Sun Aug 16 17:14:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.12.0:
