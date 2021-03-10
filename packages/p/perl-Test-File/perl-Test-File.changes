@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar  6 03:08:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.448
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.448 2021-03-05T15:01:18Z
+  	* Promote to a user release
+
+  1.447_01 2021-03-02T16:11:23Z
+  	* Try handling all-numeric user and group names (but, also, wtf?)
+  	Github #26.
+
+-------------------------------------------------------------------
+Thu Feb 25 03:09:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.447
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.447 2021-02-24T21:32:41Z
+  	* Trying harder to get the tests to pass on Cygwin
+
+-------------------------------------------------------------------
 Mon Feb 22 16:48:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.446
