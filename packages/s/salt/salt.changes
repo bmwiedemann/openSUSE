@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar  1 11:21:01 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Allow extra_filerefs as sanitized kwargs for SSH client
+- Fix regression on cmd.run when passing tuples as cmd (bsc#1182740)
+- Fix for multiple for security issues
+  (CVE-2020-28243) (CVE-2020-28972) (CVE-2020-35662) (CVE-2021-3148) (CVE-2021-3144)
+  (CVE-2021-25281) (CVE-2021-25282) (CVE-2021-25283) (CVE-2021-25284) (CVE-2021-3197)
+  (bsc#1181550) (bsc#1181556) (bsc#1181557) (bsc#1181558) (bsc#1181559) (bsc#1181560)
+  (bsc#1181561) (bsc#1181562) (bsc#1181563) (bsc#1181564) (bsc#1181565)
+- Implementation of suse_ip execution module to prevent issues with network.managed (bsc#1099976)
+- Add sleep on exception handling on minion connection attempt to the master (bsc#1174855)
+- Allows for the VMware provider to handle CPU and memory hot-add in newer versions of the software. (bsc#1181347)
+- Always require python-certifi (used by salt.ext.tornado)
+- Bring missing part of async batch implementation back (bsc#1182382) (CVE-2021-25315)
+
+- Added:
+  * implementation-of-suse_ip-execution-module-bsc-10999.patch
+  * fix-regression-on-cmd.run-when-passing-tuples-as-cmd.patch
+  * async-batch-implementation-fix-320.patch
+  * add-sleep-on-exception-handling-on-minion-connection.patch
+  * allow-extra_filerefs-as-sanitized-kwargs-for-ssh-cli.patch
+  * fix-for-some-cves-bsc1181550.patch
+  * fixes-56144-to-enable-hotadd-profile-support.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 17:10:30 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Always require python3-distro (bsc#1182293)
+
+-------------------------------------------------------------------
 Thu Feb 11 16:02:59 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - virt: search for grub.xen path

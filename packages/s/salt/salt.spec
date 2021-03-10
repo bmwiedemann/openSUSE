@@ -359,6 +359,20 @@ Patch148:     virt-uefi-fix-backport-312.patch
 Patch149:     3002.2-xen-spicevmc-dns-srv-records-backports-314.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/59485
 Patch150:     open-suse-3002.2-xen-grub-316.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/320
+Patch151:     async-batch-implementation-fix-320.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56173
+Patch152:     fixes-56144-to-enable-hotadd-profile-support.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/307
+Patch153:     add-sleep-on-exception-handling-on-minion-connection.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/323
+Patch154:     implementation-of-suse_ip-execution-module-bsc-10999.patch
+# PATCH-FIX_UPSTREAM: no PR to link to yet
+Patch155:     fix-for-some-cves-bsc1181550.patch
+# PATCH-FIX_UPSTREAM: no PR to link to yet
+Patch156:     allow-extra_filerefs-as-sanitized-kwargs-for-ssh-cli.patch
+# PATCH-FIX_UPSTREAM: no PR to link to yet
+Patch157:     fix-regression-on-cmd.run-when-passing-tuples-as-cmd.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -458,7 +472,6 @@ BuildRequires:  python3-MarkupSafe
 BuildRequires:  python3-msgpack-python > 0.3
 BuildRequires:  python3-pyzmq >= 2.2.0
 %if 0%{?suse_version} >= 1500
-BuildRequires:  python3-distro
 BuildRequires:  python3-M2Crypto
 %else
 BuildRequires:  python3-pycrypto >= 2.6.1
@@ -467,6 +480,7 @@ BuildRequires:  python3-pycrypto >= 2.6.1
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-psutil
 BuildRequires:  python3-requests >= 1.0.0
+BuildRequires:  python3-distro
 
 # requirements/zeromq.txt
 %if %{with test}
@@ -486,10 +500,7 @@ Requires:       platform-python
 %else
 Requires:       python3
 %endif
-#
-%if ! 0%{?suse_version} > 1110
 Requires:       python3-certifi
-%endif
 # requirements/base.txt
 %if 0%{?rhel} || 0%{?fedora}
 Requires:       python3-jinja2
@@ -510,7 +521,6 @@ Requires:       python3-Jinja2
 Requires:       python3-MarkupSafe
 Requires:       python3-msgpack-python > 0.3
 %if 0%{?suse_version} >= 1500
-Requires:       python3-distro
 Requires:       python3-M2Crypto
 %else
 Requires:       python3-pycrypto >= 2.6.1
@@ -520,6 +530,7 @@ Requires:       python3-pyzmq >= 2.2.0
 Requires:       python3-PyYAML
 Requires:       python3-psutil
 Requires:       python3-requests >= 1.0.0
+Requires:       python3-distro
 %if 0%{?suse_version}
 # required for zypper.py
 Requires:       python3-rpm
@@ -908,6 +919,13 @@ cp %{S:5} ./.travis.yml
 %patch148 -p1
 %patch149 -p1
 %patch150 -p1
+%patch151 -p1
+%patch152 -p1
+%patch153 -p1
+%patch154 -p1
+%patch155 -p1
+%patch156 -p1
+%patch157 -p1
 
 %build
 # Putting /usr/bin at the front of $PATH is needed for RHEL/RES 7. Without this
