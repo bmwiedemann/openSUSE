@@ -157,4 +157,20 @@
     <comment>1</comment>
     <requestid>347429</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>22fcb6043fb99bd49953b1a07aa2fb8d</srcmd5>
+    <version>2.12</version>
+    <time>1615363029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.12:
+  * man: note incomplete C++ raw string literal support
+  * C++11 raw string literal support
+  * doc: clarify where to send bug reports
+  * unifdef.1: clarify backslash-newline behaviour in DESCRIPTION
+  * unifdef: more fixes for weird whitespace
+  * portability: fix problems compiling with C++ compiler
+  * Avoid -Wmissing-initializer
+  * man: use .Mt to mark up email addresses</comment>
+    <requestid>877843</requestid>
+  </revision>
 </revisionlist>

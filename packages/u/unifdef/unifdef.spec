@@ -1,7 +1,7 @@
 #
 # spec file for package unifdef
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,11 @@ Name:           unifdef
 Summary:        Removes ifdefs from C files
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        2.11
+Version:        2.12
 Release:        0
-Url:            http://dotat.at/prog/unifdef/
-Source:         http://dotat.at/prog/unifdef/unifdef-%{version}.tar.xz
+URL:            https://dotat.at/prog/unifdef/
+Source:         https://dotat.at/prog/unifdef/unifdef-%{version}.tar.xz
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Unifdef is useful for removing ifdef'ed lines from a file while otherwise
@@ -52,11 +51,11 @@ make test
 %{?make_install} %{!?make_install:make install DESTDIR=%{buildroot}}
 
 %files
-%defattr(-,root,root)
+%license COPYING
+%doc Changelog README
 %{_bindir}/unifdef
 %{_bindir}/unifdefall
 %{_mandir}/man1/unifdef.1*
 %{_mandir}/man1/unifdefall.1*
-%doc Changelog COPYING README
 
 %changelog

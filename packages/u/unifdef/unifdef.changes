@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  8 23:26:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12:
+  * man: note incomplete C++ raw string literal support
+  * C++11 raw string literal support
+  * doc: clarify where to send bug reports
+  * unifdef.1: clarify backslash-newline behaviour in DESCRIPTION
+  * unifdef: more fixes for weird whitespace
+  * portability: fix problems compiling with C++ compiler
+  * Avoid -Wmissing-initializer
+  * man: use .Mt to mark up email addresses
+  
+-------------------------------------------------------------------
 Fri Dec  4 09:58:25 UTC 2015 - sweet_f_a@gmx.de
 
 - Update to 2.11:
