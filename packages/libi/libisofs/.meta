@@ -1,0 +1,21 @@
+<package name="libisofs" project="openSUSE:Factory">
+  <title>Library for Creating ISO-9660 Filesystems</title>
+  <description>
+Libisofs is a library for creating ISO-9660 filesystems with extensions like
+RockRidge or Joliet. It is also a full featured ISO-9660 editor, allowing you
+to modify an ISO image or multisession disc, including file addition/removal,
+change of file names and attributes, etc.
+
+ISO-9660 images can be made bootable from CD, DVD, or BD via an El Torito boot
+record and appropriate boot image files from boot managers like GRUB, ISOLINUX,
+or system specific boot loaders. It is also possible to install a Master Boot
+Record for hard-disk-like media, e.g. USB memory sticks.
+
+Libisofs supports the extension AAIP which allows to store ACLs and xattr in
+ISO-9660 filesystems and zisofs compression which is transparently uncompressed
+by some Linux kernels. It is possible to have data file content compressed to
+gzip format or to have it filtered by an external process.
+</description>
+  <devel project="multimedia:libs" package="libisofs"/>
+  <url>http://libburnia-project.org/</url>
+</package>
