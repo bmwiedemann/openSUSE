@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-constraints
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name constraints
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Constraint manipulation
 License:        BSD-2-Clause
@@ -31,7 +31,6 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-type-equality-devel
