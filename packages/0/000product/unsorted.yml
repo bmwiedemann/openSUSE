@@ -1718,7 +1718,7 @@ unsorted:
   - casarest-devel 
   - casarest-libs 
   - caslon-fonts 
-  - casync: [x86_64] 
+  - casync 
   - catalan-pos-dict 
   - catatonit: [i586] 
   - catcodec 
@@ -2871,7 +2871,6 @@ unsorted:
   - dracut-sshd 
   - dracut-tools 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -8931,7 +8930,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of dvd:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-suse19-32bit: [x86_64] 
+  - libSPIRV-Tools-suse20-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -11248,9 +11247,9 @@ unsorted:
   - libjson-glib-1_0-0-32bit: [x86_64] 
   - libjsoncpp24 
   - libjte-devel 
-  - libjte1 
   - libjthread1_3_3 
   - libjxrglue0 
+  - libjxrglue0-32bit: [x86_64] 
   - libkaccounts2-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
@@ -16040,6 +16039,8 @@ unsorted:
   - muffin 
   - muffin-devel 
   - muffin-lang 
+  - mujs 
+  - mujs-devel 
   - multimon-ng 
   - multipath-tools-devel 
   - multitail 
@@ -19544,7 +19545,6 @@ unsorted:
   - perl-warewulf-ipmi: [x86_64] 
   - perl-warewulf-provision: [x86_64] 
   - perl-warewulf-provision-server: [x86_64] 
-  - perl-yui 
   - permissions-zypp-plugin 
   - permlib-devel 
   - perseus-sdr-tools 
@@ -20784,7 +20784,6 @@ unsorted:
   - python3-gv 
   - python3-h5netcdf 
   - python3-hawkey 
-  - python3-hdf5storage 
   - python3-heatclient 
   - python3-hivex 
   - python3-httpie 
@@ -21045,7 +21044,6 @@ unsorted:
   - python3-yang 
   - python3-yappi 
   - python3-yaql 
-  - python3-yui 
   - python3-z3 
   - python3-zbar 
   - python36 
@@ -25087,6 +25085,7 @@ unsorted:
   - python38-hatch 
   - python38-hawkauthlib 
   - python38-hcloud 
+  - python38-hdf5storage: [x86_64] 
   - python38-healpy 
   - python38-helpdev 
   - python38-hepunits 
@@ -27442,7 +27441,6 @@ unsorted:
   - ruby-rrdtool 
   - ruby-selinux 
   - ruby-xapian 
-  - ruby-yui 
   - ruby2.7-devel 
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
