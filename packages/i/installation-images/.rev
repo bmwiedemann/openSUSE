@@ -1027,4 +1027,11 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>876934</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>362933b2b5c6e27aff81da50fbb3d15b</srcmd5>
+    <version>16.47</version>
+    <time>1615368309</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1183264</comment>
+  </revision>
 </revisionlist>

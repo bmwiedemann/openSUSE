@@ -1,27 +1,4 @@
 --------------------------------------------------------------------
-Thu Mar 4 16:48:09 UTC 2021 - wfeldt@opensuse.org
-
-- merge gh#openSUSE/installation-images#465
-- Prepare UsrMerge (boo#1029961)
-- remove explicit libblogger2 dep
-- clean up kernel module config
-- 16.50
-
---------------------------------------------------------------------
-Wed Mar 3 16:03:14 UTC 2021 - wfeldt@opensuse.org
-
-- merge gh#openSUSE/installation-images#462
-- support using zram device as root file system (jsc#PM-2253)
-- 16.49
-
---------------------------------------------------------------------
-Wed Mar 3 10:23:58 UTC 2021 - wfeldt@opensuse.org
-
-- merge gh#openSUSE/installation-images#464
-- fix efi local boot entry on x86_64 (bsc#1182891)
-- 16.48
-
---------------------------------------------------------------------
 Thu Feb 25 14:26:30 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#460
