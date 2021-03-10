@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  2 15:14:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * KRunner: Handle escape key in history view more gracefully (kde#433723)
+  * [Notifications] Don't change tooltip when paused
+  * locations runner: Fix empty list on invalid shell quotes
+  * [applets/devicenotifier] Add placeholder icon when no device icon exists (kde#433534)
+  * [kcms/icons] Collapse buttons if the row is too wide for the display
+  * Do not start faulty coronas
+- Drop patches, now actually upstream:
+  * 0001-locations-runner-Fix-empty-list-on-invalid-shell-quo.patch
+
+-------------------------------------------------------------------
 Fri Feb 26 19:06:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add back patch for fix which didn't make it into 5.21.1:
