@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  1 14:01:26 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update-extpack.sh: explicitly use https:// protocol for authenticity. The
+  http:// URL is currently redirected to https:// but don't rely on this.
+
+-------------------------------------------------------------------
+Sat Feb 20 21:42:48 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add code to generate guest modules for Leap 15.2 and Leap 15.3. The kernel versions
+  do not allow window resizing. Files "virtualbox-kmp-files-leap" and
+  "vboxguestconfig.sh" are added
+
+-------------------------------------------------------------------
 Thu Feb  4 18:47:09 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 -  Fix build for Leap 15.3. File "fixes_for_leap15.3.patch" is added.

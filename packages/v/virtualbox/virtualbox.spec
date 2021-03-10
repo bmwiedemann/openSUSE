@@ -16,6 +16,17 @@
 #
 
 
+#create a variable that indicates we are building for Leap 15.{2,3}. These versions
+#need to have the guest modules build. Tumbleweed does not.
+#
+%define for_leap 0
+%if 0%{?sle_version == 150200}
+%define for_leap 1
+%endif
+%if 0%{?sle_version == 150300}
+%define for_leap 1
+%endif
+
 %if "@BUILD_FLAVOR@" == "kmp"
 ### macros for virtualbox-kmp ###
 %define main_package 0
@@ -84,7 +95,11 @@ Source2:        VirtualBox.appdata.xml
 %endif
 Source3:        virtualbox-60-vboxguest.rules
 Source4:        virtualbox-default.virtualbox
+%if %{for_leap}
+Source5:        virtualbox-kmp-files-leap
+%else
 Source5:        virtualbox-kmp-files
+%endif
 Source7:        virtualbox-kmp-preamble
 Source8:        update-extpack.sh
 Source9:        virtualbox-wrapper.sh
@@ -93,6 +108,9 @@ Source11:       virtualbox-60-vboxdrv.rules
 Source14:       vboxdrv.service
 Source15:       vboxadd-service.service
 Source16:       vboxconfig.sh
+%if %{for_leap}
+Source17:       vboxguestconfig.sh
+%endif
 Source18:       fix_usb_rules.sh
 Source19:       vboxdrv.sh
 Source20:       README.autostart
@@ -412,6 +430,22 @@ Source files for %{name} host kernel modules
 These can be built for custom kernels using
 sudo /sbin/vboxconfig
 
+%if %{for_leap}
+%package guest-source
+Summary:        Source files for %{name} guest kernel modules
+Group:          Development/Sources
+Requires:       gcc
+Requires:       kernel-devel
+Requires:       libelf-devel
+Requires:       make
+BuildArch:      noarch
+
+%description guest-source
+Source files for %{name} guest kernel modules
+These can be built for custom kernels using
+sudo /sbin/vboxguestconfig
+%endif
+###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -682,6 +716,9 @@ install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
 # install kmp src
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/additions
+%if %{for_leap}
+tar jcf %{buildroot}%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2 additions/src
+%endif
 cp -a src %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 install -m 644 %{SOURCE11}			%{buildroot}%{_udevrulesdir}/60-vboxdrv.rules
 popd
@@ -708,6 +745,9 @@ install -m 0644 %{SOURCE14}                     %{buildroot}%{_unitdir}/vboxdrv.
 ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
 install -m 0644 %{SOURCE15}                     %{buildroot}%{_unitdir}/vboxadd-service.service
 install -m 0755 %{SOURCE16}			%{buildroot}/sbin/vboxconfig
+%if %{for_leap}
+install -m 0755 %{SOURCE17}			%{buildroot}/sbin/vboxguestconfig
+%endif
 install -m 0755 %{SOURCE18}			%{buildroot}/sbin/vbox-fix-usb-rules.sh
 install -m 0755 %{SOURCE19}			%{buildroot}%{_vbox_instdir}/vboxdrv.sh
 install -m 0644 %{SOURCE21}			%{buildroot}%{_unitdir}/vboxweb-service.service
@@ -1026,6 +1066,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %defattr(-, root, root)
 %{_bindir}/VBoxControl
 %{_sbindir}/VBoxService
+%if %{for_leap}
+/sbin/vboxguestconfig
+%endif
 /sbin/mount.vboxsf
 %{_udevrulesdir}/60-vboxguest.rules
 %{_vbox_instdir}/vboxadd-service
@@ -1060,6 +1103,14 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %defattr(-,root, root)
 %dir %{_usrsrc}/kernel-modules
 %{_usrsrc}/kernel-modules/virtualbox
+
+%if %{for_leap}
+%files guest-source
+%defattr(-,root, root)
+%dir %{_usrsrc}/kernel-modules
+%dir %{_usrsrc}/kernel-modules/additions
+%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2
+%endif
 
 %files websrv
 %defattr(-,root, root)
@@ -1156,11 +1207,20 @@ COMMON_KMK_FLAGS+="
 #    host kernel modules to out/linux.*/release/bin/src/
 %{_bindir}/kmk %_smp_mflags -C src/VBox/HostDrivers/ \
 	${COMMON_KMK_FLAGS}
+%if %{for_leap}
 #
+# build kernel modules for guest and host (check novel-kmp package as example)
+# host  modules : vboxdrv,vboxnetflt,vboxnetadp
+# guest modules : vboxguest,vboxsf vboxvideo (for Leap 15.2 and older)
+echo "build kernel modules"
+for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
+           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
+%else
 # build kernel modules for host (check novel-kmp package as example)
 # host  modules : vboxdrv,vboxnetflt,vboxnetadp
 echo "build kernel modules"
 for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
+%endif
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -1169,7 +1229,12 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
 	# delete old build dir for sure
 	rm -rf modules_build_dir/${module_name}_${flavor}
 
-       if [ "$module_name" = "vboxdrv" ] ; then
+%if %{for_leap}
+	if [ "$module_name" = "vboxdrv" -o \
+	     "$module_name" = "vboxguest" ] ; then
+%else
+	if [ "$module_name" = "vboxdrv" ] ; then
+%endif
 	    SYMBOLS=""
 	fi
 	# create build directory for specific flavor
@@ -1185,6 +1250,15 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
 		  $PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
 	fi
+%if %{for_leap}
+        # copy vboxguest (for guest) module symbols which are used by vboxsf km:
+	if [ "$module_name" = "vboxsf" -o \
+	     "$module_name" = "vboxvideo" ] ; then
+	    cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
+		$PWD/modules_build_dir/$flavor/$module_name
+	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
+	fi
+%endif
 	# build the module for the specific flavor
 	make -j2 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
 		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
@@ -1195,7 +1269,11 @@ done
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=extra
 #to install modules we use here similar steps like in build phase, go through all the modules :
+%if %{for_leap}
+for module_name in vbox{drv,netflt,netadp,guest,sf,video}
+%else
 for module_name in vbox{drv,netflt,netadp}
+%endif
 do
 	#and through the all flavors
 	for flavor in %{flavors_to_build}; do

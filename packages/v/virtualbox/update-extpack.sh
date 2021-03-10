@@ -54,7 +54,7 @@ fi
 
 # A new version of extpack is needed - switch to directory that can be written, and download it
 pushd ~ > /dev/null 2>&1
-$WGET http://download.virtualbox.org/virtualbox/$VBOX_VERSION/$VBOX_EXT > /dev/null 2>&1
+$WGET https://download.virtualbox.org/virtualbox/$VBOX_VERSION/$VBOX_EXT > /dev/null 2>&1
 
 # Now install it
 echo Y | $VBOXMANAGE extpack install --replace $VBOX_EXT > /dev/null 2>&1
