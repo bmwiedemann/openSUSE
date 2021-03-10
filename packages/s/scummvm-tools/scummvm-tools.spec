@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           scummvm-tools
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        ScummVM-related tools
 License:        GPL-2.0-or-later
-URL:            http://www.scummvm.org
-Source0:        https://www.scummvm.org/frs/scummvm-tools/%{version}/scummvm-tools-%{version}.tar.xz
+URL:            https://www.scummvm.org
+Source0:        https://downloads.scummvm.org/frs/scummvm-tools/%{version}/scummvm-tools-%{version}.tar.xz
 Source1:        %{name}.desktop
 Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM fix-new-wxwidgets.patch -- https://bugs.scummvm.org/ticket/9554
 Patch0:         fix-new-wxwidgets.patch
 BuildRequires:  ImageMagick
 BuildRequires:  boost-devel >= 1.32.0
+BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  icns-utils
 BuildRequires:  pkgconfig
 BuildRequires:  wxWidgets-devel >= 3
@@ -67,7 +67,6 @@ sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configur
 icns2png -x -s 512x512 gui/media/scummvmtools.icns
 
 %build
-export CXXFLAGS="%{optflags}"
 ./configure --prefix=%{_prefix} \
             --enable-verbose-build
 %make_build
