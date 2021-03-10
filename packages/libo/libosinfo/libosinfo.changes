@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  2 10:07:02 MST 2021 - carnold@suse.com
+
+- Update to version 1.9.0
+  Changes in this release include:
+  * Improve on the osinfo-tools' and osinfo-detect's help
+  * Several CI improvements
+  * Several translations improvements
+  * Improve on debuggability of the loader code
+  * Fix build when using clang
+
+-------------------------------------------------------------------
 Tue Aug 18 12:32:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly call %meson_build in the %build section: It was never

@@ -1,7 +1,7 @@
 #
 # spec file for package libosinfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define with_lang 1
 
 Name:           libosinfo
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Operating system and hypervisor information management library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
