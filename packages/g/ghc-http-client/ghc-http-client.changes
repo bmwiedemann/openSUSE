@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 21 12:49:09 UTC 2021 - psimons@suse.com
+
+- Update http-client to version 0.7.6.
+  ## 0.7.6
+
+  * Add `applyBearerAuth` function [#457](https://github.com/snoyberg/http-client/pull/457/files)
+
+-------------------------------------------------------------------
 Fri Feb  5 15:47:40 UTC 2021 - psimons@suse.com
 
 - Update http-client to version 0.7.5.
