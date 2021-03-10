@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-attoparsec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name attoparsec
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.13.2.4
+Version:        0.13.2.5
 Release:        0
 Summary:        Fast combinator parsing for bytestrings and text
 License:        BSD-3-Clause

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar  3 16:37:14 UTC 2021 - psimons@suse.com
+
+- Update attoparsec to version 0.13.2.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Feb 10 13:04:58 UTC 2021 - psimons@suse.com
+
+- Update attoparsec to version 0.13.2.5.
+  Upstream has not updated the file "changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
