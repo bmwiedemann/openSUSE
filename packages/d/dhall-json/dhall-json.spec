@@ -25,7 +25,7 @@ Summary:        Convert between Dhall and JSON or YAML
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
