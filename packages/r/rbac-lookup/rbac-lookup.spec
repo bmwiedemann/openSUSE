@@ -1,7 +1,7 @@
 #
 # spec file for package rbac-lookup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 
 Name:           rbac-lookup
-Version:        0.3.2
+Version:        0.6.3
 Release:        0
 Summary:        Tool to find roles and cluster roles in a Kubernetes cluster
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/reactiveops/rbac-lookup
+URL:            https://github.com/FairwindsOps/rbac-lookup
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.11
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.13
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 %{go_nostrip}

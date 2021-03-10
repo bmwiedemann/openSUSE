@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 26 15:57:24 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 0.6.3
+  * Update dependencies
+  * Fix logic with service accounts
+  * Update for kube 1.18 and client-go 1.18
+  * adding kubeconfig command line option
+  * Service account namespace output
+
+-------------------------------------------------------------------
 Tue May 28 06:36:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in descriptions.
