@@ -1,0 +1,16 @@
+diff --git a/lib/console.c b/lib/console.c
+index 2d421af..6e2a8ca 100644
+--- a/lib/console.c
++++ b/lib/console.c
+@@ -521,7 +521,11 @@ static struct {
+ 	{  EFI_SECURITY_VIOLATION,     L"Security Violation"},
+ 
+ 	// warnings
++#ifdef EFI_WARN_UNKOWN_GLYPH
+ 	{  EFI_WARN_UNKOWN_GLYPH,      L"Warning Unknown Glyph"},
++#else
++	{  EFI_WARN_UNKNOWN_GLYPH,     L"Warning Unknown Glyph"},
++#endif
+ 	{  EFI_WARN_DELETE_FAILURE,    L"Warning Delete Failure"},
+ 	{  EFI_WARN_WRITE_FAILURE,     L"Warning Write Failure"},
+ 	{  EFI_WARN_BUFFER_TOO_SMALL,  L"Warning Buffer Too Small"},

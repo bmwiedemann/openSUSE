@@ -1,0 +1,181 @@
+From 74d26654d55a4f32e58b76757efca50ceedefef4 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 5 Mar 2021 15:00:29 +0800
+Subject: [PATCH] Restore loaded image of shim at Exit()
+
+When grub2 invoked Exit() in AArch64 AAVMF, the VM crashed with the
+following messsages:
+
+Unloading driver at 0x000B7D7B000
+
+Synchronous Exception at 0x00000000BF5D5E68
+AllocatePool: failed to allocate 800 bytes
+
+Synchronous Exception at 0x00000000BF5D5E68
+
+The similar error also showed when I modified MokManager to call
+gBS->Exit() at the end of efi_main(). However, if MokManager just
+returned, the error never showed. One significant difference is
+whether the loaded image was restored or not, and the firmware seems
+to need the original ImageBase pointer to do clean-up.
+
+To avoid the potential crash, this commit adds restore_loaded_image() so
+that we can restore the loaded image both in start_image() and
+do_exit().
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ replacements.c |  2 ++
+ shim.c         | 41 ++++++++++++++++++++++++-----------------
+ shim.h         |  1 +
+ 3 files changed, 27 insertions(+), 17 deletions(-)
+
+Index: shim-15+git47/replacements.c
+===================================================================
+--- shim-15+git47.orig/replacements.c
++++ shim-15+git47/replacements.c
+@@ -159,6 +159,8 @@ do_exit(EFI_HANDLE ImageHandle, EFI_STAT
+ 
+ 	shim_fini();
+ 
++	restore_loaded_image();
++
+ 	efi_status = gBS->Exit(ImageHandle, ExitStatus,
+ 			       ExitDataSize, ExitData);
+ 	if (EFI_ERROR(efi_status)) {
+Index: shim-15+git47/shim.c
+===================================================================
+--- shim-15+git47.orig/shim.c
++++ shim-15+git47/shim.c
+@@ -58,6 +58,8 @@
+ 
+ static EFI_SYSTEM_TABLE *systab;
+ static EFI_HANDLE global_image_handle;
++static EFI_LOADED_IMAGE *shim_li;
++static EFI_LOADED_IMAGE shim_li_bak;
+ 
+ static CHAR16 *second_stage;
+ static void *load_options;
+@@ -1861,13 +1863,24 @@ static EFI_STATUS shim_read_header(void
+ 	return efi_status;
+ }
+ 
++VOID
++restore_loaded_image(VOID)
++{
++	if (shim_li->FilePath)
++		FreePool(shim_li->FilePath);
++
++	/*
++	 * Restore our original loaded image values
++	 */
++	CopyMem(shim_li, &shim_li_bak, sizeof(shim_li_bak));
++}
++
+ /*
+  * Load and run an EFI executable
+  */
+ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
+ {
+ 	EFI_STATUS efi_status;
+-	EFI_LOADED_IMAGE *li, li_bak;
+ 	EFI_IMAGE_ENTRY_POINT entry_point;
+ 	EFI_PHYSICAL_ADDRESS alloc_address;
+ 	UINTN alloc_pages;
+@@ -1882,7 +1895,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+ 	 * binary in order to find our path
+ 	 */
+ 	efi_status = gBS->HandleProtocol(image_handle, &EFI_LOADED_IMAGE_GUID,
+-					 (void **)&li);
++					 (void **)&shim_li);
+ 	if (EFI_ERROR(efi_status)) {
+ 		perror(L"Unable to init protocol\n");
+ 		return efi_status;
+@@ -1891,14 +1904,14 @@ EFI_STATUS start_image(EFI_HANDLE image_
+ 	/*
+ 	 * Build a new path from the existing one plus the executable name
+ 	 */
+-	efi_status = generate_path_from_image_path(li, ImagePath, &PathName);
++	efi_status = generate_path_from_image_path(shim_li, ImagePath, &PathName);
+ 	if (EFI_ERROR(efi_status)) {
+ 		perror(L"Unable to generate path %s: %r\n", ImagePath,
+ 		       efi_status);
+ 		goto done;
+ 	}
+ 
+-	if (findNetboot(li->DeviceHandle)) {
++	if (findNetboot(shim_li->DeviceHandle)) {
+ 		efi_status = parseNetbootinfo(image_handle);
+ 		if (EFI_ERROR(efi_status)) {
+ 			perror(L"Netboot parsing failed: %r\n", efi_status);
+@@ -1914,7 +1927,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+ 		data = sourcebuffer;
+ 		datasize = sourcesize;
+ #if  defined(ENABLE_HTTPBOOT)
+-	} else if (find_httpboot(li->DeviceHandle)) {
++	} else if (find_httpboot(shim_li->DeviceHandle)) {
+ 		efi_status = httpboot_fetch_buffer (image_handle,
+ 						    &sourcebuffer,
+ 						    &sourcesize);
+@@ -1930,7 +1943,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+ 		/*
+ 		 * Read the new executable off disk
+ 		 */
+-		efi_status = load_image(li, &data, &datasize, PathName);
++		efi_status = load_image(shim_li, &data, &datasize, PathName);
+ 		if (EFI_ERROR(efi_status)) {
+ 			perror(L"Failed to load image %s: %r\n",
+ 			       PathName, efi_status);
+@@ -1949,13 +1962,13 @@ EFI_STATUS start_image(EFI_HANDLE image_
+ 	 * We need to modify the loaded image protocol entry before running
+ 	 * the new binary, so back it up
+ 	 */
+-	CopyMem(&li_bak, li, sizeof(li_bak));
++	CopyMem(&shim_li_bak, shim_li, sizeof(shim_li_bak));
+ 
+ 	/*
+ 	 * Update the loaded image with the second stage loader file path
+ 	 */
+-	li->FilePath = FileDevicePath(NULL, PathName);
+-	if (!li->FilePath) {
++	shim_li->FilePath = FileDevicePath(NULL, PathName);
++	if (!shim_li->FilePath) {
+ 		perror(L"Unable to update loaded image file path\n");
+ 		efi_status = EFI_OUT_OF_RESOURCES;
+ 		goto restore;
+@@ -1964,7 +1977,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+ 	/*
+ 	 * Verify and, if appropriate, relocate and execute the executable
+ 	 */
+-	efi_status = handle_image(data, datasize, li, &entry_point,
++	efi_status = handle_image(data, datasize, shim_li, &entry_point,
+ 				  &alloc_address, &alloc_pages);
+ 	if (EFI_ERROR(efi_status)) {
+ 		perror(L"Failed to load image: %r\n", efi_status);
+@@ -1981,13 +1994,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+ 	efi_status = entry_point(image_handle, systab);
+ 
+ restore:
+-	if (li->FilePath)
+-		FreePool(li->FilePath);
+-
+-	/*
+-	 * Restore our original loaded image values
+-	 */
+-	CopyMem(li, &li_bak, sizeof(li_bak));
++	restore_loaded_image();
+ done:
+ 	if (PathName)
+ 		FreePool(PathName);
+Index: shim-15+git47/shim.h
+===================================================================
+--- shim-15+git47.orig/shim.h
++++ shim-15+git47/shim.h
+@@ -163,6 +163,7 @@ extern EFI_STATUS LogError_(const char *
+ extern EFI_STATUS VLogError(const char *file, int line, const char *func, CHAR16 *fmt, va_list args);
+ extern VOID PrintErrors(VOID);
+ extern VOID ClearErrors(VOID);
++extern VOID restore_loaded_image(VOID);
+ extern EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath);
+ extern EFI_STATUS import_mok_state(EFI_HANDLE image_handle);
+ 

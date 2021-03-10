@@ -1,0 +1,357 @@
+From 407763d37cae353609b3f3ef78ff127745860357 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 23 May 2018 16:58:31 +0800
+Subject: [PATCH 1/2] console: Move the countdown function to console.c
+
+Move the countdown function from MokManager to console.c to make the
+function public
+
+Also make console_save_and_set_mode() and console_restore_mode() public
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ MokManager.c      | 71 ++++---------------------------------------
+ include/console.h |  6 ++++
+ lib/console.c     | 76 +++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 88 insertions(+), 65 deletions(-)
+
+diff --git a/MokManager.c b/MokManager.c
+index 2e55c50..1ab8e5e 100644
+--- a/MokManager.c
++++ b/MokManager.c
+@@ -733,30 +733,6 @@ done:
+ 	return efi_status;
+ }
+ 
+-static void console_save_and_set_mode(SIMPLE_TEXT_OUTPUT_MODE * SavedMode)
+-{
+-	SIMPLE_TEXT_OUTPUT_INTERFACE *co = ST->ConOut;
+-
+-	if (!SavedMode) {
+-		console_print(L"Invalid parameter: SavedMode\n");
+-		return;
+-	}
+-
+-	CopyMem(SavedMode, co->Mode, sizeof(SIMPLE_TEXT_OUTPUT_MODE));
+-	co->EnableCursor(co, FALSE);
+-	co->SetAttribute(co, EFI_LIGHTGRAY | EFI_BACKGROUND_BLUE);
+-}
+-
+-static void console_restore_mode(SIMPLE_TEXT_OUTPUT_MODE * SavedMode)
+-{
+-	SIMPLE_TEXT_OUTPUT_INTERFACE *co = ST->ConOut;
+-
+-	co->EnableCursor(co, SavedMode->CursorVisible);
+-	co->SetCursorPosition(co, SavedMode->CursorColumn,
+-				SavedMode->CursorRow);
+-	co->SetAttribute(co, SavedMode->Attribute);
+-}
+-
+ static INTN reset_system()
+ {
+ 	gRT->ResetSystem(EfiResetWarm, EFI_SUCCESS, 0, NULL);
+@@ -2032,18 +2008,13 @@ static BOOLEAN verify_pw(BOOLEAN * protected)
+ 
+ static int draw_countdown()
+ {
+-	SIMPLE_TEXT_OUTPUT_INTERFACE *co = ST->ConOut;
+-	SIMPLE_INPUT_INTERFACE *ci = ST->ConIn;
+-	SIMPLE_TEXT_OUTPUT_MODE SavedMode;
+-	EFI_INPUT_KEY key;
+-	EFI_STATUS efi_status;
+-	UINTN cols, rows;
+-	CHAR16 *title[2];
+ 	CHAR16 *message = L"Press any key to perform MOK management";
++	CHAR16 *title;
++	EFI_STATUS efi_status;
+ 	void *MokTimeout = NULL;
+ 	MokTimeoutvar *var;
+ 	UINTN MokTimeoutSize = 0;
+-	int timeout, wait = 10000000;
++	int timeout;
+ 
+ 	efi_status = get_variable(L"MokTimeout", (UINT8 **) &MokTimeout,
+ 				  &MokTimeoutSize, SHIM_LOCK_GUID);
+@@ -2059,41 +2030,11 @@ static int draw_countdown()
+ 	if (timeout < 0)
+ 		return timeout;
+ 
+-	console_save_and_set_mode(&SavedMode);
+-
+-	title[0] = PoolPrint(L"%s UEFI key management", SHIM_VENDOR);
+-	title[1] = NULL;
+-
+-	console_print_box_at(title, -1, 0, 0, -1, -1, 1, 1);
+-
+-	co->QueryMode(co, co->Mode->Mode, &cols, &rows);
+-
+-	console_print_at((cols - StrLen(message)) / 2, rows / 2, message);
+-	while (1) {
+-		if (timeout > 1)
+-			console_print_at(2, rows - 3,
+-					 L"Booting in %d seconds  ",
+-					 timeout);
+-		else if (timeout)
+-			console_print_at(2, rows - 3,
+-					 L"Booting in %d second   ",
+-					 timeout);
++	title = PoolPrint(L"%s UEFI key management", SHIM_VENDOR);
+ 
+-		efi_status = WaitForSingleEvent(ci->WaitForKey, wait);
+-		if (efi_status != EFI_TIMEOUT) {
+-			/* Clear the key in the queue */
+-			ci->ReadKeyStroke(ci, &key);
+-			break;
+-		}
++	timeout = console_countdown(title, message, timeout);
+ 
+-		timeout--;
+-		if (!timeout)
+-			break;
+-	}
+-
+-	FreePool(title[0]);
+-
+-	console_restore_mode(&SavedMode);
++	FreePool(title);
+ 
+ 	return timeout;
+ }
+diff --git a/include/console.h b/include/console.h
+index deb4fa3..bd75eb5 100644
+--- a/include/console.h
++++ b/include/console.h
+@@ -33,6 +33,12 @@ console_alertbox(CHAR16 **title);
+ void
+ console_notify(CHAR16 *string);
+ void
++console_save_and_set_mode(SIMPLE_TEXT_OUTPUT_MODE * SavedMode);
++void
++console_restore_mode(SIMPLE_TEXT_OUTPUT_MODE * SavedMode);
++int
++console_countdown(CHAR16* title, const CHAR16* message, int timeout);
++void
+ console_reset(void);
+ #define NOSEL 0x7fffffff
+ 
+diff --git a/lib/console.c b/lib/console.c
+index 3aee41c..2d421af 100644
+--- a/lib/console.c
++++ b/lib/console.c
+@@ -409,6 +409,82 @@ console_notify(CHAR16 *string)
+ 	console_alertbox(str_arr);
+ }
+ 
++void
++console_save_and_set_mode(SIMPLE_TEXT_OUTPUT_MODE * SavedMode)
++{
++	SIMPLE_TEXT_OUTPUT_INTERFACE *co = ST->ConOut;
++
++	if (!SavedMode) {
++		console_print(L"Invalid parameter: SavedMode\n");
++		return;
++	}
++
++	CopyMem(SavedMode, co->Mode, sizeof(SIMPLE_TEXT_OUTPUT_MODE));
++	co->EnableCursor(co, FALSE);
++	co->SetAttribute(co, EFI_LIGHTGRAY | EFI_BACKGROUND_BLUE);
++}
++
++void
++console_restore_mode(SIMPLE_TEXT_OUTPUT_MODE * SavedMode)
++{
++	SIMPLE_TEXT_OUTPUT_INTERFACE *co = ST->ConOut;
++
++	co->EnableCursor(co, SavedMode->CursorVisible);
++	co->SetCursorPosition(co, SavedMode->CursorColumn,
++				SavedMode->CursorRow);
++	co->SetAttribute(co, SavedMode->Attribute);
++}
++
++int
++console_countdown(CHAR16* title, const CHAR16* message,
++		  int timeout)
++{
++	SIMPLE_TEXT_OUTPUT_INTERFACE *co = ST->ConOut;
++	SIMPLE_INPUT_INTERFACE *ci = ST->ConIn;
++	SIMPLE_TEXT_OUTPUT_MODE SavedMode;
++	EFI_INPUT_KEY key;
++	EFI_STATUS efi_status;
++	UINTN cols, rows;
++	CHAR16 *titles[2];
++	int wait = 10000000;
++
++	console_save_and_set_mode(&SavedMode);
++
++	titles[0] = title;
++	titles[1] = NULL;
++
++	console_print_box_at(titles, -1, 0, 0, -1, -1, 1, 1);
++
++	co->QueryMode(co, co->Mode->Mode, &cols, &rows);
++
++	console_print_at((cols - StrLen(message)) / 2, rows / 2, message);
++	while (1) {
++		if (timeout > 1)
++			console_print_at(2, rows - 3,
++					 L"Booting in %d seconds  ",
++					 timeout);
++		else if (timeout)
++			console_print_at(2, rows - 3,
++					 L"Booting in %d second   ",
++					 timeout);
++
++		efi_status = WaitForSingleEvent(ci->WaitForKey, wait);
++		if (efi_status != EFI_TIMEOUT) {
++			/* Clear the key in the queue */
++			ci->ReadKeyStroke(ci, &key);
++			break;
++		}
++
++		timeout--;
++		if (!timeout)
++			break;
++	}
++
++	console_restore_mode(&SavedMode);
++
++	return timeout;
++}
++
+ #define ARRAY_SIZE(a) (sizeof (a) / sizeof ((a)[0]))
+ 
+ /* Copy of gnu-efi-3.0 with the added secure boot strings */
+-- 
+2.19.2
+
+
+From 9544a6dc75343059184d9dfb0cfdc4eda880afd0 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 23 May 2018 18:13:05 +0800
+Subject: [PATCH 2/2] fallback: show a countdown menu before reset
+
+Some machines with the faulty firmware may keep booting the default boot
+path instead of the boot option we create. To avoid the infinite reset
+loop, this commit introduce a countdown screen before fallback resets the
+system, so the user can interrupt the system reset and choose to boot
+the restored boot option. The "Always continue boot" option creates a
+BS+RT+NV variable, FB_NO_REBOOT, to make fallback boot the first boot
+option afterward without asking. The user can revert the behavior by
+removing the variable.
+
+https://github.com/rhboot/shim/issues/128
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ fallback.c | 81 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 81 insertions(+)
+
+diff --git a/fallback.c b/fallback.c
+index 01f2ae4..33f104f 100644
+--- a/fallback.c
++++ b/fallback.c
+@@ -12,6 +12,8 @@
+ 
+ #include "shim.h"
+ 
++#define NO_REBOOT L"FB_NO_REBOOT"
++
+ EFI_LOADED_IMAGE *this_image = NULL;
+ 
+ int
+@@ -973,6 +975,65 @@ try_start_first_option(EFI_HANDLE parent_image_handle)
+ 	return efi_status;
+ }
+ 
++static UINT32
++get_fallback_no_reboot(void)
++{
++	EFI_STATUS efi_status;
++	UINT32 no_reboot;
++	UINTN size = sizeof(UINT32);
++
++	efi_status = gRT->GetVariable(NO_REBOOT, &SHIM_LOCK_GUID,
++				      NULL, &size, &no_reboot);
++	if (!EFI_ERROR(efi_status)) {
++		return no_reboot;
++	}
++	return 0;
++}
++
++static EFI_STATUS
++set_fallback_no_reboot(void)
++{
++	EFI_STATUS efi_status;
++	UINT32 no_reboot = 1;
++	efi_status = gRT->SetVariable(NO_REBOOT, &SHIM_LOCK_GUID,
++				      EFI_VARIABLE_NON_VOLATILE
++				      | EFI_VARIABLE_BOOTSERVICE_ACCESS
++				      | EFI_VARIABLE_RUNTIME_ACCESS,
++				      sizeof(UINT32), &no_reboot);
++	return efi_status;
++}
++
++static int
++draw_countdown(void)
++{
++	CHAR16 *title = L"Boot Option Restoration";
++	CHAR16 *message = L"Press any key to stop system reset";
++	int timeout;
++
++	timeout = console_countdown(title, message, 5);
++
++	return timeout;
++}
++
++static int
++get_user_choice(void)
++{
++	int choice;
++	CHAR16 *title[] = {L"Boot Option Restored", NULL};
++	CHAR16 *menu_strings[] = {
++		L"Reset system",
++		L"Continue boot",
++		L"Always continue boot",
++		NULL
++	};
++
++	do {
++		choice = console_select(title, menu_strings, 0);
++	} while (choice < 0 || choice > 2);
++
++	return choice;
++}
++
+ extern EFI_STATUS
+ efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *systab);
+ 
+@@ -1039,6 +1100,26 @@ efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
+ 		VerbosePrint(L"tpm not present, starting the first image\n");
+ 		try_start_first_option(image);
+ 	} else {
++		if (get_fallback_no_reboot() == 1) {
++			VerbosePrint(L"NO_REBOOT is set, starting the first image\n");
++			try_start_first_option(image);
++		}
++
++		int timeout = draw_countdown();
++		if (timeout == 0)
++			goto reset;
++
++		int choice = get_user_choice();
++		if (choice == 0) {
++			goto reset;
++		} else if (choice == 2) {
++			efi_status = set_fallback_no_reboot();
++			if (EFI_ERROR(efi_status))
++				goto reset;
++		}
++		VerbosePrint(L"tpm present, starting the first image\n");
++		try_start_first_option(image);
++reset:
+ 		VerbosePrint(L"tpm present, resetting system\n");
+ 	}
+ 
+-- 
+2.19.2
+
