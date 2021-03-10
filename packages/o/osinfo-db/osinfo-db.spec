@@ -1,7 +1,7 @@
 #
 # spec file for package osinfo-db
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20201218
+Version:        20210215
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1+ and GPL-2.0+
@@ -33,6 +33,7 @@ Patch26:        SLE-add-info-about-UEFI-support.patch
 Patch27:        fix-tumbleweed-order.patch
 Patch28:        add-leap15.3-support.patch
 Patch29:        add-sle15sp3-support.patch
+Patch30:        fix-autoyast-validation.patch
 
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
@@ -52,6 +53,7 @@ provisioning of new virtual machines
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
+%patch30 -p1
 
 %build
 cd %{_builddir}

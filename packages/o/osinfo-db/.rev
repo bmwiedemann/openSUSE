@@ -360,4 +360,12 @@
     <comment>Update database to version 20201218</comment>
     <requestid>863176</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ce463af53c60b2022b8f926060c0aa6f</srcmd5>
+    <version>20210215</version>
+    <time>1615362375</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20210215</comment>
+    <requestid>876290</requestid>
+  </revision>
 </revisionlist>

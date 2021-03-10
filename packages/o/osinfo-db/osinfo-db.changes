@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  2 10:03:56 MST 2021 - carnold@suse.com
+
+- Update to database version 20210215
+  osinfo-db-20210215.tar.xz
+
+-------------------------------------------------------------------
+Tue Mar  2 15:45:40 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix AutoYaST profiles to pass the validation during installation
+  (bsc#1182144).
+  fix-autoyast-validation.patch
+
+-------------------------------------------------------------------
 Tue Jan 12 14:41:38 MST 2021 - carnold@suse.com
 
 - Update database to version 20201218
