@@ -1,0 +1,27 @@
+Index: vim-8.2.2411/runtime/defaults.vim
+===================================================================
+--- vim-8.2.2411.orig/runtime/defaults.vim
++++ vim-8.2.2411/runtime/defaults.vim
+@@ -77,13 +77,15 @@ inoremap <C-U> <C-G>u<C-U>
+ " can position the cursor, Visually select and scroll with the mouse.
+ " Only xterm can grab the mouse events when using the shift key, for other
+ " terminals use ":", select text and press Esc.
+-if has('mouse')
+-  if &term =~ 'xterm'
+-    set mouse=a
+-  else
+-    set mouse=nvi
+-  endif
+-endif
++" disabled in (open)SUSE to make copy&pase work as most people
++" except it boo#1079185
++"if has('mouse')
++"  if &term =~ 'xterm'
++"    set mouse=a
++"  else
++"    set mouse=nvi
++"  endif
++"endif
+ 
+ " Only do this part when Vim was compiled with the +eval feature.
+ if 1
