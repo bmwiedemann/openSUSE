@@ -37,4 +37,12 @@ Switched to tar_scm to pass auto review.</comment>
   * Display the new release notice only once per 24 hours</comment>
     <requestid>856060</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f1b7e8fdeec408547b1c7f02d4b37534</srcmd5>
+    <version>1.7.0</version>
+    <time>1615363063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878081</requestid>
+  </revision>
 </revisionlist>
