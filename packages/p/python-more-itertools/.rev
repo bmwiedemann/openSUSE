@@ -256,4 +256,26 @@
   * Python 3.9 is officially supported.</comment>
     <requestid>856975</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2cef7b8fb6f92cd81b8858835cabbcad</srcmd5>
+    <version>8.7.0</version>
+    <time>1615362578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.7.0:
+  * New functions
+    * :func:`convolve`
+    * :func:`product_index`, :func:`combination_index`, and :func:`permutation_index`
+    * :func:`value_chain`
+  * Changes to existing functions
+    * :func:`distinct_combinations` now uses a non-recursive algorithm
+    * :func:`pad_none` is now the preferred name for :func:`padnone`, though the latter remains available.
+    * :func:`pairwise` will now use the Python standard library implementation on Python 3.10+
+    * :func:`sort_together` now accepts a ``key`` argument
+    * :func:`seekable` now has a ``peek`` method, and can indicate whether the iterator it's wrapping is exhausted
+    * :func:`time_limited` can now indicate whether its iterator has expired
+    * The implementation of :func:`unique_everseen` was improved
+  * Other changes:
+    * Various documentation updates</comment>
+    <requestid>876826</requestid>
+  </revision>
 </revisionlist>

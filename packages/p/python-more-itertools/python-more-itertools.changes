@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar  4 21:03:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.7.0:
+  * New functions
+    * :func:`convolve`
+    * :func:`product_index`, :func:`combination_index`, and :func:`permutation_index`
+    * :func:`value_chain`
+  * Changes to existing functions
+    * :func:`distinct_combinations` now uses a non-recursive algorithm
+    * :func:`pad_none` is now the preferred name for :func:`padnone`, though the latter remains available.
+    * :func:`pairwise` will now use the Python standard library implementation on Python 3.10+
+    * :func:`sort_together` now accepts a ``key`` argument
+    * :func:`seekable` now has a ``peek`` method, and can indicate whether the iterator it's wrapping is exhausted
+    * :func:`time_limited` can now indicate whether its iterator has expired
+    * The implementation of :func:`unique_everseen` was improved
+  * Other changes:
+    * Various documentation updates
+
+-------------------------------------------------------------------
 Sat Dec 19 10:51:38 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.6.0:
