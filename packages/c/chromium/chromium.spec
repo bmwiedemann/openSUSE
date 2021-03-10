@@ -49,7 +49,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        88.0.4324.182
+Version:        89.0.4389.72
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -72,8 +72,6 @@ Patch3:         fix_building_widevinecdm_with_chromium.patch
 Patch4:         chromium-buildname.patch
 Patch5:         chromium-system-libusb.patch
 Patch6:         gcc-enable-lto.patch
-Patch7:         chromium-fix-char_traits.patch
-Patch9:         build-with-pipewire-0.3.patch
 # Do not use unrar code, it is non-free
 Patch10:        chromium-norar.patch
 # revert location on old GCC on 15.1, 15.2 gets it right tho
@@ -83,7 +81,6 @@ Patch13:        chromium-disable-parallel-gold.patch
 Patch14:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch50:        chromium-78-protobuf-RepeatedPtrField-export.patch
-Patch51:        chromium-79-gcc-protobuf-alignas.patch
 Patch52:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
 Patch53:        chromium-84-blink-disable-clang-format.patch
 Patch54:        chromium-88-compiler.patch
@@ -93,21 +90,18 @@ Patch57:        chromium-86-nearby-explicit.patch
 Patch58:        chromium-86-nearby-include.patch
 Patch60:        chromium-86-f_seal.patch
 Patch61:        chromium-gcc11.patch
-Patch62:        chromium-87-CursorFactory-include.patch
-Patch63:        chromium-87-openscreen-include.patch
-Patch65:        chromium-88-vaapi-attribute.patch
-Patch66:        chromium-88-ozone-deps.patch
-Patch67:        chromium-87-webcodecs-deps.patch
 Patch68:        chromium-lp152-missing-includes.patch
-Patch71:        chromium-88-ityp-include.patch
-Patch72:        chromium-88-AXTreeFormatter-include.patch
-Patch73:        chromium-88-BookmarkModelObserver-include.patch
-Patch74:        chromium-88-federated_learning-include.patch
-Patch75:        chromium-88-ideographicSpaceCharacter.patch
-Patch76:        chromium-88-StringPool-include.patch
-Patch77:        chromium-88-dawn-static.patch
-Patch78:        chromium-88-CompositorFrameReporter-dcheck.patch
 Patch79:        chromium-glibc-2.33.patch
+Patch80:        chromium-89-quiche-private.patch
+Patch81:        chromium-89-quiche-dcheck.patch
+Patch82:        chromium-89-skia-CropRect.patch
+Patch83:        chromium-89-dawn-include.patch
+Patch84:        chromium-89-webcodecs-deps.patch
+Patch85:        chromium-89-EnumTable-crash.patch
+Patch86:        chromium-shim_headers.patch
+Patch87:        chromium-89-missing-cstring-header.patch
+Patch88:        chromium-89-AXTreeSerializer-include.patch
+Patch89:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -189,6 +183,7 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
@@ -291,6 +286,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
 
+%build
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
@@ -325,13 +321,6 @@ keeplibs=(
     third_party/angle/src/third_party/libXNVCtrl
     third_party/angle/src/third_party/trace_event
     third_party/angle/src/third_party/volk
-    third_party/angle/third_party/glslang
-    third_party/angle/third_party/spirv-headers
-    third_party/angle/third_party/spirv-tools
-    third_party/angle/third_party/vulkan-headers
-    third_party/angle/third_party/vulkan-loader
-    third_party/angle/third_party/vulkan-tools
-    third_party/angle/third_party/vulkan-validation-layers
     third_party/apple_apsl
     third_party/axe-core
     third_party/blink
@@ -388,7 +377,6 @@ keeplibs=(
     third_party/fusejs/dist
     third_party/libgifcodec
     third_party/libxcb-keysyms/keysyms
-    third_party/glslang
     third_party/google_input_tools
     third_party/google_input_tools/third_party/closure_library
     third_party/google_input_tools/third_party/closure_library/third_party/closure
@@ -414,9 +402,11 @@ keeplibs=(
     third_party/libsrtp
     third_party/libsync
     third_party/libudev
+    third_party/liburlpattern
     third_party/libwebm
     third_party/libx11/src
     third_party/libxml/chromium
+    third_party/libva_protected_content
     third_party/libyuv
     third_party/lottie
     third_party/lss
@@ -449,6 +439,7 @@ keeplibs=(
     third_party/pdfium/third_party/libtiff
     third_party/pdfium/third_party/skia_shared
     third_party/perfetto
+    third_party/perfetto/protos/third_party/chromium
     third_party/pffft
     third_party/ply
     third_party/polymer
@@ -462,7 +453,6 @@ keeplibs=(
     third_party/s2cellid
     third_party/schema_org
     third_party/securemessage
-    third_party/shaka-player
     third_party/shell-encryption
     third_party/simplejson
     third_party/skia
@@ -471,8 +461,6 @@ keeplibs=(
     third_party/skia/include/third_party/vulkan/
     third_party/skia/include/third_party/skcms/
     third_party/smhasher
-    third_party/spirv-headers
-    third_party/SPIRV-Tools
     third_party/sqlite
     third_party/swiftshader
     third_party/swiftshader/third_party/astc-encoder
@@ -528,14 +516,12 @@ keeplibs+=(
 %endif
 # needed due to bugs in GN
 keeplibs+=(
-    third_party/adobe
     third_party/speech-dispatcher
     third_party/usb_ids
     third_party/xdg-utils
 )
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
-%build
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 %if %{with clang}
@@ -564,10 +550,10 @@ export CXX=g++
 export AR=ar
 export NM=nm
 %if 0%{?suse_version} <= 1500
+mkdir -p "$HOME/bin/"
 export CC=gcc-10
 export CXX=g++-10
 # some still call gcc/g++
-mkdir -p "$HOME/bin/"
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
 ln -sfn %{_bindir}/$CXX $HOME/bin/g++
 export PATH="$HOME/bin/:$PATH"
@@ -662,7 +648,7 @@ myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
-myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
+myconf_gn+=" rtc_pipewire_version=\"0.3\""
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"

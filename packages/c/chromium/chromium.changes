@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Mar  5 11:44:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 89.0.4389.72 bsc#1182960
+  - CVE-2021-21159: Heap buffer overflow in TabStrip.
+  - CVE-2021-21160: Heap buffer overflow in WebAudio.
+  - CVE-2021-21161: Heap buffer overflow in TabStrip.
+  - CVE-2021-21162: Use after free in WebRTC.
+  - CVE-2021-21163: Insufficient data validation in Reader Mode.
+  - CVE-2021-21164: Insufficient data validation in Chrome for iOS.
+  - CVE-2021-21165: Object lifecycle issue in audio.
+  - CVE-2021-21166: Object lifecycle issue in audio.
+  - CVE-2021-21167: Use after free in bookmarks.
+  - CVE-2021-21168: Insufficient policy enforcement in appcache.
+  - CVE-2021-21169: Out of bounds memory access in V8.
+  - CVE-2021-21170: Incorrect security UI in Loader.
+  - CVE-2021-21171: Incorrect security UI in TabStrip and Navigation.
+  - CVE-2021-21172: Insufficient policy enforcement in File System API.
+  - CVE-2021-21173: Side-channel information leakage in Network Internals.
+  - CVE-2021-21174: Inappropriate implementation in Referrer.
+  - CVE-2021-21175: Inappropriate implementation in Site isolation.
+  - CVE-2021-21176: Inappropriate implementation in full screen mode.
+  - CVE-2021-21177: Insufficient policy enforcement in Autofill.
+  - CVE-2021-21178: Inappropriate implementation in Compositing.
+  - CVE-2021-21179: Use after free in Network Internals.
+  - CVE-2021-21180: Use after free in tab search.
+  - CVE-2020-27844: Heap buffer overflow in OpenJPEG.
+  - CVE-2021-21181: Side-channel information leakage in autofill.
+  - CVE-2021-21182: Insufficient policy enforcement in navigations.
+  - CVE-2021-21183: Inappropriate implementation in performance APIs.
+  - CVE-2021-21184: Inappropriate implementation in performance APIs.
+  - CVE-2021-21185: Insufficient policy enforcement in extensions.
+  - CVE-2021-21186: Insufficient policy enforcement in QR scanning.
+  - CVE-2021-21187: Insufficient data validation in URL formatting.
+  - CVE-2021-21188: Use after free in Blink.
+  - CVE-2021-21189: Insufficient policy enforcement in payments.
+  - CVE-2021-21190: Uninitialized Use in PDFium.
+- Added patches:
+  - chromium-89-quiche-private.patch
+  - chromium-89-quiche-dcheck.patch
+  - chromium-89-skia-CropRect.patch
+  - chromium-89-dawn-include.patch
+  - chromium-89-webcodecs-deps.patch
+  - chromium-89-EnumTable-crash.patch
+  - chromium-shim_headers.patch
+  - chromium-89-missing-cstring-header.patch
+  - chromium-89-AXTreeSerializer-include.patch
+  - chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
+    (bsc#1182775)
+- Removed patches:
+  - chromium-fix-char_traits.patch
+  - build-with-pipewire-0.3.patch
+  - chromium-79-gcc-protobuf-alignas.patch
+  - chromium-87-CursorFactory-include.patch
+  - chromium-87-openscreen-include.patch
+  - chromium-88-vaapi-attribute.patch
+  - chromium-88-ozone-deps.patch
+  - chromium-87-webcodecs-deps.patch
+  - chromium-88-ityp-include.patch
+  - chromium-88-AXTreeFormatter-include.patch
+  - chromium-88-BookmarkModelObserver-include.patch
+  - chromium-88-federated_learning-include.patch
+  - chromium-88-ideographicSpaceCharacter.patch
+  - chromium-88-StringPool-include.patch
+  - chromium-88-dawn-static.patch
+  - chromium-88-CompositorFrameReporter-dcheck.patch
+
+-------------------------------------------------------------------
 Wed Feb 17 11:41:49 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 88.0.4324.182 bsc#1182358

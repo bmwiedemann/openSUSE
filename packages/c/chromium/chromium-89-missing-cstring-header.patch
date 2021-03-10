@@ -1,0 +1,34 @@
+diff -up chromium-89.0.4389.72/third_party/webrtc/audio/utility/channel_mixer.cc.missing-cstring chromium-89.0.4389.72/third_party/webrtc/audio/utility/channel_mixer.cc
+--- chromium-89.0.4389.72/third_party/webrtc/audio/utility/channel_mixer.cc.missing-cstring	2021-03-02 12:48:16.000000000 -0500
++++ chromium-89.0.4389.72/third_party/webrtc/audio/utility/channel_mixer.cc	2021-03-04 13:31:42.894817353 -0500
+@@ -8,6 +8,8 @@
+  *  be found in the AUTHORS file in the root of the source tree.
+  */
+ 
++#include <cstring>
++
+ #include "audio/utility/channel_mixer.h"
+ 
+ #include "audio/utility/channel_mixing_matrix.h"
+diff -up chromium-89.0.4389.72/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc.missing-cstring chromium-89.0.4389.72/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+--- chromium-89.0.4389.72/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc.missing-cstring	2021-03-04 13:31:42.895817359 -0500
++++ chromium-89.0.4389.72/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc	2021-03-04 13:45:27.795162431 -0500
+@@ -23,6 +23,7 @@
+ #include <sys/mman.h>
+ #include <sys/syscall.h>
+ 
++#include <cstring>
+ #include <memory>
+ #include <utility>
+ 
+diff -up chromium-89.0.4389.72/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc.missing-cstring chromium-89.0.4389.72/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc
+--- chromium-89.0.4389.72/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc.missing-cstring	2021-03-02 12:48:17.000000000 -0500
++++ chromium-89.0.4389.72/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc	2021-03-04 13:31:42.895817359 -0500
+@@ -10,6 +10,7 @@
+ 
+ #include "modules/video_coding/utility/ivf_file_reader.h"
+ 
++#include <cstring>
+ #include <string>
+ #include <vector>
+ 
