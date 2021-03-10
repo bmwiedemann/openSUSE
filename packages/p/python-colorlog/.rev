@@ -57,4 +57,13 @@
   * Add setuptools to setup_requires.</comment>
     <requestid>834776</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6525a25e7d449b64461ed114d327a518</srcmd5>
+    <version>4.7.2</version>
+    <time>1615363015</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.2:
+  * no upstream changes available</comment>
+    <requestid>877830</requestid>
+  </revision>
 </revisionlist>
