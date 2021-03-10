@@ -1,6 +1,6 @@
 Name:                asn1-encoding
 Version:             0.9.6
-x-revision: 1
+x-revision: 2
 Synopsis:            ASN1 data reader and writer in RAW, BER and DER forms
 Description:
     ASN1 data reader and writer in raw form with supports for high level forms of ASN1 (BER, and DER).
@@ -29,7 +29,7 @@ Library
                      Data.ASN1.Serialize
                      Data.ASN1.Get
   Build-Depends:     base >= 4.7 && < 5
-                   , bytestring < 0.11
+                   , bytestring
                    , hourglass >= 0.2.6
                    , asn1-types >= 0.3.0 && < 0.4
   ghc-options:       -Wall -fwarn-tabs
