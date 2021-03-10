@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-optics-extra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name optics-extra
 Name:           ghc-%{pkg_name}
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Extra utilities and instances for optics-core
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-indexed-profunctors-devel
+BuildRequires:  ghc-indexed-traversable-instances-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-optics-core-devel
 BuildRequires:  ghc-rpm-macros
