@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vault
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name vault
 Name:           ghc-%{pkg_name}
-Version:        0.3.1.4
+Version:        0.3.1.5
 Release:        0
 Summary:        A persistent store for values of arbitrary types
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-unordered-containers-devel
 ExcludeArch:    %{ix86}
 
