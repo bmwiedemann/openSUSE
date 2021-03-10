@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Feb 26 12:07:30 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Change Version tag from 0.14rc1 to 0.14~rc1
+  * Rename dwz-0.14rc1.tar.xz to dwz-0.14~rc1.tar.xz
+
+-------------------------------------------------------------------
+Fri Feb 26 09:31:00 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix testsuite build fail on riscv64:
+  * dwz-testsuite-fix-pr25109.sh-on-riscv64.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 08:38:53 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Update reported dwz version
+  * dwz-update-version.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 07:52:22 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- DWZ 0.14-rc1 (master branch commit 0d391bf) update:
+  * Dropped patches:
+    - dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
+    - dwz-fix-die-no-multifile-propagation.patch
+    - dwz-fix-refd-NULL-assertion-in-write_die.patch
+    - dwz-fix-reference-from-pu-to-cu.patch
+    - dwz-fix-segfault-in-die_cu.patch
+    - dwz-testsuite-adjust-pr24468-sh-test-case-for-readelf-with-follow-links.patch
+    - dwz-testsuite-detect-when-devel-ignore-size-sh-is-unsupported.patch
+    - dwz-testsuite-fix-partial-unit-grepping-in-pr24468-sh.patch
+    - dwz-update-version-copyright-message.patch
+  * Added patches:
+    - dwz-add-assert-checking-that-cu-is-not-referenced-from-pu.patch
+    - dwz-call-reorder_dups-asap.patch
+    - dwz-document-experimental-status-of-odr.patch
+    - dwz-enable-odr-by-default.patch
+    - dwz-fix-reference-of-pu-to-cu-for-odr.patch
+    - dwz-precompute-partitions.patch
+    - dwz-update-suse-copyright-years.patch
+  * Added BuildRequires gcc-c++
+-------------------------------------------------------------------
 Thu Jan  7 10:21:31 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Fix pr24468.sh test-case with newer readelf.

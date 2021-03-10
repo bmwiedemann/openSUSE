@@ -1,0 +1,69 @@
+Fix reference of PU to CU for odr
+
+When compiling dwz with the assert listed in the commit message for
+"Call reorder_dups ASAP", and using test-case cc1.dwz-processed like so, we
+run into:
+...
+$ dwz cc1.dwz-processed -o 1 -lnone --odr
+dwz: dwz.c:12567: write_die: Assertion \
+  `IMPLIES (cu->cu_kind == CU_PU, die_cu (refd)->cu_kind == CU_PU)' failed.
+Aborted (core dumped)
+...
+
+The assert is related to this duplicate chain:
+...
+ 28dd83f O b500801d 621b6872  pointer_type \
+   (type: 28dd72f die_struct structure_type)
+ 2903769 O b500801d 621b6872  pointer_type \
+   (type: 28dd72f die_struct structure_type)
+...
+which contains two DIEs that are both in the same CU:
+...
+ <0><28d281f>: Abbrev Number: 200 (DW_TAG_compile_unit)
+ ...
+ <1><28dd72f>: Abbrev Number: 35 (DW_TAG_structure_type)
+    <28dd730>   DW_AT_name        : (indirect string, offset: 0x1b2ca6): die_struct
+    <28dd734>   DW_AT_byte_size   : 80
+    <28dd735>   DW_AT_decl_file   : 87
+    <28dd736>   DW_AT_decl_line   : 3069
+    <28dd738>   DW_AT_decl_column : 63
+    <28dd739>   DW_AT_sibling     : <0x28dd83b>
+ <1><28dd83f>: Abbrev Number: 9 (DW_TAG_pointer_type)
+    <28dd840>   DW_AT_byte_size   : 8
+    <28dd841>   DW_AT_type        : <0x28dd72f>
+ ...
+ <1><2903769>: Abbrev Number: 9 (DW_TAG_pointer_type)
+    <290376a>   DW_AT_byte_size   : 8
+    <290376b>   DW_AT_type        : <0x28dd72f>
+ ...
+ <0><2911617>: Abbrev Number: 177 (DW_TAG_compile_unit)
+...
+
+The dup chain is forced to a partial unit, but the die_struct DIE is not,
+because it's not part of a duplicate chain, and it's not marked as a
+singleton.  Fix this by marking the die_struct DIE as singleton.
+
+2021-02-25  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/27464
+	* dwz.c (partition_dups): Call mark_singletons if
+	cnt_ref_cus (die) == 1.
+
+---
+ dwz.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/dwz.c b/dwz.c
+index 9172011..89cf8d1 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -8417,6 +8417,9 @@ partition_dups (void)
+ 	      if (s)
+ 		mark_singletons (die_cu (s), s, s, &ob2);
+ 	    }
++	  else if (cnt_ref_cus (die) == 1)
++	    mark_singletons (die_cu (die), die, die, &ob2);
++
+ 	  arr = (dw_die_ref *) obstack_base (&ob2);
+ 	}
+ 

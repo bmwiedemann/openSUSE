@@ -1,5 +1,5 @@
 #
-# spec file for package dwz
+# spec file for package dwz%{name_suffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -32,7 +32,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if %{build_testsuite}
-%define debug_package %{nil} 
+%define debug_package %{nil}
 %endif
 
 %if %{build_main}
@@ -42,7 +42,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           dwz%{name_suffix}
-Version:        0.13
+Version:        0.14~rc1
 Release:        0
 %if %{build_main}
 Summary:        DWARF optimization and duplicate removal tool
@@ -63,6 +63,7 @@ BuildRequires:  xz
 %if %{build_testsuite}
 BuildRequires:  dejagnu
 BuildRequires:  elfutils
+BuildRequires:  gcc-c++
 BuildRequires:  gdb
 %ifnarch riscv64
 BuildRequires:  binutils-gold
@@ -79,15 +80,15 @@ NoSource:       0
 
 Source1:        dwz-rpmlintrc
 
-Patch1:         dwz-update-version-copyright-message.patch
-Patch2:         dwz-fix-die-no-multifile-propagation.patch
-Patch3:         dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
-Patch4:         dwz-fix-refd-NULL-assertion-in-write_die.patch
-Patch5:         dwz-fix-reference-from-pu-to-cu.patch
-Patch6:         dwz-fix-segfault-in-die_cu.patch
-Patch7:         dwz-testsuite-detect-when-devel-ignore-size-sh-is-unsupported.patch
-Patch8:         dwz-testsuite-adjust-pr24468-sh-test-case-for-readelf-with-follow-links.patch
-Patch9:         dwz-testsuite-fix-partial-unit-grepping-in-pr24468-sh.patch
+Patch1:         dwz-precompute-partitions.patch
+Patch2:         dwz-call-reorder_dups-asap.patch
+Patch3:         dwz-fix-reference-of-pu-to-cu-for-odr.patch
+Patch4:         dwz-add-assert-checking-that-cu-is-not-referenced-from-pu.patch
+Patch5:         dwz-enable-odr-by-default.patch
+Patch6:         dwz-document-experimental-status-of-odr.patch
+Patch7:         dwz-update-suse-copyright-years.patch
+Patch8:         dwz-update-version.patch
+Patch9:         dwz-testsuite-fix-pr25109.sh-on-riscv64.patch
 
 %if %{build_main}
 %description

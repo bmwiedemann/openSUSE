@@ -1,0 +1,13 @@
+Update VERSION
+
+---
+ VERSION | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/VERSION b/VERSION
+index f304084..18657cd 100644
+--- a/VERSION
++++ b/VERSION
+@@ -1 +1 @@
+-0.13
++0.14-rc1

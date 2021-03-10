@@ -1,0 +1,44 @@
+Enable odr by default
+
+This reverts commit d49096d "[odr] Disable --odr by default".
+
+---
+ dwz.1 | 2 +-
+ dwz.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dwz.1 b/dwz.1
+index e9117b2..32df953 100644
+--- a/dwz.1
++++ b/dwz.1
+@@ -117,7 +117,7 @@ This optimization causes struct/union/class DIEs with the same name to be
+ considered equal.  This has the effect that DIEs referring to distinct DIEs
+ representing the same type (like f.i. pointer type DIEs) are considered equal,
+ and may be deduplicated.
+-Disabled by default.
++Enabled by default.
+ .TP
+ .B \-\-odr-mode=<basic|link>
+ Set the One-Definition-Rule optimization aggressiveness: basic or link.
+diff --git a/dwz.c b/dwz.c
+index 887bf24..3342aba 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -230,7 +230,7 @@ enum die_count_methods
+ };
+ static enum die_count_methods die_count_method = estimate;
+ 
+-int odr = 0;
++int odr = 1;
+ enum odr_mode { ODR_BASIC, ODR_LINK };
+ enum odr_mode odr_mode = ODR_LINK;
+ int odr_mode_parsed = 0;
+@@ -16283,7 +16283,7 @@ static struct option_help dwz_common_options_help[] =
+     "Don't optimize files larger than this limit." },
+   { NULL, "odr", NULL, NULL,
+     NULL },
+-  { NULL, "no-odr", NULL, "Disabled",
++  { NULL, "no-odr", NULL, "Enabled",
+     "Enable/disable one definition rule optimization." },
+   { NULL, "odr-mode", "<basic|link>", "link",
+     "Set aggressiveness level of one definition rule optimization." },
