@@ -18,19 +18,17 @@
 
 %global pkg_name charset
 Name:           ghc-%{pkg_name}
-Version:        0.3.7.1
+Version:        0.3.8
 Release:        0
 Summary:        Fast unicode character sets based on complemented PATRICIA tries
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-unordered-containers-devel
 ExcludeArch:    %{ix86}
 
@@ -49,7 +47,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -67,5 +64,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.markdown README.markdown
 
 %changelog

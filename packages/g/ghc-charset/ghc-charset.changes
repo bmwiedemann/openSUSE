@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 20 00:08:08 UTC 2021 - psimons@suse.com
+
+- Update charset to version 0.3.8.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Mon Jan 11 10:05:47 UTC 2021 - psimons@suse.com
 
 - Update charset to version 0.3.7.1 revision 2.
