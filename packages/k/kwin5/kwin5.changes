@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  2 15:01:36 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * DrmGpu: add gbm device nullptr check (kde#433145)
+  * wayland: Fix PrepareForSleep dbus connection
+  * ftrace: use quint32 for context counter
+  * 3rdparty/xcursor: build with _DEFAULT_SOURCE
+  * helper: wl-socket: fix build for musl
+  * wayland: Honor NoPlugin option
+  * wayland: Track already existing subsurfaces in SubSurfaceMonitor (kde#433511)
+
+-------------------------------------------------------------------
 Tue Feb 23 14:52:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.1
