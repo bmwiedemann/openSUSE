@@ -915,4 +915,12 @@
     <comment>20.12.2 release</comment>
     <requestid>869358</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>8baafae6658141f0c4459494b0e24967</srcmd5>
+    <version>20.12.3</version>
+    <time>1615362767</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877131</requestid>
+  </revision>
 </revisionlist>
