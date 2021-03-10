@@ -654,4 +654,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment></comment>
     <requestid>849646</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>94085245a4464ee669b178949bb97033</srcmd5>
+    <version>6.12</version>
+    <time>1615362413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877264</requestid>
+  </revision>
 </revisionlist>

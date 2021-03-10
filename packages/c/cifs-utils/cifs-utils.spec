@@ -1,7 +1,7 @@
 #
 # spec file for package cifs-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,12 @@
 #
 
 
+%if %{undefined _pamdir}
+  %define _pamdir /%{_lib}/security
+%endif
+
 Name:           cifs-utils
-Version:        6.9
+Version:        6.12
 Release:        0
 Summary:        Utilities for doing and managing mounts of the Linux CIFS filesystem
 License:        GPL-3.0-or-later
@@ -32,19 +36,7 @@ Source6:        cifs-utils.keyring
 Source100:      README.cifstab.migration
 Source1:        cifs.init
 
-Patch0:         0001-smbinfo-Improve-help-usage-and-add-h-option.patch
-Patch1:         0002-smbinfo-Add-bash-completion-support-for-smbinfo.patch
-Patch2:         0003-getcifsacl-Add-support-to-accept-more-paths.patch
-Patch3:         0004-getcifsacl-Fix-usage-message-to-include-multiple-fil.patch
-Patch4:         0005-smbinfo-add-GETCOMPRESSION-support.patch
-Patch5:         0006-getcifsacl-Add-support-for-R-recursive-option.patch
-Patch6:         0007-smbinfo-add-bash-completion-support-for-getcompressi.patch
-Patch7:         0008-mount.cifs.c-fix-memory-leaks-in-main-func.patch
-Patch8:         0009-Zero-fill-the-allocated-memory-for-new-struct-cifs_n.patch
-Patch9:         0010-Zero-fill-the-allocated-memory-for-a-new-ACE.patch
-Patch10:        0011-fix-doublefree.patch
-Patch11:        0012-mount.cifs-Fix-invalid-free.patch
-Patch12:        0013-CVE-2020-14342-mount.cifs-fix-shell-command-injectio.patch
+Patch1:         fix-sbin-install-error.patch
 
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
@@ -121,19 +113,14 @@ provide these credentials to the kernel automatically at login.
 %prep
 %setup -q
 cp -a ${RPM_SOURCE_DIR}/README.cifstab.migration .
-%patch0 -p1
+pyscripts="smb2-quota smbinfo"
+for i in $pyscripts; do
+    if [ -e $i ]; then
+        sed -i 's,^#!/usr/bin/env python.*$,#!/usr/bin/python3,' $i
+    fi
+done
+
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"
@@ -143,7 +130,7 @@ autoreconf -i
 export ROOTSBINDIR="%{_sbindir}"
 %endif
 %configure \
-	--with-pamdir=/%{_lib}/security
+	--with-pamdir=%{_pamdir}
 make %{?_smp_mflags}
 
 %install
@@ -180,8 +167,10 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %files
 %if 0%{?usrmerged}
 %{_sbindir}/mount.cifs
+%{_sbindir}/mount.smb3
 %else
 /sbin/mount.cifs
+/sbin/mount.smb3
 %endif
 %{_bindir}/getcifsacl
 %{_bindir}/setcifsacl
@@ -192,10 +181,13 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %{_bindir}/cifscreds
 %{_sbindir}/cifs.upcall
 %{_bindir}/smbinfo
+%{_bindir}/smb2-quota
 %{_mandir}/man1/cifscreds.1%{ext_man}
 %{_mandir}/man1/smbinfo.1%{ext_man}
+%{_mandir}/man1/smb2-quota.1%{ext_man}
 %{_mandir}/man8/cifs.upcall.8%{ext_man}
 %{_mandir}/man8/mount.cifs.8%{ext_man}
+%{_mandir}/man8/mount.smb3.8%{ext_man}
 %dir %{_sysconfdir}/request-key.d
 %config(noreplace) %{_sysconfdir}/request-key.d/cifs.idmap.conf
 %config(noreplace) %{_sysconfdir}/request-key.d/cifs.spnego.conf
@@ -218,7 +210,7 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %{_includedir}/cifsidmap.h
 
 %files -n pam_cifscreds
-/%{_lib}/security/pam_cifscreds.so
+/%{_pamdir}/pam_cifscreds.so
 %{_mandir}/man8/pam_cifscreds.8%{ext_man}
 
 %changelog

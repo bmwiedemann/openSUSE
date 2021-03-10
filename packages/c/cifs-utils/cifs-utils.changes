@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Feb 23 12:15:39 UTC 2021 - Aurelien Aptel <aaptel@suse.com>
+
+- Update to cifs-utils 6.12
+  * remove cifs-utils-6.11.tar.bz2
+  * remove cifs-utils-6.11.tar.bz2.asc
+  * add    cifs-utils-6.12.tar.bz2
+  * add    cifs-utils-6.12.tar.bz2.asc
+- Remove backports already in 6.12
+  * remove 0001-cifs-utils-Respect-DESTDIR-when-installing-smb3-stuf.patch
+  * remove 0002-cifs-utils-fix-probabilistic-compiling-error.patch
+- Refresh Makefile.am install fix  
+  * modify fix-sbin-install-error.patch
+- Hardcode python3 interpreter in shebang of smbinfo instead of
+  /usr/bin/env to let rpm runtime dependency detect it.
+
+-------------------------------------------------------------------
+Thu Jan 14 15:34:45 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- use new %_pamdir macro to avoid hardcoding pam module path
+
+-------------------------------------------------------------------
+Fri Dec 11 18:00:50 UTC 2020 - Aurelien Aptel <aaptel@suse.com>
+
+- Update to cifs-utils 6.11
+  * remove cifs-utils-6.9.tar.bz2
+  * remove cifs-utils-6.9.tar.bz2.asc
+  * add    cifs-utils-6.11.tar.bz2
+  * add    cifs-utils-6.11.tar.bz2.asc
+- Remove backports already in 6.11
+  * remove 0001-smbinfo-Improve-help-usage-and-add-h-option.patch
+  * remove 0002-smbinfo-Add-bash-completion-support-for-smbinfo.patch
+  * remove 0003-getcifsacl-Add-support-to-accept-more-paths.patch
+  * remove 0004-getcifsacl-Fix-usage-message-to-include-multiple-fil.patch
+  * remove 0005-smbinfo-add-GETCOMPRESSION-support.patch
+  * remove 0006-getcifsacl-Add-support-for-R-recursive-option.patch
+  * remove 0007-smbinfo-add-bash-completion-support-for-getcompressi.patch
+  * remove 0008-mount.cifs.c-fix-memory-leaks-in-main-func.patch
+  * remove 0009-Zero-fill-the-allocated-memory-for-new-struct-cifs_n.patch
+  * remove 0010-Zero-fill-the-allocated-memory-for-a-new-ACE.patch
+  * remove 0011-fix-doublefree.patch
+  * remove 0012-mount.cifs-Fix-invalid-free.patch
+  * remove 0013-CVE-2020-14342-mount.cifs-fix-shell-command-injectio.patch
+- Add fixes for autoconf and make install issues
+  * add    fix-sbin-install-error.patch
+  * add    0001-cifs-utils-Respect-DESTDIR-when-installing-smb3-stuf.patch
+  * add    0002-cifs-utils-fix-probabilistic-compiling-error.patch
+- Hardcode python3 interpreter in shebang of smb2-quota instead of
+  /usr/bin/env to let rpm runtime dependency detect it.
+
+-------------------------------------------------------------------
 Tue Nov 17 13:42:23 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
