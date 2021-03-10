@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-recursion-schemes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name recursion-schemes
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Representing common recursion patterns as higher-order functions
 License:        BSD-2-Clause
@@ -27,6 +27,7 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-orphans-devel
+BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-fix-devel

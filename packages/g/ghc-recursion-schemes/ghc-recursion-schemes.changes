@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 21 12:48:08 UTC 2021 - psimons@suse.com
+
+- Update recursion-schemes to version 5.2.2.
+  ## 5.2.2
+  * More Mendler-style recursion-schemes: `mpara`, `mzygo`, `mana`, `mapo`, and
+    `mfutu`.
+  * `makeBaseFunctor` no longer generates warnings when combined with
+    DerivingStrategies.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
