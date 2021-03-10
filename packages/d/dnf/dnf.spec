@@ -17,7 +17,7 @@
 #
 
 
-%global hawkey_version 0.57.0
+%global hawkey_version 0.59.0
 %global libcomps_version 0.1.8
 %global libmodulemd_version 2.9.3
 %global rpm_version 4.14.0
@@ -50,7 +50,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING

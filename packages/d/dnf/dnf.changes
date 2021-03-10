@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar  2 16:48:22 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.6.1
+  + Add unit test for fill_sack_from_repos_in_cache (rh#1865803)
+  + Add docs and examples for fill_sack_from_repos_in_cache (rh#1865803)
+  + [spec] remove python2 support
+  + Remove problematic language
+  + The noroot plugin no longer exists, remove mention
+  + Run tests for fill_sack_from_repos_in_cache in installroot (rh#1865803)
+  + expand history to full term size when output is redirected (rh#1852577) (rh#1852577, rh#1906970)
+  + [doc] Fix: "sslcacert" contains path to the file
+  + [doc] Added proxy ssl configuration options, increase libdnf require
+  + Set persistdir and substitutions for fill_sack_from_repos_in_cache tests (rh#1865803)
+  + Update documentation for module_obsoletes and module_stream_switch
+  + print additional information when verifying GPG key using DNS
+  + Remove hardcoded logfile permissions (rh#1910084)
+  + Enhanced detection of plugins removed in transaction (rh#1929163)
+
+-------------------------------------------------------------------
 Sat Feb 13 17:08:15 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Migrate DNF persistent state data to /usr/lib/sysimage/dnf
