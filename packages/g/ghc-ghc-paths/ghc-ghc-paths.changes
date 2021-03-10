@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 23 20:57:04 UTC 2021 - psimons@suse.com
+
+- Update ghc-paths to version 0.1.0.12 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
