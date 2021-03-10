@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 19 23:44:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.8:
+  * Added the .xn--4dbrk0ce (.ישראל, Israel) TLD server.
+  * Updated the .ie and .az TLD servers.
+  * Updated the list of new gTLDs. 
+
+-------------------------------------------------------------------
 Sun Oct 18 17:57:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.5.7:

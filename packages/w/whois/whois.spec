@@ -1,7 +1,7 @@
 #
 # spec file for package whois
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,23 @@
 
 
 Name:           whois
-Version:        5.5.7
+Version:        5.5.8
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://www.linux.it/~md/software/
-Source:         http://ftp.debian.org/debian/pool/main/w/whois/%{name}_%{version}.tar.xz
-Source2:        http://ftp.debian.org/debian/pool/main/w/whois/%{name}_%{version}.dsc#/%{name}.asc
+URL:            https://github.com/rfc1036/whois
+Source:         https://ftp.debian.org/debian/pool/main/w/whois/%{name}_%{version}.tar.xz
+Source2:        https://ftp.debian.org/debian/pool/main/w/whois/%{name}_%{version}.dsc#/%{name}.asc
 Source3:        https://db.debian.org/fetchkey.cgi?fingerprint=6791403B68AE2690517C42EAE6FFF1E38DC968B0#/%{name}.keyring
 Patch0:         whois-nobsdsource.patch
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libidn2)
 Provides:       ripe-whois-tools
+%{perl_requires}
 %if 0%{?suse_version} != 1310
 BuildRequires:  perl(autodie)
-%endif
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
-%{perl_requires}
 %endif
 %if 0%{?suse_version} <= 1140
 BuildRequires:  libxcrypt-devel
@@ -62,7 +58,7 @@ echo "`grep -A1 "Checksums-Sha256" %{SOURCE2} | grep %{name}_%{version}.tar.xz |
 %patch0 -p1
 
 %build
-make all mkpasswd HAVE_LIBIDN2=1 HAVE_ICONV=1 %{?_smp_mflags} \
+%make_build all mkpasswd HAVE_LIBIDN2=1 HAVE_ICONV=1 \
 %if 0%{?suse_version} <= 1140
 	HAVE_XCRYPT=1 \
 %else
