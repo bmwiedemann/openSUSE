@@ -1,7 +1,7 @@
 #
 # spec file for package libgexiv2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           libgexiv2
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        A GObject-based Exiv2 wrapper
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module gobject}
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  libtool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(exiv2) >= 0.26

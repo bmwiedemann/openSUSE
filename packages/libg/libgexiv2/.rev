@@ -318,4 +318,24 @@
     <comment>New stable release, not buildtested (forwarded request 808460 from iznogood)</comment>
     <requestid>811407</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ffd2dde80c42dd0252300b45b64388c1</srcmd5>
+    <version>0.12.2</version>
+    <time>1615362459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.2:
+  + Introduce gexiv2_metadata_get_exif_data
+  + Clarify License of C/C++ code
+  + Documentation clean-up
+  + Fix filename handling for windows
+  + Fix _get_iptc_tags returning duplicates
+  + Add _get_multiple() for all tag domains
+  + Introduce a set of new functions that will pass on Exiv2's
+    exception instead of silently dropping a warning to the console
+  + Fix XMP tags sort order
+  + Fix xmpText/altLang handling for _get_tag_multiple()
+  + Add XMP namespace lookup
+  + Windows compatibility fixes (forwarded request 874011 from iznogood)</comment>
+    <requestid>875389</requestid>
+  </revision>
 </revisionlist>
