@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Feb 23 20:57:41 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210223.
+  git-annex (8.20210223) upstream; urgency=medium
+
+    * annex.stalldetection can now be set to "true" to make git-annex
+      do automatic stall detection when it detects a remote is updating its
+      transfer progress consistently enough for stall detection to work.
+    * When annex.stalldetection is not enabled and a likely stall is
+      detected, display a suggestion to enable it.
+    * Commands can be added to git-annex, by installing a program in PATH
+      with a name starting with "git-annex-"
+    * Fix a reversion that made import of a tree from a special remote
+      result in a merge that deleted files that were not preferred content
+      of that special remote.
+    * Bugfix: fsck --from a ssh remote did not actually check that the
+      content on the remote is not corrupted.
+    * unannex, uninit: When an annexed file is modified, don't overwrite
+      the modified version with an older version from the annex.
+    * When adding files to an adjusted branch set up by --unlock-present,
+      add them unlocked, not locked.
+    * Fix an oddity in matching options and preferred content expressions
+      such as "foo (bar or baz)", which was incorrectly handled as if
+      it were "(foo or bar) and baz)" rather than the intended
+      "foo and (bar or baz)"
+    * Checksum as content is received from a remote git-annex repository,
+      rather than doing it in a second pass.
+    * Tahoe: Avoid verifying hash after download, since tahoe does sufficient
+      verification itself.
+    * unannex, uninit: Don't run git rm once per annexed file,
+      for a large speedup.
+    * When a git remote is configured with an absolute path, use that
+      path, rather than making it relative.
+    * get: Improve output when failing to get a file fails.
+    * Fix build on openbsd.
+      Thanks, James Cook for the patch.
+    * Include libkqueue.h file needed to build the assistant on BSDs.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 23 Feb 2021 14:40:14 -0400
+
+-------------------------------------------------------------------
 Thu Feb 18 08:39:26 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints
