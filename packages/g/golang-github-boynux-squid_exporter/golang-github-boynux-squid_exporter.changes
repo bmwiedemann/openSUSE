@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  8 10:56:22 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Build requires Go 1.15
+
+-------------------------------------------------------------------
 Thu Jun  6 09:25:17 UTC 2019 - jmc <jcavalheiro@suse.com>
 
 - Add %license macro for LICENSE file 
