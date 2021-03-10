@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 27 23:14:13 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add CVE-2021-27803.patch -- P2P provision discovery processing vulnerability
+  (bsc#1182805)
+
+-------------------------------------------------------------------
 Thu Feb  4 12:27:02 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add CVE-2021-0326.patch -- P2P group information processing vulnerability 

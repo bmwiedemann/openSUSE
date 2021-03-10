@@ -43,6 +43,7 @@ Patch6:         restore-old-dbus-interface.patch
 Patch7:         CVE-2019-16275.patch
 Patch8:         wpa_supplicant-p2p_iname_size.diff
 Patch9:         CVE-2021-0326.patch
+Patch10:        CVE-2021-27803.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
