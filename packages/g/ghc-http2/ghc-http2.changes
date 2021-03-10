@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 19 23:03:00 UTC 2021 - psimons@suse.com
+
+- Update http2 to version 2.0.6.
+  ## 2.0.6
+
+  * Dropping support of GHC 7.x
+
+  ## 2.0.5
+
+  * Passing the correct request
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
