@@ -1,7 +1,7 @@
 cabal-version:          1.12
 name:                   regex-posix
 version:                0.96.0.0
-x-revision: 1
+x-revision:             2
 
 build-type:             Simple
 license:                BSD3
@@ -23,9 +23,32 @@ extra-source-files:
   ChangeLog.md
   cbits/myfree.h
 
+tested-with:
+  -- Haskell CI:
+  GHC == 7.0.4
+  GHC == 7.2.2
+  GHC == 7.4.2
+  GHC == 7.6.3
+  GHC == 7.8.4
+  GHC == 7.10.3
+  GHC == 8.0.2
+  GHC == 8.2.2
+  GHC == 8.4.4
+  GHC == 8.6.5
+  GHC == 8.8.4
+  GHC == 8.10.3
+  -- manually (AA, 2021-02-17):
+  -- GHC == 8.10.4
+  -- GHC == 9.0.1
+
 source-repository head
   type:     git
   location: https://github.com/hvr/regex-posix.git
+
+source-repository this
+  type:     git
+  location: https://github.com/hvr/regex-base.git
+  tag:      v0.96.0.0-r2
 
 flag _regex-posix-clib
   manual: False
@@ -67,9 +90,9 @@ library
       FlexibleInstances
 
   build-depends: regex-base == 0.94.*
-               , base       >= 4.3 && < 4.15
+               , base       >= 4.3 && < 4.16
                , containers >= 0.4 && < 0.7
-               , bytestring >= 0.9 && < 0.11
+               , bytestring >= 0.9 && < 0.12
                , array      >= 0.3 && < 0.6
 
   if !impl(ghc >= 8)
