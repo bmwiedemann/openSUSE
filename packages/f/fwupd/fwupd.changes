@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 24 01:50:12 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 1.5.7:
+  New features:
+    * Add initial support for Bluez bluetooth devices
+    * Add more supported pixart devices
+    * Add support for the RTD21xx HDMI converter
+  Fixes  
+    * Convert MBR types to GPT GUIDs to help find the ESP
+    * Do not allow updating a synaptics-mst device with no customer ID
+    * Drop unused heap pages after startup has completed
+    * Ensure SBAT metadata is added correctly
+    * Move the plugin build logic to the plugins themselves
+    * Only allow verify-update for plugins that support CAN_VERIFY
+- Specify SBAT metadata for openSUSE/SLE (bsc#1182057)
+- Adjust the meson options
+  + plugin_uefi => plugin_uefi_capsule and plugin_uefi_pk
+  + plugin_synaptics => plugin_synaptics_mst and plugin_synaptics_rmi
+  + Disable Intel AMT plugin in non-x86 systems
+
+-------------------------------------------------------------------
 Thu Feb 18 14:04:13 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.6:

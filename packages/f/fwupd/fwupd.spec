@@ -30,7 +30,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -187,17 +187,36 @@ for file in $(grep -l %{_bindir}/env . -r); do
 done
 
 %build
+# Since Tumbleweed is still using openSUSE signkey, the SBAT distro id
+# should be opensuse.
+%if 0%{?sle_version}
+distro_id="sle"
+distro_name="SUSE Linux Enterprise"
+%else
+distro_id="opensuse"
+distro_name="The openSUSE project"
+%endif
+
 # Dell support requires direct SMBIOS access,
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
 %if %{without efi_fw_update}
   -Dplugin_nvme=false \
   -Dplugin_redfish=false \
-  -Dplugin_uefi=false \
+  -Dplugin_uefi_capsule=false \
+  -Dplugin_uefi_pk=false \
+%else
+  -Defi_sbat_distro_id="${distro_id}" \
+  -Defi_sbat_distro_summary="${distro_name}" \
+  -Defi_sbat_distro_pkgname="%{name}" \
+  -Defi_sbat_distro_version="%{version}" \
+  -Defi_sbat_distro_url="https://build.opensuse.org" \
 %endif
 %ifnarch %{ix86} x86_64
+  -Dplugin_amt=false \
   -Dplugin_dell=false \
-  -Dplugin_synaptics=false \
+  -Dplugin_synaptics_mst=false \
+  -Dplugin_synaptics_rmi=false \
   -Dplugin_msr=false \
 %endif
   -Dgtkdoc=true \
