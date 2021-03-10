@@ -1,0 +1,14 @@
+#
+# acpid messages into separate file and stop their further processing
+#
+# => all acpid messages for debuging (uncomment if needed):
+#if     ($programname == 'acpid' or $syslogtag == '[acpid]:') then \
+#       -/var/log/acpid
+#
+# => up to notice (skip info and debug)
+if      ($programname == 'acpid' or $syslogtag == '[acpid]:') and \
+        ($syslogseverity <= 5 /* notice */) \
+then {
+        -/var/log/acpid
+        stop
+}
