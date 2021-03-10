@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  1 14:09:26 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- add presage-0.9.1-gcc11.patch (boo#1181881)
+  * fix ISO C++17 does not allow dynamic exception specifications
+  * fix come from github.com/AcademySoftwareFoundation/openexr/pull/280
+
+-------------------------------------------------------------------
 Sun Feb  9 20:46:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Revert change of the source package name for the doc flavor.

@@ -1,7 +1,7 @@
 #
 # spec file for package presage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,8 @@ Patch6:         presage-0.9.1-doxygen-no-freesans.patch
 Patch7:         presage-buildcycle.diff
 # PATCH-FIX-UPSTREAM port python binding to python3
 Patch8:         presage-0.9.1-python3.patch
+# PATCH-FIX-UPSTREAM fix ISO C++17 does not allow dynamic exception specifications
+Patch9:         presage-0.9.1-gcc11.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -224,6 +226,7 @@ find . -type f -exec sed -i  's/\r//g' "{}" \;
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 echo "[D-BUS Service]" > apps/dbus/org.gnome.presage.service.in
 echo "Name=org.gnome.presage.beta" >> apps/dbus/org.gnome.presage.service.in
 echo "Exec={bindir}/presage_dbus_service --start" >> apps/dbus/org.gnome.presage.service.in

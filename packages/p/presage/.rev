@@ -157,4 +157,15 @@
     <comment></comment>
     <requestid>772573</requestid>
   </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>0209b85714316ab00ce63d94b47b0deb</srcmd5>
+    <version>0.9.1</version>
+    <time>1615362533</time>
+    <user>dimstar_suse</user>
+    <comment>- add presage-0.9.1-gcc11.patch (boo#1181881)
+  * fix ISO C++17 does not allow dynamic exception specifications
+  * fix come from github.com/AcademySoftwareFoundation/openexr/pull/280
+</comment>
+    <requestid>876015</requestid>
+  </revision>
 </revisionlist>

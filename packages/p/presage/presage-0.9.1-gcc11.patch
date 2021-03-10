@@ -1,0 +1,237 @@
+Index: presage-0.9.1/src/lib/presage.cpp
+===================================================================
+--- presage-0.9.1.orig/src/lib/presage.cpp
++++ presage-0.9.1/src/lib/presage.cpp
+@@ -31,7 +31,7 @@
+ #include "core/predictorActivator.h"
+ 
+ Presage::Presage (PresageCallback* callback)
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     profileManager = new ProfileManager();
+     configuration = profileManager->get_configuration();
+@@ -42,7 +42,7 @@ Presage::Presage (PresageCallback* callb
+ }
+ 
+ Presage::Presage (PresageCallback* callback, const std::string config_filename)
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     profileManager = new ProfileManager(config_filename);
+     configuration = profileManager->get_configuration();
+@@ -62,7 +62,7 @@ Presage::~Presage()
+ }
+ 
+ std::vector<std::string> Presage::predict ()
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     std::vector<std::string> result;
+ 
+@@ -88,7 +88,7 @@ std::vector<std::string> Presage::predic
+ }
+ 
+ std::multimap<double, std::string> Presage::predict (std::vector<std::string> filter)
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     std::multimap<double, std::string> result;
+ 
+@@ -137,20 +137,20 @@ std::multimap<double, std::string> Presa
+ }
+ 
+ void Presage::learn(const std::string text) const
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     contextTracker->learn(text); // TODO: can pass additional param to
+ 				 // learn to specify offline learning
+ }
+ 
+ PresageCallback* Presage::callback (PresageCallback* callback)
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     return const_cast<PresageCallback*>(contextTracker->callback(callback));
+ }
+ 
+ std::string Presage::completion (const std::string str)
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     // There are two types of completions: normal and erasing.
+     // normal_completion  = prefix + remainder
+@@ -198,37 +198,37 @@ std::string Presage::completion (const s
+ }
+ 
+ std::string Presage::context () const
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     return contextTracker->getPastStream();
+ }
+ 
+ bool Presage::context_change () const
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     return contextTracker->contextChange();
+ }
+ 
+ std::string Presage::prefix () const
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     return contextTracker->getPrefix();
+ }
+ 
+ std::string Presage::config (const std::string variable) const
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     return configuration->find (variable)->get_value ();
+ }
+ 
+ void Presage::config (const std::string variable, const std::string value) const
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     configuration->insert (variable, value);
+ }
+ 
+ void Presage::save_config () const
+-    throw (PresageException)
++    THROW_SPEC (PresageException)
+ {
+     profileManager->save_profile ();
+ }
+Index: presage-0.9.1/src/lib/presage.h
+===================================================================
+--- presage-0.9.1.orig/src/lib/presage.h
++++ presage-0.9.1/src/lib/presage.h
+@@ -28,6 +28,12 @@
+ #include "presageException.h"
+ #include "presageCallback.h"
+ 
++#if __cplusplus <= 201402L
++#define THROW_SPEC(...)
++#else
++#define THROW_SPEC(...) throw (__VA_ARGS__)
++#endif
++
+ /** \mainpage
+ 
+     \section intro_section Introduction
+@@ -112,7 +118,7 @@ public:
+      * 
+      * Presage does not take ownership of the callback object.
+      */
+-    Presage(PresageCallback* callback) throw (PresageException);
++    Presage(PresageCallback* callback) THROW_SPEC (PresageException);
+ 
+ 
+     /** Creates and initializes presage with supplied configuration.
+@@ -122,7 +128,7 @@ public:
+      *
+      * Presage does not take ownership of the callback object.
+      */
+-    Presage(PresageCallback* callback, const std::string config) throw (PresageException);
++    Presage(PresageCallback* callback, const std::string config) THROW_SPEC (PresageException);
+ 
+ 
+     /** Destroys presage.
+@@ -138,7 +144,7 @@ public:
+      * context.
+      *
+      */
+-    std::vector<std::string> predict() throw (PresageException);
++    std::vector<std::string> predict() THROW_SPEC (PresageException);
+ 
+     /** \brief Obtain a prediction that matches the supplied token
+      *         filter.
+@@ -153,7 +159,7 @@ public:
+      * of the filter tokens.
+      *
+      */
+-    std::multimap<double, std::string> predict(std::vector<std::string> filter) throw (PresageException);
++    std::multimap<double, std::string> predict(std::vector<std::string> filter) THROW_SPEC (PresageException);
+ 
+     /** \brief Learn from text offline.
+      *
+@@ -167,7 +173,7 @@ public:
+      * \param text a text string to learn from.
+      *
+      */
+-    void learn(const std::string text) const throw (PresageException);
++    void learn(const std::string text) const THROW_SPEC (PresageException);
+ 
+     /** \brief Callback getter/setter.
+      *
+@@ -176,7 +182,7 @@ public:
+      *
+      * \return pointer to previously used callback
+      */
+-    PresageCallback* callback(PresageCallback* callback) throw (PresageException);
++    PresageCallback* callback(PresageCallback* callback) THROW_SPEC (PresageException);
+ 
+     /** \brief Request presage to return the completion string for the given predicted token.
+      *
+@@ -190,26 +196,26 @@ public:
+      *
+      * \return completion string
+      */
+-    std::string completion(std::string str) throw (PresageException);
++    std::string completion(std::string str) THROW_SPEC (PresageException);
+ 
+     /** \brief Returns the text entered so far.
+      *
+      * \return context, text entered so far.
+      */
+-    std::string context() const throw (PresageException);
++    std::string context() const THROW_SPEC (PresageException);
+ 
+     /** \brief Returns true if a context change occured.
+      *
+      * \return true if a context change occured after the last update
+      * or predict calls, or false otherwise.
+      */
+-    bool context_change() const throw (PresageException);
++    bool context_change() const THROW_SPEC (PresageException);
+ 
+     /** \brief Returns the current prefix.
+      *
+      * \return prefix
+      */
+-    std::string prefix() const throw (PresageException);
++    std::string prefix() const THROW_SPEC (PresageException);
+ 
+     /** \brief Gets the value of specified configuration variable.
+      *
+@@ -218,7 +224,7 @@ public:
+      *
+      * \return value assigned to configuration variable.
+      */
+-    std::string config(const std::string variable) const throw (PresageException);
++    std::string config(const std::string variable) const THROW_SPEC (PresageException);
+ 
+     /** \brief Sets the value of specified configuration variable.
+      *
+@@ -227,7 +233,7 @@ public:
+      * from the configuration file in use.
+      *
+      */
+-    void config(const std::string variable, const std::string value) const throw (PresageException);
++    void config(const std::string variable, const std::string value) const THROW_SPEC (PresageException);
+ 
+     /** \brief Save current configuration to file.
+      *
+@@ -236,7 +242,7 @@ public:
+      * active XML profile.
+      *
+      */
+-    void save_config() const throw (PresageException);
++    void save_config() const THROW_SPEC (PresageException);
+ 
+     /*
+      * Presage public API ends here
