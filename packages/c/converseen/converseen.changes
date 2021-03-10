@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  8 13:24:07 UTC 2021 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.9.9.0.
+  * Fixed random crash when all images are removed.
+  * Some translation updates.
+  * Various minor updates.
+  * Various bugfixes.
+
+-------------------------------------------------------------------
 Tue Feb  4 10:38:41 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.9.8.1.

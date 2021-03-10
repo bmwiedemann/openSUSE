@@ -1,7 +1,7 @@
 #
 # spec file for package converseen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           converseen
-Version:        0.9.8.1
+Version:        0.9.9.0
 Release:        0
 Summary:        Batch Image Conversion Tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Convertors
-URL:            http://converseen.fasterland.net/
+URL:            https://converseen.fasterland.net/
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
@@ -54,7 +54,7 @@ With converseen you can:
 %lang_package
 
 %prep
-%setup -q -n %{name}
+%setup -q
 chmod -x README.md COPYING
 
 %build
