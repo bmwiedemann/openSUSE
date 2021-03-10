@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar  8 21:08:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.20
+  * Recognize more ODAs and features.
+  * Add support for PTY names (group 10A).
+  * Add partial support for DAB cross-referencing.
+  * Add support for raw broadcaster data in EON (variant 15).
+  * Add support for transparent data channels (groups 5A, 5B).
+  * Add support for fractional seconds in the rx timestamp
+    format (%f).
+  * Add support for TMC tuning info variant 8.
+  * Add buffer delay compensation to rx timestamps. Timestamps
+    aim to represent the time the PCM samples were read in.
+  * Place some JSON fields in the beginning of the line for
+    easier visual inspection (pi, group, ps...).
+  * Print raw ODA data if the application is not supported.
+
+-------------------------------------------------------------------
+Mon Apr  6 12:00:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.19
+  * Add option --show-raw (-R) for including the raw group data
+    as a hex string in the JSON output
+  * Print usage help if there are non-option arguments on the
+    command line
+  * Fix uninitialized block error rate values on some systems
+  * Update jsoncpp from 1.8.1 to 1.8.4 to fix some warnings
+
+-------------------------------------------------------------------
 Sun May 19 14:44:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.18
