@@ -202,4 +202,12 @@
     <comment>- Update to release 11.1.0</comment>
     <requestid>864138</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>210cca05bfdd52c9286686ebba36e378</srcmd5>
+    <version>11.2.0</version>
+    <time>1615362503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.2.0</comment>
+    <requestid>875923</requestid>
+  </revision>
 </revisionlist>
