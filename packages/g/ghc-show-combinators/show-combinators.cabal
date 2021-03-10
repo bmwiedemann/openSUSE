@@ -1,6 +1,6 @@
 name:                show-combinators
 version:             0.2.0.0
-x-revision: 1
+x-revision: 2
 synopsis:            Combinators to write Show instances
 description:
   A minimal pretty-printing library for Show instances in Haskell.
@@ -21,8 +21,8 @@ library
   exposed-modules:
     Text.Show.Combinators
   build-depends:
-    -- This upper bound is conservative
-    base >= 4.8 && < 4.15
+    -- This upper bound is not conservative
+    base >= 4.8 && < 5
   ghc-options:         -Wall
   default-language:    Haskell2010
 
