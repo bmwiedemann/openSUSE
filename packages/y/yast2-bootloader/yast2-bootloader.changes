@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  4 09:09:20 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix boot summary on s390 (bsc#1181801 and bsc#1179168)
+- 4.3.24
+
+-------------------------------------------------------------------
+Wed Mar  3 09:30:42 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Respect if efivars is mounted read only (bsc#1174111,
+  bsc#1182749)
+- 4.3.23
+
+-------------------------------------------------------------------
 Mon Feb 15 14:49:00 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapted unit test to recent changes in Yast::Report (related to
