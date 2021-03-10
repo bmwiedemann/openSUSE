@@ -92,4 +92,13 @@
   * no upstream changelog</comment>
     <requestid>717570</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>494fe74f9e4aed6acf14b446e99a57fa</srcmd5>
+    <version>0.11.1</version>
+    <time>1615363027</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.1:
+  * drop python 2.x</comment>
+    <requestid>877836</requestid>
+  </revision>
 </revisionlist>
