@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-regex-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %global pkg_name regex-base
 Name:           ghc-%{pkg_name}
-Version:        0.94.0.0
+Version:        0.94.0.1
 Release:        0
 Summary:        Common "Text.Regex.*" API for Regex matching
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-bytestring-devel
@@ -35,19 +34,19 @@ BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 
 %description
-This package doesn't provide the ability to do regex matching, but instead
-provides the type-classes that constitute the abstract API that is implemented
-by 'regex-*' backends such as
+This package does not provide the ability to do regular expression matching.
+Instead, it provides the type classes that constitute the abstract API that is
+implemented by 'regex-*' backends such as:
 
-* <//hackage.haskell.org/package/regex-posix regex-posix>
+* <https://hackage.haskell.org/package/regex-posix regex-posix>
 
-* <//hackage.haskell.org/package/regex-parsec regex-parsec>
+* <https://hackage.haskell.org/package/regex-parsec regex-parsec>
 
-* <//hackage.haskell.org/package/regex-dfa regex-dfa>
+* <https://hackage.haskell.org/package/regex-dfa regex-dfa>
 
-* <//hackage.haskell.org/package/regex-tdfa regex-tdfa>
+* <https://hackage.haskell.org/package/regex-tdfa regex-tdfa>
 
-* <//hackage.haskell.org/package/regex-pcre regex-pcre>
+* <https://hackage.haskell.org/package/regex-pcre regex-pcre>
 
 See also <https://wiki.haskell.org/Regular_expressions> for more information.
 
@@ -63,7 +62,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

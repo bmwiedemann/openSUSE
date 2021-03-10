@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 20 14:44:16 UTC 2021 - psimons@suse.com
+
+- Update regex-base to version 0.94.0.1.
+  ## 0.94.0.1
+
+  - Workaround for `{-# LANGUAGE Haskell2010 #-}` parser regression introduced in GHC 9.0
+
+  - Optimization flag `-O2` has been removed
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
