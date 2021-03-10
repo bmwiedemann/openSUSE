@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 25 23:48:33 UTC 2021 - psimons@suse.com
+
+- Update foldl to version 1.4.11.
+  1.4.11
+
+  * Fix doctest failure when built against newer versions of the `hashable`
+    package
+
+-------------------------------------------------------------------
 Mon Jan  4 11:06:50 UTC 2021 - psimons@suse.com
 
 - Update foldl to version 1.4.10 revision 1.
