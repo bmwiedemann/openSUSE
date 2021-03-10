@@ -995,4 +995,12 @@
     <comment>20.12.2 release</comment>
     <requestid>869344</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>08cf68f687c555d4bd19b9a00deff59f</srcmd5>
+    <version>20.12.3</version>
+    <time>1615362758</time>
+    <user>dimstar_suse</user>
+    <comment>20.12.3 release</comment>
+    <requestid>877118</requestid>
+  </revision>
 </revisionlist>
