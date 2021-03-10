@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  9 15:17:04 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Add new directives and options supported in chrony since 3.3 up to 4.0.
+  * augeas-new_options_for_chrony.patch
+  * [bsc#1178470]
+  * sourced from https://github.com/hercules-team/augeas/pull/698
+
+-------------------------------------------------------------------
 Tue Jul  7 07:44:09 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 1.12.0
