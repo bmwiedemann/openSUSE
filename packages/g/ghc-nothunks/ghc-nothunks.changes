@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  3 16:36:15 UTC 2021 - psimons@suse.com
+
+- Update nothunks to version 0.1.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

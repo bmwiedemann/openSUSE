@@ -1,0 +1,67 @@
+cabal-version:      2.4
+name:               nothunks
+version:            0.1.2
+x-revision: 1
+synopsis:           Examine values for unexpected thunks
+description:        Long lived application data typically should not contain
+                    any thunks. This library can be used to examine values for
+                    unexpected thunks, which can then be used in assertions.
+                    This can be invaluable in avoiding memory leaks, or tracking
+                    down existing ones.
+license:            MIT
+license-file:       LICENSE
+bug-reports:        https://github.com/input-output-hk/nothunks
+author:             IOHK
+maintainer:         operations@iohk.io
+copyright:          2018-2020 IOHK
+category:           Development
+extra-source-files: CHANGELOG.md
+
+source-repository head
+  type:     git
+  location: https://github.com/input-output-hk/nothunks
+
+library
+    exposed-modules:  NoThunks.Class
+
+    build-depends:    base       >= 4.12 && < 5
+                    , bytestring >= 0.10 && < 0.12
+                    , containers >= 0.5  && < 0.7
+                    , stm        >= 2.5  && < 2.6
+                    , text       >= 1.2  && < 1.3
+                    , time       >= 1.5  && < 1.11
+                    , vector     >= 0.12 && < 0.13
+
+                      -- Whatever is bundled with ghc
+                    , ghc-heap
+
+    hs-source-dirs:   src
+    default-language: Haskell2010
+    ghc-options:      -Wall
+
+test-suite nothunks-test
+    type:             exitcode-stdio-1.0
+    main-is:          Main.hs
+    other-modules:    Test.NoThunks.Class
+
+    build-depends:    base
+
+                      -- Self dependency
+                    , nothunks
+
+                      -- Dependencies shared with the lib
+                    , containers
+                    , stm
+
+                      -- Whatever is bundled with ghc
+                    , ghc-prim
+
+                      -- Additional dependencies
+                    , hedgehog       >= 1.0 && < 1.1
+                    , random         >= 1.1 && < 1.3
+                    , tasty          >= 1.3 && < 1.4
+                    , tasty-hedgehog >= 1.0 && < 1.1
+
+    hs-source-dirs:   test
+    default-language: Haskell2010
+    ghc-options:      -Wall
