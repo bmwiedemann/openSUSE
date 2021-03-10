@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 16 00:22:32 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- fix regression from version 1.0.6: misleading warning when reading MBR disks,
+    upstream commit f063fe08e424c99f133df18bf9dce49c851bcb0a 
+- Add fix-spurious-warnings.patch
+
+-------------------------------------------------------------------
 Tue Feb  9 22:56:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.6

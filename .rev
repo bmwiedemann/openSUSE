@@ -190,4 +190,14 @@
     <comment></comment>
     <requestid>872010</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7c60717339f3aaf27daeb9bce54dd1c3</srcmd5>
+    <version>1.0.6</version>
+    <time>1615362580</time>
+    <user>dimstar_suse</user>
+    <comment>- fix regression from version 1.0.6: misleading warning when reading MBR disks,
+    upstream commit f063fe08e424c99f133df18bf9dce49c851bcb0a 
+- Add fix-spurious-warnings.patch</comment>
+    <requestid>876937</requestid>
+  </revision>
 </revisionlist>

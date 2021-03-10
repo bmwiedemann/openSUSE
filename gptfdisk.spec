@@ -25,6 +25,7 @@ Group:          System/Base
 URL:            http://rodsbooks.com/gdisk
 
 Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
+Patch0:         fix-spurious-warnings.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(popt)
