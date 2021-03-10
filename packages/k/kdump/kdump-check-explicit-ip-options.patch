@@ -1,0 +1,62 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Fri Mar 5 11:06:35 2021 +0100
+Subject: Do not add  network-related dracut options if ip= is set explicitly
+References: bsc#1182309
+Upstream: merged
+Git-commit: bbe9b1281cd6c26ec937c6fee622ad7a84da959d
+
+If the KDUMP_COMMANDLINE or KDUMP_COMMANDLINE_APPEND contain an
+explicit ip= option, do not try to add anything automatically,
+because it will clash with the admin's intention.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ doc/man/kdump.5.txt.in |    8 ++++++--
+ init/module-setup.sh   |   15 +++++++++++++++
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+--- a/doc/man/kdump.5.txt.in
++++ b/doc/man/kdump.5.txt.in
+@@ -580,8 +580,12 @@ _netdevice_ is for example "eth0". The _
+   * use DHCP6 if it has a permanent IPv6 address (IPv4 not set up),
+   * use IPv6 auto-configuration if it has neither (IPv4 not set up).
+ 
+-You can set KDUMP_NETCONFIG to "" if you want no network in initrd, i.e. you use
+-disk dumping.
++*Note:* If an _ip=_ option is found in KDUMP_COMMANDLINE or
++KDUMP_COMMANDLINE_APPEND, kdump does not add any other _ip=_ or _ifname=_
++options. In other words, the value of KDUMP_NETCONFIG is effectively ignored.
++
++Setting KDUMP_NETCONFIG to "" disables network completely. In this case, kdump
++does not even add the _network_ dracut module to the initrd.
+ 
+ Default: "auto"
+ 
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -168,9 +168,24 @@ kdump_cmdline_zfcp() {
+     } | sort -u
+ }
+ 
++kdump_ip_set_explicitly() {
++    local _opt
++    for _opt in $KDUMP_COMMANDLINE $KDUMP_COMMANDLINE_APPEND
++    do
++        if [ "${_opt%%=*}" = "ip" -a \
++             "${_opt#*=}" != "$_opt" ]
++        then
++            return 0
++        fi
++    done
++    return 1
++}
++
+ kdump_cmdline_ip() {
+     [ "$kdump_neednet" = y ] || return 0
+ 
++    kdump_ip_set_explicitly && return 0
++
+     local _cfg="${KDUMP_NETCONFIG%:force}"
+     if [ "$_cfg" = "auto" ] ; then
+ 	kdump_host_if=default

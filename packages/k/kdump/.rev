@@ -920,4 +920,17 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment></comment>
     <requestid>838412</requestid>
   </revision>
+  <revision rev="114" vrev="16">
+    <srcmd5>776357d68b550776bc6bd4f6ef4a7908</srcmd5>
+    <version>0.9.0</version>
+    <time>1615362584</time>
+    <user>dimstar_suse</user>
+    <comment>- kdump-query-systemd-network.service.patch: Query systemd
+  network.service to find out if wicked is used (bsc#1182309).
+- kdump-check-explicit-ip-options.patch: Do not add
+  network-related dracut options if ip= is set explicitly
+  (bsc#1182309).
+</comment>
+    <requestid>877002</requestid>
+  </revision>
 </revisionlist>

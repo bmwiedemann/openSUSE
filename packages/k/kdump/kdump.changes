@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  5 11:02:51 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-query-systemd-network.service.patch: Query systemd
+  network.service to find out if wicked is used (bsc#1182309).
+- kdump-check-explicit-ip-options.patch: Do not add
+  network-related dracut options if ip= is set explicitly
+  (bsc#1182309).
+
+-------------------------------------------------------------------
 Tue Sep 22 05:51:13 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add kdump-make-sure-that-initrd.target.wants-directory-exists.patch

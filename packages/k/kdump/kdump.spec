@@ -1,7 +1,7 @@
 #
 # spec file for package kdump
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,8 @@ Patch30:        %{name}-calibrate-Update-values.patch
 Patch31:        %{name}-activate-udev-rules-late-during-boot.patch
 Patch32:        %{name}-make-sure-that-the-udev-runtime-directory-exists.patch
 Patch33:        %{name}-make-sure-that-initrd.target.wants-directory-exists.patch
+Patch34:        %{name}-check-explicit-ip-options.patch
+Patch35:        %{name}-query-systemd-network.service.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -149,6 +151,8 @@ after a crash dump has occured.
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
+%patch35 -p1
 
 %build
 export CXXFLAGS="%{optflags} -std=gnu++98"
