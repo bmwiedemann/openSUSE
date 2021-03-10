@@ -1,0 +1,33 @@
+From ff092d0e5742f02ab1aeeafefeaaa558d32ab0b0 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Tue, 1 Dec 2020 16:18:12 +0800
+Subject: [PATCH] Revert "Revert "zypp: Clean up temporary files when PK
+ quits""
+
+packagekitd.service will be stopped on system shutdown and by manually
+doing so. Thus the main process will be killed eventually and we have
+to manually clean those tmporary libzypp files.
+
+This reverts commit d8dd484ddfcea4750495fa92dcd2f580149432e7.
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=1169739
+---
+ backends/zypp/pk-backend-zypp.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
+index b1ce76915..9404abb1a 100644
+--- a/backends/zypp/pk-backend-zypp.cpp
++++ b/backends/zypp/pk-backend-zypp.cpp
+@@ -1840,6 +1840,8 @@ pk_backend_destroy (PkBackend *backend)
+ {
+ 	g_debug ("zypp_backend_destroy");
+ 
++	filesystem::recursive_rmdir (zypp::myTmpDir ());
++
+ 	g_free (_repoName);
+ 	delete priv;
+ }
+-- 
+2.26.2
+
