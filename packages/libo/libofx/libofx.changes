@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  8 22:29:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Correct casting of iconv input argument
+  * Let ofxdump also return an error value on error
+  * Code cleanup towards normal C++ 
+
+-------------------------------------------------------------------
 Sun Jan 24 16:18:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.0:

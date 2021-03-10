@@ -17,7 +17,7 @@
 
 
 Name:           libofx
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        OFX Command Parser and API
 License:        GPL-2.0-or-later
