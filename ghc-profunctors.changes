@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 19 23:06:08 UTC 2021 - psimons@suse.com
+
+- Update profunctors to version 5.6.2.
+  5.6.2 [2021.02.17]
+  ------------------
+  * Add `Semigroup` and `Monoid` instances for `Forget`
+
+-------------------------------------------------------------------
 Mon Jan  4 11:06:21 UTC 2021 - psimons@suse.com
 
 - Update profunctors to version 5.6.1.
