@@ -123,4 +123,13 @@
   * Fix (more) formatting...</comment>
     <requestid>875299</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>34707149fd02ededdb57ffcf7bf4dadc</srcmd5>
+    <version>2.1+git20210305.ca2bc53</version>
+    <time>1615362636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20210305.ca2bc53:
+  * Avoid copying the user setup script with 'podman cp'</comment>
+    <requestid>877276</requestid>
+  </revision>
 </revisionlist>

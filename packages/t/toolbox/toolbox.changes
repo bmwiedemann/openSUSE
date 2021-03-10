@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 05 16:52:01 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210305.ca2bc53:
+  * Avoid copying the user setup script with 'podman cp'
+
+-------------------------------------------------------------------
 Fri Feb 26 08:29:43 UTC 2021 - kukuk@suse.com
 
 - Update to version 2.1+git20210226.daeb191:
