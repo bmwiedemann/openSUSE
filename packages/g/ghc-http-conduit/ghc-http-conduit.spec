@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-conduit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name http-conduit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.7.4
+Version:        2.3.8
 Release:        0
 Summary:        HTTP client package with conduit interface and HTTPS support
 License:        BSD-2-Clause
