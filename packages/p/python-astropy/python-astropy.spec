@@ -50,9 +50,13 @@ Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
 URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
+# belongs to Patch1 --  gh/astropy/astropy#11260
+Source1:        https://github.com/dhomeier/astropy/raw/wcs-distortion-headers/astropy/wcs/tests/data/dss.14.29.56-62.41.05.fits.gz
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
+# PATCH-FIX-UPSTREAM astropy-pr11260-wcsfailures.patch -- gh/astropy/astropy#11260
+Patch1:         astropy-pr11260-wcsfailures.patch
 # https://docs.astropy.org/en/v4.1/install.html#requirements
 BuildRequires:  %{python_module Cython >= 0.21}
 BuildRequires:  %{python_module Jinja2}
@@ -131,7 +135,9 @@ managing them.
 
 %if !%{with test}
 %prep
-%setup -q -n astropy-%{version}
+%autosetup -p1 -n astropy-%{version}
+
+cp %{SOURCE1} astropy/wcs/tests/data/
 
 %if %{with systemlibs}
 # Make sure bundled libs are not used

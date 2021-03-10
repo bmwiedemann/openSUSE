@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  8 12:07:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix test failures with updated wcslib -- gh#astropy/astropy#11260
+  * Add astropy-pr11260-wcsfailures.patch
+  * Add dss.14.29.56-62.41.05.fits.gz
+
+-------------------------------------------------------------------
 Fri Jan 15 18:01:11 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Make sure that the python >= 3.7 requirement is checked on
