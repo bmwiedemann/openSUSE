@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 23 10:03:49 UTC 2021 - psimons@suse.com
+
+- Update zlib to version 0.6.2.3.
+  0.6.2.3 Emily Pillmore <emilypi@cohomolo.gy> February 2021
+
+   * Add support for bytestring-0.11.0.0
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
