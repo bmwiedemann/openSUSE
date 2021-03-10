@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Mar  1 19:39:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.28.2
+  * libqmi-glib:
+  + Fixed build with GLib < 2.58.
+  + Simplified the qmi_wwan add_mux/del_mux logic assuming there
+    is no delay in the creation and deletion of the net links.
+
+-------------------------------------------------------------------
+Tue Feb 23 06:58:56 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.28.0: 
+ * The QmiDevice interfaces to work with the expected data format and the wwan
+   interface name should now be considered to be specific to QMI devices exposed
+   by the upstream 'qmi_wwan' kernel driver. If the device is exposed with a
+   different driver (e.g. PCIe or QRTR) these methods will always fail.
+ * The QmiDevice now supports configuring the 'pass_through' sysfs setting in
+   the network interfaces exposed by the 'qmi_wwan' kernel driver, with a new
+   'qmap-pass-through' expected data format type. In this mode, the network
+   device will be managed by the rmnet kernel driver. A new method is also
+   provided to check in runtime whether a given expected data format value is
+   supported by the kernel or not.
+ * The QmiDevice now includes methods to list, create and delete links on the
+   network interface, that can be used to setup QMAP based multiplexing of
+   different data streams, e.g. connected to different APNs. When using the
+   'qmi_wwan' kernel driver, the link management logic depends on the configured
+   expected data format:
+     ** rmnet netlink operations will be used if 'qmap-pass-through' expected
+        data format is configured.
+     ** add_mux/del_mux operations will be used if 'raw-ip' expected data format
+        is configured.
+ * New services:
+   ** New 'SAR' (Specific Absorption Rate) service, with support for the "Set RF
+      State" and "Get RF State" request/responses.
+ * New request/response/indications:
+   ** uim: implement "Refresh Register" request/response.
+   ** uim: implement "Refresh Register All" request/response.
+   ** uim: implement "Refresh Complete" request/response.
+   ** uim: implement "Refresh" indication.
+   ** loc: implement "Get Engine Lock" request/response.
+   ** loc: implement "Set Engine Lock" request/response.
+   ** nas: implement "Get DRX" request/response.
+   ** nas: implement "Get PLMN Name" request/response.
+   ** wms: implement "Send Ack" request/response.
+   ** wds: implement "Bind Data Port" request/response.
+   ** wds: implement "Get Max LTE Attach PDN Number" request/response.
+   ** wds: implement "Get LTE Attach PDN List" request/response.
+   ** wds: implement "Set LTE Attach PDN List" request/response.
+   ** wds: implement "Set LTE Attach PDN List" indication.
+   ** wds: implement "Get LTE Attach Parameters" request/response.
+   ** wds: renamed "Get Default Profile Num" to "Get Default Profile Number",
+      and provided compat symbols to avoid breaking API.
+   ** wds: renamed "Set Default Profile Num" to "Set Default Profile Number",
+      and provided compat symbols to avoid breaking API.
+ * New TLVs supported in existing messages:
+   ** nas: added the "Rx Chain 2/3 Info" TLVs in "Get Tx Rx Info".
+   ** nas: added the "LTE Info Timing Advance" TLV in "Get Cell Location Info".
+   ** nas: added the "LTE Voice Domain", "CDMA Registration Zone ID", "GSM
+      Routing Area Code", "WCDMA Routing Area Code" and "CDMA Resolved MCC"
+      TLVs in "Get System Info".
+ * libqmi-glib:
+   ** Added support for 'embedded' and 'pcie' endpoint types.
+   ** Added support for QMAPv5 data aggregation type.
+ * qmicli:
+   ** When built with QRTR support, the '--device' option now allows QRTR URIs
+      (e.g. 'qrtr://0').
+   ** New '--link-list', '--link-add', '--link-delete' and '--link-delete-all'
+      commands.
+   ** New '--uim-monitor-refresh-file' command.
+   ** New '--uim-monitor-refresh-all' command.
+   ** New '--wds-bind-data-port' command.
+   ** New '-loc-get-operation-mode' and '--loc-set-operation-mode' commands.
+   ** New '-loc-get-engine-lock' and '--loc-set-engine-lock' commands.
+   ** New '--wds-get-lte-attach-parameters' command.
+   ** New '--wds-get-max-lte-attach-pdn-num' command.
+   ** New '--wds-get-lte-attach-pdn-list' and '--wds-set-lte-attach-pdn-list'
+      commands.
+   ** Updated the '--wds-start-network' command with a timeout of 180s.
+   ** Updated the '--wds-stop-network' command with a timeout of 120s.
+   ** Updated the '--dms-set-firmware-preference' command to use a key-value
+      pair based input instead of predefined fields.
+ * collections:
+   ** basic: added UIM event registration commands.
+   ** basic: added UIM slot management commands.
+   ** basic: added UIM refresh related commands.
+   ** basic: added WDS bind data port commands.
+   ** basic: added WDS initial LTE bearer management commands.
+   ** basic: added NAS PLMN name commands.
+
+-------------------------------------------------------------------
 Sun Jan 10 15:09:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - update to 1.26.8:
