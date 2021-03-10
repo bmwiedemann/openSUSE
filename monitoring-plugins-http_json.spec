@@ -49,7 +49,6 @@ sed -i -e '1{s:^#!\s*/usr/bin/env python:#!%{_bindir}/python:}' *.py
 
 %install
 install -Dpm 0755 check_http_json.py %{buildroot}%{nagios_plugindir}/check_http_json
-%python_clone -a %{buildroot}%{nagios_plugindir}/check_http_json
 
 %check
 # There are no tests upstream, don’t pretend there are.
@@ -60,6 +59,6 @@ install -Dpm 0755 check_http_json.py %{buildroot}%{nagios_plugindir}/check_http_
 %doc contrib/icinga2_check_command_definition.conf
 %dir %{nagios_libdir}
 %dir %{nagios_plugindir}
-%python_alternative %{nagios_plugindir}/check_http_json
+%{nagios_plugindir}/check_http_json
 
 %changelog
