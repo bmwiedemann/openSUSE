@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 19 23:02:58 UTC 2021 - psimons@suse.com
+
+- Update async to version 2.2.3.
+  ## Changes in 2.2.3:
+
+   - Documentation fixes
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
