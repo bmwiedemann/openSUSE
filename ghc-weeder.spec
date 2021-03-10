@@ -60,6 +60,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %autosetup -n %{pkg_name}-%{version}
 sed -i -e 's#dhall .* \^>= 1.33.0#dhall < 2#' weeder.cabal
 sed -i -e 's#generic-lens .* \^>= 2.0.0.0#generic-lens < 3#' weeder.cabal
+sed -i -e 's#lens .* \^>= 4.19#lens < 6#' weeder.cabal
 
 %build
 %ghc_lib_build
