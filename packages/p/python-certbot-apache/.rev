@@ -196,4 +196,14 @@
     <comment>certbot version bump</comment>
     <requestid>861640</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b18e0d8c78a4a8389a190fdc22ae62ad</srcmd5>
+    <version>1.13.0</version>
+    <time>1615362993</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.13.0
+  * Support for Python 2 has been removed.
+  * Drop merged patch 0001-Change-the-SUSE-override-to-use-apachectl.patch</comment>
+    <requestid>877738</requestid>
+  </revision>
 </revisionlist>
