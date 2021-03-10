@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 09 08:03:14 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1615196506.0b1531c35:
+  * t: Skip fixtures by default to prevent excessive runtime
+  * t: Fix fixture list in ui/07-file.t introduced in e62972a78
+  * t: Add explicit fixture list for 26-jobs_restart.t
+  * t: Add explicit fixture list for 27-plugin_obs_rsync_status_details.t
+  * t: Add explicit fixture list for 05-scheduler-full.t
+  * t: Ensure services are terminated on unclean shutdown of ui/27-plugin_obs_rsync_status_details.t
+  * t: Specify specific fixture modules to ui/01-list.t
+
+-------------------------------------------------------------------
 Sun Mar 07 00:33:20 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1614942732.c0f9ffea8:
