@@ -589,4 +589,12 @@
   pipewire-pulseaudio (boo#1182730). (forwarded request 875000 from alarrosa)</comment>
     <requestid>875003</requestid>
   </revision>
+  <revision rev="68" vrev="14">
+    <srcmd5>1ecdb6543b5861816b359740a4a1bd7d</srcmd5>
+    <version>20200505</version>
+    <time>1615362419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877899</requestid>
+  </revision>
 </revisionlist>

@@ -45,7 +45,12 @@ sub parse_line {
 	# XXX simplify me
 	if ($to_parse =~ /Recommends:\s*([^\s]*)\s*/) {
 		$tmp = "$1";
+		return "" if ($tmp =~ m/pattern()/);
 		return "" if ($tmp =~ m/.*-64bit\s*$/);
+		if ($tmp =~ m/\(/) {
+			print STDERR "WARN: Unhandled boolean dep at $to_parse\n";
+			return "";
+		}
 		$tmp = "${tmp}-32bit" if($tmp !~ m/.*-32bit/);
 		return "Recommends:     ${tmp}\n";
 	}

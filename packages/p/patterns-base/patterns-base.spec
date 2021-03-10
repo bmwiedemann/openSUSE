@@ -135,7 +135,6 @@ Requires:       libnss_usrfiles2
 Requires:       pam
 Requires:       pam-config
 Requires:       rpm
-Requires:       shadow
 Requires:       sysconfig
 Requires:       system-user-nobody
 Requires:       systemd
@@ -150,8 +149,11 @@ Requires:       purge-kernels-service
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
 Recommends:     elfutils
+Recommends:     hostname
 Recommends:     iproute2
+Recommends:     issue-generator
 Recommends:     pam_pwquality
+Recommends:     shadow
 Recommends:     system-group-trusted
 Recommends:     system-group-wheel
 Recommends:     system-user-bin
@@ -168,10 +170,6 @@ Requires:       ppc64-diag
 # Current systems suffer from entropy starvation (bsc#1131369)
 %ifarch aarch64 %ix86 x86_64 ppc64 ppc64le s390x
 Recommends:     haveged
-%endif
-# issue-generator is not used on Leap so far
-%if !(0%{?is_opensuse} && 0%{?sle_version})
-Recommends:     issue-generator
 %endif
 # hint for aaa_base requiring /usr/bin/xz
 Suggests:       xz
@@ -607,7 +605,7 @@ Requires:       grub2-arm64-efi
 Requires:       grub2-arm-efi
 Requires:       grub2-arm-uboot
 %endif
-%ifarch x86_64
+%ifarch aarch64 x86_64
 Requires:       mokutil
 Requires:       shim
 %endif
@@ -989,12 +987,7 @@ The X Window System provides the only standard platform-independent networked gr
 
 %install
 mkdir -p %{buildroot}%{_docdir}/patterns
-%if 0%{?is_opensuse}
-for i in apparmor base enhanced_base minimal_base \
-     sw_management x11 x11_enhanced; do
-%else
 for i in apparmor base enhanced_base minimal_base sw_management x11 x11_enhanced; do
-%endif
     echo "This file marks the pattern $i to be installed." \
     >"%{buildroot}%{_docdir}/patterns/$i.txt"
     echo "This file marks the pattern $i to be installed." \
