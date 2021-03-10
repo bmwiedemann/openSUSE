@@ -1,4 +1,4 @@
-From eb4e0b351b4bb229bfd5fd3ed57d3c35040265e0 Mon Sep 17 00:00:00 2001
+From 8cf5f05b8bcb5588bec92d5732e81f26fa632fce Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
 Subject: [PATCH 4/4] bsc1073877: apparmor: clobber docker-default profile on
@@ -69,7 +69,7 @@ index dd581dc7dadb..5b14979cd4a3 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index 794ff9712d08..f9e727b348c5 100644
+index 3d8cca288010..62d3859cff8c 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
 @@ -855,8 +855,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
@@ -85,5 +85,5 @@ index 794ff9712d08..f9e727b348c5 100644
  	}
  
 -- 
-2.30.0
+2.30.1
 

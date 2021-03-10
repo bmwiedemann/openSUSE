@@ -1,4 +1,4 @@
-From aa173dd56730552524ab35d74acbe61709c732e2 Mon Sep 17 00:00:00 2001
+From 10d0381bf317221167af0930c552a8b27c7861a4 Mon Sep 17 00:00:00 2001
 From: Valentin Rothberg <vrothberg@suse.com>
 Date: Mon, 2 Jul 2018 13:37:34 +0200
 Subject: [PATCH 3/4] PRIVATE-REGISTRY: add private-registry mirror support
@@ -1142,5 +1142,5 @@ index 3e3a5b41ffbd..451a6f874bc1 100644
  
  	endpoints = []APIEndpoint{
 -- 
-2.30.0
+2.30.1
 

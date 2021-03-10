@@ -42,8 +42,8 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 46229ca1d815
-%define git_commit_epoch 1611869592
+%define git_version 363e9a88a11b
+%define git_commit_epoch 1614234438
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
@@ -56,7 +56,10 @@
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.3_ce
+Version:        20.10.5_ce
+# This "nice version" is so that docker --version gives a result that can be
+# parsed by other people. boo#1182476
+%define nice_version 20.10.5-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -89,8 +92,6 @@ Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
 Patch200:       0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
 # SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/37353. bsc#1073877 bsc#1099277
 Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
-# SUSE-BACKPORT: Backport of https://github.com/docker/cli/pull/2888.
-Patch301:       cli-0001-Rename-bin-md2man-to-bin-go-md2man.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -117,7 +118,7 @@ Obsoletes:      docker-libnetwork%{name_suffix} < 0.7.0.2
 Provides:       docker-libnetwork%{name_suffix} = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
-Requires:       runc >= 1.0.0~rc92
+Requires:       runc >= 1.0.0~rc93
 Requires:       containerd >= 1.4.3
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
@@ -264,8 +265,6 @@ cp %{SOURCE103} .
 mkdir -p %{cli_builddir}
 pushd %{cli_builddir}
 xz -dc %{SOURCE1} | tar -xof - --strip-components=1
-# https://github.com/docker/cli/pull/2888
-%patch301 -p1
 popd
 
 # Extract the docker-libnetwork source in a subdir.
@@ -297,7 +296,7 @@ export BUILDFLAGS="-buildmode=pie"
 # Specify all of the versioning information. We use SOURCE_DATE_EPOCH if it's
 # been injected by rpmbuild, otherwise we use the hardcoded git_commit_epoch
 # generated above. boo#1064781
-export VERSION="$(cat ./VERSION 2>/dev/null || echo '%{version}')"
+export VERSION="%{nice_version}"
 export DOCKER_GITCOMMIT="%{git_version}"
 export GITCOMMIT="%{git_version}"
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-%{git_commit_epoch}}"
