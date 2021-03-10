@@ -189,4 +189,15 @@
   stays /%lib. (boo#1029961)</comment>
     <requestid>868872</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>18148fcb2c40568f90b2f369ca7859e5</srcmd5>
+    <version>10.2.1+git1331</version>
+    <time>1615362395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (85977f624a34eac309f9d77a5), git1331
+  * Includes fix for [bsc#1182016]
+- The 32bit nvptx libgomp plugin is no longer built, do not attempt
+  to package it.</comment>
+    <requestid>876513</requestid>
+  </revision>
 </revisionlist>

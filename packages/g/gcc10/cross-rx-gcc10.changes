@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  3 11:03:16 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (85977f624a34eac309f9d77a5), git1331
+  * Includes fix for [bsc#1182016]
+- The 32bit nvptx libgomp plugin is no longer built, do not attempt
+  to package it.
+
+-------------------------------------------------------------------
 Wed Feb  3 09:27:45 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Remove include-fixed/pthread.h
