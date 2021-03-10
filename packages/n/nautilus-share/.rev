@@ -212,4 +212,13 @@
     <comment>Removal of -lang recommends (forwarded request 768625 from dimstar)</comment>
     <requestid>768686</requestid>
   </revision>
+  <revision rev="32" vrev="17">
+    <srcmd5>8428e4ffbb647c79ae825a6860bc2d40</srcmd5>
+    <version>0.7.3</version>
+    <time>1615362623</time>
+    <user>dimstar_suse</user>
+    <comment>- Require samba-client instead of samba: we need /usr/bin/net,
+  which is a client tool (identified as part of boo#1183047).</comment>
+    <requestid>877078</requestid>
+  </revision>
 </revisionlist>

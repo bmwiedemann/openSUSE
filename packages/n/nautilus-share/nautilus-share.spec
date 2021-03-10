@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-share
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define         nautilusextdir %(pkg-config --variable=extensiondir libnautilus-extension)
-
 Name:           nautilus-share
 Version:        0.7.3
 Release:        0
 Summary:        Nautilus plugin for sharing directories over SMB
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Samba
-Url:            http://git.gnome.org/nautilus-share
+URL:            https://git.gnome.org/nautilus-share
 Source:         http://download.gnome.org/sources/nautilus-share/0.7/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  nautilus-devel
 BuildRequires:  translation-update-upstream
-Requires:       samba >= 3.0.23
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       samba-client >= 3.0.23
 
 %description
 An application for the GNOME desktop integrated into Nautilus
@@ -55,6 +53,7 @@ Features:
   directories are shared.
 
 %lang_package
+
 %prep
 %setup -q
 translation-update-upstream
@@ -62,19 +61,16 @@ translation-update-upstream
 %build
 autoreconf -f -i
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr (-, root, root)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %{_datadir}/nautilus-share/
 %{nautilusextdir}/*.so
 

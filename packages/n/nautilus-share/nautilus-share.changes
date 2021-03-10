@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  4 15:50:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require samba-client instead of samba: we need /usr/bin/net,
+  which is a client tool (identified as part of boo#1183047).
+
+-------------------------------------------------------------------
 Thu Jan 30 11:14:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
