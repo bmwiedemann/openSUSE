@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  4 06:11:07 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * Fix low quality connections
+  * VNC: accept the wheel event (kde#432484)
+  * Unpress modifiers on focusOutEvent in VncView (kde#329951)
+
+-------------------------------------------------------------------
 Wed Feb  3 08:29:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.12.2
