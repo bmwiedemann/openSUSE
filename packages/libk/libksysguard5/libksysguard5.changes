@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  2 15:01:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * Set line chart amount of history spinbox max to actual maximum value
+  * Only emit readyChanged when we are in fact ready
+  * Properly fix column count and inserting new columns on metadata load (kde#433064)
+  * Horizontal bars: Show full name if possible (kde#433169)
+  * Set min/max for Y axis range spinboxes to minimum/maximum possible value (kde#433007,kde#424527)
+
+-------------------------------------------------------------------
 Tue Feb 23 14:52:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.1
