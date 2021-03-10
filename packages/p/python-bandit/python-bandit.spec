@@ -22,38 +22,36 @@
 # CLI tool, no module
 %define pythons python3
 Name:           python-bandit
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/bandit
 Source:         https://files.pythonhosted.org/packages/source/b/bandit/bandit-%{version}.tar.gz
 Patch0:         remove-non-test-deps.patch
 BuildRequires:  %{python_module GitPython >= 1.0.1}
-BuildRequires:  %{python_module PyYAML >= 3.13}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
+BuildRequires:  %{python_module PyYAML >= 5.3.1}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.8.0}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
-BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module pbr >= 1.8}
+BuildRequires:  %{python_module mock >= 3.0.5}
+BuildRequires:  %{python_module pbr >= 2.0}
 BuildRequires:  %{python_module python-subunit >= 0.0.18}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module stestr >= 1.0.0}
+BuildRequires:  %{python_module stestr >= 2.5.0}
 BuildRequires:  %{python_module stevedore >= 1.20.0}
 BuildRequires:  %{python_module testrepository >= 0.0.18}
-BuildRequires:  %{python_module testscenarios >= 0.4}
-BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module testscenarios >= 0.5.0}
+BuildRequires:  %{python_module testtools >= 2.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # doc requirements
 %if %{with builddocs}
 BuildRequires:  %{python_module Sphinx >= 1.2.1}
-BuildRequires:  %{python_module oslotest >= 3.2.0}
 BuildRequires:  %{python_module reno >= 1.8.0}
 %endif
 Requires:       python-GitPython >= 1.0.1
-Requires:       python-PyYAML >= 3.13
+Requires:       python-PyYAML >= 5.3.1
 Requires:       python-six >= 1.10.0
 Requires:       python-stestr >= 1.0.0
 Requires:       python-stevedore >= 1.20.0

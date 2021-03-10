@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Mar  9 06:13:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.0:
+  * Remove blacklist call to input() (#662) @ericwb
+  * Remove universal support on the wheel (#655) @ericwb
+  * Give some tips on how to resolve B101 in the doc (#616) @xuhdev
+  * Don't show progress information on --quiet (#641) @fniessink
+  * Add skip configuration to assert_used (#633) @wilbertom
+  * Drop Python2 build, test, and install (#615) @ericwb
+  * [FIX] blacklist: fix typo in import_ftplib (#601) @Yenthe666
+  * Resolve 'NoneType' object has no attribute 'id'Traceback in
+    django_mark_safe (#598) @ehooo
+  * Fix typo for activating venv (#590) @bavedarnow
+  * Bump pyyaml (#588) @dosisod
+  * Fix colorama not being disabled after being used (#586) @adambenali
+  * Cleanup some typos in recent contributor guide (#585) @ericwb
+  * [DOC] Support python3 venv creation (#583) @look4regev
+  * Add sha1 to the list of insecure hashes (#561) @ericwb
+  * Fix docs for B610,B611,B703 (#555) @amacfie
+  * Add a section explaining "nosec" (#554) @exhuma
+  * Add official support of Python 3.8 (#547) @ericwb
+  * Ignore common directories by default (#544) @ericwb
+  * Add shelve to the pickle blacklists (#542) @auscompgeek
+  * Remove obsolete "sudo" keyword. (#538) @jugmac00
+  * Update test requirements to latest versions (#535) @ericwb
+  * Fix readme file on Extending Bandit on list things (#534) @Aurel10
+  * fix the documentation file README.rst (#533) @Aurel10
+  * Cleanup comments after #510 (#532) @florczakraf
+  * Use SPDX license identifier instead of bulky headers (#530) @ericwb
+  * fix B603 docstring (#524) @graingert
+  * Add type checking to name node of hashlib_new (#516) @teeann
+  * --exit-zero option (#510) @maciejstromich
+  * Fix 3.8 errors (#509) @tylerwince
+  * Add several ini options for .bandit file (#508) @vuolter
+  * get_url returns different urls calling twice (bug #506) (#507) @ehooo
+  * Replace setattr (#493) @tylerwince 
+- Refresh remove-non-test-deps.patch
+
+-------------------------------------------------------------------
 Sat Feb 13 10:21:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - cli tool, don't build with multiple python versions 
