@@ -161,4 +161,12 @@
     <comment> (forwarded request 875667 from AndreasStieger)</comment>
     <requestid>875732</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bc6afd68c7d49d2fac0943a45f7266a4</srcmd5>
+    <version>5.0.6</version>
+    <time>1615489877</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>878230</requestid>
+  </revision>
 </revisionlist>
