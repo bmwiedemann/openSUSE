@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 10 17:44:00 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Build against wxGTK2 when wxGTK3 not available.
+
+-------------------------------------------------------------------
+Tue Mar  9 05:40:29 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Build against wxGTK3 instead of wxGTK2 (gh#vslavik/poedit#474).
+
+-------------------------------------------------------------------
 Tue Nov 10 18:49:33 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 2.4.2:

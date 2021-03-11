@@ -1,7 +1,7 @@
 #
 # spec file for package poedit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,7 @@ BuildRequires:  libboost_regex-devel >= 1.60
 BuildRequires:  libboost_system-devel >= 1.60
 BuildRequires:  libboost_thread-devel >= 1.60
 BuildRequires:  pkgconfig
-BuildRequires:  wxWidgets-3_0-devel
-BuildRequires:  wxWidgets-devel >= 3.0.3
-BuildRequires:  pkgconfig(gtkspell-2.0)
+BuildRequires:  ((wxGTK3-devel >= 3.1.4 and pkgconfig(gtkspell3-3.0)) or (wxWidgets-3_0-devel >= 3.0.3 and pkgconfig(gtkspell-2.0)))
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(liblucene++) >= 3.0.5

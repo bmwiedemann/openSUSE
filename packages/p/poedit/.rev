@@ -488,4 +488,14 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
   * Improved language and placeholders handling in XLIFF.</comment>
     <requestid>847583</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>f4620d943dfe86960c38d3686a934642</srcmd5>
+    <version>2.4.2</version>
+    <time>1615489871</time>
+    <user>dimstar_suse</user>
+    <comment>- Build against wxGTK2 when wxGTK3 not available.
+- Build against wxGTK3 instead of wxGTK2 (gh#vslavik/poedit#474).
+</comment>
+    <requestid>878221</requestid>
+  </revision>
 </revisionlist>
