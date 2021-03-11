@@ -22,7 +22,7 @@ Release:        0
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
 License:        LGPL-2.1-only AND GPL-2.0-only
 URL:            https://github.com/containers/libkrunfw
-Source0:        libkrunfw-%{version}.tar.gz
+Source0:        https://github.com/containers/libkrunfw/archive/v%{version}.tar.gz#/libkrunfw-%{version}.tar.gz
 Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.10.tar.xz
 BuildRequires:  bc
 BuildRequires:  binutils
@@ -61,9 +61,17 @@ mkdir tarballs
 cp %{SOURCE1} tarballs/
 
 %build
+test -n "$SOURCE_DATE_EPOCH" || export SOURCE_DATE_EPOCH=`date +%s`
+cat > .kernel-binary.spec.buildenv <<EOF
+export KBUILD_BUILD_TIMESTAMP="$(LANG=C date -u -d "@$SOURCE_DATE_EPOCH")"
+export KBUILD_BUILD_USER=geeko
+export KBUILD_BUILD_HOST=buildhost
+EOF
+source ./.kernel-binary.spec.buildenv
 %make_build
 
 %install
+source ./.kernel-binary.spec.buildenv
 %make_install PREFIX=%{_prefix}
 
 mv %{buildroot}%{_libdir}/libkrunfw.so %{buildroot}%{_libdir}/libkrunfw.so.0.0.0
