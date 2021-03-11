@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Mar 10 18:09:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix download url for source
+- Do not explicitly require libraires, let the dependency generator
+  do its work
+- Use optflags
+
+-------------------------------------------------------------------
+Wed Mar 3 16:00:00 CEST 2021 - ali.aabdallah@suse.com
+
+- Initial package, version 1.1.1
