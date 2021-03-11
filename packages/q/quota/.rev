@@ -460,4 +460,12 @@ and
   * 0001-warnquota-Do-not-ignore-errors-in-config-file.patch</comment>
     <requestid>723505</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>dc02601f04af107707a3d38fc54b1aa0</srcmd5>
+    <version>4.06</version>
+    <time>1615489895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878313</requestid>
+  </revision>
 </revisionlist>

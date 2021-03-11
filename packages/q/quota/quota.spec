@@ -1,7 +1,7 @@
 #
 # spec file for package quota
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,16 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           quota
-Version:        4.05
+Version:        4.06
 Release:        0
 Summary:        Disk Quota System
 License:        GPL-2.0-only
 Group:          System/Filesystems
-URL:            http://sourceforge.net/projects/linuxquota/
-Source0:        http://downloads.sourceforge.net/project/linuxquota/quota-tools/%{version}/%{name}-%{version}.tar.gz
+URL:            https://sourceforge.net/projects/linuxquota/
+Source0:        https://downloads.sourceforge.net/project/linuxquota/quota-tools/%{version}/%{name}-%{version}.tar.gz
 Source1:        sysconfig.nfs-quota
 Source2:        quotad.service
 Source3:        quotad_env.sh
-Patch2:         %{name}-4.01-warnquota.patch
-Patch3:         0001-warnquota-Do-not-ignore-errors-in-config-file.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -66,8 +64,6 @@ The quotad init script, which provides quota support on NFS mounts.
 
 %prep
 %setup -q
-%patch2 -p1
-%patch3 -p1
 
 %build
 %configure \
@@ -76,7 +72,7 @@ The quotad init script, which provides quota support on NFS mounts.
     --enable-ldapmail \
     --enable-rpc \
     --enable-rpcsetquota
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

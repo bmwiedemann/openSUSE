@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar  8 23:43:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.06:
+  * Remove quot tool (Jan Kara)
+  * quotacheck,quotaon: Suggest using quota feature for ext4 (Jan Kara)
+  * quota: Add --filesystem option (Jan Kara)
+  * quota: Add synopsis for project quota (Jan Kara)
+  * Handle grace time overflows for XFS quotas (Jan Kara)
+  * Support grace period expirations past y2038 for XFS (Darrick J. Wong)
+  * Fix limits setting on XFS filesystem (Jan Kara)
+  * quota-tools: Set FS_DQ_TIMER_MASK for individual xfs grace times (Eric Sandeen)
+  * quota-tools: pass quota type to QCMD for Q_XFS_GETQSTAT (Eric Sandeen)
+  * Fix ignoring disabled quotas (Petr Písař)
+  * warnquota: Initialize all members of a configparams structure (Petr Písař)
+  * warnquota: Free LDAP error message (Petr Písař)
+  * Make a directory for quota_nld PID file configurable (Petr Písař)
+  * warnquota: Clarify that CC_TO gets resolved through LDAP (Jan Kara)
+  * warnquota: Print also additional error info for LDAP errors (Jan Kara)
+  * warnquota: Properly detect LDAP errors (Jan Kara)
+  * warnquota: Do not ignore errors in config file (Jan Kara)
+  * warnquota: Fix help text (Jan Kara)
+  * quotacheck: Skip checking of filesystems with hidded quota files early (Jan Kara)
+  * quotaops: Make error string translatable (Jan Kara)
+  * rpc: Clarify error message when cannot connect to rpc.rquotad (Jan Kara)
+  * setquota: Report failure to obtain quota information (Jan Kara)
+  * quotaops: Do not leak dquot structures on failure (Jan Kara)
+  * quotaops: Do not return partial list from getprivs() (Jan Kara)
+  * Make messages about failures for NFS consistent with local filesystems (Jan Kara)
+  * Delete old documentation (Jan Kara)
+  * COPYING: Update mailing address (Jan Kara)
+  * edquota: Remove forgotten license header (Jan Kara)
+  * configure.ac: add --disable-pie option (Fabrice Fontaine)
+  * warnquota: Improve examples in warnquota.conf (Jan Kara)
+  * Avoid tampering with user CFLAGS (Dmitry V. Levin)
+  * Revert "configure.ac: fix pkg_check_modules calls" (Dmitry V. Levin)
+  * Makefile.am: link with INTLLIBS (Fabrice Fontaine)
+- drop 0001-warnquota-Do-not-ignore-errors-in-config-file.patch,
+  quota-4.01-warnquota.patch: upstream
+
+-------------------------------------------------------------------
 Thu Aug 15 09:40:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch from git to stop config processing on errors bsc#1144265:
