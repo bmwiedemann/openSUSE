@@ -90,9 +90,6 @@ BuildRequires:  zlib-devel
 ExclusiveArch:  i586 i686
 BuildArch:      i686
 %endif
-%if %{with usrmerged} && %{build_main}
-Provides:       /sbin/ldconfig
-%endif
 
 %define __filter_GLIBC_PRIVATE 1
 %ifarch i686
@@ -183,6 +180,9 @@ Provides:       ld-linux.so.3(GLIBC_2.4)
 Requires(pre):  filesystem
 Recommends:     glibc-extra
 Provides:       rtld(GNU_HASH)
+%if %{with usrmerged}
+Provides:       /sbin/ldconfig
+%endif
 %endif
 %if %{build_utils}
 Requires:       glibc = %{version}
@@ -200,8 +200,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ###
 # Patches that upstream will not accept
 ###
-# PATCH-FIX-OPENSUSE Work around for nss-compat brokeness
-Patch1:         nss-revert-api.patch
 
 ###
 # openSUSE specific patches - won't go upstream
@@ -247,6 +245,16 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
+# PATCH-FIX-UPSTREAM nsswitch: return result when nss database is locked (BZ #27343)
+Patch1000:      nss-database-check-reload.patch
+# PATCH-FIX-UPSTREAM nss: Re-enable NSS module loading after chroot (BZ #27389)
+Patch1001:      nss-load-chroot.patch
+# PATCH-FIX-UPSTREAM x86: Set minimum x86-64 level marker (BZ #27318)
+Patch1002:      x86-isa-level.patch
+# PATCH-FIX-UPSTREAM nscd: Fix double free in netgroupcache (CVE-2021-27645, BZ #27462)
+Patch1003:      nscd-netgroupcache.patch
+# PATCH-FIX-UPSTREAM nss: fix nss_database_lookup2's alternate handling (BZ #27416)
+Patch1004:      nss-database-lookup.patch
 
 ###
 # Patches awaiting upstream approval
@@ -445,7 +453,6 @@ Internal usrmerge bootstrap helper
 
 %prep
 %setup -n glibc-%{version} -q -a 4
-%patch1 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
@@ -464,6 +471,12 @@ Internal usrmerge bootstrap helper
 
 %patch304 -p1
 %patch306 -p1
+
+%patch1000 -p1
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -503,16 +516,17 @@ echo "#define GITID \"%{git_id}\"" >> version.h
 #
 # Default CFLAGS and Compiler
 #
-BuildFlags="%{optflags} -U_FORTIFY_SOURCE"
 enable_stack_protector=
-for opt in $BuildFlags; do
+BuildFlags=
+tmp="%{optflags}"
+for opt in $tmp; do
   case $opt in
-    -fstack-protector-strong) enable_stack_protector=strong ;;
-    -fstack-protector-all) enable_stack_protector=all ;;
+    -fstack-protector-*) enable_stack_protector=${opt#-fstack-protector-} ;;
     -fstack-protector) enable_stack_protector=yes ;;
+    -ffortify=* | *_FORTIFY_SOURCE*) ;;
+    *) BuildFlags+=" $opt" ;;
   esac
 done
-BuildFlags=$(echo $BuildFlags | sed -e 's#-fstack-protector[^ ]*##' -e 's#-ffortify=[0-9]*##')
 BuildCC="%__cc"
 BuildCCplus="%__cxx"
 #
@@ -547,10 +561,6 @@ BuildCCplus="%__cxx"
 %ifarch hppa
 	BuildFlags="$BuildFlags -mpa-risc-1-1 -fstrict-aliasing"
 %endif
-# Add flags for all plattforms except AXP
-%ifnarch alpha
-	BuildFlags="$BuildFlags -g"
-%endif
 %if %{disable_assert}
 	BuildFlags="$BuildFlags -DNDEBUG=1"
 %endif
@@ -565,7 +575,7 @@ BuildCCplus="%__cxx"
 mkdir cc-base
 cd cc-base
 %ifarch %arm aarch64
-# remove asynchronous-unwind-tables during configure as it causes
+# remove [asynchronous-]unwind-tables during configure as it causes
 # some checks to fail spuriously on arm
 conf_cflags="${BuildFlags/-fasynchronous-unwind-tables/}"
 conf_cflags="${conf_cflags/-funwind-tables/}"
@@ -578,8 +588,6 @@ profile="--enable-profile"
 %else
 profile="--disable-profile"
 %endif
-# Disable x86 ISA level support for now (bsc#1182522)
-export libc_cv_include_x86_isa_level=no
 ../configure \
 	CFLAGS="$conf_cflags" BUILD_CFLAGS="$conf_cflags" \
 	CC="$BuildCC" CXX="$BuildCCplus" \

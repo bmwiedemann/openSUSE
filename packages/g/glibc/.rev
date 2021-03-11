@@ -2434,4 +2434,22 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   BZ #27416) (forwarded request 876230 from Andreas_Schwab)</comment>
     <requestid>876231</requestid>
   </revision>
+  <revision rev="247" vrev="4">
+    <srcmd5>4592cbb2c37c0b43be462bd6aa2e5677</srcmd5>
+    <version>2.33</version>
+    <time>1615489619</time>
+    <user>dimstar_suse</user>
+    <comment>- nss-database-check-reload.patch: nsswitch: return result when nss
+  database is locked (BZ #27343)
+- nss-load-chroot.patch: nss: Re-enable NSS module loading after chroot
+  (bsc#1182323, BZ #27389)
+- x86-isa-level.patch: x86: Set minimum x86-64 level marker (bsc#1182522,
+  BZ #27318)
+- nss-database-lookup.patch: nss: fix nss_database_lookup2's alternate
+  handling (bsc#1182247, BZ #27416)
+- nss-revert-api.patch: remove
+- nscd-netgroupcache.patch: nscd: Fix double free in netgroupcache
+  (CVE-2021-27645, bsc#1182733, BZ #27462)</comment>
+    <requestid>878145</requestid>
+  </revision>
 </revisionlist>

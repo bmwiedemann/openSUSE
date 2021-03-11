@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  8 10:43:30 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- nss-database-check-reload.patch: nsswitch: return result when nss
+  database is locked (BZ #27343)
+- nss-load-chroot.patch: nss: Re-enable NSS module loading after chroot
+  (bsc#1182323, BZ #27389)
+- x86-isa-level.patch: x86: Set minimum x86-64 level marker (bsc#1182522,
+  BZ #27318)
+- nss-database-lookup.patch: nss: fix nss_database_lookup2's alternate
+  handling (bsc#1182247, BZ #27416)
+- nss-revert-api.patch: remove
+- nscd-netgroupcache.patch: nscd: Fix double free in netgroupcache
+  (CVE-2021-27645, bsc#1182733, BZ #27462)
+
+-------------------------------------------------------------------
 Tue Mar  2 11:57:15 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Disable x86 ISA level for now (bsc#1182522, BZ #27318)
