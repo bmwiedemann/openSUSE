@@ -186,4 +186,12 @@
   - Update test engine version to 19.03.12</comment>
     <requestid>857122</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6e0f43e557099194cc4404c09dadd36a</srcmd5>
+    <version>4.4.4</version>
+    <time>1615489843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878139</requestid>
+  </revision>
 </revisionlist>

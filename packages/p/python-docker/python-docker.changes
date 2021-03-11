@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar  8 18:07:25 UTC 2021 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update to 4.4.4
+
+From project changelog:
+	4.4.4
+		Bugfixes
+			Remove LD_LIBRARY_PATH and SSL_CERT_FILE environment variables when shelling out to the ssh client
+	4.4.3
+		Features
+			Add support for docker.types.Placement.MaxReplicas
+		Bugfixes
+			Fix SSH port parsing when shelling out to the ssh client
+	4.4.2
+		Bugfixes
+			Fix SSH connection bug where the hostname was incorrectly trimmed and the error was hidden
+			Fix docs example
+		Miscellaneous
+			Add Python3.8 and 3.9 in setup.py classifier list
+	4.4.1
+		Bugfixes
+			Avoid setting unsuported parameter for subprocess.Popen on Windows
+			Replace use of deprecated "filter" argument on ""docker/api/image"
+
+
+-------------------------------------------------------------------
 Sun Dec 20 09:56:10 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:

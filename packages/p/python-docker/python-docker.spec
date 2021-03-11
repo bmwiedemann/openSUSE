@@ -1,7 +1,7 @@
 #
 # spec file for package python-docker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-docker
-Version:        4.4.0
+Version:        4.4.4
 Release:        0
 Summary:        Docker API Client
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/docker/docker-py
-Source0:        https://github.com/docker/docker-py/archive/%{version}.tar.gz
+URL:            https://pypi.org/project/docker
+Source0:        https://files.pythonhosted.org/packages/source/d/docker/docker-%{version}.tar.gz
 BuildRequires:  %{python_module docker-pycreds >= 0.4.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module paramiko >= 2.4.2}
@@ -67,7 +67,7 @@ Provides:       %{oldpython}-docker-py = %{version}
 A docker API client in Python
 
 %prep
-%setup -q -n docker-py-%{version}
+%setup -q -n docker-%{version}
 
 %build
 %python_build
