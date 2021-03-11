@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 11 17:20:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.27.0
+  * New features:
+    - Added fz::normalize_hypens to replace all hyphen-like 
+      characters in a string with the good old hyphen-minus
+    - Added fz::pbkdf2_hmac_sha256
+    - Added visibility_helper.hpp to simplify exporting symbols in
+      shared libraries
+    - Added fz::compound_rate_limited_layer to which multiple rate
+      limiters can be dynamically added/removed
+    - Added redirect_io parameter to fz::process::spawn
+    - Added --enable-socketdebug configure argument to check for
+      invariant violation when handling socket events
+    - Added a optional preamble to server_handshake that is sent
+      after initializing the session, but before the SERVER_HELLO
+  * Bugfixes and minor changes:
+    - Various fixes to socket event retriggering if 
+      socket_interface::set_event_handler is used
+    - Fixed a nullpointer dereference in fz::tls_layer if a
+      hostname is set prior to creating a session
+
+-------------------------------------------------------------------
 Mon Jan  4 09:22:01 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.26.0
