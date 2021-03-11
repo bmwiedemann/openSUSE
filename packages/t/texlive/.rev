@@ -830,4 +830,14 @@
   as otherwise UTF-8 characters are missed in the output</comment>
     <requestid>826037</requestid>
   </revision>
+  <revision rev="70" vrev="73">
+    <srcmd5>1e3a570e6e3a0c07c0e46113825bcd87</srcmd5>
+    <version>unknown</version>
+    <time>1615489713</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+- Skip packages which are based on python2</comment>
+    <requestid>877922</requestid>
+  </revision>
 </revisionlist>

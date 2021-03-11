@@ -1,4 +1,6 @@
+<?xml version="1.0"?>
 <constraints>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
   <hardware>
     <disk>
       <size unit="G">4</size>

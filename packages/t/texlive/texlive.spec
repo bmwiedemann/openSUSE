@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define texlive_version  2020
 %define texlive_previous 2019
 %define texlive_release  20200327
-%define texlive_noarch   177
+%define texlive_noarch   182
 %define texlive_source   texlive-20200327-source
 
 %define __perl_requires		%{nil}
@@ -297,7 +297,9 @@ Obsoletes:      pdfjam < %{version}
 
 %{expand: %%global options %(mktemp /tmp/texlive-opts.XXXXXXXX)}
 %global _varlib		%{_localstatedir}/lib
-%global _libexecdir	%{_prefix}/lib
+
+%define libexec %(rpm --eval '%%{_libexecdir}' | sed 's-/usr--g')
+%define libexecdir	${prefix}%{libexec}
 
 %define _texmfdistdir	%{_datadir}/texmf
 %if 0%{texlive_version} >= 2013
@@ -1198,20 +1200,6 @@ Prefix:         %{_bindir}
 
 %description dvisvgm-bin
 Binary files of dvisvgm
-
-%package ebong-bin
-Version:        %{texlive_version}.%{texlive_release}.svn21000
-Release:        0
-Summary:        Binary files of ebong
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
-Requires(pre):  texlive-ebong >= %{texlive_version}
-#!BuildIgnore:  texlive-ebong
-Prefix:         %{_bindir}
-
-%description ebong-bin
-Binary files of ebong
 
 %package eplain-bin
 Version:        %{texlive_version}.%{texlive_release}.svn3006
@@ -2650,23 +2638,6 @@ Prefix:         %{_bindir}
 %description purifyeps-bin
 Binary files of purifyeps
 
-%package pygmentex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn34996
-Release:        0
-Summary:        Binary files of pygmentex
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://www.tug.org/texlive/
-Requires(pre):  texlive-pygmentex >= %{texlive_version}
-#!BuildIgnore:  texlive-pygmentex
-Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
-Recommends:     texlive-collection-genericrecommended >= %{texlive_version}
-Recommends:     texlive-collection-basic >= %{texlive_version}
-Prefix:         %{_bindir}
-
-%description pygmentex-bin
-Binary files of pygmentex
-
 %package pythontex-bin
 Version:        %{texlive_version}.%{texlive_release}.svn31638
 Release:        0
@@ -4095,8 +4066,8 @@ fi
     popd
 
     # compile public
-    mkdir -p ${prefix}/lib/mktex
-    $CC ${RPM_OPT_FLAGS} -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' -DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o ${prefix}/lib/mktex/public %{S:50}
+    mkdir -p %{libexecdir}/mktex
+    $CC ${RPM_OPT_FLAGS} -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' -DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o %{libexecdir}/mktex/public %{S:50}
 
     # install our own scripts
     mkdir -p ${prefix}/bin
@@ -4210,6 +4181,8 @@ fi
     popd
     pushd ${prefix}/lib/
 	tar -cpSf - *.so* | tar -xvspSf - -C %{buildroot}%{_libdir}/
+    popd
+    pushd %{libexecdir}/
 	tar -cpSf - mktex | tar -xvspSf - -C %{buildroot}%{_libexecdir}/
     popd
     pushd ${prefix}/share/texmf
@@ -4448,6 +4421,9 @@ fi
 		q
 	EOF
     done
+# Currently disabled due python2 requirement
+rm -vf %{buildroot}%{_bindir}/ebong
+rm -vf %{buildroot}%{_bindir}/pygmentex
 
 %if %{defined verify_permissions}
 %verifyscript kpathsea-bin
@@ -4817,10 +4793,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files dvisvgm-bin
 %defattr(-,root,root,755)
 %{_bindir}/dvisvgm
-
-%files ebong-bin
-%defattr(-,root,root,755)
-%{_bindir}/ebong
 
 %files eplain-bin
 %defattr(-,root,root,755)
@@ -5302,10 +5274,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files purifyeps-bin
 %defattr(-,root,root,755)
 %{_bindir}/purifyeps
-
-%files pygmentex-bin
-%defattr(-,root,root,755)
-%{_bindir}/pygmentex
 
 %files pythontex-bin
 %defattr(-,root,root,755)
