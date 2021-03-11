@@ -389,4 +389,12 @@
     <comment>Enhance spec file geneerator to find missing .so man page link for better dependency resolution</comment>
     <requestid>806934</requestid>
   </revision>
+  <revision rev="40" vrev="43">
+    <srcmd5>7d0fa7b17379e8facb95eedd316985c0</srcmd5>
+    <version>unknown</version>
+    <time>1615489792</time>
+    <user>dimstar_suse</user>
+    <comment>Add patch de-macro_p2top3.dif</comment>
+    <requestid>877946</requestid>
+  </revision>
 </revisionlist>
