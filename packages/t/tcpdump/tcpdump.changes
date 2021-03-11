@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Feb 19 14:07:16 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix excess of precission in floating point registers for i586
+  until resolved upstream.
+
+-------------------------------------------------------------------
+Mon Jan  4 13:01:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 4.99.0
+  IMPORTANT: Upsteam moved the default install directory to bindir.
+      For compatibility, tcpdump is still being installed in
+      sbindir and a symlink in bindir has been added.
+  * Print unsupported link-layer protocol packets in hex.
+  * Add support for new network protocols and DLTs: Arista, Autosar
+    SOME/IP, Broadcom LI and Ethernet switches tag, IEEE 802.15.9,
+    IP-over-InfiniBand (IPoIB), Linux SLL2, Linux vsockmon, MACsec,
+    Marvell Distributed Switch Architecture, OpenFlow 1.3, Precision
+    Time Protocol (PTP), SSH, WHOIS, ZigBee Encapsulation Protocol (ZEP).
+  * Make protocol-specific updates for: AH, DHCP, DNS, ESP, FRF.16,
+    HNCP, ICMP6, IEEE 802.15.4, IPv6, IS-IS, Linux SLL, LLDP, LSP
+    ping, MPTCP, NFS, NSH, NTP, OSPF, OSPF6, PGM, PIM, PPTP, RADIUS,
+    RSVP, Rx, SMB, UDLD, VXLAN-GPE.
+  * User interface:
+    - Make SLL2 the default for Linux "any" pseudo-device.
+    - Add --micro and --nano shorthands.
+    - Add --count to print a counter only instead of decoding.
+    - Add --print, to cause packet printing even with -w.
+    - Add support for remote capture if libpcap supports it.
+    - Flush the output packet buffer on a SIGUSR2.
+    - Handle very large -f files by rejecting them.
+  * Source code:
+    - Introduce new helper functions, including GET_*(),
+      nd_print_protocol(), nd_print_invalid(), nd_print_trunc(),
+      nd_trunc_longjmp() and others.
+    - Put integer signedness right in many cases.
+    - Introduce nd_uint*, nd_mac_addr, nd_ipv4 and nd_ipv6 types
+      to fix alignment issues, especially on SPARC.
+    - Use a table instead of getprotobynumber().
+    - Get rid of ND_UNALIGNED and ND_TCHECK().
+    - Make roundup2() generally available.
+    - Resync SMI list against Wireshark.
+- Remove patches fixed upstream:
+  * tcpdump-CVE-2018-19519.patch
+  * tcpdump-CVE-2020-8037.patch
+
+-------------------------------------------------------------------
+Mon Jan  4 12:53:10 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove unrecognized configure option: enable-ipv6
+
+-------------------------------------------------------------------
 Thu Nov  5 10:58:11 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1178466, CVE-2020-8037]
