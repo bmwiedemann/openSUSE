@@ -33,6 +33,7 @@ BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 Requires:       bc
 Requires:       man
 Recommends:     terminfo
@@ -71,6 +72,8 @@ find share/tools -type f -name *.py -exec sed -i -r '1s|^#!%{_bindir}/env |#!%{_
 rm %{buildroot}/%{_datadir}/fish/completions/curl.fish
 
 rm %{buildroot}/%{_datadir}/doc/fish/.buildinfo
+
+%suse_update_desktop_file -G "Command-line interpreter" fish TerminalEmulator
 
 %post
 # Add fish to the list of allowed shells in /etc/shells
