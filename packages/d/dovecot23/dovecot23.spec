@@ -19,11 +19,11 @@
 %global _lto_cflags %{nil}
 
 Name:           dovecot23
-Version:        2.3.13
+Version:        2.3.14
 Release:        0
 %define pkg_name dovecot
-%define dovecot_version 2.3.13
-%define dovecot_pigeonhole_version 0.5.13
+%define dovecot_version 2.3.14
+%define dovecot_pigeonhole_version 0.5.14
 %define dovecot_branch  2.3
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -132,9 +132,9 @@ Recommends:     %{name}-backend-sqlite = %{version}
 %endif
 Recommends:     %{name}-fts = %{version}
 Recommends:     %{name}-fts-squat = %{version}
-URL:            http://www.dovecot.org
-Source:         http://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz
-Source1:        http://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz
+URL:            https://www.dovecot.org
+Source:         https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz
+Source1:        https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz
 Source2:        dovecot-rpmlintrc
 Source3:        dovecot-2.0.configfiles
 Source4:        dovecot-2.1.configfiles
@@ -143,15 +143,13 @@ Source6:        dovecot-2.3.configfiles
 Source7:        dovecot-2.1-pigeonhole.configfiles
 Source8:        dovecot-2.2-pigeonhole.configfiles
 Source9:        dovecot-2.3-pigeonhole.configfiles
-Source10:       http://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz.sig
-Source11:       http://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz.sig
+Source10:       https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz.sig
+Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz.sig
 Source12:       dovecot23.keyring
 Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
 #               https://github.com/dovecot/core/pull/126
 Patch2:         allow-tls1.3-only.patch
-#               https://github.com/dovecot/core/pull/149
-Patch3:         fix-timeval_cmp_margin-for-32bit-systems.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
@@ -332,7 +330,6 @@ dovecot tree.
 %patch -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 gzip -9v ChangeLog
 # Fix plugins dir.
 sed -i 's|#mail_plugin_dir = /usr/lib/dovecot|mail_plugin_dir = %{_libdir}/dovecot/modules|' doc/example-config/conf.d/10-mail.conf
@@ -592,9 +589,11 @@ fi
 %{_libdir}/%{pkg_name}/libdovecot-lda.so.*
 %{_libdir}/%{pkg_name}/libdovecot-ldap.so.*
 %{_libdir}/%{pkg_name}/libdovecot-login.so.*
+%{_libdir}/%{pkg_name}/libdovecot-lua.so.*
 %{_libdir}/%{pkg_name}/libdovecot-sieve.so.*
 %{_libdir}/%{pkg_name}/libdovecot-sql.so.*
 %{_libdir}/%{pkg_name}/libdovecot-storage.so.*
+%{_libdir}/%{pkg_name}/libdovecot-storage-lua.so.*
 %if %{with dcrypt_openssl}
 %{_libdir}/%{pkg_name}/libdcrypt_openssl.so
 %endif
@@ -606,11 +605,9 @@ fi
 %{_libdir}/%{pkg_name}/modules/lib02_lazy_expunge_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib05_mail_crypt_acl_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib05_pop3_migration_plugin.so
-%{_libdir}/%{pkg_name}/modules/lib05_snarf_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib10_last_login_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib01_mail_lua_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib10_mail_crypt_plugin.so
-%{_libdir}/%{pkg_name}/modules/lib10_mail_filter_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib10_quota_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib11_trash_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib15_notify_plugin.so
@@ -618,11 +615,9 @@ fi
 %{_libdir}/%{pkg_name}/modules/lib20_mailbox_alias_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib20_notify_status_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib20_charset_alias_plugin.so
-%{_libdir}/%{pkg_name}/modules/lib20_expire_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib20_var_expand_crypt.so
 %{_libdir}/%{pkg_name}/modules/lib20_zlib_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib20_push_notification_plugin.so
-%{_libdir}/%{pkg_name}/modules/lib20_autocreate_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib20_listescape_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib20_quota_clone_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib20_replication_plugin.so
@@ -656,7 +651,6 @@ fi
 %dir %{_libdir}/%{pkg_name}/modules/doveadm
 %{_libdir}/%{pkg_name}/modules/doveadm/libdoveadm_mail_crypt_plugin.so
 %{_libdir}/%{pkg_name}/modules/doveadm/lib10_doveadm_acl_plugin.so
-%{_libdir}/%{pkg_name}/modules/doveadm/lib10_doveadm_expire_plugin.so
 %{_libdir}/%{pkg_name}/modules/doveadm/lib10_doveadm_quota_plugin.so*
 %{_libdir}/%{pkg_name}/modules/doveadm/lib10_doveadm_sieve_plugin.so
 #
@@ -759,8 +753,10 @@ fi
 %{_libdir}/%{pkg_name}/libdovecot-lda.so
 %{_libdir}/%{pkg_name}/libdovecot-ldap.so
 %{_libdir}/%{pkg_name}/libdovecot-login.so
+%{_libdir}/%{pkg_name}/libdovecot-lua.so
 %{_libdir}/%{pkg_name}/libdovecot-sieve.so
 %{_libdir}/%{pkg_name}/libdovecot-sql.so
 %{_libdir}/%{pkg_name}/libdovecot-storage.so
+%{_libdir}/%{pkg_name}/libdovecot-storage-lua.so
 
 %changelog
