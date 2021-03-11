@@ -74,7 +74,6 @@ Source13:       rpmconfigcheck.service
 Patch2:         db.diff
 Patch5:         usr-lib-sysimage-rpm.patch
 # quilt patches start here
-Patch11:        debugedit.diff
 Patch13:        ignore-auxv.diff
 Patch12:        localetag.diff
 Patch15:        dbfsync.diff
@@ -129,6 +128,7 @@ Patch123:       nextiteratorheaderblob.diff
 Patch127:       finddebuginfo-check-res-file.patch
 Patch128:       empty_dbbackend.diff
 Patch129:       ndbglue.diff
+Patch130:       dwarf5.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -244,7 +244,7 @@ rm -f rpmdb/db.h
 cp build-aux/config.guess build-aux/config.sub db/dist/
 %endif
 %patch5 -p1
-%patch       -P 11 -P 12 -P 13       -P 15 -P 16       -P 18
+%patch       -P 12 -P 13       -P 15 -P 16       -P 18
 %patch -P 20 -P 21             -P 24 -P 25 -P 26 -P 27       -P 29
 %patch -P 30       -P 32 -P 33 -P 34 -P 35 -P 36       -P 38
 %patch                   -P 43       -P 45 -P 46 -P 47       -P 49
@@ -256,6 +256,7 @@ cp build-aux/config.guess build-aux/config.sub db/dist/
 %patch -P 100        -P 102 -P 103
 %patch -P 109                                           -P 117
 %patch -P 122 -P 123 -P 127 -P 128 -P 129
+%patch130 -p1
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464

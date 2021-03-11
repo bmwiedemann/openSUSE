@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 22 12:57:44 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Remove debugedit.diff and include dwarf5.diff in order to support
+  debug DWARF 5 that will be added with GCC 11.
+
+-------------------------------------------------------------------
 Mon Feb  8 09:38:33 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Use shipped config.sub/config.guess instead of stone-aged from libtool

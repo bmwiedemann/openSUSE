@@ -2246,4 +2246,12 @@ See bugzilla 1167537 for the gory details.</comment>
 - auto-config-update-aarch64-ppc64le.diff: update grep regex (forwarded request 870226 from Andreas_Schwab)</comment>
     <requestid>870434</requestid>
   </revision>
+  <revision rev="287" vrev="4">
+    <srcmd5>a1d0c34d49337a95597c66b6308ed8b9</srcmd5>
+    <version>4.16.0</version>
+    <time>1615489611</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877741</requestid>
+  </revision>
 </revisionlist>
