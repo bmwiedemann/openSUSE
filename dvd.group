@@ -1591,6 +1591,7 @@
     <package name="libSDL_image-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSDL_mixer-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libSPIRV-Tools-suse19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libSoapySDR0_7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libUsageEnvironment3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1987,6 +1988,7 @@
     <package name="libgle3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libglslang11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libglusterfs0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libglyr1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2172,7 +2174,6 @@
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjsonrpc-glib-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="libjte1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libkColorPicker0_1_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkImageAnnotator0_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkaccounts2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2242,7 +2243,7 @@
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libliveMedia81" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="liblmdb-0_9_24" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="liblmdb-0_9_28" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
@@ -2430,6 +2431,7 @@
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpkcs11-helper1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libplacebo104" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libplist-2_0-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libply-boot-client5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libply-splash-core5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2617,6 +2619,7 @@
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsgutils2-1_45-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libshout3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsigc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsignon-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2730,6 +2733,7 @@
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libturbojpeg0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libtwolame0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libubsan1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libudisks2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libudisks2-0_btrfs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5319,7 +5323,6 @@
     <package name="libtiff5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtirpc3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtsan0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libubsan1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libudev-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libudev1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libunistring2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -4631,6 +4631,8 @@ unsorted:
   - ghc-indexed-profunctors-devel: [x86_64] 
   - ghc-indexed-traversable: [x86_64] 
   - ghc-indexed-traversable-devel: [x86_64] 
+  - ghc-indexed-traversable-instances: [x86_64] 
+  - ghc-indexed-traversable-instances-devel: [x86_64] 
   - ghc-infer-license: [x86_64] 
   - ghc-infer-license-devel: [x86_64] 
   - ghc-integer-logarithms: [x86_64] 
@@ -7851,27 +7853,6 @@ unsorted:
   - kontactinterface-devel 
   - kontrast 
   - kontrast-lang 
-  - kopano-archiver 
-  - kopano-backup 
-  - kopano-bash-completion 
-  - kopano-client 
-  - kopano-common 
-  - kopano-dagent 
-  - kopano-dagent-pytils 
-  - kopano-devel 
-  - kopano-gateway 
-  - kopano-ical 
-  - kopano-indexer 
-  - kopano-lang 
-  - kopano-migration-imap 
-  - kopano-migration-pst 
-  - kopano-monitor 
-  - kopano-python-utils 
-  - kopano-search 
-  - kopano-server 
-  - kopano-spamd 
-  - kopano-spooler 
-  - kopano-statsd 
   - kopano-webapp 
   - kopano-webapp-contactfax 
   - kopano-webapp-folderwidgets 
@@ -8950,7 +8931,6 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of dvd:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-suse19 
   - libSPIRV-Tools-suse19-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
@@ -10614,7 +10594,6 @@ unsorted:
   - libgloox18 
   - libgloox18-32bit: [x86_64] 
   - libglpk40 
-  - libglslang11 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -11269,6 +11248,7 @@ unsorted:
   - libjson-glib-1_0-0-32bit: [x86_64] 
   - libjsoncpp24 
   - libjte-devel 
+  - libjte1 
   - libjthread1_3_3 
   - libjxrglue0 
   - libkaccounts2-32bit: [x86_64] 
@@ -11278,17 +11258,8 @@ unsorted:
   - libkcapi-devel 
   - libkcapi-tools 
   - libkcapi1 
-  - libkcarchiver0 
   - libkcddb-devel 
-  - libkcfreebusy0 
-  - libkcicalmapi0 
-  - libkcindex0 
-  - libkcinetmapi0 
   - libkcompactdisc-devel 
-  - libkcpyplug0 
-  - libkcserver0 
-  - libkcsoap0 
-  - libkcutil0 
   - libkdcraw-devel 
   - libkdecoration2-devel 
   - libkdecoration2-devel-32bit: [x86_64] 
@@ -11495,7 +11466,7 @@ unsorted:
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
-  - liblmdb-0_9_24-32bit: [x86_64] 
+  - liblmdb-0_9_28-32bit: [x86_64] 
   - liblms7002m-devel 
   - liblms7compact0 
   - liblnk-devel 
@@ -11587,7 +11558,6 @@ unsorted:
   - libmaia-devel 
   - libmaia1 
   - libmanette-devel 
-  - libmapi1 
   - libmapidb-devel 
   - libmapidb1 
   - libmarblewidget-qt5-28 
@@ -12436,7 +12406,6 @@ unsorted:
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo104 
   - libplanarity0 
   - libplank1 
   - libplayerctl2 
@@ -13278,7 +13247,6 @@ unsorted:
   - libsfst-hfst0 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
-  - libshaderc_shared1 
   - libshadowdive0_0_0-suse 
   - libshadowsocks-libev2 
   - libsharp-devel 
@@ -13784,7 +13752,6 @@ unsorted:
   - libtwolame0-32bit: [x86_64] 
   - libubsan0 
   - libubsan0-32bit: [x86_64] 
-  - libubsan1: [i586] 
   - libubsan1-32bit: [x86_64] 
   - libubsan1-gcc10 
   - libubsan1-gcc10-32bit: [x86_64] 
@@ -19640,7 +19607,6 @@ unsorted:
   - php-Icinga 
   - php-composer 
   - php-cs-fixer 
-  - php-mapi 
   - php-pear-Auth_SASL 
   - php-pear-MDB2 
   - php-pear-MDB2_Driver_mysqli 
@@ -20840,7 +20806,6 @@ unsorted:
   - python3-keystoneclient 
   - python3-keystonemiddleware 
   - python3-kiwi 
-  - python3-kopano 
   - python3-lalapps: [x86_64] 
   - python3-lash 
   - python3-lasso 
@@ -20916,7 +20881,6 @@ unsorted:
   - python3-mailman-hyperkitty 
   - python3-mailman-web 
   - python3-manilaclient 
-  - python3-mapi 
   - python3-marisa 
   - python3-masakariclient 
   - python3-matrix-synapse-ldap3 
@@ -27371,6 +27335,7 @@ unsorted:
   - robinhood-tools: [x86_64] 
   - robinhood-webgui: [x86_64] 
   - rockdodger 
+  - rocket.term 
   - rocksndiamonds 
   - rocksndiamonds-data 
   - rocs 

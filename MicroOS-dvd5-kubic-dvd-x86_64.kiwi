@@ -327,7 +327,7 @@
       <repopackage name="libldap-2_4-2"/>
       <repopackage name="libldb2" arch="x86_64"/>
       <repopackage name="liblldp_clif1" arch="x86_64"/>
-      <repopackage name="liblmdb-0_9_24" arch="x86_64"/>
+      <repopackage name="liblmdb-0_9_28" arch="x86_64"/>
       <repopackage name="libltdl7" arch="x86_64"/>
       <repopackage name="liblttng-ust0" arch="x86_64"/>
       <repopackage name="liblua5_4-5"/>
