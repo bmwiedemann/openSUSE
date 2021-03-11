@@ -1,0 +1,17 @@
+--- openafs-1.8.3/src/cf/dirpaths.m4.orig	2019-04-30 13:38:33.411870333 +0200
++++ openafs-1.8.3/src/cf/dirpaths.m4	2019-04-30 13:48:06.182604169 +0200
+@@ -20,10 +20,10 @@
+     afssrvbindir=${afssrvbindir='${bindir}'}
+     afssrvsbindir=${afssrvsbindir='${sbindir}'}
+     afssrvlibexecdir=${afssrvlibexecdir='${libexecdir}/openafs'}
+-    afsdbdir=${afsdbdir='${localstatedir}/openafs/db'}
+-    afslogsdir=${afslogsdir='${localstatedir}/openafs/logs'}
+-    afslocaldir=${afslocaldir='${localstatedir}/openafs'}
+-    afsbackupdir=${afsbackupdir='${localstatedir}/openafs/backup'}
++    afsdbdir=${afsdbdir='/var/lib/openafs/db'}
++    afslogsdir=${afslogsdir='/var/log/openafs'}
++    afslocaldir=${afslocaldir='/var/lib/openafs'}
++    afsbackupdir=${afsbackupdir='/var/lib/openafs/backup'}
+     afsbosconfigdir=${afsbosconfigdir='${sysconfdir}/openafs'}
+     afsdatadir=${afsdatadir='${datadir}/openafs'}
+ fi
