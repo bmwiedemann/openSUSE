@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-v2ray-plugin
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   provider        github
 %define   provider_tld    com
@@ -28,15 +29,17 @@ Version:        1.3.1
 Release:        0
 Summary:        SIP003 plugin for shadowsocks
 License:        MIT
+Group:          Productivity/Networking/Security
 URL:            https://github.com/shadowsocks/v2ray-plugin
 Source0:        https://github.com/shadowsocks/v2ray-plugin/archive/v%{version}/%{repo}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Group:          Productivity/Networking/Security
+# PATCH-FIX-UPSTEAM switch-to-v2fly.patch hillwood@opensuse.org - Switch to v2fly
+Patch0:         switch-to-v2fly.patch
 BuildRequires:  fdupes
+BuildRequires:  golang-github-v2fly-v2ray-core
 BuildRequires:  golang-packaging
-BuildRequires:  golang-github-v2ray-v2ray-core
+BuildRequires:  golang(API) = 1.15
 BuildRequires:  golang(v2ray.com/core)
-BuildRequires:  golang(API) = 1.14
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
@@ -48,9 +51,8 @@ Yet another SIP003 plugin for shadowsocks, based on v2ray
 Summary:        Additional mobile libraries
 Group:          Development/Languages/Golang
 Requires:       golang(v2ray.com/core)
-BuildRequires:  golang-github-v2ray-v2ray-core
+BuildRequires:  golang-github-v2fly-v2ray-core
 BuildArch:      noarch
-AutoReqProv:    On
 
 %description -n golang-%{provider}-%{project}-%{repo}
 Yet another SIP003 plugin for shadowsocks, based on v2ray
@@ -58,7 +60,7 @@ Yet another SIP003 plugin for shadowsocks, based on v2ray
 This package provide source code for shadowsocks-%{repo}
 
 %prep
-%setup -q -a1 -n %{repo}-%{version}
+%autosetup -p1 -a1 -n %{repo}-%{version}
 rm go.sum go.mod
 
 %build
