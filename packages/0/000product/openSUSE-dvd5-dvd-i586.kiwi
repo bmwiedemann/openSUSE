@@ -1719,6 +1719,7 @@
       <repopackage name="libgle3"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1"/>
+      <repopackage name="libglslang11"/>
       <repopackage name="libGLU1"/>
       <repopackage name="libglusterfs0"/>
       <repopackage name="libglvnd"/>
@@ -1913,7 +1914,6 @@
       <repopackage name="libjson-c5"/>
       <repopackage name="libjson-glib-1_0-0"/>
       <repopackage name="libjsonrpc-glib-1_0-1"/>
-      <repopackage name="libjte1"/>
       <repopackage name="libJudy1"/>
       <repopackage name="libkaccounts2"/>
       <repopackage name="libkasten-lang"/>
@@ -2152,7 +2152,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia81"/>
       <repopackage name="libLLVM11"/>
-      <repopackage name="liblmdb-0_9_24"/>
+      <repopackage name="liblmdb-0_9_28"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
       <repopackage name="liblogging0"/>
@@ -2345,6 +2345,7 @@
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
+      <repopackage name="libplacebo104"/>
       <repopackage name="libplist-2_0-3"/>
       <repopackage name="libply-boot-client5"/>
       <repopackage name="libply-splash-core5"/>
@@ -2584,6 +2585,7 @@
       <repopackage name="libserializer"/>
       <repopackage name="libsgutils2-1_45-2"/>
       <repopackage name="libsha1detectcoll1"/>
+      <repopackage name="libshaderc_shared1"/>
       <repopackage name="libshout3"/>
       <repopackage name="libsigc-2_0-0"/>
       <repopackage name="libsignon-qt5-1"/>
@@ -2624,6 +2626,7 @@
       <repopackage name="libspice-client-glib-helper"/>
       <repopackage name="libspice-client-gtk-3_0-5"/>
       <repopackage name="libspice-server1"/>
+      <repopackage name="libSPIRV-Tools-suse19"/>
       <repopackage name="libsqlite3-0"/>
       <repopackage name="libsratom-0-0"/>
       <repopackage name="libsrt1"/>
@@ -2700,6 +2703,7 @@
       <repopackage name="libtumbler-1-0"/>
       <repopackage name="libturbojpeg0"/>
       <repopackage name="libtwolame0"/>
+      <repopackage name="libubsan1"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudisks2-0"/>
       <repopackage name="libudisks2-0_btrfs"/>
