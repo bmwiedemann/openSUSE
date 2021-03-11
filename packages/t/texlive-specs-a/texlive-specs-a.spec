@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-a
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2020
 %define texlive_previous 2019
 %define texlive_release  20200327
-%define texlive_noarch   176
+%define texlive_noarch   182
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -67,7 +67,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for a
-License:        Apache-1.0 and BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
+License:        Apache-1.0 AND BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-a-rpmlintrc
