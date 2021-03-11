@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sat Mar  6 16:35:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.13.0
+  Added
+  * Pretty printer now supports dataclasses
+  Fixed
+  * Fixed Syntax background #1088
+  * Fix for double tracebacks when no formatter #1079
+  Changed
+  * Added ws and wss to url highlighter
+
+-------------------------------------------------------------------
+Tue Mar  2 07:23:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.12.4
+  Fixed
+  * Fixed custom formatters with rich tracebacks in RichHandler.
+  Changed
+  * Allow highly compressed table cells to go to 0 width
+  * Optimization to remove empty styles in various places
+- Update to version 9.12.3
+  Changed
+  * Optimized Padding
+- Update to version 9.12.2
+  Added
+  * Added ConsoleOptions.copy
+  Changed
+  * Optimized ConsoleOptions.update
+- Update to version 9.12.1
+  Fixed
+  * Fixed deadlock in Progress
+  Added
+  * Added Task.finished_speed
+  Changed
+  * Froze TransferSpeedColumn speed when task is finished
+  * Added SIGINT handler to downloader.py example
+  * Optimization for large tables
+- Update to version 9.12.0
+  Fixed
+  * Fixed issue with Syntax and missing lines in Layout
+  * Fixed issue with nested markdown elements
+  * Fixed new lines not invoking render hooks
+  * Fixed Align setting height to child
+  Changed
+  * Printing a table with no columns now result in a blank line
+  Added
+  * Added height to Panel
+- Update to version 9.11.1
+  Fixed
+  * Fixed table with expand=False not expanding when
+    justify="center"
+  * Fixed single renderable in Layout not respecting height
+  * Fixed COLUMNS and LINES env var #1019
+  * Layout now respects minimum_size when fixes sizes are greater
+    than available space
+  * HTML export now changes link underline score to match terminal.
+  Changed
+  * python -m rich.markdown and rich.syntax show usage with no
+    file.
+  Added
+  * Added height parameter to Layout
+  * Added python -m rich.segment
+- Update to version 9.11.0
+  Fixed
+  * Fixed error message for tracebacks with broken __str__ #980
+  * Fixed markup edge case #987
+  Added
+  * Added cheeky sponsorship request to test card
+  * Added quiet argument to Console constructor
+  * Added support for a callback function to format timestamps
+    (allows presentation of milliseconds)
+  * Added Console.set_alt_screen and Console.screen
+  * Added height to ConsoleOptions
+  * Added vertical parameter to Align
+  * Added Layout class
+  Changed
+  * Pretty.overflow now defaults to None
+  * Panel now respects options.height
+  * Traceback lexer defaults to Python if no extension on source
+  * Added ConsoleDimensions size attribute to ConsoleOptions so
+    that size can't change mid-render
+- Update to version 9.10.0
+  Changed
+  * Some optimizations for Text
+  * Further optimized Tracebacks by not tokenizing code more that
+    necessary
+  * Table Column.header_style and Column.footer_style are now
+    added to Table header/footer style
+
+-------------------------------------------------------------------
 Mon Jan 25 10:30:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 9.9.0
