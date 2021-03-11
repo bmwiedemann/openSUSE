@@ -1,7 +1,7 @@
 #
 # spec file for package python-sentry-sdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %define skip_python2 1
 Name:           python-sentry-sdk
-Version:        0.19.5
+Version:        1.0.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -30,13 +30,13 @@ Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/se
 BuildRequires:  %{python_module Flask >= 0.11}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
 BuildRequires:  %{python_module aiohttp >= 3.5}
+BuildRequires:  %{python_module asttokens}
 BuildRequires:  %{python_module blinker >= 1.1}
 BuildRequires:  %{python_module bottle >= 0.12.13}
 BuildRequires:  %{python_module celery >= 3}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module executing}
 BuildRequires:  %{python_module falcon >= 1.4}
-BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module rq >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5}
@@ -48,8 +48,12 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module pyramid}
-BuildRequires:  %{python_module pytest-localserver}
+BuildRequires:  %{python_module pyrsistent}
+BuildRequires:  %{python_module pytest-cov >= 2.8.1}
+BuildRequires:  %{python_module pytest-forked >= 1.1.3}
+BuildRequires:  %{python_module pytest-localserver >= 0.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox}
 # /SECTION
@@ -59,12 +63,12 @@ BuildRequires:  %{python_module tox}
 #BuildRequires:  %%{python_module apache-beam >= 2.12}
 #BuildRequires:  %%{python_module pyspark >= 2.4.4}
 #BuildRequires:  %%{python_module pure_eval}
-#BuildRequires:  %%{python_module asttokens}
 #BuildRequires:  %%{python_module chalice >= 1.16.0}
 # /SECTION
 Requires:       python-Flask >= 0.11
 Requires:       python-SQLAlchemy >= 1.2
 Requires:       python-aiohttp >= 3.5
+Requires:       python-asttokens
 Requires:       python-blinker >= 1.1
 Requires:       python-bottle >= 0.12.13
 Requires:       python-celery >= 3
@@ -81,7 +85,6 @@ Requires:       python-urllib3
 #Requires:       python-apache-beam >= 2.12
 #Requires:       python-pyspark >= 2.4.4
 #Requires:       python-pure_eval
-#Requires:       python-asttokens
 #Requires:       python-chalice >= 1.16.0
 # /SECTION
 BuildArch:      noarch
@@ -112,7 +115,7 @@ rm -r tests/integrations
 %pytest -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename or test_transport_infinite_loop or test_simple_rate_limits or test_data_category_limits or test_complex_limits_without_data_category)'
 
 %files %{python_files}
-%doc README.md CHANGES.md
+%doc README.md CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/*
 
