@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 11 11:30:14 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1615462203.793fdffe:
+  * Make hyperv powershell commands work in non-interactive ssh session
+
+-------------------------------------------------------------------
 Sun Mar 07 00:02:34 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1614955627.711a5797:
