@@ -19,4 +19,12 @@
 - Fix texinfo file installation. (forwarded request 869487 from eeich)</comment>
     <requestid>869552</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3ebd764db1c656089e97102b1d706039</srcmd5>
+    <version>0.16.0</version>
+    <time>1615489904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878329</requestid>
+  </revision>
 </revisionlist>

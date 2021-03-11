@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 26 22:06:36 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Remove BuildRequires for patterns-base-basesystem and
+  distribution-release.
+
+-------------------------------------------------------------------
 Thu Feb  4 06:54:13 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add

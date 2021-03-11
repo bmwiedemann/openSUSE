@@ -73,10 +73,8 @@ Recommends:     %spack_trigger_recommended
 %else
 BuildRequires:  %{python_module Sphinx >= 1.8}
 BuildRequires:  %{python_module sphinxcontrib-programoutput}
-BuildRequires:  distribution-release
 BuildRequires:  git
 BuildRequires:  makeinfo
-BuildRequires:  patterns-base-basesystem
 BuildRequires:  spack
 # html
 BuildRequires:  graphviz
