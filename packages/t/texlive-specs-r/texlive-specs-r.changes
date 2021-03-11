@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar  5 13:52:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Rename patch lilyglyphs-8ffa820e4.dif to lilyglyphs_p2top3.dif
+- Add patch de-macro_p2top3.dif
+  * Re-enable texlive-de-macro as required by extra binary package
+
+-------------------------------------------------------------------
+Tue Feb  9 08:49:12 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Reenable package lilyglyphs by adding patch lilyglyphs-8ffa820e4.dif
+  from upstream repository
+
+-------------------------------------------------------------------
+Mon Feb  8 13:41:32 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Skip packages which are based on python2
+
+-------------------------------------------------------------------
+Fri Feb  5 13:54:52 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Fix the fix for boo#1046104 reported by boo#1181691
+  * Increase dict size which holds the font description
+    to fit with added descriptions of PostScript Type 1
+
+-------------------------------------------------------------------
+Wed Jan 20 12:18:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Enhance latexmk configuration, that is add a systemwide
+  configuration below /etc/texmf/latexmk/ as latexmk.conf (boo#1180789)
+  For this add patch latexmk_conf.dif
+
+-------------------------------------------------------------------
 Mon May 18 08:47:10 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Enhance spec file generator to find missing .so man page
