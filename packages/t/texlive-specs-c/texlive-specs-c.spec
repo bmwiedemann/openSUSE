@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2020
 %define texlive_previous 2019
 %define texlive_release  20200327
-%define texlive_noarch   176
+%define texlive_noarch   182
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
