@@ -1,7 +1,7 @@
 #
 # spec file for package svxlink
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 # Sounds version
 %define SOUNDS			19.09
 Name:           svxlink
-Version:        19.09.1
+Version:        19.09.2
 Release:        0
 Summary:        Multi purpose voice services system for ham radio
 License:        GPL-2.0-only
