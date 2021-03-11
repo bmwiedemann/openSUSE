@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 20 11:09:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- switch away from the libusb-compat (0.1) to the maintained libusb 1.0
+  (lirc has support for both) 
+
+-------------------------------------------------------------------
+Sat Dec 26 18:33:35 UTC 2020 - d_werner@gmx.net
+
+- change the legacy directory /var/run to /run as requested by the
+  Additional rpm output: "please update the tmpfiles.d/ drop-in file"
+  and also the _rundir
+
+-------------------------------------------------------------------
 Wed Nov 20 22:22:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use python3-base BuildRequires instead of full python3

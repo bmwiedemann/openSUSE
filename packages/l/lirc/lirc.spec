@@ -1,7 +1,7 @@
 #
 # spec file for package lirc
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 %if ! %{defined _rundir}
-%define _rundir %{_localstatedir}/run
+%define _rundir /run
 %endif
 Name:           lirc
 Version:        0.10.1
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libftdi1)
 BuildRequires:  pkgconfig(libirman)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libusb)
+BuildRequires:  pkgconfig(libusb-1.0)
 %if %{with portaudio_drv}
 BuildRequires:  pkgconfig(portaudio-2.0)
 %endif
@@ -211,7 +211,7 @@ chmod a+x %{buildroot}%{_bindir}/pronto2lirc
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}d
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}md
 mkdir -p %{buildroot}%{_tmpfilesdir}
-echo "d %{_localstatedir}/run/lirc  0755  root  root  10d" \
+echo "d /run/lirc  0755  root  root  10d" \
     > %{buildroot}/%{_tmpfilesdir}/lirc.conf
 #
 # udev stuff
