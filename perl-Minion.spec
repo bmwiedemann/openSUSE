@@ -18,7 +18,7 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.17
+Version:        10.19
 Release:        0
 Summary:        Job queue
 License:        Artistic-2.0
