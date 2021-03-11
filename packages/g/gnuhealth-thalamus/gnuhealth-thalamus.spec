@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-thalamus
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017-2020 Dr. Axel Braun
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %define modname thalamus
 Name:           gnuhealth-%{modname}
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        The GNU Health Federation Message and Authentication Server
 License:        GPL-3.0-or-later
