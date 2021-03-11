@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 09 10:43:52 UTC 2021 - lnussel@suse.de
+
+- Update to version 2+git20210309.8214505:
+  * Make sure to trigger in transactional mode (boo#1179884)
+
+-------------------------------------------------------------------
 Mon Jan 11 10:42:13 UTC 2021 - lnussel@suse.de
 
 - Update to version 2+git20210111.eeae41c:
