@@ -59,8 +59,8 @@ times.
 %patch8 -p1
 %ifarch s390x
 %patch9 -p1
-%patch10 -p1
 %endif
+%patch10 -p1
 
 %build
 export CFLAGS="%{optflags} -fomit-frame-pointer \

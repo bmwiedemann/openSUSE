@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  4 01:57:35 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- gzip.spec: move %patch10 from the ifarch condition (mistake)
+
+-------------------------------------------------------------------
 Wed Jan 27 22:05:47 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
 
 - add gzip-1.10-fix_count_of_lines_to_skip.patch to fix count
