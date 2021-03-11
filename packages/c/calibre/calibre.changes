@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 10 09:20:28 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.13.0
+  * New Features
+    - E-book Viewer: Allow editing the current book by pressing
+      Ctrl+d or adding a button for it to the viewer tool bar
+    - Edit book: Add a command line flag to allow selecting the
+      specified text when opening a book
+    - Edit metadata dialog: When trimming covers, show the size of
+      the current trim region
+  * Bug Fixes
+    - Fix a regression in the previous release that broke sending
+      of emails with text longer than 900 characters
+    - E-book viewer: Fix using keyboard to extend selection not
+      turning pages
+    - Fix searching for items from the Manage dialog not working
+      correctly
+    - PDF input: Replace paragraph separator characters with spaces
+
+-------------------------------------------------------------------
 Fri Feb 26 06:37:58 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.12.0
