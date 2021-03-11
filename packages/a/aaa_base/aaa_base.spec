@@ -1,7 +1,7 @@
 #
 # spec file for package aaa_base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20201123.4f16b16
+Version:        84.87+git20210308.d7a7d3a
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -39,7 +39,12 @@ Requires:       /usr/bin/tput
 Requires:       /usr/bin/xz
 Requires:       distribution-release
 Requires:       filesystem
-Recommends:     logrotate netcfg udev iputils iproute2 aaa_base-extras
+Recommends:     aaa_base-extras
+Recommends:     iproute2
+Recommends:     iputils
+Recommends:     logrotate
+Recommends:     netcfg
+Recommends:     udev
 Requires(pre):  /usr/bin/rm
 Requires(pre):  glibc >= 2.30
 Requires(post): fillup /usr/bin/chmod /usr/bin/chown

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 08 15:11:13 UTC 2021 - ro@suse.de
+
+- Update to version 84.87+git20210308.d7a7d3a:
+  * excluding new kernel string in version search
+  * Fixing possible resource leak. Found by running ccpcheck on the source code.
+  * Comment out 8-bit C1 conflicting with UTF-8 in /etc/inputrc
+  * Fix keyseq specifications in /etc/inputrc{,.keys}
+
+-------------------------------------------------------------------
 Mon Nov 23 09:41:55 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - clean up rpmlintrc. Add filter for deprecated init scripts. We'll have to

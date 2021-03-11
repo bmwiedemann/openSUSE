@@ -3869,4 +3869,16 @@
     <comment></comment>
     <requestid>851301</requestid>
   </revision>
+  <revision rev="477" vrev="1">
+    <srcmd5>b90c95a4417b628b787c7798db17f964</srcmd5>
+    <version>84.87+git20210308.d7a7d3a</version>
+    <time>1615489615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210308.d7a7d3a:
+  * excluding new kernel string in version search
+  * Fixing possible resource leak. Found by running ccpcheck on the source code.
+  * Comment out 8-bit C1 conflicting with UTF-8 in /etc/inputrc
+  * Fix keyseq specifications in /etc/inputrc{,.keys}</comment>
+    <requestid>877770</requestid>
+  </revision>
 </revisionlist>
