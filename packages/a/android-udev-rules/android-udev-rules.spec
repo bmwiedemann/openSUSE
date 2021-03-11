@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Hardware/Mobile
 URL:            https://github.com/M0Rf30/android-udev-rules
 Source0:        https://github.com/M0Rf30/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-consider-bind-action.patch boo#1183058 munix9@googlemail.com -- Systemd catches up with bind events
+Patch0:         fix-consider-bind-action.patch
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 Recommends:     android-tools

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  9 13:49:10 UTC 2021 - munix9@googlemail.com
+
+- Add fix-consider-bind-action.patch - Systemd catches up with
+  bind events (boo#1183058) (gh#M0Rf30/android-udev-rules#204)
+
+-------------------------------------------------------------------
 Tue Mar  2 13:21:48 UTC 2021 - munix9@googlemail.com
 
 - Update to version 20210302
