@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,9 @@ The Python interface to the Redis key-value store.
 
 %check
 %{_sbindir}/redis-server --port 6379 &
-%pytest
+# Skipped tests because of gh#andymccurdy/redis-py#1459
+%pytest -k 'not (test_acl_getuser_setuser or test_acl_list)'
+
 killall redis-server
 
 %files %{python_files}
