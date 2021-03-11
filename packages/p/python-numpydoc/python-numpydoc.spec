@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpydoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-numpydoc
-Version:        0.9.2
+Version:        1.1.0
 Release:        0
 Summary:        Sphinx extension to support docstrings in Numpy format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/numpy/numpydoc
 Source:         https://files.pythonhosted.org/packages/source/n/numpydoc/numpydoc-%{version}.tar.gz
+# https://docs.python.org/3/objects.inv (changes from time to time, accessed 2021-02-23)
+Source1:        python-objects.inv
+BuildRequires:  %{python_module Jinja2 >= 2.3}
 BuildRequires:  %{python_module Sphinx >= 1.6.}
-BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,6 +48,12 @@ of them in third-party projects.
 
 %prep
 %setup -q -n numpydoc-%{version}
+# remove interpreter line. This script has no main section
+sed -i '1 {/env python/ d}' numpydoc/validate.py
+# don't check coverage
+sed -i 's/--cov.*$//' setup.cfg
+# provide the python doc inventory locally
+sed -i "\|https://docs.python.org/3| s|None|'%SOURCE1'|" numpydoc/tests/tinybuild/conf.py
 
 %build
 %python_build
@@ -54,7 +63,8 @@ of them in third-party projects.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# ignore doc: gh#numpy/numpydoc#296
+%pytest --ignore doc/
 
 %files %{python_files}
 %license LICENSE.txt

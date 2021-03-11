@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Feb 23 20:31:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.0
+  Implemented enhancements
+  * MAINT: Suggestions from reviewing test suite #271 (rossbar)
+  * DEV: Add testing requirements #267 (rossbar)
+  * BUG: Defer to autodoc for signatures #221 (thequackdaddy)
+  Fixed bugs
+  * function signatures for *args, **kwargs objects off #218
+  * BUG: Connect to earlier event #269 (larsoner)
+  Closed issues
+  * “Handler <function mangle_docstrings at 0x7f64b5ba57b8> for
+    event ‘autodoc-process-docstring’ threw an exception” #268
+  * Timing of next release #249
+  * self included in list of params for method #220
+  * Additional notes
+  * Due to merging of #221, self and cls no longer will appear in method signatures.
+- Release 1.0.0
+  Implemented enhancements
+  * ENH: Add args and kwargs to example #258 (larsoner)
+  * MAINT,STY: Upgrade to bionic, and change style similar to
+    NumPy #253 (mwtoews)
+  * Delay import of Sphinx #248 (cgohlke)
+  * Adding –validate option __main__ and run new validation #240
+    (datapythonista)
+  * Add docstring validation script (from pandas) #238
+    (datapythonista)
+  * ENH: Test full output and coverage #230 (larsoner)
+  * DOC: Add description for blank lines after the docstring. #229
+    (bingyao)
+  Fixed bugs
+  * References outside function #214
+  * FIX: Get doc of actual class in test #262 (larsoner)
+  * TST: Add inherited method #260 (larsoner)
+  * Fixes references outside function (#214) #259 (Hoxbro)
+  * Disable escaping “*” on signature #256 (tk0miya)
+  * MAINT: clean-up unused objects #254 (mwtoews)
+  * STY: Reword first lines of example.py docstrings #246
+    (justinludwig)
+  * DOC: Fixed three formatting issues in docs #245 (rossbar)
+  * STY Minor style improvements to doc/example.py to pass
+    validation #243 (rth)
+  * BUG: Allow no . at end if indented #239 (larsoner)
+  * DOC: Update links and code checkers info in format.rst #228
+    (bingyao)
+  * DOC: Update links and info in conf.py. #227 (bingyao)
+  * BUG: Fix full rebuilds #226 (larsoner)
+  * MAINT: doctest and pytest #225 (larsoner)
+  * Py3fy some doctests. #224 (anntzer)
+  * MAINT: fix trivial source comment typos #222 (luzpaz)
+  * Add missing headings to code examples #252 (Cadair)
+  Removed
+  * MNT Drop Python 2.7 and 3.4 support #236 (rth)
+  Closed issues
+  * Prefix added to reference keys in class docstrings #263
+  * Test failure with python 3.9 #261
+  * sphinx doc napoleon extension maintainer interest request #251
+  * Missing reference to float_power function in the ufunc list
+   #250
+  Additional notes
+  * CSS styling changed from NumpyDoc < 0.8 and Sphinx < 2.0 to
+    more properly make use of definition lists. This can cause
+    issues with rendering that can be fixed via CSS, especially
+    when using sphinx-rtd-theme.
+- Add python-objects.inv to provide the inventory locally for
+  tests
+- Don't install matplotlib for tests
+  * it is not available for python 3.6
+  * it is not used in tests because the doc directory is skipped
+    in all cases
+
+-------------------------------------------------------------------
 Sat Jan 11 18:28:01 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
