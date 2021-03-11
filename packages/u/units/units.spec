@@ -1,7 +1,7 @@
 #
 # spec file for package units
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 %endif
 %if %{with units_cur}
-BuildRequires:  python-base
+BuildRequires:  python3-base
 %endif
 
 %description
@@ -51,7 +51,7 @@ page for details.
 %build
 export CFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
-%configure
+%configure PYTHON=/usr/bin/python3
 %make_build
 
 %install
