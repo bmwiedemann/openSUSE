@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Mar  6 12:40:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.19
+  * Launch projects marked for auto open after SIGHUP is received.
+  * Fix console type error when creating Ethernet switch node.
+  * Upgrade Jinja to version 2.11.3.
+- Update to version 2.2.18
+  * SIGHUP: remove projects with an empty project directory.
+  * Release Web UI 2.2.18
+  * Catch OSError exception in psutil. Fixes #3127
+  * Expose 'auto_open' and 'auto_start' properties in API when
+    creating project.
+  * Add mtools package information.
+  * Fix warning: 'ide-drive' is deprecated when using recent
+    version of Qemu.
+  * Fix bug when starting of vpcs stopped with "quit".
+  * Fix WinError 0 handling.
+  * Stop uBridge if VPCS node has been terminated.
+  * Allow cloned QEMU disk images to be resized before the node
+    starts, by cloning the disk image in response to a resize
+    request instead of waiting until the node starts.
+  * Use HDD disk image as startup QEMU config disk.
+  * Create config disk property false by default for Qemu templates.
+  * Set default disk interface type to "none".
+  * Add explicit option to automatically create or not the config
+    disk. Off by default.
+  * QEMU config disk support.
+
+-------------------------------------------------------------------
 Fri Dec  4 08:06:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.17
