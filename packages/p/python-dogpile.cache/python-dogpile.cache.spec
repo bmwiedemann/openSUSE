@@ -33,7 +33,7 @@ BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module decorator >= 4.0.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python3-stevedore
 Requires:       python-decorator >= 4.0.0

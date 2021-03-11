@@ -274,4 +274,12 @@
     <comment>- skip building against python 3.6</comment>
     <requestid>866404</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>6b4a38c63eb406e186ce0f9cba83150b</srcmd5>
+    <version>1.1.1</version>
+    <time>1615489864</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for older distributions with old default-pytest</comment>
+    <requestid>878194</requestid>
+  </revision>
 </revisionlist>

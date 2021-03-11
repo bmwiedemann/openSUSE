@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 10 15:18:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix build for older distributions with old default-pytest 
+
+-------------------------------------------------------------------
 Sun Jan 24 18:40:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip building against python 3.6 
