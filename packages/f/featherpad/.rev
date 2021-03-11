@@ -354,4 +354,25 @@
   * Fixed a regression in 0.17.0 about here-documents.</comment>
     <requestid>862814</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7c918e5f07464fc6bd0d6a192eba6780</srcmd5>
+    <version>0.18.0</version>
+    <time>1615489836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  * Fixed a rare problem in highlighting of multiline comments.
+  * Added Java, JSON and Pascal to syntax highlighting.
+  * Improved Perl, Ruby, PHP and LaTex syntax highlighting.
+  * Prevented Qt from giving non-plain text to the selection
+    clipboard.
+  * Made PageUp/PageDown select the first/last item of the search
+    history when the search line-edit is focused.
+  * If needed, the cursor positions is also saved when the
+    app is terminated by SIGTERM.
+  * Prevented the spell checker from changing an uneditable document.
+  * Added an icon and two context menu items to tabs/view-items
+    of files that have final targets other than immediate symlink
+    targets (e.g., when their parent directories are symlinks).</comment>
+    <requestid>878126</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 10 08:45:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * Fixed a rare problem in highlighting of multiline comments.
+  * Added Java, JSON and Pascal to syntax highlighting.
+  * Improved Perl, Ruby, PHP and LaTex syntax highlighting.
+  * Prevented Qt from giving non-plain text to the selection
+    clipboard.
+  * Made PageUp/PageDown select the first/last item of the search
+    history when the search line-edit is focused.
+  * If needed, the cursor positions is also saved when the
+    app is terminated by SIGTERM.
+  * Prevented the spell checker from changing an uneditable document.
+  * Added an icon and two context menu items to tabs/view-items
+    of files that have final targets other than immediate symlink
+    targets (e.g., when their parent directories are symlinks).
+
+-------------------------------------------------------------------
 Wed Jan 13 08:19:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.2:
