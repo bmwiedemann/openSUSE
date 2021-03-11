@@ -120,4 +120,25 @@
  * Streamlined querysting matching code</comment>
     <requestid>812533</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ead9e09abeeade624e388609ef3fe885</srcmd5>
+    <version>0.12.1</version>
+    <time>1615489638</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1:
+  * `responses.urlencoded_params_matcher` and `responses.json_params_matcher` now
+    accept None to match empty requests.
+  * Fixed imports to work with new `urllib3` versions.
+  * `request.params` now allows parameters to have multiple values for the same key.
+  * Improved ConnectionError messages.
+  - Remove support for Python 3.4.
+  - Added the `match` parameter to `add()`.
+  - Added `responses.urlencoded_params_matcher()` and `responses.json_params_matcher()`.
+  - Add a requirements pin to urllib3. This helps prevent broken install states where
+    cookie usage fails.
+  - Added `assert_call_count` to improve ergonomics around ensuring a mock was called.
+  - Fix incorrect handling of paths with query strings.
+  - Add Python 3.9 support to CI matrix.</comment>
+    <requestid>877834</requestid>
+  </revision>
 </revisionlist>

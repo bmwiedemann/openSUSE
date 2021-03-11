@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  8 22:40:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * `responses.urlencoded_params_matcher` and `responses.json_params_matcher` now
+    accept None to match empty requests.
+  * Fixed imports to work with new `urllib3` versions.
+  * `request.params` now allows parameters to have multiple values for the same key.
+  * Improved ConnectionError messages.
+  - Remove support for Python 3.4.
+  - Added the `match` parameter to `add()`.
+  - Added `responses.urlencoded_params_matcher()` and `responses.json_params_matcher()`.
+  - Add a requirements pin to urllib3. This helps prevent broken install states where
+    cookie usage fails.
+  - Added `assert_call_count` to improve ergonomics around ensuring a mock was called.
+  - Fix incorrect handling of paths with query strings.
+  - Add Python 3.9 support to CI matrix.
+
+-------------------------------------------------------------------
 Mon Jun  8 10:18:01 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.14
