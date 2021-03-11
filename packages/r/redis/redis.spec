@@ -20,12 +20,12 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        6.0.11
+Version:        6.2.1
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
 URL:            https://redis.io
-Source0:        https://download.redis.io/releases/redis-%{version}.tar.gz
+Source0:        https://download.redis.io/releases/%{name}-%{version}.tar.gz
 Source1:        %{name}.logrotate
 Source2:        %{name}.target
 Source3:        %{name}@.service
@@ -72,10 +72,10 @@ echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0
 %build
 export HOST=OBS # for reproducible builds
 %make_build CFLAGS="%{optflags}" BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
-%sysusers_generate_pre %{SOURCE9} redis
+%sysusers_generate_pre %{SOURCE9} %{name}
 
 %install
-install -m 0750 -d \
+install -pm0750 -d \
   %{buildroot}%{_sbindir} \
   %{buildroot}%{_log_dir} \
   %{buildroot}%{_data_dir} \
@@ -83,35 +83,35 @@ install -m 0750 -d \
   %{buildroot}%{_log_dir}/default \
   %{buildroot}%{_data_dir}/default
 
-install -Dpm 0755 src/%{name}-benchmark  %{buildroot}%{_bindir}/%{name}-benchmark
-install -Dpm 0755 src/%{name}-cli        %{buildroot}%{_bindir}/%{name}-cli
+install -Dpm0755 src/%{name}-benchmark  %{buildroot}%{_bindir}/%{name}-benchmark
+install -Dpm0755 src/%{name}-cli        %{buildroot}%{_bindir}/%{name}-cli
 
-install -Dpm 0755 src/%{name}-server     %{buildroot}%{_sbindir}/%{name}-server
+install -Dpm0755 src/%{name}-server     %{buildroot}%{_sbindir}/%{name}-server
 
-ln -sfv ../sbin/redis-server             %{buildroot}%{_bindir}/%{name}-check-aof
-ln -sfv ../sbin/redis-server             %{buildroot}%{_bindir}/%{name}-check-rdb
-ln -sfv ../sbin/redis-server             %{buildroot}%{_sbindir}/%{name}-check-aof
-ln -sfv ../sbin/redis-server             %{buildroot}%{_sbindir}/%{name}-check-rdb
-ln -sfv ../sbin/redis-server             %{buildroot}%{_sbindir}/%{name}-sentinel
+ln -sfv ../sbin/redis-server            %{buildroot}%{_bindir}/%{name}-check-aof
+ln -sfv ../sbin/redis-server            %{buildroot}%{_bindir}/%{name}-check-rdb
+ln -sfv ../sbin/redis-server            %{buildroot}%{_sbindir}/%{name}-check-aof
+ln -sfv ../sbin/redis-server            %{buildroot}%{_sbindir}/%{name}-check-rdb
+ln -sfv ../sbin/redis-server            %{buildroot}%{_sbindir}/%{name}-sentinel
 
 perl -p -i -e 's|daemonize yes|daemonize no|g' %{name}.conf
-install -Dm 0640 redis.conf              %{buildroot}%{_conf_dir}/default.conf.example
-install -Dm 0660 sentinel.conf           %{buildroot}%{_conf_dir}/sentinel.conf.example
+install -Dpm0640 redis.conf             %{buildroot}%{_conf_dir}/default.conf.example
+install -Dpm0660 sentinel.conf          %{buildroot}%{_conf_dir}/sentinel.conf.example
 
 # some sysctl stuff
-install -Dm 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysctl.d/00-%{name}.conf
-install -Dm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
-install -Dm 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.target
-install -Dm 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}@.service
-install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-install -Dm 0644 %{SOURCE7} %{buildroot}%{_unitdir}/%{name}-sentinel@.service
-install -Dm 0644 %{SOURCE8} %{buildroot}%{_unitdir}/%{name}-sentinel.target
+install -Dpm0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysctl.d/00-%{name}.conf
+install -Dpm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+install -Dpm0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.target
+install -Dpm0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}@.service
+install -Dpm0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -Dpm0644 %{SOURCE7} %{buildroot}%{_unitdir}/%{name}-sentinel@.service
+install -Dpm0644 %{SOURCE8} %{buildroot}%{_unitdir}/%{name}-sentinel.target
 
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 cp %{SOURCE5} README.SUSE
 
 mkdir -p %{buildroot}%{_sysusersdir}
-install -m 644 %{SOURCE9} %{buildroot}%{_sysusersdir}/
+install -pm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/
 
 %check
 cat <<EOF
@@ -123,19 +123,19 @@ EOF
 # Variable assignments need to match in all make invocations, otherwise it might recomplie. See https://github.com/redis/redis/issues/7337
 %make_build test CFLAGS="%{optflags}" BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes || true
 
-%pre -f redis.pre
-%service_add_pre redis.target redis@.service redis-sentinel.target redis-sentinel@.service
+%pre -f %{name}.pre
+%service_add_pre %{name}.target %{name}@.service %{name}-sentinel.target %{name}-sentinel@.service
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
-%service_add_post redis.target redis@.service redis-sentinel.target redis-sentinel@.service
+%service_add_post %{name}.target %{name}@.service %{name}-sentinel.target %{name}-sentinel@.service
 echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 %preun
-%service_del_preun redis.target redis@.service redis-sentinel.target redis-sentinel@.service
+%service_del_preun %{name}.target %{name}@.service %{name}-sentinel.target %{name}-sentinel@.service
 
 %postun
-%service_del_postun redis.target redis@.service redis-sentinel.target redis-sentinel@.service
+%service_del_postun %{name}.target %{name}@.service %{name}-sentinel.target %{name}-sentinel@.service
 
 %files
 %license COPYING
@@ -146,7 +146,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %{_sbindir}/%{name}-*
 %{_sbindir}/rc%{name}
 %{_tmpfilesdir}/%{name}.conf
-%{_sysusersdir}/redis-user.conf
+%{_sysusersdir}/%{name}-user.conf
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}.target
 %{_unitdir}/%{name}-sentinel@.service
@@ -156,5 +156,6 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %dir %attr(0750,%{name},%{name}) %{_data_dir}
 %dir %attr(0750,%{name},%{name}) %{_data_dir}/default
 %dir %attr(0750,%{name},%{name}) %{_log_dir}
+%ghost %dir /run/%{name}
 
 %changelog

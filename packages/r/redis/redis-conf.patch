@@ -2,34 +2,34 @@ Index: redis.conf
 ===================================================================
 --- redis.conf.orig
 +++ redis.conf
-@@ -221,7 +221,7 @@ tcp-keepalive 300
- 
+@@ -244,7 +244,7 @@
  # By default Redis does not run as a daemon. Use 'yes' if you need it.
  # Note that Redis will write a pid file in /var/run/redis.pid when daemonized.
+ # When Redis is supervised by upstart or systemd, this parameter has no impact.
 -daemonize no
 +daemonize yes
  
  # If you run Redis from upstart or systemd, Redis can interact with your
  # supervision tree. Options:
-@@ -233,7 +233,7 @@ daemonize no
- #                        UPSTART_JOB or NOTIFY_SOCKET environment variables
- # Note: these supervision methods only signal "process is ready."
- #       They do not enable continuous pings back to your supervisor.
--supervised no
+@@ -262,7 +262,7 @@
+ # The default is "no". To run under upstart/systemd, you can simply uncomment
+ # the line below:
+ #
+-# supervised auto
 +supervised systemd
  
  # If a pid file is specified, Redis writes it where specified at startup
  # and removes it at exit.
-@@ -244,7 +244,7 @@ supervised no
+@@ -276,7 +276,7 @@
  #
- # Creating a pid file is best effort: if Redis is not able to create it
- # nothing bad happens, the server will start and run normally.
+ # Note that on modern Linux systems "/run/redis.pid" is more conforming
+ # and should be used instead.
 -pidfile /var/run/redis_6379.pid
 +pidfile /var/run/redis/default.pid
  
  # Specify the server verbosity level.
  # This can be one of:
-@@ -257,7 +257,8 @@ loglevel notice
+@@ -289,7 +289,8 @@
  # Specify the log file name. Also the empty string can be used to force
  # Redis to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
@@ -39,7 +39,7 @@ Index: redis.conf
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-@@ -362,7 +363,7 @@ rdb-del-sync-files no
+@@ -441,7 +442,7 @@
  # The Append Only File will also be created inside this directory.
  #
  # Note that you must specify a directory here, not a file name.
@@ -52,12 +52,24 @@ Index: sentinel.conf
 ===================================================================
 --- sentinel.conf.orig
 +++ sentinel.conf
-@@ -1,4 +1,8 @@
- # Example sentinel.conf
-+#
+@@ -24,16 +24,18 @@
+ # Note that Redis will write a pid file in /var/run/redis-sentinel.pid when
+ # daemonized.
+ daemonize no
++supervised systemd
+ 
+ # When running daemonized, Redis Sentinel writes a pid file in
+ # /var/run/redis-sentinel.pid by default. You can specify a custom pid file
+ # location here.
+-pidfile /var/run/redis-sentinel.pid
 +pidfile /var/run/redis/sentinel-default.pid
+ 
+ # Specify the log file name. Also the empty string can be used to force
+ # Sentinel to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
 +loglevel notice
 +logfile /var/log/redis/sentinel-default.log
  
- # *** IMPORTANT ***
- #
+ # sentinel announce-ip <ip>
+ # sentinel announce-port <port>
