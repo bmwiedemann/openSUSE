@@ -19,44 +19,46 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        20.12.16
+Version:        21.03.09
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-fix-broken-python-detection.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-fix-youtube-quality.patch
-BuildRequires:  cmake >= 3.5
+# PATCH-FEATURE-OPENSUSE
+Patch1:         0001-add-opensuse-customizations.patch
+BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.10.0
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.10.0
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.10.0
+BuildRequires:  pkgconfig(Qt5Qml) >= 5.10.0
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.10.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10.0
+BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.10.0
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libavcodec) >= 58.18.100
 BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavformat) >= 58.12.100
+BuildRequires:  pkgconfig(libavutil) >= 56.14.100
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libgme)
+# Enable PipeWire support on openSUSE Tumbleweed
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.22
+%endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsidplayfp)
-BuildRequires:  pkgconfig(libswresample)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libswresample) >= 3.1.100
+BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-glx)
-BuildRequires:  pkgconfig(taglib)
+BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(xv)
 Requires(post): hicolor-icon-theme
@@ -86,20 +88,23 @@ It's a development package for %{name}.
 
 %build
 # Build options
-# Disable PCH compilation for older versions of openSUSE/SLES
-# as it requires cmake >= 3.16.
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
-  -DUSE_CHIPTUNE_SID=ON \
+  -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
   -DUSE_LINK_TIME_OPTIMIZATION=ON \
-  %if 0%{?suse_version} >= 1520
   -DUSE_PCH=ON \
-  %else
-  -DUSE_PCH=OFF \
-  %endif
-  -DUSE_GLSLC=OFF \
   -DUSE_GIT_VERSION=OFF \
-  -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions"
+  -DUSE_EXTENSIONS=ON \
+  -DUSE_CHIPTUNE_SID=ON \
+  -DUSE_GLSLC=OFF \
+  -DUSE_MEDIABROWSER=ON \
+  -DUSE_LASTFM=ON \
+  -DUSE_LYRICS=ON \
+  -DUSE_RADIO=ON \
+  -DUSE_YOUTUBE=ON \
+  -DUSE_UPDATES=OFF \
+  -DUSE_YOUTUBEDL=ON
+
 %ninja_build
 
 %install

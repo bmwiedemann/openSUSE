@@ -3,10 +3,11 @@ Date: Mon, 17 Jul 2020 21:15:29 UTC
 Subject: [PATCH] Fix broken python detection of QMPlay2 when it tries to launch youtube-dl
 
 This patch is required to prevent QMPlay2 from always preferring python2 over python3 which can lead to crashes in certain cases.
+It also adds openSUSE branding to the about screen.
 
 --- a/src/qmplay2/YouTubeDL.cpp
 +++ b/src/qmplay2/YouTubeDL.cpp
-@@ -459,25 +459,9 @@
+@@ -458,25 +458,7 @@
          const int idx = shebang.lastIndexOf("python");
          if (shebang.startsWith("#!") && idx > -1)
          {
@@ -19,7 +20,7 @@ This patch is required to prevent QMPlay2 from always preferring python2 over py
 -                    "python3",
 -                };
 -                pythonCmdsToCheck.removeOne(pythonCmd);
--                for (auto &&pythonCmd : asConst(pythonCmdsToCheck))
+-                for (auto &&pythonCmd : qAsConst(pythonCmdsToCheck))
 -                {
 -                    if (QStandardPaths::findExecutable(pythonCmd).endsWith(pythonCmd))
 -                    {
@@ -30,8 +31,17 @@ This patch is required to prevent QMPlay2 from always preferring python2 over py
 -                }
 -            }
 +            const auto pythonCmd = "python3";
-+            args.prepend(program);
-+            program = pythonCmd;
          }
          ytDlFile.close();
      }
+
+--- a/src/gui/AboutWidget.cpp
++++ b/src/gui/AboutWidget.cpp
+@@ -43,6 +43,7 @@
+     labelText += "<b>QMPlay2:</b> " + tr("video and audio player");
+     labelText += "<br/><b>" + tr("Programmer") + ":</b> <a href='mailto:spaz16@wp.pl'>Błażej Szczygieł</a>";
+     labelText += "<br/><b>" + tr("Version") + ":</b> " + QMPlay2Core.getSettings().getString("Version") + " (" + QSysInfo::buildCpuArchitecture() + ")";
++    labelText += "<br/><b>This release was supplied by SUSE/openSUSE.</b>";
+     QLabel *label = new QLabel(labelText);
+ 
+     QLabel *iconL = new QLabel;

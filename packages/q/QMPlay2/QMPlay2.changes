@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  9 18:21:12 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-youtube-quality.patch as it is merged upstream
+- Converted 0001-fix-broken-python-detection.patch into 0001-add-opensuse-customizations.patch as it adds branding for better distinction from vanilla builds now.
+- Dropped support for openSUSE Leap 15.1 and SLE15SP1 as they are EOL and can't satisfy QMPlay2's build requirements anymore
+- Update to version 21.03.09
+   * drop support for Qt < 5.10, CMake < 3.9, TagLib < 1.9, FFmpeg < 4.0,
+   * fix possible freeze on Windows when Vulkan is enabled,
+   * add PipeWire audio output,
+   * fix YouTube videos,
+   * minor fixes.
+
+-------------------------------------------------------------------
 Fri Mar  5 17:54:41 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-youtube-quality.patch to fix wrong YouTube quality selection
