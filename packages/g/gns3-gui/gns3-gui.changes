@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar  6 12:38:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.19
+  * No changes
+- Update to version 2.2.18
+  * SSL support.
+  * Remove the useless file "zoom-in (copy).svg".
+  * Use HDD disk image as startup QEMU config disk.
+  * Edit only text mode config files.
+  * Hide config import/export when configFiles attribute is empty.
+  * Qemu disk interfaces must be set to "none" by default.
+  * Do not allow image to be configured on Qemu VM secondary slave
+    disk if create config disk option is enabled.
+  * Add explicit option to automatically create or not the config
+    disk. Off by default.
+  * QEMU config disk support.
+
+-------------------------------------------------------------------
 Fri Dec  4 08:08:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.17
