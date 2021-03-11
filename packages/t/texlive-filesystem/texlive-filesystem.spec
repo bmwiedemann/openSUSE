@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-filesystem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define texlive_version  2020
 %define texlive_previous 2019
 %define texlive_release  20200327
-%define texlive_noarch   171
+%define texlive_noarch   182
 %define texlive_source   texlive-20200327-source
 
 %define __perl_requires		%{nil}
@@ -144,7 +144,6 @@ Prefix:         %{_bindir}
 # skip-check-libtool-deps
 
 %global _varlib		%{_localstatedir}/lib
-%global _libexecdir	%{_prefix}/lib
 
 %define _texmfdistdir	%{_datadir}/texmf
 %if 0%{texlive_version} >= 2013
@@ -3596,8 +3595,6 @@ Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
 Requires:       texlive-ctib >= %{texlive_version}
 #!BuildIgnore: texlive-ctib
-Requires:       texlive-ebong >= %{texlive_version}
-#!BuildIgnore: texlive-ebong
 Requires:       texlive-ethiop >= %{texlive_version}
 #!BuildIgnore: texlive-ethiop
 Requires:       texlive-ethiop-t1 >= %{texlive_version}
@@ -5832,8 +5829,6 @@ Requires:       texlive-pstring >= %{texlive_version}
 #!BuildIgnore: texlive-pstring
 Requires:       texlive-pxgreeks >= %{texlive_version}
 #!BuildIgnore: texlive-pxgreeks
-Requires:       texlive-pygmentex >= %{texlive_version}
-#!BuildIgnore: texlive-pygmentex
 Requires:       texlive-python >= %{texlive_version}
 #!BuildIgnore: texlive-python
 Requires:       texlive-qcm >= %{texlive_version}
@@ -7182,8 +7177,6 @@ Requires:       texlive-susy >= %{texlive_version}
 #!BuildIgnore: texlive-susy
 Requires:       texlive-syllogism >= %{texlive_version}
 #!BuildIgnore: texlive-syllogism
-Requires:       texlive-sympytexpackage >= %{texlive_version}
-#!BuildIgnore: texlive-sympytexpackage
 Requires:       texlive-synproof >= %{texlive_version}
 #!BuildIgnore: texlive-synproof
 Requires:       texlive-t-angles >= %{texlive_version}
@@ -10956,7 +10949,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/easylist
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/easyreview/doc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ebezier
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ebong
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ebook
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ebproof
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ebsthesis
@@ -12354,7 +12346,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pxpgfmark
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pxtatescale
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pxufont
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pygmentex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/python
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pythonhighlight
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pythontex
@@ -12705,7 +12696,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/swebib
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/swimgraf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/syllogism
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/sympytexpackage
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/synproof
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/syntax
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/syntrace
@@ -15909,7 +15899,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/dtxgen
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/dviasm
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/dviinfox
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/ebong
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/epspdf
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/epstopdf
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/exceltex
@@ -16005,7 +15994,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/ptex-fontmaps
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/ptex2pdf
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/purifyeps
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/pygmentex
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/pythontex
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/rubik
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/simpdftex
@@ -16014,7 +16002,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/srcredact
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/sty2dtx
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/svn-multi
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/sympytexpackage
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/tex4ebook
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/tex4ht
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/texcount
@@ -18845,7 +18832,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pxtatescale
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pxtxalfa
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pxufont
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pygmentex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/python
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pythonhighlight
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pythontex
@@ -19171,7 +19157,6 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/swimgraf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/syllogism
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/symbol
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sympytexpackage
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/synproof
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/syntax
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/syntrace
@@ -20253,7 +20238,7 @@ for dir in	%{_texmfconfdir}	\
 		%{_texmfvardir}/main
 do
     test "$dir" = %{_fontcache} && user=%{texusr} || user=root
-    setpriv --reuid $user --regid mktex --init-groups /bin/sh -ec "
+    setpriv --reuid $user --regid %{texgrp} --init-groups /bin/sh -ec "
 	tmp=\$(mktemp ${dir}/ls-R.XXXXXX)
 	chmod 0664 \${tmp}
 	echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \${tmp}
@@ -20387,7 +20372,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/context/perl
 %dir %{_texmfdistdir}/scripts/de-macro
 %dir %{_texmfdistdir}/scripts/dviasm
-%dir %{_texmfdistdir}/scripts/ebong
+## %dir %{_texmfdistdir}/scripts/ebong
 %dir %{_texmfdistdir}/scripts/epspdf
 %dir %{_texmfdistdir}/scripts/epstopdf
 %dir %{_texmfdistdir}/scripts/fig4latex
@@ -22600,7 +22585,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/easyreview
 %dir %{_texmfdistdir}/doc/latex/easyreview/doc
 %dir %{_texmfdistdir}/doc/latex/ebezier
-%dir %{_texmfdistdir}/doc/latex/ebong
 %dir %{_texmfdistdir}/doc/latex/ebook
 %dir %{_texmfdistdir}/doc/latex/ebproof
 %dir %{_texmfdistdir}/doc/latex/ebsthesis
@@ -24113,7 +24097,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/pxpgfmark
 %dir %{_texmfdistdir}/doc/latex/pxtatescale
 %dir %{_texmfdistdir}/doc/latex/pxufont
-%dir %{_texmfdistdir}/doc/latex/pygmentex
 %dir %{_texmfdistdir}/doc/latex/python
 %dir %{_texmfdistdir}/doc/latex/pythonhighlight
 %dir %{_texmfdistdir}/doc/latex/pythontex
@@ -24482,7 +24465,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/swebib
 %dir %{_texmfdistdir}/doc/latex/swimgraf
 %dir %{_texmfdistdir}/doc/latex/syllogism
-%dir %{_texmfdistdir}/doc/latex/sympytexpackage
 %dir %{_texmfdistdir}/doc/latex/synproof
 %dir %{_texmfdistdir}/doc/latex/syntax
 %dir %{_texmfdistdir}/doc/latex/syntrace
@@ -28010,7 +27992,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/dtxgen
 %dir %{_texmfdistdir}/scripts/dviasm
 %dir %{_texmfdistdir}/scripts/dviinfox
-%dir %{_texmfdistdir}/scripts/ebong
 %dir %{_texmfdistdir}/scripts/epspdf
 %dir %{_texmfdistdir}/scripts/epstopdf
 %dir %{_texmfdistdir}/scripts/exceltex
@@ -28108,7 +28089,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/ptex-fontmaps
 %dir %{_texmfdistdir}/scripts/ptex2pdf
 %dir %{_texmfdistdir}/scripts/purifyeps
-%dir %{_texmfdistdir}/scripts/pygmentex
 %dir %{_texmfdistdir}/scripts/pythontex
 %dir %{_texmfdistdir}/scripts/rubik
 %dir %{_texmfdistdir}/scripts/simpdftex
@@ -28117,7 +28097,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/srcredact
 %dir %{_texmfdistdir}/scripts/sty2dtx
 %dir %{_texmfdistdir}/scripts/svn-multi
-%dir %{_texmfdistdir}/scripts/sympytexpackage
 %dir %{_texmfdistdir}/scripts/tex4ebook
 %dir %{_texmfdistdir}/scripts/tex4ht
 %dir %{_texmfdistdir}/scripts/texcount
@@ -31043,7 +31022,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pxtatescale
 %dir %{_texmfdistdir}/tex/latex/pxtxalfa
 %dir %{_texmfdistdir}/tex/latex/pxufont
-%dir %{_texmfdistdir}/tex/latex/pygmentex
 %dir %{_texmfdistdir}/tex/latex/python
 %dir %{_texmfdistdir}/tex/latex/pythonhighlight
 %dir %{_texmfdistdir}/tex/latex/pythontex
@@ -31371,7 +31349,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/swimgraf
 %dir %{_texmfdistdir}/tex/latex/syllogism
 %dir %{_texmfdistdir}/tex/latex/symbol
-%dir %{_texmfdistdir}/tex/latex/sympytexpackage
 %dir %{_texmfdistdir}/tex/latex/synproof
 %dir %{_texmfdistdir}/tex/latex/syntax
 %dir %{_texmfdistdir}/tex/latex/syntrace
