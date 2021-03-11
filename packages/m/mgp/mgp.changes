@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 11 15:04:01 CET 2021 - tiwai@suse.de
+
+- Fix another build failure on TW due to the bad ar invocation;
+  it's a result from the default Imake.tmp, so correct locally after
+  creating Makefiles.
+
+-------------------------------------------------------------------
 Thu Feb  4 13:17:26 CET 2021 - tiwai@suse.de
 
 - Fix build with the recent gcc, the doubly defined yylineno:

@@ -99,6 +99,8 @@ autoreconf -fiv
   --disable-freetype
 xmkmf -a
 make Makefiles
+# hackish workaround to correct the wrong ar invocation from the default imake
+find * -name Makefile | xargs sed -ie 's/ar clq/ar cq/'
 make CCOPTIONS="%{optflags}"
 emacs --batch --no-site -f batch-byte-compile contrib/mgp-mode20.el
 
