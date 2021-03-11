@@ -47,4 +47,12 @@
     <comment>- skip python 3.6 build (no scipy)</comment>
     <requestid>871627</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>812367e2086df2b098d0b12d471f864a</srcmd5>
+    <version>0.25.1</version>
+    <time>1615489913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878359</requestid>
+  </revision>
 </revisionlist>
