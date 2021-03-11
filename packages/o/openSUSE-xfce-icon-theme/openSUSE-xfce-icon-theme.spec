@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-xfce-icon-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define theme_name openSUSE-Xfce
 Name:           openSUSE-xfce-icon-theme
-Version:        4.16.1+git3.8e4f919
+Version:        4.16.1+git4.47431fc
 Release:        0
 Summary:        openSUSE Xfce Default Icon Theme
 License:        GPL-2.0-only
