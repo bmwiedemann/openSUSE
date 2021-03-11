@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar  7 08:43:38 UTC 2021 - Christoph G <foss@grueninger.de>
+
+- Update to SuiteSparse 5.9.0
+  * GraphBLAS upgraded from v3.3 to v4.0.3 with many new features,
+    and increased performance. Betweeness Centrality about 2x
+    faster, and now faster than the GAP benchmark for larger
+    matrices. BFS about 5x faster.
+
+-------------------------------------------------------------------
 Tue Sep  1 07:36:34 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to SuiteSparse 5.8.1

@@ -1,7 +1,7 @@
 #
 # spec file for package suitesparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        5.8.1
+Version:        5.9.0
 Release:        0
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
 Source0:        https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v%{version}.tar.gz#/SuiteSparse-%{version}.tar.gz
@@ -62,7 +62,7 @@ BuildRequires:  openblas-devel
 %define colamdver    2.9.6
 %define csparsever   3.2.0
 %define cxsparsever  3.2.0
-%define graphblasver 3.3.3
+%define graphblasver 4.0.3
 %define kluver       1.3.9
 %define ldlver       2.2.6
 %define mongoosever  2.0.3
@@ -72,7 +72,7 @@ BuildRequires:  openblas-devel
 %define umfpackver   5.7.8
 # Your need define even it's just the same as main package
 # or the %%build loop will override %%version with umfpack's version.
-%define configver    5.8.1
+%define configver    5.9.0
 %define csparsemajor %(echo "%{csparsever}" | cut -d "." -f1)
 %define amdlib       %(echo "libamd%{amdver}"                  | cut -d "." -f1)
 %define btflib       %(echo "libbtf%{btfver}"                  | cut -d "." -f1)
