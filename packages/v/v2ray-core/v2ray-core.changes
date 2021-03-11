@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Mar  9 10:26:12 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.35.1
+  * Add support for FakeDNS (#395 #406 #696) @yuhan6665
+  * Add streamSetting / transport support for outbound front proxy
+  * Add zero pseudo encryption for better performance VMess
+  * Add support to disable compatibility for legacy VMess MD5 (#596) @dyhkwong
+  * Add a faster and more memory-efficient routing rule matcher
+    HybridDomainMatcher (#587 #639) @darsvador
+  * Add support to disable DNS cache (#699 #705) @CalmLong
+  * Fix test HTTP/2 dial timeout (#570) @kslr
+  * Fix Trojan panic when UDP dispatcher fails to write response (#599) @maskedeken
+  * Fix TCP default ALPN (#716) @AkinoKaede
+  * Fix DNS rule index out of range (#727) @Loyalsoldier
+  Check https://github.com/v2fly/v2ray-core/releases/tag/v4.35.1 for more info
+- update import path to github.com/v2fly/v2ray-core/v4
+
+-------------------------------------------------------------------
+Sat Jan  9 01:37:48 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.34.0
+  * Disable TLS Session Resumption by default
+  * Remove legacy Shadowsocks unsecure stream ciphers
+  * Add preliminary support for DNS over QUIC
+
+-------------------------------------------------------------------
+Tue Dec 29 13:11:50 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Rename golang-github-v2ray-v2ray-core to golang-github-v2fly-v2ray-core
+- Update vendor.
+
+-------------------------------------------------------------------
 Wed Nov 25 15:31:22 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - update to version 4.33.0

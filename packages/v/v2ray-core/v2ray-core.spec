@@ -1,7 +1,7 @@
 #
 # spec file for package v2ray-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define   provider        github
 %define   provider_tld    com
-%define   project         v2ray
+%define   project         v2fly
 %define   repo            v2ray-core
-# https://github.com/shadowsocks/v2ray-plugin
+# https://github.com/v2fly/v2ray-core
 %define   provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%define   import_path     v2ray.com/core
+%define   import_path     github.com/v2fly/v2ray-core/v4
 
 Name:           v2ray-core
-Version:        4.33.0
+Version:        4.35.1
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -43,8 +43,8 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) = 1.15
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
-Provides:       %{project} = %{version}-%{release}
-Obsoletes:      %{project} < %{version}-%{release}
+Provides:       v2ray = %{version}-%{release}
+Obsoletes:      v2ray < %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
 %{?systemd_ordering}
@@ -80,16 +80,16 @@ mv %{_builddir}/go/bin/main %{_builddir}/go/bin/v2ctl
 %gosrc
 %gofilelist
 
-install -d %{buildroot}%{_datadir}/%{project}
-install -m0644 release/config/geoip.dat %{buildroot}%{_datadir}/%{project}/
-install -m0644 release/config/geosite.dat %{buildroot}%{_datadir}/%{project}/
+install -d %{buildroot}%{_datadir}/v2ray
+install -m0644 release/config/geoip.dat %{buildroot}%{_datadir}/v2ray/
+install -m0644 release/config/geosite.dat %{buildroot}%{_datadir}/v2ray/
 
 install -d %{buildroot}%{_unitdir}
 install -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/
 install -m0644 %{SOURCE3} %{buildroot}%{_unitdir}/
 
-install -d %{buildroot}%{_sysconfdir}/%{project}
-install -m0644 release/config/*.json %{buildroot}%{_sysconfdir}/%{project}/
+install -d %{buildroot}%{_sysconfdir}/v2ray
+install -m0644 release/config/*.json %{buildroot}%{_sysconfdir}/v2ray/
 
 install -d %{buildroot}%{_sbindir}/
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
@@ -97,28 +97,28 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 %fdupes %{buildroot}
 
 %pre
-%service_add_pre %{project}.service %{project}@.service
+%service_add_pre v2ray.service v2ray@.service
 
 %post
-%service_add_post %{project}.service %{project}@.service
+%service_add_post v2ray.service v2ray@.service
 
 %preun
-%service_del_preun %{project}.service %{project}@.service
+%service_del_preun v2ray.service v2ray@.service
 
 %postun
-%service_del_postun %{project}.service %{project}@.service
+%service_del_postun v2ray.service v2ray@.service
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/v2ray
 %{_bindir}/v2ctl
-%{_unitdir}/%{project}.service
-%{_unitdir}/%{project}@.service
-%dir %{_sysconfdir}/%{project}
-%dir %{_datadir}/%{project}
-%{_datadir}/%{project}/*
-%config(noreplace) %{_sysconfdir}/%{project}/*.json
+%{_unitdir}/v2ray.service
+%{_unitdir}/v2ray@.service
+%dir %{_sysconfdir}/v2ray
+%dir %{_datadir}/v2ray
+%{_datadir}/v2ray/*
+%config(noreplace) %{_sysconfdir}/v2ray/*.json
 %{_sbindir}/rcv2ray
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst

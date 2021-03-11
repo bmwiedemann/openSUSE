@@ -150,4 +150,25 @@
     <comment></comment>
     <requestid>850900</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f36094223ffb186fc86af98d42a80aff</srcmd5>
+    <version>4.35.1</version>
+    <time>1615489808</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 4.35.1
+  * Add support for FakeDNS (#395 #406 #696) @yuhan6665
+  * Add streamSetting / transport support for outbound front proxy
+  * Add zero pseudo encryption for better performance VMess
+  * Add support to disable compatibility for legacy VMess MD5 (#596) @dyhkwong
+  * Add a faster and more memory-efficient routing rule matcher
+    HybridDomainMatcher (#587 #639) @darsvador
+  * Add support to disable DNS cache (#699 #705) @CalmLong
+  * Fix test HTTP/2 dial timeout (#570) @kslr
+  * Fix Trojan panic when UDP dispatcher fails to write response (#599) @maskedeken
+  * Fix TCP default ALPN (#716) @AkinoKaede
+  * Fix DNS rule index out of range (#727) @Loyalsoldier
+  Check https://github.com/v2fly/v2ray-core/releases/tag/v4.35.1 for more info
+- update import path to github.com/v2fly/v2ray-core/v4 (forwarded request 877960 from zzndb001)</comment>
+    <requestid>878159</requestid>
+  </revision>
 </revisionlist>
