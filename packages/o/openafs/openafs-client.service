@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenAFS Client
+Wants=network-online.target
+After=syslog.target network-online.target
+Before=remote-fs.target
+
+[Service]
+Type=forking
+RemainAfterExit=true
+EnvironmentFile=/etc/sysconfig/openafs-client
+ExecStartPre=/sbin/modprobe libafs
+ExecStart=/usr/sbin/afsd $AFSD_ARGS
+ExecStartPost=/usr/bin/fs sysname $SYSNAME
+ExecStartPost=/usr/bin/fs setcrypt $CRYPT
+ExecStop=/usr/bin/umount /afs
+ExecStop=/usr/sbin/afsd -shutdown
+ExecStop=/sbin/rmmod libafs
+KillMode=none
+
+[Install]
+WantedBy=multi-user.target remote-fs.target
