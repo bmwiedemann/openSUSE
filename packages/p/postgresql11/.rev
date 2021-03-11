@@ -178,4 +178,13 @@ Upgrade to version 11.11:
   * Obsoletes postgresql-icu68.patch.</comment>
     <requestid>873820</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>03392e1cb3a21b1bc9d28afbb50b4375</srcmd5>
+    <version>11.11</version>
+    <time>1615489685</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove leftover PreReq on chkconfig, we stopped using it long
+  time ago.</comment>
+    <requestid>878018</requestid>
+  </revision>
 </revisionlist>
