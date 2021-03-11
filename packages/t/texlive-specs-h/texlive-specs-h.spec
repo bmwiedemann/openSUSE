@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-h
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2020
 %define texlive_previous 2019
 %define texlive_release  20200327
-%define texlive_noarch   176
+%define texlive_noarch   182
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -5730,94 +5730,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-ebgaramond-maths-%{texlive_version}.%{texlive_noarch}.1.2svn52168-%{release}-zypper
 %endif
 
-%package -n texlive-ebong
-Version:        %{texlive_version}.%{texlive_noarch}.svn26313
-Release:        0
-Summary:        Utility for writing Bengali in Rapid Roman Format
-License:        SUSE-Public-Domain
-Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
-Requires(pre): texlive-ebong-bin >= %{texlive_version}
-#!BuildIgnore: texlive-ebong-bin
-Requires(pre): texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive >= %{texlive_version}
-Requires(postun): texlive-filesystem >= %{texlive_version}
-Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun): texlive-kpathsea >= %{texlive_version}
-Requires(postun): texlive-scripts-bin >= %{texlive_version}
-Requires(postun): texlive-scripts >= %{texlive_version}
-Requires(posttrans): coreutils
-Requires(posttrans): ed
-Requires(posttrans): findutils
-Requires(posttrans): grep
-Requires(posttrans): sed
-Requires(posttrans): texlive >= %{texlive_version}
-Requires(posttrans): texlive-filesystem >= %{texlive_version}
-Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans): texlive-kpathsea >= %{texlive_version}
-Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans): texlive-scripts >= %{texlive_version}
-Recommends:     texlive-ebong-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20200327
-Source56:       ebong.tar.xz
-Source57:       ebong.doc.tar.xz
-
-%description -n texlive-ebong
-A tool (preprocessor) for writing your pRaa-ne-r ka-thaa in the
-bengali language. It allows one to write the text in Rapid
-Roman Bangla and convert it to the bangtex format by a python
-program. All LaTeX markups are preserved in the target file.
-
-%package -n texlive-ebong-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn26313
-Release:        0
-Summary:        Documentation for texlive-ebong
-License:        SUSE-Public-Domain
-Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
-Provides:       locale(texlive-ebong-doc:bn)
-
-%description -n texlive-ebong-doc
-This package includes the documentation for texlive-ebong
-
-%post -n texlive-ebong
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-ebong 
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-ebong
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-ebong-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/ebong/ANNOUNCE.txt
-%{_texmfdistdir}/doc/latex/ebong/README
-%{_texmfdistdir}/doc/latex/ebong/eb.b
-%{_texmfdistdir}/doc/latex/ebong/eb.pdf
-%{_texmfdistdir}/doc/latex/ebong/eb_tex.tex
-
-%files -n texlive-ebong
-%defattr(-,root,root,755)
-%{_texmfdistdir}/scripts/ebong/ebong.py
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ebong-%{texlive_version}.%{texlive_noarch}.svn26313-%{release}-zypper
-%endif
-
 %package -n texlive-ebook
 Version:        %{texlive_version}.%{texlive_noarch}.svn29466
 Release:        0
@@ -5852,8 +5764,8 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(moreverb.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source58:       ebook.tar.xz
-Source59:       ebook.doc.tar.xz
+Source56:       ebook.tar.xz
+Source57:       ebook.doc.tar.xz
 
 %description -n texlive-ebook
 The package defines a command \ebook that defines page layout,
@@ -5936,8 +5848,8 @@ Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source60:       ebproof.tar.xz
-Source61:       ebproof.doc.tar.xz
+Source58:       ebproof.tar.xz
+Source59:       ebproof.doc.tar.xz
 
 %description -n texlive-ebproof
 This package provides commands to typeset proof trees in the
@@ -6044,8 +5956,8 @@ Requires:       tex(titletoc.sty)
 Requires:       tex(tocbibind.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source62:       ebsthesis.tar.xz
-Source63:       ebsthesis.doc.tar.xz
+Source60:       ebsthesis.tar.xz
+Source61:       ebsthesis.doc.tar.xz
 
 %description -n texlive-ebsthesis
 The ebsthesis class and ebstools package facilitate the
@@ -6691,8 +6603,8 @@ Provides:       tex(tcvt2986.tfm)
 Provides:       tex(tcvt3583.tfm)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source64:       ec.tar.xz
-Source65:       ec.doc.tar.xz
+Source62:       ec.tar.xz
+Source63:       ec.doc.tar.xz
 
 %description -n texlive-ec
 The EC fonts are European Computer Modern Fonts, supporting the
@@ -8051,8 +7963,8 @@ Provides:       tex(tosl9.tfm)
 Provides:       tex(toti10.tfm)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source66:       ecc.tar.xz
-Source67:       ecc.doc.tar.xz
+Source64:       ecc.tar.xz
+Source65:       ecc.doc.tar.xz
 
 %description -n texlive-ecc
 The Metafont sources and TFM files of the European Concrete
@@ -8199,8 +8111,8 @@ Provides:       tex(ecclesiastic.sty)
 Requires:       tex(iftex.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source68:       ecclesiastic.tar.xz
-Source69:       ecclesiastic.doc.tar.xz
+Source66:       ecclesiastic.tar.xz
+Source67:       ecclesiastic.doc.tar.xz
 
 %description -n texlive-ecclesiastic
 The package modifies the way the latin option to babel operates
@@ -8286,8 +8198,8 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source70:       ecgdraw.tar.xz
-Source71:       ecgdraw.doc.tar.xz
+Source68:       ecgdraw.tar.xz
+Source69:       ecgdraw.doc.tar.xz
 
 %description -n texlive-ecgdraw
 This package provides the \ECG{<code>} command which draws
@@ -8371,8 +8283,8 @@ Recommends:     texlive-ecltree-doc >= %{texlive_version}
 Provides:       tex(ecltree.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source72:       ecltree.tar.xz
-Source73:       ecltree.doc.tar.xz
+Source70:       ecltree.tar.xz
+Source71:       ecltree.doc.tar.xz
 
 %description -n texlive-ecltree
 The package recursively draws trees: each subtree is defined in
@@ -9414,8 +9326,8 @@ Requires:       tex(tcvt2986.tfm)
 Requires:       tex(tcvt3583.tfm)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source74:       eco.tar.xz
-Source75:       eco.doc.tar.xz
+Source72:       eco.tar.xz
+Source73:       eco.doc.tar.xz
 
 %description -n texlive-eco
 A set of font metric files and virtual fonts for using the EC
@@ -10004,8 +9916,8 @@ Requires:       tex(authoryear-comp.cbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source76:       ecobiblatex.tar.xz
-Source77:       ecobiblatex.doc.tar.xz
+Source74:       ecobiblatex.tar.xz
+Source75:       ecobiblatex.doc.tar.xz
 
 %description -n texlive-ecobiblatex
 This bundle provides a set of styles for creating
@@ -10090,8 +10002,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-econ-bst-doc >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source78:       econ-bst.tar.xz
-Source79:       econ-bst.doc.tar.xz
+Source76:       econ-bst.tar.xz
+Source77:       econ-bst.doc.tar.xz
 
 %description -n texlive-econ-bst
 This is a BibTeX style file for papers in economics. It
@@ -10212,8 +10124,8 @@ Recommends:     texlive-econometrics-doc >= %{texlive_version}
 Provides:       tex(econometrics.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source80:       econometrics.tar.xz
-Source81:       econometrics.doc.tar.xz
+Source78:       econometrics.tar.xz
+Source79:       econometrics.doc.tar.xz
 
 %description -n texlive-econometrics
 Econometrics is a package that defines some commands that
@@ -10337,8 +10249,8 @@ Requires:       tex(url.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source82:       economic.tar.xz
-Source83:       economic.doc.tar.xz
+Source80:       economic.tar.xz
+Source81:       economic.doc.tar.xz
 
 %description -n texlive-economic
 The bundle offers macros and BibTeX styles for the American
@@ -10481,7 +10393,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source84:       ecothesis.doc.tar.xz
+Source82:       ecothesis.doc.tar.xz
 
 %description -n texlive-ecothesis
 The package provides a LaTeX thesis template for the
@@ -10585,8 +10497,8 @@ Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source85:       ecv.tar.xz
-Source86:       ecv.doc.tar.xz
+Source83:       ecv.tar.xz
+Source84:       ecv.doc.tar.xz
 
 %description -n texlive-ecv
 The class provides an environment for creating a fancily laid
@@ -10683,8 +10595,8 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source87:       ed.tar.xz
-Source88:       ed.doc.tar.xz
+Source85:       ed.tar.xz
+Source86:       ed.doc.tar.xz
 
 %description -n texlive-ed
 This package defines a couple of editorial notes that simplify
@@ -10770,8 +10682,8 @@ Provides:       tex(edfnotes.sty)
 Requires:       tex(fnlineno.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source89:       edfnotes.tar.xz
-Source90:       edfnotes.doc.tar.xz
+Source87:       edfnotes.tar.xz
+Source88:       edfnotes.doc.tar.xz
 
 %description -n texlive-edfnotes
 The package modifies the annotation commands and label-test
@@ -10859,8 +10771,8 @@ Provides:       tex(edstanza.tex)
 Provides:       tex(tabmac.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source91:       edmac.tar.xz
-Source92:       edmac.doc.tar.xz
+Source89:       edmac.tar.xz
+Source90:       edmac.doc.tar.xz
 
 %description -n texlive-edmac
 This is the type example package for typesetting scholarly
@@ -10950,8 +10862,8 @@ Recommends:     texlive-edmargin-doc >= %{texlive_version}
 Provides:       tex(edmargin.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source93:       edmargin.tar.xz
-Source94:       edmargin.doc.tar.xz
+Source91:       edmargin.tar.xz
+Source92:       edmargin.doc.tar.xz
 
 %description -n texlive-edmargin
 Edmargin provides a very simple scheme for endnote sections for
@@ -11046,8 +10958,8 @@ Requires:       tex(lineno.sty)
 Requires:       tex(manyfoot.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source95:       ednotes.tar.xz
-Source96:       ednotes.doc.tar.xz
+Source93:       ednotes.tar.xz
+Source94:       ednotes.doc.tar.xz
 
 %description -n texlive-ednotes
 A macro package for typesetting scholarly critical editions.
@@ -11144,8 +11056,8 @@ Provides:       tex(eemeir.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source97:       eemeir.tar.xz
-Source98:       eemeir.doc.tar.xz
+Source95:       eemeir.tar.xz
+Source96:       eemeir.doc.tar.xz
 
 %description -n texlive-eemeir
 Defines macros for third-person singular pronouns (\E, \Em,
@@ -11234,8 +11146,8 @@ Provides:       tex(eepicemu.sty)
 Provides:       tex(epic.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source99:       eepic.tar.xz
-Source100:      eepic.doc.tar.xz
+Source97:       eepic.tar.xz
+Source98:       eepic.doc.tar.xz
 
 %description -n texlive-eepic
 Extensions to epic and the LaTeX picture drawing environment,
@@ -11335,8 +11247,8 @@ Requires:       tex(color.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source101:      efbox.tar.xz
-Source102:      efbox.doc.tar.xz
+Source99:       efbox.tar.xz
+Source100:      efbox.doc.tar.xz
 
 %description -n texlive-efbox
 The package defines the \efbox command, which creates a box
@@ -11418,8 +11330,8 @@ Recommends:     texlive-egameps-doc >= %{texlive_version}
 Provides:       tex(egameps.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source103:      egameps.tar.xz
-Source104:      egameps.doc.tar.xz
+Source101:      egameps.tar.xz
+Source102:      egameps.doc.tar.xz
 
 %description -n texlive-egameps
 The style is intended to have enough features to draw any
@@ -11507,8 +11419,8 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source105:      egplot.tar.xz
-Source106:      egplot.doc.tar.xz
+Source103:      egplot.tar.xz
+Source104:      egplot.doc.tar.xz
 
 %description -n texlive-egplot
 A package to encapsulate gnuplot commands in a LaTeX source
@@ -11592,8 +11504,8 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(hhline.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source107:      ehhline.tar.xz
-Source108:      ehhline.doc.tar.xz
+Source105:      ehhline.tar.xz
+Source106:      ehhline.doc.tar.xz
 
 %description -n texlive-ehhline
 This package extends the \hhline command with a !{...} token,
@@ -11707,8 +11619,8 @@ Provides:       tex(eiadtt10.tfm)
 Provides:       tex(eiadvtt10.tfm)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source109:      eiad.tar.xz
-Source110:      eiad.doc.tar.xz
+Source107:      eiad.tar.xz
+Source108:      eiad.doc.tar.xz
 
 %description -n texlive-eiad
 In both lower and upper case 32 letters are defined (18 'plain'
@@ -11869,8 +11781,8 @@ Recommends:     texlive-eiad-ltx-doc >= %{texlive_version}
 Provides:       tex(eiad.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source111:      eiad-ltx.tar.xz
-Source112:      eiad-ltx.doc.tar.xz
+Source109:      eiad-ltx.tar.xz
+Source110:      eiad-ltx.doc.tar.xz
 
 %description -n texlive-eiad-ltx
 The package provides macros to support use of the eiad fonts in
@@ -11954,7 +11866,7 @@ Provides:       tex(DB_process.tex)
 Provides:       tex(repeat.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source113:      eijkhout.tar.xz
+Source111:      eijkhout.tar.xz
 
 %description -n texlive-eijkhout
 Three unrelated packages: DB_process, to parse and process
@@ -12019,7 +11931,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source114:      einfuehrung.doc.tar.xz
+Source112:      einfuehrung.doc.tar.xz
 
 %description -n texlive-einfuehrung
 The bundle consists of examples and data files for the
@@ -13203,7 +13115,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source115:      einfuehrung2.doc.tar.xz
+Source113:      einfuehrung2.doc.tar.xz
 
 %description -n texlive-einfuehrung2
 The bundle consists of examples and data files for the
@@ -14446,8 +14358,8 @@ Requires:       tex(microtype.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source116:      ejpecp.tar.xz
-Source117:      ejpecp.doc.tar.xz
+Source114:      ejpecp.tar.xz
+Source115:      ejpecp.doc.tar.xz
 
 %description -n texlive-ejpecp
 The class is designed for typesetting articles for the
@@ -14542,8 +14454,8 @@ Requires:       tex(indentfirst.sty)
 Requires:       tex(sectsty.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source118:      ekaia.tar.xz
-Source119:      ekaia.doc.tar.xz
+Source116:      ekaia.tar.xz
+Source117:      ekaia.doc.tar.xz
 
 %description -n texlive-ekaia
 The package provides the article format for publishing the
@@ -14632,8 +14544,8 @@ Requires:       tex(type1ec.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source120:      elbioimp.tar.xz
-Source121:      elbioimp.doc.tar.xz
+Source118:      elbioimp.tar.xz
+Source119:      elbioimp.doc.tar.xz
 
 %description -n texlive-elbioimp
 A document class for writing articles to the Journal of
@@ -14988,8 +14900,8 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source122:      electrum.tar.xz
-Source123:      electrum.doc.tar.xz
+Source120:      electrum.tar.xz
+Source121:      electrum.doc.tar.xz
 
 %description -n texlive-electrum
 Electrum ADF is a slab-serif font featuring optical and italic
@@ -15392,8 +15304,8 @@ Provides:       tex(eledform.sty)
 Requires:       tex(eledmac.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source124:      eledform.tar.xz
-Source125:      eledform.doc.tar.xz
+Source122:      eledform.tar.xz
+Source123:      eledform.doc.tar.xz
 
 %description -n texlive-eledform
 The package provides commands to formalize textual variants in
@@ -15488,8 +15400,8 @@ Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source126:      eledmac.tar.xz
-Source127:      eledmac.doc.tar.xz
+Source124:      eledmac.tar.xz
+Source125:      eledmac.doc.tar.xz
 
 %description -n texlive-eledmac
 A package for typesetting scholarly critical editions,
@@ -15681,8 +15593,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source128:      elegantbook.tar.xz
-Source129:      elegantbook.doc.tar.xz
+Source126:      elegantbook.tar.xz
+Source127:      elegantbook.doc.tar.xz
 
 %description -n texlive-elegantbook
 ElegantBook is designed for writing Books. This template is
@@ -15811,8 +15723,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source130:      elegantnote.tar.xz
-Source131:      elegantnote.doc.tar.xz
+Source128:      elegantnote.tar.xz
+Source129:      elegantnote.doc.tar.xz
 
 %description -n texlive-elegantnote
 ElegantNote is designed for writing working papers, especially
@@ -15934,8 +15846,8 @@ Requires:       tex(newtxtext.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source132:      elegantpaper.tar.xz
-Source133:      elegantpaper.doc.tar.xz
+Source130:      elegantpaper.tar.xz
+Source131:      elegantpaper.doc.tar.xz
 
 %description -n texlive-elegantpaper
 ElegantPaper is designed for writing working papers, especially
@@ -16034,8 +15946,8 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source134:      elements.tar.xz
-Source135:      elements.doc.tar.xz
+Source132:      elements.tar.xz
+Source133:      elements.doc.tar.xz
 
 %description -n texlive-elements
 The package provides means for retrieving properties of
@@ -16126,8 +16038,8 @@ Provides:       tex(ellipse.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source136:      ellipse.tar.xz
-Source137:      ellipse.doc.tar.xz
+Source134:      ellipse.tar.xz
+Source135:      ellipse.doc.tar.xz
 
 %description -n texlive-ellipse
 Draw ellipses and elliptical arcs using the standard LaTeX2e
@@ -16208,8 +16120,8 @@ Provides:       tex(ellipsis.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source138:      ellipsis.tar.xz
-Source139:      ellipsis.doc.tar.xz
+Source136:      ellipsis.tar.xz
+Source137:      ellipsis.doc.tar.xz
 
 %description -n texlive-ellipsis
 This is a simple package that fixes a problem in the way LaTeX
@@ -16291,8 +16203,8 @@ Recommends:     texlive-elmath-doc >= %{texlive_version}
 Provides:       tex(elmath.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source140:      elmath.tar.xz
-Source141:      elmath.doc.tar.xz
+Source138:      elmath.tar.xz
+Source139:      elmath.doc.tar.xz
 
 %description -n texlive-elmath
 This package has been designed to facilitate the use of Greek
@@ -16374,8 +16286,8 @@ Provides:       tex(elocalloc.sty)
 Requires:       tex(etex.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source142:      elocalloc.tar.xz
-Source143:      elocalloc.doc.tar.xz
+Source140:      elocalloc.tar.xz
+Source141:      elocalloc.doc.tar.xz
 
 %description -n texlive-elocalloc
 Local allocation macros, with names taken from etex.sty but
@@ -16462,8 +16374,8 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(mathptmx.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source144:      elpres.tar.xz
-Source145:      elpres.doc.tar.xz
+Source142:      elpres.tar.xz
+Source143:      elpres.doc.tar.xz
 
 %description -n texlive-elpres
 Elpres is a simple class for electronic presentations to be
@@ -16574,8 +16486,8 @@ Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source146:      els-cas-templates.tar.xz
-Source147:      els-cas-templates.doc.tar.xz
+Source144:      els-cas-templates.tar.xz
+Source145:      els-cas-templates.doc.tar.xz
 
 %description -n texlive-els-cas-templates
 This bundle provides two class and corresponding template files
@@ -16693,8 +16605,8 @@ Requires:       tex(times.sty)
 Requires:       tex(txfonts.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source148:      elsarticle.tar.xz
-Source149:      elsarticle.doc.tar.xz
+Source146:      elsarticle.tar.xz
+Source147:      elsarticle.doc.tar.xz
 
 %description -n texlive-elsarticle
 This class for typesetting journal articles is accepted for
@@ -16840,8 +16752,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source150:      elteikthesis.tar.xz
-Source151:      elteikthesis.doc.tar.xz
+Source148:      elteikthesis.tar.xz
+Source149:      elteikthesis.doc.tar.xz
 
 %description -n texlive-elteikthesis
 This package provides a Bachelor and Master thesis template for
@@ -16943,8 +16855,8 @@ Provides:       tex(eltex6.tex)
 Provides:       tex(eltex7.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source152:      eltex.tar.xz
-Source153:      eltex.doc.tar.xz
+Source150:      eltex.tar.xz
+Source151:      eltex.doc.tar.xz
 
 %description -n texlive-eltex
 The macros enable the user to draw simple circuit diagrams in
@@ -17038,8 +16950,8 @@ Provides:       tex(cirth.tfm)
 Provides:       tex(teng10.tfm)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source154:      elvish.tar.xz
-Source155:      elvish.doc.tar.xz
+Source152:      elvish.tar.xz
+Source153:      elvish.doc.tar.xz
 
 %description -n texlive-elvish
 The bundle provides fonts for Cirth (cirth.mf, etc.) and for
@@ -17132,8 +17044,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source156:      elzcards.tar.xz
-Source157:      elzcards.doc.tar.xz
+Source154:      elzcards.tar.xz
+Source155:      elzcards.doc.tar.xz
 
 %description -n texlive-elzcards
 A LaTeX package for typesetting business cards, index cards,
@@ -17220,8 +17132,8 @@ Provides:       tex(emarks.sty)
 Requires:       tex(etex.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source158:      emarks.tar.xz
-Source159:      emarks.doc.tar.xz
+Source156:      emarks.tar.xz
+Source157:      emarks.doc.tar.xz
 
 %description -n texlive-emarks
 E-TeX provides 32 768 mark registers; using this facility is
@@ -17317,8 +17229,8 @@ Requires:       tex(filehook.sty)
 Requires:       tex(letltxmacro.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source160:      embedall.tar.xz
-Source161:      embedall.doc.tar.xz
+Source158:      embedall.tar.xz
+Source159:      embedall.doc.tar.xz
 
 %description -n texlive-embedall
 The package provides a means of storing a project, without
@@ -17402,8 +17314,8 @@ Provides:       tex(dtx-attach.sty)
 Provides:       tex(embedfile.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source162:      embedfile.tar.xz
-Source163:      embedfile.doc.tar.xz
+Source160:      embedfile.tar.xz
+Source161:      embedfile.doc.tar.xz
 
 %description -n texlive-embedfile
 This package embeds files in a PDF document, using the PDF
@@ -17491,8 +17403,8 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source164:      embrac.tar.xz
-Source165:      embrac.doc.tar.xz
+Source162:      embrac.tar.xz
+Source163:      embrac.doc.tar.xz
 
 %description -n texlive-embrac
 The package redefines the commands \emph and \textit so that
@@ -17578,8 +17490,8 @@ Provides:       tex(emf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source166:      emf.tar.xz
-Source167:      emf.doc.tar.xz
+Source164:      emf.tar.xz
+Source165:      emf.doc.tar.xz
 
 %description -n texlive-emf
 This package provides LaTeX support for the symbol for the EMF
@@ -17700,8 +17612,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source168:      emisa.tar.xz
-Source169:      emisa.doc.tar.xz
+Source166:      emisa.tar.xz
+Source167:      emisa.doc.tar.xz
 
 %description -n texlive-emisa
 The EMISA LaTeX package is provided for preparing manuscripts
@@ -17794,8 +17706,8 @@ Provides:       tex(emoji.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source170:      emoji.tar.xz
-Source171:      emoji.doc.tar.xz
+Source168:      emoji.tar.xz
+Source169:      emoji.doc.tar.xz
 
 %description -n texlive-emoji
 This package allows user to typeset emoji in a LaTeX document.
@@ -17880,8 +17792,8 @@ Requires:       tex(natbib.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source172:      emojicite.tar.xz
-Source173:      emojicite.doc.tar.xz
+Source170:      emojicite.tar.xz
+Source171:      emojicite.doc.tar.xz
 
 %description -n texlive-emojicite
 This package adds emojis to citations.
@@ -17965,8 +17877,8 @@ Requires:       tex(graphics.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source174:      emp.tar.xz
-Source175:      emp.doc.tar.xz
+Source172:      emp.tar.xz
+Source173:      emp.doc.tar.xz
 
 %description -n texlive-emp
 Emp is a package for encapsulating MetaPost figures in LaTeX:
@@ -18057,8 +17969,8 @@ Recommends:     texlive-emptypage-doc >= %{texlive_version}
 Provides:       tex(emptypage.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source176:      emptypage.tar.xz
-Source177:      emptypage.doc.tar.xz
+Source174:      emptypage.tar.xz
+Source175:      emptypage.doc.tar.xz
 
 %description -n texlive-emptypage
 This package prevents page numbers and headings from appearing
@@ -18143,8 +18055,8 @@ Requires:       tex(latexsym.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source178:      emulateapj.tar.xz
-Source179:      emulateapj.doc.tar.xz
+Source176:      emulateapj.tar.xz
+Source177:      emulateapj.doc.tar.xz
 
 %description -n texlive-emulateapj
 A LaTeX class (based on current RevTeX) to produce preprints
@@ -18265,8 +18177,8 @@ Provides:       tex(utf8unkn.tex)
 Provides:       tex(utf8warn.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source180:      enctex.tar.xz
-Source181:      enctex.doc.tar.xz
+Source178:      enctex.tar.xz
+Source179:      enctex.doc.tar.xz
 
 %description -n texlive-enctex
 EncTeX is (another) TeX extension, written at the change-file
@@ -18401,8 +18313,8 @@ Provides:       tex(encxvlna.sty)
 Provides:       tex(encxvlna.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source182:      encxvlna.tar.xz
-Source183:      encxvlna.doc.tar.xz
+Source180:      encxvlna.tar.xz
+Source181:      encxvlna.doc.tar.xz
 
 %description -n texlive-encxvlna
 The package provides tools for inserting nonbreakable spaces
@@ -18491,8 +18403,8 @@ Provides:       tex(endfloat.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source184:      endfloat.tar.xz
-Source185:      endfloat.doc.tar.xz
+Source182:      endfloat.tar.xz
+Source183:      endfloat.doc.tar.xz
 
 %description -n texlive-endfloat
 Place all floats on pages by themselves at the end of the
@@ -18579,8 +18491,8 @@ Recommends:     texlive-endheads-doc >= %{texlive_version}
 Provides:       tex(endheads.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source186:      endheads.tar.xz
-Source187:      endheads.doc.tar.xz
+Source184:      endheads.tar.xz
+Source185:      endheads.doc.tar.xz
 
 %description -n texlive-endheads
 Endheads provides running headers of the form "Notes to pp.
@@ -18669,8 +18581,8 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source188:      endiagram.tar.xz
-Source189:      endiagram.doc.tar.xz
+Source186:      endiagram.tar.xz
+Source187:      endiagram.doc.tar.xz
 
 %description -n texlive-endiagram
 The package provides the facility of drawing potential energy
@@ -18752,8 +18664,8 @@ Recommends:     texlive-endnotes-doc >= %{texlive_version}
 Provides:       tex(endnotes.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source190:      endnotes.tar.xz
-Source191:      endnotes.doc.tar.xz
+Source188:      endnotes.tar.xz
+Source189:      endnotes.doc.tar.xz
 
 %description -n texlive-endnotes
 Accumulates notes (using the \endnote command, which can be
@@ -18837,8 +18749,8 @@ Requires:       tex(endnotes.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source192:      endnotes-hy.tar.xz
-Source193:      endnotes-hy.doc.tar.xz
+Source190:      endnotes-hy.tar.xz
+Source191:      endnotes-hy.doc.tar.xz
 
 %description -n texlive-endnotes-hy
 The package supports the creation of hypertext links in support
@@ -18928,8 +18840,8 @@ Requires:       tex(luatexja-otf.sty)
 Requires:       tex(otf.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source194:      endnotesj.tar.xz
-Source195:      endnotesj.doc.tar.xz
+Source192:      endnotesj.tar.xz
+Source193:      endnotesj.doc.tar.xz
 
 %description -n texlive-endnotesj
 This package provides customized styles for endnotes to be used
@@ -19016,8 +18928,8 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(import.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source196:      endofproofwd.tar.xz
-Source197:      endofproofwd.doc.tar.xz
+Source194:      endofproofwd.tar.xz
+Source195:      endofproofwd.doc.tar.xz
 
 %description -n texlive-endofproofwd
 This package provides an additional "end of proof" sign. The
@@ -19103,8 +19015,8 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tipa.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source198:      engpron.tar.xz
-Source199:      engpron.doc.tar.xz
+Source196:      engpron.tar.xz
+Source197:      engpron.doc.tar.xz
 
 %description -n texlive-engpron
 This package provides macros beginning with the PS character,
@@ -19200,8 +19112,8 @@ Requires:       tex(amstext.sty)
 Requires:       tex(upgreek.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source200:      engrec.tar.xz
-Source201:      engrec.doc.tar.xz
+Source198:      engrec.tar.xz
+Source199:      engrec.doc.tar.xz
 
 %description -n texlive-engrec
 This package provides two macros \engrec and \EnGrec to convert
@@ -19285,8 +19197,8 @@ Recommends:     texlive-engtlc-doc >= %{texlive_version}
 Provides:       tex(engtlc.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source202:      engtlc.tar.xz
-Source203:      engtlc.doc.tar.xz
+Source200:      engtlc.tar.xz
+Source201:      engtlc.doc.tar.xz
 
 %description -n texlive-engtlc
 The package provides a wide range of abbreviations for terms
@@ -19372,8 +19284,8 @@ Provides:       tex(enigma.tex)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source204:      enigma.tar.xz
-Source205:      enigma.doc.tar.xz
+Source202:      enigma.tar.xz
+Source203:      enigma.doc.tar.xz
 
 %description -n texlive-enigma
 The package provides historical encryption (Enigma cipher) for
@@ -19467,8 +19379,8 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source206:      enotez.tar.xz
-Source207:      enotez.doc.tar.xz
+Source204:      enotez.tar.xz
+Source205:      enotez.doc.tar.xz
 
 %description -n texlive-enotez
 The package allows nested endnotes, supports hyperref and
@@ -19552,8 +19464,8 @@ Recommends:     texlive-enumitem-doc >= %{texlive_version}
 Provides:       tex(enumitem.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source208:      enumitem.tar.xz
-Source209:      enumitem.doc.tar.xz
+Source206:      enumitem.tar.xz
+Source207:      enumitem.doc.tar.xz
 
 %description -n texlive-enumitem
 This package provides user control over the layout of the three
@@ -19650,8 +19562,8 @@ Requires:       tex(zref-user.sty)
 Requires:       tex(zref.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source210:      enumitem-zref.tar.xz
-Source211:      enumitem-zref.doc.tar.xz
+Source208:      enumitem-zref.tar.xz
+Source209:      enumitem-zref.doc.tar.xz
 
 %description -n texlive-enumitem-zref
 The package is a companion for the enumitem package; it makes
@@ -19740,8 +19652,8 @@ Recommends:     texlive-envbig-doc >= %{texlive_version}
 Provides:       tex(envbig.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source212:      envbig.tar.xz
-Source213:      envbig.doc.tar.xz
+Source210:      envbig.tar.xz
+Source211:      envbig.doc.tar.xz
 
 %description -n texlive-envbig
 A simple package, that prints both 'from' and 'to' addresses.
@@ -19820,8 +19732,8 @@ Provides:       tex(environ.sty)
 Requires:       tex(trimspaces.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source214:      environ.tar.xz
-Source215:      environ.doc.tar.xz
+Source212:      environ.tar.xz
+Source213:      environ.doc.tar.xz
 
 %description -n texlive-environ
 The package provides the \collect@body command (as in amsmath),
@@ -19908,8 +19820,8 @@ Provides:       tex(envlab.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source216:      envlab.tar.xz
-Source217:      envlab.doc.tar.xz
+Source214:      envlab.tar.xz
+Source215:      envlab.doc.tar.xz
 
 %description -n texlive-envlab
 A LaTeX package for producing mailing envelopes and labels,
@@ -20053,8 +19965,8 @@ Provides:       tex(ot1epigrafica.fd)
 Requires:       tex(pxfonts.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source218:      epigrafica.tar.xz
-Source219:      epigrafica.doc.tar.xz
+Source216:      epigrafica.tar.xz
+Source217:      epigrafica.doc.tar.xz
 
 %description -n texlive-epigrafica
 Epigrafica is forked from the development of the MgOpen font
@@ -20227,7 +20139,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(epigram.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source220:      epigram.tar.xz
+Source218:      epigram.tar.xz
 
 %description -n texlive-epigram
 The package determines (on the basis of the width of the text
@@ -20292,8 +20204,8 @@ Provides:       tex(epigraph.sty)
 Requires:       tex(nextpage.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source221:      epigraph.tar.xz
-Source222:      epigraph.doc.tar.xz
+Source219:      epigraph.tar.xz
+Source220:      epigraph.doc.tar.xz
 
 %description -n texlive-epigraph
 Epigraphs are the pithy quotations often found at the start (or
@@ -20388,8 +20300,8 @@ Provides:       tex(epiolmec.map)
 Provides:       tex(epiolmec.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source223:      epiolmec.tar.xz
-Source224:      epiolmec.doc.tar.xz
+Source221:      epiolmec.tar.xz
+Source222:      epiolmec.doc.tar.xz
 
 %description -n texlive-epiolmec
 The package contains all the necessary files to typeset
@@ -20550,8 +20462,8 @@ Provides:       tex(btxmac.tex)
 Provides:       tex(eplain.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source225:      eplain.tar.xz
-Source226:      eplain.doc.tar.xz
+Source223:      eplain.tar.xz
+Source224:      eplain.doc.tar.xz
 
 %description -n texlive-eplain
 An extended version of the plain TeX format, adding support for
@@ -20751,8 +20663,8 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source227:      epsdice.tar.xz
-Source228:      epsdice.doc.tar.xz
+Source225:      epsdice.tar.xz
+Source226:      epsdice.doc.tar.xz
 
 %description -n texlive-epsdice
 The epsdice package defines a single command \epsdice that
@@ -20841,8 +20753,8 @@ Provides:       tex(epsf.sty)
 Provides:       tex(epsf.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source229:      epsf.tar.xz
-Source230:      epsf.doc.tar.xz
+Source227:      epsf.tar.xz
+Source228:      epsf.doc.tar.xz
 
 %description -n texlive-epsf
 The original (and now obsolescent) graphics inclusion macros
@@ -20943,8 +20855,8 @@ Recommends:     texlive-epsf-dvipdfmx-doc >= %{texlive_version}
 Provides:       tex(epsf-dvipdfmx.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source231:      epsf-dvipdfmx.tar.xz
-Source232:      epsf-dvipdfmx.doc.tar.xz
+Source229:      epsf-dvipdfmx.tar.xz
+Source230:      epsf-dvipdfmx.doc.tar.xz
 
 %description -n texlive-epsf-dvipdfmx
 epsf-dvipdfmx.tex is a plain TeX file to be \input after
@@ -21027,8 +20939,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-epsincl-doc >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source233:      epsincl.tar.xz
-Source234:      epsincl.doc.tar.xz
+Source231:      epsincl.tar.xz
+Source232:      epsincl.doc.tar.xz
 
 %description -n texlive-epsincl
 The package facilitates including EPS files in MetaPost
@@ -21110,7 +21022,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source235:      epslatex-fr.doc.tar.xz
+Source233:      epslatex-fr.doc.tar.xz
 
 %description -n texlive-epslatex-fr
 This is the French translation of epslatex, and describes how
@@ -21233,8 +21145,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-epspdf-doc >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source236:      epspdf.tar.xz
-Source237:      epspdf.doc.tar.xz
+Source234:      epspdf.tar.xz
+Source235:      epspdf.doc.tar.xz
 
 %description -n texlive-epspdf
 Epspdftk.tcl is a GUI ps/eps/pdf converter. Epspdf.tlu, its
@@ -21343,8 +21255,8 @@ Requires:       tex(graphics.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source238:      epspdfconversion.tar.xz
-Source239:      epspdfconversion.doc.tar.xz
+Source236:      epspdfconversion.tar.xz
+Source237:      epspdfconversion.doc.tar.xz
 
 %description -n texlive-epspdfconversion
 The package calls the epstopdf package to convert EPS graphics
@@ -21438,8 +21350,8 @@ Requires:       perl(Getopt::Long)
 #!BuildIgnore:  perl(Getopt::Long)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source240:      epstopdf.tar.xz
-Source241:      epstopdf.doc.tar.xz
+Source238:      epstopdf.tar.xz
+Source239:      epstopdf.doc.tar.xz
 
 %description -n texlive-epstopdf
 Epstopdf is a Perl script that converts an EPS file to an
@@ -21537,8 +21449,8 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source242:      epstopdf-pkg.tar.xz
-Source243:      epstopdf-pkg.doc.tar.xz
+Source240:      epstopdf-pkg.tar.xz
+Source241:      epstopdf-pkg.doc.tar.xz
 
 %description -n texlive-epstopdf-pkg
 The package adds support for EPS files in the graphicx package
@@ -21623,8 +21535,8 @@ Provides:       tex(eqell.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source244:      eqell.tar.xz
-Source245:      eqell.doc.tar.xz
+Source242:      eqell.tar.xz
+Source243:      eqell.doc.tar.xz
 
 %description -n texlive-eqell
 The package provides commands that give a well-spaced ellipsis
@@ -21708,8 +21620,8 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source246:      eqexpl.tar.xz
-Source247:      eqexpl.doc.tar.xz
+Source244:      eqexpl.tar.xz
+Source245:      eqexpl.doc.tar.xz
 
 %description -n texlive-eqexpl
 This package was developed in response to a question on
@@ -21795,8 +21707,8 @@ Provides:       tex(eqlist.sty)
 Requires:       tex(eqparbox.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source248:      eqlist.tar.xz
-Source249:      eqlist.doc.tar.xz
+Source246:      eqlist.tar.xz
+Source247:      eqlist.doc.tar.xz
 
 %description -n texlive-eqlist
 This package provides a list environment which sets a
@@ -21879,8 +21791,8 @@ Provides:       tex(eqnalign.sty)
 Requires:       tex(amsmath.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source250:      eqnalign.tar.xz
-Source251:      eqnalign.doc.tar.xz
+Source248:      eqnalign.tar.xz
+Source249:      eqnalign.doc.tar.xz
 
 %description -n texlive-eqnalign
 The package makes eqnarray environment behave like align from
@@ -21961,7 +21873,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(eqname.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source252:      eqname.tar.xz
+Source250:      eqname.tar.xz
 
 %description -n texlive-eqname
 The \eqname command provides a name tag for the current
@@ -22026,8 +21938,8 @@ Provides:       tex(eqnarray.sty)
 Requires:       tex(array.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source253:      eqnarray.tar.xz
-Source254:      eqnarray.doc.tar.xz
+Source251:      eqnarray.tar.xz
+Source252:      eqnarray.doc.tar.xz
 
 %description -n texlive-eqnarray
 Defines an equationarray environment, that allows more than
@@ -22116,8 +22028,8 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source255:      eqnnumwarn.tar.xz
-Source256:      eqnnumwarn.doc.tar.xz
+Source253:      eqnnumwarn.tar.xz
+Source254:      eqnnumwarn.doc.tar.xz
 
 %description -n texlive-eqnnumwarn
 Sometimes an equation is too long that an equation number will
@@ -22203,8 +22115,8 @@ Requires:       tex(array.sty)
 Requires:       tex(environ.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source257:      eqparbox.tar.xz
-Source258:      eqparbox.doc.tar.xz
+Source255:      eqparbox.tar.xz
+Source256:      eqparbox.doc.tar.xz
 
 %description -n texlive-eqparbox
 LaTeX users sometimes need to ensure that two or more blocks of
@@ -22304,8 +22216,8 @@ Requires:       tex(ragged2e.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source259:      erdc.tar.xz
-Source260:      erdc.doc.tar.xz
+Source257:      erdc.tar.xz
+Source258:      erdc.doc.tar.xz
 
 %description -n texlive-erdc
 A class for typesetting Technical Information Reports of the
@@ -23240,8 +23152,8 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source261:      erewhon.tar.xz
-Source262:      erewhon.doc.tar.xz
+Source259:      erewhon.tar.xz
+Source260:      erewhon.doc.tar.xz
 
 %description -n texlive-erewhon
 Erewhon is based on the Heuristica package, which is based in
@@ -24233,8 +24145,8 @@ Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source263:      erewhon-math.tar.xz
-Source264:      erewhon-math.doc.tar.xz
+Source261:      erewhon-math.tar.xz
+Source262:      erewhon-math.doc.tar.xz
 
 %description -n texlive-erewhon-math
 Erewhon Math is an OpenType math font meant to be used together
@@ -24348,8 +24260,8 @@ Provides:       tex(errata.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source265:      errata.tar.xz
-Source266:      errata.doc.tar.xz
+Source263:      errata.tar.xz
+Source264:      errata.doc.tar.xz
 
 %description -n texlive-errata
 This package provides a simple infrastructure for recording
@@ -24436,8 +24348,8 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source267:      erw-l3.tar.xz
-Source268:      erw-l3.doc.tar.xz
+Source265:      erw-l3.tar.xz
+Source266:      erw-l3.doc.tar.xz
 
 %description -n texlive-erw-l3
 Features: compose: compose control sequences, whether
@@ -24518,7 +24430,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source269:      es-tex-faq.doc.tar.xz
+Source267:      es-tex-faq.doc.tar.xz
 
 %description -n texlive-es-tex-faq
 SGML source, converted LaTeX version, and readable copies of
@@ -24599,8 +24511,8 @@ Requires:       tex(xargs.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source270:      esami.tar.xz
-Source271:      esami.doc.tar.xz
+Source268:      esami.tar.xz
+Source269:      esami.doc.tar.xz
 
 %description -n texlive-esami
 The package enables the user to typeset exams with multiple
@@ -24727,8 +24639,8 @@ Recommends:     texlive-esdiff-doc >= %{texlive_version}
 Provides:       tex(esdiff.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source272:      esdiff.tar.xz
-Source273:      esdiff.doc.tar.xz
+Source270:      esdiff.tar.xz
+Source271:      esdiff.doc.tar.xz
 
 %description -n texlive-esdiff
 The package makes writing derivatives very easy. It offers
@@ -24811,8 +24723,8 @@ Recommends:     texlive-esindex-doc >= %{texlive_version}
 Provides:       tex(esindex.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source274:      esindex.tar.xz
-Source275:      esindex.doc.tar.xz
+Source272:      esindex.tar.xz
+Source273:      esindex.doc.tar.xz
 
 %description -n texlive-esindex
 This package helps you to create indexes in Spanish. With
@@ -24898,8 +24810,8 @@ Provides:       tex(esint10.tfm)
 Provides:       tex(uesint.fd)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source276:      esint.tar.xz
-Source277:      esint.doc.tar.xz
+Source274:      esint.tar.xz
+Source275:      esint.doc.tar.xz
 
 %description -n texlive-esint
 The esint package permits access to alternate integral symbols
@@ -25004,8 +24916,8 @@ Provides:       tex(esint.map)
 Provides:       tex(esint.tex)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source278:      esint-type1.tar.xz
-Source279:      esint-type1.doc.tar.xz
+Source276:      esint-type1.tar.xz
+Source277:      esint-type1.doc.tar.xz
 
 %description -n texlive-esint-type1
 This is Eddie Saudrais's font esint10 in Adobe Type 1 format.
@@ -25125,8 +25037,8 @@ Requires:       tex(kvsetkeys.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
 # from 20200327
-Source280:      esk.tar.xz
-Source281:      esk.doc.tar.xz
+Source278:      esk.tar.xz
+Source279:      esk.doc.tar.xz
 
 %description -n texlive-esk
 The ESK package allows to encapsulate Sketch files in LaTeX
@@ -25482,153 +25394,135 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ebong-%{texlive_version}.%{texlive_noarch}.svn26313-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ebook-%{texlive_version}.%{texlive_noarch}.svn29466-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive
-    # Avoid /usr/bin/env <prog>
-    for scr in %{_texmfdistdir}/scripts/ebong/ebong.py
-    do
-	test -e %{buildroot}/$scr || continue
-	ed %{buildroot}/${scr} <<-'EOF'
-		1
-		s@/env[[:blank:]]\+@/@
-		.
-		w
-		q
-	EOF
-    done
+    tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ebook-%{texlive_version}.%{texlive_noarch}.svn29466-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ebproof-%{texlive_version}.%{texlive_noarch}.2.0svn44392-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ebproof-%{texlive_version}.%{texlive_noarch}.2.0svn44392-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ebsthesis-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ebsthesis-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ec-%{texlive_version}.%{texlive_noarch}.1.0svn25033-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ec-%{texlive_version}.%{texlive_noarch}.1.0svn25033-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ecc-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ecc-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ecclesiastic-%{texlive_version}.%{texlive_noarch}.0.0.3svn38172-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ecclesiastic-%{texlive_version}.%{texlive_noarch}.0.0.3svn38172-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ecgdraw-%{texlive_version}.%{texlive_noarch}.0.0.1svn41617-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ecgdraw-%{texlive_version}.%{texlive_noarch}.0.0.1svn41617-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ecltree-%{texlive_version}.%{texlive_noarch}.1.1asvn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ecltree-%{texlive_version}.%{texlive_noarch}.1.1asvn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eco-%{texlive_version}.%{texlive_noarch}.1.3svn29349-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eco-%{texlive_version}.%{texlive_noarch}.1.3svn29349-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ecobiblatex-%{texlive_version}.%{texlive_noarch}.1.0svn39233-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ecobiblatex-%{texlive_version}.%{texlive_noarch}.1.0svn39233-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-econ-bst-%{texlive_version}.%{texlive_noarch}.2.8svn54191-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-econ-bst-%{texlive_version}.%{texlive_noarch}.2.8svn54191-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-econometrics-%{texlive_version}.%{texlive_noarch}.1.0svn39396-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-econometrics-%{texlive_version}.%{texlive_noarch}.1.0svn39396-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-economic-%{texlive_version}.%{texlive_noarch}.svn32639-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-economic-%{texlive_version}.%{texlive_noarch}.svn32639-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ecothesis-%{texlive_version}.%{texlive_noarch}.1.2svn48007-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ecv-%{texlive_version}.%{texlive_noarch}.0.0.3svn24928-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-ed-%{texlive_version}.%{texlive_noarch}.1.8svn25231-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ed-%{texlive_version}.%{texlive_noarch}.1.8svn25231-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-edfnotes-%{texlive_version}.%{texlive_noarch}.0.0.6bsvn21540-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-edfnotes-%{texlive_version}.%{texlive_noarch}.0.0.6bsvn21540-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-edmac-%{texlive_version}.%{texlive_noarch}.3.17svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-edmac-%{texlive_version}.%{texlive_noarch}.3.17svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-edmargin-%{texlive_version}.%{texlive_noarch}.1.2svn27599-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-edmargin-%{texlive_version}.%{texlive_noarch}.1.2svn27599-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ednotes-%{texlive_version}.%{texlive_noarch}.1.3asvn35829-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ednotes-%{texlive_version}.%{texlive_noarch}.1.3asvn35829-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eemeir-%{texlive_version}.%{texlive_noarch}.1.1bsvn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eemeir-%{texlive_version}.%{texlive_noarch}.1.1bsvn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eepic-%{texlive_version}.%{texlive_noarch}.1.1esvn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eepic-%{texlive_version}.%{texlive_noarch}.1.1esvn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/eepic/grafig.shar
     do
@@ -25639,48 +25533,48 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-efbox-%{texlive_version}.%{texlive_noarch}.1.0svn33236-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-egameps-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-egameps-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-egplot-%{texlive_version}.%{texlive_noarch}.1.02asvn20617-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-egplot-%{texlive_version}.%{texlive_noarch}.1.02asvn20617-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ehhline-%{texlive_version}.%{texlive_noarch}.1.1svn54676-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ehhline-%{texlive_version}.%{texlive_noarch}.1.1svn54676-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eiad-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eiad-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eiad-ltx-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eiad-ltx-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-eijkhout-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-einfuehrung-%{texlive_version}.%{texlive_noarch}.svn54080-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/einfuehrung/12-04-1.sh \
 	       %{_texmfdistdir}/doc/latex/einfuehrung/12-04-3.sh \
@@ -25694,7 +25588,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-einfuehrung2-%{texlive_version}.%{texlive_noarch}.svn54080-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/einfuehrung2/12-04-1.sh \
 	       %{_texmfdistdir}/doc/latex/einfuehrung2/12-04-3.sh \
@@ -25708,8 +25602,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ejpecp-%{texlive_version}.%{texlive_noarch}.1.7svn50761-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/doc/latex/ejpecp/mgetmref.py
     do
@@ -25726,20 +25620,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ekaia-%{texlive_version}.%{texlive_noarch}.1.06svn49594-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-elbioimp-%{texlive_version}.%{texlive_noarch}.1.2svn21758-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-electrum-fonts-%{texlive_version}.%{texlive_noarch}.1.005_bsvn19705-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-electrum
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/electrum/*.{pf[ab],[ot]tf}
@@ -25774,176 +25668,176 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-eledform-%{texlive_version}.%{texlive_noarch}.1.1asvn38114-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-eledmac-%{texlive_version}.%{texlive_noarch}.1.24.12svn45418-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eledmac-%{texlive_version}.%{texlive_noarch}.1.24.12svn45418-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elegantbook-%{texlive_version}.%{texlive_noarch}.3.11svn54758-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elegantbook-%{texlive_version}.%{texlive_noarch}.3.11svn54758-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elegantnote-%{texlive_version}.%{texlive_noarch}.2.30svn54758-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elegantnote-%{texlive_version}.%{texlive_noarch}.2.30svn54758-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elegantpaper-%{texlive_version}.%{texlive_noarch}.0.0.09svn54758-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elegantpaper-%{texlive_version}.%{texlive_noarch}.0.0.09svn54758-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elements-%{texlive_version}.%{texlive_noarch}.0.0.3svn52398-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elements-%{texlive_version}.%{texlive_noarch}.0.0.3svn52398-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ellipse-%{texlive_version}.%{texlive_noarch}.1.0svn39025-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ellipse-%{texlive_version}.%{texlive_noarch}.1.0svn39025-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ellipsis-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ellipsis-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elmath-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elmath-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elocalloc-%{texlive_version}.%{texlive_noarch}.0.0.03svn42712-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elocalloc-%{texlive_version}.%{texlive_noarch}.0.0.03svn42712-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elpres-%{texlive_version}.%{texlive_noarch}.0.0.4asvn46429-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elpres-%{texlive_version}.%{texlive_noarch}.0.0.4asvn46429-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-els-cas-templates-%{texlive_version}.%{texlive_noarch}.2.1svn54317-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-els-cas-templates-%{texlive_version}.%{texlive_noarch}.2.1svn54317-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elsarticle-%{texlive_version}.%{texlive_noarch}.3.2svn50786-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elsarticle-%{texlive_version}.%{texlive_noarch}.3.2svn50786-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elteikthesis-%{texlive_version}.%{texlive_noarch}.2.0svn53926-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elteikthesis-%{texlive_version}.%{texlive_noarch}.2.0svn53926-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eltex-%{texlive_version}.%{texlive_noarch}.2.0svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eltex-%{texlive_version}.%{texlive_noarch}.2.0svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elvish-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elvish-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-elzcards-%{texlive_version}.%{texlive_noarch}.1.60svn51894-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-elzcards-%{texlive_version}.%{texlive_noarch}.1.60svn51894-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emarks-%{texlive_version}.%{texlive_noarch}.1.0svn24504-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emarks-%{texlive_version}.%{texlive_noarch}.1.0svn24504-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-embedall-%{texlive_version}.%{texlive_noarch}.2.0svn51177-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-embedall-%{texlive_version}.%{texlive_noarch}.2.0svn51177-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-embedfile-%{texlive_version}.%{texlive_noarch}.2.10svn54739-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-embedfile-%{texlive_version}.%{texlive_noarch}.2.10svn54739-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-embrac-%{texlive_version}.%{texlive_noarch}.0.0.9svn54512-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-embrac-%{texlive_version}.%{texlive_noarch}.0.0.9svn54512-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emf-%{texlive_version}.%{texlive_noarch}.1svn42023-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emf-%{texlive_version}.%{texlive_noarch}.1svn42023-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emisa-%{texlive_version}.%{texlive_noarch}.2.2.0svn46734-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emisa-%{texlive_version}.%{texlive_noarch}.2.2.0svn46734-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emoji-%{texlive_version}.%{texlive_noarch}.0.0.2svn54362-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emoji-%{texlive_version}.%{texlive_noarch}.0.0.2svn54362-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emojicite-%{texlive_version}.%{texlive_noarch}.0.0.1svn54758-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emojicite-%{texlive_version}.%{texlive_noarch}.0.0.1svn54758-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emp-%{texlive_version}.%{texlive_noarch}.svn23483-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emp-%{texlive_version}.%{texlive_noarch}.svn23483-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emptypage-%{texlive_version}.%{texlive_noarch}.1.2svn18064-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emptypage-%{texlive_version}.%{texlive_noarch}.1.2svn18064-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-emulateapj-%{texlive_version}.%{texlive_noarch}.svn28469-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-emulateapj-%{texlive_version}.%{texlive_noarch}.svn28469-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-enctex-%{texlive_version}.%{texlive_noarch}.svn34957-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-enctex-%{texlive_version}.%{texlive_noarch}.svn34957-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/enctex/unimap.py
     do
@@ -25954,74 +25848,74 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-encxvlna-%{texlive_version}.%{texlive_noarch}.1.1svn34087-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-endfloat-%{texlive_version}.%{texlive_noarch}.2.7svn51003-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-endfloat-%{texlive_version}.%{texlive_noarch}.2.7svn51003-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-endheads-%{texlive_version}.%{texlive_noarch}.1.6svn43750-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-endheads-%{texlive_version}.%{texlive_noarch}.1.6svn43750-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-endiagram-%{texlive_version}.%{texlive_noarch}.0.0.1dsvn34486-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-endiagram-%{texlive_version}.%{texlive_noarch}.0.0.1dsvn34486-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-endnotes-%{texlive_version}.%{texlive_noarch}.svn53319-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-endnotes-%{texlive_version}.%{texlive_noarch}.svn53319-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-endnotes-hy-%{texlive_version}.%{texlive_noarch}.svn54758-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-endnotes-hy-%{texlive_version}.%{texlive_noarch}.svn54758-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-endnotesj-%{texlive_version}.%{texlive_noarch}.3.0svn47703-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-endnotesj-%{texlive_version}.%{texlive_noarch}.3.0svn47703-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-endofproofwd-%{texlive_version}.%{texlive_noarch}.svn45116-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-endofproofwd-%{texlive_version}.%{texlive_noarch}.svn45116-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-engpron-%{texlive_version}.%{texlive_noarch}.2svn16558-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-engpron-%{texlive_version}.%{texlive_noarch}.2svn16558-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-engrec-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-engrec-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-engtlc-%{texlive_version}.%{texlive_noarch}.3.2svn28571-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-engtlc-%{texlive_version}.%{texlive_noarch}.3.2svn28571-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-enigma-%{texlive_version}.%{texlive_noarch}.0.0.1svn29802-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-enigma-%{texlive_version}.%{texlive_noarch}.0.0.1svn29802-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/tex/generic/enigma/enigma.lua
     do
@@ -26044,44 +25938,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-enotez-%{texlive_version}.%{texlive_noarch}.0.0.10bsvn54512-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-enumitem-%{texlive_version}.%{texlive_noarch}.3.9svn51423-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-enumitem-%{texlive_version}.%{texlive_noarch}.3.9svn51423-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-enumitem-zref-%{texlive_version}.%{texlive_noarch}.1.8svn21472-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-enumitem-zref-%{texlive_version}.%{texlive_noarch}.1.8svn21472-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-envbig-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-envbig-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-environ-%{texlive_version}.%{texlive_noarch}.0.0.3svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-environ-%{texlive_version}.%{texlive_noarch}.0.0.3svn54080-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-envlab-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-envlab-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-epigrafica-fonts-%{texlive_version}.%{texlive_noarch}.1.01svn17210-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-epigrafica-fonts-%{texlive_version}.%{texlive_noarch}.1.01svn17210-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-epigrafica
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/epigrafica/*.{pf[ab],[ot]tf}
@@ -26116,19 +26010,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epigram-%{texlive_version}.%{texlive_noarch}.svn20513-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epigraph-%{texlive_version}.%{texlive_noarch}.1.5esvn53298-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epiolmec-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-epiolmec
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/epiolmec/*.{pf[ab],[ot]tf}
@@ -26163,8 +26057,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-eplain-%{texlive_version}.%{texlive_noarch}.3.9svn54498-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/eplain/util/idxuniq \
 	       %{_texmfdistdir}/doc/eplain/util/trimsee
@@ -26176,26 +26070,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epsdice-%{texlive_version}.%{texlive_noarch}.2.1svn15878-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-epsf-%{texlive_version}.%{texlive_noarch}.2.7.4svn21461-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-epsf-%{texlive_version}.%{texlive_noarch}.2.7.4svn21461-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-epsf-dvipdfmx-%{texlive_version}.%{texlive_noarch}.2014svn35575-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-epsf-dvipdfmx-%{texlive_version}.%{texlive_noarch}.2014svn35575-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-epsincl-%{texlive_version}.%{texlive_noarch}.0.0.2svn29349-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-epsincl-%{texlive_version}.%{texlive_noarch}.0.0.2svn29349-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/metapost/epsincl/epsincl.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/metapost/epsincl/testincl.bat
@@ -26209,13 +26103,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epslatex-fr-%{texlive_version}.%{texlive_noarch}.svn19440-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epspdf-%{texlive_version}.%{texlive_noarch}.0.0.6.5svn53472-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/epspdf/epspdf.tlu \
 	       %{_texmfdistdir}/scripts/epspdf/epspdftk.tcl
@@ -26233,14 +26127,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epspdfconversion-%{texlive_version}.%{texlive_noarch}.0.0.61svn18703-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epstopdf-%{texlive_version}.%{texlive_noarch}.2.28svn48684-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/epstopdf/epstopdf.pl
     do
@@ -26257,67 +26151,67 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-epstopdf-pkg-%{texlive_version}.%{texlive_noarch}.2.11svn53546-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-eqell-%{texlive_version}.%{texlive_noarch}.svn22931-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eqell-%{texlive_version}.%{texlive_noarch}.svn22931-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eqexpl-%{texlive_version}.%{texlive_noarch}.1.1svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eqexpl-%{texlive_version}.%{texlive_noarch}.1.1svn54080-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eqlist-%{texlive_version}.%{texlive_noarch}.2.1svn32257-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eqlist-%{texlive_version}.%{texlive_noarch}.2.1svn32257-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eqnalign-%{texlive_version}.%{texlive_noarch}.1.0asvn43278-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eqnalign-%{texlive_version}.%{texlive_noarch}.1.0asvn43278-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-eqname-%{texlive_version}.%{texlive_noarch}.svn20678-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-eqnarray-%{texlive_version}.%{texlive_noarch}.1.3svn20641-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-eqnnumwarn-%{texlive_version}.%{texlive_noarch}.1.0svn45511-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eqnnumwarn-%{texlive_version}.%{texlive_noarch}.1.0svn45511-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-eqparbox-%{texlive_version}.%{texlive_noarch}.4.1svn45215-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eqparbox-%{texlive_version}.%{texlive_noarch}.4.1svn45215-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-erdc-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-erdc-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-erewhon-fonts-%{texlive_version}.%{texlive_noarch}.1.104svn54512-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-erewhon-fonts-%{texlive_version}.%{texlive_noarch}.1.104svn54512-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-erewhon
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/erewhon/*.{pf[ab],[ot]tf} \
@@ -26373,8 +26267,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-erewhon-math-fonts-%{texlive_version}.%{texlive_noarch}.0.0.43svn54769-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-erewhon-math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/erewhon-math/*.{pf[ab],[ot]tf}
@@ -26409,49 +26303,49 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-errata-%{texlive_version}.%{texlive_noarch}.0.0.3svn42428-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-erw-l3-%{texlive_version}.%{texlive_noarch}.0.0.1.6svn53694-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-es-tex-faq-%{texlive_version}.%{texlive_noarch}.1.97svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-esami-%{texlive_version}.%{texlive_noarch}.2.5svn47639-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-esdiff-%{texlive_version}.%{texlive_noarch}.1.2svn21385-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-esdiff-%{texlive_version}.%{texlive_noarch}.1.2svn21385-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-esindex-%{texlive_version}.%{texlive_noarch}.1.7svn52342-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-esindex-%{texlive_version}.%{texlive_noarch}.1.7svn52342-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-esint-%{texlive_version}.%{texlive_noarch}.1.2dsvn52240-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-esint-%{texlive_version}.%{texlive_noarch}.1.2dsvn52240-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-esint-type1-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-esint-type1-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-esint-type1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/esint-type1/*.{pf[ab],[ot]tf}
@@ -26486,8 +26380,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-esk-%{texlive_version}.%{texlive_noarch}.1.0svn18115-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
