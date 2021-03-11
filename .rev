@@ -534,4 +534,13 @@
     <comment></comment>
     <requestid>877353</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>94682236e31bbc8b3a29c1e588d65471</srcmd5>
+    <version>4.4.2</version>
+    <time>1615489854</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build on ARM:
+  * 0001-Use-opengl-es-on-Arm-Linux.patch</comment>
+    <requestid>878161</requestid>
+  </revision>
 </revisionlist>

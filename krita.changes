@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 10 12:11:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build on ARM:
+  * 0001-Use-opengl-es-on-Arm-Linux.patch
+
+-------------------------------------------------------------------
 Tue Mar  2 15:57:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - BuildConflict on python3-sip-devel >= 6 because the build expects

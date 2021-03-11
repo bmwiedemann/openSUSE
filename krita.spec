@@ -31,6 +31,8 @@ License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Use-opengl-es-on-Arm-Linux.patch
 %ifnarch %{arm} aarch64
 # causes build failure on ARM currently
 BuildRequires:  OpenColorIO-devel
