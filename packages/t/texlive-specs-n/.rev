@@ -426,4 +426,23 @@
   For this add patch latexmk_conf.dif</comment>
     <requestid>865008</requestid>
   </revision>
+  <revision rev="41" vrev="44">
+    <srcmd5>1c91a9b8f7daa0c151d57722597da524</srcmd5>
+    <version>unknown</version>
+    <time>1615489802</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename patch lilyglyphs-8ffa820e4.dif to lilyglyphs_p2top3.dif
+- Add patch de-macro_p2top3.dif
+  * Re-enable texlive-de-macro as required by extra binary package
+
+- Reenable package lilyglyphs by adding patch lilyglyphs-8ffa820e4.dif
+  from upstream repository
+
+- Skip packages which are based on python2
+
+- Fix the fix for boo#1046104 reported by boo#1181691
+  * Increase dict size which holds the font description
+    to fit with added descriptions of PostScript Type 1</comment>
+    <requestid>877957</requestid>
+  </revision>
 </revisionlist>
