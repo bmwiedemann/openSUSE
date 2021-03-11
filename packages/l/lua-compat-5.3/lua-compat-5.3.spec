@@ -38,7 +38,7 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 Requires:       %{flavor}
-%lua_provides
+%lua_provides -e
 %if "%{flavor}" == ""
 Name:           lua-compat-5.3
 ExclusiveArch:  do_not_build
