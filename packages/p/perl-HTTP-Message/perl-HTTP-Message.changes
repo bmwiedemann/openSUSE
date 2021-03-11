@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar  7 03:06:30 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.29
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.29      2021-03-06 04:50:34Z
+      - fix issue with HTTP::Request internal cache for canonical url when using
+        URI::URL (GH#146) (andrew-grechkin)
+
+-------------------------------------------------------------------
 Mon Feb 22 16:45:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.28
