@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  5 15:30:40 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Fix how the HANA client options are handled. Now, if any of the
+  HANA client option variables are set, they will have preference
+  over the database option (the platform and extracted options) 
+
+-------------------------------------------------------------------
 Tue Jan 19 13:35:18 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.7.0
