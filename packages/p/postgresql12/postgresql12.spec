@@ -294,7 +294,6 @@ postgresql%pgsuffix-server-devel package.
 %package server
 Summary:        The Programs Needed to Create and Run a PostgreSQL Server
 Group:          Productivity/Databases/Servers
-PreReq:         /sbin/chkconfig
 PreReq:         postgresql = %version
 Requires:       glibc-locale
 Requires:       timezone
