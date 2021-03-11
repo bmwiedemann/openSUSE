@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 11 16:19:37 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1615465829.199a835ed:
+  * Package auto-update part on openSUSE only
+  * Update apparmor profile for git for openSUSE Tumbleweed since git moved from /usr/lib/git/ to /usr/libexec/git/
+  * Dependency cron 2021-03-11
+  * BuildRequires openSUSE-release only on openSUSE
+  * Test personal access tokens with an OpenID user
+  * Enable "fast lane" so jobs with prio 10 or higher are not blocked
+  * Adjust priorities of Minion jobs
+  * gru: Specify default-priority only at one place
+  * gru: Allow passing CLI options to Minion
+  * Personal access tokens need to compare the nickname
+  * Add static Dockerfile checks as in os-autoinst
+  * container: Fix all style issues reported by hadolint
+  * Document how to take out worker slots without interrupting running jobs
+  * Improve coding style in function to create user
+  * Adjust function for creating user to handle provider column
+  * Add auth provider column to users table to support multiple providers later
+  * Restore cover and run makefile targets
+  * Set an absolute path as PRODUCTDIR
+  * Don't create symlink when CASEDIR is an url address
+  * Symlink CASEDIR and set values to relative path
+
+-------------------------------------------------------------------
 Tue Mar 09 08:03:14 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1615196506.0b1531c35:
