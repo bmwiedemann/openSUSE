@@ -42,7 +42,6 @@ for distro in leap tumbleweed; do
 	fi
 
 	for flavor in gnome kde xfce x11; do
-		[ "${flavor}" = "xfce" -a "${distro}" = "leap" ] && continue # Prevent creation of livecd-leap-xfce.kiwi
 		uppercaseflavor="$(echo "${flavor}" | tr [:lower:] [:upper:])"
 	
 		if [ "${flavor}" = "x11" ]; then
