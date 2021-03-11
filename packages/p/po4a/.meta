@@ -1,0 +1,5 @@
+<package name="po4a" project="openSUSE:Factory">
+  <title>po4a (trunk)</title>
+  <description></description>
+  <devel project="devel:languages:perl" package="po4a"/>
+</package>
