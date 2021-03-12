@@ -135,6 +135,7 @@ Patch11:        valgrind_fixes.patch
 Patch13:        openssl_binary_detection.patch
 
 Patch41:        icu68.patch
+Patch45:        limit_worker_stdio_memsize.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -233,6 +234,9 @@ BuildRequires:  user(nobody)
 
 %if %node_version_number >= 8
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
+%if 0%{suse_version} > 1330
+BuildRequires:  libopenssl1_1-hmac
+%endif
 
 %if 0%{suse_version} >= 1330
 BuildRequires:  openssl >= %{openssl_req_ver}
@@ -781,6 +785,7 @@ tar Jxf %{SOURCE11}
 %endif
 %patch13 -p1
 %patch41 -p1
+%patch45 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).

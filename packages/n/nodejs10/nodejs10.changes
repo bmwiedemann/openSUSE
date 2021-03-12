@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  8 14:54:19 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- limit_worker_stdio_memsize.patch: reduce memory footprint of
+  test-worker-stdio (bsc#1183155)
+
+-------------------------------------------------------------------
 Tue Feb 23 14:48:58 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 10.24.0:
