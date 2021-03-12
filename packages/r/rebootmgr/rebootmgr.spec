@@ -1,7 +1,7 @@
 #
 # spec file for package rebootmgr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           rebootmgr
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -76,18 +76,17 @@ test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/re
 %files
 %license COPYING COPYING.LIB
 %doc NEWS
-%dir %{_sysconfdir}/dbus-1/system.d
 %if %{with_config}
 %config %{_sysconfdir}/rebootmgr.conf
 %else
 %{_distconfdir}/rebootmgr.conf
 %endif
-%config %{_sysconfdir}/dbus-1/system.d/org.opensuse.RebootMgr.conf
-%{_prefix}/lib/systemd/system/rebootmgr.service
+%{_unitdir}/rebootmgr.service
 %{_sbindir}/rebootmgrctl
 %{_sbindir}/rebootmgrd
 %{_sbindir}/rcrebootmgr
 %{_datadir}/dbus-1/interfaces/org.opensuse.RebootMgr.xml
+%{_datadir}/dbus-1/system.d/org.opensuse.RebootMgr.conf
 %{_mandir}/man1/rebootmgrctl.1%{?ext_man}
 %{_mandir}/man5/rebootmgr.conf.5%{?ext_man}
 %{_mandir}/man8/rebootmgrd.8%{?ext_man}
