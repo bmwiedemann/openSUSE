@@ -17,13 +17,13 @@
 
 
 Name:           liblastfm-qt5
-Version:        1.0.9+20150206
+Version:        1.1.0
 Release:        0
 Summary:        A Qt C++ Library for the Last.fm Webservices
 License:        GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://github.com/lastfm/liblastfm/
-Source:         liblastfm-%{version}.tar.gz
+Source:         https://github.com/lastfm/liblastfm/archive/%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Make-Qt5-build-default-and-simplify-logic-add-missin.patch
