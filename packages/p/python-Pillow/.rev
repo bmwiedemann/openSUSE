@@ -429,4 +429,29 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>867671</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>96eedf1118f49998d402beeb9c105081</srcmd5>
+    <version>8.1.2</version>
+    <time>1615552258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.1.2:
+  - Fix Memory DOS in BLP (CVE-2021-27921), ICNS (CVE-2021-27922) and ICO (CVE-2021-27923) Image Plugins
+
+- Update to 8.1.1
+  Security
+  * CVE-2021-25289: The previous fix for CVE-2020-35654 was insufficent due to incorrect error checking in TiffDecode.c.
+  * CVE-2021-25290: In TiffDecode.c, there is a negative-offset memcpy with an invalid size
+  * CVE-2021-25291: In TiffDecode.c, invalid tile boundaries could lead to an OOB Read in TiffReadRGBATile
+  * CVE-2021-25292: The PDF parser has a catastrophic backtracking regex that could be used as a DOS attack.
+  * CVE-2021-25293: There is an Out of Bounds Read in SGIRleDecode.c, since pillow 4.3.0.
+  
+  There is an Exhaustion of Memory DOS in the ICNS, ICO, and BLP container formats where Pillow
+  did not properly check the reported size of the contained image. These images could cause
+  arbitrariliy large memory allocations. This was reported by Jiayi Lin, Luke Shaffer, Xinran Xie,
+  and Akshay Ajayan of ASU.edu.
+  
+  Other Changes
+  A crash with the feature flags for LibJpeg and Webp on unreleased Python 3.10 has been fixed</comment>
+    <requestid>877608</requestid>
+  </revision>
 </revisionlist>

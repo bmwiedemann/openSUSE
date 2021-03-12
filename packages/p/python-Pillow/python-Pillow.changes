@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  8 09:01:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.2:
+  - Fix Memory DOS in BLP (CVE-2021-27921), ICNS (CVE-2021-27922) and ICO (CVE-2021-27923) Image Plugins
+
+-------------------------------------------------------------------
+Wed Mar  3 07:41:14 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- Update to 8.1.1
+  Security
+  * CVE-2021-25289: The previous fix for CVE-2020-35654 was insufficent due to incorrect error checking in TiffDecode.c.
+  * CVE-2021-25290: In TiffDecode.c, there is a negative-offset memcpy with an invalid size
+  * CVE-2021-25291: In TiffDecode.c, invalid tile boundaries could lead to an OOB Read in TiffReadRGBATile
+  * CVE-2021-25292: The PDF parser has a catastrophic backtracking regex that could be used as a DOS attack.
+  * CVE-2021-25293: There is an Out of Bounds Read in SGIRleDecode.c, since pillow 4.3.0.
+  
+  There is an Exhaustion of Memory DOS in the ICNS, ICO, and BLP container formats where Pillow
+  did not properly check the reported size of the contained image. These images could cause
+  arbitrariliy large memory allocations. This was reported by Jiayi Lin, Luke Shaffer, Xinran Xie,
+  and Akshay Ajayan of ASU.edu.
+  
+  Other Changes
+  A crash with the feature flags for LibJpeg and Webp on unreleased Python 3.10 has been fixed
+
+-------------------------------------------------------------------
 Thu Jan 28 15:07:09 UTC 2021 - Oliver Kurz <okurz@suse.com>
 
 - Fix rpmlint warning about duplicate file definition
