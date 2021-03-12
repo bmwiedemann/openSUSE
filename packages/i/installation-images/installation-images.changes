@@ -1,4 +1,73 @@
 --------------------------------------------------------------------
+Thu Mar 11 15:25:29 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#471
+- ensure base modules are loaded before starting the rescue system
+  (bsc#1183388)
+- 16.56
+
+--------------------------------------------------------------------
+Wed Mar 10 16:11:26 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#469
+- Add bcond to build debug iso (boo#1183264)
+- 16.55
+
+--------------------------------------------------------------------
+Wed Mar 10 14:59:54 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#467
+- Only create lib64 dirs if filesystem has it (boo#1183264)
+- 16.54
+
+--------------------------------------------------------------------
+Wed Mar 10 12:11:48 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#468
+- disable zram swap only if there's another swap active
+  (bsc#1183276)
+- 16.53
+
+--------------------------------------------------------------------
+Wed Mar 10 10:57:46 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#466
+- susepaste only for Tumbleweed/Leap (bsc#1182212)
+- 16.52
+
+--------------------------------------------------------------------
+Tue Mar 9 15:31:23 UTC 2021 - ancor@suse.de
+
+- merge gh#openSUSE/installation-images#463
+- Add susepaste to the rescue system (bsc#1182212)
+- Add susepaste to the inst-sys as well
+- susepaste dependency
+- 16.51
+
+--------------------------------------------------------------------
+Thu Mar 4 16:48:09 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#465
+- Prepare UsrMerge (boo#1029961)
+- remove explicit libblogger2 dep
+- clean up kernel module config
+- 16.50
+
+--------------------------------------------------------------------
+Wed Mar 3 16:03:14 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#462
+- support using zram device as root file system (jsc#SLE-17630)
+- 16.49
+
+--------------------------------------------------------------------
+Wed Mar 3 10:23:58 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#464
+- fix efi local boot entry on x86_64 (bsc#1182891)
+- 16.48
+
+--------------------------------------------------------------------
 Thu Feb 25 14:26:30 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#460
