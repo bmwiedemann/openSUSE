@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar  8 18:40:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.1.16
+  * Issue #81 and #82. h5py.File will require the mode to be 
+    passed explicitly in the future. All calls without passing it 
+    were fixed to pass it.
+  * Issue #102. Added support for h5py 3.0 and 3.1.
+  * Issue #73. Fixed bug where a missing variable in loadmat would 
+    cause the function to think that the file is a pre v7.3 format 
+    MAT file fall back to scipy.io.loadmat which won't work since 
+    the file is a v7.3 format MAT file.
+  * Fixed formatting issues in the docstrings and the 
+    documentation that prevented the documentation from building.
+- Release 0.1.15
+  * Issue #68. Fixed bug where str and numpy.unicode_ strings (but 
+    not ndarrays of them) were saved in uint32 format regardless 
+    of the value of Options.convert_numpy_bytes_to_utf16.
+  * Issue #70. Updated setup.py and requirements.txt to specify 
+    the maximum versions of numpy and h5py that can be used for 
+    specific python versions (avoid version with dropped support).
+  * Issue #71. Fixed bug where the 'python_fields' attribute 
+    wouldn't always be written when doing python metadata for data 
+    written in a struct-like fashion. The bug caused the field 
+    order to not be preserved when writing and reading.
+  * Fixed an assertion in the tests to handle field re-ordering 
+    when no metadata is used for structured dtypes that only 
+    worked on older versions of numpy.
+  * Issue #72. Fixed bug where python collections filled with 
+    ndarrays that all have the same shape were converted to 
+    multi-dimensional object ndarrays instead of a 1D object 
+    ndarray of the elements. 
+- Skip python2 (dropped upstream) and python36 (NumPy 1.20, NEP 29)
+- Don't build for 32-bit gh#frejanordsiek/hdf5storage#109
+
+-------------------------------------------------------------------
 Thu May 24 17:34:42 UTC 2018 - toddrme2178@gmail.com
 
 - Spec file cleanups

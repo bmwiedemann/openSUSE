@@ -7,4 +7,12 @@
     <comment>Utilities to read/write HDF5 files, including MATLAB v7.3 MAT files</comment>
     <requestid>627175</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9ed14d045fd7d50bc5985baf8c398d1</srcmd5>
+    <version>0.1.16</version>
+    <time>1615552388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877821</requestid>
+  </revision>
 </revisionlist>

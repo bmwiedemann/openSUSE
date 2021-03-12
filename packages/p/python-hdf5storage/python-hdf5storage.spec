@@ -1,7 +1,7 @@
 #
 # spec file for package python-hdf5storage
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-hdf5storage
-Version:        0.1.15
+Version:        0.1.16
 Release:        0
 Summary:        Utilities to read/write HDF5 files, including MATLAB v7.3 MAT files
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/frejanordsiek/hdf5storage
+URL:            https://github.com/frejanordsiek/hdf5storage
 Source:         https://files.pythonhosted.org/packages/source/h/hdf5storage/hdf5storage-%{version}.zip
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module h5py >= 2.1}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 # SECTION test requirements
+# next release will use pytest gh#frejanordsiek/hdf5storage#96
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module scipy}
 # /SECTION
 Requires:       python-h5py >= 2.1
 Requires:       python-numpy
-Requires:       python-scipy
-BuildArch:      noarch
+Recommends:     python-scipy
+# This pure python package uses ctypes only suited for 64-bit. The tests segfault on 32-bit in libc memmove
+# gh#frejanordsiek/hdf5storage#109
+ExcludeArch:    %ix86 %arm
 %python_subpackages
 
 %description
@@ -50,7 +54,7 @@ files, which are just HDF5 files with a different extension and some
 extra meta-data.
 
 %prep
-%setup -q -n hdf5storage-%{version}
+%autosetup -p1 -n hdf5storage-%{version}
 # fix end-of-line encoding
 sed -i 's/\r$//' COPYING.txt
 
@@ -62,7 +66,10 @@ sed -i 's/\r$//' COPYING.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+export PYTHONDONTWRITEBYTECODE=1
+nosetests-%{$python_bin_suffix} -v
+}
 
 %files %{python_files}
 %doc README.rst
