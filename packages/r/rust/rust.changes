@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Mar 11 16:21:34 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add bootstrap for armv6
+
+-------------------------------------------------------------------
+Wed Feb 24 15:56:33 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 1.50:
+  * This fixes build on armv7 - boo#1181643
+  + Language
+    - You can now use const values for x in [x; N] array expressions. 
+    This has been technically possible since 1.38.0, as it was 
+    unintentionally stabilized.
+    - Assignments to ManuallyDrop<T> union fields are now considered safe.
+  + Compiler
+    - Added tier 3* support for the armv5te-unknown-linux-uclibceabi
+    target.
+    - Added tier 3 support for the aarch64-apple-ios-macabi target.
+    - The x86_64-unknown-freebsd is now built with the full toolset.
+    - Dropped support for all cloudabi targets.
+    * Refer to Rust's platform support page for more information on
+    Rust's tiered platform support.
+  + Libraries
+    - proc_macro::Punct now implements PartialEq<char>.
+    - ops::{Index, IndexMut} are now implemented for fixed sized
+    arrays of any length.
+    - On Unix platforms, the std::fs::File type now has a "niche" of -1.
+    This value cannot be a valid file descriptor, and now means Option<File>
+    takes up the same amount of space as File.
+  + Stabilized APIs
+    bool::then
+    btree_map::Entry::or_insert_with_key
+    f32::clamp
+    f64::clamp
+    hash_map::Entry::or_insert_with_key
+    Ord::clamp
+    RefCell::take
+    slice::fill
+    UnsafeCell::get_mut
+    - The following previously stable methods are now const.
+    IpAddr::is_ipv4
+    IpAddr::is_ipv6
+    IpAddr::is_unspecified
+    IpAddr::is_loopback
+    IpAddr::is_multicast
+    Ipv4Addr::octets
+    Ipv4Addr::is_loopback
+    Ipv4Addr::is_private
+    Ipv4Addr::is_link_local
+    Ipv4Addr::is_multicast
+    Ipv4Addr::is_broadcast
+    Ipv4Addr::is_documentation
+    Ipv4Addr::to_ipv6_compatible
+    Ipv4Addr::to_ipv6_mapped
+    Ipv6Addr::segments
+    Ipv6Addr::is_unspecified
+    Ipv6Addr::is_loopback
+    Ipv6Addr::is_multicast
+    Ipv6Addr::to_ipv4
+    Layout::size
+    Layout::align
+    Layout::from_size_align
+    pow for all integer types.
+    checked_pow for all integer types.
+    saturating_pow for all integer types.
+    wrapping_pow for all integer types.
+    next_power_of_two for all unsigned integer types.
+    checked_next_power_of_two for all unsigned integer types.
+  + Cargo
+    - Added the [build.rustc-workspace-wrapper] option. This option
+    sets a wrapper to execute instead of rustc, for workspace members only.
+    - cargo:rerun-if-changed will now, if provided a directory,
+    scan the entire contents of that directory for changes.
+    - Added the --workspace flag to the cargo update command.
+  + Misc
+    - The search results tab and the help button are focusable
+    with keyboard in rustdoc.
+    - Running tests will now print the total time taken to execute.
+  + Compatibility Notes
+    - The compare_and_swap method on atomics has been deprecated.
+    It's recommended to use the compare_exchange and 
+    compare_exchange_weak methods instead.
+    - Changes in how TokenStreams are checked have fixed some cases
+    where you could write unhygenic macro_rules! macros.
+    - #![test] as an inner attribute is now considered unstable
+    like other inner macro attributes, and reports an error by
+    default through the soft_unstable lint.
+    - Overriding a forbid lint at the same level that it was set
+    is now a hard error.
+    - You can no longer intercept panic! calls by supplying your own
+    macro. It's recommended to use the #[panic_handler] attribute
+    to provide your own implementation.
+    - Semi-colons after item statements (e.g. struct Foo {};)
+    now produce a warning.
+
+-------------------------------------------------------------------
 Sun Jan 10 13:15:07 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Add riscv64 build

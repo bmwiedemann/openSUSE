@@ -17,9 +17,9 @@
 #
 
 
-%global version_current 1.49.0
-%global version_previous 1.48.0
-%global version_bootstrap 1.48.0
+%global version_current 1.50.0
+%global version_previous 1.49.0
+%global version_bootstrap 1.50.0
 
 # some sub-packages are versioned independently
 %global rustfmt_version 1.4.25
@@ -86,14 +86,15 @@
 %bcond_without rls
 %endif
 
-# Do not use parallel codegen in order to 
-#   a) not exhaust memory on build-machines and 
+# Do not use parallel codegen in order to
+#   a) not exhaust memory on build-machines and
 #   b) generate the fastest possible binary
 # at the cost of longer build times for this package
 %define codegen_units --set rust.codegen-units=1
 # Debuginfo can exhaust memory on these architecture workers
 %ifarch  %{arm} %{ix86}
 %define debug_info --disable-debuginfo --disable-debuginfo-only-std --disable-debuginfo-tools --disable-debuginfo-lines
+%define strip_debug_flag 1
 %else
 %define debug_info --enable-debuginfo --disable-debuginfo-only-std --enable-debuginfo-tools --disable-debuginfo-lines
 %endif
@@ -125,7 +126,7 @@ Name:           rust
 Version:        %{version_current}
 Release:        0
 Summary:        A systems programming language
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 URL:            https://www.rust-lang.org
 Source0:        %{dl_url}/rustc-%{version}-src.tar.xz
@@ -135,6 +136,7 @@ Source100:      %{dl_url}/rust-%{version_bootstrap}-x86_64-unknown-linux-gnu.tar
 Source101:      %{dl_url}/rust-%{version_bootstrap}-i686-unknown-linux-gnu.tar.xz
 Source102:      %{dl_url}/rust-%{version_bootstrap}-aarch64-unknown-linux-gnu.tar.xz
 Source103:      %{dl_url}/rust-%{version_bootstrap}-armv7-unknown-linux-gnueabihf.tar.xz
+Source104:      %{dl_url}/rust-%{version_bootstrap}-arm-unknown-linux-gnueabihf.tar.xz
 Source105:      %{dl_url}/rust-%{version_bootstrap}-powerpc64-unknown-linux-gnu.tar.xz
 Source106:      %{dl_url}/rust-%{version_bootstrap}-powerpc64le-unknown-linux-gnu.tar.xz
 Source107:      %{dl_url}/rust-%{version_bootstrap}-s390x-unknown-linux-gnu.tar.xz
@@ -144,6 +146,7 @@ Source200:      %{dl_url}/rust-%{version_bootstrap}-x86_64-unknown-linux-gnu.tar
 Source201:      %{dl_url}/rust-%{version_bootstrap}-i686-unknown-linux-gnu.tar.xz.asc
 Source202:      %{dl_url}/rust-%{version_bootstrap}-aarch64-unknown-linux-gnu.tar.xz.asc
 Source203:      %{dl_url}/rust-%{version_bootstrap}-armv7-unknown-linux-gnueabihf.tar.xz.asc
+Source204:      %{dl_url}/rust-%{version_bootstrap}-arm-unknown-linux-gnueabihf.tar.xz.asc
 Source205:      %{dl_url}/rust-%{version_bootstrap}-powerpc64-unknown-linux-gnu.tar.xz.asc
 Source206:      %{dl_url}/rust-%{version_bootstrap}-powerpc64le-unknown-linux-gnu.tar.xz.asc
 Source207:      %{dl_url}/rust-%{version_bootstrap}-s390x-unknown-linux-gnu.tar.xz.asc
@@ -233,7 +236,7 @@ like a low-level language would.
 
 %package -n rust-std-static
 Summary:        Standard library for Rust
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 Conflicts:      rust-std < %{version}
@@ -246,7 +249,7 @@ written in Rust.
 
 %package -n rust-doc
 Summary:        Rust documentation
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 
@@ -255,7 +258,7 @@ Documentation for the Rust language.
 
 %package -n rust-gdb
 Summary:        Gdb integration for rust binaries
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
@@ -272,7 +275,7 @@ invoking gdb on rust binaries.
 
 %package -n rust-src
 Summary:        Sources for the Rust standard library
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 BuildArch:      noarch
@@ -284,7 +287,7 @@ as RLS or racer.
 
 %package -n rls
 Summary:        Language server for Rust lang
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 Requires:       %{name}-analysis = %{version}
@@ -299,7 +302,7 @@ refactorings.  It can be used with an IDE such as Gnome-Builder.
 
 %package -n rust-analysis
 Summary:        Compiler analysis data for the Rust standard library
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       rust-std-static = %{version}
 
@@ -311,7 +314,7 @@ standard library.
 
 %package -n rustfmt
 Summary:        Code formatting tool for Rust lang
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 Requires:       cargo = %{version}
@@ -342,7 +345,7 @@ A collection of lints to catch common mistakes and improve Rust code.
 
 %package -n cargo
 Summary:        The Rust package manager
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 Conflicts:      cargo < %{version}
@@ -358,7 +361,7 @@ Cargo downloads dependencies of Rust projects and compiles it.
 Summary:        Documentation for Cargo
 # Cargo no longer builds its own documentation
 # https://github.com/rust-lang/cargo/pull/4904
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       rust-doc = %{version}
 BuildArch:      noarch
@@ -484,7 +487,6 @@ fi
 sed -i -e "s|#ninja = true|ninja = false|" config.toml
 %endif
 
-
 # Create exports file
 # Keep all the "export VARIABLE" together here, so they can be
 # reread in the %%install section below.
@@ -500,12 +502,16 @@ export CXX=g++-7
 %if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
-# eliminate complaint from RPMlint
-export CPPFLAGS="%{optflags}"
 export DESTDIR=%{buildroot}
 # END EXPORTS
 EOF
 . ./.env.sh
+
+%if 0%{?strip_debug_flag}
+export CFLAGS="$(echo $RPM_OPT_FLAGS | sed -e 's/ -g$//')"
+%endif
+export CXXFLAGS="$CFLAGS"
+unset FFLAGS
 
 ./x.py build -v
 ./x.py doc -v --stage 1
@@ -542,6 +548,10 @@ find %{buildroot}%{common_libdir} -maxdepth 1 -type f -name '*.so' -exec chmod -
 # The shared libraries should be executable for debuginfo extraction.
 find %{buildroot}%{rustlibdir} -maxdepth 1 -type f -name '*.so' -exec chmod -v +x '{}' '+'
 
+# Install rust-llvm-dwp in _bindir
+mv %{buildroot}%{rustlibdir}/*-unknown-linux-gnu*/bin/rust-llvm-dwp  %{buildroot}%{_bindir}
+rm -rf %{buildroot}%{rustlibdir}/*-unknown-linux-gnu*/bin
+
 # The html docs for x86 and x86_64 are the same in most places
 %fdupes -s %{buildroot}%{_docdir}/%{name}/html
 %fdupes -s %{buildroot}/%{_mandir}
@@ -576,6 +586,7 @@ rm -rf %{buildroot}/home
 %{_bindir}/rustc
 %{_bindir}/rustdoc
 %{_bindir}/rust-lldb
+%{_bindir}/rust-llvm-dwp
 %{_mandir}/man1/rustc.1%{?ext_man}
 %{_mandir}/man1/rustdoc.1%{?ext_man}
 %{_prefix}/lib/lib*.so
@@ -583,6 +594,7 @@ rm -rf %{buildroot}/home
 %dir %{rustlibdir}/%{rust_triple}
 %dir %{rustlibdir}/%{rust_triple}/lib
 %{rustlibdir}/%{rust_triple}/lib/*.so
+%{_libexecdir}/cargo-credential-1password
 %exclude %{_docdir}/%{name}/html
 %exclude %{rustlibdir}/src
 
