@@ -1,7 +1,7 @@
 #
 # spec file for package pcmanfm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           pcmanfm
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        The LXDE file manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-Url:            http://www.lxde.org/
+URL:            https://www.lxde.org/
 Source0:        http://downloads.sourceforge.net/pcmanfm/pcmanfm-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libfm) >= 1.0
@@ -44,7 +45,6 @@ Requires:       polkit-gnome
 # needed to switch to root
 Requires:       xdg-utils
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %lang_package
 
 %description
@@ -58,18 +58,17 @@ Requires:       %{name} = %{version}
 Requires:       gtk2-devel
 Requires:       libfm-gtk4 >= %{version}
 Requires:       libfm4 >= %{version}
-Requires:       pkg-config
+Requires:       pkgconfig
 
 %description devel
 Development files for PCManFM.
 
-
 %prep
-%setup   -q
+%setup -q
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -87,23 +86,24 @@ sed -i "3d" %{buildroot}%{_datadir}/applications/pcmanfm-desktop-pref.desktop
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
+%license COPYING
+%doc NEWS
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/ui
 %{_datadir}/%{name}/ui/*.ui
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/pcmanfm-desktop-pref.desktop
-%{_mandir}/man1/pcmanfm.1.gz
+%{_mandir}/man1/pcmanfm.1%{?ext_man}
 %dir %{_sysconfdir}/xdg/pcmanfm
 %dir %{_sysconfdir}/xdg/pcmanfm/default
 %config %{_sysconfdir}/xdg/pcmanfm/default/pcmanfm.conf
 
 %files lang -f %{name}.lang
-%defattr(-,root,root,-)
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %{_includedir}/%{name}-modules.h
 
 %changelog
