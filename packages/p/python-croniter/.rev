@@ -132,4 +132,19 @@
 - Minor docs update</comment>
     <requestid>850942</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7a6280ecfa8a15ae9508b3691b139abc</srcmd5>
+    <version>1.0.8</version>
+    <time>1615552407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.8:
+  * Update `_expand` to lowercase each component of the expression.
+  * Fix _expand to reject int literals with underscores
+  * Fix combination of star and invalid expression bugs
+  * Security fix: fix overflow when using cron ranges
+  * Fix #155: raise CroniterBadCronError when error syntax
+  * Fix match when datetime has microseconds
+  * Added Python 3.8 and 3.9 support</comment>
+    <requestid>878436</requestid>
+  </revision>
 </revisionlist>

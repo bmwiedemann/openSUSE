@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 12 03:42:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.8:
+  * Update `_expand` to lowercase each component of the expression.
+  * Fix _expand to reject int literals with underscores
+  * Fix combination of star and invalid expression bugs
+  * Security fix: fix overflow when using cron ranges
+  * Fix #155: raise CroniterBadCronError when error syntax
+  * Fix match when datetime has microseconds
+  * Added Python 3.8 and 3.9 support
+
+-------------------------------------------------------------------
 Thu Nov 26 09:22:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.3.36:

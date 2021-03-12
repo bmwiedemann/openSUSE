@@ -1,7 +1,7 @@
 #
 # spec file for package python-croniter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-croniter
-Version:        0.3.36
+Version:        1.0.8
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://github.com/kiorky/croniter
 Source:         https://files.pythonhosted.org/packages/source/c/croniter/croniter-%{version}.tar.gz
+BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module natsort}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module python-dateutil}
