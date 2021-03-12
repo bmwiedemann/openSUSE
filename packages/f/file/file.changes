@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 10 13:41:42 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Remove patch file-5.12-zip.dif as it is upstream solved (boo#1183143)
+
+-------------------------------------------------------------------
 Wed Jul  1 07:52:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream commit 85b7ab832 as patch file-5.39-alternate_format.dif

@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,6 @@ Patch7:         file-4.20-ssd.dif
 Patch8:         file-4.20-xen.dif
 Patch9:         file-5.22-elf.dif
 Patch10:        file-5.19-printf.dif
-Patch11:        file-5.12-zip.dif
 Patch12:        file-5.17-option.dif
 Patch13:        file-4.21-scribus.dif
 Patch15:        file-4.21-xcursor.dif
@@ -117,7 +116,6 @@ to develop applications that require the magic "file" interface.
 %patch8  -p0 -b .xen
 %patch9  -p0 -b .elf
 %patch10 -p0 -b .prtf
-%patch11 -p0 -b .zip
 %patch12 -p1 -b .opt
 %patch13 -p0 -b .scri
 %patch15 -p0 -b .xcur

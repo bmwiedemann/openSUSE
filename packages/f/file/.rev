@@ -1362,4 +1362,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
 - Update to 5.39</comment>
     <requestid>818050</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>1626a5c6cad2bb601cab54fbdd7204a0</srcmd5>
+    <version>5.39</version>
+    <time>1615552232</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch file-5.12-zip.dif as it is upstream solved (boo#1183143)</comment>
+    <requestid>878177</requestid>
+  </revision>
 </revisionlist>
