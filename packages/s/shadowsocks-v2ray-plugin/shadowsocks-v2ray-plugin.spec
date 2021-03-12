@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-v2ray-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  fdupes
 BuildRequires:  golang-github-v2fly-v2ray-core
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.15
-BuildRequires:  golang(v2ray.com/core)
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
@@ -50,7 +49,6 @@ Yet another SIP003 plugin for shadowsocks, based on v2ray
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        Additional mobile libraries
 Group:          Development/Languages/Golang
-Requires:       golang(v2ray.com/core)
 BuildRequires:  golang-github-v2fly-v2ray-core
 BuildArch:      noarch
 

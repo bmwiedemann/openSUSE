@@ -420,3 +420,95 @@ index 6e59991..53c3abe 100644
 +rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
 +sourcegraph.com/sourcegraph/go-diff v0.5.0/go.mod h1:kuch7UrkMzY0X+p9CRK03kfuPQ2zzQcaEFbx8wA8rck=
 +sourcegraph.com/sqs/pbtypes v0.0.0-20180604144634-d3ebe8f20ae4/go.mod h1:ketZ/q3QxT9HOBeFhu6RdvsftgpsbFHBF5Cas6cDKZ0=
+diff -Nur v2ray-plugin-1.3.1/errors.generated.go v2ray-plugin-1.3.1-new/errors.generated.go
+--- v2ray-plugin-1.3.1/errors.generated.go	2020-05-31 13:31:56.000000000 +0800
++++ v2ray-plugin-1.3.1-new/errors.generated.go	2021-03-12 10:09:22.043209350 +0800
+@@ -1,6 +1,6 @@
+ package main
+ 
+-import "v2ray.com/core/common/errors"
++import "github.com/v2fly/v2ray-core/v4/common/errors"
+ 
+ type errPathObjHolder struct{}
+ 
+diff -Nur v2ray-plugin-1.3.1/log_android.go v2ray-plugin-1.3.1-new/log_android.go
+--- v2ray-plugin-1.3.1/log_android.go	2020-05-31 13:31:56.000000000 +0800
++++ v2ray-plugin-1.3.1-new/log_android.go	2021-03-12 10:09:22.043209350 +0800
+@@ -15,11 +15,11 @@
+ 	"fmt"
+ 	"unsafe"
+ 
+-	alog "v2ray.com/core/app/log"
++	alog "github.com/v2fly/v2ray-core/v4/app/log"
+ 
+-	"v2ray.com/core/common"
+-	"v2ray.com/core/common/log"
+-	"v2ray.com/core/common/serial"
++	"github.com/v2fly/v2ray-core/v4/common"
++	"github.com/v2fly/v2ray-core/v4/common/log"
++	"github.com/v2fly/v2ray-core/v4/common/serial"
+ )
+ 
+ var (
+diff -Nur v2ray-plugin-1.3.1/main.go v2ray-plugin-1.3.1-new/main.go
+--- v2ray-plugin-1.3.1/main.go	2020-05-31 13:31:56.000000000 +0800
++++ v2ray-plugin-1.3.1-new/main.go	2021-03-12 10:09:22.043209350 +0800
+@@ -15,29 +15,29 @@
+ 
+ 	"github.com/golang/protobuf/proto"
+ 
+-	"v2ray.com/core"
++	"github.com/v2fly/v2ray-core/v4"
+ 
+-	"v2ray.com/core/app/dispatcher"
+-	"v2ray.com/core/app/proxyman"
+-	_ "v2ray.com/core/app/proxyman/inbound"
+-	_ "v2ray.com/core/app/proxyman/outbound"
++	"github.com/v2fly/v2ray-core/v4/app/dispatcher"
++	"github.com/v2fly/v2ray-core/v4/app/proxyman"
++	_ "github.com/v2fly/v2ray-core/v4/app/proxyman/inbound"
++	_ "github.com/v2fly/v2ray-core/v4/app/proxyman/outbound"
+ 
+-	"v2ray.com/core/common/net"
+-	"v2ray.com/core/common/protocol"
+-	"v2ray.com/core/common/serial"
++	"github.com/v2fly/v2ray-core/v4/common/net"
++	"github.com/v2fly/v2ray-core/v4/common/protocol"
++	"github.com/v2fly/v2ray-core/v4/common/serial"
+ 
+-	"v2ray.com/core/proxy/dokodemo"
+-	"v2ray.com/core/proxy/freedom"
++	"github.com/v2fly/v2ray-core/v4/proxy/dokodemo"
++	"github.com/v2fly/v2ray-core/v4/proxy/freedom"
+ 
+-	"v2ray.com/core/transport/internet"
+-	"v2ray.com/core/transport/internet/quic"
+-	"v2ray.com/core/transport/internet/tls"
+-	"v2ray.com/core/transport/internet/websocket"
++	"github.com/v2fly/v2ray-core/v4/transport/internet"
++	"github.com/v2fly/v2ray-core/v4/transport/internet/quic"
++	"github.com/v2fly/v2ray-core/v4/transport/internet/tls"
++	"github.com/v2fly/v2ray-core/v4/transport/internet/websocket"
+ 
+-	vlog "v2ray.com/core/app/log"
+-	clog "v2ray.com/core/common/log"
++	vlog "github.com/v2fly/v2ray-core/v4/app/log"
++	clog "github.com/v2fly/v2ray-core/v4/common/log"
+ 
+-	"v2ray.com/core/common/platform/filesystem"
++	"github.com/v2fly/v2ray-core/v4/common/platform/filesystem"
+ )
+ 
+ var (
+diff -Nur v2ray-plugin-1.3.1/utils_android.go v2ray-plugin-1.3.1-new/utils_android.go
+--- v2ray-plugin-1.3.1/utils_android.go	2020-05-31 13:31:56.000000000 +0800
++++ v2ray-plugin-1.3.1-new/utils_android.go	2021-03-12 10:09:22.043209350 +0800
+@@ -70,7 +70,7 @@
+ 	"log"
+ 	"syscall"
+ 
+-	vinternet "v2ray.com/core/transport/internet"
++	vinternet "github.com/v2fly/v2ray-core/v4/transport/internet"
+ )
+ 
+ func ControlOnConnSetup(network string, address string, s uintptr) error {
