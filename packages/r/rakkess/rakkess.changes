@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 08 15:14:56 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.4.7:
+  * Fix Makefile
+  * Create tag v0.4.7
+  * Upgrade dependencies (#125)
+  * Remove UPX postprocessing for Darwin builds (#124)
+  * Create tag v0.4.6
+  * Update dependencies k8s -> 0.19.4 (#105)
+  * Bump golangci-lint to 1.31.0 (#94)
+  * Bump github.com/spf13/cobra from 1.0.0 to 1.1.0 (#93)
+  * Bump k8s dependencies from 0.18.8 to 0.19.2 (#91)
+  * Create tag v0.4.5
+
+-------------------------------------------------------------------
 Thu Feb 27 20:21:39 UTC 2020 - Kasimir _ <kasimir_@outlook.de>
 
 - Fix building on %arm architectures

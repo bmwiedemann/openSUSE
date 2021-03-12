@@ -1,7 +1,7 @@
 #
 # spec file for package rakkess
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           rakkess
-Version:        0.4.4
+Version:        0.4.7
 Release:        0
 Summary:        Utility to show an access matrix for k8s server resources
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/corneliusweig/rakkess
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.12
+Source1:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.15
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
