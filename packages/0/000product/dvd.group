@@ -5080,6 +5080,7 @@
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5428,6 +5429,7 @@
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5438,8 +5440,9 @@
     <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vhba-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="virt-sandbox" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- virtualbox-guest-tools uninstallable: nothing provides kernel-uname-r = 5.11.2-1-default needed by virtualbox-kmp-default-6.1.18_k5.11.2_1-4.1.x86_64-->
-    <!-- virtualbox-guest-x11 uninstallable: nothing provides kernel-uname-r = 5.11.2-1-default needed by virtualbox-kmp-default-6.1.18_k5.11.2_1-4.1.x86_64-->
+    <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="wpa_supplicant-gui" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="wxWidgets-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xbitmaps-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
