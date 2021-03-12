@@ -175,4 +175,14 @@
     <comment>- Update to 1.5.4.g8 / 1.5.4.raytracing (104ecc35)</comment>
     <requestid>856064</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>73e5048783052ae3e24b258c3d1a10f5</srcmd5>
+    <version>1.5.4.g42</version>
+    <time>1615552244</time>
+    <user>dimstar_suse</user>
+    <comment>for staging:C
+
+- Update to 1.5.4.g42 (a3fdfe8146)</comment>
+    <requestid>876938</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  1 06:46:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.5.4.g42 (a3fdfe8146)
+  * Add SPV_KHR_workgroup_memory_explicit_layout
+  * Add None as a possible value for DebugInfoFlags
+  * Add header changes for SPV_EXT_shader_atomic_float_min_max
+- Remove 0001-Add-SPV_KHR_workgroup_memory_explicit_layout.patch
+
+-------------------------------------------------------------------
+Wed Feb 10 15:01:14 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Add-SPV_KHR_workgroup_memory_explicit_layout.patch
+
+-------------------------------------------------------------------
 Wed Nov 25 17:08:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.5.4.g8 / 1.5.4.raytracing (104ecc35)
