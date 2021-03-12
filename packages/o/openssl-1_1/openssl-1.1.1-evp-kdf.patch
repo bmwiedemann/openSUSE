@@ -12,7 +12,7 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  EVP_F_EVP_MD_CTX_COPY_EX:110:EVP_MD_CTX_copy_ex
  EVP_F_EVP_MD_SIZE:162:EVP_MD_size
  EVP_F_EVP_OPENINIT:102:EVP_OpenInit
-@@ -816,12 +819,31 @@ EVP_F_PKCS5_PBE_KEYIVGEN:117:PKCS5_PBE_k
+@@ -816,11 +819,13 @@ EVP_F_PKCS5_PBE_KEYIVGEN:117:PKCS5_PBE_k
  EVP_F_PKCS5_V2_PBE_KEYIVGEN:118:PKCS5_v2_PBE_keyivgen
  EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN:164:PKCS5_v2_PBKDF2_keyivgen
  EVP_F_PKCS5_V2_SCRYPT_KEYIVGEN:180:PKCS5_v2_scrypt_keyivgen
@@ -24,6 +24,12 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  EVP_F_S390X_AES_GCM_CTRL:201:s390x_aes_gcm_ctrl
 +EVP_F_SCRYPT_ALG:228:scrypt_alg
  EVP_F_UPDATE:173:update
+ FIPS_F_DH_BUILTIN_GENPARAMS:100:dh_builtin_genparams
+ FIPS_F_DRBG_RESEED:121:drbg_reseed
+@@ -873,6 +878,23 @@ FIPS_F_RSA_OSSL_PRIVATE_DECRYPT:117:rsa_
+ FIPS_F_RSA_OSSL_PRIVATE_ENCRYPT:118:rsa_ossl_private_encrypt
+ FIPS_F_RSA_OSSL_PUBLIC_DECRYPT:119:rsa_ossl_public_decrypt
+ FIPS_F_RSA_OSSL_PUBLIC_ENCRYPT:120:rsa_ossl_public_encrypt
 +KDF_F_HKDF_EXTRACT:112:HKDF_Extract
 +KDF_F_KDF_HKDF_DERIVE:113:kdf_hkdf_derive
 +KDF_F_KDF_HKDF_NEW:114:kdf_hkdf_new
@@ -44,7 +50,7 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  KDF_F_PKEY_HKDF_CTRL_STR:103:pkey_hkdf_ctrl_str
  KDF_F_PKEY_HKDF_DERIVE:102:pkey_hkdf_derive
  KDF_F_PKEY_HKDF_INIT:108:pkey_hkdf_init
-@@ -833,6 +855,7 @@ KDF_F_PKEY_SCRYPT_SET_MEMBUF:107:pkey_sc
+@@ -884,6 +906,7 @@ KDF_F_PKEY_SCRYPT_SET_MEMBUF:107:pkey_sc
  KDF_F_PKEY_TLS1_PRF_CTRL_STR:100:pkey_tls1_prf_ctrl_str
  KDF_F_PKEY_TLS1_PRF_DERIVE:101:pkey_tls1_prf_derive
  KDF_F_PKEY_TLS1_PRF_INIT:110:pkey_tls1_prf_init
@@ -52,7 +58,7 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  KDF_F_TLS1_PRF_ALG:111:tls1_prf_alg
  OBJ_F_OBJ_ADD_OBJECT:105:OBJ_add_object
  OBJ_F_OBJ_ADD_SIGID:107:OBJ_add_sigid
-@@ -2290,6 +2313,7 @@ EVP_R_ONLY_ONESHOT_SUPPORTED:177:only on
+@@ -2341,6 +2364,7 @@ EVP_R_ONLY_ONESHOT_SUPPORTED:177:only on
  EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE:150:\
  	operation not supported for this keytype
  EVP_R_OPERATON_NOT_INITIALIZED:151:operaton not initialized
@@ -60,7 +66,7 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  EVP_R_OUTPUT_WOULD_OVERFLOW:184:output would overflow
  EVP_R_PARTIALLY_OVERLAPPING:162:partially overlapping buffers
  EVP_R_PBKDF2_ERROR:181:pbkdf2 error
-@@ -2327,6 +2351,7 @@ KDF_R_MISSING_SEED:106:missing seed
+@@ -2378,6 +2402,7 @@ KDF_R_MISSING_SEED:106:missing seed
  KDF_R_UNKNOWN_PARAMETER_TYPE:103:unknown parameter type
  KDF_R_VALUE_ERROR:108:value error
  KDF_R_VALUE_MISSING:102:value missing

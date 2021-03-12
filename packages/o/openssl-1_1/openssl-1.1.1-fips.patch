@@ -1566,7 +1566,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_aes_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -1943,7 +1943,7 @@ Index: openssl-1.1.1j/crypto/fips/fips.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -2474,7 +2474,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_cmac_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -2635,7 +2635,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_des_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -2774,7 +2774,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_dh_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -2962,7 +2962,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_drbg_ctr.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -3373,7 +3373,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_drbg_hash.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -3732,7 +3732,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_drbg_hmac.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -3998,7 +3998,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_drbg_lib.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -4532,7 +4532,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_drbg_rand.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -4722,7 +4722,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_drbg_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -5551,7 +5551,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_drbg_selftest.h
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -7347,7 +7347,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_dsa_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -7551,7 +7551,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_ecdh_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -7798,7 +7798,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_ecdsa_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -7956,7 +7956,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_err.h
 ===================================================================
 --- /dev/null
 +++ openssl-1.1.1j/crypto/fips/fips_err.h
-@@ -0,0 +1,197 @@
+@@ -0,0 +1,199 @@
 +/* crypto/fips_err.h */
 +/* ====================================================================
 + * Copyright (c) 1999-2011 The OpenSSL Project.  All rights reserved.
@@ -8037,6 +8037,8 @@ Index: openssl-1.1.1j/crypto/fips/fips_err.h
 +    {ERR_FUNC(FIPS_F_ECDH_COMPUTE_KEY), "ECDH_compute_key"},
 +    {ERR_FUNC(FIPS_F_EVP_CIPHER_CTX_NEW), "EVP_CIPHER_CTX_new"},
 +    {ERR_FUNC(FIPS_F_EVP_CIPHER_CTX_RESET), "EVP_CIPHER_CTX_reset"},
++    {ERR_FUNC(FIPS_F_EVP_CIPHERINIT_EX), "EVP_CipherInit_ex"},
++    {ERR_FUNC(FIPS_F_EVP_DIGESTINIT_EX), "EVP_DigestInit_ex"},
 +    {ERR_FUNC(FIPS_F_FIPS_CHECK_DSA), "fips_check_dsa"},
 +    {ERR_FUNC(FIPS_F_FIPS_CHECK_EC), "fips_check_ec"},
 +    {ERR_FUNC(FIPS_F_FIPS_CHECK_RSA), "fips_check_rsa"},
@@ -8179,7 +8181,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_hmac_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -8318,7 +8320,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_locl.h
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -8394,7 +8396,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_post.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -8627,7 +8629,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_rand_lcl.h
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -8831,7 +8833,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_rand_lib.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -9070,7 +9072,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_rsa_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -9413,7 +9415,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_sha_selftest.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -9641,7 +9643,7 @@ Index: openssl-1.1.1j/crypto/fips/fips_standalone_hmac.c
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -9804,7 +9806,7 @@ Index: openssl-1.1.1j/include/crypto/fips_int.h
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -11016,7 +11018,7 @@ Index: openssl-1.1.1j/include/openssl/fips.h
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -11208,7 +11210,7 @@ Index: openssl-1.1.1j/include/openssl/fips_rand.h
 + * are met:
 + *
 + * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer. 
++ *    notice, this list of conditions and the following disclaimer.
 + *
 + * 2. Redistributions in binary form must reproduce the above copyright
 + *    notice, this list of conditions and the following disclaimer in
@@ -11863,3 +11865,127 @@ Index: openssl-1.1.1j/util/libcrypto.num
 +FIPS_rand_strength                      6380	1_1_0g	EXIST::FUNCTION:
 +FIPS_drbg_get_blocklength               6381	1_1_0g	EXIST::FUNCTION:
 +FIPS_drbg_init                          6382	1_1_0g	EXIST::FUNCTION:
+Index: openssl-1.1.1j/crypto/err/openssl.txt
+===================================================================
+--- openssl-1.1.1j.orig/crypto/err/openssl.txt
++++ openssl-1.1.1j/crypto/err/openssl.txt
+@@ -822,6 +822,57 @@ EVP_F_RC5_CTRL:125:rc5_ctrl
+ EVP_F_R_32_12_16_INIT_KEY:242:r_32_12_16_init_key
+ EVP_F_S390X_AES_GCM_CTRL:201:s390x_aes_gcm_ctrl
+ EVP_F_UPDATE:173:update
++FIPS_F_DH_BUILTIN_GENPARAMS:100:dh_builtin_genparams
++FIPS_F_DRBG_RESEED:121:drbg_reseed
++FIPS_F_DSA_BUILTIN_PARAMGEN2:107:dsa_builtin_paramgen2
++FIPS_F_DSA_DO_SIGN:102:DSA_do_sign
++FIPS_F_DSA_DO_VERIFY:103:DSA_do_verify
++FIPS_F_ECDH_COMPUTE_KEY:123:ECDH_compute_key
++FIPS_F_EVP_CIPHER_CTX_NEW:137:EVP_CIPHER_CTX_new
++FIPS_F_EVP_CIPHER_CTX_RESET:122:EVP_CIPHER_CTX_reset
++FIPS_F_EVP_CIPHERINIT_EX:124:EVP_CipherInit_ex
++FIPS_F_EVP_DIGESTINIT_EX:125:EVP_DigestInit_ex
++FIPS_F_FIPS_CHECK_DSA:104:fips_check_dsa
++FIPS_F_FIPS_CHECK_EC:142:fips_check_ec
++FIPS_F_FIPS_CHECK_RSA:106:fips_check_rsa
++FIPS_F_FIPS_DRBG_BYTES:131:fips_drbg_bytes
++FIPS_F_FIPS_DRBG_CHECK:146:fips_drbg_check
++FIPS_F_FIPS_DRBG_CPRNG_TEST:132:fips_drbg_cprng_test
++FIPS_F_FIPS_DRBG_ERROR_CHECK:136:fips_drbg_error_check
++FIPS_F_FIPS_DRBG_GENERATE:134:FIPS_drbg_generate
++FIPS_F_FIPS_DRBG_INIT:138:FIPS_drbg_init
++FIPS_F_FIPS_DRBG_INSTANTIATE:138:FIPS_drbg_instantiate
++FIPS_F_FIPS_DRBG_NEW:139:FIPS_drbg_new
++FIPS_F_FIPS_DRBG_RESEED:140:FIPS_drbg_reseed
++FIPS_F_FIPS_DRBG_SINGLE_KAT:141:FIPS_DRBG_SINGLE_KAT
++FIPS_F_FIPS_GET_ENTROPY:147:fips_get_entropy
++FIPS_F_FIPS_MODULE_MODE_SET:108:FIPS_module_mode_set
++FIPS_F_FIPS_PKEY_SIGNATURE_TEST:109:fips_pkey_signature_test
++FIPS_F_FIPS_RAND_BYTES:114:FIPS_rand_bytes
++FIPS_F_FIPS_RAND_SEED:128:FIPS_rand_seed
++FIPS_F_FIPS_RAND_SET_METHOD:126:FIPS_rand_set_method
++FIPS_F_FIPS_RAND_STATUS:127:FIPS_rand_status
++FIPS_F_FIPS_RSA_BUILTIN_KEYGEN:101:fips_rsa_builtin_keygen
++FIPS_F_FIPS_SELFTEST:150:FIPS_selftest
++FIPS_F_FIPS_SELFTEST_AES:110:FIPS_selftest_aes
++FIPS_F_FIPS_SELFTEST_AES_CCM:145:FIPS_selftest_aes_ccm
++FIPS_F_FIPS_SELFTEST_AES_GCM:129:FIPS_selftest_aes_gcm
++FIPS_F_FIPS_SELFTEST_AES_XTS:144:FIPS_selftest_aes_xts
++FIPS_F_FIPS_SELFTEST_CMAC:130:FIPS_selftest_cmac
++FIPS_F_FIPS_SELFTEST_DES:111:FIPS_selftest_des
++FIPS_F_FIPS_SELFTEST_DSA:112:FIPS_selftest_dsa
++FIPS_F_FIPS_SELFTEST_ECDSA:133:FIPS_selftest_ecdsa
++FIPS_F_FIPS_SELFTEST_HMAC:113:FIPS_selftest_hmac
++FIPS_F_FIPS_SELFTEST_SHA1:115:FIPS_selftest_sha1
++FIPS_F_FIPS_SELFTEST_SHA2:105:FIPS_selftest_sha2
++FIPS_F_OSSL_ECDSA_SIGN_SIG:143:ossl_ecdsa_sign_sig
++FIPS_F_OSSL_ECDSA_VERIFY_SIG:148:ossl_ecdsa_verify_sig
++FIPS_F_RSA_BUILTIN_KEYGEN:116:rsa_builtin_keygen
++FIPS_F_RSA_OSSL_INIT:149:rsa_ossl_init
++FIPS_F_RSA_OSSL_PRIVATE_DECRYPT:117:rsa_ossl_private_decrypt
++FIPS_F_RSA_OSSL_PRIVATE_ENCRYPT:118:rsa_ossl_private_encrypt
++FIPS_F_RSA_OSSL_PUBLIC_DECRYPT:119:rsa_ossl_public_decrypt
++FIPS_F_RSA_OSSL_PUBLIC_ENCRYPT:120:rsa_ossl_public_encrypt
+ KDF_F_PKEY_HKDF_CTRL_STR:103:pkey_hkdf_ctrl_str
+ KDF_F_PKEY_HKDF_DERIVE:102:pkey_hkdf_derive
+ KDF_F_PKEY_HKDF_INIT:108:pkey_hkdf_init
+@@ -2315,6 +2366,61 @@ EVP_R_UNSUPPORTED_SALT_TYPE:126:unsuppor
+ EVP_R_WRAP_MODE_NOT_ALLOWED:170:wrap mode not allowed
+ EVP_R_WRONG_FINAL_BLOCK_LENGTH:109:wrong final block length
+ EVP_R_XTS_DUPLICATED_KEYS:183:xts duplicated keys
++FIPS_R_ADDITIONAL_INPUT_ERROR_UNDETECTED:150:\
++	additional input error undetected
++FIPS_R_ADDITIONAL_INPUT_TOO_LONG:125:\
++	additional input too long
++FIPS_R_ALREADY_INSTANTIATED:134:already instantiated
++FIPS_R_DRBG_NOT_INITIALISED:152:drbg not initialised
++FIPS_R_DRBG_STUCK:103:drbg stuck
++FIPS_R_ENTROPY_ERROR_UNDETECTED:104:entropy error undetected
++FIPS_R_ENTROPY_NOT_REQUESTED_FOR_RESEED:105:\
++	entropy not requested for reseed
++FIPS_R_ENTROPY_SOURCE_STUCK:142:entropy source stuck
++FIPS_R_ERROR_INITIALISING_DRBG:115:error initialising drbg
++FIPS_R_ERROR_INSTANTIATING_DRBG:127:error instantiating drbg
++FIPS_R_ERROR_RETRIEVING_ADDITIONAL_INPUT:124:\
++	error retrieving additional input
++FIPS_R_ERROR_RETRIEVING_ENTROPY:122:error retrieving entropy
++FIPS_R_ERROR_RETRIEVING_NONCE:140:error retrieving nonce
++FIPS_R_FINGERPRINT_DOES_NOT_MATCH:110:\
++	fingerprint does not match
++FIPS_R_FIPS_MODE_ALREADY_SET:102:fips mode already set
++FIPS_R_FIPS_SELFTEST_FAILED:106:fips selftest failed
++FIPS_R_FUNCTION_ERROR:116:function error
++FIPS_R_GENERATE_ERROR:137:generate error
++FIPS_R_GENERATE_ERROR_UNDETECTED:118:\
++	generate error undetected
++FIPS_R_INSTANTIATE_ERROR:119:instantiate error
++FIPS_R_INTERNAL_ERROR:121:internal error
++FIPS_R_INVALID_KEY_LENGTH:109:invalid key length
++FIPS_R_IN_ERROR_STATE:123:in error state
++FIPS_R_KEY_TOO_SHORT:108:key too short
++FIPS_R_NONCE_ERROR_UNDETECTED:149:nonce error undetected
++FIPS_R_NON_FIPS_METHOD:100:non fips method
++FIPS_R_NOPR_TEST1_FAILURE:145:nopr test1 failure
++FIPS_R_NOPR_TEST2_FAILURE:146:nopr test2 failure
++FIPS_R_NOT_INSTANTIATED:126:not instantiated
++FIPS_R_PAIRWISE_TEST_FAILED:107:pairwise test failed
++FIPS_R_PERSONALISATION_ERROR_UNDETECTED:128:\
++	personalisation error undetected
++FIPS_R_PERSONALISATION_STRING_TOO_LONG:129:\
++	personalisation string too long
++FIPS_R_PR_TEST1_FAILURE:147:pr test1 failure
++FIPS_R_PR_TEST2_FAILURE:148:pr test2 failure
++FIPS_R_REQUEST_LENGTH_ERROR_UNDETECTED:130:\
++	request length error undetected
++FIPS_R_REQUEST_TOO_LARGE_FOR_DRBG:131:\
++	request too large for drbg
++FIPS_R_RESEED_COUNTER_ERROR:132:reseed counter error
++FIPS_R_RESEED_ERROR:133:reseed error
++FIPS_R_SELFTEST_FAILED:101:selftest failed
++FIPS_R_SELFTEST_FAILURE:135:selftest failure
++FIPS_R_TEST_FAILURE:117:test failure
++FIPS_R_UNINSTANTIATE_ERROR:141:uninstantiate error
++FIPS_R_UNINSTANTIATE_ZEROISE_ERROR:138:uninstantiate zeroise error
++FIPS_R_UNSUPPORTED_DRBG_TYPE:139:unsupported drbg type
++FIPS_R_UNSUPPORTED_PLATFORM:113:unsupported platform
+ KDF_R_INVALID_DIGEST:100:invalid digest
+ KDF_R_MISSING_ITERATION_COUNT:109:missing iteration count
+ KDF_R_MISSING_KEY:104:missing key

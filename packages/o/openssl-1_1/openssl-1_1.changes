@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  2 19:40:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix unresolved error codes [bsc#1182959]
+- Update patches:
+  * openssl-1.1.1-fips.patch
+  * openssl-1.1.1-evp-kdf.patch
+
+-------------------------------------------------------------------
 Fri Feb 19 08:01:01 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.1.1j
