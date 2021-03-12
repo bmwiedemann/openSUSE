@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-pandas%{psuffix}
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -49,15 +49,19 @@ BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.16.5
 Requires:       python-python-dateutil >= 2.7.3
 Requires:       python-pytz >= 2017.3
-Recommends:     python-numexpr >= 2.6.8
 Recommends:     python-Bottleneck >= 1.2.1
+Recommends:     python-numexpr >= 2.6.8
+Suggests:       python-Jinja2 >= 2.10
+Suggests:       python-PyMySQL >= 0.8.1
+Suggests:       python-QtPy
+Suggests:       python-SQLAlchemy >= 1.3.0
+Suggests:       python-XlsxWriter >= 1.0.2
 Suggests:       python-beautifulsoup4 >= 4.6.0
 Suggests:       python-blosc >= 1.17.0
 Suggests:       python-fastparquet >= 0.4.0
 Suggests:       python-fsspec >= 0.7.4
 Suggests:       python-gcsfs >= 0.6.0
 Suggests:       python-html5lib >= 1.0.1
-Suggests:       python-Jinja2 >= 2.10
 Suggests:       python-lxml >= 4.3.0
 Suggests:       python-matplotlib >= 2.2.3
 Suggests:       python-numba >= 0.46.0
@@ -65,19 +69,15 @@ Suggests:       python-openpyxl >= 2.6.0
 Suggests:       python-pandas-gbq >= 0.12.0
 Suggests:       python-psycopg2 >= 2.7
 Suggests:       python-pyarrow >= 0.15.0
-Suggests:       python-PyMySQL >= 0.8.1
 Suggests:       python-pyreadstat
 Suggests:       python-qt5
-Suggests:       python-QtPy
 Suggests:       python-s3fs >= 0.4.0
 Suggests:       python-scipy >= 1.12.0
-Suggests:       python-SQLAlchemy >= 1.3.0
 Suggests:       python-tables >= 3.5.1
 Suggests:       python-tabulate >= 0.8.3
 Suggests:       python-xarray >= 0.8.2
 Suggests:       python-xlrd >= 1.2.0
 Suggests:       python-xlsb >= 1.0.6
-Suggests:       python-XlsxWriter >= 1.0.2
 Suggests:       python-zlib
 Suggests:       xclip
 Suggests:       xsel

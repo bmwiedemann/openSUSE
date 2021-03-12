@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar  3 19:10:52 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.2.3:
+  * Fixed regressions
+    + Fixed regression in to_excel() raising KeyError when giving
+      duplicate columns with columns attribute (GH39695)
+    + Fixed regression in nullable integer unary ops propagating mask
+      on assignment (GH39943)
+    + Fixed regression in DataFrame.__setitem__() not aligning
+      DataFrame on right-hand side for boolean indexer (GH39931)
+    + Fixed regression in to_json() failing to use compression with
+      URL-like paths that are internally opened in binary mode or with
+      user-provided file objects that are opened in binary mode
+      (GH39985)
+    + Fixed regression in Series.sort_index() and
+      DataFrame.sort_index(), which exited with an ungraceful error
+      when having kwarg ascending=None passed. Passing ascending=None
+      is still considered invalid, and the improved error message
+      suggests a proper usage (ascending must be a boolean or a
+      list-like of boolean) (GH39434)
+    + Fixed regression in DataFrame.transform() and Series.transform()
+      giving incorrect column labels when passed a dictionary with a
+      mix of list and non-list values (GH40018)
+
+-------------------------------------------------------------------
 Sun Feb 14 20:53:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.2.2
