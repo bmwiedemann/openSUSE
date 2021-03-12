@@ -9,28 +9,22 @@ Subject: [PATCH 1/2] delegate to stdlib parse qs
  2 files changed, 2 insertions(+), 26 deletions(-)
  create mode 100644 src/twisted/web/newsfragments/10096.bugfix
 
---- a/src/twisted/web/http.py
-+++ b/src/twisted/web/http.py
-@@ -70,12 +70,12 @@ from io import BytesIO as StringIO
+Index: Twisted-21.2.0/src/twisted/web/http.py
+===================================================================
+--- Twisted-21.2.0.orig/src/twisted/web/http.py
++++ Twisted-21.2.0/src/twisted/web/http.py
+@@ -110,6 +110,7 @@ from urllib.parse import (
+     ParseResultBytes,
+     urlparse as _urlparse,
+     unquote_to_bytes as unquote,
++    parse_qs,
+ )
  
- try:
-     from urlparse import (
--        ParseResult as ParseResultBytes, urlparse as _urlparse)
-+        ParseResult as ParseResultBytes, urlparse as _urlparse, parse_qs)
-     from urllib import unquote
-     from cgi import parse_header as _parseHeader
- except ImportError:
-     from urllib.parse import (
--        ParseResultBytes, urlparse as _urlparse, unquote_to_bytes as unquote)
-+        ParseResultBytes, urlparse as _urlparse, parse_qs)
- 
-     def _parseHeader(line):
-         # cgi.parse_header requires a str
-@@ -191,33 +191,6 @@ def urlparse(url):
+ from zope.interface import Attribute, Interface, implementer, provider
+@@ -261,31 +262,6 @@ def urlparse(url):
      return ParseResultBytes(scheme, netloc, path, params, query, fragment)
  
  
--
 -def parse_qs(qs, keep_blank_values=0, strict_parsing=0):
 -    """
 -    Like C{cgi.parse_qs}, but with support for parsing byte strings on Python 3.
@@ -56,29 +50,29 @@ Subject: [PATCH 1/2] delegate to stdlib parse qs
 -    return d
 -
 -
--
  def datetimeToString(msSinceEpoch=None):
      """
      Convert seconds since epoch to HTTP datetime string.
+Index: Twisted-21.2.0/src/twisted/web/newsfragments/10096.bugfix
+===================================================================
 --- /dev/null
-+++ b/src/twisted/web/newsfragments/10096.bugfix
++++ Twisted-21.2.0/src/twisted/web/newsfragments/10096.bugfix
 @@ -0,0 +1 @@
 +delegate to urllib.parse:parse_qs in twisted.web.http:parse_qs to avoid CVE-2021-23336 and the associated CI failures
---- a/src/twisted/web/server.py
-+++ b/src/twisted/web/server.py
-@@ -19,9 +19,9 @@ import copy
- import os
+Index: Twisted-21.2.0/src/twisted/web/server.py
+===================================================================
+--- Twisted-21.2.0.orig/src/twisted/web/server.py
++++ Twisted-21.2.0/src/twisted/web/server.py
+@@ -19,7 +19,7 @@ import os
  import re
- try:
--    from urllib import quote
-+    from urllib import quote, unquote_to_bytes as _unquote_to_bytes
- except ImportError:
--    from urllib.parse import quote as _quote
-+    from urllib.parse import quote as _quote, unquote_to_bytes as _unquote_to_bytes
+ from html import escape
+ from typing import List, Optional
+-from urllib.parse import quote as _quote
++from urllib.parse import quote as _quote, unquote_to_bytes as _unquote_to_bytes
  
-     def quote(string, *args, **kwargs):
-         return _quote(
-@@ -37,7 +37,6 @@ from twisted.spread.pb import Copyable,
+ import zlib
+ from binascii import hexlify
+@@ -31,7 +31,6 @@ from twisted.spread.pb import Copyable,
  from twisted.internet import address, interfaces
  from twisted.internet.error import AlreadyCalled, AlreadyCancelled
  from twisted.web import iweb, http, util
@@ -86,12 +80,12 @@ Subject: [PATCH 1/2] delegate to stdlib parse qs
  from twisted.python import reflect, failure, components
  from twisted import copyright
  from twisted.web import resource
-@@ -219,7 +218,7 @@ class Request(Copyable, http.Request, co
+@@ -213,7 +212,7 @@ class Request(Copyable, http.Request, co
  
          # Resource Identification
          self.prepath = []
--        self.postpath = list(map(unquote, self.path[1:].split(b'/')))
+-        self.postpath = list(map(unquote, self.path[1:].split(b"/")))
 +        self.postpath = [_unquote_to_bytes(v) for v in self.path[1:].split(b"/")]
  
          # Short-circuit for requests whose path is '*'.
-         if self.path == b'*':
+         if self.path == b"*":

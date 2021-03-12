@@ -1,12 +1,21 @@
-Index: Twisted-19.7.0/src/twisted/test/test_udp.py
+Index: Twisted-21.2.0/src/twisted/test/test_udp.py
 ===================================================================
---- Twisted-19.7.0.orig/src/twisted/test/test_udp.py
-+++ Twisted-19.7.0/src/twisted/test/test_udp.py
-@@ -514,6 +514,7 @@ class MulticastTests(unittest.TestCase):
-         skip = "Does not work on Azure Pipelines"
+--- Twisted-21.2.0.orig/src/twisted/test/test_udp.py
++++ Twisted-21.2.0/src/twisted/test/test_udp.py
+@@ -9,7 +9,7 @@ Tests for implementations of L{IReactorU
+ 
+ import os
+ 
+-from unittest import skipIf
++from unittest import skipIf, SkipTest
+ from twisted.trial.unittest import TestCase
+ 
+ from twisted.internet.defer import Deferred, gatherResults, maybeDeferred
+@@ -522,6 +522,7 @@ class MulticastTests(TestCase):
+         skip = "This reactor does not support multicast"
  
      def setUp(self):
-+        raise unittest.SkipTest("Multicast networking doesn't work with OBS")
++        raise SkipTest("Multicast networking doesn't work with OBS")
          self.server = Server()
          self.client = Client()
          # multicast won't work if we listen over loopback, apparently
