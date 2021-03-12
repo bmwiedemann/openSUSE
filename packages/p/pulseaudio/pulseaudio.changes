@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  1 16:22:36 CET 2021 - tiwai@suse.de
+
+- Upstream fixes for supporting HFP in native backend (bsc#1167940):
+  0001-bluetooth-use-consistent-profile-names.patch
+  0002-bluetooth-separate-HSP-and-HFP.patch
+  0003-bluetooth-add-correct-HFP-rfcomm-negotiation.patch
+  0004-bluetooth-make-native-the-default-backend.patch
+  0005-bluetooth-enable-module-bluez5-discover-argument-ena.patch
+  0006-bluetooth-fix-headset-auto-ofono-handover.patch
+  0007-bluetooth-prefer-headset-HFP-HF-connection-with-nati.patch
+  0008-bluetooth-complete-bluetooth-profile-separation.patch
+  0009-bluetooth-use-device-flag-to-prevent-assertion-failu.patch
+  0010-bluetooth-rename-enable_hs_role-to-enable_shared_pro.patch
+  0011-bluetooth-clean-up-rfcomm_write-usage.patch
+
+-------------------------------------------------------------------
 Thu Feb 25 15:32:55 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Let pulseaudio-utils require any pulseaudio-daemon provider

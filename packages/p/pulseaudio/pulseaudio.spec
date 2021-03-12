@@ -52,6 +52,18 @@ Patch1:         suppress-socket-error-msg.diff
 Patch5:         qpaeq-shebang.patch
 # PATCH-FIX-OPENSUSE Workaround for old systemd on Leap 15.x
 Patch6:         pulseaudio-old-systemd-workaround.patch
+# HFP support patches (bsc#1167940)
+Patch101:       0001-bluetooth-use-consistent-profile-names.patch
+Patch102:       0002-bluetooth-separate-HSP-and-HFP.patch
+Patch103:       0003-bluetooth-add-correct-HFP-rfcomm-negotiation.patch
+Patch104:       0004-bluetooth-make-native-the-default-backend.patch
+Patch105:       0005-bluetooth-enable-module-bluez5-discover-argument-ena.patch
+Patch106:       0006-bluetooth-fix-headset-auto-ofono-handover.patch
+Patch107:       0007-bluetooth-prefer-headset-HFP-HF-connection-with-nati.patch
+Patch108:       0008-bluetooth-complete-bluetooth-profile-separation.patch
+Patch109:       0009-bluetooth-use-device-flag-to-prevent-assertion-failu.patch
+Patch110:       0010-bluetooth-rename-enable_hs_role-to-enable_shared_pro.patch
+Patch111:       0011-bluetooth-clean-up-rfcomm_write-usage.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  doxygen
@@ -349,6 +361,17 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %if 0%{?suse_version} < 1550
 %patch6 -p1
 %endif
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
+%patch104 -p1
+%patch105 -p1
+%patch106 -p1
+%patch107 -p1
+%patch108 -p1
+%patch109 -p1
+%patch110 -p1
+%patch111 -p1
 
 %build
 NOCONFIGURE=1 ./bootstrap.sh
