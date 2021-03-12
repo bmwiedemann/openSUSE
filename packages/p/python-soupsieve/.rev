@@ -120,4 +120,19 @@
      boost to functions that had previously included `bs4` locally.</comment>
     <requestid>867598</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d63d3ed0733003586231c3abafad69ef</srcmd5>
+    <version>2.2</version>
+    <time>1615552263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  - **NEW**: `:link` and `:any-link` no longer include `#!html &lt;link&gt;` due to a
+    change in the level 4 selector specification. This actually yields more
+    sane results.
+  - **FIX**: BeautifulSoup, when using `find`, is quite forgiving of odd types
+    that a user may place in an element's attribute value. Soup Sieve will also
+    now be more forgiving and attempt to match these unexpected values in a sane
+    manner by normalizing them before compare. (#212)</comment>
+    <requestid>877642</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  2 00:26:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  - **NEW**: `:link` and `:any-link` no longer include `#!html <link>` due to a
+    change in the level 4 selector specification. This actually yields more
+    sane results.
+  - **FIX**: BeautifulSoup, when using `find`, is quite forgiving of odd types
+    that a user may place in an element's attribute value. Soup Sieve will also
+    now be more forgiving and attempt to match these unexpected values in a sane
+    manner by normalizing them before compare. (#212)
+
+-------------------------------------------------------------------
 Thu Jan 28 23:17:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
