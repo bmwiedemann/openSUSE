@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  8 11:22:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fixes a SSIM/MS-SSIM precision bug where a lossless comparison did not
+    always result in a perfect 1.0 score. (#796).
+  * Adds feature extractor options to clip the dB scores for both PSNR/SSIM.
+    --aom_ctc v1.0 has been updated to use these clipping options according to
+    the AOM CTC. (#802). 
+- disable LTO build (fails at least since 2.1.0)
+
+-------------------------------------------------------------------
 Thu Jan  7 15:37:35 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.1.0

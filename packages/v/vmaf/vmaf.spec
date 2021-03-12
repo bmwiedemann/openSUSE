@@ -19,8 +19,10 @@
 %define sonum  1
 %define lname   libvmaf%sonum
 
+# undefined reference to `vmaf_cpu_cpuid'
+%define _lto_cflags %{nil}
 Name:           vmaf
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Perceptual video quality assessment algorithm
 License:        BSD-2-Clause-Patent AND BSD-3-Clause
