@@ -46,4 +46,13 @@
   * Adding some missing attrs to DASHED_ATTRIBUTES (#126)</comment>
     <requestid>835747</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63d4562bd872906e438fe86d02afd722</srcmd5>
+    <version>2.6.0</version>
+    <time>1615552408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0:
+  * Add get_current() to return the current active element in a with context</comment>
+    <requestid>878439</requestid>
+  </revision>
 </revisionlist>
