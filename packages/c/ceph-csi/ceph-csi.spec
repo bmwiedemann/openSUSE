@@ -1,7 +1,7 @@
 #
 # spec file for package ceph-csi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           ceph-csi
-Version:        3.1.1+git0.22b631e99
+Version:        3.2.0+git0.997f9283f
 Release:        0
 Summary:        Container Storage Interface driver for Ceph block and file
 License:        Apache-2.0
@@ -31,12 +31,9 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source98:       README
 
-# Change CSI images to SUSE specific values.
-Patch0:         csi-images-SUSE.patch
-
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
-ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le
+ExclusiveArch:  x86_64 aarch64
 %endif
 
 # Go and spec requirements
@@ -46,13 +43,6 @@ BuildRequires:  golang(API) >= 1.13
 BuildRequires:  libcephfs-devel
 BuildRequires:  librados-devel
 BuildRequires:  librbd-devel
-
-# csi sidecars are needed to update versions in charts
-BuildRequires:  csi-external-attacher
-BuildRequires:  csi-external-provisioner
-BuildRequires:  csi-external-resizer
-BuildRequires:  csi-external-snapshotter
-BuildRequires:  csi-node-driver-registrar
 
 # Rook runtime requirements - referenced from packages installed in Rook images
 # From Ceph base container: github.com/ceph/ceph-container/src/daemon-base/...
@@ -77,7 +67,7 @@ BuildArch:      noarch
 Helm charts for CephFS and RBD access through ceph-csi.
 
 ################################################################################
-# The tasty, meaty build section
+# Build section
 ################################################################################
 
 %prep
@@ -86,9 +76,7 @@ Helm charts for CephFS and RBD access through ceph-csi.
 rm -rf vendor/
 %setup -q -T -D -a 1
 
-%patch0 -p1
-
-# Set chart registry source depending on the base os type
+# Set registry source depending on the base os type
 %if 0%{?is_opensuse}
 %define registry registry.opensuse.org/opensuse
 %else # is SES
@@ -101,8 +89,10 @@ rm -rf vendor/
 
 %define cephfs_values_yaml "charts/ceph-csi-cephfs/values.yaml"
 %define rbd_values_yaml "charts/ceph-csi-rbd/values.yaml"
-sed -i -e "s|\(.*\)SUSE_REGISTRY\(.*\)|\1%{registry}\2|" %{cephfs_values_yaml}
-sed -i -e "s|\(.*\)SUSE_REGISTRY\(.*\)|\1%{registry}\2|" %{rbd_values_yaml}
+for file in %{cephfs_values_yaml} %{rbd_values_yaml}; do
+sed -i -e "s|\(.*\)quay.io.*\/\(.*\)|\1%{registry}/cephcsi/\2|" $file
+sed -i -e "s|\(.*\)k8s.gcr.io.*\/\(.*\)|\1%{registry}/cephcsi/\2|" $file
+done
 
 %build
 
@@ -126,20 +116,27 @@ install --preserve-timestamps --mode=755 --target-directory=%{buildroot}%{_bindi
 
 # Set versions for helm charts
 helm_appVersion=`echo %{version} | cut -d '+' -f 1`
-helm_version="${helm_appVersion}_%{RELEASE}"
+helm_version="${helm_appVersion}-%{RELEASE}"
+# Set chart registry prefix for BuildTag
+registry_prefix=%{registry}
+registry_prefix=${registry_prefix#*/}/charts
 
 # Install the helm charts
 %define cephfs_chart_yaml "%{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-cephfs/Chart.yaml"
 %define cephfs_values_yaml "%{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-cephfs/values.yaml"
 %define rbd_chart_yaml "%{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-rbd/Chart.yaml"
 %define rbd_values_yaml "%{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-rbd/values.yaml"
-mkdir -p %{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-{cephfs,rbd}
+mkdir -p %{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-{cephfs,rbd}/examples
 cp -pr charts/ceph-csi-cephfs/* %{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-cephfs
+cp -pr examples/cephfs/* %{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-cephfs/examples
 cp -pr charts/ceph-csi-rbd/* %{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-rbd
+cp -pr examples/rbd/* %{buildroot}%{_datadir}/%{name}-helm-charts/ceph-csi-rbd/examples
 
 # Set SUSE required values
-sed -i -e "1 i\#!BuildTag: ceph-csi-cephfs:"${helm_version} %{cephfs_chart_yaml}
-sed -i -e "1 i\#!BuildTag: ceph-csi-rbd:"${helm_version} %{rbd_chart_yaml}
+for tag in latest ${helm_appVersion} ${helm_version}; do
+sed -i -e "1 i\#!BuildTag: ${registry_prefix}/ceph-csi-cephfs:"${tag} %{cephfs_chart_yaml}
+sed -i -e "1 i\#!BuildTag: ${registry_prefix}/ceph-csi-rbd:"${tag} %{rbd_chart_yaml}
+done
 sed -i -e "s|\(appVersion: \).*|\1v${helm_appVersion}|" %{cephfs_chart_yaml}
 sed -i -e "s|\(appVersion: \).*|\1v${helm_appVersion}|" %{rbd_chart_yaml}
 sed -i -e "s|\(version: \).*|\1${helm_version}|" %{cephfs_chart_yaml}

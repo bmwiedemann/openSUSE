@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Mar  4 11:06:45 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
+
+- Removed Patch use_attacher_v2.1.0.patch as we use upstream
+  version patterns now 
+- Removed Patch csi-images-SUSE.patch as we use upstream
+  version patterns now
+
+- Update to 3.2.0
+  * Add new controller sidecar for omap regeneration
+  * Add support for map options in RBD Storageclass
+  * Add support for unmap options in RBD Storageclass
+  * Update Kubernetes sidecars to latest releases
+  * Update go-ceph to the latest release
+  * Implement ceph fs CLI calls with go-ceph
+  * Use libopenstorage/secrets API for Hashicorp Vault
+  * Use luks2 for RBD encryption
+  * Standardize error logs in CephFS
+  * Add pod anti-affinity for provisioner Deployment
+  * Make kubelet path configurable for the helm charts
+  * Make CSI log level configurable for the helm charts 
+
+-------------------------------------------------------------------
+Tue Nov 24 14:14:16 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Use csi-attacher sidecar version v2.1.0 in helm charts due to
+  build challenges with v2.1.1. (No loss of functionality with this
+  change.) 
+
+-------------------------------------------------------------------
+Wed Nov 18 02:53:20 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Use upstream default CSI and sidecar versions in the helm charts
+- Add examples directory into cephfs and rbd helm charts
+
+-------------------------------------------------------------------
+Mon Oct 26 23:09:28 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Update helm charts to use appropriate version prefix for the final
+  registry destination (e.g. registry.suse.com or registry.opensuse.org)
+
+-------------------------------------------------------------------
+Mon Oct 19 22:42:53 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Add 'latest' and appVersion tags to helm charts
+
+-------------------------------------------------------------------
+Tue Oct  6 21:00:02 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Minor fix to helm charts to ensure SemVer formatting 
+
+-------------------------------------------------------------------
 Fri Oct  2 01:38:50 UTC 2020 - Mike Latimer <mlatimer@suse.com>
 
 - update to 3.1.1
