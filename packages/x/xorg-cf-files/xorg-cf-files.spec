@@ -26,6 +26,8 @@ URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
 Patch0:         u_riscv.patch
 Patch1:         u_xorg-cf-files-D_DEFAULT_SOURCE.patch
+#PATCH-FIX-UPSTREAM "ar l" in binutils 2.36 now has actual meaning
+Patch2:         u_ar-clq-Imake.tmpl-binutils_2.36.patch
 BuildRequires:  font-util >= 1.1
 BuildRequires:  pkgconfig(xorg-macros) >= 1.4
 Requires:       gccmakedep
@@ -55,6 +57,7 @@ converted.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 cat > host.def << EOF
 #define ConfigDir %_configdir

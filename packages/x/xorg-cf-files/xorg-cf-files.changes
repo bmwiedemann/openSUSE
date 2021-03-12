@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  3 17:27:07 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- u_ar-clq-Imake.tmpl-binutils_2.36.patch
+  * debian#981072: the previously ignored "l" option
+    (did no actual work) was implemented to specfily
+    dependencies of library. any wrong usage will now
+    trigger "ar: libdeps specified more than once"
+    error.
+
+-------------------------------------------------------------------
 Mon Jan  4 11:53:49 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_xorg-cf-files-D_DEFAULT_SOURCE.patch
