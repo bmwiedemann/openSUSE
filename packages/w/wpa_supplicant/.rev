@@ -704,4 +704,14 @@
     <comment></comment>
     <requestid>875681</requestid>
   </revision>
+  <revision rev="87" vrev="12">
+    <srcmd5>d5b4356d45b5e3aa4c9614a1ac6bf351</srcmd5>
+    <version>2.9</version>
+    <time>1615552217</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix systemd device ready dependencies in wpa_supplicant@.service file.
+  (see: https://forums.opensuse.org/showthread.php/547186-wpa_supplicant-service-fails-on-boot-succeeds-on-restart?p=2982844#post2982844)
+</comment>
+    <requestid>878125</requestid>
+  </revision>
 </revisionlist>

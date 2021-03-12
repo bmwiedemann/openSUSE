@@ -1,6 +1,8 @@
 [Unit]
 Description=WPA Supplicant daemon (interface %i)
 After=dbus.service network.target
+Requires=sys-subsystem-net-devices-%I.device
+After=sys-subsystem-net-devices-%I.device
 
 [Service]
 Type=dbus
