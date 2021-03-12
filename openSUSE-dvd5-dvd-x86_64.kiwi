@@ -321,6 +321,7 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
+      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -4836,6 +4837,7 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
+      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="sysfsutils"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
@@ -5126,6 +5128,9 @@
       <repopackage name="virt-manager-common"/>
       <repopackage name="virt-sandbox" arch="x86_64"/>
       <repopackage name="virt-what"/>
+      <repopackage name="virtualbox-guest-tools" arch="x86_64"/>
+      <repopackage name="virtualbox-guest-x11" arch="x86_64"/>
+      <repopackage name="virtualbox-kmp-default" arch="x86_64"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>
