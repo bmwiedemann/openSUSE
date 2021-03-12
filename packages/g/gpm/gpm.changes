@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 10 13:17:37 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- remove unnecessary StandardOutput override in the unit definition
+  file. (bsc#1182147)
+
+-------------------------------------------------------------------
 Wed Jan 15 09:54:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - gpm-fno-common.patch: fix compilation in Tumbleweed (bsc#1160873) 

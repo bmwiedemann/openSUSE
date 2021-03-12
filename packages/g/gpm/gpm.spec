@@ -1,7 +1,7 @@
 #
 # spec file for package gpm
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Console Mouse Support
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Console
-Url:            http://linux.schottelius.org/gpm/
+URL:            http://linux.schottelius.org/gpm/
 
 Source0:        http://www.nico.schottelius.org/software/gpm/archives/gpm-%{version}.tar.lzma
 Source2:        gpm.service

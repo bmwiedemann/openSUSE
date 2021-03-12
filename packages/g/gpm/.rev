@@ -381,4 +381,13 @@ Scripts git-archive-tarbz2.sh and report_success.sh are GPL-3.0+ licensed (forwa
 - Add back support for the TAOS evaluation module to inputattach.</comment>
     <requestid>764589</requestid>
   </revision>
+  <revision rev="53" vrev="18">
+    <srcmd5>beec0f81f0cec0b01c8a1e949a251a91</srcmd5>
+    <version>1.20.7</version>
+    <time>1615552233</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unnecessary StandardOutput override in the unit definition
+  file. (bsc#1182147)</comment>
+    <requestid>878178</requestid>
+  </revision>
 </revisionlist>
