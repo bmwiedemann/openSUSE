@@ -27,12 +27,14 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2021.2.0
+Version:        2021.3.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM dask-pr7247-numpyskip.patch -- gh#dask/dask#7247
+Patch0:         dask-pr7247-numpyskip.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +50,7 @@ Recommends:     %{name}-multiprocessing = %{version}
 Recommends:     python-bokeh >= 1.0.0
 Recommends:     python-cloudpickle >= 0.2.2
 Recommends:     python-cityhash
-Recommends:     python-distributed >= 2.0
+Recommends:     python-distributed >= %{version}
 Recommends:     python-fastparquet
 Recommends:     python-fsspec >= 0.6.0
 Recommends:     python-gcsfs >= 0.4.0
@@ -64,7 +66,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module cachey}
 BuildRequires:  %{python_module cloudpickle >= 0.2.2}
-BuildRequires:  %{python_module distributed >= 2.0}
+BuildRequires:  %{python_module distributed >= %{version}}
 # optional zarr needs fsspec >= 0.8.4 if present
 BuildRequires:  %{python_module fsspec >= 0.8.4}
 BuildRequires:  %{python_module graphviz}
@@ -73,6 +75,7 @@ BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module mimesis}
 BuildRequires:  %{python_module multipledispatch}
 BuildRequires:  %{python_module partd >= 0.3.10}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toolz >= 0.8.2}
 BuildRequires:  graphviz
@@ -248,7 +251,7 @@ A minimal task scheduling abstraction and parallel arrays.
 This package contains the multiprocessing interface.
 
 %prep
-%setup -q -n dask-%{version}
+%autosetup -p1 -n dask-%{version}
 
 %build
 %python_build
@@ -272,9 +275,11 @@ donttest+="or (test_distributed and test_serializable_groupby_agg)"
 donttest+="or (test_distributed and test_await)"
 # NEP 29: There is no python36-dask-dataframe or -array because Tumbleweed dropped python36-numpy with 1.20
 python36_ignore="--ignore dask/dataframe --ignore dask/array"
-python36_donttest=" or (test_distributed and test_to_hdf)"
-# https://github.com/dask/dask/issues/7170 -- skip in any case
-sed -i 's/from dask.array.numpy_compat import _numpy_120/_numpy_120 = True/' dask/tests/test_distributed.py
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  # Fails to convert datatype in obs constrained memory for 32-bit platforms
+  donttest+="or (test_distributed and test_combo_of_layer_types)"
+  donttest+="or (test_distributed and test_annotation_pack_unpack)"
+fi
 %pytest -ra -m "not network" -k "not ($donttest ${$python_donttest})" -n auto ${$python_ignore}
 %endif
 

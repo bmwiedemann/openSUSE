@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sun Mar  7 16:40:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.3.0
+  * This is the first release with support for Python 3.9 and the
+    last release with support for Python 3.6
+  * Bump minimum version of distributed (GH#7328) James Bourbeau
+  * Fix percentiles_summary with dask_cudf (GH#7325) Peter Andreas
+    Entschev
+  * Temporarily revert recent Array.__setitem__ updates (GH#7326)
+    James Bourbeau
+  * Blockwise.clone (GH#7312) Guido Imperiale
+  * NEP-35 duck array update (GH#7321) James Bourbeau
+  * Don’t allow setting .name for array (GH#7222) Julia Signell
+  * Use nearest interpolation for creating percentiles of integer
+    input (GH#7305) Kyle Barron
+  * Test exp with CuPy arrays (GH#7322) John A Kirkham
+  * Check that computed chunks have right size and dtype (GH#7277)
+    Bruce Merry
+  * pytest.mark.flaky (GH#7319) Guido Imperiale
+  * Contributing docs: add note to pull the latest git tags before
+    pip installing Dask (GH#7308) Genevieve Buckley
+  * Support for Python 3.9 (GH#7289) Guido Imperiale
+  * Add broadcast-based merge implementation (GH#7143) Richard
+    (Rick) Zamora
+  * Add split_every to graph_manipulation (GH#7282) Guido Imperiale
+  * Typo in optimize docs (GH#7306) Julius Busecke
+  * dask.graph_manipulation support for xarray.Dataset (GH#7276)
+    Guido Imperiale
+  * Add plot width and height support for Bokeh 2.3.0 (GH#7297)
+    James Bourbeau
+  * Add NumPy functions tri, triu_indices, triu_indices_from,
+    tril_indices, tril_indices_from (GH#6997) Illviljan
+  * Remove “cleanup” task in DataFrame on-disk shuffle (GH#7260)
+    Sinclair Target
+  * Use development version of distributed in CI (GH#7279) James
+    Bourbeau
+  * Moving high level graph pack/unpack Dask (GH#7179) Mads R. B.
+    Kristensen
+  * Improve performance of merge_percentiles (GH#7172) Ashwin
+    Srinath
+  * DOC: add dask-sql and fugue (GH#7129) Ray Bell
+  * Example for working with categoricals and parquet (GH#7085)
+    McToel
+  * Adds tree reduction to bincount (GH#7183) Thomas J. Fan
+  * Improve documentation of name in from_array (GH#7264) Bruce
+    Merry
+  * Fix cumsum for empty partitions (GH#7230) Julia Signell
+  * Add map_blocks example to dask array creation docs (GH#7221)
+    Julia Signell
+  * Fix performance issue in dask.graph_manipulation.wait_on()
+    (GH#7258) Guido Imperiale
+  * Replace coveralls with codecov.io (GH#7246) Guido Imperiale
+  * Pin to a particular black rev in pre-commit (GH#7256) Julia
+    Signell
+  * Minor typo in documentation: array-chunks.rst (GH#7254) Magnus
+    Nord
+  * Fix bugs in Blockwise and ShuffleLayer (GH#7213) Richard
+    (Rick) Zamora
+  * Fix parquet filtering bug for "pyarrow-dataset" with
+    pyarrow-3.0.0 (GH#7200) Richard (Rick) Zamora
+  * graph_manipulation without NumPy (GH#7243) Guido Imperiale
+  * Support for NEP-35 (GH#6738) Peter Andreas Entschev
+  * Avoid running unit tests during doctest CI build (GH#7240)
+    James Bourbeau
+  * Run doctests on CI (GH#7238) Julia Signell
+  * Cleanup code quality on set arithmetics (GH#7196) Guido
+    Imperiale
+  * Add dask.array.delete (GH#7125) Julia Signell
+  * Unpin graphviz now that new conda-forge recipe is built
+    (GH#7235) Julia Signell
+  * Don’t use NumPy 1.20 from conda-forge on Mac (GH#7211) Guido
+    Imperiale
+  * map_overlap: Don’t rechunk axes without overlap (GH#7233)
+    Deepak Cherian
+  * Pin graphviz to avoid issue with latest conda-forge build
+    (GH#7232) Julia Signell
+  * Use html_css_files in docs for custom CSS (GH#7220) James
+    Bourbeau
+  * Graph manipulation: clone, bind, checkpoint, wait_on (GH#7109)
+    Guido Imperiale
+  * Fix handling of filter expressions in parquet pyarrow-dataset
+    engine (GH#7186) Joris Van den Bossche
+  * Extend __setitem__ to more closely match numpy (GH#7033) David
+    Hassell
+  * Clean up Python 2 syntax (GH#7195) Guido Imperiale
+  * Fix regression in Delayed._length (GH#7194) Guido Imperiale
+  * __dask_layers__() tests and tweaks (GH#7177) Guido Imperiale
+  * Properly convert HighLevelGraph in multiprocessing scheduler
+    (GH#7191) Jim Crist-Harif
+  * Don’t fail fast in CI (GH#7188) James Bourbeau
+- Add dask-pr7247-numpyskip.patch -- gh#dask/dask#7247
+
+-------------------------------------------------------------------
 Wed Feb 17 21:51:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Run the full test suite: use rootdir conftest.py
@@ -36,7 +129,7 @@ Mon Feb  8 14:24:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Align FastParquetEngine with pyarrow engines (GH#7091) Richard
     (Rick) Zamora
   * Merge annotations (GH#7102) Ian Rose
-  * Simplify contents of parts list in read_parquet (GH#7066) 
+  * Simplify contents of parts list in read_parquet (GH#7066)
     Richard (Rick) Zamora
   * check_meta(): use __class__ when checking DataFrame types
     (GH#7099) Mads R. B. Kristensen
@@ -50,101 +143,101 @@ Thu Jan 28 12:25:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2020.1.1
   Partially fix cumprod (GH#7089) Julia Signell
-  * Test pandas 1.1.x / 1.2.0 releases and pandas nightly 
+  * Test pandas 1.1.x / 1.2.0 releases and pandas nightly
     (GH#6996) Joris Van den Bossche
-  * Use assign to avoid SettingWithCopyWarning (GH#7092) Julia 
+  * Use assign to avoid SettingWithCopyWarning (GH#7092) Julia
     Signell
-  * 'mode' argument passed to bokeh.output_file() (GH#7034) 
+  * 'mode' argument passed to bokeh.output_file() (GH#7034)
     (GH#7075) patquem
-  * Skip empty partitions when doing groupby.value_counts 
+  * Skip empty partitions when doing groupby.value_counts
     (GH#7073) Julia Signell
   * Add error messages to assert_eq() (GH#7083) James Lamb
   * Make cached properties read-only (GH#7077) Illviljan
 - Changelog for 2021.01.0
- * map_partitions with review comments (GH#6776) Kumar Bharath 
+ * map_partitions with review comments (GH#6776) Kumar Bharath
    Prabhu
  * Make sure that population is a real list (GH#7027) Julia Signell
- * Propagate storage_options in read_csv (GH#7074) Richard (Rick) 
+ * Propagate storage_options in read_csv (GH#7074) Richard (Rick)
    Zamora
  * Remove all BlockwiseIO code (GH#7067) Richard (Rick) Zamora
  * Fix CI (GH#7069) James Bourbeau
- * Add option to control rechunking in reshape (GH#6753) Tom 
+ * Add option to control rechunking in reshape (GH#6753) Tom
    Augspurger
  * Fix linalg.lstsq for complex inputs (GH#7056) Johnnie Gray
- * Add compression='infer' default to read_csv (GH#6960) Richard 
+ * Add compression='infer' default to read_csv (GH#6960) Richard
    (Rick) Zamora
- * Revert parameter changes in svd_compressed #7003 (GH#7004) Eric 
+ * Revert parameter changes in svd_compressed #7003 (GH#7004) Eric
    Czech
  * Skip failing s3 test (GH#7064) Martin Durant
  * Revert BlockwiseIO (GH#7048) Richard (Rick) Zamora
  * Add some cross-references to DataFrame.to_bag() and Series.
    to_bag() (GH#7049) Rob Malouf
- * Rewrite matmul as blockwise without contraction/concatenate 
+ * Rewrite matmul as blockwise without contraction/concatenate
    (GH#7000) Rafal Wojdyla
  * Use functools.cached_property in da.shape (GH#7023) Illviljan
  * Use meta value in series non_empty (GH#6976) Julia Signell
- * Revert “Temporarly pin sphinx version to 3.3.1 (GH#7002)” 
+ * Revert “Temporarly pin sphinx version to 3.3.1 (GH#7002)”
    (GH#7014) Rafal Wojdyla
  * Revert python-graphviz pinning (GH#7037) Julia Signell
  * Accidentally committed print statement (GH#7038) Julia Signell
  * Pass dropna and observed in agg (GH#6992) Julia Signell
- * Add index to meta after .str.split with expand (GH#7026) Ruben 
+ * Add index to meta after .str.split with expand (GH#7026) Ruben
    van de Geer
  * CI: test pyarrow 2.0 and nightly (GH#7030) Joris Van den Bossche
  * Temporarily pin python-graphviz in CI (GH#7031) James Bourbeau
  * Underline section in numpydoc (GH#7013) Matthias Bussonnier
- * Keep normal optimizations when adding custom optimizations 
+ * Keep normal optimizations when adding custom optimizations
    (GH#7016) Matthew Rocklin
  * Temporarily pin sphinx version to 3.3.1 (GH#7002) Rafal Wojdyla
  * DOC: Misc formatting (GH#6998) Matthias Bussonnier
  * Add inline_array option to from_array (GH#6773) Tom Augspurger
- * Revert “Initial pass at blockwise array creation routines 
+ * Revert “Initial pass at blockwise array creation routines
    (GH#6931)” (:pr:`6995) James Bourbeau
  * Set npartitions in set_index (GH#6978) Julia Signell
- * Upstream config serialization and inheritance (GH#6987) Jacob 
+ * Upstream config serialization and inheritance (GH#6987) Jacob
    Tomlinson
- * Bump the minimum time in test_minimum_time (GH#6988) Martin 
+ * Bump the minimum time in test_minimum_time (GH#6988) Martin
    Durant
- * Fix pandas dtype inference for read_parquet (GH#6985) Richard 
+ * Fix pandas dtype inference for read_parquet (GH#6985) Richard
    (Rick) Zamora
- * Avoid data loss in set_index with sorted=True (GH#6980) Richard 
+ * Avoid data loss in set_index with sorted=True (GH#6980) Richard
    (Rick) Zamora
- * Bugfix in read_parquet for handling un-named indices with 
+ * Bugfix in read_parquet for handling un-named indices with
    index=False (GH#6969) Richard (Rick) Zamora
- * Use __class__ when comparing meta data (GH#6981) Mads R. B. 
+ * Use __class__ when comparing meta data (GH#6981) Mads R. B.
    Kristensen
- * Comparing string versions won’t always work (GH#6979) Rafal 
+ * Comparing string versions won’t always work (GH#6979) Rafal
    Wojdyla
  * Fix GH#6925 (GH#6982) sdementen
- * Initial pass at blockwise array creation routines (GH#6931) Ian 
+ * Initial pass at blockwise array creation routines (GH#6931) Ian
    Rose
  * Simplify has_parallel_type() (GH#6927) Mads R. B. Kristensen
- * Handle annotation unpacking in BlockwiseIO (GH#6934) Simon 
+ * Handle annotation unpacking in BlockwiseIO (GH#6934) Simon
    Perkins
- * Avoid deprecated yield_fixture in test_sql.py (GH#6968) Richard 
+ * Avoid deprecated yield_fixture in test_sql.py (GH#6968) Richard
    (Rick) Zamora
- * Remove bad graph logic in BlockwiseIO (GH#6933) Richard (Rick) 
+ * Remove bad graph logic in BlockwiseIO (GH#6933) Richard (Rick)
    Zamora
  * Get config item if variable is None (GH#6862) Jacob Tomlinson
  * Update from_pandas docstring (GH#6957) Richard (Rick) Zamora
- * Prevent fuse_roots from clobbering annotations (GH#6955) Simon 
-   Perkins 
+ * Prevent fuse_roots from clobbering annotations (GH#6955) Simon
+   Perkins
 
 -------------------------------------------------------------------
 Wed Jan 13 14:01:09 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 2020.12.0
   * Switched to CalVer for versioning scheme.
-  * Introduced new APIs for HighLevelGraph to enable sending 
-    high-level representations of task graphs to the 
+  * Introduced new APIs for HighLevelGraph to enable sending
+    high-level representations of task graphs to the
     distributed scheduler.
-  * Introduced new HighLevelGraph layer objects including 
-    BasicLayer, Blockwise, BlockwiseIO, ShuffleLayer, and 
+  * Introduced new HighLevelGraph layer objects including
+    BasicLayer, Blockwise, BlockwiseIO, ShuffleLayer, and
     more.
-  * Added support for applying custom Layer-level annotations 
-    like priority, retries, etc. with the dask.annotations 
+  * Added support for applying custom Layer-level annotations
+    like priority, retries, etc. with the dask.annotations
     context manager.
-  * Updated minimum supported version of pandas to 0.25.0 
+  * Updated minimum supported version of pandas to 0.25.0
     and NumPy to 1.15.1.
   * Support for the pyarrow.dataset API to read_parquet.
   * Several fixes to Dask Array’s SVD.
@@ -1256,7 +1349,7 @@ Tue Jul 23 00:23:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
       >  Move blockwise_meta to more general compute_meta function
     * Alias .partitions to .blocks attribute of dask arrays
     * Drop outdated `numpy_compat` functions
-    * Allow da.eye to support arbitrary chunking sizes with chunks='auto' 
+    * Allow da.eye to support arbitrary chunking sizes with chunks='auto'
     * Fix CI warnings in dask.array tests
     * Make map_blocks work with drop_axis + block_info
     * Add SVG image and table in Array._repr_html_
@@ -1400,7 +1493,7 @@ Tue May 21 11:48:23 UTC 2019 - pgajdos@suse.com
     * Uncomment dask_sphinx_theme (:pr:`4728`) `James Bourbeau`_
     * Fix minor typo fix in a Queue/fire_and_forget example (:pr:`4709`) `Matthew Rocklin`_
     * Update from_pandas docstring to match signature (:pr:`4698`) `James Bourbeau`_
-  
+
 -------------------------------------------------------------------
 Mon Apr 22 19:32:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
@@ -1457,7 +1550,7 @@ Mon Apr 22 19:32:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
   + Documentation
     * Add documentation for custom groupby aggregations
     * Docs dataframe joins
-    * Specify fork-based contributions 
+    * Specify fork-based contributions
     * correct to_parquet example in docs
     * Update and secure several references
 
@@ -3112,7 +3205,7 @@ Thu May  4 22:24:37 UTC 2017 - toddrme2178@gmail.com
   * No upstream changelog
 - update to version 0.6.1:
   * No upstream changelog
-  
+
 -------------------------------------------------------------------
 Tue Jul 14 13:33:53 UTC 2015 - toddrme2178@gmail.com
 
