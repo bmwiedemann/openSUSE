@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-systemload-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define plugin systemload
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.2.4
+Version:        1.3.0
 Release:        0
 Summary:        System Load Monitoring Plugin for the Xfce Panel
 License:        BSD-2-Clause
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-systemload-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.2/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.3/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -94,6 +94,7 @@ rm -rf %{buildroot}
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libsystemload.so
 %{_datadir}/xfce4/panel/plugins/systemload.desktop
+%{_datadir}/icons/hicolor/*/apps/org.xfce.panel.systemload.*
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 11 15:20:07 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.3.0
+  * Port to xfconf
+  * Add new icons and switch to rDNS naming
+  * Add Help button to properties dialog
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * configure.ac: use AC_PROG_CC_C99
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Dec 21 17:46:51 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Updat to version 1.2.4
