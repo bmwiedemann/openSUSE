@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  1 22:28:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2:
+  * CVE-2020-36151: Incorrect handling of input data in
+    mysofa_resampler_reset_mem function [boo#1181978]
+  * CVE-2020-36148: Incorrect handling of input data in
+    verifyAttribute function [boo#1181981]
+  * CVE-2020-36152: Buffer overflow in readDataVar in
+    hdf/dataobject.c [boo#1181977]
+  * CVE-2020-36150: Incorrect handling of input data in loudness
+    function [boo#1181979]
+  * CVE-2020-36149: Incorrect handling of input data in
+    changeAttribute function [boo#1181980]
+  * Steinberg audio enhancements for symmetrical HRTFs
+
+-------------------------------------------------------------------
 Tue Sep  8 08:19:43 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Set CODE_COVERAGE to OFF to prevent runtime profile data
@@ -16,7 +32,7 @@ Tue Aug 25 15:34:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 Tue Feb 11 16:12:41 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.0
-  * Fixed CVE-2020-6860
+  * Fixed CVE-2020-6860 [boo1182883]
   * Support for netcdf 4.7.2 generated files
   * Support for user-defined variables
 
@@ -26,7 +42,25 @@ Sun Jan  5 17:29:31 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 - Update to version 0.9.1
   * Extended angular neighbor search to 'close the sphere'
   * Added and exposed mysofa_getfilter_float_nointerp method
-  * Fixed various security issues
+  * CVE-2019-20063: hdf/dataobject.c in libmysofa before 0.8 has
+    an uninitialized use of memory, as demonstrated by 
+    mysofa2json [boo#1160040]
+  * CVE-2019-20016: improper restriction of recursive function
+    calls in readOHDRHeaderMessageDatatype in dataobject.c and
+    directblockRead in fractalhead.c may lead to stack
+    consumption [boo#1159839]
+  * CVE-2019-16091: out-of-bounds read in directblockRead in
+    hdf/fractalhead.c [boo#1149919]
+  * CVE-2019-16095: invalid read in getDimension in hrtf/reader.c
+    [boo#1149926]
+  * CVE-2019-16094: invalid read in 
+    readOHDRHeaderMessageDataLayout in hdf/dataobject.c 
+    [boo#1149924]
+  * CVE-2019-16093: invalid write in
+    readOHDRHeaderMessageDataLayout in hdf/dataobject.c
+    [boo#1149922]
+  * CVE-2019-16092: NULL pointer dereference in getHrtf in
+    hrtf/reader.c [boo#1149920]  
 - Drop libmysofa-0-pkgconfig-paths.patch
 
 -------------------------------------------------------------------
