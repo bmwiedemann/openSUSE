@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-netload-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define plugin netload
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Network Load Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-netload-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.3/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/panel-plugins/xfce4-netload-plugin
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.4/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -88,7 +88,7 @@ rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libnetload.la
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libnetload.so
 %{_datadir}/xfce4/panel/plugins/netload.desktop
-%{_datadir}/icons/hicolor/*/apps/xfce4-netload-plugin.*
+%{_datadir}/icons/hicolor/*/apps/org.xfce.panel.netload.*
 
 %files lang -f %{name}.lang
 

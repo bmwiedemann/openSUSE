@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 11 15:15:59 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.4.0
+  * Add new icons and switch to rDNS naming
+  * Add "About" dialog
+  * Add help button to properties dialog
+  * Improve progressbar look
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16170)
+  * Fix compilation warnings
+  * autoconf: AM_CONFIG_HEADER -> AC_CONFIG_HEADERS
+  * Update `.gitignore`
+  * Fix missing-prototypes
+  * Remove GSourceFunc casts
+  * Populate a combo box with known network interfaces
+  * remove unused wormulon files
+  * Move to common m4 versioning macros
+  * Fix type for media_list on OpenBSD
+  * Add basic GitLab pipeline
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:22:50 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
