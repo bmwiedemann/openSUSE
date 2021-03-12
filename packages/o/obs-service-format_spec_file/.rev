@@ -673,4 +673,41 @@
   * Use copyright line without the . at the end</comment>
     <requestid>748701</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>9a67ecd6ffd0e5ff30fce44c157115f5</srcmd5>
+    <version>20210128</version>
+    <time>1615552238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210128:
+  * Split out final comments in description
+  * Make a special exception for short %p* snippets
+  * Also split Conflict headers
+  * Keep the old require sorting
+  * Improve the performance of reorder_tags
+  * Fix merge_comments
+  * Do not split %if and section start
+  * Support multiline copyrights (for Firefox)
+  * Simplify how to calculcate the base_package
+  * Split tag values of certain tags
+  * Be careful with macros that appear between tags
+  * Replace SPDX mapper with an advanced version
+  * Fix merging empty sections
+  * Allow before lines to commented tags
+  * Keep comments close to the original line
+  * Review some deltas in the test suites that are acceptable for now
+  * Parse more into the description - basically everything for now
+  * Fix Release tag
+  * Add an empty line before each section
+  * Map SPDX licenses
+  * Fix more test cases
+  * Adopt some test cases and fix some others
+  * Reorder tags that are below each other
+  * Fix whitespace
+  * Little progress
+  * Add test cases for spec-file cleaner (with current output)
+  * Use perltidy like Cavil
+  * Remove patch_license - old helper script for mass migration
+  * Test case for issue 19</comment>
+    <requestid>867421</requestid>
+  </revision>
 </revisionlist>

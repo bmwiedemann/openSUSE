@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jan 28 10:06:54 UTC 2021 - coolo@suse.com
+
+- Update to version 20210128:
+  * Split out final comments in description
+  * Make a special exception for short %p* snippets
+  * Also split Conflict headers
+  * Keep the old require sorting
+  * Improve the performance of reorder_tags
+  * Fix merge_comments
+  * Do not split %if and section start
+  * Support multiline copyrights (for Firefox)
+  * Simplify how to calculcate the base_package
+  * Split tag values of certain tags
+  * Be careful with macros that appear between tags
+  * Replace SPDX mapper with an advanced version
+  * Fix merging empty sections
+  * Allow before lines to commented tags
+  * Keep comments close to the original line
+  * Review some deltas in the test suites that are acceptable for now
+  * Parse more into the description - basically everything for now
+  * Fix Release tag
+  * Add an empty line before each section
+  * Map SPDX licenses
+  * Fix more test cases
+  * Adopt some test cases and fix some others
+  * Reorder tags that are below each other
+  * Fix whitespace
+  * Little progress
+  * Add test cases for spec-file cleaner (with current output)
+  * Use perltidy like Cavil
+  * Remove patch_license - old helper script for mass migration
+  * Test case for issue 19
+  * Only parse Provides in Header section
+  * Test case for issue 41
+  * Trim all trailing whitespace - including \r
+  * Fix copyright year to 2012 in the test cases
+  * Fetch licenses from JSON and remove + variants
+  * Fetch exceptions from JSON
+  * add some testcases
+  * prepare_spec handle the case where License/Group are in a if/else/endif
+
+-------------------------------------------------------------------
 Thu Nov 14 14:53:12 UTC 2019 - ro@suse.com
 
 - Update to version 20191114:
