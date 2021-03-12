@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  9 19:51:28 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.7.6:
+  * Fix reused push parsers
+  * Fix table generation
+
+-------------------------------------------------------------------
 Tue Feb  9 09:29:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Run tests in parallel
