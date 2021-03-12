@@ -1,0 +1,2 @@
+# These are binaries not executed on the CPU but on the graphics card
+addFilter('.*arch-independent-package-contains-binary-or-object.*/boot/vc/.*.elf')
