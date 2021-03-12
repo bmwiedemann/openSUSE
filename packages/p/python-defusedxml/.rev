@@ -40,4 +40,18 @@
     <comment></comment>
     <requestid>706490</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f7a33273f3cc1844fc16bb0939d7c46</srcmd5>
+    <version>0.7.0</version>
+    <time>1615552253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  - Re-add and deprecate ``defusedxml.cElementTree``
+  - Use GitHub Actions instead of TravisCI
+  - Restore ``ElementTree`` attribute of ``xml.etree`` module after patching
+  - Add support for Python 3.9
+  - ``defusedxml.cElementTree`` is not available with Python 3.9.
+  - Python 2 is deprecate. Support for Python 2 will be removed in 0.8.0.</comment>
+    <requestid>877571</requestid>
+  </revision>
 </revisionlist>
