@@ -10,7 +10,7 @@ Index: wxmaxima-Version-21.01.0/test/CMakeLists.txt
 -    NAME multithreadtest
 -    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/automatic_test_files
 -    COMMAND wxmaxima --logtostdout --pipe --single_process --batch threadtest.wxm threadtest2.wxm)
-+# Too slow on openSUSE:Factory leading to job timeouts
++# Lockups on openSUSE:Factory leading to job timeouts
 +#add_test(
 +#    NAME multithreadtest
 +#    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/automatic_test_files
@@ -22,3 +22,4 @@ Index: wxmaxima-Version-21.01.0/test/CMakeLists.txt
  
  add_test(
      NAME ipc_copypaste1
+

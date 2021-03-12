@@ -449,4 +449,12 @@ Depends on maxima (sr#121612)</comment>
     <comment></comment>
     <requestid>875110</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3d723977961740a011cb4f50dd6f212c</srcmd5>
+    <version>21.02.0</version>
+    <time>1615552402</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>878415</requestid>
+  </revision>
 </revisionlist>

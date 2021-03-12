@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  4 19:54:12 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 21.02.0:
+  * Replaced openMP by c++11's built-in thread handling.
+  * Resolved a crash when deleting regions.
+  * The --ini switch should work again correctly.
+  * Fix an issue, where demos didn't re-center screen anymore,
+    when screen is full and print was incomplete.
+  * Made the time between autosaves configurable.
+  * Fixed an issue with reproducible builds.
+  * Updated translations.
+- Add upstream bug reference [gh#wxMaxima-developers/wxmaxim#1504]
+  for wxMaxima-disable-slow-multithreadtest.patch and change
+  PATCH-FIX-OPENSUSE tag to PATCH-FIX-UPSTREAM.
+
+-------------------------------------------------------------------
 Sat Feb 13 14:32:26 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 21.01.0:

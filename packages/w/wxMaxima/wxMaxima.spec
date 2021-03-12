@@ -19,14 +19,14 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        21.01.0
+Version:        21.02.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wxmaxima-developers.github.io/wxmaxima/
 Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE wxMaxima-disable-slow-multithreadtest.patch badshah400@gmail.com -- Disable a slow test that causes timeouts on OBS workers for openSUSE >= 1550
+# PATCH-FIX-UPSTREAM wxMaxima-disable-slow-multithreadtest.patch gh#wxMaxima-developers/wxmaxima#1504 badshah400@gmail.com -- Disable a slow test that causes timeouts on OBS workers for openSUSE >= 1550
 Patch0:         wxMaxima-disable-slow-multithreadtest.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
