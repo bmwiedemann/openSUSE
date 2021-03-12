@@ -1,7 +1,7 @@
 #
 # spec file for package jigit
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_ver 1
-
+%define so_ver 2
 Name:           jigit
-Version:        1.20
+Version:        1.22
 Release:        0
 Summary:        Tools for Working With jigdo Files
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/File utilities
-Url:            http://www.einval.com/~steve/software/JTE/
-Source0:        http://www.einval.com/~steve/software/JTE/download/%{name}_%{version}.orig.tar.gz
+URL:            https://www.einval.com/~steve/software/JTE/
+Source0:        http://www.einval.com/~steve/software/JTE/download/%{name}-%{version}.tar.xz
 BuildRequires:  libbz2-devel
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Jigit is an interactive wrapper around mkimage to ease the download or upgrade
@@ -36,7 +34,7 @@ of existing CDs and CD images.
 
 %package -n libjte%{so_ver}
 Summary:        Jigdo Template Export Library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n libjte%{so_ver}
@@ -45,7 +43,7 @@ ISO image creation tools.
 
 %package -n libjte-devel
 Summary:        Development Files for libjte
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libjte%{so_ver} = %{version}
 
@@ -57,57 +55,61 @@ This package includes development files for libjte.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags} jigit-mkimage extract-data jigsum rsyncsum jigdump
+%make_build all
 cd libjte
 %configure \
  --disable-static
-make %{?_smp_mflags}
+%make_build
 cd ..
 
 %install
 install -dm 0755 %{buildroot}%{_bindir}
-install -pm 0755 jigit-mkimage jigsum jigdump %{buildroot}%{_bindir}
+install -pm 0755 jigit-mkimage jigsum jigsum-sha256 jigdump %{buildroot}%{_bindir}
 install -pm 0755 extract-data %{buildroot}%{_bindir}/jigit-extract-data
 install -pm 0755 rsyncsum %{buildroot}%{_bindir}/jigit-rsyncsum
+install -pm 0755 parallel-sums %{buildroot}%{_bindir}/jigit-parallel-sums
 install -pm 0755 jigit mkjigsnap %{buildroot}%{_bindir}
 install -dm 0755 %{buildroot}%{_mandir}/man1
-install -pm 0644 jigdump.1 jigit-mkimage.1 jigit.1 jigsum.1 %{buildroot}%{_mandir}/man1/
+install -pm 0644 jigdump.1 jigit-mkimage.1 jigit.1 jigsum.1 jigsum-sha256.1 parallel-sums.1 %{buildroot}%{_mandir}/man1/
 install -dm 0755 %{buildroot}%{_mandir}/man8
 install -pm 0644 mkjigsnap.8 %{buildroot}%{_mandir}/man8/
 cd libjte
 %make_install
-install -pm 0755 bin/jigdo-gen-md5-list %{buildroot}%{_bindir}
-install -pm 0644 doc/jigdo-gen-md5-list.1 %{buildroot}%{_mandir}/man1/
+install -pm 0755 bin/jigdo-gen-checksum-list %{buildroot}%{_bindir}
+#install -pm 0644 doc/jigdo-gen-checksum-list.1 %%{buildroot}%%{_mandir}/man1/
 cd ..
 
 # Remove libtool config files
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libjte%{so_ver} -p /sbin/ldconfig
+# Remove static libraries
+find %{buildroot} -type f -name "*.a" -delete -print
 
+%post -n libjte%{so_ver} -p /sbin/ldconfig
 %postun -n libjte%{so_ver} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING ChangeLog README iso-image.pl
+%license COPYING
+%doc ChangeLog README iso-image.pl
 %{_bindir}/jigit-mkimage
 %{_bindir}/jigsum
+%{_bindir}/jigsum-sha256
 %{_bindir}/jigdump
 %{_bindir}/jigit-extract-data
 %{_bindir}/jigit-rsyncsum
+%{_bindir}/jigit-parallel-sums
 %{_bindir}/jigit
 %{_bindir}/mkjigsnap
-%{_bindir}/jigdo-gen-md5-list
-%{_mandir}/man1/*.1%{ext_man}
-%{_mandir}/man8/*.8%{ext_man}
+%{_bindir}/jigdo-gen-checksum-list
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man8/*.8%{?ext_man}
 
 %files -n libjte%{so_ver}
-%defattr(-,root,root,-)
 %{_libdir}/libjte.so.%{so_ver}*
 
 %files -n libjte-devel
-%defattr(-,root,root,-)
-%doc libjte/{COPYING,COPYRIGHT,ChangeLog}
+%license libjte/{COPYING,COPYRIGHT}
+%doc libjte/ChangeLog
 %doc libjte/doc/{API,NOTES,TODO}
 %{_includedir}/libjte/
 %{_libdir}/pkgconfig/*
