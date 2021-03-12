@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
@@ -31,7 +31,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://xkbcommon.org/
 
 #Git-Clone:	git://github.com/xkbcommon/libxkbcommon
-Source:         https://xkbcommon.org/download/%name-%version.tar.xz
+Source:         https://github.com/xkbcommon/libxkbcommon/releases/download/xkbcommon-%version/%name-%version.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  flex

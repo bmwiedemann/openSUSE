@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  4 21:47:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Update keysym definitions to latest xorgproto. In particular,
+    this adds many special keysyms corresponding to Linux evdev
+    keycodes.
+  * New XKB_KEY_* definitions.
+
+-------------------------------------------------------------------
 Wed Jan 20 12:28:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependency of libxkbregistry-devel: the devel package must
