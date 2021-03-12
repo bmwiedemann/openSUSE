@@ -5,6 +5,11 @@ Wed Mar 10 02:50:23 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 - Xfce switched to evince as pdf reader
 
 -------------------------------------------------------------------
+Mon Mar  8 09:43:08 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Add more filesystem tools (boo#1183146)
+
+-------------------------------------------------------------------
 Thu Mar  4 11:18:15 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - More size reduction:

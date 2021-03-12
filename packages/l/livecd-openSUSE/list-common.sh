@@ -218,33 +218,49 @@ install yast2-network
 install yast2-proxy
 install yast2-storage-ng
 
+# For working with filesystems
+install bcache-tools
+install btrfsprogs
+install cryptsetup
+install device-mapper
+install dmraid
+install dosfstools
+install e2fsprogs
+# Not in Leap
+if [ "$distro" != "leap" ]; then
+	install exfat-utils
+fi
+install fcoe-utils
+install jfsutils
+install mdadm
+install multipath-tools
+install ntfs-3g
+install ntfsprogs
+install nvme-cli
+install open-iscsi
+install quota
+install xfsdump
+install xfsprogs
+
 # This was previously recommended by rest_cd_core
 install adaptec-firmware
 install atmel-firmware
 install b43-fwcutter
 install bluez-firmware
-install btrfsprogs
 install crda
-install cryptsetup
 install dmidecode
-install dosfstools
-install e2fsprogs
 install efibootmgr
 install gtk2-branding-openSUSE
 install ipw-firmware
 install iw
-install jfsutils
 install libatm1
 install lsb-release
 install lvm2
 install memtest86+ i686,x86_64
 install mpt-firmware
 install nano
-install ntfs-3g
-install open-iscsi
 install pptp
 install quota
-install reiserfs
 install rsync
 install smartmontools
 install smbios-utils-python  i686,x86_64
@@ -273,8 +289,6 @@ install xf86-video-tga
 install xf86-video-v4l
 install xf86-video-vesa
 install xf86-video-voodoo
-install xfsdump
-install xfsprogs
 install xz
 install yast2-trans-de
 if [ "$distro" = "leap" ]; then
