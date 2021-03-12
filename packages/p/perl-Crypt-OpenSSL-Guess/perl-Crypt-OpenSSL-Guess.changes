@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  6 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-Guess/Changes
+
+  0.12 2021-03-05T08:54:55Z
+
+      - backport from Net::SSLeay 1.90 (PR#7)
+      - use `brew --prefix` for OPENSSL_PREFIX if available (PR#8)
+
+-------------------------------------------------------------------
 Sun Oct  7 08:51:48 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - created package
