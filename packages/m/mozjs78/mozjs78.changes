@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 10 11:49:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 78.8.0esr:
+  + Fix build with Rust 1.50.
+
+-------------------------------------------------------------------
 Tue Jan 26 13:45:31 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 78.7.0esr.
