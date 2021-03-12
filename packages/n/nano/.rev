@@ -765,4 +765,17 @@
     <comment></comment>
     <requestid>874968</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>ee6f307269664dd18034afb97d8380d3</srcmd5>
+    <version>5.6.1</version>
+    <time>1615552254</time>
+    <user>dimstar_suse</user>
+    <comment>- Fox signature sources
+- Drop no longer needed scriplets
+
+- GNU nano 5.6.1:
+  * Search matches are properly colorized in softwrap mode too
+  * Option 'highlightcolor' has been renamed to 'spotlightcolor'</comment>
+    <requestid>877577</requestid>
+  </revision>
 </revisionlist>

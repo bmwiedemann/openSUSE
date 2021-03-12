@@ -18,7 +18,7 @@
 
 %define _version 5
 Name:           nano
-Version:        5.6
+Version:        5.6.1
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
@@ -34,8 +34,6 @@ BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
-Requires(post): info
-Requires(preun): info
 
 %description
 GNU nano is a small and friendly text editor. It aims to emulate
@@ -74,12 +72,6 @@ install -m 0644 ./nanorc %{buildroot}%{_sysconfdir}/nanorc
 mv %{buildroot}%{_datadir}/nano/extra/{ada,fortran,haskell,spec}.* %{buildroot}%{_datadir}/nano
 
 %find_lang %{name} --with-man --all-name
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
 
 %files
 %license COPYING COPYING.DOC
