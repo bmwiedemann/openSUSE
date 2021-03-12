@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  9 07:48:19 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to reintroduce /etc/profile reading if fish is shell:
+  * 0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
+
+-------------------------------------------------------------------
 Thu Nov  5 04:35:27 UTC 2020 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
 
 - Use pam derived username (fix sssd with multiple domains and local groups)

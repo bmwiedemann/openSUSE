@@ -1,7 +1,7 @@
 #
 # spec file for package sddm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source3:        10-theme.conf
 Source4:        sddm-tmpfiles.conf
 # Patch0-100: PATCH-FIX-UPSTREAM
 Patch0:         0001-Use-PAM-s-username.patch
+Patch1:         0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1230
