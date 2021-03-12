@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar 12 08:54:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.19.0:
+  * Added notes to help/unexpected about:
+    display() will limit the number of digits printed after decimal point
+    %d will format after the decimal point for non-integer numeric values
+    %x will format as fractions for non-integer numeric values
+    fprintf(fd, "%d\n", huge_value) may need fflush(fd) to finish
+  * Fixed Makefile dependencies for the args.h rule.
+  * Fixed Makefile cases where echo with -n is used.  On some systems,
+    /bin/sh does not use -n, so we must call /bin/echo -n instead
+    via the ${ECHON} Makefile variable.
+  * Add missing standard tools to sub-Makefiles to make them
+    easier to invoke directly.
+  * Sort lists of standard tool Makefile variables and remove duplicates.
+  * Declare the SHELL at the top of Makefiles.
+  * Fixed the depend rule in the custom Makefile.
+  * Improved the messages produced by the depend in the Makefiles.
+  * Changed the UNUSED define in have_unused.h to be a macro with
+    a parameter.  Changed all use of UNUSED in *.c to be UNUSED(x).
+  * Removed need for HAVE_UNUSED in building the have_unused.h file.
+  * CCBAN is given to ${CC} in order to control if banned.h is in effect.
+  * The banned.h attempts to ban the use of certain dangerous functions
+    that, if improperly used, could compromise the computational integrity
+    if calculations.
+  * In the case of calc, we are motivated in part by the desire for calc
+    to correctly calculate: even during extremely long calculations.
+  * If UNBAN is NOT defined, then calling certain functions
+    will result in a call to a non-existent function (link error).
+
+-------------------------------------------------------------------
 Mon Feb 22 10:57:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.12.8.2:
