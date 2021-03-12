@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_0_0
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,6 +91,9 @@ Patch77:        openssl-fips-run_selftests_only_when_module_is_complete.patch
 Patch78:        0001-Set-FIPS-thread-id-callback.patch
 Patch79:        openssl-CVE-2018-0737-fips.patch
 Patch80:        openssl-One_and_Done.patch
+# OpenSSL Security Advisory [16 February 2021] [bsc#1182333,CVE-2021-23840] [bsc#1182331,CVE-2021-23841]
+Patch81:        openssl-CVE-2021-23840.patch
+Patch82:        openssl-CVE-2021-23841.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -248,6 +251,8 @@ testing framework and utilities.
 %patch78 -R -p1
 %patch79 -p1
 %patch80 -p1
+%patch81 -p1
+%patch82 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
