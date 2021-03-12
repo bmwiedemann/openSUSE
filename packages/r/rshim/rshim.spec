@@ -18,7 +18,7 @@
 
 
 Name:           rshim
-Version:        2.0.5.8.3
+Version:        2.0.5.10.0
 Release:        0
 Summary:        User-space driver for Mellanox BlueField SoC
 License:        GPL-2.0-only

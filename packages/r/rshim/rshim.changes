@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 11 16:05:12 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.5.10
+  * fix possible tmfifo data loss in PCIe interface
+  * fix USB deadlock
+  * reduce CPU load when no rshim device present
+  * add PCIe hotplug support
+
+-------------------------------------------------------------------
 Mon Jan 25 14:35:50 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - fix _service file

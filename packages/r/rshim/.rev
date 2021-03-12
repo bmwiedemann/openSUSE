@@ -41,4 +41,17 @@ via the virtual console or network interface.</comment>
     <comment></comment>
     <requestid>866648</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fff9d59e8f5e1fd3be3c42086698965c</srcmd5>
+    <version>2.0.5.10.0</version>
+    <time>1615552436</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.5.10
+  * fix possible tmfifo data loss in PCIe interface
+  * fix USB deadlock
+  * reduce CPU load when no rshim device present
+  * add PCIe hotplug support
+</comment>
+    <requestid>878519</requestid>
+  </revision>
 </revisionlist>
