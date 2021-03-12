@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Mar  8 00:00:00 CET 2021 - dsterba@suse.cz
+
+- Update to 5.11
+  * fix device path canonicalization for device mapper devices
+  * receive: remove workaround for setting capabilities, all stable kernels
+    have been patched
+  * receive: fix duplicate mount path detection
+  * rescue: new subcommand create-control-device
+  * device stats: minor fix for plain text format output
+  * build: detect if e2fsprogs support 64bit timestamps
+  * build: drop libmount, required functionality has been reimplemented
+  * mkfs: warn when raid56 is used
+  * balance convert: warn when raid56 is used
+  * other
+    * new and updated tests
+    * documentation updates
+      * seeding device
+      * raid56 status
+    * CI updates
+      * docker images for various distros
+- Update to 5.10.1
+  * static build works again
+  * other:
+    * add a way to test static binaries with the testsuite
+    * clarify scrub docs
+    * update dependencies, minimum version for libmount is 2.24, this may
+      change in the future
+- Update to 5.10
+  * scrub status:
+    * print percentage of progress
+    * add size unit options
+  * fi usage: also print free space from statfs
+  * convert: copy full 64 bit timestamp from ext4 if availalble
+  * check:
+    * add ability to repair extent item generation
+    * new option to remove leftovers from inode number cache (-o inode_cache)
+  * check for already running exclusive operation (balance, device add/...)
+    when starting one
+  * preliminary json output support for 'device stats'
+  * fixes:
+    * subvolume set-default: id 0 correctly falls back to toplevel
+    * receive: align internal buffer to allow fast CRC calculation
+    * logical-resolve: distinguish -o subvol and bind mounts
+  * build: new dependency libmount
+  * other
+    * doc fixes and updates
+    * new tests
+    * ci on gitlab temporarily disabled
+    * debugging output enhancements
+
+-------------------------------------------------------------------
 Wed Nov  4 17:32:13 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
