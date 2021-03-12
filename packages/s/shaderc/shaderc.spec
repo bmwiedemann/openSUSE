@@ -18,7 +18,7 @@
 
 Name:           shaderc
 %define lname libshaderc_shared1
-Version:        2020.4
+Version:        2020.5
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source:         https://github.com/google/shaderc/archive/v%version.tar.gz
 Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  glslang-devel >= 8.13.3727+git4
+BuildRequires:  glslang-devel >= 11.1
 BuildRequires:  python-xml
 BuildRequires:  spirv-headers >= 1.5.1.corrected+git24
 BuildRequires:  spirv-tools-devel >= 2020.2
