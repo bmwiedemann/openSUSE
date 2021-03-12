@@ -1,0 +1,17 @@
+--- src/global/mail_queue.c-orig	2019-04-01 14:37:54.136169772 +0200
++++ src/global/mail_queue.c	2019-04-01 14:42:35.191382999 +0200
+@@ -363,6 +363,14 @@
+ 	    break;
+ 	if (errno == EEXIST || errno == EISDIR)
+ 	    continue;
++	/*
++	 * Avoid getting into an infinite loop when we don't have permission to
++	 * read temp_path
++	 */
++	if (errno == EACCES) {
++	    msg_fatal("%s: create file %s: no permission", myname, STR(temp_path));
++	    break;
++	}
+ 	msg_warn("%s: create file %s: %m", myname, STR(temp_path));
+ 	sleep(10);
+     }

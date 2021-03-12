@@ -1,0 +1,5 @@
+<package name="postfix" project="openSUSE:Factory">
+  <title>A fast, secure, and flexible mailer</title>
+  <description>Postfix aims to be an alternative to the widely-used sendmail program.</description>
+  <devel project="server:mail" package="postfix"/>
+</package>

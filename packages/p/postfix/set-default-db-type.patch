@@ -1,0 +1,179 @@
+--- src/util/sys_defs.h.orig	2021-01-04 13:12:06.272285413 +0100
++++ src/util/sys_defs.h	2021-01-04 13:12:38.412720371 +0100
+@@ -51,7 +51,7 @@
+ #define HAS_FSYNC
+ #define HAS_DB
+ #define HAS_SA_LEN
+-#define NATIVE_DB_TYPE	"hash"
++#define NATIVE_DB_TYPE	"lmdb"
+ #if (defined(__NetBSD_Version__) && __NetBSD_Version__ >= 104250000)
+ #define ALIAS_DB_MAP   DEF_DB_TYPE ":/etc/mail/aliases"	/* sendmail 8.10 */
+ #endif
+@@ -232,7 +232,7 @@
+ #define HAS_FSYNC
+ #define HAS_DB
+ #define HAS_SA_LEN
+-#define NATIVE_DB_TYPE	"hash"
++#define NATIVE_DB_TYPE	"lmdb"
+ #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #define GETTIMEOFDAY(t) gettimeofday(t,(struct timezone *) 0)
+ #define ROOT_PATH	"/bin:/usr/bin:/sbin:/usr/sbin"
+@@ -289,7 +289,7 @@
+ #define HAS_FSYNC
+ /* might be set by makedef */
+ #ifdef HAS_DB
+-#define NATIVE_DB_TYPE	"hash"
++#define NATIVE_DB_TYPE	"lmdb"
+ #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #else
+ #define HAS_DBM
+@@ -761,7 +761,7 @@
+ #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
+ #define HAS_FSYNC
+ #define HAS_DB
+-#define NATIVE_DB_TYPE	"hash"
++#define NATIVE_DB_TYPE	"lmdb"
+ #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #ifndef NO_NIS
+ #define HAS_NIS
+@@ -841,7 +841,7 @@
+ #define DEF_MAILBOX_LOCK "dotlock"	/* verified RedHat 3.03 */
+ #define HAS_FSYNC
+ #define HAS_DB
+-#define NATIVE_DB_TYPE	"hash"
++#define NATIVE_DB_TYPE	"lmdb"
+ #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #ifndef NO_NIS
+ #define HAS_NIS
+@@ -874,7 +874,7 @@
+ #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
+ #define HAS_FSYNC
+ #define HAS_DB
+-#define NATIVE_DB_TYPE	"hash"
++#define NATIVE_DB_TYPE	"lmdb"
+ #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #ifndef NO_NIS
+ #define HAS_NIS
+@@ -1199,7 +1199,7 @@
+ #define INTERNAL_LOCK	MYFLOCK_STYLE_FCNTL
+ #define DEF_MAILBOX_LOCK "fcntl, dotlock"
+ #define HAS_FSYNC
+-#define NATIVE_DB_TYPE	"hash"
++#define NATIVE_DB_TYPE	"lmdb"
+ #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ /* Uncomment the following line if you have NIS package installed */
+ /* #define HAS_NIS */
+--- src/global/mail_params.h.orig	2020-05-09 17:51:27.000000000 +0200
++++ src/global/mail_params.h	2020-12-25 21:04:11.428544623 +0100
+@@ -2826,7 +2826,7 @@ extern int var_vrfy_pend_limit;
+ extern char *var_verify_service;
+ 
+ #define VAR_VERIFY_MAP			"address_verify_map"
+-#define DEF_VERIFY_MAP			"btree:$data_directory/verify_cache"
++#define DEF_VERIFY_MAP			"lmdb:$data_directory/verify_cache"
+ extern char *var_verify_map;
+ 
+ #define VAR_VERIFY_POS_EXP		"address_verify_positive_expire_time"
+@@ -3594,7 +3594,7 @@ extern char *var_multi_cntrl_cmds;
+   * postscreen(8)
+   */
+ #define VAR_PSC_CACHE_MAP	"postscreen_cache_map"
+-#define DEF_PSC_CACHE_MAP	"btree:$data_directory/postscreen_cache"
++#define DEF_PSC_CACHE_MAP	"lmdb:$data_directory/postscreen_cache"
+ extern char *var_psc_cache_map;
+ 
+ #define VAR_SMTPD_SERVICE	"smtpd_service_name"
+--- man/man1/postmap.1.orig	2021-01-05 10:57:44.915488687 +0100
++++ man/man1/postmap.1	2021-01-05 11:10:12.377571721 +0100
+@@ -63,7 +63,7 @@
+ By default the lookup key is mapped to lowercase to make
+ the lookups case insensitive; as of Postfix 2.3 this case
+ folding happens only with tables whose lookup keys are
+-fixed\-case strings such as btree:, dbm: or hash:. With
++fixed\-case strings such as dbm:. With
+ earlier versions, the lookup key is folded even with tables
+ where a lookup field can match both upper and lower case
+ text, such as regexp: and pcre:. This resulted in loss of
+@@ -210,9 +210,9 @@
+ The \fBpostmap\fR(1) command can query any supported file type,
+ but it can create only the following file types:
+ .RS
+-.IP \fBbtree\fR
+-The output file is a btree file, named \fIfile_name\fB.db\fR.
+-This is available on systems with support for \fBdb\fR databases.
++.IP \fBlmdb\fR
++The output file is a lmdb file, named \fIfile_name\fB.lmdb\fR.
++This is available on systems with support for \fBlmdb\fR databases.
+ .IP \fBcdb\fR
+ The output consists of one file, named \fIfile_name\fB.cdb\fR.
+ This is available on systems with support for \fBcdb\fR databases.
+@@ -220,9 +220,6 @@
+ The output consists of two files, named \fIfile_name\fB.pag\fR and
+ \fIfile_name\fB.dir\fR.
+ This is available on systems with support for \fBdbm\fR databases.
+-.IP \fBhash\fR
+-The output file is a hashed file, named \fIfile_name\fB.db\fR.
+-This is available on systems with support for \fBdb\fR databases.
+ .IP \fBfail\fR
+ A table that reliably fails all requests. The lookup table
+ name is used for logging only. This table exists to simplify
+@@ -267,12 +264,6 @@
+ this program.
+ The text below provides only a parameter summary. See
+ \fBpostconf\fR(5) for more details including examples.
+-.IP "\fBberkeley_db_create_buffer_size (16777216)\fR"
+-The per\-table I/O buffer size for programs that create Berkeley DB
+-hash or btree tables.
+-.IP "\fBberkeley_db_read_buffer_size (131072)\fR"
+-The per\-table I/O buffer size for programs that read Berkeley DB
+-hash or btree tables.
+ .IP "\fBconfig_directory (see 'postconf -d' output)\fR"
+ The default location of the Postfix main.cf and master.cf
+ configuration files.
+--- man/man1/postalias.1.orig	2021-01-05 10:58:04.579753235 +0100
++++ man/man1/postalias.1	2021-01-05 11:08:10.135919006 +0100
+@@ -34,7 +34,7 @@
+ By default the lookup key is mapped to lowercase to make
+ the lookups case insensitive; as of Postfix 2.3 this case
+ folding happens only with tables whose lookup keys are
+-fixed\-case strings such as btree:, dbm: or hash:. With
++fixed\-case strings such as dbm:. With
+ earlier versions, the lookup key is folded even with tables
+ where a lookup field can match both upper and lower case
+ text, such as regexp: and pcre:. This resulted in loss of
+@@ -122,9 +122,9 @@
+ The \fBpostalias\fR(1) command can query any supported file type,
+ but it can create only the following file types:
+ .RS
+-.IP \fBbtree\fR
+-The output is a btree file, named \fIfile_name\fB.db\fR.
+-This is available on systems with support for \fBdb\fR databases.
++.IP \fBlmdb\fR
++The output is a lmdb file, named \fIfile_name\fB.lmdb\fR.
++This is available on systems with support for \fBlmdb\fR databases.
+ .IP \fBcdb\fR
+ The output is one file named \fIfile_name\fB.cdb\fR.
+ This is available on systems with support for \fBcdb\fR databases.
+@@ -132,9 +132,6 @@
+ The output consists of two files, named \fIfile_name\fB.pag\fR and
+ \fIfile_name\fB.dir\fR.
+ This is available on systems with support for \fBdbm\fR databases.
+-.IP \fBhash\fR
+-The output is a hashed file, named \fIfile_name\fB.db\fR.
+-This is available on systems with support for \fBdb\fR databases.
+ .IP \fBfail\fR
+ A table that reliably fails all requests. The lookup table
+ name is used for logging only. This table exists to simplify
+@@ -187,12 +184,6 @@
+ .IP "\fBconfig_directory (see 'postconf -d' output)\fR"
+ The default location of the Postfix main.cf and master.cf
+ configuration files.
+-.IP "\fBberkeley_db_create_buffer_size (16777216)\fR"
+-The per\-table I/O buffer size for programs that create Berkeley DB
+-hash or btree tables.
+-.IP "\fBberkeley_db_read_buffer_size (131072)\fR"
+-The per\-table I/O buffer size for programs that read Berkeley DB
+-hash or btree tables.
+ .IP "\fBdefault_database_type (see 'postconf -d' output)\fR"
+ The default database type for use in \fBnewaliases\fR(1), \fBpostalias\fR(1)
+ and \fBpostmap\fR(1) commands.

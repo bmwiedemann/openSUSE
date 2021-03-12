@@ -1,0 +1,59 @@
+Index: src/cleanup/cleanup_message.c
+===================================================================
+--- src/cleanup/cleanup_message.c.orig
++++ src/cleanup/cleanup_message.c
+@@ -296,7 +296,7 @@ static const char *cleanup_act(CLEANUP_S
+     while (*optional_text && ISSPACE(*optional_text))
+ 	optional_text++;
+ 
+-#define STREQUAL(x,y,l) (strncasecmp((x), (y), (l)) == 0 && (y)[l] == 0)
++inline int STREQUAL(const char *x, const char *y, size_t l) { return (strncasecmp((x), (y), (l)) == 0 && (y)[l] == 0); }
+ #define CLEANUP_ACT_DROP 0
+ 
+     /*
+Index: src/local/local_expand.c
+===================================================================
+--- src/local/local_expand.c.orig
++++ src/local/local_expand.c
+@@ -115,7 +115,7 @@ static const char *local_expand_lookup(c
+     LOCAL_EXP *local = (LOCAL_EXP *) ptr;
+     static char rcpt_delim[2];
+ 
+-#define STREQ(x,y) (*(x) == *(y) && strcmp((x), (y)) == 0)
++inline int STREQ(const char *x, const char *y) { return (*(x) == *(y) && strcmp((x), (y)) == 0); }
+ 
+     if (STREQ(name, "user")) {
+ 	return (local->state->msg_attr.user);
+Index: src/smtpd/smtpd_check.c
+===================================================================
+--- src/smtpd/smtpd_check.c.orig
++++ src/smtpd/smtpd_check.c
+@@ -380,6 +380,10 @@ static STRING_LIST *smtpd_acl_perm_log;
+ #define CONST_STR(x)	((const char *) vstring_str(x))
+ #define UPDATE_STRING(ptr,val) { if (ptr) myfree(ptr); ptr = mystrdup(val); }
+ 
++inline int STREQ(const char *x, const char *y) { return (*(x) == *(y) && strcmp((x), (y)) == 0); }
++inline int STREQUAL(const char *x, const char *y, size_t l) { return (strncasecmp((x), (y), (l)) == 0 && (y)[l] == 0); }
++inline int STREQN(const char *x, const char *y, size_t n) { return (*(x) == *(y) && strncmp((x), (y), (n)) == 0); }
++
+  /*
+   * If some decision can't be made due to a temporary error, then change
+   * other decisions into deferrals.
+@@ -2339,8 +2343,6 @@ static int check_table_result(SMTPD_STAT
+     if (msg_verbose)
+ 	msg_info("%s: %s %s %s", myname, table, value, datum);
+ 
+-#define STREQUAL(x,y,l) (strncasecmp((x), (y), (l)) == 0 && (y)[l] == 0)
+-
+     /*
+      * DUNNO means skip this table. Silently ignore optional text.
+      */
+@@ -3375,8 +3377,6 @@ static const char *rbl_expand_lookup(con
+     SMTPD_RBL_EXPAND_CONTEXT *rbl_exp = (SMTPD_RBL_EXPAND_CONTEXT *) context;
+     SMTPD_STATE *state = rbl_exp->state;
+ 
+-#define STREQ(x,y) (*(x) == *(y) && strcmp((x), (y)) == 0)
+-
+     if (state->expand_buf == 0)
+ 	state->expand_buf = vstring_alloc(10);
+ 

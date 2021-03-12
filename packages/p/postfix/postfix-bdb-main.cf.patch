@@ -1,0 +1,153 @@
+Index: conf/main.cf
+===================================================================
+--- conf/main.cf.orig
++++ conf/main.cf
+@@ -567,6 +567,7 @@ unknown_local_recipient_reject_code = 55
+ #
+ #smtpd_banner = $myhostname ESMTP $mail_name
+ #smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)
++smtpd_banner = $myhostname ESMTP
+ 
+ # PARALLEL DELIVERY TO THE SAME DESTINATION
+ #
+@@ -673,4 +674,140 @@ sample_directory =
+ # readme_directory: The location of the Postfix README files.
+ #
+ readme_directory =
++
++############################################################
++#
++# before changing values manually consider editing
++#  /etc/sysconfig/postfix
++# and run
++#  config.postfix
++#
++# if you miss a feature of config.postfix then just send a
++# mail to chris@computersalat.de
++# patches for new feature(s) are also welcome :)
++#
++############################################################
++
++biff = no
++content_filter = 
++delay_warning_time = 0h
++disable_dns_lookups = no
++disable_mime_output_conversion = no
++disable_vrfy_command = yes
++inet_interfaces = all
+ inet_protocols = ipv4
++masquerade_classes = envelope_sender, header_sender, header_recipient
++masquerade_domains = 
++masquerade_exceptions = 
++mydestination = $myhostname, localhost.$mydomain
++myhostname = localhost
++mynetworks_style = subnet
++relayhost = 
++
++alias_maps = 
++canonical_maps = 
++relocated_maps = 
++sender_canonical_maps = 
++transport_maps = 
++mail_spool_directory = /var/mail 
++message_strip_characters = 
++defer_transports = 
++mailbox_command = 
++mailbox_transport = 
++mailbox_size_limit = 0
++message_size_limit = 0
++strict_8bitmime = no
++strict_rfc821_envelopes = no
++smtpd_delay_reject = yes
++smtpd_helo_required = no
++
++smtpd_client_restrictions = 
++
++smtpd_helo_restrictions = 
++
++smtpd_sender_restrictions = 
++
++smtpd_recipient_restrictions = 
++
++
++############################################################
++# SASL stuff
++############################################################
++smtp_sasl_auth_enable = no
++smtp_sasl_security_options = 
++smtp_sasl_password_maps = 
++smtpd_sasl_auth_enable = no
++# cyrus   : smtpd_sasl_type = cyrus
++#           smtpd_sasl_path = smtpd
++# dovecot : smtpd_sasl_type = dovecot
++#           smtpd_sasl_path = private/auth
++smtpd_sasl_type = cyrus
++smtpd_sasl_path = smtpd
++############################################################
++# TLS stuff
++############################################################
++#tls_append_default_CA = no
++relay_clientcerts = 
++#tls_random_source = dev:/dev/urandom
++
++smtp_use_tls = no
++#smtp_tls_loglevel = 0
++smtp_enforce_tls = no
++smtp_tls_CAfile = 
++smtp_tls_CApath = 
++smtp_tls_cert_file = 
++smtp_tls_key_file = 
++#smtp_tls_policy_maps = hash:/etc/postfix/tls_policy
++#smtp_tls_session_cache_timeout = 3600s
++smtp_tls_session_cache_database = 
++
++smtpd_use_tls = no
++#smtpd_tls_loglevel = 0
++smtpd_tls_CAfile = 
++smtpd_tls_CApath = 
++smtpd_tls_cert_file = 
++smtpd_tls_key_file = 
++smtpd_tls_ask_ccert = no
++smtpd_tls_exclude_ciphers = RC4
++smtpd_tls_received_header = no
++############################################################
++# Start MySQL from postfixwiki.org
++############################################################
++relay_domains = $mydestination, hash:/etc/postfix/relay
++#virtual_alias_domains = 
++#virtual_alias_maps = hash:/etc/postfix/virtual
++#virtual_uid_maps = static:303
++#virtual_gid_maps = static:303
++#virtual_minimum_uid = 303
++#virtual_mailbox_base = /srv/maildirs
++#virtual_mailbox_domains = mysql:/etc/postfix/mysql_virtual_domains_maps.cf
++#virtual_mailbox_limit = 0
++#virtual_mailbox_limit_inbox = no
++#virtual_mailbox_maps = mysql:/etc/postfix/mysql_virtual_mailbox_maps.cf
++## For dovecot LMTP replace 'virtual' with 'lmtp:unix:private/dovecot-lmtp'
++#virtual_transport = virtual
++## Additional for quota support
++#virtual_mailbox_limit_maps = mysql:/etc/postfix/mysql_virtual_mailbox_limit_maps.cf
++#virtual_mailbox_limit_override = yes
++### Needs Maildir++ compatible IMAP servers, like Courier-IMAP
++#virtual_maildir_filter = yes
++#virtual_maildir_filter_maps = hash:/etc/postfix/vfilter
++#virtual_maildir_limit_message = Sorry, the user's maildir has overdrawn his diskspace quota, please try again later.
++#virtual_maildir_limit_message_maps = hash:/etc/postfix/vmsg
++#virtual_overquota_bounce = yes
++#virtual_trash_count = yes
++#virtual_trash_name = ".Trash"
++############################################################
++# End MySQL from postfixwiki.org
++############################################################
++# Rewrite reject codes
++############################################################
++#unknown_address_reject_code = 550
++#unknown_client_reject_code = 550
++#unknown_hostname_reject_code = 550
++#unverified_recipient_reject_code = 550
++#soft_bounce = yes
++############################################################
++#debug_peer_list = example.com
++#debug_peer_level = 3
++
