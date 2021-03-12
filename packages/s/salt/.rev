@@ -1699,4 +1699,29 @@ let build start it or we will get libvirt errors.
     <comment>Fix for multiple Salt CVEs</comment>
     <requestid>876003</requestid>
   </revision>
+  <revision rev="116" vrev="4">
+    <srcmd5>a2cec08d56315127876c77615186ed70</srcmd5>
+    <version>3002.2</version>
+    <time>1615552219</time>
+    <user>dimstar_suse</user>
+    <comment>- virt.network_update: handle missing ipv4 netmask attribute
+- Added:
+  * virt.network_update-handle-missing-ipv4-netmask-attr.patch
+
+- Set distro requirement to oldest supported version in requirements/base.txt
+- Added:
+  * 3002-set-distro-requirement-to-oldest-supported-vers.patch
+
+- Do not monkey patch yaml loaders: Prevent breaking Ansible filter modules (bsc#1177474)
+- Don't require python3-certifi
+- Added:
+  * do-not-monkey-patch-yaml-bsc-1177474.patch
+
+- Fix race conditions for corner cases when handling SIGTERM by minion (bsc#1172110)
+- Added:
+  * prevent-race-condition-on-sigterm-for-the-minion-bsc.patch
+
+- Master can read grains (bsc#1179696)</comment>
+    <requestid>878135</requestid>
+  </revision>
 </revisionlist>

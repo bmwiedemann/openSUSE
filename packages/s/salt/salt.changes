@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Mar 10 08:42:54 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- virt.network_update: handle missing ipv4 netmask attribute
+
+- Added:
+  * virt.network_update-handle-missing-ipv4-netmask-attr.patch
+
+-------------------------------------------------------------------
+Tue Mar  9 14:34:29 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Set distro requirement to oldest supported version in requirements/base.txt
+
+- Added:
+  * 3002-set-distro-requirement-to-oldest-supported-vers.patch
+
+-------------------------------------------------------------------
+Tue Mar  9 09:00:08 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not monkey patch yaml loaders: Prevent breaking Ansible filter modules (bsc#1177474)
+- Don't require python3-certifi
+
+- Added:
+  * do-not-monkey-patch-yaml-bsc-1177474.patch
+
+-------------------------------------------------------------------
+Wed Mar  3 09:32:53 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix race conditions for corner cases when handling SIGTERM by minion (bsc#1172110)
+
+- Added:
+  * prevent-race-condition-on-sigterm-for-the-minion-bsc.patch
+
+-------------------------------------------------------------------
 Mon Mar  1 11:21:01 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
 
 - Allow extra_filerefs as sanitized kwargs for SSH client
@@ -345,7 +378,7 @@ Tue Nov 10 15:43:09 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 -------------------------------------------------------------------
 Tue Nov 10 15:09:16 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
-- Master can read grains
+- Master can read grains (bsc#1179696)
 
 - Added:
   * grains-master-can-read-grains.patch
