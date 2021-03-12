@@ -1,7 +1,7 @@
 #
 # spec file for package drbd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Patch7:         compat_blk_queue_stack_limits.patch
 #compat to v5.10
 Patch8:         remove_bdi_cap_stable_writes.patch
 Patch9:         compat_get_fs.patch
+#compat to v5.11, no need to sle15sp3
+Patch10:        compat_to_v5_11.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -88,6 +90,7 @@ installed kernel.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 %patch99 -p1
 
 mkdir source

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 12 07:10:37 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1183429, compat to kernel v5.11
+  Add patch compat_to_v5_11.patch 
+
+-------------------------------------------------------------------
 Wed Dec  9 06:40:33 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1179708, compat to kernel v5.10
