@@ -32,6 +32,7 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
+  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -5752,7 +5753,7 @@ unsorted:
   - golang-github-rogpeppe-godef 
   - golang-github-shadowsocks-v2ray-plugin 
   - golang-github-shurcool-sanitized_anchor_name 
-  - golang-github-v2ray-v2ray-core 
+  - golang-github-v2fly-v2ray-core 
   - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-github-wrouesnel-postgres_exporter 
   - golang-gopkgin-check 
@@ -10310,7 +10311,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla11 
+  - libfilezilla12 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -10697,7 +10698,7 @@ unsorted:
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
   - libgranite5 
-  - libgraphblas3 
+  - libgraphblas4 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
   - libgravatar-devel 
@@ -15473,6 +15474,7 @@ unsorted:
   - memcached-devel 
   - memkind: [x86_64] 
   - memkind-devel: [x86_64] 
+  - memleax 
   - memory-constraints 
   - memprof 
   - memprof-lang 
@@ -17414,14 +17416,11 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSEway 
-  - openafs: [x86_64] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client: [x86_64] 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default: [x86_64] 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -22958,6 +22957,7 @@ unsorted:
   - python36-pydot 
   - python36-pydot3 
   - python36-pydotplus 
+  - python36-pydub 
   - python36-pyeapi 
   - python36-pyee 
   - python36-pyelftools 
@@ -23226,7 +23226,6 @@ unsorted:
   - python36-python-slugify 
   - python36-python-snappy 
   - python36-python-socketio 
-  - python36-python-sofa 
   - python36-python-sql 
   - python36-python-stdnum 
   - python36-python-subunit 
@@ -27418,7 +27417,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default 
+  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -28719,7 +28718,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
@@ -31243,9 +31242,6 @@ unsorted:
   - texlive-ebgaramond-fonts 
   - texlive-ebgaramond-maths 
   - texlive-ebgaramond-maths-doc 
-  - texlive-ebong 
-  - texlive-ebong-bin 
-  - texlive-ebong-doc 
   - texlive-ebook 
   - texlive-ebook-doc 
   - texlive-ebproof 
@@ -34830,9 +34826,6 @@ unsorted:
   - texlive-pxtxalfa-doc 
   - texlive-pxufont 
   - texlive-pxufont-doc 
-  - texlive-pygmentex 
-  - texlive-pygmentex-bin 
-  - texlive-pygmentex-doc 
   - texlive-python 
   - texlive-python-doc 
   - texlive-pythonhighlight 
@@ -35571,8 +35564,6 @@ unsorted:
   - texlive-syllogism-doc 
   - texlive-symbol 
   - texlive-symbol-fonts 
-  - texlive-sympytexpackage 
-  - texlive-sympytexpackage-doc 
   - texlive-synctex 
   - texlive-synctex-bin 
   - texlive-synctex-devel 
@@ -37597,9 +37588,12 @@ unsorted:
   - virt-viewer 
   - virtme 
   - virtualbox: [x86_64] 
-  - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-x11 
+  - virtualbox-devel: [x86_64] 
   - virtualbox-guest-desktop-icons: [x86_64] 
+  - virtualbox-guest-tools: [x86_64] 
+  - virtualbox-guest-x11: [x86_64] 
   - virtualbox-host-source: [x86_64] 
+  - virtualbox-kmp-default: [x86_64] 
   - virtualbox-qt: [x86_64] 
   - virtualbox-vnc: [x86_64] 
   - virtualbox-websrv: [x86_64] 

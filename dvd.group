@@ -3183,6 +3183,9 @@
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5071,16 +5074,12 @@
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5374,7 +5373,6 @@
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.10.16-1-default needed by openafs-kmp-default-1.8.7_k5.10.16_1-4.1.x86_64-->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -5421,6 +5419,7 @@
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5429,7 +5428,6 @@
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5440,9 +5438,8 @@
     <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vhba-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="virt-sandbox" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <!-- virtualbox-guest-tools uninstallable: nothing provides kernel-uname-r = 5.11.2-1-default needed by virtualbox-kmp-default-6.1.18_k5.11.2_1-4.1.x86_64-->
+    <!-- virtualbox-guest-x11 uninstallable: nothing provides kernel-uname-r = 5.11.2-1-default needed by virtualbox-kmp-default-6.1.18_k5.11.2_1-4.1.x86_64-->
     <package name="wpa_supplicant-gui" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="wxWidgets-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xbitmaps-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
