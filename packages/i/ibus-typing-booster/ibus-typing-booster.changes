@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 11 15:35:41 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.11.0
+- Use sensitivity feature of buttons in the setup tool tab where shortcuts are defined
+- Don’t let dialog action area of setup tool expand.
+- Improve the setup tool to make it possible to enter multi-line expansions of shortcuts
+- Resolves https://github.com/mike-fabian/ibus-typing-booster/issues/158
+- Elide extremely long candidates in the lookup table in the middle.
+- If a candidate contains newlines, replace the newlines with arrows in the lookup table.
+- If a commit string contains new-lines, commit it in several chunks
+  and forward Return between the chunks.
+- Update emoji annotations from CLDR
+- Put the remote icon back in emoji-picker.appdata.xml, it was a
+  false positive by appstreamcli
+- Translation update from Weblate (pt_PT updated, 100% complete now)
+- Skip the inscript2 test cases if these transliterations are not available.
+
+-------------------------------------------------------------------
 Wed Feb 17 15:59:12 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.10.5
