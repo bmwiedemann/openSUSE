@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.8
+Version:        1.99.10
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -31,13 +31,7 @@ Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
 Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
-Patch1:         ddr_1998-alg-caseindep.diff
-Patch2:         ddr_1998-check-nofail-noxattr.diff
-Patch3:         ddr_1998-sysrandom.diff
-Patch4:         ddr_1998-testhole.diff
-Patch5:         ddr_1998-ossl11-warn.diff
-# boo#1181402
-Patch6:         fix-aliasing-aarch64.patch
+Patch11:        checksum_file-clear-errno.diff
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
 BuildRequires:  libopenssl-devel
@@ -49,7 +43,6 @@ Requires:       bc
 Recommends:     dd_rescue-crypt
 Recommends:     dd_rescue-lzo
 Recommends:     dd_rhelp
-Recommends:     libfallocate0
 # ddrescue was last used in openSUSE 11.4 (version 1.14_0.0.6)
 Provides:       ddrescue = %{version}
 Obsoletes:      ddrescue < %{version}
@@ -117,12 +110,12 @@ data to the decompressor; the plugin is still young and might expose bugs.
 
 %prep
 %setup -q
-%autopatch -p1
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE99} '+%%H:%%M')
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{SOURCE99} '+%%b %%e %%Y')
 sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" dd_rescue.c
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" dd_rescue.c
+%autopatch -p1
 
 %build
 autoheader

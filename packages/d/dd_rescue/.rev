@@ -435,4 +435,39 @@
     <comment></comment>
     <requestid>874435</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>4902bc79f1e2ba38935c964afa9353da</srcmd5>
+    <version>1.99.10</version>
+    <time>1615552212</time>
+    <user>dimstar_suse</user>
+    <comment>- checksum_file-clear-errno.diff: Avoid stale errno to be picked
+  up and report an error without any error actually occuring.
+  (This lead to occasional build fails on armv7 on Ubuntu 20.04
+   and Fedora 32/33, nowhere else.)
+
+- Update to dd_rescue-1.99.10:
+  * Improve memory clobbers: Ensure we specify full array lengths
+    used as input to asm (boo#1181402).
+  * Improve ARM64 crypto by better insn scheduling in CTR calc,
+    avoiding dependencies and local vars (+40% performance!).
+  * Apply all ARM64 improvements also to ARMv8 crypto on ARM32.
+  * Fix warning int formatting on unaligned crypto.
+  * Address warnings on outdated autoconf usage.
+
+- Update to dd_rescue-1.99.9:
+  * Includes aliasing fixes from boo#1181402.
+  * Additional mem clobbers for asm statements (boo#1181402).
+  * LTO disablement still needed (boo#1176219) on arm due to
+    differences in compiler flags (-march) per object.
+  * Fix dependency generation on PPC (preprocessing intrinsics).
+  * Support xattr decls in sys/xattr.h in addition to attr/xattr.h.
+  * More stringent check of mem alloc return values.
+  * Free all memory in error path before exiting (cosmetic).
+  * Don't need global variable in probe function.
+  * drop ddr_1998-alg-caseindep.diff, ddr_1998-check-nofail-noxattr.diff,
+    ddr_1998-ossl11-warn.diff, ddr_1998-sysrandom.diff,
+    ddr_1998-testhole.diff: patches all merged (they were backports)
+- drop fix-aliasing-aarch64.patch: obsolete (fixed differently in new version)</comment>
+    <requestid>878072</requestid>
+  </revision>
 </revisionlist>
