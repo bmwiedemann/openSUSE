@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Mar  4 17:46:40 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Harden build, enable full RELRO
+- Never allow undefined symbols anywhere.
+
+-------------------------------------------------------------------
+Thu Feb  4 11:20:22 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.75.0
+  * Changes:
+    - curl: add --create-file-mode [mode]
+    - curl: add new variables to --write-out
+    - dns: extend CURLOPT_RESOLVE syntax for adding non-permanent entries
+    - gopher: implement secure gopher protocol
+    - http: add Hyper as new optional HTTP backend
+    - http: introduce AWS HTTP v4 Signature support 
+  * Bugfixes:
+    - cmake: Add an option to disable libidn2
+    - cmake: enable gophers correctly in curl-config
+    - cmake: expose CURL_DISABLE_OPENSSL_AUTO_LOAD_CONFIG
+    - digest_sspi: Show InitializeSecurityContext errors in verbose mode
+    - getinfo: build with disabled HTTP support
+    - http: get CURLOPT_REQUEST_TARGET working with a HTTP proxy
+    - http_proxy: Fix CONNECT chunked encoding race condition
+    - httpauth: make multi-request auth work with custom port
+    - lib: pass in 'struct Curl_easy *' to most functions
+    - lib: remove Curl_ prefix from many static functions
+    - lib: save a bit of space with some structure packing
+    - libssh: avoid plain free() of libssh-memory
+    - mime: make sure setting MIMEPOST to NULL resets properly
+    - multi_runsingle: bail out early on data->conn == NULL
+    - ngtcp2: Fix http3 upload stall
+    - ngtcp2: Fix stack buffer overflow
+    - openssl: lowercase the hostname before using it for SNI
+    - socks: use the download buffer instead
+    - speedcheck: exclude paused transfers
+    - tooĺ_writeout: fix the -w time output units
+    - url: if IDNA conversion fails, fallback to Transitional
+- Refresh libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Fri Dec 18 20:04:33 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Enable zstd and brotli support 

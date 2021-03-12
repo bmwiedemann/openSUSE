@@ -1,7 +1,7 @@
 #
 # spec file for package curl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.74.0
+Version:        7.75.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -102,7 +102,7 @@ CPPFLAGS="-D_FORTIFY_SOURCE=2"
 CFLAGS=$(echo "%{optflags}" | sed -e 's/-D_FORTIFY_SOURCE=2//')
 export CPPFLAGS
 export CFLAGS="$CFLAGS -fPIE"
-export LDFLAGS="$LDFLAGS -pie"
+export LDFLAGS="$LDFLAGS -Wl,-z,defs,-z,now,-z,relro -pie"
 autoreconf -fiv
 # local hack to make curl-config --libs stop printing libraries it depends on
 # (currently, libtool sets link_all_deplibs=(yes|unknown) everywhere,
