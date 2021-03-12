@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 11 14:00:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Bump SONAME because of ABI change underneath [boo#1183350].
+  This I had missed in the 2020.7 update.
+
+-------------------------------------------------------------------
+Mon Mar  1 06:56:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.7
+  * Support pending Intel extensions
+  * Remove WebGPU support
+  * Validator: add Vulkan EXT builtins
+  * Optimizer: Run DCE when SPV_KHR_shader_clock is used
+
+-------------------------------------------------------------------
 Tue Dec  8 12:30:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.6

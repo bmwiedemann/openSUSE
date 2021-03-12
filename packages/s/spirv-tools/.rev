@@ -183,4 +183,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>856020</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3e9382fa748768fdc7f0614357f371aa</srcmd5>
+    <version>2020.7</version>
+    <time>1615552317</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump SONAME because of ABI change underneath [boo#1183350].
+  This I had missed in the 2020.7 update.
+
+join Staging:E</comment>
+    <requestid>878324</requestid>
+  </revision>
 </revisionlist>

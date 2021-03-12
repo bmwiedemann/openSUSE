@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-suse19
+%define lname libSPIRV-Tools-suse20
 
 Name:           spirv-tools
-Version:        2020.6
+Version:        2020.7
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.5.3.g22
+BuildRequires:  spirv-headers >= 1.5.3.g32
 
 %description
 The package includes an assembler, binary module parser,
