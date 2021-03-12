@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Mar 01 20:25:43 UTC 2021 - elimat@opensuse.org
+
+- Update to version 2.0.2:
+  * Prepare for the libaom v2.0.2 release
+  * Call av1_setup_frame_size() when dropping a frame
+  * Avoid memset in filter_intra_predictor module
+  * Fix a typo bug in apply_temporal_filter_planewise
+  * Modify the assertion in temporal filter intrinsics
+  * Fix unit test ThreadTestLarge.EncoderResultTest/49
+  * Add -Wimplicit-function-declaration as C flag only
+  * Update CHANGELOG for libaom v2.0.1
+  * Set allow_screen_content_tools to 0 in rt mode
+  * chroma_check: don't access UV planes if monochrome
+
+-------------------------------------------------------------------
+Tue May 19 12:32:12 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 2.0.0 "Applejack":
+  
+  This is the first official release of libaom. It has real-time
+  mode and SVC support, as well as substantial documentation
+  improvement and clean-ups.
+
+  Important changes:
+  * Decouple library version and so version.
+  * Move functions into a header file
+  * Remove av1_ prefix from static functions
+  * Remove aom_ prefix from static functions
+  * Remove aom_ prefix for static functions
+  * Remove av1_ prefix for a static function
+- Drop libaom-0002-link-threading-lib-with-shared-library.patch and
+  libaom-0003-update-CHANGELOG.patch
+
+-------------------------------------------------------------------
+Tue Jul 31 21:29:49 UTC 2018 - 9+suse@cirno.systems
+
+- Enable CONFIG_LOWBITDEPTH. Makes 8-bit decoding faster. The only
+  reason this confusingly-named option is not enabled by default
+  is that its behavior might not match the 16-bit reference code
+  path, and that hardware vendors want to be able to validate
+  their designs against it. No actual mismatches have been found.
+  See https://bugs.chromium.org/p/aomedia/issues/detail?id=2062
+
+-------------------------------------------------------------------
+Mon Jul 30 13:09:23 UTC 2018 - bjorn.lie@gmail.com
+
+- Pass conditional AOM_TARGET_CPU to cmake, fix build for arm and
+  ppc, as well as optimize target cpu for other arches.
+
+-------------------------------------------------------------------
+Fri Jul 27 14:42:25 UTC 2018 - 9+suse@cirno.systems
+
+- Init, v1.0.0
