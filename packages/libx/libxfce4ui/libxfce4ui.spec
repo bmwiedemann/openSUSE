@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4ui
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(gladeui-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -123,7 +124,6 @@ License:        LGPL-2.1-or-later
 Group:          System/Localization
 Requires:       %{libname_gtk3} = %{version}
 Provides:       %{name}-lang-all = %{version}
-Supplements:    packageand(bundle-lang-other:%{libname_gtk2})
 Supplements:    packageand(bundle-lang-other:%{libname_gtk3})
 BuildArch:      noarch
 
@@ -153,13 +153,15 @@ NOCONFIGURE=1 ./autogen.sh
     --enable-startup-notification \
     --with-vendor-info=openSUSE \
     --disable-static \
-    --enable-vala=yes
+    --enable-vala=yes \
+    --enable-gladeui2
 %else
 %configure \
     --enable-startup-notification \
     --with-vendor-info=openSUSE \
     --disable-static \
-    --enable-vala=yes
+    --enable-vala=yes \
+    --enable-gladeui2
 %endif
 %make_build
 
@@ -195,10 +197,12 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_libdir}/libxfce4kbd-private-*.so
 %{_libdir}/pkgconfig/libxfce4ui-*.pc
 %{_libdir}/pkgconfig/libxfce4kbd-private-*.pc
+%{_libdir}/glade/*
 %{_includedir}/xfce4/libxfce4ui-2/
 %{_includedir}/xfce4/libxfce4kbd-private-3/
 %{_datadir}/vala/vapi/
 %{_datadir}/gir-1.0/Libxfce4ui-2.0.gir
+%{_datadir}/glade/*
 
 %files tools
 %{_bindir}/xfhelp4
