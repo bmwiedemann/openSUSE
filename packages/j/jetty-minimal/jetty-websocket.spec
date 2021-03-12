@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-websocket
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,9 @@
 
 
 %global base_name jetty
-%global addver  .v20201120
+%global addver  .v20210224
 Name:           %{base_name}-websocket
-Version:        9.4.35
+Version:        9.4.38
 Release:        0
 Summary:        The websocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
@@ -118,11 +118,8 @@ find . -name "*.class" -exec rm {} \;
 
 # Plugins irrelevant or harmful to building the package
 %pom_remove_plugin -r :maven-checkstyle-plugin
-%pom_remove_plugin -r :findbugs-maven-plugin
 %pom_remove_plugin -r :maven-enforcer-plugin
-%pom_remove_plugin -r :clirr-maven-plugin
 %pom_remove_plugin -r :maven-eclipse-plugin
-%pom_remove_plugin -r :maven-pmd-plugin
 %pom_remove_plugin -r :license-maven-plugin
 %pom_remove_plugin -r :maven-site-plugin
 %pom_remove_plugin -r :maven-source-plugin

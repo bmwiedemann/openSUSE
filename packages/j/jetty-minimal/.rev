@@ -47,4 +47,12 @@
     <comment>bsc#1179727, CVE-2020-27218</comment>
     <requestid>853651</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>421672b6524ea020d3e89cb39a0ff565</srcmd5>
+    <version>9.4.38</version>
+    <time>1615552432</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1182898, CVE-2020-27223</comment>
+    <requestid>878530</requestid>
+  </revision>
 </revisionlist>
