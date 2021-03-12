@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 12 10:00:35 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.7.2
+  - Bug Fixes
+    - Fix progress bar display when source image size is unknown.
+    - Fix a memory usage / leak issue when building from an existing
+      image file.
+    - Fix to allow use of ``--library`` flag to point push/pull at
+      default cloud library when another remote is in use.
+    - Address false positive loop test errors, and an e2e test registry
+      setup issue.
+
+-------------------------------------------------------------------
 Mon Feb 22 08:13:13 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 3.7.1
