@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.8.0
-%define orig_version   78.8.0
+%define mainver        %major.8.1
+%define orig_version   78.8.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -172,7 +172,7 @@ Source6:        suse-default-prefs.js
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
 Source9:        thunderbird.appdata.xml
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/5e54f4a/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/4503820/create-tar.sh
 Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:27:49 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.8.1
+  * several bugfixes and improvements
+  * https://www.thunderbird.net/en-US/thunderbird/78.8.1/releasenotes/
+- updated create-tar.sh (bsc#1182357)
+
+-------------------------------------------------------------------
 Fri Feb 19 21:39:32 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.8.0
