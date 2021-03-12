@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distributed%{psuffix}
-Version:        2021.2.0
+Version:        2021.3.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -44,7 +44,7 @@ Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 1.5.0
-Requires:       python-dask >= 2021.2.0
+Requires:       python-dask >= %{version}
 Requires:       python-msgpack
 Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
@@ -63,7 +63,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module click >= 6.6}
 BuildRequires:  %{python_module cloudpickle >= 1.5.0}
-BuildRequires:  %{python_module dask-all >= 2021.2.0}
+BuildRequires:  %{python_module dask-all >= %{version}}
 # need built extension
 BuildRequires:  %{python_module contextvars if %python-base < 3.7}
 BuildRequires:  %{python_module distributed = %{version}}
@@ -73,6 +73,8 @@ BuildRequires:  %{python_module jupyter_client}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-rerunfailures}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -94,8 +96,6 @@ clusters.
 
 %prep
 %autosetup -p1 -n distributed-%{version}
-# gh#dask/distributed#4467
-sed -i 's/raise pytest.skip(reason=/raise pytest.skip(/' distributed/tests/test_core.py
 
 %build
 %if ! %{with test}
@@ -118,6 +118,7 @@ sed -i '/pytest/,/addopts/ s/-rsx/-rfEs/' setup.cfg
 # many tests from multiple files are broken by new pytest-asyncio
 # (see https://github.com/dask/distributed/pull/4212 and https://github.com/pytest-dev/pytest-asyncio/issues/168)
 # as a proof build it with old pytest-asyncio and see these tests pass
+%if %{pkg_vcmp python3-pytest-asyncio >= 0.14}
 donttest+=" or (test_asyncprocess and test_child_main_thread)"
 donttest+=" or (test_asyncprocess and test_close)"
 donttest+=" or (test_asyncprocess and test_exit_callback)"
@@ -142,8 +143,6 @@ donttest+=" or (test_client and test_reconnect)"
 donttest+=" or (test_client and test_secede_balances)"
 donttest+=" or (test_client and test_secede_simple)"
 donttest+=" or (test_client and test_serialize_collections)"
-donttest+=" or (test_client and test_upload_file_exception_sync)"
-donttest+=" or (test_client and test_upload_file_sync)"
 donttest+=" or (test_collections and test_sparse_arrays)"
 donttest+=" or (test_diskutils and test_workspace_concurrency_intense)"
 donttest+=" or (test_diskutils and test_workspace_concurrency)"
@@ -172,6 +171,7 @@ donttest+=" or (test_resources and test_prefer_constrained)"
 donttest+=" or (test_scheduler and test_balance_many_workers_2)"
 donttest+=" or (test_scheduler and test_balance_many_workers)"
 donttest+=" or (test_scheduler and test_bandwidth_clear)"
+donttest+=" or (test_scheduler and test_dont_recompute_if_persisted)"
 donttest+=" or (test_scheduler and test_file_descriptors)"
 donttest+=" or (test_scheduler and test_gather_allow_worker_reconnect)"
 donttest+=" or (test_scheduler and test_idle_timeout)"
@@ -224,14 +224,23 @@ donttest+=" or (test_worker_client and test_scatter_singleton)"
 donttest+=" or (test_worker_client and test_secede_without_stealing_issue_1262)"
 donttest+=" or (test_worker_client and test_submit_different_names)"
 donttest+=" or (test_worker_client and test_submit_from_worker)"
-donttest+=" or test_metrics"
+%endif
+# too slow for obs
+donttest+=" or (test_metrics and time)"
+donttest+=" or (test_client and test_upload_file_exception_sync)"
+donttest+=" or (test_client and test_upload_file_sync)"
 # randomly fails
 donttest+=" or (test_worker and test_fail_write_to_disk)"
 # false version mismatch
 donttest+=" or test_version_warning_in_cluster"
 # ambiguous order in returned message
 donttest+=" or (test_client and test_as_completed_async_for_cancel)"
-%pytest_arch distributed/tests/ -k "not (${donttest:4})" -m "not avoid_travis" -n auto
+# indefinite hangs -- https://github.com/dask/distributed/issues/4564
+donttest+=" or (test_queues and test_queue_in_task)"
+donttest+=" or (test_variable and test_variable_in_task)"
+# too many open files
+donttest+=" or (test_stress and test_stress_communication)"
+%pytest_arch -ra -n auto distributed/tests/ -k "not (${donttest:4})" -m "not avoid_travis" --timeout 180
 %endif
 
 %if ! %{with test}

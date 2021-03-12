@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar  7 16:46:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.3.0
+  * This is the first release with support for Python 3.9 and the
+    last release with support for Python 3.6
+  * tcp.write(): cast memoryview to byte itemsize (#4555)
+    Mads R. B. Kristensen
+  * Refcount the thread_state.asynchronous flag (#4557) Mads
+    R. B. Kristensen
+  * Python 3.9 (#4460) crusaderky
+  * Better bokeh defaults for dashboard (#4554) Benjamin
+    Zaitlen
+  * Expose system monitor dashboard as individual plot for lab
+    extension (#4540) Jacob Tomlinson
+  * Pass on original temp dir from nanny to worker (#4549)
+    Martin Durant
+  * Serialize and split (#4541) Mads R. B. Kristensen
+  * Use the new HLG pack/unpack API in Dask (#4489) Mads R.
+    B. Kristensen
+  * Handle annotations for culled tasks (#4544) Tom
+    Augspurger
+  * Make sphinx autosummary and autoclass consistent (#4367)
+    Casey Clements
+  * Move _transition* to SchedulerState (#4545) jakirkham
+  * Migrate from travis to GitHub actions (#4504) crusaderky
+  * Move new_task to SchedulerState (#4527) jakirkham
+  * Batch more Scheduler sends (#4526) jakirkham
+  * transition_memory_released and get_nbytes() optimizations
+    (#4516) jakirkham
+  * Pin black pre-commit (#4533) James Bourbeau
+  * Read & write all frames in one pass (#4506) jakirkham
+  * Skip stream.write call for empty frames (#4507) jakirkham
+  * Prepend frame metadata header (#4505) jakirkham
+  * transition_processing_memory optimizations, etc. (#4487)
+    jakirkham
+  * Attempt to get client from worker in Queue and Variable
+    (#4490) James Bourbeau
+  * Use main branch for zict (#4499) jakirkham
+  * Use a callback to close TCP Comms, rather than check every
+    time (#4453) Matthew Rocklin
+
+-------------------------------------------------------------------
 Sun Feb 21 18:19:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Another package not available in python36: bokeh
