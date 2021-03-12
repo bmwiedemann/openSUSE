@@ -23,11 +23,11 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 269548fa27e0089a8b8278fc4fc781d7f65a939b
-%define git_short   269548fa27e0
+%define git_version 05f951a3781f4f2c1911b05e61c160e9c30eaa8e
+%define git_short   05f951a3781f
 
 Name:           containerd
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0

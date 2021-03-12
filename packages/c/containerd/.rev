@@ -329,4 +329,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Add missing BZ entries to changelog.</comment>
     <requestid>870779</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>464388cd920da54d4cb6a95c75cffaa7</srcmd5>
+    <version>1.4.4</version>
+    <time>1615552248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877351</requestid>
+  </revision>
 </revisionlist>
