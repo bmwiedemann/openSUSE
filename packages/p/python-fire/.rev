@@ -87,4 +87,21 @@
   * Removes preexec_fn from pager subprocess cal</comment>
     <requestid>835162</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7f513ebf8306a40138138239dc4b269f</srcmd5>
+    <version>0.4.0</version>
+    <time>1615552410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Support for Python 3.8 and Python 3.9
+  * Argument types and defaults appear in help text
+  * Support for asyncio coroutines
+  * Support for modules and Python files with python -m fire
+  * Keyword argument info from rst docstrings appears in help text
+  * Bug fix for missing parts of multiline argument descriptions from
+    Google and Numpy style docstrings.
+  * Support functions even when they override getattr in non-standard ways.
+- Drop patch subpoint-usage-test.patch, which is no longer required.</comment>
+    <requestid>878440</requestid>
+  </revision>
 </revisionlist>
