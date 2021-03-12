@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  9 18:55:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.30.2:
+  * CVE-2021-21300: On case-insensitive file systems with support
+    for symbolic links, if Git is configured globally to apply
+    delay-capable clean/smudge filters (such as Git LFS), Git could
+    be fooled into running remote code during a clone (boo#1183026)
+
+-------------------------------------------------------------------
 Wed Feb 10 11:33:12 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - git 2.30.1

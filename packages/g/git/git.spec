@@ -18,13 +18,11 @@
 
 %define rb_build_ruby_abis     %{rb_default_ruby_abi}
 %define rb_build_versions      %{rb_default_ruby}
-
 %define gitexecdir %{_libexecdir}/git
 %if 0%{?suse_version} < 1500
 %define _fwdefdir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 %define SuSEfirewall2 1
 %endif
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -37,9 +35,8 @@
 %else
 %bcond_with    asciidoctor
 %endif
-
 Name:           git
-Version:        2.30.1
+Version:        2.30.2
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -64,7 +61,6 @@ Patch6:         git-tcsh-completion-fixes.diff
 Patch7:         git-zsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
-
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
@@ -295,7 +291,7 @@ directory /git/ that calls the cgi script.
 %build
 cat > .make <<'EOF'
 #!/bin/bash
-make %{?_smp_mflags} CFLAGS="%{optflags}" \
+%make_build CFLAGS="%{optflags}" \
        GITWEB_CONFIG="%{_sysconfdir}/gitweb.conf" \
        GITWEB_PROJECTROOT="/srv/git" \
        WITH_OWN_SUBPROCESS_PY=YesPlease \
