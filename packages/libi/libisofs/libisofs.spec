@@ -30,8 +30,8 @@ Source2:        %{name}.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  (pkgconfig(libjte-1) or pkgconfig(libjte-2))
 BuildRequires:  pkgconfig(libacl)
-BuildRequires:  pkgconfig(libjte-1)
 BuildRequires:  pkgconfig(zlib)
 
 %description
