@@ -15,18 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define _buildshell /bin/bash
 
 Name:           sssd
-Version:        2.4.0
+Version:        2.4.2
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://pagure.io/SSSD/sssd
 #Git-Clone:	https://pagure.io/SSSD/sssd
-Source:         https://github.com/SSSD/sssd/releases/download/sssd-2_4_0/%name-%version.tar.gz
-Source2:        https://github.com/SSSD/sssd/releases/download/sssd-2_4_0/%name-%version.tar.gz.asc
+Source:         https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz
+Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Patch1:         krb-noversion.diff
@@ -377,6 +376,7 @@ export LDFLAGS="-pie"
     --with-environment-file="%_sysconfdir/sysconfig/sssd" \
     --with-initscript=systemd \
     --with-syslog=journald \
+    --with-pid-path="%_rundir" \
     --enable-nsslibdir="/%_lib" \
     --enable-pammoddir="/%_lib/security" \
     --with-ldb-lib-dir="$LDB_DIR" \
@@ -386,7 +386,7 @@ export LDFLAGS="-pie"
     --disable-ldb-version-check \
     --without-secrets \
     --without-python2-bindings
-make %{?_smp_mflags} all
+%make_build all
 
 %install
 # sss_obfuscate is compatible with both python 2 and 3
@@ -395,48 +395,37 @@ sed -i -e 's:%_bindir/python:%_bindir/python3:' src/tools/sss_obfuscate
 %make_install
 b="%buildroot"
 
-# Copy default sssd.conf file
-install -d "$b/%_mandir"/{cs,cs/man8,nl,nl/man8,pt,pt/man8,uk,uk/man1} \
-           "$b/%_mandir"/{uk/man5,uk/man8}
-install -d "$b/%_sysconfdir/sssd"
+#for i in cs cs/man8 nl nl/man8 pt pt/man8 uk uk/man1 uk/man5 uk/man8; do
+#	mkdir -p "$b/%_mandir/$i"
+#done
+# Copy some defaults
+mkdir -p "$b/%_sysconfdir/sssd" "$b/%_sysconfdir/sssd/conf.d"
 install -m600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
-install -d "$b/%_sysconfdir/sssd/conf.d"
 install -d "$b/%_unitdir"
-
-# Copy default logrotate file
 install -d "$b/%_sysconfdir/logrotate.d"
 install -m644 src/examples/logrotate "$b/%_sysconfdir/logrotate.d/sssd"
 
 rm -Rfv "$b/%_initddir"
-ln -sfv service "$b/%_sbindir/rcsssd"
-ln -sfv service "$b/%_sbindir/rcsssd-autofs"
-ln -sfv service "$b/%_sbindir/rcsssd-ifp"
-ln -sfv service "$b/%_sbindir/rcsssd-nss"
-ln -sfv service "$b/%_sbindir/rcsssd-pac"
-ln -sfv service "$b/%_sbindir/rcsssd-pam"
-ln -sfv service "$b/%_sbindir/rcsssd-ssh"
-ln -sfv service "$b/%_sbindir/rcsssd-sudo"
-
 mkdir -pv "$b/%sssdstatedir/mc"
 find "$b" -type f -name "*.la" -print -delete
-rm -Rfv "$b/usr/lib/debug/usr/lib/sssd/p11_child-1.16.2-0.x86_64.debug"
 %find_lang %name --all-name
 
 %check
 # sss_config-tests fails
-make %{?_smp_mflags} check || :
+%make_build check || :
 
 %pre
-%service_add_pre sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
+%global services sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
+%service_add_pre %services
 
 %post
 /sbin/ldconfig
 # migrate config variable krb5_kdcip to krb5_server (bnc#851048)
 /bin/sed -i -e 's,^krb5_kdcip =,krb5_server =,g' %_sysconfdir/sssd/sssd.conf
-%service_add_post sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
+%service_add_post %services
 
 %preun
-%service_del_preun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
+%service_del_preun %services
 
 %postun
 /sbin/ldconfig
@@ -447,7 +436,7 @@ fi
 # (especially, downgrades)
 rm -f /var/lib/sss/db/*.ldb
 # del_postun includes a try-restart
-%service_del_postun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
+%service_del_postun %services
 
 %post   -n libsss_certmap0 -p /sbin/ldconfig
 %postun -n libsss_certmap0 -p /sbin/ldconfig
@@ -472,6 +461,18 @@ rm -f /var/lib/sss/db/*.ldb
 %postun dbus
 %service_del_postun sssd-ifp.service
 
+%pre kcm
+%service_add_pre sssd-kcm.service sssd-kcm.socket
+
+%post kcm
+%service_add_post sssd-kcm.service sssd-kcm.socket
+
+%preun kcm
+%service_del_preun sssd-kcm.service sssd-kcm.socket
+
+%postun kcm
+%service_del_postun sssd-kcm.service sssd-kcm.socket
+
 %files -f sssd.lang
 %license COPYING
 %_unitdir/sssd.service
@@ -491,13 +492,13 @@ rm -f /var/lib/sss/db/*.ldb
 %_bindir/sss_ssh_*
 %_sbindir/sssctl
 %_sbindir/sssd
-%_sbindir/rcsssd
-%_sbindir/rcsssd-autofs
-%_sbindir/rcsssd-nss
-%_sbindir/rcsssd-pac
-%_sbindir/rcsssd-pam
-%_sbindir/rcsssd-ssh
-%_sbindir/rcsssd-sudo
+#%_sbindir/rcsssd
+#%_sbindir/rcsssd-autofs
+#%_sbindir/rcsssd-nss
+#%_sbindir/rcsssd-pac
+#%_sbindir/rcsssd-pam
+#%_sbindir/rcsssd-ssh
+#%_sbindir/rcsssd-sudo
 %dir %_mandir/??/
 %dir %_mandir/??/man[158]/
 %_mandir/??/man1/sss_ssh_*
@@ -579,12 +580,14 @@ rm -f /var/lib/sss/db/*.ldb
 #
 /%_lib/libnss_sss.so.2
 /%_lib/security/pam_sss.so
+/%_lib/security/pam_sss_gss.so
 %_libdir/cifs-utils/
 %_libdir/krb5/
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
 %_mandir/??/man8/sssd_krb5_locator_plugin.8*
 %_mandir/??/man8/pam_sss.8*
 %_mandir/man8/pam_sss.8*
+%_mandir/man8/pam_sss_gss.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
 
 %files ad
@@ -609,7 +612,7 @@ rm -f /var/lib/sss/db/*.ldb
 %dir %_mandir/??/man5/
 %_mandir/??/man5/sssd-ifp.5*
 %_unitdir/sssd-ifp.service
-%_sbindir/rcsssd-ifp
+#%_sbindir/rcsssd-ifp
 %config %_sysconfdir/dbus-1/system.d/org.freedesktop.sssd.infopipe.conf
 %_datadir/dbus-1/system-services/org.freedesktop.sssd.infopipe.service
 

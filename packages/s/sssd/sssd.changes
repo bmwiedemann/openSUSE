@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Feb 19 17:30:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.2
+  * Default value of "user" config option was fixed into
+    accordance with man page, i.e. default is "root".
+  * pam_sss_gss now support authentication indicators to further
+    harden the authentication.
+
+-------------------------------------------------------------------
+Fri Feb 12 15:55:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass --with-pid-path=%{_rundir} to configure: adjust rundir
+  according the distro settings, i.e. /run on modern systems.
+  Eliminates a systemd warning like this one in the journal:
+    Feb 12 12:33:32 zeus systemd[1]: /usr/lib/systemd/system/sssd.service:13:
+    PIDFile= references a path below legacy directory /var/run/,
+     updating /var/run/sssd.pid → /run/sssd.pid; please update the unit file accordingly.
+
+-------------------------------------------------------------------
+Fri Feb  5 12:56:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.1
+  * New PAM module pam_sss_gss for authentication using GSSAPI.
+  * case_sensitive=Preserving can now be set for trusted domains
+    with AD and IPA providers.
+  * krb5_use_subdomain_realm=True can now be used when sub-domain
+    user principal names have upnSuffixes which are not known in
+    the parent domain. SSSD will try to send the Kerberos request
+    directly to a KDC of the sub-domain.
+  * SYSLOG_IDENTIFIER was renamed to SSSD_PRG_NAME in journald
+    output, to avoid issues with PID parsing in rsyslog
+    (BSD-style forwarder) output.
+  * Added pam_gssapi_check_upn to enforce authentication only
+    with principal that can be associated with target user.
+  * Added pam_gssapi_services to list PAM services that can
+    authenticate using GSSAPI.
+
+-------------------------------------------------------------------
 Mon Oct 12 13:10:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.0
