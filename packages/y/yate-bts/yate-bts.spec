@@ -1,7 +1,7 @@
 #
 # spec file for package yate-bts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,8 @@ Source0:        http://yate.null.ro/tarballs/yatebts6/yate-bts-%{version}-1.tar.
 Source99:       yate-bts.rpmlintrc
 Patch0:         yate-dont-mess-with-cflags.patch
 Patch1:         yatebts-sgsnggsn-inetutils-hostname-fix.diff
-Patch2:         yatebts-5.0.0-gcc6.patch
+Patch2:         0001-Fixed-build-on-newer-versions-of-C.patch
+Patch3:         0002-Fixed-compile-time-error-use-newer-Channel-getStatus.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -50,6 +51,7 @@ interfacing with the hardware.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""

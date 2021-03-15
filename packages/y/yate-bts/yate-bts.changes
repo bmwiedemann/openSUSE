@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  1 22:03:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Drop patch:
+  * yatebts-5.0.0-gcc6.patch
+- Add patches:
+  * 0001-Fixed-build-on-newer-versions-of-C.patch
+  * 0002-Fixed-compile-time-error-use-newer-Channel-getStatus.patch
+
+-------------------------------------------------------------------
 Mon Oct  8 18:41:22 UTC 2018 - mardnh@gmx.de
 
 - Update to version 6.1.0
