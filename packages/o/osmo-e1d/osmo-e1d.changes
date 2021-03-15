@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 14 20:40:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.0
+  * Add support for icE1usb interrupt endpoint error reporting.
+  * Add per-line rate counter group to count various errors.
+  * Support for control endpoint requests to icE1usb to switch
+    Rx/Tx mode.
+  * Evaluate received E and A bits in TS0.
+  * Add new "osmo-e1gen" program.
+
+-------------------------------------------------------------------
 Sun Sep  6 12:49:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.1.1
