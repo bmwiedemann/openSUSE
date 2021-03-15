@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-abis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,25 @@
 #
 
 
-%define version_unconverted 1.0.1
-
 Name:           libosmo-abis
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://osmocom.org/projects/libosmo-abis/wiki/Libosmo-abis
 
-Source:         %name-%version.tar.xz
+Source:         https://github.com/osmocom/libosmo-abis/archive/%version.tar.gz
 Patch1:         osmo-talloc.diff
-Patch2:         e1dapi.diff
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libosmo-e1d)
-BuildRequires:  pkgconfig(libosmocodec) >= 1.4.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.4.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.4.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.4.0
+BuildRequires:  pkgconfig(libosmo-e1d) >= 0.2.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.5.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
 BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 
@@ -46,12 +43,12 @@ In GSM, A-bis is a BSS-internal interface link between the BTS and
 BSC. This interface allows control of the radio equipment and radio
 frequency allocation in the BTS.
 
-%package -n libosmoabis9
+%package -n libosmoabis10
 Summary:        Osmocom GSM A-bis interface library
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmoabis9
+%description -n libosmoabis10
 In the GSM system architecture, A-bis is a Base Station
 System-internal interface linking the Base Transceiver Stations (BTS)
 and Base Station Controller (BSC). This interface allows control of
@@ -65,7 +62,7 @@ cards, as well as some A-bis/IP dialects.
 Summary:        Development files for the Osmocom GSM A-bis library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmoabis9 = %version
+Requires:       libosmoabis10 = %version
 Requires:       libosmocore-devel >= 1.4.0
 Requires:       libosmogsm-devel >= 1.4.0
 
@@ -125,13 +122,13 @@ if ! %make_build check; then
 %endif
 fi
 
-%post   -n libosmoabis9 -p /sbin/ldconfig
-%postun -n libosmoabis9 -p /sbin/ldconfig
+%post   -n libosmoabis10 -p /sbin/ldconfig
+%postun -n libosmoabis10 -p /sbin/ldconfig
 %post   -n libosmotrau2 -p /sbin/ldconfig
 %postun -n libosmotrau2 -p /sbin/ldconfig
 
-%files -n libosmoabis9
-%_libdir/libosmoabis.so.9*
+%files -n libosmoabis10
+%_libdir/libosmoabis.so.10*
 
 %files -n libosmoabis-devel
 %license COPYING
