@@ -28,4 +28,13 @@
     <comment></comment>
     <requestid>821515</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>716d3f0f39f03070e0b67397e08bcb87</srcmd5>
+    <version>2.06.11</version>
+    <time>1615802147</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conflicts with HepMC.
+</comment>
+    <requestid>878943</requestid>
+  </revision>
 </revisionlist>

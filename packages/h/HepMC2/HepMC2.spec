@@ -57,8 +57,6 @@ This package provides the shared libraries for HepMC.
 Summary:        Header files for HepMC
 Group:          Development/Libraries/C and C++
 Requires:       libHepMC4 = %{version}
-Conflicts:      HepMC-devel >= 3.0
-Provides:       HepMC-devel = %{version}
 
 %description -n HepMC2-devel
 The HepMC package is an object oriented event record written in C++
