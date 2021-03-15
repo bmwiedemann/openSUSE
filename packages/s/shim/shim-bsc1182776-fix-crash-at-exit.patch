@@ -1,7 +1,58 @@
-From 74d26654d55a4f32e58b76757efca50ceedefef4 Mon Sep 17 00:00:00 2001
+From 999983b82c611d7d3b864f5f46764645f4eed096 Mon Sep 17 00:00:00 2001
+From: Stuart Hayes <stuart.w.hayes@gmail.com>
+Date: Fri, 8 Feb 2019 15:48:20 -0500
+Subject: [PATCH 1/2] Hook exit when shim_lock protocol installed
+
+A recent commit moved where the shim_lock protocol is loaded and
+unloaded, but did not move where exit was hooked and unhooked.  Exit
+needs to be hooked when the protocol is installed, so that the protocol
+will be uninstalled on exit.  Otherwise, the system can crash if, for
+example, shim loads grub, the user exits grub, shim is run again, which
+installs a second instance of the protocol, and then grub tries to use
+the shim_lock protocol that was installed by the first instance of shim.
+
+Signed-off-by: Stuart Hayes <stuart.w.hayes@gmail.com>
+Upstream-commit-id: 06c92591e94
+(cherry picked from commit b5e10f70c7a495dc1788e3604803ee633f1e5f76)
+---
+ shim.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/shim.c b/shim.c
+index 6ce30a06..e9ab8f1a 100644
+--- a/shim.c
++++ b/shim.c
+@@ -2517,9 +2517,9 @@ shim_init(void)
+ 			loader_is_participating = 0;
+ 		}
+ 
+-		hook_exit(systab);
+ 	}
+ 
++	hook_exit(systab);
+ 	return install_shim_protocols();
+ }
+ 
+@@ -2537,9 +2537,10 @@ shim_fini(void)
+ 		 * Remove our hooks from system services.
+ 		 */
+ 		unhook_system_services();
+-		unhook_exit();
+ 	}
+ 
++	unhook_exit();
++
+ 	/*
+ 	 * Free the space allocated for the alternative 2nd stage loader
+ 	 */
+-- 
+2.29.2
+
+
+From 13eeece966bf2e5b2d1c1cca0c8b47bbded0f98e Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Fri, 5 Mar 2021 15:00:29 +0800
-Subject: [PATCH] Restore loaded image of shim at Exit()
+Subject: [PATCH 2/2] Restore loaded image of shim at Exit()
 
 When grub2 invoked Exit() in AArch64 AAVMF, the VM crashed with the
 following messsages:
@@ -24,17 +75,18 @@ that we can restore the loaded image both in start_image() and
 do_exit().
 
 Signed-off-by: Gary Lin <glin@suse.com>
+(cherry picked from commit 74d26654d55a4f32e58b76757efca50ceedefef4)
 ---
  replacements.c |  2 ++
  shim.c         | 41 ++++++++++++++++++++++++-----------------
  shim.h         |  1 +
  3 files changed, 27 insertions(+), 17 deletions(-)
 
-Index: shim-15+git47/replacements.c
-===================================================================
---- shim-15+git47.orig/replacements.c
-+++ shim-15+git47/replacements.c
-@@ -159,6 +159,8 @@ do_exit(EFI_HANDLE ImageHandle, EFI_STAT
+diff --git a/replacements.c b/replacements.c
+index 944c779d..1d06b0cf 100644
+--- a/replacements.c
++++ b/replacements.c
+@@ -159,6 +159,8 @@ do_exit(EFI_HANDLE ImageHandle, EFI_STATUS ExitStatus,
  
  	shim_fini();
  
@@ -43,11 +95,11 @@ Index: shim-15+git47/replacements.c
  	efi_status = gBS->Exit(ImageHandle, ExitStatus,
  			       ExitDataSize, ExitData);
  	if (EFI_ERROR(efi_status)) {
-Index: shim-15+git47/shim.c
-===================================================================
---- shim-15+git47.orig/shim.c
-+++ shim-15+git47/shim.c
-@@ -58,6 +58,8 @@
+diff --git a/shim.c b/shim.c
+index e9ab8f1a..b5882768 100644
+--- a/shim.c
++++ b/shim.c
+@@ -62,6 +62,8 @@
  
  static EFI_SYSTEM_TABLE *systab;
  static EFI_HANDLE global_image_handle;
@@ -56,7 +108,7 @@ Index: shim-15+git47/shim.c
  
  static CHAR16 *second_stage;
  static void *load_options;
-@@ -1861,13 +1863,24 @@ static EFI_STATUS shim_read_header(void
+@@ -1863,13 +1865,24 @@ static EFI_STATUS shim_read_header(void *data, unsigned int datasize,
  	return efi_status;
  }
  
@@ -82,7 +134,7 @@ Index: shim-15+git47/shim.c
  	EFI_IMAGE_ENTRY_POINT entry_point;
  	EFI_PHYSICAL_ADDRESS alloc_address;
  	UINTN alloc_pages;
-@@ -1882,7 +1895,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+@@ -1884,7 +1897,7 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
  	 * binary in order to find our path
  	 */
  	efi_status = gBS->HandleProtocol(image_handle, &EFI_LOADED_IMAGE_GUID,
@@ -91,7 +143,7 @@ Index: shim-15+git47/shim.c
  	if (EFI_ERROR(efi_status)) {
  		perror(L"Unable to init protocol\n");
  		return efi_status;
-@@ -1891,14 +1904,14 @@ EFI_STATUS start_image(EFI_HANDLE image_
+@@ -1893,14 +1906,14 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
  	/*
  	 * Build a new path from the existing one plus the executable name
  	 */
@@ -108,7 +160,7 @@ Index: shim-15+git47/shim.c
  		efi_status = parseNetbootinfo(image_handle);
  		if (EFI_ERROR(efi_status)) {
  			perror(L"Netboot parsing failed: %r\n", efi_status);
-@@ -1914,7 +1927,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+@@ -1916,7 +1929,7 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
  		data = sourcebuffer;
  		datasize = sourcesize;
  #if  defined(ENABLE_HTTPBOOT)
@@ -117,7 +169,7 @@ Index: shim-15+git47/shim.c
  		efi_status = httpboot_fetch_buffer (image_handle,
  						    &sourcebuffer,
  						    &sourcesize);
-@@ -1930,7 +1943,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+@@ -1932,7 +1945,7 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
  		/*
  		 * Read the new executable off disk
  		 */
@@ -126,7 +178,7 @@ Index: shim-15+git47/shim.c
  		if (EFI_ERROR(efi_status)) {
  			perror(L"Failed to load image %s: %r\n",
  			       PathName, efi_status);
-@@ -1949,13 +1962,13 @@ EFI_STATUS start_image(EFI_HANDLE image_
+@@ -1951,13 +1964,13 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
  	 * We need to modify the loaded image protocol entry before running
  	 * the new binary, so back it up
  	 */
@@ -143,7 +195,7 @@ Index: shim-15+git47/shim.c
  		perror(L"Unable to update loaded image file path\n");
  		efi_status = EFI_OUT_OF_RESOURCES;
  		goto restore;
-@@ -1964,7 +1977,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+@@ -1966,7 +1979,7 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
  	/*
  	 * Verify and, if appropriate, relocate and execute the executable
  	 */
@@ -152,7 +204,7 @@ Index: shim-15+git47/shim.c
  				  &alloc_address, &alloc_pages);
  	if (EFI_ERROR(efi_status)) {
  		perror(L"Failed to load image: %r\n", efi_status);
-@@ -1981,13 +1994,7 @@ EFI_STATUS start_image(EFI_HANDLE image_
+@@ -1983,13 +1996,7 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
  	efi_status = entry_point(image_handle, systab);
  
  restore:
@@ -167,11 +219,11 @@ Index: shim-15+git47/shim.c
  done:
  	if (PathName)
  		FreePool(PathName);
-Index: shim-15+git47/shim.h
-===================================================================
---- shim-15+git47.orig/shim.h
-+++ shim-15+git47/shim.h
-@@ -163,6 +163,7 @@ extern EFI_STATUS LogError_(const char *
+diff --git a/shim.h b/shim.h
+index 3db7df9d..38627abf 100644
+--- a/shim.h
++++ b/shim.h
+@@ -160,6 +160,7 @@ extern EFI_STATUS LogError_(const char *file, int line, const char *func, CHAR16
  extern EFI_STATUS VLogError(const char *file, int line, const char *func, CHAR16 *fmt, va_list args);
  extern VOID PrintErrors(VOID);
  extern VOID ClearErrors(VOID);
@@ -179,3 +231,6 @@ Index: shim-15+git47/shim.h
  extern EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath);
  extern EFI_STATUS import_mok_state(EFI_HANDLE image_handle);
  
+-- 
+2.29.2
+

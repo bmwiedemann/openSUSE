@@ -1227,4 +1227,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Add shim-bsc1182776-fix-crash-at-exit.patch to fix the potential crash at Exit() (bsc#1182776)</comment>
     <requestid>877920</requestid>
   </revision>
+  <revision rev="92" vrev="22">
+    <srcmd5>c06825e2d8758296034ca207ca33283a</srcmd5>
+    <version>15+git47</version>
+    <time>1615802017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878251</requestid>
+  </revision>
 </revisionlist>

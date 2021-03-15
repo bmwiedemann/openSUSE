@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 11 03:15:03 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Refresh shim-bsc1182776-fix-crash-at-exit.patch to do the cleanup
+  also when Secure Boot is disabled (bsc#1183213, bsc#1182776)
+- Merged linker-version.pl into timestamp.pl and add the linker
+  version to signature files accordingly
+
+-------------------------------------------------------------------
 Mon Mar  8 03:13:13 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1182776-fix-crash-at-exit.patch to fix the potential

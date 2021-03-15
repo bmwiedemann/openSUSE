@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Copyright (c) 2012,2013 SUSE Linux Products GmbH
+# Copyright (c) 2012-2021 SUSE LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ timestamp.pl [OPTIONS] FILE...
 
 =item B<--set-form-file=FILE>
 
-parse timestamp and checksum from file
+parse timestamp, checksum, and linker version from file
 
 =item B<--help, -h>
 
@@ -74,6 +74,7 @@ usage(0) if ($options{'help'});
 
 my $set_timestamp;
 my $set_checksum;
+my $set_linker;
 
 if ($options{'set-from-file'}) {
 	die "$options{'set-from-file'}: $!\n" unless open(my $fh, '<', $options{'set-from-file'});
@@ -82,14 +83,17 @@ if ($options{'set-from-file'}) {
 		if (/^timestamp: ([0-9a-f]+)/) {
 			$set_timestamp = pack('L', hex($1));
 			next;
+		} elsif (/^linker: ([0-9a-f]+)/) {
+			$set_linker = pack('S', hex($1));
+			next;
 		} elsif (/^checksum: ([0-9a-f]+)/) {
 			$set_checksum = pack('S', hex($1));
 			next;
 		}
-		last if $set_timestamp && $set_checksum;
+		last if $set_timestamp && $set_checksum && $set_linker;
 	}
 	close($fh);
-	die "file didn't contain timestamp and checksum\n" unless $set_timestamp && $set_checksum;
+	die "file didn't contain timestamp, checksum, or linker\n" unless $set_timestamp && $set_checksum && $set_linker;
 }
 
 sub do_show($)
@@ -103,6 +107,11 @@ sub do_show($)
 	my $timestamp = unpack('L', $value);
 	print strftime("# %Y-%m-%d %H:%M:%S\n", gmtime($timestamp));
 	printf ("timestamp: %x\n", $timestamp);
+
+	die "seek $file: $!\n" unless seek($fh, 154, 0);
+	die "read $file: $!\n" unless read($fh, $value, 2);
+
+	printf ("linker: %x\n", unpack('S', $value));
 
 	die "seek $file: $!\n" unless seek($fh, 216, 0);
 	die "read $file: $!\n" unless read($fh, $value, 2);
@@ -119,11 +128,13 @@ sub do_set($)
 	die "seek $file: $!\n" unless seek($fh, 136, 0);
 	die "write $file: $!\n" unless print $fh $set_timestamp;
 
+	die "seek $file: $!\n" unless seek($fh, 154, 0);
+	die "write $file: $!\n" unless print $fh $set_linker;
+
 	die "seek $file: $!\n" unless seek($fh, 216, 0);
 	die "read $file: $!\n" unless print $fh $set_checksum;
 	close($fh);
 }
-
 
 for my $file (@ARGV) {
 	if ($options{'set-from-file'}) {
