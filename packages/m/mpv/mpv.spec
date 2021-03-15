@@ -101,6 +101,9 @@ Conflicts:      mpv-plugin-mpris < 0.4
 # Obsoletion of mplayer2 that is dead for 2 years now
 Provides:       mplayer2 = 20140101
 Obsoletes:      mplayer2 < 20140101
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
+BuildRequires:  pkgconfig(mujs)
+%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(lua5.1)
 %else

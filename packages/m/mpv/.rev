@@ -1279,4 +1279,12 @@
   * manpage: document off-by-one loop-file behavior</comment>
     <requestid>874983</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>979a573a802976c2bbadb156cfb6a99c</srcmd5>
+    <version>0.33.0+git.20210223T124404.09d7c75bfe</version>
+    <time>1615802150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878951</requestid>
+  </revision>
 </revisionlist>
