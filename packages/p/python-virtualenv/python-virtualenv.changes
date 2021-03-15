@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 11 23:11:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Actually switch off all activation tests, so we can shed all those
+  dependencies.
+
+-------------------------------------------------------------------
+Mon Mar  8 15:04:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_xonsh on platforms we don't carry xonsh.
+
+-------------------------------------------------------------------
 Sat Dec 19 10:01:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.2.0:

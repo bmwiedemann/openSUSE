@@ -513,4 +513,15 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
   - Bump pip to ``20.3.1``, setuptools to ``51.0.0`` and wheel to ``0.36.1``</comment>
     <requestid>856965</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>2245b016de8017e023adc67928341d6d</srcmd5>
+    <version>20.2.2</version>
+    <time>1615802033</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually switch off all activation tests, so we can shed all those
+  dependencies.
+- Skip test_xonsh on platforms we don't carry xonsh.
+</comment>
+    <requestid>878421</requestid>
+  </revision>
 </revisionlist>

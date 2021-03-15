@@ -1,7 +1,7 @@
 #
-# spec file for package python-virtualenv
+# spec file for package python-virtualenv-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,13 +39,15 @@ BuildRequires:  python-rpm-macros
 Requires:       python-appdirs >= 1.4.3
 Requires:       python-distlib >= 0.3.1
 Requires:       python-filelock >= 3.0.0
-Requires:       python-importlib-metadata >= 0.12
-Requires:       python-importlib_resources >= 1.0
 Requires:       python-setuptools
 Requires:       python-six >= 1.9.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
+%if %{python_version_nodots} < 38
+Requires:       python-importlib-metadata >= 0.12
+Requires:       python-importlib_resources >= 1.0
+%endif
 %ifpython2
 Requires:       python-contextlib2 >= 0.6.0
 Requires:       python-pathlib2 >= 2.3.3
@@ -61,13 +63,6 @@ BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
 BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
 BuildRequires:  %{python_module virtualenv >= %{version}}
-BuildRequires:  fish
-%if 0%{?suse_version} >= 1550
-BuildRequires:  %{python_module xonsh >= 0.9.13}
-%else
-BuildRequires:  python3-xonsh >= 0.9.13
-%endif
-BuildRequires:  tcsh
 %endif
 %python_subpackages
 
@@ -92,6 +87,9 @@ libraries either).
 %prep
 %setup -q -n virtualenv-%{version}
 
+# Dependencies on all those shells are too cumbersome.
+rm -r tests/unit/activation
+
 %build
 %python_build
 
@@ -105,8 +103,9 @@ libraries either).
 %check
 %if %{with test}
 export LANG="en_US.UTF8"
+skiptests="test_seed_link_via_app_data"
 # test_seed_link_via_app_data - online tests downloads from pypi
-%pytest -k 'not test_seed_link_via_app_data'
+%pytest -k "not ($skiptests)"
 %endif
 
 %if !%{with test}
