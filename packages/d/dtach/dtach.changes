@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 13 14:19:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize specfile (move license to licensedir) 
+
+-------------------------------------------------------------------
 Mon May  8 16:01:48 UTC 2017 - jengelh@inai.de
 
 - Rewrite description to point out the objective features,
