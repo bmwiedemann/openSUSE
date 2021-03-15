@@ -5934,7 +5934,6 @@ unsorted:
   - gromacs-devel 
   - gromacs-doc 
   - gromacs-openmpi2 
-  - gromit 
   - groovy 
   - groovy-ant 
   - groovy-bootstrap 
@@ -10801,6 +10800,7 @@ unsorted:
   - libgtp-devel 
   - libgtp6 
   - libgtpnl-devel 
+  - libgtpnl-tools 
   - libgtpnl0 
   - libgudev-1_0-0-32bit: [x86_64] 
   - libgudev-1_0-devel 
@@ -12191,14 +12191,14 @@ unsorted:
   - libosmo-dsp-devel 
   - libosmo-dsp-doc 
   - libosmo-e1d-devel 
-  - libosmo-e1d0 
+  - libosmo-e1d1 
   - libosmo-fl2k0 
   - libosmo-gsup-client-devel 
   - libosmo-gsup-client0 
   - libosmo-mgcp-client-devel 
   - libosmo-mgcp-client6 
   - libosmo-mgcp-devel 
-  - libosmo-mtp-1_3_0 
+  - libosmo-mtp-1_4_0 
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
   - libosmo-ranap3 
@@ -12206,30 +12206,30 @@ unsorted:
   - libosmo-rspro1 
   - libosmo-sabp-devel 
   - libosmo-sabp0 
-  - libosmo-sccp-1_3_0 
+  - libosmo-sccp-1_4_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran5 
   - libosmo-simtrace2-0 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_3_0 
+  - libosmo-xua-1_4_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
-  - libosmoabis9 
+  - libosmoabis10 
   - libosmocodec-devel 
   - libosmocodec0 
   - libosmocoding-devel 
   - libosmocoding0 
   - libosmocore-devel 
   - libosmocore-tools 
-  - libosmocore16 
+  - libosmocore17 
   - libosmoctrl-devel 
   - libosmoctrl0 
   - libosmodsp0 
   - libosmogb-devel 
-  - libosmogb11 
+  - libosmogb12 
   - libosmogsm-devel 
-  - libosmogsm15 
+  - libosmogsm16 
   - libosmonetif-devel 
   - libosmonetif8 
   - libosmosdr0 
@@ -12240,7 +12240,7 @@ unsorted:
   - libosmousb-devel 
   - libosmousb0 
   - libosmovty-devel 
-  - libosmovty4 
+  - libosmovty9 
   - libosmvendor5 
   - libosmvendor5-32bit: [x86_64] 
   - libossim1 
@@ -17256,7 +17256,6 @@ unsorted:
   - octave-forge-ltfat 
   - octave-forge-mapping 
   - octave-forge-matgeom 
-  - octave-forge-mechanics 
   - octave-forge-miscellaneous 
   - octave-forge-msh 
   - octave-forge-mvn 
@@ -20729,7 +20728,6 @@ unsorted:
   - python3-django-attachments 
   - python3-django-braces 
   - python3-django-q 
-  - python3-django-redis 
   - python3-django-storages 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
@@ -20870,7 +20868,6 @@ unsorted:
   - python3-lldb7: [x86_64] 
   - python3-lldb8: [x86_64] 
   - python3-lldb9: [x86_64] 
-  - python3-llfuse 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magic-wormhole 
@@ -20949,7 +20946,6 @@ unsorted:
   - python3-ovsdbapp 
   - python3-paraview 
   - python3-pcp 
-  - python3-piexif 
   - python3-plist 
   - python3-plplot 
   - python3-pocketsphinx 
@@ -20980,7 +20976,6 @@ unsorted:
   - python3-pytest-listener 
   - python3-pytest-pyramid-server 
   - python3-pytest-server-fixtures 
-  - python3-pytest-translations 
   - python3-python-jenkins 
   - python3-python-pseudorandom: [i586] 
   - python3-python-qnotifications 
@@ -21992,6 +21987,7 @@ unsorted:
   - python36-django-push-notifications 
   - python36-django-pyscss 
   - python36-django-qsessions 
+  - python36-django-redis 
   - python36-django-registration 
   - python36-django-request 
   - python36-django-rest-framework-braces 
@@ -22673,7 +22669,6 @@ unsorted:
   - python36-numba-devel 
   - python36-numcodecs 
   - python36-numericalunits 
-  - python36-numexpr 
   - python36-numpydoc 
   - python36-nwdiag 
   - python36-nxapi-plumbing 
@@ -23156,6 +23151,7 @@ unsorted:
   - python36-pytest-toolbox 
   - python36-pytest-tornado 
   - python36-pytest-tornasync 
+  - python36-pytest-translations 
   - python36-pytest-travis-fold 
   - python36-pytest-trio 
   - python36-pytest-twisted 
@@ -23829,6 +23825,7 @@ unsorted:
   - python36-yarg 
   - python36-yarl 
   - python36-yaspin 
+  - python36-yg.lockfile 
   - python36-youtube-dl 
   - python36-yq 
   - python36-yt 
@@ -24802,6 +24799,7 @@ unsorted:
   - python38-django-push-notifications 
   - python38-django-pyscss 
   - python38-django-qsessions 
+  - python38-django-redis 
   - python38-django-registration 
   - python38-django-request 
   - python38-django-rest-framework-braces 
@@ -25998,6 +25996,7 @@ unsorted:
   - python38-pytest-toolbox 
   - python38-pytest-tornado 
   - python38-pytest-tornasync 
+  - python38-pytest-translations 
   - python38-pytest-travis-fold 
   - python38-pytest-trio 
   - python38-pytest-twisted 
@@ -26684,6 +26683,7 @@ unsorted:
   - python38-yarg 
   - python38-yarl 
   - python38-yaspin 
+  - python38-yg.lockfile 
   - python38-youtube-dl 
   - python38-yq 
   - python38-yt 
@@ -27714,6 +27714,7 @@ unsorted:
   - ruby3.0-rubygem-rspec-mocks-3_5 
   - ruby3.0-rubygem-rspec-rails 
   - ruby3.0-rubygem-rspec-rails-3.9 
+  - ruby3.0-rubygem-rspec-rails-4.0 
   - ruby3.0-rubygem-rspec-support 
   - ruby3.0-rubygem-rspec-support-3_5 
   - ruby3.0-rubygem-rubocop 
