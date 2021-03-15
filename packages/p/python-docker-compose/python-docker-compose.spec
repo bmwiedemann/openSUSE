@@ -17,29 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-docker-compose
-Version:        1.26.2
+Version:        1.28.5
 Release:        0
 Summary:        Tool to define and run complex applications using Docker
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://pypi.python.org/pypi/docker-compose
 Source0:        https://files.pythonhosted.org/packages/source/d/docker-compose/docker-compose-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module cached-property >= 1.2.0}
+BuildRequires:  %{python_module PyYAML >= 5.3.1}
+BuildRequires:  %{python_module cached-property >= 1.5.1}
 BuildRequires:  %{python_module ddt >= 1.2.2}
 BuildRequires:  %{python_module distro >= 1.5.0}
-BuildRequires:  %{python_module docker >= 3.7.0}
+BuildRequires:  %{python_module docker >= 4.4.4}
 BuildRequires:  %{python_module dockerpty >= 0.4.1}
-BuildRequires:  %{python_module docopt >= 0.6.1}
-BuildRequires:  %{python_module jsonschema >= 2.6}
+BuildRequires:  %{python_module docopt >= 0.6.2}
+BuildRequires:  %{python_module jsonschema >= 3.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dotenv >= 0.13.0}
+BuildRequires:  %{python_module python-dotenv >= 0.14.0}
+BuildRequires:  %{python_module requests >= 2.25.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.3.0}
-BuildRequires:  %{python_module texttable >= 0.9.1}
-BuildRequires:  %{python_module websocket-client >= 0.32.0}
+BuildRequires:  %{python_module texttable >= 1.6.2}
+BuildRequires:  %{python_module websocket-client >= 0.57.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} >= 1500
@@ -48,42 +49,27 @@ Suggests:       podman >= 3.0
 %else
 Requires:       docker
 %endif
-Requires:       python-PySocks >= 1.5.6
-Requires:       python-PyYAML >= 3.10
-Requires:       python-cached-property >= 1.2.0
+Requires:       python-PySocks >= 1.7.1
+Requires:       python-PyYAML >= 5.3.1
+Requires:       python-cached-property >= 1.5.1
 Requires:       python-chardet >= 3.0.4
 Requires:       python-distro >= 1.5.0
-Requires:       python-docker >= 4.2.2
-Requires:       python-docker-pycreds >= 0.3.0
+Requires:       python-docker >= 4.4.4
+Requires:       python-docker-pycreds >= 0.4.0
 Requires:       python-dockerpty >= 0.4.1
-Requires:       python-docopt >= 0.6.1
-Requires:       python-idna >= 2.5
-Requires:       python-jsonschema >= 2.5.1
-Requires:       python-python-dotenv >= 0.13.0
-Requires:       python-requests >= 2.20.0
+Requires:       python-docopt >= 0.6.2
+Requires:       python-idna >= 2.10
+Requires:       python-jsonschema >= 3.2
+Requires:       python-python-dotenv >= 0.14.0
+Requires:       python-requests >= 2.24.0
 Requires:       python-six >= 1.3.0
-Requires:       python-texttable >= 0.9.0
-Requires:       python-websocket-client >= 0.32.0
+Requires:       python-texttable >= 1.6.2
+Requires:       python-websocket-client >= 0.57.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 Provides:       docker-compose = %{version}
 Obsoletes:      docker-compose < %{version}
-%if %{with python2}
-BuildRequires:  python2-backports.shutil_get_terminal_size >= 1.0.0
-BuildRequires:  python2-backports.ssl_match_hostname >= 3.5
-BuildRequires:  python2-enum34 >= 1.0.4
-BuildRequires:  python2-ipaddress >= 1.0.16
-BuildRequires:  python2-mock >= 1.0.1
-BuildRequires:  python2-subprocess32 >= 3.5.4
-%endif
-%ifpython2
-Requires:       python-backports.shutil_get_terminal_size >= 1.0.0
-Requires:       python-backports.ssl_match_hostname >= 3.5
-Requires:       python-enum34 >= 1.0.4
-Requires:       python-ipaddress >= 1.0.16
-Requires:       python-subprocess32 >= 3.5.4
-%endif
 %python_subpackages
 
 %description
