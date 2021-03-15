@@ -1,7 +1,7 @@
 #
 # spec file for package spotify-easyrpm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           spotify-easyrpm
-Version:        2.1.2
+Version:        3.0.1
 Release:        0
 Summary:        Tool to download, convert and install the Spotify for Linux package
 License:        GPL-3.0-only
@@ -25,13 +25,15 @@ Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/megamaced/spotify-easyrpm
 Source:         %{name}-%{version}.tar.gz
 Requires:       createrepo_c
+Requires:       jq
 Requires:       rpm-build
+Requires:       squashfs
 Requires:       update-desktop-files
 BuildArch:      noarch
 
 %description
-Spotify-easyrpm is a script which downloads the latest Debian package
-from the Spotify repository and converts it into an RPM for
+Spotify-easyrpm is a script which downloads the latest snap package
+from the snapcraft.io repository and converts it into an RPM for
 installation.
 
 Automated updates are also supported and installed through the system

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 08 22:57:54 UTC 2021 - david@macemail.co.uk
+
+- Make sure jq is installed
+- Make sure a config file exists before querying new options
+- When using --set-channel, make sure PREF_PROMPT_CHANNEL is set to no
+- unsquashfs -q is not supported in leap version
+
+-------------------------------------------------------------------
+Mon Mar 08 21:33:31 UTC 2021 - david@macemail.co.uk
+
+- Pull Spotify from the snap store instead of the debian repo
+- New option --set-channel to choose the Spotify stable or edge version from snap store
+- Improved version compare logic
+
+-------------------------------------------------------------------
 Thu Nov 26 16:24:45 UTC 2020 - david@macemail.co.uk
 
 - Support custom %_topdir macro
