@@ -1,7 +1,7 @@
 #
 # spec file for package xonotic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Fast-paced first person shooter
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-URL:            http://xonotic.org/
-Source0:        http://dl.xonotic.org/%{name}-%{version}.zip
+URL:            https://xonotic.org/
+Source0:        https://dl.xonotic.org/%{name}-%{version}.zip
 Source1:        xonotic.desktop
 Source2:        xonotic.service
 Source3:        xonotic.init
@@ -45,7 +45,6 @@ BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  zlib-devel
 Requires:       logrotate
 Requires:       xonotic-data = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{with systemd}
 BuildRequires:  systemd-rpm-macros
 %endif
@@ -56,8 +55,8 @@ Fast-paced first-person shooter that works on Windows, OS X and Linux. The proje
 %package server
 Summary:        Dedicated xonotic server first person shooter
 Group:          Amusements/Games/3D/Shoot
-Requires(pre):  shadow
 Requires:       xonotic-data = %{version}
+Requires(pre):  shadow
 %if %{with systemd}
  %{?systemd_requires}
 %endif
@@ -93,7 +92,7 @@ TIME="\"$(date -d "${modified}" "+%%R")\""
 find .  -name '*.[ch]' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 
 %build
-make \
+%make_build \
   %{?_smp_mflags} \
   DP_LINK_TO_LIBJPEG=1 \
   DP_LINK_CRYPTO=shared \
@@ -175,26 +174,24 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d %{_localstatedir}/l
 %endif
 
 %files
-%defattr(-,root,root,-)
 %attr(755,root,root) %{_bindir}/%{name}-glx
 %attr(755,root,root) %{_bindir}/%{name}-sdl
+%license COPYING GPL-2 GPL-3
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%doc COPYING GPL-2 GPL-3
 
 %files data
 %defattr(0644, root, root, 0755)
+%license COPYING GPL-2 GPL-3
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/data
 %{_datadir}/%{name}/data/*
-%doc COPYING GPL-2 GPL-3
 
 %files server
-%defattr(-,root,root,-)
 %attr(755,root,root) %{_bindir}/%{name}-dedicated
 %if %{with systemd}
 %{_unitdir}/%{name}-server.service
@@ -211,6 +208,7 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d %{_localstatedir}/l
 %attr(755,root,root) %{_datadir}/%{name}/server/rcon.pl
 %attr(755,root,root) %{_datadir}/%{name}/server/server_mac.sh
 %{_datadir}/%{name}/key_0.d0pk
-%doc COPYING GPL-2 GPL-3 server/server.cfg server/help.cfg
+%license COPYING GPL-2 GPL-3
+%doc server/server.cfg server/help.cfg
 
 %changelog

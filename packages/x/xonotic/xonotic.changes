@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 12 23:14:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- move licenses to licensedir 
+
+-------------------------------------------------------------------
 Tue Sep 15 15:41:52 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 9GB min disk space
