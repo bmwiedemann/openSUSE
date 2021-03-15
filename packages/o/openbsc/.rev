@@ -31,4 +31,12 @@
     <comment>- Disable -Werror. Add -fcommon.</comment>
     <requestid>812123</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c3e8473b7b833d8044e02831fa2f1e48</srcmd5>
+    <version>1.4.0</version>
+    <time>1615802176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.4.0</comment>
+    <requestid>878996</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package openbsc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,19 @@
 %define _lto_cflags %nil
 
 Name:           openbsc
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Base station controller for a GSM stack
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://osmocom.org/projects/openbsc/wiki/OpenBSC
-Source:         openbsc-%version.tar.xz
+Source:         https://github.com/osmocom/openbsc/archive/%version.tar.gz
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libdbi-drivers-dbd-sqlite3
 BuildRequires:  libpcap-devel
 BuildRequires:  libtool
-BuildRequires:  pkgconfig >= 0.20
+BuildRequires:  pkg-config >= 0.20
 BuildRequires:  python3
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbi)
@@ -86,7 +86,7 @@ You might rather prefer to use openbsc (osmo-nitb) which is considered a
 "GSM Network-in-a-Box" and does not depend on a MSC.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 pushd openbsc/
@@ -95,7 +95,7 @@ autoreconf -fi
 %configure --disable-static --includedir="%_includedir/%name" \
 	--docdir="%_docdir/%name" --with-systemdsystemunitdir="%_unitdir" \
 	--enable-smpp CFLAGS="-Wno-error=implicit -Wno-error=maybe-uninitialized -Wno-error=memset-transposed-args -Wno-error=null-dereference -Wno-error=sizeof-array-argument -Wno-error=sizeof-pointer-memaccess -fcommon"
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
