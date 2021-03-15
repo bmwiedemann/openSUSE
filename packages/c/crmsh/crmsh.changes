@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 15 02:25:26 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+git.20210311.c2e8856c:
+  * Dev: behave: change functional test about lock directory
+  * Dev: unittest: change lock directory as constant in ut code
+  * Dev: lock: change lock directory under /run
+  * Dev: unittest: adjust unittest for diskless SBD warning codes
+  * Fix: bootstrap: raise warning when configuring diskless SBD with node's count less than 3(bsc#1181907)
+  * Dev: unittest: Adjust unit test since qdevice code changed
+  * Dev: behave: Add functional test for qdevice add/remove on a single node cluster
+  * Fix: bootstrap: Adjust qdevice configure/remove process to avoid race condition due to quorum lost(bsc#1181415)
+  * Dev: utils: remove unused utils.cluster_stack and its related codes
+  * Dev: cibconfig: remove related code about detecting crm_diff support --no-verion
+  * Fix: ui_configure: raise error when params not exist(bsc#1180126)
+  * Dev: doc: remove doc for crm node status
+  * Dev: ui_node: remove status subcommand
+  * Fix: hb_report: walk through hb_report process under hacluster(CVE-2020-35459, bsc#1179999; CVE-2021-3020, bsc#1180571)
+  * Dev: unittest: add unit test for authorized ssh access for hacluster
+  * Fix: bootstrap: setup authorized ssh access for hacluster(CVE-2020-35459, bsc#1179999; CVE-2021-3020, bsc#1180571)
+
+-------------------------------------------------------------------
 Fri Feb 19 08:30:58 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+git.20210219.811c32f0:
