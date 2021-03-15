@@ -1,0 +1,153 @@
+From 59ac440754a43c6e964e924a086af066e04e753e Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 26 Feb 2021 19:43:14 +0800
+Subject: [PATCH 46/46] squash! verifiers: Move verifiers API to kernel image
+
+In case there's broken i386-pc setup running inconsistent installs for
+module in filesystem and core image on the disk, keeping the verifiers
+as module for i386-pc to avoid potential issue of looking up symbols.
+---
+ configure.ac                |  1 +
+ grub-core/Makefile.am       |  2 ++
+ grub-core/Makefile.core.def |  8 +++++++-
+ grub-core/kern/main.c       |  4 ++++
+ grub-core/kern/verifiers.c  | 11 +++++++++++
+ include/grub/verify.h       |  9 +++++++++
+ 6 files changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index c39e8379f..530da4b01 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1913,6 +1913,7 @@ AM_CONDITIONAL([COND_real_platform], [test x$platform != xnone])
+ AM_CONDITIONAL([COND_emu], [test x$platform = xemu])
+ AM_CONDITIONAL([COND_NOT_emu], [test x$platform != xemu])
+ AM_CONDITIONAL([COND_i386_pc], [test x$target_cpu = xi386 -a x$platform = xpc])
++AM_CONDITIONAL([COND_NOT_i386_pc], [test x$target_cpu != xi386 -o x$platform != xpc])
+ AM_CONDITIONAL([COND_i386_efi], [test x$target_cpu = xi386 -a x$platform = xefi])
+ AM_CONDITIONAL([COND_ia64_efi], [test x$target_cpu = xia64 -a x$platform = xefi])
+ AM_CONDITIONAL([COND_i386_qemu], [test x$target_cpu = xi386 -a x$platform = xqemu])
+diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
+index 6b2e5e139..47c91e35d 100644
+--- a/grub-core/Makefile.am
++++ b/grub-core/Makefile.am
+@@ -92,7 +92,9 @@ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/parser.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/partition.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/term.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/time.h
++if COND_NOT_i386_pc
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/verify.h
++endif
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/mm_private.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/net.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/memory.h
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index eac42a7b7..893044538 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -141,7 +141,7 @@ kernel = {
+   common = kern/rescue_parser.c;
+   common = kern/rescue_reader.c;
+   common = kern/term.c;
+-  common = kern/verifiers.c;
++  nopc = kern/verifiers.c;
+ 
+   noemu = kern/compiler-rt.c;
+   noemu = kern/mm.c;
+@@ -946,6 +946,12 @@ module = {
+   cppflags = '-I$(srcdir)/lib/posix_wrap';
+ };
+ 
++module = {
++  name = verifiers;
++  common = kern/verifiers.c;
++  enable = i386_pc;
++};
++
+ module = {
+   name = hdparm;
+   common = commands/hdparm.c;
+diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
+index 73967e2f5..c7c6d2d0b 100644
+--- a/grub-core/kern/main.c
++++ b/grub-core/kern/main.c
+@@ -29,7 +29,9 @@
+ #include <grub/command.h>
+ #include <grub/reader.h>
+ #include <grub/parser.h>
++#ifndef GRUB_MACHINE_PCBIOS
+ #include <grub/verify.h>
++#endif
+ 
+ #ifdef GRUB_MACHINE_PCBIOS
+ #include <grub/machine/memory.h>
+@@ -275,8 +277,10 @@ grub_main (void)
+   grub_printf ("Welcome to GRUB!\n\n");
+   grub_setcolorstate (GRUB_TERM_COLOR_STANDARD);
+ 
++#ifndef GRUB_MACHINE_PCBIOS
+   /* Init verifiers API. */
+   grub_verifiers_init ();
++#endif
+ 
+   grub_load_config ();
+ 
+diff --git a/grub-core/kern/verifiers.c b/grub-core/kern/verifiers.c
+index 3d19bffd1..479253351 100644
+--- a/grub-core/kern/verifiers.c
++++ b/grub-core/kern/verifiers.c
+@@ -218,8 +218,19 @@ grub_verify_string (char *str, enum grub_verify_string_type type)
+   return GRUB_ERR_NONE;
+ }
+ 
++#ifdef GRUB_MACHINE_PCBIOS
++GRUB_MOD_INIT(verifiers)
++#else
+ void
+ grub_verifiers_init (void)
++#endif
+ {
+   grub_file_filter_register (GRUB_FILE_FILTER_VERIFY, grub_verifiers_open);
+ }
++
++#ifdef GRUB_MACHINE_PCBIOS
++GRUB_MOD_FINI(verifiers)
++{
++  grub_file_filter_unregister (GRUB_FILE_FILTER_VERIFY);
++}
++#endif
+diff --git a/include/grub/verify.h b/include/grub/verify.h
+index cd129c398..6fde244fc 100644
+--- a/include/grub/verify.h
++++ b/include/grub/verify.h
+@@ -64,10 +64,14 @@ struct grub_file_verifier
+   grub_err_t (*verify_string) (char *str, enum grub_verify_string_type type);
+ };
+ 
++#ifdef GRUB_MACHINE_PCBIOS
++extern struct grub_file_verifier *grub_file_verifiers;
++#else
+ extern struct grub_file_verifier *EXPORT_VAR (grub_file_verifiers);
+ 
+ extern void
+ grub_verifiers_init (void);
++#endif
+ 
+ static inline void
+ grub_verifier_register (struct grub_file_verifier *ver)
+@@ -81,7 +85,12 @@ grub_verifier_unregister (struct grub_file_verifier *ver)
+   grub_list_remove (GRUB_AS_LIST (ver));
+ }
+ 
++#ifdef GRUB_MACHINE_PCBIOS
++grub_err_t
++grub_verify_string (char *str, enum grub_verify_string_type type);
++#else
+ extern grub_err_t
+ EXPORT_FUNC (grub_verify_string) (char *str, enum grub_verify_string_type type);
++#endif
+ 
+ #endif /* ! GRUB_VERIFY_HEADER */
+-- 
+2.26.2
+

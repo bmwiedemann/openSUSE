@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Mar 11 02:00:15 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix chainloading windows on dual boot machine (bsc#1183073)
+  * 0001-kern-efi-sb-Add-chainloaded-image-as-shim-s-verifiab.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 06:52:18 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- VUL-0: grub2,shim: implement new SBAT method (bsc#1182057)
+  * 0031-util-mkimage-Remove-unused-code-to-add-BSS-section.patch
+  * 0032-util-mkimage-Use-grub_host_to_target32-instead-of-gr.patch
+  * 0033-util-mkimage-Always-use-grub_host_to_target32-to-ini.patch
+  * 0034-util-mkimage-Unify-more-of-the-PE32-and-PE32-header-.patch
+  * 0035-util-mkimage-Reorder-PE-optional-header-fields-set-u.patch
+  * 0036-util-mkimage-Improve-data_size-value-calculation.patch
+  * 0037-util-mkimage-Refactor-section-setup-to-use-a-helper.patch
+  * 0038-util-mkimage-Add-an-option-to-import-SBAT-metadata-i.patch
+  * 0039-grub-install-common-Add-sbat-option.patch
+- Fix CVE-2021-20225 (bsc#1182262)
+  * 0022-lib-arg-Block-repeated-short-options-that-require-an.patch
+- Fix CVE-2020-27749 (bsc#1179264)
+  * 0024-kern-parser-Fix-resource-leak-if-argc-0.patch
+  * 0025-kern-parser-Fix-a-memory-leak.patch
+  * 0026-kern-parser-Introduce-process_char-helper.patch
+  * 0027-kern-parser-Introduce-terminate_arg-helper.patch
+  * 0028-kern-parser-Refactor-grub_parser_split_cmdline-clean.patch
+  * 0029-kern-buffer-Add-variable-sized-heap-buffer.patch
+  * 0030-kern-parser-Fix-a-stack-buffer-overflow.patch
+- Fix CVE-2021-20233 (bsc#1182263)
+  * 0023-commands-menuentry-Fix-quoting-in-setparams_prefix.patch
+- Fix CVE-2020-25647 (bsc#1177883)
+  * 0021-usb-Avoid-possible-out-of-bound-accesses-caused-by-m.patch
+- Fix CVE-2020-25632 (bsc#1176711)
+  * 0020-dl-Only-allow-unloading-modules-that-are-not-depende.patch
+- Fix CVE-2020-27779, CVE-2020-14372 (bsc#1179265) (bsc#1175970)
+  * 0001-include-grub-i386-linux.h-Include-missing-grub-types.patch
+  * 0002-efi-Make-shim_lock-GUID-and-protocol-type-public.patch
+  * 0003-efi-Return-grub_efi_status_t-from-grub_efi_get_varia.patch
+  * 0004-efi-Add-a-function-to-read-EFI-variables-with-attrib.patch
+  * 0005-efi-Add-secure-boot-detection.patch
+  * 0006-efi-Only-register-shim_lock-verifier-if-shim_lock-pr.patch
+  * 0007-verifiers-Move-verifiers-API-to-kernel-image.patch
+  * 0008-efi-Move-the-shim_lock-verifier-to-the-GRUB-core.patch
+  * 0009-kern-Add-lockdown-support.patch
+  * 0010-kern-lockdown-Set-a-variable-if-the-GRUB-is-locked-d.patch
+  * 0011-efi-Lockdown-the-GRUB-when-the-UEFI-Secure-Boot-is-e.patch
+  * 0012-efi-Use-grub_is_lockdown-instead-of-hardcoding-a-dis.patch
+  * 0013-acpi-Don-t-register-the-acpi-command-when-locked-dow.patch
+  * 0014-mmap-Don-t-register-cutmem-and-badram-commands-when-.patch
+  * 0015-commands-Restrict-commands-that-can-load-BIOS-or-DT-.patch
+  * 0016-commands-setpci-Restrict-setpci-command-when-locked-.patch
+  * 0017-commands-hdparm-Restrict-hdparm-command-when-locked-.patch
+  * 0018-gdb-Restrict-GDB-access-when-locked-down.patch
+  * 0019-loader-xnu-Don-t-allow-loading-extension-and-package.patch
+  * 0040-shim_lock-Only-skip-loading-shim_lock-verifier-with-.patch
+  * 0041-squash-Add-secureboot-support-on-efi-chainloader.patch
+  * 0042-squash-grub2-efi-chainload-harder.patch
+  * 0043-squash-Don-t-allow-insmod-when-secure-boot-is-enable.patch
+  * 0044-squash-kern-Add-lockdown-support.patch
+  * 0045-squash-Add-support-for-Linux-EFI-stub-loading-on-aar.patch
+  * 0046-squash-verifiers-Move-verifiers-API-to-kernel-image.patch
+- Drop patch supersceded by the new backport
+  * 0001-linuxefi-fail-kernel-validation-without-shim-protoco.patch
+  * 0001-shim_lock-Disable-GRUB_VERIFY_FLAGS_DEFER_AUTH-if-se.patch
+  * 0007-linuxefi-fail-kernel-validation-without-shim-protoco.patch
+- Add SBAT metadata section to grub.efi
+- Drop shim_lock module as it is part of core of grub.efi
+  * grub2.spec
+
+-------------------------------------------------------------------
 Mon Feb 22 12:49:48 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix build error in binutils 2.36 (bsc#1181741)

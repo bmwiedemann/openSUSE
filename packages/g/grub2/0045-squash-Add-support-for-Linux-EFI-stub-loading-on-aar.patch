@@ -1,0 +1,68 @@
+From 601c838c4cf3e6bd3e8e19b9e7aa4331cac0dc25 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 25 Feb 2021 20:44:58 +0800
+Subject: [PATCH 45/46] squash! Add support for Linux EFI stub loading on
+ aarch64.
+
+The efi shim_lock verifier has been moved to grub core so local
+shim_lock protocol is no longer needed here for aarch64 efi to verify
+the loaded kernel image. From now on the framework will take care the
+verificaion, consolidating the integration of various security verifiers
+like secure boot, gpg and tpm.
+---
+ grub-core/loader/arm64/efi/linux.c | 32 ------------------------------
+ 1 file changed, 32 deletions(-)
+
+diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
+index 8549e555b..b73105347 100644
+--- a/grub-core/loader/arm64/efi/linux.c
++++ b/grub-core/loader/arm64/efi/linux.c
+@@ -49,32 +49,6 @@ static grub_uint32_t cmdline_size;
+ static grub_addr_t initrd_start;
+ static grub_addr_t initrd_end;
+ 
+-#define SHIM_LOCK_GUID \
+- { 0x605dab50, 0xe046, 0x4300, {0xab, 0xb6, 0x3d, 0xd8, 0x10, 0xdd, 0x8b, 0x23} }
+-
+-struct grub_efi_shim_lock
+-{
+-  grub_efi_status_t (*verify) (void *buffer, grub_uint32_t size);
+-};
+-typedef struct grub_efi_shim_lock grub_efi_shim_lock_t;
+-
+-static grub_efi_boolean_t
+-grub_linuxefi_secure_validate (void *data, grub_uint32_t size)
+-{
+-  grub_efi_guid_t guid = SHIM_LOCK_GUID;
+-  grub_efi_shim_lock_t *shim_lock;
+-
+-  shim_lock = grub_efi_locate_protocol(&guid, NULL);
+-
+-  if (!shim_lock)
+-    return 1;
+-
+-  if (shim_lock->verify(data, size) == GRUB_EFI_SUCCESS)
+-    return 1;
+-
+-  return 0;
+-}
+-
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wcast-align"
+ 
+@@ -443,12 +417,6 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+ 
+   grub_dprintf ("linux", "kernel @ %p\n", kernel_addr);
+ 
+-  if (!grub_linuxefi_secure_validate (kernel_addr, kernel_size))
+-    {
+-      grub_error (GRUB_ERR_INVALID_COMMAND, N_("%s has invalid signature"), argv[0]);
+-      goto fail;
+-    }
+-
+   pe = (void *)((unsigned long)kernel_addr + lh.hdr_offset);
+   handover_offset = pe->opt.entry_addr;
+ 
+-- 
+2.26.2
+

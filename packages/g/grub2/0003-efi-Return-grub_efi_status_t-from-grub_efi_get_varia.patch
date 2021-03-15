@@ -1,0 +1,146 @@
+From 10ee52fd565c9a88d9428a837c7f753a6c7fac5b Mon Sep 17 00:00:00 2001
+From: Daniel Kiper <daniel.kiper@oracle.com>
+Date: Thu, 3 Dec 2020 16:01:46 +0100
+Subject: [PATCH 03/46] efi: Return grub_efi_status_t from
+ grub_efi_get_variable()
+
+This is needed to properly detect and report UEFI Secure Boot status
+to the x86 Linux kernel. The functionality will be added by subsequent
+patches.
+
+Signed-off-by: Daniel Kiper <daniel.kiper@oracle.com>
+Signed-off-by: Marco A Benatto <mbenatto@redhat.com>
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/commands/efi/efifwsetup.c |  8 ++++----
+ grub-core/kern/efi/efi.c            | 16 +++++++++-------
+ grub-core/video/efi_gop.c           |  2 +-
+ include/grub/efi/efi.h              |  7 ++++---
+ 4 files changed, 18 insertions(+), 15 deletions(-)
+
+diff --git a/grub-core/commands/efi/efifwsetup.c b/grub-core/commands/efi/efifwsetup.c
+index 7a137a72a..eaca03283 100644
+--- a/grub-core/commands/efi/efifwsetup.c
++++ b/grub-core/commands/efi/efifwsetup.c
+@@ -38,8 +38,8 @@ grub_cmd_fwsetup (grub_command_t cmd __attribute__ ((unused)),
+   grub_size_t oi_size;
+   grub_efi_guid_t global = GRUB_EFI_GLOBAL_VARIABLE_GUID;
+ 
+-  old_os_indications = grub_efi_get_variable ("OsIndications", &global,
+-					      &oi_size);
++  grub_efi_get_variable ("OsIndications", &global, &oi_size,
++			 (void **) &old_os_indications);
+ 
+   if (old_os_indications != NULL && oi_size == sizeof (os_indications))
+     os_indications |= *old_os_indications;
+@@ -63,8 +63,8 @@ efifwsetup_is_supported (void)
+   grub_size_t oi_size = 0;
+   grub_efi_guid_t global = GRUB_EFI_GLOBAL_VARIABLE_GUID;
+ 
+-  os_indications_supported = grub_efi_get_variable ("OsIndicationsSupported",
+-						    &global, &oi_size);
++  grub_efi_get_variable ("OsIndicationsSupported", &global, &oi_size,
++			 (void **) &os_indications_supported);
+ 
+   if (!os_indications_supported)
+     return 0;
+diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
+index 02d298b0c..9fd136694 100644
+--- a/grub-core/kern/efi/efi.c
++++ b/grub-core/kern/efi/efi.c
+@@ -222,9 +222,9 @@ grub_efi_set_variable(const char *var, const grub_efi_guid_t *guid,
+   return grub_error (GRUB_ERR_IO, "could not set EFI variable `%s'", var);
+ }
+ 
+-void *
++grub_efi_status_t
+ grub_efi_get_variable (const char *var, const grub_efi_guid_t *guid,
+-		       grub_size_t *datasize_out)
++		       grub_size_t *datasize_out, void **data_out)
+ {
+   grub_efi_status_t status;
+   grub_efi_uintn_t datasize = 0;
+@@ -233,13 +233,14 @@ grub_efi_get_variable (const char *var, const grub_efi_guid_t *guid,
+   void *data;
+   grub_size_t len, len16;
+ 
++  *data_out = NULL;
+   *datasize_out = 0;
+ 
+   len = grub_strlen (var);
+   len16 = len * GRUB_MAX_UTF16_PER_UTF8;
+   var16 = grub_calloc (len16 + 1, sizeof (var16[0]));
+   if (!var16)
+-    return NULL;
++    return GRUB_EFI_OUT_OF_RESOURCES;
+   len16 = grub_utf8_to_utf16 (var16, len16, (grub_uint8_t *) var, len, NULL);
+   var16[len16] = 0;
+ 
+@@ -250,14 +251,14 @@ grub_efi_get_variable (const char *var, const grub_efi_guid_t *guid,
+   if (status != GRUB_EFI_BUFFER_TOO_SMALL || !datasize)
+     {
+       grub_free (var16);
+-      return NULL;
++      return status;
+     }
+ 
+   data = grub_malloc (datasize);
+   if (!data)
+     {
+       grub_free (var16);
+-      return NULL;
++      return GRUB_EFI_OUT_OF_RESOURCES;
+     }
+ 
+   status = efi_call_5 (r->get_variable, var16, guid, NULL, &datasize, data);
+@@ -265,12 +266,13 @@ grub_efi_get_variable (const char *var, const grub_efi_guid_t *guid,
+ 
+   if (status == GRUB_EFI_SUCCESS)
+     {
++      *data_out = data;
+       *datasize_out = datasize;
+-      return data;
++      return status;
+     }
+ 
+   grub_free (data);
+-  return NULL;
++  return status;
+ }
+ 
+ grub_efi_boolean_t
+diff --git a/grub-core/video/efi_gop.c b/grub-core/video/efi_gop.c
+index df29853f0..962f0eb8f 100644
+--- a/grub-core/video/efi_gop.c
++++ b/grub-core/video/efi_gop.c
+@@ -310,7 +310,7 @@ grub_video_gop_get_edid (struct grub_video_edid_info *edid_info)
+       char edidname[] = "agp-internal-edid";
+       grub_size_t datasize;
+       grub_uint8_t *data;
+-      data = grub_efi_get_variable (edidname, &efi_var_guid, &datasize);
++      grub_efi_get_variable (edidname, &efi_var_guid, &datasize, (void **) &data);
+       if (data && datasize > 16)
+ 	{
+ 	  copy_size = datasize - 16;
+diff --git a/include/grub/efi/efi.h b/include/grub/efi/efi.h
+index 085ee0524..f27d3a365 100644
+--- a/include/grub/efi/efi.h
++++ b/include/grub/efi/efi.h
+@@ -77,9 +77,10 @@ grub_err_t EXPORT_FUNC (grub_efi_set_virtual_address_map) (grub_efi_uintn_t memo
+ 							   grub_efi_uintn_t descriptor_size,
+ 							   grub_efi_uint32_t descriptor_version,
+ 							   grub_efi_memory_descriptor_t *virtual_map);
+-void *EXPORT_FUNC (grub_efi_get_variable) (const char *variable,
+-					   const grub_efi_guid_t *guid,
+-					   grub_size_t *datasize_out);
++grub_efi_status_t EXPORT_FUNC (grub_efi_get_variable) (const char *variable,
++						       const grub_efi_guid_t *guid,
++						       grub_size_t *datasize_out,
++						       void **data_out);
+ grub_err_t
+ EXPORT_FUNC (grub_efi_set_variable) (const char *var,
+ 				     const grub_efi_guid_t *guid,
+-- 
+2.26.2
+

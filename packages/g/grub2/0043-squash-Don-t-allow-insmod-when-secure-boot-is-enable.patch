@@ -1,0 +1,88 @@
+From 768ab190a7c0a412bbec6142d12000655324daa0 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 11 Dec 2020 23:01:59 +0800
+Subject: [PATCH 43/46] squash! Don't allow insmod when secure boot is enabled.
+
+Use grub_efi_get_secureboot to get secure boot status
+---
+ grub-core/kern/dl.c      |  4 ++--
+ grub-core/kern/efi/efi.c | 28 ----------------------------
+ include/grub/efi/efi.h   |  1 -
+ 3 files changed, 2 insertions(+), 31 deletions(-)
+
+diff --git a/grub-core/kern/dl.c b/grub-core/kern/dl.c
+index e02f2afc5..93f08dfce 100644
+--- a/grub-core/kern/dl.c
++++ b/grub-core/kern/dl.c
+@@ -39,7 +39,7 @@
+ #endif
+ 
+ #ifdef GRUB_MACHINE_EFI
+-#include <grub/efi/efi.h>
++#include <grub/efi/sb.h>
+ #endif
+ 
+ 
+@@ -702,7 +702,7 @@ grub_dl_load_file (const char *filename)
+   grub_boot_time ("Loading module %s", filename);
+ 
+ #ifdef GRUB_MACHINE_EFI
+-  if (grub_efi_secure_boot ())
++  if (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED)
+     {
+ #if 0
+       /* This is an error, but grub2-mkconfig still generates a pile of
+diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
+index 92e99b441..32f1b2ec7 100644
+--- a/grub-core/kern/efi/efi.c
++++ b/grub-core/kern/efi/efi.c
+@@ -278,34 +278,6 @@ grub_efi_get_variable_with_attributes (const char *var,
+   return status;
+ }
+ 
+-grub_efi_boolean_t
+-grub_efi_secure_boot (void)
+-{
+-  grub_efi_guid_t efi_var_guid = GRUB_EFI_GLOBAL_VARIABLE_GUID;
+-  grub_size_t datasize;
+-  char *secure_boot = NULL;
+-  char *setup_mode = NULL;
+-  grub_efi_boolean_t ret = 0;
+-
+-  secure_boot = grub_efi_get_variable("SecureBoot", &efi_var_guid, &datasize);
+-
+-  if (datasize != 1 || !secure_boot)
+-    goto out;
+-
+-  setup_mode = grub_efi_get_variable("SetupMode", &efi_var_guid, &datasize);
+-
+-  if (datasize != 1 || !setup_mode)
+-    goto out;
+-
+-  if (*secure_boot && !*setup_mode)
+-    ret = 1;
+-
+- out:
+-  grub_free (secure_boot);
+-  grub_free (setup_mode);
+-  return ret;
+-}
+-
+ grub_efi_status_t
+ grub_efi_get_variable (const char *var, const grub_efi_guid_t *guid,
+ 		       grub_size_t *datasize_out, void **data_out)
+diff --git a/include/grub/efi/efi.h b/include/grub/efi/efi.h
+index 568d80030..08f6ee00a 100644
+--- a/include/grub/efi/efi.h
++++ b/include/grub/efi/efi.h
+@@ -91,7 +91,6 @@ EXPORT_FUNC (grub_efi_set_variable) (const char *var,
+ 				     const grub_efi_guid_t *guid,
+ 				     void *data,
+ 				     grub_size_t datasize);
+-grub_efi_boolean_t EXPORT_FUNC (grub_efi_secure_boot) (void);
+ int
+ EXPORT_FUNC (grub_efi_compare_device_paths) (const grub_efi_device_path_t *dp1,
+ 					     const grub_efi_device_path_t *dp2);
+-- 
+2.26.2
+

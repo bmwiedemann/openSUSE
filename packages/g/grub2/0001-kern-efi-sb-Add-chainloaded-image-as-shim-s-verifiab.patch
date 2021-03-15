@@ -1,0 +1,45 @@
+From 6d05264eeceaa2be991093d7fc31b78130bf5453 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 5 Mar 2021 21:48:53 +0800
+Subject: [PATCH] kern/efi/sb: Add chainloaded image as shim's verifiable
+ object
+
+While attempting to dual boot Microsoft Windows with UEFI chainloader,
+it failed with below error when UEFI Secure Boot was enabled:
+
+  error ../../grub-core/kern/verifiers.c:119:verification requested but
+  nobody cares: /EFI/Microsoft/Boot/bootmgfw.efi.
+
+It is a regression, as previously it worked without any problem.
+
+It turns out chainloading PE image has been locked down by commit
+578c95298 (kern: Add lockdown support). However, we should consider it
+as verifiable object by shim to allow booting in UEFI Secure Boot mode.
+The chainloaded PE image could also have trusted signature created by
+vendor with their pubkey cert in db. For that matters it's usage should
+not be locked down under UEFI Secure Boot, and instead shim should be
+allowed to validate a PE binary signature before running it.
+
+Fixes: 578c95298 (kern: Add lockdown support)
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/kern/efi/sb.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/grub-core/kern/efi/sb.c b/grub-core/kern/efi/sb.c
+index 41dadcd14..96d237722 100644
+--- a/grub-core/kern/efi/sb.c
++++ b/grub-core/kern/efi/sb.c
+@@ -129,6 +129,7 @@ shim_lock_verifier_init (grub_file_t io __attribute__ ((unused)),
+     case GRUB_FILE_TYPE_BSD_KERNEL:
+     case GRUB_FILE_TYPE_XNU_KERNEL:
+     case GRUB_FILE_TYPE_PLAN9_KERNEL:
++    case GRUB_FILE_TYPE_EFI_CHAINLOADED_IMAGE:
+       *flags = GRUB_VERIFY_FLAGS_SINGLE_CHUNK;
+ 
+       /* Fall through. */
+-- 
+2.26.2
+
