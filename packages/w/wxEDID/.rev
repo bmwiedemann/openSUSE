@@ -212,4 +212,41 @@ Updated
 </comment>
     <requestid>861679</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a716b537e148fd49fa9ba92f77f746a3</srcmd5>
+    <version>0.0.23</version>
+    <time>1615802153</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop wxedid-no-implicit-string-conversion.patch
+- Update to v0.0.23
+Fixed
+  * (BUG in GCC v8.3.0): broken array bounds checking with
+    optimizations enabled, f.e: &quot;src/CEA_EXT_class.cpp:1512:13:
+    warning: ‘void* memcpy(void*, const void*, size_t)’ forming
+    offset [49, 560] is out of the bounds [0, 48] of object
+    ‘slocd_cl::SLOCD_subg’ with type ‘const subgrp_dsc_t’
+    {aka ‘const subgrp_dsc_s’} [-Warray-bounds]&quot; Disabled
+    diagnostic for [-Warray-bounds] in CEA_EXT_class.cpp
+  * (BUG) EDID_cl::ParseEDID_CEA(): checking of padding bytes after
+    last DTD did not allow to ignore errors (bad rcode on exit).
+  * (BUG) IFDB::VSIFD: incorrect offset for ieee_id field.
+  * (BUG) RMCD: several bugs in field offsets, incorrect max values
+  * (BUG) SAB: Speaker Allocation Block: used ID_VSD as typeID,
+    instead of (missing) ID_SAB.
+  * (BUG) SLOCD fields: incorrect offset for channel index byte.
+  * (BUG) VSD: Vendor Specific Data Block: cea_vsd_cl::init()
+    display unspecified payload data as unknown bytes (previously
+    ignored).
+  * (BUG::LEAK): GroupAr_cl: Delete()/Paste(): call Detach() then
+    delete the object: RemoveAt() only removes the pointer.
+  * (BUG::typo) HDRD: HDR Dynamic Metadata Data Block: incorrect
+    pointer used to read HDRD metadata lenght: base DBC pointer
+    (inst) used instead of p_mtd.
+  * (partially): VSD: dynamic data layout, depending on block
+    length (currently only 00-0C-03 ID is supported)
+  * BlkDataGrid: don't use fixed Row/Column sizes: problems on
+    HDPI (thanks to Jat).
+  * BlockTree menu: show group free space if no subgroups are</comment>
+    <requestid>878969</requestid>
+  </revision>
 </revisionlist>

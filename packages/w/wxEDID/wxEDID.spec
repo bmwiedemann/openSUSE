@@ -17,15 +17,13 @@
 
 
 Name:           wxEDID
-Version:        0.0.22
+Version:        0.0.23
 Release:        0
 Summary:        Extended Display Identification Data editor
 License:        GPL-3.0-only
 Group:          Hardware/Other
 URL:            https://sourceforge.net/projects/wxedid/
 Source0:        https://sourceforge.net/projects/wxedid/files/wxedid-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE our wx packages do not enable implicit string type conversion, breaking the build
-Patch0:         wxedid-no-implicit-string-conversion.patch
 BuildRequires:  c++_compiler
 BuildRequires:  wxWidgets-devel
 
@@ -40,14 +38,10 @@ save the structures as a human-readable text.
 
 %prep
 %setup -q -n wxedid-%{version}
-%autopatch -p1
-sed -i 's:.*__DATE__.*::g' src/wxEDID_Main.cpp
-sed -i 's:.*__TIME__.*::g' src/wxEDID_Main.cpp
 
 %build
-# missing whitespace
-CXXFLAGS="%{optflags} " CFLAGS="%{optflags} " %configure
-make %{?_smp_mflags}
+%configure
+%make_build
 
 %install
 %make_install
