@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5522bc81c17abd152f72b96e5721c96b</srcmd5>
+    <version>4.0.0</version>
+    <time>1588023692</time>
+    <user>dimstar_suse</user>
+    <comment>initialize package</comment>
+    <requestid>798247</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c05c4c9a281378eb682e9eb8c64f9a66</srcmd5>
+    <version>4.0.1</version>
+    <time>1590650352</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809522</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5810bf165d671e57bb18b41ec6459bd9</srcmd5>
+    <version>4.0.2</version>
+    <time>1611595399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864577</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>964b55903d8a6a4cea778e085773539f</srcmd5>
+    <version>5.0.0</version>
+    <time>1615802180</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 879033 from mschnitzer)</comment>
+    <requestid>879034</requestid>
+  </revision>
+</revisionlist>
