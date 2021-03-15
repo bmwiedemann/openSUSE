@@ -6,6 +6,8 @@
                 <param name="scm">git</param>
                 <param name="url">https://github.com/raspberrypi/usbboot.git</param>
                 <param name="filename">raspberrypi-rpiboot</param>
-                <param name="versionformat">%h</param>
+		<param name="parent-tag">bae4aeb</param>
+		<param name="versionformat">0~git@TAG_OFFSET@.%h</param>
         </service>
+        <service name="set_version" mode="disabled" />
 </services>

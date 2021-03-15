@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 13 09:51:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove libusb-compat - it only uses libusb-1.0 
+
+-------------------------------------------------------------------
+Fri Jan 22 19:02:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Generate monotonically increasing Version numbers
+
+-------------------------------------------------------------------
 Fri Jan 22 07:32:07 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - add support for CM4 (jsc#SLE-16895)
