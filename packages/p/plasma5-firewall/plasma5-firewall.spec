@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Internal QML imports
 %global __requires_exclude qmlimport\\(org\\.kcm\\.firewall
 
 %bcond_without lang
 Name:           plasma5-firewall
-Version:        5.21.1
+Version:        5.21.2
 Release:        0
 Summary:        Config Module for the System Firewall
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -38,11 +39,11 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  python3-base
 BuildRequires:  cmake(KF5CoreAddons) >= 5.30.0
-BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5PlasmaQuick)
-BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Qml)
