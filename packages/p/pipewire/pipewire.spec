@@ -35,7 +35,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.22
+Version:        0.3.23
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -79,6 +79,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
@@ -105,7 +106,7 @@ Some of its features include:
 %package -n %{libpipewire}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 Group:          System/Libraries
-Recommends:     pipewire
+Recommends:     pipewire >= %{version}
 
 %description -n %{libpipewire}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -168,7 +169,7 @@ This package provides spa-inspect and spa-monitor tools.
 %package modules
 Summary:        Modules For PipeWire, A Multimedia Framework
 Group:          Productivity/Multimedia/Other
-Requires:       pipewire
+Requires:       pipewire = %{version}
 
 %description modules
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -306,7 +307,7 @@ if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
   echo "Switching Pipewire activation using systemd user socket."
   echo "Please log out from all sessions once to make it effective."
 fi
-%systemd_user_post pipewire.socket
+%systemd_user_post pipewire.socket pipewire-media-session.service
 # FIXME: workaround to make sure the user socket symlink creation (related to bsc#1083473)
 if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
   # below should work once when preset is defined properly:
@@ -316,10 +317,10 @@ if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
 fi
 
 %preun
-%systemd_user_preun pipewire.socket
+%systemd_user_preun pipewire.socket pipewire-media-session.service
 
 %postun
-%systemd_user_postun pipewire.socket
+%systemd_user_postun pipewire.socket pipewire-media-session.service
 
 %preun pulseaudio
 %systemd_user_preun pipewire-pulse.service pipewire-pulse.socket
@@ -347,6 +348,7 @@ fi
 %{_bindir}/pipewire-media-session
 %{_userunitdir}/pipewire.service
 %{_userunitdir}/pipewire.socket
+%{_userunitdir}/pipewire-media-session.service
 %{_mandir}/man1/pipewire.1%{ext_man}
 %{_mandir}/man5/pipewire.conf.5%{ext_man}
 
@@ -397,6 +399,7 @@ fi
 %{_bindir}/pw-profiler
 %{_bindir}/pw-record
 %{_bindir}/pw-reserve
+%{_bindir}/pw-top
 %{_mandir}/man1/pw-cat.1%{ext_man}
 %{_mandir}/man1/pw-cli.1%{ext_man}
 %{_mandir}/man1/pw-dot.1%{ext_man}
@@ -430,6 +433,9 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-device.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-node-factory.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-node.so
+%dir %{_datadir}/alsa-card-profile
+%dir %{_datadir}/alsa-card-profile/mixer
+%{_datadir}/alsa-card-profile/mixer/*
 
 %files spa-plugins-%{spa_ver_str}
 %{_libdir}/spa-%{spa_ver}/alsa/libspa-alsa.so
@@ -496,9 +502,6 @@ fi
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
 %config(noreplace) %{_sysconfdir}/pipewire/media-session.d/with-alsa
 %{_udevrulesdir}/90-pipewire-alsa.rules
-%dir %{_datadir}/alsa-card-profile
-%dir %{_datadir}/alsa-card-profile/mixer
-%{_datadir}/alsa-card-profile/mixer/*
 
 %files lang -f %{name}.lang
 
