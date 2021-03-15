@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 12 13:18:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix the syntax of %{python_module} macro
+
+-------------------------------------------------------------------
 Tue Dec  4 12:56:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

@@ -1,7 +1,7 @@
 #
 # spec file for package python-wstools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@ License:        ZPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pycontribs/wstools
 Source:         https://files.pythonhosted.org/packages/8d/d0/0e48ae89e4b2a9aa3a1a088782ae183dc09ca1f3545b29051c46d9efbc0f/wstools-%{version}.tar.gz
-BuildRequires:  %{python_module pbr} >= 1.10
+BuildRequires:  %{python_module pbr >= 1.10}
 BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module setuptools} >= 17.1
+BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
