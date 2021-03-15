@@ -65,4 +65,12 @@
   * Delete trailing whitespace from *.[ch] files</comment>
     <requestid>303788</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>38cad68452c5e131c6b3ccfda029289b</srcmd5>
+    <version>1.0.6</version>
+    <time>1615802097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878733</requestid>
+  </revision>
 </revisionlist>

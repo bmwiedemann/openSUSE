@@ -1,7 +1,7 @@
 #
 # spec file for package xmag
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,11 @@ Release:        0
 Summary:        Screen magnifier
 License:        X11
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
+URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
 Source1:        xmag.desktop
 Source2:        xmag.png
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xt)
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xmag displays a magnified snapshot of a portion of an X11 screen.
@@ -45,7 +44,7 @@ xmag displays a magnified snapshot of a portion of an X11 screen.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -53,8 +52,8 @@ make %{?_smp_mflags}
 install -m0644 -D %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xmag.png
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README
 %{_bindir}/xmag
 %{_datadir}/applications/xmag.desktop
 %{_datadir}/pixmaps/xmag.png
