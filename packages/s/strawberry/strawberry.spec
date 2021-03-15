@@ -1,7 +1,7 @@
 #
 # spec file for package strawberry
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        0.8.5
+Version:        0.9.1
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -117,7 +117,7 @@ Features:
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-%cmake -DBUILD_WERROR=OFF -DUSE_SYSTEM_TAGLIB=ON \
+%cmake -DBUILD_WERROR=OFF \
 %if 0%{?suse_version} > 1530
        -DQT_MAJOR_VERSION=6
 %else

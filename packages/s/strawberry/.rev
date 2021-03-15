@@ -741,4 +741,41 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
     <comment></comment>
     <requestid>858312</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cde939436db0d78dfbf766dcff635fdc</srcmd5>
+    <version>0.9.1</version>
+    <time>1615802102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1:
+ + Bugfixes:
+ + Fix duplicating songs in the DB when organizing songs between 2 different collection directories.
+ + Fix overwriting existing newer last played when importing last played from last.fm.
+ + Fix memory leak on song change when moodbar is disabled.
+ + Fix playlist filter search for text with spaces with Qt 6.
+ + Fix 'Except between tracks on the same album' backend fade option always greyed out.
+ + Fix read and save vorbis comment grouping tag.
+ + Fix QAtomicInteger compile error on armv.
+ + Fix compile error with protobuf 3.15.0 and newer.
+ + Fix possible tagreader (messagereply) crashes.
+ + Fix save album cover when album directory and no overwrite is used for saving covers.
+ + Fix right click save cover action when album has embedded cover.
+ + Fix temporary art saved to /tmp.
+ + Fix playlist bitrate sometimes stuck when changing track to previous.
+ + Enhancements:
+ + Improve Musixmatch cover and lyrics search.
+ + Decode any HTML entities in some rare cases they appear in the retrieved lyrics from the API's.
+ + Use mimetype instead of description from stream metadata by default when updating song filetype.
+ + Set limits for collection pixmap cache based on size units.
+ + Convert all signal/slot connections to new Qt 5/6 syntax.
+ + Improve album cover management.
+ + Add right click actions to clear set cover, and option delete covers.
+ + Show artist and album underneath the albums in the cover manager when all Artists is selected.
+ + Disable unavailable right click cover actions.
+ + Remove 3rdparty TagLib now that TagLib 1.12 is available.
+ + New features:
+ + Add option and support for saving embedded covers for FLAC, Ogg Vorbis, MP3 and MP4/AAC. 
+- Remove use of deprecated USE_SYSTEM_TAGLIB CMake option.
+</comment>
+    <requestid>878772</requestid>
+  </revision>
 </revisionlist>
