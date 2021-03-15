@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 14 21:09:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.2
+  * install gtp-tunnel and gtp-link tools
+
+-------------------------------------------------------------------
 Sun Sep  6 11:50:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile constructs.
