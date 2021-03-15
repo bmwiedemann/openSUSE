@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 15 09:27:24 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.0:
+  * Fix major memory leak when huge icons are not used.
+  * Debug by SIGUSR1.
+  * Add test suite: running in headless X server.
+  * Add github CI pipeline.
+  * Bspwm documentation.
+  * Fix possible strncpy overflows.
+
+-------------------------------------------------------------------
 Fri Jul 24 07:51:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.0:

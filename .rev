@@ -37,4 +37,18 @@
   * Satisfy gcc 10 requirements.</comment>
     <requestid>822568</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec28ec60c27cfb105fe33b167ac557a4</srcmd5>
+    <version>1.6.0</version>
+    <time>1615802193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  * Fix major memory leak when huge icons are not used.
+  * Debug by SIGUSR1.
+  * Add test suite: running in headless X server.
+  * Add github CI pipeline.
+  * Bspwm documentation.
+  * Fix possible strncpy overflows.</comment>
+    <requestid>879121</requestid>
+  </revision>
 </revisionlist>
