@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Mar 11 11:13:15 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#250
+- add 'extend' option (bsc#1183368)
+- 7.0.30
+
+--------------------------------------------------------------------
 Fri Mar 5 12:11:42 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#249
@@ -19,7 +26,7 @@ Wed Mar 3 16:03:47 UTC 2021 - wfeldt@opensuse.org
 - merge gh#openSUSE/linuxrc#246
 - default to using zram
 - document install.inf entry
-- support using zram device as root file system (jsc#PM-2253)
+- support using zram device as root file system (jsc#SLE-17630)
 - 7.0.27
 
 --------------------------------------------------------------------
