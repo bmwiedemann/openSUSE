@@ -1,7 +1,7 @@
 #
 # spec file for package bcm20702a1-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,15 +81,6 @@ else
     install -m644 fw-0a5c_21e8.hcd %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e8.hcd
 fi
 rm -rf "$OUT"
-exit 0
-
-%postun
-rm -f %{_firmwaredir}/brcm/BCM20702A1-0b05-17cb.hcd
-rm -f %{_firmwaredir}/brcm/BCM20702A1-0b05-17cf.hcd
-rm -f %{_firmwaredir}/brcm/BCM20702A1-05ac-21e1.hcd
-rm -f %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e6.hcd
-rm -f %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e8.hcd
-rm -f %{_firmwaredir}/brcm/BCM20702A1-050d-065a.hcd
 exit 0
 
 %files

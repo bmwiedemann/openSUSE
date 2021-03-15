@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 27 13:21:06 UTC 2021 - Javier S. Pedro <dev.rpm@javispedro.com>
+
+- fix boo#1175038 - remove unnecessary %postun scriptlet that is 
+  incorrectly deleting all package files on upgrade; all files are
+  already listed in %files as %ghost so no scriptlet is needed.
+
+-------------------------------------------------------------------
 Mon Oct 19 12:53:24 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - use %_firmwaredir
