@@ -19,27 +19,27 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-anyio
-Version:        2.0.2
+Version:        2.2.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
-BuildRequires:  python-rpm-macros >= 20210127.3a18043
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module idna >= 2.8}
-BuildRequires:  %{python_module sniffio >= 1.1}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module async_generator if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+BuildRequires:  %{python_module idna >= 2.8}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sniffio >= 1.1}
+BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 4.0}
 BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module trio >= 0.16}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module uvloop}
-BuildRequires:  %{python_module trio >= 0.16}
 # Note to packagers: future versions will drop curio (https://github.com/agronholm/anyio/pull/182)
 BuildRequires:  %{python_module curio >= 1.4}
 # /SECTION
@@ -92,4 +92,3 @@ donttest+=" or test_getaddrinfo"
 %{python_sitelib}/anyio-%{version}*-info
 
 %changelog
-
