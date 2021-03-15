@@ -1,0 +1,38 @@
+--- a/db.lua
++++ b/db.lua
+@@ -31,6 +31,7 @@ end
+ 
+ do
+   assert(not pcall(debug.getinfo, print, "X"))   -- invalid option
++  assert(not pcall(debug.getinfo, 0, ">"))   -- invalid option
+   assert(not debug.getinfo(1000))   -- out of range level
+   assert(not debug.getinfo(-1))     -- out of range level
+   local a = debug.getinfo(print)
+--- a/strings.lua
++++ b/strings.lua
+@@ -361,6 +361,9 @@ assert(load("return 1\n--comment without ending EOL")() == 1)
+ 
+ 
+ checkerror("table expected", table.concat, 3)
++checkerror("at index " .. maxi, table.concat, {}, " ", maxi, maxi)
++-- '%' escapes following minus signal
++checkerror("at index %" .. mini, table.concat, {}, " ", mini, mini)
+ assert(table.concat{} == "")
+ assert(table.concat({}, 'x') == "")
+ assert(table.concat({'\0', '\0\1', '\0\1\2'}, '.\0.') == "\0.\0.\0\1.\0.\0\1\2")
+--- a/errors.lua
++++ b/errors.lua
+@@ -191,6 +191,13 @@ checkmessage("a = 24 // 0", "divide by zero")
+ checkmessage("a = 1 % 0", "'n%0'")
+ 
+ 
++-- type error for an object which is neither in an upvalue nor a register.
++-- The following code will try to index the value 10 that is stored in
++-- the metatable, without moving it to a register.
++checkmessage("local a = setmetatable({}, {__index = 10}).x",
++             "attempt to index a number value")
++
++
+ -- numeric for loops
+ checkmessage("for i = {}, 10 do end", "table")
+ checkmessage("for i = io.stdin, 10 do end", "FILE")

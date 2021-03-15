@@ -42,7 +42,8 @@ Patch1:         attrib_test.patch
 Patch2:         files_test.patch
 Patch3:         main_test.patch
 # PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.2
-#Patch4:         upstream-bugs.patch
+Patch4:         upstream-bugs.patch
+Patch5:         upstream-bugs-test.patch
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
 %else
@@ -138,9 +139,11 @@ of C functions, written in ANSI C.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch5 -p1
 %else
 %setup -q -n lua-%{version}
 %patch0 -p1
+%patch4 -p1
 %endif
 
 # manpage
