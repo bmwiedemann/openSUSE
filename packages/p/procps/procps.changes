@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 10 21:34:06 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Don't install translated man pages for non-installed binaries
+  (uptime, kill).
+
+-------------------------------------------------------------------
 Mon Feb 22 18:57:37 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove /usr/share/man/uk dir to file list for lang sub package:

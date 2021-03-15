@@ -193,7 +193,9 @@ install -d %{buildroot}/sbin
 rm -f %{buildroot}%{_bindir}/kill
 rm -f %{buildroot}%{_bindir}/uptime
 rm -f %{buildroot}%{_mandir}/man1/kill.1
+rm -f %{buildroot}%{_mandir}/*/man1/kill.1
 rm -f %{buildroot}%{_mandir}/man1/uptime.1
+rm -f %{buildroot}%{_mandir}/*/man1/uptime.1
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc/procps-ng
 
