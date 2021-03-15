@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           plasma5-workspace-wallpapers
-Version:        5.21.1
+Version:        5.21.2
 Release:        0
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= 0.0.12
