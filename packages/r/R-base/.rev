@@ -1594,4 +1594,41 @@ CHANGES IN R 3.4.2:
       solve.default() and svd() has been defunct since R 3.1.0.  Using</comment>
     <requestid>841472</requestid>
   </revision>
+  <revision rev="77" vrev="34">
+    <srcmd5>1870904ac7d72c92fe8c97662b41233b</srcmd5>
+    <version>unknown</version>
+    <time>1615802041</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 4.0.4:
+  NEW FEATURES:
+    * File share/texmf/tex/latex/jss.cls has been updated to work with
+      LaTeX versions since Oct 2020.
+    * Unicode character width tables (as used by nchar(, type = &quot;w&quot;))
+      have been updated to Unicode 12.1 by Brodie Gaslam (PR#17781),
+      including many emoji.
+    * The internal table for iswprint (used on Windows, macOS and AIX)
+      has been updated to include many recent Unicode characters.
+  INSTALLATION on a UNIX-ALIKE:
+    * If an external BLAS is specified by --with-blas=foo or _via_
+      environment variable BLAS_LIBS is not found, this is now a
+      configuration error.  The previous behaviour was not clear from
+      the documentation: it was to continue the search as if
+      --with-blas=yes was specified.
+  BUG FIXES:
+    * all.equal(x,y) now &quot;sees&quot; the two different NAs in factors,
+      thanks to Bill Dunlap and others in PR#17897.
+    * (~ NULL)[1] and similar formula subsetting now works, thanks to a
+      report and patch by Henrik Bengtsson in PR#17935.  Additionally,
+      subsetting leaving an empty formula now works too, thanks to
+      suggestions by Suharto Anggono.
+    * .traceback(n) keeps source references again, as before R 4.0.0,
+       fixing a regression; introduced by the PR#17580, reported
+       including two patch proposals by Brodie Gaslam.
+    * unlist(plst, recursive=FALSE) no longer drops content for
+      pairlists with list components, thanks to the report and patch by
+      Suharto Anggono in PR#17950.
+    * iconvlist() now also works on MUSL based (Linux) systems, from a
+      report and patch suggestion by Wesley Chan in PR#17970.</comment>
+    <requestid>872357</requestid>
+  </revision>
 </revisionlist>

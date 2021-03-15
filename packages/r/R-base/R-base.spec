@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.0.3
+Version:        4.0.4
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
