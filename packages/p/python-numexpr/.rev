@@ -124,4 +124,19 @@ Implement single-spec version</comment>
     <comment></comment>
     <requestid>862129</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8ac2da5b726ab301e16ac60f5073f953</srcmd5>
+    <version>2.7.3</version>
+    <time>1615802067</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python3.6 build (no numpy) 
+
+- update to version 2.7.3:
+  * Pinned Numpy versions to minimum supported version in an effort to
+    alleviate issues seen in Windows machines not having the same MSVC
+    runtime installed as was used to build the wheels.
+  * ARMv8 wheels are now available, thanks to odidev for the pull
+    request.</comment>
+    <requestid>878626</requestid>
+  </revision>
 </revisionlist>

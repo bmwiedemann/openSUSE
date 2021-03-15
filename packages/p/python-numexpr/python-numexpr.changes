@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 12 20:28:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python3.6 build (no numpy) 
+
+-------------------------------------------------------------------
+Wed Mar  3 19:08:44 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.7.3:
+  * Pinned Numpy versions to minimum supported version in an effort to
+    alleviate issues seen in Windows machines not having the same MSVC
+    runtime installed as was used to build the wheels.
+  * ARMv8 wheels are now available, thanks to odidev for the pull
+    request.
+
+-------------------------------------------------------------------
 Sat Jan  9 20:01:06 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:

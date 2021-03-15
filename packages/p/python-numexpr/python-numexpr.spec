@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python36 1
 Name:           python-numexpr
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
