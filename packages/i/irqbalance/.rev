@@ -449,4 +449,12 @@
 - remove Correct-capitalizing-in-service-file.patch: upstream</comment>
     <requestid>827049</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>6598b4bccb0810faf1391c5c68047317</srcmd5>
+    <version>1.7.0+git20210222.9db8d5c</version>
+    <time>1615802020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878285</requestid>
+  </revision>
 </revisionlist>

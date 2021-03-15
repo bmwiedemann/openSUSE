@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar 10 17:45:54 UTC 2021 - trenn@suse.de
+
+- Update to version 1.7.0+git20210222.9db8d5c:
+  * ui: fix cpu/irq menu off by one
+  * fix uint64_t printf format (use PRIu64)
+  * Also fetch node info for non-PCI devices
+  * Add hot pull method for irqbalance
+  * Add log for hotplug appropriately
+  * add irq hotplug feature for irqbalance
+  * Remove some unused constant macros in constants.h
+  * Add a deprecation notice for IRQBALANCE_BANNED_CPUS
+  * Add IRQBALANCE_BANNED_CPULIST to env file
+  * log correctly for isolated and nohz_full cpus
+  * Update README.md
+  * Add some examples for IRQBALANCE_BANNED_CPUS
+  * Adjust how we determine if a cpu is online
+  * activate_mapping: activate only online CPUs
+  * add env variable to ban cpus using cpulist syntax
+  * put arg parsing detail into parse_command_line()
+  * Updating configure script to version 1.7.0
+  * Add strlen checking for IRQBALANCE_BANNED_CPUS
+  * remove redundant "/" in SOCKET_TMPFS
+  * Fix typo in service unit file
+  * arm64: Add irq aff change check For aarch64, the PPIs format in /proc/interrputs can be parsed and add to interrupt db, and next, the number of interrupts is counted and used to calculate the load. Finally these interrupts maybe scheduled between the NUMA domains.
+  * Correct typos in irqbalance.c
+  * free cpu_ban_string when the next request come
+  * improve irq migrate rule to avoid high irq load
+  * make the option 'V' closer to the option with no arg
+
+-------------------------------------------------------------------
 Sun Aug 16 14:14:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.7.0:

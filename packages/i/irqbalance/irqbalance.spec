@@ -1,7 +1,7 @@
 #
 # spec file for package irqbalance
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           irqbalance
-Version:        1.7.0
+Version:        1.7.0+git20210222.9db8d5c
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/Irqbalance/irqbalance
-Source:         https://github.com/Irqbalance/irqbalance/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Source:         https://github.com/Irqbalance/irqbalance/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
 BuildRequires:  libcap-ng-devel
