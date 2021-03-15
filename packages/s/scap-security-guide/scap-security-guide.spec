@@ -121,6 +121,9 @@ files to run a compliance test on SLE12, SLE15 and openSUSE
 %package redhat
 Summary:        XCCDF files for RHEL, CentOS, Fedora and ScientificLinux
 Group:          Productivity/Security
+%if 0%{?fedora} || 0%{?rhel}
+Conflicts:      scap-security-guide
+%endif
 
 %description redhat
 Security Content Automation Protocol (SCAP) Security Guide for Redhat/Fedora/CentOS/OracleLinux/ScientificLinux.

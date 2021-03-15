@@ -17,4 +17,13 @@
     <comment>- remove redhat conflict.</comment>
     <requestid>875317</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b2e497e0e402366220bdf7e249c49af2</srcmd5>
+    <version>0.1.54</version>
+    <time>1615802086</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the redhat conflict for packages built on redhat clones
+  or Fedora (forwarded request 878585 from juliogonzalezgil)</comment>
+    <requestid>878597</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 12 14:14:10 UTC 2021 - Julio González Gil <jgonzalez@suse.com>
+
+- Add the redhat conflict for packages built on redhat clones
+  or Fedora
+
+-------------------------------------------------------------------
 Fri Feb 26 08:45:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - remove redhat conflict.
