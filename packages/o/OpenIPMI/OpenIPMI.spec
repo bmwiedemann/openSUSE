@@ -1,7 +1,7 @@
 #
 # spec file for package OpenIPMI
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -146,7 +146,7 @@ rm -rf ./libedit
 %build
 export EDIT_CFLAGS=`pkg-config --cflags libedit`
 export EDIT_LIBS=`pkg-config --libs libedit`
-export CFLAGS="-fPIC %{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
 chmod 755 %{SOURCE4}
 %{SOURCE4}
 %configure --disable-static \
