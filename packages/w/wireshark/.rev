@@ -1493,4 +1493,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>874383</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>70cb7074f994ab273c9c9c2455f80758</srcmd5>
+    <version>3.4.4</version>
+    <time>1615802024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878299</requestid>
+  </revision>
 </revisionlist>

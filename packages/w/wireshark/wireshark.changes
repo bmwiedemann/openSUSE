@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 11 07:40:14 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.4.4:
+  * CVE-2021-22191: Wireshark could open unsafe URLs (boo#1183353).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.4.4.html
+
+-------------------------------------------------------------------
 Fri Feb 19 15:11:44 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Enable ITU G.729 Annex A/B speech codec for  Tumbleweed only
