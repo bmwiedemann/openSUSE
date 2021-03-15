@@ -1,7 +1,7 @@
 #
 # spec file for package git-filter-repo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global gitexecdir %{_libexecdir}/git
 
 Name:           git-filter-repo
-Version:        2.28.0
+Version:        2.29.0
 Release:        0
 Summary:        Quickly rewrite git repository history (git-filter-branch replacement)
 License:        MIT OR GPL-2.0-only
@@ -30,7 +30,6 @@ Group:          Development/Tools/Version Control
 URL:            https://github.com/newren/git-filter-repo
 #
 Source0:        https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Patch01:        filter-repo-README-remove-outdated-2.28.0-not-yet-re.patch
 #
 BuildArch:      noarch
 #

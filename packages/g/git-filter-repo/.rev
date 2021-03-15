@@ -36,4 +36,15 @@
     <comment></comment>
     <requestid>833567</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16c8837e804dc950262e2479c1a032da</srcmd5>
+    <version>2.29.0</version>
+    <time>1615802197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.29.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.29.0
+- Removed filter-repo-README-remove-outdated-2.28.0-not-yet-re.patch
+</comment>
+    <requestid>879118</requestid>
+  </revision>
 </revisionlist>
