@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 13 16:22:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix wrong kirigami dependency:
+  * 0001-RangeSlider-Lower-Kirigami-version-to-2.14.patch
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * Remove ApplicationWindow
+  * [RangeSlider] Remove inset, endVisualPosition and palette
+
+-------------------------------------------------------------------
 Tue Feb 23 14:52:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.1
