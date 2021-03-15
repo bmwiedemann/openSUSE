@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 12 12:21:41 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 3.0.2
+  * add w/ glossary and model
+- Install alternative binary files for different Python versions
+- Reenable tests
+
+-------------------------------------------------------------------
+Tue Oct 20 13:30:16 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 3.0.1
+  * update retry and timeout config
+- Update to version 3.0.0
+  * migrate API to microgenerator
+- New requirements
+  * python-libcst >= 0.2.5
+  * python-proto-plus >= 0.4.0
+  * python-pytest-asyncio
+- Disable not working tests for now
+
+-------------------------------------------------------------------
 Tue Jun 16 12:58:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by weblate
