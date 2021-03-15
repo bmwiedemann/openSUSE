@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-translations
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-translations
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Plugin for testing gettext, .po and .mo files
 License:        Apache-2.0
 URL:            https://github.com/Thermondo/pytest-translations
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-translations/pytest-translations-%{version}.tar.gz
+Patch0:         https://patch-diff.githubusercontent.com/raw/Thermondo/pytest-translations/pull/48.patch#/pr_48.patch
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module polib >= 1.0.5}
-BuildRequires:  %{python_module pyenchant >= 1.6.0}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  myspell-de_DE
@@ -35,6 +34,11 @@ BuildRequires:  python-rpm-macros
 Requires:       python-polib >= 1.0.5
 Requires:       python-pyenchant >= 1.6.0
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module polib >= 1.0.5}
+BuildRequires:  %{python_module pyenchant >= 1.6.0}
+BuildRequires:  %{python_module pytest > 5}
+# /SECTION
 %python_subpackages
 
 %description
@@ -47,6 +51,7 @@ Test check for:
 
 %prep
 %setup -q -n pytest-translations-%{version}
+%patch0 -p1
 
 %build
 export LANG=en_US.UTF-8
@@ -59,8 +64,7 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-# skipped tests needs language dicts
-%pytest -k 'not (test_language_missing_in_po or test_language_catalog_missing)'
+%pytest
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
