@@ -204,4 +204,12 @@
   * Fix: examples silent rules on Solaris</comment>
     <requestid>829532</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>659fafdc3694e1d89c13887c0a09b013</srcmd5>
+    <version>0.12.2</version>
+    <time>1615802029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878330</requestid>
+  </revision>
 </revisionlist>

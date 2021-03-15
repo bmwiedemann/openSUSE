@@ -2,7 +2,7 @@
 #
 # spec file for package userspace-rcu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 
 %define soname  6
 Name:           userspace-rcu
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        Userspace Read-Copy-Update Library
 License:        LGPL-2.1-or-later AND MIT AND GPL-2.0-or-later AND GPL-3.0-or-later
