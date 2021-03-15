@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-sccp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-sccp
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
@@ -26,18 +26,17 @@ Group:          Hardware/Mobile
 URL:            https://projects.osmocom.org/projects/libosmo-sccp
 
 #Git-Clone:	https://git.osmocom.org/libosmo-sccp
-Source:         %name-%version.tar.xz
+Source:         https://github.com/osmocom/libosmo-sccp/archive/%version.tar.gz
 Patch1:         0001-build-fixes.patch
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  xz
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.7.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.1.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
 
 %description
 SCCP is a network layer protocol that provides extended routing, flow
