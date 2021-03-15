@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 12 12:00:39 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Fix recent build failure with clean-cache.patch
+
+-------------------------------------------------------------------
 Fri Jun 12 11:15:44 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 4.12.1

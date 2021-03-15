@@ -75,4 +75,12 @@
  * The thread_local parameter is now forwarded to the Redis client.</comment>
     <requestid>825346</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8cf85556f83d7886e38f2215cf91b560</srcmd5>
+    <version>4.12.1</version>
+    <time>1615802083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878601</requestid>
+  </revision>
 </revisionlist>

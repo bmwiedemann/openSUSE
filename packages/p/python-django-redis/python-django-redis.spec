@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-redis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        A redis cache backend for Django
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-redis
 Source:         https://files.pythonhosted.org/packages/source/d/django-redis/django-redis-%{version}.tar.gz
+# minimal patch to fix the testsuite, see https://github.com/jazzband/django-redis/pull/492 for reference
+Patch0:         clean-cache.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
 BuildRequires:  %{python_module mock}
@@ -47,6 +49,7 @@ A redis cache backend for Django.
 
 %prep
 %setup -q -n django-redis-%{version}
+%autopatch -p1
 
 %build
 %python_build
