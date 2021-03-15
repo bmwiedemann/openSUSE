@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  1 02:12:42 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Enable Wand tests
+
+-------------------------------------------------------------------
 Mon Feb 22 07:44:55 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Disable pgmagick tests on Tumbleweed Python 3.6 due to broken

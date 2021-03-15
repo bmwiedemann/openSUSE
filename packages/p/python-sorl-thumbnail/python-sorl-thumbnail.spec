@@ -45,6 +45,7 @@ BuildRequires:  %{python_module boto}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module Wand}
 BuildRequires:  %{pythons}
 BuildRequires:  GraphicsMagick
 BuildRequires:  ImageMagick
@@ -91,6 +92,8 @@ export DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
 export DJANGO_SETTINGS_MODULE=tests.settings.dbm
 %pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
 export DJANGO_SETTINGS_MODULE=tests.settings.graphicsmagick
+%pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
+export DJANGO_SETTINGS_MODULE=tests.settings.wand
 %pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
 
 # pgmagick is not installed in all environments
