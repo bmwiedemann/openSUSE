@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 14 21:16:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.1
+  * Changes to the build system only; no user-visible changes.
+
+-------------------------------------------------------------------
 Sun Sep  6 13:10:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Upgrade old specfile constructs.
