@@ -1,0 +1,47 @@
+--- netty-netty-4.1.59.Final/transport-native-unix-common/pom.xml	2021-02-11 19:24:51.672176696 +0100
++++ netty-netty-4.1.59.Final/transport-native-unix-common/pom.xml	2021-02-11 19:25:30.380406003 +0100
+@@ -153,7 +153,7 @@
+                       <env key="LIB_DIR" value="${nativeLibOnlyDir}" />
+                       <env key="OBJ_DIR" value="${nativeObjsOnlyDir}" />
+                       <env key="JNI_PLATFORM" value="${jni.platform}" />
+-                      <env key="CFLAGS" value="-O3 -Werror -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
++                      <env key="CFLAGS" value="-O3 -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
+                       <env key="LDFLAGS" value="-Wl,--no-as-needed -lrt" />
+                       <env key="LIB_NAME" value="${nativeLibName}" />
+                       <!-- support for __attribute__((weak_import)) by the linker was added in 10.2 so ensure we
+@@ -228,7 +228,7 @@
+                       <env key="LIB_DIR" value="${nativeLibOnlyDir}" />
+                       <env key="OBJ_DIR" value="${nativeObjsOnlyDir}" />
+                       <env key="JNI_PLATFORM" value="${jni.platform}" />
+-                      <env key="CFLAGS" value="-O3 -Werror -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
++                      <env key="CFLAGS" value="-O3 -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
+                       <env key="LDFLAGS" value="-Wl,--no-as-needed -lrt" />
+                       <env key="LIB_NAME" value="${nativeLibName}" />
+                     </exec>
+@@ -298,7 +298,7 @@
+                       <env key="LIB_DIR" value="${nativeLibOnlyDir}" />
+                       <env key="OBJ_DIR" value="${nativeObjsOnlyDir}" />
+                       <env key="JNI_PLATFORM" value="${jni.platform}" />
+-                      <env key="CFLAGS" value="-O3 -Werror -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
++                      <env key="CFLAGS" value="-O3 -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
+                       <env key="LDFLAGS" value="-Wl,--no-as-needed -lrt" />
+                       <env key="LIB_NAME" value="${nativeLibName}" />
+                     </exec>
+@@ -372,7 +372,7 @@
+                       <env key="LIB_DIR" value="${nativeLibOnlyDir}" />
+                       <env key="OBJ_DIR" value="${nativeObjsOnlyDir}" />
+                       <env key="JNI_PLATFORM" value="${jni.platform}" />
+-                      <env key="CFLAGS" value="-O3 -Werror -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
++                      <env key="CFLAGS" value="-O3 -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
+                       <env key="LDFLAGS" value="-Wl,--no-as-needed -lrt" />
+                       <env key="LIB_NAME" value="${nativeLibName}" />
+                     </exec>
+@@ -446,7 +446,7 @@
+                       <env key="LIB_DIR" value="${nativeLibOnlyDir}" />
+                       <env key="OBJ_DIR" value="${nativeObjsOnlyDir}" />
+                       <env key="JNI_PLATFORM" value="${jni.platform}" />
+-                      <env key="CFLAGS" value="-O3 -Werror -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
++                      <env key="CFLAGS" value="-O3 -Wno-attributes -fPIC -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden" />
+                       <env key="LDFLAGS" value="-Wl,--no-as-needed -lrt" />
+                       <env key="LIB_NAME" value="${nativeLibName}" />
+                     </exec>
