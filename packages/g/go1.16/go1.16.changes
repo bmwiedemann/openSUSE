@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Mar 12 01:27:53 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.2 (released 2021-03-11) includes fixes to cgo, the
+  compiler, linker, the go command, and the syscall and time
+  packages.
+  Refs boo#1182345 go1.16 release tracking
+  * go#44793 cmd/go: mod tidy should ignore missing standard library packages
+  * go#44746 cmd/go: improve error message when outside a module from "working directory is not part of a module"
+  * go#44676 cmd/go: warning message when getting a retracted module version is missing a trailing newline
+  * go#44659 runtime: marked free object in span
+  * go#44647 cmd/go: "malformed import path" in Go 1.16 for packages with path elements containing a leading dot
+  * go#44638 cmd/link: runtime crash, unexpected fault address 0xffffffffffffffff, h2_bundle.go, when using plugin
+  * go#44618 time: LoadLocationFromTZData with slim tzdata uses incorrect zone
+  * go#44593 syscall & x/sys/windows: buffer overflow in GetQueuedCompletionStatus
+  * go#44498 cmd/go: 'go mod edit -exclude' erroneously rejects '+incompatible' versions
+  * go#44496 cmd/go: malformed module path with retract v2+
+  * go#44464 cmd/compile: ICE on deferred call to syscall.LazyDLL.Call
+  * go#44462 x/tools/go/analysis, syscall: ptrace redeclared in this block
+  * go#44433 cmd/compile: Compiler regression in Go 1.16 - internal compiler error: child dcl collision on symbol
+  * go#44402 doc: Broken image in readme
+  * go#44358 cmd/compile: internal compiler error: Value live at entry. It shouldn't be.
+  * go#44346 runtime/cgo: cannot build with -Wsign-compare
+
+-------------------------------------------------------------------
+Wed Mar 10 17:33:27 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.1 (released 2021-03-10) includes security fixes to the
+  archive/zip and encoding/xml packages.
+  CVE-2021-27918 CVE-2021-27919
+  Refs boo#1182345 go1.16 release tracking
+  * boo#1183333 CVE-2021-27918
+  * go#44915 encoding/xml: infinite loop when using `xml.NewTokenDecoder` with a custom `TokenReader`
+  * boo#1183334 CVE-2021-27919
+  * go#44917 archive/zip: can panic when calling Reader.Open
+
+-------------------------------------------------------------------
 Thu Feb 18 23:21:47 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - gcc6-go.patch fix typo go-7 to go-6 for bootstrap on SLE-12 gcc6
