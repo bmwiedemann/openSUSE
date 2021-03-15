@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar  4 19:17:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.0
+  * Fixed an issue with extracting data from images that had their
+    DecodeParms structured as a list of dictionaries.
+  * Fixed an issue where a dangling stream object is created if we
+    fail to create the requested stream dictionary.
+  * Calling Dictionary() and Array() on objects which are already
+    of that type returns a shallow copy rather than throwing an
+    exception, in keeping with Python semantics.
+- Update to version 2.7.0
+  * Added an option to tell Pdf.save to recompress flate streams,
+    and a global option to set the flate compression level. This
+    option can be use to force the recompression of flate streams
+    if they are not well compressed.
+  * Fixed "TypeError: only pages can be inserted" when attempting
+    to an insert an unowned page using QPDF 10.2.0 or later.
+- Update to version 2.6.0
+  * Rebuild wheels against QPDF 10.2.0.
+
+-------------------------------------------------------------------
 Sun Feb  7 13:18:33 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add docs/*/*.rst to package contents
