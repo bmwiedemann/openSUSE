@@ -171,4 +171,22 @@
   * go#42384 cmd/link: PE linker segfaults in addpersrc when cross-compiling (forwarded request 869616 from jfkw)</comment>
     <requestid>869618</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>56b0cd6c1e7d7d58da286751b673f2b1</srcmd5>
+    <version>1.15.10</version>
+    <time>1615802037</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.15.10 (released 2021-03-11) includes fixes to the compiler,
+  the go command, and the net/http, os, syscall, and time packages.
+  Refs boo#1175132 go1.15 release tracking
+  * go#44792 cmd/go: mod tidy should ignore missing standard library packages
+  * go#44658 runtime: marked free object in span
+  * go#44617 time: LoadLocationFromTZData with slim tzdata uses incorrect zone
+  * go#44592 syscall &amp; x/sys/windows: buffer overflow in GetQueuedCompletionStatus
+  * go#44294 net/http: ServeContent()/ServeFile() doesn't return expected response when WriteTimeout happens
+  * go#44273 os: copy_file_range system call fails on some file systems
+  * go#42935 net/http: Transport race condition by Content-Length == 0 response
+  * go#42930 cmd/compile: miscompilation of some arithmetic and conditionals on arm (forwarded request 878435 from jfkw)</comment>
+    <requestid>878438</requestid>
+  </revision>
 </revisionlist>
