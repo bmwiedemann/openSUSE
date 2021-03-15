@@ -105,4 +105,13 @@
     <comment></comment>
     <requestid>578402</requestid>
   </revision>
+  <revision rev="17" vrev="1236">
+    <srcmd5>47d16aa9f78aff76f93bfea3643fe4d6</srcmd5>
+    <version>1.0.2</version>
+    <time>1615802192</time>
+    <user>dimstar_suse</user>
+    <comment>- Enforce usage of optflags
+- Modernise spec file</comment>
+    <requestid>879098</requestid>
+  </revision>
 </revisionlist>
