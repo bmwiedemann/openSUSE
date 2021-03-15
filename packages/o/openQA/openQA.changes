@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 14 00:03:09 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1615570408.acacd6dbc:
+  * Wait for the element instead of constantly refreshing the page
+  * Revert "Rework symlink CASEDIR and set values to relative path"
+  * Dependency cron 2021-03-12
+
+-------------------------------------------------------------------
 Thu Mar 11 16:19:37 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1615465829.199a835ed:
