@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 14 10:09:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.5.1:
+  * Update savegame format. Old savegames still work, but new
+    savegames can't be loaded with older versions of dhewm3!
+  * dhewm3 now supports the Doom3 Demo gamedata.
+  * Create the game window on the display the cursor is currently
+    on (when using more than one display).
+  * Added r_fullscreenDesktop CVar to set if fullscreen mode should
+    be "classic" or "Desktop" which means a borderless window at.
+    desktop resolution.
+  * Fullscreen modes that are not at the current desktop resolution
+    should work better now.
+  * Several sound-related bugfixes.
+  * Restore "Carmack's Reverse" Z-Fail stencil shadows; use
+    glStencilOpSeparate() if available.
+  * New CVar g_hitEffect: If set to 0, the player camera damage
+    effects (like double-vision and extreme tilt) when being hit
+    are disabled.
+  * Fix lingering messages in HUD after loading savegame.
+  * Fixed clipping bug in delta1.
+  * Improve compatibility with some custom scripts.
+  * Registering multiplayer servers at id's master-server fixed,
+    so they can be found in the multiplayer menu.
+  * Support for reproducible builds by setting the CMake option
+    REPRODUCIBLE_BUILD.
+  * Proper handling of paths with dots in directory names.
+  * In the Spanish translation all the Alpha Lab autosaves got
+    the same name, now the autosave name is based on the mapename
+    instead which is distinct.
+- Remove patch
+  * 0001-Remove-use-of-date-time-macros.patch (fixed by upstream)
+
+-------------------------------------------------------------------
+Thu Oct 17 17:29:10 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sat Feb 23 02:22:12 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to 1.5.0 (no changelog)

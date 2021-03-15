@@ -1,7 +1,7 @@
 #
 # spec file for package dhewm3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,18 @@
 
 
 Name:           dhewm3
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        DOOM 3 source port
 License:        GPL-3.0-only
-Group:          Amusements/Games/3D/Shoot
-Url:            https://github.com/dhewm/dhewm3
+URL:            https://github.com/dhewm/dhewm3
 Source0:        https://github.com/dhewm/%{name}/archive/%{version}.tar.gz
-# upstream bug: https://github.com/dhewm/dhewm3/issues/172
-Patch0:         0001-Remove-use-of-date-time-macros.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libcurl)
-# BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(vorbis)
@@ -49,11 +45,10 @@ Unlike the original DOOM 3, dhewm3 uses:
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 cd neo
-%cmake ..
+%cmake -DREPRODUCIBLE_BUILD=ON ..
 %make_jobs
 
 %install
