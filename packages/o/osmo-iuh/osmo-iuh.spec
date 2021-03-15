@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-iuh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,31 +18,28 @@
 
 Name:           osmo-iuh
 %define lname	libosmo-ranap3
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/osmohnbgw/wiki
 
-Source:         %name-%version.tar.xz
-Patch1:         damncode.diff
-Patch3:         0001-iu_client-uses-gprs_msgb.h.patch
+Source:         https://github.com/osmocom/osmo-iuh/archive/%version.tar.gz
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
 # python3 for asn1tostruct.py
 BuildRequires:  python3
-BuildRequires:  xz
 BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.3.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 0.10.0
-BuildRequires:  pkgconfig(libosmocore) >= 0.12.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 0.12.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.1.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.4.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.5.0
 BuildRequires:  pkgconfig(libosmogb)
-BuildRequires:  pkgconfig(libosmogsm) >= 0.12.0
-BuildRequires:  pkgconfig(libosmovty) >= 0.12.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
 
 %description
 Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)

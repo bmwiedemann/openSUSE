@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 14 21:07:14 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.0
+  * Change default SCTP conn NULL->127.0.0.1 to localhost->localhost
+- Drop 0001-iu_client-uses-gprs_msgb.h.patch, damncode.diff
+
+-------------------------------------------------------------------
 Sat Aug  1 14:25:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 0.6.1
