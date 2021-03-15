@@ -99,4 +99,13 @@
   * Added support for WaveBanks with endian-swapped PCM data (forwarded request 876299 from ukbeast89)</comment>
     <requestid>876381</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0c2ab16aefba09425ffd30614cac77e8</srcmd5>
+    <version>21.03.05</version>
+    <time>1615802100</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.03.5:
+  * Fixes a regression that caused SoundBanks to no longer parse correctly (forwarded request 878747 from ukbeast89)</comment>
+    <requestid>878766</requestid>
+  </revision>
 </revisionlist>
