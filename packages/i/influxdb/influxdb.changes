@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  5 12:49:57 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- in preparation for new package for influxdb 2.0.x, add a Conflicts
+  statement to not have both installable on the same system
+
+-------------------------------------------------------------------
 Wed Feb 10 09:09:18 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 1.8.4

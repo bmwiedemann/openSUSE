@@ -53,6 +53,8 @@ Requires(post): systemd
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
 %endif
+# conflicts with new package influxdb2
+Conflicts:      influxdb2
 
 %description
 InfluxDB is an distributed time series database with no external dependencies.
