@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 12 08:18:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * velocity-1.7-CVE-2020-13936.patch
+    + Backport fixes for bsc#1183360, CVE-2020-13936: arbitrary
+      code execution when attacker is able to modify templates
+
+-------------------------------------------------------------------
 Tue Oct  1 11:35:09 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the compatibility package log4j12

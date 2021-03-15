@@ -1,7 +1,7 @@
 #
 # spec file for package velocity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://velocity.apache.org/
 Source0:        http://www.apache.org/dist/velocity/engine/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-%{version}.pom
 Patch0:         velocity-build_xml.patch
+Patch1:         velocity-1.7-CVE-2020-13936.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  ant-junit
 BuildRequires:  antlr
@@ -161,6 +162,7 @@ for j in $(find . -name "*.jar" | grep -v /test/); do
     mv $j $j.no
 done
 %patch0 -b .sav0
+%patch1 -p1
 
 cp %{SOURCE1} pom.xml
 

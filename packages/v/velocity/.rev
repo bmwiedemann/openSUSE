@@ -178,4 +178,12 @@
     <comment>Build against the new compatibility package log4j12</comment>
     <requestid>734274</requestid>
   </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>e390134ab77fcb4a11cdd079ecfaffbb</srcmd5>
+    <version>1.7</version>
+    <time>1615802070</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1183360, CVE-2020-13936</comment>
+    <requestid>878595</requestid>
+  </revision>
 </revisionlist>
