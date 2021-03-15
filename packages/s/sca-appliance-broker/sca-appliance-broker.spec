@@ -1,7 +1,7 @@
-# 
+#
 # spec file for package sca-appliance-broker
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 %define sca_common sca
 %define sca_webdir /srv/www/htdocs/%{sca_common}
 %define sca_configdir %{_sysconfdir}/%{sca_common}
 
-Name:         sca-appliance-broker
-Version:      1.3
-Release:      0
-Summary:      Supportconfig Analysis Appliance Broker
-License:      GPL-2.0
-URL:          https://github.com/g23guy/sca-appliance-broker
-Group:        System/Monitoring
-Source:       %{name}-%{version}.tar.gz
-Requires:     sca-appliance-common
-Buildarch:    noarch
+Name:           sca-appliance-broker
+Version:        1.3.1
+Release:        0
+Summary:        Supportconfig Analysis Appliance Broker
+License:        GPL-2.0-only
+Group:          System/Monitoring
+URL:            https://github.com/g23guy/sca-appliance-broker
+Source:         %{name}-%{version}.tar.gz
+Requires:       sca-appliance-common
+BuildArch:      noarch
 
 %description
 Monitors inbound supportconfig archives and is responsible for
@@ -99,4 +103,3 @@ elif grep -i 'sca/index.php' /srv/www/htdocs/index.html &>/dev/null; then
 fi
 
 %changelog
-
