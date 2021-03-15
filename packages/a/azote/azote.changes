@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 15 09:29:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.0:
+  * Restore wallpapers in use on startup;
+  * some tricky fixes to xrandr / fehbg support on multi-headed setups
+  * double click no longer applies the selected wallpaper to
+    outputs, just to displays preview;
+  * added check buttons to split current image between selected
+    outputs only.
+
+-------------------------------------------------------------------
 Mon Jan 11 09:11:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.2:

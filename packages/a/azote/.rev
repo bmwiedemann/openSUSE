@@ -85,4 +85,18 @@
   * set icon name for X11 and app_id for Wayland</comment>
     <requestid>862229</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>58e6e33c203d420051cc4c66e051faa6</srcmd5>
+    <version>1.9.0</version>
+    <time>1615802195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * Restore wallpapers in use on startup;
+  * some tricky fixes to xrandr / fehbg support on multi-headed setups
+  * double click no longer applies the selected wallpaper to
+    outputs, just to displays preview;
+  * added check buttons to split current image between selected
+    outputs only.</comment>
+    <requestid>879122</requestid>
+  </revision>
 </revisionlist>
