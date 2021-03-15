@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 13 10:10:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- enable ztex support (fix usb dependency): 
+  add john-1.9.0-jumbo-gcc10.patch to fix fcommon related build failures
+
+-------------------------------------------------------------------
 Tue Oct  6 18:02:51 UTC 2020 - simmphonie@opensuse.org
 
 - Add cl-device.patch to handle systems that already defined

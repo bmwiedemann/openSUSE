@@ -1,7 +1,7 @@
 #
 # spec file for package john
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,14 +35,15 @@ Source8:        https://www.openwall.com/john/k/%{jumboversion}.tar.xz
 Source9:        https://www.openwall.com/john/k/%{jumboversion}.tar.xz.sign
 # PATCH-FIX-UPSTREAM cl-device.patch gh#openwall/john#4331
 Patch0:         cl-device.patch
+Patch1:         john-1.9.0-jumbo-gcc10.patch
 BuildRequires:  dos2unix
 BuildRequires:  gmp-devel
 BuildRequires:  libpcap-devel
-BuildRequires:  libusb-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(openssl)
 
 %description
@@ -56,6 +57,7 @@ cd %{jumboversion} && cp -a ./* ..
 cd ..
 rm -r %{jumboversion}
 %patch0 -p1
+%patch1 -p1
 # adapt the configs
 perl -pi -e "s#Wordlist = (.*)#Wordlist = %{johndir}/password.lst#g" $RPM_BUILD_DIR/%{name}-%{version}/run/john.conf
 perl -pi -e 's#^(\#define JOHN_SYSTEMWIDE_EXEC)\s.+$#$1\t\"%{johndir}\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h
@@ -71,6 +73,7 @@ pushd src
 %configure --with-systemwide \
            --disable-openmp \
            --enable-fuzz \
+	   --enable-ztex=yes \
            --enable-experimental-code \
            --enable-pkg-config \
 %ifarch x86_64
