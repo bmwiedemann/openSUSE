@@ -23,7 +23,7 @@
 
 %bcond_without lang
 Name:           plasma5-phone-components
-Version:        5.21.1
+Version:        5.21.2
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
