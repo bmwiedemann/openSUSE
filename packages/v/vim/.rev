@@ -5035,4 +5035,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Out of bounds compiler warning.</comment>
     <requestid>876604</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>d1b34fe623bc501b4e85e4045db4d1fc</srcmd5>
+    <version>8.2.2607</version>
+    <time>1615905778</time>
+    <user>RBrownSUSE</user>
+    <comment>- Updated to version 8.2.2607, fixes the following problems
+  * Focus events end Insert mode if 'esckeys' is not set.
+  * Vim9: &quot;..=&quot; not always recognized.
+  * Vim9: Function name is not recognized.
+  * Vim9: no error if variable is defined for existing function.
+  * Second time a preview popup is opened highlight is not set. (Gabriel
+  Dupras)
+  * 'fillchars' &quot;stl&quot; and &quot;stlnc&quot; items must be single byte.
+  * Tests fail when run as root.
+  * Test may leave file behind.
+  * Vim9: crash when getting the types for a legacy function.
+  * Vim9: using invalid pointer for error message.
+  * Vim9: crash when calling partial with wrong function.
+  * Vim9: a function name with &quot;-&gt;&quot; in the next line doesn't work.
+  * Vim9: defining a :func function checks for white space after a comma in
+  the arguments.
+  * Compiler warning for type conversion.
+  * Lua cannot handle a passed in lambda.
+  * Vim9: crash in garbagecollect after for loop.
+  * Vim9: checking vararg type is wrong when function is auto-loaded.
+  * Vim9: sourcing Vim9 script triggers a redraw.
+  * Vim9: screendump test fails on MS-Windows.
+  * Vim9: cannot compare result of getenv() with null.
+  * Vim9: type error for assigning the result of list concatenation to a list.
+  * Vim9: illegal memory access.
+  * Process id may be invalid.
+  * Recover test fails on FreeBSD.
+  * Build failure with tiny features.
+  * Recover test hangs in the GUI.
+  * Vim9: default argument value may cause internal error.</comment>
+    <requestid>879130</requestid>
+  </revision>
 </revisionlist>

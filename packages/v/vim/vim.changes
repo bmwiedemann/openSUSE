@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Mar 15 10:01:53 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.2607, fixes the following problems
+  * Focus events end Insert mode if 'esckeys' is not set.
+  * Vim9: "..=" not always recognized.
+  * Vim9: Function name is not recognized.
+  * Vim9: no error if variable is defined for existing function.
+  * Second time a preview popup is opened highlight is not set. (Gabriel
+  Dupras)
+  * 'fillchars' "stl" and "stlnc" items must be single byte.
+  * Tests fail when run as root.
+  * Test may leave file behind.
+  * Vim9: crash when getting the types for a legacy function.
+  * Vim9: using invalid pointer for error message.
+  * Vim9: crash when calling partial with wrong function.
+  * Vim9: a function name with "->" in the next line doesn't work.
+  * Vim9: defining a :func function checks for white space after a comma in
+  the arguments.
+  * Compiler warning for type conversion.
+  * Lua cannot handle a passed in lambda.
+  * Vim9: crash in garbagecollect after for loop.
+  * Vim9: checking vararg type is wrong when function is auto-loaded.
+  * Vim9: sourcing Vim9 script triggers a redraw.
+  * Vim9: screendump test fails on MS-Windows.
+  * Vim9: cannot compare result of getenv() with null.
+  * Vim9: type error for assigning the result of list concatenation to a list.
+  * Vim9: illegal memory access.
+  * Process id may be invalid.
+  * Recover test fails on FreeBSD.
+  * Build failure with tiny features.
+  * Recover test hangs in the GUI.
+  * Vim9: default argument value may cause internal error.
+  * Poke files are not recognized.
+  * Code coverage could be improved.
+  * List of distributed files is incomplete.
+  * Alternate buffer added to session file even when it's hidden.
+  * Setting 'winminheight' may cause 'lines' to change.
+  * :doautocmd may confuse scripts listening to WinEnter.
+  * Vim9: "import * as" does not work at script level.
+  * Vim9: :open does not need to be supported.
+  * Build failure.
+  * Vim9: crash when putting an unknown type in a dictionary. (Yegappan
+  Lakshmanan)
+  * Memory usage test often fails on FreeBSD.
+  * Vim9: continue doesn't work if :while is very first command. (Yegappan
+  Lakshmanan)
+  * Vim9: no effect if user command is also a function.
+  * GUI-specific command line arguments not tested.
+  * Vim9: string index and slice does not include composing chars.
+  * strchars() defaults to counting composing characters.
+  * strcharpart() cannot include composing characters.
+
+-------------------------------------------------------------------
 Wed Mar  3 19:04:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2564, fixes the following problems
