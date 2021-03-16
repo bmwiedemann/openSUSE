@@ -18,7 +18,7 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.19
+Version:        10.20
 Release:        0
 Summary:        Job queue
 License:        Artistic-2.0
@@ -28,8 +28,10 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Mojolicious) >= 8.50
-Requires:       perl(Mojolicious) >= 8.50
+BuildRequires:  perl(Mojolicious) >= 9.0
+BuildRequires:  perl(YAML::XS)
+Requires:       perl(Mojolicious) >= 9.0
+Requires:       perl(YAML::XS)
 %{perl_requires}
 
 %description
@@ -46,6 +48,8 @@ in background processes, outside of the request/response lifecycle of web
 applications. Among those tasks you'll commonly find image resizing, spam
 filtering, HTTP downloads, building tarballs, warming caches and basically
 everything else you can imagine that's not super fast.
+
+Take a look at our excellent documentation in Minion::Guide!
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
