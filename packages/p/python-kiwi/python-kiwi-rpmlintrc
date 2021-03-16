@@ -1,0 +1,46 @@
+# There is a kiwi manual page, kiwi-ng exists for the alternative system
+addFilter("no-manual-page-for-binary kiwi-ng")
+
+# don't blame on empty package, kiwi-boot-requires for obs
+# integration is used to provide a requires list but the package
+# itself comes with no content which is intentional. In addition
+# don't blame on lib dependency which are also an expected result
+# for this buildservice internal package
+addFilter("suse-filelist-empty .*")
+addFilter("explicit-lib-dependency .*")
+
+# don't check uid for tftpboot
+addFilter("non-standard-uid .*")
+
+# don't check for buildroot usage, kiwi's Makefile uses the same var name
+addFilter("rpm-buildroot-usage .*")
+
+# don't check position-independent-executable
+addFilter("position-independent-executable-suggested .*")
+
+# don't check for file duplicates
+addFilter("files-duplicate .*")
+addFilter("cross-directory-hard-link .*")
+
+# don't check for locale locations, they are used in the initrd only
+addFilter("file-not-in-%lang .*")
+
+# don't check for manual page of binaries used in initrd only
+addFilter("W: no-manual-page-for-binary dcounter");
+addFilter("W: no-manual-page-for-binary startshell");
+addFilter("W: no-manual-page-for-binary utimer");
+addFilter("W: no-manual-page-for-binary driveready");
+addFilter("W: no-manual-page-for-binary setctsid");
+addFilter("W: no-manual-page-for-binary isconsole");
+addFilter("W: no-manual-page-for-binary kiwicompat");
+
+# kiwi master package can't be noarch if sub packages are arch specific
+addFilter("W: no-binary");
+
+# if we add a provides to the obsoleted another warning that the
+# same package is provided and obsoleted appears. This warning is
+# pointless or doesn't explain what it really wants
+addFilter("W: obsolete-not-provided");
+
+# providing deb packages from this spec requires the tag to be hard coded
+addFilter("W: hardcoded-packager-tag");
