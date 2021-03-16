@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver .0.0c28dc5a5083
+%define git_ver .0.b5c35d115b31
 
 Name:           fabtests
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        Test suite for libfabric API
 License:        BSD-2-Clause OR GPL-2.0-only
