@@ -655,4 +655,14 @@
     for the complete changelog.</comment>
     <requestid>877261</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>432754bb40ecd4c419ebe8f892819063</srcmd5>
+    <version>10.3.1</version>
+    <time>1615905819</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 10.3.1
+  * See http://qpdf.sourceforge.net/files/qpdf-manual.html#ref.release-notes
+    for the complete changelog.</comment>
+    <requestid>878472</requestid>
+  </revision>
 </revisionlist>
