@@ -415,4 +415,12 @@
     <comment>Ghostscript version upgrade to 9.53.3 that fixes boo#1177922 and fixes compilation with FreeType 2.10.3+ (forwarded request 843001 from jsmeix)</comment>
     <requestid>843002</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>f92844480798dffe7e0857f5d3703aee</srcmd5>
+    <version>9.53.3</version>
+    <time>1615905786</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879172</requestid>
+  </revision>
 </revisionlist>

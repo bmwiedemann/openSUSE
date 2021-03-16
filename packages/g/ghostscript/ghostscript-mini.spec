@@ -1,7 +1,7 @@
 #
 # spec file for package ghostscript-mini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,6 +93,16 @@ Patch100:       remove-zlib-h-dependency.patch
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 Patch101:       ijs_exec_server_dont_use_sh.patch
 # RPM dependencies:
+# The "Provides: ghostscript_any" is there to support "BuildRequires: ghostscript_any"
+# so other packages can build with any available Ghostscript implementation,
+# either ghostscript or ghostscript-mini ("BuildRequires: ghostscript-mini" should not
+# be used because ghostscript-mini does not exist outside of OBS so other packages that
+# use "BuildRequires: ghostscript-mini" could not be built in published products).
+# The "Provides: ghostscript_any" does not affect end-users who should not get
+# ghostscript-mini installed (but only the full featured ghostscript package)
+# because ghostscript-mini (and ghostscript-mini-devel) are not published
+# in openSUSE products, cf. https://build.opensuse.org/request/show/877083
+Provides:       ghostscript_any = %{version}
 Conflicts:      ghostscript
 Conflicts:      ghostscript-x11
 Conflicts:      ghostscript-devel

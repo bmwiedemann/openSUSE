@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  5 12:35:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide ghostscript_any by ghostscript-mini: this is a valid
+  replacement for consumers.
+
+-------------------------------------------------------------------
 Tue Oct 20 16:38:24 CEST 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - 41ef9a0bc36b9db7115fbe9623f989bfb47bbade.patch
