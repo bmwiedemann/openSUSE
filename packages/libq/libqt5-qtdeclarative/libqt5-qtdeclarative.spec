@@ -159,7 +159,13 @@ make %{?_smp_mflags} VERBOSE=1 -C %{_target_platform}
 mkdir -p %{_target_platform}-no_sse2
 pushd %{_target_platform}-no_sse2
 %qmake5 -config no_sse2 .. -- -no-qml-jit
-make %{?_smp_mflags} sub-src-clean
+
+make %{?_smp_mflags} VERBOSE=1 sub-src-qmake_all
+# src/qml/Makefile has to be generated after qmltyperegistrar was built,
+# so we have to run qmake again after that. There is no explicit
+# dependency, it relies on CONFIG+=ordered...
+make %{?_smp_mflags} VERBOSE=1 -C src/qmltyperegistrar
+make %{?_smp_mflags} VERBOSE=1 sub-src-qmake_all
 make %{?_smp_mflags} VERBOSE=1 -C src/qml
 popd
 %endif

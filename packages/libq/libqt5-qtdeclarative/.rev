@@ -584,4 +584,13 @@ depends on sr#251413</comment>
     <comment>- Enable qml-autoreqprov</comment>
     <requestid>863029</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>7eac7bbd5efd9dec8545e0165d29d91a</srcmd5>
+    <version>5.15.2</version>
+    <time>1615905701</time>
+    <user>RBrownSUSE</user>
+    <comment>- Work around implicit dependency of src/qml on qmltyperegistrar
+  which lead to an incomplete libQt5Qml5.so build for non-SSE2</comment>
+    <requestid>878953</requestid>
+  </revision>
 </revisionlist>

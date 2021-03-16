@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 12 12:06:44 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Work around implicit dependency of src/qml on qmltyperegistrar
+  which lead to an incomplete libQt5Qml5.so build for non-SSE2
+
+-------------------------------------------------------------------
 Sun Dec 27 12:18:28 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Enable qml-autoreqprov
