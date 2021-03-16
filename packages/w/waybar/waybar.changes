@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 14 17:16:27 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add 1015-rfkill_code_refactoring.patch to avoid
+  gh#Alexays/Waybar#994 and boo#1183499.
+
+-------------------------------------------------------------------
 Mon Jan  4 10:35:11 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.5:
