@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 13 22:51:06 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to v5.11.0:
+  - xfs_admin: don't hide xfs_repair output when upgrading
+  - man: document attr2, ikeep option deprecation in xfs.5
+  - mkfs: make use of xfs_validate_stripe_geometry()
+  - mkfs: fix wrong inobtcount usage error output
+  - xfs_repair: enable bigtime upgrade via repair
+  - xfs_repair: enable inobtcount upgrade via repair
+  - xfs_repair: set NEEDSREPAIR on first write
+  - xfs_repair: clear the needsrepair flag when done
+  - xfs_repair: check dquot id and type
+  - xfs_fsr: Verify bulkstat version in qsort's cmp()
+  - xfs_fsr: Interpret args of qsort's cmp() correctly
+  - xfs_scrub: load and unload libicu properly
+  - xfs_scrub: various fixes
+  - xfs_admin: support adding features to V5 filesystems
+  - xfs_admin: support filesystems with realtime devices
+  - man: mark all deprecated V4 format options
+  - misc: fix valgrind complaints
+  - xfs_db: disallow label/uuid setting if NEEDSREPAIR
+  - xfs_db: show NEEDSREPAIR in check & version commands
+  - xfs_db: add an ls command
+  - xfs_db: add a directory path lookup command
+  - libxfs changes merged from kernel 5.11
+
+-------------------------------------------------------------------
 Mon Jan  4 13:54:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.10.0:
