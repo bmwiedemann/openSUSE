@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 15:45:33 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- we don't need stestr to run tests
+  * which enables the tests again
+
+-------------------------------------------------------------------
 Fri Mar 20 12:14:40 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.7.0

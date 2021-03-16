@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jenkins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module multi_key_dict}
 BuildRequires:  %{python_module pbr >= 0.8.2}
 BuildRequires:  %{python_module requests-mock >= 1.4}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module stestr >= 2.0}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -64,7 +63,7 @@ API. It currently supports management of:
 %python_install
 
 %check
-%python_exec -m stestr.cli run --black-regex 'test_get_view_jobs_raise_HTTPError'
+%pyunittest tests/*.py
 
 %files %{python_files}
 %license COPYING
