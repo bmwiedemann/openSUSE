@@ -88,6 +88,7 @@ Group:          Productivity/Networking/NFS
 Requires:       netcfg
 Requires:       nfs-client = %{version}
 Requires:       rpcbind
+Requires:       (kmod(nfsd.ko) if kernel)
 Conflicts:      nfs-server
 Provides:       nfs-utils = %{version}
 Obsoletes:      nfs-utils < 1.1.0

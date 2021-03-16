@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 11 09:45:07 UTC 2021 - Guilherme Moro <gmoro@suse.com>
+
+- Include nfsd kernel module Requires (bsc#1089118)
+
+-------------------------------------------------------------------
 Tue Mar  2 16:06:40 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 2.5.3

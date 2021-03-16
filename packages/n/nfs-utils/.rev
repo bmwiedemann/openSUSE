@@ -1510,4 +1510,12 @@
   https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/2.5.3/2.5.3-Changelog</comment>
     <requestid>877825</requestid>
   </revision>
+  <revision rev="161" vrev="22">
+    <srcmd5>c2b3e8cf66f9ba0e20aaddb1e61bdcd7</srcmd5>
+    <version>unknown</version>
+    <time>1615905817</time>
+    <user>RBrownSUSE</user>
+    <comment>- Include nfsd kernel module Requires (bsc#1089118) (forwarded request 878304 from gmoro)</comment>
+    <requestid>878422</requestid>
+  </revision>
 </revisionlist>
