@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 10:47:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add fix-pytest-makefile.patch to make it work with Pytest 6
+  gh#shopkeep/pytest-black#53
+
+-------------------------------------------------------------------
 Wed Oct  7 13:57:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.3.12

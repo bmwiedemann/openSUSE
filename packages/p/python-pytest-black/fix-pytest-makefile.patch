@@ -1,0 +1,46 @@
+From 475cf71aa9de3ededa972ffb36fb47ad79278531 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Mon, 15 Mar 2021 11:42:27 +0100
+Subject: [PATCH] fix pytest.tmpdir.makefile call
+
+---
+ tests/test_black.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_black.py b/tests/test_black.py
+index 0405169..a7a6026 100644
+--- a/tests/test_black.py
++++ b/tests/test_black.py
+@@ -72,8 +72,8 @@ def test_exclude(testdir):
+     """Assert test is skipped if path is excluded even if also included
+     """
+     testdir.makefile(
+-        "pyproject.toml",
+-        """
++        ".toml",
++        pyproject = """
+         [tool.black]
+             include = 'test_exclude.py'
+             exclude = '.*'
+@@ -100,8 +100,8 @@ def test_exclude_folder(testdir):
+     """Assert test is skipped for files in a folder
+     """
+     testdir.makefile(
+-        "pyproject.toml",
+-        """
++        ".toml",
++        pyproject = """
+         [tool.black]
+             exclude = '''
+             (
+@@ -137,8 +137,8 @@ def test_include(testdir):
+     """Assert test is not skipped if path is included but not excluded
+     """
+     testdir.makefile(
+-        "pyproject.toml",
+-        """
++        ".toml",
++        pyproject = """
+         [tool.black]
+             include = 'test_include'
+     """,

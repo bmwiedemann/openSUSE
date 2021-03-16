@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-black
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Black format checking plugin for pytest
 License:        MIT
 URL:            https://github.com/shopkeep/pytest-black
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-black/pytest-black-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-pytest-makefile.patch -- gh#shopkeep/pytest-black#53
+Patch0:         https://github.com/shopkeep/pytest-black/pull/53.patch#/fix-pytest-makefile.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,7 +46,7 @@ BuildRequires:  %{python_module toml}
 A pytest plugin to enable format checking with black.
 
 %prep
-%setup -q -n pytest-black-%{version}
+%autosetup -p1 -n pytest-black-%{version}
 
 %build
 %python_build
