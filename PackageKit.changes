@@ -6,6 +6,13 @@ Mon Mar  1 08:05:23 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
   (gh#hughsie/PackageKit/commit#3efa0c524, bsc#1180597).
 
 -------------------------------------------------------------------
+Fri Feb 26 14:39:52 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Enable offline updates support for openSUSE Leap 16+
+- Recommend a provider of rpm-repos-openSUSE for the DNF backend
+- Use dnf-data instead of dnf-conf in Supplements on DNF backend package
+
+-------------------------------------------------------------------
 Sat Jan 30 12:28:21 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Do not build cnf: scout-c-n-f is still pending, having PK-cnf
