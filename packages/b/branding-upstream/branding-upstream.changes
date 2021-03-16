@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  4 13:47:10 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move SUSE-brand to /usr/etc
+
+-------------------------------------------------------------------
 Mon Sep  2 20:57:52 CEST 2013 - sbrabec@suse.cz
 
 - Rename branding file to SUSE-brand (FATE#316269).

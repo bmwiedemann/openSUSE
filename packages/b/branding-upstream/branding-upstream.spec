@@ -1,7 +1,7 @@
 #
 # spec file for package branding-upstream
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           branding-upstream
-Version:        12.3
+Version:        16.0
 Release:        0
 Provides:       branding
 Conflicts:      otherproviders(branding)
@@ -29,7 +29,7 @@ License:        MIT
 Group:          System/Fhs
 
 %description
-This package contains the file /etc/SUSE-brand, and its name is used as
+This package contains the file /usr/etc/SUSE-brand, and its name is used as
 a trigger for installation of look and feel and branding of packages as
 it was defined by upstream developers.
 
@@ -51,12 +51,12 @@ CO-BRANDS = openSUSE SLED SLES SLE
 EOF
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
-cp SUSE-brand $RPM_BUILD_ROOT%{_sysconfdir}/
+mkdir -p $RPM_BUILD_ROOT%{_distconfdir}
+cp SUSE-brand $RPM_BUILD_ROOT%{_distconfdir}/
 
 %files
 %defattr(-,root,root)
 %doc COPYING
-%{_sysconfdir}/SUSE-brand
+%{_distconfdir}/SUSE-brand
 
 %changelog
