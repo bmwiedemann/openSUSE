@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 15 04:35:12 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.15.0
+
+  Fixed:
+  * Fix MSVC build
+  * Fix async callbacks in conjunction with fork(). #884
+
+  Added:
+  * Allow to pass callbacks in varargs. #885
+  * Name the threads for FFI callback dispatcher and async thread calls for easier debugging. #883
+    The name can be retrieved by Thread.name and is shown by Thread.list.inspect etc.
+    Even gdb shows the thread name on supported operating systems.
+  * Add types.conf for powerpc64le-linux
+  * Add types.conf for riscv64-linux
+  * More release automation of ffi gems
+
+  Changed:
+  * Switch from rubygems-tasks to bundler/gem_helper
+
+  Removed:
+  * Remove unused VariadicInvoker#init
+
+-------------------------------------------------------------------
 Fri Dec 25 19:33:41 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.14.2
