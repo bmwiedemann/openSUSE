@@ -250,4 +250,12 @@
 - absolute_path_fix.patch, private_library.patch: refreshed</comment>
     <requestid>846503</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c6bd3bad89ac0dfd23a0867bc7cdfe9f</srcmd5>
+    <version>3.1.12</version>
+    <time>1615905766</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879103</requestid>
+  </revision>
 </revisionlist>

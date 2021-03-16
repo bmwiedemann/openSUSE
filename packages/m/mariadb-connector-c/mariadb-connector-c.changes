@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  3 23:31:24 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to release 3.1.12 [bsc#1182739]:
+  * MDEV-24577: Fix warnings generated during compilation of
+    plugin/auth_pam/testing/pam_mariadb_mtr.c on FreeBSD
+  * CONC-521: Fixed warning on MacOS when including ucontext.h
+  * CONC-518: Check if mysql->options.extension was allocated before
+    checking async_context
+  * CONC-517: C/C looks for plugins in wrong location on Windows 
+
+-------------------------------------------------------------------
 Thu Nov  5 13:53:30 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to release 3.1.11:
