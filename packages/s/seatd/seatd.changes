@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 16 08:58:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * libseat: log error when failing to open socket
+  * poller: Retry poll immediately on EINTR
+  * client: More robust handling of client links
+  * logind: switch_session should return 0 on success
+  * libseat/backend/logind: stop waiting for CanGraphical
+  * client: Do not use SOL_SOCKET for LOCAL_PEERCRED
+  * client: Use cr_pid if available
+  * logind: Send ReleaseControl when closing seat
+  * seatd: Tear down VT when disabled client closes
+  * client: Remove link if seat_add_client succeeds
+
+-------------------------------------------------------------------
 Wed Nov 11 08:46:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Change _service file to use correct version number and not

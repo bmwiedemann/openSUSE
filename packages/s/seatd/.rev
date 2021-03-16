@@ -7,4 +7,22 @@
     <comment></comment>
     <requestid>847724</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b9d3cac9f5d7b0d3df9a7e5adb35a8f5</srcmd5>
+    <version>0.5.0</version>
+    <time>1615905994</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.5.0:
+  * libseat: log error when failing to open socket
+  * poller: Retry poll immediately on EINTR
+  * client: More robust handling of client links
+  * logind: switch_session should return 0 on success
+  * libseat/backend/logind: stop waiting for CanGraphical
+  * client: Do not use SOL_SOCKET for LOCAL_PEERCRED
+  * client: Use cr_pid if available
+  * logind: Send ReleaseControl when closing seat
+  * seatd: Tear down VT when disabled client closes
+  * client: Remove link if seat_add_client succeeds</comment>
+    <requestid>879386</requestid>
+  </revision>
 </revisionlist>
