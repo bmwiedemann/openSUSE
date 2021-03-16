@@ -20,3 +20,6 @@ patches:
 #skip_noarch: 1
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
+preamble: |-
+  BuildRequires: perl(HTTP::Daemon)
+

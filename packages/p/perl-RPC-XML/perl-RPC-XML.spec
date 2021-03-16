@@ -1,7 +1,7 @@
 #
 # spec file for package perl-RPC-XML
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Set of classes for core data, message and XML handling
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJRAY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         RPC-XML-0.77-fixtest.dif
@@ -31,6 +31,7 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(HTTP::Daemon)
 BuildRequires:  perl(LWP) >= 5.834
 BuildRequires:  perl(Module::Load) >= 0.24
 BuildRequires:  perl(Scalar::Util) >= 1.33

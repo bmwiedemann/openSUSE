@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 11 11:40:19 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add perl(HTTP::Daemon) BuildRequires: so far, this was pulled in
+  by perl-libwww-perl. The RPC-XML library itself can work with or
+  without HTTP::Daemon, but the test suite has an explicit test for
+  it.
+
+-------------------------------------------------------------------
 Thu Aug 22 12:35:17 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Remove patches not needed anymore:
