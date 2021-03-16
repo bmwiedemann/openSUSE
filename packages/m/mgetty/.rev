@@ -292,4 +292,12 @@
     <comment></comment>
     <requestid>809764</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>7995a4bae2135340bc43e70cb66c2891</srcmd5>
+    <version>1.2.1</version>
+    <time>1615905961</time>
+    <user>RBrownSUSE</user>
+    <comment>- mgetty-fix-errlist.patch: just use strerror() here. (forwarded request 879356 from msmeissn)</comment>
+    <requestid>879357</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mgetty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Patch9:         lp64.patch
 Patch10:        mgetty-1.1.36-fix-bashisms.patch
 Patch12:        mgetty-noroot.patch
 Patch13:        mgetty-mkdir-p.patch
+Patch14:        mgetty-fix-errlist.patch
 BuildRequires:  groff
 BuildRequires:  makeinfo
 BuildRequires:  netpbm
@@ -103,6 +104,7 @@ The g3utils are included in the mgetty source package.
 %patch10 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 chmod +x mkidirs
 
 %build

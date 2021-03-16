@@ -1,0 +1,14 @@
+Index: mgetty-1.2.1/logfile.c
+===================================================================
+--- mgetty-1.2.1.orig/logfile.c
++++ mgetty-1.2.1/logfile.c
+@@ -332,8 +332,7 @@ static int first_open = TRUE;
+ 		             tm->tm_mon+1,  tm->tm_mday,
+ 			     tm->tm_hour, tm->tm_min, tm->tm_sec,
+ 		             log_infix, ws,
+-			     ( errnr <= sys_nerr ) ? sys_errlist[errnr]:
+-			     "<error not in list>" );
++			     strerror(errnr));
+ #ifdef SYSLOG
+ 	syslog( level == L_FATAL? LOG_ALERT: LOG_ERR, "%s: %m", ws );
+ #endif

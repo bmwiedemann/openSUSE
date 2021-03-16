@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 16 06:59:42 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- mgetty-fix-errlist.patch: just use strerror() here.
+
+-------------------------------------------------------------------
 Tue May 26 09:52:53 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - fix set_permissions invocation, a '%' was missing for the faxq-helper path,
