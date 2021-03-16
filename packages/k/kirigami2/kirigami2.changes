@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:26:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * Support for Toolbars in standalone pages (kde#432541)
+  * Do not show animation on pageStack.replace (kde#426770)
+  * event compress the nav buttons show/hide (kde#413841)
+  * disable animations during replace (kde#426770)
+  * support icon.name (kde#433472)
+  * Fix binding loop (kde#429717)
+- Drop 0001-Revert-Watch-for-language-change-events-and-forward-.patch
+
+-------------------------------------------------------------------
 Mon Feb  8 08:46:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0
