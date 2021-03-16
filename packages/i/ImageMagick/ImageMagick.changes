@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 14 20:49:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.11.3:
+  * Eliminate multiple division by zero exceptions (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3339 and others).
+  * Use -define filename:literal=true to bypass interpretting embedded
+    formatting characters and instead use the filename literally.
+  * decode HEIC images in sRGB instead of YCbCr.
+  * Division by zero error is possible if crafty file sets film-gamma property
+  * Check for overflow in thumbnail coder
+  * Prevent compiler from optimizing out buffer clearing in cipher
+  * Clone properties from image stack.
+  * Set overall image depth statistic in Composite channel.
+
+-------------------------------------------------------------------
 Tue Feb 23 08:48:21 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.0.11.1
