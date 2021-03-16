@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 15 12:26:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add subpackage contrib with all files from the contrib/ subdirectory.
+
+-------------------------------------------------------------------
 Wed Nov 11 07:17:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.1:

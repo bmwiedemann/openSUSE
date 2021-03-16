@@ -414,4 +414,12 @@ changes since last time:
   * This is a bugfix release which adds support for wlroots 0.12.0.</comment>
     <requestid>847691</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e1081733f07377a43e94bce948f044f3</srcmd5>
+    <version>1.5.1</version>
+    <time>1615905933</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879224</requestid>
+  </revision>
 </revisionlist>

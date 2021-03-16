@@ -1,7 +1,7 @@
 #
 # spec file for package sway
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,10 +75,15 @@ BuildArch:      noarch
 %description branding-upstream
 This package provides the upstream look and feel for sway.
 
+%package contrib
+Summary:        Contributed scripts for %{name}
+BuildRequires:  python3-i3ipc
+
+%description contrib
+Contributed scripts from %{name} package.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -91,6 +96,14 @@ export CFLAGS="%{optflags}"
 
 %install
 %meson_install
+
+# contrib
+install -Dpm 0644 -t %{buildroot}%{_mandir}/man1 contrib/*.1
+install -Dpm 0755 -t %{buildroot}%{_bindir} contrib/grimshot
+install -Dpm 0755 contrib/autoname-workspaces.py \
+    %{buildroot}%{_bindir}/autoname-workspaces
+install -Dpm 0755 contrib/inactive-windows-transparency.py \
+    %{buildroot}%{_bindir}/inactive-windows-transparency
 
 %files
 %license LICENSE
@@ -107,5 +120,12 @@ export CFLAGS="%{optflags}"
 %files branding-upstream
 %dir %{_sysconfdir}/sway
 %config(noreplace) %{_sysconfdir}/sway/config
+
+%files contrib
+%license LICENSE
+%{_bindir}/grimshot
+%{_bindir}/inactive-windows-transparency
+%{_bindir}/autoname-workspaces
+%{_mandir}/man1/grimshot*
 
 %changelog
