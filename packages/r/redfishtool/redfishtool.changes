@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  6 12:24:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.5
+  * Added --no-proxy option.
+  * Fixed missing documentation to show PowerCycle is a valid
+    reset option.
+
+-------------------------------------------------------------------
 Fri Jul 24 19:46:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.4
