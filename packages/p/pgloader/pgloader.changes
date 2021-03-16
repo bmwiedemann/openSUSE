@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 15 17:24:24 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- fix compilation errors with sbcl 2.{1,2} by upgrading ironclad
+  included version (0.48 to 0.54)
+- fix CFLAGS and CXXFLAGS variable name
+
+-------------------------------------------------------------------
 Tue Oct 13 06:57:29 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - fix compilation errors with sbcl 2.0.9 by using upstream patch
@@ -15,7 +22,7 @@ Mon Mar 23 20:23:26 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.6.2
   + Permit compilation with sbcl 2+ (module cffi updated to 0.21.0
-  + Big improvement in DBF module 
+  + Big improvement in DBF module
 - Packaging
   + Remove merged related fixes (cffi)
 
@@ -30,8 +37,8 @@ Tue Mar  3 10:55:28 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 Mon Mar  4 16:14:06 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.6.1
-  This release contains three major themes: usual maintenance and 
-  bug fixing, support for new database systems as sources and 
+  This release contains three major themes: usual maintenance and
+  bug fixing, support for new database systems as sources and
   targets, and support for Citus distribution.
   https://github.com/dimitri/pgloader/releases/tag/v3.6.1
 - Packaging: update date
@@ -44,7 +51,7 @@ Fri Sep  7 18:57:42 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
   + https://github.com/dimitri/pgloader/compare/v3.4.1...v3.5.2
 - Packaging:
   + spec-cleaner with pkgconfig (but keep Leap 42.3 building)
-  + Remove man1 there's no more available 
+  + Remove man1 there's no more available
   + Use %license only remove obsolete if dist
   + Remove Buildrequires python* not needed
   + Add arm in the DYNSIZE=1024 4096 is too much
@@ -64,24 +71,24 @@ Sun Dec  3 15:39:07 UTC 2017 - bruno@ioda-net.ch
   + Adapt description to upstream
   + Bundle is used due to the lack of lisp packages
   + Use DYNSIZE=1024 for 32bits
-- Binary is using gethostbyname(), and don't use -fpie due to sbcl  
+- Binary is using gethostbyname(), and don't use -fpie due to sbcl
 
 -------------------------------------------------------------------
 Tue Dec 27 16:46:25 UTC 2011 - darin@darins.net
 
-- fixed non-standard usage of %doc 
+- fixed non-standard usage of %doc
 
 -------------------------------------------------------------------
 Tue Dec 27 15:28:35 UTC 2011 - darin@darins.net
 
 - removed BuildArch
 - fixed non-standard group
-- added %build and python-base require 
+- added %build and python-base require
 
 -------------------------------------------------------------------
 Tue Dec 27 14:08:22 UTC 2011 - darin@darins.net
 
-- Adapted .spec for OpenSuSE 
+- Adapted .spec for OpenSuSE
 - moved %changelog to .changes file
 - Added py_compile and fdupes
   http://en.opensuse.org/openSUSE:Packaging_Python#Byte_Compiled_Files
