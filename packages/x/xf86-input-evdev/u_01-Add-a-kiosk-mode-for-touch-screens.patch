@@ -1,0 +1,409 @@
+From: Egbert Eich <eich@linux-0ems.fritz.box>
+Date: Thu Apr 14 15:30:22 2016 +0200
+Subject: [PATCH 1/2]Add a 'kiosk mode' for touch screens
+Patch-mainline: to be upstreamed
+References: FATE#320263
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+    This mode provides either a 'click-on-touch' or
+    'click-on-release'. The button to track can be
+    specified with an option.
+
+Signed-off-by: Egbert Eich <eich@freedesktop.org>
+---
+ include/evdev-properties.h |   3 +
+ man/evdev.man              |  20 +++++
+ src/Makefile.am            |   1 +
+ src/evdev.c                |  13 ++-
+ src/evdev.h                |  17 ++++
+ src/kioskTouch.c           | 215 +++++++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 265 insertions(+), 4 deletions(-)
+
+diff --git a/include/evdev-properties.h b/include/evdev-properties.h
+index 8ae5ba3..29f2bd9 100644
+--- a/include/evdev-properties.h
++++ b/include/evdev-properties.h
+@@ -91,4 +91,7 @@
+ /* INT32, 3 values (vertical, horizontal, dial) */
+ #define EVDEV_PROP_SCROLL_DISTANCE "Evdev Scrolling Distance"
+ 
++/* Kiosk Touch mode */
++#define EVDEV_PROP_KIOSK_TOUCH "Evdev Kiosk Touch Mode"
++#define EVDEV_PROP_KIOSK_BUTTON "Evdev Kiosk Touch Button"
+ #endif
+diff --git a/man/evdev.man b/man/evdev.man
+index e70ae1f..404a88d 100644
+--- a/man/evdev.man
++++ b/man/evdev.man
+@@ -244,6 +244,20 @@ Sets the resolution of the device in dots per inch. The resolution is used
+ to scale relative motion events from mouse devices to 1000 DPI resolution. This
+ can be used to make high resolution mice less sensitive without turning off
+ acceleration. If set to 0 no scaling will be performed. Default: "0".
++.TP 7
++.BI "Option \*qKioskTouchMode\*q \*q" "N" \*q
++Specifies the Kiosk Touch mode to use. Mode
++.I N
++sets the mode: 0 - off, 1 - click on touch, 2 - click on release.
++Default: "0". Property:
++"Evdev Kiosk Touch Mode".
++.TP 7
++.BI "Option \*qKioskTouchButton\*q \*q" "N" \*q
++Specifies the Kiosk Touch button number to use. Button
++.I N
++range: 0-255.
++Default: "0". Property:
++"Evdev Kiosk Touch Button".
+ 
+ .SH SUPPORTED PROPERTIES
+ The following properties are provided by the
+@@ -287,6 +301,12 @@ value.
+ .TP 7
+ .BI "Evdev Scrolling Distance"
+ 3 32-bit values: vertical, horizontal and dial.
++.TP 7
++.BI "Evdev Kiosk Touch Mode"
++1 8-bit positive value.
++.TP 7
++.BI "Evdev Kiosk Touch Button"
++1 8-bit positive value.
+ 
+ .SH AUTHORS
+ Kristian Høgsberg, Peter Hutterer
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5e0c3b3..23e7421 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -40,5 +40,6 @@ AM_CPPFLAGS =-I$(top_srcdir)/include $(LIBEVDEV_CFLAGS)
+                                emuWheel.c \
+                                draglock.c \
+                                apple.c \
++			       kioskTouch.c \
+                                axis_labels.h
+ 
+diff --git a/src/evdev.c b/src/evdev.c
+index 3176660..a72a866 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -584,6 +584,9 @@ EvdevProcessButtonEvent(InputInfoPtr pInfo, struct input_event *ev)
+     if (EvdevWheelEmuFilterButton(pInfo, button, value))
+         return;
+ 
++    if (EvdevKioskTouchFilterButton(pInfo, button, value))
++        return;
++
+     if (EvdevMBEmuFilterEvent(pInfo, button, value))
+         return;
+ 
+@@ -636,7 +639,7 @@ EvdevProcessTouch(InputInfoPtr pInfo)
+     int type;
+     int slot = pEvdev->cur_slot;
+ 
+-    if (slot < 0 || !pEvdev->mt_mask)
++    if (slot < 0 || !pEvdev->mt_mask || EvdevKioskTouchFilterTouch(pEvdev))
+         return;
+ 
+     if (!pEvdev->slots[slot].dirty)
+@@ -670,7 +673,7 @@ EvdevProcessTouch(InputInfoPtr pInfo)
+     valuator_mask_zero(pEvdev->mt_mask);
+ }
+ 
+-static int
++int
+ num_slots(EvdevPtr pEvdev)
+ {
+     int value;
+@@ -702,7 +705,7 @@ EvdevProcessTouchEvent(InputInfoPtr pInfo, struct input_event *ev)
+         !libevdev_has_event_code(pEvdev->dev, EV_ABS, ABS_MT_SLOT))
+         return;
+ 
+-    if (pEvdev->fake_mt)
++    if (pEvdev->fake_mt || EvdevKioskTouchFilterTouch(pEvdev))
+         return;
+ 
+     if (ev->code == ABS_MT_SLOT) {
+@@ -832,7 +835,7 @@ EvdevProcessKeyEvent(InputInfoPtr pInfo, struct input_event *ev)
+              */
+ 
+             if (!(pEvdev->flags & (EVDEV_TOUCHSCREEN | EVDEV_TABLET)) ||
+-                pEvdev->mt_mask)
++                (pEvdev->mt_mask && !EvdevKioskTouchFilterTouch(pEvdev)))
+                 break;
+             /* Treat BTN_TOUCH from devices that only have BTN_TOUCH as
+              * BTN_LEFT. */
+@@ -1935,6 +1938,7 @@ EvdevInit(DeviceIntPtr device)
+     EvdevWheelEmuInitProperty(device);
+     EvdevDragLockInitProperty(device);
+     EvdevAppleInitProperty(device);
++    EvdevKioskTouchInitProperty(device);
+ 
+     return Success;
+ }
+@@ -2641,6 +2645,7 @@ EvdevPreInit(InputDriverPtr drv, InputInfoPtr pInfo, int flags)
+         EvdevWheelEmuPreInit(pInfo);
+         EvdevDragLockPreInit(pInfo);
+     }
++    EvdevKioskTouchPreInit(pInfo);
+ 
+     return Success;
+ 
+diff --git a/src/evdev.h b/src/evdev.h
+index 4d44d2b..27c1cb2 100644
+--- a/src/evdev.h
++++ b/src/evdev.h
+@@ -219,6 +219,15 @@ typedef struct {
+         int                 horiz_delta;
+         int                 dial_delta;
+     } smoothScroll;
++    struct {
++        int                 mode;
++        int                 mode_queued;
++        /* 0: 0ff, 1: click on touch, 2: click on release */
++        unsigned int        button_queued;
++        unsigned int        button;
++        unsigned int        state;
++    } kioskTouch;
++
+     /* run-time calibration */
+     struct {
+         int                 min_x;
+@@ -245,6 +254,8 @@ typedef struct {
+     char *type_name;
+ } EvdevRec, *EvdevPtr;
+ 
++int num_slots(EvdevPtr pEvdev);
++
+ /* Event posting functions */
+ void EvdevQueueKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value);
+ void EvdevQueueButtonEvent(InputInfoPtr pInfo, int button, int value);
+@@ -289,4 +300,10 @@ void Evdev3BEmuInitProperty(DeviceIntPtr);
+ void EvdevWheelEmuInitProperty(DeviceIntPtr);
+ void EvdevDragLockInitProperty(DeviceIntPtr);
+ void EvdevAppleInitProperty(DeviceIntPtr);
++
++/* Kiosk Touch */
++void EvdevKioskTouchPreInit(InputInfoPtr pInfo);
++BOOL EvdevKioskTouchFilterButton(InputInfoPtr pInfo, unsigned int button, int value);
++void EvdevKioskTouchInitProperty(DeviceIntPtr);
++BOOL EvdevKioskTouchFilterTouch(EvdevPtr pEvdev);
+ #endif
+diff --git a/src/kioskTouch.c b/src/kioskTouch.c
+new file mode 100644
+index 0000000..d32f386
+--- /dev/null
++++ b/src/kioskTouch.c
+@@ -0,0 +1,215 @@
++/*
++ * Copyright 2016 Egbert Eich
++ *
++ * Permission to use, copy, modify, distribute, and sell this software
++ * and its documentation for any purpose is hereby granted without
++ * fee, provided that the above copyright notice appear in all copies
++ * and that both that copyright notice and this permission notice
++ * appear in supporting documentation, and that the name of the authors
++ * not be used in advertising or publicity pertaining to distribution of the
++ * software without specific, written prior permission.  The authors make no
++ * representations about the suitability of this software for any
++ * purpose.  It is provided "as is" without express or implied
++ * warranty.
++ *
++ * THE AUTHORS DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
++ * INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN
++ * NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY SPECIAL, INDIRECT OR
++ * CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
++ * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
++ * NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
++ * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ *
++ */
++
++
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++#include "evdev.h"
++
++#include <unistd.h>
++
++#include <xf86.h>
++#include <xf86Xinput.h>
++#include <exevents.h>
++#include <xorgVersion.h>
++
++#include <X11/Xatom.h>
++#include <evdev-properties.h>
++
++#define DEBUG(x) x;
++
++static Atom prop_ktouch        = 0; /* Kiosk touch emulation on/off property */
++static Atom prop_ktouch_button = 0; /* Kiosk touch emulation button property */
++
++#define KTOUCH_STATE_ACTIVE 1U << 0
++
++void
++EvdevKioskTouchPreInit(InputInfoPtr pInfo)
++{
++    EvdevPtr pEvdev = (EvdevPtr)pInfo->private;
++    int val;
++
++    if (!(pEvdev->flags & EVDEV_ABSOLUTE_EVENTS) ||
++	!(pEvdev->flags & EVDEV_BUTTON_EVENTS) ||
++        (pEvdev->flags & EVDEV_RELATIVE_EVENTS) ||
++        (pEvdev->flags & EVDEV_TOUCHPAD) ||
++        !libevdev_has_event_code(pEvdev->dev, EV_ABS, ABS_X) ||
++        !libevdev_has_event_code(pEvdev->dev, EV_ABS, ABS_Y)) {
++        pEvdev->kioskTouch.mode = -1;
++        return;
++    }
++    val = xf86SetIntOption(pInfo->options, "KioskTouchMode", 0);
++    if (val < 0 || val > 2) {
++        xf86Msg(X_WARNING, "%s: Invalid KioskTouchMode value: %d\n",
++                pInfo->name, val);
++        pEvdev->kioskTouch.mode = 0;
++    } else {
++        pEvdev->kioskTouch.mode = pEvdev->kioskTouch.mode_queued = val;
++    }
++    val = xf86SetIntOption(pInfo->options, "KioskTouchButton", 1);
++    if (val > 255) {
++         xf86Msg(X_WARNING, "%s: Invalid KioskTouchButton value: %d\n",
++                pInfo->name, val);
++         val = 0;
++    }
++    pEvdev->kioskTouch.button = pEvdev->kioskTouch.button_queued = val;
++    pEvdev->kioskTouch.state = 0;
++    xf86Msg(X_INFO, "%s: KioskTouchpad mode initialized to %s - button: %d\n",
++            pInfo->name, (pEvdev->kioskTouch.mode == 0) ? "disabled" :
++            (pEvdev->kioskTouch.mode == 1 ? "click-on-touch" : "click-on-release"),
++            pEvdev->kioskTouch.button);
++}
++
++static void
++EvdevKioskTouchSwitchQueued(EvdevPtr pEvdev)
++{
++    if (pEvdev->kioskTouch.mode != pEvdev->kioskTouch.mode_queued ||
++        pEvdev->kioskTouch.button != pEvdev->kioskTouch.button_queued) {
++        if (pEvdev->kioskTouch.state & KTOUCH_STATE_ACTIVE)
++            return;
++        if (pEvdev->mt_mask) {
++            int i;
++            for (i = 0; i < num_slots(pEvdev); i++) {
++                if (pEvdev->slots[i].dirty)
++                    return;
++            }
++        }
++        pEvdev->kioskTouch.mode = pEvdev->kioskTouch.mode_queued;
++        pEvdev->kioskTouch.button = pEvdev->kioskTouch.button_queued;
++    }
++}
++
++BOOL
++EvdevKioskTouchFilterTouch(EvdevPtr pEvdev)
++{
++    EvdevKioskTouchSwitchQueued(pEvdev);
++    return (pEvdev->kioskTouch.mode > 0) ? TRUE : FALSE;
++}
++
++BOOL
++EvdevKioskTouchFilterButton(InputInfoPtr pInfo, unsigned int button, int value)
++{
++    EvdevPtr pEvdev = (EvdevPtr)pInfo->private;
++
++    EvdevKioskTouchSwitchQueued(pEvdev);
++    if (button && button == pEvdev->kioskTouch.button) {
++        if (value == 1)
++            pEvdev->kioskTouch.state = KTOUCH_STATE_ACTIVE;
++        else
++            pEvdev->kioskTouch.state = 0;
++        switch (pEvdev->kioskTouch.mode) {
++        case 0:
++            DEBUG((ErrorF("%s: mode 1 button %d value %d\n", \
++                          __func__, button, value)))
++            return FALSE;
++        case 1:
++            if (value == 1) {
++                DEBUG((ErrorF("%s: Sending ButtonDown/ButtonUp\n",__func__)))
++                EvdevQueueButtonClicks(pInfo, button, 1);
++            } else if (value == 0) {
++                pEvdev->kioskTouch.state = 0;
++            }
++            return TRUE;
++        case 2:
++            DEBUG((ErrorF("%s: mode 2 button %d value %d\n", \
++                          __func__, button, value)))
++            if (value == 1)
++                return TRUE;
++            else if (value == 0) {
++                DEBUG((ErrorF("%s: Sending ButtonDown\n",__func__)))
++                EvdevQueueButtonEvent(pInfo, button, 1);
++           }
++            return FALSE;
++        default:
++            return FALSE;
++        }
++    }
++
++    return FALSE;
++}
++
++static int
++EvdevKioskTouchSetProperty(DeviceIntPtr dev, Atom atom, XIPropertyValuePtr val,
++                           BOOL checkonly)
++{
++    InputInfoPtr pInfo  = dev->public.devicePrivate;
++    EvdevPtr     pEvdev = pInfo->private;
++
++    if (atom == prop_ktouch)
++    {
++        if (val->format != 8 || val->size != 1 || val->type != XA_INTEGER)
++            return BadMatch;
++
++        if (!checkonly)
++            pEvdev->kioskTouch.mode_queued = *((unsigned char*)val->data);
++    } else if (atom == prop_ktouch_button) {
++
++        if (val->format != 8 || val->size != 1 || val->type != XA_INTEGER)
++            return BadMatch;
++
++        if (!checkonly)
++            pEvdev->kioskTouch.button_queued = *((unsigned char*)val->data);
++    }
++
++    return Success;
++}
++
++void
++EvdevKioskTouchInitProperty(DeviceIntPtr dev)
++{
++    InputInfoPtr pInfo  = dev->public.devicePrivate;
++    EvdevPtr     pEvdev = pInfo->private;
++    int          rc;
++
++    if (pEvdev->mt_mask && !libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_TOUCH)) {
++        xf86Msg(X_WARNING, "%s: MultiTouch device has no BTN_TOUCH event: "
++                "no Kiosk Mode support\n", pInfo->name);
++        pEvdev->kioskTouch.mode = -1;
++    }
++
++    if (pEvdev->kioskTouch.mode < 0)
++        return;
++
++    prop_ktouch = MakeAtom(EVDEV_PROP_KIOSK_TOUCH, strlen(EVDEV_PROP_KIOSK_TOUCH), TRUE);
++    rc = XIChangeDeviceProperty(dev, prop_ktouch, XA_INTEGER, 8,
++                                PropModeReplace, 1,
++                                &pEvdev->kioskTouch.mode,
++                                FALSE);
++    if (rc != Success)
++        return;
++    XISetDevicePropertyDeletable(dev, prop_ktouch, FALSE);
++
++    prop_ktouch_button = MakeAtom(EVDEV_PROP_KIOSK_BUTTON, strlen(EVDEV_PROP_KIOSK_BUTTON),
++                                 TRUE);
++    rc = XIChangeDeviceProperty(dev, prop_ktouch_button, XA_INTEGER, 8,
++                                PropModeReplace, 1,
++                                &pEvdev->kioskTouch.button,
++                                FALSE);
++    if (rc != Success)
++        return;
++    XISetDevicePropertyDeletable(dev, prop_ktouch_button, FALSE);
++
++    XIRegisterPropertyHandler(dev, EvdevKioskTouchSetProperty, NULL, NULL);
++}
