@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 12 15:39:31 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Fix the HANA sidadm usage to tranfsorm to lowercase some states
+  managing the sudoers file in ha_cluster.sls state file 
+
+-------------------------------------------------------------------
 Fri Mar  5 15:30:40 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Fix how the HANA client options are handled. Now, if any of the
