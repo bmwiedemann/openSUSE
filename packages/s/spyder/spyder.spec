@@ -128,7 +128,6 @@ BuildRequires:  python3-pyls-spyder >= 0.3.0
 BuildRequires:  python3-pytest >= 5.0
 BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
-BuildRequires:  python3-pytest-ordering
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pytest-xvfb

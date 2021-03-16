@@ -241,4 +241,12 @@ rename the package from spyder3 to spyder.
 - Explicitly limit upper version if Jedi and Parso</comment>
     <requestid>876706</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ec8fd87716a12cf245932d921d63b678</srcmd5>
+    <version>4.2.3</version>
+    <time>1615905913</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879182</requestid>
+  </revision>
 </revisionlist>
