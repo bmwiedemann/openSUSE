@@ -1,7 +1,7 @@
 #
 # spec file for package libsamplerate
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libsamplerate
-Version:        0.1.9
+Version:        0.2.1
 Release:        0
 Summary:        A Sample Rate Converter Library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.mega-nerd.com/SRC/
-Source0:        http://www.mega-nerd.com/SRC/libsamplerate-%{version}.tar.gz
+URL:            https://libsndfile.github.io/libsamplerate/
+Source0:        https://github.com/libsndfile/libsamplerate/releases/download/%{version}/libsamplerate-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE -- Make build reproducible
-Patch0:         libsamplerate-0.1.9-reproducible.patch
+Patch0:         libsamplerate-0.2.1-reproducible.patch
+BuildRequires:  automake
 BuildRequires:  fftw3-devel
 BuildRequires:  libsndfile-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for
@@ -48,6 +49,7 @@ Summary:        A Sample Rate Converter Library
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
+Obsoletes:      libsamplerate-progs < %{version}
 
 %description -n libsamplerate0
 Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for
@@ -70,63 +72,43 @@ Requires:       libsamplerate0 = %{version}
 This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
-%package progs
-Summary:        Example Programs for libsamplerate
-Group:          Productivity/Multimedia/Sound/Utilities
-
-%description progs
-This package includes the example programs for libsamplerate.
-
 %prep
 %setup -q
 %patch0 -p1
 
 %build
-%ifnarch %arm aarch64
-# ARM has no working profile support in gcc atm
+autoreconf -fvi 
+%configure --disable-silent-rules --disable-static
 profiledir=`mktemp -d`
-%configure --disable-silent-rules --disable-static
-make %{?_smp_mflags} CFLAGS="%optflags %cflags_profile_generate=$profiledir"
-pushd tests
-make check
-popd
-make clean
-make %{?_smp_mflags} CFLAGS="%optflags %cflags_profile_feedback=$profiledir"
-%else
-%configure --disable-silent-rules --disable-static
-make %{?_smp_mflags} CFLAGS="%optflags"
-%endif
+
+%make_build CFLAGS="%{optflags} %{cflags_profile_generate}=$profiledir"
+%make_build check
+%make_build clean
+%make_build CFLAGS="%{optflags} %{cflags_profile_feedback}=$profiledir"
 
 %check
-pushd tests
-make check
-popd
+%make_build check
 
 %install
-# Since configure doesn't honor --docdir set htmldocdir here
-make install DESTDIR=%{?buildroot} \
-             htmldocdir=%{_defaultdocdir}/libsamplerate-devel
+%make_install
+install -d %{buildroot}%{_defaultdocdir}/
+mv %{buildroot}/usr/share/doc/libsamplerate %{buildroot}%{_defaultdocdir}/libsamplerate
 # remove unneeded files
-rm -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libsamplerate0 -p /sbin/ldconfig
 %postun -n libsamplerate0 -p /sbin/ldconfig
 
 %files -n libsamplerate0
-%defattr(-,root,root)
-%doc AUTHORS COPYING
+%license COPYING
+%doc AUTHORS
 %{_libdir}/libsamplerate.so.0*
 
 %files devel
-%defattr(-,root,root)
 %doc ChangeLog
-%{_defaultdocdir}/libsamplerate-devel
+%{_defaultdocdir}/libsamplerate
 %{_libdir}/libsamplerate.so
 %{_includedir}/samplerate.h
 %{_libdir}/pkgconfig/samplerate.pc
-
-%files progs
-%defattr(-,root,root)
-%{_bindir}/sndfile-resample
 
 %changelog
