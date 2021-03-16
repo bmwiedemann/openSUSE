@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:26:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * autotests: Fix autotests to pass under gcc ubsan and leak sanitizer. (kde#433402)
+  * kpluginfactory: Use the user-provided base factory in our factory macro. (kde#410851)
+  * [KProcessList] Check size of data before accessing it (kde#431334)
+
+-------------------------------------------------------------------
 Mon Feb  8 08:46:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0
