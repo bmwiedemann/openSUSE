@@ -1,0 +1,10 @@
+<package name="powerline" project="openSUSE:Factory">
+  <title>The ultimate status-line/prompt utility</title>
+  <description>Powerline is a status-line plugin for vim, and provides status-lines and prompts
+for several other applications, including zsh, bash, tmux, IPython, Awesome and
+Qtile.
+
+</description>
+  <devel project="utilities" package="powerline"/>
+  <url>https://github.com/Lokaltog/powerline</url>
+</package>
