@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:27:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * use correct function to determine with of line number characters (kde#430712)
+  * Add option to preselect nothing when automatic completion is invoked (kde#316413)
+  * Temporarily save unfinished search/replace text (kde#411923)
+  * avoid crash on clearing of bookmarks (kde#433006)
+  * [Vimode] Do not remove empty lines when reformatting (kde#340550)
+
+-------------------------------------------------------------------
 Mon Feb  8 08:46:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0
