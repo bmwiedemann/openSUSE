@@ -1,7 +1,7 @@
 #
 # spec file for package opencc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           opencc
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Open Chinese Convert
 License:        Apache-2.0
 Group:          System/I18n/Chinese
 URL:            https://github.com/BYVoid/OpenCC
 Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-ver.%{version}.tar.gz
-#PATCH-FIX-UPSTREAM marguerite@opensuse.org SimpleConverter.hpp missed "#include <string>" that breaks pyzy 
-Patch:          opencc-1.1.1-missing-builtin-types.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -75,7 +73,6 @@ This package provides development headers for OpenCC.
 
 %prep
 %setup -q -n OpenCC-ver.%{version}
-%patch -p1
 # call python3 with path
 sed -i \
     -e 's:BIN python:BIN /usr/bin/python3:g' \
@@ -105,7 +102,7 @@ find %{buildroot} -name "*.a" -delete -print
 
 %files -n libopencc1_1
 %{_libdir}/libopencc.so.1.1
-%{_libdir}/libopencc.so.1.1.1
+%{_libdir}/libopencc.so.%{version}
 
 %files devel
 %{_includedir}/%{name}/

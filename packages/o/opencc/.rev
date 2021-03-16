@@ -161,4 +161,16 @@
     <comment></comment>
     <requestid>838153</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>549b5967a4a07445ac849ffcb2f46bdd</srcmd5>
+    <version>1.1.2</version>
+    <time>1615905716</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.1.2:
+  * Added Hong Kong Traditional Chinese conversion.
+  * Fix the compilation compatibility problem, including parallel compilation.
+  * Fixed the serious performance degradation problem introduced since 1.1.0. 
+- drop opencc-1.1.1-missing-builtin-types.patch: upstream (forwarded request 878643 from dirkmueller)</comment>
+    <requestid>878721</requestid>
+  </revision>
 </revisionlist>

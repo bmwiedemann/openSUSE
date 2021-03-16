@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 12 21:26:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Added Hong Kong Traditional Chinese conversion.
+  * Fix the compilation compatibility problem, including parallel compilation.
+  * Fixed the serious performance degradation problem introduced since 1.1.0. 
+- drop opencc-1.1.1-missing-builtin-types.patch: upstream
+
+-------------------------------------------------------------------
 Mon Sep 28 05:07:44 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - add opencc-1.1.1-missing-builtin-types.patch
