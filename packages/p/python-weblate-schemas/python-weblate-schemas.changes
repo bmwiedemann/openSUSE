@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 15 10:08:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.6
+  * Fixed license information.
+  * Fixed validation of translation memory entries with newlines.
+
+-------------------------------------------------------------------
 Wed Aug 19 10:20:06 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to version 0.4

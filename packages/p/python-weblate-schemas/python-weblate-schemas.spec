@@ -1,7 +1,7 @@
 #
 # spec file for package python-weblate-schemas
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-weblate-schemas
-Version:        0.4
+Version:        0.6
 Release:        0
 Summary:        A collection of schemas used by Weblate
-License:        GPL-3.0-or-later
+License:        MIT
 URL:            https://weblate.org/
 Source:         https://files.pythonhosted.org/packages/source/w/weblate_schemas/weblate_schemas-%{version}.tar.gz
 BuildRequires:  %{python_module jsonschema}
