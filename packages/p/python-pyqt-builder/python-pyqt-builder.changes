@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 11 19:48:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.9.1
+  * Handle the changed Qt installation directory used by PyQt5 
+    v5.15.4 and later, and PyQt6 v6.0.3 and later. 
+
+-------------------------------------------------------------------
 Thu Feb 25 11:07:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.9.0
