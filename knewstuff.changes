@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:27:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * Fix preview delegate's update badge being cut off (kde#433535)
+  * qtquickengine: Do not emit entriesChanged signal when we clear an empty list (kde#431568)
+  * qtquickengine: Check if KNSCore::Engine is valid before searching (kde#402432)
+
+-------------------------------------------------------------------
 Mon Feb  8 08:46:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0
