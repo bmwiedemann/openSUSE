@@ -1,7 +1,7 @@
 #
 # spec file for package libpng16
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Release:        0
 Summary:        Library for the Portable Network Graphics Format (PNG)
 License:        Zlib
 Group:          Development/Libraries/C and C++
-Url:            http://www.libpng.org/pub/png/libpng.html
+URL:            http://www.libpng.org/pub/png/libpng.html
 Source0:        http://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
 Source2:        libpng16.keyring
 Source3:        rpm-macros.libpng-tools
@@ -106,7 +106,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 export CFLAGS="$CFLAGS -Og"
 %endif
 %configure \
-              --disable-static
+              --disable-static --enable-hardware-optimizations=yes
 %if %{asan_build}
 sed -i -e 's/^\(CFLAGS.*\)$/\1 -fsanitize=address/' \
        -e 's/\(^LIBS =.*\)/\1 -lasan/' Makefile

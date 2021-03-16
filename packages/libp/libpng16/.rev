@@ -663,4 +663,12 @@
   - libpng-arm-free.patch (upstreamed)</comment>
     <requestid>694940</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>cde8976af811ef14940b8474fdd42e7e</srcmd5>
+    <version>1.6.37</version>
+    <time>1615905822</time>
+    <user>RBrownSUSE</user>
+    <comment>Enable SSE optimizations. They are not enabled by default in configure-based builds (see the INSTALL file). (forwarded request 878383 from llunak)</comment>
+    <requestid>878473</requestid>
+  </revision>
 </revisionlist>

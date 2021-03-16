@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 11 13:26:15 UTC 2021 - Lubos Lunak <l.lunak@centrum.cz>
+
+- enable hardware optimizations (such as SSE)
+
+-------------------------------------------------------------------
 Wed Apr 17 06:29:11 UTC 2019 - pgajdos@suse.com
 
 - make check actually works under asan
