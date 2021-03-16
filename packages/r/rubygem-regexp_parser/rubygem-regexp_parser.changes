@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 16 04:04:24 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.1.1
+
+  ## [2.1.1] - 2021-02-23 - [Janosch Müller](mailto:janosch84@gmail.com)
+
+  ### Fixed
+
+  - fixed `NameError` when requiring only `'regexp_parser/scanner'` in v2.1.0
+    * thanks to [Jared White and Sam Ruby](https://github.com/ruby2js/ruby2js) for the report
+
+  ## [2.1.0] - 2021-02-22 - [Janosch Müller](mailto:janosch84@gmail.com)
+
+  ### Added
+
+  - common ancestor for all scanning/parsing/lexing errors
+    * `Regexp::Parser::Error` can now be rescued as a catch-all
+    * the following errors (and their many descendants) now inherit from it:
+      - `Regexp::Expression::Conditional::TooManyBranches`
+      - `Regexp::Parser::ParserError`
+      - `Regexp::Scanner::ScannerError`
+      - `Regexp::Scanner::ValidationError`
+      - `Regexp::Syntax::SyntaxError`
+    * it replaces `ArgumentError` in some rare cases (`Regexp::Parser.parse('?')`)
+    * thanks to [sandstrom](https://github.com/sandstrom) for the cue
+
+  ### Fixed
+
+  - fixed scanning of whole-pattern recursion calls `\g<0>` and `\g'0'`
+    * a regression in v2.0.1 had caused them to be scanned as literals
+  - fixed scanning of some backreference and subexpression call edge cases
+    * e.g. `\k<+1>`, `\g<x-1>`
+  - fixed tokenization of some escapes in character sets
+    * `.`, `|`, `{`, `}`, `(`, `)`, `^`, `$`, `?`, `+`, `*`
+    * all of these correctly emitted `#type` `:literal` and `#token` `:literal` if *not* escaped
+    * if escaped, they emitted e.g. `#type` `:escape` and `#token` `:group_open` for `[\(]`
+    * the escaped versions now correctly emit `#type` `:escape` and `#token` `:literal`
+  - fixed handling of control/metacontrol escapes in character sets
+    * e.g. `[\cX]`, `[\M-\C-X]`
+    * they were misread as bunch of individual literals, escapes, and ranges
+  - fixed some cases where calling `#dup`/`#clone` on expressions led to shared state
+
+-------------------------------------------------------------------
 Wed Jan 20 13:12:49 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.0.3
