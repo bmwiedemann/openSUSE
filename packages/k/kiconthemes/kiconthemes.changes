@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:26:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * add private header to avoid extern in .cpp file
+  * avoid race condition on loading the plugin
+  * Allow icon themes to also use the colour scheme's selected foreground colour for icon colouring
+  * fix loading of icons from resources like :/icons/...
+  * register our KIconEngine plugin for SVG icons
+  * Remove cfeck as maintainer
+
+-------------------------------------------------------------------
 Mon Feb  8 08:46:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0
