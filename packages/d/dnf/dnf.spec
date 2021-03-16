@@ -1,7 +1,7 @@
 #
 # spec file for package dnf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -66,6 +66,8 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 # openSUSE specific fixes
 ## Migrate DNF persistent state directory to /usr/lib/sysimage
 Patch1001:      dnf-4.6.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+## We defalut allow_vendor_change to False, upstream has it as True
+Patch1002:      dnf-4.6_vendor_change_doc.patch
 
 BuildRequires:  bash-completion
 BuildRequires:  cmake

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 11 11:16:52 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Add dnf-4.6_vendor_change_doc.patch to adapt the documentation
+  to the actual SUSE default value (bsc#1180339)
+
+-------------------------------------------------------------------
 Tue Mar  2 16:48:22 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.6.1

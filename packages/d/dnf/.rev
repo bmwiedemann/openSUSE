@@ -486,4 +486,12 @@
   + Enhanced detection of plugins removed in transaction (rh#1929163)</comment>
     <requestid>876272</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>507b60c7a2c6f74afc7355345b4c6b11</srcmd5>
+    <version>4.6.1</version>
+    <time>1615905801</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>878382</requestid>
+  </revision>
 </revisionlist>
