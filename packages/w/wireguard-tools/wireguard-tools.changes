@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 15 15:11:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210315
+  * Makefile: fix version indicator
+  * wireguard-tools: const correctness
+  * wireguard-tools: drag in headers for prototypes
+  * ipc: uniformly ignore preshared keys that are zero
+
+-------------------------------------------------------------------
 Tue Feb 23 20:12:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20210223
