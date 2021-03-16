@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 13 09:44:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021:
+  * implement listings package
+  * support for \hyperref (hyperref.sty and html.sty syntax)
+  * \multirow with automatic width (*)
+  * support for length units em and ex in &convert_length
+  * support for font-, page- and minipage-relative length units
+  * support for specifying image size in wrapfigure
+  * support for commands: \; \, \quad \qquad inside \textsc
+  * \itemize[], \enumerate[], \description[] (discard argument)
+  * &convert_to_unicode in style &#8221; for chars > 255
+  * correct several special symbols for koi8-r encoding
+  * repair \htmladdimg and user scaling in \includegraphics
+  * repair scaling for undefined environments in use_dvipng mode
+  * correct placement of the $\degree$ symbol in use_dvipng mode
+  * repair scaling in nouse_dvipng mode
+  * 256-color gif dithering via png16m followed by ppmquant
+  * correct transparent color specification (for the $\_$ symbol)
+  * correct Makefile for building manual
+  * adjust spacing for eqnarray
+  * fix alignment of eq numbers for safari
+  * fix infinite loop on empty itemize env
+  * make link to correct bibliography if there is more than one
+  * "References" by default, "Bibliography" for book
+
+-------------------------------------------------------------------
 Tue Dec 22 09:24:14 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2020.2:

@@ -359,4 +359,34 @@ A    latex2html-share-dir.diff</comment>
   - generate higher numbered UTF8 chars (forwarded request 858089 from dirkmueller)</comment>
     <requestid>858977</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>56c79254590be91d3e603673998edc28</srcmd5>
+    <version>2021</version>
+    <time>1615905756</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2021:
+  * implement listings package
+  * support for \hyperref (hyperref.sty and html.sty syntax)
+  * \multirow with automatic width (*)
+  * support for length units em and ex in &amp;convert_length
+  * support for font-, page- and minipage-relative length units
+  * support for specifying image size in wrapfigure
+  * support for commands: \; \, \quad \qquad inside \textsc
+  * \itemize[], \enumerate[], \description[] (discard argument)
+  * &amp;convert_to_unicode in style &amp;#8221; for chars &gt; 255
+  * correct several special symbols for koi8-r encoding
+  * repair \htmladdimg and user scaling in \includegraphics
+  * repair scaling for undefined environments in use_dvipng mode
+  * correct placement of the $\degree$ symbol in use_dvipng mode
+  * repair scaling in nouse_dvipng mode
+  * 256-color gif dithering via png16m followed by ppmquant
+  * correct transparent color specification (for the $\_$ symbol)
+  * correct Makefile for building manual
+  * adjust spacing for eqnarray
+  * fix alignment of eq numbers for safari
+  * fix infinite loop on empty itemize env
+  * make link to correct bibliography if there is more than one
+  * &quot;References&quot; by default, &quot;Bibliography&quot; for book (forwarded request 878730 from dirkmueller)</comment>
+    <requestid>879087</requestid>
+  </revision>
 </revisionlist>
