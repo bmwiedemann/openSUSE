@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 13 08:23:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 86.0.1
+  * Fixed: Fixed an issue on Apple Silicon machines that caused
+    Firefox to be unresponsive after system sleep (bmo#1682713)
+  * Fixed: Fixed an issue causing windows to gain or lose focus
+    unexpectedly (bmo#1694927)
+  * Fixed: Fixed truncation of date and time widgets due to
+    incorrect width calculation (bmo#1695578)
+  * Fixed: Fixed an issue causing unexpected behavior with
+    extensions managing tab groups (bmo#1694699)
+  * Fixed: Fixed a frequent Linux crash on browser launch
+    (bmo#1694670)
+
+-------------------------------------------------------------------
 Sun Feb 21 18:14:12 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 86.0
