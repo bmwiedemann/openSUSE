@@ -373,4 +373,12 @@ In short, do not use this driver for tablets on production workstations yet.</co
     is now exposed as the usual set of properties by this driver.</comment>
     <requestid>807191</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>37bf7efd65ac89b60dd5ad7d2bacfd2d</srcmd5>
+    <version>0.30.0</version>
+    <time>1615905708</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>878736</requestid>
+  </revision>
 </revisionlist>
