@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-pass
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,11 @@
 
 
 %define lang_name plasma_applet_org.kde.plasma.pass
+%define kf5_min_version 5.57.0
+%define qt_min_version 5.11
 %bcond_without lang
 Name:           plasma-pass
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Plasma 5 widget for the pass password manager
 License:        LGPL-2.1-or-later
@@ -30,16 +32,19 @@ Source:         https://download.kde.org/stable/plasma-pass/%{name}-%{version}.t
 Source1:        https://download.kde.org/stable/plasma-pass/%{name}-%{version}.tar.xz.sig
 Source2:        plasma-pass.keyring
 %endif
-Patch0:         0001-Fix-build-against-Qt-5.15.patch
+# PATCH-FIX-OPENSUSE -- Decrease the minimum Qt version to allow building on 15.2/15.3
+Patch0:         0001-Fix-build-Qt-5.12.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  cmake(KF5I18n) >= 5.42.0
-BuildRequires:  cmake(KF5ItemModels) >= 5.42.0
-BuildRequires:  cmake(KF5Plasma) >= 5.42.0
-BuildRequires:  cmake(Qt5Core) >= 5.9
-BuildRequires:  cmake(Qt5DBus) >= 5.9
-BuildRequires:  cmake(Qt5Gui) >= 5.9
-BuildRequires:  cmake(Qt5Qml) >= 5.9
+BuildRequires:  cmake(KF5I18n) >= %{kf5_min_version}
+BuildRequires:  cmake(KF5ItemModels) >= %{kf5_min_version}
+BuildRequires:  cmake(KF5Plasma) >= %{kf5_min_version}
+BuildRequires:  cmake(Qt5Concurrent) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt_min_version}
+BuildRequires:  pkgconfig(liboath)
 Recommends:     %{name}-lang
 Recommends:     password-store
 

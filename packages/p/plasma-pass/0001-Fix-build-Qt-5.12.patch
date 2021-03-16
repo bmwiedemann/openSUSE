@@ -1,0 +1,39 @@
+From: Michal Hlavac <miso@hlavki.eu>
+Subject: [PATCH] Fix build against Qt 5.12 and lower
+
+diff --git a/plugin/CMakeLists.txt b/plugin/CMakeLists.txt
+index 13aec5b09f79b5d16f25c2f14bbd28fff7eb30ca..70783a7fd5aabd0cf5d55e925f6dfae1c760eb71 100644
+--- a/plugin/CMakeLists.txt
++++ b/plugin/CMakeLists.txt
+@@ -21,10 +21,10 @@ ecm_qt_declare_logging_category(plasmapasslib_SRCS
+ add_library(plasmapass STATIC ${plasmapasslib_SRCS})
+ 
+ target_link_libraries(plasmapass
+-    Qt::Core
+-    Qt::DBus
+-    Qt::Qml
+-    Qt::Concurrent
++    Qt5::Core
++    Qt5::DBus
++    Qt5::Qml
++    Qt5::Concurrent
+     KF5::Plasma
+     KF5::I18n
+     KF5::ItemModels
+diff --git a/tests/passwordsmodeltest/CMakeLists.txt b/tests/passwordsmodeltest/CMakeLists.txt
+index 7f9796ef273e583e035e52d12572c5300d6ded8b..ec7f2ec35ccc58a1ba6c75edbeb93bb693212cef 100644
+--- a/tests/passwordsmodeltest/CMakeLists.txt
++++ b/tests/passwordsmodeltest/CMakeLists.txt
+@@ -9,8 +9,8 @@ set(passwordsmodeltest_SRCS
+ add_executable(passwordsmodeltest ${passwordsmodeltest_SRCS})
+ target_link_libraries(passwordsmodeltest
+     plasmapass
+-    Qt::Core
+-    Qt::DBus
+-    Qt::Widgets
++    Qt5::Core
++    Qt5::DBus
++    Qt5::Widgets
+     KF5::Plasma
+ )
+

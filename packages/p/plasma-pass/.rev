@@ -24,4 +24,17 @@
   * 0001-Fix-build-against-Qt-5.15.patch</comment>
     <requestid>811544</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f15327e377e1bf1581b121ef34f0cb57</srcmd5>
+    <version>1.2.0</version>
+    <time>1615905963</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.2.0
+  * Add support for OTP codes
+- Remove 0001-Fix-build-against-Qt-5.15.patch
+  * Fixed upstream
+- Add patch 0001-Fix-build-Qt-5.12.patch
+  * Fix build for Qt 5.12 and lower</comment>
+    <requestid>879360</requestid>
+  </revision>
 </revisionlist>

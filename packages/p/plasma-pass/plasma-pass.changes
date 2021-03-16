@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  5 20:37:14 UTC 2021 - Michal Hlavac <miso@hlavki.eu>
+
+- Update to 1.2.0
+  * Add support for OTP codes
+- Remove 0001-Fix-build-against-Qt-5.15.patch
+  * Fixed upstream
+- Add patch 0001-Fix-build-Qt-5.12.patch
+  * Fix build for Qt 5.12 and lower
+
+-------------------------------------------------------------------
 Thu Jun  4 15:11:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:
