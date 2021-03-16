@@ -57,4 +57,12 @@
     <comment>- Fix build without python2</comment>
     <requestid>795798</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>58b04ac5c4fe7dd04ad16ca965b013d4</srcmd5>
+    <version>1.5.2</version>
+    <time>1615905877</time>
+    <user>RBrownSUSE</user>
+    <comment>- fix build requires syntax error on expanding multiple python flavors</comment>
+    <requestid>879099</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/parsel
 Source:         https://files.pythonhosted.org/packages/source/p/parsel/parsel-%{version}.tar.gz
-BuildRequires:  %{python_module cssselect} >= 0.9
+BuildRequires:  %{python_module cssselect >= 0.9}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six} >= 1.5.2
-BuildRequires:  %{python_module w3lib} >= 1.8.0
+BuildRequires:  %{python_module six >= 1.5.2}
+BuildRequires:  %{python_module w3lib >= 1.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 0.9
