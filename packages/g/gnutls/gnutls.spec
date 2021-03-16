@@ -28,7 +28,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -42,12 +42,6 @@ Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch1:         gnutls-3.6.6-set_guile_site_dir.patch
 Patch2:         gnutls-temporarily_disable_broken_guile_reauth_test.patch
 Patch3:         gnutls-FIPS-TLS_KDF_selftest.patch
-#PATCH-FIX-UPSTREAM gitlab.com/gnutls/gnutls/issues/1131
-Patch4:         gnutls-ignore-duplicate-certificates.patch
-#PATCH-FIX-UPSTREAM gitlab.com/gnutls/gnutls/issues/1135
-Patch5:         gnutls-test-fixes.patch
-#PATCH-FIX-UPSTREAM bsc#1171565 gitlab.com/gnutls/gnutls/merge_requests/1387
-Patch6:         gnutls-gnutls-cli-debug.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge

@@ -1453,4 +1453,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
   * The maximum PIN length for PKCS #11 has been increased from 31</comment>
     <requestid>873444</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>e9c767ae07dc2ff4fe80749e8be6fc65</srcmd5>
+    <version>3.7.1</version>
+    <time>1615905773</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879119</requestid>
+  </revision>
 </revisionlist>

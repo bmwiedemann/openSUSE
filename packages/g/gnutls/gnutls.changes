@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 12 18:45:38 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.7.1:
+    [bsc#1183456, CVE-2021-20232] [bsc#1183457, CVE-2021-20231]
+  * Fixed potential use-after-free in sending "key_share" and
+    "pre_shared_key" extensions.
+  * Fixed a regression in handling duplicated certs in a chain.
+  * Fixed sending of session ID in TLS 1.3 middlebox compatibility
+    mode. In that mode the client shall always send a non-zero
+    session ID to make the handshake resemble the TLS 1.2
+    resumption; this was not true in the previous versions.
+  * Removed dependency on the external 'fipscheck' package,
+    when compiled with --enable-fips140-mode.
+  * Added padlock acceleration for AES-192-CBC.
+- Remove patches upstream:
+  * gnutls-gnutls-cli-debug.patch
+  * gnutls-ignore-duplicate-certificates.patch
+  * gnutls-test-fixes.patch
+
+-------------------------------------------------------------------
 Wed Feb 10 12:08:05 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix the test suite for tests/gnutls-cli-debug.sh [bsc#1171565]
