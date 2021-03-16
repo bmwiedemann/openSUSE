@@ -17,7 +17,7 @@
 
 
 Name:           afl
-Version:        3.10c
+Version:        3.11c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
@@ -25,7 +25,9 @@ URL:            http://lcamtuf.coredump.cx/afl/
 Source:         https://github.com/AFLplusplus/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
+BuildRequires:  clang
 BuildRequires:  gcc-c++
+BuildRequires:  llvm-devel
 BuildRequires:  python3-devel
 
 %description
@@ -49,7 +51,7 @@ use cases - say, common image parsing or file compression libraries.
 sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' afl-cmin
 
 %build
-export CFLAGS="$CFLAGS %{optflags}"
+export CFLAGS="$CFLAGS %{optflags} -fno-lto"
 %ifnarch %{ix86} x86_64
 export AFL_NO_X86=1
 %endif
@@ -80,6 +82,7 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %{_libexecdir}/%{name}/afl-compiler-rt.o
 %{_libexecdir}/%{name}/afl-llvm-rt.o
 %{_libexecdir}/%{name}/dynamic_list.txt
+%{_libexecdir}/%{name}/*.so
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/testcases
 %{_datadir}/%{name}/testcases/*
