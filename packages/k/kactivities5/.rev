@@ -694,4 +694,12 @@
     <comment>KDE Frameworks 5.79 (forwarded request 871084 from cgiboudeaux)</comment>
     <requestid>871667</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>35e4230e84cb4e73b940cca6b78c90c3</srcmd5>
+    <version>5.80.0</version>
+    <time>1615905598</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Frameworks 5.80 (forwarded request 878671 from cgiboudeaux)</comment>
+    <requestid>878780</requestid>
+  </revision>
 </revisionlist>
