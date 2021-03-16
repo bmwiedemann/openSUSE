@@ -1305,4 +1305,12 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>866634</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>1994a15760100d6a2f7a5f543b2d2e96</srcmd5>
+    <version>3.35.0</version>
+    <time>1615905784</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879153</requestid>
+  </revision>
 </revisionlist>

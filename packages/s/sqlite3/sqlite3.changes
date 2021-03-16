@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar 15 07:59:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.35.0:
+  * Added built-in SQL math functions().
+    (Requires the -DSQLITE_ENABLE_MATH_FUNCTIONS compile-time option.)
+  * Added support for ALTER TABLE DROP COLUMN.
+  * Generalize UPSERT:
+      * Allow multiple ON CONFLICT clauses that are evaluated in order,
+      * The final ON CONFLICT clause may omit the conflict target and yet still use DO UPDATE.
+  * Add support for the RETURNING clause on DELETE, INSERT, and UPDATE statements.
+  * Use less memory when running VACUUM on databases containing very large TEXT
+    or BLOB values. It is no longer necessary to hold the entire TEXT or BLOB
+    in memory all at once.
+  * Add support for the MATERIALIZED and NOT MATERIALIZED hints when specifying
+    common table expressions. The default behavior was formerly NOT
+    MATERIALIZED, but is now changed to MATERIALIZED for CTEs that are used
+    more than once.
+  * The SQLITE_DBCONFIG_ENABLE_TRIGGER and SQLITE_DBCONFIG_ENABLE_VIEW settings
+    are modified so that they only control triggers and views in the main
+    database schema or in attached database schemas and not in the TEMP schema.
+    TEMP triggers and views are always allowed.
+  * Query planner/optimizer improvements
+  * Enhance the ".stats" command to accept new arguments "stmt" and "vmstep",
+    causing prepare statement statistics and only the virtual-machine step
+    count to be shown, respectively.
+  * Add the ".filectrl data_version" command.
+  * Enhance the ".once" and ".output" commands so that if the destination
+    argument begins with "|" (indicating that output is redirected into a pipe)
+    then the argument does not need to be quoted.
+  * Fix a bug in the IN-operator optimization of version 3.33.0 that can cause
+    an incorrect answer.
+  * Fix incorrect answers from the LIKE operator if the pattern ends with "%"
+    and there is an "ESCAPE '_'" clause. 
+
+-------------------------------------------------------------------
 Thu Jan 21 20:13:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SQLite 3.34.1:

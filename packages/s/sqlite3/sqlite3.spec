@@ -17,10 +17,10 @@
 
 
 %define oname sqlite
-%define tarversion 3340100
+%define tarversion 3350000
 %bcond_with icu
 Name:           sqlite3
-Version:        3.34.1
+Version:        3.35.0
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
