@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:26:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * Fix Non-square Radiance/RGBE/.hdr images failing to load (kde#433877)
+  * Check the input buffer before passing it to libheif
+  * Check primaries returned from libavif
+  * Add plugin for High Efficiency Image File Format (HEIF)
+  * Quality option can be returned without parsing input file.
+
+-------------------------------------------------------------------
 Mon Feb  8 08:46:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0
