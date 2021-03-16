@@ -154,4 +154,12 @@
     <comment>Newest with NVMe and other tools (forwarded request 876569 from jrecord)</comment>
     <requestid>876571</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>e52d391170a18b9279207b9f3fc85593</srcmd5>
+    <version>3.1.14</version>
+    <time>1615905803</time>
+    <user>RBrownSUSE</user>
+    <comment>Ready for Factory (forwarded request 878389 from jrecord)</comment>
+    <requestid>878390</requestid>
+  </revision>
 </revisionlist>

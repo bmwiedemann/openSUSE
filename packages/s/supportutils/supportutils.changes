@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 11 18:12:31 UTC 2021 - jason.record@gmail.com
+
+- Fixed mismatched taint flags (bsc#1178491)
+- Removed redundant fdisk code that can cause timeout issues (bsc#1181679)
+- Supportconfig processes -f without hanging (bsc#1182904)
+
+-------------------------------------------------------------------
 Wed Mar  3 14:12:42 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove net-tools from requires, it does not contain any tool
