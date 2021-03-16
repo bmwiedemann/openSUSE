@@ -1,7 +1,7 @@
 #
 # spec file for package eid-mw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Philipp Thomas <psmt@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,27 +31,26 @@ Source:         https://dist.eid.belgium.be/continuous/sources/%{src_name}.tar.g
 Source2:        https://dist.eid.belgium.be/continuous/sources/%{src_name}.tar.gz.asc
 Source1:        baselibs.conf
 #Source2:            eid-mw-rpmlintrc
-Source99:	eid-mw.keyring
+Source99:       eid-mw.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  gtk2-devel
-BuildRequires:  pcsc-lite-devel
-Requires(pre):      /sbin/chkconfig
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gtk2-devel
 BuildRequires:  libtool
+BuildRequires:  pcsc-lite-devel
 BuildRequires:  subversion
 %if 0%{?suse_version}
 Requires:       pcsc-ccid
 BuildRequires:  MozillaFirefox
 BuildRequires:  gcc-c++
-BuildRequires:  gtk3-devel
 BuildRequires:  glibc-devel
-BuildRequires:  make
-BuildRequires:  libxml2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  libproxy-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  make
 #BuildRequires:  libassuan-devel
-BuildRequires:  libopenssl-devel
 BuildRequires:  libcurl-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -143,7 +142,6 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications --add-category="
 %find_lang dialogs-beid
 %find_lang eid-viewer
 
-
 %post -n eid-mw-libs -p /sbin/ldconfig
 
 %post -n eid-mw-firefox
@@ -184,7 +182,6 @@ fi
 %dir /usr/share/p11-kit/modules
 /usr/share/p11-kit/modules/beid.module
 
-
 %files firefox
 %defattr(-,root,root)
 %dir %{_datadir}/mozilla/
@@ -213,7 +210,6 @@ fi
 /usr/include/beid/rsaref220/unix.h
 %{_libdir}/pkgconfig/libbeidpkcs11.pc
 
-
 %files -n eid-viewer -f eid-viewer.lang
 %defattr(-,root,root,0755)
 %{_bindir}/eid-viewer
@@ -225,6 +221,5 @@ fi
 %if ! 0%{?el6}
 %{_datadir}/glib-2.0/schemas/
 %endif
-
 
 %changelog
