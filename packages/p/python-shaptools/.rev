@@ -146,4 +146,12 @@
     <comment>Fix spec file to build properly in openSUSE:Factory</comment>
     <requestid>870564</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c98cd36e072d996da37ddf6673b1190c</srcmd5>
+    <version>0.3.11+git.1615795734.75f5f46</version>
+    <time>1615905887</time>
+    <user>RBrownSUSE</user>
+    <comment>New version of python-shaptools released</comment>
+    <requestid>879096</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 12 14:59:00 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Fix the HANA sidadm user creation to transform to lowercase 
+  properly 
+
+-------------------------------------------------------------------
 Tue Feb  9 13:26:18 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Fix spec file to build properly the shapcli executable 
