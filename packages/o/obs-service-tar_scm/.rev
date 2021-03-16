@@ -1302,4 +1302,14 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>874266</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c400d377ce1e7b563b7b13e6fab3427e</srcmd5>
+    <version>0.10.22.1615538418.07a353d</version>
+    <time>1615905827</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.10.22.1615538418.07a353d:
+  * Fix filelist: align config(noreplace) usage with obs-service-download_files
+  * Support gitlab/github merge requests</comment>
+    <requestid>878514</requestid>
+  </revision>
 </revisionlist>

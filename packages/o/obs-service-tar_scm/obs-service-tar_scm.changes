@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 12 08:44:03 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.22.1615538418.07a353d:
+  * Fix filelist: align config(noreplace) usage with obs-service-download_files
+  * Support gitlab/github merge requests
+
+-------------------------------------------------------------------
 Wed Feb 10 07:47:00 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.21.1612422695.2fdf897:
