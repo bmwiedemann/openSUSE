@@ -111,4 +111,16 @@
     <comment></comment>
     <requestid>689758</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dc1f4fe4d9372c4f859e29a710226153</srcmd5>
+    <version>2.1</version>
+    <time>1615905769</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.1:
+  * py 3.7-3.9 support
+  * Avoid converting readme to rST for PyPI upload 
+  * Fix typos in messages
+  * Use SVG versions of status icons in README.md</comment>
+    <requestid>879108</requestid>
+  </revision>
 </revisionlist>
