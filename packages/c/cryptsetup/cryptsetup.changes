@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Mar 13 11:29:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cryptsetup 2.3.5:
+  * Fix partial reads of passphrase from an interactive terminal
+  * Fix maximum length of password entered through a terminal
+  * integritysetup: support new dm-integrity HMAC recalculation
+    options
+  * integritysetup: display of recalculating sector in dump command
+  * veritysetup: fix verity FEC if stored in the same image with
+    hashes
+  * veritysetup: run FEC repair check even if root hash fails
+  * veritysetup: do not process hash image if hash area is empty
+  * veritysetup: store verity hash algorithm in superblock in
+    lowercase
+  * bitlk: fix a crash if the device disappears during BitLocker
+    scan
+  * bitlk: show a better error when trying to open an NTFS device
+  * bitlk: add support for startup key protected VMKs
+  * Fix LUKS1 repair code (regression since version 1.7.x)
+  * Fix luksKeyChange for LUKS2 with assigned tokens
+  * Fix cryptsetup resize using LUKS2 tokens
+  * Print a visible error if device resize is not supported
+  * Add error message when suspending wrong non-LUKS device
+  * Fix default XTS mode key size in reencryption
+  * Rephrase missing locking directory warning and move it to
+    debug level
+  * Many fixes for the use of cipher_null (empty debug cipher)
+  * Fixes for libpasswdqc 2.0.x (optional passphrase quality check)
+  * Fixes for problems discovered by various tools for code
+    analysis
+  * Various fixes to man pages
+- silence hmac packaging warnings
+
+-------------------------------------------------------------------
+Fri Mar 12 22:39:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- move licenses to licensedir 
+
+-------------------------------------------------------------------
 Tue Dec  8 08:52:50 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - SLE marker: implements jsc#SLE-5911, bsc#1165580, jsc#SLE-145149

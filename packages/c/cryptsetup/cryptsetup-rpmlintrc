@@ -1,0 +1,5 @@
+# intentionally named
+addFilter("libcryptsetup.*hmac.* hidden-file-or-dir .*\.libcryptsetup\.so\..*\.hmac")
+# hmacs for identical files are identical
+addFilter("libcryptsetup.*hmac.* files-duplicate .*\.libcryptsetup\.so\..*\.hmac")
+

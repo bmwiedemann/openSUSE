@@ -1,7 +1,7 @@
 #
 # spec file for package cryptsetup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           cryptsetup2
 %else
 Name:           cryptsetup
 %endif
-Version:        2.3.4
+Version:        2.3.5
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.0-or-later
@@ -33,6 +33,7 @@ Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetu
 Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
+Source4:        %{name}-rpmlintrc
 BuildRequires:  device-mapper-devel
 BuildRequires:  fipscheck
 BuildRequires:  fipscheck-devel
@@ -40,7 +41,6 @@ BuildRequires:  libjson-c-devel
 BuildRequires:  libpwquality-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  pkgconfig(openssl)
 # 2.6.38 has the required if_alg.h
 BuildRequires:  linux-glibc-devel >= 2.6.38
 BuildRequires:  pkgconfig
@@ -48,13 +48,14 @@ BuildRequires:  popt-devel
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(libargon2)
+BuildRequires:  pkgconfig(openssl)
+Requires(post): coreutils
+Requires(postun): coreutils
 %if 0%{?is_backports}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 %endif
-Requires(post): coreutils
-Requires(postun): coreutils
 
 %lang_package(cryptsetup)
 
@@ -124,7 +125,7 @@ autoreconf -f -i
   --with-default-luks-format=LUKS1 \
   --with-luks2-lock-path=/run/cryptsetup \
   --with-tmpfilesdir='%{_tmpfilesdir}'
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 # Generate HMAC checksums (FIPS)
@@ -171,7 +172,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libcryptsetup%{so_ver} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS COPYING* FAQ README TODO docs/ChangeLog.old docs/*ReleaseNotes
+%license COPYING*
+%doc AUTHORS FAQ README TODO docs/ChangeLog.old docs/*ReleaseNotes
 %if !0%{?usrmerged}
 /sbin/cryptsetup%{?is_backports:2}
 %endif
@@ -179,10 +181,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_sbindir}/veritysetup%{?is_backports:2}
 %{_sbindir}/integritysetup%{?is_backports:2}
 %{_sbindir}/cryptsetup-reencrypt%{?is_backports:2}
-%{_mandir}/man8/cryptsetup%{?is_backports:2}.8%{ext_man}
-%{_mandir}/man8/cryptsetup-reencrypt%{?is_backports:2}.8%{ext_man}
-%{_mandir}/man8/veritysetup%{?is_backports:2}.8%{ext_man}
-%{_mandir}/man8/integritysetup%{?is_backports:2}.8%{ext_man}
+%{_mandir}/man8/cryptsetup%{?is_backports:2}.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-reencrypt%{?is_backports:2}.8%{?ext_man}
+%{_mandir}/man8/veritysetup%{?is_backports:2}.8%{?ext_man}
+%{_mandir}/man8/integritysetup%{?is_backports:2}.8%{?ext_man}
 %if !0%{?is_backports}
 %{_tmpfilesdir}/cryptsetup.conf
 %ghost %dir /run/cryptsetup

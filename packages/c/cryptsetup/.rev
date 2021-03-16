@@ -975,4 +975,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment>- SLE marker: implements jsc#SLE-5911, bsc#116558, jsc#SLE-145149</comment>
     <requestid>853733</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>81af8322386493250ef726c159d9eebb</srcmd5>
+    <version>2.3.5</version>
+    <time>1615905761</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879091</requestid>
+  </revision>
 </revisionlist>
