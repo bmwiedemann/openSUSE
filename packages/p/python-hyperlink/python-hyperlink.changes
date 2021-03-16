@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 13 13:07:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.0.0:
+  * Update plus sign (+) handling to work with/like HTML form encoding (POST)
+    by default, fixes #129, and associated roundtripping (#146).
+  * Package IDNA tables.
+  * Long overdue dependency bumps
+
+-------------------------------------------------------------------
 Mon Sep 28 11:54:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.0.1:
