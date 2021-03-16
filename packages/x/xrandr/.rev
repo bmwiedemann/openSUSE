@@ -135,4 +135,12 @@
   U_xrandr_add-filter-flag.patch</comment>
     <requestid>724820</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2c0052782839fa2ef4f8f23697ce1a46</srcmd5>
+    <version>1.5.1</version>
+    <time>1615905715</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879189</requestid>
+  </revision>
 </revisionlist>
