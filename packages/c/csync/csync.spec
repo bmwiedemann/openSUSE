@@ -1,7 +1,7 @@
 #
 # spec file for package csync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,12 @@
 
 
 Name:           csync
-BuildRequires:  cmake
-BuildRequires:  doxygen
-BuildRequires:  gcc-c++
-BuildRequires:  libsmbclient-devel
-BuildRequires:  libssh-devel
-BuildRequires:  pkg-config
-%if 0%{?suse_version}
-BuildRequires:  sqlite3-devel
-%else
-BuildRequires:  sqlite-devel
-%endif
 Version:        0.50.0
 Release:        0
 Summary:        A user level bidirectional client only file synchronizer
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            http://www.csync.org/
+URL:            https://www.csync.org/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE fix-cmake-on-pre-12.patch
@@ -43,7 +32,17 @@ Patch1:         csync_log.h.patch
 Patch2:         fix-missing-const.patch
 # PATCH-FIX-OPENSUSE csync-libssh.patch -- Detect newer libssh versions; hacked patch
 Patch3:         csync-libssh.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake
+BuildRequires:  doxygen
+BuildRequires:  gcc-c++
+BuildRequires:  libsmbclient-devel
+BuildRequires:  libssh-devel
+BuildRequires:  pkgconfig
+%if 0%{?suse_version}
+BuildRequires:  sqlite3-devel
+%else
+BuildRequires:  sqlite-devel
+%endif
 
 %description
 csync is an implementation of a file synchronizer which provides the
@@ -55,8 +54,8 @@ Summary:        A user level bidirectional client only file synchronizer
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 %if 0%{?suse_version} > 1030
-Recommends:     libcsync-plugin-smb
 Recommends:     libcsync-plugin-sftp
+Recommends:     libcsync-plugin-smb
 %endif
 
 %description -n libcsync0
@@ -90,8 +89,8 @@ of libsmbclient in Samba/Windows environments.
 Summary:        Owncloud plugin for csync
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Requires:       libcsync0 = %{version}
 BuildRequires:  libneon-devel
+Requires:       libcsync0 = %{version}
 
 %description -n libcsync-plugin-owncloud
 This plug-in allows applications using csync to synchronize with Owncloud.
@@ -137,9 +136,10 @@ fi
 
 %build
 if test ! -e "build"; then
-  %{__mkdir} build
+  mkdir build
 fi
 pushd build
+# FIXME: you should use the %%cmake macros
 cmake \
   -DCMAKE_C_FLAGS:STRING="%{optflags}" \
   -DCMAKE_CXX_FLAGS:STRING="%{optflags}" \
@@ -147,35 +147,33 @@ cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
   -DLIB_SUFFIX=64 \
 %endif
   %{_builddir}/%{name}-%{version}
-%__make %{?jobs:-j%jobs} VERBOSE=1
-%__make doc
+%make_build
+%make_build doc
 popd
 
 %install
 pushd build
 %if 0%{?suse_version}
-%makeinstall
+%make_install
 %else
-make DESTDIR=%{buildroot} install
+%make_install
 %endif
 popd
 
 %post -n libcsync0 -p /sbin/ldconfig
-
 %postun -n libcsync0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_bindir}/csync
 %{_mandir}/man?/csync.*
 
 %files -n libcsync0
-%defattr(-,root,root)
-%doc AUTHORS COPYING INSTALL README
+%license COPYING
+%doc AUTHORS INSTALL README
 %dir %{_sysconfdir}/csync
 %config(noreplace) %{_sysconfdir}/csync/csync.conf
 %config(noreplace) %{_sysconfdir}/csync/csync_exclude.conf
@@ -183,30 +181,24 @@ popd
 %dir %{_libdir}/csync-0
 
 %files -n libcsync-plugin-smb
-%defattr(-,root,root)
 %{_libdir}/csync-0/csync_smb.so
 
 %files -n libcsync-plugin-sftp
-%defattr(-,root,root)
 %{_libdir}/csync-0/csync_sftp.so
 
 %if 0%{?suse_version} >= 1200
 %files -n libcsync-plugin-owncloud
-%defattr(-,root,root)
 %{_libdir}/csync-0/csync_owncloud.so
 %endif
 
 %files -n libcsync-devel
-%defattr(-,root,root)
 %{_includedir}/csync
 %{_libdir}/libcsync.so
 
 %files -n libcsync-devel-doc
-%defattr(-,root,root)
 %doc build/doc/html
 
 %files -n libcsync-doc
-%defattr(-,root,root)
 %{_datadir}/doc/csync
 
 %changelog
