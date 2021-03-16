@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 15 16:01:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.1
+  * Fix crash in ApplicationLauncherJob(service) when service is null.
+
+-------------------------------------------------------------------
+Sun Mar  7 09:26:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * PreviewJob: consider file size for cache invalidation (kde#433127)
+  * RenameDialog: fix a potential buffer overflow (kde#432610)
+
+-------------------------------------------------------------------
 Mon Feb  8 08:46:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0

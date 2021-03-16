@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.79
+%define _tar_path 5.80
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.79.0
+Version:        5.80.1
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -185,6 +185,7 @@ Development files.
 %{_kf5_servicesdir}/data.protocol
 %{_kf5_servicesdir}/http_cache_cleaner.desktop
 %{_kf5_servicesdir}/kcmtrash.desktop
+%{_kf5_servicesdir}/mailto.protocol
 %{_kf5_servicesdir}/mms.protocol
 %{_kf5_servicesdir}/mmst.protocol
 %{_kf5_servicesdir}/mmsu.protocol
@@ -245,6 +246,9 @@ Development files.
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KPasswdServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KSlaveLauncher.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.kio.FileUndoManager.xml
+%dir %{_kf5_sharedir}/kdevappwizard
+%dir %{_kf5_sharedir}/kdevappwizard/templates
+%{_kf5_sharedir}/kdevappwizard/templates/ioslave.tar.bz2
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5KIO/
 %{_kf5_libdir}/libKF5KIOCore.so
