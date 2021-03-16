@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
+%define lname   liburing2
 Name:           liburing
-%define so_ver  1
-%define lname   %{name}%{so_ver}
-Version:        0.6
+Version:        2.0
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.gz
-Requires:       kernel-default >= 5.1
 BuildRequires:  gcc
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+Requires:       kernel-default >= 5.1
 
 %description
 Provides native async IO for the Linux kernel, in a fast and efficient
@@ -45,7 +44,7 @@ manner, for both buffered and O_DIRECT.
 %package devel
 Summary:        Development files for Linux-native io_uring I/O access library
 Group:          Development/Libraries/C and C++
-Requires:       %{name}%{so_ver} = %{version}
+Requires:       %{lname} = %{version}
 Requires:       pkgconfig
 
 %description devel
@@ -53,20 +52,21 @@ This package provides header files to include and libraries to link with
 for the Linux-native io_uring.
 
 %prep
-%setup -n %name-%version
+%setup -q
 
 %build
-./configure --prefix=%{_prefix} \
+# not autotools, so configure macro doesn't work
+sh ./configure --prefix=%{_prefix} \
             --includedir=%{_includedir} \
             --libdir=/%{_libdir} \
             --libdevdir=/%{_libdir} \
             --mandir=%{_mandir} \
             --datadir=%{_datadir}
-make %{?_smp_mflags}
+%make_build -C src
 
 %install
 %make_install
-rm %{buildroot}%{_libdir}/%{name}.a
+rm -v %{buildroot}%{_libdir}/%{name}.a
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -76,11 +76,13 @@ rm %{buildroot}%{_libdir}/%{name}.a
 %license COPYING COPYING.GPL LICENSE
 
 %files devel
+%doc README
 %{_includedir}/liburing/
 %{_includedir}/liburing.h
 %{_libdir}/liburing.so
 %{_libdir}/pkgconfig/*
 %{_mandir}/man2/*
-%doc README
+%{_mandir}/man3/*
+%{_mandir}/man7/*
 
 %changelog

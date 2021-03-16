@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Sat Mar 13 21:33:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip building the tests that are neither installed nor run
+  as they fail to build on 32bit platforms (like e.g. armv7l) (bsc#1181571) 
+
+-------------------------------------------------------------------
+Sat Mar 13 20:18:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0:
+  * Sync io_uring.h API file with Linux 5.12
+  * helpers: prefix any helper with t_ instead of io_uring_
+  * helpers: add io_uring_create_buffers() helper
+  * helpers: add io_uring_create_file() helper
+  * helpers: add io_uring_calloc helper
+  * helpers: add io_uring_posix_memalign helper
+  * setup: cleanup probe code
+  * setup: check whether malloc succ before using it
+  * io_uring_prep_sync_file_range: cleanups
+  * .gitignore: add sendmsg_fs_cve
+  * Added prep function for sync_file_range op
+  * Install man7 pages
+  * src/queue: never clear data->wait_nr
+  * src/queue: control kernel enter with a var
+  * src/queue: don't re-wait for CQEs
+  * src/queue: don't loop when don't enter
+  * src/queue: clean _io_uring_get_cqe() err handling
+  * src/queue: don't wait for less than expected
+  * Add inline doc in the comments for io_uring_prep_splice
+  * Fix sigset_t not found in liburing.h
+  * src/queue: update comment on io_uring_wait_cqes() with timeouts
+  * io_uring.h: 5.12 pending kernel sync
+  * man/io_uring_register.2: fix spelling error
+  * man/io_uring_register.2: Add documentation on IORING_REGISTER_FILES_SKIP
+  * Add two ring deadlock case
+  * Fix IORING_OP_FALLOCATE args in io_uring_enter(2) man page
+  * src/queue: Fix a typo in `__io_uring_flush_sq()`
+  * src/queue: fix `sq_ring_needs_enter()` indentation
+  * src/queue: refactor io_uring_get_sqe()
+  * man/io_uring_setup.2: correct 5.10 -> 5.11 for non-fixed files and SQPOLL
+  * man/io_uring_enter.2: document new opcodes
+  * man/io_uring_enter.2: ensure all IORING_ENTER_* flags are documented
+  * src/queue: add comment on why reading SQ->head for flush isn't atomic
+  * liburing.h: fix 32-bit compile warning
+  * man/io_uring.7: Fix typo
+  * man/io_uring_enter.2: describe timeout updates
+  * Don't enter the kernel to wait on cqes if they are already available.
+  * Add timeout update
+  * remove zero-size array in io_uring.h
+  * Rename SIG_IS_DATA -> EXT_ARG
+  * Update SIG_IS_DATA to modified kernel API
+  * Use IORING_ENTER_GETEVENTS_TIMEOUT if available
+  * Add wrapper for __io_uring_get_cqe()
+  * Add __sys_io_uring_enter2()
+  * Include 'features' in struct io_uring
+  * io_uring.h: update with 5.11-pending copy
+  * Fix compilation with iso C standard (c89, c99 and c11)
+  * examples: disable ucontext-cp if ucontext.h is not available
+  * Moves function calls out of assert().
+  * liburing.h: add renameat/unlinkat prep helpers
+  * io_uring.h: add renameat and unlinkat opcodes
+  * configure: Fix unsafe temporary file creation
+  * Add const modifier to functions that do not change the state of the ring
+  * man/io_uring_enter.2: clarify POLL_ADD return value
+  * Add get_sqe manpage to debian package
+  * Add man page for io_uring_get_sqe
+  * man/io_uring_enter.2: add EACCES and EBADFD errors
+  * man/io_uring_register.2: add description of restrictions
+  * man/io_uring_setup.2: add IORING_SETUP_R_DISABLED description
+  * Makefile: add .PHONY dependency
+  * man/io_uring_enter.2: split ERRORS section in two sections
+  * liburing.h: add `io_uring_prep_tee`
+  * Fix build flag settings
+  * .gitignore: Add sq-poll-dup
+  * man/io_uring_enter.2: clarify PROVIDE_BUFFERS requirements
+  * Update packaging/installation for new man pages
+  * man/io_uring.7: clarify submission/completion ordering
+  * man/io_uring.7: style and barrier updates
+  * Add man page for io_uring_queue_exit
+  * Add man page for io_uring_queue_init
+  * Adding section 7 man page for io_uring
+  * probes: provide our own free function
+  * .gitignore: add pipe-reuse
+  * Fold versioned symbols into LIBURING_2.0 version node
+  * Remove versioned symbols not provided by the shared library anymore
+  * man/io_uring_setup.2: improve SQPOLL wakeup example
+  * Fix io_uring_sq_ready() to use load acquire to read khead.
+  * io_uring.h: fix missing tab
+  * Bump major version to 2
+  * Add IORING_OP_SHUTDOWN and prep helper
+  * Add a few function comments in liburing.h
+  * Add io_uring_sqring_wait()
+  * io_uring.h: add new definitions from 5.10
+  * man/io_uring_setup.2: document missing IORING_FEAT_* feature flags
+  * man/io_uring_enter.2: add description of buffer selections
+  * build: Output CXX on quiet output when using a C++ compiler
+  * Fix missing 'c' in sigfd-deadlock addition
+  * Add helper to enable rings
+  * Add helper to register restrictions
+  * io_uring.h: add register restrictions and enable ring defines
+  * io_uring.h: use an enumeration for io_uring_register(2) opcodes
+  * io_uring_prep_splice(): fix type (again)
+  * Use the right type for io_uring_prep_splice()
+  * syscall: make syscall.h independently includeable
+  * sq_ring_needs_enter: revert change to only enter if submit != 0
+  * man/io_uring_setup.2: document IORING_SETUP_ATTACH_WQ
+  * update debian/changelog
+  * update debian/liburing1.symbols
+  * debian/rules: pass down relativelibdir in order to get an absolute path
+  * man/io_uring_setup.2: document IORING_SETUP_CLAMP
+  * man/io_uring_enter: fix openat sqe doc
+
+-------------------------------------------------------------------
+Sat Mar 13 20:15:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7:
+  * io_uring.h: sync with kernel
+  * io_uring_peek_batch_cqe should also check cq ring overflow
+  * Check cq ring overflow status
+  * configure: fix typos in help/error messages
+  * src/setup: clarify that we always return -errno on error
+  * man/io_uring_enter.2: updated io_uring_sqe and fixed incorrect flag references.
+  * Removed misplaced periods from io_uring_enter(2).
+  * Merge branch 'readme' of https://github.com/jobs-git/liburing
+  * Make readme sensible
+  * man/io_uring_enter: update connect to note use of const
+  * Merge branch 'master' of https://github.com/KayEss/liburing
+  * Take `sockaddr` immutably in io_uring_prep_connect
+  * Merge branch 'dev' of https://github.com/CarterLi/liburing
+  * Merge branch 'fix-splice-docs' of https://github.com/gerow/liburing
+  * man: fix description of splice offsets
+  * .travis.yml: Change the language from C to C++
+  * configure: Use $CC and $CXX as default compilers if set
+  * Make the liburing header files again compatible with C++
+  * src/include/liburing/barrier.h: Restore clang compatibility
+  * src/Makefile: Only specify -shared at link time
+  * Merge branch 'openat_o_path' of https://github.com/MaxKellermann/liburing
+  * Convert __io_uring_get_sqe() from a macro into an inline function
+  * src/include/liburing/barrier.h: Use C11 atomics
+  * Makefiles: Enable -Wextra
+  * Bump version to 1.0.7
+  * change poll_events to 32 bits to cover EPOLLEXCLUSIVE
+  * examples/ucontext-cp.c: use IORING_OP_TIMEOUT
+  * man/io_uring_enter: correct the description of
+  * man/io_uring_register.2: add IORING_CQ_EVENTFD_DISABLED description
+  * Add helpers to set and get eventfd notification status
+  * man/io_uring_setup.2: add 'flags' field in the struct io_cqring_offsets
+  * Add CQ ring 'flags' field
+  * remove duplicate call to __io_uring_peek_cqe()
+  * update wait_nr to account for completed event
+  * preseve wait_nr if SETUP_IOPOLL is set
+  * man/io_uring_enter.2: add IORING_OP_TEE entry
+  * update io_uring.h with tee()
+  * Merge branch 'master' of https://github.com/shuveb/liburing
+  * Adding section to describe IORING_OP_EPOLL_CTL
+  * fix missing '#include <sys/stat.h>' in 'src/include/liburing.h
+  * fix build on musl libc
+  * Use uint64_t for splice offsets
+  * Use __off64_t for offsets
+  * Merge branch 'master' of https://github.com/shuveb/liburing
+  * Adding description for the IORING_OP_SPLICE operation
+  * Merge branch 'master' of https://github.com/shuveb/liburing
+  * Adding section describing IORING_OP_OPENAT2
+  * Fix 32-bit warnings on compile
+  * __io_uring_get_cqe: silence signed vs unsigned comparison warning
+  * io_uring_get_sqe: always use khead
+
+-------------------------------------------------------------------
 Fri Oct 30 21:42:16 UTC 2020 - Milan Savić <milsav92@outlook.com>
 
 !!IMPORTANT!!
