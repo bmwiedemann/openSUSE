@@ -49,7 +49,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        89.0.4389.72
+Version:        89.0.4389.90
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -102,6 +102,7 @@ Patch86:        chromium-shim_headers.patch
 Patch87:        chromium-89-missing-cstring-header.patch
 Patch88:        chromium-89-AXTreeSerializer-include.patch
 Patch89:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
+Patch90:        x11-ozone-fix-two-edge-cases.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -183,7 +184,6 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
-BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
@@ -210,6 +210,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
