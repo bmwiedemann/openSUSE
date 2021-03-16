@@ -3880,4 +3880,20 @@
 - update staging to 6.3 release</comment>
     <requestid>875887</requestid>
   </revision>
+  <revision rev="333" vrev="1">
+    <srcmd5>c8ee5f8d1b80a15362de4bb14235010a</srcmd5>
+    <version>6.4</version>
+    <time>1615905873</time>
+    <user>RBrownSUSE</user>
+    <comment>- updated to 6.4 development release
+  - Support for the DTLS protocol.
+  - Fontset support in DirectWrite.
+  - Dialog for editing Access Control entries.
+  - Theming support for a few more common controls.
+  - Support for Korean Wansung encoding.
+  - Various bug fixes.
+- update staging to 6.4 release
+- removed 6.3_fix.patch: upstream</comment>
+    <requestid>879104</requestid>
+  </revision>
 </revisionlist>

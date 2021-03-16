@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 13 06:38:29 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.4 development release
+  - Support for the DTLS protocol.
+  - Fontset support in DirectWrite.
+  - Dialog for editing Access Control entries.
+  - Theming support for a few more common controls.
+  - Support for Korean Wansung encoding.
+  - Various bug fixes.
+- update staging to 6.4 release
+- removed 6.3_fix.patch: upstream
+
+-------------------------------------------------------------------
 Mon Mar  1 06:31:02 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - 6.3_fix.patch: temporary fix for a 6.3 regression
