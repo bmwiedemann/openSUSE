@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Disable tests, they are very slow/halt on many arch
 %ifarch x86_64
@@ -29,7 +28,7 @@ Name:           python-pyzmq
 Version:        22.0.3
 Release:        0
 Summary:        Python bindings for 0MQ
-License:        LGPL-3.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND LGPL-3.0-or-later
 URL:            https://github.com/zeromq/pyzmq
 Source:         https://files.pythonhosted.org/packages/source/p/pyzmq/pyzmq-%{version}.tar.gz
 Source1:        python-pyzmq-rpmlintrc
@@ -60,9 +59,9 @@ Requires:       python-py
 Recommends:     python-gevent
 Recommends:     python-numpy
 Recommends:     python-pexpect
-Suggests:       python-paramiko
 Recommends:     python-simplejson
 Recommends:     python-tornado
+Suggests:       python-paramiko
 %endif
 %python_subpackages
 
@@ -73,6 +72,7 @@ the ZeroMQ library (http://www.zeromq.org).
 %package devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
+Requires:       python-base
 Requires:       python-devel
 Requires:       zeromq-devel
 
@@ -94,7 +94,7 @@ zmq_prefix = %{_prefix}
 no_libzmq_extension = True
 '>> setup.cfg
 export CFLAGS="%{optflags}"
-%python_build 
+%python_build
 
 %install
 %python_install
@@ -103,7 +103,8 @@ export CFLAGS="%{optflags}"
 %if %{with tests}
 %check
 export LANG=en_US.UTF-8
-# This test wants to build a custom cython extension, but does not have the source files installed into the buildroot
+# This test wants to build a custom cython extension, but does
+# not have the source files installed into the buildroot
 SKIPPED_TESTS+=" or test_cython"
 %if 0%{?suse_version} < 1550
 # tries to open a network connection on older distributions

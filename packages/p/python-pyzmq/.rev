@@ -382,4 +382,13 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
     <comment></comment>
     <requestid>872203</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>907a47375c79ed209e7061e127cbdc83</srcmd5>
+    <version>22.0.3</version>
+    <time>1615905825</time>
+    <user>RBrownSUSE</user>
+    <comment>- Clean up of SPEC file, while investigating test suite errors.
+</comment>
+    <requestid>878513</requestid>
+  </revision>
 </revisionlist>
