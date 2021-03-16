@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycryptodome
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pycryptodome
-Version:        3.9.9
+Version:        3.10.1
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause

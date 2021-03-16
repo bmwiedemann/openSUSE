@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  4 21:00:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.1:
+  * Fixed a potential memory leak when initializing block ciphers.
+  * GH#466: ``Crypto.Math.miller_rabin_test()`` was still using the system random
+    source and not the one provided as parameter.
+  * GH#469: RSA objects have the method ``public_key()`` like ECC objects.
+    The old method ``publickey()`` is still available for backward compatibility.
+  * GH#476: ``Crypto.Util.Padding.unpad()`` was raising an incorrect exception
+    in case of zero-length inputs. Thanks to Captainowie.
+  * GH#491: better exception message when ``Counter.new()`` is called with an integer
+    ``initial_value`` than doesn't fit into ``nbits`` bits.
+  * GH#496: added missing ``block_size`` member for ECB cipher objects. Thanks to willem.
+  * GH#500: ``nonce`` member of an XChaCha20 cipher object was not matching the original nonce.
+
+-------------------------------------------------------------------
 Tue Dec  1 09:48:51 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to 3.9.9:
