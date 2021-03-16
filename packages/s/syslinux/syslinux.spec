@@ -63,6 +63,7 @@ Patch21:        sysmacros.patch
 Patch22:        remove-note-gnu-section.patch
 Patch23:        %{name}-%{version}-lzo.diff
 Patch24:        %{name}-%{version}-gcc10.diff
+Patch25:        syslinux-4.04-reproducible-isohybrid.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -103,6 +104,7 @@ Authors:
 %patch22 -p1
 %patch23 -p0
 %patch24 -p0
+%patch25 -p1
 
 %build
 cp %{SOURCE2} .

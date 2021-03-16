@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  3 09:45:57 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add syslinux-4.04-reproducible-isohybrid.patch to allow for
+  deterministic iso image creation (boo#1062303)
+
+-------------------------------------------------------------------
 Thu Mar 19 14:24:57 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - syslinux-4.04-gcc10.diff: fix gcc10 related issues (bsc#1166605)

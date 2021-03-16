@@ -1,0 +1,59 @@
+https://github.com/distropatches/syslinux/tree/isohybrid
+
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Wed Feb 3 09:30:53 2021 +0100
+
+    isohybrid: Use SOURCE_DATE_EPOCH for deterministic results
+    
+    without this patch, iso output contained 4 random bytes
+    at offset 440 for MBR ID
+    
+    See https://reproducible-builds.org/ for why this matters.
+
+
+    isohybrid: Keep entropy for srand
+    
+    without this patch, the seed would often be 0 or 0x70000000
+    
+    The <<2 is added so that pid and ppid do not cancel out each other.
+
+
+Index: syslinux-4.04/utils/isohybrid.pl
+===================================================================
+--- syslinux-4.04.orig/utils/isohybrid.pl
++++ syslinux-4.04/utils/isohybrid.pl
+@@ -199,7 +199,7 @@ if (defined($opt{'id'})) {
+     seek(FILE, 440, SEEK_SET) or die "$0: $file: $!\n";
+     read(FILE, $id, 4);
+     if ($id eq "\x00\x00\x00\x00") {
+-	$id = pack("V", get_random());
++	$id = pack("V", $ENV{SOURCE_DATE_EPOCH} || get_random());
+     }
+ }
+ 
+Index: syslinux-4.04/utils/isohybrid.c
+===================================================================
+--- syslinux-4.04.orig/utils/isohybrid.c
++++ syslinux-4.04/utils/isohybrid.c
+@@ -927,6 +927,8 @@ main(int argc, char *argv[])
+     uint8_t *buf = NULL, *bufz = NULL;
+     int cylsize = 0, frac = 0;
+     unsigned padding = 0;
++    int randseed;
++    char *source_date_epoch;
+     size_t orig_gpt_size, free_space, gpt_size;
+     struct iso_primary_descriptor descriptor;
+     struct stat isostat;
+@@ -956,7 +958,11 @@ main(int argc, char *argv[])
+       if(entry != part_efi && entry != part_mac) part_data = entry;
+     }
+ 
+-    srand(time(NULL) << (getppid() << getpid()));
++    
++    if((source_date_epoch = getenv("SOURCE_DATE_EPOCH")) == NULL ||
++       (randseed = strtol(source_date_epoch, NULL, 10)) <= 0)
++        randseed = time(NULL) ^ (getppid()<<2) ^ getpid();
++    srand(randseed);
+ 
+     if (!(fp = fopen(argv[0], "r+"))) // #####
+         err(1, "could not open file `%s'", argv[0]);

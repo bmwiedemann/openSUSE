@@ -509,4 +509,13 @@
   * provide missing strlen() implementation</comment>
     <requestid>786496</requestid>
   </revision>
+  <revision rev="68" vrev="47">
+    <srcmd5>b66e0ad1bcc812599dc910e23fdfb302</srcmd5>
+    <version>4.04</version>
+    <time>1615905767</time>
+    <user>RBrownSUSE</user>
+    <comment>Add syslinux-4.04-reproducible-isohybrid.patch to allow for deterministic iso image creation (boo#1062303)
+helps ipxe iso reproducibility. (forwarded request 868912 from bmwiedemann)</comment>
+    <requestid>879107</requestid>
+  </revision>
 </revisionlist>
