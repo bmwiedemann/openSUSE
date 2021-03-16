@@ -203,4 +203,12 @@
   /usr/share/X11/xorg.conf.d (boo#1139692)</comment>
     <requestid>719823</requestid>
   </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>8286fe22d43961dda3edce60bdb04a02</srcmd5>
+    <version>13.1.0</version>
+    <time>1615905710</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>878738</requestid>
+  </revision>
 </revisionlist>

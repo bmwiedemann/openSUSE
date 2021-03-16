@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-vmmouse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%if 0%( test -d /usr/lib/udev/rules.d && echo "1" ) > 0
-%define _udevrulesdir /usr/lib/udev/rules.d
+%if 0%( test -d %{_prefix}/lib/udev/rules.d && echo "1" ) > 0
+%define _udevrulesdir %{_prefix}/lib/udev/rules.d
 %else
 %define _udevrulesdir /lib/udev/rules.d
 %endif
-
 Name:           xf86-input-vmmouse
 Version:        13.1.0
 Release:        0
 Summary:        VMware Mouse input driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
+URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
@@ -37,7 +36,7 @@ Patch3:         u_conf-rename-to-70-vmmouse.conf.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(inputproto)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(randrproto)
@@ -46,15 +45,14 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xorg-server) >= 1.0.1
 BuildRequires:  pkgconfig(xproto)
 Requires:       udev
+# This was part of the xorg-x11-driver-input package up to version 7.6
+Conflicts:      xorg-x11-driver-input <= 7.6
+ExclusiveArch:  %{ix86} x86_64
+%{x11_abi_xinput_req}
 # no longer install this driver by default with kernel >= 4.1.x (fate #320612)
 %if 0%{?suse_version} <= 1320 && !(0%{?suse_version} == 1315 && 0%{?is_opensuse})
 Supplements:    xorg-x11-server
 %endif
-# This was part of the xorg-x11-driver-input package up to version 7.6
-Conflicts:      xorg-x11-driver-input <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 x86_64
-%x11_abi_xinput_req
 
 %description
 vmmouse is an Xorg input driver for mice. The driver supports most
@@ -69,11 +67,11 @@ some OSs, and the level of support for PS/2 mice depends on the OS.
 %build
 autoreconf -fi
 %configure --with-xorg-conf-dir=%{_datadir}/X11/xorg.conf.d/ --with-udev-rules-dir=%{_udevrulesdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 # Drop hal support
 rm %{buildroot}%{_datadir}/hal/fdi/policy/20thirdparty/11-x11-vmmouse.fdi
 rm %{buildroot}%{_libdir}/hal/hal-probe-vmmouse
@@ -89,15 +87,15 @@ udevadm trigger --subsystem-match=input --action=change || :
 exit 0
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README
 %{_udevrulesdir}/69-xorg-vmmouse.rules
 %dir %{_datadir}/X11/xorg.conf.d/
 %{_datadir}/X11/xorg.conf.d/70-vmmouse.conf
 %dir %{_libdir}/xorg/modules/input
 %{_libdir}/xorg/modules/input/vmmouse_drv.so
 %{_bindir}/vmmouse_detect
-%{_datadir}/man/man1/vmmouse_detect.1%{?ext_man}
-%{_datadir}/man/man4/vmmouse.4%{?ext_man}
+%{_mandir}/man1/vmmouse_detect.1%{?ext_man}
+%{_mandir}/man4/vmmouse.4%{?ext_man}
 
 %changelog
