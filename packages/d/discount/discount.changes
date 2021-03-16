@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 12 23:06:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to version 2.2.7:
+  * fix small buffer overflow 
+
+-------------------------------------------------------------------
 Tue Jan 26 09:04:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2.6:

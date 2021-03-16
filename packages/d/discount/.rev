@@ -112,4 +112,12 @@
 - Drop no longer needed discount-fix-compile-warings.diff</comment>
     <requestid>866749</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d7b324970e4d45bb917ee4532a2f5404</srcmd5>
+    <version>2.2.7</version>
+    <time>1615905763</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879100</requestid>
+  </revision>
 </revisionlist>

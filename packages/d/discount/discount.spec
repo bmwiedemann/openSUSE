@@ -19,13 +19,13 @@
 %define sover 2
 %bcond_with fenced_code
 Name:           discount
-Version:        2.2.6
+Version:        2.2.7
 Release:        0
 Summary:        Markdown text to HTML converter
 License:        BSD-3-Clause
 Group:          Productivity/Text/Convertors
 URL:            https://www.pell.portland.or.us/~orc/Code/discount/
-Source:         http://www.pell.portland.or.us/~orc/Code/discount/discount-%{version}.tar.bz2
+Source:         https://www.pell.portland.or.us/~orc/Code/discount/discount-%{version}.tar.bz2
 Patch1:         discount-disable_ldconfig.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -100,7 +100,8 @@ fi
 %postun -n libmarkdown%{sover} -p /sbin/ldconfig
 
 %files
-%doc COPYRIGHT CREDITS README
+%license COPYRIGHT
+%doc CREDITS README
 %{_bindir}/makepage
 %{_bindir}/markdown
 %{_bindir}/discount-markdown
