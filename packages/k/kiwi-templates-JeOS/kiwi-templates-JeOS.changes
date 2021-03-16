@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  9 15:44:50 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add systemd.show_status=1 to the kernel cmdline (bsc#1183186)
+- Drop plymouth.enable=0, as suggested some time ago
+- Tumbleweed has openSUSE-release-appliance-* packages meanwhile
+- Add several packages to bootstrap to force zypper to pick the
+  right alternative
+- Drop udev from bootstrap, not needed
+
+-------------------------------------------------------------------
 Tue Feb  9 14:48:46 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Install 'raspberrypi-eeprom' package on Raspberry Pi image (jsc#SLE-13566)

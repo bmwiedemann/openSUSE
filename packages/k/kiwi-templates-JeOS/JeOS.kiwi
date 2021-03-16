@@ -29,7 +29,7 @@
             bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
-            kernelcmdline="quiet plymouth.enable=0 console=ttyS0,115200 console=tty0"
+            kernelcmdline="quiet systemd.show_status=1 console=ttyS0,115200 console=tty0"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -62,7 +62,7 @@
             bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
-            kernelcmdline="quiet plymouth.enable=0 console=ttyS0,115200 console=tty0"
+            kernelcmdline="quiet systemd.show_status=1 console=ttyS0,115200 console=tty0"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -94,7 +94,7 @@
             bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
-            kernelcmdline="quiet plymouth.enable=0 console=ttyS0,115200 console=tty0"
+            kernelcmdline="quiet systemd.show_status=1 console=ttyS0,115200 console=tty0"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -129,7 +129,7 @@
             bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
-            kernelcmdline="quiet plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0"
+            kernelcmdline="quiet systemd.show_status=1 console=ttyS0,115200 console=tty0 net.ifnames=0"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -151,7 +151,7 @@
             bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
-            kernelcmdline="quiet plymouth.enable=0 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200"
+            kernelcmdline="quiet systemd.show_status=1 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -185,7 +185,7 @@
             bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
-            kernelcmdline="quiet plymouth.enable=0 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200"
+            kernelcmdline="quiet systemd.show_status=1 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -218,7 +218,7 @@
             fsmountoptions="noatime,compress=lzo"
             bootloader="grub2"
             firmware="efi"
-            kernelcmdline="quiet plymouth.enable=0 console=ttyS0,115200 console=tty"
+            kernelcmdline="quiet systemd.show_status=1 console=ttyS0,115200 console=tty"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_quota_groups="true"
@@ -337,27 +337,31 @@
         <package name="u-boot-rpiarm64" arch="aarch64"/>
     </packages>
 
-<!-- TW does not have those release packages
-    <packages type="image" profiles="kvm-and-xen">
-        <package name="openSUSE-release-appliance-kvm"/>
-    </packages>
-    <packages type="image" profiles="OpenStack-Cloud">
-        <package name="openSUSE-release-appliance-openstack"/>
-    </packages>
-    <packages type="image" profiles="MS-HyperV">
-        <package name="openSUSE-release-appliance-hyperv"/>
-    </packages>
-    <packages type="image" profiles="VMware">
-        <package name="openSUSE-release-appliance-vmware"/>
-    </packages>
--->
-
     <packages type="bootstrap">
-        <package name="udev"/>
         <package name="filesystem"/>
         <package name="glibc-locale-base"/>
         <package name="ca-certificates-mozilla"/>
         <package name="openSUSE-release"/>
-        <package name="openSUSE-release-ftp"/>
+
+        <!-- Avoid that zypper picks the busybox-foo variant for those, that would fail later -->
+        <package name="awk"/>
+        <package name="coreutils"/>
+        <package name="gzip"/>
+    </packages>
+
+    <packages type="bootstrap" profiles="kvm-and-xen">
+        <package name="openSUSE-release-appliance-kvm"/>
+    </packages>
+    <packages type="bootstrap" profiles="OpenStack-Cloud">
+        <package name="openSUSE-release-appliance-openstack"/>
+    </packages>
+    <packages type="bootstrap" profiles="MS-HyperV">
+        <package name="openSUSE-release-appliance-hyperv"/>
+    </packages>
+    <packages type="bootstrap" profiles="VMware">
+        <package name="openSUSE-release-appliance-vmware"/>
+    </packages>
+    <packages type="bootstrap" profiles="RaspberryPi">
+        <package name="openSUSE-release-appliance-custom"/>
     </packages>
 </image>
