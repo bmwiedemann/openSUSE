@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 15 18:11:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_catch_log_handler.patch to make tests compatible with
+  pytest >= 6.0.0, which removed never documented attribute
+  .catch_log_handler of log item (gh#libfuse/pyfuse3#27).
+
+-------------------------------------------------------------------
 Fri Aug  7 15:46:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.0.0

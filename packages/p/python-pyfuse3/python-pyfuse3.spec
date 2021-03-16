@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfuse3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,13 @@ Summary:        Python Bindings for the low-level FUSE3 API
 License:        LGPL-2.1-or-later
 URL:            https://github.com/libfuse/pyfuse3
 Source:         https://github.com/libfuse/pyfuse3/archive/release-%{version}.tar.gz#/%{pname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_catch_log_handler.patch gh#libfuse/pyfuse3#27 mcepl@suse.com
+# works around the removed attribute of log handlers .catch_log_handler
+Patch0:         fix_catch_log_handler.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module pytest-trio}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module trio}
 BuildRequires:  fdupes
@@ -44,7 +47,7 @@ Recommends:     fuse3 >= 3.3.0
 pyfuse3 is a set of Python 3 bindings for libfuse 3. It provides an asynchronous API compatible with Trio and asyncio, and enables you to easily write a full-featured Linux filesystem in Python.
 
 %prep
-%setup -q -n %{pname}-release-%{version}
+%autosetup -p1 -n %{pname}-release-%{version}
 
 %build
 %python_expand $python setup.py build_cython

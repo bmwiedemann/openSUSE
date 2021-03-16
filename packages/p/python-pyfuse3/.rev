@@ -43,4 +43,15 @@
     <comment></comment>
     <requestid>824896</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d33d1a4ae1106d175997b6814867cf69</srcmd5>
+    <version>3.0.0</version>
+    <time>1615905948</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add fix_catch_log_handler.patch to make tests compatible with
+  pytest &gt;= 6.0.0, which removed never documented attribute
+  .catch_log_handler of log item (gh#libfuse/pyfuse3#27).
+</comment>
+    <requestid>879272</requestid>
+  </revision>
 </revisionlist>
