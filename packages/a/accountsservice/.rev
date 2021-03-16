@@ -1034,4 +1034,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment>- Apply as-fate318433-prevent-same-account-multi-logins.patch to Leap. (forwarded request 793698 from yfjiang)</comment>
     <requestid>794356</requestid>
   </revision>
+  <revision rev="71" vrev="6">
+    <srcmd5>45a9b497a095f146dd21b8ffa1761f7a</srcmd5>
+    <version>0.6.55</version>
+    <time>1615905777</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879128</requestid>
+  </revision>
 </revisionlist>

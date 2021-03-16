@@ -1,7 +1,7 @@
 #
 # spec file for package accountsservice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch1:         accountsservice-filter-suse-accounts.patch
 Patch2:         accountsservice-read-root-user-cache.patch
 # PATCH-FIX-UPSTREAM accountsservice-wtmp-io-improvements.patch boo#1139487 fezhang@suse.com -- Backports that improve wtmp io performance.
 Patch3:         accountsservice-wtmp-io-improvements.patch
+# PATCH-FIX-UPSTREAM accountsservice-fix-gdm-crash.patch glfo#accountsservice/accountsservice#55 antoine.belvire@opensuse.org -- Prevent gdm crash upon service restart when autologin is enabled
+Patch4:         accountsservice-fix-gdm-crash.patch
 
 ## SLE and Leap only patches start at 1000
 # PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
@@ -100,6 +102,7 @@ querying and manipulating user account information.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # SLE and Leap patches start at 1000
 %if 0%{?sle_version}
