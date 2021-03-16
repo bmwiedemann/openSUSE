@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 13 13:06:24 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- As of now, iptest still needs nose until the removal is complete
+  gh#ipython/ipython#12840
+
+-------------------------------------------------------------------
+Mon Mar  1 18:27:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 7.21.0:
+  - New "context" command in ipdb
+    It is now possible to change the number of lines shown in the
+    backtrace information in ipdb using "context" command.
+  - Compatibility with Xeus-Python for debugger protocol
+  - Misc docs fixes for compatibility and uniformity with Numpydoc.
+
+-------------------------------------------------------------------
 Mon Feb  1 23:25:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 7.20.0

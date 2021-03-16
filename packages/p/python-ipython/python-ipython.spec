@@ -32,7 +32,7 @@
 
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.20.0
+Version:        7.21.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
