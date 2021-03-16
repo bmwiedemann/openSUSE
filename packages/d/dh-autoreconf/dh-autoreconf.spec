@@ -1,7 +1,7 @@
 #
 # spec file for package dh-autoreconf
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dh-autoreconf
-Version:        10
+Version:        19
 Release:        0
 Summary:        Add-on for debhelper to call autoreconf and clean up after the build
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Packages
-Url:            http://www.debian.org
+URL:            http://www.debian.org
 Source0:        http://ftp.de.debian.org/debian/pool/main/d/dh-autoreconf/%{name}_%{version}.tar.xz
 BuildRequires:  debhelper
 BuildRequires:  xz
