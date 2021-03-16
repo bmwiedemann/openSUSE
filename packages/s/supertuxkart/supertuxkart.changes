@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 19:46:21 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add supertuxkart-sdl.patch to fix building on SDL2 >= 2.0.14
+  https://github.com/supertuxkart/stk-code/commit/61833c9c26da5520f2eaa02f2458971ba07f2aad
+
+-------------------------------------------------------------------
 Sat Aug 29 13:04:13 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 1.2
