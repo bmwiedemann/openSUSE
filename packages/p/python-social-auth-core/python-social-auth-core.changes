@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 15 10:30:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.1.0
+  * Dropped Python 2 support from testing stack
+  * Discourse backend
+  * Osso backend
+  * Use strategies as interface to fetch backends
+  * PayPal backend
+  * Fence OIDC-based backend
+- Drop merged resolve_depreciations.patch, remove-unittest2.patch
+  and saml_config.json
+
+-------------------------------------------------------------------
 Tue Dec 22 23:02:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.4.0:
