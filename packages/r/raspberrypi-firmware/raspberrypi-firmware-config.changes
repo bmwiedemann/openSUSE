@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Mar 16 10:32:30 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Fix previous change. No need to set DWC2 in host mode. OTG works fine on
+  production CM4 IO boards. It was being tested earlier on a pre-release
+  development board. (bsc#1183241)
+- Run pre_checkin.sh, which fixed some style issues.
+
+-------------------------------------------------------------------
+Mon Mar 15 15:41:43 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Set CM4's DWC2 in host mode by default (bsc#1183241)
+
+-------------------------------------------------------------------
+Fri Mar 12 11:24:25 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 0591568b29 (2021-03-10) (bsc#1183444):
+  * firmware: video_decode lockup handling
+  * firmware: isp: Initialise extras to avoid vpitch being random
+  * firmware: usb: Fix dropouts with USB ethernet gadget
+  * firmware: imx477: Allow long exposures for the binned modes.
+  * firmware: arm_dispmanx: Use ALPHA_MIX flag
+  * firmware: power: Refactor the interface to the PMICs
+  * firmware: platform: vl805: Get BAR2 address from PCIe BAR2 registers
+  * firmware: arm_loader: Return all borrowed DMA channels
+
+-------------------------------------------------------------------
+Wed Mar 10 10:57:07 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Fix typo s/pannel/panel/
+
+-------------------------------------------------------------------
 Mon Mar  8 11:15:57 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Enable bluetooth over PL011 by default (jsc#SLE-17223)

@@ -64,11 +64,18 @@ dtoverlay=dwc2
 [pi4]
 
 armstub=armstub8-rpi4.bin
-# Note that the 7" DSI pannel isn't supported at the moment through VC4, users
+# Note that the 7" DSI panel isn't supported at the moment through VC4, users
 # can still use it through efifb by adding 'dtoverlay=disable-vc4' in
 # 'extraconfig.txt'.
 dtoverlay=vc4-kms-v3d-pi4,cma-default
 dtoverlay=disable-v3d
+
+[cm4]
+
+# The USB interface is disabled to save power by default on CM4. Enable it
+# to ease the installation process. For more information see:
+# https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf
+dtoverlay=dwc2
 
 [all]
 

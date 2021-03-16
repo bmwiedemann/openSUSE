@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware
-Version:        2021.01.21
+Version:        2021.03.10
 Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware
@@ -27,7 +27,7 @@ Source0:        raspberrypi-firmware-%{version}.tar.bz2
 Source1:        get-from-git.sh
 Source99:       %{name}-rpmlintrc
 Requires(post): util-linux
-Requires(preun): util-linux
+Requires(preun):util-linux
 Recommends:     raspberrypi-firmware-config
 Recommends:     raspberrypi-firmware-dt
 Supplements:    modalias(of:NfirmwareT*Craspberrypi%2Cbcm2835-firmwareC*)
@@ -41,7 +41,7 @@ Summary:        Extra bootloaders for Raspberry Pi
 Group:          System/Boot
 Requires:       raspberrypi-firmware = %{version}-%{release}
 Requires(post): util-linux
-Requires(preun): util-linux
+Requires(preun):util-linux
 
 %description extra
 This package provides the console, experimental and debug
@@ -52,7 +52,7 @@ Summary:        Extra bootloaders for Raspberry Pi
 Group:          System/Boot
 Requires:       raspberrypi-firmware = %{version}-%{release}
 Requires(post): util-linux
-Requires(preun): util-linux
+Requires(preun):util-linux
 
 %description extra-pi4
 This package provides the console, experimental and debug
