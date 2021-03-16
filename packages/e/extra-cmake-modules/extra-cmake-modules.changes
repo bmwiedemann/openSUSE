@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:26:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * Fix ECMCheckOutboundLicenseTest to find the FindReuseTool.cmake file
+  * ecm_qt_declare_logging_category: support target arg to append source file to
+  * Add FindIsoCodes module
+  * clang-format: set AlwaysBreakTemplateDeclarations to true
+  * Add clang-format target by default in KDEFrameworkCompilerSettings
+  * Add FindLibcap.cmake
+  * Fix relative path edge case in ECMGeneratePriFile
+  * Define relative paths when KDE_INSTALL_USE_QT_SYS_PATHS is enabled
+
+-------------------------------------------------------------------
 Mon Feb  8 08:45:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.79.0
