@@ -1293,4 +1293,12 @@ update to 5.76
     <comment></comment>
     <requestid>861798</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>1cb15417d3871fa89824ebabc8c72a86</srcmd5>
+    <version>6.53</version>
+    <time>1615905798</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>878094</requestid>
+  </revision>
 </revisionlist>

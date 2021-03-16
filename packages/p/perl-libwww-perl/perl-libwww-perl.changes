@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  8 03:09:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.53
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.53      2021-03-07 16:54:48Z
+      - Require HTTP::Daemon 6.12 for test (GH#374, GH#375) (fitzmorrispr, skaji)
+
+-------------------------------------------------------------------
 Fri Jan  8 03:11:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.52
