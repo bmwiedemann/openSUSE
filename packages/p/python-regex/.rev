@@ -82,4 +82,16 @@
     <comment></comment>
     <requestid>839939</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>059c5db824585abcbfe372129a1bdd8e</srcmd5>
+    <version>2020.11.13</version>
+    <time>1615905741</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2020.11.13:
+  * Fix Unexpected behavior in fuzzy matching with limited character set
+  * clock() calls for timeout cause slowdown in Docker
+  * Update lis of supported Python versions
+  * licensing change to Apache-2.0</comment>
+    <requestid>878762</requestid>
+  </revision>
 </revisionlist>

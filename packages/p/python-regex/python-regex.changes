@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 13 14:14:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2020.11.13:
+  * Fix Unexpected behavior in fuzzy matching with limited character set
+  * clock() calls for timeout cause slowdown in Docker
+  * Update lis of supported Python versions
+  * licensing change to Apache-2.0 
+
+-------------------------------------------------------------------
 Wed Oct  7 04:29:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to 2020.9.27

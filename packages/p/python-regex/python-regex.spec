@@ -1,7 +1,7 @@
 #
 # spec file for package python-regex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-regex
-Version:        2020.9.27
+Version:        2020.11.13
 Release:        0
 Summary:        Alternative regular expression module for Python
-License:        Python-2.0
+License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/mrabarnett/mrab-regex
 Source:         https://files.pythonhosted.org/packages/source/r/regex/regex-%{version}.tar.gz
@@ -61,6 +61,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %pytest_arch %{buildroot}%{$python_sitearch}/regex -k 'not test_main'
 
 %files %{python_files}
+%license LICENSE.txt
 %doc README.rst
 %doc docs/*
 %{python_sitearch}/*
