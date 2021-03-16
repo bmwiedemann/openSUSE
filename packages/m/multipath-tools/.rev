@@ -1397,4 +1397,28 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   (add configuration option &quot;allow_usb_devices&quot;) (forwarded request 856456 from mwilck)</comment>
     <requestid>856457</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>78470e84d965c71c88d2644e17e1817d</srcmd5>
+    <version>0.8.5+26+suse.2cbedfd</version>
+    <time>1615905829</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.8.5+26+suse.2cbedfd:
+  Avoid &quot;illegal request&quot; errors on non-RDAC storage
+  (bsc#bsc#1182072, bsc#1177371)
+
+- Update to version 0.8.5+23+suse.c11b054:
+  * multipath -U: reduce log level of &quot;adding new path&quot; message 
+   (bsc#1181435)
+
+- Update to version 0.8.5+22+suse.e1e3c48:
+  * multipath-tools tests: fix stringop-overflow build errors with gcc 11
+    (bsc#1181877)
+  * README moved to README.md (has been converted to markdown upstream)
+
+- Update to version 0.8.5+12+suse.3b0e9ca
+  * cleanup disassemble_map() code path (bsc#1178377, bsc#1178379)
+    (bsc#1182917)
+- added one more bug ref (new bug fixed in already present patch)</comment>
+    <requestid>878610</requestid>
+  </revision>
 </revisionlist>

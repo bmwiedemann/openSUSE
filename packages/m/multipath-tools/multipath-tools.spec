@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.5+12+suse.3b0e9ca
+Version:        0.8.5+26+suse.2cbedfd
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -213,7 +213,7 @@ exit 0
 
 %files
 %defattr(-,root,root)
-%doc README README.alua
+%doc README.md README.alua
 %license LICENSES/GPL-2.0
 %{_udevrulesdir}/11-dm-mpath.rules
 %{_udevrulesdir}/56-multipath.rules

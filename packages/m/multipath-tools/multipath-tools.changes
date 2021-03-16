@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 12 14:53:41 UTC 2021 - mwilck@suse.com
+
+- Update to version 0.8.5+26+suse.2cbedfd:
+  Avoid "illegal request" errors on non-RDAC storage
+  (bsc#bsc#1182072, bsc#1177371)
+
+-------------------------------------------------------------------
+Wed Mar 10 10:16:38 UTC 2021 - mwilck@suse.com
+
+- Update to version 0.8.5+23+suse.c11b054:
+  * multipath -U: reduce log level of "adding new path" message 
+   (bsc#1181435)
+
+-------------------------------------------------------------------
+Wed Feb 10 14:30:15 UTC 2021 - mwilck@suse.com
+
+- Update to version 0.8.5+22+suse.e1e3c48:
+  * multipath-tools tests: fix stringop-overflow build errors with gcc 11
+    (bsc#1181877)
+  * README moved to README.md (has been converted to markdown upstream)
+
+-------------------------------------------------------------------
 Wed Dec 16 12:11:07 UTC 2020 - mwilck@suse.com
 
-- Update to versioni 0.8.5+12+suse.3b0e9ca
+- Update to version 0.8.5+12+suse.3b0e9ca
   * libmultipath: force map reload if udev incomplete 
   (bsc#1178662, bsc#1172157, bsc#1175454, bsc#1176406)
 - Fixes from upstream 0.8.5
@@ -88,7 +110,7 @@ Thu Aug 20 19:20:59 UTC 2020 - mwilck@suse.com
   * multipath: delegate flushing maps to multipathd
   * multipathd: add "del maps" multipathd command
 - Other changes
-  * cleanup disassemble_map() code path
+  * cleanup disassemble_map() code path (bsc#1178377, bsc#1178379)
   * multipath-tools: introduce INIT_REMOVED state
   * logging improvements
   * fix "multipathd show devices"
@@ -104,6 +126,7 @@ Wed Jun 10 10:56:49 UTC 2020 - mwilck@suse.com
 
 - Update to version 0.8.4+43+suse.908383f:
   * enable negated regular expression syntax in conf file
+    (bsc#1182917)
   * change default devnode blacklist to 
     '!^(sd[a-z]|dasd[a-z]|nvme[0-9])'
 
