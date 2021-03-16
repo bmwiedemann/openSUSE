@@ -1,4 +1,227 @@
 -------------------------------------------------------------------
+Thu Mar 11 17:11:21 CET 2021 - jslaby@suse.cz
+
+- Linux 5.11.6 (bsc#1012628).
+- nvme-pci: add quirks for Lexar 256GB SSD (bsc#1012628).
+- nvme-pci: mark Seagate Nytro XM1440 as QUIRK_NO_NS_DESC_LIST
+  (bsc#1012628).
+- KVM: SVM: Clear the CR4 register on reset (bsc#1012628).
+- scsi: ufs: Fix a duplicate dev quirk number (bsc#1012628).
+- ASoC: Intel: sof_sdw: add quirk for HP Spectre x360 convertible
+  (bsc#1012628).
+- ASoC: Intel: sof_sdw: reorganize quirks by generation
+  (bsc#1012628).
+- PCI: cadence: Retrain Link to work around Gen2 training defect
+  (bsc#1012628).
+- HID: ite: Enable QUIRK_TOUCHPAD_ON_OFF_REPORT on Acer Aspire
+  Switch 10E (bsc#1012628).
+- ALSA: usb-audio: add mixer quirks for Pioneer DJM-900NXS2
+  (bsc#1012628).
+- ALSA: usb-audio: Add DJM750 to Pioneer mixer quirk
+  (bsc#1012628).
+- HID: i2c-hid: Add I2C_HID_QUIRK_NO_IRQ_AFTER_RESET for ITE8568
+  EC on Voyo Winpad A15 (bsc#1012628).
+- mmc: sdhci-of-dwcmshc: set SDHCI_QUIRK2_PRESET_VALUE_BROKEN
+  (bsc#1012628).
+- drm/msm/a5xx: Remove overwriting A5XX_PC_DBG_ECO_CNTL register
+  (bsc#1012628).
+- scsi: ufs: ufs-exynos: Use UFSHCD_QUIRK_ALIGN_SG_WITH_PAGE_SIZE
+  (bsc#1012628).
+- scsi: ufs: ufs-exynos: Apply vendor-specific values for three
+  timeouts (bsc#1012628).
+- scsi: ufs: Introduce a quirk to allow only page-aligned sg
+  entries (bsc#1012628).
+- misc: eeprom_93xx46: Add quirk to support Microchip 93LC46B
+  eeprom (bsc#1012628).
+- scsi: ufs: Add a quirk to permit overriding UniPro defaults
+  (bsc#1012628).
+- scsi: ufs-mediatek: Enable
+  UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL (bsc#1012628).
+- iommu/amd: Fix sleeping in atomic in increase_address_space()
+  (bsc#1012628).
+- btrfs: don't flush from btrfs_delayed_inode_reserve_metadata
+  (bsc#1012628).
+- btrfs: export and rename qgroup_reserve_meta (bsc#1012628).
+- arm64: Make CPU_BIG_ENDIAN depend on ld.bfd or ld.lld 13.0.0+
+  (bsc#1012628).
+- parisc: Enable -mlong-calls gcc option with CONFIG_COMPILE_TEST
+  (bsc#1012628).
+- nvme-pci: mark Kingston SKC2000 as not supporting the deepest
+  power state (bsc#1012628).
+- media: cedrus: Remove checking for required controls
+  (bsc#1012628).
+- io_uring: don't take uring_lock during iowq cancel
+  (bsc#1012628).
+- io_uring/io-wq: return 2-step work swap scheme (bsc#1012628).
+- io_uring/io-wq: kill off now unused IO_WQ_WORK_NO_CANCEL
+  (bsc#1012628).
+- io_uring: get rid of intermediate IORING_OP_CLOSE stage
+  (bsc#1012628).
+- fs: provide locked helper variant of close_fd_get_file()
+  (bsc#1012628).
+- io_uring: deduplicate failing task_work_add (bsc#1012628).
+- io_uring: unpark SQPOLL thread for cancelation (bsc#1012628).
+- io_uring: deduplicate core cancellations sequence (bsc#1012628).
+- io_uring: fix inconsistent lock state (bsc#1012628).
+- commit 7358b30
+
+-------------------------------------------------------------------
+Wed Mar 10 07:42:59 CET 2021 - jslaby@suse.cz
+
+- rpm/check-for-config-changes: comment on the list
+  To explain what it actually is.
+- commit e94bacf
+
+-------------------------------------------------------------------
+Wed Mar 10 07:36:21 CET 2021 - jslaby@suse.cz
+
+- ACPICA: Fix race in generic_serial_bus (I2C) and GPIO op_region
+  parameter handling (bsc#1012628).
+- rpm/check-for-config-changes: define ignores more strictly
+  * search for whole words, so make wildcards explicit
+  * use ' for quoting
+  * prepend CONFIG_ dynamically, so it need not be in the list
+- commit 7b06a8c
+
+-------------------------------------------------------------------
+Wed Mar 10 07:13:35 CET 2021 - jslaby@suse.cz
+
+- rpm/check-for-config-changes: sort the ignores
+  They are growing so to make them searchable by humans.
+- commit 67c6b55
+
+-------------------------------------------------------------------
+Wed Mar 10 07:10:06 CET 2021 - jslaby@suse.cz
+
+- rpm/check-for-config-changes: add -mrecord-mcount ignore
+  Added by 3b15cdc15956 (tracing: move function tracer options to Kconfig)
+  upstream.
+- commit 018b013
+
+-------------------------------------------------------------------
+Wed Mar 10 05:45:02 CET 2021 - jslaby@suse.cz
+
+- Refresh
+  patches.rpmify/kbuild-dummy-tools-fix-inverted-tests-for-gcc.patch.
+- Refresh
+  patches.rpmify/kbuild-dummy-tools-support-MPROFILE_KERNEL-checks-fo.patch.
+  Update upstream status.
+- commit c867c19
+
+-------------------------------------------------------------------
+Tue Mar  9 12:08:27 CET 2021 - jslaby@suse.cz
+
+- Linux 5.11.5 (bsc#1012628).
+- ALSA: hda/realtek: Enable headset mic of Acer SWIFT with ALC256
+  (bsc#1012628).
+- ALSA: usb-audio: use Corsair Virtuoso mapping for Corsair
+  Virtuoso SE (bsc#1012628).
+- ALSA: usb-audio: Don't abort even if the clock rate differs
+  (bsc#1012628).
+- ALSA: usb-audio: Drop bogus dB range in too low level
+  (bsc#1012628).
+- ALSA: usb-audio: Allow modifying parameters with succeeding
+  hw_params calls (bsc#1012628).
+- tpm, tpm_tis: Decorate tpm_tis_gen_interrupt() with
+  request_locality() (bsc#1012628).
+- tpm, tpm_tis: Decorate tpm_get_timeouts() with
+  request_locality() (bsc#1012628).
+- btrfs: avoid double put of block group when emptying cluster
+  (bsc#1012628).
+- btrfs: fix raid6 qstripe kmap (bsc#1012628).
+- btrfs: fix race between writes to swap files and scrub
+  (bsc#1012628).
+- btrfs: fix race between swap file activation and snapshot
+  creation (bsc#1012628).
+- btrfs: fix stale data exposure after cloning a hole with
+  NO_HOLES enabled (bsc#1012628).
+- btrfs: tree-checker: do not error out if extent ref hash
+  doesn't match (bsc#1012628).
+- btrfs: fix race between extent freeing/allocation when using
+  bitmaps (bsc#1012628).
+- btrfs: validate qgroup inherit for SNAP_CREATE_V2 ioctl
+  (bsc#1012628).
+- btrfs: free correct amount of space in
+  btrfs_delayed_inode_reserve_metadata (bsc#1012628).
+- btrfs: fix spurious free_space_tree remount warning
+  (bsc#1012628).
+- btrfs: unlock extents in btrfs_zero_range in case of quota
+  reservation errors (bsc#1012628).
+- btrfs: fix warning when creating a directory with smack enabled
+  (bsc#1012628).
+- PM: runtime: Update device status before letting suppliers
+  suspend (bsc#1012628).
+- ring-buffer: Force before_stamp and write_stamp to be different
+  on discard (bsc#1012628).
+- io_uring: ignore double poll add on the same waitqueue head
+  (bsc#1012628).
+- dm bufio: subtract the number of initial sectors in
+  dm_bufio_get_device_size (bsc#1012628).
+- dm verity: fix FEC for RS roots unaligned to block size
+  (bsc#1012628).
+- drm/amd/pm: correct Arcturus mmTHM_BACO_CNTL register address
+  (bsc#1012628).
+- drm/amdgpu:disable VCN for Navi12 SKU (bsc#1012628).
+- drm/amdgpu: Only check for S0ix if AMD_PMC is configured
+  (bsc#1012628).
+- drm/amdgpu: fix parameter error of RREG32_PCIE() in
+  amdgpu_regs_pcie (bsc#1012628).
+- crypto - shash: reduce minimum alignment of shash_desc structure
+  (bsc#1012628).
+- ALSA: ctxfi: cthw20k2: fix mask on conf to allow 4 bits
+  (bsc#1012628).
+- RDMA/cm: Fix IRQ restore in ib_send_cm_sidr_rep (bsc#1012628).
+- RDMA/rxe: Fix missing kconfig dependency on CRYPTO
+  (bsc#1012628).
+- IB/mlx5: Add missing error code (bsc#1012628).
+- ALSA: hda: intel-nhlt: verify config type (bsc#1012628).
+- ftrace: Have recordmcount use w8 to read relp->r_info in
+  arm64_is_fake_mcount (bsc#1012628).
+- ia64: don't call handle_signal() unless there's actually a
+  signal queued (bsc#1012628).
+- rsxx: Return -EFAULT if copy_to_user() fails (bsc#1012628).
+- iommu/tegra-smmu: Fix mc errors on tegra124-nyan (bsc#1012628).
+- iommu: Don't use lazy flush for untrusted device (bsc#1012628).
+- iommu/vt-d: Fix status code for Allocate/Free PASID command
+  (bsc#1012628).
+- btrfs: zoned: use sector_t for zone sectors (bsc#1012628).
+- tomoyo: recognize kernel threads correctly (bsc#1012628).
+- r8169: fix resuming from suspend on RTL8105e if machine runs
+  on battery (bsc#1012628).
+- commit d09469d
+
+-------------------------------------------------------------------
+Tue Mar  9 07:53:13 CET 2021 - tiwai@suse.de
+
+- ALSA: usb-audio: Apply the control quirk to Plantronics headsets
+  (bsc#1182552).
+- ALSA: usb: Add Plantronics C320-M USB ctrl msg delay quirk
+  (bsc#1182552).
+- commit f99c94c
+
+-------------------------------------------------------------------
+Mon Mar  8 07:19:58 CET 2021 - jslaby@suse.cz
+
+- kbuild: dummy-tools, support MPROFILE_KERNEL checks for ppc
+  (bsc#1181862).
+- commit 7064b20
+
+-------------------------------------------------------------------
+Mon Mar  8 07:07:04 CET 2021 - jslaby@suse.cz
+
+- Delete
+  patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch.
+  With dummy-tools, this is no longer needed.
+- commit 84a32d6
+
+-------------------------------------------------------------------
+Mon Mar  8 07:05:24 CET 2021 - jslaby@suse.cz
+
+- Update config files.
+  Just oldconfig.
+- commit e687fe8
+
+-------------------------------------------------------------------
 Mon Mar  8 06:16:55 CET 2021 - jslaby@suse.cz
 
 - ALSA: usb-audio: Fix Pioneer DJM devices URB_CONTROL request
@@ -184,6 +407,22 @@ Sat Mar  6 17:44:51 CET 2021 - tiwai@suse.de
   (bsc#1180749).
 - drm/amdgpu/display: simplify backlight setting (bsc#1180749).
 - commit 24ee23f
+
+-------------------------------------------------------------------
+Fri Mar  5 16:13:26 CET 2021 - dmueller@suse.com
+
+- ARMv6/v7: Update config files. (bsc#1183009)
+  enable CONFIG_ARM_MODULE_PLTS to fix module loading issues
+- commit b3d2cd1
+
+-------------------------------------------------------------------
+Fri Mar  5 10:55:45 CET 2021 - jslaby@suse.cz
+
+- rpm/check-for-config-changes: declare sed args as an array
+  So that we can reuse it in both seds.
+  This also introduces IGNORED_CONFIGS_RE array which can be easily
+  extended.
+- commit a1976d2
 
 -------------------------------------------------------------------
 Thu Mar  4 13:01:10 CET 2021 - jslaby@suse.cz
@@ -1483,6 +1722,20 @@ Thu Mar  4 12:56:54 CET 2021 - jslaby@suse.cz
 - commit 39714eb
 
 -------------------------------------------------------------------
+Thu Mar  4 12:54:55 CET 2021 - jslaby@suse.cz
+
+- rpm/check-for-config-changes: ignore more configs
+  Specifially, these:
+   * CONFIG_CC_HAS_*
+   * CONFIG_CC_HAVE_*
+   * CONFIG_CC_CAN_*
+   * CONFIG_HAVE_[A-Z]*_COMPILER
+   * CONFIG_TOOLS_SUPPORT_*
+  are compiler specific too. This will allow us to use super configs
+  using kernel's dummy-tools.
+- commit d12dcbd
+
+-------------------------------------------------------------------
 Wed Mar  3 16:02:09 CET 2021 - yousaf.kaukab@suse.com
 
 - config: arm64: sync xgmac-mdio config with SLE
@@ -1493,6 +1746,19 @@ Wed Mar  3 16:00:13 CET 2021 - yousaf.kaukab@suse.com
 
 - config: arm64: sync coresight configs with SLE
 - commit b4d272d
+
+-------------------------------------------------------------------
+Wed Mar  3 12:31:59 CET 2021 - jslaby@suse.cz
+
+- Update config files.
+  Refresh with dummy-tools.
+- commit 433c0e0
+
+-------------------------------------------------------------------
+Wed Mar  3 12:19:43 CET 2021 - jslaby@suse.cz
+
+- kbuild: dummy-tools, fix inverted tests for gcc (bsc#1181862).
+- commit 19ed7d5
 
 -------------------------------------------------------------------
 Sun Feb 28 18:21:59 CET 2021 - schwab@suse.de
