@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?sle_version}
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
 %bcond_with offline_updates
 %else
 %bcond_without offline_updates
@@ -136,7 +136,8 @@ Group:          System/Daemons
 Requires:       %{name} = %{version}
 Provides:       %{name}-backend = %{version}
 Conflicts:      %{name}-backend
-Supplements:    (%{name} and dnf-conf and rpm-repos-openSUSE)
+Supplements:    (%{name} and dnf-data)
+Recommends:     rpm-repos-openSUSE
 Suggests:       PackageKit-command-not-found
 # Stricter dependency to keep things sane
 %requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf.so)")
