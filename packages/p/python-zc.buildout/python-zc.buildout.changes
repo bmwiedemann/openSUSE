@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  8 20:56:33 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.13.4:
+  - Pin `setuptools` < 52 as setuptools removed support for `easy_install` in
+    newer versions.
+    (`#543 <https://github.com/buildout/buildout/issues/543>`_)
+  - Support for Python 3.4 is no longer tested using automatic tests.
+  - Add support for Python 3.7 and 3.8.
+
+-------------------------------------------------------------------
 Fri May 15 12:37:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

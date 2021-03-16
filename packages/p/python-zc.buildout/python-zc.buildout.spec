@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.buildout
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%{!?license: %global license %doc}
 Name:           python-zc.buildout
-Version:        2.13.3
+Version:        2.13.4
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/zc.buildout
 Source:         https://files.pythonhosted.org/packages/source/z/zc.buildout/zc.buildout-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 8.0}
+BuildRequires:  %{python_module setuptools < 52}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
