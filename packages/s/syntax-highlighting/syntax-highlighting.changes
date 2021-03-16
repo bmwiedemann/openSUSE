@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar  7 09:27:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * PHP: fix string, number and folding region ; refactor styles (kde#429651)
+
+-------------------------------------------------------------------
 Tue Feb 16 11:14:57 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.79.1
