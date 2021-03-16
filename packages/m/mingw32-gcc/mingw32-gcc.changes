@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 11 14:01:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add some -Wno-error because gcc appears to fall over MSVCRT
+  printf specifiers
+
+-------------------------------------------------------------------
 Tue Oct 20 06:40:27 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add _constraints to fix builds on Tumbleweed

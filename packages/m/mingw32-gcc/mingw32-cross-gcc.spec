@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-cross-gcc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,8 +120,8 @@ ada_options=
 %endif
 
 CC="gcc %{optflags}" \
-CFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
-CXXFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
+CFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags} -Wno-error=format -Wno-error=format-extra-args" \
+CXXFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags} -Wno-error=format -Wno-error=format-extra-args" \
 CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
 ../configure \
   --prefix=%{_prefix} \

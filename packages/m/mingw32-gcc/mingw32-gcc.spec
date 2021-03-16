@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-gcc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -220,11 +220,11 @@ CC_FOR_TARGET=%{_mingw32_cc} \
 CXX_FOR_TARGET=%{_mingw32_cxx} \
 GFORTRAN_FOR_TARGET=%{_mingw32_target}-gfortran \
 GCJ_FOR_TARGET=%{_mingw32_gcj} \
-CFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
+CFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags} -Wno-error=format -Wno-error=format-extra-args" \
 CFLAGS_FOR_BUILD="-I-%{_mingw32_includedir}" \
 CPPFLAGS_FOR_BUILD="-I-%{_mingw32_includedir}" \
 CXXFLAGS_FOR_BUILD="-I-%{_mingw32_includedir}" \
-CXXFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
+CXXFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags} -Wno-error=format -Wno-error=format-extra-args" \
 CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
 ../configure \
   --prefix=%{_mingw32_prefix} \

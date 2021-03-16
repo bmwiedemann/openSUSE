@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>844398</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1509f7709a9f679b5a31063aed800bcc</srcmd5>
+    <version>9.2.0</version>
+    <time>1615905895</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add some -Wno-error because gcc appears to fall over MSVCRT
+  printf specifiers</comment>
+    <requestid>879112</requestid>
+  </revision>
 </revisionlist>
