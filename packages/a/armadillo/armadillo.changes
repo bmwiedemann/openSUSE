@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 13 14:20:22 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.3.0:
+  * faster handling of symmetric positive definite matrices by
+    pinv()
+  * expanded .save() / .load() for dense matrices to handle
+    coord_ascii format
+  * for out of bounds access, element accessors now throw the more
+    nuanced std::out_of_range exception, instead of only
+    std::logic_error
+  * improved quality of random numbers
+
+-------------------------------------------------------------------
 Thu Mar  4 23:02:55 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.2.2 (no release notes).
