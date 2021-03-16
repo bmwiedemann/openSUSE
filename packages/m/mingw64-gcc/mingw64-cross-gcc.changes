@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 11 14:01:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add some -Wno-error because gcc appears to fall over MSVCRT
+  printf specifiers
+
+-------------------------------------------------------------------
 Mon Aug 31 17:09:50 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix invalid location to brp-compress on tumbleweed (boo#1175858)

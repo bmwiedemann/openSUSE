@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 11 14:01:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add some -Wno-error because gcc appears to fall over MSVCRT
+  printf specifiers
+
+-------------------------------------------------------------------
 Wed Sep  9 21:02:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Revert the ExclusiveArch/BuildArch. Having

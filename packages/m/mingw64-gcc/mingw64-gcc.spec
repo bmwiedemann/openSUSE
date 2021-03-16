@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-gcc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -221,11 +221,11 @@ CC_FOR_TARGET=%{_mingw64_cc} \
 CXX_FOR_TARGET=%{_mingw64_cxx} \
 GFORTRAN_FOR_TARGET=%{_mingw64_target}-gfortran \
 GCJ_FOR_TARGET=%{_mingw64_gcj} \
-CFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags}" \
+CFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags} -Wno-error=format -Wno-error=format-extra-args" \
 CFLAGS_FOR_BUILD="-I-%{_mingw64_includedir}" \
 CPPFLAGS_FOR_BUILD="-I-%{_mingw64_includedir}" \
 CXXFLAGS_FOR_BUILD="-I-%{_mingw64_includedir}" \
-CXXFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags}" \
+CXXFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags} -Wno-error=format -Wno-error=format-extra-args" \
 CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags}" \
 ../configure \
   --prefix=%{_mingw64_prefix} \
