@@ -84,4 +84,17 @@
     <comment></comment>
     <requestid>841426</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>edc342d5c8cfd2d3984432eba8bda384</srcmd5>
+    <version>3.6.2</version>
+    <time>1615905953</time>
+    <user>RBrownSUSE</user>
+    <comment>- fix compilation errors with sbcl 2.{1,2} by upgrading ironclad
+  included version (0.48 to 0.54)
+- fix CFLAGS and CXXFLAGS variable name
+- fix compilation errors with sbcl 2.0.9 by using upstream patch
+  for csv-cl component 82397a78.patch
+</comment>
+    <requestid>879283</requestid>
+  </revision>
 </revisionlist>
