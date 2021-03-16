@@ -525,4 +525,12 @@
     <comment>update (forwarded request 860962 from mschnitzer)</comment>
     <requestid>862126</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d045b894e03ab83031b704b5f92cb0d8</srcmd5>
+    <version>1.11.2</version>
+    <time>1615905750</time>
+    <user>RBrownSUSE</user>
+    <comment>update (forwarded request 879037 from mschnitzer)</comment>
+    <requestid>879043</requestid>
+  </revision>
 </revisionlist>
