@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %define skip_python2 1
 %define mname qt5
 Name:           python-%{mname}
-Version:        5.15.3
+Version:        5.15.4
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree

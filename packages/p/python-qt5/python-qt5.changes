@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 11 19:28:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.15.4
+  * Packaging bug fixes.
+- Fixes problems with packages checking the package metadata like
+  boo#1183144
+
+-------------------------------------------------------------------
 Thu Feb 25 11:56:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.15.3
