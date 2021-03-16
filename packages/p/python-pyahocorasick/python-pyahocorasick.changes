@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Mar 15 13:41:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix Summary to make rpmlint happy. That’s all we care about, isn’t it,
+  to make rpmlint happy?
+- Switch the test runner to pytest and skip two tests failing on
+  big endian (gh#WojciechMula/pyahocorasick#142).
+
+-------------------------------------------------------------------
+Mon Mar 15 11:40:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging (v1.4.1), needed by weblate
