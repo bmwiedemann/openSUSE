@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-declarative
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -92,9 +92,10 @@ not have any ABI or API guarantees.
 
 %package imports
 Summary:        Qt 6 Declarative QML files and plugins
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 
 %description imports
-QML files and plugins from the Qt 6 Declarative module
+QML files and plugins from the Qt 6 Declarative module.
 
 %package tools
 Summary:        Qt 6 Declarative Tools
@@ -345,6 +346,7 @@ ABI or API guarantees.
 ### Static libraries ###
 %package -n qt6-packetprotocol-devel-static
 Summary:        Qt6 PacketProtocol static library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 %requires_eq    qt6-core-private-devel
 
 %description -n qt6-packetprotocol-devel-static
