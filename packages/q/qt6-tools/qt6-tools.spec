@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -65,6 +65,7 @@ BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  update-desktop-files
 # These packages are required to generate documentation for the Qt packages
 Requires:       qt6-tools-helpgenerators
 Requires:       qt6-tools-qdoc
@@ -79,7 +80,8 @@ BuildRequires:  qt6-tools
 %endif
 
 %description
-The QtTools modules contains some tools mostly useful for application development.
+The QtTools modules contains some tools mostly useful for application
+development.
 
 Included are Qt Designer (GUI design), QDbusViewer and more.
 
@@ -183,28 +185,29 @@ ABI or API guarantees.
 Summary:        Documentation browser
 
 %description assistant
-The Qt assistant tools allows browsing documentation using the QCH format.
+Qt Assistant is a tool for viewing documentation in Qt help file format.
 
 %package designer
 Summary:        Qt graphical interface creation tool
 
 %description designer
-Qt Designer is a tool for creating graphical interface for Qt applications.
+Qt Designer is a tool for designing and building graphical user interface
+with Qt Widgets.
 
 %package helpgenerators
-Summary:        Qt Help files generators (QCH)
+Summary:        Qt Help files generator
 Requires:       qt6-docs-common
 # help files are SQLite databases, so qhelpgenerator needs the SQLite plugin
 Requires:       qt6-sql-sqlite
 
 %description helpgenerators
-Qt 6 tools for generating .qch help catalogs.
+Qt 6 tool for generating .qch help catalogs.
 
 %package linguist
-Summary:        Qt 6 Linguist tools
+Summary:        Translation tool for Qt applications
 
 %description linguist
-The Qt 6 Linguist tools.
+Qt Linguist can be used by translator to translate text in Qt applications.
 
 %package -n qt6-linguist-devel
 Summary:        Qt 6 linguist tools - Development files
@@ -261,10 +264,10 @@ Command line client to QStandardPaths.
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_linguist_private.pri
 
 # Desktop files for applications
-install -D -m644 %{SOURCE10} %{buildroot}%{_datadir}/applications/org.qt.designer6.desktop
-install -D -m644 %{SOURCE11} %{buildroot}%{_datadir}/applications/org.qt.linguist6.desktop
-install -D -m644 %{SOURCE12} %{buildroot}%{_datadir}/applications/org.qt.qdbusviewer6.desktop
-install -D -m644 %{SOURCE13} %{buildroot}%{_datadir}/applications/org.qt.assistant6.desktop
+%suse_update_desktop_file -i org.qt.assistant6
+%suse_update_desktop_file -i org.qt.designer6
+%suse_update_desktop_file -i org.qt.linguist6
+%suse_update_desktop_file -i org.qt.qdbusviewer6
 
 # Icons for the desktop files
 install -D -m644 src/designer/src/designer/images/designer.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/designer6.png
@@ -393,6 +396,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_bindir}/qhelpgenerator
 
 %files linguist
+%dir %{_qt6_datadir}/phrasebooks
 %{_bindir}/lconvert6
 %{_bindir}/linguist6
 %{_bindir}/lprodump6
@@ -410,6 +414,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_bindir}/lrelease-pro
 %{_qt6_bindir}/lupdate
 %{_qt6_bindir}/lupdate-pro
+%{_qt6_datadir}/phrasebooks/*.qph
 
 %files -n qt6-linguist-devel
 %{_qt6_descriptionsdir}/Linguist.json
