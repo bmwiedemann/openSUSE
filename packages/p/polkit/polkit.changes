@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 11 22:21:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move /etc/dbus-1/system.d to /usr/share/dbus-1/system.d, the
+  first location is only for admin changes
+- Move pam configuration to /usr/etc/pam.d
+
+-------------------------------------------------------------------
 Mon Jan  4 09:51:04 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 move to libexec dir is still not complete:

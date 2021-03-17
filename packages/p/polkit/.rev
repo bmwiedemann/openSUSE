@@ -640,4 +640,12 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
     <comment></comment>
     <requestid>860124</requestid>
   </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>f564a8cd972138ec7195652219f7ef9b</srcmd5>
+    <version>0.118</version>
+    <time>1616008406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879208</requestid>
+  </revision>
 </revisionlist>

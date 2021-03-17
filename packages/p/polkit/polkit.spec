@@ -145,6 +145,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
 %find_lang polkit-1
+mkdir -p %{buildroot}%{_datadir}/dbus-1/system.d
+mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/* %{buildroot}%{_datadir}/dbus-1/system.d/
+mkdir -p %{buildroot}%{_distconfdir}/pam.d
+mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_distconfdir}/pam.d/
 
 %pre
 getent group polkitd > /dev/null || groupadd -r polkitd
@@ -190,14 +194,13 @@ exit 0
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system-services
 %{_datadir}/dbus-1/system-services/org.freedesktop.PolicyKit1.service
+%dir %{_datadir}/dbus-1/system.d
+%{_datadir}/dbus-1/system.d/org.freedesktop.PolicyKit1.conf
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
 %attr(0700,polkitd,root) %dir %{_datadir}/polkit-1/rules.d
-%dir %{_sysconfdir}/dbus-1
-%dir %{_sysconfdir}/dbus-1/system.d
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.PolicyKit1.conf
-%config %{_sysconfdir}/pam.d/polkit-1
+%{_distconfdir}/pam.d/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0700,polkitd,root) %dir %{_sysconfdir}/polkit-1/rules.d
 %config %{_sysconfdir}/polkit-1/rules.d/50-default.rules
