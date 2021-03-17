@@ -1,7 +1,7 @@
 #
 # spec file for package python-future
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,9 @@ Source100:      python-future-rpmlintrc
 Patch0:         python38-pow.patch
 # UPSTREAM ISSUE gh#PythonCharmers/python-future#508
 Patch1:         future-correct-mimetype.patch
+# PATCH-FIX-UPSTREAM python39-build.patch gh#PythonCharmers/python-future#578 mcepl@suse.com
+# Overcome incompatibilites with python 3.9
+Patch2:         python39-build.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +43,7 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  python3-dbm
 %endif
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

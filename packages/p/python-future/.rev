@@ -113,4 +113,14 @@
     <comment></comment>
     <requestid>853083</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c136ee2a173f3f7fbae9e71339651f6f</srcmd5>
+    <version>0.18.2</version>
+    <time>1616008401</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python39-build.patch to avoid test failures
+  (gh#PythonCharmers/python-future#578).
+</comment>
+    <requestid>878588</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 12 13:35:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add python39-build.patch to avoid test failures
+  (gh#PythonCharmers/python-future#578).
+
+-------------------------------------------------------------------
 Thu Dec  3 22:24:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Need dbm for more than one python3 flavor
