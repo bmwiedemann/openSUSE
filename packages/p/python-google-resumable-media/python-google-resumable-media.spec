@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-resumable-media
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ Utilities for Google Media Downloads and Resumable Uploads
 
 %install
 %python_install
+%{python_expand touch %{buildroot}%{$python_sitelib}/google/__init__.py}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

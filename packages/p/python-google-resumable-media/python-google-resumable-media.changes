@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 17 03:31:07 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- To enable the test suite to import the namespace package, touch
+  __init__.py
+
+-------------------------------------------------------------------
 Wed Apr  8 12:04:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.5.0
