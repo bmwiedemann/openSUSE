@@ -492,4 +492,17 @@
   * Remove temporary files in working directory.</comment>
     <requestid>877950</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2c380dd556d8aece670101d7266b91d7</srcmd5>
+    <version>2.3.0+git.20210317.2713400</version>
+    <time>1616008629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20210317.2713400:
+  * Mention that it can be install on Ubuntu.
+  * Run Lines pass 8x in delta.json pass.
+  * Add link to GitHub Actions.
+  * Fix typo.
+  * Fix SimpleInliner pass for alias functions.</comment>
+    <requestid>879705</requestid>
+  </revision>
 </revisionlist>

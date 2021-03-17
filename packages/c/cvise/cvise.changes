@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 17 14:43:58 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210317.2713400:
+  * Mention that it can be install on Ubuntu.
+  * Run Lines pass 8x in delta.json pass.
+  * Add link to GitHub Actions.
+  * Fix typo.
+  * Fix SimpleInliner pass for alias functions.
+
+-------------------------------------------------------------------
 Tue Mar 09 10:09:06 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210309.0a14640:
