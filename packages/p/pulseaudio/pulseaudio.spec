@@ -52,6 +52,7 @@ Patch1:         suppress-socket-error-msg.diff
 Patch5:         qpaeq-shebang.patch
 # PATCH-FIX-OPENSUSE Workaround for old systemd on Leap 15.x
 Patch6:         pulseaudio-old-systemd-workaround.patch
+Patch7:         parecord-fix-Failed-to-open-audio-file-for-FLAC-and-.patch
 # HFP support patches (bsc#1167940)
 Patch101:       0001-bluetooth-use-consistent-profile-names.patch
 Patch102:       0002-bluetooth-separate-HSP-and-HFP.patch
@@ -361,6 +362,7 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %if 0%{?suse_version} < 1550
 %patch6 -p1
 %endif
+%patch7 -p1
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
