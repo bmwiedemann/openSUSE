@@ -28,15 +28,15 @@ ExclusiveArch:  do_not_build
 %define spack_dir  %_prefix/lib/spack/
 %define spack_group spack
 # These packages are found and can be used by spack, /etc/spack/packages-yaml
-# needs to be updated when one of these packages is updated or uninstalled. 
-# Distinguish between packages we recommend and packages which 
+# needs to be updated when one of these packages is updated or uninstalled.
+# Distinguish between packages we recommend and packages which
 %define spack_trigger_recommended autoconf bash bison bzip2 cmake-full ccache cpio diffutils findutils flex gcc gcc-fortran git-lfs make m4 ncurses-devel libtool openssl perl-base pkgconf pkgconf-pkg-config python3-basetar info xz
 # packages recognized by spack, but not recommended
 %define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby
-# non oss packages 
+# non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -51,6 +51,7 @@ Patch3:         added-dockerfile-for-opensuse-leap-15.patch
 Patch4:         added-target-and-os-calls-to-output-of-spack-spec-co.patch
 Patch5:         Fix-documentation-so-that-parser-doesn-t-stumble.patch
 Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+Patch7:         basic-exclude-pattern-for-external-find.patch
 # upstream patch removes also problemtatic binaries
 #Patch4:         spack-test-15702.patch
 %if %{without doc}
@@ -68,8 +69,8 @@ Requires:       lua-lmod
 Requires:       polkit
 Requires:       spack-recipes
 Requires:       xz
-Recommends:     spack-recipes = %version
 Recommends:     %spack_trigger_recommended
+Recommends:     spack-recipes = %version
 %else
 BuildRequires:  %{python_module Sphinx >= 1.8}
 BuildRequires:  %{python_module sphinxcontrib-programoutput}
@@ -100,7 +101,6 @@ using different compilers, options, and MPI implementations.
 
 This package provides a module file that must be loaded to use spack.
 
-
 %package recipes
 Summary:        Spack built-in package recipes
 Requires:       %{name} >= %version
@@ -114,7 +114,7 @@ runs correctly regardless of environment, and file management
 is streamlined. Spack can install many variants of the same build
 using different compilers, options, and MPI implementations.
 
-This package contains the built-in package recipes. 
+This package contains the built-in package recipes.
 
 %package man
 Summary:        Man Page for Spack - Package manager for HPC systems
@@ -146,7 +146,6 @@ using different compilers, options, and MPI implementations.
 
 This package contains the info page.
 
-
 %prep
 %setup -q
 %autopatch -p1
@@ -166,9 +165,9 @@ cd lib/spack/docs
 grep -rl ":target:" | xargs sed  -i -e "/:target:/s/^/#/" -e "/figure::/s/^/#/"
 # Fix path to var - we install this to the 'real' /var
 grep -rl "\$SPACK_ROOT/var" | xargs sed -i -e "s@\(.*\)\$SPACK_ROOT/var\(/spack.*\)@\1/var/lib\2@g"
-# spack cannot run without knowing at least the compiler, so we inject 
+# spack cannot run without knowing at least the compiler, so we inject
 # a dummy one
-mkdir -p ${HOME}/.spack/linux/ 
+mkdir -p ${HOME}/.spack/linux/
 cat >  ${HOME}/.spack/linux/compilers.yaml <<EOF
 compilers:
 - compiler:
@@ -214,8 +213,8 @@ rm -f share/spack/setup-tutorial-env.sh
 # Fix rpmlint warnings
 ## No need for the standalone scripts
 rm -f lib/spack/external/macholib/macho_*.py
-## Fix shebangs  
-sed -i 's@#!/bin/env sh@#!/bin/bash@' var/spack/repos/builtin/packages/beast-tracer/tracer 
+## Fix shebangs
+sed -i 's@#!/bin/env sh@#!/bin/bash@' var/spack/repos/builtin/packages/beast-tracer/tracer
 sed -i 's@#! /usr/bin/env bash@ #!/bin/bash@' share/spack/docker/entrypoint.bash
 sed -i 's@#!/usr/bin/env bash@#!/bin/bash@' share/spack/docker/package-index/split.sh
 
@@ -284,7 +283,7 @@ EOF
 mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
 cat > %{buildroot}/%{_sysconfdir}/profile.d/spack.sh <<EOF
 source /etc/os-release
-if [ "\${ID}" == "opensuse-tumbleweed" ] ; then 
+if [ "\${ID}" == "opensuse-tumbleweed" ] ; then
   SPACK_NAME="\${ID/-/}"
 else
   SPACK_NAME="\${ID/-/_}\${VERSION_ID/.*/}"
@@ -310,9 +309,9 @@ eval \`awk '/^VERSION_ID=/ {sub("\\\\.[0-9]",""); printf("set %%s",\$0);}' /etc/
 if ( \$ID == "opensuse_tumbleweed" ) then
   eval \`awk '/^ID=/ {sub("-",""); printf("set %%s",\$0);}' /etc/os-release\`
   set SPACK_NAME=\$ID
-else  
+else
   set SPACK_NAME="\${ID}\${VERSION_ID}"
-endif 
+endif
 set SPACK_ROOT="%{spack_dir}"
 set MODULEPATH="~/spack/lmod/linux-\${SPACK_NAME}-\${CPU}:%{_prefix}/share/spack/lmod/linux-\${SPACK_NAME}-\${CPU}:\${MODULEPATH}"
 if ( ! -e ~/.spack/config.yaml )  then
@@ -371,7 +370,7 @@ sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/modules.ya
 sed -i "s@GCC_VERSION@$GCC_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
 if [ -e /etc/os-release ] ;  then
   source /etc/os-release
-  if [ "${ID}" == "opensuse-tumbleweed" ] ; then 
+  if [ "${ID}" == "opensuse-tumbleweed" ] ; then
     export SPACK_NAME="${ID/-/}"
   else
     export SPACK_NAME="${ID/-/_}${VERSION_ID/.*/}"
@@ -381,15 +380,15 @@ if [ -e /etc/os-release ] ;  then
 fi
 sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
 # find installed programms
-test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system
+test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system --exclude 'installdbgsymbols'
 
 %triggerin -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
-test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system
+test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system --exclude 'installdbgsymbols'
 test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack/no_rpm_trigger to stop spack to search for new packages after a rpm install"
 
 %triggerpostun -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
 test -e %{_sysconfdir}/spack/no_rpm_trigger || rm /etc/spack/packages.yaml
-test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system
+test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system --exclude 'installdbgsymbols'
 test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack/no_rpm_trigger to stop spack to search for new packages after a rpm install"
 
 %if %{without doc}

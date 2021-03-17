@@ -1,0 +1,65 @@
+From 03bf4e89802b626278a4b14b4349ee94aa722965 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Fri, 26 Feb 2021 14:21:04 +0100
+Subject: [PATCH] basic exclude pattern for external find
+
+---
+ lib/spack/spack/cmd/external.py | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/lib/spack/spack/cmd/external.py b/lib/spack/spack/cmd/external.py
+index 52af72ed8f..ff583d9e87 100644
+--- a/lib/spack/spack/cmd/external.py
++++ b/lib/spack/spack/cmd/external.py
+@@ -42,6 +42,9 @@ def setup_parser(subparser):
+         '--scope', choices=scopes, metavar=scopes_metavar,
+         default=spack.config.default_modify_scope('packages'),
+         help="configuration scope to modify")
++    find_parser.add_argument(
++        '--exclude',
++        help="do not call binaries with this regular pattern for the search")
+     find_parser.add_argument('packages', nargs=argparse.REMAINDER)
+ 
+     sp.add_parser(
+@@ -153,7 +156,7 @@ def external_find(args):
+     else:
+         packages_to_check = spack.repo.path.all_packages()
+ 
+-    pkg_to_entries = _get_external_packages(packages_to_check)
++    pkg_to_entries = _get_external_packages(packages_to_check,args.exclude)
+     new_entries = _update_pkg_config(
+         args.scope, pkg_to_entries, args.not_buildable
+     )
+@@ -236,7 +239,7 @@ def _update_pkg_config(scope, pkg_to_entries, not_buildable):
+     return all_new_specs
+ 
+ 
+-def _get_external_packages(packages_to_check, system_path_to_exe=None):
++def _get_external_packages(packages_to_check,exclude_binaries=None, system_path_to_exe=None):
+     if not system_path_to_exe:
+         system_path_to_exe = _get_system_executables()
+ 
+@@ -247,12 +250,17 @@ def _get_external_packages(packages_to_check, system_path_to_exe=None):
+                 exe_pattern_to_pkgs[exe].append(pkg)
+ 
+     pkg_to_found_exes = defaultdict(set)
++    if exclude_binaries:
++        compiled_exclude = re.compile(exclude_binaries)
++    else:
++        compiled_exclude = None
+     for exe_pattern, pkgs in exe_pattern_to_pkgs.items():
+         compiled_re = re.compile(exe_pattern)
+         for path, exe in system_path_to_exe.items():
+-            if compiled_re.search(exe):
+-                for pkg in pkgs:
+-                    pkg_to_found_exes[pkg].add(path)
++            if not compiled_exclude or not compiled_exclude.search(exe):
++                if compiled_re.search(exe):
++                    for pkg in pkgs:
++                        pkg_to_found_exes[pkg].add(path)
+ 
+     pkg_to_entries = defaultdict(list)
+     resolved_specs = {}  # spec -> exe found for the spec
+-- 
+2.26.2
+

@@ -5,6 +5,28 @@ Fri Feb 26 22:06:36 UTC 2021 - Egbert Eich <eich@suse.com>
   distribution-release.
 
 -------------------------------------------------------------------
+Fri Feb 26 10:40:00 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- update to version 0.16.1
+  * intel-oneapi support through new packages 
+  * HIP/ROCm support (#19715, #20095)
+  * concretization enhancements
+  * environment install reporting fix (#20004)
+  * avoid import in ABI compatibility info (#20236)
+  * restore ability of dev-build to skip patches (#20351)
+  * spack find -d spec grouping (#20028)
+  * spack smoke test support (#19987, #20298)
+  * abstract spec comparisons (#20341)
+  * performance improvements for binary relocation (#19690, #20768)
+  * additional sanity checks for variants in builtin packages (#20373)
+  * do not pollute auto-generated configuration files with empty lists or
+    dicts
+- added file: basic-exclude-pattern-for-external-find.patch 
+  * adds the functionality to exclude binaries for external search 
+    so that the call 'installdbgsymbols' can be prohibited as this
+    leads to an endless loop when drkonqui is installed
+  
+-------------------------------------------------------------------
 Thu Feb  4 06:54:13 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add
