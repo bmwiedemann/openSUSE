@@ -811,4 +811,20 @@ nicer version with try-reload-or-restart</comment>
 - Drop upstream tor-practracker.patch</comment>
     <requestid>872835</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>acd68eb1cdc5cb173997b43e2266eb77</srcmd5>
+    <version>0.4.5.7</version>
+    <time>1616008617</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.4.5.7
+  * https://lists.torproject.org/pipermail/tor-announce/2021-March/000216.html
+  * Fix 2 denial of service security issues
+    + Disable the dump_desc() function that we used to dump unparseable
+      information to disk (CVE-2021-28089)
+    + Fix a bug in appending detached signatures to a pending consensus
+      document that could be used to crash a directory authority
+      (CVE-2021-28090)
+  * Ship geoip files based on the IPFire Location Database</comment>
+    <requestid>879675</requestid>
+  </revision>
 </revisionlist>
