@@ -31,12 +31,10 @@ Requires:       python3-websocket-client
 BuildArch:      noarch
 
 %description
-rocket.term is a text based client for Rocket.chat that runs in your terminal.
-It aims for a simple and productive user interface to participate in
-Rocket.cat communication.
+rocket.term is a text based client for Rocket.chat that runs in a terminal.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %python3_build
