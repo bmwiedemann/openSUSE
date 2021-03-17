@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:58:25 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 7.2.1
+- Recommend PyQtWebEngine for JavaScript support
+
+-------------------------------------------------------------------
 Fri May 22 12:19:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
-- Update to version 7.10
+- Update to version 7.1.0
   General improvements:
   * New files are now opened in new tabs by default, not new
     windows.

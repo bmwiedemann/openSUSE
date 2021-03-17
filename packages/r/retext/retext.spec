@@ -1,7 +1,7 @@
 #
 # spec file for package retext
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retext
-Version:        7.1.0
+Version:        7.2.1
 Release:        0
 Summary:        Simple editor for Markdown and reStructuredText
 License:        GPL-3.0-or-later
@@ -27,12 +27,13 @@ Source:         https://github.com/retext-project/retext/archive/%{version}.tar.
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-Markups >= 2.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
-BuildRequires:  python3-qt5
+BuildRequires:  python3-qt5 >= 5.11
 BuildRequires:  python3-setuptools
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
@@ -46,6 +47,7 @@ Requires:       python3-docutils
 Requires:       python3-pyenchant
 Requires:       python3-qt5
 Recommends:     python3-Pygments
+Recommends:     python3-qtwebengine-qt5
 Provides:       ReText = %{version}
 BuildArch:      noarch
 
@@ -60,10 +62,10 @@ dos2unix LICENSE_GPL
 sed -i '/^#!/d' ReText/__main__.py ReText/converterprocess.py
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%python3_install
 
 mkdir -pv %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 mkdir -pv %{buildroot}%{_datadir}/%{name}/
