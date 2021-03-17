@@ -34,4 +34,17 @@
   - add kustomize support</comment>
     <requestid>758899</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7d4ef0b9e3fc548521ba3b110e51537e</srcmd5>
+    <version>1.4</version>
+    <time>1616008446</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to go.mod
+
+- Set GO111MODULE=auto to build with go1.16+
+  * Default changed to GO111MODULE=on in go1.16
+  * Set temporarily until upstream has go.mod in top level directory
+  * Drop BuildRequires: golang-packaging not currently using macros</comment>
+    <requestid>879432</requestid>
+  </revision>
 </revisionlist>

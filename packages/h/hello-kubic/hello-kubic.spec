@@ -1,7 +1,7 @@
 #
 # spec file for package hello-kubic
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           hello-kubic
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        A mini webserver showing a hello kubic page
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/thkukuk/hello-kubic
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.16
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390 %ix86
 
