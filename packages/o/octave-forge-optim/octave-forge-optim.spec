@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-optim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  optim
 Name:           octave-forge-%{octpkg}
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Non-linear optimization toolkit for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://octave.sourceforge.io/optim/index.html
+URL:            https://octave.sourceforge.io/optim/index.html
 Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  blas-devel
 BuildRequires:  gcc-c++

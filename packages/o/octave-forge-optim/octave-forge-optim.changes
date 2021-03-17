@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 13 13:50:13 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.1:
+  * Bug fixes: `__qp__' invocation in `quadprog' (and so
+    `lsqlin'), handling of combined linear and non-linear
+    constraints, handling 'fixed' parameters in `residmin_stat'.
+  * `fmincon': Handle bound vectors which are too short as in
+    Matlab.
+
+-------------------------------------------------------------------
 Tue Jul 16 12:12:34 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.6.0:
