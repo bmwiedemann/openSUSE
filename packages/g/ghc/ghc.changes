@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 20:33:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- always build against llvm9, also on SLE15 (suse_version == 1500)
+  otherwise the resulting build is not working (llvm is 7.x there) (bsc#1181571)
+
+-------------------------------------------------------------------
 Tue Feb  9 01:29:46 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 8.10.4

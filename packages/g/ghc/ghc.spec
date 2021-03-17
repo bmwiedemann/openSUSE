@@ -1,7 +1,7 @@
 #
 # spec file for package ghc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,15 +54,9 @@ BuildRequires:  xz
 BuildRequires:  binutils-gold
 %endif
 %ifarch aarch64 %{arm} %{ix86} x86_64
-%if 0%{?suse_version} >= 1550
+BuildRequires:  clang9
 BuildRequires:  llvm9
 BuildRequires:  llvm9-devel
-BuildRequires:  clang9 
-%else
-BuildRequires:  llvm
-BuildRequires:  llvm-devel
-BuildRequires:  clang 
-%endif
 %endif
 %if %{undefined without_manual}
 BuildRequires:  python3-Sphinx
@@ -115,22 +109,12 @@ Requires(postun): update-alternatives
 Requires:       binutils-gold
 %endif
 %ifarch aarch64 %{arm}
-%if 0%{?suse_version} >= 1550
 Requires:       clang9
 Requires:       llvm9
-%else
-Requires:       llvm
-Requires:       clang 
-%endif
 %endif
 %ifarch x86_64 %{ix86}
-%if 0%{?suse_version} >= 1550
 Suggests:       clang9 
 Suggests:       llvm9
-%else
-Suggests:       llvm
-Suggests:       clang
-%endif
 %endif
 
 %description compiler
@@ -261,7 +245,7 @@ export CFLAGS="${CFLAGS:-%optflags}"
   --enable-unregisterised \
 %endif
   --with-system-libffi
-  
+
 %if 0%{?suse_version} >= 1500
 %ifarch %{unregisterised_archs}
 %if 0%{?qemu_user_space_build}
@@ -276,7 +260,6 @@ make %{?_smp_mflags}
 %else 
 make -j 2
 %endif
-
 
 %install
 %makeinstall
