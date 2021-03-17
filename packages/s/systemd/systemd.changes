@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 15 15:56:45 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 9753d1c17545a5d46530696cb14254f5f12024f1 (merge of v246.11)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/134cf1c8bc3e361a2641161aa11ac2b5b990480b...9753d1c17545a5d46530696cb14254f5f12024f1
+
+- Rebase 0001-conf-parser-introduce-early-drop-ins.patch
+
+-------------------------------------------------------------------
+Mon Mar 15 11:06:54 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 13bc08870147b35f87cefb074aec22e767b7ac04
+
+  846d61e0a1 boot: Move console declarations to missing_efi.h
+  171a37228b boot: Add startswith() and endswith() functions with no_case variants
+  0fad9f309a boot: Drop unnecessary braces
+  c38bbb0874 boot: Fix void pointer arithmetic warning
+  438210924b boot: Replace raw efivar gets with typed variants
+  e46cb3e4a0 boot: Add  efivar_get/set_uint64_le() functions
+  e16bee35c8 boot: Rename efivar_get/set_int() to efivar_get/set_uint_string()
+  2808d0e9a3 boot: Tighten scope of variables used in loops
+  d3f3d57743 boot: Add efivar_get_boolean_u8()
+  0551ecce71 boot: Make all efivar util functions take the guid as an argument
+  8376ba3b9f boot: Turn all guid constants into C99 compound initializers
+  166fc2dad2 boot: Enable C99
+  c87d66e261 boot: Move Secure Boot logic to new file
+  da7bba9438 udev: fix memleak
+  e06139117c nspawn: make rootfs relative to oci bundle path (bsc#1182598)
+  8ba587d46c PATCH] Always free deserialized_subscribed on reload (bsc#1180020)
+
+-------------------------------------------------------------------
+Thu Mar 11 09:51:53 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Make sure the udev socket units are reloaded during udev package updates
+
+-------------------------------------------------------------------
+Wed Mar 10 09:10:03 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- fix-machines-btrfs-subvol.sh is only shipped when machined is built
+
+-------------------------------------------------------------------
 Mon Feb 22 20:20:43 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - systemd requires aaa_base >= 13.2

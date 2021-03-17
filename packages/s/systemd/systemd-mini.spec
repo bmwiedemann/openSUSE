@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.83.g134cf1c8bc
+%define suse_version +suse.102.g9753d1c175
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -55,7 +55,7 @@
 
 Name:           systemd-mini
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        246.10
+Version:        246.11
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -903,12 +903,17 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 
 %postun -n udev%{?mini}
 %regenerate_initrd_post
-# Restarting udevd sockets means also stopping the daemon. But we
-# don't want the sockets and the daemon to be inactive at the same
-# time because we might loose new events sent by the kernel during the
-# package update otherwise. Hence we accept the fact that the socket
-# properties might not be updated. They are unlikely changed anyway.
-%systemd_postun_with_restart systemd-udevd.service
+systemctl daemon-reload || :
+# On package update, restarting the socket units will probably fail as
+# udevd is most likely running. Therefore systemctl will refuse to
+# start them again once stopped. It's not an issue since we are mostly
+# interested to make PID1 use the updated unit files once the socket
+# units wil be started again. And that will happen when systemd-udevd
+# itself will be restarted.
+if [ $1 -ge 1 ]; then
+	systemctl try-restart systemd-udevd-{control,kernel}.socket 2>/dev/null || :
+	systemctl try-restart systemd-udevd.service || :
+fi
 
 %posttrans -n udev%{?mini}
 %regenerate_initrd_posttrans
@@ -921,6 +926,7 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 
 %post container
 %tmpfiles_create systemd-nspawn.conf
+%if %{with machined}
 if [ $1 -gt 1 ]; then
         # Convert /var/lib/machines subvolume to make it suitable for
         # rollbacks, if needed. See bsc#992573. The installer has been fixed
@@ -939,6 +945,7 @@ if [ $1 -gt 1 ]; then
         # shouldn't be any issues.
         %{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh || :
 fi
+%endif
 
 %if ! 0%{?bootstrap}
 %post logger

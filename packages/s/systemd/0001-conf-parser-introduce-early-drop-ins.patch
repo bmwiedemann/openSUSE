@@ -1,4 +1,4 @@
-From 3709cf5ba88e1cb9c737e524168b83a0964ef5db Mon Sep 17 00:00:00 2001
+From 569f94a86a608fa7a47fef583f3f504ec8223967 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 22 Jan 2021 14:57:08 +0100
 Subject: [PATCH 1/1] conf-parser: introduce 'early' drop-ins
@@ -61,15 +61,15 @@ drop this feature at any time.
 
 Fixes: #2121
 ---
- src/shared/conf-parser.c    |  57 ++++++++++++--
- src/test/test-conf-parser.c | 149 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 198 insertions(+), 8 deletions(-)
+ src/shared/conf-parser.c    |  47 ++++++++++-
+ src/test/test-conf-parser.c | 151 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 194 insertions(+), 4 deletions(-)
 
 diff --git a/src/shared/conf-parser.c b/src/shared/conf-parser.c
-index 0fec79f3d7..daf55d2358 100644
+index 7499b3b882..799026626c 100644
 --- a/src/shared/conf-parser.c
 +++ b/src/shared/conf-parser.c
-@@ -423,6 +423,7 @@ int config_parse(const char *unit,
+@@ -426,6 +426,7 @@ int config_parse(const char *unit,
  
  static int config_parse_many_files(
                  const char *conf_file,
@@ -77,39 +77,20 @@ index 0fec79f3d7..daf55d2358 100644
                  char **files,
                  const char *sections,
                  ConfigItemLookup lookup,
-@@ -431,19 +432,27 @@ static int config_parse_many_files(
-                 void *userdata,
-                 usec_t *ret_mtime) {
- 
--        usec_t mtime = 0;
-+        usec_t t, mtime = 0;
+@@ -438,6 +439,12 @@ static int config_parse_many_files(
          char **fn;
          int r;
  
 +        STRV_FOREACH(fn, early_files) {
-+                r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &t);
++                r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &mtime);
 +                if (r < 0)
 +                        return r;
-+                if (t > mtime) /* Find the newest */
-+                        mtime = t;
 +        }
 +
          if (conf_file) {
--                r = config_parse(NULL, conf_file, NULL, sections, lookup, table, flags, userdata, &mtime);
-+                r = config_parse(NULL, conf_file, NULL, sections, lookup, table, flags, userdata, &t);
+                 r = config_parse(NULL, conf_file, NULL, sections, lookup, table, flags, userdata, &mtime);
                  if (r < 0)
-                         return r;
-+                if (t > mtime) /* Find the newest */
-+                        mtime = t;
-         }
- 
-         STRV_FOREACH(fn, files) {
--                usec_t t;
--
-                 r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &t);
-                 if (r < 0)
-                         return r;
-@@ -457,6 +466,28 @@ static int config_parse_many_files(
+@@ -456,6 +463,28 @@ static int config_parse_many_files(
          return 0;
  }
  
@@ -138,7 +119,7 @@ index 0fec79f3d7..daf55d2358 100644
  /* Parse each config file in the directories specified as nulstr. */
  int config_parse_many_nulstr(
                  const char *conf_file,
-@@ -468,14 +499,19 @@ int config_parse_many_nulstr(
+@@ -467,14 +496,19 @@ int config_parse_many_nulstr(
                  void *userdata,
                  usec_t *ret_mtime) {
  
@@ -160,7 +141,7 @@ index 0fec79f3d7..daf55d2358 100644
  }
  
  /* Parse each config file in the directories specified as strv. */
-@@ -490,8 +526,8 @@ int config_parse_many(
+@@ -489,8 +523,8 @@ int config_parse_many(
                  void *userdata,
                  usec_t *ret_mtime) {
  
@@ -170,7 +151,7 @@ index 0fec79f3d7..daf55d2358 100644
          const char *suffix;
          int r;
  
-@@ -504,7 +540,12 @@ int config_parse_many(
+@@ -503,7 +537,12 @@ int config_parse_many(
          if (r < 0)
                  return r;
  
@@ -185,7 +166,7 @@ index 0fec79f3d7..daf55d2358 100644
  
  #define DEFINE_PARSER(type, vartype, conv_func)                         \
 diff --git a/src/test/test-conf-parser.c b/src/test/test-conf-parser.c
-index 07edc17f92..bb82923319 100644
+index 07edc17f92..2df4b073c5 100644
 --- a/src/test/test-conf-parser.c
 +++ b/src/test/test-conf-parser.c
 @@ -5,6 +5,9 @@
@@ -198,7 +179,7 @@ index 07edc17f92..bb82923319 100644
  #include "string-util.h"
  #include "strv.h"
  #include "tmpfile-util.h"
-@@ -385,6 +388,149 @@ static void test_config_parse(unsigned i, const char *s) {
+@@ -385,6 +388,151 @@ static void test_config_parse(unsigned i, const char *s) {
          }
  }
  
@@ -299,6 +280,8 @@ index 07edc17f92..bb82923319 100644
 +}
 +
 +static void test_config_parse_many(bool nulstr) {
++        log_info("== %s%s ==", __func__, nulstr ? "_nulstr" : "");
++
 +        test_config_parse_many_one(nulstr, NULL, NULL, NULL, NULL, NULL);
 +
 +        test_config_parse_many_one(nulstr,
@@ -348,7 +331,7 @@ index 07edc17f92..bb82923319 100644
  int main(int argc, char **argv) {
          unsigned i;
  
-@@ -407,5 +553,8 @@ int main(int argc, char **argv) {
+@@ -407,5 +555,8 @@ int main(int argc, char **argv) {
          for (i = 0; i < ELEMENTSOF(config_file); i++)
                  test_config_parse(i, config_file[i]);
  
