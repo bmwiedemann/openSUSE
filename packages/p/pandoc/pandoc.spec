@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.11.4
+Version:        2.12
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -59,6 +59,7 @@ BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-haddock-library-devel
 BuildRequires:  ghc-hslua-devel
+BuildRequires:  ghc-hslua-module-path-devel
 BuildRequires:  ghc-hslua-module-system-devel
 BuildRequires:  ghc-hslua-module-text-devel
 BuildRequires:  ghc-http-client-devel
@@ -89,6 +90,7 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unordered-containers-devel
+BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-devel
 BuildRequires:  ghc-zip-archive-devel
 BuildRequires:  ghc-zlib-devel
@@ -143,7 +145,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 1.3'
 
 %build
 %ghc_lib_build
@@ -291,6 +292,8 @@ cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 1.3'
 %{_datadir}/%{name}-%{version}/data/templates/article.jats_publishing
 %{_datadir}/%{name}-%{version}/data/templates/default.asciidoc
 %{_datadir}/%{name}-%{version}/data/templates/default.asciidoctor
+%{_datadir}/%{name}-%{version}/data/templates/default.biblatex
+%{_datadir}/%{name}-%{version}/data/templates/default.bibtex
 %{_datadir}/%{name}-%{version}/data/templates/default.commonmark
 %{_datadir}/%{name}-%{version}/data/templates/default.context
 %{_datadir}/%{name}-%{version}/data/templates/default.docbook4
