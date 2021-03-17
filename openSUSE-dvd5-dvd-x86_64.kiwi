@@ -2932,7 +2932,7 @@
       <repopackage name="libupnp17"/>
       <repopackage name="libupower-glib3"/>
       <repopackage name="liburcu6"/>
-      <repopackage name="liburing1"/>
+      <repopackage name="liburing2"/>
       <repopackage name="libUsageEnvironment3"/>
       <repopackage name="libusb-0_1-4"/>
       <repopackage name="libusb-1_0-0"/>
@@ -3723,7 +3723,6 @@
       <repopackage name="perl-HTML-Parser"/>
       <repopackage name="perl-HTML-Tagset"/>
       <repopackage name="perl-HTTP-Cookies"/>
-      <repopackage name="perl-HTTP-Daemon"/>
       <repopackage name="perl-HTTP-Date"/>
       <repopackage name="perl-HTTP-Message"/>
       <repopackage name="perl-HTTP-Negotiate"/>

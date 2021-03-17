@@ -3491,7 +3491,6 @@ unsorted:
   - firehol 
   - firehol-doc 
   - firejail 
-  - firescope 
   - firetools 
   - firewall-applet 
   - firewall-config 
@@ -13135,7 +13134,6 @@ unsorted:
   - libsaml-devel 
   - libsaml11 
   - libsamplerate-devel 
-  - libsamplerate-progs 
   - libsamplerate0-32bit: [x86_64] 
   - libsane1-32bit: [x86_64] 
   - libsanlock1 
@@ -17777,9 +17775,6 @@ unsorted:
   - otb-qt 
   - oto 
   - otpclient 
-  - otrs 
-  - otrs-doc 
-  - otrs-itsm 
   - otter-browser 
   - otter-browser-lang 
   - ovmf-tools: [x86_64] 
@@ -18723,6 +18718,7 @@ unsorted:
   - perl-HTTP-CookieJar 
   - perl-HTTP-CookieMonster 
   - perl-HTTP-DAV 
+  - perl-HTTP-Daemon 
   - perl-HTTP-Entity-Parser 
   - perl-HTTP-Headers-ActionPack 
   - perl-HTTP-Headers-Fast 
@@ -20677,6 +20673,7 @@ unsorted:
   - python3-SoapySDR 
   - python3-YODA 
   - python3-aexpect 
+  - python3-ara 
   - python3-arpack-ng: [x86_64] 
   - python3-audit: [i586] 
   - python3-automaton 
@@ -20959,7 +20956,6 @@ unsorted:
   - python3-pyIOSXR 
   - python3-pycadf 
   - python3-pyfg 
-  - python3-pyfuse3 
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
@@ -20976,7 +20972,6 @@ unsorted:
   - python3-pytest-listener 
   - python3-pytest-pyramid-server 
   - python3-pytest-server-fixtures 
-  - python3-python-jenkins 
   - python3-python-pseudorandom: [i586] 
   - python3-python-qnotifications 
   - python3-python-redis-lock 
@@ -20992,8 +20987,6 @@ unsorted:
   - python3-selinux: [i586] 
   - python3-senlinclient 
   - python3-smbus 
-  - python3-social-auth-app-django 
-  - python3-social-auth-core 
   - python3-spglib 
   - python3-sphinx-autodoc-typehints 
   - python3-sphinxbase 
@@ -21334,7 +21327,6 @@ unsorted:
   - python36-applicationinsights 
   - python36-apptools 
   - python36-apsw 
-  - python36-ara 
   - python36-arabic-reshaper 
   - python36-archmage 
   - python36-arf 
@@ -22276,6 +22268,7 @@ unsorted:
   - python36-hetznercloud 
   - python36-hexdump 
   - python36-hide-code 
+  - python36-hijri-converter 
   - python36-hiredis 
   - python36-hkdf 
   - python36-hl7apy 
@@ -22905,6 +22898,7 @@ unsorted:
   - python36-pyVows 
   - python36-pyacoustid 
   - python36-pyaes 
+  - python36-pyahocorasick 
   - python36-pyalsaaudio 
   - python36-pyaml 
   - python36-pyannotate 
@@ -22961,6 +22955,7 @@ unsorted:
   - python36-pyfiglet 
   - python36-pyflakes 
   - python36-pyftpdlib 
+  - python36-pyfuse3 
   - python36-pygal 
   - python36-pygaljs 
   - python36-pygame 
@@ -23187,6 +23182,7 @@ unsorted:
   - python36-python-gitlab 
   - python36-python-gnupg 
   - python36-python-gvm 
+  - python36-python-jenkins 
   - python36-python-jose 
   - python36-python-json-logger 
   - python36-python-jsonrpc-server 
@@ -23481,6 +23477,8 @@ unsorted:
   - python36-snimpy 
   - python36-snowballstemmer 
   - python36-snuggs 
+  - python36-social-auth-app-django 
+  - python36-social-auth-core 
   - python36-socketIO-client-nexus 
   - python36-socketpool 
   - python36-softlayer 
@@ -24149,7 +24147,6 @@ unsorted:
   - python38-applicationinsights 
   - python38-apptools 
   - python38-apsw 
-  - python38-ara 
   - python38-arabic-reshaper 
   - python38-archmage 
   - python38-arf 
@@ -25091,6 +25088,7 @@ unsorted:
   - python38-hetznercloud 
   - python38-hexdump: [i586] 
   - python38-hide-code 
+  - python38-hijri-converter 
   - python38-hkdf 
   - python38-hl7apy 
   - python38-holidays 
@@ -25751,6 +25749,7 @@ unsorted:
   - python38-pyVows 
   - python38-pyacoustid 
   - python38-pyaes 
+  - python38-pyahocorasick 
   - python38-pyalsaaudio 
   - python38-pyaml 
   - python38-pyannotate 
@@ -25800,6 +25799,7 @@ unsorted:
   - python38-pyfiglet 
   - python38-pyflakes 
   - python38-pyftpdlib 
+  - python38-pyfuse3 
   - python38-pygal 
   - python38-pygaljs 
   - python38-pygame 
@@ -26030,6 +26030,7 @@ unsorted:
   - python38-python-gitlab 
   - python38-python-gnupg 
   - python38-python-gvm 
+  - python38-python-jenkins 
   - python38-python-jose 
   - python38-python-json-logger 
   - python38-python-jsonrpc-server 
@@ -26322,6 +26323,8 @@ unsorted:
   - python38-snimpy 
   - python38-snowballstemmer 
   - python38-snuggs 
+  - python38-social-auth-app-django 
+  - python38-social-auth-core 
   - python38-socketIO-client-nexus 
   - python38-socketpool 
   - python38-softlayer 
@@ -28665,6 +28668,7 @@ unsorted:
   - sway 
   - sway-branding-openSUSE 
   - sway-branding-upstream 
+  - sway-contrib 
   - swaybg 
   - swayidle 
   - swayidle-bash-completion 
