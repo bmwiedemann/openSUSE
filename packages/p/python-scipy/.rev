@@ -1025,4 +1025,12 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>863807</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e7821c527c6799eb6e9c39a8dc79d00a</srcmd5>
+    <version>1.6.1</version>
+    <time>1616008432</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879292</requestid>
+  </revision>
 </revisionlist>

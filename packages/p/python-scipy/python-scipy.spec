@@ -17,22 +17,12 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %define _ver 1_6_0
 %define shortname scipy
 %define pname python-%{shortname}
-
-%bcond_with ringdisabled
-
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
-
-%if "%flavor" == ""
-ExclusiveArch:  do_not_build
-%endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%if "%flavor" == "standard"
+%if "%{flavor}" == "standard"
  %bcond_with hpc
  %ifarch armv6l s390 s390x m68k riscv64
   %bcond_with openblas
@@ -48,52 +38,50 @@ ExclusiveArch:  do_not_build
     %endif
   %endif
 %endif
-
-%if "%flavor" == "gnu-hpc"
- %bcond_without hpc
+%if "%{flavor}" == "gnu-hpc"
  %define compiler_family gnu
+ %bcond_without hpc
  %undefine c_f_ver
 %endif
-
-%if "%flavor" == "gnu7-hpc"
- %bcond_without hpc
+%if "%{flavor}" == "gnu7-hpc"
  %define compiler_family gnu
  %define c_f_ver 7
+ %bcond_without hpc
 %endif
-
+%define         skip_python2 1
+# https://numpy.org/neps/nep-0029-deprecation_policy.html
+%define         skip_python36 1
+%{?with_hpc:%{hpc_requires}}
+%bcond_with ringdisabled
 %if %{without hpc}
 %define package_name %{pname}
-%define p_python_sitearch %python_sitearch
-%define p_prefix %_prefix
-%define p_bindir %_bindir
+%define p_python_sitearch %{python_sitearch}
+%define p_prefix %{_prefix}
+%define p_bindir %{_bindir}
 %else
+%{!?compiler_family:%global compiler_family gnu}
+%{hpc_init -c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
+%define package_name %{hpc_package_name %{_ver}}
+%define p_python_sitearch %{hpc_python_sitearch}
+%define p_prefix %{hpc_prefix}
+%define p_bindir %{hpc_bindir}
 # Magic for OBS Staging. Only build the flavors required by
 # other packages in the ring.
 %if %{with ringdisabled}
 ExclusiveArch:  do_not_build
 %endif
  %ifarch armv6l s390 s390x m68k riscv64 i586
-ExclusiveArch:  do_not_build   
+ExclusiveArch:  do_not_build
  %endif
-%{!?compiler_family:%global compiler_family gnu}
-%{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
 %{hpc_modules_init openblas}
-%define package_name %{hpc_package_name %_ver}
-%define p_python_sitearch %hpc_python_sitearch
-%define p_prefix %hpc_prefix
-%define p_bindir %hpc_bindir
 %endif
-
-%define         skip_python2 1
-# https://numpy.org/neps/nep-0029-deprecation_policy.html
-%define         skip_python36 1
 Name:           %{package_name}
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Development/Libraries/Python
-URL:            http://www.scipy.org
+URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 Source100:      python-scipy-rpmlintrc
 BuildRequires:  %{python_module Cython >= 0.29.18}
@@ -104,18 +92,21 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
+%endif
 %if %{without hpc}
+BuildRequires:  %{python_module numpy-devel >= 1.16.5}
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
+Requires:       python-numpy >= 1.16.5
+Requires:       python-pybind11 >= 2.4.3
  %if %{with openblas}
 BuildRequires:  openblas-devel
  %else
 BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
  %endif
-BuildRequires:  %{python_module numpy-devel >= 1.16.5}
-Requires:       python-numpy >= 1.16.5
-Requires:       python-pybind11 >= 2.4.3
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel >= 1.3
 BuildRequires:  %{python_module numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
@@ -125,7 +116,6 @@ BuildRequires:  suse-hpc >= 0.3
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
 Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.16.5
 %endif
-%{?with_hpc:%{hpc_requires}}
 %python_subpackages
 
 %description
@@ -199,8 +189,8 @@ depends-on $python-numpy
 
 prepend-path    PYTHONPATH          ${sitesearch_path}
 
-setenv          %{hpc_upcase_trans_hyph %pname}_DIR        %{hpc_prefix}
-setenv          %{hpc_upcase_trans_hyph %pname}_BIN        %{hpc_bindir}
+setenv          %{hpc_upcase_trans_hyph %{pname}}_DIR        %{hpc_prefix}
+setenv          %{hpc_upcase_trans_hyph %{pname}}_BIN        %{hpc_bindir}
 
 family %{shortname}
 EOF
@@ -209,7 +199,7 @@ EOF
 
 %if %{with hpc}
 %post
-%hpc_module_delete_if_default
+%{hpc_module_delete_if_default}
 %endif
 
 %files %{python_files}
