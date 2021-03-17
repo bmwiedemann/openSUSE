@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 12 08:00:32 UTC 2021 - psimons@suse.com
+
+- Update regex-pcre-builtin to version 0.95.2.3.8.43.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
