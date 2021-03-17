@@ -104,9 +104,6 @@ interface.
 
 rm -rf %{buildroot}%{_datadir}/gaupol/extensions/*/__pycache__
 
-#remove zero length header files
-find %{buildroot}%{_datadir} -type f -size 0 -delete
-
 # We provide gaupol only for the primary python3 provider, but python-aeidon is multiflavor.
 %python_expand [ $(which $python) -ef $(which python3) ] || rm -r %{buildroot}/%{$python_sitelib}/gaupol*
 
