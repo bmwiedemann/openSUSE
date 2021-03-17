@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Mar 11 08:23:02 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.21.
+  # 1.21 2021-03-10
+
+  - Building Hledger.Data.Journal no longer fails if the monad-extras
+    package is installed.
+
+  - Many parts of the hledger-lib and hledger APIs have become more
+    Text-ified, expecting or returning Text instead of String, reducing
+    hledger's time and resident memory requirements by roughly 10%.
+    Some functions now use WideBuilder (a text "builder" which keeps track
+    of width), to concatenate text more efficiently. There are some
+    helpers for converting to and from WideBuilder (wbUnpack, wbToText..)
+    showAmountB/showMixedAmountB are new amount-displaying functions
+    taking an AmountDisplayOpts. These will probably replace the old
+    show(Mixed)Amount* functions. (#1427, Stephen Morgan)
+
+  - AtThen valuation is now implemented for all report types.
+    amountApplyValuation now takes the posting date as an argument.
+    (transaction/posting)ApplyValuation's valuation type and
+    transaction/posting arguments have been reordered like
+    amountApplyValuation's. (Stephen Morgan)
+
+  - Amount, AmountPrice, AmountStyle, DigitGroupStyle fields are now
+    strict. (Stephen Morgan)
+
+  - Amount prices are now stored with their sign, so negative prices can
+    be represented. (They seem to have always worked, but now the
+    internal representation is more accurate.) (Stephen Morgan)
+
+  - normaliseMixedAmount now combines Amounts with TotalPrices in the
+    same commodity. (Stephen Morgan)
+
+  - normaliseMixedAmount now uses a strict Map for combining amounts
+    internally, closing a big space leak. (Stephen Morgan)
+
+  - (multiply|divide)(Mixed)?Amount now also multiply or divide the
+    TotalPrice if it is present, and the old
+    (multiply|divide)(Mixed)?AmountAndPrice functions are removed. (Stephen Morgan)
+
+  - (amount|mixedAmount)(Looks|Is)Zero functions now check whether both
+    the quantity and the cost are zero. This is usually what you want,
+    but if you do only want to check whether the quantity is zero, you
+    can run mixedAmountStripPrices (or similar) before this. (Stephen Morgan)
+
+  - commodityStylesFromAmounts now consumes the list immediately,
+    reducing the maximum heap size per thread from ~850K to ~430K in a
+    real-world register report. (Stephen Morgan)
+
+  - *ApplyValuation functions take two less arguments, and
+    *ApplyCostValuation functions have been added, performing both
+    costing and valuation. (Stephen Morgan)
+
+  - traceAtWith now has a level argument and works properly.
+
+  - API changes include:
+    ```
+    Hledger.Data.Amount:
+     setAmountPrecision -> amountSetPrecision
+     setFullPrecision -> amountSetFullPrecision
+     setMixedAmountPrecision -> mixedAmountSetPrecision
+     showMixed -> showMixedAmountB
+     showMixedLines -> showMixedAmountLinesB
+    -mixedAmountSetFullPrecision
+
+    Hledger.Data.Journal:
+     mapJournalTransactions -> journalMapTransactions
+     mapJournalPostings -> journalMapPostings
+    -mapTransactionPostings
+    +journalPayeesUsed
+    +journalPayeesDeclaredOrUsed
+
+    Hledger.Data.Transaction:
+    +transactionFile
+    +transactionMapPostings
+
+    Hledger.Data.Valuation:
+    -valuationTypeIsCost
+    -valuationTypeIsDefaultValue
+    -ValuationType's AtDefault constructor
+
+    Hledger.Query:
+    +matchesDescription
+    +matchesPayeeWIP
+
+    Hledger.Utils.Text:
+    +textConcatBottomPadded
+    +wbToText
+    +wbUnpack
+
+    Text.Tabular.AsciiWide:
+     alignCell -> textCell
+    ```
+
+-------------------------------------------------------------------
 Sun Jan 31 13:49:33 UTC 2021 - psimons@suse.com
 
 - Update hledger-lib to version 1.20.4.
