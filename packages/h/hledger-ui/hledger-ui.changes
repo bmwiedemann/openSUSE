@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 11 08:22:41 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.21.
+  # 1.21 2021-03-10
+
+  - Register screen: also show transactions below the depth limit, as in
+    1.19, keeping the register balance in agreement with the balance
+    shown on the accounts screen. This regressed in 1.20. (#1468)
+
+  - Transaction screen: all decimal places are now shown. On the
+    accounts screen and register screen we round amounts according to
+    commodity display styles, but when you drill down to a transaction
+    you probably want to see the unrounded amounts. (Like print, #cf
+    931.)
+
+  - New flags `--man` and `--info` open the man page or info manual.
+    (See hledger changelog)
+
+-------------------------------------------------------------------
 Sun Jan 31 13:49:24 UTC 2021 - psimons@suse.com
 
 - Update hledger-ui to version 1.20.4.
