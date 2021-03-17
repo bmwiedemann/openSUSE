@@ -1,8 +1,8 @@
 #
 # spec file for package votca-tools
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2013-2020 Christoph Junghans
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2013-2021 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           votca-tools
-Version:        1.6.4
+Version:        2021
 Release:        0
-%define         uversion %{version}
-%define         sover 6
+%define         uversion %version
+%define         sover 2021
 Summary:        VOTCA tools library
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
@@ -83,7 +82,7 @@ FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S
 sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/libtools/version.cc
 
 %build
-%{cmake} -DWITH_RC_FILES=OFF -DCMAKE_SKIP_RPATH=OFF -DENABLE_TESTING=ON
+%{cmake} -DINSTALL_RC_FILES=OFF -DCMAKE_SKIP_RPATH=OFF -DENABLE_TESTING=ON
 %cmake_build
 
 %install
@@ -102,7 +101,7 @@ sed -i '1s@env @@' %{buildroot}/%{_bindir}/votca_compare
 %postun -n libvotca_tools%sover -p /sbin/ldconfig
 
 %files -n libvotca_tools%sover
-%doc NOTICE README.md CHANGELOG.md
+%doc NOTICE README.rst CHANGELOG.rst
 %license LICENSE
 %{_libdir}/libvotca_tools.so.%{sover}
 

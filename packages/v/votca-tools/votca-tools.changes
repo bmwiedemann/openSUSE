@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Mar 13 18:25:18 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021
+  - fix CI on rawhide ([gh#votca/tools#336])
+  - add auto-cancel workflow to GitHub Actions
+    ([gh#votca/tools#343])
+  - remove unused ext/alloc_traits.h from tests
+    ([gh#votca/tools#354])
+
+-------------------------------------------------------------------
+Wed Jan 13 01:07:33 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021~rc1 
+  - add support of txt2tqs 3.4 ([gh#votca/tools#208])
+  - fix MKL:: target creation ([gh#votca/tools#207],
+    [gh#votca/tools#265], [gh#votca/tools#269],
+    [gh#votca/tools#270])
+  - use local includes ([gh#votca/tools#204])
+  - add more support for units ([gh#votca/tools#200])
+  - add methods to update user input with defaults
+    ([gh#votca/tools#222])
+  - fix usage of PROJECT_SOURCE_DIR in cmake
+    ([gh#votca/tools#230])
+  - fix merging calculator defaults ([gh#votca/tools#226],
+    [gh#votca/tools#227])
+  - document cmake options and packages ([gh#votca/tools#231])
+  - make fftw3 a public dependency ([gh#votca/tools#235])
+  - rename WITH_RC_FILES to INSTALL_RC_FILES
+    ([gh#votca/tools#236])
+  - check calculator input options ([gh#votca/tools#232],
+    [gh#votca/tools#233])
+  - allow calculator choices to be a list ([gh#votca/tools#239])
+  - inject defaults into calculator values ([gh#votca/tools#241])
+  - fixed bug introduced by defaults injection
+    ([gh#votca/tools#241], [gh#votca/tools#242])
+  - make votca_compare always executable in builddir
+    ([gh#votca/tools#244])
+  - add rel. compare to votca_compare ([gh#votca/tools#143])
+  - standardize header formatting ([gh#votca/tools#246])
+  - move CI to GitHub Ations ([gh#votca/tools#251],
+    [gh#votca/tools#254], [gh#votca/tools#256],
+    [gh#votca/tools#258], [gh#votca/tools#260],
+    [gh#votca/tools#274], [gh#votca/tools#275], 
+    [gh#votca/tools#296], [gh#votca/tools#321])
+  - improve mkl detection ([gh#votca/tools#257],
+    [gh#votca/tools#299])
+  - clean up installed cmake find modules ([gh#votca/tools#263])
+  - update codacy badge ([gh#votca/tools#264])
+  - add mkl builds to CI ([gh#votca/tools#267],
+    [gh#votca/tools#271])
+  - convert markdown files to rst files ([gh#votca/tools#272])
+  - enable CXX only in CMake ([gh#votca/tools#273])
+  - format code with clang-10 ([gh#votca/tools#277])
+  - fix clang-9 conversion warning ([gh#votca/tools#276])
+  - add class to writeand read matrices ([gh#votca/tools#290])
+  - Bump required CMake version to 3.12 ([gh#votca/tools#301])
+  - refactored getenv() into separate function
+    ([gh#votca/tools#302])
+  - use unique_ptr in factory ([gh#votca/tools#303])
+
+-------------------------------------------------------------------
 Tue Jan 12 23:30:39 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.4
