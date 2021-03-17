@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 12 20:54:41 UTC 2021 - psimons@suse.com
+
+- Update th-expand-syns to version 0.4.8.0.
+  ## 0.4.8.0 [2021.03.12]
+
+  * Make the test suite compile with GHC 9.0 or later.
+  * Drop support for pre-7.0 versions of GHC.
+
+  ## 0.4.7.0
+
+  * Support GHC 9.0 / template-haskell-2.17 (Thanks to @mgsloan)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
