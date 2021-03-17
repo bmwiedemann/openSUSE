@@ -24,6 +24,10 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            http://dev.openttdcoop.org/projects/nml
 Source:         https://github.com/OpenTTD/nml/releases/download/%{version}/%{name}-%{version}.tar.gz
+# Backport fixed pcx images for regression tests (gh#OpenTTD/nml!188, deb#980641)
+Source1:        https://github.com/OpenTTD/nml/raw/07c5a4de27fec1383d2657aa51a092b1d2c658fe/regression/arctic_railwagons.pcx
+Source2:        https://github.com/OpenTTD/nml/raw/07c5a4de27fec1383d2657aa51a092b1d2c658fe/regression/opengfx_generic_trams1.pcx
+Source3:        https://github.com/OpenTTD/nml/raw/07c5a4de27fec1383d2657aa51a092b1d2c658fe/regression/opengfx_trains_start.pcx
 Source99:       nml-rpmlintrc
 BuildRequires:  gcc
 BuildRequires:  python3-devel
@@ -42,6 +46,7 @@ A tool to compile nml files to grf or nfo files, making newgrf coding easier.
 
 %prep
 %setup -q -n %{name}-%{version}
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} regression
 
 %build
 make

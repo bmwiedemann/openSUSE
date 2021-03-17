@@ -189,4 +189,17 @@
     <comment></comment>
     <requestid>860560</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f219e556aa32970d2f5a7347a314f615</srcmd5>
+    <version>0.5.3</version>
+    <time>1616008595</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport corrected pcx images to fix tests with Pillow 8.1.0
+  (gh#OpenTTD/nml!188, deb#980641):
+  * arctic_railwagons.pcx
+  * opengfx_generic_trams1.pcx
+  * opengfx_trains_start.pcx
+</comment>
+    <requestid>879583</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 16 22:36:46 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Backport corrected pcx images to fix tests with Pillow 8.1.0
+  (gh#OpenTTD/nml!188, deb#980641):
+  * arctic_railwagons.pcx
+  * opengfx_generic_trams1.pcx
+  * opengfx_trains_start.pcx
+
+-------------------------------------------------------------------
 Fri Jan  1 13:56:04 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 0.5.3
