@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  8 07:33:00 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Added icu-1618.patch to fix 2 tests on aarch64 [boo#1182645]
+
+-------------------------------------------------------------------
 Mon Mar  1 13:37:17 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Drop SUSE_ASNEEDED as the issue was in binutils (boo#1182252).

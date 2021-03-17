@@ -621,4 +621,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment></comment>
     <requestid>876025</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>13a99bde8749b3bbebf7913bc7a4817c</srcmd5>
+    <version>68.2</version>
+    <time>1616008408</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879226</requestid>
+  </revision>
 </revisionlist>
