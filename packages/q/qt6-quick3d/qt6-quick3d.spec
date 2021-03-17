@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3d
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qtquick3d
 %define tar_suffix %{nil}
@@ -27,9 +27,9 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
-Summary:        Qt6 Quick3D Libraries and utilities
+Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
@@ -55,7 +55,8 @@ BuildRequires:  qt6-tools
 %endif
 
 %description
-The Qt6 Quick3D Libraries and plugins.
+Qt Quick 3D provides a high-level API for creating 3D content and 3D user
+interfaces based on Qt Quick. 
 
 %if !%{qt6_docs_flavor}
 
