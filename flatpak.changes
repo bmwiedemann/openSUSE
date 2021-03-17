@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 10 14:27:26 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+-  Update to version 1.10.2:
+   + This is a security update which fixes a potential attack where
+     a flatpak application could use custom formated .desktop files
+     to gain access to files on the host system.
+   + Fix memory leaks
+   + Some test fixes
+   + Documentation updates
+   + G_BEGIN/END_DECLS added to library headders for c++ use
+   + Fix for X11 cookies on OpenSUSE
+   + Spawn portal better handles non-utf8 filenames
+
+-------------------------------------------------------------------
 Thu Jan 28 08:00:53 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Flatpak only requires glib 2.44, not 2.60
