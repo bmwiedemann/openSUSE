@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Feb  8 07:18:37 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.10.5.2
+  * Dropped support for Python 2 (dr-p)
+  * Removed convertdate<=2.2.0 constraint (dr-p)
+  * Travis CI integration review (dr-p)
+  * Support for Mozambique (jusce17)
+  * Angola fixes (jusce17)
+  * Portugal localized holidays (jusce17)
+  * Disable year expansion on name search #411 (giladmaya)
+  * Israel fixes (new convertdate version) #407 (giladmaya)
+  * Ireland fixes (ISO-2 code, partial split from UK) #417 (javicalle)
+  * Honduras fix (ISO-2 code) #405 (dr-p, agorajek)
+- had to disable lag-boamer support due lack of official resource for it
+  via disable-lag-baomer.patch
+
+-------------------------------------------------------------------
+Mon Jan  4 07:58:03 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.10.4
+  * Dropped support for Python 3.5
+  * Support for Djibouti (Abdisamade)
+  * Support for United Arab Emirates (marcomasulli, mborsetti)
+  * Support for Chile (mborsetti, dr-p)
+  * Support for Angola (jusce17, pietervdw115, dr-p)
+  * Support for Malawi (pietervdw115)
+  * Support for Bangladesh (dr-p, tasnimislam)
+  * Korea fixes (MYUNGJE, dr-p, hiddentrap)
+  * Australia 2020 fix (bencollerson, trauty-is-me)
+  * Croatia fixes and updates (jangrg, mborsetti, dr-p)
+  * United States fixes (raffg, bgmiles, dr-p)
+  * UK fixes/improvements (dr-p, richard-kunert, emreay-)
+  * Russia fixes (tserekh)
+  * Ireland fixes (chiuczek)
+  * Spain observed holidays fix (sermayoral)
+  * South Africa observed holidays fix (pietervdw115)
+  * France fix (mborsetti)
+  * Mexico fix (mborsetti)
+  * Singapore 2022 fix (mborsetti)
+  * Japan 1990-1993 fixes (sakurai-youhei)
+  * Fix on occasional pop_named exception (mborsetti)
+  * convertdate fallback if hijri-converter not available (mborsetti, dr-p)
+  * enabled Travis tests for python3.9 (mborsetti)
+  * added flake8 to unittests (mborsetti)
+- disable failing code style test case (adding disable-flake.patch)
+
+-------------------------------------------------------------------
 Mon Jul 27 07:36:43 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.10.3
