@@ -222,4 +222,18 @@ error masked by || : (forwarded request 141981 from dimstar)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>679572</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a076ee88fb1d9c626ed80e54b77be54a</srcmd5>
+    <version>0.7.1</version>
+    <time>1616008490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1:
+  * fix enforceupstream option with cold/disabled cache
+
+- Update to version 0.7.0:
+  * Support modification time header check during download
+  * Fedora dependency updates from cfelder
+  * fix missing dep for appimage parser</comment>
+    <requestid>874373</requestid>
+  </revision>
 </revisionlist>

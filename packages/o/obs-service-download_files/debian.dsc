@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-download-files
-Version: 0.6.2-0
+Version: 0.7.1-0
 Binary: obs-service-download-files
 Maintainer: Hib Eris <hib@hiberis.nl>
 Architecture: all

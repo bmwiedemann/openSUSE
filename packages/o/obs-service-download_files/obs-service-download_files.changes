@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 22 15:36:32 UTC 2021 - adrian@suse.de
+
+- Update to version 0.7.1:
+  * fix enforceupstream option with cold/disabled cache
+
+-------------------------------------------------------------------
+Wed Dec 09 12:22:51 UTC 2020 - adrian@suse.de
+
+- Update to version 0.7.0:
+  * Support modification time header check during download
+  * Fedora dependency updates from cfelder
+  * fix missing dep for appimage parser
+
+-------------------------------------------------------------------
 Wed Jan 16 11:52:40 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - fix dependency to perl(YAML::XS) for appimage parser
