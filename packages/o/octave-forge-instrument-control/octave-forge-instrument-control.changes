@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 13 14:03:44 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.0:
+  * Update get function for instrument controls to not use cellfun
+    (Bug #59581)
+  * UDPPORT: Added new udpport class
+  * TCPCLIENT:  Added new tcpclient class
+  * SERIALPORT: update property access to proper case usage
+
+-------------------------------------------------------------------
 Sat Oct 31 18:43:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.0:
