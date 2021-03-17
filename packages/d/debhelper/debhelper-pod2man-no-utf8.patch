@@ -1,13 +1,11 @@
-Index: debhelper/Makefile
-===================================================================
---- debhelper.orig/Makefile
-+++ debhelper/Makefile
-@@ -38,7 +38,7 @@ VERSION=$(shell expr "`dpkg-parsechangel
+--- debhelper-debian-10.10.9.orig/Makefile	2017-11-19 12:06:36.000000000 +0100
++++ debhelper-debian-10.10.9/Makefile	2021-03-16 15:18:03.115557862 +0100
+@@ -54,7 +54,7 @@
  
- PERLLIBDIR=$(shell perl -MConfig -e 'print $$Config{vendorlib}')/Debian/Debhelper
+ PREFIX=/usr
  
--POD2MAN=pod2man --utf8 -c Debhelper -r "$(VERSION)"
-+POD2MAN=pod2man -c Debhelper -r "$(VERSION)"
+-POD2MAN_FLAGS=--utf8 -c Debhelper -r "$(VERSION)"
++POD2MAN_FLAGS=-c Debhelper -r "$(VERSION)"
  
- build: version debhelper.7
- 	find . -maxdepth 1 -type f -perm /100 -name "dh*" \
+ ifneq ($(USE_NLS),no)
+ # l10n to be built is determined from .po files

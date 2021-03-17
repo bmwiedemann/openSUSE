@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 16 14:41:10 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update to version 13.3.4
+- Adapt patches to new upstream version:
+  * remove debhelper-9.20150101-no-localized-manpages.patch
+  * add debhelper-no-localized-manpages.patch
+
+-------------------------------------------------------------------
+Sun Jul 24 16:42:15 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 9.20160709
+
+-------------------------------------------------------------------
 Sun Jan  4 17:24:25 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 9.20150101
@@ -108,7 +121,7 @@ Thu Mar 31 11:39:18 UTC 2011 - flichtenheld@astaro.com
 -------------------------------------------------------------------
 Thu Mar 17 15:32:12 UTC 2011 - mvyskocil@suse.cz
 
-- split the u-a to separate spec file to reduce a build cycle 
+- split the u-a to separate spec file to reduce a build cycle
 
 -------------------------------------------------------------------
 Wed Mar 16 09:07:15 UTC 2011 - mvyskocil@suse.cz
@@ -186,7 +199,7 @@ Thu Nov 12 09:14:55 UTC 2009 - wr@rosenauer.org
 -------------------------------------------------------------------
 Thu Aug 13 13:01:58 UTC 2009 - puzel@novell.com
 
-- update to debhelper-7.3.12 
+- update to debhelper-7.3.12
   * dh: Allow creation of new sequences (such as to handle a patch
     target for quilt), by adding an add_command function to the
     sequence addon interface.
@@ -286,7 +299,7 @@ Fri Jul  3 10:48:44 CEST 2009 - puzel@novell.com
 -------------------------------------------------------------------
 Fri Jun 12 09:03:44 CEST 2009 - puzel@suse.cz
 
-- update to debhelper-7.2.16 
+- update to debhelper-7.2.16
   * dh_gconf: Add missed half of postrm fragment removal.
 
 -------------------------------------------------------------------
@@ -297,7 +310,7 @@ Thu Jun 11 11:33:32 CEST 2009 - puzel@suse.cz
   * dh_compress: Avoid compressing .svg and .sgvz files, since these
     might be used as images on a html page, and also to avoid needing
     to special case the .svgz extension when compressing svg.
-  * dh_scrollkeeper: Now a deprecated no-op. 
+  * dh_scrollkeeper: Now a deprecated no-op.
   * dh_gconf: Remove postrm fragment that handled schema migration
     from /etc to /usr.
 
@@ -317,12 +330,12 @@ Wed May 13 12:05:11 CEST 2009 - puzel@suse.cz
   * dh_auto_configure: Add --skipdeps when running Makefile.PL,
     to prevent Module::Install from trying to download dependencies.
   * Support debian/foo.os files to suppliment previous debian/foo.arch
-    file support. 
+    file support.
 
 -------------------------------------------------------------------
 Mon May 11 14:56:30 CEST 2009 - puzel@suse.cz
 
-- update to debhelper-7.2.10 
+- update to debhelper-7.2.10
   * Close COMPAT_IN filehandle.
   * dh_auto_configure: Clarify man page re adding configure
     parameters.
@@ -334,7 +347,7 @@ Mon May 11 14:56:30 CEST 2009 - puzel@suse.cz
 Wed May  6 15:50:23 CEST 2009 - puzel@suse.cz
 
 - update to debhelper-7.2.9
-  * dh_fixperms: Ensure lintian overrides are mode 644. 
+  * dh_fixperms: Ensure lintian overrides are mode 644.
   * dh_fixperms: Fix permissions of OCaml .cmxs files.
   * dh: Add --without to allow disabling sequence addons (particularly
     useful to disable the default python-support addon).
@@ -361,7 +374,7 @@ Thu Apr 16 11:55:35 CEST 2009 - puzel@suse.cz
 -------------------------------------------------------------------
 Mon Apr  6 15:23:19 CEST 2009 - puzel@suse.cz
 
-- add a hack to detect architecture correctly (bnc#469337) 
+- add a hack to detect architecture correctly (bnc#469337)
 
 -------------------------------------------------------------------
 Mon Mar 16 16:43:15 CET 2009 - puzel@suse.cz
@@ -426,14 +439,14 @@ Thu Dec 18 13:48:25 CET 2008 - puzel@suse.cz
     * dh_install(1): Order options alphabetically.
     * Fix some docs that refered to --srcdir rather than --sourcedir.
     * Add Vcs-Browser field.
-    * Ignore unknown options in DH_OPTIONS. 
+    * Ignore unknown options in DH_OPTIONS.
 
 -------------------------------------------------------------------
 Wed Oct 29 17:28:46 CET 2008 - puzel@suse.cz
 
 - update debhelper to 7.1.0
   * dh_installchangelogs: Fall back to looking for changelog files ending
-    with ".txt". 
+    with ".txt".
   * dh_gencontrol: Ensure misc:Depends is set in substvars to avoid dpkg
     complaining about it when it's empty.
   * dh: Fix typo in example.
@@ -514,7 +527,7 @@ Mon Jul  7 13:49:46 CEST 2008 - puzel@suse.cz
 
 - update dpkg to 1.14.19
   * a lot of changes and bugfixes
-  * for complete changelog see program sources or 
+  * for complete changelog see program sources or
     /usr/share/doc/packages/deb/dpkg/changelog
   * removed dpkg-gcc4.patch - compiles fine without it
   * removed dpkg-make.patch, dpkg-automake.diff, dpkg-strip.patch
@@ -522,7 +535,7 @@ Mon Jul  7 13:49:46 CEST 2008 - puzel@suse.cz
   * removed dpkg_1.10.23-doc.patch - fixed in upstream
 - update debhelper to 7.0.13
   * a lot of changes and bugfixes
-  * for complete changelog see program sources or 
+  * for complete changelog see program sources or
     /usr/share/doc/packages/deb/debhelper/changelog
   * debhelper-no-localized-manpages.diff - do not use po4a to generate
     localized documentation
@@ -542,7 +555,7 @@ Tue Jul 24 14:52:04 CEST 2007 - dmueller@suse.de
 -------------------------------------------------------------------
 Sun Apr 22 22:37:02 CEST 2007 - ro@suse.de
 
-- use texlive for building 
+- use texlive for building
 
 -------------------------------------------------------------------
 Fri Mar 30 08:49:13 CEST 2007 - aj@suse.de
@@ -567,7 +580,7 @@ Fri Jan 13 13:12:52 CET 2006 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Dec 21 01:21:54 CET 2005 - ro@suse.de
 
-- remove unpackaged symlinks 
+- remove unpackaged symlinks
 
 -------------------------------------------------------------------
 Thu Sep  8 14:49:24 CEST 2005 - mjancar@suse.cz
@@ -587,7 +600,7 @@ Fri Apr  8 13:50:27 CEST 2005 - uli@suse.de
 -------------------------------------------------------------------
 Thu Feb 10 16:56:12 CET 2005 - rengelhard@suse.de
 
-- update dpkg to 1.10.27 (just translation updates) 
+- update dpkg to 1.10.27 (just translation updates)
 
 -------------------------------------------------------------------
 Thu Jan 20 23:38:24 CET 2005 - ro@suse.de
@@ -597,52 +610,52 @@ Thu Jan 20 23:38:24 CET 2005 - ro@suse.de
 -------------------------------------------------------------------
 Wed Jan 12 15:45:21 CET 2005 - rengelha@suse.de
 
-- update dpkg to 1.10.26 
+- update dpkg to 1.10.26
 
 -------------------------------------------------------------------
 Wed Jan  5 13:41:10 CET 2005 - rengelhard@suse.de
 
-- update debhelper to 4.2.30 
+- update debhelper to 4.2.30
 
 -------------------------------------------------------------------
 Tue Jan  4 11:11:22 CET 2005 - rengelhard@suse.de
 
-- update debhelper to 4.2.29 
+- update debhelper to 4.2.29
 
 -------------------------------------------------------------------
 Wed Dec 15 12:06:57 CET 2004 - rengelhard@suse.de
 
-- update debhelper to 4.2.28 
+- update debhelper to 4.2.28
 
 -------------------------------------------------------------------
 Mon Dec 13 09:16:46 CET 2004 - rengelhard@suse.de
 
-- update debhelper to 4.2.27 
+- update debhelper to 4.2.27
 
 -------------------------------------------------------------------
 Tue Nov 16 15:44:34 CET 2004 - rengelhard@suse.de
 
-- update dpkg to 1.10.25 
+- update dpkg to 1.10.25
 
 -------------------------------------------------------------------
 Thu Nov 11 10:42:02 CET 2004 - rengelhard@suse.de
 
-- update debhelper to 4.2.24 
+- update debhelper to 4.2.24
 
 -------------------------------------------------------------------
 Fri Oct 29 13:55:11 CEST 2004 - rengelhard@suse.de
 
-- update debhelper to 4.2.23 
+- update debhelper to 4.2.23
 
 -------------------------------------------------------------------
 Wed Oct 27 12:15:38 CEST 2004 - rengelhard@suse.de
 
-- update dpkg to 1.10.24 
+- update dpkg to 1.10.24
 
 -------------------------------------------------------------------
 Wed Oct 13 12:11:21 CEST 2004 - rengelhard@suse.de
 
-- update debhelper to 4.2.21 
+- update debhelper to 4.2.21
 
 -------------------------------------------------------------------
 Wed Sep  8 00:06:37 CEST 2004 - ro@suse.de
@@ -836,12 +849,12 @@ Tue Oct 31 10:57:36 CET 2000 - cihlar@suse.cz
 -------------------------------------------------------------------
 Tue May 23 16:48:45 CEST 2000 - cihlar@suse.cz
 
-- added files in /etc and /var to %files 
+- added files in /etc and /var to %files
 
 -------------------------------------------------------------------
 Mon May 22 15:19:20 CEST 2000 - cihlar@suse.cz
 
-- removed install-info and start-stop-daemon 
+- removed install-info and start-stop-daemon
 
 -------------------------------------------------------------------
 Mon May 15 17:20:51 CEST 2000 - schwab@suse.de

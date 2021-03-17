@@ -48,4 +48,15 @@ Resubmit without Source URL</comment>
 - Remove upstreamed debhelper-findutils.patch</comment>
     <requestid>281090</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca3093b5bf14ed7924d5c4ec40210ec8</srcmd5>
+    <version>13.3.4</version>
+    <time>1616008575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.3.4
+- Adapt patches to new upstream version:
+  * remove debhelper-9.20150101-no-localized-manpages.patch
+  * add debhelper-no-localized-manpages.patch</comment>
+    <requestid>879491</requestid>
+  </revision>
 </revisionlist>
