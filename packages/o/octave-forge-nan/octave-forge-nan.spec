@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-nan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  nan
 Name:           octave-forge-%{octpkg}
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        A statistics and machine learning toolbox
 License:        GPL-3.0-or-later
