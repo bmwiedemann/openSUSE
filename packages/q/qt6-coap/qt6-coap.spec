@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-coap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qtcoap
 %define tar_suffix %{nil}
@@ -27,9 +27,9 @@
 %endif
 #
 Name:           qt6-coap%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
-Summary:        Qt 6 CoAP Library
+Summary:        Qt 6 CoAP client module 
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
