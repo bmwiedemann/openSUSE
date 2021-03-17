@@ -16,13 +16,12 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
-# TODO replace with a ternary operator when rpm 4.16 is available
 %if "%{qt6_flavor}" == "docs"
 %define pkg_suffix -docs
 %endif
@@ -31,17 +30,14 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
-Summary:        C++ program library, core components
+Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-CMake-strip-the-executable-bit-from-qt-cmake-private.patch
-Patch1:         0001-CMake-Fix-conditions-for-some-subarch-features.patch
-Patch2:         0001-Fix-QCache-Crash.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       fix-fixqt4headers.patch
 Patch101:       0001-Tell-the-truth-about-private-API.patch
@@ -686,7 +682,11 @@ EOF
 %build
 %define _lto_cflags %{nil}
 
+# NOTE: ltcg causes linker errors on ppc64
 %cmake_qt6 \
+%ifnarch ppc64
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+%endif
     -DQT_FEATURE_journald=ON \
     -DQT_FEATURE_libproxy=ON \
     -DQT_FEATURE_openssl_linked=ON \
@@ -744,6 +744,10 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_concurrent_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_eglfs_kms_support_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_xcb_qpa_lib_private.pri
+
+# These files are only useful for the Qt continuous integration
+rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
+rm %{buildroot}%{_qt6_libexecdir}/android_*.sh
 
 # This is only for Apple platforms and has a python2 dep
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
@@ -827,7 +831,6 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_bindir}/uic
 %{_qt6_cmakedir}/Qt6/
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfig.cmake
-%{_qt6_cmakedir}/Qt6BuildInternals/QtBuildInternalsAndroid.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtBuildInternalsExtra.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtStandaloneTestTemplateProject/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtBaseTestsConfig.cmake

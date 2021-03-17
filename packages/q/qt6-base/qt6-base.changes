@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  5 09:31:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.2:
+  https://www.qt.io/blog/qt-6.0.2-released
+
+-------------------------------------------------------------------
+Wed Feb  3 16:54:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.1
+  https://www.qt.io/blog/qt-6.0.1-released
+- Drop patches:
+  * 0001-Fix-QCache-Crash.patch
+  * 0001-CMake-Fix-conditions-for-some-subarch-features.patch
+  * 0001-CMake-strip-the-executable-bit-from-qt-cmake-private.patch
+- Enable ltcg where possible.
+
+-------------------------------------------------------------------
 Sat Jan 23 20:24:22 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Remove uikit qmake spec to avoid automatic dep on python2
