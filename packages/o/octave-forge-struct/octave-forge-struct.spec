@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-struct
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  struct
 Name:           octave-forge-%{octpkg}
-Version:        1.0.16
+Version:        1.0.17
 Release:        0
 Summary:        Additional Structure manipulations functions for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
+URL:            http://octave.sourceforge.net
 Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
