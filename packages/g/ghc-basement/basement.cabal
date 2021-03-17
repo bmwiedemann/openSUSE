@@ -1,6 +1,6 @@
 name:                basement
 version:             0.0.11
-x-revision: 2
+x-revision: 3
 synopsis:            Foundation scrap box of array & string
 description:         Foundation most basic primitives without any dependencies
 license:             BSD3
@@ -138,7 +138,7 @@ library
                      Basement.Terminal.Size
 
   -- support and dependencies
-  build-depends: base >= 4.9.0.0 && < 5
+  build-depends: base >= 4.9.0.0 && < 4.15
   if impl(ghc < 8.0)
     build-depends:     base
   else
