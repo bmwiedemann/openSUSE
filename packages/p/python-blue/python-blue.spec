@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define modname blue
 Name:           python-blue
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module black}
 # BuildRequires:  %%{python_module doc8}
 BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rstcheck}
 BuildRequires:  %{python_module setuptools}
@@ -44,7 +45,9 @@ Requires:       python-aiohttp >= 3.3.2
 Requires:       python-aiohttp_cors
 Requires:       python-appdirs
 Requires:       python-attrs >= 18.1.0
+Requires:       python-black
 Requires:       python-click >= 7.1.2
+Requires:       python-flake8
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-pathspec >= 0.6
 Requires:       python-regex >= 2020.1.8
@@ -55,7 +58,7 @@ Requires:       python-typing_extensions
 Requires:       python-dataclasses
 %endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

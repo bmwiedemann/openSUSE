@@ -7,4 +7,27 @@
     <comment>Fixed building of documentation.</comment>
     <requestid>864005</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>635f4d57fec49dca4211ba6c67ac8a38</srcmd5>
+    <version>0.6.0</version>
+    <time>1616008591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Add bullet about default line length of 79 characters
+  * Run blue over docs/ directory
+  * Fix formatting in docs/conf.py
+  * Preserve whitespace before hash mark on hanging comments (#31)
+  * Use flake8 to parse project and user configs for blue
+  * Patch the config param's callback
+  * Fixes for static analysis
+  * Format keys for Click's default_map
+  * Add pytest for testing
+  * Format tests/test_blue.py in blue and bluecheck commands
+  * Add tests for config parsing
+  * Update docs requirements to match setup.py
+  * Add note to README and changelog.
+  * Fix --version option handling and add test cases
+  * Move coverage switches on pytest to separate sections</comment>
+    <requestid>879548</requestid>
+  </revision>
 </revisionlist>

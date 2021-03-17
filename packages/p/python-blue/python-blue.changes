@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 17 04:05:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Add bullet about default line length of 79 characters
+  * Run blue over docs/ directory
+  * Fix formatting in docs/conf.py
+  * Preserve whitespace before hash mark on hanging comments (#31)
+  * Use flake8 to parse project and user configs for blue
+  * Patch the config param's callback
+  * Fixes for static analysis
+  * Format keys for Click's default_map
+  * Add pytest for testing
+  * Format tests/test_blue.py in blue and bluecheck commands
+  * Add tests for config parsing
+  * Update docs requirements to match setup.py
+  * Add note to README and changelog.
+  * Fix --version option handling and add test cases
+  * Move coverage switches on pytest to separate sections
+
+-------------------------------------------------------------------
 Mon Jan 18 08:23:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 0.5.2:
