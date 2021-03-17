@@ -84,4 +84,12 @@
 - Add libQt5QuickTemplates2-devel to BuildRequires (forwarded request 852697 from glaubitz)</comment>
     <requestid>853120</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fe1aca7553c8fef0ff0700ecb3b1e894</srcmd5>
+    <version>1.22.1</version>
+    <time>1616008627</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 879406 from glaubitz)</comment>
+    <requestid>879697</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Mar 16 12:18:46 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.1
+    * The release notes are now displayed within the app.
+    * Improvements have been made to the display and reporting
+      of error messages within the mobile app.
+    * Fixed possible freezing of the app when checking the ID.
+    * The pairing of a smartphone can now be started directly.
+    * The mobile app now starts with the SaK view if this was
+      the last setting used.
+    * The smartphone function as a card reader can now always be
+      activated on iOS.
+    * Animations on iOS have been improved.
+    * Minor bug fixes.
+    * In the SDK for iOS, the handleInterrupt parameter was added to
+      RUN_AUTH and RUN_CHANGE_PIN. Like the associated INTERRUPT command.
+    * In the SDK for iOS, parameters have been added for RUN_AUTH and
+      RUN_CHANGE_PIN, which allow messages to be displayed in the system
+      scan dialog.
+    * The following error is now returned in the SDK for an expired ID
+      card: DocumentValidityVerificationFailed
+    * Added support for the new protocol version for smartphones as card
+      readers in accordance with the supplement to BSI TR-03112 Part 6.
+    * A crash on Windows when pairing PersoSim has been fixed.
+    * Added support for PersoSim for Android with host card emulation.
+    * A possible infinite loop in the SDK for Android has been fixed.
+    * Update of OpenSSL to version 1.1.1j.
+- Drop patches for issues fixed upstream
+  + 0001-fix-manpage-path.patch
+
+-------------------------------------------------------------------
 Wed Dec  2 18:09:47 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
