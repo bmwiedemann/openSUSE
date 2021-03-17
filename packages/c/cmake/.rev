@@ -1672,4 +1672,16 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>875245</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>01449cc3c12785a9cf5d6ca40c0841a1</srcmd5>
+    <version>3.19.7</version>
+    <time>1616008436</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.19.7:
+  * With :ref:`Visual Studio Generators` for VS 2017 and higher, the
+    :variable:`CMAKE_GENERATOR_TOOLSET` field ``version=`` now accepts
+    three-component MSVC toolset versions such as ``14.28.29910``.
+    See the :variable:`CMAKE_VS_PLATFORM_TOOLSET_VERSION` variable.</comment>
+    <requestid>879322</requestid>
+  </revision>
 </revisionlist>

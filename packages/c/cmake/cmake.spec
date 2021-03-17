@@ -1,5 +1,5 @@
 #
-# spec file for package cmake
+# spec file for package cmake%{?psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -37,7 +37,7 @@
 %endif
 %define shortversion 3.19
 Name:           cmake%{?psuffix}
-Version:        3.19.6
+Version:        3.19.7
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -206,6 +206,7 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %{_mandir}/man7/*
 %{_mandir}/man1/*
 %else
+
 %files
 %if "%{flavor}" == ""
 %doc README.SUSE
