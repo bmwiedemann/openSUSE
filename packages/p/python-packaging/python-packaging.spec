@@ -1,7 +1,7 @@
 #
 # spec file for package python-packaging
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-packaging%{psuffix}
-Version:        20.8
+Version:        20.9
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0

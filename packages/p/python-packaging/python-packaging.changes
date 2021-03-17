@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  2 01:02:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.9:
+  * Run [isort](https://pypi.org/project/isort/) over the code base (:issue:`377`)
+  * Add support for the ``macosx_10_*_universal2`` platform tags (:issue:`379`)
+  * Introduce ``packaging.utils.parse_wheel_filename()`` and ``parse_sdist_filename()``
+
+-------------------------------------------------------------------
 Sun Dec 20 09:37:07 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.8:
