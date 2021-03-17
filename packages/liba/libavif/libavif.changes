@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 15 10:40:45 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.0
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.0/CHANGELOG.md
+    for a complete changelog.
+
+-------------------------------------------------------------------
 Wed Jan 13 13:30:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Build the gdk-pixbuf module: Add pkgconfig(gdk-pixbuf-2.0)
